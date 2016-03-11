@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>495</ApplicationRevision>
+    <ApplicationRevision>501</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -202,6 +202,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptThongTinKhachHang.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\Quay\rptPhieuBaoGiaoTon.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPhieuBaoGiaoTon.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BaoCao\TongHop\rptTongHopDangNganChiTiet_PhanKy.cs">
@@ -437,6 +443,7 @@
     <Compile Include="DAL\QuanTri\CPhanQuyenNhom.cs" />
     <Compile Include="DAL\QuanTri\CTo.cs" />
     <Compile Include="DAL\Quay\CLenhHuy.cs" />
+    <Compile Include="DAL\Quay\CQuetGiaoTon.cs" />
     <Compile Include="DAL\Quay\CTamThu.cs" />
     <Compile Include="DAL\Quay\CTraGop.cs" />
     <Compile Include="DAL\Quay\CXacNhanNo.cs" />
@@ -648,6 +655,18 @@
     </Compile>
     <Compile Include="GUI\HanhThu\frmQuetTam.Designer.cs">
       <DependentUpon>frmQuetTam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Quay\frmQuetGiaoTon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Quay\frmQuetGiaoTon.Designer.cs">
+      <DependentUpon>frmQuetGiaoTon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\TimKiem\frmDoiSoHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\TimKiem\frmDoiSoHoaDon.Designer.cs">
+      <DependentUpon>frmDoiSoHoaDon.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\TimKiem\frmTimKiemDienThoai.cs">
       <SubType>Form</SubType>
@@ -960,6 +979,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThongTinKhachHang.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\Quay\rptPhieuBaoGiaoTon.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPhieuBaoGiaoTon.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\TongHop\rptTongHopDangNganChiTiet_PhanKy.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptTongHopDangNganChiTiet_PhanKy.cs</LastGenOutput>
@@ -1220,6 +1243,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\HanhThu\frmQuetTam.resx">
       <DependentUpon>frmQuetTam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Quay\frmQuetGiaoTon.resx">
+      <DependentUpon>frmQuetGiaoTon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\TimKiem\frmDoiSoHoaDon.resx">
+      <DependentUpon>frmDoiSoHoaDon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\TimKiem\frmTimKiemDienThoai.resx">
       <DependentUpon>frmTimKiemDienThoai.cs</DependentUpon>

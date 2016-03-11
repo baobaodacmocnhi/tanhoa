@@ -112,6 +112,7 @@ namespace ThuTien.GUI.Quay
                     foreach (ListViewItem item in lstHD.Items)
                     {
                         TT_LenhHuy lenhhuy = new TT_LenhHuy();
+                        lenhhuy.MaHD = _cHoaDon.Get(item.Text).ID_HOADON;
                         lenhhuy.SoHoaDon = item.Text;
                         if (!_cLenhHuy.Them(lenhhuy))
                         {
@@ -145,7 +146,7 @@ namespace ThuTien.GUI.Quay
                         _cLenhHuy.BeginTransaction();
                         foreach (DataGridViewRow item in dgvHoaDon.SelectedRows)
                         {
-                            TT_LenhHuy lenhhuy = _cLenhHuy.GetBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
+                            TT_LenhHuy lenhhuy = _cLenhHuy.Get(item.Cells["SoHoaDon"].Value.ToString());
                             if (!_cLenhHuy.Xoa(lenhhuy))
                             {
                                 _cLenhHuy.Rollback();
@@ -267,13 +268,13 @@ namespace ThuTien.GUI.Quay
             {
                 if (dgvHoaDon.Columns[e.ColumnIndex].Name == "TinhTrang")
                 {
-                    TT_LenhHuy lenhhuy = _cLenhHuy.GetBySoHoaDon(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString());
+                    TT_LenhHuy lenhhuy = _cLenhHuy.Get(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString());
                     lenhhuy.TinhTrang = dgvHoaDon["TinhTrang", e.RowIndex].Value.ToString();
                     _cLenhHuy.Sua(lenhhuy);
                 }
                 if (dgvHoaDon.Columns[e.ColumnIndex].Name == "Cat")
                 {
-                    TT_LenhHuy lenhhuy = _cLenhHuy.GetBySoHoaDon(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString());
+                    TT_LenhHuy lenhhuy = _cLenhHuy.Get(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString());
                     lenhhuy.Cat = bool.Parse(dgvHoaDon["Cat", e.RowIndex].Value.ToString());
                     _cLenhHuy.Sua(lenhhuy);
                 }

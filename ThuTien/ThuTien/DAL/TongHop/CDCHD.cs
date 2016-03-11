@@ -110,7 +110,7 @@ namespace ThuTien.DAL.TongHop
             return _db.DIEUCHINH_HDs.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
         }
 
-        public DIEUCHINH_HD GetByMaHD(int MaHD)
+        public DIEUCHINH_HD Get(int MaHD)
         {
             return _db.DIEUCHINH_HDs.SingleOrDefault(item => item.FK_HOADON == MaHD);
         }

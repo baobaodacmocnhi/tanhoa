@@ -12,6 +12,7 @@ using ThuTien.LinQ;
 using System.Globalization;
 using ThuTien.GUI.TimKiem;
 using System.Transactions;
+using ThuTien.DAL;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -21,6 +22,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CBangKe _cBangKe = new CBangKe();
         CNganHang _cNganHang = new CNganHang();
         CTienDu _cTienDu = new CTienDu();
+        CCAPNUOCTANHOA _cCapNuocTanHoa = new CCAPNUOCTANHOA();
 
         public frmBangKe()
         {
@@ -104,6 +106,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                         TongHD += int.Parse(item.Cells["HoaDon"].Value.ToString());
                     if (!string.IsNullOrEmpty(item.Cells["TongCong"].Value.ToString()))
                         TongCong += long.Parse(item.Cells["TongCong"].Value.ToString());
+                    if (!string.IsNullOrEmpty(item.Cells["DanhBo"].Value.ToString()) && !_cCapNuocTanHoa.CheckExist(item.Cells["DanhBo"].Value.ToString()))
+                        item.DefaultCellStyle.BackColor = Color.Red;
                 }
                 txtTongDanhBo.Text = dgvBangKe.RowCount.ToString();
                 txtTongSoTien.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongSoTien);
@@ -203,6 +207,13 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
+                    DateTime CreateDate = new DateTime();
+                    DateTime.TryParse(dgvBangKe["CreateDate", e.RowIndex].Value.ToString(), out CreateDate);
+                    if (CreateDate.Date != DateTime.Now)
+                    {
+                        MessageBox.Show("Chỉ được Điều Chỉnh trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     using (var scope = new TransactionScope())
                     {
                         TT_BangKe bangke = _cBangKe.Get(int.Parse(dgvBangKe["MaBK", e.RowIndex].Value.ToString()));
@@ -257,9 +268,18 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void dgvBangKeGroup3_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvBangKeGroup.Columns[e.ColumnIndex].Name == "TongCong_Group3" && e.Value != null)
+            if (dgvBangKeGroup3.Columns[e.ColumnIndex].Name == "TongCong_Group3" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
+        private void dgvBangKe_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            foreach (DataGridViewRow item in dgvBangKe.Rows)
+            {
+                if (!string.IsNullOrEmpty(item.Cells["DanhBo"].Value.ToString()) && !_cCapNuocTanHoa.CheckExist(item.Cells["DanhBo"].Value.ToString()))
+                    item.DefaultCellStyle.BackColor = Color.Red;
             }
         }
 

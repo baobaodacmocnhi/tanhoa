@@ -104,6 +104,7 @@ namespace ThuTien.GUI.TongHop
 
                         TT_CTChuyenNoKhoDoi ctcnkd = new TT_CTChuyenNoKhoDoi();
                         ctcnkd.MaCNKD = cnkd.MaCNKD;
+                        ctcnkd.MaHD = lstHDTemp[0].ID_HOADON;
                         ctcnkd.SoHoaDon = lstHDTemp[0].SOHOADON;
                         ctcnkd.CreateBy = CNguoiDung.MaND;
                         ctcnkd.CreateDate = DateTime.Now;
@@ -116,6 +117,7 @@ namespace ThuTien.GUI.TongHop
                             {
                                 TT_CTChuyenNoKhoDoi ctcnkd2 = new TT_CTChuyenNoKhoDoi();
                                 ctcnkd2.MaCNKD = cnkd.MaCNKD;
+                                ctcnkd2.MaHD = lstHDTemp[j].ID_HOADON;
                                 ctcnkd2.SoHoaDon = lstHDTemp[j].SOHOADON;
                                 ctcnkd2.CreateBy = CNguoiDung.MaND;
                                 ctcnkd2.CreateDate = DateTime.Now;

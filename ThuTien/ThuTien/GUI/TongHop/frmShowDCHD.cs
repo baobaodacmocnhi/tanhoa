@@ -37,11 +37,11 @@ namespace ThuTien.GUI.TongHop
         {
             Location = new Point(100, 100);
             //_hoadon = _cHoaDon.Get(_SoHoaDon);
-            _dchd = _cDCHD.Get(_SoHoaDon);
+            _dchd = _cDCHD.Get(_MaHD);
             ///đã có điều chỉnh
             if (_dchd != null)
             {
-                HOADON hd = _cHoaDon.Get(_dchd.SoHoaDon);
+                HOADON hd = _cHoaDon.Get(_dchd.FK_HOADON);
 
                 txtSoHoaDon.Text = hd.SOHOADON;
                 txtSoPhatHanh.Text = hd.SOPHATHANH.ToString();
@@ -176,7 +176,7 @@ namespace ThuTien.GUI.TongHop
                     if (_dchd != null)
                     {
                         ///sửa số hóa đơn
-                        HOADON hd = _cHoaDon.Get(_dchd.SoHoaDon);
+                        HOADON hd = _cHoaDon.Get(_dchd.FK_HOADON);
                         if (!string.IsNullOrEmpty(txtSoHoaDonMoi.Text.Trim()) && txtSoHoaDon.Text.Trim() != txtSoHoaDonMoi.Text.Trim())
                         {
                             hd.SoHoaDonCu = txtSoHoaDon.Text.Trim();
@@ -284,6 +284,7 @@ namespace ThuTien.GUI.TongHop
                         dchd.FK_HOADON = _hoadon.ID_HOADON;
                         dchd.SoHoaDon = _hoadon.SOHOADON;
                         dchd.GiaBieu = _hoadon.GB;
+                        if(_hoadon.DM!=null)
                         dchd.DinhMuc = (int)_hoadon.DM;
                         dchd.TIEUTHU_BD = (int)_hoadon.TIEUTHU;
                         dchd.GIABAN_BD = _hoadon.GIABAN;

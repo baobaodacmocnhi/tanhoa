@@ -215,9 +215,12 @@ namespace ThuTien.DAL.ChuyenKhoan
             }
         }
 
-        public bool CheckExistSoHoaDon(string SoHoaDon)
+        public bool CheckExist2(string SoHoaDon)
         {
-            return _db.TT_DuLieuKhachHang_SoHoaDons.Any(item => item.SoHoaDon == SoHoaDon);
+            if (_db.HOADONs.Any(itemHD => itemHD.SOHOADON == SoHoaDon))
+                return _db.TT_DuLieuKhachHang_SoHoaDons.Any(item => item.MaHD == _db.HOADONs.SingleOrDefault(itemHD => itemHD.SOHOADON == SoHoaDon).ID_HOADON);
+            else
+                return false;
         }
 
         public TT_DuLieuKhachHang_SoHoaDon GetBySoHoaDon2(string SoHoaDon)
@@ -228,7 +231,7 @@ namespace ThuTien.DAL.ChuyenKhoan
         public DataTable GetDS2(DateTime CreateDate)
         {
             var query = from itemDLKH in _db.TT_DuLieuKhachHang_SoHoaDons
-                        join itemHD in _db.HOADONs on itemDLKH.SoHoaDon equals itemHD.SOHOADON
+                        join itemHD in _db.HOADONs on itemDLKH.MaHD equals itemHD.ID_HOADON
                         where itemDLKH.CreateDate.Value.Date == CreateDate.Date
                         select new
                         {
@@ -249,7 +252,7 @@ namespace ThuTien.DAL.ChuyenKhoan
         public DataTable GetDS2(DateTime CreateDate1, DateTime CreateDate2)
         {
             var query = from itemDLKH in _db.TT_DuLieuKhachHang_SoHoaDons
-                        join itemHD in _db.HOADONs on itemDLKH.SoHoaDon equals itemHD.SOHOADON
+                        join itemHD in _db.HOADONs on itemDLKH.MaHD equals itemHD.ID_HOADON
                         join itemDLKHDB in _db.TT_DuLieuKhachHang_DanhBos on itemHD.DANHBA equals itemDLKHDB.DanhBo into tableDLHKDB
                         from itemtableDLHKDB in tableDLHKDB.DefaultIfEmpty()
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
@@ -282,7 +285,7 @@ namespace ThuTien.DAL.ChuyenKhoan
         public DataTable GetTongQuet(int MaTo, DateTime CreateDate1, DateTime CreateDate2)
         {
             var query = from itemDLKH in _db.TT_DuLieuKhachHang_SoHoaDons
-                        join itemHD in _db.HOADONs on itemDLKH.SoHoaDon equals itemHD.SOHOADON
+                        join itemHD in _db.HOADONs on itemDLKH.MaHD equals itemHD.ID_HOADON
                         where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                 && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                         && itemDLKH.CreateDate.Value.Date >= CreateDate1.Date && itemDLKH.CreateDate.Value.Date <= CreateDate2.Date
@@ -299,7 +302,7 @@ namespace ThuTien.DAL.ChuyenKhoan
         public DataTable GetTongQuetDangNgan(int MaTo, DateTime CreateDate1, DateTime CreateDate2)
         {
             var query = from itemDLKH in _db.TT_DuLieuKhachHang_SoHoaDons
-                        join itemHD in _db.HOADONs on itemDLKH.SoHoaDon equals itemHD.SOHOADON
+                        join itemHD in _db.HOADONs on itemDLKH.MaHD equals itemHD.ID_HOADON
                         where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                 && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                         && itemDLKH.CreateDate.Value.Date >= CreateDate1.Date && itemDLKH.CreateDate.Value.Date <= CreateDate2.Date && itemHD.NGAYGIAITRACH!=null
@@ -316,7 +319,7 @@ namespace ThuTien.DAL.ChuyenKhoan
         public DataTable GetTongQuetTon(int MaTo, DateTime CreateDate1, DateTime CreateDate2)
         {
             var query = from itemDLKH in _db.TT_DuLieuKhachHang_SoHoaDons
-                        join itemHD in _db.HOADONs on itemDLKH.SoHoaDon equals itemHD.SOHOADON
+                        join itemHD in _db.HOADONs on itemDLKH.MaHD equals itemHD.ID_HOADON
                         where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                 && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                         && itemDLKH.CreateDate.Value.Date >= CreateDate1.Date && itemDLKH.CreateDate.Value.Date <= CreateDate2.Date && itemHD.NGAYGIAITRACH == null

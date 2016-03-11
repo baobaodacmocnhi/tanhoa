@@ -200,7 +200,7 @@ namespace ThuTien.DAL.DongNuoc
 
             var queryCTDN = from itemCTDN in _db.TT_CTDongNuocs
                             join itemDN in _db.TT_DongNuocs on itemCTDN.MaDN equals itemDN.MaDN
-                            join itemHD in _db.HOADONs on itemCTDN.SoHoaDon equals itemHD.SOHOADON //into tableHD
+                            join itemHD in _db.HOADONs on itemCTDN.MaHD equals itemHD.ID_HOADON //into tableHD
                             //from itemtableHD in tableHD.DefaultIfEmpty()
                             where itemDN.Huy == false && itemDN.CreateBy == MaNV && itemDN.CreateDate.Value.Date >= TuNgay.Date && itemDN.CreateDate.Value.Date <= DenNgay.Date
                             select new
@@ -230,7 +230,7 @@ namespace ThuTien.DAL.DongNuoc
         {
             var query = from itemCT in _db.TT_CTDongNuocs
                         join itemDN in _db.TT_DongNuocs on itemCT.MaDN equals itemDN.MaDN
-                        join itemHD in _db.HOADONs on itemCT.SoHoaDon equals itemHD.SOHOADON
+                        join itemHD in _db.HOADONs on itemCT.MaHD equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemDN.MaNV_DongNuoc equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemCT.TT_DongNuoc.MaNV_DongNuoc != null && itemtableND.MaTo == MaTo
@@ -261,7 +261,7 @@ namespace ThuTien.DAL.DongNuoc
         {
             var query = from itemKQ in _db.TT_KQDongNuocs
                         join itemCT in _db.TT_CTDongNuocs on itemKQ.MaDN equals itemCT.MaDN
-                        join itemHD in _db.HOADONs on itemCT.SoHoaDon equals itemHD.SOHOADON
+                        join itemHD in _db.HOADONs on itemCT.MaHD equals itemHD.ID_HOADON
                         where itemKQ.NgayDN.Value.Date >= TuNgay.Date && itemKQ.NgayDN.Value.Date <= DenNgay.Date
                                 && Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                 && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
@@ -308,7 +308,7 @@ namespace ThuTien.DAL.DongNuoc
         {
             var query = from itemKQ in _db.TT_KQDongNuocs
                         join itemCT in _db.TT_CTDongNuocs on itemKQ.MaDN equals itemCT.MaDN
-                        join itemHD in _db.HOADONs on itemCT.SoHoaDon equals itemHD.SOHOADON
+                        join itemHD in _db.HOADONs on itemCT.MaHD equals itemHD.ID_HOADON
                         where itemKQ.NgayMN.Value.Date >= TuNgay.Date && itemKQ.NgayMN.Value.Date <= DenNgay.Date
                                 && Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                 && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
@@ -325,7 +325,7 @@ namespace ThuTien.DAL.DongNuoc
         {
             var query = from itemKQ in _db.TT_KQDongNuocs
                         join itemCT in _db.TT_CTDongNuocs on itemKQ.MaDN equals itemCT.MaDN
-                        join itemHD in _db.HOADONs on itemCT.SoHoaDon equals itemHD.SOHOADON
+                        join itemHD in _db.HOADONs on itemCT.MaHD equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemKQ.TT_DongNuoc.MaNV_DongNuoc equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemHD.NGAYGIAITRACH != null && itemKQ.NgayDN != null && itemKQ.NgayMN == null && itemHD.ChuyenNoKhoDoi == false
@@ -350,7 +350,7 @@ namespace ThuTien.DAL.DongNuoc
         {
             var query = from itemKQ in _db.TT_KQDongNuocs
                         join itemCT in _db.TT_CTDongNuocs on itemKQ.MaDN equals itemCT.MaDN
-                        join itemHD in _db.HOADONs on itemCT.SoHoaDon equals itemHD.SOHOADON
+                        join itemHD in _db.HOADONs on itemCT.MaHD equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemKQ.TT_DongNuoc.MaNV_DongNuoc equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemHD.NGAYGIAITRACH != null && itemKQ.NgayDN != null && itemKQ.NgayMN == null && itemHD.ChuyenNoKhoDoi == false
@@ -377,7 +377,7 @@ namespace ThuTien.DAL.DongNuoc
         {
             var query = from itemKQ in _db.TT_KQDongNuocs
                         join itemCT in _db.TT_CTDongNuocs on itemKQ.MaDN equals itemCT.MaDN
-                        join itemHD in _db.HOADONs on itemCT.SoHoaDon equals itemHD.SOHOADON
+                        join itemHD in _db.HOADONs on itemCT.MaHD equals itemHD.ID_HOADON
                         where itemKQ.DongPhi == DongPhi && itemKQ.NgayDN != null && itemKQ.NgayMN == null && itemHD.ChuyenNoKhoDoi == false && itemKQ.DanhBo.Contains(DanhBo)
                         select new
                         {
@@ -407,42 +407,42 @@ namespace ThuTien.DAL.DongNuoc
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(DISTINCT DanhBo) as DCTonCu,COUNT(hd.SOHOADON) as HDTonCu,SUM(hd.TONGCONG) as TCTonCu"
                         + " from TT_DongNuoc dn,TT_CTDongNuoc ctdn,HOADON hd,TT_NguoiDung nd"
-                        + " where dn.MaDN=ctdn.MaDN and ctdn.SoHoaDon=hd.SOHOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0"
+                        + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0"
                         + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                         + " and CAST(dn.CreateDate as date)<@FromDate and (hd.NGAYGIAITRACH is null or (CAST(hd.NGAYGIAITRACH as date)>@FromDate))"
                         + " group by nd.MaND,nd.HoTen,nd.STT) toncu on nd.MaND=toncu.MaND"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(DISTINCT DanhBo) as DCNhan,COUNT(hd.SOHOADON) as HDNhan,SUM(hd.TONGCONG) as TCNhan"
                         + " from TT_DongNuoc dn,TT_CTDongNuoc ctdn,HOADON hd,TT_NguoiDung nd"
-                        + " where dn.MaDN=ctdn.MaDN and ctdn.SoHoaDon=hd.SOHOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0"
+                        + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0"
                         + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                         + " and CAST(dn.CreateDate as date)>=@FromDate and CAST(dn.CreateDate as date)<=@ToDate"
                         + " group by nd.MaND,nd.HoTen,nd.STT) nhan on nd.MaND=nhan.MaND"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(DISTINCT DanhBo) as DCDangNgan,COUNT(hd.SOHOADON) as HDDangNgan,SUM(hd.TONGCONG) as TCDangNgan"
                         + " from TT_DongNuoc dn,TT_CTDongNuoc ctdn,HOADON hd,TT_NguoiDung nd"
-                        + " where dn.MaDN=ctdn.MaDN and ctdn.SoHoaDon=hd.SOHOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0"
+                        + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0"
                         + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                         + " and CAST(NGAYGIAITRACH as date)>=@FromDate and CAST(NGAYGIAITRACH as date)<=@ToDate"
                         + " group by nd.MaND,nd.HoTen,nd.STT) dangngan on nd.MaND=dangngan.MaND"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(DISTINCT DanhBo) as DCHuy,COUNT(hd.SOHOADON) as HDHuy,SUM(hd.TONGCONG) as TCHuy"
                         + " from TT_DongNuoc dn,TT_CTDongNuoc ctdn,HOADON hd,TT_LenhHuy lenhhuy,TT_NguoiDung nd"
-                        + " where dn.MaDN=ctdn.MaDN and ctdn.SoHoaDon=hd.SOHOADON and lenhhuy.SoHoaDon=hd.SOHOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0"
+                        + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and lenhhuy.MaHD=hd.ID_HOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0"
                         + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                         + " and CAST(lenhhuy.CreateDate as date)>=@FromDate and CAST(lenhhuy.CreateDate as date)<=@ToDate"
                         + " group by nd.MaND,nd.HoTen,nd.STT) lenhhuy on nd.MaND=lenhhuy.MaND"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(DISTINCT DanhBo) as DCTongTon,COUNT(hd.SOHOADON) as HDTongTon,SUM(hd.TONGCONG) as TCTongTon"
                         + " from TT_DongNuoc dn,TT_CTDongNuoc ctdn,HOADON hd,TT_NguoiDung nd"
-                        + " where dn.MaDN=ctdn.MaDN and ctdn.SoHoaDon=hd.SOHOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0"
+                        + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0"
                         + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                         + " and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@ToDate) and ctdn.SoHoaDon not in (select SoHoaDon from TT_LenhHuy)"
                         + " group by nd.MaND,nd.HoTen,nd.STT) tongton on nd.MaND=tongton.MaND"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(DISTINCT kqdn.DanhBo) as DCKhoaNuoc"
                         + " from TT_DongNuoc dn,TT_CTDongNuoc ctdn,TT_KQDongNuoc kqdn,HOADON hd,TT_NguoiDung nd"
-                        + " where dn.MaDN=ctdn.MaDN and dn.MaDN=kqdn.MaDN and ctdn.SoHoaDon=hd.SOHOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0"
+                        + " where dn.MaDN=ctdn.MaDN and dn.MaDN=kqdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0"
                         + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                         + " and CAST(kqdn.NgayDN as date)>=@FromDate and CAST(kqdn.NgayDN as date)<=@ToDate"
                         + " group by nd.MaND,nd.HoTen,nd.STT) khoanuoc on nd.MaND=khoanuoc.MaND"
@@ -514,12 +514,10 @@ namespace ThuTien.DAL.DongNuoc
         /// <returns></returns>
         public bool CheckExist_CTDongNuoc(string SoHoaDon)
         {
-            return _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == SoHoaDon && item.TT_DongNuoc.Huy == false);
-            //string sql = "select ctdn.* from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.MaDN=ctdn.MaDN and SoHoaDon='" + SoHoaDon + "' and dn.Huy=0";
-            //if (ExecuteQuery_SqlDataAdapter_DataTable(sql).Rows.Count > 0)
-            //    return true;
-            //else
-            //    return false;
+            if (_db.HOADONs.Any(itemHD => itemHD.SOHOADON == SoHoaDon))
+                return _db.TT_CTDongNuocs.Any(item => item.MaHD == _db.HOADONs.SingleOrDefault(itemHD => itemHD.SOHOADON == SoHoaDon).ID_HOADON && item.TT_DongNuoc.Huy == false);
+            else
+                return false;
         }
 
         /// <summary>
@@ -536,7 +534,7 @@ namespace ThuTien.DAL.DongNuoc
             var query = from itemDN in _db.TT_DongNuocs
                         join itemND in _db.TT_NguoiDungs on itemDN.MaNV_DongNuoc equals itemND.MaND
                         join itemCTDN in _db.TT_CTDongNuocs on itemDN.MaDN equals itemCTDN.MaDN
-                        where itemCTDN.SoHoaDon == SoHoaDon && itemDN.Huy == false
+                        where itemCTDN.MaHD == _db.HOADONs.SingleOrDefault(itemHD => itemHD.SOHOADON == SoHoaDon).ID_HOADON && itemDN.Huy == false
                         select new
                         {
                             itemND.HoTen,
@@ -572,7 +570,7 @@ namespace ThuTien.DAL.DongNuoc
             var query = from itemDN in _db.TT_DongNuocs
                         join itemCTDN in _db.TT_CTDongNuocs on itemDN.MaDN equals itemCTDN.MaDN
                         join itemKQDN in _db.TT_KQDongNuocs on itemDN.MaDN equals itemKQDN.MaDN
-                        where itemCTDN.SoHoaDon == SoHoaDon && itemKQDN.NgayDN != null && itemDN.Huy == false
+                        where itemCTDN.MaHD == _db.HOADONs.SingleOrDefault(itemHD => itemHD.SOHOADON == SoHoaDon).ID_HOADON && itemKQDN.NgayDN != null && itemDN.Huy == false
                         select new
                         {
                             NgayDN = itemKQDN.NgayDN
@@ -620,8 +618,8 @@ namespace ThuTien.DAL.DongNuoc
 
         public string GetNgayDongNuoc(string SoHoaDon)
         {
-            if (_db.TT_KQDongNuocs.Any(item => item.TT_DongNuoc.TT_CTDongNuocs.Any(itemCTDN => itemCTDN.SoHoaDon == SoHoaDon) == true && item.NgayDN != null) == true)
-                return _db.TT_KQDongNuocs.SingleOrDefault(item => item.TT_DongNuoc.TT_CTDongNuocs.Any(itemCTDN => itemCTDN.SoHoaDon == SoHoaDon) == true && item.NgayDN != null).NgayDN.Value.ToString("dd/MM/yyyy");
+            if (_db.TT_KQDongNuocs.Any(item => item.TT_DongNuoc.TT_CTDongNuocs.Any(itemCTDN => itemCTDN.MaHD == _db.HOADONs.SingleOrDefault(itemHD => itemHD.SOHOADON == SoHoaDon).ID_HOADON) == true && item.NgayDN != null) == true)
+                return _db.TT_KQDongNuocs.SingleOrDefault(item => item.TT_DongNuoc.TT_CTDongNuocs.Any(itemCTDN => itemCTDN.MaHD == _db.HOADONs.SingleOrDefault(itemHD => itemHD.SOHOADON == SoHoaDon).ID_HOADON) == true && item.NgayDN != null).NgayDN.Value.ToString("dd/MM/yyyy");
             return "";
         }
 

@@ -16,6 +16,7 @@ using CrystalDecisions.CrystalReports.Engine;
 using ThuTien.GUI.BaoCao;
 using ThuTien.BaoCao.TimKiem;
 using ThuTien.BaoCao;
+using ThuTien.DAL.QuanTri;
 
 namespace ThuTien.GUI.TimKiem
 {
@@ -262,6 +263,19 @@ namespace ThuTien.GUI.TimKiem
                     item.Cells["DangNgan"].Value = "CNKĐ";
                 }
             }
+        }
+
+        private void dgvHoaDon_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (CNguoiDung.MaND == 0)
+                if (dgvHoaDon.RowCount > 0 && e.Button == MouseButtons.Left)
+                {
+                    frmDoiSoHoaDon frm = new frmDoiSoHoaDon(int.Parse(dgvHoaDon.CurrentRow.Cells["MaHD"].Value.ToString()));
+                    if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        btnTimKiem.PerformClick();
+                    }
+                }
         }
 
     }

@@ -37,7 +37,7 @@ namespace ThuTien.GUI.Quay
 
         public void LoadDanhSach()
         {
-            dgvTraGop.DataSource = _cTraGop.GetDSBySoHoaDon(dgvHoaDon.CurrentRow.Cells["SoHoaDon"].Value.ToString());
+            dgvTraGop.DataSource = _cTraGop.GetDS(int.Parse(dgvHoaDon.CurrentRow.Cells["MaHD"].Value.ToString()));
         }
 
         private void txtSoTien_KeyPress(object sender, KeyPressEventArgs e)
@@ -79,7 +79,7 @@ namespace ThuTien.GUI.Quay
             {
                 TT_TraGop tragop = new TT_TraGop();
 
-                //tragop.MaHD = int.Parse(dgvHoaDon.CurrentRow.Cells["MaHD"].Value.ToString());
+                tragop.MaHD = int.Parse(dgvHoaDon.CurrentRow.Cells["MaHD"].Value.ToString());
                 tragop.SoHoaDon = dgvHoaDon.CurrentRow.Cells["SoHoaDon"].Value.ToString();
                 //string[] date = dgvHoaDon.CurrentRow.Cells["NgayTra"].Value.ToString().Split('/');
                 //tragop.NgayTra = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));

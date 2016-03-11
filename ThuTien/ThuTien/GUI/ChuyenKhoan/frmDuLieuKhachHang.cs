@@ -168,17 +168,18 @@ namespace ThuTien.GUI.ChuyenKhoan
                 {
                     //_cDLKH.BeginTransaction();
                     foreach (ListViewItem item in lstHD.Items)
-                        if(!_cDLKH.CheckExistSoHoaDon(item.Text))
-                    {
-                        TT_DuLieuKhachHang_SoHoaDon dlkh = new TT_DuLieuKhachHang_SoHoaDon();
-                        dlkh.SoHoaDon = item.Text;
-                        if (!_cDLKH.Them2(dlkh))
+                        if (!_cDLKH.CheckExist2(item.Text))
                         {
-                            //_cDLKH.Rollback();
-                            MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
+                            TT_DuLieuKhachHang_SoHoaDon dlkh = new TT_DuLieuKhachHang_SoHoaDon();
+                            dlkh.MaHD = _cHoaDon.Get(item.Text).ID_HOADON;
+                            dlkh.SoHoaDon = item.Text;
+                            if (!_cDLKH.Them2(dlkh))
+                            {
+                                //_cDLKH.Rollback();
+                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         }
-                    }
                     //_cDLKH.CommitTransaction();
                     lstHD.Items.Clear();
                     btnXem2.PerformClick();

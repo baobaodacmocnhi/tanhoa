@@ -76,15 +76,18 @@ namespace ThuTien.DAL.Quay
 
         public bool CheckExist(string SoHoaDon)
         {
-            return _db.TT_LenhHuys.Any(item => item.SoHoaDon == SoHoaDon);
+            if (_db.HOADONs.Any(itemHD => itemHD.SOHOADON == SoHoaDon))
+                return _db.TT_LenhHuys.Any(item => item.MaHD == _db.HOADONs.SingleOrDefault(itemHD => itemHD.SOHOADON == SoHoaDon).ID_HOADON);
+            else
+                return false;
         }
 
-        public bool CheckExist(string SoHoaDon,int Nam,int Ky)
-        {
-            return _db.TT_LenhHuys.Any(item => item.SoHoaDon == SoHoaDon && item.CreateDate.Value.Year == Nam && item.CreateDate.Value.Month == Ky);
-        }
+        //public bool CheckExist(string SoHoaDon,int Nam,int Ky)
+        //{
+        //    return _db.TT_LenhHuys.Any(item => item.SoHoaDon == SoHoaDon && item.CreateDate.Value.Year == Nam && item.CreateDate.Value.Month == Ky);
+        //}
 
-        public TT_LenhHuy GetBySoHoaDon(string SoHoaDon)
+        public TT_LenhHuy Get(string SoHoaDon)
         {
             return _db.TT_LenhHuys.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
         }
@@ -92,7 +95,7 @@ namespace ThuTien.DAL.Quay
         public DataTable GetDS()
         {
             var query = from itemLH in _db.TT_LenhHuys
-                        join itemHD in _db.HOADONs on itemLH.SoHoaDon equals itemHD.SOHOADON
+                        join itemHD in _db.HOADONs on itemLH.MaHD equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         orderby itemHD.MALOTRINH ascending
@@ -119,7 +122,7 @@ namespace ThuTien.DAL.Quay
         public DataTable GetDS(int MaTo)
         {
             var query = from itemLH in _db.TT_LenhHuys
-                        join itemHD in _db.HOADONs on itemLH.SoHoaDon equals itemHD.SOHOADON
+                        join itemHD in _db.HOADONs on itemLH.MaHD equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
@@ -148,7 +151,7 @@ namespace ThuTien.DAL.Quay
         public DataTable GetDS(DateTime CreateDate)
         {
             var query = from itemLH in _db.TT_LenhHuys
-                        join itemHD in _db.HOADONs on itemLH.SoHoaDon equals itemHD.SOHOADON
+                        join itemHD in _db.HOADONs on itemLH.MaHD equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemLH.CreateDate.Value.Date == CreateDate.Date
@@ -175,7 +178,7 @@ namespace ThuTien.DAL.Quay
         public DataTable GetDS(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from itemLH in _db.TT_LenhHuys
-                        join itemHD in _db.HOADONs on itemLH.SoHoaDon equals itemHD.SOHOADON
+                        join itemHD in _db.HOADONs on itemLH.MaHD equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemLH.CreateDate.Value.Date >= FromCreateDate.Date && itemLH.CreateDate.Value.Date <= ToCreateDate.Date
@@ -202,7 +205,7 @@ namespace ThuTien.DAL.Quay
         public DataTable GetDSTon()
         {
             var query = from itemLH in _db.TT_LenhHuys
-                        join itemHD in _db.HOADONs on itemLH.SoHoaDon equals itemHD.SOHOADON
+                        join itemHD in _db.HOADONs on itemLH.MaHD equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemHD.NGAYGIAITRACH==null
@@ -230,7 +233,7 @@ namespace ThuTien.DAL.Quay
         public DataTable GetDSTon(int MaTo)
         {
             var query = from itemLH in _db.TT_LenhHuys
-                        join itemHD in _db.HOADONs on itemLH.SoHoaDon equals itemHD.SOHOADON
+                        join itemHD in _db.HOADONs on itemLH.MaHD equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
@@ -260,7 +263,7 @@ namespace ThuTien.DAL.Quay
         public DataTable GetDSTon_ExceptDongNuoc(int MaTo, DateTime NgayKiemTra)
         {
             var query = from itemLH in _db.TT_LenhHuys
-                        join itemHD in _db.HOADONs on itemLH.SoHoaDon equals itemHD.SOHOADON
+                        join itemHD in _db.HOADONs on itemLH.MaHD equals itemHD.ID_HOADON
                         where !(from itemCT in _db.TT_CTDongNuocs select itemCT.SoHoaDon).Contains(itemLH.SoHoaDon)
                         && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayKiemTra.Date)
                         && Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
@@ -285,7 +288,7 @@ namespace ThuTien.DAL.Quay
         public DataTable GetDSDangNgan()
         {
             var query = from itemLH in _db.TT_LenhHuys
-                        join itemHD in _db.HOADONs on itemLH.SoHoaDon equals itemHD.SOHOADON
+                        join itemHD in _db.HOADONs on itemLH.MaHD equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemHD.NGAYGIAITRACH != null
@@ -313,7 +316,7 @@ namespace ThuTien.DAL.Quay
         public DataTable GetDSDangNgan(int MaTo)
         {
             var query = from itemLH in _db.TT_LenhHuys
-                        join itemHD in _db.HOADONs on itemLH.SoHoaDon equals itemHD.SOHOADON
+                        join itemHD in _db.HOADONs on itemLH.MaHD equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
@@ -343,7 +346,7 @@ namespace ThuTien.DAL.Quay
         public DataTable GetTinhTrangMoiNhat(string DanhBo)
         {
             var query = from itemLH in _db.TT_LenhHuys
-                        join itemHD in _db.HOADONs on itemLH.SoHoaDon equals itemHD.SOHOADON
+                        join itemHD in _db.HOADONs on itemLH.MaHD equals itemHD.ID_HOADON
                         where itemHD.DANHBA==DanhBo
                         orderby itemHD.ID_HOADON descending
                         select new
@@ -354,7 +357,7 @@ namespace ThuTien.DAL.Quay
             return LINQToDataTable(query.Take(1));
         }
         
-        public string GetTinhTrangBySoHoaDon(string SoHoaDon)
+        public string GetTinhTrang(string SoHoaDon)
         {
             return _db.TT_LenhHuys.SingleOrDefault(item => item.SoHoaDon == SoHoaDon).TinhTrang;
         }

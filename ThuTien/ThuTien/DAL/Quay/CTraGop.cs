@@ -85,9 +85,9 @@ namespace ThuTien.DAL.Quay
             }
         }
 
-        public List<TT_TraGop> GetDSBySoHoaDon(string SoHoaDon)
+        public List<TT_TraGop> GetDS(int MaHD)
         {
-            return _db.TT_TraGops.Where(item => item.SoHoaDon == SoHoaDon).ToList();
+            return _db.TT_TraGops.Where(item => item.MaHD == MaHD).ToList();
         }
 
         public System.Data.DataTable GetDS()

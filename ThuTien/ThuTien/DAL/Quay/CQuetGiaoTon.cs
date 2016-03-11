@@ -6,21 +6,21 @@ using ThuTien.LinQ;
 using ThuTien.DAL.QuanTri;
 using System.Data;
 
-namespace ThuTien.DAL.HanhThu
+namespace ThuTien.DAL.Quay
 {
-    class CQuetTam : CDAL
+    class CQuetGiaoTon : CDAL
     {
-        public bool Them(TT_QuetTam quettam)
+        public bool Them(TT_QuetGiaoTon entity)
         {
             try
             {
-                if (_db.TT_QuetTams.Count() > 0)
-                    quettam.ID = _db.TT_QuetTams.Max(item => item.ID) + 1;
+                if (_db.TT_QuetGiaoTons.Count() > 0)
+                    entity.ID = _db.TT_QuetTams.Max(item => item.ID) + 1;
                 else
-                    quettam.ID = 1;
-                quettam.CreateDate = DateTime.Now;
-                quettam.CreateBy = CNguoiDung.MaND;
-                _db.TT_QuetTams.InsertOnSubmit(quettam);
+                    entity.ID = 1;
+                entity.CreateDate = DateTime.Now;
+                entity.CreateBy = CNguoiDung.MaND;
+                _db.TT_QuetGiaoTons.InsertOnSubmit(entity);
                 _db.SubmitChanges();
                 return true;
             }
@@ -32,11 +32,11 @@ namespace ThuTien.DAL.HanhThu
             }
         }
 
-        public bool Xoa(TT_QuetTam quettam)
+        public bool Xoa(TT_QuetGiaoTon entity)
         {
             try
             {
-                _db.TT_QuetTams.DeleteOnSubmit(quettam);
+                _db.TT_QuetGiaoTons.DeleteOnSubmit(entity);
                 _db.SubmitChanges();
                 return true;
             }
@@ -47,35 +47,34 @@ namespace ThuTien.DAL.HanhThu
             }
         }
 
-        public bool CheckExist(string SoHoaDon, int CreatBy, DateTime CreateDate)
+        public bool CheckExist(string SoHoaDon, DateTime CreateDate)
         {
-            return _db.TT_QuetTams.Any(item => item.SoHoaDon == SoHoaDon && item.CreateBy == CreatBy && item.CreateDate.Value.Date == CreateDate.Date);
+            return _db.TT_QuetGiaoTons.Any(item => item.SoHoaDon == SoHoaDon && item.CreateDate.Value.Date == CreateDate.Date);
         }
 
-        public TT_QuetTam Get(int ID)
+        public TT_QuetGiaoTon Get(int ID)
         {
-            return _db.TT_QuetTams.SingleOrDefault(item => item.ID == ID);
+            return _db.TT_QuetGiaoTons.SingleOrDefault(item => item.ID == ID);
         }
 
-        public TT_QuetTam Get(string SoHoaDon)
+        public TT_QuetGiaoTon Get(string SoHoaDon)
         {
-            return _db.TT_QuetTams.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
+            return _db.TT_QuetGiaoTons.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
         }
 
-        public DataTable GetDSByMaNVCreatedDate(string Loai, int MaNV, DateTime CreatedDate)
+        public DataTable GetDS(string Loai, DateTime CreatedDate)
         {
             if (Loai == "TG")
             {
-                var query = from itemQT in _db.TT_QuetTams
+                var query = from itemQT in _db.TT_QuetGiaoTons
                             join itemHD in _db.HOADONs on itemQT.MaHD equals itemHD.ID_HOADON
                             join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
-                            where itemQT.CreateDate.Value.Date == CreatedDate.Date && itemQT.CreateBy == MaNV && itemHD.GB >= 11 && itemHD.GB <= 20
+                            where itemQT.CreateDate.Value.Date == CreatedDate.Date && itemHD.GB >= 11 && itemHD.GB <= 20
                             orderby itemHD.MALOTRINH ascending
                             select new
                             {
                                 itemQT.ID,
-                                itemQT.CreateBy,
                                 itemQT.SoHoaDon,
                                 DanhBo = itemHD.DANHBA,
                                 HoTen = itemHD.TENKH,
@@ -93,16 +92,15 @@ namespace ThuTien.DAL.HanhThu
             else
                 if (Loai == "CQ")
                 {
-                    var query = from itemQT in _db.TT_QuetTams
+                    var query = from itemQT in _db.TT_QuetGiaoTons
                                 join itemHD in _db.HOADONs on itemQT.SoHoaDon equals itemHD.SOHOADON
                                 join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                                 from itemtableND in tableND.DefaultIfEmpty()
-                                where itemQT.CreateDate.Value.Date == CreatedDate.Date && itemQT.CreateBy == MaNV && itemHD.GB > 20
+                                where itemQT.CreateDate.Value.Date == CreatedDate.Date && itemHD.GB > 20
                                 orderby itemHD.MALOTRINH ascending
                                 select new
                                 {
                                     itemQT.ID,
-                                    itemQT.CreateBy,
                                     itemQT.SoHoaDon,
                                     DanhBo = itemHD.DANHBA,
                                     HoTen = itemHD.TENKH,
@@ -120,21 +118,21 @@ namespace ThuTien.DAL.HanhThu
             return null;
         }
 
-        public DataTable GetDSByMaNVCreatedDate(string Loai, int MaNV)
+        public DataTable GetDSByMaTo(string Loai, int MaTo, DateTime CreatedDate)
         {
             if (Loai == "TG")
             {
-                var query = from itemQT in _db.TT_QuetTams
+                var query = from itemQT in _db.TT_QuetGiaoTons
                             join itemHD in _db.HOADONs on itemQT.MaHD equals itemHD.ID_HOADON
                             join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
-                            where itemQT.CreateBy == MaNV && itemHD.GB >= 11 && itemHD.GB <= 20
+                            where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                            && itemQT.CreateDate.Value.Date == CreatedDate.Date && itemHD.GB >= 11 && itemHD.GB <= 20
                             orderby itemHD.MALOTRINH ascending
                             select new
                             {
-                                In=true,
                                 itemQT.ID,
-                                itemQT.CreateBy,
                                 itemQT.SoHoaDon,
                                 DanhBo = itemHD.DANHBA,
                                 HoTen = itemHD.TENKH,
@@ -143,27 +141,26 @@ namespace ThuTien.DAL.HanhThu
                                 MLT = itemHD.MALOTRINH,
                                 itemHD.SOPHATHANH,
                                 itemHD.TONGCONG,
-                                GiaBieu=itemHD.GB,
-                                itemHD.HOPDONG,
+                                GiaBieu = itemHD.GB,
                                 HanhThu = itemtableND.HoTen,
-                                To=itemtableND.TT_To.TenTo,
+                                To = itemtableND.TT_To.TenTo,
                             };
                 return LINQToDataTable(query);
             }
             else
                 if (Loai == "CQ")
                 {
-                    var query = from itemQT in _db.TT_QuetTams
+                    var query = from itemQT in _db.TT_QuetGiaoTons
                                 join itemHD in _db.HOADONs on itemQT.SoHoaDon equals itemHD.SOHOADON
                                 join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                                 from itemtableND in tableND.DefaultIfEmpty()
-                                where itemQT.CreateBy == MaNV && itemHD.GB > 20
+                                where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                && itemQT.CreateDate.Value.Date == CreatedDate.Date && itemHD.GB > 20
                                 orderby itemHD.MALOTRINH ascending
                                 select new
                                 {
-                                    In = true,
                                     itemQT.ID,
-                                    itemQT.CreateBy,
                                     itemQT.SoHoaDon,
                                     DanhBo = itemHD.DANHBA,
                                     HoTen = itemHD.TENKH,
@@ -173,7 +170,6 @@ namespace ThuTien.DAL.HanhThu
                                     itemHD.SOPHATHANH,
                                     itemHD.TONGCONG,
                                     GiaBieu = itemHD.GB,
-                                    itemHD.HOPDONG,
                                     HanhThu = itemtableND.HoTen,
                                     To = itemtableND.TT_To.TenTo,
                                 };
@@ -182,19 +178,60 @@ namespace ThuTien.DAL.HanhThu
             return null;
         }
 
-        public DataTable GetDSByMaNVCreatedDate(int MaNV, DateTime CreatedDate)
+        public DataTable GetDSByMaNV(string Loai, int MaNV_HanhThu,DateTime CreatedDate)
         {
-            var query = from itemQT in _db.TT_QuetTams
-                        join itemHD in _db.HOADONs on itemQT.MaHD equals itemHD.ID_HOADON
-                        where itemQT.CreateDate.Value.Date == CreatedDate.Date && itemQT.CreateBy == MaNV
-                        orderby itemHD.MALOTRINH ascending
-                        select new
-                        {
-                            DanhBo = itemHD.DANHBA,
-                            HoTen = itemHD.TENKH,
-                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
-                        };
-            return LINQToDataTable(query);
+            if (Loai == "TG")
+            {
+                var query = from itemQT in _db.TT_QuetGiaoTons
+                            join itemHD in _db.HOADONs on itemQT.MaHD equals itemHD.ID_HOADON
+                            join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemQT.CreateDate.Value.Date == CreatedDate.Date && itemHD.MaNV_HanhThu==MaNV_HanhThu && itemHD.GB >= 11 && itemHD.GB <= 20
+                            orderby itemHD.MALOTRINH ascending
+                            select new
+                            {
+                                itemQT.ID,
+                                itemQT.SoHoaDon,
+                                DanhBo = itemHD.DANHBA,
+                                HoTen = itemHD.TENKH,
+                                DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                                Ky = itemHD.KY + "/" + itemHD.NAM,
+                                MLT = itemHD.MALOTRINH,
+                                itemHD.SOPHATHANH,
+                                itemHD.TONGCONG,
+                                GiaBieu = itemHD.GB,
+                                HanhThu = itemtableND.HoTen,
+                                To = itemtableND.TT_To.TenTo,
+                            };
+                return LINQToDataTable(query);
+            }
+            else
+                if (Loai == "CQ")
+                {
+                    var query = from itemQT in _db.TT_QuetGiaoTons
+                                join itemHD in _db.HOADONs on itemQT.SoHoaDon equals itemHD.SOHOADON
+                                join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
+                                where itemQT.CreateDate.Value.Date == CreatedDate.Date && itemHD.MaNV_HanhThu == MaNV_HanhThu && itemHD.GB > 20
+                                orderby itemHD.MALOTRINH ascending
+                                select new
+                                {
+                                    itemQT.ID,
+                                    itemQT.SoHoaDon,
+                                    DanhBo = itemHD.DANHBA,
+                                    HoTen = itemHD.TENKH,
+                                    DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                                    Ky = itemHD.KY + "/" + itemHD.NAM,
+                                    MLT = itemHD.MALOTRINH,
+                                    itemHD.SOPHATHANH,
+                                    itemHD.TONGCONG,
+                                    GiaBieu = itemHD.GB,
+                                    HanhThu = itemtableND.HoTen,
+                                    To = itemtableND.TT_To.TenTo,
+                                };
+                    return LINQToDataTable(query);
+                }
+            return null;
         }
     }
 }

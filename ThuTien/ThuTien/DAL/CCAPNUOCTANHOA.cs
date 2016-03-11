@@ -190,15 +190,15 @@ namespace ThuTien.DAL
                 }).ToList());
         }
 
-        public string GetDienThoaiKH(string DanhBo)
-        {
-            return _dbCapNuocTanHoa.TB_DULIEUKHACHHANGs.SingleOrDefault(item => item.DANHBO == DanhBo).DIENTHOAI;
-        }
-
         public DataTable GetGhiChu(string DanhBo)
         {
             return LINQToDataTable(_dbCapNuocTanHoa.TB_GHICHUs.Where(item => item.DANHBO == DanhBo)
-                .OrderByDescending(item => item.CREATEDATE).Select(item=>new {item.CREATEDATE,item.NOIDUNG }).Take(5).ToList());
+                .OrderByDescending(item => item.CREATEDATE).Select(item => new { item.CREATEDATE, item.NOIDUNG }).Take(5).ToList());
+        }
+        
+        public string GetDienThoaiKH(string DanhBo)
+        {
+            return _dbCapNuocTanHoa.TB_DULIEUKHACHHANGs.SingleOrDefault(item => item.DANHBO == DanhBo).DIENTHOAI;
         }
 
         public string GetCoDHN(string DanhBo)
@@ -236,6 +236,11 @@ namespace ThuTien.DAL
             MaDMA = cmd.Parameters["@MADMA"].Value + "";
             Disconnect();
 
+        }
+
+        public bool CheckExist(string DanhBo)
+        {
+            return _dbCapNuocTanHoa.TB_DULIEUKHACHHANGs.Any(item => item.DANHBO == DanhBo);
         }
     }
 }

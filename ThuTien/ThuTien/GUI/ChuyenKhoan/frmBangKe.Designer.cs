@@ -75,6 +75,7 @@
             this.TenNH_Group3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoLuong_Group3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong_Group3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBangKe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBangKeGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBangKeGroup3)).BeginInit();
@@ -168,7 +169,7 @@
             // 
             this.dateNgayLap.CustomFormat = "dd/MM/yyyy";
             this.dateNgayLap.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateNgayLap.Location = new System.Drawing.Point(658, 12);
+            this.dateNgayLap.Location = new System.Drawing.Point(778, 12);
             this.dateNgayLap.Name = "dateNgayLap";
             this.dateNgayLap.Size = new System.Drawing.Size(100, 20);
             this.dateNgayLap.TabIndex = 78;
@@ -177,7 +178,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(596, 18);
+            this.label1.Location = new System.Drawing.Point(716, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 77;
@@ -229,11 +230,11 @@
             this.dgvBangKe.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvBangKe.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvBangKe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBangKe.Size = new System.Drawing.Size(904, 567);
             this.dgvBangKe.TabIndex = 62;
             this.dgvBangKe.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvBangKe_CellFormatting);
             this.dgvBangKe.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvBangKe_CellValidating);
+            this.dgvBangKe.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvBangKe_ColumnHeaderMouseClick);
             this.dgvBangKe.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvBangKe_RowPostPaint);
             // 
             // MaBK
@@ -462,11 +463,21 @@
             this.TongCong_Group3.HeaderText = "Tổng Cộng";
             this.TongCong_Group3.Name = "TongCong_Group3";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(558, 19);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(109, 13);
+            this.label2.TabIndex = 89;
+            this.label2.Text = "Danh Bộ Sai: màu đỏ";
+            // 
             // frmBangKe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1360, 645);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvBangKeGroup3);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.dgvBangKeGroup);
@@ -533,5 +544,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TenNH_Group3;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong_Group3;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_Group3;
+        private System.Windows.Forms.Label label2;
     }
 }

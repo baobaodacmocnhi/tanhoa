@@ -52,6 +52,12 @@ namespace ThuTien.GUI.TongHop
                 frmShowDCHD frm = new frmShowDCHD(int.Parse(dgvHoaDon.SelectedRows[0].Cells["MaHD"].Value.ToString()), dgvHoaDon.SelectedRows[0].Cells["SoHoaDon"].Value.ToString());
                 if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
+                    _cDCHD.Refresh();
+                    dgvHoaDon.DataSource = _cHoaDon.GetDSByDanhBo(txtDanhBo.Text.Trim());
+                }
+                else
+                {
+                    _cDCHD.Refresh();
                     dgvHoaDon.DataSource = _cHoaDon.GetDSByDanhBo(txtDanhBo.Text.Trim());
                 }
             }
@@ -63,7 +69,15 @@ namespace ThuTien.GUI.TongHop
             {
                 frmShowDCHD frm = new frmShowDCHD(int.Parse(dgvDCHD.SelectedRows[0].Cells["MaHD_DC"].Value.ToString()), dgvDCHD.SelectedRows[0].Cells["SoHoaDon_DC"].Value.ToString());
                 if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    _cDCHD.Refresh();
                     btnXem.PerformClick();
+                }
+                else
+                {
+                    _cDCHD.Refresh();
+                    btnXem.PerformClick();
+                }
             }
         }
 
