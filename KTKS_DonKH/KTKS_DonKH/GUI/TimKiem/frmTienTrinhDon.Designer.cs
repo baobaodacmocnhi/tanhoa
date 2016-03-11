@@ -222,6 +222,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.btnIn = new System.Windows.Forms.Button();
+            this.gridColumn150 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn151 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewKTXM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDCBD)).BeginInit();
@@ -2000,7 +2002,8 @@
             this.gridColumn137,
             this.gridColumn138,
             this.gridColumn139,
-            this.gridColumn140});
+            this.gridColumn140,
+            this.gridColumn150});
             this.gridViewYeuCauCHDB.GridControl = this.gridControl;
             this.gridViewYeuCauCHDB.Name = "gridViewYeuCauCHDB";
             this.gridViewYeuCauCHDB.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
@@ -2096,7 +2099,8 @@
             this.gridColumn144,
             this.gridColumn145,
             this.gridColumn146,
-            this.gridColumn147});
+            this.gridColumn147,
+            this.gridColumn151});
             this.gridViewYeuCauCHDB_TXL.GridControl = this.gridControl;
             this.gridViewYeuCauCHDB_TXL.Name = "gridViewYeuCauCHDB_TXL";
             this.gridViewYeuCauCHDB_TXL.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
@@ -2371,6 +2375,22 @@
             this.btnIn.UseVisualStyleBackColor = true;
             this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
+            // gridColumn150
+            // 
+            this.gridColumn150.Caption = "Hiệu Lực Kỳ";
+            this.gridColumn150.FieldName = "HieuLucKy";
+            this.gridColumn150.Name = "gridColumn150";
+            this.gridColumn150.Visible = true;
+            this.gridColumn150.VisibleIndex = 7;
+            // 
+            // gridColumn151
+            // 
+            this.gridColumn151.Caption = "Hiệu Lực Kỳ";
+            this.gridColumn151.FieldName = "HieuLucKy";
+            this.gridColumn151.Name = "gridColumn151";
+            this.gridColumn151.Visible = true;
+            this.gridColumn151.VisibleIndex = 7;
+            // 
             // frmTienTrinhDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -2595,5 +2615,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn147;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn148;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn149;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn150;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn151;
     }
 }

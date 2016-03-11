@@ -59,6 +59,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
             txtSoCongVan.Text = "";
             txtTongSoDanhBo.Text = "1";
             ///
+            txtDanhBo.Text = "";
             txtHopDong.Text = "";
             txtHoTen.Text = "";
             txtDiaChi.Text = "";

@@ -217,6 +217,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemYCCHDB.DiaChi,
                                       itemYCCHDB.LyDo,
                                       itemYCCHDB.GhiChuLyDo,
+                                      itemYCCHDB.HieuLucKy,
                                       MaDon = itemYCCHDB.MaDon,
                                   };
 
@@ -262,7 +263,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                     ds.Relations.Add("Chi Tiết Cắt Tạm/Hủy Danh Bộ", ds.Tables["Don"].Columns["MaDon"], ds.Tables["CHDB"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtYCCHDB.Rows.Count > 0)
-                    ds.Relations.Add("Chi Tiết Phiếu Cắt Hủy Danh Bộ", ds.Tables["Don"].Columns["MaDon"], ds.Tables["YCCHDB"].Columns["MaDon"]);
+                    ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["Don"].Columns["MaDon"], ds.Tables["YCCHDB"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["Don"].Columns["MaDon"], ds.Tables["TTTL"].Columns["MaDon"]);
@@ -484,6 +485,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                      itemYCCHDB.DiaChi,
                                      itemYCCHDB.LyDo,
                                      itemYCCHDB.GhiChuLyDo,
+                                     itemYCCHDB.HieuLucKy,
                                      MaDon = itemYCCHDB.MaDonTXL,
                                   };
 
@@ -529,7 +531,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                     ds.Relations.Add("Chi Tiết Cắt Tạm/Hủy Danh Bộ", ds.Tables["Don"].Columns["MaDon"], ds.Tables["CHDB"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtYCCHDB.Rows.Count > 0)
-                    ds.Relations.Add("Chi Tiết Phiếu Cắt Hủy Danh Bộ", ds.Tables["Don"].Columns["MaDon"], ds.Tables["YCCHDB"].Columns["MaDon"]);
+                    ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["Don"].Columns["MaDon"], ds.Tables["YCCHDB"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["Don"].Columns["MaDon"], ds.Tables["TTTL"].Columns["MaDon"]);
@@ -747,6 +749,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemYCCHDB.DiaChi,
                                       itemYCCHDB.LyDo,
                                       itemYCCHDB.GhiChuLyDo,
+                                      itemYCCHDB.HieuLucKy,
                                   };
 
                 DataTable dtYCCHDB = new DataTable();
@@ -1225,8 +1228,8 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 if (dtDon.Rows.Count > 0 && dtYCCHDB.Rows.Count > 0)
                 {
-                    ds.Relations.Add("Chi Tiết Phiếu Cắt Hủy Danh Bộ", ds.Tables["Don"].Columns["MaDon"], ds.Tables["YCCHDB"].Columns["MaDon"]);
-                    ds.Relations.Add("Chi Tiết Phiếu Cắt Hủy Danh Bộ TXL", ds.Tables["Don"].Columns["MaDon"], ds.Tables["YCCHDB"].Columns["MaDonTXL"]);
+                    ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["Don"].Columns["MaDon"], ds.Tables["YCCHDB"].Columns["MaDon"]);
+                    ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ TXL", ds.Tables["Don"].Columns["MaDon"], ds.Tables["YCCHDB"].Columns["MaDonTXL"]);
                 }
 
                 if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
@@ -1446,6 +1449,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemYCCHDB.DiaChi,
                                       itemYCCHDB.LyDo,
                                       itemYCCHDB.GhiChuLyDo,
+                                      itemYCCHDB.HieuLucKy,
                                   };
 
                 DataTable dtYCCHDB = new DataTable();
@@ -1925,8 +1929,8 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 if (dtDon.Rows.Count > 0 && dtYCCHDB.Rows.Count > 0)
                 {
-                    ds.Relations.Add("Chi Tiết Phiếu Cắt Hủy Danh Bộ", ds.Tables["Don"].Columns["MaDon"], ds.Tables["YCCHDB"].Columns["MaDon"]);
-                    ds.Relations.Add("Chi Tiết Phiếu Cắt Hủy Danh Bộ TXL", ds.Tables["Don"].Columns["MaDon"], ds.Tables["YCCHDB"].Columns["MaDonTXL"]);
+                    ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["Don"].Columns["MaDon"], ds.Tables["YCCHDB"].Columns["MaDon"]);
+                    ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ TXL", ds.Tables["Don"].Columns["MaDon"], ds.Tables["YCCHDB"].Columns["MaDonTXL"]);
                 }
 
                 if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
@@ -2145,7 +2149,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemYCCHDB.HoTen,
                                       itemYCCHDB.DiaChi,
                                       itemYCCHDB.LyDo,
-                                      itemYCCHDB.GhiChuLyDo,  
+                                      itemYCCHDB.GhiChuLyDo,
+                                      itemYCCHDB.HieuLucKy,
                                   };
 
                 DataTable dtYCCHDB = new DataTable();
@@ -2624,8 +2629,8 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 if (dtDon.Rows.Count > 0 && dtYCCHDB.Rows.Count > 0)
                 {
-                    ds.Relations.Add("Chi Tiết Phiếu Cắt Hủy Danh Bộ", ds.Tables["Don"].Columns["MaDon"], ds.Tables["YCCHDB"].Columns["MaDon"]);
-                    ds.Relations.Add("Chi Tiết Phiếu Cắt Hủy Danh Bộ TXL", ds.Tables["Don"].Columns["MaDon"], ds.Tables["YCCHDB"].Columns["MaDonTXL"]);
+                    ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["Don"].Columns["MaDon"], ds.Tables["YCCHDB"].Columns["MaDon"]);
+                    ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ TXL", ds.Tables["Don"].Columns["MaDon"], ds.Tables["YCCHDB"].Columns["MaDonTXL"]);
                 }
 
                 if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
