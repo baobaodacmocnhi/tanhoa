@@ -118,7 +118,6 @@
             this.lbNhanVien.Size = new System.Drawing.Size(60, 13);
             this.lbNhanVien.TabIndex = 111;
             this.lbNhanVien.Text = "Nhân Viên:";
-            this.lbNhanVien.Visible = false;
             // 
             // btnCopyToClipboard
             // 
@@ -137,7 +136,6 @@
             this.cmbNhanVien.Name = "cmbNhanVien";
             this.cmbNhanVien.Size = new System.Drawing.Size(118, 21);
             this.cmbNhanVien.TabIndex = 112;
-            this.cmbNhanVien.Visible = false;
             // 
             // columnHeader1
             // 

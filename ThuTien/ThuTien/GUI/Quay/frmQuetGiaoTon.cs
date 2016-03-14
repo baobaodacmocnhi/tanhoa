@@ -284,11 +284,13 @@ namespace ThuTien.GUI.Quay
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
                 {
                     DataRow dr = dsBaoCao.Tables["DSHoaDon"].NewRow();
+                    dr["LoaiBaoCao"] = "TƯ GIA";
                     dr["Dot"] = item.Cells["MLT_TG"].Value.ToString().Substring(0, 2);
                     dr["SoHoaDon"] = item.Cells["SoHoaDon_TG"].Value.ToString();
                     dr["TongCong"] = item.Cells["TongCong_TG"].Value.ToString();
                     dr["HanhThu"] = item.Cells["HanhThu_TG"].Value.ToString();
                     dr["To"] = item.Cells["To_TG"].Value.ToString();
+                    dr["NgayLap"] = dateLap.Value.ToString("dd/MM/yyyy");
                     dsBaoCao.Tables["DSHoaDon"].Rows.Add(dr);
                 }
             }
@@ -298,11 +300,13 @@ namespace ThuTien.GUI.Quay
                     foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
                     {
                         DataRow dr = dsBaoCao.Tables["DSHoaDon"].NewRow();
+                        dr["LoaiBaoCao"] = "CƠ QUAN";
                         dr["Dot"] = item.Cells["MLT_CQ"].Value.ToString().Substring(0, 2);
                         dr["SoHoaDon"] = item.Cells["SoHoaDon_CQ"].Value.ToString();
                         dr["TongCong"] = item.Cells["TongCong_CQ"].Value.ToString();
                         dr["HanhThu"] = item.Cells["HanhThu_CQ"].Value.ToString();
                         dr["To"] = item.Cells["To_CQ"].Value.ToString();
+                        dr["NgayLap"] = dateLap.Value.ToString("dd/MM/yyyy");
                         dsBaoCao.Tables["DSHoaDon"].Rows.Add(dr);
                     }
                 }
@@ -372,10 +376,17 @@ namespace ThuTien.GUI.Quay
         {
             if (_flagLoadFirst == true && cmbTo.SelectedIndex > 0)
             {
+                List<TT_NguoiDung> _lstND = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
                 if ((_cTo.CheckHanhThu(int.Parse(cmbTo.SelectedValue.ToString()))))
-                    cmbNhanVien.DataSource = _cNguoiDung.GetDSHanhThuByMaTo(int.Parse(cmbTo.SelectedValue.ToString()));
+                    _lstND = _cNguoiDung.GetDSHanhThuByMaTo(int.Parse(cmbTo.SelectedValue.ToString()));
                 else
-                    cmbNhanVien.DataSource = _cNguoiDung.GetDSByToVanPhong(int.Parse(cmbTo.SelectedValue.ToString()));
+                    _lstND = _cNguoiDung.GetDSByToVanPhong(int.Parse(cmbTo.SelectedValue.ToString()));
+
+                TT_NguoiDung nguoidung = new TT_NguoiDung();
+                nguoidung.MaND = 0;
+                nguoidung.HoTen = "Tất Cả";
+                _lstND.Insert(0, nguoidung);
+                cmbNhanVien.DataSource = _lstND;
                 cmbNhanVien.DisplayMember = "HoTen";
                 cmbNhanVien.ValueMember = "MaND";
             }

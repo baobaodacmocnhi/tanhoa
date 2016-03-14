@@ -15,7 +15,7 @@ namespace ThuTien.DAL.Quay
             try
             {
                 if (_db.TT_QuetGiaoTons.Count() > 0)
-                    entity.ID = _db.TT_QuetTams.Max(item => item.ID) + 1;
+                    entity.ID = _db.TT_QuetGiaoTons.Max(item => item.ID) + 1;
                 else
                     entity.ID = 1;
                 entity.CreateDate = DateTime.Now;
