@@ -1564,25 +1564,25 @@ namespace ThuTien.DAL.Doi
                             + " declare @ky int;"
                             + " set @nam=" + Nam + ";"
                             + " set @ky=" + Ky + ";"
-                            + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongCongTon"
+                            + " select tong.MaND as MaNV,tong.HoTen,DOT,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongCongTon"
                             + " from"
-                            + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
+                            + " (select nd.MaND,nd.HoTen,DOT,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
                             + " where MaNV_HanhThu=" + MaNV_HanhThu
                             + " and NAM=@nam and KY=@ky  and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen,KY,NAM) tong"
+                            + " group by nd.MaND,nd.HoTen,DOT,KY,NAM) tong"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
                             + " where MaNV_HanhThu=" + MaNV_HanhThu
                             + " and NAM=@nam and KY=@ky and NGAYGIAITRACH is not null and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen,KY,NAM) thu on tong.MaND=thu.MaND"
+                            + " group by nd.MaND,nd.HoTen,DOT,KY,NAM) thu on tong.MaND=thu.MaND"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.TONGCONG) as TongCongTon"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
                             + " where MaNV_HanhThu=" + MaNV_HanhThu
                             + " and NAM=@nam and KY=@ky and NGAYGIAITRACH is null  and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen,KY,NAM) ton on tong.MaND=ton.MaND"
+                            + " group by nd.MaND,nd.HoTen,DOT,KY,NAM) ton on tong.MaND=ton.MaND"
                             + " order by tong.MaND asc";
 
                 return ExecuteQuery_SqlDataAdapter_DataTable(sql);
@@ -1594,25 +1594,25 @@ namespace ThuTien.DAL.Doi
                             + " declare @ky int;"
                             + " set @nam=" + Nam + ";"
                             + " set @ky=" + Ky + ";"
-                            + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongCongTon"
+                            + " select tong.MaND as MaNV,tong.HoTen,DOT,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongCongTon"
                             + " from"
-                            + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
+                            + " (select nd.MaND,nd.HoTen,DOT,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
                             + " where MaNV_HanhThu=" + MaNV_HanhThu
                             + " and NAM=@nam and KY=@ky  and GB>20"
-                            + " group by nd.MaND,nd.HoTen,KY,NAM) tong"
+                            + " group by nd.MaND,nd.HoTen,DOT,KY,NAM) tong"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
                             + " where MaNV_HanhThu=" + MaNV_HanhThu
                             + " and NAM=@nam and KY=@ky and NGAYGIAITRACH is not null and GB>20"
-                            + " group by nd.MaND,nd.HoTen,KY,NAM) thu on tong.MaND=thu.MaND"
+                            + " group by nd.MaND,nd.HoTen,DOT,KY,NAM) thu on tong.MaND=thu.MaND"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.TONGCONG) as TongCongTon"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
                             + " where MaNV_HanhThu=" + MaNV_HanhThu
                             + " and NAM=@nam and KY=@ky and NGAYGIAITRACH is null  and GB>20"
-                            + " group by nd.MaND,nd.HoTen,KY,NAM) ton on tong.MaND=ton.MaND"
+                            + " group by nd.MaND,nd.HoTen,DOT,KY,NAM) ton on tong.MaND=ton.MaND"
                             + " order by tong.MaND asc";
 
                     return ExecuteQuery_SqlDataAdapter_DataTable(sql);
@@ -1852,6 +1852,70 @@ namespace ThuTien.DAL.Doi
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
                             + " where MaNV_HanhThu=" + MaNV_HanhThu
                             + " and (NAM<@nam or (NAM=@nam and KY<=@ky)) and NGAYGIAITRACH is null  and GB>20"
+                            + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
+                            + " order by tong.MaND asc";
+
+                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                }
+            return null;
+        }
+
+        public DataTable GetTongTonDenKy_NV(string Loai, int MaNV_HanhThu, int Nam, int Ky,int Dot)
+        {
+            if (Loai == "TG")
+            {
+                string sql = "declare @nam int;"
+                            + " declare @ky int;"
+                            + " set @nam=" + Nam + ";"
+                            + " set @ky=" + Ky + ";"
+                            + " select tong.MaND as MaNV,tong.HoTen,DOT,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongCongTon"
+                            + " from"
+                            + " (select nd.MaND,nd.HoTen,DOT,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                            + " where MaNV_HanhThu=" + MaNV_HanhThu
+                            + " and (NAM<@nam or (NAM=@nam and KY<=@ky)) and DOT="+Dot+" and GB>=11 and GB<=20"
+                            + " group by nd.MaND,nd.HoTen,DOT) tong"
+                            + " left join"
+                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                            + " where MaNV_HanhThu=" + MaNV_HanhThu
+                            + " and (NAM<@nam or (NAM=@nam and KY<=@ky)) and DOT=" + Dot + " and NGAYGIAITRACH is not null and GB>=11 and GB<=20"
+                            + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
+                            + " left join"
+                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.TONGCONG) as TongCongTon"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                            + " where MaNV_HanhThu=" + MaNV_HanhThu
+                            + " and (NAM<@nam or (NAM=@nam and KY<=@ky)) and DOT=" + Dot + " and NGAYGIAITRACH is null  and GB>=11 and GB<=20"
+                            + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
+                            + " order by tong.MaND asc";
+
+                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            }
+            else
+                if (Loai == "CQ")
+                {
+                    string sql = "declare @nam int;"
+                            + " declare @ky int;"
+                            + " set @nam=" + Nam + ";"
+                            + " set @ky=" + Ky + ";"
+                            + " select tong.MaND as MaNV,tong.HoTen,DOT,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongCongTon"
+                            + " from"
+                            + " (select nd.MaND,nd.HoTen,DOT,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                            + " where MaNV_HanhThu=" + MaNV_HanhThu
+                            + " and (NAM<@nam or (NAM=@nam and KY<=@ky)) and DOT=" + Dot + " and GB>20"
+                            + " group by nd.MaND,nd.HoTen,DOT) tong"
+                            + " left join"
+                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                            + " where MaNV_HanhThu=" + MaNV_HanhThu
+                            + " and (NAM<@nam or (NAM=@nam and KY<=@ky)) and DOT=" + Dot + " and NGAYGIAITRACH is not null and GB>20"
+                            + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
+                            + " left join"
+                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.TONGCONG) as TongCongTon"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                            + " where MaNV_HanhThu=" + MaNV_HanhThu
+                            + " and (NAM<@nam or (NAM=@nam and KY<=@ky)) and DOT=" + Dot + " and NGAYGIAITRACH is null  and GB>20"
                             + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
                             + " order by tong.MaND asc";
 
@@ -5046,6 +5110,46 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
+        public DataTable GetDSTonDenKy_NV(string Loai, int MaNV, int Nam, int Ky,int Dot, int SoKy)
+        {
+            if (Loai == "TG")
+            {
+                string sql = "select SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
+                            + " from HOADON"
+                            + " where MaNV_HanhThu=" + MaNV
+                            + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<=" + Ky + ")) and DOT="+Dot+" and NGAYGIAITRACH is null  and GB>=11 and GB<=20 and DANHBA in"
+                            + " (select DANHBA from HOADON"
+                            + " where MaNV_HanhThu=" + MaNV
+                            + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<=" + Ky + ")) and DOT=" + Dot + " and NGAYGIAITRACH is null  and GB>=11 and GB<=20"
+                            + " group by DANHBA"
+                            + " having COUNT(*)>=" + SoKy + ")"
+                            + " order by MLT,Ky asc";
+
+                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            }
+            else
+                if (Loai == "CQ")
+                {
+                    string sql = "select SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
+                            + " from HOADON"
+                            + " where MaNV_HanhThu=" + MaNV
+                            + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<=" + Ky + ")) and DOT=" + Dot + " and NGAYGIAITRACH is null  and GB>20 and DANHBA in"
+                            + " (select DANHBA from HOADON"
+                            + " where MaNV_HanhThu=" + MaNV
+                            + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<=" + Ky + ")) and DOT=" + Dot + " and NGAYGIAITRACH is null  and GB>20"
+                            + " group by DANHBA"
+                            + " having COUNT(*)>=" + SoKy + ")"
+                            + " order by MLT,Ky asc";
+
+                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                }
+            return null;
+        }
+
         public DataTable GetDSTonDenKyDenNgay_NV(string Loai, int MaNV, int Nam, int Ky, DateTime NgayGiaiTrach, int SoKy)
         {
             if (Loai == "TG")
@@ -6984,7 +7088,7 @@ namespace ThuTien.DAL.Doi
             {
                 string sql = "";
                 if (Loai == "")
-                    sql = "update HOADON set MaNV_DangNgan=null,NGAYGIAITRACH=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
+                    sql = "update HOADON set MaNV_DangNgan=null,NGAYGIAITRACH=null,DangNgan_HanhThu=0,DangNgan_Quay=0,DangNgan_ChuyenKhoan=0,DangNgan_Ton=0,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
                            + "where SOHOADON='" + SoHoaDon + "' and MaNV_DangNgan=" + MaNV_DangNgan;
                 else
                     if (Loai == "HanhThu")
@@ -6996,11 +7100,8 @@ namespace ThuTien.DAL.Doi
                                    + "where SOHOADON='" + SoHoaDon + "' and DangNgan_Quay=1 and MaNV_DangNgan=" + MaNV_DangNgan;
                         else
                             if (Loai == "ChuyenKhoan")
-                            {
                                 sql = "update HOADON set DangNgan_ChuyenKhoan=0,MaNV_DangNgan=null,NGAYGIAITRACH=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
                                        + "where SOHOADON='" + SoHoaDon + "' and DangNgan_ChuyenKhoan=1 and MaNV_DangNgan=" + MaNV_DangNgan + " and TienMat is null";
-                                
-                            }
                             else
                                 if (Loai == "Ton")
                                     sql = "update HOADON set DangNgan_Ton=0,MaNV_DangNgan=null,NGAYGIAITRACH=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "

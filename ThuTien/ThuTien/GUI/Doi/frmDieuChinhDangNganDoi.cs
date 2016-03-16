@@ -194,7 +194,7 @@ namespace ThuTien.GUI.Doi
                                 foreach (ListViewItem item in lstHD.Items)
                                     using (var scope = new TransactionScope())
                                     {
-                                        if (_cHoaDon.DangNgan("", item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value))
+                                        if (_cHoaDon.DangNgan("ChuyenKhoan", item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value))
                                             if (_cTienDu.UpdateThem(item.Text))
                                                 scope.Complete();
                                     }
@@ -210,7 +210,7 @@ namespace ThuTien.GUI.Doi
                         }
                         else
                             foreach (ListViewItem item in lstHD.Items)
-                                if (_cHoaDon.DangNgan("", item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value))
+                                if (_cHoaDon.DangNgan("HanhThu", item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value))
                                 {
                                 }
                         btnXem.PerformClick();

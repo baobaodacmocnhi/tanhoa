@@ -195,7 +195,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             dsBaoCao ds = new dsBaoCao();
             foreach (DataGridViewRow item in dgvDichVuThu.Rows)
-                if (!string.IsNullOrEmpty(item.Cells["NgayGiaiTrach"].Value.ToString()) && !bool.Parse(item.Cells["DangNgan_ChuyenKhoan"].Value.ToString()))
+                if (!string.IsNullOrEmpty(item.Cells["NgayGiaiTrach"].Value.ToString()) && !bool.Parse(item.Cells["DangNgan_ChuyenKhoan"].Value.ToString()) && !bool.Parse(item.Cells["DangNgan_Quay"].Value.ToString()) && int.Parse(item.Cells["TieuThu"].Value.ToString())!=0)
                 {
                     DateTime NgayThu = new DateTime();
                     DateTime NgayGiaiTrach = new DateTime();

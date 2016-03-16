@@ -224,5 +224,13 @@ namespace ThuTien.DAL.ChuyenKhoan
             else
                 return 0;
         }
+
+        public string GetBank(string DanhBo)
+        {
+            if (_db.TT_BangKes.Any(itemBK => itemBK.DanhBo == DanhBo && itemBK.MaNH != null))
+                return _db.NGANHANGs.SingleOrDefault(itemB => itemB.ID_NGANHANG == _db.TT_BangKes.Where(itemBK => itemBK.DanhBo == DanhBo && itemBK.MaNH != null).OrderByDescending(item => item.MaBK).First().MaNH.Value).KyHieu;
+            else
+                return "";
+        }
     }
 }

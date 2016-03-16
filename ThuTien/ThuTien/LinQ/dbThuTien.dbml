@@ -451,19 +451,6 @@
       <Column Name="GhiChuTra" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.TT_TienDu" Member="TT_TienDus">
-    <Type Name="TT_TienDu">
-      <Column Name="DanhBo" Type="System.String" DbType="VarChar(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="SoTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Phi" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DienThoai" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="ChoXuLy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.TT_KQDongNuoc" Member="TT_KQDongNuocs">
     <Type Name="TT_KQDongNuoc">
       <Column Name="MaKQDN" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -891,6 +878,20 @@
       <Column Name="SoHoaDon" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TT_TienDu" Member="TT_TienDus">
+    <Type Name="TT_TienDu">
+      <Column Name="DanhBo" Type="System.String" DbType="VarChar(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SoTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Phi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DienThoai" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ChoXuLy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="MaNH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.TimKiem" Method="TimKiem" IsComposable="true">

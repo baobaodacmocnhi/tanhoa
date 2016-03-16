@@ -75,7 +75,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                         bangke.CreateBy = CNguoiDung.MaND;
                                         bangke.CreateDate2 = DateTime.Now;
                                         if (_cBangKe.Them(bangke))
-                                            if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê", "Thêm"))
+                                            if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê", "Thêm",bangke.MaNH.Value))
                                                 scope.Complete();
                                     }
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
