@@ -76,7 +76,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public void Refresh()
         {
-            db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues,db.TB_DULIEUKHACHHANGs);
+            db = new DB_CAPNUOCTANHOADataContext();
         }
 
         public void beginTransaction()

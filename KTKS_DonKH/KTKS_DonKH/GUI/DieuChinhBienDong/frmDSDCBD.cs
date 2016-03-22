@@ -1641,7 +1641,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     if (sql == "" && !string.IsNullOrEmpty(ctdcbd.DiaChi_BD))
                                         sql = "DiaChi";
 
-                                    log.WriteLine(sql);
+                                    //log.WriteLine(sql);
                                     if (sql != "")
                                         if (sql == "DiaChi")
                                         {
@@ -1705,7 +1705,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                         _cDLKH.Refresh();
                                                         dlkhFinal = _cDLKH.getDLKH(ctdcbd.DanhBo);
                                                     }
-
+                                                log.WriteLine(" GB: " + dlkhFinal.GIABIEU + " ĐM: " + dlkhFinal.DINHMUC);
                                                 TB_GHICHU ghichu = new TB_GHICHU();
                                                 ghichu.DANHBO = ctdcbd.DanhBo;
                                                 ghichu.DONVI = "KTKS";

@@ -77,6 +77,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             _donkh = null;
             _dontxl = null;
             _ttkhachhang = null;
+            ///
+            chkDieuChinhGia2.Checked = false;
+            chkTyLe.Checked = false;
         }
 
         private void frmDCHDN_Load(object sender, EventArgs e)
