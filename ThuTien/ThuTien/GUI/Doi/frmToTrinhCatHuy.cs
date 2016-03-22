@@ -405,6 +405,7 @@ namespace ThuTien.GUI.Doi
                             if (!_cLenhHuy.CheckExist(itemTon["SoHoaDon"].ToString()))
                             {
                                 TT_LenhHuy lenhhuy = new TT_LenhHuy();
+                                lenhhuy.MaHD = _cHoaDon.Get(itemTon["SoHoaDon"].ToString()).ID_HOADON;
                                 lenhhuy.SoHoaDon = itemTon["SoHoaDon"].ToString();
                                 lenhhuy.TinhTrang = lst.SingleOrDefault(itemLst => itemLst.DanhBo == itemTon["DanhBo"].ToString()).GhiChu;
                                 _cLenhHuy.Them(lenhhuy);

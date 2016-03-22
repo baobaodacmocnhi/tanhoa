@@ -42,17 +42,6 @@
             this.dateDen = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvDichVuThu = new System.Windows.Forms.DataGridView();
-            this.txtTongHD = new System.Windows.Forms.TextBox();
-            this.txtTongSoTien = new System.Windows.Forms.TextBox();
-            this.txtTongPhi = new System.Windows.Forms.TextBox();
-            this.btnInDS = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cmbNhanVien = new System.Windows.Forms.ComboBox();
-            this.btnInKiemTra = new System.Windows.Forms.Button();
-            this.cmbToDot = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.cmbFromDot = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.MLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoHoaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,6 +59,19 @@
             this.DangNgan_ChuyenKhoan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.DangNgan_Quay = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.TieuThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtTongHD = new System.Windows.Forms.TextBox();
+            this.txtTongSoTien = new System.Windows.Forms.TextBox();
+            this.txtTongPhi = new System.Windows.Forms.TextBox();
+            this.btnInDS = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cmbNhanVien = new System.Windows.Forms.ComboBox();
+            this.btnInKiemTra = new System.Windows.Forms.Button();
+            this.cmbToDot = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cmbFromDot = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtDanhBo = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDichVuThu)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,7 +112,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(486, 36);
+            this.btnXem.Location = new System.Drawing.Point(630, 37);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 43;
@@ -209,147 +211,6 @@
             this.dgvDichVuThu.TabIndex = 84;
             this.dgvDichVuThu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDichVuThu_CellFormatting);
             this.dgvDichVuThu.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDichVuThu_RowPostPaint);
-            // 
-            // txtTongHD
-            // 
-            this.txtTongHD.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongHD.Location = new System.Drawing.Point(13, 609);
-            this.txtTongHD.Name = "txtTongHD";
-            this.txtTongHD.Size = new System.Drawing.Size(41, 20);
-            this.txtTongHD.TabIndex = 85;
-            this.txtTongHD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtTongSoTien
-            // 
-            this.txtTongSoTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongSoTien.Location = new System.Drawing.Point(723, 609);
-            this.txtTongSoTien.Name = "txtTongSoTien";
-            this.txtTongSoTien.Size = new System.Drawing.Size(80, 20);
-            this.txtTongSoTien.TabIndex = 86;
-            this.txtTongSoTien.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtTongPhi
-            // 
-            this.txtTongPhi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongPhi.Location = new System.Drawing.Point(803, 609);
-            this.txtTongPhi.Name = "txtTongPhi";
-            this.txtTongPhi.Size = new System.Drawing.Size(80, 20);
-            this.txtTongPhi.TabIndex = 87;
-            this.txtTongPhi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // btnInDS
-            // 
-            this.btnInDS.Location = new System.Drawing.Point(567, 36);
-            this.btnInDS.Name = "btnInDS";
-            this.btnInDS.Size = new System.Drawing.Size(75, 23);
-            this.btnInDS.TabIndex = 88;
-            this.btnInDS.Text = "In DS Tồn";
-            this.btnInDS.UseVisualStyleBackColor = true;
-            this.btnInDS.Click += new System.EventHandler(this.btnInDS_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(309, 13);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 13);
-            this.label6.TabIndex = 89;
-            this.label6.Text = "Nhân Viên:";
-            // 
-            // cmbNhanVien
-            // 
-            this.cmbNhanVien.FormattingEnabled = true;
-            this.cmbNhanVien.Location = new System.Drawing.Point(375, 10);
-            this.cmbNhanVien.Name = "cmbNhanVien";
-            this.cmbNhanVien.Size = new System.Drawing.Size(118, 21);
-            this.cmbNhanVien.TabIndex = 90;
-            // 
-            // btnInKiemTra
-            // 
-            this.btnInKiemTra.Location = new System.Drawing.Point(648, 36);
-            this.btnInKiemTra.Name = "btnInKiemTra";
-            this.btnInKiemTra.Size = new System.Drawing.Size(75, 23);
-            this.btnInKiemTra.TabIndex = 91;
-            this.btnInKiemTra.Text = "In Kiểm Tra";
-            this.btnInKiemTra.UseVisualStyleBackColor = true;
-            this.btnInKiemTra.Click += new System.EventHandler(this.btnInKiemTra_Click);
-            // 
-            // cmbToDot
-            // 
-            this.cmbToDot.FormattingEnabled = true;
-            this.cmbToDot.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20"});
-            this.cmbToDot.Location = new System.Drawing.Point(650, 10);
-            this.cmbToDot.Name = "cmbToDot";
-            this.cmbToDot.Size = new System.Drawing.Size(40, 21);
-            this.cmbToDot.TabIndex = 95;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(594, 15);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(50, 13);
-            this.label10.TabIndex = 94;
-            this.label10.Text = "Đến Đợt:";
-            // 
-            // cmbFromDot
-            // 
-            this.cmbFromDot.FormattingEnabled = true;
-            this.cmbFromDot.Items.AddRange(new object[] {
-            "Tất Cả",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20"});
-            this.cmbFromDot.Location = new System.Drawing.Point(548, 10);
-            this.cmbFromDot.Name = "cmbFromDot";
-            this.cmbFromDot.Size = new System.Drawing.Size(40, 21);
-            this.cmbFromDot.TabIndex = 93;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(499, 13);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(43, 13);
-            this.label7.TabIndex = 92;
-            this.label7.Text = "Từ Đợt:";
             // 
             // MLT
             // 
@@ -465,11 +326,170 @@
             this.TieuThu.Name = "TieuThu";
             this.TieuThu.Visible = false;
             // 
+            // txtTongHD
+            // 
+            this.txtTongHD.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongHD.Location = new System.Drawing.Point(13, 609);
+            this.txtTongHD.Name = "txtTongHD";
+            this.txtTongHD.Size = new System.Drawing.Size(41, 20);
+            this.txtTongHD.TabIndex = 85;
+            this.txtTongHD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtTongSoTien
+            // 
+            this.txtTongSoTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongSoTien.Location = new System.Drawing.Point(723, 609);
+            this.txtTongSoTien.Name = "txtTongSoTien";
+            this.txtTongSoTien.Size = new System.Drawing.Size(80, 20);
+            this.txtTongSoTien.TabIndex = 86;
+            this.txtTongSoTien.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtTongPhi
+            // 
+            this.txtTongPhi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongPhi.Location = new System.Drawing.Point(803, 609);
+            this.txtTongPhi.Name = "txtTongPhi";
+            this.txtTongPhi.Size = new System.Drawing.Size(80, 20);
+            this.txtTongPhi.TabIndex = 87;
+            this.txtTongPhi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnInDS
+            // 
+            this.btnInDS.Location = new System.Drawing.Point(711, 37);
+            this.btnInDS.Name = "btnInDS";
+            this.btnInDS.Size = new System.Drawing.Size(75, 23);
+            this.btnInDS.TabIndex = 88;
+            this.btnInDS.Text = "In DS Tồn";
+            this.btnInDS.UseVisualStyleBackColor = true;
+            this.btnInDS.Click += new System.EventHandler(this.btnInDS_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(309, 13);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(60, 13);
+            this.label6.TabIndex = 89;
+            this.label6.Text = "Nhân Viên:";
+            // 
+            // cmbNhanVien
+            // 
+            this.cmbNhanVien.FormattingEnabled = true;
+            this.cmbNhanVien.Location = new System.Drawing.Point(375, 10);
+            this.cmbNhanVien.Name = "cmbNhanVien";
+            this.cmbNhanVien.Size = new System.Drawing.Size(118, 21);
+            this.cmbNhanVien.TabIndex = 90;
+            // 
+            // btnInKiemTra
+            // 
+            this.btnInKiemTra.Location = new System.Drawing.Point(792, 37);
+            this.btnInKiemTra.Name = "btnInKiemTra";
+            this.btnInKiemTra.Size = new System.Drawing.Size(75, 23);
+            this.btnInKiemTra.TabIndex = 91;
+            this.btnInKiemTra.Text = "In Kiểm Tra";
+            this.btnInKiemTra.UseVisualStyleBackColor = true;
+            this.btnInKiemTra.Click += new System.EventHandler(this.btnInKiemTra_Click);
+            // 
+            // cmbToDot
+            // 
+            this.cmbToDot.FormattingEnabled = true;
+            this.cmbToDot.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20"});
+            this.cmbToDot.Location = new System.Drawing.Point(650, 10);
+            this.cmbToDot.Name = "cmbToDot";
+            this.cmbToDot.Size = new System.Drawing.Size(40, 21);
+            this.cmbToDot.TabIndex = 95;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(594, 15);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(50, 13);
+            this.label10.TabIndex = 94;
+            this.label10.Text = "Đến Đợt:";
+            // 
+            // cmbFromDot
+            // 
+            this.cmbFromDot.FormattingEnabled = true;
+            this.cmbFromDot.Items.AddRange(new object[] {
+            "Tất Cả",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20"});
+            this.cmbFromDot.Location = new System.Drawing.Point(548, 10);
+            this.cmbFromDot.Name = "cmbFromDot";
+            this.cmbFromDot.Size = new System.Drawing.Size(40, 21);
+            this.cmbFromDot.TabIndex = 93;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(499, 13);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(43, 13);
+            this.label7.TabIndex = 92;
+            this.label7.Text = "Từ Đợt:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(466, 40);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(52, 13);
+            this.label5.TabIndex = 96;
+            this.label5.Text = "Danh Bộ:";
+            // 
+            // txtDanhBo
+            // 
+            this.txtDanhBo.Location = new System.Drawing.Point(524, 37);
+            this.txtDanhBo.Name = "txtDanhBo";
+            this.txtDanhBo.Size = new System.Drawing.Size(100, 20);
+            this.txtDanhBo.TabIndex = 97;
+            // 
             // frmDichVuThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1360, 666);
+            this.Controls.Add(this.txtDanhBo);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.cmbToDot);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.cmbFromDot);
@@ -540,5 +560,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn DangNgan_ChuyenKhoan;
         private System.Windows.Forms.DataGridViewCheckBoxColumn DangNgan_Quay;
         private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtDanhBo;
     }
 }

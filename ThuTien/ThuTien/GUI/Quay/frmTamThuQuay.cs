@@ -223,7 +223,16 @@ namespace ThuTien.GUI.Quay
             {
                 if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    _cTamThu.BeginTransaction();
+                    if (CNguoiDung.Doi == false)
+                    {
+                        DateTime CreateDate = new DateTime();
+                        DateTime.TryParse(dgvTamThu.SelectedRows[0].Cells["CreateDate_TT"].Value.ToString(), out CreateDate);
+                        if (CreateDate.Date != DateTime.Now.Date)
+                        {
+                            MessageBox.Show("Chỉ được Điều Chỉnh trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
                     foreach (DataGridViewRow item in dgvTamThu.SelectedRows)
                     {
                         TAMTHU tamthu = _cTamThu.GetByMaTT(int.Parse(item.Cells["MaTT"].Value.ToString()));
@@ -231,21 +240,18 @@ namespace ThuTien.GUI.Quay
                         {
                             if (!_cTamThu.Xoa(tamthu))
                             {
-                                _cTamThu.Rollback();
-                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
+                                //MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                //return;
                             }
                         }
                         else
                         {
-                            _cTamThu.Rollback();
                             dgvTamThu.ClearSelection();
                             item.Selected = true;
                             MessageBox.Show("Hóa đơn đã Đăng Ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                     }
-                    _cTamThu.CommitTransaction();
                     btnXem.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

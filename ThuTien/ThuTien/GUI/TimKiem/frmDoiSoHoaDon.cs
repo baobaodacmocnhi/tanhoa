@@ -30,7 +30,8 @@ namespace ThuTien.GUI.TimKiem
         private void btnLuu_Click(object sender, EventArgs e)
         {
             HOADON hoadon = _cHoaDon.Get(_MaHD);
-            hoadon.SoHoaDonCu = hoadon.SOHOADON;
+            if (hoadon.SoHoaDonCu == null)
+                hoadon.SoHoaDonCu = hoadon.SOHOADON;
             hoadon.SOHOADON = txtSoHoaDonMoi.Text.Trim().ToUpper();
             if (_cHoaDon.Sua(hoadon))
             {

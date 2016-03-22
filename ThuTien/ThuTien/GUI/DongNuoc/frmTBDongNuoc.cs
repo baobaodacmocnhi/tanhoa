@@ -102,8 +102,6 @@ namespace ThuTien.GUI.DongNuoc
                         item.Focused = true;
                         return;
                     }
-                    else
-                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     lstHDTemp.Add(_cHoaDon.Get(item.Text));
                 }
 

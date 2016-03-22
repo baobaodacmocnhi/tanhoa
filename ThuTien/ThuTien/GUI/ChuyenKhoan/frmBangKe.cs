@@ -125,6 +125,16 @@ namespace ThuTien.GUI.ChuyenKhoan
                 if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     try
                     {
+                        if (CNguoiDung.Doi == false)
+                        {
+                            DateTime CreateDate = new DateTime();
+                            DateTime.TryParse(dgvBangKe.SelectedRows[0].Cells["CreateDate"].Value.ToString(), out CreateDate);
+                            if (CreateDate.Date != DateTime.Now.Date)
+                            {
+                                MessageBox.Show("Chỉ được Điều Chỉnh trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
                         foreach (DataGridViewRow item in dgvBangKe.SelectedRows)
                             using (var scope = new TransactionScope())
                             {
@@ -207,12 +217,15 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
-                    DateTime CreateDate = new DateTime();
-                    DateTime.TryParse(dgvBangKe["CreateDate", e.RowIndex].Value.ToString(), out CreateDate);
-                    if (CreateDate.Date != DateTime.Now)
+                    if (CNguoiDung.Doi==false)
                     {
-                        MessageBox.Show("Chỉ được Điều Chỉnh trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        DateTime CreateDate = new DateTime();
+                        DateTime.TryParse(dgvBangKe["CreateDate", e.RowIndex].Value.ToString(), out CreateDate);
+                        if (CreateDate.Date != DateTime.Now.Date)
+                        {
+                            MessageBox.Show("Chỉ được Điều Chỉnh trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                     }
                     using (var scope = new TransactionScope())
                     {

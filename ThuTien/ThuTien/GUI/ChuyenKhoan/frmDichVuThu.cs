@@ -59,6 +59,11 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnXem_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ", "")))
+            {
+                dgvDichVuThu.DataSource = _cDichVuThu.GetDS(txtDanhBo.Text.Trim().Replace(" ", ""));
+            }
+            else
             if (cmbFromDot.SelectedIndex == 0)
             {
                 ///chọn tất cả tổ

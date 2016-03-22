@@ -1491,6 +1491,8 @@ namespace ThuTien.BaoCao {
             
             private global::System.Data.DataColumn columnTo;
             
+            private global::System.Data.DataColumn columnHanhThu;
+            
             private global::System.Data.DataColumn columnNhanVienDN;
             
             private global::System.Data.DataColumn columnSoTien;
@@ -1634,6 +1636,14 @@ namespace ThuTien.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn HanhThuColumn {
+                get {
+                    return this.columnHanhThu;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn NhanVienDNColumn {
                 get {
                     return this.columnNhanVienDN;
@@ -1730,6 +1740,7 @@ namespace ThuTien.BaoCao {
                         int TongCong, 
                         string NhanVien, 
                         string To, 
+                        string HanhThu, 
                         string NhanVienDN, 
                         string SoTien, 
                         string HopDong, 
@@ -1750,6 +1761,7 @@ namespace ThuTien.BaoCao {
                         TongCong,
                         NhanVien,
                         To,
+                        HanhThu,
                         NhanVienDN,
                         SoTien,
                         HopDong,
@@ -1790,6 +1802,7 @@ namespace ThuTien.BaoCao {
                 this.columnTongCong = base.Columns["TongCong"];
                 this.columnNhanVien = base.Columns["NhanVien"];
                 this.columnTo = base.Columns["To"];
+                this.columnHanhThu = base.Columns["HanhThu"];
                 this.columnNhanVienDN = base.Columns["NhanVienDN"];
                 this.columnSoTien = base.Columns["SoTien"];
                 this.columnHopDong = base.Columns["HopDong"];
@@ -1825,6 +1838,8 @@ namespace ThuTien.BaoCao {
                 base.Columns.Add(this.columnNhanVien);
                 this.columnTo = new global::System.Data.DataColumn("To", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTo);
+                this.columnHanhThu = new global::System.Data.DataColumn("HanhThu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHanhThu);
                 this.columnNhanVienDN = new global::System.Data.DataColumn("NhanVienDN", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNhanVienDN);
                 this.columnSoTien = new global::System.Data.DataColumn("SoTien", typeof(string), null, global::System.Data.MappingType.Element);
@@ -11266,6 +11281,22 @@ namespace ThuTien.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string HanhThu {
+                get {
+                    try {
+                        return ((string)(this[this.tableTBDongNuoc.HanhThuColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'HanhThu\' in table \'TBDongNuoc\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTBDongNuoc.HanhThuColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string NhanVienDN {
                 get {
                     try {
@@ -11502,6 +11533,18 @@ namespace ThuTien.BaoCao {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetToNull() {
                 this[this.tableTBDongNuoc.ToColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsHanhThuNull() {
+                return this.IsNull(this.tableTBDongNuoc.HanhThuColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetHanhThuNull() {
+                this[this.tableTBDongNuoc.HanhThuColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

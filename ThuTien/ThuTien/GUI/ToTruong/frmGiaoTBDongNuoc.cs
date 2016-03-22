@@ -323,6 +323,7 @@ namespace ThuTien.GUI.ToTruong
                                 dr["Ky"] = itemChild["Ky"];
                                 dr["TongCong"] = itemChild["TongCong"];
                                 dr["NhanVien"] = cmbNhanVienGiao.Text;
+                                dr["HanhThu"] = _cNguoiDung.GetHoTenByMaND(int.Parse(row["CreateBy"].ToString()));
                                 dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                             }
                     }

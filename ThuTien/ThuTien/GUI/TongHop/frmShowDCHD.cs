@@ -179,7 +179,8 @@ namespace ThuTien.GUI.TongHop
                         HOADON hd = _cHoaDon.Get(_dchd.FK_HOADON);
                         if (!string.IsNullOrEmpty(txtSoHoaDonMoi.Text.Trim()) && txtSoHoaDon.Text.Trim() != txtSoHoaDonMoi.Text.Trim())
                         {
-                            hd.SoHoaDonCu = txtSoHoaDon.Text.Trim();
+                            if (hd.SoHoaDonCu == null)
+                                hd.SoHoaDonCu = txtSoHoaDon.Text.Trim();
                             hd.SOHOADON = txtSoHoaDonMoi.Text.Trim().ToUpper();
                             _cHoaDon.Sua(hd);
                             //_dchd.SoHoaDon = txtSoHoaDonMoi.Text.Trim().ToUpper();
@@ -275,7 +276,8 @@ namespace ThuTien.GUI.TongHop
                         ///sửa số hóa đơn
                         if (!string.IsNullOrEmpty(txtSoHoaDonMoi.Text.Trim()) && txtSoHoaDon.Text.Trim() != txtSoHoaDonMoi.Text.Trim())
                         {
-                            _hoadon.SoHoaDonCu = txtSoHoaDon.Text.Trim();
+                            if (_hoadon.SoHoaDonCu == null)
+                                _hoadon.SoHoaDonCu = txtSoHoaDon.Text.Trim();
                             _hoadon.SOHOADON = txtSoHoaDonMoi.Text.Trim().ToUpper();
                             _cHoaDon.Sua(_hoadon);
                         }
