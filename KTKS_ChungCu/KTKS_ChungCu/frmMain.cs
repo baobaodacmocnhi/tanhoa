@@ -120,6 +120,10 @@ namespace KTKS_ChungCu
                     MessageBox.Show("Sổ này đã được lưu tại Lô, Phòng trên", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                if (_cChungTu.CheckCTChungTu(txtDanhBo.Text.Trim(),  txtLo.Text.Trim(), txtPhong.Text.Trim()))
+                {
+                    MessageBox.Show("Lô, Phòng trên đã có đăng ký trước đó", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 if (txtMaCT.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0" && txtSoNKDangKy.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "0")
                     if (int.Parse(txtSoNKTong.Text.Trim()) >= int.Parse(txtSoNKDangKy.Text.Trim()))
                     {

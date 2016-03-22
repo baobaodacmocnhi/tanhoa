@@ -396,6 +396,19 @@ namespace KTKS_ChungCu.DAL
             }
         }
 
+        public bool CheckCTChungTu(string DanhBo, string Lo, string Phong)
+        {
+            try
+            {
+                return db.CTChungTus.Any(itemCT => itemCT.DanhBo == DanhBo && itemCT.Lo == Lo && itemCT.Phong == Phong);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         public bool ThemCTChungTu(CTChungTu ctchungtu)
         {
             try
