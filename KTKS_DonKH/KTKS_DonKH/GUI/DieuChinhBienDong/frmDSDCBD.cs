@@ -1599,7 +1599,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             {
                                 CTDCBD ctdcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
 
-                                log.Write(k.ToString() + "/ " + ctdcbd.MaCTDCBD + "; " + ctdcbd.ThongTin + "; " + ctdcbd.DanhBo + "; ");
+                                log.Write(k.ToString() + "/ " + ctdcbd.MaCTDCBD + " ; " + ctdcbd.ThongTin + " ; " + ctdcbd.DanhBo + " ");
                                 //if(k==8)
                                 //    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 if (_cDLKH.CheckExist(ctdcbd.DanhBo) && !string.IsNullOrEmpty(ctdcbd.ThongTin))
@@ -1609,31 +1609,31 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     if (!string.IsNullOrEmpty(ctdcbd.DinhMuc_BD.ToString()))
                                     {
                                         dlkh.DINHMUC = ctdcbd.DinhMuc_BD.ToString();
-                                        sql = "DINHMUC=" + ctdcbd.DinhMuc_BD.ToString();
+                                        sql = "DINHMUC=" + dlkh.DINHMUC;
                                     }
                                     if (!string.IsNullOrEmpty(ctdcbd.GiaBieu_BD.ToString()))
                                     {
                                         dlkh.GIABIEU = ctdcbd.GiaBieu_BD.ToString();
                                         if (sql == "")
-                                            sql += "GIABIEU=" + ctdcbd.GiaBieu_BD;
+                                            sql += "GIABIEU=" + dlkh.GIABIEU;
                                         else
-                                            sql += ",GIABIEU=" + ctdcbd.GiaBieu_BD;
+                                            sql += ",GIABIEU=" + dlkh.GIABIEU;
                                     }
                                     if (!string.IsNullOrEmpty(ctdcbd.HoTen_BD))
                                     {
                                         dlkh.HOTEN = ctdcbd.HoTen_BD;
                                         if (sql == "")
-                                            sql += "HOTEN=N'" + ctdcbd.HoTen_BD + "'";
+                                            sql += "HOTEN=N'" + dlkh.HOTEN + "'";
                                         else
-                                            sql += ",HOTEN=N'" + ctdcbd.HoTen_BD + "'";
+                                            sql += ",HOTEN=N'" + dlkh.HOTEN + "'";
                                     }
                                     if (!string.IsNullOrEmpty(ctdcbd.MSThue_BD))
                                     {
                                         dlkh.MSTHUE = ctdcbd.MSThue_BD;
                                         if (sql == "")
-                                            sql += "MSTHUE='" + ctdcbd.MSThue_BD + "'";
+                                            sql += "MSTHUE='" + dlkh.MSTHUE + "'";
                                         else
-                                            sql += ",MSTHUE='" + ctdcbd.MSThue_BD + "'";
+                                            sql += ",MSTHUE='" + dlkh.MSTHUE + "'";
                                     }
                                     if (sql != "")
                                         sql = "update TB_DULIEUKHACHHANG set " + sql + " where DANHBO='" + ctdcbd.DanhBo + "'";
@@ -1705,7 +1705,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                         _cDLKH.Refresh();
                                                         dlkhFinal = _cDLKH.getDLKH(ctdcbd.DanhBo);
                                                     }
-                                                log.WriteLine(" GB: " + dlkhFinal.GIABIEU + " ĐM: " + dlkhFinal.DINHMUC);
+
+                                                if (!string.IsNullOrEmpty(ctdcbd.GiaBieu_BD.ToString()))
+                                                    log.Write(" GB: " + dlkhFinal.GIABIEU + "=" + ctdcbd.GiaBieu_BD.ToString());
+                                                if (!string.IsNullOrEmpty(ctdcbd.DinhMuc_BD.ToString()))
+                                                    log.Write(" ĐM: " + dlkhFinal.DINHMUC + "=" + ctdcbd.DinhMuc_BD.ToString());
+                                                log.WriteLine();
+
                                                 TB_GHICHU ghichu = new TB_GHICHU();
                                                 ghichu.DANHBO = ctdcbd.DanhBo;
                                                 ghichu.DONVI = "KTKS";

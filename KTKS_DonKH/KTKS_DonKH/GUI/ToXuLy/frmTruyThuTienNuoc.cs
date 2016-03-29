@@ -454,50 +454,51 @@ namespace KTKS_DonKH.GUI.ToXuLy
                             {
                                 if (_cTTTN.CheckCTTruyThuTienNuocbyKyNamMaTTTN(_cTTTN.getTruyThuTienNuocbyMaDon_TXL(_dontxl.MaDon).MaTTTN, item.Cells["Ky"].Value.ToString(), item.Cells["Nam"].Value.ToString()))
                                 {
-                                    MessageBox.Show("Kỳ "+item.Cells["Ky"].Value.ToString()+"/"+item.Cells["Nam"].Value.ToString()+" đã có \rVui lòng xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    MessageBox.Show("Kỳ " + item.Cells["Ky"].Value.ToString() + "/" + item.Cells["Nam"].Value.ToString() + " đã có \rVui lòng xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     return;
                                 }
                             }
+                        decimal MaTTTN = _cTTTN.getTruyThuTienNuocbyMaDon_TXL(_dontxl.MaDon).MaTTTN;
 
                         foreach (DataGridViewRow item in dgvTruyThuTienNuoc.Rows)
-                            if (item.Cells["Ky"].Value != null)
-                        {
-                            CTTruyThuTienNuoc cttttn = new CTTruyThuTienNuoc();
-                            cttttn.MaTTTN = _cTTTN.getTruyThuTienNuocbyMaDon_TXL(_dontxl.MaDon).MaTTTN;
-                            cttttn.Ky = item.Cells["Ky"].Value.ToString();
-                            cttttn.Nam = item.Cells["Nam"].Value.ToString();
-                            cttttn.GiaBieuCu = int.Parse(item.Cells["GiaBieu_Cu"].Value.ToString());
-                            cttttn.DinhMucCu = int.Parse(item.Cells["DinhMuc_Cu"].Value.ToString());
-                            cttttn.TieuThuCu = int.Parse(item.Cells["TieuThu_Cu"].Value.ToString());
-                            cttttn.GiaBanCu = int.Parse(item.Cells["GiaBan_Cu"].Value.ToString());
-                            cttttn.ThueGTGTCu = int.Parse(item.Cells["ThueGTGT_Cu"].Value.ToString());
-                            cttttn.PhiBVMTCu = int.Parse(item.Cells["PhiBVMT_Cu"].Value.ToString());
-                            cttttn.TongCongCu = int.Parse(item.Cells["TongCong_Cu"].Value.ToString());
-                            ///
-                            cttttn.GiaBieuMoi = int.Parse(item.Cells["GiaBieu_Moi"].Value.ToString());
-                            cttttn.DinhMucMoi = int.Parse(item.Cells["DinhMuc_Moi"].Value.ToString());
-                            cttttn.TieuThuMoi = int.Parse(item.Cells["TieuThu_Moi"].Value.ToString());
-                            cttttn.GiaBanMoi = int.Parse(item.Cells["GiaBan_Moi"].Value.ToString());
-                            cttttn.ThueGTGTMoi = int.Parse(item.Cells["ThueGTGT_Moi"].Value.ToString());
-                            cttttn.PhiBVMTMoi = int.Parse(item.Cells["PhiBVMT_Moi"].Value.ToString());
-                            cttttn.TongCongMoi = int.Parse(item.Cells["TongCong_Moi"].Value.ToString());
-                            cttttn.TangGiam = item.Cells["TangGiam"].Value.ToString();
+                            if (item.Cells["Ky"].Value != null && !_cTTTN.CheckCTTruyThuTienNuocbyKyNamMaTTTN(MaTTTN, item.Cells["Ky"].Value.ToString(), item.Cells["Nam"].Value.ToString()))
+                            {
+                                CTTruyThuTienNuoc cttttn = new CTTruyThuTienNuoc();
+                                cttttn.MaTTTN = MaTTTN;
+                                cttttn.Ky = item.Cells["Ky"].Value.ToString();
+                                cttttn.Nam = item.Cells["Nam"].Value.ToString();
+                                cttttn.GiaBieuCu = int.Parse(item.Cells["GiaBieu_Cu"].Value.ToString());
+                                cttttn.DinhMucCu = int.Parse(item.Cells["DinhMuc_Cu"].Value.ToString());
+                                cttttn.TieuThuCu = int.Parse(item.Cells["TieuThu_Cu"].Value.ToString());
+                                cttttn.GiaBanCu = int.Parse(item.Cells["GiaBan_Cu"].Value.ToString());
+                                cttttn.ThueGTGTCu = int.Parse(item.Cells["ThueGTGT_Cu"].Value.ToString());
+                                cttttn.PhiBVMTCu = int.Parse(item.Cells["PhiBVMT_Cu"].Value.ToString());
+                                cttttn.TongCongCu = int.Parse(item.Cells["TongCong_Cu"].Value.ToString());
+                                ///
+                                cttttn.GiaBieuMoi = int.Parse(item.Cells["GiaBieu_Moi"].Value.ToString());
+                                cttttn.DinhMucMoi = int.Parse(item.Cells["DinhMuc_Moi"].Value.ToString());
+                                cttttn.TieuThuMoi = int.Parse(item.Cells["TieuThu_Moi"].Value.ToString());
+                                cttttn.GiaBanMoi = int.Parse(item.Cells["GiaBan_Moi"].Value.ToString());
+                                cttttn.ThueGTGTMoi = int.Parse(item.Cells["ThueGTGT_Moi"].Value.ToString());
+                                cttttn.PhiBVMTMoi = int.Parse(item.Cells["PhiBVMT_Moi"].Value.ToString());
+                                cttttn.TongCongMoi = int.Parse(item.Cells["TongCong_Moi"].Value.ToString());
+                                cttttn.TangGiam = item.Cells["TangGiam"].Value.ToString();
 
-                            _cTTTN.ThemCTTruyThuTienNuoc(cttttn);
-                        }
+                                _cTTTN.ThemCTTruyThuTienNuoc(cttttn);
+                            }
 
                         foreach (DataGridViewRow item in dgvThanhToanTruyThuTienNuoc.Rows)
                             if (item.Cells["NgayDong"].Value != null)
-                        {
-                            ThanhToanTruyThuTienNuoc tttttn = new ThanhToanTruyThuTienNuoc();
+                            {
+                                ThanhToanTruyThuTienNuoc tttttn = new ThanhToanTruyThuTienNuoc();
 
-                            tttttn.MaTTTN = _cTTTN.getTruyThuTienNuocbyMaDon_TXL(_dontxl.MaDon).MaTTTN;
-                            string[] date = item.Cells["NgayDong"].Value.ToString().Split('/');
-                            tttttn.NgayDong = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
-                            tttttn.SoTien = int.Parse(item.Cells["SoTien"].Value.ToString());
+                                tttttn.MaTTTN = _cTTTN.getTruyThuTienNuocbyMaDon_TXL(_dontxl.MaDon).MaTTTN;
+                                string[] date = item.Cells["NgayDong"].Value.ToString().Split('/');
+                                tttttn.NgayDong = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
+                                tttttn.SoTien = int.Parse(item.Cells["SoTien"].Value.ToString());
 
-                            _cTTTN.ThemThanhToanTruyThuTienNuoc(tttttn);
-                        }
+                                _cTTTN.ThemThanhToanTruyThuTienNuoc(tttttn);
+                            }
                         Clear();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtMaDon.Focus();
@@ -541,46 +542,47 @@ namespace KTKS_DonKH.GUI.ToXuLy
                                 _cDonKH.SuaDonKH(_donkh, true);
                             }
                         }
+                        decimal MaTTTN = _cTTTN.getTruyThuTienNuocbyMaDon_TXL(_donkh.MaDon).MaTTTN;
 
                         foreach (DataGridViewRow item in dgvTruyThuTienNuoc.Rows)
-                            if (item.Cells["Ky"].Value != null)
-                        {
-                            CTTruyThuTienNuoc cttttn = new CTTruyThuTienNuoc();
-                            cttttn.MaTTTN = _cTTTN.getTruyThuTienNuocbyMaDon(_donkh.MaDon).MaTTTN;
-                            cttttn.Ky = item.Cells["Ky"].Value.ToString();
-                            cttttn.Nam = item.Cells["Nam"].Value.ToString();
-                            cttttn.GiaBieuCu = int.Parse(item.Cells["GiaBieu_Cu"].Value.ToString());
-                            cttttn.DinhMucCu = int.Parse(item.Cells["DinhMuc_Cu"].Value.ToString());
-                            cttttn.TieuThuCu = int.Parse(item.Cells["TieuThu_Cu"].Value.ToString());
-                            cttttn.GiaBanCu = int.Parse(item.Cells["GiaBan_Cu"].Value.ToString());
-                            cttttn.ThueGTGTCu = int.Parse(item.Cells["ThueGTGT_Cu"].Value.ToString());
-                            cttttn.PhiBVMTCu = int.Parse(item.Cells["PhiBVMT_Cu"].Value.ToString());
-                            cttttn.TongCongCu = int.Parse(item.Cells["TongCong_Cu"].Value.ToString());
-                            ///
-                            cttttn.GiaBieuMoi = int.Parse(item.Cells["GiaBieu_Moi"].Value.ToString());
-                            cttttn.DinhMucMoi = int.Parse(item.Cells["DinhMuc_Moi"].Value.ToString());
-                            cttttn.TieuThuMoi = int.Parse(item.Cells["TieuThu_Moi"].Value.ToString());
-                            cttttn.GiaBanMoi = int.Parse(item.Cells["GiaBan_Moi"].Value.ToString());
-                            cttttn.ThueGTGTMoi = int.Parse(item.Cells["ThueGTGT_Moi"].Value.ToString());
-                            cttttn.PhiBVMTMoi = int.Parse(item.Cells["PhiBVMT_Moi"].Value.ToString());
-                            cttttn.TongCongMoi = int.Parse(item.Cells["TongCong_Moi"].Value.ToString());
-                            cttttn.TangGiam = item.Cells["TangGiam"].Value.ToString();
+                            if (item.Cells["Ky"].Value != null && !_cTTTN.CheckCTTruyThuTienNuocbyKyNamMaTTTN(MaTTTN, item.Cells["Ky"].Value.ToString(), item.Cells["Nam"].Value.ToString()))
+                            {
+                                CTTruyThuTienNuoc cttttn = new CTTruyThuTienNuoc();
+                                cttttn.MaTTTN = MaTTTN;
+                                cttttn.Ky = item.Cells["Ky"].Value.ToString();
+                                cttttn.Nam = item.Cells["Nam"].Value.ToString();
+                                cttttn.GiaBieuCu = int.Parse(item.Cells["GiaBieu_Cu"].Value.ToString());
+                                cttttn.DinhMucCu = int.Parse(item.Cells["DinhMuc_Cu"].Value.ToString());
+                                cttttn.TieuThuCu = int.Parse(item.Cells["TieuThu_Cu"].Value.ToString());
+                                cttttn.GiaBanCu = int.Parse(item.Cells["GiaBan_Cu"].Value.ToString());
+                                cttttn.ThueGTGTCu = int.Parse(item.Cells["ThueGTGT_Cu"].Value.ToString());
+                                cttttn.PhiBVMTCu = int.Parse(item.Cells["PhiBVMT_Cu"].Value.ToString());
+                                cttttn.TongCongCu = int.Parse(item.Cells["TongCong_Cu"].Value.ToString());
+                                ///
+                                cttttn.GiaBieuMoi = int.Parse(item.Cells["GiaBieu_Moi"].Value.ToString());
+                                cttttn.DinhMucMoi = int.Parse(item.Cells["DinhMuc_Moi"].Value.ToString());
+                                cttttn.TieuThuMoi = int.Parse(item.Cells["TieuThu_Moi"].Value.ToString());
+                                cttttn.GiaBanMoi = int.Parse(item.Cells["GiaBan_Moi"].Value.ToString());
+                                cttttn.ThueGTGTMoi = int.Parse(item.Cells["ThueGTGT_Moi"].Value.ToString());
+                                cttttn.PhiBVMTMoi = int.Parse(item.Cells["PhiBVMT_Moi"].Value.ToString());
+                                cttttn.TongCongMoi = int.Parse(item.Cells["TongCong_Moi"].Value.ToString());
+                                cttttn.TangGiam = item.Cells["TangGiam"].Value.ToString();
 
-                            _cTTTN.ThemCTTruyThuTienNuoc(cttttn);
-                        }
+                                _cTTTN.ThemCTTruyThuTienNuoc(cttttn);
+                            }
 
                         foreach (DataGridViewRow item in dgvThanhToanTruyThuTienNuoc.Rows)
                             if (item.Cells["NgayDong"].Value != null)
-                        {
-                            ThanhToanTruyThuTienNuoc tttttn = new ThanhToanTruyThuTienNuoc();
+                            {
+                                ThanhToanTruyThuTienNuoc tttttn = new ThanhToanTruyThuTienNuoc();
 
-                            tttttn.MaTTTN = _cTTTN.getTruyThuTienNuocbyMaDon(_donkh.MaDon).MaTTTN;
-                            string[] date = item.Cells["NgayDong"].Value.ToString().Split('/');
-                            tttttn.NgayDong = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
-                            tttttn.SoTien = int.Parse(item.Cells["SoTien"].Value.ToString());
+                                tttttn.MaTTTN = _cTTTN.getTruyThuTienNuocbyMaDon(_donkh.MaDon).MaTTTN;
+                                string[] date = item.Cells["NgayDong"].Value.ToString().Split('/');
+                                tttttn.NgayDong = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
+                                tttttn.SoTien = int.Parse(item.Cells["SoTien"].Value.ToString());
 
-                            _cTTTN.ThemThanhToanTruyThuTienNuoc(tttttn);
-                        }
+                                _cTTTN.ThemThanhToanTruyThuTienNuoc(tttttn);
+                            }
                         Clear();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtMaDon.Focus();

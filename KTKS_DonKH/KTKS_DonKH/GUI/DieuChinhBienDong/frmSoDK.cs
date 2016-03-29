@@ -40,7 +40,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 cmbLoaiCT.Enabled = true;
                 txtMaCT.ReadOnly = false;
-                txtDiaChi.ReadOnly = false;
+                //txtHoTen.ReadOnly = false;
+                //txtDiaChi.ReadOnly = false;
                 txtSoNKTong.ReadOnly = false;
                 txtSoNKDangKy.ReadOnly = false;
                 txtThoiHan.ReadOnly = false;
@@ -53,7 +54,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (action == "Sửa")
                 {
                     cmbLoaiCT.Enabled = true;
-                    txtDiaChi.ReadOnly = false;
+                    //txtHoTen.ReadOnly = false;
+                    //txtDiaChi.ReadOnly = false;
                     txtSoNKTong.ReadOnly = false;
                     txtSoNKDangKy.ReadOnly = false;
                     txtThoiHan.ReadOnly = false;
@@ -94,9 +96,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtDanhBo.Text = _source["DanhBo"];
                 cmbLoaiCT.SelectedValue = _cLoaiChungTu.getMaLCTbyTenLCT(_source["TenLCT"]);
                 txtMaCT.Text = _source["MaCT"];
+                txtHoTen.Text = _source["HoTen"];
                 txtDiaChi.Text = _source["DiaChi"];
                 if (_action == "Thêm")
+                {
+                    txtHoTen.Text = _source["HoTenKH"];
                     txtDiaChi.Text = _source["DiaChiKH"];
+                }
                 txtGhiChu.Text = _source["GhiChu"];
                 txtSoNKTong.Text = _source["SoNKTong"];
                 txtSoNKDangKy.Text = _source["SoNKDangKy"];
@@ -261,7 +267,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 ///
                                 lichsuchungtu.YeuCauCat = true;
                                 lichsuchungtu.NhanNK_DanhBo = txtDanhBo.Text.Trim();
-                                lichsuchungtu.NhanNK_HoTen = _source["HoTenKH"];
+                                //lichsuchungtu.NhanNK_HoTen = _source["HoTenKH"];
+                                lichsuchungtu.NhanNK_HoTen = txtHoTen.Text.Trim();
                                 //lichsuchungtu.NhanNK_DiaChi = _source["DiaChiKH"];
                                 lichsuchungtu.NhanNK_DiaChi = txtDiaChi.Text.Trim();
                                 //lichsuchungtu.PhieuDuocKy = true;
@@ -525,8 +532,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 ///
                                 lichsuchungtu.YeuCauCat = true;
                                 lichsuchungtu.NhanNK_DanhBo = txtDanhBo.Text.Trim();
-                                lichsuchungtu.NhanNK_HoTen = _source["HoTenKH"];
-                                lichsuchungtu.NhanNK_DiaChi = _source["DiaChiKH"];
+                                //lichsuchungtu.NhanNK_HoTen = _source["HoTenKH"];
+                                //lichsuchungtu.NhanNK_DiaChi = _source["DiaChiKH"];
+                                lichsuchungtu.NhanNK_HoTen = txtHoTen.Text.Trim();
+                                lichsuchungtu.NhanNK_DiaChi = txtDiaChi.Text.Trim();
                                 lichsuchungtu.PhieuDuocKy = true;
                             }
                         else
@@ -557,8 +566,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 ///
                                 lichsuchungtu2.YeuCauCat = true;
                                 lichsuchungtu2.NhanNK_DanhBo = txtDanhBo.Text.Trim();
-                                lichsuchungtu2.NhanNK_HoTen = _source["HoTenKH"];
-                                lichsuchungtu2.NhanNK_DiaChi = _source["DiaChiKH"];
+                                lichsuchungtu2.NhanNK_HoTen = txtHoTen.Text.Trim();
+                                lichsuchungtu2.NhanNK_DiaChi = txtDiaChi.Text.Trim();
                                 lichsuchungtu2.PhieuDuocKy = true;
                                 ///
                             }
@@ -587,8 +596,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     ///
                                     lichsuchungtu3.YeuCauCat = true;
                                     lichsuchungtu3.NhanNK_DanhBo = txtDanhBo.Text.Trim();
-                                    lichsuchungtu3.NhanNK_HoTen = _source["HoTenKH"];
-                                    lichsuchungtu3.NhanNK_DiaChi = _source["DiaChiKH"];
+                                    lichsuchungtu3.NhanNK_HoTen = txtHoTen.Text.Trim();
+                                    lichsuchungtu3.NhanNK_DiaChi = txtDiaChi.Text.Trim();
                                     lichsuchungtu3.PhieuDuocKy = true;
                                     ///
                                 }
@@ -617,8 +626,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     ///
                                     lichsuchungtu4.YeuCauCat = true;
                                     lichsuchungtu4.NhanNK_DanhBo = txtDanhBo.Text.Trim();
-                                    lichsuchungtu4.NhanNK_HoTen = _source["HoTenKH"];
-                                    lichsuchungtu4.NhanNK_DiaChi = _source["DiaChiKH"];
+                                    lichsuchungtu4.NhanNK_HoTen = txtHoTen.Text.Trim();
+                                    lichsuchungtu4.NhanNK_DiaChi = txtDiaChi.Text.Trim();
                                     lichsuchungtu4.PhieuDuocKy = true;
                                     ///
                                 }
@@ -647,8 +656,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     ///
                                     lichsuchungtu5.YeuCauCat = true;
                                     lichsuchungtu5.NhanNK_DanhBo = txtDanhBo.Text.Trim();
-                                    lichsuchungtu5.NhanNK_HoTen = _source["HoTenKH"];
-                                    lichsuchungtu5.NhanNK_DiaChi = _source["DiaChiKH"];
+                                    lichsuchungtu5.NhanNK_HoTen = txtHoTen.Text.Trim();
+                                    lichsuchungtu5.NhanNK_DiaChi = txtDiaChi.Text.Trim();
                                     lichsuchungtu5.PhieuDuocKy = true;
                                     ///
 
@@ -722,9 +731,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 else
                     if (_cChungTu.CheckCTChungTubyMaCT(txtMaCT.Text.Trim()))
                         MessageBox.Show("Số đăng ký này đã có đăng ký trước", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtDiaChi.Focus();
+                txtHoTen.Focus();
                 dgvDSDanhBo.DataSource = _cChungTu.LoadDSCTChungTubyMaCT(txtMaCT.Text.Trim());
             }
+        }
+
+        private void txtHoTen_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtDiaChi.Focus();
         }
 
         private void txtSoNKTong_KeyPress(object sender, KeyPressEventArgs e)
@@ -873,6 +888,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             this.DialogResult = DialogResult.OK;
         }
+
+        
 
         
 

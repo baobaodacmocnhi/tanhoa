@@ -149,6 +149,8 @@
             this.label57 = new System.Windows.Forms.Label();
             this.dateHetHan = new System.Windows.Forms.DateTimePicker();
             this.chkSuaNgayHetHan = new System.Windows.Forms.CheckBox();
+            this.txtHoTen = new System.Windows.Forms.TextBox();
+            this.label58 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel_YCCat3.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -210,7 +212,7 @@
             // 
             // txtMaCT
             // 
-            this.txtMaCT.Location = new System.Drawing.Point(125, 75);
+            this.txtMaCT.Location = new System.Drawing.Point(60, 75);
             this.txtMaCT.Name = "txtMaCT";
             this.txtMaCT.ReadOnly = true;
             this.txtMaCT.Size = new System.Drawing.Size(100, 25);
@@ -313,7 +315,6 @@
             // 
             this.txtDiaChi.Location = new System.Drawing.Point(125, 106);
             this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.ReadOnly = true;
             this.txtDiaChi.Size = new System.Drawing.Size(285, 25);
             this.txtDiaChi.TabIndex = 3;
             this.txtDiaChi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiaChi_KeyPress);
@@ -1326,12 +1327,31 @@
             this.chkSuaNgayHetHan.Text = "Sửa Ngày Hết Hạn";
             this.chkSuaNgayHetHan.UseVisualStyleBackColor = true;
             // 
+            // txtHoTen
+            // 
+            this.txtHoTen.Location = new System.Drawing.Point(258, 75);
+            this.txtHoTen.Name = "txtHoTen";
+            this.txtHoTen.Size = new System.Drawing.Size(152, 25);
+            this.txtHoTen.TabIndex = 36;
+            this.txtHoTen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHoTen_KeyPress);
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(166, 78);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(86, 17);
+            this.label58.TabIndex = 35;
+            this.label58.Text = "Khách Hàng:";
+            // 
             // frmSoDK
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(903, 472);
+            this.Controls.Add(this.txtHoTen);
+            this.Controls.Add(this.label58);
             this.Controls.Add(this.chkSuaNgayHetHan);
             this.Controls.Add(this.dateHetHan);
             this.Controls.Add(this.label57);
@@ -1522,5 +1542,7 @@
         private System.Windows.Forms.Label label57;
         private System.Windows.Forms.DateTimePicker dateHetHan;
         private System.Windows.Forms.CheckBox chkSuaNgayHetHan;
+        private System.Windows.Forms.TextBox txtHoTen;
+        private System.Windows.Forms.Label label58;
     }
 }

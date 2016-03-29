@@ -254,6 +254,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 source.Add("DiaChiKH", txtDiaChi.Text.Trim());
             source.Add("TenLCT", "Hộ Khẩu");
             source.Add("MaCT", "");
+            source.Add("HoTen", "");
             source.Add("DiaChi", "");
             source.Add("SoNKTong", "");
             source.Add("SoNKDangKy", "");
@@ -291,6 +292,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("MaCT", dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString());
             source.Add("HoTenKH", txtHoTen.Text.Trim());
             source.Add("DiaChiKH", txtDiaChi.Text.Trim());
+            source.Add("HoTen", txtHoTen.Text.Trim());
             source.Add("DiaChi", dgvDSSoDangKy.CurrentRow.Cells["DiaChi"].Value.ToString());
             source.Add("SoNKTong", dgvDSSoDangKy.CurrentRow.Cells["SoNKTong"].Value.ToString());
             source.Add("SoNKDangKy", dgvDSSoDangKy.CurrentRow.Cells["SoNKDangKy"].Value.ToString());
@@ -1126,6 +1128,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     source.Add("DiaChiKH", txtDiaChi.Text.Trim());
                 source.Add("TenLCT", "Hộ Khẩu");
                 source.Add("MaCT", "");
+                source.Add("HoTen", "");
                 source.Add("DiaChi", "");
                 source.Add("SoNKTong", "");
                 source.Add("SoNKDangKy", "");
