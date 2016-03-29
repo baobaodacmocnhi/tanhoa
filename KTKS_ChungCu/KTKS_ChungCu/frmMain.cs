@@ -111,7 +111,10 @@ namespace KTKS_ChungCu
                     string DanhBo = "";
                     foreach (CTChungTu item in lstCT)
                     {
-                        DanhBo += item.DanhBo + ",";
+                        if (string.IsNullOrEmpty(DanhBo))
+                            DanhBo += item.DanhBo + ", STT:" + item.STT;
+                        else
+                            DanhBo += " ," + item.DanhBo + ", STT:" + item.STT;
                     }
                     MessageBox.Show("Sổ này đã được lưu tại Danh Bộ: " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -120,7 +123,7 @@ namespace KTKS_ChungCu
                     MessageBox.Show("Sổ này đã được lưu tại Lô, Phòng trên", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (_cChungTu.CheckCTChungTu(txtDanhBo.Text.Trim(),  txtLo.Text.Trim(), txtPhong.Text.Trim()))
+                if (_cChungTu.CheckCTChungTu(txtDanhBo.Text.Trim(), txtLo.Text.Trim(), txtPhong.Text.Trim()))
                 {
                     MessageBox.Show("Lô, Phòng trên đã có đăng ký trước đó", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -267,7 +270,7 @@ namespace KTKS_ChungCu
             catch
             {
             }
-            
+
         }
 
         //private void txtMaCT_TimKiem_KeyPress(object sender, KeyPressEventArgs e)
@@ -471,8 +474,8 @@ namespace KTKS_ChungCu
                     DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_Phong(txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Số Thứ Tự":
-                    if (txtNoiDungTimKiem.Text.Trim()!="")
-                    DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_STT(txtDanhBo.Text.Trim(),int.Parse(txtNoiDungTimKiem.Text.Trim()));
+                    if (txtNoiDungTimKiem.Text.Trim() != "")
+                        DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_STT(txtDanhBo.Text.Trim(), txtLo.Text.Trim(), int.Parse(txtNoiDungTimKiem.Text.Trim()));
                     break;
             }
         }
@@ -487,8 +490,8 @@ namespace KTKS_ChungCu
             switch (cmbTimTheo.SelectedItem.ToString())
             {
                 case "Số Thứ Tự":
-                    if (txtNoiDungTimKiem.Text.Trim() != ""&&txtNoiDungTimKiem2.Text.Trim() != "")
-                    DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_STTs(txtDanhBo.Text.Trim(), int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(txtNoiDungTimKiem2.Text.Trim()));
+                    if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
+                        DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_STTs(txtDanhBo.Text.Trim(),txtLo.Text.Trim(), int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(txtNoiDungTimKiem2.Text.Trim()));
                     break;
             }
         }

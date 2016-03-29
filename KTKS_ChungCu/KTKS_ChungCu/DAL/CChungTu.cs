@@ -234,14 +234,14 @@ namespace KTKS_ChungCu.DAL
             }
         }
 
-        public DataTable LoadDSChungTu_STT(string DanhBo,int STT)
+        public DataTable LoadDSChungTu_STT(string DanhBo,string Lo,int STT)
         {
             try
             {
                 var query = from itemCTCT in db.CTChungTus
                             join itemCT in db.ChungTus on itemCTCT.MaCT equals itemCT.MaCT
                             //join itemLCT in dbDonKH.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
-                            where itemCTCT.DanhBo==DanhBo&& itemCTCT.STT == STT
+                            where itemCTCT.DanhBo == DanhBo && itemCTCT.STT == STT && itemCTCT.Lo == Lo
                             orderby itemCTCT.STT ascending
                             select new
                             {
@@ -268,14 +268,14 @@ namespace KTKS_ChungCu.DAL
             }
         }
 
-        public DataTable LoadDSChungTu_STTs(string DanhBo, int TuSTT, int DenSTT)
+        public DataTable LoadDSChungTu_STTs(string DanhBo,string Lo, int TuSTT, int DenSTT)
         {
             try
             {
                 var query = from itemCTCT in db.CTChungTus
                             join itemCT in db.ChungTus on itemCTCT.MaCT equals itemCT.MaCT
                             //join itemLCT in dbDonKH.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
-                            where itemCTCT.DanhBo == DanhBo &&  itemCTCT.STT >= TuSTT && itemCTCT.STT <= DenSTT
+                            where itemCTCT.DanhBo == DanhBo &&  itemCTCT.STT >= TuSTT && itemCTCT.STT <= DenSTT && itemCTCT.Lo==Lo
                             orderby itemCTCT.STT ascending
                             select new
                             {
@@ -2304,14 +2304,14 @@ namespace KTKS_ChungCu.DAL
             }
         }
 
-        public DataTable LoadDSCatChuyenDMBySTT(string DanhBo,int STT)
+        public DataTable LoadDSCatChuyenDMBySTT(string DanhBo,string Lo,int STT)
         {
             //string a = "";
             try
             {
                 var query = from itemLSCT in db.LichSuChungTus
                             //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
-                            where itemLSCT.SoPhieu != null && itemLSCT.DanhBo == DanhBo && itemLSCT.STT==STT
+                            where itemLSCT.SoPhieu != null && itemLSCT.DanhBo == DanhBo && itemLSCT.STT==STT && itemLSCT.Lo==Lo
                             //where itemLSCT.MaLSCT == 126114
                             orderby itemLSCT.CreateDate ascending
                             select new
@@ -2437,14 +2437,14 @@ namespace KTKS_ChungCu.DAL
             }
         }
 
-        public DataTable LoadDSCatChuyenDMBySTTs(string DanhBo, int TuSTT,int DenSTT)
+        public DataTable LoadDSCatChuyenDMBySTTs(string DanhBo, string Lo,int TuSTT,int DenSTT)
         {
             //string a = "";
             try
             {
                 var query = from itemLSCT in db.LichSuChungTus
                             //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
-                            where itemLSCT.SoPhieu != null && itemLSCT.DanhBo == DanhBo && itemLSCT.STT >= TuSTT && itemLSCT.STT <= DenSTT
+                            where itemLSCT.SoPhieu != null && itemLSCT.DanhBo == DanhBo && itemLSCT.STT >= TuSTT && itemLSCT.STT <= DenSTT && itemLSCT.Lo==Lo
                             //where itemLSCT.MaLSCT == 126114
                             orderby itemLSCT.CreateDate ascending
                             select new

@@ -90,7 +90,7 @@ namespace KTKS_ChungCu
                             break;
                         case "Số Thứ Tự":
                             if (txtNoiDungTimKiem.Text.Trim() != "")
-                            dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMBySTT(txtDanhBo.Text.Trim().Replace("-", ""), int.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                            dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMBySTT(txtDanhBo.Text.Trim().Replace("-", ""),txtLo.Text.Trim(), int.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
                             break;
                     }
                 }
@@ -112,7 +112,7 @@ namespace KTKS_ChungCu
                         break;
                     case "Số Thứ Tự":
                         if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
-                        dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMBySTTs(txtDanhBo.Text.Trim().Replace("-", ""), int.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), int.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                            dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMBySTTs(txtDanhBo.Text.Trim().Replace("-", ""), txtLo.Text.Trim(), int.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), int.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
                         break;
                 }
 
