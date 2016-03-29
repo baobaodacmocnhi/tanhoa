@@ -127,14 +127,14 @@ namespace ThuTien.GUI.ChuyenKhoan
             }
             if (dgvTienDu.Columns[e.ColumnIndex].Name == "ChoXuLy_TienDu" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvTienDu[e.ColumnIndex, e.RowIndex].Value.ToString()))
             {
-                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
-                {
+                //if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                //{
                     TT_TienDu tiendu = _cTienDu.Get(dgvTienDu["DanhBo_TienDu", e.RowIndex].Value.ToString());
                     tiendu.ChoXuLy = bool.Parse(e.FormattedValue.ToString());
                     _cTienDu.Sua(tiendu);
-                }
-                else
-                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //}
+                //else
+                //    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -120,6 +120,7 @@
             this.btnInDSNVThucTe = new System.Windows.Forms.Button();
             this.chkDenKy = new System.Windows.Forms.CheckBox();
             this.chkTrongKy = new System.Windows.Forms.CheckBox();
+            this.btnBaoCao = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDCoQuan)).BeginInit();
             this.tabTuGia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
@@ -996,11 +997,22 @@
             this.chkTrongKy.UseVisualStyleBackColor = true;
             this.chkTrongKy.CheckedChanged += new System.EventHandler(this.chkTrongKy_CheckedChanged);
             // 
+            // btnBaoCao
+            // 
+            this.btnBaoCao.Location = new System.Drawing.Point(912, 11);
+            this.btnBaoCao.Name = "btnBaoCao";
+            this.btnBaoCao.Size = new System.Drawing.Size(75, 23);
+            this.btnBaoCao.TabIndex = 61;
+            this.btnBaoCao.Text = "Báo Cáo";
+            this.btnBaoCao.UseVisualStyleBackColor = true;
+            this.btnBaoCao.Click += new System.EventHandler(this.btnBaoCao_Click);
+            // 
             // frmKiemTraTonDoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1315, 742);
+            this.Controls.Add(this.btnBaoCao);
             this.Controls.Add(this.chkTrongKy);
             this.Controls.Add(this.chkDenKy);
             this.Controls.Add(this.btnInDSNVThucTe);
@@ -1126,5 +1138,6 @@
         private System.Windows.Forms.Button btnInDSNVThucTe;
         private System.Windows.Forms.CheckBox chkDenKy;
         private System.Windows.Forms.CheckBox chkTrongKy;
+        private System.Windows.Forms.Button btnBaoCao;
     }
 }

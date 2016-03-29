@@ -114,6 +114,13 @@ namespace ThuTien.GUI.ToTruong
             col.DataType = System.Type.GetType("System.Int32");
             dt.Columns.Add(col);
 
+            col = new DataColumn("DinhMuc_Cu");
+            col.DataType = System.Type.GetType("System.Int32");
+            dt.Columns.Add(col);
+
+            col = new DataColumn("DinhMuc_Moi");
+            col.DataType = System.Type.GetType("System.Int32");
+            dt.Columns.Add(col);
             //bsHoaDon.DataSource = dt;
         }
 
@@ -140,6 +147,12 @@ namespace ThuTien.GUI.ToTruong
                             row["ThueGTGT"] = item["ThueGTGT"];
                             row["PhiBVMT"] = item["PhiBVMT"];
                             row["TongCong"] = item["TongCong"];
+                            CTDCBD dcbd = _cKTKS_DonKH.GetDCBD(item["DanhBo"].ToString());
+                            if (dcbd != null)
+                            {
+                                row["DinhMuc_Cu"] = dcbd.DinhMuc;
+                                row["DinhMuc_Moi"] = dcbd.DinhMuc_BD;
+                            }
                             dt.Rows.Add(row);
                         }
                 }
@@ -158,7 +171,12 @@ namespace ThuTien.GUI.ToTruong
                         if (hoadon.DM != null)
                             row["DinhMuc"] = hoadon.DM;
                         row["TieuThu"] = 0;
-
+                        CTDCBD dcbd = _cKTKS_DonKH.GetDCBD(hoadon.DANHBA);
+                        if (dcbd != null)
+                        {
+                            row["DinhMuc_Cu"] = dcbd.DinhMuc;
+                            row["DinhMuc_Moi"] = dcbd.DinhMuc_BD;
+                        }
                         dt.Rows.Add(row);
                     }
                 }

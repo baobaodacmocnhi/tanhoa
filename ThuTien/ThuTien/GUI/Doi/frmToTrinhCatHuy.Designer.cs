@@ -58,6 +58,8 @@
             this.CreateDate_CT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.btnXem = new System.Windows.Forms.Button();
+            this.radPhoGiamDoc = new System.Windows.Forms.RadioButton();
+            this.radGiamDoc = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvToTrinh)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -116,7 +118,7 @@
             this.groupBox1.Controls.Add(this.dgvToTrinh);
             this.groupBox1.Location = new System.Drawing.Point(12, 39);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(327, 229);
+            this.groupBox1.Size = new System.Drawing.Size(327, 590);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh Sách Tờ Trình";
@@ -144,7 +146,7 @@
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvToTrinh.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvToTrinh.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvToTrinh.Size = new System.Drawing.Size(315, 200);
+            this.dgvToTrinh.Size = new System.Drawing.Size(315, 565);
             this.dgvToTrinh.TabIndex = 0;
             this.dgvToTrinh.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvToTrinh_CellContentClick);
             this.dgvToTrinh.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvToTrinh_CellEndEdit);
@@ -317,11 +319,35 @@
             this.btnXem.UseVisualStyleBackColor = true;
             this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
+            // radPhoGiamDoc
+            // 
+            this.radPhoGiamDoc.AutoSize = true;
+            this.radPhoGiamDoc.Checked = true;
+            this.radPhoGiamDoc.Location = new System.Drawing.Point(894, 26);
+            this.radPhoGiamDoc.Name = "radPhoGiamDoc";
+            this.radPhoGiamDoc.Size = new System.Drawing.Size(94, 17);
+            this.radPhoGiamDoc.TabIndex = 50;
+            this.radPhoGiamDoc.TabStop = true;
+            this.radPhoGiamDoc.Text = "Phó Giám Đốc";
+            this.radPhoGiamDoc.UseVisualStyleBackColor = true;
+            // 
+            // radGiamDoc
+            // 
+            this.radGiamDoc.AutoSize = true;
+            this.radGiamDoc.Location = new System.Drawing.Point(894, 3);
+            this.radGiamDoc.Name = "radGiamDoc";
+            this.radGiamDoc.Size = new System.Drawing.Size(72, 17);
+            this.radGiamDoc.TabIndex = 49;
+            this.radGiamDoc.Text = "Giám Đốc";
+            this.radGiamDoc.UseVisualStyleBackColor = true;
+            // 
             // frmToTrinhCatHuy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1277, 668);
+            this.Controls.Add(this.radPhoGiamDoc);
+            this.Controls.Add(this.radGiamDoc);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox2);
@@ -371,5 +397,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MaTT;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Khoa;
+        private System.Windows.Forms.RadioButton radPhoGiamDoc;
+        private System.Windows.Forms.RadioButton radGiamDoc;
     }
 }

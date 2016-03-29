@@ -433,14 +433,13 @@ namespace ThuTien.GUI.HanhThu
             //{
             dsBaoCao dsBaoCao = new dsBaoCao();
             DataTable dt = new DataTable();
-
             dsBaoCao.Tables["TBDongNuoc"].PrimaryKey = new DataColumn[] { dsBaoCao.Tables["TBDongNuoc"].Columns["DanhBo"] };
 
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
                 dt = (DataTable)dgvHDTuGia.DataSource;
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
-                    if (bool.Parse(item.Cells["In_TG"].Value.ToString()) && !dsBaoCao.Tables["TBDongNuoc"].Rows.Contains(item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ")))
+                    if (!dsBaoCao.Tables["TBDongNuoc"].Rows.Contains(item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ")))
                     {
                         DataRow[] drTemp = dt.Select("DanhBo like '" + item.Cells["DanhBo_TG"].Value.ToString() + "'");
 
@@ -472,7 +471,7 @@ namespace ThuTien.GUI.HanhThu
                 {
                     dt = (DataTable)dgvHDCoQuan.DataSource;
                     foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
-                        if (bool.Parse(item.Cells["In_CQ"].Value.ToString()) && !dsBaoCao.Tables["TBDongNuoc"].Rows.Contains(item.Cells["DanhBo_CQ"].Value.ToString().Insert(4, " ").Insert(8, " ")))
+                        if (!dsBaoCao.Tables["TBDongNuoc"].Rows.Contains(item.Cells["DanhBo_CQ"].Value.ToString().Insert(4, " ").Insert(8, " ")))
                         {
                             DataRow[] drTemp = dt.Select("DanhBo like '" + item.Cells["DanhBo_CQ"].Value.ToString() + "'");
 
@@ -660,72 +659,71 @@ namespace ThuTien.GUI.HanhThu
 
         private void btnInGiayXN_Click(object sender, EventArgs e)
         {
-            dsBaoCao ds = new dsBaoCao();
+            dsBaoCao dsBaoCao = new dsBaoCao();
+            DataTable dt = new DataTable();
+            dsBaoCao.Tables["TBDongNuoc"].PrimaryKey = new DataColumn[] { dsBaoCao.Tables["TBDongNuoc"].Columns["DanhBo"] };
+
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
+                dt = (DataTable)dgvHDTuGia.DataSource;
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
-                {
-                    string Ky = "";
-                    int TongCong = 0;
-                    List<HOADON> lstHD = null;
-                    if (!string.IsNullOrEmpty(item.Cells["DanhBo_TG"].Value.ToString()))
-                        lstHD = _cHoaDon.GetDSTon(item.Cells["DanhBo_TG"].Value.ToString());
-                    if (lstHD != null)
+                    if (!dsBaoCao.Tables["TBDongNuoc"].Rows.Contains(item.Cells["DanhBo_TG"].Value.ToString().Insert(7, " ").Insert(4, " ")))
                     {
-                        foreach (HOADON itemHD in lstHD)
+                        string Ky = "";
+                        int TongCong = 0;
+                        DataRow[] drTemp = dt.Select("DanhBo like '" + item.Cells["DanhBo_TG"].Value.ToString() + "'");
+                        
+                        foreach (DataRow itemChild in drTemp)
                         {
                             if (string.IsNullOrEmpty(Ky))
-                                Ky += itemHD.KY + "/" + itemHD.NAM;
+                                Ky += itemChild["Ky"];
                             else
-                                Ky += ", " + itemHD.KY + "/" + itemHD.NAM;
-                            TongCong += (int)itemHD.TONGCONG;
+                                Ky += ", " + itemChild["Ky"];
+                            TongCong += int.Parse(itemChild["TongCong"].ToString());
                         }
 
-                        DataRow dr = ds.Tables["TBDongNuoc"].NewRow();
+                        DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
                         dr["DiaChi"] = item.Cells["DiaChi_TG"].Value.ToString();
                         if (!string.IsNullOrEmpty(item.Cells["DanhBo_TG"].Value.ToString()))
                             dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(7, " ").Insert(4, " ");
                         dr["Ky"] = Ky;
                         dr["SoTien"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
 
-                        ds.Tables["TBDongNuoc"].Rows.Add(dr);
+                        dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                     }
-                }
             }
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
                 {
+                    dt = (DataTable)dgvHDCoQuan.DataSource;
                     foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
-                    {
-                        string Ky = "";
-                        int TongCong = 0;
-                        List<HOADON> lstHD = null;
-                        if (!string.IsNullOrEmpty(item.Cells["DanhBo_CQ"].Value.ToString()))
-                            lstHD = _cHoaDon.GetDSTon(item.Cells["DanhBo_CQ"].Value.ToString());
-                        if (lstHD != null)
+                        if (!dsBaoCao.Tables["TBDongNuoc"].Rows.Contains(item.Cells["DanhBo_CQ"].Value.ToString().Insert(7, " ").Insert(4, " ")))
                         {
-                            foreach (HOADON itemHD in lstHD)
+                            string Ky = "";
+                            int TongCong = 0;
+                            DataRow[] drTemp = dt.Select("DanhBo like '" + item.Cells["DanhBo_CQ"].Value.ToString() + "'");
+
+                            foreach (DataRow itemChild in drTemp)
                             {
                                 if (string.IsNullOrEmpty(Ky))
-                                    Ky += itemHD.KY + "/" + itemHD.NAM;
+                                    Ky += itemChild["Ky"];
                                 else
-                                    Ky += ", " + itemHD.KY + "/" + itemHD.NAM;
-                                TongCong += (int)itemHD.TONGCONG;
+                                    Ky += ", " + itemChild["Ky"];
+                                TongCong += int.Parse(itemChild["TongCong"].ToString());
                             }
 
-                            DataRow dr = ds.Tables["TBDongNuoc"].NewRow();
+                            DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
                             dr["DiaChi"] = item.Cells["DiaChi_CQ"].Value.ToString();
                             if (!string.IsNullOrEmpty(item.Cells["DanhBo_CQ"].Value.ToString()))
                                 dr["DanhBo"] = item.Cells["DanhBo_CQ"].Value.ToString().Insert(7, " ").Insert(4, " ");
                             dr["Ky"] = Ky;
                             dr["SoTien"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
 
-                            ds.Tables["TBDongNuoc"].Rows.Add(dr);
+                            dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                         }
-                    }
                 }
             rptGiayXacNhanNoKhoDoi rpt = new rptGiayXacNhanNoKhoDoi();
-            rpt.SetDataSource(ds);
+            rpt.SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();
         }

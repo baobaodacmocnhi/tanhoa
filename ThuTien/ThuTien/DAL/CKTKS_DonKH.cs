@@ -944,5 +944,13 @@ namespace ThuTien.DAL
                 return true;
             }
         }
+
+        public CTDCBD GetDCBD(string DanhBo)
+        {
+            if (_dbKTKS_DonKH.CTDCBDs.Any(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date >= DateTime.Now.AddDays(-31).Date))
+                return _dbKTKS_DonKH.CTDCBDs.Where(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date >= DateTime.Now.AddDays(-31).Date).OrderByDescending(item => item.CreateDate).First();
+            else
+                return null;
+        }
     }
 }

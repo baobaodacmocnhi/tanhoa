@@ -65,20 +65,6 @@
             this.lbNhanVien = new System.Windows.Forms.Label();
             this.cmbNhanVien = new System.Windows.Forms.ComboBox();
             this.btnInGiayXN = new System.Windows.Forms.Button();
-            this.In_CQ = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ID_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoHoaDon_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ky_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MLT_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoPhatHanh_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongCong_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HopDong_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GiaBieu_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HanhThu_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.To_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.In_TG = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ID_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoHoaDon_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -93,6 +79,20 @@
             this.GiaBieu_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HanhThu_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.To_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.In_CQ = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ID_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoHoaDon_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ky_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MLT_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoPhatHanh_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongCong_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HopDong_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBieu_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HanhThu_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.To_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabTuGia.SuspendLayout();
@@ -196,7 +196,7 @@
             this.dgvHDTuGia.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHDTuGia.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvHDTuGia.Size = new System.Drawing.Size(647, 535);
+            this.dgvHDTuGia.Size = new System.Drawing.Size(990, 535);
             this.dgvHDTuGia.TabIndex = 11;
             this.dgvHDTuGia.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHDTuGia_CellFormatting);
             this.dgvHDTuGia.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvHDTuGia_RowPostPaint);
@@ -237,7 +237,7 @@
             this.tabControl.Location = new System.Drawing.Point(247, 39);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(669, 590);
+            this.tabControl.Size = new System.Drawing.Size(1010, 590);
             this.tabControl.TabIndex = 29;
             // 
             // tabTuGia
@@ -248,7 +248,7 @@
             this.tabTuGia.Location = new System.Drawing.Point(4, 22);
             this.tabTuGia.Name = "tabTuGia";
             this.tabTuGia.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTuGia.Size = new System.Drawing.Size(661, 564);
+            this.tabTuGia.Size = new System.Drawing.Size(1002, 564);
             this.tabTuGia.TabIndex = 0;
             this.tabTuGia.Text = "Tư Gia";
             this.tabTuGia.UseVisualStyleBackColor = true;
@@ -279,7 +279,7 @@
             this.tabCoQuan.Location = new System.Drawing.Point(4, 22);
             this.tabCoQuan.Name = "tabCoQuan";
             this.tabCoQuan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCoQuan.Size = new System.Drawing.Size(661, 564);
+            this.tabCoQuan.Size = new System.Drawing.Size(1002, 564);
             this.tabCoQuan.TabIndex = 1;
             this.tabCoQuan.Text = "Cơ Quan";
             this.tabCoQuan.UseVisualStyleBackColor = true;
@@ -350,7 +350,7 @@
             this.dgvHDCoQuan.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHDCoQuan.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvHDCoQuan.Size = new System.Drawing.Size(647, 535);
+            this.dgvHDCoQuan.Size = new System.Drawing.Size(990, 535);
             this.dgvHDCoQuan.TabIndex = 12;
             this.dgvHDCoQuan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHDCoQuan_CellFormatting);
             this.dgvHDCoQuan.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvHDCoQuan_RowPostPaint);
@@ -468,104 +468,12 @@
             this.btnInGiayXN.UseVisualStyleBackColor = true;
             this.btnInGiayXN.Click += new System.EventHandler(this.btnInGiayXN_Click);
             // 
-            // In_CQ
-            // 
-            this.In_CQ.DataPropertyName = "In";
-            this.In_CQ.HeaderText = "In";
-            this.In_CQ.Name = "In_CQ";
-            this.In_CQ.Width = 30;
-            // 
-            // ID_CQ
-            // 
-            this.ID_CQ.DataPropertyName = "ID";
-            this.ID_CQ.HeaderText = "MaQT";
-            this.ID_CQ.Name = "ID_CQ";
-            this.ID_CQ.Visible = false;
-            // 
-            // SoHoaDon_CQ
-            // 
-            this.SoHoaDon_CQ.DataPropertyName = "SoHoaDon";
-            this.SoHoaDon_CQ.HeaderText = "Số Hóa Đơn";
-            this.SoHoaDon_CQ.Name = "SoHoaDon_CQ";
-            // 
-            // Ky_CQ
-            // 
-            this.Ky_CQ.DataPropertyName = "Ky";
-            this.Ky_CQ.HeaderText = "Kỳ";
-            this.Ky_CQ.Name = "Ky_CQ";
-            this.Ky_CQ.Width = 50;
-            // 
-            // MLT_CQ
-            // 
-            this.MLT_CQ.DataPropertyName = "MLT";
-            this.MLT_CQ.HeaderText = "MLT";
-            this.MLT_CQ.Name = "MLT_CQ";
-            // 
-            // SoPhatHanh_CQ
-            // 
-            this.SoPhatHanh_CQ.DataPropertyName = "SoPhatHanh";
-            this.SoPhatHanh_CQ.HeaderText = "Số Phát Hành";
-            this.SoPhatHanh_CQ.Name = "SoPhatHanh_CQ";
-            // 
-            // DanhBo_CQ
-            // 
-            this.DanhBo_CQ.DataPropertyName = "DanhBo";
-            this.DanhBo_CQ.HeaderText = "Danh Bộ";
-            this.DanhBo_CQ.Name = "DanhBo_CQ";
-            // 
-            // HoTen_CQ
-            // 
-            this.HoTen_CQ.DataPropertyName = "HoTen";
-            this.HoTen_CQ.HeaderText = "HoTen";
-            this.HoTen_CQ.Name = "HoTen_CQ";
-            this.HoTen_CQ.Visible = false;
-            // 
-            // DiaChi_CQ
-            // 
-            this.DiaChi_CQ.DataPropertyName = "DiaChi";
-            this.DiaChi_CQ.HeaderText = "DiaChi";
-            this.DiaChi_CQ.Name = "DiaChi_CQ";
-            this.DiaChi_CQ.Visible = false;
-            // 
-            // TongCong_CQ
-            // 
-            this.TongCong_CQ.DataPropertyName = "TongCong";
-            this.TongCong_CQ.HeaderText = "Tổng Cộng";
-            this.TongCong_CQ.Name = "TongCong_CQ";
-            // 
-            // HopDong_CQ
-            // 
-            this.HopDong_CQ.DataPropertyName = "HopDong";
-            this.HopDong_CQ.HeaderText = "HopDong";
-            this.HopDong_CQ.Name = "HopDong_CQ";
-            this.HopDong_CQ.Visible = false;
-            // 
-            // GiaBieu_CQ
-            // 
-            this.GiaBieu_CQ.DataPropertyName = "GiaBieu";
-            this.GiaBieu_CQ.HeaderText = "GiaBieu";
-            this.GiaBieu_CQ.Name = "GiaBieu_CQ";
-            this.GiaBieu_CQ.Visible = false;
-            // 
-            // HanhThu_CQ
-            // 
-            this.HanhThu_CQ.DataPropertyName = "HanhThu";
-            this.HanhThu_CQ.HeaderText = "HanhThu";
-            this.HanhThu_CQ.Name = "HanhThu_CQ";
-            this.HanhThu_CQ.Visible = false;
-            // 
-            // To_CQ
-            // 
-            this.To_CQ.DataPropertyName = "To";
-            this.To_CQ.HeaderText = "To";
-            this.To_CQ.Name = "To_CQ";
-            this.To_CQ.Visible = false;
-            // 
             // In_TG
             // 
             this.In_TG.DataPropertyName = "In";
             this.In_TG.HeaderText = "In";
             this.In_TG.Name = "In_TG";
+            this.In_TG.Visible = false;
             this.In_TG.Width = 30;
             // 
             // ID_TG
@@ -593,6 +501,7 @@
             this.MLT_TG.DataPropertyName = "MLT";
             this.MLT_TG.HeaderText = "MLT";
             this.MLT_TG.Name = "MLT_TG";
+            this.MLT_TG.Width = 80;
             // 
             // SoPhatHanh_TG
             // 
@@ -609,16 +518,16 @@
             // HoTen_TG
             // 
             this.HoTen_TG.DataPropertyName = "HoTen";
-            this.HoTen_TG.HeaderText = "HoTen";
+            this.HoTen_TG.HeaderText = "Khách Hàng";
             this.HoTen_TG.Name = "HoTen_TG";
-            this.HoTen_TG.Visible = false;
+            this.HoTen_TG.Width = 150;
             // 
             // DiaChi_TG
             // 
             this.DiaChi_TG.DataPropertyName = "DiaChi";
-            this.DiaChi_TG.HeaderText = "DiaChi";
+            this.DiaChi_TG.HeaderText = "Địa Chỉ";
             this.DiaChi_TG.Name = "DiaChi_TG";
-            this.DiaChi_TG.Visible = false;
+            this.DiaChi_TG.Width = 200;
             // 
             // HopDong_TG
             // 
@@ -654,11 +563,106 @@
             this.To_TG.Name = "To_TG";
             this.To_TG.Visible = false;
             // 
+            // In_CQ
+            // 
+            this.In_CQ.DataPropertyName = "In";
+            this.In_CQ.HeaderText = "In";
+            this.In_CQ.Name = "In_CQ";
+            this.In_CQ.Visible = false;
+            this.In_CQ.Width = 30;
+            // 
+            // ID_CQ
+            // 
+            this.ID_CQ.DataPropertyName = "ID";
+            this.ID_CQ.HeaderText = "MaQT";
+            this.ID_CQ.Name = "ID_CQ";
+            this.ID_CQ.Visible = false;
+            // 
+            // SoHoaDon_CQ
+            // 
+            this.SoHoaDon_CQ.DataPropertyName = "SoHoaDon";
+            this.SoHoaDon_CQ.HeaderText = "Số Hóa Đơn";
+            this.SoHoaDon_CQ.Name = "SoHoaDon_CQ";
+            // 
+            // Ky_CQ
+            // 
+            this.Ky_CQ.DataPropertyName = "Ky";
+            this.Ky_CQ.HeaderText = "Kỳ";
+            this.Ky_CQ.Name = "Ky_CQ";
+            this.Ky_CQ.Width = 50;
+            // 
+            // MLT_CQ
+            // 
+            this.MLT_CQ.DataPropertyName = "MLT";
+            this.MLT_CQ.HeaderText = "MLT";
+            this.MLT_CQ.Name = "MLT_CQ";
+            this.MLT_CQ.Width = 80;
+            // 
+            // SoPhatHanh_CQ
+            // 
+            this.SoPhatHanh_CQ.DataPropertyName = "SoPhatHanh";
+            this.SoPhatHanh_CQ.HeaderText = "Số Phát Hành";
+            this.SoPhatHanh_CQ.Name = "SoPhatHanh_CQ";
+            // 
+            // DanhBo_CQ
+            // 
+            this.DanhBo_CQ.DataPropertyName = "DanhBo";
+            this.DanhBo_CQ.HeaderText = "Danh Bộ";
+            this.DanhBo_CQ.Name = "DanhBo_CQ";
+            // 
+            // HoTen_CQ
+            // 
+            this.HoTen_CQ.DataPropertyName = "HoTen";
+            this.HoTen_CQ.HeaderText = "Khách Hàng";
+            this.HoTen_CQ.Name = "HoTen_CQ";
+            this.HoTen_CQ.Width = 150;
+            // 
+            // DiaChi_CQ
+            // 
+            this.DiaChi_CQ.DataPropertyName = "DiaChi";
+            this.DiaChi_CQ.HeaderText = "Địa Chỉ";
+            this.DiaChi_CQ.Name = "DiaChi_CQ";
+            this.DiaChi_CQ.Width = 200;
+            // 
+            // TongCong_CQ
+            // 
+            this.TongCong_CQ.DataPropertyName = "TongCong";
+            this.TongCong_CQ.HeaderText = "Tổng Cộng";
+            this.TongCong_CQ.Name = "TongCong_CQ";
+            // 
+            // HopDong_CQ
+            // 
+            this.HopDong_CQ.DataPropertyName = "HopDong";
+            this.HopDong_CQ.HeaderText = "HopDong";
+            this.HopDong_CQ.Name = "HopDong_CQ";
+            this.HopDong_CQ.Visible = false;
+            // 
+            // GiaBieu_CQ
+            // 
+            this.GiaBieu_CQ.DataPropertyName = "GiaBieu";
+            this.GiaBieu_CQ.HeaderText = "GiaBieu";
+            this.GiaBieu_CQ.Name = "GiaBieu_CQ";
+            this.GiaBieu_CQ.Visible = false;
+            // 
+            // HanhThu_CQ
+            // 
+            this.HanhThu_CQ.DataPropertyName = "HanhThu";
+            this.HanhThu_CQ.HeaderText = "HanhThu";
+            this.HanhThu_CQ.Name = "HanhThu_CQ";
+            this.HanhThu_CQ.Visible = false;
+            // 
+            // To_CQ
+            // 
+            this.To_CQ.DataPropertyName = "To";
+            this.To_CQ.HeaderText = "To";
+            this.To_CQ.Name = "To_CQ";
+            this.To_CQ.Visible = false;
+            // 
             // frmQuetTam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1103, 652);
+            this.ClientSize = new System.Drawing.Size(1269, 652);
             this.Controls.Add(this.btnInGiayXN);
             this.Controls.Add(this.lbNhanVien);
             this.Controls.Add(this.cmbNhanVien);

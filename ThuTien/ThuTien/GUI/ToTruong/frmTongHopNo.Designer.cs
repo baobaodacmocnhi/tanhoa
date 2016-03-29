@@ -86,6 +86,8 @@
             this.ThueGTGT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PhiBVMT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DinhMuc_Cu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DinhMuc_Moi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTongHopNo)).BeginInit();
             this.SuspendLayout();
@@ -148,12 +150,14 @@
             this.GiaBan,
             this.ThueGTGT,
             this.PhiBVMT,
-            this.TongCong});
+            this.TongCong,
+            this.DinhMuc_Cu,
+            this.DinhMuc_Moi});
             this.dgvHoaDon.Location = new System.Drawing.Point(12, 64);
             this.dgvHoaDon.Name = "dgvHoaDon";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHoaDon.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvHoaDon.Size = new System.Drawing.Size(1183, 280);
+            this.dgvHoaDon.Size = new System.Drawing.Size(1276, 280);
             this.dgvHoaDon.TabIndex = 21;
             this.dgvHoaDon.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHoaDon_CellContentClick);
             this.dgvHoaDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_CellFormatting);
@@ -264,7 +268,7 @@
             // radGiamDoc
             // 
             this.radGiamDoc.AutoSize = true;
-            this.radGiamDoc.Location = new System.Drawing.Point(1201, 38);
+            this.radGiamDoc.Location = new System.Drawing.Point(1201, 9);
             this.radGiamDoc.Name = "radGiamDoc";
             this.radGiamDoc.Size = new System.Drawing.Size(72, 17);
             this.radGiamDoc.TabIndex = 47;
@@ -275,7 +279,7 @@
             // 
             this.radPhoGiamDoc.AutoSize = true;
             this.radPhoGiamDoc.Checked = true;
-            this.radPhoGiamDoc.Location = new System.Drawing.Point(1201, 61);
+            this.radPhoGiamDoc.Location = new System.Drawing.Point(1201, 32);
             this.radPhoGiamDoc.Name = "radPhoGiamDoc";
             this.radPhoGiamDoc.Size = new System.Drawing.Size(94, 17);
             this.radPhoGiamDoc.TabIndex = 48;
@@ -574,6 +578,20 @@
             this.TongCong.Name = "TongCong";
             this.TongCong.Width = 90;
             // 
+            // DinhMuc_Cu
+            // 
+            this.DinhMuc_Cu.DataPropertyName = "DinhMuc_Cu";
+            this.DinhMuc_Cu.HeaderText = "ĐM Cũ";
+            this.DinhMuc_Cu.Name = "DinhMuc_Cu";
+            this.DinhMuc_Cu.Width = 50;
+            // 
+            // DinhMuc_Moi
+            // 
+            this.DinhMuc_Moi.DataPropertyName = "DinhMuc_Moi";
+            this.DinhMuc_Moi.HeaderText = "ĐM Mới";
+            this.DinhMuc_Moi.Name = "DinhMuc_Moi";
+            this.DinhMuc_Moi.Width = 50;
+            // 
             // frmTongHopNo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -677,5 +695,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ThueGTGT;
         private System.Windows.Forms.DataGridViewTextBoxColumn PhiBVMT;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DinhMuc_Cu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DinhMuc_Moi;
     }
 }

@@ -269,6 +269,11 @@ namespace ThuTien.GUI.Doi
                 foreach (DataGridViewRow item in dgvCTToTrinh.Rows)
                 {
                     DataRow dr = ds.Tables["ToTrinhCatHuy"].NewRow();
+                    if (radGiamDoc.Checked)
+                        dr["NguoiKy"] = "Giám Đốc";
+                    else
+                        if (radPhoGiamDoc.Checked)
+                            dr["NguoiKy"] = "Phó Giám Đốc";
                     dr["MaTT"] = item.Cells["MaTT_CT"].Value.ToString().Insert(item.Cells["MaTT_CT"].Value.ToString().Length - 2, "-");
                     dr["ThoiGian"] = DateTime.Parse(item.Cells["CreateDate_CT"].Value.ToString()).ToString("MM/yyyy");
                     dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
@@ -301,6 +306,11 @@ namespace ThuTien.GUI.Doi
                 foreach (DataGridViewRow item in dgvCTToTrinh.Rows)
                 {
                     DataRow dr = ds.Tables["ToTrinhCatHuy"].NewRow();
+                    if (radGiamDoc.Checked)
+                        dr["NguoiKy"] = "Giám Đốc";
+                    else
+                        if (radPhoGiamDoc.Checked)
+                            dr["NguoiKy"] = "Phó Giám Đốc";
                     dr["MaTT"] = item.Cells["MaTT_CT"].Value.ToString().Insert(item.Cells["MaTT_CT"].Value.ToString().Length - 2, "-");
                     dr["ThoiGian"] = DateTime.Parse(item.Cells["CreateDate_CT"].Value.ToString()).ToString("MM/yyyy");
                     dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");

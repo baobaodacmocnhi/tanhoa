@@ -664,5 +664,27 @@ namespace ThuTien.GUI.HanhThu
                 frm.ShowDialog();
             }
         }
+
+        private void btnHuyDangNgan_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+            {
+                if (MessageBox.Show("Bạn có chắc chắn Xóa Đăng Ngân Năm " + cmbNam.SelectedValue.ToString() + " Kỳ " + cmbKy.SelectedItem.ToString() + " Đợt " + cmbDot.SelectedItem.ToString(), "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (_cHoaDon.CheckCoTheXoaDangNgan(CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
+                    {
+                        DataTable dt = _cHoaDon.GetDSDangNganHanhThuTGByMaNVNamKyDot(CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                        foreach (DataRow item in dt.Rows)
+                        {
+                            _cHoaDon.XoaDangNgan("HanhThu", item["SoHoaDon"].ToString(), CNguoiDung.MaND);
+                        }
+                        LoadDataGridView();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                        MessageBox.Show("Đã quá thời gian được xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);    
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 }

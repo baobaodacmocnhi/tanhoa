@@ -15,6 +15,7 @@ using ThuTien.GUI.BaoCao;
 using ThuTien.DAL.Quay;
 using ThuTien.DAL.DongNuoc;
 using ThuTien.DAL.ChuyenKhoan;
+using ThuTien.BaoCao.ToTruong;
 
 namespace ThuTien.GUI.ToTruong
 {
@@ -773,7 +774,183 @@ namespace ThuTien.GUI.ToTruong
                 chkDenKy.Checked = false;
         }
 
-
-
+        private void btnBaoCao_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            dsBaoCao dsBaoCao = new dsBaoCao();
+            if (tabControl.SelectedTab.Name == "tabTuGia")
+            {
+                if ((chkDenKy.Checked || chkTrongKy.Checked) && chkNgayKiemTra.Checked)
+                {
+                    if (chkDenKy.Checked)
+                        dt = _cHoaDon.GetBaoCaoTonDenKyDenNgay_To("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrach.Value);
+                    else
+                        if (chkTrongKy.Checked)
+                            dt = _cHoaDon.GetBaoCaoTonTrongKyDenNgay_To("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrach.Value);
+                }
+                else
+                    if (chkDenKy.Checked)
+                    {
+                        dt = _cHoaDon.GetBaoCaoTonDenKy_To("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                    }
+                    else
+                        if (chkNgayKiemTra.Checked)
+                        {
+                            dt = _cHoaDon.GetBaoCaoTon_To("TG", CNguoiDung.MaTo, dateGiaiTrach.Value);
+                        }
+                        else
+                        {
+                            ///chọn tất cả các năm
+                            if (cmbNam.SelectedIndex == 0)
+                            {
+                                dt = _cHoaDon.GetBaoCaoTon_To("TG", CNguoiDung.MaTo);
+                            }
+                            else
+                                ///chọn 1 năm cụ thể
+                                if (cmbNam.SelectedIndex > 0)
+                                    ///chọn tất cả các kỳ
+                                    if (cmbKy.SelectedIndex == 0)
+                                    {
+                                        dt = _cHoaDon.GetBaoCaoTon_To("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()));
+                                    }
+                                    ///chọn 1 kỳ cụ thể
+                                    else
+                                        if (cmbKy.SelectedIndex > 0)
+                                        ///chọn tất cả các đợt
+                                        {
+                                            dt = _cHoaDon.GetBaoCaoTon_To("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                        }
+                        }
+                foreach (DataRow item in dt.Rows)
+                {
+                    int SoLuong = 0;
+                    int TongCong = 0;
+                    DataRow dr = dsBaoCao.Tables["BaoCaoTon"].NewRow();
+                    dr["LoaiBaoCao"] = "TƯ GIA";
+                    dr["To"] = item["TenTo"];
+                    dr["HanhThu"] = item["HoTen"];
+                    dr["LenhHuySL"] = item["LenhHuySL"];
+                    dr["LenhHuyTC"] = item["LenhHuyTC"];
+                    dr["DongNuocSL"] = item["DongNuocSL"];
+                    dr["DongNuocTC"] = item["DongNuocTC"];
+                    dr["ChuyenKhoanSL"] = item["ChuyenKhoanSL"];
+                    dr["ChuyenKhoanTC"] = item["ChuyenKhoanTC"];
+                    dr["TongSL"] = item["TongSL"];
+                    dr["TongTC"] = item["TongTC"];
+                    if (!string.IsNullOrEmpty(item["LenhHuySL"].ToString()))
+                    {
+                        SoLuong -= int.Parse(item["LenhHuySL"].ToString());
+                        TongCong -= int.Parse(item["LenhHuyTC"].ToString());
+                    }
+                    if (!string.IsNullOrEmpty(item["DongNuocSL"].ToString()))
+                    {
+                        SoLuong -= int.Parse(item["DongNuocSL"].ToString());
+                        TongCong -= int.Parse(item["DongNuocTC"].ToString());
+                    }
+                    if (!string.IsNullOrEmpty(item["ChuyenKhoanSL"].ToString()))
+                    {
+                        SoLuong -= int.Parse(item["ChuyenKhoanSL"].ToString());
+                        TongCong -= int.Parse(item["ChuyenKhoanTC"].ToString());
+                    }
+                    if (!string.IsNullOrEmpty(item["TongSL"].ToString()))
+                    {
+                        SoLuong += int.Parse(item["TongSL"].ToString());
+                        TongCong += int.Parse(item["TongTC"].ToString());
+                    }
+                    dr["ThucTeSL"] = SoLuong;
+                    dr["ThucTeTC"] = TongCong;
+                    dsBaoCao.Tables["BaoCaoTon"].Rows.Add(dr);
+                }
+            }
+            else
+                if (tabControl.SelectedTab.Name == "tabCoQuan")
+                {
+                    if ((chkDenKy.Checked || chkTrongKy.Checked) && chkNgayKiemTra.Checked)
+                    {
+                        if (chkDenKy.Checked)
+                            dt = _cHoaDon.GetBaoCaoTonDenKyDenNgay_To("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrach.Value);
+                        else
+                            if (chkTrongKy.Checked)
+                                dt = _cHoaDon.GetBaoCaoTonTrongKyDenNgay_To("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrach.Value);
+                    }
+                    else
+                        if (chkDenKy.Checked)
+                        {
+                            dt = _cHoaDon.GetBaoCaoTonDenKy_To("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                        }
+                        else
+                            if (chkNgayKiemTra.Checked)
+                            {
+                                dt = _cHoaDon.GetBaoCaoTon_To("CQ", CNguoiDung.MaTo, dateGiaiTrach.Value);
+                            }
+                            else
+                            {
+                                ///chọn tất cả các năm
+                                if (cmbNam.SelectedIndex == 0)
+                                {
+                                    dt = _cHoaDon.GetBaoCaoTon_To("CQ", CNguoiDung.MaTo);
+                                }
+                                else
+                                    ///chọn 1 năm cụ thể
+                                    if (cmbNam.SelectedIndex > 0)
+                                        ///chọn tất cả các kỳ
+                                        if (cmbKy.SelectedIndex == 0)
+                                        {
+                                            dt = _cHoaDon.GetBaoCaoTon_To("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()));
+                                        }
+                                        ///chọn 1 kỳ cụ thể
+                                        else
+                                            if (cmbKy.SelectedIndex > 0)
+                                            ///chọn tất cả các đợt
+                                            {
+                                                dt = _cHoaDon.GetBaoCaoTon_To("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                            }
+                            }
+                    foreach (DataRow item in dt.Rows)
+                    {
+                        int SoLuong = 0;
+                        int TongCong = 0;
+                        DataRow dr = dsBaoCao.Tables["BaoCaoTon"].NewRow();
+                        dr["LoaiBaoCao"] = "CƠ QUAN";
+                        dr["To"] = item["TenTo"];
+                        dr["HanhThu"] = item["HoTen"];
+                        dr["LenhHuySL"] = item["LenhHuySL"];
+                        dr["LenhHuyTC"] = item["LenhHuyTC"];
+                        dr["DongNuocSL"] = item["DongNuocSL"];
+                        dr["DongNuocTC"] = item["DongNuocTC"];
+                        dr["ChuyenKhoanSL"] = item["ChuyenKhoanSL"];
+                        dr["ChuyenKhoanTC"] = item["ChuyenKhoanTC"];
+                        dr["TongSL"] = item["TongSL"];
+                        dr["TongTC"] = item["TongTC"];
+                        if (!string.IsNullOrEmpty(item["LenhHuySL"].ToString()))
+                        {
+                            SoLuong -= int.Parse(item["LenhHuySL"].ToString());
+                            TongCong -= int.Parse(item["LenhHuyTC"].ToString());
+                        }
+                        if (!string.IsNullOrEmpty(item["DongNuocSL"].ToString()))
+                        {
+                            SoLuong -= int.Parse(item["DongNuocSL"].ToString());
+                            TongCong -= int.Parse(item["DongNuocTC"].ToString());
+                        }
+                        if (!string.IsNullOrEmpty(item["ChuyenKhoanSL"].ToString()))
+                        {
+                            SoLuong -= int.Parse(item["ChuyenKhoanSL"].ToString());
+                            TongCong -= int.Parse(item["ChuyenKhoanTC"].ToString());
+                        }
+                        if (!string.IsNullOrEmpty(item["TongSL"].ToString()))
+                        {
+                            SoLuong += int.Parse(item["TongSL"].ToString());
+                            TongCong += int.Parse(item["TongTC"].ToString());
+                        }
+                        dr["ThucTeSL"] = SoLuong;
+                        dr["ThucTeTC"] = TongCong;
+                        dsBaoCao.Tables["BaoCaoTon"].Rows.Add(dr);
+                    }
+                }
+            rptBaoCaoTon rpt = new rptBaoCaoTon();
+            rpt.SetDataSource(dsBaoCao);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
+        }
     }
 }
