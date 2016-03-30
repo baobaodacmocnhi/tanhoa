@@ -1865,181 +1865,91 @@ namespace ThuTien.GUI.Doi
         {
             DataTable dt = new DataTable();
             dsBaoCao dsBaoCao = new dsBaoCao();
-            if (tabControl.SelectedTab.Name == "tabTuGia")
+
+            if (chkDenKy.Checked && chkNgayKiemTra.Checked)
             {
-                if (chkDenKy.Checked && chkNgayKiemTra.Checked)
-                {
-                    for (int i = 0; i < _lstTo.Count; i++)
-                        dt.Merge(_cHoaDon.GetBaoCaoTonDenKyDenNgay_To("TG", _lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrach.Value));
-                }
-                else
-                    if (chkDenKy.Checked)
-                    {
-                        for (int i = 0; i < _lstTo.Count; i++)
-                            dt.Merge(_cHoaDon.GetBaoCaoTonDenKy_To("TG", _lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
-                    }
-                    else
-                        if (chkNgayKiemTra.Checked)
-                        {
-                            for (int i = 0; i < _lstTo.Count; i++)
-                                dt.Merge(_cHoaDon.GetBaoCaoTon_To("TG", _lstTo[i].MaTo, dateGiaiTrach.Value));
-                        }
-                        else
-                        {
-                            if (cmbNam.SelectedIndex == 0)
-                            {
-                                for (int i = 0; i < _lstTo.Count; i++)
-                                    dt.Merge(_cHoaDon.GetBaoCaoTon_To("TG", _lstTo[i].MaTo));
-                            }
-                            else
-                                if (cmbNam.SelectedIndex > 0)
-                                    if (cmbKy.SelectedIndex == 0)
-                                    {
-                                        for (int i = 0; i < _lstTo.Count; i++)
-                                            dt.Merge(_cHoaDon.GetBaoCaoTon_To("TG", _lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString())));
-                                    }
-                                    else
-                                        if (cmbKy.SelectedIndex > 1)
-                                            if (cmbDot.SelectedIndex == 0)
-                                            {
-                                                for (int i = 0; i < _lstTo.Count; i++)
-                                                    dt.Merge(_cHoaDon.GetBaoCaoTon_To("TG", _lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
-                                            }
-                                            else
-                                            {
-                                                for (int i = 0; i < _lstTo.Count; i++)
-                                                    dt.Merge(_cHoaDon.GetBaoCaoTon_To("TG", _lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())));
-                                            }
-                        }
-                foreach (DataRow item in dt.Rows)
-                {
-                    int SoLuong = 0;
-                    int TongCong = 0;
-                    DataRow dr = dsBaoCao.Tables["BaoCaoTon"].NewRow();
-                    dr["LoaiBaoCao"] = "CƠ QUAN";
-                    dr["To"] = item["TenTo"];
-                    dr["HanhThu"] = item["HoTen"];
-                    dr["LenhHuySL"] = item["LenhHuySL"];
-                    dr["LenhHuyTC"] = item["LenhHuyTC"];
-                    dr["DongNuocSL"] = item["DongNuocSL"];
-                    dr["DongNuocTC"] = item["DongNuocTC"];
-                    dr["ChuyenKhoanSL"] = item["ChuyenKhoanSL"];
-                    dr["ChuyenKhoanTC"] = item["ChuyenKhoanTC"];
-                    dr["TongSL"] = item["TongSL"];
-                    dr["TongTC"] = item["TongTC"];
-                    if (!string.IsNullOrEmpty(item["LenhHuySL"].ToString()))
-                    {
-                        SoLuong -= int.Parse(item["LenhHuySL"].ToString());
-                        TongCong -= int.Parse(item["LenhHuyTC"].ToString());
-                    }
-                    if (!string.IsNullOrEmpty(item["DongNuocSL"].ToString()))
-                    {
-                        SoLuong -= int.Parse(item["DongNuocSL"].ToString());
-                        TongCong -= int.Parse(item["DongNuocTC"].ToString());
-                    }
-                    if (!string.IsNullOrEmpty(item["ChuyenKhoanSL"].ToString()))
-                    {
-                        SoLuong -= int.Parse(item["ChuyenKhoanSL"].ToString());
-                        TongCong -= int.Parse(item["ChuyenKhoanTC"].ToString());
-                    }
-                    if (!string.IsNullOrEmpty(item["TongSL"].ToString()))
-                    {
-                        SoLuong += int.Parse(item["TongSL"].ToString());
-                        TongCong += int.Parse(item["TongTC"].ToString());
-                    }
-                    dr["ThucTeSL"] = SoLuong;
-                    dr["ThucTeTC"] = TongCong;
-                    dsBaoCao.Tables["BaoCaoTon"].Rows.Add(dr);
-                }
+                for (int i = 0; i < _lstTo.Count; i++)
+                    dt.Merge(_cHoaDon.GetBaoCaoTonDenKyDenNgay_To(_lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrach.Value));
             }
             else
-                if (tabControl.SelectedTab.Name == "tabCoQuan")
+                if (chkDenKy.Checked)
                 {
-                    if (chkDenKy.Checked && chkNgayKiemTra.Checked)
+                    for (int i = 0; i < _lstTo.Count; i++)
+                        dt.Merge(_cHoaDon.GetBaoCaoTonDenKy_To(_lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
+                }
+                else
+                    if (chkNgayKiemTra.Checked)
                     {
                         for (int i = 0; i < _lstTo.Count; i++)
-                            dt.Merge(_cHoaDon.GetBaoCaoTonDenKyDenNgay_To("CQ", _lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrach.Value));
+                            dt.Merge(_cHoaDon.GetBaoCaoTon_To(_lstTo[i].MaTo, dateGiaiTrach.Value));
                     }
                     else
-                        if (chkDenKy.Checked)
+                    {
+                        if (cmbNam.SelectedIndex == 0)
                         {
                             for (int i = 0; i < _lstTo.Count; i++)
-                                dt.Merge(_cHoaDon.GetBaoCaoTonDenKy_To("CQ", _lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
+                                dt.Merge(_cHoaDon.GetBaoCaoTon_To(_lstTo[i].MaTo));
                         }
                         else
-                            if (chkNgayKiemTra.Checked)
-                            {
-                                for (int i = 0; i < _lstTo.Count; i++)
-                                    dt.Merge(_cHoaDon.GetBaoCaoTon_To("CQ", _lstTo[i].MaTo, dateGiaiTrach.Value));
-                            }
-                            else
-                            {
-                                if (cmbNam.SelectedIndex == 0)
+                            if (cmbNam.SelectedIndex > 0)
+                                if (cmbKy.SelectedIndex == 0)
                                 {
                                     for (int i = 0; i < _lstTo.Count; i++)
-                                        dt.Merge(_cHoaDon.GetBaoCaoTon_To("CQ", _lstTo[i].MaTo));
+                                        dt.Merge(_cHoaDon.GetBaoCaoTon_To(_lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString())));
                                 }
                                 else
-                                    if (cmbNam.SelectedIndex > 0)
-                                        if (cmbKy.SelectedIndex == 0)
+                                    if (cmbKy.SelectedIndex > 1)
+                                        if (cmbDot.SelectedIndex == 0)
                                         {
                                             for (int i = 0; i < _lstTo.Count; i++)
-                                                dt.Merge(_cHoaDon.GetBaoCaoTon_To("CQ", _lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString())));
+                                                dt.Merge(_cHoaDon.GetBaoCaoTon_To(_lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
                                         }
                                         else
-                                            if (cmbKy.SelectedIndex > 1)
-                                                if (cmbDot.SelectedIndex == 0)
-                                                {
-                                                    for (int i = 0; i < _lstTo.Count; i++)
-                                                        dt.Merge(_cHoaDon.GetBaoCaoTon_To("CQ", _lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
-                                                }
-                                                else
-                                                {
-                                                    for (int i = 0; i < _lstTo.Count; i++)
-                                                        dt.Merge(_cHoaDon.GetBaoCaoTon_To("CQ", _lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())));
-                                                }
-                            }
-                    foreach (DataRow item in dt.Rows)
-                    {
-                        int SoLuong = 0;
-                        int TongCong = 0;
-                        DataRow dr = dsBaoCao.Tables["BaoCaoTon"].NewRow();
-                        dr["LoaiBaoCao"] = "CƠ QUAN";
-                        dr["To"] = item["TenTo"];
-                        dr["HanhThu"] = item["HoTen"];
-                        dr["LenhHuySL"] = item["LenhHuySL"];
-                        dr["LenhHuyTC"] = item["LenhHuyTC"];
-                        dr["DongNuocSL"] = item["DongNuocSL"];
-                        dr["DongNuocTC"] = item["DongNuocTC"];
-                        dr["ChuyenKhoanSL"] = item["ChuyenKhoanSL"];
-                        dr["ChuyenKhoanTC"] = item["ChuyenKhoanTC"];
-                        dr["TongSL"] = item["TongSL"];
-                        dr["TongTC"] = item["TongTC"];
-                        if (!string.IsNullOrEmpty(item["LenhHuySL"].ToString()))
-                        {
-                            SoLuong -= int.Parse(item["LenhHuySL"].ToString());
-                            TongCong -= int.Parse(item["LenhHuyTC"].ToString());
-                        }
-                        if (!string.IsNullOrEmpty(item["DongNuocSL"].ToString()))
-                        {
-                            SoLuong -= int.Parse(item["DongNuocSL"].ToString());
-                            TongCong -= int.Parse(item["DongNuocTC"].ToString());
-                        }
-                        if (!string.IsNullOrEmpty(item["ChuyenKhoanSL"].ToString()))
-                        {
-                            SoLuong -= int.Parse(item["ChuyenKhoanSL"].ToString());
-                            TongCong -= int.Parse(item["ChuyenKhoanTC"].ToString());
-                        }
-                        if (!string.IsNullOrEmpty(item["TongSL"].ToString()))
-                        {
-                            SoLuong += int.Parse(item["TongSL"].ToString());
-                            TongCong += int.Parse(item["TongTC"].ToString());
-                        }
-                        dr["ThucTeSL"] = SoLuong;
-                        dr["ThucTeTC"] = TongCong;
-                        dsBaoCao.Tables["BaoCaoTon"].Rows.Add(dr);
+                                        {
+                                            for (int i = 0; i < _lstTo.Count; i++)
+                                                dt.Merge(_cHoaDon.GetBaoCaoTon_To(_lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())));
+                                        }
                     }
+            foreach (DataRow item in dt.Rows)
+            {
+                int SoLuong = 0;
+                int TongCong = 0;
+                DataRow dr = dsBaoCao.Tables["BaoCaoTon"].NewRow();
+                dr["LoaiBaoCao"] = "ĐỘI";
+                dr["To"] = item["TenTo"];
+                dr["HanhThu"] = item["HoTen"];
+                dr["LenhHuySL"] = item["LenhHuySL"];
+                dr["LenhHuyTC"] = item["LenhHuyTC"];
+                dr["DongNuocSL"] = item["DongNuocSL"];
+                dr["DongNuocTC"] = item["DongNuocTC"];
+                dr["ChuyenKhoanSL"] = item["ChuyenKhoanSL"];
+                dr["ChuyenKhoanTC"] = item["ChuyenKhoanTC"];
+                dr["TongSL"] = item["TongSL"];
+                dr["TongTC"] = item["TongTC"];
+                if (!string.IsNullOrEmpty(item["LenhHuySL"].ToString()))
+                {
+                    SoLuong -= int.Parse(item["LenhHuySL"].ToString());
+                    TongCong -= int.Parse(item["LenhHuyTC"].ToString());
                 }
+                if (!string.IsNullOrEmpty(item["DongNuocSL"].ToString()))
+                {
+                    SoLuong -= int.Parse(item["DongNuocSL"].ToString());
+                    TongCong -= int.Parse(item["DongNuocTC"].ToString());
+                }
+                if (!string.IsNullOrEmpty(item["ChuyenKhoanSL"].ToString()))
+                {
+                    SoLuong -= int.Parse(item["ChuyenKhoanSL"].ToString());
+                    TongCong -= int.Parse(item["ChuyenKhoanTC"].ToString());
+                }
+                if (!string.IsNullOrEmpty(item["TongSL"].ToString()))
+                {
+                    SoLuong += int.Parse(item["TongSL"].ToString());
+                    TongCong += int.Parse(item["TongTC"].ToString());
+                }
+                dr["ThucTeSL"] = SoLuong;
+                dr["ThucTeTC"] = TongCong;
+                dsBaoCao.Tables["BaoCaoTon"].Rows.Add(dr);
+            }
             rptBaoCaoTon rpt = new rptBaoCaoTon();
             rpt.SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);
