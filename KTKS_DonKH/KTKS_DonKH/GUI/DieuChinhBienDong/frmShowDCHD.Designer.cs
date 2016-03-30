@@ -155,6 +155,7 @@
             this.txtTongCong_End.Size = new System.Drawing.Size(100, 25);
             this.txtTongCong_End.TabIndex = 22;
             this.txtTongCong_End.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTongCong_End.TextChanged += new System.EventHandler(this.txtTongCong_End_TextChanged);
             // 
             // txtTienNuoc_Start
             // 
