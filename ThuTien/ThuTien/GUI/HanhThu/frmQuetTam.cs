@@ -15,6 +15,7 @@ using ThuTien.GUI.BaoCao;
 using ThuTien.BaoCao.ChuyenKhoan;
 using System.Globalization;
 using ThuTien.BaoCao.DongNuoc;
+using ThuTien.DAL.ChuyenKhoan;
 
 namespace ThuTien.GUI.HanhThu
 {
@@ -726,6 +727,47 @@ namespace ThuTien.GUI.HanhThu
             rpt.SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();
+        }
+
+        private void btnChonFile_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+            {
+                try
+                {
+                    OpenFileDialog dialog = new OpenFileDialog();
+                    dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
+                    dialog.Multiselect = false;
+
+                    if (dialog.ShowDialog() == DialogResult.OK)
+                        if (MessageBox.Show("Bạn có chắc chắn Thêm?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        {
+                            Excel fileExcel = new Excel(dialog.FileName);
+                            DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
+
+                            foreach (DataRow item in dtExcel.Rows)
+                                if (item[0].ToString().Trim().Replace(" ", "").Length == 11)
+                                {
+                                    HOADON hoadon = _cHoaDon.GetMoiNhat(item[0].ToString().Trim().Replace(" ", ""));
+                                    if (hoadon!=null && !_cQuetTam.CheckExist(hoadon.SOHOADON, CNguoiDung.MaND, DateTime.Now))
+                                    {
+                                        TT_QuetTam quettam = new TT_QuetTam();
+                                        quettam.MaHD = hoadon.ID_HOADON;
+                                        quettam.SoHoaDon = hoadon.SOHOADON;
+                                        _cQuetTam.Them(quettam);
+                                    }
+                                }
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            btnXem.PerformClick();
+                        }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
     }
