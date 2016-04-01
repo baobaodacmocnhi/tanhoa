@@ -60,6 +60,7 @@
             this.ribbtnNhanDonTXL = new System.Windows.Forms.RibbonButton();
             this.ribbtnQLDonTXL = new System.Windows.Forms.RibbonButton();
             this.ribbtnTruyThuTienNuoc = new System.Windows.Forms.RibbonButton();
+            this.ribbtnDSTruyThuTienNuoc = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel20 = new System.Windows.Forms.RibbonPanel();
             this.btnBaoCaoDonKH = new System.Windows.Forms.RibbonButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -116,8 +117,10 @@
             this.ribbonPanel23 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnBaoCaoBamChi = new System.Windows.Forms.RibbonButton();
             this.ribbon1 = new System.Windows.Forms.Ribbon();
+            this.ribbonTab10 = new System.Windows.Forms.RibbonTab();
+            this.ribbonPanel24 = new System.Windows.Forms.RibbonPanel();
+            this.ribbtnCongVanDi = new System.Windows.Forms.RibbonButton();
             this.IdleTimer = new System.Windows.Forms.Timer(this.components);
-            this.ribbtnDSTruyThuTienNuoc = new System.Windows.Forms.RibbonButton();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -371,6 +374,14 @@
             this.ribbtnTruyThuTienNuoc.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnTruyThuTienNuoc.SmallImage")));
             this.ribbtnTruyThuTienNuoc.Text = "Truy Thu Tiền Nước";
             this.ribbtnTruyThuTienNuoc.Click += new System.EventHandler(this.ribbtnTruyThuTienNuoc_Click);
+            // 
+            // ribbtnDSTruyThuTienNuoc
+            // 
+            this.ribbtnDSTruyThuTienNuoc.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnDSTruyThuTienNuoc.MinimumSize = new System.Drawing.Size(140, 0);
+            this.ribbtnDSTruyThuTienNuoc.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnDSTruyThuTienNuoc.SmallImage")));
+            this.ribbtnDSTruyThuTienNuoc.Text = "DS Truy Thu Tiền Nước";
+            this.ribbtnDSTruyThuTienNuoc.Click += new System.EventHandler(this.ribbtnDSTruyThuTienNuoc_Click);
             // 
             // ribbonPanel20
             // 
@@ -821,17 +832,30 @@
             this.ribbon1.Tabs.Add(this.ribbonTab5);
             this.ribbon1.Tabs.Add(this.ribbonTab6);
             this.ribbon1.Tabs.Add(this.ribbonTab7);
+            this.ribbon1.Tabs.Add(this.ribbonTab10);
             this.ribbon1.Tabs.Add(this.ribbonTab8);
             this.ribbon1.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
             this.ribbon1.Text = "ribbon1";
             // 
-            // ribbtnDSTruyThuTienNuoc
+            // ribbonTab10
             // 
-            this.ribbtnDSTruyThuTienNuoc.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
-            this.ribbtnDSTruyThuTienNuoc.MinimumSize = new System.Drawing.Size(140, 0);
-            this.ribbtnDSTruyThuTienNuoc.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnDSTruyThuTienNuoc.SmallImage")));
-            this.ribbtnDSTruyThuTienNuoc.Text = "DS Truy Thu Tiền Nước";
-            this.ribbtnDSTruyThuTienNuoc.Click += new System.EventHandler(this.ribbtnDSTruyThuTienNuoc_Click);
+            this.ribbonTab10.Panels.Add(this.ribbonPanel24);
+            this.ribbonTab10.Text = "Công Văn";
+            // 
+            // ribbonPanel24
+            // 
+            this.ribbonPanel24.ButtonMoreEnabled = false;
+            this.ribbonPanel24.ButtonMoreVisible = false;
+            this.ribbonPanel24.Items.Add(this.ribbtnCongVanDi);
+            this.ribbonPanel24.Text = "";
+            // 
+            // ribbtnCongVanDi
+            // 
+            this.ribbtnCongVanDi.Image = ((System.Drawing.Image)(resources.GetObject("ribbtnCongVanDi.Image")));
+            this.ribbtnCongVanDi.MinimumSize = new System.Drawing.Size(100, 0);
+            this.ribbtnCongVanDi.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnCongVanDi.SmallImage")));
+            this.ribbtnCongVanDi.Text = "Công Văn Đi";
+            this.ribbtnCongVanDi.Click += new System.EventHandler(this.ribbtnCongVanDi_Click);
             // 
             // Main
             // 
@@ -946,6 +970,9 @@
         private System.Windows.Forms.RibbonButton ribbtnVeViecTTTL;
         private System.Windows.Forms.RibbonButton ribbtnTruyThuTienNuoc;
         private System.Windows.Forms.RibbonButton ribbtnDSTruyThuTienNuoc;
+        private System.Windows.Forms.RibbonTab ribbonTab10;
+        private System.Windows.Forms.RibbonPanel ribbonPanel24;
+        private System.Windows.Forms.RibbonButton ribbtnCongVanDi;
     }
 }
 

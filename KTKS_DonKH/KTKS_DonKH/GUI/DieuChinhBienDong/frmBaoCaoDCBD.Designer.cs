@@ -36,12 +36,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnBaoCao = new System.Windows.Forms.Button();
-            this.radDanhSachDMCapCoThoiHan = new System.Windows.Forms.RadioButton();
+            this.radDSDMCapCoThoiHan = new System.Windows.Forms.RadioButton();
             this.radThongKeDC = new System.Windows.Forms.RadioButton();
             this.radDSChuyenDocSo = new System.Windows.Forms.RadioButton();
             this.radDSChuyenDocSo_LocUser = new System.Windows.Forms.RadioButton();
-            this.radDanhSachDMCapKThoiHan = new System.Windows.Forms.RadioButton();
-            this.radDanhSachDMCapNgayHetHan = new System.Windows.Forms.RadioButton();
+            this.radDSDMCapKThoiHan = new System.Windows.Forms.RadioButton();
+            this.radDSDMCapNgayHetHan = new System.Windows.Forms.RadioButton();
             this.cmbPhuong = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbQuan = new System.Windows.Forms.ComboBox();
@@ -51,6 +51,7 @@
             this.radThongKeCapDMCoThoiHanTangGiam = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
             this.txtHieuLucKy = new System.Windows.Forms.TextBox();
+            this.radDSDanhBoDMCap = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.SuspendLayout();
@@ -58,7 +59,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.crystalReportViewer1);
-            this.panel1.Location = new System.Drawing.Point(13, 87);
+            this.panel1.Location = new System.Drawing.Point(12, 114);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1265, 470);
             this.panel1.TabIndex = 0;
@@ -136,17 +137,16 @@
             this.btnBaoCao.UseVisualStyleBackColor = true;
             this.btnBaoCao.Click += new System.EventHandler(this.btnBaoCao_Click);
             // 
-            // radDanhSachDMCapCoThoiHan
+            // radDSDMCapCoThoiHan
             // 
-            this.radDanhSachDMCapCoThoiHan.AutoSize = true;
-            this.radDanhSachDMCapCoThoiHan.Checked = true;
-            this.radDanhSachDMCapCoThoiHan.Location = new System.Drawing.Point(12, 6);
-            this.radDanhSachDMCapCoThoiHan.Name = "radDanhSachDMCapCoThoiHan";
-            this.radDanhSachDMCapCoThoiHan.Size = new System.Drawing.Size(283, 21);
-            this.radDanhSachDMCapCoThoiHan.TabIndex = 0;
-            this.radDanhSachDMCapCoThoiHan.TabStop = true;
-            this.radDanhSachDMCapCoThoiHan.Text = "Danh Sách ĐM Cấp (có thời hạn, ngày tạo)";
-            this.radDanhSachDMCapCoThoiHan.UseVisualStyleBackColor = true;
+            this.radDSDMCapCoThoiHan.AutoSize = true;
+            this.radDSDMCapCoThoiHan.Checked = true;
+            this.radDSDMCapCoThoiHan.Location = new System.Drawing.Point(12, 6);
+            this.radDSDMCapCoThoiHan.Name = "radDSDMCapCoThoiHan";
+            this.radDSDMCapCoThoiHan.Size = new System.Drawing.Size(283, 21);
+            this.radDSDMCapCoThoiHan.TabIndex = 0;
+            this.radDSDMCapCoThoiHan.Text = "Danh Sách ĐM Cấp (có thời hạn, ngày tạo)";
+            this.radDSDMCapCoThoiHan.UseVisualStyleBackColor = true;
             // 
             // radThongKeDC
             // 
@@ -178,25 +178,25 @@
             this.radDSChuyenDocSo_LocUser.Text = "Danh Sách Chuyển Đọc Số (User)";
             this.radDSChuyenDocSo_LocUser.UseVisualStyleBackColor = true;
             // 
-            // radDanhSachDMCapKThoiHan
+            // radDSDMCapKThoiHan
             // 
-            this.radDanhSachDMCapKThoiHan.AutoSize = true;
-            this.radDanhSachDMCapKThoiHan.Location = new System.Drawing.Point(12, 33);
-            this.radDanhSachDMCapKThoiHan.Name = "radDanhSachDMCapKThoiHan";
-            this.radDanhSachDMCapKThoiHan.Size = new System.Drawing.Size(276, 21);
-            this.radDanhSachDMCapKThoiHan.TabIndex = 1;
-            this.radDanhSachDMCapKThoiHan.Text = "Danh Sách ĐM Cấp (k thời hạn, ngày tạo)";
-            this.radDanhSachDMCapKThoiHan.UseVisualStyleBackColor = true;
+            this.radDSDMCapKThoiHan.AutoSize = true;
+            this.radDSDMCapKThoiHan.Location = new System.Drawing.Point(12, 33);
+            this.radDSDMCapKThoiHan.Name = "radDSDMCapKThoiHan";
+            this.radDSDMCapKThoiHan.Size = new System.Drawing.Size(276, 21);
+            this.radDSDMCapKThoiHan.TabIndex = 1;
+            this.radDSDMCapKThoiHan.Text = "Danh Sách ĐM Cấp (k thời hạn, ngày tạo)";
+            this.radDSDMCapKThoiHan.UseVisualStyleBackColor = true;
             // 
-            // radDanhSachDMCapNgayHetHan
+            // radDSDMCapNgayHetHan
             // 
-            this.radDanhSachDMCapNgayHetHan.AutoSize = true;
-            this.radDanhSachDMCapNgayHetHan.Location = new System.Drawing.Point(295, 6);
-            this.radDanhSachDMCapNgayHetHan.Name = "radDanhSachDMCapNgayHetHan";
-            this.radDanhSachDMCapNgayHetHan.Size = new System.Drawing.Size(236, 21);
-            this.radDanhSachDMCapNgayHetHan.TabIndex = 2;
-            this.radDanhSachDMCapNgayHetHan.Text = "Danh Sách ĐM Cấp (ngày hết hạn)";
-            this.radDanhSachDMCapNgayHetHan.UseVisualStyleBackColor = true;
+            this.radDSDMCapNgayHetHan.AutoSize = true;
+            this.radDSDMCapNgayHetHan.Location = new System.Drawing.Point(295, 6);
+            this.radDSDMCapNgayHetHan.Name = "radDSDMCapNgayHetHan";
+            this.radDSDMCapNgayHetHan.Size = new System.Drawing.Size(236, 21);
+            this.radDSDMCapNgayHetHan.TabIndex = 2;
+            this.radDSDMCapNgayHetHan.Text = "Danh Sách ĐM Cấp (ngày hết hạn)";
+            this.radDSDMCapNgayHetHan.UseVisualStyleBackColor = true;
             // 
             // cmbPhuong
             // 
@@ -280,12 +280,23 @@
             this.txtHieuLucKy.Size = new System.Drawing.Size(55, 25);
             this.txtHieuLucKy.TabIndex = 16;
             // 
+            // radDSDanhBoDMCap
+            // 
+            this.radDSDanhBoDMCap.AutoSize = true;
+            this.radDSDanhBoDMCap.Location = new System.Drawing.Point(12, 87);
+            this.radDSDanhBoDMCap.Name = "radDSDanhBoDMCap";
+            this.radDSDanhBoDMCap.Size = new System.Drawing.Size(283, 21);
+            this.radDSDanhBoDMCap.TabIndex = 17;
+            this.radDSDanhBoDMCap.Text = "Danh Sách Danh Bộ ĐM Cấp (có thời hạn)";
+            this.radDSDanhBoDMCap.UseVisualStyleBackColor = true;
+            // 
             // frmBaoCaoDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1321, 598);
+            this.Controls.Add(this.radDSDanhBoDMCap);
             this.Controls.Add(this.txtHieuLucKy);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.radThongKeCapDMCoThoiHanTangGiam);
@@ -295,12 +306,12 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbQuan);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.radDanhSachDMCapNgayHetHan);
-            this.Controls.Add(this.radDanhSachDMCapKThoiHan);
+            this.Controls.Add(this.radDSDMCapNgayHetHan);
+            this.Controls.Add(this.radDSDMCapKThoiHan);
             this.Controls.Add(this.radDSChuyenDocSo_LocUser);
             this.Controls.Add(this.radDSChuyenDocSo);
             this.Controls.Add(this.radThongKeDC);
-            this.Controls.Add(this.radDanhSachDMCapCoThoiHan);
+            this.Controls.Add(this.radDSDMCapCoThoiHan);
             this.Controls.Add(this.btnBaoCao);
             this.Controls.Add(this.panel_KhoangThoiGian);
             this.Controls.Add(this.panel1);
@@ -327,12 +338,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnBaoCao;
-        private System.Windows.Forms.RadioButton radDanhSachDMCapCoThoiHan;
+        private System.Windows.Forms.RadioButton radDSDMCapCoThoiHan;
         private System.Windows.Forms.RadioButton radThongKeDC;
         private System.Windows.Forms.RadioButton radDSChuyenDocSo;
         private System.Windows.Forms.RadioButton radDSChuyenDocSo_LocUser;
-        private System.Windows.Forms.RadioButton radDanhSachDMCapKThoiHan;
-        private System.Windows.Forms.RadioButton radDanhSachDMCapNgayHetHan;
+        private System.Windows.Forms.RadioButton radDSDMCapKThoiHan;
+        private System.Windows.Forms.RadioButton radDSDMCapNgayHetHan;
         private System.Windows.Forms.ComboBox cmbPhuong;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbQuan;
@@ -342,5 +353,6 @@
         private System.Windows.Forms.RadioButton radThongKeCapDMCoThoiHanTangGiam;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtHieuLucKy;
+        private System.Windows.Forms.RadioButton radDSDanhBoDMCap;
     }
 }

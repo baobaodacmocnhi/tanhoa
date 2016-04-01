@@ -132,6 +132,8 @@
             this.chkKiemTraDHN = new System.Windows.Forms.CheckBox();
             this.chkChiSoNuoc = new System.Windows.Forms.CheckBox();
             this.chkTienNuoc = new System.Windows.Forms.CheckBox();
+            this.txtNgayGiaiQuyet = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -155,9 +157,9 @@
             // 
             // txtHieuLucTuKy
             // 
-            this.txtHieuLucTuKy.Location = new System.Drawing.Point(168, 504);
+            this.txtHieuLucTuKy.Location = new System.Drawing.Point(144, 504);
             this.txtHieuLucTuKy.Name = "txtHieuLucTuKy";
-            this.txtHieuLucTuKy.Size = new System.Drawing.Size(100, 25);
+            this.txtHieuLucTuKy.Size = new System.Drawing.Size(70, 25);
             this.txtHieuLucTuKy.TabIndex = 29;
             // 
             // txtMSThue
@@ -321,7 +323,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(52, 507);
+            this.label14.Location = new System.Drawing.Point(28, 507);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(110, 17);
             this.label14.TabIndex = 28;
@@ -339,15 +341,15 @@
             // 
             // txtDinhMucSau
             // 
-            this.txtDinhMucSau.Location = new System.Drawing.Point(167, 473);
+            this.txtDinhMucSau.Location = new System.Drawing.Point(143, 473);
             this.txtDinhMucSau.Name = "txtDinhMucSau";
-            this.txtDinhMucSau.Size = new System.Drawing.Size(100, 25);
+            this.txtDinhMucSau.Size = new System.Drawing.Size(70, 25);
             this.txtDinhMucSau.TabIndex = 27;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(52, 476);
+            this.label13.Location = new System.Drawing.Point(28, 476);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(71, 17);
             this.label13.TabIndex = 26;
@@ -579,7 +581,7 @@
             // 
             this.btnSua.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
             this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSua.Location = new System.Drawing.Point(407, 476);
+            this.btnSua.Location = new System.Drawing.Point(465, 476);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(65, 35);
             this.btnSua.TabIndex = 31;
@@ -592,7 +594,7 @@
             // 
             this.btnXoa.Image = global::KTKS_DonKH.Properties.Resources.delete_24x24;
             this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXoa.Location = new System.Drawing.Point(478, 476);
+            this.btnXoa.Location = new System.Drawing.Point(536, 476);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(67, 35);
             this.btnXoa.TabIndex = 30;
@@ -1164,12 +1166,30 @@
             this.chkTienNuoc.Text = "Tiền nước";
             this.chkTienNuoc.UseVisualStyleBackColor = true;
             // 
+            // txtNgayGiaiQuyet
+            // 
+            this.txtNgayGiaiQuyet.Location = new System.Drawing.Point(335, 473);
+            this.txtNgayGiaiQuyet.Name = "txtNgayGiaiQuyet";
+            this.txtNgayGiaiQuyet.Size = new System.Drawing.Size(74, 25);
+            this.txtNgayGiaiQuyet.TabIndex = 88;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(219, 476);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(110, 17);
+            this.label29.TabIndex = 87;
+            this.label29.Text = "Ngày Giải Quyết:";
+            // 
             // frmShowDonKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1365, 544);
+            this.Controls.Add(this.txtNgayGiaiQuyet);
+            this.Controls.Add(this.label29);
             this.Controls.Add(this.chkCapDM);
             this.Controls.Add(this.chkMoNuoc);
             this.Controls.Add(this.chkThayDoiMST);
@@ -1356,6 +1376,8 @@
         private System.Windows.Forms.CheckBox chkKiemTraDHN;
         private System.Windows.Forms.CheckBox chkChiSoNuoc;
         private System.Windows.Forms.CheckBox chkTienNuoc;
+        private System.Windows.Forms.TextBox txtNgayGiaiQuyet;
+        private System.Windows.Forms.Label label29;
 
 
     }

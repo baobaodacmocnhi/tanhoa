@@ -98,6 +98,7 @@ namespace KTKS_DonKH.GUI.KhachHang
 
             txtDinhMucSau.Text = "";
             txtHieuLucTuKy.Text = "";
+            txtNgayGiaiQuyet.Text = "";
         }
 
         private void frmNhanDonKH_Load(object sender, EventArgs e)
@@ -211,6 +212,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     //donkh.GhiChuNguoiDi = cmbNVKiemTra.SelectedValue.ToString();
                     donkh.DinhMucSau = txtDinhMucSau.Text.Trim();
                     donkh.HieuLucTuKy = txtHieuLucTuKy.Text.Trim();
+                    donkh.NgayGiaiQuyet = txtNgayGiaiQuyet.Text.Trim();
 
                     #region CheckBox
                     if (chkKiemTraDHN.Checked)
@@ -544,6 +546,7 @@ namespace KTKS_DonKH.GUI.KhachHang
 
                             dr["DinhMucSau"] = txtDinhMucSau.Text.Trim();
                             dr["HieuLucTuKy"] = txtHieuLucTuKy.Text.Trim();
+                            dr["Ngay"] = txtNgayGiaiQuyet.Text.Trim();
                             dr["HoTenNV"] = CTaiKhoan.HoTen;
                             dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(dr);
                             rptBienNhanDonKH rpt = new rptBienNhanDonKH();
@@ -649,6 +652,7 @@ namespace KTKS_DonKH.GUI.KhachHang
 
                     txtDinhMucSau.Text = _donkh.DinhMucSau;
                     txtHieuLucTuKy.Text = _donkh.HieuLucTuKy;
+                    txtNgayGiaiQuyet.Text = _donkh.NgayGiaiQuyet;
                     ///
                     //dgvLichSuChuyenKT.DataSource = _cDonTXL.LoadDSLichSuChuyenKTbyMaDonTKH(_donkh.MaDon);
                     ///

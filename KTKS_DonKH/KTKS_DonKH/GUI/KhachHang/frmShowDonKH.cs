@@ -129,7 +129,7 @@ namespace KTKS_DonKH.GUI.KhachHang
 
                 txtDinhMucSau.Text = _donkh.DinhMucSau;
                 txtHieuLucTuKy.Text = _donkh.HieuLucTuKy;
-
+                txtNgayGiaiQuyet.Text = _donkh.NgayGiaiQuyet;
                 ///
                 dgvLichSuChuyenKT.DataSource = _cDonTXL.LoadDSLichSuChuyenKTbyMaDonTKH(_donkh.MaDon);
                 ///
@@ -467,6 +467,7 @@ namespace KTKS_DonKH.GUI.KhachHang
 
                     dr["DinhMucSau"] = _donkh.DinhMucSau;
                     dr["HieuLucTuKy"] = _donkh.HieuLucTuKy;
+                    dr["Ngay"] = _donkh.NgayGiaiQuyet;
                     CTaiKhoan _cTaiKhoan = new CTaiKhoan();
                     dr["HoTenNV"] = _cTaiKhoan.getHoTenUserbyID(_donkh.CreateBy.Value);
 
@@ -514,6 +515,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 //_donkh.GhiChuNguoiDi = cmbNVKiemTra.SelectedValue.ToString();
                 _donkh.DinhMucSau = txtDinhMucSau.Text.Trim();
                 _donkh.HieuLucTuKy = txtHieuLucTuKy.Text.Trim();
+                _donkh.NgayGiaiQuyet = txtNgayGiaiQuyet.Text.Trim();
 
                 #region CheckBox
                 if (chkKiemTraDHN.Checked)

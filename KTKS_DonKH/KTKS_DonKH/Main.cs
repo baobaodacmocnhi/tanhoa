@@ -18,6 +18,7 @@ using KTKS_DonKH.GUI.ToXuLy;
 using KTKS_DonKH.GUI.TimKiem;
 using KTKS_DonKH.GUI.BamChi;
 using KTKS_DonKH.GUI.DongNuoc;
+using KTKS_DonKH.GUI.CongVan;
 
 namespace KTKS_DonKH
 {
@@ -645,6 +646,17 @@ namespace KTKS_DonKH
             frm.Show();
             StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
         }
+
+        private void ribbtnCongVanDi_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
+            Form frm = new frmCongVanDi();
+            frm.MdiParent = this;
+            frm.Show();
+            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
+        }
+
 
         
 
