@@ -123,6 +123,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 if (MessageBox.Show("Bạn có chắc chắn Chuyển Phí Mở Nước?", "Xác nhận sửa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     if (int.Parse(txtSoTienCu.Text.Trim()) >= 50000)
+                    {
                         using (var scope = new TransactionScope())
                         {
                             if (_cTienDu.Update(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), -50000, "Điều Chỉnh Tiền", "Thêm Chuyển Phí Mở Nước"))
@@ -151,6 +152,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 }
                             }
                         }
+                    }
                     else
                         MessageBox.Show("Số tiền không đủ 50.000đ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

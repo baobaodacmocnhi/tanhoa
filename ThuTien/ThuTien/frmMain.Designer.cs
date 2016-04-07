@@ -56,6 +56,7 @@
             this.mnuToTrinhCatHuy = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuKetThucNamTaiKhoa = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuKiemPortTon = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuKiemTraSaiViec = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToTruong = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuGiaoHDHanhThu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuGiaoHDTon = new System.Windows.Forms.ToolStripMenuItem();
@@ -98,6 +99,7 @@
             this.mnuDieuChinhDangNganQuay = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPhiMoNuocQuay = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBaoCaoQuay = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuQuetGiaoTon = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTongHop = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDCHD = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuThu2Lan = new System.Windows.Forms.ToolStripMenuItem();
@@ -115,7 +117,6 @@
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.mnuQuetGiaoTon = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -228,7 +229,8 @@
             this.mnuBangTongHop,
             this.mnuToTrinhCatHuy,
             this.mnuKetThucNamTaiKhoa,
-            this.mnuKiemPortTon});
+            this.mnuKiemPortTon,
+            this.mnuKiemTraSaiViec});
             this.mnuDoi.Name = "mnuDoi";
             this.mnuDoi.Size = new System.Drawing.Size(37, 20);
             this.mnuDoi.Text = "Đội";
@@ -338,6 +340,13 @@
             this.mnuKiemPortTon.Size = new System.Drawing.Size(223, 22);
             this.mnuKiemPortTon.Text = "Kiểm Port Tồn";
             this.mnuKiemPortTon.Click += new System.EventHandler(this.mnuKiemPortTon_Click);
+            // 
+            // mnuKiemTraSaiViec
+            // 
+            this.mnuKiemTraSaiViec.Name = "mnuKiemTraSaiViec";
+            this.mnuKiemTraSaiViec.Size = new System.Drawing.Size(223, 22);
+            this.mnuKiemTraSaiViec.Text = "Kiểm Tra Sai Việc";
+            this.mnuKiemTraSaiViec.Click += new System.EventHandler(this.mnuKiemTraSaiViec_Click);
             // 
             // mnuToTruong
             // 
@@ -671,6 +680,13 @@
             this.mnuBaoCaoQuay.Text = "Báo Cáo";
             this.mnuBaoCaoQuay.Click += new System.EventHandler(this.mnuBaoCaoQuay_Click);
             // 
+            // mnuQuetGiaoTon
+            // 
+            this.mnuQuetGiaoTon.Name = "mnuQuetGiaoTon";
+            this.mnuQuetGiaoTon.Size = new System.Drawing.Size(196, 22);
+            this.mnuQuetGiaoTon.Text = "Quét Giao Tồn";
+            this.mnuQuetGiaoTon.Click += new System.EventHandler(this.mnuQuetGiaoTon_Click);
+            // 
             // mnuTongHop
             // 
             this.mnuTongHop.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -802,13 +818,6 @@
             this.timer.Interval = 1200000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // mnuQuetGiaoTon
-            // 
-            this.mnuQuetGiaoTon.Name = "mnuQuetGiaoTon";
-            this.mnuQuetGiaoTon.Size = new System.Drawing.Size(196, 22);
-            this.mnuQuetGiaoTon.Text = "Quét Giao Tồn";
-            this.mnuQuetGiaoTon.Click += new System.EventHandler(this.mnuQuetGiaoTon_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -926,6 +935,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuTimKiemDienThoai;
         private System.Windows.Forms.ToolStripMenuItem mnuChanTienDu;
         private System.Windows.Forms.ToolStripMenuItem mnuQuetGiaoTon;
+        private System.Windows.Forms.ToolStripMenuItem mnuKiemTraSaiViec;
     }
 }
 

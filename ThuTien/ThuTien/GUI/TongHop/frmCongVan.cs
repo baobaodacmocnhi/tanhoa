@@ -110,7 +110,7 @@ namespace ThuTien.GUI.TongHop
                         _cDongNuoc.LinQ_ExecuteNonQuery("update TT_KQDongNuoc set ChuyenDN=1,NgayChuyenDN=getdate(),ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getdate() where SoPhieuDN=" + dgvKQDongNuoc["SoPhieuDN", e.RowIndex].Value.ToString());
                     else
                         _cDongNuoc.LinQ_ExecuteNonQuery("update TT_KQDongNuoc set ChuyenDN=0,NgayChuyenDN=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getdate() where SoPhieuDN=" + dgvKQDongNuoc["SoPhieuDN", e.RowIndex].Value.ToString());
-                    _cDongNuoc.SubmitChanges();
+                    _cDongNuoc.Refresh();
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -181,7 +181,7 @@ namespace ThuTien.GUI.TongHop
                         _cDongNuoc.LinQ_ExecuteNonQuery("update TT_KQDongNuoc set ChuyenMN=1,NgayChuyenMN=getdate(),ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getdate() where SoPhieuMN=" + dgvKQMoNuoc["SoPhieuMN", e.RowIndex].Value.ToString());
                     else
                         _cDongNuoc.LinQ_ExecuteNonQuery("update TT_KQDongNuoc set ChuyenMN=0,NgayChuyenMN=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getdate() where SoPhieuMN=" + dgvKQMoNuoc["SoPhieuMN", e.RowIndex].Value.ToString());
-                    _cDongNuoc.SubmitChanges();
+                    _cDongNuoc.Refresh();
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -302,6 +302,10 @@ namespace ThuTien.GUI.TongHop
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
+            if (dgvDSCongVan.Columns[e.ColumnIndex].Name == "DanhBo_CV" && e.Value != null && e.Value.ToString().Length >= 11)
+            {
+                e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
+            }
         }
 
         private void dgvDSCongVan_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -326,11 +330,13 @@ namespace ThuTien.GUI.TongHop
                     dr["GhiChu"] = item.Cells["NoiDung_CV"].Value.ToString();
 
                     HOADON hoadon = _cHoaDon.GetMoiNhat(item.Cells["DanhBo_CV"].Value.ToString());
-                    if(hoadon.MaNV_HanhThu==null)
-                        hoadon = _cHoaDon.GetMoiNhi(item.Cells["DanhBo_CV"].Value.ToString());
-                    dr["To"] = _cNguoiDung.GetTenToByMaND(hoadon.MaNV_HanhThu.Value);
-                    dr["HanhThu"] = _cNguoiDung.GetHoTenByMaND(hoadon.MaNV_HanhThu.Value);
-
+                    if (hoadon != null)
+                    {
+                        if (hoadon.MaNV_HanhThu == null)
+                            hoadon = _cHoaDon.GetMoiNhi(item.Cells["DanhBo_CV"].Value.ToString());
+                        dr["To"] = _cNguoiDung.GetTenToByMaND(hoadon.MaNV_HanhThu.Value);
+                        dr["HanhThu"] = _cNguoiDung.GetHoTenByMaND(hoadon.MaNV_HanhThu.Value);
+                    }
                     List<HOADON> lstHDTon = _cHoaDon.GetListDSTonByDanhBo(item.Cells["DanhBo_CV"].Value.ToString());
                     foreach (HOADON itemHDTon in lstHDTon)
                     {
@@ -351,9 +357,17 @@ namespace ThuTien.GUI.TongHop
 
         private void dgvKQDongMoNuoc_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvKQMoNuoc.Columns[e.ColumnIndex].Name == "SoPhieuMN" && e.Value != null)
+            if (dgvKQDongMoNuoc.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null)
             {
                 e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
+            }
+            if (dgvKQDongMoNuoc.Columns[e.ColumnIndex].Name == "SoPhieuDN_DMN" && e.Value.ToString().Length >2)
+            {
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+            if (dgvKQDongMoNuoc.Columns[e.ColumnIndex].Name == "SoPhieuMN_DMN" && e.Value.ToString().Length > 2)
+            {
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
         }
 

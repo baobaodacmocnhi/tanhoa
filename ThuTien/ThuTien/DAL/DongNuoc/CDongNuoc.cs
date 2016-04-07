@@ -507,6 +507,19 @@ namespace ThuTien.DAL.DongNuoc
             return _db.TT_KQDongNuocs.Any(item => item.MaDN == MaDN && item.CreateBy == MaNV_DongNuoc);
         }
 
+        public bool CheckExist_KQDongNuocLan2(string SoHoaDon)
+        {
+            if (CheckExist_CTDongNuoc(SoHoaDon))
+            {
+                if (_db.TT_CTDongNuocs.SingleOrDefault(item => item.MaHD == _db.HOADONs.SingleOrDefault(itemHD => itemHD.SOHOADON == SoHoaDon).ID_HOADON && item.TT_DongNuoc.Huy == false).TT_DongNuoc.TT_KQDongNuocs.Count > 0)
+                    return _db.TT_CTDongNuocs.SingleOrDefault(item => item.MaHD == _db.HOADONs.SingleOrDefault(itemHD => itemHD.SOHOADON == SoHoaDon).ID_HOADON && item.TT_DongNuoc.Huy == false).TT_DongNuoc.TT_KQDongNuocs.SingleOrDefault().DongNuoc2;
+                else
+                    return false;
+            }
+            else
+                return false;
+        }
+
         /// <summary>
         /// Kiểm tra Số Hóa Đơn có lập Thông Báo chưa. Nếu Thông Báo trước đó bị hủy thì vẫn được lập cái mới
         /// </summary>

@@ -57,6 +57,8 @@ namespace ThuTien.GUI.TimKiem
                 {
                     if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon"].Value.ToString()))
                         item.DefaultCellStyle.BackColor = Color.Yellow;
+                    if (_cDongNuoc.CheckExist_KQDongNuocLan2(item.Cells["SoHoaDon"].Value.ToString()))
+                        item.DefaultCellStyle.BackColor = Color.Orange;
                     if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
                     {
                         //item.Cells["TinhTrang"].Value = _cLenhHuy.GetTinhTrangBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());

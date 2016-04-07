@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>521</ApplicationRevision>
+    <ApplicationRevision>526</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -583,6 +583,12 @@
     </Compile>
     <Compile Include="GUI\Doi\frmKiemPortTon.Designer.cs">
       <DependentUpon>frmKiemPortTon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Doi\frmKiemTraSaiViec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Doi\frmKiemTraSaiViec.Designer.cs">
+      <DependentUpon>frmKiemTraSaiViec.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Doi\frmTinhGiaBanBinhQuan.cs">
       <SubType>Form</SubType>
@@ -1214,6 +1220,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmKiemPortTon.resx">
       <DependentUpon>frmKiemPortTon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Doi\frmKiemTraSaiViec.resx">
+      <DependentUpon>frmKiemTraSaiViec.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmTinhGiaBanBinhQuan.resx">
       <DependentUpon>frmTinhGiaBanBinhQuan.cs</DependentUpon>

@@ -85,6 +85,7 @@
             this.txtTenDuong = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnTimKiemTatCa = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKinhDoanh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLenhHuy)).BeginInit();
@@ -452,7 +453,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(762, 61);
+            this.label6.Location = new System.Drawing.Point(893, 61);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(95, 13);
             this.label6.TabIndex = 20;
@@ -591,11 +592,22 @@
             this.btnTimKiemTatCa.UseVisualStyleBackColor = true;
             this.btnTimKiemTatCa.Click += new System.EventHandler(this.btnTimKiemTatCa_Click);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(762, 61);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(125, 13);
+            this.label10.TabIndex = 23;
+            this.label10.Text = "Lệnh ĐN lần 2: màu cam";
+            // 
             // frmTimKiemKhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1360, 629);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.btnTimKiemTatCa);
             this.Controls.Add(this.txtTenDuong);
             this.Controls.Add(this.label9);
@@ -683,5 +695,6 @@
         private System.Windows.Forms.TextBox txtTenDuong;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnTimKiemTatCa;
+        private System.Windows.Forms.Label label10;
     }
 }

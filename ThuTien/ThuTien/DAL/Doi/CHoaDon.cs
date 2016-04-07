@@ -455,6 +455,11 @@ namespace ThuTien.DAL.Doi
             return _db.HOADONs.SingleOrDefault(item => item.SOHOADON == SoHoaDon);
         }
 
+        public HOADON Get(string DanhBo, int Nam, int Ky)
+        {
+            return _db.HOADONs.SingleOrDefault(item => item.DANHBA == DanhBo && item.NAM == Nam && item.KY == Ky);
+        }
+
         public HOADON Get(string DanhBo, int Nam, int Ky, int Dot)
         {
             return _db.HOADONs.SingleOrDefault(item => item.DANHBA == DanhBo && item.NAM == Nam && item.KY == Ky && item.DOT == Dot);
@@ -5577,28 +5582,6 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSDangNganByMaNVNgayGiaiTrach(int MaNV_DangNgan, int Nam, int Ky, int Dot,DateTime NgayGiaiTrach)
-        {
-            var query = from item in _db.HOADONs
-                        where item.MaNV_DangNgan == MaNV_DangNgan && item.NAM == Nam && item.KY == Ky && item.DOT == Dot && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
-                        orderby item.MALOTRINH ascending
-                        select new
-                        {
-                            item.NGAYGIAITRACH,
-                            item.SOHOADON,
-                            Ky = item.KY + "/" + item.NAM,
-                            MLT = item.MALOTRINH,
-                            item.SOPHATHANH,
-                            DanhBo = item.DANHBA,
-                            item.TIEUTHU,
-                            item.GIABAN,
-                            ThueGTGT = item.THUE,
-                            PhiBVMT = item.PHI,
-                            item.TONGCONG,
-                        };
-            return LINQToDataTable(query);
-        }
-
         public DataTable GetDSDangNganHanhThuByMaNVNgayGiaiTrach(string Loai, int MaNV_DangNgan, DateTime NgayGiaiTrach)
         {
             if (Loai == "TG")
@@ -5647,7 +5630,29 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
-        public DataTable GetDSDangNganByMaNVNgayGiaiTrach(string Loai, int MaNV_DangNgan, DateTime NgayGiaiTrach)
+        public DataTable GetDSDangNgan(int MaNV_DangNgan, int Nam, int Ky, int Dot, DateTime NgayGiaiTrach)
+        {
+            var query = from item in _db.HOADONs
+                        where item.MaNV_DangNgan == MaNV_DangNgan && item.NAM == Nam && item.KY == Ky && item.DOT == Dot && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                        orderby item.MALOTRINH ascending
+                        select new
+                        {
+                            item.NGAYGIAITRACH,
+                            item.SOHOADON,
+                            Ky = item.KY + "/" + item.NAM,
+                            MLT = item.MALOTRINH,
+                            item.SOPHATHANH,
+                            DanhBo = item.DANHBA,
+                            item.TIEUTHU,
+                            item.GIABAN,
+                            ThueGTGT = item.THUE,
+                            PhiBVMT = item.PHI,
+                            item.TONGCONG,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSDangNgan(string Loai, int MaNV_DangNgan, DateTime NgayGiaiTrach)
         {
             if (Loai == "TG")
             {
@@ -5695,7 +5700,7 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
-        public DataTable GetDSDangNganByToMaNVNgayGiaiTrach(string Loai, int MaTo, int MaNV_DangNgan, DateTime NgayGiaiTrach)
+        public DataTable GetDSDangNgan(string Loai, int MaTo, int MaNV_DangNgan, DateTime NgayGiaiTrach)
         {
             if (Loai == "TG")
             {
@@ -5745,6 +5750,29 @@ namespace ThuTien.DAL.Doi
                     return LINQToDataTable(query);
                 }
             return null;
+        }
+
+        public DataTable GetDSDangNgan(int MaNV_DangNgan, DateTime NgayGiaiTrach)
+        {
+            var query = from itemHD in _db.HOADONs
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemHD.MaNV_DangNgan == MaNV_DangNgan && itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                        orderby itemHD.MALOTRINH ascending
+                        select new
+                        {
+                            itemHD.NGAYGIAITRACH,
+                            itemHD.SOHOADON,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            itemHD.TONGCONG,
+                            GiaBieu = itemHD.GB,
+                            To = itemtableND.TT_To.TenTo,
+                            HanhThu = itemtableND.HoTen,
+                        };
+            return LINQToDataTable(query);
         }
 
         public DataTable GetDSDangNgan(int MaNV_DangNgan, DateTime FromNgayGiaiTrach, DateTime ToNgayGiaiTrach)

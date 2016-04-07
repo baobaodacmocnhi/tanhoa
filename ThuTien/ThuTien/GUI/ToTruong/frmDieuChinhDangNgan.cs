@@ -103,13 +103,13 @@ namespace ThuTien.GUI.ToTruong
         {
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganByMaNVNgayGiaiTrach("TG", (int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
+                dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNgan("TG", (int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
                 CountdgvHDTuGia();
             }
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
                 {
-                    dgvHDCoQuan.DataSource = _cHoaDon.GetDSDangNganByMaNVNgayGiaiTrach("CQ", (int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
+                    dgvHDCoQuan.DataSource = _cHoaDon.GetDSDangNgan("CQ", (int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
                     CoungdgvHDCoQuan();
                 }
         }

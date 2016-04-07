@@ -126,5 +126,13 @@ namespace ThuTien.DAL.HanhThu
 
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
+
+        public string GetDienThoai(string DanhBo)
+        {
+            if (_db.TT_ThongTinKhachHangs.Any(item => item.DanhBo == DanhBo))
+                return _db.TT_ThongTinKhachHangs.SingleOrDefault(item => item.DanhBo == DanhBo).DienThoai;
+            else
+                return "";
+        }
     }
 }

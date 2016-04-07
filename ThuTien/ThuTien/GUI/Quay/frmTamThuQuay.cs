@@ -67,6 +67,8 @@ namespace ThuTien.GUI.Quay
                         item.Cells["Chon"].Value = "True";
                         if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon"].Value.ToString()))
                             item.DefaultCellStyle.BackColor = Color.Yellow;
+                        if (_cDongNuoc.CheckExist_KQDongNuocLan2(item.Cells["SoHoaDon"].Value.ToString()))
+                            item.DefaultCellStyle.BackColor = Color.Orange;
                         item.Cells["DongNuoc"].Value = _cDongNuoc.GetNgayDNBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
                         if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
                             item.DefaultCellStyle.BackColor = Color.Red;
@@ -210,6 +212,8 @@ namespace ThuTien.GUI.Quay
                     item.Cells["To_TT"].Value = TenTo;
                     item.DefaultCellStyle.BackColor = Color.Yellow;
                 }
+                if (_cDongNuoc.CheckExist_KQDongNuocLan2(item.Cells["SoHoaDon_TT"].Value.ToString()))
+                    item.DefaultCellStyle.BackColor = Color.Orange;
                 //if (_cDongNuoc.CheckCTDongNuocBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
                 //    item.DefaultCellStyle.BackColor = Color.Yellow;
                 if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_TT"].Value.ToString()))

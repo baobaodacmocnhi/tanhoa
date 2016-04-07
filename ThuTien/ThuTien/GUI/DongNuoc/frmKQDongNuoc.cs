@@ -54,6 +54,11 @@ namespace ThuTien.GUI.DongNuoc
             chkMoNuoc.Checked = false;
             dateMoNuoc.Value = DateTime.Now;
             txtChiSoMN.Text = "";
+            chkDongNuoc2.Checked = false;
+            dateDongNuoc1.Value = DateTime.Now;
+            txtChiSoDN1.Text = "";
+            dateDongNuoc2.Value = DateTime.Now;
+            txtChiSoDN2.Text = "";
             _dongnuoc = null;
             _kqdongnuoc = null;
         }
@@ -88,6 +93,16 @@ namespace ThuTien.GUI.DongNuoc
                         dateMoNuoc.Value = _kqdongnuoc.NgayMN.Value;
                         if (_kqdongnuoc.ChiSoMN != null)
                             txtChiSoMN.Text = _kqdongnuoc.ChiSoMN.Value.ToString();
+                    }
+                    if (_kqdongnuoc.DongNuoc2)
+                    {
+                        chkDongNuoc2.Checked = _kqdongnuoc.DongNuoc2;
+                        dateDongNuoc2.Value = _kqdongnuoc.NgayDN.Value;
+                        if (_kqdongnuoc.ChiSoDN != null)
+                            txtChiSoDN2.Text = _kqdongnuoc.ChiSoDN.Value.ToString();
+                        dateDongNuoc1.Value = _kqdongnuoc.NgayDN1.Value;
+                        if (_kqdongnuoc.ChiSoDN1 != null)
+                            txtChiSoDN1.Text = _kqdongnuoc.ChiSoDN1.Value.ToString();
                     }
                 }
                 else
@@ -205,6 +220,30 @@ namespace ThuTien.GUI.DongNuoc
                         _kqdongnuoc.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
                     _kqdongnuoc.LyDo = txtLyDo.Text.Trim();
 
+                    if (chkDongNuoc2.Checked)
+                    {
+                        _kqdongnuoc.DongNuoc2 = true;
+                        _kqdongnuoc.PhiMoNuoc = _cDongNuoc.GetPhiMoNuoc() * 2;
+
+                        if (_kqdongnuoc.NgayDN1 == null)
+                            _kqdongnuoc.NgayDN1 = _kqdongnuoc.NgayDN;
+                        if (_kqdongnuoc.ChiSoDN1 == null)
+                            _kqdongnuoc.ChiSoDN1 = _kqdongnuoc.ChiSoDN;
+
+                        _kqdongnuoc.NgayDN = dateDongNuoc2.Value;
+                        if (!string.IsNullOrEmpty(txtChiSoDN2.Text.Trim()))
+                            _kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN2.Text.Trim());
+                    }
+                    else
+                    {
+                        _kqdongnuoc.DongNuoc2 = false;
+                        _kqdongnuoc.PhiMoNuoc = _kqdongnuoc.PhiMoNuoc / 2;
+                        _kqdongnuoc.NgayDN = _kqdongnuoc.NgayDN1;
+                        _kqdongnuoc.ChiSoDN = _kqdongnuoc.ChiSoDN1;
+                        _kqdongnuoc.NgayDN1 = null;
+                        _kqdongnuoc.ChiSoDN1 = null;
+                    }
+
                     if (chkMoNuoc.Checked)
                     {
                         _kqdongnuoc.MoNuoc = true;
@@ -245,6 +284,30 @@ namespace ThuTien.GUI.DongNuoc
                     if (cmbChiKhoaGoc.SelectedItem != null)
                         kqdongnuoc.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
                     kqdongnuoc.LyDo = txtLyDo.Text.Trim();
+
+                    if (chkDongNuoc2.Checked)
+                    {
+                        kqdongnuoc.DongNuoc2 = true;
+                        kqdongnuoc.PhiMoNuoc = _cDongNuoc.GetPhiMoNuoc() * 2;
+
+                        if (kqdongnuoc.NgayDN1 == null)
+                            kqdongnuoc.NgayDN1 = kqdongnuoc.NgayDN;
+                        if (kqdongnuoc.ChiSoDN1 == null)
+                            kqdongnuoc.ChiSoDN1 = kqdongnuoc.ChiSoDN;
+
+                        kqdongnuoc.NgayDN = dateDongNuoc2.Value;
+                        if (!string.IsNullOrEmpty(txtChiSoDN2.Text.Trim()))
+                            kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN2.Text.Trim());
+                    }
+                    else
+                    {
+                        kqdongnuoc.DongNuoc2 = false;
+                        kqdongnuoc.PhiMoNuoc = kqdongnuoc.PhiMoNuoc / 2;
+                        kqdongnuoc.NgayDN = kqdongnuoc.NgayDN1;
+                        kqdongnuoc.ChiSoDN = kqdongnuoc.ChiSoDN1;
+                        kqdongnuoc.NgayDN1 = null;
+                        kqdongnuoc.ChiSoDN1 = null;
+                    }
 
                     if (chkMoNuoc.Checked)
                     {
@@ -336,9 +399,20 @@ namespace ThuTien.GUI.DongNuoc
                 cmbChiMatSo.SelectedItem = dgvKQDongNuoc["ChiMatSo", e.RowIndex].Value.ToString();
                 cmbChiKhoaGoc.SelectedItem = dgvKQDongNuoc["ChiKhoaGoc", e.RowIndex].Value.ToString();
                 txtLyDo.Text = dgvKQDongNuoc["LyDo", e.RowIndex].Value.ToString();
-                chkMoNuoc.Checked = bool.Parse(dgvKQDongNuoc["MoNuoc", e.RowIndex].Value.ToString());
-                dateMoNuoc.Value = DateTime.Parse(dgvKQDongNuoc["NgayMN", e.RowIndex].Value.ToString());
-                txtChiSoMN.Text = dgvKQDongNuoc["ChiSoMN", e.RowIndex].Value.ToString();
+                if (bool.Parse(dgvKQDongNuoc["MoNuoc", e.RowIndex].Value.ToString()))
+                {
+                    chkMoNuoc.Checked = bool.Parse(dgvKQDongNuoc["MoNuoc", e.RowIndex].Value.ToString());
+                    dateMoNuoc.Value = DateTime.Parse(dgvKQDongNuoc["NgayMN", e.RowIndex].Value.ToString());
+                    txtChiSoMN.Text = dgvKQDongNuoc["ChiSoMN", e.RowIndex].Value.ToString();
+                }
+                if (bool.Parse(dgvKQDongNuoc["DongNuoc2", e.RowIndex].Value.ToString()))
+                {
+                    chkDongNuoc2.Checked = bool.Parse(dgvKQDongNuoc["DongNuoc2", e.RowIndex].Value.ToString());
+                    dateDongNuoc2.Value = DateTime.Parse(dgvKQDongNuoc["NgayDN", e.RowIndex].Value.ToString());
+                    txtChiSoDN2.Text = dgvKQDongNuoc["ChiSoDN", e.RowIndex].Value.ToString();
+                    dateDongNuoc1.Value = DateTime.Parse(dgvKQDongNuoc["NgayDN1", e.RowIndex].Value.ToString());
+                    txtChiSoDN1.Text = dgvKQDongNuoc["ChiSoDN1", e.RowIndex].Value.ToString();
+                }
             }
             catch
             {
