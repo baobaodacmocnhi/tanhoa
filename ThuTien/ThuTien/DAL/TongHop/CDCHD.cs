@@ -128,7 +128,7 @@ namespace ThuTien.DAL.TongHop
         public DataTable GetTongChuanThu(int Nam, int Ky)
         {
             var query = from itemDC in _db.DIEUCHINH_HDs
-                        join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                        join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                         where itemDC.ChuanThu1==false && itemHD.NAM == Nam && itemHD.KY == Ky
                         group itemDC by itemHD.KY into itemGroup
                         select new
@@ -145,7 +145,7 @@ namespace ThuTien.DAL.TongHop
         public DataTable GetTongChuanThu(int MaTo, int Nam, int Ky, int Dot)
         {
             var query = from itemDC in _db.DIEUCHINH_HDs
-                        join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                        join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                         where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                 && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                 && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT == Dot
@@ -167,7 +167,7 @@ namespace ThuTien.DAL.TongHop
             if (Loai == "TG")
             {
                 var query = from itemDC in _db.DIEUCHINH_HDs
-                            join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             where  itemDC.ChuanThu1 == false&&itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.GB >= 11 && itemHD.GB <= 20
                             select new
                             {
@@ -184,7 +184,7 @@ namespace ThuTien.DAL.TongHop
                 if (Loai == "CQ")
                 {
                     var query = from itemDC in _db.DIEUCHINH_HDs
-                                join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                                 where  itemDC.ChuanThu1 == false&&itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.GB > 20
                                 select new
                                 {
@@ -205,7 +205,7 @@ namespace ThuTien.DAL.TongHop
             if (Loai == "TG")
             {
                 var query = from itemDC in _db.DIEUCHINH_HDs
-                            join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                     && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                     && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT == Dot && itemHD.GB >= 11 && itemHD.GB <= 20
@@ -227,7 +227,7 @@ namespace ThuTien.DAL.TongHop
                 if (Loai == "CQ")
                 {
                     var query = from itemDC in _db.DIEUCHINH_HDs
-                                join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                                 where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                         && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT == Dot && itemHD.GB > 20
@@ -253,7 +253,7 @@ namespace ThuTien.DAL.TongHop
             if (Loai == "TG")
             {
                 var query = from itemDC in _db.DIEUCHINH_HDs
-                            join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                     && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                     && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.GB >= 11 && itemHD.GB <= 20
@@ -276,7 +276,7 @@ namespace ThuTien.DAL.TongHop
                 if (Loai == "CQ")
                 {
                     var query = from itemDC in _db.DIEUCHINH_HDs
-                                join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                                 where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                         && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.GB > 20
@@ -303,7 +303,7 @@ namespace ThuTien.DAL.TongHop
             if (Loai == "TG")
             {
                 var query = from itemDC in _db.DIEUCHINH_HDs
-                            join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                     && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                     && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.GB >= 11 && itemHD.GB <= 20
@@ -325,7 +325,7 @@ namespace ThuTien.DAL.TongHop
                 if (Loai == "CQ")
                 {
                     var query = from itemDC in _db.DIEUCHINH_HDs
-                                join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                                 where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                         && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.GB > 20
@@ -351,7 +351,7 @@ namespace ThuTien.DAL.TongHop
             if (Loai == "TG")
             {
                 var query = from itemDC in _db.DIEUCHINH_HDs
-                            join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                     && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                    && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.GB >= 11 && itemHD.GB <= 20
@@ -373,7 +373,7 @@ namespace ThuTien.DAL.TongHop
                 if (Loai == "CQ")
                 {
                     var query = from itemDC in _db.DIEUCHINH_HDs
-                                join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                                 where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                        && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.GB > 20
@@ -397,7 +397,7 @@ namespace ThuTien.DAL.TongHop
         public DataTable GetChuanThu(string SoHoaDon)
         {
             var query = from itemDC in _db.DIEUCHINH_HDs
-                        join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                        join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                         where itemDC.SoHoaDon == SoHoaDon && itemDC.ChuanThu1==false
                         select new
                         {
@@ -418,7 +418,7 @@ namespace ThuTien.DAL.TongHop
             if (Loai == "TG")
             {
                 var query = from itemDC in _db.DIEUCHINH_HDs
-                            join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             where itemHD.MaNV_HanhThu == MaNV_HanhThu && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.GB >= 11 && itemHD.GB <= 20
                             select new
                             {
@@ -437,7 +437,7 @@ namespace ThuTien.DAL.TongHop
                 if (Loai == "CQ")
                 {
                     var query = from itemDC in _db.DIEUCHINH_HDs
-                                join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                                 where itemHD.MaNV_HanhThu == MaNV_HanhThu && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.GB > 20
                                 select new
                                 {
@@ -460,7 +460,7 @@ namespace ThuTien.DAL.TongHop
             if (Loai == "TG")
             {
                 var query = from itemDC in _db.DIEUCHINH_HDs
-                            join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                     && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                     && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT == Dot && itemHD.NGAYGIAITRACH == null && itemHD.GB >= 11 && itemHD.GB <= 20
@@ -482,7 +482,7 @@ namespace ThuTien.DAL.TongHop
                 if (Loai == "CQ")
                 {
                     var query = from itemDC in _db.DIEUCHINH_HDs
-                                join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                                 where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                         && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT == Dot && itemHD.NGAYGIAITRACH == null && itemHD.GB > 20
@@ -508,7 +508,7 @@ namespace ThuTien.DAL.TongHop
             if (Loai == "TG")
             {
                 var query = from itemDC in _db.DIEUCHINH_HDs
-                            join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                     && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                     && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.NGAYGIAITRACH == null && itemHD.GB >= 11 && itemHD.GB <= 20
@@ -530,7 +530,7 @@ namespace ThuTien.DAL.TongHop
                 if (Loai == "CQ")
                 {
                     var query = from itemDC in _db.DIEUCHINH_HDs
-                                join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                                 where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                         && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.NGAYGIAITRACH == null && itemHD.GB > 20
@@ -556,7 +556,7 @@ namespace ThuTien.DAL.TongHop
             if (Loai == "TG")
             {
                 var query = from itemDC in _db.DIEUCHINH_HDs
-                            join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                     && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                     && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.NGAYGIAITRACH == null && itemHD.GB >= 11 && itemHD.GB <= 20
@@ -578,7 +578,7 @@ namespace ThuTien.DAL.TongHop
                 if (Loai == "CQ")
                 {
                     var query = from itemDC in _db.DIEUCHINH_HDs
-                                join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                                 where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                         && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.NGAYGIAITRACH == null && itemHD.GB > 20
@@ -604,7 +604,7 @@ namespace ThuTien.DAL.TongHop
             if (Loai == "TG")
             {
                 var query = from itemDC in _db.DIEUCHINH_HDs
-                            join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                     && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                     && itemDC.ChuanThu1 == false && itemHD.NGAYGIAITRACH == null && itemHD.GB >= 11 && itemHD.GB <= 20
@@ -626,7 +626,7 @@ namespace ThuTien.DAL.TongHop
                 if (Loai == "CQ")
                 {
                     var query = from itemDC in _db.DIEUCHINH_HDs
-                                join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                                 where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                        && itemDC.ChuanThu1 == false && itemHD.NGAYGIAITRACH == null && itemHD.GB > 20
@@ -652,7 +652,7 @@ namespace ThuTien.DAL.TongHop
             if (Loai == "TG")
             {
                 var query = from itemDC in _db.DIEUCHINH_HDs
-                            join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                     && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                     && itemDC.ChuanThu1 == false && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date) && itemHD.GB >= 11 && itemHD.GB <= 20
@@ -674,7 +674,7 @@ namespace ThuTien.DAL.TongHop
                 if (Loai == "CQ")
                 {
                     var query = from itemDC in _db.DIEUCHINH_HDs
-                                join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                                 where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                         && itemDC.ChuanThu1 == false && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date) && itemHD.GB > 20
@@ -700,7 +700,7 @@ namespace ThuTien.DAL.TongHop
             if (Loai == "TG")
             {
                 var query = from itemDC in _db.DIEUCHINH_HDs
-                            join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                     && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                    && itemDC.ChuanThu1 == false && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky)) && itemHD.NGAYGIAITRACH == null && itemHD.GB >= 11 && itemHD.GB <= 20
@@ -722,7 +722,7 @@ namespace ThuTien.DAL.TongHop
                 if (Loai == "CQ")
                 {
                     var query = from itemDC in _db.DIEUCHINH_HDs
-                                join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                                 where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                        && itemDC.ChuanThu1 == false && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky)) && itemHD.NGAYGIAITRACH == null && itemHD.GB > 20
@@ -748,7 +748,7 @@ namespace ThuTien.DAL.TongHop
             if (Loai == "TG")
             {
                 var query = from itemDC in _db.DIEUCHINH_HDs
-                            join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                     && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                     && itemDC.ChuanThu1 == false && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky)) && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date) && itemHD.GB >= 11 && itemHD.GB <= 20
@@ -771,7 +771,7 @@ namespace ThuTien.DAL.TongHop
                 if (Loai == "CQ")
                 {
                     var query = from itemDC in _db.DIEUCHINH_HDs
-                                join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                                 where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                       && itemDC.ChuanThu1 == false && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky)) && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date) && itemHD.GB > 20
@@ -798,7 +798,7 @@ namespace ThuTien.DAL.TongHop
             if (Loai == "TG")
             {
                 var query = from itemDC in _db.DIEUCHINH_HDs
-                            join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                     && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                    && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date) && itemHD.GB >= 11 && itemHD.GB <= 20
@@ -821,7 +821,7 @@ namespace ThuTien.DAL.TongHop
                 if (Loai == "CQ")
                 {
                     var query = from itemDC in _db.DIEUCHINH_HDs
-                                join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                                 where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                      && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date) && itemHD.GB > 20
@@ -848,7 +848,7 @@ namespace ThuTien.DAL.TongHop
             if (Loai == "TG")
             {
                 var query = from itemDC in _db.DIEUCHINH_HDs
-                            join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             where itemHD.MaNV_HanhThu == MaNV
                                    && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT == Dot && itemHD.NGAYGIAITRACH == null && itemHD.GB >= 11 && itemHD.GB <= 20
                             select new
@@ -867,7 +867,7 @@ namespace ThuTien.DAL.TongHop
                 if (Loai == "CQ")
                 {
                     var query = from itemDC in _db.DIEUCHINH_HDs
-                                join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                                 where itemHD.MaNV_HanhThu == MaNV
                                       && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT == Dot && itemHD.NGAYGIAITRACH == null && itemHD.GB > 20
                                 select new
@@ -890,7 +890,7 @@ namespace ThuTien.DAL.TongHop
             if (Loai == "TG")
             {
                 var query = from itemDC in _db.DIEUCHINH_HDs
-                            join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             where itemHD.MaNV_HanhThu == MaNV
                                    && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.NGAYGIAITRACH == null && itemHD.GB >= 11 && itemHD.GB <= 20
                             select new
@@ -909,7 +909,7 @@ namespace ThuTien.DAL.TongHop
                 if (Loai == "CQ")
                 {
                     var query = from itemDC in _db.DIEUCHINH_HDs
-                                join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                                 where itemHD.MaNV_HanhThu == MaNV
                                       && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.NGAYGIAITRACH == null && itemHD.GB > 20
                                 select new
@@ -932,7 +932,7 @@ namespace ThuTien.DAL.TongHop
             if (Loai == "TG")
             {
                 var query = from itemDC in _db.DIEUCHINH_HDs
-                            join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             where itemHD.MaNV_HanhThu == MaNV
                                    && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.NGAYGIAITRACH == null && itemHD.GB >= 11 && itemHD.GB <= 20
                             select new
@@ -951,7 +951,7 @@ namespace ThuTien.DAL.TongHop
                 if (Loai == "CQ")
                 {
                     var query = from itemDC in _db.DIEUCHINH_HDs
-                                join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                                 where itemHD.MaNV_HanhThu == MaNV
                                      && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.NGAYGIAITRACH == null && itemHD.GB > 20
                                 select new
@@ -974,7 +974,7 @@ namespace ThuTien.DAL.TongHop
             if (Loai == "TG")
             {
                 var query = from itemDC in _db.DIEUCHINH_HDs
-                            join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             where itemHD.MaNV_HanhThu == MaNV
                                    && itemDC.ChuanThu1 == false && itemHD.NGAYGIAITRACH == null && itemHD.GB >= 11 && itemHD.GB <= 20
                             select new
@@ -993,7 +993,7 @@ namespace ThuTien.DAL.TongHop
                 if (Loai == "CQ")
                 {
                     var query = from itemDC in _db.DIEUCHINH_HDs
-                                join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                                 where itemHD.MaNV_HanhThu == MaNV
                                         && itemDC.ChuanThu1 == false && itemHD.NGAYGIAITRACH == null && itemHD.GB > 20
                                 select new
@@ -1016,7 +1016,7 @@ namespace ThuTien.DAL.TongHop
             if (Loai == "TG")
             {
                 var query = from itemDC in _db.DIEUCHINH_HDs
-                            join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             where itemHD.MaNV_HanhThu == MaNV
                                     && itemDC.ChuanThu1 == false && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date) && itemHD.GB >= 11 && itemHD.GB <= 20
                             select new
@@ -1035,7 +1035,7 @@ namespace ThuTien.DAL.TongHop
                 if (Loai == "CQ")
                 {
                     var query = from itemDC in _db.DIEUCHINH_HDs
-                                join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                                 where itemHD.MaNV_HanhThu == MaNV
                                         && itemDC.ChuanThu1 == false && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date) && itemHD.GB > 20
                                 select new
@@ -1058,7 +1058,7 @@ namespace ThuTien.DAL.TongHop
             if (Loai == "TG")
             {
                 var query = from itemDC in _db.DIEUCHINH_HDs
-                            join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             where itemHD.MaNV_HanhThu == MaNV
                                     && itemDC.ChuanThu1 == false && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky)) && itemHD.NGAYGIAITRACH == null && itemHD.GB >= 11 && itemHD.GB <= 20
                             select new
@@ -1077,7 +1077,7 @@ namespace ThuTien.DAL.TongHop
                 if (Loai == "CQ")
                 {
                     var query = from itemDC in _db.DIEUCHINH_HDs
-                                join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                                 where itemHD.MaNV_HanhThu == MaNV
                                         && itemDC.ChuanThu1 == false && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky)) && itemHD.NGAYGIAITRACH == null && itemHD.GB > 20
                                 select new
@@ -1100,7 +1100,7 @@ namespace ThuTien.DAL.TongHop
             if (Loai == "TG")
             {
                 var query = from itemDC in _db.DIEUCHINH_HDs
-                            join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             where itemHD.MaNV_HanhThu == MaNV
                                      && itemDC.ChuanThu1 == false && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky)) && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date) && itemHD.GB >= 11 && itemHD.GB <= 20
                             select new
@@ -1120,7 +1120,7 @@ namespace ThuTien.DAL.TongHop
                 if (Loai == "CQ")
                 {
                     var query = from itemDC in _db.DIEUCHINH_HDs
-                                join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                                 where itemHD.MaNV_HanhThu == MaNV
                                         && itemDC.ChuanThu1 == false && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky)) && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date) && itemHD.GB > 20
                                 select new
@@ -1144,7 +1144,7 @@ namespace ThuTien.DAL.TongHop
             if (Loai == "TG")
             {
                 var query = from itemDC in _db.DIEUCHINH_HDs
-                            join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             where itemHD.MaNV_HanhThu == MaNV
                                     && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date) && itemHD.GB >= 11 && itemHD.GB <= 20
                             select new
@@ -1164,7 +1164,7 @@ namespace ThuTien.DAL.TongHop
                 if (Loai == "CQ")
                 {
                     var query = from itemDC in _db.DIEUCHINH_HDs
-                                join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                                 where itemHD.MaNV_HanhThu == MaNV
                                        && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date) && itemHD.GB > 20
                                 select new
@@ -1235,7 +1235,7 @@ namespace ThuTien.DAL.TongHop
         public DataTable GetDSByNgayDC(DateTime TuNgay, DateTime DenNgay)
         {
             var query = from itemDC in _db.DIEUCHINH_HDs
-                        join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                        join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemDC.NGAY_DC.Value.Date >= TuNgay.Date && itemDC.NGAY_DC.Value.Date <= DenNgay.Date
@@ -1265,7 +1265,7 @@ namespace ThuTien.DAL.TongHop
         public DataTable GetDSDangNgan(DateTime TuNgay, DateTime DenNgay)
         {
             var query = from itemDC in _db.DIEUCHINH_HDs
-                        join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                        join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemHD.ChuyenNoKhoDoi==false && itemHD.NGAYGIAITRACH.Value.Date >= TuNgay.Date && itemHD.NGAYGIAITRACH.Value.Date <= DenNgay.Date
@@ -1293,7 +1293,7 @@ namespace ThuTien.DAL.TongHop
         public DataTable GetDSTon()
         {
             var query = from itemDC in _db.DIEUCHINH_HDs
-                        join itemHD in _db.HOADONs on itemDC.SoHoaDon equals itemHD.SOHOADON
+                        join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemHD.NGAYGIAITRACH==null

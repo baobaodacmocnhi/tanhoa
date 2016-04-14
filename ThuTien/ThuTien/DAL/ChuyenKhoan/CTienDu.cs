@@ -68,10 +68,12 @@ namespace ThuTien.DAL.ChuyenKhoan
         {
             string sql = "declare @NgayGiaiTrach date;"
                     + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyy-MM-dd") + "'"
-                    + " select a.DanhBo,CASE WHEN b.SoTien is null THEN a.SoTien ELSE a.SoTien-b.SoTien END as SoTien from"
+                    + " select a.DanhBo,CASE WHEN b.SoTien is null THEN a.SoTien ELSE a.SoTien-b.SoTien END as SoTien,DienThoai from"
                     + " (select DanhBo,SoTien from TT_TienDu) a"
                     + " left join"
                     + " (select DanhBo,SUM(SoTien) as SoTien from TT_TienDuLichSu where CAST(CreateDate as date)>@NgayGiaiTrach group by DanhBo) b on a.DanhBo=b.DanhBo"
+                    + " left join"
+                    + " (select DanhBo,DienThoai from TT_ThongTinKhachHang) c on a.DanhBo=c.DanhBo"
                     + " where case when b.SoTien is null then a.SoTien else a.SoTien-b.SoTien end>0";
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }

@@ -149,8 +149,8 @@
             this.dgvToTrinh.Size = new System.Drawing.Size(315, 565);
             this.dgvToTrinh.TabIndex = 0;
             this.dgvToTrinh.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvToTrinh_CellContentClick);
-            this.dgvToTrinh.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvToTrinh_CellEndEdit);
             this.dgvToTrinh.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvToTrinh_CellFormatting);
+            this.dgvToTrinh.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvToTrinh_CellValidating);
             this.dgvToTrinh.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvToTrinh_RowPostPaint);
             // 
             // MaTT
@@ -214,8 +214,8 @@
             this.dgvCTToTrinh.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvCTToTrinh.Size = new System.Drawing.Size(913, 565);
             this.dgvCTToTrinh.TabIndex = 22;
-            this.dgvCTToTrinh.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCTToTrinh_CellEndEdit);
             this.dgvCTToTrinh.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvCTToTrinh_CellFormatting);
+            this.dgvCTToTrinh.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvCTToTrinh_CellValidating);
             this.dgvCTToTrinh.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvCTToTrinh_RowPostPaint);
             // 
             // MaTT_CT

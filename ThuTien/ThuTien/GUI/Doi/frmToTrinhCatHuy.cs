@@ -65,39 +65,39 @@ namespace ThuTien.GUI.Doi
 
                     //if (dt.Rows.Count > 0)
                     //{
-                        //if (dgvCTToTrinh.DataSource == null)
-                        //{
-                        //    dgvCTToTrinh.Rows.Add();
+                    //if (dgvCTToTrinh.DataSource == null)
+                    //{
+                    //    dgvCTToTrinh.Rows.Add();
 
-                        //    dgvCTToTrinh["DanhBo", dgvCTToTrinh.Rows.Count - 1].Value = dt.Rows[0]["DanhBo"].ToString();
-                        //    dgvCTToTrinh["MLT", dgvCTToTrinh.Rows.Count - 1].Value = dt.Rows[0]["MLT"].ToString();
-                        //    dgvCTToTrinh["HoTen", dgvCTToTrinh.Rows.Count - 1].Value = dt.Rows[0]["HoTen"].ToString();
-                        //    dgvCTToTrinh["DiaChi", dgvCTToTrinh.Rows.Count - 1].Value = dt.Rows[0]["DiaChi"].ToString();
-                        //    dgvCTToTrinh["Ky", dgvCTToTrinh.Rows.Count - 1].Value = Ky;
-                        //    dgvCTToTrinh["TongCong", dgvCTToTrinh.Rows.Count - 1].Value = TongCongSo;
-                        //    dgvCTToTrinh["TieuThu", dgvCTToTrinh.Rows.Count - 1].Value = TieuThu;
-                        //    dgvCTToTrinh["CoDHN", dgvCTToTrinh.Rows.Count - 1].Value = _cCapNuocTanHoa.GetCoDHN(dt.Rows[0]["DanhBo"].ToString());
-                        //}
-                        //else
-                        //{
-                        //    DataTable dtTemp = (DataTable)dgvCTToTrinh.DataSource;
+                    //    dgvCTToTrinh["DanhBo", dgvCTToTrinh.Rows.Count - 1].Value = dt.Rows[0]["DanhBo"].ToString();
+                    //    dgvCTToTrinh["MLT", dgvCTToTrinh.Rows.Count - 1].Value = dt.Rows[0]["MLT"].ToString();
+                    //    dgvCTToTrinh["HoTen", dgvCTToTrinh.Rows.Count - 1].Value = dt.Rows[0]["HoTen"].ToString();
+                    //    dgvCTToTrinh["DiaChi", dgvCTToTrinh.Rows.Count - 1].Value = dt.Rows[0]["DiaChi"].ToString();
+                    //    dgvCTToTrinh["Ky", dgvCTToTrinh.Rows.Count - 1].Value = Ky;
+                    //    dgvCTToTrinh["TongCong", dgvCTToTrinh.Rows.Count - 1].Value = TongCongSo;
+                    //    dgvCTToTrinh["TieuThu", dgvCTToTrinh.Rows.Count - 1].Value = TieuThu;
+                    //    dgvCTToTrinh["CoDHN", dgvCTToTrinh.Rows.Count - 1].Value = _cCapNuocTanHoa.GetCoDHN(dt.Rows[0]["DanhBo"].ToString());
+                    //}
+                    //else
+                    //{
+                    //    DataTable dtTemp = (DataTable)dgvCTToTrinh.DataSource;
 
-                        //    DataRow dr = dtTemp.NewRow();
+                    //    DataRow dr = dtTemp.NewRow();
 
-                        //    dr["DanhBo"] = dt.Rows[0]["DanhBo"].ToString();
-                        //    dr["MLT"] = dt.Rows[0]["MLT"].ToString();
-                        //    dr["HoTen"] = dt.Rows[0]["HoTen"].ToString();
-                        //    dr["DiaChi"] = dt.Rows[0]["DiaChi"].ToString();
-                        //    dr["Ky"] = Ky;
-                        //    dr["TongCong"] = TongCongSo;
-                        //    dr["TieuThu"] = TieuThu;
-                        //    dr["CoDHN"] = _cCapNuocTanHoa.GetCoDHN(dt.Rows[0]["DanhBo"].ToString());
+                    //    dr["DanhBo"] = dt.Rows[0]["DanhBo"].ToString();
+                    //    dr["MLT"] = dt.Rows[0]["MLT"].ToString();
+                    //    dr["HoTen"] = dt.Rows[0]["HoTen"].ToString();
+                    //    dr["DiaChi"] = dt.Rows[0]["DiaChi"].ToString();
+                    //    dr["Ky"] = Ky;
+                    //    dr["TongCong"] = TongCongSo;
+                    //    dr["TieuThu"] = TieuThu;
+                    //    dr["CoDHN"] = _cCapNuocTanHoa.GetCoDHN(dt.Rows[0]["DanhBo"].ToString());
 
-                        //    dtTemp.Rows.Add(dr);
-                        //    dtTemp.AcceptChanges();
+                    //    dtTemp.Rows.Add(dr);
+                    //    dtTemp.AcceptChanges();
 
-                        //    dgvCTToTrinh.DataSource = dtTemp;
-                        //}
+                    //    dgvCTToTrinh.DataSource = dtTemp;
+                    //}
                     //}
 
                     HOADON hoadon = _cHoaDon.GetMoiNhat(txtDanhBo.Text.Trim());
@@ -165,7 +165,7 @@ namespace ThuTien.GUI.Doi
                         int MaCTTT = _cToTrinhCatHuy.GetMaxMaCTTT();
 
                         foreach (DataGridViewRow item in dgvCTToTrinh.Rows)
-                            if (item.Cells["MaCTTT"].Value==null||string.IsNullOrEmpty(item.Cells["MaCTTT"].Value.ToString()))
+                            if (item.Cells["MaCTTT"].Value == null || string.IsNullOrEmpty(item.Cells["MaCTTT"].Value.ToString()))
                             {
                                 TT_CTToTrinhCatHuy cttotrinh = new TT_CTToTrinhCatHuy();
                                 cttotrinh.MaCTTT = ++MaCTTT;
@@ -265,7 +265,7 @@ namespace ThuTien.GUI.Doi
         {
             dsBaoCao ds = new dsBaoCao();
 
-            if(!bool.Parse(dgvToTrinh.SelectedRows[0].Cells["Khoa"].Value.ToString()))
+            if (!bool.Parse(dgvToTrinh.SelectedRows[0].Cells["Khoa"].Value.ToString()))
                 foreach (DataGridViewRow item in dgvCTToTrinh.Rows)
                 {
                     DataRow dr = ds.Tables["ToTrinhCatHuy"].NewRow();
@@ -337,7 +337,7 @@ namespace ThuTien.GUI.Doi
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
-            
+
         }
 
         private void dgvToTrinh_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -346,6 +346,80 @@ namespace ThuTien.GUI.Doi
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
+        }
+
+        private void dgvToTrinh_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvToTrinh.RowCount > 0)
+                dgvCTToTrinh.DataSource = _cToTrinhCatHuy.GetDSCTTT(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
+        }
+
+        private void dgvToTrinh_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (dgvToTrinh.Columns[e.ColumnIndex].Name == "Khoa" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvToTrinh[e.ColumnIndex, e.RowIndex].Value.ToString()))
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    if (bool.Parse(e.FormattedValue.ToString()) == true)
+                    {
+                        TT_ToTrinhCatHuy totrinh = _cToTrinhCatHuy.GetTT(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
+                        //List<TT_CTToTrinhCatHuy> lst = _cToTrinhCatHuy.GetListCTTT(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
+
+                        foreach (TT_CTToTrinhCatHuy item in totrinh.TT_CTToTrinhCatHuys.ToList())
+                        {
+                            DataTable dtTon = _cHoaDon.GetDSTonByDanhBo_ExceptHD0(item.DanhBo);
+                            string Ky = "";
+                            int TongCongSo = 0;
+                            int TieuThu = 0;
+                            foreach (DataRow itemTon in dtTon.Rows)
+                            {
+                                if (Ky == "")
+                                    Ky += itemTon["Ky"];
+                                else
+                                    Ky += ", " + itemTon["Ky"];
+                                TongCongSo += int.Parse(itemTon["TongCong"].ToString());
+                                TieuThu += int.Parse(itemTon["TieuThu"].ToString());
+
+                                if (!_cLenhHuy.CheckExist(itemTon["SoHoaDon"].ToString()))
+                                {
+                                    TT_LenhHuy lenhhuy = new TT_LenhHuy();
+                                    lenhhuy.MaHD = _cHoaDon.Get(itemTon["SoHoaDon"].ToString()).ID_HOADON;
+                                    lenhhuy.SoHoaDon = itemTon["SoHoaDon"].ToString();
+                                    lenhhuy.TinhTrang = totrinh.TT_CTToTrinhCatHuys.SingleOrDefault(itemLst => itemLst.DanhBo == itemTon["DanhBo"].ToString()).GhiChu;
+                                    _cLenhHuy.Them(lenhhuy);
+                                }
+                            }
+
+                            item.Ky = Ky;
+                            item.TongCong = TongCongSo;
+                            item.TieuThu = TieuThu;
+
+                            _cToTrinhCatHuy.SuaCTTT(item);
+                        }
+
+                        totrinh.Khoa = true;
+                        _cToTrinhCatHuy.SuaTT(totrinh);
+                    }
+                    else
+                        if (MessageBox.Show("Đã khóa, bạn có chắc chắn mở khóa?", "Xác nhận khóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        {
+                            TT_ToTrinhCatHuy totrinh = _cToTrinhCatHuy.GetTT(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
+                            //List<TT_CTToTrinhCatHuy> lst = _cToTrinhCatHuy.GetListCTTT(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
+
+                            foreach (TT_CTToTrinhCatHuy item in totrinh.TT_CTToTrinhCatHuys.ToList())
+                            {
+                                item.Ky = null;
+                                item.TongCong = null;
+                                item.TieuThu = null;
+
+                                _cToTrinhCatHuy.SuaCTTT(item);
+                            }
+
+                            totrinh.Khoa = false;
+                            _cToTrinhCatHuy.SuaTT(totrinh);
+                        }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void dgvCTToTrinh_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -372,71 +446,18 @@ namespace ThuTien.GUI.Doi
             }
         }
 
-        private void dgvToTrinh_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvCTToTrinh_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if (dgvToTrinh.RowCount > 0)
-                dgvCTToTrinh.DataSource = _cToTrinhCatHuy.GetDSCTTT(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
-        }
-
-        private void dgvCTToTrinh_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgvCTToTrinh.Columns[e.ColumnIndex].Name == "GhiChu")
-            {
-                TT_CTToTrinhCatHuy cttotrinh = _cToTrinhCatHuy.GetCT(int.Parse(dgvCTToTrinh["MaCTTT",e.RowIndex].Value.ToString()));
-                cttotrinh.GhiChu = dgvCTToTrinh["GhiChu", e.RowIndex].Value.ToString();
-                _cToTrinhCatHuy.SuaCTTT(cttotrinh);
-            }
-        }
-
-        private void dgvToTrinh_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgvToTrinh.Columns[e.ColumnIndex].Name == "Khoa")
-            {
-                TT_ToTrinhCatHuy totrinh = _cToTrinhCatHuy.GetTT(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
-                if (totrinh.Khoa == false)
+            if (dgvCTToTrinh.Columns[e.ColumnIndex].Name == "GhiChu" && e.FormattedValue.ToString() != dgvCTToTrinh[e.ColumnIndex, e.RowIndex].Value.ToString())
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
-                    List<TT_CTToTrinhCatHuy> lst = _cToTrinhCatHuy.GetListCTTT(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
-
-                    foreach (TT_CTToTrinhCatHuy item in lst)
-                    {
-                        DataTable dtTon = _cHoaDon.GetDSTonByDanhBo_ExceptHD0(item.DanhBo);
-                        string Ky = "";
-                        int TongCongSo = 0;
-                        int TieuThu = 0;
-                        foreach (DataRow itemTon in dtTon.Rows)
-                        {
-                            if (Ky == "")
-                                Ky += itemTon["Ky"];
-                            else
-                                Ky += ", " + itemTon["Ky"];
-                            TongCongSo += int.Parse(itemTon["TongCong"].ToString());
-                            TieuThu += int.Parse(itemTon["TieuThu"].ToString());
-
-                            if (!_cLenhHuy.CheckExist(itemTon["SoHoaDon"].ToString()))
-                            {
-                                TT_LenhHuy lenhhuy = new TT_LenhHuy();
-                                lenhhuy.MaHD = _cHoaDon.Get(itemTon["SoHoaDon"].ToString()).ID_HOADON;
-                                lenhhuy.SoHoaDon = itemTon["SoHoaDon"].ToString();
-                                lenhhuy.TinhTrang = lst.SingleOrDefault(itemLst => itemLst.DanhBo == itemTon["DanhBo"].ToString()).GhiChu;
-                                _cLenhHuy.Them(lenhhuy);
-                            }
-                        }
-
-                        item.Ky = Ky;
-                        item.TongCong = TongCongSo;
-                        item.TieuThu = TieuThu;
-
-                        _cToTrinhCatHuy.SuaCTTT(item);
-                    }
-
-                    totrinh.Khoa = bool.Parse(dgvToTrinh["Khoa", e.RowIndex].Value.ToString());
-                    _cToTrinhCatHuy.SuaTT(totrinh);
+                    TT_CTToTrinhCatHuy cttotrinh = _cToTrinhCatHuy.GetCT(int.Parse(dgvCTToTrinh["MaCTTT", e.RowIndex].Value.ToString()));
+                    cttotrinh.GhiChu = e.FormattedValue.ToString();
+                    _cToTrinhCatHuy.SuaCTTT(cttotrinh);
                 }
                 else
-                    MessageBox.Show("Đã khóa, không được quyền tự ý mở \r\n Xin vui lòng liên hệ CNTT", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-
-        
+       
     }
 }
