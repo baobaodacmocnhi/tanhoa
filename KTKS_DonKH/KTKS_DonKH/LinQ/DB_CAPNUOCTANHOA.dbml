@@ -53,7 +53,7 @@
       <Column Name="SX" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="DV" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="CODH" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="HIEUDH" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="HIEUDH" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
       <Column Name="SOTHANDH" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="CAP" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="CHITHAN" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />

@@ -104,6 +104,7 @@
             this.label26 = new System.Windows.Forms.Label();
             this.txtSH = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
+            this.btnInA4 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -886,12 +887,26 @@
             this.label27.TabIndex = 22;
             this.label27.Text = "%SH";
             // 
+            // btnInA4
+            // 
+            this.btnInA4.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
+            this.btnInA4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInA4.Location = new System.Drawing.Point(854, 349);
+            this.btnInA4.Name = "btnInA4";
+            this.btnInA4.Size = new System.Drawing.Size(114, 35);
+            this.btnInA4.TabIndex = 88;
+            this.btnInA4.Text = "In Phiếu A4";
+            this.btnInA4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnInA4.UseVisualStyleBackColor = true;
+            this.btnInA4.Click += new System.EventHandler(this.btnInA4_Click);
+            // 
             // frmDCHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1269, 418);
+            this.Controls.Add(this.btnInA4);
             this.Controls.Add(this.txtHCSN);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.txtDV);
@@ -1011,5 +1026,6 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox txtSH;
         private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Button btnInA4;
     }
 }

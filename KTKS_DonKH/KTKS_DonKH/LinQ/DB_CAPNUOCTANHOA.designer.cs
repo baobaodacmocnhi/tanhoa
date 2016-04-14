@@ -1287,7 +1287,7 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HIEUDH", DbType="NVarChar(255)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HIEUDH", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
 		public string HIEUDH
 		{
 			get

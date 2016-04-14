@@ -70,6 +70,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtHoTen_Nhan.Text = ttkhachhang.HoTen;
             txtDiaChi_Nhan.Text = ttkhachhang.DC1 + " " + ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkhachhang.Quan, ttkhachhang.Phuong);
         }
+
         public void Clear()
         {
             txtDanhBo_Nhan.Text = "";

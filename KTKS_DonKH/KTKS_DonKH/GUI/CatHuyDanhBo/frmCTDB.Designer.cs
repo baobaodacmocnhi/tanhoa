@@ -93,6 +93,7 @@
             this.label22 = new System.Windows.Forms.Label();
             this.dgvLichSuCHDB = new System.Windows.Forms.DataGridView();
             this.Loai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ma = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBoxNguyenNhanXuLy.SuspendLayout();
@@ -279,7 +280,7 @@
             this.txtSoTien.Name = "txtSoTien";
             this.txtSoTien.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtSoTien.Size = new System.Drawing.Size(100, 25);
-            this.txtSoTien.TabIndex = 5;
+            this.txtSoTien.TabIndex = 3;
             this.txtSoTien.TextChanged += new System.EventHandler(this.txtSoTien_TextChanged);
             this.txtSoTien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoTien_KeyPress);
             this.txtSoTien.Leave += new System.EventHandler(this.txtSoTien_Leave);
@@ -317,7 +318,7 @@
             this.label7.Location = new System.Drawing.Point(324, 27);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(55, 17);
-            this.label7.TabIndex = 4;
+            this.label7.TabIndex = 2;
             this.label7.Text = "Số Tiền:";
             // 
             // txtGhiChuXuLy
@@ -325,7 +326,7 @@
             this.txtGhiChuXuLy.Location = new System.Drawing.Point(73, 55);
             this.txtGhiChuXuLy.Name = "txtGhiChuXuLy";
             this.txtGhiChuXuLy.Size = new System.Drawing.Size(412, 25);
-            this.txtGhiChuXuLy.TabIndex = 3;
+            this.txtGhiChuXuLy.TabIndex = 5;
             // 
             // label6
             // 
@@ -333,7 +334,7 @@
             this.label6.Location = new System.Drawing.Point(8, 58);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 17);
-            this.label6.TabIndex = 2;
+            this.label6.TabIndex = 4;
             this.label6.Text = "Ghi Chú:";
             // 
             // cmbLyDo
@@ -749,11 +750,12 @@
             this.dgvLichSuCHDB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLichSuCHDB.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Loai,
+            this.Ma,
             this.CreateDate});
             this.dgvLichSuCHDB.Location = new System.Drawing.Point(929, 229);
             this.dgvLichSuCHDB.Name = "dgvLichSuCHDB";
             this.dgvLichSuCHDB.ReadOnly = true;
-            this.dgvLichSuCHDB.Size = new System.Drawing.Size(255, 200);
+            this.dgvLichSuCHDB.Size = new System.Drawing.Size(280, 200);
             this.dgvLichSuCHDB.TabIndex = 62;
             // 
             // Loai
@@ -762,6 +764,15 @@
             this.Loai.HeaderText = "Loại";
             this.Loai.Name = "Loai";
             this.Loai.ReadOnly = true;
+            this.Loai.Width = 70;
+            // 
+            // Ma
+            // 
+            this.Ma.DataPropertyName = "Ma";
+            this.Ma.HeaderText = "Mã";
+            this.Ma.Name = "Ma";
+            this.Ma.ReadOnly = true;
+            this.Ma.Width = 50;
             // 
             // CreateDate
             // 
@@ -884,6 +895,7 @@
         private System.Windows.Forms.CheckBox chkNgayXuLy;
         private System.Windows.Forms.DataGridView dgvLichSuCHDB;
         private System.Windows.Forms.DataGridViewTextBoxColumn Loai;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ma;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
     }
 }

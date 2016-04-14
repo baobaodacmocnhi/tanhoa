@@ -475,6 +475,7 @@
             this.chkThayDoiTenHopDong.TabIndex = 18;
             this.chkThayDoiTenHopDong.Text = "Thay đổi tên hợp đồng";
             this.chkThayDoiTenHopDong.UseVisualStyleBackColor = true;
+            this.chkThayDoiTenHopDong.CheckedChanged += new System.EventHandler(this.chkThayDoiTenHopDong_CheckedChanged);
             // 
             // chkThayDoiGiaNuoc
             // 

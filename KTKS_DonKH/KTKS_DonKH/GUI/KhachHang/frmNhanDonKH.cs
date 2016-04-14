@@ -877,5 +877,13 @@ namespace KTKS_DonKH.GUI.KhachHang
             }
         }
 
+        private void chkThayDoiTenHopDong_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkThayDoiTenHopDong.Checked)
+                txtNgayGiaiQuyet.Text = "45";
+            else
+                txtNgayGiaiQuyet.Text = "";
+        }
+
     }
 }

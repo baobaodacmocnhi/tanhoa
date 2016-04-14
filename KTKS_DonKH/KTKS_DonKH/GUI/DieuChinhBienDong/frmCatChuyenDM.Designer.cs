@@ -44,6 +44,8 @@
             this.txtDanhBo_Cat = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtGhiChu = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.cmbChiNhanh_Nhan = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtSoNK_Nhan = new System.Windows.Forms.TextBox();
@@ -55,8 +57,6 @@
             this.txtDanhBo_Nhan = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.btnLuu = new System.Windows.Forms.Button();
-            this.txtGhiChu = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -160,7 +160,6 @@
             // 
             this.txtDiaChi_Cat.Location = new System.Drawing.Point(143, 120);
             this.txtDiaChi_Cat.Name = "txtDiaChi_Cat";
-            this.txtDiaChi_Cat.ReadOnly = true;
             this.txtDiaChi_Cat.Size = new System.Drawing.Size(290, 25);
             this.txtDiaChi_Cat.TabIndex = 7;
             // 
@@ -177,7 +176,6 @@
             // 
             this.txtHoTen_Cat.Location = new System.Drawing.Point(143, 89);
             this.txtHoTen_Cat.Name = "txtHoTen_Cat";
-            this.txtHoTen_Cat.ReadOnly = true;
             this.txtHoTen_Cat.Size = new System.Drawing.Size(290, 25);
             this.txtHoTen_Cat.TabIndex = 5;
             // 
@@ -227,6 +225,22 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Nơi Nhận";
+            // 
+            // txtGhiChu
+            // 
+            this.txtGhiChu.Location = new System.Drawing.Point(127, 213);
+            this.txtGhiChu.Name = "txtGhiChu";
+            this.txtGhiChu.Size = new System.Drawing.Size(290, 25);
+            this.txtGhiChu.TabIndex = 23;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(14, 216);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(59, 17);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "Ghi Chú:";
             // 
             // cmbChiNhanh_Nhan
             // 
@@ -324,22 +338,6 @@
             this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLuu.UseVisualStyleBackColor = true;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
-            // 
-            // txtGhiChu
-            // 
-            this.txtGhiChu.Location = new System.Drawing.Point(127, 213);
-            this.txtGhiChu.Name = "txtGhiChu";
-            this.txtGhiChu.Size = new System.Drawing.Size(290, 25);
-            this.txtGhiChu.TabIndex = 23;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(14, 216);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(59, 17);
-            this.label8.TabIndex = 22;
-            this.label8.Text = "Ghi Chú:";
             // 
             // frmCatChuyenDM
             // 
