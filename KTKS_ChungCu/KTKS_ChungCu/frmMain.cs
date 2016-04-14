@@ -146,12 +146,13 @@ namespace KTKS_ChungCu
                         //    ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
                         //else
                         //    ctchungtu.ThoiHan = null;
-                        ctchungtu.GhiChu = txtGhiChu.Text.Trim();
                         ctchungtu.Lo = txtLo.Text.Trim();
                         ctchungtu.Phong = txtPhong.Text.Trim();
                         ctchungtu.GhiChu = txtGhiChu.Text.Trim();
 
                         LichSuChungTu lichsuchungtu = new LichSuChungTu();
+                        lichsuchungtu.Lo = txtLo.Text.Trim();
+                        lichsuchungtu.Phong = txtPhong.Text.Trim();
                         lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
 
                         if (_cChungTu.ThemChungTu(chungtu, ctchungtu, lichsuchungtu))
