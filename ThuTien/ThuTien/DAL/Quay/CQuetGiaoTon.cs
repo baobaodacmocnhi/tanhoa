@@ -233,5 +233,86 @@ namespace ThuTien.DAL.Quay
                 }
             return null;
         }
+
+        public DataTable GetDS(DateTime CreatedDate)
+        {
+                var query = from itemQT in _db.TT_QuetGiaoTons
+                            join itemHD in _db.HOADONs on itemQT.MaHD equals itemHD.ID_HOADON
+                            join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemQT.CreateDate.Value.Date == CreatedDate.Date
+                            orderby itemHD.MALOTRINH ascending
+                            select new
+                            {
+                                itemQT.ID,
+                                itemQT.SoHoaDon,
+                                DanhBo = itemHD.DANHBA,
+                                HoTen = itemHD.TENKH,
+                                DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                                Ky = itemHD.KY + "/" + itemHD.NAM,
+                                MLT = itemHD.MALOTRINH,
+                                itemHD.SOPHATHANH,
+                                itemHD.TONGCONG,
+                                GiaBieu = itemHD.GB,
+                                HanhThu = itemtableND.HoTen,
+                                To = itemtableND.TT_To.TenTo,
+                            };
+                return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSByMaTo(int MaTo, DateTime CreatedDate)
+        {
+                var query = from itemQT in _db.TT_QuetGiaoTons
+                            join itemHD in _db.HOADONs on itemQT.MaHD equals itemHD.ID_HOADON
+                            join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                            && itemQT.CreateDate.Value.Date == CreatedDate.Date
+                            orderby itemHD.MALOTRINH ascending
+                            select new
+                            {
+                                itemQT.ID,
+                                itemQT.SoHoaDon,
+                                DanhBo = itemHD.DANHBA,
+                                HoTen = itemHD.TENKH,
+                                DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                                Ky = itemHD.KY + "/" + itemHD.NAM,
+                                MLT = itemHD.MALOTRINH,
+                                itemHD.SOPHATHANH,
+                                itemHD.TONGCONG,
+                                GiaBieu = itemHD.GB,
+                                HanhThu = itemtableND.HoTen,
+                                To = itemtableND.TT_To.TenTo,
+                            };
+                return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSByMaNV(int MaNV_HanhThu, DateTime CreatedDate)
+        {
+                var query = from itemQT in _db.TT_QuetGiaoTons
+                            join itemHD in _db.HOADONs on itemQT.MaHD equals itemHD.ID_HOADON
+                            join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemQT.CreateDate.Value.Date == CreatedDate.Date && itemHD.MaNV_HanhThu == MaNV_HanhThu
+                            orderby itemHD.MALOTRINH ascending
+                            select new
+                            {
+                                itemQT.ID,
+                                itemQT.SoHoaDon,
+                                DanhBo = itemHD.DANHBA,
+                                HoTen = itemHD.TENKH,
+                                DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                                Ky = itemHD.KY + "/" + itemHD.NAM,
+                                MLT = itemHD.MALOTRINH,
+                                itemHD.SOPHATHANH,
+                                itemHD.TONGCONG,
+                                GiaBieu = itemHD.GB,
+                                HanhThu = itemtableND.HoTen,
+                                To = itemtableND.TT_To.TenTo,
+                            };
+                return LINQToDataTable(query);
+        }
+
     }
 }
