@@ -291,22 +291,31 @@ namespace ThuTien.GUI.Quay
             DataTable dt = new DataTable();
             ///chọn tất cả các tổ
             if (cmbTo.SelectedIndex == 0)
-                dt = _cQuetGiaoTon.GetDS( dateLap.Value.Date);
+            {
+                dt = _cQuetGiaoTon.GetDS("TG",dateLap.Value.Date);
+                dt.Merge(_cQuetGiaoTon.GetDS("CQ", dateLap.Value.Date));
+            }
             else
                 ///chọn 1 tổ cụ thể
                 if (cmbTo.SelectedIndex > 0)
                     ///chọn tất cả nhân viên
                     if (cmbNhanVien.SelectedIndex == 0)
-                        dt = _cQuetGiaoTon.GetDSByMaTo( int.Parse(cmbTo.SelectedValue.ToString()), dateLap.Value.Date);
+                    {
+                        dt = _cQuetGiaoTon.GetDSByMaTo("TG", int.Parse(cmbTo.SelectedValue.ToString()), dateLap.Value.Date);
+                        dt.Merge(_cQuetGiaoTon.GetDSByMaTo("CQ", int.Parse(cmbTo.SelectedValue.ToString()), dateLap.Value.Date));
+                    }
                     else
                         ///chọn 1 nhân viên cụ thể
                         if (cmbNhanVien.SelectedIndex > 0)
-                            dt = _cQuetGiaoTon.GetDSByMaNV( int.Parse(cmbNhanVien.SelectedValue.ToString()), dateLap.Value.Date);
+                        {
+                            dt = _cQuetGiaoTon.GetDSByMaNV("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), dateLap.Value.Date);
+                            dt.Merge(_cQuetGiaoTon.GetDSByMaNV("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), dateLap.Value.Date));
+                        }
 
             foreach (DataRow item in dt.Rows)
             {
                 DataRow dr = dsBaoCao.Tables["DSHoaDon"].NewRow();
-                dr["LoaiBaoCao"] = "";
+                dr["LoaiBaoCao"] = item["Loai"].ToString();
                 dr["Dot"] = item["MLT"].ToString().Substring(0, 2);
                 dr["SoHoaDon"] = item["SoHoaDon"].ToString();
                 dr["TongCong"] = item["TongCong"].ToString();

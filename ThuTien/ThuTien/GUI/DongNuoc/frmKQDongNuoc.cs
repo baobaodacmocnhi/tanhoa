@@ -177,12 +177,12 @@ namespace ThuTien.GUI.DongNuoc
 
                     kqdongnuoc.PhiMoNuoc = _cDongNuoc.GetPhiMoNuoc();
 
-                    if (chkMoNuoc.Checked)
-                    {
-                        kqdongnuoc.MoNuoc = true;
-                        kqdongnuoc.NgayMN = dateMoNuoc.Value;
-                        kqdongnuoc.ChiSoMN = int.Parse(txtChiSoMN.Text.Trim());
-                    }
+                    //if (chkMoNuoc.Checked)
+                    //{
+                    //    kqdongnuoc.MoNuoc = true;
+                    //    kqdongnuoc.NgayMN = dateMoNuoc.Value;
+                    //    kqdongnuoc.ChiSoMN = int.Parse(txtChiSoMN.Text.Trim());
+                    //}
 
                     if (_cDongNuoc.ThemKQ(kqdongnuoc))
                     {
@@ -235,14 +235,15 @@ namespace ThuTien.GUI.DongNuoc
                             _kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN2.Text.Trim());
                     }
                     else
-                    {
-                        _kqdongnuoc.DongNuoc2 = false;
-                        _kqdongnuoc.PhiMoNuoc = _kqdongnuoc.PhiMoNuoc / 2;
-                        _kqdongnuoc.NgayDN = _kqdongnuoc.NgayDN1;
-                        _kqdongnuoc.ChiSoDN = _kqdongnuoc.ChiSoDN1;
-                        _kqdongnuoc.NgayDN1 = null;
-                        _kqdongnuoc.ChiSoDN1 = null;
-                    }
+                        if (_kqdongnuoc.DongNuoc2 == true)
+                        {
+                            _kqdongnuoc.DongNuoc2 = false;
+                            _kqdongnuoc.PhiMoNuoc = _kqdongnuoc.PhiMoNuoc / 2;
+                            _kqdongnuoc.NgayDN = _kqdongnuoc.NgayDN1;
+                            _kqdongnuoc.ChiSoDN = _kqdongnuoc.ChiSoDN1;
+                            _kqdongnuoc.NgayDN1 = null;
+                            _kqdongnuoc.ChiSoDN1 = null;
+                        }
 
                     if (chkMoNuoc.Checked)
                     {
@@ -300,14 +301,15 @@ namespace ThuTien.GUI.DongNuoc
                             kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN2.Text.Trim());
                     }
                     else
-                    {
-                        kqdongnuoc.DongNuoc2 = false;
-                        kqdongnuoc.PhiMoNuoc = kqdongnuoc.PhiMoNuoc / 2;
-                        kqdongnuoc.NgayDN = kqdongnuoc.NgayDN1;
-                        kqdongnuoc.ChiSoDN = kqdongnuoc.ChiSoDN1;
-                        kqdongnuoc.NgayDN1 = null;
-                        kqdongnuoc.ChiSoDN1 = null;
-                    }
+                        if (_kqdongnuoc.DongNuoc2 == true)
+                        {
+                            kqdongnuoc.DongNuoc2 = false;
+                            kqdongnuoc.PhiMoNuoc = kqdongnuoc.PhiMoNuoc / 2;
+                            kqdongnuoc.NgayDN = kqdongnuoc.NgayDN1;
+                            kqdongnuoc.ChiSoDN = kqdongnuoc.ChiSoDN1;
+                            kqdongnuoc.NgayDN1 = null;
+                            kqdongnuoc.ChiSoDN1 = null;
+                        }
 
                     if (chkMoNuoc.Checked)
                     {

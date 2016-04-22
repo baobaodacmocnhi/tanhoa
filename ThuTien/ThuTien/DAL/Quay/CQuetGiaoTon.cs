@@ -74,6 +74,7 @@ namespace ThuTien.DAL.Quay
                             orderby itemHD.MALOTRINH ascending
                             select new
                             {
+                                Loai = "TG",
                                 itemQT.ID,
                                 itemQT.SoHoaDon,
                                 DanhBo = itemHD.DANHBA,
@@ -100,6 +101,7 @@ namespace ThuTien.DAL.Quay
                                 orderby itemHD.MALOTRINH ascending
                                 select new
                                 {
+                                    Loai = "CQ",
                                     itemQT.ID,
                                     itemQT.SoHoaDon,
                                     DanhBo = itemHD.DANHBA,
@@ -132,6 +134,7 @@ namespace ThuTien.DAL.Quay
                             orderby itemHD.MALOTRINH ascending
                             select new
                             {
+                                Loai = "TG",
                                 itemQT.ID,
                                 itemQT.SoHoaDon,
                                 DanhBo = itemHD.DANHBA,
@@ -160,6 +163,7 @@ namespace ThuTien.DAL.Quay
                                 orderby itemHD.MALOTRINH ascending
                                 select new
                                 {
+                                    Loai = "CQ",
                                     itemQT.ID,
                                     itemQT.SoHoaDon,
                                     DanhBo = itemHD.DANHBA,
@@ -190,6 +194,7 @@ namespace ThuTien.DAL.Quay
                             orderby itemHD.MALOTRINH ascending
                             select new
                             {
+                                Loai="TG",
                                 itemQT.ID,
                                 itemQT.SoHoaDon,
                                 DanhBo = itemHD.DANHBA,
@@ -216,6 +221,7 @@ namespace ThuTien.DAL.Quay
                                 orderby itemHD.MALOTRINH ascending
                                 select new
                                 {
+                                    Loai = "CQ",
                                     itemQT.ID,
                                     itemQT.SoHoaDon,
                                     DanhBo = itemHD.DANHBA,

@@ -230,12 +230,20 @@ namespace ThuTien.GUI.ChuyenKhoan
                     using (var scope = new TransactionScope())
                     {
                         TT_BangKe bangke = _cBangKe.Get(int.Parse(dgvBangKe["MaBK", e.RowIndex].Value.ToString()));
+                        int SoTien = bangke.SoTien.Value;
                         bangke.DanhBo = e.FormattedValue.ToString().Replace(" ", "");
-                        if (_cBangKe.Sua(bangke))
-                            if (_cTienDu.Update(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", ""), bangke.SoTien.Value * (-1), "Bảng Kê", "Sửa Đến Danh Bộ " + e.FormattedValue.ToString().Insert(4, " ").Insert(7, " ")))
-                                if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê", "Sửa Từ Danh Bộ " + dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Insert(4, " ").Insert(7, " ")))
-                                    scope.Complete();
+                        if (e.FormattedValue.ToString().Replace(" ", "").Length == 11 && _cBangKe.Sua(bangke))
+                            if (_cTienDu.Update(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", ""), bangke.SoTien.Value * (-1), "Bảng Kê", "Sửa Đến Danh Bộ " + e.FormattedValue.ToString().Replace(" ", "").Insert(4, " ").Insert(7, " ")))
+                                if (string.IsNullOrEmpty(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", "")))
+                                {
+                                    if (_cTienDu.Update(bangke.DanhBo, SoTien, "Bảng Kê", "Sửa Từ Danh Bộ Rỗng"))
+                                        scope.Complete();
+                                }
+                                else
+                                    if (_cTienDu.Update(bangke.DanhBo, SoTien, "Bảng Kê", "Sửa Từ Danh Bộ " + dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", "").Insert(4, " ").Insert(7, " ")))
+                                        scope.Complete();
                     }
+                    _cTienDu.Refresh();
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

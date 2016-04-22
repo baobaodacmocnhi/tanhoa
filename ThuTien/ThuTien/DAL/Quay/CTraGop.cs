@@ -92,7 +92,7 @@ namespace ThuTien.DAL.Quay
 
         public System.Data.DataTable GetDS()
         {
-            return ExecuteQuery_SqlDataAdapter_DataTable("select distinct tg.SoHoaDon,SOPHATHANH,CAST(hd.KY as varchar)+'/'+CAST(hd.NAM as varchar) as Ky,DANHBA as DanhBo,hd.TENKH as HoTen,(hd.SO+' '+hd.DUONG) as DiaChi,MALOTRINH as MLT,TONGCONG from TT_TraGop tg,HOADON hd where tg.SoHoaDon=hd.SOHOADON");
+            return ExecuteQuery_SqlDataAdapter_DataTable("select distinct ID_HOADON as MaHD,tg.SoHoaDon,SOPHATHANH,CAST(hd.KY as varchar)+'/'+CAST(hd.NAM as varchar) as Ky,DANHBA as DanhBo,hd.TENKH as HoTen,(hd.SO+' '+hd.DUONG) as DiaChi,MALOTRINH as MLT,TONGCONG from TT_TraGop tg,HOADON hd where tg.SoHoaDon=hd.SOHOADON");
         }
         public TT_TraGop GetByMaTG(int MaTG)
         {
