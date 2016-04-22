@@ -223,7 +223,7 @@ namespace KTKS_ChungCu
                             LichSuChungTu lichsuchungtu = new LichSuChungTu();
                             lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
 
-                            if (_cChungTu.SuaChungTu(chungtu, ctchungtu, lichsuchungtu))
+                            if (_cChungTu.SuaChungTu_ThongTin(chungtu, ctchungtu, lichsuchungtu))
                             {
                                 MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 if (string.IsNullOrEmpty(txtLo.Text.Trim()))

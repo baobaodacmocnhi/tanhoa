@@ -1392,6 +1392,152 @@ namespace KTKS_ChungCu.DAL
             }
         }
 
+        public bool SuaChungTu_ThongTin(ChungTu chungtu, CTChungTu ctchungtu, LichSuChungTu lichsuchungtu)
+        {
+            try
+            {
+                if (db.Connection.State == System.Data.ConnectionState.Closed)
+                    db.Connection.Open();
+                db.Transaction = db.Connection.BeginTransaction();
+
+                bool flagEdited = false;
+                bool flagGiam = false;
+                ///Cập Nhật bảng ChungTu khi thay đổi Tổng Nhân Khẩu (frmSoDK)
+                ChungTu chungtuCN = getChungTubyID(chungtu.MaCT);
+                ///Kiểm tra Tổng Nhân Khẩu có thay đổi hay không
+                if (chungtuCN.SoNKTong != chungtu.SoNKTong)
+                    if (chungtu.SoNKTong - chungtuCN.SoNKTong + chungtuCN.SoNKConLai >= 0)
+                    {
+                        chungtuCN.SoNKConLai = chungtu.SoNKTong - chungtuCN.SoNKTong + chungtuCN.SoNKConLai;
+                        chungtuCN.SoNKTong = chungtu.SoNKTong;
+                        chungtuCN.ModifyDate = DateTime.Now;
+                        flagEdited = true;
+                    }
+                    else
+                    {
+                        chungtuCN.SoNKConLai = chungtu.SoNKTong;
+                        chungtuCN.SoNKTong = chungtu.SoNKTong;
+                        chungtuCN.ModifyDate = DateTime.Now;
+                        flagEdited = true;
+                        flagGiam = true;
+                        //MessageBox.Show("Sổ Đăng Ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //return false;
+                    }
+                ///Kiểm tra Địa Chỉ có thay đổi hay không
+                if (chungtuCN.HoTen != chungtu.HoTen || chungtuCN.DiaChi != chungtu.DiaChi || chungtuCN.MaLCT != chungtu.MaLCT)
+                {
+                    if (chungtuCN.HoTen != chungtu.HoTen)
+                        chungtuCN.HoTen = chungtu.HoTen;
+                    if (chungtuCN.DiaChi != chungtu.DiaChi)
+                        chungtuCN.DiaChi = chungtu.DiaChi;
+                    if (chungtuCN.MaLCT != chungtu.MaLCT)
+                        chungtuCN.MaLCT = chungtu.MaLCT;
+                    chungtuCN.ModifyDate = DateTime.Now;
+                }
+
+                ///Cập Nhật bảng CTChungTu khi thay đổi Số Nhân Khẩu đăng ký (frmSoDK)
+                CTChungTu ctchungtuCN = getCTChungTubyID(ctchungtu.DanhBo, ctchungtu.MaCT);
+                ///Kiểm tra Số Nhân Khẩu đăng ký có thay đổi hay không
+                if (ctchungtuCN.SoNKDangKy != ctchungtu.SoNKDangKy)
+                    if (flagGiam)
+                    {
+                        ///Cập nhật Số Nhân Khẩu Cấp cho bảng ChungTu
+                        chungtuCN.SoNKConLai = chungtuCN.SoNKConLai - ctchungtu.SoNKDangKy;
+                        chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy;
+                        chungtuCN.ModifyDate = DateTime.Now;
+                        ///Cập nhật bảng CTChungTu
+                        ctchungtuCN.SoNKDangKy = ctchungtu.SoNKDangKy;
+                        ctchungtuCN.ModifyDate = DateTime.Now;
+                        flagEdited = true;
+                    }
+                    else
+                        if (chungtuCN.SoNKConLai >= ctchungtu.SoNKDangKy - ctchungtuCN.SoNKDangKy)
+                        {
+                            ///Cập nhật Số Nhân Khẩu Cấp cho bảng ChungTu
+                            chungtuCN.SoNKConLai = chungtuCN.SoNKConLai - (ctchungtu.SoNKDangKy - ctchungtuCN.SoNKDangKy);
+                            chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy;
+                            chungtuCN.ModifyDate = DateTime.Now;
+                            ///Cập nhật bảng CTChungTu
+                            ctchungtuCN.SoNKDangKy = ctchungtu.SoNKDangKy;
+
+                            //ctchungtuCN.ThoiHan = ctchungtu.ThoiHan;
+                            //if (ctchungtu.ThoiHan != null)
+                            //    ///Cập nhật ngày hết hạn dựa vào ngày tạo record này(ngày nhận đơn)
+                            //    ctchungtuCN.NgayHetHan = ctchungtuCN.CreateDate.Value.AddMonths(ctchungtu.ThoiHan.Value);
+                            //else
+                            //    ctchungtuCN.NgayHetHan = null;
+
+                            ctchungtuCN.ModifyDate = DateTime.Now;
+                            flagEdited = true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Sổ Đăng Ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
+                if (ctchungtuCN.STT != ctchungtu.STT || ctchungtuCN.ThoiHan != ctchungtu.ThoiHan || ctchungtuCN.Lo != ctchungtu.Lo || ctchungtuCN.Phong != ctchungtu.Phong || ctchungtuCN.GhiChu != ctchungtu.GhiChu || (ctchungtuCN.NgayHetHan != ctchungtu.NgayHetHan && ctchungtu.NgayHetHan != null))
+                {
+                    if (ctchungtuCN.ThoiHan != ctchungtu.ThoiHan)
+                    {
+                        ctchungtuCN.ThoiHan = ctchungtu.ThoiHan;
+                        if (ctchungtu.ThoiHan != null)
+                        {
+                            ///Cập nhật ngày hết hạn dựa vào ngày tạo record này(ngày nhận đơn)
+                            ///Khi gia hạn refresh lại ngày tạo để tính ngày gia hạn
+                            ctchungtuCN.CreateDate = DateTime.Now;
+                            ctchungtuCN.NgayHetHan = ctchungtuCN.CreateDate.Value.AddMonths(ctchungtu.ThoiHan.Value);
+                        }
+                        else
+                            ctchungtuCN.NgayHetHan = null;
+                        flagEdited = true;
+                    }
+                    if (ctchungtu.NgayHetHan != null)
+                    {
+                        ctchungtuCN.CreateDate = DateTime.Now;
+                        ctchungtuCN.NgayHetHan = ctchungtu.NgayHetHan;
+                        flagEdited = true;
+                    }
+                    if (ctchungtuCN.STT != ctchungtu.STT)
+                        ctchungtuCN.STT = ctchungtu.STT;
+                    if (ctchungtuCN.Lo != ctchungtu.Lo)
+                        ctchungtuCN.Lo = ctchungtu.Lo;
+                    if (ctchungtuCN.Phong != ctchungtu.Phong)
+                        ctchungtuCN.Phong = ctchungtu.Phong;
+                    if (ctchungtuCN.GhiChu != ctchungtu.GhiChu)
+                        ctchungtuCN.GhiChu = ctchungtu.GhiChu;
+                    ctchungtuCN.ModifyDate = DateTime.Now;
+
+                }
+
+                ///Thêm LichSuChungTu
+                if (flagEdited)
+                {
+                    lichsuchungtu.MaCT = chungtuCN.MaCT;
+                    lichsuchungtu.SoNKTong = chungtuCN.SoNKTong;
+                    lichsuchungtu.SoNKConLai = chungtuCN.SoNKConLai;
+                    lichsuchungtu.DanhBo = ctchungtuCN.DanhBo;
+                    lichsuchungtu.SoNKDangKy = ctchungtuCN.SoNKDangKy;
+                    lichsuchungtu.SoNKConLai = chungtuCN.SoNKConLai;
+                    lichsuchungtu.ThoiHan = ctchungtuCN.ThoiHan;
+                    lichsuchungtu.NgayHetHan = ctchungtuCN.NgayHetHan;
+
+                    ThemLichSuChungTu(lichsuchungtu);
+                    flagEdited = false;
+                }
+                db.SubmitChanges();
+                db.Transaction.Commit();
+                //MessageBox.Show("Thành công Sửa ChungTu Method", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                db.Transaction.Rollback();
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new dbChungCuDataContext();
+                return false;
+            }
+        }
+
         public bool XoaChungTu(string DanhBo, string MaCT)
         {
             try
