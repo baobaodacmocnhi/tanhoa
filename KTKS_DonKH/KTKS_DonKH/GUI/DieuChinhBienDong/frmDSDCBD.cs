@@ -1857,9 +1857,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 if (ctdchd.DieuChinhGia == true)
                                 {
                                     if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
-                                        dr["DieuChinh"] = "Áp giá " + ctdchd.GiaDieuChinh;
+                                        dr["DieuChinh"] = ctdchd.TieuThu_DieuChinhGia+"m3 Áp giá " + ctdchd.GiaDieuChinh;
                                     else
-                                        dr["DieuChinh"] = dr["DieuChinh"] + ", Áp giá " + ctdchd.GiaDieuChinh;
+                                        dr["DieuChinh"] = dr["DieuChinh"] +", "+ctdchd.TieuThu_DieuChinhGia+ "m3 Áp giá " + ctdchd.GiaDieuChinh;
                                     dr["ChiTietCu"] = ctdchd.ChiTietCu;
                                     dr["ChiTietMoi"] = ctdchd.ChiTietMoi;
                                 }

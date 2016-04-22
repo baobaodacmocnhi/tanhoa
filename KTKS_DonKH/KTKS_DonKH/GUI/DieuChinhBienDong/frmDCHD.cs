@@ -33,6 +33,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         bool _direct = false;///Mở form trực tiếp không qua Danh Sách Đơn
+        int _TieuThu_DieuChinhGia = 0;
 
         public frmDCHD()
         {
@@ -179,9 +180,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             string ChiTietCu = "";
             string ChiTietMoi = "";
+            int TieuThu_DieuChinhGia = 0;
             int TongTienCu = 0;
             int TongTienMoi = 0;
-            TongTienCu = _cGiaNuoc.TinhTienNuoc(false, int.Parse(txtGiaDieuChinh.Text.Trim()), txtDanhBo.Text.Trim(), int.Parse(txtGiaBieu_Cu.Text.Trim()), int.Parse(txtDinhMuc_Cu.Text.Trim()), int.Parse(txtTieuThu_Cu.Text.Trim()), out ChiTietCu);
+            TongTienCu = _cGiaNuoc.TinhTienNuoc(false, int.Parse(txtGiaDieuChinh.Text.Trim()), txtDanhBo.Text.Trim(), int.Parse(txtGiaBieu_Cu.Text.Trim()), int.Parse(txtDinhMuc_Cu.Text.Trim()), int.Parse(txtTieuThu_Cu.Text.Trim()), out ChiTietCu, out TieuThu_DieuChinhGia);
             if (chkDieuChinhGia2.Checked)
             {
                 TongTienMoi = _cGiaNuoc.TinhTienNuoc(chkDieuChinhGia.Checked, int.Parse(txtGiaDieuChinh.Text.Trim()), txtDanhBo.Text.Trim(), int.Parse(txtGiaBieu_Moi.Text.Trim()), int.Parse(txtDinhMuc_Moi.Text.Trim()), int.Parse(txtTieuThu_Moi.Text.Trim()) - int.Parse(txtTieuThu_DieuChinhGia2.Text.Trim()), int.Parse(txtTieuThu_DieuChinhGia2.Text.Trim()), int.Parse(txtGiaDieuChinh2.Text.Trim()), out ChiTietMoi);
@@ -193,7 +195,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 }
                 else
                 {
-                    TongTienMoi = _cGiaNuoc.TinhTienNuoc(chkDieuChinhGia.Checked, int.Parse(txtGiaDieuChinh.Text.Trim()), txtDanhBo.Text.Trim(), int.Parse(txtGiaBieu_Moi.Text.Trim()), int.Parse(txtDinhMuc_Moi.Text.Trim()), int.Parse(txtTieuThu_Moi.Text.Trim()), out ChiTietMoi);
+                    TongTienMoi = _cGiaNuoc.TinhTienNuoc(chkDieuChinhGia.Checked, int.Parse(txtGiaDieuChinh.Text.Trim()), txtDanhBo.Text.Trim(), int.Parse(txtGiaBieu_Moi.Text.Trim()), int.Parse(txtDinhMuc_Moi.Text.Trim()), int.Parse(txtTieuThu_Moi.Text.Trim()), out ChiTietMoi, out _TieuThu_DieuChinhGia);
                 }
             ///Chi Tiết
             txtChiTietCu.Text = ChiTietCu;
@@ -358,6 +360,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         if (chkDieuChinhGia.Checked)
                         {
                             ctdchd.DieuChinhGia = true;
+                            ctdchd.TieuThu_DieuChinhGia = _TieuThu_DieuChinhGia;
                             ctdchd.GiaDieuChinh = int.Parse(txtGiaDieuChinh.Text.Trim().Replace(".", ""));
                         }
                         ///
@@ -508,6 +511,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         if (chkDieuChinhGia.Checked)
                         {
                             ctdchd.DieuChinhGia = true;
+                            ctdchd.TieuThu_DieuChinhGia = _TieuThu_DieuChinhGia;
                             ctdchd.GiaDieuChinh = int.Parse(txtGiaDieuChinh.Text.Trim().Replace(".", ""));
                         }
                         ///
@@ -1002,7 +1006,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " "); ;
             dr["HoTen"] = txtHoTen.Text.Trim();
             dr["DiaChi"] = txtDiaChi.Text.Trim();
-                dr["SoDon"] = txtMaDon.Text.Trim();
+            dr["SoDon"] = txtMaDon.Text.Trim();
             dr["NgayKy"] = dateNgayKy.Value.ToString("dd/MM/yyyy");
             dr["KyHD"] = txtKyHD.Text.Trim();
             dr["SoHD"] = txtSoHD.Text.Trim();
@@ -1023,9 +1027,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (chkDieuChinhGia.Checked == true)
             {
                 if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
-                    dr["DieuChinh"] = "Áp giá " + txtGiaDieuChinh.Text.Trim();
+                    dr["DieuChinh"] = _TieuThu_DieuChinhGia + "m3 Áp giá " + txtGiaDieuChinh.Text.Trim();
                 else
-                    dr["DieuChinh"] = dr["DieuChinh"] + ", Áp giá " + txtGiaDieuChinh.Text.Trim();
+                    dr["DieuChinh"] = dr["DieuChinh"] + ", " + _TieuThu_DieuChinhGia + "m3 Áp giá " + txtGiaDieuChinh.Text.Trim();
                 dr["ChiTietCu"] = txtChiTietCu.Text.Trim();
                 dr["ChiTietMoi"] = txtChiTietMoi.Text.Trim();
             }

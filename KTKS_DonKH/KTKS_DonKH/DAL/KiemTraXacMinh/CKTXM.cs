@@ -2168,6 +2168,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     itemCTKTXM.KTXM.MaDonTXL,
                                     itemCTKTXM.LapBangGia,
                                     itemCTKTXM.DongTienBoiThuong,
+                                    itemCTKTXM.TieuThuTrungBinh,
                                     itemCTKTXM.ChuyenLapTBCat,
                                     //CreateBy = itemUser.HoTen,
                                 };
@@ -2297,6 +2298,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     itemCTKTXM.KTXM.MaDonTXL,
                                     itemCTKTXM.LapBangGia,
                                     itemCTKTXM.DongTienBoiThuong,
+                                    itemCTKTXM.TieuThuTrungBinh,
                                     itemCTKTXM.ChuyenLapTBCat,
                                     //CreateBy = itemUser.HoTen,
                                 };
@@ -2652,6 +2654,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     //itemCTKTXM.KTXM.MaDonTXL,
                                     itemCTKTXM.LapBangGia,
                                     itemCTKTXM.DongTienBoiThuong,
+                                    itemCTKTXM.TieuThuTrungBinh,
                                     itemCTKTXM.ChuyenLapTBCat,
                                     //CreateBy = itemUser.HoTen,
                                 };
@@ -2708,6 +2711,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     //itemCTKTXM.KTXM.MaDonTXL,
                                     itemCTKTXM.LapBangGia,
                                     itemCTKTXM.DongTienBoiThuong,
+                                    itemCTKTXM.TieuThuTrungBinh,
                                     itemCTKTXM.ChuyenLapTBCat,
                                     //CreateBy = itemUser.HoTen,
                                 };

@@ -708,7 +708,7 @@
             // 
             this.btnIn.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
             this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIn.Location = new System.Drawing.Point(713, 368);
+            this.btnIn.Location = new System.Drawing.Point(713, 327);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(92, 35);
             this.btnIn.TabIndex = 3;
@@ -766,7 +766,7 @@
             // 
             this.btnInA4.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
             this.btnInA4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInA4.Location = new System.Drawing.Point(713, 327);
+            this.btnInA4.Location = new System.Drawing.Point(713, 368);
             this.btnInA4.Name = "btnInA4";
             this.btnInA4.Size = new System.Drawing.Size(114, 35);
             this.btnInA4.TabIndex = 86;

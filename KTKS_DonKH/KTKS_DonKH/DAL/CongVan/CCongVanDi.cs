@@ -64,9 +64,14 @@ namespace KTKS_DonKH.DAL.CongVan
             return db.CongVanDis.SingleOrDefault(item => item.ID == ID);
         }
 
-        public DataTable GetDS(DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable GetDS(DateTime FromCreateDate,int ToHour, DateTime ToCreateDate,int FromHour)
         {
-            return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(db.CongVanDis.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date).ToList());
+            return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(db.CongVanDis.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.CreateDate.Value.Hour >= ToHour && item.CreateDate.Value.Hour <= FromHour).ToList());
+        }
+
+        public DataTable GetDSNoiDung()
+        {
+            return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(db.CongVanDis.Select(item => new { item.NoiDung }).ToList().Distinct());
         }
     }
 }

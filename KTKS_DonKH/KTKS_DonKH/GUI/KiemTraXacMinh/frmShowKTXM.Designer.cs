@@ -33,6 +33,8 @@
             this.NguoiDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDungKiemTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.txtTieuThuTrungBinh = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.lbTheoYeuCau = new System.Windows.Forms.Label();
             this.cmbViTriDHN2 = new System.Windows.Forms.ComboBox();
@@ -136,6 +138,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label28);
+            this.groupBox2.Controls.Add(this.txtTieuThuTrungBinh);
             this.groupBox2.Controls.Add(this.label27);
             this.groupBox2.Controls.Add(this.lbTheoYeuCau);
             this.groupBox2.Controls.Add(this.cmbViTriDHN2);
@@ -173,6 +177,23 @@
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kết Quả";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(897, 138);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(132, 17);
+            this.label28.TabIndex = 33;
+            this.label28.Text = "Tiêu Thụ Trung Bình:";
+            // 
+            // txtTieuThuTrungBinh
+            // 
+            this.txtTieuThuTrungBinh.Location = new System.Drawing.Point(1035, 135);
+            this.txtTieuThuTrungBinh.Name = "txtTieuThuTrungBinh";
+            this.txtTieuThuTrungBinh.Size = new System.Drawing.Size(93, 25);
+            this.txtTieuThuTrungBinh.TabIndex = 34;
+            this.txtTieuThuTrungBinh.Text = "0";
             // 
             // label27
             // 
@@ -212,7 +233,7 @@
             // 
             this.txtTheoYeuCau.Location = new System.Drawing.Point(753, 135);
             this.txtTheoYeuCau.Name = "txtTheoYeuCau";
-            this.txtTheoYeuCau.Size = new System.Drawing.Size(281, 25);
+            this.txtTheoYeuCau.Size = new System.Drawing.Size(138, 25);
             this.txtTheoYeuCau.TabIndex = 30;
             this.txtTheoYeuCau.Visible = false;
             // 
@@ -1011,5 +1032,7 @@
         private System.Windows.Forms.ComboBox cmbViTriDHN2;
         private System.Windows.Forms.ComboBox cmbViTriDHN1;
         private System.Windows.Forms.ComboBox cmbNoiDung;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox txtTieuThuTrungBinh;
     }
 }

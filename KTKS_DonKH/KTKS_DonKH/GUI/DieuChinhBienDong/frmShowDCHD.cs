@@ -22,6 +22,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CTDCHD _ctdchd = null;
         CGiaNuoc _cGiaNuoc = new CGiaNuoc();
         bool _flag = false;
+        int _TieuThu_DieuChinhGia = 0;
 
         public frmShowDCHD()
         {
@@ -85,13 +86,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (_ctdchd.DieuChinhGia)
                 {
                     chkDieuChinhGia.Checked = true;
-                    txtGiaDieuChinh.Text =  String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",_ctdchd.GiaDieuChinh);
+                    txtGiaDieuChinh.Text =  _ctdchd.GiaDieuChinh.Value.ToString();
                 }
                 ///
                 if (_ctdchd.KhauTru)
                 {
                     chkKhauTru.Checked = true;
-                    txtSoTienKhauTru.Text =  String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",_ctdchd.SoTienKhauTru);
+                    txtSoTienKhauTru.Text =  _ctdchd.SoTienKhauTru.Value.ToString();
                 }
                 ///
                 if (_ctdchd.DieuChinhGia2)
@@ -243,6 +244,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (chkDieuChinhGia.Checked)
                     {
                         _ctdchd.DieuChinhGia = true;
+                        _ctdchd.TieuThu_DieuChinhGia = _TieuThu_DieuChinhGia;
                         _ctdchd.GiaDieuChinh = int.Parse(txtGiaDieuChinh.Text.Trim().Replace(".", ""));
                     }
                     else
@@ -475,9 +477,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 string ChiTietCu = "";
                 string ChiTietMoi = "";
+                int TieuThu_DieuChinhGia = 0;
                 int TongTienCu = 0;
                 int TongTienMoi = 0;
-                TongTienCu = _cGiaNuoc.TinhTienNuoc(false, int.Parse(txtGiaDieuChinh.Text.Trim()), txtDanhBo.Text.Trim(), int.Parse(txtGiaBieu_Cu.Text.Trim()), int.Parse(txtDinhMuc_Cu.Text.Trim()), int.Parse(txtTieuThu_Cu.Text.Trim()), out ChiTietCu);
+                TongTienCu = _cGiaNuoc.TinhTienNuoc(false, int.Parse(txtGiaDieuChinh.Text.Trim()), txtDanhBo.Text.Trim(), int.Parse(txtGiaBieu_Cu.Text.Trim()), int.Parse(txtDinhMuc_Cu.Text.Trim()), int.Parse(txtTieuThu_Cu.Text.Trim()), out ChiTietCu, out TieuThu_DieuChinhGia);
                 if (chkDieuChinhGia2.Checked)
                 {
                     TongTienMoi = _cGiaNuoc.TinhTienNuoc(chkDieuChinhGia.Checked, int.Parse(txtGiaDieuChinh.Text.Trim()), txtDanhBo.Text.Trim(), int.Parse(txtGiaBieu_Moi.Text.Trim()), int.Parse(txtDinhMuc_Moi.Text.Trim()), int.Parse(txtTieuThu_Moi.Text.Trim()) - int.Parse(txtTieuThu_DieuChinhGia2.Text.Trim()), int.Parse(txtTieuThu_DieuChinhGia2.Text.Trim()), int.Parse(txtGiaDieuChinh2.Text.Trim()), out ChiTietMoi);
@@ -489,7 +492,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     }
                     else
                     {
-                        TongTienMoi = _cGiaNuoc.TinhTienNuoc(chkDieuChinhGia.Checked, int.Parse(txtGiaDieuChinh.Text.Trim()), txtDanhBo.Text.Trim(), int.Parse(txtGiaBieu_Moi.Text.Trim()), int.Parse(txtDinhMuc_Moi.Text.Trim()), int.Parse(txtTieuThu_Moi.Text.Trim()), out ChiTietMoi);
+                        TongTienMoi = _cGiaNuoc.TinhTienNuoc(chkDieuChinhGia.Checked, int.Parse(txtGiaDieuChinh.Text.Trim()), txtDanhBo.Text.Trim(), int.Parse(txtGiaBieu_Moi.Text.Trim()), int.Parse(txtDinhMuc_Moi.Text.Trim()), int.Parse(txtTieuThu_Moi.Text.Trim()), out ChiTietMoi, out _TieuThu_DieuChinhGia);
                     }
                 ///Chi Tiết
                 txtChiTietCu.Text = ChiTietCu;
@@ -647,9 +650,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (_ctdchd.DieuChinhGia == true)
                 {
                     if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
-                        dr["DieuChinh"] = "Áp giá " + _ctdchd.GiaDieuChinh;
+                        dr["DieuChinh"] = _ctdchd.TieuThu_DieuChinhGia + "m3 Áp giá " + txtGiaDieuChinh.Text.Trim();
                     else
-                        dr["DieuChinh"] = dr["DieuChinh"] + ", Áp giá " + _ctdchd.GiaDieuChinh;
+                        dr["DieuChinh"] = dr["DieuChinh"] + ", " + _ctdchd.TieuThu_DieuChinhGia + "m3 Áp giá " + txtGiaDieuChinh.Text.Trim();
                     dr["ChiTietCu"] = _ctdchd.ChiTietCu;
                     dr["ChiTietMoi"] = _ctdchd.ChiTietMoi;
                 }

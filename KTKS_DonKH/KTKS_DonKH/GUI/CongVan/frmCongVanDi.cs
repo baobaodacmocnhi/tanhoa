@@ -18,6 +18,7 @@ using KTKS_DonKH.DAL.ThaoThuTraLoi;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.CongVan;
 using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.DAL.CapNhat;
 
 namespace KTKS_DonKH.GUI.CongVan
 {
@@ -31,6 +32,8 @@ namespace KTKS_DonKH.GUI.CongVan
         CDCBD _cDCBD = new CDCBD();
         CCHDB _cCHDB = new CCHDB();
         CTTTL _cTTTL = new CTTTL();
+        CTTKH _cTTKH = new CTTKH();
+        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
 
         public frmCongVanDi()
         {
@@ -49,6 +52,16 @@ namespace KTKS_DonKH.GUI.CongVan
         {
             dgvDSCongVan.AutoGenerateColumns = false;
 
+            cmbTuGio.SelectedItem = "7";
+            cmbDenGio.SelectedItem = DateTime.Now.Hour.ToString();
+
+            DataTable dt1 = _cCongVanDi.GetDSNoiDung();
+            AutoCompleteStringCollection auto1 = new AutoCompleteStringCollection();
+            foreach (DataRow item in dt1.Rows)
+            {
+                auto1.Add(item["NoiDung"].ToString());
+            }
+            txtNoiDung.AutoCompleteCustomSource = auto1;
         }
 
         public string GetTenTable()
@@ -98,14 +111,10 @@ namespace KTKS_DonKH.GUI.CongVan
 
         public void Clear()
         {
-            txtTuMa.Text = "";
-            txtDenMa.Text = "";
             lstMa.Items.Clear();
             txtDanhBo.Text = "";
             txtHoTen.Text = "";
             txtDiaChi.Text = "";
-            txtNoiDung.Text = "";
-            cmbNoiChuyen.SelectedIndex = -1;
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -124,6 +133,7 @@ namespace KTKS_DonKH.GUI.CongVan
                     item.NoiChuyen = cmbNoiChuyen.SelectedItem.ToString();
                     if (_cCongVanDi.Them(item))
                     {
+                        Clear();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         btnXem.PerformClick();
                     }
@@ -139,67 +149,77 @@ namespace KTKS_DonKH.GUI.CongVan
                         switch (cmbLoaiVanBan.SelectedItem.ToString())
                         {
                             case "Đơn Tổ Khách Hàng":
-                                DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemMa.Text.Replace("-", "")));
+                                DonKH donkh = new DonKH();
+                                donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemMa.Text.Replace("-", "")));
                                 item.DanhBo = donkh.DanhBo;
                                 item.HoTen = donkh.HoTen;
                                 item.DiaChi = donkh.DiaChi;
                                 break;
                             case "Đơn Tổ Xử Lý":
-                                DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(itemMa.Text.Replace("-", "")));
+                                DonTXL dontxl = new DonTXL();
+                                dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(itemMa.Text.Replace("-", "")));
                                 item.DanhBo = dontxl.DanhBo;
                                 item.HoTen = dontxl.HoTen;
                                 item.DiaChi = dontxl.DiaChi;
                                 break;
                             case "Kiểm Tra Xác Minh":
-                                CTKTXM ctktxm = _cKTXM.getCTKTXMbyID(decimal.Parse(itemMa.Text.Replace("-", "")));
+                                CTKTXM ctktxm = new CTKTXM();
+                                ctktxm = _cKTXM.getCTKTXMbyID(decimal.Parse(itemMa.Text.Replace("-", "")));
                                 item.DanhBo = ctktxm.DanhBo;
                                 item.HoTen = ctktxm.HoTen;
                                 item.DiaChi = ctktxm.DiaChi;
                                 break;
                             case "Bấm Chì":
-                                CTBamChi ctbamchi = _cBamChi.getCTBamChibyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                                CTBamChi ctbamchi = new CTBamChi();
+                                ctbamchi = _cBamChi.getCTBamChibyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = ctbamchi.DanhBo;
                                 item.HoTen = ctbamchi.HoTen;
                                 item.DiaChi = ctbamchi.DiaChi;
                                 break;
                             case "Điều Chỉnh Biến Động":
-                                CTDCBD dcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                                CTDCBD dcbd = new CTDCBD();
+                                dcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = dcbd.DanhBo;
                                 item.HoTen = dcbd.HoTen;
                                 item.DiaChi = dcbd.DiaChi;
                                 break;
                             case "Điều Chỉnh Hóa Đơn":
-                                CTDCHD dchd = _cDCBD.getCTDCHDbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                                CTDCHD dchd = new CTDCHD();
+                                dchd = _cDCBD.getCTDCHDbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = dchd.DanhBo;
                                 item.HoTen = dchd.HoTen;
                                 item.DiaChi = dchd.DiaChi;
                                 break;
                             case "Cắt Tạm Danh Bộ":
-                                CTCTDB ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                                CTCTDB ctctdb = new CTCTDB();
+                                ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = ctctdb.DanhBo;
                                 item.HoTen = ctctdb.HoTen;
                                 item.DiaChi = ctctdb.DiaChi;
                                 break;
                             case "Cắt Hủy Danh Bộ":
-                                CTCHDB ctchdb = _cCHDB.getCTCHDBbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                                CTCHDB ctchdb = new CTCHDB();
+                                ctchdb = _cCHDB.getCTCHDBbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = ctchdb.DanhBo;
                                 item.HoTen = ctchdb.HoTen;
                                 item.DiaChi = ctchdb.DiaChi;
                                 break;
                             case "Phiếu Hủy Danh Bộ":
-                                YeuCauCHDB ycchdb = _cCHDB.getYeuCauCHDbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                                YeuCauCHDB ycchdb = new YeuCauCHDB();
+                                ycchdb = _cCHDB.getYeuCauCHDbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = ycchdb.DanhBo;
                                 item.HoTen = ycchdb.HoTen;
                                 item.DiaChi = ycchdb.DiaChi;
                                 break;
                             case "Thư Trả Lời":
-                                CTTTTL cttttl = _cTTTL.getCTTTTLbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                                CTTTTL cttttl = new CTTTTL();
+                                cttttl = _cTTTL.getCTTTTLbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = cttttl.DanhBo;
                                 item.HoTen = cttttl.HoTen;
                                 item.DiaChi = cttttl.DiaChi;
                                 break;
                             default:
-                                
+
                                 break;
                         }
                         item.NoiDung = txtNoiDung.Text.Trim();
@@ -214,7 +234,7 @@ namespace KTKS_DonKH.GUI.CongVan
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvDSCongVan.DataSource = _cCongVanDi.GetDS(dateTu.Value, dateDen.Value);
+            dgvDSCongVan.DataSource = _cCongVanDi.GetDS(dateTu.Value, int.Parse(cmbTuGio.SelectedItem.ToString()), dateDen.Value, int.Parse(cmbDenGio.SelectedItem.ToString()));
         }
 
         private void txtTuMa_KeyPress(object sender, KeyPressEventArgs e)
@@ -355,6 +375,7 @@ namespace KTKS_DonKH.GUI.CongVan
                     dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
                 dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
                 dr["NoiChuyen"] = item.Cells["NoiChuyen"].Value.ToString();
+                dr["NoiDung"] = item.Cells["NoiDung"].Value.ToString();
                 dsBaoCao.Tables["CongVan"].Rows.Add(dr);
             }
             rptDSCongVan rpt = new rptDSCongVan();
@@ -368,6 +389,17 @@ namespace KTKS_DonKH.GUI.CongVan
             if (dgvDSCongVan.Columns[e.ColumnIndex].Name == "Ma" && e.Value != null && e.Value.ToString().Length > 2)
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+        }
+
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (txtDanhBo.Text.Trim().Length == 11 && e.KeyChar == 13)
+            {
+                TTKhachHang ttkh = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
+                txtDanhBo.Text = ttkh.DanhBo;
+                txtHoTen.Text = ttkh.HoTen;
+                txtDiaChi.Text = ttkh.DC1 + " " + ttkh.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkh.Quan, ttkh.Phuong);
             }
         }
 

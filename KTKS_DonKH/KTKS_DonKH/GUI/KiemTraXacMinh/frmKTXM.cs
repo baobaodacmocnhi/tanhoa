@@ -104,6 +104,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtHoTenKHKy.Text = ctktxm.HoTenKHKy;
             cmbTinhTrangDHN.SelectedItem = ctktxm.TinhTrangDHN;
             txtNoiDungKiemTra.Text = ctktxm.NoiDungKiemTra;
+            txtTieuThuTrungBinh.Text = ctktxm.TieuThuTrungBinh.Value.ToString();
         }
 
         public void Clear()
@@ -131,6 +132,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtHoTenKHKy.Text = "";
             //cmbTinhTrangDHN.SelectedIndex = -1;
             txtNoiDungKiemTra.Text = "";
+            txtTieuThuTrungBinh.Text = "0";
 
             selectedindex = -1;
         }
@@ -330,6 +332,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
                         ctktxm.NoiDungKiemTra = txtNoiDungKiemTra.Text.Trim();
                         ctktxm.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
+                        ctktxm.TieuThuTrungBinh = int.Parse(txtTieuThuTrungBinh.Text.Trim());
 
                         if (_cKTXM.ThemCTKTXM(ctktxm))
                         {
@@ -424,6 +427,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
                         ctktxm.NoiDungKiemTra = txtNoiDungKiemTra.Text.Trim();
                         ctktxm.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
+                        ctktxm.TieuThuTrungBinh = int.Parse(txtTieuThuTrungBinh.Text.Trim());
 
                         if (_cKTXM.ThemCTKTXM(ctktxm))
                         {
@@ -510,6 +514,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
                     ctktxm.NoiDungKiemTra = txtNoiDungKiemTra.Text.Trim();
                     ctktxm.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
+                    ctktxm.TieuThuTrungBinh = int.Parse(txtTieuThuTrungBinh.Text.Trim());
 
                     ///Nếu Đơn thuộc Tổ Xử Lý
                     if (ctktxm.KTXM.ToXuLy)

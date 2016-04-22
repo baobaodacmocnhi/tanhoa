@@ -119,6 +119,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 cmbTinhTrangDHN.SelectedItem = ctktxm.TinhTrangDHN;
                 txtNoiDungKiemTra.Text = ctktxm.NoiDungKiemTra;
                 txtTheoYeuCau.Text = _ctktxm.TheoYeuCau;
+                txtTieuThuTrungBinh.Text = _ctktxm.TieuThuTrungBinh.Value.ToString();
 
                 if (ctktxm.LapBangGia)
                 {
@@ -261,6 +262,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
                 _ctktxm.NoiDungKiemTra = txtNoiDungKiemTra.Text.Trim();
                 _ctktxm.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
+                _ctktxm.TieuThuTrungBinh = int.Parse(txtTieuThuTrungBinh.Text.Trim());
 
                 if (_ctktxm.LapBangGia != chkLapBangGia.Checked)
                     if (chkLapBangGia.Checked)

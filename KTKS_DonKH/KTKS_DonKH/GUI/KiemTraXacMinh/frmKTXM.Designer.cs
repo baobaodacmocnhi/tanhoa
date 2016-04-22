@@ -57,7 +57,9 @@
             this.NoiDungKiemTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
+            this.txtTieuThuTrungBinh = new System.Windows.Forms.TextBox();
             this.cmbViTriDHN2 = new System.Windows.Forms.ComboBox();
             this.cmbViTriDHN1 = new System.Windows.Forms.ComboBox();
             this.lbTheoYeuCau = new System.Windows.Forms.Label();
@@ -350,7 +352,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label24);
             this.groupBox2.Controls.Add(this.label23);
+            this.groupBox2.Controls.Add(this.txtTieuThuTrungBinh);
             this.groupBox2.Controls.Add(this.cmbViTriDHN2);
             this.groupBox2.Controls.Add(this.cmbViTriDHN1);
             this.groupBox2.Controls.Add(this.lbTheoYeuCau);
@@ -388,6 +392,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kết Quả";
             // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(897, 138);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(132, 17);
+            this.label24.TabIndex = 31;
+            this.label24.Text = "Tiêu Thụ Trung Bình:";
+            // 
             // label23
             // 
             this.label23.AutoSize = true;
@@ -396,6 +409,14 @@
             this.label23.Size = new System.Drawing.Size(123, 17);
             this.label23.TabIndex = 4;
             this.label23.Text = "Vị Trí ĐHN lắp đặt";
+            // 
+            // txtTieuThuTrungBinh
+            // 
+            this.txtTieuThuTrungBinh.Location = new System.Drawing.Point(1035, 135);
+            this.txtTieuThuTrungBinh.Name = "txtTieuThuTrungBinh";
+            this.txtTieuThuTrungBinh.Size = new System.Drawing.Size(93, 25);
+            this.txtTieuThuTrungBinh.TabIndex = 32;
+            this.txtTieuThuTrungBinh.Text = "0";
             // 
             // cmbViTriDHN2
             // 
@@ -441,7 +462,7 @@
             // 
             this.txtTheoYeuCau.Location = new System.Drawing.Point(753, 135);
             this.txtTheoYeuCau.Name = "txtTheoYeuCau";
-            this.txtTheoYeuCau.Size = new System.Drawing.Size(281, 25);
+            this.txtTheoYeuCau.Size = new System.Drawing.Size(138, 25);
             this.txtTheoYeuCau.TabIndex = 30;
             this.txtTheoYeuCau.Visible = false;
             // 
@@ -825,5 +846,7 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ComboBox cmbViTriDHN2;
         private System.Windows.Forms.ComboBox cmbViTriDHN1;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox txtTieuThuTrungBinh;
     }
 }

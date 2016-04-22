@@ -97,6 +97,13 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 set { _dongTienBoiThuong = value; }
             }
 
+            int _tieuThuTrungBinh = 0;
+            public int TieuThuTrungBinh
+            {
+                get { return _tieuThuTrungBinh; }
+                set { _tieuThuTrungBinh = value; }
+            }
+
             int _chuaDongTienBoiThuong = 0;
             public int ChuaDongTienBoiThuong
             {
@@ -173,6 +180,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             }
                             else
                                 a[0].ChuaDongTienBoiThuong++;
+                            if (!string.IsNullOrEmpty(itemRow["TieuThuTrungBinh"].ToString()))
+                                a[0].TieuThuTrungBinh += int.Parse(itemRow["TieuThuTrungBinh"].ToString());
                             if (bool.Parse(itemRow["ChuyenLapTBCat"].ToString()))
                             {
                                 //a[0].ChuyenLapTBCat++;
@@ -307,6 +316,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             dr["DongTienBoiThuong"] = "";
                         else
                             dr["DongTienBoiThuong"] = a[i].DongTienBoiThuong;
+
+                        if (a[i].TieuThuTrungBinh == 0)
+                            dr["TieuThuTrungBinh"] = "";
+                        else
+                            dr["TieuThuTrungBinh"] = "Tiêu Thụ Trung Bình "+a[i].TieuThuTrungBinh+"m3";
 
                         if (a[i].ChuaDongTienBoiThuong == 0)
                             dr["ChuaDongTienBoiThuong"] = "";
