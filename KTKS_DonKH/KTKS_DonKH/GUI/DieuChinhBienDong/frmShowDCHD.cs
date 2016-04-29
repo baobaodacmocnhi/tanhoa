@@ -650,9 +650,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (_ctdchd.DieuChinhGia == true)
                 {
                     if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
-                        dr["DieuChinh"] = _ctdchd.TieuThu_DieuChinhGia + "m3 Áp giá " + txtGiaDieuChinh.Text.Trim();
+                        if (_ctdchd.TieuThu_DieuChinhGia == _ctdchd.TieuThu_BD)
+                            dr["DieuChinh"] = _ctdchd.TieuThu_DieuChinhGia + "m3 Áp giá " + _ctdchd.GiaDieuChinh;
+                        else
+                            dr["DieuChinh"] = "Vượt " + _ctdchd.DinhMuc_BD + ", " + _ctdchd.TieuThu_DieuChinhGia + "m3 Áp giá " + _ctdchd.GiaDieuChinh;
                     else
-                        dr["DieuChinh"] = dr["DieuChinh"] + ", " + _ctdchd.TieuThu_DieuChinhGia + "m3 Áp giá " + txtGiaDieuChinh.Text.Trim();
+                        if (_ctdchd.TieuThu_DieuChinhGia == _ctdchd.TieuThu_BD)
+                            dr["DieuChinh"] = dr["DieuChinh"] + ", " + _ctdchd.TieuThu_DieuChinhGia + "m3 Áp giá " + _ctdchd.GiaDieuChinh;
+                        else
+                            dr["DieuChinh"] = dr["DieuChinh"] + ", Vượt " + _ctdchd.DinhMuc_BD + ", " + _ctdchd.TieuThu_DieuChinhGia + "m3 Áp giá " + _ctdchd.GiaDieuChinh;
                     dr["ChiTietCu"] = _ctdchd.ChiTietCu;
                     dr["ChiTietMoi"] = _ctdchd.ChiTietMoi;
                 }

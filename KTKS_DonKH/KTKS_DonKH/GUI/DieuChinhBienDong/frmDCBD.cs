@@ -127,7 +127,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtSX.Text = ttkhachhang.SX;
             txtDV.Text = ttkhachhang.DV;
             txtHCSN.Text = ttkhachhang.HCSN;
-            txtDot.Text = ttkhachhang.Dot;
+            txtDot.Text = _cPhuongQuan.getDot(ttkhachhang.DanhBo);
 
             dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTubyDanhBo(ttkhachhang.DanhBo);
             dgvDSDieuChinh.DataSource = _cDCBD.LoadDSDCbyDanhBo(ttkhachhang.DanhBo);

@@ -70,5 +70,10 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             return dbCAPNUOCTANHOA.PHUONGs.SingleOrDefault(item => item.MAQUAN == MaQuan&&item.MAPHUONG==MaPhuong).TENPHUONG;
         }
+
+        public string getDot(string DanhBo)
+        {
+            return dbCAPNUOCTANHOA.TB_DULIEUKHACHHANGs.SingleOrDefault(item => item.DANHBO == DanhBo).LOTRINH.Substring(0,2);
+        }
     }
 }
