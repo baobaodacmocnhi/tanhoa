@@ -100,7 +100,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(758, 11);
+            this.btnXem.Location = new System.Drawing.Point(748, 11);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 14;
@@ -111,7 +111,7 @@
             // cmbNhanVien
             // 
             this.cmbNhanVien.FormattingEnabled = true;
-            this.cmbNhanVien.Location = new System.Drawing.Point(435, 12);
+            this.cmbNhanVien.Location = new System.Drawing.Point(425, 12);
             this.cmbNhanVien.Name = "cmbNhanVien";
             this.cmbNhanVien.Size = new System.Drawing.Size(118, 21);
             this.cmbNhanVien.TabIndex = 16;
@@ -119,7 +119,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(369, 15);
+            this.label4.Location = new System.Drawing.Point(359, 15);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 13);
             this.label4.TabIndex = 15;
@@ -145,7 +145,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(156, 134);
+            this.btnXoa.Location = new System.Drawing.Point(146, 134);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 21;
@@ -155,7 +155,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(156, 105);
+            this.btnSua.Location = new System.Drawing.Point(146, 105);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 20;
@@ -166,7 +166,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(156, 76);
+            this.btnThem.Location = new System.Drawing.Point(146, 76);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 19;
@@ -178,7 +178,7 @@
             // 
             this.tabControl.Controls.Add(this.tabTuGia);
             this.tabControl.Controls.Add(this.tabCoQuan);
-            this.tabControl.Location = new System.Drawing.Point(268, 39);
+            this.tabControl.Location = new System.Drawing.Point(258, 39);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(846, 596);
@@ -562,7 +562,7 @@
             // 
             this.dateGiaiTrachSua.CustomFormat = "dd/MM/yyyy";
             this.dateGiaiTrachSua.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateGiaiTrachSua.Location = new System.Drawing.Point(156, 229);
+            this.dateGiaiTrachSua.Location = new System.Drawing.Point(146, 229);
             this.dateGiaiTrachSua.Name = "dateGiaiTrachSua";
             this.dateGiaiTrachSua.Size = new System.Drawing.Size(100, 20);
             this.dateGiaiTrachSua.TabIndex = 26;
@@ -570,7 +570,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(153, 213);
+            this.label7.Location = new System.Drawing.Point(143, 213);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(109, 13);
             this.label7.TabIndex = 25;
@@ -580,7 +580,7 @@
             // 
             this.lbTo.AutoSize = true;
             this.lbTo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTo.Location = new System.Drawing.Point(264, 9);
+            this.lbTo.Location = new System.Drawing.Point(254, 9);
             this.lbTo.Name = "lbTo";
             this.lbTo.Size = new System.Drawing.Size(32, 19);
             this.lbTo.TabIndex = 27;
@@ -615,7 +615,7 @@
             // 
             this.dateGiaiTrach.CustomFormat = "dd/MM/yyyy";
             this.dateGiaiTrach.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateGiaiTrach.Location = new System.Drawing.Point(652, 13);
+            this.dateGiaiTrach.Location = new System.Drawing.Point(642, 13);
             this.dateGiaiTrach.Name = "dateGiaiTrach";
             this.dateGiaiTrach.Size = new System.Drawing.Size(100, 20);
             this.dateGiaiTrach.TabIndex = 32;
@@ -623,7 +623,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(559, 15);
+            this.label1.Location = new System.Drawing.Point(549, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 13);
             this.label1.TabIndex = 31;
@@ -631,7 +631,7 @@
             // 
             // btnInPhieu
             // 
-            this.btnInPhieu.Location = new System.Drawing.Point(839, 11);
+            this.btnInPhieu.Location = new System.Drawing.Point(829, 11);
             this.btnInPhieu.Name = "btnInPhieu";
             this.btnInPhieu.Size = new System.Drawing.Size(75, 23);
             this.btnInPhieu.TabIndex = 33;

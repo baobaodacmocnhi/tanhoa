@@ -18497,6 +18497,8 @@ namespace ThuTien.LinQ
 		
 		private bool _DongPhi;
 		
+		private bool _ChuyenKhoan;
+		
 		private System.Nullable<System.DateTime> _NgayDongPhi;
 		
 		private System.Nullable<decimal> _SoPhieuDN;
@@ -18583,6 +18585,8 @@ namespace ThuTien.LinQ
     partial void OnChiSoDN1Changed();
     partial void OnDongPhiChanging(bool value);
     partial void OnDongPhiChanged();
+    partial void OnChuyenKhoanChanging(bool value);
+    partial void OnChuyenKhoanChanged();
     partial void OnNgayDongPhiChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayDongPhiChanged();
     partial void OnSoPhieuDNChanging(System.Nullable<decimal> value);
@@ -19045,6 +19049,26 @@ namespace ThuTien.LinQ
 					this._DongPhi = value;
 					this.SendPropertyChanged("DongPhi");
 					this.OnDongPhiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChuyenKhoan", DbType="Bit NOT NULL")]
+		public bool ChuyenKhoan
+		{
+			get
+			{
+				return this._ChuyenKhoan;
+			}
+			set
+			{
+				if ((this._ChuyenKhoan != value))
+				{
+					this.OnChuyenKhoanChanging(value);
+					this.SendPropertyChanging();
+					this._ChuyenKhoan = value;
+					this.SendPropertyChanged("ChuyenKhoan");
+					this.OnChuyenKhoanChanged();
 				}
 			}
 		}

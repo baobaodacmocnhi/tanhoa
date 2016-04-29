@@ -390,6 +390,7 @@ namespace ThuTien.DAL.DongNuoc
                             itemKQ.NgayDN,
                             itemKQ.DongPhi,
                             itemKQ.NgayDongPhi,
+                            itemKQ.ChuyenKhoan,
                             itemHD.NGAYGIAITRACH,
                         };
             return LINQToDataTable(query.GroupBy(item => item.MaDN).Select(item => item.First()).ToList());
@@ -465,7 +466,7 @@ namespace ThuTien.DAL.DongNuoc
         {
             //return _db.TT_CTDongNuocs.Any(item => item.MaDN == MaDN && item.HOADON.NGAYGIAITRACH != null);
             foreach (TT_CTDongNuoc item in _db.TT_CTDongNuocs.Where(item => item.MaDN == MaDN))
-                if (_db.HOADONs.FirstOrDefault(itemHD=>itemHD.SOHOADON==item.SoHoaDon).NGAYGIAITRACH == null)
+                if (_db.HOADONs.FirstOrDefault(itemHD=>itemHD.ID_HOADON==item.MaHD).NGAYGIAITRACH == null)
                     return false;
             return true;
         }
@@ -576,6 +577,11 @@ namespace ThuTien.DAL.DongNuoc
         public TT_KQDongNuoc GetKQDongNuocByMaDN(decimal MaDN)
         {
             return _db.TT_KQDongNuocs.SingleOrDefault(item => item.MaDN == MaDN);
+        }
+
+        public TT_KQDongNuoc GetKQDongNuocByDanhBo(string DanhBo)
+        {
+            return _db.TT_KQDongNuocs.SingleOrDefault(item => item.DanhBo == DanhBo && item.TT_DongNuoc.Huy==false);
         }
 
         public string GetNgayDNBySoHoaDon(string SoHoaDon)

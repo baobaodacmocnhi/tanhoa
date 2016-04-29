@@ -34,6 +34,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnXem = new System.Windows.Forms.Button();
             this.dgvKQDongNuoc = new System.Windows.Forms.DataGridView();
+            this.radChuaDongPhi = new System.Windows.Forms.RadioButton();
+            this.radDaDongPhi = new System.Windows.Forms.RadioButton();
+            this.txtDanhBo = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.MaDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaKQDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,10 +48,7 @@
             this.DongPhi = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.NgayDongPhi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayGiaiTrach = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.radChuaDongPhi = new System.Windows.Forms.RadioButton();
-            this.radDaDongPhi = new System.Windows.Forms.RadioButton();
-            this.txtDanhBo = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.ChuyenKhoan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKQDongNuoc)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,7 +85,8 @@
             this.NgayDN,
             this.DongPhi,
             this.NgayDongPhi,
-            this.NgayGiaiTrach});
+            this.NgayGiaiTrach,
+            this.ChuyenKhoan});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -106,11 +108,50 @@
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvKQDongNuoc.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvKQDongNuoc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvKQDongNuoc.Size = new System.Drawing.Size(1015, 563);
+            this.dgvKQDongNuoc.Size = new System.Drawing.Size(1027, 563);
             this.dgvKQDongNuoc.TabIndex = 33;
             this.dgvKQDongNuoc.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvKQDongNuoc_CellFormatting);
             this.dgvKQDongNuoc.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvKQDongNuoc_CellValidating);
             this.dgvKQDongNuoc.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvKQDongNuoc_RowPostPaint);
+            // 
+            // radChuaDongPhi
+            // 
+            this.radChuaDongPhi.AutoSize = true;
+            this.radChuaDongPhi.Checked = true;
+            this.radChuaDongPhi.Location = new System.Drawing.Point(52, 9);
+            this.radChuaDongPhi.Name = "radChuaDongPhi";
+            this.radChuaDongPhi.Size = new System.Drawing.Size(99, 17);
+            this.radChuaDongPhi.TabIndex = 35;
+            this.radChuaDongPhi.TabStop = true;
+            this.radChuaDongPhi.Text = "Chưa Đóng Phí";
+            this.radChuaDongPhi.UseVisualStyleBackColor = true;
+            // 
+            // radDaDongPhi
+            // 
+            this.radDaDongPhi.AutoSize = true;
+            this.radDaDongPhi.Location = new System.Drawing.Point(52, 32);
+            this.radDaDongPhi.Name = "radDaDongPhi";
+            this.radDaDongPhi.Size = new System.Drawing.Size(86, 17);
+            this.radDaDongPhi.TabIndex = 36;
+            this.radDaDongPhi.Text = "Đã Đóng Phi";
+            this.radDaDongPhi.UseVisualStyleBackColor = true;
+            // 
+            // txtDanhBo
+            // 
+            this.txtDanhBo.Location = new System.Drawing.Point(224, 12);
+            this.txtDanhBo.Name = "txtDanhBo";
+            this.txtDanhBo.Size = new System.Drawing.Size(100, 20);
+            this.txtDanhBo.TabIndex = 38;
+            this.txtDanhBo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBo_KeyPress);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(166, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.TabIndex = 37;
+            this.label1.Text = "Danh Bộ:";
             // 
             // MaDN
             // 
@@ -156,8 +197,9 @@
             // NgayDN
             // 
             this.NgayDN.DataPropertyName = "NgayDN";
-            this.NgayDN.HeaderText = "Ngày ĐN";
+            this.NgayDN.HeaderText = "Đóng Nước";
             this.NgayDN.Name = "NgayDN";
+            this.NgayDN.Width = 80;
             // 
             // DongPhi
             // 
@@ -170,8 +212,10 @@
             // 
             // NgayDongPhi
             // 
+            this.NgayDongPhi.DataPropertyName = "NgayDongPhi";
             this.NgayDongPhi.HeaderText = "Ngày Đóng Phí";
             this.NgayDongPhi.Name = "NgayDongPhi";
+            this.NgayDongPhi.Width = 80;
             // 
             // NgayGiaiTrach
             // 
@@ -179,46 +223,14 @@
             this.NgayGiaiTrach.HeaderText = "Đăng Ngân";
             this.NgayGiaiTrach.Name = "NgayGiaiTrach";
             // 
-            // radChuaDongPhi
+            // ChuyenKhoan
             // 
-            this.radChuaDongPhi.AutoSize = true;
-            this.radChuaDongPhi.Checked = true;
-            this.radChuaDongPhi.Location = new System.Drawing.Point(52, 9);
-            this.radChuaDongPhi.Name = "radChuaDongPhi";
-            this.radChuaDongPhi.Size = new System.Drawing.Size(99, 17);
-            this.radChuaDongPhi.TabIndex = 35;
-            this.radChuaDongPhi.TabStop = true;
-            this.radChuaDongPhi.Text = "Chưa Đóng Phí";
-            this.radChuaDongPhi.UseVisualStyleBackColor = true;
+            this.ChuyenKhoan.DataPropertyName = "ChuyenKhoan";
+            this.ChuyenKhoan.HeaderText = "Chuyển Khoản";
+            this.ChuyenKhoan.Name = "ChuyenKhoan";
+            this.ChuyenKhoan.Width = 50;
             // 
-            // radDaDongPhi
-            // 
-            this.radDaDongPhi.AutoSize = true;
-            this.radDaDongPhi.Location = new System.Drawing.Point(52, 32);
-            this.radDaDongPhi.Name = "radDaDongPhi";
-            this.radDaDongPhi.Size = new System.Drawing.Size(86, 17);
-            this.radDaDongPhi.TabIndex = 36;
-            this.radDaDongPhi.Text = "Đã Đóng Phi";
-            this.radDaDongPhi.UseVisualStyleBackColor = true;
-            // 
-            // txtDanhBo
-            // 
-            this.txtDanhBo.Location = new System.Drawing.Point(224, 12);
-            this.txtDanhBo.Name = "txtDanhBo";
-            this.txtDanhBo.Size = new System.Drawing.Size(100, 20);
-            this.txtDanhBo.TabIndex = 38;
-            this.txtDanhBo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBo_KeyPress);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(166, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
-            this.label1.TabIndex = 37;
-            this.label1.Text = "Danh Bộ:";
-            // 
-            // frmPhiMoNuoc
+            // frmPhiMoNuocQuay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -229,7 +241,7 @@
             this.Controls.Add(this.radChuaDongPhi);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.dgvKQDongNuoc);
-            this.Name = "frmPhiMoNuoc";
+            this.Name = "frmPhiMoNuocQuay";
             this.Text = "Phí Mở Nước";
             this.Load += new System.EventHandler(this.frmPhiMoNuoc_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKQDongNuoc)).EndInit();
@@ -244,6 +256,8 @@
         private System.Windows.Forms.DataGridView dgvKQDongNuoc;
         private System.Windows.Forms.RadioButton radChuaDongPhi;
         private System.Windows.Forms.RadioButton radDaDongPhi;
+        private System.Windows.Forms.TextBox txtDanhBo;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDN;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaKQDN;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
@@ -254,7 +268,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn DongPhi;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayDongPhi;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayGiaiTrach;
-        private System.Windows.Forms.TextBox txtDanhBo;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ChuyenKhoan;
     }
 }

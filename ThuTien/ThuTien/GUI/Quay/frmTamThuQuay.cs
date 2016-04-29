@@ -473,6 +473,7 @@ namespace ThuTien.GUI.Quay
                 dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
                 dr["LoaiBaoCao"] = "TẠM THU QUẦY";
+                dr["GhiChu"] = "TẠM THU QUẦY";
                 dr["DanhBo"] = item.Cells["DanhBo_TT"].Value.ToString().Insert(4, " ").Insert(8, " ");
                 dr["HoTen"] = item.Cells["HoTen_TT"].Value.ToString();
                 dr["MLT"] = item.Cells["MLT_TT"].Value.ToString().Insert(4, " ").Insert(2, " ");
@@ -484,6 +485,7 @@ namespace ThuTien.GUI.Quay
                     dr["Loai"] = "CQ";
                 else
                     dr["Loai"] = "TG";
+                
                 ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
             }
             rptDSTamThuChuyenKhoan rpt = new rptDSTamThuChuyenKhoan();

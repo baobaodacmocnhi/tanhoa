@@ -875,6 +875,7 @@
       <Column Name="NgayDN1" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ChiSoDN1" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DongPhi" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ChuyenKhoan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="NgayDongPhi" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="SoPhieuDN" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="NgaySoPhieuDN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />

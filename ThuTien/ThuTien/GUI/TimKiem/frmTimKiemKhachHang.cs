@@ -46,6 +46,7 @@ namespace ThuTien.GUI.TimKiem
                 dgvHoaDon.DataSource = _cHoaDon.GetDSTimKiem(txtDanhBo.Text.Trim().Replace(" ", ""), txtMLT.Text.Trim());
             else
                 dgvHoaDon.DataSource = _cCapNuocTanHoa.GetTTKH(txtHoTen.Text.Trim(), txtSoNha.Text.Trim(), txtTenDuong.Text.Trim());
+
             dgvKinhDoanh.DataSource = null;
             dgvKinhDoanh.Visible = false;
 

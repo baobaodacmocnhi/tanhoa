@@ -15,6 +15,7 @@ using ThuTien.BaoCao;
 using ThuTien.BaoCao.NhanVien;
 using ThuTien.GUI.BaoCao;
 using ThuTien.LinQ;
+using System.Transactions;
 
 namespace ThuTien.GUI.ToTruong
 {
@@ -191,50 +192,36 @@ namespace ThuTien.GUI.ToTruong
                     }
                     try
                     {
-                        //_cHoaDon.SqlBeginTransaction();
                         foreach (ListViewItem item in lstHD.Items)
-                            if (_cHoaDon.DangNgan("HanhThu", item.Text, (int)cmbNhanVien.SelectedValue, dateGiaiTrachSua.Value))
-                            {
-                                ///ưu tiên đăng ngân hành thu, tự động xóa tạm thu chuyển qua thu 2 lần
-                                bool ChuyenKhoan = false;
-                                if (_cTamThu.CheckExist(item.Text,out ChuyenKhoan))
-                                    if (_cHoaDon.Thu2Lan(item.Text,ChuyenKhoan))
-                                    {
-                                        if (!_cTamThu.XoaAn(item.Text))
-                                        {
-                                            //_cHoaDon.SqlRollbackTransaction();
-                                            MessageBox.Show("Lỗi Xóa Tạm Thu, Vui lòng thử lại \r\n" + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                            return;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        //_cHoaDon.SqlRollbackTransaction();
-                                        MessageBox.Show("Lỗi Thu 2 Lần, Vui lòng thử lại \r\n" + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
-                                    }
-                                //if (_cLenhHuy.CheckExist(item.ToString()))
-                                //    if (!_cLenhHuy.Xoa(item.ToString()))
-                                //    {
-                                //        _cHoaDon.SqlRollbackTransaction();
-                                //        MessageBox.Show("Lỗi Xóa Lệnh Hủy, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                //        return;
-                                //    }
-                            }
+                        {
+                            ///ưu tiên đăng ngân hành thu, tự động xóa tạm thu chuyển qua thu 2 lần
+                            bool ChuyenKhoan = false;
+                            if (_cTamThu.CheckExist(item.Text, out ChuyenKhoan))
+                                using (var scope = new TransactionScope())
+                                {
+                                    if (_cHoaDon.DangNgan("HanhThu", item.Text, (int)cmbNhanVien.SelectedValue, dateGiaiTrachSua.Value))
+                                        if (_cHoaDon.Thu2Lan(item.Text, ChuyenKhoan))
+                                            if (_cTamThu.XoaAn(item.Text))
+                                                scope.Complete();
+                                }
                             else
                             {
-                                //_cHoaDon.SqlRollbackTransaction();
-                                //MessageBox.Show("Lỗi, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                //return;
+                                _cHoaDon.DangNgan("HanhThu", item.Text, (int)cmbNhanVien.SelectedValue, dateGiaiTrachSua.Value);
                             }
-                        //_cHoaDon.SqlCommitTransaction();
+                        }
+                        //if (_cLenhHuy.CheckExist(item.ToString()))
+                        //    if (!_cLenhHuy.Xoa(item.ToString()))
+                        //    {
+                        //        _cHoaDon.SqlRollbackTransaction();
+                        //        MessageBox.Show("Lỗi Xóa Lệnh Hủy, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //        return;
+                        //    }
                         btnXem.PerformClick();
                         lstHD.Items.Clear();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception)
                     {
-                        //_cHoaDon.SqlRollbackTransaction();
                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }

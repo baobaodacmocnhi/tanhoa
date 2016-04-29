@@ -78,7 +78,7 @@ namespace ThuTien.DAL.ChuyenKhoan
 
         public DataTable GetDS(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            return LINQToDataTable(_db.TT_PhiMoNuocs.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date).ToList());
+            return LINQToDataTable(_db.TT_PhiMoNuocs.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date).ToList().OrderByDescending(item=>item.CreateDate));
         }
     }
 }

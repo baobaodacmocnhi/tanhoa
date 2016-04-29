@@ -11,6 +11,7 @@ using ThuTien.DAL.QuanTri;
 using ThuTien.LinQ;
 using ThuTien.DAL.Doi;
 using System.Transactions;
+using ThuTien.DAL.DongNuoc;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -23,6 +24,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CHoaDon _cHoaDon = new CHoaDon();
         CBangKe _cBangKe = new CBangKe();
         CPhiMoNuoc _cPhiMoNuoc = new CPhiMoNuoc();
+        CDongNuoc _cDongNuoc = new CDongNuoc();
 
         public frmDieuChinhTienDu()
         {
@@ -138,16 +140,21 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 phimonuoc.SoTien = _cBangKe.GetSoTien(hoadon.DANHBA, dateBangKe.Value);
                                 phimonuoc.TongCong = phimonuoc.SoTien - 50000;
                                 if (_cPhiMoNuoc.Them(phimonuoc))
-                                //if (_cTienDu.GetTienDu(hoadon.DANHBA) == 0)
                                 {
-                                    TT_TienDu tiendu = _cTienDu.Get(hoadon.DANHBA);
-                                    tiendu.ChoXuLy = false;
-                                    if (_cTienDu.Sua(tiendu))
+                                    if (_cTienDu.LinQ_ExecuteNonQuery("update TT_TienDu set ChoXuLy=0 where DanhBo='" + hoadon.DANHBA + "'"))
                                     {
-                                        scope.Complete();
-                                        this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        this.Close();
+                                        TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByDanhBo(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""));
+                                        kqdongnuoc.DongPhi = true;
+                                        kqdongnuoc.ChuyenKhoan = true;
+                                        kqdongnuoc.NgayDongPhi = DateTime.Now;
+                                        if (_cDongNuoc.SuaKQ(kqdongnuoc))
+                                        {
+                                            scope.Complete();
+
+                                            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            this.Close();
+                                        }
                                     }
                                 }
                             }

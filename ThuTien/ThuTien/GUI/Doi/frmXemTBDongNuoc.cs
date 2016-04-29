@@ -150,6 +150,7 @@ namespace ThuTien.GUI.Doi
                 DataRow[] childRows = row.GetChildRows("Chi Tiết Đóng Nước");
 
                 string TinhTrang = "Tồn";
+                int DangNgan = 0;
                 foreach (DataRow itemChild in childRows)
                 {
                     DateTime NgayGiaiTrach;
@@ -157,8 +158,11 @@ namespace ThuTien.GUI.Doi
                     ///xét ngày đăng ngân để lấy tồn lùi
                     if (!string.IsNullOrEmpty(itemChild["NgayGiaiTrach"].ToString()) && NgayGiaiTrach.Date <= dateDen.Value.Date)
                     {
-                        TinhTrang = "Đăng Ngân";
+                        //TinhTrang = "Đăng Ngân";
+                        DangNgan++;
                     }
+                    if (DangNgan == childRows.Count())
+                        TinhTrang = "Đăng Ngân";
                     if (_cDongNuoc.CheckExist_KQDongNuoc(int.Parse(row["MaDN"].ToString()), dateDen.Value.Date))
                     {
                         TinhTrang = "Đã Khóa Nước";

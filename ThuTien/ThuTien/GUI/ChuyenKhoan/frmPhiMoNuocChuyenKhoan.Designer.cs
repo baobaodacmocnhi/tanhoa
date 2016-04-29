@@ -42,7 +42,14 @@
             this.Phi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnXem = new System.Windows.Forms.Button();
             this.dgvPhiMoNuoc = new System.Windows.Forms.DataGridView();
+            this.dateTu = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dateDen = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnIn = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.MaPMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo_PMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen_PMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi_PMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,12 +61,6 @@
             this.NgayBK_PMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoTien_PMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong_PMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateTu = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dateDen = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnIn = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTienDu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhiMoNuoc)).BeginInit();
             this.SuspendLayout();
@@ -109,7 +110,7 @@
             this.dgvTienDu.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvTienDu.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvTienDu.Size = new System.Drawing.Size(237, 534);
+            this.dgvTienDu.Size = new System.Drawing.Size(237, 580);
             this.dgvTienDu.TabIndex = 6;
             // 
             // DanhBo
@@ -150,6 +151,7 @@
             this.dgvPhiMoNuoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPhiMoNuoc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaPMN,
+            this.CreateDate,
             this.DanhBo_PMN,
             this.HoTen_PMN,
             this.DiaChi_PMN,
@@ -181,93 +183,11 @@
             this.dgvPhiMoNuoc.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvPhiMoNuoc.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvPhiMoNuoc.Size = new System.Drawing.Size(989, 534);
+            this.dgvPhiMoNuoc.Size = new System.Drawing.Size(1089, 580);
             this.dgvPhiMoNuoc.TabIndex = 8;
             this.dgvPhiMoNuoc.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvPhiMoNuoc_CellFormatting);
             this.dgvPhiMoNuoc.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvPhiMoNuoc_CellValidating);
             this.dgvPhiMoNuoc.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvPhiMoNuoc_RowPostPaint);
-            // 
-            // MaPMN
-            // 
-            this.MaPMN.DataPropertyName = "MaPMN";
-            this.MaPMN.HeaderText = "Số Phiếu";
-            this.MaPMN.Name = "MaPMN";
-            this.MaPMN.Width = 80;
-            // 
-            // DanhBo_PMN
-            // 
-            this.DanhBo_PMN.DataPropertyName = "DanhBo";
-            this.DanhBo_PMN.HeaderText = "Danh Bộ";
-            this.DanhBo_PMN.Name = "DanhBo_PMN";
-            // 
-            // HoTen_PMN
-            // 
-            this.HoTen_PMN.DataPropertyName = "HoTen";
-            this.HoTen_PMN.HeaderText = "Khách Hàng";
-            this.HoTen_PMN.Name = "HoTen_PMN";
-            this.HoTen_PMN.Width = 150;
-            // 
-            // DiaChi_PMN
-            // 
-            this.DiaChi_PMN.DataPropertyName = "DiaChi";
-            this.DiaChi_PMN.HeaderText = "Địa Chỉ";
-            this.DiaChi_PMN.Name = "DiaChi_PMN";
-            this.DiaChi_PMN.Width = 150;
-            // 
-            // GhiChu_PMN
-            // 
-            this.GhiChu_PMN.DataPropertyName = "GhiChu";
-            this.GhiChu_PMN.HeaderText = "Ghi Chú";
-            this.GhiChu_PMN.Name = "GhiChu_PMN";
-            this.GhiChu_PMN.Width = 150;
-            // 
-            // NhanHD_PMN
-            // 
-            this.NhanHD_PMN.DataPropertyName = "NhanHD";
-            this.NhanHD_PMN.HeaderText = "Nhận";
-            this.NhanHD_PMN.Name = "NhanHD_PMN";
-            this.NhanHD_PMN.Width = 50;
-            // 
-            // NgayNhanHD_PMN
-            // 
-            this.NgayNhanHD_PMN.DataPropertyName = "NgayNhanHD";
-            this.NgayNhanHD_PMN.HeaderText = "Ngày Nhận";
-            this.NgayNhanHD_PMN.Name = "NgayNhanHD_PMN";
-            this.NgayNhanHD_PMN.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // TraHD_PMN
-            // 
-            this.TraHD_PMN.DataPropertyName = "TraHD";
-            this.TraHD_PMN.HeaderText = "Trả";
-            this.TraHD_PMN.Name = "TraHD_PMN";
-            this.TraHD_PMN.Width = 50;
-            // 
-            // NgayTraHD_PMN
-            // 
-            this.NgayTraHD_PMN.DataPropertyName = "NgayTraHD";
-            this.NgayTraHD_PMN.HeaderText = "Ngày Trả";
-            this.NgayTraHD_PMN.Name = "NgayTraHD_PMN";
-            // 
-            // NgayBK_PMN
-            // 
-            this.NgayBK_PMN.DataPropertyName = "NgayBK";
-            this.NgayBK_PMN.HeaderText = "NgayBK";
-            this.NgayBK_PMN.Name = "NgayBK_PMN";
-            this.NgayBK_PMN.Visible = false;
-            // 
-            // SoTien_PMN
-            // 
-            this.SoTien_PMN.DataPropertyName = "SoTien";
-            this.SoTien_PMN.HeaderText = "SoTien";
-            this.SoTien_PMN.Name = "SoTien_PMN";
-            this.SoTien_PMN.Visible = false;
-            // 
-            // TongCong_PMN
-            // 
-            this.TongCong_PMN.DataPropertyName = "TongCong";
-            this.TongCong_PMN.HeaderText = "TongCong";
-            this.TongCong_PMN.Name = "TongCong_PMN";
-            this.TongCong_PMN.Visible = false;
             // 
             // dateTu
             // 
@@ -325,11 +245,102 @@
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
+            // MaPMN
+            // 
+            this.MaPMN.DataPropertyName = "MaPMN";
+            this.MaPMN.HeaderText = "Số Phiếu";
+            this.MaPMN.Name = "MaPMN";
+            this.MaPMN.Width = 80;
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
+            this.CreateDate.Width = 80;
+            // 
+            // DanhBo_PMN
+            // 
+            this.DanhBo_PMN.DataPropertyName = "DanhBo";
+            this.DanhBo_PMN.HeaderText = "Danh Bộ";
+            this.DanhBo_PMN.Name = "DanhBo_PMN";
+            // 
+            // HoTen_PMN
+            // 
+            this.HoTen_PMN.DataPropertyName = "HoTen";
+            this.HoTen_PMN.HeaderText = "Khách Hàng";
+            this.HoTen_PMN.Name = "HoTen_PMN";
+            this.HoTen_PMN.Width = 150;
+            // 
+            // DiaChi_PMN
+            // 
+            this.DiaChi_PMN.DataPropertyName = "DiaChi";
+            this.DiaChi_PMN.HeaderText = "Địa Chỉ";
+            this.DiaChi_PMN.Name = "DiaChi_PMN";
+            this.DiaChi_PMN.Width = 200;
+            // 
+            // GhiChu_PMN
+            // 
+            this.GhiChu_PMN.DataPropertyName = "GhiChu";
+            this.GhiChu_PMN.HeaderText = "Ghi Chú";
+            this.GhiChu_PMN.Name = "GhiChu_PMN";
+            this.GhiChu_PMN.Width = 150;
+            // 
+            // NhanHD_PMN
+            // 
+            this.NhanHD_PMN.DataPropertyName = "NhanHD";
+            this.NhanHD_PMN.HeaderText = "Nhận";
+            this.NhanHD_PMN.Name = "NhanHD_PMN";
+            this.NhanHD_PMN.Width = 50;
+            // 
+            // NgayNhanHD_PMN
+            // 
+            this.NgayNhanHD_PMN.DataPropertyName = "NgayNhanHD";
+            this.NgayNhanHD_PMN.HeaderText = "Ngày Nhận";
+            this.NgayNhanHD_PMN.Name = "NgayNhanHD_PMN";
+            this.NgayNhanHD_PMN.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.NgayNhanHD_PMN.Width = 80;
+            // 
+            // TraHD_PMN
+            // 
+            this.TraHD_PMN.DataPropertyName = "TraHD";
+            this.TraHD_PMN.HeaderText = "Trả";
+            this.TraHD_PMN.Name = "TraHD_PMN";
+            this.TraHD_PMN.Width = 50;
+            // 
+            // NgayTraHD_PMN
+            // 
+            this.NgayTraHD_PMN.DataPropertyName = "NgayTraHD";
+            this.NgayTraHD_PMN.HeaderText = "Ngày Trả";
+            this.NgayTraHD_PMN.Name = "NgayTraHD_PMN";
+            this.NgayTraHD_PMN.Width = 80;
+            // 
+            // NgayBK_PMN
+            // 
+            this.NgayBK_PMN.DataPropertyName = "NgayBK";
+            this.NgayBK_PMN.HeaderText = "NgayBK";
+            this.NgayBK_PMN.Name = "NgayBK_PMN";
+            this.NgayBK_PMN.Visible = false;
+            // 
+            // SoTien_PMN
+            // 
+            this.SoTien_PMN.DataPropertyName = "SoTien";
+            this.SoTien_PMN.HeaderText = "SoTien";
+            this.SoTien_PMN.Name = "SoTien_PMN";
+            this.SoTien_PMN.Visible = false;
+            // 
+            // TongCong_PMN
+            // 
+            this.TongCong_PMN.DataPropertyName = "TongCong";
+            this.TongCong_PMN.HeaderText = "TongCong";
+            this.TongCong_PMN.Name = "TongCong_PMN";
+            this.TongCong_PMN.Visible = false;
+            // 
             // frmPhiMoNuocChuyenKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1268, 587);
+            this.ClientSize = new System.Drawing.Size(1369, 657);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.dateTu);
@@ -363,7 +374,9 @@
         private System.Windows.Forms.DateTimePicker dateDen;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnIn;
+        private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaPMN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo_PMN;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen_PMN;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi_PMN;
@@ -375,6 +388,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayBK_PMN;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoTien_PMN;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_PMN;
-        private System.Windows.Forms.Button btnXoa;
     }
 }

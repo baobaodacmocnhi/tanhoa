@@ -25,6 +25,7 @@ namespace ThuTien.GUI.Doi
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CDCHD _cDCHD = new CDCHD();
         CTienDu _cTienDu = new CTienDu();
+        CTamThu _cTamThu = new CTamThu();
         bool _flagLoadFirst = false;
 
         public frmDieuChinhDangNganDoi()
@@ -210,9 +211,22 @@ namespace ThuTien.GUI.Doi
                         }
                         else
                             foreach (ListViewItem item in lstHD.Items)
-                                if (_cHoaDon.DangNgan("HanhThu", item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value))
+                            {
+                                ///ưu tiên đăng ngân hành thu, tự động xóa tạm thu chuyển qua thu 2 lần
+                                bool ChuyenKhoan = false;
+                                if (_cTamThu.CheckExist(item.Text, out ChuyenKhoan))
+                                    using (var scope = new TransactionScope())
+                                    {
+                                        if (_cHoaDon.DangNgan("HanhThu", item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value))
+                                            if (_cHoaDon.Thu2Lan(item.Text, ChuyenKhoan))
+                                                if (_cTamThu.XoaAn(item.Text))
+                                                    scope.Complete();
+                                    }
+                                else
                                 {
+                                    _cHoaDon.DangNgan("HanhThu", item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value);
                                 }
+                            }
                         btnXem.PerformClick();
                         lstHD.Items.Clear();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
