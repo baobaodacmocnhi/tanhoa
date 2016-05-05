@@ -144,10 +144,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     if (_cTienDu.LinQ_ExecuteNonQuery("update TT_TienDu set ChoXuLy=0 where DanhBo='" + hoadon.DANHBA + "'"))
                                     {
                                         TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByDanhBo(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""));
-                                        kqdongnuoc.DongPhi = true;
-                                        kqdongnuoc.ChuyenKhoan = true;
-                                        kqdongnuoc.NgayDongPhi = DateTime.Now;
-                                        if (_cDongNuoc.SuaKQ(kqdongnuoc))
+                                        //kqdongnuoc.DongPhi = true;
+                                        //kqdongnuoc.ChuyenKhoan = true;
+                                        //kqdongnuoc.NgayDongPhi = DateTime.Now;
+                                        if (_cDongNuoc.LinQ_ExecuteNonQuery("update TT_KQDongNuoc set DongPhi=1,ChuyenKhoan=1,NgayDongPhi=getdate() where MaKQDN="+kqdongnuoc.MaKQDN))
                                         {
                                             scope.Complete();
 

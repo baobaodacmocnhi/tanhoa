@@ -173,6 +173,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
                 if (lstHD != null && !bool.Parse(item.Cells["ChoXuLy_TienDu"].Value.ToString()) && lstHD[0].DOT >= int.Parse(cmbFromDot.SelectedItem.ToString()) && lstHD[0].DOT <= int.Parse(cmbToDot.SelectedItem.ToString()) && int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) < lstHD.Sum(itemHD => itemHD.TONGCONG))
                 {
+                    string ThongTin = "";
                     foreach (HOADON itemHD in lstHD)
                         ///nếu có trong dịch vụ thu thì không thu thêm
                         if (!_cDichVuThu.CheckExist(itemHD.SOHOADON))
@@ -189,6 +190,9 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 dr["HanhThu"] = _cNguoiDung.GetHoTenByMaND(itemHD.MaNV_HanhThu.Value);
                                 dr["To"] = _cNguoiDung.GetTenToByMaND(itemHD.MaNV_HanhThu.Value);
                             }
+                            ThongTin += "Hóa đơn kỳ " + itemHD.KY + "/" + itemHD.NAM + " : " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemHD.TONGCONG) + " đồng\r\n";
+                            dr["ThongTin"] = ThongTin;
+
                             ds.Tables["TienDuKhachHang"].Rows.Add(dr);
 
                             DataRow drTT = ds.Tables["TamThuChuyenKhoan"].NewRow();
@@ -233,6 +237,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
                 if (lstHD != null && !bool.Parse(item.Cells["ChoXuLy_TienDu"].Value.ToString()) && lstHD[0].DOT >= int.Parse(cmbFromDot.SelectedItem.ToString()) && lstHD[0].DOT <= int.Parse(cmbToDot.SelectedItem.ToString()) && int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) >= lstHD.Sum(itemHD => itemHD.TONGCONG))
                 {
+                    string ThongTin = "";
                     foreach (HOADON itemHD in lstHD)
                     {
                         DataRow dr = ds.Tables["TienDuKhachHang"].NewRow();
@@ -247,6 +252,9 @@ namespace ThuTien.GUI.ChuyenKhoan
                             dr["HanhThu"] = _cNguoiDung.GetHoTenByMaND(itemHD.MaNV_HanhThu.Value);
                             dr["To"] = _cNguoiDung.GetTenToByMaND(itemHD.MaNV_HanhThu.Value);
                         }
+                        ThongTin += "Hóa đơn kỳ " + itemHD.KY + "/" + itemHD.NAM + " : " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemHD.TONGCONG) + "đồng\r\n";
+                        dr["ThongTin"] = ThongTin;
+
                         ds.Tables["TienDuKhachHang"].Rows.Add(dr);
 
                         DataRow drTT = ds.Tables["TamThuChuyenKhoan"].NewRow();

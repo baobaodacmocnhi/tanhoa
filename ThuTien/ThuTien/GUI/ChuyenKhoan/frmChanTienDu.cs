@@ -125,6 +125,10 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
+            if (dgvDSChanTienDu.Columns[e.ColumnIndex].Name == "TienDu" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
         }
 
         private void dgvDSChanTienDu_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)

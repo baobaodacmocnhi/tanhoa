@@ -8127,6 +8127,8 @@ namespace ThuTien.DAL.Doi
             var query = from itemHD in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
+                        join itemTD in _db.TT_TienDus on itemHD.DANHBA equals itemTD.DanhBo into tableTD
+                        from itemtableTD in tableTD.DefaultIfEmpty()
                         where itemHD.KhoaTienDu==true
                         orderby itemHD.NgayChanTienDu descending
                         select new
@@ -8150,6 +8152,7 @@ namespace ThuTien.DAL.Doi
                             itemHD.TONGCONG,
                             To = itemtableND.TT_To.TenTo,
                             HanhThu = itemtableND.HoTen,
+                            TienDu=itemtableTD.SoTien,
                         };
             return LINQToDataTable(query);
         }
