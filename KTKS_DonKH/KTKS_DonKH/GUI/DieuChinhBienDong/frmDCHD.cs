@@ -809,25 +809,25 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void txtTienNuoc_BD_TextChanged(object sender, EventArgs e)
         {
             if (chkKhauTru.Checked)
-                txtTienNuoc_End.Text = (int.Parse(txtTienNuoc_Start.Text.Trim()) + int.Parse(txtTienNuoc_BD.Text.Trim())).ToString();
+                txtTienNuoc_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",(int.Parse(txtTienNuoc_Start.Text.Trim()) + int.Parse(txtTienNuoc_BD.Text.Trim())));
         }
 
         private void txtThueGTGT_BD_TextChanged(object sender, EventArgs e)
         {
             if (chkKhauTru.Checked)
-                txtThueGTGT_End.Text = (int.Parse(txtThueGTGT_Start.Text.Trim()) + int.Parse(txtThueGTGT_BD.Text.Trim())).ToString();
+                txtThueGTGT_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",(int.Parse(txtThueGTGT_Start.Text.Trim()) + int.Parse(txtThueGTGT_BD.Text.Trim())));
         }
 
         private void txtPhiBVMT_BD_TextChanged(object sender, EventArgs e)
         {
             if (chkKhauTru.Checked)
-                txtPhiBVMT_End.Text = (int.Parse(txtPhiBVMT_Start.Text.Trim()) + int.Parse(txtPhiBVMT_BD.Text.Trim())).ToString();
+                txtPhiBVMT_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",(int.Parse(txtPhiBVMT_Start.Text.Trim()) + int.Parse(txtPhiBVMT_BD.Text.Trim())));
         }
 
         private void txtTongCong_BD_TextChanged(object sender, EventArgs e)
         {
             if (chkKhauTru.Checked)
-                txtTongCong_End.Text = (int.Parse(txtTongCong_Start.Text.Trim()) + int.Parse(txtTongCong_BD.Text.Trim())).ToString();
+                txtTongCong_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",(int.Parse(txtTongCong_Start.Text.Trim()) + int.Parse(txtTongCong_BD.Text.Trim())));
         }
 
         private void btnIn_Click(object sender, EventArgs e)

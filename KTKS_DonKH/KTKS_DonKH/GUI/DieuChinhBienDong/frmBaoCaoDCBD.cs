@@ -13,6 +13,7 @@ using KTKS_DonKH.DAL.DieuChinhBienDong;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.DAL;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -82,6 +83,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                         dr["TuNgay"] = _tuNgay;
                         dr["DenNgay"] = _denNgay;
+                        dr["LoaiBaoCao"] ="CÓ THỜI HẠN";
                         if (_cDCBD.checkCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                         {
                             string a = _cDCBD.getCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
@@ -127,6 +129,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                 dr["TuNgay"] = _tuNgay;
                                 dr["DenNgay"] = _denNgay;
+                                dr["LoaiBaoCao"] = "CÓ THỜI HẠN";
                                 if (_cDCBD.checkCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                                 {
                                     string a = _cDCBD.getCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
@@ -172,6 +175,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                 dr["TuNgay"] = _tuNgay;
                                 dr["DenNgay"] = _denNgay;
+                                dr["LoaiBaoCao"] = "CÓ THỜI HẠN";
                                 if (_cDCBD.checkCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                                 {
                                     string a = _cDCBD.getCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
@@ -239,6 +243,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                         dr["TuNgay"] = _tuNgay;
                         dr["DenNgay"] = _denNgay;
+                        dr["LoaiBaoCao"] = "KHÔNG THỜI HẠN";
                         if (_cDCBD.checkCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                         {
                             string a = _cDCBD.getCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
@@ -278,6 +283,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                 dr["TuNgay"] = _tuNgay;
                                 dr["DenNgay"] = _denNgay;
+                                dr["LoaiBaoCao"] = "KHÔNG THỜI HẠN";
                                 if (_cDCBD.checkCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                                 {
                                     string a = _cDCBD.getCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
@@ -317,6 +323,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                 dr["TuNgay"] = _tuNgay;
                                 dr["DenNgay"] = _denNgay;
+                                dr["LoaiBaoCao"] = "KHÔNG THỜI HẠN";
                                 if (_cDCBD.checkCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                                 {
                                     string a = _cDCBD.getCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
@@ -378,6 +385,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                         dr["TuNgay"] = _tuNgay;
                         dr["DenNgay"] = _denNgay;
+                        dr["LoaiBaoCao"] = "SẮP THỜI HẠN";
                         if (_cDCBD.checkCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                         {
                             string a = _cDCBD.getCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
@@ -419,6 +427,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                 dr["TuNgay"] = _tuNgay;
                                 dr["DenNgay"] = _denNgay;
+                                dr["LoaiBaoCao"] = "SẮP THỜI HẠN";
                                 if (_cDCBD.checkCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                                 {
                                     string a = _cDCBD.getCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
@@ -460,6 +469,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                 dr["TuNgay"] = _tuNgay;
                                 dr["DenNgay"] = _denNgay;
+                                dr["LoaiBaoCao"] = "SẮP THỜI HẠN";
                                 if (_cDCBD.checkCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                                 {
                                     string a = _cDCBD.getCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
@@ -680,6 +690,50 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             }
                             dsBaoCao.Tables["ThongKeDCBD"].Rows.Add(dr);
                         }
+                        ///không thuộc hiệu lực kỳ
+                        else
+                        {
+                            DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
+
+                            dr["TuNgay"] = _tuNgay;
+                            dr["DenNgay"] = _denNgay;
+                            dr["LoaiBaoCao"] = "KHÔNG THUỘC HIỆU LỰC KỲ";
+                            if (_cDCBD.checkCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
+                            {
+                                string a = _cDCBD.getCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
+                                dr["SoPhieu"] = a.Insert(a.Length - 2, "-");
+                            }
+                            else
+                                dr["SoPhieu"] = "";
+
+
+                            if (_cChungTu.CheckMaDonbyDanhBoChungTu(itemRow["DanhBo"].ToString(), itemRow["MaCT"].ToString()))
+                            {
+                                decimal MaDon = _cChungTu.getMaDonbyDanhBoChungTu(itemRow["DanhBo"].ToString(), itemRow["MaCT"].ToString());
+                                dr["MaDon"] = MaDon.ToString().Insert(MaDon.ToString().Length - 2, "-");
+                            }
+                            else
+                                dr["MaDon"] = "";
+
+                            if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                            {
+                                dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                                dr["TieuThu"] = _cThuTien.GetTieuThuMoiNhat(itemRow["DanhBo"].ToString());
+                            }
+                            dr["HoTen"] = itemRow["HoTen"];
+                            dr["DiaChi"] = itemRow["DiaChi"];
+                            dr["MaLCT"] = itemRow["MaLCT"];
+                            dr["TenLCT"] = itemRow["TenLCT"];
+                            dr["MaCT"] = itemRow["MaCT"];
+                            dr["DinhMucCap"] = (int.Parse(itemRow["SoNKDangKy"].ToString()) * 4).ToString();
+                            dr["NgayHetHan"] = itemRow["NgayHetHan"];
+                            dr["DienThoai"] = itemRow["DienThoai"];
+                            dr["GhiChu"] = itemRow["GhiChu"];
+                            dr["Phuong"] = _cPhuongQuan.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                            dr["Quan"] = _cPhuongQuan.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
+
+                            dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
+                        }
                     }
                 }
                 
@@ -732,6 +786,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 rpt.SetDataSource(dsBaoCao);
                 rpt.Subreports[0].SetDataSource(dsBaoCao);
                 rpt.Subreports[1].SetDataSource(dsBaoCao);
+                //rpt.Subreports[2].SetDataSource(dsBaoCao);
 
                 rpt.SetParameterValue(0, DanhBoTangDM);
                 rpt.SetParameterValue(1, DinhMucTang);
@@ -747,6 +802,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 rpt.SetParameterValue(11, DinhMucGiam_NT);
 
                 crystalReportViewer1.ReportSource = rpt;
+
+                rptDSCapDinhMuc rpt2 = new rptDSCapDinhMuc();
+                rpt2.SetDataSource(dsBaoCao);
+                frmBaoCao frm = new frmBaoCao(rpt2);
+                frm.Show();
             }
 
             if (radDSChuyenDocSo.Checked)
