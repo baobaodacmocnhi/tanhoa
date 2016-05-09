@@ -467,6 +467,8 @@ namespace ThuTien.GUI.HanhThu
                         dr["Ky"] = Ky;
                         dr["SoTien"] = SoTien;
                         dr["TongCong"] = TongCong;
+                        if(chkChuKy.Checked)
+                            dr["ChuKy"] = true;
 
                         dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                     }
@@ -502,6 +504,8 @@ namespace ThuTien.GUI.HanhThu
                             dr["Ky"] = Ky;
                             dr["SoTien"] = SoTien;
                             dr["TongCong"] = TongCong;
+                            if (chkChuKy.Checked)
+                                dr["ChuKy"] = true;
 
                             dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                         }
@@ -579,6 +583,8 @@ namespace ThuTien.GUI.HanhThu
                         dr["HopDong"] = item.Cells["HopDong_TG"].Value;
                         dr["Ky"] = Ky;
                         dr["TongCong"] = TongCong;
+                        if (chkChuKy.Checked)
+                            dr["ChuKy"] = true;
 
                         dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                     }
@@ -613,6 +619,8 @@ namespace ThuTien.GUI.HanhThu
                             dr["HopDong"] = item.Cells["HopDong_CQ"].Value;
                             dr["Ky"] = Ky;
                             dr["TongCong"] = TongCong;
+                            if (chkChuKy.Checked)
+                                dr["ChuKy"] = true;
 
                             dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                         }

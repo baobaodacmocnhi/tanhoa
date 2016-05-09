@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>548</ApplicationRevision>
+    <ApplicationRevision>551</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -172,6 +172,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptToTrinhCatHuy.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\DongNuoc\rptBaoCaoBamChi.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptBaoCaoBamChi.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BaoCao\DongNuoc\rptGiayXacNhanNoKhoDoi.cs">
@@ -584,11 +590,11 @@
     <Compile Include="GUI\Doi\frmKiemPortTon.Designer.cs">
       <DependentUpon>frmKiemPortTon.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Doi\frmKiemTraSaiViec.cs">
+    <Compile Include="GUI\Doi\frmKiemTraSaiBiet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\Doi\frmKiemTraSaiViec.Designer.cs">
-      <DependentUpon>frmKiemTraSaiViec.cs</DependentUpon>
+    <Compile Include="GUI\Doi\frmKiemTraSaiBiet.Designer.cs">
+      <DependentUpon>frmKiemTraSaiBiet.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Doi\frmTinhGiaBanBinhQuan.cs">
       <SubType>Form</SubType>
@@ -971,6 +977,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptToTrinhCatHuy.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\DongNuoc\rptBaoCaoBamChi.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptBaoCaoBamChi.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\DongNuoc\rptGiayXacNhanNoKhoDoi.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptGiayXacNhanNoKhoDoi.cs</LastGenOutput>
@@ -1221,8 +1231,8 @@
     <EmbeddedResource Include="GUI\Doi\frmKiemPortTon.resx">
       <DependentUpon>frmKiemPortTon.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Doi\frmKiemTraSaiViec.resx">
-      <DependentUpon>frmKiemTraSaiViec.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\Doi\frmKiemTraSaiBiet.resx">
+      <DependentUpon>frmKiemTraSaiBiet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmTinhGiaBanBinhQuan.resx">
       <DependentUpon>frmTinhGiaBanBinhQuan.cs</DependentUpon>

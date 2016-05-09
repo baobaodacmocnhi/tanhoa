@@ -90,24 +90,19 @@ namespace ThuTien.DAL.TongHop
             }
         }
 
-        public bool CheckExistByDangRutDC(string SoHoaDon)
+        public bool CheckExistByDangRutDC(int MaHD)
         {
-            return _db.DIEUCHINH_HDs.Any(item => item.SoHoaDon == SoHoaDon && item.TangGiam == null);
+            return _db.DIEUCHINH_HDs.Any(item => item.FK_HOADON == MaHD && item.TangGiam == null);
         }
 
-        public bool CheckExist(string SoHoaDon)
+        public bool CheckExist(int MaHD)
         {
-            return _db.DIEUCHINH_HDs.Any(item => item.SoHoaDon == SoHoaDon);
+            return _db.DIEUCHINH_HDs.Any(item => item.FK_HOADON == MaHD);
         }
 
-        public bool CheckExist_ChuanThu(string SoHoaDon)
+        public bool CheckExist_ChuanThu(int MaHD)
         {
-            return _db.DIEUCHINH_HDs.Any(item => item.SoHoaDon == SoHoaDon && item.ChuanThu1 == false);
-        }
-
-        public DIEUCHINH_HD Get(string SoHoaDon)
-        {
-            return _db.DIEUCHINH_HDs.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
+            return _db.DIEUCHINH_HDs.Any(item => item.FK_HOADON == MaHD && item.ChuanThu1 == false);
         }
 
         public DIEUCHINH_HD Get(int MaHD)

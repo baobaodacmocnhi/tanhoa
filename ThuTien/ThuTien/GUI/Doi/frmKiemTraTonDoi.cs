@@ -1465,9 +1465,9 @@ namespace ThuTien.GUI.Doi
 
                 foreach (DataRow item in dt.Rows)
                 {
-                    if (_cDCHD.CheckExist_ChuanThu(item["SoHoaDon"].ToString()))
+                    if (_cDCHD.CheckExist_ChuanThu(int.Parse(item["MaHD"].ToString())))
                     {
-                        DIEUCHINH_HD dchd = _cDCHD.Get(item["SoHoaDon"].ToString());
+                        DIEUCHINH_HD dchd = _cDCHD.Get(int.Parse(item["MaHD"].ToString()));
                         item["GiaBan"] = long.Parse(item["GiaBan"].ToString()) - dchd.GIABAN_END + dchd.GIABAN_BD;
                         item["ThueGTGT"] = long.Parse(item["ThueGTGT"].ToString()) - dchd.THUE_END + dchd.THUE_BD;
                         item["PhiBVMT"] = long.Parse(item["PhiBVMT"].ToString()) - dchd.PHI_END + dchd.PHI_BD;
@@ -1592,9 +1592,9 @@ namespace ThuTien.GUI.Doi
 
                     foreach (DataRow item in dt.Rows)
                     {
-                        if (_cDCHD.CheckExist_ChuanThu(item["SoHoaDon"].ToString()))
+                        if (_cDCHD.CheckExist_ChuanThu(int.Parse(item["MaHD"].ToString())))
                         {
-                            DIEUCHINH_HD dchd = _cDCHD.Get(item["SoHoaDon"].ToString());
+                            DIEUCHINH_HD dchd = _cDCHD.Get(int.Parse(item["MaHD"].ToString()));
                             item["GiaBan"] = long.Parse(item["GiaBan"].ToString()) - dchd.GIABAN_END + dchd.GIABAN_BD;
                             item["ThueGTGT"] = long.Parse(item["ThueGTGT"].ToString()) - dchd.THUE_END + dchd.THUE_BD;
                             item["PhiBVMT"] = long.Parse(item["PhiBVMT"].ToString()) - dchd.PHI_END + dchd.PHI_BD;

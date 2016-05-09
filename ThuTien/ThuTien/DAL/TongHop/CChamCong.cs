@@ -63,6 +63,7 @@ namespace ThuTien.DAL.TongHop
                             MaNV=item.MaND,
                             To=item.TT_NguoiDung.TT_To.TenTo,
                             item.TT_NguoiDung.HoTen,
+                            item.TT_NguoiDung.ToTruong,
                             item.N1,
                             item.N2,
                             item.N3,
@@ -99,13 +100,14 @@ namespace ThuTien.DAL.TongHop
                             item.KK,
                             item.TT_NguoiDung.NgayPhepNamCu,
                             item.TT_NguoiDung.NgayPhepNamMoi,
+                            item.TT_NguoiDung.TongNgayPhep,
                         };
             return LINQToDataTable(query);
         }
 
-        public bool ChamCong(int MaCC, int MaNV, string Ngay, bool DiLam)
+        public bool ChamCong(int MaCC, int MaNV, string Ngay, bool Nghi)
         {
-            string sql = "update TT_CTChamCong set " + Ngay + "='" + DiLam + "' where MaCC=" + MaCC + " and MaND=" + MaNV;
+            string sql = "update TT_CTChamCong set " + Ngay + "='" + Nghi + "' where MaCC=" + MaCC + " and MaND=" + MaNV;
             return LinQ_ExecuteNonQuery(sql);
         }
 

@@ -1,6 +1,6 @@
 ﻿namespace ThuTien.GUI.Doi
 {
-    partial class frmKiemTraSaiViec
+    partial class frmKiemTraSaiBiet
     {
         /// <summary>
         /// Required designer variable.
@@ -41,6 +41,7 @@
             this.SoHoaDon_B = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Ky_B = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TongCong_B = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DanhBo_B = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnChonFile = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtTongHD_TH = new System.Windows.Forms.TextBox();
@@ -48,9 +49,8 @@
             this.SoHoaDon_TH = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Ky_TH = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TongCong_TH = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnKiemTra = new System.Windows.Forms.Button();
             this.DanhBo_TH = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.DanhBo_B = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnKiemTra = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -165,6 +165,11 @@
             this.TongCong_B.Text = "Tổng Cộng";
             this.TongCong_B.Width = 100;
             // 
+            // DanhBo_B
+            // 
+            this.DanhBo_B.Text = "Danh Bộ";
+            this.DanhBo_B.Width = 100;
+            // 
             // btnChonFile
             // 
             this.btnChonFile.Location = new System.Drawing.Point(54, 19);
@@ -224,6 +229,11 @@
             this.TongCong_TH.Text = "Tổng Cộng";
             this.TongCong_TH.Width = 100;
             // 
+            // DanhBo_TH
+            // 
+            this.DanhBo_TH.Text = "Danh Bộ";
+            this.DanhBo_TH.Width = 100;
+            // 
             // btnKiemTra
             // 
             this.btnKiemTra.Location = new System.Drawing.Point(408, 87);
@@ -234,17 +244,7 @@
             this.btnKiemTra.UseVisualStyleBackColor = true;
             this.btnKiemTra.Click += new System.EventHandler(this.btnKiemTra_Click);
             // 
-            // DanhBo_TH
-            // 
-            this.DanhBo_TH.Text = "Danh Bộ";
-            this.DanhBo_TH.Width = 100;
-            // 
-            // DanhBo_B
-            // 
-            this.DanhBo_B.Text = "Danh Bộ";
-            this.DanhBo_B.Width = 100;
-            // 
-            // frmKiemTraSaiViec
+            // frmKiemTraSaiBiet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -256,8 +256,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbTo);
             this.Controls.Add(this.label4);
-            this.Name = "frmKiemTraSaiViec";
-            this.Text = "Kiểm Tra Sai Việc";
+            this.Name = "frmKiemTraSaiBiet";
+            this.Text = "Kiểm Tra Sai Biệt";
             this.Load += new System.EventHandler(this.frmKiemTraSaiViec_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

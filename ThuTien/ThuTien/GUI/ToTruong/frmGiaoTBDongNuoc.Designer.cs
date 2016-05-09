@@ -71,6 +71,7 @@
             this.btnInDSTBTonNguoiGiao = new System.Windows.Forms.Button();
             this.btnInTB = new System.Windows.Forms.Button();
             this.chkAll = new System.Windows.Forms.CheckBox();
+            this.chkChuKy = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -483,11 +484,22 @@
             this.chkAll.UseVisualStyleBackColor = true;
             this.chkAll.CheckedChanged += new System.EventHandler(this.chkAll_CheckedChanged);
             // 
+            // chkChuKy
+            // 
+            this.chkChuKy.AutoSize = true;
+            this.chkChuKy.Location = new System.Drawing.Point(1082, 13);
+            this.chkChuKy.Name = "chkChuKy";
+            this.chkChuKy.Size = new System.Drawing.Size(76, 17);
+            this.chkChuKy.TabIndex = 96;
+            this.chkChuKy.Text = "Có Chữ Ký";
+            this.chkChuKy.UseVisualStyleBackColor = true;
+            // 
             // frmGiaoTBDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1360, 666);
+            this.Controls.Add(this.chkChuKy);
             this.Controls.Add(this.chkAll);
             this.Controls.Add(this.btnInTB);
             this.Controls.Add(this.btnInDSTBTonNguoiGiao);
@@ -564,5 +576,6 @@
         private System.Windows.Forms.CheckBox chkAll;
         private DevExpress.XtraGrid.Columns.GridColumn TinhTrang;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private System.Windows.Forms.CheckBox chkChuKy;
     }
 }

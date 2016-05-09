@@ -199,22 +199,27 @@ namespace ThuTien.GUI.TongHop
                             }
                             _dchd.NGAY_VB = dateLap.Value;
                             _dchd.NGAY_DC = DateTime.Now;
+
+                            if (_dchd.SoPhieu != _ctdchd.MaCTDCHD)
+                            {
+                                _dchd.GIABAN_BD = hd.GIABAN;
+                                _dchd.THUE_BD = hd.THUE;
+                                _dchd.PHI_BD = hd.PHI;
+                                _dchd.TONGCONG_BD = hd.TONGCONG;
+                            }
+
                             _dchd.SoPhieu = _ctdchd.MaCTDCHD;
                             _dchd.TangGiam = _ctdchd.TangGiam;
 
-                            //_dchd.GIABAN_BD = _ctdchd.TienNuoc_Start.Value;
                             _dchd.GIABAN_DC = _ctdchd.TienNuoc_BD.Value;
                             _dchd.GIABAN_END = _ctdchd.TienNuoc_End.Value;
 
-                            //_dchd.THUE_BD = _ctdchd.ThueGTGT_Start.Value;
                             _dchd.THUE_DC = _ctdchd.ThueGTGT_BD.Value;
                             _dchd.THUE_END = _ctdchd.ThueGTGT_End.Value;
 
-                            //_dchd.PHI_BD = _ctdchd.PhiBVMT_Start.Value;
                             _dchd.PHI_DC = _ctdchd.PhiBVMT_BD.Value;
                             _dchd.PHI_END = _ctdchd.PhiBVMT_End.Value;
 
-                            //_dchd.TONGCONG_BD = _ctdchd.TongCong_Start.Value;
                             _dchd.TONGCONG_DC = _ctdchd.TongCong_BD.Value;
                             _dchd.TONGCONG_END = _ctdchd.TongCong_End.Value;
 

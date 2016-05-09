@@ -20,7 +20,8 @@ namespace ThuTien.GUI.TongHop
         string _mnu = "mnuChamCong";
         CChamCong _cChamCong = new CChamCong();
         CNguoiDung _cNguoiDung = new CNguoiDung();
-
+        string[] _ngays = { "N1", "N2", "N3", "N4", "N5", "N6", "N7", "N8", "N9", "N10", "N11", "N12", "N13", "N14", "N15", "N16", "N17", "N18", "N19", "N20", "N21", "N22", "N23", "N24", "N25", "N26", "N27", "N28", "N29", "N30", "N31" };
+        
         public frmChamCong()
         {
             InitializeComponent();
@@ -29,7 +30,6 @@ namespace ThuTien.GUI.TongHop
         private void frmChamCong_Load(object sender, EventArgs e)
         {
             dgvChamCong.AutoGenerateColumns = false;
-
             dateChamCong.Value = DateTime.Now;
 
             if (!_cChamCong.CheckExist(DateTime.Now.Month, DateTime.Now.Year))
@@ -44,7 +44,7 @@ namespace ThuTien.GUI.TongHop
                         foreach (TT_NguoiDung item in lstND)
                         {
                             item.NgayPhepNamCu = item.NgayPhepNamMoi;
-                            item.NgayPhepNamMoi = SoNgayPhep + (DateTime.Now.Year - item.NamVaoLam.Value) / 5;
+                            item.TongNgayPhep = item.NgayPhepNamMoi = SoNgayPhep + (DateTime.Now.Year - item.NamVaoLam.Value) / 5;
                         }
                     }
 
@@ -503,6 +503,9 @@ namespace ThuTien.GUI.TongHop
                     item.Cells["Nghi"].Value = int.Parse(item.Cells["Nghi"].Value.ToString()) + 1;
                 }
                 #endregion
+
+                if (bool.Parse(item.Cells["ToTruong"].Value.ToString()) == true)
+                    item.DefaultCellStyle.BackColor = Color.YellowGreen;
             }
         }
 
@@ -537,28 +540,29 @@ namespace ThuTien.GUI.TongHop
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
             {
-                if(_cChamCong.ChamCong(int.Parse(dgvChamCong["MaCC", e.RowIndex].Value.ToString()), int.Parse(dgvChamCong["MaNV", e.RowIndex].Value.ToString()), dgvChamCong.Columns[e.ColumnIndex].Name, bool.Parse(dgvChamCong[e.ColumnIndex, e.RowIndex].Value.ToString())))
-                    if (bool.Parse(dgvChamCong[e.ColumnIndex, e.RowIndex].Value.ToString()))
-                    {
-                        TT_NguoiDung nguoidung = _cNguoiDung.GetByMaND(int.Parse(dgvChamCong["MaNV", e.RowIndex].Value.ToString()));
-                        if (nguoidung.NgayPhepNamCu > 0)
-                            nguoidung.NgayPhepNamCu -= 1;
-                        else
-                            nguoidung.NgayPhepNamMoi -= 1;
-                        _cNguoiDung.Sua(nguoidung);
-                    }
-                    else
-                    {
-                        TT_NguoiDung nguoidung = _cNguoiDung.GetByMaND(int.Parse(dgvChamCong["MaNV", e.RowIndex].Value.ToString()));
-                        if (DateTime.Now.Month <= 3)
+                if (_cChamCong.ChamCong(int.Parse(dgvChamCong["MaCC", e.RowIndex].Value.ToString()), int.Parse(dgvChamCong["MaNV", e.RowIndex].Value.ToString()), dgvChamCong.Columns[e.ColumnIndex].Name, bool.Parse(dgvChamCong[e.ColumnIndex, e.RowIndex].Value.ToString())))
+                    if (_ngays.Contains(dgvChamCong.Columns[e.ColumnIndex].Name))
+                        if (bool.Parse(dgvChamCong[e.ColumnIndex, e.RowIndex].Value.ToString()))
+                        {
+                            TT_NguoiDung nguoidung = _cNguoiDung.GetByMaND(int.Parse(dgvChamCong["MaNV", e.RowIndex].Value.ToString()));
                             if (nguoidung.NgayPhepNamCu > 0)
-                                nguoidung.NgayPhepNamCu += 1;
+                                nguoidung.NgayPhepNamCu -= 1;
+                            else
+                                nguoidung.NgayPhepNamMoi -= 1;
+                            _cNguoiDung.Sua(nguoidung);
+                        }
+                        else
+                        {
+                            TT_NguoiDung nguoidung = _cNguoiDung.GetByMaND(int.Parse(dgvChamCong["MaNV", e.RowIndex].Value.ToString()));
+                            if (DateTime.Now.Month <= 3)
+                                if (nguoidung.NgayPhepNamCu > 0)
+                                    nguoidung.NgayPhepNamCu += 1;
+                                else
+                                    nguoidung.NgayPhepNamMoi += 1;
                             else
                                 nguoidung.NgayPhepNamMoi += 1;
-                        else
-                            nguoidung.NgayPhepNamMoi += 1;
-                        _cNguoiDung.Sua(nguoidung);
-                    }
+                            _cNguoiDung.Sua(nguoidung);
+                        }
             }
             else
                 MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -612,12 +616,19 @@ namespace ThuTien.GUI.TongHop
                 dr["N30"] = item.Cells["N30"].Value;
                 dr["N31"] = item.Cells["N31"].Value;
                 dr["Nghi"] = item.Cells["Nghi"].Value;
+                dr["XS"] = item.Cells["XS"].Value;
+                dr["KK"] = item.Cells["KK"].Value;
                 ds.Tables["ChamCong"].Rows.Add(dr);
             }
             rptChamCong rpt = new rptChamCong();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
+        }
+
+        private void btnInNam_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

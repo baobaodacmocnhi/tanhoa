@@ -94,6 +94,7 @@
             this.cmbNhanVien = new System.Windows.Forms.ComboBox();
             this.btnInGiayXN = new System.Windows.Forms.Button();
             this.btnChonFile = new System.Windows.Forms.Button();
+            this.chkChuKy = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabTuGia.SuspendLayout();
@@ -669,11 +670,22 @@
             this.btnChonFile.UseVisualStyleBackColor = true;
             this.btnChonFile.Click += new System.EventHandler(this.btnChonFile_Click);
             // 
+            // chkChuKy
+            // 
+            this.chkChuKy.AutoSize = true;
+            this.chkChuKy.Location = new System.Drawing.Point(1072, 14);
+            this.chkChuKy.Name = "chkChuKy";
+            this.chkChuKy.Size = new System.Drawing.Size(76, 17);
+            this.chkChuKy.TabIndex = 95;
+            this.chkChuKy.Text = "Có Chữ Ký";
+            this.chkChuKy.UseVisualStyleBackColor = true;
+            // 
             // frmQuetTam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1269, 652);
+            this.Controls.Add(this.chkChuKy);
             this.Controls.Add(this.btnChonFile);
             this.Controls.Add(this.btnInGiayXN);
             this.Controls.Add(this.lbNhanVien);
@@ -770,5 +782,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn To_CQ;
         private System.Windows.Forms.Button btnChonFile;
+        private System.Windows.Forms.CheckBox chkChuKy;
     }
 }

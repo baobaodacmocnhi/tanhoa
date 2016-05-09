@@ -12,14 +12,14 @@ using ThuTien.DAL.Doi;
 
 namespace ThuTien.GUI.Doi
 {
-    public partial class frmKiemTraSaiViec : Form
+    public partial class frmKiemTraSaiBiet : Form
     {
         CTo _cTo = new CTo();
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CHoaDon _cHoaDon = new CHoaDon();
         bool _flagLoadFirst = false;
 
-        public frmKiemTraSaiViec()
+        public frmKiemTraSaiBiet()
         {
             InitializeComponent();
         }

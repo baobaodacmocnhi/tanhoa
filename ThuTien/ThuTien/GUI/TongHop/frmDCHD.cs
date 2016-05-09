@@ -275,7 +275,7 @@ namespace ThuTien.GUI.TongHop
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
-                    DIEUCHINH_HD dchd = _cDCHD.Get(dgvDCHD["SoHoaDon_DC", e.RowIndex].Value.ToString());
+                    DIEUCHINH_HD dchd = _cDCHD.Get(int.Parse(dgvDCHD["MaHD_DC", e.RowIndex].Value.ToString()));
                     dchd.ChuanThu1 = bool.Parse(e.FormattedValue.ToString());
                     _cDCHD.Sua(dchd);
                 }

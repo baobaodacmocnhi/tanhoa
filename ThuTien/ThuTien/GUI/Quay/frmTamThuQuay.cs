@@ -412,6 +412,9 @@ namespace ThuTien.GUI.Quay
                 if (xacnhanno.Cat != null)
                     dr["Cat"] = xacnhanno.Cat;
                 //dr["NhanVienQuay"] = CNguoiDung.HoTen;
+                if (chkChuKy.Checked)
+                    dr["ChuKy"] = true;
+
                 ds.Tables["PhieuTamThu"].Rows.Add(dr);
 
                 rptXacNhanNo rpt = new rptXacNhanNo();
@@ -455,6 +458,9 @@ namespace ThuTien.GUI.Quay
                     if (hdIn.MaNV_HanhThu != null)
                         dr["NhanVienThuTien"] = _cNguoiDung.GetHoTenByMaND(hdIn.MaNV_HanhThu.Value);
                     //dr["NhanVienQuay"] = CNguoiDung.HoTen;
+                    if (chkChuKy.Checked)
+                        dr["ChuKy"] = true;
+
                     ds.Tables["PhieuTamThu"].Rows.Add(dr);
 
                     rptPhieuTamThu rpt = new rptPhieuTamThu();
@@ -524,6 +530,9 @@ namespace ThuTien.GUI.Quay
                 if (item.Cells["Cat_XacNhanNo"].Value != null)
                     dr["Cat"] = item.Cells["Cat_XacNhanNo"].Value.ToString();
                 //dr["NhanVienQuay"] = CNguoiDung.HoTen;
+                if (chkChuKy.Checked)
+                    dr["ChuKy"] = true;
+
                 ds.Tables["PhieuTamThu"].Rows.Add(dr);
 
                 rptXacNhanNo rpt = new rptXacNhanNo();
@@ -683,6 +692,8 @@ namespace ThuTien.GUI.Quay
             dr["DinhMuc"] = "";
             dr["Ky"] = "";
             dr["NhanVienThuTien"] = "";
+            if (chkChuKy.Checked)
+                dr["ChuKy"] = true;
             ds.Tables["PhieuTamThu"].Rows.Add(dr);
 
             rptPhieuTamThu rpt = new rptPhieuTamThu();

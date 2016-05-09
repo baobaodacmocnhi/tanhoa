@@ -389,9 +389,9 @@ namespace ThuTien.GUI.ToTruong
                 DataTable dtCNKD=_cCNKD.GetBaoCaoTongHop("TG",CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                 dtCNKD.Merge(_cCNKD.GetBaoCaoTongHop("CQ",CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
                 foreach (DataRow item in dtCNKD.Rows)
-                    if (_cDCHD.CheckExist_ChuanThu(item["SoHoaDon"].ToString()))
+                    if (_cDCHD.CheckExist_ChuanThu(int.Parse(item["MaHD"].ToString())))
                     {
-                        DIEUCHINH_HD dchd = _cDCHD.Get(item["SoHoaDon"].ToString());
+                        DIEUCHINH_HD dchd = _cDCHD.Get(int.Parse(item["MaHD"].ToString()));
                         item["TongCong"] = long.Parse(item["TongCong"].ToString()) - dchd.TONGCONG_END + dchd.TONGCONG_BD;
                     }
 

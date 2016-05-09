@@ -72,6 +72,7 @@
             this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.To = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ToTruong = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.N1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.N2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.N3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -108,6 +109,7 @@
             this.KK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.NgayPhepNamCu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayPhepNamMoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongNgayPhep = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChamCong)).BeginInit();
             this.SuspendLayout();
             // 
@@ -148,6 +150,7 @@
             this.MaNV,
             this.To,
             this.HoTen,
+            this.ToTruong,
             this.N1,
             this.N2,
             this.N3,
@@ -183,7 +186,8 @@
             this.XS,
             this.KK,
             this.NgayPhepNamCu,
-            this.NgayPhepNamMoi});
+            this.NgayPhepNamMoi,
+            this.TongNgayPhep});
             this.dgvChamCong.Location = new System.Drawing.Point(12, 38);
             this.dgvChamCong.Name = "dgvChamCong";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -511,6 +515,7 @@
             this.btnInNam.TabIndex = 70;
             this.btnInNam.Text = "In Năm";
             this.btnInNam.UseVisualStyleBackColor = true;
+            this.btnInNam.Click += new System.EventHandler(this.btnInNam_Click);
             // 
             // MaCC
             // 
@@ -531,6 +536,7 @@
             this.To.DataPropertyName = "To";
             this.To.HeaderText = "Tổ";
             this.To.Name = "To";
+            this.To.ReadOnly = true;
             this.To.Width = 50;
             // 
             // HoTen
@@ -538,7 +544,14 @@
             this.HoTen.DataPropertyName = "HoTen";
             this.HoTen.HeaderText = "Họ Tên";
             this.HoTen.Name = "HoTen";
-            this.HoTen.Width = 150;
+            this.HoTen.ReadOnly = true;
+            // 
+            // ToTruong
+            // 
+            this.ToTruong.DataPropertyName = "ToTruong";
+            this.ToTruong.HeaderText = "ToTruong";
+            this.ToTruong.Name = "ToTruong";
+            this.ToTruong.Visible = false;
             // 
             // N1
             // 
@@ -762,7 +775,8 @@
             this.Nghi.DataPropertyName = "Nghi";
             this.Nghi.HeaderText = "Nghỉ";
             this.Nghi.Name = "Nghi";
-            this.Nghi.Width = 50;
+            this.Nghi.ReadOnly = true;
+            this.Nghi.Width = 30;
             // 
             // XS
             // 
@@ -783,14 +797,24 @@
             this.NgayPhepNamCu.DataPropertyName = "NgayPhepNamCu";
             this.NgayPhepNamCu.HeaderText = "Năm Cũ";
             this.NgayPhepNamCu.Name = "NgayPhepNamCu";
-            this.NgayPhepNamCu.Width = 70;
+            this.NgayPhepNamCu.ReadOnly = true;
+            this.NgayPhepNamCu.Width = 50;
             // 
             // NgayPhepNamMoi
             // 
             this.NgayPhepNamMoi.DataPropertyName = "NgayPhepNamMoi";
             this.NgayPhepNamMoi.HeaderText = "Năm Mới";
             this.NgayPhepNamMoi.Name = "NgayPhepNamMoi";
-            this.NgayPhepNamMoi.Width = 80;
+            this.NgayPhepNamMoi.ReadOnly = true;
+            this.NgayPhepNamMoi.Width = 50;
+            // 
+            // TongNgayPhep
+            // 
+            this.TongNgayPhep.DataPropertyName = "TongNgayPhep";
+            this.TongNgayPhep.HeaderText = "Tổng";
+            this.TongNgayPhep.Name = "TongNgayPhep";
+            this.TongNgayPhep.ReadOnly = true;
+            this.TongNgayPhep.Width = 30;
             // 
             // frmChamCong
             // 
@@ -888,6 +912,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MaNV;
         private System.Windows.Forms.DataGridViewTextBoxColumn To;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ToTruong;
         private System.Windows.Forms.DataGridViewCheckBoxColumn N1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn N2;
         private System.Windows.Forms.DataGridViewCheckBoxColumn N3;
@@ -924,5 +949,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn KK;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayPhepNamCu;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayPhepNamMoi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongNgayPhep;
     }
 }

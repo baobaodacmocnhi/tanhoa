@@ -334,11 +334,11 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void mnuKiemTraSaiViec_Click(object sender, EventArgs e)
+        private void mnuKiemTraSaiBiet_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen("mnuKiemTraSaiViec", "Xem"))
+            if (CNguoiDung.CheckQuyen("mnuKiemTraSaiBiet", "Xem"))
             {
-                frmKiemTraSaiViec frm = new frmKiemTraSaiViec();
+                frmKiemTraSaiBiet frm = new frmKiemTraSaiBiet();
                 OpenForm(frm);
             }
             else

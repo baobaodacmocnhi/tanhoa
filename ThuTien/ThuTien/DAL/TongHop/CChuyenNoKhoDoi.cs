@@ -171,6 +171,7 @@ namespace ThuTien.DAL.TongHop
                         select new
                         {
                             itemCT.MaCNKD,
+                            itemCT.MaHD,
                             itemCT.SoHoaDon,
                             Ky = itemHD.KY + "/" + itemHD.NAM,
                             itemHD.SOPHATHANH,
@@ -190,6 +191,7 @@ namespace ThuTien.DAL.TongHop
                         from itemtableND in tableND.DefaultIfEmpty()
                         select new
                         {
+                            itemCNKD.MaHD,
                             itemCNKD.SoHoaDon,
                             DanhBo = itemHD.DANHBA,
                             Ky = itemHD.KY + "/" + itemHD.NAM,
@@ -214,6 +216,7 @@ namespace ThuTien.DAL.TongHop
                         where itemCNKD.CreateDate.Value.Date == TuNgay.Date
                         select new
                         {
+                            itemCNKD.MaHD,
                             itemCNKD.SoHoaDon,
                             DanhBo = itemHD.DANHBA,
                             Ky = itemHD.KY + "/" + itemHD.NAM,
@@ -239,6 +242,7 @@ namespace ThuTien.DAL.TongHop
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {
+                            itemCNKD.MaHD,
                             itemCNKD.SoHoaDon,
                             DanhBo = itemHD.DANHBA,
                             Ky = itemHD.KY + "/" + itemHD.NAM,
@@ -563,6 +567,7 @@ namespace ThuTien.DAL.TongHop
                                 Loai = "TG",
                                 MaNV = itemtableND.MaND,
                                 itemtableND.HoTen,
+                                itemCNKD.MaHD,
                                 itemCNKD.SoHoaDon,
                                 itemHD.TONGCONG,
                             };

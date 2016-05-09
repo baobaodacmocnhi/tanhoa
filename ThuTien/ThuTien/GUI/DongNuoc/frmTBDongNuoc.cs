@@ -249,6 +249,8 @@ namespace ThuTien.GUI.DongNuoc
                         dr["NhanVien"] = CNguoiDung.HoTen;
                         if (!string.IsNullOrEmpty(item["MaNV_DongNuoc"].ToString()))
                             dr["NhanVienDN"] = _cNguoiDung.GetDienThoaiByMaND(int.Parse(item["MaNV_DongNuoc"].ToString()));
+                        if (chkChuKy.Checked)
+                            dr["ChuKy"] = true;
 
                         dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
 
