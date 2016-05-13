@@ -129,9 +129,9 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 //if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 //{
-                    TT_TienDu tiendu = _cTienDu.Get(dgvTienDu["DanhBo_TienDu", e.RowIndex].Value.ToString());
-                    tiendu.ChoXuLy = bool.Parse(e.FormattedValue.ToString());
-                    _cTienDu.Sua(tiendu);
+                TT_TienDu tiendu = _cTienDu.Get(dgvTienDu["DanhBo_TienDu", e.RowIndex].Value.ToString());
+                tiendu.ChoXuLy = bool.Parse(e.FormattedValue.ToString());
+                _cTienDu.Sua(tiendu);
                 //}
                 //else
                 //    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -534,6 +534,33 @@ namespace ThuTien.GUI.ChuyenKhoan
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnInTBTienDu_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            foreach (DataGridViewRow item in dgvTienDu.SelectedRows)
+            {
+                HOADON hoadon = _cHoaDon.GetTonMoiNhat(item.Cells["DanhBo_TienDu"].Value.ToString());
+                if (hoadon != null)
+                {
+                    DataRow dr = ds.Tables["TienDuKhachHang"].NewRow();
+
+                    dr["DanhBo"] = item.Cells["DanhBo_TienDu"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                    dr["HoTen"] = hoadon.TENKH;
+                    dr["DiaChi"] = hoadon.SO + " " + hoadon.DUONG;
+                    dr["Ky"] = hoadon.KY + "/" + hoadon.NAM;
+                    dr["MLT"] = hoadon.MALOTRINH;
+                    dr["TienDu"] = item.Cells["SoTien_TienDu"].Value;
+
+                    ds.Tables["TienDuKhachHang"].Rows.Add(dr);
+                }
+            }
+
+            rptThongBaoTienDu rpt = new rptThongBaoTienDu();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
         }
 
     }

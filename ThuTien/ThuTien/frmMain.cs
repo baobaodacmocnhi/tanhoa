@@ -345,6 +345,17 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuBaoCaoVatTu_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuBaoCaoVatTu", "Xem"))
+            {
+                frmBaoCaoVatTu frm = new frmBaoCaoVatTu();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
 
         #region Tổ Trưởng
@@ -930,6 +941,8 @@ namespace ThuTien
         {
             ((sender as Form).Tag as TabPage).Dispose();
         }
+
+        
 
         
 

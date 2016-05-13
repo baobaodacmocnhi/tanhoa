@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>551</ApplicationRevision>
+    <ApplicationRevision>556</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -156,6 +156,12 @@
       <DependentUpon>rptChuyenPhiMoNuoc.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="BaoCao\ChuyenKhoan\rptThongBaoTienDu.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptThongBaoTienDu.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="BaoCao\ChuyenKhoan\rptTienDuKhachHang.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -174,10 +180,10 @@
       <DependentUpon>rptToTrinhCatHuy.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BaoCao\DongNuoc\rptBaoCaoBamChi.cs">
+    <Compile Include="BaoCao\DongNuoc\rptBaoCaoVatTu.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>rptBaoCaoBamChi.rpt</DependentUpon>
+      <DependentUpon>rptBaoCaoVatTu.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BaoCao\DongNuoc\rptGiayXacNhanNoKhoDoi.cs">
@@ -565,6 +571,12 @@
     </Compile>
     <Compile Include="GUI\Doi\frmBangTongHop.Designer.cs">
       <DependentUpon>frmBangTongHop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Doi\frmBaoCaoVatTu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Doi\frmBaoCaoVatTu.Designer.cs">
+      <DependentUpon>frmBaoCaoVatTu.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Doi\frmChuanThu.cs">
       <SubType>Form</SubType>
@@ -965,6 +977,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptChuyenPhiMoNuoc.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\ChuyenKhoan\rptThongBaoTienDu.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptThongBaoTienDu.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\ChuyenKhoan\rptTienDuKhachHang.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptTienDuKhachHang.cs</LastGenOutput>
@@ -977,9 +993,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptToTrinhCatHuy.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\DongNuoc\rptBaoCaoBamChi.rpt">
+    <EmbeddedResource Include="BaoCao\DongNuoc\rptBaoCaoVatTu.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptBaoCaoBamChi.cs</LastGenOutput>
+      <LastGenOutput>rptBaoCaoVatTu.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\DongNuoc\rptGiayXacNhanNoKhoDoi.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1218,6 +1234,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmBangTongHop.resx">
       <DependentUpon>frmBangTongHop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Doi\frmBaoCaoVatTu.resx">
+      <DependentUpon>frmBaoCaoVatTu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmChuanThu.resx">
       <DependentUpon>frmChuanThu.cs</DependentUpon>

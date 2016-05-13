@@ -62,6 +62,7 @@
             this.SoTien_TienAm = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ModifyDate_TienAm = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnXem = new System.Windows.Forms.Button();
+            this.btnInTBTienDu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTienDu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTienAm)).BeginInit();
             this.SuspendLayout();
@@ -106,7 +107,7 @@
             // 
             // btnInDSDuTien
             // 
-            this.btnInDSDuTien.Location = new System.Drawing.Point(942, 86);
+            this.btnInDSDuTien.Location = new System.Drawing.Point(939, 86);
             this.btnInDSDuTien.Name = "btnInDSDuTien";
             this.btnInDSDuTien.Size = new System.Drawing.Size(94, 23);
             this.btnInDSDuTien.TabIndex = 11;
@@ -125,7 +126,7 @@
             // 
             // btnXuatExcelTienDu
             // 
-            this.btnXuatExcelTienDu.Location = new System.Drawing.Point(942, 271);
+            this.btnXuatExcelTienDu.Location = new System.Drawing.Point(939, 271);
             this.btnXuatExcelTienDu.Name = "btnXuatExcelTienDu";
             this.btnXuatExcelTienDu.Size = new System.Drawing.Size(107, 23);
             this.btnXuatExcelTienDu.TabIndex = 14;
@@ -137,14 +138,14 @@
             // 
             this.dateNgayGiaiTrach.CustomFormat = "dd/MM/yyyy";
             this.dateNgayGiaiTrach.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateNgayGiaiTrach.Location = new System.Drawing.Point(942, 245);
+            this.dateNgayGiaiTrach.Location = new System.Drawing.Point(939, 245);
             this.dateNgayGiaiTrach.Name = "dateNgayGiaiTrach";
             this.dateNgayGiaiTrach.Size = new System.Drawing.Size(100, 20);
             this.dateNgayGiaiTrach.TabIndex = 13;
             // 
             // btnChuyenTamThu
             // 
-            this.btnChuyenTamThu.Location = new System.Drawing.Point(942, 115);
+            this.btnChuyenTamThu.Location = new System.Drawing.Point(939, 115);
             this.btnChuyenTamThu.Name = "btnChuyenTamThu";
             this.btnChuyenTamThu.Size = new System.Drawing.Size(100, 23);
             this.btnChuyenTamThu.TabIndex = 12;
@@ -192,7 +193,7 @@
             // 
             // btnInDSThuThem
             // 
-            this.btnInDSThuThem.Location = new System.Drawing.Point(942, 57);
+            this.btnInDSThuThem.Location = new System.Drawing.Point(939, 57);
             this.btnInDSThuThem.Name = "btnInDSThuThem";
             this.btnInDSThuThem.Size = new System.Drawing.Size(94, 23);
             this.btnInDSThuThem.TabIndex = 10;
@@ -267,7 +268,7 @@
             this.dgvTienDu.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvTienDu.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvTienDu.Size = new System.Drawing.Size(551, 569);
+            this.dgvTienDu.Size = new System.Drawing.Size(553, 569);
             this.dgvTienDu.TabIndex = 4;
             this.dgvTienDu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTienDu_CellFormatting);
             this.dgvTienDu.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTienDu_CellMouseDoubleClick);
@@ -395,11 +396,22 @@
             this.btnXem.UseVisualStyleBackColor = true;
             this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
+            // btnInTBTienDu
+            // 
+            this.btnInTBTienDu.Location = new System.Drawing.Point(939, 144);
+            this.btnInTBTienDu.Name = "btnInTBTienDu";
+            this.btnInTBTienDu.Size = new System.Drawing.Size(94, 23);
+            this.btnInTBTienDu.TabIndex = 104;
+            this.btnInTBTienDu.Text = "In TB Tiền Dư";
+            this.btnInTBTienDu.UseVisualStyleBackColor = true;
+            this.btnInTBTienDu.Click += new System.EventHandler(this.btnInTBTienDu_Click);
+            // 
             // frmTienDu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1138, 638);
+            this.Controls.Add(this.btnInTBTienDu);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.cmbToDot);
             this.Controls.Add(this.label10);
@@ -457,6 +469,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ModifyDate_TienDu;
         private System.Windows.Forms.DataGridViewTextBoxColumn DienThoai_TienDu;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ChoXuLy_TienDu;
+        private System.Windows.Forms.Button btnInTBTienDu;
 
 
     }

@@ -117,6 +117,7 @@
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.mnuBaoCaoVatTu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -230,7 +231,8 @@
             this.mnuToTrinhCatHuy,
             this.mnuKetThucNamTaiKhoa,
             this.mnuKiemPortTon,
-            this.mnuKiemTraSaiBiet});
+            this.mnuKiemTraSaiBiet,
+            this.mnuBaoCaoVatTu});
             this.mnuDoi.Name = "mnuDoi";
             this.mnuDoi.Size = new System.Drawing.Size(37, 20);
             this.mnuDoi.Text = "Đội";
@@ -818,6 +820,13 @@
             this.timer.Interval = 1200000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
+            // mnuBaoCaoVatTu
+            // 
+            this.mnuBaoCaoVatTu.Name = "mnuBaoCaoVatTu";
+            this.mnuBaoCaoVatTu.Size = new System.Drawing.Size(223, 22);
+            this.mnuBaoCaoVatTu.Text = "Báo Cáo Vật Tư";
+            this.mnuBaoCaoVatTu.Click += new System.EventHandler(this.mnuBaoCaoVatTu_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -936,6 +945,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuChanTienDu;
         private System.Windows.Forms.ToolStripMenuItem mnuQuetGiaoTon;
         private System.Windows.Forms.ToolStripMenuItem mnuKiemTraSaiBiet;
+        private System.Windows.Forms.ToolStripMenuItem mnuBaoCaoVatTu;
     }
 }
 

@@ -43,7 +43,7 @@ namespace ThuTien.GUI.ToTruong
             dgvTongHopNo.AutoGenerateColumns = false;
             dgvHoaDon.DataSource = bsHoaDon;
 
-            if (CNguoiDung.Doi)
+            //if (CNguoiDung.Doi)
             {
                 lbTo.Visible = true;
                 cmbTo.Visible = true;

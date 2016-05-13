@@ -26,7 +26,7 @@ namespace ThuTien.GUI.Doi
 
         private void frmKiemTraSaiViec_Load(object sender, EventArgs e)
         {
-            cmbTo.DataSource = _cTo.GetDSHanhThu();
+            cmbTo.DataSource = _cTo.GetDS();
             cmbTo.DisplayMember = "TenTo";
             cmbTo.ValueMember = "MaTo";
             cmbTo.SelectedIndex = -1;
@@ -90,6 +90,7 @@ namespace ThuTien.GUI.Doi
 
         private void btnXem_Click(object sender, EventArgs e)
         {
+            lstView_TH.Items.Clear();
             DataTable dt = new DataTable();
             int i = 0;
             if (cmbNhanVien.Items.Count > 0 && cmbNhanVien.SelectedIndex != -1)

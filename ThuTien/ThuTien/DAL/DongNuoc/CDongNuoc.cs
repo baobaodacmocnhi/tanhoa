@@ -251,27 +251,50 @@ namespace ThuTien.DAL.DongNuoc
 
             return LINQToDataTable(query.Distinct());
         }
-       
-        public DataTable GetDSKQDongNuocByDates(DateTime TuNgay, DateTime DenNgay)
+
+        public DataTable GetDSKQDongNuocByNgayDNs(DateTime FromNgayDN, DateTime ToNgayDN)
         {
-            return LINQToDataTable(_db.TT_KQDongNuocs.Where(item => item.NgayDN.Value.Date >= TuNgay.Date && item.NgayDN.Value.Date <= DenNgay.Date).ToList());
+            return LINQToDataTable(_db.TT_KQDongNuocs.Where(item => item.NgayDN.Value.Date >= FromNgayDN.Date && item.NgayDN.Value.Date <= ToNgayDN.Date).ToList());
         }
 
-        public DataTable GetDSKQDongNuocByMaToDates(int MaTo, DateTime TuNgay, DateTime DenNgay)
+        public DataTable GetDSKQDongNuocByMaToNgayDNs(int MaTo, DateTime FromNgayDN, DateTime ToNgayDN)
         {
             var query = from itemKQ in _db.TT_KQDongNuocs
                         join itemCT in _db.TT_CTDongNuocs on itemKQ.MaDN equals itemCT.MaDN
                         join itemHD in _db.HOADONs on itemCT.MaHD equals itemHD.ID_HOADON
-                        where itemKQ.NgayDN.Value.Date >= TuNgay.Date && itemKQ.NgayDN.Value.Date <= DenNgay.Date
+                        where itemKQ.NgayDN.Value.Date >= FromNgayDN.Date && itemKQ.NgayDN.Value.Date <= ToNgayDN.Date
                                 && Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                 && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                         select itemKQ;
             return LINQToDataTable(query.Distinct());
         }
 
-        public DataTable GetDSKQDongNuocByMaNVDates(int MaNV, DateTime TuNgay, DateTime DenNgay)
+        public DataTable GetDSKQDongNuocByMaNVNgayDNs(int MaNV, DateTime FromNgayDN, DateTime ToNgayDN)
         {
-            return LINQToDataTable(_db.TT_KQDongNuocs.Where(item => item.CreateBy == MaNV && item.NgayDN.Value.Date >= TuNgay.Date && item.NgayDN.Value.Date <= DenNgay.Date).ToList());
+            return LINQToDataTable(_db.TT_KQDongNuocs.Where(item => item.CreateBy == MaNV && item.NgayDN.Value.Date >= FromNgayDN.Date && item.NgayDN.Value.Date <= ToNgayDN.Date).ToList());
+        }
+
+        public DataTable BaoCaoVatTu(DateTime FromNgayDN, DateTime ToNgayDN)
+        {
+            var query = from itemKQ in _db.TT_KQDongNuocs
+                        join itemND in _db.TT_NguoiDungs on itemKQ.TT_DongNuoc.MaNV_DongNuoc equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemKQ.NgayDN.Value.Date >= FromNgayDN.Date && itemKQ.NgayDN.Value.Date <= ToNgayDN.Date
+                        orderby itemKQ.NgayDN ascending
+                        select new
+                        {
+                            itemKQ.DanhBo,
+                            itemKQ.HoTen,
+                            itemKQ.DiaChi,
+                            itemKQ.Hieu,
+                            itemKQ.Co,
+                            itemKQ.ChiSoDN,
+                            itemKQ.NgayDN,
+                            NhanVien = itemtableND.HoTen,
+                            To=itemtableND.MaTo,
+
+                        };
+            return LINQToDataTable(query.Distinct());
         }
 
         public List<TT_KQDongNuoc> GetDSKQDongNuocBySoPhieuDN(decimal SoPhieuDN)

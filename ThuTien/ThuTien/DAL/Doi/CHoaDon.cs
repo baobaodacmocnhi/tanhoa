@@ -489,6 +489,14 @@ namespace ThuTien.DAL.Doi
                 return null;
         }
 
+        public string GetMLT(string DanhBo)
+        {
+            if (GetMoiNhat(DanhBo) != null)
+                return GetMoiNhat(DanhBo).MALOTRINH;
+            else
+                return "";
+        }
+
         public List<HOADON> GetDSTon(string DanhBo)
         {
             if (_db.HOADONs.Where(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null).Count() > 0)

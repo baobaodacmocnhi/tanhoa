@@ -147,7 +147,7 @@ namespace ThuTien.GUI.DongNuoc
                         MessageBox.Show("Lệnh này đã bị Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    if (!CNguoiDung.ToTruong)
+                    if (!CNguoiDung.ToTruong && !CNguoiDung.Doi)
                         if (!_cDongNuoc.CheckExist_DongNuoc(_dongnuoc.MaDN, CNguoiDung.MaND))
                         {
                             MessageBox.Show("Thông báo này không được giao cho bạn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -202,6 +202,13 @@ namespace ThuTien.GUI.DongNuoc
             {
                 if (_kqdongnuoc != null)
                 {
+                    if (!CNguoiDung.ToTruong && !CNguoiDung.Doi)
+                        if (!_cDongNuoc.CheckExist_DongNuoc(_kqdongnuoc.MaDN.Value, CNguoiDung.MaND))
+                        {
+                            MessageBox.Show("Thông báo này không được giao cho bạn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
                     _kqdongnuoc.DanhBo = txtDanhBo.Text.Trim();
                     _kqdongnuoc.MLT = txtMLT.Text.Trim();
                     _kqdongnuoc.HoTen = txtHoTen.Text.Trim();
@@ -268,6 +275,14 @@ namespace ThuTien.GUI.DongNuoc
                 else
                 {
                     TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dgvKQDongNuoc.SelectedRows[0].Cells["MaKQDN"].Value.ToString()));
+
+                    if (!CNguoiDung.ToTruong && !CNguoiDung.Doi)
+                        if (!_cDongNuoc.CheckExist_DongNuoc(kqdongnuoc.MaDN.Value, CNguoiDung.MaND))
+                        {
+                            MessageBox.Show("Thông báo này không được giao cho bạn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
                     kqdongnuoc.DanhBo = txtDanhBo.Text.Trim();
                     kqdongnuoc.MLT = txtMLT.Text.Trim();
                     kqdongnuoc.HoTen = txtHoTen.Text.Trim();
@@ -360,12 +375,12 @@ namespace ThuTien.GUI.DongNuoc
             if (radDongNuoc.Checked)
             {
                 if (CNguoiDung.Doi)
-                    dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByDates(dateTu.Value, dateDen.Value);
+                    dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByNgayDNs(dateTu.Value, dateDen.Value);
                 else
                     if (CNguoiDung.ToTruong)
-                        dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByMaToDates(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
+                        dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByMaToNgayDNs(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
                     else
-                        dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByMaNVDates(CNguoiDung.MaND, dateTu.Value, dateDen.Value);
+                        dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByMaNVNgayDNs(CNguoiDung.MaND, dateTu.Value, dateDen.Value);
             }
             else
                 if (radMoNuoc.Checked)
