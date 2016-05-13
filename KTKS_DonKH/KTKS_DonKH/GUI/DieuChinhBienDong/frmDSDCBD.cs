@@ -1860,12 +1860,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         if (ctdchd.TieuThu_DieuChinhGia == ctdchd.TieuThu_BD)
                                             dr["DieuChinh"] = ctdchd.TieuThu_DieuChinhGia + "m3 Áp giá " + ctdchd.GiaDieuChinh;
                                         else
-                                            dr["DieuChinh"] = "Vượt " + ctdchd.DinhMuc_BD + ", " + ctdchd.TieuThu_DieuChinhGia + "m3 Áp giá " + ctdchd.GiaDieuChinh;
+                                            dr["DieuChinh"] =  ctdchd.DinhMuc_BD + "m3 Áp giá 5300, " + ctdchd.TieuThu_DieuChinhGia + "m3 Áp giá " + ctdchd.GiaDieuChinh;
                                     else
                                         if (ctdchd.TieuThu_DieuChinhGia == ctdchd.TieuThu_BD)
                                             dr["DieuChinh"] = dr["DieuChinh"] + ", " + ctdchd.TieuThu_DieuChinhGia + "m3 Áp giá " + ctdchd.GiaDieuChinh;
                                         else
-                                            dr["DieuChinh"] = dr["DieuChinh"] + ", Vượt " + ctdchd.DinhMuc_BD + ", " + ctdchd.TieuThu_DieuChinhGia + "m3 Áp giá " + ctdchd.GiaDieuChinh;
+                                            dr["DieuChinh"] = dr["DieuChinh"] + ", " + ctdchd.DinhMuc_BD + "m3 Áp giá 5300, " + ctdchd.TieuThu_DieuChinhGia + "m3 Áp giá " + ctdchd.GiaDieuChinh;
                                     dr["ChiTietCu"] = ctdchd.ChiTietCu;
                                     dr["ChiTietMoi"] = ctdchd.ChiTietMoi;
                                 }

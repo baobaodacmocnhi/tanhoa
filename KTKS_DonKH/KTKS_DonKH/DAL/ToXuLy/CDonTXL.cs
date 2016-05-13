@@ -1012,6 +1012,126 @@ namespace KTKS_DonKH.DAL.ToXuLy
             }
         }
 
+        public DataTable LoadDSDonTXLDaChuyenBanDoiKhacByDate(DateTime TuNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
+                {
+                    var query = from itemDonTXL in db.DonTXLs
+                                join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
+                                where itemDonTXL.ChuyenBanDoiKhac == true && itemDonTXL.NgayChuyenBanDoiKhac.Value.Date == TuNgay.Date
+                                orderby itemDonTXL.MaDon ascending
+                                select new
+                                {
+                                    itemDonTXL.MaDon,
+                                    itemLoaiDonTXL.TenLD,
+                                    itemDonTXL.SoCongVan,
+                                    itemDonTXL.CreateDate,
+                                    itemDonTXL.DanhBo,
+                                    itemDonTXL.HoTen,
+                                    itemDonTXL.DiaChi,
+                                    itemDonTXL.NoiDung,
+                                    itemDonTXL.MaChuyen,
+                                    itemDonTXL.LyDoChuyen,
+                                    itemDonTXL.SoLuongDiaChi,
+                                    GhiChuChuyenKT = itemDonTXL.GhiChuChuyenBanDoiKhac,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSDonTXLDaChuyenBanDoiKhacByDates(DateTime TuNgay, DateTime DenNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
+                {
+                    var query = from itemDonTXL in db.DonTXLs
+                                join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
+                                where itemDonTXL.ChuyenBanDoiKhac == true && itemDonTXL.NgayChuyenBanDoiKhac.Value.Date >= TuNgay.Date && itemDonTXL.NgayChuyenBanDoiKhac.Value.Date <= DenNgay.Date
+                                orderby itemDonTXL.MaDon ascending
+                                select new
+                                {
+                                    itemDonTXL.MaDon,
+                                    itemLoaiDonTXL.TenLD,
+                                    itemDonTXL.SoCongVan,
+                                    itemDonTXL.CreateDate,
+                                    itemDonTXL.DanhBo,
+                                    itemDonTXL.HoTen,
+                                    itemDonTXL.DiaChi,
+                                    itemDonTXL.NoiDung,
+                                    itemDonTXL.MaChuyen,
+                                    itemDonTXL.LyDoChuyen,
+                                    itemDonTXL.SoLuongDiaChi,
+                                    GhiChuChuyenKT = itemDonTXL.GhiChuChuyenBanDoiKhac,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSDonTXLDaChuyenBanDoiKhacBySoCongVan(string SoCongVan)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
+                {
+                    var query = from itemDonTXL in db.DonTXLs
+                                join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
+                                where itemDonTXL.ChuyenBanDoiKhac == true && itemDonTXL.SoCongVan.Contains(SoCongVan)
+                                orderby itemDonTXL.MaDon ascending
+                                select new
+                                {
+                                    itemDonTXL.MaDon,
+                                    itemLoaiDonTXL.TenLD,
+                                    itemDonTXL.SoCongVan,
+                                    itemDonTXL.CreateDate,
+                                    itemDonTXL.DanhBo,
+                                    itemDonTXL.HoTen,
+                                    itemDonTXL.DiaChi,
+                                    itemDonTXL.NoiDung,
+                                    itemDonTXL.MaChuyen,
+                                    itemDonTXL.LyDoChuyen,
+                                    itemDonTXL.SoLuongDiaChi,
+                                    GhiChuChuyenKT = itemDonTXL.GhiChuChuyenBanDoiKhac,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public DataTable LoadDSDonTXLDaChuyenKhacByDate(DateTime TuNgay)
         {
             try
