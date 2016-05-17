@@ -4147,6 +4147,48 @@ namespace KTKS_DonKH.DAL.CapNhat
 
         #region Báo Cáo
 
+        public DataTable LoadDSCapDinhMuc(string DanhBo,DateTime TuNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemCTChungTu in db.CTChungTus
+                                join itemTTKH in db.TTKhachHangs on itemCTChungTu.DanhBo equals itemTTKH.DanhBo
+                                where (itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 6 || itemCTChungTu.ChungTu.MaLCT == 7 || itemCTChungTu.ChungTu.MaLCT == 8) && itemCTChungTu.CreateDate.Value.Date == TuNgay.Date
+                                && itemCTChungTu.Cat == false && itemCTChungTu.DanhBo == DanhBo
+                                orderby itemCTChungTu.NgayHetHan ascending
+                                select new
+                                {
+                                    itemCTChungTu.DanhBo,
+                                    itemTTKH.HoTen,
+                                    DiaChi = itemTTKH.DC1 + itemTTKH.DC2,
+                                    itemCTChungTu.SoNKDangKy,
+                                    itemCTChungTu.ChungTu.LoaiChungTu.MaLCT,
+                                    itemCTChungTu.ChungTu.LoaiChungTu.TenLCT,
+                                    itemCTChungTu.MaCT,
+                                    itemCTChungTu.DienThoai,
+                                    itemCTChungTu.NgayHetHan,
+                                    itemCTChungTu.CreateDate,
+                                    itemCTChungTu.GhiChu,
+                                    itemTTKH.Phuong,
+                                    itemTTKH.Quan,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         /// <summary>
         /// Lấy Danh Sách Cấp Định Mức theo Khoảng Thời Gian
         /// </summary>

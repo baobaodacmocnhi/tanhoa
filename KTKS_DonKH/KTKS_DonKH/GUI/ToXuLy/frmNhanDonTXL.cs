@@ -75,6 +75,12 @@ namespace KTKS_DonKH.GUI.ToXuLy
             cmbNguoiDi.SelectedIndex = -1;
             chkChuyenBanDoiKhac.Checked = false;
             dateChuyenBanDoiKhac.Value = DateTime.Now;
+            chkQLDHN.Checked = false;
+            chkTCTB.Checked = false;
+            chkGNKDT.Checked = false;
+            chkToThay.Checked = false;
+            chkThuTien.Checked = false;
+            chkKhac.Checked = false;
             txtGhiChuChuyenBanDoiKhac.Text = "";
             chkChuyenToKhachHang.Checked = false;
             dateChuyenToKhachHang.Value = DateTime.Now;
@@ -168,6 +174,12 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     {
                         dontxl.ChuyenBanDoiKhac = true;
                         dontxl.NgayChuyenBanDoiKhac = dateChuyenBanDoiKhac.Value;
+                        dontxl.QLDHN = chkQLDHN.Checked;
+                        dontxl.TCTB = chkTCTB.Checked;
+                        dontxl.GNKDT = chkGNKDT.Checked;
+                        dontxl.ToThay = chkToThay.Checked;
+                        dontxl.ThuTien = chkThuTien.Checked;
+                        dontxl.Khac = chkKhac.Checked;
                         dontxl.GhiChuChuyenBanDoiKhac = txtGhiChuChuyenBanDoiKhac.Text.Trim();
                     }
 
@@ -295,12 +307,24 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     {
                         chkChuyenBanDoiKhac.Checked = true;
                         dateChuyenBanDoiKhac.Value = _dontxl.NgayChuyenBanDoiKhac.Value;
+                        chkQLDHN.Checked = _dontxl.QLDHN;
+                        chkTCTB.Checked = _dontxl.TCTB;
+                        chkGNKDT.Checked = _dontxl.GNKDT;
+                        chkToThay.Checked = _dontxl.ToThay;
+                        chkThuTien.Checked = _dontxl.ThuTien;
+                        chkKhac.Checked = _dontxl.Khac;
                         txtGhiChuChuyenBanDoiKhac.Text = _dontxl.GhiChuChuyenBanDoiKhac;
                     }
                     else
                     {
                         chkChuyenBanDoiKhac.Checked = false;
                         dateChuyenBanDoiKhac.Value = DateTime.Now;
+                        chkQLDHN.Checked = false;
+                        chkTCTB.Checked = false;
+                        chkGNKDT.Checked = false;
+                        chkToThay.Checked = false;
+                        chkThuTien.Checked = false;
+                        chkKhac.Checked = false;
                         txtGhiChuChuyenBanDoiKhac.Text = "";
                     }
 
@@ -448,12 +472,24 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 {
                     _dontxl.ChuyenBanDoiKhac = true;
                     _dontxl.NgayChuyenBanDoiKhac = dateChuyenBanDoiKhac.Value;
+                    _dontxl.QLDHN = chkQLDHN.Checked;
+                    _dontxl.TCTB = chkTCTB.Checked;
+                    _dontxl.GNKDT = chkGNKDT.Checked;
+                    _dontxl.ToThay = chkToThay.Checked;
+                    _dontxl.ThuTien = chkThuTien.Checked;
+                    _dontxl.Khac = chkKhac.Checked;
                     _dontxl.GhiChuChuyenBanDoiKhac = txtGhiChuChuyenBanDoiKhac.Text.Trim();
                 }
                 else
                 {
                     _dontxl.ChuyenBanDoiKhac = false;
                     _dontxl.NgayChuyenBanDoiKhac = null;
+                    _dontxl.QLDHN = false;
+                    _dontxl.TCTB = false;
+                    _dontxl.GNKDT = false;
+                    _dontxl.ToThay = false;
+                    _dontxl.ThuTien = false;
+                    _dontxl.Khac = false;
                     _dontxl.GhiChuChuyenBanDoiKhac = null;
                 }
 

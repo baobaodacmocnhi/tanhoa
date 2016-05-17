@@ -806,30 +806,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
-        private void txtTienNuoc_BD_TextChanged(object sender, EventArgs e)
-        {
-            if (chkKhauTru.Checked)
-                txtTienNuoc_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",(int.Parse(txtTienNuoc_Start.Text.Trim()) + int.Parse(txtTienNuoc_BD.Text.Trim())));
-        }
-
-        private void txtThueGTGT_BD_TextChanged(object sender, EventArgs e)
-        {
-            if (chkKhauTru.Checked)
-                txtThueGTGT_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",(int.Parse(txtThueGTGT_Start.Text.Trim()) + int.Parse(txtThueGTGT_BD.Text.Trim())));
-        }
-
-        private void txtPhiBVMT_BD_TextChanged(object sender, EventArgs e)
-        {
-            if (chkKhauTru.Checked)
-                txtPhiBVMT_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",(int.Parse(txtPhiBVMT_Start.Text.Trim()) + int.Parse(txtPhiBVMT_BD.Text.Trim())));
-        }
-
-        private void txtTongCong_BD_TextChanged(object sender, EventArgs e)
-        {
-            if (chkKhauTru.Checked)
-                txtTongCong_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",(int.Parse(txtTongCong_Start.Text.Trim()) + int.Parse(txtTongCong_BD.Text.Trim())));
-        }
-
         private void btnIn_Click(object sender, EventArgs e)
         {
             try
@@ -988,15 +964,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 TinhTienNuoc();
         }
 
-        private void txtTongCong_End_TextChanged(object sender, EventArgs e)
-        {
-            txtTieuThu_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",(int.Parse(txtTieuThu_End.Text.Trim().Replace(".", "")) - int.Parse(txtTieuThu_Start.Text.Trim().Replace(".", ""))));
-            txtTienNuoc_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",(int.Parse(txtTienNuoc_End.Text.Trim().Replace(".", "")) - int.Parse(txtTienNuoc_Start.Text.Trim().Replace(".", ""))));
-            txtThueGTGT_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",(int.Parse(txtThueGTGT_End.Text.Trim().Replace(".", "")) - int.Parse(txtThueGTGT_Start.Text.Trim().Replace(".", ""))));
-            txtPhiBVMT_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",(int.Parse(txtPhiBVMT_End.Text.Trim().Replace(".", "")) - int.Parse(txtPhiBVMT_Start.Text.Trim().Replace(".", ""))));
-            txtTongCong_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",(int.Parse(txtTongCong_End.Text.Trim().Replace(".", "")) - int.Parse(txtTongCong_Start.Text.Trim().Replace(".", ""))));
-        }
-
         private void btnInA4_Click(object sender, EventArgs e)
         {
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
@@ -1134,7 +1101,82 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             frm.ShowDialog();
         }
 
+        private void txtTienNuoc_Start_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTienNuoc_Start.Text.Length > 1&&txtTienNuoc_End.Text.Length>1)
+                txtTienNuoc_BD.Text = (int.Parse(txtTienNuoc_End.Text.Trim().Replace(".", "")) - int.Parse(txtTienNuoc_Start.Text.Trim().Replace(".", ""))).ToString();
+        }
 
+        private void txtThueGTGT_Start_TextChanged(object sender, EventArgs e)
+        {
+            if (txtThueGTGT_Start.Text.Length > 1 && txtThueGTGT_End.Text.Length > 1)
+                txtThueGTGT_BD.Text = (int.Parse(txtThueGTGT_End.Text.Trim().Replace(".", "")) - int.Parse(txtThueGTGT_Start.Text.Trim().Replace(".", ""))).ToString();
+        }
+
+        private void txtPhiBVMT_Start_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPhiBVMT_Start.Text.Length > 1 && txtPhiBVMT_End.Text.Length > 1)
+                txtPhiBVMT_BD.Text = (int.Parse(txtPhiBVMT_End.Text.Trim().Replace(".", "")) - int.Parse(txtPhiBVMT_Start.Text.Trim().Replace(".", ""))).ToString();
+        }
+
+        private void txtTongCong_Start_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTongCong_Start.Text.Length > 1 && txtTongCong_End.Text.Length > 1)
+                txtTongCong_BD.Text = (int.Parse(txtTongCong_End.Text.Trim().Replace(".", "")) - int.Parse(txtTongCong_Start.Text.Trim().Replace(".", ""))).ToString();
+        }
+
+        private void txtTienNuoc_BD_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTienNuoc_BD.Text.Length > 1)
+                txtTienNuoc_End.Text = (int.Parse(txtTienNuoc_Start.Text.Trim().Replace(".", "")) + int.Parse(txtTienNuoc_BD.Text.Trim().Replace(".", ""))).ToString();
+        }
+
+        private void txtThueGTGT_BD_TextChanged(object sender, EventArgs e)
+        {
+            if ( txtThueGTGT_BD.Text.Length > 1)
+                txtThueGTGT_End.Text = (int.Parse(txtThueGTGT_Start.Text.Trim().Replace(".", "")) + int.Parse(txtThueGTGT_BD.Text.Trim().Replace(".", ""))).ToString();
+        }
+
+        private void txtPhiBVMT_BD_TextChanged(object sender, EventArgs e)
+        {
+            if ( txtPhiBVMT_BD.Text.Length > 1)
+                txtPhiBVMT_End.Text = (int.Parse(txtPhiBVMT_Start.Text.Trim().Replace(".", "")) + int.Parse(txtPhiBVMT_BD.Text.Trim().Replace(".", ""))).ToString();
+        }
+
+        private void txtTongCong_BD_TextChanged(object sender, EventArgs e)
+        {
+            if ( txtTongCong_BD.Text.Length > 1)
+                txtTongCong_End.Text = (int.Parse(txtTongCong_Start.Text.Trim().Replace(".", "")) + int.Parse(txtTongCong_BD.Text.Trim().Replace(".", ""))).ToString();
+        }
+
+        private void txtTienNuoc_End_TextChanged(object sender, EventArgs e)
+        {
+            if ( txtTienNuoc_End.Text.Length > 1)
+                txtTienNuoc_BD.Text = (int.Parse(txtTienNuoc_End.Text.Trim().Replace(".", "")) - int.Parse(txtTienNuoc_Start.Text.Trim().Replace(".", ""))).ToString();
+        }
+
+        private void txtThueGTGT_End_TextChanged(object sender, EventArgs e)
+        {
+            if ( txtThueGTGT_End.Text.Length > 1)
+                txtThueGTGT_BD.Text = (int.Parse(txtThueGTGT_End.Text.Trim().Replace(".", "")) - int.Parse(txtThueGTGT_Start.Text.Trim().Replace(".", ""))).ToString();
+        }
+
+        private void txtPhiBVMT_End_TextChanged(object sender, EventArgs e)
+        {
+            if ( txtPhiBVMT_End.Text.Length > 1)
+                txtPhiBVMT_BD.Text = (int.Parse(txtPhiBVMT_End.Text.Trim().Replace(".", "")) - int.Parse(txtPhiBVMT_Start.Text.Trim().Replace(".", ""))).ToString();
+        }
+
+        private void txtTongCong_End_TextChanged(object sender, EventArgs e)
+        {
+            if ( txtTongCong_End.Text.Length > 1)
+                txtTongCong_BD.Text = (int.Parse(txtTongCong_End.Text.Trim().Replace(".", "")) - int.Parse(txtTongCong_Start.Text.Trim().Replace(".", ""))).ToString();
+        }
+
+        private void txtKyHD_Leave(object sender, EventArgs e)
+        {
+
+        }
 
     }
 }

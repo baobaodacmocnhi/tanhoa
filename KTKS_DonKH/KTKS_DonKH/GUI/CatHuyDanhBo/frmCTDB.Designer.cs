@@ -95,6 +95,7 @@
             this.Loai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ma = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayXuLy_LS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBoxNguyenNhanXuLy.SuspendLayout();
             this.groupBoxKetQuaTCTBXuLy.SuspendLayout();
@@ -752,11 +753,12 @@
             this.dgvLichSuCHDB.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Loai,
             this.Ma,
-            this.CreateDate});
+            this.CreateDate,
+            this.NgayXuLy_LS});
             this.dgvLichSuCHDB.Location = new System.Drawing.Point(929, 229);
             this.dgvLichSuCHDB.Name = "dgvLichSuCHDB";
             this.dgvLichSuCHDB.ReadOnly = true;
-            this.dgvLichSuCHDB.Size = new System.Drawing.Size(280, 200);
+            this.dgvLichSuCHDB.Size = new System.Drawing.Size(364, 200);
             this.dgvLichSuCHDB.TabIndex = 62;
             // 
             // Loai
@@ -781,13 +783,22 @@
             this.CreateDate.HeaderText = "Ngày Lập";
             this.CreateDate.Name = "CreateDate";
             this.CreateDate.ReadOnly = true;
+            this.CreateDate.Width = 90;
+            // 
+            // NgayXuLy_LS
+            // 
+            this.NgayXuLy_LS.DataPropertyName = "NgayXuLy";
+            this.NgayXuLy_LS.HeaderText = "Ngày Xử Lý";
+            this.NgayXuLy_LS.Name = "NgayXuLy_LS";
+            this.NgayXuLy_LS.ReadOnly = true;
+            this.NgayXuLy_LS.Width = 90;
             // 
             // frmCTDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1223, 683);
+            this.ClientSize = new System.Drawing.Size(1384, 683);
             this.Controls.Add(this.dgvLichSuCHDB);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.label22);
@@ -898,5 +909,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Loai;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ma;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayXuLy_LS;
     }
 }

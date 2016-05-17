@@ -3451,6 +3451,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                 Loai="Cắt Tạm",
                                 Ma=itemCTCTDB.MaCTCTDB,
                                 itemCTCTDB.CreateDate,
+                                itemCTCTDB.NgayXuLy,
                             };
             dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDB);
 
@@ -3461,6 +3462,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                 Loai = "Cắt Hủy",
                                 Ma = itemCTCHDB.MaCTCHDB,
                                 itemCTCHDB.CreateDate,
+                                itemCTCHDB.NgayXuLy,
                             };
             dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCHDB));
 

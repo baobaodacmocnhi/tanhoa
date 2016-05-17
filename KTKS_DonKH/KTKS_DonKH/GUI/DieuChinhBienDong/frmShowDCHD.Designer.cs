@@ -174,6 +174,7 @@
             this.txtPhiBVMT_End.Size = new System.Drawing.Size(100, 25);
             this.txtPhiBVMT_End.TabIndex = 21;
             this.txtPhiBVMT_End.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPhiBVMT_End.TextChanged += new System.EventHandler(this.txtPhiBVMT_End_TextChanged);
             // 
             // txtSoVB
             // 
@@ -232,6 +233,7 @@
             this.txtThueGTGT_End.Size = new System.Drawing.Size(100, 25);
             this.txtThueGTGT_End.TabIndex = 20;
             this.txtThueGTGT_End.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtThueGTGT_End.TextChanged += new System.EventHandler(this.txtThueGTGT_End_TextChanged);
             // 
             // txtPhiBVMT_Start
             // 
@@ -250,6 +252,7 @@
             this.txtTienNuoc_End.Size = new System.Drawing.Size(100, 25);
             this.txtTienNuoc_End.TabIndex = 19;
             this.txtTienNuoc_End.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTienNuoc_End.TextChanged += new System.EventHandler(this.txtTienNuoc_End_TextChanged);
             // 
             // label13
             // 
