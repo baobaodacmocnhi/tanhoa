@@ -228,7 +228,7 @@ namespace ThuTien.DAL.ChuyenKhoan
         public string GetBank(string DanhBo)
         {
             if (_db.TT_BangKes.Any(itemBK => itemBK.DanhBo == DanhBo && itemBK.MaNH != null))
-                return _db.NGANHANGs.SingleOrDefault(itemB => itemB.ID_NGANHANG == _db.TT_BangKes.Where(itemBK => itemBK.DanhBo == DanhBo && itemBK.MaNH != null).OrderByDescending(item => item.MaBK).First().MaNH.Value).KyHieu;
+                return _db.NGANHANGs.SingleOrDefault(itemB => itemB.ID_NGANHANG == _db.TT_BangKes.Where(itemBK => itemBK.DanhBo == DanhBo && itemBK.MaNH != null).OrderByDescending(item => item.MaBK).First().MaNH.Value).NGANHANG1;
             else
                 return "";
         }
