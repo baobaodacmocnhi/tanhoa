@@ -210,6 +210,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                 }
                                 else
                                     a[1].ChuaDongTienBoiThuong++;
+                                if (!string.IsNullOrEmpty(itemRow["TieuThuTrungBinh"].ToString()))
+                                    a[1].TieuThuTrungBinh += int.Parse(itemRow["TieuThuTrungBinh"].ToString());
                                 if (bool.Parse(itemRow["ChuyenLapTBCat"].ToString()))
                                 {
                                     //a[1].ChuyenLapTBCat++;
@@ -222,12 +224,16 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         {
                             a[2].LoaiBienBan = "BB gian lận";
                             a[2].TongDanhBo++;
+                            if (!string.IsNullOrEmpty(itemRow["TieuThuTrungBinh"].ToString()))
+                                a[2].TieuThuTrungBinh += int.Parse(itemRow["TieuThuTrungBinh"].ToString());
                         }
                         else
                             if (itemRow["LoaiBienBan"].ToString() == "BB chạy ngược")
                             {
                                 a[3].LoaiBienBan = "BB chạy ngược";
                                 a[3].TongDanhBo++;
+                                if (!string.IsNullOrEmpty(itemRow["TieuThuTrungBinh"].ToString()))
+                                    a[3].TieuThuTrungBinh += int.Parse(itemRow["TieuThuTrungBinh"].ToString());
                             }
                             else
                                 if (itemRow["LoaiBienBan"].ToString() == "BB tái lập Danh Bộ")

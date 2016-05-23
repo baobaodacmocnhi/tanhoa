@@ -72,6 +72,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             dondt.GhiChu = txtGhiChu.Text.Trim();
             dondt.DienThoai = txtDienThoai.Text.Trim();
             dondt.NguoiBao = txtNguoiBao.Text.Trim();
+            dondt.NgayBao = dateBao.Value;
             if (_cDonDT.ThemDonDienThoai(dondt))
             {
                 Clear();
@@ -92,6 +93,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     dondt.GhiChu = txtGhiChu.Text.Trim();
                     dondt.DienThoai = txtDienThoai.Text.Trim();
                     dondt.NguoiBao = txtNguoiBao.Text.Trim();
+                    dondt.NgayBao = dateBao.Value;
                     if (_cDonDT.SuaDonDienThoai(dondt))
                     {
                         Clear();
@@ -146,6 +148,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 txtGhiChu.Text = dgvLichSuDonDT["GhiChu", e.RowIndex].Value.ToString();
                 txtDienThoai.Text = dgvLichSuDonDT["DienThoai", e.RowIndex].Value.ToString();
                 txtNguoiBao.Text = dgvLichSuDonDT["NguoiBao", e.RowIndex].Value.ToString();
+                dateBao.Value = DateTime.Parse(dgvLichSuDonDT["NguoiBao", e.RowIndex].Value.ToString());
             }
             catch
             {

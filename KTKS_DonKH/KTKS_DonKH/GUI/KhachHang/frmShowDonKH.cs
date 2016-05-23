@@ -129,7 +129,6 @@ namespace KTKS_DonKH.GUI.KhachHang
 
                 txtDinhMucSau.Text = _donkh.DinhMucSau;
                 txtHieuLucTuKy.Text = _donkh.HieuLucTuKy;
-                txtNgayGiaiQuyet.Text = _donkh.NgayGiaiQuyet;
                 ///
                 dgvLichSuChuyenKT.DataSource = _cDonTXL.LoadDSLichSuChuyenKTbyMaDonTKH(_donkh.MaDon);
                 ///
@@ -240,6 +239,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     if (_donkh.KiemTraDHN)
                     {
                         dr["KiemTraDHN"] = true;
+                        dr["Ngay"] = "5";
                     }
                     else
                     {
@@ -249,6 +249,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     if (_donkh.TienNuoc)
                     {
                         dr["TienNuoc"] = true;
+                        dr["Ngay"] = "5";
                     }
                     else
                     {
@@ -258,6 +259,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     if (_donkh.ChiSoNuoc)
                     {
                         dr["ChiSoNuoc"] = true;
+                        dr["Ngay"] = "5";
                     }
                     else
                     {
@@ -267,25 +269,17 @@ namespace KTKS_DonKH.GUI.KhachHang
                     if (_donkh.DonGiaNuoc)
                     {
                         dr["DonGiaNuoc"] = true;
+                        dr["Ngay"] = "5";
                     }
                     else
                     {
                         dr["DonGiaNuoc"] = false;
                     }
 
-                    if (_donkh.SangTen)
-                    {
-                        dr["SangTen"] = true;
-                        dr["Ngay"] = "45";
-                    }
-                    else
-                    {
-                        dr["SangTen"] = false;
-                    }
-
                     if (_donkh.DangKyDM)
                     {
                         dr["DangKyDM"] = true;
+                        dr["Ngay"] = "5";
                     }
                     else
                     {
@@ -295,6 +289,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     if (_donkh.CatChuyenDM)
                     {
                         dr["CatChuyenDM"] = true;
+                        dr["Ngay"] = "5";
                     }
                     else
                     {
@@ -304,6 +299,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     if (_donkh.GiamDM)
                     {
                         dr["GiamDM"] = true;
+                        dr["Ngay"] = "5";
                     }
                     else
                     {
@@ -313,6 +309,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     if (_donkh.DCSoNha)
                     {
                         dr["DCSoNha"] = true;
+                        dr["Ngay"] = "5";
                     }
                     else
                     {
@@ -322,6 +319,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     if (_donkh.MatDHN)
                     {
                         dr["MatDHN"] = true;
+                        dr["Ngay"] = "5";
                     }
                     else
                     {
@@ -331,6 +329,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     if (_donkh.HuHongDHN)
                     {
                         dr["HuHongDHN"] = true;
+                        dr["Ngay"] = "5";
                     }
                     else
                     {
@@ -340,6 +339,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     if (_donkh.ChiNiem)
                     {
                         dr["ChiNiem"] = true;
+                        dr["Ngay"] = "5";
                     }
                     else
                     {
@@ -349,6 +349,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     if (_donkh.ThayDoiMST)
                     {
                         dr["ThayDoiMST"] = true;
+                        dr["Ngay"] = "5";
                     }
                     else
                     {
@@ -358,6 +359,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     if (_donkh.TamNgung)
                     {
                         dr["TamNgung"] = true;
+                        dr["Ngay"] = "5";
                     }
                     else
                     {
@@ -367,6 +369,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     if (_donkh.HuyHopDong)
                     {
                         dr["HuyHopDong"] = true;
+                        dr["Ngay"] = "5";
                     }
                     else
                     {
@@ -376,6 +379,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     if (_donkh.MoNuoc)
                     {
                         dr["MoNuoc"] = true;
+                        dr["Ngay"] = "5";
                     }
                     else
                     {
@@ -386,10 +390,21 @@ namespace KTKS_DonKH.GUI.KhachHang
                     {
                         dr["LoaiKhac"] = true;
                         dr["LyDoLoaiKhac"] = _donkh.LyDoLoaiKhac;
+                        dr["Ngay"] = "5";
                     }
                     else
                     {
                         dr["LoaiKhac"] = false;
+                    }
+
+                    if (_donkh.SangTen)
+                    {
+                        dr["SangTen"] = true;
+                        dr["Ngay"] = "30";
+                    }
+                    else
+                    {
+                        dr["SangTen"] = false;
                     }
 
                     if (_donkh.CT_HoaDon)
@@ -467,7 +482,6 @@ namespace KTKS_DonKH.GUI.KhachHang
 
                     dr["DinhMucSau"] = _donkh.DinhMucSau;
                     dr["HieuLucTuKy"] = _donkh.HieuLucTuKy;
-                    dr["Ngay"] = _donkh.NgayGiaiQuyet;
                     CTaiKhoan _cTaiKhoan = new CTaiKhoan();
                     dr["HoTenNV"] = _cTaiKhoan.getHoTenUserbyID(_donkh.CreateBy.Value);
 
@@ -515,7 +529,6 @@ namespace KTKS_DonKH.GUI.KhachHang
                 //_donkh.GhiChuNguoiDi = cmbNVKiemTra.SelectedValue.ToString();
                 _donkh.DinhMucSau = txtDinhMucSau.Text.Trim();
                 _donkh.HieuLucTuKy = txtHieuLucTuKy.Text.Trim();
-                _donkh.NgayGiaiQuyet = txtNgayGiaiQuyet.Text.Trim();
 
                 #region CheckBox
                 if (chkKiemTraDHN.Checked)

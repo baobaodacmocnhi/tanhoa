@@ -102,8 +102,6 @@
             this.TenLD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtNgayGiaiQuyet = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -852,22 +850,6 @@
             this.NoiDung.Name = "NoiDung";
             this.NoiDung.ReadOnly = true;
             // 
-            // txtNgayGiaiQuyet
-            // 
-            this.txtNgayGiaiQuyet.Location = new System.Drawing.Point(335, 473);
-            this.txtNgayGiaiQuyet.Name = "txtNgayGiaiQuyet";
-            this.txtNgayGiaiQuyet.Size = new System.Drawing.Size(74, 25);
-            this.txtNgayGiaiQuyet.TabIndex = 56;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(219, 476);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(110, 17);
-            this.label18.TabIndex = 55;
-            this.label18.Text = "Ngày Giải Quyết:";
-            // 
             // frmNhanDonKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -875,8 +857,6 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1365, 544);
-            this.Controls.Add(this.txtNgayGiaiQuyet);
-            this.Controls.Add(this.label18);
             this.Controls.Add(this.dgvLichSuDon);
             this.Controls.Add(this.btnNhapNhieuDB);
             this.Controls.Add(this.btnSua);
@@ -1012,8 +992,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TenLD;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
-        private System.Windows.Forms.TextBox txtNgayGiaiQuyet;
-        private System.Windows.Forms.Label label18;
 
 
 

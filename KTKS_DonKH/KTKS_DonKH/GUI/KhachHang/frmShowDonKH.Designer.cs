@@ -132,8 +132,6 @@
             this.chkKiemTraDHN = new System.Windows.Forms.CheckBox();
             this.chkChiSoNuoc = new System.Windows.Forms.CheckBox();
             this.chkTienNuoc = new System.Windows.Forms.CheckBox();
-            this.txtNgayGiaiQuyet = new System.Windows.Forms.TextBox();
-            this.label29 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -1166,30 +1164,12 @@
             this.chkTienNuoc.Text = "Tiền nước";
             this.chkTienNuoc.UseVisualStyleBackColor = true;
             // 
-            // txtNgayGiaiQuyet
-            // 
-            this.txtNgayGiaiQuyet.Location = new System.Drawing.Point(335, 473);
-            this.txtNgayGiaiQuyet.Name = "txtNgayGiaiQuyet";
-            this.txtNgayGiaiQuyet.Size = new System.Drawing.Size(74, 25);
-            this.txtNgayGiaiQuyet.TabIndex = 88;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(219, 476);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(110, 17);
-            this.label29.TabIndex = 87;
-            this.label29.Text = "Ngày Giải Quyết:";
-            // 
             // frmShowDonKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1365, 544);
-            this.Controls.Add(this.txtNgayGiaiQuyet);
-            this.Controls.Add(this.label29);
             this.Controls.Add(this.chkCapDM);
             this.Controls.Add(this.chkMoNuoc);
             this.Controls.Add(this.chkThayDoiMST);
@@ -1376,8 +1356,6 @@
         private System.Windows.Forms.CheckBox chkKiemTraDHN;
         private System.Windows.Forms.CheckBox chkChiSoNuoc;
         private System.Windows.Forms.CheckBox chkTienNuoc;
-        private System.Windows.Forms.TextBox txtNgayGiaiQuyet;
-        private System.Windows.Forms.Label label29;
 
 
     }

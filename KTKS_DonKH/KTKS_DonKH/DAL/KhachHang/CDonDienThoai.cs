@@ -174,6 +174,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                    item.NoiDung,
                                    item.GhiChu,
                                    item.NguoiBao,
+                                   item.NgayBao,
                                    item.DienThoai,
                                };
                     return CLinQToDataTable.LINQToDataTable(query);
@@ -215,6 +216,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     item.NoiDung,
                                     item.GhiChu,
                                     item.NguoiBao,
+                                    item.NgayBao,
                                     item.DienThoai,
                                 };
                     return CLinQToDataTable.LINQToDataTable(query);
@@ -256,6 +258,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     item.NoiDung,
                                     item.GhiChu,
                                     item.NguoiBao,
+                                    item.NgayBao,
                                     item.DienThoai,
                                 };
                     return CLinQToDataTable.LINQToDataTable(query);
@@ -297,6 +300,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     item.NoiDung,
                                     item.GhiChu,
                                     item.NguoiBao,
+                                    item.NgayBao,
                                     item.DienThoai,
                                 };
                     return CLinQToDataTable.LINQToDataTable(query);
@@ -338,6 +342,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     item.NoiDung,
                                     item.GhiChu,
                                     item.NguoiBao,
+                                    item.NgayBao,
                                     item.DienThoai,
                                 };
                     return CLinQToDataTable.LINQToDataTable(query);
@@ -379,6 +384,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     item.NoiDung,
                                     item.GhiChu,
                                     item.NguoiBao,
+                                    item.NgayBao,
                                     item.DienThoai,
                                 };
                     return CLinQToDataTable.LINQToDataTable(query);
@@ -420,6 +426,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     item.NoiDung,
                                     item.GhiChu,
                                     item.NguoiBao,
+                                    item.NgayBao,
                                     item.DienThoai,
                                 };
                     return CLinQToDataTable.LINQToDataTable(query);
@@ -461,6 +468,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     item.NoiDung,
                                     item.GhiChu,
                                     item.NguoiBao,
+                                    item.NgayBao,
                                     item.DienThoai,
                                 };
                     return CLinQToDataTable.LINQToDataTable(query);

@@ -46,12 +46,15 @@
             this.dgvLichSuDonDT = new System.Windows.Forms.DataGridView();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
+            this.dateBao = new System.Windows.Forms.DateTimePicker();
+            this.label8 = new System.Windows.Forms.Label();
             this.MaDonDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NguoiBao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayBao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -211,6 +214,7 @@
             this.NoiDung,
             this.GhiChu,
             this.NguoiBao,
+            this.NgayBao,
             this.HoTen,
             this.DiaChi,
             this.DienThoai});
@@ -218,7 +222,7 @@
             this.dgvLichSuDonDT.Margin = new System.Windows.Forms.Padding(4);
             this.dgvLichSuDonDT.Name = "dgvLichSuDonDT";
             this.dgvLichSuDonDT.ReadOnly = true;
-            this.dgvLichSuDonDT.Size = new System.Drawing.Size(788, 310);
+            this.dgvLichSuDonDT.Size = new System.Drawing.Size(885, 310);
             this.dgvLichSuDonDT.TabIndex = 15;
             this.dgvLichSuDonDT.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLichSuDonDT_CellContentClick);
             this.dgvLichSuDonDT.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLichSuDonDT_CellFormatting);
@@ -251,6 +255,24 @@
             this.btnXoa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // dateBao
+            // 
+            this.dateBao.CustomFormat = "dd/MM/yyyy";
+            this.dateBao.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateBao.Location = new System.Drawing.Point(337, 13);
+            this.dateBao.Name = "dateBao";
+            this.dateBao.Size = new System.Drawing.Size(100, 25);
+            this.dateBao.TabIndex = 18;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(259, 19);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(71, 17);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Ngày Báo:";
             // 
             // MaDonDT
             // 
@@ -298,6 +320,13 @@
             this.NguoiBao.Name = "NguoiBao";
             this.NguoiBao.ReadOnly = true;
             // 
+            // NgayBao
+            // 
+            this.NgayBao.DataPropertyName = "NgayBao";
+            this.NgayBao.HeaderText = "Ngày Báo";
+            this.NgayBao.Name = "NgayBao";
+            this.NgayBao.ReadOnly = true;
+            // 
             // HoTen
             // 
             this.HoTen.DataPropertyName = "HoTen";
@@ -328,6 +357,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(965, 594);
+            this.Controls.Add(this.dateBao);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.dgvLichSuDonDT);
@@ -377,12 +408,15 @@
         private System.Windows.Forms.DataGridView dgvLichSuDonDT;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnXoa;
+        private System.Windows.Forms.DateTimePicker dateBao;
+        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDonDT;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
         private System.Windows.Forms.DataGridViewTextBoxColumn NguoiBao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayBao;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn DienThoai;
