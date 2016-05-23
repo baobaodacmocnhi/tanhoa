@@ -236,5 +236,39 @@ namespace ThuTien.GUI.ChuyenKhoan
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();
         }
+
+        private void btnInDangNganHanhThu_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            foreach (DataGridViewRow item in dgvDichVuThu.Rows)
+                if (!string.IsNullOrEmpty(item.Cells["NgayGiaiTrach"].Value.ToString()) && !bool.Parse(item.Cells["DangNgan_ChuyenKhoan"].Value.ToString()) && !bool.Parse(item.Cells["DangNgan_Quay"].Value.ToString()) && int.Parse(item.Cells["TieuThu"].Value.ToString()) != 0)
+                {
+                        DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                        dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                        dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                        dr["LoaiBaoCao"] = "KIỂM TRA DỊCH VỤ THU HỘ";
+                        dr["GhiChu"] = "ĐỂ BIẾT, KHÔNG THU";
+                        dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                        dr["HoTen"] = item.Cells["HoTen"].Value.ToString();
+                        dr["MLT"] = item.Cells["MLT"].Value.ToString().Insert(4, " ").Insert(2, " ");
+                        dr["Ky"] = item.Cells["Ky"].Value.ToString();
+                        dr["TongCong"] = item.Cells["SoTien"].Value.ToString();
+                        dr["HanhThu"] = item.Cells["HanhThu"].Value.ToString();
+                        dr["To"] = item.Cells["To"].Value.ToString();
+                        if (int.Parse(item.Cells["GiaBieu"].Value.ToString()) > 20)
+                            dr["Loai"] = "CQ";
+                        else
+                            dr["Loai"] = "TG";
+                        dr["NganHang"] = item.Cells["TenDichVu"].Value.ToString();
+
+                        if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
+                            dr["LenhHuy"] = true;
+                        ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
+                }
+            rptDSDichVuThu rpt = new rptDSDichVuThu();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
+        }
     }
 }

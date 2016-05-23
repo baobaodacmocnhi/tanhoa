@@ -552,6 +552,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["Ky"] = hoadon.KY + "/" + hoadon.NAM;
                     dr["MLT"] = hoadon.MALOTRINH;
                     dr["TienDu"] = item.Cells["SoTien_TienDu"].Value;
+                    dr["TongCong"] = hoadon.TONGCONG-(int)item.Cells["SoTien_TienDu"].Value;
 
                     ds.Tables["TienDuKhachHang"].Rows.Add(dr);
                 }

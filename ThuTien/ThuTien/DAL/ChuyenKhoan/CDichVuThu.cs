@@ -24,6 +24,8 @@ namespace ThuTien.DAL.ChuyenKhoan
                         join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
+                        join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
+                        from itemtableDN in tableDN.DefaultIfEmpty()
                         where itemDV.DanhBo==DanhBo
                         orderby itemDV.CreateDate ascending
                         select new
@@ -45,6 +47,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                             GiaBieu = itemHD.GB,
                             HanhThu = itemtableND.HoTen,
                             To = itemtableND.TT_To.TenTo,
+                            DangNgan=itemtableDN.HoTen,
                         };
             return LINQToDataTable(query);
         }
@@ -55,6 +58,8 @@ namespace ThuTien.DAL.ChuyenKhoan
                         join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
+                        join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
+                        from itemtableDN in tableDN.DefaultIfEmpty()
                         where itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate 
                         && itemDV.TenDichVu.Contains(TenDichVu)
                         orderby itemDV.CreateDate ascending
@@ -77,6 +82,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                             GiaBieu=itemHD.GB,
                             HanhThu = itemtableND.HoTen,
                             To = itemtableND.TT_To.TenTo,
+                            DangNgan = itemtableDN.HoTen,
                         };
             return LINQToDataTable(query);
         }
@@ -87,6 +93,8 @@ namespace ThuTien.DAL.ChuyenKhoan
                         join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
+                        join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
+                        from itemtableDN in tableDN.DefaultIfEmpty()
                         where itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate
                         && itemDV.TenDichVu.Contains(TenDichVu) && itemHD.DOT.Value >= FromDot && itemHD.DOT.Value <= ToDot
                         orderby itemDV.CreateDate ascending
@@ -109,6 +117,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                             GiaBieu = itemHD.GB,
                             HanhThu = itemtableND.HoTen,
                             To = itemtableND.TT_To.TenTo,
+                            DangNgan = itemtableDN.HoTen,
                         };
             return LINQToDataTable(query);
         }
@@ -119,6 +128,8 @@ namespace ThuTien.DAL.ChuyenKhoan
                         join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
+                        join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
+                        from itemtableDN in tableDN.DefaultIfEmpty()
                         where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                             && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                             && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
@@ -142,6 +153,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                             GiaBieu = itemHD.GB,
                             HanhThu = itemtableND.HoTen,
                             To = itemtableND.TT_To.TenTo,
+                            DangNgan = itemtableDN.HoTen,
                         };
             return LINQToDataTable(query);
         }
@@ -152,6 +164,8 @@ namespace ThuTien.DAL.ChuyenKhoan
                         join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
+                        join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
+                        from itemtableDN in tableDN.DefaultIfEmpty()
                         where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                             && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                             && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
@@ -176,6 +190,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                             GiaBieu = itemHD.GB,
                             HanhThu = itemtableND.HoTen,
                             To = itemtableND.TT_To.TenTo,
+                            DangNgan = itemtableDN.HoTen,
                         };
             return LINQToDataTable(query);
         }
@@ -187,6 +202,8 @@ namespace ThuTien.DAL.ChuyenKhoan
                         join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
+                        join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
+                        from itemtableDN in tableDN.DefaultIfEmpty()
                         where itemHD.MaNV_HanhThu == MaNV_HanhThu
                             && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
                         select new
@@ -208,6 +225,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                             GiaBieu = itemHD.GB,
                             HanhThu = itemtableND.HoTen,
                             To = itemtableND.TT_To.TenTo,
+                            DangNgan = itemtableDN.HoTen,
                         };
             dt=LINQToDataTable(query);
 
@@ -216,6 +234,8 @@ namespace ThuTien.DAL.ChuyenKhoan
                           join itemCTDN in _db.TT_CTDongNuocs on itemDV.SoHoaDon equals itemCTDN.SoHoaDon
                           join itemND in _db.TT_NguoiDungs on itemCTDN.TT_DongNuoc.MaNV_DongNuoc equals itemND.MaND into tableND
                           from itemtableND in tableND.DefaultIfEmpty()
+                          join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
+                          from itemtableDN in tableDN.DefaultIfEmpty()
                           where itemCTDN.TT_DongNuoc.MaNV_DongNuoc == MaNV_HanhThu && itemCTDN.TT_DongNuoc.Huy==false
                             && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
                           select new
@@ -235,6 +255,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                               GiaBieu = itemHD.GB,
                               HanhThu = itemtableND.HoTen,
                               To = itemtableND.TT_To.TenTo,
+                              DangNgan = itemtableDN.HoTen,
                           };
             dt.Merge(LINQToDataTable(queryDN));
             if (dt.Rows.Count > 0)
@@ -251,6 +272,8 @@ namespace ThuTien.DAL.ChuyenKhoan
                         join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
+                        join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
+                        from itemtableDN in tableDN.DefaultIfEmpty()
                         where itemHD.MaNV_HanhThu == MaNV_HanhThu
                             && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
                             && itemHD.DOT.Value >= FromDot && itemHD.DOT.Value <= ToDot
@@ -273,6 +296,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                             GiaBieu = itemHD.GB,
                             HanhThu = itemtableND.HoTen,
                             To = itemtableND.TT_To.TenTo,
+                            DangNgan = itemtableDN.HoTen,
                         };
             dt = LINQToDataTable(query);
 
@@ -281,6 +305,8 @@ namespace ThuTien.DAL.ChuyenKhoan
                           join itemCTDN in _db.TT_CTDongNuocs on itemDV.SoHoaDon equals itemCTDN.SoHoaDon
                           join itemND in _db.TT_NguoiDungs on itemCTDN.TT_DongNuoc.MaNV_DongNuoc equals itemND.MaND into tableND
                           from itemtableND in tableND.DefaultIfEmpty()
+                          join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
+                          from itemtableDN in tableDN.DefaultIfEmpty()
                           where itemCTDN.TT_DongNuoc.MaNV_DongNuoc == MaNV_HanhThu && itemCTDN.TT_DongNuoc.Huy == false
                             && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
                             && itemHD.DOT.Value >= FromDot && itemHD.DOT.Value <= ToDot
@@ -301,6 +327,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                               GiaBieu = itemHD.GB,
                               HanhThu = itemtableND.HoTen,
                               To = itemtableND.TT_To.TenTo,
+                              DangNgan = itemtableDN.HoTen,
                           };
             dt.Merge(LINQToDataTable(queryDN));
             if (dt.Rows.Count > 0)
