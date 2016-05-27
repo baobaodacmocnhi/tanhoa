@@ -3,14 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using ThuTien.LinQ;
 
 namespace ThuTien.DAL.ChuyenKhoan
 {
     class CDichVuThu:CDAL
     {
+        public TT_DichVuThu Get(string SoHoaDon)
+        {
+            return _db.TT_DichVuThus.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
+        }
+
         public bool CheckExist(string SoHoaDon)
         {
             return _db.TT_DichVuThus.Any(item => item.SoHoaDon == SoHoaDon);
+        }
+
+        public bool Xoa(TT_DichVuThu dvt)
+        {
+            try
+            {
+                _db.TT_DichVuThus.DeleteOnSubmit(dvt);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
         }
 
         public DataTable GetDichVuThu()

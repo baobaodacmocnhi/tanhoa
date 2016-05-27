@@ -21,6 +21,7 @@ namespace ThuTien.GUI.ToTruong
         string _mnu = "mnuGiaoHDHanhThu";
         CHoaDon _cHoaDon = new CHoaDon();
         CNguoiDung _cNguoiDung = new CNguoiDung();
+        CTo _cTo = new CTo();
         int _selectedindex = -1;
 
         public frmGiaoHDHanhThu()
@@ -32,6 +33,18 @@ namespace ThuTien.GUI.ToTruong
         {
             dgvHDTuGia.AutoGenerateColumns = false;
             dgvHDCoQuan.AutoGenerateColumns = false;
+
+            if (CNguoiDung.Doi)
+            {
+                cmbTo.Visible = true;
+
+                cmbTo.DataSource = _cTo.GetDSHanhThu();
+                cmbTo.DisplayMember = "TenTo";
+                cmbTo.ValueMember = "MaTo";
+            }
+            else
+                lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
+
             cmbNam.DataSource = _cHoaDon.GetNam();
             cmbNam.DisplayMember = "Nam";
             cmbNam.ValueMember = "Nam";
@@ -39,8 +52,6 @@ namespace ThuTien.GUI.ToTruong
             cmbNhanVien.DataSource = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
             cmbNhanVien.DisplayMember = "HoTen";
             cmbNhanVien.ValueMember = "MaND";
-
-            lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
 
             cmbCucChia.SelectedIndex = 0;
         }
@@ -129,21 +140,40 @@ namespace ThuTien.GUI.ToTruong
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            if (cmbKy.SelectedIndex != -1 && cmbDot.SelectedIndex != -1)
+            if (CNguoiDung.Doi)
             {
-                if (tabControl.SelectedTab.Name == "tabTuGia")
+                if (cmbKy.SelectedIndex != -1 && cmbDot.SelectedIndex != -1)
                 {
-                    dgvHDTuGia.DataSource = _cHoaDon.GetTongGiaoByNamKyDot("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
-                    CountdgvHDTuGia();
-                }
-                else
-                    if (tabControl.SelectedTab.Name == "tabCoQuan")
+                    if (tabControl.SelectedTab.Name == "tabTuGia")
                     {
-                        dgvHDCoQuan.DataSource = _cHoaDon.GetTongGiaoByNamKyDot("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
-                        CountdgvHDCoQuan();
+                        dgvHDTuGia.DataSource = _cHoaDon.GetTongGiaoByNamKyDot("TG", (int)cmbTo.SelectedValue, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                        CountdgvHDTuGia();
                     }
-                Clear();
+                    else
+                        if (tabControl.SelectedTab.Name == "tabCoQuan")
+                        {
+                            dgvHDCoQuan.DataSource = _cHoaDon.GetTongGiaoByNamKyDot("CQ", (int)cmbTo.SelectedValue, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                            CountdgvHDCoQuan();
+                        }
+                    Clear();
+                }
             }
+            else
+                if (cmbKy.SelectedIndex != -1 && cmbDot.SelectedIndex != -1)
+                {
+                    if (tabControl.SelectedTab.Name == "tabTuGia")
+                    {
+                        dgvHDTuGia.DataSource = _cHoaDon.GetTongGiaoByNamKyDot("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                        CountdgvHDTuGia();
+                    }
+                    else
+                        if (tabControl.SelectedTab.Name == "tabCoQuan")
+                        {
+                            dgvHDCoQuan.DataSource = _cHoaDon.GetTongGiaoByNamKyDot("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                            CountdgvHDCoQuan();
+                        }
+                    Clear();
+                }
         }
 
         private void dgvHDTuGia_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -244,6 +274,7 @@ namespace ThuTien.GUI.ToTruong
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            if(CNguoiDung.Doi==false)
             if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
                 //var startTime = System.Diagnostics.Stopwatch.StartNew();
@@ -306,9 +337,9 @@ namespace ThuTien.GUI.ToTruong
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            if (CNguoiDung.Doi == false)
             if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
             {
-
                 if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     if (_selectedindex != -1)
                     {

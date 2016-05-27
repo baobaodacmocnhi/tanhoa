@@ -149,6 +149,12 @@ namespace ThuTien.GUI.ChuyenKhoan
                 try
                 {
                     foreach (ListViewItem item in lstHD.Items)
+                        if (_cHoaDon.CheckKhoaTienDu(item.Text))
+                        {
+                            MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    foreach (ListViewItem item in lstHD.Items)
                         using (var scope = new TransactionScope())
                         {
                             if (_cHoaDon.DangNganTienMatChuyenKhoan(item.Text, CNguoiDung.MaND))

@@ -29,7 +29,6 @@ namespace ThuTien.GUI.ToTruong
 
             if (CNguoiDung.Doi)
             {
-                lbTo.Visible = true;
                 cmbTo.Visible = true;
 
                 List<TT_To> lstTo = _cTo.GetDSHanhThu();
@@ -41,6 +40,8 @@ namespace ThuTien.GUI.ToTruong
                 cmbTo.DisplayMember = "TenTo";
                 cmbTo.ValueMember = "MaTo";
             }
+            else
+                lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
 
             btnXem.PerformClick();
         }

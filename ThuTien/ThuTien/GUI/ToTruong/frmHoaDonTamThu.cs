@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using ThuTien.DAL.Quay;
 using ThuTien.DAL.QuanTri;
 using ThuTien.DAL.DongNuoc;
+using ThuTien.LinQ;
 
 namespace ThuTien.GUI.ToTruong
 {
@@ -17,6 +18,7 @@ namespace ThuTien.GUI.ToTruong
         CTamThu _cTamThu = new CTamThu();
         CDongNuoc _cDongNuoc = new CDongNuoc();
         CLenhHuy _cLenhHuy = new CLenhHuy();
+        CTo _cTo = new CTo();
 
         public frmHoaDonTamThu()
         {
@@ -26,11 +28,36 @@ namespace ThuTien.GUI.ToTruong
         private void frmHoaDonTamThu_Load(object sender, EventArgs e)
         {
             dgvHoaDon.AutoGenerateColumns = false;
+
+            if (CNguoiDung.Doi)
+            {
+                cmbTo.Visible = true;
+
+                List<TT_To> lstTo = _cTo.GetDSHanhThu();
+                TT_To to = new TT_To();
+                to.MaTo = 0;
+                to.TenTo = "Tất Cả";
+                lstTo.Insert(0, to);
+                cmbTo.DataSource = lstTo;
+                cmbTo.DisplayMember = "TenTo";
+                cmbTo.ValueMember = "MaTo";
+            }
+            else
+                lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
         }
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvHoaDon.DataSource = _cTamThu.GetDSTon(CNguoiDung.MaTo, false);
+            if (CNguoiDung.Doi)
+            {
+                if (cmbTo.SelectedIndex == 0)
+                    dgvHoaDon.DataSource = _cTamThu.GetDSTon(false);
+                else
+                    if (cmbTo.SelectedIndex > 0)
+                        dgvHoaDon.DataSource = _cTamThu.GetDSTon((int)cmbTo.SelectedValue, false);
+            }
+            else
+                dgvHoaDon.DataSource = _cTamThu.GetDSTon(CNguoiDung.MaTo, false);
 
             foreach (DataGridViewRow item in dgvHoaDon.Rows)
             {

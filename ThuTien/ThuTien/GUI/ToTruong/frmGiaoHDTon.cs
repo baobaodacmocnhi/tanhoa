@@ -18,7 +18,9 @@ namespace ThuTien.GUI.ToTruong
         string _mnu = "mnuGiaoHDTon";
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CHoaDon _cHoaDon = new CHoaDon();
+        CTo _cTo = new CTo();
         List<TT_NguoiDung> _lstND;
+        bool _flagLoadFirst = false;
 
         public frmGiaoHDTon()
         {
@@ -29,20 +31,34 @@ namespace ThuTien.GUI.ToTruong
         {
             dgvHDTon.AutoGenerateColumns = false;
 
-            _lstND = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
-            TT_NguoiDung nguoidung = new TT_NguoiDung();
-            nguoidung.MaND = -1;
-            nguoidung.HoTen = "Tất cả";
-            _lstND.Insert(0, nguoidung);
+            if (CNguoiDung.Doi)
+            {
+                cmbTo.Visible = true;
 
-            cmbNhanVien.DataSource = _lstND;
-            cmbNhanVien.DisplayMember = "HoTen";
-            cmbNhanVien.ValueMember = "MaND";
+                cmbTo.DataSource = _cTo.GetDSHanhThu();
+                cmbTo.DisplayMember = "TenTo";
+                cmbTo.ValueMember = "MaTo";
 
-            lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
+                cmbTo.SelectedIndex = -1;
+            }
+            else
+            {
+                lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
 
+                _lstND = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
+                TT_NguoiDung nguoidung = new TT_NguoiDung();
+                nguoidung.MaND = -1;
+                nguoidung.HoTen = "Tất cả";
+                _lstND.Insert(0, nguoidung);
+
+                cmbNhanVien.DataSource = _lstND;
+                cmbNhanVien.DisplayMember = "HoTen";
+                cmbNhanVien.ValueMember = "MaND";
+            }
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
+
+            _flagLoadFirst = true;
         }
 
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)
@@ -79,89 +95,90 @@ namespace ThuTien.GUI.ToTruong
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
-            {
-                foreach (ListViewItem item in lstHD.Items)
+            if (CNguoiDung.Doi == false)
+                if (CNguoiDung.CheckQuyen(_mnu, "Them"))
                 {
-                    if (_cHoaDon.CheckDangNganBySoHoaDon(item.Text))
-                    {
-                        MessageBox.Show("Hóa Đơn đã Đăng Ngân: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        item.Selected = true;
-                        item.Focused = true;
-                        return;
-                    }
-                }
-                try
-                {
-                    _cHoaDon.SqlBeginTransaction();
-
                     foreach (ListViewItem item in lstHD.Items)
-                        if (!_cHoaDon.GiaoTon(item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString())))
+                    {
+                        if (_cHoaDon.CheckDangNganBySoHoaDon(item.Text))
                         {
-                            _cHoaDon.SqlRollbackTransaction();
-                            MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Hóa Đơn đã Đăng Ngân: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            item.Selected = true;
+                            item.Focused = true;
                             return;
                         }
-                    _cHoaDon.SqlCommitTransaction();
-                    lstHD.Items.Clear();
-                    btnXem.PerformClick();
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception)
-                {
-                    _cHoaDon.SqlRollbackTransaction();
-                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
+                    }
+                    try
+                    {
+                        _cHoaDon.SqlBeginTransaction();
 
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
-            {
-                try
-                {
-                    _cHoaDon.SqlBeginTransaction();
-
-                    foreach (DataGridViewRow item in dgvHDTon.SelectedRows)
-                        if (!_cHoaDon.CheckDangNganBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
-                            if (!_cHoaDon.XoaGiaoTon(item.Cells["SoHoaDon"].Value.ToString()))
+                        foreach (ListViewItem item in lstHD.Items)
+                            if (!_cHoaDon.GiaoTon(item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString())))
                             {
                                 _cHoaDon.SqlRollbackTransaction();
                                 MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-                    _cHoaDon.SqlCommitTransaction();
-                    btnXem.PerformClick();
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        _cHoaDon.SqlCommitTransaction();
+                        lstHD.Items.Clear();
+                        btnXem.PerformClick();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception)
+                    {
+                        _cHoaDon.SqlRollbackTransaction();
+                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch (Exception)
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.Doi == false)
+                if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
                 {
-                    _cHoaDon.SqlRollbackTransaction();
-                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    try
+                    {
+                        _cHoaDon.SqlBeginTransaction();
+
+                        foreach (DataGridViewRow item in dgvHDTon.SelectedRows)
+                            if (!_cHoaDon.CheckDangNganBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
+                                if (!_cHoaDon.XoaGiaoTon(item.Cells["SoHoaDon"].Value.ToString()))
+                                {
+                                    _cHoaDon.SqlRollbackTransaction();
+                                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                        _cHoaDon.SqlCommitTransaction();
+                        btnXem.PerformClick();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception)
+                    {
+                        _cHoaDon.SqlRollbackTransaction();
+                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-            }
-            else
-                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            if (dateTu.Value <= dateDen.Value)
-                if (cmbNhanVien.SelectedIndex == 0)
+            if (cmbNhanVien.SelectedIndex == 0)
+            {
+                DataTable dt = new DataTable();
+                for (int i = 1; i < _lstND.Count; i++)
+                    dt.Merge(_cHoaDon.GetDSGiaoTonByNVDates(_lstND[i].MaND, dateTu.Value, dateDen.Value));
+                dgvHDTon.DataSource = dt;
+            }
+            else
+                if (cmbNhanVien.SelectedIndex > 0)
                 {
-                    DataTable dt = new DataTable();
-                    for (int i = 1; i < _lstND.Count; i++)
-                        dt.Merge(_cHoaDon.GetDSGiaoTonByNVDates(_lstND[i].MaND, dateTu.Value, dateDen.Value));
-                    dgvHDTon.DataSource = dt;
+                    dgvHDTon.DataSource = _cHoaDon.GetDSGiaoTonByNVDates(int.Parse(cmbNhanVien.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
                 }
-                else
-                    if (cmbNhanVien.SelectedIndex > 0)
-                    {
-                        dgvHDTon.DataSource = _cHoaDon.GetDSGiaoTonByNVDates(int.Parse(cmbNhanVien.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
-                    }
         }
 
         private void dgvHDTon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -212,6 +229,29 @@ namespace ThuTien.GUI.ToTruong
                 str += item.Text + "\n";
             }
             Clipboard.SetText(str);
+        }
+
+        private void cmbTo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CNguoiDung.Doi && _flagLoadFirst == true && cmbTo.SelectedIndex != -1)
+            {
+                _lstND = _cNguoiDung.GetDSHanhThuByMaTo((int)cmbTo.SelectedValue);
+                TT_NguoiDung nguoidung = new TT_NguoiDung();
+                nguoidung.MaND = -1;
+                nguoidung.HoTen = "Tất cả";
+                _lstND.Insert(0, nguoidung);
+
+                cmbNhanVien.DataSource = _lstND;
+                cmbNhanVien.DisplayMember = "HoTen";
+                cmbNhanVien.ValueMember = "MaND";
+            }
+            else
+                cmbNhanVien.DataSource = null;
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

@@ -74,6 +74,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.btnInDangNganHanhThu = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDichVuThu)).BeginInit();
             this.SuspendLayout();
             // 
@@ -492,6 +493,7 @@
             this.txtDanhBo.Name = "txtDanhBo";
             this.txtDanhBo.Size = new System.Drawing.Size(100, 20);
             this.txtDanhBo.TabIndex = 97;
+            this.txtDanhBo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBo_KeyPress);
             // 
             // btnInDangNganHanhThu
             // 
@@ -503,11 +505,22 @@
             this.btnInDangNganHanhThu.UseVisualStyleBackColor = true;
             this.btnInDangNganHanhThu.Click += new System.EventHandler(this.btnInDangNganHanhThu_Click);
             // 
+            // btnXoa
+            // 
+            this.btnXoa.Location = new System.Drawing.Point(711, 8);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.TabIndex = 99;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
             // frmDichVuThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1360, 666);
+            this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnInDangNganHanhThu);
             this.Controls.Add(this.txtDanhBo);
             this.Controls.Add(this.label5);
@@ -585,5 +598,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn DangNgan_Quay;
         private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu;
         private System.Windows.Forms.Button btnInDangNganHanhThu;
+        private System.Windows.Forms.Button btnXoa;
     }
 }

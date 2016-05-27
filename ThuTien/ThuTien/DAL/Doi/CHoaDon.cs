@@ -8589,6 +8589,11 @@ namespace ThuTien.DAL.Doi
                 return false;
             }
         }
+
+        public bool CheckKhoaTienDu(string SoHoaDon)
+        {
+            return _db.HOADONs.Any(item => item.SOHOADON == SoHoaDon && item.KhoaTienDu == true);
+        }
     }
 
 }
