@@ -8177,7 +8177,7 @@ namespace ThuTien.DAL.Doi
             return query.ToList().Select(item => item.GIABAN).Sum().Value / query.ToList().Select(item => item.TIEUTHU).Sum().Value;
         }
 
-        public DataTable TinhGiaBanBinhQuanByNam(int Nam)
+        public DataTable GetDSGiaBanBinhQuan(int Nam)
         {
             var query = from item in _db.HOADONs
                         where item.NAM == Nam
@@ -8188,6 +8188,21 @@ namespace ThuTien.DAL.Doi
                             TongGiaBan=itemGroup.Sum(groupItem => groupItem.GIABAN),
                             TongTieuThu=itemGroup.Sum(groupItem => groupItem.TIEUTHU),
                             GiaBanBinhQuan = "",
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSGiaBanBinhQuan(int Nam,int Ky)
+        {
+            var query = from item in _db.HOADONs
+                        where item.NAM == Nam &&item.KY==Ky
+                        group item by item.KY into itemGroup
+                        select new
+                        {
+                            Ky = itemGroup.Key,
+                            TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                            TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
+                            GiaBanBinhQuan = (double)itemGroup.Sum(groupItem => groupItem.GIABAN) / (double)itemGroup.Sum(groupItem => groupItem.TIEUTHU),
                         };
             return LINQToDataTable(query);
         }

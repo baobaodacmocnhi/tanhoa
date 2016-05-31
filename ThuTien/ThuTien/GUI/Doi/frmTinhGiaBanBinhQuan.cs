@@ -39,7 +39,7 @@ namespace ThuTien.GUI.Doi
             //    if (cmbKy.SelectedIndex > 0)
             //        txtGiaBanBinhQuan.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _cHoaDon.TinhGiaBanBinhQuanByNamKy(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
 
-            dgvGiaBanBinhQuan.DataSource = _cHoaDon.TinhGiaBanBinhQuanByNam(int.Parse(cmbNam.SelectedValue.ToString()));
+            dgvGiaBanBinhQuan.DataSource = _cHoaDon.GetDSGiaBanBinhQuan(int.Parse(cmbNam.SelectedValue.ToString()));
 
             long TongDoanhThu = 0;
             long TongSanLuong = 0;

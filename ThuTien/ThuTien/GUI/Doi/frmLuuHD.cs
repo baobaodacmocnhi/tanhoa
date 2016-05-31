@@ -204,21 +204,48 @@ namespace ThuTien.GUI.Doi
                         }
                     }
 
-                    //try
-                    //{
-                    //    string lineR_Test = lines[0].Replace("\",\"", "$").Replace("\"", "");
-                    //    string[] contents_Test = lineR_Test.Split('$');
-                    //    int Nam = int.Parse("20" + contents_Test[19]);
-                    //    int Ky = int.Parse(contents_Test[18]);
-                    //    int Dot = int.Parse(contents_Test[1]);
-                    //    string sql = "update HOADON set Quan=DLKH.QUAN,Phuong=DLKH.PHUONG,CoDH=DLKH.CODH,MaDMA=DLKH.MADMA from DLKH where HOADON.DANHBA=DLKH.DANHBO and HOADON.NAM=" + Nam + " and HOADON.KY=" + Ky + " and HOADON.DOT=" + Dot;
-                    //    _cHoaDon.LinQ_ExecuteNonQuery(sql);
-                    //    string sql_Huy = "update HOADON set Quan=DLKH_HUY.QUAN,Phuong=DLKH_HUY.PHUONG,CoDH=DLKH_HUY.CODH,MaDMA=DLKH_HUY.MADMA from DLKH_HUY where HOADON.DANHBA=DLKH_HUY.DANHBO and HOADON.NAM=" + Nam + " and HOADON.KY=" + Ky + " and HOADON.DOT=" + Dot;
-                    //    _cHoaDon.LinQ_ExecuteNonQuery(sql_Huy);
-                    //}
-                    //catch (Exception)
-                    //{
-                    //}
+                    try
+                    {
+                        string lineR_Test = lines[0].Replace("\",\"", "$").Replace("\"", "");
+                        string[] contents_Test = lineR_Test.Split('$');
+                        int Nam = int.Parse("20" + contents_Test[19]);
+                        int Ky = int.Parse(contents_Test[18]);
+                        int Dot = int.Parse(contents_Test[1]);
+                        //string sql = "update HOADON set Quan=DLKH.QUAN,Phuong=DLKH.PHUONG,CoDH=DLKH.CODH,MaDMA=DLKH.MADMA from DLKH where HOADON.DANHBA=DLKH.DANHBO and HOADON.NAM=" + Nam + " and HOADON.KY=" + Ky + " and HOADON.DOT=" + Dot;
+                        //_cHoaDon.LinQ_ExecuteNonQuery(sql);
+                        //string sql_Huy = "update HOADON set Quan=DLKH_HUY.QUAN,Phuong=DLKH_HUY.PHUONG,CoDH=DLKH_HUY.CODH,MaDMA=DLKH_HUY.MADMA from DLKH_HUY where HOADON.DANHBA=DLKH_HUY.DANHBO and HOADON.NAM=" + Nam + " and HOADON.KY=" + Ky + " and HOADON.DOT=" + Dot;
+                        //_cHoaDon.LinQ_ExecuteNonQuery(sql_Huy);
+                        if (Dot == 20)
+                        {
+                            CGiaBanBinhQuan _cGBBQ = new CGiaBanBinhQuan();
+                            DataTable dt = _cHoaDon.GetDSGiaBanBinhQuan(Nam, Ky);
+                            if (!_cGBBQ.CheckExist(Nam, Ky))
+                            {
+                                TT_GiaBanBinhQuan entity = new TT_GiaBanBinhQuan();
+                                entity.Nam = Nam;
+                                entity.Ky = Ky;
+                                entity.DoanhThu = decimal.Parse(dt.Rows[0]["TongGiaBan"].ToString());
+                                entity.SanLuong = decimal.Parse(dt.Rows[0]["TongTieuThu"].ToString());
+                                entity.GiaBanBinhQuan = float.Parse(dt.Rows[0]["GiaBanBinhQuan"].ToString());
+
+                                _cGBBQ.Them(entity);
+                            }
+                            else
+                                if (MessageBox.Show("Đã chốt Giá Bán Bình Quân, Bạn có chắc chốt lại không???", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                                {
+                                    TT_GiaBanBinhQuan entity = _cGBBQ.Get(Nam, Ky);
+                                    entity.DoanhThu = decimal.Parse(dt.Rows[0]["TongGiaBan"].ToString());
+                                    entity.SanLuong = decimal.Parse(dt.Rows[0]["TongTieuThu"].ToString());
+                                    entity.GiaBanBinhQuan = float.Parse(dt.Rows[0]["GiaBanBinhQuan"].ToString());
+                                    
+                                    _cGBBQ.Sua(entity);
+                                }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Lỗi Tính Giá Bình Quân, xin liên hệ BảoBảo", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
