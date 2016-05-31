@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="dbTrangThietBi">
+  <DataContextMoniker Name="/dbTrangThietBiDataContext" />
+  <nestedChildShapes>
+    <classShape Id="8fb78c10-c658-41f4-b20f-1928b543fa00" absoluteBounds="0.75, 5.75, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/dbTrangThietBiDataContext/LichSuSuaChua" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9251e062-91b4-452f-964b-3ce64297f1ae" absoluteBounds="0.765, 6.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a9f8e775-0319-4d70-b100-e98337b8d467" absoluteBounds="6.875, 4, 2, 1.3862939453125">
+      <DataClassMoniker Name="/dbTrangThietBiDataContext/PhongBan" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6f380532-f73c-4b8b-8f95-22f85c7ded16" absoluteBounds="6.89, 4.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cc0b0df0-7e03-426f-b1d7-d4298dfb62db" absoluteBounds="3.625, 1.25, 2, 4.0785139973958326">
+      <DataClassMoniker Name="/dbTrangThietBiDataContext/ThietBi" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bc6e195a-a875-48e8-859e-07a4626dee1e" absoluteBounds="3.64, 1.71, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2fdc2f20-3377-404d-a4e3-2b9f4db53c24" absoluteBounds="3.375, 5.875, 2, 1.9631982421875">
+      <DataClassMoniker Name="/dbTrangThietBiDataContext/LichSuThuHoi" />
+      <nestedChildShapes>
+        <elementListCompartment Id="be8a983b-9317-4050-b435-7c8e2b799eed" absoluteBounds="3.39, 6.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0c91d25f-218b-4e4c-a57f-a17397df64ac" absoluteBounds="1.125, 1.375, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/dbTrangThietBiDataContext/LichSuBanGiao" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dfb19ddb-e5ad-40b0-a9ef-b438386381fc" absoluteBounds="1.1400000000000001, 1.835, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="50dafcdb-afa5-4000-8feb-8a8a2474b0a6" absoluteBounds="7, 1.125, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/dbTrangThietBiDataContext/PhanMem" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3af04253-af24-430f-993c-2fda2b7e6528" absoluteBounds="7.015, 1.585, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
