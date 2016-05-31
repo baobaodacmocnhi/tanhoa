@@ -463,16 +463,25 @@ namespace KTKS_ChungCu
             switch (cmbTimTheo.SelectedItem.ToString())
             {
                 case "Số Chứng Từ":
-                    DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_CT(txtNoiDungTimKiem.Text.Trim());
+                    if (string.IsNullOrEmpty(txtDanhBo.Text.Trim()))
+                        DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_CT(txtNoiDungTimKiem.Text.Trim());
+                    else
+                        DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_CT(txtDanhBo.Text.Trim(), txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Họ Tên":
                     DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_HoTen(txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Lô":
-                    DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_Lo(txtNoiDungTimKiem.Text.Trim());
+                    if (string.IsNullOrEmpty(txtDanhBo.Text.Trim()))
+                        DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_Lo(txtNoiDungTimKiem.Text.Trim());
+                    else
+                        DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_Lo(txtDanhBo.Text.Trim(), txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Phòng":
-                    DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_Phong(txtNoiDungTimKiem.Text.Trim());
+                    if (string.IsNullOrEmpty(txtDanhBo.Text.Trim()))
+                        DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_Phong(txtNoiDungTimKiem.Text.Trim());
+                    else
+                        DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_Phong(txtDanhBo.Text.Trim(), txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Số Thứ Tự":
                     if (txtNoiDungTimKiem.Text.Trim() != "")
