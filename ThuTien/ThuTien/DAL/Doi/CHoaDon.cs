@@ -505,6 +505,14 @@ namespace ThuTien.DAL.Doi
                 return null;
         }
 
+        public List<HOADON> GetDSTon_CoChanTienDu(string DanhBo)
+        {
+            if (_db.HOADONs.Where(item => item.DANHBA == DanhBo && (item.NGAYGIAITRACH == null || item.ChanTienDu == true)).Count() > 0)
+                return _db.HOADONs.Where(item => item.DANHBA == DanhBo && (item.NGAYGIAITRACH == null || item.ChanTienDu == true)).ToList().OrderByDescending(item => item.ID_HOADON).ToList();
+            else
+                return null;
+        }
+
         /// <summary>
         /// Lấy danh sách năm có trong hóa đơn
         /// </summary>

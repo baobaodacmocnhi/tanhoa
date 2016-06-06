@@ -10,6 +10,7 @@ using ThuTien.DAL.Doi;
 using ThuTien.DAL.QuanTri;
 using ThuTien.LinQ;
 using System.Globalization;
+using ThuTien.DAL.ChuyenKhoan;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -182,6 +183,48 @@ namespace ThuTien.GUI.ChuyenKhoan
             }
             else
                 MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnChonFile_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+            {
+                try
+                {
+                    OpenFileDialog dialog = new OpenFileDialog();
+                    dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
+                    dialog.Multiselect = false;
+
+                    if (dialog.ShowDialog() == DialogResult.OK)
+                        if (MessageBox.Show("Bạn có chắc chắn Thêm?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        {
+                            Excel fileExcel = new Excel(dialog.FileName);
+                            DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
+
+                            foreach (DataRow item in dtExcel.Rows)
+                                if (item[0].ToString().Trim().Replace(" ", "").Length == 11)
+                                {
+                                    DataTable dt = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim().Replace(" ", ""));
+                                    foreach (DataGridViewRow itemB in dgvHoaDon.Rows)
+                                    {
+                                        HOADON hoadon = _cHoaDon.Get(itemB.Cells["SoHoaDon"].Value.ToString());
+                                        hoadon.KhoaTienDu = true;
+                                        hoadon.ChanTienDu = true;
+                                        hoadon.NgayChanTienDu = DateTime.Now;
+                                        hoadon.NGAYGIAITRACH = DateTime.Now;
+                                        _cHoaDon.Sua(hoadon);
+                                    }
+                                }
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }
