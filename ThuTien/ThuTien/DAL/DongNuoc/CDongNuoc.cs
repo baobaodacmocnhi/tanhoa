@@ -602,9 +602,9 @@ namespace ThuTien.DAL.DongNuoc
             return _db.TT_KQDongNuocs.SingleOrDefault(item => item.MaDN == MaDN);
         }
 
-        public TT_KQDongNuoc GetKQDongNuocByDanhBo(string DanhBo)
+        public TT_KQDongNuoc GetKQDongNuocByDanhBo_Last(string DanhBo)
         {
-            return _db.TT_KQDongNuocs.SingleOrDefault(item => item.DanhBo == DanhBo && item.TT_DongNuoc.Huy==false);
+            return _db.TT_KQDongNuocs.Where(item => item.DanhBo == DanhBo && item.TT_DongNuoc.Huy == false).OrderByDescending(item => item.MaKQDN).First();
         }
 
         public string GetNgayDNBySoHoaDon(string SoHoaDon)

@@ -14,6 +14,7 @@ using ThuTien.BaoCao;
 using ThuTien.BaoCao.DongNuoc;
 using ThuTien.GUI.BaoCao;
 using ThuTien.DAL;
+using ThuTien.DAL.Quay;
 
 namespace ThuTien.GUI.ToTruong
 {
@@ -24,6 +25,7 @@ namespace ThuTien.GUI.ToTruong
         CDongNuoc _cDongNuoc = new CDongNuoc();
         List<TT_NguoiDung> _lstND = new List<TT_NguoiDung>();
         CCAPNUOCTANHOA _cCapNuocTanHoa = new CCAPNUOCTANHOA();
+        CLenhHuy _cLenhHuy = new CLenhHuy();
 
         public frmGiaoTBDongNuoc()
         {
@@ -328,6 +330,11 @@ namespace ThuTien.GUI.ToTruong
                                 dr["TongCong"] = itemChild["TongCong"];
                                 dr["NhanVien"] = cmbNhanVienGiao.Text;
                                 dr["HanhThu"] = _cNguoiDung.GetHoTenByMaND(int.Parse(row["CreateBy"].ToString()));
+                                if (_cLenhHuy.CheckExist(itemChild["SoHoaDon"].ToString()))
+                                    dr["LenhHuy"] = true;
+                                else
+                                    dr["LenhHuy"] = false;
+
                                 dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                             }
                     }

@@ -316,7 +316,11 @@ namespace ThuTien.GUI.Doi
                 DateTime.TryParse(dgvNhanVien_TC["FromNgayGiaiTrach",e.RowIndex].Value.ToString(),out FromNgayGiaiTrach);
                 DateTime.TryParse(dgvNhanVien_TC["ToNgayGiaiTrach",e.RowIndex].Value.ToString(),out ToNgayGiaiTrach);
 
-                DataTable dt = _cHoaDon.GetDSDangNgan(int.Parse(dgvNhanVien_TC["MaNV_TC", e.RowIndex].Value.ToString()), FromNgayGiaiTrach, ToNgayGiaiTrach);
+                DataTable dt = new DataTable();
+                if (string.IsNullOrEmpty(dgvNhanVien_TC["MaNV_TC", e.RowIndex].Value.ToString()))
+                    dt = _cHoaDon.GetDSDangNgan(null, FromNgayGiaiTrach, ToNgayGiaiTrach);
+                else
+                    dt = _cHoaDon.GetDSDangNgan(int.Parse(dgvNhanVien_TC["MaNV_TC", e.RowIndex].Value.ToString()), FromNgayGiaiTrach, ToNgayGiaiTrach);
                 dsBaoCao ds = new dsBaoCao();
                     foreach (DataRow item in dt.Rows)
                     {

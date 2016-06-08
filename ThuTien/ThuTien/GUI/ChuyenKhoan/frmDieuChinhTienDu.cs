@@ -143,7 +143,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 {
                                     if (_cTienDu.LinQ_ExecuteNonQuery("update TT_TienDu set ChoXuLy=0 where DanhBo='" + hoadon.DANHBA + "'"))
                                     {
-                                        TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByDanhBo(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""));
+                                        TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByDanhBo_Last(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""));
                                         //kqdongnuoc.DongPhi = true;
                                         //kqdongnuoc.ChuyenKhoan = true;
                                         //kqdongnuoc.NgayDongPhi = DateTime.Now;

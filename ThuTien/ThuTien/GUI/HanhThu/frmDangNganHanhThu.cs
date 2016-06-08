@@ -612,7 +612,12 @@ namespace ThuTien.GUI.HanhThu
                 string[] date=time[0].Split('/');
                 DateTime NgayGiaiTrach=new DateTime(int.Parse(date[2]), int.Parse(date[1]),int.Parse(date[0]));
 
-                DataTable dt = _cHoaDon.GetDSDangNgan(int.Parse(dgvHDDaThuDum["MaNV",e.RowIndex].Value.ToString()),int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), NgayGiaiTrach);
+                DataTable dt=new DataTable();
+                if(string.IsNullOrEmpty(dgvHDDaThuDum["MaNV_DangNgan", e.RowIndex].Value.ToString()))
+                    dt= _cHoaDon.GetDSDangNganDum(int.Parse(dgvHDDaThuDum["MaNV_HanhThu", e.RowIndex].Value.ToString()), null, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), NgayGiaiTrach);
+                else
+                    dt = _cHoaDon.GetDSDangNganDum(int.Parse(dgvHDDaThuDum["MaNV_HanhThu", e.RowIndex].Value.ToString()), int.Parse(dgvHDDaThuDum["MaNV_DangNgan", e.RowIndex].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), NgayGiaiTrach);
+
                 dsBaoCao ds = new dsBaoCao();
                 foreach (DataRow item in dt.Rows)
                 {
