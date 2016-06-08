@@ -1228,6 +1228,14 @@ namespace QLVanThu
             }
         }
 
+        private void dgvDSVanThuDi_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.Button == MouseButtons.Right)
+            {
+                System.Diagnostics.Process.Start(@"\\server_hp380\WorkflowData\" + dgvDSVanThuDi["PathFile", e.RowIndex].Value.ToString());
+            }
+        }
+
 
 
     }
