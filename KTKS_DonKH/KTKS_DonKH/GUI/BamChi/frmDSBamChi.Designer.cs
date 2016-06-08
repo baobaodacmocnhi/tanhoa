@@ -759,7 +759,6 @@
             this.chkLoaiDon.TabIndex = 26;
             this.chkLoaiDon.Text = "Theo Loại Đơn";
             this.chkLoaiDon.UseVisualStyleBackColor = true;
-            this.chkLoaiDon.Visible = false;
             // 
             // frmDSBamChi
             // 

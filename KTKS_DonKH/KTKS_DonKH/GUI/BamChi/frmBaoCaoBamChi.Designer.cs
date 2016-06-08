@@ -59,7 +59,6 @@
             this.radThongKeBienBan.Name = "radThongKeBienBan";
             this.radThongKeBienBan.Size = new System.Drawing.Size(144, 21);
             this.radThongKeBienBan.TabIndex = 29;
-            this.radThongKeBienBan.TabStop = true;
             this.radThongKeBienBan.Text = "Thống Kê Biên Bản";
             this.radThongKeBienBan.UseVisualStyleBackColor = true;
             // 
@@ -145,9 +144,10 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel_KhoangThoiGian);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmBaoCaoBamChi";
             this.Text = "Các Loại Báo Cáo Bấm Chì";
+            this.Load += new System.EventHandler(this.frmBaoCaoBamChi_Load);
             this.panel1.ResumeLayout(false);
             this.panel_KhoangThoiGian.ResumeLayout(false);
             this.panel_KhoangThoiGian.PerformLayout();

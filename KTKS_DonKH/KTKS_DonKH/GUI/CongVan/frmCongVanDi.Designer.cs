@@ -73,6 +73,10 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.cmbTimKiem = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtNoiDungTimKiem = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCongVan)).BeginInit();
             this.SuspendLayout();
             // 
@@ -241,7 +245,7 @@
             // 
             this.dateDen.CustomFormat = "dd/MM/yyyy";
             this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen.Location = new System.Drawing.Point(341, 130);
+            this.dateDen.Location = new System.Drawing.Point(95, 161);
             this.dateDen.Name = "dateDen";
             this.dateDen.Size = new System.Drawing.Size(100, 25);
             this.dateDen.TabIndex = 20;
@@ -258,7 +262,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(263, 136);
+            this.label11.Location = new System.Drawing.Point(17, 167);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(72, 17);
             this.label11.TabIndex = 19;
@@ -286,7 +290,7 @@
             this.NoiChuyen,
             this.DanhBo,
             this.DiaChi});
-            this.dgvDSCongVan.Location = new System.Drawing.Point(14, 169);
+            this.dgvDSCongVan.Location = new System.Drawing.Point(13, 193);
             this.dgvDSCongVan.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSCongVan.Name = "dgvDSCongVan";
             this.dgvDSCongVan.RowHeadersWidth = 60;
@@ -370,7 +374,7 @@
             // 
             this.btnXoa.Image = global::KTKS_DonKH.Properties.Resources.delete_24x24;
             this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXoa.Location = new System.Drawing.Point(705, 169);
+            this.btnXoa.Location = new System.Drawing.Point(692, 329);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(67, 35);
             this.btnXoa.TabIndex = 23;
@@ -383,7 +387,7 @@
             // 
             this.btnXem.Image = global::KTKS_DonKH.Properties.Resources.find_24x24;
             this.btnXem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXem.Location = new System.Drawing.Point(534, 127);
+            this.btnXem.Location = new System.Drawing.Point(533, 150);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(70, 35);
             this.btnXem.TabIndex = 21;
@@ -425,7 +429,7 @@
             // 
             this.btnInDS.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
             this.btnInDS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInDS.Location = new System.Drawing.Point(610, 127);
+            this.btnInDS.Location = new System.Drawing.Point(609, 150);
             this.btnInDS.Name = "btnInDS";
             this.btnInDS.Size = new System.Drawing.Size(75, 35);
             this.btnInDS.TabIndex = 88;
@@ -522,7 +526,7 @@
             "21",
             "22",
             "23"});
-            this.cmbDenGio.Location = new System.Drawing.Point(447, 130);
+            this.cmbDenGio.Location = new System.Drawing.Point(201, 161);
             this.cmbDenGio.Name = "cmbDenGio";
             this.cmbDenGio.Size = new System.Drawing.Size(40, 25);
             this.cmbDenGio.TabIndex = 93;
@@ -539,7 +543,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(488, 133);
+            this.label16.Location = new System.Drawing.Point(242, 164);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(15, 17);
             this.label16.TabIndex = 95;
@@ -554,12 +558,53 @@
             this.label17.TabIndex = 96;
             this.label17.Text = "(enter)";
             // 
+            // cmbTimKiem
+            // 
+            this.cmbTimKiem.FormattingEnabled = true;
+            this.cmbTimKiem.Items.AddRange(new object[] {
+            "",
+            "Danh Bộ",
+            "Mã Đơn"});
+            this.cmbTimKiem.Location = new System.Drawing.Point(298, 156);
+            this.cmbTimKiem.Name = "cmbTimKiem";
+            this.cmbTimKiem.Size = new System.Drawing.Size(100, 25);
+            this.cmbTimKiem.TabIndex = 98;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(298, 136);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(37, 17);
+            this.label18.TabIndex = 97;
+            this.label18.Text = "Loại:";
+            // 
+            // txtNoiDungTimKiem
+            // 
+            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(404, 156);
+            this.txtNoiDungTimKiem.Name = "txtNoiDungTimKiem";
+            this.txtNoiDungTimKiem.Size = new System.Drawing.Size(100, 25);
+            this.txtNoiDungTimKiem.TabIndex = 100;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(401, 136);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(68, 17);
+            this.label19.TabIndex = 99;
+            this.label19.Text = "Nội Dung:";
+            // 
             // frmCongVanDi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1293, 631);
+            this.Controls.Add(this.txtNoiDungTimKiem);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.cmbTimKiem);
+            this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
@@ -652,5 +697,9 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ComboBox cmbTimKiem;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox txtNoiDungTimKiem;
+        private System.Windows.Forms.Label label19;
     }
 }

@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using KTKS_DonKH.DAL.BamChi;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.BamChi;
+using KTKS_DonKH.DAL.CapNhat;
 
 namespace KTKS_DonKH.GUI.BamChi
 {
@@ -16,6 +17,7 @@ namespace KTKS_DonKH.GUI.BamChi
     {
         string _tuNgay = "", _denNgay = "";
         CBamChi _cBamChi = new CBamChi();
+        CTrangThaiBamChi _cTrangThaiBamChi = new CTrangThaiBamChi();
 
         protected override void OnLoad(EventArgs e)
         {
@@ -30,31 +32,36 @@ namespace KTKS_DonKH.GUI.BamChi
             InitializeComponent();
         }
 
+        private void frmBaoCaoBamChi_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnBaoCao_Click(object sender, EventArgs e)
         {
             if (radThongKeBienBan.Checked)
-            if(dateDen.Value>=dateTu.Value)
-            {
-                DataTable dt = _cBamChi.LoadDSCTBamChiByDates(dateTu.Value, dateDen.Value);
-                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                foreach (DataRow item in dt.Rows)
                 {
-                    DataRow dr = dsBaoCao.Tables["ThongKeBamChi"].NewRow();
-                    dr["TuNgay"] = _tuNgay;
-                    dr["DenNgay"] = _denNgay;
-                    dr["TrangThaiBC"] = item["TrangThaiBC"];
-                    dr["TenLD"] = item["TenLD"];
-                    dr["DanhBo"] = item["DanhBo"];
-                    dsBaoCao.Tables["ThongKeBamChi"].Rows.Add(dr);
-                }
-                dateTu.Value = DateTime.Now;
-                dateDen.Value = DateTime.Now;
-                _tuNgay = _denNgay = "";
+                    DataTable dt = _cBamChi.LoadDSCTBamChiByDates(dateTu.Value, dateDen.Value);
+                    DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                    foreach (DataRow item in dt.Rows)
+                    {
+                        DataRow dr = dsBaoCao.Tables["ThongKeBamChi"].NewRow();
+                        dr["TuNgay"] = _tuNgay;
+                        dr["DenNgay"] = _denNgay;
+                        dr["TrangThaiBC"] = item["TrangThaiBC"];
+                        dr["TenLD"] = item["TenLD"];
+                        dr["DanhBo"] = item["DanhBo"];
+                        dsBaoCao.Tables["ThongKeBamChi"].Rows.Add(dr);
+                    }
+                    dateTu.Value = DateTime.Now;
+                    dateDen.Value = DateTime.Now;
+                    _tuNgay = _denNgay = "";
 
-                rptThongKeBamChi rpt = new rptThongKeBamChi();
-                rpt.SetDataSource(dsBaoCao);
-                crystalReportViewer1.ReportSource = rpt;  
-            }
+                    rptThongKeBamChi rpt = new rptThongKeBamChi();
+                    rpt.SetDataSource(dsBaoCao);
+                    crystalReportViewer1.ReportSource = rpt;
+                }
+
         }
 
         private void dateTu_ValueChanged(object sender, EventArgs e)
@@ -67,6 +74,8 @@ namespace KTKS_DonKH.GUI.BamChi
         {
             _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
         }
+
+        
     }
 }
 

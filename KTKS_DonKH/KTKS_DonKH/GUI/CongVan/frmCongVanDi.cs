@@ -34,6 +34,8 @@ namespace KTKS_DonKH.GUI.CongVan
         CTTTL _cTTTL = new CTTTL();
         CTTKH _cTTKH = new CTTKH();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        bool _toxuly = false;
+        decimal _madon = 0;
 
         public frmCongVanDi()
         {
@@ -115,6 +117,8 @@ namespace KTKS_DonKH.GUI.CongVan
             txtDanhBo.Text = "";
             txtHoTen.Text = "";
             txtDiaChi.Text = "";
+            _toxuly = false;
+            _madon = 0;
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -131,6 +135,11 @@ namespace KTKS_DonKH.GUI.CongVan
                     item.DiaChi = txtDiaChi.Text.Trim();
                     item.NoiDung = txtNoiDung.Text.Trim();
                     item.NoiChuyen = cmbNoiChuyen.SelectedItem.ToString();
+                    item.ToXuLy = _toxuly;
+                    if (_toxuly)
+                        item.MaDonTXL = _madon;
+                    else
+                        item.MaDon = _madon;
                     if (_cCongVanDi.Them(item))
                     {
                         Clear();
@@ -149,74 +158,106 @@ namespace KTKS_DonKH.GUI.CongVan
                         switch (cmbLoaiVanBan.SelectedItem.ToString())
                         {
                             case "Đơn Tổ Khách Hàng":
-                                DonKH donkh = new DonKH();
-                                donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemMa.Text.Replace("-", "")));
+                                DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = donkh.DanhBo;
                                 item.HoTen = donkh.HoTen;
                                 item.DiaChi = donkh.DiaChi;
+                                _madon = donkh.MaDon;
                                 break;
                             case "Đơn Tổ Xử Lý":
-                                DonTXL dontxl = new DonTXL();
-                                dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(itemMa.Text.Replace("-", "")));
+                                DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = dontxl.DanhBo;
                                 item.HoTen = dontxl.HoTen;
                                 item.DiaChi = dontxl.DiaChi;
+                                _madon = dontxl.MaDon;
                                 break;
                             case "Kiểm Tra Xác Minh":
-                                CTKTXM ctktxm = new CTKTXM();
-                                ctktxm = _cKTXM.getCTKTXMbyID(decimal.Parse(itemMa.Text.Replace("-", "")));
+                                CTKTXM ctktxm = _cKTXM.getCTKTXMbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = ctktxm.DanhBo;
                                 item.HoTen = ctktxm.HoTen;
                                 item.DiaChi = ctktxm.DiaChi;
+                                _toxuly = ctktxm.KTXM.ToXuLy;
+                                if (ctktxm.KTXM.ToXuLy)
+                                    _madon = ctktxm.KTXM.MaDonTXL.Value;
+                                else
+                                    _madon = ctktxm.KTXM.MaDon.Value;
                                 break;
                             case "Bấm Chì":
-                                CTBamChi ctbamchi = new CTBamChi();
-                                ctbamchi = _cBamChi.getCTBamChibyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                CTBamChi ctbamchi = _cBamChi.getCTBamChibyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = ctbamchi.DanhBo;
                                 item.HoTen = ctbamchi.HoTen;
                                 item.DiaChi = ctbamchi.DiaChi;
+                                _toxuly = ctbamchi.BamChi.ToXuLy;
+                                if (ctbamchi.BamChi.ToXuLy)
+                                    _madon = ctbamchi.BamChi.MaDonTXL.Value;
+                                else
+                                    _madon = ctbamchi.BamChi.MaDon.Value;
                                 break;
                             case "Điều Chỉnh Biến Động":
-                                CTDCBD dcbd = new CTDCBD();
-                                dcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                CTDCBD dcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = dcbd.DanhBo;
                                 item.HoTen = dcbd.HoTen;
                                 item.DiaChi = dcbd.DiaChi;
+                                _toxuly = dcbd.DCBD.ToXuLy;
+                                if (dcbd.DCBD.ToXuLy)
+                                    _madon = dcbd.DCBD.MaDonTXL.Value;
+                                else
+                                    _madon = dcbd.DCBD.MaDon.Value;
                                 break;
                             case "Điều Chỉnh Hóa Đơn":
-                                CTDCHD dchd = new CTDCHD();
-                                dchd = _cDCBD.getCTDCHDbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                CTDCHD dchd = _cDCBD.getCTDCHDbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = dchd.DanhBo;
                                 item.HoTen = dchd.HoTen;
                                 item.DiaChi = dchd.DiaChi;
+                                _toxuly = dchd.DCBD.ToXuLy;
+                                if (dchd.DCBD.ToXuLy)
+                                    _madon = dchd.DCBD.MaDonTXL.Value;
+                                else
+                                    _madon = dchd.DCBD.MaDon.Value;
                                 break;
                             case "Cắt Tạm Danh Bộ":
-                                CTCTDB ctctdb = new CTCTDB();
-                                ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                CTCTDB ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = ctctdb.DanhBo;
                                 item.HoTen = ctctdb.HoTen;
                                 item.DiaChi = ctctdb.DiaChi;
+                                _toxuly = ctctdb.CHDB.ToXuLy;
+                                if (ctctdb.CHDB.ToXuLy)
+                                    _madon = ctctdb.CHDB.MaDonTXL.Value;
+                                else
+                                    _madon = ctctdb.CHDB.MaDon.Value;
                                 break;
                             case "Cắt Hủy Danh Bộ":
-                                CTCHDB ctchdb = new CTCHDB();
-                                ctchdb = _cCHDB.getCTCHDBbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                CTCHDB ctchdb = _cCHDB.getCTCHDBbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = ctchdb.DanhBo;
                                 item.HoTen = ctchdb.HoTen;
                                 item.DiaChi = ctchdb.DiaChi;
+                                _toxuly = ctchdb.CHDB.ToXuLy;
+                                if (ctchdb.CHDB.ToXuLy)
+                                    _madon = ctchdb.CHDB.MaDonTXL.Value;
+                                else
+                                    _madon = ctchdb.CHDB.MaDon.Value;
                                 break;
                             case "Phiếu Hủy Danh Bộ":
-                                YeuCauCHDB ycchdb = new YeuCauCHDB();
-                                ycchdb = _cCHDB.getYeuCauCHDbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                YeuCauCHDB ycchdb = _cCHDB.getYeuCauCHDbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = ycchdb.DanhBo;
                                 item.HoTen = ycchdb.HoTen;
                                 item.DiaChi = ycchdb.DiaChi;
+                                _toxuly = ycchdb.ToXuLy;
+                                if (ycchdb.ToXuLy)
+                                    _madon = ycchdb.MaDonTXL.Value;
+                                else
+                                    _madon = ycchdb.MaDon.Value;
                                 break;
                             case "Thư Trả Lời":
-                                CTTTTL cttttl = new CTTTTL();
-                                cttttl = _cTTTL.getCTTTTLbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                CTTTTL cttttl = _cTTTL.getCTTTTLbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = cttttl.DanhBo;
                                 item.HoTen = cttttl.HoTen;
                                 item.DiaChi = cttttl.DiaChi;
+                                _toxuly = cttttl.TTTL.ToXuLy;
+                                if (cttttl.TTTL.ToXuLy)
+                                    _madon = cttttl.TTTL.MaDonTXL.Value;
+                                else
+                                    _madon = cttttl.TTTL.MaDon.Value;
                                 break;
                             default:
 
@@ -224,6 +265,11 @@ namespace KTKS_DonKH.GUI.CongVan
                         }
                         item.NoiDung = txtNoiDung.Text.Trim();
                         item.NoiChuyen = cmbNoiChuyen.SelectedItem.ToString();
+                        item.ToXuLy = _toxuly;
+                        if (_toxuly)
+                            item.MaDonTXL = _madon;
+                        else
+                            item.MaDon = _madon;
                         _cCongVanDi.Them(item);
                     }
                     Clear();
@@ -234,7 +280,23 @@ namespace KTKS_DonKH.GUI.CongVan
 
         private void btnXem_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtNoiDungTimKiem.Text.Trim()))
             dgvDSCongVan.DataSource = _cCongVanDi.GetDS(dateTu.Value, int.Parse(cmbTuGio.SelectedItem.ToString()), dateDen.Value, int.Parse(cmbDenGio.SelectedItem.ToString()));
+            else
+                switch (cmbTimKiem.SelectedItem.ToString())
+                {
+                    case "Danh Bộ":
+                        if (txtNoiDungTimKiem.Text.Trim().Length == 11)
+                        {
+                            dgvDSCongVan.DataSource = _cCongVanDi.GetDS(txtNoiDungTimKiem.Text.Trim());
+                        }
+                        break;
+                    case "Mã Đơn":
+
+                        break;
+                    default:
+                        break;
+                }
         }
 
         private void txtTuMa_KeyPress(object sender, KeyPressEventArgs e)
@@ -248,60 +310,102 @@ namespace KTKS_DonKH.GUI.CongVan
                         txtDanhBo.Text = donkh.DanhBo;
                         txtHoTen.Text = donkh.HoTen;
                         txtDiaChi.Text = donkh.DiaChi;
+                        _madon = donkh.MaDon;
                         break;
                     case "Đơn Tổ Xử Lý":
                         DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = dontxl.DanhBo;
                         txtHoTen.Text = dontxl.HoTen;
                         txtDiaChi.Text = dontxl.DiaChi;
+                        _madon = dontxl.MaDon;
                         break;
                     case "Kiểm Tra Xác Minh":
                         CTKTXM ctktxm = _cKTXM.getCTKTXMbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = ctktxm.DanhBo;
                         txtHoTen.Text = ctktxm.HoTen;
                         txtDiaChi.Text = ctktxm.DiaChi;
+                        _toxuly = ctktxm.KTXM.ToXuLy;
+                        if (ctktxm.KTXM.ToXuLy)
+                            _madon = ctktxm.KTXM.MaDonTXL.Value;
+                        else
+                            _madon = ctktxm.KTXM.MaDon.Value;
                         break;
                     case "Bấm Chì":
                         CTBamChi ctbamchi = _cBamChi.getCTBamChibyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = ctbamchi.DanhBo;
                         txtHoTen.Text = ctbamchi.HoTen;
                         txtDiaChi.Text = ctbamchi.DiaChi;
+                        _toxuly = ctbamchi.BamChi.ToXuLy;
+                        if (ctbamchi.BamChi.ToXuLy)
+                            _madon = ctbamchi.BamChi.MaDonTXL.Value;
+                        else
+                            _madon = ctbamchi.BamChi.MaDon.Value;
                         break;
                     case "Điều Chỉnh Biến Động":
                         CTDCBD dcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = dcbd.DanhBo;
                         txtHoTen.Text = dcbd.HoTen;
                         txtDiaChi.Text = dcbd.DiaChi;
+                        _toxuly = dcbd.DCBD.ToXuLy;
+                        if (dcbd.DCBD.ToXuLy)
+                            _madon = dcbd.DCBD.MaDonTXL.Value;
+                        else
+                            _madon = dcbd.DCBD.MaDon.Value;
                         break;
                     case "Điều Chỉnh Hóa Đơn":
                         CTDCHD dchd = _cDCBD.getCTDCHDbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = dchd.DanhBo;
                         txtHoTen.Text = dchd.HoTen;
                         txtDiaChi.Text = dchd.DiaChi;
+                        _toxuly = dchd.DCBD.ToXuLy;
+                        if (dchd.DCBD.ToXuLy)
+                            _madon = dchd.DCBD.MaDonTXL.Value;
+                        else
+                            _madon = dchd.DCBD.MaDon.Value;
                         break;
                     case "Cắt Tạm Danh Bộ":
                         CTCTDB ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = ctctdb.DanhBo;
                         txtHoTen.Text = ctctdb.HoTen;
                         txtDiaChi.Text = ctctdb.DiaChi;
+                        _toxuly = ctctdb.CHDB.ToXuLy;
+                        if (ctctdb.CHDB.ToXuLy)
+                            _madon = ctctdb.CHDB.MaDonTXL.Value;
+                        else
+                            _madon = ctctdb.CHDB.MaDon.Value;
                         break;
                     case "Cắt Hủy Danh Bộ":
                         CTCHDB ctchdb = _cCHDB.getCTCHDBbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = ctchdb.DanhBo;
                         txtHoTen.Text = ctchdb.HoTen;
                         txtDiaChi.Text = ctchdb.DiaChi;
+                        _toxuly = ctchdb.CHDB.ToXuLy;
+                        if (ctchdb.CHDB.ToXuLy)
+                            _madon = ctchdb.CHDB.MaDonTXL.Value;
+                        else
+                            _madon = ctchdb.CHDB.MaDon.Value;
                         break;
                     case "Phiếu Hủy Danh Bộ":
                         YeuCauCHDB ycchdb = _cCHDB.getYeuCauCHDbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = ycchdb.DanhBo;
                         txtHoTen.Text = ycchdb.HoTen;
                         txtDiaChi.Text = ycchdb.DiaChi;
+                        _toxuly = ycchdb.ToXuLy;
+                        if (ycchdb.ToXuLy)
+                            _madon = ycchdb.MaDonTXL.Value;
+                        else
+                            _madon = ycchdb.MaDon.Value;
                         break;
                     case "Thư Trả Lời":
                         CTTTTL cttttl = _cTTTL.getCTTTTLbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = cttttl.DanhBo;
                         txtHoTen.Text = cttttl.HoTen;
                         txtDiaChi.Text = cttttl.DiaChi;
+                        _toxuly = cttttl.TTTL.ToXuLy;
+                        if (cttttl.TTTL.ToXuLy)
+                            _madon = cttttl.TTTL.MaDonTXL.Value;
+                        else
+                            _madon = cttttl.TTTL.MaDon.Value;
                         break;
                     default:
 

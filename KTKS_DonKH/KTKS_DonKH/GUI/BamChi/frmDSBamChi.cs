@@ -293,7 +293,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         dsBaoCao.Tables["DSBamChi"].Rows.Add(dr);
                     }
 
-                    if (CTaiKhoan.MaUser == 1 || CTaiKhoan.MaUser == 26 || CTaiKhoan.MaUser == 27)
+                    if (CTaiKhoan.MaUser == 1 || CTaiKhoan.MaUser == 25 || CTaiKhoan.MaUser == 26 || CTaiKhoan.MaUser == 27)
                     {
                         if (chkLoaiDon.Checked)
                         {

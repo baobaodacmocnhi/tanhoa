@@ -69,6 +69,21 @@ namespace KTKS_DonKH.DAL.CongVan
             return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(db.CongVanDis.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.CreateDate.Value.Hour >= ToHour && item.CreateDate.Value.Hour <= FromHour).ToList());
         }
 
+        public DataTable GetDS(string DanhBo)
+        {
+            return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(db.CongVanDis.Where(item=>item.DanhBo==DanhBo).ToList());
+        }
+
+        public DataTable GetDSDonKH(decimal MaDon)
+        {
+            return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(db.CongVanDis.Where(item => item.MaDon == MaDon).ToList());
+        }
+
+        public DataTable GetDSDonTXL(decimal MaDonTXL)
+        {
+            return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(db.CongVanDis.Where(item => item.MaDonTXL == MaDonTXL).ToList());
+        }
+
         public DataTable GetDSNoiDung()
         {
             return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(db.CongVanDis.Select(item => new { item.NoiDung }).ToList().Distinct());
