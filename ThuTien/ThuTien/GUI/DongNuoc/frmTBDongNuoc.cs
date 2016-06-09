@@ -15,6 +15,7 @@ using ThuTien.BaoCao.DongNuoc;
 using ThuTien.GUI.BaoCao;
 using System.Globalization;
 using ThuTien.DAL;
+using ThuTien.DAL.HanhThu;
 
 namespace ThuTien.GUI.DongNuoc
 {
@@ -24,7 +25,8 @@ namespace ThuTien.GUI.DongNuoc
         CHoaDon _cHoaDon = new CHoaDon();
         CDongNuoc _cDongNuoc = new CDongNuoc();
         CNguoiDung _cNguoiDung = new CNguoiDung();
-        CCAPNUOCTANHOA _cCapNuocTanHoa = new CCAPNUOCTANHOA();
+        //CCAPNUOCTANHOA _cCapNuocTanHoa = new CCAPNUOCTANHOA();
+        CThongTinKhachHang _cTTKH = new CThongTinKhachHang();
 
         public frmTBDongNuoc()
         {
@@ -240,7 +242,7 @@ namespace ThuTien.GUI.DongNuoc
                         dr["MaDN"] = item["MaDN"].ToString().Insert(item["MaDN"].ToString().Length - 2, "-"); ;
                         dr["HoTen"] = item["HoTen"];
                         dr["DiaChi"] = item["DiaChi"];
-                        dr["DienThoai"] = _cCapNuocTanHoa.GetTTKH(item["DanhBo"].ToString()).Rows[0]["DienThoai"];
+                        dr["DienThoai"] = _cTTKH.GetDienThoai(item["DanhBo"].ToString());
                         if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
                             dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                         dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
