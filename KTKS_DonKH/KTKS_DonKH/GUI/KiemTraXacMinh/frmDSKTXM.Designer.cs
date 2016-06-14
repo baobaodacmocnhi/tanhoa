@@ -90,6 +90,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.chkLoaiDon = new System.Windows.Forms.CheckBox();
             this.txtNoiDungTimKiem2 = new System.Windows.Forms.TextBox();
+            this.radToKH = new System.Windows.Forms.RadioButton();
+            this.radToXuLy = new System.Windows.Forms.RadioButton();
+            this.btnInThongKe = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTKTXM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewKTXM)).BeginInit();
@@ -397,7 +400,7 @@
             this.radDaDuyet.AutoSize = true;
             this.radDaDuyet.Location = new System.Drawing.Point(6, 18);
             this.radDaDuyet.Name = "radDaDuyet";
-            this.radDaDuyet.Size = new System.Drawing.Size(70, 17);
+            this.radDaDuyet.Size = new System.Drawing.Size(84, 21);
             this.radDaDuyet.TabIndex = 0;
             this.radDaDuyet.Text = "Đã Duyệt";
             this.radDaDuyet.UseVisualStyleBackColor = true;
@@ -545,7 +548,7 @@
             this.radChuaDuyet.AutoSize = true;
             this.radChuaDuyet.Location = new System.Drawing.Point(6, 42);
             this.radChuaDuyet.Name = "radChuaDuyet";
-            this.radChuaDuyet.Size = new System.Drawing.Size(81, 17);
+            this.radChuaDuyet.Size = new System.Drawing.Size(98, 21);
             this.radChuaDuyet.TabIndex = 1;
             this.radChuaDuyet.Text = "Chưa Duyệt";
             this.radChuaDuyet.UseVisualStyleBackColor = true;
@@ -566,7 +569,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(363, 19);
+            this.label2.Location = new System.Drawing.Point(261, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 17);
             this.label2.TabIndex = 2;
@@ -579,9 +582,10 @@
             "",
             "Mã Đơn",
             "Danh Bộ",
+            "Số Công Văn",
             "Ngày",
             "Khoảng Thời Gian"});
-            this.cmbTimTheo.Location = new System.Drawing.Point(437, 16);
+            this.cmbTimTheo.Location = new System.Drawing.Point(335, 16);
             this.cmbTimTheo.Name = "cmbTimTheo";
             this.cmbTimTheo.Size = new System.Drawing.Size(120, 25);
             this.cmbTimTheo.TabIndex = 3;
@@ -589,7 +593,7 @@
             // 
             // txtNoiDungTimKiem
             // 
-            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(637, 16);
+            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(535, 16);
             this.txtNoiDungTimKiem.Name = "txtNoiDungTimKiem";
             this.txtNoiDungTimKiem.Size = new System.Drawing.Size(130, 25);
             this.txtNoiDungTimKiem.TabIndex = 5;
@@ -599,7 +603,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(563, 19);
+            this.label1.Location = new System.Drawing.Point(461, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 17);
             this.label1.TabIndex = 4;
@@ -610,7 +614,7 @@
             this.radDSKTXM.AutoSize = true;
             this.radDSKTXM.Location = new System.Drawing.Point(105, 18);
             this.radDSKTXM.Name = "radDSKTXM";
-            this.radDSKTXM.Size = new System.Drawing.Size(112, 17);
+            this.radDSKTXM.Size = new System.Drawing.Size(138, 21);
             this.radDSKTXM.TabIndex = 10;
             this.radDSKTXM.Text = "Danh Sách KTXM";
             this.radDSKTXM.UseVisualStyleBackColor = true;
@@ -632,7 +636,7 @@
             this.groupBox2.Controls.Add(this.radDaDuyet_TXL);
             this.groupBox2.Controls.Add(this.radDSKTXM_TXL);
             this.groupBox2.Controls.Add(this.radChuaDuyet_TXL);
-            this.groupBox2.Location = new System.Drawing.Point(1033, 3);
+            this.groupBox2.Location = new System.Drawing.Point(1075, 3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(245, 65);
             this.groupBox2.TabIndex = 1;
@@ -645,7 +649,7 @@
             this.radDaDuyet_TXL.AutoSize = true;
             this.radDaDuyet_TXL.Location = new System.Drawing.Point(6, 18);
             this.radDaDuyet_TXL.Name = "radDaDuyet_TXL";
-            this.radDaDuyet_TXL.Size = new System.Drawing.Size(70, 17);
+            this.radDaDuyet_TXL.Size = new System.Drawing.Size(84, 21);
             this.radDaDuyet_TXL.TabIndex = 0;
             this.radDaDuyet_TXL.Text = "Đã Duyệt";
             this.radDaDuyet_TXL.UseVisualStyleBackColor = true;
@@ -656,7 +660,7 @@
             this.radDSKTXM_TXL.AutoSize = true;
             this.radDSKTXM_TXL.Location = new System.Drawing.Point(105, 18);
             this.radDSKTXM_TXL.Name = "radDSKTXM_TXL";
-            this.radDSKTXM_TXL.Size = new System.Drawing.Size(112, 17);
+            this.radDSKTXM_TXL.Size = new System.Drawing.Size(138, 21);
             this.radDSKTXM_TXL.TabIndex = 10;
             this.radDSKTXM_TXL.Text = "Danh Sách KTXM";
             this.radDSKTXM_TXL.UseVisualStyleBackColor = true;
@@ -667,7 +671,7 @@
             this.radChuaDuyet_TXL.AutoSize = true;
             this.radChuaDuyet_TXL.Location = new System.Drawing.Point(6, 42);
             this.radChuaDuyet_TXL.Name = "radChuaDuyet_TXL";
-            this.radChuaDuyet_TXL.Size = new System.Drawing.Size(81, 17);
+            this.radChuaDuyet_TXL.Size = new System.Drawing.Size(98, 21);
             this.radChuaDuyet_TXL.TabIndex = 1;
             this.radChuaDuyet_TXL.Text = "Chưa Duyệt";
             this.radChuaDuyet_TXL.UseVisualStyleBackColor = true;
@@ -677,7 +681,7 @@
             // 
             this.btnIn.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
             this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIn.Location = new System.Drawing.Point(868, 6);
+            this.btnIn.Location = new System.Drawing.Point(723, 3);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(123, 35);
             this.btnIn.TabIndex = 10;
@@ -692,7 +696,7 @@
             this.panel_KhoangThoiGian.Controls.Add(this.dateDen);
             this.panel_KhoangThoiGian.Controls.Add(this.label3);
             this.panel_KhoangThoiGian.Controls.Add(this.label4);
-            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(627, 2);
+            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(525, 2);
             this.panel_KhoangThoiGian.Name = "panel_KhoangThoiGian";
             this.panel_KhoangThoiGian.Size = new System.Drawing.Size(192, 62);
             this.panel_KhoangThoiGian.TabIndex = 11;
@@ -739,7 +743,7 @@
             // chkLoaiDon
             // 
             this.chkLoaiDon.AutoSize = true;
-            this.chkLoaiDon.Location = new System.Drawing.Point(868, 47);
+            this.chkLoaiDon.Location = new System.Drawing.Point(852, 42);
             this.chkLoaiDon.Name = "chkLoaiDon";
             this.chkLoaiDon.Size = new System.Drawing.Size(117, 21);
             this.chkLoaiDon.TabIndex = 12;
@@ -748,12 +752,45 @@
             // 
             // txtNoiDungTimKiem2
             // 
-            this.txtNoiDungTimKiem2.Location = new System.Drawing.Point(637, 42);
+            this.txtNoiDungTimKiem2.Location = new System.Drawing.Point(535, 42);
             this.txtNoiDungTimKiem2.Name = "txtNoiDungTimKiem2";
             this.txtNoiDungTimKiem2.Size = new System.Drawing.Size(130, 25);
             this.txtNoiDungTimKiem2.TabIndex = 13;
             this.txtNoiDungTimKiem2.Visible = false;
             this.txtNoiDungTimKiem2.TextChanged += new System.EventHandler(this.txtNoiDungTimKiem2_TextChanged);
+            // 
+            // radToKH
+            // 
+            this.radToKH.AutoSize = true;
+            this.radToKH.Location = new System.Drawing.Point(981, 11);
+            this.radToKH.Name = "radToKH";
+            this.radToKH.Size = new System.Drawing.Size(68, 21);
+            this.radToKH.TabIndex = 11;
+            this.radToKH.Text = "Tổ KH";
+            this.radToKH.UseVisualStyleBackColor = true;
+            // 
+            // radToXuLy
+            // 
+            this.radToXuLy.AutoSize = true;
+            this.radToXuLy.Location = new System.Drawing.Point(981, 38);
+            this.radToXuLy.Name = "radToXuLy";
+            this.radToXuLy.Size = new System.Drawing.Size(84, 21);
+            this.radToXuLy.TabIndex = 14;
+            this.radToXuLy.Text = "Tổ Xử Lý";
+            this.radToXuLy.UseVisualStyleBackColor = true;
+            // 
+            // btnInThongKe
+            // 
+            this.btnInThongKe.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
+            this.btnInThongKe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInThongKe.Location = new System.Drawing.Point(852, 3);
+            this.btnInThongKe.Name = "btnInThongKe";
+            this.btnInThongKe.Size = new System.Drawing.Size(123, 35);
+            this.btnInThongKe.TabIndex = 15;
+            this.btnInThongKe.Text = "In Thống Kê";
+            this.btnInThongKe.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnInThongKe.UseVisualStyleBackColor = true;
+            this.btnInThongKe.Click += new System.EventHandler(this.btnInThongKe_Click);
             // 
             // frmDSKTXM
             // 
@@ -762,6 +799,9 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1360, 596);
+            this.Controls.Add(this.btnInThongKe);
+            this.Controls.Add(this.radToXuLy);
+            this.Controls.Add(this.radToKH);
             this.Controls.Add(this.chkLoaiDon);
             this.Controls.Add(this.panel_KhoangThoiGian);
             this.Controls.Add(this.btnIn);
@@ -857,5 +897,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaU;
         private System.Windows.Forms.TextBox txtNoiDungTimKiem2;
+        private System.Windows.Forms.RadioButton radToKH;
+        private System.Windows.Forms.RadioButton radToXuLy;
+        private System.Windows.Forms.Button btnInThongKe;
     }
 }

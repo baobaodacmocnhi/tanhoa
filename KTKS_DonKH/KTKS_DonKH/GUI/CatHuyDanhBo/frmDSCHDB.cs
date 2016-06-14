@@ -955,7 +955,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 dr["HopDong"] = ctctdb.HopDong;
 
                                 if (ctktxm != null)
-                                    dr["ViTriDHN"] = ctktxm.ViTriDHN1 + ", " + ctktxm.ViTriDHN2;
+                                    if (!string.IsNullOrEmpty(ctktxm.ViTriDHN1) || !string.IsNullOrEmpty(ctktxm.ViTriDHN2))
+                                        dr["ViTriDHN"] = "Vị trí ĐHN lắp đặt: " + ctktxm.ViTriDHN1 + ", " + ctktxm.ViTriDHN2;
 
                                 if (ctctdb.LyDo != "Vấn Đề Khác")
                                     dr["LyDo"] = ctctdb.LyDo + ". ";
@@ -1010,7 +1011,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 dr["HopDong"] = ctchdb.HopDong;
 
                                 if (ctktxm != null)
-                                    dr["ViTriDHN"] = ctktxm.ViTriDHN1 + ", " + ctktxm.ViTriDHN2;
+                                    if (!string.IsNullOrEmpty(ctktxm.ViTriDHN1) || !string.IsNullOrEmpty(ctktxm.ViTriDHN2))
+                                        dr["ViTriDHN"] = "Vị trí ĐHN lắp đặt: " + ctktxm.ViTriDHN1 + ", " + ctktxm.ViTriDHN2;
 
                                 if (ctchdb.LyDo != "Vấn Đề Khác")
                                     dr["LyDo"] = ctchdb.LyDo + ". ";

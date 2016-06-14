@@ -58,6 +58,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 else
                     txtMaDon.Text = _ctdcbd.DCBD.MaDon.ToString().Insert(_ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
                 txtHieuLucKy.Text = _ctdcbd.HieuLucKy;
+                txtGhiChu.Text = _ctdcbd.GhiChu;
                 txtDanhBo.Text = _ctdcbd.DanhBo;
                 txtHopDong.Text = _ctdcbd.HopDong;
                 txtHoTen.Text = _ctdcbd.HoTen;
@@ -298,6 +299,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                     _ctdcbd.ThongTin = ThongTin;
                     _ctdcbd.HieuLucKy = txtHieuLucKy.Text.Trim();
+                    _ctdcbd.GhiChu = txtGhiChu.Text.Trim();
 
                     if (_ctdcbd.DMGiuNguyen != chkDMGiuNguyen.Checked || _ctdcbd.GiaHan != chkGiaHan.Checked)
                     {

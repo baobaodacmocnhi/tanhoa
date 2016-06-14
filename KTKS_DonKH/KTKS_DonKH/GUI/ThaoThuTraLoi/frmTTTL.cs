@@ -481,7 +481,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 VeViecTTTL vv = (VeViecTTTL)cmbVeViec.SelectedItem;
                 txtVeViec.Text = vv.TenVV;
                 txtNoiDung.Text = vv.NoiDung;
-                txtNoiNhan.Text = vv.NoiNhan;
+                txtNoiNhan.Text = vv.NoiNhan + " (" + txtMaDon.Text.Trim() + ")";
             }
             else
             {

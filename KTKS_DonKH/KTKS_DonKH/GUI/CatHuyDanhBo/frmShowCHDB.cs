@@ -178,8 +178,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     dr["DanhBo"] = _ctchdb.DanhBo.Insert(7, " ").Insert(4, " ");
                 dr["HopDong"] = _ctchdb.HopDong;
 
-                if(ctktxm!=null)
-                dr["ViTriDHN"] = ctktxm.ViTriDHN1 + ", " + ctktxm.ViTriDHN2;
+                if (ctktxm != null)
+                    if (!string.IsNullOrEmpty(ctktxm.ViTriDHN1) || !string.IsNullOrEmpty(ctktxm.ViTriDHN2))
+                        dr["ViTriDHN"] = "Vị trí ĐHN lắp đặt: " + ctktxm.ViTriDHN1 + ", " + ctktxm.ViTriDHN2;
 
                 if (_ctchdb.LyDo != "Vấn Đề Khác")
                     dr["LyDo"] = _ctchdb.LyDo + ". ";

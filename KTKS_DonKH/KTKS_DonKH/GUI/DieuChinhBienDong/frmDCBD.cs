@@ -640,6 +640,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                         ctdcbd.ThongTin = ThongTin;
                         ctdcbd.HieuLucKy = txtHieuLucKy.Text.Trim();
+                        ctdcbd.GhiChu = txtGhiChu.Text.Trim();
 
                         ctdcbd.DMGiuNguyen = chkDMGiuNguyen.Checked;
                         ctdcbd.GiaHan = chkGiaHan.Checked;
@@ -817,6 +818,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                     ctdcbd.ThongTin = ThongTin;
                     ctdcbd.HieuLucKy = txtHieuLucKy.Text.Trim();
+                    ctdcbd.GhiChu = txtGhiChu.Text.Trim();
 
                     ctdcbd.DMGiuNguyen = chkDMGiuNguyen.Checked;
                     ctdcbd.GiaHan = chkGiaHan.Checked;

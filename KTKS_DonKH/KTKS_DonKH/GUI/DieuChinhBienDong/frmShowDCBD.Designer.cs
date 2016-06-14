@@ -82,13 +82,15 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.chkDMGiuNguyen = new System.Windows.Forms.CheckBox();
             this.chkGiaHan = new System.Windows.Forms.CheckBox();
+            this.txtGhiChu = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtHieuLucKy
             // 
-            this.txtHieuLucKy.Location = new System.Drawing.Point(948, 6);
+            this.txtHieuLucKy.Location = new System.Drawing.Point(941, 6);
             this.txtHieuLucKy.Name = "txtHieuLucKy";
             this.txtHieuLucKy.Size = new System.Drawing.Size(100, 25);
             this.txtHieuLucKy.TabIndex = 1;
@@ -97,7 +99,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(853, 9);
+            this.label22.Location = new System.Drawing.Point(846, 9);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(89, 17);
             this.label22.TabIndex = 0;
@@ -538,7 +540,7 @@
             // 
             // txtDot
             // 
-            this.txtDot.Location = new System.Drawing.Point(791, 6);
+            this.txtDot.Location = new System.Drawing.Point(784, 6);
             this.txtDot.Name = "txtDot";
             this.txtDot.Size = new System.Drawing.Size(56, 25);
             this.txtDot.TabIndex = 10;
@@ -546,7 +548,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(751, 9);
+            this.label23.Location = new System.Drawing.Point(744, 9);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(34, 17);
             this.label23.TabIndex = 9;
@@ -598,12 +600,30 @@
             this.chkGiaHan.Text = "Gia Hạn";
             this.chkGiaHan.UseVisualStyleBackColor = true;
             // 
+            // txtGhiChu
+            // 
+            this.txtGhiChu.Location = new System.Drawing.Point(1112, 6);
+            this.txtGhiChu.Name = "txtGhiChu";
+            this.txtGhiChu.Size = new System.Drawing.Size(231, 25);
+            this.txtGhiChu.TabIndex = 89;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(1047, 12);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(59, 17);
+            this.label30.TabIndex = 88;
+            this.label30.Text = "Ghi Chú:";
+            // 
             // frmShowDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1350, 244);
+            this.Controls.Add(this.txtGhiChu);
+            this.Controls.Add(this.label30);
             this.Controls.Add(this.chkDMGiuNguyen);
             this.Controls.Add(this.chkGiaHan);
             this.Controls.Add(this.btnXoa);
@@ -691,5 +711,7 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.CheckBox chkDMGiuNguyen;
         private System.Windows.Forms.CheckBox chkGiaHan;
+        private System.Windows.Forms.TextBox txtGhiChu;
+        private System.Windows.Forms.Label label30;
     }
 }

@@ -167,7 +167,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 }
                 else
                 {
-                        ctktxm = _cKTXM.getCTKTXMbyMaDonKHDanhBo(_ctctdb.CHDB.MaDon.Value, _ctctdb.DanhBo);
+                    ctktxm = _cKTXM.getCTKTXMbyMaDonKHDanhBo(_ctctdb.CHDB.MaDon.Value, _ctctdb.DanhBo);
                 }
 
                 dr["SoPhieu"] = _ctctdb.MaCTCTDB.ToString().Insert(_ctctdb.MaCTCTDB.ToString().Length - 2, "-");
@@ -178,7 +178,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 dr["HopDong"] = _ctctdb.HopDong;
 
                 if (ctktxm != null)
-                dr["ViTriDHN"] = ctktxm.ViTriDHN1 + ", " + ctktxm.ViTriDHN2;
+                    if (!string.IsNullOrEmpty(ctktxm.ViTriDHN1) || !string.IsNullOrEmpty(ctktxm.ViTriDHN2))
+                        dr["ViTriDHN"] = "Vị trí ĐHN lắp đặt: " + ctktxm.ViTriDHN1 + ", " + ctktxm.ViTriDHN2;
 
                 if (_ctctdb.LyDo != "Vấn Đề Khác")
                     dr["LyDo"] = _ctctdb.LyDo + ". ";
