@@ -218,7 +218,7 @@ namespace ThuTien.GUI.Doi
                         if (Dot == 20)
                         {
                             CGiaBanBinhQuan _cGBBQ = new CGiaBanBinhQuan();
-                            DataTable dt = _cHoaDon.GetDSGiaBanBinhQuan(Nam, Ky);
+                            DataTable dt = _cHoaDon.GetGiaBanBinhQuan(Nam, Ky);
                             if (!_cGBBQ.CheckExist(Nam, Ky))
                             {
                                 TT_GiaBanBinhQuan entity = new TT_GiaBanBinhQuan();

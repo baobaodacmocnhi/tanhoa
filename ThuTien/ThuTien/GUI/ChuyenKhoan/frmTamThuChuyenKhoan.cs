@@ -290,6 +290,20 @@ namespace ThuTien.GUI.ChuyenKhoan
                 Excel fileExcel = new Excel(dialog.FileName);
                 DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
 
+                ///kiểm tra danh bộ chặn tiền dư
+                string str = "";
+                foreach (DataRow item in dtExcel.Rows)
+                    if (item[0].ToString().Length == 11 && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
+                        if (_cHoaDon.CheckKhoaTienDuByDanhBo(item[0].ToString()))
+                        {
+                            str += item[0].ToString() + "\n";
+                        }
+                if (!string.IsNullOrWhiteSpace(str))
+                {
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
                 DataTable dt = new DataTable();
                 foreach (DataRow item in dtExcel.Rows)
                     if (item[0].ToString().Length == 11 && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))

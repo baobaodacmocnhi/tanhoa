@@ -39,25 +39,25 @@ namespace ThuTien.GUI.Doi
             //    if (cmbKy.SelectedIndex > 0)
             //        txtGiaBanBinhQuan.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _cHoaDon.TinhGiaBanBinhQuanByNamKy(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
 
-            dgvGiaBanBinhQuan.DataSource = _cHoaDon.GetDSGiaBanBinhQuan(int.Parse(cmbNam.SelectedValue.ToString()));
+            //dgvGiaBanBinhQuan.DataSource = _cHoaDon.GetDSGiaBanBinhQuan(int.Parse(cmbNam.SelectedValue.ToString()));
 
-            long TongDoanhThu = 0;
-            long TongSanLuong = 0;
-            for (int i = 0; i < dgvGiaBanBinhQuan.RowCount; i++)
-            {
-                DataTable dtDCHD = _cDCHD.GetTongChuanThu(int.Parse(cmbNam.SelectedValue.ToString()), i + 1);
-                if (dtDCHD.Rows.Count > 0)
-                {
-                    dgvGiaBanBinhQuan["TongGiaBan", i].Value = long.Parse(dgvGiaBanBinhQuan["TongGiaBan", i].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["GIABAN_END"].ToString()) + long.Parse(dtDCHD.Rows[0]["GIABAN_BD"].ToString());
-                    dgvGiaBanBinhQuan["GiaBanBinhQuan", i].Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dgvGiaBanBinhQuan["TongGiaBan", i].Value.ToString()) / long.Parse(dgvGiaBanBinhQuan["TongTieuThu", i].Value.ToString()));
-                }
-                else
-                    dgvGiaBanBinhQuan["GiaBanBinhQuan", i].Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dgvGiaBanBinhQuan["TongGiaBan", i].Value.ToString()) / long.Parse(dgvGiaBanBinhQuan["TongTieuThu", i].Value.ToString()));
-                TongDoanhThu += long.Parse(dgvGiaBanBinhQuan["TongGiaBan", i].Value.ToString());
-                TongSanLuong += long.Parse(dgvGiaBanBinhQuan["TongTieuThu", i].Value.ToString());
-            }
-            txtTongDoanhThu.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongDoanhThu);
-            txtTongSanLuong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongSanLuong);
+            //long TongDoanhThu = 0;
+            //long TongSanLuong = 0;
+            //for (int i = 0; i < dgvGiaBanBinhQuan.RowCount; i++)
+            //{
+            //    DataTable dtDCHD = _cDCHD.GetTongChuanThu(int.Parse(cmbNam.SelectedValue.ToString()), i + 1);
+            //    if (dtDCHD.Rows.Count > 0)
+            //    {
+            //        dgvGiaBanBinhQuan["TongGiaBan", i].Value = long.Parse(dgvGiaBanBinhQuan["TongGiaBan", i].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["GIABAN_END"].ToString()) + long.Parse(dtDCHD.Rows[0]["GIABAN_BD"].ToString());
+            //        dgvGiaBanBinhQuan["GiaBanBinhQuan", i].Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dgvGiaBanBinhQuan["TongGiaBan", i].Value.ToString()) / long.Parse(dgvGiaBanBinhQuan["TongTieuThu", i].Value.ToString()));
+            //    }
+            //    else
+            //        dgvGiaBanBinhQuan["GiaBanBinhQuan", i].Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dgvGiaBanBinhQuan["TongGiaBan", i].Value.ToString()) / long.Parse(dgvGiaBanBinhQuan["TongTieuThu", i].Value.ToString()));
+            //    TongDoanhThu += long.Parse(dgvGiaBanBinhQuan["TongGiaBan", i].Value.ToString());
+            //    TongSanLuong += long.Parse(dgvGiaBanBinhQuan["TongTieuThu", i].Value.ToString());
+            //}
+            //txtTongDoanhThu.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongDoanhThu);
+            //txtTongSanLuong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongSanLuong);
         }
 
         private void dgvGiaBanBinhQuan_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

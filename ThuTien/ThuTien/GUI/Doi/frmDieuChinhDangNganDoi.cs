@@ -181,7 +181,7 @@ namespace ThuTien.GUI.Doi
                         //    lstHD.SelectedItem = item;
                         //    return;
                         //}
-                        if (_cHoaDon.CheckKhoaTienDu(item.Text))
+                        if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(item.Text))
                         {
                             MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;

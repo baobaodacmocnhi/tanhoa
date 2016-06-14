@@ -43,7 +43,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtTongDoanhThu = new System.Windows.Forms.TextBox();
             this.txtTongSanLuong = new System.Windows.Forms.TextBox();
-            this.btnChuyen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGiaBanBinhQuan)).BeginInit();
             this.SuspendLayout();
             // 
@@ -173,21 +172,11 @@
             this.txtTongSanLuong.TabIndex = 60;
             this.txtTongSanLuong.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // btnChuyen
-            // 
-            this.btnChuyen.Location = new System.Drawing.Point(486, 75);
-            this.btnChuyen.Name = "btnChuyen";
-            this.btnChuyen.Size = new System.Drawing.Size(75, 23);
-            this.btnChuyen.TabIndex = 61;
-            this.btnChuyen.Text = "Chuyển";
-            this.btnChuyen.UseVisualStyleBackColor = true;
-            // 
             // frmTinhGiaBanBinhQuan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1118, 412);
-            this.Controls.Add(this.btnChuyen);
             this.Controls.Add(this.txtTongSanLuong);
             this.Controls.Add(this.txtTongDoanhThu);
             this.Controls.Add(this.label4);
@@ -217,6 +206,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaBanBinhQuan;
         private System.Windows.Forms.TextBox txtTongDoanhThu;
         private System.Windows.Forms.TextBox txtTongSanLuong;
-        private System.Windows.Forms.Button btnChuyen;
     }
 }
