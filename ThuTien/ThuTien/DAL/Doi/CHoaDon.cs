@@ -8232,6 +8232,7 @@ namespace ThuTien.DAL.Doi
                         select new
                         {
                             TongHD = itemGroup.Count(),
+                            TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
                             TongGiaBan=itemGroup.Sum(groupItem => groupItem.GIABAN),
                             TongTieuThu=itemGroup.Sum(groupItem => groupItem.TIEUTHU),
                             GiaBanBinhQuan = (double)itemGroup.Sum(groupItem => groupItem.GIABAN) / (double)itemGroup.Sum(groupItem => groupItem.TIEUTHU),
@@ -8247,6 +8248,7 @@ namespace ThuTien.DAL.Doi
                         select new
                         {
                             TongHD=itemGroup.Count(),
+                            TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
                             TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
                             TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
                             GiaBanBinhQuan = (double)itemGroup.Sum(groupItem => groupItem.GIABAN) / (double)itemGroup.Sum(groupItem => groupItem.TIEUTHU),
@@ -8262,6 +8264,7 @@ namespace ThuTien.DAL.Doi
                         select new
                         {
                             Loai = itemGroup.Key,
+                            TongHD=itemGroup.Count(),
                             TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
                             TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
                             TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
@@ -8277,11 +8280,97 @@ namespace ThuTien.DAL.Doi
                         select new
                         {
                             Loai=itemGroup.Key,
+                            TongHD = itemGroup.Count(),
                             TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
                             TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
                             TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
                         };
             return LINQToDataTable(query);
+        }
+
+        public DataTable PhanTichDoanhThuByDinhMuc(int Nam, int FromDinhMuc, int ToDinhMuc)
+        {
+            DataTable dt = new DataTable();
+
+            var query0 = from item in _db.HOADONs
+                         where item.NAM == Nam  && item.DM == 0
+                         group item by item.DM into itemGroup
+                         select new
+                         {
+                             Loai = itemGroup.Key.ToString(),
+                             TongHD = itemGroup.Count(),
+                             TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
+                             TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                             TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
+                         };
+            dt.Merge(LINQToDataTable(query0));
+
+            var query4 = from item in _db.HOADONs
+                         where item.NAM == Nam  && item.DM == 4
+                         group item by item.DM into itemGroup
+                         select new
+                         {
+                             Loai = itemGroup.Key.ToString(),
+                             TongHD = itemGroup.Count(),
+                             TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
+                             TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                             TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
+                         };
+            dt.Merge(LINQToDataTable(query4));
+
+            var query8 = from item in _db.HOADONs
+                         where item.NAM == Nam  && item.DM == 8
+                         group item by item.DM into itemGroup
+                         select new
+                         {
+                             Loai = itemGroup.Key.ToString(),
+                             TongHD = itemGroup.Count(),
+                             TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
+                             TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                             TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
+                         };
+            dt.Merge(LINQToDataTable(query8));
+
+            var query12 = from item in _db.HOADONs
+                          where item.NAM == Nam  && item.DM == 12
+                          group item by item.DM into itemGroup
+                          select new
+                          {
+                              Loai = itemGroup.Key.ToString(),
+                              TongHD = itemGroup.Count(),
+                              TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
+                              TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                              TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
+                          };
+            dt.Merge(LINQToDataTable(query12));
+
+            var queryK = from item in _db.HOADONs
+                         where item.NAM == Nam  && item.DM >= FromDinhMuc && item.DM <= ToDinhMuc
+                         group item by item.DM >= FromDinhMuc && item.DM <= ToDinhMuc into itemGroup
+                         select new
+                         {
+                             Loai = FromDinhMuc + "-" + ToDinhMuc,
+                             TongHD = itemGroup.Count(),
+                             TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
+                             TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                             TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
+                         };
+            dt.Merge(LINQToDataTable(queryK));
+
+            var queryKK = from item in _db.HOADONs
+                          where item.NAM == Nam  && (item.DM != 0 && item.DM != 4 && item.DM != 8 && item.DM != 12 && (item.DM < FromDinhMuc || item.DM > ToDinhMuc) || item.DM == null)
+                          group item by (item.DM != 0 && item.DM != 4 && item.DM != 8 && item.DM != 12 && (item.DM < FromDinhMuc || item.DM > ToDinhMuc) || item.DM == null) into itemGroup
+                          select new
+                          {
+                              Loai = "Còn Lại",
+                              TongHD = itemGroup.Count(),
+                              TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
+                              TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                              TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
+                          };
+            dt.Merge(LINQToDataTable(queryKK));
+
+            return dt;
         }
 
         public DataTable PhanTichDoanhThuByDinhMuc(int Nam, int Ky, int FromDinhMuc, int ToDinhMuc)
@@ -8294,8 +8383,10 @@ namespace ThuTien.DAL.Doi
                          select new
                          {
                              Loai = itemGroup.Key.ToString(),
+                             TongHD = itemGroup.Count(),
                              TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
                              TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                             TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
                          };
             dt.Merge(LINQToDataTable(query0));
 
@@ -8305,8 +8396,10 @@ namespace ThuTien.DAL.Doi
                          select new
                          {
                              Loai = itemGroup.Key.ToString(),
+                             TongHD = itemGroup.Count(),
                              TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
                              TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                             TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
                          };
             dt.Merge(LINQToDataTable(query4));
 
@@ -8316,8 +8409,10 @@ namespace ThuTien.DAL.Doi
                          select new
                          {
                              Loai = itemGroup.Key.ToString(),
+                             TongHD = itemGroup.Count(),
                              TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
                              TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                             TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
                          };
             dt.Merge(LINQToDataTable(query8));
 
@@ -8327,8 +8422,10 @@ namespace ThuTien.DAL.Doi
                           select new
                           {
                               Loai = itemGroup.Key.ToString(),
+                              TongHD = itemGroup.Count(),
                               TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
                               TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                              TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
                           };
             dt.Merge(LINQToDataTable(query12));
 
@@ -8338,8 +8435,10 @@ namespace ThuTien.DAL.Doi
                          select new
                          {
                              Loai = FromDinhMuc+"-"+ToDinhMuc,
+                             TongHD = itemGroup.Count(),
                              TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
                              TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                             TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
                          };
             dt.Merge(LINQToDataTable(queryK));
 
@@ -8349,8 +8448,10 @@ namespace ThuTien.DAL.Doi
                           select new
                           {
                               Loai = "Còn Lại",
+                              TongHD = itemGroup.Count(),
                               TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
                               TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                              TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
                           };
             dt.Merge(LINQToDataTable(queryKK));
 

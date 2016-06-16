@@ -8,6 +8,9 @@ using System.Text;
 using System.Windows.Forms;
 using ThuTien.DAL.Doi;
 using System.Globalization;
+using ThuTien.BaoCao;
+using ThuTien.BaoCao.Doi;
+using ThuTien.GUI.BaoCao;
 
 namespace ThuTien.GUI.Doi
 {
@@ -22,6 +25,8 @@ namespace ThuTien.GUI.Doi
 
         private void frmPhanTichDoanhThu_Load(object sender, EventArgs e)
         {
+            dgvDoanhThu.AutoGenerateColumns = false;
+
             cmbNam.DataSource = _cHoaDon.GetNam();
             cmbNam.DisplayMember = "Nam";
             cmbNam.ValueMember = "Nam";
@@ -51,7 +56,7 @@ namespace ThuTien.GUI.Doi
                     if (cmbKy.SelectedIndex == 0)
                     {
                         dt = _cHoaDon.GetGiaBanBinhQuan(int.Parse(cmbNam.SelectedValue.ToString()));
-                        dtPhanTich = _cHoaDon.PhanTichDoanhThuByGiaBieu(int.Parse(cmbNam.SelectedValue.ToString()));
+                        dtPhanTich = _cHoaDon.PhanTichDoanhThuByDinhMuc(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtTuDM.Text.Trim()), int.Parse(txtDenDM.Text.Trim()));
                     }
                     else
                         if (cmbKy.SelectedIndex > 0)
@@ -62,8 +67,10 @@ namespace ThuTien.GUI.Doi
                 }
 
             txtTongHD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", decimal.Parse(dt.Rows[0]["TongHD"].ToString()));
+            txtTongDinhMuc.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", decimal.Parse(dt.Rows[0]["TongDinhMuc"].ToString()));
             txtTongTieuThu.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", decimal.Parse(dt.Rows[0]["TongTieuThu"].ToString()));
             txtTongGiaBan.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", decimal.Parse(dt.Rows[0]["TongGiaBan"].ToString()));
+            txtGiaBanBinhQuan.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", decimal.Parse(dt.Rows[0]["GiaBanBinhQuan"].ToString()));
 
             dgvDoanhThu.DataSource = dtPhanTich;
 
@@ -84,6 +91,10 @@ namespace ThuTien.GUI.Doi
 
         private void dgvDoanhThu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            if (dgvDoanhThu.Columns[e.ColumnIndex].Name == "TongHD" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
             if (dgvDoanhThu.Columns[e.ColumnIndex].Name == "TongGiaBan" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
@@ -130,6 +141,35 @@ namespace ThuTien.GUI.Doi
                 lbDenDM.Visible = false;
                 txtDenDM.Visible = false;
             }
+        }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            foreach (DataGridViewRow item in dgvDoanhThu.Rows)
+                {
+                    DataRow dr = ds.Tables["PhanTichDoanhThu"].NewRow();
+                    if (radGiaBieu.Checked)
+                        dr["LoaiBaoCao"] = "Giá Biểu";
+                    else
+                        if (radDinhMuc.Checked)
+                            dr["LoaiBaoCao"] = "Định Mức";
+                    dr["Ky"] = cmbKy.SelectedItem.ToString() + "/" + cmbNam.SelectedValue.ToString();
+                    dr["Loai"] = item.Cells["Loai"].Value.ToString();
+                    dr["TongHD"] = item.Cells["TongHD"].Value;
+                    dr["TongDinhMuc"] = item.Cells["TongDinhMuc"].Value;
+                    dr["TongTieuThu"] = item.Cells["TongTieuThu"].Value;
+                    dr["TongGiaBan"] = item.Cells["TongGiaBan"].Value;
+                    dr["GiaBanBinhQuan"] = item.Cells["GiaBanBinhQuan"].Value;
+                    dr["TyLeTongTieuThu"] = item.Cells["TyLeTongTieuThu"].Value;
+                    dr["TyLeTongGiaBan"] = item.Cells["TyLeTongGiaBan"].Value;
+
+                    ds.Tables["PhanTichDoanhThu"].Rows.Add(dr);
+                }
+            rptPhanTichDoanhThu rpt = new rptPhanTichDoanhThu();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
         }
     }
 }
