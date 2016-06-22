@@ -300,7 +300,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         }
                 if (!string.IsNullOrWhiteSpace(str))
                 {
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Chặn Tiền Dư:\n"+str, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
