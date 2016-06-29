@@ -149,6 +149,7 @@ namespace ThuTien.GUI.Doi
                                 else
                                     if (cmbDenDot.SelectedIndex > 0)
                                         dgvHoaDon.DataSource = _cHoaDon.GetDSHoaDon0(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(cmbDenDot.SelectedItem.ToString()), txtGiaBieu.Text.Trim(), txtDinhMuc.Text.Trim(), txtCode.Text.Trim());
+                dgvDSTongHD0.DataSource = _cHoaDon.GetGroupHD0(int.Parse(cmbNam.SelectedValue.ToString()));
             }
             else
                 ///chọn 1 tổ cụ thể
@@ -170,6 +171,7 @@ namespace ThuTien.GUI.Doi
                                         else
                                             if (cmbDenDot.SelectedIndex > 0)
                                                 dgvHoaDon.DataSource = _cHoaDon.GetDSHoaDon0_To(int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(cmbDenDot.SelectedItem.ToString()), txtGiaBieu.Text.Trim(), txtDinhMuc.Text.Trim(), txtCode.Text.Trim());
+                        dgvDSTongHD0.DataSource = _cHoaDon.GetGroupHD0_To(int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
                     }
                     else
                         ///chọn 1 nhân viên cụ thể
@@ -188,9 +190,11 @@ namespace ThuTien.GUI.Doi
                                             else
                                                 if (cmbDenDot.SelectedIndex > 0)
                                                     dgvHoaDon.DataSource = _cHoaDon.GetDSHoaDon0_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(cmbDenDot.SelectedItem.ToString()), txtGiaBieu.Text.Trim(), txtDinhMuc.Text.Trim(), txtCode.Text.Trim());
+                            dgvDSTongHD0.DataSource = _cHoaDon.GetGroupHD0_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
                         }
                 }
             txtTongHD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", dgvHoaDon.Rows.Count);
+            
         }
 
         private void dgvHoaDon_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)

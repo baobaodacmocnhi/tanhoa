@@ -177,7 +177,7 @@
             this.btnInDSTamThuTienDu.Name = "btnInDSTamThuTienDu";
             this.btnInDSTamThuTienDu.Size = new System.Drawing.Size(100, 23);
             this.btnInDSTamThuTienDu.TabIndex = 27;
-            this.btnInDSTamThuTienDu.Text = "In DS TT Tiền Dư";
+            this.btnInDSTamThuTienDu.Text = "In DS Tiền Dư";
             this.btnInDSTamThuTienDu.UseVisualStyleBackColor = true;
             this.btnInDSTamThuTienDu.Click += new System.EventHandler(this.btnInDSTamThuTienDu_Click);
             // 
@@ -215,7 +215,7 @@
             this.btnInDSTamThuChuaDN.Name = "btnInDSTamThuChuaDN";
             this.btnInDSTamThuChuaDN.Size = new System.Drawing.Size(110, 23);
             this.btnInDSTamThuChuaDN.TabIndex = 24;
-            this.btnInDSTamThuChuaDN.Text = "In DS TT(Chưa ĐN)";
+            this.btnInDSTamThuChuaDN.Text = "In DS (Chưa ĐN)";
             this.btnInDSTamThuChuaDN.UseVisualStyleBackColor = true;
             this.btnInDSTamThuChuaDN.Click += new System.EventHandler(this.btnInDSTamThuChuaDN_Click);
             // 
@@ -235,7 +235,7 @@
             this.btnInDSTamThu.Name = "btnInDSTamThu";
             this.btnInDSTamThu.Size = new System.Drawing.Size(75, 23);
             this.btnInDSTamThu.TabIndex = 20;
-            this.btnInDSTamThu.Text = "In DS TT";
+            this.btnInDSTamThu.Text = "In DS";
             this.btnInDSTamThu.UseVisualStyleBackColor = true;
             this.btnInDSTamThu.Click += new System.EventHandler(this.btnInDSTamThu_Click);
             // 

@@ -209,11 +209,15 @@ namespace ThuTien.GUI.HanhThu
                                         if (_cHoaDon.DangNgan("HanhThu", item.Text, CNguoiDung.MaND))
                                             if (_cHoaDon.Thu2Lan(item.Text, ChuyenKhoan))
                                                 if (_cTamThu.XoaAn(item.Text))
+                                                {
+                                                    lstHD.Items.Remove(item);
                                                     scope.Complete();
+                                                }
                                     }
                                 else
                                 {
-                                    _cHoaDon.DangNgan("HanhThu", item.Text, CNguoiDung.MaND);
+                                    if(_cHoaDon.DangNgan("HanhThu", item.Text, CNguoiDung.MaND))
+                                        lstHD.Items.Remove(item);
                                 }
                             }
                             //if (_cLenhHuy.CheckExist(item.ToString()))
@@ -224,7 +228,7 @@ namespace ThuTien.GUI.HanhThu
                             //        return;
                             //    }
                             btnXem.PerformClick();
-                            lstHD.Items.Clear();
+                            //lstHD.Items.Clear();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         catch (Exception)

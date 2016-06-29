@@ -903,8 +903,8 @@
     <Type Name="TT_GiaBanBinhQuan">
       <Column Name="Nam" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Ky" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="DoanhThu" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="SanLuong" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="TongGiaBan" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="TongTieuThu" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="GiaBanBinhQuan" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />

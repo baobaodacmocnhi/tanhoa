@@ -224,8 +224,8 @@ namespace ThuTien.GUI.Doi
                                 TT_GiaBanBinhQuan entity = new TT_GiaBanBinhQuan();
                                 entity.Nam = Nam;
                                 entity.Ky = Ky;
-                                entity.DoanhThu = decimal.Parse(dt.Rows[0]["TongGiaBan"].ToString());
-                                entity.SanLuong = decimal.Parse(dt.Rows[0]["TongTieuThu"].ToString());
+                                entity.TongGiaBan = decimal.Parse(dt.Rows[0]["TongGiaBan"].ToString());
+                                entity.TongTieuThu = decimal.Parse(dt.Rows[0]["TongTieuThu"].ToString());
                                 entity.GiaBanBinhQuan = float.Parse(dt.Rows[0]["GiaBanBinhQuan"].ToString());
 
                                 _cGBBQ.Them(entity);
@@ -234,8 +234,8 @@ namespace ThuTien.GUI.Doi
                                 if (MessageBox.Show("Đã chốt Giá Bán Bình Quân, Bạn có chắc chốt lại không???", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                                 {
                                     TT_GiaBanBinhQuan entity = _cGBBQ.Get(Nam, Ky);
-                                    entity.DoanhThu = decimal.Parse(dt.Rows[0]["TongGiaBan"].ToString());
-                                    entity.SanLuong = decimal.Parse(dt.Rows[0]["TongTieuThu"].ToString());
+                                    entity.TongGiaBan = decimal.Parse(dt.Rows[0]["TongGiaBan"].ToString());
+                                    entity.TongTieuThu = decimal.Parse(dt.Rows[0]["TongTieuThu"].ToString());
                                     entity.GiaBanBinhQuan = float.Parse(dt.Rows[0]["GiaBanBinhQuan"].ToString());
                                     
                                     _cGBBQ.Sua(entity);

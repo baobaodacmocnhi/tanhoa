@@ -8156,6 +8156,49 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
+        public DataTable GetGroupHD0(int Nam)
+        {
+            var query = from item in _db.HOADONs
+                        where item.TIEUTHU==0&&item.NAM == Nam
+                        group item by item.KY into itemGroup
+                        select new
+                        {
+                            Ky=itemGroup.Key,
+                            TongHD = itemGroup.Count(),
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetGroupHD0_To(int MaTo, int Nam)
+        {
+            var query = from item in _db.HOADONs
+                        where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                              && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                              && item.TIEUTHU == 0 && item.NAM == Nam
+                        group item by item.KY into itemGroup
+                        select new
+                        {
+                            Ky = itemGroup.Key,
+                            TongHD = itemGroup.Count(),
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetGroupHD0_NV(int MaNV, int Nam)
+        {
+            var query = from itemHD in _db.HOADONs
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemHD.MaNV_HanhThu == MaNV&&itemHD.TIEUTHU == 0 && itemHD.NAM == Nam
+                        group itemHD by itemHD.KY into itemGroup
+                        select new
+                        {
+                            Ky = itemGroup.Key,
+                            TongHD = itemGroup.Count(),
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable GetDSTimKiem(string DanhBo, string MLT)
         {
             //string sql = "select ID_HOADON as MaHD,DANHBA as DanhBo,MALOTRINH as MLT,TENKH as HoTen,(SO+' '+DUONG) as DiaChi,GB as GiaBieu,DM as DinhMuc,a.SoHoaDon,"

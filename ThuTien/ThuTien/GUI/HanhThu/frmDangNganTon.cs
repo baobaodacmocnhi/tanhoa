@@ -141,6 +141,13 @@ namespace ThuTien.GUI.HanhThu
                     //string loai;
                     foreach (ListViewItem item in lstHD.Items)
                     {
+                        if (!_cHoaDon.CheckExist(item.Text))
+                        {
+                            MessageBox.Show("Hóa Đơn sai: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            item.Selected = true;
+                            item.Focused = true;
+                            return;
+                        }
                         //if (!_cHoaDon.CheckGiaoTonBySoHoaDonMaNV(item.ToString(),CNguoiDung.MaND))
                         //{
                         //    MessageBox.Show("Hóa Đơn không được giao cho bạn: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -19557,9 +19557,9 @@ namespace ThuTien.LinQ
 		
 		private int _Ky;
 		
-		private System.Nullable<decimal> _DoanhThu;
+		private System.Nullable<decimal> _TongGiaBan;
 		
-		private System.Nullable<decimal> _SanLuong;
+		private System.Nullable<decimal> _TongTieuThu;
 		
 		private System.Nullable<double> _GiaBanBinhQuan;
 		
@@ -19579,10 +19579,10 @@ namespace ThuTien.LinQ
     partial void OnNamChanged();
     partial void OnKyChanging(int value);
     partial void OnKyChanged();
-    partial void OnDoanhThuChanging(System.Nullable<decimal> value);
-    partial void OnDoanhThuChanged();
-    partial void OnSanLuongChanging(System.Nullable<decimal> value);
-    partial void OnSanLuongChanged();
+    partial void OnTongGiaBanChanging(System.Nullable<decimal> value);
+    partial void OnTongGiaBanChanged();
+    partial void OnTongTieuThuChanging(System.Nullable<decimal> value);
+    partial void OnTongTieuThuChanged();
     partial void OnGiaBanBinhQuanChanging(System.Nullable<double> value);
     partial void OnGiaBanBinhQuanChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -19640,42 +19640,42 @@ namespace ThuTien.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DoanhThu", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> DoanhThu
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongGiaBan", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> TongGiaBan
 		{
 			get
 			{
-				return this._DoanhThu;
+				return this._TongGiaBan;
 			}
 			set
 			{
-				if ((this._DoanhThu != value))
+				if ((this._TongGiaBan != value))
 				{
-					this.OnDoanhThuChanging(value);
+					this.OnTongGiaBanChanging(value);
 					this.SendPropertyChanging();
-					this._DoanhThu = value;
-					this.SendPropertyChanged("DoanhThu");
-					this.OnDoanhThuChanged();
+					this._TongGiaBan = value;
+					this.SendPropertyChanged("TongGiaBan");
+					this.OnTongGiaBanChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SanLuong", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> SanLuong
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongTieuThu", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> TongTieuThu
 		{
 			get
 			{
-				return this._SanLuong;
+				return this._TongTieuThu;
 			}
 			set
 			{
-				if ((this._SanLuong != value))
+				if ((this._TongTieuThu != value))
 				{
-					this.OnSanLuongChanging(value);
+					this.OnTongTieuThuChanging(value);
 					this.SendPropertyChanging();
-					this._SanLuong = value;
-					this.SendPropertyChanged("SanLuong");
-					this.OnSanLuongChanged();
+					this._TongTieuThu = value;
+					this.SendPropertyChanged("TongTieuThu");
+					this.OnTongTieuThuChanged();
 				}
 			}
 		}
