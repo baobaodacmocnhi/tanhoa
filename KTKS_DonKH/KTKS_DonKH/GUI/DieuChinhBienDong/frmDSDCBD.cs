@@ -41,6 +41,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CChungTu _cChungTu = new CChungTu();
         CCatChuyenDM _cCatChuyenDM = new CCatChuyenDM();
         DataRowView _CTRow = null;
+        List<GiaNuoc> lstGiaNuoc;
+        CGiaNuoc _cGiaNuoc = new CGiaNuoc();
         //BindingSource DSDCBD_BS;
 
         public frmDSDCBD()
@@ -59,6 +61,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void frmDSDCBD_Load(object sender, EventArgs e)
         {
+            lstGiaNuoc = _cGiaNuoc.LoadDSGiaNuoc();
             dateTimKiem.Location = txtNoiDungTimKiem.Location;
             //txtNoiDungTimKiem2.Location = new Point(746, 35);
             //panel_KhoangThoiGian.Location = new Point(746, 1);
@@ -1856,16 +1859,38 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         dr["DieuChinh"] = dr["DieuChinh"]+", Tiêu Thụ từ " + ctdchd.TieuThu + " -> " + ctdchd.TieuThu_BD;
                                 if (ctdchd.DieuChinhGia == true)
                                 {
-                                    if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
-                                        if (ctdchd.TieuThu_DieuChinhGia == ctdchd.TieuThu_BD)
-                                            dr["DieuChinh"] = ctdchd.TieuThu_DieuChinhGia + "m3 Áp giá " + ctdchd.GiaDieuChinh;
-                                        else
-                                            dr["DieuChinh"] =  ctdchd.DinhMuc_BD + "m3 Áp giá 5300, " + ctdchd.TieuThu_DieuChinhGia + "m3 Áp giá " + ctdchd.GiaDieuChinh;
-                                    else
-                                        if (ctdchd.TieuThu_DieuChinhGia == ctdchd.TieuThu_BD)
-                                            dr["DieuChinh"] = dr["DieuChinh"] + ", " + ctdchd.TieuThu_DieuChinhGia + "m3 Áp giá " + ctdchd.GiaDieuChinh;
-                                        else
-                                            dr["DieuChinh"] = dr["DieuChinh"] + ", " + ctdchd.DinhMuc_BD + "m3 Áp giá 5300, " + ctdchd.TieuThu_DieuChinhGia + "m3 Áp giá " + ctdchd.GiaDieuChinh;
+                                    switch (ctdchd.GiaBieu_BD)
+                                    {
+                                        case 51:
+                                        case 52:
+                                        case 53:
+                                        case 54:
+                                        case 59:
+                                        case 68:
+                                            if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
+                                                if (ctdchd.TieuThu_DieuChinhGia == ctdchd.TieuThu_BD)
+                                                    dr["DieuChinh"] = ctdchd.TieuThu_DieuChinhGia + "m3 Áp giá " + (ctdchd.GiaDieuChinh.Value - ctdchd.GiaDieuChinh.Value * CTaiKhoan.GiamTienNuoc / 100).ToString();
+                                                else
+                                                    dr["DieuChinh"] = ctdchd.DinhMuc_BD + "m3 Áp giá " + (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100).ToString() + ", " + ctdchd.TieuThu_DieuChinhGia + "m3 Áp giá " + (ctdchd.GiaDieuChinh.Value - ctdchd.GiaDieuChinh.Value * CTaiKhoan.GiamTienNuoc / 100).ToString();
+                                            else
+                                                if (ctdchd.TieuThu_DieuChinhGia == ctdchd.TieuThu_BD)
+                                                    dr["DieuChinh"] = dr["DieuChinh"] + ", " + ctdchd.TieuThu_DieuChinhGia + "m3 Áp giá " + (ctdchd.GiaDieuChinh.Value - ctdchd.GiaDieuChinh.Value * CTaiKhoan.GiamTienNuoc / 100).ToString();
+                                                else
+                                                    dr["DieuChinh"] = dr["DieuChinh"] + ", " + ctdchd.DinhMuc_BD + "m3 Áp giá " + (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100).ToString() + ", " + ctdchd.TieuThu_DieuChinhGia + "m3 Áp giá " + (ctdchd.GiaDieuChinh.Value - ctdchd.GiaDieuChinh.Value * CTaiKhoan.GiamTienNuoc / 100).ToString();
+                                            break;
+                                        default:
+                                            if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
+                                                if (ctdchd.TieuThu_DieuChinhGia == ctdchd.TieuThu_BD)
+                                                    dr["DieuChinh"] = ctdchd.TieuThu_DieuChinhGia + "m3 Áp giá " + ctdchd.GiaDieuChinh.Value;
+                                                else
+                                                    dr["DieuChinh"] = ctdchd.DinhMuc_BD + "m3 Áp giá " + lstGiaNuoc[0].DonGia.Value + ", " + ctdchd.TieuThu_DieuChinhGia + "m3 Áp giá " + ctdchd.GiaDieuChinh.Value;
+                                            else
+                                                if (ctdchd.TieuThu_DieuChinhGia == ctdchd.TieuThu_BD)
+                                                    dr["DieuChinh"] = dr["DieuChinh"] + ", " + ctdchd.TieuThu_DieuChinhGia + "m3 Áp giá " + ctdchd.GiaDieuChinh.Value;
+                                                else
+                                                    dr["DieuChinh"] = dr["DieuChinh"] + ", " + ctdchd.DinhMuc_BD + "m3 Áp giá " + lstGiaNuoc[0].DonGia.Value + ", " + ctdchd.TieuThu_DieuChinhGia + "m3 Áp giá " + ctdchd.GiaDieuChinh.Value;
+                                            break;
+                                    }
                                     dr["ChiTietCu"] = ctdchd.ChiTietCu;
                                     dr["ChiTietMoi"] = ctdchd.ChiTietMoi;
                                 }

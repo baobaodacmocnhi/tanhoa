@@ -3055,6 +3055,27 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public DataTable LoadDSCTDCHD(string DanhBo, int Nam, int Ky)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(db.CTDCHDs.Where(itemCTDCHD => itemCTDCHD.DanhBo == DanhBo && itemCTDCHD.Nam == Nam && itemCTDCHD.Ky == Ky).ToList());
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public CTDCHD getCTDCHDbyID(decimal MaCTDCHD)
         {
             try

@@ -105,9 +105,18 @@
             this.txtSH = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.btnInA4 = new System.Windows.Forms.Button();
+            this.dgvLichSu = new System.Windows.Forms.DataGridView();
+            this.MaCTDCHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KyHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TienNuoc_End = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ThueGTGT_End = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhiBVMT_End = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongCong_End = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLichSu)).BeginInit();
             this.SuspendLayout();
             // 
             // txtMaDon
@@ -170,6 +179,7 @@
             this.txtDanhBo.Size = new System.Drawing.Size(100, 25);
             this.txtDanhBo.TabIndex = 9;
             this.txtDanhBo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBo_KeyPress);
+            this.txtDanhBo.Leave += new System.EventHandler(this.txtDanhBo_Leave);
             // 
             // label3
             // 
@@ -908,12 +918,74 @@
             this.btnInA4.UseVisualStyleBackColor = true;
             this.btnInA4.Click += new System.EventHandler(this.btnInA4_Click);
             // 
+            // dgvLichSu
+            // 
+            this.dgvLichSu.AllowUserToAddRows = false;
+            this.dgvLichSu.AllowUserToDeleteRows = false;
+            this.dgvLichSu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLichSu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaCTDCHD,
+            this.CreateDate,
+            this.KyHD,
+            this.TienNuoc_End,
+            this.ThueGTGT_End,
+            this.PhiBVMT_End,
+            this.TongCong_End});
+            this.dgvLichSu.Location = new System.Drawing.Point(12, 409);
+            this.dgvLichSu.Name = "dgvLichSu";
+            this.dgvLichSu.Size = new System.Drawing.Size(770, 150);
+            this.dgvLichSu.TabIndex = 89;
+            // 
+            // MaCTDCHD
+            // 
+            this.MaCTDCHD.DataPropertyName = "MaCTDCHD";
+            this.MaCTDCHD.HeaderText = "Số Phiếu";
+            this.MaCTDCHD.Name = "MaCTDCHD";
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
+            // 
+            // KyHD
+            // 
+            this.KyHD.DataPropertyName = "KyHD";
+            this.KyHD.HeaderText = "Kỳ";
+            this.KyHD.Name = "KyHD";
+            // 
+            // TienNuoc_End
+            // 
+            this.TienNuoc_End.DataPropertyName = "TienNuoc_End";
+            this.TienNuoc_End.HeaderText = "Tiền Nước";
+            this.TienNuoc_End.Name = "TienNuoc_End";
+            // 
+            // ThueGTGT_End
+            // 
+            this.ThueGTGT_End.DataPropertyName = "ThueGTGT_End";
+            this.ThueGTGT_End.HeaderText = "Thuế GTGT";
+            this.ThueGTGT_End.Name = "ThueGTGT_End";
+            this.ThueGTGT_End.Width = 120;
+            // 
+            // PhiBVMT_End
+            // 
+            this.PhiBVMT_End.DataPropertyName = "PhiBVMT_End";
+            this.PhiBVMT_End.HeaderText = "Phí BVMT";
+            this.PhiBVMT_End.Name = "PhiBVMT_End";
+            // 
+            // TongCong_End
+            // 
+            this.TongCong_End.DataPropertyName = "TongCong_End";
+            this.TongCong_End.HeaderText = "Tổng Cộng";
+            this.TongCong_End.Name = "TongCong_End";
+            // 
             // frmDCHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1269, 418);
+            this.ClientSize = new System.Drawing.Size(1269, 603);
+            this.Controls.Add(this.dgvLichSu);
             this.Controls.Add(this.btnInA4);
             this.Controls.Add(this.txtHCSN);
             this.Controls.Add(this.label24);
@@ -951,6 +1023,7 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLichSu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1035,5 +1108,13 @@
         private System.Windows.Forms.TextBox txtSH;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Button btnInA4;
+        private System.Windows.Forms.DataGridView dgvLichSu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaCTDCHD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KyHD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TienNuoc_End;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ThueGTGT_End;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PhiBVMT_End;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_End;
     }
 }

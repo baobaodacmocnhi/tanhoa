@@ -259,7 +259,8 @@
             "Trùng lệnh",
             "Đóng nước-niêm chì",
             "Thay miễn phí",
-            "Đã thay ĐHN khác"});
+            "Đã thay ĐHN khác",
+            "Tráng bít bê tông chờ XPĐĐ"});
             this.cmbNoiDung.Location = new System.Drawing.Point(711, 55);
             this.cmbNoiDung.Name = "cmbNoiDung";
             this.cmbNoiDung.Size = new System.Drawing.Size(194, 25);
