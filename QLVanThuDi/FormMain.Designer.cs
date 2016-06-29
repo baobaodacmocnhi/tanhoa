@@ -50,6 +50,7 @@
             this.dateTuNgay = new System.Windows.Forms.DateTimePicker();
             this.cmbPhongBanDoi = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.File = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.NgayThangVB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoKyHieuVB = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -99,6 +100,7 @@
             this.dgvDSVanThuDi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDSVanThuDi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSVanThuDi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.File,
             this.NgayThangVB,
             this.SoDi,
             this.SoKyHieuVB,
@@ -296,6 +298,15 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Phòng Ban Đội:";
             // 
+            // File
+            // 
+            this.File.DataPropertyName = "Flag";
+            this.File.HeaderText = "File";
+            this.File.Name = "File";
+            this.File.ReadOnly = true;
+            this.File.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.File.Width = 30;
+            // 
             // NgayThangVB
             // 
             this.NgayThangVB.DataPropertyName = "NgayThangVB";
@@ -335,6 +346,7 @@
             this.TypeID.DataPropertyName = "TypeID";
             this.TypeID.HeaderText = "TypeID";
             this.TypeID.Name = "TypeID";
+            this.TypeID.Visible = false;
             // 
             // LoaiTrichYeuNoiDung
             // 
@@ -342,7 +354,7 @@
             this.LoaiTrichYeuNoiDung.HeaderText = "Loại Trích Yếu Nội Dung";
             this.LoaiTrichYeuNoiDung.Name = "LoaiTrichYeuNoiDung";
             this.LoaiTrichYeuNoiDung.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.LoaiTrichYeuNoiDung.Width = 600;
+            this.LoaiTrichYeuNoiDung.Width = 550;
             // 
             // NoiNhan
             // 
@@ -350,7 +362,7 @@
             this.NoiNhan.HeaderText = "Nơi Nhận";
             this.NoiNhan.Name = "NoiNhan";
             this.NoiNhan.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.NoiNhan.Width = 290;
+            this.NoiNhan.Width = 250;
             // 
             // NgayNhap
             // 
@@ -445,6 +457,7 @@
         private System.Windows.Forms.CheckBox chkTimeTimKiem;
         private System.Windows.Forms.ComboBox cmbPhongBanDoi;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn File;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayThangVB;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoDi;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoKyHieuVB;
