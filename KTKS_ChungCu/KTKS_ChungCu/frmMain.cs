@@ -21,6 +21,7 @@ namespace KTKS_ChungCu
         CChungTu _cChungTu = new CChungTu();
         int _selectedindex = -1;
         BindingSource DSKHCC_BS = new BindingSource();
+        CDanhSachChungTu _cDSCT = new CDanhSachChungTu();
 
         public frmMain()
         {
@@ -86,9 +87,9 @@ namespace KTKS_ChungCu
                     _ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
                     LoadTTKH(_ttkhachhang);
                     if (string.IsNullOrEmpty(txtLo.Text.Trim()))
-                        DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_DB(_ttkhachhang.DanhBo);
+                        DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB(_ttkhachhang.DanhBo);
                     else
-                        DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_DB_Lo(_ttkhachhang.DanhBo, txtLo.Text.Trim());
+                        DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB_Lo(_ttkhachhang.DanhBo, txtLo.Text.Trim());
                     dgvKhachHangChungCu.CurrentCell = dgvKhachHangChungCu.Rows[dgvKhachHangChungCu.RowCount - 1].Cells[0];
                     txtLo.Focus();
                 }
@@ -105,63 +106,57 @@ namespace KTKS_ChungCu
         {
             try
             {
-                List<CTChungTu> lstCT = _cChungTu.GetDS(txtMaCT.Text.Trim());
-                if (lstCT.Count > 0)
-                {
-                    string DanhBo = "";
-                    foreach (CTChungTu item in lstCT)
-                    {
-                        if (string.IsNullOrEmpty(DanhBo))
-                            DanhBo += item.DanhBo + ", STT:" + item.STT;
-                        else
-                            DanhBo += " ," + item.DanhBo + ", STT:" + item.STT;
-                    }
-                    MessageBox.Show("Sổ này đã được lưu tại Danh Bộ: " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                if (_cChungTu.CheckCTChungTu(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), txtLo.Text.Trim(), txtPhong.Text.Trim()))
-                {
-                    MessageBox.Show("Sổ này đã được lưu tại Lô, Phòng trên", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                if (_cChungTu.CheckCTChungTu(txtDanhBo.Text.Trim(), txtLo.Text.Trim(), txtPhong.Text.Trim()))
-                {
-                    MessageBox.Show("Lô, Phòng trên đã có đăng ký trước đó", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                
+                //if (_cChungTu.CheckCTChungTu(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), txtLo.Text.Trim(), txtPhong.Text.Trim()))
+                //{
+                //    MessageBox.Show("Sổ này đã được lưu tại Lô, Phòng trên", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    return;
+                //}
+                //if (_cChungTu.CheckCTChungTu(txtDanhBo.Text.Trim(), txtLo.Text.Trim(), txtPhong.Text.Trim()))
+                //{
+                //    MessageBox.Show("Lô, Phòng trên đã có đăng ký trước đó", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //}
                 if (txtMaCT.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0" && txtSoNKDangKy.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "0")
                     if (int.Parse(txtSoNKTong.Text.Trim()) >= int.Parse(txtSoNKDangKy.Text.Trim()))
                     {
+                        DanhSachChungTu entity = new DanhSachChungTu();
                         ChungTu chungtu = new ChungTu();
-                        chungtu.MaCT = txtMaCT.Text.Trim();
-                        chungtu.HoTen = txtHoTenCT.Text.Trim();
-                        chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
-                        chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
+                        entity.MaCT = txtMaCT.Text.Trim();
+                        entity.HoTen = txtHoTenCT.Text.Trim();
+                        entity.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
+                        entity.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
 
                         CTChungTu ctchungtu = new CTChungTu();
                         if (!string.IsNullOrEmpty(txtSTT.Text.Trim()))
-                            ctchungtu.STT = int.Parse(txtSTT.Text.Trim());
-                        ctchungtu.DanhBo = txtDanhBo.Text.Trim();
-                        ctchungtu.MaCT = txtMaCT.Text.Trim();
-                        ctchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
+                            entity.STT = int.Parse(txtSTT.Text.Trim());
+                        entity.DanhBo = txtDanhBo.Text.Trim();
+                        entity.MaCT = txtMaCT.Text.Trim();
+                        entity.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
                         //if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
                         //    ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
                         //else
                         //    ctchungtu.ThoiHan = null;
-                        ctchungtu.Lo = txtLo.Text.Trim();
-                        ctchungtu.Phong = txtPhong.Text.Trim();
-                        ctchungtu.GhiChu = txtGhiChu.Text.Trim();
+                        entity.Lo = txtLo.Text.Trim();
+                        entity.Phong = txtPhong.Text.Trim();
+                        entity.GhiChu = txtGhiChu.Text.Trim();
 
                         LichSuChungTu lichsuchungtu = new LichSuChungTu();
+                        lichsuchungtu.STT = int.Parse(txtSTT.Text.Trim());
                         lichsuchungtu.Lo = txtLo.Text.Trim();
                         lichsuchungtu.Phong = txtPhong.Text.Trim();
                         lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
+                        lichsuchungtu.MaCT = txtMaCT.Text.Trim();
+                        lichsuchungtu.DanhBo = txtDanhBo.Text.Trim();
+                        lichsuchungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
+                        lichsuchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
 
-                        if (_cChungTu.ThemChungTu(chungtu, ctchungtu, lichsuchungtu))
+                        if (_cDSCT.Them(entity)&&_cChungTu.ThemLichSuChungTu(lichsuchungtu))
                         {
                             MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             if (string.IsNullOrEmpty(txtLo.Text.Trim()))
-                                DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_DB(_ttkhachhang.DanhBo);
+                                DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB(_ttkhachhang.DanhBo);
                             else
-                                DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_DB_Lo(_ttkhachhang.DanhBo, txtLo.Text.Trim());
+                                DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB_Lo(_ttkhachhang.DanhBo, txtLo.Text.Trim());
                             dgvKhachHangChungCu.CurrentCell = dgvKhachHangChungCu.Rows[dgvKhachHangChungCu.RowCount - 1].Cells[0];
                             //txtSTT.Text = "";
                             //txtLo.Text = "";
@@ -200,36 +195,44 @@ namespace KTKS_ChungCu
                     if (txtSoNKTong.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0" && txtSoNKDangKy.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "0")
                         if (int.Parse(txtSoNKTong.Text.Trim()) >= int.Parse(txtSoNKDangKy.Text.Trim()))
                         {
-                            ChungTu chungtu = new ChungTu();
-                            chungtu.MaCT = txtMaCT.Text.Trim();
-                            chungtu.HoTen = txtHoTenCT.Text.Trim();
-                            chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
-                            chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
+                            DanhSachChungTu entity = _cDSCT.Get(int.Parse(dgvKhachHangChungCu["ID", _selectedindex].Value.ToString()));
+                            //ChungTu chungtu = new ChungTu();
+                            entity.MaCT = txtMaCT.Text.Trim();
+                            entity.HoTen = txtHoTenCT.Text.Trim();
+                            entity.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
+                            entity.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
 
-                            CTChungTu ctchungtu = new CTChungTu();
-                            ctchungtu.STT = int.Parse(txtSTT.Text.Trim());
-                            ctchungtu.DanhBo = txtDanhBo.Text.Trim();
-                            ctchungtu.MaCT = txtMaCT.Text.Trim();
-                            ctchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
+                            //CTChungTu ctchungtu = new CTChungTu();
+                            entity.STT = int.Parse(txtSTT.Text.Trim());
+                            entity.DanhBo = txtDanhBo.Text.Trim();
+                            entity.MaCT = txtMaCT.Text.Trim();
+                            entity.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
                             //if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
                             //    ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
                             //else
                             //    ctchungtu.ThoiHan = null;
-                            ctchungtu.GhiChu = txtGhiChu.Text.Trim();
-                            ctchungtu.Lo = txtLo.Text.Trim();
-                            ctchungtu.Phong = txtPhong.Text.Trim();
-                            ctchungtu.GhiChu = txtGhiChu.Text.Trim();
+                            entity.GhiChu = txtGhiChu.Text.Trim();
+                            entity.Lo = txtLo.Text.Trim();
+                            entity.Phong = txtPhong.Text.Trim();
+                            entity.GhiChu = txtGhiChu.Text.Trim();
 
                             LichSuChungTu lichsuchungtu = new LichSuChungTu();
+                            lichsuchungtu.STT = int.Parse(txtSTT.Text.Trim());
+                            lichsuchungtu.Lo = txtLo.Text.Trim();
+                            lichsuchungtu.Phong = txtPhong.Text.Trim();
                             lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
+                            lichsuchungtu.MaCT = txtMaCT.Text.Trim();
+                            lichsuchungtu.DanhBo = txtDanhBo.Text.Trim();
+                            lichsuchungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
+                            lichsuchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
 
-                            if (_cChungTu.SuaChungTu_ThongTin(chungtu, ctchungtu, lichsuchungtu))
+                            if (_cDSCT.Sua(entity) && _cChungTu.ThemLichSuChungTu(lichsuchungtu))
                             {
                                 MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 if (string.IsNullOrEmpty(txtLo.Text.Trim()))
-                                    DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_DB(_ttkhachhang.DanhBo);
+                                    DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB(_ttkhachhang.DanhBo);
                                 else
-                                    DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_DB_Lo(_ttkhachhang.DanhBo, txtLo.Text.Trim());
+                                    DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB_Lo(_ttkhachhang.DanhBo, txtLo.Text.Trim());
                                 dgvKhachHangChungCu.CurrentCell = dgvKhachHangChungCu.Rows[dgvKhachHangChungCu.RowCount - 1].Cells[0];
                                 txtSTT.Text = "";
                                 txtLo.Text = "";
@@ -293,8 +296,8 @@ namespace KTKS_ChungCu
 
         private void txtSoNKDangKy_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
-                e.Handled = true;
+            //if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+            //    e.Handled = true;
             if (e.KeyChar == 13)
                 txtGhiChu.Focus();
         }
@@ -325,7 +328,7 @@ namespace KTKS_ChungCu
                     //dr["TenLCT"] = dgvKhachHangChungCu["TenLCT", i].Value.ToString();
                     dr["HoTenCT"] = dgvKhachHangChungCu["HoTen", i].Value.ToString();
                     dr["MaCT"] = dgvKhachHangChungCu["MaCT", i].Value.ToString();
-                    dr["SoNKTong"] = _cChungTu.GetTongNKDangKy(txtDanhBo.Text.Trim());
+                    dr["SoNKTong"] = _cDSCT.GetTongNKDangKy(txtDanhBo.Text.Trim());
                     dr["SoNKDangKy"] = dgvKhachHangChungCu["SoNKDangKy", i].Value.ToString();
                     dr["GhiChu"] = dgvKhachHangChungCu["GhiChu", i].Value.ToString();
                     dr["Lo"] = dgvKhachHangChungCu["Lo", i].Value.ToString();
@@ -375,9 +378,9 @@ namespace KTKS_ChungCu
             {
                 txtSTT.Focus();
                 if (string.IsNullOrEmpty(txtLo.Text.Trim()))
-                    DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_DB(_ttkhachhang.DanhBo);
+                    DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB(_ttkhachhang.DanhBo);
                 else
-                    DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_DB_Lo(_ttkhachhang.DanhBo, txtLo.Text.Trim());
+                    DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB_Lo(_ttkhachhang.DanhBo, txtLo.Text.Trim());
                 dgvKhachHangChungCu.CurrentCell = dgvKhachHangChungCu.Rows[dgvKhachHangChungCu.RowCount - 1].Cells[0];
             }
         }
@@ -432,10 +435,14 @@ namespace KTKS_ChungCu
                 {
                     try
                     {
-                        if (_cChungTu.XoaChungTu(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim()))
+                        DanhSachChungTu entity = _cDSCT.Get(int.Parse(dgvKhachHangChungCu["ID", _selectedindex].Value.ToString()));
+                        if (_cDSCT.Xoa(entity))
                         {
                             MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_DB(_ttkhachhang.DanhBo);
+                            if (string.IsNullOrEmpty(txtLo.Text.Trim()))
+                                DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB(_ttkhachhang.DanhBo);
+                            else
+                                DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB_Lo(_ttkhachhang.DanhBo, txtLo.Text.Trim());
                             dgvKhachHangChungCu.CurrentCell = dgvKhachHangChungCu.Rows[dgvKhachHangChungCu.RowCount - 1].Cells[0];
                             txtSTT.Text = "";
                             txtLo.Text = "";
@@ -464,28 +471,28 @@ namespace KTKS_ChungCu
             {
                 case "Số Chứng Từ":
                     if (string.IsNullOrEmpty(txtDanhBo.Text.Trim()))
-                        DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_CT(txtNoiDungTimKiem.Text.Trim());
+                        DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_CT(txtNoiDungTimKiem.Text.Trim());
                     else
-                        DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_CT(txtDanhBo.Text.Trim(), txtNoiDungTimKiem.Text.Trim());
+                        DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_CT(txtDanhBo.Text.Trim(), txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Họ Tên":
-                    DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_HoTen(txtNoiDungTimKiem.Text.Trim());
+                    DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_HoTen(txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Lô":
                     if (string.IsNullOrEmpty(txtDanhBo.Text.Trim()))
-                        DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_Lo(txtNoiDungTimKiem.Text.Trim());
+                        DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_Lo(txtNoiDungTimKiem.Text.Trim());
                     else
-                        DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_Lo(txtDanhBo.Text.Trim(), txtNoiDungTimKiem.Text.Trim());
+                        DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_Lo(txtDanhBo.Text.Trim(), txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Phòng":
                     if (string.IsNullOrEmpty(txtDanhBo.Text.Trim()))
-                        DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_Phong(txtNoiDungTimKiem.Text.Trim());
+                        DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_Phong(txtNoiDungTimKiem.Text.Trim());
                     else
-                        DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_Phong(txtDanhBo.Text.Trim(), txtNoiDungTimKiem.Text.Trim());
+                        DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_Phong(txtDanhBo.Text.Trim(), txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Số Thứ Tự":
                     if (txtNoiDungTimKiem.Text.Trim() != "")
-                        DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_STT(txtDanhBo.Text.Trim(), txtLo.Text.Trim(), int.Parse(txtNoiDungTimKiem.Text.Trim()));
+                        DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_STT(txtDanhBo.Text.Trim(), txtLo.Text.Trim(), int.Parse(txtNoiDungTimKiem.Text.Trim()));
                     break;
             }
         }
@@ -501,8 +508,25 @@ namespace KTKS_ChungCu
             {
                 case "Số Thứ Tự":
                     if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
-                        DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_STTs(txtDanhBo.Text.Trim(),txtLo.Text.Trim(), int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(txtNoiDungTimKiem2.Text.Trim()));
+                        DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_STTs(txtDanhBo.Text.Trim(), txtLo.Text.Trim(), int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(txtNoiDungTimKiem2.Text.Trim()));
                     break;
+            }
+        }
+
+        private void txtMaCT_Leave(object sender, EventArgs e)
+        {
+            List<DanhSachChungTu> lstCT = _cDSCT.GetDS(txtMaCT.Text.Trim());
+            if (lstCT.Count > 0)
+            {
+                string DanhBo = "";
+                foreach (DanhSachChungTu item in lstCT)
+                {
+                    if (string.IsNullOrEmpty(DanhBo))
+                        DanhBo += item.DanhBo + ", Lo:" + item.Lo + " ,STT:" + item.STT;
+                    else
+                        DanhBo += " ," + item.DanhBo + ", Lo:" + item.Lo + ", STT:" + item.STT;
+                }
+                MessageBox.Show("Sổ này đã được lưu tại Danh Bộ: " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

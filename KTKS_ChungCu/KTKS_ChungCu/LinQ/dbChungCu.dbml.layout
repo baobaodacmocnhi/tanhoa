@@ -27,5 +27,11 @@
         <classShapeMoniker Id="6518545c-fc8e-4a0c-9283-e78c745f2746" />
       </nodes>
     </associationConnector>
+    <classShape Id="ab97c5e5-49e7-4e7f-93c4-f7f19fcd40f8" absoluteBounds="6, 1.5, 2, 13.5012841796875">
+      <DataClassMoniker Name="/dbChungCuDataContext/DanhSachChungTu" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5a6a7e92-df4d-4646-b4fc-b48888549c06" absoluteBounds="6.015, 1.96, 1.9700000000000002, 12.9412841796875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>
