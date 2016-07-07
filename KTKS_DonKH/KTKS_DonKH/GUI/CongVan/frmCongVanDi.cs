@@ -158,21 +158,21 @@ namespace KTKS_DonKH.GUI.CongVan
                         switch (cmbLoaiVanBan.SelectedItem.ToString())
                         {
                             case "Đơn Tổ Khách Hàng":
-                                DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                                DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = donkh.DanhBo;
                                 item.HoTen = donkh.HoTen;
                                 item.DiaChi = donkh.DiaChi;
                                 _madon = donkh.MaDon;
                                 break;
                             case "Đơn Tổ Xử Lý":
-                                DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                                DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = dontxl.DanhBo;
                                 item.HoTen = dontxl.HoTen;
                                 item.DiaChi = dontxl.DiaChi;
                                 _madon = dontxl.MaDon;
                                 break;
                             case "Kiểm Tra Xác Minh":
-                                CTKTXM ctktxm = _cKTXM.getCTKTXMbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                                CTKTXM ctktxm = _cKTXM.getCTKTXMbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = ctktxm.DanhBo;
                                 item.HoTen = ctktxm.HoTen;
                                 item.DiaChi = ctktxm.DiaChi;
@@ -183,7 +183,7 @@ namespace KTKS_DonKH.GUI.CongVan
                                     _madon = ctktxm.KTXM.MaDon.Value;
                                 break;
                             case "Bấm Chì":
-                                CTBamChi ctbamchi = _cBamChi.getCTBamChibyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                                CTBamChi ctbamchi = _cBamChi.getCTBamChibyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = ctbamchi.DanhBo;
                                 item.HoTen = ctbamchi.HoTen;
                                 item.DiaChi = ctbamchi.DiaChi;
@@ -194,7 +194,7 @@ namespace KTKS_DonKH.GUI.CongVan
                                     _madon = ctbamchi.BamChi.MaDon.Value;
                                 break;
                             case "Điều Chỉnh Biến Động":
-                                CTDCBD dcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                                CTDCBD dcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = dcbd.DanhBo;
                                 item.HoTen = dcbd.HoTen;
                                 item.DiaChi = dcbd.DiaChi;
@@ -205,7 +205,7 @@ namespace KTKS_DonKH.GUI.CongVan
                                     _madon = dcbd.DCBD.MaDon.Value;
                                 break;
                             case "Điều Chỉnh Hóa Đơn":
-                                CTDCHD dchd = _cDCBD.getCTDCHDbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                                CTDCHD dchd = _cDCBD.getCTDCHDbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = dchd.DanhBo;
                                 item.HoTen = dchd.HoTen;
                                 item.DiaChi = dchd.DiaChi;
@@ -216,7 +216,7 @@ namespace KTKS_DonKH.GUI.CongVan
                                     _madon = dchd.DCBD.MaDon.Value;
                                 break;
                             case "Cắt Tạm Danh Bộ":
-                                CTCTDB ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                                CTCTDB ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = ctctdb.DanhBo;
                                 item.HoTen = ctctdb.HoTen;
                                 item.DiaChi = ctctdb.DiaChi;
@@ -227,7 +227,7 @@ namespace KTKS_DonKH.GUI.CongVan
                                     _madon = ctctdb.CHDB.MaDon.Value;
                                 break;
                             case "Cắt Hủy Danh Bộ":
-                                CTCHDB ctchdb = _cCHDB.getCTCHDBbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                                CTCHDB ctchdb = _cCHDB.getCTCHDBbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = ctchdb.DanhBo;
                                 item.HoTen = ctchdb.HoTen;
                                 item.DiaChi = ctchdb.DiaChi;
@@ -238,7 +238,7 @@ namespace KTKS_DonKH.GUI.CongVan
                                     _madon = ctchdb.CHDB.MaDon.Value;
                                 break;
                             case "Phiếu Hủy Danh Bộ":
-                                YeuCauCHDB ycchdb = _cCHDB.getYeuCauCHDbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                                YeuCauCHDB ycchdb = _cCHDB.getYeuCauCHDbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = ycchdb.DanhBo;
                                 item.HoTen = ycchdb.HoTen;
                                 item.DiaChi = ycchdb.DiaChi;
@@ -249,7 +249,7 @@ namespace KTKS_DonKH.GUI.CongVan
                                     _madon = ycchdb.MaDon.Value;
                                 break;
                             case "Thư Trả Lời":
-                                CTTTTL cttttl = _cTTTL.getCTTTTLbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                                CTTTTL cttttl = _cTTTL.getCTTTTLbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = cttttl.DanhBo;
                                 item.HoTen = cttttl.HoTen;
                                 item.DiaChi = cttttl.DiaChi;

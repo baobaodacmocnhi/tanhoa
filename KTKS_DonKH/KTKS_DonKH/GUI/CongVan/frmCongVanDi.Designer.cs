@@ -294,7 +294,7 @@
             this.dgvDSCongVan.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSCongVan.Name = "dgvDSCongVan";
             this.dgvDSCongVan.RowHeadersWidth = 60;
-            this.dgvDSCongVan.Size = new System.Drawing.Size(671, 380);
+            this.dgvDSCongVan.Size = new System.Drawing.Size(671, 367);
             this.dgvDSCongVan.TabIndex = 22;
             this.dgvDSCongVan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSCongVan_CellFormatting);
             this.dgvDSCongVan.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSCongVan_RowPostPaint);

@@ -238,6 +238,17 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     ///
                     if (chkNgayXuLy.Checked)
                     {
+                        if (_ctctdb.NgayXuLy != dateXuLy.Value)
+                        {
+                            LichSuXuLyCTCHDB lsxl = new LichSuXuLyCTCHDB();
+                            lsxl.NgayXuLy = _ctctdb.NgayXuLy;
+                            lsxl.NoiDung = _ctctdb.NoiDungXuLy;
+                            lsxl.MaCTCTDB = _ctctdb.MaCTCTDB;
+                            if (_cCHDB.ThemLichSuXuLy(lsxl))
+                            {
+                                dgvLichSuXuLy.DataSource = _cCHDB.LoadDSLichSuXuLyByMaCTCTDB(_ctctdb.MaCTCTDB);
+                            }
+                        }
                         _ctctdb.NgayXuLy = dateXuLy.Value;
                         _ctctdb.NoiDungXuLy = cmbNoiDung.SelectedItem.ToString();
                         _ctctdb.CreateDate_NgayXuLy = DateTime.Now;
@@ -420,6 +431,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             _ctctdb.DaLapPhieu = true;
                             _ctctdb.SoPhieu = ycchdb.MaYCCHDB;
                             _ctctdb.NgayLapPhieu = ycchdb.CreateDate;
+                            _ctctdb.HieuLucKy = ycchdb.HieuLucKy;
                             _ctctdb.PhieuDuocKy = true;
                             _cCHDB.SuaCTCTDB(_ctctdb);
 
@@ -514,6 +526,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 _ctctdb.DaLapPhieu = true;
                                 _ctctdb.SoPhieu = ycchdb.MaYCCHDB;
                                 _ctctdb.NgayLapPhieu = ycchdb.CreateDate;
+                                _ctctdb.HieuLucKy = ycchdb.HieuLucKy;
                                 _ctctdb.PhieuDuocKy = true;
                                 _cCHDB.SuaCTCTDB(_ctctdb);
 

@@ -254,6 +254,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             _ctchdb.DaLapPhieu = true;
                             _ctchdb.SoPhieu = ycchdb.MaYCCHDB;
                             _ctchdb.NgayLapPhieu = ycchdb.CreateDate;
+                            _ctchdb.HieuLucKy = ycchdb.HieuLucKy;
                             _ctchdb.PhieuDuocKy = true;
                             _cCHDB.SuaCTCHDB(_ctchdb);
 
@@ -348,6 +349,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 _ctchdb.DaLapPhieu = true;
                                 _ctchdb.SoPhieu = ycchdb.MaYCCHDB;
                                 _ctchdb.NgayLapPhieu = ycchdb.CreateDate;
+                                _ctchdb.HieuLucKy = ycchdb.HieuLucKy;
                                 _ctchdb.PhieuDuocKy = true;
                                 _cCHDB.SuaCTCHDB(_ctchdb);
 
@@ -474,6 +476,17 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                     if (chkNgayXuLy.Checked)
                     {
+                        if (_ctchdb.NgayXuLy != dateXuLy.Value)
+                        {
+                            LichSuXuLyCTCHDB lsxl = new LichSuXuLyCTCHDB();
+                            lsxl.NgayXuLy = _ctchdb.NgayXuLy;
+                            lsxl.NoiDung = _ctchdb.NoiDungXuLy;
+                            lsxl.MaCTCHDB = _ctchdb.MaCTCHDB;
+                            if (_cCHDB.ThemLichSuXuLy(lsxl))
+                            {
+                                dgvLichSuXuLy.DataSource = _cCHDB.LoadDSLichSuXuLyByMaCTCHDB(_ctchdb.MaCTCHDB);
+                            }
+                        }
                         _ctchdb.NgayXuLy = dateXuLy.Value;
                         _ctchdb.NoiDungXuLy = cmbNoiDung.SelectedItem.ToString();
                         _ctchdb.CreateDate_NgayXuLy = DateTime.Now;
