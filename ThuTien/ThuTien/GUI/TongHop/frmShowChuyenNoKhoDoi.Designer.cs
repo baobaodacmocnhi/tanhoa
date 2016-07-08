@@ -37,10 +37,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.dateLap = new System.Windows.Forms.DateTimePicker();
+            this.dateYCCHDB = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
+            this.dateLap = new System.Windows.Forms.DateTimePicker();
+            this.lbNgayLap = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtSoPhieu
@@ -117,23 +119,23 @@
             this.label4.TabIndex = 34;
             this.label4.Text = "Khách Hàng:";
             // 
-            // dateLap
+            // dateYCCHDB
             // 
-            this.dateLap.CustomFormat = "dd/MM/yyyy";
-            this.dateLap.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateLap.Location = new System.Drawing.Point(300, 12);
-            this.dateLap.Name = "dateLap";
-            this.dateLap.Size = new System.Drawing.Size(100, 20);
-            this.dateLap.TabIndex = 37;
+            this.dateYCCHDB.CustomFormat = "dd/MM/yyyy";
+            this.dateYCCHDB.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateYCCHDB.Location = new System.Drawing.Point(326, 12);
+            this.dateYCCHDB.Name = "dateYCCHDB";
+            this.dateYCCHDB.Size = new System.Drawing.Size(100, 20);
+            this.dateYCCHDB.TabIndex = 37;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(238, 15);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 13);
+            this.label5.Size = new System.Drawing.Size(82, 13);
             this.label5.TabIndex = 36;
-            this.label5.Text = "Ngày Lập:";
+            this.label5.Text = "Ngày YCCHDB:";
             // 
             // btnSua
             // 
@@ -155,14 +157,36 @@
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
+            // dateLap
+            // 
+            this.dateLap.CustomFormat = "dd/MM/yyyy";
+            this.dateLap.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateLap.Location = new System.Drawing.Point(385, 60);
+            this.dateLap.Name = "dateLap";
+            this.dateLap.Size = new System.Drawing.Size(100, 20);
+            this.dateLap.TabIndex = 41;
+            this.dateLap.Visible = false;
+            // 
+            // lbNgayLap
+            // 
+            this.lbNgayLap.AutoSize = true;
+            this.lbNgayLap.Location = new System.Drawing.Point(323, 64);
+            this.lbNgayLap.Name = "lbNgayLap";
+            this.lbNgayLap.Size = new System.Drawing.Size(56, 13);
+            this.lbNgayLap.TabIndex = 40;
+            this.lbNgayLap.Text = "Ngày Lập:";
+            this.lbNgayLap.Visible = false;
+            // 
             // frmShowChuyenNoKhoDoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(497, 128);
+            this.Controls.Add(this.dateLap);
+            this.Controls.Add(this.lbNgayLap);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
-            this.Controls.Add(this.dateLap);
+            this.Controls.Add(this.dateYCCHDB);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtDiaChi);
             this.Controls.Add(this.label4);
@@ -192,9 +216,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtDiaChi;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dateLap;
+        private System.Windows.Forms.DateTimePicker dateYCCHDB;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnXoa;
+        private System.Windows.Forms.DateTimePicker dateLap;
+        private System.Windows.Forms.Label lbNgayLap;
     }
 }

@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using ThuTien.DAL.QuanTri;
 using ThuTien.LinQ;
 using ThuTien.DAL.TongHop;
+using ThuTien.DAL.Doi;
 
 namespace ThuTien.GUI.TongHop
 {
@@ -16,19 +17,33 @@ namespace ThuTien.GUI.TongHop
     {
         string _DanhBo;
         decimal _MaCNKD;
+        int _MaHD;
         TT_ChuyenNoKhoDoi _cnkd = null;
         YeuCauCHDB _ycch = null;
+        TT_CTChuyenNoKhoDoi _ctcnkd = null;
         CChuyenNoKhoDoi _cCNKD = new CChuyenNoKhoDoi();
+        CHoaDon _cHoaDon = new CHoaDon();
 
-        public frmShowChuyenNoKhoDoi(string DanhBo, decimal MaCNKD)
+        public frmShowChuyenNoKhoDoi(string DanhBo, decimal MaCNKD,int MaHD)
         {
             InitializeComponent();
             _DanhBo = DanhBo;
             _MaCNKD = MaCNKD;
+            _MaHD = MaHD;
         }
 
         private void frmShowChuyenNoKhoDoi_Load(object sender, EventArgs e)
         {
+            if (CNguoiDung.Doi)
+            {
+                lbNgayLap.Visible = true;
+                dateLap.Visible = true;
+            }
+            else
+            {
+                lbNgayLap.Visible = false;
+                dateLap.Visible = false;
+            }
             Location = new Point(100, 100);
 
             LoadForm();
@@ -37,14 +52,17 @@ namespace ThuTien.GUI.TongHop
         public void LoadForm()
         {
             _cnkd = _cCNKD.Get(_MaCNKD);
+            _ctcnkd = _cCNKD.GetCT(_MaHD);
+
             if (_cnkd.SoPhieuYCCHDB != null)
             {
                 txtSoPhieu.Text = _cnkd.SoPhieuYCCHDB.ToString().Insert(_cnkd.SoPhieuYCCHDB.ToString().Length - 2, "-");
-                dateLap.Value = _cnkd.NgayYCCHDB.Value;
+                dateYCCHDB.Value = _cnkd.NgayYCCHDB.Value;
             }
             txtDanhBo.Text = _cnkd.DanhBo;
             txtHoTen.Text = _cnkd.HoTen;
             txtDiaChi.Text = _cnkd.DiaChi;
+            dateLap.Value = _ctcnkd.CreateDate.Value;
         }
 
         private void txtSoPhieu_KeyPress(object sender, KeyPressEventArgs e)
@@ -54,7 +72,7 @@ namespace ThuTien.GUI.TongHop
                 _ycch = _cCNKD.GetYeuCauCHDB(decimal.Parse(txtSoPhieu.Text.Trim().Replace("-", "")));
 
                 txtSoPhieu.Text = _ycch.MaYCCHDB.ToString().Insert(_ycch.MaYCCHDB.ToString().Length - 2, "-");
-                dateLap.Value = _ycch.CreateDate.Value;
+                dateYCCHDB.Value = _ycch.CreateDate.Value;
                 txtDanhBo.Text = _ycch.DanhBo;
                 txtHoTen.Text = _ycch.HoTen;
                 txtDiaChi.Text = _ycch.DiaChi;
@@ -65,15 +83,29 @@ namespace ThuTien.GUI.TongHop
         {
             if (CNguoiDung.CheckQuyen("mnuChuyenNoKhoDoi", "Sua"))
             {
+                if (_ctcnkd != null && _ycch == null)
+                {
+                    _ctcnkd.CreateDate = dateLap.Value;
+                    if (_cCNKD.SuaCT(_ctcnkd))
+                    {
+                        HOADON hoadon = _cHoaDon.Get(_MaHD);
+                        hoadon.NGAYGIAITRACH = _ctcnkd.CreateDate;
+                        _cHoaDon.Sua(hoadon);
+                        _cnkd.CreateDate = _ctcnkd.CreateDate;
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                        this.Close();
+                    }
+                }
                 if (_ycch != null)
                     try
                     {
                         _cnkd.SoPhieuYCCHDB = _ycch.MaYCCHDB;
-                        _cnkd.NgayYCCHDB = dateLap.Value;
+                        _cnkd.NgayYCCHDB = dateYCCHDB.Value;
                         _cnkd.DanhBo = _ycch.DanhBo;
                         _cnkd.HoTen = _ycch.HoTen;
                         _cnkd.DiaChi = _ycch.DiaChi;
-
+                       
                         if (_cCNKD.Sua(_cnkd))
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

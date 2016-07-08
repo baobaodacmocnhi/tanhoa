@@ -36,6 +36,20 @@ namespace ThuTien.DAL.QuanTri
             set { CNguoiDung._TenTo = value; }
         }
 
+        static bool _Admin;
+        public static bool Admin
+        {
+            get { return CNguoiDung._Admin; }
+            set { CNguoiDung._Admin = value; }
+        }
+
+        static bool _PhoGiamDoc;
+        public static bool PhoGiamDoc
+        {
+            get { return CNguoiDung._PhoGiamDoc; }
+            set { CNguoiDung._PhoGiamDoc = value; }
+        }
+
         static bool _Doi;
         public static bool Doi
         {
@@ -202,7 +216,7 @@ namespace ThuTien.DAL.QuanTri
         /// <returns></returns>
         public List<TT_NguoiDung> GetDSExceptMaND(int MaND)
         {
-            return _db.TT_NguoiDungs.Where(item => item.MaND != MaND && item.MaND != 0).OrderBy(item=>item.STT).ToList();
+            return _db.TT_NguoiDungs.Where(item => item.MaND != MaND && item.MaND != 0&&item.PhoGiamDoc==false).OrderBy(item=>item.STT).ToList();
         }
 
         /// <summary>

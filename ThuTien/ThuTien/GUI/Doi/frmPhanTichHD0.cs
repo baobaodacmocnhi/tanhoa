@@ -54,6 +54,9 @@ namespace ThuTien.GUI.Doi
             cmbNamDK.DataSource = _cHoaDon.GetNam();
             cmbNamDK.DisplayMember = "Nam";
             cmbNamDK.ValueMember = "Nam";
+
+            cmbKy.SelectedItem = DateTime.Now.Month.ToString();
+            cmbDot.SelectedIndex = 0;
         }
 
         public void CountdgvDanhBoDK()
@@ -194,7 +197,10 @@ namespace ThuTien.GUI.Doi
                         }
                 }
             txtTongHD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", dgvHoaDon.Rows.Count);
-            
+            for (int i = 1; i < dgvDSTongHD0.Rows.Count; i++)
+            {
+                dgvDSTongHD0["BienDong", i].Value = int.Parse(dgvDSTongHD0["TongHD", i].Value.ToString()) - int.Parse(dgvDSTongHD0["TongHD", i-1].Value.ToString());
+            }
         }
 
         private void dgvHoaDon_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)

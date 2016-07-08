@@ -30,6 +30,8 @@ namespace ThuTien.GUI.Doi
             cmbNam.DataSource = _cHoaDon.GetNam();
             cmbNam.DisplayMember = "Nam";
             cmbNam.ValueMember = "Nam";
+
+            cmbKy.SelectedItem = DateTime.Now.Month.ToString();
         }
 
         private void btnXem_Click(object sender, EventArgs e)

@@ -35,6 +35,8 @@ namespace ThuTien.GUI.QuanTri
             txtHoTen.Text = "";
             txtTaiKhoan.Text = "";
             txtMatKhau.Text = "";
+            chkPhoGiamDoc.Checked = false;
+            chkDoi.Checked = false;
             chkToTruong.Checked = false;
             chkHanhThu.Checked = false;
             chkDongNuoc.Checked = false;
@@ -45,6 +47,12 @@ namespace ThuTien.GUI.QuanTri
 
         private void frmNguoiDung_Load(object sender, EventArgs e)
         {
+            if (CNguoiDung.Admin)
+                chkPhoGiamDoc.Visible = true;
+            else
+                chkPhoGiamDoc.Visible = false;
+            dgvNguoiDung.AutoGenerateColumns = false;
+
             cmbTo.DataSource = _cTo.GetDS();
             cmbTo.DisplayMember = "TenTo";
             cmbTo.ValueMember = "MaTo";
@@ -54,8 +62,7 @@ namespace ThuTien.GUI.QuanTri
             cmbNhom.DisplayMember = "TenNhom";
             cmbNhom.ValueMember = "MaNhom";
             //cmbNhom.SelectedIndex = -1;
-
-            dgvNguoiDung.AutoGenerateColumns = false;
+            
             _blNguoiDung = new BindingList<TT_NguoiDung>(_cNguoiDung.GetDSExceptMaND(CNguoiDung.MaND));
             dgvNguoiDung.DataSource = _blNguoiDung;
         }
@@ -81,6 +88,7 @@ namespace ThuTien.GUI.QuanTri
                         nguoidung.MaTo = (int)cmbTo.SelectedValue;
                     if (cmbNhom.SelectedIndex != -1)
                         nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
+                    nguoidung.PhoGiamDoc = chkPhoGiamDoc.Checked;
                     nguoidung.Doi = chkDoi.Checked;
                     nguoidung.ToTruong = chkToTruong.Checked;
                     nguoidung.HanhThu = chkHanhThu.Checked;
@@ -127,6 +135,7 @@ namespace ThuTien.GUI.QuanTri
                         nguoidung.NamVaoLam = int.Parse(txtNam.Text.Trim());
                     nguoidung.MaTo = (int)cmbTo.SelectedValue;
                     nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
+                    nguoidung.PhoGiamDoc = chkPhoGiamDoc.Checked;
                     nguoidung.Doi = chkDoi.Checked;
                     nguoidung.ToTruong = chkToTruong.Checked;
                     nguoidung.HanhThu = chkHanhThu.Checked;
@@ -184,26 +193,33 @@ namespace ThuTien.GUI.QuanTri
             try
             {
                 _selectedindex = e.RowIndex;
-                txtHoTen.Text = dgvNguoiDung["HoTen",e.RowIndex].Value.ToString();
+                txtHoTen.Text = dgvNguoiDung["HoTen", e.RowIndex].Value.ToString();
                 if (dgvNguoiDung["DienThoai", e.RowIndex].Value != null)
                     txtDienThoai.Text = dgvNguoiDung["DienThoai", e.RowIndex].Value.ToString();
                 txtTaiKhoan.Text = dgvNguoiDung["TaiKhoan", e.RowIndex].Value.ToString();
                 txtMatKhau.Text = dgvNguoiDung["MatKhau", e.RowIndex].Value.ToString();
-                txtNam.Text = dgvNguoiDung["NamVaoLam", e.RowIndex].Value.ToString();
-                cmbTo.SelectedValue = int.Parse(dgvNguoiDung["MaTo", e.RowIndex].Value.ToString());
-                cmbNhom.SelectedValue = int.Parse(dgvNguoiDung["MaNhom", e.RowIndex].Value.ToString());
+                if (dgvNguoiDung["NamVaoLam", e.RowIndex].Value != null)
+                    txtNam.Text = dgvNguoiDung["NamVaoLam", e.RowIndex].Value.ToString();
+                if (dgvNguoiDung["MaTo", e.RowIndex].Value != null)
+                    cmbTo.SelectedValue = int.Parse(dgvNguoiDung["MaTo", e.RowIndex].Value.ToString());
+                if (dgvNguoiDung["MaNhom", e.RowIndex].Value != null)
+                    cmbNhom.SelectedValue = int.Parse(dgvNguoiDung["MaNhom", e.RowIndex].Value.ToString());
+                chkPhoGiamDoc.Checked = bool.Parse(dgvNguoiDung["PhoGiamDoc", e.RowIndex].Value.ToString());
                 chkDoi.Checked = bool.Parse(dgvNguoiDung["Doi", e.RowIndex].Value.ToString());
                 chkToTruong.Checked = bool.Parse(dgvNguoiDung["ToTruong", e.RowIndex].Value.ToString());
                 chkHanhThu.Checked = bool.Parse(dgvNguoiDung["HanhThu", e.RowIndex].Value.ToString());
                 chkDongNuoc.Checked = bool.Parse(dgvNguoiDung["DongNuoc", e.RowIndex].Value.ToString());
                 chkVanPhong.Checked = bool.Parse(dgvNguoiDung["VanPhong", e.RowIndex].Value.ToString());
                 chkChamCong.Checked = bool.Parse(dgvNguoiDung["ChamCong", e.RowIndex].Value.ToString());
-                gridControl.DataSource = _cPhanQuyenNguoiDung.GetDSByMaND(int.Parse(dgvNguoiDung["MaND", e.RowIndex].Value.ToString()));
+                if (CNguoiDung.Admin)
+                    gridControl.DataSource = _cPhanQuyenNguoiDung.GetDSByMaND(true, int.Parse(dgvNguoiDung["MaND", e.RowIndex].Value.ToString()));
+                else
+                    gridControl.DataSource = _cPhanQuyenNguoiDung.GetDSByMaND(false, int.Parse(dgvNguoiDung["MaND", e.RowIndex].Value.ToString()));
             }
             catch (Exception)
             {
             }
-            
+
         }
 
         private void dgvNguoiDung_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)

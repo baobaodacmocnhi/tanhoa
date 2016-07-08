@@ -293,7 +293,7 @@ namespace ThuTien.GUI.TongHop
         {
             if (dgvHoaDon.RowCount > 0)
             {
-                frmShowChuyenNoKhoDoi frm = new frmShowChuyenNoKhoDoi(dgvHoaDon.CurrentRow.Cells["DanhBo"].Value.ToString(), decimal.Parse(dgvHoaDon.CurrentRow.Cells["MaCNKD"].Value.ToString()));
+                frmShowChuyenNoKhoDoi frm = new frmShowChuyenNoKhoDoi(dgvHoaDon.CurrentRow.Cells["DanhBo"].Value.ToString(), decimal.Parse(dgvHoaDon.CurrentRow.Cells["MaCNKD"].Value.ToString()), int.Parse(dgvHoaDon.CurrentRow.Cells["MaHD"].Value.ToString()));
                 if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     btnXem.PerformClick();
             }

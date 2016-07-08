@@ -291,6 +291,8 @@ namespace ThuTien.DAL.Quay
                         join itemHD in _db.HOADONs on itemLH.MaHD equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
+                        join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
+                        from itemtableDN in tableDN.DefaultIfEmpty()
                         where itemHD.NGAYGIAITRACH != null
                         orderby itemHD.MALOTRINH ascending
                         select new
@@ -309,6 +311,7 @@ namespace ThuTien.DAL.Quay
                             To = itemtableND.TT_To.TenTo,
                             GiaBieu = itemHD.GB,
                             itemLH.Cat,
+                            DangNgan = itemtableDN.HoTen,
                         };
             return LINQToDataTable(query);
         }
@@ -319,6 +322,8 @@ namespace ThuTien.DAL.Quay
                         join itemHD in _db.HOADONs on itemLH.MaHD equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
+                        join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
+                        from itemtableDN in tableDN.DefaultIfEmpty()
                         where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                            && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                            && itemHD.NGAYGIAITRACH != null
@@ -339,6 +344,7 @@ namespace ThuTien.DAL.Quay
                             To = itemtableND.TT_To.TenTo,
                             GiaBieu = itemHD.GB,
                             itemLH.Cat,
+                            DangNgan = itemtableDN.HoTen,
                         };
             return LINQToDataTable(query);
         }

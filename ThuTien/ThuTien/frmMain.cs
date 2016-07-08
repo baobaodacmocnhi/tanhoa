@@ -17,6 +17,7 @@ using ThuTien.GUI.ChuyenKhoan;
 using ThuTien.GUI.TongHop;
 using ThuTien.GUI.DongNuoc;
 using ThuTien.GUI.TimKiem;
+using ThuTien.GUI.PhoGiamDoc;
 
 namespace ThuTien
 {
@@ -39,6 +40,10 @@ namespace ThuTien
                     mnuAdmin.Enabled = true;
                 else
                     mnuAdmin.Enabled = false;
+                if (CNguoiDung.PhoGiamDoc)
+                    mnuPhoGiamDoc.Visible = true;
+                else
+                    mnuPhoGiamDoc.Visible = false;
             }
         }
 
@@ -119,6 +124,7 @@ namespace ThuTien
                 this.ActiveMdiChild.Close();
             }
             StripStatus_HoTen.Text = "";
+            mnuPhoGiamDoc.Visible = false;
             mnuDangNhap_Click(sender, e);
         }
 
@@ -892,6 +898,21 @@ namespace ThuTien
 
         #endregion
 
+        #region Phó Giám Đốc
+
+        private void mnuKiemTraThu2Lan_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuKiemTraThu2Lan", "Xem"))
+            {
+                frmKiemTraThu2Lan frm = new frmKiemTraThu2Lan();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion
+
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             if ((tabControl.SelectedTab != null) && (tabControl.SelectedTab.Tag != null))
@@ -943,12 +964,7 @@ namespace ThuTien
         }
 
         
-
-        
-
-        
-
-        
+       
 
     }
 }

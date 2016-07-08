@@ -357,5 +357,74 @@ namespace ThuTien.DAL.ChuyenKhoan
 
             return dt;
         }
+
+        public DataTable GetDS_PGD(int Nam,int Ky)
+        {
+            var query = from itemDV in _db.TT_DichVuThus
+                        join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
+                        from itemtableDN in tableDN.DefaultIfEmpty()
+                        where itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DangNgan_ChuyenKhoan == false
+                        orderby itemDV.CreateDate ascending
+                        select new
+                        {
+                            itemDV.SoHoaDon,
+                            itemDV.SoTien,
+                            itemDV.Phi,
+                            itemDV.TenDichVu,
+                            itemDV.CreateDate,
+                            itemHD.NGAYGIAITRACH,
+                            itemHD.DangNgan_Quay,
+                            itemHD.DangNgan_ChuyenKhoan,
+                            itemHD.TIEUTHU,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            GiaBieu = itemHD.GB,
+                            HanhThu = itemtableND.HoTen,
+                            To = itemtableND.TT_To.TenTo,
+                            DangNgan = itemtableDN.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDS_PGD(int Nam, int Ky, int Dot)
+        {
+            var query = from itemDV in _db.TT_DichVuThus
+                        join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
+                        from itemtableDN in tableDN.DefaultIfEmpty()
+                        where itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT==Dot && itemHD.DangNgan_ChuyenKhoan==false
+                        orderby itemDV.CreateDate ascending
+                        select new
+                        {
+                            itemDV.SoHoaDon,
+                            itemDV.SoTien,
+                            itemDV.Phi,
+                            itemDV.TenDichVu,
+                            itemDV.CreateDate,
+                            itemHD.NGAYGIAITRACH,
+                            itemHD.DangNgan_Quay,
+                            itemHD.DangNgan_ChuyenKhoan,
+                            itemHD.TIEUTHU,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            GiaBieu = itemHD.GB,
+                            HanhThu = itemtableND.HoTen,
+                            To = itemtableND.TT_To.TenTo,
+                            DangNgan = itemtableDN.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
     }
 }

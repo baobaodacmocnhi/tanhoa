@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>584</ApplicationRevision>
+    <ApplicationRevision>591</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -693,6 +693,12 @@
     <Compile Include="GUI\HanhThu\frmQuetTam.Designer.cs">
       <DependentUpon>frmQuetTam.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\PhoGiamDoc\frmKiemTraThu2Lan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\PhoGiamDoc\frmKiemTraThu2Lan.Designer.cs">
+      <DependentUpon>frmKiemTraThu2Lan.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Quay\frmQuetGiaoTon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1302,6 +1308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\HanhThu\frmQuetTam.resx">
       <DependentUpon>frmQuetTam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\PhoGiamDoc\frmKiemTraThu2Lan.resx">
+      <DependentUpon>frmKiemTraThu2Lan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Quay\frmQuetGiaoTon.resx">
       <DependentUpon>frmQuetGiaoTon.cs</DependentUpon>

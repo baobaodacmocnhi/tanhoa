@@ -7,7 +7,7 @@ using System.Data;
 
 namespace ThuTien.DAL.QuanTri
 {
-    class CPhanQuyenNguoiDung:CDAL
+    class CPhanQuyenNguoiDung : CDAL
     {
         public bool Them(TT_PhanQuyenNguoiDung phanquyennguoidung)
         {
@@ -83,10 +83,17 @@ namespace ThuTien.DAL.QuanTri
             return _db.TT_PhanQuyenNguoiDungs.Any(item => item.MaMenu == MaMenu && item.MaND == MaND);
         }
 
-        public DataTable GetDSByMaND(int MaND)
+        public DataTable GetDSByMaND(bool Admin, int MaND)
         {
-            return LINQToDataTable(_db.TT_PhanQuyenNguoiDungs.Where(item => item.MaND == MaND).Select(item =>
-                new { item.TT_Menu.TextMenuCha, item.TT_Menu.STT, item.MaMenu, item.TT_Menu.TenMenu, item.TT_Menu.TextMenu, item.Xem, item.Them, item.Sua, item.Xoa,item.ToanQuyen,item.QuanLy }).ToList());
+            if (Admin)
+                return LINQToDataTable(_db.TT_PhanQuyenNguoiDungs.Where(item => item.MaND == MaND).Select(item =>
+                new { item.TT_Menu.TextMenuCha, item.TT_Menu.STT, item.MaMenu, item.TT_Menu.TenMenu, item.TT_Menu.TextMenu, item.Xem, item.Them, item.Sua, item.Xoa, item.ToanQuyen, item.QuanLy }).ToList());
+            else
+                return LINQToDataTable(_db.TT_PhanQuyenNguoiDungs.Where(item => item.MaND == MaND && item.TT_Menu.TenMenuCha != "mnuPhoGiamDoc").Select(item =>
+                    new { item.TT_Menu.TextMenuCha, item.TT_Menu.STT, item.MaMenu, item.TT_Menu.TenMenu, item.TT_Menu.TextMenu, item.Xem, item.Them, item.Sua, item.Xoa, item.ToanQuyen, item.QuanLy }).ToList());
         }
+
+
+
     }
 }

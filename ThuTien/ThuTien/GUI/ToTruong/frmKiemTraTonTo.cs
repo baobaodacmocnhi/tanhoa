@@ -58,6 +58,9 @@ namespace ThuTien.GUI.ToTruong
             lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
 
             dateGiaiTrach.Value = DateTime.Now;
+
+            cmbNam.SelectedValue = DateTime.Now.Year.ToString();
+            cmbKy.SelectedItem = DateTime.Now.Month.ToString();
         }
 
         public void CountdgvHDTuGia()
@@ -389,6 +392,14 @@ namespace ThuTien.GUI.ToTruong
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
+            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongHDTonThucTe_TG" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongCongTonThucTe_TG" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
         }
 
         private void dgvHDCoQuan_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -414,6 +425,14 @@ namespace ThuTien.GUI.ToTruong
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
             if (dgvHDCoQuan.Columns[e.ColumnIndex].Name == "TongCongTon_CQ" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHDCoQuan.Columns[e.ColumnIndex].Name == "TongHDTonThucTe_CQ" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHDCoQuan.Columns[e.ColumnIndex].Name == "TongCongTonThucTe_CQ" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }

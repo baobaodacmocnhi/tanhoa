@@ -51,6 +51,8 @@ namespace ThuTien.GUI.HeThong
 
                     CNguoiDung.MaND = nguoidung.MaND;
                     CNguoiDung.HoTen = nguoidung.HoTen;
+                    CNguoiDung.Admin = nguoidung.Admin;
+                    CNguoiDung.PhoGiamDoc = nguoidung.PhoGiamDoc;
                     CNguoiDung.Doi = nguoidung.Doi;
                     CNguoiDung.ToTruong = nguoidung.ToTruong;
                     if (nguoidung.MaTo != null)
@@ -59,8 +61,9 @@ namespace ThuTien.GUI.HeThong
                         CNguoiDung.TenTo = nguoidung.TT_To.TenTo;
                     }
                     if (nguoidung.MaNhom != null)
-                        CNguoiDung.dtQuyenNhom = _cPhanQuyenNhom.GetDSByMaNhom(nguoidung.MaNhom.Value);
-                    CNguoiDung.dtQuyenNguoiDung = _cPhanQuyenNguoiDung.GetDSByMaND(nguoidung.MaND);
+                        CNguoiDung.dtQuyenNhom = _cPhanQuyenNhom.GetDSByMaNhom(true,nguoidung.MaNhom.Value);
+                    CNguoiDung.dtQuyenNguoiDung = _cPhanQuyenNguoiDung.GetDSByMaND(true,nguoidung.MaND);
+
                     GetLoginResult(true);
                     this.Hide();
                 }

@@ -149,9 +149,17 @@ namespace ThuTien.DAL.TongHop
             return _db.TT_ChuyenNoKhoDois.SingleOrDefault(item => item.MaCNKD == MaCNKD);
         }
 
+        public TT_CTChuyenNoKhoDoi GetCT(int MaHD)
+        {
+            return _db.TT_CTChuyenNoKhoDois.SingleOrDefault(item => item.MaHD == MaHD);
+        }
+
         public TT_CTChuyenNoKhoDoi GetCT(string SoHoaDon)
         {
-            return _db.TT_CTChuyenNoKhoDois.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
+            if (_db.HOADONs.Any(itemHD => itemHD.SOHOADON == SoHoaDon))
+                return _db.TT_CTChuyenNoKhoDois.SingleOrDefault(item => item.MaHD == _db.HOADONs.SingleOrDefault(itemHD => itemHD.SOHOADON == SoHoaDon).ID_HOADON);
+            else
+                return null;
         }
 
         public List<TT_CTChuyenNoKhoDoi> GetDSCT_ChuaLapPhieu(string DanhBo)
