@@ -120,6 +120,7 @@ namespace ThuTien.GUI.HanhThu
                     if (!_cHoaDon.CheckExist(item.Text))
                     {
                         MessageBox.Show("Hóa Đơn sai: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        lstHD.Focus();
                         item.Selected = true;
                         item.Focused = true;
                         return;

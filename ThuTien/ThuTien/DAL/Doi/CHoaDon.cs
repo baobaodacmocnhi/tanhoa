@@ -7468,6 +7468,47 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
+        public DataTable GetDSChuyenKhoan(int Nam)
+        {
+            string sql = "declare @Nam int;"
+                        + " set @Nam="+Nam
+                        + " select tt.*,TENPHUONG,TENQUAN from"
+                        + " (select t.DANHBA as DanhBo,t1.DangNgan_ChuyenKhoan as Ky1,t2.DangNgan_ChuyenKhoan as Ky2,t3.DangNgan_ChuyenKhoan as Ky3,t4.DangNgan_ChuyenKhoan as Ky4,t5.DangNgan_ChuyenKhoan as Ky5,t6.DangNgan_ChuyenKhoan as Ky6,"
+                        + " t7.DangNgan_ChuyenKhoan as Ky7,t8.DangNgan_ChuyenKhoan as Ky8,t9.DangNgan_ChuyenKhoan as Ky9,t10.DangNgan_ChuyenKhoan as Ky10,t11.DangNgan_ChuyenKhoan as Ky11,t12.DangNgan_ChuyenKhoan as Ky12,"
+                        + " row_number() over (partition by t.DanhBa order by t.DanhBa) as RowNumber,Quan,Phuong from"
+                        + " (select DANHBA,Quan,Phuong from HOADON where NAM=@Nam and DangNgan_ChuyenKhoan=1) t"
+                        + " left join"
+                        + " (select DANHBA,DangNgan_ChuyenKhoan from HOADON where NAM=@Nam and DangNgan_ChuyenKhoan=1 and KY=1) t1 on t.DANHBA=t1.DANHBA"
+                        + " left join"
+                        + " (select DANHBA,DangNgan_ChuyenKhoan from HOADON where NAM=@Nam and DangNgan_ChuyenKhoan=1 and KY=2) t2 on t.DANHBA=t2.DANHBA"
+                        + " left join"
+                        + " (select DANHBA,DangNgan_ChuyenKhoan from HOADON where NAM=@Nam and DangNgan_ChuyenKhoan=1 and KY=3) t3 on t.DANHBA=t3.DANHBA"
+                        + " left join"
+                        + " (select DANHBA,DangNgan_ChuyenKhoan from HOADON where NAM=@Nam and DangNgan_ChuyenKhoan=1 and KY=4) t4 on t.DANHBA=t4.DANHBA"
+                        + " left join"
+                        + " (select DANHBA,DangNgan_ChuyenKhoan from HOADON where NAM=@Nam and DangNgan_ChuyenKhoan=1 and KY=5) t5 on t.DANHBA=t5.DANHBA"
+                        + " left join"
+                        + " (select DANHBA,DangNgan_ChuyenKhoan from HOADON where NAM=@Nam and DangNgan_ChuyenKhoan=1 and KY=6) t6 on t.DANHBA=t6.DANHBA"
+                        + " left join"
+                        + " (select DANHBA,DangNgan_ChuyenKhoan from HOADON where NAM=@Nam and DangNgan_ChuyenKhoan=1 and KY=7) t7 on t.DANHBA=t7.DANHBA"
+                        + " left join"
+                        + " (select DANHBA,DangNgan_ChuyenKhoan from HOADON where NAM=@Nam and DangNgan_ChuyenKhoan=1 and KY=8) t8 on t.DANHBA=t8.DANHBA"
+                        + " left join"
+                        + " (select DANHBA,DangNgan_ChuyenKhoan from HOADON where NAM=@Nam and DangNgan_ChuyenKhoan=1 and KY=9) t9 on t.DANHBA=t9.DANHBA"
+                        + " left join"
+                        + " (select DANHBA,DangNgan_ChuyenKhoan from HOADON where NAM=@Nam and DangNgan_ChuyenKhoan=1 and KY=10) t10 on t.DANHBA=t10.DANHBA"
+                        + " left join"
+                        + " (select DANHBA,DangNgan_ChuyenKhoan from HOADON where NAM=@Nam and DangNgan_ChuyenKhoan=1 and KY=11) t11 on t.DANHBA=t11.DANHBA"
+                        + " left join"
+                        + " (select DANHBA,DangNgan_ChuyenKhoan from HOADON where NAM=@Nam and DangNgan_ChuyenKhoan=1 and KY=12) t12 on t.DANHBA=t12.DANHBA) tt"
+                        + " left join (select MAPHUONG,MAQUAN,TENPHUONG from SERVER8.CAPNUOCTANHOA.dbo.PHUONG) phuong on tt.Phuong=phuong.MAPHUONG and tt.Quan=phuong.MAQUAN"
+                        + " left join (select MAQUAN,TENQUAN from SERVER8.CAPNUOCTANHOA.dbo.QUAN) quan on tt.Quan=quan.MAQUAN"
+                        + " where RowNumber=1"
+                        + " order by DanhBo asc";
+
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+        }
+
         public DataTable GetDSByTienLon_To(string Loai, int MaNV, int Nam, int SoTien)
         {
             if (Loai == "TG")
@@ -8449,6 +8490,51 @@ namespace ThuTien.DAL.Doi
                             TongHD = itemGroup.Count(),
                         };
             return LINQToDataTable(query);
+        }
+
+        public DataTable ThongKeHD0_Code(int Nam, int Ky)
+        {
+            string sql = " select t1.CODE,t1.TongHD as KyA,t2.TongHD as KyB,t1.TongHD-t2.TongHD as BienDong from"
+                         + " (select CODE,COUNT(*) as TongHD from HOADON"
+                         + " where TIEUTHU=0 and NAM=" + Nam + " and KY=" + Ky
+                         + " group by CODE) t1"
+                         + " left join"
+                         + " (select CODE,COUNT(*) as TongHD from HOADON"
+                         + " where TIEUTHU=0 and NAM=" + Nam + " and KY=" + (Ky - 1)
+                         + " group by CODE) t2 on t1.CODE=t2.CODE"
+                         + " order by t1.CODE asc";
+
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+        }
+
+        public DataTable ThongKeHD0_Code_To(int MaTo,int Nam, int Ky)
+        {
+            string sql = " select t1.CODE,t1.TongHD as KyA,t2.TongHD as KyB,t1.TongHD-t2.TongHD as BienDong from"
+                         + " (select CODE,COUNT(*) as TongHD from HOADON"
+                         + " where MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ") and TIEUTHU=0 and NAM=" + Nam + " and KY=" + Ky
+                         + " group by CODE) t1"
+                         + " left join"
+                         + " (select CODE,COUNT(*) as TongHD from HOADON"
+                         + " where MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ") and TIEUTHU=0 and NAM=" + Nam + " and KY=" + (Ky - 1)
+                         + " group by CODE) t2 on t1.CODE=t2.CODE"
+                         + " order by t1.CODE asc";
+
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+        }
+
+        public DataTable ThongKeHD0_Code_NV(int MaNV_HanhThu, int Nam, int Ky)
+        {
+            string sql = " select t1.CODE,t1.TongHD as KyA,t2.TongHD as KyB,t1.TongHD-t2.TongHD as BienDong from"
+                         + " (select CODE,COUNT(*) as TongHD from HOADON hd, TT_NguoiDung nd"
+                         + " where hd.MaNV_HanhThu=nd.MaND and hd.MaNV_HanhThu=" + MaNV_HanhThu + " and TIEUTHU=0 and NAM=" + Nam + " and KY=" + Ky
+                         + " group by CODE) t1"
+                         + " left join"
+                         + " (select CODE,COUNT(*) as TongHD from HOADON hd, TT_NguoiDung nd"
+                         + " where hd.MaNV_HanhThu=nd.MaND and hd.MaNV_HanhThu=" + MaNV_HanhThu + " and TIEUTHU=0 and NAM=" + Nam + " and KY=" + (Ky - 1)
+                         + " group by CODE) t2 on t1.CODE=t2.CODE"
+                         + " order by t1.CODE asc";
+
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
         public DataTable GetDSTimKiem(string DanhBo, string MLT)

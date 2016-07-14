@@ -405,5 +405,88 @@ namespace ThuTien.GUI.Doi
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();
         }
+
+        private void btnInThongKeCode_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+
+            ///chọn tất cả tổ
+            if (cmbTo.SelectedIndex == 0)
+            {
+                if (cmbKy.SelectedIndex == 0)
+                { }
+                else
+                    if (cmbKy.SelectedIndex > 0)
+                        if (cmbDot.SelectedIndex == 0)
+                            dt = _cHoaDon.ThongKeHD0_Code(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                        else
+                            if (cmbDot.SelectedIndex > 0)
+                                if (cmbDenDot.SelectedIndex == 0)
+                                { }
+                                else
+                                    if (cmbDenDot.SelectedIndex > 0)
+                                    { }
+            }
+            else
+                ///chọn 1 tổ cụ thể
+                if (cmbTo.SelectedIndex > 0)
+                {
+                    ///chọn tất cả nhân viên
+                    if (cmbNhanVien.SelectedIndex == 0)
+                    {
+                        if (cmbKy.SelectedIndex == 0)
+                        { }
+                        else
+                            if (cmbKy.SelectedIndex > 0)
+                                if (cmbDot.SelectedIndex == 0)
+                                    dt = _cHoaDon.ThongKeHD0_Code_To(int.Parse(cmbTo.SelectedValue.ToString()),int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                else
+                                    if (cmbDot.SelectedIndex > 0)
+                                        if (cmbDenDot.SelectedIndex == 0)
+                                        { }
+                                        else
+                                            if (cmbDenDot.SelectedIndex > 0)
+                                            { }
+                    }
+                    else
+                        ///chọn 1 nhân viên cụ thể
+                        if (cmbNhanVien.SelectedIndex > 0)
+                        {
+                            if (cmbKy.SelectedIndex == 0)
+                            { }
+                            else
+                                if (cmbKy.SelectedIndex > 0)
+                                    if (cmbDot.SelectedIndex == 0)
+                                        dt = _cHoaDon.ThongKeHD0_Code_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                    else
+                                        if (cmbDot.SelectedIndex > 0)
+                                            if (cmbDenDot.SelectedIndex == 0)
+                                            { }
+                                            else
+                                                if (cmbDenDot.SelectedIndex > 0)
+                                                { }
+                        }
+                }
+
+            
+            dsBaoCao ds = new dsBaoCao();
+            foreach (DataRow item in dt.Rows)
+            {
+                DataRow dr = ds.Tables["DangKyHD0"].NewRow();
+                dr["Code"] = item["Code"];
+                dr["Ky1"] = cmbKy.SelectedItem.ToString();
+                dr["Ky2"] = int.Parse(cmbKy.SelectedItem.ToString()) - 1;
+                dr["Ky3"] = item["KyA"];
+                dr["Ky4"] = item["KyB"];
+                dr["Ky5"] = item["BienDong"];
+
+                ds.Tables["DangKyHD0"].Rows.Add(dr);
+            }
+
+            rptThongKeHD0Code rpt = new rptThongKeHD0Code();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
+        }
     }
 }

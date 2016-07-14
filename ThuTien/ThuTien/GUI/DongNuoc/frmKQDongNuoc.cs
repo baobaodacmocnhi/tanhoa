@@ -130,6 +130,68 @@ namespace ThuTien.GUI.DongNuoc
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
+                ///sửa kết quả đóng nước
+                if (_kqdongnuoc != null)
+                {
+                    if (!CNguoiDung.ToTruong && !CNguoiDung.Doi)
+                        if (!_cDongNuoc.CheckExist_DongNuoc(_kqdongnuoc.MaDN.Value, CNguoiDung.MaND))
+                        {
+                            MessageBox.Show("Thông báo này không được giao cho bạn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                    _kqdongnuoc.DanhBo = txtDanhBo.Text.Trim();
+                    _kqdongnuoc.MLT = txtMLT.Text.Trim();
+                    _kqdongnuoc.HoTen = txtHoTen.Text.Trim();
+                    _kqdongnuoc.DiaChi = txtDiaChi.Text.Trim();
+
+                    _kqdongnuoc.NgayDN = dateDongNuoc.Value;
+                    if (!string.IsNullOrEmpty(txtChiSoDN.Text.Trim()))
+                        _kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN.Text.Trim());
+                    _kqdongnuoc.Hieu = txtHieu.Text.Trim();
+                    if (!string.IsNullOrEmpty(txtCo.Text.Trim()))
+                        _kqdongnuoc.Co = int.Parse(txtCo.Text.Trim());
+                    _kqdongnuoc.SoThan = txtSoThan.Text.Trim();
+                    if (cmbChiMatSo.SelectedItem != null)
+                        _kqdongnuoc.ChiMatSo = cmbChiMatSo.SelectedItem.ToString();
+                    if (cmbChiKhoaGoc.SelectedItem != null)
+                        _kqdongnuoc.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
+                    _kqdongnuoc.LyDo = txtLyDo.Text.Trim();
+
+                    if (chkDongNuoc2.Checked)
+                    {
+                        _kqdongnuoc.DongNuoc2 = true;
+                        _kqdongnuoc.PhiMoNuoc = _cDongNuoc.GetPhiMoNuoc() * 2;
+
+                        if (_kqdongnuoc.NgayDN1 == null)
+                            _kqdongnuoc.NgayDN1 = _kqdongnuoc.NgayDN;
+                        if (_kqdongnuoc.ChiSoDN1 == null)
+                            _kqdongnuoc.ChiSoDN1 = _kqdongnuoc.ChiSoDN;
+
+                        _kqdongnuoc.NgayDN = dateDongNuoc2.Value;
+                        if (!string.IsNullOrEmpty(txtChiSoDN2.Text.Trim()))
+                            _kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN2.Text.Trim());
+                    }
+                    else
+                        if (_kqdongnuoc.DongNuoc2 == true)
+                        {
+                            _kqdongnuoc.DongNuoc2 = false;
+                            _kqdongnuoc.PhiMoNuoc = _kqdongnuoc.PhiMoNuoc / 2;
+                            _kqdongnuoc.NgayDN = _kqdongnuoc.NgayDN1;
+                            _kqdongnuoc.ChiSoDN = _kqdongnuoc.ChiSoDN1;
+                            _kqdongnuoc.NgayDN1 = null;
+                            _kqdongnuoc.ChiSoDN1 = null;
+                        }
+
+                    if (_cDongNuoc.SuaKQ(_kqdongnuoc))
+                    {
+                        Clear();
+                        btnXem.PerformClick();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                ///thêm kết quả đóng nước
                 if (_dongnuoc != null)
                 {
                     if (_cDongNuoc.CheckDangNgan(_dongnuoc.MaDN))
@@ -191,6 +253,7 @@ namespace ThuTien.GUI.DongNuoc
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
+
             }
             else
                 MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -209,48 +272,48 @@ namespace ThuTien.GUI.DongNuoc
                             return;
                         }
 
-                    _kqdongnuoc.DanhBo = txtDanhBo.Text.Trim();
-                    _kqdongnuoc.MLT = txtMLT.Text.Trim();
-                    _kqdongnuoc.HoTen = txtHoTen.Text.Trim();
-                    _kqdongnuoc.DiaChi = txtDiaChi.Text.Trim();
+                    //_kqdongnuoc.DanhBo = txtDanhBo.Text.Trim();
+                    //_kqdongnuoc.MLT = txtMLT.Text.Trim();
+                    //_kqdongnuoc.HoTen = txtHoTen.Text.Trim();
+                    //_kqdongnuoc.DiaChi = txtDiaChi.Text.Trim();
 
-                    _kqdongnuoc.NgayDN = dateDongNuoc.Value;
-                    if (!string.IsNullOrEmpty(txtChiSoDN.Text.Trim()))
-                        _kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN.Text.Trim());
-                    _kqdongnuoc.Hieu = txtHieu.Text.Trim();
-                    if (!string.IsNullOrEmpty(txtCo.Text.Trim()))
-                        _kqdongnuoc.Co = int.Parse(txtCo.Text.Trim());
-                    _kqdongnuoc.SoThan = txtSoThan.Text.Trim();
-                    if (cmbChiMatSo.SelectedItem != null)
-                        _kqdongnuoc.ChiMatSo = cmbChiMatSo.SelectedItem.ToString();
-                    if (cmbChiKhoaGoc.SelectedItem != null)
-                        _kqdongnuoc.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
-                    _kqdongnuoc.LyDo = txtLyDo.Text.Trim();
+                    //_kqdongnuoc.NgayDN = dateDongNuoc.Value;
+                    //if (!string.IsNullOrEmpty(txtChiSoDN.Text.Trim()))
+                    //    _kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN.Text.Trim());
+                    //_kqdongnuoc.Hieu = txtHieu.Text.Trim();
+                    //if (!string.IsNullOrEmpty(txtCo.Text.Trim()))
+                    //    _kqdongnuoc.Co = int.Parse(txtCo.Text.Trim());
+                    //_kqdongnuoc.SoThan = txtSoThan.Text.Trim();
+                    //if (cmbChiMatSo.SelectedItem != null)
+                    //    _kqdongnuoc.ChiMatSo = cmbChiMatSo.SelectedItem.ToString();
+                    //if (cmbChiKhoaGoc.SelectedItem != null)
+                    //    _kqdongnuoc.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
+                    //_kqdongnuoc.LyDo = txtLyDo.Text.Trim();
 
-                    if (chkDongNuoc2.Checked)
-                    {
-                        _kqdongnuoc.DongNuoc2 = true;
-                        _kqdongnuoc.PhiMoNuoc = _cDongNuoc.GetPhiMoNuoc() * 2;
+                    //if (chkDongNuoc2.Checked)
+                    //{
+                    //    _kqdongnuoc.DongNuoc2 = true;
+                    //    _kqdongnuoc.PhiMoNuoc = _cDongNuoc.GetPhiMoNuoc() * 2;
 
-                        if (_kqdongnuoc.NgayDN1 == null)
-                            _kqdongnuoc.NgayDN1 = _kqdongnuoc.NgayDN;
-                        if (_kqdongnuoc.ChiSoDN1 == null)
-                            _kqdongnuoc.ChiSoDN1 = _kqdongnuoc.ChiSoDN;
+                    //    if (_kqdongnuoc.NgayDN1 == null)
+                    //        _kqdongnuoc.NgayDN1 = _kqdongnuoc.NgayDN;
+                    //    if (_kqdongnuoc.ChiSoDN1 == null)
+                    //        _kqdongnuoc.ChiSoDN1 = _kqdongnuoc.ChiSoDN;
 
-                        _kqdongnuoc.NgayDN = dateDongNuoc2.Value;
-                        if (!string.IsNullOrEmpty(txtChiSoDN2.Text.Trim()))
-                            _kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN2.Text.Trim());
-                    }
-                    else
-                        if (_kqdongnuoc.DongNuoc2 == true)
-                        {
-                            _kqdongnuoc.DongNuoc2 = false;
-                            _kqdongnuoc.PhiMoNuoc = _kqdongnuoc.PhiMoNuoc / 2;
-                            _kqdongnuoc.NgayDN = _kqdongnuoc.NgayDN1;
-                            _kqdongnuoc.ChiSoDN = _kqdongnuoc.ChiSoDN1;
-                            _kqdongnuoc.NgayDN1 = null;
-                            _kqdongnuoc.ChiSoDN1 = null;
-                        }
+                    //    _kqdongnuoc.NgayDN = dateDongNuoc2.Value;
+                    //    if (!string.IsNullOrEmpty(txtChiSoDN2.Text.Trim()))
+                    //        _kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN2.Text.Trim());
+                    //}
+                    //else
+                    //    if (_kqdongnuoc.DongNuoc2 == true)
+                    //    {
+                    //        _kqdongnuoc.DongNuoc2 = false;
+                    //        _kqdongnuoc.PhiMoNuoc = _kqdongnuoc.PhiMoNuoc / 2;
+                    //        _kqdongnuoc.NgayDN = _kqdongnuoc.NgayDN1;
+                    //        _kqdongnuoc.ChiSoDN = _kqdongnuoc.ChiSoDN1;
+                    //        _kqdongnuoc.NgayDN1 = null;
+                    //        _kqdongnuoc.ChiSoDN1 = null;
+                    //    }
 
                     if (chkMoNuoc.Checked)
                     {
@@ -266,80 +329,6 @@ namespace ThuTien.GUI.DongNuoc
                     }
 
                     if (_cDongNuoc.SuaKQ(_kqdongnuoc))
-                    {
-                        Clear();
-                        btnXem.PerformClick();
-                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-                else
-                {
-                    TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dgvKQDongNuoc.SelectedRows[0].Cells["MaKQDN"].Value.ToString()));
-
-                    if (!CNguoiDung.ToTruong && !CNguoiDung.Doi)
-                        if (!_cDongNuoc.CheckExist_DongNuoc(kqdongnuoc.MaDN.Value, CNguoiDung.MaND))
-                        {
-                            MessageBox.Show("Thông báo này không được giao cho bạn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-
-                    kqdongnuoc.DanhBo = txtDanhBo.Text.Trim();
-                    kqdongnuoc.MLT = txtMLT.Text.Trim();
-                    kqdongnuoc.HoTen = txtHoTen.Text.Trim();
-                    kqdongnuoc.DiaChi = txtDiaChi.Text.Trim();
-
-                    kqdongnuoc.NgayDN = dateDongNuoc.Value;
-                    if (!string.IsNullOrEmpty(txtChiSoDN.Text.Trim()))
-                        kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN.Text.Trim());
-                    kqdongnuoc.Hieu = txtHieu.Text.Trim();
-                    if (!string.IsNullOrEmpty(txtCo.Text.Trim()))
-                        kqdongnuoc.Co = int.Parse(txtCo.Text.Trim());
-                    kqdongnuoc.SoThan = txtSoThan.Text.Trim();
-                    if (cmbChiMatSo.SelectedItem != null)
-                        kqdongnuoc.ChiMatSo = cmbChiMatSo.SelectedItem.ToString();
-                    if (cmbChiKhoaGoc.SelectedItem != null)
-                        kqdongnuoc.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
-                    kqdongnuoc.LyDo = txtLyDo.Text.Trim();
-
-                    if (chkDongNuoc2.Checked)
-                    {
-                        kqdongnuoc.DongNuoc2 = true;
-                        kqdongnuoc.PhiMoNuoc = _cDongNuoc.GetPhiMoNuoc() * 2;
-
-                        if (kqdongnuoc.NgayDN1 == null)
-                            kqdongnuoc.NgayDN1 = kqdongnuoc.NgayDN;
-                        if (kqdongnuoc.ChiSoDN1 == null)
-                            kqdongnuoc.ChiSoDN1 = kqdongnuoc.ChiSoDN;
-
-                        kqdongnuoc.NgayDN = dateDongNuoc2.Value;
-                        if (!string.IsNullOrEmpty(txtChiSoDN2.Text.Trim()))
-                            kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN2.Text.Trim());
-                    }
-                    else
-                        if (_kqdongnuoc.DongNuoc2 == true)
-                        {
-                            kqdongnuoc.DongNuoc2 = false;
-                            kqdongnuoc.PhiMoNuoc = kqdongnuoc.PhiMoNuoc / 2;
-                            kqdongnuoc.NgayDN = kqdongnuoc.NgayDN1;
-                            kqdongnuoc.ChiSoDN = kqdongnuoc.ChiSoDN1;
-                            kqdongnuoc.NgayDN1 = null;
-                            kqdongnuoc.ChiSoDN1 = null;
-                        }
-
-                    if (chkMoNuoc.Checked)
-                    {
-                        kqdongnuoc.MoNuoc = true;
-                        kqdongnuoc.NgayMN = dateMoNuoc.Value;
-                        kqdongnuoc.ChiSoMN = int.Parse(txtChiSoMN.Text.Trim());
-                    }
-                    else
-                    {
-                        kqdongnuoc.MoNuoc = false;
-                        kqdongnuoc.NgayMN = null;
-                        kqdongnuoc.ChiSoMN = null;
-                    }
-
-                    if (_cDongNuoc.SuaKQ(kqdongnuoc))
                     {
                         Clear();
                         btnXem.PerformClick();
@@ -404,6 +393,7 @@ namespace ThuTien.GUI.DongNuoc
             try
             {
                 //dgvKQDongNuoc.Rows[e.RowIndex].Selected = true;
+                _kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dgvKQDongNuoc.SelectedRows[0].Cells["MaKQDN"].Value.ToString()));
                 txtDanhBo.Text = dgvKQDongNuoc["DanhBo", e.RowIndex].Value.ToString();
                 txtMLT.Text = dgvKQDongNuoc["MLT", e.RowIndex].Value.ToString();
                 txtHoTen.Text = dgvKQDongNuoc["HoTen", e.RowIndex].Value.ToString();
@@ -422,6 +412,12 @@ namespace ThuTien.GUI.DongNuoc
                     dateMoNuoc.Value = DateTime.Parse(dgvKQDongNuoc["NgayMN", e.RowIndex].Value.ToString());
                     txtChiSoMN.Text = dgvKQDongNuoc["ChiSoMN", e.RowIndex].Value.ToString();
                 }
+                else
+                {
+                    chkMoNuoc.Checked = false;
+                    dateMoNuoc.Value = DateTime.Now;
+                    txtChiSoMN.Text = "";
+                }
                 if (bool.Parse(dgvKQDongNuoc["DongNuoc2", e.RowIndex].Value.ToString()))
                 {
                     chkDongNuoc2.Checked = bool.Parse(dgvKQDongNuoc["DongNuoc2", e.RowIndex].Value.ToString());
@@ -429,6 +425,14 @@ namespace ThuTien.GUI.DongNuoc
                     txtChiSoDN2.Text = dgvKQDongNuoc["ChiSoDN", e.RowIndex].Value.ToString();
                     dateDongNuoc1.Value = DateTime.Parse(dgvKQDongNuoc["NgayDN1", e.RowIndex].Value.ToString());
                     txtChiSoDN1.Text = dgvKQDongNuoc["ChiSoDN1", e.RowIndex].Value.ToString();
+                }
+                else
+                {
+                    chkDongNuoc2.Checked = false;
+                    dateDongNuoc2.Value = DateTime.Now;
+                    txtChiSoDN2.Text = "";
+                    dateDongNuoc1.Value = DateTime.Now;
+                    txtChiSoDN1.Text = "";
                 }
             }
             catch
@@ -668,6 +672,25 @@ namespace ThuTien.GUI.DongNuoc
             }
             else
                 MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void dgvKQDongNuoc_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (dgvKQDongNuoc.Columns[e.ColumnIndex].Name == "DaKy" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvKQDongNuoc[e.ColumnIndex, e.RowIndex].Value.ToString()))
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua") && CNguoiDung.Doi)
+                {
+                    TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dgvKQDongNuoc["MaKQDN", e.RowIndex].Value.ToString()));
+                    if (bool.Parse(e.FormattedValue.ToString()))
+                        kqdongnuoc.NgayKy = DateTime.Now;
+                    else
+                        kqdongnuoc.NgayKy = null;
+                    kqdongnuoc.DaKy = bool.Parse(e.FormattedValue.ToString());
+                    _cDongNuoc.SuaKQ(kqdongnuoc);
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 

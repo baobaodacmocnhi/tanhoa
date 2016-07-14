@@ -180,6 +180,7 @@ namespace ThuTien.GUI.HanhThu
                             if (!dt.Rows.Contains(item.Text))
                             {
                                 MessageBox.Show("Hóa Đơn sai: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                lstHD.Focus();
                                 item.Selected = true;
                                 item.Focused = true;
                                 return;
@@ -210,14 +211,12 @@ namespace ThuTien.GUI.HanhThu
                                             if (_cHoaDon.Thu2Lan(item.Text, ChuyenKhoan))
                                                 if (_cTamThu.XoaAn(item.Text))
                                                 {
-                                                    lstHD.Items.Remove(item);
                                                     scope.Complete();
                                                 }
                                     }
                                 else
                                 {
-                                    if(_cHoaDon.DangNgan("HanhThu", item.Text, CNguoiDung.MaND))
-                                        lstHD.Items.Remove(item);
+                                    _cHoaDon.DangNgan("HanhThu", item.Text, CNguoiDung.MaND);
                                 }
                             }
                             //if (_cLenhHuy.CheckExist(item.ToString()))
@@ -228,7 +227,7 @@ namespace ThuTien.GUI.HanhThu
                             //        return;
                             //    }
                             btnXem.PerformClick();
-                            //lstHD.Items.Clear();
+                            lstHD.Items.Clear();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         catch (Exception)
@@ -255,6 +254,7 @@ namespace ThuTien.GUI.HanhThu
                                 if (!dt.Rows.Contains(item.Text.ToUpper()))
                                 {
                                     MessageBox.Show("Hóa Đơn sai: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    lstHD.Focus();
                                     item.Selected = true;
                                     item.Focused = true;
                                     return;

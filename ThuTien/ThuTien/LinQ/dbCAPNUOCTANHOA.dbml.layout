@@ -14,5 +14,24 @@
         <elementListCompartment Id="ee048f78-7fc5-4d2a-adeb-e54a586887b9" absoluteBounds="3.89, 2.085, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="01759dd6-972b-4121-aa76-143a33134dea" absoluteBounds="4, 6.125, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/dbCAPNUOCTANHOADataContext/QUAN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ea5f41b7-7941-404c-8df6-0a1b054fc2b3" absoluteBounds="4.015, 6.585, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="393bc83d-bf58-4e0a-8538-d8bc852b828c" absoluteBounds="3.875, 7.625, 2, 1.3862939453125">
+      <DataClassMoniker Name="/dbCAPNUOCTANHOADataContext/PHUONG" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6506dc86-d5ba-45be-a889-11b1fc5190f6" absoluteBounds="3.89, 8.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.9375 : 7.31899251302083); (4.9375 : 7.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbCAPNUOCTANHOADataContext/QUAN/QUAN_PHUONG" />
+      <nodes>
+        <classShapeMoniker Id="01759dd6-972b-4121-aa76-143a33134dea" />
+        <classShapeMoniker Id="393bc83d-bf58-4e0a-8538-d8bc852b828c" />
+      </nodes>
+    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

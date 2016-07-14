@@ -159,6 +159,8 @@ namespace ThuTien.DAL.Quay
                         join itemHD in _db.HOADONs on itemTT.FK_HOADON equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
+                        join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
+                        from itemtableDN in tableDN.DefaultIfEmpty()
                         join itemNH in _db.NGANHANGs on itemTT.MaNH equals itemNH.ID_NGANHANG into tableNH
                         from itemtableNH in tableNH.DefaultIfEmpty()
                         where itemTT.Xoa==false&& itemTT.CreateDate.Value.Date >= TuNgay.Date && itemTT.CreateDate.Value.Date <= DenNgay.Date && itemTT.ChuyenKhoan == ChuyenKhoan
@@ -190,6 +192,7 @@ namespace ThuTien.DAL.Quay
                             itemTT.Tra,
                             itemTT.NgayTra,
                             itemTT.GhiChuTra,
+                            DangNgan=itemtableDN.HoTen,
                         };
             return LINQToDataTable(query);
         }
