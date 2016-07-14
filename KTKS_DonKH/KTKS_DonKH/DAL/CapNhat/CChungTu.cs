@@ -4634,6 +4634,16 @@ namespace KTKS_DonKH.DAL.CapNhat
             }
         }
 
+        public DataTable LoadDSDanhBoCapDinhMucCoThoiHan()
+        {
+            string sql = "select t1.DanhBo,HOTEN,SONHA+' '+TENDUONG as DiaChi,Phuong,Quan from"
+                        + " (select DanhBo,row_number() over (partition by DanhBo order by DanhBo) as RowNumber from CTChungTu where NgayHetHan is not null and Cat=0) t1"
+                        + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
+                        + " where RowNumber=1";
+
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+        }
+
         #endregion
     }
 }

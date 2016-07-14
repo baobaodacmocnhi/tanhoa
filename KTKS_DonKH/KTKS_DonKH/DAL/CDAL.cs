@@ -120,7 +120,7 @@ namespace KTKS_DonKH.DAL
             try
             {
                 //_connectionString = "Data Source=192.168.90.8\\KD;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa;Password=123@tanhoa";
-                _connectionString = KTKS_DonKH.Properties.Settings.Default.HOADON_TAConnectionString;
+                _connectionString = KTKS_DonKH.Properties.Settings.Default.KTKS_DonKHConnectionString;
                 connection = new SqlConnection(_connectionString);
             }
             catch (Exception)
