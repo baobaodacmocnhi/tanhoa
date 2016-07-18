@@ -12,6 +12,8 @@ using ThuTien.LinQ;
 using ThuTien.BaoCao;
 using ThuTien.BaoCao.ChuyenKhoan;
 using ThuTien.GUI.BaoCao;
+using System.Transactions;
+using ThuTien.DAL.DongNuoc;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -20,6 +22,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         string _mnu = "mnuPhiMoNuocChuyenKhoan";
         CTienDu _cTienDu = new CTienDu();
         CPhiMoNuoc _cPhiMoNuoc = new CPhiMoNuoc();
+        CDongNuoc _cDongNuoc = new CDongNuoc();
 
         public frmPhiMoNuocChuyenKhoan()
         {
@@ -49,7 +52,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
-            if (dgvPhiMoNuoc.Columns[e.ColumnIndex].Name == "DanhBo_PMN" && e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
+            if (dgvPhiMoNuoc.Columns[e.ColumnIndex].Name == "DanhBo_PMN" && e.Value != null && e.Value.ToString().Length==11)
             {
                 e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
             }
@@ -149,13 +152,22 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 if (MessageBox.Show("Bạn có chắc chắn Xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    if (_cTienDu.Update(dgvPhiMoNuoc.SelectedRows[0].Cells["DanhBo_PMN"].Value.ToString(), 50000, "Điều Chỉnh Tiền", "Xóa Chuyển Phí Mở Nước"))
+                    using (var scope = new TransactionScope())
                     {
-                        TT_PhiMoNuoc phimonuoc = _cPhiMoNuoc.Get(decimal.Parse(dgvPhiMoNuoc.SelectedRows[0].Cells["MaPMN"].Value.ToString()));
-                        if (_cPhiMoNuoc.Xoa(phimonuoc))
+                        if (_cTienDu.Update(dgvPhiMoNuoc.SelectedRows[0].Cells["DanhBo_PMN"].Value.ToString(), 50000, "Điều Chỉnh Tiền", "Xóa Chuyển Phí Mở Nước"))
                         {
-                            btnXem.PerformClick();
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            TT_PhiMoNuoc phimonuoc = _cPhiMoNuoc.Get(decimal.Parse(dgvPhiMoNuoc.SelectedRows[0].Cells["MaPMN"].Value.ToString()));
+                            TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(phimonuoc.MaKQDN.Value);
+                            kqdongnuoc.DongPhi = false;
+                            kqdongnuoc.NgayDongPhi = null;
+                            kqdongnuoc.ChuyenKhoan = false;
+                            if (_cDongNuoc.SuaKQ(kqdongnuoc))
+                                if (_cPhiMoNuoc.Xoa(phimonuoc))
+                                {
+                                    scope.Complete();
+                                    btnXem.PerformClick();
+                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
                         }
                     }
                 }

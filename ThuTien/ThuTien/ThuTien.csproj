@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>597</ApplicationRevision>
+    <ApplicationRevision>598</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -461,6 +461,7 @@
     <Compile Include="DAL\Doi\CGiaBanBinhQuan.cs" />
     <Compile Include="DAL\Doi\CHoaDon.cs" />
     <Compile Include="DAL\Doi\CHoaDonTon.cs" />
+    <Compile Include="DAL\Doi\CPhiMoNuocDoi.cs" />
     <Compile Include="DAL\Doi\CToTrinhCatHuy.cs" />
     <Compile Include="DAL\DongNuoc\CDongNuoc.cs" />
     <Compile Include="DAL\ChuyenKhoan\Excel.cs" />
@@ -620,6 +621,12 @@
     </Compile>
     <Compile Include="GUI\Doi\frmKiemTraSaiBiet.Designer.cs">
       <DependentUpon>frmKiemTraSaiBiet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Doi\frmPhiMoNuocDoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Doi\frmPhiMoNuocDoi.Designer.cs">
+      <DependentUpon>frmPhiMoNuocDoi.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Doi\frmTinhGiaBanBinhQuan.cs">
       <SubType>Form</SubType>
@@ -1279,6 +1286,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmKiemTraSaiBiet.resx">
       <DependentUpon>frmKiemTraSaiBiet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Doi\frmPhiMoNuocDoi.resx">
+      <DependentUpon>frmPhiMoNuocDoi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmTinhGiaBanBinhQuan.resx">
       <DependentUpon>frmTinhGiaBanBinhQuan.cs</DependentUpon>

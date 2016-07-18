@@ -126,39 +126,47 @@ namespace ThuTien.GUI.ChuyenKhoan
                 if (MessageBox.Show("Bạn có chắc chắn Chuyển Phí Mở Nước?", "Xác nhận sửa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     if (int.Parse(txtSoTienCu.Text.Trim()) >= 50000)
                     {
-                        using (var scope = new TransactionScope())
+                        TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByDanhBo_Last(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""));
+                        if (kqdongnuoc != null)
                         {
-                            if (_cTienDu.Update(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), -50000, "Điều Chỉnh Tiền", "Thêm Chuyển Phí Mở Nước"))
+                            using (var scope = new TransactionScope())
                             {
-                                HOADON hoadon = _cHoaDon.GetMoiNhat(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""));
-
-                                TT_PhiMoNuoc phimonuoc = new TT_PhiMoNuoc();
-                                phimonuoc.DanhBo = hoadon.DANHBA;
-                                phimonuoc.HoTen = hoadon.TENKH;
-                                phimonuoc.DiaChi = hoadon.SO + " " + hoadon.DUONG;
-                                phimonuoc.NgayBK = dateBangKe.Value;
-                                phimonuoc.SoTien = _cBangKe.GetSoTien(hoadon.DANHBA, dateBangKe.Value);
-                                phimonuoc.TongCong = phimonuoc.SoTien - 50000;
-                                if (_cPhiMoNuoc.Them(phimonuoc))
+                                if (_cTienDu.Update(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), -50000, "Điều Chỉnh Tiền", "Thêm Chuyển Phí Mở Nước"))
                                 {
-                                    if (_cTienDu.LinQ_ExecuteNonQuery("update TT_TienDu set ChoXuLy=0 where DanhBo='" + hoadon.DANHBA + "'"))
-                                    {
-                                        TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByDanhBo_Last(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""));
-                                        //kqdongnuoc.DongPhi = true;
-                                        //kqdongnuoc.ChuyenKhoan = true;
-                                        //kqdongnuoc.NgayDongPhi = DateTime.Now;
-                                        if (_cDongNuoc.LinQ_ExecuteNonQuery("update TT_KQDongNuoc set DongPhi=1,ChuyenKhoan=1,NgayDongPhi=getdate() where MaKQDN="+kqdongnuoc.MaKQDN))
-                                        {
-                                            scope.Complete();
+                                    HOADON hoadon = _cHoaDon.GetMoiNhat(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""));
 
-                                            this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                            this.Close();
+                                    TT_PhiMoNuoc phimonuoc = new TT_PhiMoNuoc();
+                                    phimonuoc.DanhBo = hoadon.DANHBA;
+                                    phimonuoc.HoTen = hoadon.TENKH;
+                                    phimonuoc.DiaChi = hoadon.SO + " " + hoadon.DUONG;
+                                    phimonuoc.NgayBK = dateBangKe.Value;
+                                    phimonuoc.SoTien = _cBangKe.GetSoTien(hoadon.DANHBA, dateBangKe.Value);
+                                    phimonuoc.TongCong = phimonuoc.SoTien - 50000;
+                                    phimonuoc.MaKQDN = kqdongnuoc.MaKQDN;
+
+                                    if (_cPhiMoNuoc.Them(phimonuoc))
+                                    {
+                                        if (_cTienDu.LinQ_ExecuteNonQuery("update TT_TienDu set ChoXuLy=0 where DanhBo='" + hoadon.DANHBA + "'"))
+                                        {
+                                            kqdongnuoc.DongPhi = true;
+                                            kqdongnuoc.ChuyenKhoan = true;
+                                            kqdongnuoc.NgayDongPhi = DateTime.Now;
+                                            if(_cDongNuoc.SuaKQ(kqdongnuoc))
+                                            //if (_cDongNuoc.LinQ_ExecuteNonQuery("update TT_KQDongNuoc set DongPhi=1,ChuyenKhoan=1,NgayDongPhi=getdate() where MaKQDN=" + kqdongnuoc.MaKQDN))
+                                            {
+                                                scope.Complete();
+
+                                                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                                this.Close();
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
+                        else
+                            MessageBox.Show("Không có Kết Quả Đóng Nước", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                         MessageBox.Show("Số tiền không đủ 50.000đ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -396,12 +396,58 @@ namespace ThuTien.DAL.DongNuoc
             return LINQToDataTable(query.GroupBy(item=>item.MaDN).Select(item=>item.First()).ToList());
         }
 
-        public DataTable GetDSKQDongNuoc(bool DongPhi,string DanhBo)
+        public DataTable GetDSKQDongNuoc(bool ChuyenKhoan,string DanhBo)
         {
             var query = from itemKQ in _db.TT_KQDongNuocs
                         join itemCT in _db.TT_CTDongNuocs on itemKQ.MaDN equals itemCT.MaDN
                         join itemHD in _db.HOADONs on itemCT.MaHD equals itemHD.ID_HOADON
-                        where itemKQ.DongPhi == DongPhi && itemKQ.NgayDN != null && itemKQ.NgayMN == null && itemHD.ChuyenNoKhoDoi == false && itemKQ.DanhBo.Contains(DanhBo)
+                        where itemKQ.ChuyenKhoan == ChuyenKhoan && itemKQ.NgayDN != null && itemKQ.NgayMN == null && itemHD.ChuyenNoKhoDoi == false && itemKQ.DanhBo.Contains(DanhBo)
+                        select new
+                        {
+                            itemKQ.MaDN,
+                            itemKQ.MaKQDN,
+                            itemKQ.CreateDate,
+                            itemKQ.DanhBo,
+                            itemKQ.HoTen,
+                            itemKQ.DiaChi,
+                            itemKQ.NgayDN,
+                            itemKQ.DongPhi,
+                            itemKQ.NgayDongPhi,
+                            itemKQ.ChuyenKhoan,
+                            itemHD.NGAYGIAITRACH,
+                        };
+            return LINQToDataTable(query.GroupBy(item => item.MaDN).Select(item => item.First()).ToList());
+        }
+
+        public DataTable GetDSKQDongNuoc(bool ChuyenKhoan, DateTime FromNgayDongPhi,DateTime ToNgayDongPhi)
+        {
+            var query = from itemKQ in _db.TT_KQDongNuocs
+                        join itemCT in _db.TT_CTDongNuocs on itemKQ.MaDN equals itemCT.MaDN
+                        join itemHD in _db.HOADONs on itemCT.MaHD equals itemHD.ID_HOADON
+                        where itemKQ.ChuyenKhoan == ChuyenKhoan && itemKQ.NgayDongPhi.Value.Date >= FromNgayDongPhi && itemKQ.NgayDongPhi.Value.Date <= ToNgayDongPhi
+                        select new
+                        {
+                            itemKQ.MaDN,
+                            itemKQ.MaKQDN,
+                            itemKQ.CreateDate,
+                            itemKQ.DanhBo,
+                            itemKQ.HoTen,
+                            itemKQ.DiaChi,
+                            itemKQ.NgayDN,
+                            itemKQ.DongPhi,
+                            itemKQ.NgayDongPhi,
+                            itemKQ.ChuyenKhoan,
+                            itemHD.NGAYGIAITRACH,
+                        };
+            return LINQToDataTable(query.GroupBy(item => item.MaDN).Select(item => item.First()).ToList());
+        }
+
+        public DataTable GetDSKQDongNuoc(DateTime FromNgayDongPhi, DateTime ToNgayDongPhi)
+        {
+            var query = from itemKQ in _db.TT_KQDongNuocs
+                        join itemCT in _db.TT_CTDongNuocs on itemKQ.MaDN equals itemCT.MaDN
+                        join itemHD in _db.HOADONs on itemCT.MaHD equals itemHD.ID_HOADON
+                        where itemKQ.NgayDongPhi.Value.Date >= FromNgayDongPhi && itemKQ.NgayDongPhi.Value.Date <= ToNgayDongPhi
                         select new
                         {
                             itemKQ.MaDN,

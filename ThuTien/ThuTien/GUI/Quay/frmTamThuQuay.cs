@@ -700,6 +700,41 @@ namespace ThuTien.GUI.Quay
             rpt.SetDataSource(ds);
             frmInQuay frm = new frmInQuay(rpt);
             frm.Show();
+        }
+
+        private void dgvHoaDon_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            foreach (DataGridViewRow item in dgvHoaDon.Rows)
+            {
+                item.Cells["Chon"].Value = "True";
+                if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon"].Value.ToString()))
+                    item.DefaultCellStyle.BackColor = Color.Yellow;
+                if (_cDongNuoc.CheckExist_KQDongNuocLan2(item.Cells["SoHoaDon"].Value.ToString()))
+                    item.DefaultCellStyle.BackColor = Color.Orange;
+                item.Cells["DongNuoc"].Value = _cDongNuoc.GetNgayDNBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
+                if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
+                    item.DefaultCellStyle.BackColor = Color.Red;
+            }
+        }
+
+        private void dgvTamThu_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            foreach (DataGridViewRow item in dgvTamThu.Rows)
+            {
+                string HoTen = "", TenTo = "";
+                if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon_TT"].Value.ToString(), out HoTen, out TenTo))
+                {
+                    item.Cells["HanhThu_TT"].Value = HoTen;
+                    item.Cells["To_TT"].Value = TenTo;
+                    item.DefaultCellStyle.BackColor = Color.Yellow;
+                }
+                if (_cDongNuoc.CheckExist_KQDongNuocLan2(item.Cells["SoHoaDon_TT"].Value.ToString()))
+                    item.DefaultCellStyle.BackColor = Color.Orange;
+                //if (_cDongNuoc.CheckCTDongNuocBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
+                //    item.DefaultCellStyle.BackColor = Color.Yellow;
+                if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_TT"].Value.ToString()))
+                    item.DefaultCellStyle.BackColor = Color.Red;
+            }
         }  
 
     }

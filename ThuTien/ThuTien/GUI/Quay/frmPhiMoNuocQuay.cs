@@ -29,11 +29,10 @@ namespace ThuTien.GUI.Quay
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            if (radChuaDongPhi.Checked)
+            if (txtDanhBo.Text.Trim().Replace(" ", "").Length == 11)
                 dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuoc(false, txtDanhBo.Text.Trim().Replace(" ", ""));
             else
-                if (radDaDongPhi.Checked)
-                    dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuoc(true, txtDanhBo.Text.Trim().Replace(" ", ""));
+                dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuoc(false, dateTu.Value, dateDen.Value);
         }
 
         private void dgvKQDongNuoc_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

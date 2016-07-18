@@ -281,5 +281,29 @@ namespace ThuTien.GUI.TimKiem
                 }
         }
 
+        private void dgvHoaDon_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ", "")) || !string.IsNullOrEmpty(txtMLT.Text.Trim().Replace(" ", "")))
+                foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                {
+                    if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon"].Value.ToString()))
+                        item.DefaultCellStyle.BackColor = Color.Yellow;
+                    if (_cDongNuoc.CheckExist_KQDongNuocLan2(item.Cells["SoHoaDon"].Value.ToString()))
+                        item.DefaultCellStyle.BackColor = Color.Orange;
+                    if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
+                    {
+                        //item.Cells["TinhTrang"].Value = _cLenhHuy.GetTinhTrangBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
+                        item.DefaultCellStyle.BackColor = Color.Red;
+                    }
+                    if (_cCNKD.CheckExistCT(item.Cells["SoHoaDon"].Value.ToString()))
+                    {
+                        TT_CTChuyenNoKhoDoi ctcnkd = _cCNKD.GetCT(item.Cells["SoHoaDon"].Value.ToString());
+
+                        //item.Cells["NgayGiaiTrach"].Value = ctcnkd.CreateDate.Value.ToString("dd/MM/yyyy");
+                        item.Cells["DangNgan"].Value = "CNKĐ";
+                    }
+                }
+        }
+
     }
 }
