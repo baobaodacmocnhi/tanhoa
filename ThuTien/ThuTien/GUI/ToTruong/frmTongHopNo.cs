@@ -192,6 +192,8 @@ namespace ThuTien.GUI.ToTruong
                 if (!_cTHN.CheckExist(txtKinhGui.Text.Trim(), DateTime.Now))
                 {
                     TT_TongHopNo tonghopno = new TT_TongHopNo();
+
+                    tonghopno.DanhBo = txtDanhBo.Text.Trim().Replace(" ","");
                     tonghopno.KinhGui = txtKinhGui.Text.Trim();
                     if (!string.IsNullOrEmpty(txtCSM.Text.Trim()))
                         tonghopno.ChiSoMoi = int.Parse(txtCSM.Text.Trim());
@@ -364,6 +366,7 @@ namespace ThuTien.GUI.ToTruong
         {
             try
             {
+                txtDanhBo.Text = dgvHoaDon["DanhBo", e.RowIndex].Value.ToString();
                 txtKinhGui.Text = dgvHoaDon["HoTen", e.RowIndex].Value.ToString();
             }
             catch
@@ -392,6 +395,10 @@ namespace ThuTien.GUI.ToTruong
             if (dgvTongHopNo.Columns[e.ColumnIndex].Name == "MaTHN" && e.Value != null)
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length-2,"-");
+            }
+            if (dgvTongHopNo.Columns[e.ColumnIndex].Name == "DanhBo_THN" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
             }
             if (dgvTongHopNo.Columns[e.ColumnIndex].Name == "TongCong_THN" && e.Value != null)
             {

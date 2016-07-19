@@ -74,6 +74,7 @@ namespace ThuTien.DAL.ToTruong
                         select new 
                         {
                             item.MaTHN,
+                            item.DanhBo,
                             item.KinhGui,
                             TongCong=item.TT_CTTongHopNos.Sum(itemCT=>itemCT.TongCong),
                             item.ChiSoCu,
@@ -93,6 +94,7 @@ namespace ThuTien.DAL.ToTruong
                         select new
                         {
                             item.MaTHN,
+                            item.DanhBo,
                             item.KinhGui,
                             TongCong = item.TT_CTTongHopNos.Sum(itemCT => itemCT.TongCong),
                             item.ChiSoCu,

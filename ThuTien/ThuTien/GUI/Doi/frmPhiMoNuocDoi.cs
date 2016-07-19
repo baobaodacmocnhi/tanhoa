@@ -86,16 +86,20 @@ namespace ThuTien.GUI.Doi
                     entity.HoTen = dgvPhiMoNuocDoi["HoTen_Doi", e.RowIndex].Value.ToString();
                     entity.DiaChi = dgvPhiMoNuocDoi["DiaChi_Doi", e.RowIndex].Value.ToString();
 
-                    _cPhiMoNuocDoi.Them(entity);
+                    if (_cPhiMoNuocDoi.Them(entity))
+                        dgvPhiMoNuocDoi["ID_Doi", e.RowIndex].Value = entity.ID;
                 }
             }
         }
 
         private void dgvPhiMoNuocDoi_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
         {
-            TT_PhiMoNuocDoi entity = _cPhiMoNuocDoi.Get(int.Parse(e.Row.Cells["ID_Doi"].Value.ToString()));
+            if (e.Row.Cells["ID_Doi"].Value != null && string.IsNullOrEmpty(e.Row.Cells["ID_Doi"].Value.ToString()))
+            {
+                TT_PhiMoNuocDoi entity = _cPhiMoNuocDoi.Get(int.Parse(e.Row.Cells["ID_Doi"].Value.ToString()));
 
-            _cPhiMoNuocDoi.Xoa(entity);
+                _cPhiMoNuocDoi.Xoa(entity);
+            }
         }
 
     }
