@@ -26,6 +26,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         List<QUAN> _lst;
         CThuTien _cThuTien = new CThuTien();
+        CDuLieuKhachHang _cDLKH = new CDuLieuKhachHang();
 
         public frmBaoCaoDCBD()
         {
@@ -1093,11 +1094,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
 
                         if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                        {
                             dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                            dr["DinhMucCap"] = _cDLKH.GetDinhMuc(itemRow["DanhBo"].ToString());
+                        }
                         dr["HoTen"] = itemRow["HoTen"];
                         dr["DiaChi"] = itemRow["DiaChi"];
                         dr["Phuong"] = _cPhuongQuan.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
                         dr["Quan"] = _cPhuongQuan.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
+                        
                         dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
                     }
                     else
@@ -1108,7 +1113,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
 
                                 if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                                {
                                     dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                                    dr["DinhMucCap"] = _cDLKH.GetDinhMuc(itemRow["DanhBo"].ToString());
+                                }
                                 dr["HoTen"] = itemRow["HoTen"];
                                 dr["DiaChi"] = itemRow["DiaChi"];
                                 dr["Phuong"] = _cPhuongQuan.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
@@ -1123,7 +1131,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
 
                                 if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                                {
                                     dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                                    dr["DinhMucCap"] = _cDLKH.GetDinhMuc(itemRow["DanhBo"].ToString());
+                                }
                                 dr["HoTen"] = itemRow["HoTen"];
                                 dr["DiaChi"] = itemRow["DiaChi"];
                                 dr["Phuong"] = _cPhuongQuan.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
@@ -1134,6 +1145,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 }
                 rptDSCapDinhMucTheoDanhBo rpt = new rptDSCapDinhMucTheoDanhBo();
                 rpt.SetDataSource(dsBaoCao);
+                rpt.Subreports[0].SetDataSource(dsBaoCao);
                 crystalReportViewer1.ReportSource = rpt;
             }
         }

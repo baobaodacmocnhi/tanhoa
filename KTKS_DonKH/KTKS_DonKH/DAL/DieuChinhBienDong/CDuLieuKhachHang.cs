@@ -74,6 +74,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public string GetDinhMuc(string DanhBo)
+        {
+            return db.TB_DULIEUKHACHHANGs.SingleOrDefault(item => item.DANHBO == DanhBo).DINHMUC;
+        }
+
         public void Refresh()
         {
             db = new DB_CAPNUOCTANHOADataContext();
