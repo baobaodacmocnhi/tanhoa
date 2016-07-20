@@ -64,6 +64,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 txtHopDong.Text = _tttn.HopDong;
                 txtLoTrinh.Text = _tttn.LoTrinh;
                 txtGiaBieu.Text = _tttn.GiaBieu.Value.ToString();
+                if (_tttn.DinhMuc!=null)
                 txtDinhMuc.Text = _tttn.DinhMuc.Value.ToString();
                 txtHoTen.Text = _tttn.HoTen;
                 txtDiaChi.Text = _tttn.DiaChi;

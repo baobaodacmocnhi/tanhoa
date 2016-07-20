@@ -426,7 +426,9 @@ namespace KTKS_DonKH.GUI.ToXuLy
                             tttn.LoTrinh = txtLoTrinh.Text.Trim();
                             tttn.HoTen = txtHoTen.Text.Trim();
                             tttn.DiaChi = txtDiaChi.Text.Trim();
+                            if (!string.IsNullOrEmpty(txtGiaBieu.Text.Trim()))
                             tttn.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
+                            if (!string.IsNullOrEmpty(txtDinhMuc.Text.Trim()))
                             tttn.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                             tttn.NoiDung = txtNoiDung.Text.Trim();
                             tttn.DienThoai = txtDienThoai.Text.Trim();
@@ -520,8 +522,10 @@ namespace KTKS_DonKH.GUI.ToXuLy
                             tttn.LoTrinh = txtLoTrinh.Text.Trim();
                             tttn.HoTen = txtHoTen.Text.Trim();
                             tttn.DiaChi = txtDiaChi.Text.Trim();
-                            tttn.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
-                            tttn.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
+                            if (!string.IsNullOrEmpty(txtGiaBieu.Text.Trim()))
+                                tttn.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
+                            if (!string.IsNullOrEmpty(txtDinhMuc.Text.Trim()))
+                                tttn.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                             tttn.NoiDung = txtNoiDung.Text.Trim();
                             tttn.DienThoai = txtDienThoai.Text.Trim();
 
@@ -542,7 +546,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                                 _cDonKH.SuaDonKH(_donkh, true);
                             }
                         }
-                        decimal MaTTTN = _cTTTN.getTruyThuTienNuocbyMaDon_TXL(_donkh.MaDon).MaTTTN;
+                        decimal MaTTTN = _cTTTN.getTruyThuTienNuocbyMaDon(_donkh.MaDon).MaTTTN;
 
                         foreach (DataGridViewRow item in dgvTruyThuTienNuoc.Rows)
                             if (item.Cells["Ky"].Value != null && !_cTTTN.CheckCTTruyThuTienNuocbyKyNamMaTTTN(MaTTTN, item.Cells["Ky"].Value.ToString(), item.Cells["Nam"].Value.ToString()))
