@@ -358,7 +358,7 @@ namespace KTKS_ChungCu
         {
             if (dgvKhachHangChungCu.RowCount > 0 && e.Button == System.Windows.Forms.MouseButtons.Left)
             {
-                frmSoDK frm = new frmSoDK(dgvKhachHangChungCu["DanhBo", e.RowIndex].Value.ToString(), dgvKhachHangChungCu["MaCT", e.RowIndex].Value.ToString());
+                frmSoDK frm = new frmSoDK(int.Parse(dgvKhachHangChungCu["ID", e.RowIndex].Value.ToString()));
                 if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
 
