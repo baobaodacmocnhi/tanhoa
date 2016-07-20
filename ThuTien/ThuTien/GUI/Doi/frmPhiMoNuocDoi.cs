@@ -33,7 +33,7 @@ namespace ThuTien.GUI.Doi
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvPhiMoNuoc.DataSource = _cDongNuoc.GetDSKQDongNuoc(dateTu.Value, dateDen.Value);
+            dgvPhiMoNuoc.DataSource = _cDongNuoc.GetDSKQDongNuoc_PhiMoNuoc(dateTu.Value, dateDen.Value);
         }
 
         private void dgvPhiMoNuoc_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

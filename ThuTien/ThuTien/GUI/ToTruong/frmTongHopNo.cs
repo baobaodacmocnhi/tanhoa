@@ -43,7 +43,7 @@ namespace ThuTien.GUI.ToTruong
             dgvTongHopNo.AutoGenerateColumns = false;
             dgvHoaDon.DataSource = bsHoaDon;
 
-            //if (CNguoiDung.Doi)
+            if (CNguoiDung.Doi)
             {
                 lbTo.Visible = true;
                 cmbTo.Visible = true;
@@ -396,7 +396,7 @@ namespace ThuTien.GUI.ToTruong
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length-2,"-");
             }
-            if (dgvTongHopNo.Columns[e.ColumnIndex].Name == "DanhBo_THN" && e.Value != null)
+            if (dgvTongHopNo.Columns[e.ColumnIndex].Name == "DanhBo_THN" && e.Value != null && e.Value.ToString().Length == 11)
             {
                 e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
             }

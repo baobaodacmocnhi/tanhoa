@@ -346,12 +346,33 @@ namespace ThuTien.GUI.DongNuoc
             {
                 if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dgvKQDongNuoc.SelectedRows[0].Cells["MaKQDN"].Value.ToString()));
-                    if (_cDongNuoc.XoaKQ(kqdongnuoc))
+                    if (CNguoiDung.Doi)
                     {
-                        Clear();
-                        btnXem.PerformClick();
-                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dgvKQDongNuoc.SelectedRows[0].Cells["MaKQDN"].Value.ToString()));
+                        if (_cDongNuoc.XoaKQ(kqdongnuoc))
+                        {
+                            Clear();
+                            btnXem.PerformClick();
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else
+                    {
+                        DateTime date=new DateTime();
+                        DateTime.TryParse(dgvKQDongNuoc.SelectedRows[0].Cells["CreateDate"].Value.ToString(),out date);
+                        if (date.Date != DateTime.Now.Date)
+                        {
+                            MessageBox.Show("Chỉ được Xóa trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dgvKQDongNuoc.SelectedRows[0].Cells["MaKQDN"].Value.ToString()));
+                        if (_cDongNuoc.XoaKQ(kqdongnuoc))
+                        {
+                            Clear();
+                            btnXem.PerformClick();
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                 }
             }
