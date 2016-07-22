@@ -243,14 +243,23 @@ namespace ThuTien.DAL
             return _dbCapNuocTanHoa.TB_DULIEUKHACHHANGs.Any(item => item.DANHBO == DanhBo);
         }
 
-        public void GetPhuongQuan(int Phuong, int Quan, out string TenPhuong, out string TenQuan)
+        public void GetPhuongQuan(string DanhBo, out string TenPhuong, out string TenQuan)
         {
             TenPhuong = "";
             TenQuan = "";
-            if (_dbCapNuocTanHoa.PHUONGs.Any(item => Convert.ToInt32(item.MAPHUONG) == Phuong && item.MAQUAN == Quan))
-                TenPhuong = _dbCapNuocTanHoa.PHUONGs.SingleOrDefault(item => Convert.ToInt32(item.MAPHUONG) == Phuong && item.MAQUAN == Quan).TENPHUONG;
-            if (_dbCapNuocTanHoa.QUANs.Any(item => item.MAQUAN == Quan))
-                TenQuan = _dbCapNuocTanHoa.QUANs.SingleOrDefault(item => item.MAQUAN == Quan).TENQUAN;
+            var query = from item in _dbCapNuocTanHoa.TB_DULIEUKHACHHANGs
+                        join itemP in _dbCapNuocTanHoa.PHUONGs on new { p = item.PHUONG, q = Convert.ToInt32(item.QUAN) } equals new { p = itemP.MAPHUONG, q = itemP.MAQUAN }
+                        where item.DANHBO == DanhBo
+                        select new
+                        {
+                            itemP.TENPHUONG,
+                            itemP.QUAN.TENQUAN,
+                        };
+            if (query.Count() > 0)
+            {
+                TenPhuong = query.FirstOrDefault().TENPHUONG;
+                TenQuan = query.FirstOrDefault().TENQUAN;
+            }
         }
     }
 }

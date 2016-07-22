@@ -204,10 +204,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                             foreach (DataRow item in dtExcel.Rows)
                                 if (item[0].ToString().Trim().Replace(" ", "").Length == 11)
                                 {
-                                    DataTable dt = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim().Replace(" ", ""));
-                                    foreach (DataGridViewRow itemB in dgvHoaDon.Rows)
+                                    DataTable dt = _cHoaDon.GetDSTonByDanhBo(item[0].ToString().Trim().Replace(" ", ""));
+                                    foreach (DataRow itemB in dt.Rows)
                                     {
-                                        HOADON hoadon = _cHoaDon.Get(itemB.Cells["SoHoaDon"].Value.ToString());
+                                        HOADON hoadon = _cHoaDon.Get(itemB["SoHoaDon"].ToString());
                                         hoadon.KhoaTienDu = true;
                                         hoadon.ChanTienDu = true;
                                         hoadon.NgayChanTienDu = DateTime.Now;
@@ -215,6 +215,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                         _cHoaDon.Sua(hoadon);
                                     }
                                 }
+                            dgvDSChanTienDu.DataSource = _cHoaDon.GetDSChanTienDu();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                 }
