@@ -238,7 +238,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     ///
                     if (chkNgayXuLy.Checked)
                     {
-                        if (_ctctdb.NgayXuLy != dateXuLy.Value)
+                        if (_ctctdb.NgayXuLy != null && _ctctdb.NgayXuLy != dateXuLy.Value)
                         {
                             LichSuXuLyCTCHDB lsxl = new LichSuXuLyCTCHDB();
                             lsxl.NgayXuLy = _ctctdb.NgayXuLy;
