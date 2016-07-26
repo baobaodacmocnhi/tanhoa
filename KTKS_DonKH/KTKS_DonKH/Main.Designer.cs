@@ -122,7 +122,7 @@
             this.ribbtnCongVanDi = new System.Windows.Forms.RibbonButton();
             this.IdleTimer = new System.Windows.Forms.Timer(this.components);
             this.ribbon1 = new System.Windows.Forms.Ribbon();
-            
+            this.ribbtnVeViecCHDB = new System.Windows.Forms.RibbonButton();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -202,6 +202,7 @@
             this.ribbonPanel3.Items.Add(this.ribbtnNVKiemTra);
             this.ribbonPanel3.Items.Add(this.ribbtnKiemTrang_BamChi);
             this.ribbonPanel3.Items.Add(this.ribbtnVeViecTTTL);
+            this.ribbonPanel3.Items.Add(this.ribbtnVeViecCHDB);
             this.ribbonPanel3.Text = "Thông Tin";
             // 
             // ribbtnLoaiDonThu
@@ -867,7 +868,14 @@
             this.ribbon1.Tabs.Add(this.ribbonTab8);
             this.ribbon1.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
             this.ribbon1.Text = "ribbon1";
-            
+            // 
+            // ribbtnVeViecCHDB
+            // 
+            this.ribbtnVeViecCHDB.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnVeViecCHDB.MinimumSize = new System.Drawing.Size(90, 0);
+            this.ribbtnVeViecCHDB.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnVeViecCHDB.SmallImage")));
+            this.ribbtnVeViecCHDB.Text = "Về Việc CHDB";
+            this.ribbtnVeViecCHDB.Click += new System.EventHandler(this.ribbtnVeViecCHDB_Click);
             // 
             // Main
             // 
@@ -986,6 +994,7 @@
         private System.Windows.Forms.RibbonPanel ribbonPanel24;
         private System.Windows.Forms.RibbonButton ribbtnCongVanDi;
         private System.Windows.Forms.RibbonButton ribbtnGianLan;
+        private System.Windows.Forms.RibbonButton ribbtnVeViecCHDB;
     }
 }
 

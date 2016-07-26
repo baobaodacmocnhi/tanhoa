@@ -392,6 +392,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 ctchungtu.Cat = bool.Parse(dgvDSSoDangKy["Cat", e.RowIndex].Value.ToString());
                 _cChungTu.SuaCTChungTu(ctchungtu);
             }
+            if (bool.Parse(dgvDSSoDangKy["GiaHan_SCT", e.RowIndex].Value.ToString()) != ctchungtu.GiaHan)
+            {
+                ctchungtu.GiaHan = bool.Parse(dgvDSSoDangKy["GiaHan_SCT", e.RowIndex].Value.ToString());
+                _cChungTu.SuaCTChungTu(ctchungtu);
+            }
             if (dgvDSSoDangKy["DienThoai", e.RowIndex].Value.ToString() != ctchungtu.DienThoai)
             {
                 ctchungtu.DienThoai = dgvDSSoDangKy["DienThoai", e.RowIndex].Value.ToString();

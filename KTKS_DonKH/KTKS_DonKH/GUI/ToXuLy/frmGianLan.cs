@@ -10,6 +10,9 @@ using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.DAL.CapNhat;
+using KTKS_DonKH.BaoCao;
+using KTKS_DonKH.BaoCao.CongVan;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace KTKS_DonKH.GUI.ToXuLy
 {
@@ -524,6 +527,31 @@ namespace KTKS_DonKH.GUI.ToXuLy
         private void btnXem_Click(object sender, EventArgs e)
         {
             dgvGianLan.DataSource = _cGianLan.GetDS(dateTu.Value,dateDen.Value);
+        }
+
+        private void btnInDS_Click(object sender, EventArgs e)
+        {
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            foreach (DataGridViewRow item in dgvGianLan.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["CongVan"].NewRow();
+                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                //dr["LoaiVanBan"] = item.Cells["LoaiVanBan"].Value.ToString();
+                if (item.Cells["MaDon"].Value.ToString().Length > 2)
+                    dr["Ma"] = item.Cells["MaDon"].Value.ToString().Insert(item.Cells["MaDon"].Value.ToString().Length - 2, "-");
+                //dr["CreateDate"] = item.Cells["CreateDate"].Value.ToString();
+                if (item.Cells["DanhBo"].Value.ToString().Length == 11)
+                    dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
+                dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
+                //dr["NoiChuyen"] = item.Cells["NoiChuyen"].Value.ToString();
+                dr["NoiDung"] = item.Cells["NoiDungViPham"].Value.ToString();
+                dsBaoCao.Tables["CongVan"].Rows.Add(dr);
+            }
+            rptDSCongVan rpt = new rptDSCongVan();
+            rpt.SetDataSource(dsBaoCao);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
         }
 
     }

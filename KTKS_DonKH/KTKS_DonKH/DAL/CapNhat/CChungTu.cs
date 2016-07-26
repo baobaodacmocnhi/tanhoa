@@ -44,6 +44,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 itemCTCT.DienThoai,
                                 itemCTCT.Cat,
                                 itemCTCT.GhiChu,
+                                itemCTCT.GiaHan,
                                 itemCTCT.Lo,
                                 itemCTCT.Phong,
                                 itemCTCT.CreateDate,
