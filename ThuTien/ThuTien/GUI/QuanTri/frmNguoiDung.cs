@@ -41,16 +41,29 @@ namespace ThuTien.GUI.QuanTri
             chkHanhThu.Checked = false;
             chkDongNuoc.Checked = false;
             chkVanPhong.Checked = false;
-            _blNguoiDung = new BindingList<TT_NguoiDung>(_cNguoiDung.GetDSExceptMaND(CNguoiDung.MaND));
+            if (CNguoiDung.Admin)
+            {
+                _blNguoiDung = new BindingList<TT_NguoiDung>(_cNguoiDung.GetDS_Admin());
+            }
+            else
+            {
+                _blNguoiDung = new BindingList<TT_NguoiDung>(_cNguoiDung.GetDSExceptMaND(CNguoiDung.MaND));
+            }
             dgvNguoiDung.DataSource = _blNguoiDung;
         }
 
         private void frmNguoiDung_Load(object sender, EventArgs e)
         {
             if (CNguoiDung.Admin)
+            {
                 chkPhoGiamDoc.Visible = true;
+                _blNguoiDung = new BindingList<TT_NguoiDung>(_cNguoiDung.GetDS_Admin());
+            }
             else
+            {
                 chkPhoGiamDoc.Visible = false;
+                _blNguoiDung = new BindingList<TT_NguoiDung>(_cNguoiDung.GetDSExceptMaND(CNguoiDung.MaND));
+            }
             dgvNguoiDung.AutoGenerateColumns = false;
 
             cmbTo.DataSource = _cTo.GetDS();
@@ -63,7 +76,7 @@ namespace ThuTien.GUI.QuanTri
             cmbNhom.ValueMember = "MaNhom";
             //cmbNhom.SelectedIndex = -1;
             
-            _blNguoiDung = new BindingList<TT_NguoiDung>(_cNguoiDung.GetDSExceptMaND(CNguoiDung.MaND));
+            
             dgvNguoiDung.DataSource = _blNguoiDung;
         }
 
