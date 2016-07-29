@@ -63,6 +63,7 @@
             this.chkChuaKT = new System.Windows.Forms.CheckBox();
             this.btnInDSDonTXL = new System.Windows.Forms.Button();
             this.btnGiaoTXL = new System.Windows.Forms.Button();
+            this.txtNoiDungTimKiem2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDonKH)).BeginInit();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.SuspendLayout();
@@ -428,6 +429,15 @@
             this.btnGiaoTXL.UseVisualStyleBackColor = true;
             this.btnGiaoTXL.Click += new System.EventHandler(this.btnGiaoTXL_Click);
             // 
+            // txtNoiDungTimKiem2
+            // 
+            this.txtNoiDungTimKiem2.Location = new System.Drawing.Point(512, 37);
+            this.txtNoiDungTimKiem2.Name = "txtNoiDungTimKiem2";
+            this.txtNoiDungTimKiem2.Size = new System.Drawing.Size(130, 25);
+            this.txtNoiDungTimKiem2.TabIndex = 38;
+            this.txtNoiDungTimKiem2.Visible = false;
+            this.txtNoiDungTimKiem2.TextChanged += new System.EventHandler(this.txtNoiDungTimKiem2_TextChanged);
+            // 
             // frmQLDonKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -435,6 +445,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1370, 562);
+            this.Controls.Add(this.txtNoiDungTimKiem2);
             this.Controls.Add(this.btnGiaoTXL);
             this.Controls.Add(this.btnInChiTiet);
             this.Controls.Add(this.chkChuaKT);
@@ -499,6 +510,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
         private System.Windows.Forms.Button btnGiaoTXL;
+        private System.Windows.Forms.TextBox txtNoiDungTimKiem2;
 
 
     }

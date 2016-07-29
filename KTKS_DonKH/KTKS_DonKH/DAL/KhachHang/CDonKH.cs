@@ -262,6 +262,45 @@ namespace KTKS_DonKH.DAL.KhachHang
             }
         }
 
+        public DataTable LoadDSDonKHByMaDons(decimal FromMaDon, decimal ToMaDon)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
+                {
+                    var query = from itemDonKH in db.DonKHs
+                                join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
+                                join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
+                                where (((itemDonKH.MaDon.ToString().Substring(itemDonKH.MaDon.ToString().Length - 2, 2) == FromMaDon.ToString().Substring(FromMaDon.ToString().Length - 2, 2) && itemDonKH.MaDon.ToString().Substring(itemDonKH.MaDon.ToString().Length - 2, 2) == ToMaDon.ToString().Substring(ToMaDon.ToString().Length - 2, 2))
+                                && (itemDonKH.MaDon >= FromMaDon && itemDonKH.MaDon <= ToMaDon)))
+                                select new
+                                {
+                                    itemDonKH.MaDon,
+                                    itemDonKH.MaLD,
+                                    itemLoaiDon.TenLD,
+                                    itemDonKH.CreateDate,
+                                    itemDonKH.DanhBo,
+                                    itemDonKH.HoTen,
+                                    itemDonKH.DiaChi,
+                                    itemDonKH.NoiDung,
+                                    CreateBy = itemUser.HoTen,
+                                    itemDonKH.NVKiemTra,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public DataTable LoadDSDonKHByDanhBo(string DanhBo)
         {
             try

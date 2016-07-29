@@ -675,6 +675,51 @@ namespace KTKS_DonKH.DAL.ToXuLy
             }
         }
 
+        public DataTable LoadDSDonTKHDaChuyenKT(decimal FromMaDon, decimal ToMaDon)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
+                {
+                    var query = from itemLSCKT in db.LichSuChuyenKTs
+                                join itemDonKH in db.DonKHs on itemLSCKT.MaDon equals itemDonKH.MaDon
+                                join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
+                                join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
+                                where itemLSCKT.MaDon != null
+                                && (((itemDonKH.MaDon.ToString().Substring(itemDonKH.MaDon.ToString().Length - 2, 2) == FromMaDon.ToString().Substring(FromMaDon.ToString().Length - 2, 2) && itemDonKH.MaDon.ToString().Substring(itemDonKH.MaDon.ToString().Length - 2, 2) == ToMaDon.ToString().Substring(ToMaDon.ToString().Length - 2, 2))
+                                && (itemDonKH.MaDon >= FromMaDon && itemDonKH.MaDon <= ToMaDon)))
+                                orderby itemDonKH.MaDon ascending
+                                select new
+                                {
+                                    itemDonKH.MaDon,
+                                    itemLoaiDon.TenLD,
+                                    itemDonKH.SoCongVan,
+                                    itemDonKH.CreateDate,
+                                    itemDonKH.DanhBo,
+                                    itemDonKH.HoTen,
+                                    itemDonKH.DiaChi,
+                                    itemDonKH.NoiDung,
+                                    itemDonKH.MaChuyen,
+                                    itemDonKH.LyDoChuyen,
+                                    itemDonKH.SoLuongDiaChi,
+                                    CreateBy = itemUser.HoTen,
+                                    itemLSCKT.NguoiDi,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         /// <summary>
         /// Lấy Danh Sách Thông Kê Đơn được chuyển cho những ai theo Số Công Văn
         /// </summary>

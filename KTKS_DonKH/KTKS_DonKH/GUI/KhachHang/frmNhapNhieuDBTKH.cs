@@ -114,6 +114,13 @@ namespace KTKS_DonKH.GUI.KhachHang
         {
             if (dgvDanhBoChuyenKT.Columns[e.ColumnIndex].Name == "DanhBo" && dgvDanhBoChuyenKT["DanhBo", e.RowIndex].Value != null)
             {
+                for (int i = 0; i < dgvDanhBoChuyenKT.Rows.Count-2; i++)
+                    if (dgvDanhBoChuyenKT["DanhBo", i].Value.ToString() == dgvDanhBoChuyenKT["DanhBo", e.RowIndex].Value.ToString())
+                    {
+                        MessageBox.Show("Danh Bộ đã nhập rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    
                 if (_cTTKH.getTTKHbyID(dgvDanhBoChuyenKT["DanhBo", e.RowIndex].Value.ToString()) != null)
                 {
                     TTKhachHang ttkhachhang = _cTTKH.getTTKHbyID(dgvDanhBoChuyenKT["DanhBo", e.RowIndex].Value.ToString());
@@ -336,6 +343,13 @@ namespace KTKS_DonKH.GUI.KhachHang
         {
             if (dgvDanhBoChuyenVanPhong.Columns[e.ColumnIndex].Name == "DanhBoVP" && dgvDanhBoChuyenVanPhong["DanhBoVP", e.RowIndex].Value != null)
             {
+                for (int i = 0; i < dgvDanhBoChuyenVanPhong.Rows.Count - 2; i++)
+                    if (dgvDanhBoChuyenVanPhong["DanhBoVP", i].Value.ToString() == dgvDanhBoChuyenVanPhong["DanhBoVP", e.RowIndex].Value.ToString())
+                    {
+                        MessageBox.Show("Danh Bộ đã nhập rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
                 if (_cTTKH.getTTKHbyID(dgvDanhBoChuyenVanPhong["DanhBoVP", e.RowIndex].Value.ToString()) != null)
                 {
                     TTKhachHang ttkhachhang = _cTTKH.getTTKHbyID(dgvDanhBoChuyenVanPhong["DanhBoVP", e.RowIndex].Value.ToString());

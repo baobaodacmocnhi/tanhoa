@@ -1065,16 +1065,16 @@
             // 
             this.label59.AutoSize = true;
             this.label59.ForeColor = System.Drawing.Color.Red;
-            this.label59.Location = new System.Drawing.Point(375, 108);
+            this.label59.Location = new System.Drawing.Point(380, 105);
             this.label59.Name = "label59";
             this.label59.Size = new System.Drawing.Size(74, 17);
             this.label59.TabIndex = 24;
-            this.label59.Text = "SV3456-14";
+            this.label59.Text = "SV3456-16";
             // 
             // label60
             // 
             this.label60.AutoSize = true;
-            this.label60.Location = new System.Drawing.Point(330, 108);
+            this.label60.Location = new System.Drawing.Point(335, 105);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(46, 17);
             this.label60.TabIndex = 23;
@@ -1084,16 +1084,16 @@
             // 
             this.label61.AutoSize = true;
             this.label61.ForeColor = System.Drawing.Color.Red;
-            this.label61.Location = new System.Drawing.Point(254, 108);
+            this.label61.Location = new System.Drawing.Point(184, 105);
             this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(80, 17);
+            this.label61.Size = new System.Drawing.Size(173, 17);
             this.label61.TabIndex = 22;
-            this.label61.Text = "SV+mã đơn";
+            this.label61.Text = "SV+mã đơn-số năm hiện tại";
             // 
             // label62
             // 
             this.label62.AutoSize = true;
-            this.label62.Location = new System.Drawing.Point(78, 108);
+            this.label62.Location = new System.Drawing.Point(8, 105);
             this.label62.Name = "label62";
             this.label62.Size = new System.Drawing.Size(181, 17);
             this.label62.TabIndex = 21;
@@ -1105,9 +1105,9 @@
             this.label51.ForeColor = System.Drawing.Color.Red;
             this.label51.Location = new System.Drawing.Point(359, 74);
             this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(130, 17);
+            this.label51.Size = new System.Drawing.Size(66, 17);
             this.label51.TabIndex = 20;
-            this.label51.Text = "3465/STT-287/12AC";
+            this.label51.Text = "3465/STT";
             // 
             // label52
             // 
@@ -1162,9 +1162,9 @@
             this.label45.ForeColor = System.Drawing.Color.Red;
             this.label45.Location = new System.Drawing.Point(359, 52);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(111, 17);
+            this.label45.Size = new System.Drawing.Size(56, 17);
             this.label45.TabIndex = 14;
-            this.label45.Text = "2465/T4-237PQT";
+            this.label45.Text = "2465/T4";
             // 
             // label46
             // 
@@ -1219,9 +1219,9 @@
             this.label43.ForeColor = System.Drawing.Color.Red;
             this.label43.Location = new System.Drawing.Point(359, 29);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(92, 17);
+            this.label43.Size = new System.Drawing.Size(36, 17);
             this.label43.TabIndex = 8;
-            this.label43.Text = "1684-91DGT6";
+            this.label43.Text = "1684";
             // 
             // label44
             // 
@@ -1350,6 +1350,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(903, 472);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtHoTen);
             this.Controls.Add(this.label58);
             this.Controls.Add(this.chkSuaNgayHetHan);
@@ -1385,7 +1386,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtDanhBo);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;

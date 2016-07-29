@@ -4064,6 +4064,8 @@ namespace KTKS_DonKH.BaoCao {
             
             private global::System.Data.DataColumn columnViTriDHN;
             
+            private global::System.Data.DataColumn columnNoiDung;
+            
             private global::System.Data.DataColumn columnNoiNhan;
             
             private global::System.Data.DataColumn columnNgayXuLy;
@@ -4163,6 +4165,14 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NoiDungColumn {
+                get {
+                    return this.columnNoiDung;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn NoiNhanColumn {
                 get {
                     return this.columnNoiNhan;
@@ -4230,7 +4240,7 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ThongBaoCHDBRow AddThongBaoCHDBRow(string SoPhieu, string HoTen, string DiaChi, string DanhBo, string HopDong, string LyDo, string ViTriDHN, string NoiNhan, string NgayXuLy, string ChucVu, string NguoiKy) {
+            public ThongBaoCHDBRow AddThongBaoCHDBRow(string SoPhieu, string HoTen, string DiaChi, string DanhBo, string HopDong, string LyDo, string ViTriDHN, string NoiDung, string NoiNhan, string NgayXuLy, string ChucVu, string NguoiKy) {
                 ThongBaoCHDBRow rowThongBaoCHDBRow = ((ThongBaoCHDBRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         SoPhieu,
@@ -4240,6 +4250,7 @@ namespace KTKS_DonKH.BaoCao {
                         HopDong,
                         LyDo,
                         ViTriDHN,
+                        NoiDung,
                         NoiNhan,
                         NgayXuLy,
                         ChucVu,
@@ -4273,6 +4284,7 @@ namespace KTKS_DonKH.BaoCao {
                 this.columnHopDong = base.Columns["HopDong"];
                 this.columnLyDo = base.Columns["LyDo"];
                 this.columnViTriDHN = base.Columns["ViTriDHN"];
+                this.columnNoiDung = base.Columns["NoiDung"];
                 this.columnNoiNhan = base.Columns["NoiNhan"];
                 this.columnNgayXuLy = base.Columns["NgayXuLy"];
                 this.columnChucVu = base.Columns["ChucVu"];
@@ -4296,6 +4308,8 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnLyDo);
                 this.columnViTriDHN = new global::System.Data.DataColumn("ViTriDHN", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnViTriDHN);
+                this.columnNoiDung = new global::System.Data.DataColumn("NoiDung", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNoiDung);
                 this.columnNoiNhan = new global::System.Data.DataColumn("NoiNhan", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNoiNhan);
                 this.columnNgayXuLy = new global::System.Data.DataColumn("NgayXuLy", typeof(string), null, global::System.Data.MappingType.Element);
@@ -18711,6 +18725,22 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NoiDung {
+                get {
+                    try {
+                        return ((string)(this[this.tableThongBaoCHDB.NoiDungColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NoiDung\' in table \'ThongBaoCHDB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableThongBaoCHDB.NoiDungColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string NoiNhan {
                 get {
                     try {
@@ -18855,6 +18885,18 @@ namespace KTKS_DonKH.BaoCao {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetViTriDHNNull() {
                 this[this.tableThongBaoCHDB.ViTriDHNColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNoiDungNull() {
+                return this.IsNull(this.tableThongBaoCHDB.NoiDungColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNoiDungNull() {
+                this[this.tableThongBaoCHDB.NoiDungColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

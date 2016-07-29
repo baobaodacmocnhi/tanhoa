@@ -456,15 +456,6 @@
             // cmbLyDo
             // 
             this.cmbLyDo.FormattingEnabled = true;
-            this.cmbLyDo.Items.AddRange(new object[] {
-            "",
-            "Theo Yêu Cầu Khách Hàng",
-            "Theo Yêu Cầu Công Ty",
-            "Nợ Tiền Nước",
-            "Không Thanh Toán Tiền Bồi Thường ĐHN",
-            "Nợ Tiền Gian Lận Nước",
-            "Khách Hàng Không Sử Dụng Nước Máy Theo Cam Kết Ngày",
-            "Vấn Đề Khác"});
             this.cmbLyDo.Location = new System.Drawing.Point(73, 24);
             this.cmbLyDo.Name = "cmbLyDo";
             this.cmbLyDo.Size = new System.Drawing.Size(240, 25);
@@ -525,7 +516,8 @@
             "Đóng nước-niêm chì",
             "Thay miễn phí",
             "Đã thay ĐHN khác",
-            "Tráng bít bê tông chờ XPĐĐ"});
+            "Tráng bít bê tông chờ XPĐĐ",
+            "Lập thông báo cắt hủy"});
             this.cmbNoiDung.Location = new System.Drawing.Point(711, 55);
             this.cmbNoiDung.Name = "cmbNoiDung";
             this.cmbNoiDung.Size = new System.Drawing.Size(194, 25);

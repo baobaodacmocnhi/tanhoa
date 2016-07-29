@@ -26,6 +26,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CTTKH _cTTKH = new CTTKH();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CVeViecCHDB _cVeViecCHDB = new CVeViecCHDB();
         TTKhachHang _ttkhachhang = null;
         CKTXM _cKTXM = new CKTXM();
 
@@ -74,6 +75,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             dgvLichSuXuLy.AutoGenerateColumns = false;
             cmbNoiDung.SelectedIndex = -1;
 
+            cmbLyDo.DataSource = _cVeViecCHDB.LoadDS(true);
+            cmbLyDo.DisplayMember = "TenVV";
+            cmbLyDo.ValueMember = "TenVV";
+
             DataTable dt1 = _cCHDB.GetDSNoiDungLichSuXyLy();
             AutoCompleteStringCollection auto1 = new AutoCompleteStringCollection();
             foreach (DataRow item in dt1.Rows)
@@ -106,7 +111,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 txtHoTen.Text = _ctchdb.HoTen;
                 txtDiaChi.Text = _ctchdb.DiaChi;
                 ///
-                cmbLyDo.SelectedItem = _ctchdb.LyDo;
+                cmbLyDo.SelectedValue = _ctchdb.LyDo;
                 txtGhiChuXuLy.Text = _ctchdb.GhiChuLyDo;
                 txtSoTien.Text = _ctchdb.SoTien.ToString();
 
@@ -188,6 +193,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     dr["LyDo"] += _ctchdb.GhiChuLyDo + ". ";
                 if (_ctchdb.SoTien.ToString() != "")
                     dr["LyDo"] += "Số Tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", _ctchdb.SoTien);
+                dr["NoiDung"] = _ctchdb.NoiDung;
 
                 dr["NoiNhan"] = _ctchdb.NoiNhan;
 
@@ -466,13 +472,14 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     if (txtMaThongBaoCT.Text.Trim().Replace("-", "") != "")
                         _ctchdb.MaCTCTDB = decimal.Parse(txtMaThongBaoCT.Text.Trim().Replace("-", ""));
 
-                    if (!string.IsNullOrEmpty(cmbLyDo.SelectedItem.ToString()))
-                        _ctchdb.LyDo = cmbLyDo.SelectedItem.ToString();
+                    if (!string.IsNullOrEmpty(cmbLyDo.SelectedValue.ToString()))
+                        _ctchdb.LyDo = cmbLyDo.SelectedValue.ToString();
                     _ctchdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
                     if (txtSoTien.Text.Trim() != "")
                         _ctchdb.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".", ""));
                     else
                         _ctchdb.SoTien = null;
+                    _ctchdb.NoiDung = ((VeViecCHDB)cmbLyDo.SelectedItem).NoiDung;
 
                     if (chkNgayXuLy.Checked)
                     {
@@ -611,7 +618,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void cmbLyDo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (cmbLyDo.SelectedItem.ToString())
+            switch (cmbLyDo.SelectedValue.ToString())
             {
                 case "Theo Yêu Cầu Khách Hàng":
                 case "Theo Yêu Cầu Công Ty":

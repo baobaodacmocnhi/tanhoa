@@ -268,21 +268,25 @@ namespace KTKS_DonKH.GUI.KhachHang
                 case "Danh Bộ":
                 case "Số Công Văn":
                     txtNoiDungTimKiem.Visible = true;
+                    txtNoiDungTimKiem2.Visible = true;
                     dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = false;
                     break;
                 case "Ngày":
                     txtNoiDungTimKiem.Visible = false;
+                    txtNoiDungTimKiem2.Visible = false;
                     dateTimKiem.Visible = true;
                     panel_KhoangThoiGian.Visible = false;
                     break;
                 case "Khoảng Thời Gian":
                     txtNoiDungTimKiem.Visible = false;
+                    txtNoiDungTimKiem2.Visible = false;
                     dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = true;
                     break;
                 default:
                     txtNoiDungTimKiem.Visible = false;
+                    txtNoiDungTimKiem2.Visible = false;
                     dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = false;
                     //DSDonKH_BS.RemoveFilter();
@@ -443,6 +447,9 @@ namespace KTKS_DonKH.GUI.KhachHang
             //DataTable dt = ((DataTable)dgvDSDonKH.DataSource).DefaultView.ToTable();
             switch (cmbTimTheo.SelectedItem.ToString())
             {
+                case "Mã Đơn":
+                    dt = _cDonTXL.LoadDSDonTKHDaChuyenKT(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                    break;
                 case "Ngày":
                     dt = _cDonTXL.LoadDSDonTKHDaChuyenKT(dateTimKiem.Value);
                     break;
@@ -656,6 +663,20 @@ namespace KTKS_DonKH.GUI.KhachHang
             rpt.SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
+        }
+
+        private void txtNoiDungTimKiem2_TextChanged(object sender, EventArgs e)
+        {
+            if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
+            {
+                switch (cmbTimTheo.SelectedItem.ToString())
+                {
+                    case "Mã Đơn":
+                        dgvDSDonKH.DataSource = _cDonKH.LoadDSDonKHByMaDons(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                        break;
+                }
+
+            }
         }
 
     }
