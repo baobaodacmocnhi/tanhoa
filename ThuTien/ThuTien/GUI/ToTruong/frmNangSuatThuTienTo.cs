@@ -792,7 +792,7 @@ namespace ThuTien.GUI.ToTruong
                         dr["HDTonCu"] = item["HDTonCu"];
                         dr["TCTonCu"] = item["TCTonCu"];
                     }
-
+                    ///
                     if (string.IsNullOrEmpty(item["DCNhan"].ToString()))
                     {
                         dr["DCNhan"] = 0;
@@ -805,7 +805,7 @@ namespace ThuTien.GUI.ToTruong
                         dr["HDNhan"] = item["HDNhan"];
                         dr["TCNhan"] = item["TCNhan"];
                     }
-
+                    ///
                     if (string.IsNullOrEmpty(item["DCNhan"].ToString()))
                     {
                         dr["DCDangNgan"] = 0;
@@ -818,7 +818,7 @@ namespace ThuTien.GUI.ToTruong
                         dr["HDDangNgan"] = item["HDDangNgan"];
                         dr["TCDangNgan"] = item["TCDangNgan"];
                     }
-
+                    ///
                     if (string.IsNullOrEmpty(item["DCHuy"].ToString()))
                     {
                         dr["DCHuy"] = 0;
@@ -831,7 +831,7 @@ namespace ThuTien.GUI.ToTruong
                         dr["HDHuy"] = item["HDHuy"];
                         dr["TCHuy"] = item["TCHuy"];
                     }
-
+                    ///
                     if (string.IsNullOrEmpty(item["DCTongTon"].ToString()))
                     {
                         dr["DCTongTon"] = 0;
@@ -844,7 +844,7 @@ namespace ThuTien.GUI.ToTruong
                         dr["HDTongTon"] = item["HDTongTon"];
                         dr["TCTongTon"] = item["TCTongTon"];
                     }
-
+                    ///
                     if (string.IsNullOrEmpty(item["DCKhoaNuoc"].ToString()))
                     {
                         dr["DCDongNuoc"] = 0;
