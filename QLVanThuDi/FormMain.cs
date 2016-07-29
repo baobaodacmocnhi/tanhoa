@@ -1229,139 +1229,264 @@ namespace QLVanThu
         {
             //ExportToExcel(((DataTable)vanthudis.DataSource).DefaultView.ToTable(), "Danh sách văn thư đi", "DANH SÁCH VĂN THƯ ĐI");
             if (cmbPhongBanDoi.SelectedItem.ToString() == "QLDA")
-                ExportToExcelMucLucQLDA();
-            else
-                ExportToExcelMucLuc();
-            Microsoft.Office.Interop.Excel.Worksheet oSheetTongHop= (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(2);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetTCHC = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(3);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetKTTC = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(4);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetKHVTTH = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(5);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetKTCN = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(6);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetKTKS = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(7);
-            //Microsoft.Office.Interop.Excel.Worksheet oSheetQLDA = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(8);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetQLĐHN = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(8);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetĐTT = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(9);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetTCTB = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(10);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetTCXL = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(11);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetGNKDT = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(12);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetHDQT = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(13);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetTGV = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(14);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetQĐ_TCHC = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(15);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetHĐ = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(16);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetKhac = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(17);
-
-            ExportToExcelTongHop(((DataTable)vanthudis.DataSource).DefaultView.ToTable(), oSheetTongHop);
-
-            DataTable temp = (((DataTable)vanthudis.DataSource).DefaultView.ToTable());
-
-            DataTable[] a = new DataTable[16];
-            for (int i = 0; i < 16; i++)
             {
-                a[i] = new DataTable();
-                foreach (DataColumn item in temp.Columns)
+                ExportToExcelMucLucQLDA();
+                Microsoft.Office.Interop.Excel.Worksheet oSheetTongHop = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(2);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetBB = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(3);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetBC = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(4);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetBCCTT = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(5);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetBG = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(6);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetCV = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(7);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetDDN = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(8);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetGDNTT = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(8);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetKH = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(9);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetPC = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(10);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetPG = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(11);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetPLHD = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(12);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetTB = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(13);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetTBKC = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(14);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetTM = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(15);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetTTR = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(16);
+                //Microsoft.Office.Interop.Excel.Worksheet oSheetKhac = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(17);
+
+                ExportToExcelTongHop(((DataTable)vanthudis.DataSource).DefaultView.ToTable(), oSheetTongHop);
+
+                DataTable temp = (((DataTable)vanthudis.DataSource).DefaultView.ToTable());
+
+                DataTable[] a = new DataTable[16];
+                for (int i = 0; i < 16; i++)
                 {
-                    a[i].Columns.Add(new DataColumn(item.ColumnName, item.DataType));
+                    a[i] = new DataTable();
+                    foreach (DataColumn item in temp.Columns)
+                    {
+                        a[i].Columns.Add(new DataColumn(item.ColumnName, item.DataType));
+                    }
+                }
+
+                for (int i = 0; i < temp.Rows.Count; i++)
+                {
+                    DataRow dr = temp.Rows[i];
+
+                    if (dr["LoaiVB"].ToString().Contains("BB"))
+                        a[0].ImportRow(dr);
+                    if (dr["LoaiVB"].ToString().Contains("BC"))
+                        a[1].ImportRow(dr);
+                    if (dr["LoaiVB"].ToString().Contains("BCCTT"))
+                        a[2].ImportRow(dr);
+                    if (dr["LoaiVB"].ToString().Contains("BG"))
+                        a[3].ImportRow(dr);
+                    if (dr["LoaiVB"].ToString().Contains("CV"))
+                        a[4].ImportRow(dr);
+                    if (dr["LoaiVB"].ToString().Contains("ĐĐN"))
+                        a[5].ImportRow(dr);
+                    if (dr["LoaiVB"].ToString().Contains("GĐNTT"))
+                        a[6].ImportRow(dr);
+                    if (dr["LoaiVB"].ToString().Contains("KH"))
+                        a[7].ImportRow(dr);
+                    if (dr["LoaiVB"].ToString().Contains("PC"))
+                        a[8].ImportRow(dr);
+                    if (dr["LoaiVB"].ToString().Contains("PG"))
+                        a[9].ImportRow(dr);
+                    if (dr["LoaiVB"].ToString().Contains("PLHĐ"))
+                        a[10].ImportRow(dr);
+                    if (dr["LoaiVB"].ToString().Contains("TB"))
+                        a[11].ImportRow(dr);
+                    if (dr["LoaiVB"].ToString().Contains("TBKC"))
+                        a[12].ImportRow(dr);
+                    if (dr["LoaiVB"].ToString().Contains("TM"))
+                        a[13].ImportRow(dr);
+                    if (dr["LoaiVB"].ToString().Contains("TTr"))
+                        a[14].ImportRow(dr);
+                }
+
+                for (int i = 0; i < 16; i++)
+                {
+                    switch (i)
+                    {
+                        case 0:
+                            ExportToExcelChiTiet(a[i], oSheetBB, "BB", "BIÊN BẢN");
+                            break;
+                        case 1:
+                            ExportToExcelChiTiet(a[i], oSheetBC, "BC", "BÁO CÁO");
+                            break;
+                        case 2:
+                            ExportToExcelChiTiet(a[i], oSheetBCCTT, "BCCTT", "BẢNG CUNG CẤP THÔNG TIN");
+                            break;
+                        case 3:
+                            ExportToExcelChiTiet(a[i], oSheetBG, "BG", "BÁO GIÁ");
+                            break;
+                        case 4:
+                            ExportToExcelChiTiet(a[i], oSheetCV, "CV", "CÔNG VĂN");
+                            break;
+                        case 5:
+                            ExportToExcelChiTiet(a[i], oSheetDDN, "ĐĐN", "ĐƠN ĐỀ NGHỊ");
+                            break;
+                        case 6:
+                            ExportToExcelChiTiet(a[i], oSheetGDNTT, "GĐNTT", "GIẤY ĐỀ NGHỊ THANH TOÁN");
+                            break;
+                        case 7:
+                            ExportToExcelChiTiet(a[i], oSheetKH, "KH", "KẾ HOẠCH");
+                            break;
+                        case 8:
+                            ExportToExcelChiTiet(a[i], oSheetPC, "PC", "PHIẾU CHUYỂN");
+                            break;
+                        case 9:
+                            ExportToExcelChiTiet(a[i], oSheetPG, "PG", "PHIẾU GỬI");
+                            break;
+                        case 10:
+                            ExportToExcelChiTiet(a[i], oSheetPLHD, "PLHĐ", "PHỤ LỤC HỢP ĐỒNG");
+                            break;
+                        case 11:
+                            ExportToExcelChiTiet(a[i], oSheetTB, "TB", "THÔNG BÁO");
+                            break;
+                        case 12:
+                            ExportToExcelChiTiet(a[i], oSheetTBKC, "TBKC", "THÔNG BÁO KHỞI CÔNG");
+                            break;
+                        case 13:
+                            ExportToExcelChiTiet(a[i], oSheetTM,"TM", "THƯ MỜI");
+                            break;
+                        case 14:
+                            ExportToExcelChiTiet(a[i], oSheetTTR,"TTr", "TỜ TRÌNH");
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
-
-            for (int i = 0; i < temp.Rows.Count; i++)
+            else
             {
-                DataRow dr = temp.Rows[i];
+                ExportToExcelMucLuc();
+                Microsoft.Office.Interop.Excel.Worksheet oSheetTongHop = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(2);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetTCHC = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(3);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetKTTC = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(4);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetKHVTTH = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(5);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetKTCN = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(6);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetKTKS = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(7);
+                //Microsoft.Office.Interop.Excel.Worksheet oSheetQLDA = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(8);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetQLĐHN = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(8);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetĐTT = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(9);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetTCTB = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(10);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetTCXL = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(11);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetGNKDT = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(12);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetHDQT = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(13);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetTGV = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(14);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetQĐ_TCHC = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(15);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetHĐ = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(16);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetKhac = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(17);
 
-                if (dr["SoKyHieuVB"].ToString().Contains("TCHC"))
-                    a[0].ImportRow(dr);
-                if (dr["SoKyHieuVB"].ToString().Contains("KTTC"))
-                    a[1].ImportRow(dr);
-                if (dr["SoKyHieuVB"].ToString().Contains("KHĐT"))
-                    a[2].ImportRow(dr);
-                if (dr["SoKyHieuVB"].ToString().Contains("KTCN"))
-                    a[3].ImportRow(dr);
-                if (dr["SoKyHieuVB"].ToString().Contains("KTKS") || dr["SoKyHieuVB"].ToString().Contains("KD") && !dr["SoKyHieuVB"].ToString().Contains("GNKDT"))
-                    a[4].ImportRow(dr);
-                //if (dr["SoKyHieuVB"].ToString().Contains("QLDA"))
-                //    a[5].ImportRow(dr);
-                if (dr["SoKyHieuVB"].ToString().Contains("QLĐHN"))
-                    a[6].ImportRow(dr);
-                //if (dr["SoKyHieuVB"].ToString().Contains("ĐTT") || dr["SoKyHieuVB"].ToString().Contains("TT"))
-                //    a[7].ImportRow(dr);
-                if (dr["SoKyHieuVB"].ToString().Contains("TCTB"))
-                    a[8].ImportRow(dr);
-                if (dr["SoKyHieuVB"].ToString().Contains("TCXL"))
-                    a[9].ImportRow(dr);
-                if (dr["SoKyHieuVB"].ToString().Contains("GNKDT"))
-                    a[10].ImportRow(dr);
-                if (dr["SoKyHieuVB"].ToString().Contains("HĐQT"))
-                    a[11].ImportRow(dr);
-                if (dr["SoKyHieuVB"].ToString().Contains("TGV"))
-                    a[12].ImportRow(dr);
-                if (dr["SoKyHieuVB"].ToString().Contains("TCHC") && dr["TypeID"].ToString() == "35")
-                    a[13].ImportRow(dr);
-                if (dr["SoKyHieuVB"].ToString().Contains("HĐ") && dr["TypeID"].ToString() == "13")
-                    a[14].ImportRow(dr);
-                if (!dr["SoKyHieuVB"].ToString().Contains("QLDA") && !dr["SoKyHieuVB"].ToString().Contains("HĐ") && dr["TypeID"].ToString() != "13" && !dr["SoKyHieuVB"].ToString().Contains("QĐ") && !dr["SoKyHieuVB"].ToString().Contains("TCHC"))
-                    a[15].ImportRow(dr);
-            }
+                ExportToExcelTongHop(((DataTable)vanthudis.DataSource).DefaultView.ToTable(), oSheetTongHop);
 
-            var rows = temp.Select("SoKyHieuVB not like '%CNTT' and SoKyHieuVB like '%TT' or SoKyHieuVB like '%ĐTT'");
-            foreach (var item in rows)
-            {
-                a[7].ImportRow(item);
-            }
+                DataTable temp = (((DataTable)vanthudis.DataSource).DefaultView.ToTable());
 
-            for (int i = 0; i < 16; i++)
-            {
-                switch (i)
+                DataTable[] a = new DataTable[16];
+                for (int i = 0; i < 16; i++)
                 {
-                    case 0:
-                        ExportToExcelChiTiet(a[i], oSheetTCHC, "TCHC","PHÒNG TỔ CHỨC HÀNH CHÍNH");
-                        break;
-                    case 1:
-                        ExportToExcelChiTiet(a[i], oSheetKTTC, "KTTC","PHÒNG KẾ TOÁN TÀI CHÍNH");
-                        break;
-                    case 2:
-                        ExportToExcelChiTiet(a[i], oSheetKHVTTH, "KHĐT","PHÒNG KẾ HOẠCH ĐẦU TƯ");
-                        break;
-                    case 3:
-                        ExportToExcelChiTiet(a[i], oSheetKTCN, "KTCN","PHÒNG KỸ THUẬT CÔNG NGHỆ");
-                        break;
-                    case 4:
-                        ExportToExcelChiTiet(a[i], oSheetKTKS, "KD","PHÒNG KINH DOANH");
-                        break;
-                    //case 5:
-                    //    ExportToExcelChiTiet(a[i], oSheetQLDA, "QLDA","QUẢN LÝ DỰ ÁN");
-                    //    break;
-                    case 6:
-                        ExportToExcelChiTiet(a[i], oSheetQLĐHN, "QLĐHN","ĐỘI QLĐHN");
-                        break;
-                    case 7:
-                        ExportToExcelChiTiet(a[i], oSheetĐTT, "ĐTT","ĐỘI THU TIỀN");
-                        break;
-                    case 8:
-                        ExportToExcelChiTiet(a[i], oSheetTCTB, "TCTB","ĐỘI THI CÔNG TU BỔ");
-                        break;
-                    case 9:
-                        ExportToExcelChiTiet(a[i], oSheetTCXL, "TCXL","ĐỘI THI CÔNG XÂY LẮP");
-                        break;
-                    case 10:
-                        ExportToExcelChiTiet(a[i], oSheetGNKDT, "GNKDT","PHÒNG GIẢM NƯỚC KDT");
-                        break;
-                    case 11:
-                        ExportToExcelChiTiet(a[i], oSheetHDQT, "HĐQT", "HỘI ĐỒNG QUẢN TRỊ");
-                        break;
-                    case 12:
-                        ExportToExcelChiTiet(a[i], oSheetTGV, "TGV","TỔ GIÚP VIỆC");
-                        break;
-                    //case 13:
-                    //    ExportToExcelChiTiet(a[i], oSheetQĐ_TCHC, "QĐ-TCHC");
-                    //    break;
-                    //case 14:
-                    //    ExportToExcelChiTiet(a[i], oSheetHĐ, "HĐ");
-                    //    break;
-                    //case 15:
-                    //    ExportToExcelChiTiet(a[i], oSheetKhac, "-QLDA");
-                    //    break;
-                    default:
-                        break;
+                    a[i] = new DataTable();
+                    foreach (DataColumn item in temp.Columns)
+                    {
+                        a[i].Columns.Add(new DataColumn(item.ColumnName, item.DataType));
+                    }
+                }
+
+                for (int i = 0; i < temp.Rows.Count; i++)
+                {
+                    DataRow dr = temp.Rows[i];
+
+                    if (dr["SoKyHieuVB"].ToString().Contains("TCHC"))
+                        a[0].ImportRow(dr);
+                    if (dr["SoKyHieuVB"].ToString().Contains("KTTC"))
+                        a[1].ImportRow(dr);
+                    if (dr["SoKyHieuVB"].ToString().Contains("KHĐT"))
+                        a[2].ImportRow(dr);
+                    if (dr["SoKyHieuVB"].ToString().Contains("KTCN"))
+                        a[3].ImportRow(dr);
+                    if (dr["SoKyHieuVB"].ToString().Contains("KTKS") || dr["SoKyHieuVB"].ToString().Contains("KD") && !dr["SoKyHieuVB"].ToString().Contains("GNKDT"))
+                        a[4].ImportRow(dr);
+                    //if (dr["SoKyHieuVB"].ToString().Contains("QLDA"))
+                    //    a[5].ImportRow(dr);
+                    if (dr["SoKyHieuVB"].ToString().Contains("QLĐHN"))
+                        a[6].ImportRow(dr);
+                    //if (dr["SoKyHieuVB"].ToString().Contains("ĐTT") || dr["SoKyHieuVB"].ToString().Contains("TT"))
+                    //    a[7].ImportRow(dr);
+                    if (dr["SoKyHieuVB"].ToString().Contains("TCTB"))
+                        a[8].ImportRow(dr);
+                    if (dr["SoKyHieuVB"].ToString().Contains("TCXL"))
+                        a[9].ImportRow(dr);
+                    if (dr["SoKyHieuVB"].ToString().Contains("GNKDT"))
+                        a[10].ImportRow(dr);
+                    if (dr["SoKyHieuVB"].ToString().Contains("HĐQT"))
+                        a[11].ImportRow(dr);
+                    if (dr["SoKyHieuVB"].ToString().Contains("TGV"))
+                        a[12].ImportRow(dr);
+                    if (dr["SoKyHieuVB"].ToString().Contains("TCHC") && dr["TypeID"].ToString() == "35")
+                        a[13].ImportRow(dr);
+                    if (dr["SoKyHieuVB"].ToString().Contains("HĐ") && dr["TypeID"].ToString() == "13")
+                        a[14].ImportRow(dr);
+                    if (!dr["SoKyHieuVB"].ToString().Contains("QLDA") && !dr["SoKyHieuVB"].ToString().Contains("HĐ") && dr["TypeID"].ToString() != "13" && !dr["SoKyHieuVB"].ToString().Contains("QĐ") && !dr["SoKyHieuVB"].ToString().Contains("TCHC"))
+                        a[15].ImportRow(dr);
+                }
+
+                var rows = temp.Select("SoKyHieuVB not like '%CNTT' and SoKyHieuVB like '%TT' or SoKyHieuVB like '%ĐTT'");
+                foreach (var item in rows)
+                {
+                    a[7].ImportRow(item);
+                }
+
+                for (int i = 0; i < 16; i++)
+                {
+                    switch (i)
+                    {
+                        case 0:
+                            ExportToExcelChiTiet(a[i], oSheetTCHC, "TCHC", "PHÒNG TỔ CHỨC HÀNH CHÍNH");
+                            break;
+                        case 1:
+                            ExportToExcelChiTiet(a[i], oSheetKTTC, "KTTC", "PHÒNG KẾ TOÁN TÀI CHÍNH");
+                            break;
+                        case 2:
+                            ExportToExcelChiTiet(a[i], oSheetKHVTTH, "KHĐT", "PHÒNG KẾ HOẠCH ĐẦU TƯ");
+                            break;
+                        case 3:
+                            ExportToExcelChiTiet(a[i], oSheetKTCN, "KTCN", "PHÒNG KỸ THUẬT CÔNG NGHỆ");
+                            break;
+                        case 4:
+                            ExportToExcelChiTiet(a[i], oSheetKTKS, "KD", "PHÒNG KINH DOANH");
+                            break;
+                        //case 5:
+                        //    ExportToExcelChiTiet(a[i], oSheetQLDA, "QLDA","QUẢN LÝ DỰ ÁN");
+                        //    break;
+                        case 6:
+                            ExportToExcelChiTiet(a[i], oSheetQLĐHN, "QLĐHN", "ĐỘI QLĐHN");
+                            break;
+                        case 7:
+                            ExportToExcelChiTiet(a[i], oSheetĐTT, "ĐTT", "ĐỘI THU TIỀN");
+                            break;
+                        case 8:
+                            ExportToExcelChiTiet(a[i], oSheetTCTB, "TCTB", "ĐỘI THI CÔNG TU BỔ");
+                            break;
+                        case 9:
+                            ExportToExcelChiTiet(a[i], oSheetTCXL, "TCXL", "ĐỘI THI CÔNG XÂY LẮP");
+                            break;
+                        case 10:
+                            ExportToExcelChiTiet(a[i], oSheetGNKDT, "GNKDT", "PHÒNG GIẢM NƯỚC KDT");
+                            break;
+                        case 11:
+                            ExportToExcelChiTiet(a[i], oSheetHDQT, "HĐQT", "HỘI ĐỒNG QUẢN TRỊ");
+                            break;
+                        case 12:
+                            ExportToExcelChiTiet(a[i], oSheetTGV, "TGV", "TỔ GIÚP VIỆC");
+                            break;
+                        //case 13:
+                        //    ExportToExcelChiTiet(a[i], oSheetQĐ_TCHC, "QĐ-TCHC");
+                        //    break;
+                        //case 14:
+                        //    ExportToExcelChiTiet(a[i], oSheetHĐ, "HĐ");
+                        //    break;
+                        //case 15:
+                        //    ExportToExcelChiTiet(a[i], oSheetKhac, "-QLDA");
+                        //    break;
+                        default:
+                            break;
+                    }
                 }
             }
         }
