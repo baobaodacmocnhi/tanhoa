@@ -14,12 +14,6 @@
         <elementListCompartment Id="6f380532-f73c-4b8b-8f95-22f85c7ded16" absoluteBounds="6.89, 4.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="cc0b0df0-7e03-426f-b1d7-d4298dfb62db" absoluteBounds="3.625, 1.25, 2, 4.0785139973958326">
-      <DataClassMoniker Name="/dbTrangThietBiDataContext/ThietBi" />
-      <nestedChildShapes>
-        <elementListCompartment Id="bc6e195a-a875-48e8-859e-07a4626dee1e" absoluteBounds="3.64, 1.71, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="2fdc2f20-3377-404d-a4e3-2b9f4db53c24" absoluteBounds="3.375, 5.875, 2, 1.9631982421875">
       <DataClassMoniker Name="/dbTrangThietBiDataContext/LichSuThuHoi" />
       <nestedChildShapes>
@@ -36,6 +30,12 @@
       <DataClassMoniker Name="/dbTrangThietBiDataContext/PhanMem" />
       <nestedChildShapes>
         <elementListCompartment Id="3af04253-af24-430f-993c-2fda2b7e6528" absoluteBounds="7.015, 1.585, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f85ed5fb-eee4-45f9-a921-a8b2a470d35c" absoluteBounds="3.875, 1, 2, 4.2708154296875">
+      <DataClassMoniker Name="/dbTrangThietBiDataContext/ThietBi" />
+      <nestedChildShapes>
+        <elementListCompartment Id="146e5753-a04d-4301-9979-656fe0274dc0" absoluteBounds="3.89, 1.46, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

@@ -123,8 +123,19 @@ namespace TrangThietBi.DAL
                         from itemtablePB in tablePB.DefaultIfEmpty()
                         select new
                         {
-                            itemTB,
-                            itemtablePB.TenPhongBan,
+                            itemTB.MaTB,
+                            itemTB.Ten,
+                            itemTB.GiaTien,
+                            itemTB.NgayMua,
+                            itemTB.NgayHetHan,
+                            itemTB.BanGiao,
+                            itemTB.NgayBanGiao,
+                            itemTB.NguoiNhan,
+                            itemTB.GhiChuBanGiao,
+                            itemTB.ThuHoi,
+                            itemTB.NgayThuHoi,
+                            itemTB.GhiChuThuHoi,
+                            PhongBanNhan=itemtablePB.TenPhongBan,
                         };
             return LINQToDataTable(query);
         }
@@ -203,8 +214,11 @@ namespace TrangThietBi.DAL
                         from itemtablePB in tablePB.DefaultIfEmpty()
                         select new
                         {
-                            itemPM,
-                            itemtablePB.TenPhongBan,
+                            itemPM.MaPM,
+                            itemPM.Ten,
+                            itemPM.NgayHetHan,
+                            itemPM.GhiChu,
+                            PhongBanNhan=itemtablePB.TenPhongBan,
                         };
             return LINQToDataTable(query);
         }

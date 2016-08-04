@@ -93,6 +93,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txtTenPM = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.txtCauHinh = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -117,6 +119,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.txtCauHinh);
+            this.tabPage1.Controls.Add(this.label15);
             this.tabPage1.Controls.Add(this.btnXoaTB);
             this.tabPage1.Controls.Add(this.btnSuaTB);
             this.tabPage1.Controls.Add(this.btnThemTB);
@@ -174,7 +178,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.dgvDSThietBi);
-            this.groupBox3.Location = new System.Drawing.Point(9, 218);
+            this.groupBox3.Location = new System.Drawing.Point(9, 247);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(1277, 450);
             this.groupBox3.TabIndex = 20;
@@ -245,6 +249,7 @@
             this.BanGiaoTB.DataPropertyName = "BanGiao";
             this.BanGiaoTB.HeaderText = "Bàn Giao";
             this.BanGiaoTB.Name = "BanGiaoTB";
+            this.BanGiaoTB.Width = 50;
             // 
             // NgayBanGiaoTB
             // 
@@ -275,6 +280,7 @@
             this.ThuHoiTB.DataPropertyName = "ThuHoi";
             this.ThuHoiTB.HeaderText = "Thu Hồi";
             this.ThuHoiTB.Name = "ThuHoiTB";
+            this.ThuHoiTB.Width = 50;
             // 
             // NgayThuHoiTB
             // 
@@ -295,7 +301,7 @@
             this.gThuHoi.Controls.Add(this.label9);
             this.gThuHoi.Controls.Add(this.label10);
             this.gThuHoi.Enabled = false;
-            this.gThuHoi.Location = new System.Drawing.Point(297, 81);
+            this.gThuHoi.Location = new System.Drawing.Point(297, 110);
             this.gThuHoi.Name = "gThuHoi";
             this.gThuHoi.Size = new System.Drawing.Size(274, 131);
             this.gThuHoi.TabIndex = 19;
@@ -338,7 +344,7 @@
             // chkThuHoi
             // 
             this.chkThuHoi.AutoSize = true;
-            this.chkThuHoi.Location = new System.Drawing.Point(306, 67);
+            this.chkThuHoi.Location = new System.Drawing.Point(306, 96);
             this.chkThuHoi.Name = "chkThuHoi";
             this.chkThuHoi.Size = new System.Drawing.Size(64, 17);
             this.chkThuHoi.TabIndex = 18;
@@ -357,7 +363,7 @@
             this.gBanGiao.Controls.Add(this.label7);
             this.gBanGiao.Controls.Add(this.label6);
             this.gBanGiao.Enabled = false;
-            this.gBanGiao.Location = new System.Drawing.Point(9, 81);
+            this.gBanGiao.Location = new System.Drawing.Point(9, 110);
             this.gBanGiao.Name = "gBanGiao";
             this.gBanGiao.Size = new System.Drawing.Size(274, 131);
             this.gBanGiao.TabIndex = 17;
@@ -433,7 +439,7 @@
             // chkBanGiao
             // 
             this.chkBanGiao.AutoSize = true;
-            this.chkBanGiao.Location = new System.Drawing.Point(18, 67);
+            this.chkBanGiao.Location = new System.Drawing.Point(18, 96);
             this.chkBanGiao.Name = "chkBanGiao";
             this.chkBanGiao.Size = new System.Drawing.Size(70, 17);
             this.chkBanGiao.TabIndex = 8;
@@ -465,6 +471,7 @@
             this.txtGiaTienTB.Name = "txtGiaTienTB";
             this.txtGiaTienTB.Size = new System.Drawing.Size(100, 20);
             this.txtGiaTienTB.TabIndex = 5;
+            this.txtGiaTienTB.Text = "0";
             // 
             // label3
             // 
@@ -668,6 +675,7 @@
             this.txtGiaTienPM.Name = "txtGiaTienPM";
             this.txtGiaTienPM.Size = new System.Drawing.Size(100, 20);
             this.txtGiaTienPM.TabIndex = 27;
+            this.txtGiaTienPM.Text = "0";
             // 
             // label12
             // 
@@ -693,6 +701,22 @@
             this.label13.Size = new System.Drawing.Size(29, 13);
             this.label13.TabIndex = 24;
             this.label13.Text = "Tên:";
+            // 
+            // txtCauHinh
+            // 
+            this.txtCauHinh.Location = new System.Drawing.Point(71, 64);
+            this.txtCauHinh.Name = "txtCauHinh";
+            this.txtCauHinh.Size = new System.Drawing.Size(285, 20);
+            this.txtCauHinh.TabIndex = 25;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(15, 67);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(54, 13);
+            this.label15.TabIndex = 24;
+            this.label15.Text = "Cấu Hình:";
             // 
             // frmMain
             // 
@@ -773,6 +797,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayHetHanPM;
         private System.Windows.Forms.DataGridViewTextBoxColumn PhongBanNhanPM;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChuPM;
+        private System.Windows.Forms.ComboBox cmbPhongBanNhanPM;
+        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaTB;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenTB;
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaTienTB;
@@ -786,8 +812,8 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn ThuHoiTB;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayThuHoiTB;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChuThuHoiTB;
-        private System.Windows.Forms.ComboBox cmbPhongBanNhanPM;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtCauHinh;
+        private System.Windows.Forms.Label label15;
     }
 }
 
