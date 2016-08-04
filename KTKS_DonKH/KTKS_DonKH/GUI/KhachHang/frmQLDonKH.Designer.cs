@@ -28,22 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDSDonKH = new System.Windows.Forms.DataGridView();
-            this.MaChuyen = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.LyDoChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoLuongDiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NVKiemTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaLD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenLD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnLuu = new System.Windows.Forms.Button();
             this.radDaDuyet = new System.Windows.Forms.RadioButton();
             this.radChuaDuyet = new System.Windows.Forms.RadioButton();
@@ -64,6 +51,19 @@
             this.btnInDSDonTXL = new System.Windows.Forms.Button();
             this.btnGiaoTXL = new System.Windows.Forms.Button();
             this.txtNoiDungTimKiem2 = new System.Windows.Forms.TextBox();
+            this.MaChuyen = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.LyDoChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoLuongDiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NVKiemTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaLD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenLD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDonKH)).BeginInit();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.SuspendLayout();
@@ -72,14 +72,14 @@
             // 
             this.dgvDSDonKH.AllowUserToAddRows = false;
             this.dgvDSDonKH.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSDonKH.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSDonKH.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDSDonKH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSDonKH.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaChuyen,
@@ -108,110 +108,6 @@
             this.dgvDSDonKH.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvDSDonKH_EditingControlShowing);
             this.dgvDSDonKH.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSDonKH_RowPostPaint);
             this.dgvDSDonKH.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSDonKH_KeyDown);
-            // 
-            // MaChuyen
-            // 
-            this.MaChuyen.DataPropertyName = "MaChuyen";
-            this.MaChuyen.HeaderText = "Chuyển Đi";
-            this.MaChuyen.Name = "MaChuyen";
-            this.MaChuyen.Visible = false;
-            this.MaChuyen.Width = 150;
-            // 
-            // LyDoChuyen
-            // 
-            this.LyDoChuyen.DataPropertyName = "LyDoChuyen";
-            this.LyDoChuyen.HeaderText = "Ly Do Chuyển";
-            this.LyDoChuyen.Name = "LyDoChuyen";
-            this.LyDoChuyen.Visible = false;
-            this.LyDoChuyen.Width = 200;
-            // 
-            // SoLuongDiaChi
-            // 
-            this.SoLuongDiaChi.DataPropertyName = "SoLuongDiaChi";
-            this.SoLuongDiaChi.HeaderText = "SL.Địa Chỉ";
-            this.SoLuongDiaChi.Name = "SoLuongDiaChi";
-            this.SoLuongDiaChi.Visible = false;
-            this.SoLuongDiaChi.Width = 110;
-            // 
-            // NVKiemTra
-            // 
-            this.NVKiemTra.DataPropertyName = "NVKiemTra";
-            this.NVKiemTra.HeaderText = "NV Kiểm Tra";
-            this.NVKiemTra.Name = "NVKiemTra";
-            this.NVKiemTra.Width = 200;
-            // 
-            // MaDon
-            // 
-            this.MaDon.DataPropertyName = "MaDon";
-            dataGridViewCellStyle4.NullValue = null;
-            this.MaDon.DefaultCellStyle = dataGridViewCellStyle4;
-            this.MaDon.HeaderText = "Mã Đơn";
-            this.MaDon.Name = "MaDon";
-            this.MaDon.ReadOnly = true;
-            this.MaDon.Width = 90;
-            // 
-            // MaLD
-            // 
-            this.MaLD.DataPropertyName = "MaLD";
-            this.MaLD.HeaderText = "MaLD";
-            this.MaLD.Name = "MaLD";
-            this.MaLD.Visible = false;
-            // 
-            // TenLD
-            // 
-            this.TenLD.DataPropertyName = "TenLD";
-            this.TenLD.HeaderText = "Tên Loại Đơn";
-            this.TenLD.Name = "TenLD";
-            this.TenLD.ReadOnly = true;
-            this.TenLD.Width = 130;
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Ngày Nhận";
-            this.CreateDate.Name = "CreateDate";
-            this.CreateDate.ReadOnly = true;
-            this.CreateDate.Width = 110;
-            // 
-            // DanhBo
-            // 
-            this.DanhBo.DataPropertyName = "DanhBo";
-            this.DanhBo.HeaderText = "Danh Bộ";
-            this.DanhBo.Name = "DanhBo";
-            this.DanhBo.ReadOnly = true;
-            this.DanhBo.Width = 90;
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Khách Hàng";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.ReadOnly = true;
-            this.HoTen.Width = 260;
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.DataPropertyName = "DiaChi";
-            this.DiaChi.HeaderText = "Địa Chỉ";
-            this.DiaChi.Name = "DiaChi";
-            this.DiaChi.ReadOnly = true;
-            this.DiaChi.Width = 270;
-            // 
-            // NoiDung
-            // 
-            this.NoiDung.DataPropertyName = "NoiDung";
-            this.NoiDung.HeaderText = "Nội Dung";
-            this.NoiDung.Name = "NoiDung";
-            this.NoiDung.ReadOnly = true;
-            this.NoiDung.Width = 245;
-            // 
-            // CreateBy
-            // 
-            this.CreateBy.DataPropertyName = "CreateBy";
-            this.CreateBy.HeaderText = "Người Nhận";
-            this.CreateBy.Name = "CreateBy";
-            this.CreateBy.ReadOnly = true;
-            this.CreateBy.Width = 200;
             // 
             // btnLuu
             // 
@@ -438,6 +334,110 @@
             this.txtNoiDungTimKiem2.Visible = false;
             this.txtNoiDungTimKiem2.TextChanged += new System.EventHandler(this.txtNoiDungTimKiem2_TextChanged);
             // 
+            // MaChuyen
+            // 
+            this.MaChuyen.DataPropertyName = "MaChuyen";
+            this.MaChuyen.HeaderText = "Chuyển Đi";
+            this.MaChuyen.Name = "MaChuyen";
+            this.MaChuyen.Visible = false;
+            this.MaChuyen.Width = 150;
+            // 
+            // LyDoChuyen
+            // 
+            this.LyDoChuyen.DataPropertyName = "LyDoChuyen";
+            this.LyDoChuyen.HeaderText = "Ly Do Chuyển";
+            this.LyDoChuyen.Name = "LyDoChuyen";
+            this.LyDoChuyen.Visible = false;
+            this.LyDoChuyen.Width = 200;
+            // 
+            // SoLuongDiaChi
+            // 
+            this.SoLuongDiaChi.DataPropertyName = "SoLuongDiaChi";
+            this.SoLuongDiaChi.HeaderText = "SL.Địa Chỉ";
+            this.SoLuongDiaChi.Name = "SoLuongDiaChi";
+            this.SoLuongDiaChi.Visible = false;
+            this.SoLuongDiaChi.Width = 110;
+            // 
+            // NVKiemTra
+            // 
+            this.NVKiemTra.DataPropertyName = "NVKiemTra";
+            this.NVKiemTra.HeaderText = "NV Kiểm Tra";
+            this.NVKiemTra.Name = "NVKiemTra";
+            this.NVKiemTra.Width = 200;
+            // 
+            // MaDon
+            // 
+            this.MaDon.DataPropertyName = "MaDon";
+            dataGridViewCellStyle2.NullValue = null;
+            this.MaDon.DefaultCellStyle = dataGridViewCellStyle2;
+            this.MaDon.HeaderText = "Mã Đơn";
+            this.MaDon.Name = "MaDon";
+            this.MaDon.ReadOnly = true;
+            this.MaDon.Width = 90;
+            // 
+            // MaLD
+            // 
+            this.MaLD.DataPropertyName = "MaLD";
+            this.MaLD.HeaderText = "MaLD";
+            this.MaLD.Name = "MaLD";
+            this.MaLD.Visible = false;
+            // 
+            // TenLD
+            // 
+            this.TenLD.DataPropertyName = "TenLD";
+            this.TenLD.HeaderText = "Tên Loại Đơn";
+            this.TenLD.Name = "TenLD";
+            this.TenLD.ReadOnly = true;
+            this.TenLD.Width = 130;
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Nhận";
+            this.CreateDate.Name = "CreateDate";
+            this.CreateDate.ReadOnly = true;
+            this.CreateDate.Width = 110;
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            this.DanhBo.ReadOnly = true;
+            this.DanhBo.Width = 90;
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Khách Hàng";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.ReadOnly = true;
+            this.HoTen.Width = 260;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.DataPropertyName = "DiaChi";
+            this.DiaChi.HeaderText = "Địa Chỉ";
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.ReadOnly = true;
+            this.DiaChi.Width = 270;
+            // 
+            // NoiDung
+            // 
+            this.NoiDung.DataPropertyName = "NoiDung";
+            this.NoiDung.HeaderText = "Nội Dung";
+            this.NoiDung.Name = "NoiDung";
+            this.NoiDung.ReadOnly = true;
+            this.NoiDung.Width = 245;
+            // 
+            // CreateBy
+            // 
+            this.CreateBy.DataPropertyName = "CreateBy";
+            this.CreateBy.HeaderText = "Người Nhận";
+            this.CreateBy.Name = "CreateBy";
+            this.CreateBy.ReadOnly = true;
+            this.CreateBy.Width = 200;
+            // 
             // frmQLDonKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -496,6 +496,8 @@
         private System.Windows.Forms.Button btnInChiTiet;
         private System.Windows.Forms.CheckBox chkChuaKT;
         private System.Windows.Forms.Button btnInDSDonTXL;
+        private System.Windows.Forms.Button btnGiaoTXL;
+        private System.Windows.Forms.TextBox txtNoiDungTimKiem2;
         private System.Windows.Forms.DataGridViewComboBoxColumn MaChuyen;
         private System.Windows.Forms.DataGridViewTextBoxColumn LyDoChuyen;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoLuongDiaChi;
@@ -509,8 +511,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
-        private System.Windows.Forms.Button btnGiaoTXL;
-        private System.Windows.Forms.TextBox txtNoiDungTimKiem2;
 
 
     }

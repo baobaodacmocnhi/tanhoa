@@ -95,6 +95,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                         where item.ToXuLy == false && item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
                         select new
                         {
+                            item.ID,
                             item.ToXuLy,
                             MaDon=item.MaDon,
                             item.DanhBo,
@@ -109,6 +110,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                         where item.ToXuLy == true && item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
                         select new
                         {
+                            item.ID,
                             item.ToXuLy,
                             MaDon = item.MaDonTXL,
                             item.DanhBo,

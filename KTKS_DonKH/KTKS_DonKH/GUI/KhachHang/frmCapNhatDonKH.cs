@@ -377,7 +377,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 if (chkChuyenKT.Checked)
                 {
                     _donkh.ChuyenKT = true;
-                    if (_donkh.NgayChuyenKT != dateChuyenKT.Value || _donkh.NguoiDi != int.Parse(cmbNguoiDi.SelectedValue.ToString()) || _donkh.GhiChuChuyenKT != txtGhiChuChuyenKT.Text.Trim())
+                    if (_donkh.NgayChuyenKT != dateChuyenKT.Value || _donkh.NguoiDi != int.Parse(cmbNguoiDi.SelectedValue.ToString()) || (_donkh.GhiChuChuyenKT!=null &&_donkh.GhiChuChuyenKT != txtGhiChuChuyenKT.Text.Trim()))
                         flagSuaChuyenKT = true;
                     _donkh.NgayChuyenKT = dateChuyenKT.Value;
                     if (cmbNguoiDi.SelectedIndex != -1)

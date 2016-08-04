@@ -315,7 +315,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         ctctdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
                         if (txtSoTien.Text.Trim() != "")
                             ctctdb.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".", ""));
-                        ctctdb.NoiDung = ((VeViecCHDB)cmbLyDo.SelectedValue).NoiDung;
+                        ctctdb.NoiDung = ((VeViecCHDB)cmbLyDo.SelectedItem).NoiDung;
 
                         ctctdb.NoiNhan = txtNoiNhan.Text.Trim();
 

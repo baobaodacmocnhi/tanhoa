@@ -13,6 +13,7 @@ using KTKS_DonKH.DAL.CapNhat;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.CongVan;
 using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.BaoCao.ToXuLy;
 
 namespace KTKS_DonKH.GUI.ToXuLy
 {
@@ -51,6 +52,8 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
         public void LoadGianLan(GianLan entity)
         {
+            if (entity.NgayKTXM!=null)
+            dateKTXM.Value = entity.NgayKTXM.Value;
             txtNoiDungViPham.Text = entity.NoiDungViPham;
             txtTienDHN.Text = entity.TienDHN.Value.ToString();
             txtTinhTrang.Text = entity.TinhTrang;
@@ -247,6 +250,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     entity.DanhBo = txtDanhBo.Text.Trim().Replace(" ","");
                     entity.HoTen = txtHoTen.Text.Trim();
                     entity.DiaChi = txtDiaChi.Text.Trim();
+                    entity.NgayKTXM = dateKTXM.Value;
                     entity.NoiDungViPham = txtNoiDungViPham.Text.Trim();
                     if (!string.IsNullOrEmpty(txtTienDHN.Text.Trim()))
                         entity.TienDHN = int.Parse(txtTienDHN.Text.Trim());
@@ -311,6 +315,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     entity.DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
                     entity.HoTen = txtHoTen.Text.Trim();
                     entity.DiaChi = txtDiaChi.Text.Trim();
+                    entity.NgayKTXM = dateKTXM.Value;
                     entity.NoiDungViPham = txtNoiDungViPham.Text.Trim();
                     entity.TienDHN = int.Parse(txtTienDHN.Text.Trim());
                     entity.TinhTrang = txtTinhTrang.Text.Trim();
@@ -365,6 +370,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             if (_gianlan != null)
             {
+                _gianlan.NgayKTXM = dateKTXM.Value;
                 _gianlan.NoiDungViPham = txtNoiDungViPham.Text.Trim();
                 if (!string.IsNullOrEmpty(txtTienDHN.Text.Trim()))
                     _gianlan.TienDHN = int.Parse(txtTienDHN.Text.Trim());
@@ -534,24 +540,59 @@ namespace KTKS_DonKH.GUI.ToXuLy
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             foreach (DataGridViewRow item in dgvGianLan.Rows)
             {
-                DataRow dr = dsBaoCao.Tables["CongVan"].NewRow();
+                DataRow dr = dsBaoCao.Tables["GianLan"].NewRow();
                 dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-                //dr["LoaiVanBan"] = item.Cells["LoaiVanBan"].Value.ToString();
-                if (item.Cells["MaDon"].Value.ToString().Length > 2)
-                    dr["Ma"] = item.Cells["MaDon"].Value.ToString().Insert(item.Cells["MaDon"].Value.ToString().Length - 2, "-");
-                //dr["CreateDate"] = item.Cells["CreateDate"].Value.ToString();
-                if (item.Cells["DanhBo"].Value.ToString().Length == 11)
-                    dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
-                dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
-                //dr["NoiChuyen"] = item.Cells["NoiChuyen"].Value.ToString();
-                dr["NoiDung"] = item.Cells["NoiDungViPham"].Value.ToString();
-                dsBaoCao.Tables["CongVan"].Rows.Add(dr);
+
+                GianLan entity = _cGianLan.Get(int.Parse(item.Cells["ID"].Value.ToString()));
+
+                if (entity.ToXuLy)
+                    dr["MaDon"] = "TXL" + entity.MaDonTXL.Value.ToString().Insert(entity.MaDonTXL.Value.ToString().Length - 2, "-");
+                else
+                    dr["MaDon"] = entity.MaDon.Value.ToString().Insert(entity.MaDon.Value.ToString().Length - 2, "-");
+                if (entity.NgayKTXM != null)
+                    dr["NgayKTXM"] = entity.NgayKTXM.Value.ToString("dd/MM/yyyy");
+                dr["DanhBo"] = entity.DanhBo.Insert(7, " ").Insert(4, " ");
+                dr["HoTen"] = entity.HoTen;
+                dr["DiaChi"] = entity.DiaChi;
+                dr["NoiDungViPham"] = entity.NoiDungViPham;
+                if (entity.TieuThu1 != null)
+                {
+                    dr["TieuThu1"] = entity.TieuThu1;
+                    dr["ThanhTien1"] = entity.TieuThu1 * entity.GiaBan1 * 1.15;
+                }
+                if (entity.TieuThu2 != null)
+                {
+                    dr["TieuThu2"] = entity.TieuThu2;
+                    dr["ThanhTien2"] = entity.TieuThu2 * entity.GiaBan2 * 1.15;
+                }
+                if (entity.Ngay1 != null)
+                {
+                    dr["Ngay1"] = entity.Ngay1.Value.ToString("dd/MM/yyyy");
+                    dr["SoTien1"] = entity.SoTien1;
+                }
+                if (entity.Ngay2 != null)
+                {
+                    dr["Ngay2"] = entity.Ngay2.Value.ToString("dd/MM/yyyy");
+                    dr["SoTien2"] = entity.SoTien2;
+                }
+                if (entity.Ngay3 != null)
+                {
+                    dr["Ngay3"] = entity.Ngay3.Value.ToString("dd/MM/yyyy");
+                    dr["SoTien3"] = entity.SoTien3;
+                }
+
+                dsBaoCao.Tables["GianLan"].Rows.Add(dr);
             }
-            rptDSCongVan rpt = new rptDSCongVan();
+            rptDSGianLan rpt = new rptDSGianLan();
             rpt.SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
+        }
+
+        private void dgvGianLan_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
     }

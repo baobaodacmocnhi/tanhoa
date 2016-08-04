@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>281</ApplicationRevision>
+    <ApplicationRevision>285</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -534,6 +534,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptDSDonTXL_BamChi.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\ToXuLy\rptDSGianLan.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptDSGianLan.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BaoCao\ToXuLy\rptTruyThuTienNuoc.cs">
@@ -1391,6 +1397,10 @@
     <EmbeddedResource Include="BaoCao\ToXuLy\rptDSDonTXL_BamChi.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSDonTXL_BamChi.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\ToXuLy\rptDSGianLan.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDSGianLan.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\ToXuLy\rptTruyThuTienNuoc.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

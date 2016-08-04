@@ -361,6 +361,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.HoTen,
                                     itemDonKH.DiaChi,
                                     itemDonKH.NoiDung,
+                                    itemDonKH.GhiChuChuyenKT,
                                     CreateBy = itemUser.HoTen,
                                     itemDonKH.NVKiemTra,
                                 };

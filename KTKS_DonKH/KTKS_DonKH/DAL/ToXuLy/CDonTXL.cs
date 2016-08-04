@@ -611,6 +611,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonKH.SoLuongDiaChi,
                                     CreateBy = itemUser.HoTen,
                                     itemLSCKT.NguoiDi,
+                                    itemDonKH.GhiChuChuyenKT,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -659,6 +660,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonKH.SoLuongDiaChi,
                                     CreateBy = itemUser.HoTen,
                                     itemLSCKT.NguoiDi,
+                                    itemDonKH.GhiChuChuyenKT,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -704,6 +706,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonKH.SoLuongDiaChi,
                                     CreateBy = itemUser.HoTen,
                                     itemLSCKT.NguoiDi,
+                                    itemDonKH.GhiChuChuyenKT,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -784,7 +787,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 join itemDonKH in db.DonKHs on itemLSCKT.MaDon equals itemDonKH.MaDon
                                 join itemLoaiDon in db.LoaiDonTXLs on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
-                                where itemLSCKT.MaDon != null && itemDonKH.SoCongVan == SoCongVan
+                                where itemLSCKT.MaDon != null && itemDonKH.SoCongVan.Contains(SoCongVan)
                                 orderby itemDonKH.MaDon ascending
                                 select new
                                 {
@@ -801,6 +804,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonKH.SoLuongDiaChi,
                                     CreateBy = itemUser.HoTen,
                                     itemLSCKT.NguoiDi,
+                                    itemDonKH.GhiChuChuyenKT,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
