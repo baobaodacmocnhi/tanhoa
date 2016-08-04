@@ -572,6 +572,7 @@ namespace ThuTien.GUI.DongNuoc
                             if (item.DanhBo.Length == 11)
                                 dr["DanhBo"] = item.DanhBo.Insert(7, " ").Insert(4, " ");
                             dr["DiaChi"] = item.DiaChi;
+                            dr["Hieu"] = item.Hieu;
                             string Ky = "";
                             foreach (TT_CTDongNuoc itemDN in item.TT_DongNuoc.TT_CTDongNuocs.ToList())
                             {
@@ -588,8 +589,10 @@ namespace ThuTien.GUI.DongNuoc
                             }
                             dr["Ky"] = Ky;
                             dr["NgayDongMoNuoc"] = item.NgayDN;
-                            dr["ChiSoDongMoNuoc"] = item.ChiSoDN;
-
+                            if (item.Co <= 25)
+                                dr["ChiSoDongMoNuoc"] = item.ChiSoDN.Value.ToString("D4");
+                            else
+                                dr["ChiSoDongMoNuoc"] = item.ChiSoDN.Value.ToString("D5");
                             dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                         }
                     }
@@ -625,6 +628,7 @@ namespace ThuTien.GUI.DongNuoc
                                 if (item.DanhBo.Length == 11)
                                     dr["DanhBo"] = item.DanhBo.Insert(7, " ").Insert(4, " ");
                                 dr["DiaChi"] = item.DiaChi;
+                                dr["Hieu"] = item.Hieu;
                                 string Ky = "";
                                 foreach (TT_CTDongNuoc itemDN in item.TT_DongNuoc.TT_CTDongNuocs.ToList())
                                 {
@@ -641,7 +645,10 @@ namespace ThuTien.GUI.DongNuoc
                                 }
                                 dr["Ky"] = Ky;
                                 dr["NgayDongMoNuoc"] = item.NgayMN;
-                                dr["ChiSoDongMoNuoc"] = item.ChiSoMN;
+                                if (item.Co <= 25)
+                                    dr["ChiSoDongMoNuoc"] = item.ChiSoMN.Value.ToString("D4");
+                                else
+                                    dr["ChiSoDongMoNuoc"] = item.ChiSoMN.Value.ToString("D5");
 
                                 dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                             }

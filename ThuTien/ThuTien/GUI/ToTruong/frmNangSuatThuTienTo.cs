@@ -769,7 +769,7 @@ namespace ThuTien.GUI.ToTruong
                     if (!string.IsNullOrEmpty(item["TCDangNgan_END"].ToString()))
                         drDN[0]["TCDangNgan"] = long.Parse(drDN[0]["TCDangNgan"].ToString()) - long.Parse(item["TCDangNgan_END"].ToString()) + long.Parse(item["TCDangNgan_BD"].ToString());
                     if (!string.IsNullOrEmpty(item["TCHuy_END"].ToString()))
-                        drDN[0]["TCHuy"] = long.Parse(drDN[0]["TCTongTon"].ToString()) - long.Parse(item["TCHuy_END"].ToString()) + long.Parse(item["TCHuy_BD"].ToString());
+                        drDN[0]["TCHuy"] = long.Parse(drDN[0]["TCHuy"].ToString()) - long.Parse(item["TCHuy_END"].ToString()) + long.Parse(item["TCHuy_BD"].ToString());
                     if (!string.IsNullOrEmpty(item["TCTongTon_END"].ToString()))
                         drDN[0]["TCTongTon"] = long.Parse(drDN[0]["TCTongTon"].ToString()) - long.Parse(item["TCTongTon_END"].ToString()) + long.Parse(item["TCTongTon_BD"].ToString());
                 }

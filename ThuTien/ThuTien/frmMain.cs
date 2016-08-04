@@ -922,6 +922,17 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuKiemTraTon_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuKiemTraTon", "Xem"))
+            {
+                frmKiemTraTon frm = new frmKiemTraTon();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
@@ -973,6 +984,8 @@ namespace ThuTien
         {
             ((sender as Form).Tag as TabPage).Dispose();
         }
+
+        
 
         
 

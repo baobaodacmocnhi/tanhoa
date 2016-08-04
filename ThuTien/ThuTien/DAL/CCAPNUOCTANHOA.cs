@@ -156,14 +156,12 @@ namespace ThuTien.DAL
                     item.HOPDONG,
                     item.GIABIEU,
                     item.DINHMUC,
-                    MLT = item.LOTRINH
-                    ,
+                    MLT = item.LOTRINH,
                     Hieu = item.HIEUDH,
                     Co = item.CODH,
                     SoThan = item.SOTHANDH,
                     ViTri = item.VITRIDHN,
-                    HoTen = item.HOTEN
-                    ,
+                    HoTen = item.HOTEN,
                     DiaChi = item.SONHA + "  " + item.TENDUONG,
                     item.DIENTHOAI,
                     HanhThu = ""

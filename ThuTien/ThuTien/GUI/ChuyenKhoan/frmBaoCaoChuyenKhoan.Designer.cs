@@ -38,8 +38,13 @@
             this.btnXuatExcelBangKe = new System.Windows.Forms.Button();
             this.dateGiaiTrach = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cmbNam = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnXuatExcelDSChuyenKhoan = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -142,11 +147,51 @@
             this.label4.TabIndex = 24;
             this.label4.Text = "Ngày Đăng Ngân:";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.cmbNam);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.btnXuatExcelDSChuyenKhoan);
+            this.groupBox3.Location = new System.Drawing.Point(12, 128);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(426, 52);
+            this.groupBox3.TabIndex = 30;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Danh Sách Chuyển Khoản";
+            // 
+            // cmbNam
+            // 
+            this.cmbNam.FormattingEnabled = true;
+            this.cmbNam.Location = new System.Drawing.Point(275, 18);
+            this.cmbNam.Name = "cmbNam";
+            this.cmbNam.Size = new System.Drawing.Size(60, 21);
+            this.cmbNam.TabIndex = 30;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(237, 21);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(32, 13);
+            this.label5.TabIndex = 29;
+            this.label5.Text = "Năm:";
+            // 
+            // btnXuatExcelDSChuyenKhoan
+            // 
+            this.btnXuatExcelDSChuyenKhoan.Location = new System.Drawing.Point(341, 17);
+            this.btnXuatExcelDSChuyenKhoan.Name = "btnXuatExcelDSChuyenKhoan";
+            this.btnXuatExcelDSChuyenKhoan.Size = new System.Drawing.Size(75, 23);
+            this.btnXuatExcelDSChuyenKhoan.TabIndex = 28;
+            this.btnXuatExcelDSChuyenKhoan.Text = "Xuất Excel";
+            this.btnXuatExcelDSChuyenKhoan.UseVisualStyleBackColor = true;
+            this.btnXuatExcelDSChuyenKhoan.Click += new System.EventHandler(this.btnXuatExcelDSChuyenKhoan_Click);
+            // 
             // frmBaoCaoChuyenKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(871, 382);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmBaoCaoChuyenKhoan";
@@ -156,6 +201,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -172,5 +219,9 @@
         private System.Windows.Forms.Button btnXuatExcelBangKe;
         private System.Windows.Forms.DateTimePicker dateGiaiTrach;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnXuatExcelDSChuyenKhoan;
+        private System.Windows.Forms.ComboBox cmbNam;
+        private System.Windows.Forms.Label label5;
     }
 }

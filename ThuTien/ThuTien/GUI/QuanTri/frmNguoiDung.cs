@@ -57,11 +57,13 @@ namespace ThuTien.GUI.QuanTri
             if (CNguoiDung.Admin)
             {
                 chkPhoGiamDoc.Visible = true;
+                chkAn.Visible = true;
                 _blNguoiDung = new BindingList<TT_NguoiDung>(_cNguoiDung.GetDS_Admin());
             }
             else
             {
                 chkPhoGiamDoc.Visible = false;
+                chkAn.Visible = false;
                 _blNguoiDung = new BindingList<TT_NguoiDung>(_cNguoiDung.GetDSExceptMaND(CNguoiDung.MaND));
             }
             dgvNguoiDung.AutoGenerateColumns = false;
@@ -75,7 +77,6 @@ namespace ThuTien.GUI.QuanTri
             cmbNhom.DisplayMember = "TenNhom";
             cmbNhom.ValueMember = "MaNhom";
             //cmbNhom.SelectedIndex = -1;
-            
             
             dgvNguoiDung.DataSource = _blNguoiDung;
         }
@@ -102,6 +103,7 @@ namespace ThuTien.GUI.QuanTri
                     if (cmbNhom.SelectedIndex != -1)
                         nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
                     nguoidung.PhoGiamDoc = chkPhoGiamDoc.Checked;
+                    nguoidung.An = chkAn.Checked;
                     nguoidung.Doi = chkDoi.Checked;
                     nguoidung.ToTruong = chkToTruong.Checked;
                     nguoidung.HanhThu = chkHanhThu.Checked;
@@ -149,6 +151,7 @@ namespace ThuTien.GUI.QuanTri
                     nguoidung.MaTo = (int)cmbTo.SelectedValue;
                     nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
                     nguoidung.PhoGiamDoc = chkPhoGiamDoc.Checked;
+                    nguoidung.An = chkAn.Checked;
                     nguoidung.Doi = chkDoi.Checked;
                     nguoidung.ToTruong = chkToTruong.Checked;
                     nguoidung.HanhThu = chkHanhThu.Checked;
@@ -218,6 +221,7 @@ namespace ThuTien.GUI.QuanTri
                 if (dgvNguoiDung["MaNhom", e.RowIndex].Value != null)
                     cmbNhom.SelectedValue = int.Parse(dgvNguoiDung["MaNhom", e.RowIndex].Value.ToString());
                 chkPhoGiamDoc.Checked = bool.Parse(dgvNguoiDung["PhoGiamDoc", e.RowIndex].Value.ToString());
+                chkAn.Checked = bool.Parse(dgvNguoiDung["An", e.RowIndex].Value.ToString());
                 chkDoi.Checked = bool.Parse(dgvNguoiDung["Doi", e.RowIndex].Value.ToString());
                 chkToTruong.Checked = bool.Parse(dgvNguoiDung["ToTruong", e.RowIndex].Value.ToString());
                 chkHanhThu.Checked = bool.Parse(dgvNguoiDung["HanhThu", e.RowIndex].Value.ToString());

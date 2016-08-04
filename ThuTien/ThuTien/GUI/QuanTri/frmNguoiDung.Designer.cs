@@ -72,6 +72,7 @@
             this.txtNam = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.chkPhoGiamDoc = new System.Windows.Forms.CheckBox();
+            this.chkAn = new System.Windows.Forms.CheckBox();
             this.MaND = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,6 +84,7 @@
             this.MaNhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenNhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PhoGiamDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.An = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ToTruong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HanhThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -200,6 +202,7 @@
             this.MaNhom,
             this.TenNhom,
             this.PhoGiamDoc,
+            this.An,
             this.Doi,
             this.ToTruong,
             this.HanhThu,
@@ -523,6 +526,17 @@
             this.chkPhoGiamDoc.UseVisualStyleBackColor = true;
             this.chkPhoGiamDoc.Visible = false;
             // 
+            // chkAn
+            // 
+            this.chkAn.AutoSize = true;
+            this.chkAn.Location = new System.Drawing.Point(586, 98);
+            this.chkAn.Name = "chkAn";
+            this.chkAn.Size = new System.Drawing.Size(39, 17);
+            this.chkAn.TabIndex = 27;
+            this.chkAn.Text = "Ẩn";
+            this.chkAn.UseVisualStyleBackColor = true;
+            this.chkAn.Visible = false;
+            // 
             // MaND
             // 
             this.MaND.DataPropertyName = "MaND";
@@ -596,6 +610,14 @@
             this.PhoGiamDoc.Name = "PhoGiamDoc";
             this.PhoGiamDoc.Visible = false;
             // 
+            // An
+            // 
+            this.An.DataPropertyName = "An";
+            this.An.HeaderText = "An";
+            this.An.Name = "An";
+            this.An.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.An.Visible = false;
+            // 
             // Doi
             // 
             this.Doi.DataPropertyName = "Doi";
@@ -643,6 +665,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1360, 666);
+            this.Controls.Add(this.chkAn);
             this.Controls.Add(this.chkPhoGiamDoc);
             this.Controls.Add(this.txtNam);
             this.Controls.Add(this.label7);
@@ -732,6 +755,8 @@
         private System.Windows.Forms.CheckBox chkDoi;
         private System.Windows.Forms.TextBox txtNam;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckBox chkPhoGiamDoc;
+        private System.Windows.Forms.CheckBox chkAn;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaND;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn DienThoai;
@@ -743,12 +768,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MaNhom;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenNhom;
         private System.Windows.Forms.DataGridViewTextBoxColumn PhoGiamDoc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn An;
         private System.Windows.Forms.DataGridViewTextBoxColumn Doi;
         private System.Windows.Forms.DataGridViewTextBoxColumn ToTruong;
         private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu;
         private System.Windows.Forms.DataGridViewTextBoxColumn DongNuoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn VanPhong;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChamCong;
-        private System.Windows.Forms.CheckBox chkPhoGiamDoc;
     }
 }

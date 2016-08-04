@@ -120,7 +120,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(404, 11);
+            this.btnXem.Location = new System.Drawing.Point(404, 10);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 33;
@@ -678,7 +678,7 @@
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(485, 11);
+            this.btnIn.Location = new System.Drawing.Point(485, 10);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(75, 23);
             this.btnIn.TabIndex = 36;
@@ -709,7 +709,7 @@
             // 
             // btnBaoCao
             // 
-            this.btnBaoCao.Location = new System.Drawing.Point(566, 11);
+            this.btnBaoCao.Location = new System.Drawing.Point(566, 10);
             this.btnBaoCao.Name = "btnBaoCao";
             this.btnBaoCao.Size = new System.Drawing.Size(75, 23);
             this.btnBaoCao.TabIndex = 48;

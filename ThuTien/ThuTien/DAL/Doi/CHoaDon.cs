@@ -513,6 +513,20 @@ namespace ThuTien.DAL.Doi
                 return null;
         }
 
+        public DataTable GetTongTon_GroupKy(int Nam)
+        {
+            var query = from item in _db.HOADONs
+                        where item.NAM == Nam && (item.NGAYGIAITRACH==null ||item.KhoaTienDu==true)
+                        group item by item.KY into itemGroup
+                        select new
+                        {
+                            Ky = itemGroup.Key,
+                            TongHD = itemGroup.Count(),
+                            TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
+                        };
+            return LINQToDataTable(query);
+        }
+
         /// <summary>
         /// Lấy danh sách năm có trong hóa đơn
         /// </summary>
@@ -530,10 +544,10 @@ namespace ThuTien.DAL.Doi
         /// <param name="nam"></param>
         /// <param name="ky"></param>
         /// <returns></returns>
-        public DataTable GetTongByNamKy(int nam, int ky)
+        public DataTable GetTongByNamKy(int Nam, int Ky)
         {
             var query = from item in _db.HOADONs
-                        where item.NAM == nam && item.KY == ky
+                        where item.NAM == Nam && item.KY == Ky
                         //orderby item.DOT ascending
                         group item by item.DOT into itemGroup
                         select new
