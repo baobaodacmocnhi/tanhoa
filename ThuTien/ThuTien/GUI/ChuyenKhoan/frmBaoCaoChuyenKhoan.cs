@@ -986,12 +986,14 @@ namespace ThuTien.GUI.ChuyenKhoan
             oSheet.Cells[rowEnd + 3, 2] = "AGR";
             oSheet.Cells[rowEnd + 4, 2] = "MB";
             oSheet.Cells[rowEnd + 5, 2] = "KHO BẠC";
+            oSheet.Cells[rowEnd + 6, 2] = "BIDV";
 
-            oSheet.Cells[rowEnd + 3, 3] = dt.Compute("sum(SoTien)", "MaNH <> 3 and MaNH <> 4 and CreateDate >='"+dateGiaiTrach.Value.ToString("yyyy/MM/dd")+"'");
+            oSheet.Cells[rowEnd + 3, 3] = dt.Compute("sum(SoTien)", "MaNH <> 3 and MaNH <> 4 and MaNH <> 9 and CreateDate >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
             oSheet.Cells[rowEnd + 4, 3] = dt.Compute("sum(SoTien)", "MaNH = 4 and CreateDate >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
             oSheet.Cells[rowEnd + 5, 3] = dt.Compute("sum(SoTien)", "MaNH = 3 and CreateDate >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
+            oSheet.Cells[rowEnd + 6, 3] = dt.Compute("sum(SoTien)", "MaNH = 9 and CreateDate >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
 
-            oSheet.Cells[rowEnd + 7, 2] = "Tồn cuối ngày: "+_cTienDu.GetTongTienTonDenNgay(dateGiaiTrach.Value);
+            oSheet.Cells[rowEnd + 8, 2] = "Tồn cuối ngày: "+_cTienDu.GetTongTienTonDenNgay(dateGiaiTrach.Value);
         }
 
         private void XuatExcelBangKe(DataTable dt, Microsoft.Office.Interop.Excel.Worksheet oSheet, string SheetName, string NgayGiaiTrach, long TonDau)

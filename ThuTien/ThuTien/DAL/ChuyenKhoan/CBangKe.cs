@@ -192,7 +192,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         join itemNH in _db.NGANHANGs on itemBK.MaNH equals itemNH.ID_NGANHANG into tableNH
                         from itemtableNH in tableNH.DefaultIfEmpty()
                         where itemBK.CreateDate.Value.Date >= TuNgay.Date && itemBK.CreateDate.Value.Date <= DenNgay.Date
-                        && (itemtableNH.ID_NGANHANG == 3 || itemtableNH.ID_NGANHANG == 4)
+                        && (itemtableNH.ID_NGANHANG == 3 || itemtableNH.ID_NGANHANG == 4 || itemtableNH.ID_NGANHANG == 9)
                         group itemBK by itemtableNH.NGANHANG1 into itemGroup
                         select new
                         {
@@ -204,7 +204,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                            join itemNH in _db.NGANHANGs on itemBK.MaNH equals itemNH.ID_NGANHANG into tableNH
                            from itemtableNH in tableNH.DefaultIfEmpty()
                            where itemBK.CreateDate.Value.Date >= TuNgay.Date && itemBK.CreateDate.Value.Date <= DenNgay.Date
-                           && itemtableNH.ID_NGANHANG != 3 && itemtableNH.ID_NGANHANG != 4
+                           && itemtableNH.ID_NGANHANG != 3 && itemtableNH.ID_NGANHANG != 4 && itemtableNH.ID_NGANHANG != 9
                            group itemBK by "AGR" into itemGroup
                            select new
                            {

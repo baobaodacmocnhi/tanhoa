@@ -440,7 +440,7 @@
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvBangKeGroup3.RowsDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvBangKeGroup3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBangKeGroup3.Size = new System.Drawing.Size(313, 100);
+            this.dgvBangKeGroup3.Size = new System.Drawing.Size(313, 130);
             this.dgvBangKeGroup3.TabIndex = 88;
             this.dgvBangKeGroup3.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvBangKeGroup3_CellFormatting);
             // 
