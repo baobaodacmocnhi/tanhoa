@@ -31,6 +31,7 @@ namespace QLVanThuDen
         {
             vanthus.DataSource = _CDataQLVanThuDen.LoadDSVanThuDen();
             dgvDSVanThuDen.DataSource = vanthus;
+            cmbPhanLoai.SelectedIndex = 0;
         }
 
         private void LoadDSVanThuFilter()
