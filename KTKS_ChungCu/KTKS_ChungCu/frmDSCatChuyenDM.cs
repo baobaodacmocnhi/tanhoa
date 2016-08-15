@@ -313,13 +313,16 @@ namespace KTKS_ChungCu
                 TTKhachHang _ttkhachhang = _cTTKH.getTTKHbyID(dgvDSCatChuyenDM["CT_NhanNK_DanhBo", i].Value.ToString());
 
                 dr["STT"] = dgvDSCatChuyenDM["STT", i].Value.ToString();
-                dr["DanhBo"] = _ttkhachhang.DanhBo.Insert(7, " ").Insert(4, " ");
-                dr["HoTen"] = _ttkhachhang.HoTen;
-                dr["DiaChi"] = _ttkhachhang.DC1 + " " + _ttkhachhang.DC2;
-                dr["HopDong"] = _ttkhachhang.GiaoUoc;
-                dr["GiaBieu"] = _ttkhachhang.GB;
-                dr["DinhMuc"] = _ttkhachhang.TGDM;
-                dr["LoTrinh"] = _ttkhachhang.Dot + _ttkhachhang.CuonGCS + _ttkhachhang.CuonSTT;
+                if (_ttkhachhang != null)
+                {
+                    dr["DanhBo"] = _ttkhachhang.DanhBo.Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = _ttkhachhang.HoTen;
+                    dr["DiaChi"] = _ttkhachhang.DC1 + " " + _ttkhachhang.DC2;
+                    dr["HopDong"] = _ttkhachhang.GiaoUoc;
+                    dr["GiaBieu"] = _ttkhachhang.GB;
+                    dr["DinhMuc"] = _ttkhachhang.TGDM;
+                    dr["LoTrinh"] = _ttkhachhang.Dot + _ttkhachhang.CuonGCS + _ttkhachhang.CuonSTT;
+                }
                 dr["HoTenCT"] = dgvDSCatChuyenDM["CT_CatNK_HoTen", i].Value.ToString();
                 dr["DiaChiCT"] = dgvDSCatChuyenDM["CT_CatNK_DiaChi", i].Value.ToString();
                 dr["MaCT"] = dgvDSCatChuyenDM["CT_MaCT", i].Value.ToString();
