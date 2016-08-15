@@ -16,6 +16,7 @@ using KTKS_DonKH.BaoCao.DieuChinhBienDong;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -33,6 +34,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CKTXM _cKTXM = new CKTXM();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CThuTien _cThuTien = new CThuTien();
         bool _direct = false;///Mở form trực tiếp không qua Danh Sách Đơn
         int _TieuThu_DieuChinhGia = 0;
         List<GiaNuoc> lstGiaNuoc;
@@ -788,7 +790,24 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void txtKyHD_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
+            {
+                //if (_ttkhachhang != null)
+                //{
+                //    string[] KyHD = txtKyHD.Text.Trim().Split('/');
+                //    HOADON hoadon = _cThuTien.Get(txtDanhBo.Text.Trim(),int.Parse(KyHD[0]), int.Parse(KyHD[1]));
+                //    if (hoadon != null)
+                //    {
+                //        txtGiaBieu_Cu.Text = hoadon.GB.Value.ToString();
+                //        txtDinhMuc_Cu.Text = hoadon.DM.Value.ToString();
+                //        txtTieuThu_Cu.Text = hoadon.TIEUTHU.Value.ToString();
+                //        txtTienNuoc_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", hoadon.GIABAN.Value);
+                //        txtThueGTGT_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", hoadon.THUE.Value);
+                //        txtPhiBVMT_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", hoadon.PHI.Value);
+                //        txtTongCong_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", hoadon.TONGCONG.Value);
+                //    }
+                //}
                 txtSoHD.Focus();
+            }
         }
 
         private void txtSoHD_KeyPress(object sender, KeyPressEventArgs e)
@@ -1212,7 +1231,21 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void txtKyHD_Leave(object sender, EventArgs e)
         {
-
+            if (_ttkhachhang != null)
+            {
+                string[] KyHD = txtKyHD.Text.Trim().Split('/');
+                HOADON hoadon = _cThuTien.Get(txtDanhBo.Text.Trim(), int.Parse(KyHD[0]), int.Parse(KyHD[1]));
+                if (hoadon != null)
+                {
+                    txtGiaBieu_Cu.Text = hoadon.GB.Value.ToString();
+                    txtDinhMuc_Cu.Text = hoadon.DM.Value.ToString();
+                    txtTieuThu_Cu.Text = hoadon.TIEUTHU.Value.ToString();
+                    txtTienNuoc_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", hoadon.GIABAN.Value);
+                    txtThueGTGT_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", hoadon.THUE.Value);
+                    txtPhiBVMT_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", hoadon.PHI.Value);
+                    txtTongCong_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", hoadon.TONGCONG.Value);
+                }
+            }
         }
 
         private void txtDanhBo_Leave(object sender, EventArgs e)

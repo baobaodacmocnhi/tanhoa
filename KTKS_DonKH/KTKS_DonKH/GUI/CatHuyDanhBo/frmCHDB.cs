@@ -307,6 +307,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             }
                             CTCHDB ctchdb = new CTCHDB();
                             ctchdb.MaCHDB = _cCHDB.getCHDBbyMaDon_TXL(_dontxl.MaDon).MaCHDB;
+                            if (txtMaThongBaoCT.Text.Trim().Replace("-", "") != "")
+                                ctchdb.MaCTCTDB = decimal.Parse(txtMaThongBaoCT.Text.Trim().Replace("-", ""));
                             ctchdb.DanhBo = txtDanhBo.Text.Trim();
                             ctchdb.HopDong = txtHopDong.Text.Trim();
                             ctchdb.HoTen = txtHoTen.Text.Trim();
@@ -381,6 +383,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             }
                             CTCHDB ctchdb = new CTCHDB();
                             ctchdb.MaCHDB = _cCHDB.getCHDBbyMaDon(_donkh.MaDon).MaCHDB;
+                            if (txtMaThongBaoCT.Text.Trim().Replace("-", "") != "")
+                                ctchdb.MaCTCTDB = decimal.Parse(txtMaThongBaoCT.Text.Trim().Replace("-", ""));
                             ctchdb.DanhBo = txtDanhBo.Text.Trim();
                             ctchdb.HopDong = txtHopDong.Text.Trim();
                             ctchdb.HoTen = txtHoTen.Text.Trim();

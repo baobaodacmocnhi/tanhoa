@@ -123,10 +123,22 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 ///
                 txtTieuThu_End.Text = _ctdchd.TieuThu_BD.Value.ToString();
-                txtTienNuoc_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TienNuoc_End);
-                txtThueGTGT_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.ThueGTGT_End);
-                txtPhiBVMT_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_End);
-                txtTongCong_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TongCong_End);
+                if (_ctdchd.TienNuoc_End != 0)
+                    txtTienNuoc_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TienNuoc_End);
+                else
+                    txtTienNuoc_End.Text = "0";
+                if (_ctdchd.ThueGTGT_End != 0)
+                    txtThueGTGT_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.ThueGTGT_End);
+                else
+                    txtThueGTGT_End.Text = "0";
+                if (_ctdchd.PhiBVMT_End != 0)
+                    txtPhiBVMT_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_End);
+                else
+                    txtPhiBVMT_End.Text = "0";
+                if (_ctdchd.TongCong_End != 0)
+                    txtTongCong_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TongCong_End);
+                else
+                    txtTongCong_End.Text = "0";
                 txtChiTietMoi.Text = _ctdchd.ChiTietMoi;
             }
             _flag = true;
@@ -517,15 +529,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 //else
                 //    txtTienNuoc_Start.Text = "0";
 
-                if (TongTienMoi - int.Parse(txtTongCong_End.Text.Replace(".","")) != 0)
-                    txtTienNuoc_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongTienMoi - int.Parse(txtTongCong_End.Text.Replace(".", "")));
-                else
-                    txtTienNuoc_BD.Text = "0";
-
                 if (TongTienMoi != 0)
                     txtTienNuoc_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongTienMoi);
                 else
                     txtTienNuoc_End.Text = "0";
+
+                if (TongTienMoi - int.Parse(txtTienNuoc_Start.Text.Replace(".","")) != 0)
+                    txtTienNuoc_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongTienMoi - int.Parse(txtTienNuoc_Start.Text.Replace(".", "")));
+                else
+                    txtTienNuoc_BD.Text = "0";
+
+                
 
                 ///Thuế GTGT
                 //if (TongTienCu != 0)
@@ -533,15 +547,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 //else
                 //    txtThueGTGT_Start.Text = "0";
 
-                if (TongTienMoi - int.Parse(txtTongCong_End.Text.Replace(".", "")) != 0)
-                    txtThueGTGT_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Math.Round((double)TongTienMoi * 5 / 100 + 0.1) - Math.Round((double)int.Parse(txtTongCong_End.Text.Replace(".", "")) * 5 / 100 + 0.1)));
-                else
-                    txtThueGTGT_BD.Text = "0";
-
                 if (TongTienMoi != 0)
                     txtThueGTGT_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", Math.Round((double)TongTienMoi * 5 / 100 + 0.1));
                 else
                     txtThueGTGT_End.Text = "0";
+
+                if (TongTienMoi - int.Parse(txtTienNuoc_Start.Text.Replace(".", "")) != 0)
+                    txtThueGTGT_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Math.Round((double)TongTienMoi * 5 / 100 + 0.1) - Math.Round((double)int.Parse(txtTienNuoc_Start.Text.Replace(".", "")) * 5 / 100 + 0.1)));
+                else
+                    txtThueGTGT_BD.Text = "0";
+
+                
 
                 ///Phí BVMT
                 //if (TongTienCu != 0)
@@ -549,15 +565,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 //else
                 //    txtPhiBVMT_Start.Text = "0";
 
-                if (TongTienMoi - int.Parse(txtTongCong_End.Text.Replace(".", "")) != 0)
-                    txtPhiBVMT_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ((TongTienMoi * 10 / 100) - (int.Parse(txtTongCong_End.Text.Replace(".", "")) * 10 / 100)));
-                else
-                    txtPhiBVMT_BD.Text = "0";
-
                 if (TongTienMoi != 0)
                     txtPhiBVMT_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (TongTienMoi * 10 / 100));
                 else
                     txtPhiBVMT_End.Text = "0";
+
+                if (TongTienMoi - int.Parse(txtTienNuoc_Start.Text.Replace(".", "")) != 0)
+                    txtPhiBVMT_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ((TongTienMoi * 10 / 100) - (int.Parse(txtTienNuoc_Start.Text.Replace(".", "")) * 10 / 100)));
+                else
+                    txtPhiBVMT_BD.Text = "0";
+
+                
 
                 ///Tổng Cộng
                 //if (TongTienCu != 0)
@@ -565,21 +583,23 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 //else
                 //    txtTongCong_Start.Text = "0";
 
-                if (TongTienMoi - int.Parse(txtTongCong_End.Text.Replace(".", "")) != 0)
-                    txtTongCong_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ((TongTienMoi + Math.Round((double)TongTienMoi * 5 / 100 + 0.1) + (TongTienMoi * 10 / 100)) - (int.Parse(txtTongCong_End.Text.Replace(".", "")) + Math.Round((double)int.Parse(txtTongCong_End.Text.Replace(".", "")) * 5 / 100 + 0.1) + (int.Parse(txtTongCong_End.Text.Replace(".", "")) * 10 / 100))));
-                else
-                    txtTongCong_BD.Text = "0";
-
                 if (TongTienMoi != 0)
                     txtTongCong_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (TongTienMoi + Math.Round((double)TongTienMoi * 5 / 100 + 0.1) + (TongTienMoi * 10 / 100)));
                 else
                     txtTongCong_End.Text = "0";
 
+                if (TongTienMoi - int.Parse(txtTienNuoc_Start.Text.Replace(".", "")) != 0)
+                    txtTongCong_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ((TongTienMoi + Math.Round((double)TongTienMoi * 5 / 100 + 0.1) + (TongTienMoi * 10 / 100)) - (int.Parse(txtTienNuoc_Start.Text.Replace(".", "")) + Math.Round((double)int.Parse(txtTienNuoc_Start.Text.Replace(".", "")) * 5 / 100 + 0.1) + (int.Parse(txtTienNuoc_Start.Text.Replace(".", "")) * 10 / 100))));
+                else
+                    txtTongCong_BD.Text = "0";
+
+               
+
                 ///
-                if (TongTienMoi - int.Parse(txtTongCong_End.Text.Replace(".", "")) == 0)
+                if (TongTienMoi - int.Parse(txtTienNuoc_Start.Text.Replace(".", "")) == 0)
                     lbTangGiam.Text = "";
                 else
-                    if (TongTienMoi - int.Parse(txtTongCong_End.Text.Replace(".", "")) > 0)
+                    if (TongTienMoi - int.Parse(txtTienNuoc_Start.Text.Replace(".", "")) > 0)
                         lbTangGiam.Text = "Tăng:";
                     else
                         lbTangGiam.Text = "Giảm:";

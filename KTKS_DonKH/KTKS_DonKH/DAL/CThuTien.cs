@@ -18,7 +18,7 @@ namespace KTKS_DonKH.DAL
                 return null;
         }
 
-        public HOADON GetMoiNhat(string DanhBo,int Ky,int Nam)
+        public HOADON Get(string DanhBo,int Ky,int Nam)
         {
             if (db.HOADONs.Any(item => item.DANHBA == DanhBo && item.KY==Ky && item.NAM==Nam))
                 return db.HOADONs.SingleOrDefault(item => item.DANHBA == DanhBo && item.KY == Ky && item.NAM == Nam);
