@@ -32,6 +32,7 @@ namespace QLVanThu
             dgvDSVanThuDi.AutoGenerateColumns = false;
             vanthudis.DataSource = _CDataQLVanThuDi.LoadDSVanThuDi();
             dgvDSVanThuDi.DataSource =  vanthudis ;
+            cmbPhongBanDoi.SelectedIndex = 0;
         }
 
         private void LoadDSVanThuDiFilter()
