@@ -448,7 +448,7 @@ namespace ThuTien.GUI.Doi
 
         private void dgvCTToTrinh_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if (dgvCTToTrinh.Columns[e.ColumnIndex].Name == "GhiChu" && e.FormattedValue.ToString() != dgvCTToTrinh[e.ColumnIndex, e.RowIndex].Value.ToString())
+            if (dgvCTToTrinh["MaCTTT", e.RowIndex].Value.ToString()!="" && dgvCTToTrinh.Columns[e.ColumnIndex].Name == "GhiChu" && (dgvCTToTrinh[e.ColumnIndex, e.RowIndex].Value ==null|| e.FormattedValue.ToString() != dgvCTToTrinh[e.ColumnIndex, e.RowIndex].Value.ToString()))
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
                     TT_CTToTrinhCatHuy cttotrinh = _cToTrinhCatHuy.GetCT(int.Parse(dgvCTToTrinh["MaCTTT", e.RowIndex].Value.ToString()));
