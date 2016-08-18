@@ -14,6 +14,7 @@ using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.CongVan;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.BaoCao.ToXuLy;
+using System.IO;
 
 namespace KTKS_DonKH.GUI.ToXuLy
 {
@@ -144,6 +145,9 @@ namespace KTKS_DonKH.GUI.ToXuLy
             _dontxl = null;
             _ttkhachhang = null;
             _gianlan = null;
+            _file1 = null;
+            _file2 = null;
+            _fileBB = null;
         }
 
         private void frmGianLan_Load(object sender, EventArgs e)
@@ -257,11 +261,20 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     entity.TinhTrang = txtTinhTrang.Text.Trim();
                     entity.NhanVien = txtNhanVien.Text.Trim();
 
+                    if (_fileBB != null)
+                    {
+                        entity.FileBienBan = _fileBB;
+                    }
+
                     if (chkToTrinh1.Checked)
                     {
                         entity.ToTrinh1 = true;
                         entity.TieuThu1 = int.Parse(txtTieuThu1.Text.Trim());
                         entity.GiaBan1 = int.Parse(txtGiaBan1.Text.Trim());
+                        if (_file1 != null)
+                        {
+                            entity.File1 = _file1;
+                        }
                     }
                     ///
                     if (chkToTrinh2.Checked)
@@ -269,6 +282,10 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         entity.ToTrinh2 = true;
                         entity.TieuThu2 = int.Parse(txtTieuThu2.Text.Trim());
                         entity.GiaBan2 = int.Parse(txtGiaBan2.Text.Trim());
+                        if (_file2 != null)
+                        {
+                            entity.File2 = _file2;
+                        }
                     }
                     ///
                     if (chkThanhToan1.Checked)
@@ -321,11 +338,20 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     entity.TinhTrang = txtTinhTrang.Text.Trim();
                     entity.NhanVien = txtNhanVien.Text.Trim();
 
+                    if (_fileBB != null)
+                    {
+                        entity.FileBienBan = _fileBB;
+                    }
+
                     if (chkToTrinh1.Checked)
                     {
                         entity.ToTrinh1 = true;
                         entity.TieuThu1 = int.Parse(txtTieuThu1.Text.Trim());
                         entity.GiaBan1 = int.Parse(txtGiaBan1.Text.Trim());
+                        if (_file1 != null)
+                        {
+                            entity.File1 = _file1;
+                        }
                     }
                     ///
                     if (chkToTrinh2.Checked)
@@ -333,6 +359,10 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         entity.ToTrinh2 = true;
                         entity.TieuThu2 = int.Parse(txtTieuThu2.Text.Trim());
                         entity.GiaBan2 = int.Parse(txtGiaBan2.Text.Trim());
+                        if (_file2 != null)
+                        {
+                            entity.File2 = _file2;
+                        }
                     }
                     ///
                     if (chkThanhToan1.Checked)
@@ -377,17 +407,27 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 _gianlan.TinhTrang = txtTinhTrang.Text.Trim();
                 _gianlan.NhanVien = txtNhanVien.Text.Trim();
 
+                if (_fileBB != null)
+                {
+                    _gianlan.FileBienBan = _fileBB;
+                }
+
                 if (chkToTrinh1.Checked)
                 {
                     _gianlan.ToTrinh1 = true;
                     _gianlan.TieuThu1 = int.Parse(txtTieuThu1.Text.Trim());
                     _gianlan.GiaBan1 = int.Parse(txtGiaBan1.Text.Trim());
+                    if (_file1 != null)
+                    {
+                        _gianlan.File1 = _file1;
+                    }
                 }
                 else
                 {
                     _gianlan.ToTrinh1 = false;
                     _gianlan.TieuThu1 = null;
                     _gianlan.GiaBan1 = null;
+                    _gianlan.File1 = null;
                 }
                 ///
                 if (chkToTrinh2.Checked)
@@ -395,12 +435,17 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     _gianlan.ToTrinh2 = true;
                     _gianlan.TieuThu2 = int.Parse(txtTieuThu2.Text.Trim());
                     _gianlan.GiaBan2 = int.Parse(txtGiaBan2.Text.Trim());
+                    if (_file2 != null)
+                    {
+                        _gianlan.File2 = _file2;
+                    }
                 }
                 else
                 {
                     _gianlan.ToTrinh2 = false;
                     _gianlan.TieuThu2 = null;
                     _gianlan.GiaBan2 = null;
+                    _gianlan.File2 = null;
                 }
                 ///
                 if (chkThanhToan1.Checked)
@@ -593,6 +638,75 @@ namespace KTKS_DonKH.GUI.ToXuLy
         private void dgvGianLan_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        byte[] _file1=null;
+        private void btnChonFile1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Files (.pdf)|*.pdf";
+            dialog.Multiselect = false;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                FileStream fs = File.OpenRead(dialog.FileName);
+                _file1 = new byte[fs.Length];
+                fs.Read(_file1, 0, (int)fs.Length);
+            }
+        }
+
+        byte[] _file2=null;
+        private void btnChonFile2_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Files (.pdf)|*.pdf";
+            dialog.Multiselect = false;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                FileStream fs = File.OpenRead(dialog.FileName);
+                _file2 = new byte[fs.Length];
+                fs.Read(_file2, 0, (int)fs.Length);
+            }
+        }
+
+        private void btnXemFile1_Click(object sender, EventArgs e)
+        {
+            if (_gianlan != null&&_gianlan.File1!=null)
+            {
+                frmPDFViewer frm = new frmPDFViewer(_gianlan.File1.ToArray());
+                frm.ShowDialog();
+            }
+        }
+
+        private void btnXemFile2_Click(object sender, EventArgs e)
+        {
+            if (_gianlan != null && _gianlan.File2 != null)
+            {
+                frmPDFViewer frm = new frmPDFViewer(_gianlan.File2.ToArray());
+                frm.ShowDialog();
+            }
+        }
+
+        byte[] _fileBB = null;
+        private void btnChonBB_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Files (.pdf)|*.pdf";
+            dialog.Multiselect = false;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                FileStream fs = File.OpenRead(dialog.FileName);
+                _fileBB = new byte[fs.Length];
+                fs.Read(_fileBB, 0, (int)fs.Length);
+            }
+        }
+
+        private void btnXemBB_Click(object sender, EventArgs e)
+        {
+            if (_gianlan != null && _gianlan.FileBienBan != null)
+            {
+                frmPDFViewer frm = new frmPDFViewer(_gianlan.FileBienBan.ToArray());
+                frm.ShowDialog();
+            }
         }
 
     }

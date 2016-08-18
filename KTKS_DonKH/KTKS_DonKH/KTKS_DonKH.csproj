@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>288</ApplicationRevision>
+    <ApplicationRevision>292</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -92,12 +92,14 @@
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.BonusSkins.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Pdf.v13.1.Core, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v13.1.Core, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraBars.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraGrid.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPdfViewer.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="System" />
@@ -493,7 +495,6 @@
     </Compile>
     <Compile Include="BaoCao\DataSetBaoCao.cs">
       <DependentUpon>DataSetBaoCao.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="BaoCao\DataSetBaoCao.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1051,6 +1052,12 @@
     </Compile>
     <Compile Include="GUI\ToXuLy\frmNhapNhieuDBTXL.Designer.cs">
       <DependentUpon>frmNhapNhieuDBTXL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ToXuLy\frmPDFViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToXuLy\frmPDFViewer.Designer.cs">
+      <DependentUpon>frmPDFViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ToXuLy\frmQLDonTXL.cs">
       <SubType>Form</SubType>
@@ -1652,6 +1659,9 @@
     <EmbeddedResource Include="GUI\ToXuLy\frmNhapNhieuDBTXL.resx">
       <DependentUpon>frmNhapNhieuDBTXL.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToXuLy\frmPDFViewer.resx">
+      <DependentUpon>frmPDFViewer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToXuLy\frmQLDonTXL.resx">
       <DependentUpon>frmQLDonTXL.cs</DependentUpon>
     </EmbeddedResource>
@@ -2011,6 +2021,16 @@
       </TargetPath>
       <FileType>Assembly</FileType>
     </PublishFile>
+    <PublishFile Include="DevExpress.Pdf.v13.1.Core">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
     <PublishFile Include="DevExpress.Printing.v13.1.Core">
       <Visible>False</Visible>
       <PublishState>Include</PublishState>
@@ -2082,6 +2102,16 @@
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.XtraLayout.v13.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraPdfViewer.v13.1">
       <Visible>False</Visible>
       <PublishState>Include</PublishState>
       <IncludeHash>True</IncludeHash>
