@@ -74,6 +74,11 @@ namespace KTKS_DonKH.DAL.CongVan
             return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(db.CongVanDis.Where(item=>item.DanhBo==DanhBo).ToList());
         }
 
+        public DataTable GetDS_Ma(string Ma)
+        {
+            return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(db.CongVanDis.Where(item => item.Ma == Ma).ToList());
+        }
+
         public DataTable GetDSDonKH(decimal MaDon)
         {
             return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(db.CongVanDis.Where(item => item.MaDon == MaDon).ToList());

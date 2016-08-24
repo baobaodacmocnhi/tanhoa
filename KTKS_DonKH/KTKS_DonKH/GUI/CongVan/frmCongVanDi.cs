@@ -162,6 +162,7 @@ namespace KTKS_DonKH.GUI.CongVan
                                 item.DanhBo = donkh.DanhBo;
                                 item.HoTen = donkh.HoTen;
                                 item.DiaChi = donkh.DiaChi;
+                                _toxuly = false;
                                 _madon = donkh.MaDon;
                                 break;
                             case "Đơn Tổ Xử Lý":
@@ -169,6 +170,7 @@ namespace KTKS_DonKH.GUI.CongVan
                                 item.DanhBo = dontxl.DanhBo;
                                 item.HoTen = dontxl.HoTen;
                                 item.DiaChi = dontxl.DiaChi;
+                                _toxuly = true;
                                 _madon = dontxl.MaDon;
                                 break;
                             case "Kiểm Tra Xác Minh":
@@ -291,8 +293,8 @@ namespace KTKS_DonKH.GUI.CongVan
                             dgvDSCongVan.DataSource = _cCongVanDi.GetDS(txtNoiDungTimKiem.Text.Trim());
                         }
                         break;
-                    case "Mã Đơn":
-
+                    case "Mã Đơn/TB":
+                        dgvDSCongVan.DataSource = _cCongVanDi.GetDS_Ma(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
                         break;
                     default:
                         break;
@@ -505,6 +507,16 @@ namespace KTKS_DonKH.GUI.CongVan
                 txtHoTen.Text = ttkh.HoTen;
                 txtDiaChi.Text = ttkh.DC1 + " " + ttkh.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkh.Quan, ttkh.Phuong);
             }
+        }
+
+        private void cmbTimKiem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
        

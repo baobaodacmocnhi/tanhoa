@@ -517,7 +517,8 @@
             "Thay miễn phí",
             "Đã thay ĐHN khác",
             "Tráng bít bê tông chờ XPĐĐ",
-            "Lập thông báo cắt hủy"});
+            "Lập thông báo cắt hủy",
+            "Lập phiếu hủy DB"});
             this.cmbNoiDung.Location = new System.Drawing.Point(711, 55);
             this.cmbNoiDung.Name = "cmbNoiDung";
             this.cmbNoiDung.Size = new System.Drawing.Size(194, 25);

@@ -219,21 +219,24 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 case "Theo Yêu Cầu Khách Hàng":
                 case "Theo Yêu Cầu Công Ty":
-                    txtNoiNhan.Text = "- Như trên.\r\n- Đội QLĐHN, Đội TT: để biết.\r\n- Đội TCTB: thực hiện.\r\n- Lưu.("+txtMaDon.Text.Trim()+")";
+                    txtNoiNhan.Text = "- Như trên.\r\n- Đội QLĐHN, Đội TT: để biết.\r\n- Đội TCTB: thực hiện.\r\n- Lưu.\r\n(" + txtMaDon.Text.Trim() + ")";
                     txtSoTien.Text = "";
                     break;
                 case "Khách Hàng Không Sử Dụng Nước Máy Theo Cam Kết Ngày":
-                    txtNoiNhan.Text = "- Như trên.\r\n- Đội TCTB: thực hiện.\r\n- Đội QLĐHN: để biết.\r\n- Lưu.(" + txtMaDon.Text.Trim() + ")";
+                    txtNoiNhan.Text = "- Như trên.\r\n- Đội TCTB: thực hiện.\r\n- Đội QLĐHN: để biết.\r\n- Lưu.\r\n(" + txtMaDon.Text.Trim() + ")";
                     txtSoTien.Text = "";
                     break;
                 case "Nợ Tiền Nước":
-                    txtNoiNhan.Text = "- Như trên.\r\n- Đội TT: gửi thông báo.\r\n- Đội TCTB: thực hiện. (Đội TT)\r\n- Lưu.(" + txtMaDon.Text.Trim() + ")";
+                    txtNoiNhan.Text = "- Như trên.\r\n- Đội TT: gửi thông báo.\r\n- Đội TCTB: thực hiện. (Đội TT)\r\n- Lưu.\r\n(" + txtMaDon.Text.Trim() + ")";
                     txtSoTien.Text = "";
                     break;
                 case "Nợ Tiền Gian Lận Nước":
                 case "Không Thanh Toán Tiền Bồi Thường ĐHN":
-                    txtNoiNhan.Text = "- Như trên\r\n- Đội QLĐHN: để biết.\r\n- Đội TCTB: thực hiện\r\n- Lưu.(" + txtMaDon.Text.Trim() + ")";
+                    txtNoiNhan.Text = "- Như trên\r\n- Đội QLĐHN: để biết.\r\n- Đội TCTB: thực hiện\r\n- Lưu.\r\n(" + txtMaDon.Text.Trim() + ")";
                     txtSoTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", 1283641);
+                    break;
+                case "Khách Hàng Không Sử Dụng Nước Máy Nhiều Kỳ":
+                    txtNoiNhan.Text = "- Như trên\r\n- Đội QLĐHN: để biết.\r\n- Đội TCTB: thực hiện\r\n- Lưu.\r\n(" + txtMaDon.Text.Trim() + ")";
                     break;
                 default:
                     txtNoiNhan.Text = "";
@@ -680,6 +683,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     //    txtNoiDung.Text = "";
                     //}
                     dgvLichSuXuLy.DataSource = _cCHDB.LoadDSLichSuXuLyByMaCTCTDB(_ctctdb.MaCTCTDB);
+                    dgvLichSuCHDB.DataSource = _cCHDB.GetLichSuCHDB(_ctctdb.DanhBo);
                     ///Cấp Trên Xử Lý
                     //if (_ctctdb.CapTrenXuLy)
                     //{

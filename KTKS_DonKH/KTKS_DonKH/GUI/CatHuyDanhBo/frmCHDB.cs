@@ -251,21 +251,24 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 case "Theo Yêu Cầu Khách Hàng":
                 case "Theo Yêu Cầu Công Ty":
-                    txtNoiNhan.Text = "- Như trên.\r\n- Đội QLĐHN, Đội TT: để biết.\r\n- Đội TCTB: thực hiện.\r\n- Lưu.(" + txtMaDon.Text.Trim() + ")";
+                    txtNoiNhan.Text = "- Như trên.\r\n- Đội QLĐHN, Đội TT: để biết.\r\n- Đội TCTB: thực hiện.\r\n- Lưu.\r\n(" + txtMaDon.Text.Trim() + ")";
                     txtSoTien.Text = "";
                     break;
                 case "Khách Hàng Không Sử Dụng Nước Máy Theo Cam Kết Ngày":
-                    txtNoiNhan.Text = "- Như trên.\r\n- Đội TCTB: thực hiện.\r\n- Đội QLĐHN: để biết.\r\n- Lưu.(" + txtMaDon.Text.Trim() + ")";
+                    txtNoiNhan.Text = "- Như trên.\r\n- Đội TCTB: thực hiện.\r\n- Đội QLĐHN: để biết.\r\n- Lưu.\r\n(" + txtMaDon.Text.Trim() + ")";
                     txtSoTien.Text = "";
                     break;
                 case "Nợ Tiền Nước":
-                    txtNoiNhan.Text = "- Như trên.\r\n- Đội TT: thông báo khách hàng.\r\n- Đội TCTB: thực hiện.\r\n- Lưu.(" + txtMaDon.Text.Trim() + ")";
+                    txtNoiNhan.Text = "- Như trên.\r\n- Đội TT: thông báo khách hàng.\r\n- Đội TCTB: thực hiện.\r\n- Lưu.\r\n(" + txtMaDon.Text.Trim() + ")";
                     txtSoTien.Text = "";
                     break;
                 case "Nợ Tiền Gian Lận Nước":
                 case "Không Thanh Toán Tiền Bồi Thường ĐHN":
-                    txtNoiNhan.Text = "- Như trên\r\n- Đội QLĐHN: để biết.\r\n- Đội TCTB: thực hiện\r\n- Lưu.(" + txtMaDon.Text.Trim() + ")";
+                    txtNoiNhan.Text = "- Như trên\r\n- Đội QLĐHN: để biết.\r\n- Đội TCTB: thực hiện\r\n- Lưu.\r\n(" + txtMaDon.Text.Trim() + ")";
                     txtSoTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", 1283641);
+                    break;
+                case "Khách Hàng Không Sử Dụng Nước Máy Nhiều Kỳ":
+                    txtNoiNhan.Text = "- Như trên\r\n- Đội QLĐHN: để biết.\r\n- Đội TCTB: thực hiện\r\n- Lưu.\r\n(" + txtMaDon.Text.Trim() + ")";
                     break;
                 default:
                     txtNoiNhan.Text = "";
@@ -332,6 +335,21 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             {
                                 ctchdb.DaLapCatTam = true;
                                 ctchdb.MaCTCTDB = decimal.Parse(txtMaThongBaoCT.Text.Trim().Replace("-", ""));
+
+                                if (_ctctdb.NgayXuLy != null && _ctctdb.NoiDungXuLy != "Lập thông báo cắt hủy")
+                                {
+                                    LichSuXuLyCTCHDB lsxl = new LichSuXuLyCTCHDB();
+                                    lsxl.NgayXuLy = _ctctdb.NgayXuLy;
+                                    lsxl.NoiDung = _ctctdb.NoiDungXuLy;
+                                    lsxl.MaCTCTDB = _ctctdb.MaCTCTDB;
+                                    if (_cCHDB.ThemLichSuXuLy(lsxl))
+                                    {
+                                    }
+                                }
+                                _ctctdb.NgayXuLy = DateTime.Now;
+                                _ctctdb.NoiDungXuLy = "Lập thông báo cắt hủy";
+                                _ctctdb.CreateDate_NgayXuLy = DateTime.Now;
+                                _cCHDB.SuaCTCTDB(_ctctdb);
                             }
                             ///Ký Tên
                             BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
@@ -408,6 +426,21 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             {
                                 ctchdb.DaLapCatTam = true;
                                 ctchdb.MaCTCTDB = decimal.Parse(txtMaThongBaoCT.Text.Trim().Replace("-", ""));
+
+                                if (_ctctdb.NgayXuLy != null && _ctctdb.NoiDungXuLy != "Lập thông báo cắt hủy")
+                                {
+                                    LichSuXuLyCTCHDB lsxl = new LichSuXuLyCTCHDB();
+                                    lsxl.NgayXuLy = _ctctdb.NgayXuLy;
+                                    lsxl.NoiDung = _ctctdb.NoiDungXuLy;
+                                    lsxl.MaCTCTDB = _ctctdb.MaCTCTDB;
+                                    if (_cCHDB.ThemLichSuXuLy(lsxl))
+                                    {
+                                    }
+                                }
+                                _ctctdb.NgayXuLy = DateTime.Now;
+                                _ctctdb.NoiDungXuLy = "Lập thông báo cắt hủy";
+                                _ctctdb.CreateDate_NgayXuLy = DateTime.Now;
+                                _cCHDB.SuaCTCTDB(_ctctdb);
                             }
                             ///Ký Tên
                             BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
@@ -1054,6 +1087,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     txtNoiNhan.Text = _ctchdb.NoiNhan;
 
                     dgvLichSuXuLy.DataSource = _cCHDB.LoadDSLichSuXuLyByMaCTCHDB(_ctchdb.MaCTCHDB);
+                    dgvLichSuCHDB.DataSource = _cCHDB.GetLichSuCHDB(_ctchdb.DanhBo);
                     ///Kết Quả Xử Lý
                     //if (_ctchdb.TCTBXuLy)
                     //{
@@ -1192,7 +1226,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     ///
                     if (chkNgayXuLy.Checked)
                     {
-                        if (_ctchdb.NgayXuLy!=null&&_ctchdb.NgayXuLy != dateXuLy.Value)
+                        if (_ctchdb.NgayXuLy != null && _ctchdb.NgayXuLy != dateXuLy.Value)
                         {
                             LichSuXuLyCTCHDB lsxl = new LichSuXuLyCTCHDB();
                             lsxl.NgayXuLy = _ctchdb.NgayXuLy;

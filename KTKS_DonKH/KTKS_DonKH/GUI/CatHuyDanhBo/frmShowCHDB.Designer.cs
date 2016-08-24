@@ -329,7 +329,8 @@
             "Thay miễn phí",
             "Cắt ống ngánh khóa con cóc",
             "Đã thay ĐHN khác",
-            "Tráng bít bê tông chờ XPĐĐ"});
+            "Tráng bít bê tông chờ XPĐĐ",
+            "Lập phiếu hủy DB"});
             this.cmbNoiDung.Location = new System.Drawing.Point(711, 55);
             this.cmbNoiDung.Name = "cmbNoiDung";
             this.cmbNoiDung.Size = new System.Drawing.Size(194, 25);
