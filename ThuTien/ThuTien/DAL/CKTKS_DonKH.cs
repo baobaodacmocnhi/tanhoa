@@ -84,7 +84,6 @@ namespace ThuTien.DAL
         /// <returns>Đối tượng datatable chứa dữ liệu kết quả câu truy vấn</returns>
         public DataTable ExecuteQuery_SqlDataAdapter_DataTable(string sql)
         {
-
             try
             {
                 return ExecuteQuery_SqlDataAdapter_DataSet(sql).Tables[0];

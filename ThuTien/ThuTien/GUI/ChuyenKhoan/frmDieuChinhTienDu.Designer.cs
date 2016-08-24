@@ -64,6 +64,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.dateBangKe = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
+            this.chkDongNuoc2 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -372,6 +373,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.chkDongNuoc2);
             this.groupBox5.Controls.Add(this.txtSoTien);
             this.groupBox5.Controls.Add(this.label13);
             this.groupBox5.Controls.Add(this.dateBangKe);
@@ -379,7 +381,7 @@
             this.groupBox5.Controls.Add(this.label12);
             this.groupBox5.Location = new System.Drawing.Point(463, 182);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(286, 82);
+            this.groupBox5.Size = new System.Drawing.Size(340, 82);
             this.groupBox5.TabIndex = 2;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Chuyển Phí Mở Nước";
@@ -419,6 +421,16 @@
             this.label12.Size = new System.Drawing.Size(79, 13);
             this.label12.TabIndex = 0;
             this.label12.Text = "Ngày Bảng Kê:";
+            // 
+            // chkDongNuoc2
+            // 
+            this.chkDongNuoc2.AutoSize = true;
+            this.chkDongNuoc2.Location = new System.Drawing.Point(201, 23);
+            this.chkDongNuoc2.Name = "chkDongNuoc2";
+            this.chkDongNuoc2.Size = new System.Drawing.Size(107, 17);
+            this.chkDongNuoc2.TabIndex = 37;
+            this.chkDongNuoc2.Text = "Đóng Nước 2 lần";
+            this.chkDongNuoc2.UseVisualStyleBackColor = true;
             // 
             // frmDieuChinhTienDu
             // 
@@ -483,5 +495,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtSoTienDieuChinh;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.CheckBox chkDongNuoc2;
     }
 }

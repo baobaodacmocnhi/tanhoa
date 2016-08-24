@@ -154,7 +154,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 {
                     using (var scope = new TransactionScope())
                     {
-                        if (_cTienDu.Update(dgvPhiMoNuoc.SelectedRows[0].Cells["DanhBo_PMN"].Value.ToString(), 50000, "Điều Chỉnh Tiền", "Xóa Chuyển Phí Mở Nước"))
+                        if (_cTienDu.Update(dgvPhiMoNuoc.SelectedRows[0].Cells["DanhBo_PMN"].Value.ToString(), int.Parse(dgvPhiMoNuoc.SelectedRows[0].Cells["SoTien_PMN"].Value.ToString()) - int.Parse(dgvPhiMoNuoc.SelectedRows[0].Cells["TongCong_PMN"].Value.ToString()), "Điều Chỉnh Tiền", "Xóa Chuyển Phí Mở Nước"))
                         {
                             TT_PhiMoNuoc phimonuoc = _cPhiMoNuoc.Get(decimal.Parse(dgvPhiMoNuoc.SelectedRows[0].Cells["MaPMN"].Value.ToString()));
                             TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(phimonuoc.MaKQDN.Value);
