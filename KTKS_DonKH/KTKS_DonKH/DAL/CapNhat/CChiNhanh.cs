@@ -14,15 +14,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_Xem||CTaiKhoan.RoleCapNhat_CapNhat)
-                {
                     return db.ChiNhanhs.ToList();
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
             }
             catch (Exception ex)
             {
@@ -120,8 +112,6 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_CapNhat)
-                {
                     if (db.ChiNhanhs.Count() > 0)
                         chinhanh.MaCN = db.ChiNhanhs.Max(itemCN => itemCN.MaCN) + 1;
                     else
@@ -132,13 +122,6 @@ namespace KTKS_DonKH.DAL.CapNhat
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Thêm ChiNhanh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.ChiNhanhs);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -152,20 +135,11 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_CapNhat)
-                {
                     chinhanh.ModifyDate = DateTime.Now;
                     chinhanh.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Sửa ChiNhanh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.ChiNhanhs);
-                    return false;
-                }
             }
             catch (Exception ex)
             {

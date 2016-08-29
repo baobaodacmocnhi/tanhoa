@@ -48,7 +48,7 @@
             this.dgvDSGiaNuoc.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -59,11 +59,11 @@
             this.MaGN,
             this.TenGN,
             this.DonGia});
-            this.dgvDSGiaNuoc.Location = new System.Drawing.Point(10, 119);
+            this.dgvDSGiaNuoc.Location = new System.Drawing.Point(9, 105);
             this.dgvDSGiaNuoc.MultiSelect = false;
             this.dgvDSGiaNuoc.Name = "dgvDSGiaNuoc";
             this.dgvDSGiaNuoc.ReadOnly = true;
-            this.dgvDSGiaNuoc.Size = new System.Drawing.Size(394, 170);
+            this.dgvDSGiaNuoc.Size = new System.Drawing.Size(345, 150);
             this.dgvDSGiaNuoc.TabIndex = 17;
             this.dgvDSGiaNuoc.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSGiaNuoc_CellContentClick);
             this.dgvDSGiaNuoc.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSGiaNuoc_CellFormatting);
@@ -94,73 +94,67 @@
             // 
             // btnSua
             // 
-            this.btnSua.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
-            this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSua.Location = new System.Drawing.Point(338, 76);
-            this.btnSua.Margin = new System.Windows.Forms.Padding(5);
+            this.btnSua.Location = new System.Drawing.Point(296, 67);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(66, 35);
+            this.btnSua.Size = new System.Drawing.Size(58, 31);
             this.btnSua.TabIndex = 16;
             this.btnSua.Text = "Sửa";
-            this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnThem
             // 
-            this.btnThem.Image = global::KTKS_DonKH.Properties.Resources.add_24x24;
-            this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThem.Location = new System.Drawing.Point(251, 76);
-            this.btnThem.Margin = new System.Windows.Forms.Padding(5);
+            this.btnThem.Location = new System.Drawing.Point(220, 67);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(77, 35);
+            this.btnThem.Size = new System.Drawing.Size(67, 31);
             this.btnThem.TabIndex = 15;
             this.btnThem.Text = "Thêm";
-            this.btnThem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Visible = false;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // txtGiaNuoc
             // 
-            this.txtGiaNuoc.Location = new System.Drawing.Point(126, 43);
+            this.txtGiaNuoc.Location = new System.Drawing.Point(110, 38);
             this.txtGiaNuoc.Name = "txtGiaNuoc";
-            this.txtGiaNuoc.Size = new System.Drawing.Size(200, 25);
+            this.txtGiaNuoc.Size = new System.Drawing.Size(176, 21);
             this.txtGiaNuoc.TabIndex = 12;
             this.txtGiaNuoc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGiaNuoc_KeyPress);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(45, 46);
+            this.label2.Location = new System.Drawing.Point(39, 41);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 17);
+            this.label2.Size = new System.Drawing.Size(61, 15);
             this.label2.TabIndex = 11;
             this.label2.Text = "Giá Nước:";
             // 
             // txtDoiTuong
             // 
-            this.txtDoiTuong.Location = new System.Drawing.Point(126, 12);
+            this.txtDoiTuong.Location = new System.Drawing.Point(110, 11);
             this.txtDoiTuong.Name = "txtDoiTuong";
             this.txtDoiTuong.ReadOnly = true;
-            this.txtDoiTuong.Size = new System.Drawing.Size(200, 25);
+            this.txtDoiTuong.Size = new System.Drawing.Size(176, 21);
             this.txtDoiTuong.TabIndex = 10;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(45, 15);
+            this.label1.Location = new System.Drawing.Point(39, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 17);
+            this.label1.Size = new System.Drawing.Size(67, 15);
             this.label1.TabIndex = 9;
             this.label1.Text = "Đối Tượng:";
             // 
             // frmGiaNuoc
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(416, 324);
+            this.ClientSize = new System.Drawing.Size(364, 286);
             this.Controls.Add(this.dgvDSGiaNuoc);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);
@@ -168,7 +162,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtDoiTuong);
             this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmGiaNuoc";
             this.Text = "Giá Nước";

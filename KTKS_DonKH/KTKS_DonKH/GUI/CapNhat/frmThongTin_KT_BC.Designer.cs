@@ -35,6 +35,8 @@
             this.btnUpHienTrangKT = new System.Windows.Forms.Button();
             this.btnXoaHienTrangKT = new System.Windows.Forms.Button();
             this.dgvDSHienTrangKT = new System.Windows.Forms.DataGridView();
+            this.MaHTKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenHTKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSuaHienTrangKT = new System.Windows.Forms.Button();
             this.btnThemHienTrangKT = new System.Windows.Forms.Button();
             this.txtHienTrangKT = new System.Windows.Forms.TextBox();
@@ -50,8 +52,6 @@
             this.btnThemTrangThaiBC = new System.Windows.Forms.Button();
             this.txtTrangThaiBC = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.MaHTKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenHTKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSHienTrangKT)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -68,49 +68,40 @@
             this.groupBox1.Controls.Add(this.btnThemHienTrangKT);
             this.groupBox1.Controls.Add(this.txtHienTrangKT);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(44, 4);
+            this.groupBox1.Location = new System.Drawing.Point(38, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(466, 548);
+            this.groupBox1.Size = new System.Drawing.Size(408, 484);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Hiện Trạng Kiểm Tra";
             // 
             // btnDownHienTrangKT
             // 
-            this.btnDownHienTrangKT.Image = global::KTKS_DonKH.Properties.Resources.down_24x24;
-            this.btnDownHienTrangKT.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDownHienTrangKT.Location = new System.Drawing.Point(68, 53);
+            this.btnDownHienTrangKT.Location = new System.Drawing.Point(60, 47);
             this.btnDownHienTrangKT.Name = "btnDownHienTrangKT";
-            this.btnDownHienTrangKT.Size = new System.Drawing.Size(75, 35);
+            this.btnDownHienTrangKT.Size = new System.Drawing.Size(66, 31);
             this.btnDownHienTrangKT.TabIndex = 89;
             this.btnDownHienTrangKT.Text = "Down";
-            this.btnDownHienTrangKT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDownHienTrangKT.UseVisualStyleBackColor = true;
             this.btnDownHienTrangKT.Click += new System.EventHandler(this.btnDownHienTrangKT_Click);
             // 
             // btnUpHienTrangKT
             // 
-            this.btnUpHienTrangKT.Image = global::KTKS_DonKH.Properties.Resources.up_24x24;
-            this.btnUpHienTrangKT.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpHienTrangKT.Location = new System.Drawing.Point(6, 53);
+            this.btnUpHienTrangKT.Location = new System.Drawing.Point(5, 47);
             this.btnUpHienTrangKT.Name = "btnUpHienTrangKT";
-            this.btnUpHienTrangKT.Size = new System.Drawing.Size(56, 35);
+            this.btnUpHienTrangKT.Size = new System.Drawing.Size(49, 31);
             this.btnUpHienTrangKT.TabIndex = 88;
             this.btnUpHienTrangKT.Text = "Up";
-            this.btnUpHienTrangKT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnUpHienTrangKT.UseVisualStyleBackColor = true;
             this.btnUpHienTrangKT.Click += new System.EventHandler(this.btnUpHienTrangKT_Click);
             // 
             // btnXoaHienTrangKT
             // 
-            this.btnXoaHienTrangKT.Image = global::KTKS_DonKH.Properties.Resources.delete_24x24;
-            this.btnXoaHienTrangKT.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXoaHienTrangKT.Location = new System.Drawing.Point(378, 53);
+            this.btnXoaHienTrangKT.Location = new System.Drawing.Point(331, 47);
             this.btnXoaHienTrangKT.Name = "btnXoaHienTrangKT";
-            this.btnXoaHienTrangKT.Size = new System.Drawing.Size(67, 35);
+            this.btnXoaHienTrangKT.Size = new System.Drawing.Size(59, 31);
             this.btnXoaHienTrangKT.TabIndex = 87;
             this.btnXoaHienTrangKT.Text = "Xóa";
-            this.btnXoaHienTrangKT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnXoaHienTrangKT.UseVisualStyleBackColor = true;
             this.btnXoaHienTrangKT.Click += new System.EventHandler(this.btnXoaHienTrangKT_Click);
             // 
@@ -120,7 +111,7 @@
             this.dgvDSHienTrangKT.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -130,53 +121,62 @@
             this.dgvDSHienTrangKT.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaHTKT,
             this.TenHTKT});
-            this.dgvDSHienTrangKT.Location = new System.Drawing.Point(6, 94);
+            this.dgvDSHienTrangKT.Location = new System.Drawing.Point(5, 83);
             this.dgvDSHienTrangKT.MultiSelect = false;
             this.dgvDSHienTrangKT.Name = "dgvDSHienTrangKT";
-            this.dgvDSHienTrangKT.Size = new System.Drawing.Size(454, 448);
+            this.dgvDSHienTrangKT.Size = new System.Drawing.Size(397, 395);
             this.dgvDSHienTrangKT.TabIndex = 8;
             this.dgvDSHienTrangKT.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSHienTrangKT_CellContentClick);
             this.dgvDSHienTrangKT.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSHienTrangKT_RowPostPaint);
             // 
+            // MaHTKT
+            // 
+            this.MaHTKT.DataPropertyName = "MaHTKT";
+            this.MaHTKT.HeaderText = "MaHTKT";
+            this.MaHTKT.Name = "MaHTKT";
+            this.MaHTKT.Visible = false;
+            // 
+            // TenHTKT
+            // 
+            this.TenHTKT.DataPropertyName = "TenHTKT";
+            this.TenHTKT.HeaderText = "Hiện Trạng Kiểm Tra";
+            this.TenHTKT.Name = "TenHTKT";
+            this.TenHTKT.ReadOnly = true;
+            this.TenHTKT.Width = 400;
+            // 
             // btnSuaHienTrangKT
             // 
-            this.btnSuaHienTrangKT.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
-            this.btnSuaHienTrangKT.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSuaHienTrangKT.Location = new System.Drawing.Point(246, 53);
+            this.btnSuaHienTrangKT.Location = new System.Drawing.Point(215, 47);
             this.btnSuaHienTrangKT.Name = "btnSuaHienTrangKT";
-            this.btnSuaHienTrangKT.Size = new System.Drawing.Size(65, 35);
+            this.btnSuaHienTrangKT.Size = new System.Drawing.Size(57, 31);
             this.btnSuaHienTrangKT.TabIndex = 7;
             this.btnSuaHienTrangKT.Text = "Sửa";
-            this.btnSuaHienTrangKT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSuaHienTrangKT.UseVisualStyleBackColor = true;
             this.btnSuaHienTrangKT.Click += new System.EventHandler(this.btnSuaHienTrangKT_Click);
             // 
             // btnThemHienTrangKT
             // 
-            this.btnThemHienTrangKT.Image = global::KTKS_DonKH.Properties.Resources.add_24x24;
-            this.btnThemHienTrangKT.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThemHienTrangKT.Location = new System.Drawing.Point(164, 53);
+            this.btnThemHienTrangKT.Location = new System.Drawing.Point(144, 47);
             this.btnThemHienTrangKT.Name = "btnThemHienTrangKT";
-            this.btnThemHienTrangKT.Size = new System.Drawing.Size(76, 35);
+            this.btnThemHienTrangKT.Size = new System.Drawing.Size(66, 31);
             this.btnThemHienTrangKT.TabIndex = 6;
             this.btnThemHienTrangKT.Text = "Thêm";
-            this.btnThemHienTrangKT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnThemHienTrangKT.UseVisualStyleBackColor = true;
             this.btnThemHienTrangKT.Click += new System.EventHandler(this.btnThemHienTrangKT_Click);
             // 
             // txtHienTrangKT
             // 
-            this.txtHienTrangKT.Location = new System.Drawing.Point(164, 22);
+            this.txtHienTrangKT.Location = new System.Drawing.Point(144, 19);
             this.txtHienTrangKT.Name = "txtHienTrangKT";
-            this.txtHienTrangKT.Size = new System.Drawing.Size(281, 25);
+            this.txtHienTrangKT.Size = new System.Drawing.Size(246, 21);
             this.txtHienTrangKT.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 30);
+            this.label1.Location = new System.Drawing.Point(18, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(137, 17);
+            this.label1.Size = new System.Drawing.Size(124, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Hiện Trạng Kiểm Tra:";
             // 
@@ -190,49 +190,40 @@
             this.groupBox2.Controls.Add(this.btnThemTrangThaiBC);
             this.groupBox2.Controls.Add(this.txtTrangThaiBC);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(550, 4);
+            this.groupBox2.Location = new System.Drawing.Point(481, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(466, 548);
+            this.groupBox2.Size = new System.Drawing.Size(408, 484);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Trạng Thái Bấm Chì";
             // 
             // btnDownTrangThaiBC
             // 
-            this.btnDownTrangThaiBC.Image = global::KTKS_DonKH.Properties.Resources.down_24x24;
-            this.btnDownTrangThaiBC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDownTrangThaiBC.Location = new System.Drawing.Point(68, 53);
+            this.btnDownTrangThaiBC.Location = new System.Drawing.Point(60, 47);
             this.btnDownTrangThaiBC.Name = "btnDownTrangThaiBC";
-            this.btnDownTrangThaiBC.Size = new System.Drawing.Size(75, 35);
+            this.btnDownTrangThaiBC.Size = new System.Drawing.Size(66, 31);
             this.btnDownTrangThaiBC.TabIndex = 91;
             this.btnDownTrangThaiBC.Text = "Down";
-            this.btnDownTrangThaiBC.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDownTrangThaiBC.UseVisualStyleBackColor = true;
             this.btnDownTrangThaiBC.Click += new System.EventHandler(this.btnDownTrangThaiBC_Click);
             // 
             // btnXoaTrangThaiBC
             // 
-            this.btnXoaTrangThaiBC.Image = global::KTKS_DonKH.Properties.Resources.delete_24x24;
-            this.btnXoaTrangThaiBC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXoaTrangThaiBC.Location = new System.Drawing.Point(378, 53);
+            this.btnXoaTrangThaiBC.Location = new System.Drawing.Point(331, 47);
             this.btnXoaTrangThaiBC.Name = "btnXoaTrangThaiBC";
-            this.btnXoaTrangThaiBC.Size = new System.Drawing.Size(67, 35);
+            this.btnXoaTrangThaiBC.Size = new System.Drawing.Size(59, 31);
             this.btnXoaTrangThaiBC.TabIndex = 88;
             this.btnXoaTrangThaiBC.Text = "Xóa";
-            this.btnXoaTrangThaiBC.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnXoaTrangThaiBC.UseVisualStyleBackColor = true;
             this.btnXoaTrangThaiBC.Click += new System.EventHandler(this.btnXoaTrangThaiBC_Click);
             // 
             // btnUpTrangThaiBC
             // 
-            this.btnUpTrangThaiBC.Image = global::KTKS_DonKH.Properties.Resources.up_24x24;
-            this.btnUpTrangThaiBC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpTrangThaiBC.Location = new System.Drawing.Point(6, 53);
+            this.btnUpTrangThaiBC.Location = new System.Drawing.Point(5, 47);
             this.btnUpTrangThaiBC.Name = "btnUpTrangThaiBC";
-            this.btnUpTrangThaiBC.Size = new System.Drawing.Size(56, 35);
+            this.btnUpTrangThaiBC.Size = new System.Drawing.Size(49, 31);
             this.btnUpTrangThaiBC.TabIndex = 90;
             this.btnUpTrangThaiBC.Text = "Up";
-            this.btnUpTrangThaiBC.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnUpTrangThaiBC.UseVisualStyleBackColor = true;
             this.btnUpTrangThaiBC.Click += new System.EventHandler(this.btnUpTrangThaiBC_Click);
             // 
@@ -242,7 +233,7 @@
             this.dgvDSTrangThaiBC.AllowUserToDeleteRows = false;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -252,10 +243,10 @@
             this.dgvDSTrangThaiBC.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaTTBC,
             this.TenTTBC});
-            this.dgvDSTrangThaiBC.Location = new System.Drawing.Point(6, 94);
+            this.dgvDSTrangThaiBC.Location = new System.Drawing.Point(5, 83);
             this.dgvDSTrangThaiBC.MultiSelect = false;
             this.dgvDSTrangThaiBC.Name = "dgvDSTrangThaiBC";
-            this.dgvDSTrangThaiBC.Size = new System.Drawing.Size(454, 448);
+            this.dgvDSTrangThaiBC.Size = new System.Drawing.Size(397, 395);
             this.dgvDSTrangThaiBC.TabIndex = 8;
             this.dgvDSTrangThaiBC.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSTrangThaiBC_CellContentClick);
             this.dgvDSTrangThaiBC.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSTrangThaiBC_RowPostPaint);
@@ -277,70 +268,49 @@
             // 
             // btnSuaTrangThaiBC
             // 
-            this.btnSuaTrangThaiBC.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
-            this.btnSuaTrangThaiBC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSuaTrangThaiBC.Location = new System.Drawing.Point(247, 53);
+            this.btnSuaTrangThaiBC.Location = new System.Drawing.Point(216, 47);
             this.btnSuaTrangThaiBC.Name = "btnSuaTrangThaiBC";
-            this.btnSuaTrangThaiBC.Size = new System.Drawing.Size(65, 35);
+            this.btnSuaTrangThaiBC.Size = new System.Drawing.Size(57, 31);
             this.btnSuaTrangThaiBC.TabIndex = 7;
             this.btnSuaTrangThaiBC.Text = "Sửa";
-            this.btnSuaTrangThaiBC.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSuaTrangThaiBC.UseVisualStyleBackColor = true;
             this.btnSuaTrangThaiBC.Click += new System.EventHandler(this.btnSuaTrangThaiBC_Click);
             // 
             // btnThemTrangThaiBC
             // 
-            this.btnThemTrangThaiBC.Image = global::KTKS_DonKH.Properties.Resources.add_24x24;
-            this.btnThemTrangThaiBC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThemTrangThaiBC.Location = new System.Drawing.Point(164, 53);
+            this.btnThemTrangThaiBC.Location = new System.Drawing.Point(144, 47);
             this.btnThemTrangThaiBC.Name = "btnThemTrangThaiBC";
-            this.btnThemTrangThaiBC.Size = new System.Drawing.Size(76, 35);
+            this.btnThemTrangThaiBC.Size = new System.Drawing.Size(66, 31);
             this.btnThemTrangThaiBC.TabIndex = 6;
             this.btnThemTrangThaiBC.Text = "Thêm";
-            this.btnThemTrangThaiBC.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnThemTrangThaiBC.UseVisualStyleBackColor = true;
             this.btnThemTrangThaiBC.Click += new System.EventHandler(this.btnThemTrangThaiBC_Click);
             // 
             // txtTrangThaiBC
             // 
-            this.txtTrangThaiBC.Location = new System.Drawing.Point(164, 22);
+            this.txtTrangThaiBC.Location = new System.Drawing.Point(144, 19);
             this.txtTrangThaiBC.Name = "txtTrangThaiBC";
-            this.txtTrangThaiBC.Size = new System.Drawing.Size(281, 25);
+            this.txtTrangThaiBC.Size = new System.Drawing.Size(246, 21);
             this.txtTrangThaiBC.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 30);
+            this.label2.Location = new System.Drawing.Point(24, 26);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(131, 17);
+            this.label2.Size = new System.Drawing.Size(119, 15);
             this.label2.TabIndex = 0;
             this.label2.Text = "Trạng Thái Bấm Chì:";
             // 
-            // MaHTKT
-            // 
-            this.MaHTKT.DataPropertyName = "MaHTKT";
-            this.MaHTKT.HeaderText = "MaHTKT";
-            this.MaHTKT.Name = "MaHTKT";
-            this.MaHTKT.Visible = false;
-            // 
-            // TenHTKT
-            // 
-            this.TenHTKT.DataPropertyName = "TenHTKT";
-            this.TenHTKT.HeaderText = "Hiện Trạng Kiểm Tra";
-            this.TenHTKT.Name = "TenHTKT";
-            this.TenHTKT.ReadOnly = true;
-            this.TenHTKT.Width = 400;
-            // 
             // frmThongTin_KT_BC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1165, 564);
+            this.ClientSize = new System.Drawing.Size(1019, 498);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmThongTin_KT_BC";
             this.Text = "Thông Tin Hiện Trạng KT/ Trạng Thái BC";

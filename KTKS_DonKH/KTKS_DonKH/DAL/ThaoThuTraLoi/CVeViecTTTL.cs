@@ -14,8 +14,6 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_CapNhat)
-                {
                     if (db.VeViecTTTLs.Count() > 0)
                         vv.MaVV = db.VeViecTTTLs.Max(item => item.MaVV) + 1;
                     else
@@ -26,13 +24,6 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Thêm", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.VeViecTTTLs);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -46,20 +37,11 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_CapNhat)
-                {
                     vv.ModifyDate = DateTime.Now;
                     vv.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Sửa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.VeViecTTTLs);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -73,19 +55,10 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_CapNhat)
-                {
                     db.VeViecTTTLs.DeleteOnSubmit(vv);
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Sửa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.VeViecTTTLs);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -99,13 +72,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_Xem || CTaiKhoan.RoleCapNhat_CapNhat)
                     return db.VeViecTTTLs.ToList();
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
             }
             catch (Exception ex)
             {

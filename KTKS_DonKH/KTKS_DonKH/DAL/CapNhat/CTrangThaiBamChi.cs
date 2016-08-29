@@ -14,13 +14,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_Xem || CTaiKhoan.RoleCapNhat_CapNhat)
                     return db.TrangThaiBamChis.OrderBy(item => item.STT).ToList();
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
             }
             catch (Exception ex)
             {
@@ -64,8 +58,6 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_CapNhat)
-                {
                     if (db.TrangThaiBamChis.Count() > 0)
                         trangthaibamchi.MaTTBC = db.TrangThaiBamChis.Max(itemTTBC => itemTTBC.MaTTBC) + 1;
                     else
@@ -76,13 +68,6 @@ namespace KTKS_DonKH.DAL.CapNhat
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Thêm TrangThaiBamChi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.TrangThaiBamChis);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -96,20 +81,11 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_CapNhat)
-                {
                     trangthaibamchi.ModifyDate = DateTime.Now;
                     trangthaibamchi.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Sửa TrangThaiBamChi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.TrangThaiBamChis);
-                    return false;
-                }
             }
             catch (Exception)
             {
@@ -123,20 +99,11 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_CapNhat)
-                {
                     //trangthaibamchi.ModifyDate = DateTime.Now;
                     //trangthaibamchi.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Sửa TrangThaiBamChi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.TrangThaiBamChis);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -150,19 +117,10 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_CapNhat)
-                {
                     db.TrangThaiBamChis.DeleteOnSubmit(trangthaibamchi);
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Sửa TrangThaiBamChi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.TrangThaiBamChis);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -176,17 +134,8 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_CapNhat)
-                {
                     db.ExecuteCommand(sql);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.TrangThaiBamChis);
-                    return false;
-                }
             }
             catch (Exception ex)
             {

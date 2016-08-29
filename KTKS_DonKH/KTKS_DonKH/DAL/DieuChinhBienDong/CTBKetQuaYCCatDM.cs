@@ -14,8 +14,6 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                if (CTaiKhoan.RoleDCBD_CapNhat)
-                {
                     if (db.TBKetQuaYCCatDMs.Count() > 0)
                     {
                         string ID = "SoPhieu";
@@ -34,13 +32,6 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Thêm DCBD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.TBKetQuaYCCatDMs);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -54,20 +45,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                if (CTaiKhoan.RoleDCBD_CapNhat)
-                {
                     tb.ModifyDate = DateTime.Now;
                     tb.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Sửa DCBD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.TBKetQuaYCCatDMs);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -81,19 +63,10 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                if (CTaiKhoan.RoleDCBD_CapNhat)
-                {
                     db.TBKetQuaYCCatDMs.DeleteOnSubmit(tb);
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Sửa DCBD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.TBKetQuaYCCatDMs);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -107,13 +80,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
-                {
                     return db.TBKetQuaYCCatDMs.ToList();
-                }
-                else
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
             }
             catch (Exception ex)
             {

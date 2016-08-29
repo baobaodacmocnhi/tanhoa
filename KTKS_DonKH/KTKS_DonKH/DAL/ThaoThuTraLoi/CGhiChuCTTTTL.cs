@@ -15,8 +15,6 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
         {
             try
             {
-                if (CTaiKhoan.RoleTTTL_CapNhat)
-                {
                     if (db.GhiChuCTTTTLs.Count() > 0)
                     {
                         ghichu.ID = db.GhiChuCTTTTLs.Max(item => item.ID) + 1;
@@ -29,13 +27,6 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Thêm TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.GhiChuCTTTTLs);
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -49,20 +40,11 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
         {
             try
             {
-                if (CTaiKhoan.RoleTTTL_CapNhat)
-                {
                     ghichu.ModifyDate = DateTime.Now;
                     ghichu.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Sửa TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.GhiChuCTTTTLs);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -76,19 +58,10 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
         {
             try
             {
-                if (CTaiKhoan.RoleTTTL_CapNhat)
-                {
                     db.GhiChuCTTTTLs.DeleteOnSubmit(ghichu);
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Sửa TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.GhiChuCTTTTLs);
-                    return false;
-                }
             }
             catch (Exception ex)
             {

@@ -16,17 +16,9 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_Xem || CTaiKhoan.RoleCapNhat_CapNhat)
-                {
                     //var query = from itemLCT in db.LoaiChungTus
                     //            select new { itemLCT.MaLCT, itemLCT.KyHieuLCT, itemLCT.TenLCT, itemLCT.ThoiHan };
                     return db.LoaiChungTus.ToList();
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
             }
             catch (Exception ex)
             {
@@ -79,8 +71,6 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_CapNhat)
-                {
                     if (db.LoaiChungTus.Count() > 0)
                         loaichungtu.MaLCT = db.LoaiChungTus.Max(itemLCT => itemLCT.MaLCT) + 1;
                     else
@@ -91,13 +81,6 @@ namespace KTKS_DonKH.DAL.CapNhat
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Thêm LoaiChungTu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LoaiChungTus);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -111,20 +94,11 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_CapNhat)
-                {
                     loaichungtu.ModifyDate = DateTime.Now;
                     loaichungtu.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Sửa LoaiChungTu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LoaiChungTus);
-                    return false;
-                }
             }
             catch (Exception ex)
             {

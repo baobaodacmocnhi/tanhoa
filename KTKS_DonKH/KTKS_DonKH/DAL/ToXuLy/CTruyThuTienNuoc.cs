@@ -16,8 +16,6 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                if (CTaiKhoan.RoleTruyThuTienNuoc_CapNhat)
-                {
                     if (db.TruyThuTienNuocs.Count() > 0)
                     {
                         string ID = "MaTTTN";
@@ -34,13 +32,6 @@ namespace KTKS_DonKH.DAL.ToXuLy
                     db.TruyThuTienNuocs.InsertOnSubmit(tttn);
                     db.SubmitChanges();
                     return true;
-                }
-                else
-                {
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.TruyThuTienNuocs);
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -54,19 +45,10 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                if (CTaiKhoan.RoleTruyThuTienNuoc_CapNhat)
-                {
                     tttn.ModifyDate = DateTime.Now;
                     tttn.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     return true;
-                }
-                else
-                {
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.TruyThuTienNuocs);
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -80,20 +62,11 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                if (CTaiKhoan.RoleTruyThuTienNuoc_CapNhat)
-                {
                     db.CTTruyThuTienNuocs.DeleteAllOnSubmit(tttn.CTTruyThuTienNuocs.ToList());
                     db.ThanhToanTruyThuTienNuocs.DeleteAllOnSubmit(tttn.ThanhToanTruyThuTienNuocs.ToList());
                     db.TruyThuTienNuocs.DeleteOnSubmit(tttn);
                     db.SubmitChanges();
                     return true;
-                }
-                else
-                {
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.TruyThuTienNuocs);
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -203,8 +176,6 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                if (CTaiKhoan.RoleTruyThuTienNuoc_CapNhat)
-                {
                     if (db.CTTruyThuTienNuocs.Count() > 0)
                     {
                         cttttn.MaCTTTTN = db.CTTruyThuTienNuocs.Max(item => item.MaCTTTTN) + 1;
@@ -216,13 +187,6 @@ namespace KTKS_DonKH.DAL.ToXuLy
                     db.CTTruyThuTienNuocs.InsertOnSubmit(cttttn);
                     db.SubmitChanges();
                     return true;
-                }
-                else
-                {
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.CTTruyThuTienNuocs);
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -236,19 +200,10 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                if (CTaiKhoan.RoleTruyThuTienNuoc_CapNhat)
-                {
                     cttttn.ModifyDate = DateTime.Now;
                     cttttn.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     return true;
-                }
-                else
-                {
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.CTTruyThuTienNuocs);
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -262,18 +217,9 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                if (CTaiKhoan.RoleTruyThuTienNuoc_CapNhat)
-                {
                     db.CTTruyThuTienNuocs.DeleteOnSubmit(cttttn);
                     db.SubmitChanges();
                     return true;
-                }
-                else
-                {
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.CTTruyThuTienNuocs);
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -310,8 +256,6 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                if (CTaiKhoan.RoleTruyThuTienNuoc_CapNhat)
-                {
                     if (db.ThanhToanTruyThuTienNuocs.Count() > 0)
                     {
                         tttttn.MaTTTTTN = db.ThanhToanTruyThuTienNuocs.Max(item => item.MaTTTTTN) + 1;
@@ -323,13 +267,6 @@ namespace KTKS_DonKH.DAL.ToXuLy
                     db.ThanhToanTruyThuTienNuocs.InsertOnSubmit(tttttn);
                     db.SubmitChanges();
                     return true;
-                }
-                else
-                {
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.ThanhToanTruyThuTienNuocs);
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -343,19 +280,10 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                if (CTaiKhoan.RoleTruyThuTienNuoc_CapNhat)
-                {
                     tttttn.ModifyDate = DateTime.Now;
                     tttttn.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     return true;
-                }
-                else
-                {
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.ThanhToanTruyThuTienNuocs);
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -369,18 +297,9 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                if (CTaiKhoan.RoleTruyThuTienNuoc_CapNhat)
-                {
                     db.ThanhToanTruyThuTienNuocs.DeleteOnSubmit(tttttn);
                     db.SubmitChanges();
                     return true;
-                }
-                else
-                {
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.ThanhToanTruyThuTienNuocs);
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
             }
             catch (Exception ex)
             {

@@ -14,13 +14,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_Xem || CTaiKhoan.RoleCapNhat_CapNhat)
-                    return db.HienTrangKiemTras.OrderBy(item => item.STT).ToList();
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
+                return db.HienTrangKiemTras.OrderBy(item => item.STT).ToList();
             }
             catch (Exception ex)
             {
@@ -64,25 +58,16 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_CapNhat)
-                {
-                    if (db.HienTrangKiemTras.Count() > 0)
-                        hientrangkiemtra.MaHTKT = db.HienTrangKiemTras.Max(itemHTKT => itemHTKT.MaHTKT) + 1;
-                    else
-                        hientrangkiemtra.MaHTKT = 1;
-                    hientrangkiemtra.CreateDate = DateTime.Now;
-                    hientrangkiemtra.CreateBy = CTaiKhoan.MaUser;
-                    db.HienTrangKiemTras.InsertOnSubmit(hientrangkiemtra);
-                    db.SubmitChanges();
-                    //MessageBox.Show("Thành công Thêm HienTrangKiemTra", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
-                }
+                if (db.HienTrangKiemTras.Count() > 0)
+                    hientrangkiemtra.MaHTKT = db.HienTrangKiemTras.Max(itemHTKT => itemHTKT.MaHTKT) + 1;
                 else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.HienTrangKiemTras);
-                    return false;
-                }
+                    hientrangkiemtra.MaHTKT = 1;
+                hientrangkiemtra.CreateDate = DateTime.Now;
+                hientrangkiemtra.CreateBy = CTaiKhoan.MaUser;
+                db.HienTrangKiemTras.InsertOnSubmit(hientrangkiemtra);
+                db.SubmitChanges();
+                //MessageBox.Show("Thành công Thêm HienTrangKiemTra", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
             }
             catch (Exception ex)
             {
@@ -96,20 +81,11 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_CapNhat)
-                {
-                    hientrangkiemtra.ModifyDate = DateTime.Now;
-                    hientrangkiemtra.ModifyBy = CTaiKhoan.MaUser;
-                    db.SubmitChanges();
-                    //MessageBox.Show("Thành công Sửa TrangThaiBamChi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.HienTrangKiemTras);
-                    return false;
-                }
+                hientrangkiemtra.ModifyDate = DateTime.Now;
+                hientrangkiemtra.ModifyBy = CTaiKhoan.MaUser;
+                db.SubmitChanges();
+                //MessageBox.Show("Thành công Sửa TrangThaiBamChi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
             }
             catch (Exception)
             {
@@ -123,20 +99,11 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_CapNhat)
-                {
-                    //hientrangkiemtra.ModifyDate = DateTime.Now;
-                    //hientrangkiemtra.ModifyBy = CTaiKhoan.MaUser;
-                    db.SubmitChanges();
-                    //MessageBox.Show("Thành công Sửa TrangThaiBamChi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.HienTrangKiemTras);
-                    return false;
-                }
+                //hientrangkiemtra.ModifyDate = DateTime.Now;
+                //hientrangkiemtra.ModifyBy = CTaiKhoan.MaUser;
+                db.SubmitChanges();
+                //MessageBox.Show("Thành công Sửa TrangThaiBamChi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
             }
             catch (Exception ex)
             {
@@ -150,19 +117,10 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_CapNhat)
-                {
-                    db.HienTrangKiemTras.DeleteOnSubmit(hientrangkiemtra);
-                    db.SubmitChanges();
-                    //MessageBox.Show("Thành công Sửa TrangThaiBamChi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.HienTrangKiemTras);
-                    return false;
-                }
+                db.HienTrangKiemTras.DeleteOnSubmit(hientrangkiemtra);
+                db.SubmitChanges();
+                //MessageBox.Show("Thành công Sửa TrangThaiBamChi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
             }
             catch (Exception ex)
             {

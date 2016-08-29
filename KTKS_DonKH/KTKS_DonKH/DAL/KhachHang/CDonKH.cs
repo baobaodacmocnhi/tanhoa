@@ -75,21 +75,12 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleNhanDonKH_CapNhat)
-                {
                     donkh.CreateDate = DateTime.Now;
                     donkh.CreateBy = CTaiKhoan.MaUser;
                     db.DonKHs.InsertOnSubmit(donkh);
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Thêm DonKH", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.DonKHs);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -103,8 +94,6 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleQLDonKH_Xem||CTaiKhoan.RoleQLDonKH_CapNhat)
-                {
                     var query = from itemDonKH in db.DonKHs
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
@@ -126,12 +115,6 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     CreateBy = itemUser.HoTen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
             }
             catch (Exception ex)
             {
@@ -144,8 +127,6 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
-                {
                     var query = from itemDonKH in db.DonKHs
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
@@ -168,12 +149,6 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     CreateBy = itemUser.HoTen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
             }
             catch (Exception ex)
             {
@@ -186,8 +161,6 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
-                {
                     var query = from itemDonKH in db.DonKHs
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
@@ -210,12 +183,6 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     CreateBy=itemUser.HoTen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
             }
             catch (Exception ex)
             {
@@ -228,8 +195,6 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
-                {
                     var query = from itemDonKH in db.DonKHs
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
@@ -248,12 +213,6 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.NVKiemTra,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
             }
             catch (Exception ex)
             {
@@ -266,8 +225,6 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
-                {
                     var query = from itemDonKH in db.DonKHs
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
@@ -287,12 +244,6 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.NVKiemTra,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
             }
             catch (Exception ex)
             {
@@ -305,8 +256,6 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
-                {
                     var query = from itemDonKH in db.DonKHs
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
@@ -326,12 +275,6 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.NVKiemTra,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
             }
             catch (Exception ex)
             {
@@ -344,8 +287,6 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
-                {
                     var query = from itemDonKH in db.DonKHs
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
@@ -366,12 +307,6 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.NVKiemTra,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
             }
             catch (Exception ex)
             {
@@ -384,8 +319,6 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
-                {
                     var query = from itemDonKH in db.DonKHs
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
@@ -406,12 +339,6 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.NVKiemTra,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
             }
             catch (Exception ex)
             {
@@ -424,8 +351,6 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
-                {
                     var query = from itemDonKH in db.DonKHs
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
@@ -446,12 +371,6 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.NVKiemTra,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
             }
             catch (Exception ex)
             {
@@ -464,8 +383,6 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
-                {
                     var query = from itemDonKH in db.DonKHs
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 where itemDonKH.CreateDate.Value.Date == TuNgay.Date
@@ -494,12 +411,6 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.LoaiKhac,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
             }
             catch (Exception ex)
             {
@@ -512,8 +423,6 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
-                {
                     var query = from itemDonKH in db.DonKHs
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 where itemDonKH.CreateDate.Value.Date >= TuNgay.Date && itemDonKH.CreateDate.Value.Date <= DenNgay.Date
@@ -542,12 +451,6 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.LoaiKhac,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
             }
             catch (Exception ex)
             {
@@ -560,20 +463,11 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleQLDonKH_CapNhat)
-                {
                     donkh.ModifyDate = DateTime.Now;
                     donkh.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Sửa DonKH", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.DonKHs);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -613,18 +507,10 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleQLDonKH_CapNhat)
-                {
                     db.DonKHs.DeleteOnSubmit(donkh);
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Xóa DonKH", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.DonKHs);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -699,8 +585,6 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleNhanDonKH_CapNhat)
-                {
                     if (db.LichSuChuyenVanPhongs.Count() > 0)
                     {
                         string ID = "MaLSChuyen";
@@ -719,13 +603,6 @@ namespace KTKS_DonKH.DAL.KhachHang
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Thêm TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LichSuChuyenVanPhongs);
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -739,20 +616,11 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleNhanDonKH_CapNhat)
-                {
                     lichsuchuyenvanphong.ModifyDate = DateTime.Now;
                     lichsuchuyenvanphong.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Sửa TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LichSuChuyenVanPhongs);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -766,19 +634,10 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleNhanDonKH_CapNhat)
-                {
                     db.LichSuChuyenVanPhongs.DeleteOnSubmit(lichsuchuyenvanphong);
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Sửa TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LichSuChuyenVanPhongs);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -797,8 +656,6 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleNhanDonKH_Xem || CTaiKhoan.RoleNhanDonKH_CapNhat)
-                {
                     var query = from itemLSCVP in db.LichSuChuyenVanPhongs
                                 join itemUser in db.Users on itemLSCVP.NguoiDi equals itemUser.MaU
                                 where itemLSCVP.MaDonTXL == MaDonTXL
@@ -811,12 +668,6 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     NguoiDi = itemUser.HoTen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
             }
             catch (Exception ex)
             {
@@ -829,8 +680,6 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleNhanDonKH_Xem || CTaiKhoan.RoleNhanDonKH_CapNhat)
-                {
                     var query = from itemLSCVP in db.LichSuChuyenVanPhongs
                                 join itemUser in db.Users on itemLSCVP.NguoiDi equals itemUser.MaU
                                 where itemLSCVP.MaDon == MaDonKH
@@ -845,12 +694,6 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     ChiTiet = "",
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
             }
             catch (Exception ex)
             {
@@ -880,8 +723,6 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleNhanDonKH_CapNhat)
-                {
                     if (db.LichSuChuyenBanDoiKhacs.Count() > 0)
                     {
                         string ID = "MaLSChuyen";
@@ -900,13 +741,6 @@ namespace KTKS_DonKH.DAL.KhachHang
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Thêm TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LichSuChuyenBanDoiKhacs);
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -920,20 +754,11 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleNhanDonKH_CapNhat)
-                {
                     lichsuchuyenbandoikhac.ModifyDate = DateTime.Now;
                     lichsuchuyenbandoikhac.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Sửa TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LichSuChuyenBanDoiKhacs);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -947,19 +772,10 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleNhanDonKH_CapNhat)
-                {
                     db.LichSuChuyenBanDoiKhacs.DeleteOnSubmit(lichsuchuyenbandoikhac);
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Sửa TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LichSuChuyenBanDoiKhacs);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -978,8 +794,6 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleNhanDonKH_Xem || CTaiKhoan.RoleNhanDonKH_CapNhat)
-                {
                     var query = from itemLSCVP in db.LichSuChuyenBanDoiKhacs
                                 //join itemUser in db.Users on itemLSCVP.NguoiDi equals itemUser.MaU
                                 where itemLSCVP.MaDonTXL == MaDonTXL
@@ -992,12 +806,6 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     //NguoiDi = itemUser.HoTen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
             }
             catch (Exception ex)
             {
@@ -1010,8 +818,6 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleNhanDonKH_Xem || CTaiKhoan.RoleNhanDonKH_CapNhat)
-                {
                     var query = from itemLSCVP in db.LichSuChuyenBanDoiKhacs
                                 //join itemUser in db.Users on itemLSCVP.NguoiDi equals itemUser.MaU
                                 where itemLSCVP.MaDon == MaDonKH
@@ -1026,12 +832,6 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     ChiTiet = "",
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
             }
             catch (Exception ex)
             {
@@ -1061,8 +861,6 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleNhanDonKH_CapNhat)
-                {
                     if (db.LichSuChuyenKhacs.Count() > 0)
                     {
                         string ID = "MaLSChuyen";
@@ -1081,13 +879,6 @@ namespace KTKS_DonKH.DAL.KhachHang
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Thêm TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LichSuChuyenKhacs);
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -1101,20 +892,11 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleNhanDonKH_CapNhat)
-                {
                     lichsuchuyenkhac.ModifyDate = DateTime.Now;
                     lichsuchuyenkhac.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Sửa TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LichSuChuyenKhacs);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -1128,19 +910,10 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleNhanDonKH_CapNhat)
-                {
                     db.LichSuChuyenKhacs.DeleteOnSubmit(lichsuchuyenkhac);
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Sửa TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LichSuChuyenKhacs);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -1159,8 +932,6 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleNhanDonKH_Xem || CTaiKhoan.RoleNhanDonKH_CapNhat)
-                {
                     var query = from itemLSCVP in db.LichSuChuyenKhacs
                                 //join itemUser in db.Users on itemLSCVP.NguoiDi equals itemUser.MaU
                                 where itemLSCVP.MaDonTXL == MaDonTXL
@@ -1173,12 +944,6 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     //NguoiDi = itemUser.HoTen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
             }
             catch (Exception ex)
             {
@@ -1191,8 +956,6 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleNhanDonKH_Xem || CTaiKhoan.RoleNhanDonKH_CapNhat)
-                {
                     var query = from itemLSCVP in db.LichSuChuyenKhacs
                                 //join itemUser in db.Users on itemLSCVP.NguoiDi equals itemUser.MaU
                                 where itemLSCVP.MaDon == MaDonKH
@@ -1207,12 +970,6 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     ChiTiet = "",
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
             }
             catch (Exception ex)
             {

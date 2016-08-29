@@ -20,13 +20,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_Xem || CTaiKhoan.RoleCapNhat_CapNhat)
-                {
                     return db.LoaiDons.OrderBy(item => item.STT).ToList();
-                }
-                else
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
             }
             catch (Exception ex)
             {
@@ -111,8 +105,6 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_CapNhat)
-                {
                     if (db.LoaiDons.Count() > 0)
                         loaidon.MaLD = db.LoaiDons.Max(itemLD => itemLD.MaLD) + 1;
                     else
@@ -123,13 +115,6 @@ namespace KTKS_DonKH.DAL.CapNhat
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Thêm LoaiDon", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LoaiDons);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -143,20 +128,11 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_CapNhat)
-                {
                     loaidon.ModifyDate = DateTime.Now;
                     loaidon.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Sửa LoaiDon", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LoaiDons);
-                    return false;
-                }
             }
             catch (Exception)
             {
@@ -170,19 +146,10 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_CapNhat)
-                {
                     db.LoaiDons.DeleteOnSubmit(loaidon);
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Sửa LoaiDon", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LoaiDons);
-                    return false;
-                }
             }
             catch (Exception ex)
             {

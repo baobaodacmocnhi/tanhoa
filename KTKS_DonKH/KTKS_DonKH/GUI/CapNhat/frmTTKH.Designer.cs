@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTTKH));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txtDuongDan = new System.Windows.Forms.TextBox();
@@ -50,46 +49,40 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 19);
+            this.label1.Location = new System.Drawing.Point(11, 17);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 17);
+            this.label1.Size = new System.Drawing.Size(73, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Đường Dẫn:";
             // 
             // txtDuongDan
             // 
-            this.txtDuongDan.Location = new System.Drawing.Point(102, 16);
+            this.txtDuongDan.Location = new System.Drawing.Point(89, 14);
             this.txtDuongDan.Margin = new System.Windows.Forms.Padding(4);
             this.txtDuongDan.Name = "txtDuongDan";
             this.txtDuongDan.ReadOnly = true;
-            this.txtDuongDan.Size = new System.Drawing.Size(400, 25);
+            this.txtDuongDan.Size = new System.Drawing.Size(350, 21);
             this.txtDuongDan.TabIndex = 1;
             // 
             // btnChonFile
             // 
-            this.btnChonFile.Image = ((System.Drawing.Image)(resources.GetObject("btnChonFile.Image")));
-            this.btnChonFile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnChonFile.Location = new System.Drawing.Point(101, 48);
+            this.btnChonFile.Location = new System.Drawing.Point(88, 42);
             this.btnChonFile.Margin = new System.Windows.Forms.Padding(4);
             this.btnChonFile.Name = "btnChonFile";
-            this.btnChonFile.Size = new System.Drawing.Size(100, 35);
+            this.btnChonFile.Size = new System.Drawing.Size(88, 31);
             this.btnChonFile.TabIndex = 2;
             this.btnChonFile.Text = "Chọn File";
-            this.btnChonFile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnChonFile.UseVisualStyleBackColor = true;
             this.btnChonFile.Click += new System.EventHandler(this.btnChonFile_Click);
             // 
             // btnCapNhat
             // 
-            this.btnCapNhat.Image = global::KTKS_DonKH.Properties.Resources.save_24x24;
-            this.btnCapNhat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCapNhat.Location = new System.Drawing.Point(252, 48);
+            this.btnCapNhat.Location = new System.Drawing.Point(220, 42);
             this.btnCapNhat.Name = "btnCapNhat";
-            this.btnCapNhat.Size = new System.Drawing.Size(100, 35);
+            this.btnCapNhat.Size = new System.Drawing.Size(88, 31);
             this.btnCapNhat.TabIndex = 3;
             this.btnCapNhat.Text = "Cập Nhật";
-            this.btnCapNhat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCapNhat.UseVisualStyleBackColor = true;
             this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
             // 
@@ -99,7 +92,7 @@
             this.dgvDSTTKHDate.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -112,12 +105,12 @@
             this.Dot,
             this.ModifyDate,
             this.ModifyBy});
-            this.dgvDSTTKHDate.Location = new System.Drawing.Point(12, 89);
+            this.dgvDSTTKHDate.Location = new System.Drawing.Point(10, 79);
             this.dgvDSTTKHDate.MultiSelect = false;
             this.dgvDSTTKHDate.Name = "dgvDSTTKHDate";
             this.dgvDSTTKHDate.ReadOnly = true;
             this.dgvDSTTKHDate.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDSTTKHDate.Size = new System.Drawing.Size(613, 468);
+            this.dgvDSTTKHDate.Size = new System.Drawing.Size(536, 413);
             this.dgvDSTTKHDate.TabIndex = 4;
             // 
             // Nam
@@ -160,40 +153,37 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(631, 112);
+            this.label2.Location = new System.Drawing.Point(552, 99);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(235, 17);
+            this.label2.Size = new System.Drawing.Size(213, 15);
             this.label2.TabIndex = 5;
             this.label2.Text = "Cập Nhật theo Kỳ mất khoảng 30 phút";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(631, 84);
+            this.label3.Location = new System.Drawing.Point(552, 74);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(233, 17);
+            this.label3.Size = new System.Drawing.Size(212, 15);
             this.label3.TabIndex = 6;
             this.label3.Text = "Cập Nhật theo Đợt mất khoảng 2 phút";
             // 
             // btnXuatAccess
             // 
-            this.btnXuatAccess.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
-            this.btnXuatAccess.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXuatAccess.Location = new System.Drawing.Point(387, 48);
+            this.btnXuatAccess.Location = new System.Drawing.Point(339, 42);
             this.btnXuatAccess.Name = "btnXuatAccess";
-            this.btnXuatAccess.Size = new System.Drawing.Size(115, 35);
+            this.btnXuatAccess.Size = new System.Drawing.Size(101, 31);
             this.btnXuatAccess.TabIndex = 12;
             this.btnXuatAccess.Text = "Xuất Access";
-            this.btnXuatAccess.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnXuatAccess.UseVisualStyleBackColor = true;
             this.btnXuatAccess.Click += new System.EventHandler(this.btnXuatAccess_Click);
             // 
             // frmTTKH
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(873, 570);
+            this.ClientSize = new System.Drawing.Size(764, 503);
             this.Controls.Add(this.btnXuatAccess);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -202,7 +192,7 @@
             this.Controls.Add(this.btnChonFile);
             this.Controls.Add(this.txtDuongDan);
             this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmTTKH";
             this.Text = "Thông Tin Khách Hàng";

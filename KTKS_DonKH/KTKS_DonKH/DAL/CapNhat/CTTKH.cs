@@ -24,8 +24,6 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_CapNhat)
-                {
                     string[] lines = File.ReadAllLines(pathFile);
                     string[] ContentsLineDate = lines[0].Replace("\",\"", "$").Replace("\"", "").Split('$');
                     if (db.Connection.State == System.Data.ConnectionState.Closed)
@@ -112,14 +110,6 @@ namespace KTKS_DonKH.DAL.CapNhat
                     db.Transaction.Commit();
                     MessageBox.Show("Thành công Cập Nhật TTKhachHang", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.TTKhachHangs);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.TTKhachHangDates);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -144,8 +134,6 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_CapNhat)
-                {
                     string[] lines = File.ReadAllLines(pathFile);
                     string[] ContentsLineDate = lines[0].Replace("\",\"", "$").Replace("\"", "").Split('$');
                     if (db.Connection.State == System.Data.ConnectionState.Closed)
@@ -227,14 +215,6 @@ namespace KTKS_DonKH.DAL.CapNhat
                     db.Transaction.Commit();
                     MessageBox.Show("Thành công Cập Nhật TTKhachHang", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.TTKhachHangs);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.TTKhachHangDates);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -286,15 +266,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_Xem || CTaiKhoan.RoleCapNhat_CapNhat)
-                {
                     return db.TTKhachHangDates.ToList();
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
             }
             catch (Exception ex)
             {
@@ -307,19 +279,10 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_CapNhat)
-                {
                     ttkhdate.ModifyDate = DateTime.Now;
                     ttkhdate.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.TTKhachHangDates);
-                    return false;
-                }
             }
             catch (Exception ex)
             {

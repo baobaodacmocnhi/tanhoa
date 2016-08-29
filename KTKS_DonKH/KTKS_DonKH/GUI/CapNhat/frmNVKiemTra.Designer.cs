@@ -30,12 +30,12 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDSNVKiemTra = new System.Windows.Forms.DataGridView();
+            this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.txtHoTenNV = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSNVKiemTra)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,7 +45,7 @@
             this.dgvDSNVKiemTra.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -55,55 +55,13 @@
             this.dgvDSNVKiemTra.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaNV,
             this.HoTen});
-            this.dgvDSNVKiemTra.Location = new System.Drawing.Point(12, 84);
+            this.dgvDSNVKiemTra.Location = new System.Drawing.Point(10, 74);
             this.dgvDSNVKiemTra.Name = "dgvDSNVKiemTra";
             this.dgvDSNVKiemTra.ReadOnly = true;
-            this.dgvDSNVKiemTra.Size = new System.Drawing.Size(345, 247);
+            this.dgvDSNVKiemTra.Size = new System.Drawing.Size(302, 218);
             this.dgvDSNVKiemTra.TabIndex = 9;
             this.dgvDSNVKiemTra.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSNVKiemTra_CellContentClick);
             this.dgvDSNVKiemTra.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSNVKiemTra_RowPostPaint);
-            // 
-            // btnSua
-            // 
-            this.btnSua.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
-            this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSua.Location = new System.Drawing.Point(287, 43);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(66, 35);
-            this.btnSua.TabIndex = 8;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSua.UseVisualStyleBackColor = true;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
-            // 
-            // btnThem
-            // 
-            this.btnThem.Image = global::KTKS_DonKH.Properties.Resources.add_24x24;
-            this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThem.Location = new System.Drawing.Point(174, 43);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(77, 35);
-            this.btnThem.TabIndex = 7;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnThem.UseVisualStyleBackColor = true;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
-            // 
-            // txtHoTenNV
-            // 
-            this.txtHoTenNV.Location = new System.Drawing.Point(149, 12);
-            this.txtHoTenNV.Name = "txtHoTenNV";
-            this.txtHoTenNV.Size = new System.Drawing.Size(204, 25);
-            this.txtHoTenNV.TabIndex = 6;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(123, 17);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Họ Tên Nhân Viên:";
             // 
             // MaNV
             // 
@@ -121,19 +79,55 @@
             this.HoTen.ReadOnly = true;
             this.HoTen.Width = 300;
             // 
+            // btnSua
+            // 
+            this.btnSua.Location = new System.Drawing.Point(251, 38);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(58, 31);
+            this.btnSua.TabIndex = 8;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
+            // btnThem
+            // 
+            this.btnThem.Location = new System.Drawing.Point(152, 38);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(67, 31);
+            this.btnThem.TabIndex = 7;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
+            // txtHoTenNV
+            // 
+            this.txtHoTenNV.Location = new System.Drawing.Point(130, 11);
+            this.txtHoTenNV.Name = "txtHoTenNV";
+            this.txtHoTenNV.Size = new System.Drawing.Size(179, 21);
+            this.txtHoTenNV.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(110, 15);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Họ Tên Nhân Viên:";
+            // 
             // frmNVKiemTra
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(372, 344);
+            this.ClientSize = new System.Drawing.Size(326, 304);
             this.Controls.Add(this.dgvDSNVKiemTra);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.txtHoTenNV);
             this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmNVKiemTra";
             this.Text = "Nhân Viên Kiểm Tra";
             this.Load += new System.EventHandler(this.frmNVKiemTra_Load);

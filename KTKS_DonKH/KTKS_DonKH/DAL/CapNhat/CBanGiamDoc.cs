@@ -14,13 +14,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_Xem||CTaiKhoan.RoleCapNhat_CapNhat)
                     return db.BanGiamDocs.ToList();
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
             }
             catch (Exception ex)
             {
@@ -46,8 +40,6 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_CapNhat)
-                {
                     if (db.BanGiamDocs.Count() > 0)
                         bangiamdoc.MaBGD = db.BanGiamDocs.Max(itemBGD => itemBGD.MaBGD) + 1;
                     else
@@ -58,13 +50,6 @@ namespace KTKS_DonKH.DAL.CapNhat
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Thêm BanGiamDoc", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.BanGiamDocs);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -78,20 +63,11 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat_CapNhat)
-                {
                     bangiamdoc.ModifyDate = DateTime.Now;
                     bangiamdoc.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Sửa BanGiamDoc", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.BanGiamDocs);
-                    return false;
-                }
             }
             catch (Exception ex)
             {

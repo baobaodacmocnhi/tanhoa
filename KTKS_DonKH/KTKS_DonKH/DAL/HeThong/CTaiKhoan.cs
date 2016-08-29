@@ -449,8 +449,6 @@ namespace KTKS_DonKH.DAL.HeThong
         {
             try
             {
-                if (CTaiKhoan.RoleTaiKhoan_Xem||CTaiKhoan.RoleTaiKhoan_CapNhat)
-                {
                     var taikhoans = from itemUser in db.Users
                                     where itemUser.MaU != 0 && itemUser.TaiKhoan != TaiKhoan
                                     select new
@@ -505,10 +503,6 @@ namespace KTKS_DonKH.DAL.HeThong
                                         );
                     }
                     return table;
-                }
-                else
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
             }
             catch (Exception ex)
             {
@@ -525,15 +519,7 @@ namespace KTKS_DonKH.DAL.HeThong
         {
             try
             {
-                if (CTaiKhoan.RoleTaiKhoan_Xem || CTaiKhoan.RoleTaiKhoan_CapNhat)
-                {
                     return db.Users.Where(itemUser => itemUser.MaU != 0 && itemUser.TaiKhoan != TaiKhoan).ToList();
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
             }
             catch (Exception ex)
             {
@@ -633,8 +619,6 @@ namespace KTKS_DonKH.DAL.HeThong
         {
             try
             {
-                if (CTaiKhoan.RoleTaiKhoan_CapNhat)
-                {
                     if (!db.Users.Any(item => item.TaiKhoan == nguoidung.TaiKhoan))
                     {
                         if (db.Users.Count() > 0)
@@ -664,13 +648,6 @@ namespace KTKS_DonKH.DAL.HeThong
                         db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.Users);
                         return false;
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.Users);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -684,8 +661,6 @@ namespace KTKS_DonKH.DAL.HeThong
         {
             try
             {
-                if (CTaiKhoan.RoleTaiKhoan_CapNhat)
-                {
                     foreach (var itemDetailRole in db.DetailRoles.Where(itemTaiKhoan => itemTaiKhoan.MaU == nguoidung.MaU))
                     {
                         db.DetailRoles.DeleteOnSubmit(itemDetailRole);
@@ -694,13 +669,6 @@ namespace KTKS_DonKH.DAL.HeThong
                     db.SubmitChanges();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.Users);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -714,8 +682,6 @@ namespace KTKS_DonKH.DAL.HeThong
         {
             try
             {
-                if (CTaiKhoan.RoleTaiKhoan_CapNhat)
-                {
                     if (ChangedTaiKhoan)
                         if (!db.Users.Any(item => item.TaiKhoan == nguoidung.TaiKhoan))
                         {
@@ -739,13 +705,6 @@ namespace KTKS_DonKH.DAL.HeThong
                         //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return true;
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.Users);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -765,8 +724,6 @@ namespace KTKS_DonKH.DAL.HeThong
         {
             try
             {
-                if (CTaiKhoan.RoleTaiKhoan_CapNhat)
-                {
                     if (Quyen == "QuyenXem")
                         db.DetailRoles.Single(itemRoleTaiKhoan => itemRoleTaiKhoan.MaU == MaU && itemRoleTaiKhoan.MaR == MaR).QuyenXem = Value;
                     else
@@ -776,13 +733,6 @@ namespace KTKS_DonKH.DAL.HeThong
                     db.DetailRoles.Single(itemRoleTaiKhoan => itemRoleTaiKhoan.MaU == MaU && itemRoleTaiKhoan.MaR == MaR).User.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     return true;
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.DetailRoles);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -822,8 +772,6 @@ namespace KTKS_DonKH.DAL.HeThong
         {
             try
             {
-                if (CTaiKhoan.RoleTaiKhoan_Xem || CTaiKhoan.RoleTaiKhoan_CapNhat)
-                {
                     var queryRoles = from itemDR in db.DetailRoles
                                      where itemDR.MaU == MaU
                                      select new
@@ -834,12 +782,6 @@ namespace KTKS_DonKH.DAL.HeThong
                                          itemDR.QuyenCapNhat
                                      };
                     return CLinQToDataTable.LINQToDataTable(queryRoles);
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
             }
             catch (Exception ex)
             {
