@@ -18,13 +18,13 @@ namespace KTKS_DonKH.GUI.HeThong
             InitializeComponent();
         }
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            this.ControlBox = false;
-            this.WindowState = FormWindowState.Maximized;
-            this.BringToFront();
-        }
+        //protected override void OnLoad(EventArgs e)
+        //{
+        //    base.OnLoad(e);
+        //    this.ControlBox = false;
+        //    this.WindowState = FormWindowState.Maximized;
+        //    this.BringToFront();
+        //}
 
         private void btnThayDoi_Click(object sender, EventArgs e)
         {
@@ -40,6 +40,11 @@ namespace KTKS_DonKH.GUI.HeThong
                     MessageBox.Show("Xác nhận Mật khẩu không giống nhau", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
                 MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void frmDoiMatKhau_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

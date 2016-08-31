@@ -30,12 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.pdfViewer1 = new DevExpress.XtraPdfViewer.PdfViewer();
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.pdfBarController1 = new DevExpress.XtraPdfViewer.Bars.PdfBarController();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.pdfCommandBar1 = new DevExpress.XtraPdfViewer.Bars.PdfCommandBar();
             this.pdfFileOpenBarItem1 = new DevExpress.XtraPdfViewer.Bars.PdfFileOpenBarItem();
             this.pdfPreviousPageBarItem1 = new DevExpress.XtraPdfViewer.Bars.PdfPreviousPageBarItem();
@@ -57,6 +56,7 @@
             this.pdfSetPageLevelPageModeCheckItem1 = new DevExpress.XtraPdfViewer.Bars.PdfSetPageLevelPageModeCheckItem();
             this.pdfSetPageWidthPageModeCheckItem1 = new DevExpress.XtraPdfViewer.Bars.PdfSetPageWidthPageModeCheckItem();
             this.pdfSetTextWidthPageModeCheckItem1 = new DevExpress.XtraPdfViewer.Bars.PdfSetTextWidthPageModeCheckItem();
+            this.pdfBarController1 = new DevExpress.XtraPdfViewer.Bars.PdfBarController();
             this.pdfViewer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pdfBarController1)).BeginInit();
@@ -71,8 +71,36 @@
             this.pdfViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pdfViewer1.Location = new System.Drawing.Point(0, 0);
             this.pdfViewer1.Name = "pdfViewer1";
-            this.pdfViewer1.Size = new System.Drawing.Size(1184, 562);
+            this.pdfViewer1.Size = new System.Drawing.Size(1036, 496);
             this.pdfViewer1.TabIndex = 0;
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 27);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 469);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(1036, 27);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 469);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 496);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1036, 0);
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(1036, 27);
             // 
             // barManager1
             // 
@@ -105,58 +133,6 @@
             this.pdfSetPageWidthPageModeCheckItem1,
             this.pdfSetTextWidthPageModeCheckItem1});
             this.barManager1.MaxItemId = 20;
-            // 
-            // barDockControlTop
-            // 
-            this.barDockControlTop.CausesValidation = false;
-            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1184, 31);
-            // 
-            // barDockControlBottom
-            // 
-            this.barDockControlBottom.CausesValidation = false;
-            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 562);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1184, 0);
-            // 
-            // barDockControlLeft
-            // 
-            this.barDockControlLeft.CausesValidation = false;
-            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 31);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 531);
-            // 
-            // barDockControlRight
-            // 
-            this.barDockControlRight.CausesValidation = false;
-            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1184, 31);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 531);
-            // 
-            // pdfBarController1
-            // 
-            this.pdfBarController1.BarItems.Add(this.pdfFileOpenBarItem1);
-            this.pdfBarController1.BarItems.Add(this.pdfPreviousPageBarItem1);
-            this.pdfBarController1.BarItems.Add(this.pdfNextPageBarItem1);
-            this.pdfBarController1.BarItems.Add(this.pdfZoomOutBarItem1);
-            this.pdfBarController1.BarItems.Add(this.pdfZoomInBarItem1);
-            this.pdfBarController1.BarItems.Add(this.pdfExactZoomListBarSubItem1);
-            this.pdfBarController1.BarItems.Add(this.pdfZoom10CheckItem1);
-            this.pdfBarController1.BarItems.Add(this.pdfZoom25CheckItem1);
-            this.pdfBarController1.BarItems.Add(this.pdfZoom50CheckItem1);
-            this.pdfBarController1.BarItems.Add(this.pdfZoom75CheckItem1);
-            this.pdfBarController1.BarItems.Add(this.pdfZoom100CheckItem1);
-            this.pdfBarController1.BarItems.Add(this.pdfZoom125CheckItem1);
-            this.pdfBarController1.BarItems.Add(this.pdfZoom150CheckItem1);
-            this.pdfBarController1.BarItems.Add(this.pdfZoom200CheckItem1);
-            this.pdfBarController1.BarItems.Add(this.pdfZoom400CheckItem1);
-            this.pdfBarController1.BarItems.Add(this.pdfZoom500CheckItem1);
-            this.pdfBarController1.BarItems.Add(this.pdfSetActualSizePageModeCheckItem1);
-            this.pdfBarController1.BarItems.Add(this.pdfSetPageLevelPageModeCheckItem1);
-            this.pdfBarController1.BarItems.Add(this.pdfSetPageWidthPageModeCheckItem1);
-            this.pdfBarController1.BarItems.Add(this.pdfSetTextWidthPageModeCheckItem1);
-            this.pdfBarController1.Control = this.pdfViewer1;
             // 
             // pdfCommandBar1
             // 
@@ -290,14 +266,38 @@
             this.pdfSetTextWidthPageModeCheckItem1.Id = 19;
             this.pdfSetTextWidthPageModeCheckItem1.Name = "pdfSetTextWidthPageModeCheckItem1";
             // 
+            // pdfBarController1
+            // 
+            this.pdfBarController1.BarItems.Add(this.pdfFileOpenBarItem1);
+            this.pdfBarController1.BarItems.Add(this.pdfPreviousPageBarItem1);
+            this.pdfBarController1.BarItems.Add(this.pdfNextPageBarItem1);
+            this.pdfBarController1.BarItems.Add(this.pdfZoomOutBarItem1);
+            this.pdfBarController1.BarItems.Add(this.pdfZoomInBarItem1);
+            this.pdfBarController1.BarItems.Add(this.pdfExactZoomListBarSubItem1);
+            this.pdfBarController1.BarItems.Add(this.pdfZoom10CheckItem1);
+            this.pdfBarController1.BarItems.Add(this.pdfZoom25CheckItem1);
+            this.pdfBarController1.BarItems.Add(this.pdfZoom50CheckItem1);
+            this.pdfBarController1.BarItems.Add(this.pdfZoom75CheckItem1);
+            this.pdfBarController1.BarItems.Add(this.pdfZoom100CheckItem1);
+            this.pdfBarController1.BarItems.Add(this.pdfZoom125CheckItem1);
+            this.pdfBarController1.BarItems.Add(this.pdfZoom150CheckItem1);
+            this.pdfBarController1.BarItems.Add(this.pdfZoom200CheckItem1);
+            this.pdfBarController1.BarItems.Add(this.pdfZoom400CheckItem1);
+            this.pdfBarController1.BarItems.Add(this.pdfZoom500CheckItem1);
+            this.pdfBarController1.BarItems.Add(this.pdfSetActualSizePageModeCheckItem1);
+            this.pdfBarController1.BarItems.Add(this.pdfSetPageLevelPageModeCheckItem1);
+            this.pdfBarController1.BarItems.Add(this.pdfSetPageWidthPageModeCheckItem1);
+            this.pdfBarController1.BarItems.Add(this.pdfSetTextWidthPageModeCheckItem1);
+            this.pdfBarController1.Control = this.pdfViewer1;
+            // 
             // frmPDFViewer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 562);
+            this.ClientSize = new System.Drawing.Size(1036, 496);
             this.Controls.Add(this.pdfViewer1);
-            this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimizeBox = false;
             this.Name = "frmPDFViewer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
