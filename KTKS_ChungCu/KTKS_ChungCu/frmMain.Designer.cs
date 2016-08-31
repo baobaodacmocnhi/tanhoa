@@ -566,7 +566,6 @@
             this.Phong.HeaderText = "Phòng";
             this.Phong.Name = "Phong";
             this.Phong.ReadOnly = true;
-            this.Phong.Width = 50;
             // 
             // TenLCT
             // 
