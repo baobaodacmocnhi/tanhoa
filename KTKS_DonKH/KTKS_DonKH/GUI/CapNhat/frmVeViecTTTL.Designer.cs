@@ -30,10 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDSVeViecTTTL = new System.Windows.Forms.DataGridView();
-            this.MaVV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenVV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.txtNoiDung = new System.Windows.Forms.TextBox();
@@ -42,6 +38,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtNoiNhan = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.MaVV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenVV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSVeViecTTTL)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,42 +69,11 @@
             this.dgvDSVeViecTTTL.TabIndex = 8;
             this.dgvDSVeViecTTTL.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSVeViecTTTL_CellContentClick);
             // 
-            // MaVV
-            // 
-            this.MaVV.DataPropertyName = "MaVV";
-            this.MaVV.HeaderText = "MaVV";
-            this.MaVV.Name = "MaVV";
-            this.MaVV.Visible = false;
-            // 
-            // TenVV
-            // 
-            this.TenVV.DataPropertyName = "TenVV";
-            this.TenVV.HeaderText = "Về Việc";
-            this.TenVV.Name = "TenVV";
-            this.TenVV.ReadOnly = true;
-            this.TenVV.Width = 200;
-            // 
-            // NoiDung
-            // 
-            this.NoiDung.DataPropertyName = "NoiDung";
-            this.NoiDung.HeaderText = "Nội Dung";
-            this.NoiDung.Name = "NoiDung";
-            this.NoiDung.ReadOnly = true;
-            this.NoiDung.Width = 400;
-            // 
-            // NoiNhan
-            // 
-            this.NoiNhan.DataPropertyName = "NoiNhan";
-            this.NoiNhan.HeaderText = "Nơi Nhận";
-            this.NoiNhan.Name = "NoiNhan";
-            this.NoiNhan.ReadOnly = true;
-            this.NoiNhan.Width = 200;
-            // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(874, 228);
+            this.btnSua.Location = new System.Drawing.Point(868, 228);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(57, 31);
+            this.btnSua.Size = new System.Drawing.Size(75, 25);
             this.btnSua.TabIndex = 7;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -114,7 +83,7 @@
             // 
             this.btnThem.Location = new System.Drawing.Point(787, 228);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(66, 31);
+            this.btnThem.Size = new System.Drawing.Size(75, 25);
             this.btnThem.TabIndex = 6;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
@@ -170,6 +139,37 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Nơi Nhận:";
             // 
+            // MaVV
+            // 
+            this.MaVV.DataPropertyName = "MaVV";
+            this.MaVV.HeaderText = "MaVV";
+            this.MaVV.Name = "MaVV";
+            this.MaVV.Visible = false;
+            // 
+            // TenVV
+            // 
+            this.TenVV.DataPropertyName = "TenVV";
+            this.TenVV.HeaderText = "Về Việc";
+            this.TenVV.Name = "TenVV";
+            this.TenVV.ReadOnly = true;
+            this.TenVV.Width = 200;
+            // 
+            // NoiDung
+            // 
+            this.NoiDung.DataPropertyName = "NoiDung";
+            this.NoiDung.HeaderText = "Nội Dung";
+            this.NoiDung.Name = "NoiDung";
+            this.NoiDung.ReadOnly = true;
+            this.NoiDung.Width = 350;
+            // 
+            // NoiNhan
+            // 
+            this.NoiNhan.DataPropertyName = "NoiNhan";
+            this.NoiNhan.HeaderText = "Nơi Nhận";
+            this.NoiNhan.Name = "NoiNhan";
+            this.NoiNhan.ReadOnly = true;
+            this.NoiNhan.Width = 150;
+            // 
             // frmVeViecTTTL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -199,10 +199,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvDSVeViecTTTL;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaVV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenVV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NoiNhan;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.TextBox txtNoiDung;
@@ -211,6 +207,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNoiNhan;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaVV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenVV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NoiNhan;
 
     }
 }

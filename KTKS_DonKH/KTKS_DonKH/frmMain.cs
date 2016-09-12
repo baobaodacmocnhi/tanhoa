@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.GUI.HeThong;
+using KTKS_DonKH.GUI.CapNhat;
 
 namespace KTKS_DonKH
 {
@@ -144,6 +145,42 @@ namespace KTKS_DonKH
             //StripStatus_HoTen.Text = "";
             //mnuPhoGiamDoc.Visible = false;
             mnuDangNhap_Click(sender, e);
+        }
+
+        private void mnuLoaiDon_Click(object sender, EventArgs e)
+        {
+            frmLoaiDon frm = new frmLoaiDon();
+            OpenForm(frm);
+        }
+
+        private void mnuLoaiChungTu_Click(object sender, EventArgs e)
+        {
+            frmLoaiChungTu frm = new frmLoaiChungTu();
+            OpenForm(frm);
+        }
+
+        private void mnuKhachHang_Click(object sender, EventArgs e)
+        {
+            frmTTKH frm = new frmTTKH();
+            OpenForm(frm);
+        }
+
+        private void mnuChiNhanhCapNuoc_Click(object sender, EventArgs e)
+        {
+            frmChiNhanh frm = new frmChiNhanh();
+            OpenForm(frm);
+        }
+
+        private void mnuGiaNuoc_Click(object sender, EventArgs e)
+        {
+            frmGiaNuoc frm = new frmGiaNuoc();
+            OpenForm(frm);
+        }
+
+        private void mnuBanGiamDoc_Click(object sender, EventArgs e)
+        {
+            frmBanGiamDoc frm = new frmBanGiamDoc();
+            OpenForm(frm);
         }
 
         

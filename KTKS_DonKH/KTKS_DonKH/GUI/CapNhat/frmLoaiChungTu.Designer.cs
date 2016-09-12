@@ -37,11 +37,11 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.dgvDSChungTu = new System.Windows.Forms.DataGridView();
+            this.txtThoiHan = new System.Windows.Forms.TextBox();
             this.MaLCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KyHieuLCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenLCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ThoiHan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtThoiHan = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSChungTu)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,10 +88,10 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(354, 94);
-            this.btnSua.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSua.Location = new System.Drawing.Point(337, 93);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(4);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(58, 31);
+            this.btnSua.Size = new System.Drawing.Size(75, 25);
             this.btnSua.TabIndex = 7;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -99,10 +99,10 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(277, 94);
-            this.btnThem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnThem.Location = new System.Drawing.Point(254, 93);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(4);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(67, 31);
+            this.btnThem.Size = new System.Drawing.Size(75, 25);
             this.btnThem.TabIndex = 6;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
@@ -126,7 +126,7 @@
             this.KyHieuLCT,
             this.TenLCT,
             this.ThoiHan});
-            this.dgvDSChungTu.Location = new System.Drawing.Point(10, 132);
+            this.dgvDSChungTu.Location = new System.Drawing.Point(12, 125);
             this.dgvDSChungTu.MultiSelect = false;
             this.dgvDSChungTu.Name = "dgvDSChungTu";
             this.dgvDSChungTu.ReadOnly = true;
@@ -134,6 +134,14 @@
             this.dgvDSChungTu.TabIndex = 8;
             this.dgvDSChungTu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSChungTu_CellContentClick);
             this.dgvDSChungTu.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSChungTu_RowPostPaint);
+            // 
+            // txtThoiHan
+            // 
+            this.txtThoiHan.Location = new System.Drawing.Point(236, 65);
+            this.txtThoiHan.Name = "txtThoiHan";
+            this.txtThoiHan.Size = new System.Drawing.Size(176, 21);
+            this.txtThoiHan.TabIndex = 5;
+            this.txtThoiHan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtThoiHan_KeyPress);
             // 
             // MaLCT
             // 
@@ -146,10 +154,9 @@
             // KyHieuLCT
             // 
             this.KyHieuLCT.DataPropertyName = "KyHieuLCT";
-            this.KyHieuLCT.HeaderText = "Ký Hiệu Loại Chứng Từ";
+            this.KyHieuLCT.HeaderText = "Ký Hiệu";
             this.KyHieuLCT.Name = "KyHieuLCT";
             this.KyHieuLCT.ReadOnly = true;
-            this.KyHieuLCT.Width = 150;
             // 
             // TenLCT
             // 
@@ -165,15 +172,6 @@
             this.ThoiHan.HeaderText = "Thời Hạn";
             this.ThoiHan.Name = "ThoiHan";
             this.ThoiHan.ReadOnly = true;
-            this.ThoiHan.Width = 150;
-            // 
-            // txtThoiHan
-            // 
-            this.txtThoiHan.Location = new System.Drawing.Point(236, 65);
-            this.txtThoiHan.Name = "txtThoiHan";
-            this.txtThoiHan.Size = new System.Drawing.Size(176, 21);
-            this.txtThoiHan.TabIndex = 5;
-            this.txtThoiHan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtThoiHan_KeyPress);
             // 
             // frmLoaiChungTu
             // 
@@ -211,10 +209,10 @@
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.DataGridView dgvDSChungTu;
+        private System.Windows.Forms.TextBox txtThoiHan;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaLCT;
         private System.Windows.Forms.DataGridViewTextBoxColumn KyHieuLCT;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenLCT;
         private System.Windows.Forms.DataGridViewTextBoxColumn ThoiHan;
-        private System.Windows.Forms.TextBox txtThoiHan;
     }
 }

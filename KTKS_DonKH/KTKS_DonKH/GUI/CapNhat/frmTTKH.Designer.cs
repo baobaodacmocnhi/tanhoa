@@ -34,15 +34,15 @@
             this.btnChonFile = new System.Windows.Forms.Button();
             this.btnCapNhat = new System.Windows.Forms.Button();
             this.dgvDSTTKHDate = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnXuatAccess = new System.Windows.Forms.Button();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.Nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ModifyDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ModifyBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnXuatAccess = new System.Windows.Forms.Button();
-            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSTTKHDate)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,7 +70,7 @@
             this.btnChonFile.Location = new System.Drawing.Point(88, 42);
             this.btnChonFile.Margin = new System.Windows.Forms.Padding(4);
             this.btnChonFile.Name = "btnChonFile";
-            this.btnChonFile.Size = new System.Drawing.Size(88, 31);
+            this.btnChonFile.Size = new System.Drawing.Size(75, 25);
             this.btnChonFile.TabIndex = 2;
             this.btnChonFile.Text = "Chọn File";
             this.btnChonFile.UseVisualStyleBackColor = true;
@@ -78,9 +78,9 @@
             // 
             // btnCapNhat
             // 
-            this.btnCapNhat.Location = new System.Drawing.Point(220, 42);
+            this.btnCapNhat.Location = new System.Drawing.Point(170, 42);
             this.btnCapNhat.Name = "btnCapNhat";
-            this.btnCapNhat.Size = new System.Drawing.Size(88, 31);
+            this.btnCapNhat.Size = new System.Drawing.Size(75, 25);
             this.btnCapNhat.TabIndex = 3;
             this.btnCapNhat.Text = "Cập Nhật";
             this.btnCapNhat.UseVisualStyleBackColor = true;
@@ -105,55 +105,18 @@
             this.Dot,
             this.ModifyDate,
             this.ModifyBy});
-            this.dgvDSTTKHDate.Location = new System.Drawing.Point(10, 79);
+            this.dgvDSTTKHDate.Location = new System.Drawing.Point(10, 73);
             this.dgvDSTTKHDate.MultiSelect = false;
             this.dgvDSTTKHDate.Name = "dgvDSTTKHDate";
             this.dgvDSTTKHDate.ReadOnly = true;
             this.dgvDSTTKHDate.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDSTTKHDate.Size = new System.Drawing.Size(536, 413);
+            this.dgvDSTTKHDate.Size = new System.Drawing.Size(457, 413);
             this.dgvDSTTKHDate.TabIndex = 4;
-            // 
-            // Nam
-            // 
-            this.Nam.DataPropertyName = "Nam";
-            this.Nam.HeaderText = "Năm";
-            this.Nam.Name = "Nam";
-            this.Nam.ReadOnly = true;
-            // 
-            // Ky
-            // 
-            this.Ky.DataPropertyName = "Ky";
-            this.Ky.HeaderText = "Kỳ";
-            this.Ky.Name = "Ky";
-            this.Ky.ReadOnly = true;
-            // 
-            // Dot
-            // 
-            this.Dot.DataPropertyName = "Dot";
-            this.Dot.HeaderText = "Đợt";
-            this.Dot.Name = "Dot";
-            this.Dot.ReadOnly = true;
-            // 
-            // ModifyDate
-            // 
-            this.ModifyDate.DataPropertyName = "ModifyDate";
-            this.ModifyDate.HeaderText = "Ngày Cập Nhật";
-            this.ModifyDate.Name = "ModifyDate";
-            this.ModifyDate.ReadOnly = true;
-            this.ModifyDate.Width = 148;
-            // 
-            // ModifyBy
-            // 
-            this.ModifyBy.DataPropertyName = "ModifyBy";
-            this.ModifyBy.HeaderText = "Cập Nhật Bởi";
-            this.ModifyBy.Name = "ModifyBy";
-            this.ModifyBy.ReadOnly = true;
-            this.ModifyBy.Width = 120;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(552, 99);
+            this.label2.Location = new System.Drawing.Point(473, 98);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(213, 15);
             this.label2.TabIndex = 5;
@@ -162,7 +125,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(552, 74);
+            this.label3.Location = new System.Drawing.Point(473, 73);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(212, 15);
             this.label3.TabIndex = 6;
@@ -170,13 +133,53 @@
             // 
             // btnXuatAccess
             // 
-            this.btnXuatAccess.Location = new System.Drawing.Point(339, 42);
+            this.btnXuatAccess.Location = new System.Drawing.Point(251, 42);
             this.btnXuatAccess.Name = "btnXuatAccess";
-            this.btnXuatAccess.Size = new System.Drawing.Size(101, 31);
+            this.btnXuatAccess.Size = new System.Drawing.Size(85, 25);
             this.btnXuatAccess.TabIndex = 12;
             this.btnXuatAccess.Text = "Xuất Access";
             this.btnXuatAccess.UseVisualStyleBackColor = true;
             this.btnXuatAccess.Click += new System.EventHandler(this.btnXuatAccess_Click);
+            // 
+            // Nam
+            // 
+            this.Nam.DataPropertyName = "Nam";
+            this.Nam.HeaderText = "Năm";
+            this.Nam.Name = "Nam";
+            this.Nam.ReadOnly = true;
+            this.Nam.Width = 50;
+            // 
+            // Ky
+            // 
+            this.Ky.DataPropertyName = "Ky";
+            this.Ky.HeaderText = "Kỳ";
+            this.Ky.Name = "Ky";
+            this.Ky.ReadOnly = true;
+            this.Ky.Width = 50;
+            // 
+            // Dot
+            // 
+            this.Dot.DataPropertyName = "Dot";
+            this.Dot.HeaderText = "Đợt";
+            this.Dot.Name = "Dot";
+            this.Dot.ReadOnly = true;
+            this.Dot.Width = 50;
+            // 
+            // ModifyDate
+            // 
+            this.ModifyDate.DataPropertyName = "ModifyDate";
+            this.ModifyDate.HeaderText = "Ngày Cập Nhật";
+            this.ModifyDate.Name = "ModifyDate";
+            this.ModifyDate.ReadOnly = true;
+            this.ModifyDate.Width = 120;
+            // 
+            // ModifyBy
+            // 
+            this.ModifyBy.DataPropertyName = "ModifyBy";
+            this.ModifyBy.HeaderText = "Cập Nhật Bởi";
+            this.ModifyBy.Name = "ModifyBy";
+            this.ModifyBy.ReadOnly = true;
+            this.ModifyBy.Width = 120;
             // 
             // frmTTKH
             // 
@@ -210,14 +213,14 @@
         private System.Windows.Forms.Button btnChonFile;
         private System.Windows.Forms.Button btnCapNhat;
         private System.Windows.Forms.DataGridView dgvDSTTKHDate;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnXuatAccess;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nam;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dot;
         private System.Windows.Forms.DataGridViewTextBoxColumn ModifyDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ModifyBy;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnXuatAccess;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }

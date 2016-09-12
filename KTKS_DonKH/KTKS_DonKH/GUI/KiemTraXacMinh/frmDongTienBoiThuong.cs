@@ -143,7 +143,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             if (e.KeyChar == 13 && txtDanhBo.Text.Trim() != "")
             {
                 Clear();
-                dgvDSKetQuaKiemTra.DataSource = _cKTXM.LoadDSCTKTXM(txtDanhBo.Text.Trim(), CTaiKhoan.MaUser);
+                dgvDSKetQuaKiemTra.DataSource = _cKTXM.LoadDSCTKTXM(txtDanhBo.Text.Trim());
             }
         }
 

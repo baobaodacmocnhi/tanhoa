@@ -1203,6 +1203,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 case "Danh Bộ":
                 case "Số Phiếu":
                 case "Số Thông Báo":
+                case "Lý Do":
                     txtNoiDungTimKiem.Visible = true;
                     txtNoiDungTimKiem2.Visible = true;
                     dateTimKiem.Visible = false;
@@ -1319,6 +1320,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 else
                                     if (radDSDongNuoc.Checked)
                                         dgvDSYCCHDB.DataSource = _cDongNuoc.LoadDSCTDongNuocByMaTB(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                            break;
+                        case "Lý Do":
+                            if (radDSCatTamDanhBo.Checked)
+                                dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCTDBByLyDo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            else
+                                if (radDSCatHuyDanhBo.Checked)
+                                    dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCHDBByLyDo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
                             break;
                     }
                 }

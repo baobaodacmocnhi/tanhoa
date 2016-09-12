@@ -30,15 +30,15 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDSGiaNuoc = new System.Windows.Forms.DataGridView();
-            this.MaGN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenGN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.txtGiaNuoc = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtDoiTuong = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.MaGN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenGN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSGiaNuoc)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,45 +59,22 @@
             this.MaGN,
             this.TenGN,
             this.DonGia});
-            this.dgvDSGiaNuoc.Location = new System.Drawing.Point(9, 105);
+            this.dgvDSGiaNuoc.Location = new System.Drawing.Point(12, 98);
             this.dgvDSGiaNuoc.MultiSelect = false;
             this.dgvDSGiaNuoc.Name = "dgvDSGiaNuoc";
             this.dgvDSGiaNuoc.ReadOnly = true;
-            this.dgvDSGiaNuoc.Size = new System.Drawing.Size(345, 150);
+            this.dgvDSGiaNuoc.Size = new System.Drawing.Size(363, 150);
             this.dgvDSGiaNuoc.TabIndex = 17;
             this.dgvDSGiaNuoc.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSGiaNuoc_CellContentClick);
             this.dgvDSGiaNuoc.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSGiaNuoc_CellFormatting);
             this.dgvDSGiaNuoc.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSGiaNuoc_RowPostPaint);
             // 
-            // MaGN
-            // 
-            this.MaGN.DataPropertyName = "MaGN";
-            this.MaGN.HeaderText = "MaGN";
-            this.MaGN.Name = "MaGN";
-            this.MaGN.ReadOnly = true;
-            this.MaGN.Visible = false;
-            // 
-            // TenGN
-            // 
-            this.TenGN.DataPropertyName = "TenGN";
-            this.TenGN.HeaderText = "Đối Tượng";
-            this.TenGN.Name = "TenGN";
-            this.TenGN.ReadOnly = true;
-            this.TenGN.Width = 250;
-            // 
-            // DonGia
-            // 
-            this.DonGia.DataPropertyName = "DonGia";
-            this.DonGia.HeaderText = "Đơn Giá";
-            this.DonGia.Name = "DonGia";
-            this.DonGia.ReadOnly = true;
-            // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(296, 67);
-            this.btnSua.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSua.Location = new System.Drawing.Point(211, 66);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(4);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(58, 31);
+            this.btnSua.Size = new System.Drawing.Size(75, 25);
             this.btnSua.TabIndex = 16;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -105,10 +82,10 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(220, 67);
-            this.btnThem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnThem.Location = new System.Drawing.Point(128, 66);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(4);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(67, 31);
+            this.btnThem.Size = new System.Drawing.Size(75, 25);
             this.btnThem.TabIndex = 15;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
@@ -149,12 +126,35 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "Đối Tượng:";
             // 
+            // MaGN
+            // 
+            this.MaGN.DataPropertyName = "MaGN";
+            this.MaGN.HeaderText = "MaGN";
+            this.MaGN.Name = "MaGN";
+            this.MaGN.ReadOnly = true;
+            this.MaGN.Visible = false;
+            // 
+            // TenGN
+            // 
+            this.TenGN.DataPropertyName = "TenGN";
+            this.TenGN.HeaderText = "Đối Tượng";
+            this.TenGN.Name = "TenGN";
+            this.TenGN.ReadOnly = true;
+            this.TenGN.Width = 200;
+            // 
+            // DonGia
+            // 
+            this.DonGia.DataPropertyName = "DonGia";
+            this.DonGia.HeaderText = "Đơn Giá";
+            this.DonGia.Name = "DonGia";
+            this.DonGia.ReadOnly = true;
+            // 
             // frmGiaNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(364, 286);
+            this.ClientSize = new System.Drawing.Size(384, 286);
             this.Controls.Add(this.dgvDSGiaNuoc);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);

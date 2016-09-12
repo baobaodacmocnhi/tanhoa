@@ -1298,6 +1298,40 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
+        public DataTable LoadDSCTCTDBByLyDo(string LyDo)
+        {
+            try
+            {
+                var query = from itemCTCTDB in db.CTCTDBs
+                            where itemCTCTDB.LyDo.Contains(LyDo)
+                            orderby itemCTCTDB.CreateDate descending
+                            select new
+                            {
+                                In = false,
+                                itemCTCTDB.PhieuDuocKy,
+                                itemCTCTDB.DaLapPhieu,
+                                itemCTCTDB.SoPhieu,
+                                itemCTCTDB.ThongBaoDuocKy,
+                                MaTB = itemCTCTDB.MaCTCTDB,
+                                Ma = itemCTCTDB.MaCTCTDB,
+                                itemCTCTDB.CreateDate,
+                                itemCTCTDB.DanhBo,
+                                itemCTCTDB.HoTen,
+                                itemCTCTDB.DiaChi,
+                                itemCTCTDB.LyDo,
+                                itemCTCTDB.GhiChuLyDo,
+                                itemCTCTDB.SoTien,
+                                itemCTCTDB.NguoiKy,
+                            };
+                return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public DataTable LoadDSCTCTDBByDate(DateTime TuNgay)
         {
             try
@@ -1942,6 +1976,40 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemCTCHDB.NguoiKy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCTCHDBByLyDo(string LyDo)
+        {
+            try
+            {
+                var query = from itemCTCHDB in db.CTCHDBs
+                            where itemCTCHDB.LyDo.Contains(LyDo)
+                            orderby itemCTCHDB.CreateDate descending
+                            select new
+                            {
+                                In = false,
+                                itemCTCHDB.PhieuDuocKy,
+                                itemCTCHDB.DaLapPhieu,
+                                itemCTCHDB.SoPhieu,
+                                itemCTCHDB.ThongBaoDuocKy,
+                                MaTB = itemCTCHDB.MaCTCHDB,
+                                Ma = itemCTCHDB.MaCTCHDB,
+                                itemCTCHDB.CreateDate,
+                                itemCTCHDB.DanhBo,
+                                itemCTCHDB.HoTen,
+                                itemCTCHDB.DiaChi,
+                                itemCTCHDB.LyDo,
+                                itemCTCHDB.GhiChuLyDo,
+                                itemCTCHDB.SoTien,
+                                itemCTCHDB.NguoiKy,
+                            };
+                return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
             }
             catch (Exception ex)
             {

@@ -2145,6 +2145,54 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
+        public DataTable LoadDSCTKTXM(string DanhBo)
+        {
+            try
+            {
+                var queryKH = from itemCTKTXM in db.CTKTXMs
+                              join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                              where itemCTKTXM.DanhBo == DanhBo && itemCTKTXM.KTXM.ToXuLy == false
+                              orderby itemCTKTXM.KTXM.MaDon ascending
+                              select new
+                              {
+                                  itemCTKTXM.MaCTKTXM,
+                                  itemCTKTXM.KTXM.ToXuLy,
+                                  itemCTKTXM.KTXM.MaDon,
+                                  itemCTKTXM.DanhBo,
+                                  itemCTKTXM.HoTen,
+                                  itemCTKTXM.DiaChi,
+                                  itemCTKTXM.NoiDungKiemTra,
+                                  itemCTKTXM.CreateDate,
+                                  CreateBy = itemUser.HoTen,
+                              };
+
+                var queryTXL = from itemCTKTXM in db.CTKTXMs
+                               join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                               where itemCTKTXM.DanhBo == DanhBo && itemCTKTXM.KTXM.ToXuLy == true
+                               orderby itemCTKTXM.KTXM.MaDonTXL ascending
+                               select new
+                               {
+                                   itemCTKTXM.MaCTKTXM,
+                                   itemCTKTXM.KTXM.ToXuLy,
+                                   MaDon = itemCTKTXM.KTXM.MaDonTXL,
+                                   itemCTKTXM.DanhBo,
+                                   itemCTKTXM.HoTen,
+                                   itemCTKTXM.DiaChi,
+                                   itemCTKTXM.NoiDungKiemTra,
+                                   itemCTKTXM.CreateDate,
+                                   CreateBy = itemUser.HoTen,
+                               };
+                DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKH);
+                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryTXL));
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public bool ThemCTKTXM(CTKTXM ctktxm)
         {
             try
