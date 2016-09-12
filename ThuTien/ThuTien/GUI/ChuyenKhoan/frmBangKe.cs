@@ -213,7 +213,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void dgvBangKe_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if (dgvBangKe.Columns[e.ColumnIndex].Name == "DanhBo" && e.FormattedValue.ToString().Replace(" ", "") != dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString())
+            if (dgvBangKe.Columns[e.ColumnIndex].Name == "DanhBo" && e.FormattedValue.ToString().Replace(" ", "") != dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString() && e.FormattedValue.ToString().Replace(" ", "").Length==11)
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
@@ -232,16 +232,16 @@ namespace ThuTien.GUI.ChuyenKhoan
                         TT_BangKe bangke = _cBangKe.Get(int.Parse(dgvBangKe["MaBK", e.RowIndex].Value.ToString()));
                         int SoTien = bangke.SoTien.Value;
                         bangke.DanhBo = e.FormattedValue.ToString().Replace(" ", "");
-                        if (e.FormattedValue.ToString().Replace(" ", "").Length == 11 && _cBangKe.Sua(bangke))
-                            if (_cTienDu.Update(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", ""), bangke.SoTien.Value * (-1), "Bảng Kê", "Sửa Đến Danh Bộ " + e.FormattedValue.ToString().Replace(" ", "").Insert(4, " ").Insert(7, " ")))
-                                if (string.IsNullOrEmpty(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", "")))
-                                {
-                                    if (_cTienDu.Update(bangke.DanhBo, SoTien, "Bảng Kê", "Sửa Từ Danh Bộ Rỗng"))
-                                        scope.Complete();
-                                }
-                                else
-                                    if (_cTienDu.Update(bangke.DanhBo, SoTien, "Bảng Kê", "Sửa Từ Danh Bộ " + dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", "").Insert(4, " ").Insert(7, " ")))
-                                        scope.Complete();
+                            if (_cBangKe.Sua(bangke))
+                                if (_cTienDu.Update(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", ""), bangke.SoTien.Value * (-1), "Bảng Kê", "Sửa Đến Danh Bộ " + e.FormattedValue.ToString().Replace(" ", "").Insert(7, " ").Insert(4, " ")))
+                                    if (string.IsNullOrEmpty(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", "")))
+                                    {
+                                        if (_cTienDu.Update(bangke.DanhBo, SoTien, "Bảng Kê", "Sửa Từ Danh Bộ Rỗng"))
+                                            scope.Complete();
+                                    }
+                                    else
+                                        if (_cTienDu.Update(bangke.DanhBo, SoTien, "Bảng Kê", "Sửa Từ Danh Bộ " + dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", "").Insert(7, " ").Insert(4, " ")))
+                                            scope.Complete();
                     }
                     _cTienDu.Refresh();
                 }

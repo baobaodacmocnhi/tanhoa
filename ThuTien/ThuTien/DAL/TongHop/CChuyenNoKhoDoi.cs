@@ -596,6 +596,7 @@ namespace ThuTien.DAL.TongHop
                                     Loai = "CQ",
                                     MaNV = itemtableND.MaND,
                                     itemtableND.HoTen,
+                                    itemCNKD.MaHD,
                                     itemCNKD.SoHoaDon,
                                     itemHD.TONGCONG,
                                 };
