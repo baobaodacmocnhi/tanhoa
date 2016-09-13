@@ -1968,7 +1968,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             {
                         var query = from itemCTKTXM in db.CTKTXMs
                                     //join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                                    where itemCTKTXM.NgayKTXM.Value.Date == TuNgay.Date && itemCTKTXM.CreateBy == MaUser
+                                    where itemCTKTXM.NgayKTXM.Value.Date == TuNgay.Date //&& itemCTKTXM.CreateBy == MaUser
                                     //orderby itemCTKTXM.KTXM.MaDon ascending
                                     select new
                                     {
@@ -1979,6 +1979,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                         itemCTKTXM.LapBangGia,
                                         itemCTKTXM.DongTienBoiThuong,
                                         itemCTKTXM.ChuyenLapTBCat,
+                                        itemCTKTXM.TieuThuTrungBinh,
                                         //CreateBy = itemUser.HoTen,
                                     };
                         return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
@@ -2069,7 +2070,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             {
                         var query = from itemCTKTXM in db.CTKTXMs
                                     //join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                                    where itemCTKTXM.NgayKTXM.Value.Date >= TuNgay.Date && itemCTKTXM.NgayKTXM.Value <= DenNgay.Date && itemCTKTXM.CreateBy == MaUser
+                                    where itemCTKTXM.NgayKTXM.Value.Date >= TuNgay.Date && itemCTKTXM.NgayKTXM.Value <= DenNgay.Date //&& itemCTKTXM.CreateBy == MaUser
                                     //orderby itemCTKTXM.KTXM.MaDon ascending
                                     select new
                                     {
@@ -2080,6 +2081,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                         itemCTKTXM.LapBangGia,
                                         itemCTKTXM.DongTienBoiThuong,
                                         itemCTKTXM.ChuyenLapTBCat,
+                                        itemCTKTXM.TieuThuTrungBinh,
                                         //CreateBy = itemUser.HoTen,
                                     };
                         return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
@@ -2354,7 +2356,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             {
                         var query = from itemCTKTXM in db.CTKTXMs
                                     //join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                                    where itemCTKTXM.NgayLapBangGia.Value.Date == NgayLapBangGia.Date && itemCTKTXM.CreateBy == MaUser
+                                    where itemCTKTXM.NgayLapBangGia.Value.Date == NgayLapBangGia.Date //&& itemCTKTXM.CreateBy == MaUser
                                     //orderby itemCTKTXM.KTXM.MaDon ascending
                                     select new
                                     {
@@ -2382,7 +2384,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             {
                         var query = from itemCTKTXM in db.CTKTXMs
                                     //join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                                    where itemCTKTXM.NgayLapBangGia.Value.Date >= TuNgayLapBangGia.Date && itemCTKTXM.NgayLapBangGia.Value <= DenNgayLapBangGia.Date && itemCTKTXM.CreateBy == MaUser
+                                    where itemCTKTXM.NgayLapBangGia.Value.Date >= TuNgayLapBangGia.Date && itemCTKTXM.NgayLapBangGia.Value <= DenNgayLapBangGia.Date //&& itemCTKTXM.CreateBy == MaUser
                                     //orderby itemCTKTXM.KTXM.MaDon ascending
                                     select new
                                     {

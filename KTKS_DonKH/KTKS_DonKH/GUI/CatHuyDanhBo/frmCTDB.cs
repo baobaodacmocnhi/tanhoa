@@ -1192,5 +1192,123 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             }
         }
 
+        private void txtDenMa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (txtTuMa.Text.Trim().Replace("-", "").Length > 2 && txtDenMa.Text.Trim().Replace("-", "").Length > 2 && e.KeyChar == 13)
+                if (txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2) == txtDenMa.Text.Trim().Replace("-", "").Substring(txtDenMa.Text.Trim().Replace("-", "").Length - 2, 2))
+                {
+                    int TuMa = int.Parse(txtTuMa.Text.Trim().Replace("-", "").Substring(0, txtTuMa.Text.Trim().Replace("-", "").Length - 2));
+                    int DenMa = int.Parse(txtDenMa.Text.Trim().Replace("-", "").Substring(0, txtDenMa.Text.Trim().Replace("-", "").Length - 2));
+                    while (TuMa <= DenMa)
+                    {
+                        lstMa.Items.Add(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2));
+                        TuMa++;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Từ Mã, Đến Mã phải cùng 1 năm", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+        }
+
+        private void btnLuuNhieu_Click(object sender, EventArgs e)
+        {
+            if (radToKH.Checked)
+                foreach (ListViewItem itemMa in lstMa.Items)
+                {
+                    DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+
+                    CHDB chdb = new CHDB();
+                    chdb.MaDon = donkh.MaDon;
+                    TTKhachHang ttkhachhang = _cTTKH.getTTKHbyID(donkh.DanhBo);
+
+                    CTCTDB ctctdb = new CTCTDB();
+                    ctctdb.DanhBo = ttkhachhang.HoTen;
+                    ctctdb.HopDong = ttkhachhang.GiaoUoc;
+                    ctctdb.HoTen = ttkhachhang.HoTen;
+                    ctctdb.DiaChi = ttkhachhang.DC1 + " " + ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkhachhang.Quan, ttkhachhang.Phuong); ;
+
+                    if (ttkhachhang != null)
+                    {
+                        ctctdb.Dot = ttkhachhang.Dot;
+                        ctctdb.Ky = ttkhachhang.Ky;
+                        ctctdb.Nam = ttkhachhang.Nam;
+                    }
+                    ctctdb.LyDo = cmbLyDo.SelectedValue.ToString();
+                    ctctdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
+                    if (txtSoTien.Text.Trim() != "")
+                        ctctdb.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".", ""));
+                    ctctdb.NoiDung = ((VeViecCHDB)cmbLyDo.SelectedItem).NoiDung;
+
+                    ctctdb.NoiNhan = txtNoiNhan.Text.Trim();
+
+                    ///Ký Tên
+                    BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                    if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                        ctctdb.ChucVu = "GIÁM ĐỐC";
+                    else
+                        ctctdb.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                    ctctdb.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                    ctctdb.ThongBaoDuocKy = true;
+
+                    chdb.CTCTDBs.Add(ctctdb);
+                    _cCHDB.ThemCHDB(chdb);
+                }
+            else
+                if (radTXL.Checked)
+                    foreach (ListViewItem itemMa in lstMa.Items)
+                    {
+                        DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+
+                        CHDB chdb = new CHDB();
+                        chdb.ToXuLy = true;
+                        chdb.MaDonTXL = dontxl.MaDon;
+                        TTKhachHang ttkhachhang = _cTTKH.getTTKHbyID(dontxl.DanhBo);
+
+                        CTCTDB ctctdb = new CTCTDB();
+                        ctctdb.DanhBo = ttkhachhang.HoTen;
+                        ctctdb.HopDong = ttkhachhang.GiaoUoc;
+                        ctctdb.HoTen = ttkhachhang.HoTen;
+                        ctctdb.DiaChi = ttkhachhang.DC1 + " " + ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkhachhang.Quan, ttkhachhang.Phuong); ;
+
+                        if (ttkhachhang != null)
+                        {
+                            ctctdb.Dot = ttkhachhang.Dot;
+                            ctctdb.Ky = ttkhachhang.Ky;
+                            ctctdb.Nam = ttkhachhang.Nam;
+                        }
+                        ctctdb.LyDo = cmbLyDo.SelectedValue.ToString();
+                        ctctdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
+                        if (txtSoTien.Text.Trim() != "")
+                            ctctdb.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".", ""));
+                        ctctdb.NoiDung = ((VeViecCHDB)cmbLyDo.SelectedItem).NoiDung;
+
+                        ctctdb.NoiNhan = txtNoiNhan.Text.Trim();
+
+                        ///Ký Tên
+                        BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                        if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                            ctctdb.ChucVu = "GIÁM ĐỐC";
+                        else
+                            ctctdb.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                        ctctdb.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                        ctctdb.ThongBaoDuocKy = true;
+
+                        chdb.CTCTDBs.Add(ctctdb);
+                        _cCHDB.ThemCHDB(chdb);
+                    }
+        }
+
+        private void lstMa_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (lstMa.Items.Count > 0 && e.Button == MouseButtons.Left)
+            {
+                foreach (ListViewItem item in lstMa.SelectedItems)
+                {
+                    lstMa.Items.Remove(item);
+                }
+            }
+        }
+
     }
 }
