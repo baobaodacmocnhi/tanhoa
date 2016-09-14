@@ -859,7 +859,7 @@
             this.columnHeader1});
             this.lstMa.Location = new System.Drawing.Point(930, 38);
             this.lstMa.Name = "lstMa";
-            this.lstMa.Size = new System.Drawing.Size(70, 100);
+            this.lstMa.Size = new System.Drawing.Size(116, 149);
             this.lstMa.TabIndex = 104;
             this.lstMa.UseCompatibleStateImageBehavior = false;
             this.lstMa.View = System.Windows.Forms.View.Details;
@@ -868,6 +868,7 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "Mã";
+            this.columnHeader1.Width = 100;
             // 
             // label24
             // 
@@ -913,7 +914,7 @@
             // 
             // btnLuuNhieu
             // 
-            this.btnLuuNhieu.Location = new System.Drawing.Point(1005, 113);
+            this.btnLuuNhieu.Location = new System.Drawing.Point(1051, 113);
             this.btnLuuNhieu.Margin = new System.Windows.Forms.Padding(2);
             this.btnLuuNhieu.Name = "btnLuuNhieu";
             this.btnLuuNhieu.Size = new System.Drawing.Size(75, 25);
@@ -925,25 +926,27 @@
             // radTXL
             // 
             this.radTXL.AutoSize = true;
-            this.radTXL.Location = new System.Drawing.Point(1006, 63);
+            this.radTXL.Location = new System.Drawing.Point(1052, 63);
             this.radTXL.Name = "radTXL";
             this.radTXL.Size = new System.Drawing.Size(72, 19);
             this.radTXL.TabIndex = 111;
             this.radTXL.TabStop = true;
             this.radTXL.Text = "Tổ Xử Lý";
             this.radTXL.UseVisualStyleBackColor = true;
+            this.radTXL.CheckedChanged += new System.EventHandler(this.radTXL_CheckedChanged);
             // 
             // radToKH
             // 
             this.radToKH.AutoSize = true;
             this.radToKH.Checked = true;
-            this.radToKH.Location = new System.Drawing.Point(1006, 38);
+            this.radToKH.Location = new System.Drawing.Point(1052, 38);
             this.radToKH.Name = "radToKH";
             this.radToKH.Size = new System.Drawing.Size(59, 19);
             this.radToKH.TabIndex = 110;
             this.radToKH.TabStop = true;
             this.radToKH.Text = "Tổ KH";
             this.radToKH.UseVisualStyleBackColor = true;
+            this.radToKH.CheckedChanged += new System.EventHandler(this.radToKH_CheckedChanged);
             // 
             // frmCTDB
             // 

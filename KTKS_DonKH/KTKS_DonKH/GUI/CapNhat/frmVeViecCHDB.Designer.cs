@@ -32,16 +32,16 @@
             this.txtNoiNhan = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvDSVeViecTTTL = new System.Windows.Forms.DataGridView();
-            this.MaVV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenVV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnThem = new System.Windows.Forms.Button();
             this.txtNoiDung = new System.Windows.Forms.TextBox();
             this.btnSua = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtVeViec = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.MaVV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenVV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSVeViecTTTL)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +52,6 @@
             this.txtNoiNhan.Name = "txtNoiNhan";
             this.txtNoiNhan.Size = new System.Drawing.Size(131, 201);
             this.txtNoiNhan.TabIndex = 14;
-            this.txtNoiNhan.Visible = false;
             // 
             // label3
             // 
@@ -62,7 +61,6 @@
             this.label3.Size = new System.Drawing.Size(62, 15);
             this.label3.TabIndex = 13;
             this.label3.Text = "Nơi Nhận:";
-            this.label3.Visible = false;
             // 
             // dgvDSVeViecTTTL
             // 
@@ -87,38 +85,6 @@
             this.dgvDSVeViecTTTL.Size = new System.Drawing.Size(765, 217);
             this.dgvDSVeViecTTTL.TabIndex = 17;
             this.dgvDSVeViecTTTL.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSVeViecTTTL_CellContentClick);
-            // 
-            // MaVV
-            // 
-            this.MaVV.DataPropertyName = "MaVV";
-            this.MaVV.HeaderText = "MaVV";
-            this.MaVV.Name = "MaVV";
-            this.MaVV.Visible = false;
-            // 
-            // TenVV
-            // 
-            this.TenVV.DataPropertyName = "TenVV";
-            this.TenVV.HeaderText = "Về Việc";
-            this.TenVV.Name = "TenVV";
-            this.TenVV.ReadOnly = true;
-            this.TenVV.Width = 200;
-            // 
-            // NoiDung
-            // 
-            this.NoiDung.DataPropertyName = "NoiDung";
-            this.NoiDung.HeaderText = "Nội Dung";
-            this.NoiDung.Name = "NoiDung";
-            this.NoiDung.ReadOnly = true;
-            this.NoiDung.Width = 400;
-            // 
-            // NoiNhan
-            // 
-            this.NoiNhan.DataPropertyName = "NoiNhan";
-            this.NoiNhan.HeaderText = "Nơi Nhận";
-            this.NoiNhan.Name = "NoiNhan";
-            this.NoiNhan.ReadOnly = true;
-            this.NoiNhan.Visible = false;
-            this.NoiNhan.Width = 200;
             // 
             // btnThem
             // 
@@ -172,6 +138,37 @@
             this.label1.Size = new System.Drawing.Size(50, 15);
             this.label1.TabIndex = 9;
             this.label1.Text = "Về Việc:";
+            // 
+            // MaVV
+            // 
+            this.MaVV.DataPropertyName = "MaVV";
+            this.MaVV.HeaderText = "MaVV";
+            this.MaVV.Name = "MaVV";
+            this.MaVV.Visible = false;
+            // 
+            // TenVV
+            // 
+            this.TenVV.DataPropertyName = "TenVV";
+            this.TenVV.HeaderText = "Về Việc";
+            this.TenVV.Name = "TenVV";
+            this.TenVV.ReadOnly = true;
+            this.TenVV.Width = 200;
+            // 
+            // NoiDung
+            // 
+            this.NoiDung.DataPropertyName = "NoiDung";
+            this.NoiDung.HeaderText = "Nội Dung";
+            this.NoiDung.Name = "NoiDung";
+            this.NoiDung.ReadOnly = true;
+            this.NoiDung.Width = 350;
+            // 
+            // NoiNhan
+            // 
+            this.NoiNhan.DataPropertyName = "NoiNhan";
+            this.NoiNhan.HeaderText = "Nơi Nhận";
+            this.NoiNhan.Name = "NoiNhan";
+            this.NoiNhan.ReadOnly = true;
+            this.NoiNhan.Width = 150;
             // 
             // frmVeViecCHDB
             // 

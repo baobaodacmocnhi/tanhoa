@@ -51,7 +51,7 @@ namespace KTKS_DonKH.GUI.CapNhat
                 VeViecCHDB vv = new VeViecCHDB();
                 vv.TenVV = txtVeViec.Text.Trim();
                 vv.NoiDung = txtNoiDung.Text;
-                //vv.NoiNhan = txtNoiNhan.Text.Trim();
+                vv.NoiNhan = txtNoiNhan.Text.Trim();
 
                 if (_cVeViecCHDB.Them(vv))
                     Clear();
@@ -68,7 +68,7 @@ namespace KTKS_DonKH.GUI.CapNhat
                     VeViecCHDB vv = _cVeViecCHDB.getVeViecCHDBbyID(int.Parse(dgvDSVeViecTTTL["MaVV", selectedindex].Value.ToString()));
                     vv.TenVV = txtVeViec.Text.Trim();
                     vv.NoiDung = txtNoiDung.Text;
-                    //vv.NoiNhan = txtNoiNhan.Text.Trim();
+                    vv.NoiNhan = txtNoiNhan.Text.Trim();
 
                     if (_cVeViecCHDB.Sua(vv))
                         Clear();
@@ -84,7 +84,7 @@ namespace KTKS_DonKH.GUI.CapNhat
                 selectedindex = e.RowIndex;
                 txtVeViec.Text = dgvDSVeViecTTTL["TenVV", e.RowIndex].Value.ToString();
                 txtNoiDung.Text = dgvDSVeViecTTTL["NoiDung", e.RowIndex].Value.ToString();
-                //txtNoiNhan.Text = dgvDSVeViecTTTL["NoiNhan", e.RowIndex].Value.ToString();
+                txtNoiNhan.Text = dgvDSVeViecTTTL["NoiNhan", e.RowIndex].Value.ToString();
             }
             catch (Exception)
             {

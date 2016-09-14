@@ -75,6 +75,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             chkThayDoiGiaNuoc.Checked = false;
             chkTamNgung.Checked = false;
             chkHuyHopDong.Checked = false;
+            chkMoNuoc.Checked = false;
 
             txtLyDoKhac.Text = "";
             txtDanhBo.Text = "";

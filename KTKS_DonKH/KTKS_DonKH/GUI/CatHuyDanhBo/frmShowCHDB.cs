@@ -98,10 +98,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             if (_cCHDB.getCTCHDBbyID(_MaCTCHDB) != null)
             {
                 _ctchdb = _cCHDB.getCTCHDBbyID(_MaCTCHDB);
-                if (!string.IsNullOrEmpty(_ctchdb.CHDB.MaDonTXL.ToString()))
+                if (_ctchdb.CHDB.ToXuLy)
                     txtMaDon.Text = "TXL"+_ctchdb.CHDB.MaDonTXL.Value.ToString().Insert(_ctchdb.CHDB.MaDonTXL.Value.ToString().Length - 2, "-");
                 else
-                    if (!string.IsNullOrEmpty(_ctchdb.CHDB.MaDon.ToString()))
                         txtMaDon.Text = _ctchdb.CHDB.MaDon.Value.ToString().Insert(_ctchdb.CHDB.MaDon.Value.ToString().Length - 2, "-");
                 txtMaThongBaoCH.Text = _ctchdb.MaCTCHDB.ToString().Insert(_ctchdb.MaCTCHDB.ToString().Length - 2, "-");
                 if (!string.IsNullOrEmpty(_ctchdb.MaCTCTDB.ToString()))
@@ -618,35 +617,20 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void cmbLyDo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (cmbLyDo.SelectedValue.ToString())
+            if (cmbLyDo.SelectedIndex != -1)
             {
-                case "Theo Yêu Cầu Khách Hàng":
-                case "Theo Yêu Cầu Công Ty":
-                case "Khách Hàng Không Sử Dụng Nước Máy Nhiều Kỳ (68=0)":
-                    txtNoiNhan.Text = "- Như trên.\r\n- Đội QLĐHN, Đội TT: để biết.\r\n- Đội TCTB: thực hiện.\r\n- Lưu.\r\n(" + txtMaDon.Text.Trim() + ")";
-                    txtSoTien.Text = "";
-                    break;
-                case "Khách Hàng Không Sử Dụng Nước Máy Theo Cam Kết Ngày":
-                    txtNoiNhan.Text = "- Như trên.\r\n- Đội TCTB: thực hiện.\r\n- Đội QLĐHN: để biết.\r\n- Lưu.\r\n(" + txtMaDon.Text.Trim() + ")";
-                    txtSoTien.Text = "";
-                    break;
-                case "Nợ Tiền Nước":
-                    txtNoiNhan.Text = "- Như trên.\r\n- Đội TT: thông báo khách hàng.\r\n- Đội TCTB: thực hiện.\r\n- Lưu.\r\n(" + txtMaDon.Text.Trim() + ")";
-                    txtSoTien.Text = "";
-                    break;
-                case "Nợ Tiền Gian Lận Nước":
-                case "Không Thanh Toán Tiền Bồi Thường ĐHN":
-                    txtNoiNhan.Text = "- Như trên\r\n- Đội QLĐHN: để biết.\r\n- Đội TCTB: thực hiện\r\n- Lưu.\r\n(" + txtMaDon.Text.Trim() + ")";
-                    txtSoTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", 1283641);
-                    break;
-                case "Khách Hàng Không Sử Dụng Nước Máy Nhiều Kỳ":
-                    txtNoiNhan.Text = "- Như trên\r\n- Đội QLĐHN: để biết.\r\n- Đội TCTB: thực hiện\r\n- Lưu.\r\n(" + txtMaDon.Text.Trim() + ")";
-                    break;
-                default:
-                    txtNoiNhan.Text = "";
-                    txtSoTien.Text = "";
-                    break;
+                VeViecCHDB vv = (VeViecCHDB)cmbLyDo.SelectedItem;
+                //txtNoiDung.Text = vv.NoiDung;
+                txtNoiNhan.Text = vv.NoiNhan + "\r\n(" + txtMaDon.Text.Trim() + ")";
             }
+            else
+            {
+                //txtNoiDung.Text = "";
+                txtNoiNhan.Text = "";
+            }
+
+            if (cmbLyDo.SelectedValue.ToString() == "Nợ Tiền Gian Lận Nước" || cmbLyDo.SelectedValue.ToString() == "Không Thanh Toán Tiền Bồi Thường ĐHN")
+                txtSoTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", 1283641);
         }
 
         private void chkKetQuaTCTBXuLy_CheckedChanged(object sender, EventArgs e)

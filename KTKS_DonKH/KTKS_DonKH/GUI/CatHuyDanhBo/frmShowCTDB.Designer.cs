@@ -318,7 +318,7 @@
             // 
             this.btnCapNhatTCTBXuLy.Location = new System.Drawing.Point(451, 84);
             this.btnCapNhatTCTBXuLy.Name = "btnCapNhatTCTBXuLy";
-            this.btnCapNhatTCTBXuLy.Size = new System.Drawing.Size(88, 31);
+            this.btnCapNhatTCTBXuLy.Size = new System.Drawing.Size(75, 25);
             this.btnCapNhatTCTBXuLy.TabIndex = 0;
             this.btnCapNhatTCTBXuLy.Text = "Cập Nhật";
             this.btnCapNhatTCTBXuLy.UseVisualStyleBackColor = true;
@@ -534,9 +534,9 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(496, 35);
+            this.btnSua.Location = new System.Drawing.Point(476, 43);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(57, 31);
+            this.btnSua.Size = new System.Drawing.Size(75, 25);
             this.btnSua.TabIndex = 10;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -546,7 +546,7 @@
             // 
             this.btnIn.Location = new System.Drawing.Point(574, 264);
             this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(109, 31);
+            this.btnIn.Size = new System.Drawing.Size(100, 25);
             this.btnIn.TabIndex = 11;
             this.btnIn.Text = "In Thông Báo";
             this.btnIn.UseVisualStyleBackColor = true;
@@ -589,7 +589,7 @@
             // 
             this.btnInPhieu.Location = new System.Drawing.Point(690, 264);
             this.btnInPhieu.Name = "btnInPhieu";
-            this.btnInPhieu.Size = new System.Drawing.Size(118, 31);
+            this.btnInPhieu.Size = new System.Drawing.Size(100, 25);
             this.btnInPhieu.TabIndex = 14;
             this.btnInPhieu.Text = "In Phiếu CHDB";
             this.btnInPhieu.UseVisualStyleBackColor = true;
@@ -606,7 +606,7 @@
             // 
             this.btnXoa.Location = new System.Drawing.Point(577, 212);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(59, 31);
+            this.btnXoa.Size = new System.Drawing.Size(75, 25);
             this.btnXoa.TabIndex = 86;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;

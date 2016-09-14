@@ -756,9 +756,9 @@
             // 
             // btnNhapNhieuDB
             // 
-            this.btnNhapNhieuDB.Location = new System.Drawing.Point(452, 441);
+            this.btnNhapNhieuDB.Location = new System.Drawing.Point(470, 441);
             this.btnNhapNhieuDB.Name = "btnNhapNhieuDB";
-            this.btnNhapNhieuDB.Size = new System.Drawing.Size(94, 31);
+            this.btnNhapNhieuDB.Size = new System.Drawing.Size(75, 25);
             this.btnNhapNhieuDB.TabIndex = 52;
             this.btnNhapNhieuDB.Text = "Nhập nhiều DB";
             this.btnNhapNhieuDB.UseVisualStyleBackColor = true;
@@ -779,7 +779,7 @@
             // 
             this.btnSua.Location = new System.Drawing.Point(389, 441);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(57, 31);
+            this.btnSua.Size = new System.Drawing.Size(75, 25);
             this.btnSua.TabIndex = 51;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -789,7 +789,7 @@
             // 
             this.btnInBienNhan.Location = new System.Drawing.Point(573, 417);
             this.btnInBienNhan.Name = "btnInBienNhan";
-            this.btnInBienNhan.Size = new System.Drawing.Size(107, 31);
+            this.btnInBienNhan.Size = new System.Drawing.Size(90, 25);
             this.btnInBienNhan.TabIndex = 30;
             this.btnInBienNhan.Text = "In Biên Nhận";
             this.btnInBienNhan.UseVisualStyleBackColor = true;
