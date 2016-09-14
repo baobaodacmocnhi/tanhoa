@@ -196,16 +196,15 @@ namespace ThuTien.GUI.Quay
                     else
                     {
                         dgvHoaDon.DataSource = _cLenhHuy.GetDSDangNgan(int.Parse(cmbTo.SelectedValue.ToString()));
-                    }   
-                }
+                    }
+                    foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                        if (_cCNKD.CheckExistCT(item.Cells["SoHoaDon"].Value.ToString()))
+                        {
+                            TT_CTChuyenNoKhoDoi ctcnkd = _cCNKD.GetCT(item.Cells["SoHoaDon"].Value.ToString());
 
-            foreach (DataGridViewRow item in dgvHoaDon.Rows)
-                if (_cCNKD.CheckExistCT(item.Cells["SoHoaDon"].Value.ToString()))
-                {
-                    TT_CTChuyenNoKhoDoi ctcnkd = _cCNKD.GetCT(item.Cells["SoHoaDon"].Value.ToString());
-
-                    //item.Cells["NgayGiaiTrach"].Value = ctcnkd.CreateDate.Value.ToString("dd/MM/yyyy");
-                    item.Cells["DangNgan"].Value = "CNKĐ";
+                            //item.Cells["NgayGiaiTrach"].Value = ctcnkd.CreateDate.Value.ToString("dd/MM/yyyy");
+                            item.Cells["DangNgan"].Value = "CNKĐ";
+                        }
                 }
         }
 

@@ -294,7 +294,7 @@ namespace ThuTien.DAL.Quay
                         join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
                         from itemtableDN in tableDN.DefaultIfEmpty()
                         where itemHD.NGAYGIAITRACH != null
-                        orderby itemHD.NGAYGIAITRACH ascending
+                        orderby itemHD.NGAYGIAITRACH descending
                         select new
                         {
                             itemHD.NGAYGIAITRACH,
@@ -327,7 +327,7 @@ namespace ThuTien.DAL.Quay
                         where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                            && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                            && itemHD.NGAYGIAITRACH != null
-                        orderby itemHD.NGAYGIAITRACH ascending
+                        orderby itemHD.NGAYGIAITRACH descending
                         select new
                         {
                             itemHD.NGAYGIAITRACH,

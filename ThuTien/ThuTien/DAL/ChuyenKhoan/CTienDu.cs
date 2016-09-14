@@ -272,9 +272,9 @@ namespace ThuTien.DAL.ChuyenKhoan
         public long GetTongTienTonDauNgay(DateTime CreateDate)
         {
             if (_db.TT_TienDuLichSus.Any(item => item.CreateDate.Value.Date >= CreateDate.Date))
-                return (long)(_db.TT_TienDus.Sum(item => item.SoTien) - _db.TT_TienDuLichSus.Where(item => item.CreateDate.Value.Date >= CreateDate.Date).Sum(item => item.SoTien));
+                return (long)(_db.TT_TienDus.Sum(item => (long)item.SoTien) - _db.TT_TienDuLichSus.Where(item => item.CreateDate.Value.Date >= CreateDate.Date).Sum(item => (long)item.SoTien));
             else
-                return (long)(_db.TT_TienDus.Sum(item => item.SoTien));
+                return (long)(_db.TT_TienDus.Sum(item => (long)item.SoTien));
         }
 
         public long GetTongTienTonDenNgay(DateTime CreateDate)
