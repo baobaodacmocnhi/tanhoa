@@ -622,15 +622,15 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 VeViecCHDB vv = (VeViecCHDB)cmbLyDo.SelectedItem;
                 //txtNoiDung.Text = vv.NoiDung;
                 txtNoiNhan.Text = vv.NoiNhan + "\r\n(" + txtMaDon.Text.Trim() + ")";
+
+                if (cmbLyDo.SelectedValue.ToString() == "Nợ Tiền Gian Lận Nước" || cmbLyDo.SelectedValue.ToString() == "Không Thanh Toán Tiền Bồi Thường ĐHN")
+                    txtSoTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", 1283641);
             }
             else
             {
                 //txtNoiDung.Text = "";
                 txtNoiNhan.Text = "";
             }
-
-            if (cmbLyDo.SelectedValue.ToString() == "Nợ Tiền Gian Lận Nước" || cmbLyDo.SelectedValue.ToString() == "Không Thanh Toán Tiền Bồi Thường ĐHN")
-                txtSoTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", 1283641);
         }
 
         private void chkKetQuaTCTBXuLy_CheckedChanged(object sender, EventArgs e)

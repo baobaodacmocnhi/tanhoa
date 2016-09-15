@@ -1013,6 +1013,29 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
+        public bool CheckCHDBbyDanhBo(string DanhBo)
+        {
+            try
+            {
+                if (db.CTCTDBs.Any(itemCTCTDB => itemCTCTDB.DanhBo == DanhBo))
+                {
+                    return true;
+                }
+                else
+                    if (db.CTCHDBs.Any(itemCTCHDB => itemCTCHDB.DanhBo == DanhBo))
+                    {
+                        return true;
+                    }
+                    else
+                        return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         #endregion
 
         #region CTCTDB (Chi Tiết Cắt Tạm Danh Bộ)

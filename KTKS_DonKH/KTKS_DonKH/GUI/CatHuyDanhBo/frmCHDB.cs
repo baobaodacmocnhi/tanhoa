@@ -82,7 +82,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             txtDiaChi.Text = "";
             ///
             //groupBoxNguyenNhanXuLy.Enabled = false;
-            cmbLyDo.SelectedIndex = 0;
+            cmbLyDo.SelectedIndex = -1;
             txtSoTien.Text = "";
             txtGhiChuXuLy.Text = "";
             cmbNoiDung.SelectedIndex = -1;
@@ -252,15 +252,15 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 VeViecCHDB vv = (VeViecCHDB)cmbLyDo.SelectedItem;
                 //txtNoiDung.Text = vv.NoiDung;
                 txtNoiNhan.Text = vv.NoiNhan + "\r\n(" + txtMaDon.Text.Trim() + ")";
+
+                if (cmbLyDo.SelectedItem.ToString() == "Nợ Tiền Gian Lận Nước" || cmbLyDo.SelectedValue.ToString() == "Không Thanh Toán Tiền Bồi Thường ĐHN")
+                    txtSoTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", 1283641);
             }
             else
             {
                 //txtNoiDung.Text = "";
                 txtNoiNhan.Text = "";
             }
-
-            if (cmbLyDo.SelectedValue.ToString() == "Nợ Tiền Gian Lận Nước" || cmbLyDo.SelectedValue.ToString() == "Không Thanh Toán Tiền Bồi Thường ĐHN")
-                txtSoTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", 1283641);
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
