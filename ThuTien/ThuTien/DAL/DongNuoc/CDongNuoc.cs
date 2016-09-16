@@ -274,6 +274,26 @@ namespace ThuTien.DAL.DongNuoc
             return LINQToDataTable(_db.TT_KQDongNuocs.Where(item => item.CreateBy == MaNV && item.NgayDN.Value.Date >= FromNgayDN.Date && item.NgayDN.Value.Date <= ToNgayDN.Date).ToList());
         }
 
+        public DataTable CountDongMoNuoc(int MaTo, DateTime FromDate, DateTime ToDate)
+        {
+            string sql = "declare @FromDate datetime;"
+                        + " declare @ToDate datetime;"
+                        + " declare @MaTo int;"
+                        + " set @FromDate='" + FromDate.ToString("yyyy-MM-dd") + "'"
+                        + " set @ToDate='" + ToDate.ToString("yyyy-MM-dd") + "'"
+                        + " set @MaTo=" + MaTo + ";"
+                        + " select dongnuoc.MaTo,(select TenTo from TT_To where MaTo=@MaTo) as TenTo,dongnuoc.DongNuoc,monuoc.MoNuoc from"
+                        + " (select @MaTo as MaTo,COUNT(kqdn.MaKQDN) as DongNuoc from HOADON hd,TT_KQDongNuoc kqdn,TT_CTDongNuoc ctdn"
+                        + " where hd.ID_HOADON=ctdn.MaHD and kqdn.MaDN=ctdn.MaDN and kqdn.NgayDN>=@FromDate and kqdn.NgayDN<=@ToDate"
+                        + " and hd.MAY>=(select TuCuonGCS from TT_To where MaTo=@MaTo) and hd.MAY<=(select DenCuonGCS from TT_To where MaTo=@MaTo)) dongnuoc"
+                        + " left join"
+                        + " (select @MaTo as MaTo,COUNT(kqdn.MaKQDN) as MoNuoc from HOADON hd,TT_KQDongNuoc kqdn,TT_CTDongNuoc ctdn"
+                        + " where hd.ID_HOADON=ctdn.MaHD and kqdn.MaDN=ctdn.MaDN and kqdn.NgayMN>=@FromDate and kqdn.NgayMN<=@ToDate"
+                        + " and hd.MAY>=(select TuCuonGCS from TT_To where MaTo=@MaTo) and hd.MAY<=(select DenCuonGCS from TT_To where MaTo=@MaTo)) monuoc on dongnuoc.MaTo=monuoc.MaTo";
+
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+        }
+
         public DataTable BaoCaoVatTu(DateTime FromNgayDN, DateTime ToNgayDN)
         {
             var query = from itemKQ in _db.TT_KQDongNuocs
