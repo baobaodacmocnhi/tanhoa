@@ -95,10 +95,6 @@
             this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label22 = new System.Windows.Forms.Label();
             this.dgvLichSuCHDB = new System.Windows.Forms.DataGridView();
-            this.Loai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ma = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayXuLy_LS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label20 = new System.Windows.Forms.Label();
             this.lstMa = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -110,6 +106,12 @@
             this.btnLuuNhieu = new System.Windows.Forms.Button();
             this.radToKH = new System.Windows.Forms.RadioButton();
             this.radTXL = new System.Windows.Forms.RadioButton();
+            this.Loai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ma = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayXuLy_LS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo_LS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LyDo_LS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxKetQuaCapTrenXuLy.SuspendLayout();
             this.groupBoxKetQuaTCTBXuLy.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -817,44 +819,15 @@
             this.Loai,
             this.Ma,
             this.CreateDate,
-            this.NgayXuLy_LS});
+            this.NgayXuLy_LS,
+            this.DanhBo_LS,
+            this.LyDo_LS});
             this.dgvLichSuCHDB.Location = new System.Drawing.Point(815, 286);
             this.dgvLichSuCHDB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvLichSuCHDB.Name = "dgvLichSuCHDB";
             this.dgvLichSuCHDB.ReadOnly = true;
-            this.dgvLichSuCHDB.Size = new System.Drawing.Size(417, 176);
+            this.dgvLichSuCHDB.Size = new System.Drawing.Size(563, 176);
             this.dgvLichSuCHDB.TabIndex = 61;
-            // 
-            // Loai
-            // 
-            this.Loai.DataPropertyName = "Loai";
-            this.Loai.HeaderText = "Loại";
-            this.Loai.Name = "Loai";
-            this.Loai.ReadOnly = true;
-            this.Loai.Width = 70;
-            // 
-            // Ma
-            // 
-            this.Ma.DataPropertyName = "Ma";
-            this.Ma.HeaderText = "Mã";
-            this.Ma.Name = "Ma";
-            this.Ma.ReadOnly = true;
-            this.Ma.Width = 50;
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Ngày Lập";
-            this.CreateDate.Name = "CreateDate";
-            this.CreateDate.ReadOnly = true;
-            this.CreateDate.Width = 90;
-            // 
-            // NgayXuLy_LS
-            // 
-            this.NgayXuLy_LS.DataPropertyName = "NgayXuLy";
-            this.NgayXuLy_LS.HeaderText = "Ngày Xử Lý";
-            this.NgayXuLy_LS.Name = "NgayXuLy_LS";
-            this.NgayXuLy_LS.ReadOnly = true;
             // 
             // label20
             // 
@@ -875,6 +848,7 @@
             this.lstMa.TabIndex = 96;
             this.lstMa.UseCompatibleStateImageBehavior = false;
             this.lstMa.View = System.Windows.Forms.View.Details;
+            this.lstMa.SelectedIndexChanged += new System.EventHandler(this.lstMa_SelectedIndexChanged);
             this.lstMa.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstMa_MouseDoubleClick);
             // 
             // columnHeader1
@@ -960,12 +934,57 @@
             this.radTXL.UseVisualStyleBackColor = true;
             this.radTXL.CheckedChanged += new System.EventHandler(this.radTXL_CheckedChanged);
             // 
+            // Loai
+            // 
+            this.Loai.DataPropertyName = "Loai";
+            this.Loai.HeaderText = "Loại";
+            this.Loai.Name = "Loai";
+            this.Loai.ReadOnly = true;
+            this.Loai.Width = 70;
+            // 
+            // Ma
+            // 
+            this.Ma.DataPropertyName = "Ma";
+            this.Ma.HeaderText = "Mã";
+            this.Ma.Name = "Ma";
+            this.Ma.ReadOnly = true;
+            this.Ma.Width = 50;
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
+            this.CreateDate.ReadOnly = true;
+            this.CreateDate.Width = 90;
+            // 
+            // NgayXuLy_LS
+            // 
+            this.NgayXuLy_LS.DataPropertyName = "NgayXuLy";
+            this.NgayXuLy_LS.HeaderText = "Ngày Xử Lý";
+            this.NgayXuLy_LS.Name = "NgayXuLy_LS";
+            this.NgayXuLy_LS.ReadOnly = true;
+            // 
+            // DanhBo_LS
+            // 
+            this.DanhBo_LS.DataPropertyName = "DanhBo";
+            this.DanhBo_LS.HeaderText = "Danh Bộ";
+            this.DanhBo_LS.Name = "DanhBo_LS";
+            this.DanhBo_LS.ReadOnly = true;
+            // 
+            // LyDo_LS
+            // 
+            this.LyDo_LS.DataPropertyName = "LyDo";
+            this.LyDo_LS.HeaderText = "Lý Do";
+            this.LyDo_LS.Name = "LyDo_LS";
+            this.LyDo_LS.ReadOnly = true;
+            // 
             // frmCHDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1271, 645);
+            this.ClientSize = new System.Drawing.Size(1390, 645);
             this.Controls.Add(this.radTXL);
             this.Controls.Add(this.radToKH);
             this.Controls.Add(this.btnLuuNhieu);
@@ -1088,10 +1107,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiNhan;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Loai;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ma;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NgayXuLy_LS;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ListView lstMa;
         private System.Windows.Forms.ColumnHeader columnHeader1;
@@ -1103,6 +1118,12 @@
         private System.Windows.Forms.Button btnLuuNhieu;
         private System.Windows.Forms.RadioButton radToKH;
         private System.Windows.Forms.RadioButton radTXL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Loai;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ma;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayXuLy_LS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo_LS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LyDo_LS;
 
     }
 }

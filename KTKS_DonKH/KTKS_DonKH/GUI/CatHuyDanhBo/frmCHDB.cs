@@ -1547,5 +1547,23 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         }
 
+        private void lstMa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstMa.SelectedItems.Count == 0)
+                return;
+
+            if (radToKH.Checked)
+            {
+                DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(lstMa.SelectedItems[0].Text.Trim().Replace("-", "")));
+                dgvLichSuCHDB.DataSource = _cCHDB.GetLichSuCHDB(donkh.DanhBo);
+            }
+            else
+                if (radTXL.Checked)
+                {
+                    DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(lstMa.SelectedItems[0].Text.Trim().Replace("-", "")));
+                    dgvLichSuCHDB.DataSource = _cCHDB.GetLichSuCHDB(dontxl.DanhBo);
+                }
+        }
+
     }
 }

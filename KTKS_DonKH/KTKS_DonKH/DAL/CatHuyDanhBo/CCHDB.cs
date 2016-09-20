@@ -3105,6 +3105,8 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                 Ma=itemCTCTDB.MaCTCTDB,
                                 itemCTCTDB.CreateDate,
                                 itemCTCTDB.NgayXuLy,
+                                itemCTCTDB.DanhBo,
+                                itemCTCTDB.LyDo,
                             };
             dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDB);
 
@@ -3116,6 +3118,8 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                 Ma = itemCTCHDB.MaCTCHDB,
                                 itemCTCHDB.CreateDate,
                                 itemCTCHDB.NgayXuLy,
+                                itemCTCHDB.DanhBo,
+                                itemCTCHDB.LyDo,
                             };
             dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCHDB));
 
@@ -3126,6 +3130,8 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                 Loai = "Phiếu Hủy",
                                 Ma = itemYCCHDB.MaYCCHDB,
                                 itemYCCHDB.CreateDate,
+                                itemYCCHDB.DanhBo,
+                                itemYCCHDB.LyDo,
                             };
             dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryYCCHDB));
             
