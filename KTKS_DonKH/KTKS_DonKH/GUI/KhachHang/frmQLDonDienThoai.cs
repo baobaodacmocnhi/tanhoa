@@ -179,7 +179,7 @@ namespace KTKS_DonKH.GUI.KhachHang
 
             rptDSDonDienThoai rpt = new rptDSDonDienThoai();
             rpt.SetDataSource(dsBaoCao);
-            frmBaoCao frm = new frmBaoCao(rpt);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();
         }
 
@@ -209,7 +209,7 @@ namespace KTKS_DonKH.GUI.KhachHang
 
             rptDSDonDienThoai rpt = new rptDSDonDienThoai();
             rpt.SetDataSource(dsBaoCao);
-            frmBaoCao frm = new frmBaoCao(rpt);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();
         }
 

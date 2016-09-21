@@ -828,7 +828,7 @@ namespace KTKS_DonKH.GUI.TimKiem
                 {
                     rptKetQuaTimKiembyMaDon rpt = new rptKetQuaTimKiembyMaDon();
                     rpt.SetDataSource(dsBaoCao);
-                    frmBaoCao frm = new frmBaoCao(rpt);
+                    frmShowBaoCao frm = new frmShowBaoCao(rpt);
                     frm.ShowDialog();
                 }
                 else
@@ -836,7 +836,7 @@ namespace KTKS_DonKH.GUI.TimKiem
                     {
                         rptKetQuaTimKiembyDanhBo rpt = new rptKetQuaTimKiembyDanhBo();
                         rpt.SetDataSource(dsBaoCao);
-                        frmBaoCao frm = new frmBaoCao(rpt);
+                        frmShowBaoCao frm = new frmShowBaoCao(rpt);
                         frm.ShowDialog();
                     }
             }

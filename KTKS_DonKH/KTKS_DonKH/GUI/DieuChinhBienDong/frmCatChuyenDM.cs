@@ -168,7 +168,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                 rptPhieuYCNhanDM rpt = new rptPhieuYCNhanDM();
                                 rpt.SetDataSource(dsBaoCao);
-                                frmBaoCao frm = new frmBaoCao(rpt);
+                                frmShowBaoCao frm = new frmShowBaoCao(rpt);
                                 frm.ShowDialog();
                             }
 

@@ -557,7 +557,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                                 rptThongBaoCHDB rpt = new rptThongBaoCHDB();
                                 rpt.SetDataSource(dsBaoCao);
-                                frmBaoCao frm = new frmBaoCao(rpt);
+                                frmShowBaoCao frm = new frmShowBaoCao(rpt);
                                 frm.ShowDialog();
 
                                 Clear();
@@ -798,7 +798,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             {
                                 rpt.Subreports[j].SetDataSource(dsBaoCao);
                             }
-                            frmBaoCao frm = new frmBaoCao(rpt);
+                            frmShowBaoCao frm = new frmShowBaoCao(rpt);
                             frm.ShowDialog();
 
                             if (!_direct)
@@ -898,7 +898,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 {
                                     rpt.Subreports[j].SetDataSource(dsBaoCao);
                                 }
-                                frmBaoCao frm = new frmBaoCao(rpt);
+                                frmShowBaoCao frm = new frmShowBaoCao(rpt);
                                 frm.ShowDialog();
 
                                 if (!_direct)
@@ -946,7 +946,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         {
                             rpt.Subreports[j].SetDataSource(dsBaoCao);
                         }
-                        frmBaoCao frm = new frmBaoCao(rpt);
+                        frmShowBaoCao frm = new frmShowBaoCao(rpt);
                         frm.ShowDialog();
 
                         if (!_direct)

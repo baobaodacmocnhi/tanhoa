@@ -415,7 +415,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             
             rptDSDonKH rpt = new rptDSDonKH();
             rpt.SetDataSource(dsBaoCao);
-            frmBaoCao frm = new frmBaoCao(rpt);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();
         }
 
@@ -533,7 +533,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             rpt.SetDataSource(dsBaoCao);
             rpt.Subreports[0].SetDataSource(dsBaoCao);
             rpt.Subreports[1].SetDataSource(dsBaoCao);
-            frmBaoCao frm = new frmBaoCao(rpt);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();
         }
 
@@ -609,7 +609,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             }
             rptChiTietDonTXL rpt = new rptChiTietDonTXL();
             rpt.SetDataSource(dsBaoCao);
-            frmBaoCao frm = new frmBaoCao(rpt);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();
         }
 
@@ -663,7 +663,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             }
             rptDSDonTXLChuyenTXL rpt = new rptDSDonTXLChuyenTXL();
             rpt.SetDataSource(dsBaoCao);
-            frmBaoCao frm = new frmBaoCao(rpt);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();
         }
 

@@ -47,6 +47,7 @@
             this.ribbtnNVKiemTra = new System.Windows.Forms.RibbonButton();
             this.ribbtnKiemTrang_BamChi = new System.Windows.Forms.RibbonButton();
             this.ribbtnVeViecTTTL = new System.Windows.Forms.RibbonButton();
+            this.ribbtnVeViecCHDB = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel9 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnBanGiamDoc = new System.Windows.Forms.RibbonButton();
             this.ribbonTab3 = new System.Windows.Forms.RibbonTab();
@@ -122,7 +123,9 @@
             this.ribbtnCongVanDi = new System.Windows.Forms.RibbonButton();
             this.IdleTimer = new System.Windows.Forms.Timer(this.components);
             this.ribbon1 = new System.Windows.Forms.Ribbon();
-            this.ribbtnVeViecCHDB = new System.Windows.Forms.RibbonButton();
+            this.ribbonTab11 = new System.Windows.Forms.RibbonTab();
+            this.ribbonPanel25 = new System.Windows.Forms.RibbonPanel();
+            this.ribbtnBaoCao = new System.Windows.Forms.RibbonButton();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -269,6 +272,14 @@
             this.ribbtnVeViecTTTL.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnVeViecTTTL.SmallImage")));
             this.ribbtnVeViecTTTL.Text = "Về Việc TTTL";
             this.ribbtnVeViecTTTL.Click += new System.EventHandler(this.ribbtnVeViecTTTL_Click);
+            // 
+            // ribbtnVeViecCHDB
+            // 
+            this.ribbtnVeViecCHDB.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnVeViecCHDB.MinimumSize = new System.Drawing.Size(90, 0);
+            this.ribbtnVeViecCHDB.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnVeViecCHDB.SmallImage")));
+            this.ribbtnVeViecCHDB.Text = "Về Việc CHDB";
+            this.ribbtnVeViecCHDB.Click += new System.EventHandler(this.ribbtnVeViecCHDB_Click);
             // 
             // ribbonPanel9
             // 
@@ -866,16 +877,29 @@
             this.ribbon1.Tabs.Add(this.ribbonTab7);
             this.ribbon1.Tabs.Add(this.ribbonTab10);
             this.ribbon1.Tabs.Add(this.ribbonTab8);
+            this.ribbon1.Tabs.Add(this.ribbonTab11);
             this.ribbon1.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
             this.ribbon1.Text = "ribbon1";
             // 
-            // ribbtnVeViecCHDB
+            // ribbonTab11
             // 
-            this.ribbtnVeViecCHDB.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
-            this.ribbtnVeViecCHDB.MinimumSize = new System.Drawing.Size(90, 0);
-            this.ribbtnVeViecCHDB.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnVeViecCHDB.SmallImage")));
-            this.ribbtnVeViecCHDB.Text = "Về Việc CHDB";
-            this.ribbtnVeViecCHDB.Click += new System.EventHandler(this.ribbtnVeViecCHDB_Click);
+            this.ribbonTab11.Panels.Add(this.ribbonPanel25);
+            this.ribbonTab11.Text = "Báo Cáo";
+            // 
+            // ribbonPanel25
+            // 
+            this.ribbonPanel25.ButtonMoreEnabled = false;
+            this.ribbonPanel25.ButtonMoreVisible = false;
+            this.ribbonPanel25.Items.Add(this.ribbtnBaoCao);
+            this.ribbonPanel25.Text = "";
+            // 
+            // ribbtnBaoCao
+            // 
+            this.ribbtnBaoCao.Image = ((System.Drawing.Image)(resources.GetObject("ribbtnBaoCao.Image")));
+            this.ribbtnBaoCao.MinimumSize = new System.Drawing.Size(70, 0);
+            this.ribbtnBaoCao.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnBaoCao.SmallImage")));
+            this.ribbtnBaoCao.Text = "Báo Cáo";
+            this.ribbtnBaoCao.Click += new System.EventHandler(this.ribbtnBaoCao_Click_1);
             // 
             // Main
             // 
@@ -995,6 +1019,9 @@
         private System.Windows.Forms.RibbonButton ribbtnCongVanDi;
         private System.Windows.Forms.RibbonButton ribbtnGianLan;
         private System.Windows.Forms.RibbonButton ribbtnVeViecCHDB;
+        private System.Windows.Forms.RibbonTab ribbonTab11;
+        private System.Windows.Forms.RibbonPanel ribbonPanel25;
+        private System.Windows.Forms.RibbonButton ribbtnBaoCao;
     }
 }
 

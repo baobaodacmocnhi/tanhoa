@@ -1002,7 +1002,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     }
                 rptChiTietDieuChinh rpt = new rptChiTietDieuChinh();
                 rpt.SetDataSource(dsBaoCao);
-                frmBaoCao frm = new frmBaoCao(rpt);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.ShowDialog();
 
             }
@@ -1251,7 +1251,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
             rptDSCapDinhMuc rpt = new rptDSCapDinhMuc();
             rpt.SetDataSource(dsBaoCao);
-            frmBaoCao frm = new frmBaoCao(rpt);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();
         }
 

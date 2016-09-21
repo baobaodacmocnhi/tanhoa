@@ -217,7 +217,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 {
                                     rpt.Subreports[j].SetDataSource(dsBaoCao);
                                 }
-                                frmBaoCao frm = new frmBaoCao(rpt);
+                                frmShowBaoCao frm = new frmShowBaoCao(rpt);
                                 frm.ShowDialog();
                             }
                         }
@@ -301,7 +301,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 {
                                     rpt.Subreports[j].SetDataSource(dsBaoCao);
                                 }
-                                frmBaoCao frm = new frmBaoCao(rpt);
+                                frmShowBaoCao frm = new frmShowBaoCao(rpt);
                                 frm.ShowDialog();
                             }
                         }

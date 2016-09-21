@@ -212,7 +212,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             rpt.SetDataSource(dsBaoCao);
             rpt.Subreports[0].SetDataSource(dsBaoCao);
             //crystalReportViewer1.ReportSource = rpt;  
-            frmBaoCao frm = new frmBaoCao(rpt);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();
         }
     }

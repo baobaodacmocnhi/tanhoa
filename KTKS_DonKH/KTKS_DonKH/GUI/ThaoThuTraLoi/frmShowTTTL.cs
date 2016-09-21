@@ -134,7 +134,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 
                 rptThaoThuTraLoi rpt = new rptThaoThuTraLoi();
                 rpt.SetDataSource(dsBaoCao);
-                frmBaoCao frm = new frmBaoCao(rpt);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.ShowDialog();
             }
         }

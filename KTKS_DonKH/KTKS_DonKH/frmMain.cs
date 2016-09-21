@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.GUI.HeThong;
 using KTKS_DonKH.GUI.CapNhat;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace KTKS_DonKH
 {
@@ -180,6 +181,12 @@ namespace KTKS_DonKH
         private void mnuBanGiamDoc_Click(object sender, EventArgs e)
         {
             frmBanGiamDoc frm = new frmBanGiamDoc();
+            OpenForm(frm);
+        }
+
+        private void mnuBaoCao_Click(object sender, EventArgs e)
+        {
+            frmBaoCao frm = new frmBaoCao();
             OpenForm(frm);
         }
 

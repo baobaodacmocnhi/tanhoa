@@ -19,6 +19,7 @@ using KTKS_DonKH.GUI.TimKiem;
 using KTKS_DonKH.GUI.BamChi;
 using KTKS_DonKH.GUI.DongNuoc;
 using KTKS_DonKH.GUI.CongVan;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace KTKS_DonKH
 {
@@ -672,6 +673,16 @@ namespace KTKS_DonKH
             foreach (Form item in this.MdiChildren)
                 item.Close();
             Form frm = new frmVeViecCHDB();
+            frm.MdiParent = this;
+            frm.Show();
+            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
+        }
+
+        private void ribbtnBaoCao_Click_1(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
+            Form frm = new frmBaoCao();
             frm.MdiParent = this;
             frm.Show();
             StripStatus_Form.Text = "Đang mở Form: " + frm.Text;

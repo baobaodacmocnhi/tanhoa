@@ -892,7 +892,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 rptChiTietDCHD rpt = new rptChiTietDCHD();
                 rpt.SetDataSource(dsBaoCao);
-                frmBaoCao frm = new frmBaoCao(rpt);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.ShowDialog();
             }
             catch (Exception)
@@ -1153,7 +1153,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
             rptThongBaoDCHD rpt = new rptThongBaoDCHD();
             rpt.SetDataSource(dsBaoCao);
-            frmBaoCao frm = new frmBaoCao(rpt);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();
         }
 

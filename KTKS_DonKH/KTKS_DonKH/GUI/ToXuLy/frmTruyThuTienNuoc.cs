@@ -683,7 +683,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
             rptTruyThuTienNuoc rpt = new rptTruyThuTienNuoc();
             rpt.SetDataSource(dsBaoCao);
-            frmBaoCao frm = new frmBaoCao(rpt);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();
         }
 
@@ -729,7 +729,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
             rptTruyThuTienNuocChiTiet rpt = new rptTruyThuTienNuocChiTiet();
             rpt.SetDataSource(dsBaoCao);
-            frmBaoCao frm = new frmBaoCao(rpt);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();
         }
 

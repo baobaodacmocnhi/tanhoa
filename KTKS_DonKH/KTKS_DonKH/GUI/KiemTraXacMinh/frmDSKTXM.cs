@@ -665,7 +665,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 }
                 rptDSKTXM rpt = new rptDSKTXM();
                 rpt.SetDataSource(dsBaoCao);
-                frmBaoCao frm = new frmBaoCao(rpt);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.ShowDialog();
             }
             else
@@ -793,7 +793,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     rptThongKeDSKTXM_LoaiDon rpt = new rptThongKeDSKTXM_LoaiDon();
                     rpt.SetDataSource(dsBaoCao);
                     rpt.Subreports[0].SetDataSource(dsBaoCao);
-                    frmBaoCao frm = new frmBaoCao(rpt);
+                    frmShowBaoCao frm = new frmShowBaoCao(rpt);
                     frm.ShowDialog();
                 }
                 else
@@ -801,7 +801,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     rptThongKeDSKTXM rpt = new rptThongKeDSKTXM();
                     rpt.SetDataSource(dsBaoCao);
                     rpt.Subreports[0].SetDataSource(dsBaoCao);
-                    frmBaoCao frm = new frmBaoCao(rpt);
+                    frmShowBaoCao frm = new frmShowBaoCao(rpt);
                     frm.ShowDialog();
                 }
             }

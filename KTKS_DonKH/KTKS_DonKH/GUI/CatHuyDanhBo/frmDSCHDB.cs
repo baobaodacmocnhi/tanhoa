@@ -1466,7 +1466,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 rptKinhGui rpt = new rptKinhGui();
                 rpt.Subreports[0].SetDataSource(dsBaoCao1);
                 rpt.Subreports[1].SetDataSource(dsBaoCao2);
-                frmBaoCao frm = new frmBaoCao(rpt);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.ShowDialog();
             }
             if (radDSCatHuyDanhBo.Checked)
@@ -1503,7 +1503,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 rptKinhGui rpt = new rptKinhGui();
                 rpt.Subreports[0].SetDataSource(dsBaoCao1);
                 rpt.Subreports[1].SetDataSource(dsBaoCao2);
-                frmBaoCao frm = new frmBaoCao(rpt);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.ShowDialog();
             }
         }

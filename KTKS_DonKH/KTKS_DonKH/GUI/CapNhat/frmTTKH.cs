@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.CapNhat;
-using KTKS_DonKH.GUI.Loading;
+//using KTKS_DonKH.GUI.Loading;
 using System.Data.OleDb;
 
 namespace KTKS_DonKH.GUI.CapNhat

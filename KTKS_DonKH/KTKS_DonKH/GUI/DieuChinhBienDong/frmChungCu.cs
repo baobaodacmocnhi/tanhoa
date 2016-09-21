@@ -121,14 +121,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     rptDSChungTu_Lo rpt = new rptDSChungTu_Lo();
                     rpt.SetDataSource(dsBaoCao);
-                    frmBaoCao frm = new frmBaoCao(rpt);
+                    frmShowBaoCao frm = new frmShowBaoCao(rpt);
                     frm.ShowDialog();
                 }
                 if (radThuTuNhap.Checked)
                 {
                     rptDSChungTu_ThuTuNhap rpt = new rptDSChungTu_ThuTuNhap();
                     rpt.SetDataSource(dsBaoCao);
-                    frmBaoCao frm = new frmBaoCao(rpt);
+                    frmShowBaoCao frm = new frmShowBaoCao(rpt);
                     frm.ShowDialog();
                 }
             }
@@ -281,7 +281,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 }
                 rptDSCatChuyen rpt = new rptDSCatChuyen();
                 rpt.SetDataSource(dsBaoCao);
-                frmBaoCao frm = new frmBaoCao(rpt);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.ShowDialog();
 
             }

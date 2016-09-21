@@ -259,7 +259,7 @@ namespace KTKS_DonKH.GUI.BamChi
 
                     rptDSBamChi_ChiThan_BBDCMS rpt = new rptDSBamChi_ChiThan_BBDCMS();
                     rpt.SetDataSource(dsBaoCao);
-                    frmBaoCao frm = new frmBaoCao(rpt);
+                    frmShowBaoCao frm = new frmShowBaoCao(rpt);
                     frm.ShowDialog();
                 }
                 else
@@ -300,7 +300,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             rptThongKeDSBamChi_LoaiDon rpt = new rptThongKeDSBamChi_LoaiDon();
                             rpt.SetDataSource(dsBaoCao);
                             rpt.Subreports[0].SetDataSource(dsBaoCao);
-                            frmBaoCao frm = new frmBaoCao(rpt);
+                            frmShowBaoCao frm = new frmShowBaoCao(rpt);
                             frm.ShowDialog();
                         }
                         else
@@ -308,7 +308,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             rptThongKeDSBamChi rpt = new rptThongKeDSBamChi();
                             rpt.SetDataSource(dsBaoCao);
                             rpt.Subreports[0].SetDataSource(dsBaoCao);
-                            frmBaoCao frm = new frmBaoCao(rpt);
+                            frmShowBaoCao frm = new frmShowBaoCao(rpt);
                             frm.ShowDialog();
                         }
                     }
@@ -317,7 +317,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         rptDSBamChi rpt = new rptDSBamChi();
                         rpt.SetDataSource(dsBaoCao);
                         rpt.Subreports[0].SetDataSource(dsBaoCao);
-                        frmBaoCao frm = new frmBaoCao(rpt);
+                        frmShowBaoCao frm = new frmShowBaoCao(rpt);
                         frm.ShowDialog();
                     }
                 }
@@ -357,7 +357,7 @@ namespace KTKS_DonKH.GUI.BamChi
                     rpt.Subreports[j].SetDataSource(dsBaoCao);
                 }
 
-                frmBaoCao frm = new frmBaoCao(rpt);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.ShowDialog();
             }
             else

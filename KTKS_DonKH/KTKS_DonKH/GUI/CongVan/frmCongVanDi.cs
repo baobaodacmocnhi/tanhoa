@@ -486,7 +486,7 @@ namespace KTKS_DonKH.GUI.CongVan
             }
             rptDSCongVan rpt = new rptDSCongVan();
             rpt.SetDataSource(dsBaoCao);
-            frmBaoCao frm = new frmBaoCao(rpt);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();
         }
 

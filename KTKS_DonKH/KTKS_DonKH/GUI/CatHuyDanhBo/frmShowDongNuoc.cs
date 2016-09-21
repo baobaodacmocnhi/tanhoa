@@ -220,7 +220,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                 rptThongBaoDN rpt = new rptThongBaoDN();
                 rpt.SetDataSource(dsBaoCao);
-                frmBaoCao frm = new frmBaoCao(rpt);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.ShowDialog();
             }
             else
@@ -258,7 +258,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                 rptThongBaoMN rpt = new rptThongBaoMN();
                 rpt.SetDataSource(dsBaoCao);
-                frmBaoCao frm = new frmBaoCao(rpt);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.ShowDialog();
             }
             else

@@ -814,7 +814,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 rptDSCapDinhMuc rpt2 = new rptDSCapDinhMuc();
                 rpt2.SetDataSource(dsBaoCao);
-                frmBaoCao frm = new frmBaoCao(rpt2);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt2);
                 frm.Show();
             }
 
