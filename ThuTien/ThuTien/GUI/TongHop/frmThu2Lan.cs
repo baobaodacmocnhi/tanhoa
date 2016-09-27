@@ -13,6 +13,8 @@ using System.Globalization;
 using ThuTien.BaoCao;
 using ThuTien.BaoCao.TongHop;
 using ThuTien.GUI.BaoCao;
+using ThuTien.DAL.Quay;
+using System.Transactions;
 
 namespace ThuTien.GUI.TongHop
 {
@@ -20,6 +22,7 @@ namespace ThuTien.GUI.TongHop
     {
         string _mnu = "mnuThu2Lan";
         CHoaDon _cHoaDon = new CHoaDon();
+        CTienDuQuay _cTienDuQuay = new CTienDuQuay();
 
         public frmThu2Lan()
         {
@@ -47,19 +50,19 @@ namespace ThuTien.GUI.TongHop
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
-            {
-                bool ChuyenKhoan = true;
-                if (radDaTra.Checked)
-                    ChuyenKhoan = true;
-                if (radChuaTra.Checked)
-                    ChuyenKhoan = false;
+            //if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+            //{
+            //    bool ChuyenKhoan = true;
+            //    if (radDaTra.Checked)
+            //        ChuyenKhoan = true;
+            //    if (radChuaTra.Checked)
+            //        ChuyenKhoan = false;
 
-                if (_cHoaDon.Thu2Lan(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()),txtDanhBo.Text.Trim(), ChuyenKhoan))
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    if (_cHoaDon.Thu2Lan(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()),txtDanhBo.Text.Trim(), ChuyenKhoan))
+            //        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+            //else
+            //    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -69,19 +72,17 @@ namespace ThuTien.GUI.TongHop
                 if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     try
                     {
-                        _cHoaDon.BeginTransaction();
                         foreach (DataGridViewRow item in dgvHoaDon.SelectedRows)
-                        {
-                            HOADON hoadon = _cHoaDon.Get(int.Parse(item.Cells["MaHD"].Value.ToString()));
-                            hoadon.Thu2Lan = false;
-                        }
-                        _cHoaDon.SubmitChanges();
-                        _cHoaDon.CommitTransaction();
+                            using (var scope = new TransactionScope())
+                            {
+                                if (_cHoaDon.XoaThu2Lan(item.Cells["SoHoaDon"].Value.ToString()))
+                                    if (_cTienDuQuay.UpdateThem(item.Cells["SoHoaDon"].Value.ToString(), "Thu 2 Lần", "Xóa"))
+                                        scope.Complete();
+                            }
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception)
                     {
-                        _cHoaDon.Rollback();
                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
             }
@@ -182,31 +183,6 @@ namespace ThuTien.GUI.TongHop
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
-        }
-
-        private void dgvHoaDon_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
-            {
-                if (dgvHoaDon.Columns[e.ColumnIndex].Name == "Tra")
-                {
-                    if (bool.Parse(dgvHoaDon["Tra", e.RowIndex].Value.ToString()))
-                    {
-                        _cHoaDon.Thu2Lan_Tra(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString());
-                    }
-                    else
-                    {
-                        _cHoaDon.Thu2Lan_XoaTra(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString());
-                    }
-                }
-
-                if (dgvHoaDon.Columns[e.ColumnIndex].Name == "GhiChu")
-                {
-                    _cHoaDon.Thu2Lan_GhiChu(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString(), dgvHoaDon["GhiChu", e.RowIndex].Value.ToString());
-                }
-            }
-            else
-                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnInDSTon_Click(object sender, EventArgs e)
@@ -313,6 +289,43 @@ namespace ThuTien.GUI.TongHop
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();
+        }
+
+        private void dgvHoaDon_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "Tra" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvHoaDon[e.ColumnIndex, e.RowIndex].Value.ToString()))
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    if (bool.Parse(dgvHoaDon["Tra", e.RowIndex].Value.ToString()))
+                        using (var scope = new TransactionScope())
+                        {
+                            if (_cHoaDon.Thu2Lan_Tra(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString()))
+                                if (_cTienDuQuay.UpdateThem(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString(), "Trả Tiền Khách Hàng", "Thêm"))
+                                    scope.Complete();
+                        }
+                    else
+                        if (MessageBox.Show("Đã Trả, bạn có chắc chắn xóa trả?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                            using (var scope = new TransactionScope())
+                            {
+                                if (_cHoaDon.Thu2Lan_XoaTra(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString()))
+                                    if (_cTienDuQuay.UpdateXoa(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString(), "Trả Tiền Khách Hàng", "Thêm"))
+                                        scope.Complete();
+                            }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "GhiChu" && e.FormattedValue.ToString() != dgvHoaDon[e.ColumnIndex, e.RowIndex].Value.ToString())
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    _cHoaDon.Thu2Lan_GhiChu(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString(), dgvHoaDon["GhiChu", e.RowIndex].Value.ToString());
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
  
     }

@@ -872,6 +872,28 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuTienDuQuay_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuTienDuQuay", "Xem"))
+            {
+                frmTienDuQuay frm = new frmTienDuQuay();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuDangNganTienDuQuay_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuDangNganTienDuQuay", "Xem"))
+            {
+                frmDangNganTienDuQuay frm = new frmDangNganTienDuQuay();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion 
 
         #region Tổng Hợp
@@ -995,6 +1017,10 @@ namespace ThuTien
         }
 
         #endregion
+
+        
+
+        
 
         
 

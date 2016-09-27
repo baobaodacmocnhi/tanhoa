@@ -25,6 +25,7 @@ namespace ThuTien.GUI.HanhThu
         CTamThu _cTamThu = new CTamThu();
         CDCHD _cDCHD = new CDCHD();
         CLenhHuy _cLenhHuy = new CLenhHuy();
+        CTienDuQuay _cTienDuQuay = new CTienDuQuay();
 
         public frmDangNganTon()
         {
@@ -185,8 +186,9 @@ namespace ThuTien.GUI.HanhThu
                                 {
                                     if (_cHoaDon.DangNgan("Ton", item.Text, CNguoiDung.MaND))
                                         if (_cHoaDon.Thu2Lan(item.Text, ChuyenKhoan))
-                                            _cTamThu.XoaAn(item.Text);
-                                    scope.Complete();
+                                            if (_cTamThu.XoaAn(item.Text))
+                                                if (_cTienDuQuay.UpdateXoa(item.Text, "Thu 2 Lần", "Thêm"))
+                                                    scope.Complete();
                                 }
                             else
                             {

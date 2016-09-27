@@ -12,7 +12,7 @@ namespace ThuTien.DAL.ChuyenKhoan
     class CTienDu : CDAL
     {
         //Quản lý tiền dư của khách hàng
-
+        
         public bool Them(TT_TienDu tiendu)
         {
             try

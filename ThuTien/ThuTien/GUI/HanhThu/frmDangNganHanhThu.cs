@@ -26,6 +26,7 @@ namespace ThuTien.GUI.HanhThu
         CDCHD _cDCHD = new CDCHD();
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CNguoiDung _cNguoiDung = new CNguoiDung();
+        CTienDuQuay _cTienDuQuay = new CTienDuQuay();
         //int _selectedindexDaThu = -1;
 
         public frmDangNganHanhThu()
@@ -210,9 +211,8 @@ namespace ThuTien.GUI.HanhThu
                                         if (_cHoaDon.DangNgan("HanhThu", item.Text, CNguoiDung.MaND))
                                             if (_cHoaDon.Thu2Lan(item.Text, ChuyenKhoan))
                                                 if (_cTamThu.XoaAn(item.Text))
-                                                {
-                                                    scope.Complete();
-                                                }
+                                                    if (_cTienDuQuay.UpdateXoa(item.Text, "Thu 2 Lần", "Thêm"))
+                                                        scope.Complete();
                                     }
                                 else
                                 {
@@ -280,7 +280,8 @@ namespace ThuTien.GUI.HanhThu
                                                 if (_cHoaDon.DangNgan("HanhThu", item["SoHoaDon"].ToString(), CNguoiDung.MaND))
                                                     if (_cHoaDon.Thu2Lan(item["SoHoaDon"].ToString(), ChuyenKhoan))
                                                         if (_cTamThu.XoaAn(item["SoHoaDon"].ToString()))
-                                                            scope.Complete();
+                                                            if (_cTienDuQuay.UpdateXoa(item["SoHoaDon"].ToString(), "Thu 2 Lần", "Thêm"))
+                                                                scope.Complete();
                                             }
                                         else
                                         {

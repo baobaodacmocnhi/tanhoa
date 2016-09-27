@@ -9185,6 +9185,21 @@ namespace ThuTien.DAL.Doi
             }
         }
 
+        public bool XoaThu2Lan(string SoHoaDon)
+        {
+            try
+            {
+                string sql = "";
+                sql = "update HOADON set Thu2Lan=0 where SOHOADON='" + SoHoaDon + "'";
+                return LinQ_ExecuteNonQuery(sql);
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         public bool Thu2Lan(int Nam, int Ky, string DanhBo, bool ChuyenKhoan)
         {
             try

@@ -26,6 +26,7 @@ namespace ThuTien.GUI.Doi
         CDCHD _cDCHD = new CDCHD();
         CTienDu _cTienDu = new CTienDu();
         CTamThu _cTamThu = new CTamThu();
+        CTienDuQuay _cTienDuQuay = new CTienDuQuay();
         bool _flagLoadFirst = false;
 
         public frmDieuChinhDangNganDoi()
@@ -225,7 +226,8 @@ namespace ThuTien.GUI.Doi
                                         if (_cHoaDon.DangNgan("HanhThu", item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value))
                                             if (_cHoaDon.Thu2Lan(item.Text, ChuyenKhoan))
                                                 if (_cTamThu.XoaAn(item.Text))
-                                                    scope.Complete();
+                                                    if (_cTienDuQuay.UpdateXoa(item.Text, "Thu 2 Lần", "Thêm"))
+                                                        scope.Complete();
                                     }
                                 else
                                 {

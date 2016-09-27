@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>623</ApplicationRevision>
+    <ApplicationRevision>624</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -477,6 +477,7 @@
     <Compile Include="DAL\Quay\CLenhHuy.cs" />
     <Compile Include="DAL\Quay\CQuetGiaoTon.cs" />
     <Compile Include="DAL\Quay\CTamThu.cs" />
+    <Compile Include="DAL\Quay\CTienDuQuay.cs" />
     <Compile Include="DAL\Quay\CTraGop.cs" />
     <Compile Include="DAL\Quay\CXacNhanNo.cs" />
     <Compile Include="DAL\TongHop\CChamCong.cs" />
@@ -724,11 +725,23 @@
     <Compile Include="GUI\PhoGiamDoc\frmKiemTraTon.Designer.cs">
       <DependentUpon>frmKiemTraTon.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Quay\frmDangNganTienDuQuay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Quay\frmDangNganTienDuQuay.Designer.cs">
+      <DependentUpon>frmDangNganTienDuQuay.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Quay\frmQuetGiaoTon.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\Quay\frmQuetGiaoTon.Designer.cs">
       <DependentUpon>frmQuetGiaoTon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Quay\frmTienDuQuay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Quay\frmTienDuQuay.Designer.cs">
+      <DependentUpon>frmTienDuQuay.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\TimKiem\frmDoiSoHoaDon.cs">
       <SubType>Form</SubType>
@@ -1350,8 +1363,14 @@
     <EmbeddedResource Include="GUI\PhoGiamDoc\frmKiemTraTon.resx">
       <DependentUpon>frmKiemTraTon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Quay\frmDangNganTienDuQuay.resx">
+      <DependentUpon>frmDangNganTienDuQuay.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Quay\frmQuetGiaoTon.resx">
       <DependentUpon>frmQuetGiaoTon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Quay\frmTienDuQuay.resx">
+      <DependentUpon>frmTienDuQuay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\TimKiem\frmDoiSoHoaDon.resx">
       <DependentUpon>frmDoiSoHoaDon.cs</DependentUpon>

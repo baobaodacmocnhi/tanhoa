@@ -30,6 +30,7 @@ namespace ThuTien.GUI.ToTruong
         CTamThu _cTamThu = new CTamThu();
         CDCHD _cDCHD = new CDCHD();
         CLenhHuy _cLenhHuy = new CLenhHuy();
+        CTienDuQuay _cTienDuQuay = new CTienDuQuay();
 
         public frmDieuChinhDangNganTo()
         {
@@ -202,7 +203,8 @@ namespace ThuTien.GUI.ToTruong
                                     if (_cHoaDon.DangNgan("HanhThu", item.Text, (int)cmbNhanVien.SelectedValue, dateGiaiTrachSua.Value))
                                         if (_cHoaDon.Thu2Lan(item.Text, ChuyenKhoan))
                                             if (_cTamThu.XoaAn(item.Text))
-                                                scope.Complete();
+                                                if (_cTienDuQuay.UpdateXoa(item.Text, "Thu 2 Lần", "Thêm"))
+                                                    scope.Complete();
                                 }
                             else
                             {
