@@ -151,6 +151,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtHieuLucKy.Text = "";
             chkDMGiuNguyen.Checked = false;
             chkGiaHan.Checked = false;
+            chkDoanThanhNien.Checked = false;
             chkCatMSThue.Checked = false;
             ///
             txtHoTen_BD.Text = "";
@@ -649,6 +650,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                         ctdcbd.DMGiuNguyen = chkDMGiuNguyen.Checked;
                         ctdcbd.GiaHan = chkGiaHan.Checked;
+                        ctdcbd.DoanThanhNien = chkDoanThanhNien.Checked;
 
                         if (chkDMGiuNguyen.Checked || chkGiaHan.Checked)
                         {
@@ -827,6 +829,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                     ctdcbd.DMGiuNguyen = chkDMGiuNguyen.Checked;
                     ctdcbd.GiaHan = chkGiaHan.Checked;
+                    ctdcbd.DoanThanhNien = chkDoanThanhNien.Checked;
 
                     if (chkDMGiuNguyen.Checked || chkGiaHan.Checked)
                     {

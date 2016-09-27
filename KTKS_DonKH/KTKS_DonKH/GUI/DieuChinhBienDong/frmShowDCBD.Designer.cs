@@ -84,6 +84,7 @@
             this.chkGiaHan = new System.Windows.Forms.CheckBox();
             this.txtGhiChu = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
+            this.chkDoanThanhNien = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -108,7 +109,7 @@
             // chkCatMSThue
             // 
             this.chkCatMSThue.AutoSize = true;
-            this.chkCatMSThue.Location = new System.Drawing.Point(1225, 158);
+            this.chkCatMSThue.Location = new System.Drawing.Point(1225, 169);
             this.chkCatMSThue.Name = "chkCatMSThue";
             this.chkCatMSThue.Size = new System.Drawing.Size(103, 21);
             this.chkCatMSThue.TabIndex = 3;
@@ -616,12 +617,23 @@
             this.label30.TabIndex = 88;
             this.label30.Text = "Ghi Chú:";
             // 
+            // chkDoanThanhNien
+            // 
+            this.chkDoanThanhNien.AutoSize = true;
+            this.chkDoanThanhNien.Location = new System.Drawing.Point(1225, 142);
+            this.chkDoanThanhNien.Name = "chkDoanThanhNien";
+            this.chkDoanThanhNien.Size = new System.Drawing.Size(132, 21);
+            this.chkDoanThanhNien.TabIndex = 90;
+            this.chkDoanThanhNien.Text = "Đoàn Thanh Niên";
+            this.chkDoanThanhNien.UseVisualStyleBackColor = true;
+            // 
             // frmShowDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1350, 244);
+            this.Controls.Add(this.chkDoanThanhNien);
             this.Controls.Add(this.txtGhiChu);
             this.Controls.Add(this.label30);
             this.Controls.Add(this.chkDMGiuNguyen);
@@ -713,5 +725,6 @@
         private System.Windows.Forms.CheckBox chkGiaHan;
         private System.Windows.Forms.TextBox txtGhiChu;
         private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.CheckBox chkDoanThanhNien;
     }
 }

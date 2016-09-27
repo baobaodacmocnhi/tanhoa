@@ -89,6 +89,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     chkGiaHan.Checked = true;
                 else
                     chkGiaHan.Checked = false;
+                if (_ctdcbd.DoanThanhNien)
+                    chkDoanThanhNien.Checked = true;
+                else
+                    chkDoanThanhNien.Checked = false;
                 if (_ctdcbd.CatMSThue)
                     chkCatMSThue.Checked = true;
                 else
@@ -323,6 +327,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                     _ctdcbd.DMGiuNguyen = chkDMGiuNguyen.Checked;
                     _ctdcbd.GiaHan = chkGiaHan.Checked;
+                    _ctdcbd.DoanThanhNien = chkDoanThanhNien.Checked;
 
                     if (_cDCBD.SuaCTDCBD(_ctdcbd))
                         MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
