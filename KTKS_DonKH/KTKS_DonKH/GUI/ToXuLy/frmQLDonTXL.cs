@@ -427,7 +427,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 dr["HoTen"] = itemRow["HoTen"];
                 dr["DiaChi"] = itemRow["DiaChi"];
                 dr["NoiDung"] = itemRow["NoiDung"];
-                dr["GhiChuChuyenKT"] = itemRow["GhiChuChuyenKT"];
+                dr["NguoiDi"] = itemRow["GhiChuChuyenKT"];
                 //if (!string.IsNullOrEmpty(itemRow["NguoiDi"].ToString()))
                 //{
                 //    dr["NguoiDi"] = _cTaiKhoan.getHoTenUserbyID(int.Parse(itemRow["NguoiDi"].ToString()));

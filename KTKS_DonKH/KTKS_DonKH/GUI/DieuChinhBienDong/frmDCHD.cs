@@ -1245,6 +1245,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     txtPhiBVMT_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", hoadon.PHI.Value);
                     txtTongCong_Start.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", hoadon.TONGCONG.Value);
                 }
+                if (txtDanhBo.Text.Trim().Length == 11 && txtKyHD.Text.Trim() != "")
+                {
+                    dgvLichSu.DataSource = _cDCBD.LoadDSCTDCHD(txtDanhBo.Text.Trim(), int.Parse(KyHD[1]), int.Parse(KyHD[0]));
+                }
             }
         }
 
