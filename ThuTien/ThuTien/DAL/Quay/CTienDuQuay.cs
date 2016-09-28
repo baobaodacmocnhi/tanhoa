@@ -20,6 +20,31 @@ namespace ThuTien.DAL.Quay
             return LINQToDataTable(_db.TT_TienDuQuays.Where(item => item.SoTien > 0).ToList());
         }
 
+        public bool Update(string DanhBo, int SoTien, string Loai, string GhiChu)
+        {
+            try
+            {
+                if (LinQ_ExecuteNonQuery("update TT_TienDuQuay set SoTien=SoTien+" + SoTien + ",ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=GETDATE() where DanhBo='" + DanhBo + "'"))
+                {
+                    return LinQ_ExecuteNonQuery("insert into TT_TienDuLichSuQuay(ID,DanhBo,SoTien,Loai,GhiChu,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSuQuay),'" + DanhBo + "'," + SoTien + ",N'" + Loai + "',N'" + GhiChu + "'," + CNguoiDung.MaND + ",GETDATE())");
+                }
+                else
+                    if (LinQ_ExecuteNonQuery("insert into TT_TienDuQuay(DanhBo,SoTien,CreateBy,CreateDate,ModifyBy,ModifyDate) values('" + DanhBo + "'," + SoTien + "," + CNguoiDung.MaND + ",GETDATE()," + CNguoiDung.MaND + ",GETDATE())"))
+                    {
+                        return LinQ_ExecuteNonQuery("insert into TT_TienDuLichSuQuay(ID,DanhBo,SoTien,Loai,GhiChu,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSuQuay),'" + DanhBo + "'," + SoTien + ",N'" + Loai + "',N'" + GhiChu + "'," + CNguoiDung.MaND + ",GETDATE())");
+                    }
+                    else
+                    {
+                        return false;
+                    }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         public bool UpdateThem(string SoHoaDon, string Loai, string GhiChu)
         {
             try

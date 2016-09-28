@@ -98,6 +98,21 @@ namespace ThuTien.GUI.Quay
             CountdgvTienAm();
             dgvTienDu.DataSource = _cTienDuQuay.GetDSTienDu();
             CountdgvTienDu();
+            //OpenFileDialog dialog = new OpenFileDialog();
+            //dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
+            //dialog.Multiselect = false;
+
+            //if (dialog.ShowDialog() == DialogResult.OK)
+            //    if (MessageBox.Show("Bạn có chắc chắn Thêm?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            //    {
+            //        ThuTien.DAL.ChuyenKhoan.Excel fileExcel = new ThuTien.DAL.ChuyenKhoan.Excel(dialog.FileName);
+            //        DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
+
+            //        foreach (DataRow item in dtExcel.Rows)
+            //                {
+            //                    _cTienDuQuay.Update(item[0].ToString(), int.Parse(item[1].ToString()), "Bảng Kê", "Thêm");
+            //                }
+            //    }
         }
     }
 }
