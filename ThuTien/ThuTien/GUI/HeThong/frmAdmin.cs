@@ -126,5 +126,13 @@ namespace ThuTien.GUI.HeThong
                 }
             }
         }
+
+        private void txtQuery_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                dgvResult.DataSource = _cNguoiDung.ExecuteQuery_SqlDataAdapter_DataTable(txtQuery.Text.Trim());
+            }
+        }
     }
 }

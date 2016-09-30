@@ -31,6 +31,9 @@
             this.btnCapNhatMenu = new System.Windows.Forms.Button();
             this.btnCapNhatPhanQuyenNhom = new System.Windows.Forms.Button();
             this.btnCapNhatPhanQuyenNguoiDung = new System.Windows.Forms.Button();
+            this.txtQuery = new System.Windows.Forms.TextBox();
+            this.dgvResult = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvResult)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCapNhatMenu
@@ -63,18 +66,39 @@
             this.btnCapNhatPhanQuyenNguoiDung.UseVisualStyleBackColor = true;
             this.btnCapNhatPhanQuyenNguoiDung.Click += new System.EventHandler(this.btnCapNhatPhanQuyenNguoiDung_Click);
             // 
+            // txtQuery
+            // 
+            this.txtQuery.Location = new System.Drawing.Point(12, 55);
+            this.txtQuery.Multiline = true;
+            this.txtQuery.Name = "txtQuery";
+            this.txtQuery.Size = new System.Drawing.Size(450, 100);
+            this.txtQuery.TabIndex = 3;
+            this.txtQuery.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuery_KeyPress);
+            // 
+            // dgvResult
+            // 
+            this.dgvResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvResult.Location = new System.Drawing.Point(12, 161);
+            this.dgvResult.Name = "dgvResult";
+            this.dgvResult.Size = new System.Drawing.Size(900, 350);
+            this.dgvResult.TabIndex = 4;
+            // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(680, 297);
+            this.ClientSize = new System.Drawing.Size(1004, 524);
+            this.Controls.Add(this.dgvResult);
+            this.Controls.Add(this.txtQuery);
             this.Controls.Add(this.btnCapNhatPhanQuyenNguoiDung);
             this.Controls.Add(this.btnCapNhatPhanQuyenNhom);
             this.Controls.Add(this.btnCapNhatMenu);
             this.Name = "frmAdmin";
             this.Text = "frmAdmin";
             this.Load += new System.EventHandler(this.frmAdmin_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvResult)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -83,5 +107,7 @@
         private System.Windows.Forms.Button btnCapNhatMenu;
         private System.Windows.Forms.Button btnCapNhatPhanQuyenNhom;
         private System.Windows.Forms.Button btnCapNhatPhanQuyenNguoiDung;
+        private System.Windows.Forms.TextBox txtQuery;
+        private System.Windows.Forms.DataGridView dgvResult;
     }
 }

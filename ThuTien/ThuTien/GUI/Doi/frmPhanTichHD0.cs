@@ -12,6 +12,7 @@ using ThuTien.LinQ;
 using ThuTien.BaoCao;
 using ThuTien.BaoCao.Doi;
 using ThuTien.GUI.BaoCao;
+using ThuTien.DAL.ChuyenKhoan;
 
 namespace ThuTien.GUI.Doi
 {
@@ -75,7 +76,7 @@ namespace ThuTien.GUI.Doi
             int Ky12 = 0;
             foreach (DataGridViewRow item in dgvDanhBoDK.Rows)
             {
-                if (item.Cells["Ky1_DK"] != null && item.Cells["Ky1_DK"].Value.ToString()!="" && int.Parse(item.Cells["Ky1_DK"].Value.ToString()) != 0)
+                if (item.Cells["Ky1_DK"] != null && item.Cells["Ky1_DK"].Value.ToString() != "" && int.Parse(item.Cells["Ky1_DK"].Value.ToString()) != 0)
                     Ky1++;
                 if (item.Cells["Ky2_DK"] != null && item.Cells["Ky2_DK"].Value.ToString() != "" && int.Parse(item.Cells["Ky2_DK"].Value.ToString()) != 0)
                     Ky2++;
@@ -199,7 +200,7 @@ namespace ThuTien.GUI.Doi
             txtTongHD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", dgvHoaDon.Rows.Count);
             for (int i = 1; i < dgvDSTongHD0.Rows.Count; i++)
             {
-                dgvDSTongHD0["BienDong", i].Value = int.Parse(dgvDSTongHD0["TongHD", i].Value.ToString()) - int.Parse(dgvDSTongHD0["TongHD", i-1].Value.ToString());
+                dgvDSTongHD0["BienDong", i].Value = int.Parse(dgvDSTongHD0["TongHD", i].Value.ToString()) - int.Parse(dgvDSTongHD0["TongHD", i - 1].Value.ToString());
             }
         }
 
@@ -439,7 +440,7 @@ namespace ThuTien.GUI.Doi
                         else
                             if (cmbKy.SelectedIndex > 0)
                                 if (cmbDot.SelectedIndex == 0)
-                                    dt = _cHoaDon.ThongKeHD0_Code_To(int.Parse(cmbTo.SelectedValue.ToString()),int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                    dt = _cHoaDon.ThongKeHD0_Code_To(int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                                 else
                                     if (cmbDot.SelectedIndex > 0)
                                         if (cmbDenDot.SelectedIndex == 0)
@@ -468,7 +469,7 @@ namespace ThuTien.GUI.Doi
                         }
                 }
 
-            
+
             dsBaoCao ds = new dsBaoCao();
             foreach (DataRow item in dt.Rows)
             {
@@ -487,6 +488,50 @@ namespace ThuTien.GUI.Doi
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();
+        }
+
+        private void btnChonFile_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+            {
+                try
+                {
+                    if (cmbNhanVienDK.Items.Count == 0 || cmbNhanVienDK.SelectedIndex == 0)
+                    {
+                        MessageBox.Show("Chưa chọn Nhân Viên", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    OpenFileDialog dialog = new OpenFileDialog();
+                    dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
+                    dialog.Multiselect = false;
+
+                    if (dialog.ShowDialog() == DialogResult.OK)
+                        if (MessageBox.Show("Bạn có chắc chắn Thêm?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        {
+                            Excel fileExcel = new Excel(dialog.FileName);
+                            DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
+
+                            foreach (DataRow item in dtExcel.Rows)
+                                if (item[0].ToString().Length == 11 && !_cDangKyHD0.CheckExist(item[0].ToString()))
+                                {
+                                    TT_DangKyHD0 dangky = new TT_DangKyHD0();
+                                    dangky.DanhBo = item[0].ToString();
+                                    dangky.MaNV = int.Parse(cmbNhanVienDK.SelectedValue.ToString());
+
+                                    _cDangKyHD0.Them(dangky);
+                                }
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            btnXem.PerformClick();
+                        }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

@@ -69,23 +69,36 @@ namespace ThuTien.GUI.TongHop
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
             {
-                MessageBox.Show("Bị mâu thuẩn giữa xóa hóa đơn trừ tiền & đăng ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                //    try
-                //    {
-                //        foreach (DataGridViewRow item in dgvHoaDon.SelectedRows)
-                //            using (var scope = new TransactionScope())
-                //            {
-                //                if (_cHoaDon.XoaThu2Lan(item.Cells["SoHoaDon"].Value.ToString()))
-                //                    if (_cTienDuQuay.UpdateThem(item.Cells["SoHoaDon"].Value.ToString(), "Thu 2 Lần", "Xóa"))
-                //                        scope.Complete();
-                //            }
-                //        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //    }
-                //    catch (Exception)
-                //    {
-                //        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    }
+                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (MessageBox.Show("Bạn có muốn trừ Tiền Dư Quầy?\r\nYes là Trừ, No là không Trừ", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        try
+                        {
+                            foreach (DataGridViewRow item in dgvHoaDon.SelectedRows)
+                                using (var scope = new TransactionScope())
+                                {
+                                    if (_cHoaDon.XoaThu2Lan(item.Cells["SoHoaDon"].Value.ToString()))
+                                        if (_cTienDuQuay.UpdateThem(item.Cells["SoHoaDon"].Value.ToString(), "Thu 2 Lần", "Xóa"))
+                                            scope.Complete();
+                                }
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    else
+                    {
+                        try
+                        {
+                            foreach (DataGridViewRow item in dgvHoaDon.SelectedRows)
+                                if (_cHoaDon.XoaThu2Lan(item.Cells["SoHoaDon"].Value.ToString()))
+                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
             }
             else
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -299,11 +312,16 @@ namespace ThuTien.GUI.TongHop
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
                     if (bool.Parse(dgvHoaDon["Tra", e.RowIndex].Value.ToString()))
-                        using (var scope = new TransactionScope())
+                        if (MessageBox.Show("Bạn có muốn trừ Tiền Dư Quầy?\r\nYes là Trừ, No là không Trừ", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            using (var scope = new TransactionScope())
+                            {
+                                if (_cHoaDon.Thu2Lan_Tra(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString()))
+                                    if (_cTienDuQuay.UpdateThem(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString(), "Trả Tiền Khách Hàng", "Thêm"))
+                                        scope.Complete();
+                            }
+                        else
                         {
-                            if (_cHoaDon.Thu2Lan_Tra(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString()))
-                                if (_cTienDuQuay.UpdateThem(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString(), "Trả Tiền Khách Hàng", "Thêm"))
-                                    scope.Complete();
+                            _cHoaDon.Thu2Lan_Tra(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString());
                         }
                     else
                         if (MessageBox.Show("Đã Trả, bạn có chắc chắn xóa trả?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
