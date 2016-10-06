@@ -161,10 +161,10 @@ namespace ThuTien.GUI.Doi
                             hoadon.SOHOADON = contents[46];
                         //if (!string.IsNullOrWhiteSpace(contents[47]))
                         //    hoadon.NgayPhatHanh = DateTime.Parse(contents[47]);
-                        //if (!string.IsNullOrWhiteSpace(contents[48]))
-                        //    hoadon.Quan = int.Parse(contents[48]);
-                        //if (!string.IsNullOrWhiteSpace(contents[49]))
-                        //    hoadon.Phuong = int.Parse(contents[49]);
+                        if (!string.IsNullOrWhiteSpace(contents[48]))
+                            hoadon.Quan = contents[48];
+                        if (!string.IsNullOrWhiteSpace(contents[49]))
+                            hoadon.Phuong = contents[49];
                         //if (!string.IsNullOrWhiteSpace(contents[50]))
                         //    hoadon.SoDHN = contents[50];
                         if (!string.IsNullOrWhiteSpace(contents[51]))

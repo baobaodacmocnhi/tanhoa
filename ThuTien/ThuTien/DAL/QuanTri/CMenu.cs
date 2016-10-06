@@ -8,7 +8,6 @@ namespace ThuTien.DAL.QuanTri
 {
     class CMenu : CDAL
     {
-
         public bool Them(TT_Menu menu)
         {
             try

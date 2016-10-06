@@ -137,7 +137,7 @@ namespace ThuTien.GUI.QuanTri
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen(_mnu, "Sửa"))
+            if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
             {
                 if (_selectedindex != -1)
                 {
@@ -192,8 +192,9 @@ namespace ThuTien.GUI.QuanTri
                     {
                         TT_NguoiDung nguoidung = _cNguoiDung.GetByMaND(int.Parse(dgvNguoiDung["MaND", _selectedindex].Value.ToString()));
                         ///xóa quan hệ 1 nhiều
-                        _cPhanQuyenNguoiDung.Xoa(nguoidung.TT_PhanQuyenNguoiDungs.ToList());
-                        _cNguoiDung.Xoa(nguoidung);
+                        //_cPhanQuyenNguoiDung.Xoa(nguoidung.TT_PhanQuyenNguoiDungs.ToList());
+                        nguoidung.An = true;
+                        _cNguoiDung.Sua(nguoidung);
                         Clear();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }

@@ -36,7 +36,6 @@ namespace ThuTien.GUI.QuanTri
         {
             dgvNhom.AutoGenerateColumns = false;
             dgvNhom.DataSource = _cNhom.GetDS();
-
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -66,7 +65,7 @@ namespace ThuTien.GUI.QuanTri
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen(_mnu, "Sửa"))
+            if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
             {
                 if (_selectedindex != -1)
                 {

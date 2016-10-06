@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using ThuTien.LinQ;
+using ThuTien.DAL.Doi;
 
 namespace ThuTien.DAL
 {
@@ -187,7 +188,7 @@ namespace ThuTien.DAL
             return dt.DefaultView.ToTable();
         }
 
-        public TTKhachHang getTTKHbyID(string DanhBo)
+        public TTKhachHang GetTTKH(string DanhBo)
         {
             try
             {
@@ -198,6 +199,8 @@ namespace ThuTien.DAL
                 return null;
             }
         }
+
+        CHoaDon _cHoaDon = new CHoaDon();
 
         /// <summary>
         /// Công thức tính tiền nước theo giá biểu
@@ -216,7 +219,7 @@ namespace ThuTien.DAL
             {
                 int GiamTienNuoc = 10;
                 string _chiTiet = "";
-                TTKhachHang ttkhachhang = null;
+                HOADON hoadon = null;
                 List<GiaNuoc> lstGiaNuoc = _dbKTKS_DonKH.GiaNuocs.ToList();
                 ///Table GiaNuoc được thiết lập theo bảng giá nước
                 ///1. Đến 4m3/người/tháng
@@ -291,10 +294,10 @@ namespace ThuTien.DAL
                         break;
                     case 14:
                     case 24:///SH + SX
-                        ttkhachhang = getTTKHbyID(DanhBo);
-                        if (ttkhachhang != null)
+                        hoadon = _cHoaDon.GetMoiNhat(DanhBo);
+                        if (hoadon != null)
                             ///Nếu không có tỉ lệ
-                            if (ttkhachhang.SH.Trim() == "" && ttkhachhang.SX.Trim() == "")
+                            if (hoadon.TILESH==null && hoadon.TILESX==null)
                             {
                                 if (TieuThu <= DinhMuc)
                                 {
@@ -317,10 +320,10 @@ namespace ThuTien.DAL
                             }
                             else
                                 ///Nếu có tỉ lệ SH + SX
-                                if (ttkhachhang.SH.Trim() != "" && ttkhachhang.SX.Trim() != "")
+                                if (hoadon.TILESH!=null && hoadon.TILESX!=null)
                                 {
-                                    int _SH = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SH.Trim()) / 100);
-                                    int _SX = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SX.Trim()) / 100);
+                                    int _SH = (int)Math.Round((double)TieuThu * hoadon.TILESH.Value / 100);
+                                    int _SX = (int)Math.Round((double)TieuThu * hoadon.TILESX.Value / 100);
                                     if (_SH <= DinhMuc)
                                     {
                                         TongTien = _SH * lstGiaNuoc[0].DonGia.Value;
@@ -353,10 +356,10 @@ namespace ThuTien.DAL
                         break;
                     case 15:
                     case 25:///SH + DV
-                        ttkhachhang = getTTKHbyID(DanhBo);
-                        if (ttkhachhang != null)
+                        hoadon = _cHoaDon.GetMoiNhat(DanhBo);
+                        if (hoadon != null)
                             ///Nếu không có tỉ lệ
-                            if (ttkhachhang.SH.Trim() == "" && ttkhachhang.DV.Trim() == "")
+                            if (hoadon.TILESH==null && hoadon.TILEDV==null)
                             {
                                 if (TieuThu <= DinhMuc)
                                 {
@@ -379,10 +382,10 @@ namespace ThuTien.DAL
                             }
                             else
                                 ///Nếu có tỉ lệ SH + DV
-                                if (ttkhachhang.SH.Trim() != "" && ttkhachhang.DV.Trim() != "")
+                                if (hoadon.TILESH!=null && hoadon.TILEDV!=null)
                                 {
-                                    int _SH = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SH.Trim()) / 100);
-                                    int _DV = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.DV.Trim()) / 100);
+                                    int _SH = (int)Math.Round((double)TieuThu * hoadon.TILESH.Value / 100);
+                                    int _DV = (int)Math.Round((double)TieuThu * hoadon.TILEDV.Value / 100);
                                     if (_SH <= DinhMuc)
                                     {
                                         TongTien = _SH * lstGiaNuoc[0].DonGia.Value;
@@ -415,24 +418,24 @@ namespace ThuTien.DAL
                         break;
                     case 16:
                     case 26:///SH + SX + DV
-                        ttkhachhang = getTTKHbyID(DanhBo);
-                        if (ttkhachhang != null)
+                        hoadon = _cHoaDon.GetMoiNhat(DanhBo);
+                        if (hoadon != null)
                             ///Nếu chỉ có tỉ lệ SX + DV mà không có tỉ lệ SH, không xét Định Mức
-                            if (ttkhachhang.SX.Trim() != "" && ttkhachhang.DV.Trim() != "" && ttkhachhang.SH.Trim() == "")
+                            if (hoadon.TILESX!=null && hoadon.TILEDV!=null && hoadon.TILESH==null)
                             {
-                                int _SX = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SX.Trim()) / 100);
-                                int _DV = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.DV.Trim()) / 100);
+                                int _SX = (int)Math.Round((double)TieuThu * hoadon.TILESX.Value / 100);
+                                int _DV = (int)Math.Round((double)TieuThu * hoadon.TILEDV.Value / 100);
                                 TongTien = (_SX * lstGiaNuoc[3].DonGia.Value) + (_DV * lstGiaNuoc[5].DonGia.Value);
                                 _chiTiet = _SX + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[3].DonGia.Value) + "\r\n"
                                             + _DV + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[5].DonGia.Value);
                             }
                             else
                                 ///Nếu có đủ 3 tỉ lệ SH + SX + DV
-                                if (ttkhachhang.SX.Trim() != "" && ttkhachhang.DV.Trim() != "" && ttkhachhang.SH.Trim() != "")
+                                if (hoadon.TILESX!=null && hoadon.TILEDV!=null && hoadon.TILESH!=null)
                                 {
-                                    int _SH = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SH.Trim()) / 100);
-                                    int _SX = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SX.Trim()) / 100);
-                                    int _DV = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.DV.Trim()) / 100);
+                                    int _SH = (int)Math.Round((double)TieuThu * hoadon.TILESH.Value / 100);
+                                    int _SX = (int)Math.Round((double)TieuThu * hoadon.TILESX.Value / 100);
+                                    int _DV = (int)Math.Round((double)TieuThu * hoadon.TILEDV.Value / 100);
                                     if (_SH <= DinhMuc)
                                     {
                                         TongTien = _SH * lstGiaNuoc[0].DonGia.Value;
@@ -480,10 +483,10 @@ namespace ThuTien.DAL
                     case 18:
                     case 28:
                     case 38:///SH + HCSN
-                        ttkhachhang = getTTKHbyID(DanhBo);
-                        if (ttkhachhang != null)
+                        hoadon = _cHoaDon.GetMoiNhat(DanhBo);
+                        if (hoadon != null)
                             ///Nếu không có tỉ lệ
-                            if (ttkhachhang.SH.Trim() == "" && ttkhachhang.HCSN.Trim() == "")
+                            if (hoadon.TILESH==null && hoadon.TILEHCSN==null)
                             {
                                 if (TieuThu <= DinhMuc)
                                 {
@@ -506,10 +509,10 @@ namespace ThuTien.DAL
                             }
                             else
                                 ///Nếu có tỉ lệ SH + HCSN
-                                if (ttkhachhang.SH.Trim() != "" && ttkhachhang.HCSN.Trim() != "")
+                                if (hoadon.TILESH!=null && hoadon.TILEHCSN!=null)
                                 {
-                                    int _SH = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SH.Trim()) / 100);
-                                    int _HCSN = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.HCSN.Trim()) / 100);
+                                    int _SH = (int)Math.Round((double)TieuThu * hoadon.TILESH.Value / 100);
+                                    int _HCSN = (int)Math.Round((double)TieuThu * hoadon.TILEHCSN.Value / 100);
                                     if (_SH <= DinhMuc)
                                     {
                                         TongTien = _SH * lstGiaNuoc[0].DonGia.Value;
@@ -543,14 +546,14 @@ namespace ThuTien.DAL
                     case 19:
                     case 29:
                     case 39:///SH + HCSN + SX + DV
-                        ttkhachhang = getTTKHbyID(DanhBo);
-                        if (ttkhachhang != null)
-                            if (ttkhachhang.SH.Trim() != "" && ttkhachhang.HCSN.Trim() != "" && ttkhachhang.SX.Trim() != "" && ttkhachhang.DV.Trim() != "")
+                        hoadon = _cHoaDon.GetMoiNhat(DanhBo);
+                        if (hoadon != null)
+                            if (hoadon.TILESH!=null && hoadon.TILEHCSN!=null && hoadon.TILESX!=null && hoadon.TILEDV!=null)
                             {
-                                int _SH = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SH.Trim()) / 100);
-                                int _HCSN = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.HCSN.Trim()) / 100);
-                                int _SX = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SX.Trim()) / 100);
-                                int _DV = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.DV.Trim()) / 100);
+                                int _SH = (int)Math.Round((double)TieuThu * hoadon.TILESH.Value / 100);
+                                int _HCSN = (int)Math.Round((double)TieuThu * hoadon.TILEHCSN.Value / 100);
+                                int _SX = (int)Math.Round((double)TieuThu * hoadon.TILESX.Value / 100);
+                                int _DV = (int)Math.Round((double)TieuThu * hoadon.TILEDV.Value / 100);
                                 if (_SH <= DinhMuc)
                                 {
                                     TongTien = _SH * lstGiaNuoc[0].DonGia.Value;
@@ -600,10 +603,10 @@ namespace ThuTien.DAL
                     //    TongTien = TieuThu * lstGiaNuoc[5].DonGia.Value;
                     //    break;
                     //case 24:///SH + SX
-                    //    ttkhachhang = _cTTKH.getTTKHbyID(DanhBo);
-                    //    if (ttkhachhang != null)
+                    //    hoadon = _cTTKH._cHoaDon.GetMoiNhat(DanhBo);
+                    //    if (hoadon != null)
                     //        ///Nếu không có tỉ lệ
-                    //        if (ttkhachhang.SH.Trim() == "" && ttkhachhang.SX.Trim() == "")
+                    //        if (hoadon.TILESH==null && hoadon.TILESX==null)
                     //        {
 
                     //        }
@@ -643,53 +646,53 @@ namespace ThuTien.DAL
                     //    TongTien = TieuThu * lstGiaNuoc[5].DonGia.Value;
                     //    break;
                     case 34:///HCSN + SX
-                        ttkhachhang = getTTKHbyID(DanhBo);
-                        if (ttkhachhang != null)
+                        hoadon = _cHoaDon.GetMoiNhat(DanhBo);
+                        if (hoadon != null)
                             ///Nếu không có tỉ lệ
-                            if (ttkhachhang.HCSN.Trim() == "" && ttkhachhang.SX.Trim() == "")
+                            if (hoadon.TILEHCSN==null && hoadon.TILESX==null)
                             {
                                 TongTien = (TieuThu * lstGiaNuoc[3].DonGia.Value);
                                 _chiTiet = TieuThu + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[3].DonGia.Value);
                             }
                             else
                                 ///Nếu có tỉ lệ
-                            if (ttkhachhang.HCSN.Trim() != "" && ttkhachhang.SX.Trim() != "")
+                            if (hoadon.TILEHCSN!=null && hoadon.TILESX!=null)
                             {
-                                int _HCSN = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.HCSN.Trim()) / 100);
-                                int _SX = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SX.Trim()) / 100);
+                                int _HCSN = (int)Math.Round((double)TieuThu * hoadon.TILEHCSN.Value / 100);
+                                int _SX = (int)Math.Round((double)TieuThu * hoadon.TILESX.Value / 100);
                                 TongTien = (_HCSN * lstGiaNuoc[4].DonGia.Value) + (_SX * lstGiaNuoc[3].DonGia.Value);
                                 _chiTiet = _HCSN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[4].DonGia.Value) + "\r\n"
                                             + _SX + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[3].DonGia.Value);
                             }
                         break;
                     case 35:///HCSN + DV
-                        ttkhachhang = getTTKHbyID(DanhBo);
-                        if (ttkhachhang != null)
+                        hoadon = _cHoaDon.GetMoiNhat(DanhBo);
+                        if (hoadon != null)
                             ///Nếu không có tỉ lệ
-                            if (ttkhachhang.HCSN.Trim() == "" && ttkhachhang.SX.Trim() == "")
+                            if (hoadon.TILEHCSN==null && hoadon.TILESX==null)
                             {
                                 TongTien = TieuThu * lstGiaNuoc[5].DonGia.Value;
                                 _chiTiet = TieuThu + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[5].DonGia.Value);
                             }
                             else
                                 ///Nếu có tỉ lệ
-                            if (ttkhachhang.HCSN.Trim() != "" && ttkhachhang.DV.Trim() != "")
+                            if (hoadon.TILEHCSN!=null && hoadon.TILEDV!=null)
                             {
-                                int _HCSN = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.HCSN.Trim()) / 100);
-                                int _DV = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.DV.Trim()) / 100);
+                                int _HCSN = (int)Math.Round((double)TieuThu * hoadon.TILEHCSN.Value / 100);
+                                int _DV = (int)Math.Round((double)TieuThu * hoadon.TILEDV.Value / 100);
                                 TongTien = (_HCSN * lstGiaNuoc[4].DonGia.Value) + (_DV * lstGiaNuoc[5].DonGia.Value);
                                 _chiTiet = _HCSN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[4].DonGia.Value) + "\r\n"
                                             + _DV + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[5].DonGia.Value);
                             }
                         break;
                     case 36:///HCSN + SX + DV
-                        ttkhachhang = getTTKHbyID(DanhBo);
-                        if (ttkhachhang != null)
-                            if (ttkhachhang.HCSN.Trim() != "" && ttkhachhang.SX.Trim() != "" && ttkhachhang.DV.Trim() != "")
+                        hoadon = _cHoaDon.GetMoiNhat(DanhBo);
+                        if (hoadon != null)
+                            if (hoadon.TILEHCSN!=null && hoadon.TILESX!=null && hoadon.TILEDV!=null)
                             {
-                                int _HCSN = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.HCSN.Trim()) / 100);
-                                int _SX = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SX.Trim()) / 100);
-                                int _DV = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.DV.Trim()) / 100);
+                                int _HCSN = (int)Math.Round((double)TieuThu * hoadon.TILEHCSN.Value / 100);
+                                int _SX = (int)Math.Round((double)TieuThu * hoadon.TILESX.Value / 100);
+                                int _DV = (int)Math.Round((double)TieuThu * hoadon.TILEDV.Value / 100);
                                 TongTien = (_HCSN * lstGiaNuoc[4].DonGia.Value) + (_SX * lstGiaNuoc[3].DonGia.Value) + (_DV * lstGiaNuoc[5].DonGia.Value);
                                 _chiTiet = _HCSN + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[4].DonGia.Value) + "\r\n"
                                             + _SX + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[3].DonGia.Value) + "\r\n"
@@ -722,37 +725,37 @@ namespace ThuTien.DAL
                     //    TongTien = TieuThu * lstGiaNuoc[5].DonGia.Value;
                     //    break;
                     case 44:///SH + SX
-                        ttkhachhang = getTTKHbyID(DanhBo);
-                        if (ttkhachhang != null)
-                            if (ttkhachhang.SH.Trim() != "" && ttkhachhang.SX.Trim() != "")
+                        hoadon = _cHoaDon.GetMoiNhat(DanhBo);
+                        if (hoadon != null)
+                            if (hoadon.TILESH!=null && hoadon.TILESX!=null)
                             {
-                                int _SH = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SH.Trim()) / 100);
-                                int _SX = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SX.Trim()) / 100);
+                                int _SH = (int)Math.Round((double)TieuThu * hoadon.TILESH.Value / 100);
+                                int _SX = (int)Math.Round((double)TieuThu * hoadon.TILESX.Value / 100);
                                 TongTien = (_SH * lstGiaNuoc[2].DonGia.Value) + (_SX * lstGiaNuoc[3].DonGia.Value);
                                 _chiTiet = _SH + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[2].DonGia.Value) + "\r\n"
                                             + _SX + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[3].DonGia.Value);
                             }
                         break;
                     case 45:///SH + DV
-                        ttkhachhang = getTTKHbyID(DanhBo);
-                        if (ttkhachhang != null)
-                            if (ttkhachhang.SH.Trim() != "" && ttkhachhang.DV.Trim() != "")
+                        hoadon = _cHoaDon.GetMoiNhat(DanhBo);
+                        if (hoadon != null)
+                            if (hoadon.TILESH!=null && hoadon.TILEDV!=null)
                             {
-                                int _SH = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SH.Trim()) / 100);
-                                int _DV = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.DV.Trim()) / 100);
+                                int _SH = (int)Math.Round((double)TieuThu * hoadon.TILESH.Value / 100);
+                                int _DV = (int)Math.Round((double)TieuThu * hoadon.TILEDV.Value / 100);
                                 TongTien = (_SH * lstGiaNuoc[2].DonGia.Value) + (_DV * lstGiaNuoc[5].DonGia.Value);
                                 _chiTiet = _SH + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[2].DonGia.Value) + "\r\n"
                                             + _DV + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[5].DonGia.Value);
                             }
                         break;
                     case 46:///SH + SX + DV
-                        ttkhachhang = getTTKHbyID(DanhBo);
-                        if (ttkhachhang != null)
-                            if (ttkhachhang.SH.Trim() != "" && ttkhachhang.SX.Trim() != "" && ttkhachhang.DV.Trim() != "")
+                        hoadon = _cHoaDon.GetMoiNhat(DanhBo);
+                        if (hoadon != null)
+                            if (hoadon.TILESH!=null && hoadon.TILESX!=null && hoadon.TILEDV!=null)
                             {
-                                int _SH = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SH.Trim()) / 100);
-                                int _SX = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SX.Trim()) / 100);
-                                int _DV = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.DV.Trim()) / 100);
+                                int _SH = (int)Math.Round((double)TieuThu * hoadon.TILESH.Value / 100);
+                                int _SX = (int)Math.Round((double)TieuThu * hoadon.TILESX.Value / 100);
+                                int _DV = (int)Math.Round((double)TieuThu * hoadon.TILEDV.Value / 100);
                                 TongTien = (_SH * lstGiaNuoc[2].DonGia.Value) + (_SX * lstGiaNuoc[3].DonGia.Value) + (_DV * lstGiaNuoc[5].DonGia.Value);
                                 _chiTiet = _SH + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[2].DonGia.Value) + "\r\n"
                                             + _SX + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[3].DonGia.Value) + "\r\n"
@@ -836,14 +839,14 @@ namespace ThuTien.DAL
                         //TongTien -= TongTien * 10 / 100;
                         break;
                     case 59:///sỉ phức tạp
-                        ttkhachhang = getTTKHbyID(DanhBo);
-                        if (ttkhachhang != null)
-                            if (ttkhachhang.SH.Trim() != "" && ttkhachhang.HCSN.Trim() != "" && ttkhachhang.SX.Trim() != "" && ttkhachhang.DV.Trim() != "")
+                        hoadon = _cHoaDon.GetMoiNhat(DanhBo);
+                        if (hoadon != null)
+                            if (hoadon.TILESH!=null && hoadon.TILEHCSN!=null && hoadon.TILESX!=null && hoadon.TILEDV!=null)
                             {
-                                int _SH = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SH.Trim()) / 100);
-                                int _HCSN = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.HCSN.Trim()) / 100);
-                                int _SX = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SX.Trim()) / 100);
-                                int _DV = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.DV.Trim()) / 100);
+                                int _SH = (int)Math.Round((double)TieuThu * hoadon.TILESH.Value / 100);
+                                int _HCSN = (int)Math.Round((double)TieuThu * hoadon.TILEHCSN.Value / 100);
+                                int _SX = (int)Math.Round((double)TieuThu * hoadon.TILESX.Value / 100);
+                                int _DV = (int)Math.Round((double)TieuThu * hoadon.TILEDV.Value / 100);
                                 if (_SH <= DinhMuc)
                                 {
                                     TongTien = _SH * (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * GiamTienNuoc / 100);
@@ -878,12 +881,12 @@ namespace ThuTien.DAL
                             }
                         break;
                     case 68:///SH giá sỉ - KD giá lẻ
-                        ttkhachhang = getTTKHbyID(DanhBo);
-                        if (ttkhachhang != null)
-                            if (ttkhachhang.SH.Trim() != "" && ttkhachhang.DV.Trim() != "")
+                        hoadon = _cHoaDon.GetMoiNhat(DanhBo);
+                        if (hoadon != null)
+                            if (hoadon.TILESH!=null && hoadon.TILEDV!=null)
                             {
-                                int _SH = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SH.Trim()) / 100);
-                                int _DV = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.DV.Trim()) / 100);
+                                int _SH = (int)Math.Round((double)TieuThu * hoadon.TILESH.Value / 100);
+                                int _DV = (int)Math.Round((double)TieuThu * hoadon.TILEDV.Value / 100);
                                 if (_SH <= DinhMuc)
                                 {
                                     TongTien = _SH * (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * GiamTienNuoc / 100);
