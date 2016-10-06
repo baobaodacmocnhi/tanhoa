@@ -157,7 +157,7 @@
             // 
             this.txtPhong.Location = new System.Drawing.Point(705, 18);
             this.txtPhong.Name = "txtPhong";
-            this.txtPhong.Size = new System.Drawing.Size(100, 25);
+            this.txtPhong.Size = new System.Drawing.Size(150, 25);
             this.txtPhong.TabIndex = 5;
             this.txtPhong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhong_KeyPress);
             // 
@@ -566,6 +566,7 @@
             this.Phong.HeaderText = "Phòng";
             this.Phong.Name = "Phong";
             this.Phong.ReadOnly = true;
+            this.Phong.Width = 150;
             // 
             // TenLCT
             // 
