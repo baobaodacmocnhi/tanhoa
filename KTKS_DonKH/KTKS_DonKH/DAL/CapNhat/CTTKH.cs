@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using KTKS_DonKH.LinQ;
-using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.DAL.QuanTri;
 using System.Windows.Forms;
 using System.IO;
 
@@ -94,7 +94,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         ///Kiểm Tra có thay đổi Phiên Lộ Trình không
                         if (CheckTTKHbyID(ttkhachhang.DanhBo))
                         {
-                            db.TTKhachHangs.DeleteOnSubmit(getTTKHbyID(ttkhachhang.DanhBo));
+                            //db.TTKhachHangs.DeleteOnSubmit(getTTKHbyID(ttkhachhang.DanhBo));
                         }
 
                         db.TTKhachHangs.InsertOnSubmit(ttkhachhang);
@@ -230,18 +230,18 @@ namespace KTKS_DonKH.DAL.CapNhat
             }
         }
 
-        public TTKhachHang getTTKHbyID(string DanhBo)
-        {
-            try
-            {
-                return db.TTKhachHangs.SingleOrDefault(itemTTKH => itemTTKH.DanhBo == DanhBo);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
+        //public TTKhachHang getTTKHbyID(string DanhBo)
+        //{
+        //    try
+        //    {
+        //        return db.TTKhachHangs.SingleOrDefault(itemTTKH => itemTTKH.DanhBo == DanhBo);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        return null;
+        //    }
+        //}
 
         public bool CheckTTKHbyID(string DanhBo)
         {
@@ -255,8 +255,6 @@ namespace KTKS_DonKH.DAL.CapNhat
                 return false;
             }
         }
-
-
 
         #endregion
 

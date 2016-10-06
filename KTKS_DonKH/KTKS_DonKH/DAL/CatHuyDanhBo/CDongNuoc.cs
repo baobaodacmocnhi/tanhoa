@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.LinQ;
-using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.DAL.QuanTri;
 using System.Data;
 
 namespace KTKS_DonKH.DAL.DongNuoc
@@ -336,7 +336,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
                                     itemCTDongNuoc.DiaChi,
                                     NguoiKy=itemCTDongNuoc.NguoiKy_DN,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -364,7 +364,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
                                     itemCTDongNuoc.DiaChi,
                                     NguoiKy = itemCTDongNuoc.NguoiKy_DN,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -392,7 +392,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
                                     itemCTDongNuoc.DiaChi,
                                     NguoiKy = itemCTDongNuoc.NguoiKy_DN,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -420,7 +420,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
                                     itemCTDongNuoc.DiaChi,
                                     NguoiKy = itemCTDongNuoc.NguoiKy_DN,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -448,7 +448,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
                                     itemCTDongNuoc.DiaChi,
                                     NguoiKy = itemCTDongNuoc.NguoiKy_DN,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -476,7 +476,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
                                     itemCTDongNuoc.DiaChi,
                                     NguoiKy = itemCTDongNuoc.NguoiKy_DN,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -503,7 +503,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
                                     itemCTDongNuoc.DiaChi,
                                     NguoiKy = itemCTDongNuoc.NguoiKy_DN,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -530,7 +530,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
                                     itemCTDongNuoc.DiaChi,
                                     NguoiKy = itemCTDongNuoc.NguoiKy_DN,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -557,7 +557,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
                                     itemCTDongNuoc.DiaChi,
                                     NguoiKy = itemCTDongNuoc.NguoiKy_MN,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -584,7 +584,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
                                     itemCTDongNuoc.DiaChi,
                                     NguoiKy = itemCTDongNuoc.NguoiKy_MN,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -611,7 +611,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
                                     itemCTDongNuoc.DiaChi,
                                     NguoiKy = itemCTDongNuoc.NguoiKy_MN,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -638,7 +638,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
                                     itemCTDongNuoc.DiaChi,
                                     NguoiKy = itemCTDongNuoc.NguoiKy_MN,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -665,7 +665,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
                                     itemCTDongNuoc.DiaChi,
                                     NguoiKy = itemCTDongNuoc.NguoiKy_MN,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -692,7 +692,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
                                     itemCTDongNuoc.DiaChi,
                                     NguoiKy = itemCTDongNuoc.NguoiKy_MN,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -719,7 +719,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
                                     itemCTDongNuoc.DiaChi,
                                     NguoiKy = itemCTDongNuoc.NguoiKy_MN,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -746,7 +746,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
                                     itemCTDongNuoc.DiaChi,
                                     NguoiKy = itemCTDongNuoc.NguoiKy_MN,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {

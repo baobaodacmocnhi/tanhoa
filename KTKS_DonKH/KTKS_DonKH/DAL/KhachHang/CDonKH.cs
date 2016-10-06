@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using KTKS_DonKH.LinQ;
-using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.DAL.QuanTri;
 using System.Windows.Forms;
 using System.Data;
 
@@ -114,7 +114,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.NVKiemTra,
                                     CreateBy = itemUser.HoTen,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -148,7 +148,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.NVKiemTra,
                                     CreateBy = itemUser.HoTen,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -182,7 +182,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.NVKiemTra,
                                     CreateBy=itemUser.HoTen,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -212,7 +212,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     CreateBy = itemUser.HoTen,
                                     itemDonKH.NVKiemTra,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -243,7 +243,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     CreateBy = itemUser.HoTen,
                                     itemDonKH.NVKiemTra,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -274,7 +274,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     CreateBy = itemUser.HoTen,
                                     itemDonKH.NVKiemTra,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -306,7 +306,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     CreateBy = itemUser.HoTen,
                                     itemDonKH.NVKiemTra,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -338,7 +338,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.TienTrinh,
                                     itemDonKH.NVKiemTra,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -370,7 +370,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.TienTrinh,
                                     itemDonKH.NVKiemTra,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -410,7 +410,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.MoNuoc,
                                     itemDonKH.LoaiKhac,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -450,7 +450,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.MoNuoc,
                                     itemDonKH.LoaiKhac,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -667,7 +667,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemLSCVP.GhiChuChuyen,
                                     NguoiDi = itemUser.HoTen,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -693,7 +693,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     NguoiDi = itemUser.HoTen,
                                     ChiTiet = "",
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -805,7 +805,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemLSCVP.GhiChuChuyen,
                                     //NguoiDi = itemUser.HoTen,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -831,7 +831,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     NguoiDi = "",
                                     ChiTiet = "",
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -943,7 +943,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemLSCVP.GhiChuChuyen,
                                     //NguoiDi = itemUser.HoTen,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -969,7 +969,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     NguoiDi = "",
                                     ChiTiet = "",
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {

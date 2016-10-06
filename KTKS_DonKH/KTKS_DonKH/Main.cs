@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.GUI.HeThong;
-using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.GUI.CapNhat;
 using KTKS_DonKH.GUI.KhachHang;
 using KTKS_DonKH.GUI.KiemTraXacMinh;
@@ -20,6 +20,7 @@ using KTKS_DonKH.GUI.BamChi;
 using KTKS_DonKH.GUI.DongNuoc;
 using KTKS_DonKH.GUI.CongVan;
 using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.GUI.QuanTri;
 
 namespace KTKS_DonKH
 {
@@ -206,7 +207,7 @@ namespace KTKS_DonKH
         {
             foreach (Form item in this.MdiChildren)
                 item.Close();
-            Form frm = new frmQLDonKH();
+            Form frm = new frmDSDonKH();
             frm.MdiParent = this;
             frm.Show();
             StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
@@ -277,16 +278,6 @@ namespace KTKS_DonKH
             foreach (Form item in this.MdiChildren)
                 item.Close();
             Form frm = new frmDSTTTL();
-            frm.MdiParent = this;
-            frm.Show();
-            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
-        }
-
-        private void ribbtnNVKiemTra_Click(object sender, EventArgs e)
-        {
-            foreach (Form item in this.MdiChildren)
-                item.Close();
-            Form frm = new frmNVKiemTra();
             frm.MdiParent = this;
             frm.Show();
             StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
@@ -377,7 +368,7 @@ namespace KTKS_DonKH
         {
             foreach (Form item in this.MdiChildren)
                 item.Close();
-            Form frm = new frmQLDonTXL();
+            Form frm = new frmDSDonTXL();
             frm.MdiParent = this;
             frm.Show();
             StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
@@ -478,7 +469,7 @@ namespace KTKS_DonKH
         {
             foreach (Form item in this.MdiChildren)
                 item.Close();
-            Form frm = new frmThongTin_KT_BC();
+            Form frm = new frmHienTrangKiemTra();
             frm.MdiParent = this;
             frm.Show();
             StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
@@ -558,7 +549,7 @@ namespace KTKS_DonKH
         {
             foreach (Form item in this.MdiChildren)
                 item.Close();
-            Form frm = new frmQLDonDienThoai();
+            Form frm = new frmDSDonDienThoai();
             frm.MdiParent = this;
             frm.Show();
             StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
@@ -642,7 +633,7 @@ namespace KTKS_DonKH
         {
             foreach (Form item in this.MdiChildren)
                 item.Close();
-            Form frm = new frmQLTruyThuTienNuoc();
+            Form frm = new frmDSTruyThuTienNuoc();
             frm.MdiParent = this;
             frm.Show();
             StripStatus_Form.Text = "Đang mở Form: " + frm.Text;

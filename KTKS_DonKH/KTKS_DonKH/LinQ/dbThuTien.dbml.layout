@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 18.5" name="dbThuTien">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 19.25" name="dbThuTien">
   <DataContextMoniker Name="/dbThuTienDataContext" />
   <nestedChildShapes>
-    <classShape Id="03e0aef6-0960-4314-bc1a-58457ce71adc" absoluteBounds="4.25, 0.75, 2, 17.539614257812502">
+    <classShape Id="c17e001b-e5b2-4797-8aed-c47a8239efd3" absoluteBounds="3.75, 1.5, 2, 17.539614257812502">
       <DataClassMoniker Name="/dbThuTienDataContext/HOADON" />
       <nestedChildShapes>
-        <elementListCompartment Id="c36d480c-9313-46bb-a301-ca3adab267c7" absoluteBounds="4.265, 1.21, 1.9700000000000002, 16.9796142578125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="806c0f3d-4558-4174-bb99-046e69918a98" absoluteBounds="3.765, 1.96, 1.9700000000000002, 16.9796142578125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

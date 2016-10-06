@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.CapNhat;
 using KTKS_DonKH.DAL.KhachHang;
-using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.ToXuLy;
 

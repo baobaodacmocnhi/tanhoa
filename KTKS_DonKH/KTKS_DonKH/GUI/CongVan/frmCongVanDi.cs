@@ -19,6 +19,7 @@ using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.CongVan;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.CapNhat;
+using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.CongVan
 {
@@ -32,7 +33,7 @@ namespace KTKS_DonKH.GUI.CongVan
         CDCBD _cDCBD = new CDCBD();
         CCHDB _cCHDB = new CCHDB();
         CTTTL _cTTTL = new CTTTL();
-        CTTKH _cTTKH = new CTTKH();
+        CThuTien _cThuTien = new CThuTien();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         bool _toxuly = false;
         decimal _madon = 0;
@@ -502,10 +503,10 @@ namespace KTKS_DonKH.GUI.CongVan
         {
             if (txtDanhBo.Text.Trim().Length == 11 && e.KeyChar == 13)
             {
-                TTKhachHang ttkh = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
-                txtDanhBo.Text = ttkh.DanhBo;
-                txtHoTen.Text = ttkh.HoTen;
-                txtDiaChi.Text = ttkh.DC1 + " " + ttkh.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkh.Quan, ttkh.Phuong);
+                HOADON hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
+                txtDanhBo.Text = hoadon.DANHBA;
+                txtHoTen.Text = hoadon.TENKH;
+                txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
             }
         }
 

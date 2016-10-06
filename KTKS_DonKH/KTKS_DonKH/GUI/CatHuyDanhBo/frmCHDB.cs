@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.LinQ;
-using KTKS_DonKH.DAL.CapNhat;
+using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.DAL.CatHuyDanhBo;
 using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.DAL.KiemTraXacMinh;
@@ -16,6 +16,8 @@ using KTKS_DonKH.BaoCao.CatHuyDanhBo;
 using KTKS_DonKH.GUI.BaoCao;
 using System.Globalization;
 using KTKS_DonKH.DAL.ToXuLy;
+using KTKS_DonKH.DAL.CapNhat;
+using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -24,8 +26,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         Dictionary<string, string> _source = new Dictionary<string, string>();
         DonKH _donkh = null;
         DonTXL _dontxl = null;
-        TTKhachHang _ttkhachhang = null;
-        CTTKH _cTTKH = new CTTKH();
+        HOADON _hoadon = null;
+        CThuTien _cThuTien = new CThuTien();
         CCHDB _cCHDB = new CCHDB();
         CTCHDB _ctchdb = null;
         CTCTDB _ctctdb = null;
@@ -62,13 +64,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         /// Nhận Entity TTKhachHang để điền vào textbox
         /// </summary>
         /// <param name="ttkhachhang"></param>
-        public void LoadTTKH(TTKhachHang ttkhachhang)
+        public void LoadTTKH(HOADON hoadon)
         {
-            txtDanhBo.Text = ttkhachhang.DanhBo;
-            txtHopDong.Text = ttkhachhang.GiaoUoc;
-            txtHoTen.Text = ttkhachhang.HoTen;
-            txtDiaChi.Text = ttkhachhang.DC1 + " " + ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkhachhang.Quan, ttkhachhang.Phuong);
-            dgvLichSuCHDB.DataSource = _cCHDB.GetLichSuCHDB(ttkhachhang.DanhBo);
+            txtDanhBo.Text = hoadon.DANHBA;
+            txtHopDong.Text = hoadon.HOPDONG;
+            txtHoTen.Text = hoadon.TENKH;
+            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+            dgvLichSuCHDB.DataSource = _cCHDB.GetLichSuCHDB(hoadon.DANHBA);
         }
 
         public void Clear()
@@ -104,7 +106,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             txtThoiGianLapPhieu.Text = "";
             ///
             txtHieuLucKy.Text = "";
-            _ttkhachhang = null;
+            _hoadon = null;
             _ctchdb = null;
             _ctctdb = null;
             btnSua.Enabled = false;
@@ -158,13 +160,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         _donkh = _cDonKH.getDonKHbyID(decimal.Parse(_source["MaDon"]));
                         txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
                     }
-                    if (_cTTKH.getTTKHbyID(_source["DanhBo"]) != null)
+                    if (_cThuTien.GetMoiNhat(_source["DanhBo"]) != null)
                     {
-                        _ttkhachhang = _cTTKH.getTTKHbyID(_source["DanhBo"]);
-                        txtDanhBo.Text = _ttkhachhang.DanhBo;
-                        txtHopDong.Text = _ttkhachhang.GiaoUoc;
-                        txtHoTen.Text = _ttkhachhang.HoTen;
-                        txtDiaChi.Text = _ttkhachhang.DC1 + " " + _ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(_ttkhachhang.Quan, _ttkhachhang.Phuong);
+                        _hoadon = _cThuTien.GetMoiNhat(_source["DanhBo"]);
+                        LoadTTKH(_hoadon);
                     }
                 }
                 else
@@ -302,11 +301,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             ctchdb.HopDong = txtHopDong.Text.Trim();
                             ctchdb.HoTen = txtHoTen.Text.Trim();
                             ctchdb.DiaChi = txtDiaChi.Text.Trim();
-                            if (_ttkhachhang != null)
+                            if (_hoadon != null)
                             {
-                                ctchdb.Dot = _ttkhachhang.Dot;
-                                ctchdb.Ky = _ttkhachhang.Ky;
-                                ctchdb.Nam = _ttkhachhang.Nam;
+                                ctchdb.Dot = _hoadon.DOT.ToString();
+                                ctchdb.Ky = _hoadon.KY.ToString();
+                                ctchdb.Nam = _hoadon.NAM.ToString();
                             }
                             ctchdb.LyDo = cmbLyDo.SelectedValue.ToString();
                             ctchdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
@@ -393,11 +392,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             ctchdb.HopDong = txtHopDong.Text.Trim();
                             ctchdb.HoTen = txtHoTen.Text.Trim();
                             ctchdb.DiaChi = txtDiaChi.Text.Trim();
-                            if (_ttkhachhang != null)
+                            if (_hoadon != null)
                             {
-                                ctchdb.Dot = _ttkhachhang.Dot;
-                                ctchdb.Ky = _ttkhachhang.Ky;
-                                ctchdb.Nam = _ttkhachhang.Nam;
+                                ctchdb.Dot = _hoadon.DOT.ToString();
+                                ctchdb.Ky = _hoadon.KY.ToString();
+                                ctchdb.Nam = _hoadon.NAM.ToString();
                             }
                             ctchdb.LyDo = cmbLyDo.SelectedValue.ToString();
                             ctchdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
@@ -518,9 +517,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             ctchdb.HopDong = txtHopDong.Text.Trim();
                             ctchdb.HoTen = txtHoTen.Text.Trim();
                             ctchdb.DiaChi = txtDiaChi.Text.Trim();
-                            ctchdb.Dot = _ttkhachhang.Dot;
-                            ctchdb.Ky = _ttkhachhang.Ky;
-                            ctchdb.Nam = _ttkhachhang.Nam;
+                            ctchdb.Dot = _hoadon.DOT.ToString();
+                            ctchdb.Ky = _hoadon.KY.ToString();
+                            ctchdb.Nam = _hoadon.NAM.ToString();
                             ctchdb.LyDo = cmbLyDo.SelectedValue.ToString();
                             ctchdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
                             if (txtSoTien.Text.Trim() != "")
@@ -579,10 +578,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 ctchdb.HoTen = txtHoTen.Text.Trim();
                                 ctchdb.DiaChi = txtDiaChi.Text.Trim();
                                 ///
-                                _ttkhachhang = _cTTKH.getTTKHbyID(_ctctdb.DanhBo);
-                                ctchdb.Dot = _ttkhachhang.Dot;
-                                ctchdb.Ky = _ttkhachhang.Ky;
-                                ctchdb.Nam = _ttkhachhang.Nam;
+                                _hoadon = _cThuTien.GetMoiNhat(_ctctdb.DanhBo);
+                                ctchdb.Dot = _hoadon.DOT.ToString();
+                                ctchdb.Ky = _hoadon.KY.ToString();
+                                ctchdb.Nam = _hoadon.NAM.ToString();
                                 ///
                                 ctchdb.LyDo = cmbLyDo.SelectedValue.ToString();
                                 ctchdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
@@ -736,12 +735,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         ycchdb.GhiChuLyDo = _ctchdb.GhiChuLyDo;
                         ycchdb.SoTien = _ctchdb.SoTien;
                         ycchdb.HieuLucKy = txtHieuLucKy.Text.Trim();
-                        TTKhachHang ttkhachhang = _cTTKH.getTTKHbyID(_ctchdb.DanhBo);
-                        if (ttkhachhang != null)
+                        HOADON hoadon = _cThuTien.GetMoiNhat(_ctchdb.DanhBo);
+                        if (hoadon != null)
                         {
-                            ycchdb.Dot = ttkhachhang.Dot;
-                            ycchdb.Ky = ttkhachhang.Ky;
-                            ycchdb.Nam = ttkhachhang.Nam;
+                            ycchdb.Dot = hoadon.DOT.ToString();
+                            ycchdb.Ky = hoadon.KY.ToString();
+                            ycchdb.Nam = hoadon.NAM.ToString();
                         }
                         ///Ký Tên
                         BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
@@ -836,12 +835,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             ycchdb.GhiChuLyDo = _ctchdb.GhiChuLyDo;
                             ycchdb.SoTien = _ctchdb.SoTien;
                             ycchdb.HieuLucKy = txtHieuLucKy.Text.Trim();
-                            TTKhachHang ttkhachhang = _cTTKH.getTTKHbyID(_ctchdb.DanhBo);
-                            if (ttkhachhang != null)
+                            
+                            HOADON hoadon = _cThuTien.GetMoiNhat(_ctchdb.DanhBo);
+                            if (hoadon != null)
                             {
-                                ycchdb.Dot = ttkhachhang.Dot;
-                                ycchdb.Ky = ttkhachhang.Ky;
-                                ycchdb.Nam = ttkhachhang.Nam;
+                                ycchdb.Dot = hoadon.DOT.ToString();
+                                ycchdb.Ky = hoadon.KY.ToString();
+                                ycchdb.Nam = hoadon.NAM.ToString();
                             }
                             ///Ký Tên
                             BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
@@ -972,12 +972,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     {
                         _dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
                         txtMaDon.Text = "TXL"+_dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
-                        if (_cTTKH.getTTKHbyID(_dontxl.DanhBo) != null)
+                        if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
                         {
-                            _ttkhachhang = _cTTKH.getTTKHbyID(_dontxl.DanhBo);
-                            LoadTTKH(_ttkhachhang);
+                            _hoadon = _cThuTien.GetMoiNhat(_dontxl.DanhBo);
+                            LoadTTKH(_hoadon);
                             string ThongTin;
-                            if (_cCHDB.CheckCHDBbyDanhBo(_ttkhachhang.DanhBo, out ThongTin))
+                            if (_cCHDB.CheckCHDBbyDanhBo(_hoadon.DANHBA, out ThongTin))
                                 MessageBox.Show("Danh Bộ này đã lập " + ThongTin, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
@@ -1002,12 +1002,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 {
                     _donkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
                     txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
-                    if (_cTTKH.getTTKHbyID(_donkh.DanhBo) != null)
+                    if (_cThuTien.GetMoiNhat(_donkh.DanhBo) != null)
                     {
-                        _ttkhachhang = _cTTKH.getTTKHbyID(_donkh.DanhBo);
-                        LoadTTKH(_ttkhachhang);
+                        _hoadon = _cThuTien.GetMoiNhat(_donkh.DanhBo);
+                        LoadTTKH(_hoadon);
                         string ThongTin;
-                        if (_cCHDB.CheckCHDBbyDanhBo(_ttkhachhang.DanhBo, out ThongTin))
+                        if (_cCHDB.CheckCHDBbyDanhBo(_hoadon.DANHBA, out ThongTin))
                             MessageBox.Show("Danh Bộ này đã lập " + ThongTin, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -1190,11 +1190,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         _ctchdb.HopDong = txtHopDong.Text.Trim();
                         _ctchdb.HoTen = txtHoTen.Text.Trim();
                         _ctchdb.DiaChi = txtDiaChi.Text.Trim();
-                        if (_ttkhachhang != null)
+                        if (_hoadon != null)
                         {
-                            _ctchdb.Dot = _ttkhachhang.Dot;
-                            _ctchdb.Ky = _ttkhachhang.Ky;
-                            _ctchdb.Nam = _ttkhachhang.Nam;
+                            _ctchdb.Dot = _hoadon.DOT.ToString();
+                            _ctchdb.Ky = _hoadon.KY.ToString();
+                            _ctchdb.Nam = _hoadon.NAM.ToString();
                         }
                     //}
 
@@ -1322,12 +1322,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (e.KeyChar == 13)
             {
-                if (_cTTKH.getTTKHbyID(txtDanhBo.Text.Trim()) != null)
+                if (_cThuTien.GetMoiNhat(txtDanhBo.Text.Trim()) != null)
                 {
-                    _ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
-                    LoadTTKH(_ttkhachhang);
+                    _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
+                    LoadTTKH(_hoadon);
                     string ThongTin;
-                    if (_cCHDB.CheckCHDBbyDanhBo(_ttkhachhang.DanhBo, out ThongTin))
+                    if (_cCHDB.CheckCHDBbyDanhBo(_hoadon.DANHBA, out ThongTin))
                         MessageBox.Show("Danh Bộ này đã lập " + ThongTin, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -1336,7 +1336,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     txtHopDong.Text = "";
                     txtHoTen.Text = "";
                     txtDiaChi.Text = "";
-                    _ttkhachhang = null;
+                    _hoadon = null;
                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -1441,20 +1441,20 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         chdb.MaDon = donkh.MaDon;
                         _cCHDB.ThemCHDB(chdb);
 
-                        TTKhachHang ttkhachhang = _cTTKH.getTTKHbyID(donkh.DanhBo);
+                        HOADON hoadon = _cThuTien.GetMoiNhat(donkh.DanhBo);
 
                         CTCHDB ctchdb = new CTCHDB();
                         ctchdb.MaCHDB = chdb.MaCHDB;
-                        ctchdb.DanhBo = ttkhachhang.DanhBo;
-                        ctchdb.HopDong = ttkhachhang.GiaoUoc;
-                        ctchdb.HoTen = ttkhachhang.HoTen;
-                        ctchdb.DiaChi = ttkhachhang.DC1 + " " + ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkhachhang.Quan, ttkhachhang.Phuong);
+                        ctchdb.DanhBo = hoadon.DANHBA;
+                        ctchdb.HopDong = hoadon.HOPDONG;
+                        ctchdb.HoTen = hoadon.TENKH;
+                        ctchdb.DiaChi = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
 
-                        if (ttkhachhang != null)
+                        if (hoadon != null)
                         {
-                            ctchdb.Dot = ttkhachhang.Dot;
-                            ctchdb.Ky = ttkhachhang.Ky;
-                            ctchdb.Nam = ttkhachhang.Nam;
+                            ctchdb.Dot = hoadon.DOT.ToString();
+                            ctchdb.Ky = hoadon.KY.ToString();
+                            ctchdb.Nam = hoadon.NAM.ToString();
                         }
                         ctchdb.LyDo = cmbLyDo.SelectedValue.ToString();
                         ctchdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
@@ -1489,20 +1489,20 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             chdb.MaDonTXL = dontxl.MaDon;
                             _cCHDB.ThemCHDB(chdb);
 
-                            TTKhachHang ttkhachhang = _cTTKH.getTTKHbyID(dontxl.DanhBo);
+                            HOADON hoadon = _cThuTien.GetMoiNhat(dontxl.DanhBo);
 
                             CTCHDB ctchdb = new CTCHDB();
                             ctchdb.MaCHDB = chdb.MaCHDB;
-                            ctchdb.DanhBo = ttkhachhang.DanhBo;
-                            ctchdb.HopDong = ttkhachhang.GiaoUoc;
-                            ctchdb.HoTen = ttkhachhang.HoTen;
-                            ctchdb.DiaChi = ttkhachhang.DC1 + " " + ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkhachhang.Quan, ttkhachhang.Phuong);
+                            ctchdb.DanhBo = hoadon.DANHBA;
+                            ctchdb.HopDong = hoadon.HOPDONG;
+                            ctchdb.HoTen = hoadon.TENKH;
+                            ctchdb.DiaChi = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
 
-                            if (ttkhachhang != null)
+                            if (hoadon != null)
                             {
-                                ctchdb.Dot = ttkhachhang.Dot;
-                                ctchdb.Ky = ttkhachhang.Ky;
-                                ctchdb.Nam = ttkhachhang.Nam;
+                                ctchdb.Dot = hoadon.DOT.ToString();
+                                ctchdb.Ky = hoadon.KY.ToString();
+                                ctchdb.Nam = hoadon.NAM.ToString();
                             }
                             ctchdb.LyDo = cmbLyDo.SelectedValue.ToString();
                             ctchdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();

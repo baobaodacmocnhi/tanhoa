@@ -9,15 +9,16 @@ using System.Windows.Forms;
 using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.DAL.CapNhat;
 using KTKS_DonKH.LinQ;
+using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.KhachHang
 {
     public partial class frmNhanDonDienThoai : Form
     {
         CDonDienThoai _cDonDT = new CDonDienThoai();
-        CTTKH _cTTKH = new CTTKH();
+        CThuTien _cThuTien = new CThuTien();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
-        TTKhachHang _ttkhachhang = null;
+        HOADON _hoadon = null;
         int _selectedindex = -1;
 
         public frmNhanDonDienThoai()
@@ -49,7 +50,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             txtNguoiBao.Text = "";
             dgvLichSuDonDT.DataSource = _cDonDT.getDSDonDienThoaiByDanhBo(txtDanhBo.Text.Trim());
             _selectedindex = -1;
-            _ttkhachhang = null;
+            _hoadon = null;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -58,15 +59,15 @@ namespace KTKS_DonKH.GUI.KhachHang
             dondt.DanhBo = txtDanhBo.Text;
             dondt.HoTen = txtHoTen.Text.Trim();
             dondt.DiaChi = txtDiaChi.Text.Trim();
-            if (_ttkhachhang != null)
+            if (_hoadon != null)
             {
-                dondt.HopDong = _ttkhachhang.GiaoUoc;
-                dondt.MSThue = _ttkhachhang.MSThue;
-                dondt.GiaBieu = _ttkhachhang.GB;
-                dondt.DinhMuc = _ttkhachhang.TGDM;
-                dondt.Dot = _ttkhachhang.Dot;
-                dondt.Ky = _ttkhachhang.Ky;
-                dondt.Nam = _ttkhachhang.Nam;
+                dondt.HopDong = _hoadon.HOPDONG;
+                dondt.MSThue = _hoadon.MST;
+                dondt.GiaBieu = _hoadon.GB.ToString();
+                dondt.DinhMuc = _hoadon.DM.ToString();
+                dondt.Dot = _hoadon.DOT.ToString();
+                dondt.Ky = _hoadon.KY.ToString();
+                dondt.Nam = _hoadon.NAM.ToString();
             }
             dondt.NoiDung = txtNoiDung.Text.Trim();
             dondt.GhiChu = txtGhiChu.Text.Trim();
@@ -125,11 +126,11 @@ namespace KTKS_DonKH.GUI.KhachHang
         {
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtDanhBo.Text.Trim()))
             {
-                if (_cTTKH.getTTKHbyID(txtDanhBo.Text.Trim()) != null)
+                if (_cThuTien.GetMoiNhat(txtDanhBo.Text.Trim()) != null)
                 {
-                    _ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
-                    txtHoTen.Text = _ttkhachhang.HoTen;
-                    txtDiaChi.Text = _ttkhachhang.DC1 + " " + _ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(_ttkhachhang.Quan, _ttkhachhang.Phuong);
+                    _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
+                    txtHoTen.Text = _hoadon.TENKH;
+                    txtDiaChi.Text = _hoadon.SO + " " + _hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(_hoadon.Quan, _hoadon.Phuong);
                     dateBao.Focus();
                 }
                 else

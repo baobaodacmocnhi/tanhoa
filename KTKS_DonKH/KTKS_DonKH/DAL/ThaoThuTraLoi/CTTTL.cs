@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
-using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.DAL.QuanTri;
 using System.Windows.Forms;
 using KTKS_DonKH.LinQ;
 
@@ -71,8 +71,8 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                         LyDoChuyenDi = itemTTTL.LyDoChuyen
                                     };
                     DataTable dtTTTL = new DataTable();
-                    dtTTTL = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryTTTL_DonKH);
-                    dtTTTL.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryTTTL_DonTXL));
+                    dtTTTL = LINQToDataTable(queryTTTL_DonKH);
+                    dtTTTL.Merge(LINQToDataTable(queryTTTL_DonTXL));
                     dtTTTL.TableName = "TTTL";
                     ds.Tables.Add(dtTTTL);
 
@@ -82,7 +82,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                       select itemCTTTTL;
 
                     DataTable dtCTTTTL = new DataTable();
-                    dtCTTTTL = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTTTTL);
+                    dtCTTTTL = LINQToDataTable(queryCTTTTL);
                     dtCTTTTL.TableName = "CTTTTL";
                     ds.Tables.Add(dtCTTTTL);
 
@@ -153,8 +153,8 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                                LyDoChuyenDi = itemTTTL.LyDoChuyen
                                            };
                     DataTable dtTTTL = new DataTable();
-                    dtTTTL = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryTTTL_DonKH.Distinct());
-                    dtTTTL.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryTTTL_DonTXL.Distinct()));
+                    dtTTTL = LINQToDataTable(queryTTTL_DonKH.Distinct());
+                    dtTTTL.Merge(LINQToDataTable(queryTTTL_DonTXL.Distinct()));
                     dtTTTL.TableName = "TTTL";
                     ds.Tables.Add(dtTTTL);
 
@@ -164,7 +164,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                       select itemCTTTTL;
 
                     DataTable dtCTTTTL = new DataTable();
-                    dtCTTTTL = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTTTTL);
+                    dtCTTTTL = LINQToDataTable(queryCTTTTL);
                     dtCTTTTL.TableName = "CTTTTL";
                     ds.Tables.Add(dtCTTTTL);
 
@@ -237,8 +237,8 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                                LyDoChuyenDi = itemTTTL.LyDoChuyen
                                            };
                     DataTable dtTTTL = new DataTable();
-                    dtTTTL = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryTTTL_DonKH.Distinct());
-                    dtTTTL.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryTTTL_DonTXL.Distinct()));
+                    dtTTTL = LINQToDataTable(queryTTTL_DonKH.Distinct());
+                    dtTTTL.Merge(LINQToDataTable(queryTTTL_DonTXL.Distinct()));
                     dtTTTL.TableName = "TTTL";
                     ds.Tables.Add(dtTTTL);
 
@@ -248,7 +248,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                       select itemCTTTTL;
 
                     DataTable dtCTTTTL = new DataTable();
-                    dtCTTTTL = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTTTTL);
+                    dtCTTTTL = LINQToDataTable(queryCTTTTL);
                     dtCTTTTL.TableName = "CTTTTL";
                     ds.Tables.Add(dtCTTTTL);
 
@@ -321,8 +321,8 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                                LyDoChuyenDi = itemTTTL.LyDoChuyen
                                            };
                     DataTable dtTTTL = new DataTable();
-                    dtTTTL = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryTTTL_DonKH.Distinct());
-                    dtTTTL.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryTTTL_DonTXL.Distinct()));
+                    dtTTTL = LINQToDataTable(queryTTTL_DonKH.Distinct());
+                    dtTTTL.Merge(LINQToDataTable(queryTTTL_DonTXL.Distinct()));
                     dtTTTL.TableName = "TTTL";
                     ds.Tables.Add(dtTTTL);
 
@@ -332,7 +332,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                       select itemCTTTTL;
 
                     DataTable dtCTTTTL = new DataTable();
-                    dtCTTTTL = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTTTTL);
+                    dtCTTTTL = LINQToDataTable(queryCTTTTL);
                     dtCTTTTL.TableName = "CTTTTL";
                     ds.Tables.Add(dtCTTTTL);
 
@@ -405,8 +405,8 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                                LyDoChuyenDi = itemTTTL.LyDoChuyen
                                            };
                     DataTable dtTTTL = new DataTable();
-                    dtTTTL = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryTTTL_DonKH.Distinct());
-                    dtTTTL.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryTTTL_DonTXL.Distinct()));
+                    dtTTTL = LINQToDataTable(queryTTTL_DonKH.Distinct());
+                    dtTTTL.Merge(LINQToDataTable(queryTTTL_DonTXL.Distinct()));
                     dtTTTL.TableName = "TTTL";
                     ds.Tables.Add(dtTTTL);
 
@@ -416,7 +416,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                       select itemCTTTTL;
 
                     DataTable dtCTTTTL = new DataTable();
-                    dtCTTTTL = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTTTTL);
+                    dtCTTTTL = LINQToDataTable(queryCTTTTL);
                     dtCTTTTL.TableName = "CTTTTL";
                     ds.Tables.Add(dtCTTTTL);
 
@@ -489,8 +489,8 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                                LyDoChuyenDi = itemTTTL.LyDoChuyen
                                            };
                     DataTable dtTTTL = new DataTable();
-                    dtTTTL = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryTTTL_DonKH.Distinct());
-                    dtTTTL.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryTTTL_DonTXL.Distinct()));
+                    dtTTTL = LINQToDataTable(queryTTTL_DonKH.Distinct());
+                    dtTTTL.Merge(LINQToDataTable(queryTTTL_DonTXL.Distinct()));
                     dtTTTL.TableName = "TTTL";
                     ds.Tables.Add(dtTTTL);
 
@@ -500,7 +500,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                       select itemCTTTTL;
 
                     DataTable dtCTTTTL = new DataTable();
-                    dtCTTTTL = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTTTTL);
+                    dtCTTTTL = LINQToDataTable(queryCTTTTL);
                     dtCTTTTL.TableName = "CTTTTL";
                     ds.Tables.Add(dtCTTTTL);
 
@@ -544,7 +544,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                     LyDoChuyenDi = itemTTTL.LyDoChuyen
                                 };
                 DataTable dtTTTL = new DataTable();
-                dtTTTL = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryTTTL);
+                dtTTTL = LINQToDataTable(queryTTTL);
                 dtTTTL.TableName = "TTTL";
                 ds.Tables.Add(dtTTTL);
 
@@ -554,7 +554,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                   select itemCTTTTL;
 
                 DataTable dtCTTTTL = new DataTable();
-                dtCTTTTL = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTTTTL);
+                dtCTTTTL = LINQToDataTable(queryCTTTTL);
                 dtCTTTTL.TableName = "CTTTTL";
                 ds.Tables.Add(dtCTTTTL);
 
@@ -618,8 +618,8 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                         MaChuyen = "",
                                         LyDoChuyenDi = ""
                                     };
-                    DataTable tableDonKH = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonKH);
-                    DataTable tableKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKTXM);
+                    DataTable tableDonKH = LINQToDataTable(queryDonKH);
+                    DataTable tableKTXM = LINQToDataTable(queryKTXM);
                     tableDonKH.Merge(tableKTXM);
                     return tableDonKH;
             }
@@ -908,7 +908,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                     itemCTTTTL.NoiNhan,
                                     itemCTTTTL.NguoiKy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -938,7 +938,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                     itemCTTTTL.NoiNhan,
                                     itemCTTTTL.NguoiKy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -968,7 +968,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                     itemCTTTTL.NoiNhan,
                                     itemCTTTTL.NguoiKy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1000,7 +1000,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                     itemCTTTTL.NoiNhan,
                                     itemCTTTTL.NguoiKy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1030,7 +1030,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                     itemCTTTTL.NoiNhan,
                                     itemCTTTTL.NguoiKy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1060,7 +1060,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                     itemCTTTTL.NoiNhan,
                                     itemCTTTTL.NguoiKy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1090,7 +1090,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                     itemCTTTTL.NoiNhan,
                                     itemCTTTTL.NguoiKy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1123,7 +1123,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                     itemCTTTTL.NoiNhan,
                                     itemCTTTTL.NguoiKy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1158,7 +1158,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                     itemCTTTTL.NoiNhan,
                                     itemCTTTTL.NguoiKy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1189,7 +1189,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                     itemCTTTTL.NoiDung,
                                     itemCTTTTL.NoiNhan,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1248,7 +1248,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                     itemCTTTTL.TTTL.MaDon,
                                     itemCTTTTL.VeViec,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {

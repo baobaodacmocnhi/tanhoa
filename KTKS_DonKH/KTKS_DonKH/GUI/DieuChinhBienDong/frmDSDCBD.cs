@@ -22,7 +22,7 @@ using CrystalDecisions.CrystalReports.Engine;
 using System.Drawing.Printing;
 using KTKS_DonKH.GUI.ToXuLy;
 using System.Threading;
-using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.GUI.BaoCao;
 using System.Globalization;
 using System.Transactions;

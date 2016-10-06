@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using KTKS_DonKH.LinQ;
-using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.DAL.QuanTri;
 using System.Windows.Forms;
 using System.Data;
 
@@ -78,7 +78,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
 
         public DataTable GetDS(decimal MaCTTTTL)
         {
-            return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(db.GhiChuCTTTTLs.Where(item => item.MaCTTTTL == MaCTTTTL).ToList());
+            return LINQToDataTable(db.GhiChuCTTTTLs.Where(item => item.MaCTTTTL == MaCTTTTL).ToList());
         }
     }
 }

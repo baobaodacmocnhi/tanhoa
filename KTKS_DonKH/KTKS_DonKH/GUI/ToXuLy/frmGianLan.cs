@@ -15,6 +15,7 @@ using KTKS_DonKH.BaoCao.CongVan;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.BaoCao.ToXuLy;
 using System.IO;
+using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.ToXuLy
 {
@@ -22,10 +23,10 @@ namespace KTKS_DonKH.GUI.ToXuLy
     {
         DonKH _donkh = null;
         DonTXL _dontxl = null;
-        TTKhachHang _ttkhachhang = null;
+        HOADON _hoadon = null;
         CDonKH _cDonKH = new CDonKH();
         CDonTXL _cDonTXL = new CDonTXL();
-        CTTKH _cTTKH = new CTTKH();
+        CThuTien _cThuTien = new CThuTien();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         CGianLan _cGianLan = new CGianLan();
         GianLan _gianlan = null;
@@ -44,11 +45,11 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
         }
 
-        public void LoadTTKH(TTKhachHang ttkhachhang)
+        public void LoadTTKH(HOADON hoadon)
         {
-            txtDanhBo.Text = ttkhachhang.DanhBo;
-            txtHoTen.Text = ttkhachhang.HoTen;
-            txtDiaChi.Text = ttkhachhang.DC1 + " " + ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkhachhang.Quan, ttkhachhang.Phuong);
+            txtDanhBo.Text = hoadon.DANHBA;
+            txtHoTen.Text = hoadon.TENKH;
+            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
         }
 
         public void LoadGianLan(GianLan entity)
@@ -143,7 +144,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
             ///
             _donkh = null;
             _dontxl = null;
-            _ttkhachhang = null;
+            _hoadon = null;
             _gianlan = null;
             _file1 = null;
             _file2 = null;
@@ -183,10 +184,10 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     {
                         _dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
                         txtMaDon.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
-                        if (_cTTKH.getTTKHbyID(_dontxl.DanhBo) != null)
+                        if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
                         {
-                            _ttkhachhang = _cTTKH.getTTKHbyID(_dontxl.DanhBo);
-                            LoadTTKH(_ttkhachhang);
+                            _hoadon = _cThuTien.GetMoiNhat(_dontxl.DanhBo);
+                            LoadTTKH(_hoadon);
                             if (_cGianLan.CheckExist_TXL(_dontxl.MaDon))
                             {
                                 _gianlan = _cGianLan.Get_TXL(_dontxl.MaDon);
@@ -211,10 +212,10 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     {
                         _donkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
                         txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
-                        if (_cTTKH.getTTKHbyID(_donkh.DanhBo) != null)
+                        if (_cThuTien.GetMoiNhat(_donkh.DanhBo) != null)
                         {
-                            _ttkhachhang = _cTTKH.getTTKHbyID(_donkh.DanhBo);
-                            LoadTTKH(_ttkhachhang);
+                            _hoadon = _cThuTien.GetMoiNhat(_donkh.DanhBo);
+                            LoadTTKH(_hoadon);
                             if (_cGianLan.CheckExist(_donkh.MaDon))
                             {
                                 _gianlan = _cGianLan.Get_TXL(_donkh.MaDon);

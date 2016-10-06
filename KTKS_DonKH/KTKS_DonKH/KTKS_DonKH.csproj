@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>327</ApplicationRevision>
+    <ApplicationRevision>329</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -611,21 +611,24 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DAL\BamChi\CBamChi.cs" />
-    <Compile Include="DAL\CapNhat\CBanGiamDoc.cs" />
-    <Compile Include="DAL\CapNhat\CChiNhanh.cs" />
-    <Compile Include="DAL\CapNhat\CGiaNuoc.cs" />
-    <Compile Include="DAL\CapNhat\CHienTrangKiemTra.cs" />
-    <Compile Include="DAL\CapNhat\CLoaiChungTu.cs" />
-    <Compile Include="DAL\CapNhat\CLoaiDon.cs" />
-    <Compile Include="DAL\CapNhat\CNhanVien.cs" />
-    <Compile Include="DAL\CapNhat\CLoaiDonTXL.cs" />
-    <Compile Include="DAL\CapNhat\CTrangThaiBamChi.cs" />
+    <Compile Include="DAL\QuanTri\CBanGiamDoc.cs" />
+    <Compile Include="DAL\DieuChinhBienDong\CChiNhanh.cs" />
+    <Compile Include="DAL\DieuChinhBienDong\CGiaNuoc.cs" />
+    <Compile Include="DAL\KiemTraXacMinh\CHienTrangKiemTra.cs" />
+    <Compile Include="DAL\DieuChinhBienDong\CLoaiChungTu.cs" />
+    <Compile Include="DAL\KhachHang\CLoaiDon.cs" />
+    <Compile Include="DAL\QuanTri\CMenu.cs" />
+    <Compile Include="DAL\QuanTri\CNhom.cs" />
+    <Compile Include="DAL\QuanTri\CPhanQuyenNhom.cs" />
+    <Compile Include="DAL\QuanTri\CPhanQuyenNguoiDung.cs" />
+    <Compile Include="DAL\ToXuLy\CLoaiDonTXL.cs" />
+    <Compile Include="DAL\BamChi\CTrangThaiBamChi.cs" />
     <Compile Include="DAL\CapNhat\CTTKH.cs" />
-    <Compile Include="DAL\CapNhat\CVeViecCHDB.cs" />
+    <Compile Include="DAL\CatHuyDanhBo\CVeViecCHDB.cs" />
     <Compile Include="DAL\CatHuyDanhBo\CCHDB.cs" />
     <Compile Include="DAL\CBaoCao.cs" />
     <Compile Include="DAL\CDAL.cs" />
-    <Compile Include="DAL\CapNhat\CChungTu.cs" />
+    <Compile Include="DAL\DieuChinhBienDong\CChungTu.cs" />
     <Compile Include="DAL\CongVan\CCongVanDi.cs" />
     <Compile Include="DAL\CThuTien.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CCatChuyenDM.cs" />
@@ -633,7 +636,7 @@
     <Compile Include="DAL\DieuChinhBienDong\CDuLieuKhachHang.cs" />
     <Compile Include="DAL\CatHuyDanhBo\CDongNuoc.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CTBKetQuaYCCatDM.cs" />
-    <Compile Include="DAL\HeThong\CTaiKhoan.cs" />
+    <Compile Include="DAL\QuanTri\CTaiKhoan.cs" />
     <Compile Include="DAL\KhachHang\CChuyenDi.cs" />
     <Compile Include="DAL\KhachHang\CDonDienThoai.cs" />
     <Compile Include="DAL\KhachHang\CDonKH.cs" />
@@ -677,6 +680,12 @@
     <Compile Include="GUI\BamChi\frmShowBamChi.Designer.cs">
       <DependentUpon>frmShowBamChi.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\BamChi\frmTrangThaiBamChi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\BamChi\frmTrangThaiBamChi.Designer.cs">
+      <DependentUpon>frmTrangThaiBamChi.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\BaoCao\frmBaoCao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -689,47 +698,41 @@
     <Compile Include="GUI\BaoCao\frmShowBaoCao.Designer.cs">
       <DependentUpon>frmShowBaoCao.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\CapNhat\frmBanGiamDoc.cs">
+    <Compile Include="GUI\DieuChinhBienDong\frmBanGiamDoc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\CapNhat\frmBanGiamDoc.Designer.cs">
+    <Compile Include="GUI\DieuChinhBienDong\frmBanGiamDoc.Designer.cs">
       <DependentUpon>frmBanGiamDoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\CapNhat\frmChiNhanh.cs">
+    <Compile Include="GUI\DieuChinhBienDong\frmChiNhanh.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\CapNhat\frmChiNhanh.Designer.cs">
+    <Compile Include="GUI\DieuChinhBienDong\frmChiNhanh.Designer.cs">
       <DependentUpon>frmChiNhanh.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\CapNhat\frmGiaNuoc.cs">
+    <Compile Include="GUI\DieuChinhBienDong\frmGiaNuoc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\CapNhat\frmGiaNuoc.Designer.cs">
+    <Compile Include="GUI\DieuChinhBienDong\frmGiaNuoc.Designer.cs">
       <DependentUpon>frmGiaNuoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\CapNhat\frmLoaiChungTu.cs">
+    <Compile Include="GUI\DieuChinhBienDong\frmLoaiChungTu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\CapNhat\frmLoaiChungTu.Designer.cs">
+    <Compile Include="GUI\DieuChinhBienDong\frmLoaiChungTu.Designer.cs">
       <DependentUpon>frmLoaiChungTu.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\CapNhat\frmLoaiDon.cs">
+    <Compile Include="GUI\KhachHang\frmLoaiDon.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\CapNhat\frmLoaiDon.Designer.cs">
+    <Compile Include="GUI\KhachHang\frmLoaiDon.Designer.cs">
       <DependentUpon>frmLoaiDon.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\CapNhat\frmNVKiemTra.cs">
+    <Compile Include="GUI\KiemTraXacMinh\frmHienTrangKiemTra.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\CapNhat\frmNVKiemTra.Designer.cs">
-      <DependentUpon>frmNVKiemTra.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\CapNhat\frmThongTin_KT_BC.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\CapNhat\frmThongTin_KT_BC.Designer.cs">
-      <DependentUpon>frmThongTin_KT_BC.cs</DependentUpon>
+    <Compile Include="GUI\KiemTraXacMinh\frmHienTrangKiemTra.Designer.cs">
+      <DependentUpon>frmHienTrangKiemTra.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\CapNhat\frmTTKH.cs">
       <SubType>Form</SubType>
@@ -737,10 +740,16 @@
     <Compile Include="GUI\CapNhat\frmTTKH.Designer.cs">
       <DependentUpon>frmTTKH.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\CapNhat\frmVeViecTTTL.cs">
+    <Compile Include="GUI\HeThong\frmAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\CapNhat\frmVeViecTTTL.Designer.cs">
+    <Compile Include="GUI\HeThong\frmAdmin.Designer.cs">
+      <DependentUpon>frmAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThaoThuTraLoi\frmVeViecTTTL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThaoThuTraLoi\frmVeViecTTTL.Designer.cs">
       <DependentUpon>frmVeViecTTTL.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\CatHuyDanhBo\frmBaoCaoCHDB.cs">
@@ -791,10 +800,10 @@
     <Compile Include="GUI\CatHuyDanhBo\frmShowYCCHDB.Designer.cs">
       <DependentUpon>frmShowYCCHDB.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\CapNhat\frmVeViecCHDB.cs">
+    <Compile Include="GUI\CatHuyDanhBo\frmVeViecCHDB.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\CapNhat\frmVeViecCHDB.Designer.cs">
+    <Compile Include="GUI\CatHuyDanhBo\frmVeViecCHDB.Designer.cs">
       <DependentUpon>frmVeViecCHDB.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\CatHuyDanhBo\frmYCCHDB.cs">
@@ -929,10 +938,10 @@
     <Compile Include="GUI\HeThong\frmDoiMatKhau.Designer.cs">
       <DependentUpon>frmDoiMatKhau.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\HeThong\frmTaiKhoan.cs">
+    <Compile Include="GUI\QuanTri\frmTaiKhoan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\HeThong\frmTaiKhoan.Designer.cs">
+    <Compile Include="GUI\QuanTri\frmTaiKhoan.Designer.cs">
       <DependentUpon>frmTaiKhoan.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\KhachHang\frmBaoCaoDonKH.cs">
@@ -965,17 +974,17 @@
     <Compile Include="GUI\KhachHang\frmNhapNhieuDBTKH.Designer.cs">
       <DependentUpon>frmNhapNhieuDBTKH.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\KhachHang\frmQLDonDienThoai.cs">
+    <Compile Include="GUI\KhachHang\frmDSDonDienThoai.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\KhachHang\frmQLDonDienThoai.Designer.cs">
-      <DependentUpon>frmQLDonDienThoai.cs</DependentUpon>
+    <Compile Include="GUI\KhachHang\frmDSDonDienThoai.Designer.cs">
+      <DependentUpon>frmDSDonDienThoai.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\KhachHang\frmQLDonKH.cs">
+    <Compile Include="GUI\KhachHang\frmDSDonKH.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\KhachHang\frmQLDonKH.Designer.cs">
-      <DependentUpon>frmQLDonKH.cs</DependentUpon>
+    <Compile Include="GUI\KhachHang\frmDSDonKH.Designer.cs">
+      <DependentUpon>frmDSDonKH.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\KhachHang\frmShowDonKH.cs">
       <SubType>Form</SubType>
@@ -1025,6 +1034,12 @@
     <Compile Include="GUI\Loading\frmLoading.Designer.cs">
       <DependentUpon>frmLoading.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\QuanTri\frmNhom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanTri\frmNhom.Designer.cs">
+      <DependentUpon>frmNhom.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ThaoThuTraLoi\frmDSTTTL.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1073,17 +1088,17 @@
     <Compile Include="GUI\ToXuLy\frmPDFViewer.Designer.cs">
       <DependentUpon>frmPDFViewer.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ToXuLy\frmQLDonTXL.cs">
+    <Compile Include="GUI\ToXuLy\frmDSDonTXL.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ToXuLy\frmQLDonTXL.Designer.cs">
-      <DependentUpon>frmQLDonTXL.cs</DependentUpon>
+    <Compile Include="GUI\ToXuLy\frmDSDonTXL.Designer.cs">
+      <DependentUpon>frmDSDonTXL.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ToXuLy\frmQLTruyThuTienNuoc.cs">
+    <Compile Include="GUI\ToXuLy\frmDSTruyThuTienNuoc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ToXuLy\frmQLTruyThuTienNuoc.Designer.cs">
-      <DependentUpon>frmQLTruyThuTienNuoc.cs</DependentUpon>
+    <Compile Include="GUI\ToXuLy\frmDSTruyThuTienNuoc.Designer.cs">
+      <DependentUpon>frmDSTruyThuTienNuoc.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ToXuLy\frmShowDonTXL.cs">
       <SubType>Form</SubType>
@@ -1482,37 +1497,40 @@
     <EmbeddedResource Include="GUI\BamChi\frmShowBamChi.resx">
       <DependentUpon>frmShowBamChi.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\BamChi\frmTrangThaiBamChi.resx">
+      <DependentUpon>frmTrangThaiBamChi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\BaoCao\frmBaoCao.resx">
       <DependentUpon>frmBaoCao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\BaoCao\frmShowBaoCao.resx">
       <DependentUpon>frmShowBaoCao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\CapNhat\frmBanGiamDoc.resx">
+    <EmbeddedResource Include="GUI\DieuChinhBienDong\frmBanGiamDoc.resx">
       <DependentUpon>frmBanGiamDoc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\CapNhat\frmChiNhanh.resx">
+    <EmbeddedResource Include="GUI\DieuChinhBienDong\frmChiNhanh.resx">
       <DependentUpon>frmChiNhanh.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\CapNhat\frmGiaNuoc.resx">
+    <EmbeddedResource Include="GUI\DieuChinhBienDong\frmGiaNuoc.resx">
       <DependentUpon>frmGiaNuoc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\CapNhat\frmLoaiChungTu.resx">
+    <EmbeddedResource Include="GUI\DieuChinhBienDong\frmLoaiChungTu.resx">
       <DependentUpon>frmLoaiChungTu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\CapNhat\frmLoaiDon.resx">
+    <EmbeddedResource Include="GUI\HeThong\frmAdmin.resx">
+      <DependentUpon>frmAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\KhachHang\frmLoaiDon.resx">
       <DependentUpon>frmLoaiDon.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\CapNhat\frmNVKiemTra.resx">
-      <DependentUpon>frmNVKiemTra.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\CapNhat\frmThongTin_KT_BC.resx">
-      <DependentUpon>frmThongTin_KT_BC.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\KiemTraXacMinh\frmHienTrangKiemTra.resx">
+      <DependentUpon>frmHienTrangKiemTra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CapNhat\frmTTKH.resx">
       <DependentUpon>frmTTKH.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\CapNhat\frmVeViecTTTL.resx">
+    <EmbeddedResource Include="GUI\ThaoThuTraLoi\frmVeViecTTTL.resx">
       <DependentUpon>frmVeViecTTTL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CatHuyDanhBo\frmBaoCaoCHDB.resx">
@@ -1539,7 +1557,7 @@
     <EmbeddedResource Include="GUI\CatHuyDanhBo\frmShowYCCHDB.resx">
       <DependentUpon>frmShowYCCHDB.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\CapNhat\frmVeViecCHDB.resx">
+    <EmbeddedResource Include="GUI\CatHuyDanhBo\frmVeViecCHDB.resx">
       <DependentUpon>frmVeViecCHDB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CatHuyDanhBo\frmYCCHDB.resx">
@@ -1608,7 +1626,7 @@
     <EmbeddedResource Include="GUI\HeThong\frmDoiMatKhau.resx">
       <DependentUpon>frmDoiMatKhau.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\HeThong\frmTaiKhoan.resx">
+    <EmbeddedResource Include="GUI\QuanTri\frmTaiKhoan.resx">
       <DependentUpon>frmTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\KhachHang\frmBaoCaoDonKH.resx">
@@ -1626,11 +1644,11 @@
     <EmbeddedResource Include="GUI\KhachHang\frmNhapNhieuDBTKH.resx">
       <DependentUpon>frmNhapNhieuDBTKH.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\KhachHang\frmQLDonDienThoai.resx">
-      <DependentUpon>frmQLDonDienThoai.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\KhachHang\frmDSDonDienThoai.resx">
+      <DependentUpon>frmDSDonDienThoai.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\KhachHang\frmQLDonKH.resx">
-      <DependentUpon>frmQLDonKH.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\KhachHang\frmDSDonKH.resx">
+      <DependentUpon>frmDSDonKH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\KhachHang\frmShowDonKH.resx">
       <DependentUpon>frmShowDonKH.cs</DependentUpon>
@@ -1659,6 +1677,9 @@
     <EmbeddedResource Include="GUI\Loading\frmLoading.resx">
       <DependentUpon>frmLoading.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QuanTri\frmNhom.resx">
+      <DependentUpon>frmNhom.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThaoThuTraLoi\frmDSTTTL.resx">
       <DependentUpon>frmDSTTTL.cs</DependentUpon>
     </EmbeddedResource>
@@ -1683,11 +1704,11 @@
     <EmbeddedResource Include="GUI\ToXuLy\frmPDFViewer.resx">
       <DependentUpon>frmPDFViewer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ToXuLy\frmQLDonTXL.resx">
-      <DependentUpon>frmQLDonTXL.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\ToXuLy\frmDSDonTXL.resx">
+      <DependentUpon>frmDSDonTXL.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ToXuLy\frmQLTruyThuTienNuoc.resx">
-      <DependentUpon>frmQLTruyThuTienNuoc.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\ToXuLy\frmDSTruyThuTienNuoc.resx">
+      <DependentUpon>frmDSTruyThuTienNuoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToXuLy\frmShowDonTXL.resx">
       <DependentUpon>frmShowDonTXL.cs</DependentUpon>

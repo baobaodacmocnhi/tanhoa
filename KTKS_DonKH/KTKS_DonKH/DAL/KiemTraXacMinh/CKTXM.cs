@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using KTKS_DonKH.LinQ;
 using System.Windows.Forms;
-using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.DAL.QuanTri;
 using System.Data;
 
 namespace KTKS_DonKH.DAL.KiemTraXacMinh
@@ -175,7 +175,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     itemKTXM.MaChuyen,
                                     LyDoChuyenDi = itemKTXM.LyDoChuyen
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -241,8 +241,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                            };
 
                     DataTable dtKTXM = new DataTable();
-                    dtKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKTXM_DonKH);
-                    dtKTXM.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKTXM_DonTXL));
+                    dtKTXM = LINQToDataTable(queryKTXM_DonKH);
+                    dtKTXM.Merge(LINQToDataTable(queryKTXM_DonTXL));
                     dtKTXM.TableName = "KTXM";
                     ds.Tables.Add(dtKTXM);
 
@@ -261,7 +261,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                       };
 
                     DataTable dtCTKTXM = new DataTable();
-                    dtCTKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTKTXM);
+                    dtCTKTXM = LINQToDataTable(queryCTKTXM);
                     dtCTKTXM.TableName = "CTKTXM";
                     ds.Tables.Add(dtCTKTXM);
 
@@ -331,8 +331,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                            };
 
                     DataTable dtKTXM = new DataTable();
-                    dtKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKTXM_DonKH.Distinct());
-                    dtKTXM.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKTXM_DonTXL.Distinct()));
+                    dtKTXM = LINQToDataTable(queryKTXM_DonKH.Distinct());
+                    dtKTXM.Merge(LINQToDataTable(queryKTXM_DonTXL.Distinct()));
                     dtKTXM.TableName = "KTXM";
                     ds.Tables.Add(dtKTXM);
 
@@ -351,7 +351,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                       };
 
                     DataTable dtCTKTXM = new DataTable();
-                    dtCTKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTKTXM);
+                    dtCTKTXM = LINQToDataTable(queryCTKTXM);
                     dtCTKTXM.TableName = "CTKTXM";
                     ds.Tables.Add(dtCTKTXM);
 
@@ -421,8 +421,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                            };
 
                     DataTable dtKTXM = new DataTable();
-                    dtKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKTXM_DonKH.Distinct());
-                    dtKTXM.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKTXM_DonTXL.Distinct()));
+                    dtKTXM = LINQToDataTable(queryKTXM_DonKH.Distinct());
+                    dtKTXM.Merge(LINQToDataTable(queryKTXM_DonTXL.Distinct()));
                     dtKTXM.TableName = "KTXM";
                     ds.Tables.Add(dtKTXM);
 
@@ -441,7 +441,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                       };
 
                     DataTable dtCTKTXM = new DataTable();
-                    dtCTKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTKTXM);
+                    dtCTKTXM = LINQToDataTable(queryCTKTXM);
                     dtCTKTXM.TableName = "CTKTXM";
                     ds.Tables.Add(dtCTKTXM);
 
@@ -515,8 +515,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                            };
 
                     DataTable dtKTXM = new DataTable();
-                    dtKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKTXM_DonKH.Distinct());
-                    dtKTXM.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKTXM_DonTXL.Distinct()));
+                    dtKTXM = LINQToDataTable(queryKTXM_DonKH.Distinct());
+                    dtKTXM.Merge(LINQToDataTable(queryKTXM_DonTXL.Distinct()));
                     dtKTXM.TableName = "KTXM";
                     ds.Tables.Add(dtKTXM);
 
@@ -535,7 +535,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                       };
 
                     DataTable dtCTKTXM = new DataTable();
-                    dtCTKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTKTXM);
+                    dtCTKTXM = LINQToDataTable(queryCTKTXM);
                     dtCTKTXM.TableName = "CTKTXM";
                     ds.Tables.Add(dtCTKTXM);
 
@@ -609,8 +609,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                            };
 
                     DataTable dtKTXM = new DataTable();
-                    dtKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKTXM_DonKH.Distinct());
-                    dtKTXM.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKTXM_DonTXL.Distinct()));
+                    dtKTXM = LINQToDataTable(queryKTXM_DonKH.Distinct());
+                    dtKTXM.Merge(LINQToDataTable(queryKTXM_DonTXL.Distinct()));
                     dtKTXM.TableName = "KTXM";
                     ds.Tables.Add(dtKTXM);
 
@@ -629,7 +629,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                       };
 
                     DataTable dtCTKTXM = new DataTable();
-                    dtCTKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTKTXM);
+                    dtCTKTXM = LINQToDataTable(queryCTKTXM);
                     dtCTKTXM.TableName = "CTKTXM";
                     ds.Tables.Add(dtCTKTXM);
 
@@ -703,8 +703,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                            };
 
                     DataTable dtKTXM = new DataTable();
-                    dtKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKTXM_DonKH.Distinct());
-                    dtKTXM.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKTXM_DonTXL.Distinct()));
+                    dtKTXM = LINQToDataTable(queryKTXM_DonKH.Distinct());
+                    dtKTXM.Merge(LINQToDataTable(queryKTXM_DonTXL.Distinct()));
                     dtKTXM.TableName = "KTXM";
                     ds.Tables.Add(dtKTXM);
 
@@ -723,7 +723,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                       };
 
                     DataTable dtCTKTXM = new DataTable();
-                    dtCTKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTKTXM);
+                    dtCTKTXM = LINQToDataTable(queryCTKTXM);
                     dtCTKTXM.TableName = "CTKTXM";
                     ds.Tables.Add(dtCTKTXM);
 
@@ -769,7 +769,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                         LyDoChuyenDi = itemKTXM.LyDoChuyen,
                                     };
                     DataTable dtKTXM = new DataTable();
-                    dtKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKTXM);
+                    dtKTXM = LINQToDataTable(queryKTXM);
                     dtKTXM.TableName = "KTXM";
                     ds.Tables.Add(dtKTXM);
 
@@ -788,7 +788,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                       };
 
                     DataTable dtCTKTXM = new DataTable();
-                    dtCTKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTKTXM);
+                    dtCTKTXM = LINQToDataTable(queryCTKTXM);
                     dtCTKTXM.TableName = "CTKTXM";
                     ds.Tables.Add(dtCTKTXM);
 
@@ -854,11 +854,11 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                         LyDoChuyenDi = ""
                                     };
                     //if (queryDCBD.Count() > 0)
-                    //    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonKH.Union(queryDCBD));
+                    //    return LINQToDataTable(queryDonKH.Union(queryDCBD));
                     //else
-                    //    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonKH);
-                    DataTable tableDonKH = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonKH);
-                    DataTable tableDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDCBD);
+                    //    return LINQToDataTable(queryDonKH);
+                    DataTable tableDonKH = LINQToDataTable(queryDonKH);
+                    DataTable tableDCBD = LINQToDataTable(queryDCBD);
                     tableDonKH.Merge(tableDCBD);
                     return tableDonKH;
             }
@@ -1027,8 +1027,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                           itemCTKTXM.NgayKTXM,
                                           CreateBy = itemUser.HoTen,
                                       };
-                    DataTable dt= KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH);
-                    dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL));
+                    DataTable dt= LINQToDataTable(query_DonKH);
+                    dt.Merge(LINQToDataTable(query_DonTXL));
                     return dt;
             }
             catch (Exception ex)
@@ -1059,7 +1059,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                           CreateBy = itemUser.HoTen,
                                           itemUser.MaU,
                                       };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
+                    return LINQToDataTable(query_DonKH.Distinct());
             }
             catch (Exception ex)
             {
@@ -1089,7 +1089,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                           CreateBy = itemUser.HoTen,
                                           itemUser.MaU,
                                       };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
+                    return LINQToDataTable(query_DonKH.Distinct());
             }
             catch (Exception ex)
             {
@@ -1118,7 +1118,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                            itemCTKTXM.NgayKTXM,
                                            CreateBy = itemUser.HoTen,
                                        };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct());
+                    return LINQToDataTable(query_DonTXL.Distinct());
             }
             catch (Exception ex)
             {
@@ -1148,7 +1148,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                           CreateBy = itemUser.HoTen,
                                           itemUser.MaU,
                                       };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
+                    return LINQToDataTable(query_DonKH.Distinct());
             }
             catch (Exception ex)
             {
@@ -1198,8 +1198,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                            CreateBy = itemUser.HoTen,
                                            itemUser.MaU,
                                        };
-                    DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
-                    dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
+                    DataTable dt = LINQToDataTable(query_DonKH.Distinct());
+                    dt.Merge(LINQToDataTable(query_DonTXL.Distinct()));
                     return dt;
             }
             catch (Exception ex)
@@ -1250,8 +1250,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                            CreateBy = itemUser.HoTen,
                                            itemUser.MaU,
                                        };
-                    DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
-                    dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
+                    DataTable dt = LINQToDataTable(query_DonKH.Distinct());
+                    dt.Merge(LINQToDataTable(query_DonTXL.Distinct()));
                     return dt;
             }
             catch (Exception ex)
@@ -1302,8 +1302,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                            CreateBy = itemUser.HoTen,
                                            itemUser.MaU,
                                        };
-                    DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
-                    dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
+                    DataTable dt = LINQToDataTable(query_DonKH.Distinct());
+                    dt.Merge(LINQToDataTable(query_DonTXL.Distinct()));
                     return dt;
             }
             catch (Exception ex)
@@ -1354,8 +1354,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                            CreateBy = itemUser.HoTen,
                                            itemUser.MaU,
                                        };
-                    DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
-                    dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
+                    DataTable dt = LINQToDataTable(query_DonKH.Distinct());
+                    dt.Merge(LINQToDataTable(query_DonTXL.Distinct()));
                     return dt;
             }
             catch (Exception ex)
@@ -1385,7 +1385,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     itemCTKTXM.NgayKTXM,
                                     CreateBy = itemUser.HoTen,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1418,7 +1418,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     itemCTKTXM.NgayKTXM,
                                     CreateBy = itemUser.HoTen,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1471,8 +1471,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     itemCTKTXM.NgayKTXM,
                                     CreateBy = itemUser.HoTen,
                                 };
-                    DataTable dt= KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH);
-                    dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL));
+                    DataTable dt= LINQToDataTable(query_DonKH);
+                    dt.Merge(LINQToDataTable(query_DonTXL));
                     return dt;
             }
             catch (Exception ex)
@@ -1521,8 +1521,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                            CreateBy = itemUser.HoTen,
                                            itemUser.MaU,
                                        };
-                    DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
-                    dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
+                    DataTable dt = LINQToDataTable(query_DonKH.Distinct());
+                    dt.Merge(LINQToDataTable(query_DonTXL.Distinct()));
                     return dt;
             }
             catch (Exception ex)
@@ -1571,8 +1571,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                            CreateBy = itemUser.HoTen,
                                            itemUser.MaU,
                                        };
-                    DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
-                    dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
+                    DataTable dt = LINQToDataTable(query_DonKH.Distinct());
+                    dt.Merge(LINQToDataTable(query_DonTXL.Distinct()));
                     return dt;
             }
             catch (Exception ex)
@@ -1623,8 +1623,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                            CreateBy = itemUser.HoTen,
                                            itemUser.MaU,
                                        };
-                    DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
-                    dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
+                    DataTable dt = LINQToDataTable(query_DonKH.Distinct());
+                    dt.Merge(LINQToDataTable(query_DonTXL.Distinct()));
                     return dt;
             }
             catch (Exception ex)
@@ -1675,8 +1675,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                            CreateBy = itemUser.HoTen,
                                            itemUser.MaU,
                                        };
-                    DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
-                    dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
+                    DataTable dt = LINQToDataTable(query_DonKH.Distinct());
+                    dt.Merge(LINQToDataTable(query_DonTXL.Distinct()));
                     return dt;
             }
             catch (Exception ex)
@@ -1727,8 +1727,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                            CreateBy = itemUser.HoTen,
                                            itemUser.MaU,
                                        };
-                    DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
-                    dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
+                    DataTable dt = LINQToDataTable(query_DonKH.Distinct());
+                    dt.Merge(LINQToDataTable(query_DonTXL.Distinct()));
                     return dt;
             }
             catch (Exception ex)
@@ -1779,8 +1779,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                            CreateBy = itemUser.HoTen,
                                            itemUser.MaU,
                                        };
-                    DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
-                    dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
+                    DataTable dt = LINQToDataTable(query_DonKH.Distinct());
+                    dt.Merge(LINQToDataTable(query_DonTXL.Distinct()));
                     return dt;
             }
             catch (Exception ex)
@@ -1810,7 +1810,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     itemCTKTXM.NgayKTXM,
                                     CreateBy = itemUser.HoTen,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1844,7 +1844,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                         itemCTKTXM.CreateDate,
                                         CreateBy = itemUser.HoTen,
                                     };
-                        return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                        return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1880,7 +1880,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                         itemCTKTXM.CreateDate,
                                         CreateBy = itemUser.HoTen, 
                                     };
-                        return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                        return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1922,7 +1922,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         //                            itemCTKTXM.ChuyenLapTBCat,
         //                            //CreateBy = itemUser.HoTen,
         //                        };
-        //            return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+        //            return LINQToDataTable(query);
         //        }
         //        else
         //            if (CTaiKhoan.RoleKTXM_Xem || CTaiKhoan.RoleKTXM_CapNhat)
@@ -1948,7 +1948,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         //                                itemCTKTXM.ChuyenLapTBCat,
         //                                //CreateBy = itemUser.HoTen,
         //                            };
-        //                return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+        //                return LINQToDataTable(query);
         //            }
         //            else
         //            {
@@ -1982,7 +1982,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                         itemCTKTXM.TieuThuTrungBinh,
                                         //CreateBy = itemUser.HoTen,
                                     };
-                        return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                        return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -2024,7 +2024,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         //                            itemCTKTXM.ChuyenLapTBCat,
         //                            //CreateBy = itemUser.HoTen,
         //                        };
-        //            return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+        //            return LINQToDataTable(query);
         //        }
         //        else
         //            if (CTaiKhoan.RoleKTXM_Xem || CTaiKhoan.RoleKTXM_CapNhat)
@@ -2050,7 +2050,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         //                                itemCTKTXM.ChuyenLapTBCat,
         //                                //CreateBy = itemUser.HoTen,
         //                            };
-        //                return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+        //                return LINQToDataTable(query);
         //            }
         //            else
         //            {
@@ -2084,7 +2084,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                         itemCTKTXM.TieuThuTrungBinh,
                                         //CreateBy = itemUser.HoTen,
                                     };
-                        return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                        return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -2136,8 +2136,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                            itemCTKTXM.CreateDate,
                                            CreateBy = itemUser.HoTen,
                                        };
-                        DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKH);
-                        dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryTXL));
+                        DataTable dt = LINQToDataTable(queryKH);
+                        dt.Merge(LINQToDataTable(queryTXL));
                         return dt;
             }
             catch (Exception ex)
@@ -2184,8 +2184,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                    itemCTKTXM.CreateDate,
                                    CreateBy = itemUser.HoTen,
                                };
-                DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKH);
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryTXL));
+                DataTable dt = LINQToDataTable(queryKH);
+                dt.Merge(LINQToDataTable(queryTXL));
                 return dt;
             }
             catch (Exception ex)
@@ -2369,7 +2369,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                         itemCTKTXM.ChuyenLapTBCat,
                                         //CreateBy = itemUser.HoTen,
                                     };
-                        return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                        return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -2397,7 +2397,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                         itemCTKTXM.ChuyenLapTBCat,
                                         //CreateBy = itemUser.HoTen,
                                     };
-                        return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                        return LINQToDataTable(query);
             }
             catch (Exception ex)
             {

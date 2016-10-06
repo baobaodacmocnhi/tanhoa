@@ -9,9 +9,10 @@ using System.Windows.Forms;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.DAL.ToXuLy;
-using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.DAL.CapNhat;
 using KTKS_DonKH.DAL.BamChi;
+using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.BamChi
 {
@@ -19,10 +20,10 @@ namespace KTKS_DonKH.GUI.BamChi
     {
         DonKH _donkh = null;
         DonTXL _dontxl = null;
-        TTKhachHang _ttkhachhang = null;
+        HOADON _hoadon = null;
         CDonKH _cDonKH = new CDonKH();
         CDonTXL _cDonTXL = new CDonTXL();
-        CTTKH _cTTKH = new CTTKH();
+        CThuTien _cThuTien = new CThuTien();
         CBamChi _cBamChi = new CBamChi();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         int selectedindex = -1;
@@ -42,14 +43,14 @@ namespace KTKS_DonKH.GUI.BamChi
             this.BringToFront();
         }
 
-        public void LoadTTKH(TTKhachHang ttkhachhang)
+        public void LoadTTKH(HOADON hoadon)
         {
-            txtDanhBo.Text = ttkhachhang.DanhBo;
-            txtHopDong.Text = ttkhachhang.GiaoUoc;
-            txtHoTen.Text = ttkhachhang.HoTen;
-            txtDiaChi.Text = ttkhachhang.DC1 + " " + ttkhachhang.DC2;
-            txtGiaBieu.Text = ttkhachhang.GB;
-            txtDinhMuc.Text = ttkhachhang.TGDM;
+            txtDanhBo.Text = hoadon.DANHBA;
+            txtHopDong.Text = hoadon.HOPDONG;
+            txtHoTen.Text = hoadon.TENKH;
+            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG;
+            txtGiaBieu.Text = hoadon.GB.ToString();
+            txtDinhMuc.Text = hoadon.DM.ToString();
             string a, b, c;
             _cPhuongQuan.getTTDHNbyID(txtDanhBo.Text.Trim(), out a, out b, out c);
             txtHieu.Text = a;
@@ -138,16 +139,16 @@ namespace KTKS_DonKH.GUI.BamChi
                         _dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
                         txtMaDon.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
                         dgvDSNhapBamChi.DataSource = _cBamChi.LoadDSCTBamChi_TXL(_dontxl.MaDon, CTaiKhoan.MaUser);
-                        if (_cTTKH.getTTKHbyID(_dontxl.DanhBo) != null)
+                        if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
                         {
-                            _ttkhachhang = _cTTKH.getTTKHbyID(_dontxl.DanhBo);
-                            LoadTTKH(_ttkhachhang);
+                            _hoadon = _cThuTien.GetMoiNhat(_dontxl.DanhBo);
+                            LoadTTKH(_hoadon);
                             cmbChiMatSo.SelectedIndex = 0;
                             cmbChiKhoaGoc.SelectedIndex = 0;
                         }
                         else
                         {
-                            _ttkhachhang = null;
+                            _hoadon = null;
                             Clear();
                             MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
@@ -169,16 +170,16 @@ namespace KTKS_DonKH.GUI.BamChi
                         _donkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
                         txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
                         dgvDSNhapBamChi.DataSource = _cBamChi.LoadDSCTBamChi(_donkh.MaDon, CTaiKhoan.MaUser);
-                        if (_cTTKH.getTTKHbyID(_donkh.DanhBo) != null)
+                        if (_cThuTien.GetMoiNhat(_donkh.DanhBo) != null)
                         {
-                            _ttkhachhang = _cTTKH.getTTKHbyID(_donkh.DanhBo);
-                            LoadTTKH(_ttkhachhang);
+                            _hoadon = _cThuTien.GetMoiNhat(_donkh.DanhBo);
+                            LoadTTKH(_hoadon);
                             cmbChiMatSo.SelectedIndex = 0;
                             cmbChiKhoaGoc.SelectedIndex = 0;
                         }
                         else
                         {
-                            _ttkhachhang = null;
+                            _hoadon = null;
                             Clear();
                             MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
@@ -199,16 +200,16 @@ namespace KTKS_DonKH.GUI.BamChi
         {
             if (e.KeyChar == 13)
             {
-                if (_cTTKH.getTTKHbyID(txtDanhBo.Text.Trim()) != null)
+                if (_cThuTien.GetMoiNhat(txtDanhBo.Text.Trim()) != null)
                 {
-                    _ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
-                    LoadTTKH(_ttkhachhang);
+                    _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
+                    LoadTTKH(_hoadon);
                     cmbChiMatSo.SelectedIndex = 0;
                     cmbChiKhoaGoc.SelectedIndex = 0;
                 }
                 else
                 {
-                    _ttkhachhang = null;
+                    _hoadon = null;
                     Clear();
                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -260,11 +261,11 @@ namespace KTKS_DonKH.GUI.BamChi
                             ctbamchi.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
                         if (!string.IsNullOrEmpty(txtDinhMuc.Text.Trim()))
                             ctbamchi.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
-                        if (_ttkhachhang != null)
+                        if (_hoadon != null)
                         {
-                            ctbamchi.Dot = _ttkhachhang.Dot;
-                            ctbamchi.Ky = _ttkhachhang.Ky;
-                            ctbamchi.Nam = _ttkhachhang.Nam;
+                            ctbamchi.Dot = _hoadon.DOT.ToString();
+                            ctbamchi.Ky = _hoadon.KY.ToString();
+                            ctbamchi.Nam = _hoadon.NAM.ToString();
                         }
                         ///
                         ctbamchi.NgayBC = dateBamChi.Value;
@@ -311,7 +312,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         {
                             MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             dgvDSNhapBamChi.DataSource = _cBamChi.LoadDSCTBamChi_TXL(_dontxl.MaDon, CTaiKhoan.MaUser);
-                            _ttkhachhang = null;
+                            _hoadon = null;
                             txtDanhBo.Text = "";
                             txtHopDong.Text = "";
                             txtHoTen.Text = "";
@@ -360,11 +361,11 @@ namespace KTKS_DonKH.GUI.BamChi
                             ctbamchi.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
                         if (!string.IsNullOrEmpty(txtDinhMuc.Text.Trim()))
                             ctbamchi.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
-                        if (_ttkhachhang != null)
+                        if (_hoadon != null)
                         {
-                            ctbamchi.Dot = _ttkhachhang.Dot;
-                            ctbamchi.Ky = _ttkhachhang.Ky;
-                            ctbamchi.Nam = _ttkhachhang.Nam;
+                            ctbamchi.Dot = _hoadon.DOT.ToString();
+                            ctbamchi.Ky = _hoadon.KY.ToString();
+                            ctbamchi.Nam = _hoadon.NAM.ToString();
                         }
                         ///
                         ctbamchi.NgayBC = dateBamChi.Value;
@@ -411,7 +412,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         {
                             MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             dgvDSNhapBamChi.DataSource = _cBamChi.LoadDSCTBamChi(_donkh.MaDon, CTaiKhoan.MaUser);
-                            _ttkhachhang = null;
+                            _hoadon = null;
                             txtDanhBo.Text = "";
                             txtHopDong.Text = "";
                             txtHoTen.Text = "";
@@ -453,11 +454,11 @@ namespace KTKS_DonKH.GUI.BamChi
                         ctbamchi.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
                     if (!string.IsNullOrEmpty(txtDinhMuc.Text.Trim()))
                         ctbamchi.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
-                    if (_ttkhachhang != null)
+                    if (_hoadon != null)
                     {
-                        ctbamchi.Dot = _ttkhachhang.Dot;
-                        ctbamchi.Ky = _ttkhachhang.Ky;
-                        ctbamchi.Nam = _ttkhachhang.Nam;
+                        ctbamchi.Dot = _hoadon.DOT.ToString();
+                        ctbamchi.Ky = _hoadon.KY.ToString();
+                        ctbamchi.Nam = _hoadon.NAM.ToString();
                     }
                     ///
                     ctbamchi.NgayBC = dateBamChi.Value;

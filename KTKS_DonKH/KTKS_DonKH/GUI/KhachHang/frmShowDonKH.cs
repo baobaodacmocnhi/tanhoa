@@ -9,11 +9,12 @@ using System.Windows.Forms;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.CapNhat;
 using KTKS_DonKH.BaoCao;
-using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.BaoCao.KhachHang;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.DAL.ToXuLy;
+using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.KhachHang
 {
@@ -23,9 +24,8 @@ namespace KTKS_DonKH.GUI.KhachHang
         DonKH _donkh = null;
         Dictionary<string, string> _source = new Dictionary<string, string>();
         CDonKH _cDonKH = new CDonKH();
-        CTTKH _cTTKH=new CTTKH();
+        CThuTien _cThuTien = new CThuTien();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
-        CNhanVien _cNhanVien = new CNhanVien();
         CDonTXL _cDonTXL = new CDonTXL();
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         string Dot = "", Ky = "", Nam = "";
@@ -178,22 +178,22 @@ namespace KTKS_DonKH.GUI.KhachHang
         {
             if (e.KeyChar == 13)
             {
-                TTKhachHang ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
-                if (ttkhachhang != null)
+                HOADON hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
+                if (hoadon != null)
                 {
-                    txtHopDong.Text = ttkhachhang.GiaoUoc;
-                    txtHoTen.Text = ttkhachhang.HoTen;
-                    txtDiaChi.Text = ttkhachhang.DC1 + " " + ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkhachhang.Quan, ttkhachhang.Phuong);
-                    txtMSThue.Text = ttkhachhang.MSThue;
-                    txtGiaBieu.Text = ttkhachhang.GB;
-                    txtDinhMuc.Text = ttkhachhang.TGDM;
+                    txtHopDong.Text = hoadon.HOPDONG;
+                    txtHoTen.Text = hoadon.TENKH;
+                    txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+                    txtMSThue.Text = hoadon.MST;
+                    txtGiaBieu.Text = hoadon.GB.ToString();
+                    txtDinhMuc.Text = hoadon.DM.ToString();
                     //SH = ttkhachhang.SH;
                     //SX = ttkhachhang.SX;
                     //DV = ttkhachhang.DV;
                     //HCSN = ttkhachhang.HCSN;
-                    Dot = ttkhachhang.Dot;
-                    Ky = ttkhachhang.Ky;
-                    Nam = ttkhachhang.Nam;
+                    Dot = hoadon.DOT.ToString();
+                    Ky = hoadon.KY.ToString();
+                    Nam = hoadon.NAM.ToString();
                 }
                 else
                 {

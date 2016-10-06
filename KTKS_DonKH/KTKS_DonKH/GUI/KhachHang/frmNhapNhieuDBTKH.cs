@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.CapNhat;
-using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.LinQ;
+using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.KhachHang
 {
@@ -18,7 +19,7 @@ namespace KTKS_DonKH.GUI.KhachHang
     {
         CLoaiDon _cLoaiDon = new CLoaiDon();
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
-        CTTKH _cTTKH = new CTTKH();
+        CThuTien _cThuTien = new CThuTien();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         CDonTXL _cDonTXL = new CDonTXL();
         CDonKH _cDonKH = new CDonKH();
@@ -121,18 +122,18 @@ namespace KTKS_DonKH.GUI.KhachHang
                         return;
                     }
                     
-                if (_cTTKH.getTTKHbyID(dgvDanhBoChuyenKT["DanhBo", e.RowIndex].Value.ToString()) != null)
+                if (_cThuTien.GetMoiNhat(dgvDanhBoChuyenKT["DanhBo", e.RowIndex].Value.ToString()) != null)
                 {
-                    TTKhachHang ttkhachhang = _cTTKH.getTTKHbyID(dgvDanhBoChuyenKT["DanhBo", e.RowIndex].Value.ToString());
-                    dgvDanhBoChuyenKT["HopDong", e.RowIndex].Value = ttkhachhang.GiaoUoc;
-                    dgvDanhBoChuyenKT["HoTen", e.RowIndex].Value = ttkhachhang.HoTen;
-                    dgvDanhBoChuyenKT["DiaChi", e.RowIndex].Value = ttkhachhang.DC1 + " " + ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkhachhang.Quan, ttkhachhang.Phuong);
-                    dgvDanhBoChuyenKT["MSThue", e.RowIndex].Value = ttkhachhang.MSThue;
-                    dgvDanhBoChuyenKT["GiaBieu", e.RowIndex].Value = ttkhachhang.GB;
-                    dgvDanhBoChuyenKT["DinhMuc", e.RowIndex].Value = ttkhachhang.TGDM;
-                    dgvDanhBoChuyenKT["Dot", e.RowIndex].Value = ttkhachhang.Dot;
-                    dgvDanhBoChuyenKT["Ky", e.RowIndex].Value = ttkhachhang.Ky;
-                    dgvDanhBoChuyenKT["Nam", e.RowIndex].Value = ttkhachhang.Nam;
+                    HOADON hoadon = _cThuTien.GetMoiNhat(dgvDanhBoChuyenKT["DanhBo", e.RowIndex].Value.ToString());
+                    dgvDanhBoChuyenKT["HopDong", e.RowIndex].Value = hoadon.HOPDONG;
+                    dgvDanhBoChuyenKT["HoTen", e.RowIndex].Value = hoadon.TENKH;
+                    dgvDanhBoChuyenKT["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+                    dgvDanhBoChuyenKT["MSThue", e.RowIndex].Value = hoadon.MST;
+                    dgvDanhBoChuyenKT["GiaBieu", e.RowIndex].Value = hoadon.GB;
+                    dgvDanhBoChuyenKT["DinhMuc", e.RowIndex].Value = hoadon.DM;
+                    dgvDanhBoChuyenKT["Dot", e.RowIndex].Value = hoadon.DOT;
+                    dgvDanhBoChuyenKT["Ky", e.RowIndex].Value = hoadon.KY;
+                    dgvDanhBoChuyenKT["Nam", e.RowIndex].Value = hoadon.NAM;
                 }
                 else
                 {
@@ -350,18 +351,18 @@ namespace KTKS_DonKH.GUI.KhachHang
                         return;
                     }
 
-                if (_cTTKH.getTTKHbyID(dgvDanhBoChuyenVanPhong["DanhBoVP", e.RowIndex].Value.ToString()) != null)
+                if (_cThuTien.GetMoiNhat(dgvDanhBoChuyenVanPhong["DanhBoVP", e.RowIndex].Value.ToString()) != null)
                 {
-                    TTKhachHang ttkhachhang = _cTTKH.getTTKHbyID(dgvDanhBoChuyenVanPhong["DanhBoVP", e.RowIndex].Value.ToString());
-                    dgvDanhBoChuyenVanPhong["HopDongVP", e.RowIndex].Value = ttkhachhang.GiaoUoc;
-                    dgvDanhBoChuyenVanPhong["HoTenVP", e.RowIndex].Value = ttkhachhang.HoTen;
-                    dgvDanhBoChuyenVanPhong["DiaChiVP", e.RowIndex].Value = ttkhachhang.DC1 + " " + ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkhachhang.Quan, ttkhachhang.Phuong);
-                    dgvDanhBoChuyenVanPhong["MSThueVP", e.RowIndex].Value = ttkhachhang.MSThue;
-                    dgvDanhBoChuyenVanPhong["GiaBieuVP", e.RowIndex].Value = ttkhachhang.GB;
-                    dgvDanhBoChuyenVanPhong["DinhMucVP", e.RowIndex].Value = ttkhachhang.TGDM;
-                    dgvDanhBoChuyenVanPhong["DotVP", e.RowIndex].Value = ttkhachhang.Dot;
-                    dgvDanhBoChuyenVanPhong["KyVP", e.RowIndex].Value = ttkhachhang.Ky;
-                    dgvDanhBoChuyenVanPhong["NamVP", e.RowIndex].Value = ttkhachhang.Nam;
+                    HOADON hoadon = _cThuTien.GetMoiNhat(dgvDanhBoChuyenVanPhong["DanhBoVP", e.RowIndex].Value.ToString());
+                    dgvDanhBoChuyenVanPhong["HopDongVP", e.RowIndex].Value = hoadon.HOPDONG;
+                    dgvDanhBoChuyenVanPhong["HoTenVP", e.RowIndex].Value = hoadon.TENKH;
+                    dgvDanhBoChuyenVanPhong["DiaChiVP", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+                    dgvDanhBoChuyenVanPhong["MSThueVP", e.RowIndex].Value = hoadon.MST;
+                    dgvDanhBoChuyenVanPhong["GiaBieuVP", e.RowIndex].Value = hoadon.GB;
+                    dgvDanhBoChuyenVanPhong["DinhMucVP", e.RowIndex].Value = hoadon.DM;
+                    dgvDanhBoChuyenVanPhong["DotVP", e.RowIndex].Value = hoadon.DOT;
+                    dgvDanhBoChuyenVanPhong["KyVP", e.RowIndex].Value = hoadon.KY;
+                    dgvDanhBoChuyenVanPhong["NamVP", e.RowIndex].Value = hoadon.NAM;
                 }
                 else
                 {

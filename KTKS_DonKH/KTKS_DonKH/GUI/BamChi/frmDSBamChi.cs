@@ -10,7 +10,7 @@ using KTKS_DonKH.DAL.BamChi;
 using KTKS_DonKH.GUI.ToXuLy;
 using KTKS_DonKH.GUI.KhachHang;
 using DevExpress.XtraGrid.Views.Grid;
-using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.DAL.QuanTri;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraEditors.Controls;
 using KTKS_DonKH.DAL.KhachHang;
@@ -424,9 +424,7 @@ namespace KTKS_DonKH.GUI.BamChi
                                 gridControl.DataSource = _cBamChi.LoadDSBamChiDaDuyetByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", ""))).Tables["BamChi"];
                             else
                                 if (radDSBamChi.Checked)
-                                    if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
-                                        dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
-                                    else
+                                        //dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
                                         dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByMaDon(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
                             break;
                         case "Danh Bộ":
@@ -434,9 +432,7 @@ namespace KTKS_DonKH.GUI.BamChi
                                 gridControl.DataSource = _cBamChi.LoadDSBamChiDaDuyetByDanhBo(txtNoiDungTimKiem.Text.Trim()).Tables["BamChi"];
                             else
                                 if (radDSBamChi.Checked)
-                                    if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
-                                        dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDanhBo(txtNoiDungTimKiem.Text.Trim());
-                                    else
+                                        //dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDanhBo(txtNoiDungTimKiem.Text.Trim());
                                         dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDanhBo(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
                             break;
                     }
@@ -463,9 +459,7 @@ namespace KTKS_DonKH.GUI.BamChi
                     //string expression = String.Format("NgayBC >= #{0:yyyy-MM-dd} 00:00:00# and NgayBC <= #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
                     //DSDon_BS.Filter = expression;
                     _tuNgay = dateTimKiem.Value.ToString("dd/MM/yyyy");
-                    if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
-                        dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDate(dateTimKiem.Value);
-                    else
+                        //dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDate(dateTimKiem.Value);
                         dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDate(CTaiKhoan.MaUser, dateTimKiem.Value);
                 }
         }
@@ -487,9 +481,7 @@ namespace KTKS_DonKH.GUI.BamChi
                     //DSDon_BS.Filter = expression;
                     _tuNgay = dateTu.Value.ToString("dd/MM/yyyy");
                     _denNgay = "";
-                    if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
-                        dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDate(dateTimKiem.Value);
-                    else
+                        //dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDate(dateTimKiem.Value);
                         dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDate(CTaiKhoan.MaUser, dateTimKiem.Value);
                 }
         }
@@ -509,9 +501,7 @@ namespace KTKS_DonKH.GUI.BamChi
                     //string expression = String.Format("NgayBC >= #{0:yyyy-MM-dd} 00:00:00# and NgayBC <= #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
                     //DSDon_BS.Filter = expression;
                     _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
-                    if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
-                        dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDates(dateTu.Value, dateDen.Value);
-                    else
+                        //dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDates(dateTu.Value, dateDen.Value);
                         dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDates(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
                 }
         }

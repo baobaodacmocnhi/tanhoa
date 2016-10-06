@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using KTKS_DonKH.DAL.CapNhat;
+using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.DieuChinhBienDong;
 using KTKS_DonKH.DAL.KhachHang;
@@ -15,6 +15,8 @@ using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.DieuChinhBienDong;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.ToXuLy;
+using KTKS_DonKH.DAL.CapNhat;
+using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -22,10 +24,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
     {
         DonKH _donkh = null;
         DonTXL _dontxl = null;
-        TTKhachHang _ttkhachhang = null;
+        HOADON _hoadon = null;
         CLoaiChungTu _cLoaiChungTu = new CLoaiChungTu();
         CChungTu _cChungTu = new CChungTu();
-        CTTKH _cTTKH = new CTTKH();
+        CThuTien _cThuTien = new CThuTien();
         CDCBD _cDCBD = new CDCBD();
         Dictionary<string, string> _source = new Dictionary<string, string>();
         CDonKH _cDonKH = new CDonKH();
@@ -80,10 +82,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     _donkh = _cDonKH.getDonKHbyID(decimal.Parse(_source["MaDon"]));
                     txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
                 }
-                if (_cTTKH.getTTKHbyID(_source["DanhBo"]) != null)
+                if (_cThuTien.GetMoiNhat(_source["DanhBo"]) != null)
                 {
-                    _ttkhachhang = _cTTKH.getTTKHbyID(_source["DanhBo"]);
-                    LoadTTKH(_ttkhachhang);
+                    _hoadon = _cThuTien.GetMoiNhat(_source["DanhBo"]);
+                    LoadTTKH(_hoadon);
                 }
             }
             dgvDSSoDangKy.AutoGenerateColumns = false;
@@ -114,23 +116,23 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         /// Nhận Entity TTKhachHang để điền vào textbox
         /// </summary>
         /// <param name="ttkhachhang"></param>
-        public void LoadTTKH(TTKhachHang ttkhachhang)
+        public void LoadTTKH(HOADON hoadon)
         {
-            txtDanhBo.Text = ttkhachhang.DanhBo;
-            txtHopDong.Text = ttkhachhang.GiaoUoc;
-            txtHoTen.Text = ttkhachhang.HoTen;
-            txtDiaChi.Text = ttkhachhang.DC1 + " " + ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkhachhang.Quan, ttkhachhang.Phuong);
-            txtMSThue.Text = ttkhachhang.MSThue;
-            txtGiaBieu.Text = ttkhachhang.GB;
-            txtDinhMuc.Text = ttkhachhang.TGDM;
-            txtSH.Text = ttkhachhang.SH;
-            txtSX.Text = ttkhachhang.SX;
-            txtDV.Text = ttkhachhang.DV;
-            txtHCSN.Text = ttkhachhang.HCSN;
-            txtDot.Text = _cPhuongQuan.getDot(ttkhachhang.DanhBo);
+            txtDanhBo.Text = hoadon.DANHBA;
+            txtHopDong.Text = hoadon.HOPDONG;
+            txtHoTen.Text = hoadon.TENKH;
+            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+            txtMSThue.Text = hoadon.MST;
+            txtGiaBieu.Text = hoadon.GB.ToString();
+            txtDinhMuc.Text = hoadon.DM.ToString();
+            txtSH.Text = hoadon.TILESH.ToString();
+            txtSX.Text = hoadon.TILESX.ToString();
+            txtDV.Text = hoadon.TILEDV.ToString();
+            txtHCSN.Text = hoadon.TILEHCSN.ToString();
+            txtDot.Text = _cPhuongQuan.getDot(hoadon.DANHBA);
 
-            dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTubyDanhBo(ttkhachhang.DanhBo);
-            dgvDSDieuChinh.DataSource = _cDCBD.LoadDSDCbyDanhBo(ttkhachhang.DanhBo);
+            dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTubyDanhBo(hoadon.DANHBA);
+            dgvDSDieuChinh.DataSource = _cDCBD.LoadDSDCbyDanhBo(hoadon.DANHBA);
             LoadTongNK();
         }
 
@@ -165,7 +167,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtHCSN_BD.Text = "";
             lbTongNK.Text = "";
 
-            _ttkhachhang = null;
+            _hoadon = null;
             dgvDSSoDangKy.DataSource = null;
             dgvDSDieuChinh.DataSource = null;
             dgvLichSuChungTu.DataSource = null;
@@ -433,10 +435,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         _dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
                         txtMaDon.Text = "TXL"+_dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
-                        if (_cTTKH.getTTKHbyID(_dontxl.DanhBo) != null)
+                        if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
                         {
-                            _ttkhachhang = _cTTKH.getTTKHbyID(_dontxl.DanhBo);
-                            LoadTTKH(_ttkhachhang);
+                            _hoadon = _cThuTien.GetMoiNhat(_dontxl.DanhBo);
+                            LoadTTKH(_hoadon);
                             txtDanhBo.Focus();
                         }
                         else
@@ -459,10 +461,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         _donkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
                         txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
-                        if (_cTTKH.getTTKHbyID(_donkh.DanhBo) != null)
+                        if (_cThuTien.GetMoiNhat(_donkh.DanhBo) != null)
                         {
-                            _ttkhachhang = _cTTKH.getTTKHbyID(_donkh.DanhBo);
-                            LoadTTKH(_ttkhachhang);
+                            _hoadon = _cThuTien.GetMoiNhat(_donkh.DanhBo);
+                            LoadTTKH(_hoadon);
                             txtDanhBo.Focus();
                         }
                         else
@@ -485,10 +487,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (e.KeyChar == 13)
             {
-                if (_cTTKH.getTTKHbyID(txtDanhBo.Text.Trim()) != null)
+                if (_cThuTien.GetMoiNhat(txtDanhBo.Text.Trim()) != null)
                 {
-                    _ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
-                    LoadTTKH(_ttkhachhang);
+                    _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
+                    LoadTTKH(_hoadon);
                     txtHieuLucKy.Focus();
                 }
                 else
@@ -573,11 +575,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         ctdcbd.HopDong = txtHopDong.Text.Trim();
                         ctdcbd.HoTen = txtHoTen.Text.Trim();
                         ctdcbd.DiaChi = txtDiaChi.Text.Trim();
-                        if (_ttkhachhang != null)
+                        if (_hoadon != null)
                         {
-                            ctdcbd.MaQuanPhuong = _ttkhachhang.Quan + " " + _ttkhachhang.Phuong;
-                            ctdcbd.Ky = _ttkhachhang.Ky;
-                            ctdcbd.Nam = _ttkhachhang.Nam;
+                            ctdcbd.MaQuanPhuong = _hoadon.Quan + " " + _hoadon.Phuong;
+                            ctdcbd.Ky = _hoadon.KY.ToString();
+                            ctdcbd.Nam = _hoadon.NAM.ToString();
                         }
                         ctdcbd.MSThue = txtMSThue.Text.Trim();
                         if (!string.IsNullOrEmpty(txtGiaBieu.Text.Trim()))
@@ -752,11 +754,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     ctdcbd.HopDong = txtHopDong.Text.Trim();
                     ctdcbd.HoTen = txtHoTen.Text.Trim();
                     ctdcbd.DiaChi = txtDiaChi.Text.Trim();
-                    if (_ttkhachhang != null)
+                    if (_hoadon != null)
                     {
-                        ctdcbd.MaQuanPhuong = _ttkhachhang.Quan + " " + _ttkhachhang.Phuong;
-                        ctdcbd.Ky = _ttkhachhang.Ky;
-                        ctdcbd.Nam = _ttkhachhang.Nam;
+                        ctdcbd.MaQuanPhuong = _hoadon.Quan + " " + _hoadon.Phuong;
+                        ctdcbd.Ky = _hoadon.KY.ToString();
+                        ctdcbd.Nam = _hoadon.NAM.ToString();
                     }
                     ctdcbd.MSThue = txtMSThue.Text.Trim();
                     if (!string.IsNullOrEmpty(txtGiaBieu.Text.Trim()))

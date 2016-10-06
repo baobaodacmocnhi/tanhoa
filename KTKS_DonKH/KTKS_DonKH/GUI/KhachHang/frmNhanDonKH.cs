@@ -12,8 +12,9 @@ using KTKS_DonKH.LinQ;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.KhachHang;
 using KTKS_DonKH.GUI.BaoCao;
-using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.DAL.ToXuLy;
+using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.KhachHang
 {
@@ -21,9 +22,8 @@ namespace KTKS_DonKH.GUI.KhachHang
     {
         CLoaiDon _cLoaiDon = new CLoaiDon();
         CDonKH _cDonKH = new CDonKH();
-        CTTKH _cTTKH = new CTTKH();
+        CThuTien _cThuTien = new CThuTien();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
-        CNhanVien _cNhanVien = new CNhanVien();
         CDonTXL _cDonTXL = new CDonTXL();
         DonKH _donkh;
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
@@ -144,22 +144,22 @@ namespace KTKS_DonKH.GUI.KhachHang
         {
             if (e.KeyChar == 13)
             {
-                TTKhachHang ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
-                if (ttkhachhang != null)
+                HOADON hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
+                if (hoadon != null)
                 {
-                    txtHopDong.Text = ttkhachhang.GiaoUoc;
-                    txtHoTen.Text = ttkhachhang.HoTen;
-                    txtDiaChi.Text = ttkhachhang.DC1 + " " + ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkhachhang.Quan, ttkhachhang.Phuong);
-                    txtMSThue.Text = ttkhachhang.MSThue;
-                    txtGiaBieu.Text = ttkhachhang.GB;
-                    txtDinhMuc.Text = ttkhachhang.TGDM;
-                    SH = ttkhachhang.SH;
-                    SX = ttkhachhang.SX;
-                    DV = ttkhachhang.DV;
-                    HCSN = ttkhachhang.HCSN;
-                    Dot = ttkhachhang.Dot;
-                    Ky = ttkhachhang.Ky;
-                    Nam = ttkhachhang.Nam;
+                    txtHopDong.Text = hoadon.HOPDONG;
+                    txtHoTen.Text = hoadon.TENKH;
+                    txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+                    txtMSThue.Text = hoadon.MST;
+                    txtGiaBieu.Text = hoadon.GB.ToString();
+                    txtDinhMuc.Text = hoadon.DM.ToString();
+                    SH = hoadon.TILESH.ToString();
+                    SX = hoadon.TILESX.ToString();
+                    DV = hoadon.TILEDV.ToString();
+                    HCSN = hoadon.TILEHCSN.ToString();
+                    Dot = hoadon.DOT.ToString();
+                    Ky = hoadon.KY.ToString();
+                    Nam = hoadon.NAM.ToString();
                     dgvLichSuDon.DataSource = _cDonKH.LoadDSDonKHByDanhBo(txtDanhBo.Text.Trim());
                     if (dgvLichSuDon.RowCount > 0)
                     dgvLichSuDon.Sort(dgvLichSuDon.Columns["CreateDate"], ListSortDirection.Descending);

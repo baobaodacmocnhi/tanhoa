@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using KTKS_DonKH.LinQ;
-using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.DAL.QuanTri;
 using System.Data;
 
 namespace KTKS_DonKH.DAL.ToXuLy
@@ -104,7 +104,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                             item.NoiDungViPham,
                             item.TinhTrang,
                         };
-            dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query.ToList());
+            dt = LINQToDataTable(query.ToList());
 
             var queryTXL = from item in db.GianLans
                         where item.ToXuLy == true && item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
@@ -119,19 +119,19 @@ namespace KTKS_DonKH.DAL.ToXuLy
                             item.NoiDungViPham,
                             item.TinhTrang,
                         };
-            dt.Merge( KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryTXL.ToList()));
+            dt.Merge( LINQToDataTable(queryTXL.ToList()));
 
             return dt;
         }
 
         public DataTable GetDSNoiDungViPham()
         {
-            return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(db.GianLans.Select(item => new { item.NoiDungViPham }).ToList().Distinct());
+            return LINQToDataTable(db.GianLans.Select(item => new { item.NoiDungViPham }).ToList().Distinct());
         }
 
         public DataTable GetDSTinhTrang()
         {
-            return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(db.GianLans.Select(item => new { item.TinhTrang }).ToList().Distinct());
+            return LINQToDataTable(db.GianLans.Select(item => new { item.TinhTrang }).ToList().Distinct());
         }
     }
 }

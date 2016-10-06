@@ -248,15 +248,6 @@
             this.ribbtnGiaNuoc.Text = "Giá Nước";
             this.ribbtnGiaNuoc.Click += new System.EventHandler(this.ribbtnGiaNuoc_Click);
             // 
-            // ribbtnNVKiemTra
-            // 
-            this.ribbtnNVKiemTra.Image = global::KTKS_DonKH.Properties.Resources.man_48x48;
-            this.ribbtnNVKiemTra.MinimumSize = new System.Drawing.Size(90, 0);
-            this.ribbtnNVKiemTra.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnNVKiemTra.SmallImage")));
-            this.ribbtnNVKiemTra.Text = "NV Kiểm Tra";
-            this.ribbtnNVKiemTra.Visible = false;
-            this.ribbtnNVKiemTra.Click += new System.EventHandler(this.ribbtnNVKiemTra_Click);
-            // 
             // ribbtnKiemTrang_BamChi
             // 
             this.ribbtnKiemTrang_BamChi.Image = global::KTKS_DonKH.Properties.Resources.stock_example;

@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.CapNhat;
-using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.ToXuLy;
+using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.ToXuLy
 {
@@ -18,7 +19,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
     {
         CLoaiDonTXL _cLoaiDonTXL = new CLoaiDonTXL();
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
-        CTTKH _cTTKH = new CTTKH();
+        CThuTien _cThuTien = new CThuTien();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         CDonTXL _cDonTXL = new CDonTXL();
         private DateTimePicker cellDateTimePicker;
@@ -70,18 +71,18 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {  
             if (dgvDanhBo.Columns[e.ColumnIndex].Name == "DanhBo" && dgvDanhBo["DanhBo",e.RowIndex].Value!=null)
             {
-                if (_cTTKH.getTTKHbyID(dgvDanhBo["DanhBo", e.RowIndex].Value.ToString()) != null)
+                if (_cThuTien.GetMoiNhat(dgvDanhBo["DanhBo", e.RowIndex].Value.ToString()) != null)
                 {
-                    TTKhachHang ttkhachhang = _cTTKH.getTTKHbyID(dgvDanhBo["DanhBo", e.RowIndex].Value.ToString());
-                    dgvDanhBo["HopDong", e.RowIndex].Value = ttkhachhang.GiaoUoc;
-                    dgvDanhBo["HoTen", e.RowIndex].Value = ttkhachhang.HoTen;
-                    dgvDanhBo["DiaChi", e.RowIndex].Value = ttkhachhang.DC1 + " " + ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkhachhang.Quan, ttkhachhang.Phuong);
-                    dgvDanhBo["MSThue", e.RowIndex].Value = ttkhachhang.MSThue;
-                    dgvDanhBo["GiaBieu", e.RowIndex].Value = ttkhachhang.GB;
-                    dgvDanhBo["DinhMuc", e.RowIndex].Value = ttkhachhang.TGDM;
-                    dgvDanhBo["Dot", e.RowIndex].Value = ttkhachhang.Dot;
-                    dgvDanhBo["Ky", e.RowIndex].Value = ttkhachhang.Ky;
-                    dgvDanhBo["Nam", e.RowIndex].Value = ttkhachhang.Nam;
+                    HOADON hoadon = _cThuTien.GetMoiNhat(dgvDanhBo["DanhBo", e.RowIndex].Value.ToString());
+                    dgvDanhBo["HopDong", e.RowIndex].Value = hoadon.HOPDONG;
+                    dgvDanhBo["HoTen", e.RowIndex].Value = hoadon.TENKH;
+                    dgvDanhBo["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+                    dgvDanhBo["MSThue", e.RowIndex].Value = hoadon.MST;
+                    dgvDanhBo["GiaBieu", e.RowIndex].Value = hoadon.GB;
+                    dgvDanhBo["DinhMuc", e.RowIndex].Value = hoadon.DM;
+                    dgvDanhBo["Dot", e.RowIndex].Value = hoadon.DOT.ToString();
+                    dgvDanhBo["Ky", e.RowIndex].Value = hoadon.KY.ToString();
+                    dgvDanhBo["Nam", e.RowIndex].Value = hoadon.NAM.ToString();
                 }
                 else
                 {

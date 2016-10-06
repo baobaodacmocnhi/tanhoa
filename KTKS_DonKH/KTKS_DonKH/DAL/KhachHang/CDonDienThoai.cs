@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.LinQ;
 using System.Data;
 using KTKS_DonKH.Function;
@@ -107,7 +107,7 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                    return CLinQToDataTable.LINQToDataTable(db.DonDienThoais.ToList());
+                    return LINQToDataTable(db.DonDienThoais.ToList());
             }
             catch (Exception ex)
             {
@@ -141,7 +141,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                    item.NgayBao,
                                    item.DienThoai,
                                };
-                    return CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -175,7 +175,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     item.NgayBao,
                                     item.DienThoai,
                                 };
-                    return CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -209,7 +209,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     item.NgayBao,
                                     item.DienThoai,
                                 };
-                    return CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -243,7 +243,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     item.NgayBao,
                                     item.DienThoai,
                                 };
-                    return CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -277,7 +277,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     item.NgayBao,
                                     item.DienThoai,
                                 };
-                    return CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -311,7 +311,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     item.NgayBao,
                                     item.DienThoai,
                                 };
-                    return CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -345,7 +345,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     item.NgayBao,
                                     item.DienThoai,
                                 };
-                    return CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -379,7 +379,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     item.NgayBao,
                                     item.DienThoai,
                                 };
-                    return CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {

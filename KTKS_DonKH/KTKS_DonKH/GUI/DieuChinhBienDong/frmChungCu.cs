@@ -7,17 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.CapNhat;
+using KTKS_DonKH.DAL.DieuChinhBienDong;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.DieuChinhBienDong;
 using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
     public partial class frmChungCu : Form
     {
         CTTKH _cTTKH = new CTTKH();
-        TTKhachHang _ttkhachhang = new TTKhachHang();
+        CThuTien _cThuTien = new CThuTien();
+        HOADON _hoadon = new HOADON();
         CChungTu _cChungTu = new CChungTu();
         BindingSource DSKHCC_BS = new BindingSource();
         CChiNhanh _cChiNhanh = new CChiNhanh();
@@ -44,12 +47,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             dateTimKiem.Location = txtNoiDungTimKiem.Location;
         }
 
-        public void LoadTTKH(TTKhachHang ttkhachhang)
+        public void LoadTTKH(HOADON hoadon)
         {
-            txtDanhBo.Text = ttkhachhang.DanhBo;
-            txtHopDong.Text = ttkhachhang.GiaoUoc;
-            txtHoTen.Text = ttkhachhang.HoTen;
-            txtDiaChi.Text = ttkhachhang.DC1 + " " + ttkhachhang.DC2;
+            txtDanhBo.Text = hoadon.DANHBA;
+            txtHopDong.Text = hoadon.HOPDONG;
+            txtHoTen.Text = hoadon.TENKH;
+            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG;
         }
 
         public void Clear()
@@ -58,22 +61,22 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtHopDong.Text = "";
             txtHoTen.Text = "";
             txtDiaChi.Text = "";
-            _ttkhachhang = null;
+            _hoadon = null;
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
             {
-                if (_cTTKH.getTTKHbyID(txtDanhBo.Text.Trim()) != null)
+                if (_cThuTien.GetMoiNhat(txtDanhBo.Text.Trim()) != null)
                 {
-                    _ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
-                    LoadTTKH(_ttkhachhang);
-                    DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_ttkhachhang.DanhBo);
+                    _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
+                    LoadTTKH(_hoadon);
+                    DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_hoadon.DANHBA);
                 }
                 else
                 {
-                    _ttkhachhang = null;
+                    _hoadon = null;
                     Clear();
                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -90,7 +93,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void btnIn_Click(object sender, EventArgs e)
         {
-            if (_ttkhachhang != null)
+            if (_hoadon != null)
             {
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 for (int i = 0; i < dgvKhachHangChungCu.Rows.Count; i++)
@@ -102,10 +105,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " ");
                     dr["HoTen"] = txtHoTen.Text.Trim();
                     dr["DiaChi"] = txtDiaChi.Text.Trim();
-                    dr["HopDong"] = _ttkhachhang.GiaoUoc;
-                    dr["GiaBieu"] = _ttkhachhang.GB;
-                    dr["DinhMuc"] = _ttkhachhang.TGDM;
-                    dr["LoTrinh"] = _ttkhachhang.Dot + _ttkhachhang.CuonGCS + _ttkhachhang.CuonSTT;
+                    dr["HopDong"] = _hoadon.HOPDONG;
+                    dr["GiaBieu"] = _hoadon.GB;
+                    dr["DinhMuc"] = _hoadon.DM;
+                    dr["LoTrinh"] = _hoadon.DOT + _hoadon.MAY + _hoadon.STT;
                     dr["TenLCT"] = dgvKhachHangChungCu["TenLCT", i].Value.ToString();
                     dr["MaCT"] = dgvKhachHangChungCu["MaCT", i].Value.ToString();
                     dr["DiaChiCT"] = dgvKhachHangChungCu["DiaChi", i].Value.ToString();
@@ -136,7 +139,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void frmChungCu_KeyDown(object sender, KeyEventArgs e)
         {
-            if (_ttkhachhang!=null && e.Control && e.KeyCode == Keys.D1)
+            if (_hoadon!=null && e.Control && e.KeyCode == Keys.D1)
             {
                 Dictionary<string, string> source = new Dictionary<string, string>();
                 source.Add("ChungCu", "True");
@@ -155,9 +158,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 source.Add("Phong", "");
                 frmSoDK frm = new frmSoDK("Thêm", source);
                 if (frm.ShowDialog() == DialogResult.OK)
-                    dgvKhachHangChungCu.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_ttkhachhang.DanhBo);
+                    dgvKhachHangChungCu.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_hoadon.DANHBA);
             }
-            if (_ttkhachhang != null && e.Control && e.KeyCode == Keys.D2)
+            if (_hoadon != null && e.Control && e.KeyCode == Keys.D2)
             {
                 Dictionary<string, string> source = new Dictionary<string, string>();
                 source.Add("ChungCu", "True");
@@ -166,7 +169,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 source.Add("DiaChi", txtDiaChi.Text.Trim());
                 frmNhanDM frm = new frmNhanDM(source);
                 if (frm.ShowDialog() == DialogResult.OK)
-                    dgvKhachHangChungCu.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_ttkhachhang.DanhBo);
+                    dgvKhachHangChungCu.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_hoadon.DANHBA);
             }
         }
 
@@ -189,7 +192,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("Phong", "");
             frmSoDK frm = new frmSoDK("Thêm", source);
             if (frm.ShowDialog() == DialogResult.OK)
-                DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_ttkhachhang.DanhBo);
+                DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_hoadon.DANHBA);
         }
 
         private void sửaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -211,7 +214,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("Phong", dgvKhachHangChungCu.CurrentRow.Cells["Phong"].Value.ToString());
             frmSoDK frm = new frmSoDK("Sửa", source);
             if (frm.ShowDialog() == DialogResult.OK)
-                DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_ttkhachhang.DanhBo);
+                DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_hoadon.DANHBA);
         }
 
         private void nhậnĐịnhMứcKhácĐịaBànToolStripMenuItem_Click(object sender, EventArgs e)
@@ -223,12 +226,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("DiaChi", txtDiaChi.Text.Trim());
             frmNhanDM frm = new frmNhanDM(source);
             if (frm.ShowDialog() == DialogResult.OK)
-                DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_ttkhachhang.DanhBo);
+                DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_hoadon.DANHBA);
         }
 
         private void dgvKhachHangChungCu_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right && _ttkhachhang != null)
+            if (e.Button == MouseButtons.Right && _hoadon != null)
             {
                 thêmThuộcĐịaBànToolStripMenuItem.Enabled = true;
                 nhậnĐịnhMứcKhácĐịaBànToolStripMenuItem.Enabled = true;
@@ -255,7 +258,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void btnInDSCatChuyen_Click(object sender, EventArgs e)
         {
-            if (_ttkhachhang != null)
+            if (_hoadon != null)
             {
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 List<LichSuChungTu> lstLSCT = _cChungTu.getLichSuChungTubyDanhBo(txtDanhBo.Text.Trim());

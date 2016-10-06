@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
-using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.DAL.QuanTri;
 using System.Windows.Forms;
 using KTKS_DonKH.LinQ;
 
@@ -69,8 +69,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                                LyDoChuyenDi = itemDCBD.LyDoChuyen
                                            };
                     DataTable dtDCBD = new DataTable();
-                    dtDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDCBD_DonKH);
-                    dtDCBD.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDCBD_DonTXL));
+                    dtDCBD = LINQToDataTable(queryDCBD_DonKH);
+                    dtDCBD.Merge(LINQToDataTable(queryDCBD_DonTXL));
                     dtDCBD.TableName = "DCBD";
                     ds.Tables.Add(dtDCBD);
 
@@ -79,7 +79,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                       select itemCTDCBD;
 
                     DataTable dtCTDCBD = new DataTable();
-                    dtCTDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCBD);
+                    dtCTDCBD = LINQToDataTable(queryCTDCBD);
                     dtCTDCBD.TableName = "CTDCBD";
                     ds.Tables.Add(dtCTDCBD);
 
@@ -88,7 +88,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                       select itemCTDCHD;
 
                     DataTable dtCTDCHD = new DataTable();
-                    dtCTDCHD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCHD);
+                    dtCTDCHD = LINQToDataTable(queryCTDCHD);
                     dtCTDCHD.TableName = "CTDCHD";
                     ds.Tables.Add(dtCTDCHD);
 
@@ -159,8 +159,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                                LyDoChuyenDi = itemDCBD.LyDoChuyen
                                            };
                     DataTable dtDCBD = new DataTable();
-                    dtDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDCBD_DonKH.Distinct());
-                    dtDCBD.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDCBD_DonTXL.Distinct()));
+                    dtDCBD = LINQToDataTable(queryDCBD_DonKH.Distinct());
+                    dtDCBD.Merge(LINQToDataTable(queryDCBD_DonTXL.Distinct()));
                     dtDCBD.TableName = "DCBD";
                     ds.Tables.Add(dtDCBD);
 
@@ -170,7 +170,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                       select itemCTDCBD;
 
                     DataTable dtCTDCBD = new DataTable();
-                    dtCTDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCBD);
+                    dtCTDCBD = LINQToDataTable(queryCTDCBD);
                     dtCTDCBD.TableName = "CTDCBD";
                     ds.Tables.Add(dtCTDCBD);
 
@@ -180,7 +180,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                       select itemCTDCHD;
 
                     DataTable dtCTDCHD = new DataTable();
-                    dtCTDCHD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCHD);
+                    dtCTDCHD = LINQToDataTable(queryCTDCHD);
                     dtCTDCHD.TableName = "CTDCHD";
                     ds.Tables.Add(dtCTDCHD);
 
@@ -255,8 +255,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                                LyDoChuyenDi = itemDCBD.LyDoChuyen
                                            };
                     DataTable dtDCBD = new DataTable();
-                    dtDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDCBD_DonKH);
-                    dtDCBD.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDCBD_DonTXL));
+                    dtDCBD = LINQToDataTable(queryDCBD_DonKH);
+                    dtDCBD.Merge(LINQToDataTable(queryDCBD_DonTXL));
                     dtDCBD.TableName = "DCBD";
                     ds.Tables.Add(dtDCBD);
 
@@ -266,7 +266,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                       select itemCTDCBD;
 
                     DataTable dtCTDCBD = new DataTable();
-                    dtCTDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCBD);
+                    dtCTDCBD = LINQToDataTable(queryCTDCBD);
                     dtCTDCBD.TableName = "CTDCBD";
                     ds.Tables.Add(dtCTDCBD);
 
@@ -276,7 +276,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                       select itemCTDCHD;
 
                     DataTable dtCTDCHD = new DataTable();
-                    dtCTDCHD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCHD);
+                    dtCTDCHD = LINQToDataTable(queryCTDCHD);
                     dtCTDCHD.TableName = "CTDCHD";
                     ds.Tables.Add(dtCTDCHD);
 
@@ -351,8 +351,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                                LyDoChuyenDi = itemDCBD.LyDoChuyen
                                            };
                     DataTable dtDCBD = new DataTable();
-                    dtDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDCBD_DonKH.Distinct());
-                    dtDCBD.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDCBD_DonTXL.Distinct()));
+                    dtDCBD = LINQToDataTable(queryDCBD_DonKH.Distinct());
+                    dtDCBD.Merge(LINQToDataTable(queryDCBD_DonTXL.Distinct()));
                     dtDCBD.TableName = "DCBD";
                     ds.Tables.Add(dtDCBD);
 
@@ -362,7 +362,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                       select itemCTDCBD;
 
                     DataTable dtCTDCBD = new DataTable();
-                    dtCTDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCBD);
+                    dtCTDCBD = LINQToDataTable(queryCTDCBD);
                     dtCTDCBD.TableName = "CTDCBD";
                     ds.Tables.Add(dtCTDCBD);
 
@@ -372,7 +372,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                       select itemCTDCHD;
 
                     DataTable dtCTDCHD = new DataTable();
-                    dtCTDCHD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCHD);
+                    dtCTDCHD = LINQToDataTable(queryCTDCHD);
                     dtCTDCHD.TableName = "CTDCHD";
                     ds.Tables.Add(dtCTDCHD);
 
@@ -447,8 +447,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                                LyDoChuyenDi = itemDCBD.LyDoChuyen
                                            };
                     DataTable dtDCBD = new DataTable();
-                    dtDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDCBD_DonKH.Distinct());
-                    dtDCBD.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDCBD_DonTXL.Distinct()));
+                    dtDCBD = LINQToDataTable(queryDCBD_DonKH.Distinct());
+                    dtDCBD.Merge(LINQToDataTable(queryDCBD_DonTXL.Distinct()));
                     dtDCBD.TableName = "DCBD";
                     ds.Tables.Add(dtDCBD);
 
@@ -458,7 +458,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                       select itemCTDCBD;
 
                     DataTable dtCTDCBD = new DataTable();
-                    dtCTDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCBD);
+                    dtCTDCBD = LINQToDataTable(queryCTDCBD);
                     dtCTDCBD.TableName = "CTDCBD";
                     ds.Tables.Add(dtCTDCBD);
 
@@ -468,7 +468,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                       select itemCTDCHD;
 
                     DataTable dtCTDCHD = new DataTable();
-                    dtCTDCHD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCHD);
+                    dtCTDCHD = LINQToDataTable(queryCTDCHD);
                     dtCTDCHD.TableName = "CTDCHD";
                     ds.Tables.Add(dtCTDCHD);
 
@@ -543,8 +543,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                                LyDoChuyenDi = itemDCBD.LyDoChuyen
                                            };
                     DataTable dtDCBD = new DataTable();
-                    dtDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDCBD_DonKH);
-                    dtDCBD.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDCBD_DonTXL));
+                    dtDCBD = LINQToDataTable(queryDCBD_DonKH);
+                    dtDCBD.Merge(LINQToDataTable(queryDCBD_DonTXL));
                     dtDCBD.TableName = "DCBD";
                     ds.Tables.Add(dtDCBD);
 
@@ -554,7 +554,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                       select itemCTDCBD;
 
                     DataTable dtCTDCBD = new DataTable();
-                    dtCTDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCBD);
+                    dtCTDCBD = LINQToDataTable(queryCTDCBD);
                     dtCTDCBD.TableName = "CTDCBD";
                     ds.Tables.Add(dtCTDCBD);
 
@@ -564,7 +564,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                       select itemCTDCHD;
 
                     DataTable dtCTDCHD = new DataTable();
-                    dtCTDCHD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCHD);
+                    dtCTDCHD = LINQToDataTable(queryCTDCHD);
                     dtCTDCHD.TableName = "CTDCHD";
                     ds.Tables.Add(dtCTDCHD);
 
@@ -631,11 +631,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                         LyDoChuyenDi = ""
                                     };
                     //if (queryKTXM.Count() > 0)
-                    //    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonKH.Union(queryKTXM));
+                    //    return LINQToDataTable(queryDonKH.Union(queryKTXM));
                     //else
-                    //    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonKH);
-                    DataTable tableDonKH = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonKH);
-                    DataTable tableKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKTXM);
+                    //    return LINQToDataTable(queryDonKH);
+                    DataTable tableDonKH = LINQToDataTable(queryDonKH);
+                    DataTable tableKTXM = LINQToDataTable(queryKTXM);
                     tableDonKH.Merge(tableKTXM);
                     return tableDonKH;
             }
@@ -807,8 +807,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                           itemCTDCHD.CreateDate,
                                           itemCTDCHD.DCBD.MaDon,
                                       };
-                    DataTable tableCTDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCBD);
-                    DataTable tableCTDCHD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCHD);
+                    DataTable tableCTDCBD = LINQToDataTable(queryCTDCBD);
+                    DataTable tableCTDCHD = LINQToDataTable(queryCTDCHD);
                     tableCTDCBD.Merge(tableCTDCHD);
                     if (tableCTDCBD.Rows.Count > 0)
                         tableCTDCBD.DefaultView.Sort = "CreateDate DESC";
@@ -1015,7 +1015,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.NguoiKy,
                                     itemCTDCBD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1053,7 +1053,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.NguoiKy,
                                     itemCTDCBD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1091,7 +1091,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.NguoiKy,
                                     itemCTDCBD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1132,7 +1132,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.NguoiKy,
                                     itemCTDCBD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1173,7 +1173,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.NguoiKy,
                                     itemCTDCBD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1212,7 +1212,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.NguoiKy,
                                     itemCTDCBD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1251,7 +1251,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.NguoiKy,
                                     itemCTDCBD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1291,7 +1291,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.NguoiKy,
                                     itemCTDCBD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1331,7 +1331,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.NguoiKy,
                                     itemCTDCBD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1369,7 +1369,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.NguoiKy,
                                     itemCTDCBD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1407,7 +1407,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.NguoiKy,
                                     itemCTDCBD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1445,7 +1445,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.NguoiKy,
                                     itemCTDCBD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1483,7 +1483,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.NguoiKy,
                                     itemCTDCBD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1521,7 +1521,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.NguoiKy,
                                     itemCTDCBD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1559,7 +1559,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.NguoiKy,
                                     itemCTDCBD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1606,7 +1606,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.NguoiKy,
                                     itemCTDCBD.HieuLucKy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1654,7 +1654,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.NguoiKy,
                                     itemCTDCBD.HieuLucKy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1680,7 +1680,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemTTKH.Quan,
                                     itemTTKH.Phuong,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1713,7 +1713,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.HieuLucKy,
                                     CreateBy = itemUser.HoTen,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1747,7 +1747,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.HieuLucKy,
                                     CreateBy = itemUser.HoTen,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -2001,7 +2001,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.NguoiKy,
                                     itemCTDCHD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -2038,7 +2038,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.NguoiKy,
                                     itemCTDCHD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -2078,7 +2078,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.NguoiKy,
                                     itemCTDCHD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -2116,7 +2116,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.NguoiKy,
                                     itemCTDCHD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -2155,7 +2155,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.NguoiKy,
                                     itemCTDCHD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -2192,7 +2192,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.NguoiKy,
                                     itemCTDCHD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -2229,7 +2229,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.NguoiKy,
                                     itemCTDCHD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -2266,7 +2266,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.NguoiKy,
                                     itemCTDCHD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -2303,7 +2303,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.NguoiKy,
                                     itemCTDCHD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -2343,7 +2343,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.NguoiKy,
                                     itemCTDCHD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -2381,7 +2381,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.NguoiKy,
                                     itemCTDCHD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -2420,7 +2420,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.NguoiKy,
                                     itemCTDCHD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -2457,7 +2457,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.NguoiKy,
                                     itemCTDCHD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -2494,7 +2494,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.NguoiKy,
                                     itemCTDCHD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -2531,7 +2531,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.NguoiKy,
                                     itemCTDCHD.CreateBy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -2572,7 +2572,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.PhieuDuocKy,
                                     itemCTDCHD.NguoiKy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -2613,7 +2613,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.PhieuDuocKy,
                                     itemCTDCHD.NguoiKy,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -2626,7 +2626,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(db.CTDCHDs.Where(itemCTDCHD => itemCTDCHD.DanhBo == DanhBo && itemCTDCHD.Nam == Nam && itemCTDCHD.Ky == Ky).ToList());
+                    return LINQToDataTable(db.CTDCHDs.Where(itemCTDCHD => itemCTDCHD.DanhBo == DanhBo && itemCTDCHD.Nam == Nam && itemCTDCHD.Ky == Ky).ToList());
             }
             catch (Exception ex)
             {

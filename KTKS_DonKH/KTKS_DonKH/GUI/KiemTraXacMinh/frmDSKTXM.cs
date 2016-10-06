@@ -14,7 +14,7 @@ using KTKS_DonKH.DAL.DieuChinhBienDong;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid.Views.Grid;
-using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.GUI.ToXuLy;
 using KTKS_DonKH.BaoCao.KiemTraXacMinh;
 using KTKS_DonKH.GUI.BaoCao;
@@ -401,33 +401,22 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                 gridControl.DataSource = _cKTXM.LoadDSKTXMDaDuyetByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", ""))).Tables["KTXM"];
                             else
                                 if (radDSKTXM.Checked)
-                                    if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
-                                    {
-                                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                                            dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByMaDonTXL(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
-                                        else
-                                            dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
-
-                                    }
-                                    else
-                                    {
+                                        //if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                        //    dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByMaDonTXL(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
+                                        //else
+                                        //    dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
                                         dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByMaDon(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
-                                    }
                             break;
                         case "Danh Bộ":
                             if (radDaDuyet.Checked)
                                 gridControl.DataSource = _cKTXM.LoadDSKTXMDaDuyetByDanhBo(txtNoiDungTimKiem.Text.Trim()).Tables["KTXM"];
                             else
                                 if (radDSKTXM.Checked)
-                                    if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
-                                        dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByDanhBo(txtNoiDungTimKiem.Text.Trim());
-                                    else
+                                        //dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByDanhBo(txtNoiDungTimKiem.Text.Trim());
                                         dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByDanhBo(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
                             break;
                         case "Số Công Văn":
-                            if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
-                                dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMBySoCongVan(txtNoiDungTimKiem.Text.Trim());
-                            else
+                                //dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMBySoCongVan(txtNoiDungTimKiem.Text.Trim());
                                 dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMBySoCongVan(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
                             break;
                     }
@@ -451,15 +440,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             gridControl.DataSource = _cKTXM.LoadDSKTXMDaDuyetByMaDons(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", ""))).Tables["KTXM"];
                         else
                             if (radDSKTXM.Checked)
-                                if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
-                                {
-                                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                                        dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByMaDonsTXL(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
-                                    else
-                                        dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByMaDons(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
-
-                                }
-                                else
+                                    //if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                    //    dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByMaDonsTXL(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
+                                    //else
+                                    //    dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByMaDons(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
                                     dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByMaDons(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
                         break;
                 }
@@ -481,9 +465,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     //string expression = String.Format("NgayKTXM >= #{0:yyyy-MM-dd} 00:00:00# and NgayKTXM <= #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
                     //DSDon_BS.Filter = expression;
                     _tuNgay = dateTimKiem.Value.ToString("dd/MM/yyyy");
-                    if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
-                        dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByDate(dateTimKiem.Value);
-                    else
+                        //dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByDate(dateTimKiem.Value);
                         dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByDate(CTaiKhoan.MaUser, dateTimKiem.Value);
                 }
         }
@@ -655,10 +637,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     dr["DiaChi"] = itemRow["DiaChi"];
                     dr["NoiDungKiemTra"] = itemRow["NoiDungKiemTra"];
                     dr["NguoiLap"] = itemRow["CreateBy"];
-                    if (_cTaiKhoan.getUserbyID(int.Parse(itemRow["MaU"].ToString())).ToKH)
+                    if (_cTaiKhoan.GetByID(int.Parse(itemRow["MaU"].ToString())).ToKH)
                         dr["To"] = "TKH";
                     else
-                        if (_cTaiKhoan.getUserbyID(int.Parse(itemRow["MaU"].ToString())).ToXuLy)
+                        if (_cTaiKhoan.GetByID(int.Parse(itemRow["MaU"].ToString())).ToXuLy)
                             dr["To"] = "TXL";
 
                     dsBaoCao.Tables["DSKTXM"].Rows.Add(dr);
@@ -689,9 +671,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     //DSDon_BS.Filter = expression;
                     _tuNgay = dateTu.Value.ToString("dd/MM/yyyy");
                     _denNgay = "";
-                    if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
-                        dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByDate(dateTu.Value);
-                    else
+                        //dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByDate(dateTu.Value);
                         dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByDate(CTaiKhoan.MaUser, dateTu.Value);
                 }
         }
@@ -711,9 +691,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     //string expression = String.Format("NgayKTXM >= #{0:yyyy-MM-dd} 00:00:00# and NgayKTXM <= #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
                     //DSDon_BS.Filter = expression;
                     _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
-                    if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
-                        dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByDates(dateTu.Value, dateDen.Value);
-                    else
+                        //dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByDates(dateTu.Value, dateDen.Value);
                         dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByDates(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
                 }
         }
@@ -747,10 +725,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             dr["DiaChi"] = itemRow["DiaChi"];
                             dr["NoiDungKiemTra"] = itemRow["NoiDungKiemTra"];
                             dr["NguoiLap"] = itemRow["CreateBy"];
-                            if (_cTaiKhoan.getUserbyID(int.Parse(itemRow["MaU"].ToString())).ToKH)
+                            if (_cTaiKhoan.GetByID(int.Parse(itemRow["MaU"].ToString())).ToKH)
                                 dr["To"] = "TKH";
                             else
-                                if (_cTaiKhoan.getUserbyID(int.Parse(itemRow["MaU"].ToString())).ToXuLy)
+                                if (_cTaiKhoan.GetByID(int.Parse(itemRow["MaU"].ToString())).ToXuLy)
                                     dr["To"] = "TXL";
 
                             dsBaoCao.Tables["DSKTXM"].Rows.Add(dr);
@@ -779,10 +757,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                 dr["DiaChi"] = itemRow["DiaChi"];
                                 dr["NoiDungKiemTra"] = itemRow["NoiDungKiemTra"];
                                 dr["NguoiLap"] = itemRow["CreateBy"];
-                                if (_cTaiKhoan.getUserbyID(int.Parse(itemRow["MaU"].ToString())).ToKH)
+                                if (_cTaiKhoan.GetByID(int.Parse(itemRow["MaU"].ToString())).ToKH)
                                     dr["To"] = "TKH";
                                 else
-                                    if (_cTaiKhoan.getUserbyID(int.Parse(itemRow["MaU"].ToString())).ToXuLy)
+                                    if (_cTaiKhoan.GetByID(int.Parse(itemRow["MaU"].ToString())).ToXuLy)
                                         dr["To"] = "TXL";
 
                                 dsBaoCao.Tables["DSKTXM"].Rows.Add(dr);

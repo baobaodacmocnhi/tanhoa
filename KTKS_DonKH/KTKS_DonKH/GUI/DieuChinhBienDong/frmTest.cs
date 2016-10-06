@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using KTKS_DonKH.DAL.CapNhat;
+using KTKS_DonKH.DAL.DieuChinhBienDong;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -30,7 +30,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void button1_Click(object sender, EventArgs e)
         {
             //string ChiTiet = ""; ;
-            //txtKetQua.Text = _cGiaNuoc.TinhTienNuoc(txtDanhBo.Text.Trim(), int.Parse(txtGiaBieu.Text.Trim()), int.Parse(txtDinhMuc.Text.Trim()), int.Parse(txtTieuThu.Text.Trim()), out ChiTiet).ToString();
+            //txtKetQua.Text = _cGiaNuoc.TinhTienNuoc(txtDanhBo.Text.Trim(), int.Parse(txtGiaBieu.Text.Value, int.Parse(txtDinhMuc.Text.Value, int.Parse(txtTieuThu.Text.Value, out ChiTiet).ToString();
         }
 
 

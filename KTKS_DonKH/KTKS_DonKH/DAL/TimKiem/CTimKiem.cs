@@ -31,7 +31,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                      itemDon.NoiDung,
                                  };
                 DataTable dtDon = new DataTable();
-                dtDon = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon);
+                dtDon = LINQToDataTable(queryDon);
                 dtDon.TableName = "Don";
                 ds.Tables.Add(dtDon);
 
@@ -55,7 +55,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 };
 
                 DataTable dtKTXM = new DataTable();
-                dtKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKTXM);
+                dtKTXM = LINQToDataTable(queryKTXM);
                 dtKTXM.TableName = "KTXM";
                 ds.Tables.Add(dtKTXM);
 
@@ -78,7 +78,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   };
 
                 DataTable dtBamChi = new DataTable();
-                dtBamChi = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryBamChi);
+                dtBamChi = LINQToDataTable(queryBamChi);
                 dtBamChi.TableName = "BamChi";
                 ds.Tables.Add(dtBamChi);
 
@@ -100,7 +100,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     };
 
                 DataTable dtDongNuoc = new DataTable();
-                dtDongNuoc = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDongNuoc);
+                dtDongNuoc = LINQToDataTable(queryDongNuoc);
                 dtDongNuoc.TableName = "DongNuoc";
                 ds.Tables.Add(dtDongNuoc);
 
@@ -155,8 +155,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   };
 
                 DataTable dtDCBD = new DataTable();
-                dtDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCBD);
-                dtDCBD.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCHD));
+                dtDCBD = LINQToDataTable(queryCTDCBD);
+                dtDCBD.Merge(LINQToDataTable(queryCTDCHD));
                 dtDCBD.TableName = "DCBD";
                 ds.Tables.Add(dtDCBD);
 
@@ -200,8 +200,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   };
 
                 DataTable dtCHDB = new DataTable();
-                dtCHDB = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTCTDB);
-                dtCHDB.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTCHDB));
+                dtCHDB = LINQToDataTable(queryCTCTDB);
+                dtCHDB.Merge(LINQToDataTable(queryCTCHDB));
                 dtCHDB.TableName = "CHDB";
                 ds.Tables.Add(dtCHDB);
 
@@ -222,7 +222,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   };
 
                 DataTable dtYCCHDB = new DataTable();
-                dtYCCHDB = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryYCCHDB);
+                dtYCCHDB = LINQToDataTable(queryYCCHDB);
                 dtYCCHDB.TableName = "YCCHDB";
                 ds.Tables.Add(dtYCCHDB);
 
@@ -243,7 +243,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                             };
 
                 DataTable dtTTTL = new DataTable();
-                dtTTTL = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryTTTL);
+                dtTTTL = LINQToDataTable(queryTTTL);
                 dtTTTL.TableName = "TTTL";
                 ds.Tables.Add(dtTTTL);
 
@@ -299,7 +299,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    itemDonTXL.NoiDung,
                                };
                 DataTable dtDon = new DataTable();
-                dtDon = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon);
+                dtDon = LINQToDataTable(queryDon);
                 dtDon.TableName = "Don";
                 ds.Tables.Add(dtDon);
 
@@ -323,7 +323,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 };
 
                 DataTable dtKTXM = new DataTable();
-                dtKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKTXM);
+                dtKTXM = LINQToDataTable(queryKTXM);
                 dtKTXM.TableName = "KTXM";
                 ds.Tables.Add(dtKTXM);
 
@@ -346,7 +346,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 };
 
                 DataTable dtBamChi = new DataTable();
-                dtBamChi = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryBamChi);
+                dtBamChi = LINQToDataTable(queryBamChi);
                 dtBamChi.TableName = "BamChi";
                 ds.Tables.Add(dtBamChi);
 
@@ -368,7 +368,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   };
 
                 DataTable dtDongNuoc = new DataTable();
-                dtDongNuoc = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDongNuoc);
+                dtDongNuoc = LINQToDataTable(queryDongNuoc);
                 dtDongNuoc.TableName = "DongNuoc";
                 ds.Tables.Add(dtDongNuoc);
 
@@ -423,8 +423,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   };
 
                 DataTable dtDCBD = new DataTable();
-                dtDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCBD);
-                dtDCBD.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCHD));
+                dtDCBD = LINQToDataTable(queryCTDCBD);
+                dtDCBD.Merge(LINQToDataTable(queryCTDCHD));
                 dtDCBD.TableName = "DCBD";
                 ds.Tables.Add(dtDCBD);
 
@@ -468,8 +468,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   };
 
                 DataTable dtCHDB = new DataTable();
-                dtCHDB = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTCTDB);
-                dtCHDB.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTCHDB));
+                dtCHDB = LINQToDataTable(queryCTCTDB);
+                dtCHDB.Merge(LINQToDataTable(queryCTCHDB));
                 dtCHDB.TableName = "CHDB";
                 ds.Tables.Add(dtCHDB);
 
@@ -490,7 +490,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   };
 
                 DataTable dtYCCHDB = new DataTable();
-                dtYCCHDB = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryYCCHDB);
+                dtYCCHDB = LINQToDataTable(queryYCCHDB);
                 dtYCCHDB.TableName = "YCCHDB";
                 ds.Tables.Add(dtYCCHDB);
 
@@ -511,7 +511,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 };
 
                 DataTable dtTTTL = new DataTable();
-                dtTTTL = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryTTTL);
+                dtTTTL = LINQToDataTable(queryTTTL);
                 dtTTTL.TableName = "TTTL";
                 ds.Tables.Add(dtTTTL);
 
@@ -574,7 +574,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemCTKTXM.SoTien,
                                 };
                 DataTable dtKTXM = new DataTable();
-                dtKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKTXM);
+                dtKTXM = LINQToDataTable(queryKTXM);
                 dtKTXM.TableName = "KTXM";
                 ds.Tables.Add(dtKTXM);
 
@@ -599,7 +599,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   };
 
                 DataTable dtBamChi = new DataTable();
-                dtBamChi = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryBamChi);
+                dtBamChi = LINQToDataTable(queryBamChi);
                 dtBamChi.TableName = "BamChi";
                 ds.Tables.Add(dtBamChi);
 
@@ -623,7 +623,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     };
 
                 DataTable dtDongNuoc = new DataTable();
-                dtDongNuoc = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDongNuoc);
+                dtDongNuoc = LINQToDataTable(queryDongNuoc);
                 dtDongNuoc.TableName = "DongNuoc";
                 ds.Tables.Add(dtDongNuoc);
 
@@ -682,8 +682,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       CreateBy = itemUser.HoTen,
                                   };
                 DataTable dtDCBD = new DataTable();
-                dtDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCBD);
-                dtDCBD.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCHD));
+                dtDCBD = LINQToDataTable(queryCTDCBD);
+                dtDCBD.Merge(LINQToDataTable(queryCTDCHD));
                 dtDCBD.TableName = "DCBD";
                 ds.Tables.Add(dtDCBD);
 
@@ -729,8 +729,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTCHDB.NgayLapPhieu,
                                   };
                 DataTable dtCHDB = new DataTable();
-                dtCHDB = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTCTDB);
-                dtCHDB.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTCHDB));
+                dtCHDB = LINQToDataTable(queryCTCTDB);
+                dtCHDB.Merge(LINQToDataTable(queryCTCHDB));
                 dtCHDB.TableName = "CHDB";
                 ds.Tables.Add(dtCHDB);
 
@@ -753,7 +753,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   };
 
                 DataTable dtYCCHDB = new DataTable();
-                dtYCCHDB = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryYCCHDB);
+                dtYCCHDB = LINQToDataTable(queryYCCHDB);
                 dtYCCHDB.TableName = "YCCHDB";
                 ds.Tables.Add(dtYCCHDB);
 
@@ -775,7 +775,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemCTTTTL.NoiNhan,   
                                 };
                 DataTable dtTTTL = new DataTable();
-                dtTTTL = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryTTTL);
+                dtTTTL = LINQToDataTable(queryTTTL);
                 dtTTTL.TableName = "TTTL";
                 ds.Tables.Add(dtTTTL);
 
@@ -798,7 +798,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    itemDon.NoiDung,
                                };
                 DataTable dt = new DataTable();
-                dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon);
+                dt = LINQToDataTable(queryDon);
 
                 ///Table DonKH 1
                 var queryDon1 = from itemDon in db.DonKHs
@@ -818,7 +818,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    itemDon.DinhMuc,
                                    itemDon.NoiDung,
                                };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon1));
+                dt.Merge(LINQToDataTable(queryDon1));
 
                 ///Table DonKH 2
                 var queryDon2 = from itemDon in db.DonKHs
@@ -837,7 +837,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemDon.DinhMuc,
                                     itemDon.NoiDung,
                                 };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon2));
+                dt.Merge(LINQToDataTable(queryDon2));
 
                 ///Table DonKH 3
                 var queryDon3 = from itemDon in db.DonKHs
@@ -856,7 +856,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemDon.DinhMuc,
                                     itemDon.NoiDung,
                                 };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon3));
+                dt.Merge(LINQToDataTable(queryDon3));
 
                 ///Table DonKH 4
                 var queryDon4 = from itemDon in db.DonKHs
@@ -875,7 +875,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemDon.DinhMuc,
                                     itemDon.NoiDung,
                                 };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon4));
+                dt.Merge(LINQToDataTable(queryDon4));
 
                 ///Table DonKH 5
                 var queryDon5 = from itemDon in db.DonKHs
@@ -894,7 +894,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemDon.DinhMuc,
                                     itemDon.NoiDung,
                                 };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon5));
+                dt.Merge(LINQToDataTable(queryDon5));
 
                 ///Table DonKH 6
                 var queryDon6 = from itemDon in db.DonKHs
@@ -913,7 +913,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemDon.DinhMuc,
                                     itemDon.NoiDung,
                                 };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon6));
+                dt.Merge(LINQToDataTable(queryDon6));
 
                 ///Table DonKH 9
                 var queryDon9 = from itemDon in db.DonKHs
@@ -932,7 +932,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemDon.DinhMuc,
                                     itemDon.NoiDung,
                                 };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon9));
+                dt.Merge(LINQToDataTable(queryDon9));
 
                 ///Table DonKH 7
                 var queryDon7 = from itemDon in db.DonKHs
@@ -951,7 +951,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemDon.DinhMuc,
                                     itemDon.NoiDung,
                                 };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon7));
+                dt.Merge(LINQToDataTable(queryDon7));
 
                 ///Table DonKH 8
                 var queryDon8 = from itemDon in db.DonKHs
@@ -970,7 +970,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemDon.DinhMuc,
                                     itemDon.NoiDung,
                                 };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon8));
+                dt.Merge(LINQToDataTable(queryDon8));
                 #endregion
 
                 #region DonTXL
@@ -991,7 +991,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemDonTXL.DinhMuc,
                                       itemDonTXL.NoiDung,
                                   };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL));
+                dt.Merge(LINQToDataTable(queryDonTXL));
 
                 ///Table DonTXL 1
                 var queryDonTXL1 = from itemDonTXL in db.DonTXLs
@@ -1011,7 +1011,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemDonTXL.DinhMuc,
                                       itemDonTXL.NoiDung,
                                   };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL1));
+                dt.Merge(LINQToDataTable(queryDonTXL1));
 
                 ///Table DonTXL 2
                 var queryDonTXL2 = from itemDonTXL in db.DonTXLs
@@ -1031,7 +1031,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemDonTXL.DinhMuc,
                                        itemDonTXL.NoiDung,
                                    };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL2));
+                dt.Merge(LINQToDataTable(queryDonTXL2));
 
                 ///Table DonTXL 3
                 var queryDonTXL3 = from itemDonTXL in db.DonTXLs
@@ -1051,7 +1051,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemDonTXL.DinhMuc,
                                        itemDonTXL.NoiDung,
                                    };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL3));
+                dt.Merge(LINQToDataTable(queryDonTXL3));
 
                 ///Table DonTXL 4
                 var queryDonTXL4 = from itemDonTXL in db.DonTXLs
@@ -1071,7 +1071,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemDonTXL.DinhMuc,
                                        itemDonTXL.NoiDung,
                                    };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL4));
+                dt.Merge(LINQToDataTable(queryDonTXL4));
 
                 ///Table DonTXL 5
                 var queryDonTXL5 = from itemDonTXL in db.DonTXLs
@@ -1091,7 +1091,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemDonTXL.DinhMuc,
                                       itemDonTXL.NoiDung,
                                   };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL5));
+                dt.Merge(LINQToDataTable(queryDonTXL5));
 
                 ///Table DonTXL 6
                 var queryDonTXL6 = from itemDonTXL in db.DonTXLs
@@ -1111,7 +1111,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemDonTXL.DinhMuc,
                                        itemDonTXL.NoiDung,
                                    };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL6));
+                dt.Merge(LINQToDataTable(queryDonTXL6));
 
                 ///Table DonKH 9
                 var queryDonTXL9 = from itemDonTXL in db.DonTXLs
@@ -1131,7 +1131,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemDonTXL.DinhMuc,
                                        itemDonTXL.NoiDung,
                                    };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL9));
+                dt.Merge(LINQToDataTable(queryDonTXL9));
 
                 ///Table DonTXL 7
                 var queryDonTXL7 = from itemDonTXL in db.DonTXLs
@@ -1151,7 +1151,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemDonTXL.DinhMuc,
                                        itemDonTXL.NoiDung,
                                    };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL7));
+                dt.Merge(LINQToDataTable(queryDonTXL7));
 
                 ///Table DonTXL 8
                 var queryDonTXL8 = from itemDonTXL in db.DonTXLs
@@ -1171,7 +1171,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemDonTXL.DinhMuc,
                                        itemDonTXL.NoiDung,
                                    };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL8));
+                dt.Merge(LINQToDataTable(queryDonTXL8));
 
                 #endregion
 
@@ -1274,7 +1274,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemCTKTXM.SoTien,
                                 };
                 DataTable dtKTXM = new DataTable();
-                dtKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKTXM);
+                dtKTXM = LINQToDataTable(queryKTXM);
                 dtKTXM.TableName = "KTXM";
                 ds.Tables.Add(dtKTXM);
 
@@ -1299,7 +1299,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   };
 
                 DataTable dtBamChi = new DataTable();
-                dtBamChi = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryBamChi);
+                dtBamChi = LINQToDataTable(queryBamChi);
                 dtBamChi.TableName = "BamChi";
                 ds.Tables.Add(dtBamChi);
 
@@ -1323,7 +1323,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   };
 
                 DataTable dtDongNuoc = new DataTable();
-                dtDongNuoc = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDongNuoc);
+                dtDongNuoc = LINQToDataTable(queryDongNuoc);
                 dtDongNuoc.TableName = "DongNuoc";
                 ds.Tables.Add(dtDongNuoc);
 
@@ -1382,8 +1382,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       CreateBy = itemUser.HoTen,
                                   };
                 DataTable dtDCBD = new DataTable();
-                dtDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCBD);
-                dtDCBD.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCHD));
+                dtDCBD = LINQToDataTable(queryCTDCBD);
+                dtDCBD.Merge(LINQToDataTable(queryCTDCHD));
                 dtDCBD.TableName = "DCBD";
                 ds.Tables.Add(dtDCBD);
 
@@ -1429,8 +1429,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTCHDB.NgayLapPhieu,
                                   };
                 DataTable dtCHDB = new DataTable();
-                dtCHDB = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTCTDB);
-                dtCHDB.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTCHDB));
+                dtCHDB = LINQToDataTable(queryCTCTDB);
+                dtCHDB.Merge(LINQToDataTable(queryCTCHDB));
                 dtCHDB.TableName = "CHDB";
                 ds.Tables.Add(dtCHDB);
 
@@ -1453,7 +1453,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   };
 
                 DataTable dtYCCHDB = new DataTable();
-                dtYCCHDB = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryYCCHDB);
+                dtYCCHDB = LINQToDataTable(queryYCCHDB);
                 dtYCCHDB.TableName = "YCCHDB";
                 ds.Tables.Add(dtYCCHDB);
 
@@ -1475,7 +1475,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemCTTTTL.NoiNhan,
                                 };
                 DataTable dtTTTL = new DataTable();
-                dtTTTL = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryTTTL);
+                dtTTTL = LINQToDataTable(queryTTTL);
                 dtTTTL.TableName = "TTTL";
                 ds.Tables.Add(dtTTTL);
 
@@ -1498,7 +1498,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    itemDon.NoiDung,
                                };
                 DataTable dt = new DataTable();
-                dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon);
+                dt = LINQToDataTable(queryDon);
 
                 ///Table DonKH 1
                 var queryDon1 = from itemDon in db.DonKHs
@@ -1519,7 +1519,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    itemDon.NoiDung,
                                };
                 //DataTable dt = new DataTable();
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon1));
+                dt.Merge(LINQToDataTable(queryDon1));
 
                 ///Table DonKH 2
                 var queryDon2 = from itemDon in db.DonKHs
@@ -1538,7 +1538,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemDon.DinhMuc,
                                     itemDon.NoiDung,
                                 };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon2));
+                dt.Merge(LINQToDataTable(queryDon2));
 
                 ///Table DonKH 3
                 var queryDon3 = from itemDon in db.DonKHs
@@ -1557,7 +1557,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemDon.DinhMuc,
                                     itemDon.NoiDung,
                                 };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon3));
+                dt.Merge(LINQToDataTable(queryDon3));
 
                 ///Table DonKH 4
                 var queryDon4 = from itemDon in db.DonKHs
@@ -1576,7 +1576,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemDon.DinhMuc,
                                     itemDon.NoiDung,
                                 };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon4));
+                dt.Merge(LINQToDataTable(queryDon4));
 
                 ///Table DonKH 5
                 var queryDon5 = from itemDon in db.DonKHs
@@ -1595,7 +1595,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemDon.DinhMuc,
                                     itemDon.NoiDung,
                                 };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon5));
+                dt.Merge(LINQToDataTable(queryDon5));
 
                 ///Table DonKH 6
                 var queryDon6 = from itemDon in db.DonKHs
@@ -1614,7 +1614,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemDon.DinhMuc,
                                     itemDon.NoiDung,
                                 };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon6));
+                dt.Merge(LINQToDataTable(queryDon6));
 
                 ///Table DonKH 9
                 var queryDon9 = from itemDon in db.DonKHs
@@ -1633,7 +1633,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemDon.DinhMuc,
                                     itemDon.NoiDung,
                                 };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon9));
+                dt.Merge(LINQToDataTable(queryDon9));
 
                 ///Table DonKH 7
                 var queryDon7 = from itemDon in db.DonKHs
@@ -1652,7 +1652,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemDon.DinhMuc,
                                     itemDon.NoiDung,
                                 };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon7));
+                dt.Merge(LINQToDataTable(queryDon7));
 
                 ///Table DonKH 8
                 var queryDon8 = from itemDon in db.DonKHs
@@ -1671,7 +1671,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemDon.DinhMuc,
                                     itemDon.NoiDung,
                                 };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon8));
+                dt.Merge(LINQToDataTable(queryDon8));
                 #endregion
 
                 #region DonTXL
@@ -1692,7 +1692,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemDonTXL.DinhMuc,
                                       itemDonTXL.NoiDung,
                                   };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL));
+                dt.Merge(LINQToDataTable(queryDonTXL));
 
                 ///Table DonTXL 1
                 var queryDonTXL1 = from itemDonTXL in db.DonTXLs
@@ -1712,7 +1712,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemDonTXL.DinhMuc,
                                       itemDonTXL.NoiDung,
                                   };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL1));
+                dt.Merge(LINQToDataTable(queryDonTXL1));
 
                 ///Table DonTXL 2
                 var queryDonTXL2 = from itemDonTXL in db.DonTXLs
@@ -1732,7 +1732,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemDonTXL.DinhMuc,
                                        itemDonTXL.NoiDung,
                                    };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL2));
+                dt.Merge(LINQToDataTable(queryDonTXL2));
 
                 ///Table DonTXL 3
                 var queryDonTXL3 = from itemDonTXL in db.DonTXLs
@@ -1752,7 +1752,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemDonTXL.DinhMuc,
                                       itemDonTXL.NoiDung,
                                   };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL3));
+                dt.Merge(LINQToDataTable(queryDonTXL3));
 
                 ///Table DonTXL 4
                 var queryDonTXL4 = from itemDonTXL in db.DonTXLs
@@ -1772,7 +1772,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemDonTXL.DinhMuc,
                                       itemDonTXL.NoiDung,
                                   };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL4));
+                dt.Merge(LINQToDataTable(queryDonTXL4));
 
                 ///Table DonTXL 5
                 var queryDonTXL5 = from itemDonTXL in db.DonTXLs
@@ -1792,7 +1792,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemDonTXL.DinhMuc,
                                        itemDonTXL.NoiDung,
                                    };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL5));
+                dt.Merge(LINQToDataTable(queryDonTXL5));
 
                 ///Table DonTXL 6
                 var queryDonTXL6 = from itemDonTXL in db.DonTXLs
@@ -1812,7 +1812,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemDonTXL.DinhMuc,
                                        itemDonTXL.NoiDung,
                                    };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL6));
+                dt.Merge(LINQToDataTable(queryDonTXL6));
 
                 ///Table DonKH 9
                 var queryDonTXL9 = from itemDonTXL in db.DonTXLs
@@ -1832,7 +1832,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemDonTXL.DinhMuc,
                                        itemDonTXL.NoiDung,
                                    };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL9));
+                dt.Merge(LINQToDataTable(queryDonTXL9));
 
                 ///Table DonTXL 7
                 var queryDonTXL7 = from itemDonTXL in db.DonTXLs
@@ -1852,7 +1852,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemDonTXL.DinhMuc,
                                        itemDonTXL.NoiDung,
                                    };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL7));
+                dt.Merge(LINQToDataTable(queryDonTXL7));
 
                 ///Table DonTXL 8
                 var queryDonTXL8 = from itemDonTXL in db.DonTXLs
@@ -1872,7 +1872,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemDonTXL.DinhMuc,
                                        itemDonTXL.NoiDung,
                                    };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL8));
+                dt.Merge(LINQToDataTable(queryDonTXL8));
 
                 #endregion
 
@@ -1975,7 +1975,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemCTKTXM.SoTien,
                                 };
                 DataTable dtKTXM = new DataTable();
-                dtKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKTXM);
+                dtKTXM = LINQToDataTable(queryKTXM);
                 dtKTXM.TableName = "KTXM";
                 ds.Tables.Add(dtKTXM);
 
@@ -2000,7 +2000,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   };
 
                 DataTable dtBamChi = new DataTable();
-                dtBamChi = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryBamChi);
+                dtBamChi = LINQToDataTable(queryBamChi);
                 dtBamChi.TableName = "BamChi";
                 ds.Tables.Add(dtBamChi);
 
@@ -2024,7 +2024,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   };
 
                 DataTable dtDongNuoc = new DataTable();
-                dtDongNuoc = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDongNuoc);
+                dtDongNuoc = LINQToDataTable(queryDongNuoc);
                 dtDongNuoc.TableName = "DongNuoc";
                 ds.Tables.Add(dtDongNuoc);
 
@@ -2083,8 +2083,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       CreateBy=itemUser.HoTen,
                                   };
                 DataTable dtDCBD = new DataTable();
-                dtDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCBD);
-                dtDCBD.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCHD));
+                dtDCBD = LINQToDataTable(queryCTDCBD);
+                dtDCBD.Merge(LINQToDataTable(queryCTDCHD));
                 dtDCBD.TableName = "DCBD";
                 ds.Tables.Add(dtDCBD);
 
@@ -2130,8 +2130,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTCHDB.NgayLapPhieu,
                                   };
                 DataTable dtCHDB = new DataTable();
-                dtCHDB = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTCTDB);
-                dtCHDB.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTCHDB));
+                dtCHDB = LINQToDataTable(queryCTCTDB);
+                dtCHDB.Merge(LINQToDataTable(queryCTCHDB));
                 dtCHDB.TableName = "CHDB";
                 ds.Tables.Add(dtCHDB);
 
@@ -2154,7 +2154,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   };
 
                 DataTable dtYCCHDB = new DataTable();
-                dtYCCHDB = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryYCCHDB);
+                dtYCCHDB = LINQToDataTable(queryYCCHDB);
                 dtYCCHDB.TableName = "YCCHDB";
                 ds.Tables.Add(dtYCCHDB);
 
@@ -2176,7 +2176,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemCTTTTL.NoiNhan,
                                 };
                 DataTable dtTTTL = new DataTable();
-                dtTTTL = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryTTTL);
+                dtTTTL = LINQToDataTable(queryTTTL);
                 dtTTTL.TableName = "TTTL";
                 ds.Tables.Add(dtTTTL);
 
@@ -2199,7 +2199,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    itemDon.NoiDung,
                                };
                 DataTable dt = new DataTable();
-                dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon);
+                dt = LINQToDataTable(queryDon);
 
                 ///Table DonKH 1
                 var queryDon1 = from itemDon in db.DonKHs
@@ -2220,7 +2220,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    itemDon.NoiDung,
                                };
                 //DataTable dt = new DataTable();
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon1));
+                dt.Merge(LINQToDataTable(queryDon1));
 
                 ///Table DonKH 2
                 var queryDon2 = from itemDon in db.DonKHs
@@ -2239,7 +2239,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemDon.DinhMuc,
                                     itemDon.NoiDung,
                                 };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon2));
+                dt.Merge(LINQToDataTable(queryDon2));
 
                 ///Table DonKH 3
                 var queryDon3 = from itemDon in db.DonKHs
@@ -2258,7 +2258,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemDon.DinhMuc,
                                     itemDon.NoiDung,
                                 };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon3));
+                dt.Merge(LINQToDataTable(queryDon3));
 
                 ///Table DonKH 4
                 var queryDon4 = from itemDon in db.DonKHs
@@ -2277,7 +2277,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemDon.DinhMuc,
                                     itemDon.NoiDung,
                                 };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon4));
+                dt.Merge(LINQToDataTable(queryDon4));
 
                 ///Table DonKH 5
                 var queryDon5 = from itemDon in db.DonKHs
@@ -2296,7 +2296,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemDon.DinhMuc,
                                     itemDon.NoiDung,
                                 };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon5));
+                dt.Merge(LINQToDataTable(queryDon5));
 
                 ///Table DonKH 6
                 var queryDon6 = from itemDon in db.DonKHs
@@ -2315,7 +2315,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemDon.DinhMuc,
                                     itemDon.NoiDung,
                                 };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon6));
+                dt.Merge(LINQToDataTable(queryDon6));
 
                 ///Table DonKH 9
                 var queryDon9 = from itemDon in db.DonKHs
@@ -2334,7 +2334,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemDon.DinhMuc,
                                     itemDon.NoiDung,
                                 };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon9));
+                dt.Merge(LINQToDataTable(queryDon9));
 
                 ///Table DonKH 7
                 var queryDon7 = from itemDon in db.DonKHs
@@ -2353,7 +2353,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemDon.DinhMuc,
                                     itemDon.NoiDung,
                                 };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon7));
+                dt.Merge(LINQToDataTable(queryDon7));
 
                 ///Table DonKH 8
                 var queryDon8= from itemDon in db.DonKHs
@@ -2372,7 +2372,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemDon.DinhMuc,
                                     itemDon.NoiDung,
                                 };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon8));
+                dt.Merge(LINQToDataTable(queryDon8));
                 #endregion
 
                 #region DonTXL
@@ -2393,7 +2393,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemDonTXL.DinhMuc,
                                       itemDonTXL.NoiDung,
                                   };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL));
+                dt.Merge(LINQToDataTable(queryDonTXL));
 
                 ///Table DonTXL 1
                 var queryDonTXL1 = from itemDonTXL in db.DonTXLs
@@ -2413,7 +2413,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemDonTXL.DinhMuc,
                                       itemDonTXL.NoiDung,
                                   };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL1));
+                dt.Merge(LINQToDataTable(queryDonTXL1));
 
                 ///Table DonTXL 2
                 var queryDonTXL2 = from itemDonTXL in db.DonTXLs
@@ -2433,7 +2433,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemDonTXL.DinhMuc,
                                        itemDonTXL.NoiDung,
                                    };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL2));
+                dt.Merge(LINQToDataTable(queryDonTXL2));
 
                 ///Table DonTXL 3
                 var queryDonTXL3 = from itemDonTXL in db.DonTXLs
@@ -2453,7 +2453,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemDonTXL.DinhMuc,
                                       itemDonTXL.NoiDung,
                                   };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL3));
+                dt.Merge(LINQToDataTable(queryDonTXL3));
 
                 ///Table DonTXL 4
                 var queryDonTXL4 = from itemDonTXL in db.DonTXLs
@@ -2473,7 +2473,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemDonTXL.DinhMuc,
                                       itemDonTXL.NoiDung,
                                   };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL4));
+                dt.Merge(LINQToDataTable(queryDonTXL4));
 
                 ///Table DonTXL 5
                 var queryDonTXL5 = from itemDonTXL in db.DonTXLs
@@ -2493,7 +2493,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemDonTXL.DinhMuc,
                                        itemDonTXL.NoiDung,
                                    };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL5));
+                dt.Merge(LINQToDataTable(queryDonTXL5));
 
                 ///Table DonTXL 6
                 var queryDonTXL6 = from itemDonTXL in db.DonTXLs
@@ -2513,7 +2513,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemDonTXL.DinhMuc,
                                        itemDonTXL.NoiDung,
                                    };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL6));
+                dt.Merge(LINQToDataTable(queryDonTXL6));
 
                 ///Table DonKH 9
                 var queryDonTXL9 = from itemDonTXL in db.DonTXLs
@@ -2533,7 +2533,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemDonTXL.DinhMuc,
                                        itemDonTXL.NoiDung,
                                    };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL9));
+                dt.Merge(LINQToDataTable(queryDonTXL9));
 
                 ///Table DonTXL 7
                 var queryDonTXL7 = from itemDonTXL in db.DonTXLs
@@ -2553,7 +2553,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemDonTXL.DinhMuc,
                                        itemDonTXL.NoiDung,
                                    };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL7));
+                dt.Merge(LINQToDataTable(queryDonTXL7));
 
                 ///Table DonTXL 8
                 var queryDonTXL8 = from itemDonTXL in db.DonTXLs
@@ -2573,7 +2573,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemDonTXL.DinhMuc,
                                        itemDonTXL.NoiDung,
                                    };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL8));
+                dt.Merge(LINQToDataTable(queryDonTXL8));
                 #endregion
 
                 DataTable dtDon = new DataTable();

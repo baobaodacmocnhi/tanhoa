@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
-using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.DAL.QuanTri;
 using System.Windows.Forms;
 using KTKS_DonKH.LinQ;
 
@@ -224,8 +224,8 @@ namespace KTKS_DonKH.DAL.BamChi
                                          };
 
                 DataTable dtBamChi = new DataTable();
-                dtBamChi = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryBamChi_DonKH);
-                dtBamChi.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryBamChi_DonTXL));
+                dtBamChi = LINQToDataTable(queryBamChi_DonKH);
+                dtBamChi.Merge(LINQToDataTable(queryBamChi_DonTXL));
                 dtBamChi.TableName = "BamChi";
                 ds.Tables.Add(dtBamChi);
 
@@ -244,7 +244,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                     };
 
                 DataTable dtCTBamChi = new DataTable();
-                dtCTBamChi = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTBamChi);
+                dtCTBamChi = LINQToDataTable(queryCTBamChi);
                 dtCTBamChi.TableName = "CTBamChi";
                 ds.Tables.Add(dtCTBamChi);
 
@@ -312,8 +312,8 @@ namespace KTKS_DonKH.DAL.BamChi
                                          };
 
                 DataTable dtBamChi = new DataTable();
-                dtBamChi = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryBamChi_DonKH.Distinct());
-                dtBamChi.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryBamChi_DonTXL.Distinct()));
+                dtBamChi = LINQToDataTable(queryBamChi_DonKH.Distinct());
+                dtBamChi.Merge(LINQToDataTable(queryBamChi_DonTXL.Distinct()));
                 dtBamChi.TableName = "BamChi";
                 ds.Tables.Add(dtBamChi);
 
@@ -333,7 +333,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                     };
 
                 DataTable dtCTBamChi = new DataTable();
-                dtCTBamChi = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTBamChi);
+                dtCTBamChi = LINQToDataTable(queryCTBamChi);
                 dtCTBamChi.TableName = "CTBamChi";
                 ds.Tables.Add(dtCTBamChi);
 
@@ -403,8 +403,8 @@ namespace KTKS_DonKH.DAL.BamChi
                                          };
 
                 DataTable dtBamChi = new DataTable();
-                dtBamChi = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryBamChi_DonKH.Distinct());
-                dtBamChi.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryBamChi_DonTXL.Distinct()));
+                dtBamChi = LINQToDataTable(queryBamChi_DonKH.Distinct());
+                dtBamChi.Merge(LINQToDataTable(queryBamChi_DonTXL.Distinct()));
                 dtBamChi.TableName = "BamChi";
                 ds.Tables.Add(dtBamChi);
 
@@ -424,7 +424,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                     };
 
                 DataTable dtCTBamChi = new DataTable();
-                dtCTBamChi = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTBamChi);
+                dtCTBamChi = LINQToDataTable(queryCTBamChi);
                 dtCTBamChi.TableName = "CTBamChi";
                 ds.Tables.Add(dtCTBamChi);
 
@@ -494,8 +494,8 @@ namespace KTKS_DonKH.DAL.BamChi
                                          };
 
                 DataTable dtBamChi = new DataTable();
-                dtBamChi = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryBamChi_DonKH.Distinct());
-                dtBamChi.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryBamChi_DonTXL.Distinct()));
+                dtBamChi = LINQToDataTable(queryBamChi_DonKH.Distinct());
+                dtBamChi.Merge(LINQToDataTable(queryBamChi_DonTXL.Distinct()));
                 dtBamChi.TableName = "BamChi";
                 ds.Tables.Add(dtBamChi);
 
@@ -515,7 +515,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                     };
 
                 DataTable dtCTBamChi = new DataTable();
-                dtCTBamChi = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTBamChi);
+                dtCTBamChi = LINQToDataTable(queryCTBamChi);
                 dtCTBamChi.TableName = "CTBamChi";
                 ds.Tables.Add(dtCTBamChi);
 
@@ -585,8 +585,8 @@ namespace KTKS_DonKH.DAL.BamChi
                                          };
 
                 DataTable dtBamChi = new DataTable();
-                dtBamChi = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryBamChi_DonKH.Distinct());
-                dtBamChi.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryBamChi_DonTXL.Distinct()));
+                dtBamChi = LINQToDataTable(queryBamChi_DonKH.Distinct());
+                dtBamChi.Merge(LINQToDataTable(queryBamChi_DonTXL.Distinct()));
                 dtBamChi.TableName = "BamChi";
                 ds.Tables.Add(dtBamChi);
 
@@ -606,7 +606,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                     };
 
                 DataTable dtCTBamChi = new DataTable();
-                dtCTBamChi = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTBamChi);
+                dtCTBamChi = LINQToDataTable(queryCTBamChi);
                 dtCTBamChi.TableName = "CTBamChi";
                 ds.Tables.Add(dtCTBamChi);
 
@@ -724,7 +724,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.CreateDate,
                                 CreateBy = itemUser.HoTen,
                             };
-                return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -754,7 +754,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.GhiChu,
                                 CreateBy = itemUser.HoTen,
                             };
-                return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                return LINQToDataTable(query);
 
             }
             catch (Exception ex)
@@ -788,7 +788,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.CreateDate,
                                 CreateBy = itemUser.HoTen,
                             };
-                return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -818,7 +818,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.GhiChu,
                                 CreateBy = itemUser.HoTen,
                             };
-                return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                return LINQToDataTable(query);
 
             }
             catch (Exception ex)
@@ -921,8 +921,8 @@ namespace KTKS_DonKH.DAL.BamChi
                                        itemCTBamChi.NgayBC,
                                        CreateBy = itemUser.HoTen,
                                    };
-                DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH);
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL));
+                DataTable dt = LINQToDataTable(query_DonKH);
+                dt.Merge(LINQToDataTable(query_DonTXL));
                 return dt;
             }
             catch (Exception ex)
@@ -987,8 +987,8 @@ namespace KTKS_DonKH.DAL.BamChi
                                        itemCTBamChi.NgayBC,
                                        CreateBy = itemUser.HoTen,
                                    };
-                DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
+                DataTable dt = LINQToDataTable(query_DonKH.Distinct());
+                dt.Merge(LINQToDataTable(query_DonTXL.Distinct()));
                 return dt;
             }
             catch (Exception ex)
@@ -1053,8 +1053,8 @@ namespace KTKS_DonKH.DAL.BamChi
                                        itemCTBamChi.NgayBC,
                                        CreateBy = itemUser.HoTen,
                                    };
-                DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
+                DataTable dt = LINQToDataTable(query_DonKH.Distinct());
+                dt.Merge(LINQToDataTable(query_DonTXL.Distinct()));
                 return dt;
             }
             catch (Exception ex)
@@ -1119,8 +1119,8 @@ namespace KTKS_DonKH.DAL.BamChi
                                        itemCTBamChi.NgayBC,
                                        CreateBy = itemUser.HoTen,
                                    };
-                DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
+                DataTable dt = LINQToDataTable(query_DonKH.Distinct());
+                dt.Merge(LINQToDataTable(query_DonTXL.Distinct()));
                 return dt;
             }
             catch (Exception ex)
@@ -1185,8 +1185,8 @@ namespace KTKS_DonKH.DAL.BamChi
                                        itemCTBamChi.NgayBC,
                                        CreateBy = itemUser.HoTen,
                                    };
-                DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
+                DataTable dt = LINQToDataTable(query_DonKH.Distinct());
+                dt.Merge(LINQToDataTable(query_DonTXL.Distinct()));
                 return dt;
             }
             catch (Exception ex)
@@ -1256,8 +1256,8 @@ namespace KTKS_DonKH.DAL.BamChi
                                        itemCTBamChi.NgayBC,
                                        CreateBy = itemUser.HoTen,
                                    };
-                DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH);
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL));
+                DataTable dt = LINQToDataTable(query_DonKH);
+                dt.Merge(LINQToDataTable(query_DonTXL));
                 return dt;
             }
             catch (Exception ex)
@@ -1322,8 +1322,8 @@ namespace KTKS_DonKH.DAL.BamChi
                                        itemCTBamChi.NgayBC,
                                        CreateBy = itemUser.HoTen,
                                    };
-                DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
+                DataTable dt = LINQToDataTable(query_DonKH.Distinct());
+                dt.Merge(LINQToDataTable(query_DonTXL.Distinct()));
                 return dt;
             }
             catch (Exception ex)
@@ -1388,8 +1388,8 @@ namespace KTKS_DonKH.DAL.BamChi
                                        itemCTBamChi.NgayBC,
                                        CreateBy = itemUser.HoTen,
                                    };
-                DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
+                DataTable dt = LINQToDataTable(query_DonKH.Distinct());
+                dt.Merge(LINQToDataTable(query_DonTXL.Distinct()));
                 return dt;
             }
             catch (Exception ex)
@@ -1454,8 +1454,8 @@ namespace KTKS_DonKH.DAL.BamChi
                                        itemCTBamChi.NgayBC,
                                        CreateBy = itemUser.HoTen,
                                    };
-                DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
+                DataTable dt = LINQToDataTable(query_DonKH.Distinct());
+                dt.Merge(LINQToDataTable(query_DonTXL.Distinct()));
                 return dt;
             }
             catch (Exception ex)
@@ -1520,8 +1520,8 @@ namespace KTKS_DonKH.DAL.BamChi
                                        itemCTBamChi.NgayBC,
                                        CreateBy = itemUser.HoTen,
                                    };
-                DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
+                DataTable dt = LINQToDataTable(query_DonKH.Distinct());
+                dt.Merge(LINQToDataTable(query_DonTXL.Distinct()));
                 return dt;
             }
             catch (Exception ex)

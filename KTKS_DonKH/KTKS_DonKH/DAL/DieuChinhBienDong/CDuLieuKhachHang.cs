@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using KTKS_DonKH.LinQ;
 using System.Windows.Forms;
-using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.DAL.QuanTri;
 using System.Data.SqlClient;
 using System.Data;
 

@@ -7,11 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.CapNhat;
+using KTKS_DonKH.DAL.DieuChinhBienDong;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.DieuChinhBienDong;
 using KTKS_DonKH.GUI.BaoCao;
-using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.DAL.QuanTri;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -72,16 +73,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void frmSoDK_Load(object sender, EventArgs e)
         {
-            if (CTaiKhoan.RoleDCBD_CapNhat)
-            {
                 btnThem.Enabled = true;
                 btnSua.Enabled = true;
-            }
-            else
-            {
-                btnThem.Enabled = false;
-                btnSua.Enabled = false;
-            }
             dgvDSDanhBo.AutoGenerateColumns = false;
             dgvDSDanhBo.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSDanhBo.Font, FontStyle.Bold);
             try

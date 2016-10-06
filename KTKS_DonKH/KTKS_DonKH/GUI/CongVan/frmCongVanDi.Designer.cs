@@ -191,7 +191,8 @@
             "P. TCHC",
             "P. KTCN",
             "Đội TCXL",
-            "Tổ Xử Lý"});
+            "Tổ Xử Lý",
+            "Tổ Bấm Chì"});
             this.cmbNoiChuyen.Location = new System.Drawing.Point(838, 69);
             this.cmbNoiChuyen.Name = "cmbNoiChuyen";
             this.cmbNoiChuyen.Size = new System.Drawing.Size(88, 23);

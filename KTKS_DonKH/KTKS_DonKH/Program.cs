@@ -29,7 +29,7 @@ namespace KTKS_DonKH
             }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());
+            Application.Run(new frmMain());
         }
     }
 

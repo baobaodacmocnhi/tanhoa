@@ -6,12 +6,15 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using KTKS_DonKH.DAL.CapNhat;
+using KTKS_DonKH.DAL.QuanTri;
+using KTKS_DonKH.DAL.DieuChinhBienDong;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.DieuChinhBienDong;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.KhachHang;
+using KTKS_DonKH.DAL.CapNhat;
+using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -20,8 +23,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         Dictionary<string, string> _source = new Dictionary<string, string>();
         CChiNhanh _cChiNhanh = new CChiNhanh();
         CLoaiChungTu _cLoaiChungTu = new CLoaiChungTu();
-        TTKhachHang _ttkhachhang = new TTKhachHang();
-        CTTKH _cTTKH = new CTTKH();
+        //HOADON _hoadon = null;
+        CThuTien _cThuTien = new CThuTien();
         CChungTu _cChungTu = new CChungTu();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
@@ -64,11 +67,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         /// Nhận Entity TTKhachHang để điền vào textbox
         /// </summary>
         /// <param name="ttkhachhang"></param>
-        public void LoadDS(TTKhachHang ttkhachhang)
+        public void LoadDS(HOADON hoadon)
         {
-            txtDanhBo_Nhan.Text = ttkhachhang.DanhBo;
-            txtHoTen_Nhan.Text = ttkhachhang.HoTen;
-            txtDiaChi_Nhan.Text = ttkhachhang.DC1 + " " + ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkhachhang.Quan, ttkhachhang.Phuong);
+            txtDanhBo_Nhan.Text = hoadon.DANHBA;
+            txtHoTen_Nhan.Text = hoadon.TENKH;
+            txtDiaChi_Nhan.Text = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
         }
 
         public void Clear()
@@ -85,8 +88,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
             if (e.KeyChar == 13 && ((ChiNhanh)cmbChiNhanh_Nhan.SelectedItem).TenCN.ToUpper().Contains("TÂN HÒA") && txtDanhBo_Cat.Text.Trim() != txtDanhBo_Nhan.Text.Trim())
             {
-                if (_cTTKH.getTTKHbyID(txtDanhBo_Nhan.Text.Trim()) != null)
-                    LoadDS(_cTTKH.getTTKHbyID(txtDanhBo_Nhan.Text.Trim()));
+                if (_cThuTien.GetMoiNhat(txtDanhBo_Nhan.Text.Trim()) != null)
+                    LoadDS(_cThuTien.GetMoiNhat(txtDanhBo_Nhan.Text.Trim()));
                 else
                     Clear();
             }

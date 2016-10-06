@@ -6,7 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.DAL.QuanTri;
+using KTKS_DonKH.LinQ;
 
 namespace KTKS_DonKH.GUI.HeThong
 {
@@ -25,9 +26,27 @@ namespace KTKS_DonKH.GUI.HeThong
             CTaiKhoan _CTaiKhoan = new CTaiKhoan();
             if (_CTaiKhoan.DangNhap(txtTaiKhoan.Text.Trim(), txtMatKhau.Text.Trim()))
             {
-                DisableTimer();
-                this.Hide();
-                GetLoginResult(true);
+                User nguoidung = _CTaiKhoan.GetByTaiKhoan(txtTaiKhoan.Text.Trim());
+                if (nguoidung != null)
+                {
+                    CPhanQuyenNhom _cPhanQuyenNhom = new CPhanQuyenNhom();
+                    CPhanQuyenNguoiDung _cPhanQuyenNguoiDung = new CPhanQuyenNguoiDung();
+
+                    CTaiKhoan.MaUser = nguoidung.MaU;
+                    CTaiKhoan.HoTen = nguoidung.HoTen;
+                    CTaiKhoan.Admin = nguoidung.Admin;
+                    CTaiKhoan.ToTruong = nguoidung.ToTruong;
+                    CTaiKhoan.PhoGiamDoc = nguoidung.PhoGiamDoc;
+                    CTaiKhoan.TruongPhong = nguoidung.TruongPhong;
+
+                    if (nguoidung.MaNhom != null)
+                        CTaiKhoan.dtQuyenNhom = _cPhanQuyenNhom.GetDSByMaNhom(true, nguoidung.MaNhom.Value);
+                    CTaiKhoan.dtQuyenNguoiDung = _cPhanQuyenNguoiDung.GetDSByMaND(true, nguoidung.MaU);
+
+                    DisableTimer();
+                    this.Hide();
+                    GetLoginResult(true);
+                }
             }
         }
 

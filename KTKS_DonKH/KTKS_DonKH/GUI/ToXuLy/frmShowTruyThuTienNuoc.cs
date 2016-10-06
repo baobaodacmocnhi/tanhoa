@@ -8,11 +8,11 @@ using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.LinQ;
-using KTKS_DonKH.DAL.CapNhat;
+using KTKS_DonKH.DAL.DieuChinhBienDong;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.ToXuLy;
 using KTKS_DonKH.GUI.BaoCao;
-using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.DAL.QuanTri;
 
 namespace KTKS_DonKH.GUI.ToXuLy
 {
