@@ -559,7 +559,7 @@
             // 
             this.btnSua.Location = new System.Drawing.Point(1101, 52);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(57, 31);
+            this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 36;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -570,7 +570,7 @@
             this.btnXoa.Location = new System.Drawing.Point(1101, 129);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(4);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(60, 31);
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 37;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
@@ -695,7 +695,7 @@
             // 
             this.btnIn.Location = new System.Drawing.Point(959, 432);
             this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(48, 31);
+            this.btnIn.Size = new System.Drawing.Size(75, 23);
             this.btnIn.TabIndex = 60;
             this.btnIn.Text = "In";
             this.btnIn.UseVisualStyleBackColor = true;
@@ -705,7 +705,7 @@
             // 
             this.btnInChiTiet.Location = new System.Drawing.Point(959, 396);
             this.btnInChiTiet.Name = "btnInChiTiet";
-            this.btnInChiTiet.Size = new System.Drawing.Size(92, 31);
+            this.btnInChiTiet.Size = new System.Drawing.Size(75, 23);
             this.btnInChiTiet.TabIndex = 61;
             this.btnInChiTiet.Text = "In Chi Tiết";
             this.btnInChiTiet.UseVisualStyleBackColor = true;
@@ -716,7 +716,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1168, 497);
+            this.ClientSize = new System.Drawing.Size(1179, 497);
             this.Controls.Add(this.btnInChiTiet);
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.txtTongCongCu);

@@ -44,10 +44,13 @@
             this.MatKhau = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaKiemBamChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaNhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PhoGiamDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.An = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TruongPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ToTruong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KTXM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BamChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ToKH = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ToXuLy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ToVP = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -79,6 +82,10 @@
             this.chkToTruong = new System.Windows.Forms.CheckBox();
             this.cmbNhom = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.cmbTo = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.chkKTXM = new System.Windows.Forms.CheckBox();
+            this.chkBamChi = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSTaiKhoan)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -170,8 +177,8 @@
             // 
             // dgvDSTaiKhoan
             // 
+            this.dgvDSTaiKhoan.AllowDrop = true;
             this.dgvDSTaiKhoan.AllowUserToAddRows = false;
-            this.dgvDSTaiKhoan.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -188,10 +195,13 @@
             this.MatKhau,
             this.MaKiemBamChi,
             this.MaNhom,
+            this.MaTo,
             this.PhoGiamDoc,
             this.An,
             this.TruongPhong,
             this.ToTruong,
+            this.KTXM,
+            this.BamChi,
             this.ToKH,
             this.ToXuLy,
             this.ToVP});
@@ -253,6 +263,13 @@
             this.MaNhom.Name = "MaNhom";
             this.MaNhom.Visible = false;
             // 
+            // MaTo
+            // 
+            this.MaTo.DataPropertyName = "MaTo";
+            this.MaTo.HeaderText = "MaTo";
+            this.MaTo.Name = "MaTo";
+            this.MaTo.Visible = false;
+            // 
             // PhoGiamDoc
             // 
             this.PhoGiamDoc.DataPropertyName = "PhoGiamDoc";
@@ -280,6 +297,20 @@
             this.ToTruong.HeaderText = "DoiTruong";
             this.ToTruong.Name = "ToTruong";
             this.ToTruong.Visible = false;
+            // 
+            // KTXM
+            // 
+            this.KTXM.DataPropertyName = "KTXM";
+            this.KTXM.HeaderText = "KTXM";
+            this.KTXM.Name = "KTXM";
+            this.KTXM.Visible = false;
+            // 
+            // BamChi
+            // 
+            this.BamChi.DataPropertyName = "BamChi";
+            this.BamChi.HeaderText = "BamChi";
+            this.BamChi.Name = "BamChi";
+            this.BamChi.Visible = false;
             // 
             // ToKH
             // 
@@ -547,7 +578,7 @@
             // cmbNhom
             // 
             this.cmbNhom.FormattingEnabled = true;
-            this.cmbNhom.Location = new System.Drawing.Point(99, 128);
+            this.cmbNhom.Location = new System.Drawing.Point(276, 128);
             this.cmbNhom.Name = "cmbNhom";
             this.cmbNhom.Size = new System.Drawing.Size(121, 23);
             this.cmbNhom.TabIndex = 33;
@@ -555,11 +586,48 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 131);
+            this.label5.Location = new System.Drawing.Point(226, 132);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 15);
             this.label5.TabIndex = 32;
             this.label5.Text = "Nhóm:";
+            // 
+            // cmbTo
+            // 
+            this.cmbTo.FormattingEnabled = true;
+            this.cmbTo.Location = new System.Drawing.Point(99, 128);
+            this.cmbTo.Name = "cmbTo";
+            this.cmbTo.Size = new System.Drawing.Size(121, 23);
+            this.cmbTo.TabIndex = 35;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(67, 132);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(24, 15);
+            this.label6.TabIndex = 34;
+            this.label6.Text = "Tổ:";
+            // 
+            // chkKTXM
+            // 
+            this.chkKTXM.AutoSize = true;
+            this.chkKTXM.Location = new System.Drawing.Point(483, 104);
+            this.chkKTXM.Name = "chkKTXM";
+            this.chkKTXM.Size = new System.Drawing.Size(60, 19);
+            this.chkKTXM.TabIndex = 36;
+            this.chkKTXM.Text = "KTXM";
+            this.chkKTXM.UseVisualStyleBackColor = true;
+            // 
+            // chkBamChi
+            // 
+            this.chkBamChi.AutoSize = true;
+            this.chkBamChi.Location = new System.Drawing.Point(549, 103);
+            this.chkBamChi.Name = "chkBamChi";
+            this.chkBamChi.Size = new System.Drawing.Size(73, 19);
+            this.chkBamChi.TabIndex = 37;
+            this.chkBamChi.Text = "Bấm Chì";
+            this.chkBamChi.UseVisualStyleBackColor = true;
             // 
             // frmTaiKhoan
             // 
@@ -567,6 +635,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1484, 662);
+            this.Controls.Add(this.chkBamChi);
+            this.Controls.Add(this.chkKTXM);
+            this.Controls.Add(this.cmbTo);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.cmbNhom);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.chkAn);
@@ -645,18 +717,25 @@
         private System.Windows.Forms.CheckBox chkToTruong;
         private System.Windows.Forms.ComboBox cmbNhom;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cmbTo;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaU;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn TaiKhoan;
         private System.Windows.Forms.DataGridViewTextBoxColumn MatKhau;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaKiemBamChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaNhom;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaTo;
         private System.Windows.Forms.DataGridViewTextBoxColumn PhoGiamDoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn An;
         private System.Windows.Forms.DataGridViewTextBoxColumn TruongPhong;
         private System.Windows.Forms.DataGridViewTextBoxColumn ToTruong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KTXM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BamChi;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ToKH;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ToXuLy;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ToVP;
+        private System.Windows.Forms.CheckBox chkKTXM;
+        private System.Windows.Forms.CheckBox chkBamChi;
     }
 }

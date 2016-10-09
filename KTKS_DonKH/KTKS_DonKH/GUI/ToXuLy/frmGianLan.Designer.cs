@@ -268,9 +268,9 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(873, 149);
+            this.btnSua.Location = new System.Drawing.Point(859, 149);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(61, 31);
+            this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 14;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -280,7 +280,7 @@
             // 
             this.btnLuu.Location = new System.Drawing.Point(940, 149);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(61, 31);
+            this.btnLuu.Size = new System.Drawing.Size(75, 23);
             this.btnLuu.TabIndex = 13;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
@@ -776,7 +776,7 @@
             this.TinhTrang});
             this.dgvGianLan.Location = new System.Drawing.Point(10, 314);
             this.dgvGianLan.Name = "dgvGianLan";
-            this.dgvGianLan.Size = new System.Drawing.Size(844, 169);
+            this.dgvGianLan.Size = new System.Drawing.Size(970, 169);
             this.dgvGianLan.TabIndex = 8;
             this.dgvGianLan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGianLan_CellContentClick);
             // 
@@ -839,7 +839,7 @@
             // 
             this.btnXem.Location = new System.Drawing.Point(500, 278);
             this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(61, 31);
+            this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 22;
             this.btnXem.Text = "Xem";
             this.btnXem.UseVisualStyleBackColor = true;
@@ -849,7 +849,7 @@
             // 
             this.btnInDS.Location = new System.Drawing.Point(566, 278);
             this.btnInDS.Name = "btnInDS";
-            this.btnInDS.Size = new System.Drawing.Size(66, 31);
+            this.btnInDS.Size = new System.Drawing.Size(75, 23);
             this.btnInDS.TabIndex = 89;
             this.btnInDS.Text = "In DS";
             this.btnInDS.UseVisualStyleBackColor = true;

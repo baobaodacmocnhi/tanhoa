@@ -243,9 +243,9 @@
             this.label5.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(505, 8);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(274, 19);
+            this.label5.Size = new System.Drawing.Size(242, 19);
             this.label5.TabIndex = 10;
-            this.label5.Text = "                 Nội Dung Đơn Thư                  ";
+            this.label5.Text = "             Nội Dung Đơn Thư              ";
             // 
             // txtNgayNhan
             // 
@@ -365,9 +365,9 @@
             // 
             // btnInBienNhan
             // 
-            this.btnInBienNhan.Location = new System.Drawing.Point(573, 417);
+            this.btnInBienNhan.Location = new System.Drawing.Point(569, 420);
             this.btnInBienNhan.Name = "btnInBienNhan";
-            this.btnInBienNhan.Size = new System.Drawing.Size(107, 31);
+            this.btnInBienNhan.Size = new System.Drawing.Size(90, 23);
             this.btnInBienNhan.TabIndex = 32;
             this.btnInBienNhan.Text = "In Biên Nhận";
             this.btnInBienNhan.UseVisualStyleBackColor = true;
@@ -576,7 +576,7 @@
             // 
             this.btnSua.Location = new System.Drawing.Point(407, 420);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(57, 31);
+            this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 31;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -584,9 +584,9 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(469, 420);
+            this.btnXoa.Location = new System.Drawing.Point(488, 420);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(59, 31);
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 30;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;

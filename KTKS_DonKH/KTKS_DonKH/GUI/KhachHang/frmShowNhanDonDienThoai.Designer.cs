@@ -59,10 +59,10 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(491, 177);
-            this.btnXoa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnXoa.Location = new System.Drawing.Point(498, 177);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(4);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(60, 31);
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 35;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
@@ -110,7 +110,7 @@
             this.dgvLichSuDonDT.Margin = new System.Windows.Forms.Padding(4);
             this.dgvLichSuDonDT.Name = "dgvLichSuDonDT";
             this.dgvLichSuDonDT.ReadOnly = true;
-            this.dgvLichSuDonDT.Size = new System.Drawing.Size(690, 274);
+            this.dgvLichSuDonDT.Size = new System.Drawing.Size(783, 274);
             this.dgvLichSuDonDT.TabIndex = 33;
             this.dgvLichSuDonDT.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvLichSuDonDT_RowPostPaint);
             // 
@@ -174,7 +174,7 @@
             this.btnSua.Location = new System.Drawing.Point(415, 177);
             this.btnSua.Margin = new System.Windows.Forms.Padding(4);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(57, 31);
+            this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 34;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -303,7 +303,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(722, 499);
+            this.ClientSize = new System.Drawing.Size(812, 499);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.dgvLichSuDonDT);
             this.Controls.Add(this.txtNguoiBao);

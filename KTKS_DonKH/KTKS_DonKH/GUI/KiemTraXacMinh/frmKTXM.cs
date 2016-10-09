@@ -31,14 +31,6 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         CHienTrangKiemTra _cHienTrangKiemTra = new CHienTrangKiemTra();
         bool _flagFirst = true;
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            this.ControlBox = false;
-            this.WindowState = FormWindowState.Maximized;
-            this.BringToFront();
-        }
-
         public frmKTXM()
         {
             InitializeComponent();

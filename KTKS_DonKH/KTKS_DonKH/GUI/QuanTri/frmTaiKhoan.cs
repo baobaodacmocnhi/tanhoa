@@ -17,6 +17,8 @@ namespace KTKS_DonKH.GUI.QuanTri
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         CPhanQuyenNguoiDung _cPhanQuyenNguoiDung = new CPhanQuyenNguoiDung();
         CNhom _cNhom = new CNhom();
+        CMenu _cMenu = new CMenu();
+        CTo _cTo = new CTo();
         int _selectedindex = -1;
         BindingList<User> _blNguoiDung;
 
@@ -25,21 +27,13 @@ namespace KTKS_DonKH.GUI.QuanTri
             InitializeComponent();
         }
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            this.ControlBox = false;
-            this.WindowState = FormWindowState.Maximized;
-            this.BringToFront();
-        }
-
         private void frmTaiKhoan_Load(object sender, EventArgs e)
         {
             if (CTaiKhoan.Admin)
             {
                 chkPhoGiamDoc.Visible = true;
                 chkAn.Visible = true;
-                _blNguoiDung = new BindingList<User>(_cTaiKhoan.GetDS_Admin());
+                _blNguoiDung = new BindingList<User>(_cTaiKhoan.GetDS());
             }
             else
             {
@@ -49,6 +43,10 @@ namespace KTKS_DonKH.GUI.QuanTri
             }
             dgvDSTaiKhoan.AutoGenerateColumns = false;
             dgvDSTaiKhoan.DataSource = _blNguoiDung;
+
+            cmbTo.DataSource = _cTo.GetDS();
+            cmbTo.DisplayMember = "TenTo";
+            cmbTo.ValueMember = "MaTo";
 
             cmbNhom.DataSource = _cNhom.GetDS();
             cmbNhom.DisplayMember = "TenNhom";
@@ -64,9 +62,12 @@ namespace KTKS_DonKH.GUI.QuanTri
             chkPhoGiamDoc.Checked = false;
             chkTruongPhong.Checked = false;
             chkToTruong.Checked = false;
+            chkAn.Checked = false;
+            chkKTXM.Checked = false;
+            chkBamChi.Checked = false;
             if (CTaiKhoan.Admin)
             {
-                _blNguoiDung = new BindingList<User>(_cTaiKhoan.GetDS_Admin());
+                _blNguoiDung = new BindingList<User>(_cTaiKhoan.GetDS());
             }
             else
             {
@@ -84,6 +85,22 @@ namespace KTKS_DonKH.GUI.QuanTri
                 nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
                 nguoidung.MatKhau = txtMatKhau.Text.Trim();
                 nguoidung.MaKiemBamChi = txtMaKiemBamChi.Text.Trim();
+                nguoidung.MaTo = int.Parse(cmbTo.SelectedValue.ToString());
+                nguoidung.MaNhom = int.Parse(cmbNhom.SelectedValue.ToString());
+                nguoidung.PhoGiamDoc = chkPhoGiamDoc.Checked;
+                nguoidung.An = chkAn.Checked;
+                nguoidung.TruongPhong = chkTruongPhong.Checked;
+                nguoidung.ToTruong = chkToTruong.Checked;
+                nguoidung.KTXM = chkKTXM.Checked;
+                nguoidung.BamChi = chkBamChi.Checked;
+                ///tự động thêm quyền cho người mới
+                foreach (var item in _cMenu.GetDS())
+                {
+                    PhanQuyenNguoiDung phanquyennguoidung = new PhanQuyenNguoiDung();
+                    phanquyennguoidung.MaMenu = item.MaMenu;
+                    phanquyennguoidung.MaND = nguoidung.MaU;
+                    nguoidung.PhanQuyenNguoiDungs.Add(phanquyennguoidung);
+                }
 
                 if(_cTaiKhoan.Them(nguoidung))
                     MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -127,11 +144,15 @@ namespace KTKS_DonKH.GUI.QuanTri
                     nguoidung.HoTen = txtHoTen.Text.Trim();
                     nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
                     nguoidung.MatKhau = txtMatKhau.Text.Trim();
+                    nguoidung.MaTo = (int)cmbTo.SelectedValue;
                     nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
                     nguoidung.PhoGiamDoc = chkPhoGiamDoc.Checked;
                     nguoidung.An = chkAn.Checked;
                     nguoidung.TruongPhong = chkTruongPhong.Checked;
                     nguoidung.ToTruong = chkToTruong.Checked;
+                    nguoidung.KTXM = chkKTXM.Checked;
+                    nguoidung.BamChi = chkBamChi.Checked;
+
                     _cTaiKhoan.Sua(nguoidung);
                     DataTable dt = ((DataView)gridView.DataSource).Table;
                     foreach (DataRow item in dt.Rows)
@@ -166,12 +187,16 @@ namespace KTKS_DonKH.GUI.QuanTri
                 txtTaiKhoan.Text = dgvDSTaiKhoan["TaiKhoan", e.RowIndex].Value.ToString();
                 txtMatKhau.Text = dgvDSTaiKhoan["MatKhau", e.RowIndex].Value.ToString();
                 txtMaKiemBamChi.Text = dgvDSTaiKhoan["MaKiemBamChi", e.RowIndex].Value.ToString();
+                if (dgvDSTaiKhoan["MaTo", e.RowIndex].Value != null)
+                    cmbTo.SelectedValue = int.Parse(dgvDSTaiKhoan["MaTo", e.RowIndex].Value.ToString());
                 if (dgvDSTaiKhoan["MaNhom", e.RowIndex].Value != null)
                     cmbNhom.SelectedValue = int.Parse(dgvDSTaiKhoan["MaNhom", e.RowIndex].Value.ToString());
                 chkPhoGiamDoc.Checked = bool.Parse(dgvDSTaiKhoan["PhoGiamDoc", e.RowIndex].Value.ToString());
                 chkAn.Checked = bool.Parse(dgvDSTaiKhoan["An", e.RowIndex].Value.ToString());
                 chkTruongPhong.Checked = bool.Parse(dgvDSTaiKhoan["TruongPhong", e.RowIndex].Value.ToString());
                 chkToTruong.Checked = bool.Parse(dgvDSTaiKhoan["ToTruong", e.RowIndex].Value.ToString());
+                chkKTXM.Checked = bool.Parse(dgvDSTaiKhoan["KTXM", e.RowIndex].Value.ToString());
+                chkBamChi.Checked = bool.Parse(dgvDSTaiKhoan["BamChi", e.RowIndex].Value.ToString());
                 if (CTaiKhoan.Admin)
                     gridControl.DataSource = _cPhanQuyenNguoiDung.GetDSByMaND(true, int.Parse(dgvDSTaiKhoan["MaU", e.RowIndex].Value.ToString()));
                 else

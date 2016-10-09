@@ -39,14 +39,6 @@ namespace KTKS_DonKH.GUI.DongNuoc
             InitializeComponent();
         }
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            this.ControlBox = false;
-            this.WindowState = FormWindowState.Maximized;
-            this.BringToFront();
-        }
-
         private void frmDongNuoc_Load(object sender, EventArgs e)
         {
             dgvDSBamChi.AutoGenerateColumns = false;

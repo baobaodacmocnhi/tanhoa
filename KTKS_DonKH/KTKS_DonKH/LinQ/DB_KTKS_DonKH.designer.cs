@@ -189,6 +189,9 @@ namespace KTKS_DonKH.LinQ
     partial void InsertNhom(Nhom instance);
     partial void UpdateNhom(Nhom instance);
     partial void DeleteNhom(Nhom instance);
+    partial void InsertTo(To instance);
+    partial void UpdateTo(To instance);
+    partial void DeleteTo(To instance);
     partial void InsertUser(User instance);
     partial void UpdateUser(User instance);
     partial void DeleteUser(User instance);
@@ -653,6 +656,14 @@ namespace KTKS_DonKH.LinQ
 			get
 			{
 				return this.GetTable<Nhom>();
+			}
+		}
+		
+		public System.Data.Linq.Table<To> Tos
+		{
+			get
+			{
+				return this.GetTable<To>();
 			}
 		}
 		
@@ -34784,6 +34795,240 @@ namespace KTKS_DonKH.LinQ
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[To]")]
+	public partial class To : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _MaTo;
+		
+		private string _TenTo;
+		
+		private bool _An;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _ModifyDate;
+		
+		private System.Nullable<int> _ModifyBy;
+		
+		private EntitySet<User> _Users;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMaToChanging(int value);
+    partial void OnMaToChanged();
+    partial void OnTenToChanging(string value);
+    partial void OnTenToChanged();
+    partial void OnAnChanging(bool value);
+    partial void OnAnChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifyDateChanged();
+    partial void OnModifyByChanging(System.Nullable<int> value);
+    partial void OnModifyByChanged();
+    #endregion
+		
+		public To()
+		{
+			this._Users = new EntitySet<User>(new Action<User>(this.attach_Users), new Action<User>(this.detach_Users));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTo", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int MaTo
+		{
+			get
+			{
+				return this._MaTo;
+			}
+			set
+			{
+				if ((this._MaTo != value))
+				{
+					this.OnMaToChanging(value);
+					this.SendPropertyChanging();
+					this._MaTo = value;
+					this.SendPropertyChanged("MaTo");
+					this.OnMaToChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenTo", DbType="NVarChar(50)")]
+		public string TenTo
+		{
+			get
+			{
+				return this._TenTo;
+			}
+			set
+			{
+				if ((this._TenTo != value))
+				{
+					this.OnTenToChanging(value);
+					this.SendPropertyChanging();
+					this._TenTo = value;
+					this.SendPropertyChanged("TenTo");
+					this.OnTenToChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_An", DbType="Bit NOT NULL")]
+		public bool An
+		{
+			get
+			{
+				return this._An;
+			}
+			set
+			{
+				if ((this._An != value))
+				{
+					this.OnAnChanging(value);
+					this.SendPropertyChanging();
+					this._An = value;
+					this.SendPropertyChanged("An");
+					this.OnAnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifyDate
+		{
+			get
+			{
+				return this._ModifyDate;
+			}
+			set
+			{
+				if ((this._ModifyDate != value))
+				{
+					this.OnModifyDateChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyDate = value;
+					this.SendPropertyChanged("ModifyDate");
+					this.OnModifyDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
+		public System.Nullable<int> ModifyBy
+		{
+			get
+			{
+				return this._ModifyBy;
+			}
+			set
+			{
+				if ((this._ModifyBy != value))
+				{
+					this.OnModifyByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyBy = value;
+					this.SendPropertyChanged("ModifyBy");
+					this.OnModifyByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="To_User", Storage="_Users", ThisKey="MaTo", OtherKey="MaTo")]
+		public EntitySet<User> Users
+		{
+			get
+			{
+				return this._Users;
+			}
+			set
+			{
+				this._Users.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Users(User entity)
+		{
+			this.SendPropertyChanging();
+			entity.To = this;
+		}
+		
+		private void detach_Users(User entity)
+		{
+			this.SendPropertyChanging();
+			entity.To = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Users")]
 	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -34801,6 +35046,10 @@ namespace KTKS_DonKH.LinQ
 		private string _MatKhau;
 		
 		private string _MaKiemBamChi;
+		
+		private bool _KTXM;
+		
+		private bool _BamChi;
 		
 		private bool _ToKH;
 		
@@ -34822,6 +35071,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _MaNhom;
 		
+		private System.Nullable<int> _MaTo;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -34835,6 +35086,8 @@ namespace KTKS_DonKH.LinQ
 		private EntitySet<PhanQuyenNguoiDung> _PhanQuyenNguoiDungs;
 		
 		private EntityRef<Nhom> _Nhom;
+		
+		private EntityRef<To> _To;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -34852,6 +35105,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnMatKhauChanged();
     partial void OnMaKiemBamChiChanging(string value);
     partial void OnMaKiemBamChiChanged();
+    partial void OnKTXMChanging(bool value);
+    partial void OnKTXMChanged();
+    partial void OnBamChiChanging(bool value);
+    partial void OnBamChiChanged();
     partial void OnToKHChanging(bool value);
     partial void OnToKHChanged();
     partial void OnToXuLyChanging(bool value);
@@ -34872,6 +35129,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnPhoGiamDocChanged();
     partial void OnMaNhomChanging(System.Nullable<int> value);
     partial void OnMaNhomChanged();
+    partial void OnMaToChanging(System.Nullable<int> value);
+    partial void OnMaToChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -34887,6 +35146,7 @@ namespace KTKS_DonKH.LinQ
 			this._DetailRoles = new EntitySet<DetailRole>(new Action<DetailRole>(this.attach_DetailRoles), new Action<DetailRole>(this.detach_DetailRoles));
 			this._PhanQuyenNguoiDungs = new EntitySet<PhanQuyenNguoiDung>(new Action<PhanQuyenNguoiDung>(this.attach_PhanQuyenNguoiDungs), new Action<PhanQuyenNguoiDung>(this.detach_PhanQuyenNguoiDungs));
 			this._Nhom = default(EntityRef<Nhom>);
+			this._To = default(EntityRef<To>);
 			OnCreated();
 		}
 		
@@ -35006,6 +35266,46 @@ namespace KTKS_DonKH.LinQ
 					this._MaKiemBamChi = value;
 					this.SendPropertyChanged("MaKiemBamChi");
 					this.OnMaKiemBamChiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KTXM", DbType="Bit NOT NULL")]
+		public bool KTXM
+		{
+			get
+			{
+				return this._KTXM;
+			}
+			set
+			{
+				if ((this._KTXM != value))
+				{
+					this.OnKTXMChanging(value);
+					this.SendPropertyChanging();
+					this._KTXM = value;
+					this.SendPropertyChanged("KTXM");
+					this.OnKTXMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BamChi", DbType="Bit NOT NULL")]
+		public bool BamChi
+		{
+			get
+			{
+				return this._BamChi;
+			}
+			set
+			{
+				if ((this._BamChi != value))
+				{
+					this.OnBamChiChanging(value);
+					this.SendPropertyChanging();
+					this._BamChi = value;
+					this.SendPropertyChanged("BamChi");
+					this.OnBamChiChanged();
 				}
 			}
 		}
@@ -35214,6 +35514,30 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTo", DbType="Int")]
+		public System.Nullable<int> MaTo
+		{
+			get
+			{
+				return this._MaTo;
+			}
+			set
+			{
+				if ((this._MaTo != value))
+				{
+					if (this._To.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMaToChanging(value);
+					this.SendPropertyChanging();
+					this._MaTo = value;
+					this.SendPropertyChanged("MaTo");
+					this.OnMaToChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
 		public System.Nullable<System.DateTime> CreateDate
 		{
@@ -35350,6 +35674,40 @@ namespace KTKS_DonKH.LinQ
 						this._MaNhom = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("Nhom");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="To_User", Storage="_To", ThisKey="MaTo", OtherKey="MaTo", IsForeignKey=true)]
+		public To To
+		{
+			get
+			{
+				return this._To.Entity;
+			}
+			set
+			{
+				To previousValue = this._To.Entity;
+				if (((previousValue != value) 
+							|| (this._To.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._To.Entity = null;
+						previousValue.Users.Remove(this);
+					}
+					this._To.Entity = value;
+					if ((value != null))
+					{
+						value.Users.Add(this);
+						this._MaTo = value.MaTo;
+					}
+					else
+					{
+						this._MaTo = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("To");
 				}
 			}
 		}

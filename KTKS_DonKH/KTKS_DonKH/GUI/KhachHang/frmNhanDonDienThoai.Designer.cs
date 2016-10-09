@@ -199,7 +199,7 @@
             this.btnThem.Location = new System.Drawing.Point(326, 177);
             this.btnThem.Margin = new System.Windows.Forms.Padding(4);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(67, 31);
+            this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 14;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
@@ -225,7 +225,7 @@
             this.dgvLichSuDonDT.Margin = new System.Windows.Forms.Padding(4);
             this.dgvLichSuDonDT.Name = "dgvLichSuDonDT";
             this.dgvLichSuDonDT.ReadOnly = true;
-            this.dgvLichSuDonDT.Size = new System.Drawing.Size(774, 274);
+            this.dgvLichSuDonDT.Size = new System.Drawing.Size(893, 274);
             this.dgvLichSuDonDT.TabIndex = 15;
             this.dgvLichSuDonDT.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLichSuDonDT_CellContentClick);
             this.dgvLichSuDonDT.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLichSuDonDT_CellFormatting);
@@ -310,10 +310,10 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(415, 177);
+            this.btnSua.Location = new System.Drawing.Point(409, 177);
             this.btnSua.Margin = new System.Windows.Forms.Padding(4);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(57, 31);
+            this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 16;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -321,10 +321,10 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(491, 177);
-            this.btnXoa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnXoa.Location = new System.Drawing.Point(492, 177);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(4);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(60, 31);
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 17;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
@@ -354,7 +354,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(844, 524);
+            this.ClientSize = new System.Drawing.Size(961, 524);
             this.Controls.Add(this.dateBao);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnXoa);

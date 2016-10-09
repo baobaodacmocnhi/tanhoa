@@ -167,9 +167,9 @@
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(802, 8);
+            this.btnLuu.Location = new System.Drawing.Point(859, 8);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(60, 31);
+            this.btnLuu.Size = new System.Drawing.Size(75, 23);
             this.btnLuu.TabIndex = 39;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
@@ -227,9 +227,9 @@
             this.label5.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(508, 8);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(330, 19);
+            this.label5.Size = new System.Drawing.Size(290, 19);
             this.label5.TabIndex = 36;
-            this.label5.Text = "                        Nội Dung Đơn Thư                         ";
+            this.label5.Text = "                   Nội Dung Đơn Thư                    ";
             // 
             // txtNgayNhan
             // 
@@ -456,7 +456,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1116, 483);
+            this.ClientSize = new System.Drawing.Size(1220, 483);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.txtTongSoDanhBo);
             this.Controls.Add(this.btnLuu);

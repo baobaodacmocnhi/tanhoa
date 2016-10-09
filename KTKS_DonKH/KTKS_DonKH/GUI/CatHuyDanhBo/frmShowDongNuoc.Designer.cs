@@ -123,7 +123,7 @@
             // 
             // txtQuan_DN
             // 
-            this.txtQuan_DN.Location = new System.Drawing.Point(606, 49);
+            this.txtQuan_DN.Location = new System.Drawing.Point(616, 47);
             this.txtQuan_DN.Name = "txtQuan_DN";
             this.txtQuan_DN.Size = new System.Drawing.Size(88, 21);
             this.txtQuan_DN.TabIndex = 7;
@@ -158,7 +158,7 @@
             this.dateMoNuoc.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateMoNuoc.Location = new System.Drawing.Point(134, 21);
             this.dateMoNuoc.Name = "dateMoNuoc";
-            this.dateMoNuoc.Size = new System.Drawing.Size(76, 21);
+            this.dateMoNuoc.Size = new System.Drawing.Size(85, 21);
             this.dateMoNuoc.TabIndex = 14;
             // 
             // label19
@@ -174,7 +174,7 @@
             // 
             this.btnCapNhatMoNuoc.Location = new System.Drawing.Point(630, 94);
             this.btnCapNhatMoNuoc.Name = "btnCapNhatMoNuoc";
-            this.btnCapNhatMoNuoc.Size = new System.Drawing.Size(134, 31);
+            this.btnCapNhatMoNuoc.Size = new System.Drawing.Size(110, 23);
             this.btnCapNhatMoNuoc.TabIndex = 12;
             this.btnCapNhatMoNuoc.Text = "Lập TB Mở Nước";
             this.btnCapNhatMoNuoc.UseVisualStyleBackColor = true;
@@ -191,7 +191,7 @@
             // 
             // txtQuan_MN
             // 
-            this.txtQuan_MN.Location = new System.Drawing.Point(606, 49);
+            this.txtQuan_MN.Location = new System.Drawing.Point(616, 46);
             this.txtQuan_MN.Name = "txtQuan_MN";
             this.txtQuan_MN.Size = new System.Drawing.Size(88, 21);
             this.txtQuan_MN.TabIndex = 7;
@@ -200,7 +200,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(564, 54);
+            this.label6.Location = new System.Drawing.Point(574, 51);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(40, 15);
             this.label6.TabIndex = 6;
@@ -213,7 +213,7 @@
             this.dateCongVan_MN.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateCongVan_MN.Location = new System.Drawing.Point(335, 49);
             this.dateCongVan_MN.Name = "dateCongVan_MN";
-            this.dateCongVan_MN.Size = new System.Drawing.Size(76, 21);
+            this.dateCongVan_MN.Size = new System.Drawing.Size(85, 21);
             this.dateCongVan_MN.TabIndex = 3;
             // 
             // label12
@@ -234,7 +234,7 @@
             // 
             // txtPhuong_MN
             // 
-            this.txtPhuong_MN.Location = new System.Drawing.Point(471, 49);
+            this.txtPhuong_MN.Location = new System.Drawing.Point(481, 46);
             this.txtPhuong_MN.Name = "txtPhuong_MN";
             this.txtPhuong_MN.Size = new System.Drawing.Size(88, 21);
             this.txtPhuong_MN.TabIndex = 5;
@@ -243,7 +243,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(416, 54);
+            this.label13.Location = new System.Drawing.Point(426, 51);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(53, 15);
             this.label13.TabIndex = 4;
@@ -262,7 +262,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(564, 54);
+            this.label11.Location = new System.Drawing.Point(574, 52);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(40, 15);
             this.label11.TabIndex = 6;
@@ -274,7 +274,7 @@
             this.dateCongVan_DN.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateCongVan_DN.Location = new System.Drawing.Point(335, 49);
             this.dateCongVan_DN.Name = "dateCongVan_DN";
-            this.dateCongVan_DN.Size = new System.Drawing.Size(76, 21);
+            this.dateCongVan_DN.Size = new System.Drawing.Size(85, 21);
             this.dateCongVan_DN.TabIndex = 3;
             // 
             // label9
@@ -423,7 +423,7 @@
             // 
             // txtPhuong_DN
             // 
-            this.txtPhuong_DN.Location = new System.Drawing.Point(471, 49);
+            this.txtPhuong_DN.Location = new System.Drawing.Point(481, 47);
             this.txtPhuong_DN.Name = "txtPhuong_DN";
             this.txtPhuong_DN.Size = new System.Drawing.Size(88, 21);
             this.txtPhuong_DN.TabIndex = 5;
@@ -439,7 +439,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(416, 54);
+            this.label7.Location = new System.Drawing.Point(426, 52);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 15);
             this.label7.TabIndex = 4;
@@ -470,7 +470,7 @@
             this.dateDongNuoc.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateDongNuoc.Location = new System.Drawing.Point(115, 21);
             this.dateDongNuoc.Name = "dateDongNuoc";
-            this.dateDongNuoc.Size = new System.Drawing.Size(76, 21);
+            this.dateDongNuoc.Size = new System.Drawing.Size(85, 21);
             this.dateDongNuoc.TabIndex = 12;
             // 
             // label18
@@ -502,7 +502,7 @@
             // 
             this.btnInTBMN.Location = new System.Drawing.Point(813, 310);
             this.btnInTBMN.Name = "btnInTBMN";
-            this.btnInTBMN.Size = new System.Drawing.Size(124, 31);
+            this.btnInTBMN.Size = new System.Drawing.Size(100, 23);
             this.btnInTBMN.TabIndex = 20;
             this.btnInTBMN.Text = "In TB Mở Nước";
             this.btnInTBMN.UseVisualStyleBackColor = true;
@@ -512,7 +512,7 @@
             // 
             this.btnInTBDN.Location = new System.Drawing.Point(813, 274);
             this.btnInTBDN.Name = "btnInTBDN";
-            this.btnInTBDN.Size = new System.Drawing.Size(132, 31);
+            this.btnInTBDN.Size = new System.Drawing.Size(110, 23);
             this.btnInTBDN.TabIndex = 19;
             this.btnInTBDN.Text = "In TB Đóng Nước";
             this.btnInTBDN.UseVisualStyleBackColor = true;
@@ -522,7 +522,7 @@
             // 
             this.btnSua.Location = new System.Drawing.Point(813, 211);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(57, 31);
+            this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 21;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -599,7 +599,7 @@
             // 
             this.btnXoa.Location = new System.Drawing.Point(811, 374);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(59, 31);
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 93;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;

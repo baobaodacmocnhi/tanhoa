@@ -264,9 +264,9 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(635, 214);
+            this.btnSua.Location = new System.Drawing.Point(620, 216);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(57, 31);
+            this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 11;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -274,9 +274,9 @@
             // 
             // btnInPhieu
             // 
-            this.btnInPhieu.Location = new System.Drawing.Point(697, 214);
+            this.btnInPhieu.Location = new System.Drawing.Point(701, 216);
             this.btnInPhieu.Name = "btnInPhieu";
-            this.btnInPhieu.Size = new System.Drawing.Size(118, 31);
+            this.btnInPhieu.Size = new System.Drawing.Size(100, 23);
             this.btnInPhieu.TabIndex = 17;
             this.btnInPhieu.Text = "In Phiếu CHDB";
             this.btnInPhieu.UseVisualStyleBackColor = true;
@@ -351,9 +351,9 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(571, 214);
+            this.btnXoa.Location = new System.Drawing.Point(539, 216);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(59, 31);
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 92;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;

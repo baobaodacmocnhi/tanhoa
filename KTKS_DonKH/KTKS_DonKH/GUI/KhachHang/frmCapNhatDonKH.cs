@@ -22,15 +22,6 @@ namespace KTKS_DonKH.GUI.KhachHang
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         DonKH _donkh = new DonKH();
 
-
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            this.ControlBox = false;
-            this.WindowState = FormWindowState.Maximized;
-            this.BringToFront();
-        }
-
         public frmCapNhatDonKH()
         {
             InitializeComponent();

@@ -78,9 +78,9 @@
             this.NgayGhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCapNhatGhiChu = new System.Windows.Forms.Button();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label28 = new System.Windows.Forms.Label();
+            this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuTTTL)).BeginInit();
@@ -389,7 +389,7 @@
             // 
             this.btnLuu.Location = new System.Drawing.Point(698, 402);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(61, 31);
+            this.btnLuu.Size = new System.Drawing.Size(75, 23);
             this.btnLuu.TabIndex = 4;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
@@ -406,7 +406,7 @@
             this.VeViec});
             this.dgvLichSuTTTL.Location = new System.Drawing.Point(881, 11);
             this.dgvLichSuTTTL.Name = "dgvLichSuTTTL";
-            this.dgvLichSuTTTL.Size = new System.Drawing.Size(411, 176);
+            this.dgvLichSuTTTL.Size = new System.Drawing.Size(471, 176);
             this.dgvLichSuTTTL.TabIndex = 5;
             this.dgvLichSuTTTL.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLichSuTTTL_CellFormatting);
             // 
@@ -536,28 +536,13 @@
             // 
             // btnCapNhatGhiChu
             // 
-            this.btnCapNhatGhiChu.Location = new System.Drawing.Point(881, 430);
+            this.btnCapNhatGhiChu.Location = new System.Drawing.Point(1194, 219);
             this.btnCapNhatGhiChu.Name = "btnCapNhatGhiChu";
-            this.btnCapNhatGhiChu.Size = new System.Drawing.Size(88, 31);
+            this.btnCapNhatGhiChu.Size = new System.Drawing.Size(75, 23);
             this.btnCapNhatGhiChu.TabIndex = 22;
             this.btnCapNhatGhiChu.Text = "Cập Nhật";
             this.btnCapNhatGhiChu.UseVisualStyleBackColor = true;
             this.btnCapNhatGhiChu.Click += new System.EventHandler(this.btnCapNhatGhiChu_Click);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.xóaToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 26);
-            // 
-            // xóaToolStripMenuItem
-            // 
-            this.xóaToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
-            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
-            this.xóaToolStripMenuItem.Text = "Xóa";
-            this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
             // 
             // label28
             // 
@@ -569,13 +554,28 @@
             this.label28.TabIndex = 57;
             this.label28.Text = "Chuột Phải để XÓA Ghi Chú";
             // 
+            // xóaToolStripMenuItem
+            // 
+            this.xóaToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
+            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.xóaToolStripMenuItem.Text = "Xóa";
+            this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.xóaToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 26);
+            // 
             // frmTTTL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1190, 487);
+            this.ClientSize = new System.Drawing.Size(1428, 487);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.btnCapNhatGhiChu);
             this.Controls.Add(this.dgvGhiChu);
@@ -661,8 +661,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayGhiChu;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
         private System.Windows.Forms.Button btnCapNhatGhiChu;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem xóaToolStripMenuItem;
         private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.ToolStripMenuItem xóaToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }

@@ -34,14 +34,6 @@ namespace KTKS_DonKH.GUI.KhachHang
             InitializeComponent();
         }
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            this.ControlBox = false;
-            this.WindowState = FormWindowState.Maximized;
-            this.BringToFront();
-        }
-
         private void frmQLDonKH_Load(object sender, EventArgs e)
         {
             dgvDSDonKH.AutoGenerateColumns = false;
@@ -59,98 +51,6 @@ namespace KTKS_DonKH.GUI.KhachHang
             panel_KhoangThoiGian.Location = new Point(txtNoiDungTimKiem.Location.X, panel_KhoangThoiGian.Location.Y);
         }
             
-        private void radDaDuyet_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radDaDuyet.Checked)
-            {
-                //DSDonKH_BS.DataSource = _cDonKH.LoadDSDonKHDaDuyet();
-                cmbTimTheo.SelectedIndex = 0;
-            }
-        }
-
-        private void radChuaDuyet_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radChuaDuyet.Checked)
-            {
-                //DSDonKH_BS.DataSource = _cDonKH.LoadDSDonKHChuaDuyet();
-                cmbTimTheo.SelectedIndex = 0;
-            }
-        }
-
-        private void radAll_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radAll.Checked)
-            {
-                //DSDonKH_BS.DataSource = _cDonKH.LoadDSAllDonKH();
-                cmbTimTheo.SelectedIndex = 0;
-            }
-        }
-
-        private void btnLuu_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (DSDonKH_Edited.Rows.Count > 0)
-                {
-                    foreach (DataRow itemRow in DSDonKH_Edited.Rows)
-                    {
-                        //if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
-                        //{
-                        DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
-                        //if (!donkh.Nhan)
-                        //{
-                        donkh.Chuyen = true;
-                        donkh.MaChuyen = itemRow["MaChuyen"].ToString();
-                        donkh.LyDoChuyen = itemRow["LyDoChuyen"].ToString();
-                        if (string.IsNullOrEmpty(itemRow["SoLuongDiaChi"].ToString()))
-                            donkh.SoLuongDiaChi = null;
-                        else
-                            donkh.SoLuongDiaChi = int.Parse(itemRow["SoLuongDiaChi"].ToString());
-                        donkh.NVKiemTra = itemRow["NVKiemTra"].ToString();
-                        _cDonKH.SuaDonKH(donkh);
-                        //}
-                        //else
-                        //{
-                        //    MessageBox.Show("Đơn " + donkh.MaDon + " đã được xử lý nên không sửa đổi được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //}
-                        //}
-                        //else
-                        //    if (itemRow["MaChuyen"].ToString() == "NONE")
-                        //    {
-                        //        DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
-                        //        //if (!donkh.Nhan)
-                        //        //{
-                        //            donkh.Chuyen = false;
-                        //            donkh.MaChuyen = null;
-                        //            donkh.LyDoChuyen = null;
-                        //            donkh.SoLuongDiaChi = null;
-                        //            donkh.NVKiemTra = null;
-                        //            _cDonKH.SuaDonKH(donkh);
-                        //}
-                        //else
-                        //{
-                        //    MessageBox.Show("Đơn " + donkh.MaDon + " đã được xử lý nên không sửa đổi được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //}
-                        //}
-                    }
-                    MessageBox.Show("Lưu thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    DSDonKH_Edited.Clear();
-
-                    //if (radDaDuyet.Checked)
-                    //    DSDonKH_BS.DataSource = _cDonKH.LoadDSDonKHDaDuyet();
-                    //if (radChuaDuyet.Checked)
-                    //    DSDonKH_BS.DataSource = _cDonKH.LoadDSDonKHChuaDuyet();
-                    //if (radAll.Checked)
-                    //    DSDonKH_BS.DataSource = _cDonKH.LoadDSAllDonKH();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-                      
-        }
-
         /// <summary>
         /// Hiện thị số thứ tự dòng
         /// </summary>
@@ -187,55 +87,6 @@ namespace KTKS_DonKH.GUI.KhachHang
                     //    else
                     //        if (radAll.Checked)
                     //            DSDonKH_BS.DataSource = _cDonKH.LoadDSAllDonKH();
-            }
-        }
-
-        /// <summary>
-        /// Bắt đầu Edit Column
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void dgvDSDonKH_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
-        {
-            btnLuu.Enabled = false;
-        }
-
-        /// <summary>
-        /// Kết thúc Edit Column
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void dgvDSDonKH_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            /////Khai báo các cột tương ứng trong Datagridview
-            //if (DSDonKH_Edited.Columns.Count == 0)
-            //    foreach (DataGridViewColumn itemCol in dgvDSDonKH.Columns)
-            //    {
-            //        DSDonKH_Edited.Columns.Add(itemCol.Name, itemCol.ValueType);
-            //    }
-
-            /////Gọi hàm EndEdit để kết thúc Edit nếu không sẽ bị lỗi Value chưa cập nhật trong trường hợp chuyển Cell trong cùng 1 Row. Nếu chuyển Row thì không bị lỗi
-            ((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row.EndEdit();
-
-            /////DataRow != DataGridViewRow nên phải qua 1 loạt gán biến
-            /////Tránh tình trạng trùng Danh Bộ nên xóa đi rồi add lại
-            //if (DSDonKH_Edited.Select("MaDon = " + ((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row["MaDon"]).Count() > 0)
-            //    DSDonKH_Edited.Rows.Remove(DSDonKH_Edited.Select("MaDon = " + ((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row["MaDon"])[0]);
-
-            //DSDonKH_Edited.ImportRow(((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row);
-            //btnLuu.Enabled = true; 
-            if (radDaDuyet.Checked || radAll.Checked)
-            {
-                DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row["MaDon"].ToString()));
-                donkh.Chuyen = true;
-                donkh.MaChuyen = ((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row["MaChuyen"].ToString();
-                donkh.LyDoChuyen = ((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row["LyDoChuyen"].ToString();
-                if (string.IsNullOrEmpty(((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row["SoLuongDiaChi"].ToString()))
-                    donkh.SoLuongDiaChi = null;
-                else
-                    donkh.SoLuongDiaChi = int.Parse(((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row["SoLuongDiaChi"].ToString());
-                donkh.NVKiemTra = ((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row["NVKiemTra"].ToString();
-                _cDonKH.SuaDonKH(donkh, true);
             }
         }
 

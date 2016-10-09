@@ -38,14 +38,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             InitializeComponent();
         }
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            //this.ControlBox = false;
-            this.WindowState = FormWindowState.Maximized;
-            this.BringToFront();
-        }
-
         /// <summary>
         /// Nhận Entity TTKhachHang để điền vào textbox
         /// </summary>
@@ -492,6 +484,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 dateTroNgai.Enabled = false;
                 cmbNoiDung.Enabled = false;
             }
+        }
+
+        private void frmYCCHDB_Load(object sender, EventArgs e)
+        {
+
         }
         
     }

@@ -125,7 +125,7 @@ namespace KTKS_DonKH.DAL.QuanTri
 
         public List<User> GetDS()
         {
-            return db.Users.OrderBy(item => item.STT).ToList();
+            return db.Users.Where(item => item.An == false).OrderBy(item => item.STT).ToList();
         }
 
         public List<User> GetDS_Admin()

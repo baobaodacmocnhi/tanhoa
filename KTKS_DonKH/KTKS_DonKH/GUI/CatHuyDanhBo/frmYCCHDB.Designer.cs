@@ -265,9 +265,9 @@
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(697, 178);
+            this.btnLuu.Location = new System.Drawing.Point(617, 216);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(61, 31);
+            this.btnLuu.Size = new System.Drawing.Size(75, 23);
             this.btnLuu.TabIndex = 6;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
@@ -275,9 +275,9 @@
             // 
             // btnInPhieu
             // 
-            this.btnInPhieu.Location = new System.Drawing.Point(697, 214);
+            this.btnInPhieu.Location = new System.Drawing.Point(698, 215);
             this.btnInPhieu.Name = "btnInPhieu";
-            this.btnInPhieu.Size = new System.Drawing.Size(118, 31);
+            this.btnInPhieu.Size = new System.Drawing.Size(100, 23);
             this.btnInPhieu.TabIndex = 18;
             this.btnInPhieu.Text = "In Phiếu CHDB";
             this.btnInPhieu.UseVisualStyleBackColor = true;
@@ -343,9 +343,9 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(635, 214);
+            this.btnSua.Location = new System.Drawing.Point(536, 216);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(57, 31);
+            this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 17;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -430,6 +430,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmYCCHDB";
             this.Text = "Lập Phiếu Yêu Cầu Cắt Hủy Danh Bộ";
+            this.Load += new System.EventHandler(this.frmYCCHDB_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBoxNguyenNhanXuLy.ResumeLayout(false);

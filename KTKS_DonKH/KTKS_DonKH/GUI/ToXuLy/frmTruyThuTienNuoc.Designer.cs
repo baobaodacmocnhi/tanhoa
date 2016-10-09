@@ -556,7 +556,7 @@
             // 
             this.btnThem.Location = new System.Drawing.Point(1100, 129);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(67, 31);
+            this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 5;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
@@ -681,7 +681,7 @@
             // 
             this.btnIn.Location = new System.Drawing.Point(959, 432);
             this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(48, 31);
+            this.btnIn.Size = new System.Drawing.Size(75, 23);
             this.btnIn.TabIndex = 44;
             this.btnIn.Text = "In";
             this.btnIn.UseVisualStyleBackColor = true;
@@ -691,7 +691,7 @@
             // 
             this.btnInChiTiet.Location = new System.Drawing.Point(959, 396);
             this.btnInChiTiet.Name = "btnInChiTiet";
-            this.btnInChiTiet.Size = new System.Drawing.Size(92, 31);
+            this.btnInChiTiet.Size = new System.Drawing.Size(75, 23);
             this.btnInChiTiet.TabIndex = 45;
             this.btnInChiTiet.Text = "In Chi Tiết";
             this.btnInChiTiet.UseVisualStyleBackColor = true;

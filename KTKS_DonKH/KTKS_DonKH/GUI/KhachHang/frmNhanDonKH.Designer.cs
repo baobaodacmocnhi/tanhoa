@@ -530,9 +530,9 @@
             this.label5.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(505, 8);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(274, 19);
+            this.label5.Size = new System.Drawing.Size(242, 19);
             this.label5.TabIndex = 10;
-            this.label5.Text = "                 Nội Dung Đơn Thư                  ";
+            this.label5.Text = "               Nội Dung ĐơnThư             ";
             // 
             // txtNgayNhan
             // 
@@ -808,7 +808,7 @@
             this.dgvLichSuDon.Location = new System.Drawing.Point(750, 8);
             this.dgvLichSuDon.Name = "dgvLichSuDon";
             this.dgvLichSuDon.ReadOnly = true;
-            this.dgvLichSuDon.Size = new System.Drawing.Size(434, 176);
+            this.dgvLichSuDon.Size = new System.Drawing.Size(502, 176);
             this.dgvLichSuDon.TabIndex = 54;
             this.dgvLichSuDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLichSuDon_CellFormatting);
             // 
@@ -848,7 +848,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1194, 480);
+            this.ClientSize = new System.Drawing.Size(1264, 480);
             this.Controls.Add(this.dgvLichSuDon);
             this.Controls.Add(this.btnNhapNhieuDB);
             this.Controls.Add(this.btnSua);

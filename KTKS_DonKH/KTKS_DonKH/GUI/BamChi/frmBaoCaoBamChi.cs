@@ -19,14 +19,6 @@ namespace KTKS_DonKH.GUI.BamChi
         CBamChi _cBamChi = new CBamChi();
         CTrangThaiBamChi _cTrangThaiBamChi = new CTrangThaiBamChi();
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            //this.ControlBox = false;
-            this.WindowState = FormWindowState.Maximized;
-            this.BringToFront();
-        }
-
         public frmBaoCaoBamChi()
         {
             InitializeComponent();

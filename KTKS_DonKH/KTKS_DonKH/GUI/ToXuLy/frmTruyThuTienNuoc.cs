@@ -37,15 +37,6 @@ namespace KTKS_DonKH.GUI.ToXuLy
             InitializeComponent();
         }
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            this.ControlBox = false;
-            this.WindowState = FormWindowState.Maximized;
-            this.BringToFront();
-
-        }
-
         private void frmTruyThuTienNuoc_Load(object sender, EventArgs e)
         {
             dgvTruyThuTienNuoc.AutoGenerateColumns = false;
