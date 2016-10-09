@@ -110,7 +110,7 @@ namespace ThuTien.GUI.QuanTri
                     nguoidung.DongNuoc = chkDongNuoc.Checked;
                     nguoidung.VanPhong = chkVanPhong.Checked;
                     nguoidung.ChamCong = chkChamCong.Checked;
-                    ///tự động thêm quyền cho nhóm mới
+                    ///tự động thêm quyền cho người mới
                     foreach (var item in _cMenu.GetDS())
                     {
                         TT_PhanQuyenNguoiDung phanquyennguoidung = new TT_PhanQuyenNguoiDung();
