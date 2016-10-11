@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtNoiNhan = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvDSVeViecTTTL = new System.Windows.Forms.DataGridView();
@@ -47,18 +47,18 @@
             // 
             // txtNoiNhan
             // 
-            this.txtNoiNhan.Location = new System.Drawing.Point(651, 58);
+            this.txtNoiNhan.Location = new System.Drawing.Point(744, 62);
             this.txtNoiNhan.Multiline = true;
             this.txtNoiNhan.Name = "txtNoiNhan";
-            this.txtNoiNhan.Size = new System.Drawing.Size(131, 201);
+            this.txtNoiNhan.Size = new System.Drawing.Size(149, 214);
             this.txtNoiNhan.TabIndex = 14;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(648, 41);
+            this.label3.Location = new System.Drawing.Point(741, 44);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 15);
+            this.label3.Size = new System.Drawing.Size(67, 16);
             this.label3.TabIndex = 13;
             this.label3.Text = "Nơi Nhận:";
             // 
@@ -66,23 +66,23 @@
             // 
             this.dgvDSVeViecTTTL.AllowUserToAddRows = false;
             this.dgvDSVeViecTTTL.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSVeViecTTTL.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSVeViecTTTL.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDSVeViecTTTL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSVeViecTTTL.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaVV,
             this.TenVV,
             this.NoiDung,
             this.NoiNhan});
-            this.dgvDSVeViecTTTL.Location = new System.Drawing.Point(17, 264);
+            this.dgvDSVeViecTTTL.Location = new System.Drawing.Point(19, 282);
             this.dgvDSVeViecTTTL.Name = "dgvDSVeViecTTTL";
-            this.dgvDSVeViecTTTL.Size = new System.Drawing.Size(765, 217);
+            this.dgvDSVeViecTTTL.Size = new System.Drawing.Size(874, 231);
             this.dgvDSVeViecTTTL.TabIndex = 17;
             this.dgvDSVeViecTTTL.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSVeViecTTTL_CellContentClick);
             // 
@@ -119,9 +119,9 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(787, 228);
+            this.btnThem.Location = new System.Drawing.Point(899, 243);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(75, 25);
+            this.btnThem.Size = new System.Drawing.Size(86, 27);
             this.btnThem.TabIndex = 15;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
@@ -129,17 +129,17 @@
             // 
             // txtNoiDung
             // 
-            this.txtNoiDung.Location = new System.Drawing.Point(17, 58);
+            this.txtNoiDung.Location = new System.Drawing.Point(19, 62);
             this.txtNoiDung.Multiline = true;
             this.txtNoiDung.Name = "txtNoiDung";
-            this.txtNoiDung.Size = new System.Drawing.Size(630, 201);
+            this.txtNoiDung.Size = new System.Drawing.Size(719, 214);
             this.txtNoiDung.TabIndex = 12;
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(788, 197);
+            this.btnSua.Location = new System.Drawing.Point(899, 210);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(75, 25);
+            this.btnSua.Size = new System.Drawing.Size(86, 27);
             this.btnSua.TabIndex = 16;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -148,34 +148,34 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 41);
+            this.label2.Location = new System.Drawing.Point(16, 44);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 15);
+            this.label2.Size = new System.Drawing.Size(67, 16);
             this.label2.TabIndex = 11;
             this.label2.Text = "Nội Dung:";
             // 
             // txtVeViec
             // 
-            this.txtVeViec.Location = new System.Drawing.Point(76, 11);
+            this.txtVeViec.Location = new System.Drawing.Point(87, 12);
             this.txtVeViec.Name = "txtVeViec";
-            this.txtVeViec.Size = new System.Drawing.Size(706, 21);
+            this.txtVeViec.Size = new System.Drawing.Size(806, 22);
             this.txtVeViec.TabIndex = 10;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 13);
+            this.label1.Location = new System.Drawing.Point(16, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 15);
+            this.label1.Size = new System.Drawing.Size(58, 16);
             this.label1.TabIndex = 9;
             this.label1.Text = "Về Việc:";
             // 
             // frmVeViecCHDB
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1011, 509);
+            this.ClientSize = new System.Drawing.Size(1155, 543);
             this.Controls.Add(this.txtNoiNhan);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dgvDSVeViecTTTL);
@@ -185,8 +185,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtVeViec);
             this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "frmVeViecCHDB";
             this.Text = "Về Việc CHDB";
             this.Load += new System.EventHandler(this.frmVeViecCHDB_Load);

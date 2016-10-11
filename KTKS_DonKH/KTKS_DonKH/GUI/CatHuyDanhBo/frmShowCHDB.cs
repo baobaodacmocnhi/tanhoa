@@ -49,7 +49,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             _MaCTCHDB = MaCTCHDB;
             if (TimKiem)
             {
-                btnCapNhatCapTrenXuLy.Enabled = false;
                 btnCapNhatTCTBXuLy.Enabled = false;
                 btnIn.Enabled = false;
                 btnInPhieu.Enabled = false;
@@ -596,28 +595,6 @@ NAM.ToString();
             }
         }
 
-        private void btnCapNhatCapTrenXuLy_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (_ctchdb != null)
-                {
-                    _ctchdb.CapTrenXuLy = true;
-                    _ctchdb.NgayCapTrenXuLy = dateCapTrenXuLy.Value;
-                    _ctchdb.KetQuaCapTrenXuLy = txtKetQuaCapTrenXuLy.Text.Trim();
-                    _ctchdb.ThoiGianLapPhieu = int.Parse(txtThoiGianLapPhieu.Text.Trim());
-                    if (_cCHDB.SuaCTCHDB(_ctchdb))
-                    {
-                        MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void cmbLyDo_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbLyDo.SelectedIndex != -1)
@@ -642,14 +619,6 @@ NAM.ToString();
             //    groupBoxKetQuaTCTBXuLy.Enabled = true;
             //else
             //    groupBoxKetQuaTCTBXuLy.Enabled = false;
-        }
-
-        private void chkKetQuaCapTrenXuLy_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkKetQuaCapTrenXuLy.Checked)
-                groupBoxKetQuaCapTrenXuLy.Enabled = true;
-            else
-                groupBoxKetQuaCapTrenXuLy.Enabled = false;
         }
 
         private void btnXoa_Click(object sender, EventArgs e)

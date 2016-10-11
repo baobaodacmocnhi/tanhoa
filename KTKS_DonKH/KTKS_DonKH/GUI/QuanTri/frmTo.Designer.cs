@@ -32,18 +32,18 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.dgvTo = new System.Windows.Forms.DataGridView();
-            this.txtTenTo = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.MaTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtTenTo = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTo)).BeginInit();
             this.SuspendLayout();
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(187, 97);
+            this.btnXoa.Location = new System.Drawing.Point(214, 103);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.Size = new System.Drawing.Size(86, 25);
             this.btnXoa.TabIndex = 25;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
@@ -51,9 +51,9 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(187, 68);
+            this.btnSua.Location = new System.Drawing.Point(214, 73);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(75, 23);
+            this.btnSua.Size = new System.Drawing.Size(86, 25);
             this.btnSua.TabIndex = 24;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -61,9 +61,9 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(187, 39);
+            this.btnThem.Location = new System.Drawing.Point(214, 42);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(75, 23);
+            this.btnThem.Size = new System.Drawing.Size(86, 25);
             this.btnThem.TabIndex = 23;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
@@ -77,28 +77,12 @@
             this.dgvTo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaTo,
             this.TenTo});
-            this.dgvTo.Location = new System.Drawing.Point(13, 39);
+            this.dgvTo.Location = new System.Drawing.Point(15, 42);
             this.dgvTo.MultiSelect = false;
             this.dgvTo.Name = "dgvTo";
             this.dgvTo.ReadOnly = true;
-            this.dgvTo.Size = new System.Drawing.Size(168, 167);
+            this.dgvTo.Size = new System.Drawing.Size(192, 178);
             this.dgvTo.TabIndex = 22;
-            // 
-            // txtTenTo
-            // 
-            this.txtTenTo.Location = new System.Drawing.Point(64, 12);
-            this.txtTenTo.Name = "txtTenTo";
-            this.txtTenTo.Size = new System.Drawing.Size(116, 21);
-            this.txtTenTo.TabIndex = 21;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 15);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Tên Tổ:";
             // 
             // MaTo
             // 
@@ -115,18 +99,34 @@
             this.TenTo.Name = "TenTo";
             this.TenTo.ReadOnly = true;
             // 
+            // txtTenTo
+            // 
+            this.txtTenTo.Location = new System.Drawing.Point(73, 13);
+            this.txtTenTo.Name = "txtTenTo";
+            this.txtTenTo.Size = new System.Drawing.Size(132, 22);
+            this.txtTenTo.TabIndex = 21;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(11, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 16);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Tên Tổ:";
+            // 
             // frmTo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(277, 222);
+            this.ClientSize = new System.Drawing.Size(317, 237);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.dgvTo);
             this.Controls.Add(this.txtTenTo);
             this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmTo";
             this.Text = "Tổ";
             this.Load += new System.EventHandler(this.frmTo_Load);

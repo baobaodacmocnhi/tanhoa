@@ -40,17 +40,17 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 13);
+            this.label1.Location = new System.Drawing.Point(32, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 15);
+            this.label1.Size = new System.Drawing.Size(88, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Số Chứng Từ:";
             // 
             // txtMaCT
             // 
-            this.txtMaCT.Location = new System.Drawing.Point(112, 11);
+            this.txtMaCT.Location = new System.Drawing.Point(128, 12);
             this.txtMaCT.Name = "txtMaCT";
-            this.txtMaCT.Size = new System.Drawing.Size(88, 21);
+            this.txtMaCT.Size = new System.Drawing.Size(100, 22);
             this.txtMaCT.TabIndex = 1;
             this.txtMaCT.TextChanged += new System.EventHandler(this.txtMaCT_TextChanged);
             // 
@@ -60,7 +60,7 @@
             this.dgvDSChungTu.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -70,9 +70,9 @@
             this.dgvDSChungTu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DanhBo,
             this.SoNKDangKy});
-            this.dgvDSChungTu.Location = new System.Drawing.Point(10, 38);
+            this.dgvDSChungTu.Location = new System.Drawing.Point(11, 41);
             this.dgvDSChungTu.Name = "dgvDSChungTu";
-            this.dgvDSChungTu.Size = new System.Drawing.Size(263, 185);
+            this.dgvDSChungTu.Size = new System.Drawing.Size(301, 197);
             this.dgvDSChungTu.TabIndex = 2;
             // 
             // DanhBo
@@ -89,15 +89,15 @@
             // 
             // frmTimKiemChungTu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(285, 232);
+            this.ClientSize = new System.Drawing.Size(326, 247);
             this.Controls.Add(this.dgvDSChungTu);
             this.Controls.Add(this.txtMaCT);
             this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmTimKiemChungTu";

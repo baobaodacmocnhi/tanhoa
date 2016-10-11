@@ -23,7 +23,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
     public partial class frmCTDB : Form
     {
-        Dictionary<string, string> _source = new Dictionary<string, string>();
         DonKH _donkh = null;
         DonTXL _dontxl = null;
         HOADON _hoadon = null;
@@ -36,27 +35,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CVeViecCHDB _cVeViecCHDB = new CVeViecCHDB();
         CTCTDB _ctctdb = null;
-        bool _direct = false;///Mở form trực tiếp không qua Danh Sách Đơn
                              
         public frmCTDB()
         {
             InitializeComponent();
-        }
-
-        /// <summary>
-        /// Load Form trực tiếp không qua Danh Sách Đơn
-        /// </summary>
-        /// <param name="direct"></param>
-        public frmCTDB(bool direct)
-        {
-            InitializeComponent();
-            _direct = direct;
-        }
-
-        public frmCTDB(Dictionary<string, string> source)
-        {
-            InitializeComponent();
-            _source = source;
         }
 
         /// <summary>
@@ -96,10 +78,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             txtNoiNhan.Text = "";
             ///
             txtHieuLucKy.Text = "";
-            chkKetQuaCapTrenXuLy.Checked=false;
-            dateCapTrenXuLy.Value = DateTime.Now;
-            txtKetQuaCapTrenXuLy.Text = "";
-            txtThoiGianLapCatHuy.Text = "";
             _hoadon = null;
             _ctctdb = null;
             btnSua.Enabled = false;
@@ -107,100 +85,28 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void frmCTDB_Load(object sender, EventArgs e)
         {
-            if (_direct)
+            dgvLichSuXuLy.AutoGenerateColumns = false;
+            dgvLichSuCHDB.AutoGenerateColumns = false;
+
+            cmbLyDo.DataSource = _cVeViecCHDB.LoadDS(true);
+            cmbLyDo.DisplayMember = "TenVV";
+            cmbLyDo.ValueMember = "TenVV";
+
+            DataTable dt1 = _cCHDB.GetDSNoiDungLichSuXyLy();
+            AutoCompleteStringCollection auto1 = new AutoCompleteStringCollection();
+            foreach (DataRow item in dt1.Rows)
             {
-                try
-                {
-                    this.ControlBox = false;
-                    this.WindowState = FormWindowState.Maximized;
-                    this.BringToFront();
-                    txtMaDon.ReadOnly = false;
-                    txtMaThongBao.ReadOnly = false;
-
-                    dgvLichSuXuLy.AutoGenerateColumns = false;
-                    dgvLichSuCHDB.AutoGenerateColumns = false;
-
-                    cmbLyDo.DataSource = _cVeViecCHDB.LoadDS(true);
-                    cmbLyDo.DisplayMember = "TenVV";
-                    cmbLyDo.ValueMember = "TenVV";
-
-                    DataTable dt1 = _cCHDB.GetDSNoiDungLichSuXyLy();
-                    AutoCompleteStringCollection auto1 = new AutoCompleteStringCollection();
-                    foreach (DataRow item in dt1.Rows)
-                    {
-                        auto1.Add(item["NoiDung"].ToString());
-                    }
-                    txtNoiDung.AutoCompleteCustomSource = auto1;
-
-                    DataTable dt2 = _cCHDB.GetDSNoiNhanXuLyLichSuXyLy();
-                    AutoCompleteStringCollection auto2 = new AutoCompleteStringCollection();
-                    foreach (DataRow item in dt2.Rows)
-                    {
-                        auto2.Add(item["NoiNhan"].ToString());
-                    }
-                    txtNoiNhanXuLy.AutoCompleteCustomSource = auto2;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                
+                auto1.Add(item["NoiDung"].ToString());
             }
-            else
+            txtNoiDung.AutoCompleteCustomSource = auto1;
+
+            DataTable dt2 = _cCHDB.GetDSNoiNhanXuLyLichSuXyLy();
+            AutoCompleteStringCollection auto2 = new AutoCompleteStringCollection();
+            foreach (DataRow item in dt2.Rows)
             {
-                this.Location = new Point(70, 70);
-                if (_source["Action"] == "Thêm")
-                {
-                    groupBoxNguyenNhanXuLy.Enabled = true;
-                    if (_cDonKH.getDonKHbyID(decimal.Parse(_source["MaDon"])) != null)
-                    {
-                        _donkh = _cDonKH.getDonKHbyID(decimal.Parse(_source["MaDon"]));
-                        txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
-                    }
-                    if (_cThuTien.GetMoiNhat(_source["DanhBo"]) != null)
-                    {
-                        _hoadon = _cThuTien.GetMoiNhat(_source["DanhBo"]);
-                        txtDanhBo.Text = _hoadon.DANHBA;
-                        txtHopDong.Text = _hoadon.HOPDONG;
-                        txtHoTen.Text = _hoadon.TENKH;
-                        txtDiaChi.Text = _hoadon.SO + " " + _hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(_hoadon.Quan, _hoadon.Phuong);
-                    }
-                }
-                else
-                    if (_source["Action"] == "Sửa")
-                    {
-                        groupBoxKetQuaTCTBXuLy.Enabled = true;
-                        groupBoxKetQuaCapTrenXuLy.Enabled = true;
-                        if (_cCHDB.getCTCTDBbyID(decimal.Parse(_source["MaCTCTDB"])) != null)
-                        {
-                            _ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(_source["MaCTCTDB"]));
-                            ///Thông Tin
-                            txtMaDon.Text = _ctctdb.CHDB.MaDon.ToString().Insert(_ctctdb.CHDB.MaDon.ToString().Length - 2, "-");
-                            txtMaThongBao.Text = _ctctdb.MaCTCTDB.ToString().Insert(_ctctdb.MaCTCTDB.ToString().Length - 2, "-");
-                            txtDanhBo.Text = _ctctdb.DanhBo;
-                            txtHopDong.Text = _ctctdb.HopDong;
-                            txtHoTen.Text = _ctctdb.HoTen;
-                            txtDiaChi.Text = _ctctdb.DiaChi;
-                            ///Nguyên Nhân Xử Lý
-                            cmbLyDo.SelectedValue = _ctctdb.LyDo;
-                            txtGhiChuXuLy.Text = _ctctdb.GhiChuLyDo;
-                            txtSoTien.Text = _ctctdb.SoTien.ToString();
-                            ///Kết Quả Xử Lý
-                            if (_ctctdb.TCTBXuLy)
-                            {
-                                dateLichSuXuLy.Value = _ctctdb.NgayTCTBXuLy.Value;
-                                txtNoiDung.Text = _ctctdb.KetQuaTCTBXuLy;
-                            }
-                            ///Cấp Trên Xử Lý
-                            if (_ctctdb.CapTrenXuLy)
-                            {
-                                dateCapTrenXuLy.Value = _ctctdb.NgayCapTrenXuLy.Value;
-                                txtKetQuaCapTrenXuLy.Text = _ctctdb.KetQuaCapTrenXuLy;
-                                txtThoiGianLapCatHuy.Text = _ctctdb.ThoiGianLapCatHuy.ToString();
-                            }
-                        }
-                    }
+                auto2.Add(item["NoiNhan"].ToString());
             }
+            txtNoiNhanXuLy.AutoCompleteCustomSource = auto2;
         }
 
         private void txtSoTien_KeyPress(object sender, KeyPressEventArgs e)
@@ -247,42 +153,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             CHDB chdb = new CHDB();
                             chdb.ToXuLy = true;
                             chdb.MaDonTXL = _dontxl.MaDon;
-                            if (_direct)
-                            {
-                                ///Sợ phía dưới bị lỗi nên phải thêm như thế
-                                if (!_source.ContainsKey("NoiChuyenDen"))
-                                    _source.Add("NoiChuyenDen", "");
-                            }
-                            else
-                            {
-                                chdb.MaNoiChuyenDen = decimal.Parse(_source["MaNoiChuyenDen"]);
-                                chdb.NoiChuyenDen = _source["NoiChuyenDen"];
-                                chdb.LyDoChuyenDen = _source["LyDoChuyenDen"];
-                            }
                             if (_cCHDB.ThemCHDB(chdb))
                             {
-                                switch (_source["NoiChuyenDen"])
-                                {
-                                    case "Khách Hàng":
-                                        ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
-                                        DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(_source["MaNoiChuyenDen"]));
-                                        dontxl.Nhan = true;
-                                        _cDonTXL.SuaDonTXL(dontxl, true);
-                                        break;
-                                    case "Kiểm Tra Xác Minh":
-                                        ///Báo cho bảng KTXM là đơn này đã được nơi nhận xử lý
-                                        KTXM ktxm = _cKTXM.getKTXMbyID(decimal.Parse(_source["MaNoiChuyenDen"]));
-                                        ktxm.Nhan = true;
-                                        _cKTXM.SuaKTXM(ktxm, true);
-                                        break;
-                                }
-                                //_source.Add("MaCHDB", _cCHDB.getMaxMaCHDB().ToString());
-                                if (string.IsNullOrEmpty(_dontxl.TienTrinh))
-                                    _dontxl.TienTrinh = "CHDB";
-                                else
-                                    _dontxl.TienTrinh += ",CHDB";
-                                _dontxl.Nhan = true;
-                                _cDonTXL.SuaDonTXL(_dontxl, true);
                             }
                         }
                         if (_cCHDB.CheckCTCTDBbyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim()))
@@ -347,11 +219,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                             Clear();
 
-                            if (!_direct)
-                            {
-                                this.DialogResult = DialogResult.OK;
-                                this.Close();
-                            }
                         }
                     }
                     else
@@ -365,42 +232,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     {
                         CHDB chdb = new CHDB();
                         chdb.MaDon = _donkh.MaDon;
-                        if (_direct)
-                        {
-                            ///Sợ phía dưới bị lỗi nên phải thêm như thế
-                            if (!_source.ContainsKey("NoiChuyenDen"))
-                                _source.Add("NoiChuyenDen", "");
-                        }
-                        else
-                        {
-                            chdb.MaNoiChuyenDen = decimal.Parse(_source["MaNoiChuyenDen"]);
-                            chdb.NoiChuyenDen = _source["NoiChuyenDen"];
-                            chdb.LyDoChuyenDen = _source["LyDoChuyenDen"];
-                        }
                         if (_cCHDB.ThemCHDB(chdb))
                         {
-                            switch (_source["NoiChuyenDen"])
-                            {
-                                case "Khách Hàng":
-                                    ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
-                                    DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(_source["MaNoiChuyenDen"]));
-                                    donkh.Nhan = true;
-                                    _cDonKH.SuaDonKH(donkh, true);
-                                    break;
-                                case "Kiểm Tra Xác Minh":
-                                    ///Báo cho bảng KTXM là đơn này đã được nơi nhận xử lý
-                                    KTXM ktxm = _cKTXM.getKTXMbyID(decimal.Parse(_source["MaNoiChuyenDen"]));
-                                    ktxm.Nhan = true;
-                                    _cKTXM.SuaKTXM(ktxm, true);
-                                    break;
-                            }
-                            //_source.Add("MaCHDB", _cCHDB.getMaxMaCHDB().ToString());
-                            if (string.IsNullOrEmpty(_donkh.TienTrinh))
-                                _donkh.TienTrinh = "CHDB";
-                            else
-                                _donkh.TienTrinh += ",CHDB";
-                            _donkh.Nhan = true;
-                            _cDonKH.SuaDonKH(_donkh, true);
                         }
                     }
                     if (_cCHDB.CheckCTCTDBbyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim()))
@@ -463,12 +296,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         //frm.ShowDialog();
 
                         Clear();
-
-                        if (!_direct)
-                        {
-                            this.DialogResult = DialogResult.OK;
-                            this.Close();
-                        }
                     }
                 }
                 else
@@ -478,7 +305,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
         }
 
         private void btnCapNhatTCTBXuLy_Click(object sender, EventArgs e)
@@ -501,40 +327,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         dgvLichSuXuLy.DataSource = _cCHDB.LoadDSLichSuXuLyByMaCTCTDB(_ctctdb.MaCTCTDB);
                         MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         //Clear();
-                        if (!_direct)
-                        {
-                            this.DialogResult = DialogResult.OK;
-                            this.Close();
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            
-        }
-
-        private void btnCapNhatCapTrenXuLy_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (_ctctdb != null)
-                {
-                    _ctctdb.CapTrenXuLy = true;
-                    _ctctdb.NgayCapTrenXuLy = dateCapTrenXuLy.Value;
-                    _ctctdb.KetQuaCapTrenXuLy = txtKetQuaCapTrenXuLy.Text.Trim();
-                    _ctctdb.ThoiGianLapCatHuy = int.Parse(txtThoiGianLapCatHuy.Text.Trim());
-                    if (_cCHDB.SuaCTCTDB(_ctctdb))
-                    {
-                        MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Clear();
-                        if (!_direct)
-                        {
-                            this.DialogResult = DialogResult.OK;
-                            this.Close();
-                        }
                     }
                 }
             }
@@ -810,11 +602,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     {
                         MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
-                        if (!_direct)
-                        {
-                            this.DialogResult = DialogResult.OK;
-                            this.Close();
-                        }
                     }
                 }
             }
@@ -831,14 +618,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             //    groupBoxKetQuaTCTBXuLy.Enabled = true;
             //else
             //    groupBoxKetQuaTCTBXuLy.Enabled = false;
-        }
-
-        private void chkKetQuaCapTrenXuLy_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkKetQuaCapTrenXuLy.Checked)
-                groupBoxKetQuaCapTrenXuLy.Enabled = true;
-            else
-                groupBoxKetQuaCapTrenXuLy.Enabled = false;
         }
 
         private void btnInPhieu_Click(object sender, EventArgs e)
@@ -932,12 +711,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             }
                             frmShowBaoCao frm = new frmShowBaoCao(rpt);
                             frm.ShowDialog();
-
-                            if (!_direct)
-                            {
-                                this.DialogResult = DialogResult.OK;
-                                this.Close();
-                            }
                         }
                     }
                     else
@@ -1031,12 +804,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 }
                                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
                                 frm.ShowDialog();
-
-                                if (!_direct)
-                                {
-                                    this.DialogResult = DialogResult.OK;
-                                    this.Close();
-                                }
                             }
                         }
                         else
@@ -1078,12 +845,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     }
                     frmShowBaoCao frm = new frmShowBaoCao(rpt);
                     frm.ShowDialog();
-
-                    if (!_direct)
-                    {
-                        this.DialogResult = DialogResult.OK;
-                        this.Close();
-                    }
                 }
             }
         }

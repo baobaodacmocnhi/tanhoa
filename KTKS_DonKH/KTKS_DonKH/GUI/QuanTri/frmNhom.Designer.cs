@@ -51,10 +51,10 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.dgvNhom = new System.Windows.Forms.DataGridView();
-            this.txtTenNhom = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.MaNhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenNhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtTenNhom = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
@@ -69,9 +69,9 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(284, 97);
+            this.btnXoa.Location = new System.Drawing.Point(228, 101);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.Size = new System.Drawing.Size(75, 25);
             this.btnXoa.TabIndex = 19;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
@@ -179,16 +179,16 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.gridControl);
-            this.groupBox1.Location = new System.Drawing.Point(365, 12);
+            this.groupBox1.Location = new System.Drawing.Point(309, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(650, 580);
+            this.groupBox1.Size = new System.Drawing.Size(644, 428);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Phân Quyền";
             // 
             // gridControl
             // 
-            this.gridControl.Location = new System.Drawing.Point(6, 20);
+            this.gridControl.Location = new System.Drawing.Point(6, 21);
             this.gridControl.MainView = this.gridView;
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -198,7 +198,7 @@
             this.repositoryItemCheckEdit4,
             this.repositoryItemCheckEdit5,
             this.repositoryItemCheckEdit6});
-            this.gridControl.Size = new System.Drawing.Size(635, 550);
+            this.gridControl.Size = new System.Drawing.Size(630, 400);
             this.gridControl.TabIndex = 12;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -251,9 +251,9 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(284, 68);
+            this.btnSua.Location = new System.Drawing.Point(228, 71);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(75, 23);
+            this.btnSua.Size = new System.Drawing.Size(75, 25);
             this.btnSua.TabIndex = 18;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -261,9 +261,9 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(284, 39);
+            this.btnThem.Location = new System.Drawing.Point(228, 40);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(75, 23);
+            this.btnThem.Size = new System.Drawing.Size(75, 25);
             this.btnThem.TabIndex = 17;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
@@ -277,30 +277,14 @@
             this.dgvNhom.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaNhom,
             this.TenNhom});
-            this.dgvNhom.Location = new System.Drawing.Point(12, 39);
+            this.dgvNhom.Location = new System.Drawing.Point(12, 40);
             this.dgvNhom.MultiSelect = false;
             this.dgvNhom.Name = "dgvNhom";
             this.dgvNhom.ReadOnly = true;
-            this.dgvNhom.Size = new System.Drawing.Size(266, 357);
+            this.dgvNhom.Size = new System.Drawing.Size(210, 400);
             this.dgvNhom.TabIndex = 16;
             this.dgvNhom.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhom_CellContentClick);
             this.dgvNhom.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvNhom_RowPostPaint);
-            // 
-            // txtTenNhom
-            // 
-            this.txtTenNhom.Location = new System.Drawing.Point(86, 12);
-            this.txtTenNhom.Name = "txtTenNhom";
-            this.txtTenNhom.Size = new System.Drawing.Size(116, 21);
-            this.txtTenNhom.TabIndex = 15;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 15);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Tên Nhóm:";
             // 
             // MaNhom
             // 
@@ -316,13 +300,30 @@
             this.TenNhom.HeaderText = "Tên Nhóm";
             this.TenNhom.Name = "TenNhom";
             this.TenNhom.ReadOnly = true;
-            this.TenNhom.Width = 200;
+            this.TenNhom.Width = 150;
+            // 
+            // txtTenNhom
+            // 
+            this.txtTenNhom.Location = new System.Drawing.Point(90, 12);
+            this.txtTenNhom.Name = "txtTenNhom";
+            this.txtTenNhom.Size = new System.Drawing.Size(132, 22);
+            this.txtTenNhom.TabIndex = 15;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 16);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Tên Nhóm:";
             // 
             // frmNhom
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1068, 603);
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.ClientSize = new System.Drawing.Size(962, 451);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSua);
@@ -330,7 +331,7 @@
             this.Controls.Add(this.dgvNhom);
             this.Controls.Add(this.txtTenNhom);
             this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmNhom";
             this.Text = "Nhóm";
             this.Load += new System.EventHandler(this.frmNhom_Load);

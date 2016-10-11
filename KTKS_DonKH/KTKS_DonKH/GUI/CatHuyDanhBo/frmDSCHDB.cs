@@ -26,7 +26,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
     public partial class frmDSCHDB : Form
     {
-        CChuyenDi _cChuyenDi = new CChuyenDi();
         CCHDB _cCHDB = new CCHDB();
         CDonKH _cDonKH = new CDonKH();
         CKTXM _cKTXM = new CKTXM();

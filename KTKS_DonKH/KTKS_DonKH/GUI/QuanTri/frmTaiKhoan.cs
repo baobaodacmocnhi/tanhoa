@@ -78,38 +78,42 @@ namespace KTKS_DonKH.GUI.QuanTri
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (txtHoTen.Text.Trim() != "" && txtTaiKhoan.Text.Trim() != "" && txtMatKhau.Text.Trim() != "")
+            if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
             {
-                User nguoidung = new User();
-                nguoidung.HoTen = txtHoTen.Text.Trim();
-                nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
-                nguoidung.MatKhau = txtMatKhau.Text.Trim();
-                nguoidung.MaKiemBamChi = txtMaKiemBamChi.Text.Trim();
-                nguoidung.MaTo = int.Parse(cmbTo.SelectedValue.ToString());
-                nguoidung.MaNhom = int.Parse(cmbNhom.SelectedValue.ToString());
-                nguoidung.PhoGiamDoc = chkPhoGiamDoc.Checked;
-                nguoidung.An = chkAn.Checked;
-                nguoidung.TruongPhong = chkTruongPhong.Checked;
-                nguoidung.ToTruong = chkToTruong.Checked;
-                nguoidung.KTXM = chkKTXM.Checked;
-                nguoidung.BamChi = chkBamChi.Checked;
-                ///tự động thêm quyền cho người mới
-                foreach (var item in _cMenu.GetDS())
+                if (txtHoTen.Text.Trim() != "" && txtTaiKhoan.Text.Trim() != "" && txtMatKhau.Text.Trim() != "")
                 {
-                    PhanQuyenNguoiDung phanquyennguoidung = new PhanQuyenNguoiDung();
-                    phanquyennguoidung.MaMenu = item.MaMenu;
-                    phanquyennguoidung.MaND = nguoidung.MaU;
-                    nguoidung.PhanQuyenNguoiDungs.Add(phanquyennguoidung);
+                    User nguoidung = new User();
+                    nguoidung.HoTen = txtHoTen.Text.Trim();
+                    nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
+                    nguoidung.MatKhau = txtMatKhau.Text.Trim();
+                    nguoidung.MaKiemBamChi = txtMaKiemBamChi.Text.Trim();
+                    nguoidung.MaTo = int.Parse(cmbTo.SelectedValue.ToString());
+                    nguoidung.MaNhom = int.Parse(cmbNhom.SelectedValue.ToString());
+                    nguoidung.PhoGiamDoc = chkPhoGiamDoc.Checked;
+                    nguoidung.An = chkAn.Checked;
+                    nguoidung.TruongPhong = chkTruongPhong.Checked;
+                    nguoidung.ToTruong = chkToTruong.Checked;
+                    nguoidung.KTXM = chkKTXM.Checked;
+                    nguoidung.BamChi = chkBamChi.Checked;
+                    ///tự động thêm quyền cho người mới
+                    foreach (var item in _cMenu.GetDS())
+                    {
+                        PhanQuyenNguoiDung phanquyennguoidung = new PhanQuyenNguoiDung();
+                        phanquyennguoidung.MaMenu = item.MaMenu;
+                        phanquyennguoidung.MaND = nguoidung.MaU;
+                        nguoidung.PhanQuyenNguoiDungs.Add(phanquyennguoidung);
+                    }
+
+                    if (_cTaiKhoan.Them(nguoidung))
+                        MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    Clear();
                 }
-
-                if(_cTaiKhoan.Them(nguoidung))
-                    MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                Clear();
+                else
+                    MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
-                MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnXoa_Click(object sender, EventArgs e)

@@ -4414,6 +4414,15 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
+        public DataTable LoadDSDanhBoCapDinhMucCoThoiHanDoanThanhNien(DateTime FromCreateDate,DateTime ToCreateDate)
+        {
+            string sql = "select t1.DanhBo,t1.HOTEN,DiaChi,Phuong,Quan from"
+                        + " (select DanhBo,HoTen,DiaChi from CTDCBD where DoanThanhNien=1 and CAST(CreateDate as date)>='" + FromCreateDate.Date.ToString("yyyy-MM-dd") + "' and CAST(CreateDate as date)<='" + ToCreateDate.Date.ToString("yyyy-MM-dd") + "') t1"
+                        + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo";
+
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+        }
+
         #endregion
     }
 }

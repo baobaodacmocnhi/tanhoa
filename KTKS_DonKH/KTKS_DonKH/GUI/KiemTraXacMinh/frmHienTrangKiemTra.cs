@@ -14,27 +14,27 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 {
     public partial class frmHienTrangKiemTra : Form
     {
+        string _mnu = "mnuHienTrangKiemTra";
         CHienTrangKiemTra _cHienTrangKiemTra = new CHienTrangKiemTra();
         int _selectedindexHTKT = -1;
+        BindingList<HienTrangKiemTra> _blHienTrangKiemTra;
 
         public frmHienTrangKiemTra()
         {
             InitializeComponent();
         }
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            this.ControlBox = false;
-            this.WindowState = FormWindowState.Maximized;
-            this.BringToFront();
-        }
-
         private void frmThongTin_KT_BC_Load(object sender, EventArgs e)
         {
             dgvDSHienTrangKT.AutoGenerateColumns = false;
-            dgvDSHienTrangKT.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSHienTrangKT.Font, FontStyle.Bold);
-            dgvDSHienTrangKT.DataSource = _cHienTrangKiemTra.LoadDSHienTrangKiemTra();
+            
+            LoadDataTable();
+        }
+
+        public void LoadDataTable()
+        {
+            _blHienTrangKiemTra = new BindingList<HienTrangKiemTra>(_cHienTrangKiemTra.LoadDSHienTrangKiemTra());
+            dgvDSHienTrangKT.DataSource = _blHienTrangKiemTra;
         }
 
         #region Hiện Trạng Kiểm Tra
@@ -62,52 +62,64 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         private void btnThemHienTrangKT_Click(object sender, EventArgs e)
         {
-            if (txtHienTrangKT.Text.Trim() != "")
+            if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
             {
-                HienTrangKiemTra hientrangkiemtra = new HienTrangKiemTra();
-                hientrangkiemtra.TenHTKT = txtHienTrangKT.Text.Trim();
-
-                if (_cHienTrangKiemTra.ThemHienTrangKiemTra(hientrangkiemtra))
-                {
-                    txtHienTrangKT.Text = "";
-                    dgvDSHienTrangKT.DataSource = _cHienTrangKiemTra.LoadDSHienTrangKiemTra();
-                    //bsHienTrangKT = new BindingSource(_cHienTrangKiemTra.LoadDSHienTrangKiemTra(), string.Empty);
-                }
-            }
-            else
-                MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        private void btnSuaHienTrangKT_Click(object sender, EventArgs e)
-        {
-            if (_selectedindexHTKT != -1)
                 if (txtHienTrangKT.Text.Trim() != "")
                 {
-                    HienTrangKiemTra hientrangkiemtra = _cHienTrangKiemTra.getHienTrangKiemTrabyID(int.Parse(dgvDSHienTrangKT["MaHTKT", _selectedindexHTKT].Value.ToString()));
+                    HienTrangKiemTra hientrangkiemtra = new HienTrangKiemTra();
                     hientrangkiemtra.TenHTKT = txtHienTrangKT.Text.Trim();
 
-                    if (_cHienTrangKiemTra.SuaHienTrangKiemTra(hientrangkiemtra))
+                    if (_cHienTrangKiemTra.ThemHienTrangKiemTra(hientrangkiemtra))
                     {
                         txtHienTrangKT.Text = "";
-                        _selectedindexHTKT = -1;
-                        dgvDSHienTrangKT.DataSource = _cHienTrangKiemTra.LoadDSHienTrangKiemTra();
-                        //bsHienTrangKT = new BindingSource(_cHienTrangKiemTra.LoadDSHienTrangKiemTra(), string.Empty);
+                        LoadDataTable();
                     }
                 }
                 else
                     MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnSuaHienTrangKT_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+            {
+                if (_selectedindexHTKT != -1)
+                    if (txtHienTrangKT.Text.Trim() != "")
+                    {
+                        HienTrangKiemTra hientrangkiemtra = _cHienTrangKiemTra.getHienTrangKiemTrabyID(int.Parse(dgvDSHienTrangKT["MaHTKT", _selectedindexHTKT].Value.ToString()));
+                        hientrangkiemtra.TenHTKT = txtHienTrangKT.Text.Trim();
+
+                        if (_cHienTrangKiemTra.SuaHienTrangKiemTra(hientrangkiemtra))
+                        {
+                            txtHienTrangKT.Text = "";
+                            _selectedindexHTKT = -1;
+                            LoadDataTable();
+                        }
+                    }
+                    else
+                        MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnXoaHienTrangKT_Click(object sender, EventArgs e)
         {
-            if (_selectedindexHTKT != -1)
-                if (_cHienTrangKiemTra.XoaHienTrangKiemTra(_cHienTrangKiemTra.getHienTrangKiemTrabyID(int.Parse(dgvDSHienTrangKT["MaHTKT", _selectedindexHTKT].Value.ToString()))))
-                {
-                    txtHienTrangKT.Text = "";
-                    _selectedindexHTKT = -1;
-                    dgvDSHienTrangKT.DataSource = _cHienTrangKiemTra.LoadDSHienTrangKiemTra();
-                    //bsHienTrangKT = new BindingSource(_cHienTrangKiemTra.LoadDSHienTrangKiemTra(), string.Empty);
-                }
+            if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
+            {
+                if (_selectedindexHTKT != -1)
+                    if (_cHienTrangKiemTra.XoaHienTrangKiemTra(_cHienTrangKiemTra.getHienTrangKiemTrabyID(int.Parse(dgvDSHienTrangKT["MaHTKT", _selectedindexHTKT].Value.ToString()))))
+                    {
+                        txtHienTrangKT.Text = "";
+                        _selectedindexHTKT = -1;
+                        LoadDataTable();
+                    }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnUpHienTrangKT_Click(object sender, EventArgs e)
@@ -181,6 +193,50 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         }
 
         #endregion
+
+        int rowIndexFromMouseDown;
+        DataGridViewRow rw;
+        private void dgvDSHienTrangKT_DragDrop(object sender, DragEventArgs e)
+        {
+            int rowIndexOfItemUnderMouseToDrop;
+            Point clientPoint = dgvDSHienTrangKT.PointToClient(new Point(e.X, e.Y));
+            rowIndexOfItemUnderMouseToDrop = dgvDSHienTrangKT.HitTest(clientPoint.X, clientPoint.Y).RowIndex;
+
+            if (e.Effect == DragDropEffects.Move)
+            {
+                var item = this._blHienTrangKiemTra[rowIndexFromMouseDown];
+                _blHienTrangKiemTra.RemoveAt(rowIndexFromMouseDown);
+                _blHienTrangKiemTra.Insert(rowIndexOfItemUnderMouseToDrop, item);
+
+                ///update STT dô database
+                for (int i = 0; i < _blHienTrangKiemTra.Count; i++)
+                {
+                    _blHienTrangKiemTra[i].STT = i + 1;
+                }
+                _cHienTrangKiemTra.SubmitChanges();
+            }
+        }
+
+        private void dgvDSHienTrangKT_DragEnter(object sender, DragEventArgs e)
+        {
+            if (dgvDSHienTrangKT.SelectedRows.Count > 0)
+            {
+                e.Effect = DragDropEffects.Move;
+            }
+        }
+
+        private void dgvDSHienTrangKT_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (dgvDSHienTrangKT.SelectedRows.Count == 1)
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    rw = dgvDSHienTrangKT.SelectedRows[0];
+                    rowIndexFromMouseDown = dgvDSHienTrangKT.SelectedRows[0].Index;
+                    dgvDSHienTrangKT.DoDragDrop(rw, DragDropEffects.Move);
+                }
+            }
+        }
 
     }
 }

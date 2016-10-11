@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnDownTrangThaiBC = new System.Windows.Forms.Button();
             this.btnXoaTrangThaiBC = new System.Windows.Forms.Button();
@@ -54,18 +54,21 @@
             this.groupBox2.Controls.Add(this.btnThemTrangThaiBC);
             this.groupBox2.Controls.Add(this.txtTrangThaiBC);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(52, 12);
+            this.groupBox2.Location = new System.Drawing.Point(13, 13);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(480, 477);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(484, 587);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Trạng Thái Bấm Chì";
             // 
             // btnDownTrangThaiBC
             // 
-            this.btnDownTrangThaiBC.Location = new System.Drawing.Point(87, 47);
+            this.btnDownTrangThaiBC.Location = new System.Drawing.Point(92, 58);
+            this.btnDownTrangThaiBC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDownTrangThaiBC.Name = "btnDownTrangThaiBC";
-            this.btnDownTrangThaiBC.Size = new System.Drawing.Size(75, 23);
+            this.btnDownTrangThaiBC.Size = new System.Drawing.Size(75, 25);
             this.btnDownTrangThaiBC.TabIndex = 91;
             this.btnDownTrangThaiBC.Text = "Down";
             this.btnDownTrangThaiBC.UseVisualStyleBackColor = true;
@@ -73,9 +76,10 @@
             // 
             // btnXoaTrangThaiBC
             // 
-            this.btnXoaTrangThaiBC.Location = new System.Drawing.Point(399, 47);
+            this.btnXoaTrangThaiBC.Location = new System.Drawing.Point(399, 58);
+            this.btnXoaTrangThaiBC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnXoaTrangThaiBC.Name = "btnXoaTrangThaiBC";
-            this.btnXoaTrangThaiBC.Size = new System.Drawing.Size(75, 23);
+            this.btnXoaTrangThaiBC.Size = new System.Drawing.Size(75, 25);
             this.btnXoaTrangThaiBC.TabIndex = 88;
             this.btnXoaTrangThaiBC.Text = "Xóa";
             this.btnXoaTrangThaiBC.UseVisualStyleBackColor = true;
@@ -83,9 +87,10 @@
             // 
             // btnUpTrangThaiBC
             // 
-            this.btnUpTrangThaiBC.Location = new System.Drawing.Point(6, 47);
+            this.btnUpTrangThaiBC.Location = new System.Drawing.Point(9, 58);
+            this.btnUpTrangThaiBC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnUpTrangThaiBC.Name = "btnUpTrangThaiBC";
-            this.btnUpTrangThaiBC.Size = new System.Drawing.Size(75, 23);
+            this.btnUpTrangThaiBC.Size = new System.Drawing.Size(75, 25);
             this.btnUpTrangThaiBC.TabIndex = 90;
             this.btnUpTrangThaiBC.Text = "Up";
             this.btnUpTrangThaiBC.UseVisualStyleBackColor = true;
@@ -95,22 +100,23 @@
             // 
             this.dgvDSTrangThaiBC.AllowUserToAddRows = false;
             this.dgvDSTrangThaiBC.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSTrangThaiBC.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSTrangThaiBC.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDSTrangThaiBC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSTrangThaiBC.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaTTBC,
             this.TenTTBC});
-            this.dgvDSTrangThaiBC.Location = new System.Drawing.Point(6, 76);
+            this.dgvDSTrangThaiBC.Location = new System.Drawing.Point(8, 91);
+            this.dgvDSTrangThaiBC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvDSTrangThaiBC.MultiSelect = false;
             this.dgvDSTrangThaiBC.Name = "dgvDSTrangThaiBC";
-            this.dgvDSTrangThaiBC.Size = new System.Drawing.Size(469, 395);
+            this.dgvDSTrangThaiBC.Size = new System.Drawing.Size(466, 486);
             this.dgvDSTrangThaiBC.TabIndex = 8;
             this.dgvDSTrangThaiBC.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSTrangThaiBC_CellContentClick);
             this.dgvDSTrangThaiBC.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSTrangThaiBC_RowPostPaint);
@@ -132,9 +138,10 @@
             // 
             // btnSuaTrangThaiBC
             // 
-            this.btnSuaTrangThaiBC.Location = new System.Drawing.Point(318, 45);
+            this.btnSuaTrangThaiBC.Location = new System.Drawing.Point(316, 58);
+            this.btnSuaTrangThaiBC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSuaTrangThaiBC.Name = "btnSuaTrangThaiBC";
-            this.btnSuaTrangThaiBC.Size = new System.Drawing.Size(75, 23);
+            this.btnSuaTrangThaiBC.Size = new System.Drawing.Size(75, 25);
             this.btnSuaTrangThaiBC.TabIndex = 7;
             this.btnSuaTrangThaiBC.Text = "Sửa";
             this.btnSuaTrangThaiBC.UseVisualStyleBackColor = true;
@@ -142,9 +149,10 @@
             // 
             // btnThemTrangThaiBC
             // 
-            this.btnThemTrangThaiBC.Location = new System.Drawing.Point(237, 45);
+            this.btnThemTrangThaiBC.Location = new System.Drawing.Point(233, 58);
+            this.btnThemTrangThaiBC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnThemTrangThaiBC.Name = "btnThemTrangThaiBC";
-            this.btnThemTrangThaiBC.Size = new System.Drawing.Size(75, 23);
+            this.btnThemTrangThaiBC.Size = new System.Drawing.Size(75, 25);
             this.btnThemTrangThaiBC.TabIndex = 6;
             this.btnThemTrangThaiBC.Text = "Thêm";
             this.btnThemTrangThaiBC.UseVisualStyleBackColor = true;
@@ -152,26 +160,30 @@
             // 
             // txtTrangThaiBC
             // 
-            this.txtTrangThaiBC.Location = new System.Drawing.Point(144, 19);
+            this.txtTrangThaiBC.Location = new System.Drawing.Point(147, 28);
+            this.txtTrangThaiBC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTrangThaiBC.Name = "txtTrangThaiBC";
-            this.txtTrangThaiBC.Size = new System.Drawing.Size(246, 20);
+            this.txtTrangThaiBC.Size = new System.Drawing.Size(327, 22);
             this.txtTrangThaiBC.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 26);
+            this.label2.Location = new System.Drawing.Point(9, 31);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 13);
+            this.label2.Size = new System.Drawing.Size(130, 16);
             this.label2.TabIndex = 0;
             this.label2.Text = "Trạng Thái Bấm Chì:";
             // 
             // frmTrangThaiBamChi
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(874, 614);
+            this.ClientSize = new System.Drawing.Size(529, 611);
             this.Controls.Add(this.groupBox2);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmTrangThaiBamChi";
             this.Text = "Trạng Thái Bấm Chì";
             this.Load += new System.EventHandler(this.frmTrangThaiBamChi_Load);

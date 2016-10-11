@@ -23,7 +23,6 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 {
     public partial class frmDSTTTL : Form
     {
-        CChuyenDi _cChuyenDi = new CChuyenDi();
         CTTTL _cTTTL = new CTTTL();
         CDonKH _cDonKH = new CDonKH();
         CKTXM _cKTXM = new CKTXM();

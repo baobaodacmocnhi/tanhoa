@@ -67,36 +67,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             ///Dùng để bôi đen Text
             txtMaDon.GotFocus += new EventHandler(txtMaDon_GotFocus);
 
-            if (_direct)
-            {
-                this.ControlBox = false;
-                this.WindowState = FormWindowState.Maximized;
-                this.BringToFront();
-                txtMaDon.ReadOnly = false;
-            }
-            else
-            {
-                this.Location = new Point(70, 70);
-                if (_cDonKH.getDonKHbyID(decimal.Parse(_source["MaDon"])) != null)
-                {
-                    _donkh = _cDonKH.getDonKHbyID(decimal.Parse(_source["MaDon"]));
-                    txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
-                }
-                if (_cThuTien.GetMoiNhat(_source["DanhBo"]) != null)
-                {
-                    _hoadon = _cThuTien.GetMoiNhat(_source["DanhBo"]);
-                    LoadTTKH(_hoadon);
-                }
-            }
             dgvDSSoDangKy.AutoGenerateColumns = false;
-            dgvDSSoDangKy.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSChungTu.Font, FontStyle.Bold);
+            dgvDSSoDangKy.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSSoDangKy.Font, FontStyle.Bold);
             //DataGridViewComboBoxColumn cmbColumn = (DataGridViewComboBoxColumn)dgvDSSoDangKy.Columns["MaLCT"];
             //cmbColumn.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu(true);
             //cmbColumn.DisplayMember = "TenLCT";
             //cmbColumn.ValueMember = "MaLCT";
 
             dgvDSDieuChinh.AutoGenerateColumns = false;
-            dgvDSDieuChinh.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSChungTu.Font, FontStyle.Bold);
+            dgvDSDieuChinh.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSDieuChinh.Font, FontStyle.Bold);
 
             dgvLichSuChungTu.AutoGenerateColumns = false;
             dgvLichSuChungTu.ColumnHeadersDefaultCellStyle.Font = new Font(dgvLichSuChungTu.Font, FontStyle.Bold);
@@ -525,40 +504,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             DCBD dcbd = new DCBD();
                             dcbd.ToXuLy = true;
                             dcbd.MaDonTXL = _dontxl.MaDon;
-                            if (_direct)
-                            {
-                                if (!_source.ContainsKey("NoiChuyenDen"))
-                                    _source.Add("NoiChuyenDen", "");
-                            }
-                            else
-                            {
-                                dcbd.MaNoiChuyenDen = decimal.Parse(_source["MaNoiChuyenDen"]);
-                                dcbd.NoiChuyenDen = _source["NoiChuyenDen"];
-                                dcbd.LyDoChuyenDen = _source["LyDoChuyenDen"];
-                            }
+
                             if (_cDCBD.ThemDCBD(dcbd))
                             {
-                                switch (_source["NoiChuyenDen"])
-                                {
-                                    case "Khách Hàng":
-                                        ///Báo cho bảng DonTXL là đơn này đã được nơi nhận xử lý
-                                        DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(_source["MaNoiChuyenDen"]));
-                                        dontxl.Nhan = true;
-                                        _cDonTXL.SuaDonTXL(dontxl, true);
-                                        break;
-                                    case "Kiểm Tra Xác Minh":
-                                        ///Báo cho bảng KTXM là đơn này đã được nơi nhận xử lý
-                                        KTXM ktxm = _cKTXM.getKTXMbyID(decimal.Parse(_source["MaNoiChuyenDen"]));
-                                        ktxm.Nhan = true;
-                                        _cKTXM.SuaKTXM(ktxm, true);
-                                        break;
-                                }
-                                if (string.IsNullOrEmpty(_dontxl.TienTrinh))
-                                    _dontxl.TienTrinh = "DCBD";
-                                else
-                                    _dontxl.TienTrinh += ",DCBD";
-                                _dontxl.Nhan = true;
-                                _cDonTXL.SuaDonTXL(_dontxl, true);
                             }
                         }
                         if (_cDCBD.CheckCTDCBDbyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim()))
@@ -697,47 +645,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         DCBD dcbd = new DCBD();
                         dcbd.MaDon = _donkh.MaDon;
-                        if (_direct)
-                        {
-                            ///mới check DonKH còn KTXM chưa
-                            //string a, b, c;
-                            //_cDonKH.GetInfobyMaDon(_donkh.MaDon, "DCBD", out a, out b, out c);
-                            //_source.Add("MaNoiChuyenDen", a);
-                            if (!_source.ContainsKey("NoiChuyenDen"))
-                                _source.Add("NoiChuyenDen", "");
-                            //_source.Add("LyDoChuyenDen", c);
-                        }
-                        else
-                        {
-                            dcbd.MaNoiChuyenDen = decimal.Parse(_source["MaNoiChuyenDen"]);
-                            dcbd.NoiChuyenDen = _source["NoiChuyenDen"];
-                            dcbd.LyDoChuyenDen = _source["LyDoChuyenDen"];
-                        }
                         if (_cDCBD.ThemDCBD(dcbd))
                         {
-                            switch (_source["NoiChuyenDen"])
-                            {
-                                case "Khách Hàng":
-                                    ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
-                                    DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(_source["MaNoiChuyenDen"]));
-                                    donkh.Nhan = true;
-                                    _cDonKH.SuaDonKH(donkh, true);
-                                    break;
-                                case "Kiểm Tra Xác Minh":
-                                    ///Báo cho bảng KTXM là đơn này đã được nơi nhận xử lý
-                                    KTXM ktxm = _cKTXM.getKTXMbyID(decimal.Parse(_source["MaNoiChuyenDen"]));
-                                    ktxm.Nhan = true;
-                                    _cKTXM.SuaKTXM(ktxm, true);
-                                    break;
-                            }
-                            //_source.Add("MaDCBD", _cDCBD.getMaxMaDCBD().ToString());
-                            //flagFirst = false;
-                            if (string.IsNullOrEmpty(_donkh.TienTrinh))
-                                _donkh.TienTrinh = "DCBD";
-                            else
-                                _donkh.TienTrinh += ",DCBD";
-                            _donkh.Nhan = true;
-                            _cDonKH.SuaDonKH(_donkh, true);
                         }
                     }
                     if (_cDCBD.CheckCTDCBDbyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim()))
@@ -1195,9 +1104,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 else
                 {
                     _flagCtrl3 = false;
-                    groupBox_DSSoDangKy.Height = 188;
-                    dgvDSSoDangKy.Height = 158;
-                    panel_LichSuDieuChinh.Location = new Point(0, 386);
+                    groupBox_DSSoDangKy.Height = 229;
+                    dgvDSSoDangKy.Height = 200;
+                    panel_LichSuDieuChinh.Location = new Point(0,  434);
                 }
             }
             if (e.Control && e.KeyCode == Keys.D4)
@@ -1259,6 +1168,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();
         }
+
+      
 
     }
 }

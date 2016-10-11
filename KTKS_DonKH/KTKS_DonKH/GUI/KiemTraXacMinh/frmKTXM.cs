@@ -260,12 +260,6 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
                             if (_cKTXM.ThemKTXM(ktxm))
                             {
-                                if (string.IsNullOrEmpty(_dontxl.TienTrinh))
-                                    _dontxl.TienTrinh = "KTXM";
-                                else
-                                    _dontxl.TienTrinh += ",KTXM";
-                                _dontxl.Nhan = true;
-                                _cDonTXL.SuaDonTXL(_dontxl, true);
                             }
                         }
                         if (txtDanhBo.Text.Trim()!="" &&_cKTXM.CheckCTKTXMbyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value))
@@ -355,12 +349,6 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                 //DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(MaNoiChuyenDen));
                                 //donkh.Chuyen = true;
                                 //donkh.MaChuyen = "KTXM";
-                                if (string.IsNullOrEmpty(_donkh.TienTrinh))
-                                    _donkh.TienTrinh = "KTXM";
-                                else
-                                    _donkh.TienTrinh += ",KTXM";
-                                _donkh.Nhan = true;
-                                _cDonKH.SuaDonKH(_donkh, true);
                             }
                         }
                         if (_cKTXM.CheckCTKTXMbyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value))

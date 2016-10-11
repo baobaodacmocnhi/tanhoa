@@ -21,7 +21,6 @@ namespace KTKS_DonKH.GUI.KhachHang
     public partial class frmDSDonKH : Form
     {
         CDonKH _cDonKH = new CDonKH();
-        CChuyenDi _cChuyenDi = new CChuyenDi();
         DataTable DSDonKH_Edited = new DataTable();
         //BindingSource DSDonKH_BS = new BindingSource();
         CLoaiDon _cLoaiDon = new CLoaiDon();

@@ -19,7 +19,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
     public partial class frmBaoCaoDCBD : Form
     {
-        string _tuNgay = "", _denNgay = "";
         CChungTu _cChungTu = new CChungTu();
         CCatChuyenDM _cCatChuyenDM = new CCatChuyenDM();
         CDCBD _cDCBD = new CDCBD();
@@ -53,27 +52,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             cmbQuan.ValueMember = "MaQuan";
         }
 
-        private void dateTu_ValueChanged(object sender, EventArgs e)
-        {
-            _tuNgay = dateTu.Value.ToString("dd/MM/yyyy");
-            _denNgay = "";
-        }
-
-        private void dateDen_ValueChanged(object sender, EventArgs e)
-        {
-            _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
-        }
-
         private void btnBaoCao_Click(object sender, EventArgs e)
         {
             if (radDSDMCapCoThoiHan.Checked)
             {
                 DataTable dt = new DataTable();
-                if (!string.IsNullOrEmpty(_tuNgay) && !string.IsNullOrEmpty(_denNgay))
                     dt = _cChungTu.LoadDSCapDinhMuc(dateTu.Value, dateDen.Value);
-                else
-                    if (!string.IsNullOrEmpty(_tuNgay))
-                        dt = _cChungTu.LoadDSCapDinhMuc(dateTu.Value);
 
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 foreach (DataRow itemRow in dt.Rows)
@@ -82,8 +66,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
 
-                        dr["TuNgay"] = _tuNgay;
-                        dr["DenNgay"] = _denNgay;
+                        dr["TuNgay"] = dateTu.Value.Date.ToString("dd/MM/yyyy");
+                        dr["DenNgay"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
                         dr["LoaiBaoCao"] = "CÓ THỜI HẠN";
                         if (_cDCBD.checkCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                         {
@@ -128,8 +112,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             {
                                 DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
 
-                                dr["TuNgay"] = _tuNgay;
-                                dr["DenNgay"] = _denNgay;
+                                dr["TuNgay"] = dateTu.Value.Date.ToString("dd/MM/yyyy");
+                                dr["DenNgay"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
                                 dr["LoaiBaoCao"] = "CÓ THỜI HẠN";
                                 if (_cDCBD.checkCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                                 {
@@ -174,8 +158,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             {
                                 DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
 
-                                dr["TuNgay"] = _tuNgay;
-                                dr["DenNgay"] = _denNgay;
+                                dr["TuNgay"] = dateTu.Value.Date.ToString("dd/MM/yyyy");
+                                dr["DenNgay"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
                                 dr["LoaiBaoCao"] = "CÓ THỜI HẠN";
                                 if (_cDCBD.checkCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                                 {
@@ -223,17 +207,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 rptDSCapDinhMuc rpt = new rptDSCapDinhMuc();
                 rpt.SetDataSource(dsBaoCao);
                 rpt.Subreports[0].SetDataSource(dsBaoCao);
-                crystalReportViewer1.ReportSource = rpt;
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.Show();
             }
 
             if (radDSDMCapKThoiHan.Checked)
             {
                 DataTable dt = new DataTable();
-                if (!string.IsNullOrEmpty(_tuNgay) && !string.IsNullOrEmpty(_denNgay))
                     dt = _cChungTu.LoadDSCapDinhMucKhongThoiHan(dateTu.Value, dateDen.Value);
-                else
-                    if (!string.IsNullOrEmpty(_tuNgay))
-                        dt = _cChungTu.LoadDSCapDinhMucKhongThoiHan(dateTu.Value);
 
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 foreach (DataRow itemRow in dt.Rows)
@@ -242,8 +223,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
 
-                        dr["TuNgay"] = _tuNgay;
-                        dr["DenNgay"] = _denNgay;
+                        dr["TuNgay"] = dateTu.Value.Date.ToString("dd/MM/yyyy");
+                        dr["DenNgay"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
                         dr["LoaiBaoCao"] = "KHÔNG THỜI HẠN";
                         if (_cDCBD.checkCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                         {
@@ -282,8 +263,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             {
                                 DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
 
-                                dr["TuNgay"] = _tuNgay;
-                                dr["DenNgay"] = _denNgay;
+                                dr["TuNgay"] = dateTu.Value.Date.ToString("dd/MM/yyyy");
+                                dr["DenNgay"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
                                 dr["LoaiBaoCao"] = "KHÔNG THỜI HẠN";
                                 if (_cDCBD.checkCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                                 {
@@ -322,8 +303,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             {
                                 DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
 
-                                dr["TuNgay"] = _tuNgay;
-                                dr["DenNgay"] = _denNgay;
+                                dr["TuNgay"] = dateTu.Value.Date.ToString("dd/MM/yyyy");
+                                dr["DenNgay"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
                                 dr["LoaiBaoCao"] = "KHÔNG THỜI HẠN";
                                 if (_cDCBD.checkCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                                 {
@@ -365,17 +346,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 rptDSCapDinhMuc rpt = new rptDSCapDinhMuc();
                 rpt.SetDataSource(dsBaoCao);
                 rpt.Subreports[0].SetDataSource(dsBaoCao);
-                crystalReportViewer1.ReportSource = rpt;
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.Show();
             }
 
             if (radDSDMCapNgayHetHan.Checked)
             {
                 DataTable dt = new DataTable();
-                if (!string.IsNullOrEmpty(_tuNgay) && !string.IsNullOrEmpty(_denNgay))
                     dt = _cChungTu.LoadDSCapDinhMucNgayHetHan(dateTu.Value, dateDen.Value);
-                else
-                    if (!string.IsNullOrEmpty(_tuNgay))
-                        dt = _cChungTu.LoadDSCapDinhMucNgayHetHan(dateTu.Value);
 
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 foreach (DataRow itemRow in dt.Rows)
@@ -384,8 +362,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
 
-                        dr["TuNgay"] = _tuNgay;
-                        dr["DenNgay"] = _denNgay;
+                        dr["TuNgay"] = dateTu.Value.Date.ToString("dd/MM/yyyy");
+                        dr["DenNgay"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
                         dr["LoaiBaoCao"] = "SẮP THỜI HẠN";
                         if (_cDCBD.checkCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                         {
@@ -426,8 +404,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             {
                                 DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
 
-                                dr["TuNgay"] = _tuNgay;
-                                dr["DenNgay"] = _denNgay;
+                                dr["TuNgay"] = dateTu.Value.Date.ToString("dd/MM/yyyy");
+                                dr["DenNgay"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
                                 dr["LoaiBaoCao"] = "SẮP THỜI HẠN";
                                 if (_cDCBD.checkCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                                 {
@@ -468,8 +446,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             {
                                 DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
 
-                                dr["TuNgay"] = _tuNgay;
-                                dr["DenNgay"] = _denNgay;
+                                dr["TuNgay"] = dateTu.Value.Date.ToString("dd/MM/yyyy");
+                                dr["DenNgay"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
                                 dr["LoaiBaoCao"] = "SẮP THỜI HẠN";
                                 if (_cDCBD.checkCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                                 {
@@ -513,7 +491,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 rptDSCapDinhMuc rpt = new rptDSCapDinhMuc();
                 rpt.SetDataSource(dsBaoCao);
                 rpt.Subreports[0].SetDataSource(dsBaoCao);
-                crystalReportViewer1.ReportSource = rpt;
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.Show();
             }
 
             if (radThongKeDC.Checked)
@@ -522,19 +501,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 DataTable dtDCHD = new DataTable();
                 DataTable dtCatChuyenDM = new DataTable();
 
-                if (!string.IsNullOrEmpty(_tuNgay) && !string.IsNullOrEmpty(_denNgay))
-                {
                     dtDCBD = _cDCBD.LoadDSCTDCBD(dateTu.Value, dateDen.Value);
                     dtDCHD = _cDCBD.LoadDSCTDCHD(dateTu.Value, dateDen.Value);
                     dtCatChuyenDM = _cChungTu.LoadDSCatChuyenDM(dateTu.Value, dateDen.Value);
-                }
-                else
-                    if (!string.IsNullOrEmpty(_tuNgay))
-                    {
-                        dtDCBD = _cDCBD.LoadDSCTDCBD(dateTu.Value);
-                        dtDCHD = _cDCBD.LoadDSCTDCHD(dateTu.Value);
-                        dtCatChuyenDM = _cChungTu.LoadDSCatChuyenDM(dateTu.Value);
-                    }
 
                 int DanhBoTangDM = 0;
                 int DanhBoGiamDM = 0;
@@ -557,8 +526,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         DataRow dr = dsBaoCao.Tables["ThongKeDCBD"].NewRow();
 
-                        dr["TuNgay"] = _tuNgay;
-                        dr["DenNgay"] = _denNgay;
+                        dr["TuNgay"] = dateTu.Value.Date.ToString("dd/MM/yyyy");
+                        dr["DenNgay"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
                         dr["DanhBo"] = itemRow["DanhBo"];
                         dr["HoTen"] = itemRow["HoTen_BD"];
                         dr["GiaBieuCu"] = itemRow["GiaBieu"];
@@ -630,8 +599,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             DataRow dr = dsBaoCao.Tables["ThongKeDCBD"].NewRow();
 
-                            dr["TuNgay"] = _tuNgay;
-                            dr["DenNgay"] = _denNgay;
+                            dr["TuNgay"] = dateTu.Value.Date.ToString("dd/MM/yyyy");
+                            dr["DenNgay"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
                             dr["DanhBo"] = itemRow["DanhBo"];
                             dr["HoTen"] = itemRow["HoTen_BD"];
                             dr["GiaBieuCu"] = itemRow["GiaBieu"];
@@ -703,8 +672,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                 DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
 
-                                dr["TuNgay"] = _tuNgay;
-                                dr["DenNgay"] = _denNgay;
+                                dr["TuNgay"] = dateTu.Value.Date.ToString("dd/MM/yyyy");
+                                dr["DenNgay"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
                                 dr["LoaiBaoCao"] = "KHÔNG THUỘC HIỆU LỰC KỲ";
                                 if (_cDCBD.checkCTDCBDbyDanhBoCreateDate(rowTemp["DanhBo"].ToString(), DateTime.Parse(rowTemp["CreateDate"].ToString())))
                                 {
@@ -810,87 +779,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 rpt.SetParameterValue(10, DanhBoGiamDM_NT);
                 rpt.SetParameterValue(11, DinhMucGiam_NT);
 
-                crystalReportViewer1.ReportSource = rpt;
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.Show();
 
                 rptDSCapDinhMuc rpt2 = new rptDSCapDinhMuc();
                 rpt2.SetDataSource(dsBaoCao);
-                frmShowBaoCao frm = new frmShowBaoCao(rpt2);
-                frm.Show();
-            }
-
-            if (radDSChuyenDocSo.Checked)
-            {
-                DataTable dt = new DataTable();
-                if (!string.IsNullOrEmpty(_tuNgay) && !string.IsNullOrEmpty(_denNgay))
-                    dt = _cDCBD.LoadDSCTDCBDbyNgayChuyenDocSo(dateTu.Value, dateDen.Value);
-                else
-                    if (!string.IsNullOrEmpty(_tuNgay))
-                        dt = _cDCBD.LoadDSCTDCBDbyNgayChuyenDocSo(dateTu.Value);
-
-                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                foreach (DataRow itemRow in dt.Rows)
-                {
-                    DataRow dr = dsBaoCao.Tables["ChiTietDieuChinh"].NewRow();
-
-                    dr["TuNgay"] = _tuNgay;
-                    dr["DenNgay"] = _denNgay;
-                    dr["SoPhieu"] = itemRow["SoPhieu"].ToString().Insert(itemRow["SoPhieu"].ToString().Length - 2, "-");
-                    dr["ThongTin"] = itemRow["ThongTin"];
-                    dr["HieuLucKy"] = itemRow["HieuLucKy"];
-                    dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                    dr["HoTen"] = itemRow["HoTen"];
-                    dr["DiaChi"] = itemRow["DiaChi"];
-                    dr["GiaBieu"] = itemRow["GiaBieu"];
-                    dr["DinhMuc"] = itemRow["DinhMuc"];
-
-                    dsBaoCao.Tables["ChiTietDieuChinh"].Rows.Add(dr);
-                }
-
-                //dateTu.Value = DateTime.Now;
-                //dateDen.Value = DateTime.Now;
-                //_tuNgay = _denNgay = "";
-
-                rptDSChuyenDocSo rpt = new rptDSChuyenDocSo();
-                rpt.SetDataSource(dsBaoCao);
-                crystalReportViewer1.ReportSource = rpt;
-            }
-
-            if (radDSChuyenDocSo_LocUser.Checked)
-            {
-                DataTable dt = new DataTable();
-                if (!string.IsNullOrEmpty(_tuNgay) && !string.IsNullOrEmpty(_denNgay))
-                    dt = _cDCBD.LoadDSCTDCBDbyNgayChuyenDocSo(dateTu.Value, dateDen.Value);
-                else
-                    if (!string.IsNullOrEmpty(_tuNgay))
-                        dt = _cDCBD.LoadDSCTDCBDbyNgayChuyenDocSo(dateTu.Value);
-
-                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                foreach (DataRow itemRow in dt.Rows)
-                {
-                    DataRow dr = dsBaoCao.Tables["ChiTietDieuChinh"].NewRow();
-
-                    dr["TuNgay"] = _tuNgay;
-                    dr["DenNgay"] = _denNgay;
-                    dr["SoPhieu"] = itemRow["SoPhieu"].ToString().Insert(itemRow["SoPhieu"].ToString().Length - 2, "-");
-                    dr["ThongTin"] = itemRow["ThongTin"];
-                    dr["HieuLucKy"] = itemRow["HieuLucKy"];
-                    dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                    dr["HoTen"] = itemRow["HoTen"];
-                    dr["DiaChi"] = itemRow["DiaChi"];
-                    dr["GiaBieu"] = itemRow["GiaBieu"];
-                    dr["DinhMuc"] = itemRow["DinhMuc"];
-                    dr["CreateBy"] = itemRow["CreateBy"];
-
-                    dsBaoCao.Tables["ChiTietDieuChinh"].Rows.Add(dr);
-                }
-
-                //dateTu.Value = DateTime.Now;
-                //dateDen.Value = DateTime.Now;
-                //_tuNgay = _denNgay = "";
-
-                rptDSChuyenDocSo_LocUser rpt = new rptDSChuyenDocSo_LocUser();
-                rpt.SetDataSource(dsBaoCao);
-                crystalReportViewer1.ReportSource = rpt;
+                frmShowBaoCao frm2 = new frmShowBaoCao(rpt2);
+                frm2.Show();
             }
 
             if (radThongKeDCSoCT.Checked)
@@ -902,8 +797,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     DataRow dr = dsBaoCao.Tables["ThongKeDCSoCT"].NewRow();
 
-                    dr["TuNgay"] = _tuNgay;
-                    dr["DenNgay"] = _denNgay;
+                    dr["TuNgay"] = dateTu.Value.Date.ToString("dd/MM/yyyy");
+                    dr["DenNgay"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
                     dr["DanhBo"] = itemRow["DanhBo"];
                     if (itemRow["MaLCT"].ToString() == "2")
                         dr["SoTamTru"] = "true";
@@ -926,7 +821,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 rptThongKeDCSoCT rpt = new rptThongKeDCSoCT();
                 rpt.SetDataSource(dsBaoCao);
-                crystalReportViewer1.ReportSource = rpt;
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.Show();
             }
 
             if (radDSDMCapHetHan.Checked)
@@ -964,17 +860,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 rptDSCapDinhMuc_HetHan rpt = new rptDSCapDinhMuc_HetHan();
                 rpt.SetDataSource(dsBaoCao);
-                crystalReportViewer1.ReportSource = rpt;
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.Show();
             }
 
             if (radThongKeCapDMCoThoiHanTangGiam.Checked)
             {
                 DataTable dt = new DataTable();
-                if (!string.IsNullOrEmpty(_tuNgay) && !string.IsNullOrEmpty(_denNgay))
                     dt = _cChungTu.LoadThongKeDMCapCoThoiHan(dateTu.Value, dateDen.Value);
-                else
-                    if (!string.IsNullOrEmpty(_tuNgay))
-                        dt = _cChungTu.LoadThongKeDMCapCoThoiHan(dateTu.Value);
 
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 foreach (DataRow itemRow in dt.Rows)
@@ -983,8 +876,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
 
-                        dr["TuNgay"] = _tuNgay;
-                        dr["DenNgay"] = _denNgay;
+                        dr["TuNgay"] = dateTu.Value.Date.ToString("dd/MM/yyyy");
+                        dr["DenNgay"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
 
                         CTDCBD ctdcbd = _cDCBD.getLastCTDCBDbyDanhBo(itemRow["DanhBo"].ToString());
                         if (ctdcbd != null)
@@ -1015,8 +908,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             {
                                 DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
 
-                                dr["TuNgay"] = _tuNgay;
-                                dr["DenNgay"] = _denNgay;
+                                dr["TuNgay"] = dateTu.Value.Date.ToString("dd/MM/yyyy");
+                                dr["DenNgay"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
 
                                 CTDCBD ctdcbd = _cDCBD.getLastCTDCBDbyDanhBo(itemRow["DanhBo"].ToString());
                                 if (ctdcbd != null)
@@ -1047,8 +940,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             {
                                 DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
 
-                                dr["TuNgay"] = _tuNgay;
-                                dr["DenNgay"] = _denNgay;
+                                dr["TuNgay"] = dateTu.Value.Date.ToString("dd/MM/yyyy");
+                                dr["DenNgay"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
 
                                 CTDCBD ctdcbd = _cDCBD.getLastCTDCBDbyDanhBo(itemRow["DanhBo"].ToString());
                                 if (ctdcbd != null)
@@ -1079,7 +972,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 rptThongKeCapDinhMucTangGiam rpt = new rptThongKeCapDinhMucTangGiam();
                 rpt.SetDataSource(dsBaoCao);
                 rpt.Subreports[0].SetDataSource(dsBaoCao);
-                crystalReportViewer1.ReportSource = rpt;
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.Show();
             }
 
             if (radDSDanhBoDMCap.Checked)
@@ -1146,7 +1040,76 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 rptDSCapDinhMucTheoDanhBo rpt = new rptDSCapDinhMucTheoDanhBo();
                 rpt.SetDataSource(dsBaoCao);
                 rpt.Subreports[0].SetDataSource(dsBaoCao);
-                crystalReportViewer1.ReportSource = rpt;
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.Show();
+            }
+
+            if (radDSDanhBoCapDMDoanThanhNien.Checked)
+            {
+                DataTable dt = _cChungTu.LoadDSDanhBoCapDinhMucCoThoiHanDoanThanhNien(dateTu.Value,dateDen.Value);
+
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                foreach (DataRow itemRow in dt.Rows)
+                {
+                    if (cmbQuan.SelectedValue.ToString() == "0")
+                    {
+                        DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
+
+                        if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                        {
+                            dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                            dr["DinhMucCap"] = _cDLKH.GetDinhMuc(itemRow["DanhBo"].ToString());
+                        }
+                        dr["HoTen"] = itemRow["HoTen"];
+                        dr["DiaChi"] = itemRow["DiaChi"];
+                        dr["Phuong"] = _cPhuongQuan.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                        dr["Quan"] = _cPhuongQuan.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
+
+                        dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
+                    }
+                    else
+                        if (cmbPhuong.SelectedValue.ToString() == "0")
+                        {
+                            if (cmbQuan.SelectedValue.ToString() == itemRow["Quan"].ToString())
+                            {
+                                DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
+
+                                if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                                {
+                                    dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                                    dr["DinhMucCap"] = _cDLKH.GetDinhMuc(itemRow["DanhBo"].ToString());
+                                }
+                                dr["HoTen"] = itemRow["HoTen"];
+                                dr["DiaChi"] = itemRow["DiaChi"];
+                                dr["Phuong"] = _cPhuongQuan.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                                dr["Quan"] = _cPhuongQuan.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
+                                dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
+                            }
+                        }
+                        else
+                        {
+                            if (cmbPhuong.SelectedValue.ToString() == itemRow["Phuong"].ToString() && cmbQuan.SelectedValue.ToString() == itemRow["Quan"].ToString())
+                            {
+                                DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
+
+                                if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                                {
+                                    dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                                    dr["DinhMucCap"] = _cDLKH.GetDinhMuc(itemRow["DanhBo"].ToString());
+                                }
+                                dr["HoTen"] = itemRow["HoTen"];
+                                dr["DiaChi"] = itemRow["DiaChi"];
+                                dr["Phuong"] = _cPhuongQuan.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                                dr["Quan"] = _cPhuongQuan.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
+                                dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
+                            }
+                        }
+                }
+                rptDSCapDinhMucTheoDanhBo rpt = new rptDSCapDinhMucTheoDanhBo();
+                rpt.SetDataSource(dsBaoCao);
+                rpt.Subreports[0].SetDataSource(dsBaoCao);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.Show();
             }
         }
 
@@ -1160,6 +1123,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             cmbPhuong.DataSource = lst;
             cmbPhuong.DisplayMember = "TenPhuong";
             cmbPhuong.ValueMember = "MaPhuong";
+        }
+
+        private void radDSDanhBoDMCap_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
 
     }

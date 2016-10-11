@@ -109,27 +109,6 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             cmbVeViec.DisplayMember = "TenVV";
             cmbVeViec.SelectedIndex = -1;
 
-            if (_direct)
-            {
-                this.ControlBox = false;
-                this.WindowState = FormWindowState.Maximized;
-                this.BringToFront();
-                txtMaDon.ReadOnly = false;
-            }
-            else
-            {
-                this.Location = new Point(70, 70);
-                if (_cDonKH.getDonKHbyID(decimal.Parse(_source["MaDon"])) != null)
-                {
-                    _donkh = _cDonKH.getDonKHbyID(decimal.Parse(_source["MaDon"]));
-                    txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
-                }
-                if (_cThuTien.GetMoiNhat(_source["DanhBo"]) != null)
-                {
-                    _hoadon = _cThuTien.GetMoiNhat(_source["DanhBo"]);
-                    LoadTTKH(_hoadon);
-                }
-            }
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -146,45 +125,11 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                             TTTL tttl = new TTTL();
                             tttl.ToXuLy = true;
                             tttl.MaDonTXL = _dontxl.MaDon;
-                            if (_direct)
-                            {
-                                ///Sợ phía dưới bị lỗi nên phải thêm như thế
-                                if (!_source.ContainsKey("NoiChuyenDen"))
-                                    _source.Add("NoiChuyenDen", "");
-                            }
-                            else
-                            {
-                                tttl.MaNoiChuyenDen = decimal.Parse(_source["MaNoiChuyenDen"]);
-                                tttl.NoiChuyenDen = _source["NoiChuyenDen"];
-                                tttl.LyDoChuyenDen = _source["LyDoChuyenDen"];
-                            }
                             if (_cTTTL.ThemTTTL(tttl))
                             {
-                                switch (_source["NoiChuyenDen"])
-                                {
-                                    case "Khách Hàng":
-                                        ///Báo cho bảng DonTXL là đơn này đã được nơi nhận xử lý
-                                        DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(_source["MaNoiChuyenDen"]));
-                                        dontxl.Nhan = true;
-                                        _cDonTXL.SuaDonTXL(dontxl, true);
-                                        break;
-                                    case "Kiểm Tra Xác Minh":
-                                        ///Báo cho bảng KTXM là đơn này đã được nơi nhận xử lý
-                                        KTXM ktxm = _cKTXM.getKTXMbyID(decimal.Parse(_source["MaNoiChuyenDen"]));
-                                        ktxm.Nhan = true;
-                                        _cKTXM.SuaKTXM(ktxm, true);
-                                        break;
-                                }
-                                _source.Add("MaTTTL", _cTTTL.getMaxMaTTTL().ToString());
-                                if (string.IsNullOrEmpty(_donkh.TienTrinh))
-                                    _dontxl.TienTrinh = "TTTL";
-                                else
-                                    _dontxl.TienTrinh += ",TTTL";
-                                _dontxl.Nhan = true;
-                                _cDonTXL.SuaDonTXL(_dontxl, true);
                             }
                         }
-                        if (_cTTTL.CheckCTTTTLbyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim(),DateTime.Now))
+                        if (_cTTTL.CheckCTTTTLbyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim(), DateTime.Now))
                         {
                             MessageBox.Show("Danh Bộ này đã được Lập Thư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             //return;
@@ -238,11 +183,6 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 
                             Clear();
 
-                            if (!_direct)
-                            {
-                                this.DialogResult = DialogResult.OK;
-                                this.Close();
-                            }
                         }
                     }
                     else
@@ -256,45 +196,11 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                         {
                             TTTL tttl = new TTTL();
                             tttl.MaDon = _donkh.MaDon;
-                            if (_direct)
-                            {
-                                ///Sợ phía dưới bị lỗi nên phải thêm như thế
-                                if (!_source.ContainsKey("NoiChuyenDen"))
-                                    _source.Add("NoiChuyenDen", "");
-                            }
-                            else
-                            {
-                                tttl.MaNoiChuyenDen = decimal.Parse(_source["MaNoiChuyenDen"]);
-                                tttl.NoiChuyenDen = _source["NoiChuyenDen"];
-                                tttl.LyDoChuyenDen = _source["LyDoChuyenDen"];
-                            }
                             if (_cTTTL.ThemTTTL(tttl))
                             {
-                                switch (_source["NoiChuyenDen"])
-                                {
-                                    case "Khách Hàng":
-                                        ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
-                                        DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(_source["MaNoiChuyenDen"]));
-                                        donkh.Nhan = true;
-                                        _cDonKH.SuaDonKH(donkh, true);
-                                        break;
-                                    case "Kiểm Tra Xác Minh":
-                                        ///Báo cho bảng KTXM là đơn này đã được nơi nhận xử lý
-                                        KTXM ktxm = _cKTXM.getKTXMbyID(decimal.Parse(_source["MaNoiChuyenDen"]));
-                                        ktxm.Nhan = true;
-                                        _cKTXM.SuaKTXM(ktxm, true);
-                                        break;
-                                }
-                                //_source.Add("MaTTTL", _cTTTL.getMaxMaTTTL().ToString());
-                                if (string.IsNullOrEmpty(_donkh.TienTrinh))
-                                    _donkh.TienTrinh = "TTTL";
-                                else
-                                    _donkh.TienTrinh += ",TTTL";
-                                _donkh.Nhan = true;
-                                _cDonKH.SuaDonKH(_donkh, true);
                             }
                         }
-                        if (_cTTTL.CheckCTTTTLbyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim(),DateTime.Now))
+                        if (_cTTTL.CheckCTTTTLbyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim(), DateTime.Now))
                         {
                             MessageBox.Show("Danh Bộ này đã được Lập Thư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             //return;
@@ -373,11 +279,6 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 
                             Clear();
 
-                            if (!_direct)
-                            {
-                                this.DialogResult = DialogResult.OK;
-                                this.Close();
-                            }
                         }
                     }
                     else
@@ -387,8 +288,8 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
+    
 
         private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
         {

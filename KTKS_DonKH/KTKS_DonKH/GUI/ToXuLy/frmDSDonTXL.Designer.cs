@@ -206,7 +206,6 @@
             this.dgvDSDonTXL.RowHeadersWidth = 60;
             this.dgvDSDonTXL.Size = new System.Drawing.Size(1362, 470);
             this.dgvDSDonTXL.TabIndex = 27;
-            this.dgvDSDonTXL.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSDonTXL_CellEndEdit);
             this.dgvDSDonTXL.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSDonTXL_CellFormatting);
             this.dgvDSDonTXL.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSDonTXL_RowPostPaint);
             this.dgvDSDonTXL.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSDonTXL_KeyDown);

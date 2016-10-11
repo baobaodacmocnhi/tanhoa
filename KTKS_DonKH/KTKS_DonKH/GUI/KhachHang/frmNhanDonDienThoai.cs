@@ -10,11 +10,13 @@ using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.DAL.CapNhat;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL;
+using KTKS_DonKH.DAL.QuanTri;
 
 namespace KTKS_DonKH.GUI.KhachHang
 {
     public partial class frmNhanDonDienThoai : Form
     {
+        string _mnu = "mnuNhanDonDienThoai";
         CDonDienThoai _cDonDT = new CDonDienThoai();
         CThuTien _cThuTien = new CThuTien();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
@@ -47,71 +49,86 @@ namespace KTKS_DonKH.GUI.KhachHang
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            DonDienThoai dondt = new DonDienThoai();
-            dondt.DanhBo = txtDanhBo.Text;
-            dondt.HoTen = txtHoTen.Text.Trim();
-            dondt.DiaChi = txtDiaChi.Text.Trim();
-            if (_hoadon != null)
+            if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
             {
-                dondt.HopDong = _hoadon.HOPDONG;
-                dondt.MSThue = _hoadon.MST;
-                dondt.GiaBieu = _hoadon.GB.ToString();
-                dondt.DinhMuc = _hoadon.DM.ToString();
-                dondt.Dot = _hoadon.DOT.ToString();
-                dondt.Ky = _hoadon.KY.ToString();
-                dondt.Nam = _hoadon.NAM.ToString();
+                DonDienThoai dondt = new DonDienThoai();
+                dondt.DanhBo = txtDanhBo.Text;
+                dondt.HoTen = txtHoTen.Text.Trim();
+                dondt.DiaChi = txtDiaChi.Text.Trim();
+                if (_hoadon != null)
+                {
+                    dondt.HopDong = _hoadon.HOPDONG;
+                    dondt.MSThue = _hoadon.MST;
+                    dondt.GiaBieu = _hoadon.GB.ToString();
+                    dondt.DinhMuc = _hoadon.DM.ToString();
+                    dondt.Dot = _hoadon.DOT.ToString();
+                    dondt.Ky = _hoadon.KY.ToString();
+                    dondt.Nam = _hoadon.NAM.ToString();
+                }
+                dondt.NoiDung = txtNoiDung.Text.Trim();
+                dondt.GhiChu = txtGhiChu.Text.Trim();
+                dondt.DienThoai = txtDienThoai.Text.Trim();
+                dondt.NguoiBao = txtNguoiBao.Text.Trim();
+                dondt.NgayBao = dateBao.Value;
+                if (_cDonDT.ThemDonDienThoai(dondt))
+                {
+                    Clear();
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-            dondt.NoiDung = txtNoiDung.Text.Trim();
-            dondt.GhiChu = txtGhiChu.Text.Trim();
-            dondt.DienThoai = txtDienThoai.Text.Trim();
-            dondt.NguoiBao = txtNguoiBao.Text.Trim();
-            dondt.NgayBao = dateBao.Value;
-            if (_cDonDT.ThemDonDienThoai(dondt))
-            {
-                Clear();
-                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (_selectedindex != -1)
-                if (!_cDonDT.CheckLapDonKH(int.Parse(dgvLichSuDonDT["MaDonDT", _selectedindex].Value.ToString())))
-                {
-                    DonDienThoai dondt = _cDonDT.getDonDienThoaibyID(int.Parse(dgvLichSuDonDT["MaDonDT", _selectedindex].Value.ToString()));
-                    //dondt.DanhBo = txtDanhBo.Text;
-                    //dondt.HoTen = txtHoTen.Text.Trim();
-                    //dondt.DiaChi = txtDiaChi.Text.Trim();
-                    dondt.NoiDung = txtNoiDung.Text.Trim();
-                    dondt.GhiChu = txtGhiChu.Text.Trim();
-                    dondt.DienThoai = txtDienThoai.Text.Trim();
-                    dondt.NguoiBao = txtNguoiBao.Text.Trim();
-                    dondt.NgayBao = dateBao.Value;
-                    if (_cDonDT.SuaDonDienThoai(dondt))
-                    {
-                        Clear();
-                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-                else
-                    MessageBox.Show("Đã lập Đơn Khách Hàng, không Sửa được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            if (_selectedindex != -1)
-                if (MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
+            {
+                if (_selectedindex != -1)
                     if (!_cDonDT.CheckLapDonKH(int.Parse(dgvLichSuDonDT["MaDonDT", _selectedindex].Value.ToString())))
                     {
                         DonDienThoai dondt = _cDonDT.getDonDienThoaibyID(int.Parse(dgvLichSuDonDT["MaDonDT", _selectedindex].Value.ToString()));
-                        if (_cDonDT.XoaDonDienThoai(dondt))
+                        //dondt.DanhBo = txtDanhBo.Text;
+                        //dondt.HoTen = txtHoTen.Text.Trim();
+                        //dondt.DiaChi = txtDiaChi.Text.Trim();
+                        dondt.NoiDung = txtNoiDung.Text.Trim();
+                        dondt.GhiChu = txtGhiChu.Text.Trim();
+                        dondt.DienThoai = txtDienThoai.Text.Trim();
+                        dondt.NguoiBao = txtNguoiBao.Text.Trim();
+                        dondt.NgayBao = dateBao.Value;
+                        if (_cDonDT.SuaDonDienThoai(dondt))
                         {
                             Clear();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                     else
-                        MessageBox.Show("Đã lập Đơn Khách Hàng, không Xóa được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Đã lập Đơn Khách Hàng, không Sửa được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
+            {
+                if (_selectedindex != -1)
+                    if (MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        if (!_cDonDT.CheckLapDonKH(int.Parse(dgvLichSuDonDT["MaDonDT", _selectedindex].Value.ToString())))
+                        {
+                            DonDienThoai dondt = _cDonDT.getDonDienThoaibyID(int.Parse(dgvLichSuDonDT["MaDonDT", _selectedindex].Value.ToString()));
+                            if (_cDonDT.XoaDonDienThoai(dondt))
+                            {
+                                Clear();
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                        else
+                            MessageBox.Show("Đã lập Đơn Khách Hàng, không Xóa được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
@@ -146,7 +163,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             }
             catch
             {
-                
+
             }
         }
 

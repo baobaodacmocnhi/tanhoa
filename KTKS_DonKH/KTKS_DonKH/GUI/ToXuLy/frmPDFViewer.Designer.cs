@@ -71,36 +71,36 @@
             this.pdfViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pdfViewer1.Location = new System.Drawing.Point(0, 0);
             this.pdfViewer1.Name = "pdfViewer1";
-            this.pdfViewer1.Size = new System.Drawing.Size(1036, 496);
+            this.pdfViewer1.Size = new System.Drawing.Size(1184, 529);
             this.pdfViewer1.TabIndex = 0;
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 27);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 469);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 33);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 496);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1036, 27);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 469);
+            this.barDockControlRight.Location = new System.Drawing.Point(1184, 33);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 496);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 496);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1036, 0);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 529);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1184, 0);
             // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1036, 27);
+            this.barDockControlTop.Size = new System.Drawing.Size(1184, 33);
             // 
             // barManager1
             // 
@@ -292,12 +292,12 @@
             // 
             // frmPDFViewer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1036, 496);
+            this.ClientSize = new System.Drawing.Size(1184, 529);
             this.Controls.Add(this.pdfViewer1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.MinimizeBox = false;
             this.Name = "frmPDFViewer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

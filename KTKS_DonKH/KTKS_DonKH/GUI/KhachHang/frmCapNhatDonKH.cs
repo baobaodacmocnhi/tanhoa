@@ -16,6 +16,7 @@ namespace KTKS_DonKH.GUI.KhachHang
 {
     public partial class frmCapNhatDonKH : Form
     {
+        string _mnu = "mnuCapNhatDon";
         CLoaiDon _cLoaiDon = new CLoaiDon();
         CDonKH _cDonKH = new CDonKH();
         CDonTXL _cDonTXL = new CDonTXL();
@@ -359,160 +360,165 @@ namespace KTKS_DonKH.GUI.KhachHang
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (_donkh != null)
+            if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
             {
-                bool flagSuaChuyenKT = false;
-                bool flagSuaChuyenVP = false;
-                bool flagSuaChuyenBDK = false;
-                bool flagSuaChuyenK = false;
-                if (chkChuyenKT.Checked)
+                if (_donkh != null)
                 {
-                    _donkh.ChuyenKT = true;
-                    if (_donkh.NgayChuyenKT != dateChuyenKT.Value || _donkh.NguoiDi != int.Parse(cmbNguoiDi.SelectedValue.ToString()) || (_donkh.GhiChuChuyenKT!=null &&_donkh.GhiChuChuyenKT != txtGhiChuChuyenKT.Text.Trim()))
-                        flagSuaChuyenKT = true;
-                    _donkh.NgayChuyenKT = dateChuyenKT.Value;
-                    if (cmbNguoiDi.SelectedIndex != -1)
-                        _donkh.NguoiDi = int.Parse(cmbNguoiDi.SelectedValue.ToString());
-                    _donkh.DM = chkDM.Checked;
-                    _donkh.CCDM = chkCCDM.Checked;
-                    _donkh.STGB = chkSTGB.Checked;
-                    _donkh.KTTT = chkKTTT.Checked;
-                    _donkh.GhiChuChuyenKT = txtGhiChuChuyenKT.Text.Trim();
-                }
-                else
-                {
-                    _donkh.ChuyenKT = false;
-                    _donkh.NgayChuyenKT = null;
-                    _donkh.NguoiDi = null;
-                    _donkh.DM = false;
-                    _donkh.CCDM = false;
-                    _donkh.STGB = false;
-                    _donkh.KTTT = false;
-                    _donkh.GhiChuChuyenKT = null;
-                }
-
-                if (chkChuyenVanPhong.Checked)
-                {
-                    _donkh.ChuyenVanPhong = true;
-                    if (_donkh.NgayChuyenVanPhong != dateChuyenVanPhong.Value || _donkh.NguoiVanPhong != int.Parse(cmbVanPhong.SelectedValue.ToString()) || _donkh.GhiChuChuyenVanPhong != txtGhiChuChuyenVanPhong.Text.Trim())
-                        flagSuaChuyenVP = true;
-                    _donkh.NgayChuyenVanPhong = dateChuyenVanPhong.Value;
-                    if (cmbVanPhong.SelectedIndex != -1)
-                        _donkh.NguoiVanPhong = int.Parse(cmbVanPhong.SelectedValue.ToString());
-                    _donkh.GhiChuChuyenVanPhong = txtGhiChuChuyenVanPhong.Text.Trim();
-                }
-                else
-                {
-                    _donkh.ChuyenVanPhong = false;
-                    _donkh.NgayChuyenVanPhong = null;
-                    _donkh.NguoiVanPhong = null;
-                    _donkh.GhiChuChuyenVanPhong = null;
-                }
-
-                if (chkChuyenBanDoiKhac.Checked)
-                {
-                    _donkh.ChuyenBanDoiKhac = true;
-                    if (_donkh.NgayChuyenBanDoiKhac != dateChuyenBanDoiKhac.Value || _donkh.GhiChuChuyenBanDoiKhac != txtGhiChuChuyenBanDoiKhac.Text.Trim())
-                        flagSuaChuyenBDK = true;
-                    _donkh.NgayChuyenBanDoiKhac = dateChuyenBanDoiKhac.Value;
-                    _donkh.GhiChuChuyenBanDoiKhac = txtGhiChuChuyenBanDoiKhac.Text.Trim();
-                }
-                else
-                {
-                    _donkh.ChuyenBanDoiKhac = false;
-                    _donkh.NgayChuyenBanDoiKhac = null;
-                    _donkh.GhiChuChuyenBanDoiKhac = null;
-                }
-
-                if (chkChuyenToXuLy.Checked)
-                {
-                    _donkh.ChuyenToXuLy = true;
-                    _donkh.NgayChuyenToXuLy = dateChuyenToXuLy.Value;
-                    _donkh.GhiChuChuyenToXuLy = txtGhiChuChuyenToXuLy.Text.Trim();
-                }
-                else
-                {
-                    _donkh.ChuyenToXuLy = false;
-                    _donkh.NgayChuyenToXuLy = null;
-                    _donkh.GhiChuChuyenToXuLy = null;
-                }
-
-                if (chkChuyenKhac.Checked)
-                {
-                    _donkh.ChuyenKhac = true;
-                    if (_donkh.NgayChuyenKhac != dateChuyenKhac.Value|| _donkh.GhiChuChuyenKhac != txtGhiChuChuyenKhac.Text.Trim())
-                        flagSuaChuyenK = true;
-                    _donkh.NgayChuyenKhac = dateChuyenKhac.Value;
-                    _donkh.GhiChuChuyenKhac = txtGhiChuChuyenKhac.Text.Trim();
-                }
-                else
-                {
-                    _donkh.ChuyenKhac = false;
-                    _donkh.NgayChuyenKhac = null;
-                    _donkh.GhiChuChuyenKhac = null;
-                }
-
-                if (chkXepDon.Checked)
-                {
-                    _donkh.XepDon = true;
-                    _donkh.NgayXepDon = dateXepDon.Value;
-                    _donkh.GhiChuXepDon = txtGhiChuXepDon.Text.Trim();
-                }
-                else
-                {
-                    _donkh.XepDon = false;
-                    _donkh.NgayXepDon = null;
-                    _donkh.GhiChuXepDon = null;
-                }
-
-                if (_cDonKH.SuaDonKH(_donkh))
-                {
-                    if (flagSuaChuyenKT)
+                    bool flagSuaChuyenKT = false;
+                    bool flagSuaChuyenVP = false;
+                    bool flagSuaChuyenBDK = false;
+                    bool flagSuaChuyenK = false;
+                    if (chkChuyenKT.Checked)
                     {
-                        LichSuChuyenKT lichsuchuyenkt = new LichSuChuyenKT();
-                        lichsuchuyenkt.NgayChuyen = _donkh.NgayChuyenKT;
-                        lichsuchuyenkt.NguoiDi = _donkh.NguoiDi;
-                        lichsuchuyenkt.DM = _donkh.DM;
-                        lichsuchuyenkt.CCDM = _donkh.CCDM;
-                        lichsuchuyenkt.STGB = _donkh.STGB;
-                        lichsuchuyenkt.KTTT = _donkh.KTTT;
-                        lichsuchuyenkt.GhiChuChuyen = _donkh.GhiChuChuyenKT;
-                        lichsuchuyenkt.MaDon = _donkh.MaDon;
-                        _cDonTXL.ThemLichSuChuyenKT(lichsuchuyenkt);
-                        flagSuaChuyenKT = false;
+                        _donkh.ChuyenKT = true;
+                        if (_donkh.NgayChuyenKT != dateChuyenKT.Value || _donkh.NguoiDi != int.Parse(cmbNguoiDi.SelectedValue.ToString()) || (_donkh.GhiChuChuyenKT != null && _donkh.GhiChuChuyenKT != txtGhiChuChuyenKT.Text.Trim()))
+                            flagSuaChuyenKT = true;
+                        _donkh.NgayChuyenKT = dateChuyenKT.Value;
+                        if (cmbNguoiDi.SelectedIndex != -1)
+                            _donkh.NguoiDi = int.Parse(cmbNguoiDi.SelectedValue.ToString());
+                        _donkh.DM = chkDM.Checked;
+                        _donkh.CCDM = chkCCDM.Checked;
+                        _donkh.STGB = chkSTGB.Checked;
+                        _donkh.KTTT = chkKTTT.Checked;
+                        _donkh.GhiChuChuyenKT = txtGhiChuChuyenKT.Text.Trim();
                     }
-                    if (flagSuaChuyenVP)
+                    else
                     {
-                        LichSuChuyenVanPhong lichsuchuyenvanphong = new LichSuChuyenVanPhong();
-                        lichsuchuyenvanphong.NgayChuyen = _donkh.NgayChuyenVanPhong;
-                        lichsuchuyenvanphong.NguoiDi = _donkh.NguoiVanPhong;
-                        lichsuchuyenvanphong.GhiChuChuyen = _donkh.GhiChuChuyenVanPhong;
-                        lichsuchuyenvanphong.MaDon = _donkh.MaDon;
-                        _cDonKH.ThemLichSuChuyenVanPhong(lichsuchuyenvanphong);
-                        flagSuaChuyenVP = false;
+                        _donkh.ChuyenKT = false;
+                        _donkh.NgayChuyenKT = null;
+                        _donkh.NguoiDi = null;
+                        _donkh.DM = false;
+                        _donkh.CCDM = false;
+                        _donkh.STGB = false;
+                        _donkh.KTTT = false;
+                        _donkh.GhiChuChuyenKT = null;
                     }
-                    if (flagSuaChuyenBDK)
+
+                    if (chkChuyenVanPhong.Checked)
                     {
-                        LichSuChuyenBanDoiKhac lichsuchuyenbandoikhac = new LichSuChuyenBanDoiKhac();
-                        lichsuchuyenbandoikhac.NgayChuyen = _donkh.NgayChuyenBanDoiKhac;
-                        lichsuchuyenbandoikhac.GhiChuChuyen = _donkh.GhiChuChuyenBanDoiKhac;
-                        lichsuchuyenbandoikhac.MaDon = _donkh.MaDon;
-                        _cDonKH.ThemLichSuChuyenBanDoiKhac(lichsuchuyenbandoikhac);
-                        flagSuaChuyenBDK = false;
+                        _donkh.ChuyenVanPhong = true;
+                        if (_donkh.NgayChuyenVanPhong != dateChuyenVanPhong.Value || _donkh.NguoiVanPhong != int.Parse(cmbVanPhong.SelectedValue.ToString()) || _donkh.GhiChuChuyenVanPhong != txtGhiChuChuyenVanPhong.Text.Trim())
+                            flagSuaChuyenVP = true;
+                        _donkh.NgayChuyenVanPhong = dateChuyenVanPhong.Value;
+                        if (cmbVanPhong.SelectedIndex != -1)
+                            _donkh.NguoiVanPhong = int.Parse(cmbVanPhong.SelectedValue.ToString());
+                        _donkh.GhiChuChuyenVanPhong = txtGhiChuChuyenVanPhong.Text.Trim();
                     }
-                    if (flagSuaChuyenK)
+                    else
                     {
-                        LichSuChuyenKhac lichsuchuyenkhac = new LichSuChuyenKhac();
-                        lichsuchuyenkhac.NgayChuyen = _donkh.NgayChuyenKhac;
-                        lichsuchuyenkhac.GhiChuChuyen = _donkh.GhiChuChuyenKhac;
-                        lichsuchuyenkhac.MaDon = _donkh.MaDon;
-                        _cDonKH.ThemLichSuChuyenKhac(lichsuchuyenkhac);
-                        flagSuaChuyenK = false;
+                        _donkh.ChuyenVanPhong = false;
+                        _donkh.NgayChuyenVanPhong = null;
+                        _donkh.NguoiVanPhong = null;
+                        _donkh.GhiChuChuyenVanPhong = null;
                     }
-                    LoadLichSuChuyen(_donkh.MaDon);
-                    MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    if (chkChuyenBanDoiKhac.Checked)
+                    {
+                        _donkh.ChuyenBanDoiKhac = true;
+                        if (_donkh.NgayChuyenBanDoiKhac != dateChuyenBanDoiKhac.Value || _donkh.GhiChuChuyenBanDoiKhac != txtGhiChuChuyenBanDoiKhac.Text.Trim())
+                            flagSuaChuyenBDK = true;
+                        _donkh.NgayChuyenBanDoiKhac = dateChuyenBanDoiKhac.Value;
+                        _donkh.GhiChuChuyenBanDoiKhac = txtGhiChuChuyenBanDoiKhac.Text.Trim();
+                    }
+                    else
+                    {
+                        _donkh.ChuyenBanDoiKhac = false;
+                        _donkh.NgayChuyenBanDoiKhac = null;
+                        _donkh.GhiChuChuyenBanDoiKhac = null;
+                    }
+
+                    if (chkChuyenToXuLy.Checked)
+                    {
+                        _donkh.ChuyenToXuLy = true;
+                        _donkh.NgayChuyenToXuLy = dateChuyenToXuLy.Value;
+                        _donkh.GhiChuChuyenToXuLy = txtGhiChuChuyenToXuLy.Text.Trim();
+                    }
+                    else
+                    {
+                        _donkh.ChuyenToXuLy = false;
+                        _donkh.NgayChuyenToXuLy = null;
+                        _donkh.GhiChuChuyenToXuLy = null;
+                    }
+
+                    if (chkChuyenKhac.Checked)
+                    {
+                        _donkh.ChuyenKhac = true;
+                        if (_donkh.NgayChuyenKhac != dateChuyenKhac.Value || _donkh.GhiChuChuyenKhac != txtGhiChuChuyenKhac.Text.Trim())
+                            flagSuaChuyenK = true;
+                        _donkh.NgayChuyenKhac = dateChuyenKhac.Value;
+                        _donkh.GhiChuChuyenKhac = txtGhiChuChuyenKhac.Text.Trim();
+                    }
+                    else
+                    {
+                        _donkh.ChuyenKhac = false;
+                        _donkh.NgayChuyenKhac = null;
+                        _donkh.GhiChuChuyenKhac = null;
+                    }
+
+                    if (chkXepDon.Checked)
+                    {
+                        _donkh.XepDon = true;
+                        _donkh.NgayXepDon = dateXepDon.Value;
+                        _donkh.GhiChuXepDon = txtGhiChuXepDon.Text.Trim();
+                    }
+                    else
+                    {
+                        _donkh.XepDon = false;
+                        _donkh.NgayXepDon = null;
+                        _donkh.GhiChuXepDon = null;
+                    }
+
+                    if (_cDonKH.SuaDonKH(_donkh))
+                    {
+                        if (flagSuaChuyenKT)
+                        {
+                            LichSuChuyenKT lichsuchuyenkt = new LichSuChuyenKT();
+                            lichsuchuyenkt.NgayChuyen = _donkh.NgayChuyenKT;
+                            lichsuchuyenkt.NguoiDi = _donkh.NguoiDi;
+                            lichsuchuyenkt.DM = _donkh.DM;
+                            lichsuchuyenkt.CCDM = _donkh.CCDM;
+                            lichsuchuyenkt.STGB = _donkh.STGB;
+                            lichsuchuyenkt.KTTT = _donkh.KTTT;
+                            lichsuchuyenkt.GhiChuChuyen = _donkh.GhiChuChuyenKT;
+                            lichsuchuyenkt.MaDon = _donkh.MaDon;
+                            _cDonTXL.ThemLichSuChuyenKT(lichsuchuyenkt);
+                            flagSuaChuyenKT = false;
+                        }
+                        if (flagSuaChuyenVP)
+                        {
+                            LichSuChuyenVanPhong lichsuchuyenvanphong = new LichSuChuyenVanPhong();
+                            lichsuchuyenvanphong.NgayChuyen = _donkh.NgayChuyenVanPhong;
+                            lichsuchuyenvanphong.NguoiDi = _donkh.NguoiVanPhong;
+                            lichsuchuyenvanphong.GhiChuChuyen = _donkh.GhiChuChuyenVanPhong;
+                            lichsuchuyenvanphong.MaDon = _donkh.MaDon;
+                            _cDonKH.ThemLichSuChuyenVanPhong(lichsuchuyenvanphong);
+                            flagSuaChuyenVP = false;
+                        }
+                        if (flagSuaChuyenBDK)
+                        {
+                            LichSuChuyenBanDoiKhac lichsuchuyenbandoikhac = new LichSuChuyenBanDoiKhac();
+                            lichsuchuyenbandoikhac.NgayChuyen = _donkh.NgayChuyenBanDoiKhac;
+                            lichsuchuyenbandoikhac.GhiChuChuyen = _donkh.GhiChuChuyenBanDoiKhac;
+                            lichsuchuyenbandoikhac.MaDon = _donkh.MaDon;
+                            _cDonKH.ThemLichSuChuyenBanDoiKhac(lichsuchuyenbandoikhac);
+                            flagSuaChuyenBDK = false;
+                        }
+                        if (flagSuaChuyenK)
+                        {
+                            LichSuChuyenKhac lichsuchuyenkhac = new LichSuChuyenKhac();
+                            lichsuchuyenkhac.NgayChuyen = _donkh.NgayChuyenKhac;
+                            lichsuchuyenkhac.GhiChuChuyen = _donkh.GhiChuChuyenKhac;
+                            lichsuchuyenkhac.MaDon = _donkh.MaDon;
+                            _cDonKH.ThemLichSuChuyenKhac(lichsuchuyenkhac);
+                            flagSuaChuyenK = false;
+                        }
+                        LoadLichSuChuyen(_donkh.MaDon);
+                        MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
+            else
+                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void xóaToolStripMenuItem_Click(object sender, EventArgs e)

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDSCTBamChi = new System.Windows.Forms.DataGridView();
             this.MaCTBC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ToXuLy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -54,7 +54,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnIn = new System.Windows.Forms.Button();
-            this.dateTimKiem = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbTimTheo = new System.Windows.Forms.ComboBox();
             this.txtNoiDungTimKiem = new System.Windows.Forms.TextBox();
@@ -62,6 +61,7 @@
             this.btnInQuetToanVatTu = new System.Windows.Forms.Button();
             this.chkInBamChiThan_BBDCMS = new System.Windows.Forms.CheckBox();
             this.chkLoaiDon = new System.Windows.Forms.CheckBox();
+            this.btnXem = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCTBamChi)).BeginInit();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.SuspendLayout();
@@ -70,14 +70,14 @@
             // 
             this.dgvDSCTBamChi.AllowUserToAddRows = false;
             this.dgvDSCTBamChi.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSCTBamChi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSCTBamChi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDSCTBamChi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSCTBamChi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaCTBC,
@@ -98,12 +98,12 @@
             this.MaSoBC,
             this.TheoYeuCau,
             this.CreateBy});
-            this.dgvDSCTBamChi.Location = new System.Drawing.Point(13, 65);
-            this.dgvDSCTBamChi.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvDSCTBamChi.Location = new System.Drawing.Point(14, 65);
+            this.dgvDSCTBamChi.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dgvDSCTBamChi.MultiSelect = false;
             this.dgvDSCTBamChi.Name = "dgvDSCTBamChi";
             this.dgvDSCTBamChi.RowHeadersWidth = 60;
-            this.dgvDSCTBamChi.Size = new System.Drawing.Size(1443, 448);
+            this.dgvDSCTBamChi.Size = new System.Drawing.Size(1432, 478);
             this.dgvDSCTBamChi.TabIndex = 21;
             this.dgvDSCTBamChi.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSCTBamChi_CellFormatting);
             this.dgvDSCTBamChi.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSCTBamChi_RowPostPaint);
@@ -241,21 +241,19 @@
             // 
             this.dateTu.CustomFormat = "dd/MM/yyyy";
             this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu.Location = new System.Drawing.Point(74, 4);
+            this.dateTu.Location = new System.Drawing.Point(85, 4);
             this.dateTu.Name = "dateTu";
-            this.dateTu.Size = new System.Drawing.Size(88, 21);
+            this.dateTu.Size = new System.Drawing.Size(100, 22);
             this.dateTu.TabIndex = 13;
-            this.dateTu.ValueChanged += new System.EventHandler(this.dateTu_ValueChanged);
             // 
             // dateDen
             // 
             this.dateDen.CustomFormat = "dd/MM/yyyy";
             this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen.Location = new System.Drawing.Point(74, 31);
+            this.dateDen.Location = new System.Drawing.Point(85, 33);
             this.dateDen.Name = "dateDen";
-            this.dateDen.Size = new System.Drawing.Size(88, 21);
+            this.dateDen.Size = new System.Drawing.Size(100, 22);
             this.dateDen.TabIndex = 14;
-            this.dateDen.ValueChanged += new System.EventHandler(this.dateDen_ValueChanged);
             // 
             // panel_KhoangThoiGian
             // 
@@ -263,57 +261,46 @@
             this.panel_KhoangThoiGian.Controls.Add(this.dateDen);
             this.panel_KhoangThoiGian.Controls.Add(this.label3);
             this.panel_KhoangThoiGian.Controls.Add(this.label4);
-            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(550, 2);
+            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(523, 2);
             this.panel_KhoangThoiGian.Name = "panel_KhoangThoiGian";
-            this.panel_KhoangThoiGian.Size = new System.Drawing.Size(168, 56);
+            this.panel_KhoangThoiGian.Size = new System.Drawing.Size(192, 60);
             this.panel_KhoangThoiGian.TabIndex = 23;
             this.panel_KhoangThoiGian.Visible = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 9);
+            this.label3.Location = new System.Drawing.Point(7, 10);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 15);
+            this.label3.Size = new System.Drawing.Size(63, 16);
             this.label3.TabIndex = 15;
             this.label3.Text = "Từ Ngày:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 36);
+            this.label4.Location = new System.Drawing.Point(7, 38);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 15);
+            this.label4.Size = new System.Drawing.Size(71, 16);
             this.label4.TabIndex = 16;
             this.label4.Text = "Đến Ngày:";
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(730, 5);
+            this.btnIn.Location = new System.Drawing.Point(802, 18);
             this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(100, 23);
+            this.btnIn.Size = new System.Drawing.Size(100, 25);
             this.btnIn.TabIndex = 22;
             this.btnIn.Text = "In Danh Sách";
             this.btnIn.UseVisualStyleBackColor = true;
             this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
-            // dateTimKiem
-            // 
-            this.dateTimKiem.CustomFormat = "dd/MM/yyyy";
-            this.dateTimKiem.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimKiem.Location = new System.Drawing.Point(557, 34);
-            this.dateTimKiem.Name = "dateTimKiem";
-            this.dateTimKiem.Size = new System.Drawing.Size(114, 21);
-            this.dateTimKiem.TabIndex = 18;
-            this.dateTimKiem.Visible = false;
-            this.dateTimKiem.ValueChanged += new System.EventHandler(this.dateTimKiem_ValueChanged);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(318, 17);
+            this.label2.Location = new System.Drawing.Point(257, 18);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 15);
+            this.label2.Size = new System.Drawing.Size(69, 16);
             this.label2.TabIndex = 14;
             this.label2.Text = "Tìm Theo:";
             // 
@@ -324,37 +311,35 @@
             "",
             "Mã Đơn",
             "Danh Bộ",
-            "Ngày",
-            "Khoảng Thời Gian"});
-            this.cmbTimTheo.Location = new System.Drawing.Point(382, 14);
+            "Ngày"});
+            this.cmbTimTheo.Location = new System.Drawing.Point(331, 15);
             this.cmbTimTheo.Name = "cmbTimTheo";
-            this.cmbTimTheo.Size = new System.Drawing.Size(106, 23);
+            this.cmbTimTheo.Size = new System.Drawing.Size(121, 24);
             this.cmbTimTheo.TabIndex = 15;
             this.cmbTimTheo.SelectedIndexChanged += new System.EventHandler(this.cmbTimTheo_SelectedIndexChanged);
             // 
             // txtNoiDungTimKiem
             // 
-            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(557, 14);
+            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(531, 15);
             this.txtNoiDungTimKiem.Name = "txtNoiDungTimKiem";
-            this.txtNoiDungTimKiem.Size = new System.Drawing.Size(114, 21);
+            this.txtNoiDungTimKiem.Size = new System.Drawing.Size(130, 22);
             this.txtNoiDungTimKiem.TabIndex = 17;
             this.txtNoiDungTimKiem.Visible = false;
-            this.txtNoiDungTimKiem.TextChanged += new System.EventHandler(this.txtNoiDungTimKiem_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(493, 17);
+            this.label1.Location = new System.Drawing.Point(457, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 15);
+            this.label1.Size = new System.Drawing.Size(67, 16);
             this.label1.TabIndex = 16;
             this.label1.Text = "Nội Dung:";
             // 
             // btnInQuetToanVatTu
             // 
-            this.btnInQuetToanVatTu.Location = new System.Drawing.Point(836, 5);
+            this.btnInQuetToanVatTu.Location = new System.Drawing.Point(908, 18);
             this.btnInQuetToanVatTu.Name = "btnInQuetToanVatTu";
-            this.btnInQuetToanVatTu.Size = new System.Drawing.Size(100, 23);
+            this.btnInQuetToanVatTu.Size = new System.Drawing.Size(100, 25);
             this.btnInQuetToanVatTu.TabIndex = 24;
             this.btnInQuetToanVatTu.Text = "In Quyết Toán";
             this.btnInQuetToanVatTu.UseVisualStyleBackColor = true;
@@ -363,42 +348,54 @@
             // chkInBamChiThan_BBDCMS
             // 
             this.chkInBamChiThan_BBDCMS.AutoSize = true;
-            this.chkInBamChiThan_BBDCMS.Location = new System.Drawing.Point(843, 41);
+            this.chkInBamChiThan_BBDCMS.Location = new System.Drawing.Point(1248, 38);
             this.chkInBamChiThan_BBDCMS.Name = "chkInBamChiThan_BBDCMS";
-            this.chkInBamChiThan_BBDCMS.Size = new System.Drawing.Size(186, 19);
+            this.chkInBamChiThan_BBDCMS.Size = new System.Drawing.Size(198, 20);
             this.chkInBamChiThan_BBDCMS.TabIndex = 25;
             this.chkInBamChiThan_BBDCMS.Text = "In Bấm Chì Thân && BB ĐCMS";
             this.chkInBamChiThan_BBDCMS.UseVisualStyleBackColor = true;
+            this.chkInBamChiThan_BBDCMS.Visible = false;
             // 
             // chkLoaiDon
             // 
             this.chkLoaiDon.AutoSize = true;
-            this.chkLoaiDon.Location = new System.Drawing.Point(730, 41);
+            this.chkLoaiDon.Location = new System.Drawing.Point(1248, 12);
             this.chkLoaiDon.Name = "chkLoaiDon";
-            this.chkLoaiDon.Size = new System.Drawing.Size(107, 19);
+            this.chkLoaiDon.Size = new System.Drawing.Size(115, 20);
             this.chkLoaiDon.TabIndex = 26;
             this.chkLoaiDon.Text = "Theo Loại Đơn";
             this.chkLoaiDon.UseVisualStyleBackColor = true;
+            this.chkLoaiDon.Visible = false;
+            // 
+            // btnXem
+            // 
+            this.btnXem.Location = new System.Drawing.Point(721, 18);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 25);
+            this.btnXem.TabIndex = 27;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
             // frmDSBamChi
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1469, 526);
+            this.ClientSize = new System.Drawing.Size(1460, 561);
+            this.Controls.Add(this.btnXem);
             this.Controls.Add(this.chkLoaiDon);
             this.Controls.Add(this.chkInBamChiThan_BBDCMS);
             this.Controls.Add(this.btnInQuetToanVatTu);
             this.Controls.Add(this.dgvDSCTBamChi);
-            this.Controls.Add(this.panel_KhoangThoiGian);
             this.Controls.Add(this.btnIn);
-            this.Controls.Add(this.dateTimKiem);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbTimTheo);
             this.Controls.Add(this.txtNoiDungTimKiem);
             this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Controls.Add(this.panel_KhoangThoiGian);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "frmDSBamChi";
             this.Text = "Danh Sách Bấm Chì";
             this.Load += new System.EventHandler(this.frmDSBamChi_Load);
@@ -419,7 +416,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnIn;
-        private System.Windows.Forms.DateTimePicker dateTimKiem;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbTimTheo;
         private System.Windows.Forms.TextBox txtNoiDungTimKiem;
@@ -445,5 +441,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MaSoBC;
         private System.Windows.Forms.DataGridViewTextBoxColumn TheoYeuCau;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
+        private System.Windows.Forms.Button btnXem;
     }
 }

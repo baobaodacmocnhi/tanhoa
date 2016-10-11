@@ -24,7 +24,6 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 {
     public partial class frmDSKTXM : Form
     {
-        CChuyenDi _cChuyenDi = new CChuyenDi();
         CKTXM _cKTXM = new CKTXM();
         CDonKH _cDonKH = new CDonKH();
         DataTable DSKTXM_Edited = new DataTable();
@@ -275,7 +274,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         private void btnInThongKe_Click(object sender, EventArgs e)
         {
-                DataTable dt = ((DataTable)dgvDSCTKTXM.DataSource).DefaultView.ToTable();
+                //DataTable dt = ((DataTable)dgvDSCTKTXM.DataSource).DefaultView.ToTable();
+            DataTable dt = _cKTXM.LoadDSCTKTXMByDates(dateTu.Value, dateDen.Value);
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 foreach (DataRow itemRow in dt.Rows)
                     if (radToKH.Checked)

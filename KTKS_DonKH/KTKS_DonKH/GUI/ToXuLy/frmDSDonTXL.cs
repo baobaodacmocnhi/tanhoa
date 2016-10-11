@@ -20,7 +20,6 @@ namespace KTKS_DonKH.GUI.ToXuLy
     public partial class frmDSDonTXL : Form
     {
         //BindingSource DSDonKH_BS = new BindingSource();
-        CChuyenDi _cChuyenDi = new CChuyenDi();
         CDonTXL _cDonTXL = new CDonTXL();
         string _tuNgay = "", _denNgay = "";
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
@@ -31,22 +30,9 @@ namespace KTKS_DonKH.GUI.ToXuLy
             InitializeComponent();
         }
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            this.ControlBox = false;
-            this.WindowState = FormWindowState.Maximized;
-            this.BringToFront();
-        }
-
         private void frmQLDonTXL_Load(object sender, EventArgs e)
         {
             dgvDSDonTXL.AutoGenerateColumns = false;
-            dgvDSDonTXL.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSDonTXL.Font, FontStyle.Bold);
-            //DataGridViewComboBoxColumn cmbColumn = (DataGridViewComboBoxColumn)dgvDSDonTXL.Columns["MaChuyen"];
-            //cmbColumn.DataSource = _cChuyenDi.LoadDSChuyenDi();
-            //cmbColumn.DisplayMember = "NoiChuyenDi";
-            //cmbColumn.ValueMember = "MaChuyen";
 
             //dgvDSDonTXL.DataSource = DSDonKH_BS;
             //radAll.Checked = true;
@@ -82,23 +68,6 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 //            if (radAll.Checked)
                 //                DSDonKH_BS.DataSource = _cDonTXL.LoadDSAllDonTXL();
             }
-        }
-
-        private void dgvDSDonTXL_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            //DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(dgvDSDonTXL["MaDon", e.RowIndex].Value.ToString()));
-            //dontxl.Chuyen = true;
-            //if (string.IsNullOrEmpty(dgvDSDonTXL["MaChuyen", e.RowIndex].Value.ToString()))
-            //    dontxl.MaChuyen = "NONE";
-            //else
-            //    dontxl.MaChuyen = dgvDSDonTXL["MaChuyen", e.RowIndex].Value.ToString();
-            //dontxl.LyDoChuyen = dgvDSDonTXL["LyDoChuyen", e.RowIndex].Value.ToString();
-            //if (string.IsNullOrEmpty(dgvDSDonTXL["SoLuongDiaChi", e.RowIndex].ToString()))
-            //    dontxl.SoLuongDiaChi = null;
-            //else
-            //    dontxl.SoLuongDiaChi = int.Parse(dgvDSDonTXL["SoLuongDiaChi", e.RowIndex].ToString());
-            //dontxl.NVKiemTra = dgvDSDonTXL["NVKiemTra", e.RowIndex].ToString();
-            //_cDonTXL.SuaDonTXL(dontxl);
         }
 
         private void dgvDSDonTXL_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -143,7 +112,6 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     txtNoiDungTimKiem.Visible = false;
                     dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = false;
-                    //DSDonKH_BS.RemoveFilter();
                     break;
             }
             dgvDSDonTXL.DataSource = null;
