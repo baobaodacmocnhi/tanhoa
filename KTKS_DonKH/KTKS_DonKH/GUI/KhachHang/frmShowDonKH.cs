@@ -105,7 +105,6 @@ namespace KTKS_DonKH.GUI.KhachHang
                 txtDienThoai.Text = _donkh.DienThoai;
                 txtHoTen.Text = _donkh.HoTen;
                 txtDiaChi.Text = _donkh.DiaChi;
-                txtMSThue.Text = _donkh.MSThue;
                 txtGiaBieu.Text = _donkh.GiaBieu;
                 txtDinhMuc.Text = _donkh.DinhMuc;
                 //cmbNVKiemTra.Text = _donkh.GhiChuNguoiDi;
@@ -184,13 +183,8 @@ namespace KTKS_DonKH.GUI.KhachHang
                     txtHopDong.Text = hoadon.HOPDONG;
                     txtHoTen.Text = hoadon.TENKH;
                     txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
-                    txtMSThue.Text = hoadon.MST;
                     txtGiaBieu.Text = hoadon.GB.ToString();
                     txtDinhMuc.Text = hoadon.DM.ToString();
-                    //SH = ttkhachhang.SH;
-                    //SX = ttkhachhang.SX;
-                    //DV = ttkhachhang.DV;
-                    //HCSN = ttkhachhang.HCSN;
                     Dot = hoadon.DOT.ToString();
                     Ky = hoadon.KY.ToString();
                     Nam = hoadon.NAM.ToString();
@@ -205,7 +199,6 @@ namespace KTKS_DonKH.GUI.KhachHang
                     txtDiaChi.Text = "";
                     txtGiaBieu.Text = "";
                     txtDinhMuc.Text = "";
-                    txtMSThue.Text = "";
                     Dot = Ky = Nam = "";
                 }
             }
@@ -517,7 +510,6 @@ namespace KTKS_DonKH.GUI.KhachHang
                 _donkh.HoTen = txtHoTen.Text.Trim();
                 _donkh.DiaChi = txtDiaChi.Text.Trim();
                 _donkh.DienThoai = txtDienThoai.Text.Trim();
-                _donkh.MSThue = txtMSThue.Text.Trim();
                 _donkh.GiaBieu = txtGiaBieu.Text.Trim();
                 _donkh.DinhMuc = txtDinhMuc.Text.Trim();
                 //donkh.SH = SH;

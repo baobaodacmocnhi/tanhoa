@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>343</ApplicationRevision>
+    <ApplicationRevision>345</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -1117,15 +1117,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbThuTien.dbml</DependentUpon>
     </Compile>
-    <Compile Include="LinQ\DB_CAPNUOCTANHOA.designer.cs">
+    <Compile Include="LinQ\dbDocSo.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DB_CAPNUOCTANHOA.dbml</DependentUpon>
+      <DependentUpon>dbDocSo.dbml</DependentUpon>
     </Compile>
-    <Compile Include="LinQ\DB_KTKS_DonKH.designer.cs">
+    <Compile Include="LinQ\dbKinhDoanh.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DB_KTKS_DonKH.dbml</DependentUpon>
+      <DependentUpon>dbKinhDoanh.dbml</DependentUpon>
     </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -1152,13 +1152,13 @@
       <LastGenOutput>dbThuTien.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="LinQ\DB_CAPNUOCTANHOA.dbml">
+    <None Include="LinQ\dbDocSo.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>DB_CAPNUOCTANHOA.designer.cs</LastGenOutput>
+      <LastGenOutput>dbDocSo.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="LinQ\DB_KTKS_DonKH.dbml.layout">
-      <DependentUpon>DB_KTKS_DonKH.dbml</DependentUpon>
+    <None Include="LinQ\dbKinhDoanh.dbml.layout">
+      <DependentUpon>dbKinhDoanh.dbml</DependentUpon>
     </None>
     <EmbeddedResource Include="BaoCao\BamChi\rptThongKeDSBamChi_LoaiDon.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1656,8 +1656,8 @@
     <EmbeddedResource Include="GUI\KiemTraXacMinh\frmDSKTXM.resx">
       <DependentUpon>frmDSKTXM.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="LinQ\DB_CAPNUOCTANHOA.dbml.layout">
-      <DependentUpon>DB_CAPNUOCTANHOA.dbml</DependentUpon>
+    <None Include="LinQ\dbDocSo.dbml.layout">
+      <DependentUpon>dbDocSo.dbml</DependentUpon>
     </None>
     <EmbeddedResource Include="GUI\KiemTraXacMinh\frmKTXM.resx">
       <DependentUpon>frmKTXM.cs</DependentUpon>
@@ -1730,9 +1730,9 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="LinQ\DB_KTKS_DonKH.dbml">
+    <None Include="LinQ\dbKinhDoanh.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>DB_KTKS_DonKH.designer.cs</LastGenOutput>
+      <LastGenOutput>dbKinhDoanh.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\app.manifest" />

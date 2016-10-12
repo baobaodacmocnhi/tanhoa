@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using KTKS_DonKH.DAL.CatHuyDanhBo;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.CatHuyDanhBo;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -135,7 +136,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 rptThongKeCHDB rpt = new rptThongKeCHDB();
                 rpt.SetDataSource(dsBaoCao);
                 rpt.Subreports[0].SetDataSource(dsBaoCaoPhieuHuy);
-                crystalReportViewer1.ReportSource = rpt;
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.Show();
             }
             ///
             if (radDSYCCHDB.Checked || radDSYCCHDBNutBit.Checked)
@@ -181,7 +183,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                     rptDSYCCHDB rpt = new rptDSYCCHDB();
                     rpt.SetDataSource(dsBaoCao);
-                    crystalReportViewer1.ReportSource = rpt;
+                    frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                    frm.Show();
                 }
                 else
                     if (radDSYCCHDBNutBit.Checked)
@@ -213,7 +216,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                         rptDSCatTamNutBit rpt = new rptDSCatTamNutBit();
                         rpt.SetDataSource(dsBaoCao);
-                        crystalReportViewer1.ReportSource = rpt;
+                        frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                        frm.Show();
                     }
             }
             ///
@@ -255,7 +259,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                 rptDSCTDBtheocamket rpt = new rptDSCTDBtheocamket();
                 rpt.SetDataSource(dsBaoCao);
-                crystalReportViewer1.ReportSource = rpt;
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.Show();
             }
 
             if (radDSCTCTTon.Checked)
@@ -320,7 +325,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                 rptDSCHDB rpt = new rptDSCHDB();
                 rpt.SetDataSource(dsBaoCao);
-                crystalReportViewer1.ReportSource = rpt;
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.Show();
             }
 
             if (radDSCTCTDaXuLy.Checked)
@@ -385,7 +391,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                 rptDSCHDB rpt = new rptDSCHDB();
                 rpt.SetDataSource(dsBaoCao);
-                crystalReportViewer1.ReportSource = rpt;
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.Show();
             }
         }
     }

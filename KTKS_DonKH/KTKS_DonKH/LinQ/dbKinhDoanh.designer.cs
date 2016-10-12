@@ -576,14 +576,6 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		public System.Data.Linq.Table<Test> Tests
-		{
-			get
-			{
-				return this.GetTable<Test>();
-			}
-		}
-		
 		public System.Data.Linq.Table<ThanhToanTruyThuTienNuoc> ThanhToanTruyThuTienNuocs
 		{
 			get
@@ -679,24 +671,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _MaDonTXL;
 		
-		private System.Nullable<decimal> _MaNoiChuyenDen;
-		
-		private string _NoiChuyenDen;
-		
-		private string _LyDoChuyenDen;
-		
-		private string _KetQua;
-		
-		private bool _Chuyen;
-		
-		private string _MaChuyen;
-		
-		private string _LyDoChuyen;
-		
-		private bool _Nhan;
-		
-		private bool _XepDon;
-		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -723,24 +697,6 @@ namespace KTKS_DonKH.LinQ
     partial void OnToXuLyChanged();
     partial void OnMaDonTXLChanging(System.Nullable<decimal> value);
     partial void OnMaDonTXLChanged();
-    partial void OnMaNoiChuyenDenChanging(System.Nullable<decimal> value);
-    partial void OnMaNoiChuyenDenChanged();
-    partial void OnNoiChuyenDenChanging(string value);
-    partial void OnNoiChuyenDenChanged();
-    partial void OnLyDoChuyenDenChanging(string value);
-    partial void OnLyDoChuyenDenChanged();
-    partial void OnKetQuaChanging(string value);
-    partial void OnKetQuaChanged();
-    partial void OnChuyenChanging(bool value);
-    partial void OnChuyenChanged();
-    partial void OnMaChuyenChanging(string value);
-    partial void OnMaChuyenChanged();
-    partial void OnLyDoChuyenChanging(string value);
-    partial void OnLyDoChuyenChanged();
-    partial void OnNhanChanging(bool value);
-    partial void OnNhanChanged();
-    partial void OnXepDonChanging(bool value);
-    partial void OnXepDonChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -843,186 +799,6 @@ namespace KTKS_DonKH.LinQ
 					this._MaDonTXL = value;
 					this.SendPropertyChanged("MaDonTXL");
 					this.OnMaDonTXLChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNoiChuyenDen", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> MaNoiChuyenDen
-		{
-			get
-			{
-				return this._MaNoiChuyenDen;
-			}
-			set
-			{
-				if ((this._MaNoiChuyenDen != value))
-				{
-					this.OnMaNoiChuyenDenChanging(value);
-					this.SendPropertyChanging();
-					this._MaNoiChuyenDen = value;
-					this.SendPropertyChanged("MaNoiChuyenDen");
-					this.OnMaNoiChuyenDenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiChuyenDen", DbType="NVarChar(MAX)")]
-		public string NoiChuyenDen
-		{
-			get
-			{
-				return this._NoiChuyenDen;
-			}
-			set
-			{
-				if ((this._NoiChuyenDen != value))
-				{
-					this.OnNoiChuyenDenChanging(value);
-					this.SendPropertyChanging();
-					this._NoiChuyenDen = value;
-					this.SendPropertyChanged("NoiChuyenDen");
-					this.OnNoiChuyenDenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LyDoChuyenDen", DbType="NVarChar(MAX)")]
-		public string LyDoChuyenDen
-		{
-			get
-			{
-				return this._LyDoChuyenDen;
-			}
-			set
-			{
-				if ((this._LyDoChuyenDen != value))
-				{
-					this.OnLyDoChuyenDenChanging(value);
-					this.SendPropertyChanging();
-					this._LyDoChuyenDen = value;
-					this.SendPropertyChanged("LyDoChuyenDen");
-					this.OnLyDoChuyenDenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KetQua", DbType="NVarChar(MAX)")]
-		public string KetQua
-		{
-			get
-			{
-				return this._KetQua;
-			}
-			set
-			{
-				if ((this._KetQua != value))
-				{
-					this.OnKetQuaChanging(value);
-					this.SendPropertyChanging();
-					this._KetQua = value;
-					this.SendPropertyChanged("KetQua");
-					this.OnKetQuaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Chuyen", DbType="Bit NOT NULL")]
-		public bool Chuyen
-		{
-			get
-			{
-				return this._Chuyen;
-			}
-			set
-			{
-				if ((this._Chuyen != value))
-				{
-					this.OnChuyenChanging(value);
-					this.SendPropertyChanging();
-					this._Chuyen = value;
-					this.SendPropertyChanged("Chuyen");
-					this.OnChuyenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaChuyen", DbType="NVarChar(50)")]
-		public string MaChuyen
-		{
-			get
-			{
-				return this._MaChuyen;
-			}
-			set
-			{
-				if ((this._MaChuyen != value))
-				{
-					this.OnMaChuyenChanging(value);
-					this.SendPropertyChanging();
-					this._MaChuyen = value;
-					this.SendPropertyChanged("MaChuyen");
-					this.OnMaChuyenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LyDoChuyen", DbType="NVarChar(MAX)")]
-		public string LyDoChuyen
-		{
-			get
-			{
-				return this._LyDoChuyen;
-			}
-			set
-			{
-				if ((this._LyDoChuyen != value))
-				{
-					this.OnLyDoChuyenChanging(value);
-					this.SendPropertyChanging();
-					this._LyDoChuyen = value;
-					this.SendPropertyChanged("LyDoChuyen");
-					this.OnLyDoChuyenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nhan", DbType="Bit NOT NULL")]
-		public bool Nhan
-		{
-			get
-			{
-				return this._Nhan;
-			}
-			set
-			{
-				if ((this._Nhan != value))
-				{
-					this.OnNhanChanging(value);
-					this.SendPropertyChanging();
-					this._Nhan = value;
-					this.SendPropertyChanged("Nhan");
-					this.OnNhanChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_XepDon", DbType="Bit NOT NULL")]
-		public bool XepDon
-		{
-			get
-			{
-				return this._XepDon;
-			}
-			set
-			{
-				if ((this._XepDon != value))
-				{
-					this.OnXepDonChanging(value);
-					this.SendPropertyChanging();
-					this._XepDon = value;
-					this.SendPropertyChanged("XepDon");
-					this.OnXepDonChanged();
 				}
 			}
 		}
@@ -3361,24 +3137,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _MaDonTXL;
 		
-		private System.Nullable<decimal> _MaNoiChuyenDen;
-		
-		private string _NoiChuyenDen;
-		
-		private string _LyDoChuyenDen;
-		
-		private string _KetQua;
-		
-		private bool _Chuyen;
-		
-		private string _MaChuyen;
-		
-		private string _LyDoChuyen;
-		
-		private bool _Nhan;
-		
-		private bool _XepDon;
-		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private string _CreateBy;
@@ -3407,24 +3165,6 @@ namespace KTKS_DonKH.LinQ
     partial void OnToXuLyChanged();
     partial void OnMaDonTXLChanging(System.Nullable<decimal> value);
     partial void OnMaDonTXLChanged();
-    partial void OnMaNoiChuyenDenChanging(System.Nullable<decimal> value);
-    partial void OnMaNoiChuyenDenChanged();
-    partial void OnNoiChuyenDenChanging(string value);
-    partial void OnNoiChuyenDenChanged();
-    partial void OnLyDoChuyenDenChanging(string value);
-    partial void OnLyDoChuyenDenChanged();
-    partial void OnKetQuaChanging(string value);
-    partial void OnKetQuaChanged();
-    partial void OnChuyenChanging(bool value);
-    partial void OnChuyenChanged();
-    partial void OnMaChuyenChanging(string value);
-    partial void OnMaChuyenChanged();
-    partial void OnLyDoChuyenChanging(string value);
-    partial void OnLyDoChuyenChanged();
-    partial void OnNhanChanging(bool value);
-    partial void OnNhanChanged();
-    partial void OnXepDonChanging(bool value);
-    partial void OnXepDonChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(string value);
@@ -3528,186 +3268,6 @@ namespace KTKS_DonKH.LinQ
 					this._MaDonTXL = value;
 					this.SendPropertyChanged("MaDonTXL");
 					this.OnMaDonTXLChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNoiChuyenDen", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> MaNoiChuyenDen
-		{
-			get
-			{
-				return this._MaNoiChuyenDen;
-			}
-			set
-			{
-				if ((this._MaNoiChuyenDen != value))
-				{
-					this.OnMaNoiChuyenDenChanging(value);
-					this.SendPropertyChanging();
-					this._MaNoiChuyenDen = value;
-					this.SendPropertyChanged("MaNoiChuyenDen");
-					this.OnMaNoiChuyenDenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiChuyenDen", DbType="NVarChar(MAX)")]
-		public string NoiChuyenDen
-		{
-			get
-			{
-				return this._NoiChuyenDen;
-			}
-			set
-			{
-				if ((this._NoiChuyenDen != value))
-				{
-					this.OnNoiChuyenDenChanging(value);
-					this.SendPropertyChanging();
-					this._NoiChuyenDen = value;
-					this.SendPropertyChanged("NoiChuyenDen");
-					this.OnNoiChuyenDenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LyDoChuyenDen", DbType="NVarChar(MAX)")]
-		public string LyDoChuyenDen
-		{
-			get
-			{
-				return this._LyDoChuyenDen;
-			}
-			set
-			{
-				if ((this._LyDoChuyenDen != value))
-				{
-					this.OnLyDoChuyenDenChanging(value);
-					this.SendPropertyChanging();
-					this._LyDoChuyenDen = value;
-					this.SendPropertyChanged("LyDoChuyenDen");
-					this.OnLyDoChuyenDenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KetQua", DbType="NVarChar(MAX)")]
-		public string KetQua
-		{
-			get
-			{
-				return this._KetQua;
-			}
-			set
-			{
-				if ((this._KetQua != value))
-				{
-					this.OnKetQuaChanging(value);
-					this.SendPropertyChanging();
-					this._KetQua = value;
-					this.SendPropertyChanged("KetQua");
-					this.OnKetQuaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Chuyen", DbType="Bit NOT NULL")]
-		public bool Chuyen
-		{
-			get
-			{
-				return this._Chuyen;
-			}
-			set
-			{
-				if ((this._Chuyen != value))
-				{
-					this.OnChuyenChanging(value);
-					this.SendPropertyChanging();
-					this._Chuyen = value;
-					this.SendPropertyChanged("Chuyen");
-					this.OnChuyenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaChuyen", DbType="NVarChar(50)")]
-		public string MaChuyen
-		{
-			get
-			{
-				return this._MaChuyen;
-			}
-			set
-			{
-				if ((this._MaChuyen != value))
-				{
-					this.OnMaChuyenChanging(value);
-					this.SendPropertyChanging();
-					this._MaChuyen = value;
-					this.SendPropertyChanged("MaChuyen");
-					this.OnMaChuyenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LyDoChuyen", DbType="NVarChar(MAX)")]
-		public string LyDoChuyen
-		{
-			get
-			{
-				return this._LyDoChuyen;
-			}
-			set
-			{
-				if ((this._LyDoChuyen != value))
-				{
-					this.OnLyDoChuyenChanging(value);
-					this.SendPropertyChanging();
-					this._LyDoChuyen = value;
-					this.SendPropertyChanged("LyDoChuyen");
-					this.OnLyDoChuyenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nhan", DbType="Bit NOT NULL")]
-		public bool Nhan
-		{
-			get
-			{
-				return this._Nhan;
-			}
-			set
-			{
-				if ((this._Nhan != value))
-				{
-					this.OnNhanChanging(value);
-					this.SendPropertyChanging();
-					this._Nhan = value;
-					this.SendPropertyChanged("Nhan");
-					this.OnNhanChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_XepDon", DbType="Bit NOT NULL")]
-		public bool XepDon
-		{
-			get
-			{
-				return this._XepDon;
-			}
-			set
-			{
-				if ((this._XepDon != value))
-				{
-					this.OnXepDonChanging(value);
-					this.SendPropertyChanging();
-					this._XepDon = value;
-					this.SendPropertyChanged("XepDon");
-					this.OnXepDonChanged();
 				}
 			}
 		}
@@ -16142,24 +15702,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _MaDonTXL;
 		
-		private System.Nullable<decimal> _MaNoiChuyenDen;
-		
-		private string _NoiChuyenDen;
-		
-		private string _LyDoChuyenDen;
-		
-		private string _KetQua;
-		
-		private bool _Chuyen;
-		
-		private string _MaChuyen;
-		
-		private string _LyDoChuyen;
-		
-		private bool _Nhan;
-		
-		private bool _XepDon;
-		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -16188,24 +15730,6 @@ namespace KTKS_DonKH.LinQ
     partial void OnToXuLyChanged();
     partial void OnMaDonTXLChanging(System.Nullable<decimal> value);
     partial void OnMaDonTXLChanged();
-    partial void OnMaNoiChuyenDenChanging(System.Nullable<decimal> value);
-    partial void OnMaNoiChuyenDenChanged();
-    partial void OnNoiChuyenDenChanging(string value);
-    partial void OnNoiChuyenDenChanged();
-    partial void OnLyDoChuyenDenChanging(string value);
-    partial void OnLyDoChuyenDenChanged();
-    partial void OnKetQuaChanging(string value);
-    partial void OnKetQuaChanged();
-    partial void OnChuyenChanging(bool value);
-    partial void OnChuyenChanged();
-    partial void OnMaChuyenChanging(string value);
-    partial void OnMaChuyenChanged();
-    partial void OnLyDoChuyenChanging(string value);
-    partial void OnLyDoChuyenChanged();
-    partial void OnNhanChanging(bool value);
-    partial void OnNhanChanged();
-    partial void OnXepDonChanging(bool value);
-    partial void OnXepDonChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -16309,186 +15833,6 @@ namespace KTKS_DonKH.LinQ
 					this._MaDonTXL = value;
 					this.SendPropertyChanged("MaDonTXL");
 					this.OnMaDonTXLChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNoiChuyenDen", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> MaNoiChuyenDen
-		{
-			get
-			{
-				return this._MaNoiChuyenDen;
-			}
-			set
-			{
-				if ((this._MaNoiChuyenDen != value))
-				{
-					this.OnMaNoiChuyenDenChanging(value);
-					this.SendPropertyChanging();
-					this._MaNoiChuyenDen = value;
-					this.SendPropertyChanged("MaNoiChuyenDen");
-					this.OnMaNoiChuyenDenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiChuyenDen", DbType="NVarChar(MAX)")]
-		public string NoiChuyenDen
-		{
-			get
-			{
-				return this._NoiChuyenDen;
-			}
-			set
-			{
-				if ((this._NoiChuyenDen != value))
-				{
-					this.OnNoiChuyenDenChanging(value);
-					this.SendPropertyChanging();
-					this._NoiChuyenDen = value;
-					this.SendPropertyChanged("NoiChuyenDen");
-					this.OnNoiChuyenDenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LyDoChuyenDen", DbType="NVarChar(MAX)")]
-		public string LyDoChuyenDen
-		{
-			get
-			{
-				return this._LyDoChuyenDen;
-			}
-			set
-			{
-				if ((this._LyDoChuyenDen != value))
-				{
-					this.OnLyDoChuyenDenChanging(value);
-					this.SendPropertyChanging();
-					this._LyDoChuyenDen = value;
-					this.SendPropertyChanged("LyDoChuyenDen");
-					this.OnLyDoChuyenDenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KetQua", DbType="NVarChar(MAX)")]
-		public string KetQua
-		{
-			get
-			{
-				return this._KetQua;
-			}
-			set
-			{
-				if ((this._KetQua != value))
-				{
-					this.OnKetQuaChanging(value);
-					this.SendPropertyChanging();
-					this._KetQua = value;
-					this.SendPropertyChanged("KetQua");
-					this.OnKetQuaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Chuyen", DbType="Bit NOT NULL")]
-		public bool Chuyen
-		{
-			get
-			{
-				return this._Chuyen;
-			}
-			set
-			{
-				if ((this._Chuyen != value))
-				{
-					this.OnChuyenChanging(value);
-					this.SendPropertyChanging();
-					this._Chuyen = value;
-					this.SendPropertyChanged("Chuyen");
-					this.OnChuyenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaChuyen", DbType="NVarChar(50)")]
-		public string MaChuyen
-		{
-			get
-			{
-				return this._MaChuyen;
-			}
-			set
-			{
-				if ((this._MaChuyen != value))
-				{
-					this.OnMaChuyenChanging(value);
-					this.SendPropertyChanging();
-					this._MaChuyen = value;
-					this.SendPropertyChanged("MaChuyen");
-					this.OnMaChuyenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LyDoChuyen", DbType="NVarChar(MAX)")]
-		public string LyDoChuyen
-		{
-			get
-			{
-				return this._LyDoChuyen;
-			}
-			set
-			{
-				if ((this._LyDoChuyen != value))
-				{
-					this.OnLyDoChuyenChanging(value);
-					this.SendPropertyChanging();
-					this._LyDoChuyen = value;
-					this.SendPropertyChanged("LyDoChuyen");
-					this.OnLyDoChuyenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nhan", DbType="Bit NOT NULL")]
-		public bool Nhan
-		{
-			get
-			{
-				return this._Nhan;
-			}
-			set
-			{
-				if ((this._Nhan != value))
-				{
-					this.OnNhanChanging(value);
-					this.SendPropertyChanging();
-					this._Nhan = value;
-					this.SendPropertyChanged("Nhan");
-					this.OnNhanChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_XepDon", DbType="Bit NOT NULL")]
-		public bool XepDon
-		{
-			get
-			{
-				return this._XepDon;
-			}
-			set
-			{
-				if ((this._XepDon != value))
-				{
-					this.OnXepDonChanging(value);
-					this.SendPropertyChanging();
-					this._XepDon = value;
-					this.SendPropertyChanged("XepDon");
-					this.OnXepDonChanged();
 				}
 			}
 		}
@@ -17580,24 +16924,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _MaDonTXL;
 		
-		private System.Nullable<decimal> _MaNoiChuyenDen;
-		
-		private string _NoiChuyenDen;
-		
-		private string _LyDoChuyenDen;
-		
-		private string _KetQua;
-		
-		private bool _Chuyen;
-		
-		private string _MaChuyen;
-		
-		private string _LyDoChuyen;
-		
-		private bool _Nhan;
-		
-		private bool _XepDon;
-		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -17624,24 +16950,6 @@ namespace KTKS_DonKH.LinQ
     partial void OnToXuLyChanged();
     partial void OnMaDonTXLChanging(System.Nullable<decimal> value);
     partial void OnMaDonTXLChanged();
-    partial void OnMaNoiChuyenDenChanging(System.Nullable<decimal> value);
-    partial void OnMaNoiChuyenDenChanged();
-    partial void OnNoiChuyenDenChanging(string value);
-    partial void OnNoiChuyenDenChanged();
-    partial void OnLyDoChuyenDenChanging(string value);
-    partial void OnLyDoChuyenDenChanged();
-    partial void OnKetQuaChanging(string value);
-    partial void OnKetQuaChanged();
-    partial void OnChuyenChanging(bool value);
-    partial void OnChuyenChanged();
-    partial void OnMaChuyenChanging(string value);
-    partial void OnMaChuyenChanged();
-    partial void OnLyDoChuyenChanging(string value);
-    partial void OnLyDoChuyenChanged();
-    partial void OnNhanChanging(bool value);
-    partial void OnNhanChanged();
-    partial void OnXepDonChanging(bool value);
-    partial void OnXepDonChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -17744,186 +17052,6 @@ namespace KTKS_DonKH.LinQ
 					this._MaDonTXL = value;
 					this.SendPropertyChanged("MaDonTXL");
 					this.OnMaDonTXLChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNoiChuyenDen", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> MaNoiChuyenDen
-		{
-			get
-			{
-				return this._MaNoiChuyenDen;
-			}
-			set
-			{
-				if ((this._MaNoiChuyenDen != value))
-				{
-					this.OnMaNoiChuyenDenChanging(value);
-					this.SendPropertyChanging();
-					this._MaNoiChuyenDen = value;
-					this.SendPropertyChanged("MaNoiChuyenDen");
-					this.OnMaNoiChuyenDenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiChuyenDen", DbType="NVarChar(MAX)")]
-		public string NoiChuyenDen
-		{
-			get
-			{
-				return this._NoiChuyenDen;
-			}
-			set
-			{
-				if ((this._NoiChuyenDen != value))
-				{
-					this.OnNoiChuyenDenChanging(value);
-					this.SendPropertyChanging();
-					this._NoiChuyenDen = value;
-					this.SendPropertyChanged("NoiChuyenDen");
-					this.OnNoiChuyenDenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LyDoChuyenDen", DbType="NVarChar(MAX)")]
-		public string LyDoChuyenDen
-		{
-			get
-			{
-				return this._LyDoChuyenDen;
-			}
-			set
-			{
-				if ((this._LyDoChuyenDen != value))
-				{
-					this.OnLyDoChuyenDenChanging(value);
-					this.SendPropertyChanging();
-					this._LyDoChuyenDen = value;
-					this.SendPropertyChanged("LyDoChuyenDen");
-					this.OnLyDoChuyenDenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KetQua", DbType="NVarChar(MAX)")]
-		public string KetQua
-		{
-			get
-			{
-				return this._KetQua;
-			}
-			set
-			{
-				if ((this._KetQua != value))
-				{
-					this.OnKetQuaChanging(value);
-					this.SendPropertyChanging();
-					this._KetQua = value;
-					this.SendPropertyChanged("KetQua");
-					this.OnKetQuaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Chuyen", DbType="Bit NOT NULL")]
-		public bool Chuyen
-		{
-			get
-			{
-				return this._Chuyen;
-			}
-			set
-			{
-				if ((this._Chuyen != value))
-				{
-					this.OnChuyenChanging(value);
-					this.SendPropertyChanging();
-					this._Chuyen = value;
-					this.SendPropertyChanged("Chuyen");
-					this.OnChuyenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaChuyen", DbType="NVarChar(50)")]
-		public string MaChuyen
-		{
-			get
-			{
-				return this._MaChuyen;
-			}
-			set
-			{
-				if ((this._MaChuyen != value))
-				{
-					this.OnMaChuyenChanging(value);
-					this.SendPropertyChanging();
-					this._MaChuyen = value;
-					this.SendPropertyChanged("MaChuyen");
-					this.OnMaChuyenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LyDoChuyen", DbType="NVarChar(MAX)")]
-		public string LyDoChuyen
-		{
-			get
-			{
-				return this._LyDoChuyen;
-			}
-			set
-			{
-				if ((this._LyDoChuyen != value))
-				{
-					this.OnLyDoChuyenChanging(value);
-					this.SendPropertyChanging();
-					this._LyDoChuyen = value;
-					this.SendPropertyChanged("LyDoChuyen");
-					this.OnLyDoChuyenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nhan", DbType="Bit NOT NULL")]
-		public bool Nhan
-		{
-			get
-			{
-				return this._Nhan;
-			}
-			set
-			{
-				if ((this._Nhan != value))
-				{
-					this.OnNhanChanging(value);
-					this.SendPropertyChanging();
-					this._Nhan = value;
-					this.SendPropertyChanged("Nhan");
-					this.OnNhanChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_XepDon", DbType="Bit NOT NULL")]
-		public bool XepDon
-		{
-			get
-			{
-				return this._XepDon;
-			}
-			set
-			{
-				if ((this._XepDon != value))
-				{
-					this.OnXepDonChanging(value);
-					this.SendPropertyChanging();
-					this._XepDon = value;
-					this.SendPropertyChanged("XepDon");
-					this.OnXepDonChanged();
 				}
 			}
 		}
@@ -18130,8 +17258,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private decimal _MaDon;
 		
-		private System.Nullable<decimal> _MaXepDon;
-		
 		private string _SoCongVan;
 		
 		private System.Nullable<int> _TongSoDanhBo;
@@ -18146,29 +17272,15 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _DienThoai;
 		
-		private string _MSThue;
-		
 		private string _GiaBieu;
 		
 		private string _DinhMuc;
-		
-		private string _SH;
-		
-		private string _SX;
-		
-		private string _DV;
-		
-		private string _HCSN;
 		
 		private string _Dot;
 		
 		private string _Ky;
 		
 		private string _Nam;
-		
-		private System.Nullable<int> _SoLuongDiaChi;
-		
-		private string _NVKiemTra;
 		
 		private string _NoiDung;
 		
@@ -18231,12 +17343,6 @@ namespace KTKS_DonKH.LinQ
 		private string _HieuLucTuKy;
 		
 		private string _NgayGiaiQuyet;
-		
-		private bool _Chuyen;
-		
-		private string _MaChuyen;
-		
-		private string _LyDoChuyen;
 		
 		private string _TienTrinh;
 		
@@ -18334,8 +17440,6 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreated();
     partial void OnMaDonChanging(decimal value);
     partial void OnMaDonChanged();
-    partial void OnMaXepDonChanging(System.Nullable<decimal> value);
-    partial void OnMaXepDonChanged();
     partial void OnSoCongVanChanging(string value);
     partial void OnSoCongVanChanged();
     partial void OnTongSoDanhBoChanging(System.Nullable<int> value);
@@ -18350,30 +17454,16 @@ namespace KTKS_DonKH.LinQ
     partial void OnDiaChiChanged();
     partial void OnDienThoaiChanging(string value);
     partial void OnDienThoaiChanged();
-    partial void OnMSThueChanging(string value);
-    partial void OnMSThueChanged();
     partial void OnGiaBieuChanging(string value);
     partial void OnGiaBieuChanged();
     partial void OnDinhMucChanging(string value);
     partial void OnDinhMucChanged();
-    partial void OnSHChanging(string value);
-    partial void OnSHChanged();
-    partial void OnSXChanging(string value);
-    partial void OnSXChanged();
-    partial void OnDVChanging(string value);
-    partial void OnDVChanged();
-    partial void OnHCSNChanging(string value);
-    partial void OnHCSNChanged();
     partial void OnDotChanging(string value);
     partial void OnDotChanged();
     partial void OnKyChanging(string value);
     partial void OnKyChanged();
     partial void OnNamChanging(string value);
     partial void OnNamChanged();
-    partial void OnSoLuongDiaChiChanging(System.Nullable<int> value);
-    partial void OnSoLuongDiaChiChanged();
-    partial void OnNVKiemTraChanging(string value);
-    partial void OnNVKiemTraChanged();
     partial void OnNoiDungChanging(string value);
     partial void OnNoiDungChanged();
     partial void OnKiemTraDHNChanging(bool value);
@@ -18436,12 +17526,6 @@ namespace KTKS_DonKH.LinQ
     partial void OnHieuLucTuKyChanged();
     partial void OnNgayGiaiQuyetChanging(string value);
     partial void OnNgayGiaiQuyetChanged();
-    partial void OnChuyenChanging(bool value);
-    partial void OnChuyenChanged();
-    partial void OnMaChuyenChanging(string value);
-    partial void OnMaChuyenChanged();
-    partial void OnLyDoChuyenChanging(string value);
-    partial void OnLyDoChuyenChanged();
     partial void OnTienTrinhChanging(string value);
     partial void OnTienTrinhChanged();
     partial void OnNhanChanging(bool value);
@@ -18542,26 +17626,6 @@ namespace KTKS_DonKH.LinQ
 					this._MaDon = value;
 					this.SendPropertyChanged("MaDon");
 					this.OnMaDonChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaXepDon", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> MaXepDon
-		{
-			get
-			{
-				return this._MaXepDon;
-			}
-			set
-			{
-				if ((this._MaXepDon != value))
-				{
-					this.OnMaXepDonChanging(value);
-					this.SendPropertyChanging();
-					this._MaXepDon = value;
-					this.SendPropertyChanged("MaXepDon");
-					this.OnMaXepDonChanged();
 				}
 			}
 		}
@@ -18706,26 +17770,6 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MSThue", DbType="NVarChar(50)")]
-		public string MSThue
-		{
-			get
-			{
-				return this._MSThue;
-			}
-			set
-			{
-				if ((this._MSThue != value))
-				{
-					this.OnMSThueChanging(value);
-					this.SendPropertyChanging();
-					this._MSThue = value;
-					this.SendPropertyChanged("MSThue");
-					this.OnMSThueChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaBieu", DbType="NVarChar(50)")]
 		public string GiaBieu
 		{
@@ -18762,86 +17806,6 @@ namespace KTKS_DonKH.LinQ
 					this._DinhMuc = value;
 					this.SendPropertyChanged("DinhMuc");
 					this.OnDinhMucChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SH", DbType="NVarChar(50)")]
-		public string SH
-		{
-			get
-			{
-				return this._SH;
-			}
-			set
-			{
-				if ((this._SH != value))
-				{
-					this.OnSHChanging(value);
-					this.SendPropertyChanging();
-					this._SH = value;
-					this.SendPropertyChanged("SH");
-					this.OnSHChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SX", DbType="NVarChar(50)")]
-		public string SX
-		{
-			get
-			{
-				return this._SX;
-			}
-			set
-			{
-				if ((this._SX != value))
-				{
-					this.OnSXChanging(value);
-					this.SendPropertyChanging();
-					this._SX = value;
-					this.SendPropertyChanged("SX");
-					this.OnSXChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DV", DbType="NVarChar(50)")]
-		public string DV
-		{
-			get
-			{
-				return this._DV;
-			}
-			set
-			{
-				if ((this._DV != value))
-				{
-					this.OnDVChanging(value);
-					this.SendPropertyChanging();
-					this._DV = value;
-					this.SendPropertyChanged("DV");
-					this.OnDVChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HCSN", DbType="NVarChar(50)")]
-		public string HCSN
-		{
-			get
-			{
-				return this._HCSN;
-			}
-			set
-			{
-				if ((this._HCSN != value))
-				{
-					this.OnHCSNChanging(value);
-					this.SendPropertyChanging();
-					this._HCSN = value;
-					this.SendPropertyChanged("HCSN");
-					this.OnHCSNChanged();
 				}
 			}
 		}
@@ -18902,46 +17866,6 @@ namespace KTKS_DonKH.LinQ
 					this._Nam = value;
 					this.SendPropertyChanged("Nam");
 					this.OnNamChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuongDiaChi", DbType="Int")]
-		public System.Nullable<int> SoLuongDiaChi
-		{
-			get
-			{
-				return this._SoLuongDiaChi;
-			}
-			set
-			{
-				if ((this._SoLuongDiaChi != value))
-				{
-					this.OnSoLuongDiaChiChanging(value);
-					this.SendPropertyChanging();
-					this._SoLuongDiaChi = value;
-					this.SendPropertyChanged("SoLuongDiaChi");
-					this.OnSoLuongDiaChiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NVKiemTra", DbType="NVarChar(MAX)")]
-		public string NVKiemTra
-		{
-			get
-			{
-				return this._NVKiemTra;
-			}
-			set
-			{
-				if ((this._NVKiemTra != value))
-				{
-					this.OnNVKiemTraChanging(value);
-					this.SendPropertyChanging();
-					this._NVKiemTra = value;
-					this.SendPropertyChanged("NVKiemTra");
-					this.OnNVKiemTraChanged();
 				}
 			}
 		}
@@ -19562,66 +18486,6 @@ namespace KTKS_DonKH.LinQ
 					this._NgayGiaiQuyet = value;
 					this.SendPropertyChanged("NgayGiaiQuyet");
 					this.OnNgayGiaiQuyetChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Chuyen", DbType="Bit NOT NULL")]
-		public bool Chuyen
-		{
-			get
-			{
-				return this._Chuyen;
-			}
-			set
-			{
-				if ((this._Chuyen != value))
-				{
-					this.OnChuyenChanging(value);
-					this.SendPropertyChanging();
-					this._Chuyen = value;
-					this.SendPropertyChanged("Chuyen");
-					this.OnChuyenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaChuyen", DbType="NVarChar(50)")]
-		public string MaChuyen
-		{
-			get
-			{
-				return this._MaChuyen;
-			}
-			set
-			{
-				if ((this._MaChuyen != value))
-				{
-					this.OnMaChuyenChanging(value);
-					this.SendPropertyChanging();
-					this._MaChuyen = value;
-					this.SendPropertyChanged("MaChuyen");
-					this.OnMaChuyenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LyDoChuyen", DbType="NVarChar(MAX)")]
-		public string LyDoChuyen
-		{
-			get
-			{
-				return this._LyDoChuyen;
-			}
-			set
-			{
-				if ((this._LyDoChuyen != value))
-				{
-					this.OnLyDoChuyenChanging(value);
-					this.SendPropertyChanging();
-					this._LyDoChuyen = value;
-					this.SendPropertyChanged("LyDoChuyen");
-					this.OnLyDoChuyenChanged();
 				}
 			}
 		}
@@ -23918,24 +22782,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _MaDonTXL;
 		
-		private System.Nullable<decimal> _MaNoiChuyenDen;
-		
-		private string _NoiChuyenDen;
-		
-		private string _LyDoChuyenDen;
-		
-		private string _KetQua;
-		
-		private bool _Chuyen;
-		
-		private string _MaChuyen;
-		
-		private string _LyDoChuyen;
-		
-		private bool _Nhan;
-		
-		private bool _XepDon;
-		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -23962,24 +22808,6 @@ namespace KTKS_DonKH.LinQ
     partial void OnToXuLyChanged();
     partial void OnMaDonTXLChanging(System.Nullable<decimal> value);
     partial void OnMaDonTXLChanged();
-    partial void OnMaNoiChuyenDenChanging(System.Nullable<decimal> value);
-    partial void OnMaNoiChuyenDenChanged();
-    partial void OnNoiChuyenDenChanging(string value);
-    partial void OnNoiChuyenDenChanged();
-    partial void OnLyDoChuyenDenChanging(string value);
-    partial void OnLyDoChuyenDenChanged();
-    partial void OnKetQuaChanging(string value);
-    partial void OnKetQuaChanged();
-    partial void OnChuyenChanging(bool value);
-    partial void OnChuyenChanged();
-    partial void OnMaChuyenChanging(string value);
-    partial void OnMaChuyenChanged();
-    partial void OnLyDoChuyenChanging(string value);
-    partial void OnLyDoChuyenChanged();
-    partial void OnNhanChanging(bool value);
-    partial void OnNhanChanged();
-    partial void OnXepDonChanging(bool value);
-    partial void OnXepDonChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -24082,186 +22910,6 @@ namespace KTKS_DonKH.LinQ
 					this._MaDonTXL = value;
 					this.SendPropertyChanged("MaDonTXL");
 					this.OnMaDonTXLChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNoiChuyenDen", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> MaNoiChuyenDen
-		{
-			get
-			{
-				return this._MaNoiChuyenDen;
-			}
-			set
-			{
-				if ((this._MaNoiChuyenDen != value))
-				{
-					this.OnMaNoiChuyenDenChanging(value);
-					this.SendPropertyChanging();
-					this._MaNoiChuyenDen = value;
-					this.SendPropertyChanged("MaNoiChuyenDen");
-					this.OnMaNoiChuyenDenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiChuyenDen", DbType="NVarChar(MAX)")]
-		public string NoiChuyenDen
-		{
-			get
-			{
-				return this._NoiChuyenDen;
-			}
-			set
-			{
-				if ((this._NoiChuyenDen != value))
-				{
-					this.OnNoiChuyenDenChanging(value);
-					this.SendPropertyChanging();
-					this._NoiChuyenDen = value;
-					this.SendPropertyChanged("NoiChuyenDen");
-					this.OnNoiChuyenDenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LyDoChuyenDen", DbType="NVarChar(MAX)")]
-		public string LyDoChuyenDen
-		{
-			get
-			{
-				return this._LyDoChuyenDen;
-			}
-			set
-			{
-				if ((this._LyDoChuyenDen != value))
-				{
-					this.OnLyDoChuyenDenChanging(value);
-					this.SendPropertyChanging();
-					this._LyDoChuyenDen = value;
-					this.SendPropertyChanged("LyDoChuyenDen");
-					this.OnLyDoChuyenDenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KetQua", DbType="NVarChar(MAX)")]
-		public string KetQua
-		{
-			get
-			{
-				return this._KetQua;
-			}
-			set
-			{
-				if ((this._KetQua != value))
-				{
-					this.OnKetQuaChanging(value);
-					this.SendPropertyChanging();
-					this._KetQua = value;
-					this.SendPropertyChanged("KetQua");
-					this.OnKetQuaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Chuyen", DbType="Bit NOT NULL")]
-		public bool Chuyen
-		{
-			get
-			{
-				return this._Chuyen;
-			}
-			set
-			{
-				if ((this._Chuyen != value))
-				{
-					this.OnChuyenChanging(value);
-					this.SendPropertyChanging();
-					this._Chuyen = value;
-					this.SendPropertyChanged("Chuyen");
-					this.OnChuyenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaChuyen", DbType="NVarChar(50)")]
-		public string MaChuyen
-		{
-			get
-			{
-				return this._MaChuyen;
-			}
-			set
-			{
-				if ((this._MaChuyen != value))
-				{
-					this.OnMaChuyenChanging(value);
-					this.SendPropertyChanging();
-					this._MaChuyen = value;
-					this.SendPropertyChanged("MaChuyen");
-					this.OnMaChuyenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LyDoChuyen", DbType="NVarChar(MAX)")]
-		public string LyDoChuyen
-		{
-			get
-			{
-				return this._LyDoChuyen;
-			}
-			set
-			{
-				if ((this._LyDoChuyen != value))
-				{
-					this.OnLyDoChuyenChanging(value);
-					this.SendPropertyChanging();
-					this._LyDoChuyen = value;
-					this.SendPropertyChanged("LyDoChuyen");
-					this.OnLyDoChuyenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nhan", DbType="Bit NOT NULL")]
-		public bool Nhan
-		{
-			get
-			{
-				return this._Nhan;
-			}
-			set
-			{
-				if ((this._Nhan != value))
-				{
-					this.OnNhanChanging(value);
-					this.SendPropertyChanging();
-					this._Nhan = value;
-					this.SendPropertyChanged("Nhan");
-					this.OnNhanChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_XepDon", DbType="Bit NOT NULL")]
-		public bool XepDon
-		{
-			get
-			{
-				return this._XepDon;
-			}
-			set
-			{
-				if ((this._XepDon != value))
-				{
-					this.OnXepDonChanging(value);
-					this.SendPropertyChanging();
-					this._XepDon = value;
-					this.SendPropertyChanged("XepDon");
-					this.OnXepDonChanged();
 				}
 			}
 		}
@@ -30096,339 +28744,6 @@ namespace KTKS_DonKH.LinQ
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Test")]
-	public partial class Test
-	{
-		
-		private string _STT;
-		
-		private string _DOT;
-		
-		private string _LOTRINH;
-		
-		private string _DANHBO;
-		
-		private string _HOPDONG;
-		
-		private string _HOTEN;
-		
-		private string _SONHA;
-		
-		private string _TENDUONG;
-		
-		private string _GB;
-		
-		private string _DM;
-		
-		private string _HIEUDH;
-		
-		private string _CODH;
-		
-		private string _NAM;
-		
-		private string _F14;
-		
-		private string _F15;
-		
-		private string _F16;
-		
-		private string _F17;
-		
-		private string _F18;
-		
-		public Test()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", DbType="NVarChar(255)")]
-		public string STT
-		{
-			get
-			{
-				return this._STT;
-			}
-			set
-			{
-				if ((this._STT != value))
-				{
-					this._STT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DOT", DbType="NVarChar(255)")]
-		public string DOT
-		{
-			get
-			{
-				return this._DOT;
-			}
-			set
-			{
-				if ((this._DOT != value))
-				{
-					this._DOT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOTRINH", DbType="NVarChar(255)")]
-		public string LOTRINH
-		{
-			get
-			{
-				return this._LOTRINH;
-			}
-			set
-			{
-				if ((this._LOTRINH != value))
-				{
-					this._LOTRINH = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DANHBO", DbType="NVarChar(255)")]
-		public string DANHBO
-		{
-			get
-			{
-				return this._DANHBO;
-			}
-			set
-			{
-				if ((this._DANHBO != value))
-				{
-					this._DANHBO = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HOPDONG", DbType="NVarChar(255)")]
-		public string HOPDONG
-		{
-			get
-			{
-				return this._HOPDONG;
-			}
-			set
-			{
-				if ((this._HOPDONG != value))
-				{
-					this._HOPDONG = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HOTEN", DbType="NVarChar(255)")]
-		public string HOTEN
-		{
-			get
-			{
-				return this._HOTEN;
-			}
-			set
-			{
-				if ((this._HOTEN != value))
-				{
-					this._HOTEN = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SONHA", DbType="NVarChar(255)")]
-		public string SONHA
-		{
-			get
-			{
-				return this._SONHA;
-			}
-			set
-			{
-				if ((this._SONHA != value))
-				{
-					this._SONHA = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TENDUONG", DbType="NVarChar(255)")]
-		public string TENDUONG
-		{
-			get
-			{
-				return this._TENDUONG;
-			}
-			set
-			{
-				if ((this._TENDUONG != value))
-				{
-					this._TENDUONG = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GB", DbType="NVarChar(255)")]
-		public string GB
-		{
-			get
-			{
-				return this._GB;
-			}
-			set
-			{
-				if ((this._GB != value))
-				{
-					this._GB = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DM", DbType="NVarChar(255)")]
-		public string DM
-		{
-			get
-			{
-				return this._DM;
-			}
-			set
-			{
-				if ((this._DM != value))
-				{
-					this._DM = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HIEUDH", DbType="NVarChar(255)")]
-		public string HIEUDH
-		{
-			get
-			{
-				return this._HIEUDH;
-			}
-			set
-			{
-				if ((this._HIEUDH != value))
-				{
-					this._HIEUDH = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODH", DbType="NVarChar(255)")]
-		public string CODH
-		{
-			get
-			{
-				return this._CODH;
-			}
-			set
-			{
-				if ((this._CODH != value))
-				{
-					this._CODH = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAM", DbType="NVarChar(255)")]
-		public string NAM
-		{
-			get
-			{
-				return this._NAM;
-			}
-			set
-			{
-				if ((this._NAM != value))
-				{
-					this._NAM = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_F14", DbType="NVarChar(255)")]
-		public string F14
-		{
-			get
-			{
-				return this._F14;
-			}
-			set
-			{
-				if ((this._F14 != value))
-				{
-					this._F14 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_F15", DbType="NVarChar(255)")]
-		public string F15
-		{
-			get
-			{
-				return this._F15;
-			}
-			set
-			{
-				if ((this._F15 != value))
-				{
-					this._F15 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_F16", DbType="NVarChar(255)")]
-		public string F16
-		{
-			get
-			{
-				return this._F16;
-			}
-			set
-			{
-				if ((this._F16 != value))
-				{
-					this._F16 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_F17", DbType="NVarChar(255)")]
-		public string F17
-		{
-			get
-			{
-				return this._F17;
-			}
-			set
-			{
-				if ((this._F17 != value))
-				{
-					this._F17 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_F18", DbType="NVarChar(255)")]
-		public string F18
-		{
-			get
-			{
-				return this._F18;
-			}
-			set
-			{
-				if ((this._F18 != value))
-				{
-					this._F18 = value;
-				}
 			}
 		}
 	}

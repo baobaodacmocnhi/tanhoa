@@ -43,10 +43,6 @@
             this.chkCT_HoaDon = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.cmbNVKiemTra = new System.Windows.Forms.ComboBox();
-            this.txtMSThue = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.txtDienThoai = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtDinhMuc = new System.Windows.Forms.TextBox();
@@ -80,8 +76,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtSoCongVan = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.txtMaXepDon = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
             this.chkKhongInBienNhan = new System.Windows.Forms.CheckBox();
             this.txtTongSoDanhBo = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -248,10 +242,6 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.cmbNVKiemTra);
-            this.tabPage1.Controls.Add(this.txtMSThue);
-            this.tabPage1.Controls.Add(this.label15);
-            this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.txtDienThoai);
             this.tabPage1.Controls.Add(this.label11);
             this.tabPage1.Controls.Add(this.txtDinhMuc);
@@ -273,42 +263,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Thông Tin Hóa Đơn";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // cmbNVKiemTra
-            // 
-            this.cmbNVKiemTra.FormattingEnabled = true;
-            this.cmbNVKiemTra.Location = new System.Drawing.Point(130, 93);
-            this.cmbNVKiemTra.Name = "cmbNVKiemTra";
-            this.cmbNVKiemTra.Size = new System.Drawing.Size(230, 24);
-            this.cmbNVKiemTra.TabIndex = 17;
-            this.cmbNVKiemTra.Visible = false;
-            // 
-            // txtMSThue
-            // 
-            this.txtMSThue.Location = new System.Drawing.Point(693, 93);
-            this.txtMSThue.Name = "txtMSThue";
-            this.txtMSThue.Size = new System.Drawing.Size(100, 22);
-            this.txtMSThue.TabIndex = 15;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(610, 96);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(65, 16);
-            this.label15.TabIndex = 14;
-            this.label15.Text = "MS Thuế:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.ForeColor = System.Drawing.Color.Red;
-            this.label12.Location = new System.Drawing.Point(6, 96);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(111, 16);
-            this.label12.TabIndex = 16;
-            this.label12.Text = "Ghi Chú Người Đi:";
-            this.label12.Visible = false;
             // 
             // txtDienThoai
             // 
@@ -619,29 +573,6 @@
             this.label16.TabIndex = 2;
             this.label16.Text = "   Số Công Văn   ";
             // 
-            // txtMaXepDon
-            // 
-            this.txtMaXepDon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMaXepDon.Location = new System.Drawing.Point(498, 147);
-            this.txtMaXepDon.Name = "txtMaXepDon";
-            this.txtMaXepDon.ReadOnly = true;
-            this.txtMaXepDon.Size = new System.Drawing.Size(127, 22);
-            this.txtMaXepDon.TabIndex = 13;
-            this.txtMaXepDon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtMaXepDon.Visible = false;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label17.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(498, 129);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(127, 19);
-            this.label17.TabIndex = 12;
-            this.label17.Text = "     Số Xếp Đơn     ";
-            this.label17.Visible = false;
-            // 
             // chkKhongInBienNhan
             // 
             this.chkKhongInBienNhan.AutoSize = true;
@@ -866,8 +797,6 @@
             this.Controls.Add(this.chkDieuChinhSoNha);
             this.Controls.Add(this.txtSoCongVan);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.txtMaXepDon);
-            this.Controls.Add(this.label17);
             this.Controls.Add(this.txtHieuLucTuKy);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.txtDinhMucSau);
@@ -926,9 +855,6 @@
         private System.Windows.Forms.CheckBox chkCT_HoaDon;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TextBox txtMSThue;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtDienThoai;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtDinhMuc;
@@ -962,9 +888,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSoCongVan;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.ComboBox cmbNVKiemTra;
-        private System.Windows.Forms.TextBox txtMaXepDon;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.CheckBox chkKhongInBienNhan;
         private System.Windows.Forms.TextBox txtTongSoDanhBo;
         private System.Windows.Forms.Label label23;

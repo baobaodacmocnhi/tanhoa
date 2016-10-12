@@ -95,6 +95,7 @@ namespace KTKS_DonKH
                     tp.Name = this.ActiveMdiChild.Name;
                     tp.Text = this.ActiveMdiChild.Text;
                     tp.Tag = this.ActiveMdiChild;
+
                     tp.Parent = tabControl;
                     tabControl.SelectedTab = tp;
 
@@ -264,6 +265,17 @@ namespace KTKS_DonKH
             if (CTaiKhoan.CheckQuyen("mnuDSDon", "Xem"))
             {
                 frmDSDonKH frm = new frmDSDonKH();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuDSDonDienThoai_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuDSDonDienThoai", "Xem"))
+            {
+                frmDSDonDienThoai frm = new frmDSDonDienThoai();
                 OpenForm(frm);
             }
             else
@@ -523,6 +535,17 @@ namespace KTKS_DonKH
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuBaoCaoCHDB_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuBaoCaoCHDB", "Xem"))
+            {
+                frmBaoCaoCHDB frm = new frmBaoCaoCHDB();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
 
         #region Thảo Thư Trả Lời
@@ -616,10 +639,6 @@ namespace KTKS_DonKH
         
 
         
-
-        
-
-
 
 
     }

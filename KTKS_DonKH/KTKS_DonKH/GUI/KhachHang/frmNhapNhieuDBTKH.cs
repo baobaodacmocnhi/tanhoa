@@ -128,7 +128,6 @@ namespace KTKS_DonKH.GUI.KhachHang
                     dgvDanhBoChuyenKT["HopDong", e.RowIndex].Value = hoadon.HOPDONG;
                     dgvDanhBoChuyenKT["HoTen", e.RowIndex].Value = hoadon.TENKH;
                     dgvDanhBoChuyenKT["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
-                    dgvDanhBoChuyenKT["MSThue", e.RowIndex].Value = hoadon.MST;
                     dgvDanhBoChuyenKT["GiaBieu", e.RowIndex].Value = hoadon.GB;
                     dgvDanhBoChuyenKT["DinhMuc", e.RowIndex].Value = hoadon.DM;
                     dgvDanhBoChuyenKT["Dot", e.RowIndex].Value = hoadon.DOT;
@@ -183,8 +182,6 @@ namespace KTKS_DonKH.GUI.KhachHang
                                 donkh.HoTen = item.Cells["HoTen"].Value.ToString();
                             if (item.Cells["DiaChi"].Value != null)
                                 donkh.DiaChi = item.Cells["DiaChi"].Value.ToString();
-                            if (item.Cells["MSThue"].Value != null)
-                                donkh.MSThue = item.Cells["MSThue"].Value.ToString();
                             if (item.Cells["GiaBieu"].Value != null)
                                 donkh.GiaBieu = item.Cells["GiaBieu"].Value.ToString();
                             if (item.Cells["DinhMuc"].Value != null)
@@ -259,8 +256,6 @@ namespace KTKS_DonKH.GUI.KhachHang
                                     donkh.HoTen = item.Cells["HoTenVP"].Value.ToString();
                                 if (item.Cells["DiaChiVP"].Value != null)
                                     donkh.DiaChi = item.Cells["DiaChiVP"].Value.ToString();
-                                if (item.Cells["MSThueVP"].Value != null)
-                                    donkh.MSThue = item.Cells["MSThueVP"].Value.ToString();
                                 if (item.Cells["GiaBieuVP"].Value != null)
                                     donkh.GiaBieu = item.Cells["GiaBieuVP"].Value.ToString();
                                 if (item.Cells["DinhMucVP"].Value != null)
@@ -357,7 +352,6 @@ namespace KTKS_DonKH.GUI.KhachHang
                     dgvDanhBoChuyenVanPhong["HopDongVP", e.RowIndex].Value = hoadon.HOPDONG;
                     dgvDanhBoChuyenVanPhong["HoTenVP", e.RowIndex].Value = hoadon.TENKH;
                     dgvDanhBoChuyenVanPhong["DiaChiVP", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
-                    dgvDanhBoChuyenVanPhong["MSThueVP", e.RowIndex].Value = hoadon.MST;
                     dgvDanhBoChuyenVanPhong["GiaBieuVP", e.RowIndex].Value = hoadon.GB;
                     dgvDanhBoChuyenVanPhong["DinhMucVP", e.RowIndex].Value = hoadon.DM;
                     dgvDanhBoChuyenVanPhong["DotVP", e.RowIndex].Value = hoadon.DOT;

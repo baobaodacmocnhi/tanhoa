@@ -225,7 +225,6 @@ namespace KTKS_DonKH.GUI.KhachHang
                         donkh.HoTen = dondt.HoTen;
                         donkh.DiaChi = dondt.DiaChi;
                         donkh.DienThoai = dondt.DienThoai;
-                        donkh.MSThue = dondt.MSThue;
                         donkh.GiaBieu = dondt.GiaBieu;
                         donkh.DinhMuc = dondt.DinhMuc;
                         donkh.Dot = dondt.Dot;

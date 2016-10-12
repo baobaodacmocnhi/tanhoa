@@ -286,5 +286,24 @@ namespace KTKS_DonKH.GUI.QuanTri
             }
         }
 
+        private void gridView_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            if (e.Column.Name == "ToanQuyen")
+                if (bool.Parse(e.Value.ToString()))
+                {
+                    gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Xem"], "True");
+                    gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Them"], "True");
+                    gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Sua"], "True");
+                    gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Xoa"], "True");
+                }
+                else
+                {
+                    gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Xem"], "False");
+                    gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Them"], "False");
+                    gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Sua"], "False");
+                    gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Xoa"], "False");
+                }
+        }
+
     }
 }

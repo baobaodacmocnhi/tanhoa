@@ -569,67 +569,6 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             }
         }
 
-        public DataTable LoadDSTTTLChuaDuyet()
-        {
-            try
-            {
-                    ///Bảng DonKH
-                    var queryDonKH = from itemDonKH in db.DonKHs
-                                     join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
-                                     where itemDonKH.Nhan == false && itemDonKH.MaChuyen == "TTTL"
-                                     select new
-                                     {
-                                         itemDonKH.MaDon,
-                                         itemLoaiDon.TenLD,
-                                         itemDonKH.CreateDate,
-                                         itemDonKH.DanhBo,
-                                         itemDonKH.HoTen,
-                                         itemDonKH.DiaChi,
-                                         itemDonKH.NoiDung,
-                                         MaNoiChuyenDen = itemDonKH.MaDon,
-                                         NoiChuyenDen = "Khách Hàng",
-                                         LyDoChuyenDen = itemDonKH.LyDoChuyen,
-                                         MaTTTL = "",
-                                         NgayXuLy = "",
-                                         KetQua = "",
-                                         MaChuyen = "",
-                                         LyDoChuyenDi = ""
-                                     };
-                    ///Bảng KTXM
-                    var queryKTXM = from itemKTXM in db.KTXMs
-                                    join itemDonKH in db.DonKHs on itemKTXM.MaDon equals itemDonKH.MaDon
-                                    join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
-                                    where itemKTXM.Nhan == false && itemKTXM.MaChuyen == "TTTL"
-                                    select new
-                                    {
-                                        itemDonKH.MaDon,
-                                        itemLoaiDon.TenLD,
-                                        itemDonKH.CreateDate,
-                                        itemDonKH.DanhBo,
-                                        itemDonKH.HoTen,
-                                        itemDonKH.DiaChi,
-                                        itemDonKH.NoiDung,
-                                        MaNoiChuyenDen = itemKTXM.MaKTXM,
-                                        NoiChuyenDen = "Kiểm Tra Xác Minh",
-                                        LyDoChuyenDen = itemKTXM.LyDoChuyen,
-                                        MaTTTL = "",
-                                        NgayXuLy = "",
-                                        KetQua = "",
-                                        MaChuyen = "",
-                                        LyDoChuyenDi = ""
-                                    };
-                    DataTable tableDonKH = LINQToDataTable(queryDonKH);
-                    DataTable tableKTXM = LINQToDataTable(queryKTXM);
-                    tableDonKH.Merge(tableKTXM);
-                    return tableDonKH;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
         public bool ThemTTTL(TTTL tttl)
         {
             try

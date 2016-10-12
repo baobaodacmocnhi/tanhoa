@@ -712,7 +712,7 @@
             this.dgvLichSuCHDB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvLichSuCHDB.Name = "dgvLichSuCHDB";
             this.dgvLichSuCHDB.ReadOnly = true;
-            this.dgvLichSuCHDB.Size = new System.Drawing.Size(643, 188);
+            this.dgvLichSuCHDB.Size = new System.Drawing.Size(572, 188);
             this.dgvLichSuCHDB.TabIndex = 61;
             // 
             // Loai

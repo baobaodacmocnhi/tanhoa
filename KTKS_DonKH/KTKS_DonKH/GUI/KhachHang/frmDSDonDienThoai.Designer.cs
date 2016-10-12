@@ -264,9 +264,9 @@
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(791, 12);
+            this.btnIn.Location = new System.Drawing.Point(791, 14);
             this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(86, 25);
+            this.btnIn.Size = new System.Drawing.Size(75, 25);
             this.btnIn.TabIndex = 17;
             this.btnIn.Text = "In";
             this.btnIn.UseVisualStyleBackColor = true;
@@ -274,9 +274,9 @@
             // 
             // btnLapDon
             // 
-            this.btnLapDon.Location = new System.Drawing.Point(1043, 11);
+            this.btnLapDon.Location = new System.Drawing.Point(978, 14);
             this.btnLapDon.Name = "btnLapDon";
-            this.btnLapDon.Size = new System.Drawing.Size(86, 25);
+            this.btnLapDon.Size = new System.Drawing.Size(75, 25);
             this.btnLapDon.TabIndex = 18;
             this.btnLapDon.Text = "Lập Đơn";
             this.btnLapDon.UseVisualStyleBackColor = true;
@@ -337,9 +337,9 @@
             // 
             // btnInDaLapDon
             // 
-            this.btnInDaLapDon.Location = new System.Drawing.Point(883, 12);
+            this.btnInDaLapDon.Location = new System.Drawing.Point(872, 14);
             this.btnInDaLapDon.Name = "btnInDaLapDon";
-            this.btnInDaLapDon.Size = new System.Drawing.Size(114, 25);
+            this.btnInDaLapDon.Size = new System.Drawing.Size(100, 25);
             this.btnInDaLapDon.TabIndex = 24;
             this.btnInDaLapDon.Text = "In Đã Lập Đơn";
             this.btnInDaLapDon.UseVisualStyleBackColor = true;
