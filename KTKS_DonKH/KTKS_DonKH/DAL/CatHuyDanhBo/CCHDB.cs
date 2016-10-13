@@ -602,7 +602,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             try
             {
                     var query = from itemCTCTDB in db.CTCTDBs
-                                where itemCTCTDB.CreateDate.Value.Date>=TuNgay.Date&&itemCTCTDB.CreateDate.Value<=DenNgay.Date
+                                where itemCTCTDB.CreateDate.Value.Date>=TuNgay.Date&&itemCTCTDB.CreateDate.Value.Date<=DenNgay.Date
                                 orderby itemCTCTDB.CreateDate descending
                                 select new
                                 {
@@ -637,33 +637,6 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             {
                     var query = from itemCTCTDB in db.CTCTDBs
                                 where itemCTCTDB.CreateDate.Value.Date == TuNgay.Date && itemCTCTDB.GhiChuLyDo.Contains("theo cam kết")
-                                //orderby itemCTCTDB.CreateDate descending
-                                select new
-                                {
-                                    itemCTCTDB.DanhBo,
-                                    itemCTCTDB.HoTen,
-                                    itemCTCTDB.DiaChi,
-                                    itemCTCTDB.LyDo,
-                                    itemCTCTDB.GhiChuLyDo,
-                                    itemCTCTDB.SoTien,
-                                    itemCTCTDB.NgayTCTBXuLy,
-                                    itemCTCTDB.KetQuaTCTBXuLy,
-                                };
-                    return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public DataTable LoadDSCTCTDBtheocamketByDates(DateTime TuNgay, DateTime DenNgay)
-        {
-            try
-            {
-                    var query = from itemCTCTDB in db.CTCTDBs
-                                where itemCTCTDB.CreateDate.Value.Date >= TuNgay.Date && itemCTCTDB.CreateDate.Value <= DenNgay.Date && itemCTCTDB.GhiChuLyDo.Contains("theo cam kết")
                                 //orderby itemCTCTDB.CreateDate descending
                                 select new
                                 {
@@ -755,114 +728,6 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemCTCTDB.TCTBXuLy,
                                     itemCTCTDB.TroNgai,
                                     itemCTCTDB.NguoiKy,
-                                    itemCTCTDB.NoiDungXuLy,
-                                };
-                    return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public DataTable LoadDSCTCTDB_Ton(DateTime TuNgay)
-        {
-            try
-            {
-                    var query = from itemCTCTDB in db.CTCTDBs
-                                where itemCTCTDB.NgayXuLy==null && itemCTCTDB.SoPhieu==null && itemCTCTDB.CreateDate.Value.Date == TuNgay.Date
-                                orderby itemCTCTDB.CreateDate ascending
-                                select new
-                                {
-                                    itemCTCTDB.MaCTCTDB,
-                                    itemCTCTDB.CreateDate,
-                                    itemCTCTDB.DanhBo,
-                                    itemCTCTDB.HoTen,
-                                    itemCTCTDB.DiaChi,
-                                    itemCTCTDB.LyDo,
-                                    itemCTCTDB.GhiChuLyDo,
-                                };
-                    return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public DataTable LoadDSCTCTDB_Ton(DateTime TuNgay, DateTime DenNgay)
-        {
-            try
-            {
-                    var query = from itemCTCTDB in db.CTCTDBs
-                                where itemCTCTDB.NgayXuLy == null && itemCTCTDB.SoPhieu == null && itemCTCTDB.CreateDate.Value.Date >= TuNgay.Date && itemCTCTDB.CreateDate.Value.Date <= DenNgay.Date
-                                orderby itemCTCTDB.CreateDate ascending
-                                select new
-                                {
-                                    itemCTCTDB.MaCTCTDB,
-                                    itemCTCTDB.CreateDate,
-                                    itemCTCTDB.DanhBo,
-                                    itemCTCTDB.HoTen,
-                                    itemCTCTDB.DiaChi,
-                                    itemCTCTDB.LyDo,
-                                    itemCTCTDB.GhiChuLyDo,
-                                };
-                    return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public DataTable LoadDSCTCTDB_DaXuLy(DateTime TuNgay)
-        {
-            try
-            {
-                    var query = from itemCTCTDB in db.CTCTDBs
-                                where itemCTCTDB.NgayXuLy != null && itemCTCTDB.SoPhieu == null && itemCTCTDB.CreateDate.Value.Date == TuNgay.Date
-                                && (itemCTCTDB.NoiDungXuLy=="Đã cắt tạm bít nút"||itemCTCTDB.NoiDungXuLy=="Bít hủy tận gốc")
-                                orderby itemCTCTDB.CreateDate ascending
-                                select new
-                                {
-                                    itemCTCTDB.MaCTCTDB,
-                                    itemCTCTDB.CreateDate,
-                                    itemCTCTDB.DanhBo,
-                                    itemCTCTDB.HoTen,
-                                    itemCTCTDB.DiaChi,
-                                    itemCTCTDB.LyDo,
-                                    itemCTCTDB.GhiChuLyDo,
-                                    itemCTCTDB.NoiDungXuLy,
-                                };
-                    return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public DataTable LoadDSCTCTDB_DaXuLy(DateTime TuNgay, DateTime DenNgay)
-        {
-            try
-            {
-                    var query = from itemCTCTDB in db.CTCTDBs
-                                where itemCTCTDB.NgayXuLy != null && itemCTCTDB.SoPhieu == null && itemCTCTDB.CreateDate.Value.Date >= TuNgay.Date && itemCTCTDB.CreateDate.Value.Date <= DenNgay.Date
-                                && (itemCTCTDB.NoiDungXuLy == "Đã cắt tạm bít nút" || itemCTCTDB.NoiDungXuLy == "Bít hủy tận gốc")
-                                orderby itemCTCTDB.CreateDate ascending
-                                select new
-                                {
-                                    itemCTCTDB.MaCTCTDB,
-                                    itemCTCTDB.CreateDate,
-                                    itemCTCTDB.DanhBo,
-                                    itemCTCTDB.HoTen,
-                                    itemCTCTDB.DiaChi,
-                                    itemCTCTDB.LyDo,
-                                    itemCTCTDB.GhiChuLyDo,
                                     itemCTCTDB.NoiDungXuLy,
                                 };
                     return LINQToDataTable(query);
@@ -1387,114 +1252,6 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemCTCHDB.TCTBXuLy,
                                     itemCTCHDB.TroNgai,
                                     itemCTCHDB.NguoiKy,
-                                    itemCTCHDB.NoiDungXuLy,
-                                };
-                    return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public DataTable LoadDSCTCHDB_Ton(DateTime TuNgay)
-        {
-            try
-            {
-                    var query = from itemCTCHDB in db.CTCHDBs
-                                where itemCTCHDB.NgayXuLy == null && itemCTCHDB.SoPhieu == null && itemCTCHDB.CreateDate.Value.Date == TuNgay.Date
-                                orderby itemCTCHDB.CreateDate ascending
-                                select new
-                                {
-                                    itemCTCHDB.MaCTCHDB,
-                                    itemCTCHDB.CreateDate,
-                                    itemCTCHDB.DanhBo,
-                                    itemCTCHDB.HoTen,
-                                    itemCTCHDB.DiaChi,
-                                    itemCTCHDB.LyDo,
-                                    itemCTCHDB.GhiChuLyDo,
-                                };
-                    return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public DataTable LoadDSCTCHDB_Ton(DateTime TuNgay, DateTime DenNgay)
-        {
-            try
-            {
-                    var query = from itemCTCHDB in db.CTCHDBs
-                                where itemCTCHDB.NgayXuLy == null && itemCTCHDB.SoPhieu == null && itemCTCHDB.CreateDate.Value.Date >= TuNgay.Date && itemCTCHDB.CreateDate.Value.Date <= DenNgay.Date
-                                orderby itemCTCHDB.CreateDate ascending
-                                select new
-                                {
-                                    itemCTCHDB.MaCTCHDB,
-                                    itemCTCHDB.CreateDate,
-                                    itemCTCHDB.DanhBo,
-                                    itemCTCHDB.HoTen,
-                                    itemCTCHDB.DiaChi,
-                                    itemCTCHDB.LyDo,
-                                    itemCTCHDB.GhiChuLyDo,
-                                };
-                    return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public DataTable LoadDSCTCHDB_DaXuLy(DateTime TuNgay)
-        {
-            try
-            {
-                    var query = from itemCTCHDB in db.CTCHDBs
-                                where itemCTCHDB.NgayXuLy != null && itemCTCHDB.SoPhieu == null && itemCTCHDB.CreateDate.Value.Date == TuNgay.Date
-                                && (itemCTCHDB.NoiDungXuLy == "Đã cắt tạm bít nút" || itemCTCHDB.NoiDungXuLy == "Bít hủy tận gốc" || itemCTCHDB.NoiDungXuLy == "Cắt ống ngánh khóa con cóc")
-                                orderby itemCTCHDB.CreateDate ascending
-                                select new
-                                {
-                                    itemCTCHDB.MaCTCHDB,
-                                    itemCTCHDB.CreateDate,
-                                    itemCTCHDB.DanhBo,
-                                    itemCTCHDB.HoTen,
-                                    itemCTCHDB.DiaChi,
-                                    itemCTCHDB.LyDo,
-                                    itemCTCHDB.GhiChuLyDo,
-                                    itemCTCHDB.NoiDungXuLy,
-                                };
-                    return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public DataTable LoadDSCTCHDB_DaXuLy(DateTime TuNgay, DateTime DenNgay)
-        {
-            try
-            {
-                    var query = from itemCTCHDB in db.CTCHDBs
-                                where itemCTCHDB.NgayXuLy != null && itemCTCHDB.SoPhieu == null && itemCTCHDB.CreateDate.Value.Date >= TuNgay.Date && itemCTCHDB.CreateDate.Value.Date <= DenNgay.Date
-                                && (itemCTCHDB.NoiDungXuLy == "Đã cắt tạm bít nút" || itemCTCHDB.NoiDungXuLy == "Bít hủy tận gốc" || itemCTCHDB.NoiDungXuLy == "Cắt ống ngánh khóa con cóc")
-                                orderby itemCTCHDB.CreateDate ascending
-                                select new
-                                {
-                                    itemCTCHDB.MaCTCHDB,
-                                    itemCTCHDB.CreateDate,
-                                    itemCTCHDB.DanhBo,
-                                    itemCTCHDB.HoTen,
-                                    itemCTCHDB.DiaChi,
-                                    itemCTCHDB.LyDo,
-                                    itemCTCHDB.GhiChuLyDo,
                                     itemCTCHDB.NoiDungXuLy,
                                 };
                     return LINQToDataTable(query);
