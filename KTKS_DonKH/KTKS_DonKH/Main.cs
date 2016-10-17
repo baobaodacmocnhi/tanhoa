@@ -348,7 +348,7 @@ namespace KTKS_DonKH
         {
             foreach (Form item in this.MdiChildren)
                 item.Close();
-            Form frm = new frmTTTL(true);
+            Form frm = new frmTTTL();
             frm.MdiParent = this;
             frm.Show();
             StripStatus_Form.Text = "Đang mở Form: " + frm.Text;

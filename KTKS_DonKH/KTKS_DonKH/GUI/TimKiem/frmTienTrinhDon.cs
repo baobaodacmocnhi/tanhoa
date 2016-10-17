@@ -352,7 +352,7 @@ namespace KTKS_DonKH.GUI.TimKiem
         {
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
             {
-                frmShowTTTL frm = new frmShowTTTL(decimal.Parse(_CTRow.Row["MaCTTTTL"].ToString()));
+                frmTTTL frm = new frmTTTL(decimal.Parse(_CTRow.Row["MaCTTTTL"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;
@@ -549,7 +549,7 @@ namespace KTKS_DonKH.GUI.TimKiem
         {
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
             {
-                frmShowTTTL frm = new frmShowTTTL(decimal.Parse(_CTRow.Row["MaCTTTTL"].ToString()), true);
+                frmTTTL frm = new frmTTTL(decimal.Parse(_CTRow.Row["MaCTTTTL"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                     _CTRow = null;
             }

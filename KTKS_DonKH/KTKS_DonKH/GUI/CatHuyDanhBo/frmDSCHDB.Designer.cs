@@ -50,6 +50,8 @@
             this.LyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GhiChuLyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayXuLyCHDB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiDungXuLy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbTimTheo = new System.Windows.Forms.ComboBox();
             this.txtNoiDungTimKiem = new System.Windows.Forms.TextBox();
@@ -89,7 +91,7 @@
             // radDSCatTamDanhBo
             // 
             this.radDSCatTamDanhBo.AutoSize = true;
-            this.radDSCatTamDanhBo.Location = new System.Drawing.Point(12, 12);
+            this.radDSCatTamDanhBo.Location = new System.Drawing.Point(113, 12);
             this.radDSCatTamDanhBo.Name = "radDSCatTamDanhBo";
             this.radDSCatTamDanhBo.Size = new System.Drawing.Size(99, 20);
             this.radDSCatTamDanhBo.TabIndex = 2;
@@ -100,7 +102,7 @@
             // radDSCatHuyDanhBo
             // 
             this.radDSCatHuyDanhBo.AutoSize = true;
-            this.radDSCatHuyDanhBo.Location = new System.Drawing.Point(117, 12);
+            this.radDSCatHuyDanhBo.Location = new System.Drawing.Point(113, 38);
             this.radDSCatHuyDanhBo.Name = "radDSCatHuyDanhBo";
             this.radDSCatHuyDanhBo.Size = new System.Drawing.Size(95, 20);
             this.radDSCatHuyDanhBo.TabIndex = 3;
@@ -134,7 +136,9 @@
             this.DiaChi,
             this.LyDo,
             this.GhiChuLyDo,
-            this.SoTien});
+            this.SoTien,
+            this.NgayXuLyCHDB,
+            this.NoiDungXuLy});
             this.dgvDSCTCHDB.Location = new System.Drawing.Point(1, 68);
             this.dgvDSCTCHDB.Name = "dgvDSCTCHDB";
             this.dgvDSCTCHDB.RowHeadersWidth = 60;
@@ -235,7 +239,7 @@
             // LyDo
             // 
             this.LyDo.DataPropertyName = "LyDo";
-            this.LyDo.HeaderText = "Lý Do Xử Lý";
+            this.LyDo.HeaderText = "Lý Do";
             this.LyDo.Name = "LyDo";
             this.LyDo.ReadOnly = true;
             this.LyDo.Width = 230;
@@ -255,6 +259,20 @@
             this.SoTien.Name = "SoTien";
             this.SoTien.ReadOnly = true;
             this.SoTien.Width = 90;
+            // 
+            // NgayXuLyCHDB
+            // 
+            this.NgayXuLyCHDB.DataPropertyName = "NgayXuLy";
+            this.NgayXuLyCHDB.HeaderText = "Ngày Xử Lý";
+            this.NgayXuLyCHDB.Name = "NgayXuLyCHDB";
+            this.NgayXuLyCHDB.Visible = false;
+            // 
+            // NoiDungXuLy
+            // 
+            this.NoiDungXuLy.DataPropertyName = "NoiDungXuLy";
+            this.NoiDungXuLy.HeaderText = "NoiDungXuLy";
+            this.NoiDungXuLy.Name = "NoiDungXuLy";
+            this.NoiDungXuLy.Visible = false;
             // 
             // label2
             // 
@@ -301,7 +319,7 @@
             // radDSDongNuoc
             // 
             this.radDSDongNuoc.AutoSize = true;
-            this.radDSDongNuoc.Location = new System.Drawing.Point(119, 38);
+            this.radDSDongNuoc.Location = new System.Drawing.Point(218, 38);
             this.radDSDongNuoc.Name = "radDSDongNuoc";
             this.radDSDongNuoc.Size = new System.Drawing.Size(115, 20);
             this.radDSDongNuoc.TabIndex = 5;
@@ -570,7 +588,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1370, 619);
+            this.ClientSize = new System.Drawing.Size(1404, 619);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.radDSCatTamDanhBo);
             this.Controls.Add(this.radDSYCCHDB);
@@ -622,19 +640,6 @@
         private System.Windows.Forms.RadioButton radDSYCCHDB;
         private System.Windows.Forms.DataGridView dgvDSYCCHDB;
         private System.Windows.Forms.RadioButton radDSDongNuoc;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn In;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn PhieuDuocKy;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn DaLapPhieu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieuYCCHDB;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ThongBaoDuocKy;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaTB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LyDo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GhiChuLyDo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SoTien;
         private System.Windows.Forms.DataGridViewCheckBoxColumn YC_In;
         private System.Windows.Forms.DataGridViewCheckBoxColumn YC_PhieuDuocKy;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieu;
@@ -652,5 +657,20 @@
         private System.Windows.Forms.Button btnInNhan;
         private System.Windows.Forms.TextBox txtNoiDungTimKiem2;
         private System.Windows.Forms.Button btnXem;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn In;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn PhieuDuocKy;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn DaLapPhieu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieuYCCHDB;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ThongBaoDuocKy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaTB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LyDo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GhiChuLyDo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoTien;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayXuLyCHDB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NoiDungXuLy;
     }
 }

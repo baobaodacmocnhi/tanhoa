@@ -48,6 +48,10 @@ namespace KTKS_DonKH.GUI.HeThong
                     GetLoginResult(true);
                 }
             }
+            else
+            {
+                MessageBox.Show("Sai mật khẩu/Không kết nối csdl", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void frmDangNhap_FormClosed(object sender, FormClosedEventArgs e)

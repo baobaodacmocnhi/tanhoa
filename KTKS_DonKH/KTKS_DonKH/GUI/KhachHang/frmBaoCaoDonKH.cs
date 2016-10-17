@@ -150,7 +150,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                                     }
                                     break;
                                 case "TTTL":
-                                    TTTL tttl = _cTTTL.getTTTLbyMaDon(decimal.Parse(item["MaDon"].ToString()));
+                                    TTTL tttl = _cTTTL.GetByMaDon(decimal.Parse(item["MaDon"].ToString()));
                                     if (tttl != null)
                                     {
                                         dr["LoaiChuyen"] = "TTTL";
@@ -249,7 +249,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                                     }
                                     break;
                                 case "TTTL":
-                                    TTTL tttl = _cTTTL.getTTTLbyMaDon_TXL(decimal.Parse(item["MaDon"].ToString()));
+                                    TTTL tttl = _cTTTL.GetByMaDon_TXL(decimal.Parse(item["MaDon"].ToString()));
                                     if (tttl != null)
                                     {
                                         dr["LoaiChuyen"] = "TTTL";

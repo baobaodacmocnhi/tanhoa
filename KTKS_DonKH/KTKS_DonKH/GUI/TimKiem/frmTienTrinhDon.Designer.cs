@@ -420,13 +420,13 @@
             gridLevelNode12,
             gridLevelNode13,
             gridLevelNode14});
-            this.gridControl.Location = new System.Drawing.Point(0, 41);
+            this.gridControl.Location = new System.Drawing.Point(12, 43);
             this.gridControl.MainView = this.gridViewDon;
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1,
             this.repositoryItemCheckEdit2});
-            this.gridControl.Size = new System.Drawing.Size(1491, 517);
+            this.gridControl.Size = new System.Drawing.Size(1338, 568);
             this.gridControl.TabIndex = 2;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewDCBD,
@@ -2301,19 +2301,21 @@
             // 
             // gridColumn125
             // 
-            this.gridColumn125.Caption = "Giá Biểu";
+            this.gridColumn125.Caption = "GB";
             this.gridColumn125.FieldName = "GiaBieu";
             this.gridColumn125.Name = "gridColumn125";
             this.gridColumn125.Visible = true;
             this.gridColumn125.VisibleIndex = 7;
+            this.gridColumn125.Width = 50;
             // 
             // gridColumn126
             // 
-            this.gridColumn126.Caption = "Định Mức";
+            this.gridColumn126.Caption = "ĐM";
             this.gridColumn126.FieldName = "DinhMuc";
             this.gridColumn126.Name = "gridColumn126";
             this.gridColumn126.Visible = true;
             this.gridColumn126.VisibleIndex = 8;
+            this.gridColumn126.Width = 50;
             // 
             // gridColumn12
             // 
@@ -2323,12 +2325,12 @@
             this.gridColumn12.OptionsColumn.AllowEdit = false;
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 9;
-            this.gridColumn12.Width = 250;
+            this.gridColumn12.Width = 200;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(169, 14);
+            this.label2.Location = new System.Drawing.Point(130, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 16);
             this.label2.TabIndex = 3;
@@ -2342,14 +2344,14 @@
             "Danh Bộ",
             "Họ Tên",
             "Địa Chỉ"});
-            this.cmbTimTheo.Location = new System.Drawing.Point(243, 12);
+            this.cmbTimTheo.Location = new System.Drawing.Point(204, 12);
             this.cmbTimTheo.Name = "cmbTimTheo";
-            this.cmbTimTheo.Size = new System.Drawing.Size(121, 24);
+            this.cmbTimTheo.Size = new System.Drawing.Size(100, 24);
             this.cmbTimTheo.TabIndex = 4;
             // 
             // txtNoiDungTimKiem
             // 
-            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(443, 12);
+            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(383, 12);
             this.txtNoiDungTimKiem.Name = "txtNoiDungTimKiem";
             this.txtNoiDungTimKiem.Size = new System.Drawing.Size(130, 22);
             this.txtNoiDungTimKiem.TabIndex = 1;
@@ -2359,7 +2361,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(370, 14);
+            this.label1.Location = new System.Drawing.Point(310, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 16);
             this.label1.TabIndex = 0;
@@ -2367,9 +2369,9 @@
             // 
             // btnTimKiem
             // 
-            this.btnTimKiem.Location = new System.Drawing.Point(581, 11);
+            this.btnTimKiem.Location = new System.Drawing.Point(521, 12);
             this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(86, 25);
+            this.btnTimKiem.Size = new System.Drawing.Size(75, 25);
             this.btnTimKiem.TabIndex = 5;
             this.btnTimKiem.Text = "Tìm Kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = true;
@@ -2377,9 +2379,9 @@
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(673, 10);
+            this.btnIn.Location = new System.Drawing.Point(602, 12);
             this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(86, 25);
+            this.btnIn.Size = new System.Drawing.Size(75, 25);
             this.btnIn.TabIndex = 8;
             this.btnIn.Text = "In";
             this.btnIn.UseVisualStyleBackColor = true;
@@ -2391,7 +2393,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1491, 571);
+            this.ClientSize = new System.Drawing.Size(1491, 621);
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.gridControl);

@@ -1193,7 +1193,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                         dtDon.ImportRow(itemRow);
                 }
 
-                dtDon.DefaultView.Sort = "CreateDate ASC";
+                dtDon.DefaultView.Sort = "CreateDate DESC";
                 ds.Tables.Add(dtDon.DefaultView.ToTable());
 
                 if (dtDon.Rows.Count > 0 && dtKTXM.Rows.Count > 0)
@@ -1894,7 +1894,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                         dtDon.ImportRow(itemRow);
                 }
 
-                dtDon.DefaultView.Sort = "CreateDate ASC";
+                dtDon.DefaultView.Sort = "CreateDate DESC";
                 ds.Tables.Add(dtDon.DefaultView.ToTable());
 
                 if (dtDon.Rows.Count > 0 && dtKTXM.Rows.Count > 0)
@@ -2594,7 +2594,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                         dtDon.ImportRow(itemRow);
                 }
 
-                dtDon.DefaultView.Sort = "CreateDate ASC";
+                dtDon.DefaultView.Sort = "CreateDate DESC";
                 ds.Tables.Add(dtDon.DefaultView.ToTable());
 
                 if (dtDon.Rows.Count > 0 && dtKTXM.Rows.Count > 0)

@@ -4084,6 +4084,8 @@ namespace KTKS_DonKH.BaoCao {
             
             private global::System.Data.DataColumn columnCreateDate;
             
+            private global::System.Data.DataColumn columnGroupNoiDungXuLy;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ThongBaoCHDBDataTable() {
@@ -4255,6 +4257,14 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn GroupNoiDungXuLyColumn {
+                get {
+                    return this.columnGroupNoiDungXuLy;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -4307,7 +4317,8 @@ namespace KTKS_DonKH.BaoCao {
                         string LoaiBaoCao, 
                         string TuNgay, 
                         string DenNgay, 
-                        string CreateDate) {
+                        string CreateDate, 
+                        bool GroupNoiDungXuLy) {
                 ThongBaoCHDBRow rowThongBaoCHDBRow = ((ThongBaoCHDBRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         SoPhieu,
@@ -4326,7 +4337,8 @@ namespace KTKS_DonKH.BaoCao {
                         LoaiBaoCao,
                         TuNgay,
                         DenNgay,
-                        CreateDate};
+                        CreateDate,
+                        GroupNoiDungXuLy};
                 rowThongBaoCHDBRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowThongBaoCHDBRow);
                 return rowThongBaoCHDBRow;
@@ -4366,6 +4378,7 @@ namespace KTKS_DonKH.BaoCao {
                 this.columnTuNgay = base.Columns["TuNgay"];
                 this.columnDenNgay = base.Columns["DenNgay"];
                 this.columnCreateDate = base.Columns["CreateDate"];
+                this.columnGroupNoiDungXuLy = base.Columns["GroupNoiDungXuLy"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4405,6 +4418,9 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnDenNgay);
                 this.columnCreateDate = new global::System.Data.DataColumn("CreateDate", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCreateDate);
+                this.columnGroupNoiDungXuLy = new global::System.Data.DataColumn("GroupNoiDungXuLy", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGroupNoiDungXuLy);
+                this.columnGroupNoiDungXuLy.DefaultValue = ((bool)(false));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -19196,6 +19212,22 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool GroupNoiDungXuLy {
+                get {
+                    try {
+                        return ((bool)(this[this.tableThongBaoCHDB.GroupNoiDungXuLyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'GroupNoiDungXuLy\' in table \'ThongBaoCHDB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableThongBaoCHDB.GroupNoiDungXuLyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsSoPhieuNull() {
                 return this.IsNull(this.tableThongBaoCHDB.SoPhieuColumn);
             }
@@ -19396,6 +19428,18 @@ namespace KTKS_DonKH.BaoCao {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetCreateDateNull() {
                 this[this.tableThongBaoCHDB.CreateDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsGroupNoiDungXuLyNull() {
+                return this.IsNull(this.tableThongBaoCHDB.GroupNoiDungXuLyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetGroupNoiDungXuLyNull() {
+                this[this.tableThongBaoCHDB.GroupNoiDungXuLyColumn] = global::System.Convert.DBNull;
             }
         }
         

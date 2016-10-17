@@ -392,12 +392,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Clear();
                             txtMaDon.Focus();
-
-                            if (!_direct)
-                            {
-                                this.DialogResult = DialogResult.OK;
-                                this.Close();
-                            }
                         }
                     }
                     else
@@ -552,12 +546,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                             Clear();
                             txtMaDon.Focus();
-
-                            if (!_direct)
-                            {
-                                this.DialogResult = DialogResult.OK;
-                                this.Close();
-                            }
                         }
                     }
                     else

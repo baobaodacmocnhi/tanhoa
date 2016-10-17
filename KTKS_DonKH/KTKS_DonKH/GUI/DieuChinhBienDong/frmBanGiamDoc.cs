@@ -132,7 +132,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
         }
 
-        private void btnTimKiem_Click(object sender, EventArgs e)
+        private void btnXem_Click(object sender, EventArgs e)
         {
             
             switch (cmbTimTheo.SelectedItem.ToString())
@@ -165,7 +165,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             dgvDanhSach.DataSource = _cDongNuoc.LoadDSCTMoNuocByMaTB(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
                             break;
                         case "Thảo Thư Trả Lời":
-                            dgvDanhSach.DataSource = _cTTTL.LoadDSCTTTTLByMaTB(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
+                            dgvDanhSach.DataSource = _cTTTL.GetDSByMaTB(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
                             break;
                     }
                     break;
@@ -173,31 +173,31 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     switch (cmbLoai.SelectedItem.ToString())
                     {
                         case "Điều Chỉnh Biến Động":
-                            dgvDanhSach.DataSource = _cDCBD.LoadDSCTDCBD(dateTimKiem.Value);
+                            dgvDanhSach.DataSource = _cDCBD.LoadDSCTDCBD(dateTu.Value);
                             break;
                         case "Điều Chỉnh Hóa Đơn":
-                            dgvDanhSach.DataSource = _cDCBD.LoadDSCTDCHD(dateTimKiem.Value);
+                            dgvDanhSach.DataSource = _cDCBD.LoadDSCTDCHD(dateTu.Value);
                             break;
                         case "Cắt Chuyển":
-                            dgvDanhSach.DataSource = _cChungTu.LoadDSCatChuyenDM(dateTimKiem.Value);
+                            dgvDanhSach.DataSource = _cChungTu.LoadDSCatChuyenDM(dateTu.Value);
                             break;
                         case "Cắt Tạm Danh Bộ":
-                            dgvDanhSach.DataSource = _cCHDB.LoadDSCTCTDB(dateTimKiem.Value);
+                            dgvDanhSach.DataSource = _cCHDB.LoadDSCTCTDB(dateTu.Value);
                             break;
                         case "Cắt Hủy Danh Bộ":
-                            dgvDanhSach.DataSource = _cCHDB.LoadDSCTCHDB(dateTimKiem.Value);
+                            dgvDanhSach.DataSource = _cCHDB.LoadDSCTCHDB(dateTu.Value);
                             break;
                         case "Yêu Cầu Cắt Hủy Danh Bộ":
-                            dgvDanhSach.DataSource = _cCHDB.LoadDSYCCHDB_Don(dateTimKiem.Value);
+                            dgvDanhSach.DataSource = _cCHDB.LoadDSYCCHDB_Don(dateTu.Value);
                             break;
                         case "Đóng Nước":
-                            dgvDanhSach.DataSource = _cDongNuoc.LoadDSCTDongNuoc(dateTimKiem.Value);
+                            dgvDanhSach.DataSource = _cDongNuoc.LoadDSCTDongNuoc(dateTu.Value);
                             break;
                         case "Mở Nước":
-                            dgvDanhSach.DataSource = _cDongNuoc.LoadDSCTMoNuoc(dateTimKiem.Value);
+                            dgvDanhSach.DataSource = _cDongNuoc.LoadDSCTMoNuoc(dateTu.Value);
                             break;
                         case "Thảo Thư Trả Lời":
-                            dgvDanhSach.DataSource = _cTTTL.LoadDSCTTTTL(dateTimKiem.Value);
+                            dgvDanhSach.DataSource = _cTTTL.GetDSByCreateDate(dateTu.Value, dateDen.Value);
                             break;
                     }
                     break;
@@ -325,18 +325,18 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     for (int i = 0; i < dgvDanhSach.RowCount; i++)
                         if (bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
                         {
-                            CTTTTL cttttl = _cTTTL.getCTTTTLbyID(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
+                            CTTTTL cttttl = _cTTTL.GetCTByID(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
 
                             if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                                 cttttl.ChucVu = "GIÁM ĐỐC";
                             else
                                 cttttl.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
                             cttttl.NguoiKy = bangiamdoc.HoTen.ToUpper();
-                            _cTTTL.SuaCTTTTL(cttttl);
+                            _cTTTL.SuaCT(cttttl);
                         }
                     break;
             }
-            btnTimKiem.PerformClick();
+            btnXem.PerformClick();
         }
 
         private void chkSelectAll_CheckedChanged(object sender, EventArgs e)
@@ -364,15 +364,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 case "Mã":
                     txtNoiDung.Visible = true;
-                    dateTimKiem.Visible = false;
+                    dateTu.Visible = false;
                     break;
                 case "Ngày":
                     txtNoiDung.Visible = false;
-                    dateTimKiem.Visible = true;
+                    dateTu.Visible = true;
                     break;
                 default:
                     txtNoiDung.Visible = false;
-                    dateTimKiem.Visible = false;
+                    dateTu.Visible = false;
                     break;
             }
         }

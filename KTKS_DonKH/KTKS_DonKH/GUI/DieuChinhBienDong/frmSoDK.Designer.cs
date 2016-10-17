@@ -113,9 +113,6 @@
             this.label33 = new System.Windows.Forms.Label();
             this.txtDiaChiKH_Cat_YCC5 = new System.Windows.Forms.TextBox();
             this.dgvDSDanhBo = new System.Windows.Forms.DataGridView();
-            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoNKDangKy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtLo = new System.Windows.Forms.TextBox();
             this.label34 = new System.Windows.Forms.Label();
             this.txtPhong = new System.Windows.Forms.TextBox();
@@ -151,6 +148,9 @@
             this.chkSuaNgayHetHan = new System.Windows.Forms.CheckBox();
             this.txtHoTen = new System.Windows.Forms.TextBox();
             this.label58 = new System.Windows.Forms.Label();
+            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoNKDangKy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.panel_YCCat3.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -964,27 +964,8 @@
             this.CreateDate});
             this.dgvDSDanhBo.Location = new System.Drawing.Point(11, 275);
             this.dgvDSDanhBo.Name = "dgvDSDanhBo";
-            this.dgvDSDanhBo.Size = new System.Drawing.Size(398, 160);
+            this.dgvDSDanhBo.Size = new System.Drawing.Size(347, 160);
             this.dgvDSDanhBo.TabIndex = 26;
-            // 
-            // DanhBo
-            // 
-            this.DanhBo.DataPropertyName = "DanhBo";
-            this.DanhBo.HeaderText = "Danh Bộ";
-            this.DanhBo.Name = "DanhBo";
-            // 
-            // SoNKDangKy
-            // 
-            this.SoNKDangKy.DataPropertyName = "SoNKDangKy";
-            this.SoNKDangKy.HeaderText = "Số NK Đăng Ký";
-            this.SoNKDangKy.Name = "SoNKDangKy";
-            this.SoNKDangKy.Width = 80;
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Ngày Lập";
-            this.CreateDate.Name = "CreateDate";
             // 
             // txtLo
             // 
@@ -1334,6 +1315,24 @@
             this.label58.Size = new System.Drawing.Size(84, 16);
             this.label58.TabIndex = 35;
             this.label58.Text = "Khách Hàng:";
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            // 
+            // SoNKDangKy
+            // 
+            this.SoNKDangKy.DataPropertyName = "SoNKDangKy";
+            this.SoNKDangKy.HeaderText = "Số NK Đăng Ký";
+            this.SoNKDangKy.Name = "SoNKDangKy";
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
             // 
             // frmSoDK
             // 

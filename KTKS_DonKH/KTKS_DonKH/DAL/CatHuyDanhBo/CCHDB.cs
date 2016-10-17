@@ -631,33 +631,6 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public DataTable LoadDSCTCTDBtheocamketByDate(DateTime TuNgay)
-        {
-            try
-            {
-                    var query = from itemCTCTDB in db.CTCTDBs
-                                where itemCTCTDB.CreateDate.Value.Date == TuNgay.Date && itemCTCTDB.GhiChuLyDo.Contains("theo cam kết")
-                                //orderby itemCTCTDB.CreateDate descending
-                                select new
-                                {
-                                    itemCTCTDB.DanhBo,
-                                    itemCTCTDB.HoTen,
-                                    itemCTCTDB.DiaChi,
-                                    itemCTCTDB.LyDo,
-                                    itemCTCTDB.GhiChuLyDo,
-                                    itemCTCTDB.SoTien,
-                                    itemCTCTDB.NgayTCTBXuLy,
-                                    itemCTCTDB.KetQuaTCTBXuLy,
-                                };
-                    return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
         /// <summary>
         /// Lấy Danh Sách Chi Tiết Cắt Tạm Danh Bộ trong Ngày
         /// </summary>
@@ -806,6 +779,21 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+        }
+
+        public DataTable GetDSCatTam_NgayLap_ChuaXuLy(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            return LINQToDataTable(db.CTCTDBs.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.NgayXuLy == null).OrderBy(item=>item.CreateDate).ToList());
+        }
+
+        public DataTable GetDSCatTam_NgayLap_DaXuLy(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            return LINQToDataTable(db.CTCTDBs.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.NgayXuLy != null).OrderBy(item => item.CreateDate).ToList());
+        }
+
+        public DataTable GetDSCatTam_NgayXuLy_DaXuLy(DateTime FromNgayXuLy, DateTime ToNgayXuLy)
+        {
+            return LINQToDataTable(db.CTCTDBs.Where(item => item.NgayXuLy.Value.Date >= FromNgayXuLy.Date && item.NgayXuLy.Value.Date <= ToNgayXuLy.Date).OrderBy(item => item.CreateDate).ToList());
         }
 
         #endregion
@@ -1394,6 +1382,21 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+        }
+
+        public DataTable GetDSCatHuy_NgayLap_ChuaXuLy(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            return LINQToDataTable(db.CTCHDBs.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.NgayXuLy == null).OrderBy(item => item.CreateDate).ToList());
+        }
+
+        public DataTable GetDSCatHuy_NgayLap_DaXuLy(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            return LINQToDataTable(db.CTCHDBs.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.NgayXuLy != null).OrderBy(item => item.CreateDate).ToList());
+        }
+
+        public DataTable GetDSCatHuy_NgayXuLy_DaXuLy(DateTime FromNgayXuLy, DateTime ToNgayXuLy)
+        {
+            return LINQToDataTable(db.CTCHDBs.Where(item => item.NgayXuLy.Value.Date >= FromNgayXuLy.Date && item.NgayXuLy.Value.Date <= ToNgayXuLy.Date).OrderBy(item => item.CreateDate).ToList());
         }
 
         #endregion

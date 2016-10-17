@@ -134,7 +134,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         /// <param name="e"></param>
         private void dgvDSCTCHDB_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvDSCTCHDB.Columns[e.ColumnIndex].Name == "SoPhieuYCCHDB" && dgvDSCTCHDB["SoPhieuYCCHDB",e.RowIndex].Value.ToString()!="")
+            if (dgvDSCTCHDB.Columns[e.ColumnIndex].Name == "SoPhieuYCCHDB" && dgvDSCTCHDB["SoPhieuYCCHDB", e.RowIndex].Value.ToString() != "")
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
@@ -220,14 +220,14 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 {
                     frmShowCTDB frm = new frmShowCTDB(decimal.Parse(dgvDSCTCHDB["MaTB", dgvDSCTCHDB.CurrentRow.Index].Value.ToString()));
                     if (frm.ShowDialog() == DialogResult.OK) { }
-                        //DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCTDB();
+                    //DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCTDB();
                 }
             if (radDSCatHuyDanhBo.Checked)
                 if (dgvDSCTCHDB.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
                 {
                     frmShowCHDB frm = new frmShowCHDB(decimal.Parse(dgvDSCTCHDB["MaTB", dgvDSCTCHDB.CurrentRow.Index].Value.ToString()));
                     if (frm.ShowDialog() == DialogResult.OK) { }
-                        //DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCHDB();
+                    //DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCHDB();
                 }
         }
 
@@ -401,73 +401,66 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
                                 rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
 
-                                rpt.PrintToPrinter(1, false, 0, 0);
+                                rpt.PrintToPrinter(1, false,1,1);
+                                rpt.Clone();
+                                rpt.Dispose();
                             }
                     if (radDSCatHuyDanhBo.Checked)
                         for (int i = 0; i < dgvDSCTCHDB.Rows.Count; i++)
                             if (bool.Parse(dgvDSCTCHDB["In", i].Value.ToString()) == true)
                             {
-                                try
+                                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                                DataRow dr = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
+
+                                CTCHDB ctchdb = _cCHDB.getCTCHDBbyID(decimal.Parse(dgvDSCTCHDB["MaTB", i].Value.ToString()));
+
+                                CTKTXM ctktxm = null;
+                                if (ctchdb.CHDB.ToXuLy)
                                 {
-
-
-                                    DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                                    DataRow dr = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
-
-                                    CTCHDB ctchdb = _cCHDB.getCTCHDBbyID(decimal.Parse(dgvDSCTCHDB["MaTB", i].Value.ToString()));
-
-                                    CTKTXM ctktxm = null;
-                                    if (ctchdb.CHDB.ToXuLy)
-                                    {
-                                        ctktxm = _cKTXM.getCTKTXMbyMaDonTXLDanhBo(ctchdb.CHDB.MaDonTXL.Value, ctchdb.DanhBo);
-                                    }
-                                    else
-                                    {
-                                        ctktxm = _cKTXM.getCTKTXMbyMaDonKHDanhBo(ctchdb.CHDB.MaDon.Value, ctchdb.DanhBo);
-                                    }
-
-                                    dr["SoPhieu"] = ctchdb.MaCTCHDB.ToString().Insert(ctchdb.MaCTCHDB.ToString().Length - 2, "-");
-                                    dr["HoTen"] = ctchdb.HoTen;
-                                    dr["DiaChi"] = ctchdb.DiaChi;
-                                    if (!string.IsNullOrEmpty(ctchdb.DanhBo))
-                                        dr["DanhBo"] = ctchdb.DanhBo.Insert(7, " ").Insert(4, " ");
-                                    dr["HopDong"] = ctchdb.HopDong;
-
-                                    if (ctktxm != null)
-                                        if (!string.IsNullOrEmpty(ctktxm.ViTriDHN1) || !string.IsNullOrEmpty(ctktxm.ViTriDHN2))
-                                            dr["ViTriDHN"] = "Vị trí ĐHN lắp đặt: " + ctktxm.ViTriDHN1 + ", " + ctktxm.ViTriDHN2;
-
-                                    if (ctchdb.LyDo != "Vấn Đề Khác")
-                                        dr["LyDo"] = ctchdb.LyDo + ". ";
-                                    if (ctchdb.GhiChuLyDo != "")
-                                        dr["LyDo"] += ctchdb.GhiChuLyDo + ". ";
-                                    if (ctchdb.SoTien.ToString() != "")
-                                        dr["LyDo"] += "Số Tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", ctchdb.SoTien);
-                                    dr["NoiDung"] = ctchdb.NoiDung;
-
-                                    dr["NoiNhan"] = ctchdb.NoiNhan;
-
-                                    dr["ChucVu"] = ctchdb.ChucVu;
-                                    dr["NguoiKy"] = ctchdb.NguoiKy;
-
-                                    dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr);
-
-                                    rptThongBaoCHDB rpt = new rptThongBaoCHDB();
-                                    rpt.SetDataSource(dsBaoCao);
-
-                                    printDialog.AllowSomePages = true;
-                                    printDialog.ShowHelp = true;
-
-                                    rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
-                                    rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
-                                    rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-
-                                    rpt.PrintToPrinter(1, false, 0, 0);
+                                    ctktxm = _cKTXM.getCTKTXMbyMaDonTXLDanhBo(ctchdb.CHDB.MaDonTXL.Value, ctchdb.DanhBo);
                                 }
-                                catch (Exception ex)
+                                else
                                 {
-                                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    ctktxm = _cKTXM.getCTKTXMbyMaDonKHDanhBo(ctchdb.CHDB.MaDon.Value, ctchdb.DanhBo);
                                 }
+
+                                dr["SoPhieu"] = ctchdb.MaCTCHDB.ToString().Insert(ctchdb.MaCTCHDB.ToString().Length - 2, "-");
+                                dr["HoTen"] = ctchdb.HoTen;
+                                dr["DiaChi"] = ctchdb.DiaChi;
+                                if (!string.IsNullOrEmpty(ctchdb.DanhBo))
+                                    dr["DanhBo"] = ctchdb.DanhBo.Insert(7, " ").Insert(4, " ");
+                                dr["HopDong"] = ctchdb.HopDong;
+
+                                if (ctktxm != null)
+                                    if (!string.IsNullOrEmpty(ctktxm.ViTriDHN1) || !string.IsNullOrEmpty(ctktxm.ViTriDHN2))
+                                        dr["ViTriDHN"] = "Vị trí ĐHN lắp đặt: " + ctktxm.ViTriDHN1 + ", " + ctktxm.ViTriDHN2;
+
+                                if (ctchdb.LyDo != "Vấn Đề Khác")
+                                    dr["LyDo"] = ctchdb.LyDo + ". ";
+                                if (ctchdb.GhiChuLyDo != "")
+                                    dr["LyDo"] += ctchdb.GhiChuLyDo + ". ";
+                                if (ctchdb.SoTien.ToString() != "")
+                                    dr["LyDo"] += "Số Tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", ctchdb.SoTien);
+                                dr["NoiDung"] = ctchdb.NoiDung;
+
+                                dr["NoiNhan"] = ctchdb.NoiNhan;
+
+                                dr["ChucVu"] = ctchdb.ChucVu;
+                                dr["NguoiKy"] = ctchdb.NguoiKy;
+
+                                dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr);
+
+                                rptThongBaoCHDB rpt = new rptThongBaoCHDB();
+                                rpt.SetDataSource(dsBaoCao);
+
+                                printDialog.AllowSomePages = true;
+                                printDialog.ShowHelp = true;
+
+                                rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                                rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+
+                                rpt.PrintToPrinter(1, false, 1, 1);
                             }
                     if (radDSYCCHDB.Checked)
                         for (int i = 0; i < dgvDSYCCHDB.Rows.Count; i++)
@@ -520,7 +513,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
                                 rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
 
-                                rpt.PrintToPrinter(1, false, 0, 0);
+                                rpt.PrintToPrinter(1, false, 1, 1);
+                                rpt.Clone();
+                                rpt.Dispose();
                             }
                     if (radDSDongNuoc.Checked)
                         for (int i = 0; i < dgvDSYCCHDB.Rows.Count; i++)
@@ -558,7 +553,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
                                 rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
 
-                                rpt.PrintToPrinter(1, false, 0, 0);
+                                rpt.PrintToPrinter(1, false, 1, 1);
+                                rpt.Clone();
+                                rpt.Dispose();
                             }
                 }
             }
@@ -600,7 +597,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 DataSetBaoCao dsBaoCao1 = new DataSetBaoCao();
                 DataSetBaoCao dsBaoCao2 = new DataSetBaoCao();
-                bool flag=true;
+                bool flag = true;
                 for (int i = 0; i < dgvDSCTCHDB.Rows.Count; i++)
                     if (bool.Parse(dgvDSCTCHDB["In", i].Value.ToString()) == true)
                         if (flag)
@@ -608,7 +605,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             DataRow dr = dsBaoCao1.Tables["ThaoThuTraLoi"].NewRow();
 
                             CTCTDB ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(dgvDSCTCHDB["MaTB", i].Value.ToString()));
-                            dr["SoPhieu"] = "CT "+ctctdb.MaCTCTDB.ToString().Insert(ctctdb.MaCTCTDB.ToString().Length - 2, "-");
+                            dr["SoPhieu"] = "CT " + ctctdb.MaCTCTDB.ToString().Insert(ctctdb.MaCTCTDB.ToString().Length - 2, "-");
                             dr["HoTen"] = ctctdb.HoTen;
                             dr["DiaChi"] = ctctdb.DiaChi;
 
@@ -677,63 +674,63 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             switch (cmbTimTheo.SelectedItem.ToString())
             {
                 case "Mã Đơn":
-                    if(txtNoiDungTimKiem.Text.Trim() != "")
+                    if (txtNoiDungTimKiem.Text.Trim() != "")
                         if (radDSCatTamDanhBo.Checked)
-                                    dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCTDBByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
+                            dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCTDBByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
+                        else
+                            if (radDSCatHuyDanhBo.Checked)
+                                dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCHDBByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
+                            else
+                                if (radDSYCCHDB.Checked)
+                                    dgvDSYCCHDB.DataSource = _cCHDB.LoadDSYCCHDBByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
                                 else
-                                    if (radDSCatHuyDanhBo.Checked)
-                                        dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCHDBByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
-                                    else
-                                        if (radDSYCCHDB.Checked)
-                                            dgvDSYCCHDB.DataSource = _cCHDB.LoadDSYCCHDBByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
-                                        else
-                                            if (radDSDongNuoc.Checked)
-                                                dgvDSYCCHDB.DataSource = _cDongNuoc.LoadDSCTDongNuocByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
+                                    if (radDSDongNuoc.Checked)
+                                        dgvDSYCCHDB.DataSource = _cDongNuoc.LoadDSCTDongNuocByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
                     break;
                 case "Danh Bộ":
-                    if(txtNoiDungTimKiem.Text.Trim() != "")
+                    if (txtNoiDungTimKiem.Text.Trim() != "")
                         if (radDSCatTamDanhBo.Checked)
-                                    dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCTDBByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCTDBByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                        else
+                            if (radDSCatHuyDanhBo.Checked)
+                                dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCHDBByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            else
+                                if (radDSYCCHDB.Checked)
+                                    dgvDSYCCHDB.DataSource = _cCHDB.LoadDSYCCHDBByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
                                 else
-                                    if (radDSCatHuyDanhBo.Checked)
-                                        dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCHDBByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
-                                    else
-                                        if (radDSYCCHDB.Checked)
-                                            dgvDSYCCHDB.DataSource = _cCHDB.LoadDSYCCHDBByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
-                                        else
-                                            if (radDSDongNuoc.Checked)
-                                                dgvDSYCCHDB.DataSource = _cDongNuoc.LoadDSCTDongNuocByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                                    if (radDSDongNuoc.Checked)
+                                        dgvDSYCCHDB.DataSource = _cDongNuoc.LoadDSCTDongNuocByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
                     break;
                 case "Số Thông Báo/Số Phiếu":
-                    if (txtNoiDungTimKiem.Text.Trim() != ""&& txtNoiDungTimKiem2.Text.Trim() != "")
+                    if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
                         if (radDSCatTamDanhBo.Checked)
-                    dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCTDBByMaTBs(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
-                else
-                    if (radDSCatHuyDanhBo.Checked)
-                        dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCHDBByMaTBs(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
-                    else
-                        if (radDSYCCHDB.Checked)
-                            dgvDSYCCHDB.DataSource = _cCHDB.LoadDSYCCHDBBySoPhieus(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
-                else
-                    if(txtNoiDungTimKiem.Text.Trim() != "")
-                        if (radDSCatTamDanhBo.Checked)
-                                dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCTDBByMaTB(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                            dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCTDBByMaTBs(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                        else
+                            if (radDSCatHuyDanhBo.Checked)
+                                dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCHDBByMaTBs(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
                             else
-                                if (radDSCatHuyDanhBo.Checked)
-                                    dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCHDBByMaTB(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                if (radDSYCCHDB.Checked)
+                                    dgvDSYCCHDB.DataSource = _cCHDB.LoadDSYCCHDBBySoPhieus(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
                                 else
-                                    if (radDSYCCHDB.Checked)
-                                dgvDSYCCHDB.DataSource = _cCHDB.LoadDSYCCHDBBySoPhieu(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
-                                    else
-                                    if (radDSDongNuoc.Checked)
-                                        dgvDSYCCHDB.DataSource = _cDongNuoc.LoadDSCTDongNuocByMaTB(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                    if (txtNoiDungTimKiem.Text.Trim() != "")
+                                        if (radDSCatTamDanhBo.Checked)
+                                            dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCTDBByMaTB(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                        else
+                                            if (radDSCatHuyDanhBo.Checked)
+                                                dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCHDBByMaTB(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                            else
+                                                if (radDSYCCHDB.Checked)
+                                                    dgvDSYCCHDB.DataSource = _cCHDB.LoadDSYCCHDBBySoPhieu(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                                else
+                                                    if (radDSDongNuoc.Checked)
+                                                        dgvDSYCCHDB.DataSource = _cDongNuoc.LoadDSCTDongNuocByMaTB(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
                     break;
                 case "Lý Do":
                     if (radDSCatTamDanhBo.Checked)
-                                dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCTDBByLyDo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
-                            else
-                                if (radDSCatHuyDanhBo.Checked)
-                                    dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCHDBByLyDo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                        dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCTDBByLyDo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                    else
+                        if (radDSCatHuyDanhBo.Checked)
+                            dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCHDBByLyDo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
                     break;
                 case "Ngày":
                     if (radDSCatTamDanhBo.Checked)
@@ -753,7 +750,35 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             }
         }
 
-        
+        private void btnInDS_Click(object sender, EventArgs e)
+        {
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            if (radDSCatTamDanhBo.Checked)
+                
+
+            if (radDSCatHuyDanhBo.Checked)
+                foreach (DataGridViewRow item in dgvDSCTCHDB.Rows)
+                {
+                    DataRow dr = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
+
+                    dr["LoaiBaoCao"] = "CẮT HỦY";
+                    dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                    dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                    dr["SoPhieu"] = item.Cells["MaTB"].Value.ToString().Insert(item.Cells["MaTB"].Value.ToString().Length - 2, "-");
+                    dr["CreateDate"] = item.Cells["CreateDate"].Value.ToString();
+                    dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = item.Cells["HoTen"].Value.ToString();
+                    dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
+                    dr["LyDo"] = item.Cells["LyDo"].Value.ToString();
+                    dr["NgayXuLy"] = item.Cells["NgayXuLyCHDB"].Value.ToString();
+                    dr["NoiDungXuLy"] = item.Cells["NoiDungXuLy"].Value.ToString();
+                    dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr);
+                }
+
+            
+        }
+
+
 
     }
 }

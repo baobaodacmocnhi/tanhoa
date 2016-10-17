@@ -252,7 +252,7 @@ namespace KTKS_DonKH.GUI.CongVan
                                     _madon = ycchdb.MaDon.Value;
                                 break;
                             case "Thư Trả Lời":
-                                CTTTTL cttttl = _cTTTL.getCTTTTLbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                CTTTTL cttttl = _cTTTL.GetCTByID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = cttttl.DanhBo;
                                 item.HoTen = cttttl.HoTen;
                                 item.DiaChi = cttttl.DiaChi;
@@ -400,7 +400,7 @@ namespace KTKS_DonKH.GUI.CongVan
                             _madon = ycchdb.MaDon.Value;
                         break;
                     case "Thư Trả Lời":
-                        CTTTTL cttttl = _cTTTL.getCTTTTLbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                        CTTTTL cttttl = _cTTTL.GetCTByID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = cttttl.DanhBo;
                         txtHoTen.Text = cttttl.HoTen;
                         txtDiaChi.Text = cttttl.DiaChi;

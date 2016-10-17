@@ -70,9 +70,9 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             cmbVeViec.SelectedIndex = -1;
 
             this.Location = new Point(70, 70);
-            if (_cTTTL.getCTTTTLbyID(_MaCTTTTL) != null)
+            if (_cTTTL.GetCTByID(_MaCTTTTL) != null)
             {
-                _cttttl = _cTTTL.getCTTTTLbyID(_MaCTTTTL);
+                _cttttl = _cTTTL.GetCTByID(_MaCTTTTL);
                 if(_cttttl.TTTL.ToXuLy)
                     txtMaDon.Text = "TXL"+_cttttl.TTTL.MaDonTXL.Value.ToString().Insert(_cttttl.TTTL.MaDonTXL.Value.ToString().Length - 2, "-");
                 else
@@ -177,7 +177,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                     if (chkThuBao.Checked)
                         _cttttl.ThuBao = true;
 
-                    if (_cTTTL.SuaCTTTTL(_cttttl))
+                    if (_cTTTL.SuaCT(_cttttl))
                         MessageBox.Show("Sửa Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -224,7 +224,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         {
             if (_cttttl != null)
                 if (MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    if (_cTTTL.XoaCTTTTL(_cttttl))
+                    if (_cTTTL.XoaCT(_cttttl))
                     {
                         MessageBox.Show("Xóa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.DialogResult = DialogResult.OK;

@@ -21,14 +21,6 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             InitializeComponent();
         }
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            this.ControlBox = false;
-            this.WindowState = FormWindowState.Maximized;
-            this.BringToFront();
-        }
-
         private void frmVeViecTTTL_Load(object sender, EventArgs e)
         {
             dgvDSVeViecTTTL.AutoGenerateColumns = false;
@@ -88,6 +80,14 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             }
             catch (Exception)
             {
+            }
+        }
+
+        private void dgvDSVeViecTTTL_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDSVeViecTTTL.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
             }
         }
     }

@@ -78,7 +78,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
 
         public DataTable GetDS(decimal MaCTTTTL)
         {
-            return LINQToDataTable(db.GhiChuCTTTTLs.Where(item => item.MaCTTTTL == MaCTTTTL).ToList());
+            return LINQToDataTable(db.GhiChuCTTTTLs.Where(item => item.MaCTTTTL == MaCTTTTL).OrderByDescending(item=>item.CreateDate).ToList());
         }
     }
 }
