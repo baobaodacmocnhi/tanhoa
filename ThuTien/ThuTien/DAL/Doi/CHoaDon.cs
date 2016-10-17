@@ -11,7 +11,7 @@ namespace ThuTien.DAL.Doi
 {
     class CHoaDon : CDAL
     {
-        CCAPNUOCTANHOA _cCapNuocTanHoa = new CCAPNUOCTANHOA();
+        CDocSo _cCapNuocTanHoa = new CDocSo();
 
         /// <summary>
         /// Thêm hóa đơn mới từ billing (.dat)

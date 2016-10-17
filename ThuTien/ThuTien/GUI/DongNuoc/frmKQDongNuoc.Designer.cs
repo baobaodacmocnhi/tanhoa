@@ -70,7 +70,25 @@
             this.dateTu = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvKQDongNuoc = new System.Windows.Forms.DataGridView();
-            this.Chon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
+            this.chkHuy = new System.Windows.Forms.CheckBox();
+            this.radDongNuoc = new System.Windows.Forms.RadioButton();
+            this.radMoNuoc = new System.Windows.Forms.RadioButton();
+            this.btnInPhieu = new System.Windows.Forms.Button();
+            this.btnXoaPhieu = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtChiSoDN1 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dateDongNuoc1 = new System.Windows.Forms.DateTimePicker();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtChiSoDN2 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.dateDongNuoc2 = new System.Windows.Forms.DateTimePicker();
+            this.label17 = new System.Windows.Forms.Label();
+            this.chkDongNuoc2 = new System.Windows.Forms.CheckBox();
+            this.In = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MaDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaKQDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -96,24 +114,6 @@
             this.ChiSoDN1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DaKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.NgayKy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.chkHuy = new System.Windows.Forms.CheckBox();
-            this.radDongNuoc = new System.Windows.Forms.RadioButton();
-            this.radMoNuoc = new System.Windows.Forms.RadioButton();
-            this.btnInPhieu = new System.Windows.Forms.Button();
-            this.btnXoaPhieu = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtChiSoDN1 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.dateDongNuoc1 = new System.Windows.Forms.DateTimePicker();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtChiSoDN2 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.dateDongNuoc2 = new System.Windows.Forms.DateTimePicker();
-            this.label17 = new System.Windows.Forms.Label();
-            this.chkDongNuoc2 = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKQDongNuoc)).BeginInit();
@@ -497,7 +497,7 @@
             this.dgvKQDongNuoc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvKQDongNuoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvKQDongNuoc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Chon,
+            this.In,
             this.MaDN,
             this.CreateDate,
             this.MaKQDN,
@@ -551,191 +551,6 @@
             this.dgvKQDongNuoc.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvKQDongNuoc_CellFormatting);
             this.dgvKQDongNuoc.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvKQDongNuoc_CellValidating);
             this.dgvKQDongNuoc.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvKQDongNuoc_RowPostPaint);
-            // 
-            // Chon
-            // 
-            this.Chon.DataPropertyName = "Chon";
-            this.Chon.FalseValue = "false";
-            this.Chon.HeaderText = "Chọn";
-            this.Chon.IndeterminateValue = "";
-            this.Chon.Name = "Chon";
-            this.Chon.TrueValue = "true";
-            this.Chon.Width = 40;
-            // 
-            // MaDN
-            // 
-            this.MaDN.DataPropertyName = "MaDN";
-            this.MaDN.HeaderText = "Mã TB";
-            this.MaDN.Name = "MaDN";
-            this.MaDN.Width = 50;
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Ngày Lập";
-            this.CreateDate.Name = "CreateDate";
-            this.CreateDate.Visible = false;
-            this.CreateDate.Width = 80;
-            // 
-            // MaKQDN
-            // 
-            this.MaKQDN.DataPropertyName = "MaKQDN";
-            this.MaKQDN.HeaderText = "MaKQDN";
-            this.MaKQDN.Name = "MaKQDN";
-            this.MaKQDN.Visible = false;
-            // 
-            // DanhBo
-            // 
-            this.DanhBo.DataPropertyName = "DanhBo";
-            this.DanhBo.HeaderText = "Danh Bộ";
-            this.DanhBo.Name = "DanhBo";
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Khách Hàng";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.Width = 130;
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.DataPropertyName = "DiaChi";
-            this.DiaChi.HeaderText = "Địa Chỉ";
-            this.DiaChi.Name = "DiaChi";
-            this.DiaChi.Width = 190;
-            // 
-            // ChiSoDN
-            // 
-            this.ChiSoDN.DataPropertyName = "ChiSoDN";
-            this.ChiSoDN.HeaderText = "ĐN";
-            this.ChiSoDN.Name = "ChiSoDN";
-            this.ChiSoDN.Width = 50;
-            // 
-            // ChiSoMN
-            // 
-            this.ChiSoMN.DataPropertyName = "ChiSoMN";
-            this.ChiSoMN.HeaderText = "MN";
-            this.ChiSoMN.Name = "ChiSoMN";
-            this.ChiSoMN.Width = 50;
-            // 
-            // LyDo
-            // 
-            this.LyDo.DataPropertyName = "LyDo";
-            this.LyDo.HeaderText = "Lý Do";
-            this.LyDo.Name = "LyDo";
-            // 
-            // SoPhieuDN
-            // 
-            this.SoPhieuDN.DataPropertyName = "SoPhieuDN";
-            this.SoPhieuDN.HeaderText = "Số Phiếu ĐN";
-            this.SoPhieuDN.Name = "SoPhieuDN";
-            this.SoPhieuDN.Width = 80;
-            // 
-            // SoPhieuMN
-            // 
-            this.SoPhieuMN.DataPropertyName = "SoPhieuMN";
-            this.SoPhieuMN.HeaderText = "Số Phiếu MN";
-            this.SoPhieuMN.Name = "SoPhieuMN";
-            this.SoPhieuMN.Width = 80;
-            // 
-            // MLT
-            // 
-            this.MLT.DataPropertyName = "MLT";
-            this.MLT.HeaderText = "MLT";
-            this.MLT.Name = "MLT";
-            this.MLT.Visible = false;
-            // 
-            // NgayDN
-            // 
-            this.NgayDN.DataPropertyName = "NgayDN";
-            this.NgayDN.HeaderText = "NgayDN";
-            this.NgayDN.Name = "NgayDN";
-            this.NgayDN.Visible = false;
-            // 
-            // Hieu
-            // 
-            this.Hieu.DataPropertyName = "Hieu";
-            this.Hieu.HeaderText = "Hieu";
-            this.Hieu.Name = "Hieu";
-            this.Hieu.Visible = false;
-            // 
-            // Co
-            // 
-            this.Co.DataPropertyName = "Co";
-            this.Co.HeaderText = "Co";
-            this.Co.Name = "Co";
-            this.Co.Visible = false;
-            // 
-            // SoThan
-            // 
-            this.SoThan.DataPropertyName = "SoThan";
-            this.SoThan.HeaderText = "SoThan";
-            this.SoThan.Name = "SoThan";
-            this.SoThan.Visible = false;
-            // 
-            // ChiMatSo
-            // 
-            this.ChiMatSo.DataPropertyName = "ChiMatSo";
-            this.ChiMatSo.HeaderText = "ChiMatSo";
-            this.ChiMatSo.Name = "ChiMatSo";
-            this.ChiMatSo.Visible = false;
-            // 
-            // ChiKhoaGoc
-            // 
-            this.ChiKhoaGoc.DataPropertyName = "ChiKhoaGoc";
-            this.ChiKhoaGoc.HeaderText = "ChiKhoaGoc";
-            this.ChiKhoaGoc.Name = "ChiKhoaGoc";
-            this.ChiKhoaGoc.Visible = false;
-            // 
-            // MoNuoc
-            // 
-            this.MoNuoc.DataPropertyName = "MoNuoc";
-            this.MoNuoc.HeaderText = "MoNuoc";
-            this.MoNuoc.Name = "MoNuoc";
-            this.MoNuoc.Visible = false;
-            // 
-            // NgayMN
-            // 
-            this.NgayMN.DataPropertyName = "NgayMN";
-            this.NgayMN.HeaderText = "NgayMN";
-            this.NgayMN.Name = "NgayMN";
-            this.NgayMN.Visible = false;
-            // 
-            // DongNuoc2
-            // 
-            this.DongNuoc2.DataPropertyName = "DongNuoc2";
-            this.DongNuoc2.HeaderText = "DongNuoc2";
-            this.DongNuoc2.Name = "DongNuoc2";
-            this.DongNuoc2.Visible = false;
-            // 
-            // NgayDN1
-            // 
-            this.NgayDN1.DataPropertyName = "NgayDN1";
-            this.NgayDN1.HeaderText = "NgayDN1";
-            this.NgayDN1.Name = "NgayDN1";
-            this.NgayDN1.Visible = false;
-            // 
-            // ChiSoDN1
-            // 
-            this.ChiSoDN1.DataPropertyName = "ChiSoDN1";
-            this.ChiSoDN1.HeaderText = "ChiSoDN1";
-            this.ChiSoDN1.Name = "ChiSoDN1";
-            this.ChiSoDN1.Visible = false;
-            // 
-            // DaKy
-            // 
-            this.DaKy.DataPropertyName = "DaKy";
-            this.DaKy.HeaderText = "Đã Ký";
-            this.DaKy.Name = "DaKy";
-            this.DaKy.Width = 50;
-            // 
-            // NgayKy
-            // 
-            this.NgayKy.DataPropertyName = "NgayKy";
-            this.NgayKy.HeaderText = "Ngày Ký";
-            this.NgayKy.Name = "NgayKy";
-            this.NgayKy.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.NgayKy.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // btnXoa
             // 
@@ -918,6 +733,191 @@
             this.chkDongNuoc2.Text = "Đóng Nước lần 2";
             this.chkDongNuoc2.UseVisualStyleBackColor = true;
             // 
+            // In
+            // 
+            this.In.DataPropertyName = "In";
+            this.In.FalseValue = "";
+            this.In.HeaderText = "In";
+            this.In.IndeterminateValue = "";
+            this.In.Name = "In";
+            this.In.TrueValue = "";
+            this.In.Width = 40;
+            // 
+            // MaDN
+            // 
+            this.MaDN.DataPropertyName = "MaDN";
+            this.MaDN.HeaderText = "Mã TB";
+            this.MaDN.Name = "MaDN";
+            this.MaDN.Width = 50;
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
+            this.CreateDate.Visible = false;
+            this.CreateDate.Width = 80;
+            // 
+            // MaKQDN
+            // 
+            this.MaKQDN.DataPropertyName = "MaKQDN";
+            this.MaKQDN.HeaderText = "MaKQDN";
+            this.MaKQDN.Name = "MaKQDN";
+            this.MaKQDN.Visible = false;
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Khách Hàng";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.Width = 130;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.DataPropertyName = "DiaChi";
+            this.DiaChi.HeaderText = "Địa Chỉ";
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.Width = 190;
+            // 
+            // ChiSoDN
+            // 
+            this.ChiSoDN.DataPropertyName = "ChiSoDN";
+            this.ChiSoDN.HeaderText = "ĐN";
+            this.ChiSoDN.Name = "ChiSoDN";
+            this.ChiSoDN.Width = 50;
+            // 
+            // ChiSoMN
+            // 
+            this.ChiSoMN.DataPropertyName = "ChiSoMN";
+            this.ChiSoMN.HeaderText = "MN";
+            this.ChiSoMN.Name = "ChiSoMN";
+            this.ChiSoMN.Width = 50;
+            // 
+            // LyDo
+            // 
+            this.LyDo.DataPropertyName = "LyDo";
+            this.LyDo.HeaderText = "Lý Do";
+            this.LyDo.Name = "LyDo";
+            // 
+            // SoPhieuDN
+            // 
+            this.SoPhieuDN.DataPropertyName = "SoPhieuDN";
+            this.SoPhieuDN.HeaderText = "Số Phiếu ĐN";
+            this.SoPhieuDN.Name = "SoPhieuDN";
+            this.SoPhieuDN.Width = 80;
+            // 
+            // SoPhieuMN
+            // 
+            this.SoPhieuMN.DataPropertyName = "SoPhieuMN";
+            this.SoPhieuMN.HeaderText = "Số Phiếu MN";
+            this.SoPhieuMN.Name = "SoPhieuMN";
+            this.SoPhieuMN.Width = 80;
+            // 
+            // MLT
+            // 
+            this.MLT.DataPropertyName = "MLT";
+            this.MLT.HeaderText = "MLT";
+            this.MLT.Name = "MLT";
+            this.MLT.Visible = false;
+            // 
+            // NgayDN
+            // 
+            this.NgayDN.DataPropertyName = "NgayDN";
+            this.NgayDN.HeaderText = "NgayDN";
+            this.NgayDN.Name = "NgayDN";
+            this.NgayDN.Visible = false;
+            // 
+            // Hieu
+            // 
+            this.Hieu.DataPropertyName = "Hieu";
+            this.Hieu.HeaderText = "Hieu";
+            this.Hieu.Name = "Hieu";
+            this.Hieu.Visible = false;
+            // 
+            // Co
+            // 
+            this.Co.DataPropertyName = "Co";
+            this.Co.HeaderText = "Co";
+            this.Co.Name = "Co";
+            this.Co.Visible = false;
+            // 
+            // SoThan
+            // 
+            this.SoThan.DataPropertyName = "SoThan";
+            this.SoThan.HeaderText = "SoThan";
+            this.SoThan.Name = "SoThan";
+            this.SoThan.Visible = false;
+            // 
+            // ChiMatSo
+            // 
+            this.ChiMatSo.DataPropertyName = "ChiMatSo";
+            this.ChiMatSo.HeaderText = "ChiMatSo";
+            this.ChiMatSo.Name = "ChiMatSo";
+            this.ChiMatSo.Visible = false;
+            // 
+            // ChiKhoaGoc
+            // 
+            this.ChiKhoaGoc.DataPropertyName = "ChiKhoaGoc";
+            this.ChiKhoaGoc.HeaderText = "ChiKhoaGoc";
+            this.ChiKhoaGoc.Name = "ChiKhoaGoc";
+            this.ChiKhoaGoc.Visible = false;
+            // 
+            // MoNuoc
+            // 
+            this.MoNuoc.DataPropertyName = "MoNuoc";
+            this.MoNuoc.HeaderText = "MoNuoc";
+            this.MoNuoc.Name = "MoNuoc";
+            this.MoNuoc.Visible = false;
+            // 
+            // NgayMN
+            // 
+            this.NgayMN.DataPropertyName = "NgayMN";
+            this.NgayMN.HeaderText = "NgayMN";
+            this.NgayMN.Name = "NgayMN";
+            this.NgayMN.Visible = false;
+            // 
+            // DongNuoc2
+            // 
+            this.DongNuoc2.DataPropertyName = "DongNuoc2";
+            this.DongNuoc2.HeaderText = "DongNuoc2";
+            this.DongNuoc2.Name = "DongNuoc2";
+            this.DongNuoc2.Visible = false;
+            // 
+            // NgayDN1
+            // 
+            this.NgayDN1.DataPropertyName = "NgayDN1";
+            this.NgayDN1.HeaderText = "NgayDN1";
+            this.NgayDN1.Name = "NgayDN1";
+            this.NgayDN1.Visible = false;
+            // 
+            // ChiSoDN1
+            // 
+            this.ChiSoDN1.DataPropertyName = "ChiSoDN1";
+            this.ChiSoDN1.HeaderText = "ChiSoDN1";
+            this.ChiSoDN1.Name = "ChiSoDN1";
+            this.ChiSoDN1.Visible = false;
+            // 
+            // DaKy
+            // 
+            this.DaKy.DataPropertyName = "DaKy";
+            this.DaKy.HeaderText = "Đã Ký";
+            this.DaKy.Name = "DaKy";
+            this.DaKy.Width = 50;
+            // 
+            // NgayKy
+            // 
+            this.NgayKy.DataPropertyName = "NgayKy";
+            this.NgayKy.HeaderText = "Ngày Ký";
+            this.NgayKy.Name = "NgayKy";
+            this.NgayKy.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.NgayKy.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // frmKQDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1015,7 +1015,7 @@
         private System.Windows.Forms.DateTimePicker dateDongNuoc2;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.CheckBox chkDongNuoc2;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Chon;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn In;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDN;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaKQDN;

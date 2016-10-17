@@ -22,7 +22,7 @@ namespace ThuTien.GUI.DongNuoc
         CDongNuoc _cDongNuoc = new CDongNuoc();
         TT_DongNuoc _dongnuoc = null;
         TT_KQDongNuoc _kqdongnuoc = null;
-        CCAPNUOCTANHOA _cCapNuocTanHoa = new CCAPNUOCTANHOA();
+        CDocSo _cCapNuocTanHoa = new CDocSo();
 
         public frmKQDongNuoc()
         {
@@ -171,6 +171,19 @@ namespace ThuTien.GUI.DongNuoc
                         _kqdongnuoc.NgayDN = dateDongNuoc2.Value;
                         if (!string.IsNullOrEmpty(txtChiSoDN2.Text.Trim()))
                             _kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN2.Text.Trim());
+
+                        if (_kqdongnuoc.SoPhieuDN1 == null)
+                            _kqdongnuoc.SoPhieuDN1 = _kqdongnuoc.SoPhieuDN;
+                        if (_kqdongnuoc.NgaySoPhieuDN1 == null)
+                            _kqdongnuoc.NgaySoPhieuDN1 = _kqdongnuoc.NgaySoPhieuDN;
+                        _kqdongnuoc.ChuyenDN1 = _kqdongnuoc.ChuyenDN;
+                        if (_kqdongnuoc.NgayChuyenDN1 == null)
+                            _kqdongnuoc.NgayChuyenDN1 = _kqdongnuoc.NgayChuyenDN;
+
+                        _kqdongnuoc.SoPhieuDN = null;
+                        _kqdongnuoc.NgaySoPhieuDN = null;
+                        _kqdongnuoc.ChuyenDN = false;
+                        _kqdongnuoc.NgayChuyenDN = null;
                     }
                     else
                         if (_kqdongnuoc.DongNuoc2 == true)
@@ -181,6 +194,15 @@ namespace ThuTien.GUI.DongNuoc
                             _kqdongnuoc.ChiSoDN = _kqdongnuoc.ChiSoDN1;
                             _kqdongnuoc.NgayDN1 = null;
                             _kqdongnuoc.ChiSoDN1 = null;
+
+                            _kqdongnuoc.SoPhieuDN = _kqdongnuoc.SoPhieuDN1;
+                            _kqdongnuoc.NgaySoPhieuDN = _kqdongnuoc.NgaySoPhieuDN1;
+                            _kqdongnuoc.ChuyenDN = _kqdongnuoc.ChuyenDN1;
+                            _kqdongnuoc.NgayChuyenDN = _kqdongnuoc.NgayChuyenDN1;
+                            _kqdongnuoc.SoPhieuDN1 = null;
+                            _kqdongnuoc.NgaySoPhieuDN1 = null;
+                            _kqdongnuoc.ChuyenDN1 = false;
+                            _kqdongnuoc.NgayChuyenDN1 = null;
                         }
 
                     if (_cDongNuoc.SuaKQ(_kqdongnuoc))
@@ -405,7 +427,7 @@ namespace ThuTien.GUI.DongNuoc
                 }
             //foreach (DataGridViewRow item in dgvKQDongNuoc.Rows)
             //{
-            //    item.Cells["Chon"].Value = true;
+            //    item.Cells["In"].Value = true;
             //}
         }
 
@@ -547,7 +569,7 @@ namespace ThuTien.GUI.DongNuoc
                         List<TT_KQDongNuoc> lst = new List<TT_KQDongNuoc>();
 
                         foreach (DataGridViewRow item in dgvKQDongNuoc.Rows)
-                            if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()) == true)
+                            if (item.Cells["In"].Value != null && bool.Parse(item.Cells["In"].Value.ToString()) == true)
                             {
                                 if (string.IsNullOrEmpty(item.Cells["SoPhieuDN"].Value.ToString()))
                                 {
@@ -603,7 +625,7 @@ namespace ThuTien.GUI.DongNuoc
                             List<TT_KQDongNuoc> lst = new List<TT_KQDongNuoc>();
 
                             foreach (DataGridViewRow item in dgvKQDongNuoc.Rows)
-                                if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()) == true)
+                                if (item.Cells["In"].Value != null && bool.Parse(item.Cells["In"].Value.ToString()) == true)
                                 {
                                     if (string.IsNullOrEmpty(item.Cells["SoPhieuMN"].Value.ToString()))
                                     {
@@ -675,7 +697,7 @@ namespace ThuTien.GUI.DongNuoc
                     if (radDongNuoc.Checked)
                     {
                         foreach (DataGridViewRow item in dgvKQDongNuoc.Rows)
-                            if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()) == true && !string.IsNullOrEmpty(item.Cells["SoPhieuDN"].Value.ToString()))
+                            if (item.Cells["In"].Value != null && bool.Parse(item.Cells["In"].Value.ToString()) == true && !string.IsNullOrEmpty(item.Cells["SoPhieuDN"].Value.ToString()))
                             {
                                 TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(item.Cells["MaKQDN"].Value.ToString()));
                                 kqdongnuoc.SoPhieuDN = null;
@@ -687,7 +709,7 @@ namespace ThuTien.GUI.DongNuoc
                         if (radMoNuoc.Checked)
                         {
                             foreach (DataGridViewRow item in dgvKQDongNuoc.Rows)
-                                if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()) == true && !string.IsNullOrEmpty(item.Cells["SoPhieuMN"].Value.ToString()))
+                                if (item.Cells["In"].Value != null && bool.Parse(item.Cells["In"].Value.ToString()) == true && !string.IsNullOrEmpty(item.Cells["SoPhieuMN"].Value.ToString()))
                                 {
                                     TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(item.Cells["MaKQDN"].Value.ToString()));
                                     kqdongnuoc.SoPhieuMN = null;

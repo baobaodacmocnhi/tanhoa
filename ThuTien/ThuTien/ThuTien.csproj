@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>629</ApplicationRevision>
+    <ApplicationRevision>632</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -447,12 +447,12 @@
       <DependentUpon>rptTongHopNo.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DAL\CCAPNUOCTANHOA.cs" />
+    <Compile Include="DAL\CDocSo.cs" />
     <Compile Include="DAL\ChuyenKhoan\CBangKe.cs" />
     <Compile Include="DAL\ChuyenKhoan\CDichVuThu.cs" />
     <Compile Include="DAL\ChuyenKhoan\CPhiMoNuoc.cs" />
     <Compile Include="DAL\ChuyenKhoan\CTienDu.cs" />
-    <Compile Include="DAL\CKTKS_DonKH.cs" />
+    <Compile Include="DAL\CKinhDoanh.cs" />
     <Compile Include="DAL\CDAL.cs" />
     <Compile Include="DAL\ChuyenKhoan\CDuLieuKhachHang.cs" />
     <Compile Include="DAL\ChuyenKhoan\CNganHang.cs" />
@@ -983,15 +983,15 @@
     <Compile Include="GUI\ToTruong\frmTongHopNo.Designer.cs">
       <DependentUpon>frmTongHopNo.cs</DependentUpon>
     </Compile>
-    <Compile Include="LinQ\dbCAPNUOCTANHOA.designer.cs">
+    <Compile Include="LinQ\dbDocSo.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dbCAPNUOCTANHOA.dbml</DependentUpon>
+      <DependentUpon>dbDocSo.dbml</DependentUpon>
     </Compile>
-    <Compile Include="LinQ\dbKTKS_DonKH.designer.cs">
+    <Compile Include="LinQ\dbKinhDoanh.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dbKTKS_DonKH.dbml</DependentUpon>
+      <DependentUpon>dbKinhDoanh.dbml</DependentUpon>
     </Compile>
     <Compile Include="LinQ\dbThuTien.designer.cs">
       <AutoGen>True</AutoGen>
@@ -1233,14 +1233,14 @@
     <None Include="BaoCao\dsBaoCao.xss">
       <DependentUpon>dsBaoCao.xsd</DependentUpon>
     </None>
-    <None Include="LinQ\dbCAPNUOCTANHOA.dbml">
+    <None Include="LinQ\dbDocSo.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>dbCAPNUOCTANHOA.designer.cs</LastGenOutput>
+      <LastGenOutput>dbDocSo.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="LinQ\dbKTKS_DonKH.dbml">
+    <None Include="LinQ\dbKinhDoanh.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>dbKTKS_DonKH.designer.cs</LastGenOutput>
+      <LastGenOutput>dbKinhDoanh.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="LinQ\dbThuTien.dbml.layout">
@@ -1471,8 +1471,8 @@
     <EmbeddedResource Include="GUI\ToTruong\frmGiaoHDHanhThu.resx">
       <DependentUpon>frmGiaoHDHanhThu.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="LinQ\dbKTKS_DonKH.dbml.layout">
-      <DependentUpon>dbKTKS_DonKH.dbml</DependentUpon>
+    <None Include="LinQ\dbKinhDoanh.dbml.layout">
+      <DependentUpon>dbKinhDoanh.dbml</DependentUpon>
     </None>
     <EmbeddedResource Include="GUI\ToTruong\frmHDTienLonTo.resx">
       <DependentUpon>frmHDTienLonTo.cs</DependentUpon>
@@ -1495,8 +1495,8 @@
     <EmbeddedResource Include="GUI\ToTruong\frmTongHopNo.resx">
       <DependentUpon>frmTongHopNo.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="LinQ\dbCAPNUOCTANHOA.dbml.layout">
-      <DependentUpon>dbCAPNUOCTANHOA.dbml</DependentUpon>
+    <None Include="LinQ\dbDocSo.dbml.layout">
+      <DependentUpon>dbDocSo.dbml</DependentUpon>
     </None>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

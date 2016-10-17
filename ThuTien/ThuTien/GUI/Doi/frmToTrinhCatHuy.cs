@@ -21,7 +21,7 @@ namespace ThuTien.GUI.Doi
     {
         string _mnu = "mnuToTrinhCatHuy";
         CHoaDon _cHoaDon = new CHoaDon();
-        CCAPNUOCTANHOA _cCapNuocTanHoa = new CCAPNUOCTANHOA();
+        CDocSo _cCapNuocTanHoa = new CDocSo();
         CToTrinhCatHuy _cToTrinhCatHuy = new CToTrinhCatHuy();
         CLenhHuy _cLenhHuy = new CLenhHuy();
 
@@ -448,7 +448,7 @@ namespace ThuTien.GUI.Doi
 
         private void dgvCTToTrinh_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if (dgvCTToTrinh["MaCTTT", e.RowIndex].Value.ToString()!="" && dgvCTToTrinh.Columns[e.ColumnIndex].Name == "GhiChu" && (dgvCTToTrinh[e.ColumnIndex, e.RowIndex].Value ==null|| e.FormattedValue.ToString() != dgvCTToTrinh[e.ColumnIndex, e.RowIndex].Value.ToString()))
+            if (dgvCTToTrinh["MaCTTT", e.RowIndex].Value.ToString() != "" && dgvCTToTrinh.Columns[e.ColumnIndex].Name == "GhiChu" && (dgvCTToTrinh[e.ColumnIndex, e.RowIndex].Value == null || e.FormattedValue.ToString() != dgvCTToTrinh[e.ColumnIndex, e.RowIndex].Value.ToString()))
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
                     TT_CTToTrinhCatHuy cttotrinh = _cToTrinhCatHuy.GetCT(int.Parse(dgvCTToTrinh["MaCTTT", e.RowIndex].Value.ToString()));
@@ -458,6 +458,6 @@ namespace ThuTien.GUI.Doi
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-       
+
     }
 }

@@ -9,7 +9,7 @@ using System.Reflection;
 
 namespace ThuTien.DAL
 {
-    class CCAPNUOCTANHOA
+    class CDocSo
     {
         protected static string _connectionString;  // Chuỗi kết nối
         protected SqlConnection connection;         // Đối tượng kết nối
@@ -17,7 +17,7 @@ namespace ThuTien.DAL
         protected SqlCommand command;               // Đối tượng command thực thi truy vấn
         dbCAPNUOCTANHOADataContext _dbCapNuocTanHoa = new dbCAPNUOCTANHOADataContext();
 
-        public CCAPNUOCTANHOA()
+        public CDocSo()
         {
             try
             {

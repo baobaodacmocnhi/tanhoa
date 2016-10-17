@@ -22,7 +22,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CBangKe _cBangKe = new CBangKe();
         CNganHang _cNganHang = new CNganHang();
         CTienDu _cTienDu = new CTienDu();
-        CCAPNUOCTANHOA _cCapNuocTanHoa = new CCAPNUOCTANHOA();
+        CDocSo _cCapNuocTanHoa = new CDocSo();
 
         public frmBangKe()
         {

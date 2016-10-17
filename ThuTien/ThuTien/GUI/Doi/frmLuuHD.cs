@@ -20,7 +20,7 @@ namespace ThuTien.GUI.Doi
         string _mnu = "mnuLuuHD";
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CHoaDon _cHoaDon = new CHoaDon();
-        CCAPNUOCTANHOA _cCapNuocTanHoa = new CCAPNUOCTANHOA();
+        CDocSo _cCapNuocTanHoa = new CDocSo();
          
         public frmLuuHD()
         {
@@ -359,6 +359,8 @@ namespace ThuTien.GUI.Doi
                 hoadonCu.TONGCONG_BU = hoadonMoi.TONGCONG_BU;
                 hoadonCu.SOPHATHANH = hoadonMoi.SOPHATHANH;
                 hoadonCu.SOHOADON = hoadonMoi.SOHOADON;
+                hoadonCu.Quan = hoadonMoi.Quan;
+                hoadonCu.Phuong = hoadonMoi.Phuong;
                 hoadonCu.MST = hoadonMoi.MST;
                 hoadonCu.MALOTRINH = hoadonMoi.MALOTRINH;
         }

@@ -24,10 +24,10 @@ namespace ThuTien.GUI.TimKiem
     {
         CHoaDon _cHoaDon = new CHoaDon();
         CDongNuoc _cDongNuoc = new CDongNuoc();
-        CKTKS_DonKH _cKinhDoanh = new CKTKS_DonKH();
+        CKinhDoanh _cKinhDoanh = new CKinhDoanh();
         CChuyenNoKhoDoi _cCNKD = new CChuyenNoKhoDoi();
         CLenhHuy _cLenhHuy = new CLenhHuy();
-        CCAPNUOCTANHOA _cCapNuocTanHoa = new CCAPNUOCTANHOA();
+        CDocSo _cCapNuocTanHoa = new CDocSo();
 
         public frmTimKiemKhachHang()
         {

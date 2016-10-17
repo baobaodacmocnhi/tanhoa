@@ -27,7 +27,7 @@ namespace ThuTien.GUI.HanhThu
         CQuetTam _cQuetTam = new CQuetTam();
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CThongTinKhachHang _cTTKH = new CThongTinKhachHang();
-        CCAPNUOCTANHOA _cCapNuocTanHoa = new CCAPNUOCTANHOA();
+        CDocSo _cCapNuocTanHoa = new CDocSo();
 
         public frmQuetTam()
         {
