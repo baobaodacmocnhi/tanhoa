@@ -104,7 +104,7 @@ namespace ThuTien.DAL
             string sqlDCHD = "select db='Kinh Doanh',Loai=N'Điều Chỉnh Hóa Đơn',TangGiam as NoiDung,CreateDate,'Table'='CTDCHD','Column'='MaCTDCHD',MaCTDCHD as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from CTDCHD where DanhBo='" + DanhBo + "'";
             string sqlCTDB = "select db='Kinh Doanh',Loai=N'TB Cắt Tạm Danh Bộ',LyDo+'. '+GhiChuLyDo as NoiDung,CreateDate,'Table'='CTCTDB','Column'='MaCTCTDB',MaCTCTDB as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from CTCTDB where DanhBo='" + DanhBo + "'";
             string sqlCHDB = "select db='Kinh Doanh',Loai=N'TB Cắt Hủy Danh Bộ',LyDo+'. '+GhiChuLyDo as NoiDung,CreateDate,'Table'='CTCHDB','Column'='MaCTCHDB',MaCTCHDB as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from CTCHDB where DanhBo='" + DanhBo + "'";
-            string sqlYCCHDB = "select db='Kinh Doanh',Loai=N'Phiếu Yêu Cầu Cắt Hủy Danh Bộ',LyDo+'. '+GhiChuLyDo as NoiDung,CreateDate,'Table'='YeuCauCHDB','Column'='MaYCCHDB',MaYCCHDB as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from YeuCauCHDB where DanhBo='" + DanhBo + "'";
+            string sqlPhieuCHDB = "select db='Kinh Doanh',Loai=N'Phiếu Yêu Cầu Cắt Hủy Danh Bộ',LyDo+'. '+GhiChuLyDo as NoiDung,CreateDate,'Table'='PhieuCHDB','Column'='MaYCCHDB',MaYCCHDB as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from PhieuCHDB where DanhBo='" + DanhBo + "'";
             string sqlTTTL = "select db='Kinh Doanh',Loai=N'Thư Trả Lời',NoiDung,CreateDate,'Table'='CTTTTL','Column'='MaCTTTTL',MaCTTTTL as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from CTTTTL where DanhBo='" + DanhBo + "'";
 
             DataTable dt = ExecuteQuery_SqlDataAdapter_DataTable(sqlKTXM);
@@ -112,7 +112,7 @@ namespace ThuTien.DAL
             dt.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sqlDCHD));
             dt.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sqlCTDB));
             dt.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sqlCHDB));
-            dt.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sqlYCCHDB));
+            dt.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sqlPhieuCHDB));
             dt.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sqlTTTL));
             dt.DefaultView.Sort = "CreateDate desc";
             return dt.DefaultView.ToTable();
@@ -149,9 +149,9 @@ namespace ThuTien.DAL
                     dt = ExecuteQuery_SqlDataAdapter_DataTable(sqlCHDB);
                     break;
                 case "Phiếu Yêu Cầu Cắt Hủy Danh Bộ":
-                    string sqlYCCHDB = "select Loai=N'Phiếu Yêu Cầu Cắt Hủy Danh Bộ',DanhBo,DiaChi,LyDo+'. '+GhiChuLyDo as NoiDung,CreateDate,'Table'='YeuCauCHDB','Column'='MaYCCHDB',MaYCCHDB as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from YeuCauCHDB"
+                    string sqlPhieuCHDB = "select Loai=N'Phiếu Yêu Cầu Cắt Hủy Danh Bộ',DanhBo,DiaChi,LyDo+'. '+GhiChuLyDo as NoiDung,CreateDate,'Table'='PhieuCHDB','Column'='MaYCCHDB',MaYCCHDB as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from PhieuCHDB"
                         +" where CAST(ThuTien_NgayNhan as DATE)>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd") + "' and CAST(ThuTien_NgayNhan as DATE)<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd") + "'";
-                    dt = ExecuteQuery_SqlDataAdapter_DataTable(sqlYCCHDB);
+                    dt = ExecuteQuery_SqlDataAdapter_DataTable(sqlPhieuCHDB);
                     break;
                 case "Thư Trả Lời":
                     string sqlTTTL = "select Loai=N'Thư Trả Lời',DanhBo,DiaChi,NoiDung,CreateDate,'Table'='CTTTTL','Column'='MaCTTTTL',MaCTTTTL as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from CTTTTL"
@@ -169,7 +169,7 @@ namespace ThuTien.DAL
                         +" where CAST(ThuTien_NgayNhan as DATE)>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd") + "' and CAST(ThuTien_NgayNhan as DATE)<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd") + "'";
                     sqlCHDB = "select Loai=N'TB Cắt Hủy Danh Bộ',DanhBo,DiaChi,LyDo+'. '+GhiChuLyDo as NoiDung,CreateDate,'Table'='CTCHDB','Column'='MaCTCHDB',MaCTCHDB as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from CTCHDB"
                         +" where CAST(ThuTien_NgayNhan as DATE)>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd") + "' and CAST(ThuTien_NgayNhan as DATE)<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd") + "'";
-                    sqlYCCHDB = "select Loai=N'Phiếu Yêu Cầu Cắt Hủy Danh Bộ',DanhBo,DiaChi,LyDo+'. '+GhiChuLyDo as NoiDung,CreateDate,'Table'='YeuCauCHDB','Column'='MaYCCHDB',MaYCCHDB as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from YeuCauCHDB"
+                    sqlPhieuCHDB = "select Loai=N'Phiếu Yêu Cầu Cắt Hủy Danh Bộ',DanhBo,DiaChi,LyDo+'. '+GhiChuLyDo as NoiDung,CreateDate,'Table'='PhieuCHDB','Column'='MaYCCHDB',MaYCCHDB as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from PhieuCHDB"
                         +" where CAST(ThuTien_NgayNhan as DATE)>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd") + "' and CAST(ThuTien_NgayNhan as DATE)<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd") + "'";
                     sqlTTTL = "select Loai=N'Thư Trả Lời',DanhBo,DiaChi,NoiDung,CreateDate,'Table'='CTTTTL','Column'='MaCTTTTL',MaCTTTTL as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from CTTTTL"
                         +" where CAST(ThuTien_NgayNhan as DATE)>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd") + "' and CAST(ThuTien_NgayNhan as DATE)<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd") + "'";
@@ -179,7 +179,7 @@ namespace ThuTien.DAL
                     dt.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sqlDCHD));
                     dt.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sqlCTDB));
                     dt.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sqlCHDB));
-                    dt.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sqlYCCHDB));
+                    dt.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sqlPhieuCHDB));
                     dt.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sqlTTTL));
                     break;
             }
@@ -188,17 +188,17 @@ namespace ThuTien.DAL
             return dt.DefaultView.ToTable();
         }
 
-        public TTKhachHang GetTTKH(string DanhBo)
-        {
-            try
-            {
-                return _dbKTKS_DonKH.TTKhachHangs.SingleOrDefault(itemTTKH => itemTTKH.DanhBo == DanhBo);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
+        //public TTKhachHang GetTTKH(string DanhBo)
+        //{
+        //    try
+        //    {
+        //        return _dbKTKS_DonKH.TTKhachHangs.SingleOrDefault(itemTTKH => itemTTKH.DanhBo == DanhBo);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return null;
+        //    }
+        //}
 
         CHoaDon _cHoaDon = new CHoaDon();
 

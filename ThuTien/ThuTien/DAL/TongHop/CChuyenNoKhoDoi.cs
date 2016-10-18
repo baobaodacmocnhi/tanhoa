@@ -607,9 +607,9 @@ namespace ThuTien.DAL.TongHop
 
         dbKTKS_DonKHDataContext _dbKTKS_DonKH = new dbKTKS_DonKHDataContext();
 
-        public YeuCauCHDB GetYeuCauCHDB(decimal MaYCCHDB)
+        public PhieuCHDB GetYeuCauCHDB(decimal MaYCCHDB)
         {
-            return _dbKTKS_DonKH.YeuCauCHDBs.SingleOrDefault(item => item.MaYCCHDB == MaYCCHDB);
+            return _dbKTKS_DonKH.PhieuCHDBs.SingleOrDefault(item => item.MaYCCHDB == MaYCCHDB);
         }
     }
 }

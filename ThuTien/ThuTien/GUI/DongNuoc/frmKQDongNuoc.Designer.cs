@@ -736,11 +736,11 @@
             // In
             // 
             this.In.DataPropertyName = "In";
-            this.In.FalseValue = "";
+            this.In.FalseValue = "False";
             this.In.HeaderText = "In";
             this.In.IndeterminateValue = "";
             this.In.Name = "In";
-            this.In.TrueValue = "";
+            this.In.TrueValue = "True";
             this.In.Width = 40;
             // 
             // MaDN
