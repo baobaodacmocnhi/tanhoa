@@ -528,7 +528,18 @@ namespace KTKS_DonKH
         {
             if (CTaiKhoan.CheckQuyen("mnuLyDoCHDB", "Xem"))
             {
-                frmVeViecCHDB frm = new frmVeViecCHDB();
+                frmLyDoCHDB frm = new frmLyDoCHDB();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuNoiDungXuLyCHDB_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuNoiDungXuLyCHDB", "Xem"))
+            {
+                frmNoiDungXuLyCHDB frm = new frmNoiDungXuLyCHDB();
                 OpenForm(frm);
             }
             else
@@ -635,6 +646,8 @@ namespace KTKS_DonKH
             frmDSDonTXL frm = new frmDSDonTXL();
             OpenForm(frm);
         }
+
+        
 
         
 

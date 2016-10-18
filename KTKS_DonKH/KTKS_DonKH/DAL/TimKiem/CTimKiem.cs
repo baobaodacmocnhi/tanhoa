@@ -205,8 +205,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                 dtCHDB.TableName = "CHDB";
                 ds.Tables.Add(dtCHDB);
 
-                ///Table YeuCauCHDB
-                var queryYCCHDB = from itemYCCHDB in db.YeuCauCHDBs
+                ///Table PhieuCHDB
+                var queryYCCHDB = from itemYCCHDB in db.PhieuCHDBs
                                   where itemYCCHDB.MaDon == MaDon
                                   select new
                                   {
@@ -473,8 +473,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                 dtCHDB.TableName = "CHDB";
                 ds.Tables.Add(dtCHDB);
 
-                ///Table YeuCauCHDB
-                var queryYCCHDB = from itemYCCHDB in db.YeuCauCHDBs
+                ///Table PhieuCHDB
+                var queryYCCHDB = from itemYCCHDB in db.PhieuCHDBs
                                       where itemYCCHDB.MaDonTXL == MaDonTXL
                                   select new
                                   {
@@ -734,8 +734,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                 dtCHDB.TableName = "CHDB";
                 ds.Tables.Add(dtCHDB);
 
-                ///Table YeuCauCHDB
-                var queryYCCHDB = from itemYCCHDB in db.YeuCauCHDBs
+                ///Table PhieuCHDB
+                var queryYCCHDB = from itemYCCHDB in db.PhieuCHDBs
                                   where itemYCCHDB.DanhBo==DanhBo
                                   select new
                                   {
@@ -917,7 +917,7 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table DonKH 9
                 var queryDon9 = from itemDon in db.DonKHs
-                                join itemYCCHDB in db.YeuCauCHDBs on itemDon.MaDon equals itemYCCHDB.MaDon
+                                join itemYCCHDB in db.PhieuCHDBs on itemDon.MaDon equals itemYCCHDB.MaDon
                                 where itemYCCHDB.DanhBo==DanhBo
                                 select new
                                 {
@@ -1116,7 +1116,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ///Table DonKH 9
                 var queryDonTXL9 = from itemDonTXL in db.DonTXLs
                                    //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
-                                   join itemYCCHDB in db.YeuCauCHDBs on itemDonTXL.MaDon equals itemYCCHDB.MaDonTXL
+                                   join itemYCCHDB in db.PhieuCHDBs on itemDonTXL.MaDon equals itemYCCHDB.MaDonTXL
                                    where itemYCCHDB.DanhBo == DanhBo
                                    select new
                                    {
@@ -1434,8 +1434,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                 dtCHDB.TableName = "CHDB";
                 ds.Tables.Add(dtCHDB);
 
-                ///Table YeuCauCHDB
-                var queryYCCHDB = from itemYCCHDB in db.YeuCauCHDBs
+                ///Table PhieuCHDB
+                var queryYCCHDB = from itemYCCHDB in db.PhieuCHDBs
                                   where itemYCCHDB.HoTen.Contains(HoTen)
                                   select new
                                   {
@@ -1618,7 +1618,7 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table DonKH 9
                 var queryDon9 = from itemDon in db.DonKHs
-                                join itemYCCHDB in db.YeuCauCHDBs on itemDon.MaDon equals itemYCCHDB.MaDon
+                                join itemYCCHDB in db.PhieuCHDBs on itemDon.MaDon equals itemYCCHDB.MaDon
                                 where itemYCCHDB.HoTen.Contains(HoTen)
                                 select new
                                 {
@@ -1817,7 +1817,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ///Table DonKH 9
                 var queryDonTXL9 = from itemDonTXL in db.DonTXLs
                                    //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
-                                   join itemYCCHDB in db.YeuCauCHDBs on itemDonTXL.MaDon equals itemYCCHDB.MaDonTXL
+                                   join itemYCCHDB in db.PhieuCHDBs on itemDonTXL.MaDon equals itemYCCHDB.MaDonTXL
                                    where itemYCCHDB.HoTen.Contains(HoTen)
                                    select new
                                    {
@@ -2135,8 +2135,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                 dtCHDB.TableName = "CHDB";
                 ds.Tables.Add(dtCHDB);
 
-                ///Table YeuCauCHDB
-                var queryYCCHDB = from itemYCCHDB in db.YeuCauCHDBs
+                ///Table PhieuCHDB
+                var queryYCCHDB = from itemYCCHDB in db.PhieuCHDBs
                                   where itemYCCHDB.DiaChi.Contains(DiaChi)
                                   select new
                                   {
@@ -2319,7 +2319,7 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table DonKH 9
                 var queryDon9 = from itemDon in db.DonKHs
-                                join itemYCCHDB in db.YeuCauCHDBs on itemDon.MaDon equals itemYCCHDB.MaDon
+                                join itemYCCHDB in db.PhieuCHDBs on itemDon.MaDon equals itemYCCHDB.MaDon
                                 where itemYCCHDB.DiaChi.Contains(DiaChi)
                                 select new
                                 {
@@ -2518,7 +2518,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ///Table DonKH 9
                 var queryDonTXL9 = from itemDonTXL in db.DonTXLs
                                    //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
-                                   join itemYCCHDB in db.YeuCauCHDBs on itemDonTXL.MaDon equals itemYCCHDB.MaDonTXL
+                                   join itemYCCHDB in db.PhieuCHDBs on itemDonTXL.MaDon equals itemYCCHDB.MaDonTXL
                                    where itemYCCHDB.DiaChi.Contains(DiaChi)
                                    select new
                                    {

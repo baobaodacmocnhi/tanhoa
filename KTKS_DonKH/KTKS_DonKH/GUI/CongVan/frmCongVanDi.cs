@@ -99,7 +99,7 @@ namespace KTKS_DonKH.GUI.CongVan
                         TenTable = "CTCHDB";
                         break;
                     case "Phiếu Hủy Danh Bộ":
-                        TenTable = "YeuCauCHDB";
+                        TenTable = "PhieuCHDB";
                         break;
                     case "Thư Trả Lời":
                         TenTable = "CTTTTL";
@@ -241,7 +241,7 @@ namespace KTKS_DonKH.GUI.CongVan
                                     _madon = ctchdb.CHDB.MaDon.Value;
                                 break;
                             case "Phiếu Hủy Danh Bộ":
-                                YeuCauCHDB ycchdb = _cCHDB.getYeuCauCHDbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                PhieuCHDB ycchdb = _cCHDB.getYeuCauCHDbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = ycchdb.DanhBo;
                                 item.HoTen = ycchdb.HoTen;
                                 item.DiaChi = ycchdb.DiaChi;
@@ -389,7 +389,7 @@ namespace KTKS_DonKH.GUI.CongVan
                             _madon = ctchdb.CHDB.MaDon.Value;
                         break;
                     case "Phiếu Hủy Danh Bộ":
-                        YeuCauCHDB ycchdb = _cCHDB.getYeuCauCHDbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                        PhieuCHDB ycchdb = _cCHDB.getYeuCauCHDbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = ycchdb.DanhBo;
                         txtHoTen.Text = ycchdb.HoTen;
                         txtDiaChi.Text = ycchdb.DiaChi;

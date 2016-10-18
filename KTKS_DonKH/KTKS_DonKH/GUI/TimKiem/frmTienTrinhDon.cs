@@ -314,7 +314,7 @@ namespace KTKS_DonKH.GUI.TimKiem
         {
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["LoaiCat"].ToString() == "Cắt Hủy")
             {
-                frmShowCHDB frm = new frmShowCHDB(decimal.Parse(_CTRow.Row["MaCH"].ToString()), true);
+                frmCHDB frm = new frmCHDB(decimal.Parse(_CTRow.Row["MaCH"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;
@@ -322,7 +322,7 @@ namespace KTKS_DonKH.GUI.TimKiem
             }
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["LoaiCat"].ToString() == "Cắt Tạm")
             {
-                frmShowCTDB frm = new frmShowCTDB(decimal.Parse(_CTRow.Row["MaCH"].ToString()), true);
+                frmCTDB frm = new frmCTDB(decimal.Parse(_CTRow.Row["MaCH"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;
@@ -511,7 +511,7 @@ namespace KTKS_DonKH.GUI.TimKiem
         {
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["LoaiCat"].ToString() == "Cắt Hủy")
             {
-                frmShowCHDB frm = new frmShowCHDB(decimal.Parse(_CTRow.Row["MaCH"].ToString()), true);
+                frmCHDB frm = new frmCHDB(decimal.Parse(_CTRow.Row["MaCH"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;
@@ -519,7 +519,7 @@ namespace KTKS_DonKH.GUI.TimKiem
             }
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["LoaiCat"].ToString() == "Cắt Tạm")
             {
-                frmShowCTDB frm = new frmShowCTDB(decimal.Parse(_CTRow.Row["MaCH"].ToString()), true);
+                frmCTDB frm = new frmCTDB(decimal.Parse(_CTRow.Row["MaCH"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;
@@ -783,7 +783,7 @@ namespace KTKS_DonKH.GUI.TimKiem
                                     if (itemChildRow["DaLapPhieu"].ToString() == "True")
                                     {
                                         CCHDB cCHDB = new CCHDB();
-                                        YeuCauCHDB ycchdb = cCHDB.getYeuCauCHDbyID(decimal.Parse(itemChildRow["SoPhieu"].ToString()));
+                                        PhieuCHDB ycchdb = cCHDB.getYeuCauCHDbyID(decimal.Parse(itemChildRow["SoPhieu"].ToString()));
                                         dr["NoiDungXuLy"] += ", Đã Lập Phiếu YCCH số: " + itemChildRow["SoPhieu"].ToString().Insert(itemChildRow["SoPhieu"].ToString().Length - 2, "-") + ", Ngày Lập: " + itemChildRow["NgayLapPhieu"] + ", Hiệu Lực Kỳ: " + ycchdb.HieuLucKy;
                                     }
                                 }

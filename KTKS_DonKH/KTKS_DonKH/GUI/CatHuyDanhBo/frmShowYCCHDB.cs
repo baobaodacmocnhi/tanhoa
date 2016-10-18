@@ -21,7 +21,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
     public partial class frmShowYCCHDB : Form
     {
         decimal _MaYCCHDB = 0;
-        YeuCauCHDB _ycchdb = new YeuCauCHDB();
+        PhieuCHDB _ycchdb = new PhieuCHDB();
         CCHDB _cCHDB = new CCHDB();
         CThuTien _cThuTien = new CThuTien();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();

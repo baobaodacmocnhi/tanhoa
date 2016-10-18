@@ -181,7 +181,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     ctctdb.PhieuDuocKy = bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["PhieuDuocKy"].Value.ToString());
                     if (_cCHDB.SuaCTCTDB(ctctdb))
                     {
-                        YeuCauCHDB ycchdb = _cCHDB.getYeuCauCHDBbyMaCTCTDB(ctctdb.MaCTCTDB);
+                        PhieuCHDB ycchdb = _cCHDB.getYeuCauCHDBbyMaCTCTDB(ctctdb.MaCTCTDB);
                         ycchdb.PhieuDuocKy = ctctdb.PhieuDuocKy;
                         _cCHDB.SuaYeuCauCHDB(ycchdb);
                     }
@@ -200,7 +200,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     ctchdb.PhieuDuocKy = bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["PhieuDuocKy"].Value.ToString());
                     if (_cCHDB.SuaCTCHDB(ctchdb))
                     {
-                        YeuCauCHDB ycchdb = _cCHDB.getYeuCauCHDBbyMaCTCHDB(ctchdb.MaCTCHDB);
+                        PhieuCHDB ycchdb = _cCHDB.getYeuCauCHDBbyMaCTCHDB(ctchdb.MaCTCHDB);
                         ycchdb.PhieuDuocKy = ctchdb.PhieuDuocKy;
                         _cCHDB.SuaYeuCauCHDB(ycchdb);
                     }
@@ -218,14 +218,14 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             if (radDSCatTamDanhBo.Checked)
                 if (dgvDSCTCHDB.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
                 {
-                    frmShowCTDB frm = new frmShowCTDB(decimal.Parse(dgvDSCTCHDB["MaTB", dgvDSCTCHDB.CurrentRow.Index].Value.ToString()));
+                    frmCTDB frm = new frmCTDB(decimal.Parse(dgvDSCTCHDB["MaTB", dgvDSCTCHDB.CurrentRow.Index].Value.ToString()));
                     if (frm.ShowDialog() == DialogResult.OK) { }
                     //DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCTDB();
                 }
             if (radDSCatHuyDanhBo.Checked)
                 if (dgvDSCTCHDB.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
                 {
-                    frmShowCHDB frm = new frmShowCHDB(decimal.Parse(dgvDSCTCHDB["MaTB", dgvDSCTCHDB.CurrentRow.Index].Value.ToString()));
+                    frmCHDB frm = new frmCHDB(decimal.Parse(dgvDSCTCHDB["MaTB", dgvDSCTCHDB.CurrentRow.Index].Value.ToString()));
                     if (frm.ShowDialog() == DialogResult.OK) { }
                     //DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCHDB();
                 }
@@ -275,7 +275,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (radDSYCCHDB.Checked)
             {
-                YeuCauCHDB ycchdb = _cCHDB.getYeuCauCHDbyID(decimal.Parse(dgvDSYCCHDB.CurrentRow.Cells["SoPhieu"].Value.ToString()));
+                PhieuCHDB ycchdb = _cCHDB.getYeuCauCHDbyID(decimal.Parse(dgvDSYCCHDB.CurrentRow.Cells["SoPhieu"].Value.ToString()));
                 if (bool.Parse(dgvDSYCCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString()) != ycchdb.PhieuDuocKy)
                 {
                     ycchdb.PhieuDuocKy = bool.Parse(dgvDSYCCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString());
@@ -469,7 +469,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                 DataRow dr = dsBaoCao.Tables["PhieuCHDB"].NewRow();
 
-                                YeuCauCHDB ycchdb = _cCHDB.getYeuCauCHDbyID(decimal.Parse(dgvDSYCCHDB["SoPhieu", i].Value.ToString()));
+                                PhieuCHDB ycchdb = _cCHDB.getYeuCauCHDbyID(decimal.Parse(dgvDSYCCHDB["SoPhieu", i].Value.ToString()));
                                 dr["SoPhieu"] = ycchdb.MaYCCHDB.ToString().Insert(ycchdb.MaYCCHDB.ToString().Length - 2, "-");
                                 dr["HieuLucKy"] = ycchdb.HieuLucKy;
                                 dr["Dot"] = ycchdb.Dot;

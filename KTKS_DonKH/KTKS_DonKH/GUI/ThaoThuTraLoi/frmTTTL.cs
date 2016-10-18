@@ -59,6 +59,9 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 
         public void Clear()
         {
+            txtMaDon.Text = "";
+            txtMaCTTTTL.Text = "";
+            ///
             txtDanhBo.Text = "";
             txtHopDong.Text = "";
             txtHoTen.Text = "";
@@ -368,62 +371,6 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void btnCapNhatGhiChu_Click(object sender, EventArgs e)
-        {
-            if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
-            {
-                if (_cttttl != null)
-                {
-                    GhiChuCTTTTL ghichu = new GhiChuCTTTTL();
-                    ghichu.NgayGhiChu = dateGhiChu.Value;
-                    ghichu.GhiChu = txtGhiChu.Text.Trim();
-                    ghichu.MaCTTTTL = _cttttl.MaCTTTTL;
-                    if (_cGhiChuCTTTTL.Them(ghichu))
-                        dgvGhiChu.DataSource = _cGhiChuCTTTTL.GetDS(_cttttl.MaCTTTTL);
-                }
-            }
-            else
-                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        private void dgvGhiChu_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.Button == MouseButtons.Right)
-            {
-                ///Khi chuột phải Selected-Row sẽ được chuyển đến nơi click chuột
-                dgvGhiChu.CurrentCell = dgvGhiChu.Rows[e.RowIndex].Cells[e.ColumnIndex];
-            }
-        }
-
-        private void dgvGhiChu_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right && (_donkh != null))
-            {
-                contextMenuStrip1.Show(dgvGhiChu, new Point(e.X, e.Y));
-            }
-        }
-
-        private void dgvLichSuTTTL_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (dgvLichSuTTTL.Columns[e.ColumnIndex].Name == "MaCTTTTL" && e.Value != null)
-            {
-                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            }
-            if (dgvLichSuTTTL.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
-            {
-                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            }
-        }
-
-        private void xóaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                if (_cGhiChuCTTTTL.Xoa(_cGhiChuCTTTTL.Get(int.Parse(dgvGhiChu.CurrentRow.Cells["ID"].Value.ToString()))))
-                {
-                    dgvGhiChu.DataSource = _cGhiChuCTTTTL.GetDS(_cttttl.MaCTTTTL);
-                }
-        }
-
         private void btnSua_Click(object sender, EventArgs e)
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
@@ -498,5 +445,63 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             else
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        private void btnCapNhatGhiChu_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+            {
+                if (_cttttl != null)
+                {
+                    GhiChuCTTTTL ghichu = new GhiChuCTTTTL();
+                    ghichu.NgayGhiChu = dateGhiChu.Value;
+                    ghichu.GhiChu = txtGhiChu.Text.Trim();
+                    ghichu.MaCTTTTL = _cttttl.MaCTTTTL;
+                    if (_cGhiChuCTTTTL.Them(ghichu))
+                        dgvGhiChu.DataSource = _cGhiChuCTTTTL.GetDS(_cttttl.MaCTTTTL);
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void dgvGhiChu_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.Button == MouseButtons.Right)
+            {
+                ///Khi chuột phải Selected-Row sẽ được chuyển đến nơi click chuột
+                dgvGhiChu.CurrentCell = dgvGhiChu.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            }
+        }
+
+        private void dgvGhiChu_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && (_donkh != null))
+            {
+                contextMenuStrip1.Show(dgvGhiChu, new Point(e.X, e.Y));
+            }
+        }
+
+        private void dgvLichSuTTTL_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvLichSuTTTL.Columns[e.ColumnIndex].Name == "MaCTTTTL" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+            if (dgvLichSuTTTL.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+        }
+
+        private void xóaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (_cGhiChuCTTTTL.Xoa(_cGhiChuCTTTTL.Get(int.Parse(dgvGhiChu.CurrentRow.Cells["ID"].Value.ToString()))))
+                {
+                    dgvGhiChu.DataSource = _cGhiChuCTTTTL.GetDS(_cttttl.MaCTTTTL);
+                }
+        }
+
+        
     }
 }

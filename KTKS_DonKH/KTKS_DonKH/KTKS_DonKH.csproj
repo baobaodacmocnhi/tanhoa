@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>346</ApplicationRevision>
+    <ApplicationRevision>349</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -575,6 +575,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DAL\BamChi\CBamChi.cs" />
+    <Compile Include="DAL\CatHuyDanhBo\CNoiDungXuLyCHDB.cs" />
     <Compile Include="DAL\QuanTri\CBanGiamDoc.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CChiNhanh.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CGiaNuoc.cs" />
@@ -589,7 +590,7 @@
     <Compile Include="DAL\ToXuLy\CLoaiDonTXL.cs" />
     <Compile Include="DAL\BamChi\CTrangThaiBamChi.cs" />
     <Compile Include="DAL\CapNhat\CTTKH.cs" />
-    <Compile Include="DAL\CatHuyDanhBo\CVeViecCHDB.cs" />
+    <Compile Include="DAL\CatHuyDanhBo\CLyDoCHDB.cs" />
     <Compile Include="DAL\CatHuyDanhBo\CCHDB.cs" />
     <Compile Include="DAL\CBaoCao.cs" />
     <Compile Include="DAL\CDAL.cs" />
@@ -662,10 +663,16 @@
     <Compile Include="GUI\BaoCao\frmShowBaoCao.Designer.cs">
       <DependentUpon>frmShowBaoCao.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\DieuChinhBienDong\frmBanGiamDoc.cs">
+    <Compile Include="GUI\CatHuyDanhBo\frmNoiDungXuLyCHDB.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\DieuChinhBienDong\frmBanGiamDoc.Designer.cs">
+    <Compile Include="GUI\CatHuyDanhBo\frmNoiDungXuLyCHDB.Designer.cs">
+      <DependentUpon>frmNoiDungXuLyCHDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\QuanTri\frmBanGiamDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanTri\frmBanGiamDoc.Designer.cs">
       <DependentUpon>frmBanGiamDoc.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\DieuChinhBienDong\frmChiNhanh.cs">
@@ -734,12 +741,6 @@
     <Compile Include="GUI\CatHuyDanhBo\frmCHDB.Designer.cs">
       <DependentUpon>frmCHDB.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\CatHuyDanhBo\frmShowCHDB.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\CatHuyDanhBo\frmShowCHDB.Designer.cs">
-      <DependentUpon>frmShowCHDB.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\CatHuyDanhBo\frmCTDB.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -751,12 +752,6 @@
     </Compile>
     <Compile Include="GUI\CatHuyDanhBo\frmDSCHDB.Designer.cs">
       <DependentUpon>frmDSCHDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\CatHuyDanhBo\frmShowCTDB.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\CatHuyDanhBo\frmShowCTDB.Designer.cs">
-      <DependentUpon>frmShowCTDB.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\CatHuyDanhBo\frmShowDongNuoc.cs">
       <SubType>Form</SubType>
@@ -770,11 +765,11 @@
     <Compile Include="GUI\CatHuyDanhBo\frmShowYCCHDB.Designer.cs">
       <DependentUpon>frmShowYCCHDB.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\CatHuyDanhBo\frmVeViecCHDB.cs">
+    <Compile Include="GUI\CatHuyDanhBo\frmLyDoCHDB.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\CatHuyDanhBo\frmVeViecCHDB.Designer.cs">
-      <DependentUpon>frmVeViecCHDB.cs</DependentUpon>
+    <Compile Include="GUI\CatHuyDanhBo\frmLyDoCHDB.Designer.cs">
+      <DependentUpon>frmLyDoCHDB.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\CatHuyDanhBo\frmYCCHDB.cs">
       <SubType>Form</SubType>
@@ -1434,7 +1429,10 @@
     <EmbeddedResource Include="GUI\BaoCao\frmShowBaoCao.resx">
       <DependentUpon>frmShowBaoCao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\DieuChinhBienDong\frmBanGiamDoc.resx">
+    <EmbeddedResource Include="GUI\CatHuyDanhBo\frmNoiDungXuLyCHDB.resx">
+      <DependentUpon>frmNoiDungXuLyCHDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QuanTri\frmBanGiamDoc.resx">
       <DependentUpon>frmBanGiamDoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DieuChinhBienDong\frmChiNhanh.resx">
@@ -1470,17 +1468,11 @@
     <EmbeddedResource Include="GUI\CatHuyDanhBo\frmCHDB.resx">
       <DependentUpon>frmCHDB.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\CatHuyDanhBo\frmShowCHDB.resx">
-      <DependentUpon>frmShowCHDB.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GUI\CatHuyDanhBo\frmCTDB.resx">
       <DependentUpon>frmCTDB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CatHuyDanhBo\frmDSCHDB.resx">
       <DependentUpon>frmDSCHDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\CatHuyDanhBo\frmShowCTDB.resx">
-      <DependentUpon>frmShowCTDB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CatHuyDanhBo\frmShowDongNuoc.resx">
       <DependentUpon>frmShowDongNuoc.cs</DependentUpon>
@@ -1488,8 +1480,8 @@
     <EmbeddedResource Include="GUI\CatHuyDanhBo\frmShowYCCHDB.resx">
       <DependentUpon>frmShowYCCHDB.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\CatHuyDanhBo\frmVeViecCHDB.resx">
-      <DependentUpon>frmVeViecCHDB.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\CatHuyDanhBo\frmLyDoCHDB.resx">
+      <DependentUpon>frmLyDoCHDB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CatHuyDanhBo\frmYCCHDB.resx">
       <DependentUpon>frmYCCHDB.cs</DependentUpon>

@@ -1,4 +1,4 @@
-﻿namespace KTKS_DonKH.GUI.DieuChinhBienDong
+﻿namespace KTKS_DonKH.GUI.QuanTri
 {
     partial class frmBanGiamDoc
     {

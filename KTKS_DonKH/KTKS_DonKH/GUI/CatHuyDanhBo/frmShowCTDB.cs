@@ -76,11 +76,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             dgvLichSuXuLy.AutoGenerateColumns = false;
             cmbNoiDung.SelectedIndex = -1;
 
-            cmbLyDo.DataSource = _cVeViecCHDB.LoadDS(true);
+            cmbLyDo.DataSource = _cVeViecCHDB.LoadDS();
             cmbLyDo.DisplayMember = "TenVV";
             cmbLyDo.ValueMember = "TenVV";
 
-            DataTable dt1 = _cCHDB.GetDSNoiDungLichSuXyLy();
+            DataTable dt1 = _cCHDB.GetDSNoiDungGhiChu();
             AutoCompleteStringCollection auto1 = new AutoCompleteStringCollection();
             foreach (DataRow item in dt1.Rows)
             {
@@ -88,7 +88,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             }
             txtNoiDung.AutoCompleteCustomSource = auto1;
 
-            DataTable dt2 = _cCHDB.GetDSNoiNhanXuLyLichSuXyLy();
+            DataTable dt2 = _cCHDB.GetDSNoiNhanGhiChu();
             AutoCompleteStringCollection auto2 = new AutoCompleteStringCollection();
             foreach (DataRow item in dt2.Rows)
             {
@@ -128,7 +128,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                 txtNoiNhan.Text = _ctctdb.NoiNhan;
 
-                dgvLichSuXuLy.DataSource = _cCHDB.LoadDSLichSuXuLyByMaCTCTDB(_ctctdb.MaCTCTDB);
+                dgvLichSuXuLy.DataSource = _cCHDB.GetDSGhiChuByMaCTCTDB(_ctctdb.MaCTCTDB);
                 ///
                 ///phải có if ở đây vì dateTCTBXuLy không nhận giá trị null
                 //if (_ctctdb.TCTBXuLy)
@@ -249,13 +249,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     {
                         if (_ctctdb.NgayXuLy != null && _ctctdb.NgayXuLy != dateXuLy.Value)
                         {
-                            LichSuXuLyCTCHDB lsxl = new LichSuXuLyCTCHDB();
-                            lsxl.NgayXuLy = _ctctdb.NgayXuLy;
-                            lsxl.NoiDung = _ctctdb.NoiDungXuLy;
-                            lsxl.MaCTCTDB = _ctctdb.MaCTCTDB;
-                            if (_cCHDB.ThemLichSuXuLy(lsxl))
+                            GhiChuCHDB ghichu = new GhiChuCHDB();
+                            ghichu.NgayLap = _ctctdb.NgayXuLy;
+                            ghichu.NoiDung = _ctctdb.NoiDungXuLy;
+                            ghichu.MaCTCTDB = _ctctdb.MaCTCTDB;
+                            if (_cCHDB.ThemGhiChu(ghichu))
                             {
-                                dgvLichSuXuLy.DataSource = _cCHDB.LoadDSLichSuXuLyByMaCTCTDB(_ctctdb.MaCTCTDB);
+                                dgvLichSuXuLy.DataSource = _cCHDB.GetDSGhiChuByMaCTCTDB(_ctctdb.MaCTCTDB);
                             }
                         }
                         _ctctdb.NgayXuLy = dateXuLy.Value;
@@ -335,15 +335,15 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     //_ctctdb.TCTBXuLy = true;
                     //_ctctdb.NgayTCTBXuLy = dateTCTBXuLy.Value;
                     //_ctctdb.KetQuaTCTBXuLy = txtKetQuaTCTBXuLy.Text.Trim();
-                    LichSuXuLyCTCHDB lsxl = new LichSuXuLyCTCHDB();
-                    lsxl.NgayXuLy = dateLichSuXuLy.Value;
-                    lsxl.NoiDung = txtNoiDung.Text.Trim();
-                    lsxl.NoiNhan = txtNoiNhanXuLy.Text.Trim();
-                    lsxl.GhiChu = txtGhiChu.Text.Trim();
-                    lsxl.MaCTCTDB = _ctctdb.MaCTCTDB;
-                    if (_cCHDB.ThemLichSuXuLy(lsxl))
+                    GhiChuCHDB ghichu = new GhiChuCHDB();
+                    ghichu.NgayLap = dateLichSuXuLy.Value;
+                    ghichu.NoiDung = txtNoiDung.Text.Trim();
+                    ghichu.NoiNhan = txtNoiNhanXuLy.Text.Trim();
+                    ghichu.GhiChu = txtGhiChu.Text.Trim();
+                    ghichu.MaCTCTDB = _ctctdb.MaCTCTDB;
+                    if (_cCHDB.ThemGhiChu(ghichu))
                     {
-                        dgvLichSuXuLy.DataSource = _cCHDB.LoadDSLichSuXuLyByMaCTCTDB(_ctctdb.MaCTCTDB);
+                        dgvLichSuXuLy.DataSource = _cCHDB.GetDSGhiChuByMaCTCTDB(_ctctdb.MaCTCTDB);
                         MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -669,9 +669,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                if (_cCHDB.XoaLichSuXuLy(_cCHDB.GetLichSuXyLyByID(decimal.Parse(dgvLichSuXuLy.CurrentRow.Cells["MaLSXuLy"].Value.ToString()))))
+                if (_cCHDB.XoaGhiChu(_cCHDB.GetGhiChuByID(decimal.Parse(dgvLichSuXuLy.CurrentRow.Cells["ID"].Value.ToString()))))
                 {
-                    dgvLichSuXuLy.DataSource = _cCHDB.LoadDSLichSuXuLyByMaCTCTDB(_ctctdb.MaCTCTDB);
+                    dgvLichSuXuLy.DataSource = _cCHDB.GetDSGhiChuByMaCTCTDB(_ctctdb.MaCTCTDB);
                 }
             }
         }

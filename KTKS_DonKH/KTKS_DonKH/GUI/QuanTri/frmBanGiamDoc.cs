@@ -13,7 +13,7 @@ using KTKS_DonKH.DAL.CatHuyDanhBo;
 using KTKS_DonKH.DAL.ThaoThuTraLoi;
 using KTKS_DonKH.DAL.DongNuoc;
 
-namespace KTKS_DonKH.GUI.DieuChinhBienDong
+namespace KTKS_DonKH.GUI.QuanTri
 {
     public partial class frmBanGiamDoc : Form
     {
@@ -283,7 +283,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     for (int i = 0; i < dgvDanhSach.RowCount; i++)
                         if (bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
                         {
-                            YeuCauCHDB ycchdb = _cCHDB.getYeuCauCHDbyID(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
+                            PhieuCHDB ycchdb = _cCHDB.getYeuCauCHDbyID(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
 
                             if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                                 ycchdb.ChucVu = "GIÁM ĐỐC";

@@ -1412,7 +1412,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
-                return db.YeuCauCHDBs.Any(itemYCCHDB => itemYCCHDB.MaCTCTDB==MaCTCTDB);
+                return db.PhieuCHDBs.Any(itemYCCHDB => itemYCCHDB.MaCTCTDB==MaCTCTDB);
             }
             catch (Exception ex)
             {
@@ -1430,7 +1430,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
-                return db.YeuCauCHDBs.Any(itemYCCHDB => itemYCCHDB.MaCTCHDB == MaCTCHDB);
+                return db.PhieuCHDBs.Any(itemYCCHDB => itemYCCHDB.MaCTCHDB == MaCTCHDB);
             }
             catch (Exception ex)
             {
@@ -1439,14 +1439,14 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public bool ThemYeuCauCHDB(YeuCauCHDB ycchdb)
+        public bool ThemYeuCauCHDB(PhieuCHDB ycchdb)
         {
             try
             {
-                    if (db.YeuCauCHDBs.Count() > 0)
+                    if (db.PhieuCHDBs.Count() > 0)
                     {
                         string ID = "MaYCCHDB";
-                        string Table = "YeuCauCHDB";
+                        string Table = "PhieuCHDB";
                         decimal MaYCCHDB = db.ExecuteQuery<decimal>("declare @Ma int " +
                             "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
                             "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
@@ -1457,7 +1457,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                         ycchdb.MaYCCHDB = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                     ycchdb.CreateDate = DateTime.Now;
                     ycchdb.CreateBy = CTaiKhoan.MaUser;
-                    db.YeuCauCHDBs.InsertOnSubmit(ycchdb);
+                    db.PhieuCHDBs.InsertOnSubmit(ycchdb);
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Thêm YeuCauCHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
@@ -1470,7 +1470,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public bool SuaYeuCauCHDB(YeuCauCHDB ycchdb)
+        public bool SuaYeuCauCHDB(PhieuCHDB ycchdb)
         {
             try
             {
@@ -1488,11 +1488,11 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public bool XoaYeuCauCHDB(YeuCauCHDB ycchdb)
+        public bool XoaYeuCauCHDB(PhieuCHDB ycchdb)
         {
             try
             {
-                    db.YeuCauCHDBs.DeleteOnSubmit(ycchdb);
+                    db.PhieuCHDBs.DeleteOnSubmit(ycchdb);
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Sửa YeuCauCHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
@@ -1505,11 +1505,11 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public YeuCauCHDB getYeuCauCHDbyID(decimal MaYCCHDB)
+        public PhieuCHDB getYeuCauCHDbyID(decimal MaYCCHDB)
         {
             try
             {
-                return db.YeuCauCHDBs.SingleOrDefault(itemYCCHDB => itemYCCHDB.MaYCCHDB == MaYCCHDB);
+                return db.PhieuCHDBs.SingleOrDefault(itemYCCHDB => itemYCCHDB.MaYCCHDB == MaYCCHDB);
             }
             catch (Exception ex)
             {
@@ -1518,11 +1518,11 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public YeuCauCHDB getYeuCauCHDBbyMaCTCTDB(decimal MaCTCTDB)
+        public PhieuCHDB getYeuCauCHDBbyMaCTCTDB(decimal MaCTCTDB)
         {
             try
             {
-                return db.YeuCauCHDBs.Where(itemYCCHDB => itemYCCHDB.MaCTCTDB == MaCTCTDB).OrderBy(item=>item.CreateDate).ToList().Last();
+                return db.PhieuCHDBs.Where(itemYCCHDB => itemYCCHDB.MaCTCTDB == MaCTCTDB).OrderBy(item=>item.CreateDate).ToList().Last();
             }
             catch (Exception ex)
             {
@@ -1531,11 +1531,11 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public YeuCauCHDB getYeuCauCHDBbyMaCTCHDB(decimal MaCTCHDB)
+        public PhieuCHDB getYeuCauCHDBbyMaCTCHDB(decimal MaCTCHDB)
         {
             try
             {
-                return db.YeuCauCHDBs.Where(itemYCCHDB => itemYCCHDB.MaCTCHDB == MaCTCHDB).OrderBy(item => item.CreateDate).ToList().Last();
+                return db.PhieuCHDBs.Where(itemYCCHDB => itemYCCHDB.MaCTCHDB == MaCTCHDB).OrderBy(item => item.CreateDate).ToList().Last();
             }
             catch (Exception ex)
             {
@@ -1554,7 +1554,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
-                if (db.YeuCauCHDBs.Any(itemYCCHDB => itemYCCHDB.MaDon == MaDon&& itemYCCHDB.DanhBo==DanhBo))
+                if (db.PhieuCHDBs.Any(itemYCCHDB => itemYCCHDB.MaDon == MaDon&& itemYCCHDB.DanhBo==DanhBo))
                     return true;
                 else
                     return false;
@@ -1576,7 +1576,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
-                if (db.YeuCauCHDBs.Any(itemYCCHDB => itemYCCHDB.MaDonTXL == MaDonTXL&&itemYCCHDB.DanhBo==DanhBo))
+                if (db.PhieuCHDBs.Any(itemYCCHDB => itemYCCHDB.MaDonTXL == MaDonTXL&&itemYCCHDB.DanhBo==DanhBo))
                     return true;
                 else
                     return false;
@@ -1596,7 +1596,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
-                    var query = from itemYCCHDB in db.YeuCauCHDBs
+                    var query = from itemYCCHDB in db.PhieuCHDBs
                                 orderby itemYCCHDB.CreateDate descending
                                 select new
                                 {
@@ -1627,7 +1627,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
-                    var query = from itemYCCHDB in db.YeuCauCHDBs
+                    var query = from itemYCCHDB in db.PhieuCHDBs
                                 where itemYCCHDB.MaDon==MaDon ||itemYCCHDB.MaDonTXL==MaDon
                                 orderby itemYCCHDB.CreateDate descending
                                 select new
@@ -1659,7 +1659,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
-                    var query = from itemYCCHDB in db.YeuCauCHDBs
+                    var query = from itemYCCHDB in db.PhieuCHDBs
                                 where itemYCCHDB.MaYCCHDB==SoPhieu
                                 orderby itemYCCHDB.CreateDate descending
                                 select new
@@ -1691,7 +1691,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
-                    var query = from itemYCCHDB in db.YeuCauCHDBs
+                    var query = from itemYCCHDB in db.PhieuCHDBs
                                 where itemYCCHDB.MaYCCHDB >= TuSoPhieu && itemYCCHDB.MaYCCHDB <= DenSoPhieu
                                 orderby itemYCCHDB.CreateDate descending
                                 select new
@@ -1723,7 +1723,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
-                    var query = from itemYCCHDB in db.YeuCauCHDBs
+                    var query = from itemYCCHDB in db.PhieuCHDBs
                                 where itemYCCHDB.DanhBo==DanhBo
                                 orderby itemYCCHDB.CreateDate descending
                                 select new
@@ -1755,7 +1755,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
-                    var query = from itemYCCHDB in db.YeuCauCHDBs
+                    var query = from itemYCCHDB in db.PhieuCHDBs
                                 where itemYCCHDB.CreateDate.Value.Date==TuNgay.Date
                                 orderby itemYCCHDB.CreateDate descending
                                 select new
@@ -1787,7 +1787,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
-                    var query = from itemYCCHDB in db.YeuCauCHDBs
+                    var query = from itemYCCHDB in db.PhieuCHDBs
                                 where itemYCCHDB.CreateDate.Value.Date>=TuNgay.Date&&itemYCCHDB.CreateDate.Value.Date<=DenNgay.Date
                                 orderby itemYCCHDB.CreateDate descending
                                 select new
@@ -1824,7 +1824,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
-                    var query = from itemYCCHDB in db.YeuCauCHDBs
+                    var query = from itemYCCHDB in db.PhieuCHDBs
                                 where itemYCCHDB.CreateDate.Value.Date==TuNgay.Date //&& (itemYCCHDB.MaDon != null || itemYCCHDB.MaDonTXL != null)
                                 select new
                                 {
@@ -1862,7 +1862,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
-                    var query = from itemYCCHDB in db.YeuCauCHDBs
+                    var query = from itemYCCHDB in db.PhieuCHDBs
                                 where itemYCCHDB.CreateDate.Value.Date >= TuNgay.Date && itemYCCHDB.CreateDate.Value.Date <= DenNgay.Date //&& (itemYCCHDB.MaDon != null || itemYCCHDB.MaDonTXL != null)
                                 select new
                                 {
@@ -1899,7 +1899,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
-                    var query = from itemYCCHDB in db.YeuCauCHDBs
+                    var query = from itemYCCHDB in db.PhieuCHDBs
                                 where itemYCCHDB.CreateDate.Value.Date == TuNgay.Date
                                 select new
                                 {
@@ -1937,7 +1937,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
-                    var query = from itemYCCHDB in db.YeuCauCHDBs
+                    var query = from itemYCCHDB in db.PhieuCHDBs
                                 where itemYCCHDB.CreateDate.Value.Date >= TuNgay.Date && itemYCCHDB.CreateDate.Value.Date <= DenNgay.Date
                                 select new
                                 {
@@ -1967,97 +1967,94 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         #endregion
 
-        #region LichSuXuLy (Lịch Sử Xử Lý)
+        #region GhiChuCHDB (GhiChu)
 
-        public bool ThemLichSuXuLy(LichSuXuLyCTCHDB lsxl)
+        public bool ThemGhiChu(GhiChuCHDB item)
         {
             try
             {
-                    if (db.LichSuXuLyCTCHDBs.Count() > 0)
+                if (db.GhiChuCHDBs.Count() > 0)
                     {
-                        string ID = "MaLSXuLy";
-                        string Table = "LichSuXuLyCTCHDB";
+                        string ID = "ID";
+                        string Table = "GhiChuCHDB";
                         decimal MaCHDB = db.ExecuteQuery<decimal>("declare @Ma int " +
                             "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
                             "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
                         //decimal MaCHDB = db.CHDBs.Max(itemCHDB => itemCHDB.MaCHDB);
-                        lsxl.MaLSXuLy = getMaxNextIDTable(MaCHDB);
+                        item.ID = getMaxNextIDTable(MaCHDB);
                     }
                     else
-                        lsxl.MaLSXuLy = decimal.Parse("1" + DateTime.Now.ToString("yy"));
-                    lsxl.CreateDate = DateTime.Now;
-                    lsxl.CreateBy = CTaiKhoan.MaUser;
-                    db.LichSuXuLyCTCHDBs.InsertOnSubmit(lsxl);
+                    item.ID = decimal.Parse("1" + DateTime.Now.ToString("yy"));
+                item.CreateDate = DateTime.Now;
+                item.CreateBy = CTaiKhoan.MaUser;
+                db.GhiChuCHDBs.InsertOnSubmit(item);
                     db.SubmitChanges();
-                    //MessageBox.Show("Thành công Thêm CHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 db = new DB_KTKS_DonKHDataContext();
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
 
-        public bool SuaLichSuXuLy(LichSuXuLyCTCHDB lsxl)
+        public bool SuaGhiChu(GhiChuCHDB item)
         {
             try
             {
-                    lsxl.ModifyDate = DateTime.Now;
-                    lsxl.ModifyBy = CTaiKhoan.MaUser;
+                item.ModifyDate = DateTime.Now;
+                item.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
-                    //MessageBox.Show("Thành công Sửa CHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 db = new DB_KTKS_DonKHDataContext();
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
 
-        public bool XoaLichSuXuLy(LichSuXuLyCTCHDB lsxl)
+        public bool XoaGhiChu(GhiChuCHDB item)
         {
             try
             {
-                    db.LichSuXuLyCTCHDBs.DeleteOnSubmit(lsxl);
+                db.GhiChuCHDBs.DeleteOnSubmit(item);
                     db.SubmitChanges();
-                    //MessageBox.Show("Thành công Sửa CHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 db = new DB_KTKS_DonKHDataContext();
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
 
-        public List<LichSuXuLyCTCHDB> LoadDSLichSuXuLyByMaCTCTDB(decimal MaCTCTDB)
+        public List<GhiChuCHDB> GetDSGhiChuByMaCTCTDB(decimal MaCTCTDB)
         {
-            return db.LichSuXuLyCTCHDBs.Where(item => item.MaCTCTDB == MaCTCTDB).ToList();
+            return db.GhiChuCHDBs.Where(item => item.MaCTCTDB == MaCTCTDB).OrderByDescending(item => item.NgayLap).ToList();
         }
 
-        public List<LichSuXuLyCTCHDB> LoadDSLichSuXuLyByMaCTCHDB(decimal MaCTCHDB)
+        public List<GhiChuCHDB> GetDSGhiChuByMaCTCHDB(decimal MaCTCHDB)
         {
-            return db.LichSuXuLyCTCHDBs.Where(item => item.MaCTCHDB == MaCTCHDB).ToList();
+            return db.GhiChuCHDBs.Where(item => item.MaCTCHDB == MaCTCHDB).OrderByDescending(item=>item.NgayLap).ToList();
         }
 
-        public LichSuXuLyCTCHDB GetLichSuXyLyByID(decimal MaLSXuLy)
+        public GhiChuCHDB GetGhiChuByID(decimal ID)
         {
-            return db.LichSuXuLyCTCHDBs.SingleOrDefault(item => item.MaLSXuLy == MaLSXuLy);
+            return db.GhiChuCHDBs.SingleOrDefault(item => item.ID == ID);
         }
 
-        public DataTable GetDSNoiDungLichSuXyLy()
+        public DataTable GetDSNoiDungGhiChu()
         {
-            return LINQToDataTable(db.LichSuXuLyCTCHDBs.Select(item => new { item.NoiDung }).ToList().Distinct());
+            return LINQToDataTable(db.GhiChuCHDBs.Select(item => new { item.NoiDung }).ToList().Distinct());
         }
 
-        public DataTable GetDSNoiNhanXuLyLichSuXyLy()
+        public DataTable GetDSNoiNhanGhiChu()
         {
-            return LINQToDataTable(db.LichSuXuLyCTCHDBs.Select(item => new { item.NoiNhan }).ToList().Distinct());
+            return LINQToDataTable(db.GhiChuCHDBs.Select(item => new { item.NoiNhan }).ToList().Distinct());
         }
 
         #endregion
@@ -2091,7 +2088,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             };
             dt.Merge(LINQToDataTable(queryCHDB));
 
-            var queryYCCHDB = from itemYCCHDB in db.YeuCauCHDBs
+            var queryYCCHDB = from itemYCCHDB in db.PhieuCHDBs
                               where itemYCCHDB.DanhBo == DanhBo
                             select new
                             {

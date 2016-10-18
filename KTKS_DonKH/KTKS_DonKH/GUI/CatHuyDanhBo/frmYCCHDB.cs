@@ -31,7 +31,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CCHDB _cCHDB = new CCHDB();
-        YeuCauCHDB _ycchdb = null;
+        PhieuCHDB _ycchdb = null;
 
         public frmYCCHDB()
         {
@@ -143,7 +143,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     {
                         if (!_cCHDB.CheckYCCHDBbyMaDonDanhBo_TXL(_dontxl.MaDon, _dontxl.DanhBo))
                         {
-                            YeuCauCHDB ycchdb = new YeuCauCHDB();
+                            PhieuCHDB ycchdb = new PhieuCHDB();
                             ycchdb.ToXuLy = true;
                             ycchdb.MaDonTXL = _dontxl.MaDon;
                             ycchdb.DanhBo = txtDanhBo.Text.Trim();
@@ -228,7 +228,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     {
                         if (!_cCHDB.CheckYCCHDBbyMaDonDanhBo(_donkh.MaDon, _donkh.DanhBo))
                         {
-                            YeuCauCHDB ycchdb = new YeuCauCHDB();
+                            PhieuCHDB ycchdb = new PhieuCHDB();
                             ycchdb.MaDon = _donkh.MaDon;
                             ycchdb.DanhBo = txtDanhBo.Text.Trim();
                             ycchdb.HopDong = txtHopDong.Text.Trim();
