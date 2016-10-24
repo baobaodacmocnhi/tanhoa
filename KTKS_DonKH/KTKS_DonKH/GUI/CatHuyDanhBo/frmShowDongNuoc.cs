@@ -68,9 +68,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             dgvDSBamChi.AutoGenerateColumns = false;
             dgvDSBamChi.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSBamChi.Font, FontStyle.Bold);
 
-            if (_cDongNuoc.getCTDongNuocbyID(_MaCTDN) != null)
+            if (_cDongNuoc.GetCTByMaCTDN(_MaCTDN) != null)
             {
-                _ctdongnuoc = _cDongNuoc.getCTDongNuocbyID(_MaCTDN);
+                _ctdongnuoc = _cDongNuoc.GetCTByMaCTDN(_MaCTDN);
                 if (!string.IsNullOrEmpty(_ctdongnuoc.DongNuoc.MaDonTXL.ToString()))
                 {
                     txtMaDon.Text = "TXL" + _ctdongnuoc.DongNuoc.MaDonTXL.ToString().Insert(_ctdongnuoc.DongNuoc.MaDonTXL.ToString().Length - 2, "-");
@@ -152,7 +152,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         _ctdongnuoc.HinhThuc_DN = txtHinhThucDN.Text.Trim();
                     }
 
-                    if (_cDongNuoc.SuaCTDongNuoc(_ctdongnuoc))
+                    if (_cDongNuoc.SuaCT(_ctdongnuoc))
                     {
                         MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -187,7 +187,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 _ctdongnuoc.NguoiKy_MN = bangiamdoc.HoTen.ToUpper();
                 _ctdongnuoc.ThongBaoDuocKy_MN = true;
 
-                if (_cDongNuoc.SuaCTDongNuoc(_ctdongnuoc))
+                if (_cDongNuoc.SuaCT(_ctdongnuoc))
                 {
                     MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -297,10 +297,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 {
                     LinQ.DongNuoc dongnuoc = _ctdongnuoc.DongNuoc;
                     if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                        if (_cDongNuoc.XoaCTDongNuoc(_ctdongnuoc))
+                        if (_cDongNuoc.XoaCT(_ctdongnuoc))
                         {
                             if (dongnuoc.CTDongNuocs.Count == 0)
-                                _cDongNuoc.XoaDongNuoc(dongnuoc);
+                                _cDongNuoc.Xoa(dongnuoc);
                             MessageBox.Show("Xóa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.DialogResult = DialogResult.OK;
                             this.Close();

@@ -159,10 +159,10 @@ namespace KTKS_DonKH.GUI.QuanTri
                             dgvDanhSach.DataSource = _cCHDB.LoadDSYCCHDBBySoPhieu(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
                             break;
                         case "Đóng Nước":
-                            dgvDanhSach.DataSource = _cDongNuoc.LoadDSCTDongNuocByMaTB(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
+                            dgvDanhSach.DataSource = _cDongNuoc.GetDSCTDongNuocByMaTB(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
                             break;
                         case "Mở Nước":
-                            dgvDanhSach.DataSource = _cDongNuoc.LoadDSCTMoNuocByMaTB(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
+                            dgvDanhSach.DataSource = _cDongNuoc.GetDSCTMoNuocByMaTB(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
                             break;
                         case "Thảo Thư Trả Lời":
                             dgvDanhSach.DataSource = _cTTTL.GetDSByMaTB(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
@@ -191,10 +191,10 @@ namespace KTKS_DonKH.GUI.QuanTri
                             dgvDanhSach.DataSource = _cCHDB.LoadDSYCCHDB_Don(dateTu.Value);
                             break;
                         case "Đóng Nước":
-                            dgvDanhSach.DataSource = _cDongNuoc.LoadDSCTDongNuoc(dateTu.Value);
+                            dgvDanhSach.DataSource = _cDongNuoc.GetDSCTDongNuoc(dateTu.Value);
                             break;
                         case "Mở Nước":
-                            dgvDanhSach.DataSource = _cDongNuoc.LoadDSCTMoNuoc(dateTu.Value);
+                            dgvDanhSach.DataSource = _cDongNuoc.GetDSCTMoNuoc(dateTu.Value);
                             break;
                         case "Thảo Thư Trả Lời":
                             dgvDanhSach.DataSource = _cTTTL.GetDSByCreateDate(dateTu.Value, dateDen.Value);
@@ -297,28 +297,28 @@ namespace KTKS_DonKH.GUI.QuanTri
                     for (int i = 0; i < dgvDanhSach.RowCount; i++)
                         if (bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
                         {
-                            CTDongNuoc ctdongnuoc = _cDongNuoc.getCTDongNuocbyID(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
+                            CTDongNuoc ctdongnuoc = _cDongNuoc.GetCTByMaCTDN(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
 
                             if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                                 ctdongnuoc.ChucVu_DN = "GIÁM ĐỐC";
                             else
                                 ctdongnuoc.ChucVu_DN = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
                             ctdongnuoc.NguoiKy_DN = bangiamdoc.HoTen.ToUpper();
-                            _cDongNuoc.SuaCTDongNuoc(ctdongnuoc);
+                            _cDongNuoc.SuaCT(ctdongnuoc);
                         }
                     break;
                 case "Mở Nước":
                     for (int i = 0; i < dgvDanhSach.RowCount; i++)
                         if (bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
                         {
-                            CTDongNuoc ctdongnuoc = _cDongNuoc.getCTMoNuocbyID(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
+                            CTDongNuoc ctdongnuoc = _cDongNuoc.GetCTByMaCTMN(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
 
                             if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                                 ctdongnuoc.ChucVu_MN = "GIÁM ĐỐC";
                             else
                                 ctdongnuoc.ChucVu_MN = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
                             ctdongnuoc.NguoiKy_MN = bangiamdoc.HoTen.ToUpper();
-                            _cDongNuoc.SuaCTDongNuoc(ctdongnuoc);
+                            _cDongNuoc.SuaCT(ctdongnuoc);
                         }
                     break;
                 case "Thảo Thư Trả Lời":

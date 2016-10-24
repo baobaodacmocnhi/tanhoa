@@ -32,6 +32,10 @@
             this.txtNoiNhan = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvLyDoCHDB = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnThem = new System.Windows.Forms.Button();
             this.txtNoiDung = new System.Windows.Forms.TextBox();
             this.btnSua = new System.Windows.Forms.Button();
@@ -39,10 +43,6 @@
             this.txtLyDo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnXoa = new System.Windows.Forms.Button();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLyDoCHDB)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,8 +65,8 @@
             // 
             // dgvLyDoCHDB
             // 
+            this.dgvLyDoCHDB.AllowDrop = true;
             this.dgvLyDoCHDB.AllowUserToAddRows = false;
-            this.dgvLyDoCHDB.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -82,11 +82,43 @@
             this.NoiDung,
             this.NoiNhan});
             this.dgvLyDoCHDB.Location = new System.Drawing.Point(19, 210);
+            this.dgvLyDoCHDB.MultiSelect = false;
             this.dgvLyDoCHDB.Name = "dgvLyDoCHDB";
             this.dgvLyDoCHDB.Size = new System.Drawing.Size(1067, 372);
             this.dgvLyDoCHDB.TabIndex = 17;
             this.dgvLyDoCHDB.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLyDoCHDB_CellContentClick);
             this.dgvLyDoCHDB.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvLyDoCHDB_RowPostPaint);
+            this.dgvLyDoCHDB.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvLyDoCHDB_DragDrop);
+            this.dgvLyDoCHDB.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvLyDoCHDB_DragEnter);
+            this.dgvLyDoCHDB.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvLyDoCHDB_MouseClick);
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // LyDo
+            // 
+            this.LyDo.DataPropertyName = "LyDo";
+            this.LyDo.HeaderText = "Lý Do";
+            this.LyDo.Name = "LyDo";
+            this.LyDo.Width = 500;
+            // 
+            // NoiDung
+            // 
+            this.NoiDung.DataPropertyName = "NoiDung";
+            this.NoiDung.HeaderText = "Nội Dung";
+            this.NoiDung.Name = "NoiDung";
+            this.NoiDung.Width = 350;
+            // 
+            // NoiNhan
+            // 
+            this.NoiNhan.DataPropertyName = "NoiNhan";
+            this.NoiNhan.HeaderText = "Nơi Nhận";
+            this.NoiNhan.Name = "NoiNhan";
+            this.NoiNhan.Width = 150;
             // 
             // btnThem
             // 
@@ -150,37 +182,6 @@
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            // 
-            // LyDo
-            // 
-            this.LyDo.DataPropertyName = "LyDo";
-            this.LyDo.HeaderText = "Lý Do";
-            this.LyDo.Name = "LyDo";
-            this.LyDo.ReadOnly = true;
-            this.LyDo.Width = 500;
-            // 
-            // NoiDung
-            // 
-            this.NoiDung.DataPropertyName = "NoiDung";
-            this.NoiDung.HeaderText = "Nội Dung";
-            this.NoiDung.Name = "NoiDung";
-            this.NoiDung.ReadOnly = true;
-            this.NoiDung.Width = 350;
-            // 
-            // NoiNhan
-            // 
-            this.NoiNhan.DataPropertyName = "NoiNhan";
-            this.NoiNhan.HeaderText = "Nơi Nhận";
-            this.NoiNhan.Name = "NoiNhan";
-            this.NoiNhan.ReadOnly = true;
-            this.NoiNhan.Width = 150;
             // 
             // frmLyDoCHDB
             // 

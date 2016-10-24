@@ -420,7 +420,7 @@
             gridLevelNode12,
             gridLevelNode13,
             gridLevelNode14});
-            this.gridControl.Location = new System.Drawing.Point(12, 43);
+            this.gridControl.Location = new System.Drawing.Point(0, 42);
             this.gridControl.MainView = this.gridViewDon;
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -2393,7 +2393,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1491, 621);
+            this.ClientSize = new System.Drawing.Size(1276, 621);
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.gridControl);

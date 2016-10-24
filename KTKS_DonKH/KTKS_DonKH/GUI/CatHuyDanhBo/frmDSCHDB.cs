@@ -21,6 +21,7 @@ using KTKS_DonKH.GUI.ToXuLy;
 using KTKS_DonKH.DAL.DongNuoc;
 using KTKS_DonKH.BaoCao.DongNuoc;
 using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.GUI.DongNuoc;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -43,6 +44,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
             dgvDSCTCHDB.AutoGenerateColumns = false;
             dgvDSYCCHDB.AutoGenerateColumns = false;
+
+            dgvDSYCCHDB.Location = dgvDSCTCHDB.Location;
         }
 
         private void radDSCatTamDanhBo_CheckedChanged(object sender, EventArgs e)
@@ -260,13 +263,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             if (radDSYCCHDB.Checked)
                 if (dgvDSYCCHDB.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
                 {
-                    frmShowYCCHDB frm = new frmShowYCCHDB(decimal.Parse(dgvDSYCCHDB["SoPhieu", dgvDSYCCHDB.CurrentRow.Index].Value.ToString()));
+                    frmYCCHDB frm = new frmYCCHDB(decimal.Parse(dgvDSYCCHDB["SoPhieu", dgvDSYCCHDB.CurrentRow.Index].Value.ToString()));
                     frm.ShowDialog();
                 }
             if (radDSDongNuoc.Checked)
                 if (dgvDSYCCHDB.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
                 {
-                    frmShowDongNuoc frm = new frmShowDongNuoc(decimal.Parse(dgvDSYCCHDB["SoPhieu", dgvDSYCCHDB.CurrentRow.Index].Value.ToString()));
+                    frmDongNuoc frm = new frmDongNuoc(decimal.Parse(dgvDSYCCHDB["SoPhieu", dgvDSYCCHDB.CurrentRow.Index].Value.ToString()));
                     frm.ShowDialog();
                 }
         }
@@ -299,11 +302,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             }
             if (radDSDongNuoc.Checked)
             {
-                CTDongNuoc ctdongnuoc = _cDongNuoc.getCTDongNuocbyID(decimal.Parse(dgvDSYCCHDB.CurrentRow.Cells["SoPhieu"].Value.ToString()));
+                CTDongNuoc ctdongnuoc = _cDongNuoc.GetCTByMaCTDN(decimal.Parse(dgvDSYCCHDB.CurrentRow.Cells["SoPhieu"].Value.ToString()));
                 if (bool.Parse(dgvDSYCCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString()) != ctdongnuoc.ThongBaoDuocKy_DN)
                 {
                     ctdongnuoc.ThongBaoDuocKy_DN = bool.Parse(dgvDSYCCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString());
-                    _cDongNuoc.SuaCTDongNuoc(ctdongnuoc);
+                    _cDongNuoc.SuaCT(ctdongnuoc);
                 }
             }
         }
@@ -524,7 +527,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                 DataRow dr = dsBaoCao.Tables["ThongBaoDongNuoc"].NewRow();
 
-                                CTDongNuoc ctdongnuoc = _cDongNuoc.getCTDongNuocbyID(decimal.Parse(dgvDSYCCHDB["SoPhieu", i].Value.ToString()));
+                                CTDongNuoc ctdongnuoc = _cDongNuoc.GetCTByMaCTDN(decimal.Parse(dgvDSYCCHDB["SoPhieu", i].Value.ToString()));
                                 dr["SoPhieu"] = ctdongnuoc.MaCTDN.ToString().Insert(ctdongnuoc.MaCTDN.ToString().Length - 2, "-");
                                 dr["HoTen"] = ctdongnuoc.HoTen;
                                 dr["DiaChi"] = ctdongnuoc.DiaChi;
@@ -685,7 +688,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     dgvDSYCCHDB.DataSource = _cCHDB.LoadDSYCCHDBByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
                                 else
                                     if (radDSDongNuoc.Checked)
-                                        dgvDSYCCHDB.DataSource = _cDongNuoc.LoadDSCTDongNuocByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
+                                        dgvDSYCCHDB.DataSource = _cDongNuoc.GetDSCTDongNuocByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
                     break;
                 case "Danh Bộ":
                     if (txtNoiDungTimKiem.Text.Trim() != "")
@@ -699,10 +702,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     dgvDSYCCHDB.DataSource = _cCHDB.LoadDSYCCHDBByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
                                 else
                                     if (radDSDongNuoc.Checked)
-                                        dgvDSYCCHDB.DataSource = _cDongNuoc.LoadDSCTDongNuocByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                                        dgvDSYCCHDB.DataSource = _cDongNuoc.GetDSCTDongNuocByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
                     break;
                 case "Số Thông Báo/Số Phiếu":
                     if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
+                    {
                         if (radDSCatTamDanhBo.Checked)
                             dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCTDBByMaTBs(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
                         else
@@ -711,19 +715,22 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             else
                                 if (radDSYCCHDB.Checked)
                                     dgvDSYCCHDB.DataSource = _cCHDB.LoadDSYCCHDBBySoPhieus(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                    }
+                    else
+                    {
+                        if (txtNoiDungTimKiem.Text.Trim() != "")
+                            if (radDSCatTamDanhBo.Checked)
+                                dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCTDBByMaTB(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                            else
+                                if (radDSCatHuyDanhBo.Checked)
+                                    dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCHDBByMaTB(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
                                 else
-                                    if (txtNoiDungTimKiem.Text.Trim() != "")
-                                        if (radDSCatTamDanhBo.Checked)
-                                            dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCTDBByMaTB(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
-                                        else
-                                            if (radDSCatHuyDanhBo.Checked)
-                                                dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCHDBByMaTB(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
-                                            else
-                                                if (radDSYCCHDB.Checked)
-                                                    dgvDSYCCHDB.DataSource = _cCHDB.LoadDSYCCHDBBySoPhieu(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
-                                                else
-                                                    if (radDSDongNuoc.Checked)
-                                                        dgvDSYCCHDB.DataSource = _cDongNuoc.LoadDSCTDongNuocByMaTB(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                    if (radDSYCCHDB.Checked)
+                                        dgvDSYCCHDB.DataSource = _cCHDB.LoadDSYCCHDBBySoPhieu(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                    else
+                                        if (radDSDongNuoc.Checked)
+                                            dgvDSYCCHDB.DataSource = _cDongNuoc.GetDSCTDongNuocByMaTB(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                    }
                     break;
                 case "Lý Do":
                     if (radDSCatTamDanhBo.Checked)
@@ -743,7 +750,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 dgvDSYCCHDB.DataSource = _cCHDB.LoadDSYCCHDBByDates(dateTu.Value, dateDen.Value);
                             else
                                 if (radDSDongNuoc.Checked)
-                                    dgvDSYCCHDB.DataSource = _cDongNuoc.LoadDSCTDongNuocByDates(dateTu.Value, dateDen.Value);
+                                    dgvDSYCCHDB.DataSource = _cDongNuoc.GetDSCTDongNuocByDates(dateTu.Value, dateDen.Value);
                     break;
                 default:
                     break;

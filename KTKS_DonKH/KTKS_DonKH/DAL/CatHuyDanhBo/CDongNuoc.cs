@@ -20,7 +20,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
         /// </summary>
         /// <param name="MaDon"></param>
         /// <returns>true/có</returns>
-        public bool CheckDongNuocbyMaDon(decimal MaDon)
+        public bool CheckByMaDon(decimal MaDon)
         {
             try
             {
@@ -41,7 +41,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
         /// </summary>
         /// <param name="MaDonTXL"></param>
         /// <returns>true/có</returns>
-        public bool CheckDongNuocbyMaDon_TXL(decimal MaDonTXL)
+        public bool CheckByMaDon_TXL(decimal MaDonTXL)
         {
             try
             {
@@ -57,7 +57,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public bool ThemDongNuoc(LinQ.DongNuoc dongnuoc)
+        public bool Them(LinQ.DongNuoc dongnuoc)
         {
             try
             {
@@ -88,7 +88,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public bool SuaDongNuoc(LinQ.DongNuoc dongnuoc)
+        public bool Sua(LinQ.DongNuoc dongnuoc)
         {
             try
             {
@@ -106,7 +106,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public bool XoaDongNuoc(LinQ.DongNuoc dongnuoc)
+        public bool Xoa(LinQ.DongNuoc dongnuoc)
         {
             try
             {
@@ -128,7 +128,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
         /// </summary>
         /// <param name="MaDon"></param>
         /// <returns></returns>
-        public LinQ.DongNuoc getDongNuocbyMaDon(decimal MaDon)
+        public LinQ.DongNuoc GetByMaDon(decimal MaDon)
         {
             try
             {
@@ -146,7 +146,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
         /// </summary>
         /// <param name="MaDonTXL"></param>
         /// <returns></returns>
-        public LinQ.DongNuoc getDongNuocbyMaDon_TXL(decimal MaDonTXL)
+        public LinQ.DongNuoc GetByMaDon_TXL(decimal MaDonTXL)
         {
             try
             {
@@ -169,7 +169,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
         /// <param name="MaDon"></param>
         /// <param name="DanhBo"></param>
         /// <returns></returns>
-        public bool CheckCTDongNuocbyMaDonDanhBo(decimal MaDon, string DanhBo)
+        public bool CheckCTByMaDonDanhBo(decimal MaDon, string DanhBo)
         {
             try
             {
@@ -188,7 +188,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
         /// <param name="MaDonTXL"></param>
         /// <param name="DanhBo"></param>
         /// <returns></returns>
-        public bool CheckCTDongNuocbyMaDonDanhBo_TXL(decimal MaDonTXL, string DanhBo)
+        public bool CheckCTByMaDonDanhBo_TXL(decimal MaDonTXL, string DanhBo)
         {
             try
             {
@@ -232,7 +232,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public bool SuaCTDongNuoc(CTDongNuoc ctdongnuoc)
+        public bool SuaCT(CTDongNuoc ctdongnuoc)
         {
             try
             {
@@ -250,7 +250,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public bool XoaCTDongNuoc(CTDongNuoc ctdongnuoc)
+        public bool XoaCT(CTDongNuoc ctdongnuoc)
         {
             try
             {
@@ -292,7 +292,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public CTDongNuoc getCTDongNuocbyID(decimal MaCTDN)
+        public CTDongNuoc GetCTByMaCTDN(decimal MaCTDN)
         {
             try
             {
@@ -305,7 +305,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public CTDongNuoc getCTMoNuocbyID(decimal MaCTMN)
+        public CTDongNuoc GetCTByMaCTMN(decimal MaCTMN)
         {
             try
             {
@@ -318,7 +318,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public DataTable LoadDSCTDongNuoc()
+        public DataTable GetDSCTDongNuoc()
         {
             try
             {
@@ -345,7 +345,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public DataTable LoadDSCTDongNuocByMaDon(decimal MaDon)
+        public DataTable GetDSCTDongNuocByMaDon(decimal MaDon)
         {
             try
             {
@@ -373,7 +373,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public DataTable LoadDSCTDongNuocByMaTB(decimal MaTB)
+        public DataTable GetDSCTDongNuocByMaTB(decimal MaTB)
         {
             try
             {
@@ -401,7 +401,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public DataTable LoadDSCTDongNuocByDanhBo(string DanhBo)
+        public DataTable GetDSCTDongNuocByDanhBo(string DanhBo)
         {
             try
             {
@@ -429,7 +429,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public DataTable LoadDSCTDongNuocByDate(DateTime TuNgay)
+        public DataTable GetDSCTDongNuocByDate(DateTime TuNgay)
         {
             try
             {
@@ -457,7 +457,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public DataTable LoadDSCTDongNuocByDates(DateTime TuNgay,DateTime DenNgay)
+        public DataTable GetDSCTDongNuocByDates(DateTime TuNgay,DateTime DenNgay)
         {
             try
             {
@@ -485,7 +485,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public DataTable LoadDSCTDongNuoc(DateTime TuNgay)
+        public DataTable GetDSCTDongNuoc(DateTime TuNgay)
         {
             try
             {
@@ -512,7 +512,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public DataTable LoadDSCTDongNuoc(DateTime TuNgay,DateTime DenNgay)
+        public DataTable GetDSCTDongNuoc(DateTime TuNgay,DateTime DenNgay)
         {
             try
             {
@@ -539,7 +539,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public DataTable LoadDSCTMoNuoc()
+        public DataTable GetDSCTMoNuoc()
         {
             try
             {
@@ -566,7 +566,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public DataTable LoadDSCTMoNuocByMaDon(decimal MaDon)
+        public DataTable GetDSCTMoNuocByMaDon(decimal MaDon)
         {
             try
             {
@@ -593,7 +593,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public DataTable LoadDSCTMoNuocByMaTB(decimal MaTB)
+        public DataTable GetDSCTMoNuocByMaTB(decimal MaTB)
         {
             try
             {
@@ -620,7 +620,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public DataTable LoadDSCTMoNuocByDanhBo(string DanhBo)
+        public DataTable GetDSCTMoNuocByDanhBo(string DanhBo)
         {
             try
             {
@@ -647,7 +647,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public DataTable LoadDSCTMoNuocByDate(DateTime TuNgay)
+        public DataTable GetDSCTMoNuocByDate(DateTime TuNgay)
         {
             try
             {
@@ -674,7 +674,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public DataTable LoadDSCTMoNuocByDates(DateTime TuNgay,DateTime DenNgay)
+        public DataTable GetDSCTMoNuocByDates(DateTime TuNgay,DateTime DenNgay)
         {
             try
             {
@@ -701,7 +701,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public DataTable LoadDSCTMoNuoc(DateTime TuNgay)
+        public DataTable GetDSCTMoNuoc(DateTime TuNgay)
         {
             try
             {
@@ -728,7 +728,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public DataTable LoadDSCTMoNuoc(DateTime TuNgay, DateTime DenNgay)
+        public DataTable GetDSCTMoNuoc(DateTime TuNgay, DateTime DenNgay)
         {
             try
             {
@@ -755,7 +755,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public int CountCTDongNuoc(decimal MaDN)
+        public int CountCT(decimal MaDN)
         {
             return db.CTDongNuocs.Count(item => item.MaDN == MaDN);
         }

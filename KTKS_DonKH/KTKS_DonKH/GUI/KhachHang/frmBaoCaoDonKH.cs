@@ -158,7 +158,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                                     }
                                     break;
                                 case "DongNuoc":
-                                    LinQ.DongNuoc dongnuoc = _cDongNuoc.getDongNuocbyMaDon(decimal.Parse(item["MaDon"].ToString()));
+                                    LinQ.DongNuoc dongnuoc = _cDongNuoc.GetByMaDon(decimal.Parse(item["MaDon"].ToString()));
                                     if (dongnuoc != null)
                                     {
                                         dr["LoaiChuyen"] = "DongNuoc";
@@ -257,7 +257,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                                     }
                                     break;
                                 case "DongNuoc":
-                                    LinQ.DongNuoc dongnuoc = _cDongNuoc.getDongNuocbyMaDon_TXL(decimal.Parse(item["MaDon"].ToString()));
+                                    LinQ.DongNuoc dongnuoc = _cDongNuoc.GetByMaDon_TXL(decimal.Parse(item["MaDon"].ToString()));
                                     if (dongnuoc != null)
                                     {
                                         dr["LoaiChuyen"] = "DongNuoc";

@@ -65,7 +65,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public List<NoiDungXuLyCHDB> LoadDS()
+        public List<NoiDungXuLyCHDB> GetDS()
         {
             return db.NoiDungXuLyCHDBs.OrderBy(item=>item.STT).ToList();
         }
@@ -74,5 +74,14 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             return db.NoiDungXuLyCHDBs.SingleOrDefault(item => item.ID == ID);
         }
+
+        public int GetMaxSTT()
+        {
+            if (db.NoiDungXuLyCHDBs.Count() == 0)
+                return 0;
+            else
+                return db.NoiDungXuLyCHDBs.Max(item => item.STT).Value;
+        }
+
     }
 }

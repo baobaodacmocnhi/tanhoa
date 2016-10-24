@@ -20,6 +20,7 @@ using KTKS_DonKH.BaoCao.TimKiem;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.CatHuyDanhBo;
 using KTKS_DonKH.LinQ;
+using KTKS_DonKH.GUI.DongNuoc;
 
 namespace KTKS_DonKH.GUI.TimKiem
 {
@@ -416,7 +417,7 @@ namespace KTKS_DonKH.GUI.TimKiem
         {
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
             {
-                frmShowDongNuoc frm = new frmShowDongNuoc(decimal.Parse(_CTRow.Row["MaCTDN"].ToString()), true);
+                frmDongNuoc frm = new frmDongNuoc(decimal.Parse(_CTRow.Row["MaCTDN"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                     _CTRow = null;
             }
@@ -443,7 +444,7 @@ namespace KTKS_DonKH.GUI.TimKiem
         {
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
             {
-                frmShowYCCHDB frm = new frmShowYCCHDB(decimal.Parse(_CTRow.Row["MaYCCHDB"].ToString()), true);
+                frmYCCHDB frm = new frmYCCHDB(decimal.Parse(_CTRow.Row["MaYCCHDB"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                     _CTRow = null;
             }
@@ -696,7 +697,7 @@ namespace KTKS_DonKH.GUI.TimKiem
         {
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
             {
-                frmShowDongNuoc frm = new frmShowDongNuoc(decimal.Parse(_CTRow.Row["MaCTDN"].ToString()), true);
+                frmDongNuoc frm = new frmDongNuoc(decimal.Parse(_CTRow.Row["MaCTDN"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                     _CTRow = null;
             }
@@ -721,7 +722,7 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         private void gridViewYeuCauCHDB_TXL_KeyDown(object sender, KeyEventArgs e)
         {
-            frmShowYCCHDB frm = new frmShowYCCHDB(decimal.Parse(_CTRow.Row["MaYCCHDB"].ToString()), true);
+            frmYCCHDB frm = new frmYCCHDB(decimal.Parse(_CTRow.Row["MaYCCHDB"].ToString()));
             if (frm.ShowDialog() == DialogResult.Cancel)
                 _CTRow = null;
         }

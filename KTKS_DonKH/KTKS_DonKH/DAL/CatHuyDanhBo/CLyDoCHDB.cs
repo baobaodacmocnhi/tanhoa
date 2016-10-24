@@ -65,14 +65,22 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public List<LyDoCHDB> LoadDS()
+        public List<LyDoCHDB> GetDS()
         {
-            return db.LyDoCHDBs.ToList();
+            return db.LyDoCHDBs.OrderBy(item => item.STT).ToList();
         }
 
         public LyDoCHDB GetByID(int ID)
         {
             return db.LyDoCHDBs.SingleOrDefault(item => item.ID == ID);
+        }
+
+        public int GetMaxSTT()
+        {
+            if (db.LyDoCHDBs.Count() == 0)
+                return 0;
+            else
+                return db.LyDoCHDBs.Max(item => item.STT).Value;
         }
     }
 }

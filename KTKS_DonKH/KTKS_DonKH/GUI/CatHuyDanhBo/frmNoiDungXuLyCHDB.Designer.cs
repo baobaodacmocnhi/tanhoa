@@ -32,11 +32,11 @@
             this.txtNoiDung = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvNoiDung = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnThem = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNoiDung)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,6 +58,7 @@
             // 
             // dgvNoiDung
             // 
+            this.dgvNoiDung.AllowDrop = true;
             this.dgvNoiDung.AllowUserToAddRows = false;
             this.dgvNoiDung.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -73,11 +74,29 @@
             this.ID,
             this.NoiDung});
             this.dgvNoiDung.Location = new System.Drawing.Point(19, 40);
+            this.dgvNoiDung.MultiSelect = false;
             this.dgvNoiDung.Name = "dgvNoiDung";
             this.dgvNoiDung.Size = new System.Drawing.Size(363, 466);
             this.dgvNoiDung.TabIndex = 18;
             this.dgvNoiDung.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNoiDung_CellContentClick);
             this.dgvNoiDung.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvNoiDung_RowPostPaint);
+            this.dgvNoiDung.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvNoiDung_DragDrop);
+            this.dgvNoiDung.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvNoiDung_DragEnter);
+            this.dgvNoiDung.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvNoiDung_MouseClick);
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // NoiDung
+            // 
+            this.NoiDung.DataPropertyName = "NoiDung";
+            this.NoiDung.HeaderText = "Nội Dung";
+            this.NoiDung.Name = "NoiDung";
+            this.NoiDung.Width = 300;
             // 
             // btnThem
             // 
@@ -108,20 +127,6 @@
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            // 
-            // NoiDung
-            // 
-            this.NoiDung.DataPropertyName = "NoiDung";
-            this.NoiDung.HeaderText = "Nội Dung";
-            this.NoiDung.Name = "NoiDung";
-            this.NoiDung.Width = 300;
             // 
             // frmNoiDungXuLyCHDB
             // 

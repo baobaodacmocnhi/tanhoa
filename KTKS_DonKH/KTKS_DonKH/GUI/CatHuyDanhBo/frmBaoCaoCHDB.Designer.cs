@@ -41,6 +41,7 @@
             this.cmbLoaiBaoCaoNgayXuLy = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnBaoCaoNgayXuLy = new System.Windows.Forms.Button();
+            this.btnThongKe = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -179,12 +180,23 @@
             this.btnBaoCaoNgayXuLy.UseVisualStyleBackColor = true;
             this.btnBaoCaoNgayXuLy.Click += new System.EventHandler(this.btnBaoCaoNgayXuLy_Click);
             // 
+            // btnThongKe
+            // 
+            this.btnThongKe.Location = new System.Drawing.Point(354, 46);
+            this.btnThongKe.Name = "btnThongKe";
+            this.btnThongKe.Size = new System.Drawing.Size(75, 25);
+            this.btnThongKe.TabIndex = 29;
+            this.btnThongKe.Text = "Thống Kê";
+            this.btnThongKe.UseVisualStyleBackColor = true;
+            this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
+            // 
             // frmBaoCaoCHDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(712, 402);
+            this.Controls.Add(this.btnThongKe);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel_KhoangThoiGian);
@@ -218,6 +230,7 @@
         private System.Windows.Forms.ComboBox cmbLoaiBaoCaoNgayXuLy;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnBaoCaoNgayXuLy;
+        private System.Windows.Forms.Button btnThongKe;
 
     }
 }

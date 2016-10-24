@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>349</ApplicationRevision>
+    <ApplicationRevision>354</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -203,6 +203,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptPhieuCHDBx2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\CatHuyDanhBo\rptThongKeCHDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptThongKeCHDB.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BaoCao\CongVan\rptDSCongVan.cs">
@@ -753,18 +759,6 @@
     <Compile Include="GUI\CatHuyDanhBo\frmDSCHDB.Designer.cs">
       <DependentUpon>frmDSCHDB.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\CatHuyDanhBo\frmShowDongNuoc.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\CatHuyDanhBo\frmShowDongNuoc.Designer.cs">
-      <DependentUpon>frmShowDongNuoc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\CatHuyDanhBo\frmShowYCCHDB.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\CatHuyDanhBo\frmShowYCCHDB.Designer.cs">
-      <DependentUpon>frmShowYCCHDB.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\CatHuyDanhBo\frmLyDoCHDB.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1165,6 +1159,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPhieuCHDBx2.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\CatHuyDanhBo\rptThongKeCHDB.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptThongKeCHDB.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\CongVan\rptDSCongVan.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSCongVan.cs</LastGenOutput>
@@ -1473,12 +1471,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CatHuyDanhBo\frmDSCHDB.resx">
       <DependentUpon>frmDSCHDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\CatHuyDanhBo\frmShowDongNuoc.resx">
-      <DependentUpon>frmShowDongNuoc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\CatHuyDanhBo\frmShowYCCHDB.resx">
-      <DependentUpon>frmShowYCCHDB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CatHuyDanhBo\frmLyDoCHDB.resx">
       <DependentUpon>frmLyDoCHDB.cs</DependentUpon>

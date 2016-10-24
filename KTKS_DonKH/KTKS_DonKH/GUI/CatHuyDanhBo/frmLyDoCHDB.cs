@@ -16,6 +16,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
     {
         string _mnu = "mnuLyDoCHDB";
         CLyDoCHDB _cLyDoCHDB = new CLyDoCHDB();
+        BindingList<LyDoCHDB> _bSource;
         int _selectedindex = -1;
 
         public frmLyDoCHDB()
@@ -26,7 +27,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         private void frmVeViecCHDB_Load(object sender, EventArgs e)
         {
             dgvLyDoCHDB.AutoGenerateColumns = false;
-            dgvLyDoCHDB.DataSource = _cLyDoCHDB.LoadDS();
+            _bSource = new BindingList<LyDoCHDB>(_cLyDoCHDB.GetDS());
+            dgvLyDoCHDB.DataSource = _bSource;
         }
 
         public void Clear()
@@ -35,7 +37,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             txtNoiDung.Text = "";
             txtNoiNhan.Text = "";
             _selectedindex = -1;
-            dgvLyDoCHDB.DataSource = _cLyDoCHDB.LoadDS();
+            _bSource = new BindingList<LyDoCHDB>(_cLyDoCHDB.GetDS());
+            dgvLyDoCHDB.DataSource = _bSource;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -45,6 +48,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 if (txtLyDo.Text.Trim() != "" && txtNoiDung.Text.Trim() != "")
                 {
                     LyDoCHDB vv = new LyDoCHDB();
+                    vv.STT = _cLyDoCHDB.GetMaxSTT() + 1;
                     vv.LyDo = txtLyDo.Text.Trim();
                     vv.NoiDung = txtNoiDung.Text;
                     vv.NoiNhan = txtNoiNhan.Text.Trim();
@@ -105,7 +109,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
             {
-                if (_selectedindex != -1)
+                if (_selectedindex != -1 && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     LyDoCHDB vv = _cLyDoCHDB.GetByID(int.Parse(dgvLyDoCHDB["ID", _selectedindex].Value.ToString()));
                     if (_cLyDoCHDB.Xoa(vv))
@@ -124,6 +128,50 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             using (SolidBrush b = new SolidBrush(dgvLyDoCHDB.RowHeadersDefaultCellStyle.ForeColor))
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        int rowIndexFromMouseDown;
+        DataGridViewRow rw;
+        private void dgvLyDoCHDB_DragDrop(object sender, DragEventArgs e)
+        {
+            int rowIndexOfItemUnderMouseToDrop;
+            Point clientPoint = dgvLyDoCHDB.PointToClient(new Point(e.X, e.Y));
+            rowIndexOfItemUnderMouseToDrop = dgvLyDoCHDB.HitTest(clientPoint.X, clientPoint.Y).RowIndex;
+
+            if (e.Effect == DragDropEffects.Move)
+            {
+                var item = this._bSource[rowIndexFromMouseDown];
+                _bSource.RemoveAt(rowIndexFromMouseDown);
+                _bSource.Insert(rowIndexOfItemUnderMouseToDrop, item);
+
+                ///update STT dô database
+                for (int i = 0; i < _bSource.Count; i++)
+                {
+                    _bSource[i].STT = i + 1;
+                }
+                _cLyDoCHDB.SubmitChanges();
+            }
+        }
+
+        private void dgvLyDoCHDB_DragEnter(object sender, DragEventArgs e)
+        {
+            if (dgvLyDoCHDB.SelectedRows.Count > 0)
+            {
+                e.Effect = DragDropEffects.Move;
+            }
+        }
+
+        private void dgvLyDoCHDB_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (dgvLyDoCHDB.SelectedRows.Count == 1)
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    rw = dgvLyDoCHDB.SelectedRows[0];
+                    rowIndexFromMouseDown = dgvLyDoCHDB.SelectedRows[0].Index;
+                    dgvLyDoCHDB.DoDragDrop(rw, DragDropEffects.Move);
+                }
             }
         }
 

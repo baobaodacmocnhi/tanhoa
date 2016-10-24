@@ -86,6 +86,7 @@ namespace KTKS_DonKH.GUI.QuanTri
                     nguoidung.HoTen = txtHoTen.Text.Trim();
                     nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
                     nguoidung.MatKhau = txtMatKhau.Text.Trim();
+                    nguoidung.STT = _cTaiKhoan.GetMaxSTT() + 1;
                     nguoidung.MaKiemBamChi = txtMaKiemBamChi.Text.Trim();
                     nguoidung.MaTo = int.Parse(cmbTo.SelectedValue.ToString());
                     nguoidung.MaNhom = int.Parse(cmbNhom.SelectedValue.ToString());

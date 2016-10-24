@@ -146,6 +146,84 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             frm.Show();
         }
 
+        private void btnThongKe_Click(object sender, EventArgs e)
+        {
+            DataTable dtCTDB = new DataTable();
+            DataTable dtCHDB = new DataTable();
+            DataTable dtYCCHDB = new DataTable();
+
+                dtCTDB = _cCHDB.LoadDSCTCTDB(dateTu.Value, dateDen.Value);
+                dtCHDB = _cCHDB.LoadDSCTCHDB(dateTu.Value, dateDen.Value);
+                dtYCCHDB = _cCHDB.LoadDSYCCHDB_Don(dateTu.Value, dateDen.Value);
+
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+
+            foreach (DataRow itemRow in dtCTDB.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["ThongKeCHDB"].NewRow();
+                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                dr["LoaiCat"] = "Lập Thông Báo Cắt Tạm";
+                dr["LyDo"] = itemRow["LyDo"];
+                dr["DanhBo"] = itemRow["DanhBo"];
+                if (!string.IsNullOrEmpty(itemRow["NoiDungXuLy"].ToString()))
+                    dr["NoiDungXuLy"] = itemRow["NoiDungXuLy"];
+                else
+                    dr["NoiDungXuLy"] = "Chưa Xử Lý";
+
+                //if (bool.Parse(itemRow["DaLapPhieu"].ToString()))
+                //{
+                //    dr["LapPhieu"] = "True";
+                //}
+
+                dsBaoCao.Tables["ThongKeCHDB"].Rows.Add(dr);
+            }
+
+            foreach (DataRow itemRow in dtCHDB.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["ThongKeCHDB"].NewRow();
+                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                dr["LoaiCat"] = "Lập Thông Báo Cắt Hủy";
+                dr["LyDo"] = itemRow["LyDo"];
+                dr["DanhBo"] = itemRow["DanhBo"];
+                if (!string.IsNullOrEmpty(itemRow["NoiDungXuLy"].ToString()))
+                    dr["NoiDungXuLy"] = itemRow["NoiDungXuLy"];
+                else
+                    dr["NoiDungXuLy"] = "Chưa Xử Lý";
+
+                //if (bool.Parse(itemRow["DaLapPhieu"].ToString()))
+                //{
+                //    dr["LapPhieu"] = "True";
+                //}
+
+                dsBaoCao.Tables["ThongKeCHDB"].Rows.Add(dr);
+            }
+
+            DataSetBaoCao dsBaoCaoPhieuHuy = new DataSetBaoCao();
+            foreach (DataRow itemRow in dtYCCHDB.Rows)
+            {
+                DataRow dr = dsBaoCaoPhieuHuy.Tables["ThongKeCHDB"].NewRow();
+                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                dr["LoaiCat"] = "Lập Phiếu Yêu Cầu Cắt Hủy";
+                dr["LyDo"] = itemRow["LyDo"];
+                dr["DanhBo"] = itemRow["DanhBo"];
+                //if (!string.IsNullOrEmpty(itemRow["NoiDungTroNgai"].ToString()))
+                //    dr["NoiDungTroNgai"] = itemRow["NoiDungTroNgai"];
+                //else
+                //    dr["NoiDungTroNgai"] = "Chưa Xử Lý";
+
+                dsBaoCaoPhieuHuy.Tables["ThongKeCHDB"].Rows.Add(dr);
+            }
+
+            rptThongKeCHDB rpt = new rptThongKeCHDB();
+            rpt.SetDataSource(dsBaoCao);
+            rpt.Subreports[0].SetDataSource(dsBaoCaoPhieuHuy);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.Show();
+        }
+
 
     }
 }

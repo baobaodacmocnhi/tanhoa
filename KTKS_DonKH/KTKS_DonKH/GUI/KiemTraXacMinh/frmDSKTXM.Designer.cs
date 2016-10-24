@@ -239,9 +239,9 @@
             // 
             this.btnIn.Location = new System.Drawing.Point(723, 3);
             this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(114, 25);
+            this.btnIn.Size = new System.Drawing.Size(75, 25);
             this.btnIn.TabIndex = 10;
-            this.btnIn.Text = "In Danh Sách";
+            this.btnIn.Text = "In DS";
             this.btnIn.UseVisualStyleBackColor = true;
             this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
@@ -316,9 +316,9 @@
             // 
             // btnInThongKe
             // 
-            this.btnInThongKe.Location = new System.Drawing.Point(853, 3);
+            this.btnInThongKe.Location = new System.Drawing.Point(804, 3);
             this.btnInThongKe.Name = "btnInThongKe";
-            this.btnInThongKe.Size = new System.Drawing.Size(114, 25);
+            this.btnInThongKe.Size = new System.Drawing.Size(100, 25);
             this.btnInThongKe.TabIndex = 15;
             this.btnInThongKe.Text = "In Thống Kê";
             this.btnInThongKe.UseVisualStyleBackColor = true;

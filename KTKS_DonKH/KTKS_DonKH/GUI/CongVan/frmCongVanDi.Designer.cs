@@ -237,7 +237,7 @@
             // 
             this.dateTu.CustomFormat = "dd/MM/yyyy";
             this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu.Location = new System.Drawing.Point(97, 137);
+            this.dateTu.Location = new System.Drawing.Point(96, 168);
             this.dateTu.Name = "dateTu";
             this.dateTu.Size = new System.Drawing.Size(100, 22);
             this.dateTu.TabIndex = 18;
@@ -246,7 +246,7 @@
             // 
             this.dateDen.CustomFormat = "dd/MM/yyyy";
             this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen.Location = new System.Drawing.Point(97, 165);
+            this.dateDen.Location = new System.Drawing.Point(96, 196);
             this.dateDen.Name = "dateDen";
             this.dateDen.Size = new System.Drawing.Size(100, 22);
             this.dateDen.TabIndex = 20;
@@ -254,7 +254,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(19, 142);
+            this.label10.Location = new System.Drawing.Point(18, 173);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(63, 16);
             this.label10.TabIndex = 17;
@@ -263,7 +263,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(19, 171);
+            this.label11.Location = new System.Drawing.Point(18, 202);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(71, 16);
             this.label11.TabIndex = 19;
@@ -291,11 +291,11 @@
             this.NoiChuyen,
             this.DanhBo,
             this.DiaChi});
-            this.dgvDSCongVan.Location = new System.Drawing.Point(15, 195);
+            this.dgvDSCongVan.Location = new System.Drawing.Point(14, 226);
             this.dgvDSCongVan.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dgvDSCongVan.Name = "dgvDSCongVan";
             this.dgvDSCongVan.RowHeadersWidth = 60;
-            this.dgvDSCongVan.Size = new System.Drawing.Size(746, 346);
+            this.dgvDSCongVan.Size = new System.Drawing.Size(655, 346);
             this.dgvDSCongVan.TabIndex = 22;
             this.dgvDSCongVan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSCongVan_CellFormatting);
             this.dgvDSCongVan.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSCongVan_RowPostPaint);
@@ -373,9 +373,9 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(769, 195);
+            this.btnXoa.Location = new System.Drawing.Point(677, 226);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(86, 27);
+            this.btnXoa.Size = new System.Drawing.Size(75, 25);
             this.btnXoa.TabIndex = 23;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
@@ -383,9 +383,9 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(514, 159);
+            this.btnXem.Location = new System.Drawing.Point(513, 190);
             this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(86, 27);
+            this.btnXem.Size = new System.Drawing.Size(75, 25);
             this.btnXem.TabIndex = 21;
             this.btnXem.Text = "Xem";
             this.btnXem.UseVisualStyleBackColor = true;
@@ -407,7 +407,7 @@
             this.columnHeader1});
             this.lstMa.Location = new System.Drawing.Point(298, 26);
             this.lstMa.Name = "lstMa";
-            this.lstMa.Size = new System.Drawing.Size(79, 106);
+            this.lstMa.Size = new System.Drawing.Size(79, 144);
             this.lstMa.TabIndex = 87;
             this.lstMa.UseCompatibleStateImageBehavior = false;
             this.lstMa.View = System.Windows.Forms.View.Details;
@@ -419,9 +419,9 @@
             // 
             // btnInDS
             // 
-            this.btnInDS.Location = new System.Drawing.Point(607, 159);
+            this.btnInDS.Location = new System.Drawing.Point(594, 191);
             this.btnInDS.Name = "btnInDS";
-            this.btnInDS.Size = new System.Drawing.Size(86, 27);
+            this.btnInDS.Size = new System.Drawing.Size(75, 25);
             this.btnInDS.TabIndex = 88;
             this.btnInDS.Text = "In DS";
             this.btnInDS.UseVisualStyleBackColor = true;
@@ -482,7 +482,7 @@
             "21",
             "22",
             "23"});
-            this.cmbTuGio.Location = new System.Drawing.Point(203, 137);
+            this.cmbTuGio.Location = new System.Drawing.Point(202, 168);
             this.cmbTuGio.Name = "cmbTuGio";
             this.cmbTuGio.Size = new System.Drawing.Size(41, 24);
             this.cmbTuGio.TabIndex = 92;
@@ -515,7 +515,7 @@
             "21",
             "22",
             "23"});
-            this.cmbDenGio.Location = new System.Drawing.Point(203, 165);
+            this.cmbDenGio.Location = new System.Drawing.Point(202, 196);
             this.cmbDenGio.Name = "cmbDenGio";
             this.cmbDenGio.Size = new System.Drawing.Size(41, 24);
             this.cmbDenGio.TabIndex = 93;
@@ -523,7 +523,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(245, 142);
+            this.label15.Location = new System.Drawing.Point(244, 173);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(15, 16);
             this.label15.TabIndex = 94;
@@ -532,7 +532,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(245, 169);
+            this.label16.Location = new System.Drawing.Point(244, 200);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(15, 16);
             this.label16.TabIndex = 95;
@@ -554,7 +554,7 @@
             "",
             "Danh Bộ",
             "Mã Đơn/TB"});
-            this.cmbTimKiem.Location = new System.Drawing.Point(301, 161);
+            this.cmbTimKiem.Location = new System.Drawing.Point(300, 192);
             this.cmbTimKiem.Name = "cmbTimKiem";
             this.cmbTimKiem.Size = new System.Drawing.Size(100, 24);
             this.cmbTimKiem.TabIndex = 98;
@@ -563,7 +563,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(301, 142);
+            this.label18.Location = new System.Drawing.Point(300, 173);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(37, 16);
             this.label18.TabIndex = 97;
@@ -571,7 +571,7 @@
             // 
             // txtNoiDungTimKiem
             // 
-            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(407, 161);
+            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(406, 192);
             this.txtNoiDungTimKiem.Name = "txtNoiDungTimKiem";
             this.txtNoiDungTimKiem.Size = new System.Drawing.Size(100, 22);
             this.txtNoiDungTimKiem.TabIndex = 100;
@@ -580,7 +580,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(403, 142);
+            this.label19.Location = new System.Drawing.Point(402, 173);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(67, 16);
             this.label19.TabIndex = 99;

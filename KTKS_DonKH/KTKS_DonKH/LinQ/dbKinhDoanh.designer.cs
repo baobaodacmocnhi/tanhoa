@@ -1016,6 +1016,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private int _MaVV;
 		
+		private System.Nullable<int> _STT;
+		
 		private string _TenVV;
 		
 		private string _NoiDung;
@@ -1036,6 +1038,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreated();
     partial void OnMaVVChanging(int value);
     partial void OnMaVVChanged();
+    partial void OnSTTChanging(System.Nullable<int> value);
+    partial void OnSTTChanged();
     partial void OnTenVVChanging(string value);
     partial void OnTenVVChanged();
     partial void OnNoiDungChanging(string value);
@@ -1073,6 +1077,26 @@ namespace KTKS_DonKH.LinQ
 					this._MaVV = value;
 					this.SendPropertyChanged("MaVV");
 					this.OnMaVVChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", DbType="Int")]
+		public System.Nullable<int> STT
+		{
+			get
+			{
+				return this._STT;
+			}
+			set
+			{
+				if ((this._STT != value))
+				{
+					this.OnSTTChanging(value);
+					this.SendPropertyChanging();
+					this._STT = value;
+					this.SendPropertyChanged("STT");
+					this.OnSTTChanged();
 				}
 			}
 		}
@@ -25839,6 +25863,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private int _ID;
 		
+		private System.Nullable<int> _STT;
+		
 		private string _LyDo;
 		
 		private string _NoiDung;
@@ -25859,6 +25885,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
+    partial void OnSTTChanging(System.Nullable<int> value);
+    partial void OnSTTChanged();
     partial void OnLyDoChanging(string value);
     partial void OnLyDoChanged();
     partial void OnNoiDungChanging(string value);
@@ -25896,6 +25924,26 @@ namespace KTKS_DonKH.LinQ
 					this._ID = value;
 					this.SendPropertyChanged("ID");
 					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", DbType="Int")]
+		public System.Nullable<int> STT
+		{
+			get
+			{
+				return this._STT;
+			}
+			set
+			{
+				if ((this._STT != value))
+				{
+					this.OnSTTChanging(value);
+					this.SendPropertyChanging();
+					this._STT = value;
+					this.SendPropertyChanged("STT");
+					this.OnSTTChanged();
 				}
 			}
 		}

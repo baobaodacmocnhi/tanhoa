@@ -137,7 +137,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(418, 202);
+            this.btnThem.Location = new System.Drawing.Point(614, 228);
             this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 25);
@@ -177,7 +177,7 @@
             // 
             // txtGhiChu
             // 
-            this.txtGhiChu.Location = new System.Drawing.Point(79, 202);
+            this.txtGhiChu.Location = new System.Drawing.Point(79, 55);
             this.txtGhiChu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtGhiChu.Name = "txtGhiChu";
             this.txtGhiChu.Size = new System.Drawing.Size(333, 22);
@@ -398,7 +398,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 205);
+            this.label6.Location = new System.Drawing.Point(6, 59);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(57, 16);
             this.label6.TabIndex = 4;
@@ -447,7 +447,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(418, 260);
+            this.btnXoa.Location = new System.Drawing.Point(452, 228);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 25);
@@ -471,7 +471,7 @@
             // txtNoiDung
             // 
             this.txtNoiDung.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNoiDung.Location = new System.Drawing.Point(79, 56);
+            this.txtNoiDung.Location = new System.Drawing.Point(79, 82);
             this.txtNoiDung.Multiline = true;
             this.txtNoiDung.Name = "txtNoiDung";
             this.txtNoiDung.Size = new System.Drawing.Size(610, 141);
@@ -489,7 +489,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 59);
+            this.label11.Location = new System.Drawing.Point(6, 85);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(67, 16);
             this.label11.TabIndex = 18;
@@ -518,7 +518,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(418, 231);
+            this.btnSua.Location = new System.Drawing.Point(533, 228);
             this.btnSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 25);
@@ -530,7 +530,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(691, 38);
+            this.label18.Location = new System.Drawing.Point(691, 64);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(67, 16);
             this.label18.TabIndex = 16;
@@ -538,7 +538,7 @@
             // 
             // txtNoiNhan
             // 
-            this.txtNoiNhan.Location = new System.Drawing.Point(695, 56);
+            this.txtNoiNhan.Location = new System.Drawing.Point(695, 82);
             this.txtNoiNhan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNoiNhan.Multiline = true;
             this.txtNoiNhan.Name = "txtNoiNhan";
@@ -548,7 +548,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(700, 204);
+            this.label10.Location = new System.Drawing.Point(700, 230);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(81, 16);
             this.label10.TabIndex = 13;
@@ -556,7 +556,7 @@
             // 
             // txtHieuLucKy
             // 
-            this.txtHieuLucKy.Location = new System.Drawing.Point(787, 201);
+            this.txtHieuLucKy.Location = new System.Drawing.Point(787, 227);
             this.txtHieuLucKy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtHieuLucKy.Name = "txtHieuLucKy";
             this.txtHieuLucKy.Size = new System.Drawing.Size(57, 22);
@@ -564,7 +564,7 @@
             // 
             // btnInPhieu
             // 
-            this.btnInPhieu.Location = new System.Drawing.Point(718, 231);
+            this.btnInPhieu.Location = new System.Drawing.Point(718, 257);
             this.btnInPhieu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnInPhieu.Name = "btnInPhieu";
             this.btnInPhieu.Size = new System.Drawing.Size(110, 25);

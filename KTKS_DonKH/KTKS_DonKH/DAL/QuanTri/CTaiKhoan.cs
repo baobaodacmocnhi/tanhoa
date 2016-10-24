@@ -533,5 +533,13 @@ namespace KTKS_DonKH.DAL.QuanTri
                 else
                     return false;
         }
+
+        public int GetMaxSTT()
+        {
+            if (db.Users.Count() == 0)
+                return 0;
+            else
+                return db.Users.Max(item => item.STT).Value;
+        }
     }
 }

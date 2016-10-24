@@ -8,12 +8,15 @@ using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.ThaoThuTraLoi;
 using KTKS_DonKH.LinQ;
+using KTKS_DonKH.DAL.QuanTri;
 
 namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 {
     public partial class frmVeViecTTTL : Form
     {
+        string _mnu = "mnuVeViecTTTL";
         CVeViecTTTL _cVeViecTTTL = new CVeViecTTTL();
+        BindingList<VeViecTTTL> _bSource;
         int selectedindex = -1;
 
         public frmVeViecTTTL()
@@ -24,7 +27,8 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         private void frmVeViecTTTL_Load(object sender, EventArgs e)
         {
             dgvDSVeViecTTTL.AutoGenerateColumns = false;
-            dgvDSVeViecTTTL.DataSource = _cVeViecTTTL.LoadDS();
+            _bSource = new BindingList<VeViecTTTL>(_cVeViecTTTL.GetDS());
+            dgvDSVeViecTTTL.DataSource = _bSource;
         }
 
         public void Clear()
@@ -33,40 +37,78 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             txtNoiDung.Text = "";
             txtNoiNhan.Text = "";
             selectedindex = -1;
-            dgvDSVeViecTTTL.DataSource = _cVeViecTTTL.LoadDS();
+            _bSource = new BindingList<VeViecTTTL>(_cVeViecTTTL.GetDS());
+            dgvDSVeViecTTTL.DataSource = _bSource;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (txtVeViec.Text.Trim() != "" && txtNoiDung.Text.Trim() != "" && txtNoiNhan.Text.Trim() != "")
+            if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
             {
-                VeViecTTTL vv = new VeViecTTTL();
-                vv.TenVV = txtVeViec.Text.Trim();
-                vv.NoiDung = txtNoiDung.Text;
-                vv.NoiNhan = txtNoiNhan.Text.Trim();
-
-                if (_cVeViecTTTL.Them(vv))
-                    Clear();
-            }
-            else
-                MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        private void btnSua_Click(object sender, EventArgs e)
-        {
-            if (selectedindex != -1)
                 if (txtVeViec.Text.Trim() != "" && txtNoiDung.Text.Trim() != "" && txtNoiNhan.Text.Trim() != "")
                 {
-                    VeViecTTTL vv = _cVeViecTTTL.getVeViecTTTLbyID(int.Parse(dgvDSVeViecTTTL["MaVV", selectedindex].Value.ToString()));
+                    VeViecTTTL vv = new VeViecTTTL();
+                    vv.STT = _cVeViecTTTL.GetMaxSTT() + 1;
                     vv.TenVV = txtVeViec.Text.Trim();
                     vv.NoiDung = txtNoiDung.Text;
                     vv.NoiNhan = txtNoiNhan.Text.Trim();
 
-                    if (_cVeViecTTTL.Sua(vv))
+                    if (_cVeViecTTTL.Them(vv))
+                    {
                         Clear();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
                 else
                     MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+            {
+                if (selectedindex != -1)
+                    if (txtVeViec.Text.Trim() != "" && txtNoiDung.Text.Trim() != "" && txtNoiNhan.Text.Trim() != "")
+                    {
+                        VeViecTTTL vv = _cVeViecTTTL.GetByID(int.Parse(dgvDSVeViecTTTL["MaVV", selectedindex].Value.ToString()));
+                        vv.TenVV = txtVeViec.Text.Trim();
+                        vv.NoiDung = txtNoiDung.Text;
+                        vv.NoiNhan = txtNoiNhan.Text.Trim();
+
+                        if (_cVeViecTTTL.Sua(vv))
+                        {
+                            Clear();
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else
+                        MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
+            {
+                if (selectedindex != -1 && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        VeViecTTTL vv = _cVeViecTTTL.GetByID(int.Parse(dgvDSVeViecTTTL["MaVV", selectedindex].Value.ToString()));
+
+                        if (_cVeViecTTTL.Xoa(vv))
+                        {
+                            Clear();
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void dgvDSVeViecTTTL_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -81,6 +123,12 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             catch (Exception)
             {
             }
+            if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
+            {
+
+            }
+             else
+                 MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void dgvDSVeViecTTTL_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -90,5 +138,51 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
             }
         }
+
+        int rowIndexFromMouseDown;
+        DataGridViewRow rw;
+        private void dgvDSVeViecTTTL_DragDrop(object sender, DragEventArgs e)
+        {
+            int rowIndexOfItemUnderMouseToDrop;
+            Point clientPoint = dgvDSVeViecTTTL.PointToClient(new Point(e.X, e.Y));
+            rowIndexOfItemUnderMouseToDrop = dgvDSVeViecTTTL.HitTest(clientPoint.X, clientPoint.Y).RowIndex;
+
+            if (e.Effect == DragDropEffects.Move)
+            {
+                var item = this._bSource[rowIndexFromMouseDown];
+                _bSource.RemoveAt(rowIndexFromMouseDown);
+                _bSource.Insert(rowIndexOfItemUnderMouseToDrop, item);
+
+                ///update STT dô database
+                for (int i = 0; i < _bSource.Count; i++)
+                {
+                    _bSource[i].STT = i + 1;
+                }
+                _cVeViecTTTL.SubmitChanges();
+            }
+        }
+
+        private void dgvDSVeViecTTTL_DragEnter(object sender, DragEventArgs e)
+        {
+            if (dgvDSVeViecTTTL.SelectedRows.Count > 0)
+            {
+                e.Effect = DragDropEffects.Move;
+            }
+        }
+
+        private void dgvDSVeViecTTTL_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (dgvDSVeViecTTTL.SelectedRows.Count == 1)
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    rw = dgvDSVeViecTTTL.SelectedRows[0];
+                    rowIndexFromMouseDown = dgvDSVeViecTTTL.SelectedRows[0].Index;
+                    dgvDSVeViecTTTL.DoDragDrop(rw, DragDropEffects.Move);
+                }
+            }
+        }
+
+        
     }
 }

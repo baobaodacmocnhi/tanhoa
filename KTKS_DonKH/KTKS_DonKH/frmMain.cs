@@ -341,6 +341,17 @@ namespace KTKS_DonKH
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuBaoCaoKTXM_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuBaoCaoKTXM", "Xem"))
+            {
+                frmBaoCaoKTXM frm = new frmBaoCaoKTXM();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
 
         #region Bấm Chì
@@ -493,7 +504,7 @@ namespace KTKS_DonKH
 
         private void mnuYCHDB_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen("mnuYCHDB", "Xem"))
+            if (CTaiKhoan.CheckQuyen("mnuPhieuCHDB", "Xem"))
             {
                 frmYCCHDB frm = new frmYCCHDB();
                 OpenForm(frm);
@@ -646,12 +657,6 @@ namespace KTKS_DonKH
             frmDSDonTXL frm = new frmDSDonTXL();
             OpenForm(frm);
         }
-
-        
-
-        
-
-        
 
 
     }

@@ -68,11 +68,11 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             }
         }
 
-        public List<VeViecTTTL> LoadDS()
+        public List<VeViecTTTL> GetDS()
         {
             try
             {
-                    return db.VeViecTTTLs.ToList();
+                    return db.VeViecTTTLs.OrderBy(item=>item.STT).ToList();
             }
             catch (Exception ex)
             {
@@ -81,25 +81,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             }
         }
 
-        public List<VeViecTTTL> LoadDS(bool inheritance)
-        {
-            try
-            {
-                if (inheritance)
-                {
-                    return db.VeViecTTTLs.ToList();
-                }
-                else
-                    return null;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public VeViecTTTL getVeViecTTTLbyID(int MaVV)
+        public VeViecTTTL GetByID(int MaVV)
         {
             try
             {
@@ -110,6 +92,14 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
+        }
+
+        public int GetMaxSTT()
+        {
+            if (db.VeViecTTTLs.Count() == 0)
+                return 0;
+            else
+                return db.VeViecTTTLs.Max(item => item.STT).Value;
         }
     }
 }

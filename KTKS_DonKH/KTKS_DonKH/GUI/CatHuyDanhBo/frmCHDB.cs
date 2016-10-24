@@ -87,6 +87,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             _hoadon = null;
             _ctchdb = null;
             _ctctdb = null;
+            dgvGhiChu.DataSource = null;
+            dgvLichSuCHDB.DataSource = null;
         }
 
         private void frmCHDB_Load(object sender, EventArgs e)
@@ -94,7 +96,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             dgvGhiChu.AutoGenerateColumns = false;
             dgvLichSuCHDB.AutoGenerateColumns = false;
 
-            cmbLyDo.DataSource = _cLyDoCHDB.LoadDS();
+            cmbLyDo.DataSource = _cLyDoCHDB.GetDS();
             cmbLyDo.DisplayMember = "LyDo";
             cmbLyDo.ValueMember = "LyDo";
             cmbLyDo.SelectedIndex = -1;
@@ -115,7 +117,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             //}
             //txtNoiNhanXuLy.AutoCompleteCustomSource = auto2;
 
-            cmbNoiDung.DataSource = _cNoiDungXuLyCHDB.LoadDS();
+            cmbNoiDung.DataSource = _cNoiDungXuLyCHDB.GetDS();
             cmbNoiDung.DisplayMember = "NoiDung";
             cmbNoiDung.ValueMember = "NoiDung";
             cmbNoiDung.SelectedIndex = -1;
@@ -316,6 +318,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 txtNoiDung.Text = "";
                 txtNoiNhan.Text = "";
+                txtSoTien.Text = "";
             }
         }
 

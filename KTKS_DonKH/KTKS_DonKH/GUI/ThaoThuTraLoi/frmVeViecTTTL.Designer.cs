@@ -30,6 +30,10 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDSVeViecTTTL = new System.Windows.Forms.DataGridView();
+            this.MaVV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenVV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.txtNoiDung = new System.Windows.Forms.TextBox();
@@ -38,18 +42,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtNoiNhan = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.MaVV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenVV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnXoa = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSVeViecTTTL)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvDSVeViecTTTL
             // 
+            this.dgvDSVeViecTTTL.AllowDrop = true;
             this.dgvDSVeViecTTTL.AllowUserToAddRows = false;
-            this.dgvDSVeViecTTTL.AllowUserToDeleteRows = false;
-            this.dgvDSVeViecTTTL.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -70,6 +70,40 @@
             this.dgvDSVeViecTTTL.TabIndex = 8;
             this.dgvDSVeViecTTTL.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSVeViecTTTL_CellContentClick);
             this.dgvDSVeViecTTTL.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSVeViecTTTL_RowPostPaint);
+            this.dgvDSVeViecTTTL.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvDSVeViecTTTL_DragDrop);
+            this.dgvDSVeViecTTTL.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvDSVeViecTTTL_DragEnter);
+            this.dgvDSVeViecTTTL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvDSVeViecTTTL_MouseClick);
+            // 
+            // MaVV
+            // 
+            this.MaVV.DataPropertyName = "MaVV";
+            this.MaVV.HeaderText = "MaVV";
+            this.MaVV.Name = "MaVV";
+            this.MaVV.Visible = false;
+            // 
+            // TenVV
+            // 
+            this.TenVV.DataPropertyName = "TenVV";
+            this.TenVV.HeaderText = "Về Việc";
+            this.TenVV.Name = "TenVV";
+            this.TenVV.ReadOnly = true;
+            this.TenVV.Width = 300;
+            // 
+            // NoiDung
+            // 
+            this.NoiDung.DataPropertyName = "NoiDung";
+            this.NoiDung.HeaderText = "Nội Dung";
+            this.NoiDung.Name = "NoiDung";
+            this.NoiDung.ReadOnly = true;
+            this.NoiDung.Width = 350;
+            // 
+            // NoiNhan
+            // 
+            this.NoiNhan.DataPropertyName = "NoiNhan";
+            this.NoiNhan.HeaderText = "Nơi Nhận";
+            this.NoiNhan.Name = "NoiNhan";
+            this.NoiNhan.ReadOnly = true;
+            this.NoiNhan.Width = 150;
             // 
             // btnSua
             // 
@@ -83,7 +117,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(783, 251);
+            this.btnThem.Location = new System.Drawing.Point(783, 187);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 25);
             this.btnThem.TabIndex = 6;
@@ -141,36 +175,15 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Nơi Nhận:";
             // 
-            // MaVV
+            // btnXoa
             // 
-            this.MaVV.DataPropertyName = "MaVV";
-            this.MaVV.HeaderText = "MaVV";
-            this.MaVV.Name = "MaVV";
-            this.MaVV.Visible = false;
-            // 
-            // TenVV
-            // 
-            this.TenVV.DataPropertyName = "TenVV";
-            this.TenVV.HeaderText = "Về Việc";
-            this.TenVV.Name = "TenVV";
-            this.TenVV.ReadOnly = true;
-            this.TenVV.Width = 300;
-            // 
-            // NoiDung
-            // 
-            this.NoiDung.DataPropertyName = "NoiDung";
-            this.NoiDung.HeaderText = "Nội Dung";
-            this.NoiDung.Name = "NoiDung";
-            this.NoiDung.ReadOnly = true;
-            this.NoiDung.Width = 350;
-            // 
-            // NoiNhan
-            // 
-            this.NoiNhan.DataPropertyName = "NoiNhan";
-            this.NoiNhan.HeaderText = "Nơi Nhận";
-            this.NoiNhan.Name = "NoiNhan";
-            this.NoiNhan.ReadOnly = true;
-            this.NoiNhan.Width = 150;
+            this.btnXoa.Location = new System.Drawing.Point(783, 249);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 25);
+            this.btnXoa.TabIndex = 9;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // frmVeViecTTTL
             // 
@@ -178,6 +191,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(919, 625);
+            this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.txtNoiNhan);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dgvDSVeViecTTTL);
@@ -213,6 +227,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TenVV;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiNhan;
+        private System.Windows.Forms.Button btnXoa;
 
     }
 }

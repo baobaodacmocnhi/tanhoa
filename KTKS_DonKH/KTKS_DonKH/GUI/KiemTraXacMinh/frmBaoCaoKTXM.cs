@@ -10,6 +10,7 @@ using KTKS_DonKH.BaoCao.KiemTraXacMinh;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.DAL.KiemTraXacMinh;
 using KTKS_DonKH.DAL.QuanTri;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace KTKS_DonKH.GUI.KiemTraXacMinh
 {
@@ -40,17 +41,6 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         private void frmBaoCaoKTXM_Load(object sender, EventArgs e)
         {
 
-        }
-
-        private void dateTu_ValueChanged(object sender, EventArgs e)
-        {
-            _tuNgay = dateTu.Value.ToString("dd/MM/yyyy");
-            _denNgay = "";
-        }
-
-        private void dateDen_ValueChanged(object sender, EventArgs e)
-        {
-            _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
         }
 
         class ThongKeBienBan
@@ -123,7 +113,6 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         private void btnBaoCao_Click(object sender, EventArgs e)
         {
-            if (radThongKeBienBan.Checked)
             {
                 soLapBangGia = 0;
                 soDongTien = 0;
@@ -134,21 +123,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
                 DataTable dt = new DataTable();
                 DataTable dt2 = new DataTable();
-                if (!string.IsNullOrEmpty(_tuNgay) && !string.IsNullOrEmpty(_denNgay))
-                {
                     dt = _cKTXM.LoadDSCTKTXM(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
                     dt2 = _cKTXM.LoadDSCTKTXMbyNgayLapBangGia(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
                     soDongTien = _cKTXM.countCTKTXMbyNgayDongTien(dateTu.Value, dateDen.Value);
                     soChuyenLapTBCat = _cKTXM.countCTKTXMbyNgayChuyenLapTBCat(dateTu.Value, dateDen.Value);
-                }
-                else
-                    if (!string.IsNullOrEmpty(_tuNgay))
-                    {
-                        dt = _cKTXM.LoadDSCTKTXM(CTaiKhoan.MaUser, dateTu.Value);
-                        dt2 = _cKTXM.LoadDSCTKTXMbyNgayLapBangGia(CTaiKhoan.MaUser, dateTu.Value);
-                        soDongTien = _cKTXM.countCTKTXMbyNgayDongTien(dateTu.Value);
-                        soChuyenLapTBCat = _cKTXM.countCTKTXMbyNgayChuyenLapTBCat(dateTu.Value);
-                    }
 
                 for (int i = 0; i < 6; i++)
                 {
@@ -350,13 +328,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         dsBaoCao.Tables["ThongKeBienBanKTXM"].Rows.Add(dr);
                     }
 
-                //dateTu.Value = DateTime.Now;
-                //dateDen.Value = DateTime.Now;
-                //_tuNgay = _denNgay = "";
 
                 rptThongKeKTXM rpt = new rptThongKeKTXM();
                 rpt.SetDataSource(dsBaoCao);
-                crystalReportViewer1.ReportSource = rpt;
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.Show();
             }
         }
     }
