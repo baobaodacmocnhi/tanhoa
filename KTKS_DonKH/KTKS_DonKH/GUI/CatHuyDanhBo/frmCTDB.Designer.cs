@@ -97,6 +97,7 @@
             this.btnLuuNhieu = new System.Windows.Forms.Button();
             this.radTXL = new System.Windows.Forms.RadioButton();
             this.radToKH = new System.Windows.Forms.RadioButton();
+            this.btnInThongBao = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBoxNoiDungXuLy.SuspendLayout();
             this.groupBoxGhiChu.SuspendLayout();
@@ -218,7 +219,6 @@
             // 
             // groupBoxNoiDungXuLy
             // 
-            this.groupBoxNoiDungXuLy.Controls.Add(this.btnXoa);
             this.groupBoxNoiDungXuLy.Controls.Add(this.txtNoiDung);
             this.groupBoxNoiDungXuLy.Controls.Add(this.label11);
             this.groupBoxNoiDungXuLy.Controls.Add(this.chkNgayXuLy);
@@ -226,8 +226,6 @@
             this.groupBoxNoiDungXuLy.Controls.Add(this.cmbNoiDung);
             this.groupBoxNoiDungXuLy.Controls.Add(this.dateXuLy);
             this.groupBoxNoiDungXuLy.Controls.Add(this.txtSoTien);
-            this.groupBoxNoiDungXuLy.Controls.Add(this.btnThem);
-            this.groupBoxNoiDungXuLy.Controls.Add(this.btnSua);
             this.groupBoxNoiDungXuLy.Controls.Add(this.label7);
             this.groupBoxNoiDungXuLy.Controls.Add(this.txtGhiChu);
             this.groupBoxNoiDungXuLy.Controls.Add(this.label6);
@@ -249,7 +247,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(458, 230);
+            this.btnXoa.Location = new System.Drawing.Point(868, 253);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 25);
@@ -333,7 +331,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(616, 230);
+            this.btnThem.Location = new System.Drawing.Point(868, 195);
             this.btnThem.Margin = new System.Windows.Forms.Padding(2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 25);
@@ -344,7 +342,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(537, 230);
+            this.btnSua.Location = new System.Drawing.Point(868, 224);
             this.btnSua.Margin = new System.Windows.Forms.Padding(2);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 25);
@@ -804,18 +802,34 @@
             this.radToKH.Text = "Tổ KH";
             this.radToKH.UseVisualStyleBackColor = true;
             // 
+            // btnInThongBao
+            // 
+            this.btnInThongBao.Location = new System.Drawing.Point(868, 282);
+            this.btnInThongBao.Margin = new System.Windows.Forms.Padding(2);
+            this.btnInThongBao.Name = "btnInThongBao";
+            this.btnInThongBao.Size = new System.Drawing.Size(100, 25);
+            this.btnInThongBao.TabIndex = 112;
+            this.btnInThongBao.Text = "In Thông Báo";
+            this.btnInThongBao.UseVisualStyleBackColor = true;
+            this.btnInThongBao.Click += new System.EventHandler(this.btnInThongBao_Click);
+            // 
             // frmCTDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1298, 638);
+            this.Controls.Add(this.btnXoa);
+            this.Controls.Add(this.btnInThongBao);
             this.Controls.Add(this.radTXL);
             this.Controls.Add(this.radToKH);
             this.Controls.Add(this.btnLuuNhieu);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.lstMa);
             this.Controls.Add(this.label24);
+            this.Controls.Add(this.btnSua);
+            this.Controls.Add(this.btnThem);
             this.Controls.Add(this.txtDenMa);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.txtTuMa);
@@ -830,8 +844,6 @@
             this.Controls.Add(this.txtMaDon);
             this.Controls.Add(this.label21);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "frmCTDB";
             this.Text = "Cắt Tạm Danh Bộ";
             this.Load += new System.EventHandler(this.frmCTDB_Load);
@@ -919,5 +931,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayXuLy;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn LyDo;
+        private System.Windows.Forms.Button btnInThongBao;
     }
 }

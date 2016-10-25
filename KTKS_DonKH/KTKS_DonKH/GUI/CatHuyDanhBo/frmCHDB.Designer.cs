@@ -99,6 +99,7 @@
             this.btnLuuNhieu = new System.Windows.Forms.Button();
             this.radToKH = new System.Windows.Forms.RadioButton();
             this.radTXL = new System.Windows.Forms.RadioButton();
+            this.btnInThongBao = new System.Windows.Forms.Button();
             this.groupBoxGhiChu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGhiChu)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -137,7 +138,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(614, 228);
+            this.btnThem.Location = new System.Drawing.Point(871, 193);
             this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 25);
@@ -416,7 +417,6 @@
             // 
             // groupBoxNoiDungXuLy
             // 
-            this.groupBoxNoiDungXuLy.Controls.Add(this.btnXoa);
             this.groupBoxNoiDungXuLy.Controls.Add(this.chkNgayXuLy);
             this.groupBoxNoiDungXuLy.Controls.Add(this.txtNoiDung);
             this.groupBoxNoiDungXuLy.Controls.Add(this.label19);
@@ -424,13 +424,11 @@
             this.groupBoxNoiDungXuLy.Controls.Add(this.txtSoTien);
             this.groupBoxNoiDungXuLy.Controls.Add(this.label7);
             this.groupBoxNoiDungXuLy.Controls.Add(this.cmbNoiDung);
-            this.groupBoxNoiDungXuLy.Controls.Add(this.btnThem);
             this.groupBoxNoiDungXuLy.Controls.Add(this.dateXuLy);
             this.groupBoxNoiDungXuLy.Controls.Add(this.txtGhiChu);
             this.groupBoxNoiDungXuLy.Controls.Add(this.label6);
             this.groupBoxNoiDungXuLy.Controls.Add(this.cmbLyDo);
             this.groupBoxNoiDungXuLy.Controls.Add(this.label5);
-            this.groupBoxNoiDungXuLy.Controls.Add(this.btnSua);
             this.groupBoxNoiDungXuLy.Controls.Add(this.label18);
             this.groupBoxNoiDungXuLy.Controls.Add(this.txtNoiNhan);
             this.groupBoxNoiDungXuLy.Controls.Add(this.label10);
@@ -447,7 +445,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(452, 228);
+            this.btnXoa.Location = new System.Drawing.Point(871, 251);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 25);
@@ -518,7 +516,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(533, 228);
+            this.btnSua.Location = new System.Drawing.Point(871, 222);
             this.btnSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 25);
@@ -805,6 +803,17 @@
             this.radTXL.Text = "Tổ Xử Lý";
             this.radTXL.UseVisualStyleBackColor = true;
             // 
+            // btnInThongBao
+            // 
+            this.btnInThongBao.Location = new System.Drawing.Point(871, 280);
+            this.btnInThongBao.Margin = new System.Windows.Forms.Padding(2);
+            this.btnInThongBao.Name = "btnInThongBao";
+            this.btnInThongBao.Size = new System.Drawing.Size(100, 25);
+            this.btnInThongBao.TabIndex = 113;
+            this.btnInThongBao.Text = "In Thông Báo";
+            this.btnInThongBao.UseVisualStyleBackColor = true;
+            this.btnInThongBao.Click += new System.EventHandler(this.btnInThongBao_Click);
+            // 
             // frmCHDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -812,16 +821,20 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1334, 643);
+            this.Controls.Add(this.btnXoa);
+            this.Controls.Add(this.btnInThongBao);
             this.Controls.Add(this.radTXL);
             this.Controls.Add(this.radToKH);
             this.Controls.Add(this.btnLuuNhieu);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.lstMa);
             this.Controls.Add(this.label24);
+            this.Controls.Add(this.btnThem);
             this.Controls.Add(this.txtDenMa);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.txtTuMa);
             this.Controls.Add(this.label26);
+            this.Controls.Add(this.btnSua);
             this.Controls.Add(this.dgvLichSuCHDB);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.txtMaThongBaoCT);
@@ -835,8 +848,6 @@
             this.Controls.Add(this.groupBoxNoiDungXuLy);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "frmCHDB";
             this.Text = "Cắt Hủy Danh Bộ";
             this.Load += new System.EventHandler(this.frmCHDB_Load);
@@ -926,6 +937,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayXuLy;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn LyDo;
+        private System.Windows.Forms.Button btnInThongBao;
 
     }
 }
