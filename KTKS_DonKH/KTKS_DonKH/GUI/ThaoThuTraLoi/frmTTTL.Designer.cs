@@ -251,7 +251,7 @@
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.txtVeViec);
             this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Location = new System.Drawing.Point(12, 163);
+            this.groupBox2.Location = new System.Drawing.Point(12, 133);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(778, 288);
             this.groupBox2.TabIndex = 3;
@@ -388,7 +388,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(553, 457);
+            this.btnThem.Location = new System.Drawing.Point(715, 427);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 25);
             this.btnThem.TabIndex = 4;
@@ -434,7 +434,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(77, 137);
+            this.label8.Location = new System.Drawing.Point(77, 431);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(58, 16);
             this.label8.TabIndex = 13;
@@ -443,7 +443,7 @@
             // cmbVeViec
             // 
             this.cmbVeViec.FormattingEnabled = true;
-            this.cmbVeViec.Location = new System.Drawing.Point(141, 133);
+            this.cmbVeViec.Location = new System.Drawing.Point(141, 427);
             this.cmbVeViec.Name = "cmbVeViec";
             this.cmbVeViec.Size = new System.Drawing.Size(487, 24);
             this.cmbVeViec.TabIndex = 14;
@@ -573,7 +573,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(634, 457);
+            this.btnSua.Location = new System.Drawing.Point(715, 458);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 25);
             this.btnSua.TabIndex = 58;
@@ -583,7 +583,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(715, 457);
+            this.btnXoa.Location = new System.Drawing.Point(715, 489);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 25);
             this.btnXoa.TabIndex = 59;
@@ -597,7 +597,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1257, 501);
+            this.ClientSize = new System.Drawing.Size(1257, 556);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.chkThuBao);

@@ -1305,5 +1305,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         }
 
         #endregion
+
+        private void txtNoiDungTimKiem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            btnXem.PerformClick();
+        }
+
+        private void txtNoiDungTimKiem2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            btnXem.PerformClick();
+        }
     }
 }

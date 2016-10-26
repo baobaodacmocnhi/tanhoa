@@ -443,6 +443,18 @@ namespace KTKS_DonKH
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+         private void mnuTBKQYCCatDM_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuTBKQYCCatDM", "Xem"))
+            {
+                frmTBKetQuaYCCatDM frm = new frmTBKetQuaYCCatDM();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            
+        }
+
         private void mnuLoaiChungTu_Click(object sender, EventArgs e)
         {
             if (CTaiKhoan.CheckQuyen("mnuLoaiChungTu", "Xem"))
@@ -668,6 +680,8 @@ namespace KTKS_DonKH
             frmDSDonTXL frm = new frmDSDonTXL();
             OpenForm(frm);
         }
+
+       
 
         
 

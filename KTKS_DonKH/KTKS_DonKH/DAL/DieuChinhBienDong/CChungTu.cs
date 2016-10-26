@@ -493,6 +493,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 var query = from itemLSCT in db.LichSuChungTus
                             //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
+                            join itemND in db.Users on itemLSCT.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
                             where itemLSCT.SoPhieu != null && (itemLSCT.MaDon == MaDon || itemLSCT.MaDonTXL == MaDon)
                             //where itemLSCT.MaLSCT == 126114
                             orderby itemLSCT.CreateDate ascending
@@ -523,7 +525,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.PhieuDuocKy,
                                 itemLSCT.MaDon,
                                 itemLSCT.NguoiKy,
-                                itemLSCT.CreateBy,
+                                CreateBy = itemtableND.HoTen,
                             };
                 if (query.Count() > 0)
                 {
@@ -621,6 +623,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 var query = from itemLSCT in db.LichSuChungTus
                             //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
+                            join itemND in db.Users on itemLSCT.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
                             where itemLSCT.SoPhieu != null &&
                             ((itemLSCT.MaDon.Value.ToString().Substring(itemLSCT.MaDon.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemLSCT.MaDon.Value.ToString().Substring(itemLSCT.MaDon.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
                             && (itemLSCT.MaDon >= TuMaDon && itemLSCT.MaDon <= DenMaDon))
@@ -655,7 +659,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.PhieuDuocKy,
                                 itemLSCT.MaDon,
                                 itemLSCT.NguoiKy,
-                                itemLSCT.CreateBy,
+                                CreateBy = itemtableND.HoTen,
                             };
                 if (query.Count() > 0)
                 {
@@ -753,6 +757,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 var query = from itemLSCT in db.LichSuChungTus
                             //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
+                            join itemND in db.Users on itemLSCT.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
                             where itemLSCT.SoPhieu != null && itemLSCT.SoPhieu == SoPhieu
                             //where itemLSCT.MaLSCT == 126114
                             orderby itemLSCT.CreateDate ascending
@@ -783,7 +789,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.PhieuDuocKy,
                                 itemLSCT.MaDon,
                                 itemLSCT.NguoiKy,
-                                itemLSCT.CreateBy,
+                                CreateBy = itemtableND.HoTen,
                             };
                 if (query.Count() > 0)
                 {
@@ -881,6 +887,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 var query = from itemLSCT in db.LichSuChungTus
                             //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
+                            join itemND in db.Users on itemLSCT.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
                             where itemLSCT.SoPhieu != null &&
                             itemLSCT.SoPhieu.ToString().Substring(itemLSCT.SoPhieu.ToString().Length - 2, 2) == TuSoPhieu.ToString().Substring(TuSoPhieu.ToString().Length - 2, 2)
                             && itemLSCT.SoPhieu.ToString().Substring(itemLSCT.SoPhieu.ToString().Length - 2, 2) == DenSoPhieu.ToString().Substring(DenSoPhieu.ToString().Length - 2, 2)
@@ -914,7 +922,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.PhieuDuocKy,
                                 itemLSCT.MaDon,
                                 itemLSCT.NguoiKy,
-                                itemLSCT.CreateBy,
+                                CreateBy = itemtableND.HoTen,
                             };
                 if (query.Count() > 0)
                 {
@@ -1012,6 +1020,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 var query = from itemLSCT in db.LichSuChungTus
                             //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
+                            join itemND in db.Users on itemLSCT.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
                             where itemLSCT.SoPhieu != null && itemLSCT.DanhBo == DanhBo
                             //where itemLSCT.MaLSCT == 126114
                             orderby itemLSCT.CreateDate ascending
@@ -1042,7 +1052,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.PhieuDuocKy,
                                 itemLSCT.MaDon,
                                 itemLSCT.NguoiKy,
-                                itemLSCT.CreateBy,
+                                CreateBy = itemtableND.HoTen,
                             };
                 if (query.Count() > 0)
                 {
@@ -1268,6 +1278,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 var query = from itemLSCT in db.LichSuChungTus
                             //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
+                            join itemND in db.Users on itemLSCT.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
                             where itemLSCT.SoPhieu != null && itemLSCT.CreateDate.Value.Date >= TuNgay.Date && itemLSCT.CreateDate.Value.Date <= DenNgay.Date
                             //where itemLSCT.MaLSCT == 126114
                             orderby itemLSCT.CreateDate ascending
@@ -1298,7 +1310,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.PhieuDuocKy,
                                 itemLSCT.MaDon,
                                 itemLSCT.NguoiKy,
-                                itemLSCT.CreateBy,
+                                CreateBy = itemtableND.HoTen,
                             };
                 if (query.Count() > 0)
                 {
@@ -1396,6 +1408,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 var query = from itemLSCT in db.LichSuChungTus
                             //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
+                            join itemND in db.Users on itemLSCT.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
                             where itemLSCT.CreateBy == CreateBy && itemLSCT.SoPhieu != null && (itemLSCT.MaDon == MaDon || itemLSCT.MaDonTXL == MaDon)
                             //where itemLSCT.MaLSCT == 126114
                             orderby itemLSCT.CreateDate ascending
@@ -1426,7 +1440,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.PhieuDuocKy,
                                 itemLSCT.MaDon,
                                 itemLSCT.NguoiKy,
-                                itemLSCT.CreateBy,
+                                CreateBy = itemtableND.HoTen,
                             };
                 if (query.Count() > 0)
                 {
@@ -1524,6 +1538,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 var query = from itemLSCT in db.LichSuChungTus
                             //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
+                            join itemND in db.Users on itemLSCT.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
                             where itemLSCT.CreateBy == CreateBy && itemLSCT.SoPhieu != null &&
                             ((itemLSCT.MaDon.Value.ToString().Substring(itemLSCT.MaDon.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemLSCT.MaDon.Value.ToString().Substring(itemLSCT.MaDon.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
                             && (itemLSCT.MaDon >= TuMaDon && itemLSCT.MaDon <= DenMaDon))
@@ -1558,7 +1574,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.PhieuDuocKy,
                                 itemLSCT.MaDon,
                                 itemLSCT.NguoiKy,
-                                itemLSCT.CreateBy,
+                                CreateBy = itemtableND.HoTen,
                             };
                 if (query.Count() > 0)
                 {
@@ -1656,6 +1672,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 var query = from itemLSCT in db.LichSuChungTus
                             //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
+                            join itemND in db.Users on itemLSCT.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
                             where itemLSCT.CreateBy == CreateBy && itemLSCT.SoPhieu != null && itemLSCT.SoPhieu == SoPhieu
                             //where itemLSCT.MaLSCT == 126114
                             orderby itemLSCT.CreateDate ascending
@@ -1686,7 +1704,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.PhieuDuocKy,
                                 itemLSCT.MaDon,
                                 itemLSCT.NguoiKy,
-                                itemLSCT.CreateBy,
+                                CreateBy = itemtableND.HoTen,
                             };
                 if (query.Count() > 0)
                 {
@@ -1784,6 +1802,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 var query = from itemLSCT in db.LichSuChungTus
                             //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
+                            join itemND in db.Users on itemLSCT.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
                             where itemLSCT.CreateBy == CreateBy && itemLSCT.SoPhieu != null &&
                             itemLSCT.SoPhieu.ToString().Substring(itemLSCT.SoPhieu.ToString().Length - 2, 2) == TuSoPhieu.ToString().Substring(TuSoPhieu.ToString().Length - 2, 2)
                             && itemLSCT.SoPhieu.ToString().Substring(itemLSCT.SoPhieu.ToString().Length - 2, 2) == DenSoPhieu.ToString().Substring(DenSoPhieu.ToString().Length - 2, 2)
@@ -1817,7 +1837,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.PhieuDuocKy,
                                 itemLSCT.MaDon,
                                 itemLSCT.NguoiKy,
-                                itemLSCT.CreateBy,
+                                CreateBy = itemtableND.HoTen,
                             };
                 if (query.Count() > 0)
                 {
@@ -1915,6 +1935,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 var query = from itemLSCT in db.LichSuChungTus
                             //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
+                            join itemND in db.Users on itemLSCT.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
                             where itemLSCT.CreateBy == CreateBy && itemLSCT.SoPhieu != null && itemLSCT.DanhBo == DanhBo
                             //where itemLSCT.MaLSCT == 126114
                             orderby itemLSCT.CreateDate ascending
@@ -1945,7 +1967,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.PhieuDuocKy,
                                 itemLSCT.MaDon,
                                 itemLSCT.NguoiKy,
-                                itemLSCT.CreateBy,
+                                CreateBy = itemtableND.HoTen,
                             };
                 if (query.Count() > 0)
                 {
@@ -2171,6 +2193,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 var query = from itemLSCT in db.LichSuChungTus
                             //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
+                            join itemND in db.Users on itemLSCT.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
                             where itemLSCT.CreateBy == CreateBy && itemLSCT.SoPhieu != null && itemLSCT.CreateDate.Value.Date >= TuNgay.Date && itemLSCT.CreateDate.Value.Date <= DenNgay.Date
                             //where itemLSCT.MaLSCT == 126114
                             orderby itemLSCT.CreateDate ascending
@@ -2201,7 +2225,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.PhieuDuocKy,
                                 itemLSCT.MaDon,
                                 itemLSCT.NguoiKy,
-                                itemLSCT.CreateBy,
+                                CreateBy = itemtableND.HoTen,
                             };
                 if (query.Count() > 0)
                 {

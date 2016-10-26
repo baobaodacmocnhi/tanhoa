@@ -218,6 +218,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     txtGhiChu.Text = _ctctdb.GhiChuLyDo;
                     if(_ctctdb.SoTien!=null)
                     txtSoTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctctdb.SoTien.Value);
+                    else
+                        txtSoTien.Text = "";
                     txtNoiNhan.Text = _ctctdb.NoiNhan;
 
                     if (_ctctdb.NoiDungXuLy != null)

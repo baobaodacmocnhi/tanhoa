@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnLuu = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dateNhan = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
@@ -84,15 +84,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSTBKetQuaYCCatDM)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnLuu
+            // btnThem
             // 
-            this.btnLuu.Location = new System.Drawing.Point(901, 220);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(86, 25);
-            this.btnLuu.TabIndex = 5;
-            this.btnLuu.Text = "Lưu";
-            this.btnLuu.UseVisualStyleBackColor = true;
-            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
+            this.btnThem.Location = new System.Drawing.Point(901, 220);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(75, 25);
+            this.btnThem.TabIndex = 5;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // groupBox2
             // 
@@ -521,7 +521,7 @@
             // 
             this.btnXoa.Location = new System.Drawing.Point(899, 106);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(86, 25);
+            this.btnXoa.Size = new System.Drawing.Size(75, 25);
             this.btnXoa.TabIndex = 40;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
@@ -531,7 +531,7 @@
             // 
             this.btnSua.Location = new System.Drawing.Point(901, 144);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(86, 25);
+            this.btnSua.Size = new System.Drawing.Size(75, 25);
             this.btnSua.TabIndex = 41;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -551,6 +551,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1512, 531);
             this.Controls.Add(this.btnInDongY);
@@ -558,7 +559,7 @@
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.dgvDSTBKetQuaYCCatDM);
-            this.Controls.Add(this.btnLuu);
+            this.Controls.Add(this.btnThem);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -577,7 +578,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnLuu;
+        private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtGhiChu;
         private System.Windows.Forms.Label label8;

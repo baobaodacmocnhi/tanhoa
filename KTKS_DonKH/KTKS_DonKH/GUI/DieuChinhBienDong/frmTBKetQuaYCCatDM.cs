@@ -55,7 +55,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             cmbChiNhanh_Nhan.SelectedIndex = -1;
         }
 
-        private void btnLuu_Click(object sender, EventArgs e)
+        private void btnThem_Click(object sender, EventArgs e)
         {
             TBKetQuaYCCatDM tb = new TBKetQuaYCCatDM();
             tb.PYC = txtPYC.Text.Trim();

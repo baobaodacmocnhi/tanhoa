@@ -398,6 +398,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                     var query = from itemCTDCBD in db.CTDCBDs
+                                join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
                                 where itemCTDCBD.DCBD.MaDon == MaDon || itemCTDCBD.DCBD.MaDonTXL == MaDon
                                 orderby itemCTDCBD.CreateDate ascending
                                 select new
@@ -420,7 +422,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.DinhMuc_BD,
                                     itemCTDCBD.PhieuDuocKy,
                                     itemCTDCBD.NguoiKy,
-                                    itemCTDCBD.CreateBy,
+                                    CreateBy = itemtableND.HoTen,
                                 };
                     return LINQToDataTable(query);
             }
@@ -436,6 +438,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                     var query = from itemCTDCBD in db.CTDCBDs
+                                join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
                                 where itemCTDCBD.CreateBy==CreateBy && (itemCTDCBD.DCBD.MaDon == MaDon || itemCTDCBD.DCBD.MaDonTXL == MaDon)
                                 orderby itemCTDCBD.CreateDate ascending
                                 select new
@@ -458,7 +462,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.DinhMuc_BD,
                                     itemCTDCBD.PhieuDuocKy,
                                     itemCTDCBD.NguoiKy,
-                                    itemCTDCBD.CreateBy,
+                                    CreateBy = itemtableND.HoTen,
                                 };
                     return LINQToDataTable(query);
             }
@@ -474,6 +478,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                     var query = from itemCTDCBD in db.CTDCBDs
+                                join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
                                 where ((itemCTDCBD.DCBD.MaDon.Value.ToString().Substring(itemCTDCBD.DCBD.MaDon.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCBD.DCBD.MaDon.Value.ToString().Substring(itemCTDCBD.DCBD.MaDon.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
                                 &&(itemCTDCBD.DCBD.MaDon >= TuMaDon&&itemCTDCBD.DCBD.MaDon<=DenMaDon))
                                 || ((itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2)) 
@@ -499,7 +505,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.DinhMuc_BD,
                                     itemCTDCBD.PhieuDuocKy,
                                     itemCTDCBD.NguoiKy,
-                                    itemCTDCBD.CreateBy,
+                                    CreateBy = itemtableND.HoTen,
                                 };
                     return LINQToDataTable(query);
             }
@@ -515,6 +521,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                     var query = from itemCTDCBD in db.CTDCBDs
+                                join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
                                 where itemCTDCBD.CreateBy==CreateBy &&(((itemCTDCBD.DCBD.MaDon.Value.ToString().Substring(itemCTDCBD.DCBD.MaDon.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCBD.DCBD.MaDon.Value.ToString().Substring(itemCTDCBD.DCBD.MaDon.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
                                 && (itemCTDCBD.DCBD.MaDon >= TuMaDon && itemCTDCBD.DCBD.MaDon <= DenMaDon))
                                 || ((itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
@@ -540,7 +548,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.DinhMuc_BD,
                                     itemCTDCBD.PhieuDuocKy,
                                     itemCTDCBD.NguoiKy,
-                                    itemCTDCBD.CreateBy,
+                                    CreateBy=itemtableND.HoTen,
                                 };
                     return LINQToDataTable(query);
             }
@@ -556,6 +564,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                     var query = from itemCTDCBD in db.CTDCBDs
+                                join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
                                 where itemCTDCBD.MaCTDCBD == SoPhieu
                                 orderby itemCTDCBD.CreateDate ascending
                                 select new
@@ -579,7 +589,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.DinhMuc_BD,
                                     itemCTDCBD.PhieuDuocKy,
                                     itemCTDCBD.NguoiKy,
-                                    itemCTDCBD.CreateBy,
+                                    CreateBy = itemtableND.HoTen,
                                 };
                     return LINQToDataTable(query);
             }
@@ -595,6 +605,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                     var query = from itemCTDCBD in db.CTDCBDs
+                                join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
                                 where itemCTDCBD.CreateBy == CreateBy && itemCTDCBD.MaCTDCBD == SoPhieu
                                 orderby itemCTDCBD.CreateDate ascending
                                 select new
@@ -618,7 +630,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.DinhMuc_BD,
                                     itemCTDCBD.PhieuDuocKy,
                                     itemCTDCBD.NguoiKy,
-                                    itemCTDCBD.CreateBy,
+                                    CreateBy = itemtableND.HoTen,
                                 };
                     return LINQToDataTable(query);
             }
@@ -634,6 +646,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                     var query = from itemCTDCBD in db.CTDCBDs
+                                join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
                                 where itemCTDCBD.MaCTDCBD.ToString().Substring(itemCTDCBD.MaCTDCBD.ToString().Length - 2, 2) == TuSoPhieu.ToString().Substring(TuSoPhieu.ToString().Length - 2, 2)
                                 && itemCTDCBD.MaCTDCBD.ToString().Substring(itemCTDCBD.MaCTDCBD.ToString().Length - 2, 2) == DenSoPhieu.ToString().Substring(DenSoPhieu.ToString().Length - 2, 2)
                                 && itemCTDCBD.MaCTDCBD >= TuSoPhieu&&itemCTDCBD.MaCTDCBD<=DenSoPhieu
@@ -658,7 +672,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.DinhMuc_BD,
                                     itemCTDCBD.PhieuDuocKy,
                                     itemCTDCBD.NguoiKy,
-                                    itemCTDCBD.CreateBy,
+                                    CreateBy = itemtableND.HoTen,
                                 };
                     return LINQToDataTable(query);
             }
@@ -674,6 +688,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                     var query = from itemCTDCBD in db.CTDCBDs
+                                join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
                                 where itemCTDCBD.CreateBy == CreateBy && itemCTDCBD.MaCTDCBD.ToString().Substring(itemCTDCBD.MaCTDCBD.ToString().Length - 2, 2) == TuSoPhieu.ToString().Substring(TuSoPhieu.ToString().Length - 2, 2)
                                 && itemCTDCBD.MaCTDCBD.ToString().Substring(itemCTDCBD.MaCTDCBD.ToString().Length - 2, 2) == DenSoPhieu.ToString().Substring(DenSoPhieu.ToString().Length - 2, 2)
                                 && itemCTDCBD.MaCTDCBD >= TuSoPhieu && itemCTDCBD.MaCTDCBD <= DenSoPhieu
@@ -698,7 +714,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.DinhMuc_BD,
                                     itemCTDCBD.PhieuDuocKy,
                                     itemCTDCBD.NguoiKy,
-                                    itemCTDCBD.CreateBy,
+                                    CreateBy = itemtableND.HoTen,
                                 };
                     return LINQToDataTable(query);
             }
@@ -714,6 +730,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                     var query = from itemCTDCBD in db.CTDCBDs
+                                join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
                                 where itemCTDCBD.DanhBo == DanhBo
                                 orderby itemCTDCBD.CreateDate ascending
                                 select new
@@ -736,7 +754,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.DinhMuc_BD,
                                     itemCTDCBD.PhieuDuocKy,
                                     itemCTDCBD.NguoiKy,
-                                    itemCTDCBD.CreateBy,
+                                    CreateBy = itemtableND.HoTen,
                                 };
                     return LINQToDataTable(query);
             }
@@ -752,6 +770,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                     var query = from itemCTDCBD in db.CTDCBDs
+                                join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
                                 where itemCTDCBD.CreateBy == CreateBy && itemCTDCBD.DanhBo == DanhBo
                                 orderby itemCTDCBD.CreateDate ascending
                                 select new
@@ -774,7 +794,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.DinhMuc_BD,
                                     itemCTDCBD.PhieuDuocKy,
                                     itemCTDCBD.NguoiKy,
-                                    itemCTDCBD.CreateBy,
+                                    CreateBy = itemtableND.HoTen,
                                 };
                     return LINQToDataTable(query);
             }
@@ -866,6 +886,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                     var query = from itemCTDCBD in db.CTDCBDs
+                                join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
                                 where itemCTDCBD.CreateDate.Value.Date >= TuNgay.Date && itemCTDCBD.CreateDate.Value.Date <= DenNgay.Date
                                 orderby itemCTDCBD.CreateDate ascending
                                 select new
@@ -888,7 +910,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.DinhMuc_BD,
                                     itemCTDCBD.PhieuDuocKy,
                                     itemCTDCBD.NguoiKy,
-                                    itemCTDCBD.CreateBy,
+                                    CreateBy = itemtableND.HoTen,
                                 };
                     return LINQToDataTable(query);
             }
@@ -904,6 +926,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                     var query = from itemCTDCBD in db.CTDCBDs
+                                join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
                                 where itemCTDCBD.CreateBy == CreateBy && itemCTDCBD.CreateDate.Value.Date >= TuNgay.Date && itemCTDCBD.CreateDate.Value.Date <= DenNgay.Date
                                 orderby itemCTDCBD.CreateDate ascending
                                 select new
@@ -926,7 +950,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.DinhMuc_BD,
                                     itemCTDCBD.PhieuDuocKy,
                                     itemCTDCBD.NguoiKy,
-                                    itemCTDCBD.CreateBy,
+                                    CreateBy = itemtableND.HoTen,
                                 };
                     return LINQToDataTable(query);
             }
@@ -1384,6 +1408,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                     var query = from itemCTDCHD in db.CTDCHDs
+                                join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
                                 where itemCTDCHD.DCBD.MaDon==MaDon||itemCTDCHD.DCBD.MaDonTXL==MaDon
                                 orderby itemCTDCHD.CreateDate ascending
                                 select new
@@ -1405,7 +1431,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.TangGiam,
                                     itemCTDCHD.PhieuDuocKy,
                                     itemCTDCHD.NguoiKy,
-                                    itemCTDCHD.CreateBy,
+                                    CreateBy = itemtableND.HoTen,
                                 };
                     return LINQToDataTable(query);
             }
@@ -1421,6 +1447,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                     var query = from itemCTDCHD in db.CTDCHDs
+                                join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
                                 where ((itemCTDCHD.DCBD.MaDon.Value.ToString().Substring(itemCTDCHD.DCBD.MaDon.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCHD.DCBD.MaDon.Value.ToString().Substring(itemCTDCHD.DCBD.MaDon.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
                                 && (itemCTDCHD.DCBD.MaDon >= TuMaDon && itemCTDCHD.DCBD.MaDon <= DenMaDon))
                                 || ((itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
@@ -1445,7 +1473,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.TangGiam,
                                     itemCTDCHD.PhieuDuocKy,
                                     itemCTDCHD.NguoiKy,
-                                    itemCTDCHD.CreateBy,
+                                    CreateBy = itemtableND.HoTen,
                                 };
                     return LINQToDataTable(query);
             }
@@ -1461,6 +1489,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                     var query = from itemCTDCHD in db.CTDCHDs
+                                join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
                                 where itemCTDCHD.MaCTDCHD==SoPhieu
                                 orderby itemCTDCHD.CreateDate ascending
                                 select new
@@ -1483,7 +1513,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.TangGiam,
                                     itemCTDCHD.PhieuDuocKy,
                                     itemCTDCHD.NguoiKy,
-                                    itemCTDCHD.CreateBy,
+                                    CreateBy = itemtableND.HoTen,
                                 };
                     return LINQToDataTable(query);
             }
@@ -1499,6 +1529,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                     var query = from itemCTDCHD in db.CTDCHDs
+                                join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
                                 where itemCTDCHD.MaCTDCHD.ToString().Substring(itemCTDCHD.MaCTDCHD.ToString().Length - 2, 2) == TuSoPhieu.ToString().Substring(TuSoPhieu.ToString().Length - 2, 2)
                                 && itemCTDCHD.MaCTDCHD.ToString().Substring(itemCTDCHD.MaCTDCHD.ToString().Length - 2, 2) == DenSoPhieu.ToString().Substring(DenSoPhieu.ToString().Length - 2, 2)
                                 && itemCTDCHD.MaCTDCHD >= TuSoPhieu && itemCTDCHD.MaCTDCHD <= DenSoPhieu
@@ -1522,7 +1554,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.TangGiam,
                                     itemCTDCHD.PhieuDuocKy,
                                     itemCTDCHD.NguoiKy,
-                                    itemCTDCHD.CreateBy,
+                                    CreateBy = itemtableND.HoTen,
                                 };
                     return LINQToDataTable(query);
             }
@@ -1538,6 +1570,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                     var query = from itemCTDCHD in db.CTDCHDs
+                                join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
                                 where itemCTDCHD.DanhBo==DanhBo
                                 orderby itemCTDCHD.CreateDate ascending
                                 select new
@@ -1559,7 +1593,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.TangGiam,
                                     itemCTDCHD.PhieuDuocKy,
                                     itemCTDCHD.NguoiKy,
-                                    itemCTDCHD.CreateBy,
+                                    CreateBy = itemtableND.HoTen,
                                 };
                     return LINQToDataTable(query);
             }
@@ -1612,6 +1646,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                     var query = from itemCTDCHD in db.CTDCHDs
+                                join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
                                 where itemCTDCHD.CreateDate.Value.Date>=TuNgay.Date&&itemCTDCHD.CreateDate.Value.Date<=DenNgay.Date
                                 orderby itemCTDCHD.CreateDate ascending
                                 select new
@@ -1633,7 +1669,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.TangGiam,
                                     itemCTDCHD.PhieuDuocKy,
                                     itemCTDCHD.NguoiKy,
-                                    itemCTDCHD.CreateBy,
+                                    CreateBy = itemtableND.HoTen,
                                 };
                     return LINQToDataTable(query);
             }
@@ -1649,6 +1685,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                     var query = from itemCTDCHD in db.CTDCHDs
+                                join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
                                 where itemCTDCHD.CreateBy==CreateBy &&( itemCTDCHD.DCBD.MaDon == MaDon || itemCTDCHD.DCBD.MaDonTXL == MaDon)
                                 orderby itemCTDCHD.CreateDate ascending
                                 select new
@@ -1670,7 +1708,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.TangGiam,
                                     itemCTDCHD.PhieuDuocKy,
                                     itemCTDCHD.NguoiKy,
-                                    itemCTDCHD.CreateBy,
+                                    CreateBy = itemtableND.HoTen,
                                 };
                     return LINQToDataTable(query);
             }
@@ -1686,6 +1724,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                     var query = from itemCTDCHD in db.CTDCHDs
+                                join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
                                 where itemCTDCHD.CreateBy == CreateBy && (((itemCTDCHD.DCBD.MaDon.Value.ToString().Substring(itemCTDCHD.DCBD.MaDon.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCHD.DCBD.MaDon.Value.ToString().Substring(itemCTDCHD.DCBD.MaDon.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
                                 && (itemCTDCHD.DCBD.MaDon >= TuMaDon && itemCTDCHD.DCBD.MaDon <= DenMaDon))
                                 || ((itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
@@ -1710,7 +1750,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.TangGiam,
                                     itemCTDCHD.PhieuDuocKy,
                                     itemCTDCHD.NguoiKy,
-                                    itemCTDCHD.CreateBy,
+                                    CreateBy = itemtableND.HoTen,
                                 };
                     return LINQToDataTable(query);
             }
@@ -1726,6 +1766,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                     var query = from itemCTDCHD in db.CTDCHDs
+                                join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
                                 where itemCTDCHD.CreateBy == CreateBy && itemCTDCHD.MaCTDCHD == SoPhieu
                                 orderby itemCTDCHD.CreateDate ascending
                                 select new
@@ -1748,7 +1790,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.TangGiam,
                                     itemCTDCHD.PhieuDuocKy,
                                     itemCTDCHD.NguoiKy,
-                                    itemCTDCHD.CreateBy,
+                                    CreateBy = itemtableND.HoTen,
                                 };
                     return LINQToDataTable(query);
             }
@@ -1764,6 +1806,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                     var query = from itemCTDCHD in db.CTDCHDs
+                                join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
                                 where itemCTDCHD.CreateBy == CreateBy && itemCTDCHD.MaCTDCHD.ToString().Substring(itemCTDCHD.MaCTDCHD.ToString().Length - 2, 2) == TuSoPhieu.ToString().Substring(TuSoPhieu.ToString().Length - 2, 2)
                                 && itemCTDCHD.MaCTDCHD.ToString().Substring(itemCTDCHD.MaCTDCHD.ToString().Length - 2, 2) == DenSoPhieu.ToString().Substring(DenSoPhieu.ToString().Length - 2, 2)
                                 && itemCTDCHD.MaCTDCHD >= TuSoPhieu && itemCTDCHD.MaCTDCHD <= DenSoPhieu
@@ -1787,7 +1831,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.TangGiam,
                                     itemCTDCHD.PhieuDuocKy,
                                     itemCTDCHD.NguoiKy,
-                                    itemCTDCHD.CreateBy,
+                                    CreateBy = itemtableND.HoTen,
                                 };
                     return LINQToDataTable(query);
             }
@@ -1803,6 +1847,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                     var query = from itemCTDCHD in db.CTDCHDs
+                                join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
                                 where itemCTDCHD.CreateBy == CreateBy && itemCTDCHD.DanhBo == DanhBo
                                 orderby itemCTDCHD.CreateDate ascending
                                 select new
@@ -1824,7 +1870,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.TangGiam,
                                     itemCTDCHD.PhieuDuocKy,
                                     itemCTDCHD.NguoiKy,
-                                    itemCTDCHD.CreateBy,
+                                    CreateBy = itemtableND.HoTen,
                                 };
                     return LINQToDataTable(query);
             }
@@ -1877,6 +1923,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                     var query = from itemCTDCHD in db.CTDCHDs
+                                join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
                                 where itemCTDCHD.CreateBy == CreateBy && itemCTDCHD.CreateDate.Value.Date >= TuNgay.Date && itemCTDCHD.CreateDate.Value.Date <= DenNgay.Date
                                 orderby itemCTDCHD.CreateDate ascending
                                 select new
@@ -1898,7 +1946,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.TangGiam,
                                     itemCTDCHD.PhieuDuocKy,
                                     itemCTDCHD.NguoiKy,
-                                    itemCTDCHD.CreateBy,
+                                    CreateBy = itemtableND.HoTen,
                                 };
                     return LINQToDataTable(query);
             }
