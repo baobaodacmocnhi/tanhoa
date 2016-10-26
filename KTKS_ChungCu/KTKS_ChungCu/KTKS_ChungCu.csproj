@@ -31,7 +31,7 @@
     <PublisherName>P.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>77</ApplicationRevision>
+    <ApplicationRevision>78</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -200,6 +200,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbDonKH.dbml</DependentUpon>
     </Compile>
+    <Compile Include="LinQ\dbThuTien.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbThuTien.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="BaoCao\rptDSCatChuyen.rpt">
@@ -264,6 +269,9 @@
     <None Include="LinQ\dbDonKH.dbml.layout">
       <DependentUpon>dbDonKH.dbml</DependentUpon>
     </None>
+    <None Include="LinQ\dbThuTien.dbml.layout">
+      <DependentUpon>dbThuTien.dbml</DependentUpon>
+    </None>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -282,6 +290,11 @@
     <None Include="LinQ\dbDonKH.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>dbDonKH.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="LinQ\dbThuTien.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dbThuTien.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">

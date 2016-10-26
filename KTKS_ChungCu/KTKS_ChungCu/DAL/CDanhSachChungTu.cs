@@ -407,6 +407,37 @@ namespace KTKS_ChungCu.DAL
             }
         }
 
+        public DataTable LoadDSChungTu_CreateDates(DateTime FromCreateDate,DateTime ToCreateDate)
+        {
+            try
+            {
+                var query = from itemCTCT in db.DanhSachChungTus
+                            where itemCTCT.CreateDate.Value.Date >= FromCreateDate.Date && itemCTCT.CreateDate.Value.Date <= ToCreateDate.Date
+                            orderby itemCTCT.STT ascending
+                            select new
+                            {
+                                itemCTCT.ID,
+                                itemCTCT.STT,
+                                itemCTCT.DanhBo,
+                                itemCTCT.Lo,
+                                itemCTCT.Phong,
+                                itemCTCT.MaLCT,
+                                itemCTCT.MaCT,
+                                itemCTCT.HoTen,
+                                itemCTCT.SoNKTong,
+                                itemCTCT.SoNKDangKy,
+                                itemCTCT.NgayHetHan,
+                                itemCTCT.ThoiHan,
+                                itemCTCT.GhiChu,
+                            };
+                return Function.CLinQToDataTable.LINQToDataTable(query);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
         public int GetTongNKDangKy(string DanhBo)
         {
             return db.DanhSachChungTus.Where(item => item.DanhBo == DanhBo).Sum(item => item.SoNKDangKy);

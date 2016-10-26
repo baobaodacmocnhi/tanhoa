@@ -16,7 +16,7 @@ namespace KTKS_ChungCu
     public partial class frmMain : Form
     {
         CTTKH _cTTKH = new CTTKH();
-        TTKhachHang _ttkhachhang = new TTKhachHang();
+        HOADON _hoadon = new HOADON();
         CLoaiChungTu _cLoaiChungTu = new CLoaiChungTu();
         CChungTu _cChungTu = new CChungTu();
         int _selectedindex = -1;
@@ -44,12 +44,12 @@ namespace KTKS_ChungCu
             cmbColumn.ValueMember = "MaLCT";
         }
 
-        public void LoadTTKH(TTKhachHang ttkhachhang)
+        public void LoadTTKH(HOADON hoadon)
         {
-            txtDanhBo.Text = ttkhachhang.DanhBo;
-            txtHopDong.Text = ttkhachhang.GiaoUoc;
-            txtHoTen.Text = ttkhachhang.HoTen;
-            txtDiaChi.Text = ttkhachhang.DC1 + " " + ttkhachhang.DC2;
+            txtDanhBo.Text = hoadon.DANHBA;
+            txtHopDong.Text = hoadon.HOPDONG;
+            txtHoTen.Text = hoadon.TENKH;
+            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG;
         }
 
         public void Clear()
@@ -66,7 +66,7 @@ namespace KTKS_ChungCu
             txtHoTenCT.Text = "";
             txtSoNKDangKy.Text = "";
             txtGhiChu.Text = "";
-            _ttkhachhang = null;
+            _hoadon = null;
             _selectedindex = -1;
         }
 
@@ -82,20 +82,20 @@ namespace KTKS_ChungCu
         {
             if (e.KeyChar == 13)
             {
-                if (_cTTKH.getTTKHbyID(txtDanhBo.Text.Trim()) != null)
+                if (_cTTKH.GetMoiNhat(txtDanhBo.Text.Trim()) != null)
                 {
-                    _ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
-                    LoadTTKH(_ttkhachhang);
+                    _hoadon = _cTTKH.GetMoiNhat(txtDanhBo.Text.Trim());
+                    LoadTTKH(_hoadon);
                     if (string.IsNullOrEmpty(txtLo.Text.Trim()))
-                        DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB(_ttkhachhang.DanhBo);
+                        DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB(_hoadon.DANHBA);
                     else
-                        DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB_Lo(_ttkhachhang.DanhBo, txtLo.Text.Trim());
+                        DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB_Lo(_hoadon.DANHBA, txtLo.Text.Trim());
                     dgvKhachHangChungCu.CurrentCell = dgvKhachHangChungCu.Rows[dgvKhachHangChungCu.RowCount - 1].Cells[0];
                     txtLo.Focus();
                 }
                 else
                 {
-                    _ttkhachhang = null;
+                    _hoadon = null;
                     Clear();
                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -106,7 +106,7 @@ namespace KTKS_ChungCu
         {
             try
             {
-                
+
                 //if (_cChungTu.CheckCTChungTu(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), txtLo.Text.Trim(), txtPhong.Text.Trim()))
                 //{
                 //    MessageBox.Show("Sổ này đã được lưu tại Lô, Phòng trên", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -150,13 +150,13 @@ namespace KTKS_ChungCu
                         lichsuchungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
                         lichsuchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
 
-                        if (_cDSCT.Them(entity)&&_cChungTu.ThemLichSuChungTu(lichsuchungtu))
+                        if (_cDSCT.Them(entity) && _cChungTu.ThemLichSuChungTu(lichsuchungtu))
                         {
                             MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             if (string.IsNullOrEmpty(txtLo.Text.Trim()))
-                                DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB(_ttkhachhang.DanhBo);
+                                DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB(_hoadon.DANHBA);
                             else
-                                DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB_Lo(_ttkhachhang.DanhBo, txtLo.Text.Trim());
+                                DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB_Lo(_hoadon.DANHBA, txtLo.Text.Trim());
                             dgvKhachHangChungCu.CurrentCell = dgvKhachHangChungCu.Rows[dgvKhachHangChungCu.RowCount - 1].Cells[0];
                             //txtSTT.Text = "";
                             //txtLo.Text = "";
@@ -230,9 +230,9 @@ namespace KTKS_ChungCu
                             {
                                 MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 if (string.IsNullOrEmpty(txtLo.Text.Trim()))
-                                    DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB(_ttkhachhang.DanhBo);
+                                    DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB(_hoadon.DANHBA);
                                 else
-                                    DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB_Lo(_ttkhachhang.DanhBo, txtLo.Text.Trim());
+                                    DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB_Lo(_hoadon.DANHBA, txtLo.Text.Trim());
                                 dgvKhachHangChungCu.CurrentCell = dgvKhachHangChungCu.Rows[dgvKhachHangChungCu.RowCount - 1].Cells[0];
                                 txtSTT.Text = "";
                                 txtLo.Text = "";
@@ -310,7 +310,7 @@ namespace KTKS_ChungCu
 
         private void btnIn_Click(object sender, EventArgs e)
         {
-            if (_ttkhachhang != null)
+            if (_hoadon != null)
             {
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 for (int i = 0; i < dgvKhachHangChungCu.Rows.Count; i++)
@@ -321,10 +321,10 @@ namespace KTKS_ChungCu
                     dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " ");
                     dr["HoTen"] = txtHoTen.Text.Trim();
                     dr["DiaChi"] = txtDiaChi.Text.Trim();
-                    dr["HopDong"] = _ttkhachhang.GiaoUoc;
-                    dr["GiaBieu"] = _ttkhachhang.GB;
-                    dr["DinhMuc"] = _ttkhachhang.TGDM;
-                    dr["LoTrinh"] = _ttkhachhang.Dot + _ttkhachhang.CuonGCS + _ttkhachhang.CuonSTT;
+                    dr["HopDong"] = _hoadon.HOPDONG;
+                    dr["GiaBieu"] = _hoadon.GB;
+                    dr["DinhMuc"] = _hoadon.DM;
+                    dr["LoTrinh"] = _hoadon.DOT + _hoadon.MAY + _hoadon.STT;
                     //dr["TenLCT"] = dgvKhachHangChungCu["TenLCT", i].Value.ToString();
                     dr["HoTenCT"] = dgvKhachHangChungCu["HoTen", i].Value.ToString();
                     dr["MaCT"] = dgvKhachHangChungCu["MaCT", i].Value.ToString();
@@ -378,9 +378,9 @@ namespace KTKS_ChungCu
             {
                 txtSTT.Focus();
                 if (string.IsNullOrEmpty(txtLo.Text.Trim()))
-                    DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB(_ttkhachhang.DanhBo);
+                    DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB(_hoadon.DANHBA);
                 else
-                    DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB_Lo(_ttkhachhang.DanhBo, txtLo.Text.Trim());
+                    DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB_Lo(_hoadon.DANHBA, txtLo.Text.Trim());
                 dgvKhachHangChungCu.CurrentCell = dgvKhachHangChungCu.Rows[dgvKhachHangChungCu.RowCount - 1].Cells[0];
             }
         }
@@ -440,9 +440,9 @@ namespace KTKS_ChungCu
                         {
                             MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             if (string.IsNullOrEmpty(txtLo.Text.Trim()))
-                                DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB(_ttkhachhang.DanhBo);
+                                DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB(_hoadon.DANHBA);
                             else
-                                DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB_Lo(_ttkhachhang.DanhBo, txtLo.Text.Trim());
+                                DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB_Lo(_hoadon.DANHBA, txtLo.Text.Trim());
                             dgvKhachHangChungCu.CurrentCell = dgvKhachHangChungCu.Rows[dgvKhachHangChungCu.RowCount - 1].Cells[0];
                             txtSTT.Text = "";
                             txtLo.Text = "";
@@ -470,6 +470,83 @@ namespace KTKS_ChungCu
             switch (cmbTimTheo.SelectedItem.ToString())
             {
                 case "Số Chứng Từ":
+
+                    break;
+                case "Họ Tên":
+
+                    break;
+                case "Lô":
+
+                    break;
+                case "Phòng":
+
+                    break;
+                case "Số Thứ Tự":
+
+                    break;
+            }
+        }
+
+        private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbTimTheo.SelectedItem.ToString())
+            {
+                case "Số Chứng Từ":
+                case "Họ Tên":
+                case "Lô":
+                case "Phòng":
+                case "Số Thứ Tự":
+                    txtNoiDungTimKiem.Visible = true;
+                    txtNoiDungTimKiem2.Visible = true;
+                    panel_KhoangThoiGian.Visible = false;
+                    break;
+                case "Ngày":
+                    txtNoiDungTimKiem.Visible = false;
+                    txtNoiDungTimKiem2.Visible = false;
+                    panel_KhoangThoiGian.Visible = true;
+                    break;
+                default:
+                    txtNoiDungTimKiem.Visible = false;
+                    txtNoiDungTimKiem2.Visible = false;
+                    panel_KhoangThoiGian.Visible = false;
+                    break;
+            }
+            dgvKhachHangChungCu.DataSource = null;
+        }
+
+        private void txtNoiDungTimKiem2_TextChanged(object sender, EventArgs e)
+        {
+            switch (cmbTimTheo.SelectedItem.ToString())
+            {
+                case "Số Thứ Tự":
+
+
+                    break;
+            }
+        }
+
+        private void txtMaCT_Leave(object sender, EventArgs e)
+        {
+            List<DanhSachChungTu> lstCT = _cDSCT.GetDS(txtMaCT.Text.Trim());
+            if (lstCT.Count > 0)
+            {
+                string DanhBo = "";
+                foreach (DanhSachChungTu item in lstCT)
+                {
+                    if (string.IsNullOrEmpty(DanhBo))
+                        DanhBo += item.DanhBo + ", Lo:" + item.Lo + " ,STT:" + item.STT;
+                    else
+                        DanhBo += " ," + item.DanhBo + ", Lo:" + item.Lo + ", STT:" + item.STT;
+                }
+                MessageBox.Show("Sổ này đã được lưu tại Danh Bộ: " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnXem_Click(object sender, EventArgs e)
+        {
+            switch (cmbTimTheo.SelectedItem.ToString())
+            {
+                case "Số Chứng Từ":
                     if (string.IsNullOrEmpty(txtDanhBo.Text.Trim()))
                         DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_CT(txtNoiDungTimKiem.Text.Trim());
                     else
@@ -491,42 +568,18 @@ namespace KTKS_ChungCu
                         DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_Phong(txtDanhBo.Text.Trim(), txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Số Thứ Tự":
-                    if (txtNoiDungTimKiem.Text.Trim() != "")
-                        DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_STT(txtDanhBo.Text.Trim(), txtLo.Text.Trim(), int.Parse(txtNoiDungTimKiem.Text.Trim()));
-                    break;
-            }
-        }
-
-        private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtNoiDungTimKiem2_TextChanged(object sender, EventArgs e)
-        {
-            switch (cmbTimTheo.SelectedItem.ToString())
-            {
-                case "Số Thứ Tự":
                     if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
                         DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_STTs(txtDanhBo.Text.Trim(), txtLo.Text.Trim(), int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(txtNoiDungTimKiem2.Text.Trim()));
-                    break;
-            }
-        }
-
-        private void txtMaCT_Leave(object sender, EventArgs e)
-        {
-            List<DanhSachChungTu> lstCT = _cDSCT.GetDS(txtMaCT.Text.Trim());
-            if (lstCT.Count > 0)
-            {
-                string DanhBo = "";
-                foreach (DanhSachChungTu item in lstCT)
-                {
-                    if (string.IsNullOrEmpty(DanhBo))
-                        DanhBo += item.DanhBo + ", Lo:" + item.Lo + " ,STT:" + item.STT;
                     else
-                        DanhBo += " ," + item.DanhBo + ", Lo:" + item.Lo + ", STT:" + item.STT;
-                }
-                MessageBox.Show("Sổ này đã được lưu tại Danh Bộ: " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (txtNoiDungTimKiem.Text.Trim() != "")
+                            DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_STT(txtDanhBo.Text.Trim(), txtLo.Text.Trim(), int.Parse(txtNoiDungTimKiem.Text.Trim()));
+                    break;
+                case "Ngày":
+                    DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_CreateDates(dateTu.Value,dateDen.Value);
+                    break;
+                default:
+
+                    break;
             }
         }
 

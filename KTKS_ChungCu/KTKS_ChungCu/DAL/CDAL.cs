@@ -10,6 +10,7 @@ namespace KTKS_ChungCu.DAL
     {
         protected static dbChungCuDataContext db = new dbChungCuDataContext();
         protected static dbDonKHDataContext dbDonKH = new dbDonKHDataContext();
+        protected static dbThuTienDataContext dbThuTien = new dbThuTienDataContext();
         ///// <summary>
         ///// Lấy mã tiếp theo, theo định dạng năm-stt (2013-1)
         ///// </summary>

@@ -310,18 +310,18 @@ namespace KTKS_ChungCu
             {
                 DataRow dr = dsBaoCao.Tables["DSChungTu"].NewRow();
 
-                TTKhachHang _ttkhachhang = _cTTKH.getTTKHbyID(dgvDSCatChuyenDM["CT_NhanNK_DanhBo", i].Value.ToString());
+                HOADON _hoadon = _cTTKH.GetMoiNhat(dgvDSCatChuyenDM["CT_NhanNK_DanhBo", i].Value.ToString());
 
                 dr["STT"] = dgvDSCatChuyenDM["STT", i].Value.ToString();
-                if (_ttkhachhang != null)
+                if (_hoadon != null)
                 {
-                    dr["DanhBo"] = _ttkhachhang.DanhBo.Insert(7, " ").Insert(4, " ");
-                    dr["HoTen"] = _ttkhachhang.HoTen;
-                    dr["DiaChi"] = _ttkhachhang.DC1 + " " + _ttkhachhang.DC2;
-                    dr["HopDong"] = _ttkhachhang.GiaoUoc;
-                    dr["GiaBieu"] = _ttkhachhang.GB;
-                    dr["DinhMuc"] = _ttkhachhang.TGDM;
-                    dr["LoTrinh"] = _ttkhachhang.Dot + _ttkhachhang.CuonGCS + _ttkhachhang.CuonSTT;
+                    dr["DanhBo"] = _hoadon.DANHBA.Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = _hoadon.TENKH;
+                    dr["DiaChi"] = _hoadon.SO + " " + _hoadon.DUONG;
+                    dr["HopDong"] = _hoadon.HOPDONG;
+                    dr["GiaBieu"] = _hoadon.GB;
+                    dr["DinhMuc"] = _hoadon.DM;
+                    dr["LoTrinh"] = _hoadon.DOT + _hoadon.MAY + _hoadon.STT;
                 }
                 dr["HoTenCT"] = dgvDSCatChuyenDM["CT_CatNK_HoTen", i].Value.ToString();
                 dr["DiaChiCT"] = dgvDSCatChuyenDM["CT_CatNK_DiaChi", i].Value.ToString();

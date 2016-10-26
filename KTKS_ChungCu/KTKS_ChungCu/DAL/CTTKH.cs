@@ -11,36 +11,14 @@ namespace KTKS_ChungCu.DAL
     class CTTKH : CDAL
     {
         ///Chứa hàm truy xuất dữ liệu từ bảng TTKhachHang & TTKhachHangDate
-        
-        #region TTKhachHang
 
-        public TTKhachHang getTTKHbyID(string DanhBo)
+        public HOADON GetMoiNhat(string DanhBo)
         {
-            try
-            {
-                return dbDonKH.TTKhachHangs.SingleOrDefault(itemTTKH => itemTTKH.DanhBo == DanhBo);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (dbThuTien.HOADONs.Any(item => item.DANHBA == DanhBo))
+                return dbThuTien.HOADONs.Where(item => item.DANHBA == DanhBo).OrderByDescending(item => item.ID_HOADON).First();
+            else
                 return null;
-            }
         }
-
-        public bool CheckTTKHbyID(string DanhBo)
-        {
-            try
-            {
-                return dbDonKH.TTKhachHangs.Any(itemTTKH => itemTTKH.DanhBo == DanhBo);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
-
-        #endregion
 
     }
 }
