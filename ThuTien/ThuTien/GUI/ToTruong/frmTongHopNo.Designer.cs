@@ -89,6 +89,8 @@
             this.DinhMuc_THN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayThanhToan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TieuThu_HD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ky_HD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTongHopNo)).BeginInit();
             this.SuspendLayout();
@@ -478,7 +480,9 @@
             this.TieuThu_THN,
             this.DinhMuc_THN,
             this.NgayThanhToan,
-            this.CreateDate});
+            this.CreateDate,
+            this.TieuThu_HD,
+            this.Ky_HD});
             this.dgvTongHopNo.Location = new System.Drawing.Point(12, 379);
             this.dgvTongHopNo.MultiSelect = false;
             this.dgvTongHopNo.Name = "dgvTongHopNo";
@@ -600,6 +604,20 @@
             this.CreateDate.HeaderText = "Ngày Lập";
             this.CreateDate.Name = "CreateDate";
             // 
+            // TieuThu_HD
+            // 
+            this.TieuThu_HD.DataPropertyName = "TieuThuHD";
+            this.TieuThu_HD.HeaderText = "Tiêu Thụ";
+            this.TieuThu_HD.Name = "TieuThu_HD";
+            this.TieuThu_HD.Width = 80;
+            // 
+            // Ky_HD
+            // 
+            this.Ky_HD.DataPropertyName = "KyHD";
+            this.Ky_HD.HeaderText = "Kỳ";
+            this.Ky_HD.Name = "Ky_HD";
+            this.Ky_HD.Width = 80;
+            // 
             // frmTongHopNo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -706,5 +724,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DinhMuc_THN;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayThanhToan;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu_HD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ky_HD;
     }
 }

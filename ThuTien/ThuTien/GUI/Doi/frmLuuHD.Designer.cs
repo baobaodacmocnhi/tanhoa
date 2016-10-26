@@ -35,6 +35,7 @@
             this.btnChonFile = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.txtTongCong = new System.Windows.Forms.TextBox();
             this.txtTongPhiBVMT = new System.Windows.Forms.TextBox();
             this.txtTongThueGTGT = new System.Windows.Forms.TextBox();
@@ -42,6 +43,11 @@
             this.txtTongTieuThu = new System.Windows.Forms.TextBox();
             this.txtTongHD = new System.Windows.Forms.TextBox();
             this.dgvHoaDon = new System.Windows.Forms.DataGridView();
+            this.btnXem = new System.Windows.Forms.Button();
+            this.cmbKy = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbNam = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.Dot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongTieuThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,12 +56,8 @@
             this.TongPhiBVMT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnXem = new System.Windows.Forms.Button();
-            this.cmbKy = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cmbNam = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.HD0 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtTongHD0 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.SuspendLayout();
@@ -100,6 +102,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtTongHD0);
             this.groupBox1.Controls.Add(this.progressBar);
             this.groupBox1.Controls.Add(this.txtTongCong);
             this.groupBox1.Controls.Add(this.txtTongPhiBVMT);
@@ -115,10 +118,17 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(12, 56);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(774, 550);
+            this.groupBox1.Size = new System.Drawing.Size(824, 550);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Hóa Đơn";
+            // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(561, 25);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(203, 23);
+            this.progressBar.TabIndex = 12;
             // 
             // txtTongCong
             // 
@@ -195,66 +205,16 @@
             this.TongThueGTGT,
             this.TongPhiBVMT,
             this.TongCong,
-            this.CreateDate});
+            this.CreateDate,
+            this.HD0});
             this.dgvHoaDon.Location = new System.Drawing.Point(9, 54);
             this.dgvHoaDon.MultiSelect = false;
             this.dgvHoaDon.Name = "dgvHoaDon";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHoaDon.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvHoaDon.Size = new System.Drawing.Size(755, 465);
+            this.dgvHoaDon.Size = new System.Drawing.Size(805, 465);
             this.dgvHoaDon.TabIndex = 5;
             this.dgvHoaDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_CellFormatting);
-            // 
-            // Dot
-            // 
-            this.Dot.DataPropertyName = "Dot";
-            this.Dot.HeaderText = "Đợt";
-            this.Dot.Name = "Dot";
-            this.Dot.Width = 50;
-            // 
-            // TongHD
-            // 
-            this.TongHD.DataPropertyName = "TongHD";
-            this.TongHD.HeaderText = "Tổng HĐ";
-            this.TongHD.Name = "TongHD";
-            this.TongHD.Width = 80;
-            // 
-            // TongTieuThu
-            // 
-            this.TongTieuThu.DataPropertyName = "TongTieuThu";
-            this.TongTieuThu.HeaderText = "Tiêu Thụ";
-            this.TongTieuThu.Name = "TongTieuThu";
-            this.TongTieuThu.Width = 80;
-            // 
-            // TongGiaBan
-            // 
-            this.TongGiaBan.DataPropertyName = "TongGiaBan";
-            this.TongGiaBan.HeaderText = "Giá Bán";
-            this.TongGiaBan.Name = "TongGiaBan";
-            // 
-            // TongThueGTGT
-            // 
-            this.TongThueGTGT.DataPropertyName = "TongThueGTGT";
-            this.TongThueGTGT.HeaderText = "Thuế GTGT";
-            this.TongThueGTGT.Name = "TongThueGTGT";
-            // 
-            // TongPhiBVMT
-            // 
-            this.TongPhiBVMT.DataPropertyName = "TongPhiBVMT";
-            this.TongPhiBVMT.HeaderText = "Phí BVMT";
-            this.TongPhiBVMT.Name = "TongPhiBVMT";
-            // 
-            // TongCong
-            // 
-            this.TongCong.DataPropertyName = "TongCong";
-            this.TongCong.HeaderText = "Tổng Cộng";
-            this.TongCong.Name = "TongCong";
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Ngày Tạo";
-            this.CreateDate.Name = "CreateDate";
             // 
             // btnXem
             // 
@@ -313,18 +273,78 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Năm:";
             // 
-            // progressBar
+            // Dot
             // 
-            this.progressBar.Location = new System.Drawing.Point(561, 25);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(203, 23);
-            this.progressBar.TabIndex = 12;
+            this.Dot.DataPropertyName = "Dot";
+            this.Dot.HeaderText = "Đợt";
+            this.Dot.Name = "Dot";
+            this.Dot.Width = 50;
+            // 
+            // TongHD
+            // 
+            this.TongHD.DataPropertyName = "TongHD";
+            this.TongHD.HeaderText = "Tổng HĐ";
+            this.TongHD.Name = "TongHD";
+            this.TongHD.Width = 80;
+            // 
+            // TongTieuThu
+            // 
+            this.TongTieuThu.DataPropertyName = "TongTieuThu";
+            this.TongTieuThu.HeaderText = "Tiêu Thụ";
+            this.TongTieuThu.Name = "TongTieuThu";
+            this.TongTieuThu.Width = 80;
+            // 
+            // TongGiaBan
+            // 
+            this.TongGiaBan.DataPropertyName = "TongGiaBan";
+            this.TongGiaBan.HeaderText = "Giá Bán";
+            this.TongGiaBan.Name = "TongGiaBan";
+            // 
+            // TongThueGTGT
+            // 
+            this.TongThueGTGT.DataPropertyName = "TongThueGTGT";
+            this.TongThueGTGT.HeaderText = "Thuế GTGT";
+            this.TongThueGTGT.Name = "TongThueGTGT";
+            // 
+            // TongPhiBVMT
+            // 
+            this.TongPhiBVMT.DataPropertyName = "TongPhiBVMT";
+            this.TongPhiBVMT.HeaderText = "Phí BVMT";
+            this.TongPhiBVMT.Name = "TongPhiBVMT";
+            // 
+            // TongCong
+            // 
+            this.TongCong.DataPropertyName = "TongCong";
+            this.TongCong.HeaderText = "Tổng Cộng";
+            this.TongCong.Name = "TongCong";
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Tạo";
+            this.CreateDate.Name = "CreateDate";
+            // 
+            // HD0
+            // 
+            this.HD0.DataPropertyName = "HD0";
+            this.HD0.HeaderText = "HĐ=0";
+            this.HD0.Name = "HD0";
+            this.HD0.Width = 50;
+            // 
+            // txtTongHD0
+            // 
+            this.txtTongHD0.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongHD0.Location = new System.Drawing.Point(762, 519);
+            this.txtTongHD0.Name = "txtTongHD0";
+            this.txtTongHD0.Size = new System.Drawing.Size(50, 20);
+            this.txtTongHD0.TabIndex = 13;
+            this.txtTongHD0.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // frmLuuHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(807, 623);
+            this.ClientSize = new System.Drawing.Size(873, 623);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.btnChonFile);
@@ -360,6 +380,7 @@
         private System.Windows.Forms.TextBox txtTongGiaBan;
         private System.Windows.Forms.TextBox txtTongTieuThu;
         private System.Windows.Forms.TextBox txtTongHD;
+        private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dot;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongHD;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongTieuThu;
@@ -368,6 +389,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TongPhiBVMT;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
-        private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HD0;
+        private System.Windows.Forms.TextBox txtTongHD0;
     }
 }

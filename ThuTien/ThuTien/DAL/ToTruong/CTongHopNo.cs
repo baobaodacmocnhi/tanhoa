@@ -70,6 +70,7 @@ namespace ThuTien.DAL.ToTruong
         public DataTable GetDS(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from item in _db.TT_TongHopNos
+                        from itemHD in _db.HOADONs.Where(itemA => itemA.DANHBA == item.DanhBo).ToList().OrderByDescending(itemA => itemA.ID_HOADON).Take(1).DefaultIfEmpty()
                         where  item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
                         select new 
                         {
@@ -83,6 +84,8 @@ namespace ThuTien.DAL.ToTruong
                             item.DinhMuc,
                             item.NgayThanhToan,
                             item.CreateDate,
+                            TieuThuHD = itemHD.TIEUTHU,
+                            KyHD=itemHD.KY+"/"+itemHD.NAM,
                         };
             return LINQToDataTable(query);
         }
@@ -90,6 +93,7 @@ namespace ThuTien.DAL.ToTruong
         public DataTable GetDS_To(int MaTo, DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from item in _db.TT_TongHopNos
+                        from itemHD in _db.HOADONs.Where(itemA => itemA.DANHBA == item.DanhBo).ToList().OrderByDescending(itemA => itemA.ID_HOADON).Take(1).DefaultIfEmpty()
                         where _db.TT_NguoiDungs.SingleOrDefault(itemND=>itemND.MaND==item.CreateBy.Value).MaTo == MaTo && item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
                         select new
                         {
@@ -103,6 +107,8 @@ namespace ThuTien.DAL.ToTruong
                             item.DinhMuc,
                             item.NgayThanhToan,
                             item.CreateDate,
+                            TieuThuHD=itemHD.TIEUTHU,
+                            KyHD = itemHD.KY + "/" + itemHD.NAM,
                         };
             return LINQToDataTable(query);
         }

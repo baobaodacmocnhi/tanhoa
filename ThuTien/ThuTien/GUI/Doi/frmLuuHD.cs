@@ -203,7 +203,7 @@ namespace ThuTien.GUI.Doi
                             _cHoaDon.Sua(hoadonCN);
                         }
                     }
-
+                    
                     try
                     {
                         string lineR_Test = lines[0].Replace("\",\"", "$").Replace("\"", "");
@@ -268,6 +268,7 @@ namespace ThuTien.GUI.Doi
                 long TongThueGTGT = 0;
                 long TongPhiBVMT = 0;
                 long TongCong = 0;
+                int TongHD0 = 0;
                 foreach (DataGridViewRow item in dgvHoaDon.Rows)
                 {
                     TongHD += int.Parse(item.Cells["TongHD"].Value.ToString());
@@ -276,6 +277,7 @@ namespace ThuTien.GUI.Doi
                     TongThueGTGT += long.Parse(item.Cells["TongThueGTGT"].Value.ToString());
                     TongPhiBVMT += long.Parse(item.Cells["TongPhiBVMT"].Value.ToString());
                     TongCong += long.Parse(item.Cells["TongCong"].Value.ToString());
+                    TongHD0 += int.Parse(item.Cells["HD0"].Value.ToString());
                 }
                 txtTongHD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHD);
                 txtTongTieuThu.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongTieuThu);
@@ -283,6 +285,7 @@ namespace ThuTien.GUI.Doi
                 txtTongThueGTGT.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongThueGTGT);
                 txtTongPhiBVMT.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongPhiBVMT);
                 txtTongCong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
+                txtTongHD0.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHD0);
             }
         }
 

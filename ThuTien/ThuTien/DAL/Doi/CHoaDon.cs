@@ -560,6 +560,7 @@ namespace ThuTien.DAL.Doi
                             TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
                             TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
                             itemGroup.FirstOrDefault().CreateDate,
+                            HD0=itemGroup.Count(groupItem=>groupItem.TIEUTHU==0),
                         };
             return LINQToDataTable(query.OrderBy(item=>item.Dot));
             //string sql = "select DOT,count(ID_HoaDon) as TongHD,sum(TIEUTHU) as TongLNCC,sum(GIABAN) as TongGiaBan,sum(THUE) as TongThueGTGT,sum(PHI) as TongPhiBVMT,sum(TONGCONG) as TongCong "
