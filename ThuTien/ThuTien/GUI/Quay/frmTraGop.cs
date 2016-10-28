@@ -48,16 +48,34 @@ namespace ThuTien.GUI.Quay
 
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
-                if (_cHoaDon.CheckExist(txtSoHoaDon.Text.Trim()))
+            if (e.KeyChar == 13)
+                if (!string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()) && txtSoHoaDon.Text.Length == 13)
                 {
-                    dgvHoaDon.Rows.Clear();
-                    HOADON hoadon = _cHoaDon.Get(txtSoHoaDon.Text.Trim());
-                    dgvHoaDon.Rows.Add(hoadon.ID_HOADON,hoadon.SOHOADON,hoadon.KY+"/"+hoadon.NAM,hoadon.MALOTRINH,hoadon.SOPHATHANH,hoadon.DANHBA,hoadon.SO+" "+hoadon.DUONG,hoadon.TENKH,hoadon.TONGCONG);
-                    txtSoHoaDon.Text = "";
+                    if (_cHoaDon.CheckExist(txtSoHoaDon.Text.Trim()))
+                    {
+                        dgvHoaDon.Rows.Clear();
+                        HOADON hoadon = _cHoaDon.Get(txtSoHoaDon.Text.Trim());
+                        dgvHoaDon.Rows.Add(hoadon.ID_HOADON, hoadon.SOHOADON, hoadon.KY + "/" + hoadon.NAM, hoadon.MALOTRINH, hoadon.SOPHATHANH, hoadon.DANHBA, hoadon.SO + " " + hoadon.DUONG, hoadon.TENKH, hoadon.TONGCONG);
+                        txtSoHoaDon.Text = "";
+                    }
+                    else
+                        MessageBox.Show("Hóa Đơn sai", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
-                    MessageBox.Show("Hóa Đơn sai", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ///Trung An thêm 'K' phía cuối liên hóa đơn
+                    if (!string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()) && txtSoHoaDon.Text.Length == 14)
+                    {
+                        if (_cHoaDon.CheckExist(txtSoHoaDon.Text.Trim().ToUpper().Replace("K","")))
+                        {
+                            dgvHoaDon.Rows.Clear();
+                            HOADON hoadon = _cHoaDon.Get(txtSoHoaDon.Text.Trim().ToUpper().Replace("K", ""));
+                            dgvHoaDon.Rows.Add(hoadon.ID_HOADON, hoadon.SOHOADON, hoadon.KY + "/" + hoadon.NAM, hoadon.MALOTRINH, hoadon.SOPHATHANH, hoadon.DANHBA, hoadon.SO + " " + hoadon.DUONG, hoadon.TENKH, hoadon.TONGCONG);
+                            txtSoHoaDon.Text = "";
+                        }
+                        else
+                            MessageBox.Show("Hóa Đơn sai", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)

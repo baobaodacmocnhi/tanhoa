@@ -106,8 +106,12 @@ namespace ThuTien.GUI.ChuyenKhoan
                 {
                     item.Cells["HanhThu"].Value = HoTen;
                     item.Cells["To"].Value = TenTo;
+                    item.DefaultCellStyle.BackColor = Color.Yellow;
                 }
-
+                if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
+                {
+                    item.DefaultCellStyle.BackColor = Color.Red;
+                }
                 if (!string.IsNullOrEmpty(item.Cells["SoTien"].Value.ToString()))
                     TongSoTien += int.Parse(item.Cells["SoTien"].Value.ToString());
                 if (!string.IsNullOrEmpty(item.Cells["Phi"].Value.ToString()))
@@ -300,6 +304,38 @@ namespace ThuTien.GUI.ChuyenKhoan
             }
             else
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnInLenhHuy_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            foreach (DataGridViewRow item in dgvDichVuThu.Rows)
+                if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
+                {
+                    DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                    dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                    dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                    dr["LoaiBaoCao"] = "DỊCH VỤ THU HỘ(LỆNH HỦY)";
+                    dr["GhiChu"] = "ĐỂ BIẾT, KHÔNG THU";
+                    dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                    dr["HoTen"] = item.Cells["HoTen"].Value.ToString();
+                    dr["MLT"] = item.Cells["MLT"].Value.ToString().Insert(4, " ").Insert(2, " ");
+                    dr["Ky"] = item.Cells["Ky"].Value.ToString();
+                    dr["TongCong"] = item.Cells["SoTien"].Value.ToString();
+                    dr["HanhThu"] = item.Cells["HanhThu"].Value.ToString();
+                    dr["To"] = item.Cells["To"].Value.ToString();
+                    if (int.Parse(item.Cells["GiaBieu"].Value.ToString()) > 20)
+                        dr["Loai"] = "CQ";
+                    else
+                        dr["Loai"] = "TG";
+                    if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
+                        dr["LenhHuy"] = true;
+                    ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
+                }
+            rptDSTamThuChuyenKhoan rpt = new rptDSTamThuChuyenKhoan();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
         }
     }
 }
