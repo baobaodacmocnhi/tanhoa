@@ -84,5 +84,10 @@ namespace KTKS_DonKH.GUI.HeThong
 
             }
         }
+
+        private void txtQuery_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
     }
 }

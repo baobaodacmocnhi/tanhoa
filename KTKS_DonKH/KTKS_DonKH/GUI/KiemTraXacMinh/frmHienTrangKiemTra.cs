@@ -110,7 +110,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
             {
-                if (_selectedindexHTKT != -1)
+                if (_selectedindexHTKT != -1 && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     if (_cHienTrangKiemTra.XoaHienTrangKiemTra(_cHienTrangKiemTra.getHienTrangKiemTrabyID(int.Parse(dgvDSHienTrangKT["MaHTKT", _selectedindexHTKT].Value.ToString()))))
                     {
                         txtHienTrangKT.Text = "";

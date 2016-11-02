@@ -83,7 +83,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 if (printDialog.ShowDialog() == DialogResult.OK)
                 {
                     for (int i = 0; i < dgvDSThu.Rows.Count; i++)
-                        if (bool.Parse(dgvDSThu["In", i].Value.ToString()) == true)
+                        if (dgvDSThu["In", i].Value!=null&&bool.Parse(dgvDSThu["In", i].Value.ToString()) == true)
                         {
                             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                             DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
@@ -132,7 +132,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             DataSetBaoCao dsBaoCao2 = new DataSetBaoCao();
             bool flag = true;
             for (int i = 0; i < dgvDSThu.Rows.Count; i++)
-                if (bool.Parse(dgvDSThu["In", i].Value.ToString()) == true)
+                if (dgvDSThu["In", i].Value != null && bool.Parse(dgvDSThu["In", i].Value.ToString()) == true)
                     if (flag)
                     {
                         DataRow dr = dsBaoCao1.Tables["ThaoThuTraLoi"].NewRow();

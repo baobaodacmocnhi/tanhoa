@@ -29,16 +29,14 @@
         private void InitializeComponent()
         {
             this.dateDen = new System.Windows.Forms.DateTimePicker();
-            this.radThongKeBienBan = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.dateTu = new System.Windows.Forms.DateTimePicker();
             this.btnBaoCao = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panel_KhoangThoiGian = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel_KhoangThoiGian.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dateDen
@@ -47,20 +45,8 @@
             this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateDen.Location = new System.Drawing.Point(85, 35);
             this.dateDen.Name = "dateDen";
-            this.dateDen.Size = new System.Drawing.Size(100, 25);
+            this.dateDen.Size = new System.Drawing.Size(90, 25);
             this.dateDen.TabIndex = 14;
-            this.dateDen.ValueChanged += new System.EventHandler(this.dateDen_ValueChanged);
-            // 
-            // radThongKeBienBan
-            // 
-            this.radThongKeBienBan.AutoSize = true;
-            this.radThongKeBienBan.Checked = true;
-            this.radThongKeBienBan.Location = new System.Drawing.Point(71, 7);
-            this.radThongKeBienBan.Name = "radThongKeBienBan";
-            this.radThongKeBienBan.Size = new System.Drawing.Size(144, 21);
-            this.radThongKeBienBan.TabIndex = 29;
-            this.radThongKeBienBan.Text = "Thống Kê Biên Bản";
-            this.radThongKeBienBan.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -80,47 +66,24 @@
             this.label4.TabIndex = 16;
             this.label4.Text = "Đến Ngày:";
             // 
-            // crystalReportViewer1
-            // 
-            this.crystalReportViewer1.ActiveViewIndex = -1;
-            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer1.Location = new System.Drawing.Point(3, 3);
-            this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(1259, 484);
-            this.crystalReportViewer1.TabIndex = 0;
-            this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
-            // 
             // dateTu
             // 
             this.dateTu.CustomFormat = "dd/MM/yyyy";
             this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTu.Location = new System.Drawing.Point(85, 4);
             this.dateTu.Name = "dateTu";
-            this.dateTu.Size = new System.Drawing.Size(100, 25);
+            this.dateTu.Size = new System.Drawing.Size(90, 25);
             this.dateTu.TabIndex = 13;
-            this.dateTu.ValueChanged += new System.EventHandler(this.dateTu_ValueChanged);
             // 
             // btnBaoCao
             // 
-            this.btnBaoCao.Image = global::KTKS_DonKH.Properties.Resources.find_24x24;
-            this.btnBaoCao.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBaoCao.Location = new System.Drawing.Point(733, 2);
+            this.btnBaoCao.Location = new System.Drawing.Point(192, 45);
             this.btnBaoCao.Name = "btnBaoCao";
-            this.btnBaoCao.Size = new System.Drawing.Size(94, 35);
+            this.btnBaoCao.Size = new System.Drawing.Size(75, 25);
             this.btnBaoCao.TabIndex = 28;
             this.btnBaoCao.Text = "Báo Cáo";
-            this.btnBaoCao.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBaoCao.UseVisualStyleBackColor = true;
             this.btnBaoCao.Click += new System.EventHandler(this.btnBaoCao_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.crystalReportViewer1);
-            this.panel1.Location = new System.Drawing.Point(13, 67);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1265, 490);
-            this.panel1.TabIndex = 26;
             // 
             // panel_KhoangThoiGian
             // 
@@ -128,45 +91,50 @@
             this.panel_KhoangThoiGian.Controls.Add(this.dateDen);
             this.panel_KhoangThoiGian.Controls.Add(this.label3);
             this.panel_KhoangThoiGian.Controls.Add(this.label4);
-            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(535, 2);
+            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(6, 24);
             this.panel_KhoangThoiGian.Name = "panel_KhoangThoiGian";
-            this.panel_KhoangThoiGian.Size = new System.Drawing.Size(192, 64);
+            this.panel_KhoangThoiGian.Size = new System.Drawing.Size(180, 64);
             this.panel_KhoangThoiGian.TabIndex = 27;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.panel_KhoangThoiGian);
+            this.groupBox1.Controls.Add(this.btnBaoCao);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(272, 95);
+            this.groupBox1.TabIndex = 30;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Thống Kê";
             // 
             // frmBaoCaoBamChi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1297, 598);
-            this.Controls.Add(this.radThongKeBienBan);
-            this.Controls.Add(this.btnBaoCao);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel_KhoangThoiGian);
+            this.ClientSize = new System.Drawing.Size(726, 412);
+            this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmBaoCaoBamChi";
             this.Text = "Các Loại Báo Cáo Bấm Chì";
             this.Load += new System.EventHandler(this.frmBaoCaoBamChi_Load);
-            this.panel1.ResumeLayout(false);
             this.panel_KhoangThoiGian.ResumeLayout(false);
             this.panel_KhoangThoiGian.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.DateTimePicker dateDen;
-        private System.Windows.Forms.RadioButton radThongKeBienBan;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
         private System.Windows.Forms.DateTimePicker dateTu;
         private System.Windows.Forms.Button btnBaoCao;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel_KhoangThoiGian;
+        private System.Windows.Forms.GroupBox groupBox1;
 
     }
 }

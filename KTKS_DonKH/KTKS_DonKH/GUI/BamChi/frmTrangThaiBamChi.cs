@@ -8,13 +8,16 @@ using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.BamChi;
 using KTKS_DonKH.LinQ;
+using KTKS_DonKH.DAL.QuanTri;
 
 namespace KTKS_DonKH.GUI.BamChi
 {
     public partial class frmTrangThaiBamChi : Form
     {
+        string _mnu = "mnuTrangThaiBamChi";
         CTrangThaiBamChi _cTrangThaiBamChi = new CTrangThaiBamChi();
         int _selectedindexTTBC = -1;
+        BindingList<TrangThaiBamChi> _blTrangThaiBamChi;
 
         public frmTrangThaiBamChi()
         {
@@ -24,8 +27,13 @@ namespace KTKS_DonKH.GUI.BamChi
         private void frmTrangThaiBamChi_Load(object sender, EventArgs e)
         {
             dgvDSTrangThaiBC.AutoGenerateColumns = false;
-            dgvDSTrangThaiBC.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSTrangThaiBC.Font, FontStyle.Bold);
-            dgvDSTrangThaiBC.DataSource = _cTrangThaiBamChi.LoadDSTrangThaiBamChi();
+            LoadDataTable();
+        }
+
+        public void LoadDataTable()
+        {
+            _blTrangThaiBamChi = new BindingList<TrangThaiBamChi>(_cTrangThaiBamChi.LoadDSTrangThaiBamChi());
+            dgvDSTrangThaiBC.DataSource = _blTrangThaiBamChi;
         }
 
         #region Trạng Thái Bấm Chì
@@ -53,53 +61,64 @@ namespace KTKS_DonKH.GUI.BamChi
 
         private void btnThemTrangThaiBC_Click(object sender, EventArgs e)
         {
-            if (txtTrangThaiBC.Text.Trim() != "")
+            if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
             {
-                TrangThaiBamChi trangthaibamchi = new TrangThaiBamChi();
-                trangthaibamchi.TenTTBC = txtTrangThaiBC.Text.Trim();
-
-                if (_cTrangThaiBamChi.ThemTrangThaiBamChi(trangthaibamchi))
-                {
-                    txtTrangThaiBC.Text = "";
-                    dgvDSTrangThaiBC.DataSource = _cTrangThaiBamChi.LoadDSTrangThaiBamChi();
-                    //bsTrangThaiBC = new BindingSource(_cTrangThaiBamChi.LoadDSTrangThaiBamChi(), string.Empty);
-                }
-            }
-            else
-                MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        private void btnSuaTrangThaiBC_Click(object sender, EventArgs e)
-        {
-            if (_selectedindexTTBC != -1)
                 if (txtTrangThaiBC.Text.Trim() != "")
                 {
-                    TrangThaiBamChi trangthaibamchi = _cTrangThaiBamChi.getTrangThaiBamChibyID(int.Parse(dgvDSTrangThaiBC["MaTTBC", _selectedindexTTBC].Value.ToString()));
+                    TrangThaiBamChi trangthaibamchi = new TrangThaiBamChi();
                     trangthaibamchi.TenTTBC = txtTrangThaiBC.Text.Trim();
 
-                    if (_cTrangThaiBamChi.SuaTrangThaiBamChi(trangthaibamchi))
+                    if (_cTrangThaiBamChi.ThemTrangThaiBamChi(trangthaibamchi))
                     {
                         txtTrangThaiBC.Text = "";
-                        _selectedindexTTBC = -1;
-                        dgvDSTrangThaiBC.DataSource = _cTrangThaiBamChi.LoadDSTrangThaiBamChi();
-                        //bsTrangThaiBC = new BindingSource(_cTrangThaiBamChi.LoadDSTrangThaiBamChi(), string.Empty);
+                        LoadDataTable();
                     }
                 }
                 else
                     MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
+        private void btnSuaTrangThaiBC_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+            {
+                if (_selectedindexTTBC != -1)
+                    if (txtTrangThaiBC.Text.Trim() != "")
+                    {
+                        TrangThaiBamChi trangthaibamchi = _cTrangThaiBamChi.getTrangThaiBamChibyID(int.Parse(dgvDSTrangThaiBC["MaTTBC", _selectedindexTTBC].Value.ToString()));
+                        trangthaibamchi.TenTTBC = txtTrangThaiBC.Text.Trim();
+
+                        if (_cTrangThaiBamChi.SuaTrangThaiBamChi(trangthaibamchi))
+                        {
+                            txtTrangThaiBC.Text = "";
+                            _selectedindexTTBC = -1;
+                            LoadDataTable();
+                        }
+                    }
+                    else
+                        MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnXoaTrangThaiBC_Click(object sender, EventArgs e)
         {
-            if (_selectedindexTTBC != -1)
-                if (_cTrangThaiBamChi.XoaTrangThaiBamChi(_cTrangThaiBamChi.getTrangThaiBamChibyID(int.Parse(dgvDSTrangThaiBC["MaTTBC", _selectedindexTTBC].Value.ToString()))))
-                {
-                    txtTrangThaiBC.Text = "";
-                    _selectedindexTTBC = -1;
-                    dgvDSTrangThaiBC.DataSource = _cTrangThaiBamChi.LoadDSTrangThaiBamChi();
-                    //bsTrangThaiBC = new BindingSource(_cTrangThaiBamChi.LoadDSTrangThaiBamChi(), string.Empty);
-                }
+            if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
+            {
+                if (_selectedindexTTBC != -1 && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (_cTrangThaiBamChi.XoaTrangThaiBamChi(_cTrangThaiBamChi.getTrangThaiBamChibyID(int.Parse(dgvDSTrangThaiBC["MaTTBC", _selectedindexTTBC].Value.ToString()))))
+                    {
+                        txtTrangThaiBC.Text = "";
+                        _selectedindexTTBC = -1;
+                        LoadDataTable();
+                    }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnUpTrangThaiBC_Click(object sender, EventArgs e)
@@ -173,5 +192,49 @@ namespace KTKS_DonKH.GUI.BamChi
         }
 
         #endregion
+
+        int rowIndexFromMouseDown;
+        DataGridViewRow rw;
+        private void dgvDSTrangThaiBC_DragDrop(object sender, DragEventArgs e)
+        {
+            int rowIndexOfItemUnderMouseToDrop;
+            Point clientPoint = dgvDSTrangThaiBC.PointToClient(new Point(e.X, e.Y));
+            rowIndexOfItemUnderMouseToDrop = dgvDSTrangThaiBC.HitTest(clientPoint.X, clientPoint.Y).RowIndex;
+
+            if (e.Effect == DragDropEffects.Move)
+            {
+                var item = this._blTrangThaiBamChi[rowIndexFromMouseDown];
+                _blTrangThaiBamChi.RemoveAt(rowIndexFromMouseDown);
+                _blTrangThaiBamChi.Insert(rowIndexOfItemUnderMouseToDrop, item);
+
+                ///update STT dô database
+                for (int i = 0; i < _blTrangThaiBamChi.Count; i++)
+                {
+                    _blTrangThaiBamChi[i].STT = i + 1;
+                }
+                _cTrangThaiBamChi.SubmitChanges();
+            }
+        }
+
+        private void dgvDSTrangThaiBC_DragEnter(object sender, DragEventArgs e)
+        {
+            if (dgvDSTrangThaiBC.SelectedRows.Count > 0)
+            {
+                e.Effect = DragDropEffects.Move;
+            }
+        }
+
+        private void dgvDSTrangThaiBC_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (dgvDSTrangThaiBC.SelectedRows.Count == 1)
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    rw = dgvDSTrangThaiBC.SelectedRows[0];
+                    rowIndexFromMouseDown = dgvDSTrangThaiBC.SelectedRows[0].Index;
+                    dgvDSTrangThaiBC.DoDragDrop(rw, DragDropEffects.Move);
+                }
+            }
+        }
     }
 }

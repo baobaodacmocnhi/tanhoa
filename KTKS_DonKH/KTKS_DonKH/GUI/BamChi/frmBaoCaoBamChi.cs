@@ -10,12 +10,12 @@ using KTKS_DonKH.DAL.BamChi;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.BamChi;
 using KTKS_DonKH.DAL.CapNhat;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace KTKS_DonKH.GUI.BamChi
 {
     public partial class frmBaoCaoBamChi : Form
     {
-        string _tuNgay = "", _denNgay = "";
         CBamChi _cBamChi = new CBamChi();
         CTrangThaiBamChi _cTrangThaiBamChi = new CTrangThaiBamChi();
 
@@ -31,43 +31,26 @@ namespace KTKS_DonKH.GUI.BamChi
 
         private void btnBaoCao_Click(object sender, EventArgs e)
         {
-            if (radThongKeBienBan.Checked)
-                {
-                    DataTable dt = _cBamChi.LoadDSCTBamChiByDates(dateTu.Value, dateDen.Value);
-                    DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                    foreach (DataRow item in dt.Rows)
-                    {
-                        DataRow dr = dsBaoCao.Tables["ThongKeBamChi"].NewRow();
-                        dr["TuNgay"] = _tuNgay;
-                        dr["DenNgay"] = _denNgay;
-                        dr["TrangThaiBC"] = item["TrangThaiBC"];
-                        dr["TenLD"] = item["TenLD"];
-                        dr["DanhBo"] = item["DanhBo"];
-                        dsBaoCao.Tables["ThongKeBamChi"].Rows.Add(dr);
-                    }
-                    dateTu.Value = DateTime.Now;
-                    dateDen.Value = DateTime.Now;
-                    _tuNgay = _denNgay = "";
+            DataTable dt = _cBamChi.LoadDSCTBamChiByDates(dateTu.Value, dateDen.Value);
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            foreach (DataRow item in dt.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["ThongKeBamChi"].NewRow();
+                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                dr["TrangThaiBC"] = item["TrangThaiBC"];
+                dr["TenLD"] = item["TenLD"];
+                dr["DanhBo"] = item["DanhBo"];
+                dsBaoCao.Tables["ThongKeBamChi"].Rows.Add(dr);
+            }
 
-                    rptThongKeBamChi rpt = new rptThongKeBamChi();
-                    rpt.SetDataSource(dsBaoCao);
-                    crystalReportViewer1.ReportSource = rpt;
-                }
-
+            rptThongKeBamChi rpt = new rptThongKeBamChi();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.Show();
         }
 
-        private void dateTu_ValueChanged(object sender, EventArgs e)
-        {
-            _tuNgay = dateTu.Value.ToString("dd/MM/yyyy");
-            _denNgay = "";
-        }
 
-        private void dateDen_ValueChanged(object sender, EventArgs e)
-        {
-            _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
-        }
-
-        
     }
 }
 

@@ -23,24 +23,6 @@ namespace KTKS_DonKH.DAL.BamChi
             }
         }
 
-        public List<TrangThaiBamChi> LoadDSTrangThaiBamChi(bool inheritance)
-        {
-            try
-            {
-                if (inheritance)
-                {
-                    return db.TrangThaiBamChis.OrderBy(item => item.STT).ToList();
-                }
-                else
-                    return null;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
         public TrangThaiBamChi getTrangThaiBamChibyID(int MaTTBC)
         {
             try

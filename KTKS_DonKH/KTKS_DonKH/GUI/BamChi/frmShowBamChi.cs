@@ -114,7 +114,7 @@ namespace KTKS_DonKH.GUI.BamChi
         private void frmShowNhapBamChi_Load(object sender, EventArgs e)
         {
             this.Location = new Point(30, 70);
-            cmbTrangThaiBC.DataSource = _cTrangThaiBamChi.LoadDSTrangThaiBamChi(true);
+            cmbTrangThaiBC.DataSource = _cTrangThaiBamChi.LoadDSTrangThaiBamChi();
             cmbTrangThaiBC.DisplayMember = "TenTTBC";
             cmbTrangThaiBC.ValueMember = "TenTTBC";
             cmbTrangThaiBC.SelectedIndex = -1;

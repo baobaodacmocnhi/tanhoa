@@ -30,9 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnDownTrangThaiBC = new System.Windows.Forms.Button();
             this.btnXoaTrangThaiBC = new System.Windows.Forms.Button();
-            this.btnUpTrangThaiBC = new System.Windows.Forms.Button();
             this.dgvDSTrangThaiBC = new System.Windows.Forms.DataGridView();
             this.MaTTBC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenTTBC = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,38 +44,25 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btnDownTrangThaiBC);
             this.groupBox2.Controls.Add(this.btnXoaTrangThaiBC);
-            this.groupBox2.Controls.Add(this.btnUpTrangThaiBC);
             this.groupBox2.Controls.Add(this.dgvDSTrangThaiBC);
             this.groupBox2.Controls.Add(this.btnSuaTrangThaiBC);
             this.groupBox2.Controls.Add(this.btnThemTrangThaiBC);
             this.groupBox2.Controls.Add(this.txtTrangThaiBC);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Location = new System.Drawing.Point(13, 13);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(484, 587);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Trạng Thái Bấm Chì";
             // 
-            // btnDownTrangThaiBC
-            // 
-            this.btnDownTrangThaiBC.Location = new System.Drawing.Point(92, 58);
-            this.btnDownTrangThaiBC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnDownTrangThaiBC.Name = "btnDownTrangThaiBC";
-            this.btnDownTrangThaiBC.Size = new System.Drawing.Size(75, 25);
-            this.btnDownTrangThaiBC.TabIndex = 91;
-            this.btnDownTrangThaiBC.Text = "Down";
-            this.btnDownTrangThaiBC.UseVisualStyleBackColor = true;
-            this.btnDownTrangThaiBC.Click += new System.EventHandler(this.btnDownTrangThaiBC_Click);
-            // 
             // btnXoaTrangThaiBC
             // 
             this.btnXoaTrangThaiBC.Location = new System.Drawing.Point(399, 58);
-            this.btnXoaTrangThaiBC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnXoaTrangThaiBC.Margin = new System.Windows.Forms.Padding(4);
             this.btnXoaTrangThaiBC.Name = "btnXoaTrangThaiBC";
             this.btnXoaTrangThaiBC.Size = new System.Drawing.Size(75, 25);
             this.btnXoaTrangThaiBC.TabIndex = 88;
@@ -85,19 +70,9 @@
             this.btnXoaTrangThaiBC.UseVisualStyleBackColor = true;
             this.btnXoaTrangThaiBC.Click += new System.EventHandler(this.btnXoaTrangThaiBC_Click);
             // 
-            // btnUpTrangThaiBC
-            // 
-            this.btnUpTrangThaiBC.Location = new System.Drawing.Point(9, 58);
-            this.btnUpTrangThaiBC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnUpTrangThaiBC.Name = "btnUpTrangThaiBC";
-            this.btnUpTrangThaiBC.Size = new System.Drawing.Size(75, 25);
-            this.btnUpTrangThaiBC.TabIndex = 90;
-            this.btnUpTrangThaiBC.Text = "Up";
-            this.btnUpTrangThaiBC.UseVisualStyleBackColor = true;
-            this.btnUpTrangThaiBC.Click += new System.EventHandler(this.btnUpTrangThaiBC_Click);
-            // 
             // dgvDSTrangThaiBC
             // 
+            this.dgvDSTrangThaiBC.AllowDrop = true;
             this.dgvDSTrangThaiBC.AllowUserToAddRows = false;
             this.dgvDSTrangThaiBC.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -113,13 +88,16 @@
             this.MaTTBC,
             this.TenTTBC});
             this.dgvDSTrangThaiBC.Location = new System.Drawing.Point(8, 91);
-            this.dgvDSTrangThaiBC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvDSTrangThaiBC.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSTrangThaiBC.MultiSelect = false;
             this.dgvDSTrangThaiBC.Name = "dgvDSTrangThaiBC";
             this.dgvDSTrangThaiBC.Size = new System.Drawing.Size(466, 486);
             this.dgvDSTrangThaiBC.TabIndex = 8;
             this.dgvDSTrangThaiBC.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSTrangThaiBC_CellContentClick);
             this.dgvDSTrangThaiBC.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSTrangThaiBC_RowPostPaint);
+            this.dgvDSTrangThaiBC.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvDSTrangThaiBC_DragDrop);
+            this.dgvDSTrangThaiBC.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvDSTrangThaiBC_DragEnter);
+            this.dgvDSTrangThaiBC.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvDSTrangThaiBC_MouseClick);
             // 
             // MaTTBC
             // 
@@ -139,7 +117,7 @@
             // btnSuaTrangThaiBC
             // 
             this.btnSuaTrangThaiBC.Location = new System.Drawing.Point(316, 58);
-            this.btnSuaTrangThaiBC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSuaTrangThaiBC.Margin = new System.Windows.Forms.Padding(4);
             this.btnSuaTrangThaiBC.Name = "btnSuaTrangThaiBC";
             this.btnSuaTrangThaiBC.Size = new System.Drawing.Size(75, 25);
             this.btnSuaTrangThaiBC.TabIndex = 7;
@@ -150,7 +128,7 @@
             // btnThemTrangThaiBC
             // 
             this.btnThemTrangThaiBC.Location = new System.Drawing.Point(233, 58);
-            this.btnThemTrangThaiBC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnThemTrangThaiBC.Margin = new System.Windows.Forms.Padding(4);
             this.btnThemTrangThaiBC.Name = "btnThemTrangThaiBC";
             this.btnThemTrangThaiBC.Size = new System.Drawing.Size(75, 25);
             this.btnThemTrangThaiBC.TabIndex = 6;
@@ -161,7 +139,7 @@
             // txtTrangThaiBC
             // 
             this.txtTrangThaiBC.Location = new System.Drawing.Point(147, 28);
-            this.txtTrangThaiBC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTrangThaiBC.Margin = new System.Windows.Forms.Padding(4);
             this.txtTrangThaiBC.Name = "txtTrangThaiBC";
             this.txtTrangThaiBC.Size = new System.Drawing.Size(327, 22);
             this.txtTrangThaiBC.TabIndex = 1;
@@ -180,10 +158,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(529, 611);
             this.Controls.Add(this.groupBox2);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmTrangThaiBamChi";
             this.Text = "Trạng Thái Bấm Chì";
             this.Load += new System.EventHandler(this.frmTrangThaiBamChi_Load);
@@ -197,9 +176,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnDownTrangThaiBC;
         private System.Windows.Forms.Button btnXoaTrangThaiBC;
-        private System.Windows.Forms.Button btnUpTrangThaiBC;
         private System.Windows.Forms.DataGridView dgvDSTrangThaiBC;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaTTBC;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenTTBC;

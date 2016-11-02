@@ -104,14 +104,17 @@ namespace KTKS_DonKH.GUI.BamChi
             txtTheoYeuCau.Text = "";
 
             selectedindex = -1;
+            _donkh = null;
+            _dontxl = null;
+            _hoadon = null;
+            
         }
 
         private void frmNhapBamChi_Load(object sender, EventArgs e)
         {
             dgvDSNhapBamChi.AutoGenerateColumns = false;
-            //dgvDSNhapBamChi.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSNhapBamChi.Font, FontStyle.Bold);
 
-            cmbTrangThaiBC.DataSource = _cTrangThaiBamChi.LoadDSTrangThaiBamChi(true);
+            cmbTrangThaiBC.DataSource = _cTrangThaiBamChi.LoadDSTrangThaiBamChi();
             cmbTrangThaiBC.DisplayMember = "TenTTBC";
             cmbTrangThaiBC.ValueMember = "TenTTBC";
             cmbTrangThaiBC.SelectedIndex = -1;
@@ -432,8 +435,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             MessageBox.Show("Lỗi Danh Bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        CTBamChi ctbamchi = new CTBamChi();
-                        ctbamchi = _cBamChi.getCTBamChibyID(decimal.Parse(dgvDSNhapBamChi["MaCTBC", selectedindex].Value.ToString()));
+                        CTBamChi ctbamchi =_cBamChi.getCTBamChibyID(decimal.Parse(dgvDSNhapBamChi["MaCTBC", selectedindex].Value.ToString()));
                         ctbamchi.DanhBo = txtDanhBo.Text.Trim();
                         ctbamchi.HopDong = txtHopDong.Text.Trim();
                         ctbamchi.HoTen = txtHoTen.Text.Trim();
@@ -526,6 +528,28 @@ namespace KTKS_DonKH.GUI.BamChi
             }
             else
                 MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
+            {
+                try
+                {
+                    if (selectedindex != -1 && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        CTBamChi ctbamchi = _cBamChi.getCTBamChibyID(decimal.Parse(dgvDSNhapBamChi["MaCTBC", selectedindex].Value.ToString()));
+                        if (_cBamChi.XoaCTBamChi(ctbamchi,CTaiKhoan.MaUser))
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void dgvDSNhapBamChi_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -685,6 +709,8 @@ namespace KTKS_DonKH.GUI.BamChi
                     break;
             }
         }
+
+        
 
     }
 }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDSCTBamChi = new System.Windows.Forms.DataGridView();
             this.MaCTBC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ToXuLy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -70,14 +70,14 @@
             // 
             this.dgvDSCTBamChi.AllowUserToAddRows = false;
             this.dgvDSCTBamChi.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSCTBamChi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSCTBamChi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDSCTBamChi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSCTBamChi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaCTBC,
@@ -98,12 +98,12 @@
             this.MaSoBC,
             this.TheoYeuCau,
             this.CreateBy});
-            this.dgvDSCTBamChi.Location = new System.Drawing.Point(14, 65);
+            this.dgvDSCTBamChi.Location = new System.Drawing.Point(0, 65);
             this.dgvDSCTBamChi.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dgvDSCTBamChi.MultiSelect = false;
             this.dgvDSCTBamChi.Name = "dgvDSCTBamChi";
             this.dgvDSCTBamChi.RowHeadersWidth = 60;
-            this.dgvDSCTBamChi.Size = new System.Drawing.Size(1432, 478);
+            this.dgvDSCTBamChi.Size = new System.Drawing.Size(1432, 544);
             this.dgvDSCTBamChi.TabIndex = 21;
             this.dgvDSCTBamChi.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSCTBamChi_CellFormatting);
             this.dgvDSCTBamChi.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSCTBamChi_RowPostPaint);
@@ -241,18 +241,18 @@
             // 
             this.dateTu.CustomFormat = "dd/MM/yyyy";
             this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu.Location = new System.Drawing.Point(85, 4);
+            this.dateTu.Location = new System.Drawing.Point(84, 4);
             this.dateTu.Name = "dateTu";
-            this.dateTu.Size = new System.Drawing.Size(100, 22);
+            this.dateTu.Size = new System.Drawing.Size(90, 22);
             this.dateTu.TabIndex = 13;
             // 
             // dateDen
             // 
             this.dateDen.CustomFormat = "dd/MM/yyyy";
             this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen.Location = new System.Drawing.Point(85, 33);
+            this.dateDen.Location = new System.Drawing.Point(84, 33);
             this.dateDen.Name = "dateDen";
-            this.dateDen.Size = new System.Drawing.Size(100, 22);
+            this.dateDen.Size = new System.Drawing.Size(90, 22);
             this.dateDen.TabIndex = 14;
             // 
             // panel_KhoangThoiGian
@@ -263,7 +263,7 @@
             this.panel_KhoangThoiGian.Controls.Add(this.label4);
             this.panel_KhoangThoiGian.Location = new System.Drawing.Point(523, 2);
             this.panel_KhoangThoiGian.Name = "panel_KhoangThoiGian";
-            this.panel_KhoangThoiGian.Size = new System.Drawing.Size(192, 60);
+            this.panel_KhoangThoiGian.Size = new System.Drawing.Size(181, 60);
             this.panel_KhoangThoiGian.TabIndex = 23;
             this.panel_KhoangThoiGian.Visible = false;
             // 
@@ -287,7 +287,7 @@
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(802, 18);
+            this.btnIn.Location = new System.Drawing.Point(791, 18);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(100, 25);
             this.btnIn.TabIndex = 22;
@@ -337,7 +337,7 @@
             // 
             // btnInQuetToanVatTu
             // 
-            this.btnInQuetToanVatTu.Location = new System.Drawing.Point(908, 18);
+            this.btnInQuetToanVatTu.Location = new System.Drawing.Point(897, 18);
             this.btnInQuetToanVatTu.Name = "btnInQuetToanVatTu";
             this.btnInQuetToanVatTu.Size = new System.Drawing.Size(100, 25);
             this.btnInQuetToanVatTu.TabIndex = 24;
@@ -369,7 +369,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(721, 18);
+            this.btnXem.Location = new System.Drawing.Point(710, 18);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 25);
             this.btnXem.TabIndex = 27;
@@ -381,8 +381,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1460, 561);
+            this.ClientSize = new System.Drawing.Size(1460, 658);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.chkLoaiDon);
             this.Controls.Add(this.chkInBamChiThan_BBDCMS);

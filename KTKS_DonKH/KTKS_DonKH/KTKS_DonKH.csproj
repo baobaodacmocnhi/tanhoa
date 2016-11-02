@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>359</ApplicationRevision>
+    <ApplicationRevision>361</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -157,12 +157,6 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="BaoCao\BamChi\rptSLDHNDayChi.cs">
-      <DependentUpon>rptSLDHNDayChi.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="BaoCao\BamChi\rptDSBamChi.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -173,12 +167,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptQuyetToanVatTu.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="BaoCao\BamChi\rptSLDHNVienChi.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptSLDHNVienChi.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BaoCao\BamChi\rptThongKeBamChi.cs">
@@ -1115,10 +1103,6 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSBamChi_ChiThan_BBDCMS.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\BamChi\rptSLDHNDayChi.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptSLDHNDayChi.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\BamChi\rptDSBamChi.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSBamChi.cs</LastGenOutput>
@@ -1126,10 +1110,6 @@
     <EmbeddedResource Include="BaoCao\BamChi\rptQuyetToanVatTu.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptQuyetToanVatTu.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\BamChi\rptSLDHNVienChi.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptSLDHNVienChi.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\BamChi\rptThongKeBamChi.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

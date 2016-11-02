@@ -82,12 +82,12 @@
             this.NoiDungKiemTra,
             this.CreateBy,
             this.MaU});
-            this.dgvDSCTKTXM.Location = new System.Drawing.Point(0, 69);
+            this.dgvDSCTKTXM.Location = new System.Drawing.Point(0, 63);
             this.dgvDSCTKTXM.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dgvDSCTKTXM.MultiSelect = false;
             this.dgvDSCTKTXM.Name = "dgvDSCTKTXM";
             this.dgvDSCTKTXM.RowHeadersWidth = 60;
-            this.dgvDSCTKTXM.Size = new System.Drawing.Size(1551, 560);
+            this.dgvDSCTKTXM.Size = new System.Drawing.Size(1551, 545);
             this.dgvDSCTKTXM.TabIndex = 9;
             this.dgvDSCTKTXM.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSKTXM_CellFormatting);
             this.dgvDSCTKTXM.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSDonKH_RowPostPaint);

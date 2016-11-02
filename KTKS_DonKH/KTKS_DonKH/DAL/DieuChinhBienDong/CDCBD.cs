@@ -2071,11 +2071,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         /// <param name="MaDon"></param>
         /// <param name="DanhBo"></param>
         /// <returns></returns>
-        public bool CheckCTDCHDbyMaDonDanhBo(decimal MaDon, string DanhBo)
+        public bool CheckCTDCHDbyMaDonDanhBo(decimal MaDon, string DanhBo,string KyHD)
         {
             try
             {
-                return db.CTDCHDs.Any(itemCTDCHD => itemCTDCHD.DCBD.MaDon == MaDon && itemCTDCHD.DanhBo == DanhBo);
+                return db.CTDCHDs.Any(itemCTDCHD => itemCTDCHD.DCBD.MaDon == MaDon && itemCTDCHD.DanhBo == DanhBo&&itemCTDCHD.KyHD==KyHD);
             }
             catch (Exception ex)
             {
@@ -2090,11 +2090,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         /// <param name="MaDonTXL"></param>
         /// <param name="DanhBo"></param>
         /// <returns></returns>
-        public bool CheckCTDCHDbyMaDonDanhBo_TXL(decimal MaDonTXL, string DanhBo)
+        public bool CheckCTDCHDbyMaDonDanhBo_TXL(decimal MaDonTXL, string DanhBo,string KyHD)
         {
             try
             {
-                return db.CTDCHDs.Any(itemCTDCHD => itemCTDCHD.DCBD.MaDonTXL == MaDonTXL && itemCTDCHD.DanhBo == DanhBo);
+                return db.CTDCHDs.Any(itemCTDCHD => itemCTDCHD.DCBD.MaDonTXL == MaDonTXL && itemCTDCHD.DanhBo == DanhBo&&itemCTDCHD.KyHD==KyHD);
             }
             catch (Exception ex)
             {
