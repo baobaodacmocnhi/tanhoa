@@ -80,6 +80,7 @@
             this.txtGiaBieu = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnChonFile = new System.Windows.Forms.Button();
             this.btnInThongKe = new System.Windows.Forms.Button();
             this.btnIn = new System.Windows.Forms.Button();
             this.txtKy12 = new System.Windows.Forms.TextBox();
@@ -101,10 +102,17 @@
             this.btnXoaDK = new System.Windows.Forms.Button();
             this.btnThemDK = new System.Windows.Forms.Button();
             this.dgvDanhBoDK = new System.Windows.Forms.DataGridView();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtDanhBoDK = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cmbNhanVienDK = new System.Windows.Forms.ComboBox();
+            this.cmbToDK = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.TenTo_DK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen_DK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo_DK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi_DK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DM_DK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky1_DK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky2_DK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky3_DK = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -117,13 +125,6 @@
             this.Ky10_DK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky11_DK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky12_DK = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtDanhBoDK = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.cmbNhanVienDK = new System.Windows.Forms.ComboBox();
-            this.cmbToDK = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.btnChonFile = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSTongHD0)).BeginInit();
@@ -647,6 +648,16 @@
             this.tabPage2.Text = "Đăng Ký";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // btnChonFile
+            // 
+            this.btnChonFile.Location = new System.Drawing.Point(1021, 4);
+            this.btnChonFile.Name = "btnChonFile";
+            this.btnChonFile.Size = new System.Drawing.Size(75, 23);
+            this.btnChonFile.TabIndex = 92;
+            this.btnChonFile.Text = "Chọn File";
+            this.btnChonFile.UseVisualStyleBackColor = true;
+            this.btnChonFile.Click += new System.EventHandler(this.btnChonFile_Click);
+            // 
             // btnInThongKe
             // 
             this.btnInThongKe.Location = new System.Drawing.Point(940, 4);
@@ -849,6 +860,7 @@
             this.HoTen_DK,
             this.DanhBo_DK,
             this.DiaChi_DK,
+            this.DM_DK,
             this.Ky1_DK,
             this.Ky2_DK,
             this.Ky3_DK,
@@ -879,6 +891,58 @@
             this.dgvDanhBoDK.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDanhBoDK_CellFormatting);
             this.dgvDanhBoDK.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhBoDK_RowPostPaint);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(533, 9);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(52, 13);
+            this.label10.TabIndex = 69;
+            this.label10.Text = "Danh Bộ:";
+            // 
+            // txtDanhBoDK
+            // 
+            this.txtDanhBoDK.Location = new System.Drawing.Point(591, 6);
+            this.txtDanhBoDK.Name = "txtDanhBoDK";
+            this.txtDanhBoDK.Size = new System.Drawing.Size(100, 20);
+            this.txtDanhBoDK.TabIndex = 70;
+            this.txtDanhBoDK.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBoDK_KeyPress);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(238, 9);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(60, 13);
+            this.label8.TabIndex = 67;
+            this.label8.Text = "Nhân Viên:";
+            // 
+            // cmbNhanVienDK
+            // 
+            this.cmbNhanVienDK.FormattingEnabled = true;
+            this.cmbNhanVienDK.Location = new System.Drawing.Point(304, 6);
+            this.cmbNhanVienDK.Name = "cmbNhanVienDK";
+            this.cmbNhanVienDK.Size = new System.Drawing.Size(118, 21);
+            this.cmbNhanVienDK.TabIndex = 68;
+            // 
+            // cmbToDK
+            // 
+            this.cmbToDK.FormattingEnabled = true;
+            this.cmbToDK.Location = new System.Drawing.Point(182, 6);
+            this.cmbToDK.Name = "cmbToDK";
+            this.cmbToDK.Size = new System.Drawing.Size(50, 21);
+            this.cmbToDK.TabIndex = 66;
+            this.cmbToDK.SelectedIndexChanged += new System.EventHandler(this.cmbToDK_SelectedIndexChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(153, 10);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(23, 13);
+            this.label9.TabIndex = 65;
+            this.label9.Text = "Tổ:";
+            // 
             // TenTo_DK
             // 
             this.TenTo_DK.DataPropertyName = "TenTo";
@@ -904,6 +968,13 @@
             this.DiaChi_DK.HeaderText = "Địa Chỉ";
             this.DiaChi_DK.Name = "DiaChi_DK";
             this.DiaChi_DK.Width = 200;
+            // 
+            // DM_DK
+            // 
+            this.DM_DK.DataPropertyName = "DM";
+            this.DM_DK.HeaderText = "ĐM";
+            this.DM_DK.Name = "DM_DK";
+            this.DM_DK.Width = 50;
             // 
             // Ky1_DK
             // 
@@ -988,68 +1059,6 @@
             this.Ky12_DK.HeaderText = "Kỳ 12";
             this.Ky12_DK.Name = "Ky12_DK";
             this.Ky12_DK.Width = 60;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(533, 9);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(52, 13);
-            this.label10.TabIndex = 69;
-            this.label10.Text = "Danh Bộ:";
-            // 
-            // txtDanhBoDK
-            // 
-            this.txtDanhBoDK.Location = new System.Drawing.Point(591, 6);
-            this.txtDanhBoDK.Name = "txtDanhBoDK";
-            this.txtDanhBoDK.Size = new System.Drawing.Size(100, 20);
-            this.txtDanhBoDK.TabIndex = 70;
-            this.txtDanhBoDK.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBoDK_KeyPress);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(238, 9);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(60, 13);
-            this.label8.TabIndex = 67;
-            this.label8.Text = "Nhân Viên:";
-            // 
-            // cmbNhanVienDK
-            // 
-            this.cmbNhanVienDK.FormattingEnabled = true;
-            this.cmbNhanVienDK.Location = new System.Drawing.Point(304, 6);
-            this.cmbNhanVienDK.Name = "cmbNhanVienDK";
-            this.cmbNhanVienDK.Size = new System.Drawing.Size(118, 21);
-            this.cmbNhanVienDK.TabIndex = 68;
-            // 
-            // cmbToDK
-            // 
-            this.cmbToDK.FormattingEnabled = true;
-            this.cmbToDK.Location = new System.Drawing.Point(182, 6);
-            this.cmbToDK.Name = "cmbToDK";
-            this.cmbToDK.Size = new System.Drawing.Size(50, 21);
-            this.cmbToDK.TabIndex = 66;
-            this.cmbToDK.SelectedIndexChanged += new System.EventHandler(this.cmbToDK_SelectedIndexChanged);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(153, 10);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(23, 13);
-            this.label9.TabIndex = 65;
-            this.label9.Text = "Tổ:";
-            // 
-            // btnChonFile
-            // 
-            this.btnChonFile.Location = new System.Drawing.Point(1021, 4);
-            this.btnChonFile.Name = "btnChonFile";
-            this.btnChonFile.Size = new System.Drawing.Size(75, 23);
-            this.btnChonFile.TabIndex = 92;
-            this.btnChonFile.Text = "Chọn File";
-            this.btnChonFile.UseVisualStyleBackColor = true;
-            this.btnChonFile.Click += new System.EventHandler(this.btnChonFile_Click);
             // 
             // frmPhanTichHD0
             // 
@@ -1142,10 +1151,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Code;
         private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu;
         private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu;
+        private System.Windows.Forms.Button btnChonFile;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenTo_DK;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen_DK;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo_DK;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi_DK;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DM_DK;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky1_DK;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky2_DK;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky3_DK;
@@ -1158,7 +1169,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky10_DK;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky11_DK;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky12_DK;
-        private System.Windows.Forms.Button btnChonFile;
 
     }
 }
