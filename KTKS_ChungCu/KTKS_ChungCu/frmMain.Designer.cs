@@ -523,7 +523,7 @@
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 688);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1360, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1276, 22);
             this.statusStrip1.TabIndex = 19;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -542,6 +542,7 @@
             this.txtNoiDungTimKiem.Size = new System.Drawing.Size(126, 25);
             this.txtNoiDungTimKiem.TabIndex = 6;
             this.txtNoiDungTimKiem.TextChanged += new System.EventHandler(this.txtNoiDungTimKiem_TextChanged);
+            this.txtNoiDungTimKiem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNoiDungTimKiem_KeyPress);
             // 
             // label5
             // 
@@ -637,6 +638,7 @@
             this.txtNoiDungTimKiem2.Size = new System.Drawing.Size(126, 25);
             this.txtNoiDungTimKiem2.TabIndex = 23;
             this.txtNoiDungTimKiem2.TextChanged += new System.EventHandler(this.txtNoiDungTimKiem2_TextChanged);
+            this.txtNoiDungTimKiem2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNoiDungTimKiem2_KeyPress);
             // 
             // panel_KhoangThoiGian
             // 
@@ -701,7 +703,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1360, 710);
+            this.ClientSize = new System.Drawing.Size(1276, 710);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.txtNoiDungTimKiem2);
             this.Controls.Add(this.cmbTimTheo);

@@ -20,7 +20,7 @@ namespace KTKS_ChungCu
         CLoaiChungTu _cLoaiChungTu = new CLoaiChungTu();
         CChungTu _cChungTu = new CChungTu();
         int _selectedindex = -1;
-        BindingSource DSKHCC_BS = new BindingSource();
+        //BindingSource DSKHCC_BS = new BindingSource();
         CDanhSachChungTu _cDSCT = new CDanhSachChungTu();
 
         public frmMain()
@@ -32,7 +32,7 @@ namespace KTKS_ChungCu
         {
             dgvKhachHangChungCu.AutoGenerateColumns = false;
             dgvKhachHangChungCu.ColumnHeadersDefaultCellStyle.Font = new Font(dgvKhachHangChungCu.Font, FontStyle.Bold);
-            dgvKhachHangChungCu.DataSource = DSKHCC_BS;
+            //dgvKhachHangChungCu.DataSource = DSKHCC_BS;
 
             cmbLoaiCT.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu(true);
             cmbLoaiCT.DisplayMember = "TenLCT";
@@ -87,9 +87,10 @@ namespace KTKS_ChungCu
                     _hoadon = _cTTKH.GetMoiNhat(txtDanhBo.Text.Trim());
                     LoadTTKH(_hoadon);
                     if (string.IsNullOrEmpty(txtLo.Text.Trim()))
-                        DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB(_hoadon.DANHBA);
+                        dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_DB(_hoadon.DANHBA);
                     else
-                        DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB_Lo(_hoadon.DANHBA, txtLo.Text.Trim());
+                        dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_DB_Lo(_hoadon.DANHBA, txtLo.Text.Trim());
+                    if (dgvKhachHangChungCu.Rows.Count > 0)
                     dgvKhachHangChungCu.CurrentCell = dgvKhachHangChungCu.Rows[dgvKhachHangChungCu.RowCount - 1].Cells[0];
                     txtLo.Focus();
                 }
@@ -116,6 +117,7 @@ namespace KTKS_ChungCu
                 //{
                 //    MessageBox.Show("Lô, Phòng trên đã có đăng ký trước đó", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //}
+                
                 if (txtMaCT.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0" && txtSoNKDangKy.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "0")
                     if (int.Parse(txtSoNKTong.Text.Trim()) >= int.Parse(txtSoNKDangKy.Text.Trim()))
                     {
@@ -154,9 +156,10 @@ namespace KTKS_ChungCu
                         {
                             MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             if (string.IsNullOrEmpty(txtLo.Text.Trim()))
-                                DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB(_hoadon.DANHBA);
+                                dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_DB(_hoadon.DANHBA);
                             else
-                                DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB_Lo(_hoadon.DANHBA, txtLo.Text.Trim());
+                                dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_DB_Lo(_hoadon.DANHBA, txtLo.Text.Trim());
+                            if (dgvKhachHangChungCu.Rows.Count>0)
                             dgvKhachHangChungCu.CurrentCell = dgvKhachHangChungCu.Rows[dgvKhachHangChungCu.RowCount - 1].Cells[0];
                             //txtSTT.Text = "";
                             //txtLo.Text = "";
@@ -230,9 +233,10 @@ namespace KTKS_ChungCu
                             {
                                 MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 if (string.IsNullOrEmpty(txtLo.Text.Trim()))
-                                    DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB(_hoadon.DANHBA);
+                                    dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_DB(_hoadon.DANHBA);
                                 else
-                                    DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB_Lo(_hoadon.DANHBA, txtLo.Text.Trim());
+                                    dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_DB_Lo(_hoadon.DANHBA, txtLo.Text.Trim());
+                                if(dgvKhachHangChungCu.Rows.Count>0)
                                 dgvKhachHangChungCu.CurrentCell = dgvKhachHangChungCu.Rows[dgvKhachHangChungCu.RowCount - 1].Cells[0];
                                 txtSTT.Text = "";
                                 txtLo.Text = "";
@@ -378,9 +382,10 @@ namespace KTKS_ChungCu
             {
                 txtSTT.Focus();
                 if (string.IsNullOrEmpty(txtLo.Text.Trim()))
-                    DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB(_hoadon.DANHBA);
+                    dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_DB(_hoadon.DANHBA);
                 else
-                    DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB_Lo(_hoadon.DANHBA, txtLo.Text.Trim());
+                    dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_DB_Lo(_hoadon.DANHBA, txtLo.Text.Trim());
+                if (dgvKhachHangChungCu.Rows.Count > 0)
                 dgvKhachHangChungCu.CurrentCell = dgvKhachHangChungCu.Rows[dgvKhachHangChungCu.RowCount - 1].Cells[0];
             }
         }
@@ -440,9 +445,10 @@ namespace KTKS_ChungCu
                         {
                             MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             if (string.IsNullOrEmpty(txtLo.Text.Trim()))
-                                DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB(_hoadon.DANHBA);
+                                dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_DB(_hoadon.DANHBA);
                             else
-                                DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_DB_Lo(_hoadon.DANHBA, txtLo.Text.Trim());
+                                dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_DB_Lo(_hoadon.DANHBA, txtLo.Text.Trim());
+                            if(dgvKhachHangChungCu.Rows.Count>0)
                             dgvKhachHangChungCu.CurrentCell = dgvKhachHangChungCu.Rows[dgvKhachHangChungCu.RowCount - 1].Cells[0];
                             txtSTT.Text = "";
                             txtLo.Text = "";
@@ -548,39 +554,51 @@ namespace KTKS_ChungCu
             {
                 case "Số Chứng Từ":
                     if (string.IsNullOrEmpty(txtDanhBo.Text.Trim()))
-                        DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_CT(txtNoiDungTimKiem.Text.Trim());
+                        dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_CT(txtNoiDungTimKiem.Text.Trim());
                     else
-                        DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_CT(txtDanhBo.Text.Trim(), txtNoiDungTimKiem.Text.Trim());
+                        dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_CT(txtDanhBo.Text.Trim(), txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Họ Tên":
-                    DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_HoTen(txtNoiDungTimKiem.Text.Trim());
+                    dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_HoTen(txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Lô":
                     if (string.IsNullOrEmpty(txtDanhBo.Text.Trim()))
-                        DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_Lo(txtNoiDungTimKiem.Text.Trim());
+                        dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_Lo(txtNoiDungTimKiem.Text.Trim());
                     else
-                        DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_Lo(txtDanhBo.Text.Trim(), txtNoiDungTimKiem.Text.Trim());
+                        dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_Lo(txtDanhBo.Text.Trim(), txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Phòng":
                     if (string.IsNullOrEmpty(txtDanhBo.Text.Trim()))
-                        DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_Phong(txtNoiDungTimKiem.Text.Trim());
+                        dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_Phong(txtNoiDungTimKiem.Text.Trim());
                     else
-                        DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_Phong(txtDanhBo.Text.Trim(), txtNoiDungTimKiem.Text.Trim());
+                        dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_Phong(txtDanhBo.Text.Trim(), txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Số Thứ Tự":
                     if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
-                        DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_STTs(txtDanhBo.Text.Trim(), txtLo.Text.Trim(), int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(txtNoiDungTimKiem2.Text.Trim()));
+                        dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_STTs(txtDanhBo.Text.Trim(), txtLo.Text.Trim(), int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(txtNoiDungTimKiem2.Text.Trim()));
                     else
                         if (txtNoiDungTimKiem.Text.Trim() != "")
-                            DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_STT(txtDanhBo.Text.Trim(), txtLo.Text.Trim(), int.Parse(txtNoiDungTimKiem.Text.Trim()));
+                            dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_STT(txtDanhBo.Text.Trim(), txtLo.Text.Trim(), int.Parse(txtNoiDungTimKiem.Text.Trim()));
                     break;
                 case "Ngày":
-                    DSKHCC_BS.DataSource = _cDSCT.LoadDSChungTu_CreateDates(dateTu.Value,dateDen.Value);
+                    dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_CreateDates(dateTu.Value, dateDen.Value);
                     break;
                 default:
 
                     break;
             }
+        }
+
+        private void txtNoiDungTimKiem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                btnXem.PerformClick();
+        }
+
+        private void txtNoiDungTimKiem2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                btnXem.PerformClick();
         }
 
 
