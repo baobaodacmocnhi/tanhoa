@@ -107,6 +107,9 @@ namespace KTKS_DonKH.GUI.DongNuoc
         {
             if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
             {
+                string MaDon = txtMaDon.Text.Trim();
+                Clear();
+                txtMaDon.Text = MaDon;
                 ///Đơn Tổ Xử Lý
                 if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
                 {
@@ -333,6 +336,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
                                 {
                                     Clear();
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    txtMaDon.Focus();
                                 }
                             }
                             else
@@ -386,6 +390,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
                                 {
                                     Clear();
                                     MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    txtMaDon.Focus();
                                 }
                             }
                             else
@@ -415,6 +420,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
                         {
                             Clear();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtMaDon.Focus();
                         }
                     }
                 }
@@ -457,6 +463,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
                         {
                             Clear();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtMaDon.Focus();
                         }
                     }
                 }
@@ -474,6 +481,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
                         {
                             Clear();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtMaDon.Focus();
                         }
                     }
             }

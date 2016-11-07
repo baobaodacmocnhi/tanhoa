@@ -222,7 +222,7 @@ namespace KTKS_DonKH.DAL.BamChi
             }
         }
 
-        public bool XoaCTBamChi(CTBamChi ctbamchi, int MaU)
+        public bool XoaCTBamChi(CTBamChi ctbamchi)
         {
             try
             {
@@ -268,6 +268,7 @@ namespace KTKS_DonKH.DAL.BamChi
                             select new
                             {
                                 itemCTBamChi.MaCTBC,
+                                itemCTBamChi.BamChi.ToXuLy,
                                 itemCTBamChi.BamChi.MaDon,
                                 itemCTBamChi.DanhBo,
                                 itemCTBamChi.HoTen,
@@ -332,6 +333,7 @@ namespace KTKS_DonKH.DAL.BamChi
                             select new
                             {
                                 itemCTBamChi.MaCTBC,
+                                itemCTBamChi.BamChi.ToXuLy,
                                 MaDon = itemCTBamChi.BamChi.MaDonTXL,
                                 itemCTBamChi.DanhBo,
                                 itemCTBamChi.HoTen,

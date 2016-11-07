@@ -87,7 +87,10 @@ namespace KTKS_DonKH.GUI.HeThong
 
         private void txtQuery_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            if (e.KeyChar == 13)
+            {
+                dgvResult.DataSource = _cMenu.ExecuteQuery_SqlDataAdapter_DataTable(txtQuery.Text.Trim());
+            }
         }
     }
 }

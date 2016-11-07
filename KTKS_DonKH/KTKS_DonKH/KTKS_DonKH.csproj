@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>361</ApplicationRevision>
+    <ApplicationRevision>367</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -620,12 +620,6 @@
     </Compile>
     <Compile Include="GUI\BamChi\frmBamChi.Designer.cs">
       <DependentUpon>frmBamChi.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\BamChi\frmShowBamChi.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\BamChi\frmShowBamChi.Designer.cs">
-      <DependentUpon>frmShowBamChi.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\BamChi\frmTrangThaiBamChi.cs">
       <SubType>Form</SubType>
@@ -1374,9 +1368,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\BamChi\frmBamChi.resx">
       <DependentUpon>frmBamChi.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\BamChi\frmShowBamChi.resx">
-      <DependentUpon>frmShowBamChi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\BamChi\frmTrangThaiBamChi.resx">
       <DependentUpon>frmTrangThaiBamChi.cs</DependentUpon>

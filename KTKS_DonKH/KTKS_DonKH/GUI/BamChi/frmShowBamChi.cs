@@ -235,7 +235,7 @@ namespace KTKS_DonKH.GUI.BamChi
             {
                 LinQ.BamChi bamchi = _ctbamchi.BamChi;
                 if (MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    if (_cBamChi.XoaCTBamChi(_ctbamchi, CTaiKhoan.MaUser))
+                    if (_cBamChi.XoaCTBamChi(_ctbamchi))
                     {
                         if (bamchi.CTBamChis.Count == 0)
                             _cBamChi.XoaBamChi(bamchi);

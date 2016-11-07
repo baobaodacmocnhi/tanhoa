@@ -58,6 +58,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             txtHoTen.Text = hoadon.TENKH;
             txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
             dgvLichSuCHDB.DataSource = _cCHDB.GetLichSuCHDB(hoadon.DANHBA);
+            CheckLichSuCHDB();
         }
 
         public void Clear()
@@ -90,6 +91,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             _ctctdb = null;
             dgvGhiChu.DataSource = null;
             dgvLichSuCHDB.DataSource = null;
+        }
+
+        public void CheckLichSuCHDB()
+        {
+            foreach (DataGridViewRow item in dgvLichSuCHDB.Rows)
+                if (item.Cells["Loai"].Value.ToString() != "Phiếu Hủy" && (item.Cells["NgayXuLy"].Value == null || string.IsNullOrEmpty(item.Cells["NgayXuLy"].Value.ToString())))
+                    MessageBox.Show("Có Thông Báo chưa xử lý", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void frmCHDB_Load(object sender, EventArgs e)
@@ -136,6 +144,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
             {
+                string MaDon = txtMaDon.Text.Trim();
+                Clear();
+                txtMaDon.Text = MaDon;
                 ///Đơn Tổ Xử Lý
                 if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
                 {
@@ -244,6 +255,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                     dgvGhiChu.DataSource = _cCHDB.GetDSGhiChuByMaCTCHDB(_ctchdb.MaCTCHDB);
                     dgvLichSuCHDB.DataSource = _cCHDB.GetLichSuCHDB(_ctchdb.DanhBo);
+                    CheckLichSuCHDB();
 
                     ///Đã lấp Phiếu Yêu Cầu CHDB
                     if (_cCHDB.CheckYeuCauCHDBbyMaCTCHDB(_ctchdb.MaCTCHDB))
@@ -408,6 +420,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             {
                                 Clear();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                txtMaDon.Focus();
                             }
                         }
                         else
@@ -485,7 +498,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             if (_cCHDB.ThemCTCHDB(ctchdb))
                             {
                                 Clear();
-                                MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                txtMaDon.Focus();
                             }
                         }
                         else
@@ -556,17 +570,18 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                         _ctchdb.NoiNhan = txtNoiNhan.Text.Trim();
 
-                        if (_ctchdb.DaLapPhieu && _ctchdb.PhieuCHDBs.SingleOrDefault(itemYCCHDB => itemYCCHDB.MaCTCHDB == _ctchdb.MaCTCHDB).HieuLucKy != txtHieuLucKy.Text.Trim())
-                        {
-                            PhieuCHDB ycchdb = _ctchdb.PhieuCHDBs.SingleOrDefault(itemYCCHDB => itemYCCHDB.MaCTCHDB == _ctchdb.MaCTCHDB);
-                            ycchdb.HieuLucKy = txtHieuLucKy.Text.Trim();
-                            _cCHDB.SuaYeuCauCHDB(ycchdb);
-                        }
+                        //if (_ctchdb.DaLapPhieu && _ctchdb.PhieuCHDBs.SingleOrDefault(itemYCCHDB => itemYCCHDB.MaCTCHDB == _ctchdb.MaCTCHDB).HieuLucKy != txtHieuLucKy.Text.Trim())
+                        //{
+                        //    PhieuCHDB ycchdb = _ctchdb.PhieuCHDBs.SingleOrDefault(itemYCCHDB => itemYCCHDB.MaCTCHDB == _ctchdb.MaCTCHDB);
+                        //    ycchdb.HieuLucKy = txtHieuLucKy.Text.Trim();
+                        //    _cCHDB.SuaYeuCauCHDB(ycchdb);
+                        //}
 
                         if (_cCHDB.SuaCTCHDB(_ctchdb))
                         {
                             Clear();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtMaDon.Focus();
                         }
                     }
                     catch (Exception ex)
@@ -586,13 +601,14 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 {
                     if (_ctchdb.DaLapPhieu == true)
                     {
-                        MessageBox.Show("Đã Lập Phiếu Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Đã Lập Phiếu Hủy, Không xóa được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     if(_cCHDB.XoaCTCHDB(_ctchdb))
                     {
                         Clear();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtMaDon.Focus();
                     }
                 }
             }
@@ -732,6 +748,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     }
                     ///Nếu Đã Lập Phiếu
                     else
+                        ///lập phiếu mới
                         if (MessageBox.Show("Đã Lập Phiếu, Bạn có muốn Lấp Phiếu Mới?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             if (txtHieuLucKy.Text.Trim() != "")
@@ -824,6 +841,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             else
                                 MessageBox.Show("Chưa có Hiệu Lực Kỳ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
+                        ///lấy lại phiếu cũ
                         else
                         {
                             PhieuCHDB ycchdb = _cCHDB.getYeuCauCHDBbyMaCTCHDB(_ctchdb.MaCTCHDB);
@@ -850,6 +868,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                             dr["ChucVu"] = ycchdb.ChucVu;
                             dr["NguoiKy"] = ycchdb.NguoiKy;
+
+                            if (!string.IsNullOrEmpty(ycchdb.MaDonTXL.ToString()))
+                                dr["MaDon"] = "TXL" + ycchdb.MaDonTXL.ToString().Insert(ycchdb.MaDonTXL.ToString().Length - 2, "-");
+                            else
+                                if (!string.IsNullOrEmpty(ycchdb.MaDon.ToString()))
+                                    dr["MaDon"] = ycchdb.MaDon.ToString().Insert(ycchdb.MaDon.ToString().Length - 2, "-");
 
                             dsBaoCao.Tables["PhieuCHDB"].Rows.Add(dr);
 

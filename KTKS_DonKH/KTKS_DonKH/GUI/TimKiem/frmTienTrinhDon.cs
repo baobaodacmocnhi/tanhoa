@@ -383,7 +383,7 @@ namespace KTKS_DonKH.GUI.TimKiem
         {
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
             {
-                frmShowBamChi frm = new frmShowBamChi(decimal.Parse(_CTRow.Row["MaCTBC"].ToString()), true);
+                frmBamChi frm = new frmBamChi(decimal.Parse(_CTRow.Row["MaCTBC"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                     _CTRow = null;
             }
@@ -663,7 +663,7 @@ namespace KTKS_DonKH.GUI.TimKiem
         {
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
             {
-                frmShowBamChi frm = new frmShowBamChi(decimal.Parse(_CTRow.Row["MaCTBC"].ToString()), true);
+                frmBamChi frm = new frmBamChi(decimal.Parse(_CTRow.Row["MaCTBC"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                     _CTRow = null;
             }
