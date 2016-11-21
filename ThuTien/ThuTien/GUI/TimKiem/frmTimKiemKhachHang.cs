@@ -27,7 +27,7 @@ namespace ThuTien.GUI.TimKiem
         CKinhDoanh _cKinhDoanh = new CKinhDoanh();
         CChuyenNoKhoDoi _cCNKD = new CChuyenNoKhoDoi();
         CLenhHuy _cLenhHuy = new CLenhHuy();
-        CDocSo _cCapNuocTanHoa = new CDocSo();
+        CDocSo _cDocSo = new CDocSo();
 
         public frmTimKiemKhachHang()
         {
@@ -45,7 +45,7 @@ namespace ThuTien.GUI.TimKiem
             if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ", "")) || !string.IsNullOrEmpty(txtMLT.Text.Trim().Replace(" ", "")))
                 dgvHoaDon.DataSource = _cHoaDon.GetDSTimKiem(txtDanhBo.Text.Trim().Replace(" ", ""), txtMLT.Text.Trim());
             else
-                dgvHoaDon.DataSource = _cCapNuocTanHoa.GetTTKH(txtHoTen.Text.Trim(), txtSoNha.Text.Trim(), txtTenDuong.Text.Trim());
+                dgvHoaDon.DataSource = _cHoaDon.GetDSTimKiemTTKH(txtHoTen.Text.Trim(), txtSoNha.Text.Trim(), txtTenDuong.Text.Trim());
 
             dgvKinhDoanh.DataSource = null;
             dgvKinhDoanh.Visible = false;
@@ -143,9 +143,9 @@ namespace ThuTien.GUI.TimKiem
         {
             //DataTable dtTieuThu = _cHoaDon.GetDSTieuThu(txtDanhBo.Text.Trim());
 
-            DataTable dtPhieuTieuThu = _cCapNuocTanHoa.GetTTKH(txtDanhBo.Text.Trim().Replace(" ", ""));
+            DataTable dtPhieuTieuThu = _cDocSo.GetTTKH(txtDanhBo.Text.Trim().Replace(" ", ""));
 
-            DataTable dtGhiChu = _cCapNuocTanHoa.GetGhiChu(txtDanhBo.Text.Trim().Replace(" ", ""));
+            DataTable dtGhiChu = _cDocSo.GetGhiChu(txtDanhBo.Text.Trim().Replace(" ", ""));
 
             dsBaoCao ds = new dsBaoCao();
 

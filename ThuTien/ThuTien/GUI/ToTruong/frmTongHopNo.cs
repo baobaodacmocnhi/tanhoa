@@ -174,7 +174,9 @@ namespace ThuTien.GUI.ToTruong
                         CTDCBD dcbd = _cKTKS_DonKH.GetDCBD(hoadon.DANHBA);
                         if (dcbd != null)
                         {
+                            if (dcbd.DinhMuc!=null)
                             row["DinhMuc_Cu"] = dcbd.DinhMuc;
+                            if (dcbd.DinhMuc_BD != null)
                             row["DinhMuc_Moi"] = dcbd.DinhMuc_BD;
                         }
                         dt.Rows.Add(row);

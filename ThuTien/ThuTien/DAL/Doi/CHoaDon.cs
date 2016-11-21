@@ -8581,6 +8581,13 @@ namespace ThuTien.DAL.Doi
             return dt;
         }
 
+        public DataTable GetDSTimKiemTTKH(string HoTen, string SoNha, string TenDuong)
+        {
+            string sql = "select * from TimKiemTTKH('" + HoTen + "','" + SoNha + "','" + TenDuong + "')";
+
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+        }
+
         /// <summary>
         /// lấy danh sách chặn tiền dư
         /// </summary>

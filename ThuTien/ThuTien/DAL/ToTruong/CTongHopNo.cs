@@ -80,8 +80,10 @@ namespace ThuTien.DAL.ToTruong
                             TongCong=item.TT_CTTongHopNos.Sum(itemCT=>itemCT.TongCong),
                             item.ChiSoCu,
                             item.ChiSoMoi,
-                            item.TieuThu,
-                            item.DinhMuc,
+                            //item.TieuThu,
+                            //item.DinhMuc,
+                            item.TT_CTTongHopNos.OrderByDescending(itemB=>itemB.CreateDate).First().TieuThu,
+                            item.TT_CTTongHopNos.OrderByDescending(itemB => itemB.CreateDate).First().DinhMuc,
                             item.NgayThanhToan,
                             item.CreateDate,
                             TieuThuHD = itemHD.TIEUTHU,
@@ -103,8 +105,10 @@ namespace ThuTien.DAL.ToTruong
                             TongCong = item.TT_CTTongHopNos.Sum(itemCT => itemCT.TongCong),
                             item.ChiSoCu,
                             item.ChiSoMoi,
-                            item.TieuThu,
-                            item.DinhMuc,
+                            //item.TieuThu,
+                            //item.DinhMuc,
+                            item.TT_CTTongHopNos.OrderByDescending(itemB => itemB.CreateDate).First().TieuThu,
+                            item.TT_CTTongHopNos.OrderByDescending(itemB => itemB.CreateDate).First().DinhMuc,
                             item.NgayThanhToan,
                             item.CreateDate,
                             TieuThuHD=itemHD.TIEUTHU,
@@ -116,6 +120,7 @@ namespace ThuTien.DAL.ToTruong
         public DataTable GetDS(int CreateBy,DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from item in _db.TT_TongHopNos
+                        from itemHD in _db.HOADONs.Where(itemA => itemA.DANHBA == item.DanhBo).ToList().OrderByDescending(itemA => itemA.ID_HOADON).Take(1).DefaultIfEmpty()
                         where item.CreateBy == CreateBy && item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
                         select new
                         {
@@ -125,10 +130,14 @@ namespace ThuTien.DAL.ToTruong
                             TongCong = item.TT_CTTongHopNos.Sum(itemCT => itemCT.TongCong),
                             item.ChiSoCu,
                             item.ChiSoMoi,
-                            item.TieuThu,
-                            item.DinhMuc,
+                            //item.TieuThu,
+                            //item.DinhMuc,
+                            item.TT_CTTongHopNos.OrderByDescending(itemB => itemB.CreateDate).First().TieuThu,
+                            item.TT_CTTongHopNos.OrderByDescending(itemB => itemB.CreateDate).First().DinhMuc,
                             item.NgayThanhToan,
                             item.CreateDate,
+                            TieuThuHD = itemHD.TIEUTHU,
+                            KyHD = itemHD.KY + "/" + itemHD.NAM,
                         };
             return LINQToDataTable(query);
         }
