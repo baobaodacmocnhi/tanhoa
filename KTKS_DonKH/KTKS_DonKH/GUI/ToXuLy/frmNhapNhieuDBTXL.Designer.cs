@@ -41,6 +41,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cmbLD = new System.Windows.Forms.ComboBox();
             this.dgvDanhBo = new System.Windows.Forms.DataGridView();
+            this.btnLuu = new System.Windows.Forms.Button();
             this.NgayChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NguoiDi = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,7 +55,7 @@
             this.Dot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnLuu = new System.Windows.Forms.Button();
+            this.MLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhBo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -200,7 +201,8 @@
             this.DinhMuc,
             this.Dot,
             this.Ky,
-            this.Nam});
+            this.Nam,
+            this.MLT});
             this.dgvDanhBo.Location = new System.Drawing.Point(11, 55);
             this.dgvDanhBo.Name = "dgvDanhBo";
             this.dgvDanhBo.Size = new System.Drawing.Size(1282, 448);
@@ -209,6 +211,16 @@
             this.dgvDanhBo.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhBo_CellEndEdit);
             this.dgvDanhBo.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhBo_RowLeave);
             this.dgvDanhBo.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhBo_RowPostPaint);
+            // 
+            // btnLuu
+            // 
+            this.btnLuu.Location = new System.Drawing.Point(917, 9);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(69, 33);
+            this.btnLuu.TabIndex = 25;
+            this.btnLuu.Text = "Lưu";
+            this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // NgayChuyen
             // 
@@ -286,15 +298,11 @@
             this.Nam.Name = "Nam";
             this.Nam.Visible = false;
             // 
-            // btnLuu
+            // MLT
             // 
-            this.btnLuu.Location = new System.Drawing.Point(917, 9);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(69, 33);
-            this.btnLuu.TabIndex = 25;
-            this.btnLuu.Text = "Lưu";
-            this.btnLuu.UseVisualStyleBackColor = true;
-            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
+            this.MLT.HeaderText = "MLT";
+            this.MLT.Name = "MLT";
+            this.MLT.Visible = false;
             // 
             // frmNhapNhieuDBTXL
             // 
@@ -358,5 +366,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Dot;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nam;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MLT;
     }
 }

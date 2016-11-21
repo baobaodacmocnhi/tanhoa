@@ -11,7 +11,7 @@ namespace KTKS_DonKH.DAL
 {
     class CDAL
     {
-        protected static DB_KTKS_DonKHDataContext db = new DB_KTKS_DonKHDataContext();
+        protected static dbKinhDoanhDataContext db = new dbKinhDoanhDataContext();
 
         /// <summary>
         /// Lấy mã tiếp theo, theo định dạng năm-stt (2013-1)

@@ -59,6 +59,11 @@ namespace KTKS_DonKH.DAL.CongVan
             }
         }
 
+        public bool CheckExist(string LoaiVanBan,string Ma,string NoiChuyen,DateTime CreateDate)
+        {
+            return db.CongVanDis.Any(item => item.LoaiVanBan == LoaiVanBan && item.Ma == Ma &&item.NoiChuyen==NoiChuyen&& item.CreateDate.Value.Date == CreateDate.Date);
+        }
+
         public CongVanDi Get(int ID)
         {
             return db.CongVanDis.SingleOrDefault(item => item.ID == ID);

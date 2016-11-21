@@ -7,20 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.LinQ;
-using KTKS_DonKH.DAL.KhachHang;
-using KTKS_DonKH.DAL.CapNhat;
-using KTKS_DonKH.DAL.ToXuLy;
-using KTKS_DonKH.BaoCao;
-using KTKS_DonKH.BaoCao.KhachHang;
-using KTKS_DonKH.GUI.BaoCao;
-using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.DAL;
+using KTKS_DonKH.DAL.ToXuLy;
+using KTKS_DonKH.DAL.QuanTri;
 
 namespace KTKS_DonKH.GUI.ToXuLy
 {
     public partial class frmNhanDonTXL : Form
     {
-        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CDocSo _cDocSo = new CDocSo();
         CThuTien _cThuTien = new CThuTien();
         CLoaiDonTXL _cLoaiDonTXL = new CLoaiDonTXL();
         HOADON _hoadon = null;
@@ -45,7 +40,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             txtHopDong.Text = hoadon.HOPDONG;
             txtHoTen.Text = hoadon.TENKH;
-            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
             txtMSThue.Text = hoadon.MST;
             txtGiaBieu.Text = hoadon.GB.ToString();
             txtDinhMuc.Text = hoadon.DM.ToString();
@@ -157,6 +152,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         dontxl.Dot = _hoadon.DOT.ToString();
                         dontxl.Ky = _hoadon.KY.ToString();
                         dontxl.Nam = _hoadon.NAM.ToString();
+                        dontxl.MLT = _hoadon.MALOTRINH;
                     }
 
                     if (chkChuyenKT.Checked)
@@ -434,6 +430,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     _dontxl.Dot = _hoadon.DOT.ToString();
                     _dontxl.Ky = _hoadon.KY.ToString();
                     _dontxl.Nam = _hoadon.NAM.ToString();
+                    _dontxl.MLT = _hoadon.MALOTRINH;
                 }
                 _dontxl.DanhBo = txtDanhBo.Text.Trim();
                 _dontxl.HopDong = txtHopDong.Text.Trim();

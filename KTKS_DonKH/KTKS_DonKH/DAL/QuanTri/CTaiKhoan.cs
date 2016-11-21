@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using KTKS_DonKH.LinQ;
 using System.Data;
-using KTKS_DonKH.Function;
 using System.Windows.Forms;
 
 namespace KTKS_DonKH.DAL.QuanTri
@@ -362,7 +361,7 @@ namespace KTKS_DonKH.DAL.QuanTri
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }    
         }
@@ -383,7 +382,7 @@ namespace KTKS_DonKH.DAL.QuanTri
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -400,7 +399,7 @@ namespace KTKS_DonKH.DAL.QuanTri
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -427,7 +426,7 @@ namespace KTKS_DonKH.DAL.QuanTri
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -453,7 +452,7 @@ namespace KTKS_DonKH.DAL.QuanTri
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }

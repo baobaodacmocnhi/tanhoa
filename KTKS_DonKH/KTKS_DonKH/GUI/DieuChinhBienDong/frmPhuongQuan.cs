@@ -6,22 +6,21 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using KTKS_DonKH.DAL.KhachHang;
+using KTKS_DonKH.DAL;
+using KTKS_DonKH.DAL.DieuChinhBienDong;
 using KTKS_DonKH.LinQ;
-using KTKS_DonKH.DAL.CapNhat;
+using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.DieuChinhBienDong;
 using KTKS_DonKH.GUI.BaoCao;
-using KTKS_DonKH.BaoCao;
-using KTKS_DonKH.DAL.DieuChinhBienDong;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
     public partial class frmPhuongQuan : Form
     {
-        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
-        DataTable _dt = new DataTable();
+        CDocSo _cDocSo = new CDocSo();
         CChungTu _cChungTu = new CChungTu();
         CDCBD _cDCBD = new CDCBD();
+        DataTable _dt = new DataTable();
         string _TuNgay="", _DenNgay="";
         DateTime _dateTuNgay, _dateDenNgay;
 
@@ -49,7 +48,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void frmPhuongQuan_Load(object sender, EventArgs e)
         {
             this.Location = new Point(200,200);
-            List<QUAN> lst = _cPhuongQuan.LoadDSQuan();
+            List<QUAN> lst = _cDocSo.LoadDSQuan();
             QUAN quan = new QUAN();
             quan.MAQUAN = 0;
             quan.TENQUAN = "Tất Cả";

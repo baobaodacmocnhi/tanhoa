@@ -30,7 +30,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
         CDonKH _cDonKH = new CDonKH();
         CDonTXL _cDonTXL = new CDonTXL();
         CThuTien _cThuTien = new CThuTien();
-        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CDocSo _cDocSo = new CDocSo();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CDongNuoc _cDongNuoc = new CDongNuoc();
         CBamChi _cBamChi = new CBamChi();
@@ -69,7 +69,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
             txtDanhBo.Text = hoadon.DANHBA;
             txtHopDong.Text = hoadon.HOPDONG;
             txtHoTen.Text = hoadon.TENKH;
-            txtDiaChiDHN.Text = txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+            txtDiaChiDHN.Text = txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
         }
 
         public void Clear()

@@ -28,7 +28,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         CDonTXL _cDonTXL = new CDonTXL();
         CTTTL _cTTTL = new CTTTL();
         CGhiChuCTTTTL _cGhiChuCTTTTL = new CGhiChuCTTTTL();
-        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CDocSo _cDocSo = new CDocSo();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CVeViecTTTL _cVeViecTTTL = new CVeViecTTTL();
         decimal _MaCTTTTL = 0;
@@ -50,7 +50,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             txtHopDong.Text = hoadon.HOPDONG;
             txtLoTrinh.Text = hoadon.DOT + hoadon.MAY + hoadon.STT;
             txtHoTen.Text = hoadon.TENKH;
-            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
             txtGiaBieu.Text = hoadon.GB.ToString();
             txtDinhMuc.Text = hoadon.DM.ToString();
 

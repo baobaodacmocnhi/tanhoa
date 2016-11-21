@@ -115,7 +115,7 @@ namespace KTKS_DonKH.DAL.CapNhat
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 db.Transaction.Rollback();
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
             finally
@@ -220,7 +220,7 @@ namespace KTKS_DonKH.DAL.CapNhat
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 db.Transaction.Rollback();
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
             finally

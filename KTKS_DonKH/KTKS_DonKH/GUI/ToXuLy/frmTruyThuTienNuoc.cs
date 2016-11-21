@@ -9,13 +9,12 @@ using System.Windows.Forms;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.DAL.ToXuLy;
+using KTKS_DonKH.DAL;
 using KTKS_DonKH.DAL.DieuChinhBienDong;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.ToXuLy;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.QuanTri;
-using KTKS_DonKH.DAL.CapNhat;
-using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.ToXuLy
 {
@@ -27,7 +26,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         CDonKH _cDonKH = new CDonKH();
         CDonTXL _cDonTXL = new CDonTXL();
         CThuTien _cThuTien = new CThuTien();
-        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CDocSo _cDocSo = new CDocSo();
         CGiaNuoc _cGiaNuoc = new CGiaNuoc();
         CTruyThuTienNuoc _cTTTN = new CTruyThuTienNuoc();
         private DateTimePicker cellDateTimePicker;
@@ -62,7 +61,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
             txtHopDong.Text = hoadon.HOPDONG;
             txtLoTrinh.Text = hoadon.DOT + hoadon.MAY + hoadon.STT;
             txtHoTen.Text = hoadon.TENKH;
-            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
             txtGiaBieu.Text = hoadon.GB.ToString();
             txtDinhMuc.Text = hoadon.DM.ToString();
         }

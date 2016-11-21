@@ -7,7 +7,6 @@ using KTKS_DonKH.DAL.QuanTri;
 using System.Windows.Forms;
 using System.Data;
 using KTKS_DonKH.DAL.CapNhat;
-using KTKS_DonKH.Function;
 
 namespace KTKS_DonKH.DAL.DieuChinhBienDong
 {
@@ -35,7 +34,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -53,7 +52,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }

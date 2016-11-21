@@ -40,7 +40,7 @@ namespace KTKS_DonKH.DAL.BamChi
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -58,7 +58,7 @@ namespace KTKS_DonKH.DAL.BamChi
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -75,7 +75,7 @@ namespace KTKS_DonKH.DAL.BamChi
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -200,7 +200,7 @@ namespace KTKS_DonKH.DAL.BamChi
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -217,7 +217,7 @@ namespace KTKS_DonKH.DAL.BamChi
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -226,14 +226,17 @@ namespace KTKS_DonKH.DAL.BamChi
         {
             try
             {
+                decimal ID = ctbamchi.MaBC.Value;
                 db.CTBamChis.DeleteOnSubmit(ctbamchi);
+                if (db.CTBamChis.Any(item => item.MaBC == ID) == false)
+                    db.BamChis.DeleteOnSubmit(db.BamChis.SingleOrDefault(item => item.MaBC == ID));
                 db.SubmitChanges();
                 return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }

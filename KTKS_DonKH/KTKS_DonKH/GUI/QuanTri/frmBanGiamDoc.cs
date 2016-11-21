@@ -173,28 +173,28 @@ namespace KTKS_DonKH.GUI.QuanTri
                     switch (cmbLoai.SelectedItem.ToString())
                     {
                         case "Điều Chỉnh Biến Động":
-                            dgvDanhSach.DataSource = _cDCBD.LoadDSCTDCBD(dateTu.Value);
+                            dgvDanhSach.DataSource = _cDCBD.LoadDSCTDCBD(dateTu.Value,dateDen.Value);
                             break;
                         case "Điều Chỉnh Hóa Đơn":
-                            dgvDanhSach.DataSource = _cDCBD.LoadDSCTDCHD(dateTu.Value);
+                            dgvDanhSach.DataSource = _cDCBD.LoadDSCTDCHD(dateTu.Value, dateDen.Value);
                             break;
                         case "Cắt Chuyển":
-                            dgvDanhSach.DataSource = _cChungTu.LoadDSCatChuyenDM(dateTu.Value);
+                            dgvDanhSach.DataSource = _cChungTu.LoadDSCatChuyenDM(dateTu.Value, dateDen.Value);
                             break;
                         case "Cắt Tạm Danh Bộ":
-                            dgvDanhSach.DataSource = _cCHDB.LoadDSCTCTDB(dateTu.Value);
+                            dgvDanhSach.DataSource = _cCHDB.LoadDSCTCTDB(dateTu.Value, dateDen.Value);
                             break;
                         case "Cắt Hủy Danh Bộ":
-                            dgvDanhSach.DataSource = _cCHDB.LoadDSCTCHDB(dateTu.Value);
+                            dgvDanhSach.DataSource = _cCHDB.LoadDSCTCHDB(dateTu.Value, dateDen.Value);
                             break;
                         case "Yêu Cầu Cắt Hủy Danh Bộ":
-                            dgvDanhSach.DataSource = _cCHDB.LoadDSYCCHDB_Don(dateTu.Value);
+                            dgvDanhSach.DataSource = _cCHDB.LoadDSYCCHDB_Don(dateTu.Value, dateDen.Value);
                             break;
                         case "Đóng Nước":
-                            dgvDanhSach.DataSource = _cDongNuoc.GetDSCTDongNuoc(dateTu.Value);
+                            dgvDanhSach.DataSource = _cDongNuoc.GetDSCTDongNuoc(dateTu.Value, dateDen.Value);
                             break;
                         case "Mở Nước":
-                            dgvDanhSach.DataSource = _cDongNuoc.GetDSCTMoNuoc(dateTu.Value);
+                            dgvDanhSach.DataSource = _cDongNuoc.GetDSCTMoNuoc(dateTu.Value, dateDen.Value);
                             break;
                         case "Thảo Thư Trả Lời":
                             dgvDanhSach.DataSource = _cTTTL.GetDSByCreateDate(dateTu.Value, dateDen.Value);
@@ -364,15 +364,15 @@ namespace KTKS_DonKH.GUI.QuanTri
             {
                 case "Mã":
                     txtNoiDung.Visible = true;
-                    dateTu.Visible = false;
+                    panel_KhoangThoiGian.Visible = false;
                     break;
                 case "Ngày":
                     txtNoiDung.Visible = false;
-                    dateTu.Visible = true;
+                    panel_KhoangThoiGian.Visible = true;
                     break;
                 default:
                     txtNoiDung.Visible = false;
-                    dateTu.Visible = false;
+                    panel_KhoangThoiGian.Visible = false;
                     break;
             }
         }

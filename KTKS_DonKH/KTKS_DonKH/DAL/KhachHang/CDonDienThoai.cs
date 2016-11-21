@@ -6,7 +6,6 @@ using System.Windows.Forms;
 using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.LinQ;
 using System.Data;
-using KTKS_DonKH.Function;
 
 namespace KTKS_DonKH.DAL.KhachHang
 {
@@ -37,7 +36,7 @@ namespace KTKS_DonKH.DAL.KhachHang
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -55,7 +54,7 @@ namespace KTKS_DonKH.DAL.KhachHang
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -72,7 +71,7 @@ namespace KTKS_DonKH.DAL.KhachHang
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -325,7 +324,7 @@ namespace KTKS_DonKH.DAL.KhachHang
             try
             {
                     var query = from item in db.DonDienThoais
-                                where item.CreateDate.Value.Date >= TuNgay.Date && item.CreateDate.Value <= DenNgay.Date
+                                where item.CreateDate.Value.Date >= TuNgay.Date && item.CreateDate.Value.Date <= DenNgay.Date
                                 //orderby item.CreateDate descending
                                 select new
                                 {
@@ -359,7 +358,7 @@ namespace KTKS_DonKH.DAL.KhachHang
             try
             {
                     var query = from item in db.DonDienThoais
-                                where item.CreateDate.Value.Date >= TuNgay.Date && item.CreateDate.Value <= DenNgay.Date && item.CreateBy == MaUser
+                                where item.CreateDate.Value.Date >= TuNgay.Date && item.CreateDate.Value.Date<= DenNgay.Date && item.CreateBy == MaUser
                                 //orderby item.CreateDate descending
                                 select new
                                 {

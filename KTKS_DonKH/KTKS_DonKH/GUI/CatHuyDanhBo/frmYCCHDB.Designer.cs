@@ -342,11 +342,11 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.Red;
-            this.label22.Location = new System.Drawing.Point(174, 13);
+            this.label22.Location = new System.Drawing.Point(142, 9);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(84, 18);
+            this.label22.Size = new System.Drawing.Size(120, 25);
             this.label22.TabIndex = 90;
             this.label22.Text = "Phiếu Hủy";
             // 

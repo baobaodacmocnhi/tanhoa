@@ -393,9 +393,9 @@
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(1065, 71);
+            this.btnLuu.Location = new System.Drawing.Point(1064, 73);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(86, 27);
+            this.btnLuu.Size = new System.Drawing.Size(75, 25);
             this.btnLuu.TabIndex = 16;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
@@ -419,7 +419,7 @@
             // 
             // btnInDS
             // 
-            this.btnInDS.Location = new System.Drawing.Point(594, 191);
+            this.btnInDS.Location = new System.Drawing.Point(594, 190);
             this.btnInDS.Name = "btnInDS";
             this.btnInDS.Size = new System.Drawing.Size(75, 25);
             this.btnInDS.TabIndex = 88;

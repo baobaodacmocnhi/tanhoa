@@ -6,15 +6,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.LinQ;
-using KTKS_DonKH.DAL.CapNhat;
-using KTKS_DonKH.BaoCao;
+using KTKS_DonKH.DAL;
+using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.DAL.QuanTri;
+using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.KhachHang;
 using KTKS_DonKH.GUI.BaoCao;
-using KTKS_DonKH.DAL.KhachHang;
-using KTKS_DonKH.DAL.ToXuLy;
-using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.KhachHang
 {
@@ -25,7 +24,7 @@ namespace KTKS_DonKH.GUI.KhachHang
         Dictionary<string, string> _source = new Dictionary<string, string>();
         CDonKH _cDonKH = new CDonKH();
         CThuTien _cThuTien = new CThuTien();
-        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CDocSo _cDocSo = new CDocSo();
         CDonTXL _cDonTXL = new CDonTXL();
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         string Dot = "", Ky = "", Nam = "";
@@ -182,7 +181,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 {
                     txtHopDong.Text = hoadon.HOPDONG;
                     txtHoTen.Text = hoadon.TENKH;
-                    txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+                    txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
                     txtGiaBieu.Text = hoadon.GB.ToString();
                     txtDinhMuc.Text = hoadon.DM.ToString();
                     Dot = hoadon.DOT.ToString();

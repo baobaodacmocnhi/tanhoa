@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.KhachHang;
-using KTKS_DonKH.DAL.CapNhat;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL;
 using KTKS_DonKH.DAL.QuanTri;
@@ -19,7 +18,7 @@ namespace KTKS_DonKH.GUI.KhachHang
         string _mnu = "mnuNhanDonDienThoai";
         CDonDienThoai _cDonDT = new CDonDienThoai();
         CThuTien _cThuTien = new CThuTien();
-        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CDocSo _cDocSo = new CDocSo();
         HOADON _hoadon = null;
         int _selectedindex = -1;
 
@@ -139,7 +138,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 {
                     _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
                     txtHoTen.Text = _hoadon.TENKH;
-                    txtDiaChi.Text = _hoadon.SO + " " + _hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(_hoadon.Quan, _hoadon.Phuong);
+                    txtDiaChi.Text = _hoadon.SO + " " + _hoadon.DUONG + _cDocSo.getPhuongQuanByID(_hoadon.Quan, _hoadon.Phuong);
                     dateBao.Focus();
                 }
                 else

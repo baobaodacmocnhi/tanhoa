@@ -10,7 +10,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 {
     class CLoaiChungTu : CDAL
     {
-        //DB_KTKS_DonKHDataContext db = new DB_KTKS_DonKHDataContext();
+        //dbKinhDoanhDataContext db = new dbKinhDoanhDataContext();
 
         public List<LoaiChungTu> LoadDSLoaiChungTu()
         {
@@ -85,7 +85,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -103,7 +103,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }

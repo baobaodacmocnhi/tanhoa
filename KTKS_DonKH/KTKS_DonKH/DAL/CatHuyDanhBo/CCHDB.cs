@@ -41,7 +41,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -59,7 +59,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -76,7 +76,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -274,7 +274,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -292,7 +292,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -301,7 +301,10 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
+                decimal ID = ctctdb.MaCHDB.Value;
                 db.CTCTDBs.DeleteOnSubmit(ctctdb);
+                if (db.CTCTDBs.Any(item => item.MaCHDB == ID) == false && db.CTCHDBs.Any(item => item.MaCHDB == ID) == false)
+                    db.CHDBs.DeleteOnSubmit(db.CHDBs.SingleOrDefault(item => item.MaCHDB == ID));
                 db.SubmitChanges();
                 //MessageBox.Show("Thành công Xóa CTCTDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
@@ -309,7 +312,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -826,7 +829,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -844,7 +847,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -853,7 +856,10 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
+                decimal ID = ctchdb.MaCHDB.Value;
                 db.CTCHDBs.DeleteOnSubmit(ctchdb);
+                if (db.CTCTDBs.Any(item => item.MaCHDB == ID) == false && db.CTCHDBs.Any(item => item.MaCHDB == ID) == false)
+                    db.CHDBs.DeleteOnSubmit(db.CHDBs.SingleOrDefault(item => item.MaCHDB == ID));
                 db.SubmitChanges();
                 //MessageBox.Show("Thành công Xóa CTCHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
@@ -861,7 +867,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -1303,6 +1309,11 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
+        public bool CheckCTCHDBByMaCTCHDB(decimal MaCTCHDB)
+        {
+            return db.CTCHDBs.Any(itemCTCHDB => itemCTCHDB.MaCTCHDB == MaCTCHDB);
+        }
+
         ///// <summary>
         ///// Lấy Số Phiếu kế tiếp khi lập Cắt Hủy Danh Bộ
         ///// </summary>
@@ -1465,7 +1476,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -1483,7 +1494,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -1500,7 +1511,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -1586,6 +1597,11 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+        }
+
+        public bool CheckExist_PhieuHuy(decimal MaYCCHDB)
+        {
+            return db.PhieuCHDBs.Any(item => item.MaYCCHDB == MaYCCHDB);
         }
 
         /// <summary>
@@ -1692,7 +1708,9 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             try
             {
                 var query = from itemYCCHDB in db.PhieuCHDBs
-                            where itemYCCHDB.MaYCCHDB >= TuSoPhieu && itemYCCHDB.MaYCCHDB <= DenSoPhieu
+                            where itemYCCHDB.MaYCCHDB.ToString().Substring(itemYCCHDB.MaYCCHDB.ToString().Length - 2, 2) == TuSoPhieu.ToString().Substring(TuSoPhieu.ToString().Length - 2, 2)
+                            && itemYCCHDB.MaYCCHDB.ToString().Substring(itemYCCHDB.MaYCCHDB.ToString().Length - 2, 2) == DenSoPhieu.ToString().Substring(DenSoPhieu.ToString().Length - 2, 2)
+                            && itemYCCHDB.MaYCCHDB >= TuSoPhieu && itemYCCHDB.MaYCCHDB <= DenSoPhieu
                             orderby itemYCCHDB.CreateDate descending
                             select new
                             {
@@ -1993,7 +2011,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
             catch (Exception ex)
             {
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
@@ -2010,7 +2028,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
             catch (Exception ex)
             {
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
@@ -2026,7 +2044,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
             catch (Exception ex)
             {
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }

@@ -9,10 +9,9 @@ using System.Windows.Forms;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.DAL.ToXuLy;
-using KTKS_DonKH.DAL.QuanTri;
-using KTKS_DonKH.DAL.CapNhat;
-using KTKS_DonKH.DAL.BamChi;
 using KTKS_DonKH.DAL;
+using KTKS_DonKH.DAL.BamChi;
+using KTKS_DonKH.DAL.QuanTri;
 
 namespace KTKS_DonKH.GUI.BamChi
 {
@@ -27,7 +26,7 @@ namespace KTKS_DonKH.GUI.BamChi
         CDonTXL _cDonTXL = new CDonTXL();
         CThuTien _cThuTien = new CThuTien();
         CBamChi _cBamChi = new CBamChi();
-        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CDocSo _cDocSo = new CDocSo();
         CTrangThaiBamChi _cTrangThaiBamChi = new CTrangThaiBamChi();
         bool _flagFirst = true;
         decimal _MaCTBamChi = 0;
@@ -52,7 +51,7 @@ namespace KTKS_DonKH.GUI.BamChi
             txtGiaBieu.Text = hoadon.GB.ToString();
             txtDinhMuc.Text = hoadon.DM.ToString();
             string a, b, c;
-            _cPhuongQuan.getTTDHNbyID(txtDanhBo.Text.Trim(), out a, out b, out c);
+            _cDocSo.getTTDHNbyID(txtDanhBo.Text.Trim(), out a, out b, out c);
             txtHieu.Text = a;
             txtCo.Text = b;
             txtSoThan.Text = c;

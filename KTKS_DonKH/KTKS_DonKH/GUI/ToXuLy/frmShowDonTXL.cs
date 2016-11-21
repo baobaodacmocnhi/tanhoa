@@ -6,12 +6,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using KTKS_DonKH.DAL.CapNhat;
-using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.ToXuLy;
-using KTKS_DonKH.DAL.KhachHang;
-using KTKS_DonKH.DAL.QuanTri;
+using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL;
+using KTKS_DonKH.DAL.QuanTri;
 
 namespace KTKS_DonKH.GUI.ToXuLy
 {
@@ -23,7 +21,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         HOADON _hoadon = null;
         CDonTXL _cDonTXL = new CDonTXL();
         CThuTien _cThuTien = new CThuTien();
-        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CDocSo _cDocSo = new CDocSo();
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
 
         public frmShowDonTXL()
@@ -41,7 +39,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             txtHopDong.Text = hoadon.HOPDONG;
             txtHoTen.Text = hoadon.TENKH;
-            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
             txtMSThue.Text = hoadon.MST;
             txtGiaBieu.Text = hoadon.GB.ToString();
             txtDinhMuc.Text = hoadon.DM.ToString();

@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>367</ApplicationRevision>
+    <ApplicationRevision>378</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -373,6 +373,12 @@
       <DependentUpon>rptThongKeDonKH.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="BaoCao\KhachHang\rptToTrinhDCHD.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptToTrinhDCHD.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="BaoCao\KiemTraXacMinh\rptThongKeDSKTXM_LoaiDon.cs">
       <DependentUpon>rptThongKeDSKTXM_LoaiDon.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -558,6 +564,7 @@
     </Compile>
     <Compile Include="DAL\BamChi\CBamChi.cs" />
     <Compile Include="DAL\CatHuyDanhBo\CNoiDungXuLyCHDB.cs" />
+    <Compile Include="DAL\CDocSo.cs" />
     <Compile Include="DAL\QuanTri\CBanGiamDoc.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CChiNhanh.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CGiaNuoc.cs" />
@@ -581,13 +588,11 @@
     <Compile Include="DAL\CThuTien.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CCatChuyenDM.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CDCBD.cs" />
-    <Compile Include="DAL\DieuChinhBienDong\CDuLieuKhachHang.cs" />
     <Compile Include="DAL\CatHuyDanhBo\CDongNuoc.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CTBKetQuaYCCatDM.cs" />
     <Compile Include="DAL\QuanTri\CTaiKhoan.cs" />
     <Compile Include="DAL\KhachHang\CDonDienThoai.cs" />
     <Compile Include="DAL\KhachHang\CDonKH.cs" />
-    <Compile Include="DAL\KhachHang\CPhuongQuan.cs" />
     <Compile Include="DAL\KiemTraXacMinh\CKTXM.cs" />
     <Compile Include="DAL\ThaoThuTraLoi\CGhiChuCTTTTL.cs" />
     <Compile Include="DAL\ThaoThuTraLoi\CTTTL.cs" />
@@ -602,7 +607,6 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Function\CLinQToDataTable.cs" />
     <Compile Include="GUI\BamChi\frmBaoCaoBamChi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -644,6 +648,12 @@
     </Compile>
     <Compile Include="GUI\CatHuyDanhBo\frmNoiDungXuLyCHDB.Designer.cs">
       <DependentUpon>frmNoiDungXuLyCHDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\KhachHang\frmToTrinhDCHD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\KhachHang\frmToTrinhDCHD.Designer.cs">
+      <DependentUpon>frmToTrinhDCHD.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\QuanTri\frmBanGiamDoc.cs">
       <SubType>Form</SubType>
@@ -975,6 +985,12 @@
     <Compile Include="GUI\TimKiem\frmTienTrinhDon.Designer.cs">
       <DependentUpon>frmTienTrinhDon.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ToXuLy\frmBaoCaoDonTXL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToXuLy\frmBaoCaoDonTXL.Designer.cs">
+      <DependentUpon>frmBaoCaoDonTXL.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ToXuLy\frmGianLan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1237,6 +1253,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThongKeDonKH.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\KhachHang\rptToTrinhDCHD.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptToTrinhDCHD.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\KiemTraXacMinh\rptThongKeDSKTXM_LoaiDon.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThongKeDSKTXM_LoaiDon.cs</LastGenOutput>
@@ -1380,6 +1400,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CatHuyDanhBo\frmNoiDungXuLyCHDB.resx">
       <DependentUpon>frmNoiDungXuLyCHDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\KhachHang\frmToTrinhDCHD.resx">
+      <DependentUpon>frmToTrinhDCHD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanTri\frmBanGiamDoc.resx">
       <DependentUpon>frmBanGiamDoc.cs</DependentUpon>
@@ -1548,6 +1571,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\TimKiem\frmTienTrinhDon.resx">
       <DependentUpon>frmTienTrinhDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToXuLy\frmBaoCaoDonTXL.resx">
+      <DependentUpon>frmBaoCaoDonTXL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToXuLy\frmGianLan.resx">
       <DependentUpon>frmGianLan.cs</DependentUpon>

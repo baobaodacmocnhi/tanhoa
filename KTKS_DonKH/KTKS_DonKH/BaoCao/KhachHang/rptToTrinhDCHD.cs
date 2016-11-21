@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KTKS_DonKH.BaoCao {
+namespace KTKS_DonKH.BaoCao.KhachHang {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace KTKS_DonKH.BaoCao {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rptHeader : ReportClass {
+    public class rptToTrinhDCHD : ReportClass {
         
-        public rptHeader() {
+        public rptToTrinhDCHD() {
         }
         
         public override string ResourceName {
             get {
-                return "rptHeader.rpt";
+                return "rptToTrinhDCHD.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace KTKS_DonKH.BaoCao {
         
         public override string FullResourceName {
             get {
-                return "KTKS_DonKH.BaoCao.rptHeader.rpt";
+                return "KTKS_DonKH.BaoCao.KhachHang.rptToTrinhDCHD.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace KTKS_DonKH.BaoCao {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrptHeader : Component, ICachedReport {
+    public class CachedrptToTrinhDCHD : Component, ICachedReport {
         
-        public CachedrptHeader() {
+        public CachedrptToTrinhDCHD() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace KTKS_DonKH.BaoCao {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rptHeader rpt = new rptHeader();
+            rptToTrinhDCHD rpt = new rptToTrinhDCHD();
             rpt.Site = this.Site;
             return rpt;
         }

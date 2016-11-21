@@ -21,12 +21,15 @@ using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.CatHuyDanhBo;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.GUI.DongNuoc;
+using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.TimKiem
 {
     public partial class frmTienTrinhDon : Form
     {
         CTimKiem _cTimKiem = new CTimKiem();
+        CThuTien _cThuTien = new CThuTien();
+        CDocSo _cDocSo = new CDocSo();
         DataRowView _CTRow = null;
         DataTable dt = new DataTable();
 
@@ -35,16 +38,10 @@ namespace KTKS_DonKH.GUI.TimKiem
             InitializeComponent();
         }
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            //this.ControlBox = false;
-            this.WindowState = FormWindowState.Maximized;
-            this.BringToFront();
-        }
-
         private void frmTienTrinhDon_Load(object sender, EventArgs e)
         {
+            dgvHoaDon.AutoGenerateColumns = false;
+
             cmbTimTheo.SelectedIndex = 0;
             gridControl.LevelTree.Nodes.Add("Chi Tiết Kiểm Tra Xác Minh", gridViewKTXM);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Điều Chỉnh Biến Động", gridViewDCBD);
@@ -843,6 +840,30 @@ namespace KTKS_DonKH.GUI.TimKiem
             }
             else
                 MessageBox.Show("Không có đơn nào", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            txtDanhBo.Text = "";
+            txtHoTen.Text = "";
+            txtSoNha.Text = "";
+            txtTenDuong.Text = "";
+        }
+
+        private void btnTimKiemTTKH_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ", "")))
+                dgvHoaDon.DataSource = _cThuTien.GetDSTimKiem(txtDanhBo.Text.Trim().Replace(" ", ""),"");
+            else
+                dgvHoaDon.DataSource = _cThuTien.GetDSTimKiemTTKH(txtHoTen.Text.Trim(), txtSoNha.Text.Trim(), txtTenDuong.Text.Trim());
+        }
+
+        private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "DanhBo_TTKH" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
+            }
         }
         
     }

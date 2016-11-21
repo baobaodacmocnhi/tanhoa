@@ -8,13 +8,11 @@ using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.DieuChinhBienDong;
 using KTKS_DonKH.LinQ;
-using KTKS_DonKH.BaoCao;
+using KTKS_DonKH.DAL;
+using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.BaoCao.DieuChinhBienDong;
 using KTKS_DonKH.GUI.BaoCao;
-using KTKS_DonKH.DAL.KhachHang;
-using KTKS_DonKH.DAL.QuanTri;
-using KTKS_DonKH.DAL.CapNhat;
-using KTKS_DonKH.DAL;
+using KTKS_DonKH.BaoCao;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -24,7 +22,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CDCBD _cDCBD = new CDCBD();
         CTDCBD _ctdcbd = null;
         HOADON _hoadon = null;
-        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CDocSo _cDocSo = new CDocSo();
         CThuTien _cThuTien = new CThuTien();
 
         public frmShowDCBD()
@@ -435,7 +433,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtDanhBo.Text = hoadon.DANHBA;
             txtHopDong.Text = hoadon.HOPDONG;
             txtHoTen.Text = hoadon.TENKH;
-            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
             txtMSThue.Text = hoadon.MST;
             txtGiaBieu.Text = hoadon.GB.ToString();
             txtDinhMuc.Text = hoadon.DM.ToString();
@@ -443,7 +441,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtSX.Text = hoadon.TILESX.ToString();
             txtDV.Text = hoadon.TILEDV.ToString();
             txtHCSN.Text = hoadon.TILEHCSN.ToString();
-            txtDot.Text = _cPhuongQuan.getDot(hoadon.DANHBA);
+            txtDot.Text = _cDocSo.getDot(hoadon.DANHBA);
         }
 
         public void Clear()

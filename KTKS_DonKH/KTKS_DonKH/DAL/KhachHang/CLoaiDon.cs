@@ -10,7 +10,7 @@ namespace KTKS_DonKH.DAL.KhachHang
 {
     class CLoaiDon : CDAL
     {
-        //DB_KTKS_DonKHDataContext db = new DB_KTKS_DonKHDataContext();
+        //dbKinhDoanhDataContext db = new dbKinhDoanhDataContext();
 
         /// <summary>
         /// Lấy danh sách Loại Đơn
@@ -119,7 +119,7 @@ namespace KTKS_DonKH.DAL.KhachHang
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -137,7 +137,7 @@ namespace KTKS_DonKH.DAL.KhachHang
             catch (Exception)
             {
                 //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -154,7 +154,7 @@ namespace KTKS_DonKH.DAL.KhachHang
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }

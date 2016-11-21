@@ -6,16 +6,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.DAL.ToXuLy;
-using KTKS_DonKH.DAL.CapNhat;
-using KTKS_DonKH.BaoCao;
-using KTKS_DonKH.BaoCao.CongVan;
-using KTKS_DonKH.GUI.BaoCao;
-using KTKS_DonKH.BaoCao.ToXuLy;
-using System.IO;
 using KTKS_DonKH.DAL;
+using KTKS_DonKH.BaoCao;
+using KTKS_DonKH.BaoCao.ToXuLy;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace KTKS_DonKH.GUI.ToXuLy
 {
@@ -27,7 +25,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         CDonKH _cDonKH = new CDonKH();
         CDonTXL _cDonTXL = new CDonTXL();
         CThuTien _cThuTien = new CThuTien();
-        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CDocSo _cDocSo = new CDocSo();
         CGianLan _cGianLan = new CGianLan();
         GianLan _gianlan = null;
 
@@ -40,7 +38,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             txtDanhBo.Text = hoadon.DANHBA;
             txtHoTen.Text = hoadon.TENKH;
-            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
         }
 
         public void LoadGianLan(GianLan entity)

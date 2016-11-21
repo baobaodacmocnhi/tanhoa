@@ -34,7 +34,7 @@ namespace KTKS_DonKH.GUI.CongVan
         CCHDB _cCHDB = new CCHDB();
         CTTTL _cTTTL = new CTTTL();
         CThuTien _cThuTien = new CThuTien();
-        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CDocSo _cDocSo = new CDocSo();
         bool _toxuly = false;
         decimal _madon = 0;
 
@@ -141,6 +141,7 @@ namespace KTKS_DonKH.GUI.CongVan
                         item.MaDonTXL = _madon;
                     else
                         item.MaDon = _madon;
+                    if (!_cCongVanDi.CheckExist(item.LoaiVanBan, item.Ma, item.NoiChuyen, DateTime.Now))
                     if (_cCongVanDi.Them(item))
                     {
                         Clear();
@@ -273,6 +274,7 @@ namespace KTKS_DonKH.GUI.CongVan
                             item.MaDonTXL = _madon;
                         else
                             item.MaDon = _madon;
+                        if (!_cCongVanDi.CheckExist(item.LoaiVanBan, item.Ma,item.NoiChuyen, DateTime.Now))
                         _cCongVanDi.Them(item);
                     }
                     Clear();
@@ -426,7 +428,49 @@ namespace KTKS_DonKH.GUI.CongVan
                     int DenMa = int.Parse(txtDenMa.Text.Trim().Replace("-", "").Substring(0, txtDenMa.Text.Trim().Replace("-", "").Length - 2));
                     while (TuMa <= DenMa)
                     {
-                        lstMa.Items.Add(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2));
+                        switch (cmbLoaiVanBan.SelectedItem.ToString())
+                        {
+                            case "Đơn Tổ Khách Hàng":
+                                if (_cDonKH.CheckExist(decimal.Parse(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2))))
+                                    lstMa.Items.Add(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2));
+                                break;
+                            case "Đơn Tổ Xử Lý":
+                                if (_cDonTXL.CheckExist(decimal.Parse(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2))))
+                                    lstMa.Items.Add(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2));
+                                break;
+                            case "Kiểm Tra Xác Minh":
+                                break;
+                            case "Bấm Chì":
+                                break;
+                            case "Điều Chỉnh Biến Động":
+                                if (_cDCBD.CheckExist_DCBD(decimal.Parse(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2))))
+                                    lstMa.Items.Add(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2));
+                                break;
+                            case "Điều Chỉnh Hóa Đơn":
+                                if (_cDCBD.CheckExist_DCHD(decimal.Parse(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2))))
+                                    lstMa.Items.Add(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2));
+                                break;
+                            case "Cắt Tạm Danh Bộ":
+                                if (_cCHDB.CheckCTCTDBbyID(decimal.Parse(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2))))
+                                    lstMa.Items.Add(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2));
+                                break;
+                            case "Cắt Hủy Danh Bộ":
+                                if (_cCHDB.CheckCTCHDBByMaCTCHDB(decimal.Parse(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2))))
+                                    lstMa.Items.Add(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2));
+                                break;
+                            case "Phiếu Hủy Danh Bộ":
+                                if (_cCHDB.CheckExist_PhieuHuy(decimal.Parse(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2))))
+                                    lstMa.Items.Add(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2));
+                                break;
+                            case "Thư Trả Lời":
+                                if (_cTTTL.CheckExist(decimal.Parse(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2))))
+                                    lstMa.Items.Add(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2));
+                                break;
+                            default:
+
+                                break;
+                        }
+                        //lstMa.Items.Add(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2));
                         TuMa++;
                     }
                 }
@@ -506,7 +550,7 @@ namespace KTKS_DonKH.GUI.CongVan
                 HOADON hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
                 txtDanhBo.Text = hoadon.DANHBA;
                 txtHoTen.Text = hoadon.TENKH;
-                txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+                txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
             }
         }
 

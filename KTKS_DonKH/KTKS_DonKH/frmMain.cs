@@ -404,8 +404,39 @@ namespace KTKS_DonKH
 
         #region Truy Thu
 
+        private void mnuTruyThuTienNuoc_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuTruyThuTienNuoc", "Xem"))
+            {
+                frmTruyThuTienNuoc frm = new frmTruyThuTienNuoc();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
+        private void mnuGianLanTienNuoc_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuGianLanTienNuoc", "Xem"))
+            {
+                frmGianLan frm = new frmGianLan();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
+        private void mnuDSTruyThuTienNuoc_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuDSTruyThuTienNuoc", "Xem"))
+            {
+                frmDSTruyThuTienNuoc frm = new frmDSTruyThuTienNuoc();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        }
         #endregion
 
         #region Điều Chỉnh Biến Động
@@ -681,9 +712,17 @@ namespace KTKS_DonKH
             OpenForm(frm);
         }
 
-       
+        private void mnuBaoCaoDonTXL_Click(object sender, EventArgs e)
+        {
+            frmBaoCaoDonTXL frm = new frmBaoCaoDonTXL();
+            OpenForm(frm);
+        }
 
-        
+        private void mnuToTrinhDCHD_Click(object sender, EventArgs e)
+        {
+            frmToTrinhDCHD frm = new frmToTrinhDCHD();
+            OpenForm(frm);
+        }
 
 
     }

@@ -6,15 +6,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using KTKS_DonKH.DAL.CapNhat;
 using KTKS_DonKH.DAL.KhachHang;
+using KTKS_DonKH.DAL;
+using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.LinQ;
+using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.KhachHang;
 using KTKS_DonKH.GUI.BaoCao;
-using KTKS_DonKH.DAL.QuanTri;
-using KTKS_DonKH.DAL.ToXuLy;
-using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.KhachHang
 {
@@ -24,13 +23,14 @@ namespace KTKS_DonKH.GUI.KhachHang
         CLoaiDon _cLoaiDon = new CLoaiDon();
         CDonKH _cDonKH = new CDonKH();
         CThuTien _cThuTien = new CThuTien();
-        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CDocSo _cDocSo = new CDocSo();
         CDonTXL _cDonTXL = new CDonTXL();
         DonKH _donkh;
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         string Dot = "";
         string Ky = "";
         string Nam = "";
+        string MLT = "";
 
         public frmNhanDonKH()
         {
@@ -87,6 +87,12 @@ namespace KTKS_DonKH.GUI.KhachHang
 
             txtDinhMucSau.Text = "";
             txtHieuLucTuKy.Text = "";
+
+             Dot = "";
+             Ky = "";
+             Nam = "";
+             MLT = "";
+             _donkh = null;
         }
 
         private void frmNhanDonKH_Load(object sender, EventArgs e)
@@ -136,12 +142,13 @@ namespace KTKS_DonKH.GUI.KhachHang
                 {
                     txtHopDong.Text = hoadon.HOPDONG;
                     txtHoTen.Text = hoadon.TENKH;
-                    txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+                    txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
                     txtGiaBieu.Text = hoadon.GB.ToString();
                     txtDinhMuc.Text = hoadon.DM.ToString();
                     Dot = hoadon.DOT.ToString();
                     Ky = hoadon.KY.ToString();
                     Nam = hoadon.NAM.ToString();
+                    MLT = hoadon.MALOTRINH;
                     dgvLichSuDon.DataSource = _cDonKH.LoadDSDonKHByDanhBo(txtDanhBo.Text.Trim());
                     if (dgvLichSuDon.RowCount > 0)
                         dgvLichSuDon.Sort(dgvLichSuDon.Columns["CreateDate"], ListSortDirection.Descending);
@@ -186,7 +193,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                         donkh.Dot = Dot;
                         donkh.Ky = Ky;
                         donkh.Nam = Nam;
-
+                        donkh.MLT = MLT;
                         //donkh.GhiChuNguoiDi = cmbNVKiemTra.SelectedValue.ToString();
                         donkh.DinhMucSau = txtDinhMucSau.Text.Trim();
                         donkh.HieuLucTuKy = txtHieuLucTuKy.Text.Trim();
@@ -696,6 +703,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                         _donkh.Dot = Dot;
                         _donkh.Ky = Ky;
                         _donkh.Nam = Nam;
+                        _donkh.MLT = MLT;
                     }
                     _donkh.DanhBo = txtDanhBo.Text.Trim();
                     _donkh.HopDong = txtHopDong.Text.Trim();

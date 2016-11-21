@@ -6,17 +6,16 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Globalization;
 using KTKS_DonKH.LinQ;
-using KTKS_DonKH.DAL.QuanTri;
+using KTKS_DonKH.DAL;
 using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.DAL.ToXuLy;
+using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.DAL.CatHuyDanhBo;
 using KTKS_DonKH.BaoCao;
-using System.Globalization;
 using KTKS_DonKH.BaoCao.CatHuyDanhBo;
 using KTKS_DonKH.GUI.BaoCao;
-using KTKS_DonKH.DAL.CapNhat;
-using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -29,7 +28,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CThuTien _cThuTien = new CThuTien();
         CDonKH _cDonKH = new CDonKH();
         CDonTXL _cDonTXL = new CDonTXL();
-        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CDocSo _cDocSo = new CDocSo();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CCHDB _cCHDB = new CCHDB();
         CLyDoCHDB _cLyDoCHDB = new CLyDoCHDB();
@@ -68,7 +67,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             txtDanhBo.Text = hoadon.DANHBA;
             txtHopDong.Text = hoadon.HOPDONG;
             txtHoTen.Text = hoadon.TENKH;
-            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
         }
 
         public void Clear()

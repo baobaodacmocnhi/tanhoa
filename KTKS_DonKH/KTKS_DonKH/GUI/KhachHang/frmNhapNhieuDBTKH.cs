@@ -6,12 +6,11 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using KTKS_DonKH.DAL.CapNhat;
-using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.DAL.KhachHang;
+using KTKS_DonKH.DAL.QuanTri;
+using KTKS_DonKH.DAL;
 using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.LinQ;
-using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.KhachHang
 {
@@ -20,7 +19,7 @@ namespace KTKS_DonKH.GUI.KhachHang
         CLoaiDon _cLoaiDon = new CLoaiDon();
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         CThuTien _cThuTien = new CThuTien();
-        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CDocSo _cDocSo = new CDocSo();
         CDonTXL _cDonTXL = new CDonTXL();
         CDonKH _cDonKH = new CDonKH();
 
@@ -127,12 +126,13 @@ namespace KTKS_DonKH.GUI.KhachHang
                     HOADON hoadon = _cThuTien.GetMoiNhat(dgvDanhBoChuyenKT["DanhBo", e.RowIndex].Value.ToString());
                     dgvDanhBoChuyenKT["HopDong", e.RowIndex].Value = hoadon.HOPDONG;
                     dgvDanhBoChuyenKT["HoTen", e.RowIndex].Value = hoadon.TENKH;
-                    dgvDanhBoChuyenKT["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+                    dgvDanhBoChuyenKT["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
                     dgvDanhBoChuyenKT["GiaBieu", e.RowIndex].Value = hoadon.GB;
                     dgvDanhBoChuyenKT["DinhMuc", e.RowIndex].Value = hoadon.DM;
                     dgvDanhBoChuyenKT["Dot", e.RowIndex].Value = hoadon.DOT;
                     dgvDanhBoChuyenKT["Ky", e.RowIndex].Value = hoadon.KY;
                     dgvDanhBoChuyenKT["Nam", e.RowIndex].Value = hoadon.NAM;
+                    dgvDanhBoChuyenKT["MLT", e.RowIndex].Value = hoadon.MALOTRINH;
                 }
                 else
                 {
@@ -192,6 +192,8 @@ namespace KTKS_DonKH.GUI.KhachHang
                                 donkh.Ky = item.Cells["Ky"].Value.ToString();
                             if (item.Cells["Nam"].Value != null)
                                 donkh.Nam = item.Cells["Nam"].Value.ToString();
+                            if (item.Cells["MLT"].Value != null)
+                                donkh.Nam = item.Cells["MLT"].Value.ToString();
                             ///
                             if (item.Cells["NguoiDi"].Value != null)
                             {
@@ -266,6 +268,8 @@ namespace KTKS_DonKH.GUI.KhachHang
                                     donkh.Ky = item.Cells["KyVP"].Value.ToString();
                                 if (item.Cells["NamVP"].Value != null)
                                     donkh.Nam = item.Cells["NamVP"].Value.ToString();
+                                if (item.Cells["MLTVP"].Value != null)
+                                    donkh.Nam = item.Cells["MLTVP"].Value.ToString();
                                 ///
                                 if (item.Cells["NguoiDiVP"].Value != null)
                                 {
@@ -351,12 +355,13 @@ namespace KTKS_DonKH.GUI.KhachHang
                     HOADON hoadon = _cThuTien.GetMoiNhat(dgvDanhBoChuyenVanPhong["DanhBoVP", e.RowIndex].Value.ToString());
                     dgvDanhBoChuyenVanPhong["HopDongVP", e.RowIndex].Value = hoadon.HOPDONG;
                     dgvDanhBoChuyenVanPhong["HoTenVP", e.RowIndex].Value = hoadon.TENKH;
-                    dgvDanhBoChuyenVanPhong["DiaChiVP", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+                    dgvDanhBoChuyenVanPhong["DiaChiVP", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
                     dgvDanhBoChuyenVanPhong["GiaBieuVP", e.RowIndex].Value = hoadon.GB;
                     dgvDanhBoChuyenVanPhong["DinhMucVP", e.RowIndex].Value = hoadon.DM;
                     dgvDanhBoChuyenVanPhong["DotVP", e.RowIndex].Value = hoadon.DOT;
                     dgvDanhBoChuyenVanPhong["KyVP", e.RowIndex].Value = hoadon.KY;
                     dgvDanhBoChuyenVanPhong["NamVP", e.RowIndex].Value = hoadon.NAM;
+                    dgvDanhBoChuyenVanPhong["MLTVP", e.RowIndex].Value = hoadon.MALOTRINH;
                 }
                 else
                 {

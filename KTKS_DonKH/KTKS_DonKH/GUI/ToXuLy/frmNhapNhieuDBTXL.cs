@@ -6,12 +6,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using KTKS_DonKH.DAL.CapNhat;
-using KTKS_DonKH.DAL.QuanTri;
-using KTKS_DonKH.DAL.KhachHang;
-using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.ToXuLy;
+using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.DAL;
+using KTKS_DonKH.LinQ;
 
 namespace KTKS_DonKH.GUI.ToXuLy
 {
@@ -20,7 +18,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         CLoaiDonTXL _cLoaiDonTXL = new CLoaiDonTXL();
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         CThuTien _cThuTien = new CThuTien();
-        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CDocSo _cDocSo = new CDocSo();
         CDonTXL _cDonTXL = new CDonTXL();
         private DateTimePicker cellDateTimePicker;
         bool _flag = false;
@@ -76,13 +74,14 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     HOADON hoadon = _cThuTien.GetMoiNhat(dgvDanhBo["DanhBo", e.RowIndex].Value.ToString());
                     dgvDanhBo["HopDong", e.RowIndex].Value = hoadon.HOPDONG;
                     dgvDanhBo["HoTen", e.RowIndex].Value = hoadon.TENKH;
-                    dgvDanhBo["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+                    dgvDanhBo["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
                     dgvDanhBo["MSThue", e.RowIndex].Value = hoadon.MST;
                     dgvDanhBo["GiaBieu", e.RowIndex].Value = hoadon.GB;
                     dgvDanhBo["DinhMuc", e.RowIndex].Value = hoadon.DM;
                     dgvDanhBo["Dot", e.RowIndex].Value = hoadon.DOT.ToString();
                     dgvDanhBo["Ky", e.RowIndex].Value = hoadon.KY.ToString();
                     dgvDanhBo["Nam", e.RowIndex].Value = hoadon.NAM.ToString();
+                    dgvDanhBo["MLT", e.RowIndex].Value = hoadon.MALOTRINH.ToString();
                 }
                 else
                 {
@@ -135,6 +134,8 @@ namespace KTKS_DonKH.GUI.ToXuLy
                             dontxl.Ky = item.Cells["Ky"].Value.ToString();
                         if (item.Cells["Nam"].Value != null)
                             dontxl.Nam = item.Cells["Nam"].Value.ToString();
+                        if (item.Cells["MLT"].Value != null)
+                            dontxl.MLT = item.Cells["MLT"].Value.ToString();
                         ///
                         if (item.Cells["NguoiDi"].Value != null)
                         {

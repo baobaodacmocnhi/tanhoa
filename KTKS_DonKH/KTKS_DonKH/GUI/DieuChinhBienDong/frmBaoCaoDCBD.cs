@@ -6,14 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using KTKS_DonKH.DAL.CapNhat;
-using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.DieuChinhBienDong;
 using KTKS_DonKH.DAL.DieuChinhBienDong;
 using KTKS_DonKH.LinQ;
-using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.DAL;
 using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.BaoCao;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -22,10 +20,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CChungTu _cChungTu = new CChungTu();
         CCatChuyenDM _cCatChuyenDM = new CCatChuyenDM();
         CDCBD _cDCBD = new CDCBD();
-        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CDocSo _cDocSo = new CDocSo();
         List<QUAN> _lst;
         CThuTien _cThuTien = new CThuTien();
-        CDuLieuKhachHang _cDLKH = new CDuLieuKhachHang();
 
         public frmBaoCaoDCBD()
         {
@@ -42,7 +39,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void frmBCCapDinhMuc_Load(object sender, EventArgs e)
         {
-            _lst = _cPhuongQuan.LoadDSQuan();
+            _lst = _cDocSo.LoadDSQuan();
             QUAN quan = new QUAN();
             quan.MAQUAN = 0;
             quan.TENQUAN = "Tất Cả";
@@ -100,8 +97,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         dr["NgayHetHan"] = itemRow["NgayHetHan"];
                         dr["DienThoai"] = itemRow["DienThoai"];
                         dr["GhiChu"] = itemRow["GhiChu"];
-                        dr["Phuong"] = _cPhuongQuan.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
-                        dr["Quan"] = _cPhuongQuan.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
+                        dr["Phuong"] = _cDocSo.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                        dr["Quan"] = _cDocSo.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
 
                         dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
                     }
@@ -146,8 +143,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["NgayHetHan"] = itemRow["NgayHetHan"];
                                 dr["DienThoai"] = itemRow["DienThoai"];
                                 dr["GhiChu"] = itemRow["GhiChu"];
-                                dr["Phuong"] = _cPhuongQuan.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
-                                dr["Quan"] = _cPhuongQuan.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
+                                dr["Phuong"] = _cDocSo.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                                dr["Quan"] = _cDocSo.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
 
                                 dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
                             }
@@ -192,8 +189,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["NgayHetHan"] = itemRow["NgayHetHan"];
                                 dr["DienThoai"] = itemRow["DienThoai"];
                                 dr["GhiChu"] = itemRow["GhiChu"];
-                                dr["Phuong"] = _cPhuongQuan.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
-                                dr["Quan"] = _cPhuongQuan.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
+                                dr["Phuong"] = _cDocSo.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                                dr["Quan"] = _cDocSo.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
 
                                 dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
                             }
@@ -393,8 +390,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         dr["NgayHetHan"] = itemRow["NgayHetHan"];
                         dr["DienThoai"] = itemRow["DienThoai"];
                         dr["GhiChu"] = itemRow["GhiChu"];
-                        dr["Phuong"] = _cPhuongQuan.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
-                        dr["Quan"] = _cPhuongQuan.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
+                        dr["Phuong"] = _cDocSo.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                        dr["Quan"] = _cDocSo.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
                         dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
                     }
                     else
@@ -435,8 +432,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["NgayHetHan"] = itemRow["NgayHetHan"];
                                 dr["DienThoai"] = itemRow["DienThoai"];
                                 dr["GhiChu"] = itemRow["GhiChu"];
-                                dr["Phuong"] = _cPhuongQuan.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
-                                dr["Quan"] = _cPhuongQuan.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
+                                dr["Phuong"] = _cDocSo.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                                dr["Quan"] = _cDocSo.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
                                 dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
                             }
                         }
@@ -477,8 +474,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["NgayHetHan"] = itemRow["NgayHetHan"];
                                 dr["DienThoai"] = itemRow["DienThoai"];
                                 dr["GhiChu"] = itemRow["GhiChu"];
-                                dr["Phuong"] = _cPhuongQuan.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
-                                dr["Quan"] = _cPhuongQuan.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
+                                dr["Phuong"] = _cDocSo.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                                dr["Quan"] = _cDocSo.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
                                 dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
                             }
                         }
@@ -705,8 +702,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["NgayHetHan"] = rowTemp["NgayHetHan"];
                                 dr["DienThoai"] = rowTemp["DienThoai"];
                                 dr["GhiChu"] = rowTemp["GhiChu"];
-                                dr["Phuong"] = _cPhuongQuan.getTenPhuongByMaQuanPhuong(int.Parse(rowTemp["Quan"].ToString()), rowTemp["Phuong"].ToString());
-                                dr["Quan"] = _cPhuongQuan.getTenQuanByMaQuan(int.Parse(rowTemp["Quan"].ToString()));
+                                dr["Phuong"] = _cDocSo.getTenPhuongByMaQuanPhuong(int.Parse(rowTemp["Quan"].ToString()), rowTemp["Phuong"].ToString());
+                                dr["Quan"] = _cDocSo.getTenQuanByMaQuan(int.Parse(rowTemp["Quan"].ToString()));
 
                                 dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
                             }
@@ -809,8 +806,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (itemRow["MaLCT"].ToString() == "7")
                         dr["GiayXNTamTru"] = "true";
                     dr["DinhMucCap"] = int.Parse(itemRow["SoNKDangKy"].ToString()) * 4;
-                    dr["Phuong"] = _cPhuongQuan.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
-                    dr["Quan"] = _cPhuongQuan.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
+                    dr["Phuong"] = _cDocSo.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                    dr["Quan"] = _cDocSo.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
 
                     dsBaoCao.Tables["ThongKeDCSoCT"].Rows.Add(dr);
                 }
@@ -897,8 +894,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                         dr["MaLCT"] = itemRow["MaLCT"];
                         dr["TenLCT"] = itemRow["TenLCT"];
-                        dr["Phuong"] = _cPhuongQuan.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
-                        dr["Quan"] = _cPhuongQuan.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
+                        dr["Phuong"] = _cDocSo.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                        dr["Quan"] = _cDocSo.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
                         dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
                     }
                     else
@@ -929,8 +926,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                                 dr["MaLCT"] = itemRow["MaLCT"];
                                 dr["TenLCT"] = itemRow["TenLCT"];
-                                dr["Phuong"] = _cPhuongQuan.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
-                                dr["Quan"] = _cPhuongQuan.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
+                                dr["Phuong"] = _cDocSo.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                                dr["Quan"] = _cDocSo.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
                                 dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
                             }
                         }
@@ -958,8 +955,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                                 dr["MaLCT"] = itemRow["MaLCT"];
                                 dr["TenLCT"] = itemRow["TenLCT"];
-                                dr["Phuong"] = _cPhuongQuan.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
-                                dr["Quan"] = _cPhuongQuan.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
+                                dr["Phuong"] = _cDocSo.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                                dr["Quan"] = _cDocSo.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
                                 dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
                             }
                         }
@@ -990,12 +987,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
                         {
                             dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                            dr["DinhMucCap"] = _cDLKH.GetDinhMuc(itemRow["DanhBo"].ToString());
+                            dr["DinhMucCap"] = _cDocSo.GetDinhMuc(itemRow["DanhBo"].ToString());
                         }
                         dr["HoTen"] = itemRow["HoTen"];
                         dr["DiaChi"] = itemRow["DiaChi"];
-                        dr["Phuong"] = _cPhuongQuan.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
-                        dr["Quan"] = _cPhuongQuan.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
+                        dr["Phuong"] = _cDocSo.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                        dr["Quan"] = _cDocSo.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
                         
                         dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
                     }
@@ -1009,12 +1006,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
                                 {
                                     dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                                    dr["DinhMucCap"] = _cDLKH.GetDinhMuc(itemRow["DanhBo"].ToString());
+                                    dr["DinhMucCap"] = _cDocSo.GetDinhMuc(itemRow["DanhBo"].ToString());
                                 }
                                 dr["HoTen"] = itemRow["HoTen"];
                                 dr["DiaChi"] = itemRow["DiaChi"];
-                                dr["Phuong"] = _cPhuongQuan.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
-                                dr["Quan"] = _cPhuongQuan.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
+                                dr["Phuong"] = _cDocSo.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                                dr["Quan"] = _cDocSo.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
                                 dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
                             }
                         }
@@ -1027,12 +1024,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
                                 {
                                     dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                                    dr["DinhMucCap"] = _cDLKH.GetDinhMuc(itemRow["DanhBo"].ToString());
+                                    dr["DinhMucCap"] = _cDocSo.GetDinhMuc(itemRow["DanhBo"].ToString());
                                 }
                                 dr["HoTen"] = itemRow["HoTen"];
                                 dr["DiaChi"] = itemRow["DiaChi"];
-                                dr["Phuong"] = _cPhuongQuan.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
-                                dr["Quan"] = _cPhuongQuan.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
+                                dr["Phuong"] = _cDocSo.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                                dr["Quan"] = _cDocSo.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
                                 dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
                             }
                         }
@@ -1058,12 +1055,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
                         {
                             dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                            dr["DinhMucCap"] = _cDLKH.GetDinhMuc(itemRow["DanhBo"].ToString());
+                            dr["DinhMucCap"] = _cDocSo.GetDinhMuc(itemRow["DanhBo"].ToString());
                         }
                         dr["HoTen"] = itemRow["HoTen"];
                         dr["DiaChi"] = itemRow["DiaChi"];
-                        dr["Phuong"] = _cPhuongQuan.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
-                        dr["Quan"] = _cPhuongQuan.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
+                        dr["Phuong"] = _cDocSo.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                        dr["Quan"] = _cDocSo.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
 
                         dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
                     }
@@ -1077,12 +1074,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
                                 {
                                     dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                                    dr["DinhMucCap"] = _cDLKH.GetDinhMuc(itemRow["DanhBo"].ToString());
+                                    dr["DinhMucCap"] = _cDocSo.GetDinhMuc(itemRow["DanhBo"].ToString());
                                 }
                                 dr["HoTen"] = itemRow["HoTen"];
                                 dr["DiaChi"] = itemRow["DiaChi"];
-                                dr["Phuong"] = _cPhuongQuan.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
-                                dr["Quan"] = _cPhuongQuan.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
+                                dr["Phuong"] = _cDocSo.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                                dr["Quan"] = _cDocSo.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
                                 dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
                             }
                         }
@@ -1095,12 +1092,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
                                 {
                                     dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                                    dr["DinhMucCap"] = _cDLKH.GetDinhMuc(itemRow["DanhBo"].ToString());
+                                    dr["DinhMucCap"] = _cDocSo.GetDinhMuc(itemRow["DanhBo"].ToString());
                                 }
                                 dr["HoTen"] = itemRow["HoTen"];
                                 dr["DiaChi"] = itemRow["DiaChi"];
-                                dr["Phuong"] = _cPhuongQuan.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
-                                dr["Quan"] = _cPhuongQuan.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
+                                dr["Phuong"] = _cDocSo.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                                dr["Quan"] = _cDocSo.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
                                 dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
                             }
                         }

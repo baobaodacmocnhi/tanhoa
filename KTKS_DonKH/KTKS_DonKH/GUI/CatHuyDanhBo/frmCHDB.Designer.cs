@@ -407,6 +407,8 @@
             // 
             // cmbLyDo
             // 
+            this.cmbLyDo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbLyDo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbLyDo.FormattingEnabled = true;
             this.cmbLyDo.Location = new System.Drawing.Point(79, 27);
             this.cmbLyDo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -439,7 +441,7 @@
             this.groupBoxNoiDungXuLy.Name = "groupBoxNoiDungXuLy";
             this.groupBoxNoiDungXuLy.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBoxNoiDungXuLy.Size = new System.Drawing.Size(853, 292);
-            this.groupBoxNoiDungXuLy.TabIndex = 7;
+            this.groupBoxNoiDungXuLy.TabIndex = 2;
             this.groupBoxNoiDungXuLy.TabStop = false;
             this.groupBoxNoiDungXuLy.Text = "Nội Dung Xử Lý";
             // 
@@ -625,11 +627,11 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.Red;
-            this.label22.Location = new System.Drawing.Point(184, 10);
+            this.label22.Location = new System.Drawing.Point(178, 9);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(68, 18);
+            this.label22.Size = new System.Drawing.Size(96, 25);
             this.label22.TabIndex = 60;
             this.label22.Text = "Cắt Hủy";
             // 
@@ -847,10 +849,12 @@
             this.Controls.Add(this.label21);
             this.Controls.Add(this.groupBoxNoiDungXuLy);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "frmCHDB";
             this.Text = "Cắt Hủy Danh Bộ";
             this.Load += new System.EventHandler(this.frmCHDB_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmCHDB_KeyUp);
             this.groupBoxGhiChu.ResumeLayout(false);
             this.groupBoxGhiChu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGhiChu)).EndInit();

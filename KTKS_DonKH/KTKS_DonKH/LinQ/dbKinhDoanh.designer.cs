@@ -23,7 +23,7 @@ namespace KTKS_DonKH.LinQ
 	
 	
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="KTKS_DonKH")]
-	public partial class DB_KTKS_DonKHDataContext : System.Data.Linq.DataContext
+	public partial class dbKinhDoanhDataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
@@ -197,31 +197,31 @@ namespace KTKS_DonKH.LinQ
     partial void DeleteUser(User instance);
     #endregion
 		
-		public DB_KTKS_DonKHDataContext() : 
+		public dbKinhDoanhDataContext() : 
 				base(global::KTKS_DonKH.Properties.Settings.Default.KTKS_DonKHConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DB_KTKS_DonKHDataContext(string connection) : 
+		public dbKinhDoanhDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DB_KTKS_DonKHDataContext(System.Data.IDbConnection connection) : 
+		public dbKinhDoanhDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DB_KTKS_DonKHDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public dbKinhDoanhDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DB_KTKS_DonKHDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public dbKinhDoanhDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
@@ -16441,6 +16441,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _HopDong;
 		
+		private string _MLT;
+		
 		private string _HoTen;
 		
 		private string _DiaChi;
@@ -16575,6 +16577,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _GhiChuXepDon;
 		
+		private bool _DaGiaiQuyet;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -16623,6 +16627,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDanhBoChanged();
     partial void OnHopDongChanging(string value);
     partial void OnHopDongChanged();
+    partial void OnMLTChanging(string value);
+    partial void OnMLTChanged();
     partial void OnHoTenChanging(string value);
     partial void OnHoTenChanged();
     partial void OnDiaChiChanging(string value);
@@ -16757,6 +16763,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnNgayXepDonChanged();
     partial void OnGhiChuXepDonChanging(string value);
     partial void OnGhiChuXepDonChanged();
+    partial void OnDaGiaiQuyetChanging(bool value);
+    partial void OnDaGiaiQuyetChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -16881,6 +16889,26 @@ namespace KTKS_DonKH.LinQ
 					this._HopDong = value;
 					this.SendPropertyChanged("HopDong");
 					this.OnHopDongChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MLT", DbType="NVarChar(50)")]
+		public string MLT
+		{
+			get
+			{
+				return this._MLT;
+			}
+			set
+			{
+				if ((this._MLT != value))
+				{
+					this.OnMLTChanging(value);
+					this.SendPropertyChanging();
+					this._MLT = value;
+					this.SendPropertyChanged("MLT");
+					this.OnMLTChanged();
 				}
 			}
 		}
@@ -18229,6 +18257,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DaGiaiQuyet", DbType="Bit NOT NULL")]
+		public bool DaGiaiQuyet
+		{
+			get
+			{
+				return this._DaGiaiQuyet;
+			}
+			set
+			{
+				if ((this._DaGiaiQuyet != value))
+				{
+					this.OnDaGiaiQuyetChanging(value);
+					this.SendPropertyChanging();
+					this._DaGiaiQuyet = value;
+					this.SendPropertyChanged("DaGiaiQuyet");
+					this.OnDaGiaiQuyetChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
 		public System.Nullable<System.DateTime> CreateDate
 		{
@@ -18682,6 +18730,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _HopDong;
 		
+		private string _MLT;
+		
 		private string _HoTen;
 		
 		private string _DiaChi;
@@ -18770,6 +18820,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _TruyThu;
 		
+		private bool _DaGiaiQuyet;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -18820,6 +18872,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDanhBoChanged();
     partial void OnHopDongChanging(string value);
     partial void OnHopDongChanged();
+    partial void OnMLTChanging(string value);
+    partial void OnMLTChanged();
     partial void OnHoTenChanging(string value);
     partial void OnHoTenChanged();
     partial void OnDiaChiChanging(string value);
@@ -18908,6 +18962,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDieuChinhChanged();
     partial void OnTruyThuChanging(bool value);
     partial void OnTruyThuChanged();
+    partial void OnDaGiaiQuyetChanging(bool value);
+    partial void OnDaGiaiQuyetChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -19052,6 +19108,26 @@ namespace KTKS_DonKH.LinQ
 					this._HopDong = value;
 					this.SendPropertyChanged("HopDong");
 					this.OnHopDongChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MLT", DbType="NVarChar(50)")]
+		public string MLT
+		{
+			get
+			{
+				return this._MLT;
+			}
+			set
+			{
+				if ((this._MLT != value))
+				{
+					this.OnMLTChanging(value);
+					this.SendPropertyChanging();
+					this._MLT = value;
+					this.SendPropertyChanged("MLT");
+					this.OnMLTChanged();
 				}
 			}
 		}
@@ -19936,6 +20012,26 @@ namespace KTKS_DonKH.LinQ
 					this._TruyThu = value;
 					this.SendPropertyChanged("TruyThu");
 					this.OnTruyThuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DaGiaiQuyet", DbType="Bit NOT NULL")]
+		public bool DaGiaiQuyet
+		{
+			get
+			{
+				return this._DaGiaiQuyet;
+			}
+			set
+			{
+				if ((this._DaGiaiQuyet != value))
+				{
+					this.OnDaGiaiQuyetChanging(value);
+					this.SendPropertyChanging();
+					this._DaGiaiQuyet = value;
+					this.SendPropertyChanged("DaGiaiQuyet");
+					this.OnDaGiaiQuyetChanged();
 				}
 			}
 		}

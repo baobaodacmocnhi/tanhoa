@@ -32,7 +32,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CCHDB _cCHDB = new CCHDB();
         CDonKH _cDonKH = new CDonKH();
         CDonTXL _cDonTXL = new CDonTXL();
-        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CDocSo _cDocSo = new CDocSo();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CLyDoCHDB _cLyDoCHDB = new CLyDoCHDB();
         CNoiDungXuLyCHDB _cNoiDungXuLyCHDB = new CNoiDungXuLyCHDB();
@@ -55,7 +55,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             txtDanhBo.Text = hoadon.DANHBA;
             txtHopDong.Text = hoadon.HOPDONG;
             txtHoTen.Text = hoadon.TENKH;
-            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
             dgvLichSuCHDB.DataSource = _cCHDB.GetLichSuCHDB(hoadon.DANHBA);
             CheckLichSuCHDB();
         }
@@ -891,7 +891,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             txtDanhBo.Text = hoadon.DANHBA;
                             txtHopDong.Text = hoadon.HOPDONG;
                             txtHoTen.Text = hoadon.TENKH;
-                            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+                            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
 
                             if (hoadon != null)
                             {
@@ -939,7 +939,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 txtDanhBo.Text = hoadon.DANHBA;
                                 txtHopDong.Text = hoadon.HOPDONG;
                                 txtHoTen.Text = hoadon.TENKH;
-                                txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+                                txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
 
                                 if (hoadon != null)
                                 {

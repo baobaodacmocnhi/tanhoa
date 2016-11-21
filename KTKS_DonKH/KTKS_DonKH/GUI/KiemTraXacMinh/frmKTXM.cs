@@ -6,13 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.LinQ;
-using KTKS_DonKH.DAL.CapNhat;
-using KTKS_DonKH.DAL.KiemTraXacMinh;
-using KTKS_DonKH.DAL.QuanTri;
+using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.DAL;
+using KTKS_DonKH.DAL.KiemTraXacMinh;
+using KTKS_DonKH.DAL.QuanTri;
 
 namespace KTKS_DonKH.GUI.KiemTraXacMinh
 {
@@ -26,7 +25,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         CDonTXL _cDonTXL = new CDonTXL();
         CThuTien _cThuTien = new CThuTien();
         CKTXM _cKTXM = new CKTXM();
-        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CDocSo _cDocSo = new CDocSo();
         int selectedindex = -1;
         CHienTrangKiemTra _cHienTrangKiemTra = new CHienTrangKiemTra();
         bool _flagFirst = true;
@@ -61,7 +60,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtGiaBieu.Text = hoadon.GB.ToString();
             txtDinhMuc.Text = hoadon.DM.ToString();
             string a, b, c;
-            _cPhuongQuan.getTTDHNbyID(txtDanhBo.Text.Trim(), out a, out b, out c);
+            _cDocSo.getTTDHNbyID(txtDanhBo.Text.Trim(), out a, out b, out c);
             txtHieu.Text = a;
             txtCo.Text = b;
             txtSoThan.Text = c;

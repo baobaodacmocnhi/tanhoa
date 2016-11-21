@@ -33,7 +33,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CDonKH _cDonKH = new CDonKH();
         CDonTXL _cDonTXL = new CDonTXL();
         CKTXM _cKTXM = new CKTXM();
-        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CDocSo _cDocSo = new CDocSo();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         bool _flagCtrl3 = false;
 
@@ -82,7 +82,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtDanhBo.Text = hoadon.DANHBA;
             txtHopDong.Text = hoadon.HOPDONG;
             txtHoTen.Text = hoadon.TENKH;
-            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
             txtMSThue.Text = hoadon.MST;
             txtGiaBieu.Text = hoadon.GB.ToString();
             txtDinhMuc.Text = hoadon.DM.ToString();
@@ -90,7 +90,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtSX.Text = hoadon.TILESX.ToString();
             txtDV.Text = hoadon.TILEDV.ToString();
             txtHCSN.Text = hoadon.TILEHCSN.ToString();
-            txtDot.Text = _cPhuongQuan.getDot(hoadon.DANHBA);
+            txtDot.Text = _cDocSo.getDot(hoadon.DANHBA);
 
             dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTubyDanhBo(hoadon.DANHBA);
             dgvDSDieuChinh.DataSource = _cDCBD.LoadDSDCbyDanhBo(hoadon.DANHBA);
@@ -1128,8 +1128,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dr["NgayHetHan"] = itemRow["NgayHetHan"];
                     dr["DienThoai"] = itemRow["DienThoai"];
                     dr["GhiChu"] = itemRow["GhiChu"];
-                    dr["Phuong"] = _cPhuongQuan.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
-                    dr["Quan"] = _cPhuongQuan.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
+                    dr["Phuong"] = _cDocSo.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                    dr["Quan"] = _cDocSo.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
                     dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
                 }
             }

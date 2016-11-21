@@ -40,29 +40,29 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    if (db.DCBDs.Count() > 0)
-                    {
-                        string ID = "MaDCBD";
-                        string Table = "DCBD";
-                        decimal MaDCBD = db.ExecuteQuery<decimal>("declare @Ma int " +
-                            "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
-                            "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
-                        //decimal MaDCBD = db.DCBDs.Max(itemDCBD => itemDCBD.MaDCBD);
-                        dcbd.MaDCBD = getMaxNextIDTable(MaDCBD);
-                    }
-                    else
-                        dcbd.MaDCBD = decimal.Parse("1" + DateTime.Now.ToString("yy"));
-                    dcbd.CreateDate = DateTime.Now;
-                    dcbd.CreateBy = CTaiKhoan.MaUser;
-                    db.DCBDs.InsertOnSubmit(dcbd);
-                    db.SubmitChanges();
-                    //MessageBox.Show("Thành công Thêm DCBD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
+                if (db.DCBDs.Count() > 0)
+                {
+                    string ID = "MaDCBD";
+                    string Table = "DCBD";
+                    decimal MaDCBD = db.ExecuteQuery<decimal>("declare @Ma int " +
+                        "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                        "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                    //decimal MaDCBD = db.DCBDs.Max(itemDCBD => itemDCBD.MaDCBD);
+                    dcbd.MaDCBD = getMaxNextIDTable(MaDCBD);
+                }
+                else
+                    dcbd.MaDCBD = decimal.Parse("1" + DateTime.Now.ToString("yy"));
+                dcbd.CreateDate = DateTime.Now;
+                dcbd.CreateBy = CTaiKhoan.MaUser;
+                db.DCBDs.InsertOnSubmit(dcbd);
+                db.SubmitChanges();
+                //MessageBox.Show("Thành công Thêm DCBD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -71,16 +71,16 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    dcbd.ModifyDate = DateTime.Now;
-                    dcbd.ModifyBy = CTaiKhoan.MaUser;
-                    db.SubmitChanges();
-                    //MessageBox.Show("Thành công Sửa DCBD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
+                dcbd.ModifyDate = DateTime.Now;
+                dcbd.ModifyBy = CTaiKhoan.MaUser;
+                db.SubmitChanges();
+                //MessageBox.Show("Thành công Sửa DCBD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -147,42 +147,42 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    ///Bảng CTDCBD
-                    var queryCTDCBD = from itemCTDCBD in db.CTDCBDs
-                                      where itemCTDCBD.DanhBo == DanhBo
-                                      select new
-                                      {
-                                          MaDC = itemCTDCBD.MaCTDCBD,
-                                          DieuChinh = "Biến Động",
-                                          itemCTDCBD.HieuLucKy,
-                                          itemCTDCBD.CreateDate,
-                                          itemCTDCBD.ThongTin,
-                                          itemCTDCBD.HoTen_BD,
-                                          itemCTDCBD.DiaChi_BD,
-                                          itemCTDCBD.MSThue_BD,
-                                          itemCTDCBD.GiaBieu_BD,
-                                          itemCTDCBD.DinhMuc_BD,
-                                          itemCTDCBD.DCBD.MaDon,
-                                          itemCTDCBD.DMGiuNguyen,
-                                          itemCTDCBD.GiaHan,
-                                      };
-                    ///Bảng CTDCHD
-                    var queryCTDCHD = from itemCTDCHD in db.CTDCHDs
-                                      where itemCTDCHD.DanhBo == DanhBo
-                                      select new
-                                      {
-                                          MaDC = itemCTDCHD.MaCTDCHD,
-                                          DieuChinh = "Hóa Đơn",
-                                          itemCTDCHD.CreateDate,
-                                          itemCTDCHD.DCBD.MaDon,
-                                      };
-                    DataTable tableCTDCBD = LINQToDataTable(queryCTDCBD);
-                    DataTable tableCTDCHD = LINQToDataTable(queryCTDCHD);
-                    tableCTDCBD.Merge(tableCTDCHD);
-                    if (tableCTDCBD.Rows.Count > 0)
-                        tableCTDCBD.DefaultView.Sort = "CreateDate DESC";
+                ///Bảng CTDCBD
+                var queryCTDCBD = from itemCTDCBD in db.CTDCBDs
+                                  where itemCTDCBD.DanhBo == DanhBo
+                                  select new
+                                  {
+                                      MaDC = itemCTDCBD.MaCTDCBD,
+                                      DieuChinh = "Biến Động",
+                                      itemCTDCBD.HieuLucKy,
+                                      itemCTDCBD.CreateDate,
+                                      itemCTDCBD.ThongTin,
+                                      itemCTDCBD.HoTen_BD,
+                                      itemCTDCBD.DiaChi_BD,
+                                      itemCTDCBD.MSThue_BD,
+                                      itemCTDCBD.GiaBieu_BD,
+                                      itemCTDCBD.DinhMuc_BD,
+                                      itemCTDCBD.DCBD.MaDon,
+                                      itemCTDCBD.DMGiuNguyen,
+                                      itemCTDCBD.GiaHan,
+                                  };
+                ///Bảng CTDCHD
+                var queryCTDCHD = from itemCTDCHD in db.CTDCHDs
+                                  where itemCTDCHD.DanhBo == DanhBo
+                                  select new
+                                  {
+                                      MaDC = itemCTDCHD.MaCTDCHD,
+                                      DieuChinh = "Hóa Đơn",
+                                      itemCTDCHD.CreateDate,
+                                      itemCTDCHD.DCBD.MaDon,
+                                  };
+                DataTable tableCTDCBD = LINQToDataTable(queryCTDCBD);
+                DataTable tableCTDCHD = LINQToDataTable(queryCTDCHD);
+                tableCTDCBD.Merge(tableCTDCHD);
+                if (tableCTDCBD.Rows.Count > 0)
+                    tableCTDCBD.DefaultView.Sort = "CreateDate DESC";
 
-                    return tableCTDCBD.DefaultView.ToTable();
+                return tableCTDCBD.DefaultView.ToTable();
             }
             catch (Exception ex)
             {
@@ -277,29 +277,29 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    if (db.CTDCBDs.Count() > 0)
-                    {
-                        string ID = "MaCTDCBD";
-                        string Table = "CTDCBD";
-                        decimal MaCTDCBD = db.ExecuteQuery<decimal>("declare @Ma int " +
-                            "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
-                            "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
-                        //decimal MaCTDCBD = db.CTDCBDs.Max(itemCTDCBD => itemCTDCBD.MaCTDCBD);
-                        ctdcbd.MaCTDCBD = getMaxNextIDTable(MaCTDCBD);
-                    }
-                    else
-                        ctdcbd.MaCTDCBD = decimal.Parse("1" + DateTime.Now.ToString("yy"));
-                    ctdcbd.CreateDate = DateTime.Now;
-                    ctdcbd.CreateBy = CTaiKhoan.MaUser;
-                    db.CTDCBDs.InsertOnSubmit(ctdcbd);
-                    db.SubmitChanges();
-                    //MessageBox.Show("Thành công Thêm CTDCBD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
+                if (db.CTDCBDs.Count() > 0)
+                {
+                    string ID = "MaCTDCBD";
+                    string Table = "CTDCBD";
+                    decimal MaCTDCBD = db.ExecuteQuery<decimal>("declare @Ma int " +
+                        "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                        "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                    //decimal MaCTDCBD = db.CTDCBDs.Max(itemCTDCBD => itemCTDCBD.MaCTDCBD);
+                    ctdcbd.MaCTDCBD = getMaxNextIDTable(MaCTDCBD);
+                }
+                else
+                    ctdcbd.MaCTDCBD = decimal.Parse("1" + DateTime.Now.ToString("yy"));
+                ctdcbd.CreateDate = DateTime.Now;
+                ctdcbd.CreateBy = CTaiKhoan.MaUser;
+                db.CTDCBDs.InsertOnSubmit(ctdcbd);
+                db.SubmitChanges();
+                //MessageBox.Show("Thành công Thêm CTDCBD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -308,16 +308,16 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    ctdcbd.ModifyDate = DateTime.Now;
-                    ctdcbd.ModifyBy = CTaiKhoan.MaUser;
-                    db.SubmitChanges();
-                    //MessageBox.Show("Thành công Sửa CTDCBD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
+                ctdcbd.ModifyDate = DateTime.Now;
+                ctdcbd.ModifyBy = CTaiKhoan.MaUser;
+                db.SubmitChanges();
+                //MessageBox.Show("Thành công Sửa CTDCBD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -326,15 +326,18 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    db.CTDCBDs.DeleteOnSubmit(ctdcbd);
-                    db.SubmitChanges();
-                    //MessageBox.Show("Thành công Xóa CTDCBD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
+                decimal ID = ctdcbd.MaDCBD.Value;
+                db.CTDCBDs.DeleteOnSubmit(ctdcbd);
+                if (db.CTDCBDs.Any(item => item.MaDCBD == ID) == false && db.CTDCHDs.Any(item => item.MaDCBD == ID) == false)
+                    db.DCBDs.DeleteOnSubmit(db.DCBDs.SingleOrDefault(item => item.MaDCBD == ID));
+                db.SubmitChanges();
+                //MessageBox.Show("Thành công Xóa CTDCBD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -360,31 +363,31 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCBD in db.CTDCBDs
-                                orderby itemCTDCBD.CreateDate descending
-                                select new
-                                {
-                                    In = false,
-                                    itemCTDCBD.ChuyenDocSo,
-                                    SoPhieu = itemCTDCBD.MaCTDCBD,
-                                    DieuChinh = "Biến Động",
-                                    itemCTDCBD.CreateDate,
-                                    itemCTDCBD.DanhBo,
-                                    itemCTDCBD.HoTen,
-                                    itemCTDCBD.HoTen_BD,
-                                    itemCTDCBD.DiaChi,
-                                    itemCTDCBD.DiaChi_BD,
-                                    itemCTDCBD.MSThue,
-                                    itemCTDCBD.MSThue_BD,
-                                    itemCTDCBD.GiaBieu,
-                                    itemCTDCBD.GiaBieu_BD,
-                                    itemCTDCBD.DinhMuc,
-                                    itemCTDCBD.DinhMuc_BD,
-                                    itemCTDCBD.PhieuDuocKy,
-                                    itemCTDCBD.NguoiKy,
-                                    itemCTDCBD.CreateBy,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCBD in db.CTDCBDs
+                            orderby itemCTDCBD.CreateDate descending
+                            select new
+                            {
+                                In = false,
+                                itemCTDCBD.ChuyenDocSo,
+                                SoPhieu = itemCTDCBD.MaCTDCBD,
+                                DieuChinh = "Biến Động",
+                                itemCTDCBD.CreateDate,
+                                itemCTDCBD.DanhBo,
+                                itemCTDCBD.HoTen,
+                                itemCTDCBD.HoTen_BD,
+                                itemCTDCBD.DiaChi,
+                                itemCTDCBD.DiaChi_BD,
+                                itemCTDCBD.MSThue,
+                                itemCTDCBD.MSThue_BD,
+                                itemCTDCBD.GiaBieu,
+                                itemCTDCBD.GiaBieu_BD,
+                                itemCTDCBD.DinhMuc,
+                                itemCTDCBD.DinhMuc_BD,
+                                itemCTDCBD.PhieuDuocKy,
+                                itemCTDCBD.NguoiKy,
+                                itemCTDCBD.CreateBy,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -397,34 +400,34 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCBD in db.CTDCBDs
-                                join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
-                                from itemtableND in tableND.DefaultIfEmpty()
-                                where itemCTDCBD.DCBD.MaDon == MaDon || itemCTDCBD.DCBD.MaDonTXL == MaDon
-                                orderby itemCTDCBD.CreateDate ascending
-                                select new
-                                {
-                                    In = false,
-                                    itemCTDCBD.ChuyenDocSo,
-                                    SoPhieu = itemCTDCBD.MaCTDCBD,
-                                    DieuChinh = "Biến Động",
-                                    itemCTDCBD.CreateDate,
-                                    itemCTDCBD.DanhBo,
-                                    itemCTDCBD.HoTen,
-                                    itemCTDCBD.HoTen_BD,
-                                    itemCTDCBD.DiaChi,
-                                    itemCTDCBD.DiaChi_BD,
-                                    itemCTDCBD.MSThue,
-                                    itemCTDCBD.MSThue_BD,
-                                    itemCTDCBD.GiaBieu,
-                                    itemCTDCBD.GiaBieu_BD,
-                                    itemCTDCBD.DinhMuc,
-                                    itemCTDCBD.DinhMuc_BD,
-                                    itemCTDCBD.PhieuDuocKy,
-                                    itemCTDCBD.NguoiKy,
-                                    CreateBy = itemtableND.HoTen,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCBD in db.CTDCBDs
+                            join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemCTDCBD.DCBD.MaDon == MaDon || itemCTDCBD.DCBD.MaDonTXL == MaDon
+                            orderby itemCTDCBD.CreateDate ascending
+                            select new
+                            {
+                                In = false,
+                                itemCTDCBD.ChuyenDocSo,
+                                SoPhieu = itemCTDCBD.MaCTDCBD,
+                                DieuChinh = "Biến Động",
+                                itemCTDCBD.CreateDate,
+                                itemCTDCBD.DanhBo,
+                                itemCTDCBD.HoTen,
+                                itemCTDCBD.HoTen_BD,
+                                itemCTDCBD.DiaChi,
+                                itemCTDCBD.DiaChi_BD,
+                                itemCTDCBD.MSThue,
+                                itemCTDCBD.MSThue_BD,
+                                itemCTDCBD.GiaBieu,
+                                itemCTDCBD.GiaBieu_BD,
+                                itemCTDCBD.DinhMuc,
+                                itemCTDCBD.DinhMuc_BD,
+                                itemCTDCBD.PhieuDuocKy,
+                                itemCTDCBD.NguoiKy,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -433,38 +436,38 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable LoadDSCTDCBDByMaDon(int CreateBy,decimal MaDon)
+        public DataTable LoadDSCTDCBDByMaDon(int CreateBy, decimal MaDon)
         {
             try
             {
-                    var query = from itemCTDCBD in db.CTDCBDs
-                                join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
-                                from itemtableND in tableND.DefaultIfEmpty()
-                                where itemCTDCBD.CreateBy==CreateBy && (itemCTDCBD.DCBD.MaDon == MaDon || itemCTDCBD.DCBD.MaDonTXL == MaDon)
-                                orderby itemCTDCBD.CreateDate ascending
-                                select new
-                                {
-                                    In = false,
-                                    itemCTDCBD.ChuyenDocSo,
-                                    SoPhieu = itemCTDCBD.MaCTDCBD,
-                                    DieuChinh = "Biến Động",
-                                    itemCTDCBD.CreateDate,
-                                    itemCTDCBD.DanhBo,
-                                    itemCTDCBD.HoTen,
-                                    itemCTDCBD.HoTen_BD,
-                                    itemCTDCBD.DiaChi,
-                                    itemCTDCBD.DiaChi_BD,
-                                    itemCTDCBD.MSThue,
-                                    itemCTDCBD.MSThue_BD,
-                                    itemCTDCBD.GiaBieu,
-                                    itemCTDCBD.GiaBieu_BD,
-                                    itemCTDCBD.DinhMuc,
-                                    itemCTDCBD.DinhMuc_BD,
-                                    itemCTDCBD.PhieuDuocKy,
-                                    itemCTDCBD.NguoiKy,
-                                    CreateBy = itemtableND.HoTen,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCBD in db.CTDCBDs
+                            join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemCTDCBD.CreateBy == CreateBy && (itemCTDCBD.DCBD.MaDon == MaDon || itemCTDCBD.DCBD.MaDonTXL == MaDon)
+                            orderby itemCTDCBD.CreateDate ascending
+                            select new
+                            {
+                                In = false,
+                                itemCTDCBD.ChuyenDocSo,
+                                SoPhieu = itemCTDCBD.MaCTDCBD,
+                                DieuChinh = "Biến Động",
+                                itemCTDCBD.CreateDate,
+                                itemCTDCBD.DanhBo,
+                                itemCTDCBD.HoTen,
+                                itemCTDCBD.HoTen_BD,
+                                itemCTDCBD.DiaChi,
+                                itemCTDCBD.DiaChi_BD,
+                                itemCTDCBD.MSThue,
+                                itemCTDCBD.MSThue_BD,
+                                itemCTDCBD.GiaBieu,
+                                itemCTDCBD.GiaBieu_BD,
+                                itemCTDCBD.DinhMuc,
+                                itemCTDCBD.DinhMuc_BD,
+                                itemCTDCBD.PhieuDuocKy,
+                                itemCTDCBD.NguoiKy,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -473,41 +476,41 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable LoadDSCTDCBDByMaDons(decimal TuMaDon,decimal DenMaDon)
+        public DataTable LoadDSCTDCBDByMaDons(decimal TuMaDon, decimal DenMaDon)
         {
             try
             {
-                    var query = from itemCTDCBD in db.CTDCBDs
-                                join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
-                                from itemtableND in tableND.DefaultIfEmpty()
-                                where ((itemCTDCBD.DCBD.MaDon.Value.ToString().Substring(itemCTDCBD.DCBD.MaDon.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCBD.DCBD.MaDon.Value.ToString().Substring(itemCTDCBD.DCBD.MaDon.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
-                                &&(itemCTDCBD.DCBD.MaDon >= TuMaDon&&itemCTDCBD.DCBD.MaDon<=DenMaDon))
-                                || ((itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2)) 
-                                && (itemCTDCBD.DCBD.MaDonTXL >= TuMaDon && itemCTDCBD.DCBD.MaDonTXL <= DenMaDon))
-                                orderby itemCTDCBD.CreateDate ascending
-                                select new
-                                {
-                                    In = false,
-                                    itemCTDCBD.ChuyenDocSo,
-                                    SoPhieu = itemCTDCBD.MaCTDCBD,
-                                    DieuChinh = "Biến Động",
-                                    itemCTDCBD.CreateDate,
-                                    itemCTDCBD.DanhBo,
-                                    itemCTDCBD.HoTen,
-                                    itemCTDCBD.HoTen_BD,
-                                    itemCTDCBD.DiaChi,
-                                    itemCTDCBD.DiaChi_BD,
-                                    itemCTDCBD.MSThue,
-                                    itemCTDCBD.MSThue_BD,
-                                    itemCTDCBD.GiaBieu,
-                                    itemCTDCBD.GiaBieu_BD,
-                                    itemCTDCBD.DinhMuc,
-                                    itemCTDCBD.DinhMuc_BD,
-                                    itemCTDCBD.PhieuDuocKy,
-                                    itemCTDCBD.NguoiKy,
-                                    CreateBy = itemtableND.HoTen,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCBD in db.CTDCBDs
+                            join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where ((itemCTDCBD.DCBD.MaDon.Value.ToString().Substring(itemCTDCBD.DCBD.MaDon.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCBD.DCBD.MaDon.Value.ToString().Substring(itemCTDCBD.DCBD.MaDon.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
+                            && (itemCTDCBD.DCBD.MaDon >= TuMaDon && itemCTDCBD.DCBD.MaDon <= DenMaDon))
+                            || ((itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
+                            && (itemCTDCBD.DCBD.MaDonTXL >= TuMaDon && itemCTDCBD.DCBD.MaDonTXL <= DenMaDon))
+                            orderby itemCTDCBD.CreateDate ascending
+                            select new
+                            {
+                                In = false,
+                                itemCTDCBD.ChuyenDocSo,
+                                SoPhieu = itemCTDCBD.MaCTDCBD,
+                                DieuChinh = "Biến Động",
+                                itemCTDCBD.CreateDate,
+                                itemCTDCBD.DanhBo,
+                                itemCTDCBD.HoTen,
+                                itemCTDCBD.HoTen_BD,
+                                itemCTDCBD.DiaChi,
+                                itemCTDCBD.DiaChi_BD,
+                                itemCTDCBD.MSThue,
+                                itemCTDCBD.MSThue_BD,
+                                itemCTDCBD.GiaBieu,
+                                itemCTDCBD.GiaBieu_BD,
+                                itemCTDCBD.DinhMuc,
+                                itemCTDCBD.DinhMuc_BD,
+                                itemCTDCBD.PhieuDuocKy,
+                                itemCTDCBD.NguoiKy,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -520,37 +523,37 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCBD in db.CTDCBDs
-                                join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
-                                from itemtableND in tableND.DefaultIfEmpty()
-                                where itemCTDCBD.CreateBy==CreateBy &&(((itemCTDCBD.DCBD.MaDon.Value.ToString().Substring(itemCTDCBD.DCBD.MaDon.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCBD.DCBD.MaDon.Value.ToString().Substring(itemCTDCBD.DCBD.MaDon.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
-                                && (itemCTDCBD.DCBD.MaDon >= TuMaDon && itemCTDCBD.DCBD.MaDon <= DenMaDon))
-                                || ((itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
-                                && (itemCTDCBD.DCBD.MaDonTXL >= TuMaDon && itemCTDCBD.DCBD.MaDonTXL <= DenMaDon)))
-                                orderby itemCTDCBD.CreateDate ascending
-                                select new
-                                {
-                                    In = false,
-                                    itemCTDCBD.ChuyenDocSo,
-                                    SoPhieu = itemCTDCBD.MaCTDCBD,
-                                    DieuChinh = "Biến Động",
-                                    itemCTDCBD.CreateDate,
-                                    itemCTDCBD.DanhBo,
-                                    itemCTDCBD.HoTen,
-                                    itemCTDCBD.HoTen_BD,
-                                    itemCTDCBD.DiaChi,
-                                    itemCTDCBD.DiaChi_BD,
-                                    itemCTDCBD.MSThue,
-                                    itemCTDCBD.MSThue_BD,
-                                    itemCTDCBD.GiaBieu,
-                                    itemCTDCBD.GiaBieu_BD,
-                                    itemCTDCBD.DinhMuc,
-                                    itemCTDCBD.DinhMuc_BD,
-                                    itemCTDCBD.PhieuDuocKy,
-                                    itemCTDCBD.NguoiKy,
-                                    CreateBy=itemtableND.HoTen,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCBD in db.CTDCBDs
+                            join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemCTDCBD.CreateBy == CreateBy && (((itemCTDCBD.DCBD.MaDon.Value.ToString().Substring(itemCTDCBD.DCBD.MaDon.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCBD.DCBD.MaDon.Value.ToString().Substring(itemCTDCBD.DCBD.MaDon.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
+                            && (itemCTDCBD.DCBD.MaDon >= TuMaDon && itemCTDCBD.DCBD.MaDon <= DenMaDon))
+                            || ((itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
+                            && (itemCTDCBD.DCBD.MaDonTXL >= TuMaDon && itemCTDCBD.DCBD.MaDonTXL <= DenMaDon)))
+                            orderby itemCTDCBD.CreateDate ascending
+                            select new
+                            {
+                                In = false,
+                                itemCTDCBD.ChuyenDocSo,
+                                SoPhieu = itemCTDCBD.MaCTDCBD,
+                                DieuChinh = "Biến Động",
+                                itemCTDCBD.CreateDate,
+                                itemCTDCBD.DanhBo,
+                                itemCTDCBD.HoTen,
+                                itemCTDCBD.HoTen_BD,
+                                itemCTDCBD.DiaChi,
+                                itemCTDCBD.DiaChi_BD,
+                                itemCTDCBD.MSThue,
+                                itemCTDCBD.MSThue_BD,
+                                itemCTDCBD.GiaBieu,
+                                itemCTDCBD.GiaBieu_BD,
+                                itemCTDCBD.DinhMuc,
+                                itemCTDCBD.DinhMuc_BD,
+                                itemCTDCBD.PhieuDuocKy,
+                                itemCTDCBD.NguoiKy,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -563,35 +566,35 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCBD in db.CTDCBDs
-                                join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
-                                from itemtableND in tableND.DefaultIfEmpty()
-                                where itemCTDCBD.MaCTDCBD == SoPhieu
-                                orderby itemCTDCBD.CreateDate ascending
-                                select new
-                                {
-                                    In = false,
-                                    itemCTDCBD.ChuyenDocSo,
-                                    SoPhieu = itemCTDCBD.MaCTDCBD,
-                                    Ma = itemCTDCBD.MaCTDCBD,
-                                    DieuChinh = "Biến Động",
-                                    itemCTDCBD.CreateDate,
-                                    itemCTDCBD.DanhBo,
-                                    itemCTDCBD.HoTen,
-                                    itemCTDCBD.HoTen_BD,
-                                    itemCTDCBD.DiaChi,
-                                    itemCTDCBD.DiaChi_BD,
-                                    itemCTDCBD.MSThue,
-                                    itemCTDCBD.MSThue_BD,
-                                    itemCTDCBD.GiaBieu,
-                                    itemCTDCBD.GiaBieu_BD,
-                                    itemCTDCBD.DinhMuc,
-                                    itemCTDCBD.DinhMuc_BD,
-                                    itemCTDCBD.PhieuDuocKy,
-                                    itemCTDCBD.NguoiKy,
-                                    CreateBy = itemtableND.HoTen,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCBD in db.CTDCBDs
+                            join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemCTDCBD.MaCTDCBD == SoPhieu
+                            orderby itemCTDCBD.CreateDate ascending
+                            select new
+                            {
+                                In = false,
+                                itemCTDCBD.ChuyenDocSo,
+                                SoPhieu = itemCTDCBD.MaCTDCBD,
+                                Ma = itemCTDCBD.MaCTDCBD,
+                                DieuChinh = "Biến Động",
+                                itemCTDCBD.CreateDate,
+                                itemCTDCBD.DanhBo,
+                                itemCTDCBD.HoTen,
+                                itemCTDCBD.HoTen_BD,
+                                itemCTDCBD.DiaChi,
+                                itemCTDCBD.DiaChi_BD,
+                                itemCTDCBD.MSThue,
+                                itemCTDCBD.MSThue_BD,
+                                itemCTDCBD.GiaBieu,
+                                itemCTDCBD.GiaBieu_BD,
+                                itemCTDCBD.DinhMuc,
+                                itemCTDCBD.DinhMuc_BD,
+                                itemCTDCBD.PhieuDuocKy,
+                                itemCTDCBD.NguoiKy,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -604,35 +607,35 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCBD in db.CTDCBDs
-                                join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
-                                from itemtableND in tableND.DefaultIfEmpty()
-                                where itemCTDCBD.CreateBy == CreateBy && itemCTDCBD.MaCTDCBD == SoPhieu
-                                orderby itemCTDCBD.CreateDate ascending
-                                select new
-                                {
-                                    In = false,
-                                    itemCTDCBD.ChuyenDocSo,
-                                    SoPhieu = itemCTDCBD.MaCTDCBD,
-                                    Ma = itemCTDCBD.MaCTDCBD,
-                                    DieuChinh = "Biến Động",
-                                    itemCTDCBD.CreateDate,
-                                    itemCTDCBD.DanhBo,
-                                    itemCTDCBD.HoTen,
-                                    itemCTDCBD.HoTen_BD,
-                                    itemCTDCBD.DiaChi,
-                                    itemCTDCBD.DiaChi_BD,
-                                    itemCTDCBD.MSThue,
-                                    itemCTDCBD.MSThue_BD,
-                                    itemCTDCBD.GiaBieu,
-                                    itemCTDCBD.GiaBieu_BD,
-                                    itemCTDCBD.DinhMuc,
-                                    itemCTDCBD.DinhMuc_BD,
-                                    itemCTDCBD.PhieuDuocKy,
-                                    itemCTDCBD.NguoiKy,
-                                    CreateBy = itemtableND.HoTen,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCBD in db.CTDCBDs
+                            join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemCTDCBD.CreateBy == CreateBy && itemCTDCBD.MaCTDCBD == SoPhieu
+                            orderby itemCTDCBD.CreateDate ascending
+                            select new
+                            {
+                                In = false,
+                                itemCTDCBD.ChuyenDocSo,
+                                SoPhieu = itemCTDCBD.MaCTDCBD,
+                                Ma = itemCTDCBD.MaCTDCBD,
+                                DieuChinh = "Biến Động",
+                                itemCTDCBD.CreateDate,
+                                itemCTDCBD.DanhBo,
+                                itemCTDCBD.HoTen,
+                                itemCTDCBD.HoTen_BD,
+                                itemCTDCBD.DiaChi,
+                                itemCTDCBD.DiaChi_BD,
+                                itemCTDCBD.MSThue,
+                                itemCTDCBD.MSThue_BD,
+                                itemCTDCBD.GiaBieu,
+                                itemCTDCBD.GiaBieu_BD,
+                                itemCTDCBD.DinhMuc,
+                                itemCTDCBD.DinhMuc_BD,
+                                itemCTDCBD.PhieuDuocKy,
+                                itemCTDCBD.NguoiKy,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -645,36 +648,36 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCBD in db.CTDCBDs
-                                join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
-                                from itemtableND in tableND.DefaultIfEmpty()
-                                where itemCTDCBD.MaCTDCBD.ToString().Substring(itemCTDCBD.MaCTDCBD.ToString().Length - 2, 2) == TuSoPhieu.ToString().Substring(TuSoPhieu.ToString().Length - 2, 2)
-                                && itemCTDCBD.MaCTDCBD.ToString().Substring(itemCTDCBD.MaCTDCBD.ToString().Length - 2, 2) == DenSoPhieu.ToString().Substring(DenSoPhieu.ToString().Length - 2, 2)
-                                && itemCTDCBD.MaCTDCBD >= TuSoPhieu&&itemCTDCBD.MaCTDCBD<=DenSoPhieu
-                                orderby itemCTDCBD.CreateDate ascending
-                                select new
-                                {
-                                    In = false,
-                                    itemCTDCBD.ChuyenDocSo,
-                                    SoPhieu = itemCTDCBD.MaCTDCBD,
-                                    DieuChinh = "Biến Động",
-                                    itemCTDCBD.CreateDate,
-                                    itemCTDCBD.DanhBo,
-                                    itemCTDCBD.HoTen,
-                                    itemCTDCBD.HoTen_BD,
-                                    itemCTDCBD.DiaChi,
-                                    itemCTDCBD.DiaChi_BD,
-                                    itemCTDCBD.MSThue,
-                                    itemCTDCBD.MSThue_BD,
-                                    itemCTDCBD.GiaBieu,
-                                    itemCTDCBD.GiaBieu_BD,
-                                    itemCTDCBD.DinhMuc,
-                                    itemCTDCBD.DinhMuc_BD,
-                                    itemCTDCBD.PhieuDuocKy,
-                                    itemCTDCBD.NguoiKy,
-                                    CreateBy = itemtableND.HoTen,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCBD in db.CTDCBDs
+                            join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemCTDCBD.MaCTDCBD.ToString().Substring(itemCTDCBD.MaCTDCBD.ToString().Length - 2, 2) == TuSoPhieu.ToString().Substring(TuSoPhieu.ToString().Length - 2, 2)
+                            && itemCTDCBD.MaCTDCBD.ToString().Substring(itemCTDCBD.MaCTDCBD.ToString().Length - 2, 2) == DenSoPhieu.ToString().Substring(DenSoPhieu.ToString().Length - 2, 2)
+                            && itemCTDCBD.MaCTDCBD >= TuSoPhieu && itemCTDCBD.MaCTDCBD <= DenSoPhieu
+                            orderby itemCTDCBD.CreateDate ascending
+                            select new
+                            {
+                                In = false,
+                                itemCTDCBD.ChuyenDocSo,
+                                SoPhieu = itemCTDCBD.MaCTDCBD,
+                                DieuChinh = "Biến Động",
+                                itemCTDCBD.CreateDate,
+                                itemCTDCBD.DanhBo,
+                                itemCTDCBD.HoTen,
+                                itemCTDCBD.HoTen_BD,
+                                itemCTDCBD.DiaChi,
+                                itemCTDCBD.DiaChi_BD,
+                                itemCTDCBD.MSThue,
+                                itemCTDCBD.MSThue_BD,
+                                itemCTDCBD.GiaBieu,
+                                itemCTDCBD.GiaBieu_BD,
+                                itemCTDCBD.DinhMuc,
+                                itemCTDCBD.DinhMuc_BD,
+                                itemCTDCBD.PhieuDuocKy,
+                                itemCTDCBD.NguoiKy,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -687,36 +690,36 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCBD in db.CTDCBDs
-                                join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
-                                from itemtableND in tableND.DefaultIfEmpty()
-                                where itemCTDCBD.CreateBy == CreateBy && itemCTDCBD.MaCTDCBD.ToString().Substring(itemCTDCBD.MaCTDCBD.ToString().Length - 2, 2) == TuSoPhieu.ToString().Substring(TuSoPhieu.ToString().Length - 2, 2)
-                                && itemCTDCBD.MaCTDCBD.ToString().Substring(itemCTDCBD.MaCTDCBD.ToString().Length - 2, 2) == DenSoPhieu.ToString().Substring(DenSoPhieu.ToString().Length - 2, 2)
-                                && itemCTDCBD.MaCTDCBD >= TuSoPhieu && itemCTDCBD.MaCTDCBD <= DenSoPhieu
-                                orderby itemCTDCBD.CreateDate ascending
-                                select new
-                                {
-                                    In = false,
-                                    itemCTDCBD.ChuyenDocSo,
-                                    SoPhieu = itemCTDCBD.MaCTDCBD,
-                                    DieuChinh = "Biến Động",
-                                    itemCTDCBD.CreateDate,
-                                    itemCTDCBD.DanhBo,
-                                    itemCTDCBD.HoTen,
-                                    itemCTDCBD.HoTen_BD,
-                                    itemCTDCBD.DiaChi,
-                                    itemCTDCBD.DiaChi_BD,
-                                    itemCTDCBD.MSThue,
-                                    itemCTDCBD.MSThue_BD,
-                                    itemCTDCBD.GiaBieu,
-                                    itemCTDCBD.GiaBieu_BD,
-                                    itemCTDCBD.DinhMuc,
-                                    itemCTDCBD.DinhMuc_BD,
-                                    itemCTDCBD.PhieuDuocKy,
-                                    itemCTDCBD.NguoiKy,
-                                    CreateBy = itemtableND.HoTen,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCBD in db.CTDCBDs
+                            join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemCTDCBD.CreateBy == CreateBy && itemCTDCBD.MaCTDCBD.ToString().Substring(itemCTDCBD.MaCTDCBD.ToString().Length - 2, 2) == TuSoPhieu.ToString().Substring(TuSoPhieu.ToString().Length - 2, 2)
+                            && itemCTDCBD.MaCTDCBD.ToString().Substring(itemCTDCBD.MaCTDCBD.ToString().Length - 2, 2) == DenSoPhieu.ToString().Substring(DenSoPhieu.ToString().Length - 2, 2)
+                            && itemCTDCBD.MaCTDCBD >= TuSoPhieu && itemCTDCBD.MaCTDCBD <= DenSoPhieu
+                            orderby itemCTDCBD.CreateDate ascending
+                            select new
+                            {
+                                In = false,
+                                itemCTDCBD.ChuyenDocSo,
+                                SoPhieu = itemCTDCBD.MaCTDCBD,
+                                DieuChinh = "Biến Động",
+                                itemCTDCBD.CreateDate,
+                                itemCTDCBD.DanhBo,
+                                itemCTDCBD.HoTen,
+                                itemCTDCBD.HoTen_BD,
+                                itemCTDCBD.DiaChi,
+                                itemCTDCBD.DiaChi_BD,
+                                itemCTDCBD.MSThue,
+                                itemCTDCBD.MSThue_BD,
+                                itemCTDCBD.GiaBieu,
+                                itemCTDCBD.GiaBieu_BD,
+                                itemCTDCBD.DinhMuc,
+                                itemCTDCBD.DinhMuc_BD,
+                                itemCTDCBD.PhieuDuocKy,
+                                itemCTDCBD.NguoiKy,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -729,34 +732,34 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCBD in db.CTDCBDs
-                                join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
-                                from itemtableND in tableND.DefaultIfEmpty()
-                                where itemCTDCBD.DanhBo == DanhBo
-                                orderby itemCTDCBD.CreateDate ascending
-                                select new
-                                {
-                                    In = false,
-                                    itemCTDCBD.ChuyenDocSo,
-                                    SoPhieu = itemCTDCBD.MaCTDCBD,
-                                    DieuChinh = "Biến Động",
-                                    itemCTDCBD.CreateDate,
-                                    itemCTDCBD.DanhBo,
-                                    itemCTDCBD.HoTen,
-                                    itemCTDCBD.HoTen_BD,
-                                    itemCTDCBD.DiaChi,
-                                    itemCTDCBD.DiaChi_BD,
-                                    itemCTDCBD.MSThue,
-                                    itemCTDCBD.MSThue_BD,
-                                    itemCTDCBD.GiaBieu,
-                                    itemCTDCBD.GiaBieu_BD,
-                                    itemCTDCBD.DinhMuc,
-                                    itemCTDCBD.DinhMuc_BD,
-                                    itemCTDCBD.PhieuDuocKy,
-                                    itemCTDCBD.NguoiKy,
-                                    CreateBy = itemtableND.HoTen,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCBD in db.CTDCBDs
+                            join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemCTDCBD.DanhBo == DanhBo
+                            orderby itemCTDCBD.CreateDate ascending
+                            select new
+                            {
+                                In = false,
+                                itemCTDCBD.ChuyenDocSo,
+                                SoPhieu = itemCTDCBD.MaCTDCBD,
+                                DieuChinh = "Biến Động",
+                                itemCTDCBD.CreateDate,
+                                itemCTDCBD.DanhBo,
+                                itemCTDCBD.HoTen,
+                                itemCTDCBD.HoTen_BD,
+                                itemCTDCBD.DiaChi,
+                                itemCTDCBD.DiaChi_BD,
+                                itemCTDCBD.MSThue,
+                                itemCTDCBD.MSThue_BD,
+                                itemCTDCBD.GiaBieu,
+                                itemCTDCBD.GiaBieu_BD,
+                                itemCTDCBD.DinhMuc,
+                                itemCTDCBD.DinhMuc_BD,
+                                itemCTDCBD.PhieuDuocKy,
+                                itemCTDCBD.NguoiKy,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -769,34 +772,34 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCBD in db.CTDCBDs
-                                join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
-                                from itemtableND in tableND.DefaultIfEmpty()
-                                where itemCTDCBD.CreateBy == CreateBy && itemCTDCBD.DanhBo == DanhBo
-                                orderby itemCTDCBD.CreateDate ascending
-                                select new
-                                {
-                                    In = false,
-                                    itemCTDCBD.ChuyenDocSo,
-                                    SoPhieu = itemCTDCBD.MaCTDCBD,
-                                    DieuChinh = "Biến Động",
-                                    itemCTDCBD.CreateDate,
-                                    itemCTDCBD.DanhBo,
-                                    itemCTDCBD.HoTen,
-                                    itemCTDCBD.HoTen_BD,
-                                    itemCTDCBD.DiaChi,
-                                    itemCTDCBD.DiaChi_BD,
-                                    itemCTDCBD.MSThue,
-                                    itemCTDCBD.MSThue_BD,
-                                    itemCTDCBD.GiaBieu,
-                                    itemCTDCBD.GiaBieu_BD,
-                                    itemCTDCBD.DinhMuc,
-                                    itemCTDCBD.DinhMuc_BD,
-                                    itemCTDCBD.PhieuDuocKy,
-                                    itemCTDCBD.NguoiKy,
-                                    CreateBy = itemtableND.HoTen,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCBD in db.CTDCBDs
+                            join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemCTDCBD.CreateBy == CreateBy && itemCTDCBD.DanhBo == DanhBo
+                            orderby itemCTDCBD.CreateDate ascending
+                            select new
+                            {
+                                In = false,
+                                itemCTDCBD.ChuyenDocSo,
+                                SoPhieu = itemCTDCBD.MaCTDCBD,
+                                DieuChinh = "Biến Động",
+                                itemCTDCBD.CreateDate,
+                                itemCTDCBD.DanhBo,
+                                itemCTDCBD.HoTen,
+                                itemCTDCBD.HoTen_BD,
+                                itemCTDCBD.DiaChi,
+                                itemCTDCBD.DiaChi_BD,
+                                itemCTDCBD.MSThue,
+                                itemCTDCBD.MSThue_BD,
+                                itemCTDCBD.GiaBieu,
+                                itemCTDCBD.GiaBieu_BD,
+                                itemCTDCBD.DinhMuc,
+                                itemCTDCBD.DinhMuc_BD,
+                                itemCTDCBD.PhieuDuocKy,
+                                itemCTDCBD.NguoiKy,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -809,32 +812,32 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCBD in db.CTDCBDs
-                                where itemCTDCBD.CreateDate.Value.Date == TuNgay.Date
-                                orderby itemCTDCBD.CreateDate ascending
-                                select new
-                                {
-                                    In = false,
-                                    itemCTDCBD.ChuyenDocSo,
-                                    SoPhieu = itemCTDCBD.MaCTDCBD,
-                                    DieuChinh = "Biến Động",
-                                    itemCTDCBD.CreateDate,
-                                    itemCTDCBD.DanhBo,
-                                    itemCTDCBD.HoTen,
-                                    itemCTDCBD.HoTen_BD,
-                                    itemCTDCBD.DiaChi,
-                                    itemCTDCBD.DiaChi_BD,
-                                    itemCTDCBD.MSThue,
-                                    itemCTDCBD.MSThue_BD,
-                                    itemCTDCBD.GiaBieu,
-                                    itemCTDCBD.GiaBieu_BD,
-                                    itemCTDCBD.DinhMuc,
-                                    itemCTDCBD.DinhMuc_BD,
-                                    itemCTDCBD.PhieuDuocKy,
-                                    itemCTDCBD.NguoiKy,
-                                    itemCTDCBD.CreateBy,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCBD in db.CTDCBDs
+                            where itemCTDCBD.CreateDate.Value.Date == TuNgay.Date
+                            orderby itemCTDCBD.CreateDate ascending
+                            select new
+                            {
+                                In = false,
+                                itemCTDCBD.ChuyenDocSo,
+                                SoPhieu = itemCTDCBD.MaCTDCBD,
+                                DieuChinh = "Biến Động",
+                                itemCTDCBD.CreateDate,
+                                itemCTDCBD.DanhBo,
+                                itemCTDCBD.HoTen,
+                                itemCTDCBD.HoTen_BD,
+                                itemCTDCBD.DiaChi,
+                                itemCTDCBD.DiaChi_BD,
+                                itemCTDCBD.MSThue,
+                                itemCTDCBD.MSThue_BD,
+                                itemCTDCBD.GiaBieu,
+                                itemCTDCBD.GiaBieu_BD,
+                                itemCTDCBD.DinhMuc,
+                                itemCTDCBD.DinhMuc_BD,
+                                itemCTDCBD.PhieuDuocKy,
+                                itemCTDCBD.NguoiKy,
+                                itemCTDCBD.CreateBy,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -847,32 +850,32 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCBD in db.CTDCBDs
-                                where itemCTDCBD.CreateBy == CreateBy && itemCTDCBD.CreateDate.Value.Date == TuNgay.Date
-                                orderby itemCTDCBD.CreateDate ascending
-                                select new
-                                {
-                                    In = false,
-                                    itemCTDCBD.ChuyenDocSo,
-                                    SoPhieu = itemCTDCBD.MaCTDCBD,
-                                    DieuChinh = "Biến Động",
-                                    itemCTDCBD.CreateDate,
-                                    itemCTDCBD.DanhBo,
-                                    itemCTDCBD.HoTen,
-                                    itemCTDCBD.HoTen_BD,
-                                    itemCTDCBD.DiaChi,
-                                    itemCTDCBD.DiaChi_BD,
-                                    itemCTDCBD.MSThue,
-                                    itemCTDCBD.MSThue_BD,
-                                    itemCTDCBD.GiaBieu,
-                                    itemCTDCBD.GiaBieu_BD,
-                                    itemCTDCBD.DinhMuc,
-                                    itemCTDCBD.DinhMuc_BD,
-                                    itemCTDCBD.PhieuDuocKy,
-                                    itemCTDCBD.NguoiKy,
-                                    itemCTDCBD.CreateBy,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCBD in db.CTDCBDs
+                            where itemCTDCBD.CreateBy == CreateBy && itemCTDCBD.CreateDate.Value.Date == TuNgay.Date
+                            orderby itemCTDCBD.CreateDate ascending
+                            select new
+                            {
+                                In = false,
+                                itemCTDCBD.ChuyenDocSo,
+                                SoPhieu = itemCTDCBD.MaCTDCBD,
+                                DieuChinh = "Biến Động",
+                                itemCTDCBD.CreateDate,
+                                itemCTDCBD.DanhBo,
+                                itemCTDCBD.HoTen,
+                                itemCTDCBD.HoTen_BD,
+                                itemCTDCBD.DiaChi,
+                                itemCTDCBD.DiaChi_BD,
+                                itemCTDCBD.MSThue,
+                                itemCTDCBD.MSThue_BD,
+                                itemCTDCBD.GiaBieu,
+                                itemCTDCBD.GiaBieu_BD,
+                                itemCTDCBD.DinhMuc,
+                                itemCTDCBD.DinhMuc_BD,
+                                itemCTDCBD.PhieuDuocKy,
+                                itemCTDCBD.NguoiKy,
+                                itemCTDCBD.CreateBy,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -885,34 +888,34 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCBD in db.CTDCBDs
-                                join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
-                                from itemtableND in tableND.DefaultIfEmpty()
-                                where itemCTDCBD.CreateDate.Value.Date >= TuNgay.Date && itemCTDCBD.CreateDate.Value.Date <= DenNgay.Date
-                                orderby itemCTDCBD.CreateDate ascending
-                                select new
-                                {
-                                    In = false,
-                                    itemCTDCBD.ChuyenDocSo,
-                                    SoPhieu = itemCTDCBD.MaCTDCBD,
-                                    DieuChinh = "Biến Động",
-                                    itemCTDCBD.CreateDate,
-                                    itemCTDCBD.DanhBo,
-                                    itemCTDCBD.HoTen,
-                                    itemCTDCBD.HoTen_BD,
-                                    itemCTDCBD.DiaChi,
-                                    itemCTDCBD.DiaChi_BD,
-                                    itemCTDCBD.MSThue,
-                                    itemCTDCBD.MSThue_BD,
-                                    itemCTDCBD.GiaBieu,
-                                    itemCTDCBD.GiaBieu_BD,
-                                    itemCTDCBD.DinhMuc,
-                                    itemCTDCBD.DinhMuc_BD,
-                                    itemCTDCBD.PhieuDuocKy,
-                                    itemCTDCBD.NguoiKy,
-                                    CreateBy = itemtableND.HoTen,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCBD in db.CTDCBDs
+                            join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemCTDCBD.CreateDate.Value.Date >= TuNgay.Date && itemCTDCBD.CreateDate.Value.Date <= DenNgay.Date
+                            orderby itemCTDCBD.CreateDate ascending
+                            select new
+                            {
+                                In = false,
+                                itemCTDCBD.ChuyenDocSo,
+                                SoPhieu = itemCTDCBD.MaCTDCBD,
+                                DieuChinh = "Biến Động",
+                                itemCTDCBD.CreateDate,
+                                itemCTDCBD.DanhBo,
+                                itemCTDCBD.HoTen,
+                                itemCTDCBD.HoTen_BD,
+                                itemCTDCBD.DiaChi,
+                                itemCTDCBD.DiaChi_BD,
+                                itemCTDCBD.MSThue,
+                                itemCTDCBD.MSThue_BD,
+                                itemCTDCBD.GiaBieu,
+                                itemCTDCBD.GiaBieu_BD,
+                                itemCTDCBD.DinhMuc,
+                                itemCTDCBD.DinhMuc_BD,
+                                itemCTDCBD.PhieuDuocKy,
+                                itemCTDCBD.NguoiKy,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -925,34 +928,34 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCBD in db.CTDCBDs
-                                join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
-                                from itemtableND in tableND.DefaultIfEmpty()
-                                where itemCTDCBD.CreateBy == CreateBy && itemCTDCBD.CreateDate.Value.Date >= TuNgay.Date && itemCTDCBD.CreateDate.Value.Date <= DenNgay.Date
-                                orderby itemCTDCBD.CreateDate ascending
-                                select new
-                                {
-                                    In = false,
-                                    itemCTDCBD.ChuyenDocSo,
-                                    SoPhieu = itemCTDCBD.MaCTDCBD,
-                                    DieuChinh = "Biến Động",
-                                    itemCTDCBD.CreateDate,
-                                    itemCTDCBD.DanhBo,
-                                    itemCTDCBD.HoTen,
-                                    itemCTDCBD.HoTen_BD,
-                                    itemCTDCBD.DiaChi,
-                                    itemCTDCBD.DiaChi_BD,
-                                    itemCTDCBD.MSThue,
-                                    itemCTDCBD.MSThue_BD,
-                                    itemCTDCBD.GiaBieu,
-                                    itemCTDCBD.GiaBieu_BD,
-                                    itemCTDCBD.DinhMuc,
-                                    itemCTDCBD.DinhMuc_BD,
-                                    itemCTDCBD.PhieuDuocKy,
-                                    itemCTDCBD.NguoiKy,
-                                    CreateBy = itemtableND.HoTen,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCBD in db.CTDCBDs
+                            join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemCTDCBD.CreateBy == CreateBy && itemCTDCBD.CreateDate.Value.Date >= TuNgay.Date && itemCTDCBD.CreateDate.Value.Date <= DenNgay.Date
+                            orderby itemCTDCBD.CreateDate ascending
+                            select new
+                            {
+                                In = false,
+                                itemCTDCBD.ChuyenDocSo,
+                                SoPhieu = itemCTDCBD.MaCTDCBD,
+                                DieuChinh = "Biến Động",
+                                itemCTDCBD.CreateDate,
+                                itemCTDCBD.DanhBo,
+                                itemCTDCBD.HoTen,
+                                itemCTDCBD.HoTen_BD,
+                                itemCTDCBD.DiaChi,
+                                itemCTDCBD.DiaChi_BD,
+                                itemCTDCBD.MSThue,
+                                itemCTDCBD.MSThue_BD,
+                                itemCTDCBD.GiaBieu,
+                                itemCTDCBD.GiaBieu_BD,
+                                itemCTDCBD.DinhMuc,
+                                itemCTDCBD.DinhMuc_BD,
+                                itemCTDCBD.PhieuDuocKy,
+                                itemCTDCBD.NguoiKy,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -970,36 +973,36 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCBD in db.CTDCBDs
-                                where itemCTDCBD.CreateDate.Value.Date == TuNgay.Date
-                                select new
-                                {
-                                    In = false,
-                                    itemCTDCBD.ChuyenDocSo,
-                                    SoPhieu = itemCTDCBD.MaCTDCBD,
-                                    Ma = itemCTDCBD.MaCTDCBD,
-                                    DieuChinh = "Biến Động",
-                                    itemCTDCBD.CreateDate,
-                                    itemCTDCBD.DanhBo,
-                                    itemCTDCBD.HoTen,
-                                    itemCTDCBD.HoTen_BD,
-                                    itemCTDCBD.DiaChi,
-                                    itemCTDCBD.DiaChi_BD,
-                                    itemCTDCBD.MSThue,
-                                    itemCTDCBD.MSThue_BD,
-                                    itemCTDCBD.GiaBieu,
-                                    itemCTDCBD.GiaBieu_BD,
-                                    itemCTDCBD.DinhMuc,
-                                    itemCTDCBD.DinhMuc_BD,
-                                    itemCTDCBD.PhieuDuocKy,
-                                    itemCTDCBD.SH_BD,
-                                    itemCTDCBD.SX_BD,
-                                    itemCTDCBD.DV_BD,
-                                    itemCTDCBD.HCSN_BD,
-                                    itemCTDCBD.NguoiKy,
-                                    itemCTDCBD.HieuLucKy,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCBD in db.CTDCBDs
+                            where itemCTDCBD.CreateDate.Value.Date == TuNgay.Date
+                            select new
+                            {
+                                In = false,
+                                itemCTDCBD.ChuyenDocSo,
+                                SoPhieu = itemCTDCBD.MaCTDCBD,
+                                Ma = itemCTDCBD.MaCTDCBD,
+                                DieuChinh = "Biến Động",
+                                itemCTDCBD.CreateDate,
+                                itemCTDCBD.DanhBo,
+                                itemCTDCBD.HoTen,
+                                itemCTDCBD.HoTen_BD,
+                                itemCTDCBD.DiaChi,
+                                itemCTDCBD.DiaChi_BD,
+                                itemCTDCBD.MSThue,
+                                itemCTDCBD.MSThue_BD,
+                                itemCTDCBD.GiaBieu,
+                                itemCTDCBD.GiaBieu_BD,
+                                itemCTDCBD.DinhMuc,
+                                itemCTDCBD.DinhMuc_BD,
+                                itemCTDCBD.PhieuDuocKy,
+                                itemCTDCBD.SH_BD,
+                                itemCTDCBD.SX_BD,
+                                itemCTDCBD.DV_BD,
+                                itemCTDCBD.HCSN_BD,
+                                itemCTDCBD.NguoiKy,
+                                itemCTDCBD.HieuLucKy,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1018,36 +1021,36 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCBD in db.CTDCBDs
-                                where itemCTDCBD.CreateDate.Value.Date >= TuNgay.Date && itemCTDCBD.CreateDate.Value.Date <= DenNgay.Date
-                                select new
-                                {
-                                    In = false,
-                                    itemCTDCBD.ChuyenDocSo,
-                                    SoPhieu = itemCTDCBD.MaCTDCBD,
-                                    Ma = itemCTDCBD.MaCTDCBD,
-                                    DieuChinh = "Biến Động",
-                                    itemCTDCBD.CreateDate,
-                                    itemCTDCBD.DanhBo,
-                                    itemCTDCBD.HoTen,
-                                    itemCTDCBD.HoTen_BD,
-                                    itemCTDCBD.DiaChi,
-                                    itemCTDCBD.DiaChi_BD,
-                                    itemCTDCBD.MSThue,
-                                    itemCTDCBD.MSThue_BD,
-                                    itemCTDCBD.GiaBieu,
-                                    itemCTDCBD.GiaBieu_BD,
-                                    itemCTDCBD.DinhMuc,
-                                    itemCTDCBD.DinhMuc_BD,
-                                    itemCTDCBD.PhieuDuocKy,
-                                    itemCTDCBD.SH_BD,
-                                    itemCTDCBD.SX_BD,
-                                    itemCTDCBD.DV_BD,
-                                    itemCTDCBD.HCSN_BD,
-                                    itemCTDCBD.NguoiKy,
-                                    itemCTDCBD.HieuLucKy,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCBD in db.CTDCBDs
+                            where itemCTDCBD.CreateDate.Value.Date >= TuNgay.Date && itemCTDCBD.CreateDate.Value.Date <= DenNgay.Date
+                            select new
+                            {
+                                In = false,
+                                itemCTDCBD.ChuyenDocSo,
+                                SoPhieu = itemCTDCBD.MaCTDCBD,
+                                Ma = itemCTDCBD.MaCTDCBD,
+                                DieuChinh = "Biến Động",
+                                itemCTDCBD.CreateDate,
+                                itemCTDCBD.DanhBo,
+                                itemCTDCBD.HoTen,
+                                itemCTDCBD.HoTen_BD,
+                                itemCTDCBD.DiaChi,
+                                itemCTDCBD.DiaChi_BD,
+                                itemCTDCBD.MSThue,
+                                itemCTDCBD.MSThue_BD,
+                                itemCTDCBD.GiaBieu,
+                                itemCTDCBD.GiaBieu_BD,
+                                itemCTDCBD.DinhMuc,
+                                itemCTDCBD.DinhMuc_BD,
+                                itemCTDCBD.PhieuDuocKy,
+                                itemCTDCBD.SH_BD,
+                                itemCTDCBD.SX_BD,
+                                itemCTDCBD.DV_BD,
+                                itemCTDCBD.HCSN_BD,
+                                itemCTDCBD.NguoiKy,
+                                itemCTDCBD.HieuLucKy,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1060,20 +1063,20 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCBD in db.CTDCBDs
-                                join itemCTCT in db.CTChungTus on itemCTDCBD.DanhBo equals itemCTCT.DanhBo
-                                join itemTTKH in db.TTKhachHangs on itemCTDCBD.DanhBo equals itemTTKH.DanhBo
-                                where itemCTCT.Cat==false && (itemCTCT.ChungTu.MaLCT == 2 || itemCTCT.ChungTu.MaLCT == 5 || itemCTCT.ChungTu.MaLCT == 6 || itemCTCT.ChungTu.MaLCT == 7)
-                                && itemCTDCBD.CreateDate.Value.Date >= TuNgay.Date && itemCTDCBD.CreateDate.Value.Date <= DenNgay.Date
-                                select new
-                                {
-                                    itemCTDCBD.DanhBo,
-                                    itemCTCT.ChungTu.LoaiChungTu.MaLCT,
-                                    itemCTCT.SoNKDangKy,
-                                    itemTTKH.Quan,
-                                    itemTTKH.Phuong,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCBD in db.CTDCBDs
+                            join itemCTCT in db.CTChungTus on itemCTDCBD.DanhBo equals itemCTCT.DanhBo
+                            join itemTTKH in db.TTKhachHangs on itemCTDCBD.DanhBo equals itemTTKH.DanhBo
+                            where itemCTCT.Cat == false && (itemCTCT.ChungTu.MaLCT == 2 || itemCTCT.ChungTu.MaLCT == 5 || itemCTCT.ChungTu.MaLCT == 6 || itemCTCT.ChungTu.MaLCT == 7)
+                            && itemCTDCBD.CreateDate.Value.Date >= TuNgay.Date && itemCTDCBD.CreateDate.Value.Date <= DenNgay.Date
+                            select new
+                            {
+                                itemCTDCBD.DanhBo,
+                                itemCTCT.ChungTu.LoaiChungTu.MaLCT,
+                                itemCTCT.SoNKDangKy,
+                                itemTTKH.Quan,
+                                itemTTKH.Phuong,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1091,22 +1094,22 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCBD in db.CTDCBDs
-                                join itemUser in db.Users on itemCTDCBD.CreateBy equals itemUser.MaU
-                                where itemCTDCBD.ChuyenDocSo == true && itemCTDCBD.NgayChuyenDocSo.Value.Date == TuNgay.Date
-                                select new
-                                {
-                                    SoPhieu = itemCTDCBD.MaCTDCBD,
-                                    itemCTDCBD.DanhBo,
-                                    itemCTDCBD.HoTen,
-                                    itemCTDCBD.DiaChi,
-                                    itemCTDCBD.GiaBieu,
-                                    itemCTDCBD.DinhMuc,
-                                    itemCTDCBD.ThongTin,
-                                    itemCTDCBD.HieuLucKy,
-                                    CreateBy = itemUser.HoTen,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCBD in db.CTDCBDs
+                            join itemUser in db.Users on itemCTDCBD.CreateBy equals itemUser.MaU
+                            where itemCTDCBD.ChuyenDocSo == true && itemCTDCBD.NgayChuyenDocSo.Value.Date == TuNgay.Date
+                            select new
+                            {
+                                SoPhieu = itemCTDCBD.MaCTDCBD,
+                                itemCTDCBD.DanhBo,
+                                itemCTDCBD.HoTen,
+                                itemCTDCBD.DiaChi,
+                                itemCTDCBD.GiaBieu,
+                                itemCTDCBD.DinhMuc,
+                                itemCTDCBD.ThongTin,
+                                itemCTDCBD.HieuLucKy,
+                                CreateBy = itemUser.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1125,22 +1128,22 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCBD in db.CTDCBDs
-                                join itemUser in db.Users on itemCTDCBD.CreateBy equals itemUser.MaU
-                                where itemCTDCBD.ChuyenDocSo == true && itemCTDCBD.NgayChuyenDocSo.Value.Date >= TuNgay.Date && itemCTDCBD.NgayChuyenDocSo.Value.Date <= DenNgay.Date
-                                select new
-                                {
-                                    SoPhieu = itemCTDCBD.MaCTDCBD,
-                                    itemCTDCBD.DanhBo,
-                                    itemCTDCBD.HoTen,
-                                    itemCTDCBD.DiaChi,
-                                    itemCTDCBD.GiaBieu,
-                                    itemCTDCBD.DinhMuc,
-                                    itemCTDCBD.ThongTin,
-                                    itemCTDCBD.HieuLucKy,
-                                    CreateBy = itemUser.HoTen,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCBD in db.CTDCBDs
+                            join itemUser in db.Users on itemCTDCBD.CreateBy equals itemUser.MaU
+                            where itemCTDCBD.ChuyenDocSo == true && itemCTDCBD.NgayChuyenDocSo.Value.Date >= TuNgay.Date && itemCTDCBD.NgayChuyenDocSo.Value.Date <= DenNgay.Date
+                            select new
+                            {
+                                SoPhieu = itemCTDCBD.MaCTDCBD,
+                                itemCTDCBD.DanhBo,
+                                itemCTDCBD.HoTen,
+                                itemCTDCBD.DiaChi,
+                                itemCTDCBD.GiaBieu,
+                                itemCTDCBD.DinhMuc,
+                                itemCTDCBD.ThongTin,
+                                itemCTDCBD.HieuLucKy,
+                                CreateBy = itemUser.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1280,6 +1283,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public bool CheckExist_DCBD(decimal MaCTDCBD)
+        {
+            return db.CTDCBDs.Any(item => item.MaCTDCBD == MaCTDCBD);
+        }
+
         #endregion
 
         #region CTDCHD (Chi Tiết Điều Chỉnh Hóa Đơn)
@@ -1288,29 +1296,29 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    if (db.CTDCHDs.Count() > 0)
-                    {
-                        string ID = "MaCTDCHD";
-                        string Table = "CTDCHD";
-                        decimal MaCTDCHD = db.ExecuteQuery<decimal>("declare @Ma int " +
-                            "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
-                            "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
-                        //decimal MaCTDCHD = db.CTDCHDs.Max(itemCTDCHD => itemCTDCHD.MaCTDCHD);
-                        ctdchd.MaCTDCHD = getMaxNextIDTable(MaCTDCHD);
-                    }
-                    else
-                        ctdchd.MaCTDCHD = decimal.Parse("1" + DateTime.Now.ToString("yy"));
-                    ctdchd.CreateDate = DateTime.Now;
-                    ctdchd.CreateBy = CTaiKhoan.MaUser;
-                    db.CTDCHDs.InsertOnSubmit(ctdchd);
-                    db.SubmitChanges();
-                    //MessageBox.Show("Thành công Thêm CTDCHD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
+                if (db.CTDCHDs.Count() > 0)
+                {
+                    string ID = "MaCTDCHD";
+                    string Table = "CTDCHD";
+                    decimal MaCTDCHD = db.ExecuteQuery<decimal>("declare @Ma int " +
+                        "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                        "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                    //decimal MaCTDCHD = db.CTDCHDs.Max(itemCTDCHD => itemCTDCHD.MaCTDCHD);
+                    ctdchd.MaCTDCHD = getMaxNextIDTable(MaCTDCHD);
+                }
+                else
+                    ctdchd.MaCTDCHD = decimal.Parse("1" + DateTime.Now.ToString("yy"));
+                ctdchd.CreateDate = DateTime.Now;
+                ctdchd.CreateBy = CTaiKhoan.MaUser;
+                db.CTDCHDs.InsertOnSubmit(ctdchd);
+                db.SubmitChanges();
+                //MessageBox.Show("Thành công Thêm CTDCHD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -1319,16 +1327,16 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    ctdchd.ModifyDate = DateTime.Now;
-                    ctdchd.ModifyBy = CTaiKhoan.MaUser;
-                    db.SubmitChanges();
-                    //MessageBox.Show("Thành công Sửa CTDCHD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
+                ctdchd.ModifyDate = DateTime.Now;
+                ctdchd.ModifyBy = CTaiKhoan.MaUser;
+                db.SubmitChanges();
+                //MessageBox.Show("Thành công Sửa CTDCHD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -1337,15 +1345,18 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    db.CTDCHDs.DeleteOnSubmit(ctdchd);
-                    db.SubmitChanges();
-                    //MessageBox.Show("Thành công Xóa CTDCHD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
+                decimal ID = ctdchd.MaDCBD;
+                db.CTDCHDs.DeleteOnSubmit(ctdchd);
+                if (db.CTDCBDs.Any(item => item.MaDCBD == ID) == false && db.CTDCHDs.Any(item => item.MaDCBD == ID) == false)
+                    db.DCBDs.DeleteOnSubmit(db.DCBDs.SingleOrDefault(item => item.MaDCBD == ID));
+                db.SubmitChanges();
+                //MessageBox.Show("Thành công Xóa CTDCHD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -1371,30 +1382,30 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCHD in db.CTDCHDs
-                                orderby itemCTDCHD.CreateDate descending
-                                select new
-                                {
-                                    In = false,
-                                    SoPhieu = itemCTDCHD.MaCTDCHD,
-                                    DieuChinh = "Hóa Đơn",
-                                    itemCTDCHD.CreateDate,
-                                    itemCTDCHD.DanhBo,
-                                    itemCTDCHD.GiaBieu,
-                                    itemCTDCHD.GiaBieu_BD,
-                                    itemCTDCHD.DinhMuc,
-                                    itemCTDCHD.DinhMuc_BD,
-                                    itemCTDCHD.TieuThu,
-                                    itemCTDCHD.TieuThu_BD,
-                                    itemCTDCHD.TongCong_Start,
-                                    itemCTDCHD.TongCong_End,
-                                    itemCTDCHD.TongCong_BD,
-                                    itemCTDCHD.TangGiam,
-                                    itemCTDCHD.PhieuDuocKy,
-                                    itemCTDCHD.NguoiKy,
-                                    itemCTDCHD.CreateBy,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCHD in db.CTDCHDs
+                            orderby itemCTDCHD.CreateDate descending
+                            select new
+                            {
+                                In = false,
+                                SoPhieu = itemCTDCHD.MaCTDCHD,
+                                DieuChinh = "Hóa Đơn",
+                                itemCTDCHD.CreateDate,
+                                itemCTDCHD.DanhBo,
+                                itemCTDCHD.GiaBieu,
+                                itemCTDCHD.GiaBieu_BD,
+                                itemCTDCHD.DinhMuc,
+                                itemCTDCHD.DinhMuc_BD,
+                                itemCTDCHD.TieuThu,
+                                itemCTDCHD.TieuThu_BD,
+                                itemCTDCHD.TongCong_Start,
+                                itemCTDCHD.TongCong_End,
+                                itemCTDCHD.TongCong_BD,
+                                itemCTDCHD.TangGiam,
+                                itemCTDCHD.PhieuDuocKy,
+                                itemCTDCHD.NguoiKy,
+                                itemCTDCHD.CreateBy,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1407,33 +1418,33 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCHD in db.CTDCHDs
-                                join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
-                                from itemtableND in tableND.DefaultIfEmpty()
-                                where itemCTDCHD.DCBD.MaDon==MaDon||itemCTDCHD.DCBD.MaDonTXL==MaDon
-                                orderby itemCTDCHD.CreateDate ascending
-                                select new
-                                {
-                                    In = false,
-                                    SoPhieu = itemCTDCHD.MaCTDCHD,
-                                    DieuChinh = "Hóa Đơn",
-                                    itemCTDCHD.CreateDate,
-                                    itemCTDCHD.DanhBo,
-                                    itemCTDCHD.GiaBieu,
-                                    itemCTDCHD.GiaBieu_BD,
-                                    itemCTDCHD.DinhMuc,
-                                    itemCTDCHD.DinhMuc_BD,
-                                    itemCTDCHD.TieuThu,
-                                    itemCTDCHD.TieuThu_BD,
-                                    itemCTDCHD.TongCong_Start,
-                                    itemCTDCHD.TongCong_End,
-                                    itemCTDCHD.TongCong_BD,
-                                    itemCTDCHD.TangGiam,
-                                    itemCTDCHD.PhieuDuocKy,
-                                    itemCTDCHD.NguoiKy,
-                                    CreateBy = itemtableND.HoTen,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCHD in db.CTDCHDs
+                            join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemCTDCHD.DCBD.MaDon == MaDon || itemCTDCHD.DCBD.MaDonTXL == MaDon
+                            orderby itemCTDCHD.CreateDate ascending
+                            select new
+                            {
+                                In = false,
+                                SoPhieu = itemCTDCHD.MaCTDCHD,
+                                DieuChinh = "Hóa Đơn",
+                                itemCTDCHD.CreateDate,
+                                itemCTDCHD.DanhBo,
+                                itemCTDCHD.GiaBieu,
+                                itemCTDCHD.GiaBieu_BD,
+                                itemCTDCHD.DinhMuc,
+                                itemCTDCHD.DinhMuc_BD,
+                                itemCTDCHD.TieuThu,
+                                itemCTDCHD.TieuThu_BD,
+                                itemCTDCHD.TongCong_Start,
+                                itemCTDCHD.TongCong_End,
+                                itemCTDCHD.TongCong_BD,
+                                itemCTDCHD.TangGiam,
+                                itemCTDCHD.PhieuDuocKy,
+                                itemCTDCHD.NguoiKy,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1442,40 +1453,40 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable LoadDSCTDCHDByMaDons(decimal TuMaDon,decimal DenMaDon)
+        public DataTable LoadDSCTDCHDByMaDons(decimal TuMaDon, decimal DenMaDon)
         {
             try
             {
-                    var query = from itemCTDCHD in db.CTDCHDs
-                                join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
-                                from itemtableND in tableND.DefaultIfEmpty()
-                                where ((itemCTDCHD.DCBD.MaDon.Value.ToString().Substring(itemCTDCHD.DCBD.MaDon.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCHD.DCBD.MaDon.Value.ToString().Substring(itemCTDCHD.DCBD.MaDon.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
-                                && (itemCTDCHD.DCBD.MaDon >= TuMaDon && itemCTDCHD.DCBD.MaDon <= DenMaDon))
-                                || ((itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
-                                && (itemCTDCHD.DCBD.MaDonTXL >= TuMaDon && itemCTDCHD.DCBD.MaDonTXL <= DenMaDon))
-                                orderby itemCTDCHD.CreateDate ascending
-                                select new
-                                {
-                                    In = false,
-                                    SoPhieu = itemCTDCHD.MaCTDCHD,
-                                    DieuChinh = "Hóa Đơn",
-                                    itemCTDCHD.CreateDate,
-                                    itemCTDCHD.DanhBo,
-                                    itemCTDCHD.GiaBieu,
-                                    itemCTDCHD.GiaBieu_BD,
-                                    itemCTDCHD.DinhMuc,
-                                    itemCTDCHD.DinhMuc_BD,
-                                    itemCTDCHD.TieuThu,
-                                    itemCTDCHD.TieuThu_BD,
-                                    itemCTDCHD.TongCong_Start,
-                                    itemCTDCHD.TongCong_End,
-                                    itemCTDCHD.TongCong_BD,
-                                    itemCTDCHD.TangGiam,
-                                    itemCTDCHD.PhieuDuocKy,
-                                    itemCTDCHD.NguoiKy,
-                                    CreateBy = itemtableND.HoTen,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCHD in db.CTDCHDs
+                            join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where ((itemCTDCHD.DCBD.MaDon.Value.ToString().Substring(itemCTDCHD.DCBD.MaDon.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCHD.DCBD.MaDon.Value.ToString().Substring(itemCTDCHD.DCBD.MaDon.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
+                            && (itemCTDCHD.DCBD.MaDon >= TuMaDon && itemCTDCHD.DCBD.MaDon <= DenMaDon))
+                            || ((itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
+                            && (itemCTDCHD.DCBD.MaDonTXL >= TuMaDon && itemCTDCHD.DCBD.MaDonTXL <= DenMaDon))
+                            orderby itemCTDCHD.CreateDate ascending
+                            select new
+                            {
+                                In = false,
+                                SoPhieu = itemCTDCHD.MaCTDCHD,
+                                DieuChinh = "Hóa Đơn",
+                                itemCTDCHD.CreateDate,
+                                itemCTDCHD.DanhBo,
+                                itemCTDCHD.GiaBieu,
+                                itemCTDCHD.GiaBieu_BD,
+                                itemCTDCHD.DinhMuc,
+                                itemCTDCHD.DinhMuc_BD,
+                                itemCTDCHD.TieuThu,
+                                itemCTDCHD.TieuThu_BD,
+                                itemCTDCHD.TongCong_Start,
+                                itemCTDCHD.TongCong_End,
+                                itemCTDCHD.TongCong_BD,
+                                itemCTDCHD.TangGiam,
+                                itemCTDCHD.PhieuDuocKy,
+                                itemCTDCHD.NguoiKy,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1488,34 +1499,34 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCHD in db.CTDCHDs
-                                join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
-                                from itemtableND in tableND.DefaultIfEmpty()
-                                where itemCTDCHD.MaCTDCHD==SoPhieu
-                                orderby itemCTDCHD.CreateDate ascending
-                                select new
-                                {
-                                    In = false,
-                                    SoPhieu = itemCTDCHD.MaCTDCHD,
-                                    Ma = itemCTDCHD.MaCTDCHD,
-                                    DieuChinh = "Hóa Đơn",
-                                    itemCTDCHD.CreateDate,
-                                    itemCTDCHD.DanhBo,
-                                    itemCTDCHD.GiaBieu,
-                                    itemCTDCHD.GiaBieu_BD,
-                                    itemCTDCHD.DinhMuc,
-                                    itemCTDCHD.DinhMuc_BD,
-                                    itemCTDCHD.TieuThu,
-                                    itemCTDCHD.TieuThu_BD,
-                                    itemCTDCHD.TongCong_Start,
-                                    itemCTDCHD.TongCong_End,
-                                    itemCTDCHD.TongCong_BD,
-                                    itemCTDCHD.TangGiam,
-                                    itemCTDCHD.PhieuDuocKy,
-                                    itemCTDCHD.NguoiKy,
-                                    CreateBy = itemtableND.HoTen,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCHD in db.CTDCHDs
+                            join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemCTDCHD.MaCTDCHD == SoPhieu
+                            orderby itemCTDCHD.CreateDate ascending
+                            select new
+                            {
+                                In = false,
+                                SoPhieu = itemCTDCHD.MaCTDCHD,
+                                Ma = itemCTDCHD.MaCTDCHD,
+                                DieuChinh = "Hóa Đơn",
+                                itemCTDCHD.CreateDate,
+                                itemCTDCHD.DanhBo,
+                                itemCTDCHD.GiaBieu,
+                                itemCTDCHD.GiaBieu_BD,
+                                itemCTDCHD.DinhMuc,
+                                itemCTDCHD.DinhMuc_BD,
+                                itemCTDCHD.TieuThu,
+                                itemCTDCHD.TieuThu_BD,
+                                itemCTDCHD.TongCong_Start,
+                                itemCTDCHD.TongCong_End,
+                                itemCTDCHD.TongCong_BD,
+                                itemCTDCHD.TangGiam,
+                                itemCTDCHD.PhieuDuocKy,
+                                itemCTDCHD.NguoiKy,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1524,39 +1535,39 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable LoadDSCTDCHDBySoPhieus(decimal TuSoPhieu,decimal DenSoPhieu)
+        public DataTable LoadDSCTDCHDBySoPhieus(decimal TuSoPhieu, decimal DenSoPhieu)
         {
             try
             {
-                    var query = from itemCTDCHD in db.CTDCHDs
-                                join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
-                                from itemtableND in tableND.DefaultIfEmpty()
-                                where itemCTDCHD.MaCTDCHD.ToString().Substring(itemCTDCHD.MaCTDCHD.ToString().Length - 2, 2) == TuSoPhieu.ToString().Substring(TuSoPhieu.ToString().Length - 2, 2)
-                                && itemCTDCHD.MaCTDCHD.ToString().Substring(itemCTDCHD.MaCTDCHD.ToString().Length - 2, 2) == DenSoPhieu.ToString().Substring(DenSoPhieu.ToString().Length - 2, 2)
-                                && itemCTDCHD.MaCTDCHD >= TuSoPhieu && itemCTDCHD.MaCTDCHD <= DenSoPhieu
-                                orderby itemCTDCHD.CreateDate ascending
-                                select new
-                                {
-                                    In = false,
-                                    SoPhieu = itemCTDCHD.MaCTDCHD,
-                                    DieuChinh = "Hóa Đơn",
-                                    itemCTDCHD.CreateDate,
-                                    itemCTDCHD.DanhBo,
-                                    itemCTDCHD.GiaBieu,
-                                    itemCTDCHD.GiaBieu_BD,
-                                    itemCTDCHD.DinhMuc,
-                                    itemCTDCHD.DinhMuc_BD,
-                                    itemCTDCHD.TieuThu,
-                                    itemCTDCHD.TieuThu_BD,
-                                    itemCTDCHD.TongCong_Start,
-                                    itemCTDCHD.TongCong_End,
-                                    itemCTDCHD.TongCong_BD,
-                                    itemCTDCHD.TangGiam,
-                                    itemCTDCHD.PhieuDuocKy,
-                                    itemCTDCHD.NguoiKy,
-                                    CreateBy = itemtableND.HoTen,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCHD in db.CTDCHDs
+                            join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemCTDCHD.MaCTDCHD.ToString().Substring(itemCTDCHD.MaCTDCHD.ToString().Length - 2, 2) == TuSoPhieu.ToString().Substring(TuSoPhieu.ToString().Length - 2, 2)
+                            && itemCTDCHD.MaCTDCHD.ToString().Substring(itemCTDCHD.MaCTDCHD.ToString().Length - 2, 2) == DenSoPhieu.ToString().Substring(DenSoPhieu.ToString().Length - 2, 2)
+                            && itemCTDCHD.MaCTDCHD >= TuSoPhieu && itemCTDCHD.MaCTDCHD <= DenSoPhieu
+                            orderby itemCTDCHD.CreateDate ascending
+                            select new
+                            {
+                                In = false,
+                                SoPhieu = itemCTDCHD.MaCTDCHD,
+                                DieuChinh = "Hóa Đơn",
+                                itemCTDCHD.CreateDate,
+                                itemCTDCHD.DanhBo,
+                                itemCTDCHD.GiaBieu,
+                                itemCTDCHD.GiaBieu_BD,
+                                itemCTDCHD.DinhMuc,
+                                itemCTDCHD.DinhMuc_BD,
+                                itemCTDCHD.TieuThu,
+                                itemCTDCHD.TieuThu_BD,
+                                itemCTDCHD.TongCong_Start,
+                                itemCTDCHD.TongCong_End,
+                                itemCTDCHD.TongCong_BD,
+                                itemCTDCHD.TangGiam,
+                                itemCTDCHD.PhieuDuocKy,
+                                itemCTDCHD.NguoiKy,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1569,33 +1580,33 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCHD in db.CTDCHDs
-                                join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
-                                from itemtableND in tableND.DefaultIfEmpty()
-                                where itemCTDCHD.DanhBo==DanhBo
-                                orderby itemCTDCHD.CreateDate ascending
-                                select new
-                                {
-                                    In = false,
-                                    SoPhieu = itemCTDCHD.MaCTDCHD,
-                                    DieuChinh = "Hóa Đơn",
-                                    itemCTDCHD.CreateDate,
-                                    itemCTDCHD.DanhBo,
-                                    itemCTDCHD.GiaBieu,
-                                    itemCTDCHD.GiaBieu_BD,
-                                    itemCTDCHD.DinhMuc,
-                                    itemCTDCHD.DinhMuc_BD,
-                                    itemCTDCHD.TieuThu,
-                                    itemCTDCHD.TieuThu_BD,
-                                    itemCTDCHD.TongCong_Start,
-                                    itemCTDCHD.TongCong_End,
-                                    itemCTDCHD.TongCong_BD,
-                                    itemCTDCHD.TangGiam,
-                                    itemCTDCHD.PhieuDuocKy,
-                                    itemCTDCHD.NguoiKy,
-                                    CreateBy = itemtableND.HoTen,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCHD in db.CTDCHDs
+                            join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemCTDCHD.DanhBo == DanhBo
+                            orderby itemCTDCHD.CreateDate ascending
+                            select new
+                            {
+                                In = false,
+                                SoPhieu = itemCTDCHD.MaCTDCHD,
+                                DieuChinh = "Hóa Đơn",
+                                itemCTDCHD.CreateDate,
+                                itemCTDCHD.DanhBo,
+                                itemCTDCHD.GiaBieu,
+                                itemCTDCHD.GiaBieu_BD,
+                                itemCTDCHD.DinhMuc,
+                                itemCTDCHD.DinhMuc_BD,
+                                itemCTDCHD.TieuThu,
+                                itemCTDCHD.TieuThu_BD,
+                                itemCTDCHD.TongCong_Start,
+                                itemCTDCHD.TongCong_End,
+                                itemCTDCHD.TongCong_BD,
+                                itemCTDCHD.TangGiam,
+                                itemCTDCHD.PhieuDuocKy,
+                                itemCTDCHD.NguoiKy,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1608,31 +1619,31 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCHD in db.CTDCHDs
-                                where itemCTDCHD.CreateDate.Value.Date==TuNgay.Date
-                                orderby itemCTDCHD.CreateDate ascending
-                                select new
-                                {
-                                    In = false,
-                                    SoPhieu = itemCTDCHD.MaCTDCHD,
-                                    DieuChinh = "Hóa Đơn",
-                                    itemCTDCHD.CreateDate,
-                                    itemCTDCHD.DanhBo,
-                                    itemCTDCHD.GiaBieu,
-                                    itemCTDCHD.GiaBieu_BD,
-                                    itemCTDCHD.DinhMuc,
-                                    itemCTDCHD.DinhMuc_BD,
-                                    itemCTDCHD.TieuThu,
-                                    itemCTDCHD.TieuThu_BD,
-                                    itemCTDCHD.TongCong_Start,
-                                    itemCTDCHD.TongCong_End,
-                                    itemCTDCHD.TongCong_BD,
-                                    itemCTDCHD.TangGiam,
-                                    itemCTDCHD.PhieuDuocKy,
-                                    itemCTDCHD.NguoiKy,
-                                    itemCTDCHD.CreateBy,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCHD in db.CTDCHDs
+                            where itemCTDCHD.CreateDate.Value.Date == TuNgay.Date
+                            orderby itemCTDCHD.CreateDate ascending
+                            select new
+                            {
+                                In = false,
+                                SoPhieu = itemCTDCHD.MaCTDCHD,
+                                DieuChinh = "Hóa Đơn",
+                                itemCTDCHD.CreateDate,
+                                itemCTDCHD.DanhBo,
+                                itemCTDCHD.GiaBieu,
+                                itemCTDCHD.GiaBieu_BD,
+                                itemCTDCHD.DinhMuc,
+                                itemCTDCHD.DinhMuc_BD,
+                                itemCTDCHD.TieuThu,
+                                itemCTDCHD.TieuThu_BD,
+                                itemCTDCHD.TongCong_Start,
+                                itemCTDCHD.TongCong_End,
+                                itemCTDCHD.TongCong_BD,
+                                itemCTDCHD.TangGiam,
+                                itemCTDCHD.PhieuDuocKy,
+                                itemCTDCHD.NguoiKy,
+                                itemCTDCHD.CreateBy,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1641,37 +1652,37 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable LoadDSCTDCHDByDates(DateTime TuNgay,DateTime DenNgay)
+        public DataTable LoadDSCTDCHDByDates(DateTime TuNgay, DateTime DenNgay)
         {
             try
             {
-                    var query = from itemCTDCHD in db.CTDCHDs
-                                join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
-                                from itemtableND in tableND.DefaultIfEmpty()
-                                where itemCTDCHD.CreateDate.Value.Date>=TuNgay.Date&&itemCTDCHD.CreateDate.Value.Date<=DenNgay.Date
-                                orderby itemCTDCHD.CreateDate ascending
-                                select new
-                                {
-                                    In = false,
-                                    SoPhieu = itemCTDCHD.MaCTDCHD,
-                                    DieuChinh = "Hóa Đơn",
-                                    itemCTDCHD.CreateDate,
-                                    itemCTDCHD.DanhBo,
-                                    itemCTDCHD.GiaBieu,
-                                    itemCTDCHD.GiaBieu_BD,
-                                    itemCTDCHD.DinhMuc,
-                                    itemCTDCHD.DinhMuc_BD,
-                                    itemCTDCHD.TieuThu,
-                                    itemCTDCHD.TieuThu_BD,
-                                    itemCTDCHD.TongCong_Start,
-                                    itemCTDCHD.TongCong_End,
-                                    itemCTDCHD.TongCong_BD,
-                                    itemCTDCHD.TangGiam,
-                                    itemCTDCHD.PhieuDuocKy,
-                                    itemCTDCHD.NguoiKy,
-                                    CreateBy = itemtableND.HoTen,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCHD in db.CTDCHDs
+                            join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemCTDCHD.CreateDate.Value.Date >= TuNgay.Date && itemCTDCHD.CreateDate.Value.Date <= DenNgay.Date
+                            orderby itemCTDCHD.CreateDate ascending
+                            select new
+                            {
+                                In = false,
+                                SoPhieu = itemCTDCHD.MaCTDCHD,
+                                DieuChinh = "Hóa Đơn",
+                                itemCTDCHD.CreateDate,
+                                itemCTDCHD.DanhBo,
+                                itemCTDCHD.GiaBieu,
+                                itemCTDCHD.GiaBieu_BD,
+                                itemCTDCHD.DinhMuc,
+                                itemCTDCHD.DinhMuc_BD,
+                                itemCTDCHD.TieuThu,
+                                itemCTDCHD.TieuThu_BD,
+                                itemCTDCHD.TongCong_Start,
+                                itemCTDCHD.TongCong_End,
+                                itemCTDCHD.TongCong_BD,
+                                itemCTDCHD.TangGiam,
+                                itemCTDCHD.PhieuDuocKy,
+                                itemCTDCHD.NguoiKy,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1680,37 +1691,37 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable LoadDSCTDCHDByMaDon(int CreateBy,decimal MaDon)
+        public DataTable LoadDSCTDCHDByMaDon(int CreateBy, decimal MaDon)
         {
             try
             {
-                    var query = from itemCTDCHD in db.CTDCHDs
-                                join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
-                                from itemtableND in tableND.DefaultIfEmpty()
-                                where itemCTDCHD.CreateBy==CreateBy &&( itemCTDCHD.DCBD.MaDon == MaDon || itemCTDCHD.DCBD.MaDonTXL == MaDon)
-                                orderby itemCTDCHD.CreateDate ascending
-                                select new
-                                {
-                                    In = false,
-                                    SoPhieu = itemCTDCHD.MaCTDCHD,
-                                    DieuChinh = "Hóa Đơn",
-                                    itemCTDCHD.CreateDate,
-                                    itemCTDCHD.DanhBo,
-                                    itemCTDCHD.GiaBieu,
-                                    itemCTDCHD.GiaBieu_BD,
-                                    itemCTDCHD.DinhMuc,
-                                    itemCTDCHD.DinhMuc_BD,
-                                    itemCTDCHD.TieuThu,
-                                    itemCTDCHD.TieuThu_BD,
-                                    itemCTDCHD.TongCong_Start,
-                                    itemCTDCHD.TongCong_End,
-                                    itemCTDCHD.TongCong_BD,
-                                    itemCTDCHD.TangGiam,
-                                    itemCTDCHD.PhieuDuocKy,
-                                    itemCTDCHD.NguoiKy,
-                                    CreateBy = itemtableND.HoTen,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCHD in db.CTDCHDs
+                            join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemCTDCHD.CreateBy == CreateBy && (itemCTDCHD.DCBD.MaDon == MaDon || itemCTDCHD.DCBD.MaDonTXL == MaDon)
+                            orderby itemCTDCHD.CreateDate ascending
+                            select new
+                            {
+                                In = false,
+                                SoPhieu = itemCTDCHD.MaCTDCHD,
+                                DieuChinh = "Hóa Đơn",
+                                itemCTDCHD.CreateDate,
+                                itemCTDCHD.DanhBo,
+                                itemCTDCHD.GiaBieu,
+                                itemCTDCHD.GiaBieu_BD,
+                                itemCTDCHD.DinhMuc,
+                                itemCTDCHD.DinhMuc_BD,
+                                itemCTDCHD.TieuThu,
+                                itemCTDCHD.TieuThu_BD,
+                                itemCTDCHD.TongCong_Start,
+                                itemCTDCHD.TongCong_End,
+                                itemCTDCHD.TongCong_BD,
+                                itemCTDCHD.TangGiam,
+                                itemCTDCHD.PhieuDuocKy,
+                                itemCTDCHD.NguoiKy,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1723,36 +1734,36 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCHD in db.CTDCHDs
-                                join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
-                                from itemtableND in tableND.DefaultIfEmpty()
-                                where itemCTDCHD.CreateBy == CreateBy && (((itemCTDCHD.DCBD.MaDon.Value.ToString().Substring(itemCTDCHD.DCBD.MaDon.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCHD.DCBD.MaDon.Value.ToString().Substring(itemCTDCHD.DCBD.MaDon.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
-                                && (itemCTDCHD.DCBD.MaDon >= TuMaDon && itemCTDCHD.DCBD.MaDon <= DenMaDon))
-                                || ((itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
-                                && (itemCTDCHD.DCBD.MaDonTXL >= TuMaDon && itemCTDCHD.DCBD.MaDonTXL <= DenMaDon)))
-                                orderby itemCTDCHD.CreateDate ascending
-                                select new
-                                {
-                                    In = false,
-                                    SoPhieu = itemCTDCHD.MaCTDCHD,
-                                    DieuChinh = "Hóa Đơn",
-                                    itemCTDCHD.CreateDate,
-                                    itemCTDCHD.DanhBo,
-                                    itemCTDCHD.GiaBieu,
-                                    itemCTDCHD.GiaBieu_BD,
-                                    itemCTDCHD.DinhMuc,
-                                    itemCTDCHD.DinhMuc_BD,
-                                    itemCTDCHD.TieuThu,
-                                    itemCTDCHD.TieuThu_BD,
-                                    itemCTDCHD.TongCong_Start,
-                                    itemCTDCHD.TongCong_End,
-                                    itemCTDCHD.TongCong_BD,
-                                    itemCTDCHD.TangGiam,
-                                    itemCTDCHD.PhieuDuocKy,
-                                    itemCTDCHD.NguoiKy,
-                                    CreateBy = itemtableND.HoTen,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCHD in db.CTDCHDs
+                            join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemCTDCHD.CreateBy == CreateBy && (((itemCTDCHD.DCBD.MaDon.Value.ToString().Substring(itemCTDCHD.DCBD.MaDon.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCHD.DCBD.MaDon.Value.ToString().Substring(itemCTDCHD.DCBD.MaDon.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
+                            && (itemCTDCHD.DCBD.MaDon >= TuMaDon && itemCTDCHD.DCBD.MaDon <= DenMaDon))
+                            || ((itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
+                            && (itemCTDCHD.DCBD.MaDonTXL >= TuMaDon && itemCTDCHD.DCBD.MaDonTXL <= DenMaDon)))
+                            orderby itemCTDCHD.CreateDate ascending
+                            select new
+                            {
+                                In = false,
+                                SoPhieu = itemCTDCHD.MaCTDCHD,
+                                DieuChinh = "Hóa Đơn",
+                                itemCTDCHD.CreateDate,
+                                itemCTDCHD.DanhBo,
+                                itemCTDCHD.GiaBieu,
+                                itemCTDCHD.GiaBieu_BD,
+                                itemCTDCHD.DinhMuc,
+                                itemCTDCHD.DinhMuc_BD,
+                                itemCTDCHD.TieuThu,
+                                itemCTDCHD.TieuThu_BD,
+                                itemCTDCHD.TongCong_Start,
+                                itemCTDCHD.TongCong_End,
+                                itemCTDCHD.TongCong_BD,
+                                itemCTDCHD.TangGiam,
+                                itemCTDCHD.PhieuDuocKy,
+                                itemCTDCHD.NguoiKy,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1765,34 +1776,34 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCHD in db.CTDCHDs
-                                join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
-                                from itemtableND in tableND.DefaultIfEmpty()
-                                where itemCTDCHD.CreateBy == CreateBy && itemCTDCHD.MaCTDCHD == SoPhieu
-                                orderby itemCTDCHD.CreateDate ascending
-                                select new
-                                {
-                                    In = false,
-                                    SoPhieu = itemCTDCHD.MaCTDCHD,
-                                    Ma = itemCTDCHD.MaCTDCHD,
-                                    DieuChinh = "Hóa Đơn",
-                                    itemCTDCHD.CreateDate,
-                                    itemCTDCHD.DanhBo,
-                                    itemCTDCHD.GiaBieu,
-                                    itemCTDCHD.GiaBieu_BD,
-                                    itemCTDCHD.DinhMuc,
-                                    itemCTDCHD.DinhMuc_BD,
-                                    itemCTDCHD.TieuThu,
-                                    itemCTDCHD.TieuThu_BD,
-                                    itemCTDCHD.TongCong_Start,
-                                    itemCTDCHD.TongCong_End,
-                                    itemCTDCHD.TongCong_BD,
-                                    itemCTDCHD.TangGiam,
-                                    itemCTDCHD.PhieuDuocKy,
-                                    itemCTDCHD.NguoiKy,
-                                    CreateBy = itemtableND.HoTen,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCHD in db.CTDCHDs
+                            join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemCTDCHD.CreateBy == CreateBy && itemCTDCHD.MaCTDCHD == SoPhieu
+                            orderby itemCTDCHD.CreateDate ascending
+                            select new
+                            {
+                                In = false,
+                                SoPhieu = itemCTDCHD.MaCTDCHD,
+                                Ma = itemCTDCHD.MaCTDCHD,
+                                DieuChinh = "Hóa Đơn",
+                                itemCTDCHD.CreateDate,
+                                itemCTDCHD.DanhBo,
+                                itemCTDCHD.GiaBieu,
+                                itemCTDCHD.GiaBieu_BD,
+                                itemCTDCHD.DinhMuc,
+                                itemCTDCHD.DinhMuc_BD,
+                                itemCTDCHD.TieuThu,
+                                itemCTDCHD.TieuThu_BD,
+                                itemCTDCHD.TongCong_Start,
+                                itemCTDCHD.TongCong_End,
+                                itemCTDCHD.TongCong_BD,
+                                itemCTDCHD.TangGiam,
+                                itemCTDCHD.PhieuDuocKy,
+                                itemCTDCHD.NguoiKy,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1805,35 +1816,35 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCHD in db.CTDCHDs
-                                join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
-                                from itemtableND in tableND.DefaultIfEmpty()
-                                where itemCTDCHD.CreateBy == CreateBy && itemCTDCHD.MaCTDCHD.ToString().Substring(itemCTDCHD.MaCTDCHD.ToString().Length - 2, 2) == TuSoPhieu.ToString().Substring(TuSoPhieu.ToString().Length - 2, 2)
-                                && itemCTDCHD.MaCTDCHD.ToString().Substring(itemCTDCHD.MaCTDCHD.ToString().Length - 2, 2) == DenSoPhieu.ToString().Substring(DenSoPhieu.ToString().Length - 2, 2)
-                                && itemCTDCHD.MaCTDCHD >= TuSoPhieu && itemCTDCHD.MaCTDCHD <= DenSoPhieu
-                                orderby itemCTDCHD.CreateDate ascending
-                                select new
-                                {
-                                    In = false,
-                                    SoPhieu = itemCTDCHD.MaCTDCHD,
-                                    DieuChinh = "Hóa Đơn",
-                                    itemCTDCHD.CreateDate,
-                                    itemCTDCHD.DanhBo,
-                                    itemCTDCHD.GiaBieu,
-                                    itemCTDCHD.GiaBieu_BD,
-                                    itemCTDCHD.DinhMuc,
-                                    itemCTDCHD.DinhMuc_BD,
-                                    itemCTDCHD.TieuThu,
-                                    itemCTDCHD.TieuThu_BD,
-                                    itemCTDCHD.TongCong_Start,
-                                    itemCTDCHD.TongCong_End,
-                                    itemCTDCHD.TongCong_BD,
-                                    itemCTDCHD.TangGiam,
-                                    itemCTDCHD.PhieuDuocKy,
-                                    itemCTDCHD.NguoiKy,
-                                    CreateBy = itemtableND.HoTen,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCHD in db.CTDCHDs
+                            join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemCTDCHD.CreateBy == CreateBy && itemCTDCHD.MaCTDCHD.ToString().Substring(itemCTDCHD.MaCTDCHD.ToString().Length - 2, 2) == TuSoPhieu.ToString().Substring(TuSoPhieu.ToString().Length - 2, 2)
+                            && itemCTDCHD.MaCTDCHD.ToString().Substring(itemCTDCHD.MaCTDCHD.ToString().Length - 2, 2) == DenSoPhieu.ToString().Substring(DenSoPhieu.ToString().Length - 2, 2)
+                            && itemCTDCHD.MaCTDCHD >= TuSoPhieu && itemCTDCHD.MaCTDCHD <= DenSoPhieu
+                            orderby itemCTDCHD.CreateDate ascending
+                            select new
+                            {
+                                In = false,
+                                SoPhieu = itemCTDCHD.MaCTDCHD,
+                                DieuChinh = "Hóa Đơn",
+                                itemCTDCHD.CreateDate,
+                                itemCTDCHD.DanhBo,
+                                itemCTDCHD.GiaBieu,
+                                itemCTDCHD.GiaBieu_BD,
+                                itemCTDCHD.DinhMuc,
+                                itemCTDCHD.DinhMuc_BD,
+                                itemCTDCHD.TieuThu,
+                                itemCTDCHD.TieuThu_BD,
+                                itemCTDCHD.TongCong_Start,
+                                itemCTDCHD.TongCong_End,
+                                itemCTDCHD.TongCong_BD,
+                                itemCTDCHD.TangGiam,
+                                itemCTDCHD.PhieuDuocKy,
+                                itemCTDCHD.NguoiKy,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1846,33 +1857,33 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCHD in db.CTDCHDs
-                                join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
-                                from itemtableND in tableND.DefaultIfEmpty()
-                                where itemCTDCHD.CreateBy == CreateBy && itemCTDCHD.DanhBo == DanhBo
-                                orderby itemCTDCHD.CreateDate ascending
-                                select new
-                                {
-                                    In = false,
-                                    SoPhieu = itemCTDCHD.MaCTDCHD,
-                                    DieuChinh = "Hóa Đơn",
-                                    itemCTDCHD.CreateDate,
-                                    itemCTDCHD.DanhBo,
-                                    itemCTDCHD.GiaBieu,
-                                    itemCTDCHD.GiaBieu_BD,
-                                    itemCTDCHD.DinhMuc,
-                                    itemCTDCHD.DinhMuc_BD,
-                                    itemCTDCHD.TieuThu,
-                                    itemCTDCHD.TieuThu_BD,
-                                    itemCTDCHD.TongCong_Start,
-                                    itemCTDCHD.TongCong_End,
-                                    itemCTDCHD.TongCong_BD,
-                                    itemCTDCHD.TangGiam,
-                                    itemCTDCHD.PhieuDuocKy,
-                                    itemCTDCHD.NguoiKy,
-                                    CreateBy = itemtableND.HoTen,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCHD in db.CTDCHDs
+                            join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemCTDCHD.CreateBy == CreateBy && itemCTDCHD.DanhBo == DanhBo
+                            orderby itemCTDCHD.CreateDate ascending
+                            select new
+                            {
+                                In = false,
+                                SoPhieu = itemCTDCHD.MaCTDCHD,
+                                DieuChinh = "Hóa Đơn",
+                                itemCTDCHD.CreateDate,
+                                itemCTDCHD.DanhBo,
+                                itemCTDCHD.GiaBieu,
+                                itemCTDCHD.GiaBieu_BD,
+                                itemCTDCHD.DinhMuc,
+                                itemCTDCHD.DinhMuc_BD,
+                                itemCTDCHD.TieuThu,
+                                itemCTDCHD.TieuThu_BD,
+                                itemCTDCHD.TongCong_Start,
+                                itemCTDCHD.TongCong_End,
+                                itemCTDCHD.TongCong_BD,
+                                itemCTDCHD.TangGiam,
+                                itemCTDCHD.PhieuDuocKy,
+                                itemCTDCHD.NguoiKy,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1885,31 +1896,31 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCHD in db.CTDCHDs
-                                where itemCTDCHD.CreateBy==CreateBy &&itemCTDCHD.CreateDate.Value.Date == TuNgay.Date
-                                orderby itemCTDCHD.CreateDate ascending
-                                select new
-                                {
-                                    In = false,
-                                    SoPhieu = itemCTDCHD.MaCTDCHD,
-                                    DieuChinh = "Hóa Đơn",
-                                    itemCTDCHD.CreateDate,
-                                    itemCTDCHD.DanhBo,
-                                    itemCTDCHD.GiaBieu,
-                                    itemCTDCHD.GiaBieu_BD,
-                                    itemCTDCHD.DinhMuc,
-                                    itemCTDCHD.DinhMuc_BD,
-                                    itemCTDCHD.TieuThu,
-                                    itemCTDCHD.TieuThu_BD,
-                                    itemCTDCHD.TongCong_Start,
-                                    itemCTDCHD.TongCong_End,
-                                    itemCTDCHD.TongCong_BD,
-                                    itemCTDCHD.TangGiam,
-                                    itemCTDCHD.PhieuDuocKy,
-                                    itemCTDCHD.NguoiKy,
-                                    itemCTDCHD.CreateBy,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCHD in db.CTDCHDs
+                            where itemCTDCHD.CreateBy == CreateBy && itemCTDCHD.CreateDate.Value.Date == TuNgay.Date
+                            orderby itemCTDCHD.CreateDate ascending
+                            select new
+                            {
+                                In = false,
+                                SoPhieu = itemCTDCHD.MaCTDCHD,
+                                DieuChinh = "Hóa Đơn",
+                                itemCTDCHD.CreateDate,
+                                itemCTDCHD.DanhBo,
+                                itemCTDCHD.GiaBieu,
+                                itemCTDCHD.GiaBieu_BD,
+                                itemCTDCHD.DinhMuc,
+                                itemCTDCHD.DinhMuc_BD,
+                                itemCTDCHD.TieuThu,
+                                itemCTDCHD.TieuThu_BD,
+                                itemCTDCHD.TongCong_Start,
+                                itemCTDCHD.TongCong_End,
+                                itemCTDCHD.TongCong_BD,
+                                itemCTDCHD.TangGiam,
+                                itemCTDCHD.PhieuDuocKy,
+                                itemCTDCHD.NguoiKy,
+                                itemCTDCHD.CreateBy,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1922,33 +1933,33 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCHD in db.CTDCHDs
-                                join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
-                                from itemtableND in tableND.DefaultIfEmpty()
-                                where itemCTDCHD.CreateBy == CreateBy && itemCTDCHD.CreateDate.Value.Date >= TuNgay.Date && itemCTDCHD.CreateDate.Value.Date <= DenNgay.Date
-                                orderby itemCTDCHD.CreateDate ascending
-                                select new
-                                {
-                                    In = false,
-                                    SoPhieu = itemCTDCHD.MaCTDCHD,
-                                    DieuChinh = "Hóa Đơn",
-                                    itemCTDCHD.CreateDate,
-                                    itemCTDCHD.DanhBo,
-                                    itemCTDCHD.GiaBieu,
-                                    itemCTDCHD.GiaBieu_BD,
-                                    itemCTDCHD.DinhMuc,
-                                    itemCTDCHD.DinhMuc_BD,
-                                    itemCTDCHD.TieuThu,
-                                    itemCTDCHD.TieuThu_BD,
-                                    itemCTDCHD.TongCong_Start,
-                                    itemCTDCHD.TongCong_End,
-                                    itemCTDCHD.TongCong_BD,
-                                    itemCTDCHD.TangGiam,
-                                    itemCTDCHD.PhieuDuocKy,
-                                    itemCTDCHD.NguoiKy,
-                                    CreateBy = itemtableND.HoTen,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCHD in db.CTDCHDs
+                            join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemCTDCHD.CreateBy == CreateBy && itemCTDCHD.CreateDate.Value.Date >= TuNgay.Date && itemCTDCHD.CreateDate.Value.Date <= DenNgay.Date
+                            orderby itemCTDCHD.CreateDate ascending
+                            select new
+                            {
+                                In = false,
+                                SoPhieu = itemCTDCHD.MaCTDCHD,
+                                DieuChinh = "Hóa Đơn",
+                                itemCTDCHD.CreateDate,
+                                itemCTDCHD.DanhBo,
+                                itemCTDCHD.GiaBieu,
+                                itemCTDCHD.GiaBieu_BD,
+                                itemCTDCHD.DinhMuc,
+                                itemCTDCHD.DinhMuc_BD,
+                                itemCTDCHD.TieuThu,
+                                itemCTDCHD.TieuThu_BD,
+                                itemCTDCHD.TongCong_Start,
+                                itemCTDCHD.TongCong_End,
+                                itemCTDCHD.TongCong_BD,
+                                itemCTDCHD.TangGiam,
+                                itemCTDCHD.PhieuDuocKy,
+                                itemCTDCHD.NguoiKy,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -1965,31 +1976,31 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCHD in db.CTDCHDs
-                                where itemCTDCHD.CreateDate.Value.Date == TuNgay.Date
-                                select new
-                                {
-                                    In = false,
-                                    SoPhieu = itemCTDCHD.MaCTDCHD,
-                                    Ma = itemCTDCHD.MaCTDCHD,
-                                    DieuChinh = "Hóa Đơn",
-                                    itemCTDCHD.CreateDate,
-                                    itemCTDCHD.DanhBo,
-                                    itemCTDCHD.HoTen,
-                                    itemCTDCHD.GiaBieu,
-                                    itemCTDCHD.GiaBieu_BD,
-                                    itemCTDCHD.DinhMuc,
-                                    itemCTDCHD.DinhMuc_BD,
-                                    itemCTDCHD.TieuThu,
-                                    itemCTDCHD.TieuThu_BD,
-                                    itemCTDCHD.TongCong_Start,
-                                    itemCTDCHD.TongCong_End,
-                                    itemCTDCHD.TongCong_BD,
-                                    itemCTDCHD.TangGiam,
-                                    itemCTDCHD.PhieuDuocKy,
-                                    itemCTDCHD.NguoiKy,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCHD in db.CTDCHDs
+                            where itemCTDCHD.CreateDate.Value.Date == TuNgay.Date
+                            select new
+                            {
+                                In = false,
+                                SoPhieu = itemCTDCHD.MaCTDCHD,
+                                Ma = itemCTDCHD.MaCTDCHD,
+                                DieuChinh = "Hóa Đơn",
+                                itemCTDCHD.CreateDate,
+                                itemCTDCHD.DanhBo,
+                                itemCTDCHD.HoTen,
+                                itemCTDCHD.GiaBieu,
+                                itemCTDCHD.GiaBieu_BD,
+                                itemCTDCHD.DinhMuc,
+                                itemCTDCHD.DinhMuc_BD,
+                                itemCTDCHD.TieuThu,
+                                itemCTDCHD.TieuThu_BD,
+                                itemCTDCHD.TongCong_Start,
+                                itemCTDCHD.TongCong_End,
+                                itemCTDCHD.TongCong_BD,
+                                itemCTDCHD.TangGiam,
+                                itemCTDCHD.PhieuDuocKy,
+                                itemCTDCHD.NguoiKy,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -2006,31 +2017,31 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    var query = from itemCTDCHD in db.CTDCHDs
-                                where itemCTDCHD.CreateDate.Value.Date >= TuNgay.Date && itemCTDCHD.CreateDate.Value.Date <= DenNgay.Date
-                                select new
-                                {
-                                    In = false,
-                                    SoPhieu = itemCTDCHD.MaCTDCHD,
-                                    Ma = itemCTDCHD.MaCTDCHD,
-                                    DieuChinh = "Hóa Đơn",
-                                    itemCTDCHD.CreateDate,
-                                    itemCTDCHD.DanhBo,
-                                    itemCTDCHD.HoTen,
-                                    itemCTDCHD.GiaBieu,
-                                    itemCTDCHD.GiaBieu_BD,
-                                    itemCTDCHD.DinhMuc,
-                                    itemCTDCHD.DinhMuc_BD,
-                                    itemCTDCHD.TieuThu,
-                                    itemCTDCHD.TieuThu_BD,
-                                    itemCTDCHD.TongCong_Start,
-                                    itemCTDCHD.TongCong_End,
-                                    itemCTDCHD.TongCong_BD,
-                                    itemCTDCHD.TangGiam,
-                                    itemCTDCHD.PhieuDuocKy,
-                                    itemCTDCHD.NguoiKy,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemCTDCHD in db.CTDCHDs
+                            where itemCTDCHD.CreateDate.Value.Date >= TuNgay.Date && itemCTDCHD.CreateDate.Value.Date <= DenNgay.Date
+                            select new
+                            {
+                                In = false,
+                                SoPhieu = itemCTDCHD.MaCTDCHD,
+                                Ma = itemCTDCHD.MaCTDCHD,
+                                DieuChinh = "Hóa Đơn",
+                                itemCTDCHD.CreateDate,
+                                itemCTDCHD.DanhBo,
+                                itemCTDCHD.HoTen,
+                                itemCTDCHD.GiaBieu,
+                                itemCTDCHD.GiaBieu_BD,
+                                itemCTDCHD.DinhMuc,
+                                itemCTDCHD.DinhMuc_BD,
+                                itemCTDCHD.TieuThu,
+                                itemCTDCHD.TieuThu_BD,
+                                itemCTDCHD.TongCong_Start,
+                                itemCTDCHD.TongCong_End,
+                                itemCTDCHD.TongCong_BD,
+                                itemCTDCHD.TangGiam,
+                                itemCTDCHD.PhieuDuocKy,
+                                itemCTDCHD.NguoiKy,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -2043,7 +2054,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    return LINQToDataTable(db.CTDCHDs.Where(itemCTDCHD => itemCTDCHD.DanhBo == DanhBo && itemCTDCHD.Nam == Nam && itemCTDCHD.Ky == Ky).ToList());
+                return LINQToDataTable(db.CTDCHDs.Where(itemCTDCHD => itemCTDCHD.DanhBo == DanhBo && itemCTDCHD.Nam == Nam && itemCTDCHD.Ky == Ky).ToList());
             }
             catch (Exception ex)
             {
@@ -2071,11 +2082,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         /// <param name="MaDon"></param>
         /// <param name="DanhBo"></param>
         /// <returns></returns>
-        public bool CheckCTDCHDbyMaDonDanhBo(decimal MaDon, string DanhBo,string KyHD)
+        public bool CheckCTDCHDbyMaDonDanhBo(decimal MaDon, string DanhBo, string KyHD)
         {
             try
             {
-                return db.CTDCHDs.Any(itemCTDCHD => itemCTDCHD.DCBD.MaDon == MaDon && itemCTDCHD.DanhBo == DanhBo&&itemCTDCHD.KyHD==KyHD);
+                return db.CTDCHDs.Any(itemCTDCHD => itemCTDCHD.DCBD.MaDon == MaDon && itemCTDCHD.DanhBo == DanhBo && itemCTDCHD.KyHD == KyHD);
             }
             catch (Exception ex)
             {
@@ -2090,17 +2101,22 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         /// <param name="MaDonTXL"></param>
         /// <param name="DanhBo"></param>
         /// <returns></returns>
-        public bool CheckCTDCHDbyMaDonDanhBo_TXL(decimal MaDonTXL, string DanhBo,string KyHD)
+        public bool CheckCTDCHDbyMaDonDanhBo_TXL(decimal MaDonTXL, string DanhBo, string KyHD)
         {
             try
             {
-                return db.CTDCHDs.Any(itemCTDCHD => itemCTDCHD.DCBD.MaDonTXL == MaDonTXL && itemCTDCHD.DanhBo == DanhBo&&itemCTDCHD.KyHD==KyHD);
+                return db.CTDCHDs.Any(itemCTDCHD => itemCTDCHD.DCBD.MaDonTXL == MaDonTXL && itemCTDCHD.DanhBo == DanhBo && itemCTDCHD.KyHD == KyHD);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+        }
+
+        public bool CheckExist_DCHD(decimal MaCTDCHD)
+        {
+            return db.CTDCHDs.Any(item => item.MaCTDCHD == MaCTDCHD);
         }
 
         #endregion

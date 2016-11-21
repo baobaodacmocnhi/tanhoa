@@ -6,15 +6,13 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.DAL.DieuChinhBienDong;
+using KTKS_DonKH.DAL;
+using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.DieuChinhBienDong;
 using KTKS_DonKH.GUI.BaoCao;
-using KTKS_DonKH.DAL.KhachHang;
-using KTKS_DonKH.DAL.CapNhat;
-using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -26,7 +24,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         //HOADON _hoadon = null;
         CThuTien _cThuTien = new CThuTien();
         CChungTu _cChungTu = new CChungTu();
-        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CDocSo _cDocSo = new CDocSo();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
 
         public frmCatChuyenDM()
@@ -71,7 +69,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             txtDanhBo_Nhan.Text = hoadon.DANHBA;
             txtHoTen_Nhan.Text = hoadon.TENKH;
-            txtDiaChi_Nhan.Text = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+            txtDiaChi_Nhan.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
         }
 
         public void Clear()

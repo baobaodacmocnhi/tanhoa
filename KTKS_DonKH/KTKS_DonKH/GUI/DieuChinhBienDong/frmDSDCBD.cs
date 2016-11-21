@@ -26,6 +26,7 @@ using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.GUI.BaoCao;
 using System.Globalization;
 using System.Transactions;
+using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -683,7 +684,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (MessageBox.Show("Bạn chắc chắn Cập Nhật Đọc Số những Phiếu trên?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 if (radDSDCBD.Checked)
                 {
-                    CDuLieuKhachHang _cDLKH = new CDuLieuKhachHang();
+                    CDocSo _cDocSo = new CDocSo();
                     int k = 0;
                     System.IO.StreamWriter log = System.IO.File.AppendText("\\\\192.168.90.9\\cntt\\BaoBao\\KTKS_DonKH\\log.txt");
                     //try
@@ -697,23 +698,23 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                             if (ctdcbd != null)
                             {
-                                if (_cDLKH.CheckExist(ctdcbd.DanhBo) && !string.IsNullOrEmpty(ctdcbd.ThongTin))
+                                if (_cDocSo.CheckExist(ctdcbd.DanhBo) && !string.IsNullOrEmpty(ctdcbd.ThongTin))
                                 {
                                     if (!string.IsNullOrEmpty(ctdcbd.DinhMuc_BD.ToString()))
                                     {
-                                        _cDLKH.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set DINHMUC=" + ctdcbd.DinhMuc_BD.Value.ToString() + " where DANHBO='" + ctdcbd.DanhBo + "'");
+                                        _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set DINHMUC=" + ctdcbd.DinhMuc_BD.Value.ToString() + " where DANHBO='" + ctdcbd.DanhBo + "'");
                                     }
                                     if (!string.IsNullOrEmpty(ctdcbd.GiaBieu_BD.ToString()))
                                     {
-                                        _cDLKH.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set GIABIEU=" + ctdcbd.GiaBieu_BD.Value.ToString() + " where DANHBO='" + ctdcbd.DanhBo + "'");
+                                        _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set GIABIEU=" + ctdcbd.GiaBieu_BD.Value.ToString() + " where DANHBO='" + ctdcbd.DanhBo + "'");
                                     }
                                     if (!string.IsNullOrEmpty(ctdcbd.HoTen_BD))
                                     {
-                                        _cDLKH.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set HOTEN=N'" + ctdcbd.HoTen_BD.ToString().Replace("'", "") + "' where DANHBO='" + ctdcbd.DanhBo + "'");
+                                        _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set HOTEN=N'" + ctdcbd.HoTen_BD.ToString().Replace("'", "") + "' where DANHBO='" + ctdcbd.DanhBo + "'");
                                     }
                                     if (!string.IsNullOrEmpty(ctdcbd.MSThue_BD))
                                     {
-                                        _cDLKH.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set MSTHUE=" + ctdcbd.MSThue_BD.ToString() + " where DANHBO='" + ctdcbd.DanhBo + "'");
+                                        _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set MSTHUE=" + ctdcbd.MSThue_BD.ToString() + " where DANHBO='" + ctdcbd.DanhBo + "'");
                                     }
 
                                     TB_GHICHU ghichu = new TB_GHICHU();
@@ -744,7 +745,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     }
 
                                     string sqlGhiChu = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + ghichu.DANHBO + "','" + ghichu.DONVI + "',N'" + ghichu.NOIDUNG + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',N'" + CTaiKhoan.HoTen + "')";
-                                    if (_cDLKH.LinQ_ExecuteNonQuery(sqlGhiChu))
+                                    if (_cDocSo.LinQ_ExecuteNonQuery(sqlGhiChu))
                                     {
                                         ctdcbd.ChuyenDocSo = true;
                                         ctdcbd.NgayChuyenDocSo = DateTime.Now;

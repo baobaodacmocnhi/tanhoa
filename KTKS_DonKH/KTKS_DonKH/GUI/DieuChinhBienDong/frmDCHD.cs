@@ -32,7 +32,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CDCBD _cDCBD = new CDCBD();
         CKTXM _cKTXM = new CKTXM();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
-        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CDocSo _cDocSo = new CDocSo();
         CThuTien _cThuTien = new CThuTien();
         int _TieuThu_DieuChinhGia = 0;
         List<GiaNuoc> lstGiaNuoc;
@@ -521,7 +521,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                             txtDanhBo.Text = _hoadon.DANHBA;
                             txtHoTen.Text = _hoadon.TENKH;
-                            txtDiaChi.Text = _hoadon.SO + " " + _hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(_hoadon.Quan, _hoadon.Phuong);
+                            txtDiaChi.Text = _hoadon.SO + " " + _hoadon.DUONG + _cDocSo.getPhuongQuanByID(_hoadon.Quan, _hoadon.Phuong);
                             if (_hoadon.GB != null)
                                 txtGiaBieu_Cu.Text = txtGiaBieu_Moi.Text = _hoadon.GB.ToString();
                             else
@@ -553,7 +553,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                             txtDanhBo.Text = _hoadon.DANHBA;
                             txtHoTen.Text = _hoadon.TENKH;
-                            txtDiaChi.Text = _hoadon.SO + " " + _hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(_hoadon.Quan, _hoadon.Phuong);
+                            txtDiaChi.Text = _hoadon.SO + " " + _hoadon.DUONG + _cDocSo.getPhuongQuanByID(_hoadon.Quan, _hoadon.Phuong);
                             if (_hoadon.GB != null)
                                 txtGiaBieu_Cu.Text = txtGiaBieu_Moi.Text = _hoadon.GB.ToString();
                             else
@@ -777,7 +777,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 txtDanhBo.Text = hoadon.DANHBA;
                 txtHoTen.Text = hoadon.TENKH;
-                txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cPhuongQuan.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+                txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
                 if (hoadon.GB != null)
                     txtGiaBieu_Cu.Text = txtGiaBieu_Moi.Text = hoadon.GB.ToString();
                 else

@@ -41,7 +41,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -59,7 +59,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -202,7 +202,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -220,7 +220,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -229,7 +229,10 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
         {
             try
             {
+                decimal ID = cttttl.MaTTTL;
                 db.CTTTTLs.DeleteOnSubmit(cttttl);
+                if (db.CTTTTLs.Any(item => item.MaTTTL == ID) == false)
+                    db.TTTLs.DeleteOnSubmit(db.TTTLs.SingleOrDefault(item => item.MaTTTL == ID));
                 db.SubmitChanges();
                 //MessageBox.Show("Thành công Sửa CTTTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
@@ -237,7 +240,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -340,6 +343,11 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+        }
+
+        public bool CheckExist(decimal MaCTTTTL)
+        {
+            return db.CTTTTLs.Any(item => item.MaCTTTTL == MaCTTTTL);
         }
 
         public DataTable GetLichSuCTByDanhBo(string DanhBo)
