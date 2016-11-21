@@ -581,7 +581,7 @@ namespace KTKS_ChungCu
                             dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_STT(txtDanhBo.Text.Trim(), txtLo.Text.Trim(), int.Parse(txtNoiDungTimKiem.Text.Trim()));
                     break;
                 case "Ngày":
-                    dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_CreateDates(dateTu.Value, dateDen.Value);
+                    dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_CreateDates(txtDanhBo.Text.Trim(), txtLo.Text.Trim(), dateTu.Value, dateDen.Value);
                     break;
                 default:
 
