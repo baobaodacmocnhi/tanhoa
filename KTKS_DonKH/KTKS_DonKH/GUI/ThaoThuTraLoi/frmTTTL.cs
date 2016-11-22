@@ -236,7 +236,10 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                                 TTTL tttl = new TTTL();
                                 tttl.ToXuLy = true;
                                 tttl.MaDonTXL = _dontxl.MaDon;
-                                _cTTTL.Them(tttl);
+                                if (_cTTTL.Them(tttl))
+                                {
+                                    _dontxl.DaGiaiQuyet = true;
+                                }
                             }
                             if (_cTTTL.CheckCTByMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim(), DateTime.Now))
                             {
@@ -303,7 +306,10 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                             {
                                 TTTL tttl = new TTTL();
                                 tttl.MaDon = _donkh.MaDon;
-                                _cTTTL.Them(tttl);
+                                if (_cTTTL.Them(tttl))
+                                {
+                                    _donkh.DaGiaiQuyet = true;
+                                }
                             }
                             if (_cTTTL.CheckCTByMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim(), DateTime.Now))
                             {

@@ -264,6 +264,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                                 if (_cCHDB.ThemYeuCauCHDB(ycchdb))
                                 {
+                                    _dontxl.DaGiaiQuyet = true;
                                     Clear();
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     txtMaDon.Focus();
@@ -310,6 +311,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                                 if (_cCHDB.ThemYeuCauCHDB(ycchdb))
                                 {
+                                    _donkh.DaGiaiQuyet = true;
                                     Clear();
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     txtMaDon.Focus();

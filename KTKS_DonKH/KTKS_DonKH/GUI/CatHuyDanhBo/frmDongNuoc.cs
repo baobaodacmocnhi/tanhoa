@@ -298,6 +298,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
                                     dongnuoc.MaDonTXL = _dontxl.MaDon;
                                     if (_cDongNuoc.Them(dongnuoc))
                                     {
+                                        _dontxl.DaGiaiQuyet = true;
                                     }
                                 }
                                 if (_cDongNuoc.CheckCTByMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim()))
@@ -352,6 +353,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
                                     dongnuoc.MaDon = _donkh.MaDon;
                                     if (_cDongNuoc.Them(dongnuoc))
                                     {
+                                        _donkh.DaGiaiQuyet = true;
                                     }
                                 }
                                 if (_cDongNuoc.CheckCTByMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim()))

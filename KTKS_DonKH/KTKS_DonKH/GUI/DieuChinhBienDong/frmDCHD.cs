@@ -280,6 +280,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dcbd.MaDonTXL = _dontxl.MaDon;
                                 if (_cDCBD.ThemDCBD(dcbd))
                                 {
+                                    _dontxl.DaGiaiQuyet = true;
                                 }
                             }
                             if (_cDCBD.CheckCTDCHDbyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim(),txtKyHD.Text.Trim()))
@@ -392,6 +393,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dcbd.MaDon = _donkh.MaDon;
                                 if (_cDCBD.ThemDCBD(dcbd))
                                 {
+                                    _donkh.DaGiaiQuyet = true;
                                 }
                             }
                             if (_cDCBD.CheckCTDCHDbyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim(), txtKyHD.Text.Trim()))

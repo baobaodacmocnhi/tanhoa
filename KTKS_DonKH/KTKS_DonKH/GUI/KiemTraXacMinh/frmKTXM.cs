@@ -259,6 +259,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
                             if (_cKTXM.ThemKTXM(ktxm))
                             {
+                                _dontxl.DaGiaiQuyet = true;
                             }
                         }
                         if (txtDanhBo.Text.Trim()!="" &&_cKTXM.CheckCTKTXMbyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value))
@@ -337,17 +338,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         {
                             KTXM ktxm = new KTXM();
                             ktxm.MaDon = _donkh.MaDon;
-                            //string MaNoiChuyenDen, NoiChuyenDen, LyDoChuyenDen;
-                            //_cKTXM.GetInfobyMaDon(_donkh.MaDon, out MaNoiChuyenDen, out NoiChuyenDen, out LyDoChuyenDen);
-                            //ktxm.MaNoiChuyenDen = decimal.Parse(MaNoiChuyenDen);
-                            //ktxm.NoiChuyenDen = NoiChuyenDen;
-                            //ktxm.LyDoChuyenDen = LyDoChuyenDen;
                             if (_cKTXM.ThemKTXM(ktxm))
                             {
-                                ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
-                                //DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(MaNoiChuyenDen));
-                                //donkh.Chuyen = true;
-                                //donkh.MaChuyen = "KTXM";
+                                _donkh.DaGiaiQuyet = true;
                             }
                         }
                         if (_cKTXM.CheckCTKTXMbyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value))

@@ -271,6 +271,7 @@ namespace KTKS_DonKH.GUI.BamChi
 
                                 if (_cBamChi.ThemBamChi(bamchi))
                                 {
+                                    _dontxl.DaGiaiQuyet = true;
                                 }
                             }
                             if (txtDanhBo.Text.Trim() != "" && _cBamChi.CheckCTBamChibyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim(), dateBamChi.Value))
@@ -356,6 +357,7 @@ namespace KTKS_DonKH.GUI.BamChi
 
                                 if (_cBamChi.ThemBamChi(bamchi))
                                 {
+                                    _donkh.DaGiaiQuyet = true;
                                 }
                             }
                             if (_cBamChi.CheckCTBamChibyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim(), dateBamChi.Value))

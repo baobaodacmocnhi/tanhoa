@@ -357,6 +357,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 chdb.MaDonTXL = _dontxl.MaDon;
                                 if (_cCHDB.ThemCHDB(chdb))
                                 {
+                                    _dontxl.DaGiaiQuyet = true;
                                 }
                             }
                             if (_cCHDB.CheckCTCHDBbyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim()))
@@ -436,6 +437,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 chdb.MaDon = _donkh.MaDon;
                                 if (_cCHDB.ThemCHDB(chdb))
                                 {
+                                    _donkh.DaGiaiQuyet = true;
                                 }
                             }
                             if (_cCHDB.CheckCTCHDBbyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim()))
