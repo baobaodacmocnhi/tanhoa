@@ -142,12 +142,16 @@ namespace KTKS_DonKH.GUI.CongVan
                     else
                         item.MaDon = _madon;
                     if (!_cCongVanDi.CheckExist(item.LoaiVanBan, item.Ma, item.NoiChuyen, DateTime.Now))
-                    if (_cCongVanDi.Them(item))
                     {
-                        Clear();
-                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        btnXem.PerformClick();
+                        if (_cCongVanDi.Them(item))
+                        {
+                            Clear();
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            btnXem.PerformClick();
+                        }
                     }
+                    else
+                            MessageBox.Show("Đã có: "+item.Ma, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -274,8 +278,10 @@ namespace KTKS_DonKH.GUI.CongVan
                             item.MaDonTXL = _madon;
                         else
                             item.MaDon = _madon;
-                        if (!_cCongVanDi.CheckExist(item.LoaiVanBan, item.Ma,item.NoiChuyen, DateTime.Now))
-                        _cCongVanDi.Them(item);
+                        if (!_cCongVanDi.CheckExist(item.LoaiVanBan, item.Ma, item.NoiChuyen, DateTime.Now))
+                            _cCongVanDi.Them(item);
+                        else
+                            MessageBox.Show("Đã có: "+item.Ma, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     Clear();
                     btnXem.PerformClick();

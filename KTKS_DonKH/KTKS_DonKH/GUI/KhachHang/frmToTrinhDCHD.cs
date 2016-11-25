@@ -57,6 +57,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             dr["Ho"] = txtHo.Text.Trim();
             dr["NhanKhau"] = txtNhanKhau.Text.Trim();
             dr["Dung"] = txtDung.Text.Trim();
+            dr["XacNhanDTT"] = txtXacNhanDTT.Text.Trim();
             dr["NoKy"] = txtNoKy.Text.Trim();
             dr["TamTinh"] = txtTamTinh.Text.Trim();
             dr["DeXuat"] = txtDeXuat.Text.Trim();

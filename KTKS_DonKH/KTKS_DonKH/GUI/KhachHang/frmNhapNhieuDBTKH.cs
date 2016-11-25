@@ -193,7 +193,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                             if (item.Cells["Nam"].Value != null)
                                 donkh.Nam = item.Cells["Nam"].Value.ToString();
                             if (item.Cells["MLT"].Value != null)
-                                donkh.Nam = item.Cells["MLT"].Value.ToString();
+                                donkh.MLT = item.Cells["MLT"].Value.ToString();
                             ///
                             if (item.Cells["NguoiDi"].Value != null)
                             {
@@ -269,7 +269,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                                 if (item.Cells["NamVP"].Value != null)
                                     donkh.Nam = item.Cells["NamVP"].Value.ToString();
                                 if (item.Cells["MLTVP"].Value != null)
-                                    donkh.Nam = item.Cells["MLTVP"].Value.ToString();
+                                    donkh.MLT = item.Cells["MLTVP"].Value.ToString();
                                 ///
                                 if (item.Cells["NguoiDiVP"].Value != null)
                                 {
