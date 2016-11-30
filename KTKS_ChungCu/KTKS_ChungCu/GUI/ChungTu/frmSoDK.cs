@@ -13,7 +13,7 @@ namespace KTKS_ChungCu.GUI.ChungTu
 {
     public partial class frmSoDK : Form
     {
-        string _DanhBo = "", _MaCT = "";
+        //string _DanhBo = "", _MaCT = "";
         int _ID = 0;
         CChiNhanh _cChiNhanh = new CChiNhanh();
         //CTChungTu _ctchungtu = new CTChungTu();
@@ -36,8 +36,8 @@ namespace KTKS_ChungCu.GUI.ChungTu
         public frmSoDK(string DanhBo,string MaCT)
         {
             InitializeComponent();
-            _DanhBo = DanhBo;
-            _MaCT = MaCT;
+            //_DanhBo = DanhBo;
+            //_MaCT = MaCT;
         }
 
         private void frmSoDK_Load(object sender, EventArgs e)
@@ -54,7 +54,7 @@ namespace KTKS_ChungCu.GUI.ChungTu
                 cmbLoaiCT.DisplayMember = "TenLCT";
                 cmbLoaiCT.ValueMember = "MaLCT";
 
-                txtDanhBo.Text = _DanhBo;
+                txtDanhBo.Text = _dsct.DanhBo;
                 cmbLoaiCT.SelectedValue = _dsct.MaLCT;
                 txtMaCT.Text = _dsct.MaCT;
                 txtHoTenCT.Text = _dsct.HoTen;
