@@ -59,7 +59,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             dr["Dung"] = txtDung.Text.Trim();
             dr["XacNhanDTT"] = txtXacNhanDTT.Text.Trim();
             dr["NoKy"] = txtNoKy.Text.Trim();
-            dr["TamTinh"] = txtTamTinh.Text.Trim();
+            dr["TamTinh"] = txtTamTinh.Text.Trim()+" "+txtm3.Text.Trim();
             dr["DeXuat"] = txtDeXuat.Text.Trim();
             dr["Ky"] = txtKy.Text.Trim();
             dr["TuKy"] = txtTuKy.Text.Trim();
@@ -88,7 +88,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             dr["NhanKhau"] = txtNhanKhau.Text.Trim();
             dr["Dung"] = txtDung.Text.Trim();
             dr["NoKy"] = txtNoKy.Text.Trim();
-            dr["TamTinh"] = txtTamTinh.Text.Trim();
+            dr["TamTinh"] = txtTamTinh.Text.Trim() + " " + txtm3.Text.Trim();
             dr["DeXuat"] = txtDeXuat.Text.Trim();
             dr["Ky"] = txtKy.Text.Trim();
             dr["TuKy"] = txtTuKy.Text.Trim();

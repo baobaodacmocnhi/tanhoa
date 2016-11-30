@@ -206,7 +206,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 DataRow dr = dsBaoCaoPhieuHuy.Tables["ThongKeCHDB"].NewRow();
                 dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-                dr["LoaiCat"] = "Lập Phiếu Yêu Cầu Cắt Hủy";
+                dr["LoaiCat"] = "Lập Phiếu Hủy Danh Bộ";
                 dr["LyDo"] = itemRow["LyDo"];
                 dr["DanhBo"] = itemRow["DanhBo"];
                 //if (!string.IsNullOrEmpty(itemRow["NoiDungTroNgai"].ToString()))

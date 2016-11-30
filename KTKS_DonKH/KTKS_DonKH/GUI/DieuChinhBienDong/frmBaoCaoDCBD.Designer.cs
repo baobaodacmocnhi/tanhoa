@@ -49,6 +49,7 @@
             this.txtHieuLucKy = new System.Windows.Forms.TextBox();
             this.radDSDanhBoDMCap = new System.Windows.Forms.RadioButton();
             this.radDSDanhBoCapDMDoanThanhNien = new System.Windows.Forms.RadioButton();
+            this.radDSDanhBoDCHDCodeF2 = new System.Windows.Forms.RadioButton();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -254,12 +255,23 @@
             this.radDSDanhBoCapDMDoanThanhNien.Text = "Danh Sách Danh Bộ ĐM Cấp (Đoàn Thanh Niên)";
             this.radDSDanhBoCapDMDoanThanhNien.UseVisualStyleBackColor = true;
             // 
+            // radDSDanhBoDCHDCodeF2
+            // 
+            this.radDSDanhBoDCHDCodeF2.AutoSize = true;
+            this.radDSDanhBoDCHDCodeF2.Location = new System.Drawing.Point(295, 108);
+            this.radDSDanhBoDCHDCodeF2.Name = "radDSDanhBoDCHDCodeF2";
+            this.radDSDanhBoDCHDCodeF2.Size = new System.Drawing.Size(263, 20);
+            this.radDSDanhBoDCHDCodeF2.TabIndex = 19;
+            this.radDSDanhBoDCHDCodeF2.Text = "Danh Sách Danh Bộ ĐCHĐ (Code F2=0)";
+            this.radDSDanhBoDCHDCodeF2.UseVisualStyleBackColor = true;
+            // 
             // frmBaoCaoDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1321, 563);
+            this.Controls.Add(this.radDSDanhBoDCHDCodeF2);
             this.Controls.Add(this.radDSDanhBoCapDMDoanThanhNien);
             this.Controls.Add(this.radDSDanhBoDMCap);
             this.Controls.Add(this.txtHieuLucKy);
@@ -312,5 +324,6 @@
         private System.Windows.Forms.TextBox txtHieuLucKy;
         private System.Windows.Forms.RadioButton radDSDanhBoDMCap;
         private System.Windows.Forms.RadioButton radDSDanhBoCapDMDoanThanhNien;
+        private System.Windows.Forms.RadioButton radDSDanhBoDCHDCodeF2;
     }
 }

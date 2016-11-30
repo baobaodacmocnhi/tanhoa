@@ -62,6 +62,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.txtXacNhanDTT = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.txtm3 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtMaDon
@@ -211,9 +212,9 @@
             // 
             // txtDeXuat
             // 
-            this.txtDeXuat.Location = new System.Drawing.Point(278, 172);
+            this.txtDeXuat.Location = new System.Drawing.Point(255, 172);
             this.txtDeXuat.Name = "txtDeXuat";
-            this.txtDeXuat.Size = new System.Drawing.Size(261, 22);
+            this.txtDeXuat.Size = new System.Drawing.Size(284, 22);
             this.txtDeXuat.TabIndex = 25;
             // 
             // label9
@@ -221,13 +222,13 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(78, 175);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(194, 16);
+            this.label9.Size = new System.Drawing.Size(165, 16);
             this.label9.TabIndex = 24;
-            this.label9.Text = "Phòng Kinh doanh soát đề xuất:";
+            this.label9.Text = "Phòng Kinh doanh đề xuất:";
             // 
             // txtKy
             // 
-            this.txtKy.Location = new System.Drawing.Point(225, 200);
+            this.txtKy.Location = new System.Drawing.Point(255, 200);
             this.txtKy.Name = "txtKy";
             this.txtKy.Size = new System.Drawing.Size(100, 22);
             this.txtKy.TabIndex = 27;
@@ -341,12 +342,22 @@
             this.label15.TabIndex = 18;
             this.label15.Text = "Theo xác nhận của Đội Thu Tiền:";
             // 
+            // txtm3
+            // 
+            this.txtm3.Location = new System.Drawing.Point(545, 144);
+            this.txtm3.Name = "txtm3";
+            this.txtm3.ReadOnly = true;
+            this.txtm3.Size = new System.Drawing.Size(50, 22);
+            this.txtm3.TabIndex = 34;
+            this.txtm3.Text = "m³";
+            // 
             // frmToTrinhDCHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(906, 355);
+            this.Controls.Add(this.txtm3);
             this.Controls.Add(this.txtXacNhanDTT);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.txtCreateDate);
@@ -427,5 +438,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtXacNhanDTT;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtm3;
     }
 }

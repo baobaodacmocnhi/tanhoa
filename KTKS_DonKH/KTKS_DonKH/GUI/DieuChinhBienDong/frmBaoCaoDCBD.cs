@@ -1052,6 +1052,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
 
+                        dr["LoaiBaoCao"] = "DANH SÁCH CẤP ĐỊNH MỨC CÓ THỜI HẠN (ĐOÀN THANH NIÊN)";
                         if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
                         {
                             dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
@@ -1071,6 +1072,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             {
                                 DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
 
+                                dr["LoaiBaoCao"] = "DANH SÁCH CẤP ĐỊNH MỨC CÓ THỜI HẠN (ĐOÀN THANH NIÊN)";
                                 if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
                                 {
                                     dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
@@ -1089,10 +1091,82 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             {
                                 DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
 
+                                dr["LoaiBaoCao"] = "DANH SÁCH CẤP ĐỊNH MỨC CÓ THỜI HẠN (ĐOÀN THANH NIÊN)";
                                 if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
                                 {
                                     dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                                     dr["DinhMucCap"] = _cDocSo.GetDinhMuc(itemRow["DanhBo"].ToString());
+                                }
+                                dr["HoTen"] = itemRow["HoTen"];
+                                dr["DiaChi"] = itemRow["DiaChi"];
+                                dr["Phuong"] = _cDocSo.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                                dr["Quan"] = _cDocSo.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
+                                dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
+                            }
+                        }
+                }
+                rptDSCapDinhMucTheoDanhBo rpt = new rptDSCapDinhMucTheoDanhBo();
+                rpt.SetDataSource(dsBaoCao);
+                rpt.Subreports[0].SetDataSource(dsBaoCao);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.Show();
+            }
+
+            if (radDSDanhBoDCHDCodeF2.Checked)
+            {
+                DataTable dt = _cChungTu.LoadDSDanhBoDCHDCodeF2(dateTu.Value, dateDen.Value);
+
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                foreach (DataRow itemRow in dt.Rows)
+                {
+                    if (cmbQuan.SelectedValue.ToString() == "0")
+                    {
+                        DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
+
+                        dr["LoaiBaoCao"] = "DANH SÁCH ĐCHĐ (CODE F2=0)";
+                        if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                        {
+                            dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                            //dr["DinhMucCap"] = _cDocSo.GetDinhMuc(itemRow["DanhBo"].ToString());
+                        }
+                        dr["HoTen"] = itemRow["HoTen"];
+                        dr["DiaChi"] = itemRow["DiaChi"];
+                        dr["Phuong"] = _cDocSo.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                        dr["Quan"] = _cDocSo.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
+
+                        dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
+                    }
+                    else
+                        if (cmbPhuong.SelectedValue.ToString() == "0")
+                        {
+                            if (cmbQuan.SelectedValue.ToString() == itemRow["Quan"].ToString())
+                            {
+                                DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
+
+                                dr["LoaiBaoCao"] = "DANH SÁCH ĐCHĐ (CODE F2=0)";
+                                if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                                {
+                                    dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                                    //dr["DinhMucCap"] = _cDocSo.GetDinhMuc(itemRow["DanhBo"].ToString());
+                                }
+                                dr["HoTen"] = itemRow["HoTen"];
+                                dr["DiaChi"] = itemRow["DiaChi"];
+                                dr["Phuong"] = _cDocSo.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                                dr["Quan"] = _cDocSo.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
+                                dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
+                            }
+                        }
+                        else
+                        {
+                            if (cmbPhuong.SelectedValue.ToString() == itemRow["Phuong"].ToString() && cmbQuan.SelectedValue.ToString() == itemRow["Quan"].ToString())
+                            {
+                                DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
+
+                                dr["LoaiBaoCao"] = "DANH SÁCH ĐCHĐ (CODE F2=0)";
+                                if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                                {
+                                    dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                                    //dr["DinhMucCap"] = _cDocSo.GetDinhMuc(itemRow["DanhBo"].ToString());
                                 }
                                 dr["HoTen"] = itemRow["HoTen"];
                                 dr["DiaChi"] = itemRow["DiaChi"];

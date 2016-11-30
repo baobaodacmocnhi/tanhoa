@@ -1179,13 +1179,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 if (radDSDCBD.Checked)
                 {
-                    frmShowDCBD frm = new frmShowDCBD(decimal.Parse(dgvDSDCBD["SoPhieu", dgvDSDCBD.CurrentRow.Index].Value.ToString()));
+                    frmDCBD frm = new frmDCBD(decimal.Parse(dgvDSDCBD["SoPhieu", dgvDSDCBD.CurrentRow.Index].Value.ToString()));
                     if (frm.ShowDialog() == DialogResult.OK) { }
                     //DSDCBD_BS.DataSource = _cDCBD.LoadDSCTDCBD();
                 }
                 if (radDSDCHD.Checked)
                 {
-                    frmShowDCHD frm = new frmShowDCHD(decimal.Parse(dgvDSDCBD["SoPhieu", dgvDSDCBD.CurrentRow.Index].Value.ToString()));
+                    frmDCHD frm = new frmDCHD(decimal.Parse(dgvDSDCBD["SoPhieu", dgvDSDCBD.CurrentRow.Index].Value.ToString()));
                     if (frm.ShowDialog() == DialogResult.OK) { }
                     //DSDCBD_BS.DataSource = _cDCBD.LoadDSCTDCHD();
                 }
@@ -1309,11 +1309,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void txtNoiDungTimKiem_KeyPress(object sender, KeyPressEventArgs e)
         {
+           if(e.KeyChar==13)
             btnXem.PerformClick();
         }
 
         private void txtNoiDungTimKiem2_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == 13)
             btnXem.PerformClick();
         }
     }

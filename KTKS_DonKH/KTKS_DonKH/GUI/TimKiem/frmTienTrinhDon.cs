@@ -268,7 +268,7 @@ namespace KTKS_DonKH.GUI.TimKiem
         {
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["DieuChinh"].ToString() == "Biến Động")
             {
-                frmShowDCBD frm = new frmShowDCBD(decimal.Parse(_CTRow.Row["MaDC"].ToString()), true);
+                frmDCBD frm = new frmDCBD(decimal.Parse(_CTRow.Row["MaDC"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;
@@ -276,7 +276,7 @@ namespace KTKS_DonKH.GUI.TimKiem
             }
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["DieuChinh"].ToString() == "Hóa Đơn")
             {
-                frmShowDCHD frm = new frmShowDCHD(decimal.Parse(_CTRow.Row["MaDC"].ToString()), true);
+                frmDCHD frm = new frmDCHD(decimal.Parse(_CTRow.Row["MaDC"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;
@@ -622,7 +622,7 @@ namespace KTKS_DonKH.GUI.TimKiem
         {
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["DieuChinh"].ToString() == "Biến Động")
             {
-                frmShowDCBD frm = new frmShowDCBD(decimal.Parse(_CTRow.Row["MaDC"].ToString()), true);
+                frmDCBD frm = new frmDCBD(decimal.Parse(_CTRow.Row["MaDC"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;
@@ -630,7 +630,7 @@ namespace KTKS_DonKH.GUI.TimKiem
             }
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["DieuChinh"].ToString() == "Hóa Đơn")
             {
-                frmShowDCHD frm = new frmShowDCHD(decimal.Parse(_CTRow.Row["MaDC"].ToString()), true);
+                frmDCHD frm = new frmDCHD(decimal.Parse(_CTRow.Row["MaDC"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;

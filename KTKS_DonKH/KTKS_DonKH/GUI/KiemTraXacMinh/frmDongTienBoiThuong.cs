@@ -95,34 +95,32 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             try
             {
-
-            
-            //dateKTXM.Value = DateTime.Now;
-            //cmbTinhTrangKiemTra.SelectedIndex = -1;
-            txtHieu.Text = "";
-            txtCo.Text = "";
-            txtSoThan.Text = "";
-            txtChiSo.Text = "";
-            cmbTinhTrangChiSo.SelectedIndex = -1;
-            //cmbChiMatSo.SelectedIndex = -1;
-            //cmbChiKhoaGoc.SelectedIndex = -1;
-            txtMucDichSuDung.Text = "";
-            txtDienThoai.Text = "";
-            txtHoTenKHKy.Text = "";
-            //cmbTinhTrangDHN.SelectedIndex = -1;
-            txtNoiDungKiemTra.Text = "";
-            ///
-            chkLapBangGia.Checked = false;
-            dateLapBangGia.Value = DateTime.Now;
-            ///
-            chkDongTienBoiThuong.Checked = false;
-            cmbNoiDung.SelectedIndex = -1;
-            dateDongTien.Value = DateTime.Now;
-            txtSoTien.Text = "";
-            ///
-            chkChuyenCatHuy.Checked = false;
-            dateChuyenCatHuy.Value = DateTime.Now;
-            _selectedindex = -1;
+                //dateKTXM.Value = DateTime.Now;
+                //cmbTinhTrangKiemTra.SelectedIndex = -1;
+                txtHieu.Text = "";
+                txtCo.Text = "";
+                txtSoThan.Text = "";
+                txtChiSo.Text = "";
+                cmbTinhTrangChiSo.SelectedIndex = -1;
+                //cmbChiMatSo.SelectedIndex = -1;
+                //cmbChiKhoaGoc.SelectedIndex = -1;
+                txtMucDichSuDung.Text = "";
+                txtDienThoai.Text = "";
+                txtHoTenKHKy.Text = "";
+                //cmbTinhTrangDHN.SelectedIndex = -1;
+                txtNoiDungKiemTra.Text = "";
+                ///
+                chkLapBangGia.Checked = false;
+                dateLapBangGia.Value = DateTime.Now;
+                ///
+                chkDongTienBoiThuong.Checked = false;
+                cmbNoiDung.SelectedIndex = -1;
+                dateDongTien.Value = DateTime.Now;
+                txtSoTien.Text = "";
+                ///
+                chkChuyenCatHuy.Checked = false;
+                dateChuyenCatHuy.Value = DateTime.Now;
+                _selectedindex = -1;
             }
             catch (Exception ex)
             {
@@ -158,7 +156,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             ctktxm.LapBangGia = false;
                             ctktxm.NgayLapBangGia = null;
                         }
-                    
+
                     if (ctktxm.DongTienBoiThuong != chkDongTienBoiThuong.Checked)
                         if (chkDongTienBoiThuong.Checked)
                         {
@@ -189,9 +187,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
                     if (_cKTXM.SuaCTKTXM(ctktxm))
                     {
-                        MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
+                        MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         dgvDSKetQuaKiemTra.DataSource = _cKTXM.LoadDSCTKTXM(txtDanhBo.Text.Trim(), CTaiKhoan.MaUser);
+                        txtDanhBo.Focus();
                     }
                 }
             }
