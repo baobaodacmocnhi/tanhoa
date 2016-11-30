@@ -58,6 +58,7 @@ namespace ThuTien.GUI.TongHop
             {
                 txtSoPhieu.Text = _cnkd.SoPhieuYCCHDB.ToString().Insert(_cnkd.SoPhieuYCCHDB.ToString().Length - 2, "-");
                 dateYCCHDB.Value = _cnkd.NgayYCCHDB.Value;
+                txtLyDo.Text = _cnkd.LyDo;
             }
             txtDanhBo.Text = _cnkd.DanhBo;
             txtHoTen.Text = _cnkd.HoTen;
@@ -73,6 +74,7 @@ namespace ThuTien.GUI.TongHop
 
                 txtSoPhieu.Text = _ycch.MaYCCHDB.ToString().Insert(_ycch.MaYCCHDB.ToString().Length - 2, "-");
                 dateYCCHDB.Value = _ycch.CreateDate.Value;
+                txtLyDo.Text = _ycch.LyDo;
                 txtDanhBo.Text = _ycch.DanhBo;
                 txtHoTen.Text = _ycch.HoTen;
                 txtDiaChi.Text = _ycch.DiaChi;
@@ -102,6 +104,7 @@ namespace ThuTien.GUI.TongHop
                     {
                         _cnkd.SoPhieuYCCHDB = _ycch.MaYCCHDB;
                         _cnkd.NgayYCCHDB = dateYCCHDB.Value;
+                        _cnkd.LyDo = _ycch.LyDo;
                         _cnkd.DanhBo = _ycch.DanhBo;
                         _cnkd.HoTen = _ycch.HoTen;
                         _cnkd.DiaChi = _ycch.DiaChi;
@@ -131,6 +134,7 @@ namespace ThuTien.GUI.TongHop
                 {
                     _cnkd.SoPhieuYCCHDB = null;
                     _cnkd.NgayYCCHDB = null;
+                    _cnkd.LyDo = null;
                     _cnkd.DanhBo = null;
                     _cnkd.HoTen = null;
                     _cnkd.DiaChi = null;

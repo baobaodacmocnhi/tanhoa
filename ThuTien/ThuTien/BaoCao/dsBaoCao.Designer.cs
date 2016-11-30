@@ -3472,6 +3472,8 @@ namespace ThuTien.BaoCao {
             
             private global::System.Data.DataColumn columnNgayYCCHDB;
             
+            private global::System.Data.DataColumn columnLyDo;
+            
             private global::System.Data.DataColumn columnCSM;
             
             private global::System.Data.DataColumn columnCSC;
@@ -3651,6 +3653,14 @@ namespace ThuTien.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn LyDoColumn {
+                get {
+                    return this.columnLyDo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn CSMColumn {
                 get {
                     return this.columnCSM;
@@ -3767,6 +3777,7 @@ namespace ThuTien.BaoCao {
                         string SoPhatHanh, 
                         string SoPhieuYCCHDB, 
                         string NgayYCCHDB, 
+                        string LyDo, 
                         string CSM, 
                         string CSC, 
                         string TT, 
@@ -3793,6 +3804,7 @@ namespace ThuTien.BaoCao {
                         SoPhatHanh,
                         SoPhieuYCCHDB,
                         NgayYCCHDB,
+                        LyDo,
                         CSM,
                         CSC,
                         TT,
@@ -3839,6 +3851,7 @@ namespace ThuTien.BaoCao {
                 this.columnSoPhatHanh = base.Columns["SoPhatHanh"];
                 this.columnSoPhieuYCCHDB = base.Columns["SoPhieuYCCHDB"];
                 this.columnNgayYCCHDB = base.Columns["NgayYCCHDB"];
+                this.columnLyDo = base.Columns["LyDo"];
                 this.columnCSM = base.Columns["CSM"];
                 this.columnCSC = base.Columns["CSC"];
                 this.columnTT = base.Columns["TT"];
@@ -3884,6 +3897,8 @@ namespace ThuTien.BaoCao {
                 base.Columns.Add(this.columnSoPhieuYCCHDB);
                 this.columnNgayYCCHDB = new global::System.Data.DataColumn("NgayYCCHDB", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNgayYCCHDB);
+                this.columnLyDo = new global::System.Data.DataColumn("LyDo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLyDo);
                 this.columnCSM = new global::System.Data.DataColumn("CSM", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCSM);
                 this.columnCSC = new global::System.Data.DataColumn("CSC", typeof(string), null, global::System.Data.MappingType.Element);
@@ -14680,6 +14695,22 @@ namespace ThuTien.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string LyDo {
+                get {
+                    try {
+                        return ((string)(this[this.tableTongHopNo.LyDoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'LyDo\' in table \'TongHopNo\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTongHopNo.LyDoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string CSM {
                 get {
                     try {
@@ -14996,6 +15027,18 @@ namespace ThuTien.BaoCao {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetNgayYCCHDBNull() {
                 this[this.tableTongHopNo.NgayYCCHDBColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsLyDoNull() {
+                return this.IsNull(this.tableTongHopNo.LyDoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetLyDoNull() {
+                this[this.tableTongHopNo.LyDoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

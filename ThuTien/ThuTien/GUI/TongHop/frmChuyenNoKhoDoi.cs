@@ -276,6 +276,8 @@ namespace ThuTien.GUI.TongHop
                         dr["SoPhieuYCCHDB"] = cnkd.SoPhieuYCCHDB.Value.ToString().Insert(cnkd.SoPhieuYCCHDB.Value.ToString().Length - 2, "-");
                     if (cnkd.NgayYCCHDB != null)
                         dr["NgayYCCHDB"] = cnkd.NgayYCCHDB.Value.ToString("dd/MM/yyyy");
+                    if (cnkd.LyDo != null)
+                        dr["LyDo"] = cnkd.LyDo;
                     dr["Ky"] = item["Ky"];
                     dr["SoPhatHanh"] = item["SoPhatHanh"];
                     dr["TieuThu"] = item["TieuThu"];

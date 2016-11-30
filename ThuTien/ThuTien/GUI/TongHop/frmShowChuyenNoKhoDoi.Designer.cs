@@ -43,6 +43,8 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.dateLap = new System.Windows.Forms.DateTimePicker();
             this.lbNgayLap = new System.Windows.Forms.Label();
+            this.txtLyDo = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtSoPhieu
@@ -177,11 +179,29 @@
             this.lbNgayLap.Text = "Ngày Lập:";
             this.lbNgayLap.Visible = false;
             // 
+            // txtLyDo
+            // 
+            this.txtLyDo.Location = new System.Drawing.Point(476, 12);
+            this.txtLyDo.Name = "txtLyDo";
+            this.txtLyDo.Size = new System.Drawing.Size(100, 20);
+            this.txtLyDo.TabIndex = 43;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(432, 15);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 13);
+            this.label6.TabIndex = 42;
+            this.label6.Text = "Lý Do:";
+            // 
             // frmShowChuyenNoKhoDoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(497, 128);
+            this.ClientSize = new System.Drawing.Size(590, 128);
+            this.Controls.Add(this.txtLyDo);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.dateLap);
             this.Controls.Add(this.lbNgayLap);
             this.Controls.Add(this.btnXoa);
@@ -222,5 +242,7 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.DateTimePicker dateLap;
         private System.Windows.Forms.Label lbNgayLap;
+        private System.Windows.Forms.TextBox txtLyDo;
+        private System.Windows.Forms.Label label6;
     }
 }

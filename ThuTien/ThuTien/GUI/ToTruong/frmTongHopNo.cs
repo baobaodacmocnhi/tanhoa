@@ -142,6 +142,7 @@ namespace ThuTien.GUI.ToTruong
                             row["Ky"] = item["Ky"];
                             row["SoHoaDon"] = item["SoHoaDon"];
                             row["GiaBieu"] = item["GiaBieu"];
+                            row["DinhMuc"] = item["DinhMuc"];
                             row["TieuThu"] = item["TieuThu"];
                             row["GiaBan"] = item["GiaBan"];
                             row["ThueGTGT"] = item["ThueGTGT"];
@@ -232,6 +233,8 @@ namespace ThuTien.GUI.ToTruong
                         cttonghopno.ThueGTGT = decimal.Parse(item.Cells["ThueGTGT"].Value.ToString());
                         cttonghopno.PhiBVMT = decimal.Parse(item.Cells["PhiBVMT"].Value.ToString());
                         cttonghopno.TongCong = decimal.Parse(item.Cells["TongCong"].Value.ToString());
+                        cttonghopno.CreateBy = CNguoiDung.MaND;
+                        cttonghopno.CreateDate = DateTime.Now;
                         tonghopno.TT_CTTongHopNos.Add(cttonghopno);
                     }
                     _cTHN.Them(tonghopno);
