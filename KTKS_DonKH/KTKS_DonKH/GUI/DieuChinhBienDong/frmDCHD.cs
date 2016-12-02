@@ -69,15 +69,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtTieuThu_Cu.Text = "0";
             txtChiTietCu.Text = "";
             chkDieuChinhGia.Checked = false;
-            txtGiaDieuChinh.Text = "";
+            txtGiaDieuChinh.Text = "0";
             txtGiaBieu_Moi.Text = "0";
             txtDinhMuc_Moi.Text = "0";
             txtTieuThu_Moi.Text = "0";
             txtChiTietMoi.Text = "";
             ///
             chkDieuChinhGia2.Checked = false;
-            txtTieuThu_DieuChinhGia2.Text = "";
-            txtGiaDieuChinh2.Text = "";
+            txtTieuThu_DieuChinhGia2.Text = "0";
+            txtGiaDieuChinh2.Text = "0";
             chkTyLe.Checked = false;
             txtSH.Text = "";
             txtSX.Text = "";

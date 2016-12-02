@@ -297,22 +297,22 @@
             "Lý Do"});
             this.cmbTimTheo.Location = new System.Drawing.Point(441, 15);
             this.cmbTimTheo.Name = "cmbTimTheo";
-            this.cmbTimTheo.Size = new System.Drawing.Size(121, 24);
+            this.cmbTimTheo.Size = new System.Drawing.Size(100, 24);
             this.cmbTimTheo.TabIndex = 2;
             this.cmbTimTheo.SelectedIndexChanged += new System.EventHandler(this.cmbTimTheo_SelectedIndexChanged);
             // 
             // txtNoiDungTimKiem
             // 
-            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(641, 15);
+            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(621, 15);
             this.txtNoiDungTimKiem.Name = "txtNoiDungTimKiem";
-            this.txtNoiDungTimKiem.Size = new System.Drawing.Size(130, 22);
+            this.txtNoiDungTimKiem.Size = new System.Drawing.Size(100, 22);
             this.txtNoiDungTimKiem.TabIndex = 4;
             this.txtNoiDungTimKiem.Visible = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(567, 18);
+            this.label1.Location = new System.Drawing.Point(547, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 16);
             this.label1.TabIndex = 3;
@@ -342,7 +342,7 @@
             // 
             // btnInNhan
             // 
-            this.btnInNhan.Location = new System.Drawing.Point(1024, 12);
+            this.btnInNhan.Location = new System.Drawing.Point(989, 18);
             this.btnInNhan.Name = "btnInNhan";
             this.btnInNhan.Size = new System.Drawing.Size(75, 25);
             this.btnInNhan.TabIndex = 26;
@@ -365,7 +365,7 @@
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(915, 12);
+            this.btnIn.Location = new System.Drawing.Point(880, 18);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(103, 25);
             this.btnIn.TabIndex = 8;
@@ -379,9 +379,9 @@
             this.panel_KhoangThoiGian.Controls.Add(this.dateDen);
             this.panel_KhoangThoiGian.Controls.Add(this.label3);
             this.panel_KhoangThoiGian.Controls.Add(this.label4);
-            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(636, 2);
+            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(616, 2);
             this.panel_KhoangThoiGian.Name = "panel_KhoangThoiGian";
-            this.panel_KhoangThoiGian.Size = new System.Drawing.Size(192, 60);
+            this.panel_KhoangThoiGian.Size = new System.Drawing.Size(177, 60);
             this.panel_KhoangThoiGian.TabIndex = 6;
             this.panel_KhoangThoiGian.Visible = false;
             // 
@@ -389,24 +389,24 @@
             // 
             this.dateTu.CustomFormat = "dd/MM/yyyy";
             this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu.Location = new System.Drawing.Point(85, 4);
+            this.dateTu.Location = new System.Drawing.Point(80, 5);
             this.dateTu.Name = "dateTu";
-            this.dateTu.Size = new System.Drawing.Size(100, 22);
+            this.dateTu.Size = new System.Drawing.Size(90, 22);
             this.dateTu.TabIndex = 13;
             // 
             // dateDen
             // 
             this.dateDen.CustomFormat = "dd/MM/yyyy";
             this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen.Location = new System.Drawing.Point(85, 33);
+            this.dateDen.Location = new System.Drawing.Point(80, 32);
             this.dateDen.Name = "dateDen";
-            this.dateDen.Size = new System.Drawing.Size(100, 22);
+            this.dateDen.Size = new System.Drawing.Size(90, 22);
             this.dateDen.TabIndex = 14;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 10);
+            this.label3.Location = new System.Drawing.Point(2, 5);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 16);
             this.label3.TabIndex = 15;
@@ -415,7 +415,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 38);
+            this.label4.Location = new System.Drawing.Point(3, 33);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 16);
             this.label4.TabIndex = 16;
@@ -570,15 +570,15 @@
             // 
             // txtNoiDungTimKiem2
             // 
-            this.txtNoiDungTimKiem2.Location = new System.Drawing.Point(641, 37);
+            this.txtNoiDungTimKiem2.Location = new System.Drawing.Point(621, 37);
             this.txtNoiDungTimKiem2.Name = "txtNoiDungTimKiem2";
-            this.txtNoiDungTimKiem2.Size = new System.Drawing.Size(130, 22);
+            this.txtNoiDungTimKiem2.Size = new System.Drawing.Size(100, 22);
             this.txtNoiDungTimKiem2.TabIndex = 5;
             this.txtNoiDungTimKiem2.Visible = false;
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(834, 12);
+            this.btnXem.Location = new System.Drawing.Point(799, 18);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 25);
             this.btnXem.TabIndex = 27;
@@ -604,11 +604,11 @@
             this.Controls.Add(this.chkSelectAll);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbTimTheo);
-            this.Controls.Add(this.txtNoiDungTimKiem);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvDSCTCHDB);
-            this.Controls.Add(this.panel_KhoangThoiGian);
             this.Controls.Add(this.txtNoiDungTimKiem2);
+            this.Controls.Add(this.txtNoiDungTimKiem);
+            this.Controls.Add(this.panel_KhoangThoiGian);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "frmDSCHDB";

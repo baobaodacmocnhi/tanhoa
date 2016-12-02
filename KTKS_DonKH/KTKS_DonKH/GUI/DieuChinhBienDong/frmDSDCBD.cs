@@ -1309,14 +1309,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void txtNoiDungTimKiem_KeyPress(object sender, KeyPressEventArgs e)
         {
-           if(e.KeyChar==13)
-            btnXem.PerformClick();
+            if (e.KeyChar == 13 && txtNoiDungTimKiem.Text.Trim() != "")
+                btnXem.PerformClick();
         }
 
         private void txtNoiDungTimKiem2_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13)
-            btnXem.PerformClick();
+            if (e.KeyChar == 13 && txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
+                btnXem.PerformClick();
         }
     }
 }

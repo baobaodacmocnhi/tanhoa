@@ -416,12 +416,12 @@ namespace KTKS_DonKH
 
         private void ribbtnChungCu_Click(object sender, EventArgs e)
         {
-            foreach (Form item in this.MdiChildren)
-                item.Close();
-            Form frm = new frmChungCu();
-            frm.MdiParent = this;
-            frm.Show();
-            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
+            //foreach (Form item in this.MdiChildren)
+            //    item.Close();
+            //Form frm = new frmChungCu();
+            //frm.MdiParent = this;
+            //frm.Show();
+            //StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
             //MessageBox.Show("Tính năng đang được Chỉnh Sửa, Vui lòng chờ...", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 

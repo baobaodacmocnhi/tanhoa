@@ -27,7 +27,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         private void frmDongTienBoiThuong_Load(object sender, EventArgs e)
         {
             dgvDSKetQuaKiemTra.AutoGenerateColumns = false;
-            dgvDSKetQuaKiemTra.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSKetQuaKiemTra.Font, FontStyle.Bold);
+            //dgvDSKetQuaKiemTra.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSKetQuaKiemTra.Font, FontStyle.Bold);
 
             cmbHienTrangKiemTra.DataSource = _cHienTrangKiemTra.LoadDSHienTrangKiemTra(true);
             cmbHienTrangKiemTra.DisplayMember = "TenHTKT";
@@ -95,20 +95,21 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             try
             {
-                //dateKTXM.Value = DateTime.Now;
-                //cmbTinhTrangKiemTra.SelectedIndex = -1;
+                txtDanhBo.Text = "";
+                dateKTXM.Value = DateTime.Now;
+                cmbHienTrangKiemTra.SelectedIndex = -1;
+                txtChiSo.Text = "";
+                cmbTinhTrangChiSo.SelectedIndex = -1;
                 txtHieu.Text = "";
                 txtCo.Text = "";
                 txtSoThan.Text = "";
-                txtChiSo.Text = "";
-                cmbTinhTrangChiSo.SelectedIndex = -1;
-                //cmbChiMatSo.SelectedIndex = -1;
-                //cmbChiKhoaGoc.SelectedIndex = -1;
+                cmbChiMatSo.SelectedIndex = -1;
+                cmbChiKhoaGoc.SelectedIndex = -1;
                 txtMucDichSuDung.Text = "";
                 txtDienThoai.Text = "";
                 txtHoTenKHKy.Text = "";
-                //cmbTinhTrangDHN.SelectedIndex = -1;
                 txtNoiDungKiemTra.Text = "";
+                txtTheoYeuCau.Text = "";
                 ///
                 chkLapBangGia.Checked = false;
                 dateLapBangGia.Value = DateTime.Now;
@@ -121,6 +122,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 chkChuyenCatHuy.Checked = false;
                 dateChuyenCatHuy.Value = DateTime.Now;
                 _selectedindex = -1;
+                ///
+                dgvDSKetQuaKiemTra.DataSource = null;
             }
             catch (Exception ex)
             {
@@ -132,7 +135,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             if (e.KeyChar == 13 && txtDanhBo.Text.Trim() != "")
             {
+                string DanhBo = txtDanhBo.Text.Trim();
                 Clear();
+                txtDanhBo.Text = DanhBo;
                 dgvDSKetQuaKiemTra.DataSource = _cKTXM.LoadDSCTKTXM(txtDanhBo.Text.Trim());
             }
         }
@@ -189,7 +194,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     {
                         Clear();
                         MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        dgvDSKetQuaKiemTra.DataSource = _cKTXM.LoadDSCTKTXM(txtDanhBo.Text.Trim(), CTaiKhoan.MaUser);
+                        //dgvDSKetQuaKiemTra.DataSource = _cKTXM.LoadDSCTKTXM(txtDanhBo.Text.Trim(), CTaiKhoan.MaUser);
                         txtDanhBo.Focus();
                     }
                 }

@@ -233,6 +233,23 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public bool XoaCTChungTu(CTChungTu ctchungtu)
+        {
+            try
+            {
+                db.CTChungTus.DeleteOnSubmit(ctchungtu);
+                db.SubmitChanges();
+                //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new dbKinhDoanhDataContext();
+                return false;
+            }
+        }
+
         /// <summary>
         /// Lấy Danh Sách các Danh Bộ được đăng ký định mức với Sổ Đăng Ký truyền vào
         /// </summary>
@@ -3999,35 +4016,6 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 db = new dbKinhDoanhDataContext();
-                return false;
-            }
-        }
-
-        public bool XoaSoChungTu(string DanhBo, string MaCT)
-        {
-            try
-            {
-                //if (db.CTChungTus.Count(itemCTCT => itemCTCT.MaCT == MaCT) == 1)
-                //{
-
-                //db.ChungTus.DeleteOnSubmit(getChungTubyID(MaCT));
-                ChungTu chungtu = getChungTubyID(MaCT);
-                CTChungTu ctchungtu = getCTChungTubyID(DanhBo, MaCT);
-                chungtu.SoNKConLai += ctchungtu.SoNKDangKy;
-                db.CTChungTus.DeleteOnSubmit(ctchungtu);
-                db.SubmitChanges();
-                return true;
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Số Chứng Từ này có đăng ký với 1 Danh Bộ khác nữa/nLiên hệ P.CNTT để xây dựng cho chức năng này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    return false;
-                //}
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }

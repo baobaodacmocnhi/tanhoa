@@ -166,7 +166,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         public void Clear()
         {
-            txtMaDon.Text = "";
+            //txtMaDon.Text = "";
             txtSoPhieu.Text = "";
             txtDot.Text = "";
             txtHieuLucKy.Text = "";
@@ -735,7 +735,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if ((_donkh != null || _dontxl != null) && e.Control && e.KeyCode == Keys.D1)
             {
                 Dictionary<string, string> source = new Dictionary<string, string>();
-                source.Add("ChungCu", "False");
                 if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
                 {
                     source.Add("TXL", "True");
@@ -748,23 +747,21 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     source.Add("MaDon", _donkh.MaDon.ToString());
                 }
                 source.Add("DanhBo", txtDanhBo.Text.Trim());
-                source.Add("HoTenKH", txtHoTen.Text.Trim());
-                if (txtDiaChi.Text.Trim().Contains(","))
-                    source.Add("DiaChiKH", txtDiaChi.Text.Trim().Substring(0, txtDiaChi.Text.Trim().IndexOf(",")));
+                if (txtHoTen_BD.Text.Trim() == "")
+                    source.Add("HoTenKH", txtHoTen.Text.Trim());
                 else
-                    source.Add("DiaChiKH", txtDiaChi.Text.Trim());
-                source.Add("TenLCT", "Hộ Khẩu");
+                    source.Add("HoTenKH", txtHoTen_BD.Text.Trim());
+                ///
+                if (txtDiaChi_BD.Text.Trim() == "")
+                    if (txtDiaChi.Text.Trim().Contains(","))
+                        source.Add("DiaChiKH", txtDiaChi.Text.Trim().Substring(0, txtDiaChi.Text.Trim().IndexOf(",")));
+                    else
+                        source.Add("DiaChiKH", txtDiaChi.Text.Trim());
+                else
+                    source.Add("DiaChiKH", txtDiaChi_BD.Text.Trim());
                 source.Add("MaCT", "");
-                source.Add("HoTen", "");
-                source.Add("DiaChi", "");
-                source.Add("SoNKTong", "");
-                source.Add("SoNKDangKy", "");
-                source.Add("NgayHetHan", "");
-                source.Add("ThoiHan", "");
-                source.Add("GhiChu", "");
-                source.Add("Lo", "");
-                source.Add("Phong", "");
-                frmSoDK frm = new frmSoDK("Thêm", source);
+
+                frmSoDK frm = new frmSoDK(source);
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTubyDanhBo(txtDanhBo.Text.Trim());
@@ -775,7 +772,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if ((_donkh != null || _dontxl != null) && e.Control && e.KeyCode == Keys.D2)
             {
                 Dictionary<string, string> source = new Dictionary<string, string>();
-                source.Add("ChungCu", "False");
                 if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
                 {
                     source.Add("TXL", "True");
@@ -923,7 +919,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
             {
                 Dictionary<string, string> source = new Dictionary<string, string>();
-                source.Add("ChungCu", "False");
                 ///Đơn Tổ Xử Lý
                 if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
                 {
@@ -937,23 +932,21 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     source.Add("MaDon", _donkh.MaDon.ToString());
                 }
                 source.Add("DanhBo", txtDanhBo.Text.Trim());
-                source.Add("HoTenKH", txtHoTen.Text.Trim());
-                if (txtDiaChi.Text.Trim().Contains(","))
-                    source.Add("DiaChiKH", txtDiaChi.Text.Trim().Substring(0, txtDiaChi.Text.Trim().IndexOf(",")));
+                if (txtHoTen_BD.Text.Trim() == "")
+                    source.Add("HoTenKH", txtHoTen.Text.Trim());
                 else
-                    source.Add("DiaChiKH", txtDiaChi.Text.Trim());
-                source.Add("TenLCT", "Hộ Khẩu");
+                    source.Add("HoTenKH", txtHoTen_BD.Text.Trim());
+                ///
+                if (txtDiaChi_BD.Text.Trim() == "")
+                    if (txtDiaChi.Text.Trim().Contains(","))
+                        source.Add("DiaChiKH", txtDiaChi.Text.Trim().Substring(0, txtDiaChi.Text.Trim().IndexOf(",")));
+                    else
+                        source.Add("DiaChiKH", txtDiaChi.Text.Trim());
+                else
+                    source.Add("DiaChiKH", txtDiaChi_BD.Text.Trim());
                 source.Add("MaCT", "");
-                source.Add("HoTen", "");
-                source.Add("DiaChi", "");
-                source.Add("SoNKTong", "");
-                source.Add("SoNKDangKy", "");
-                source.Add("NgayHetHan", "");
-                source.Add("ThoiHan", "");
-                source.Add("GhiChu", "");
-                source.Add("Lo", "");
-                source.Add("Phong", "");
-                frmSoDK frm = new frmSoDK("Thêm", source);
+
+                frmSoDK frm = new frmSoDK(source);
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTubyDanhBo(txtDanhBo.Text.Trim());
@@ -969,7 +962,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
             {
                 Dictionary<string, string> source = new Dictionary<string, string>();
-                source.Add("ChungCu", "False");
                 ///Đơn Tổ Xử Lý
                 if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
                 {
@@ -983,20 +975,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     source.Add("MaDon", _donkh.MaDon.ToString());
                 }
                 source.Add("DanhBo", txtDanhBo.Text.Trim());
-                source.Add("TenLCT", dgvDSSoDangKy.CurrentRow.Cells["TenLCT"].Value.ToString());
                 source.Add("MaCT", dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString());
-                source.Add("HoTenKH", txtHoTen.Text.Trim());
-                source.Add("DiaChiKH", txtDiaChi.Text.Trim());
-                source.Add("HoTen", txtHoTen.Text.Trim());
-                source.Add("DiaChi", dgvDSSoDangKy.CurrentRow.Cells["DiaChi"].Value.ToString());
-                source.Add("SoNKTong", dgvDSSoDangKy.CurrentRow.Cells["SoNKTong"].Value.ToString());
-                source.Add("SoNKDangKy", dgvDSSoDangKy.CurrentRow.Cells["SoNKDangKy"].Value.ToString());
-                source.Add("NgayHetHan", dgvDSSoDangKy.CurrentRow.Cells["NgayHetHan"].Value.ToString());
-                source.Add("ThoiHan", dgvDSSoDangKy.CurrentRow.Cells["ThoiHan"].Value.ToString());
-                source.Add("GhiChu", dgvDSSoDangKy.CurrentRow.Cells["GhiChu"].Value.ToString());
-                source.Add("Lo", dgvDSSoDangKy.CurrentRow.Cells["Lo"].Value.ToString());
-                source.Add("Phong", dgvDSSoDangKy.CurrentRow.Cells["Phong"].Value.ToString());
-                frmSoDK frm = new frmSoDK("Sửa", source);
+                if (txtHoTen_BD.Text.Trim() == "")
+                    source.Add("HoTenKH", txtHoTen.Text.Trim());
+                else
+                    source.Add("HoTenKH", txtHoTen_BD.Text.Trim());
+                
+                frmSoDK frm = new frmSoDK(source);
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTubyDanhBo(txtDanhBo.Text.Trim());
@@ -1046,7 +1031,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
             {
                 Dictionary<string, string> source = new Dictionary<string, string>();
-                source.Add("ChungCu", "False");
                 ///Đơn Tổ Xử Lý
                 if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
                 {
@@ -1078,12 +1062,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
             {
                 if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                    if (_cChungTu.XoaSoChungTu(txtDanhBo.Text.Trim(), dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString()))
+                {
+                    CTChungTu ctchungtu = _cChungTu.getCTChungTubyID(txtDanhBo.Text.Trim(), dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString());
+                    if (_cChungTu.XoaCTChungTu(ctchungtu))
                     {
-                        MessageBox.Show("Xóa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTubyDanhBo(txtDanhBo.Text.Trim());
                         LoadTongNK();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
+                }
             }
             else
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -154,7 +154,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         ctchungtu.Phong = txtPhong.Text.Trim();
 
                         LichSuChungTu lichsuchungtu = new LichSuChungTu();
-                        if (bool.Parse(_source["ChungCu"]) == false)
                             if (bool.Parse(_source["TXL"]) == true)
                             {
                                 lichsuchungtu.ToXuLy = true;

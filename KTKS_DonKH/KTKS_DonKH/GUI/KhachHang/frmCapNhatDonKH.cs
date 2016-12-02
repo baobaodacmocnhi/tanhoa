@@ -168,13 +168,13 @@ namespace KTKS_DonKH.GUI.KhachHang
                 else
                 {
                     DataRow dr = dt.NewRow();
-                    dr["Table"] = "";
-                    dr["MaLSChuyen"] = "1";
+                    //dr["Table"] = "";
+                    //dr["MaLSChuyen"] = "1";
                     dr["NgayChuyen"] = _donkh.NgayChuyenToXuLy.Value.ToString("dd/MM/yyyy");
                     dr["LoaiChuyen"] = "TXL";
                     dr["GhiChuChuyen"] = _donkh.GhiChuChuyenToXuLy;
-                    dr["NguoiDi"] = "";
-                    dr["ChiTiet"] = "";
+                    //dr["NguoiDi"] = "";
+                    //dr["ChiTiet"] = "";
 
                     dt.Rows.Add(dr);
                 }
@@ -209,13 +209,13 @@ namespace KTKS_DonKH.GUI.KhachHang
                 else
                 {
                     DataRow dr = dt.NewRow();
-                    dr["Table"] = "";
-                    dr["MaLSChuyen"] = "1";
+                    //dr["Table"] = "";
+                    //dr["MaLSChuyen"] = "1";
                     dr["NgayChuyen"] = _donkh.NgayXepDon.Value.ToString("dd/MM/yyyy");
                     dr["LoaiChuyen"] = "Xếp Đơn";
                     dr["GhiChuChuyen"] = _donkh.GhiChuXepDon;
-                    dr["NguoiDi"] = "";
-                    dr["ChiTiet"] = "";
+                    //dr["NguoiDi"] = "";
+                    //dr["ChiTiet"] = "";
 
                     dt.Rows.Add(dr);
                 }
