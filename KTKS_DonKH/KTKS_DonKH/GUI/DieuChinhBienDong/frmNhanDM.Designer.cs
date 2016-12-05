@@ -392,7 +392,7 @@
             // 
             this.btnLuu.Location = new System.Drawing.Point(791, 367);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(86, 25);
+            this.btnLuu.Size = new System.Drawing.Size(75, 25);
             this.btnLuu.TabIndex = 2;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;

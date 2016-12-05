@@ -1004,6 +1004,7 @@
             this.chkCodeF2.TabIndex = 92;
             this.chkCodeF2.Text = "Code F2 = 0";
             this.chkCodeF2.UseVisualStyleBackColor = true;
+            this.chkCodeF2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.chkCodeF2_KeyPress);
             // 
             // txtSoPhieu
             // 

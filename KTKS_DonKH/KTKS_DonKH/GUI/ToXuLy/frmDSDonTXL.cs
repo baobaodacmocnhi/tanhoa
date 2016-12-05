@@ -226,7 +226,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         dr["MaDon"] = "TXL" + itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
                         dr["TenLD"] = dontxl.LoaiDonTXL.TenLD;
 
-                        if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                        if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()) && itemRow["DanhBo"].ToString().Length==11)
                             dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                         dr["HoTen"] = itemRow["HoTen"];
                         dr["DiaChi"] = itemRow["DiaChi"];
@@ -256,7 +256,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     dr["MaDon"] = "TXL" + itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
                     dr["TenLD"] = itemRow["TenLD"].ToString();
 
-                    if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                    if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()) && itemRow["DanhBo"].ToString().Length == 11)
                         dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                     dr["HoTen"] = itemRow["HoTen"];
                     dr["DiaChi"] = itemRow["DiaChi"];
@@ -390,8 +390,9 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 dr["MaDon"] = "TXL" + itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
                 dr["TenLD"] = itemRow["TenLD"].ToString();
 
-                if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()) && itemRow["DanhBo"].ToString().Length == 11)
                     dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+
                 dr["HoTen"] = itemRow["HoTen"];
                 dr["DiaChi"] = itemRow["DiaChi"];
                 dr["NoiDung"] = itemRow["NoiDung"];
@@ -444,7 +445,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 dr["MaDon"] = "TXL" + itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
                 dr["TenLD"] = itemRow["TenLD"].ToString();
 
-                if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()) && itemRow["DanhBo"].ToString().Length == 11)
                     dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                 dr["HoTen"] = itemRow["HoTen"];
                 dr["DiaChi"] = itemRow["DiaChi"];
@@ -489,7 +490,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     dr["DenNgay"] = _denNgay;
                     dr["TenLD"] = itemRow["TenLD"];
                     dr["NgayNhan"] = itemRow["CreateDate"].ToString().Substring(0, 10);
-                    if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                    if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()) && itemRow["DanhBo"].ToString().Length == 11)
                         dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                     if (_cBamChi.CheckBamChibyMaDon_TXL(decimal.Parse(itemRow["MaDon"].ToString())))
                     {
@@ -563,7 +564,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 dr["MaDon"] = "TXL" + itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
                 dr["TenLD"] = itemRow["TenLD"].ToString();
 
-                if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()) && itemRow["DanhBo"].ToString().Length == 11)
                     dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                 dr["HoTen"] = itemRow["HoTen"];
                 dr["DiaChi"] = itemRow["DiaChi"];

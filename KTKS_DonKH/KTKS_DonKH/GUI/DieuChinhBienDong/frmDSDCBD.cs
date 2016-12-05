@@ -164,6 +164,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             if (radDSDCBD.Checked)
                                 dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCBDByMaDons(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                            else
                             if (radDSDCHD.Checked)
                                 dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCHDByMaDons(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
                             else
@@ -174,6 +175,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             if (radDSDCBD.Checked)
                                 dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCBDByMaDons(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                            else
                             if (radDSDCHD.Checked)
                                 dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCHDByMaDons(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
                             else

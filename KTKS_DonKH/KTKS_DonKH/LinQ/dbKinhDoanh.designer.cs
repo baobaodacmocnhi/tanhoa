@@ -2872,6 +2872,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _MaLCT;
 		
+		private bool _KhacDiaBan;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -2906,6 +2908,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnYeuCauCatChanged();
     partial void OnMaLCTChanging(System.Nullable<int> value);
     partial void OnMaLCTChanged();
+    partial void OnKhacDiaBanChanging(bool value);
+    partial void OnKhacDiaBanChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -3103,6 +3107,26 @@ namespace KTKS_DonKH.LinQ
 					this._MaLCT = value;
 					this.SendPropertyChanged("MaLCT");
 					this.OnMaLCTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KhacDiaBan", DbType="Bit NOT NULL")]
+		public bool KhacDiaBan
+		{
+			get
+			{
+				return this._KhacDiaBan;
+			}
+			set
+			{
+				if ((this._KhacDiaBan != value))
+				{
+					this.OnKhacDiaBanChanging(value);
+					this.SendPropertyChanging();
+					this._KhacDiaBan = value;
+					this.SendPropertyChanged("KhacDiaBan");
+					this.OnKhacDiaBanChanged();
 				}
 			}
 		}
