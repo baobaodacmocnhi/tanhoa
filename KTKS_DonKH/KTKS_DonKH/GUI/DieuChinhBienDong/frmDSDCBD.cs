@@ -73,6 +73,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dgvDSDCBD.Columns["DinhMuc"].Visible = true;
                 dgvDSDCBD.Columns["DinhMuc_BD"].Visible = true;
                 ///
+                dgvDSDCBD.Columns["CodeF2"].Visible = false;
                 dgvDSDCBD.Columns["TieuThu"].Visible = false;
                 dgvDSDCBD.Columns["TieuThu_BD"].Visible = false;
                 dgvDSDCBD.Columns["TongCong_Start"].Visible = false;
@@ -97,6 +98,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dgvDSDCBD.Columns["MSThue"].Visible = false;
                 dgvDSDCBD.Columns["MSThue_BD"].Visible = false;
                 ///
+                dgvDSDCBD.Columns["CodeF2"].Visible = true;
                 dgvDSDCBD.Columns["GiaBieu"].Visible = true;
                 dgvDSDCBD.Columns["GiaBieu_BD"].Visible = true;
                 dgvDSDCBD.Columns["DinhMuc"].Visible = true;
@@ -538,7 +540,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         LichSuChungTu lichsuchungtu = _cChungTu.getLichSuChungTubySoPhieu(decimal.Parse(dgvDSCatChuyenDM["CT_SoPhieu", i].Value.ToString()));
                                         if (!string.IsNullOrEmpty(lichsuchungtu.NhanDM.ToString()))
                                         {
-                                            if (lichsuchungtu.NhanDM.Value)
+                                            if (lichsuchungtu.NhanDM)
                                             {
                                                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                                 DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
@@ -585,7 +587,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         else
                                             if (!string.IsNullOrEmpty(lichsuchungtu.CatDM.ToString()))
                                             {
-                                                if (lichsuchungtu.CatDM.Value)
+                                                if (lichsuchungtu.CatDM)
                                                 {
                                                     DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                                     DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
@@ -631,7 +633,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             else
                                                 if (!string.IsNullOrEmpty(lichsuchungtu.YeuCauCat.ToString()))
                                                 {
-                                                    if (lichsuchungtu.YeuCauCat.Value)
+                                                    if (lichsuchungtu.YeuCauCat)
                                                     {
                                                         DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                                         DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
@@ -793,7 +795,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             LichSuChungTu lichsuchungtu = _cChungTu.getLichSuChungTubySoPhieu(decimal.Parse(dgvDSCatChuyenDM["CT_SoPhieu", i].Value.ToString()));
                             if (!string.IsNullOrEmpty(lichsuchungtu.NhanDM.ToString()))
                             {
-                                if (lichsuchungtu.NhanDM.Value)
+                                if (lichsuchungtu.NhanDM)
                                 {
                                     DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
 
@@ -871,7 +873,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 //else
                                 if (!string.IsNullOrEmpty(lichsuchungtu.YeuCauCat.ToString()))
                                 {
-                                    if (lichsuchungtu.YeuCauCat.Value)
+                                    if (lichsuchungtu.YeuCauCat)
                                     {
                                         //DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                         DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
@@ -1319,6 +1321,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (e.KeyChar == 13 && txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
                 btnXem.PerformClick();
+        }
+
+        private void dgvDSDCBD_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvDSDCBD.Columns[e.ColumnIndex].Name == "CodeF2")
+            {
+                CTDCHD ctdchd = _cDCBD.getCTDCHDbyID(decimal.Parse(dgvDSDCBD["SoPhieu", e.RowIndex].Value.ToString()));
+                ctdchd.CodeF2 = bool.Parse(dgvDSDCBD["CodeF2", e.RowIndex].Value.ToString());
+                _cDCBD.SuaCTDCHD(ctdchd);
+            }
         }
     }
 }

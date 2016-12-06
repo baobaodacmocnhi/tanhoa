@@ -99,7 +99,7 @@ namespace KTKS_DonKH.GUI.KhachHang
         {
             dgvLichSuDon.AutoGenerateColumns = false;
 
-            cmbLD.DataSource = _cLoaiDon.LoadDSLoaiDon(true);
+            cmbLD.DataSource = _cLoaiDon.LoadDSLoaiDon();
             cmbLD.DisplayMember = "TenLD";
             cmbLD.ValueMember = "MaLD";
             cmbLD.SelectedIndex = -1;

@@ -46,7 +46,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             {
                 this.Location = new Point(-20, 70);
                 _donkh = _cDonKH.getDonKHbyID(decimal.Parse(_source["MaDon"]));
-                cmbLD.DataSource = _cLoaiDon.LoadDSLoaiDon(true);
+                cmbLD.DataSource = _cLoaiDon.LoadDSLoaiDon();
                 cmbLD.DisplayMember = "TenLD";
                 cmbLD.ValueMember = "MaLD";
 

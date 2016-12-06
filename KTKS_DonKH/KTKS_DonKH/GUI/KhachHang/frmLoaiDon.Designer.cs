@@ -38,15 +38,12 @@
             this.MaLD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KyHieuLD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenLD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AnLD = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnDown = new System.Windows.Forms.Button();
-            this.btnUp = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnDownTXL = new System.Windows.Forms.Button();
-            this.btnUpTXL = new System.Windows.Forms.Button();
             this.btnXoaTXL = new System.Windows.Forms.Button();
             this.txtKyHieuLDTXL = new System.Windows.Forms.TextBox();
             this.btnSuaTXL = new System.Windows.Forms.Button();
@@ -57,6 +54,7 @@
             this.MaLDTXL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KyHieuLDTXL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenLDTXL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AnLDTXL = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.txtTenLDTXL = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSLoaiDon)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -102,8 +100,8 @@
             // 
             // dgvDSLoaiDon
             // 
+            this.dgvDSLoaiDon.AllowDrop = true;
             this.dgvDSLoaiDon.AllowUserToAddRows = false;
-            this.dgvDSLoaiDon.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -116,23 +114,26 @@
             this.dgvDSLoaiDon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaLD,
             this.KyHieuLD,
-            this.TenLD});
-            this.dgvDSLoaiDon.Location = new System.Drawing.Point(7, 129);
+            this.TenLD,
+            this.AnLD});
+            this.dgvDSLoaiDon.Location = new System.Drawing.Point(7, 117);
             this.dgvDSLoaiDon.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dgvDSLoaiDon.MultiSelect = false;
             this.dgvDSLoaiDon.Name = "dgvDSLoaiDon";
-            this.dgvDSLoaiDon.ReadOnly = true;
-            this.dgvDSLoaiDon.Size = new System.Drawing.Size(418, 384);
+            this.dgvDSLoaiDon.Size = new System.Drawing.Size(468, 483);
             this.dgvDSLoaiDon.TabIndex = 6;
             this.dgvDSLoaiDon.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSLoaiDon_CellContentClick);
+            this.dgvDSLoaiDon.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSLoaiDon_CellValueChanged);
             this.dgvDSLoaiDon.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSLoaiDon_RowPostPaint);
+            this.dgvDSLoaiDon.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvDSLoaiDon_DragDrop);
+            this.dgvDSLoaiDon.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvDSLoaiDon_DragEnter);
+            this.dgvDSLoaiDon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvDSLoaiDon_MouseClick);
             // 
             // MaLD
             // 
             this.MaLD.DataPropertyName = "MaLD";
             this.MaLD.HeaderText = "MaLD";
             this.MaLD.Name = "MaLD";
-            this.MaLD.ReadOnly = true;
             this.MaLD.Visible = false;
             // 
             // KyHieuLD
@@ -140,7 +141,6 @@
             this.KyHieuLD.DataPropertyName = "KyHieuLD";
             this.KyHieuLD.HeaderText = "Ký Hiệu Loại Đơn";
             this.KyHieuLD.Name = "KyHieuLD";
-            this.KyHieuLD.ReadOnly = true;
             this.KyHieuLD.Width = 150;
             // 
             // TenLD
@@ -148,15 +148,21 @@
             this.TenLD.DataPropertyName = "TenLD";
             this.TenLD.HeaderText = "Tên Loại Đơn";
             this.TenLD.Name = "TenLD";
-            this.TenLD.ReadOnly = true;
             this.TenLD.Width = 200;
+            // 
+            // AnLD
+            // 
+            this.AnLD.DataPropertyName = "An";
+            this.AnLD.HeaderText = "Ẩn";
+            this.AnLD.Name = "AnLD";
+            this.AnLD.Width = 50;
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(256, 87);
+            this.btnSua.Location = new System.Drawing.Point(254, 85);
             this.btnSua.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(66, 33);
+            this.btnSua.Size = new System.Drawing.Size(75, 25);
             this.btnSua.TabIndex = 5;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -164,10 +170,10 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(169, 87);
+            this.btnThem.Location = new System.Drawing.Point(169, 85);
             this.btnThem.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(77, 33);
+            this.btnThem.Size = new System.Drawing.Size(75, 25);
             this.btnThem.TabIndex = 4;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
@@ -175,8 +181,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnDown);
-            this.groupBox1.Controls.Add(this.btnUp);
             this.groupBox1.Controls.Add(this.btnXoa);
             this.groupBox1.Controls.Add(this.txtKyHieuLD);
             this.groupBox1.Controls.Add(this.btnSua);
@@ -185,38 +189,18 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.dgvDSLoaiDon);
             this.groupBox1.Controls.Add(this.txtTenLD);
-            this.groupBox1.Location = new System.Drawing.Point(43, 4);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(434, 519);
+            this.groupBox1.Size = new System.Drawing.Size(483, 607);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tổ Khách Hàng";
             // 
-            // btnDown
-            // 
-            this.btnDown.Location = new System.Drawing.Point(86, 87);
-            this.btnDown.Name = "btnDown";
-            this.btnDown.Size = new System.Drawing.Size(75, 33);
-            this.btnDown.TabIndex = 91;
-            this.btnDown.Text = "Down";
-            this.btnDown.UseVisualStyleBackColor = true;
-            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
-            // 
-            // btnUp
-            // 
-            this.btnUp.Location = new System.Drawing.Point(24, 87);
-            this.btnUp.Name = "btnUp";
-            this.btnUp.Size = new System.Drawing.Size(56, 33);
-            this.btnUp.TabIndex = 90;
-            this.btnUp.Text = "Up";
-            this.btnUp.UseVisualStyleBackColor = true;
-            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
-            // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(336, 87);
+            this.btnXoa.Location = new System.Drawing.Point(337, 85);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(67, 33);
+            this.btnXoa.Size = new System.Drawing.Size(75, 25);
             this.btnXoa.TabIndex = 86;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
@@ -225,8 +209,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btnDownTXL);
-            this.groupBox2.Controls.Add(this.btnUpTXL);
             this.groupBox2.Controls.Add(this.btnXoaTXL);
             this.groupBox2.Controls.Add(this.txtKyHieuLDTXL);
             this.groupBox2.Controls.Add(this.btnSuaTXL);
@@ -235,38 +217,18 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.dgvDSLoaiDonTXL);
             this.groupBox2.Controls.Add(this.txtTenLDTXL);
-            this.groupBox2.Location = new System.Drawing.Point(501, 4);
+            this.groupBox2.Location = new System.Drawing.Point(501, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(480, 519);
+            this.groupBox2.Size = new System.Drawing.Size(529, 607);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tổ Xử Lý";
             // 
-            // btnDownTXL
-            // 
-            this.btnDownTXL.Location = new System.Drawing.Point(86, 87);
-            this.btnDownTXL.Name = "btnDownTXL";
-            this.btnDownTXL.Size = new System.Drawing.Size(75, 33);
-            this.btnDownTXL.TabIndex = 91;
-            this.btnDownTXL.Text = "Down";
-            this.btnDownTXL.UseVisualStyleBackColor = true;
-            this.btnDownTXL.Click += new System.EventHandler(this.btnDownTXL_Click);
-            // 
-            // btnUpTXL
-            // 
-            this.btnUpTXL.Location = new System.Drawing.Point(24, 87);
-            this.btnUpTXL.Name = "btnUpTXL";
-            this.btnUpTXL.Size = new System.Drawing.Size(56, 33);
-            this.btnUpTXL.TabIndex = 90;
-            this.btnUpTXL.Text = "Up";
-            this.btnUpTXL.UseVisualStyleBackColor = true;
-            this.btnUpTXL.Click += new System.EventHandler(this.btnUpTXL_Click);
-            // 
             // btnXoaTXL
             // 
-            this.btnXoaTXL.Location = new System.Drawing.Point(336, 87);
+            this.btnXoaTXL.Location = new System.Drawing.Point(337, 85);
             this.btnXoaTXL.Name = "btnXoaTXL";
-            this.btnXoaTXL.Size = new System.Drawing.Size(67, 33);
+            this.btnXoaTXL.Size = new System.Drawing.Size(75, 25);
             this.btnXoaTXL.TabIndex = 87;
             this.btnXoaTXL.Text = "Xóa";
             this.btnXoaTXL.UseVisualStyleBackColor = true;
@@ -283,10 +245,10 @@
             // 
             // btnSuaTXL
             // 
-            this.btnSuaTXL.Location = new System.Drawing.Point(256, 87);
+            this.btnSuaTXL.Location = new System.Drawing.Point(254, 85);
             this.btnSuaTXL.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnSuaTXL.Name = "btnSuaTXL";
-            this.btnSuaTXL.Size = new System.Drawing.Size(66, 33);
+            this.btnSuaTXL.Size = new System.Drawing.Size(75, 25);
             this.btnSuaTXL.TabIndex = 5;
             this.btnSuaTXL.Text = "Sửa";
             this.btnSuaTXL.UseVisualStyleBackColor = true;
@@ -304,10 +266,10 @@
             // 
             // btnThemTXL
             // 
-            this.btnThemTXL.Location = new System.Drawing.Point(169, 87);
+            this.btnThemTXL.Location = new System.Drawing.Point(169, 85);
             this.btnThemTXL.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnThemTXL.Name = "btnThemTXL";
-            this.btnThemTXL.Size = new System.Drawing.Size(77, 33);
+            this.btnThemTXL.Size = new System.Drawing.Size(75, 25);
             this.btnThemTXL.TabIndex = 4;
             this.btnThemTXL.Text = "Thêm";
             this.btnThemTXL.UseVisualStyleBackColor = true;
@@ -325,8 +287,8 @@
             // 
             // dgvDSLoaiDonTXL
             // 
+            this.dgvDSLoaiDonTXL.AllowDrop = true;
             this.dgvDSLoaiDonTXL.AllowUserToAddRows = false;
-            this.dgvDSLoaiDonTXL.AllowUserToDeleteRows = false;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -339,23 +301,26 @@
             this.dgvDSLoaiDonTXL.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaLDTXL,
             this.KyHieuLDTXL,
-            this.TenLDTXL});
-            this.dgvDSLoaiDonTXL.Location = new System.Drawing.Point(7, 129);
+            this.TenLDTXL,
+            this.AnLDTXL});
+            this.dgvDSLoaiDonTXL.Location = new System.Drawing.Point(7, 118);
             this.dgvDSLoaiDonTXL.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dgvDSLoaiDonTXL.MultiSelect = false;
             this.dgvDSLoaiDonTXL.Name = "dgvDSLoaiDonTXL";
-            this.dgvDSLoaiDonTXL.ReadOnly = true;
-            this.dgvDSLoaiDonTXL.Size = new System.Drawing.Size(467, 384);
+            this.dgvDSLoaiDonTXL.Size = new System.Drawing.Size(514, 482);
             this.dgvDSLoaiDonTXL.TabIndex = 6;
             this.dgvDSLoaiDonTXL.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSLoaiDonTXL_CellContentClick);
+            this.dgvDSLoaiDonTXL.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSLoaiDonTXL_CellValueChanged);
             this.dgvDSLoaiDonTXL.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSLoaiDonTXL_RowPostPaint);
+            this.dgvDSLoaiDonTXL.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvDSLoaiDonTXL_DragDrop);
+            this.dgvDSLoaiDonTXL.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvDSLoaiDonTXL_DragEnter);
+            this.dgvDSLoaiDonTXL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvDSLoaiDonTXL_MouseClick);
             // 
             // MaLDTXL
             // 
             this.MaLDTXL.DataPropertyName = "MaLD";
             this.MaLDTXL.HeaderText = "MaLD";
             this.MaLDTXL.Name = "MaLDTXL";
-            this.MaLDTXL.ReadOnly = true;
             this.MaLDTXL.Visible = false;
             // 
             // KyHieuLDTXL
@@ -363,7 +328,6 @@
             this.KyHieuLDTXL.DataPropertyName = "KyHieuLD";
             this.KyHieuLDTXL.HeaderText = "Ký Hiệu Loại Đơn";
             this.KyHieuLDTXL.Name = "KyHieuLDTXL";
-            this.KyHieuLDTXL.ReadOnly = true;
             this.KyHieuLDTXL.Width = 150;
             // 
             // TenLDTXL
@@ -371,8 +335,16 @@
             this.TenLDTXL.DataPropertyName = "TenLD";
             this.TenLDTXL.HeaderText = "Tên Loại Đơn";
             this.TenLDTXL.Name = "TenLDTXL";
-            this.TenLDTXL.ReadOnly = true;
             this.TenLDTXL.Width = 250;
+            // 
+            // AnLDTXL
+            // 
+            this.AnLDTXL.DataPropertyName = "An";
+            this.AnLDTXL.HeaderText = "Ẩn";
+            this.AnLDTXL.Name = "AnLDTXL";
+            this.AnLDTXL.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.AnLDTXL.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.AnLDTXL.Width = 50;
             // 
             // txtTenLDTXL
             // 
@@ -387,7 +359,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(992, 531);
+            this.ClientSize = new System.Drawing.Size(1048, 631);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -414,9 +386,6 @@
         private System.Windows.Forms.DataGridView dgvDSLoaiDon;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaLD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn KyHieuLD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenLD;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtKyHieuLDTXL;
@@ -428,12 +397,13 @@
         private System.Windows.Forms.TextBox txtTenLDTXL;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnXoaTXL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaLD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KyHieuLD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenLD;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn AnLD;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaLDTXL;
         private System.Windows.Forms.DataGridViewTextBoxColumn KyHieuLDTXL;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenLDTXL;
-        private System.Windows.Forms.Button btnDown;
-        private System.Windows.Forms.Button btnUp;
-        private System.Windows.Forms.Button btnDownTXL;
-        private System.Windows.Forms.Button btnUpTXL;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn AnLDTXL;
     }
 }

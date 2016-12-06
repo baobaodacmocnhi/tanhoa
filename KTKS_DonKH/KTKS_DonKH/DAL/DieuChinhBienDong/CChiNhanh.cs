@@ -14,32 +14,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    return db.ChiNhanhs.ToList();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Lấy danh sách Chi Nhánh, hàm này được dùng trong nội bộ DAL
-        /// </summary>
-        /// <param name="inheritance">true</param>
-        /// <returns></returns>
-        public List<ChiNhanh> LoadDSChiNhanh(bool inhertance)
-        {
-            try
-            {
-                if (inhertance)
-                {
-                    return db.ChiNhanhs.ToList();
-                }
-                else
-                {
-                    return null;
-                }
+                return db.ChiNhanhs.ToList();
             }
             catch (Exception ex)
             {
@@ -54,21 +29,14 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         /// <param name="inhertance"></param>
         /// <param name="except">Tên Chi Nhánh ngoại trừ</param>
         /// <returns></returns>
-        public List<ChiNhanh> LoadDSChiNhanh(bool inhertance,string except)
+        public List<ChiNhanh> LoadDSChiNhanh(string except)
         {
             try
             {
-                if (inhertance)
-                {
-                    var query = from itemCN in db.ChiNhanhs
-                                where !itemCN.TenCN.ToUpper().Contains(except.ToUpper())
-                                select itemCN;
-                    return query.ToList();
-                }
-                else
-                {
-                    return null;
-                }
+                var query = from itemCN in db.ChiNhanhs
+                            where !itemCN.TenCN.ToUpper().Contains(except.ToUpper())
+                            select itemCN;
+                return query.ToList();
             }
             catch (Exception ex)
             {
@@ -112,16 +80,16 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    if (db.ChiNhanhs.Count() > 0)
-                        chinhanh.MaCN = db.ChiNhanhs.Max(itemCN => itemCN.MaCN) + 1;
-                    else
-                        chinhanh.MaCN = 1;
-                    chinhanh.CreateDate = DateTime.Now;
-                    chinhanh.CreateBy = CTaiKhoan.MaUser;
-                    db.ChiNhanhs.InsertOnSubmit(chinhanh);
-                    db.SubmitChanges();
-                    MessageBox.Show("Thành công Thêm ChiNhanh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
+                if (db.ChiNhanhs.Count() > 0)
+                    chinhanh.MaCN = db.ChiNhanhs.Max(itemCN => itemCN.MaCN) + 1;
+                else
+                    chinhanh.MaCN = 1;
+                chinhanh.CreateDate = DateTime.Now;
+                chinhanh.CreateBy = CTaiKhoan.MaUser;
+                db.ChiNhanhs.InsertOnSubmit(chinhanh);
+                db.SubmitChanges();
+                MessageBox.Show("Thành công Thêm ChiNhanh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
             }
             catch (Exception ex)
             {
@@ -135,11 +103,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                    chinhanh.ModifyDate = DateTime.Now;
-                    chinhanh.ModifyBy = CTaiKhoan.MaUser;
-                    db.SubmitChanges();
-                    MessageBox.Show("Thành công Sửa ChiNhanh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
+                chinhanh.ModifyDate = DateTime.Now;
+                chinhanh.ModifyBy = CTaiKhoan.MaUser;
+                db.SubmitChanges();
+                MessageBox.Show("Thành công Sửa ChiNhanh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
             }
             catch (Exception ex)
             {

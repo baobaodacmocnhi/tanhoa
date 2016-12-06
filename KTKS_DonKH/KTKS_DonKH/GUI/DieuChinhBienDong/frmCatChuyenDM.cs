@@ -50,26 +50,48 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void frmCatChuyenDM_Load(object sender, EventArgs e)
         {
             this.Location = new Point(70, 70);
-            cmbChiNhanh_Cat.DataSource = _cChiNhanh.LoadDSChiNhanh(true);
+            cmbChiNhanh_Cat.DataSource = _cChiNhanh.LoadDSChiNhanh();
             cmbChiNhanh_Cat.DisplayMember = "TenCN";
             cmbChiNhanh_Cat.ValueMember = "MaCN";
 
-            cmbChiNhanh_Nhan.DataSource = _cChiNhanh.LoadDSChiNhanh(true);
+            cmbChiNhanh_Nhan.DataSource = _cChiNhanh.LoadDSChiNhanh();
             cmbChiNhanh_Nhan.DisplayMember = "TenCN";
             cmbChiNhanh_Nhan.ValueMember = "MaCN";
             cmbChiNhanh_Nhan.SelectedIndex = -1;
 
-            cmbLoaiCT_Cat.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu(true);
+            cmbLoaiCT_Cat.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu();
             cmbLoaiCT_Cat.DisplayMember = "TenLCT";
             cmbLoaiCT_Cat.ValueMember = "MaLCT";
 
-            _ctchungtu = _cChungTu.getCTChungTubyID(_source["DanhBo"], _source["MaCT"]);
+            if (_MaLSCT != 0)
+            {
+                _lichsuchungtu = _cChungTu.getLSCTbyID(_MaLSCT);
 
-            txtDanhBo_Cat.Text = _ctchungtu.DanhBo;
-            txtHoTen_Cat.Text = _source["HoTen"];
-            txtDiaChi_Cat.Text = _ctchungtu.ChungTu.DiaChi;
-            cmbLoaiCT_Cat.SelectedValue = _ctchungtu.ChungTu.MaLCT;
-            txtMaCT_Cat.Text = _ctchungtu.MaCT;
+                if (_lichsuchungtu.CatDM)
+                {
+                    txtDanhBo_Cat.Text = _lichsuchungtu.CatNK_DanhBo;
+                    txtHoTen_Cat.Text = _lichsuchungtu.CatNK_HoTen;
+                    txtDiaChi_Cat.Text = _lichsuchungtu.CatNK_DiaChi;
+                    txtMaCT_Cat.Text = _lichsuchungtu.MaCT;
+                    txtSoNK_Cat.Text = _lichsuchungtu.SoNKCat.Value.ToString();
+                    txtGhiChu_Cat.Text = _lichsuchungtu.GhiChu;
+                    ///
+                    cmbChiNhanh_Nhan.SelectedValue = _lichsuchungtu.NhanNK_MaCN.Value;
+                    txtDanhBo_Nhan.Text = _lichsuchungtu.NhanNK_DanhBo;
+                    txtHoTen_Nhan.Text = _lichsuchungtu.NhanNK_HoTen;
+                    txtDiaChi_Nhan.Text = _lichsuchungtu.NhanNK_DiaChi;
+                }
+            }
+            else
+            {
+                _ctchungtu = _cChungTu.getCTChungTubyID(_source["DanhBo"], _source["MaCT"]);
+
+                txtDanhBo_Cat.Text = _ctchungtu.DanhBo;
+                txtHoTen_Cat.Text = _source["HoTen"];
+                txtDiaChi_Cat.Text = _ctchungtu.ChungTu.DiaChi;
+                cmbLoaiCT_Cat.SelectedValue = _ctchungtu.ChungTu.MaLCT;
+                txtMaCT_Cat.Text = _ctchungtu.MaCT;
+            }
         }
 
         public void LoadDS(HOADON hoadon)

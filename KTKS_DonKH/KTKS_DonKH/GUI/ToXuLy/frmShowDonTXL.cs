@@ -71,7 +71,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 dgvLichSuChuyenKT.ColumnHeadersDefaultCellStyle.Font = new Font(dgvLichSuChuyenKT.Font, FontStyle.Bold);
 
                 this.Location = new Point(0, 70);
-                cmbLD.DataSource = _cLoaiDonTXL.LoadDSLoaiDonTXL(true);
+                cmbLD.DataSource = _cLoaiDonTXL.LoadDSLoaiDonTXL();
                 cmbLD.DisplayMember = "TenLD";
                 cmbLD.ValueMember = "MaLD";
                 cmbLD.SelectedIndex = -1;

@@ -309,7 +309,7 @@
             // 
             this.btnIn.Location = new System.Drawing.Point(693, 258);
             this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(86, 25);
+            this.btnIn.Size = new System.Drawing.Size(75, 25);
             this.btnIn.TabIndex = 38;
             this.btnIn.Text = "In Phiếu";
             this.btnIn.UseVisualStyleBackColor = true;
@@ -319,7 +319,7 @@
             // 
             this.btnSua.Location = new System.Drawing.Point(464, 258);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(86, 25);
+            this.btnSua.Size = new System.Drawing.Size(75, 25);
             this.btnSua.TabIndex = 86;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;

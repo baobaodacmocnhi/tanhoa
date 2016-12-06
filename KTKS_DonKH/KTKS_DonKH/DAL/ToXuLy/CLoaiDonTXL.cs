@@ -10,15 +10,11 @@ namespace KTKS_DonKH.DAL.ToXuLy
 {
     class CLoaiDonTXL : CDAL
     {
-        /// <summary>
-        /// Lấy danh sách Loại Đơn
-        /// </summary>
-        /// <returns></returns>
-        public List<LoaiDonTXL> LoadDSLoaiDonTXL()
+        public List<LoaiDonTXL> LoadDSLoaiDonTXL_All()
         {
             try
             {
-                    return db.LoaiDonTXLs.OrderBy(itemLD => itemLD.TenLD).ToList();
+                return db.LoaiDonTXLs.OrderBy(item => item.STT).ToList();
             }
             catch (Exception ex)
             {
@@ -27,21 +23,11 @@ namespace KTKS_DonKH.DAL.ToXuLy
             }
         }
 
-        /// <summary>
-        /// Lấy danh sách Loại Đơn, hàm này được dùng trong nội bộ DAL
-        /// </summary>
-        /// <param name="inheritance">true</param>
-        /// <returns></returns>
-        public List<LoaiDonTXL> LoadDSLoaiDonTXL(bool inheritance)
+        public List<LoaiDonTXL> LoadDSLoaiDonTXL()
         {
             try
             {
-                if (inheritance)
-                {
-                    return db.LoaiDonTXLs.OrderBy(itemLD => itemLD.TenLD).ToList();
-                }
-                else
-                    return null;
+                return db.LoaiDonTXLs.Where(item=>item.An==false).OrderBy(item => item.STT).ToList();
             }
             catch (Exception ex)
             {
@@ -63,11 +49,6 @@ namespace KTKS_DonKH.DAL.ToXuLy
             }
         }
 
-        /// <summary>
-        /// Lấy Tên Loại Đơn từ Mã Loại Đơn
-        /// </summary>
-        /// <param name="MaLD"></param>
-        /// <returns></returns>
         public string getTenLDbyID(int MaLD)
         {
             try
@@ -81,11 +62,6 @@ namespace KTKS_DonKH.DAL.ToXuLy
             }
         }
 
-        /// <summary>
-        /// Lấy Ký Hiệu loại đơn từ Mã Loại Đơn
-        /// </summary>
-        /// <param name="MaLD"></param>
-        /// <returns></returns>
         public string getKyHieuLDTXLubyID(int MaLD)
         {
             try
@@ -103,16 +79,16 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                    if (db.LoaiDonTXLs.Count() > 0)
-                        loaidontxl.MaLD = db.LoaiDonTXLs.Max(itemLD => itemLD.MaLD) + 1;
-                    else
-                        loaidontxl.MaLD = 1;
-                    loaidontxl.CreateDate = DateTime.Now;
-                    loaidontxl.CreateBy = CTaiKhoan.MaUser;
-                    db.LoaiDonTXLs.InsertOnSubmit(loaidontxl);
-                    db.SubmitChanges();
-                    //MessageBox.Show("Thành công Thêm LoaiDonTXL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
+                if (db.LoaiDonTXLs.Count() > 0)
+                    loaidontxl.MaLD = db.LoaiDonTXLs.Max(itemLD => itemLD.MaLD) + 1;
+                else
+                    loaidontxl.MaLD = 1;
+                loaidontxl.CreateDate = DateTime.Now;
+                loaidontxl.CreateBy = CTaiKhoan.MaUser;
+                db.LoaiDonTXLs.InsertOnSubmit(loaidontxl);
+                db.SubmitChanges();
+                //MessageBox.Show("Thành công Thêm LoaiDonTXL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
             }
             catch (Exception ex)
             {
@@ -126,11 +102,11 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                    loaidontxl.ModifyDate = DateTime.Now;
-                    loaidontxl.ModifyBy = CTaiKhoan.MaUser;
-                    db.SubmitChanges();
-                    //MessageBox.Show("Thành công Sửa LoaiDonTXL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
+                loaidontxl.ModifyDate = DateTime.Now;
+                loaidontxl.ModifyBy = CTaiKhoan.MaUser;
+                db.SubmitChanges();
+                //MessageBox.Show("Thành công Sửa LoaiDonTXL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
             }
             catch (Exception)
             {
@@ -144,10 +120,10 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                    db.LoaiDonTXLs.DeleteOnSubmit(loaidontxl);
-                    db.SubmitChanges();
-                    //MessageBox.Show("Thành công Sửa LoaiDonTXL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
+                db.LoaiDonTXLs.DeleteOnSubmit(loaidontxl);
+                db.SubmitChanges();
+                //MessageBox.Show("Thành công Sửa LoaiDonTXL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
             }
             catch (Exception ex)
             {

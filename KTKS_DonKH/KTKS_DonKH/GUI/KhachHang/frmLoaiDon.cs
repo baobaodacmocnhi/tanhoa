@@ -15,7 +15,9 @@ namespace KTKS_DonKH.GUI.KhachHang
     public partial class frmLoaiDon : Form
     {
         int _selectedindex = -1;
+        BindingList<LoaiDon> _bSourceLD;
         int _selectedindexTXL = -1;
+        BindingList<LoaiDonTXL> _bSourceLDTXL;
         CLoaiDon _cLoaiDon = new CLoaiDon();
         CLoaiDonTXL _cLoaiDonTXL = new CLoaiDonTXL();
 
@@ -29,26 +31,72 @@ namespace KTKS_DonKH.GUI.KhachHang
             txtKyHieuLD.Text = "";
             txtTenLD.Text = "";
             _selectedindex = -1;
-            dgvDSLoaiDon.DataSource = _cLoaiDon.LoadDSLoaiDon();
+            _bSourceLD = new BindingList<LoaiDon>(_cLoaiDon.LoadDSLoaiDon_All());
+            dgvDSLoaiDon.DataSource = _bSourceLD;
             ///
             txtKyHieuLDTXL.Text = "";
             txtTenLDTXL.Text = "";
             _selectedindexTXL = -1;
-            dgvDSLoaiDonTXL.DataSource = _cLoaiDonTXL.LoadDSLoaiDonTXL();
+            _bSourceLDTXL = new BindingList<LoaiDonTXL>(_cLoaiDonTXL.LoadDSLoaiDonTXL_All());
+            dgvDSLoaiDonTXL.DataSource = _bSourceLDTXL;
         }
 
         private void frmCapNhatLoaiDon_Load(object sender, EventArgs e)
         {
             dgvDSLoaiDon.AutoGenerateColumns = false;
-            dgvDSLoaiDon.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSLoaiDon.Font, FontStyle.Bold);
-            dgvDSLoaiDon.DataSource = _cLoaiDon.LoadDSLoaiDon();
+            _bSourceLD = new BindingList<LoaiDon>(_cLoaiDon.LoadDSLoaiDon_All());
+            dgvDSLoaiDon.DataSource = _bSourceLD;
 
             dgvDSLoaiDonTXL.AutoGenerateColumns = false;
-            dgvDSLoaiDonTXL.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSLoaiDonTXL.Font, FontStyle.Bold);
-            dgvDSLoaiDonTXL.DataSource = _cLoaiDonTXL.LoadDSLoaiDonTXL();
+            _bSourceLDTXL = new BindingList<LoaiDonTXL>(_cLoaiDonTXL.LoadDSLoaiDonTXL_All());
+            dgvDSLoaiDonTXL.DataSource = _bSourceLDTXL;
         }
 
         #region Tổ Khách Hàng
+
+        int rowIndexFromMouseDown;
+        DataGridViewRow rw;
+        private void dgvDSLoaiDon_DragDrop(object sender, DragEventArgs e)
+        {
+            int rowIndexOfItemUnderMouseToDrop;
+            Point clientPoint = dgvDSLoaiDon.PointToClient(new Point(e.X, e.Y));
+            rowIndexOfItemUnderMouseToDrop = dgvDSLoaiDon.HitTest(clientPoint.X, clientPoint.Y).RowIndex;
+
+            if (e.Effect == DragDropEffects.Move)
+            {
+                var item = this._bSourceLD[rowIndexFromMouseDown];
+                _bSourceLD.RemoveAt(rowIndexFromMouseDown);
+                _bSourceLD.Insert(rowIndexOfItemUnderMouseToDrop, item);
+
+                ///update STT dô database
+                for (int i = 0; i < _bSourceLD.Count; i++)
+                {
+                    _bSourceLD[i].STT = i + 1;
+                }
+                _cLoaiDon.SubmitChanges();
+            }
+        }
+
+        private void dgvDSLoaiDon_DragEnter(object sender, DragEventArgs e)
+        {
+            if (dgvDSLoaiDon.SelectedRows.Count > 0)
+            {
+                e.Effect = DragDropEffects.Move;
+            }
+        }
+
+        private void dgvDSLoaiDon_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (dgvDSLoaiDon.SelectedRows.Count == 1)
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    rw = dgvDSLoaiDon.SelectedRows[0];
+                    rowIndexFromMouseDown = dgvDSLoaiDon.SelectedRows[0].Index;
+                    dgvDSLoaiDon.DoDragDrop(rw, DragDropEffects.Move);
+                }
+            }
+        }
 
         private void dgvDSLoaiDon_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -69,6 +117,15 @@ namespace KTKS_DonKH.GUI.KhachHang
             using (SolidBrush b = new SolidBrush(dgvDSLoaiDon.RowHeadersDefaultCellStyle.ForeColor))
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvDSLoaiDon_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvDSLoaiDon.Columns[e.ColumnIndex].Name == "AnLD")
+            {
+                LoaiDon loaidon = _cLoaiDon.getLoaiDonbyID(int.Parse(dgvDSLoaiDon["MaLD", e.RowIndex].Value.ToString()));
+                _cLoaiDon.SuaLoaiDon(loaidon);
             }
         }
 
@@ -118,6 +175,50 @@ namespace KTKS_DonKH.GUI.KhachHang
 
         #region Tổ Xử Lý
 
+        int rowIndexFromMouseDownTXL;
+        DataGridViewRow rwTXL;
+        private void dgvDSLoaiDonTXL_DragDrop(object sender, DragEventArgs e)
+        {
+            int rowIndexOfItemUnderMouseToDrop;
+            Point clientPoint = dgvDSLoaiDonTXL.PointToClient(new Point(e.X, e.Y));
+            rowIndexOfItemUnderMouseToDrop = dgvDSLoaiDonTXL.HitTest(clientPoint.X, clientPoint.Y).RowIndex;
+
+            if (e.Effect == DragDropEffects.Move)
+            {
+                var item = this._bSourceLDTXL[rowIndexFromMouseDownTXL];
+                _bSourceLDTXL.RemoveAt(rowIndexFromMouseDownTXL);
+                _bSourceLDTXL.Insert(rowIndexOfItemUnderMouseToDrop, item);
+
+                ///update STT dô database
+                for (int i = 0; i < _bSourceLDTXL.Count; i++)
+                {
+                    _bSourceLDTXL[i].STT = i + 1;
+                }
+                _cLoaiDonTXL.SubmitChanges();
+            }
+        }
+
+        private void dgvDSLoaiDonTXL_DragEnter(object sender, DragEventArgs e)
+        {
+            if (dgvDSLoaiDonTXL.SelectedRows.Count > 0)
+            {
+                e.Effect = DragDropEffects.Move;
+            }
+        }
+
+        private void dgvDSLoaiDonTXL_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (dgvDSLoaiDonTXL.SelectedRows.Count == 1)
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    rwTXL = dgvDSLoaiDonTXL.SelectedRows[0];
+                    rowIndexFromMouseDownTXL = dgvDSLoaiDonTXL.SelectedRows[0].Index;
+                    dgvDSLoaiDonTXL.DoDragDrop(rwTXL, DragDropEffects.Move);
+                }
+            }
+        }
+
         private void dgvDSLoaiDonTXL_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -137,6 +238,15 @@ namespace KTKS_DonKH.GUI.KhachHang
             using (SolidBrush b = new SolidBrush(dgvDSLoaiDonTXL.RowHeadersDefaultCellStyle.ForeColor))
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvDSLoaiDonTXL_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvDSLoaiDonTXL.Columns[e.ColumnIndex].Name == "AnLDTXL")
+            {
+                LoaiDonTXL loaidontxl = _cLoaiDonTXL.getLoaiDonTXLbyID(int.Parse(dgvDSLoaiDonTXL["MaLDTXL", e.RowIndex].Value.ToString()));
+                _cLoaiDonTXL.SuaLoaiDonTXL(loaidontxl);
             }
         }
 
@@ -323,6 +433,14 @@ namespace KTKS_DonKH.GUI.KhachHang
             {
             }
         }
+
+        
+
+        
+
+        
+
+        
 
     }
 }

@@ -22695,7 +22695,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _SoPhieu;
 		
-		private System.Nullable<bool> _CatDM;
+		private bool _CatDM;
 		
 		private System.Nullable<int> _SoNKCat;
 		
@@ -22707,9 +22707,9 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _NhanNK_DiaChi;
 		
-		private System.Nullable<bool> _NhanDM;
+		private bool _NhanDM;
 		
-		private System.Nullable<bool> _YeuCauCat;
+		private bool _YeuCauCat;
 		
 		private System.Nullable<int> _SoNKNhan;
 		
@@ -22769,7 +22769,7 @@ namespace KTKS_DonKH.LinQ
     partial void OnNgayHetHanChanged();
     partial void OnSoPhieuChanging(System.Nullable<decimal> value);
     partial void OnSoPhieuChanged();
-    partial void OnCatDMChanging(System.Nullable<bool> value);
+    partial void OnCatDMChanging(bool value);
     partial void OnCatDMChanged();
     partial void OnSoNKCatChanging(System.Nullable<int> value);
     partial void OnSoNKCatChanged();
@@ -22781,9 +22781,9 @@ namespace KTKS_DonKH.LinQ
     partial void OnNhanNK_HoTenChanged();
     partial void OnNhanNK_DiaChiChanging(string value);
     partial void OnNhanNK_DiaChiChanged();
-    partial void OnNhanDMChanging(System.Nullable<bool> value);
+    partial void OnNhanDMChanging(bool value);
     partial void OnNhanDMChanged();
-    partial void OnYeuCauCatChanging(System.Nullable<bool> value);
+    partial void OnYeuCauCatChanging(bool value);
     partial void OnYeuCauCatChanged();
     partial void OnSoNKNhanChanging(System.Nullable<int> value);
     partial void OnSoNKNhanChanged();
@@ -23044,8 +23044,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatDM", DbType="Bit")]
-		public System.Nullable<bool> CatDM
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatDM", DbType="Bit NOT NULL")]
+		public bool CatDM
 		{
 			get
 			{
@@ -23164,8 +23164,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NhanDM", DbType="Bit")]
-		public System.Nullable<bool> NhanDM
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NhanDM", DbType="Bit NOT NULL")]
+		public bool NhanDM
 		{
 			get
 			{
@@ -23184,8 +23184,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_YeuCauCat", DbType="Bit")]
-		public System.Nullable<bool> YeuCauCat
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_YeuCauCat", DbType="Bit NOT NULL")]
+		public bool YeuCauCat
 		{
 			get
 			{
@@ -25353,6 +25353,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _TenLD;
 		
+		private bool _An;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -25375,6 +25377,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnKyHieuLDChanged();
     partial void OnTenLDChanging(string value);
     partial void OnTenLDChanged();
+    partial void OnAnChanging(bool value);
+    partial void OnAnChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -25467,6 +25471,26 @@ namespace KTKS_DonKH.LinQ
 					this._TenLD = value;
 					this.SendPropertyChanged("TenLD");
 					this.OnTenLDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_An", DbType="Bit NOT NULL")]
+		public bool An
+		{
+			get
+			{
+				return this._An;
+			}
+			set
+			{
+				if ((this._An != value))
+				{
+					this.OnAnChanging(value);
+					this.SendPropertyChanging();
+					this._An = value;
+					this.SendPropertyChanged("An");
+					this.OnAnChanged();
 				}
 			}
 		}
@@ -25611,6 +25635,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _TenLD;
 		
+		private bool _An;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -25633,6 +25659,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnKyHieuLDChanged();
     partial void OnTenLDChanging(string value);
     partial void OnTenLDChanged();
+    partial void OnAnChanging(bool value);
+    partial void OnAnChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -25725,6 +25753,26 @@ namespace KTKS_DonKH.LinQ
 					this._TenLD = value;
 					this.SendPropertyChanged("TenLD");
 					this.OnTenLDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_An", DbType="Bit NOT NULL")]
+		public bool An
+		{
+			get
+			{
+				return this._An;
+			}
+			set
+			{
+				if ((this._An != value))
+				{
+					this.OnAnChanging(value);
+					this.SendPropertyChanging();
+					this._An = value;
+					this.SendPropertyChanged("An");
+					this.OnAnChanged();
 				}
 			}
 		}

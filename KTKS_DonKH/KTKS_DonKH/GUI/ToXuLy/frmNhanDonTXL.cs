@@ -93,7 +93,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
             dgvLichSuChuyenKT.AutoGenerateColumns = false;
             dgvLichSuChuyenKT.ColumnHeadersDefaultCellStyle.Font = new Font(dgvLichSuChuyenKT.Font, FontStyle.Bold);
 
-            cmbLD.DataSource = _cLoaiDonTXL.LoadDSLoaiDonTXL(true);
+            cmbLD.DataSource = _cLoaiDonTXL.LoadDSLoaiDonTXL();
             cmbLD.DisplayMember = "TenLD";
             cmbLD.ValueMember = "MaLD";
             cmbLD.SelectedIndex = -1;

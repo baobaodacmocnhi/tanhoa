@@ -35,7 +35,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void frmShowCatChuyenDM_Load(object sender, EventArgs e)
         {
-            cmbChiNhanh_Nhan.DataSource = _cChiNhanh.LoadDSChiNhanh(true);
+            cmbChiNhanh_Nhan.DataSource = _cChiNhanh.LoadDSChiNhanh();
             cmbChiNhanh_Nhan.DisplayMember = "TenCN";
             cmbChiNhanh_Nhan.ValueMember = "MaCN";
             cmbChiNhanh_Nhan.SelectedIndex = -1;
@@ -43,7 +43,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (_cChungTu.getLSCTbyID(_MaLSCT) != null)
             {
                 _lichsuchungtu = _cChungTu.getLSCTbyID(_MaLSCT);
-                if (_lichsuchungtu.CatDM.Value)
+                if (_lichsuchungtu.CatDM)
                 {
                     txtDanhBo_Cat.Text = _lichsuchungtu.CatNK_DanhBo;
                     txtHoTen_Cat.Text = _lichsuchungtu.CatNK_HoTen;
@@ -63,7 +63,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (_lichsuchungtu != null)
             {
-                if (_lichsuchungtu.CatDM.Value)
+                if (_lichsuchungtu.CatDM)
                 {
                     DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                     DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();

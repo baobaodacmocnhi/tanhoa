@@ -37,11 +37,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void frmShowNhanDM_Load(object sender, EventArgs e)
         {
-            cmbChiNhanh.DataSource = _cChiNhanh.LoadDSChiNhanh(true);
+            cmbChiNhanh.DataSource = _cChiNhanh.LoadDSChiNhanh();
             cmbChiNhanh.DisplayMember = "TenCN";
             cmbChiNhanh.ValueMember = "MaCN";
 
-            cmbLoaiCT.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu(true);
+            cmbLoaiCT.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu();
             cmbLoaiCT.DisplayMember = "TenLCT";
             cmbLoaiCT.ValueMember = "MaLCT";
 
@@ -52,7 +52,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 if (!string.IsNullOrEmpty(_lichsuchungtu.NhanDM.ToString()))
                 {
-                    if (_lichsuchungtu.NhanDM.Value)
+                    if (_lichsuchungtu.NhanDM)
                     {
                         btnSua.Visible = true;
                         txtDanhBo_Nhan.Text = _lichsuchungtu.NhanNK_DanhBo;
@@ -74,7 +74,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 else
                     if (!string.IsNullOrEmpty(_lichsuchungtu.YeuCauCat.ToString()))
                     {
-                        if (_lichsuchungtu.YeuCauCat.Value)
+                        if (_lichsuchungtu.YeuCauCat)
                         {
                             label6.Text = "Số NK YC Cắt:";
                             
@@ -103,7 +103,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 if (!string.IsNullOrEmpty(_lichsuchungtu.NhanDM.ToString()))
                 {
-                    if (_lichsuchungtu.NhanDM.Value)
+                    if (_lichsuchungtu.NhanDM)
                     {
                         DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                         DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
@@ -145,7 +145,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 else
                     if (!string.IsNullOrEmpty(_lichsuchungtu.YeuCauCat.ToString()))
                     {
-                        if (_lichsuchungtu.YeuCauCat.Value)
+                        if (_lichsuchungtu.YeuCauCat)
                         {
                             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                             DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
@@ -193,7 +193,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 if (!string.IsNullOrEmpty(_lichsuchungtu.NhanDM.ToString()))
                 {
-                    if (_lichsuchungtu.NhanDM.Value)
+                    if (_lichsuchungtu.NhanDM)
                     {
                         try
                         {
@@ -246,7 +246,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 if (!string.IsNullOrEmpty(_lichsuchungtu.YeuCauCat.ToString()))
                 {
-                    if (_lichsuchungtu.YeuCauCat.Value)
+                    if (_lichsuchungtu.YeuCauCat)
                     {
                         MessageBox.Show("Chỉ sửa Danh Bộ, Khách Hàng, Địa Chỉ Gắn Mới", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         MessageBox.Show("Yêu Cầu Cắt không được sửa ở đây\n Vui lòng vào Số Đơn, Danh Bộ & Số Chứng Từ để sửa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

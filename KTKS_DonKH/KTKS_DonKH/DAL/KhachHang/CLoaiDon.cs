@@ -10,17 +10,11 @@ namespace KTKS_DonKH.DAL.KhachHang
 {
     class CLoaiDon : CDAL
     {
-        //dbKinhDoanhDataContext db = new dbKinhDoanhDataContext();
-
-        /// <summary>
-        /// Lấy danh sách Loại Đơn
-        /// </summary>
-        /// <returns></returns>
-        public List<LoaiDon> LoadDSLoaiDon()
+        public List<LoaiDon> LoadDSLoaiDon_All()
         {
             try
             {
-                    return db.LoaiDons.OrderBy(item => item.STT).ToList();
+                return db.LoaiDons.OrderBy(item => item.STT).ToList();
             }
             catch (Exception ex)
             {
@@ -29,21 +23,11 @@ namespace KTKS_DonKH.DAL.KhachHang
             }
         }
 
-        /// <summary>
-        /// Lấy danh sách Loại Đơn, hàm này được dùng trong nội bộ DAL
-        /// </summary>
-        /// <param name="inheritance">true</param>
-        /// <returns></returns>
-        public List<LoaiDon> LoadDSLoaiDon(bool inheritance)
+        public List<LoaiDon> LoadDSLoaiDon()
         {
             try
             {
-                if (inheritance)
-                {
-                    return db.LoaiDons.OrderBy(item => item.STT).ToList();
-                }
-                else
-                    return null;
+                return db.LoaiDons.Where(item => item.An == false).OrderBy(item => item.STT).ToList();
             }
             catch (Exception ex)
             {
@@ -65,11 +49,6 @@ namespace KTKS_DonKH.DAL.KhachHang
             }
         }
 
-        /// <summary>
-        /// Lấy Tên Loại Đơn từ Mã Loại Đơn
-        /// </summary>
-        /// <param name="MaLD"></param>
-        /// <returns></returns>
         public string getTenLDbyID(int MaLD)
         {
             try
@@ -83,11 +62,6 @@ namespace KTKS_DonKH.DAL.KhachHang
             }
         }
 
-        /// <summary>
-        /// Lấy Ký Hiệu loại đơn từ Mã Loại Đơn
-        /// </summary>
-        /// <param name="MaLD"></param>
-        /// <returns></returns>
         public string getKyHieuLDubyID(int MaLD)
         {
             try
@@ -105,16 +79,16 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                    if (db.LoaiDons.Count() > 0)
-                        loaidon.MaLD = db.LoaiDons.Max(itemLD => itemLD.MaLD) + 1;
-                    else
-                        loaidon.MaLD = 1;
-                    loaidon.CreateDate = DateTime.Now;
-                    loaidon.CreateBy = CTaiKhoan.MaUser;
-                    db.LoaiDons.InsertOnSubmit(loaidon);
-                    db.SubmitChanges();
-                    //MessageBox.Show("Thành công Thêm LoaiDon", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
+                if (db.LoaiDons.Count() > 0)
+                    loaidon.MaLD = db.LoaiDons.Max(itemLD => itemLD.MaLD) + 1;
+                else
+                    loaidon.MaLD = 1;
+                loaidon.CreateDate = DateTime.Now;
+                loaidon.CreateBy = CTaiKhoan.MaUser;
+                db.LoaiDons.InsertOnSubmit(loaidon);
+                db.SubmitChanges();
+                //MessageBox.Show("Thành công Thêm LoaiDon", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
             }
             catch (Exception ex)
             {
@@ -128,11 +102,11 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                    loaidon.ModifyDate = DateTime.Now;
-                    loaidon.ModifyBy = CTaiKhoan.MaUser;
-                    db.SubmitChanges();
-                    //MessageBox.Show("Thành công Sửa LoaiDon", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
+                loaidon.ModifyDate = DateTime.Now;
+                loaidon.ModifyBy = CTaiKhoan.MaUser;
+                db.SubmitChanges();
+                //MessageBox.Show("Thành công Sửa LoaiDon", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
             }
             catch (Exception)
             {
@@ -146,10 +120,10 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                    db.LoaiDons.DeleteOnSubmit(loaidon);
-                    db.SubmitChanges();
-                    //MessageBox.Show("Thành công Sửa LoaiDon", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
+                db.LoaiDons.DeleteOnSubmit(loaidon);
+                db.SubmitChanges();
+                //MessageBox.Show("Thành công Sửa LoaiDon", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
             }
             catch (Exception ex)
             {

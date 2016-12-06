@@ -50,8 +50,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.cmbChiNhanh_Nhan = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.txtSoNK_Nhan = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.txtDiaChi_Nhan = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtHoTen_Nhan = new System.Windows.Forms.TextBox();
@@ -232,8 +230,6 @@
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.cmbChiNhanh_Nhan);
             this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.txtSoNK_Nhan);
-            this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.txtDiaChi_Nhan);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.txtHoTen_Nhan);
@@ -279,24 +275,6 @@
             this.label14.Size = new System.Drawing.Size(67, 16);
             this.label14.TabIndex = 0;
             this.label14.Text = "Nơi Nhận:";
-            // 
-            // txtSoNK_Nhan
-            // 
-            this.txtSoNK_Nhan.Location = new System.Drawing.Point(127, 172);
-            this.txtSoNK_Nhan.Name = "txtSoNK_Nhan";
-            this.txtSoNK_Nhan.Size = new System.Drawing.Size(100, 22);
-            this.txtSoNK_Nhan.TabIndex = 9;
-            this.txtSoNK_Nhan.Visible = false;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(14, 174);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(84, 16);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Số NK Nhận:";
-            this.label7.Visible = false;
             // 
             // txtDiaChi_Nhan
             // 
@@ -411,8 +389,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cmbChiNhanh_Nhan;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtSoNK_Nhan;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtDiaChi_Nhan;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtHoTen_Nhan;

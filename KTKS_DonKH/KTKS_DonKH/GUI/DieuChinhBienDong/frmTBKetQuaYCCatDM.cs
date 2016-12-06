@@ -49,7 +49,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             dgvDSTBKetQuaYCCatDM.AutoGenerateColumns = false;
             dgvDSTBKetQuaYCCatDM.DataSource = _cTB.LoadDSTBKetQuaYCCatDM();
 
-            cmbChiNhanh_Nhan.DataSource = _cChiNhanh.LoadDSChiNhanh(true);
+            cmbChiNhanh_Nhan.DataSource = _cChiNhanh.LoadDSChiNhanh();
             cmbChiNhanh_Nhan.DisplayMember = "TenCN";
             cmbChiNhanh_Nhan.ValueMember = "MaCN";
             cmbChiNhanh_Nhan.SelectedIndex = -1;

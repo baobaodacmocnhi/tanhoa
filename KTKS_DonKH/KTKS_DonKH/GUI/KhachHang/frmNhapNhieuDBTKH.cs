@@ -44,7 +44,7 @@ namespace KTKS_DonKH.GUI.KhachHang
 
             dgvDanhBoChuyenKT.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDanhBoChuyenKT.Font, FontStyle.Bold);
 
-            cmbLD.DataSource = _cLoaiDon.LoadDSLoaiDon(true);
+            cmbLD.DataSource = _cLoaiDon.LoadDSLoaiDon();
             cmbLD.DisplayMember = "TenLD";
             cmbLD.ValueMember = "MaLD";
             cmbLD.SelectedIndex = -1;

@@ -40,7 +40,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
             dgvDanhBo.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDanhBo.Font, FontStyle.Bold);
 
-            cmbLD.DataSource = _cLoaiDonTXL.LoadDSLoaiDonTXL(true);
+            cmbLD.DataSource = _cLoaiDonTXL.LoadDSLoaiDonTXL();
             cmbLD.DisplayMember = "TenLD";
             cmbLD.ValueMember = "MaLD";
             cmbLD.SelectedIndex = -1;
