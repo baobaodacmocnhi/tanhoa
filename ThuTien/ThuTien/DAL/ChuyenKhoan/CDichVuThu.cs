@@ -227,6 +227,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         from itemtableDN in tableDN.DefaultIfEmpty()
                         where itemHD.MaNV_HanhThu == MaNV_HanhThu
                             && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
+                            && !(from itemCTDN in _db.TT_CTDongNuocs where itemCTDN.TT_DongNuoc.Huy == false select itemCTDN.SoHoaDon).Contains(itemHD.SOHOADON)
                         select new
                         {
                             itemDV.SoHoaDon,
@@ -298,6 +299,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         where itemHD.MaNV_HanhThu == MaNV_HanhThu
                             && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
                             && itemHD.DOT.Value >= FromDot && itemHD.DOT.Value <= ToDot
+                            && !(from itemCTDN in _db.TT_CTDongNuocs where itemCTDN.TT_DongNuoc.Huy == false select itemCTDN.SoHoaDon).Contains(itemHD.SOHOADON)
                         select new
                         {
                             itemDV.SoHoaDon,

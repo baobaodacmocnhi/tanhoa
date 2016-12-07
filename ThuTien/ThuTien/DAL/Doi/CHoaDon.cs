@@ -11,8 +11,6 @@ namespace ThuTien.DAL.Doi
 {
     class CHoaDon : CDAL
     {
-        CDocSo _cCapNuocTanHoa = new CDocSo();
-
         /// <summary>
         /// Thêm hóa đơn mới từ billing (.dat)
         /// </summary>
@@ -495,6 +493,14 @@ namespace ThuTien.DAL.Doi
                 return GetMoiNhat(DanhBo).MALOTRINH;
             else
                 return "";
+        }
+
+        public string GetHanhThu(string SoHoaDon)
+        {
+            return (from itemHD in _db.HOADONs
+                    join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND
+                    where itemHD.SOHOADON == SoHoaDon
+                    select new { itemND.HoTen }).FirstOrDefault().HoTen;
         }
 
         public List<HOADON> GetDSTon(string DanhBo)
