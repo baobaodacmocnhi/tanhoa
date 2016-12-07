@@ -983,6 +983,7 @@
       <Column Name="NhanNK_DanhBo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="NhanNK_HoTen" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="NhanNK_DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NhanNK_GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="NhanDM" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="YeuCauCat" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="SoNKNhan" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -990,6 +991,7 @@
       <Column Name="CatNK_DanhBo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="CatNK_HoTen" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="CatNK_DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CatNK_GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="MaDon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="ToXuLy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />

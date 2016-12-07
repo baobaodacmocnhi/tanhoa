@@ -314,6 +314,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtuCat);
                                 lichsuchungtuCat.SoPhieu = _cChungTu.getMaxNextSoPhieuLSCT();
                                 lichsuchungtuCat.YeuCauCat = true;
+                                lichsuchungtuCat.NhanNK_MaCN = _cChiNhanh.GetIDByTenCN("Tân Hòa");
                                 lichsuchungtuCat.NhanNK_DanhBo = txtDanhBo_Nhan.Text.Trim();
                                 lichsuchungtuCat.NhanNK_HoTen = txtHoTen_Nhan.Text.Trim();
                                 lichsuchungtuCat.NhanNK_DiaChi = txtDiaChi_Nhan.Text.Trim();
@@ -322,6 +323,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 lichsuchungtuCat.CatNK_HoTen = txtHoTen_Cat.Text.Trim();
                                 lichsuchungtuCat.CatNK_DiaChi = txtDiaChi_Cat.Text.Trim();
                                 lichsuchungtuCat.SoNKNhan = int.Parse(txtSoNKNhan.Text.Trim());
+                                lichsuchungtuCat.CatNK_GhiChu = txtGhiChu.Text.Trim();
                                 ///Ký Tên
                                 BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
                                 if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")

@@ -22707,6 +22707,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _NhanNK_DiaChi;
 		
+		private string _NhanNK_GhiChu;
+		
 		private bool _NhanDM;
 		
 		private bool _YeuCauCat;
@@ -22720,6 +22722,8 @@ namespace KTKS_DonKH.LinQ
 		private string _CatNK_HoTen;
 		
 		private string _CatNK_DiaChi;
+		
+		private string _CatNK_GhiChu;
 		
 		private string _GhiChu;
 		
@@ -22781,6 +22785,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnNhanNK_HoTenChanged();
     partial void OnNhanNK_DiaChiChanging(string value);
     partial void OnNhanNK_DiaChiChanged();
+    partial void OnNhanNK_GhiChuChanging(string value);
+    partial void OnNhanNK_GhiChuChanged();
     partial void OnNhanDMChanging(bool value);
     partial void OnNhanDMChanged();
     partial void OnYeuCauCatChanging(bool value);
@@ -22795,6 +22801,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCatNK_HoTenChanged();
     partial void OnCatNK_DiaChiChanging(string value);
     partial void OnCatNK_DiaChiChanged();
+    partial void OnCatNK_GhiChuChanging(string value);
+    partial void OnCatNK_GhiChuChanged();
     partial void OnGhiChuChanging(string value);
     partial void OnGhiChuChanged();
     partial void OnMaDonChanging(System.Nullable<decimal> value);
@@ -23164,6 +23172,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NhanNK_GhiChu", DbType="NVarChar(MAX)")]
+		public string NhanNK_GhiChu
+		{
+			get
+			{
+				return this._NhanNK_GhiChu;
+			}
+			set
+			{
+				if ((this._NhanNK_GhiChu != value))
+				{
+					this.OnNhanNK_GhiChuChanging(value);
+					this.SendPropertyChanging();
+					this._NhanNK_GhiChu = value;
+					this.SendPropertyChanged("NhanNK_GhiChu");
+					this.OnNhanNK_GhiChuChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NhanDM", DbType="Bit NOT NULL")]
 		public bool NhanDM
 		{
@@ -23300,6 +23328,26 @@ namespace KTKS_DonKH.LinQ
 					this._CatNK_DiaChi = value;
 					this.SendPropertyChanged("CatNK_DiaChi");
 					this.OnCatNK_DiaChiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_GhiChu", DbType="NVarChar(MAX)")]
+		public string CatNK_GhiChu
+		{
+			get
+			{
+				return this._CatNK_GhiChu;
+			}
+			set
+			{
+				if ((this._CatNK_GhiChu != value))
+				{
+					this.OnCatNK_GhiChuChanging(value);
+					this.SendPropertyChanging();
+					this._CatNK_GhiChu = value;
+					this.SendPropertyChanged("CatNK_GhiChu");
+					this.OnCatNK_GhiChuChanged();
 				}
 			}
 		}

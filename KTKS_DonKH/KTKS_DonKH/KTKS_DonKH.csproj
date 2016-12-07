@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>412</ApplicationRevision>
+    <ApplicationRevision>413</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -799,18 +799,6 @@
     <Compile Include="GUI\DieuChinhBienDong\frmPhuongQuan.Designer.cs">
       <DependentUpon>frmPhuongQuan.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\DieuChinhBienDong\frmShowCatChuyenDM.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\DieuChinhBienDong\frmShowCatChuyenDM.Designer.cs">
-      <DependentUpon>frmShowCatChuyenDM.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\DieuChinhBienDong\frmShowNhanDM.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\DieuChinhBienDong\frmShowNhanDM.Designer.cs">
-      <DependentUpon>frmShowNhanDM.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\DieuChinhBienDong\frmSoDK.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1457,12 +1445,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DieuChinhBienDong\frmPhuongQuan.resx">
       <DependentUpon>frmPhuongQuan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\DieuChinhBienDong\frmShowCatChuyenDM.resx">
-      <DependentUpon>frmShowCatChuyenDM.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\DieuChinhBienDong\frmShowNhanDM.resx">
-      <DependentUpon>frmShowNhanDM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DieuChinhBienDong\frmSoDK.resx">
       <DependentUpon>frmSoDK.cs</DependentUpon>

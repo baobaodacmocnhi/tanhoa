@@ -249,6 +249,7 @@
             this.txtGhiChu_Nhan.Name = "txtGhiChu_Nhan";
             this.txtGhiChu_Nhan.Size = new System.Drawing.Size(290, 22);
             this.txtGhiChu_Nhan.TabIndex = 23;
+            this.txtGhiChu_Nhan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGhiChu_Nhan_KeyPress);
             // 
             // label8
             // 

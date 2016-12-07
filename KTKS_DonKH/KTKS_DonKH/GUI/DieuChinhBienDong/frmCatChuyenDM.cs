@@ -81,6 +81,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     txtHoTen_Nhan.Text = _lichsuchungtu.NhanNK_HoTen;
                     txtDiaChi_Nhan.Text = _lichsuchungtu.NhanNK_DiaChi;
                 }
+                else
+                    if (_lichsuchungtu.YeuCauCat)
+                    {
+                        MessageBox.Show("Đang Xây Dựng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
             }
             else
             {
@@ -279,15 +284,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 ///
                                 lichsuchungtu.SoPhieu = null;
                                 lichsuchungtu.CatDM = true;
+                                lichsuchungtu.CatNK_MaCN = int.Parse(cmbChiNhanh_Cat.SelectedValue.ToString());
                                 lichsuchungtu.CatNK_DanhBo = txtDanhBo_Cat.Text.Trim();
                                 lichsuchungtu.CatNK_HoTen = txtHoTen_Cat.Text.Trim();
                                 lichsuchungtu.CatNK_DiaChi = txtDiaChi_Cat.Text.Trim();
+                                lichsuchungtu.CatNK_GhiChu = txtGhiChu_Cat.Text.Trim();
                                 lichsuchungtu.NhanNK_MaCN = int.Parse(cmbChiNhanh_Nhan.SelectedValue.ToString());
                                 lichsuchungtu.NhanNK_DanhBo = txtDanhBo_Nhan.Text.Trim();
                                 lichsuchungtu.NhanNK_HoTen = txtHoTen_Nhan.Text.Trim();
                                 lichsuchungtu.NhanNK_DiaChi = txtDiaChi_Nhan.Text.Trim();
                                 lichsuchungtu.SoNKCat = int.Parse(txtSoNK_Cat.Text.Trim());
-                                lichsuchungtu.GhiChu = txtGhiChu_Cat.Text.Trim();
 
                                 _cChungTu.ThemLichSuChungTu(lichsuchungtu);
 
@@ -308,6 +314,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 lichsuchungtuNhan.ThoiHan = ctchungtuNhan.ThoiHan;
                                 lichsuchungtuNhan.NgayHetHan = ctchungtuNhan.NgayHetHan;
                                 ///Chuyển đổi vị trí Cắt & Nhận
+                                lichsuchungtuNhan.CatNK_MaCN = lichsuchungtu.NhanNK_MaCN;
                                 lichsuchungtuNhan.CatNK_DanhBo = lichsuchungtu.NhanNK_DanhBo;
                                 lichsuchungtuNhan.CatNK_HoTen = lichsuchungtu.NhanNK_HoTen;
                                 lichsuchungtuNhan.CatNK_DiaChi = lichsuchungtu.NhanNK_DiaChi;
@@ -317,7 +324,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 lichsuchungtuNhan.NhanNK_DanhBo = lichsuchungtu.CatNK_DanhBo;
                                 lichsuchungtuNhan.NhanNK_HoTen = lichsuchungtu.CatNK_HoTen;
                                 lichsuchungtuNhan.NhanNK_DiaChi = lichsuchungtu.CatNK_DiaChi;
-                                lichsuchungtuNhan.GhiChu = txtGhiChu_Nhan.Text.Trim();
+                                lichsuchungtuNhan.NhanNK_GhiChu = txtGhiChu_Nhan.Text.Trim();
+                                lichsuchungtuNhan.SoNKNhan = int.Parse(txtSoNK_Cat.Text.Trim());
 
                                 _cChungTu.ThemLichSuChungTu(lichsuchungtuNhan);
                         }
@@ -346,15 +354,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             ///
                             lichsuchungtu.SoPhieu = _cChungTu.getMaxNextSoPhieuLSCT();
                             lichsuchungtu.CatDM = true;
+                            lichsuchungtu.CatNK_MaCN = int.Parse(cmbChiNhanh_Cat.SelectedValue.ToString());
                             lichsuchungtu.CatNK_DanhBo = txtDanhBo_Cat.Text.Trim();
                             lichsuchungtu.CatNK_HoTen = txtHoTen_Cat.Text.Trim();
                             lichsuchungtu.CatNK_DiaChi = txtDiaChi_Cat.Text.Trim();
+                            lichsuchungtu.CatNK_GhiChu = txtGhiChu_Cat.Text.Trim();
                             lichsuchungtu.NhanNK_MaCN = int.Parse(cmbChiNhanh_Nhan.SelectedValue.ToString());
                             lichsuchungtu.NhanNK_DanhBo = txtDanhBo_Nhan.Text.Trim();
                             lichsuchungtu.NhanNK_HoTen = txtHoTen_Nhan.Text.Trim();
                             lichsuchungtu.NhanNK_DiaChi = txtDiaChi_Nhan.Text.Trim();
                             lichsuchungtu.SoNKCat = int.Parse(txtSoNK_Cat.Text.Trim());
-                            lichsuchungtu.GhiChu = txtGhiChu_Cat.Text.Trim();
+                            lichsuchungtu.NhanNK_GhiChu = txtGhiChu_Nhan.Text.Trim();
                             ///Ký Tên
                             BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
                             if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
@@ -390,6 +400,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
             else
                 MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void txtGhiChu_Nhan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                btnThem.Focus();
         }
     }
 }

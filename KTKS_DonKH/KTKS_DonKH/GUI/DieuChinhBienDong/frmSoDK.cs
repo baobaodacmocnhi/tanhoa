@@ -975,6 +975,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtu1);
                                 lichsuchungtu1.SoPhieu = _cChungTu.getMaxNextSoPhieuLSCT();
                                 ///
+                                lichsuchungtu1.NhanNK_MaCN = _cChiNhanh.GetIDByTenCN("Tân Hòa");
                                 lichsuchungtu1.NhanNK_DanhBo = txtDanhBo.Text.Trim();
                                 lichsuchungtu1.NhanNK_HoTen = txtHoTen.Text.Trim();
                                 lichsuchungtu1.NhanNK_DiaChi = txtDiaChi.Text.Trim();
@@ -1012,6 +1013,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtu1);
                                 lichsuchungtu1.SoPhieu = _cChungTu.getMaxNextSoPhieuLSCT();
                                 ///
+                                lichsuchungtu1.NhanNK_MaCN = _cChiNhanh.GetIDByTenCN("Tân Hòa");
                                 lichsuchungtu1.NhanNK_DanhBo = txtDanhBo.Text.Trim();
                                 lichsuchungtu1.NhanNK_HoTen = txtHoTen.Text.Trim();
                                 lichsuchungtu1.NhanNK_DiaChi = txtDiaChi.Text.Trim();
@@ -1049,6 +1051,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtu1);
                                 lichsuchungtu1.SoPhieu = _cChungTu.getMaxNextSoPhieuLSCT();
                                 ///
+                                lichsuchungtu1.NhanNK_MaCN = _cChiNhanh.GetIDByTenCN("Tân Hòa");
                                 lichsuchungtu1.NhanNK_DanhBo = txtDanhBo.Text.Trim();
                                 lichsuchungtu1.NhanNK_HoTen = txtHoTen.Text.Trim();
                                 lichsuchungtu1.NhanNK_DiaChi = txtDiaChi.Text.Trim();
@@ -1086,6 +1089,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtu1);
                                 lichsuchungtu1.SoPhieu = _cChungTu.getMaxNextSoPhieuLSCT();
                                 ///
+                                lichsuchungtu1.NhanNK_MaCN = _cChiNhanh.GetIDByTenCN("Tân Hòa");
                                 lichsuchungtu1.NhanNK_DanhBo = txtDanhBo.Text.Trim();
                                 lichsuchungtu1.NhanNK_HoTen = txtHoTen.Text.Trim();
                                 lichsuchungtu1.NhanNK_DiaChi = txtDiaChi.Text.Trim();
@@ -1123,6 +1127,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtu1);
                                 lichsuchungtu1.SoPhieu = _cChungTu.getMaxNextSoPhieuLSCT();
                                 ///
+                                lichsuchungtu1.NhanNK_MaCN = _cChiNhanh.GetIDByTenCN("Tân Hòa");
                                 lichsuchungtu1.NhanNK_DanhBo = txtDanhBo.Text.Trim();
                                 lichsuchungtu1.NhanNK_HoTen = txtHoTen.Text.Trim();
                                 lichsuchungtu1.NhanNK_DiaChi = txtDiaChi.Text.Trim();

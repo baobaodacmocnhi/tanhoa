@@ -76,6 +76,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public int GetIDByTenCN(string TenCN)
+        {
+            return db.ChiNhanhs.SingleOrDefault(item => item.TenCN.Contains(TenCN.ToUpper())).MaCN;
+        }
+
         public bool ThemChiNhanh(ChiNhanh chinhanh)
         {
             try
