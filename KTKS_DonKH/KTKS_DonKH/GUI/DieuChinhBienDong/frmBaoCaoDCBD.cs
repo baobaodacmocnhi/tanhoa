@@ -731,7 +731,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         if (bool.Parse(itemRow["CatDM"].ToString()))
                         {
                             dr["LoaiCatChuyen"] = "Cắt Chuyển đến Công ty khác";
-                            dr["SoNK"] = itemRow["SoNKCat"];
+                            dr["SoNK"] = itemRow["SoNK"];
                         }
                     }
                     else
@@ -740,7 +740,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             if (bool.Parse(itemRow["YeuCauCat"].ToString()))
                             {
                                 dr["LoaiCatChuyen"] = "Yêu Cầu Công ty khác Cắt";
-                                dr["SoNK"] = itemRow["SoNKNhan"];
+                                dr["SoNK"] = itemRow["SoNK"];
                             }
                         }
                         else
@@ -748,7 +748,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 if (bool.Parse(itemRow["NhanDM"].ToString()))
                                 {
                                     dr["LoaiCatChuyen"] = "Nhận từ Công ty khác";
-                                    dr["SoNK"] = itemRow["SoNKNhan"];
+                                    dr["SoNK"] = itemRow["SoNK"];
                                 }
                     dsBaoCao.Tables["ThongKeCatChuyenDM"].Rows.Add(dr);
                 }

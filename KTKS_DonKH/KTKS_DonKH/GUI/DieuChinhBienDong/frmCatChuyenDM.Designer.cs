@@ -58,6 +58,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.btnThem = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -105,7 +106,6 @@
             // 
             // cmbLoaiCT_Cat
             // 
-            this.cmbLoaiCT_Cat.Enabled = false;
             this.cmbLoaiCT_Cat.FormattingEnabled = true;
             this.cmbLoaiCT_Cat.Location = new System.Drawing.Point(143, 142);
             this.cmbLoaiCT_Cat.Name = "cmbLoaiCT_Cat";
@@ -114,13 +114,11 @@
             // 
             // cmbChiNhanh_Cat
             // 
-            this.cmbChiNhanh_Cat.Enabled = false;
             this.cmbChiNhanh_Cat.FormattingEnabled = true;
             this.cmbChiNhanh_Cat.Location = new System.Drawing.Point(143, 23);
             this.cmbChiNhanh_Cat.Name = "cmbChiNhanh_Cat";
             this.cmbChiNhanh_Cat.Size = new System.Drawing.Size(290, 24);
             this.cmbChiNhanh_Cat.TabIndex = 1;
-            this.cmbChiNhanh_Cat.Visible = false;
             // 
             // label13
             // 
@@ -130,7 +128,6 @@
             this.label13.Size = new System.Drawing.Size(104, 16);
             this.label13.TabIndex = 0;
             this.label13.Text = "Nơi Cắt/Chuyển:";
-            this.label13.Visible = false;
             // 
             // txtSoNK_Cat
             // 
@@ -153,7 +150,6 @@
             // 
             this.txtMaCT_Cat.Location = new System.Drawing.Point(143, 172);
             this.txtMaCT_Cat.Name = "txtMaCT_Cat";
-            this.txtMaCT_Cat.ReadOnly = true;
             this.txtMaCT_Cat.Size = new System.Drawing.Size(100, 22);
             this.txtMaCT_Cat.TabIndex = 11;
             // 
@@ -211,7 +207,6 @@
             // 
             this.txtDanhBo_Cat.Location = new System.Drawing.Point(143, 54);
             this.txtDanhBo_Cat.Name = "txtDanhBo_Cat";
-            this.txtDanhBo_Cat.ReadOnly = true;
             this.txtDanhBo_Cat.Size = new System.Drawing.Size(100, 22);
             this.txtDanhBo_Cat.TabIndex = 3;
             // 
@@ -328,7 +323,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(591, 259);
+            this.btnThem.Location = new System.Drawing.Point(658, 259);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 25);
             this.btnThem.TabIndex = 2;
@@ -338,7 +333,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(672, 259);
+            this.btnSua.Location = new System.Drawing.Point(739, 259);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 25);
             this.btnSua.TabIndex = 3;
@@ -346,12 +341,23 @@
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
+            // btnXoa
+            // 
+            this.btnXoa.Location = new System.Drawing.Point(820, 259);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 25);
+            this.btnXoa.TabIndex = 4;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
             // frmCatChuyenDM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(907, 300);
+            this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.groupBox2);
@@ -403,5 +409,6 @@
         private System.Windows.Forms.TextBox txtGhiChu_Cat;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnSua;
+        private System.Windows.Forms.Button btnXoa;
     }
 }

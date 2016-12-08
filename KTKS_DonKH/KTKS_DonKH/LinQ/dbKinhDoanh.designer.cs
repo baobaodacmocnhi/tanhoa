@@ -22695,10 +22695,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _SoPhieu;
 		
-		private bool _CatDM;
-		
-		private System.Nullable<int> _SoNKCat;
-		
 		private System.Nullable<int> _NhanNK_MaCN;
 		
 		private string _NhanNK_DanhBo;
@@ -22709,11 +22705,13 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _NhanNK_GhiChu;
 		
+		private bool _CatDM;
+		
 		private bool _NhanDM;
 		
 		private bool _YeuCauCat;
 		
-		private System.Nullable<int> _SoNKNhan;
+		private System.Nullable<int> _SoNK;
 		
 		private System.Nullable<int> _CatNK_MaCN;
 		
@@ -22773,10 +22771,6 @@ namespace KTKS_DonKH.LinQ
     partial void OnNgayHetHanChanged();
     partial void OnSoPhieuChanging(System.Nullable<decimal> value);
     partial void OnSoPhieuChanged();
-    partial void OnCatDMChanging(bool value);
-    partial void OnCatDMChanged();
-    partial void OnSoNKCatChanging(System.Nullable<int> value);
-    partial void OnSoNKCatChanged();
     partial void OnNhanNK_MaCNChanging(System.Nullable<int> value);
     partial void OnNhanNK_MaCNChanged();
     partial void OnNhanNK_DanhBoChanging(string value);
@@ -22787,12 +22781,14 @@ namespace KTKS_DonKH.LinQ
     partial void OnNhanNK_DiaChiChanged();
     partial void OnNhanNK_GhiChuChanging(string value);
     partial void OnNhanNK_GhiChuChanged();
+    partial void OnCatDMChanging(bool value);
+    partial void OnCatDMChanged();
     partial void OnNhanDMChanging(bool value);
     partial void OnNhanDMChanged();
     partial void OnYeuCauCatChanging(bool value);
     partial void OnYeuCauCatChanged();
-    partial void OnSoNKNhanChanging(System.Nullable<int> value);
-    partial void OnSoNKNhanChanged();
+    partial void OnSoNKChanging(System.Nullable<int> value);
+    partial void OnSoNKChanged();
     partial void OnCatNK_MaCNChanging(System.Nullable<int> value);
     partial void OnCatNK_MaCNChanged();
     partial void OnCatNK_DanhBoChanging(string value);
@@ -23052,46 +23048,6 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatDM", DbType="Bit NOT NULL")]
-		public bool CatDM
-		{
-			get
-			{
-				return this._CatDM;
-			}
-			set
-			{
-				if ((this._CatDM != value))
-				{
-					this.OnCatDMChanging(value);
-					this.SendPropertyChanging();
-					this._CatDM = value;
-					this.SendPropertyChanged("CatDM");
-					this.OnCatDMChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoNKCat", DbType="Int")]
-		public System.Nullable<int> SoNKCat
-		{
-			get
-			{
-				return this._SoNKCat;
-			}
-			set
-			{
-				if ((this._SoNKCat != value))
-				{
-					this.OnSoNKCatChanging(value);
-					this.SendPropertyChanging();
-					this._SoNKCat = value;
-					this.SendPropertyChanged("SoNKCat");
-					this.OnSoNKCatChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NhanNK_MaCN", DbType="Int")]
 		public System.Nullable<int> NhanNK_MaCN
 		{
@@ -23192,6 +23148,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatDM", DbType="Bit NOT NULL")]
+		public bool CatDM
+		{
+			get
+			{
+				return this._CatDM;
+			}
+			set
+			{
+				if ((this._CatDM != value))
+				{
+					this.OnCatDMChanging(value);
+					this.SendPropertyChanging();
+					this._CatDM = value;
+					this.SendPropertyChanged("CatDM");
+					this.OnCatDMChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NhanDM", DbType="Bit NOT NULL")]
 		public bool NhanDM
 		{
@@ -23232,22 +23208,22 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoNKNhan", DbType="Int")]
-		public System.Nullable<int> SoNKNhan
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoNK", DbType="Int")]
+		public System.Nullable<int> SoNK
 		{
 			get
 			{
-				return this._SoNKNhan;
+				return this._SoNK;
 			}
 			set
 			{
-				if ((this._SoNKNhan != value))
+				if ((this._SoNK != value))
 				{
-					this.OnSoNKNhanChanging(value);
+					this.OnSoNKChanging(value);
 					this.SendPropertyChanging();
-					this._SoNKNhan = value;
-					this.SendPropertyChanged("SoNKNhan");
-					this.OnSoNKNhanChanged();
+					this._SoNK = value;
+					this.SendPropertyChanged("SoNK");
+					this.OnSoNKChanged();
 				}
 			}
 		}
