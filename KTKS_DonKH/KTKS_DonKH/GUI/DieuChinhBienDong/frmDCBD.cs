@@ -639,49 +639,69 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         ThongTin += "Họ Tên. ";
                         _ctdcbd.HoTen_BD = txtHoTen_BD.Text.Trim();
                     }
+                    else
+                        _ctdcbd.HoTen_BD = null;
                     ///Địa Chỉ
                     if (txtDiaChi_BD.Text.Trim() != "")
                     {
                         ThongTin += "Địa Chỉ. ";
                         _ctdcbd.DiaChi_BD = txtDiaChi_BD.Text.Trim();
                     }
+                    else
+                        _ctdcbd.DiaChi_BD = null;
                     ///Mã Số Thuế
                     if (txtMSThue_BD.Text.Trim() != "")
                     {
                         ThongTin += "MST. ";
                         _ctdcbd.MSThue_BD = txtMSThue_BD.Text.Trim();
                     }
+                    else
+                        _ctdcbd.MSThue_BD = null;
                     if (chkCatMSThue.Checked)
                     {
                         ThongTin += "MST. ";
                         _ctdcbd.CatMSThue = true;
                     }
+                    else
+                        _ctdcbd.CatMSThue = false;
                     ///Giá Biểu
                     if (txtGiaBieu_BD.Text.Trim() != "")
                     {
                         ThongTin += "GB. ";
                         _ctdcbd.GiaBieu_BD = int.Parse(txtGiaBieu_BD.Text.Trim());
                     }
+                    else
+                        _ctdcbd.GiaBieu_BD = null;
                     ///Định Mức
                     if (txtDinhMuc_BD.Text.Trim() != "")
                     {
                         ThongTin += "ĐM. ";
                         _ctdcbd.DinhMuc_BD = int.Parse(txtDinhMuc_BD.Text.Trim());
                     }
+                    else
+                        _ctdcbd.DinhMuc_BD = null;
                     if (txtSH_BD.Text.Trim() != "" || txtSX_BD.Text.Trim() != "" || txtDV_BD.Text.Trim() != "" || txtHCSN_BD.Text.Trim() != "")
                         ThongTin += "Tỷ Lệ. ";
                     ///SH
                     if (txtSH_BD.Text.Trim() != "")
                         _ctdcbd.SH_BD = txtSH_BD.Text.Trim();
+                    else
+                        _ctdcbd.SH_BD = null;
                     ///SX
                     if (txtSX_BD.Text.Trim() != "")
                         _ctdcbd.SX_BD = txtSX_BD.Text.Trim();
+                    else
+                        _ctdcbd.SX_BD = null;
                     ///DV
                     if (txtDV_BD.Text.Trim() != "")
                         _ctdcbd.DV_BD = txtDV_BD.Text.Trim();
+                    else
+                        _ctdcbd.DV_BD = null;
                     ///HCSN
                     if (txtHCSN_BD.Text.Trim() != "")
                         _ctdcbd.HCSN_BD = txtHCSN_BD.Text.Trim();
+                    else
+                        _ctdcbd.HCSN_BD = null;
 
                     _ctdcbd.ThongTin = ThongTin;
 
