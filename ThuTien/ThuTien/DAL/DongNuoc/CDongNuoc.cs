@@ -670,7 +670,10 @@ namespace ThuTien.DAL.DongNuoc
 
         public TT_KQDongNuoc GetKQDongNuocByDanhBo_Last(string DanhBo)
         {
-            return _db.TT_KQDongNuocs.Where(item => item.DanhBo == DanhBo && item.TT_DongNuoc.Huy == false).OrderByDescending(item => item.MaKQDN).First();
+            if (_db.TT_KQDongNuocs.Where(item => item.DanhBo == DanhBo && item.TT_DongNuoc.Huy == false).Count() > 0)
+                return _db.TT_KQDongNuocs.Where(item => item.DanhBo == DanhBo && item.TT_DongNuoc.Huy == false).OrderByDescending(item => item.MaKQDN).First();
+            else
+                return null;
         }
 
         public string GetNgayDNBySoHoaDon(string SoHoaDon)

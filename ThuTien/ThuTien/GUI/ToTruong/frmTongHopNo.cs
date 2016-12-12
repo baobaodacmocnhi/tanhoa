@@ -199,13 +199,13 @@ namespace ThuTien.GUI.ToTruong
                     tonghopno.DanhBo = txtDanhBo.Text.Trim().Replace(" ","");
                     tonghopno.KinhGui = txtKinhGui.Text.Trim();
                     if (!string.IsNullOrEmpty(txtCSM.Text.Trim()))
-                        tonghopno.ChiSoMoi = int.Parse(txtCSM.Text.Trim());
+                        tonghopno.ChiSoMoi = txtCSM.Text.Trim();
                     if (!string.IsNullOrEmpty(txtCSC.Text.Trim()))
-                        tonghopno.ChiSoCu = int.Parse(txtCSC.Text.Trim());
+                        tonghopno.ChiSoCu = txtCSC.Text.Trim();
                     if (!string.IsNullOrEmpty(txtDM.Text.Trim()))
-                        tonghopno.DinhMuc = int.Parse(txtDM.Text.Trim());
+                        tonghopno.DinhMuc = txtDM.Text.Trim();
                     if (!string.IsNullOrEmpty(txtTT.Text.Trim()))
-                        tonghopno.TieuThu = int.Parse(txtTT.Text.Trim());
+                        tonghopno.TieuThu = txtTT.Text.Trim();
                     tonghopno.NgayThanhToan = dateThanhToan.Value;
                     tonghopno.TuNgay = txtTuNgay.Text.Trim();
                     tonghopno.DenNgay = txtDenNgay.Text.Trim();
