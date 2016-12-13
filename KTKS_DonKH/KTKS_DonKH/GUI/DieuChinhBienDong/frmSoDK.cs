@@ -257,6 +257,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
                         lichsuchungtu.DanhBo = ctchungtu.DanhBo;
                         lichsuchungtu.MaCT = ctchungtu.MaCT;
+                        lichsuchungtu.SoNKTong = ctchungtu.ChungTu.SoNKTong;
                         lichsuchungtu.SoNKDangKy = ctchungtu.SoNKDangKy;
                         lichsuchungtu.ThoiHan = ctchungtu.ThoiHan;
                         lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
@@ -583,6 +584,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
                         lichsuchungtu.DanhBo = _ctchungtu.DanhBo;
                         lichsuchungtu.MaCT = _ctchungtu.MaCT;
+                        lichsuchungtu.SoNKTong = _ctchungtu.ChungTu.SoNKTong;
                         lichsuchungtu.SoNKDangKy = _ctchungtu.SoNKDangKy;
                         lichsuchungtu.ThoiHan = _ctchungtu.ThoiHan;
                         lichsuchungtu.NgayHetHan = _ctchungtu.NgayHetHan;
@@ -1202,6 +1204,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             B.MaDon = A.MaDon;
             B.DanhBo = A.DanhBo;
             B.MaCT = A.MaCT;
+            B.SoNKTong = A.SoNKTong;
             B.SoNKDangKy = A.SoNKDangKy;
             B.ThoiHan = A.ThoiHan;
             B.NgayHetHan = A.NgayHetHan;

@@ -1127,7 +1127,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
-            if (dgvDSCatChuyenDM.Columns[e.ColumnIndex].Name == "MaCTDCBD_CC" && e.Value != null && e.Value.ToString() != "")
+            if (dgvDSCatChuyenDM.Columns[e.ColumnIndex].Name == "MaCTDCBD_CC" && e.Value != null && e.Value.ToString().Length > 2)
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }

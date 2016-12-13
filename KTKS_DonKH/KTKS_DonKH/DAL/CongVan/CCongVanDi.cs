@@ -69,9 +69,11 @@ namespace KTKS_DonKH.DAL.CongVan
             return db.CongVanDis.SingleOrDefault(item => item.ID == ID);
         }
 
-        public DataTable GetDS(DateTime FromCreateDate,int ToHour, DateTime ToCreateDate,int FromHour)
+        public DataTable GetDS(DateTime FromCreateDate,int FromHour, DateTime ToCreateDate,int ToHour)
         {
-            return LINQToDataTable(db.CongVanDis.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.CreateDate.Value.Hour >= ToHour && item.CreateDate.Value.Hour <= FromHour).ToList());
+            DateTime FromDate = new DateTime(FromCreateDate.Year, FromCreateDate.Month, FromCreateDate.Day, FromHour, 0, 0);
+            DateTime ToDate = new DateTime(ToCreateDate.Year, ToCreateDate.Month, ToCreateDate.Day, ToHour, 0, 0);
+            return LINQToDataTable(db.CongVanDis.Where(item => item.CreateDate.Value >= FromDate && item.CreateDate.Value <= ToDate).ToList());
         }
 
         public DataTable GetDS(string DanhBo)

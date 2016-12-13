@@ -25,7 +25,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             join itemCT in db.ChungTus on itemCTCT.MaCT equals itemCT.MaCT
                             join itemLCT in db.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
                             where itemCTCT.DanhBo == DanhBo
-                            orderby itemCTCT.CreateDate descending
+                            orderby itemCTCT.MaCT ascending
                             select new
                             {
                                 itemCTCT.DanhBo,
@@ -852,7 +852,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.ToXuLy == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD,
+                                MaCTDCBD = itemLSCT.ToXuLy == true ? db.CTDCBDs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL)==true?db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD:0 : db.CTDCBDs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon)==true?db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD:0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);

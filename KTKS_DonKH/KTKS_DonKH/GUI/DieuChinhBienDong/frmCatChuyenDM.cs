@@ -134,7 +134,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 try
                 {
-                    if (_lichsuchungtu!=null && txtSoNK_Cat.Text.Trim() != "" && txtSoNK_Cat.Text.Trim() != "0" && cmbChiNhanh_Nhan.SelectedIndex != -1)
+                    if (_lichsuchungtu==null && txtSoNK_Cat.Text.Trim() != "" && txtSoNK_Cat.Text.Trim() != "0" && cmbChiNhanh_Nhan.SelectedIndex != -1)
                     {
                         if (_ctchungtu.SoNKDangKy < int.Parse(txtSoNK_Cat.Text.Trim()))
                         {
@@ -238,8 +238,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             _ctchungtu.SoNKDangKy -= int.Parse(txtSoNK_Cat.Text.Trim());
                             _ctchungtu.GhiChu = txtGhiChu_Cat.Text.Trim();
-                            _ctchungtu.ModifyDate = DateTime.Now;
-                            _ctchungtu.ModifyBy = CTaiKhoan.MaUser;
+                            _cChungTu.SuaCTChungTu(_ctchungtu);
 
                             LichSuChungTu lichsuchungtu = new LichSuChungTu();
                             if (bool.Parse(_source["TXL"]) == true)
@@ -281,6 +280,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             _cChungTu.ThemLichSuChungTu(lichsuchungtu);
                         }
                     }
+                    _cChungTu.SubmitChanges();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.DialogResult = DialogResult.OK;
                     this.Close();

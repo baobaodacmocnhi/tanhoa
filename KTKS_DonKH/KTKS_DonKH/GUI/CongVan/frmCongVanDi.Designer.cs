@@ -239,7 +239,7 @@
             this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTu.Location = new System.Drawing.Point(96, 168);
             this.dateTu.Name = "dateTu";
-            this.dateTu.Size = new System.Drawing.Size(100, 22);
+            this.dateTu.Size = new System.Drawing.Size(90, 22);
             this.dateTu.TabIndex = 18;
             // 
             // dateDen
@@ -248,7 +248,7 @@
             this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateDen.Location = new System.Drawing.Point(96, 196);
             this.dateDen.Name = "dateDen";
-            this.dateDen.Size = new System.Drawing.Size(100, 22);
+            this.dateDen.Size = new System.Drawing.Size(90, 22);
             this.dateDen.TabIndex = 20;
             // 
             // label10

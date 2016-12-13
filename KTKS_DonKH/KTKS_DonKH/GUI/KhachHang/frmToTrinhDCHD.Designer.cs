@@ -63,6 +63,7 @@
             this.txtXacNhanDTT = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtm3 = new System.Windows.Forms.TextBox();
+            this.btnInKhac = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtMaDon
@@ -351,12 +352,23 @@
             this.txtm3.TabIndex = 34;
             this.txtm3.Text = "m³";
             // 
+            // btnInKhac
+            // 
+            this.btnInKhac.Location = new System.Drawing.Point(290, 256);
+            this.btnInKhac.Name = "btnInKhac";
+            this.btnInKhac.Size = new System.Drawing.Size(75, 25);
+            this.btnInKhac.TabIndex = 35;
+            this.btnInKhac.Text = "In Khác";
+            this.btnInKhac.UseVisualStyleBackColor = true;
+            this.btnInKhac.Click += new System.EventHandler(this.btnInKhac_Click);
+            // 
             // frmToTrinhDCHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(906, 355);
+            this.Controls.Add(this.btnInKhac);
             this.Controls.Add(this.txtm3);
             this.Controls.Add(this.txtXacNhanDTT);
             this.Controls.Add(this.label15);
@@ -439,5 +451,6 @@
         private System.Windows.Forms.TextBox txtXacNhanDTT;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtm3;
+        private System.Windows.Forms.Button btnInKhac;
     }
 }

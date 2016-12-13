@@ -101,5 +101,29 @@ namespace KTKS_DonKH.GUI.KhachHang
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();
         }
+
+        private void btnInKhac_Click(object sender, EventArgs e)
+        {
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            DataRow dr = dsBaoCao.Tables["ToTrinhDCHD"].NewRow();
+
+            dr["MaDon"] = txtMaDon.Text.Trim();
+            dr["CreateDate"] = txtCreateDate.Text.Trim();
+            dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " ");
+            dr["HopDong"] = txtHopDong.Text.Trim();
+            dr["MLT"] = txtMLT.Text.Trim();
+            dr["DiaChi"] = txtDiaChi.Text.Trim();
+            dr["Ho"] = txtHo.Text.Trim();
+            dr["NhanKhau"] = txtNhanKhau.Text.Trim();
+            dr["Dung"] = txtDung.Text.Trim();
+            dr["DeXuat"] = txtDeXuat.Text.Trim();
+            dr["HD0"] = false;
+
+            dsBaoCao.Tables["ToTrinhDCHD"].Rows.Add(dr);
+            rptToTrinh rpt = new rptToTrinh();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.ShowDialog();
+        }
     }
 }
