@@ -257,7 +257,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
                         lichsuchungtu.DanhBo = ctchungtu.DanhBo;
                         lichsuchungtu.MaCT = ctchungtu.MaCT;
-                        lichsuchungtu.SoNKTong = ctchungtu.ChungTu.SoNKTong;
+                        lichsuchungtu.SoNKTong = _chungtu.SoNKTong;
                         lichsuchungtu.SoNKDangKy = ctchungtu.SoNKDangKy;
                         lichsuchungtu.ThoiHan = ctchungtu.ThoiHan;
                         lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;

@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode3 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode4 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode5 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode6 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode7 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode8 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode9 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode10 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode11 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode12 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode13 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode14 = new DevExpress.XtraGrid.GridLevelNode();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode15 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode16 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode17 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode18 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode19 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode20 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode21 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode22 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode23 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode24 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode25 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode26 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode27 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode28 = new DevExpress.XtraGrid.GridLevelNode();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridViewKTXM = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -230,16 +230,6 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgvHoaDon = new System.Windows.Forms.DataGridView();
-            this.txtTenDuong = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.btnRefresh = new System.Windows.Forms.Button();
-            this.btnTimKiemTTKH = new System.Windows.Forms.Button();
-            this.txtSoNha = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtHoTen = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtDanhBo = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.MaHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo_TTKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -263,6 +253,16 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChiSo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtTenDuong = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnTimKiemTTKH = new System.Windows.Forms.Button();
+            this.txtSoNha = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtHoTen = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtDanhBo = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewKTXM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDCBD)).BeginInit();
@@ -420,49 +420,49 @@
             // 
             // gridControl
             // 
-            gridLevelNode1.LevelTemplate = this.gridViewKTXM;
-            gridLevelNode1.RelationName = "Level1";
-            gridLevelNode2.LevelTemplate = this.gridViewDCBD;
-            gridLevelNode2.RelationName = "Level2";
-            gridLevelNode3.LevelTemplate = this.gridViewCHDB;
-            gridLevelNode3.RelationName = "Level3";
-            gridLevelNode4.LevelTemplate = this.gridViewTTTL;
-            gridLevelNode4.RelationName = "Level4";
-            gridLevelNode5.LevelTemplate = this.gridViewKTXM_TXL;
-            gridLevelNode5.RelationName = "Level5";
-            gridLevelNode6.LevelTemplate = this.gridViewCHDB_TXL;
-            gridLevelNode6.RelationName = "Level6";
-            gridLevelNode7.LevelTemplate = this.gridViewTTTTL_TXL;
-            gridLevelNode7.RelationName = "Level7";
-            gridLevelNode8.LevelTemplate = this.gridViewDCBD_TXL;
-            gridLevelNode8.RelationName = "Level8";
-            gridLevelNode9.LevelTemplate = this.gridViewBamChi;
-            gridLevelNode9.RelationName = "Level9";
-            gridLevelNode10.LevelTemplate = this.gridViewBamChi_TXL;
-            gridLevelNode10.RelationName = "Level10";
-            gridLevelNode11.LevelTemplate = this.gridViewDongNuoc;
-            gridLevelNode11.RelationName = "Level11";
-            gridLevelNode12.LevelTemplate = this.gridViewDongNuoc_TXL;
-            gridLevelNode12.RelationName = "Level12";
-            gridLevelNode13.LevelTemplate = this.gridViewYeuCauCHDB;
-            gridLevelNode13.RelationName = "Level13";
-            gridLevelNode14.LevelTemplate = this.gridViewYeuCauCHDB_TXL;
-            gridLevelNode14.RelationName = "Level14";
+            gridLevelNode15.LevelTemplate = this.gridViewKTXM;
+            gridLevelNode15.RelationName = "Level1";
+            gridLevelNode16.LevelTemplate = this.gridViewDCBD;
+            gridLevelNode16.RelationName = "Level2";
+            gridLevelNode17.LevelTemplate = this.gridViewCHDB;
+            gridLevelNode17.RelationName = "Level3";
+            gridLevelNode18.LevelTemplate = this.gridViewTTTL;
+            gridLevelNode18.RelationName = "Level4";
+            gridLevelNode19.LevelTemplate = this.gridViewKTXM_TXL;
+            gridLevelNode19.RelationName = "Level5";
+            gridLevelNode20.LevelTemplate = this.gridViewCHDB_TXL;
+            gridLevelNode20.RelationName = "Level6";
+            gridLevelNode21.LevelTemplate = this.gridViewTTTTL_TXL;
+            gridLevelNode21.RelationName = "Level7";
+            gridLevelNode22.LevelTemplate = this.gridViewDCBD_TXL;
+            gridLevelNode22.RelationName = "Level8";
+            gridLevelNode23.LevelTemplate = this.gridViewBamChi;
+            gridLevelNode23.RelationName = "Level9";
+            gridLevelNode24.LevelTemplate = this.gridViewBamChi_TXL;
+            gridLevelNode24.RelationName = "Level10";
+            gridLevelNode25.LevelTemplate = this.gridViewDongNuoc;
+            gridLevelNode25.RelationName = "Level11";
+            gridLevelNode26.LevelTemplate = this.gridViewDongNuoc_TXL;
+            gridLevelNode26.RelationName = "Level12";
+            gridLevelNode27.LevelTemplate = this.gridViewYeuCauCHDB;
+            gridLevelNode27.RelationName = "Level13";
+            gridLevelNode28.LevelTemplate = this.gridViewYeuCauCHDB_TXL;
+            gridLevelNode28.RelationName = "Level14";
             this.gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1,
-            gridLevelNode2,
-            gridLevelNode3,
-            gridLevelNode4,
-            gridLevelNode5,
-            gridLevelNode6,
-            gridLevelNode7,
-            gridLevelNode8,
-            gridLevelNode9,
-            gridLevelNode10,
-            gridLevelNode11,
-            gridLevelNode12,
-            gridLevelNode13,
-            gridLevelNode14});
+            gridLevelNode15,
+            gridLevelNode16,
+            gridLevelNode17,
+            gridLevelNode18,
+            gridLevelNode19,
+            gridLevelNode20,
+            gridLevelNode21,
+            gridLevelNode22,
+            gridLevelNode23,
+            gridLevelNode24,
+            gridLevelNode25,
+            gridLevelNode26,
+            gridLevelNode27,
+            gridLevelNode28});
             this.gridControl.Location = new System.Drawing.Point(6, 36);
             this.gridControl.MainView = this.gridViewDon;
             this.gridControl.Name = "gridControl";
@@ -2483,14 +2483,14 @@
             // 
             this.dgvHoaDon.AllowUserToAddRows = false;
             this.dgvHoaDon.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHoaDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHoaDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvHoaDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHoaDon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaHD,
@@ -2519,95 +2519,11 @@
             this.dgvHoaDon.Location = new System.Drawing.Point(3, 120);
             this.dgvHoaDon.Name = "dgvHoaDon";
             this.dgvHoaDon.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dgvHoaDon.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dgvHoaDon.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvHoaDon.Size = new System.Drawing.Size(1347, 469);
             this.dgvHoaDon.TabIndex = 24;
             this.dgvHoaDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_CellFormatting);
-            // 
-            // txtTenDuong
-            // 
-            this.txtTenDuong.Location = new System.Drawing.Point(140, 90);
-            this.txtTenDuong.Name = "txtTenDuong";
-            this.txtTenDuong.Size = new System.Drawing.Size(150, 22);
-            this.txtTenDuong.TabIndex = 21;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(50, 93);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(77, 16);
-            this.label9.TabIndex = 20;
-            this.label9.Text = "Tên Đường:";
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Location = new System.Drawing.Point(296, 5);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(100, 25);
-            this.btnRefresh.TabIndex = 23;
-            this.btnRefresh.Text = "Xóa Điều Kiện";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
-            // btnTimKiemTTKH
-            // 
-            this.btnTimKiemTTKH.Location = new System.Drawing.Point(296, 89);
-            this.btnTimKiemTTKH.Name = "btnTimKiemTTKH";
-            this.btnTimKiemTTKH.Size = new System.Drawing.Size(75, 25);
-            this.btnTimKiemTTKH.TabIndex = 22;
-            this.btnTimKiemTTKH.Text = "Tìm Kiếm";
-            this.btnTimKiemTTKH.UseVisualStyleBackColor = true;
-            this.btnTimKiemTTKH.Click += new System.EventHandler(this.btnTimKiemTTKH_Click);
-            // 
-            // txtSoNha
-            // 
-            this.txtSoNha.Location = new System.Drawing.Point(140, 62);
-            this.txtSoNha.Name = "txtSoNha";
-            this.txtSoNha.Size = new System.Drawing.Size(150, 22);
-            this.txtSoNha.TabIndex = 19;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(50, 65);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 16);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "Số Nhà:";
-            // 
-            // txtHoTen
-            // 
-            this.txtHoTen.Location = new System.Drawing.Point(140, 34);
-            this.txtHoTen.Name = "txtHoTen";
-            this.txtHoTen.Size = new System.Drawing.Size(150, 22);
-            this.txtHoTen.TabIndex = 17;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(50, 35);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 16);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "Khách Hàng:";
-            // 
-            // txtDanhBo
-            // 
-            this.txtDanhBo.Location = new System.Drawing.Point(140, 6);
-            this.txtDanhBo.Name = "txtDanhBo";
-            this.txtDanhBo.Size = new System.Drawing.Size(150, 22);
-            this.txtDanhBo.TabIndex = 13;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(50, 9);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 16);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Danh Bộ:";
             // 
             // MaHD
             // 
@@ -2791,6 +2707,94 @@
             this.ChiSo.Name = "ChiSo";
             this.ChiSo.ReadOnly = true;
             this.ChiSo.Visible = false;
+            // 
+            // txtTenDuong
+            // 
+            this.txtTenDuong.Location = new System.Drawing.Point(140, 90);
+            this.txtTenDuong.Name = "txtTenDuong";
+            this.txtTenDuong.Size = new System.Drawing.Size(150, 22);
+            this.txtTenDuong.TabIndex = 21;
+            this.txtTenDuong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTenDuong_KeyPress);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(50, 93);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(77, 16);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Tên Đường:";
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(296, 5);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(100, 25);
+            this.btnRefresh.TabIndex = 23;
+            this.btnRefresh.Text = "Xóa Điều Kiện";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // btnTimKiemTTKH
+            // 
+            this.btnTimKiemTTKH.Location = new System.Drawing.Point(296, 89);
+            this.btnTimKiemTTKH.Name = "btnTimKiemTTKH";
+            this.btnTimKiemTTKH.Size = new System.Drawing.Size(75, 25);
+            this.btnTimKiemTTKH.TabIndex = 22;
+            this.btnTimKiemTTKH.Text = "Tìm Kiếm";
+            this.btnTimKiemTTKH.UseVisualStyleBackColor = true;
+            this.btnTimKiemTTKH.Click += new System.EventHandler(this.btnTimKiemTTKH_Click);
+            // 
+            // txtSoNha
+            // 
+            this.txtSoNha.Location = new System.Drawing.Point(140, 62);
+            this.txtSoNha.Name = "txtSoNha";
+            this.txtSoNha.Size = new System.Drawing.Size(150, 22);
+            this.txtSoNha.TabIndex = 19;
+            this.txtSoNha.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoNha_KeyPress);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(50, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 16);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Số Nhà:";
+            // 
+            // txtHoTen
+            // 
+            this.txtHoTen.Location = new System.Drawing.Point(140, 34);
+            this.txtHoTen.Name = "txtHoTen";
+            this.txtHoTen.Size = new System.Drawing.Size(150, 22);
+            this.txtHoTen.TabIndex = 17;
+            this.txtHoTen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHoTen_KeyPress);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(50, 35);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(84, 16);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Khách Hàng:";
+            // 
+            // txtDanhBo
+            // 
+            this.txtDanhBo.Location = new System.Drawing.Point(140, 6);
+            this.txtDanhBo.Name = "txtDanhBo";
+            this.txtDanhBo.Size = new System.Drawing.Size(150, 22);
+            this.txtDanhBo.TabIndex = 13;
+            this.txtDanhBo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBo_KeyPress);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(50, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(63, 16);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Danh Bộ:";
             // 
             // frmTienTrinhDon
             // 

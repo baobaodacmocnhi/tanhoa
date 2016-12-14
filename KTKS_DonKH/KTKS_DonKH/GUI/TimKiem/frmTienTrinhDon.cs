@@ -865,6 +865,30 @@ namespace KTKS_DonKH.GUI.TimKiem
                 e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
             }
         }
+
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                btnTimKiemTTKH.PerformClick();
+        }
+
+        private void txtHoTen_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                btnTimKiemTTKH.PerformClick();
+        }
+
+        private void txtSoNha_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                btnTimKiemTTKH.PerformClick();
+        }
+
+        private void txtTenDuong_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                btnTimKiemTTKH.PerformClick();
+        }
         
     }
 

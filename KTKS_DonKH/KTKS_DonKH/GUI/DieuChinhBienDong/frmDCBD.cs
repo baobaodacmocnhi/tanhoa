@@ -804,8 +804,18 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     source.Add("MaDon", _donkh.MaDon.ToString());
                 }
                 source.Add("DanhBo", txtDanhBo.Text.Trim());
-                source.Add("HoTen", txtHoTen.Text.Trim());
-                source.Add("DiaChi", txtDiaChi.Text.Trim());
+                if (txtHoTen_BD.Text.Trim() == "")
+                    source.Add("HoTen", txtHoTen.Text.Trim());
+                else
+                    source.Add("HoTen", txtHoTen_BD.Text.Trim());
+                ///
+                if (txtDiaChi_BD.Text.Trim() == "")
+                    if (txtDiaChi.Text.Trim().Contains(","))
+                        source.Add("DiaChi", txtDiaChi.Text.Trim().Substring(0, txtDiaChi.Text.Trim().IndexOf(",")));
+                    else
+                        source.Add("DiaChi", txtDiaChi.Text.Trim());
+                else
+                    source.Add("DiaChi", txtDiaChi_BD.Text.Trim());
                 frmNhanDM frm = new frmNhanDM(source);
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
