@@ -275,6 +275,31 @@ namespace KTKS_DonKH.DAL.QuanTri
             }
         }
 
+        public List<User> GetDS_KTXM_TKH()
+        {
+            return db.Users.Where(item => item.KTXM == true && item.ToKH == true).OrderBy(item => item.STT).ToList();
+        }
+
+        public List<User> GetDS_KTXM_TXL()
+        {
+            return db.Users.Where(item => item.BamChi == true && item.ToXuLy == true).OrderBy(item => item.STT).ToList();
+        }
+
+        public List<User> GetDS_TKH()
+        {
+            return db.Users.Where(item => item.KTXM == false && item.ToKH == true).OrderBy(item => item.STT).ToList();
+        }
+
+        public List<User> GetDS_TXL()
+        {
+            return db.Users.Where(item => item.BamChi == false && item.ToXuLy == true).OrderBy(item => item.STT).ToList();
+        }
+
+        public List<User> GetDS_TVP()
+        {
+            return db.Users.Where(item => item.ToVP == true).OrderBy(item => item.STT).ToList();
+        }
+
         /// <summary>
         /// Lấy tài khoản
         /// </summary>
@@ -435,24 +460,24 @@ namespace KTKS_DonKH.DAL.QuanTri
         {
             try
             {
-                if (db.Users.Any(itemTaiKhoan => itemTaiKhoan.TaiKhoan == TaiKhoan && itemTaiKhoan.MatKhau == MatKhauCu))
+                if (db.Users.Any(item => item.MaU == MaUser && item.MatKhau == MatKhauCu))
                 {
-                    db.Users.Single(itemTaiKhoan => itemTaiKhoan.TaiKhoan == TaiKhoan).MatKhau = MatKhauMoi;
+                    db.Users.Single(item => item.MaU == MaUser).MatKhau = MatKhauMoi;
                     db.SubmitChanges();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
                 {
-                    MessageBox.Show("Mật khẩu cũ không đúng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.Users);
+                    MessageBox.Show("Mật khẩu cũ không đúng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 db = new dbKinhDoanhDataContext();
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }

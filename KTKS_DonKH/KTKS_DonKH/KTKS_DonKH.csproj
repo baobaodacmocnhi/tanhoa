@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>426</ApplicationRevision>
+    <ApplicationRevision>436</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -571,6 +571,9 @@
     <Compile Include="DAL\BamChi\CBamChi.cs" />
     <Compile Include="DAL\CatHuyDanhBo\CNoiDungXuLyCHDB.cs" />
     <Compile Include="DAL\CDocSo.cs" />
+    <Compile Include="DAL\DonTu\CLichSuDonTu.cs" />
+    <Compile Include="DAL\DonTu\CNoiChuyen.cs" />
+    <Compile Include="DAL\DonTu\CPhongBanDoi.cs" />
     <Compile Include="DAL\QuanTri\CBanGiamDoc.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CChiNhanh.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CGiaNuoc.cs" />

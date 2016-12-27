@@ -10,6 +10,7 @@ using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.DAL;
 using KTKS_DonKH.LinQ;
+using KTKS_DonKH.DAL.DonTu;
 
 namespace KTKS_DonKH.GUI.ToXuLy
 {
@@ -22,6 +23,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         CDonTXL _cDonTXL = new CDonTXL();
         private DateTimePicker cellDateTimePicker;
         bool _flag = false;
+        CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
 
         public frmNhapNhieuDBTXL()
         {
@@ -139,12 +141,12 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         ///
                         if (item.Cells["NguoiDi"].Value != null)
                         {
-                            string[] date = item.Cells["NgayChuyen"].Value.ToString().Split('/');
-                            dontxl.ChuyenKT = true;
-                            dontxl.NgayChuyenKT = new DateTime(int.Parse(date[2]), int.Parse(date[1]),int.Parse(date[0]));
-                            dontxl.NguoiDi = int.Parse(item.Cells["NguoiDi"].Value.ToString());
-                            if (item.Cells["GhiChu"].Value != null)
-                                dontxl.GhiChuChuyenKT = item.Cells["GhiChu"].Value.ToString();
+                            //string[] date = item.Cells["NgayChuyen"].Value.ToString().Split('/');
+                            //dontxl.ChuyenKT = true;
+                            //dontxl.NgayChuyenKT = new DateTime(int.Parse(date[2]), int.Parse(date[1]),int.Parse(date[0]));
+                            //dontxl.NguoiDi = int.Parse(item.Cells["NguoiDi"].Value.ToString());
+                            //if (item.Cells["GhiChu"].Value != null)
+                            //    dontxl.GhiChuChuyenKT = item.Cells["GhiChu"].Value.ToString();
                         }
                         ///
                         if (_cDonTXL.ThemDonTXL(dontxl))
@@ -154,12 +156,23 @@ namespace KTKS_DonKH.GUI.ToXuLy
                             max = dontxl.MaDon;
                             if (item.Cells["NguoiDi"].Value != null)
                             {
+                                string[] date = item.Cells["NgayChuyen"].Value.ToString().Split('/');
                                 LichSuChuyenKT lichsuchuyenkt = new LichSuChuyenKT();
-                                lichsuchuyenkt.NgayChuyen = dontxl.NgayChuyenKT;
-                                lichsuchuyenkt.NguoiDi = dontxl.NguoiDi;
-                                lichsuchuyenkt.GhiChuChuyen = dontxl.GhiChuChuyenKT;
+                                lichsuchuyenkt.NgayChuyen = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
+                                lichsuchuyenkt.NguoiDi = int.Parse(item.Cells["NguoiDi"].Value.ToString());
+                                lichsuchuyenkt.GhiChuChuyen = item.Cells["GhiChu"].Value.ToString();
                                 lichsuchuyenkt.MaDonTXL = dontxl.MaDon;
                                 _cDonTXL.ThemLichSuChuyenKT(lichsuchuyenkt);
+
+                                LichSuDonTu entity = new LichSuDonTu();
+                                entity.NgayChuyen = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
+                                entity.ID_NoiChuyen = 1;
+                                entity.NoiChuyen = "Kiểm Tra Xác Minh";
+                                entity.ID_NoiNhan = int.Parse(item.Cells["NguoiDi"].Value.ToString());
+                                entity.NoiNhan = _cTaiKhoan.getHoTenUserbyID(int.Parse(item.Cells["NguoiDi"].Value.ToString()));
+                                entity.GhiChu = item.Cells["GhiChu"].Value.ToString();
+                                entity.MaDonTXL = dontxl.MaDon;
+                                _cLichSuDonTu.Them(entity);
                             }
                         }
                     }

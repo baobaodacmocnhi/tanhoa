@@ -345,11 +345,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     _dontxl.DaGiaiQuyet = true;
                                 }
                             }
-                            if (_cDCBD.CheckCTDCHDbyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim(),txtKyHD.Text.Trim()))
-                            {
-                                MessageBox.Show("Danh Bộ này đã được Lập Điều Chỉnh Hóa Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
+                            //if (_cDCBD.CheckCTDCHDbyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim(),txtKyHD.Text.Trim()))
+                            //{
+                            //    MessageBox.Show("Danh Bộ này đã được Lập Điều Chỉnh Hóa Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //    return;
+                            //}
                             CTDCHD ctdchd = new CTDCHD();
                             ctdchd.MaDCBD = _cDCBD.getDCBDbyMaDon_TXL(_dontxl.MaDon).MaDCBD;
                             ctdchd.DanhBo = txtDanhBo.Text.Trim();
@@ -461,11 +461,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     _donkh.DaGiaiQuyet = true;
                                 }
                             }
-                            if (_cDCBD.CheckCTDCHDbyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim(), txtKyHD.Text.Trim()))
-                            {
-                                MessageBox.Show("Danh Bộ này đã được Lập Điều Chỉnh Hóa Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
+                            //if (_cDCBD.CheckCTDCHDbyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim(), txtKyHD.Text.Trim()))
+                            //{
+                            //    MessageBox.Show("Danh Bộ này đã được Lập Điều Chỉnh Hóa Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //    return;
+                            //}
                             CTDCHD ctdchd = new CTDCHD();
                             ctdchd.MaDCBD = _cDCBD.getDCBDbyMaDon(_donkh.MaDon).MaDCBD;
                             ctdchd.DanhBo = txtDanhBo.Text.Trim();
