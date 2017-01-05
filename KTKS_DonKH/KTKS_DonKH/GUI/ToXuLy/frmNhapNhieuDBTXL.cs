@@ -160,6 +160,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                                 LichSuChuyenKT lichsuchuyenkt = new LichSuChuyenKT();
                                 lichsuchuyenkt.NgayChuyen = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
                                 lichsuchuyenkt.NguoiDi = int.Parse(item.Cells["NguoiDi"].Value.ToString());
+                                if (item.Cells["GhiChu"].Value != null)
                                 lichsuchuyenkt.GhiChuChuyen = item.Cells["GhiChu"].Value.ToString();
                                 lichsuchuyenkt.MaDonTXL = dontxl.MaDon;
                                 _cDonTXL.ThemLichSuChuyenKT(lichsuchuyenkt);
@@ -170,6 +171,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                                 entity.NoiChuyen = "Kiểm Tra Xác Minh";
                                 entity.ID_NoiNhan = int.Parse(item.Cells["NguoiDi"].Value.ToString());
                                 entity.NoiNhan = _cTaiKhoan.getHoTenUserbyID(int.Parse(item.Cells["NguoiDi"].Value.ToString()));
+                                if (item.Cells["GhiChu"].Value != null)
                                 entity.GhiChu = item.Cells["GhiChu"].Value.ToString();
                                 entity.MaDonTXL = dontxl.MaDon;
                                 _cLichSuDonTu.Them(entity);

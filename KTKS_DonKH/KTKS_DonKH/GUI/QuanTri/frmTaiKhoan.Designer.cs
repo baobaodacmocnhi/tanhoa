@@ -52,7 +52,8 @@
             this.KTXM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BamChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ToKH = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ToXuLy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ToXL = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ToBC = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ToVP = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnThem = new System.Windows.Forms.Button();
             this.txtMaKiemBamChi = new System.Windows.Forms.TextBox();
@@ -203,16 +204,17 @@
             this.KTXM,
             this.BamChi,
             this.ToKH,
-            this.ToXuLy,
+            this.ToXL,
+            this.ToBC,
             this.ToVP});
             this.dgvDSTaiKhoan.Location = new System.Drawing.Point(15, 169);
             this.dgvDSTaiKhoan.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dgvDSTaiKhoan.MultiSelect = false;
             this.dgvDSTaiKhoan.Name = "dgvDSTaiKhoan";
-            this.dgvDSTaiKhoan.Size = new System.Drawing.Size(600, 445);
+            this.dgvDSTaiKhoan.Size = new System.Drawing.Size(642, 445);
             this.dgvDSTaiKhoan.TabIndex = 9;
             this.dgvDSTaiKhoan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSTaiKhoan_CellContentClick);
-            this.dgvDSTaiKhoan.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSTaiKhoan_CellEndEdit);
+            this.dgvDSTaiKhoan.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSTaiKhoan_CellValueChanged);
             this.dgvDSTaiKhoan.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSTaiKhoan_RowPostPaint);
             this.dgvDSTaiKhoan.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvDSTaiKhoan_DragDrop);
             this.dgvDSTaiKhoan.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvDSTaiKhoan_DragEnter);
@@ -319,12 +321,19 @@
             this.ToKH.Name = "ToKH";
             this.ToKH.Width = 50;
             // 
-            // ToXuLy
+            // ToXL
             // 
-            this.ToXuLy.DataPropertyName = "ToXuLy";
-            this.ToXuLy.HeaderText = "Tổ Xử Lý";
-            this.ToXuLy.Name = "ToXuLy";
-            this.ToXuLy.Width = 50;
+            this.ToXL.DataPropertyName = "ToXL";
+            this.ToXL.HeaderText = "Tổ XL";
+            this.ToXL.Name = "ToXL";
+            this.ToXL.Width = 50;
+            // 
+            // ToBC
+            // 
+            this.ToBC.DataPropertyName = "ToBC";
+            this.ToBC.HeaderText = "Tổ BC";
+            this.ToBC.Name = "ToBC";
+            this.ToBC.Width = 50;
             // 
             // ToVP
             // 
@@ -365,7 +374,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.gridControl);
-            this.groupBox1.Location = new System.Drawing.Point(623, 169);
+            this.groupBox1.Location = new System.Drawing.Point(665, 169);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(644, 427);
             this.groupBox1.TabIndex = 16;
@@ -736,7 +745,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn KTXM;
         private System.Windows.Forms.DataGridViewTextBoxColumn BamChi;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ToKH;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ToXuLy;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ToXL;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ToBC;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ToVP;
     }
 }

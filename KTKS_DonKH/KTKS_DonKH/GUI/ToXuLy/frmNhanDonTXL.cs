@@ -26,7 +26,10 @@ namespace KTKS_DonKH.GUI.ToXuLy
         CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
         CNoiChuyen _cNoiChuyen = new CNoiChuyen();
         CPhongBanDoi _cPhongBanDoi = new CPhongBanDoi();
+        DataSet _dsNoiChuyen = new DataSet("NoiChuyen");
         bool _flagFirst = false;
+        bool _flagCu = false;
+        bool _flagMoi = false;
 
         public frmNhanDonTXL()
         {
@@ -105,7 +108,35 @@ namespace KTKS_DonKH.GUI.ToXuLy
             cmbNguoiDi.ValueMember = "MaU";
             cmbNguoiDi.SelectedIndex = -1;
 
-            //Clear();
+            DataTable dt = new DataTable();
+            dt = _cTaiKhoan.GetDS_KTXM_TXL();
+            dt.TableName = "1";//Kiểm Tra Xác Minh
+            _dsNoiChuyen.Tables.Add(dt);
+            ///
+            dt = new DataTable();
+            dt = _cTaiKhoan.GetDS_TKH();
+            dt.TableName = "2";//Tổ Khách Hàng
+            _dsNoiChuyen.Tables.Add(dt);
+            ///
+            dt = new DataTable();
+            dt = _cTaiKhoan.GetDS_TXL();
+            dt.TableName = "3";//Tổ Xử Lý
+            _dsNoiChuyen.Tables.Add(dt);
+            ///
+            dt = new DataTable();
+            dt = _cTaiKhoan.GetDS_TBC();
+            dt.TableName = "4";//Tổ Bấm Chì
+            _dsNoiChuyen.Tables.Add(dt);
+            ///
+            dt = new DataTable();
+            dt = _cTaiKhoan.GetDS_TVP();
+            dt.TableName = "5";//Tổ Văn Phòng
+            _dsNoiChuyen.Tables.Add(dt);
+            ///
+            dt = new DataTable();
+            dt = _cPhongBanDoi.GetDS();
+            dt.TableName = "6";//Phòng Ban Đội Khác
+            _dsNoiChuyen.Tables.Add(dt);
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
@@ -280,6 +311,8 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     ///
                     dgvLichSuChuyenKT.DataSource = _cDonTXL.LoadDSLichSuChuyenKTbyMaDonTXL(_dontxl.MaDon);
                     dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS(true, _dontxl.MaDon);
+                    cmbNoiChuyen.SelectedIndex = -1;
+                    txtGhiChu.Text = "";
                     ///
                     if (_dontxl.ChuyenKT)
                     {
@@ -590,6 +623,8 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             if (e.Button == MouseButtons.Right && (_dontxl != null))
             {
+                _flagCu = true;
+                _flagMoi = false;
                 contextMenuStrip1.Show(dgvLichSuChuyenKT, new Point(e.X, e.Y));
             }
         }
@@ -597,10 +632,22 @@ namespace KTKS_DonKH.GUI.ToXuLy
         private void xóaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                if (_cDonTXL.XoaLichSuChuyenKT(_cDonTXL.getLichSuChuyenKTbyID(decimal.Parse(dgvLichSuChuyenKT.CurrentRow.Cells["MaLSChuyen"].Value.ToString()))))
-                {
-                    dgvLichSuChuyenKT.DataSource = _cDonTXL.LoadDSLichSuChuyenKTbyMaDonTXL(_dontxl.MaDon);
-                }
+            {
+                //if (_cDonTXL.XoaLichSuChuyenKT(_cDonTXL.getLichSuChuyenKTbyID(decimal.Parse(dgvLichSuChuyenKT.CurrentRow.Cells["MaLSChuyen"].Value.ToString()))))
+                //{
+                //    dgvLichSuChuyenKT.DataSource = _cDonTXL.LoadDSLichSuChuyenKTbyMaDonTXL(_dontxl.MaDon);
+                //}
+                if (_flagMoi == true)
+                    if (_cLichSuDonTu.Xoa(_cLichSuDonTu.Get(int.Parse(dgvLichSuDonTu.CurrentRow.Cells["ID"].Value.ToString()))))
+                    {
+                        dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS(true, _dontxl.MaDon);
+                    }
+                if (_flagCu == true)
+                    if (_cDonTXL.XoaLichSuChuyenKT(_cDonTXL.getLichSuChuyenKTbyID(decimal.Parse(dgvLichSuChuyenKT.CurrentRow.Cells["MaLSChuyen"].Value.ToString()))))
+                    {
+                        dgvLichSuChuyenKT.DataSource = _cDonTXL.LoadDSLichSuChuyenKTbyMaDonTXL(_dontxl.MaDon);
+                    }
+            }
         }
 
         private void txtTongSoDanhBo_KeyPress(object sender, KeyPressEventArgs e)
@@ -625,44 +672,62 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
         private void cmbNoiChuyen_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_flagFirst&& cmbNoiChuyen.Items.Count > 0)
+            if (_flagFirst==true)
+            {
+                chkcmbNoiNhan.Properties.Items.Clear();
+                if (cmbNoiChuyen.SelectedIndex != -1)
                 switch (cmbNoiChuyen.SelectedValue.ToString())
                 {
                     case "1"://Kiểm Tra Xác Minh
-                        chkcmbNoiNhan.Properties.DataSource = _cTaiKhoan.GetDS_KTXM_TKH();
+                        chkcmbNoiNhan.Properties.DataSource = _dsNoiChuyen.Tables["1"];
+                        //chkcmbNoiNhan.Properties.DataSource = _cTaiKhoan.GetDS_KTXM_TXL();
                         chkcmbNoiNhan.Properties.DisplayMember = "HoTen";
                         chkcmbNoiNhan.Properties.ValueMember = "MaU";
-
                         break;
                     case "2"://Tổ Khách Hàng
-                        chkcmbNoiNhan.Properties.DataSource = _cTaiKhoan.GetDS_TKH();
+                        chkcmbNoiNhan.Properties.DataSource = _dsNoiChuyen.Tables["2"];
+                        //chkcmbNoiNhan.Properties.DataSource = _cTaiKhoan.GetDS_TKH();
                         chkcmbNoiNhan.Properties.DisplayMember = "HoTen";
                         chkcmbNoiNhan.Properties.ValueMember = "MaU";
                         break;
                     case "3"://Tổ Xử Lý
-                        chkcmbNoiNhan.Properties.DataSource = _cTaiKhoan.GetDS_TXL();
+                        chkcmbNoiNhan.Properties.DataSource = _dsNoiChuyen.Tables["3"];
+                        //chkcmbNoiNhan.Properties.DataSource = _cTaiKhoan.GetDS_TXL();
                         chkcmbNoiNhan.Properties.DisplayMember = "HoTen";
                         chkcmbNoiNhan.Properties.ValueMember = "MaU";
                         break;
-                    case "4"://Tổ Văn Phòng
-                        chkcmbNoiNhan.Properties.DataSource = _cTaiKhoan.GetDS_TVP();
+                    case "4"://Tổ Bấm Chì
+                        chkcmbNoiNhan.Properties.DataSource = _dsNoiChuyen.Tables["4"];
                         chkcmbNoiNhan.Properties.DisplayMember = "HoTen";
                         chkcmbNoiNhan.Properties.ValueMember = "MaU";
                         break;
-                    case "5"://Phòng Ban Đội Khác
-                        chkcmbNoiNhan.Properties.DataSource = _cPhongBanDoi.GetDS();
+                    case "5"://Tổ Văn Phòng
+                        chkcmbNoiNhan.Properties.DataSource = _dsNoiChuyen.Tables["5"];
+                        //chkcmbNoiNhan.Properties.DataSource = _cTaiKhoan.GetDS_TVP();
+                        chkcmbNoiNhan.Properties.DisplayMember = "HoTen";
+                        chkcmbNoiNhan.Properties.ValueMember = "MaU";
+                        break;
+                    case "6"://Phòng Ban Đội Khác
+                        chkcmbNoiNhan.Properties.DataSource = _dsNoiChuyen.Tables["6"];
+                        //chkcmbNoiNhan.Properties.DataSource = _cPhongBanDoi.GetDS();
                         chkcmbNoiNhan.Properties.DisplayMember = "Name";
                         chkcmbNoiNhan.Properties.ValueMember = "ID";
                         break;
+                    case "9"://Tiến Trình
+                        chkcmbNoiNhan.Properties.DataSource = _dsNoiChuyen.Tables["9"];
+                        chkcmbNoiNhan.Properties.DisplayMember = "HoTen";
+                        chkcmbNoiNhan.Properties.ValueMember = "MaU";
+                        break;
                     default:
                         chkcmbNoiNhan.Properties.DataSource = null;
-                        chkcmbNoiNhan.Properties.Items.Clear();
                         break;
                 }
+            }
         }
 
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
+            bool flag = false;//ghi nhận có chọn checkcombobox
             if (chkcmbNoiNhan.Properties.Items.Count > 0)
             {
                 for (int i = 0; i < chkcmbNoiNhan.Properties.Items.Count; i++)
@@ -686,7 +751,21 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         entity.GhiChu = txtGhiChu.Text.Trim();
                         entity.MaDonTXL = _dontxl.MaDon;
                         _cLichSuDonTu.Them(entity);
+                        flag = true;
+                        chkcmbNoiNhan.Properties.Items[i].CheckState = CheckState.Unchecked;
                     }
+                if (flag == false)
+                {
+                    LichSuDonTu entity = new LichSuDonTu();
+                    entity.NgayChuyen = dateChuyen.Value;
+                    entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
+                    entity.NoiChuyen = cmbNoiChuyen.Text;
+                    //entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+                    //entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
+                    entity.GhiChu = txtGhiChu.Text.Trim();
+                    entity.MaDonTXL = _dontxl.MaDon;
+                    _cLichSuDonTu.Them(entity);
+                }
             }
             else
             {
@@ -701,6 +780,25 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 _cLichSuDonTu.Them(entity);
             }
             dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS(true, _dontxl.MaDon);
+        }
+
+        private void dgvLichSuDonTu_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.Button == MouseButtons.Right)
+            {
+                ///Khi chuột phải Selected-Row sẽ được chuyển đến nơi click chuột
+                dgvLichSuDonTu.CurrentCell = dgvLichSuDonTu.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            }
+        }
+
+        private void dgvLichSuDonTu_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && (_dontxl != null))
+            {
+                _flagCu = false;
+                _flagMoi = true;
+                contextMenuStrip1.Show(dgvLichSuDonTu, new Point(e.X, e.Y));
+            }
         }
     }
 }

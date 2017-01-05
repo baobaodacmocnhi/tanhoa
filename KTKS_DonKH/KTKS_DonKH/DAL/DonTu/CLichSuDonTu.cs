@@ -44,12 +44,22 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
+        public bool CheckExist(DateTime NgayChuyen,int ID_NoiChuyen,int ID_NoiNhan)
+        {
+            return db.LichSuDonTus.Any(item => item.NgayChuyen.Value.Date == NgayChuyen.Date && item.ID_NoiChuyen == ID_NoiChuyen && item.ID_NoiNhan == ID_NoiNhan);
+        }
+
+        public LichSuDonTu Get(int ID)
+        {
+            return db.LichSuDonTus.SingleOrDefault(item => item.ID == ID);
+        }
+
         public DataTable GetDS(bool ToXuLy, Decimal MaDon)
         {
             if (ToXuLy == true)
-                return LINQToDataTable(db.LichSuDonTus.Where(item => item.MaDonTXL.Value == MaDon).ToList());
+                return LINQToDataTable(db.LichSuDonTus.Where(item => item.MaDonTXL.Value == MaDon).OrderByDescending(item=>item.CreateDate).ToList());
             else
-                return LINQToDataTable(db.LichSuDonTus.Where(item => item.MaDon.Value == MaDon).ToList());
+                return LINQToDataTable(db.LichSuDonTus.Where(item => item.MaDon.Value == MaDon).OrderByDescending(item => item.CreateDate).ToList());
         }
     }
 }

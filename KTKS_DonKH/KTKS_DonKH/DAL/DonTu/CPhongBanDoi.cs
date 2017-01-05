@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using KTKS_DonKH.LinQ;
+using System.Data;
 
 namespace KTKS_DonKH.DAL.DonTu
 {
     class CPhongBanDoi:CDAL
     {
-        public List<PhongBanDoi> GetDS()
+        public DataTable GetDS()
         {
-            return db.PhongBanDois.OrderBy(item => item.STT).ToList();
+            return LINQToDataTable(db.PhongBanDois.OrderBy(item => item.STT).ToList());
         }
     }
 }

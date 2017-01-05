@@ -1015,6 +1015,7 @@
             this.chkcmbNoiNhan.Properties.Appearance.Options.UseFont = true;
             this.chkcmbNoiNhan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.chkcmbNoiNhan.Properties.PopupFormSize = new System.Drawing.Size(0, 350);
             this.chkcmbNoiNhan.Size = new System.Drawing.Size(201, 22);
             this.chkcmbNoiNhan.TabIndex = 78;
             // 
@@ -1105,9 +1106,12 @@
             this.dgvLichSuDonTu.ReadOnly = true;
             this.dgvLichSuDonTu.Size = new System.Drawing.Size(550, 250);
             this.dgvLichSuDonTu.TabIndex = 79;
+            this.dgvLichSuDonTu.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLichSuDonTu_CellMouseClick);
+            this.dgvLichSuDonTu.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvLichSuDonTu_MouseClick);
             // 
             // ID
             // 
+            this.ID.DataPropertyName = "ID";
             this.ID.HeaderText = "ID";
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
@@ -1147,7 +1151,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1423, 612);
+            this.ClientSize = new System.Drawing.Size(1440, 629);
             this.Controls.Add(this.dgvLichSuDonTu);
             this.Controls.Add(this.chkcmbNoiNhan);
             this.Controls.Add(this.btnCapNhat);

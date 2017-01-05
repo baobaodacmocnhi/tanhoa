@@ -212,27 +212,17 @@ namespace KTKS_DonKH.GUI.QuanTri
             }
         }
 
-        private void dgvDSTaiKhoan_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void dgvDSTaiKhoan_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            User taikhoan = _cTaiKhoan.GetByID(int.Parse(dgvDSTaiKhoan["MaU", e.RowIndex].Value.ToString()));
-            if(dgvDSTaiKhoan.Columns[e.ColumnIndex].Name=="ToXuLy")
-                if (taikhoan.ToXuLy != bool.Parse(dgvDSTaiKhoan[e.ColumnIndex, e.RowIndex].Value.ToString()))
-                {
-                    taikhoan.ToXuLy = bool.Parse(dgvDSTaiKhoan[e.ColumnIndex, e.RowIndex].Value.ToString());
-                    _cTaiKhoan.Sua(taikhoan);
-                }
-            if (dgvDSTaiKhoan.Columns[e.ColumnIndex].Name == "ToKH")
-                if (taikhoan.ToKH != bool.Parse(dgvDSTaiKhoan[e.ColumnIndex, e.RowIndex].Value.ToString()))
-                {
-                    taikhoan.ToKH = bool.Parse(dgvDSTaiKhoan[e.ColumnIndex, e.RowIndex].Value.ToString());
-                    _cTaiKhoan.Sua(taikhoan);
-                }
-            if (dgvDSTaiKhoan.Columns[e.ColumnIndex].Name == "ToVP")
-                if (taikhoan.ToVP != bool.Parse(dgvDSTaiKhoan[e.ColumnIndex, e.RowIndex].Value.ToString()))
-                {
-                    taikhoan.ToVP = bool.Parse(dgvDSTaiKhoan[e.ColumnIndex, e.RowIndex].Value.ToString());
-                    _cTaiKhoan.Sua(taikhoan);
-                }
+            if (dgvDSTaiKhoan.RowCount>0)
+            {
+                User taikhoan = _cTaiKhoan.GetByID(int.Parse(dgvDSTaiKhoan["MaU", e.RowIndex].Value.ToString()));
+                taikhoan.ToKH = bool.Parse(dgvDSTaiKhoan["ToKH", e.RowIndex].Value.ToString());
+                taikhoan.ToXL = bool.Parse(dgvDSTaiKhoan["ToXL", e.RowIndex].Value.ToString());
+                taikhoan.ToBC = bool.Parse(dgvDSTaiKhoan["ToBC", e.RowIndex].Value.ToString());
+                taikhoan.ToVP = bool.Parse(dgvDSTaiKhoan["ToVP", e.RowIndex].Value.ToString());
+                _cTaiKhoan.Sua(taikhoan);
+            }
         }
 
         private void dgvDSTaiKhoan_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -305,6 +295,8 @@ namespace KTKS_DonKH.GUI.QuanTri
                     gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Xoa"], "False");
                 }
         }
+
+        
 
     }
 }

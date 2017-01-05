@@ -232,7 +232,7 @@ namespace KTKS_DonKH.DAL.QuanTri
         {
             try
             {
-                return db.Users.Where(itemUser => itemUser.MaU != 0 && itemUser.ToXuLy == true).ToList();
+                return db.Users.Where(itemUser => itemUser.MaU != 0 && itemUser.ToXL == true && itemUser.An == false).ToList();
             }
             catch (Exception ex)
             {
@@ -249,7 +249,7 @@ namespace KTKS_DonKH.DAL.QuanTri
         {
             try
             {
-                return db.Users.Where(itemUser => itemUser.MaU != 0 && itemUser.ToKH == true).ToList();
+                return db.Users.Where(itemUser => itemUser.MaU != 0 && itemUser.ToKH == true&&itemUser.An==false).ToList();
             }
             catch (Exception ex)
             {
@@ -266,7 +266,7 @@ namespace KTKS_DonKH.DAL.QuanTri
         {
             try
             {
-                return db.Users.Where(itemUser => itemUser.MaU != 0 && itemUser.ToVP == true).ToList();
+                return db.Users.Where(itemUser => itemUser.MaU != 0 && itemUser.ToVP == true && itemUser.An == false).ToList();
             }
             catch (Exception ex)
             {
@@ -275,29 +275,39 @@ namespace KTKS_DonKH.DAL.QuanTri
             }
         }
 
-        public List<User> GetDS_KTXM_TKH()
+        public DataTable GetDS_KTXM_TKH()
         {
-            return db.Users.Where(item => item.KTXM == true && item.ToKH == true).OrderBy(item => item.STT).ToList();
+            return LINQToDataTable(db.Users.Where(item => item.KTXM == true && item.ToKH == true && item.An == false).OrderBy(item => item.STT).ToList());
         }
 
-        public List<User> GetDS_KTXM_TXL()
+        public DataTable GetDS_KTXM_TXL()
         {
-            return db.Users.Where(item => item.BamChi == true && item.ToXuLy == true).OrderBy(item => item.STT).ToList();
+            return LINQToDataTable(db.Users.Where(item => item.BamChi == true && item.ToXL == true && item.An == false).OrderBy(item => item.STT).ToList());
         }
 
-        public List<User> GetDS_TKH()
+        public DataTable GetDS_KTXM_TBC()
         {
-            return db.Users.Where(item => item.KTXM == false && item.ToKH == true).OrderBy(item => item.STT).ToList();
+            return LINQToDataTable(db.Users.Where(item => item.BamChi == true && item.ToBC == true && item.An == false).OrderBy(item => item.STT).ToList());
         }
 
-        public List<User> GetDS_TXL()
+        public DataTable GetDS_TKH()
         {
-            return db.Users.Where(item => item.BamChi == false && item.ToXuLy == true).OrderBy(item => item.STT).ToList();
+            return LINQToDataTable(db.Users.Where(item => item.KTXM == false && item.ToKH == true && item.An == false).OrderBy(item => item.STT).ToList());
         }
 
-        public List<User> GetDS_TVP()
+        public DataTable GetDS_TXL()
         {
-            return db.Users.Where(item => item.ToVP == true).OrderBy(item => item.STT).ToList();
+            return LINQToDataTable(db.Users.Where(item => item.BamChi == false && item.ToXL == true && item.An == false).OrderBy(item => item.STT).ToList());
+        }
+
+        public DataTable GetDS_TBC()
+        {
+            return LINQToDataTable(db.Users.Where(item => item.BamChi == false && item.ToBC == true && item.An == false).OrderBy(item => item.STT).ToList());
+        }
+
+        public DataTable GetDS_TVP()
+        {
+            return LINQToDataTable(db.Users.Where(item => item.ToVP == true && item.An == false).OrderBy(item => item.STT).ToList());
         }
 
         /// <summary>

@@ -401,7 +401,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         if (_cTaiKhoan.GetByID(int.Parse(itemRow["MaU"].ToString())).ToKH)
                             dr["To"] = "TKH";
                         else
-                            if (_cTaiKhoan.GetByID(int.Parse(itemRow["MaU"].ToString())).ToXuLy)
+                            if (_cTaiKhoan.GetByID(int.Parse(itemRow["MaU"].ToString())).ToXL)
                                 dr["To"] = "TXL";
 
                         dsBaoCao.Tables["DSKTXM"].Rows.Add(dr);
