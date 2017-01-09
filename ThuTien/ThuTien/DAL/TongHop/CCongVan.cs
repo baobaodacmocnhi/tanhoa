@@ -93,7 +93,7 @@ namespace ThuTien.DAL.TongHop
         public DataTable GetDS(string Loai, DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from item in _db.TT_CongVans
-                        where item.Loai.Contains(Loai) && item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
+                        where item.Loai.Contains(Loai) && item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate
                         select new
                         {
                             db = "Thu Tiền",

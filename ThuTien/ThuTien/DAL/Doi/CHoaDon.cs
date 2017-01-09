@@ -9189,7 +9189,7 @@ namespace ThuTien.DAL.Doi
             try
             {
                 string sql = "";
-                sql = "update HOADON set Thu2Lan=1,Thu2Lan_ChuyenKhoan='" + ChuyenKhoan + "' where SOHOADON='" + SoHoaDon + "'";
+                sql = "update HOADON set Thu2Lan=1,Thu2Lan_ChuyenKhoan='" + ChuyenKhoan + "' where Thu2Lan=0 and SOHOADON='" + SoHoaDon + "'";
                 return LinQ_ExecuteNonQuery(sql);
             }
             catch (Exception ex)
@@ -9204,7 +9204,7 @@ namespace ThuTien.DAL.Doi
             try
             {
                 string sql = "";
-                sql = "update HOADON set Thu2Lan=0 where SOHOADON='" + SoHoaDon + "'";
+                sql = "update HOADON set Thu2Lan=0 where Thu2Lan=1 and SOHOADON='" + SoHoaDon + "'";
                 return LinQ_ExecuteNonQuery(sql);
             }
             catch (Exception ex)
@@ -9219,7 +9219,7 @@ namespace ThuTien.DAL.Doi
             try
             {
                 string sql = "";
-                sql = "update HOADON set Thu2Lan=1,Thu2Lan_ChuyenKhoan='" + ChuyenKhoan + "' where NAM=" + Nam + " and KY=" + Ky + " and DANHBA='" + DanhBo + "'";
+                sql = "update HOADON set Thu2Lan=1,Thu2Lan_ChuyenKhoan='" + ChuyenKhoan + "' where Thu2Lan=0 and NAM=" + Nam + " and KY=" + Ky + " and DANHBA='" + DanhBo + "'";
                 return LinQ_ExecuteNonQuery(sql);
             }
             catch (Exception ex)
@@ -9251,7 +9251,7 @@ namespace ThuTien.DAL.Doi
             {
                 string sql = "";
                 sql = "update HOADON set Thu2Lan_Tra=1,Thu2Lan_NgayTra='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "'"
-                + " where SOHOADON='" + SoHoaDon + "'";
+                + " where Thu2Lan_Tra=0 and SOHOADON='" + SoHoaDon + "'";
                 return LinQ_ExecuteNonQuery(sql);
             }
             catch (Exception ex)
@@ -9267,7 +9267,7 @@ namespace ThuTien.DAL.Doi
             {
                 string sql = "";
                 sql = "update HOADON set Thu2Lan_Tra=0,Thu2Lan_NgayTra=null,Thu2Lan_GhiChu=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "'"
-                    + " where SOHOADON='" + SoHoaDon + "'";
+                    + " where Thu2Lan_Tra=1 and SOHOADON='" + SoHoaDon + "'";
                 return LinQ_ExecuteNonQuery(sql);
             }
             catch (Exception ex)
@@ -9282,7 +9282,7 @@ namespace ThuTien.DAL.Doi
             try
             {
                 string sql = "";
-                sql = "update HOADON set ChuyenNoKhoDoi=1,NGAYGIAITRACH='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' where SOHOADON='" + SoHoaDon + "'";
+                sql = "update HOADON set ChuyenNoKhoDoi=1,NGAYGIAITRACH='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' where ChuyenNoKhoDoi=0 and SOHOADON='" + SoHoaDon + "'";
                 return LinQ_ExecuteNonQuery(sql);
             }
             catch (Exception ex)
@@ -9297,7 +9297,7 @@ namespace ThuTien.DAL.Doi
             try
             {
                 string sql = "";
-                sql = "update HOADON set ChuyenNoKhoDoi=0,NGAYGIAITRACH=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' where SOHOADON='" + SoHoaDon + "'";
+                sql = "update HOADON set ChuyenNoKhoDoi=0,NGAYGIAITRACH=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' where ChuyenNoKhoDoi=1 and SOHOADON='" + SoHoaDon + "'";
                 return LinQ_ExecuteNonQuery(sql);
             }
             catch (Exception ex)

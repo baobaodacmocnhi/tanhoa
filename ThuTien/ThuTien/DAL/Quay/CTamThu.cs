@@ -68,7 +68,7 @@ namespace ThuTien.DAL.Quay
             try
             {
                 string sql = "";
-                sql = "update TAMTHU set Xoa=1 where SoHoaDon='" + SoHoaDon + "'";
+                sql = "update TAMTHU set Xoa=1 where Xoa=0 and SoHoaDon='" + SoHoaDon + "'";
                 return LinQ_ExecuteNonQuery(sql);
             }
             catch (Exception ex)

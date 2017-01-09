@@ -51,12 +51,12 @@ namespace ThuTien.DAL.Quay
             {
                 if (LinQ_ExecuteNonQuery("update TT_TienDuQuay set SoTien=SoTien-(select TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "'),ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=GETDATE() where DanhBo=(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "')"))
                 {
-                    return LinQ_ExecuteNonQuery("insert into TT_TienDuLichSuQuay(ID,DanhBo,SoTien,Loai,GhiChu,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSuQuay),(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TONGCONG=-TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "'),N'" + Loai + "',N'" + GhiChu + " '+(select CONVERT(varchar(2),ky)+'/'+CONVERT(varchar(4),NAM) from HOADON where SOHOADON='" + SoHoaDon + "')," + CNguoiDung.MaND + ",GETDATE())");
+                    return LinQ_ExecuteNonQuery("insert into TT_TienDuLichSuQuay(ID,DanhBo,SoTien,Loai,GhiChu,SoHoaDon,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSuQuay),(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TONGCONG=-TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "'),N'" + Loai + "',N'" + GhiChu + " '+(select CONVERT(varchar(2),ky)+'/'+CONVERT(varchar(4),NAM) from HOADON where SOHOADON='" + SoHoaDon + "'),'" + SoHoaDon + "'," + CNguoiDung.MaND + ",GETDATE())");
                 }
                 else
                     if (LinQ_ExecuteNonQuery("insert into TT_TienDuQuay(DanhBo,SoTien,CreateBy,CreateDate,ModifyBy,ModifyDate) values((select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TONGCONG=-TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "')," + CNguoiDung.MaND + ",GETDATE()," + CNguoiDung.MaND + ",GETDATE())"))
                     {
-                        return LinQ_ExecuteNonQuery("insert into TT_TienDuLichSuQuay(ID,DanhBo,SoTien,Loai,GhiChu,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSuQuay),(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TONGCONG=-TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "'),N'" + Loai + "',N'" + GhiChu + " '+(select CONVERT(varchar(2),ky)+'/'+CONVERT(varchar(4),NAM) from HOADON where SOHOADON='" + SoHoaDon + "')," + CNguoiDung.MaND + ",GETDATE())");
+                        return LinQ_ExecuteNonQuery("insert into TT_TienDuLichSuQuay(ID,DanhBo,SoTien,Loai,GhiChu,SoHoaDon,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSuQuay),(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TONGCONG=-TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "'),N'" + Loai + "',N'" + GhiChu + " '+(select CONVERT(varchar(2),ky)+'/'+CONVERT(varchar(4),NAM) from HOADON where SOHOADON='" + SoHoaDon + "'),'" + SoHoaDon + "'," + CNguoiDung.MaND + ",GETDATE())");
                     }
                     else
                     {
@@ -76,12 +76,12 @@ namespace ThuTien.DAL.Quay
             {
                 if (LinQ_ExecuteNonQuery("update TT_TienDuQuay set SoTien=SoTien+(select TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "'),ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=GETDATE() where DanhBo=(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "')"))
                 {
-                    return LinQ_ExecuteNonQuery("insert into TT_TienDuLichSuQuay(ID,DanhBo,SoTien,Loai,GhiChu,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSuQuay),(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "'),N'" + Loai + "',N'" + GhiChu + " '+(select CONVERT(varchar(2),ky)+'/'+CONVERT(varchar(4),NAM) from HOADON where SOHOADON='" + SoHoaDon + "')," + CNguoiDung.MaND + ",GETDATE())");
+                    return LinQ_ExecuteNonQuery("insert into TT_TienDuLichSuQuay(ID,DanhBo,SoTien,Loai,GhiChu,SoHoaDon,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSuQuay),(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "'),N'" + Loai + "',N'" + GhiChu + " '+(select CONVERT(varchar(2),ky)+'/'+CONVERT(varchar(4),NAM) from HOADON where SOHOADON='" + SoHoaDon + "'),'" + SoHoaDon + "'," + CNguoiDung.MaND + ",GETDATE())");
                 }
                 else
                     if (LinQ_ExecuteNonQuery("insert into TT_TienDuQuay(DanhBo,SoTien,CreateBy,CreateDate,ModifyBy,ModifyDate) values((select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "')," + CNguoiDung.MaND + ",GETDATE()," + CNguoiDung.MaND + ",GETDATE())"))
                     {
-                        return LinQ_ExecuteNonQuery("insert into TT_TienDuLichSuQuay(ID,DanhBo,SoTien,Loai,GhiChu,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSuQuay),(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "'),N'" + Loai + "',N'" + GhiChu + " '+(select CONVERT(varchar(2),ky)+'/'+CONVERT(varchar(4),NAM) from HOADON where SOHOADON='" + SoHoaDon + "')," + CNguoiDung.MaND + ",GETDATE())");
+                        return LinQ_ExecuteNonQuery("insert into TT_TienDuLichSuQuay(ID,DanhBo,SoTien,Loai,GhiChu,SoHoaDon,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSuQuay),(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "'),N'" + Loai + "',N'" + GhiChu + " '+(select CONVERT(varchar(2),ky)+'/'+CONVERT(varchar(4),NAM) from HOADON where SOHOADON='" + SoHoaDon + "'),'" + SoHoaDon + "'," + CNguoiDung.MaND + ",GETDATE())");
                     }
                     else
                     {

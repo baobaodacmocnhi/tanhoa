@@ -125,54 +125,54 @@ namespace ThuTien.DAL
             {
                 case "Kiểm Tra Xác Minh":
                     string sqlKTXM = "select Loai=N'Kiểm Tra Xác Minh',DanhBo,DiaChi,NoiDungKiemTra as NoiDung,CreateDate,'Table'='CTKTXM','Column'='MaCTKTXM',MaCTKTXM as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from CTKTXM"
-                        +" where CAST(ThuTien_NgayNhan as DATE)>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd") + "' and CAST(ThuTien_NgayNhan as DATE)<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd") + "'";
+                        + " where ThuTien_NgayNhan>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "' and ThuTien_NgayNhan<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "'";
                     dt = ExecuteQuery_SqlDataAdapter_DataTable(sqlKTXM);
                     break;
                 case "Điều Chỉnh Biến Động":
                     string sqlDCBD = "select Loai=N'Điều Chỉnh Biến Động',DanhBo,DiaChi,ThongTin as NoiDung,CreateDate,'Table'='CTDCBD','Column'='MaCTDCBD',MaCTDCBD as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from CTDCBD"
-                        +" where CAST(ThuTien_NgayNhan as DATE)>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd") + "' and CAST(ThuTien_NgayNhan as DATE)<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd") + "'";
+                        + " where ThuTien_NgayNhan>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "' and ThuTien_NgayNhan<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "'";
                     dt = ExecuteQuery_SqlDataAdapter_DataTable(sqlDCBD);
                     break;
                 case "Điều Chỉnh Hóa Đơn":
                     string sqlDCHD = "select Loai=N'Điều Chỉnh Hóa Đơn',DanhBo,DiaChi,TangGiam as NoiDung,CreateDate,'Table'='CTDCHD','Column'='MaCTDCHD',MaCTDCHD as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from CTDCHD"
-                        +" where CAST(ThuTien_NgayNhan as DATE)>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd") + "' and CAST(ThuTien_NgayNhan as DATE)<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd") + "'";
+                        + " where ThuTien_NgayNhan>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "' and ThuTien_NgayNhan<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "'";
                     dt = ExecuteQuery_SqlDataAdapter_DataTable(sqlDCHD);
                     break;
                 case "TB Cắt Tạm Danh Bộ":
                     string sqlCTDB = "select Loai=N'TB Cắt Tạm Danh Bộ',DanhBo,DiaChi,LyDo+'. '+GhiChuLyDo as NoiDung,CreateDate,'Table'='CTCTDB','Column'='MaCTCTDB',MaCTCTDB as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from CTCTDB"
-                        +" where CAST(ThuTien_NgayNhan as DATE)>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd") + "' and CAST(ThuTien_NgayNhan as DATE)<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd") + "'";
+                        + " where ThuTien_NgayNhan>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "' and ThuTien_NgayNhan<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "'";
                     dt = ExecuteQuery_SqlDataAdapter_DataTable(sqlCTDB);
                     break;
                 case "TB Cắt Hủy Danh Bộ":
                     string sqlCHDB = "select Loai=N'TB Cắt Hủy Danh Bộ',DanhBo,DiaChi,LyDo+'. '+GhiChuLyDo as NoiDung,CreateDate,'Table'='CTCHDB','Column'='MaCTCHDB',MaCTCHDB as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from CTCHDB"
-                        +" where CAST(ThuTien_NgayNhan as DATE)>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd") + "' and CAST(ThuTien_NgayNhan as DATE)<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd") + "'";
+                        + " where ThuTien_NgayNhan>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "' and ThuTien_NgayNhan<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "'";
                     dt = ExecuteQuery_SqlDataAdapter_DataTable(sqlCHDB);
                     break;
                 case "Phiếu Yêu Cầu Cắt Hủy Danh Bộ":
                     string sqlPhieuCHDB = "select Loai=N'Phiếu Yêu Cầu Cắt Hủy Danh Bộ',DanhBo,DiaChi,LyDo+'. '+GhiChuLyDo as NoiDung,CreateDate,'Table'='PhieuCHDB','Column'='MaYCCHDB',MaYCCHDB as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from PhieuCHDB"
-                        +" where CAST(ThuTien_NgayNhan as DATE)>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd") + "' and CAST(ThuTien_NgayNhan as DATE)<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd") + "'";
+                        + " where ThuTien_NgayNhan>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "' and ThuTien_NgayNhan<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "'";
                     dt = ExecuteQuery_SqlDataAdapter_DataTable(sqlPhieuCHDB);
                     break;
                 case "Thư Trả Lời":
                     string sqlTTTL = "select Loai=N'Thư Trả Lời',DanhBo,DiaChi,NoiDung,CreateDate,'Table'='CTTTTL','Column'='MaCTTTTL',MaCTTTTL as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from CTTTTL"
-                        +" where CAST(ThuTien_NgayNhan as DATE)>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd") + "' and CAST(ThuTien_NgayNhan as DATE)<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd") + "'";
+                        + " where ThuTien_NgayNhan>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "' and ThuTien_NgayNhan<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "'";
                     dt = ExecuteQuery_SqlDataAdapter_DataTable(sqlTTTL);
                     break;
                 default:
                     sqlKTXM = "select Loai=N'Kiểm Tra Xác Minh',DanhBo,DiaChi,NoiDungKiemTra as NoiDung,CreateDate,'Table'='CTKTXM','Column'='MaCTKTXM',MaCTKTXM as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from CTKTXM"
-                        +" where CAST(ThuTien_NgayNhan as DATE)>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd") + "' and CAST(ThuTien_NgayNhan as DATE)<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd") + "'";
+                        + " where ThuTien_NgayNhan>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "' and ThuTien_NgayNhan<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "'";
                     sqlDCBD = "select Loai=N'Điều Chỉnh Biến Động',DanhBo,DiaChi,ThongTin as NoiDung,CreateDate,'Table'='CTDCBD','Column'='MaCTDCBD',MaCTDCBD as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from CTDCBD"
-                        +" where CAST(ThuTien_NgayNhan as DATE)>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd") + "' and CAST(ThuTien_NgayNhan as DATE)<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd") + "'";
+                        + " where ThuTien_NgayNhan>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "' and ThuTien_NgayNhan<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "'";
                     sqlDCHD = "select Loai=N'Điều Chỉnh Hóa Đơn',DanhBo,DiaChi,TangGiam as NoiDung,CreateDate,'Table'='CTDCHD','Column'='MaCTDCHD',MaCTDCHD as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from CTDCHD"
-                        +" where CAST(ThuTien_NgayNhan as DATE)>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd") + "' and CAST(ThuTien_NgayNhan as DATE)<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd") + "'";
+                        + " where ThuTien_NgayNhan>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "' and ThuTien_NgayNhan<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "'";
                     sqlCTDB = "select Loai=N'TB Cắt Tạm Danh Bộ',DanhBo,DiaChi,LyDo+'. '+GhiChuLyDo as NoiDung,CreateDate,'Table'='CTCTDB','Column'='MaCTCTDB',MaCTCTDB as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from CTCTDB"
-                        +" where CAST(ThuTien_NgayNhan as DATE)>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd") + "' and CAST(ThuTien_NgayNhan as DATE)<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd") + "'";
+                        + " where ThuTien_NgayNhan>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "' and ThuTien_NgayNhan<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "'";
                     sqlCHDB = "select Loai=N'TB Cắt Hủy Danh Bộ',DanhBo,DiaChi,LyDo+'. '+GhiChuLyDo as NoiDung,CreateDate,'Table'='CTCHDB','Column'='MaCTCHDB',MaCTCHDB as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from CTCHDB"
-                        +" where CAST(ThuTien_NgayNhan as DATE)>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd") + "' and CAST(ThuTien_NgayNhan as DATE)<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd") + "'";
+                        + " where ThuTien_NgayNhan>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "' and ThuTien_NgayNhan<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "'";
                     sqlPhieuCHDB = "select Loai=N'Phiếu Yêu Cầu Cắt Hủy Danh Bộ',DanhBo,DiaChi,LyDo+'. '+GhiChuLyDo as NoiDung,CreateDate,'Table'='PhieuCHDB','Column'='MaYCCHDB',MaYCCHDB as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from PhieuCHDB"
-                        +" where CAST(ThuTien_NgayNhan as DATE)>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd") + "' and CAST(ThuTien_NgayNhan as DATE)<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd") + "'";
+                        + " where ThuTien_NgayNhan>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "' and ThuTien_NgayNhan<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "'";
                     sqlTTTL = "select Loai=N'Thư Trả Lời',DanhBo,DiaChi,NoiDung,CreateDate,'Table'='CTTTTL','Column'='MaCTTTTL',MaCTTTTL as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from CTTTTL"
-                        +" where CAST(ThuTien_NgayNhan as DATE)>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd") + "' and CAST(ThuTien_NgayNhan as DATE)<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd") + "'";
+                        + " where ThuTien_NgayNhan>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "' and ThuTien_NgayNhan<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "'";
 
                     dt = ExecuteQuery_SqlDataAdapter_DataTable(sqlKTXM);
                     dt.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sqlDCBD));

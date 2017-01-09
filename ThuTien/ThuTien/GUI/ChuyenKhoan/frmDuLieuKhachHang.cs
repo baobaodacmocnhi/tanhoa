@@ -74,14 +74,18 @@ namespace ThuTien.GUI.ChuyenKhoan
                 dr["DanhBo"] = item.DanhBo.Insert(4, " ").Insert(8, " ");
 
                 HOADON hoadon = _cHoaDon.GetMoiNhat(item.DanhBo);
-                dr["HoTen"] = hoadon.TENKH;
-                dr["MLT"] = hoadon.MALOTRINH.Insert(4, " ").Insert(2, " ");
-                if (hoadon.MaNV_HanhThu == null)
+                if (hoadon != null)
                 {
-                    hoadon = _cHoaDon.GetMoiNhi(item.DanhBo);
+                    dr["HoTen"] = hoadon.TENKH;
+                    dr["MLT"] = hoadon.MALOTRINH.Insert(4, " ").Insert(2, " ");
+                    if (hoadon.MaNV_HanhThu == null)
+                    {
+                        hoadon = _cHoaDon.GetMoiNhi(item.DanhBo);
+                    }
+                    dr["To"] = _cNguoiDung.GetTenToByMaND(hoadon.MaNV_HanhThu.Value);
+                    dr["HanhThu"] = _cNguoiDung.GetHoTenByMaND(hoadon.MaNV_HanhThu.Value);
                 }
-                dr["To"] = _cNguoiDung.GetTenToByMaND(hoadon.MaNV_HanhThu.Value);
-                dr["HanhThu"] = _cNguoiDung.GetHoTenByMaND(hoadon.MaNV_HanhThu.Value);
+                //MessageBox.Show("Danh Bộ: " + item.DanhBo+" không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
             }
             rptDSDLKH rpt = new rptDSDLKH();

@@ -166,7 +166,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dr["LoaiBaoCao"] = "DỊCH VỤ THU HỘ";
                         dr["GhiChu"] = "ĐỂ BIẾT, KHÔNG THU";
                         dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
-                        dr["HoTen"] = item.Cells["HoTen"].Value.ToString();
+                        dr["HoTen"] = item.Cells["DiaChi"].Value.ToString();
                         dr["MLT"] = item.Cells["MLT"].Value.ToString().Insert(4, " ").Insert(2, " ");
                         dr["Ky"] = item.Cells["Ky"].Value.ToString();
                         dr["TongCong"] = item.Cells["SoTien"].Value.ToString();
@@ -192,7 +192,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dr["LoaiBaoCao"] = "DỊCH VỤ THU HỘ";
                         dr["GhiChu"] = "ĐỂ BIẾT, KHÔNG THU";
                         dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
-                        dr["HoTen"] = item.Cells["HoTen"].Value.ToString();
+                        dr["HoTen"] = item.Cells["DiaChi"].Value.ToString();
                         dr["MLT"] = item.Cells["MLT"].Value.ToString().Insert(4, " ").Insert(2, " ");
                         dr["Ky"] = item.Cells["Ky"].Value.ToString();
                         dr["TongCong"] = item.Cells["SoTien"].Value.ToString();
@@ -348,7 +348,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["LoaiBaoCao"] = "DỊCH VỤ THU HỘ(LỆNH HỦY)";
                     dr["GhiChu"] = "ĐỂ BIẾT, KHÔNG THU";
                     dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
-                    dr["HoTen"] = item.Cells["HoTen"].Value.ToString();
+                    dr["HoTen"] = item.Cells["DiaChi"].Value.ToString();
                     dr["MLT"] = item.Cells["MLT"].Value.ToString().Insert(4, " ").Insert(2, " ");
                     dr["Ky"] = item.Cells["Ky"].Value.ToString();
                     dr["TongCong"] = item.Cells["SoTien"].Value.ToString();
