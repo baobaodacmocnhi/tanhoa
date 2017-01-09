@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.GUI.HeThong;
-using KTKS_DonKH.GUI.CapNhat;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.GUI.KhachHang;
 using KTKS_DonKH.GUI.TimKiem;

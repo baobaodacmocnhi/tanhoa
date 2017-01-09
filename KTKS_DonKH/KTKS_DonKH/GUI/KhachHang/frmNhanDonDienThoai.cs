@@ -19,6 +19,7 @@ namespace KTKS_DonKH.GUI.KhachHang
         CDonDienThoai _cDonDT = new CDonDienThoai();
         CThuTien _cThuTien = new CThuTien();
         CDocSo _cDocSo = new CDocSo();
+        CThongTinKhachHang _cTTKH = new CThongTinKhachHang();
         HOADON _hoadon = null;
         int _selectedindex = -1;
 
@@ -51,7 +52,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
             {
                 DonDienThoai dondt = new DonDienThoai();
-                dondt.DanhBo = txtDanhBo.Text;
+                dondt.DanhBo = txtDanhBo.Text.Trim();
                 dondt.HoTen = txtHoTen.Text.Trim();
                 dondt.DiaChi = txtDiaChi.Text.Trim();
                 if (_hoadon != null)
@@ -71,6 +72,14 @@ namespace KTKS_DonKH.GUI.KhachHang
                 dondt.NgayBao = dateBao.Value;
                 if (_cDonDT.ThemDonDienThoai(dondt))
                 {
+                    if (dondt.DienThoai!=""&&dondt.DanhBo!=""&& _cTTKH.CheckExist(dondt.DienThoai, dondt.DanhBo) == false)
+                    {
+                        ThongTinKhachHang entity = new ThongTinKhachHang();
+                        entity.DienThoai = dondt.DienThoai;
+                        entity.DanhBo = dondt.DanhBo;
+                        entity.HoTen = dondt.HoTen;
+                        _cTTKH.Them(entity);
+                    }
                     Clear();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

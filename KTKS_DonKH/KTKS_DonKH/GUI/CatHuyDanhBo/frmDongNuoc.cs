@@ -15,7 +15,6 @@ using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.DongNuoc;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.BamChi;
-using KTKS_DonKH.DAL.CapNhat;
 using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.DongNuoc

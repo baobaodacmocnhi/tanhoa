@@ -75,6 +75,35 @@ namespace KTKS_DonKH.DAL.QuanTri
             set { CTaiKhoan._ToTruong = value; }
         }
 
+        static bool _ThuKy;
+        public static bool ThuKy
+        {
+            get { return CTaiKhoan._ThuKy; }
+            set { CTaiKhoan._ThuKy = value; }
+        }
+
+        static bool _ToKH;
+
+        public static bool ToKH
+        {
+            get { return CTaiKhoan._ToKH; }
+            set { CTaiKhoan._ToKH = value; }
+        }
+        static bool _ToXL;
+
+        public static bool ToXL
+        {
+            get { return CTaiKhoan._ToXL; }
+            set { CTaiKhoan._ToXL = value; }
+        }
+        static bool _ToBC;
+
+        public static bool ToBC
+        {
+            get { return CTaiKhoan._ToBC; }
+            set { CTaiKhoan._ToBC = value; }
+        }
+
         static System.Data.DataTable _dtQuyenNhom;
         public static System.Data.DataTable dtQuyenNhom
         {

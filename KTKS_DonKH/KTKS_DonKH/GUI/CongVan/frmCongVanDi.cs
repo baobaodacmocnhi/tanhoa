@@ -18,7 +18,6 @@ using KTKS_DonKH.DAL.ThaoThuTraLoi;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.CongVan;
 using KTKS_DonKH.GUI.BaoCao;
-using KTKS_DonKH.DAL.CapNhat;
 using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.CongVan
@@ -133,17 +132,25 @@ namespace KTKS_DonKH.GUI.CongVan
                         item.MaDonTXL = _madon;
                     else
                         item.MaDon = _madon;
-                    if (!_cCongVanDi.CheckExist(item.LoaiVanBan, item.Ma, item.NoiChuyen, DateTime.Now))
-                    {
+                    if (txtTuMa.Text.Trim().Replace("-", "") != "")
+                        if (!_cCongVanDi.CheckExist(item.LoaiVanBan, item.Ma, item.NoiChuyen, DateTime.Now))
+                        {
+                            if (_cCongVanDi.Them(item))
+                            {
+                                Clear();
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                btnXem.PerformClick();
+                            }
+                        }
+                        else
+                            MessageBox.Show("Đã có: " + item.Ma, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else
                         if (_cCongVanDi.Them(item))
                         {
                             Clear();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             btnXem.PerformClick();
                         }
-                    }
-                    else
-                            MessageBox.Show("Đã có: "+item.Ma, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -273,7 +280,7 @@ namespace KTKS_DonKH.GUI.CongVan
                         if (!_cCongVanDi.CheckExist(item.LoaiVanBan, item.Ma, item.NoiChuyen, DateTime.Now))
                             _cCongVanDi.Them(item);
                         else
-                            MessageBox.Show("Đã có: "+item.Ma, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Đã có: " + item.Ma, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     Clear();
                     btnXem.PerformClick();

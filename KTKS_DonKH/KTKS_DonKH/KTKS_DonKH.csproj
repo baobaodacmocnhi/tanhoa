@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>450</ApplicationRevision>
+    <ApplicationRevision>456</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -574,6 +574,7 @@
     <Compile Include="DAL\DonTu\CLichSuDonTu.cs" />
     <Compile Include="DAL\DonTu\CNoiChuyen.cs" />
     <Compile Include="DAL\DonTu\CPhongBanDoi.cs" />
+    <Compile Include="DAL\KhachHang\CThongTinKhachHang.cs" />
     <Compile Include="DAL\QuanTri\CBanGiamDoc.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CChiNhanh.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CGiaNuoc.cs" />
@@ -587,7 +588,6 @@
     <Compile Include="DAL\QuanTri\CTo.cs" />
     <Compile Include="DAL\ToXuLy\CLoaiDonTXL.cs" />
     <Compile Include="DAL\BamChi\CTrangThaiBamChi.cs" />
-    <Compile Include="DAL\CapNhat\CTTKH.cs" />
     <Compile Include="DAL\CatHuyDanhBo\CLyDoCHDB.cs" />
     <Compile Include="DAL\CatHuyDanhBo\CCHDB.cs" />
     <Compile Include="DAL\CBaoCao.cs" />
@@ -699,12 +699,6 @@
     </Compile>
     <Compile Include="GUI\KiemTraXacMinh\frmHienTrangKiemTra.Designer.cs">
       <DependentUpon>frmHienTrangKiemTra.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\CapNhat\frmTTKH.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\CapNhat\frmTTKH.Designer.cs">
-      <DependentUpon>frmTTKH.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\HeThong\frmAdmin.cs">
       <SubType>Form</SubType>
@@ -1408,9 +1402,6 @@
     <EmbeddedResource Include="GUI\KiemTraXacMinh\frmHienTrangKiemTra.resx">
       <DependentUpon>frmHienTrangKiemTra.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\CapNhat\frmTTKH.resx">
-      <DependentUpon>frmTTKH.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanTri\frmTo.resx">
       <DependentUpon>frmTo.cs</DependentUpon>
     </EmbeddedResource>
@@ -2095,7 +2086,9 @@
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="DAL\CapNhat\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

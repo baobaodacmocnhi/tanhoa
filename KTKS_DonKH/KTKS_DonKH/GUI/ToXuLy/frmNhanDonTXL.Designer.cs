@@ -1058,6 +1058,7 @@
             // 
             this.cmbNoiChuyen.FormattingEnabled = true;
             this.cmbNoiChuyen.Location = new System.Drawing.Point(106, 236);
+            this.cmbNoiChuyen.MaxDropDownItems = 10;
             this.cmbNoiChuyen.Name = "cmbNoiChuyen";
             this.cmbNoiChuyen.Size = new System.Drawing.Size(150, 24);
             this.cmbNoiChuyen.TabIndex = 73;
@@ -1123,6 +1124,7 @@
             this.NgayChuyenA.HeaderText = "Ngày Chuyển";
             this.NgayChuyenA.Name = "NgayChuyenA";
             this.NgayChuyenA.ReadOnly = true;
+            this.NgayChuyenA.Width = 150;
             // 
             // NoiChuyen
             // 

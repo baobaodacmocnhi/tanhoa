@@ -9,7 +9,6 @@ using System.Windows.Forms;
 using KTKS_DonKH.GUI.KhachHang;
 using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.DAL.DieuChinhBienDong;
-using KTKS_DonKH.DAL.CapNhat;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid.Views.Grid;

@@ -11,7 +11,6 @@ using KTKS_DonKH.LinQ;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.KhachHang;
 using KTKS_DonKH.GUI.BaoCao;
-using KTKS_DonKH.DAL.CapNhat;
 using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.BaoCao.ToXuLy;
 using KTKS_DonKH.DAL.ToXuLy;

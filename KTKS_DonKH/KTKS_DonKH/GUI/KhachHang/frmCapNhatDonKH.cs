@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using KTKS_DonKH.DAL.CapNhat;
 using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.LinQ;
@@ -343,6 +342,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     ///
                     LoadLichSuChuyen(_donkh.MaDon);
                     dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS(false, _donkh.MaDon);
+                    dateChuyen.Value = DateTime.Now;
                     cmbNoiChuyen.SelectedIndex = -1;
                     txtGhiChu.Text = "";
                     ///
@@ -842,7 +842,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                             chkcmbNoiNhan.Properties.ValueMember = "MaU";
                             break;
                         default:
-                            chkcmbNoiNhan.Properties.DataSource = null;
+                            //chkcmbNoiNhan.Properties.DataSource = null;
                             break;
                     }
             }

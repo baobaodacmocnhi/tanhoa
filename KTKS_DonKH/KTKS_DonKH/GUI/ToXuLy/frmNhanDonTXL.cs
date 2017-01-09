@@ -312,6 +312,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     dgvLichSuChuyenKT.DataSource = _cDonTXL.LoadDSLichSuChuyenKTbyMaDonTXL(_dontxl.MaDon);
                     dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS(true, _dontxl.MaDon);
                     cmbNoiChuyen.SelectedIndex = -1;
+                    dateChuyen.Value = DateTime.Now;
                     txtGhiChu.Text = "";
                     ///
                     if (_dontxl.ChuyenKT)
@@ -674,7 +675,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             if (_flagFirst==true)
             {
-                chkcmbNoiNhan.Properties.Items.Clear();
+                //chkcmbNoiNhan.Properties.Items.Clear();
                 if (cmbNoiChuyen.SelectedIndex != -1)
                 switch (cmbNoiChuyen.SelectedValue.ToString())
                 {

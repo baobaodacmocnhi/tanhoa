@@ -6,7 +6,6 @@ using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.QuanTri;
 using System.Windows.Forms;
 using System.Data;
-using KTKS_DonKH.DAL.CapNhat;
 
 namespace KTKS_DonKH.DAL.DieuChinhBienDong
 {

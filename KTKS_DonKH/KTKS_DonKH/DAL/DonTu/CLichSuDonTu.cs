@@ -57,9 +57,9 @@ namespace KTKS_DonKH.DAL.DonTu
         public DataTable GetDS(bool ToXuLy, Decimal MaDon)
         {
             if (ToXuLy == true)
-                return LINQToDataTable(db.LichSuDonTus.Where(item => item.MaDonTXL.Value == MaDon).OrderByDescending(item=>item.CreateDate).ToList());
+                return LINQToDataTable(db.LichSuDonTus.Where(item => item.MaDonTXL.Value == MaDon).OrderByDescending(item=>item.NgayChuyen).ToList());
             else
-                return LINQToDataTable(db.LichSuDonTus.Where(item => item.MaDon.Value == MaDon).OrderByDescending(item => item.CreateDate).ToList());
+                return LINQToDataTable(db.LichSuDonTus.Where(item => item.MaDon.Value == MaDon).OrderByDescending(item => item.NgayChuyen).ToList());
         }
     }
 }

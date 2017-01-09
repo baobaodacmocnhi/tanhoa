@@ -9,7 +9,6 @@ using System.Windows.Forms;
 using KTKS_DonKH.DAL.BamChi;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.BamChi;
-using KTKS_DonKH.DAL.CapNhat;
 using KTKS_DonKH.GUI.BaoCao;
 
 namespace KTKS_DonKH.GUI.BamChi
@@ -31,7 +30,7 @@ namespace KTKS_DonKH.GUI.BamChi
 
         private void btnBaoCao_Click(object sender, EventArgs e)
         {
-            DataTable dt = _cBamChi.LoadDSCTBamChiByDates(dateTu.Value, dateDen.Value);
+            DataTable dt = _cBamChi.LoadDSCTBamChiByDates(true,dateTu.Value, dateDen.Value);
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             foreach (DataRow item in dt.Rows)
             {

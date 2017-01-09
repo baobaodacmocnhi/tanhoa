@@ -1065,7 +1065,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 var query = from itemCTDCBD in db.CTDCBDs
                             join itemCTCT in db.CTChungTus on itemCTDCBD.DanhBo equals itemCTCT.DanhBo
-                            join itemTTKH in db.TTKhachHangs on itemCTDCBD.DanhBo equals itemTTKH.DanhBo
+                            join itemTTKH in dbThuTien.HOADONs.GroupBy(item => item.DANHBA).Select(item => item.OrderByDescending(itemB => itemB.CreateDate)).First() on itemCTDCBD.DanhBo equals itemTTKH.DANHBA
                             where itemCTCT.Cat == false && (itemCTCT.ChungTu.MaLCT == 2 || itemCTCT.ChungTu.MaLCT == 5 || itemCTCT.ChungTu.MaLCT == 6 || itemCTCT.ChungTu.MaLCT == 7)
                             && itemCTDCBD.CreateDate.Value.Date >= TuNgay.Date && itemCTDCBD.CreateDate.Value.Date <= DenNgay.Date
                             select new

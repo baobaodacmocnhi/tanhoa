@@ -574,50 +574,54 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
-        public DataTable LoadDSCTKTXMByDates(DateTime TuNgay, DateTime DenNgay)
+        public DataTable LoadDSCTKTXMByDates(bool ToXL,DateTime TuNgay, DateTime DenNgay)
         {
             try
             {
-                var query_DonKH = from itemCTKTXM in db.CTKTXMs
-                                  join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                                  where itemCTKTXM.KTXM.ToXuLy == false && itemCTKTXM.NgayKTXM.Value.Date >= TuNgay.Date && itemCTKTXM.NgayKTXM.Value.Date <= DenNgay.Date
-                                  orderby itemCTKTXM.NgayKTXM descending
-                                  select new
-                                  {
-                                      itemCTKTXM.KTXM.ToXuLy,
-                                      itemCTKTXM.MaCTKTXM,
-                                      itemCTKTXM.KTXM.MaDon,
-                                      itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD,
-                                      itemCTKTXM.DanhBo,
-                                      itemCTKTXM.HoTen,
-                                      itemCTKTXM.DiaChi,
-                                      itemCTKTXM.NoiDungKiemTra,
-                                      itemCTKTXM.NgayKTXM,
-                                      CreateBy = itemUser.HoTen,
-                                      itemUser.MaU,
-                                  };
-
-                var query_DonTXL = from itemCTKTXM in db.CTKTXMs
-                                   join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                                   where itemCTKTXM.KTXM.ToXuLy == true && itemCTKTXM.NgayKTXM.Value.Date >= TuNgay.Date && itemCTKTXM.NgayKTXM.Value.Date <= DenNgay.Date
-                                   orderby itemCTKTXM.NgayKTXM descending
-                                   select new
-                                   {
-                                       itemCTKTXM.KTXM.ToXuLy,
-                                       itemCTKTXM.MaCTKTXM,
-                                       MaDon = itemCTKTXM.KTXM.MaDonTXL,
-                                       itemCTKTXM.KTXM.DonTXL.LoaiDonTXL.TenLD,
-                                       itemCTKTXM.DanhBo,
-                                       itemCTKTXM.HoTen,
-                                       itemCTKTXM.DiaChi,
-                                       itemCTKTXM.NoiDungKiemTra,
-                                       itemCTKTXM.NgayKTXM,
-                                       CreateBy = itemUser.HoTen,
-                                       itemUser.MaU,
-                                   };
-                DataTable dt = LINQToDataTable(query_DonKH.Distinct());
-                dt.Merge(LINQToDataTable(query_DonTXL.Distinct()));
-                return dt;
+                if (ToXL == false)
+                {
+                    var query_DonKH = from itemCTKTXM in db.CTKTXMs
+                                      join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                                      where itemCTKTXM.KTXM.ToXuLy == false && itemCTKTXM.NgayKTXM.Value.Date >= TuNgay.Date && itemCTKTXM.NgayKTXM.Value.Date <= DenNgay.Date
+                                      orderby itemCTKTXM.NgayKTXM descending
+                                      select new
+                                      {
+                                          itemCTKTXM.KTXM.ToXuLy,
+                                          itemCTKTXM.MaCTKTXM,
+                                          itemCTKTXM.KTXM.MaDon,
+                                          itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD,
+                                          itemCTKTXM.DanhBo,
+                                          itemCTKTXM.HoTen,
+                                          itemCTKTXM.DiaChi,
+                                          itemCTKTXM.NoiDungKiemTra,
+                                          itemCTKTXM.NgayKTXM,
+                                          CreateBy = itemUser.HoTen,
+                                          itemUser.MaU,
+                                      };
+                    return LINQToDataTable(query_DonKH.Distinct());
+                }
+                else
+                {
+                    var query_DonTXL = from itemCTKTXM in db.CTKTXMs
+                                       join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                                       where itemCTKTXM.KTXM.ToXuLy == true && itemCTKTXM.NgayKTXM.Value.Date >= TuNgay.Date && itemCTKTXM.NgayKTXM.Value.Date <= DenNgay.Date
+                                       orderby itemCTKTXM.NgayKTXM descending
+                                       select new
+                                       {
+                                           itemCTKTXM.KTXM.ToXuLy,
+                                           itemCTKTXM.MaCTKTXM,
+                                           MaDon = itemCTKTXM.KTXM.MaDonTXL,
+                                           itemCTKTXM.KTXM.DonTXL.LoaiDonTXL.TenLD,
+                                           itemCTKTXM.DanhBo,
+                                           itemCTKTXM.HoTen,
+                                           itemCTKTXM.DiaChi,
+                                           itemCTKTXM.NoiDungKiemTra,
+                                           itemCTKTXM.NgayKTXM,
+                                           CreateBy = itemUser.HoTen,
+                                           itemUser.MaU,
+                                       };
+                    return LINQToDataTable(query_DonTXL.Distinct());
+                }
             }
             catch (Exception ex)
             {

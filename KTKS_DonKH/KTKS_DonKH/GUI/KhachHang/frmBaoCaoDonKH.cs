@@ -17,7 +17,6 @@ using KTKS_DonKH.DAL.ThaoThuTraLoi;
 using KTKS_DonKH.DAL.DongNuoc;
 using KTKS_DonKH.DAL.CatHuyDanhBo;
 using KTKS_DonKH.LinQ;
-using KTKS_DonKH.DAL.CapNhat;
 using KTKS_DonKH.BaoCao.ToXuLy;
 
 namespace KTKS_DonKH.GUI.KhachHang

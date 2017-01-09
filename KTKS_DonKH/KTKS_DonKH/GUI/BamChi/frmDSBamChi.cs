@@ -68,7 +68,14 @@ namespace KTKS_DonKH.GUI.BamChi
                         dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDanhBo(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Ngày":
-                    dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDates(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
+                    if (CTaiKhoan.ThuKy)
+                    {
+                        if (CTaiKhoan.ToXL)
+                            dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDates(true, dateTu.Value, dateDen.Value);
+
+                    }
+                    else
+                        dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDates(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
                     break;
                 default:
                     break;

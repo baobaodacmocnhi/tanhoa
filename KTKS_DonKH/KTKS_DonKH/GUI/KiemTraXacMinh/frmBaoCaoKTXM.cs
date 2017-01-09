@@ -368,7 +368,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     dt = _cKTXM.LoadDSCTKTXMBySoCongVan(txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Ngày":
-                    dt = _cKTXM.LoadDSCTKTXMByDates(dateTimePicker1.Value, dateTimePicker2.Value);
+                    if(CTaiKhoan.ToXL)
+                    dt = _cKTXM.LoadDSCTKTXMByDates(true,dateTimePicker1.Value, dateTimePicker2.Value);
+                    else
+                        if(CTaiKhoan.ToKH)
+                            dt = _cKTXM.LoadDSCTKTXMByDates(false, dateTimePicker1.Value, dateTimePicker2.Value);
                     break;
                 default:
                     break;

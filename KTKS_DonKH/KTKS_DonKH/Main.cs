@@ -8,7 +8,6 @@ using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.GUI.HeThong;
 using KTKS_DonKH.DAL.QuanTri;
-using KTKS_DonKH.GUI.CapNhat;
 using KTKS_DonKH.GUI.KhachHang;
 using KTKS_DonKH.GUI.KiemTraXacMinh;
 using KTKS_DonKH.GUI.DieuChinhBienDong;
@@ -165,12 +164,12 @@ namespace KTKS_DonKH
 
         private void ribbtnKhachHang_Click(object sender, EventArgs e)
         {
-            foreach (Form item in this.MdiChildren)
-                item.Close();
-            Form frm = new frmTTKH();
-            frm.MdiParent = this;
-            frm.Show();
-            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
+            //foreach (Form item in this.MdiChildren)
+            //    item.Close();
+            //Form frm = new frmTTKH();
+            //frm.MdiParent = this;
+            //frm.Show();
+            //StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
         }
 
         private void ribbtnLoaiDonThu_Click(object sender, EventArgs e)

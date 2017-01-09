@@ -128,12 +128,12 @@
             this.label34 = new System.Windows.Forms.Label();
             this.btnCapNhat = new System.Windows.Forms.Button();
             this.dgvLichSuDonTu = new System.Windows.Forms.DataGridView();
+            this.chkcmbNoiNhan = new DevExpress.XtraEditors.CheckedComboBoxEdit();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayChuyenA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.chkcmbNoiNhan = new DevExpress.XtraEditors.CheckedComboBoxEdit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBoxChuyenKhac.SuspendLayout();
@@ -1055,6 +1055,7 @@
             // 
             this.cmbNoiChuyen.FormattingEnabled = true;
             this.cmbNoiChuyen.Location = new System.Drawing.Point(107, 232);
+            this.cmbNoiChuyen.MaxDropDownItems = 10;
             this.cmbNoiChuyen.Name = "cmbNoiChuyen";
             this.cmbNoiChuyen.Size = new System.Drawing.Size(150, 24);
             this.cmbNoiChuyen.TabIndex = 62;
@@ -1123,6 +1124,18 @@
             this.dgvLichSuDonTu.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLichSuDonTu_CellMouseClick);
             this.dgvLichSuDonTu.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvLichSuDonTu_MouseClick);
             // 
+            // chkcmbNoiNhan
+            // 
+            this.chkcmbNoiNhan.Location = new System.Drawing.Point(263, 232);
+            this.chkcmbNoiNhan.Name = "chkcmbNoiNhan";
+            this.chkcmbNoiNhan.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkcmbNoiNhan.Properties.Appearance.Options.UseFont = true;
+            this.chkcmbNoiNhan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.chkcmbNoiNhan.Properties.PopupFormSize = new System.Drawing.Size(0, 350);
+            this.chkcmbNoiNhan.Size = new System.Drawing.Size(201, 22);
+            this.chkcmbNoiNhan.TabIndex = 69;
+            // 
             // ID
             // 
             this.ID.DataPropertyName = "ID";
@@ -1137,6 +1150,7 @@
             this.NgayChuyenA.HeaderText = "Ngày Chuyển";
             this.NgayChuyenA.Name = "NgayChuyenA";
             this.NgayChuyenA.ReadOnly = true;
+            this.NgayChuyenA.Width = 150;
             // 
             // NoiChuyen
             // 
@@ -1158,18 +1172,6 @@
             this.GhiChu.HeaderText = "Ghi Chú";
             this.GhiChu.Name = "GhiChu";
             this.GhiChu.ReadOnly = true;
-            // 
-            // chkcmbNoiNhan
-            // 
-            this.chkcmbNoiNhan.Location = new System.Drawing.Point(263, 232);
-            this.chkcmbNoiNhan.Name = "chkcmbNoiNhan";
-            this.chkcmbNoiNhan.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkcmbNoiNhan.Properties.Appearance.Options.UseFont = true;
-            this.chkcmbNoiNhan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.chkcmbNoiNhan.Properties.PopupFormSize = new System.Drawing.Size(0, 350);
-            this.chkcmbNoiNhan.Size = new System.Drawing.Size(201, 22);
-            this.chkcmbNoiNhan.TabIndex = 69;
             // 
             // frmCapNhatDonKH
             // 
