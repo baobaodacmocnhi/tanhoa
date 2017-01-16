@@ -77,7 +77,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                         ThongTinKhachHang entity = new ThongTinKhachHang();
                         entity.DienThoai = dondt.DienThoai;
                         entity.DanhBo = dondt.DanhBo;
-                        entity.HoTen = dondt.HoTen;
+                        entity.HoTen = dondt.NguoiBao;
                         _cTTKH.Them(entity);
                     }
                     Clear();

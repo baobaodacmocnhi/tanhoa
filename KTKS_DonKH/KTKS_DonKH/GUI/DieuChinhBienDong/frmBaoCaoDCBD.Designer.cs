@@ -200,7 +200,7 @@
             // radDSDMCapHetHan
             // 
             this.radDSDMCapHetHan.AutoSize = true;
-            this.radDSDMCapHetHan.Location = new System.Drawing.Point(550, 56);
+            this.radDSDMCapHetHan.Location = new System.Drawing.Point(964, 67);
             this.radDSDMCapHetHan.Name = "radDSDMCapHetHan";
             this.radDSDMCapHetHan.Size = new System.Drawing.Size(197, 20);
             this.radDSDMCapHetHan.TabIndex = 13;

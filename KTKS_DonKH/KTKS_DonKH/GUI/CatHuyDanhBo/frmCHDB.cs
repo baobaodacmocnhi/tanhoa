@@ -392,7 +392,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 ctchdb.DaLapCatTam = true;
                                 ctchdb.MaCTCTDB = decimal.Parse(txtMaThongBaoCT.Text.Trim().Replace("-", ""));
 
-                                if (_ctctdb.NgayXuLy != null && _ctctdb.NoiDungXuLy != "Lập thông báo cắt hủy")
+                                if (_ctctdb.NgayXuLy != null && _ctctdb.NoiDungXuLy != "Lập Thông báo Cắt Hủy")
                                 {
                                     GhiChuCHDB ghichu = new GhiChuCHDB();
                                     ghichu.NgayLap = _ctctdb.NgayXuLy;
@@ -403,7 +403,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     }
                                 }
                                 _ctctdb.NgayXuLy = DateTime.Now;
-                                _ctctdb.NoiDungXuLy = "Lập thông báo cắt hủy";
+                                _ctctdb.NoiDungXuLy = "Lập Thông báo Cắt Hủy";
                                 _ctctdb.CreateDate_NgayXuLy = DateTime.Now;
                                 _cCHDB.SuaCTCTDB(_ctctdb);
                             }
@@ -472,7 +472,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 ctchdb.DaLapCatTam = true;
                                 ctchdb.MaCTCTDB = decimal.Parse(txtMaThongBaoCT.Text.Trim().Replace("-", ""));
 
-                                if (_ctctdb.NgayXuLy != null && _ctctdb.NoiDungXuLy != "Lập thông báo cắt hủy")
+                                if (_ctctdb.NgayXuLy != null && _ctctdb.NoiDungXuLy != "Lập Thông báo Cắt Hủy")
                                 {
                                     GhiChuCHDB ghichu = new GhiChuCHDB();
                                     ghichu.NgayLap = _ctctdb.NgayXuLy;
@@ -483,7 +483,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     }
                                 }
                                 _ctctdb.NgayXuLy = DateTime.Now;
-                                _ctctdb.NoiDungXuLy = "Lập thông báo cắt hủy";
+                                _ctctdb.NoiDungXuLy = "Lập Thông báo Cắt Hủy";
                                 _ctctdb.CreateDate_NgayXuLy = DateTime.Now;
                                 _cCHDB.SuaCTCTDB(_ctctdb);
                             }

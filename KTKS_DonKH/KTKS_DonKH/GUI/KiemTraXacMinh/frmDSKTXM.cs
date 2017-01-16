@@ -85,11 +85,13 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     break;
                 case "Ngày":
                     if (CTaiKhoan.ThuKy)
+                    {
                         if (CTaiKhoan.ToXL)
                             dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByDates(true, dateTu.Value, dateDen.Value);
                         else
                             if (CTaiKhoan.ToKH)
-                            dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByDates(false, dateTu.Value, dateDen.Value);
+                                dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByDates(false, dateTu.Value, dateDen.Value);
+                    }
                     else
                         dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByDates(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
                     break;

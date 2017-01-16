@@ -83,21 +83,20 @@ namespace KTKS_DonKH.DAL.QuanTri
         }
 
         static bool _ToKH;
-
         public static bool ToKH
         {
             get { return CTaiKhoan._ToKH; }
             set { CTaiKhoan._ToKH = value; }
         }
-        static bool _ToXL;
 
+        static bool _ToXL;
         public static bool ToXL
         {
             get { return CTaiKhoan._ToXL; }
             set { CTaiKhoan._ToXL = value; }
         }
-        static bool _ToBC;
 
+        static bool _ToBC;
         public static bool ToBC
         {
             get { return CTaiKhoan._ToBC; }

@@ -2993,15 +2993,12 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                 var query = from itemCTChungTu in db.CTChungTus
-                            join itemTTKH in dbThuTien.HOADONs.GroupBy(item => item.DANHBA).Select(item => item.OrderByDescending(itemB => itemB.CreateDate)).First() on itemCTChungTu.DanhBo equals itemTTKH.DANHBA
                             where (itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 6 || itemCTChungTu.ChungTu.MaLCT == 7 || itemCTChungTu.ChungTu.MaLCT == 8) && itemCTChungTu.NgayHetHan.Value.Date >= TuNgay.Date && itemCTChungTu.NgayHetHan.Value.Date <= DenNgay.Date
                             && itemCTChungTu.Cat == false
                             orderby itemCTChungTu.NgayHetHan ascending
                             select new
                             {
                                 itemCTChungTu.DanhBo,
-                                itemTTKH.TENKH,
-                                DiaChi = itemTTKH.SO + itemTTKH.DUONG,
                                 itemCTChungTu.SoNKDangKy,
                                 itemCTChungTu.ChungTu.LoaiChungTu.MaLCT,
                                 itemCTChungTu.ChungTu.LoaiChungTu.TenLCT,
@@ -3010,8 +3007,6 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemCTChungTu.NgayHetHan,
                                 itemCTChungTu.CreateDate,
                                 itemCTChungTu.GhiChu,
-                                itemTTKH.Phuong,
-                                itemTTKH.Quan,
                             };
                 return LINQToDataTable(query);
             }
@@ -3101,14 +3096,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                 var query = from itemCTChungTu in db.CTChungTus
-                            join itemTTKH in dbThuTien.HOADONs.GroupBy(item => item.DANHBA).Select(item => item.OrderByDescending(itemB => itemB.CreateDate)).First() on itemCTChungTu.DanhBo equals itemTTKH.DANHBA
                             where itemCTChungTu.Cat == false && itemCTChungTu.ThoiHan != null && itemCTChungTu.NgayHetHan <= DateTime.Now.AddDays(15)
                             orderby itemCTChungTu.NgayHetHan ascending
                             select new
                             {
                                 itemCTChungTu.DanhBo,
-                                itemTTKH.TENKH,
-                                DiaChi = itemTTKH.SO + itemTTKH.DUONG,
                                 itemCTChungTu.SoNKDangKy,
                                 itemCTChungTu.ChungTu.LoaiChungTu.MaLCT,
                                 itemCTChungTu.ChungTu.LoaiChungTu.TenLCT,
@@ -3117,8 +3109,6 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemCTChungTu.NgayHetHan,
                                 itemCTChungTu.CreateDate,
                                 itemCTChungTu.GhiChu,
-                                itemTTKH.Phuong,
-                                itemTTKH.Quan,
                             };
                 return LINQToDataTable(query);
             }
