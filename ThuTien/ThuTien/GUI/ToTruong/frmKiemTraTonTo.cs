@@ -212,10 +212,17 @@ namespace ThuTien.GUI.ToTruong
                             {
                                 //dgvHDTuGia.DataSource = _cHoaDon.GetTongTonDenKy_NV("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                                 DataTable dt = new DataTable();
-                                for (int i = 1; i <= 20; i++)
-                                {
-                                    dt.Merge(_cHoaDon.GetTongTonDenKy_NV("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
-                                }
+                                if (cmbFromDot.SelectedIndex == 0)
+                                    for (int i = 1; i <= 20; i++)
+                                    {
+                                        dt.Merge(_cHoaDon.GetTongTonDenKy_NV("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
+                                    }
+                                else
+                                    if (cmbFromDot.SelectedIndex > 0)
+                                        for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
+                                        {
+                                            dt.Merge(_cHoaDon.GetTongTonDenKy_NV("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
+                                        }
                                 dgvHDTuGia.DataSource = dt;
                             }
                             else

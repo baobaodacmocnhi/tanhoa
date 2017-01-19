@@ -311,7 +311,7 @@ namespace ThuTien.GUI.TongHop
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
-                    if (bool.Parse(dgvHoaDon["Tra", e.RowIndex].Value.ToString()))
+                    if (bool.Parse(dgvHoaDon[e.ColumnIndex, e.RowIndex].Value.ToString()) == false)
                         if (MessageBox.Show("Bạn có muốn trừ Tiền Dư Quầy?\r\nYes là Trừ, No là không Trừ", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             using (var scope = new TransactionScope())
                             {
