@@ -26,10 +26,10 @@
         <elementListCompartment Id="dfb19ddb-e5ad-40b0-a9ef-b438386381fc" absoluteBounds="1.1400000000000001, 1.835, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="50dafcdb-afa5-4000-8feb-8a8a2474b0a6" absoluteBounds="7, 1.125, 2, 2.7324039713541666">
+    <classShape Id="50dafcdb-afa5-4000-8feb-8a8a2474b0a6" absoluteBounds="6.875, 0.75, 2, 2.7324039713541666">
       <DataClassMoniker Name="/dbTrangThietBiDataContext/PhanMem" />
       <nestedChildShapes>
-        <elementListCompartment Id="3af04253-af24-430f-993c-2fda2b7e6528" absoluteBounds="7.015, 1.585, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="3af04253-af24-430f-993c-2fda2b7e6528" absoluteBounds="6.89, 1.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="f85ed5fb-eee4-45f9-a921-a8b2a470d35c" absoluteBounds="3.875, 1, 2, 4.2708154296875">

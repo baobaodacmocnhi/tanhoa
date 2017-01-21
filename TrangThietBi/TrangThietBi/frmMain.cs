@@ -127,10 +127,11 @@ namespace TrangThietBi
         {
             ThietBi item = new ThietBi();
             item.Ten = txtTenTB.Text.Trim();
+            if (txtGiaTienTB.Text.Trim()!="")
             item.GiaTien = int.Parse(txtGiaTienTB.Text.Trim());
             item.CauHinh = txtCauHinh.Text.Trim();
             item.NgayMua = dateMua.Value;
-            item.NgayHetHan = dateHetHanTB.Value;
+            //item.NgayHetHan = dateHetHanTB.Value;
             if (chkBanGiao.Checked)
             {
                 _ghilichsubangiao = true;
@@ -164,7 +165,10 @@ namespace TrangThietBi
             if (_thietbi != null)
             {
                 _thietbi.Ten = txtTenTB.Text.Trim();
-                _thietbi.GiaTien = int.Parse(txtGiaTienTB.Text.Trim());
+                if (txtGiaTienTB.Text.Trim() != "")
+                    _thietbi.GiaTien = int.Parse(txtGiaTienTB.Text.Trim());
+                else
+                    _thietbi.GiaTien = null;
                 _thietbi.CauHinh = txtCauHinh.Text.Trim();
                 _thietbi.NgayMua = dateMua.Value;
                 _thietbi.NgayHetHan = dateHetHanTB.Value;

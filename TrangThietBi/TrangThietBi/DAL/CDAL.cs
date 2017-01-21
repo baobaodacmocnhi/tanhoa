@@ -61,7 +61,7 @@ namespace TrangThietBi.DAL
 
         public List<PhongBan> GetDSPhongBan()
         {
-            return _db.PhongBans.ToList();
+            return _db.PhongBans.OrderBy(item=>item.STT).ToList();
         }
 
         public bool ThemThietBi(ThietBi item)
