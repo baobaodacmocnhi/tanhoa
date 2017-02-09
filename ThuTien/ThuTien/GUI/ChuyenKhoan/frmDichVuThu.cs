@@ -208,7 +208,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                             dr["LenhHuy"] = true;
                         ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
                     }
-            rptDSTamThuChuyenKhoan rpt = new rptDSTamThuChuyenKhoan();
+            rptDSTamThuChuyenKhoanDiaChi rpt = new rptDSTamThuChuyenKhoanDiaChi();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();
@@ -367,7 +367,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dr["LenhHuy"] = true;
                     ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
                 }
-            rptDSTamThuChuyenKhoan rpt = new rptDSTamThuChuyenKhoan();
+            rptDSTamThuChuyenKhoanDiaChi rpt = new rptDSTamThuChuyenKhoanDiaChi();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();

@@ -73,6 +73,8 @@ namespace ThuTien.GUI.ToTruong
             long TongCongThu = 0;
             int TongHDTon = 0;
             long TongCongTon = 0;
+            int TongHDTonThucTe = 0;
+            long TongCongTonThucTe = 0;
 
             if (dgvHDTuGia.RowCount > 0)
             {
@@ -92,6 +94,11 @@ namespace ThuTien.GUI.ToTruong
                         TongHDTon += int.Parse(item.Cells["TongHDTon_TG"].Value.ToString());
                     if (!string.IsNullOrEmpty(item.Cells["TongCongTon_TG"].Value.ToString()))
                         TongCongTon += long.Parse(item.Cells["TongCongTon_TG"].Value.ToString());
+
+                    if (!string.IsNullOrEmpty(item.Cells["TongHDTonThucTe_TG"].Value.ToString()))
+                        TongHDTonThucTe += int.Parse(item.Cells["TongHDTonThucTe_TG"].Value.ToString());
+                    if (!string.IsNullOrEmpty(item.Cells["TongCongTonThucTe_TG"].Value.ToString()))
+                        TongCongTonThucTe += long.Parse(item.Cells["TongCongTonThucTe_TG"].Value.ToString());
                 }
                 txtTongHD_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHD);
                 txtTongCong_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
@@ -99,6 +106,8 @@ namespace ThuTien.GUI.ToTruong
                 txtTongCongThu_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongThu);
                 txtTongHDTon_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHDTon);
                 txtTongCongTon_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongTon);
+                txtTongHDTonThucTe_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHDTonThucTe);
+                txtTongCongTonThucTe_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongTonThucTe);
             }
         }
 
@@ -110,6 +119,8 @@ namespace ThuTien.GUI.ToTruong
             long TongCongThu = 0;
             int TongHDTon = 0;
             long TongCongTon = 0;
+            int TongHDTonThucTe = 0;
+            long TongCongTonThucTe = 0;
 
             if (dgvHDCoQuan.RowCount > 0)
             {
@@ -129,6 +140,11 @@ namespace ThuTien.GUI.ToTruong
                         TongHDTon += int.Parse(item.Cells["TongHDTon_CQ"].Value.ToString());
                     if (!string.IsNullOrEmpty(item.Cells["TongCongTon_CQ"].Value.ToString()))
                         TongCongTon += long.Parse(item.Cells["TongCongTon_CQ"].Value.ToString());
+
+                    if (!string.IsNullOrEmpty(item.Cells["TongHDTonThucTe_CQ"].Value.ToString()))
+                        TongHDTonThucTe += int.Parse(item.Cells["TongHDTonThucTe_CQ"].Value.ToString());
+                    if (!string.IsNullOrEmpty(item.Cells["TongCongTonThucTe_CQ"].Value.ToString()))
+                        TongCongTonThucTe += long.Parse(item.Cells["TongCongTonThucTe_CQ"].Value.ToString());
                 }
                 txtTongHD_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHD);
                 txtTongCong_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
@@ -136,6 +152,8 @@ namespace ThuTien.GUI.ToTruong
                 txtTongCongThu_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongThu);
                 txtTongHDTon_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHDTon);
                 txtTongCongTon_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongTon);
+                txtTongHDTonThucTe_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHDTonThucTe);
+                txtTongCongTonThucTe_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongTonThucTe);
             }
         }
 

@@ -165,8 +165,8 @@ namespace ThuTien.GUI.Doi
                             hoadon.Quan = contents[48];
                         if (!string.IsNullOrWhiteSpace(contents[49]))
                             hoadon.Phuong = contents[49];
-                        //if (!string.IsNullOrWhiteSpace(contents[50]))
-                        //    hoadon.SoDHN = contents[50];
+                        if (!string.IsNullOrWhiteSpace(contents[50]))
+                            hoadon.SoThanDHN = contents[50];
                         if (!string.IsNullOrWhiteSpace(contents[51]))
                             hoadon.MST = contents[51];
                         //if (!string.IsNullOrWhiteSpace(contents[52]))

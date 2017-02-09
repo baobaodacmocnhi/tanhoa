@@ -46,7 +46,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 txtDanhBoCTA.Text = txtDanhBoSuaTien.Text = _DanhBo.Insert(7, " ").Insert(4, " ");
             txtSoTienCTA.Text = txtSoTienCu.Text = _SoTien;
 
-            if (CNguoiDung.MaND == 0||CNguoiDung.MaND == 1)
+            if (CNguoiDung.MaND == 0||CNguoiDung.Doi == true)
                 btnSua.Enabled = true;
             else
                 btnSua.Enabled = false;
