@@ -118,7 +118,7 @@ namespace KTKS_ChungCu
                 //    MessageBox.Show("Lô, Phòng trên đã có đăng ký trước đó", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //}
                 
-                if (txtMaCT.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0" && txtSoNKDangKy.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "0")
+                if (txtMaCT.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0" && txtSoNKDangKy.Text.Trim() != "")
                     if (int.Parse(txtSoNKTong.Text.Trim()) >= int.Parse(txtSoNKDangKy.Text.Trim()))
                     {
                         DanhSachChungTu entity = new DanhSachChungTu();
@@ -195,7 +195,7 @@ namespace KTKS_ChungCu
                     //    MessageBox.Show("Sổ này đã được lưu tại Lô, Phòng trên", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //    return;
                     //}
-                    if (txtSoNKTong.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0" && txtSoNKDangKy.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "0")
+                    if (txtSoNKTong.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0" && txtSoNKDangKy.Text.Trim() != "")
                         if (int.Parse(txtSoNKTong.Text.Trim()) >= int.Parse(txtSoNKDangKy.Text.Trim()))
                         {
                             DanhSachChungTu entity = _cDSCT.Get(int.Parse(dgvKhachHangChungCu["ID", _selectedindex].Value.ToString()));
@@ -443,7 +443,7 @@ namespace KTKS_ChungCu
                         DanhSachChungTu entity = _cDSCT.Get(int.Parse(dgvKhachHangChungCu["ID", _selectedindex].Value.ToString()));
                         if (_cDSCT.Xoa(entity))
                         {
-                            MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Xóa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             if (string.IsNullOrEmpty(txtLo.Text.Trim()))
                                 dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_DB(_hoadon.DANHBA);
                             else

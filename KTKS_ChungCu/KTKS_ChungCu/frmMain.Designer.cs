@@ -523,7 +523,7 @@
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 688);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1276, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1391, 22);
             this.statusStrip1.TabIndex = 19;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -703,7 +703,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1276, 710);
+            this.ClientSize = new System.Drawing.Size(1391, 710);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.txtNoiDungTimKiem2);
             this.Controls.Add(this.cmbTimTheo);
