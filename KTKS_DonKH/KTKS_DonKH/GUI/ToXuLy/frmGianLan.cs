@@ -54,12 +54,14 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 chkToTrinh1.Checked = true;
                 txtTieuThu1.Text = entity.TieuThu1.Value.ToString();
                 txtGiaBan1.Text = entity.GiaBan1.Value.ToString();
+                txtSoThongBao1.Text = entity.SoThongBao1;
             }
             else
             {
                 chkToTrinh1.Checked = false;
                 txtTieuThu1.Text = "";
                 txtGiaBan1.Text = "";
+                txtSoThongBao1.Text = "";
             }
             ///
             if (entity.ToTrinh2)
@@ -67,12 +69,14 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 chkToTrinh2.Checked = true;
                 txtTieuThu2.Text = entity.TieuThu2.Value.ToString();
                 txtGiaBan2.Text = entity.GiaBan2.Value.ToString();
+                txtSoThongBao2.Text = entity.SoThongBao2;
             }
             else
             {
                 chkToTrinh2.Checked = false;
                 txtTieuThu2.Text = "";
                 txtGiaBan2.Text = "";
+                txtSoThongBao2.Text = "";
             }
             ///
             if (entity.ThanhToan1)

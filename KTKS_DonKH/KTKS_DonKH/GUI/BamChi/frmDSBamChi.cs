@@ -72,7 +72,6 @@ namespace KTKS_DonKH.GUI.BamChi
                     {
                         if (CTaiKhoan.ToXL)
                             dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDates(true, dateTu.Value, dateDen.Value);
-
                     }
                     else
                         dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDates(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);

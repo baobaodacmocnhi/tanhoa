@@ -376,7 +376,8 @@
             this.cmbNoiDung.FormattingEnabled = true;
             this.cmbNoiDung.Items.AddRange(new object[] {
             "Xếp hồ sơ",
-            "Tái lập danh bộ"});
+            "Tái lập danh bộ",
+            "Đường cấm đào"});
             this.cmbNoiDung.Location = new System.Drawing.Point(249, 239);
             this.cmbNoiDung.Name = "cmbNoiDung";
             this.cmbNoiDung.Size = new System.Drawing.Size(194, 24);

@@ -248,6 +248,11 @@ namespace KTKS_DonKH.DAL
             return db.PHUONGs.SingleOrDefault(item => item.MAQUAN == MaQuan && item.MAPHUONG == MaPhuong).TENPHUONG;
         }
 
+        public List<TB_DULIEUKHACHHANG> GetDS(string SoThanDHN)
+        {
+            return db.TB_DULIEUKHACHHANGs.Where(item => item.SOTHANDH == SoThanDHN).ToList();
+        }
+
         public string getDot(string DanhBo)
         {
             return db.TB_DULIEUKHACHHANGs.SingleOrDefault(item => item.DANHBO == DanhBo).LOTRINH.Substring(0, 2);

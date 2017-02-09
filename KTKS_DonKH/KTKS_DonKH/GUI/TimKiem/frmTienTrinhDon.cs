@@ -848,14 +848,18 @@ namespace KTKS_DonKH.GUI.TimKiem
             txtHoTen.Text = "";
             txtSoNha.Text = "";
             txtTenDuong.Text = "";
+            txtSoThanDHN.Text = "";
         }
 
         private void btnTimKiemTTKH_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ", "")))
-                dgvHoaDon.DataSource = _cThuTien.GetDSTimKiem(txtDanhBo.Text.Trim().Replace(" ", ""),"");
+            if (txtSoThanDHN.Text.Trim() != "")
+                dgvHoaDon.DataSource = _cDocSo.GetDS(txtSoThanDHN.Text.Trim());
             else
-                dgvHoaDon.DataSource = _cThuTien.GetDSTimKiemTTKH(txtHoTen.Text.Trim(), txtSoNha.Text.Trim(), txtTenDuong.Text.Trim());
+                if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ", "")))
+                    dgvHoaDon.DataSource = _cThuTien.GetDSTimKiem(txtDanhBo.Text.Trim().Replace(" ", ""), "");
+                else
+                    dgvHoaDon.DataSource = _cThuTien.GetDSTimKiemTTKH(txtHoTen.Text.Trim(), txtSoNha.Text.Trim(), txtTenDuong.Text.Trim());
         }
 
         private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -889,6 +893,7 @@ namespace KTKS_DonKH.GUI.TimKiem
             if (e.KeyChar == 13)
                 btnTimKiemTTKH.PerformClick();
         }
+
         
     }
 
