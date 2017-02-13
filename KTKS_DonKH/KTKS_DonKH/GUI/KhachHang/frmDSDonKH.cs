@@ -281,7 +281,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     dsBaoCao.Tables["DSDonTXL"].Rows.Add(dr);
                 }
 
-            rptDSDonTXL rpt = new rptDSDonTXL();
+            rptDSDonTXLChuyenKTXM rpt = new rptDSDonTXLChuyenKTXM();
             rpt.SetDataSource(dsBaoCao);
             rpt.Subreports[0].SetDataSource(dsBaoCao);
             rpt.Subreports[1].SetDataSource(dsBaoCao);
