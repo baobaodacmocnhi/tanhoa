@@ -496,12 +496,6 @@
       <DependentUpon>rptDonDienThoai.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BaoCao\ToXuLy\rptDSDonTXL.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptDSDonTXL.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="BaoCao\ToXuLy\rptDSDonTXL_BamChi.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1006,12 +1000,6 @@
     <Compile Include="GUI\ToXuLy\frmDSTruyThuTienNuoc.Designer.cs">
       <DependentUpon>frmDSTruyThuTienNuoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ToXuLy\frmShowDonTXL.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\ToXuLy\frmShowDonTXL.Designer.cs">
-      <DependentUpon>frmShowDonTXL.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\ToXuLy\frmShowTruyThuTienNuoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1312,10 +1300,6 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDonDienThoai.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\ToXuLy\rptDSDonTXL.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptDSDonTXL.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\ToXuLy\rptDSDonTXL_BamChi.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSDonTXL_BamChi.cs</LastGenOutput>
@@ -1561,9 +1545,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToXuLy\frmDSTruyThuTienNuoc.resx">
       <DependentUpon>frmDSTruyThuTienNuoc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ToXuLy\frmShowDonTXL.resx">
-      <DependentUpon>frmShowDonTXL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToXuLy\frmShowTruyThuTienNuoc.resx">
       <DependentUpon>frmShowTruyThuTienNuoc.cs</DependentUpon>

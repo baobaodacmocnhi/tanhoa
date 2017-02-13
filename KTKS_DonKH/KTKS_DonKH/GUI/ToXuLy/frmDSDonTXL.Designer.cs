@@ -185,7 +185,7 @@
             this.dgvDSDonTXL.MultiSelect = false;
             this.dgvDSDonTXL.Name = "dgvDSDonTXL";
             this.dgvDSDonTXL.RowHeadersWidth = 60;
-            this.dgvDSDonTXL.Size = new System.Drawing.Size(1362, 470);
+            this.dgvDSDonTXL.Size = new System.Drawing.Size(1362, 572);
             this.dgvDSDonTXL.TabIndex = 27;
             this.dgvDSDonTXL.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSDonTXL_CellFormatting);
             this.dgvDSDonTXL.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSDonTXL_RowPostPaint);
@@ -356,7 +356,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1395, 562);
+            this.ClientSize = new System.Drawing.Size(1395, 656);
             this.Controls.Add(this.btnInDS);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.btnXoa);

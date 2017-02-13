@@ -48,7 +48,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 Dictionary<string, string> source = new Dictionary<string, string>();
                 source.Add("Action", "Cập Nhật");
                 source.Add("MaDon", dgvDSDonTXL["MaDon", dgvDSDonTXL.CurrentRow.Index].Value.ToString());
-                frmShowDonTXL frm = new frmShowDonTXL(source);
+                frmNhanDonTXL frm = new frmNhanDonTXL(decimal.Parse(dgvDSDonTXL["MaDon", dgvDSDonTXL.CurrentRow.Index].Value.ToString()));
                 frm.ShowDialog();
                 //if (frm.ShowDialog() == DialogResult.OK)
                 //    if (radChuaChuyen.Checked)
@@ -181,7 +181,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     dsBaoCao.Tables["DSDonTXL"].Rows.Add(dr);
                 }
 
-            rptDSDonTXL rpt = new rptDSDonTXL();
+            rptDSDonTXLChuyenKTXM rpt = new rptDSDonTXLChuyenKTXM();
             rpt.SetDataSource(dsBaoCao);
             rpt.Subreports[0].SetDataSource(dsBaoCao);
             rpt.Subreports[1].SetDataSource(dsBaoCao);

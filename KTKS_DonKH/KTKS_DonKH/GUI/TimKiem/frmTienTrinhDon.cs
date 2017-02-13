@@ -130,9 +130,9 @@ namespace KTKS_DonKH.GUI.TimKiem
                 if (((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["ToXuLy"].ToString() == "True")
                 {
                     Dictionary<string, string> source = new Dictionary<string, string>();
-                    source.Add("Action", "Tìm Kiếm");
-                    source.Add("MaDon", ((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString());
-                    frmShowDonTXL frm = new frmShowDonTXL(source);
+                    //source.Add("Action", "Tìm Kiếm");
+                    //source.Add("MaDon", ((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString());
+                    frmNhanDonTXL frm = new frmNhanDonTXL(decimal.Parse(((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString()));
                     frm.ShowDialog();
                 }
                 else
