@@ -1018,12 +1018,6 @@ namespace ThuTien
 
         #endregion
 
-        
-
-        
-
-        
-
     }
 }
     

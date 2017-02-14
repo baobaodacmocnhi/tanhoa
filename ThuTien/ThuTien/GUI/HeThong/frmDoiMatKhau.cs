@@ -14,17 +14,10 @@ namespace ThuTien.GUI.HeThong
     public partial class frmDoiMatKhau : Form
     {
         CNguoiDung _cNguoiDung = new CNguoiDung();
+
         public frmDoiMatKhau()
         {
             InitializeComponent();
-        }
-
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            this.ControlBox = false;
-            this.WindowState = FormWindowState.Maximized;
-            this.BringToFront();
         }
 
         private void btnThayDoi_Click(object sender, EventArgs e)
