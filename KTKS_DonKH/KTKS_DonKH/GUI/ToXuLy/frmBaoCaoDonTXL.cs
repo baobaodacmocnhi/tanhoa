@@ -12,6 +12,8 @@ using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.DAL.KiemTraXacMinh;
 using KTKS_DonKH.DAL.BamChi;
+using KTKS_DonKH.DAL.DonTu;
+using KTKS_DonKH.BaoCao.CongVan;
 
 namespace KTKS_DonKH.GUI.ToXuLy
 {
@@ -20,6 +22,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         CDonTXL _cDonTXL = new CDonTXL();
         CKTXM _cKTXM = new CKTXM();
         CBamChi _cBamChi = new CBamChi();
+        CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
 
         public frmBaoCaoDonTXL()
         {
@@ -52,6 +55,34 @@ namespace KTKS_DonKH.GUI.ToXuLy
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.Show();
+        }
+
+        private void btnBaoCaoLichSuChuyenDon_Click(object sender, EventArgs e)
+        {
+            DataTable dt = _cLichSuDonTu.GetDS(true,dateTu_LichSuChuyenDon.Value,dateDen_LichSuChuyenDon.Value);
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            foreach (DataRow item in dt.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["CongVan"].NewRow();
+
+                dr["TuNgay"] = dateTu_LichSuChuyenDon.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen_LichSuChuyenDon.Value.ToString("dd/MM/yyyy");
+                dr["LoaiVanBan"] = item["TenLD"].ToString();
+                if (item["MaDon"].ToString().Length > 2)
+                    dr["Ma"] = item["MaDon"].ToString().Insert(item["MaDon"].ToString().Length - 2, "-");
+                dr["CreateDate"] = item["NgayChuyen"].ToString();
+                if (item["DanhBo"].ToString().Length == 11)
+                    dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                dr["DiaChi"] = item["DiaChi"].ToString();
+                dr["NoiChuyen"] = item["NoiChuyen"].ToString();
+                dr["NoiDung"] = item["NoiNhan"].ToString();
+
+                dsBaoCao.Tables["CongVan"].Rows.Add(dr);
+            }
+            rptDSCongVan rpt = new rptDSCongVan();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.ShowDialog();
         }
     }
 }

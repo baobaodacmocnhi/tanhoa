@@ -473,7 +473,7 @@ namespace KTKS_DonKH
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-         private void mnuTBKQYCCatDM_Click(object sender, EventArgs e)
+        private void mnuTBKQYCCatDM_Click(object sender, EventArgs e)
         {
             if (CTaiKhoan.CheckQuyen("mnuTBKQYCCatDM", "Xem"))
             {
@@ -482,7 +482,7 @@ namespace KTKS_DonKH
             }
             else
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            
+
         }
 
         private void mnuLoaiChungTu_Click(object sender, EventArgs e)
@@ -681,9 +681,40 @@ namespace KTKS_DonKH
 
         #endregion
 
-        #region
+        #region Tổ Xử Lý
 
+        private void mnuNhanDonTXL_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuNhanDonTXL", "Xem"))
+            {
+                frmNhanDonTXL frm = new frmNhanDonTXL();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
+        private void mnuDSDonTXL_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuDSDonTXL", "Xem"))
+            {
+                frmDSDonTXL frm = new frmDSDonTXL();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuBaoCaoDonTXL_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuBaoCaoDonTXL", "Xem"))
+            {
+                frmBaoCaoDonTXL frm = new frmBaoCaoDonTXL();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
         #endregion
 
@@ -699,23 +730,7 @@ namespace KTKS_DonKH
             OpenForm(frm);
         }
 
-        private void mnuNhanDonTXL_Click(object sender, EventArgs e)
-        {
-            frmNhanDonTXL frm = new frmNhanDonTXL();
-            OpenForm(frm);
-        }
 
-        private void mnuDSDonTXL_Click(object sender, EventArgs e)
-        {
-            frmDSDonTXL frm = new frmDSDonTXL();
-            OpenForm(frm);
-        }
-
-        private void mnuBaoCaoDonTXL_Click(object sender, EventArgs e)
-        {
-            frmBaoCaoDonTXL frm = new frmBaoCaoDonTXL();
-            OpenForm(frm);
-        }
 
         private void mnuToTrinhDCHD_Click(object sender, EventArgs e)
         {

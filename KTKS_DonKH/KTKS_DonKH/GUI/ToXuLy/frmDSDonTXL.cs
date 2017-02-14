@@ -31,6 +31,8 @@ namespace KTKS_DonKH.GUI.ToXuLy
         private void frmQLDonTXL_Load(object sender, EventArgs e)
         {
             dgvDSDonTXL.AutoGenerateColumns = false;
+
+            cmbTimTheo.SelectedItem = "Ngày";
         }
 
         private void dgvDSDonTXL_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -506,6 +508,33 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     dgvDSDonTXL.DataSource = _cDonTXL.LoadDSDonTXLByDates(dateTu.Value, dateDen.Value);
                     break;
             }
+        }
+
+        private void btnInDS_Click(object sender, EventArgs e)
+        {
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            foreach (DataGridViewRow item in dgvDSDonTXL.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
+
+                dr["MaDon"] = "TXL" + item.Cells["MaDon"].Value.ToString().Insert(item.Cells["MaDon"].Value.ToString().Length - 2, "-");
+                dr["STT"] = item.Cells["STT"].Value;
+                dr["TenLD"] = item.Cells["TenLD"].Value.ToString();
+                dr["SoCongVan"] = item.Cells["SoCongVan"].Value.ToString();
+                dr["NgayNhan"] = item.Cells["CreateDate"].Value.ToString();
+                if (!string.IsNullOrEmpty(item.Cells["DanhBo"].Value.ToString()) && item.Cells["DanhBo"].Value.ToString().Length == 11)
+                    dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
+                dr["HoTen"] = item.Cells["HoTen"].Value;
+                dr["DiaChi"] = item.Cells["DiaChi"].Value;
+                dr["NoiDung"] = item.Cells["NoiDung"].Value;
+
+                dsBaoCao.Tables["DSDonTXL"].Rows.Add(dr);
+            }
+            rptDSDonTXL rpt = new rptDSDonTXL();
+            rpt.SetDataSource(dsBaoCao);
+            rpt.Subreports[0].SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.ShowDialog();
         }
 
 

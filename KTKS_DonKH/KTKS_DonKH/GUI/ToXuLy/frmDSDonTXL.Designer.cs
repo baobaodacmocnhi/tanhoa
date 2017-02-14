@@ -40,8 +40,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvDSDonTXL = new System.Windows.Forms.DataGridView();
+            this.btnInDSDonTXL = new System.Windows.Forms.Button();
+            this.chkChuaKT = new System.Windows.Forms.CheckBox();
+            this.chkAll = new System.Windows.Forms.CheckBox();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnXem = new System.Windows.Forms.Button();
+            this.btnInDS = new System.Windows.Forms.Button();
             this.Chon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenLD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoCongVan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,12 +60,6 @@
             this.NguoiDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GiaiQuyet = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.GhiChuChuyenKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnInDSDonTXL = new System.Windows.Forms.Button();
-            this.chkChuaKT = new System.Windows.Forms.CheckBox();
-            this.chkAll = new System.Windows.Forms.CheckBox();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.btnXem = new System.Windows.Forms.Button();
-            this.btnInDS = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDonTXL)).BeginInit();
             this.SuspendLayout();
@@ -169,6 +170,7 @@
             this.dgvDSDonTXL.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Chon,
             this.MaDon,
+            this.STT,
             this.TenLD,
             this.SoCongVan,
             this.CreateDate,
@@ -180,7 +182,7 @@
             this.NguoiDi,
             this.GiaiQuyet,
             this.GhiChuChuyenKT});
-            this.dgvDSDonTXL.Location = new System.Drawing.Point(13, 71);
+            this.dgvDSDonTXL.Location = new System.Drawing.Point(0, 71);
             this.dgvDSDonTXL.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSDonTXL.MultiSelect = false;
             this.dgvDSDonTXL.Name = "dgvDSDonTXL";
@@ -190,6 +192,68 @@
             this.dgvDSDonTXL.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSDonTXL_CellFormatting);
             this.dgvDSDonTXL.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSDonTXL_RowPostPaint);
             this.dgvDSDonTXL.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSDonTXL_KeyDown);
+            // 
+            // btnInDSDonTXL
+            // 
+            this.btnInDSDonTXL.Location = new System.Drawing.Point(703, 10);
+            this.btnInDSDonTXL.Name = "btnInDSDonTXL";
+            this.btnInDSDonTXL.Size = new System.Drawing.Size(110, 25);
+            this.btnInDSDonTXL.TabIndex = 29;
+            this.btnInDSDonTXL.Text = "In (Ngày Giao)";
+            this.btnInDSDonTXL.UseVisualStyleBackColor = true;
+            this.btnInDSDonTXL.Click += new System.EventHandler(this.btnInDSDonKH_Click);
+            // 
+            // chkChuaKT
+            // 
+            this.chkChuaKT.AutoSize = true;
+            this.chkChuaKT.Location = new System.Drawing.Point(547, 43);
+            this.chkChuaKT.Name = "chkChuaKT";
+            this.chkChuaKT.Size = new System.Drawing.Size(83, 21);
+            this.chkChuaKT.TabIndex = 32;
+            this.chkChuaKT.Text = "Chưa KT";
+            this.chkChuaKT.UseVisualStyleBackColor = true;
+            // 
+            // chkAll
+            // 
+            this.chkAll.AutoSize = true;
+            this.chkAll.ForeColor = System.Drawing.Color.Red;
+            this.chkAll.Location = new System.Drawing.Point(78, 43);
+            this.chkAll.Name = "chkAll";
+            this.chkAll.Size = new System.Drawing.Size(103, 21);
+            this.chkAll.TabIndex = 37;
+            this.chkAll.Text = "Chọn Tất Cả";
+            this.chkAll.UseVisualStyleBackColor = true;
+            this.chkAll.CheckedChanged += new System.EventHandler(this.chkAll_CheckedChanged);
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Location = new System.Drawing.Point(819, 10);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 25);
+            this.btnXoa.TabIndex = 38;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // btnXem
+            // 
+            this.btnXem.Location = new System.Drawing.Point(541, 10);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 25);
+            this.btnXem.TabIndex = 39;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
+            // 
+            // btnInDS
+            // 
+            this.btnInDS.Location = new System.Drawing.Point(622, 10);
+            this.btnInDS.Name = "btnInDS";
+            this.btnInDS.Size = new System.Drawing.Size(75, 25);
+            this.btnInDS.TabIndex = 40;
+            this.btnInDS.Text = "In DS";
+            this.btnInDS.UseVisualStyleBackColor = true;
+            this.btnInDS.Click += new System.EventHandler(this.btnInDS_Click);
             // 
             // Chon
             // 
@@ -206,6 +270,13 @@
             this.MaDon.Name = "MaDon";
             this.MaDon.ReadOnly = true;
             this.MaDon.Width = 90;
+            // 
+            // STT
+            // 
+            this.STT.DataPropertyName = "STT";
+            this.STT.HeaderText = "STT";
+            this.STT.Name = "STT";
+            this.STT.Visible = false;
             // 
             // TenLD
             // 
@@ -289,67 +360,6 @@
             this.GhiChuChuyenKT.Name = "GhiChuChuyenKT";
             this.GhiChuChuyenKT.Visible = false;
             // 
-            // btnInDSDonTXL
-            // 
-            this.btnInDSDonTXL.Location = new System.Drawing.Point(703, 10);
-            this.btnInDSDonTXL.Name = "btnInDSDonTXL";
-            this.btnInDSDonTXL.Size = new System.Drawing.Size(110, 25);
-            this.btnInDSDonTXL.TabIndex = 29;
-            this.btnInDSDonTXL.Text = "In (Ngày Giao)";
-            this.btnInDSDonTXL.UseVisualStyleBackColor = true;
-            this.btnInDSDonTXL.Click += new System.EventHandler(this.btnInDSDonKH_Click);
-            // 
-            // chkChuaKT
-            // 
-            this.chkChuaKT.AutoSize = true;
-            this.chkChuaKT.Location = new System.Drawing.Point(547, 43);
-            this.chkChuaKT.Name = "chkChuaKT";
-            this.chkChuaKT.Size = new System.Drawing.Size(83, 21);
-            this.chkChuaKT.TabIndex = 32;
-            this.chkChuaKT.Text = "Chưa KT";
-            this.chkChuaKT.UseVisualStyleBackColor = true;
-            // 
-            // chkAll
-            // 
-            this.chkAll.AutoSize = true;
-            this.chkAll.ForeColor = System.Drawing.Color.Red;
-            this.chkAll.Location = new System.Drawing.Point(78, 43);
-            this.chkAll.Name = "chkAll";
-            this.chkAll.Size = new System.Drawing.Size(103, 21);
-            this.chkAll.TabIndex = 37;
-            this.chkAll.Text = "Chọn Tất Cả";
-            this.chkAll.UseVisualStyleBackColor = true;
-            this.chkAll.CheckedChanged += new System.EventHandler(this.chkAll_CheckedChanged);
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.Location = new System.Drawing.Point(819, 10);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 25);
-            this.btnXoa.TabIndex = 38;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
-            // btnXem
-            // 
-            this.btnXem.Location = new System.Drawing.Point(541, 10);
-            this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(75, 25);
-            this.btnXem.TabIndex = 39;
-            this.btnXem.Text = "Xem";
-            this.btnXem.UseVisualStyleBackColor = true;
-            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
-            // 
-            // btnInDS
-            // 
-            this.btnInDS.Location = new System.Drawing.Point(622, 10);
-            this.btnInDS.Name = "btnInDS";
-            this.btnInDS.Size = new System.Drawing.Size(75, 25);
-            this.btnInDS.TabIndex = 40;
-            this.btnInDS.Text = "In DS";
-            this.btnInDS.UseVisualStyleBackColor = true;
-            // 
             // frmDSDonTXL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -396,8 +406,13 @@
         private System.Windows.Forms.Button btnInDSDonTXL;
         private System.Windows.Forms.DataGridView dgvDSDonTXL;
         private System.Windows.Forms.CheckBox chkChuaKT;
+        private System.Windows.Forms.CheckBox chkAll;
+        private System.Windows.Forms.Button btnXoa;
+        private System.Windows.Forms.Button btnXem;
+        private System.Windows.Forms.Button btnInDS;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Chon;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn STT;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenLD;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoCongVan;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
@@ -409,9 +424,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NguoiDi;
         private System.Windows.Forms.DataGridViewCheckBoxColumn GiaiQuyet;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChuChuyenKT;
-        private System.Windows.Forms.CheckBox chkAll;
-        private System.Windows.Forms.Button btnXoa;
-        private System.Windows.Forms.Button btnXem;
-        private System.Windows.Forms.Button btnInDS;
     }
 }

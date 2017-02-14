@@ -204,27 +204,28 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                    var query = from itemDonTXL in db.DonTXLs
-                                join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
-                                join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
-                                where itemDonTXL.MaDon==MaDon
-                                select new
-                                {
-                                    itemDonTXL.MaDon,
-                                    itemLoaiDonTXL.TenLD,
-                                    itemDonTXL.SoCongVan,
-                                    itemDonTXL.CreateDate,
-                                    itemDonTXL.DanhBo,
-                                    itemDonTXL.HoTen,
-                                    itemDonTXL.DiaChi,
-                                    itemDonTXL.NoiDung,
-                                    itemDonTXL.MaChuyen,
-                                    itemDonTXL.LyDoChuyen,
-                                    itemDonTXL.SoLuongDiaChi,
-                                    CreateBy = itemUser.HoTen,
-                                    itemDonTXL.NguoiDi,
-                                };
-                    return LINQToDataTable(query);
+                var query = from itemDonTXL in db.DonTXLs
+                            join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
+                            join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
+                            where itemDonTXL.MaDon == MaDon
+                            select new
+                            {
+                                itemDonTXL.MaDon,
+                                itemLoaiDonTXL.STT,
+                                itemLoaiDonTXL.TenLD,
+                                itemDonTXL.SoCongVan,
+                                itemDonTXL.CreateDate,
+                                itemDonTXL.DanhBo,
+                                itemDonTXL.HoTen,
+                                itemDonTXL.DiaChi,
+                                itemDonTXL.NoiDung,
+                                itemDonTXL.MaChuyen,
+                                itemDonTXL.LyDoChuyen,
+                                itemDonTXL.SoLuongDiaChi,
+                                CreateBy = itemUser.HoTen,
+                                itemDonTXL.NguoiDi,
+                            };
+                return LINQToDataTable(query);
             }
             catch (Exception ex)
             {
@@ -245,6 +246,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 select new
                                 {
                                     itemDonTXL.MaDon,
+                                    itemLoaiDonTXL.STT,
                                     itemLoaiDonTXL.TenLD,
                                     itemDonTXL.SoCongVan,
                                     itemDonTXL.CreateDate,
@@ -279,6 +281,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 select new
                                 {
                                     itemDonTXL.MaDon,
+                                    itemLoaiDonTXL.STT,
                                     itemLoaiDonTXL.TenLD,
                                     itemDonTXL.SoCongVan,
                                     itemDonTXL.CreateDate,
@@ -313,6 +316,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 select new
                                 {
                                     itemDonTXL.MaDon,
+                                    itemLoaiDonTXL.STT,
                                     itemLoaiDonTXL.TenLD,
                                     itemDonTXL.SoCongVan,
                                     itemDonTXL.CreateDate,
@@ -382,6 +386,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 select new
                                 {
                                     itemDonTXL.MaDon,
+                                    itemLoaiDonTXL.STT,
                                     itemLoaiDonTXL.TenLD,
                                     itemDonTXL.SoCongVan,
                                     itemDonTXL.CreateDate,
