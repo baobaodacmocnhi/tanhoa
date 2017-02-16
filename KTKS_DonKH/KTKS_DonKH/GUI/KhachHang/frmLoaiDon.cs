@@ -37,7 +37,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             txtKyHieuLDTXL.Text = "";
             txtTenLDTXL.Text = "";
             _selectedindexTXL = -1;
-            _bSourceLDTXL = new BindingList<LoaiDonTXL>(_cLoaiDonTXL.LoadDSLoaiDonTXL_All());
+            _bSourceLDTXL = new BindingList<LoaiDonTXL>(_cLoaiDonTXL.GetDS_All());
             dgvDSLoaiDonTXL.DataSource = _bSourceLDTXL;
         }
 
@@ -48,7 +48,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             dgvDSLoaiDon.DataSource = _bSourceLD;
 
             dgvDSLoaiDonTXL.AutoGenerateColumns = false;
-            _bSourceLDTXL = new BindingList<LoaiDonTXL>(_cLoaiDonTXL.LoadDSLoaiDonTXL_All());
+            _bSourceLDTXL = new BindingList<LoaiDonTXL>(_cLoaiDonTXL.GetDS_All());
             dgvDSLoaiDonTXL.DataSource = _bSourceLDTXL;
         }
 
@@ -245,8 +245,8 @@ namespace KTKS_DonKH.GUI.KhachHang
         {
             if (dgvDSLoaiDonTXL.Columns[e.ColumnIndex].Name == "AnLDTXL")
             {
-                LoaiDonTXL loaidontxl = _cLoaiDonTXL.getLoaiDonTXLbyID(int.Parse(dgvDSLoaiDonTXL["MaLDTXL", e.RowIndex].Value.ToString()));
-                _cLoaiDonTXL.SuaLoaiDonTXL(loaidontxl);
+                LoaiDonTXL loaidontxl = _cLoaiDonTXL.Get(int.Parse(dgvDSLoaiDonTXL["MaLDTXL", e.RowIndex].Value.ToString()));
+                _cLoaiDonTXL.Sua(loaidontxl);
             }
         }
 
@@ -258,7 +258,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 loaidontxl.KyHieuLD = txtKyHieuLDTXL.Text.Trim();
                 loaidontxl.TenLD = txtTenLDTXL.Text.Trim();
 
-                if (_cLoaiDonTXL.ThemLoaiDonTXL(loaidontxl))
+                if (_cLoaiDonTXL.Them(loaidontxl))
                     Clear();
             }
             else
@@ -271,11 +271,11 @@ namespace KTKS_DonKH.GUI.KhachHang
             {
                 if (txtKyHieuLDTXL.Text.Trim() != "" && txtTenLDTXL.Text.Trim() != "")
                 {
-                    LoaiDonTXL loaidontxl = _cLoaiDonTXL.getLoaiDonTXLbyID(int.Parse(dgvDSLoaiDonTXL["MaLDTXL", _selectedindexTXL].Value.ToString()));
+                    LoaiDonTXL loaidontxl = _cLoaiDonTXL.Get(int.Parse(dgvDSLoaiDonTXL["MaLDTXL", _selectedindexTXL].Value.ToString()));
                     loaidontxl.KyHieuLD = txtKyHieuLDTXL.Text.Trim();
                     loaidontxl.TenLD = txtTenLDTXL.Text.Trim();
 
-                    if (_cLoaiDonTXL.SuaLoaiDonTXL(loaidontxl))
+                    if (_cLoaiDonTXL.Sua(loaidontxl))
                         Clear();
                 }
                 else
@@ -287,7 +287,7 @@ namespace KTKS_DonKH.GUI.KhachHang
         {
             if (_selectedindexTXL != -1)
             {
-                if (_cLoaiDonTXL.XoaLoaiDonTXL(_cLoaiDonTXL.getLoaiDonTXLbyID(int.Parse(dgvDSLoaiDonTXL["MaLD", _selectedindexTXL].Value.ToString()))))
+                if (_cLoaiDonTXL.Xoa(_cLoaiDonTXL.Get(int.Parse(dgvDSLoaiDonTXL["MaLD", _selectedindexTXL].Value.ToString()))))
                     Clear();
             }
         }
@@ -388,9 +388,9 @@ namespace KTKS_DonKH.GUI.KhachHang
                 //dgvDSLoaiDonTXL.Rows[rowIndex].Selected = false;
                 for (int i = 0; i < dgvDSLoaiDonTXL.Rows.Count; i++)
                 {
-                    LoaiDonTXL loaidontxl = _cLoaiDonTXL.getLoaiDonTXLbyID(int.Parse(dgvDSLoaiDonTXL["MaLDTXL", i].Value.ToString()));
+                    LoaiDonTXL loaidontxl = _cLoaiDonTXL.Get(int.Parse(dgvDSLoaiDonTXL["MaLDTXL", i].Value.ToString()));
                     loaidontxl.STT = i;
-                    _cLoaiDonTXL.SuaLoaiDonTXL(loaidontxl);
+                    _cLoaiDonTXL.Sua(loaidontxl);
                 }
                 _selectedindexTXL = -1;
             }
@@ -423,9 +423,9 @@ namespace KTKS_DonKH.GUI.KhachHang
                 //dgvDSTrangThaiBC.Rows[rowIndex].Selected = false;
                 for (int i = 0; i < dgvDSLoaiDonTXL.Rows.Count; i++)
                 {
-                    LoaiDonTXL loaidontxl = _cLoaiDonTXL.getLoaiDonTXLbyID(int.Parse(dgvDSLoaiDonTXL["MaLDTXL", i].Value.ToString()));
+                    LoaiDonTXL loaidontxl = _cLoaiDonTXL.Get(int.Parse(dgvDSLoaiDonTXL["MaLDTXL", i].Value.ToString()));
                     loaidontxl.STT = i;
-                    _cLoaiDonTXL.SuaLoaiDonTXL(loaidontxl);
+                    _cLoaiDonTXL.Sua(loaidontxl);
                 }
                 _selectedindexTXL = -1;
             }
@@ -434,13 +434,6 @@ namespace KTKS_DonKH.GUI.KhachHang
             }
         }
 
-        
-
-        
-
-        
-
-        
 
     }
 }

@@ -64,6 +64,7 @@
             this.btnCapNhatPhanQuyenNguoiDung.TabIndex = 7;
             this.btnCapNhatPhanQuyenNguoiDung.Text = "Cập Nhật Phân Quyền Người Dùng";
             this.btnCapNhatPhanQuyenNguoiDung.UseVisualStyleBackColor = true;
+            this.btnCapNhatPhanQuyenNguoiDung.Click += new System.EventHandler(this.btnCapNhatPhanQuyenNguoiDung_Click);
             // 
             // btnCapNhatPhanQuyenNhom
             // 
@@ -74,6 +75,7 @@
             this.btnCapNhatPhanQuyenNhom.TabIndex = 6;
             this.btnCapNhatPhanQuyenNhom.Text = "Cập Nhật Phân Quyền Nhóm";
             this.btnCapNhatPhanQuyenNhom.UseVisualStyleBackColor = true;
+            this.btnCapNhatPhanQuyenNhom.Click += new System.EventHandler(this.btnCapNhatPhanQuyenNhom_Click);
             // 
             // btnCapNhatMenu
             // 

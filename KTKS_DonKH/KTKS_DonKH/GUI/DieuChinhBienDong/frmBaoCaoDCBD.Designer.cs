@@ -50,6 +50,7 @@
             this.radDSDanhBoDMCap = new System.Windows.Forms.RadioButton();
             this.radDSDanhBoCapDMDoanThanhNien = new System.Windows.Forms.RadioButton();
             this.radDSDanhBoDCHDCodeF2 = new System.Windows.Forms.RadioButton();
+            this.btnXuatExcel = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,7 +60,7 @@
             this.panel_KhoangThoiGian.Controls.Add(this.dateDen);
             this.panel_KhoangThoiGian.Controls.Add(this.label3);
             this.panel_KhoangThoiGian.Controls.Add(this.label4);
-            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(787, 1);
+            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(620, 12);
             this.panel_KhoangThoiGian.Name = "panel_KhoangThoiGian";
             this.panel_KhoangThoiGian.Size = new System.Drawing.Size(192, 60);
             this.panel_KhoangThoiGian.TabIndex = 6;
@@ -102,7 +103,7 @@
             // 
             // btnBaoCao
             // 
-            this.btnBaoCao.Location = new System.Drawing.Point(1150, 6);
+            this.btnBaoCao.Location = new System.Drawing.Point(983, 23);
             this.btnBaoCao.Name = "btnBaoCao";
             this.btnBaoCao.Size = new System.Drawing.Size(75, 25);
             this.btnBaoCao.TabIndex = 11;
@@ -155,7 +156,7 @@
             // cmbPhuong
             // 
             this.cmbPhuong.FormattingEnabled = true;
-            this.cmbPhuong.Location = new System.Drawing.Point(1044, 34);
+            this.cmbPhuong.Location = new System.Drawing.Point(877, 45);
             this.cmbPhuong.Name = "cmbPhuong";
             this.cmbPhuong.Size = new System.Drawing.Size(100, 24);
             this.cmbPhuong.TabIndex = 10;
@@ -163,7 +164,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(981, 37);
+            this.label2.Location = new System.Drawing.Point(814, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 16);
             this.label2.TabIndex = 9;
@@ -172,7 +173,7 @@
             // cmbQuan
             // 
             this.cmbQuan.FormattingEnabled = true;
-            this.cmbQuan.Location = new System.Drawing.Point(1044, 5);
+            this.cmbQuan.Location = new System.Drawing.Point(877, 16);
             this.cmbQuan.Name = "cmbQuan";
             this.cmbQuan.Size = new System.Drawing.Size(100, 24);
             this.cmbQuan.TabIndex = 8;
@@ -181,7 +182,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(981, 8);
+            this.label1.Location = new System.Drawing.Point(814, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 16);
             this.label1.TabIndex = 7;
@@ -200,7 +201,7 @@
             // radDSDMCapHetHan
             // 
             this.radDSDMCapHetHan.AutoSize = true;
-            this.radDSDMCapHetHan.Location = new System.Drawing.Point(964, 67);
+            this.radDSDMCapHetHan.Location = new System.Drawing.Point(797, 78);
             this.radDSDMCapHetHan.Name = "radDSDMCapHetHan";
             this.radDSDMCapHetHan.Size = new System.Drawing.Size(197, 20);
             this.radDSDMCapHetHan.TabIndex = 13;
@@ -265,12 +266,23 @@
             this.radDSDanhBoDCHDCodeF2.Text = "Danh Sách Danh Bộ ĐCHĐ (Code F2=0)";
             this.radDSDanhBoDCHDCodeF2.UseVisualStyleBackColor = true;
             // 
+            // btnXuatExcel
+            // 
+            this.btnXuatExcel.Location = new System.Drawing.Point(1064, 23);
+            this.btnXuatExcel.Name = "btnXuatExcel";
+            this.btnXuatExcel.Size = new System.Drawing.Size(80, 25);
+            this.btnXuatExcel.TabIndex = 20;
+            this.btnXuatExcel.Text = "Xuất Excel";
+            this.btnXuatExcel.UseVisualStyleBackColor = true;
+            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
+            // 
             // frmBaoCaoDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1321, 563);
+            this.Controls.Add(this.btnXuatExcel);
             this.Controls.Add(this.radDSDanhBoDCHDCodeF2);
             this.Controls.Add(this.radDSDanhBoCapDMDoanThanhNien);
             this.Controls.Add(this.radDSDanhBoDMCap);
@@ -325,5 +337,6 @@
         private System.Windows.Forms.RadioButton radDSDanhBoDMCap;
         private System.Windows.Forms.RadioButton radDSDanhBoCapDMDoanThanhNien;
         private System.Windows.Forms.RadioButton radDSDanhBoDCHDCodeF2;
+        private System.Windows.Forms.Button btnXuatExcel;
     }
 }

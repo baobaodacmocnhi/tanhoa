@@ -223,6 +223,7 @@
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tổ Xử Lý";
+            this.groupBox2.Visible = false;
             // 
             // btnXoaTXL
             // 

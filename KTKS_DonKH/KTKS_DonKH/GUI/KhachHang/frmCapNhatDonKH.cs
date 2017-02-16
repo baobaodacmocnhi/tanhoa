@@ -61,27 +61,27 @@ namespace KTKS_DonKH.GUI.KhachHang
             cmbNoiChuyen.SelectedIndex = -1;
 
             DataTable dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_KTXM_TKH();
+            dt = _cTaiKhoan.GetDS_KTXM("TKH");
             dt.TableName = "1";//Kiểm Tra Xác Minh
             _dsNoiChuyen.Tables.Add(dt);
             ///
             dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_TKH();
+            dt = _cTaiKhoan.GetDS_ThuKy("TKH");
             dt.TableName = "2";//Tổ Khách Hàng
             _dsNoiChuyen.Tables.Add(dt);
             ///
             dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_TXL();
+            dt = _cTaiKhoan.GetDS_ThuKy("TXL");
             dt.TableName = "3";//Tổ Xử Lý
             _dsNoiChuyen.Tables.Add(dt);
             ///
             dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_TBC();
+            dt = _cTaiKhoan.GetDS_ThuKy("TBC");
             dt.TableName = "4";//Tổ Bấm Chì
             _dsNoiChuyen.Tables.Add(dt);
             ///
             dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_TVP();
+            dt = _cTaiKhoan.GetDS_ThuKy("TVP");
             dt.TableName = "5";//Tổ Văn Phòng
             _dsNoiChuyen.Tables.Add(dt);
             ///
@@ -94,7 +94,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             //dt = _cTaiKhoan.GetDS_TKH();
             //dt.Merge(_cTaiKhoan.GetDS_TXL());
             //dt.Merge(_cTaiKhoan.GetDS_TBC());
-            dt = _cTaiKhoan.GetDS_TVP();
+            dt = _cTaiKhoan.GetDS_ThuKy("TVP");
             ///
             DataRow dr2 = dt.NewRow();
             dr2["MaU"] = "0";
@@ -341,7 +341,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     //cmbNVKiemTra.Text = _donkh.GhiChuNguoiDi;
                     ///
                     LoadLichSuChuyen(_donkh.MaDon);
-                    dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS(false, _donkh.MaDon);
+                    dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("TKH", _donkh.MaDon);
                     dateChuyen.Value = DateTime.Now;
                     cmbNoiChuyen.SelectedIndex = -1;
                     txtGhiChu.Text = "";
@@ -680,7 +680,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 if (_flagMoi == true)
                     if (_cLichSuDonTu.Xoa(_cLichSuDonTu.Get(int.Parse(dgvLichSuDonTu.CurrentRow.Cells["ID"].Value.ToString()))))
                     {
-                        dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS(false, _donkh.MaDon);
+                        dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("TKH", _donkh.MaDon);
                     }
                 if (_flagCu == true)
                     if (dgvLichSuChuyenKT.CurrentRow.Cells["Table"].Value.ToString() == "LichSuChuyenKT")
@@ -902,7 +902,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 entity.MaDon = _donkh.MaDon;
                 _cLichSuDonTu.Them(entity);
             }
-            dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS(false, _donkh.MaDon);
+            dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("TKH", _donkh.MaDon);
 
         }
 

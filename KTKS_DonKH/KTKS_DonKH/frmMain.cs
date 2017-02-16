@@ -20,6 +20,7 @@ using KTKS_DonKH.GUI.DongNuoc;
 using KTKS_DonKH.GUI.ToXuLy;
 using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.GUI.QuanTri;
+using KTKS_DonKH.GUI.ToBamChi;
 
 namespace KTKS_DonKH
 {
@@ -286,6 +287,102 @@ namespace KTKS_DonKH
             if (CTaiKhoan.CheckQuyen("mnuLoaiDon", "Xem"))
             {
                 frmLoaiDon frm = new frmLoaiDon();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion
+
+        #region Tổ Xử Lý
+
+        private void mnuNhanDonTXL_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuNhanDonTXL", "Xem"))
+            {
+                frmNhanDonTXL frm = new frmNhanDonTXL();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuDSDonTXL_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuDSDonTXL", "Xem"))
+            {
+                frmDSDonTXL frm = new frmDSDonTXL();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuLoaiDonTXL_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuLoaiDonTXL", "Xem"))
+            {
+                frmLoaiDonTXL frm = new frmLoaiDonTXL();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuBaoCaoDonTXL_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuBaoCaoDonTXL", "Xem"))
+            {
+                frmBaoCaoDonTXL frm = new frmBaoCaoDonTXL();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion
+
+        #region Tổ Bấm Chì
+
+        private void mnuNhanDonTBC_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuNhanDonTBC", "Xem"))
+            {
+                frmNhanDonTBC frm = new frmNhanDonTBC();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuDSDonTBC_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuDSDonTBC", "Xem"))
+            {
+                frmDSDonTBC frm = new frmDSDonTBC();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuLoaiDonTBC_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuLoaiDonTBC", "Xem"))
+            {
+                frmLoaiDonTBC frm = new frmLoaiDonTBC();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuBaoCaoTBC_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuBaoCaoTBC", "Xem"))
+            {
+                frmBaoCaoDonTBC frm = new frmBaoCaoDonTBC();
                 OpenForm(frm);
             }
             else
@@ -681,63 +778,17 @@ namespace KTKS_DonKH
 
         #endregion
 
-        #region Tổ Xử Lý
-
-        private void mnuNhanDonTXL_Click(object sender, EventArgs e)
-        {
-            if (CTaiKhoan.CheckQuyen("mnuNhanDonTXL", "Xem"))
-            {
-                frmNhanDonTXL frm = new frmNhanDonTXL();
-                OpenForm(frm);
-            }
-            else
-                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        private void mnuDSDonTXL_Click(object sender, EventArgs e)
-        {
-            if (CTaiKhoan.CheckQuyen("mnuDSDonTXL", "Xem"))
-            {
-                frmDSDonTXL frm = new frmDSDonTXL();
-                OpenForm(frm);
-            }
-            else
-                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        private void mnuBaoCaoDonTXL_Click(object sender, EventArgs e)
-        {
-            if (CTaiKhoan.CheckQuyen("mnuBaoCaoDonTXL", "Xem"))
-            {
-                frmBaoCaoDonTXL frm = new frmBaoCaoDonTXL();
-                OpenForm(frm);
-            }
-            else
-                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        #endregion
-
-        #region
-
-
-
-        #endregion
-
         private void mnuTimKiem_Click(object sender, EventArgs e)
         {
             frmTienTrinhDon frm = new frmTienTrinhDon();
             OpenForm(frm);
         }
 
-
-
         private void mnuToTrinhDCHD_Click(object sender, EventArgs e)
         {
             frmToTrinhDCHD frm = new frmToTrinhDCHD();
             OpenForm(frm);
         }
-
 
     }
 }

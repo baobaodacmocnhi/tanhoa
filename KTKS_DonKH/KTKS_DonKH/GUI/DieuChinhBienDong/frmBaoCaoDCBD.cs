@@ -1216,5 +1216,106 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         }
 
+        private void btnXuatExcel_Click(object sender, EventArgs e)
+        {
+            if (radDSDanhBoDMCap.Checked)
+            {
+                DataTable dt = _cChungTu.LoadDSDanhBoCapDinhMucCoThoiHan();
+
+                //Tạo các đối tượng Excel
+                Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
+                Microsoft.Office.Interop.Excel.Workbooks oBooks;
+                Microsoft.Office.Interop.Excel.Sheets oSheets;
+                Microsoft.Office.Interop.Excel.Workbook oBook;
+                Microsoft.Office.Interop.Excel.Worksheet oSheet;
+                //Microsoft.Office.Interop.Excel.Worksheet oSheetCQ;
+
+                //Tạo mới một Excel WorkBook 
+                oExcel.Visible = true;
+                oExcel.DisplayAlerts = false;
+                //khai báo số lượng sheet
+                oExcel.Application.SheetsInNewWorkbook = 1;
+                oBooks = oExcel.Workbooks;
+
+                oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
+                oSheets = oBook.Worksheets;
+                oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
+
+                oSheet.Name = "Định Mức Cấp Có Thời Hạn";
+
+                // Tạo phần đầu nếu muốn
+                Microsoft.Office.Interop.Excel.Range head = oSheet.get_Range("A1", "F1");
+                head.MergeCells = true;
+                head.Value2 = "DANH SÁCH ĐỊNH MỨC CẤP CÓ THỜI HẠN";
+                head.Font.Bold = true;
+                head.Font.Name = "Times New Roman";
+                head.Font.Size = "20";
+                head.RowHeight = 50;
+                head.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+                // Tạo tiêu đề cột 
+                Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A3", "A3");
+                cl1.Value2 = "Danh Bộ";
+                cl1.ColumnWidth = 15;
+
+                Microsoft.Office.Interop.Excel.Range cl2 = oSheet.get_Range("B3", "B3");
+                cl2.Value2 = "Khách Hàng";
+                cl2.ColumnWidth = 30;
+
+                Microsoft.Office.Interop.Excel.Range cl3 = oSheet.get_Range("C3", "C3");
+                cl3.Value2 = "Địa Chỉ";
+                cl3.ColumnWidth = 30;
+
+                // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
+                // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
+                object[,] arr = new object[dt.Rows.Count, 3];
+
+                //Chuyển dữ liệu từ DataTable vào mảng đối tượng
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    DataRow dr = dt.Rows[i];
+
+                    arr[i, 0] = dr["DanhBo"].ToString();
+                    arr[i, 1] = dr["HoTen"].ToString();
+                    arr[i, 2] = dr["DiaChi"].ToString();
+                }
+
+                //Thiết lập vùng điền dữ liệu
+                int rowStart = 4;
+                int columnStart = 1;
+
+                int rowEnd = rowStart + dt.Rows.Count - 1;
+                int columnEnd = 3;
+
+                // Ô bắt đầu điền dữ liệu
+                Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
+                // Ô kết thúc điền dữ liệu
+                Microsoft.Office.Interop.Excel.Range c2 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, columnEnd];
+                // Lấy về vùng điền dữ liệu
+                Microsoft.Office.Interop.Excel.Range range = oSheet.get_Range(c1, c2);
+
+                Microsoft.Office.Interop.Excel.Range c1a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 1];
+                Microsoft.Office.Interop.Excel.Range c2a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 1];
+                Microsoft.Office.Interop.Excel.Range c3a = oSheet.get_Range(c1a, c2a);
+                c3a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+                Microsoft.Office.Interop.Excel.Range c1b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 2];
+                Microsoft.Office.Interop.Excel.Range c2b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 2];
+                Microsoft.Office.Interop.Excel.Range c3b = oSheet.get_Range(c1b, c2b);
+                c3b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
+                c3b.NumberFormat = "#,##0";
+
+                Microsoft.Office.Interop.Excel.Range c1c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 3];
+                Microsoft.Office.Interop.Excel.Range c2c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 3];
+                Microsoft.Office.Interop.Excel.Range c3c = oSheet.get_Range(c1c, c2c);
+                c3c.NumberFormat = "@";
+                c3c.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+                //Điền dữ liệu vào vùng đã thiết lập
+                range.Value2 = arr;
+
+            }
+        }
+
     }
 }

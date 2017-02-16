@@ -15,16 +15,16 @@ using KTKS_DonKH.DAL.BamChi;
 using KTKS_DonKH.DAL.DonTu;
 using KTKS_DonKH.BaoCao.CongVan;
 
-namespace KTKS_DonKH.GUI.ToXuLy
+namespace KTKS_DonKH.GUI.ToBamChi
 {
-    public partial class frmBaoCaoDonTXL : Form
+    public partial class frmBaoCaoDonTBC : Form
     {
         CDonTXL _cDonTXL = new CDonTXL();
         CKTXM _cKTXM = new CKTXM();
         CBamChi _cBamChi = new CBamChi();
         CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
 
-        public frmBaoCaoDonTXL()
+        public frmBaoCaoDonTBC()
         {
             InitializeComponent();
         }
@@ -59,7 +59,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
         private void btnBaoCaoLichSuChuyenDon_Click(object sender, EventArgs e)
         {
-            DataTable dt = _cLichSuDonTu.GetDS("TXL",dateTu_LichSuChuyenDon.Value,dateDen_LichSuChuyenDon.Value);
+            DataTable dt = _cLichSuDonTu.GetDS("TBC",dateTu_LichSuChuyenDon.Value,dateDen_LichSuChuyenDon.Value);
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             foreach (DataRow item in dt.Rows)
             {
@@ -75,7 +75,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                 dr["DiaChi"] = item["DiaChi"].ToString();
                 dr["NoiChuyen"] = item["NoiChuyen"].ToString();
-                dr["NoiDung"] = item["NoiNhan"].ToString() + ", " + item["GhiChu"].ToString();
+                dr["NoiDung"] = item["NoiNhan"].ToString();
 
                 dsBaoCao.Tables["CongVan"].Rows.Add(dr);
             }
@@ -83,6 +83,11 @@ namespace KTKS_DonKH.GUI.ToXuLy
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();
+        }
+
+        private void frmBaoCaoDonTXL_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

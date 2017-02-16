@@ -92,5 +92,46 @@ namespace KTKS_DonKH.GUI.HeThong
                 dgvResult.DataSource = _cMenu.ExecuteQuery_SqlDataAdapter_DataTable(txtQuery.Text.Trim());
             }
         }
+
+        private void btnCapNhatPhanQuyenNhom_Click(object sender, EventArgs e)
+        {
+            foreach (var itemMenu in _cMenu.GetDS())
+            {
+                foreach (var itemNhom in _cNhom.GetDS())
+                {
+                    if (!_cPhanQuyenNhom.CheckByMaMenuMaNhom(itemMenu.MaMenu, itemNhom.MaNhom))
+                    {
+                        PhanQuyenNhom phanquyennhom = new PhanQuyenNhom();
+                        phanquyennhom.MaMenu = itemMenu.MaMenu;
+                        phanquyennhom.MaNhom = itemNhom.MaNhom;
+                        _cPhanQuyenNhom.Them(phanquyennhom);
+                    }
+                }
+            }
+        }
+
+        private void btnCapNhatPhanQuyenNguoiDung_Click(object sender, EventArgs e)
+        {
+            foreach (var itemMenu in _cMenu.GetDS())
+            {
+                foreach (var itemND in _cTaiKhoan.GetDS())
+                {
+                    if (!_cPhanQuyenNguoiDung.CheckByMaMenuMaND(itemMenu.MaMenu, itemND.MaU))
+                    {
+                        PhanQuyenNguoiDung phanquyennguoidung = new PhanQuyenNguoiDung();
+                        phanquyennguoidung.MaMenu = itemMenu.MaMenu;
+                        phanquyennguoidung.MaND = itemND.MaU;
+                        if (phanquyennguoidung.MaND == 0)
+                        {
+                            phanquyennguoidung.Xem = true;
+                            phanquyennguoidung.Them = true;
+                            phanquyennguoidung.Sua = true;
+                            phanquyennguoidung.Xoa = true;
+                        }
+                        _cPhanQuyenNguoiDung.Them(phanquyennguoidung);
+                    }
+                }
+            }
+        }
     }
 }

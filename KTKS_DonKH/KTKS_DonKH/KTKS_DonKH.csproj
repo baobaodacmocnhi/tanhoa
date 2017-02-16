@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>468</ApplicationRevision>
+    <ApplicationRevision>471</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -102,6 +102,9 @@
     <Reference Include="DevExpress.XtraPdfViewer.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -580,6 +583,7 @@
     <Compile Include="DAL\DonTu\CLichSuDonTu.cs" />
     <Compile Include="DAL\DonTu\CNoiChuyen.cs" />
     <Compile Include="DAL\DonTu\CPhongBanDoi.cs" />
+    <Compile Include="DAL\CExcel.cs" />
     <Compile Include="DAL\KhachHang\CThongTinKhachHang.cs" />
     <Compile Include="DAL\QuanTri\CBanGiamDoc.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CChiNhanh.cs" />
@@ -592,6 +596,8 @@
     <Compile Include="DAL\QuanTri\CPhanQuyenNhom.cs" />
     <Compile Include="DAL\QuanTri\CPhanQuyenNguoiDung.cs" />
     <Compile Include="DAL\QuanTri\CTo.cs" />
+    <Compile Include="DAL\ToBamChi\CDonTBC.cs" />
+    <Compile Include="DAL\ToBamChi\CLoaiDonTBC.cs" />
     <Compile Include="DAL\ToXuLy\CLoaiDonTXL.cs" />
     <Compile Include="DAL\BamChi\CTrangThaiBamChi.cs" />
     <Compile Include="DAL\CatHuyDanhBo\CLyDoCHDB.cs" />
@@ -964,6 +970,36 @@
     <Compile Include="GUI\TimKiem\frmTienTrinhDon.Designer.cs">
       <DependentUpon>frmTienTrinhDon.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ToBamChi\frmBaoCaoDonTBC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToBamChi\frmBaoCaoDonTBC.Designer.cs">
+      <DependentUpon>frmBaoCaoDonTBC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ToBamChi\frmDSDonTBC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToBamChi\frmDSDonTBC.Designer.cs">
+      <DependentUpon>frmDSDonTBC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ToBamChi\frmLoaiDonTBC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToBamChi\frmLoaiDonTBC.Designer.cs">
+      <DependentUpon>frmLoaiDonTBC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ToBamChi\frmNhanDonTBC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToBamChi\frmNhanDonTBC.Designer.cs">
+      <DependentUpon>frmNhanDonTBC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ToBamChi\frmNhapNhieuDBTBC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToBamChi\frmNhapNhieuDBTBC.Designer.cs">
+      <DependentUpon>frmNhapNhieuDBTBC.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ToXuLy\frmBaoCaoDonTXL.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -981,6 +1017,12 @@
     </Compile>
     <Compile Include="GUI\ToXuLy\frmGianLan.Designer.cs">
       <DependentUpon>frmGianLan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ToXuLy\frmLoaiDonTXL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToXuLy\frmLoaiDonTXL.Designer.cs">
+      <DependentUpon>frmLoaiDonTXL.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ToXuLy\frmNhanDonTXL.cs">
       <SubType>Form</SubType>
@@ -1535,6 +1577,21 @@
     <EmbeddedResource Include="GUI\TimKiem\frmTienTrinhDon.resx">
       <DependentUpon>frmTienTrinhDon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToBamChi\frmBaoCaoDonTBC.resx">
+      <DependentUpon>frmBaoCaoDonTBC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToBamChi\frmDSDonTBC.resx">
+      <DependentUpon>frmDSDonTBC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToBamChi\frmLoaiDonTBC.resx">
+      <DependentUpon>frmLoaiDonTBC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToBamChi\frmNhanDonTBC.resx">
+      <DependentUpon>frmNhanDonTBC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToBamChi\frmNhapNhieuDBTBC.resx">
+      <DependentUpon>frmNhapNhieuDBTBC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToXuLy\frmBaoCaoDonTXL.resx">
       <DependentUpon>frmBaoCaoDonTXL.cs</DependentUpon>
     </EmbeddedResource>
@@ -1543,6 +1600,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToXuLy\frmGianLan.resx">
       <DependentUpon>frmGianLan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToXuLy\frmLoaiDonTXL.resx">
+      <DependentUpon>frmLoaiDonTXL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToXuLy\frmNhanDonTXL.resx">
       <DependentUpon>frmNhanDonTXL.cs</DependentUpon>

@@ -46,6 +46,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
             if (entity.NgayKTXM!=null)
             dateKTXM.Value = entity.NgayKTXM.Value;
             txtNoiDungViPham.Text = entity.NoiDungViPham;
+            if(entity.TienDHN!=null)
             txtTienDHN.Text = entity.TienDHN.Value.ToString();
             txtTinhTrang.Text = entity.TinhTrang;
             txtNhanVien.Text = entity.NhanVien;

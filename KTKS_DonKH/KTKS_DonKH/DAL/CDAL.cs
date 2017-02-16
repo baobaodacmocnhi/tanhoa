@@ -80,6 +80,11 @@ namespace KTKS_DonKH.DAL
             db.SubmitChanges();
         }
 
+        public void Refresh()
+        {
+            db = new dbKinhDoanhDataContext();
+        }
+
         protected static string _connectionString;  // Chuỗi kết nối
         protected SqlConnection connection;         // Đối tượng kết nối
         protected SqlDataAdapter adapter;           // Đối tượng adapter chứa dữ liệu

@@ -54,21 +54,52 @@ namespace KTKS_DonKH.DAL.DonTu
             return db.LichSuDonTus.SingleOrDefault(item => item.ID == ID);
         }
 
-        public DataTable GetDS(bool ToXuLy, Decimal MaDon)
+        public DataTable GetDS(string Loai, Decimal MaDon)
         {
-            if (ToXuLy == true)
-                return LINQToDataTable(db.LichSuDonTus.Where(item => item.MaDonTXL.Value == MaDon).OrderByDescending(item => item.NgayChuyen).ToList());
-            else
-                return LINQToDataTable(db.LichSuDonTus.Where(item => item.MaDon.Value == MaDon).OrderByDescending(item => item.NgayChuyen).ToList());
+            DataTable dt = new DataTable();
+            switch (Loai)
+            {
+                case "TKH":
+                    dt = LINQToDataTable(db.LichSuDonTus.Where(item => item.MaDon.Value == MaDon).OrderByDescending(item => item.NgayChuyen).ToList());
+                    break;
+                case "TXL":
+                    dt = LINQToDataTable(db.LichSuDonTus.Where(item => item.MaDonTXL.Value == MaDon).OrderByDescending(item => item.NgayChuyen).ToList());
+                    break;
+                case "TBC":
+                    dt = LINQToDataTable(db.LichSuDonTus.Where(item => item.MaDonTBC.Value == MaDon).OrderByDescending(item => item.NgayChuyen).ToList());
+                    break;
+            }
+            return dt;
         }
 
-        public DataTable GetDS(bool ToXuLy, DateTime FromNgayChuyen, DateTime ToNgayChuyen)
+        public DataTable GetDS(string Loai, DateTime FromNgayChuyen, DateTime ToNgayChuyen)
         {
-            if (ToXuLy == true)
+            DataTable dt = new DataTable();
+            switch (Loai)
             {
-                var query = from itemLichSuDon in db.LichSuDonTus
+                case "TKH":
+                    var query = from itemLichSuDon in db.LichSuDonTus
+                                join itemDonKH in db.DonKHs on itemLichSuDon.MaDon equals itemDonKH.MaDon
+                                where itemLichSuDon.MaDon != null && itemLichSuDon.NgayChuyen.Value.Date >= FromNgayChuyen.Date && itemLichSuDon.NgayChuyen.Value.Date <= ToNgayChuyen.Date
+                                orderby itemLichSuDon.NgayChuyen ascending
+                                select new
+                                {
+                                    itemDonKH.MaDon,
+                                    itemDonKH.LoaiDon.TenLD,
+                                    itemDonKH.DanhBo,
+                                    itemDonKH.HoTen,
+                                    itemDonKH.DiaChi,
+                                    itemLichSuDon.NgayChuyen,
+                                    itemLichSuDon.NoiChuyen,
+                                    itemLichSuDon.NoiNhan,
+                                };
+                    dt = LINQToDataTable(query.ToList());
+                    break;
+                case "TXL":
+                    query = from itemLichSuDon in db.LichSuDonTus
                             join itemDonTXL in db.DonTXLs on itemLichSuDon.MaDonTXL equals itemDonTXL.MaDon
                             where itemLichSuDon.MaDonTXL != null && itemLichSuDon.NgayChuyen.Value.Date >= FromNgayChuyen.Date && itemLichSuDon.NgayChuyen.Value.Date <= ToNgayChuyen.Date
+                            && itemLichSuDon.ID_NoiChuyen != 1
                             orderby itemLichSuDon.NgayChuyen ascending
                             select new
                             {
@@ -81,27 +112,29 @@ namespace KTKS_DonKH.DAL.DonTu
                                 itemLichSuDon.NoiChuyen,
                                 itemLichSuDon.NoiNhan,
                             };
-                return LINQToDataTable(query.ToList());
-            }
-            else
-            {
-                var query = from itemLichSuDon in db.LichSuDonTus
-                            join itemDonKH in db.DonKHs on itemLichSuDon.MaDon equals itemDonKH.MaDon
-                            where itemLichSuDon.MaDon != null && itemLichSuDon.NgayChuyen.Value.Date >= FromNgayChuyen.Date && itemLichSuDon.NgayChuyen.Value.Date <= ToNgayChuyen.Date
+                    dt = LINQToDataTable(query.ToList());
+                    break;
+                case "TBC":
+                    query = from itemLichSuDon in db.LichSuDonTus
+                            join itemDonTBC in db.DonTBCs on itemLichSuDon.MaDonTBC equals itemDonTBC.MaDon
+                            where itemLichSuDon.MaDonTBC != null && itemLichSuDon.NgayChuyen.Value.Date >= FromNgayChuyen.Date && itemLichSuDon.NgayChuyen.Value.Date <= ToNgayChuyen.Date
+                            && itemLichSuDon.ID_NoiChuyen != 1
                             orderby itemLichSuDon.NgayChuyen ascending
                             select new
                             {
-                                itemDonKH.MaDon,
-                                itemDonKH.LoaiDon.TenLD,
-                                itemDonKH.DanhBo,
-                                itemDonKH.HoTen,
-                                itemDonKH.DiaChi,
+                                itemDonTBC.MaDon,
+                                itemDonTBC.LoaiDonTBC.TenLD,
+                                itemDonTBC.DanhBo,
+                                itemDonTBC.HoTen,
+                                itemDonTBC.DiaChi,
                                 itemLichSuDon.NgayChuyen,
                                 itemLichSuDon.NoiChuyen,
                                 itemLichSuDon.NoiNhan,
                             };
-                return LINQToDataTable(query.ToList());
+                    dt = LINQToDataTable(query.ToList());
+                    break;
             }
+            return dt;
         }
     }
 }

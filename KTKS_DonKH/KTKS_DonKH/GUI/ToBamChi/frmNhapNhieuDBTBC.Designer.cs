@@ -1,6 +1,6 @@
-﻿namespace KTKS_DonKH.GUI.ToXuLy
+﻿namespace KTKS_DonKH.GUI.ToBamChi
 {
-    partial class frmNhapNhieuDBTXL
+    partial class frmNhapNhieuDBTBC
     {
         /// <summary>
         /// Required designer variable.
@@ -68,6 +68,7 @@
             this.txtTongSoDanhBo.TabIndex = 17;
             this.txtTongSoDanhBo.Text = "1";
             this.txtTongSoDanhBo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTongSoDanhBo.Visible = false;
             // 
             // label23
             // 
@@ -79,6 +80,7 @@
             this.label23.Size = new System.Drawing.Size(90, 19);
             this.label23.TabIndex = 16;
             this.label23.Text = "Tổng Số DB";
+            this.label23.Visible = false;
             // 
             // txtNoiDung
             // 
@@ -304,7 +306,7 @@
             this.btnLuu.UseVisualStyleBackColor = true;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
-            // frmNhapNhieuDBTXL
+            // frmNhapNhieuDBTBC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -328,8 +330,8 @@
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmNhapNhieuDBTXL";
-            this.Text = "Nhập Nhiều Danh Bộ Tổ Xử Lý";
+            this.Name = "frmNhapNhieuDBTBC";
+            this.Text = "Nhập Nhiều Danh Bộ Tổ Bấm Chì";
             this.Load += new System.EventHandler(this.frmNhapNhieuDB_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhBo)).EndInit();
             this.ResumeLayout(false);

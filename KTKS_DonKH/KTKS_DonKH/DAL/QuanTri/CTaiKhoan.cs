@@ -17,7 +17,7 @@ namespace KTKS_DonKH.DAL.QuanTri
         public static int GiamTienNuoc
         {
             get { return CTaiKhoan._giamTienNuoc; }
-        } 
+        }
 
         private static int _maUser = -1;
         public static int MaUser
@@ -173,60 +173,60 @@ namespace KTKS_DonKH.DAL.QuanTri
         {
             try
             {
-                    var taikhoans = from itemUser in db.Users
-                                    where itemUser.MaU != 0 && itemUser.TaiKhoan != TaiKhoan
-                                    select new
-                                    {
-                                        MaU = itemUser.MaU,
-                                        HoTen = itemUser.HoTen,
-                                        TaiKhoan = itemUser.TaiKhoan,
-                                        MatKhau = itemUser.MatKhau,
-                                    };
-                    ///1 tài khoản có nhiều quyền chưa biết làm ntn nên jờ tạm làm theo cách chạy vòng lập add từng record
-                    DataTable table = new DataTable();
-                    table.Columns.Add("MaU", typeof(string));
-                    table.Columns.Add("HoTen", typeof(string));
-                    table.Columns.Add("TaiKhoan", typeof(string));
-                    table.Columns.Add("MatKhau", typeof(string));
-                    table.Columns.Add("QTaiKhoan", typeof(bool));
-                    table.Columns.Add("QCapNhat", typeof(bool));
-                    table.Columns.Add("QNhanDonKH", typeof(bool));
-                    table.Columns.Add("QQLDonKH", typeof(bool));
-                    table.Columns.Add("QKTXM", typeof(bool));
-                    table.Columns.Add("QQLKTXM", typeof(bool));
-                    table.Columns.Add("QDCBD", typeof(bool));
-                    table.Columns.Add("QCHDB", typeof(bool));
-                    table.Columns.Add("QTTTL", typeof(bool));
+                var taikhoans = from itemUser in db.Users
+                                where itemUser.MaU != 0 && itemUser.TaiKhoan != TaiKhoan
+                                select new
+                                {
+                                    MaU = itemUser.MaU,
+                                    HoTen = itemUser.HoTen,
+                                    TaiKhoan = itemUser.TaiKhoan,
+                                    MatKhau = itemUser.MatKhau,
+                                };
+                ///1 tài khoản có nhiều quyền chưa biết làm ntn nên jờ tạm làm theo cách chạy vòng lập add từng record
+                DataTable table = new DataTable();
+                table.Columns.Add("MaU", typeof(string));
+                table.Columns.Add("HoTen", typeof(string));
+                table.Columns.Add("TaiKhoan", typeof(string));
+                table.Columns.Add("MatKhau", typeof(string));
+                table.Columns.Add("QTaiKhoan", typeof(bool));
+                table.Columns.Add("QCapNhat", typeof(bool));
+                table.Columns.Add("QNhanDonKH", typeof(bool));
+                table.Columns.Add("QQLDonKH", typeof(bool));
+                table.Columns.Add("QKTXM", typeof(bool));
+                table.Columns.Add("QQLKTXM", typeof(bool));
+                table.Columns.Add("QDCBD", typeof(bool));
+                table.Columns.Add("QCHDB", typeof(bool));
+                table.Columns.Add("QTTTL", typeof(bool));
 
-                    foreach (var itemTK in taikhoans)
-                    {
-                        var quyens = from itemDetailRole in db.DetailRoles
-                                     where itemDetailRole.MaU == itemTK.MaU
-                                     orderby itemDetailRole.MaR ascending
-                                     select itemDetailRole;
+                foreach (var itemTK in taikhoans)
+                {
+                    var quyens = from itemDetailRole in db.DetailRoles
+                                 where itemDetailRole.MaU == itemTK.MaU
+                                 orderby itemDetailRole.MaR ascending
+                                 select itemDetailRole;
 
-                        ///MaR=1 => quyền Tài Khoản
-                        ///MaR=2 => quyền Cập Nhật
-                        ///MaR=3 => quyền Nhận Đơn Khách Hàng
-                        ///MaR=4 => quyền Quản Lý Đơn Khách Hàng
-                        ///MaR=5 => quyền Kiểm Tra Xác Minh
-                        ///MaR=6 => quyền Quản Lý Kiểm Tra Xác Minh
-                        ///MaR=7 => quyền Điều Chỉnh Biến Động
-                        ///MaR=8 => quyền Cắt Hủy Danh Bộ
-                        ///MaR=9 => quyền Thảo Thư Trả Lời
-                        table.Rows.Add(itemTK.MaU, itemTK.HoTen, itemTK.TaiKhoan, itemTK.MatKhau,
-                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 1).QuyenCapNhat,
-                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 2).QuyenCapNhat,
-                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 3).QuyenCapNhat,
-                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 4).QuyenCapNhat,
-                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 5).QuyenCapNhat,
-                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 6).QuyenCapNhat,
-                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 7).QuyenCapNhat,
-                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 8).QuyenCapNhat,
-                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 9).QuyenCapNhat
-                                        );
-                    }
-                    return table;
+                    ///MaR=1 => quyền Tài Khoản
+                    ///MaR=2 => quyền Cập Nhật
+                    ///MaR=3 => quyền Nhận Đơn Khách Hàng
+                    ///MaR=4 => quyền Quản Lý Đơn Khách Hàng
+                    ///MaR=5 => quyền Kiểm Tra Xác Minh
+                    ///MaR=6 => quyền Quản Lý Kiểm Tra Xác Minh
+                    ///MaR=7 => quyền Điều Chỉnh Biến Động
+                    ///MaR=8 => quyền Cắt Hủy Danh Bộ
+                    ///MaR=9 => quyền Thảo Thư Trả Lời
+                    table.Rows.Add(itemTK.MaU, itemTK.HoTen, itemTK.TaiKhoan, itemTK.MatKhau,
+                                    quyens.FirstOrDefault(itemQ => itemQ.MaR == 1).QuyenCapNhat,
+                                    quyens.FirstOrDefault(itemQ => itemQ.MaR == 2).QuyenCapNhat,
+                                    quyens.FirstOrDefault(itemQ => itemQ.MaR == 3).QuyenCapNhat,
+                                    quyens.FirstOrDefault(itemQ => itemQ.MaR == 4).QuyenCapNhat,
+                                    quyens.FirstOrDefault(itemQ => itemQ.MaR == 5).QuyenCapNhat,
+                                    quyens.FirstOrDefault(itemQ => itemQ.MaR == 6).QuyenCapNhat,
+                                    quyens.FirstOrDefault(itemQ => itemQ.MaR == 7).QuyenCapNhat,
+                                    quyens.FirstOrDefault(itemQ => itemQ.MaR == 8).QuyenCapNhat,
+                                    quyens.FirstOrDefault(itemQ => itemQ.MaR == 9).QuyenCapNhat
+                                    );
+                }
+                return table;
             }
             catch (Exception ex)
             {
@@ -243,7 +243,7 @@ namespace KTKS_DonKH.DAL.QuanTri
         {
             try
             {
-                    return db.Users.Where(itemUser => itemUser.MaU != 0 && itemUser.TaiKhoan != TaiKhoan).ToList();
+                return db.Users.Where(itemUser => itemUser.MaU != 0 && itemUser.TaiKhoan != TaiKhoan).ToList();
             }
             catch (Exception ex)
             {
@@ -277,7 +277,7 @@ namespace KTKS_DonKH.DAL.QuanTri
         {
             try
             {
-                return db.Users.Where(itemUser => itemUser.MaU != 0 && itemUser.ToKH == true&&itemUser.An==false).ToList();
+                return db.Users.Where(itemUser => itemUser.MaU != 0 && itemUser.ToKH == true && itemUser.An == false).ToList();
             }
             catch (Exception ex)
             {
@@ -303,39 +303,51 @@ namespace KTKS_DonKH.DAL.QuanTri
             }
         }
 
-        public DataTable GetDS_KTXM_TKH()
+        //public DataTable GetDS_KTXM_TKH()
+        //{
+        //    return LINQToDataTable(db.Users.Where(item => item.KTXM == true && item.ToKH == true && item.An == false).OrderBy(item => item.STT).ToList());
+        //}
+
+        //public DataTable GetDS_KTXM_TXL()
+        //{
+        //    return LINQToDataTable(db.Users.Where(item => item.BamChi == true && item.ToXL == true && item.An == false).OrderBy(item => item.STT).ToList());
+        //}
+
+        //public DataTable GetDS_KTXM_TBC()
+        //{
+        //    return LINQToDataTable(db.Users.Where(item => item.BamChi == true && item.ToBC == true && item.An == false).OrderBy(item => item.STT).ToList());
+        //}
+
+        public DataTable GetDS_KTXM(string Loai)
         {
-            return LINQToDataTable(db.Users.Where(item => item.KTXM == true && item.ToKH == true && item.An == false).OrderBy(item => item.STT).ToList());
+            switch (Loai)
+            {
+                case "TKH":
+                    return LINQToDataTable(db.Users.Where(item => item.KTXM == true && item.ToKH == true && item.An == false).OrderBy(item => item.STT).ToList());
+                case "TXL":
+                    return LINQToDataTable(db.Users.Where(item => item.KTXM == true && item.ToXL == true && item.An == false).OrderBy(item => item.STT).ToList());
+                case "TBC":
+                    return LINQToDataTable(db.Users.Where(item => item.KTXM == true && item.ToBC == true && item.An == false).OrderBy(item => item.STT).ToList());
+                default:
+                    return null;
+            }
         }
 
-        public DataTable GetDS_KTXM_TXL()
+        public DataTable GetDS_ThuKy(string Loai)
         {
-            return LINQToDataTable(db.Users.Where(item => item.BamChi == true && item.ToXL == true && item.An == false).OrderBy(item => item.STT).ToList());
-        }
-
-        public DataTable GetDS_KTXM_TBC()
-        {
-            return LINQToDataTable(db.Users.Where(item => item.BamChi == true && item.ToBC == true && item.An == false).OrderBy(item => item.STT).ToList());
-        }
-
-        public DataTable GetDS_TKH()
-        {
-            return LINQToDataTable(db.Users.Where(item => item.KTXM == false && item.ToKH == true && item.An == false).OrderBy(item => item.STT).ToList());
-        }
-
-        public DataTable GetDS_TXL()
-        {
-            return LINQToDataTable(db.Users.Where(item => item.BamChi == false && item.ToXL == true && item.An == false).OrderBy(item => item.STT).ToList());
-        }
-
-        public DataTable GetDS_TBC()
-        {
-            return LINQToDataTable(db.Users.Where(item => item.BamChi == false && item.ToBC == true && item.An == false).OrderBy(item => item.STT).ToList());
-        }
-
-        public DataTable GetDS_TVP()
-        {
-            return LINQToDataTable(db.Users.Where(item => item.ToVP == true && item.An == false).OrderBy(item => item.STT).ToList());
+            switch (Loai)
+            {
+                case "TKH":
+                    return LINQToDataTable(db.Users.Where(item => item.KTXM == false && item.ToKH == true && item.An == false).OrderBy(item => item.STT).ToList());
+                case "TXL":
+                    return LINQToDataTable(db.Users.Where(item => item.KTXM == false && item.ToXL == true && item.An == false).OrderBy(item => item.STT).ToList());
+                case "TBC":
+                    return LINQToDataTable(db.Users.Where(item => item.KTXM == false && item.ToBC == true && item.An == false).OrderBy(item => item.STT).ToList());
+                case "TVP":
+                    return LINQToDataTable(db.Users.Where(item => item.ToVP == true && item.An == false).OrderBy(item => item.STT).ToList());
+                default:
+                    return null;
+            }
         }
 
         /// <summary>
@@ -391,56 +403,56 @@ namespace KTKS_DonKH.DAL.QuanTri
         {
             try
             {
-                    if (!db.Users.Any(item => item.TaiKhoan == nguoidung.TaiKhoan))
-                    {
-                        if (db.Users.Count() > 0)
-                            nguoidung.MaU = db.Users.Max(itemU => itemU.MaU) + 1;
-                        else
-                            nguoidung.MaU = 1;
-                        nguoidung.CreateDate = DateTime.Now;
-                        nguoidung.CreateBy = CTaiKhoan.MaUser;
-                        db.Users.InsertOnSubmit(nguoidung);
-                        ///Cấp quyền mặc định = False
-                        ///i tương ứng với số quyền trong bảng DetailRole
-                        for (int i = 1; i <= 13; i++)
-                        {
-                            DetailRole qTaiKhoan = new DetailRole();
-                            qTaiKhoan.MaR = i;
-                            qTaiKhoan.QuyenXem = false;
-                            qTaiKhoan.QuyenCapNhat = false;
-                            nguoidung.DetailRoles.Add(qTaiKhoan);
-                        }
-                        db.SubmitChanges();
-                        //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return true;
-                    }
+                if (!db.Users.Any(item => item.TaiKhoan == nguoidung.TaiKhoan))
+                {
+                    if (db.Users.Count() > 0)
+                        nguoidung.MaU = db.Users.Max(itemU => itemU.MaU) + 1;
                     else
+                        nguoidung.MaU = 1;
+                    nguoidung.CreateDate = DateTime.Now;
+                    nguoidung.CreateBy = CTaiKhoan.MaUser;
+                    db.Users.InsertOnSubmit(nguoidung);
+                    ///Cấp quyền mặc định = False
+                    ///i tương ứng với số quyền trong bảng DetailRole
+                    for (int i = 1; i <= 13; i++)
                     {
-                        MessageBox.Show("Tài khoản này đã có người sử dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.Users);
-                        return false;
+                        DetailRole qTaiKhoan = new DetailRole();
+                        qTaiKhoan.MaR = i;
+                        qTaiKhoan.QuyenXem = false;
+                        qTaiKhoan.QuyenCapNhat = false;
+                        nguoidung.DetailRoles.Add(qTaiKhoan);
                     }
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này đã có người sử dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.Users);
+                    return false;
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 db = new dbKinhDoanhDataContext();
                 return false;
-            }    
+            }
         }
 
         public bool Xoa(User nguoidung)
         {
             try
             {
-                    foreach (var itemDetailRole in db.DetailRoles.Where(itemTaiKhoan => itemTaiKhoan.MaU == nguoidung.MaU))
-                    {
-                        db.DetailRoles.DeleteOnSubmit(itemDetailRole);
-                    }
-                    db.Users.DeleteOnSubmit(nguoidung);
-                    db.SubmitChanges();
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
+                foreach (var itemDetailRole in db.DetailRoles.Where(itemTaiKhoan => itemTaiKhoan.MaU == nguoidung.MaU))
+                {
+                    db.DetailRoles.DeleteOnSubmit(itemDetailRole);
+                }
+                db.Users.DeleteOnSubmit(nguoidung);
+                db.SubmitChanges();
+                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
             }
             catch (Exception ex)
             {
@@ -472,19 +484,19 @@ namespace KTKS_DonKH.DAL.QuanTri
         /// </summary>
         /// <param name="MaR">int</param>
         /// <param name="Value">true/false</param>
-        public bool SuaQuyen(int MaU, int MaR, string Quyen,bool Value)
+        public bool SuaQuyen(int MaU, int MaR, string Quyen, bool Value)
         {
             try
             {
-                    if (Quyen == "QuyenXem")
-                        db.DetailRoles.Single(itemRoleTaiKhoan => itemRoleTaiKhoan.MaU == MaU && itemRoleTaiKhoan.MaR == MaR).QuyenXem = Value;
-                    else
-                        if (Quyen == "QuyenCapNhat")
-                            db.DetailRoles.Single(itemRoleTaiKhoan => itemRoleTaiKhoan.MaU == MaU && itemRoleTaiKhoan.MaR == MaR).QuyenCapNhat = Value;
-                    db.DetailRoles.Single(itemRoleTaiKhoan => itemRoleTaiKhoan.MaU == MaU && itemRoleTaiKhoan.MaR == MaR).User.ModifyDate = DateTime.Now;
-                    db.DetailRoles.Single(itemRoleTaiKhoan => itemRoleTaiKhoan.MaU == MaU && itemRoleTaiKhoan.MaR == MaR).User.ModifyBy = CTaiKhoan.MaUser;
-                    db.SubmitChanges();
-                    return true;
+                if (Quyen == "QuyenXem")
+                    db.DetailRoles.Single(itemRoleTaiKhoan => itemRoleTaiKhoan.MaU == MaU && itemRoleTaiKhoan.MaR == MaR).QuyenXem = Value;
+                else
+                    if (Quyen == "QuyenCapNhat")
+                        db.DetailRoles.Single(itemRoleTaiKhoan => itemRoleTaiKhoan.MaU == MaU && itemRoleTaiKhoan.MaR == MaR).QuyenCapNhat = Value;
+                db.DetailRoles.Single(itemRoleTaiKhoan => itemRoleTaiKhoan.MaU == MaU && itemRoleTaiKhoan.MaR == MaR).User.ModifyDate = DateTime.Now;
+                db.DetailRoles.Single(itemRoleTaiKhoan => itemRoleTaiKhoan.MaU == MaU && itemRoleTaiKhoan.MaR == MaR).User.ModifyBy = CTaiKhoan.MaUser;
+                db.SubmitChanges();
+                return true;
             }
             catch (Exception ex)
             {
@@ -524,16 +536,16 @@ namespace KTKS_DonKH.DAL.QuanTri
         {
             try
             {
-                    var queryRoles = from itemDR in db.DetailRoles
-                                     where itemDR.MaU == MaU
-                                     select new
-                                     {
-                                         itemDR.MaR,
-                                         itemDR.Role.TenR,
-                                         itemDR.QuyenXem,
-                                         itemDR.QuyenCapNhat
-                                     };
-                    return LINQToDataTable(queryRoles);
+                var queryRoles = from itemDR in db.DetailRoles
+                                 where itemDR.MaU == MaU
+                                 select new
+                                 {
+                                     itemDR.MaR,
+                                     itemDR.Role.TenR,
+                                     itemDR.QuyenXem,
+                                     itemDR.QuyenCapNhat
+                                 };
+                return LINQToDataTable(queryRoles);
             }
             catch (Exception ex)
             {

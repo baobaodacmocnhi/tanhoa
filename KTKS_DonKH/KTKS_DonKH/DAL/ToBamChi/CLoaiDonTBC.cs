@@ -6,27 +6,21 @@ using KTKS_DonKH.LinQ;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.QuanTri;
 
-namespace KTKS_DonKH.DAL.ToXuLy
+namespace KTKS_DonKH.DAL.ToBamChi
 {
-    class CLoaiDonTXL : CDAL
+    class CLoaiDonTBC : CDAL
     {
-        public bool Them(LoaiDonTXL entity)
+        public bool Them(LoaiDonTBC entity)
         {
             try
             {
-                if (db.LoaiDonTXLs.Count() > 0)
-                {
-                    entity.MaLD = db.LoaiDonTXLs.Max(item => item.MaLD) + 1;
-                    entity.STT = db.LoaiDonTXLs.Max(item => item.STT) + 1;
-                }
+                if (db.LoaiDonTBCs.Count() > 0)
+                    entity.MaLD = db.LoaiDonTBCs.Max(itemLD => itemLD.MaLD) + 1;
                 else
-                {
                     entity.MaLD = 1;
-                    entity.STT = 1;
-                }
                 entity.CreateDate = DateTime.Now;
                 entity.CreateBy = CTaiKhoan.MaUser;
-                db.LoaiDonTXLs.InsertOnSubmit(entity);
+                db.LoaiDonTBCs.InsertOnSubmit(entity);
                 db.SubmitChanges();
                 return true;
             }
@@ -38,7 +32,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
             }
         }
 
-        public bool Sua(LoaiDonTXL entity)
+        public bool Sua(LoaiDonTBC entity)
         {
             try
             {
@@ -47,18 +41,18 @@ namespace KTKS_DonKH.DAL.ToXuLy
                 db.SubmitChanges();
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Refresh();
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
 
-        public bool Xoa(LoaiDonTXL entity)
+        public bool Xoa(LoaiDonTBC entity)
         {
             try
             {
-                db.LoaiDonTXLs.DeleteOnSubmit(entity);
+                db.LoaiDonTBCs.DeleteOnSubmit(entity);
                 db.SubmitChanges();
                 return true;
             }
@@ -70,11 +64,11 @@ namespace KTKS_DonKH.DAL.ToXuLy
             }
         }
 
-        public List<LoaiDonTXL> GetDS_All()
+        public List<LoaiDonTBC> GetDS_All()
         {
             try
             {
-                return db.LoaiDonTXLs.OrderBy(item => item.STT).ToList();
+                return db.LoaiDonTBCs.OrderBy(item => item.STT).ToList();
             }
             catch (Exception ex)
             {
@@ -83,11 +77,11 @@ namespace KTKS_DonKH.DAL.ToXuLy
             }
         }
 
-        public List<LoaiDonTXL> GetDS()
+        public List<LoaiDonTBC> GetDS()
         {
             try
             {
-                return db.LoaiDonTXLs.Where(item=>item.An==false).OrderBy(item => item.STT).ToList();
+                return db.LoaiDonTBCs.Where(item => item.An == false).OrderBy(item => item.STT).ToList();
             }
             catch (Exception ex)
             {
@@ -96,11 +90,11 @@ namespace KTKS_DonKH.DAL.ToXuLy
             }
         }
 
-        public LoaiDonTXL Get(int MaLD)
+        public LoaiDonTBC Get(int MaLD)
         {
             try
             {
-                return db.LoaiDonTXLs.SingleOrDefault(itemLDTXL => itemLDTXL.MaLD == MaLD);
+                return db.LoaiDonTBCs.SingleOrDefault(item => item.MaLD == MaLD);
             }
             catch (Exception ex)
             {
@@ -113,7 +107,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                return db.LoaiDonTXLs.SingleOrDefault(itemLDXL => itemLDXL.MaLD == MaLD).TenLD;
+                return db.LoaiDonTBCs.SingleOrDefault(item => item.MaLD == MaLD).TenLD;
             }
             catch (Exception ex)
             {
@@ -126,14 +120,14 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                return db.LoaiDonTXLs.SingleOrDefault(itemLDTXL => itemLDTXL.MaLD == MaLD).KyHieuLD;
+                return db.LoaiDonTBCs.SingleOrDefault(item => item.MaLD == MaLD).KyHieuLD;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
-        }
+        }    
 
     }
 }
