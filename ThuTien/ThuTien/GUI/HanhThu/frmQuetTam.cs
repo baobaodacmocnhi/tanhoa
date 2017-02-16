@@ -773,7 +773,7 @@ namespace ThuTien.GUI.HanhThu
                     if (dialog.ShowDialog() == DialogResult.OK)
                         if (MessageBox.Show("Bạn có chắc chắn Thêm?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
-                            Excel fileExcel = new Excel(dialog.FileName);
+                            CExcel fileExcel = new CExcel(dialog.FileName);
                             DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
 
                             foreach (DataRow item in dtExcel.Rows)

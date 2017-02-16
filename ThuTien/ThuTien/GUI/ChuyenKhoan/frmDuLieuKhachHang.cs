@@ -466,7 +466,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
                     if (dialog.ShowDialog() == DialogResult.OK)
                     {
-                        Excel fileExcel = new Excel(dialog.FileName);
+                        CExcel fileExcel = new CExcel(dialog.FileName);
                         DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
 
                         foreach (DataRow item in dtExcel.Rows)
