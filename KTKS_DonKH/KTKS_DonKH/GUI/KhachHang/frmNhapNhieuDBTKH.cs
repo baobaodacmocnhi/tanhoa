@@ -221,7 +221,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                                     if (item.Cells["GhiChu"].Value != null)
                                     lichsuchuyenkt.GhiChuChuyen = item.Cells["GhiChu"].Value.ToString();
                                     lichsuchuyenkt.MaDon = donkh.MaDon;
-                                    _cDonTXL.ThemLichSuChuyenKT(lichsuchuyenkt);
+                                    _cLichSuDonTu.Them(lichsuchuyenkt);
 
                                     LichSuDonTu entity = new LichSuDonTu();
                                     entity.NgayChuyen = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));

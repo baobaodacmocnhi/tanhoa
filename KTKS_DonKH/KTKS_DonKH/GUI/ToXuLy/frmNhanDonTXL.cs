@@ -197,7 +197,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                                                 lichsuchuyenkt.NguoiDi = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
                                                 lichsuchuyenkt.GhiChuChuyen = txtGhiChu.Text.Trim();
                                                 lichsuchuyenkt.MaDonTXL = dontxl.MaDon;
-                                                _cDonTXL.ThemLichSuChuyenKT(lichsuchuyenkt);
+                                                _cLichSuDonTu.Them(lichsuchuyenkt);
                                             }
                                             LichSuDonTu entity = new LichSuDonTu();
                                             entity.NgayChuyen = dateChuyen.Value;
@@ -580,7 +580,12 @@ namespace KTKS_DonKH.GUI.ToXuLy
                                     lichsuchuyenkt.NguoiDi = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
                                     lichsuchuyenkt.GhiChuChuyen = txtGhiChu.Text.Trim();
                                     lichsuchuyenkt.MaDonTXL = _dontxl.MaDon;
-                                    _cDonTXL.ThemLichSuChuyenKT(lichsuchuyenkt);
+                                    _cLichSuDonTu.Them(lichsuchuyenkt);
+
+                                    _dontxl.NguoiDi = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+                                    _dontxl.NgayChuyenKT = dateChuyen.Value;
+                                    _dontxl.GhiChuChuyenKT = txtGhiChu.Text.Trim();
+                                    _cDonTXL.SuaDonTXL(_dontxl);
                                 }
                                 LichSuDonTu entity = new LichSuDonTu();
                                 entity.NgayChuyen = dateChuyen.Value;

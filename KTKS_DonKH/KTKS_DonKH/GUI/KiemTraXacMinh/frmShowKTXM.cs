@@ -316,7 +316,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             {
                 KTXM ktxm = _ctktxm.KTXM;
                 if (MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    if (_cKTXM.XoaCTKTXM(_ctktxm, CTaiKhoan.MaUser))
+                    if (_cKTXM.XoaCTKTXM(_ctktxm))
                     {
                         if (ktxm.CTKTXMs.Count == 0)
                             _cKTXM.XoaKTXM(ktxm);

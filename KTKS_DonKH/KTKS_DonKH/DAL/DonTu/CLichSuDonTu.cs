@@ -92,6 +92,7 @@ namespace KTKS_DonKH.DAL.DonTu
                                     itemLichSuDon.NgayChuyen,
                                     itemLichSuDon.NoiChuyen,
                                     itemLichSuDon.NoiNhan,
+                                    itemLichSuDon.GhiChu,
                                 };
                     dt = LINQToDataTable(query.ToList());
                     break;
@@ -111,6 +112,7 @@ namespace KTKS_DonKH.DAL.DonTu
                                 itemLichSuDon.NgayChuyen,
                                 itemLichSuDon.NoiChuyen,
                                 itemLichSuDon.NoiNhan,
+                                itemLichSuDon.GhiChu,
                             };
                     dt = LINQToDataTable(query.ToList());
                     break;
@@ -130,11 +132,85 @@ namespace KTKS_DonKH.DAL.DonTu
                                 itemLichSuDon.NgayChuyen,
                                 itemLichSuDon.NoiChuyen,
                                 itemLichSuDon.NoiNhan,
+                                itemLichSuDon.GhiChu,
                             };
                     dt = LINQToDataTable(query.ToList());
                     break;
             }
             return dt;
+        }
+
+
+
+        public bool Them(LichSuChuyenKT lichsuchuyenkt)
+        {
+            try
+            {
+                if (db.LichSuChuyenKTs.Count() > 0)
+                {
+                    string ID = "MaLSChuyen";
+                    string Table = "LichSuChuyenKT";
+                    decimal MaLSChuyen = db.ExecuteQuery<decimal>("declare @Ma int " +
+                        "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                        "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                    lichsuchuyenkt.MaLSChuyen = getMaxNextIDTable(MaLSChuyen);
+                }
+                else
+                    lichsuchuyenkt.MaLSChuyen = decimal.Parse("1" + DateTime.Now.ToString("yy"));
+                lichsuchuyenkt.CreateDate = DateTime.Now;
+                lichsuchuyenkt.CreateBy = CTaiKhoan.MaUser;
+                db.LichSuChuyenKTs.InsertOnSubmit(lichsuchuyenkt);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                Refresh();
+                return false;
+            }
+        }
+
+        public bool Sua(LichSuChuyenKT lichsuchuyenkt)
+        {
+            try
+            {
+                lichsuchuyenkt.ModifyDate = DateTime.Now;
+                lichsuchuyenkt.ModifyBy = CTaiKhoan.MaUser;
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                Refresh();
+                return false;
+            }
+        }
+
+        public bool Xoa(LichSuChuyenKT lichsuchuyenkt)
+        {
+            try
+            {
+                db.LichSuChuyenKTs.DeleteOnSubmit(lichsuchuyenkt);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                Refresh();
+                return false;
+            }
+        }
+
+        public LichSuChuyenKT Get(decimal MaLSChuyenKT)
+        {
+            try
+            {
+                return db.LichSuChuyenKTs.SingleOrDefault(item => item.MaLSChuyen == MaLSChuyenKT);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
     }
 }

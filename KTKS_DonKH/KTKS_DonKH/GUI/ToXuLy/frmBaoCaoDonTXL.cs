@@ -38,6 +38,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
             {
                 DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
 
+                dr["LoaiBaoCao"] = "TỔ XỬ LÝ";
                 dr["MaDon"] = item["MaDon"];
                 dr["TenLD"] = item["TenLD"];
                 if (_cKTXM.CheckKTMXbyMaDon_TXL(decimal.Parse(item["MaDon"].ToString())))

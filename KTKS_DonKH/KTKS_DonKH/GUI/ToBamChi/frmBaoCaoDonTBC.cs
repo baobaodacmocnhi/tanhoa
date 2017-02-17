@@ -14,12 +14,13 @@ using KTKS_DonKH.DAL.KiemTraXacMinh;
 using KTKS_DonKH.DAL.BamChi;
 using KTKS_DonKH.DAL.DonTu;
 using KTKS_DonKH.BaoCao.CongVan;
+using KTKS_DonKH.DAL.ToBamChi;
 
 namespace KTKS_DonKH.GUI.ToBamChi
 {
     public partial class frmBaoCaoDonTBC : Form
     {
-        CDonTXL _cDonTXL = new CDonTXL();
+        CDonTBC _cDonTBC = new CDonTBC();
         CKTXM _cKTXM = new CKTXM();
         CBamChi _cBamChi = new CBamChi();
         CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
@@ -31,19 +32,20 @@ namespace KTKS_DonKH.GUI.ToBamChi
 
         private void btnBaoCao_Click(object sender, EventArgs e)
         {
-            DataTable dt = _cDonTXL.LoadDSDonTXLByDates(dateTu.Value, dateDen.Value);
+            DataTable dt = _cDonTBC.GetDSByCreateDate(dateTu.Value, dateDen.Value);
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
             foreach (DataRow item in dt.Rows)
             {
                 DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
 
+                dr["LoaiBaoCao"] = "TỔ BẤM CHÌ";
                 dr["MaDon"] = item["MaDon"];
                 dr["TenLD"] = item["TenLD"];
-                if (_cKTXM.CheckKTMXbyMaDon_TXL(decimal.Parse(item["MaDon"].ToString())))
+                if (_cKTXM.CheckKTMXbyMaDon_TBC(decimal.Parse(item["MaDon"].ToString())))
                     dr["DaGiaiQuyet"] = true;
                 else
-                    if (_cBamChi.CheckBamChibyMaDon_TXL(decimal.Parse(item["MaDon"].ToString())))
+                    if (_cBamChi.CheckBamChibyMaDon_TBC(decimal.Parse(item["MaDon"].ToString())))
                         dr["DaGiaiQuyet"] = true;
                     else
                         dr["DaGiaiQuyet"] = false;
@@ -83,11 +85,6 @@ namespace KTKS_DonKH.GUI.ToBamChi
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();
-        }
-
-        private void frmBaoCaoDonTXL_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

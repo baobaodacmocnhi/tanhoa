@@ -6,22 +6,16 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using KTKS_DonKH.DAL.KhachHang;
-using KTKS_DonKH.DAL.ToXuLy;
-using KTKS_DonKH.LinQ;
+using KTKS_DonKH.DAL.ToBamChi;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.ToXuLy;
 using KTKS_DonKH.GUI.BaoCao;
-using KTKS_DonKH.DAL.QuanTri;
-using KTKS_DonKH.DAL.BamChi;
 
 namespace KTKS_DonKH.GUI.ToBamChi
 {
     public partial class frmDSDonTBC : Form
     {
-        CDonTXL _cDonTXL = new CDonTXL();
-        CTaiKhoan _cTaiKhoan = new CTaiKhoan();
-        CBamChi _cBamChi = new CBamChi();
+        CDonTBC _cDonTBC = new CDonTBC();
 
         public frmDSDonTBC()
         {
@@ -87,20 +81,20 @@ namespace KTKS_DonKH.GUI.ToBamChi
             switch (cmbTimTheo.SelectedItem.ToString())
             {
                 case "Mã Đơn":
-                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL") && txtNoiDungTimKiem.Text.Trim().Length > 3)
-                        dgvDonTBC.DataSource = _cDonTXL.LoadDSDonTXLByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("TXL", "").Replace("-", "")));
+                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC") && txtNoiDungTimKiem.Text.Trim().Length > 3)
+                        dgvDonTBC.DataSource = _cDonTBC.GetDSByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("TBC", "").Replace("-", "")));
                     break;
                 case "Số Công Văn":
-                    dgvDonTBC.DataSource = _cDonTXL.LoadDSDonTXLBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper());
+                    dgvDonTBC.DataSource = _cDonTBC.GetDSBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper());
                     break;
                 case "Danh Bộ":
-                    dgvDonTBC.DataSource = _cDonTXL.LoadDSDonTXLByDanhBo(txtNoiDungTimKiem.Text.Trim().ToUpper());
+                    dgvDonTBC.DataSource = _cDonTBC.GetDSByDanhBo(txtNoiDungTimKiem.Text.Trim().ToUpper());
                     break;
                 case "Địa Chỉ":
-                    dgvDonTBC.DataSource = _cDonTXL.LoadDSDonTXLByDiaChi(txtNoiDungTimKiem.Text.Trim().ToUpper());
+                    dgvDonTBC.DataSource = _cDonTBC.GetDSByDiaChi(txtNoiDungTimKiem.Text.Trim().ToUpper());
                     break;
                 case "Ngày":
-                    dgvDonTBC.DataSource = _cDonTXL.LoadDSDonTXLByDates(dateTu.Value, dateDen.Value);
+                    dgvDonTBC.DataSource = _cDonTBC.GetDSByCreateDate(dateTu.Value, dateDen.Value);
                     break;
             }
         }
@@ -112,7 +106,8 @@ namespace KTKS_DonKH.GUI.ToBamChi
             {
                 DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
 
-                dr["MaDon"] = "TXL" + item.Cells["MaDon"].Value.ToString().Insert(item.Cells["MaDon"].Value.ToString().Length - 2, "-");
+                dr["LoaiBaoCao"] = "TỔ BẤM CHÌ";
+                dr["MaDon"] = "TBC" + item.Cells["MaDon"].Value.ToString().Insert(item.Cells["MaDon"].Value.ToString().Length - 2, "-");
                 dr["STT"] = item.Cells["STT"].Value;
                 dr["TenLD"] = item.Cells["TenLD"].Value.ToString();
                 dr["SoCongVan"] = item.Cells["SoCongVan"].Value.ToString();

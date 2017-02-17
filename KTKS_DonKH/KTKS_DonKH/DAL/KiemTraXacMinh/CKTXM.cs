@@ -205,6 +205,22 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
+        public bool CheckKTMXbyMaDon_TBC(decimal MaDonTBC)
+        {
+            try
+            {
+                if (db.KTXMs.Any(itemKTXM => itemKTXM.MaDonTBC == MaDonTBC))
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         /// <summary>
         /// Lấy KTXM bằng MaDon
         /// </summary>
@@ -233,6 +249,19 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             try
             {
                 return db.KTXMs.SingleOrDefault(itemKTXM => itemKTXM.MaDonTXL == MaDonTXL);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public KTXM getKTXMbyMaDon_TBC(decimal MaDonTBC)
+        {
+            try
+            {
+                return db.KTXMs.SingleOrDefault(itemKTXM => itemKTXM.MaDonTBC == MaDonTBC);
             }
             catch (Exception ex)
             {
@@ -1154,6 +1183,35 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
+        public DataTable LoadDSCTKTXM_TBC(decimal MaDonTBC, int MaUser)
+        {
+            try
+            {
+                var query = from itemCTKTXM in db.CTKTXMs
+                            join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                            where itemCTKTXM.KTXM.MaDonTBC == MaDonTBC && itemCTKTXM.CreateBy == MaUser
+                            orderby itemCTKTXM.KTXM.MaDonTBC ascending
+                            select new
+                            {
+                                itemCTKTXM.MaCTKTXM,
+                                itemCTKTXM.KTXM.ToXuLy,
+                                MaDon = itemCTKTXM.KTXM.MaDonTBC,
+                                itemCTKTXM.DanhBo,
+                                itemCTKTXM.HoTen,
+                                itemCTKTXM.DiaChi,
+                                itemCTKTXM.NoiDungKiemTra,
+                                itemCTKTXM.CreateDate,
+                                CreateBy = itemUser.HoTen,
+                            };
+                return LINQToDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         /// <summary>
         /// Lấy Danh Sách CTKTXM theo Ngày Xử Lý & User. Hàm này phục vụ cho Thống Kê Biên Bản KTXM
         /// </summary>
@@ -1507,7 +1565,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
-        public bool XoaCTKTXM(CTKTXM ctktxm, int MaU)
+        public bool XoaCTKTXM(CTKTXM ctktxm)
         {
             try
             {
@@ -1597,6 +1655,19 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             try
             {
                 return db.CTKTXMs.Any(itemCTKTXM => itemCTKTXM.KTXM.MaDonTXL == MaDonTXL && itemCTKTXM.DanhBo == DanhBo && itemCTKTXM.NgayKTXM == NgayKTXM);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool CheckCTKTXMbyMaDonDanhBo_TBC(decimal MaDonTBC, string DanhBo, DateTime NgayKTXM)
+        {
+            try
+            {
+                return db.CTKTXMs.Any(itemCTKTXM => itemCTKTXM.KTXM.MaDonTBC == MaDonTBC && itemCTKTXM.DanhBo == DanhBo && itemCTKTXM.NgayKTXM == NgayKTXM);
             }
             catch (Exception ex)
             {

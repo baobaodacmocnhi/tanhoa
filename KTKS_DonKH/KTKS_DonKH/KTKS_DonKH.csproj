@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>471</ApplicationRevision>
+    <ApplicationRevision>473</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -670,6 +670,12 @@
     <Compile Include="GUI\CatHuyDanhBo\frmNoiDungXuLyCHDB.Designer.cs">
       <DependentUpon>frmNoiDungXuLyCHDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\KhachHang\frmShowDonKH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\KhachHang\frmShowDonKH.Designer.cs">
+      <DependentUpon>frmShowDonKH.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\KhachHang\frmToTrinhDCHD.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -898,12 +904,6 @@
     <Compile Include="GUI\KhachHang\frmDSDonKH.Designer.cs">
       <DependentUpon>frmDSDonKH.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\KhachHang\frmShowDonKH.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\KhachHang\frmShowDonKH.Designer.cs">
-      <DependentUpon>frmShowDonKH.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\KhachHang\frmShowNhanDonDienThoai.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -933,12 +933,6 @@
     </Compile>
     <Compile Include="GUI\KiemTraXacMinh\frmKTXM.Designer.cs">
       <DependentUpon>frmKTXM.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\KiemTraXacMinh\frmShowKTXM.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\KiemTraXacMinh\frmShowKTXM.Designer.cs">
-      <DependentUpon>frmShowKTXM.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Loading\frmLoading.cs">
       <SubType>Form</SubType>
@@ -1424,6 +1418,9 @@
     <EmbeddedResource Include="GUI\CatHuyDanhBo\frmNoiDungXuLyCHDB.resx">
       <DependentUpon>frmNoiDungXuLyCHDB.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\KhachHang\frmShowDonKH.resx">
+      <DependentUpon>frmShowDonKH.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\KhachHang\frmToTrinhDCHD.resx">
       <DependentUpon>frmToTrinhDCHD.cs</DependentUpon>
     </EmbeddedResource>
@@ -1538,9 +1535,6 @@
     <EmbeddedResource Include="GUI\KhachHang\frmDSDonKH.resx">
       <DependentUpon>frmDSDonKH.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\KhachHang\frmShowDonKH.resx">
-      <DependentUpon>frmShowDonKH.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GUI\KhachHang\frmShowNhanDonDienThoai.resx">
       <DependentUpon>frmShowNhanDonDienThoai.cs</DependentUpon>
     </EmbeddedResource>
@@ -1558,9 +1552,6 @@
     </None>
     <EmbeddedResource Include="GUI\KiemTraXacMinh\frmKTXM.resx">
       <DependentUpon>frmKTXM.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\KiemTraXacMinh\frmShowKTXM.resx">
-      <DependentUpon>frmShowKTXM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Loading\frmLoading.resx">
       <DependentUpon>frmLoading.cs</DependentUpon>

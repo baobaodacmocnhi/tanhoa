@@ -517,6 +517,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
             {
                 DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
 
+                dr["LoaiBaoCao"] = "TỔ XỬ LÝ";
                 dr["MaDon"] = "TXL" + item.Cells["MaDon"].Value.ToString().Insert(item.Cells["MaDon"].Value.ToString().Length - 2, "-");
                 dr["STT"] = item.Cells["STT"].Value;
                 dr["TenLD"] = item.Cells["TenLD"].Value.ToString();

@@ -31,6 +31,7 @@ namespace KTKS_DonKH.GUI.KhachHang
         string Ky = "";
         string Nam = "";
         string MLT = "";
+        //decimal _MaDon = 0;
 
         public frmNhanDonKH()
         {
@@ -652,34 +653,6 @@ namespace KTKS_DonKH.GUI.KhachHang
 
                     txtDinhMucSau.Text = _donkh.DinhMucSau;
                     txtHieuLucTuKy.Text = _donkh.HieuLucTuKy;
-                    ///
-                    //dgvLichSuChuyenKT.DataSource = _cDonTXL.LoadDSLichSuChuyenKTbyMaDonTKH(_donkh.MaDon);
-                    ///
-                    //if (_donkh.ChuyenKT)
-                    //{
-                    //    chkChuyenKT.Checked = true;
-                    //    dateChuyenKT.Value = _donkh.NgayChuyenKT.Value;
-                    //    cmbNguoiDi.SelectedValue = _donkh.NguoiDi;
-                    //    txtGhiChuChuyenKT.Text = _donkh.GhiChuChuyenKT;
-                    //}
-                    //if (_donkh.ChuyenBanDoiKhac)
-                    //{
-                    //    chkChuyenBanDoiKhac.Checked = true;
-                    //    dateChuyenBanDoiKhac.Value = _donkh.NgayChuyenBanDoiKhac.Value;
-                    //    txtGhiChuChuyenBanDoiKhac.Text = _donkh.GhiChuChuyenBanDoiKhac;
-                    //}
-                    //if (_donkh.ChuyenToXuLy)
-                    //{
-                    //    chkChuyenToXuLy.Checked = true;
-                    //    dateChuyenToXuLy.Value = _donkh.NgayChuyenToXuLy.Value;
-                    //    txtGhiChuChuyenToXuLy.Text = _donkh.GhiChuChuyenToXuLy;
-                    //}
-                    //if (_donkh.ChuyenKhac)
-                    //{
-                    //    chkChuyenKhac.Checked = true;
-                    //    dateChuyenKhac.Value = _donkh.NgayChuyenKhac.Value;
-                    //    txtGhiChuChuyenKhac.Text = _donkh.GhiChuChuyenKhac;
-                    //}
                 }
                 else
                 {

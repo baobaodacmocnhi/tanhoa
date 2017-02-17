@@ -12,6 +12,7 @@ using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.DAL;
 using KTKS_DonKH.DAL.BamChi;
 using KTKS_DonKH.DAL.QuanTri;
+using KTKS_DonKH.DAL.ToBamChi;
 
 namespace KTKS_DonKH.GUI.BamChi
 {
@@ -20,10 +21,12 @@ namespace KTKS_DonKH.GUI.BamChi
         string _mnu = "mnuNhapKQBamChi";
         DonKH _donkh = null;
         DonTXL _dontxl = null;
+        DonTBC _dontbc = null;
         HOADON _hoadon = null;
         CTBamChi _ctbamchi = null;
         CDonKH _cDonKH = new CDonKH();
         CDonTXL _cDonTXL = new CDonTXL();
+        CDonTBC _cDonTBC = new CDonTBC();
         CThuTien _cThuTien = new CThuTien();
         CBamChi _cBamChi = new CBamChi();
         CDocSo _cDocSo = new CDocSo();
@@ -40,6 +43,33 @@ namespace KTKS_DonKH.GUI.BamChi
         {
             _MaCTBamChi = MaCTBamChi;
             InitializeComponent();
+        }
+
+        private void frmNhapBamChi_Load(object sender, EventArgs e)
+        {
+            dgvDSNhapBamChi.AutoGenerateColumns = false;
+
+            cmbTrangThaiBC.DataSource = _cTrangThaiBamChi.LoadDSTrangThaiBamChi();
+            cmbTrangThaiBC.DisplayMember = "TenTTBC";
+            cmbTrangThaiBC.ValueMember = "TenTTBC";
+            cmbTrangThaiBC.SelectedIndex = -1;
+            _flagFirst = false;
+
+            txtMaSoBC.Text = CTaiKhoan.MaKiemBamChi;
+
+            if (_MaCTBamChi != 0)
+            {
+                _ctbamchi = _cBamChi.getCTBamChibyID(_MaCTBamChi);
+                if (_ctbamchi.BamChi.MaDon != null)
+                    txtMaDon.Text = _ctbamchi.BamChi.MaDon.ToString().Insert(_ctbamchi.BamChi.MaDon.ToString().Length - 2, "-");
+                else
+                    if (_ctbamchi.BamChi.MaDonTXL != null)
+                        txtMaDon.Text = "TXL" + _ctbamchi.BamChi.MaDonTXL.ToString().Insert(_ctbamchi.BamChi.MaDonTXL.ToString().Length - 2, "-");
+                    else
+                        if (_ctbamchi.BamChi.MaDonTBC != null)
+                            txtMaDon.Text = "TBC" + _ctbamchi.BamChi.MaDonTBC.ToString().Insert(_ctbamchi.BamChi.MaDonTBC.ToString().Length - 2, "-");
+                LoadCTBamChi(_ctbamchi);
+            }
         }
 
         public void LoadTTKH(HOADON hoadon)
@@ -115,6 +145,7 @@ namespace KTKS_DonKH.GUI.BamChi
             _MaCTBamChi = 0;
             _donkh = null;
             _dontxl = null;
+            _dontbc = null;
             _hoadon = null;
             dgvDSNhapBamChi.DataSource = null;
         }
@@ -150,31 +181,9 @@ namespace KTKS_DonKH.GUI.BamChi
             _MaCTBamChi = 0;
             _donkh = null;
             _dontxl = null;
+            _dontbc = null;
             _hoadon = null;
             dgvDSNhapBamChi.DataSource = null;
-        }
-
-        private void frmNhapBamChi_Load(object sender, EventArgs e)
-        {
-            dgvDSNhapBamChi.AutoGenerateColumns = false;
-
-            cmbTrangThaiBC.DataSource = _cTrangThaiBamChi.LoadDSTrangThaiBamChi();
-            cmbTrangThaiBC.DisplayMember = "TenTTBC";
-            cmbTrangThaiBC.ValueMember = "TenTTBC";
-            cmbTrangThaiBC.SelectedIndex = -1;
-            _flagFirst = false;
-
-            txtMaSoBC.Text = CTaiKhoan.MaKiemBamChi;
-
-            if (_MaCTBamChi != 0)
-            {
-                _ctbamchi = _cBamChi.getCTBamChibyID(_MaCTBamChi);
-                if (_ctbamchi.BamChi.ToXuLy == true)
-                    txtMaDon.Text = "TXL" + _ctbamchi.BamChi.MaDonTXL.ToString().Insert(_ctbamchi.BamChi.MaDonTXL.ToString().Length - 2, "-");
-                else
-                    txtMaDon.Text = _ctbamchi.BamChi.MaDon.ToString().Insert(_ctbamchi.BamChi.MaDon.ToString().Length - 2, "-");
-                LoadCTBamChi(_ctbamchi);
-            }
         }
 
         private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
@@ -187,7 +196,7 @@ namespace KTKS_DonKH.GUI.BamChi
                 ///Đơn Tổ Xử Lý
                 if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
                 {
-                    if (CTaiKhoan.ToXL==true&&_cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", ""))) != null)
+                    if (CTaiKhoan.ToXL == true && _cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", ""))) != null)
                     {
                         _dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
                         txtMaDon.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
@@ -198,8 +207,6 @@ namespace KTKS_DonKH.GUI.BamChi
                         {
                             _hoadon = _cThuTien.GetMoiNhat(_dontxl.DanhBo);
                             LoadTTKH(_hoadon);
-                            //cmbChiMatSo.SelectedIndex = 0;
-                            //cmbChiKhoaGoc.SelectedIndex = 0;
                         }
                         else
                             MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -207,6 +214,28 @@ namespace KTKS_DonKH.GUI.BamChi
                     else
                         MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                else
+                    ///Đơn Tổ Bấm Chì
+                    if (txtMaDon.Text.Trim().ToUpper().Contains("TBC"))
+                    {
+                        if (CTaiKhoan.ToBC == true && _cDonTBC.Get(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", ""))) != null)
+                        {
+                            _dontbc = _cDonTBC.Get(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
+                            txtMaDon.Text = "TBC" + _dontbc.MaDon.ToString().Insert(_dontbc.MaDon.ToString().Length - 2, "-");
+
+                            dgvDSNhapBamChi.DataSource = _cBamChi.LoadDSCTBamChi_TBC(_dontbc.MaDon, CTaiKhoan.MaUser);
+
+                            if (_cThuTien.GetMoiNhat(_dontbc.DanhBo) != null)
+                            {
+                                _hoadon = _cThuTien.GetMoiNhat(_dontbc.DanhBo);
+                                LoadTTKH(_hoadon);
+                            }
+                            else
+                                MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                            MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 ///Đơn Tổ Khách Hàng
                 else
                     if (CTaiKhoan.ToKH == true && _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", ""))) != null)
@@ -220,8 +249,6 @@ namespace KTKS_DonKH.GUI.BamChi
                         {
                             _hoadon = _cThuTien.GetMoiNhat(_donkh.DanhBo);
                             LoadTTKH(_hoadon);
-                            //cmbChiMatSo.SelectedIndex = 0;
-                            //cmbChiKhoaGoc.SelectedIndex = 0;
                         }
                         else
                             MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -239,8 +266,6 @@ namespace KTKS_DonKH.GUI.BamChi
                 {
                     _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
                     LoadTTKH(_hoadon);
-                    //cmbChiMatSo.SelectedIndex = 0;
-                    //cmbChiKhoaGoc.SelectedIndex = 0;
                 }
                 else
                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -346,91 +371,179 @@ namespace KTKS_DonKH.GUI.BamChi
                         else
                             MessageBox.Show("Đơn này không hợp lệ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    ///Nếu đơn thuộc Tổ Khách Hàng
                     else
-                        if (_donkh != null && txtHoTen.Text.Trim() != "" && txtDiaChi.Text.Trim() != "" && txtTheoYeuCau.Text.Trim() != "")
+                        ///Nếu đơn thuộc Tổ Bấm Chì
+                        if (txtMaDon.Text.Trim().ToUpper().Contains("TBC"))
                         {
-                            if (!_cBamChi.CheckBamChibyMaDon(_donkh.MaDon))
+                            if (_dontbc != null && txtHoTen.Text.Trim() != "" && txtDiaChi.Text.Trim() != "" && txtTheoYeuCau.Text.Trim() != "")
                             {
-                                LinQ.BamChi bamchi = new LinQ.BamChi();
-                                bamchi.MaDon = _donkh.MaDon;
-
-                                if (_cBamChi.ThemBamChi(bamchi))
+                                if (!_cBamChi.CheckBamChibyMaDon_TBC(_dontbc.MaDon))
                                 {
-                                    _donkh.DaGiaiQuyet = true;
+                                    LinQ.BamChi bamchi = new LinQ.BamChi();
+                                    bamchi.MaDonTBC = _dontbc.MaDon;
+
+                                    if (_cBamChi.ThemBamChi(bamchi))
+                                    {
+                                        _dontbc.GiaiQuyet = true;
+                                    }
+                                }
+                                if (txtDanhBo.Text.Trim() != "" && _cBamChi.CheckCTBamChibyMaDonDanhBo_TBC(_dontbc.MaDon, txtDanhBo.Text.Trim(), dateBamChi.Value))
+                                {
+                                    MessageBox.Show("Danh Bộ này đã được Lập Bấm Chì", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                                CTBamChi ctbamchi = new CTBamChi();
+                                ctbamchi.MaBC = _cBamChi.getBamChibyMaDon_TBC(_dontbc.MaDon).MaBC;
+                                ctbamchi.DanhBo = txtDanhBo.Text.Trim();
+                                ctbamchi.HopDong = txtHopDong.Text.Trim();
+                                ctbamchi.HoTen = txtHoTen.Text.Trim().ToUpper();
+                                ctbamchi.DiaChi = txtDiaChi.Text.Trim().ToUpper();
+                                if (!string.IsNullOrEmpty(txtGiaBieu.Text.Trim()))
+                                    ctbamchi.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
+                                if (!string.IsNullOrEmpty(txtDinhMuc.Text.Trim()))
+                                    ctbamchi.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
+                                if (_hoadon != null)
+                                {
+                                    ctbamchi.Dot = _hoadon.DOT.ToString();
+                                    ctbamchi.Ky = _hoadon.KY.ToString();
+                                    ctbamchi.Nam = _hoadon.NAM.ToString();
+                                }
+                                ///
+                                ctbamchi.NgayBC = dateBamChi.Value;
+
+                                if (cmbHienTrangKiemTra.SelectedItem != null)
+                                    ctbamchi.HienTrangKiemTra = cmbHienTrangKiemTra.SelectedItem.ToString();
+
+                                ctbamchi.Hieu = txtHieu.Text.Trim();
+
+                                if (!string.IsNullOrEmpty(txtCo.Text.Trim()))
+                                    ctbamchi.Co = int.Parse(txtCo.Text.Trim());
+
+                                ctbamchi.SoThan = txtSoThan.Text.Trim();
+
+                                if (!string.IsNullOrEmpty(txtChiSo.Text.Trim()))
+                                    ctbamchi.ChiSo = int.Parse(txtChiSo.Text.Trim());
+
+                                if (cmbTinhTrangChiSo.SelectedItem != null)
+                                    ctbamchi.TinhTrangChiSo = cmbTinhTrangChiSo.SelectedItem.ToString();
+
+                                if (cmbChiMatSo.SelectedItem != null)
+                                    ctbamchi.ChiMatSo = cmbChiMatSo.SelectedItem.ToString();
+
+                                if (cmbChiKhoaGoc.SelectedItem != null)
+                                    ctbamchi.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
+
+                                ctbamchi.MucDichSuDung = txtMucDichSuDung.Text.Trim();
+
+                                if (cmbTrangThaiBC.SelectedValue != null)
+                                    ctbamchi.TrangThaiBC = cmbTrangThaiBC.SelectedValue.ToString();
+
+                                ctbamchi.GhiChu = txtGhiChu.Text.Trim();
+                                ctbamchi.MaSoBC = txtMaSoBC.Text.Trim();
+
+                                if (!string.IsNullOrEmpty(txtVienChi.Text.Trim()))
+                                    ctbamchi.VienChi = int.Parse(txtVienChi.Text.Trim());
+
+                                if (!string.IsNullOrEmpty(txtDayChi.Text.Trim()))
+                                    ctbamchi.DayChi = double.Parse(txtDayChi.Text.Trim());
+
+                                ctbamchi.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
+
+                                if (_cBamChi.ThemCTBamChi(ctbamchi))
+                                {
+                                    Clear();
+                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    txtMaDon.Focus();
                                 }
                             }
-                            if (_cBamChi.CheckCTBamChibyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim(), dateBamChi.Value))
-                            {
-                                MessageBox.Show("Danh Bộ này đã được Lập Bấm Chì", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
-                            CTBamChi ctbamchi = new CTBamChi();
-                            ctbamchi.MaBC = _cBamChi.getBamChibyMaDon(_donkh.MaDon).MaBC;
-                            ctbamchi.DanhBo = txtDanhBo.Text.Trim();
-                            ctbamchi.HopDong = txtHopDong.Text.Trim();
-                            ctbamchi.HoTen = txtHoTen.Text.Trim().ToUpper();
-                            ctbamchi.DiaChi = txtDiaChi.Text.Trim().ToUpper();
-                            if (!string.IsNullOrEmpty(txtGiaBieu.Text.Trim()))
-                                ctbamchi.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
-                            if (!string.IsNullOrEmpty(txtDinhMuc.Text.Trim()))
-                                ctbamchi.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
-                            if (_hoadon != null)
-                            {
-                                ctbamchi.Dot = _hoadon.DOT.ToString();
-                                ctbamchi.Ky = _hoadon.KY.ToString();
-                                ctbamchi.Nam = _hoadon.NAM.ToString();
-                            }
-                            ///
-                            ctbamchi.NgayBC = dateBamChi.Value;
-
-                            if (cmbHienTrangKiemTra.SelectedItem != null)
-                                ctbamchi.HienTrangKiemTra = cmbHienTrangKiemTra.SelectedItem.ToString();
-
-                            ctbamchi.Hieu = txtHieu.Text.Trim();
-
-                            if (!string.IsNullOrEmpty(txtCo.Text.Trim()))
-                                ctbamchi.Co = int.Parse(txtCo.Text.Trim());
-
-                            ctbamchi.SoThan = txtSoThan.Text.Trim();
-
-                            if (!string.IsNullOrEmpty(txtChiSo.Text.Trim()))
-                                ctbamchi.ChiSo = int.Parse(txtChiSo.Text.Trim());
-
-                            if (cmbTinhTrangChiSo.SelectedItem != null)
-                                ctbamchi.TinhTrangChiSo = cmbTinhTrangChiSo.SelectedItem.ToString();
-
-                            if (cmbChiMatSo.SelectedItem != null)
-                                ctbamchi.ChiMatSo = cmbChiMatSo.SelectedItem.ToString();
-
-                            if (cmbChiKhoaGoc.SelectedItem != null)
-                                ctbamchi.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
-
-                            ctbamchi.MucDichSuDung = txtMucDichSuDung.Text.Trim();
-
-                            if (cmbTrangThaiBC.SelectedValue != null)
-                                ctbamchi.TrangThaiBC = cmbTrangThaiBC.SelectedValue.ToString();
-
-                            ctbamchi.GhiChu = txtGhiChu.Text.Trim();
-                            ctbamchi.MaSoBC = txtMaSoBC.Text.Trim();
-
-                            if (!string.IsNullOrEmpty(txtVienChi.Text.Trim()))
-                                ctbamchi.VienChi = int.Parse(txtVienChi.Text.Trim());
-
-                            if (!string.IsNullOrEmpty(txtDayChi.Text.Trim()))
-                                ctbamchi.DayChi = double.Parse(txtDayChi.Text.Trim(), System.Globalization.NumberStyles.Float);
-
-                            ctbamchi.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
-
-                            if (_cBamChi.ThemCTBamChi(ctbamchi))
-                            {
-                                Clear();
-                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                txtMaDon.Focus();
-                            }
+                            else
+                                MessageBox.Show("Đơn này không hợp lệ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
+                        ///Nếu đơn thuộc Tổ Khách Hàng
                         else
-                            MessageBox.Show("Đơn này không hợp lệ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            if (_donkh != null && txtHoTen.Text.Trim() != "" && txtDiaChi.Text.Trim() != "" && txtTheoYeuCau.Text.Trim() != "")
+                            {
+                                if (!_cBamChi.CheckBamChibyMaDon(_donkh.MaDon))
+                                {
+                                    LinQ.BamChi bamchi = new LinQ.BamChi();
+                                    bamchi.MaDon = _donkh.MaDon;
+
+                                    if (_cBamChi.ThemBamChi(bamchi))
+                                    {
+                                        _donkh.DaGiaiQuyet = true;
+                                    }
+                                }
+                                if (_cBamChi.CheckCTBamChibyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim(), dateBamChi.Value))
+                                {
+                                    MessageBox.Show("Danh Bộ này đã được Lập Bấm Chì", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                                CTBamChi ctbamchi = new CTBamChi();
+                                ctbamchi.MaBC = _cBamChi.getBamChibyMaDon(_donkh.MaDon).MaBC;
+                                ctbamchi.DanhBo = txtDanhBo.Text.Trim();
+                                ctbamchi.HopDong = txtHopDong.Text.Trim();
+                                ctbamchi.HoTen = txtHoTen.Text.Trim().ToUpper();
+                                ctbamchi.DiaChi = txtDiaChi.Text.Trim().ToUpper();
+                                if (!string.IsNullOrEmpty(txtGiaBieu.Text.Trim()))
+                                    ctbamchi.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
+                                if (!string.IsNullOrEmpty(txtDinhMuc.Text.Trim()))
+                                    ctbamchi.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
+                                if (_hoadon != null)
+                                {
+                                    ctbamchi.Dot = _hoadon.DOT.ToString();
+                                    ctbamchi.Ky = _hoadon.KY.ToString();
+                                    ctbamchi.Nam = _hoadon.NAM.ToString();
+                                }
+                                ///
+                                ctbamchi.NgayBC = dateBamChi.Value;
+
+                                if (cmbHienTrangKiemTra.SelectedItem != null)
+                                    ctbamchi.HienTrangKiemTra = cmbHienTrangKiemTra.SelectedItem.ToString();
+
+                                ctbamchi.Hieu = txtHieu.Text.Trim();
+
+                                if (!string.IsNullOrEmpty(txtCo.Text.Trim()))
+                                    ctbamchi.Co = int.Parse(txtCo.Text.Trim());
+
+                                ctbamchi.SoThan = txtSoThan.Text.Trim();
+
+                                if (!string.IsNullOrEmpty(txtChiSo.Text.Trim()))
+                                    ctbamchi.ChiSo = int.Parse(txtChiSo.Text.Trim());
+
+                                if (cmbTinhTrangChiSo.SelectedItem != null)
+                                    ctbamchi.TinhTrangChiSo = cmbTinhTrangChiSo.SelectedItem.ToString();
+
+                                if (cmbChiMatSo.SelectedItem != null)
+                                    ctbamchi.ChiMatSo = cmbChiMatSo.SelectedItem.ToString();
+
+                                if (cmbChiKhoaGoc.SelectedItem != null)
+                                    ctbamchi.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
+
+                                ctbamchi.MucDichSuDung = txtMucDichSuDung.Text.Trim();
+
+                                if (cmbTrangThaiBC.SelectedValue != null)
+                                    ctbamchi.TrangThaiBC = cmbTrangThaiBC.SelectedValue.ToString();
+
+                                ctbamchi.GhiChu = txtGhiChu.Text.Trim();
+                                ctbamchi.MaSoBC = txtMaSoBC.Text.Trim();
+
+                                if (!string.IsNullOrEmpty(txtVienChi.Text.Trim()))
+                                    ctbamchi.VienChi = int.Parse(txtVienChi.Text.Trim());
+
+                                if (!string.IsNullOrEmpty(txtDayChi.Text.Trim()))
+                                    ctbamchi.DayChi = double.Parse(txtDayChi.Text.Trim(), System.Globalization.NumberStyles.Float);
+
+                                ctbamchi.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
+
+                                if (_cBamChi.ThemCTBamChi(ctbamchi))
+                                {
+                                    Clear();
+                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    txtMaDon.Focus();
+                                }
+                            }
+                            else
+                                MessageBox.Show("Đơn này không hợp lệ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (Exception ex)
                 {
@@ -447,7 +560,7 @@ namespace KTKS_DonKH.GUI.BamChi
             {
                 try
                 {
-                    if (_ctbamchi!=null)
+                    if (_ctbamchi != null)
                     {
                         if ((txtDanhBo.Text.Trim().Length > 0 && txtDanhBo.Text.Trim().Length < 11) || txtDanhBo.Text.Trim().Length > 11)
                         {
@@ -509,34 +622,12 @@ namespace KTKS_DonKH.GUI.BamChi
 
                         _ctbamchi.TheoYeuCau = txtTheoYeuCau.Text.Trim();
 
-                        /////Nếu Đơn thuộc Tổ Xử Lý
-                        //if (_ctbamchi.BamChi.ToXuLy)
-                        //{
-                        //    if (_dontxl != null && txtHoTen.Text.Trim() != "" && txtDiaChi.Text.Trim() != "" && txtTheoYeuCau.Text.Trim() != "")
-                        //    {
-                        //        if (_cBamChi.SuaCTBamChi(_ctbamchi))
-                        //        {
-                        //            Clear();
-                        //            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        //            txtMaDon.Focus();
-                        //        }
-                        //    }
-                        //    else
-                        //        MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //}
-                        //else
-                        //    ///Nếu Đơn thuộc Tổ Khách Hàng
-                        //    if (_donkh != null && txtHoTen.Text.Trim() != "" && txtDiaChi.Text.Trim() != "" && txtTheoYeuCau.Text.Trim() != "")
-                        //    {
-                                if (_cBamChi.SuaCTBamChi(_ctbamchi))
-                                {
-                                    Clear2();
-                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    txtMaDon.Focus();
-                                }
-                            //}
-                            //else
-                            //    MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (_cBamChi.SuaCTBamChi(_ctbamchi))
+                        {
+                            Clear2();
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtMaDon.Focus();
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -599,30 +690,6 @@ namespace KTKS_DonKH.GUI.BamChi
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
-        }
-
-        private void txtVienChi_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
-                e.Handled = true;
-        }
-
-        private void txtDayChi_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar) && e.KeyChar != Char.Parse("."))
-                e.Handled = true;
-        }
-
-        private void txtCo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
-                e.Handled = true;
-        }
-
-        private void txtChiSo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
-                e.Handled = true;
         }
 
         private void cmbTrangThai_SelectedIndexChanged(object sender, EventArgs e)

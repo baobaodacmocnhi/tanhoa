@@ -150,16 +150,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             if (dgvDSCTKTXM.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
             {
-                frmShowKTXM frm = new frmShowKTXM(decimal.Parse(dgvDSCTKTXM["MaCTKTXM", dgvDSCTKTXM.CurrentRow.Index].Value.ToString()));
+                frmKTXM frm = new frmKTXM(decimal.Parse(dgvDSCTKTXM["MaCTKTXM", dgvDSCTKTXM.CurrentRow.Index].Value.ToString()));
                 frm.ShowDialog();
-                //if (frm.ShowDialog() == DialogResult.OK)
-                //{
-                //    if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
-                //        DSDon_BS.DataSource = _cKTXM.LoadDSCTKTXM();
-                //    else
-                //        DSDon_BS.DataSource = _cKTXM.LoadDSCTKTXM(CTaiKhoan.MaUser);
-                //}
-
             }
         }
 

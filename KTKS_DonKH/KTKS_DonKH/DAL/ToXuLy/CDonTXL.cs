@@ -1193,71 +1193,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
 
         #region LichSuChuyenKT
 
-        public bool ThemLichSuChuyenKT(LichSuChuyenKT lichsuchuyenkt)
-        {
-            try
-            {
-                    if (db.LichSuChuyenKTs.Count() > 0)
-                    {
-                        string ID = "MaLSChuyen";
-                        string Table = "LichSuChuyenKT";
-                        decimal MaLSChuyen = db.ExecuteQuery<decimal>("declare @Ma int " +
-                            "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
-                            "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
-                        //decimal MaLSChuyenKT = db.LichSuChuyenKTs.Max(itemLSCKT => itemLSCKT.MaLSChuyenKT);
-                        lichsuchuyenkt.MaLSChuyen = getMaxNextIDTable(MaLSChuyen);
-                    }
-                    else
-                        lichsuchuyenkt.MaLSChuyen = decimal.Parse("1" + DateTime.Now.ToString("yy"));
-                    lichsuchuyenkt.CreateDate = DateTime.Now;
-                    lichsuchuyenkt.CreateBy = CTaiKhoan.MaUser;
-                    db.LichSuChuyenKTs.InsertOnSubmit(lichsuchuyenkt);
-                    db.SubmitChanges();
-                    //MessageBox.Show("Thành công Thêm TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
-            }
-            catch (Exception ex)
-            {
-                db = new dbKinhDoanhDataContext();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
-
-        public bool SuaLichSuChuyenKT(LichSuChuyenKT lichsuchuyenkt)
-        {
-            try
-            {
-                    lichsuchuyenkt.ModifyDate = DateTime.Now;
-                    lichsuchuyenkt.ModifyBy = CTaiKhoan.MaUser;
-                    db.SubmitChanges();
-                    //MessageBox.Show("Thành công Sửa TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
-            }
-        }
-
-        public bool XoaLichSuChuyenKT(LichSuChuyenKT lichsuchuyenkt)
-        {
-            try
-            {
-                    db.LichSuChuyenKTs.DeleteOnSubmit(lichsuchuyenkt);
-                    db.SubmitChanges();
-                    //MessageBox.Show("Thành công Sửa TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
-            }
-        }
+        
 
         /// <summary>
         /// Lấy Danh Sách Chuyển Kiểm Tra theo Mã Đơn TXL
@@ -1372,18 +1308,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                 return db.CTBamChis.Any(itemCTBamChi => itemCTBamChi.BamChi.MaDon == MaDon && itemCTBamChi.CreateBy == MaU);
         }
 
-        public LichSuChuyenKT getLichSuChuyenKTbyID(decimal MaLSChuyenKT)
-        {
-            try
-            {
-                return db.LichSuChuyenKTs.SingleOrDefault(itemLSCKT => itemLSCKT.MaLSChuyen == MaLSChuyenKT);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
+        
 
         public string GetNVKiemTraDonKHbyMaDon(decimal MaDon)
         {

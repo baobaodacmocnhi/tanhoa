@@ -184,7 +184,7 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thống Kê";
             // 
-            // frmBaoCaoDonTXL
+            // frmBaoCaoDonTBC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -194,9 +194,8 @@
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmBaoCaoDonTXL";
-            this.Text = "Báo Cáo Đơn Tổ Xử Lý";
-            this.Load += new System.EventHandler(this.frmBaoCaoDonTXL_Load);
+            this.Name = "frmBaoCaoDonTBC";
+            this.Text = "Báo Cáo Đơn Tổ Bấm Chì";
             this.panel_KhoangThoiGian.ResumeLayout(false);
             this.panel_KhoangThoiGian.PerformLayout();
             this.groupBox1.ResumeLayout(false);

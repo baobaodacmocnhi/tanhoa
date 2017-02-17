@@ -135,6 +135,22 @@ namespace KTKS_DonKH.DAL.BamChi
             }
         }
 
+        public bool CheckBamChibyMaDon_TBC(decimal MaDonTBC)
+        {
+            try
+            {
+                if (db.BamChis.Any(itemBamChi => itemBamChi.MaDonTBC == MaDonTBC))
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         /// <summary>
         /// Lấy BamChi bằng MaDon
         /// </summary>
@@ -163,6 +179,19 @@ namespace KTKS_DonKH.DAL.BamChi
             try
             {
                 return db.BamChis.FirstOrDefault(itemBamChi => itemBamChi.MaDonTXL == MaDonTXL);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public LinQ.BamChi getBamChibyMaDon_TBC(decimal MaDonTBC)
+        {
+            try
+            {
+                return db.BamChis.FirstOrDefault(itemBamChi => itemBamChi.MaDonTBC == MaDonTBC);
             }
             catch (Exception ex)
             {
@@ -353,6 +382,34 @@ namespace KTKS_DonKH.DAL.BamChi
             }
         }
 
+        public DataTable LoadDSCTBamChi_TBC(decimal MaDonTBC, int MaUser)
+        {
+            try
+            {
+                var query = from itemCTBamChi in db.CTBamChis
+                            join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                            where itemCTBamChi.BamChi.MaDonTBC == MaDonTBC && itemCTBamChi.CreateBy == MaUser
+                            orderby itemCTBamChi.BamChi.MaDonTBC ascending
+                            select new
+                            {
+                                itemCTBamChi.MaCTBC,
+                                itemCTBamChi.BamChi.ToXuLy,
+                                MaDon = itemCTBamChi.BamChi.MaDonTBC,
+                                itemCTBamChi.DanhBo,
+                                itemCTBamChi.HoTen,
+                                itemCTBamChi.DiaChi,
+                                itemCTBamChi.CreateDate,
+                                CreateBy = itemUser.HoTen,
+                            };
+                return LINQToDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         /// <summary>
         /// Lấy Danh Sách CTBamChi theo Mã Đơn Tổ Xử Lý & Danh Bộ. Dùng cho hiện thị Đóng Nước
         /// </summary>
@@ -414,6 +471,19 @@ namespace KTKS_DonKH.DAL.BamChi
             try
             {
                 return db.CTBamChis.Any(itemCTBamChi => itemCTBamChi.BamChi.MaDonTXL == MaDonTXL && itemCTBamChi.DanhBo == DanhBo && itemCTBamChi.NgayBC == NgayBC);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool CheckCTBamChibyMaDonDanhBo_TBC(decimal MaDonTBC, string DanhBo, DateTime NgayBC)
+        {
+            try
+            {
+                return db.CTBamChis.Any(itemCTBamChi => itemCTBamChi.BamChi.MaDonTBC == MaDonTBC && itemCTBamChi.DanhBo == DanhBo && itemCTBamChi.NgayBC == NgayBC);
             }
             catch (Exception ex)
             {

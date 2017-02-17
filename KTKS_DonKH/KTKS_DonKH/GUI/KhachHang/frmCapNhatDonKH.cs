@@ -185,7 +185,7 @@ namespace KTKS_DonKH.GUI.KhachHang
 
             foreach (DataRow item in dt.Rows)
             {
-                LichSuChuyenKT ls = _cDonTXL.getLichSuChuyenKTbyID(decimal.Parse(item["MaLSChuyen"].ToString()));
+                LichSuChuyenKT ls = _cLichSuDonTu.Get(decimal.Parse(item["MaLSChuyen"].ToString()));
                 string ChiTiet = "";
                 if (ls.DM)
                 {
@@ -581,7 +581,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                             lichsuchuyenkt.KTTT = _donkh.KTTT;
                             lichsuchuyenkt.GhiChuChuyen = _donkh.GhiChuChuyenKT;
                             lichsuchuyenkt.MaDon = _donkh.MaDon;
-                            _cDonTXL.ThemLichSuChuyenKT(lichsuchuyenkt);
+                            _cLichSuDonTu.Them(lichsuchuyenkt);
                             flagSuaChuyenKT = false;
 
                             LichSuDonTu entity = new LichSuDonTu();
@@ -657,26 +657,6 @@ namespace KTKS_DonKH.GUI.KhachHang
         {
             if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                //if (dgvLichSuChuyenKT.CurrentRow.Cells["Table"].Value.ToString() == "LichSuChuyenKT")
-                //    if (_cDonTXL.XoaLichSuChuyenKT(_cDonTXL.getLichSuChuyenKTbyID(decimal.Parse(dgvLichSuChuyenKT.CurrentRow.Cells["MaLSChuyen"].Value.ToString()))))
-                //    {
-                //        LoadLichSuChuyen(_donkh.MaDon);
-                //    }
-                //if (dgvLichSuChuyenKT.CurrentRow.Cells["Table"].Value.ToString() == "LichSuChuyenVanPhong")
-                //    if (_cDonKH.XoaLichSuChuyenVanPhong(_cDonKH.getLichSuChuyenVanPhongbyID(decimal.Parse(dgvLichSuChuyenKT.CurrentRow.Cells["MaLSChuyen"].Value.ToString()))))
-                //    {
-                //        LoadLichSuChuyen(_donkh.MaDon);
-                //    }
-                //if (dgvLichSuChuyenKT.CurrentRow.Cells["Table"].Value.ToString() == "LichSuChuyenBanDoiKhac")
-                //    if (_cDonKH.XoaLichSuChuyenBanDoiKhac(_cDonKH.getLichSuChuyenBanDoiKhacbyID(decimal.Parse(dgvLichSuChuyenKT.CurrentRow.Cells["MaLSChuyen"].Value.ToString()))))
-                //    {
-                //        LoadLichSuChuyen(_donkh.MaDon);
-                //    }
-                //if (dgvLichSuChuyenKT.CurrentRow.Cells["Table"].Value.ToString() == "LichSuChuyenKhac")
-                //    if (_cDonKH.XoaLichSuChuyenKhac(_cDonKH.getLichSuChuyenKhacbyID(decimal.Parse(dgvLichSuChuyenKT.CurrentRow.Cells["MaLSChuyen"].Value.ToString()))))
-                //    {
-                //        LoadLichSuChuyen(_donkh.MaDon);
-                //    }
                 if (_flagMoi == true)
                     if (_cLichSuDonTu.Xoa(_cLichSuDonTu.Get(int.Parse(dgvLichSuDonTu.CurrentRow.Cells["ID"].Value.ToString()))))
                     {
@@ -684,7 +664,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     }
                 if (_flagCu == true)
                     if (dgvLichSuChuyenKT.CurrentRow.Cells["Table"].Value.ToString() == "LichSuChuyenKT")
-                        if (_cDonTXL.XoaLichSuChuyenKT(_cDonTXL.getLichSuChuyenKTbyID(decimal.Parse(dgvLichSuChuyenKT.CurrentRow.Cells["MaLSChuyen"].Value.ToString()))))
+                        if (_cLichSuDonTu.Xoa(_cLichSuDonTu.Get(decimal.Parse(dgvLichSuChuyenKT.CurrentRow.Cells["MaLSChuyen"].Value.ToString()))))
                         {
                             LoadLichSuChuyen(_donkh.MaDon);
                         }
@@ -863,7 +843,12 @@ namespace KTKS_DonKH.GUI.KhachHang
                             lichsuchuyenkt.NguoiDi = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
                             lichsuchuyenkt.GhiChuChuyen = txtGhiChu.Text.Trim();
                             lichsuchuyenkt.MaDon = _donkh.MaDon;
-                            _cDonTXL.ThemLichSuChuyenKT(lichsuchuyenkt);
+                            _cLichSuDonTu.Them(lichsuchuyenkt);
+
+                            _donkh.NguoiDi = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+                            _donkh.NgayChuyenKT = dateChuyen.Value;
+                            _donkh.GhiChuChuyenKT = txtGhiChu.Text.Trim();
+                            _cDonKH.SuaDonKH(_donkh);
                         }
                         LichSuDonTu entity = new LichSuDonTu();
                         entity.NgayChuyen = dateChuyen.Value;

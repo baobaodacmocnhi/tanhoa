@@ -14,6 +14,7 @@ using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.KhachHang;
 using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.DAL.DonTu;
 
 namespace KTKS_DonKH.GUI.KhachHang
 {
@@ -27,6 +28,7 @@ namespace KTKS_DonKH.GUI.KhachHang
         CDocSo _cDocSo = new CDocSo();
         CDonTXL _cDonTXL = new CDonTXL();
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
+        CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
         string Dot = "", Ky = "", Nam = "";
 
         public frmShowDonKH()
@@ -722,7 +724,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                         lichsuchuyenkt.NguoiDi = _donkh.NguoiDi;
                         lichsuchuyenkt.GhiChuChuyen = _donkh.GhiChuChuyenKT;
                         lichsuchuyenkt.MaDon = _donkh.MaDon;
-                        _cDonTXL.ThemLichSuChuyenKT(lichsuchuyenkt);
+                        _cLichSuDonTu.Them(lichsuchuyenkt);
                         flagSuaChuyenKT = false;
                     }
                     MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -937,7 +939,7 @@ namespace KTKS_DonKH.GUI.KhachHang
         private void xóaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                if (_cDonTXL.XoaLichSuChuyenKT(_cDonTXL.getLichSuChuyenKTbyID(decimal.Parse(dgvLichSuChuyenKT.CurrentRow.Cells["MaLSChuyenKT"].Value.ToString()))))
+                if (_cLichSuDonTu.Xoa(_cLichSuDonTu.Get(decimal.Parse(dgvLichSuChuyenKT.CurrentRow.Cells["MaLSChuyenKT"].Value.ToString()))))
                 {
                     dgvLichSuChuyenKT.DataSource = _cDonTXL.LoadDSLichSuChuyenKTbyMaDonTKH(_donkh.MaDon);
                 }

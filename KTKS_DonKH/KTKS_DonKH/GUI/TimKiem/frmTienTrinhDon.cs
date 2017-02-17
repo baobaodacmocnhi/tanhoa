@@ -191,7 +191,7 @@ namespace KTKS_DonKH.GUI.TimKiem
         {
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
             {
-                frmShowKTXM frm = new frmShowKTXM(decimal.Parse(_CTRow.Row["MaCTKTXM"].ToString()), true);
+                frmKTXM frm = new frmKTXM(decimal.Parse(_CTRow.Row["MaCTKTXM"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;
@@ -473,7 +473,7 @@ namespace KTKS_DonKH.GUI.TimKiem
         {
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
             {
-                frmShowKTXM frm = new frmShowKTXM(decimal.Parse(_CTRow.Row["MaCTKTXM"].ToString()), true);
+                frmKTXM frm = new frmKTXM(decimal.Parse(_CTRow.Row["MaCTKTXM"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;

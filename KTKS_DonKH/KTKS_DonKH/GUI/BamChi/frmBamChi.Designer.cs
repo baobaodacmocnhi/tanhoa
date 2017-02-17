@@ -391,7 +391,6 @@
             this.txtDayChi.Name = "txtDayChi";
             this.txtDayChi.Size = new System.Drawing.Size(50, 22);
             this.txtDayChi.TabIndex = 27;
-            this.txtDayChi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDayChi_KeyPress);
             // 
             // cmbTinhTrangChiSo
             // 
@@ -449,7 +448,6 @@
             this.txtVienChi.Name = "txtVienChi";
             this.txtVienChi.Size = new System.Drawing.Size(50, 22);
             this.txtVienChi.TabIndex = 25;
-            this.txtVienChi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVienChi_KeyPress);
             // 
             // cmbHienTrangKiemTra
             // 
@@ -520,7 +518,6 @@
             this.txtCo.Name = "txtCo";
             this.txtCo.Size = new System.Drawing.Size(50, 22);
             this.txtCo.TabIndex = 11;
-            this.txtCo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCo_KeyPress);
             // 
             // txtMaSoBC
             // 
@@ -580,7 +577,6 @@
             this.txtChiSo.Name = "txtChiSo";
             this.txtChiSo.Size = new System.Drawing.Size(50, 22);
             this.txtChiSo.TabIndex = 5;
-            this.txtChiSo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtChiSo_KeyPress);
             // 
             // label14
             // 

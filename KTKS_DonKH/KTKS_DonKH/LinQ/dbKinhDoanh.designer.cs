@@ -726,6 +726,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _MaDonTXL;
 		
+		private System.Nullable<decimal> _MaDonTBC;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -752,6 +754,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnToXuLyChanged();
     partial void OnMaDonTXLChanging(System.Nullable<decimal> value);
     partial void OnMaDonTXLChanged();
+    partial void OnMaDonTBCChanging(System.Nullable<decimal> value);
+    partial void OnMaDonTBCChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -854,6 +858,26 @@ namespace KTKS_DonKH.LinQ
 					this._MaDonTXL = value;
 					this.SendPropertyChanged("MaDonTXL");
 					this.OnMaDonTXLChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonTBC", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> MaDonTBC
+		{
+			get
+			{
+				return this._MaDonTBC;
+			}
+			set
+			{
+				if ((this._MaDonTBC != value))
+				{
+					this.OnMaDonTBCChanging(value);
+					this.SendPropertyChanging();
+					this._MaDonTBC = value;
+					this.SendPropertyChanged("MaDonTBC");
+					this.OnMaDonTBCChanged();
 				}
 			}
 		}
@@ -18698,6 +18722,16 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _MaLD;
 		
+		private bool _Chuyen_KTXM;
+		
+		private System.Nullable<System.DateTime> _NgayChuyen_KTXM;
+		
+		private System.Nullable<int> _NguoiDi_KTXM;
+		
+		private string _GhiChuChuyen_KTXM;
+		
+		private bool _GiaiQuyet;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -18744,6 +18778,16 @@ namespace KTKS_DonKH.LinQ
     partial void OnNoiDungChanged();
     partial void OnMaLDChanging(System.Nullable<int> value);
     partial void OnMaLDChanged();
+    partial void OnChuyen_KTXMChanging(bool value);
+    partial void OnChuyen_KTXMChanged();
+    partial void OnNgayChuyen_KTXMChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayChuyen_KTXMChanged();
+    partial void OnNguoiDi_KTXMChanging(System.Nullable<int> value);
+    partial void OnNguoiDi_KTXMChanged();
+    partial void OnGhiChuChuyen_KTXMChanging(string value);
+    partial void OnGhiChuChuyen_KTXMChanged();
+    partial void OnGiaiQuyetChanging(bool value);
+    partial void OnGiaiQuyetChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -19080,6 +19124,106 @@ namespace KTKS_DonKH.LinQ
 					this._MaLD = value;
 					this.SendPropertyChanged("MaLD");
 					this.OnMaLDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Chuyen_KTXM", DbType="Bit NOT NULL")]
+		public bool Chuyen_KTXM
+		{
+			get
+			{
+				return this._Chuyen_KTXM;
+			}
+			set
+			{
+				if ((this._Chuyen_KTXM != value))
+				{
+					this.OnChuyen_KTXMChanging(value);
+					this.SendPropertyChanging();
+					this._Chuyen_KTXM = value;
+					this.SendPropertyChanged("Chuyen_KTXM");
+					this.OnChuyen_KTXMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayChuyen_KTXM", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayChuyen_KTXM
+		{
+			get
+			{
+				return this._NgayChuyen_KTXM;
+			}
+			set
+			{
+				if ((this._NgayChuyen_KTXM != value))
+				{
+					this.OnNgayChuyen_KTXMChanging(value);
+					this.SendPropertyChanging();
+					this._NgayChuyen_KTXM = value;
+					this.SendPropertyChanged("NgayChuyen_KTXM");
+					this.OnNgayChuyen_KTXMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NguoiDi_KTXM", DbType="Int")]
+		public System.Nullable<int> NguoiDi_KTXM
+		{
+			get
+			{
+				return this._NguoiDi_KTXM;
+			}
+			set
+			{
+				if ((this._NguoiDi_KTXM != value))
+				{
+					this.OnNguoiDi_KTXMChanging(value);
+					this.SendPropertyChanging();
+					this._NguoiDi_KTXM = value;
+					this.SendPropertyChanged("NguoiDi_KTXM");
+					this.OnNguoiDi_KTXMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChuChuyen_KTXM", DbType="NVarChar(MAX)")]
+		public string GhiChuChuyen_KTXM
+		{
+			get
+			{
+				return this._GhiChuChuyen_KTXM;
+			}
+			set
+			{
+				if ((this._GhiChuChuyen_KTXM != value))
+				{
+					this.OnGhiChuChuyen_KTXMChanging(value);
+					this.SendPropertyChanging();
+					this._GhiChuChuyen_KTXM = value;
+					this.SendPropertyChanged("GhiChuChuyen_KTXM");
+					this.OnGhiChuChuyen_KTXMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaiQuyet", DbType="Bit NOT NULL")]
+		public bool GiaiQuyet
+		{
+			get
+			{
+				return this._GiaiQuyet;
+			}
+			set
+			{
+				if ((this._GiaiQuyet != value))
+				{
+					this.OnGiaiQuyetChanging(value);
+					this.SendPropertyChanging();
+					this._GiaiQuyet = value;
+					this.SendPropertyChanged("GiaiQuyet");
+					this.OnGiaiQuyetChanged();
 				}
 			}
 		}
@@ -22992,6 +23136,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _MaDonTXL;
 		
+		private System.Nullable<decimal> _MaDonTBC;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -23018,6 +23164,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnToXuLyChanged();
     partial void OnMaDonTXLChanging(System.Nullable<decimal> value);
     partial void OnMaDonTXLChanged();
+    partial void OnMaDonTBCChanging(System.Nullable<decimal> value);
+    partial void OnMaDonTBCChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -23120,6 +23268,26 @@ namespace KTKS_DonKH.LinQ
 					this._MaDonTXL = value;
 					this.SendPropertyChanged("MaDonTXL");
 					this.OnMaDonTXLChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonTBC", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> MaDonTBC
+		{
+			get
+			{
+				return this._MaDonTBC;
+			}
+			set
+			{
+				if ((this._MaDonTBC != value))
+				{
+					this.OnMaDonTBCChanging(value);
+					this.SendPropertyChanging();
+					this._MaDonTBC = value;
+					this.SendPropertyChanged("MaDonTBC");
+					this.OnMaDonTBCChanged();
 				}
 			}
 		}

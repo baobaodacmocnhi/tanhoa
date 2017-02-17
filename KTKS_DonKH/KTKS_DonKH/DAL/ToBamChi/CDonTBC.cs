@@ -22,7 +22,7 @@ namespace KTKS_DonKH.DAL.ToBamChi
                     decimal MaDon = db.ExecuteQuery<decimal>("declare @Ma int " +
                         "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
                         "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
-                    entity.MaDon= getMaxNextIDTable(MaDon);
+                    entity.MaDon = getMaxNextIDTable(MaDon);
                 }
                 else
                     entity.MaDon = decimal.Parse("1" + DateTime.Now.ToString("yy"));
@@ -86,18 +86,146 @@ namespace KTKS_DonKH.DAL.ToBamChi
             }
         }
 
+        public DataTable GetDSByMaDon(decimal MaDon)
+        {
+            try
+            {
+                var query = from itemDonTBC in db.DonTBCs
+                            join itemUser in db.Users on itemDonTBC.NguoiDi_KTXM equals itemUser.MaU into tmpUsers
+                            from tmpUser in tmpUsers.DefaultIfEmpty()
+                            where itemDonTBC.MaDon == MaDon
+                            select new
+                            {
+                                itemDonTBC.MaDon,
+                                itemDonTBC.LoaiDonTBC.TenLD,
+                                itemDonTBC.SoCongVan,
+                                itemDonTBC.CreateDate,
+                                itemDonTBC.DanhBo,
+                                itemDonTBC.HoTen,
+                                itemDonTBC.DiaChi,
+                                itemDonTBC.NoiDung,
+                                NguoiDi_KTXM = tmpUser.HoTen,
+                                GiaiQuyet = db.KTXMs.Any(item => item.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM) == true ? true : db.BamChis.Any(item => item.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM)
+                            };
+                return LINQToDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public DataTable GetDSByDanhBo(string DanhBo)
         {
             try
             {
                 var query = from itemDonTBC in db.DonTBCs
+                            join itemUser in db.Users on itemDonTBC.NguoiDi_KTXM equals itemUser.MaU into tmpUsers
+                            from tmpUser in tmpUsers.DefaultIfEmpty()
                             where itemDonTBC.DanhBo == DanhBo
                             select new
                             {
                                 itemDonTBC.MaDon,
                                 itemDonTBC.LoaiDonTBC.TenLD,
+                                itemDonTBC.SoCongVan,
                                 itemDonTBC.CreateDate,
+                                itemDonTBC.DanhBo,
+                                itemDonTBC.HoTen,
+                                itemDonTBC.DiaChi,
                                 itemDonTBC.NoiDung,
+                                NguoiDi_KTXM=tmpUser.HoTen,
+                                GiaiQuyet = db.KTXMs.Any(item => item.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM) == true ? true : db.BamChis.Any(item => item.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM)
+                            };
+                return LINQToDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable GetDSByDiaChi(string DiaChi)
+        {
+            try
+            {
+                var query = from itemDonTBC in db.DonTBCs
+                            join itemUser in db.Users on itemDonTBC.NguoiDi_KTXM equals itemUser.MaU into tmpUsers
+                            from tmpUser in tmpUsers.DefaultIfEmpty()
+                            where itemDonTBC.DiaChi.Contains(DiaChi)
+                            select new
+                            {
+                                itemDonTBC.MaDon,
+                                itemDonTBC.LoaiDonTBC.TenLD,
+                                itemDonTBC.SoCongVan,
+                                itemDonTBC.CreateDate,
+                                itemDonTBC.DanhBo,
+                                itemDonTBC.HoTen,
+                                itemDonTBC.DiaChi,
+                                itemDonTBC.NoiDung,
+                                NguoiDi_KTXM = tmpUser.HoTen,
+                                GiaiQuyet = db.KTXMs.Any(item => item.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM) == true ? true : db.BamChis.Any(item => item.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM)
+                            };
+                return LINQToDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable GetDSBySoCongVan(string SoCongVan)
+        {
+            try
+            {
+                var query = from itemDonTBC in db.DonTBCs
+                            join itemUser in db.Users on itemDonTBC.NguoiDi_KTXM equals itemUser.MaU into tmpUsers
+                            from tmpUser in tmpUsers.DefaultIfEmpty()
+                            where itemDonTBC.SoCongVan.Contains(SoCongVan)
+                            select new
+                            {
+                                itemDonTBC.MaDon,
+                                itemDonTBC.LoaiDonTBC.TenLD,
+                                itemDonTBC.SoCongVan,
+                                itemDonTBC.CreateDate,
+                                itemDonTBC.DanhBo,
+                                itemDonTBC.HoTen,
+                                itemDonTBC.DiaChi,
+                                itemDonTBC.NoiDung,
+                                NguoiDi_KTXM = tmpUser.HoTen,
+                                GiaiQuyet = db.KTXMs.Any(item => item.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM) == true ? true : db.BamChis.Any(item => item.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM)
+                            };
+                return LINQToDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable GetDSByCreateDate(DateTime FromCreateDate,DateTime ToCreateDate)
+        {
+            try
+            {
+                var query = from itemDonTBC in db.DonTBCs
+                            join itemUser in db.Users on itemDonTBC.NguoiDi_KTXM equals itemUser.MaU into tmpUsers
+                            from tmpUser in tmpUsers.DefaultIfEmpty()
+                            where itemDonTBC.CreateDate.Value.Date >= FromCreateDate.Date && itemDonTBC.CreateDate.Value.Date <= ToCreateDate.Date
+                            select new
+                            {
+                                itemDonTBC.MaDon,
+                                itemDonTBC.LoaiDonTBC.TenLD,
+                                itemDonTBC.SoCongVan,
+                                itemDonTBC.CreateDate,
+                                itemDonTBC.DanhBo,
+                                itemDonTBC.HoTen,
+                                itemDonTBC.DiaChi,
+                                itemDonTBC.NoiDung,
+                                NguoiDi_KTXM = tmpUser.HoTen,
+                                GiaiQuyet = db.KTXMs.Any(item => item.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM) == true ? true : db.BamChis.Any(item => item.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM)
                             };
                 return LINQToDataTable(query);
             }

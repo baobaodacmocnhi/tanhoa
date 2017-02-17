@@ -86,10 +86,9 @@
             this.label14 = new System.Windows.Forms.Label();
             this.txtHieu = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.cmbTinhTrangDHN = new System.Windows.Forms.ComboBox();
-            this.label20 = new System.Windows.Forms.Label();
             this.btnSua = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKetQuaKiemTra)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -267,7 +266,7 @@
             // 
             this.btnThem.Location = new System.Drawing.Point(815, 316);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(86, 25);
+            this.btnThem.Size = new System.Drawing.Size(75, 25);
             this.btnThem.TabIndex = 4;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
@@ -453,7 +452,6 @@
             this.lbTheoYeuCau.Size = new System.Drawing.Size(161, 16);
             this.lbTheoYeuCau.TabIndex = 29;
             this.lbTheoYeuCau.Text = "Thực Hiện Theo Yêu Cầu:";
-            this.lbTheoYeuCau.Visible = false;
             // 
             // txtTheoYeuCau
             // 
@@ -461,7 +459,6 @@
             this.txtTheoYeuCau.Name = "txtTheoYeuCau";
             this.txtTheoYeuCau.Size = new System.Drawing.Size(138, 22);
             this.txtTheoYeuCau.TabIndex = 30;
-            this.txtTheoYeuCau.Visible = false;
             // 
             // cmbChiKhoaGoc
             // 
@@ -639,7 +636,6 @@
             this.txtCo.Name = "txtCo";
             this.txtCo.Size = new System.Drawing.Size(97, 22);
             this.txtCo.TabIndex = 14;
-            this.txtCo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCo_KeyPress);
             // 
             // label12
             // 
@@ -665,7 +661,6 @@
             this.txtChiSo.Name = "txtChiSo";
             this.txtChiSo.Size = new System.Drawing.Size(50, 22);
             this.txtChiSo.TabIndex = 8;
-            this.txtChiSo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtChiSo_KeyPress);
             // 
             // label14
             // 
@@ -692,47 +687,11 @@
             this.label15.TabIndex = 11;
             this.label15.Text = "Hiệu:";
             // 
-            // cmbTinhTrangDHN
-            // 
-            this.cmbTinhTrangDHN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTinhTrangDHN.FormattingEnabled = true;
-            this.cmbTinhTrangDHN.Items.AddRange(new object[] {
-            "",
-            "Còn",
-            "Mất",
-            "Không ĐHN",
-            "Lấp mất",
-            "Bể kiếng",
-            "Mất mặt số",
-            "Chủ gỡ",
-            "Hầm sâu",
-            "Chất đồ",
-            "Gắn ngược",
-            "Đóng nước",
-            "Cắt ống bên ngoài",
-            "Kẹt khóa"});
-            this.cmbTinhTrangDHN.Location = new System.Drawing.Point(778, 394);
-            this.cmbTinhTrangDHN.MaxDropDownItems = 50;
-            this.cmbTinhTrangDHN.Name = "cmbTinhTrangDHN";
-            this.cmbTinhTrangDHN.Size = new System.Drawing.Size(165, 24);
-            this.cmbTinhTrangDHN.TabIndex = 5;
-            this.cmbTinhTrangDHN.Visible = false;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(775, 374);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(114, 16);
-            this.label20.TabIndex = 4;
-            this.label20.Text = "ĐHN lúc Kiểm Tra";
-            this.label20.Visible = false;
-            // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(1063, 316);
+            this.btnSua.Location = new System.Drawing.Point(896, 316);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(86, 25);
+            this.btnSua.Size = new System.Drawing.Size(75, 25);
             this.btnSua.TabIndex = 5;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -748,16 +707,25 @@
             this.label22.TabIndex = 7;
             this.label22.Text = "Gắn mới Danh Bộ nhập theo dạng: GM-Mã Đơn (GM1-14 / GMTXL1-14)";
             // 
+            // btnXoa
+            // 
+            this.btnXoa.Location = new System.Drawing.Point(977, 315);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 25);
+            this.btnXoa.TabIndex = 8;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
             // frmKTXM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1154, 464);
+            this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.btnSua);
-            this.Controls.Add(this.cmbTinhTrangDHN);
-            this.Controls.Add(this.label20);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dgvDSKetQuaKiemTra);
             this.Controls.Add(this.btnThem);
@@ -820,8 +788,6 @@
         private System.Windows.Forms.TextBox txtHoTenKHKy;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button btnSua;
-        private System.Windows.Forms.ComboBox cmbTinhTrangDHN;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ComboBox cmbChiKhoaGoc;
         private System.Windows.Forms.ComboBox cmbChiMatSo;
         private System.Windows.Forms.ComboBox cmbTinhTrangChiSo;
@@ -842,5 +808,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDungKiemTra;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
+        private System.Windows.Forms.Button btnXoa;
     }
 }
