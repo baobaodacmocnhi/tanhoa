@@ -16,6 +16,7 @@ using ThuTien.LinQ;
 using ThuTien.DAL;
 using ThuTien.DAL.ToTruong;
 using ThuTien.DAL.QuanTri;
+using ThuTien.DAL.ChuyenKhoan;
 
 namespace ThuTien.GUI.ToTruong
 {
@@ -26,6 +27,7 @@ namespace ThuTien.GUI.ToTruong
         CTongHopNo _cTHN = new CTongHopNo();
         CTo _cTo = new CTo();
         CTamThu _cTamThu = new CTamThu();
+        CTienDu _cTienDu = new CTienDu();
         CKinhDoanh _cKTKS_DonKH = new CKinhDoanh();
         BindingSource bsHoaDon = new BindingSource();
         DataTable dt = new DataTable();
@@ -121,14 +123,17 @@ namespace ThuTien.GUI.ToTruong
             col = new DataColumn("DinhMuc_Moi");
             col.DataType = System.Type.GetType("System.Int32");
             dt.Columns.Add(col);
-            //bsHoaDon.DataSource = dt;
+
+            col = new DataColumn("TienDu");
+            col.DataType = System.Type.GetType("System.Int32");
+            dt.Columns.Add(col);
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
             {
-                DataTable dtTemp = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim());
+                DataTable dtTemp = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim().Replace(" ",""));
                 if (dtTemp.Rows.Count > 0)
                 {
                     foreach (DataRow item in dtTemp.Rows)
@@ -154,6 +159,7 @@ namespace ThuTien.GUI.ToTruong
                                 row["DinhMuc_Cu"] = dcbd.DinhMuc;
                                 row["DinhMuc_Moi"] = dcbd.DinhMuc_BD;
                             }
+                            row["TienDu"] = _cTienDu.GetTienDu(item["DanhBo"].ToString());
                             dt.Rows.Add(row);
                         }
                 }
@@ -180,6 +186,7 @@ namespace ThuTien.GUI.ToTruong
                             if (dcbd.DinhMuc_BD != null)
                             row["DinhMuc_Moi"] = dcbd.DinhMuc_BD;
                         }
+                        row["TienDu"] = _cTienDu.GetTienDu(hoadon.DANHBA);
                         dt.Rows.Add(row);
                     }
                 }
@@ -305,6 +312,10 @@ namespace ThuTien.GUI.ToTruong
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
             if (dgvHoaDon.Columns[e.ColumnIndex].Name == "TongCong" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "TienDu" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }

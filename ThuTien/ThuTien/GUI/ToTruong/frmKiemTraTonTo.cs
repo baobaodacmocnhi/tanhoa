@@ -518,7 +518,20 @@ namespace ThuTien.GUI.ToTruong
                         if (cmbNhanVien.SelectedIndex == 0)
                             dt = _cHoaDon.GetDSTonDenKy_NV("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoKy.Text.Trim()));
                         else
-                            dt = _cHoaDon.GetDSTonDenKy_NV("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(dgvHDTuGia.SelectedRows[0].Cells["Dot_TG"].Value.ToString()), int.Parse(txtSoKy.Text.Trim()));
+                            if (cmbNhanVien.SelectedIndex > 0)
+                            {
+                                if (cmbFromDot.SelectedIndex == 0)
+                                    for (int i = 1; i <= 20; i++)
+                                    {
+                                        dt.Merge(_cHoaDon.GetDSTonDenKy_NV("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, int.Parse(txtSoKy.Text.Trim())));
+                                    }
+                                else
+                                    if (cmbFromDot.SelectedIndex > 0)
+                                        for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
+                                        {
+                                            dt.Merge(_cHoaDon.GetDSTonDenKy_NV("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, int.Parse(txtSoKy.Text.Trim())));
+                                        }
+                            }
                     }
                     else
                         if (chkNgayKiemTra.Checked)
@@ -538,7 +551,20 @@ namespace ThuTien.GUI.ToTruong
                                             if (cmbNhanVien.SelectedIndex == 0)
                                                 dt = _cHoaDon.GetDSTon_NV("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoKy.Text.Trim()));
                                             else
-                                                dt = _cHoaDon.GetDSTon_NV("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(dgvHDTuGia.SelectedRows[0].Cells["Dot_TG"].Value.ToString()), int.Parse(txtSoKy.Text.Trim()));
+                                                if (cmbNhanVien.SelectedIndex > 0)
+                                                {
+                                                    if (cmbFromDot.SelectedIndex == 0)
+                                                        for (int i = 1; i <= 20; i++)
+                                                        {
+                                                            dt.Merge(_cHoaDon.GetDSTon_NV("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, int.Parse(txtSoKy.Text.Trim())));
+                                                        }
+                                                    else
+                                                        if (cmbFromDot.SelectedIndex > 0)
+                                                            for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
+                                                            {
+                                                                dt.Merge(_cHoaDon.GetDSTon_NV("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, int.Parse(txtSoKy.Text.Trim())));
+                                                            }
+                                                }
                         }
                 foreach (DataRow item in dt.Rows)
                 {
@@ -569,7 +595,20 @@ namespace ThuTien.GUI.ToTruong
                             if (cmbNhanVien.SelectedIndex == 0)
                                 dt = _cHoaDon.GetDSTonDenKy_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoKy.Text.Trim()));
                             else
-                                dt = _cHoaDon.GetDSTonDenKy_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["Dot_CQ"].Value.ToString()), int.Parse(txtSoKy.Text.Trim()));
+                                if (cmbNhanVien.SelectedIndex > 0)
+                                {
+                                    if (cmbFromDot.SelectedIndex == 0)
+                                        for (int i = 1; i <= 20; i++)
+                                        {
+                                            dt.Merge(_cHoaDon.GetDSTonDenKy_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, int.Parse(txtSoKy.Text.Trim())));
+                                        }
+                                    else
+                                        if (cmbFromDot.SelectedIndex > 0)
+                                            for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
+                                            {
+                                                dt.Merge(_cHoaDon.GetDSTonDenKy_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, int.Parse(txtSoKy.Text.Trim())));
+                                            }
+                                }
                         }
                         else
                             if (chkNgayKiemTra.Checked)
@@ -589,7 +628,20 @@ namespace ThuTien.GUI.ToTruong
                                                 if (cmbNhanVien.SelectedIndex == 0)
                                                     dt = _cHoaDon.GetDSTon_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoKy.Text.Trim()));
                                                 else
-                                                    dt = _cHoaDon.GetDSTon_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["Dot_CQ"].Value.ToString()), int.Parse(txtSoKy.Text.Trim()));
+                                                    if (cmbNhanVien.SelectedIndex > 0)
+                                                    {
+                                                        if (cmbFromDot.SelectedIndex == 0)
+                                                            for (int i = 1; i <= 20; i++)
+                                                            {
+                                                                dt.Merge(_cHoaDon.GetDSTon_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, int.Parse(txtSoKy.Text.Trim())));
+                                                            }
+                                                        else
+                                                            if (cmbFromDot.SelectedIndex > 0)
+                                                                for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
+                                                                {
+                                                                    dt.Merge(_cHoaDon.GetDSTon_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, int.Parse(txtSoKy.Text.Trim())));
+                                                                }
+                                                    }
                             }
                     foreach (DataRow item in dt.Rows)
                     {
@@ -736,7 +788,20 @@ namespace ThuTien.GUI.ToTruong
                         if (cmbNhanVien.SelectedIndex == 0)
                             dt = _cHoaDon.GetDSTonDenKy_NV("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoKy.Text.Trim()));
                         else
-                            dt = _cHoaDon.GetDSTonDenKy_NV("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(dgvHDTuGia.SelectedRows[0].Cells["Dot_TG"].Value.ToString()), int.Parse(txtSoKy.Text.Trim()));
+                            if (cmbNhanVien.SelectedIndex > 0)
+                            {
+                                if (cmbFromDot.SelectedIndex == 0)
+                                    for (int i = 1; i <= 20; i++)
+                                    {
+                                        dt.Merge(_cHoaDon.GetDSTonDenKy_NV("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, int.Parse(txtSoKy.Text.Trim())));
+                                    }
+                                else
+                                    if (cmbFromDot.SelectedIndex > 0)
+                                        for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
+                                        {
+                                            dt.Merge(_cHoaDon.GetDSTonDenKy_NV("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, int.Parse(txtSoKy.Text.Trim())));
+                                        }
+                            }
                     }
                     else
                         if (chkNgayKiemTra.Checked)
@@ -756,7 +821,20 @@ namespace ThuTien.GUI.ToTruong
                                             if (cmbNhanVien.SelectedIndex == 0)
                                                 dt = _cHoaDon.GetDSTon_NV("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoKy.Text.Trim()));
                                             else
-                                                dt = _cHoaDon.GetDSTon_NV("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(dgvHDTuGia.SelectedRows[0].Cells["Dot_TG"].Value.ToString()), int.Parse(txtSoKy.Text.Trim()));
+                                                if (cmbNhanVien.SelectedIndex > 0)
+                                                {
+                                                    if (cmbFromDot.SelectedIndex == 0)
+                                                        for (int i = 1; i <= 20; i++)
+                                                        {
+                                                            dt.Merge(_cHoaDon.GetDSTon_NV("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, int.Parse(txtSoKy.Text.Trim())));
+                                                        }
+                                                    else
+                                                        if (cmbFromDot.SelectedIndex > 0)
+                                                            for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
+                                                            {
+                                                                dt.Merge(_cHoaDon.GetDSTon_NV("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, int.Parse(txtSoKy.Text.Trim())));
+                                                            }
+                                                }
                         }
                 foreach (DataRow item in dt.Rows)
                     if (!_cDongNuoc.CheckExist_CTDongNuoc(item["SoHoaDon"].ToString()) && !_cLenhHuy.CheckExist(item["SoHoaDon"].ToString()) && !_cDLKH.CheckExist2(item["SoHoaDon"].ToString()))
@@ -786,7 +864,20 @@ namespace ThuTien.GUI.ToTruong
                             if (cmbNhanVien.SelectedIndex == 0)
                                 dt = _cHoaDon.GetDSTonDenKy_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoKy.Text.Trim()));
                             else
-                                dt = _cHoaDon.GetDSTonDenKy_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["Dot_CQ"].Value.ToString()), int.Parse(txtSoKy.Text.Trim()));
+                                if (cmbNhanVien.SelectedIndex > 0)
+                                {
+                                    if (cmbFromDot.SelectedIndex == 0)
+                                        for (int i = 1; i <= 20; i++)
+                                        {
+                                            dt.Merge(_cHoaDon.GetDSTonDenKy_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, int.Parse(txtSoKy.Text.Trim())));
+                                        }
+                                    else
+                                        if (cmbFromDot.SelectedIndex > 0)
+                                            for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
+                                            {
+                                                dt.Merge(_cHoaDon.GetDSTonDenKy_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, int.Parse(txtSoKy.Text.Trim())));
+                                            }
+                                }
                         }
                         else
                             if (chkNgayKiemTra.Checked)
@@ -806,7 +897,20 @@ namespace ThuTien.GUI.ToTruong
                                                 if (cmbNhanVien.SelectedIndex == 0)
                                                     dt = _cHoaDon.GetDSTon_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoKy.Text.Trim()));
                                                 else
-                                                    dt = _cHoaDon.GetDSTon_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["Dot_CQ"].Value.ToString()), int.Parse(txtSoKy.Text.Trim()));
+                                                    if (cmbNhanVien.SelectedIndex > 0)
+                                                    {
+                                                        if (cmbFromDot.SelectedIndex == 0)
+                                                            for (int i = 1; i <= 20; i++)
+                                                            {
+                                                                dt.Merge(_cHoaDon.GetDSTon_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, int.Parse(txtSoKy.Text.Trim())));
+                                                            }
+                                                        else
+                                                            if (cmbFromDot.SelectedIndex > 0)
+                                                                for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
+                                                                {
+                                                                    dt.Merge(_cHoaDon.GetDSTon_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, int.Parse(txtSoKy.Text.Trim())));
+                                                                }
+                                                    }
                             }
                     foreach (DataRow item in dt.Rows)
                         if (!_cDongNuoc.CheckExist_CTDongNuoc(item["SoHoaDon"].ToString()) && !_cLenhHuy.CheckExist(item["SoHoaDon"].ToString()) && !_cDLKH.CheckExist2(item["SoHoaDon"].ToString()))

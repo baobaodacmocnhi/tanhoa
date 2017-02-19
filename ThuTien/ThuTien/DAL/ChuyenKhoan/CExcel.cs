@@ -7,7 +7,7 @@ using System.Data;
 
 namespace ThuTien.DAL.ChuyenKhoan
 {
-    class Excel
+    class CExcel
     {
         static OleDbConnection _con;
         //OleDbCommand _cmd;
@@ -16,7 +16,7 @@ namespace ThuTien.DAL.ChuyenKhoan
         String _cn;
         String pathFile;
 
-        public Excel(String pathFile)
+        public CExcel(String pathFile)
         {
             this.pathFile = pathFile;
         }
