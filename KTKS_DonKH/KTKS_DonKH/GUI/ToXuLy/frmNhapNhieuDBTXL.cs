@@ -113,7 +113,6 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         dontxl.MaDon = _cDonTXL.getMaxNextID();
                         dontxl.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                         dontxl.SoCongVan = txtSoCongVan.Text.Trim();
-                        dontxl.TongSoDanhBo = int.Parse(txtTongSoDanhBo.Text.Trim());
                         dontxl.NoiDung = txtNoiDung.Text.Trim();
                         ///
                         if (item.Cells["DanhBo"].Value != null)

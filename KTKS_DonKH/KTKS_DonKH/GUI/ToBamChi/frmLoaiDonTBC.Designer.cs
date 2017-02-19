@@ -157,7 +157,7 @@
             this.dgvLoaiDon.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dgvLoaiDon.MultiSelect = false;
             this.dgvLoaiDon.Name = "dgvLoaiDon";
-            this.dgvLoaiDon.Size = new System.Drawing.Size(514, 400);
+            this.dgvLoaiDon.Size = new System.Drawing.Size(514, 510);
             this.dgvLoaiDon.TabIndex = 102;
             this.dgvLoaiDon.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLoaiDon_CellContentClick);
             this.dgvLoaiDon.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLoaiDon_CellValueChanged);
@@ -179,7 +179,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(539, 516);
+            this.ClientSize = new System.Drawing.Size(539, 629);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.txtKyHieuLD);
             this.Controls.Add(this.btnThem);

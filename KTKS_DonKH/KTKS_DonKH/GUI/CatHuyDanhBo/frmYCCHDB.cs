@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.Globalization;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL;
-using KTKS_DonKH.DAL.KhachHang;
+using KTKS_DonKH.DAL.ToKhachHang;
 using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.DAL.CatHuyDanhBo;
@@ -264,7 +264,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                                 if (_cCHDB.ThemYeuCauCHDB(ycchdb))
                                 {
-                                    _dontxl.DaGiaiQuyet = true;
                                     Clear();
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     txtMaDon.Focus();
@@ -311,7 +310,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                                 if (_cCHDB.ThemYeuCauCHDB(ycchdb))
                                 {
-                                    _donkh.DaGiaiQuyet = true;
                                     Clear();
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     txtMaDon.Focus();

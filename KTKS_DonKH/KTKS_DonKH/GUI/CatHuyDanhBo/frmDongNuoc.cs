@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.LinQ;
-using KTKS_DonKH.DAL.KhachHang;
+using KTKS_DonKH.DAL.ToKhachHang;
 using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.DAL.DongNuoc;
@@ -297,7 +297,6 @@ namespace KTKS_DonKH.GUI.DongNuoc
                                     dongnuoc.MaDonTXL = _dontxl.MaDon;
                                     if (_cDongNuoc.Them(dongnuoc))
                                     {
-                                        _dontxl.DaGiaiQuyet = true;
                                     }
                                 }
                                 if (_cDongNuoc.CheckCTByMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim()))
@@ -352,7 +351,6 @@ namespace KTKS_DonKH.GUI.DongNuoc
                                     dongnuoc.MaDon = _donkh.MaDon;
                                     if (_cDongNuoc.Them(dongnuoc))
                                     {
-                                        _donkh.DaGiaiQuyet = true;
                                     }
                                 }
                                 if (_cDongNuoc.CheckCTByMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim()))

@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>473</ApplicationRevision>
+    <ApplicationRevision>474</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -346,43 +346,43 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="BaoCao\KhachHang\rptToTrinh.cs">
+    <Compile Include="BaoCao\ToKhachHang\rptToTrinh.cs">
       <DependentUpon>rptToTrinh.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="BaoCao\KhachHang\rptDSDonDienThoai.cs">
+    <Compile Include="BaoCao\ToKhachHang\rptDSDonDienThoai.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptDSDonDienThoai.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BaoCao\KhachHang\rptSubThongKeDonKH.cs">
+    <Compile Include="BaoCao\ToKhachHang\rptSubThongKeDonKH.cs">
       <DependentUpon>rptSubThongKeDonKH.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="BaoCao\KhachHang\rptChiTietDon.cs">
+    <Compile Include="BaoCao\ToKhachHang\rptChiTietDon.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptChiTietDon.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BaoCao\KhachHang\rptDSDonKH.cs">
+    <Compile Include="BaoCao\ToKhachHang\rptDSDonKH.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptDSDonKH.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BaoCao\KhachHang\rptThongKeDonKH.cs">
+    <Compile Include="BaoCao\ToKhachHang\rptThongKeDonKH.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptThongKeDonKH.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BaoCao\KhachHang\rptToTrinhDCHD.cs">
+    <Compile Include="BaoCao\ToKhachHang\rptToTrinhDCHD.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptToTrinhDCHD.rpt</DependentUpon>
@@ -469,7 +469,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetBaoCao.xsd</DependentUpon>
     </Compile>
-    <Compile Include="BaoCao\KhachHang\rptBienNhanDonKH.cs">
+    <Compile Include="BaoCao\ToKhachHang\rptBienNhanDonKH.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptBienNhanDonKH.rpt</DependentUpon>
@@ -584,13 +584,13 @@
     <Compile Include="DAL\DonTu\CNoiChuyen.cs" />
     <Compile Include="DAL\DonTu\CPhongBanDoi.cs" />
     <Compile Include="DAL\CExcel.cs" />
-    <Compile Include="DAL\KhachHang\CThongTinKhachHang.cs" />
+    <Compile Include="DAL\ToKhachHang\CThongTinKhachHang.cs" />
     <Compile Include="DAL\QuanTri\CBanGiamDoc.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CChiNhanh.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CGiaNuoc.cs" />
     <Compile Include="DAL\KiemTraXacMinh\CHienTrangKiemTra.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CLoaiChungTu.cs" />
-    <Compile Include="DAL\KhachHang\CLoaiDon.cs" />
+    <Compile Include="DAL\ToKhachHang\CLoaiDon.cs" />
     <Compile Include="DAL\QuanTri\CMenu.cs" />
     <Compile Include="DAL\QuanTri\CNhom.cs" />
     <Compile Include="DAL\QuanTri\CPhanQuyenNhom.cs" />
@@ -612,8 +612,8 @@
     <Compile Include="DAL\CatHuyDanhBo\CDongNuoc.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CTBKetQuaYCCatDM.cs" />
     <Compile Include="DAL\QuanTri\CTaiKhoan.cs" />
-    <Compile Include="DAL\KhachHang\CDonDienThoai.cs" />
-    <Compile Include="DAL\KhachHang\CDonKH.cs" />
+    <Compile Include="DAL\ToKhachHang\CDonDienThoai.cs" />
+    <Compile Include="DAL\ToKhachHang\CDonKH.cs" />
     <Compile Include="DAL\KiemTraXacMinh\CKTXM.cs" />
     <Compile Include="DAL\ThaoThuTraLoi\CGhiChuCTTTTL.cs" />
     <Compile Include="DAL\ThaoThuTraLoi\CTTTL.cs" />
@@ -670,16 +670,10 @@
     <Compile Include="GUI\CatHuyDanhBo\frmNoiDungXuLyCHDB.Designer.cs">
       <DependentUpon>frmNoiDungXuLyCHDB.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\KhachHang\frmShowDonKH.cs">
+    <Compile Include="GUI\ToKhachHang\frmToTrinhDCHD.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\KhachHang\frmShowDonKH.Designer.cs">
-      <DependentUpon>frmShowDonKH.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\KhachHang\frmToTrinhDCHD.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\KhachHang\frmToTrinhDCHD.Designer.cs">
+    <Compile Include="GUI\ToKhachHang\frmToTrinhDCHD.Designer.cs">
       <DependentUpon>frmToTrinhDCHD.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\QuanTri\frmBanGiamDoc.cs">
@@ -706,10 +700,10 @@
     <Compile Include="GUI\DieuChinhBienDong\frmLoaiChungTu.Designer.cs">
       <DependentUpon>frmLoaiChungTu.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\KhachHang\frmLoaiDon.cs">
+    <Compile Include="GUI\ToKhachHang\frmLoaiDon.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\KhachHang\frmLoaiDon.Designer.cs">
+    <Compile Include="GUI\ToKhachHang\frmLoaiDon.Designer.cs">
       <DependentUpon>frmLoaiDon.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\KiemTraXacMinh\frmHienTrangKiemTra.cs">
@@ -862,52 +856,52 @@
     <Compile Include="GUI\QuanTri\frmTaiKhoan.Designer.cs">
       <DependentUpon>frmTaiKhoan.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\KhachHang\frmBaoCaoDonKH.cs">
+    <Compile Include="GUI\ToKhachHang\frmBaoCaoDonKH.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\KhachHang\frmBaoCaoDonKH.Designer.cs">
+    <Compile Include="GUI\ToKhachHang\frmBaoCaoDonKH.Designer.cs">
       <DependentUpon>frmBaoCaoDonKH.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\KhachHang\frmCapNhatDonKH.cs">
+    <Compile Include="GUI\ToKhachHang\frmCapNhatDonKH.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\KhachHang\frmCapNhatDonKH.Designer.cs">
+    <Compile Include="GUI\ToKhachHang\frmCapNhatDonKH.Designer.cs">
       <DependentUpon>frmCapNhatDonKH.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\KhachHang\frmNhanDonDienThoai.cs">
+    <Compile Include="GUI\ToKhachHang\frmNhanDonDienThoai.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\KhachHang\frmNhanDonDienThoai.Designer.cs">
+    <Compile Include="GUI\ToKhachHang\frmNhanDonDienThoai.Designer.cs">
       <DependentUpon>frmNhanDonDienThoai.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\KhachHang\frmNhanDonKH.cs">
+    <Compile Include="GUI\ToKhachHang\frmNhanDonKH.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\KhachHang\frmNhanDonKH.Designer.cs">
+    <Compile Include="GUI\ToKhachHang\frmNhanDonKH.Designer.cs">
       <DependentUpon>frmNhanDonKH.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\KhachHang\frmNhapNhieuDBTKH.cs">
+    <Compile Include="GUI\ToKhachHang\frmNhapNhieuDBTKH.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\KhachHang\frmNhapNhieuDBTKH.Designer.cs">
+    <Compile Include="GUI\ToKhachHang\frmNhapNhieuDBTKH.Designer.cs">
       <DependentUpon>frmNhapNhieuDBTKH.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\KhachHang\frmDSDonDienThoai.cs">
+    <Compile Include="GUI\ToKhachHang\frmDSDonDienThoai.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\KhachHang\frmDSDonDienThoai.Designer.cs">
+    <Compile Include="GUI\ToKhachHang\frmDSDonDienThoai.Designer.cs">
       <DependentUpon>frmDSDonDienThoai.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\KhachHang\frmDSDonKH.cs">
+    <Compile Include="GUI\ToKhachHang\frmDSDonKH.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\KhachHang\frmDSDonKH.Designer.cs">
+    <Compile Include="GUI\ToKhachHang\frmDSDonKH.Designer.cs">
       <DependentUpon>frmDSDonKH.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\KhachHang\frmShowNhanDonDienThoai.cs">
+    <Compile Include="GUI\ToKhachHang\frmShowNhanDonDienThoai.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\KhachHang\frmShowNhanDonDienThoai.Designer.cs">
+    <Compile Include="GUI\ToKhachHang\frmShowNhanDonDienThoai.Designer.cs">
       <DependentUpon>frmShowNhanDonDienThoai.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\KiemTraXacMinh\frmBaoCaoKTXM.cs">
@@ -1242,31 +1236,31 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThongBaoDN.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\KhachHang\rptToTrinh.rpt">
+    <EmbeddedResource Include="BaoCao\ToKhachHang\rptToTrinh.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptToTrinh.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\KhachHang\rptDSDonDienThoai.rpt">
+    <EmbeddedResource Include="BaoCao\ToKhachHang\rptDSDonDienThoai.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSDonDienThoai.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\KhachHang\rptSubThongKeDonKH.rpt">
+    <EmbeddedResource Include="BaoCao\ToKhachHang\rptSubThongKeDonKH.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptSubThongKeDonKH.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\KhachHang\rptChiTietDon.rpt">
+    <EmbeddedResource Include="BaoCao\ToKhachHang\rptChiTietDon.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptChiTietDon.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\KhachHang\rptDSDonKH.rpt">
+    <EmbeddedResource Include="BaoCao\ToKhachHang\rptDSDonKH.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSDonKH.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\KhachHang\rptThongKeDonKH.rpt">
+    <EmbeddedResource Include="BaoCao\ToKhachHang\rptThongKeDonKH.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThongKeDonKH.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\KhachHang\rptToTrinhDCHD.rpt">
+    <EmbeddedResource Include="BaoCao\ToKhachHang\rptToTrinhDCHD.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptToTrinhDCHD.cs</LastGenOutput>
     </EmbeddedResource>
@@ -1322,7 +1316,7 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPhieuYCCatDM.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\KhachHang\rptBienNhanDonKH.rpt">
+    <EmbeddedResource Include="BaoCao\ToKhachHang\rptBienNhanDonKH.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptBienNhanDonKH.cs</LastGenOutput>
     </EmbeddedResource>
@@ -1418,10 +1412,7 @@
     <EmbeddedResource Include="GUI\CatHuyDanhBo\frmNoiDungXuLyCHDB.resx">
       <DependentUpon>frmNoiDungXuLyCHDB.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\KhachHang\frmShowDonKH.resx">
-      <DependentUpon>frmShowDonKH.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\KhachHang\frmToTrinhDCHD.resx">
+    <EmbeddedResource Include="GUI\ToKhachHang\frmToTrinhDCHD.resx">
       <DependentUpon>frmToTrinhDCHD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanTri\frmBanGiamDoc.resx">
@@ -1439,7 +1430,7 @@
     <EmbeddedResource Include="GUI\HeThong\frmAdmin.resx">
       <DependentUpon>frmAdmin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\KhachHang\frmLoaiDon.resx">
+    <EmbeddedResource Include="GUI\ToKhachHang\frmLoaiDon.resx">
       <DependentUpon>frmLoaiDon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\KiemTraXacMinh\frmHienTrangKiemTra.resx">
@@ -1514,28 +1505,28 @@
     <EmbeddedResource Include="GUI\QuanTri\frmTaiKhoan.resx">
       <DependentUpon>frmTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\KhachHang\frmBaoCaoDonKH.resx">
+    <EmbeddedResource Include="GUI\ToKhachHang\frmBaoCaoDonKH.resx">
       <DependentUpon>frmBaoCaoDonKH.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\KhachHang\frmCapNhatDonKH.resx">
+    <EmbeddedResource Include="GUI\ToKhachHang\frmCapNhatDonKH.resx">
       <DependentUpon>frmCapNhatDonKH.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\KhachHang\frmNhanDonDienThoai.resx">
+    <EmbeddedResource Include="GUI\ToKhachHang\frmNhanDonDienThoai.resx">
       <DependentUpon>frmNhanDonDienThoai.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\KhachHang\frmNhanDonKH.resx">
+    <EmbeddedResource Include="GUI\ToKhachHang\frmNhanDonKH.resx">
       <DependentUpon>frmNhanDonKH.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\KhachHang\frmNhapNhieuDBTKH.resx">
+    <EmbeddedResource Include="GUI\ToKhachHang\frmNhapNhieuDBTKH.resx">
       <DependentUpon>frmNhapNhieuDBTKH.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\KhachHang\frmDSDonDienThoai.resx">
+    <EmbeddedResource Include="GUI\ToKhachHang\frmDSDonDienThoai.resx">
       <DependentUpon>frmDSDonDienThoai.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\KhachHang\frmDSDonKH.resx">
+    <EmbeddedResource Include="GUI\ToKhachHang\frmDSDonKH.resx">
       <DependentUpon>frmDSDonKH.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\KhachHang\frmShowNhanDonDienThoai.resx">
+    <EmbeddedResource Include="GUI\ToKhachHang\frmShowNhanDonDienThoai.resx">
       <DependentUpon>frmShowNhanDonDienThoai.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\KiemTraXacMinh\frmBaoCaoKTXM.resx">
@@ -1769,372 +1760,372 @@
   <ItemGroup>
     <PublishFile Include="CrystalDecisions.CrystalReports.Engine">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.ClientDoc">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.CommLayer">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.CommonControls">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.CommonObjectModel">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.Controllers">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.CubeDefModel">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.DataDefModel">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.DataSetConversion">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.ObjectFactory">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.Prompting">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.ReportDefModel">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.XmlSerialize">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportSource">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.Shared">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.Windows.Forms">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.BonusSkins.v13.1">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.Data.v13.1">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.Office.v13.1.Core">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.Pdf.v13.1.Core">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.Printing.v13.1.Core">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.RichEdit.v13.1.Core">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.Sparkline.v13.1.Core">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.Utils.v13.1">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.XtraBars.v13.1">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.XtraEditors.v13.1">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.XtraGrid.v13.1">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.XtraLayout.v13.1">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.XtraPdfViewer.v13.1">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.XtraPrinting.v13.1">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.XtraTreeList.v13.1">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="FlashControlV71">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="log4net">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="ShockwaveFlashObjects">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Sources\DevComponents.DotNetBar2.dll">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
     <PublishFile Include="Sources\System.Windows.Forms.Ribbon35.dll">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
     <PublishFile Include="stdole">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>

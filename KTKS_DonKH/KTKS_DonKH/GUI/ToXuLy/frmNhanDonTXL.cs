@@ -142,10 +142,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         dgvLichSuDon.Sort(dgvLichSuDon.Columns["CreateDate"], ListSortDirection.Descending);
                 }
                 else
-                {
                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Clear();
-                }
             }
         }
 
@@ -161,7 +158,6 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         dontxl.MaDon = _cDonTXL.getMaxNextID();
                         dontxl.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                         dontxl.SoCongVan = txtSoCongVan.Text.Trim();
-                        dontxl.TongSoDanhBo = int.Parse(txtTongSoDanhBo.Text.Trim());
                         dontxl.NoiDung = txtNoiDung.Text.Trim();
 
                         dontxl.DanhBo = txtDanhBo.Text.Trim();
@@ -273,8 +269,6 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
                     cmbLD.SelectedValue = _dontxl.MaLD.Value;
                     txtSoCongVan.Text = _dontxl.SoCongVan;
-                    if (_dontxl.TongSoDanhBo != null)
-                        txtTongSoDanhBo.Text = _dontxl.TongSoDanhBo.Value.ToString();
                     txtMaDon.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
                     txtNgayNhan.Text = _dontxl.CreateDate.Value.ToString("dd/MM/yyyy");
                     txtNoiDung.Text = _dontxl.NoiDung;
@@ -313,7 +307,6 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
                         _dontxl.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                         _dontxl.SoCongVan = txtSoCongVan.Text.Trim();
-                        _dontxl.TongSoDanhBo = int.Parse(txtTongSoDanhBo.Text.Trim());
                         if (_hoadon != null && _dontxl.DanhBo != txtDanhBo.Text.Trim())
                         {
                             _dontxl.Dot = _hoadon.DOT.ToString();

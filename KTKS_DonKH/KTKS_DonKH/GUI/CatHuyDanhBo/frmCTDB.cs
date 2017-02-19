@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.DAL.CatHuyDanhBo;
-using KTKS_DonKH.DAL.KhachHang;
+using KTKS_DonKH.DAL.ToKhachHang;
 using KTKS_DonKH.DAL.KiemTraXacMinh;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.CatHuyDanhBo;
@@ -307,7 +307,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 chdb.MaDonTXL = _dontxl.MaDon;
                                 if (_cCHDB.ThemCHDB(chdb))
                                 {
-                                    _dontxl.DaGiaiQuyet = true;
                                 }
                             }
                             if (_cCHDB.CheckCTCTDBbyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim()))
@@ -364,7 +363,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 chdb.MaDon = _donkh.MaDon;
                                 if (_cCHDB.ThemCHDB(chdb))
                                 {
-                                    _donkh.DaGiaiQuyet = true;
                                 }
                             }
                             if (_cCHDB.CheckCTCTDBbyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim()))

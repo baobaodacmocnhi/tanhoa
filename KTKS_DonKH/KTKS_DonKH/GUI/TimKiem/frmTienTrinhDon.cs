@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.TimKiem;
-using KTKS_DonKH.GUI.KhachHang;
+using KTKS_DonKH.GUI.ToKhachHang;
 using DevExpress.XtraGrid.Views.Grid;
 using KTKS_DonKH.GUI.KiemTraXacMinh;
 using KTKS_DonKH.GUI.ThaoThuTraLoi;
@@ -129,19 +129,12 @@ namespace KTKS_DonKH.GUI.TimKiem
             {
                 if (((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["ToXuLy"].ToString() == "True")
                 {
-                    Dictionary<string, string> source = new Dictionary<string, string>();
-                    //source.Add("Action", "Tìm Kiếm");
-                    //source.Add("MaDon", ((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString());
                     frmNhanDonTXL frm = new frmNhanDonTXL(decimal.Parse(((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString()));
                     frm.ShowDialog();
                 }
                 else
                 {
-                    Dictionary<string, string> source = new Dictionary<string, string>();
-                    source.Add("Action", "Tìm Kiếm");
-                    source.Add("MaDon", ((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString());
-                    frmShowDonKH frm = new frmShowDonKH(source);
-                    //frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(decimal.Parse(((DataRowView)gridViewDCBD.GetRow(gridViewDCBD.GetSelectedRows()[0])).Row["MaDon"].ToString())));
+                    frmNhanDonKH frm = new frmNhanDonKH(decimal.Parse(((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString()));
                     frm.ShowDialog();
                 }
             }

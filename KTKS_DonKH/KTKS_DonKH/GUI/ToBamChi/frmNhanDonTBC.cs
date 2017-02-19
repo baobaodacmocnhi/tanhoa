@@ -143,10 +143,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
                         dgvLichSuDon.Sort(dgvLichSuDon.Columns["CreateDate"], ListSortDirection.Descending);
                 }
                 else
-                {
                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Clear();
-                }
             }
         }
 

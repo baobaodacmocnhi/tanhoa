@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.LinQ;
-using KTKS_DonKH.DAL.KhachHang;
+using KTKS_DonKH.DAL.ToKhachHang;
 using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.DAL;
 using KTKS_DonKH.DAL.KiemTraXacMinh;
@@ -250,7 +250,6 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
                                 if (_cKTXM.ThemKTXM(ktxm))
                                 {
-                                    _dontxl.DaGiaiQuyet = true;
                                 }
                             }
                             if (txtDanhBo.Text.Trim() != "" && _cKTXM.CheckCTKTXMbyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value))
@@ -329,7 +328,6 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
                                     if (_cKTXM.ThemKTXM(ktxm))
                                     {
-                                        _dontbc.GiaiQuyet = true;
                                     }
                                 }
                                 if (txtDanhBo.Text.Trim() != "" && _cKTXM.CheckCTKTXMbyMaDonDanhBo_TBC(_dontbc.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value))
@@ -406,7 +404,6 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                     ktxm.MaDon = _donkh.MaDon;
                                     if (_cKTXM.ThemKTXM(ktxm))
                                     {
-                                        _donkh.DaGiaiQuyet = true;
                                     }
                                 }
                                 if (_cKTXM.CheckCTKTXMbyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value))

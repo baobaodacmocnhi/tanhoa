@@ -16407,8 +16407,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _SoCongVan;
 		
-		private System.Nullable<int> _TongSoDanhBo;
-		
 		private string _DanhBo;
 		
 		private string _HopDong;
@@ -16549,8 +16547,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _GhiChuXepDon;
 		
-		private bool _DaGiaiQuyet;
-		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -16593,8 +16589,6 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaDonChanged();
     partial void OnSoCongVanChanging(string value);
     partial void OnSoCongVanChanged();
-    partial void OnTongSoDanhBoChanging(System.Nullable<int> value);
-    partial void OnTongSoDanhBoChanged();
     partial void OnDanhBoChanging(string value);
     partial void OnDanhBoChanged();
     partial void OnHopDongChanging(string value);
@@ -16735,8 +16729,6 @@ namespace KTKS_DonKH.LinQ
     partial void OnNgayXepDonChanged();
     partial void OnGhiChuXepDonChanging(string value);
     partial void OnGhiChuXepDonChanged();
-    partial void OnDaGiaiQuyetChanging(bool value);
-    partial void OnDaGiaiQuyetChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -16801,26 +16793,6 @@ namespace KTKS_DonKH.LinQ
 					this._SoCongVan = value;
 					this.SendPropertyChanged("SoCongVan");
 					this.OnSoCongVanChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongSoDanhBo", DbType="Int")]
-		public System.Nullable<int> TongSoDanhBo
-		{
-			get
-			{
-				return this._TongSoDanhBo;
-			}
-			set
-			{
-				if ((this._TongSoDanhBo != value))
-				{
-					this.OnTongSoDanhBoChanging(value);
-					this.SendPropertyChanging();
-					this._TongSoDanhBo = value;
-					this.SendPropertyChanged("TongSoDanhBo");
-					this.OnTongSoDanhBoChanged();
 				}
 			}
 		}
@@ -18229,26 +18201,6 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DaGiaiQuyet", DbType="Bit NOT NULL")]
-		public bool DaGiaiQuyet
-		{
-			get
-			{
-				return this._DaGiaiQuyet;
-			}
-			set
-			{
-				if ((this._DaGiaiQuyet != value))
-				{
-					this.OnDaGiaiQuyetChanging(value);
-					this.SendPropertyChanging();
-					this._DaGiaiQuyet = value;
-					this.SendPropertyChanged("DaGiaiQuyet");
-					this.OnDaGiaiQuyetChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
 		public System.Nullable<System.DateTime> CreateDate
 		{
@@ -18730,8 +18682,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _GhiChuChuyen_KTXM;
 		
-		private bool _GiaiQuyet;
-		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -18786,8 +18736,6 @@ namespace KTKS_DonKH.LinQ
     partial void OnNguoiDi_KTXMChanged();
     partial void OnGhiChuChuyen_KTXMChanging(string value);
     partial void OnGhiChuChuyen_KTXMChanged();
-    partial void OnGiaiQuyetChanging(bool value);
-    partial void OnGiaiQuyetChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -19208,26 +19156,6 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaiQuyet", DbType="Bit NOT NULL")]
-		public bool GiaiQuyet
-		{
-			get
-			{
-				return this._GiaiQuyet;
-			}
-			set
-			{
-				if ((this._GiaiQuyet != value))
-				{
-					this.OnGiaiQuyetChanging(value);
-					this.SendPropertyChanging();
-					this._GiaiQuyet = value;
-					this.SendPropertyChanged("GiaiQuyet");
-					this.OnGiaiQuyetChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
 		public System.Nullable<System.DateTime> CreateDate
 		{
@@ -19375,8 +19303,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _SoCongVan;
 		
-		private System.Nullable<int> _TongSoDanhBo;
-		
 		private string _DanhBo;
 		
 		private string _HopDong;
@@ -19471,8 +19397,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _TruyThu;
 		
-		private bool _DaGiaiQuyet;
-		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -19517,8 +19441,6 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaXepDonChanged();
     partial void OnSoCongVanChanging(string value);
     partial void OnSoCongVanChanged();
-    partial void OnTongSoDanhBoChanging(System.Nullable<int> value);
-    partial void OnTongSoDanhBoChanged();
     partial void OnDanhBoChanging(string value);
     partial void OnDanhBoChanged();
     partial void OnHopDongChanging(string value);
@@ -19613,8 +19535,6 @@ namespace KTKS_DonKH.LinQ
     partial void OnDieuChinhChanged();
     partial void OnTruyThuChanging(bool value);
     partial void OnTruyThuChanged();
-    partial void OnDaGiaiQuyetChanging(bool value);
-    partial void OnDaGiaiQuyetChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -19699,26 +19619,6 @@ namespace KTKS_DonKH.LinQ
 					this._SoCongVan = value;
 					this.SendPropertyChanged("SoCongVan");
 					this.OnSoCongVanChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongSoDanhBo", DbType="Int")]
-		public System.Nullable<int> TongSoDanhBo
-		{
-			get
-			{
-				return this._TongSoDanhBo;
-			}
-			set
-			{
-				if ((this._TongSoDanhBo != value))
-				{
-					this.OnTongSoDanhBoChanging(value);
-					this.SendPropertyChanging();
-					this._TongSoDanhBo = value;
-					this.SendPropertyChanged("TongSoDanhBo");
-					this.OnTongSoDanhBoChanged();
 				}
 			}
 		}
@@ -20663,26 +20563,6 @@ namespace KTKS_DonKH.LinQ
 					this._TruyThu = value;
 					this.SendPropertyChanged("TruyThu");
 					this.OnTruyThuChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DaGiaiQuyet", DbType="Bit NOT NULL")]
-		public bool DaGiaiQuyet
-		{
-			get
-			{
-				return this._DaGiaiQuyet;
-			}
-			set
-			{
-				if ((this._DaGiaiQuyet != value))
-				{
-					this.OnDaGiaiQuyetChanging(value);
-					this.SendPropertyChanging();
-					this._DaGiaiQuyet = value;
-					this.SendPropertyChanged("DaGiaiQuyet");
-					this.OnDaGiaiQuyetChanged();
 				}
 			}
 		}

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.DieuChinhBienDong;
-using KTKS_DonKH.DAL.KhachHang;
+using KTKS_DonKH.DAL.ToKhachHang;
 using KTKS_DonKH.DAL.KiemTraXacMinh;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.DieuChinhBienDong;
@@ -328,7 +328,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                 if (_cDCBD.ThemDCBD(dcbd))
                                 {
-                                    _dontxl.DaGiaiQuyet = true;
                                 }
                             }
                             if (_cDCBD.CheckCTDCBDbyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim()))
@@ -466,7 +465,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dcbd.MaDon = _donkh.MaDon;
                                 if (_cDCBD.ThemDCBD(dcbd))
                                 {
-                                    _donkh.DaGiaiQuyet = true;
                                 }
                             }
                             if (_cDCBD.CheckCTDCBDbyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim()))

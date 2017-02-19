@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.GUI.HeThong;
 using KTKS_DonKH.DAL.QuanTri;
-using KTKS_DonKH.GUI.KhachHang;
+using KTKS_DonKH.GUI.ToKhachHang;
 using KTKS_DonKH.GUI.KiemTraXacMinh;
 using KTKS_DonKH.GUI.DieuChinhBienDong;
 using KTKS_DonKH.GUI.CatHuyDanhBo;

@@ -74,7 +74,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                return db.LoaiDonTXLs.OrderBy(item => item.STT).ToList();
+                return db.LoaiDonTXLs.OrderBy(item=>item.An).ThenBy(item => item.STT).ToList();
             }
             catch (Exception ex)
             {
