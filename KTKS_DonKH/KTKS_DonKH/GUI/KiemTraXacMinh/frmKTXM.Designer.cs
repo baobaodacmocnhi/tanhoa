@@ -264,7 +264,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(815, 316);
+            this.btnThem.Location = new System.Drawing.Point(777, 316);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 25);
             this.btnThem.TabIndex = 4;
@@ -689,7 +689,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(896, 316);
+            this.btnSua.Location = new System.Drawing.Point(777, 347);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 25);
             this.btnSua.TabIndex = 5;
@@ -709,7 +709,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(977, 315);
+            this.btnXoa.Location = new System.Drawing.Point(777, 378);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 25);
             this.btnXoa.TabIndex = 8;

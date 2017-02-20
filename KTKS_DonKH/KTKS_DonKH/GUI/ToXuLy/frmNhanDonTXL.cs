@@ -47,9 +47,30 @@ namespace KTKS_DonKH.GUI.ToXuLy
             txtHopDong.Text = hoadon.HOPDONG;
             txtHoTen.Text = hoadon.TENKH;
             txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
-            txtMSThue.Text = hoadon.MST;
             txtGiaBieu.Text = hoadon.GB.ToString();
             txtDinhMuc.Text = hoadon.DM.ToString();
+        }
+
+        public void LoadDonTXL(DonTXL dontxl)
+        {
+            cmbLD.SelectedValue = dontxl.MaLD.Value;
+            txtSoCongVan.Text = dontxl.SoCongVan;
+            txtMaDon.Text = "TXL" + dontxl.MaDon.ToString().Insert(dontxl.MaDon.ToString().Length - 2, "-");
+            txtNgayNhan.Text = dontxl.CreateDate.Value.ToString("dd/MM/yyyy");
+            txtNoiDung.Text = dontxl.NoiDung;
+            ///
+            txtDanhBo.Text = dontxl.DanhBo;
+            txtHopDong.Text = dontxl.HopDong;
+            txtDienThoai.Text = dontxl.DienThoai;
+            txtHoTen.Text = dontxl.HoTen;
+            txtDiaChi.Text = dontxl.DiaChi;
+            txtGiaBieu.Text = dontxl.GiaBieu;
+            txtDinhMuc.Text = dontxl.DinhMuc;
+            ///
+            dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("TXL", dontxl.MaDon);
+            cmbNoiChuyen.SelectedIndex = -1;
+            dateChuyen.Value = DateTime.Now;
+            txtGhiChu.Text = "";
         }
 
         public void Clear()
@@ -59,13 +80,11 @@ namespace KTKS_DonKH.GUI.ToXuLy
             txtNgayNhan.Text = "";
             txtNoiDung.Text = "";
             txtSoCongVan.Text = "";
-            txtTongSoDanhBo.Text = "1";
             ///
             txtDanhBo.Text = "";
             txtHopDong.Text = "";
             txtHoTen.Text = "";
             txtDiaChi.Text = "";
-            txtMSThue.Text = "";
             txtGiaBieu.Text = "";
             txtDinhMuc.Text = "";
             txtDienThoai.Text = "";
@@ -165,7 +184,6 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         dontxl.HoTen = txtHoTen.Text.Trim();
                         dontxl.DiaChi = txtDiaChi.Text.Trim();
                         dontxl.DienThoai = txtDienThoai.Text.Trim();
-                        dontxl.MSThue = txtMSThue.Text.Trim();
                         dontxl.GiaBieu = txtGiaBieu.Text.Trim();
                         dontxl.DinhMuc = txtDinhMuc.Text.Trim();
                         if (_hoadon != null)
@@ -188,7 +206,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                                         {
                                             if (cmbNoiChuyen.SelectedValue.ToString() == "1")///KTXM
                                             {
-                                                LichSuChuyenKT lichsuchuyenkt = new LichSuChuyenKT();
+                                                LichSuChuyenKTXM lichsuchuyenkt = new LichSuChuyenKTXM();
                                                 lichsuchuyenkt.NgayChuyen = dateChuyen.Value;
                                                 lichsuchuyenkt.NguoiDi = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
                                                 lichsuchuyenkt.GhiChuChuyen = txtGhiChu.Text.Trim();
@@ -267,25 +285,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 {
                     _dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("TXL", "").Replace("txl", "").Replace("-", "")));
 
-                    cmbLD.SelectedValue = _dontxl.MaLD.Value;
-                    txtSoCongVan.Text = _dontxl.SoCongVan;
-                    txtMaDon.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
-                    txtNgayNhan.Text = _dontxl.CreateDate.Value.ToString("dd/MM/yyyy");
-                    txtNoiDung.Text = _dontxl.NoiDung;
-                    ///
-                    txtDanhBo.Text = _dontxl.DanhBo;
-                    txtHopDong.Text = _dontxl.HopDong;
-                    txtDienThoai.Text = _dontxl.DienThoai;
-                    txtHoTen.Text = _dontxl.HoTen;
-                    txtDiaChi.Text = _dontxl.DiaChi;
-                    txtMSThue.Text = _dontxl.MSThue;
-                    txtGiaBieu.Text = _dontxl.GiaBieu;
-                    txtDinhMuc.Text = _dontxl.DinhMuc;
-                    ///
-                    dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("TXL", _dontxl.MaDon);
-                    cmbNoiChuyen.SelectedIndex = -1;
-                    dateChuyen.Value = DateTime.Now;
-                    txtGhiChu.Text = "";
+                    LoadDonTXL(_dontxl);
                 }
                 else
                 {
@@ -319,7 +319,6 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         _dontxl.HoTen = txtHoTen.Text.Trim();
                         _dontxl.DiaChi = txtDiaChi.Text.Trim();
                         _dontxl.DienThoai = txtDienThoai.Text.Trim();
-                        _dontxl.MSThue = txtMSThue.Text.Trim();
                         _dontxl.GiaBieu = txtGiaBieu.Text.Trim();
                         _dontxl.DinhMuc = txtDinhMuc.Text.Trim();
                         _dontxl.NoiDung = txtNoiDung.Text.Trim();
@@ -568,16 +567,16 @@ namespace KTKS_DonKH.GUI.ToXuLy
                             {
                                 if (cmbNoiChuyen.SelectedValue.ToString() == "1")///KTXM
                                 {
-                                    LichSuChuyenKT lichsuchuyenkt = new LichSuChuyenKT();
+                                    LichSuChuyenKTXM lichsuchuyenkt = new LichSuChuyenKTXM();
                                     lichsuchuyenkt.NgayChuyen = dateChuyen.Value;
                                     lichsuchuyenkt.NguoiDi = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
                                     lichsuchuyenkt.GhiChuChuyen = txtGhiChu.Text.Trim();
                                     lichsuchuyenkt.MaDonTXL = _dontxl.MaDon;
                                     _cLichSuDonTu.Them(lichsuchuyenkt);
 
-                                    _dontxl.NguoiDi = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
-                                    _dontxl.NgayChuyenKT = dateChuyen.Value;
-                                    _dontxl.GhiChuChuyenKT = txtGhiChu.Text.Trim();
+                                    _dontxl.NguoiDi_KTXM = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+                                    _dontxl.NgayChuyen_KTXM = dateChuyen.Value;
+                                    _dontxl.GhiChuChuyen_KTXM = txtGhiChu.Text.Trim();
                                     _cDonTXL.SuaDonTXL(_dontxl);
                                 }
                                 LichSuDonTu entity = new LichSuDonTu();
@@ -644,5 +643,30 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 contextMenuStrip1.Show(dgvLichSuDonTu, new Point(e.X, e.Y));
             }
         }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
+            {
+                try
+                {
+                    if (_dontxl != null && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        if (_cDonTXL.XoaDonTXL(_dontxl))
+                        {
+                            Clear();
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
     }
 }

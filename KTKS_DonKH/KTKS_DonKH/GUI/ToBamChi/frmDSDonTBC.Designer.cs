@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_KhoangThoiGian = new System.Windows.Forms.Panel();
             this.dateTu = new System.Windows.Forms.DateTimePicker();
             this.dateDen = new System.Windows.Forms.DateTimePicker();
@@ -40,9 +40,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvDonTBC = new System.Windows.Forms.DataGridView();
-            this.chkAll = new System.Windows.Forms.CheckBox();
-            this.btnXem = new System.Windows.Forms.Button();
-            this.btnInDS = new System.Windows.Forms.Button();
             this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenLD = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,6 +51,8 @@
             this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NguoiDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GiaiQuyet = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnXem = new System.Windows.Forms.Button();
+            this.btnInDS = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDonTBC)).BeginInit();
             this.SuspendLayout();
@@ -152,14 +151,14 @@
             // 
             this.dgvDonTBC.AllowUserToAddRows = false;
             this.dgvDonTBC.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDonTBC.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDonTBC.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDonTBC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDonTBC.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaDon,
@@ -178,48 +177,17 @@
             this.dgvDonTBC.MultiSelect = false;
             this.dgvDonTBC.Name = "dgvDonTBC";
             this.dgvDonTBC.RowHeadersWidth = 60;
-            this.dgvDonTBC.Size = new System.Drawing.Size(1362, 572);
+            this.dgvDonTBC.Size = new System.Drawing.Size(1362, 550);
             this.dgvDonTBC.TabIndex = 27;
             this.dgvDonTBC.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDonTBC_CellFormatting);
             this.dgvDonTBC.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDonTBC_RowPostPaint);
             this.dgvDonTBC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDonTBC_KeyDown);
             // 
-            // chkAll
-            // 
-            this.chkAll.AutoSize = true;
-            this.chkAll.ForeColor = System.Drawing.Color.Red;
-            this.chkAll.Location = new System.Drawing.Point(78, 43);
-            this.chkAll.Name = "chkAll";
-            this.chkAll.Size = new System.Drawing.Size(103, 21);
-            this.chkAll.TabIndex = 37;
-            this.chkAll.Text = "Chọn Tất Cả";
-            this.chkAll.UseVisualStyleBackColor = true;
-            // 
-            // btnXem
-            // 
-            this.btnXem.Location = new System.Drawing.Point(541, 10);
-            this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(75, 25);
-            this.btnXem.TabIndex = 39;
-            this.btnXem.Text = "Xem";
-            this.btnXem.UseVisualStyleBackColor = true;
-            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
-            // 
-            // btnInDS
-            // 
-            this.btnInDS.Location = new System.Drawing.Point(622, 10);
-            this.btnInDS.Name = "btnInDS";
-            this.btnInDS.Size = new System.Drawing.Size(75, 25);
-            this.btnInDS.TabIndex = 40;
-            this.btnInDS.Text = "In DS";
-            this.btnInDS.UseVisualStyleBackColor = true;
-            this.btnInDS.Click += new System.EventHandler(this.btnInDS_Click);
-            // 
             // MaDon
             // 
             this.MaDon.DataPropertyName = "MaDon";
-            dataGridViewCellStyle2.NullValue = null;
-            this.MaDon.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.NullValue = null;
+            this.MaDon.DefaultCellStyle = dataGridViewCellStyle4;
             this.MaDon.HeaderText = "Mã Đơn";
             this.MaDon.Name = "MaDon";
             this.MaDon.ReadOnly = true;
@@ -298,6 +266,26 @@
             this.GiaiQuyet.Name = "GiaiQuyet";
             this.GiaiQuyet.Width = 50;
             // 
+            // btnXem
+            // 
+            this.btnXem.Location = new System.Drawing.Point(541, 10);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 25);
+            this.btnXem.TabIndex = 39;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
+            // 
+            // btnInDS
+            // 
+            this.btnInDS.Location = new System.Drawing.Point(622, 10);
+            this.btnInDS.Name = "btnInDS";
+            this.btnInDS.Size = new System.Drawing.Size(75, 25);
+            this.btnInDS.TabIndex = 40;
+            this.btnInDS.Text = "In DS";
+            this.btnInDS.UseVisualStyleBackColor = true;
+            this.btnInDS.Click += new System.EventHandler(this.btnInDS_Click);
+            // 
             // frmDSDonTBC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -307,7 +295,6 @@
             this.ClientSize = new System.Drawing.Size(1395, 656);
             this.Controls.Add(this.btnInDS);
             this.Controls.Add(this.btnXem);
-            this.Controls.Add(this.chkAll);
             this.Controls.Add(this.cmbTimTheo);
             this.Controls.Add(this.txtNoiDungTimKiem);
             this.Controls.Add(this.label1);
@@ -339,7 +326,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgvDonTBC;
-        private System.Windows.Forms.CheckBox chkAll;
         private System.Windows.Forms.Button btnXem;
         private System.Windows.Forms.Button btnInDS;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;

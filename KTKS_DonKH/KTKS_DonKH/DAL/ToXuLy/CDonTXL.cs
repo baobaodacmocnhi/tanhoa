@@ -121,7 +121,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonTXL.LyDoChuyen,
                                     itemDonTXL.SoLuongDiaChi,
                                     CreateBy = itemUser.HoTen,
-                                    itemDonTXL.NguoiDi,
+                                    itemDonTXL.NguoiDi_KTXM,
                                 };
                     return LINQToDataTable(query);
             }
@@ -139,7 +139,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                     var query = from itemDonTXL in db.DonTXLs
                                 join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
                                 join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
-                                where itemDonTXL.ChuyenKT == false
+                                where itemDonTXL.Chuyen_KTXM == false
                                 orderby itemDonTXL.MaDon ascending
                                 select new
                                 {
@@ -155,7 +155,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonTXL.LyDoChuyen,
                                     itemDonTXL.SoLuongDiaChi,
                                     CreateBy = itemUser.HoTen,
-                                    itemDonTXL.NguoiDi,
+                                    itemDonTXL.NguoiDi_KTXM,
                                 };
                     return LINQToDataTable(query);
             }
@@ -173,7 +173,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                     var query = from itemDonTXL in db.DonTXLs
                                 join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
                                 join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
-                                where itemDonTXL.ChuyenKT == true
+                                where itemDonTXL.Chuyen_KTXM == true
                                 orderby itemDonTXL.CreateDate descending
                                 select new
                                 {
@@ -189,7 +189,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonTXL.LyDoChuyen,
                                     itemDonTXL.SoLuongDiaChi,
                                     CreateBy = itemUser.HoTen,
-                                    itemDonTXL.NguoiDi,
+                                    itemDonTXL.NguoiDi_KTXM,
                                 };
                     return LINQToDataTable(query);
             }
@@ -223,7 +223,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 itemDonTXL.LyDoChuyen,
                                 itemDonTXL.SoLuongDiaChi,
                                 CreateBy = itemUser.HoTen,
-                                itemDonTXL.NguoiDi,
+                                itemDonTXL.NguoiDi_KTXM,
                             };
                 return LINQToDataTable(query);
             }
@@ -258,7 +258,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonTXL.LyDoChuyen,
                                     itemDonTXL.SoLuongDiaChi,
                                     CreateBy = itemUser.HoTen,
-                                    itemDonTXL.NguoiDi,
+                                    itemDonTXL.NguoiDi_KTXM,
                                 };
                     return LINQToDataTable(query);
             }
@@ -293,7 +293,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonTXL.LyDoChuyen,
                                     itemDonTXL.SoLuongDiaChi,
                                     CreateBy = itemUser.HoTen,
-                                    itemDonTXL.NguoiDi,
+                                    itemDonTXL.NguoiDi_KTXM,
                                 };
                     return LINQToDataTable(query);
             }
@@ -328,7 +328,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonTXL.LyDoChuyen,
                                     itemDonTXL.SoLuongDiaChi,
                                     CreateBy = itemUser.HoTen,
-                                    itemDonTXL.NguoiDi,
+                                    itemDonTXL.NguoiDi_KTXM,
                                 };
                     return LINQToDataTable(query);
             }
@@ -362,7 +362,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonTXL.LyDoChuyen,
                                     itemDonTXL.SoLuongDiaChi,
                                     CreateBy = itemUser.HoTen,
-                                    itemDonTXL.NguoiDi,
+                                    itemDonTXL.NguoiDi_KTXM,
                                     itemDonTXL.TienTrinh,
                                 };
                     return LINQToDataTable(query);
@@ -398,7 +398,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonTXL.LyDoChuyen,
                                     itemDonTXL.SoLuongDiaChi,
                                     CreateBy = itemUser.HoTen,
-                                    itemDonTXL.NguoiDi,
+                                    itemDonTXL.NguoiDi_KTXM,
                                     itemDonTXL.TienTrinh,
                                 };
                     return LINQToDataTable(query);
@@ -419,7 +419,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                    var query = from itemLSCKT in db.LichSuChuyenKTs
+                var query = from itemLSCKT in db.LichSuChuyenKTXMs
                                 join itemDonTXL in db.DonTXLs on itemLSCKT.MaDonTXL equals itemDonTXL.MaDon
                                 join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
                                 join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
@@ -460,7 +460,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                    var query = from itemLSCKT in db.LichSuChuyenKTs
+                var query = from itemLSCKT in db.LichSuChuyenKTXMs
                                 join itemDonTXL in db.DonTXLs on itemLSCKT.MaDonTXL equals itemDonTXL.MaDon
                                 join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
                                 join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
@@ -501,7 +501,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                    var query = from itemLSCKT in db.LichSuChuyenKTs
+                    var query = from itemLSCKT in db.LichSuChuyenKTXMs
                                 join itemDonKH in db.DonKHs on itemLSCKT.MaDon equals itemDonKH.MaDon
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
@@ -519,7 +519,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonKH.NoiDung,
                                     CreateBy = itemUser.HoTen,
                                     itemLSCKT.NguoiDi,
-                                    itemDonKH.GhiChuChuyenKT,
+                                    itemDonKH.GhiChuChuyen_KTXM,
                                 };
                     return LINQToDataTable(query);
             }
@@ -539,7 +539,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                    var query = from itemLSCKT in db.LichSuChuyenKTs
+                var query = from itemLSCKT in db.LichSuChuyenKTXMs
                                 join itemDonKH in db.DonKHs on itemLSCKT.MaDon equals itemDonKH.MaDon
                                 join itemLoaiDon in db.LoaiDonTXLs on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
@@ -557,7 +557,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonKH.NoiDung,
                                     CreateBy = itemUser.HoTen,
                                     itemLSCKT.NguoiDi,
-                                    itemDonKH.GhiChuChuyenKT,
+                                    itemDonKH.GhiChuChuyen_KTXM,
                                 };
                     return LINQToDataTable(query);
             }
@@ -572,7 +572,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                    var query = from itemLSCKT in db.LichSuChuyenKTs
+                var query = from itemLSCKT in db.LichSuChuyenKTXMs
                                 join itemDonKH in db.DonKHs on itemLSCKT.MaDon equals itemDonKH.MaDon
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
@@ -592,7 +592,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonKH.NoiDung,
                                     CreateBy = itemUser.HoTen,
                                     itemLSCKT.NguoiDi,
-                                    itemDonKH.GhiChuChuyenKT,
+                                    itemDonKH.GhiChuChuyen_KTXM,
                                 };
                     return LINQToDataTable(query);
             }
@@ -612,7 +612,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                    var query = from itemLSCKT in db.LichSuChuyenKTs
+                var query = from itemLSCKT in db.LichSuChuyenKTXMs
                                 join itemDonTXL in db.DonTXLs on itemLSCKT.MaDonTXL equals itemDonTXL.MaDon
                                 join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
                                 join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
@@ -653,7 +653,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                    var query = from itemLSCKT in db.LichSuChuyenKTs
+                    var query = from itemLSCKT in db.LichSuChuyenKTXMs
                                 join itemDonKH in db.DonKHs on itemLSCKT.MaDon equals itemDonKH.MaDon
                                 join itemLoaiDon in db.LoaiDonTXLs on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
@@ -671,7 +671,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonKH.NoiDung,
                                     CreateBy = itemUser.HoTen,
                                     itemLSCKT.NguoiDi,
-                                    itemDonKH.GhiChuChuyenKT,
+                                    itemDonKH.GhiChuChuyen_KTXM,
                                 };
                     return LINQToDataTable(query);
             }
@@ -1204,7 +1204,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                    var query = from itemLSCKT in db.LichSuChuyenKTs
+                    var query = from itemLSCKT in db.LichSuChuyenKTXMs
                                 join itemUser in db.Users on itemLSCKT.NguoiDi equals itemUser.MaU
                                 where itemLSCKT.MaDonTXL == MaDonTXL
                                 select new
@@ -1228,7 +1228,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                    var query = from itemLSCKT in db.LichSuChuyenKTs
+                    var query = from itemLSCKT in db.LichSuChuyenKTXMs
                                 join itemUser in db.Users on itemLSCKT.NguoiDi equals itemUser.MaU
                                 where itemLSCKT.MaDon == MaDonKH
                                 select new
@@ -1315,7 +1315,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
             string str = "";
             DataTable dt = new DataTable();
 
-            var query = from itemLSCKT in db.LichSuChuyenKTs
+            var query = from itemLSCKT in db.LichSuChuyenKTXMs
                         join itemUser in db.Users on itemLSCKT.NguoiDi equals itemUser.MaU
                         where itemLSCKT.MaDon == MaDon
                         select new

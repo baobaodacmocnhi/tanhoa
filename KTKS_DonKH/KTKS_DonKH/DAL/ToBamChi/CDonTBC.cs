@@ -235,5 +235,98 @@ namespace KTKS_DonKH.DAL.ToBamChi
                 return null;
             }
         }
+
+        public DataTable LoadDSDonTBCDaChuyenKT(DateTime TuNgay, DateTime DenNgay)
+        {
+            try
+            {
+                var query = from itemLSCKT in db.LichSuChuyenKTXMs
+                            join itemDonTBC in db.DonTBCs on itemLSCKT.MaDonTBC equals itemDonTBC.MaDon
+                            join itemLoaiDonTBC in db.LoaiDonTBCs on itemDonTBC.MaLD equals itemLoaiDonTBC.MaLD
+                            join itemUser in db.Users on itemDonTBC.CreateBy equals itemUser.MaU
+                            where itemLSCKT.MaDonTBC != null && itemLSCKT.NgayChuyen.Value.Date >= TuNgay.Date && itemLSCKT.NgayChuyen.Value.Date <= DenNgay.Date
+                            orderby itemDonTBC.MaDon ascending
+                            select new
+                            {
+                                itemDonTBC.MaDon,
+                                itemLoaiDonTBC.TenLD,
+                                itemDonTBC.SoCongVan,
+                                itemDonTBC.CreateDate,
+                                itemDonTBC.DanhBo,
+                                itemDonTBC.HoTen,
+                                itemDonTBC.DiaChi,
+                                itemDonTBC.NoiDung,
+                                CreateBy = itemUser.HoTen,
+                                itemLSCKT.NguoiDi,
+                                GhiChuChuyenKT = itemLSCKT.GhiChuChuyen,
+                            };
+                return LINQToDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSDonTBCDaChuyenKTbySoCongVan(string SoCongVan)
+        {
+            try
+            {
+                var query = from itemLSCKT in db.LichSuChuyenKTXMs
+                            join itemDonTBC in db.DonTBCs on itemLSCKT.MaDonTBC equals itemDonTBC.MaDon
+                            join itemLoaiDonTBC in db.LoaiDonTBCs on itemDonTBC.MaLD equals itemLoaiDonTBC.MaLD
+                            join itemUser in db.Users on itemDonTBC.CreateBy equals itemUser.MaU
+                            where itemLSCKT.MaDonTBC != null && itemDonTBC.SoCongVan.Contains(SoCongVan)
+                            orderby itemDonTBC.MaDon ascending
+                            select new
+                            {
+                                itemDonTBC.MaDon,
+                                itemLoaiDonTBC.TenLD,
+                                itemDonTBC.SoCongVan,
+                                itemDonTBC.CreateDate,
+                                itemDonTBC.DanhBo,
+                                itemDonTBC.HoTen,
+                                itemDonTBC.DiaChi,
+                                itemDonTBC.NoiDung,
+                                CreateBy = itemUser.HoTen,
+                                itemLSCKT.NguoiDi,
+                                GhiChuChuyenKT = itemLSCKT.GhiChuChuyen,
+                            };
+                return LINQToDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public bool CheckGiaiQuyetDonTXLbyUser(int MaU, decimal MaDonTBC)
+        {
+            if (db.CTKTXMs.Any(itemCTKTXM => itemCTKTXM.KTXM.MaDonTBC == MaDonTBC && itemCTKTXM.CreateBy == MaU))
+                return true;
+            else
+                return db.CTBamChis.Any(itemCTBamChi => itemCTBamChi.BamChi.MaDonTBC == MaDonTBC && itemCTBamChi.CreateBy == MaU);
+        }
+
+        public bool CheckGiaiQuyetDonTXLbyUser(int MaU, decimal MaDonTBC, out string NgayGiaiQuyet)
+        {
+            NgayGiaiQuyet = "";
+            if (db.CTKTXMs.Any(itemCTKTXM => itemCTKTXM.KTXM.MaDonTBC == MaDonTBC && itemCTKTXM.CreateBy == MaU))
+            {
+                NgayGiaiQuyet = db.CTKTXMs.FirstOrDefault(itemCTKTXM => itemCTKTXM.KTXM.MaDonTBC == MaDonTBC && itemCTKTXM.CreateBy == MaU).NgayKTXM.Value.ToString("dd/MM/yyyy");
+                return true;
+            }
+            else
+                if (db.CTBamChis.Any(itemCTBamChi => itemCTBamChi.BamChi.MaDonTBC == MaDonTBC && itemCTBamChi.CreateBy == MaU))
+                {
+                    NgayGiaiQuyet = db.CTBamChis.FirstOrDefault(itemCTBamChi => itemCTBamChi.BamChi.MaDonTBC == MaDonTBC && itemCTBamChi.CreateBy == MaU).NgayBC.Value.ToString("dd/MM/yyyy");
+                    return true;
+                }
+                else
+                    return false;
+        }
+
     }
 }

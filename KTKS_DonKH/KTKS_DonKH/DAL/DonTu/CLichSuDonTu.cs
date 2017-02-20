@@ -60,13 +60,13 @@ namespace KTKS_DonKH.DAL.DonTu
             switch (Loai)
             {
                 case "TKH":
-                    dt = LINQToDataTable(db.LichSuDonTus.Where(item => item.MaDon.Value == MaDon).OrderByDescending(item => item.NgayChuyen).ToList());
+                    dt = LINQToDataTable(db.LichSuDonTus.Where(item => item.MaDon.Value == MaDon).OrderByDescending(item => item.NgayChuyen).ThenByDescending(item=>item.ID).ToList());
                     break;
                 case "TXL":
-                    dt = LINQToDataTable(db.LichSuDonTus.Where(item => item.MaDonTXL.Value == MaDon).OrderByDescending(item => item.NgayChuyen).ToList());
+                    dt = LINQToDataTable(db.LichSuDonTus.Where(item => item.MaDonTXL.Value == MaDon).OrderByDescending(item => item.NgayChuyen).ThenByDescending(item => item.ID).ToList());
                     break;
                 case "TBC":
-                    dt = LINQToDataTable(db.LichSuDonTus.Where(item => item.MaDonTBC.Value == MaDon).OrderByDescending(item => item.NgayChuyen).ToList());
+                    dt = LINQToDataTable(db.LichSuDonTus.Where(item => item.MaDonTBC.Value == MaDon).OrderByDescending(item => item.NgayChuyen).ThenByDescending(item => item.ID).ToList());
                     break;
             }
             return dt;
@@ -142,14 +142,14 @@ namespace KTKS_DonKH.DAL.DonTu
 
 
 
-        public bool Them(LichSuChuyenKT lichsuchuyenkt)
+        public bool Them(LichSuChuyenKTXM lichsuchuyenkt)
         {
             try
             {
-                if (db.LichSuChuyenKTs.Count() > 0)
+                if (db.LichSuChuyenKTXMs.Count() > 0)
                 {
                     string ID = "MaLSChuyen";
-                    string Table = "LichSuChuyenKT";
+                    string Table = "LichSuChuyenKTXM";
                     decimal MaLSChuyen = db.ExecuteQuery<decimal>("declare @Ma int " +
                         "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
                         "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
@@ -159,7 +159,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     lichsuchuyenkt.MaLSChuyen = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                 lichsuchuyenkt.CreateDate = DateTime.Now;
                 lichsuchuyenkt.CreateBy = CTaiKhoan.MaUser;
-                db.LichSuChuyenKTs.InsertOnSubmit(lichsuchuyenkt);
+                db.LichSuChuyenKTXMs.InsertOnSubmit(lichsuchuyenkt);
                 db.SubmitChanges();
                 return true;
             }
@@ -170,7 +170,7 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
-        public bool Sua(LichSuChuyenKT lichsuchuyenkt)
+        public bool Sua(LichSuChuyenKTXM lichsuchuyenkt)
         {
             try
             {
@@ -186,11 +186,11 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
-        public bool Xoa(LichSuChuyenKT lichsuchuyenkt)
+        public bool Xoa(LichSuChuyenKTXM lichsuchuyenkt)
         {
             try
             {
-                db.LichSuChuyenKTs.DeleteOnSubmit(lichsuchuyenkt);
+                db.LichSuChuyenKTXMs.DeleteOnSubmit(lichsuchuyenkt);
                 db.SubmitChanges();
                 return true;
             }
@@ -201,11 +201,11 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
-        public LichSuChuyenKT Get(decimal MaLSChuyenKT)
+        public LichSuChuyenKTXM Get(decimal MaLSChuyenKT)
         {
             try
             {
-                return db.LichSuChuyenKTs.SingleOrDefault(item => item.MaLSChuyen == MaLSChuyenKT);
+                return db.LichSuChuyenKTXMs.SingleOrDefault(item => item.MaLSChuyen == MaLSChuyenKT);
             }
             catch (Exception)
             {

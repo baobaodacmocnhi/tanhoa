@@ -198,12 +198,12 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                             ///
                             if (item.Cells["NguoiDi"].Value != null)
                             {
-                                //string[] date = item.Cells["NgayChuyen"].Value.ToString().Split('/');
-                                //donkh.ChuyenKT = true;
-                                //donkh.NgayChuyenKT = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
-                                //donkh.NguoiDi = int.Parse(item.Cells["NguoiDi"].Value.ToString());
-                                //if (item.Cells["GhiChu"].Value != null)
-                                //    donkh.GhiChuChuyenKT = item.Cells["GhiChu"].Value.ToString();
+                                string[] date = item.Cells["NgayChuyen"].Value.ToString().Split('/');
+                                donkh.Chuyen_KTXM = true;
+                                donkh.NgayChuyen_KTXM = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
+                                donkh.NguoiDi_KTXM = int.Parse(item.Cells["NguoiDi"].Value.ToString());
+                                if (item.Cells["GhiChu"].Value != null)
+                                    donkh.GhiChuChuyen_KTXM = item.Cells["GhiChu"].Value.ToString();
                             }
                             ///
                             if (_cDonKH.ThemDonKH(donkh))
@@ -214,7 +214,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                                 if (item.Cells["NguoiDi"].Value != null)
                                 {
                                     string[] date = item.Cells["NgayChuyen"].Value.ToString().Split('/');
-                                    LichSuChuyenKT lichsuchuyenkt = new LichSuChuyenKT();
+                                    LichSuChuyenKTXM lichsuchuyenkt = new LichSuChuyenKTXM();
                                     lichsuchuyenkt.NgayChuyen = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
                                     lichsuchuyenkt.NguoiDi = int.Parse(item.Cells["NguoiDi"].Value.ToString());
                                     if (item.Cells["GhiChu"].Value != null)

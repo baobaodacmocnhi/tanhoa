@@ -740,14 +740,14 @@
       <Column Name="Nhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="MaLD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ChuyenKT" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="NgayChuyenKT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="NguoiDi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Chuyen_KTXM" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="NgayChuyen_KTXM" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NguoiDi_KTXM" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DM" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CCDM" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="STGB" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="KTTT" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="GhiChuChuyenKT" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GhiChuChuyen_KTXM" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="ChuyenVanPhong" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="NgayChuyenVanPhong" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="NguoiVanPhong" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -775,7 +775,7 @@
       <Association Name="DonKH_KTXM" Member="KTXMs" ThisKey="MaDon" OtherKey="MaDon" Type="KTXM" />
       <Association Name="DonKH_LichSuChuyenBanDoiKhac" Member="LichSuChuyenBanDoiKhacs" ThisKey="MaDon" OtherKey="MaDon" Type="LichSuChuyenBanDoiKhac" />
       <Association Name="DonKH_LichSuChuyenKhac" Member="LichSuChuyenKhacs" ThisKey="MaDon" OtherKey="MaDon" Type="LichSuChuyenKhac" />
-      <Association Name="DonKH_LichSuChuyenKT" Member="LichSuChuyenKTs" ThisKey="MaDon" OtherKey="MaDon" Type="LichSuChuyenKT" />
+      <Association Name="DonKH_LichSuChuyenKTXM" Member="LichSuChuyenKTXMs" ThisKey="MaDon" OtherKey="MaDon" Type="LichSuChuyenKTXM" />
       <Association Name="DonKH_LichSuChuyenVanPhong" Member="LichSuChuyenVanPhongs" ThisKey="MaDon" OtherKey="MaDon" Type="LichSuChuyenVanPhong" />
       <Association Name="DonKH_PhieuCHDB" Member="PhieuCHDBs" ThisKey="MaDon" OtherKey="MaDon" Type="PhieuCHDB" />
       <Association Name="DonKH_TruyThuTienNuoc" Member="TruyThuTienNuocs" ThisKey="MaDon" OtherKey="MaDon" Type="TruyThuTienNuoc" />
@@ -838,10 +838,10 @@
       <Column Name="TienTrinh" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="Nhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="MaLD" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ChuyenKT" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="NgayChuyenKT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="NguoiDi" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="GhiChuChuyenKT" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Chuyen_KTXM" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="NgayChuyen_KTXM" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NguoiDi_KTXM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GhiChuChuyen_KTXM" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="TKN" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DCG" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DCMS" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
@@ -875,7 +875,7 @@
       <Association Name="DonTXL_KTXM" Member="KTXMs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="KTXM" />
       <Association Name="DonTXL_LichSuChuyenBanDoiKhac" Member="LichSuChuyenBanDoiKhacs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="LichSuChuyenBanDoiKhac" />
       <Association Name="DonTXL_LichSuChuyenKhac" Member="LichSuChuyenKhacs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="LichSuChuyenKhac" />
-      <Association Name="DonTXL_LichSuChuyenKT" Member="LichSuChuyenKTs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="LichSuChuyenKT" />
+      <Association Name="DonTXL_LichSuChuyenKTXM" Member="LichSuChuyenKTXMs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="LichSuChuyenKTXM" />
       <Association Name="DonTXL_LichSuChuyenVanPhong" Member="LichSuChuyenVanPhongs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="LichSuChuyenVanPhong" />
       <Association Name="DonTXL_PhieuCHDB" Member="PhieuCHDBs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="PhieuCHDB" />
       <Association Name="DonTXL_TruyThuTienNuoc" Member="TruyThuTienNuocs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="TruyThuTienNuoc" />
@@ -1065,8 +1065,8 @@
       <Association Name="DonTXL_LichSuChuyenKhac" Member="DonTXL" ThisKey="MaDonTXL" OtherKey="MaDon" Type="DonTXL" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.LichSuChuyenKT" Member="LichSuChuyenKTs">
-    <Type Name="LichSuChuyenKT">
+  <Table Name="dbo.LichSuChuyenKTXM" Member="LichSuChuyenKTXMs">
+    <Type Name="LichSuChuyenKTXM">
       <Column Name="MaLSChuyen" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="NgayChuyen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="NguoiDi" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -1082,8 +1082,8 @@
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="DonKH_LichSuChuyenKT" Member="DonKH" ThisKey="MaDon" OtherKey="MaDon" Type="DonKH" IsForeignKey="true" />
-      <Association Name="DonTXL_LichSuChuyenKT" Member="DonTXL" ThisKey="MaDonTXL" OtherKey="MaDon" Type="DonTXL" IsForeignKey="true" />
+      <Association Name="DonKH_LichSuChuyenKTXM" Member="DonKH" ThisKey="MaDon" OtherKey="MaDon" Type="DonKH" IsForeignKey="true" />
+      <Association Name="DonTXL_LichSuChuyenKTXM" Member="DonTXL" ThisKey="MaDonTXL" OtherKey="MaDon" Type="DonTXL" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.LichSuChuyenVanPhong" Member="LichSuChuyenVanPhongs">

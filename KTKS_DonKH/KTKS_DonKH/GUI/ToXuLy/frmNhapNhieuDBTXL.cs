@@ -140,12 +140,12 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         ///
                         if (item.Cells["NguoiDi"].Value != null)
                         {
-                            //string[] date = item.Cells["NgayChuyen"].Value.ToString().Split('/');
-                            //dontxl.ChuyenKT = true;
-                            //dontxl.NgayChuyenKT = new DateTime(int.Parse(date[2]), int.Parse(date[1]),int.Parse(date[0]));
-                            //dontxl.NguoiDi = int.Parse(item.Cells["NguoiDi"].Value.ToString());
-                            //if (item.Cells["GhiChu"].Value != null)
-                            //    dontxl.GhiChuChuyenKT = item.Cells["GhiChu"].Value.ToString();
+                            string[] date = item.Cells["NgayChuyen"].Value.ToString().Split('/');
+                            dontxl.Chuyen_KTXM = true;
+                            dontxl.NgayChuyen_KTXM = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
+                            dontxl.NguoiDi_KTXM = int.Parse(item.Cells["NguoiDi"].Value.ToString());
+                            if (item.Cells["GhiChu"].Value != null)
+                                dontxl.GhiChuChuyen_KTXM = item.Cells["GhiChu"].Value.ToString();
                         }
                         ///
                         if (_cDonTXL.ThemDonTXL(dontxl))
@@ -156,7 +156,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                             if (item.Cells["NguoiDi"].Value != null)
                             {
                                 string[] date = item.Cells["NgayChuyen"].Value.ToString().Split('/');
-                                LichSuChuyenKT lichsuchuyenkt = new LichSuChuyenKT();
+                                LichSuChuyenKTXM lichsuchuyenkt = new LichSuChuyenKTXM();
                                 lichsuchuyenkt.NgayChuyen = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
                                 lichsuchuyenkt.NguoiDi = int.Parse(item.Cells["NguoiDi"].Value.ToString());
                                 if (item.Cells["GhiChu"].Value != null)

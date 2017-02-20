@@ -40,12 +40,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvDSDonTXL = new System.Windows.Forms.DataGridView();
-            this.btnInDSDonTXL = new System.Windows.Forms.Button();
-            this.chkChuaKT = new System.Windows.Forms.CheckBox();
-            this.chkAll = new System.Windows.Forms.CheckBox();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.btnXem = new System.Windows.Forms.Button();
-            this.btnInDS = new System.Windows.Forms.Button();
             this.Chon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +54,12 @@
             this.NguoiDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GiaiQuyet = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.GhiChuChuyenKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnInDSDonTXL = new System.Windows.Forms.Button();
+            this.chkChuaKT = new System.Windows.Forms.CheckBox();
+            this.chkAll = new System.Windows.Forms.CheckBox();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnXem = new System.Windows.Forms.Button();
+            this.btnInDS = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDonTXL)).BeginInit();
             this.SuspendLayout();
@@ -187,73 +187,11 @@
             this.dgvDSDonTXL.MultiSelect = false;
             this.dgvDSDonTXL.Name = "dgvDSDonTXL";
             this.dgvDSDonTXL.RowHeadersWidth = 60;
-            this.dgvDSDonTXL.Size = new System.Drawing.Size(1362, 572);
+            this.dgvDSDonTXL.Size = new System.Drawing.Size(1362, 550);
             this.dgvDSDonTXL.TabIndex = 27;
             this.dgvDSDonTXL.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSDonTXL_CellFormatting);
             this.dgvDSDonTXL.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSDonTXL_RowPostPaint);
             this.dgvDSDonTXL.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSDonTXL_KeyDown);
-            // 
-            // btnInDSDonTXL
-            // 
-            this.btnInDSDonTXL.Location = new System.Drawing.Point(703, 10);
-            this.btnInDSDonTXL.Name = "btnInDSDonTXL";
-            this.btnInDSDonTXL.Size = new System.Drawing.Size(110, 25);
-            this.btnInDSDonTXL.TabIndex = 29;
-            this.btnInDSDonTXL.Text = "In (Ngày Giao)";
-            this.btnInDSDonTXL.UseVisualStyleBackColor = true;
-            this.btnInDSDonTXL.Click += new System.EventHandler(this.btnInDSDonKH_Click);
-            // 
-            // chkChuaKT
-            // 
-            this.chkChuaKT.AutoSize = true;
-            this.chkChuaKT.Location = new System.Drawing.Point(547, 43);
-            this.chkChuaKT.Name = "chkChuaKT";
-            this.chkChuaKT.Size = new System.Drawing.Size(83, 21);
-            this.chkChuaKT.TabIndex = 32;
-            this.chkChuaKT.Text = "Chưa KT";
-            this.chkChuaKT.UseVisualStyleBackColor = true;
-            // 
-            // chkAll
-            // 
-            this.chkAll.AutoSize = true;
-            this.chkAll.ForeColor = System.Drawing.Color.Red;
-            this.chkAll.Location = new System.Drawing.Point(78, 43);
-            this.chkAll.Name = "chkAll";
-            this.chkAll.Size = new System.Drawing.Size(103, 21);
-            this.chkAll.TabIndex = 37;
-            this.chkAll.Text = "Chọn Tất Cả";
-            this.chkAll.UseVisualStyleBackColor = true;
-            this.chkAll.CheckedChanged += new System.EventHandler(this.chkAll_CheckedChanged);
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.Location = new System.Drawing.Point(819, 10);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 25);
-            this.btnXoa.TabIndex = 38;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
-            // btnXem
-            // 
-            this.btnXem.Location = new System.Drawing.Point(541, 10);
-            this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(75, 25);
-            this.btnXem.TabIndex = 39;
-            this.btnXem.Text = "Xem";
-            this.btnXem.UseVisualStyleBackColor = true;
-            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
-            // 
-            // btnInDS
-            // 
-            this.btnInDS.Location = new System.Drawing.Point(622, 10);
-            this.btnInDS.Name = "btnInDS";
-            this.btnInDS.Size = new System.Drawing.Size(75, 25);
-            this.btnInDS.TabIndex = 40;
-            this.btnInDS.Text = "In DS";
-            this.btnInDS.UseVisualStyleBackColor = true;
-            this.btnInDS.Click += new System.EventHandler(this.btnInDS_Click);
             // 
             // Chon
             // 
@@ -359,6 +297,70 @@
             this.GhiChuChuyenKT.HeaderText = "GhiChuChuyenKT";
             this.GhiChuChuyenKT.Name = "GhiChuChuyenKT";
             this.GhiChuChuyenKT.Visible = false;
+            // 
+            // btnInDSDonTXL
+            // 
+            this.btnInDSDonTXL.Location = new System.Drawing.Point(703, 10);
+            this.btnInDSDonTXL.Name = "btnInDSDonTXL";
+            this.btnInDSDonTXL.Size = new System.Drawing.Size(110, 25);
+            this.btnInDSDonTXL.TabIndex = 29;
+            this.btnInDSDonTXL.Text = "In (Ngày Giao)";
+            this.btnInDSDonTXL.UseVisualStyleBackColor = true;
+            this.btnInDSDonTXL.Visible = false;
+            this.btnInDSDonTXL.Click += new System.EventHandler(this.btnInDSDonKH_Click);
+            // 
+            // chkChuaKT
+            // 
+            this.chkChuaKT.AutoSize = true;
+            this.chkChuaKT.Location = new System.Drawing.Point(547, 43);
+            this.chkChuaKT.Name = "chkChuaKT";
+            this.chkChuaKT.Size = new System.Drawing.Size(83, 21);
+            this.chkChuaKT.TabIndex = 32;
+            this.chkChuaKT.Text = "Chưa KT";
+            this.chkChuaKT.UseVisualStyleBackColor = true;
+            this.chkChuaKT.Visible = false;
+            // 
+            // chkAll
+            // 
+            this.chkAll.AutoSize = true;
+            this.chkAll.ForeColor = System.Drawing.Color.Red;
+            this.chkAll.Location = new System.Drawing.Point(78, 43);
+            this.chkAll.Name = "chkAll";
+            this.chkAll.Size = new System.Drawing.Size(103, 21);
+            this.chkAll.TabIndex = 37;
+            this.chkAll.Text = "Chọn Tất Cả";
+            this.chkAll.UseVisualStyleBackColor = true;
+            this.chkAll.CheckedChanged += new System.EventHandler(this.chkAll_CheckedChanged);
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Location = new System.Drawing.Point(819, 10);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 25);
+            this.btnXoa.TabIndex = 38;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // btnXem
+            // 
+            this.btnXem.Location = new System.Drawing.Point(541, 10);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 25);
+            this.btnXem.TabIndex = 39;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
+            // 
+            // btnInDS
+            // 
+            this.btnInDS.Location = new System.Drawing.Point(622, 10);
+            this.btnInDS.Name = "btnInDS";
+            this.btnInDS.Size = new System.Drawing.Size(75, 25);
+            this.btnInDS.TabIndex = 40;
+            this.btnInDS.Text = "In DS";
+            this.btnInDS.UseVisualStyleBackColor = true;
+            this.btnInDS.Click += new System.EventHandler(this.btnInDS_Click);
             // 
             // frmDSDonTXL
             // 

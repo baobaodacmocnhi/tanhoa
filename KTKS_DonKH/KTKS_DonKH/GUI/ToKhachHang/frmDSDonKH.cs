@@ -284,7 +284,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             foreach (DataRow itemRow in dt.Rows)
             {
                 DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
-                if (donkh.ChuyenKT)
+                if (donkh.Chuyen_KTXM)
                 {
                     DataRow dr = dsBaoCao.Tables["ChiTietDonTXL"].NewRow();
 
@@ -293,11 +293,11 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                     dr["NgayNhan"] = itemRow["CreateDate"].ToString();
                     dr["NoiDung"] = itemRow["NoiDung"].ToString();
                     dr["LoaiChuyen"] = "Đi Kiểm Tra";
-                    if (donkh.NgayChuyenKT != null)
-                        dr["NgayChuyen"] = donkh.NgayChuyenKT.Value.ToString("dd/MM/yyyy");
-                    if (donkh.NguoiDi != null)
-                        dr["GhiChu"] = _cTaiKhoan.getHoTenUserbyID(int.Parse(donkh.NguoiDi.Value.ToString()));
-                    dr["GhiChu"] += ". " + donkh.GhiChuChuyenKT;
+                    if (donkh.NgayChuyen_KTXM != null)
+                        dr["NgayChuyen"] = donkh.NgayChuyen_KTXM.Value.ToString("dd/MM/yyyy");
+                    if (donkh.NguoiDi_KTXM != null)
+                        dr["GhiChu"] = _cTaiKhoan.getHoTenUserbyID(int.Parse(donkh.NguoiDi_KTXM.Value.ToString()));
+                    dr["GhiChu"] += ". " + donkh.GhiChuChuyen_KTXM;
 
                     dsBaoCao.Tables["ChiTietDonTXL"].Rows.Add(dr);
                 }
