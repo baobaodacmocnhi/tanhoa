@@ -17617,7 +17617,7 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayGiaiQuyet", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayGiaiQuyet", DbType="NVarChar(MAX)")]
 		public string NgayGiaiQuyet
 		{
 			get

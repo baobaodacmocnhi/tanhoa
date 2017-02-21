@@ -213,6 +213,11 @@ namespace KTKS_DonKH.GUI.ToBamChi
                                                 lichsuchuyenkt.GhiChuChuyen = txtGhiChu.Text.Trim();
                                                 lichsuchuyenkt.MaDonTBC = dontbc.MaDon;
                                                 _cLichSuDonTu.Them(lichsuchuyenkt);
+
+                                                dontbc.NguoiDi_KTXM = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+                                                dontbc.NgayChuyen_KTXM = dateChuyen.Value;
+                                                dontbc.GhiChuChuyen_KTXM = txtGhiChu.Text.Trim();
+                                                _cDonTBC.Sua(dontbc);
                                             }
                                             LichSuDonTu entity = new LichSuDonTu();
                                             entity.NgayChuyen = dateChuyen.Value;
@@ -253,7 +258,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
                                 }
 
                             _cDonTBC.commitTransaction();
-                            MessageBox.Show("Thêm Thành công/n Mã Đơn: TBC" + dontbc.MaDon.ToString().Insert(dontbc.MaDon.ToString().Length - 2, "-"), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Thành công/n Mã Đơn: TBC" + dontbc.MaDon.ToString().Insert(dontbc.MaDon.ToString().Length - 2, "-"), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             Clear();
                         }

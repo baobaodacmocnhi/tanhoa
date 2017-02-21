@@ -134,7 +134,7 @@ namespace KTKS_DonKH.GUI.TimKiem
                 }
                 else
                 {
-                    frmNhanDonKH frm = new frmNhanDonKH(decimal.Parse(((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString()));
+                    frmNhanDonTKH frm = new frmNhanDonTKH(decimal.Parse(((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString()));
                     frm.ShowDialog();
                 }
             }

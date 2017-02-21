@@ -21,7 +21,7 @@ using KTKS_DonKH.BaoCao.ToXuLy;
 
 namespace KTKS_DonKH.GUI.ToKhachHang
 {
-    public partial class frmBaoCaoDonKH : Form
+    public partial class frmBaoCaoDonTKH : Form
     {
         string _tuNgay = "", _denNgay = "";
         CDonKH _cDonKH = new CDonKH();
@@ -34,7 +34,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
         CCHDB _cCHDB = new CCHDB();
         CLoaiDon _cLoaiDon = new CLoaiDon();
 
-        public frmBaoCaoDonKH()
+        public frmBaoCaoDonTKH()
         {
             InitializeComponent();
         }

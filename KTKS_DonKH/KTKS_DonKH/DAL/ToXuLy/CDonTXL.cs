@@ -557,7 +557,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonKH.NoiDung,
                                     CreateBy = itemUser.HoTen,
                                     itemLSCKT.NguoiDi,
-                                    itemDonKH.GhiChuChuyen_KTXM,
+                                    GhiChuChuyenKT = itemLSCKT.GhiChuChuyen,
                                 };
                     return LINQToDataTable(query);
             }
@@ -592,7 +592,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonKH.NoiDung,
                                     CreateBy = itemUser.HoTen,
                                     itemLSCKT.NguoiDi,
-                                    itemDonKH.GhiChuChuyen_KTXM,
+                                    GhiChuChuyenKT = itemLSCKT.GhiChuChuyen,
                                 };
                     return LINQToDataTable(query);
             }
@@ -671,7 +671,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonKH.NoiDung,
                                     CreateBy = itemUser.HoTen,
                                     itemLSCKT.NguoiDi,
-                                    itemDonKH.GhiChuChuyen_KTXM,
+                                    GhiChuChuyenKT = itemLSCKT.GhiChuChuyen,
                                 };
                     return LINQToDataTable(query);
             }

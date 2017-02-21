@@ -1,6 +1,6 @@
 ﻿namespace KTKS_DonKH.GUI.ToKhachHang
 {
-    partial class frmLoaiDon
+    partial class frmLoaiDonTKH
     {
         /// <summary>
         /// Required designer variable.

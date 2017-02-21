@@ -231,7 +231,7 @@ namespace KTKS_DonKH
         {
             if (CTaiKhoan.CheckQuyen("mnuNhanDonKhachHang", "Xem"))
             {
-                frmNhanDonKH frm = new frmNhanDonKH();
+                frmNhanDonTKH frm = new frmNhanDonTKH();
                 OpenForm(frm);
             }
             else
@@ -253,7 +253,7 @@ namespace KTKS_DonKH
         {
             if (CTaiKhoan.CheckQuyen("mnuCapNhatDon", "Xem"))
             {
-                frmCapNhatDonKH frm = new frmCapNhatDonKH();
+                frmCapNhatDonTKH frm = new frmCapNhatDonTKH();
                 OpenForm(frm);
             }
             else
@@ -264,7 +264,7 @@ namespace KTKS_DonKH
         {
             if (CTaiKhoan.CheckQuyen("mnuDSDon", "Xem"))
             {
-                frmDSDonKH frm = new frmDSDonKH();
+                frmDSDonTKH frm = new frmDSDonTKH();
                 OpenForm(frm);
             }
             else
@@ -286,7 +286,7 @@ namespace KTKS_DonKH
         {
             if (CTaiKhoan.CheckQuyen("mnuLoaiDon", "Xem"))
             {
-                frmLoaiDon frm = new frmLoaiDon();
+                frmLoaiDonTKH frm = new frmLoaiDonTKH();
                 OpenForm(frm);
             }
             else

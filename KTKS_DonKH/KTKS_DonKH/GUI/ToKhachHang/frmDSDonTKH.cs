@@ -17,14 +17,14 @@ using KTKS_DonKH.DAL.ToXuLy;
 
 namespace KTKS_DonKH.GUI.ToKhachHang
 {
-    public partial class frmDSDonKH : Form
+    public partial class frmDSDonTKH : Form
     {
         CDonKH _cDonKH = new CDonKH();
         CLoaiDon _cLoaiDon = new CLoaiDon();
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         CDonTXL _cDonTXL = new CDonTXL();
 
-        public frmDSDonKH()
+        public frmDSDonTKH()
         {
             InitializeComponent();
         }
@@ -58,7 +58,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
         {
             if (dgvDSDonKH.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
             {
-                frmNhanDonKH frm = new frmNhanDonKH(decimal.Parse(dgvDSDonKH["MaDon", dgvDSDonKH.CurrentRow.Index].Value.ToString()));
+                frmNhanDonTKH frm = new frmNhanDonTKH(decimal.Parse(dgvDSDonKH["MaDon", dgvDSDonKH.CurrentRow.Index].Value.ToString()));
                 frm.ShowDialog();
             }
         }
@@ -214,14 +214,10 @@ namespace KTKS_DonKH.GUI.ToKhachHang
 
                         dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                         dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-                        //dr["MaLD"] = itemRow["MaLD"];
+                        dr["MaDon"] = itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
                         dr["TenLD"] = itemRow["TenLD"];
                         dr["SoCongVan"] = itemRow["SoCongVan"];
                         dr["NgayNhan"] = itemRow["CreateDate"].ToString().Substring(0, 10);
-                        DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
-                        dr["MaDon"] =  itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
-                        dr["TenLD"] = donkh.LoaiDon.TenLD;
-
                         if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
                             dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                         dr["HoTen"] = itemRow["HoTen"];

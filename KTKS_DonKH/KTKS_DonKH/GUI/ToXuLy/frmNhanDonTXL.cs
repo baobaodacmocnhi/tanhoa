@@ -212,6 +212,11 @@ namespace KTKS_DonKH.GUI.ToXuLy
                                                 lichsuchuyenkt.GhiChuChuyen = txtGhiChu.Text.Trim();
                                                 lichsuchuyenkt.MaDonTXL = dontxl.MaDon;
                                                 _cLichSuDonTu.Them(lichsuchuyenkt);
+
+                                                dontxl.NguoiDi_KTXM = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+                                                dontxl.NgayChuyen_KTXM = dateChuyen.Value;
+                                                dontxl.GhiChuChuyen_KTXM = txtGhiChu.Text.Trim();
+                                                _cDonTXL.SuaDonTXL(dontxl);
                                             }
                                             LichSuDonTu entity = new LichSuDonTu();
                                             entity.NgayChuyen = dateChuyen.Value;
@@ -252,7 +257,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                                 }
 
                             _cDonTXL.commitTransaction();
-                            MessageBox.Show("Thêm Thành công/n Mã Đơn: TXL" + dontxl.MaDon.ToString().Insert(dontxl.MaDon.ToString().Length - 2, "-"), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Thành công/n Mã Đơn: TXL" + dontxl.MaDon.ToString().Insert(dontxl.MaDon.ToString().Length - 2, "-"), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             Clear();
                         }

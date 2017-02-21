@@ -367,7 +367,7 @@
             // 
             // btnNhapNhieuDB
             // 
-            this.btnNhapNhieuDB.Location = new System.Drawing.Point(734, 165);
+            this.btnNhapNhieuDB.Location = new System.Drawing.Point(734, 205);
             this.btnNhapNhieuDB.Name = "btnNhapNhieuDB";
             this.btnNhapNhieuDB.Size = new System.Drawing.Size(90, 25);
             this.btnNhapNhieuDB.TabIndex = 24;
@@ -408,7 +408,7 @@
             this.dgvLichSuDon.Location = new System.Drawing.Point(734, 9);
             this.dgvLichSuDon.Name = "dgvLichSuDon";
             this.dgvLichSuDon.ReadOnly = true;
-            this.dgvLichSuDon.Size = new System.Drawing.Size(500, 150);
+            this.dgvLichSuDon.Size = new System.Drawing.Size(500, 190);
             this.dgvLichSuDon.TabIndex = 55;
             this.dgvLichSuDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLichSuDon_CellFormatting);
             // 

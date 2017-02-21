@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>479</ApplicationRevision>
+    <ApplicationRevision>481</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -700,11 +700,11 @@
     <Compile Include="GUI\DieuChinhBienDong\frmLoaiChungTu.Designer.cs">
       <DependentUpon>frmLoaiChungTu.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ToKhachHang\frmLoaiDon.cs">
+    <Compile Include="GUI\ToKhachHang\frmLoaiDonTKH.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ToKhachHang\frmLoaiDon.Designer.cs">
-      <DependentUpon>frmLoaiDon.cs</DependentUpon>
+    <Compile Include="GUI\ToKhachHang\frmLoaiDonTKH.Designer.cs">
+      <DependentUpon>frmLoaiDonTKH.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\KiemTraXacMinh\frmHienTrangKiemTra.cs">
       <SubType>Form</SubType>
@@ -856,17 +856,17 @@
     <Compile Include="GUI\QuanTri\frmTaiKhoan.Designer.cs">
       <DependentUpon>frmTaiKhoan.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ToKhachHang\frmBaoCaoDonKH.cs">
+    <Compile Include="GUI\ToKhachHang\frmBaoCaoDonTKH.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ToKhachHang\frmBaoCaoDonKH.Designer.cs">
-      <DependentUpon>frmBaoCaoDonKH.cs</DependentUpon>
+    <Compile Include="GUI\ToKhachHang\frmBaoCaoDonTKH.Designer.cs">
+      <DependentUpon>frmBaoCaoDonTKH.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ToKhachHang\frmCapNhatDonKH.cs">
+    <Compile Include="GUI\ToKhachHang\frmCapNhatDonTKH.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ToKhachHang\frmCapNhatDonKH.Designer.cs">
-      <DependentUpon>frmCapNhatDonKH.cs</DependentUpon>
+    <Compile Include="GUI\ToKhachHang\frmCapNhatDonTKH.Designer.cs">
+      <DependentUpon>frmCapNhatDonTKH.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ToKhachHang\frmNhanDonDienThoai.cs">
       <SubType>Form</SubType>
@@ -874,11 +874,11 @@
     <Compile Include="GUI\ToKhachHang\frmNhanDonDienThoai.Designer.cs">
       <DependentUpon>frmNhanDonDienThoai.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ToKhachHang\frmNhanDonKH.cs">
+    <Compile Include="GUI\ToKhachHang\frmNhanDonTKH.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ToKhachHang\frmNhanDonKH.Designer.cs">
-      <DependentUpon>frmNhanDonKH.cs</DependentUpon>
+    <Compile Include="GUI\ToKhachHang\frmNhanDonTKH.Designer.cs">
+      <DependentUpon>frmNhanDonTKH.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ToKhachHang\frmNhapNhieuDBTKH.cs">
       <SubType>Form</SubType>
@@ -892,11 +892,11 @@
     <Compile Include="GUI\ToKhachHang\frmDSDonDienThoai.Designer.cs">
       <DependentUpon>frmDSDonDienThoai.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ToKhachHang\frmDSDonKH.cs">
+    <Compile Include="GUI\ToKhachHang\frmDSDonTKH.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ToKhachHang\frmDSDonKH.Designer.cs">
-      <DependentUpon>frmDSDonKH.cs</DependentUpon>
+    <Compile Include="GUI\ToKhachHang\frmDSDonTKH.Designer.cs">
+      <DependentUpon>frmDSDonTKH.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ToKhachHang\frmShowNhanDonDienThoai.cs">
       <SubType>Form</SubType>
@@ -1430,8 +1430,8 @@
     <EmbeddedResource Include="GUI\HeThong\frmAdmin.resx">
       <DependentUpon>frmAdmin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ToKhachHang\frmLoaiDon.resx">
-      <DependentUpon>frmLoaiDon.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\ToKhachHang\frmLoaiDonTKH.resx">
+      <DependentUpon>frmLoaiDonTKH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\KiemTraXacMinh\frmHienTrangKiemTra.resx">
       <DependentUpon>frmHienTrangKiemTra.cs</DependentUpon>
@@ -1505,17 +1505,17 @@
     <EmbeddedResource Include="GUI\QuanTri\frmTaiKhoan.resx">
       <DependentUpon>frmTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ToKhachHang\frmBaoCaoDonKH.resx">
-      <DependentUpon>frmBaoCaoDonKH.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\ToKhachHang\frmBaoCaoDonTKH.resx">
+      <DependentUpon>frmBaoCaoDonTKH.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ToKhachHang\frmCapNhatDonKH.resx">
-      <DependentUpon>frmCapNhatDonKH.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\ToKhachHang\frmCapNhatDonTKH.resx">
+      <DependentUpon>frmCapNhatDonTKH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToKhachHang\frmNhanDonDienThoai.resx">
       <DependentUpon>frmNhanDonDienThoai.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ToKhachHang\frmNhanDonKH.resx">
-      <DependentUpon>frmNhanDonKH.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\ToKhachHang\frmNhanDonTKH.resx">
+      <DependentUpon>frmNhanDonTKH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToKhachHang\frmNhapNhieuDBTKH.resx">
       <DependentUpon>frmNhapNhieuDBTKH.cs</DependentUpon>
@@ -1523,8 +1523,8 @@
     <EmbeddedResource Include="GUI\ToKhachHang\frmDSDonDienThoai.resx">
       <DependentUpon>frmDSDonDienThoai.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ToKhachHang\frmDSDonKH.resx">
-      <DependentUpon>frmDSDonKH.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\ToKhachHang\frmDSDonTKH.resx">
+      <DependentUpon>frmDSDonTKH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToKhachHang\frmShowNhanDonDienThoai.resx">
       <DependentUpon>frmShowNhanDonDienThoai.cs</DependentUpon>

@@ -14,7 +14,7 @@ using KTKS_DonKH.DAL.DonTu;
 
 namespace KTKS_DonKH.GUI.ToKhachHang
 {
-    public partial class frmCapNhatDonKH : Form
+    public partial class frmCapNhatDonTKH : Form
     {
         string _mnu = "mnuCapNhatDon";
         CLoaiDon _cLoaiDon = new CLoaiDon();
@@ -28,7 +28,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
         DataSet _dsNoiChuyen = new DataSet("NoiChuyen");
         bool _flagFirst = false;
 
-        public frmCapNhatDonKH()
+        public frmCapNhatDonTKH()
         {
             InitializeComponent();
         }

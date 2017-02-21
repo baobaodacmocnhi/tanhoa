@@ -18,7 +18,7 @@ using KTKS_DonKH.DAL.DonTu;
 
 namespace KTKS_DonKH.GUI.ToKhachHang
 {
-    public partial class frmNhanDonKH : Form
+    public partial class frmNhanDonTKH : Form
     {
         string _mnu = "mnuNhanDonKhachHang";
         DonKH _donkh = null;
@@ -32,12 +32,12 @@ namespace KTKS_DonKH.GUI.ToKhachHang
         CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
         decimal _MaDonTKH = 0;
 
-        public frmNhanDonKH()
+        public frmNhanDonTKH()
         {
             InitializeComponent();
         }
 
-        public frmNhanDonKH(decimal MaDonTKH)
+        public frmNhanDonTKH(decimal MaDonTKH)
         {
             _MaDonTKH = MaDonTKH;
             InitializeComponent();

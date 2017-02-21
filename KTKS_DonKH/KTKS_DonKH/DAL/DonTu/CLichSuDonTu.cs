@@ -142,7 +142,7 @@ namespace KTKS_DonKH.DAL.DonTu
 
 
 
-        public bool Them(LichSuChuyenKTXM lichsuchuyenkt)
+        public bool Them(LichSuChuyenKTXM entity)
         {
             try
             {
@@ -153,13 +153,13 @@ namespace KTKS_DonKH.DAL.DonTu
                     decimal MaLSChuyen = db.ExecuteQuery<decimal>("declare @Ma int " +
                         "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
                         "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
-                    lichsuchuyenkt.MaLSChuyen = getMaxNextIDTable(MaLSChuyen);
+                    entity.MaLSChuyen = getMaxNextIDTable(MaLSChuyen);
                 }
                 else
-                    lichsuchuyenkt.MaLSChuyen = decimal.Parse("1" + DateTime.Now.ToString("yy"));
-                lichsuchuyenkt.CreateDate = DateTime.Now;
-                lichsuchuyenkt.CreateBy = CTaiKhoan.MaUser;
-                db.LichSuChuyenKTXMs.InsertOnSubmit(lichsuchuyenkt);
+                    entity.MaLSChuyen = decimal.Parse("1" + DateTime.Now.ToString("yy"));
+                entity.CreateDate = DateTime.Now;
+                entity.CreateBy = CTaiKhoan.MaUser;
+                db.LichSuChuyenKTXMs.InsertOnSubmit(entity);
                 db.SubmitChanges();
                 return true;
             }
@@ -170,12 +170,12 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
-        public bool Sua(LichSuChuyenKTXM lichsuchuyenkt)
+        public bool Sua(LichSuChuyenKTXM entity)
         {
             try
             {
-                lichsuchuyenkt.ModifyDate = DateTime.Now;
-                lichsuchuyenkt.ModifyBy = CTaiKhoan.MaUser;
+                entity.ModifyDate = DateTime.Now;
+                entity.ModifyBy = CTaiKhoan.MaUser;
                 db.SubmitChanges();
                 return true;
             }
@@ -186,11 +186,11 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
-        public bool Xoa(LichSuChuyenKTXM lichsuchuyenkt)
+        public bool Xoa(LichSuChuyenKTXM entity)
         {
             try
             {
-                db.LichSuChuyenKTXMs.DeleteOnSubmit(lichsuchuyenkt);
+                db.LichSuChuyenKTXMs.DeleteOnSubmit(entity);
                 db.SubmitChanges();
                 return true;
             }
@@ -201,16 +201,160 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
-        public LichSuChuyenKTXM Get(decimal MaLSChuyenKT)
+        public LichSuChuyenKTXM Get(decimal MaLSChuyen)
         {
             try
             {
-                return db.LichSuChuyenKTXMs.SingleOrDefault(item => item.MaLSChuyen == MaLSChuyenKT);
+                return db.LichSuChuyenKTXMs.SingleOrDefault(item => item.MaLSChuyen == MaLSChuyen);
             }
             catch (Exception)
             {
                 return null;
             }
+        }
+
+        public DataTable GetDSChuyen_KTXM(string Loai, DateTime FromNgayChuyen, DateTime ToNgayChuyen)
+        {
+            DataTable dt = new DataTable();
+            switch (Loai)
+            {
+                case "TKH":
+                    var query = from itemChuyenKTXM in db.LichSuChuyenKTXMs
+                                join itemDonTKH in db.DonKHs on itemChuyenKTXM.MaDon equals itemDonTKH.MaDon
+                                join itemUser in db.Users on itemChuyenKTXM.NguoiDi equals itemUser.MaU
+                                where itemChuyenKTXM.MaDon != null && itemChuyenKTXM.NgayChuyen.Value.Date >= FromNgayChuyen.Date && itemChuyenKTXM.NgayChuyen.Value.Date <= ToNgayChuyen.Date
+                                select new
+                                {
+                                    itemDonTKH.MaDon,
+                                    itemDonTKH.LoaiDon.TenLD,
+                                    itemDonTKH.SoCongVan,
+                                    itemDonTKH.DanhBo,
+                                    itemDonTKH.HoTen,
+                                    itemDonTKH.DiaChi,
+                                    itemDonTKH.NoiDung,
+                                    NguoiDi = itemUser.HoTen,
+                                    itemChuyenKTXM.GhiChuChuyen,
+                                    GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDon == itemDonTKH.MaDon && item.CreateBy == itemDonTKH.NguoiDi_KTXM) == true ? true : db.CTBamChis.Any(item => item.BamChi.MaDon == itemDonTKH.MaDon && item.CreateBy == itemDonTKH.NguoiDi_KTXM),
+                                    NgayGiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDon == itemDonTKH.MaDon && item.CreateBy == itemDonTKH.NguoiDi_KTXM) == true ? db.CTKTXMs.SingleOrDefault(item => item.KTXM.MaDon == itemDonTKH.MaDon && item.CreateBy == itemDonTKH.NguoiDi_KTXM).NgayKTXM : db.CTBamChis.Any(item => item.BamChi.MaDon == itemDonTKH.MaDon && item.CreateBy == itemDonTKH.NguoiDi_KTXM) == true ? db.CTBamChis.SingleOrDefault(item => item.BamChi.MaDon == itemDonTKH.MaDon && item.CreateBy == itemDonTKH.NguoiDi_KTXM).NgayBC : null,
+                                };
+                    dt = LINQToDataTable(query.ToList());
+                    break;
+                case "TXL":
+                    query = from itemChuyenKTXM in db.LichSuChuyenKTXMs
+                            join itemDonTXL in db.DonTXLs on itemChuyenKTXM.MaDonTXL equals itemDonTXL.MaDon
+                            join itemUser in db.Users on itemChuyenKTXM.NguoiDi equals itemUser.MaU
+                            where itemChuyenKTXM.MaDonTXL != null && itemChuyenKTXM.NgayChuyen.Value.Date >= FromNgayChuyen.Date && itemChuyenKTXM.NgayChuyen.Value.Date <= ToNgayChuyen.Date
+                            select new
+                            {
+                                itemDonTXL.MaDon,
+                                itemDonTXL.LoaiDonTXL.TenLD,
+                                itemDonTXL.SoCongVan,
+                                itemDonTXL.DanhBo,
+                                itemDonTXL.HoTen,
+                                itemDonTXL.DiaChi,
+                                itemDonTXL.NoiDung,
+                                NguoiDi = itemUser.HoTen,
+                                itemChuyenKTXM.GhiChuChuyen,
+                                GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM) == true ? true : db.CTBamChis.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM),
+                                NgayGiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM) == true ? db.CTKTXMs.SingleOrDefault(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM).NgayKTXM : db.CTBamChis.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM) == true ? db.CTBamChis.SingleOrDefault(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM).NgayBC : null,
+                            };
+                    dt = LINQToDataTable(query.ToList());
+                    break;
+                case "TBC":
+                    query = from itemChuyenKTXM in db.LichSuChuyenKTXMs
+                            join itemDonTBC in db.DonTBCs on itemChuyenKTXM.MaDonTBC equals itemDonTBC.MaDon
+                            join itemUser in db.Users on itemChuyenKTXM.NguoiDi equals itemUser.MaU
+                            where itemChuyenKTXM.MaDonTBC != null && itemChuyenKTXM.NgayChuyen.Value.Date >= FromNgayChuyen.Date && itemChuyenKTXM.NgayChuyen.Value.Date <= ToNgayChuyen.Date
+                            select new
+                            {
+                                itemDonTBC.MaDon,
+                                itemDonTBC.LoaiDonTBC.TenLD,
+                                itemDonTBC.SoCongVan,
+                                itemDonTBC.DanhBo,
+                                itemDonTBC.HoTen,
+                                itemDonTBC.DiaChi,
+                                itemDonTBC.NoiDung,
+                                NguoiDi = itemUser.HoTen,
+                                itemChuyenKTXM.GhiChuChuyen,
+                                GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM) == true ? true : db.CTBamChis.Any(item => item.BamChi.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM),
+                                NgayGiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM) == true ? db.CTKTXMs.SingleOrDefault(item => item.KTXM.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM).NgayKTXM : db.CTBamChis.Any(item => item.BamChi.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM) == true ? db.CTBamChis.SingleOrDefault(item => item.BamChi.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM).NgayBC : null,
+                            };
+                    dt = LINQToDataTable(query.ToList());
+                    break;
+            }
+            return dt;
+        }
+
+        public DataTable GetDSChuyen_KTXM(string Loai, string SoCongVan)
+        {
+            DataTable dt = new DataTable();
+            switch (Loai)
+            {
+                case "TKH":
+                    var query = from itemChuyenKTXM in db.LichSuChuyenKTXMs
+                                join itemDonTKH in db.DonKHs on itemChuyenKTXM.MaDon equals itemDonTKH.MaDon
+                                join itemUser in db.Users on itemChuyenKTXM.NguoiDi equals itemUser.MaU
+                                where itemChuyenKTXM.MaDon != null && itemDonTKH.SoCongVan.Contains(SoCongVan)
+                                select new
+                                {
+                                    itemDonTKH.MaDon,
+                                    itemDonTKH.LoaiDon.TenLD,
+                                    itemDonTKH.SoCongVan,
+                                    itemDonTKH.DanhBo,
+                                    itemDonTKH.HoTen,
+                                    itemDonTKH.DiaChi,
+                                    itemDonTKH.NoiDung,
+                                    NguoiDi = itemUser.HoTen,
+                                    itemChuyenKTXM.GhiChuChuyen,
+                                    GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDon == itemDonTKH.MaDon && item.CreateBy == itemDonTKH.NguoiDi_KTXM) == true ? true : db.CTBamChis.Any(item => item.BamChi.MaDon == itemDonTKH.MaDon && item.CreateBy == itemDonTKH.NguoiDi_KTXM),
+                                    NgayGiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDon == itemDonTKH.MaDon && item.CreateBy == itemDonTKH.NguoiDi_KTXM) == true ? db.CTKTXMs.SingleOrDefault(item => item.KTXM.MaDon == itemDonTKH.MaDon && item.CreateBy == itemDonTKH.NguoiDi_KTXM).NgayKTXM : db.CTBamChis.Any(item => item.BamChi.MaDon == itemDonTKH.MaDon && item.CreateBy == itemDonTKH.NguoiDi_KTXM) == true ? db.CTBamChis.SingleOrDefault(item => item.BamChi.MaDon == itemDonTKH.MaDon && item.CreateBy == itemDonTKH.NguoiDi_KTXM).NgayBC : null,
+                                };
+                    dt = LINQToDataTable(query.ToList());
+                    break;
+                case "TXL":
+                    query = from itemChuyenKTXM in db.LichSuChuyenKTXMs
+                            join itemDonTXL in db.DonTXLs on itemChuyenKTXM.MaDonTXL equals itemDonTXL.MaDon
+                            join itemUser in db.Users on itemChuyenKTXM.NguoiDi equals itemUser.MaU
+                            where itemChuyenKTXM.MaDonTXL != null && itemDonTXL.SoCongVan.Contains(SoCongVan)
+                            select new
+                            {
+                                itemDonTXL.MaDon,
+                                itemDonTXL.LoaiDonTXL.TenLD,
+                                itemDonTXL.SoCongVan,
+                                itemDonTXL.DanhBo,
+                                itemDonTXL.HoTen,
+                                itemDonTXL.DiaChi,
+                                itemDonTXL.NoiDung,
+                                NguoiDi = itemUser.HoTen,
+                                itemChuyenKTXM.GhiChuChuyen,
+                                GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM) == true ? true : db.CTBamChis.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM),
+                                NgayGiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM) == true ? db.CTKTXMs.SingleOrDefault(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM).NgayKTXM : db.CTBamChis.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM) == true ? db.CTBamChis.SingleOrDefault(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM).NgayBC : null,
+                            };
+                    dt = LINQToDataTable(query.ToList());
+                    break;
+                case "TBC":
+                    query = from itemChuyenKTXM in db.LichSuChuyenKTXMs
+                            join itemDonTBC in db.DonTBCs on itemChuyenKTXM.MaDonTBC equals itemDonTBC.MaDon
+                            join itemUser in db.Users on itemChuyenKTXM.NguoiDi equals itemUser.MaU
+                            where itemChuyenKTXM.MaDonTBC != null && itemDonTBC.SoCongVan.Contains(SoCongVan)
+                            select new
+                            {
+                                itemDonTBC.MaDon,
+                                itemDonTBC.LoaiDonTBC.TenLD,
+                                itemDonTBC.SoCongVan,
+                                itemDonTBC.DanhBo,
+                                itemDonTBC.HoTen,
+                                itemDonTBC.DiaChi,
+                                itemDonTBC.NoiDung,
+                                NguoiDi = itemUser.HoTen,
+                                itemChuyenKTXM.GhiChuChuyen,
+                                GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM) == true ? true : db.CTBamChis.Any(item => item.BamChi.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM),
+                                NgayGiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM) == true ? db.CTKTXMs.SingleOrDefault(item => item.KTXM.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM).NgayKTXM : db.CTBamChis.Any(item => item.BamChi.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM) == true ? db.CTBamChis.SingleOrDefault(item => item.BamChi.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM).NgayBC : null,
+                            };
+                    dt = LINQToDataTable(query.ToList());
+                    break;
+            }
+            return dt;
         }
     }
 }

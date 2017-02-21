@@ -1,6 +1,6 @@
 ﻿namespace KTKS_DonKH.GUI.ToKhachHang
 {
-    partial class frmDSDonKH
+    partial class frmDSDonTKH
     {
         /// <summary>
         /// Required designer variable.
@@ -313,6 +313,7 @@
             this.btnInChiTiet.TabIndex = 9;
             this.btnInChiTiet.Text = "In (Chi Tiết)";
             this.btnInChiTiet.UseVisualStyleBackColor = true;
+            this.btnInChiTiet.Visible = false;
             this.btnInChiTiet.Click += new System.EventHandler(this.btnInChiTiet_Click);
             // 
             // chkChuaKT
@@ -343,6 +344,7 @@
             this.btnGiaoTXL.TabIndex = 8;
             this.btnGiaoTXL.Text = "In (Giao TXL)";
             this.btnGiaoTXL.UseVisualStyleBackColor = true;
+            this.btnGiaoTXL.Visible = false;
             this.btnGiaoTXL.Click += new System.EventHandler(this.btnGiaoTXL_Click);
             // 
             // txtNoiDungTimKiem2

@@ -735,7 +735,7 @@
       <Column Name="CT_GCNDTDHN" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DinhMucSau" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="HieuLucTuKy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="NgayGiaiQuyet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NgayGiaiQuyet" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="TienTrinh" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="Nhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="MaLD" Type="System.Int32" DbType="Int" CanBeNull="true" />

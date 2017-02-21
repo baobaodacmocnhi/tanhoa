@@ -12,7 +12,7 @@ using KTKS_DonKH.LinQ;
 
 namespace KTKS_DonKH.GUI.ToKhachHang
 {
-    public partial class frmLoaiDon : Form
+    public partial class frmLoaiDonTKH : Form
     {
         int _selectedindex = -1;
         BindingList<LoaiDon> _bSourceLD;
@@ -21,7 +21,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
         CLoaiDon _cLoaiDon = new CLoaiDon();
         CLoaiDonTXL _cLoaiDonTXL = new CLoaiDonTXL();
 
-        public frmLoaiDon()
+        public frmLoaiDonTKH()
         {
             InitializeComponent();
         }
