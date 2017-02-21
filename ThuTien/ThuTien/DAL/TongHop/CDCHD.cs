@@ -458,7 +458,8 @@ namespace ThuTien.DAL.TongHop
                             join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                     && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                                    && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT == Dot && itemHD.NGAYGIAITRACH == null && itemHD.GB >= 11 && itemHD.GB <= 20
+                                    && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT == Dot
+                                    && itemHD.NGAYGIAITRACH == null && itemHD.GB >= 11 && itemHD.GB <= 20
                             select new
                             {
                                 MaTo = MaTo,
@@ -746,7 +747,9 @@ namespace ThuTien.DAL.TongHop
                             join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                     && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                                    && itemDC.ChuanThu1 == false && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky)) && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date) && itemHD.GB >= 11 && itemHD.GB <= 20
+                                    && itemDC.ChuanThu1 == false && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky))
+                                    && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date||itemHD.KhoaTienDu==true)
+                                    && itemHD.GB >= 11 && itemHD.GB <= 20
                             select new
                             {
                                 Loai="TG",
@@ -768,8 +771,10 @@ namespace ThuTien.DAL.TongHop
                     var query = from itemDC in _db.DIEUCHINH_HDs
                                 join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                                 where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
-                                        && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                                      && itemDC.ChuanThu1 == false && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky)) && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date) && itemHD.GB > 20
+                                      && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                      && itemDC.ChuanThu1 == false && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky))
+                                      && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date || itemHD.KhoaTienDu == true)
+                                      && itemHD.GB > 20
                                 select new
                                 {
                                     Loai = "CQ",
@@ -796,7 +801,9 @@ namespace ThuTien.DAL.TongHop
                             join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                     && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                                   && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date) && itemHD.GB >= 11 && itemHD.GB <= 20
+                                   && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky
+                                   && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date || itemHD.KhoaTienDu == true)
+                                   && itemHD.GB >= 11 && itemHD.GB <= 20
                             select new
                             {
                                 Loai = "TG",
@@ -819,7 +826,9 @@ namespace ThuTien.DAL.TongHop
                                 join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                                 where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                                     && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date) && itemHD.GB > 20
+                                     && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky
+                                     && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date || itemHD.KhoaTienDu == true)
+                                     && itemHD.GB > 20
                                 select new
                                 {
                                     Loai = "CQ",
@@ -1097,7 +1106,9 @@ namespace ThuTien.DAL.TongHop
                 var query = from itemDC in _db.DIEUCHINH_HDs
                             join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             where itemHD.MaNV_HanhThu == MaNV
-                                     && itemDC.ChuanThu1 == false && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky)) && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date) && itemHD.GB >= 11 && itemHD.GB <= 20
+                                     && itemDC.ChuanThu1 == false && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky))
+                                     && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date||itemHD.KhoaTienDu==true)
+                                     && itemHD.GB >= 11 && itemHD.GB <= 20
                             select new
                             {
                                 Loai="TG",
@@ -1117,7 +1128,9 @@ namespace ThuTien.DAL.TongHop
                     var query = from itemDC in _db.DIEUCHINH_HDs
                                 join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                                 where itemHD.MaNV_HanhThu == MaNV
-                                        && itemDC.ChuanThu1 == false && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky)) && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date) && itemHD.GB > 20
+                                        && itemDC.ChuanThu1 == false && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky))
+                                        && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date || itemHD.KhoaTienDu == true)
+                                        && itemHD.GB > 20
                                 select new
                                 {
                                     Loai = "CQ",
@@ -1141,7 +1154,9 @@ namespace ThuTien.DAL.TongHop
                 var query = from itemDC in _db.DIEUCHINH_HDs
                             join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             where itemHD.MaNV_HanhThu == MaNV
-                                    && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date) && itemHD.GB >= 11 && itemHD.GB <= 20
+                                    && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky
+                                    && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date || itemHD.KhoaTienDu == true)
+                                    && itemHD.GB >= 11 && itemHD.GB <= 20
                             select new
                             {
                                 Loai = "TG",
@@ -1161,7 +1176,9 @@ namespace ThuTien.DAL.TongHop
                     var query = from itemDC in _db.DIEUCHINH_HDs
                                 join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                                 where itemHD.MaNV_HanhThu == MaNV
-                                       && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date) && itemHD.GB > 20
+                                       && itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky
+                                       && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date || itemHD.KhoaTienDu == true)
+                                       && itemHD.GB > 20
                                 select new
                                 {
                                     Loai = "CQ",
