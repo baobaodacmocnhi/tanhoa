@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using ThuTien.DAL.QuanTri;
 using ThuTien.LinQ;
 using ThuTien.DAL.Doi;
+using ThuTien.DAL.ChuyenKhoan;
 
 namespace ThuTien.GUI.Doi
 {
@@ -69,7 +70,7 @@ namespace ThuTien.GUI.Doi
                         if (hoadon != null)
                         {
                             ListViewItem lvi = new ListViewItem();
-                            lvi.Text=hoadon.SOHOADON;
+                            lvi.Text = hoadon.SOHOADON;
                             lvi.SubItems.Add(hoadon.KY + "/" + hoadon.NAM);
                             lvi.SubItems.Add(hoadon.TONGCONG.ToString());
                             lvi.SubItems.Add(hoadon.DANHBA.Insert(7, " ").Insert(4, " "));
@@ -122,5 +123,74 @@ namespace ThuTien.GUI.Doi
                 }
             }
         }
+
+        private void btnKiemTraAll_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in listA.Items)
+            {
+                if (listB.Items.ContainsKey(item.Name))
+                {
+                    listB.Items.RemoveByKey(item.Name);
+                    listA.Items.Remove(item);
+                }
+            }
+        }
+
+        private void btnChonFileA_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
+                dialog.Multiselect = false;
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    CExcel fileExcel = new CExcel(dialog.FileName);
+                    DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
+                    foreach (DataRow item in dtExcel.Rows)
+                    {
+                        ListViewItem lvi = new ListViewItem();
+                        lvi.Text = item[0].ToString();
+                        lvi.Name = item[0].ToString();
+
+                        listA.Items.Add(lvi);
+                    }
+                    txtTongA.Text = dtExcel.Rows.Count.ToString();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnChonFileB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
+                dialog.Multiselect = false;
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    CExcel fileExcel = new CExcel(dialog.FileName);
+                    DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
+                    foreach (DataRow item in dtExcel.Rows)
+                    {
+                        ListViewItem lvi = new ListViewItem();
+                        lvi.Text = item[0].ToString();
+                        lvi.Name = item[0].ToString();
+
+                        listB.Items.Add(lvi);
+                    }
+                    txtTongB.Text = dtExcel.Rows.Count.ToString();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }
