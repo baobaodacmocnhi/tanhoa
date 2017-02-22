@@ -560,7 +560,6 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 select new
                                 {
                                     itemCTKTXM.KTXM.MaDon,
-                                    itemCTKTXM.KTXM.ToXuLy,
                                     itemCTKTXM.KTXM.MaDonTXL,
                                     itemCTKTXM.MaCTKTXM,
                                     itemCTKTXM.NgayKTXM,
@@ -585,7 +584,6 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   select new
                                   {
                                       itemCTBamChi.BamChi.MaDon,
-                                      itemCTBamChi.BamChi.ToXuLy,
                                       itemCTBamChi.BamChi.MaDonTXL,
                                       itemCTBamChi.MaCTBC,
                                       itemCTBamChi.NgayBC,
@@ -1260,7 +1258,6 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 select new
                                 {
                                     itemCTKTXM.KTXM.MaDon,
-                                    itemCTKTXM.KTXM.ToXuLy,
                                     itemCTKTXM.KTXM.MaDonTXL,
                                     itemCTKTXM.MaCTKTXM,
                                     itemCTKTXM.NgayKTXM,
@@ -1285,7 +1282,6 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   select new
                                   {
                                       itemCTBamChi.BamChi.MaDon,
-                                      itemCTBamChi.BamChi.ToXuLy,
                                       itemCTBamChi.BamChi.MaDonTXL,
                                       itemCTBamChi.MaCTBC,
                                       itemCTBamChi.NgayBC,
@@ -1961,7 +1957,6 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 select new
                                 {
                                     itemCTKTXM.KTXM.MaDon,
-                                    itemCTKTXM.KTXM.ToXuLy,
                                     itemCTKTXM.KTXM.MaDonTXL,
                                     itemCTKTXM.MaCTKTXM,
                                     itemCTKTXM.NgayKTXM,
@@ -1986,7 +1981,6 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   select new
                                   {
                                       itemCTBamChi.BamChi.MaDon,
-                                      itemCTBamChi.BamChi.ToXuLy,
                                       itemCTBamChi.BamChi.MaDonTXL,
                                       itemCTBamChi.MaCTBC,
                                       itemCTBamChi.NgayBC,

@@ -57,6 +57,75 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
             dgvLichSuCHDB.DataSource = _cCHDB.GetLichSuCHDB(hoadon.DANHBA);
             CheckLichSuCHDB();
+            CTKTXM ctktxm = null;
+            if (_dontxl != null)
+            {
+                ctktxm = _cKTXM.getCTKTXMbyMaDonTXLDanhBo(_dontxl.MaDon, _dontxl.DanhBo);
+            }
+            else
+                if (_donkh != null)
+                {
+                    ctktxm = _cKTXM.getCTKTXMbyMaDonKHDanhBo(_donkh.MaDon, _donkh.DanhBo);
+                }
+            if (ctktxm != null)
+            {
+                cmbViTriDHN1.SelectedItem = ctktxm.ViTriDHN1;
+                cmbViTriDHN2.SelectedItem = ctktxm.ViTriDHN2;
+            }
+        }
+
+        public void LoadCTDB(CTCTDB ctctdb)
+        {
+            if (!string.IsNullOrEmpty(ctctdb.CHDB.MaDonTXL.ToString()))
+                txtMaDon.Text = "TXL" + ctctdb.CHDB.MaDonTXL.ToString().Insert(ctctdb.CHDB.MaDonTXL.ToString().Length - 2, "-");
+            else
+                if (!string.IsNullOrEmpty(ctctdb.CHDB.MaDon.ToString()))
+                    txtMaDon.Text = ctctdb.CHDB.MaDon.ToString().Insert(ctctdb.CHDB.MaDon.ToString().Length - 2, "-");
+            txtMaThongBao.Text = ctctdb.MaCTCTDB.ToString().Insert(ctctdb.MaCTCTDB.ToString().Length - 2, "-");
+            ///
+            txtDanhBo.Text = ctctdb.DanhBo;
+            txtHopDong.Text = ctctdb.HopDong;
+            txtHoTen.Text = ctctdb.HoTen;
+            txtDiaChi.Text = ctctdb.DiaChi;
+
+            ///Nội Dung Xử Lý
+            cmbLyDo.SelectedValue = ctctdb.LyDo;
+            txtNoiDung.Text = ctctdb.NoiDung;
+            txtGhiChu.Text = ctctdb.GhiChuLyDo;
+            if (ctctdb.SoTien != null)
+                txtSoTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctctdb.SoTien.Value);
+            else
+                txtSoTien.Text = "";
+            cmbViTriDHN1.SelectedItem = ctctdb.ViTriDHN1;
+            cmbViTriDHN2.SelectedItem = ctctdb.ViTriDHN2;
+            txtNoiNhan.Text = ctctdb.NoiNhan;
+
+            if (ctctdb.NoiDungXuLy != null)
+            {
+                chkNgayXuLy.Checked = true;
+                dateXuLy.Value = ctctdb.NgayXuLy.Value;
+                cmbNoiDung.SelectedValue = ctctdb.NoiDungXuLy;
+            }
+            else
+            {
+                chkNgayXuLy.Checked = false;
+                dateXuLy.Value = DateTime.Now;
+                cmbNoiDung.SelectedIndex = -1;
+            }
+
+            dgvGhiChu.DataSource = _cCHDB.GetDSGhiChuByMaCTCTDB(ctctdb.MaCTCTDB);
+            dgvLichSuCHDB.DataSource = _cCHDB.GetLichSuCHDB(ctctdb.DanhBo);
+            CheckLichSuCHDB();
+
+            ///Đã lấp Phiếu Yêu Cầu CHDB
+            if (_cCHDB.CheckYeuCauCHDBbyMaCTCTDB(ctctdb.MaCTCTDB))
+            {
+                txtHieuLucKy.Text = ctctdb.PhieuCHDBs.SingleOrDefault(itemYCCHDB => itemYCCHDB.MaCTCTDB == ctctdb.MaCTCTDB).HieuLucKy;
+            }
+            else
+            {
+                txtHieuLucKy.Text = "";
+            }
         }
 
         public void Clear()
@@ -154,9 +223,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         {
                             _hoadon = _cThuTien.GetMoiNhat(_dontxl.DanhBo);
                             LoadTTKH(_hoadon);
-                            //string ThongTin;
-                            //if (_cCHDB.CheckCHDBbyDanhBo(_hoadon.DANHBA, out ThongTin))
-                            //    MessageBox.Show("Danh Bộ này đã lập " + ThongTin, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                             MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -174,9 +240,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         {
                             _hoadon = _cThuTien.GetMoiNhat(_donkh.DanhBo);
                             LoadTTKH(_hoadon);
-                            //string ThongTin;
-                            //if (_cCHDB.CheckCHDBbyDanhBo(_hoadon.DANHBA, out ThongTin))
-                            //    MessageBox.Show("Danh Bộ này đã lập " + ThongTin, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                             MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -210,54 +273,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 if (_cCHDB.getCTCTDBbyID(decimal.Parse(txtMaThongBao.Text.Trim().Replace("-", ""))) != null)
                 {
                     _ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(txtMaThongBao.Text.Trim().Replace("-", "")));
-                    if (!string.IsNullOrEmpty(_ctctdb.CHDB.MaDonTXL.ToString()))
-                        txtMaDon.Text = "TXL" + _ctctdb.CHDB.MaDonTXL.ToString().Insert(_ctctdb.CHDB.MaDonTXL.ToString().Length - 2, "-");
-                    else
-                        if (!string.IsNullOrEmpty(_ctctdb.CHDB.MaDon.ToString()))
-                            txtMaDon.Text = _ctctdb.CHDB.MaDon.ToString().Insert(_ctctdb.CHDB.MaDon.ToString().Length - 2, "-");
-                    txtMaThongBao.Text = _ctctdb.MaCTCTDB.ToString().Insert(_ctctdb.MaCTCTDB.ToString().Length - 2, "-");
-                    ///
-                    txtDanhBo.Text = _ctctdb.DanhBo;
-                    txtHopDong.Text = _ctctdb.HopDong;
-                    txtHoTen.Text = _ctctdb.HoTen;
-                    txtDiaChi.Text = _ctctdb.DiaChi;
-
-                    ///Nội Dung Xử Lý
-                    cmbLyDo.SelectedValue = _ctctdb.LyDo;
-                    txtNoiDung.Text = _ctctdb.NoiDung;
-                    txtGhiChu.Text = _ctctdb.GhiChuLyDo;
-                    if (_ctctdb.SoTien != null)
-                        txtSoTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctctdb.SoTien.Value);
-                    else
-                        txtSoTien.Text = "";
-                    txtNoiNhan.Text = _ctctdb.NoiNhan;
-
-                    if (_ctctdb.NoiDungXuLy != null)
-                    {
-                        chkNgayXuLy.Checked = true;
-                        dateXuLy.Value = _ctctdb.NgayXuLy.Value;
-                        cmbNoiDung.SelectedValue = _ctctdb.NoiDungXuLy;
-                    }
-                    else
-                    {
-                        chkNgayXuLy.Checked = false;
-                        dateXuLy.Value = DateTime.Now;
-                        cmbNoiDung.SelectedIndex = -1;
-                    }
-
-                    dgvGhiChu.DataSource = _cCHDB.GetDSGhiChuByMaCTCTDB(_ctctdb.MaCTCTDB);
-                    dgvLichSuCHDB.DataSource = _cCHDB.GetLichSuCHDB(_ctctdb.DanhBo);
-                    CheckLichSuCHDB();
-
-                    ///Đã lấp Phiếu Yêu Cầu CHDB
-                    if (_cCHDB.CheckYeuCauCHDBbyMaCTCTDB(_ctctdb.MaCTCTDB))
-                    {
-                        txtHieuLucKy.Text = _ctctdb.PhieuCHDBs.SingleOrDefault(itemYCCHDB => itemYCCHDB.MaCTCTDB == _ctctdb.MaCTCTDB).HieuLucKy;
-                    }
-                    else
-                    {
-                        txtHieuLucKy.Text = "";
-                    }
+                    LoadCTDB(_ctctdb);
                 }
                 else
                     MessageBox.Show("Mã Thông Báo này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -331,7 +347,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             ctctdb.NoiDung = txtNoiDung.Text;
                             if (txtSoTien.Text.Trim() != "")
                                 ctctdb.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".", ""));
-
+                            if (cmbViTriDHN1.SelectedItem != null)
+                                ctctdb.ViTriDHN1 = cmbViTriDHN1.SelectedItem.ToString();
+                            if (cmbViTriDHN2.SelectedItem != null)
+                                ctctdb.ViTriDHN2 = cmbViTriDHN2.SelectedItem.ToString();
                             ctctdb.NoiNhan = txtNoiNhan.Text.Trim();
 
                             ///Ký Tên
@@ -387,7 +406,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             ctctdb.NoiDung = txtNoiDung.Text;
                             if (txtSoTien.Text.Trim() != "")
                                 ctctdb.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".", ""));
-
+                            if (cmbViTriDHN1.SelectedItem != null)
+                                ctctdb.ViTriDHN1 = cmbViTriDHN1.SelectedItem.ToString();
+                            if (cmbViTriDHN2.SelectedItem != null)
+                                ctctdb.ViTriDHN2 = cmbViTriDHN2.SelectedItem.ToString();
                             ctctdb.NoiNhan = txtNoiNhan.Text.Trim();
                             ///Ký Tên
                             BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
@@ -444,6 +466,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             _ctctdb.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".", ""));
                         else
                             _ctctdb.SoTien = null;
+                        if (cmbViTriDHN1.SelectedItem != null)
+                            _ctctdb.ViTriDHN1 = cmbViTriDHN1.SelectedItem.ToString();
+                        if (cmbViTriDHN2.SelectedItem != null)
+                            _ctctdb.ViTriDHN2 = cmbViTriDHN2.SelectedItem.ToString();
                         ///
                         if (chkNgayXuLy.Checked)
                         {
@@ -1027,16 +1053,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
 
-                CTKTXM ctktxm = null;
-                if (_ctctdb.CHDB.ToXuLy)
-                {
-                    ctktxm = _cKTXM.getCTKTXMbyMaDonTXLDanhBo(_ctctdb.CHDB.MaDonTXL.Value, _ctctdb.DanhBo);
-                }
-                else
-                {
-                    ctktxm = _cKTXM.getCTKTXMbyMaDonKHDanhBo(_ctctdb.CHDB.MaDon.Value, _ctctdb.DanhBo);
-                }
-
                 dr["SoPhieu"] = _ctctdb.MaCTCTDB.ToString().Insert(_ctctdb.MaCTCTDB.ToString().Length - 2, "-");
                 dr["HoTen"] = _ctctdb.HoTen;
                 dr["DiaChi"] = _ctctdb.DiaChi;
@@ -1044,9 +1060,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     dr["DanhBo"] = _ctctdb.DanhBo.Insert(7, " ").Insert(4, " ");
                 dr["HopDong"] = _ctctdb.HopDong;
 
-                if (ctktxm != null)
-                    if (!string.IsNullOrEmpty(ctktxm.ViTriDHN1) || !string.IsNullOrEmpty(ctktxm.ViTriDHN2))
-                        dr["ViTriDHN"] = "Vị trí ĐHN lắp đặt: " + ctktxm.ViTriDHN1 + ", " + ctktxm.ViTriDHN2;
+                dr["ViTriDHN"] = "Vị trí ĐHN lắp đặt: " + _ctctdb.ViTriDHN1 + ", " + _ctctdb.ViTriDHN2;
 
                 if (_ctctdb.LyDo != "Vấn Đề Khác")
                     dr["LyDo"] = _ctctdb.LyDo + ". ";

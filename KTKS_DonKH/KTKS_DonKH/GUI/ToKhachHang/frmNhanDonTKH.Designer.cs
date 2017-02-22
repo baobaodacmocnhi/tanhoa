@@ -112,7 +112,7 @@
             // 
             // txtHieuLucTuKy
             // 
-            this.txtHieuLucTuKy.Location = new System.Drawing.Point(145, 439);
+            this.txtHieuLucTuKy.Location = new System.Drawing.Point(134, 438);
             this.txtHieuLucTuKy.Name = "txtHieuLucTuKy";
             this.txtHieuLucTuKy.Size = new System.Drawing.Size(70, 22);
             this.txtHieuLucTuKy.TabIndex = 29;
@@ -128,7 +128,7 @@
             // 
             // txtDinhMucSau
             // 
-            this.txtDinhMucSau.Location = new System.Drawing.Point(144, 409);
+            this.txtDinhMucSau.Location = new System.Drawing.Point(134, 410);
             this.txtDinhMucSau.Name = "txtDinhMucSau";
             this.txtDinhMucSau.Size = new System.Drawing.Size(70, 22);
             this.txtDinhMucSau.TabIndex = 27;
@@ -136,7 +136,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(28, 412);
+            this.label13.Location = new System.Drawing.Point(28, 413);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(65, 16);
             this.label13.TabIndex = 26;
@@ -583,7 +583,7 @@
             // chkKhongInBienNhan
             // 
             this.chkKhongInBienNhan.AutoSize = true;
-            this.chkKhongInBienNhan.Location = new System.Drawing.Point(505, 415);
+            this.chkKhongInBienNhan.Location = new System.Drawing.Point(695, 264);
             this.chkKhongInBienNhan.Name = "chkKhongInBienNhan";
             this.chkKhongInBienNhan.Size = new System.Drawing.Size(143, 20);
             this.chkKhongInBienNhan.TabIndex = 31;
@@ -599,6 +599,7 @@
             this.txtTongSoDanhBo.TabIndex = 5;
             this.txtTongSoDanhBo.Text = "1";
             this.txtTongSoDanhBo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTongSoDanhBo.Visible = false;
             // 
             // label23
             // 
@@ -610,6 +611,7 @@
             this.label23.Size = new System.Drawing.Size(90, 19);
             this.label23.TabIndex = 4;
             this.label23.Text = "Tổng Số DB";
+            this.label23.Visible = false;
             // 
             // chkGiamDM
             // 
@@ -842,7 +844,7 @@
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
-            // frmNhanDonKH
+            // frmNhanDonTKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -894,7 +896,7 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.Name = "frmNhanDonKH";
+            this.Name = "frmNhanDonTKH";
             this.Text = "Nhận Đơn Khách Hàng";
             this.Load += new System.EventHandler(this.frmNhanDonKH_Load);
             this.groupBox1.ResumeLayout(false);

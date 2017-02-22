@@ -28,185 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnBaoCao = new System.Windows.Forms.Button();
-            this.panel_KhoangThoiGian = new System.Windows.Forms.Panel();
-            this.dateTu = new System.Windows.Forms.DateTimePicker();
-            this.dateDen = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.radChiTietDon = new System.Windows.Forms.RadioButton();
-            this.chkToKH = new System.Windows.Forms.CheckBox();
-            this.chkTXL = new System.Windows.Forms.CheckBox();
-            this.radThongKe = new System.Windows.Forms.RadioButton();
-            this.panel_KhoangThoiGian.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnBaoCao
+            // frmBaoCaoDonTKH
             // 
-            this.btnBaoCao.Image = global::KTKS_DonKH.Properties.Resources.find_24x24;
-            this.btnBaoCao.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBaoCao.Location = new System.Drawing.Point(733, 2);
-            this.btnBaoCao.Name = "btnBaoCao";
-            this.btnBaoCao.Size = new System.Drawing.Size(94, 35);
-            this.btnBaoCao.TabIndex = 21;
-            this.btnBaoCao.Text = "Báo Cáo";
-            this.btnBaoCao.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnBaoCao.UseVisualStyleBackColor = true;
-            this.btnBaoCao.Click += new System.EventHandler(this.btnBaoCao_Click);
-            // 
-            // panel_KhoangThoiGian
-            // 
-            this.panel_KhoangThoiGian.Controls.Add(this.dateTu);
-            this.panel_KhoangThoiGian.Controls.Add(this.dateDen);
-            this.panel_KhoangThoiGian.Controls.Add(this.label3);
-            this.panel_KhoangThoiGian.Controls.Add(this.label4);
-            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(535, 2);
-            this.panel_KhoangThoiGian.Name = "panel_KhoangThoiGian";
-            this.panel_KhoangThoiGian.Size = new System.Drawing.Size(192, 64);
-            this.panel_KhoangThoiGian.TabIndex = 20;
-            // 
-            // dateTu
-            // 
-            this.dateTu.CustomFormat = "dd/MM/yyyy";
-            this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu.Location = new System.Drawing.Point(85, 4);
-            this.dateTu.Name = "dateTu";
-            this.dateTu.Size = new System.Drawing.Size(100, 25);
-            this.dateTu.TabIndex = 13;
-            this.dateTu.ValueChanged += new System.EventHandler(this.dateTu_ValueChanged);
-            // 
-            // dateDen
-            // 
-            this.dateDen.CustomFormat = "dd/MM/yyyy";
-            this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen.Location = new System.Drawing.Point(85, 35);
-            this.dateDen.Name = "dateDen";
-            this.dateDen.Size = new System.Drawing.Size(100, 25);
-            this.dateDen.TabIndex = 14;
-            this.dateDen.ValueChanged += new System.EventHandler(this.dateDen_ValueChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 10);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 17);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Từ Ngày:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 41);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 17);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "Đến Ngày:";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.crystalReportViewer1);
-            this.panel1.Location = new System.Drawing.Point(13, 67);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1265, 490);
-            this.panel1.TabIndex = 22;
-            // 
-            // crystalReportViewer1
-            // 
-            this.crystalReportViewer1.ActiveViewIndex = -1;
-            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer1.Location = new System.Drawing.Point(3, 3);
-            this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(1259, 484);
-            this.crystalReportViewer1.TabIndex = 0;
-            this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
-            // 
-            // radChiTietDon
-            // 
-            this.radChiTietDon.AutoSize = true;
-            this.radChiTietDon.Location = new System.Drawing.Point(12, 33);
-            this.radChiTietDon.Name = "radChiTietDon";
-            this.radChiTietDon.Size = new System.Drawing.Size(102, 21);
-            this.radChiTietDon.TabIndex = 25;
-            this.radChiTietDon.Text = "Chi Tiết Đơn";
-            this.radChiTietDon.UseVisualStyleBackColor = true;
-            // 
-            // chkToKH
-            // 
-            this.chkToKH.AutoSize = true;
-            this.chkToKH.Location = new System.Drawing.Point(864, 12);
-            this.chkToKH.Name = "chkToKH";
-            this.chkToKH.Size = new System.Drawing.Size(122, 21);
-            this.chkToKH.TabIndex = 26;
-            this.chkToKH.Text = "Tổ Khách Hàng";
-            this.chkToKH.UseVisualStyleBackColor = true;
-            this.chkToKH.CheckedChanged += new System.EventHandler(this.chkToKH_CheckedChanged);
-            // 
-            // chkTXL
-            // 
-            this.chkTXL.AutoSize = true;
-            this.chkTXL.Location = new System.Drawing.Point(864, 39);
-            this.chkTXL.Name = "chkTXL";
-            this.chkTXL.Size = new System.Drawing.Size(85, 21);
-            this.chkTXL.TabIndex = 27;
-            this.chkTXL.Text = "Tổ Xử Lý";
-            this.chkTXL.UseVisualStyleBackColor = true;
-            this.chkTXL.CheckedChanged += new System.EventHandler(this.chkTXL_CheckedChanged);
-            // 
-            // radThongKe
-            // 
-            this.radThongKe.AutoSize = true;
-            this.radThongKe.Checked = true;
-            this.radThongKe.Location = new System.Drawing.Point(12, 6);
-            this.radThongKe.Name = "radThongKe";
-            this.radThongKe.Size = new System.Drawing.Size(85, 21);
-            this.radThongKe.TabIndex = 28;
-            this.radThongKe.TabStop = true;
-            this.radThongKe.Text = "Thống Kê";
-            this.radThongKe.UseVisualStyleBackColor = true;
-            // 
-            // frmBaoCaoDonKH
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1297, 598);
-            this.Controls.Add(this.radThongKe);
-            this.Controls.Add(this.chkTXL);
-            this.Controls.Add(this.chkToKH);
-            this.Controls.Add(this.radChiTietDon);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.btnBaoCao);
-            this.Controls.Add(this.panel_KhoangThoiGian);
-            this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClientSize = new System.Drawing.Size(1135, 528);
+            this.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmBaoCaoDonKH";
+            this.Name = "frmBaoCaoDonTKH";
             this.Text = "Các Loại Báo Cáo Đơn";
-            this.panel_KhoangThoiGian.ResumeLayout(false);
-            this.panel_KhoangThoiGian.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnBaoCao;
-        private System.Windows.Forms.Panel panel_KhoangThoiGian;
-        private System.Windows.Forms.DateTimePicker dateTu;
-        private System.Windows.Forms.DateTimePicker dateDen;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel panel1;
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
-        private System.Windows.Forms.RadioButton radChiTietDon;
-        private System.Windows.Forms.CheckBox chkToKH;
-        private System.Windows.Forms.CheckBox chkTXL;
-        private System.Windows.Forms.RadioButton radThongKe;
     }
 }

@@ -225,7 +225,7 @@ namespace KTKS_DonKH
 
         #endregion
 
-        #region Đơn Từ
+        #region Đơn Tổ Khách Hàng
 
         private void mnuNhanDonKhachHang_Click(object sender, EventArgs e)
         {
@@ -287,6 +287,17 @@ namespace KTKS_DonKH
             if (CTaiKhoan.CheckQuyen("mnuLoaiDon", "Xem"))
             {
                 frmLoaiDonTKH frm = new frmLoaiDonTKH();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuBaoCaoDonTKH_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuBaoCaoDonTKH", "Xem"))
+            {
+                frmBaoCaoDonTKH frm = new frmBaoCaoDonTKH();
                 OpenForm(frm);
             }
             else
@@ -789,6 +800,8 @@ namespace KTKS_DonKH
             frmToTrinhDCHD frm = new frmToTrinhDCHD();
             OpenForm(frm);
         }
+
+        
 
     }
 }

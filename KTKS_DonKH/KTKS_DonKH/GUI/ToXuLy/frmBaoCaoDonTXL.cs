@@ -49,7 +49,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 dr["LoaiBaoCao"] = "TỔ XỬ LÝ";
                 dr["MaDon"] = item["MaDon"];
                 dr["TenLD"] = item["TenLD"];
-                if (_cKTXM.CheckKTMXbyMaDon_TXL(decimal.Parse(item["MaDon"].ToString())))
+                if (_cKTXM.CheckExist_KTXM("TXL",decimal.Parse(item["MaDon"].ToString())))
                     dr["DaGiaiQuyet"] = true;
                 else
                     if (_cBamChi.CheckBamChibyMaDon_TXL(decimal.Parse(item["MaDon"].ToString())))

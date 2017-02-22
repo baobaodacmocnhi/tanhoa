@@ -32,6 +32,8 @@ namespace KTKS_DonKH.GUI.BamChi
         private void frmDSBamChi_Load(object sender, EventArgs e)
         {
             dgvDSCTBamChi.AutoGenerateColumns = false;
+
+            cmbTimTheo.SelectedItem = "Ngày";
         }
 
         private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
@@ -61,20 +63,29 @@ namespace KTKS_DonKH.GUI.BamChi
             {
                 case "Mã Đơn":
                     if (txtNoiDungTimKiem.Text.Trim() != "")
-                        dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByMaDon(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                            dgvDSCTBamChi.DataSource = _cBamChi.GetDS("TXL", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                        else
+                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                dgvDSCTBamChi.DataSource = _cBamChi.GetDS("TBC", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                            else
+                                dgvDSCTBamChi.DataSource = _cBamChi.GetDS("TKH", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                     break;
                 case "Danh Bộ":
                     if (txtNoiDungTimKiem.Text.Trim() != "")
-                        dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDanhBo(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
+                        dgvDSCTBamChi.DataSource = _cBamChi.GetDS(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Ngày":
                     if (CTaiKhoan.ThuKy)
                     {
                         if (CTaiKhoan.ToXL)
-                            dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDates(true, dateTu.Value, dateDen.Value);
+                            dgvDSCTBamChi.DataSource = _cBamChi.GetDS("TXL",dateTu.Value, dateDen.Value);
+                        else
+                            if (CTaiKhoan.ToBC)
+                                dgvDSCTBamChi.DataSource = _cBamChi.GetDS("TBC", dateTu.Value, dateDen.Value);
                     }
                     else
-                        dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDates(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
+                        dgvDSCTBamChi.DataSource = _cBamChi.GetDS(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
                     break;
                 default:
                     break;
@@ -83,128 +94,40 @@ namespace KTKS_DonKH.GUI.BamChi
 
         private void btnIn_Click(object sender, EventArgs e)
         {
-            //if (chkInBamChiThan_BBDCMS.Checked)
-            //{
-            //    DataTable dt = ((DataTable)dgvDSCTBamChi.DataSource).DefaultView.ToTable();
-            //    DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-            //    foreach (DataRow itemRow in dt.Rows)
-            //        if (itemRow["TrangThaiBC"].ToString() == "Bấm Chì Thân" || itemRow["TrangThaiBC"].ToString() == "BB đứt chì MS")
-            //        {
-            //            DataRow dr = dsBaoCao.Tables["DSBamChi"].NewRow();
-
-            //            dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
-            //            dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-            //            if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
-            //                dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-            //            dr["HopDong"] = itemRow["HopDong"];
-            //            dr["HoTen"] = itemRow["HoTen"];
-            //            dr["DiaChi"] = itemRow["DiaChi"];
-            //            dr["NgayBC"] = itemRow["NgayBC"];
-            //            dr["Hieu"] = itemRow["Hieu"];
-            //            dr["Co"] = itemRow["Co"];
-            //            dr["ChiSo"] = itemRow["ChiSo"];
-            //            dr["TrangThai"] = itemRow["TrangThaiBC"];
-            //            dr["VienChi"] = itemRow["VienChi"];
-            //            dr["DayChi"] = itemRow["DayChi"];
-            //            dr["MaSoBC"] = itemRow["MaSoBC"];
-            //            dr["NguoiBC"] = itemRow["CreateBy"];
-            //            dr["TheoYeuCau"] = itemRow["TheoYeuCau"].ToString().ToUpper();
-            //            if (CTaiKhoan.MaUser != 1 && CTaiKhoan.MaUser != 26 && CTaiKhoan.MaUser != 27)
-            //                dr["NguoiLap"] = CTaiKhoan.HoTen;
-
-            //            dsBaoCao.Tables["DSBamChi"].Rows.Add(dr);
-            //        }
-            //        else
-            //        {
-            //            DataRow dr = dsBaoCao.Tables["DSBamChi"].NewRow();
-
-            //            dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
-            //            dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-            //            if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
-            //                dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-            //            dr["HopDong"] = itemRow["HopDong"];
-            //            dr["HoTen"] = itemRow["HoTen"];
-            //            dr["DiaChi"] = itemRow["DiaChi"];
-            //            dr["NgayBC"] = itemRow["NgayBC"];
-            //            dr["Hieu"] = itemRow["Hieu"];
-            //            dr["Co"] = itemRow["Co"];
-            //            dr["ChiSo"] = itemRow["ChiSo"];
-            //            dr["TrangThai"] = "Loại Khác";
-            //            dr["VienChi"] = itemRow["VienChi"];
-            //            dr["DayChi"] = itemRow["DayChi"];
-            //            dr["MaSoBC"] = itemRow["MaSoBC"];
-            //            dr["NguoiBC"] = itemRow["CreateBy"];
-            //            dr["TheoYeuCau"] = itemRow["TheoYeuCau"].ToString().ToUpper();
-            //            if (CTaiKhoan.MaUser != 1 && CTaiKhoan.MaUser != 26 && CTaiKhoan.MaUser != 27)
-            //                dr["NguoiLap"] = CTaiKhoan.HoTen;
-
-            //            dsBaoCao.Tables["DSBamChi"].Rows.Add(dr);
-            //        }
-
-            //    rptDSBamChi_ChiThan_BBDCMS rpt = new rptDSBamChi_ChiThan_BBDCMS();
-            //    rpt.SetDataSource(dsBaoCao);
-            //    frmShowBaoCao frm = new frmShowBaoCao(rpt);
-            //    frm.ShowDialog();
-            //}
-            //else
+            DataTable dt = ((DataTable)dgvDSCTBamChi.DataSource).DefaultView.ToTable();
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            foreach (DataRow itemRow in dt.Rows)
             {
-                DataTable dt = ((DataTable)dgvDSCTBamChi.DataSource).DefaultView.ToTable();
-                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                foreach (DataRow itemRow in dt.Rows)
-                {
-                    DataRow dr = dsBaoCao.Tables["DSBamChi"].NewRow();
+                DataRow dr = dsBaoCao.Tables["DSBamChi"].NewRow();
 
-                    dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
-                    dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-                    if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
-                        dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                    dr["TenLD"] = itemRow["TenLD"];
-                    dr["HopDong"] = itemRow["HopDong"];
-                    dr["HoTen"] = itemRow["HoTen"];
-                    dr["DiaChi"] = itemRow["DiaChi"];
-                    dr["NgayBC"] = itemRow["NgayBC"];
-                    dr["Hieu"] = itemRow["Hieu"];
-                    dr["Co"] = itemRow["Co"];
-                    dr["ChiSo"] = itemRow["ChiSo"];
-                    dr["TrangThai"] = itemRow["TrangThaiBC"];
-                    dr["VienChi"] = itemRow["VienChi"];
-                    dr["DayChi"] = itemRow["DayChi"];
-                    dr["MaSoBC"] = itemRow["MaSoBC"];
-                    dr["NguoiBC"] = itemRow["CreateBy"];
-                    dr["TheoYeuCau"] = itemRow["TheoYeuCau"].ToString().ToUpper();
-                    dr["NguoiLap"] = CTaiKhoan.HoTen;
+                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                    dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                dr["TenLD"] = itemRow["TenLD"];
+                dr["HopDong"] = itemRow["HopDong"];
+                dr["HoTen"] = itemRow["HoTen"];
+                dr["DiaChi"] = itemRow["DiaChi"];
+                dr["NgayBC"] = itemRow["NgayBC"];
+                dr["Hieu"] = itemRow["Hieu"];
+                dr["Co"] = itemRow["Co"];
+                dr["ChiSo"] = itemRow["ChiSo"];
+                dr["TrangThai"] = itemRow["TrangThaiBC"];
+                dr["VienChi"] = itemRow["VienChi"];
+                dr["DayChi"] = itemRow["DayChi"];
+                dr["MaSoBC"] = itemRow["MaSoBC"];
+                dr["NguoiBC"] = itemRow["CreateBy"];
+                dr["TheoYeuCau"] = itemRow["TheoYeuCau"].ToString().ToUpper();
+                dr["NguoiLap"] = CTaiKhoan.HoTen;
 
-                    dsBaoCao.Tables["DSBamChi"].Rows.Add(dr);
-                }
-
-                //if (CTaiKhoan.MaUser == 1 || CTaiKhoan.MaUser == 25 || CTaiKhoan.MaUser == 26 || CTaiKhoan.MaUser == 27)
-                //{
-                //    if (chkLoaiDon.Checked)
-                //    {
-                //        rptThongKeDSBamChi_LoaiDon rpt = new rptThongKeDSBamChi_LoaiDon();
-                //        rpt.SetDataSource(dsBaoCao);
-                //        rpt.Subreports[0].SetDataSource(dsBaoCao);
-                //        frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                //        frm.ShowDialog();
-                //    }
-                //    else
-                //    {
-                //        rptThongKeDSBamChi rpt = new rptThongKeDSBamChi();
-                //        rpt.SetDataSource(dsBaoCao);
-                //        rpt.Subreports[0].SetDataSource(dsBaoCao);
-                //        frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                //        frm.ShowDialog();
-                //    }
-                //}
-                //else
-                {
-                    rptDSBamChi rpt = new rptDSBamChi();
-                    rpt.SetDataSource(dsBaoCao);
-                    rpt.Subreports[0].SetDataSource(dsBaoCao);
-                    frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                    frm.ShowDialog();
-                }
+                dsBaoCao.Tables["DSBamChi"].Rows.Add(dr);
             }
+
+            rptDSBamChi rpt = new rptDSBamChi();
+            rpt.SetDataSource(dsBaoCao);
+            rpt.Subreports[0].SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.ShowDialog();
         }
 
         private void btnInQuetToanVatTu_Click(object sender, EventArgs e)

@@ -70,30 +70,39 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             {
                 case "Mã Đơn":
                     if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
-                        dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByMaDons(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
+                        MessageBox.Show("Liên hệ BảoBảo", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
                         if (txtNoiDungTimKiem.Text.Trim() != "")
-                            dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByMaDon(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
+                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                dgvDSCTKTXM.DataSource = _cKTXM.GetDS("TXL", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                            else
+                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                    dgvDSCTKTXM.DataSource = _cKTXM.GetDS("TBC", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                else
+                                    dgvDSCTKTXM.DataSource = _cKTXM.GetDS("TKH", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                     break;
                 case "Danh Bộ":
                     if (txtNoiDungTimKiem.Text.Trim() != "")
-                        dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByDanhBo(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
+                        dgvDSCTKTXM.DataSource = _cKTXM.GetDS_DanhBo(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Số Công Văn":
                     if (txtNoiDungTimKiem.Text.Trim() != "")
-                        dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMBySoCongVan(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
+                        dgvDSCTKTXM.DataSource = _cKTXM.GetDS_SoCongVan(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Ngày":
                     if (CTaiKhoan.ThuKy)
                     {
-                        if (CTaiKhoan.ToXL)
-                            dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByDates(true, dateTu.Value, dateDen.Value);
+                        if (CTaiKhoan.ToKH)
+                            dgvDSCTKTXM.DataSource = _cKTXM.GetDS("TKH", dateTu.Value, dateDen.Value);
                         else
-                            if (CTaiKhoan.ToKH)
-                                dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByDates(false, dateTu.Value, dateDen.Value);
+                            if (CTaiKhoan.ToXL)
+                                dgvDSCTKTXM.DataSource = _cKTXM.GetDS("TXL", dateTu.Value, dateDen.Value);
+                            else
+                                if (CTaiKhoan.ToBC)
+                                    dgvDSCTKTXM.DataSource = _cKTXM.GetDS("TBC", dateTu.Value, dateDen.Value);
                     }
                     else
-                        dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByDates(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
+                        dgvDSCTKTXM.DataSource = _cKTXM.GetDS(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
                     break;
                 default:
                     break;

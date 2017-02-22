@@ -50,7 +50,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
                 dr["LoaiBaoCao"] = "TỔ BẤM CHÌ";
                 dr["MaDon"] = item["MaDon"];
                 dr["TenLD"] = item["TenLD"];
-                if (_cKTXM.CheckKTMXbyMaDon_TBC(decimal.Parse(item["MaDon"].ToString())))
+                if (_cKTXM.CheckExist_KTXM("TBC",decimal.Parse(item["MaDon"].ToString())))
                     dr["DaGiaiQuyet"] = true;
                 else
                     if (_cBamChi.CheckBamChibyMaDon_TBC(decimal.Parse(item["MaDon"].ToString())))

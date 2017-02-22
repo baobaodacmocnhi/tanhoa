@@ -722,8 +722,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _MaDon;
 		
-		private bool _ToXuLy;
-		
 		private System.Nullable<decimal> _MaDonTXL;
 		
 		private System.Nullable<decimal> _MaDonTBC;
@@ -740,6 +738,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntityRef<DonKH> _DonKH;
 		
+		private EntityRef<DonTBC> _DonTBC;
+		
 		private EntityRef<DonTXL> _DonTXL;
 		
     #region Extensibility Method Definitions
@@ -750,8 +750,6 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaBCChanged();
     partial void OnMaDonChanging(System.Nullable<decimal> value);
     partial void OnMaDonChanged();
-    partial void OnToXuLyChanging(bool value);
-    partial void OnToXuLyChanged();
     partial void OnMaDonTXLChanging(System.Nullable<decimal> value);
     partial void OnMaDonTXLChanged();
     partial void OnMaDonTBCChanging(System.Nullable<decimal> value);
@@ -770,6 +768,7 @@ namespace KTKS_DonKH.LinQ
 		{
 			this._CTBamChis = new EntitySet<CTBamChi>(new Action<CTBamChi>(this.attach_CTBamChis), new Action<CTBamChi>(this.detach_CTBamChis));
 			this._DonKH = default(EntityRef<DonKH>);
+			this._DonTBC = default(EntityRef<DonTBC>);
 			this._DonTXL = default(EntityRef<DonTXL>);
 			OnCreated();
 		}
@@ -818,26 +817,6 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToXuLy", DbType="Bit NOT NULL")]
-		public bool ToXuLy
-		{
-			get
-			{
-				return this._ToXuLy;
-			}
-			set
-			{
-				if ((this._ToXuLy != value))
-				{
-					this.OnToXuLyChanging(value);
-					this.SendPropertyChanging();
-					this._ToXuLy = value;
-					this.SendPropertyChanged("ToXuLy");
-					this.OnToXuLyChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonTXL", DbType="Decimal(18,0)")]
 		public System.Nullable<decimal> MaDonTXL
 		{
@@ -873,6 +852,10 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._MaDonTBC != value))
 				{
+					if (this._DonTBC.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMaDonTBCChanging(value);
 					this.SendPropertyChanging();
 					this._MaDonTBC = value;
@@ -1005,6 +988,40 @@ namespace KTKS_DonKH.LinQ
 						this._MaDon = default(Nullable<decimal>);
 					}
 					this.SendPropertyChanged("DonKH");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTBC_BamChi", Storage="_DonTBC", ThisKey="MaDonTBC", OtherKey="MaDon", IsForeignKey=true)]
+		public DonTBC DonTBC
+		{
+			get
+			{
+				return this._DonTBC.Entity;
+			}
+			set
+			{
+				DonTBC previousValue = this._DonTBC.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTBC.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTBC.Entity = null;
+						previousValue.BamChis.Remove(this);
+					}
+					this._DonTBC.Entity = value;
+					if ((value != null))
+					{
+						value.BamChis.Add(this);
+						this._MaDonTBC = value.MaDon;
+					}
+					else
+					{
+						this._MaDonTBC = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("DonTBC");
 				}
 			}
 		}
@@ -3387,9 +3404,9 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _MaDon;
 		
-		private bool _ToXuLy;
-		
 		private System.Nullable<decimal> _MaDonTXL;
+		
+		private System.Nullable<decimal> _MaDonTBC;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
@@ -3425,10 +3442,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnNoiChuyenChanged();
     partial void OnMaDonChanging(System.Nullable<decimal> value);
     partial void OnMaDonChanged();
-    partial void OnToXuLyChanging(bool value);
-    partial void OnToXuLyChanged();
     partial void OnMaDonTXLChanging(System.Nullable<decimal> value);
     partial void OnMaDonTXLChanged();
+    partial void OnMaDonTBCChanging(System.Nullable<decimal> value);
+    partial void OnMaDonTBCChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -3664,26 +3681,6 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToXuLy", DbType="Bit NOT NULL")]
-		public bool ToXuLy
-		{
-			get
-			{
-				return this._ToXuLy;
-			}
-			set
-			{
-				if ((this._ToXuLy != value))
-				{
-					this.OnToXuLyChanging(value);
-					this.SendPropertyChanging();
-					this._ToXuLy = value;
-					this.SendPropertyChanged("ToXuLy");
-					this.OnToXuLyChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonTXL", DbType="Decimal(18,0)")]
 		public System.Nullable<decimal> MaDonTXL
 		{
@@ -3700,6 +3697,26 @@ namespace KTKS_DonKH.LinQ
 					this._MaDonTXL = value;
 					this.SendPropertyChanged("MaDonTXL");
 					this.OnMaDonTXLChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonTBC", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> MaDonTBC
+		{
+			get
+			{
+				return this._MaDonTBC;
+			}
+			set
+			{
+				if ((this._MaDonTBC != value))
+				{
+					this.OnMaDonTBCChanging(value);
+					this.SendPropertyChanging();
+					this._MaDonTBC = value;
+					this.SendPropertyChanged("MaDonTBC");
+					this.OnMaDonTBCChanged();
 				}
 			}
 		}
@@ -4658,6 +4675,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _NoiDung;
 		
+		private string _ViTriDHN1;
+		
+		private string _ViTriDHN2;
+		
 		private bool _TCTBXuLy;
 		
 		private bool _TroNgai;
@@ -4766,6 +4787,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnSoTienChanged();
     partial void OnNoiDungChanging(string value);
     partial void OnNoiDungChanged();
+    partial void OnViTriDHN1Changing(string value);
+    partial void OnViTriDHN1Changed();
+    partial void OnViTriDHN2Changing(string value);
+    partial void OnViTriDHN2Changed();
     partial void OnTCTBXuLyChanging(bool value);
     partial void OnTCTBXuLyChanged();
     partial void OnTroNgaiChanging(bool value);
@@ -5086,6 +5111,46 @@ namespace KTKS_DonKH.LinQ
 					this._NoiDung = value;
 					this.SendPropertyChanged("NoiDung");
 					this.OnNoiDungChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ViTriDHN1", DbType="NVarChar(50)")]
+		public string ViTriDHN1
+		{
+			get
+			{
+				return this._ViTriDHN1;
+			}
+			set
+			{
+				if ((this._ViTriDHN1 != value))
+				{
+					this.OnViTriDHN1Changing(value);
+					this.SendPropertyChanging();
+					this._ViTriDHN1 = value;
+					this.SendPropertyChanged("ViTriDHN1");
+					this.OnViTriDHN1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ViTriDHN2", DbType="NVarChar(50)")]
+		public string ViTriDHN2
+		{
+			get
+			{
+				return this._ViTriDHN2;
+			}
+			set
+			{
+				if ((this._ViTriDHN2 != value))
+				{
+					this.OnViTriDHN2Changing(value);
+					this.SendPropertyChanging();
+					this._ViTriDHN2 = value;
+					this.SendPropertyChanged("ViTriDHN2");
+					this.OnViTriDHN2Changed();
 				}
 			}
 		}
@@ -7320,6 +7385,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _NoiDung;
 		
+		private string _ViTriDHN1;
+		
+		private string _ViTriDHN2;
+		
 		private bool _TCTBXuLy;
 		
 		private bool _TroNgai;
@@ -7416,6 +7485,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnSoTienChanged();
     partial void OnNoiDungChanging(string value);
     partial void OnNoiDungChanged();
+    partial void OnViTriDHN1Changing(string value);
+    partial void OnViTriDHN1Changed();
+    partial void OnViTriDHN2Changing(string value);
+    partial void OnViTriDHN2Changed();
     partial void OnTCTBXuLyChanging(bool value);
     partial void OnTCTBXuLyChanged();
     partial void OnTroNgaiChanging(bool value);
@@ -7724,6 +7797,46 @@ namespace KTKS_DonKH.LinQ
 					this._NoiDung = value;
 					this.SendPropertyChanged("NoiDung");
 					this.OnNoiDungChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ViTriDHN1", DbType="NVarChar(50)")]
+		public string ViTriDHN1
+		{
+			get
+			{
+				return this._ViTriDHN1;
+			}
+			set
+			{
+				if ((this._ViTriDHN1 != value))
+				{
+					this.OnViTriDHN1Changing(value);
+					this.SendPropertyChanging();
+					this._ViTriDHN1 = value;
+					this.SendPropertyChanged("ViTriDHN1");
+					this.OnViTriDHN1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ViTriDHN2", DbType="NVarChar(50)")]
+		public string ViTriDHN2
+		{
+			get
+			{
+				return this._ViTriDHN2;
+			}
+			set
+			{
+				if ((this._ViTriDHN2 != value))
+				{
+					this.OnViTriDHN2Changing(value);
+					this.SendPropertyChanging();
+					this._ViTriDHN2 = value;
+					this.SendPropertyChanged("ViTriDHN2");
+					this.OnViTriDHN2Changed();
 				}
 			}
 		}
@@ -18690,6 +18803,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _ModifyBy;
 		
+		private EntitySet<BamChi> _BamChis;
+		
+		private EntitySet<KTXM> _KTXMs;
+		
 		private EntityRef<LoaiDonTBC> _LoaiDonTBC;
 		
     #region Extensibility Method Definitions
@@ -18748,6 +18865,8 @@ namespace KTKS_DonKH.LinQ
 		
 		public DonTBC()
 		{
+			this._BamChis = new EntitySet<BamChi>(new Action<BamChi>(this.attach_BamChis), new Action<BamChi>(this.detach_BamChis));
+			this._KTXMs = new EntitySet<KTXM>(new Action<KTXM>(this.attach_KTXMs), new Action<KTXM>(this.detach_KTXMs));
 			this._LoaiDonTBC = default(EntityRef<LoaiDonTBC>);
 			OnCreated();
 		}
@@ -19236,6 +19355,32 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTBC_BamChi", Storage="_BamChis", ThisKey="MaDon", OtherKey="MaDonTBC")]
+		public EntitySet<BamChi> BamChis
+		{
+			get
+			{
+				return this._BamChis;
+			}
+			set
+			{
+				this._BamChis.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTBC_KTXM", Storage="_KTXMs", ThisKey="MaDon", OtherKey="MaDonTBC")]
+		public EntitySet<KTXM> KTXMs
+		{
+			get
+			{
+				return this._KTXMs;
+			}
+			set
+			{
+				this._KTXMs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LoaiDonTBC_DonTBC", Storage="_LoaiDonTBC", ThisKey="MaLD", OtherKey="MaLD", IsForeignKey=true)]
 		public LoaiDonTBC LoaiDonTBC
 		{
@@ -19288,6 +19433,30 @@ namespace KTKS_DonKH.LinQ
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_BamChis(BamChi entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTBC = this;
+		}
+		
+		private void detach_BamChis(BamChi entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTBC = null;
+		}
+		
+		private void attach_KTXMs(KTXM entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTBC = this;
+		}
+		
+		private void detach_KTXMs(KTXM entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTBC = null;
 		}
 	}
 	
@@ -23012,8 +23181,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _MaDon;
 		
-		private bool _ToXuLy;
-		
 		private System.Nullable<decimal> _MaDonTXL;
 		
 		private System.Nullable<decimal> _MaDonTBC;
@@ -23030,6 +23197,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntityRef<DonKH> _DonKH;
 		
+		private EntityRef<DonTBC> _DonTBC;
+		
 		private EntityRef<DonTXL> _DonTXL;
 		
     #region Extensibility Method Definitions
@@ -23040,8 +23209,6 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaKTXMChanged();
     partial void OnMaDonChanging(System.Nullable<decimal> value);
     partial void OnMaDonChanged();
-    partial void OnToXuLyChanging(bool value);
-    partial void OnToXuLyChanged();
     partial void OnMaDonTXLChanging(System.Nullable<decimal> value);
     partial void OnMaDonTXLChanged();
     partial void OnMaDonTBCChanging(System.Nullable<decimal> value);
@@ -23060,6 +23227,7 @@ namespace KTKS_DonKH.LinQ
 		{
 			this._CTKTXMs = new EntitySet<CTKTXM>(new Action<CTKTXM>(this.attach_CTKTXMs), new Action<CTKTXM>(this.detach_CTKTXMs));
 			this._DonKH = default(EntityRef<DonKH>);
+			this._DonTBC = default(EntityRef<DonTBC>);
 			this._DonTXL = default(EntityRef<DonTXL>);
 			OnCreated();
 		}
@@ -23108,26 +23276,6 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToXuLy", DbType="Bit NOT NULL")]
-		public bool ToXuLy
-		{
-			get
-			{
-				return this._ToXuLy;
-			}
-			set
-			{
-				if ((this._ToXuLy != value))
-				{
-					this.OnToXuLyChanging(value);
-					this.SendPropertyChanging();
-					this._ToXuLy = value;
-					this.SendPropertyChanged("ToXuLy");
-					this.OnToXuLyChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonTXL", DbType="Decimal(18,0)")]
 		public System.Nullable<decimal> MaDonTXL
 		{
@@ -23163,6 +23311,10 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._MaDonTBC != value))
 				{
+					if (this._DonTBC.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMaDonTBCChanging(value);
 					this.SendPropertyChanging();
 					this._MaDonTBC = value;
@@ -23295,6 +23447,40 @@ namespace KTKS_DonKH.LinQ
 						this._MaDon = default(Nullable<decimal>);
 					}
 					this.SendPropertyChanged("DonKH");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTBC_KTXM", Storage="_DonTBC", ThisKey="MaDonTBC", OtherKey="MaDon", IsForeignKey=true)]
+		public DonTBC DonTBC
+		{
+			get
+			{
+				return this._DonTBC.Entity;
+			}
+			set
+			{
+				DonTBC previousValue = this._DonTBC.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTBC.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTBC.Entity = null;
+						previousValue.KTXMs.Remove(this);
+					}
+					this._DonTBC.Entity = value;
+					if ((value != null))
+					{
+						value.KTXMs.Add(this);
+						this._MaDonTBC = value.MaDon;
+					}
+					else
+					{
+						this._MaDonTBC = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("DonTBC");
 				}
 			}
 		}

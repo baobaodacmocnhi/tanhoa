@@ -93,6 +93,21 @@ namespace KTKS_DonKH.DAL.BamChi
             }
         }
 
+        public bool CheckExist_BamChi(string Loai,decimal MaDon)
+        {
+            switch (Loai)
+            {
+                case "TKH":
+                    return db.BamChis.Any(item => item.MaDon == MaDon);
+                case "TXL":
+                    return db.BamChis.Any(item => item.MaDonTXL == MaDon);
+                case "TBC":
+                    return db.BamChis.Any(item => item.MaDonTBC == MaDon);
+                default:
+                    return false;
+            }
+        }
+
         /// <summary>
         /// Kiểm tra Đơn KH có được BamChi xử lý hay chưa
         /// </summary>
@@ -148,6 +163,21 @@ namespace KTKS_DonKH.DAL.BamChi
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
+            }
+        }
+
+        public LinQ.BamChi Get(string Loai,decimal MaDon)
+        {
+            switch (Loai)
+            {
+                case "TKH":
+                    return db.BamChis.FirstOrDefault(item => item.MaDon == MaDon);
+                case "TXL":
+                    return db.BamChis.FirstOrDefault(item => item.MaDonTXL == MaDon);
+                case "TBC":
+                    return db.BamChis.FirstOrDefault(item => item.MaDonTBC == MaDon);
+                default:
+                    return null;
             }
         }
 
@@ -284,40 +314,6 @@ namespace KTKS_DonKH.DAL.BamChi
         }
 
         /// <summary>
-        /// Lấy Danh Sách CTBamChi theo Mã Đơn Khách Hàng & User. Nếu User có quyền quản lý BamChi thì được xem hết CTBamChi của Mã Đơn
-        /// </summary>
-        /// <param name="MaDon"></param>
-        /// <param name="MaUser"></param>
-        /// <returns></returns>
-        public DataTable LoadDSCTBamChi(decimal MaDon, int MaUser)
-        {
-            try
-            {
-                var query = from itemCTBamChi in db.CTBamChis
-                            join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                            where itemCTBamChi.BamChi.MaDon == MaDon && itemCTBamChi.CreateBy == MaUser
-                            orderby itemCTBamChi.BamChi.MaDon ascending
-                            select new
-                            {
-                                itemCTBamChi.MaCTBC,
-                                itemCTBamChi.BamChi.ToXuLy,
-                                itemCTBamChi.BamChi.MaDon,
-                                itemCTBamChi.DanhBo,
-                                itemCTBamChi.HoTen,
-                                itemCTBamChi.DiaChi,
-                                itemCTBamChi.CreateDate,
-                                CreateBy = itemUser.HoTen,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        /// <summary>
         /// Lấy Danh Sách CTBamChi theo Mã Đơn Tổ Khách Hàng & Danh Bộ. Dùng cho hiện thị Đóng Nước
         /// </summary>
         /// <param name="MaDon"></param>
@@ -348,65 +344,54 @@ namespace KTKS_DonKH.DAL.BamChi
             }
         }
 
-        /// <summary>
-        /// Lấy Danh Sách CTBamChi theo Mã Đơn Tổ Xử Lý & User. Nếu User có quyền quản lý BamChi thì được xem hết CTBamChi của Mã Đơn
-        /// </summary>
-        /// <param name="MaDonTXL"></param>
-        /// <param name="MaUser"></param>
-        /// <returns></returns>
-        public DataTable LoadDSCTBamChi_TXL(decimal MaDonTXL, int MaUser)
+        public DataTable GetDS(string Loai, decimal MaDon, int CreateBy)
         {
-            try
+            switch (Loai)
             {
-                var query = from itemCTBamChi in db.CTBamChis
+                case "TKH":
+                    var query = from itemCTBamChi in db.CTBamChis
+                                join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                                where itemCTBamChi.BamChi.MaDon == MaDon && itemCTBamChi.CreateBy == CreateBy
+                                select new
+                                {
+                                    itemCTBamChi.MaCTBC,
+                                    MaDon = "TKH" + itemCTBamChi.BamChi.MaDon,
+                                    itemCTBamChi.DanhBo,
+                                    itemCTBamChi.HoTen,
+                                    itemCTBamChi.DiaChi,
+                                    CreateBy = itemUser.HoTen,
+                                };
+                    return LINQToDataTable(query);
+                case "TXL":
+                    query = from itemCTBamChi in db.CTBamChis
                             join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                            where itemCTBamChi.BamChi.MaDonTXL == MaDonTXL && itemCTBamChi.CreateBy == MaUser
-                            orderby itemCTBamChi.BamChi.MaDonTXL ascending
+                            where itemCTBamChi.BamChi.MaDonTXL == MaDon && itemCTBamChi.CreateBy == CreateBy
                             select new
                             {
                                 itemCTBamChi.MaCTBC,
-                                itemCTBamChi.BamChi.ToXuLy,
-                                MaDon = itemCTBamChi.BamChi.MaDonTXL,
+                                MaDon = "TXL" + itemCTBamChi.BamChi.MaDonTXL,
                                 itemCTBamChi.DanhBo,
                                 itemCTBamChi.HoTen,
                                 itemCTBamChi.DiaChi,
-                                itemCTBamChi.CreateDate,
                                 CreateBy = itemUser.HoTen,
                             };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public DataTable LoadDSCTBamChi_TBC(decimal MaDonTBC, int MaUser)
-        {
-            try
-            {
-                var query = from itemCTBamChi in db.CTBamChis
+                    return LINQToDataTable(query);
+                case "TBC":
+                    query = from itemCTBamChi in db.CTBamChis
                             join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                            where itemCTBamChi.BamChi.MaDonTBC == MaDonTBC && itemCTBamChi.CreateBy == MaUser
-                            orderby itemCTBamChi.BamChi.MaDonTBC ascending
+                            where itemCTBamChi.BamChi.MaDonTBC == MaDon && itemCTBamChi.CreateBy == CreateBy
                             select new
                             {
                                 itemCTBamChi.MaCTBC,
-                                itemCTBamChi.BamChi.ToXuLy,
-                                MaDon = itemCTBamChi.BamChi.MaDonTBC,
+                                MaDon = "TBC" + itemCTBamChi.BamChi.MaDonTBC,
                                 itemCTBamChi.DanhBo,
                                 itemCTBamChi.HoTen,
                                 itemCTBamChi.DiaChi,
-                                itemCTBamChi.CreateDate,
                                 CreateBy = itemUser.HoTen,
                             };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                    return LINQToDataTable(query);
+                default:
+                    return null;
             }
         }
 
@@ -441,6 +426,21 @@ namespace KTKS_DonKH.DAL.BamChi
             }
         }
 
+        public bool CheckExist_CTBamChi(string Loai,decimal MaDon, string DanhBo, DateTime NgayBC, string TrangThaiBamChi)
+        {
+            switch (Loai)
+            {
+                case "TKH":
+                    return db.CTBamChis.Any(item => item.BamChi.MaDon == MaDon && item.DanhBo == DanhBo && item.NgayBC.Value.Date == NgayBC.Date && item.TrangThaiBC == TrangThaiBamChi);
+                case "TXL":
+                    return db.CTBamChis.Any(item => item.BamChi.MaDonTXL == MaDon && item.DanhBo == DanhBo && item.NgayBC.Value.Date == NgayBC.Date && item.TrangThaiBC == TrangThaiBamChi);
+                case "TBC":
+                    return db.CTBamChis.Any(item => item.BamChi.MaDonTBC == MaDon && item.DanhBo == DanhBo && item.NgayBC.Value.Date == NgayBC.Date && item.TrangThaiBC == TrangThaiBamChi);
+                default:
+                    return false;
+            }
+        }
+
         /// <summary>
         /// Kiểm tra CTBamChi đã được tạo cho Mã Đơn Tổ Khách Hàng, Danh Bộ
         /// </summary>
@@ -466,11 +466,11 @@ namespace KTKS_DonKH.DAL.BamChi
         /// <param name="MaDonTXL"></param>
         /// <param name="DanhBo"></param>
         /// <returns></returns>
-        public bool CheckCTBamChibyMaDonDanhBo_TXL(decimal MaDonTXL, string DanhBo, DateTime NgayBC)
+        public bool CheckCTBamChibyMaDonDanhBo_TXL(decimal MaDonTXL, string DanhBo, DateTime NgayBC,string TrangThaiBamChi)
         {
             try
             {
-                return db.CTBamChis.Any(itemCTBamChi => itemCTBamChi.BamChi.MaDonTXL == MaDonTXL && itemCTBamChi.DanhBo == DanhBo && itemCTBamChi.NgayBC == NgayBC);
+                return db.CTBamChis.Any(itemCTBamChi => itemCTBamChi.BamChi.MaDonTXL == MaDonTXL && itemCTBamChi.DanhBo == DanhBo && itemCTBamChi.NgayBC == NgayBC&&itemCTBamChi.TrangThaiBC==TrangThaiBamChi);
             }
             catch (Exception ex)
             {
@@ -479,11 +479,11 @@ namespace KTKS_DonKH.DAL.BamChi
             }
         }
 
-        public bool CheckCTBamChibyMaDonDanhBo_TBC(decimal MaDonTBC, string DanhBo, DateTime NgayBC)
+        public bool CheckCTBamChibyMaDonDanhBo_TBC(decimal MaDonTBC, string DanhBo, DateTime NgayBC, string TrangThaiBamChi)
         {
             try
             {
-                return db.CTBamChis.Any(itemCTBamChi => itemCTBamChi.BamChi.MaDonTBC == MaDonTBC && itemCTBamChi.DanhBo == DanhBo && itemCTBamChi.NgayBC == NgayBC);
+                return db.CTBamChis.Any(itemCTBamChi => itemCTBamChi.BamChi.MaDonTBC == MaDonTBC && itemCTBamChi.DanhBo == DanhBo && itemCTBamChi.NgayBC == NgayBC && itemCTBamChi.TrangThaiBC == TrangThaiBamChi);
             }
             catch (Exception ex)
             {
@@ -498,11 +498,10 @@ namespace KTKS_DonKH.DAL.BamChi
             {
                 var query_DonKH = from itemCTBamChi in db.CTBamChis
                                   join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                                  where itemCTBamChi.BamChi.ToXuLy == false
+                                  where itemCTBamChi.BamChi.MaDon != null
                                   orderby itemCTBamChi.BamChi.MaDon ascending
                                   select new
                                   {
-                                      itemCTBamChi.BamChi.ToXuLy,
                                       itemCTBamChi.MaCTBC,
                                       itemCTBamChi.BamChi.MaDon,
                                       itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD,
@@ -524,11 +523,10 @@ namespace KTKS_DonKH.DAL.BamChi
 
                 var query_DonTXL = from itemCTBamChi in db.CTBamChis
                                    join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                                   where itemCTBamChi.BamChi.ToXuLy == true
+                                   where itemCTBamChi.BamChi.MaDonTXL != null
                                    orderby itemCTBamChi.BamChi.MaDon ascending
                                    select new
                                    {
-                                       itemCTBamChi.BamChi.ToXuLy,
                                        itemCTBamChi.MaCTBC,
                                        MaDon = itemCTBamChi.BamChi.MaDonTXL,
                                        itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD,
@@ -564,11 +562,10 @@ namespace KTKS_DonKH.DAL.BamChi
             {
                 var query_DonKH = from itemCTBamChi in db.CTBamChis
                                   join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                                  where itemCTBamChi.BamChi.ToXuLy == false && itemCTBamChi.BamChi.MaDon == MaDon
+                                  where itemCTBamChi.BamChi.MaDon != null && itemCTBamChi.BamChi.MaDon == MaDon
                                   orderby itemCTBamChi.NgayBC descending
                                   select new
                                   {
-                                      itemCTBamChi.BamChi.ToXuLy,
                                       itemCTBamChi.MaCTBC,
                                       itemCTBamChi.BamChi.MaDon,
                                       itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD,
@@ -590,11 +587,10 @@ namespace KTKS_DonKH.DAL.BamChi
 
                 var query_DonTXL = from itemCTBamChi in db.CTBamChis
                                    join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                                   where itemCTBamChi.BamChi.ToXuLy == true && itemCTBamChi.BamChi.MaDonTXL == MaDon
+                                   where itemCTBamChi.BamChi.MaDonTXL != null && itemCTBamChi.BamChi.MaDonTXL == MaDon
                                    orderby itemCTBamChi.NgayBC descending
                                    select new
                                    {
-                                       itemCTBamChi.BamChi.ToXuLy,
                                        itemCTBamChi.MaCTBC,
                                        MaDon = itemCTBamChi.BamChi.MaDonTXL,
                                        itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD,
@@ -630,11 +626,10 @@ namespace KTKS_DonKH.DAL.BamChi
             {
                 var query_DonKH = from itemCTBamChi in db.CTBamChis
                                   join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                                  where itemCTBamChi.BamChi.ToXuLy == false && itemCTBamChi.DanhBo == DanhBo
+                                  where itemCTBamChi.BamChi.MaDonTXL !=null && itemCTBamChi.DanhBo == DanhBo
                                   orderby itemCTBamChi.NgayBC descending
                                   select new
                                   {
-                                      itemCTBamChi.BamChi.ToXuLy,
                                       itemCTBamChi.MaCTBC,
                                       itemCTBamChi.BamChi.MaDon,
                                       itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD,
@@ -656,11 +651,10 @@ namespace KTKS_DonKH.DAL.BamChi
 
                 var query_DonTXL = from itemCTBamChi in db.CTBamChis
                                    join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                                   where itemCTBamChi.BamChi.ToXuLy == true && itemCTBamChi.DanhBo == DanhBo
+                                   where itemCTBamChi.BamChi.MaDon !=null && itemCTBamChi.DanhBo == DanhBo
                                    orderby itemCTBamChi.NgayBC descending
                                    select new
                                    {
-                                       itemCTBamChi.BamChi.ToXuLy,
                                        itemCTBamChi.MaCTBC,
                                        MaDon = itemCTBamChi.BamChi.MaDonTXL,
                                        itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD,
@@ -696,11 +690,10 @@ namespace KTKS_DonKH.DAL.BamChi
             {
                 var query_DonKH = from itemCTBamChi in db.CTBamChis
                                   join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                                  where itemCTBamChi.BamChi.ToXuLy == false && itemCTBamChi.NgayBC.Value.Date == TuNgay.Date
+                                  where itemCTBamChi.BamChi.MaDon != null && itemCTBamChi.NgayBC.Value.Date == TuNgay.Date
                                   orderby itemCTBamChi.NgayBC descending
                                   select new
                                   {
-                                      itemCTBamChi.BamChi.ToXuLy,
                                       itemCTBamChi.MaCTBC,
                                       itemCTBamChi.BamChi.MaDon,
                                       itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD,
@@ -722,11 +715,10 @@ namespace KTKS_DonKH.DAL.BamChi
 
                 var query_DonTXL = from itemCTBamChi in db.CTBamChis
                                    join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                                   where itemCTBamChi.BamChi.ToXuLy == true && itemCTBamChi.NgayBC.Value.Date == TuNgay.Date
+                                   where itemCTBamChi.BamChi.MaDonTXL != null && itemCTBamChi.NgayBC.Value.Date == TuNgay.Date
                                    orderby itemCTBamChi.NgayBC descending
                                    select new
                                    {
-                                       itemCTBamChi.BamChi.ToXuLy,
                                        itemCTBamChi.MaCTBC,
                                        MaDon = itemCTBamChi.BamChi.MaDonTXL,
                                        itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD,
@@ -756,73 +748,84 @@ namespace KTKS_DonKH.DAL.BamChi
             }
         }
 
-        public DataTable LoadDSCTBamChiByDates(bool ToXL,DateTime TuNgay, DateTime DenNgay)
+        public DataTable GetDS(string Loai, DateTime FromNgayBC, DateTime ToNgayBC)
         {
-            try
+            switch (Loai)
             {
-                if (ToXL == false)
-                {
-                    var query_DonKH = from itemCTBamChi in db.CTBamChis
-                                      join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                                      where itemCTBamChi.BamChi.ToXuLy == false && itemCTBamChi.NgayBC.Value.Date >= TuNgay.Date && itemCTBamChi.NgayBC.Value.Date <= DenNgay.Date
-                                      orderby itemCTBamChi.NgayBC descending
-                                      select new
-                                      {
-                                          itemCTBamChi.BamChi.ToXuLy,
-                                          itemCTBamChi.MaCTBC,
-                                          itemCTBamChi.BamChi.MaDon,
-                                          itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD,
-                                          itemCTBamChi.DanhBo,
-                                          itemCTBamChi.HopDong,
-                                          itemCTBamChi.HoTen,
-                                          itemCTBamChi.DiaChi,
-                                          itemCTBamChi.Hieu,
-                                          itemCTBamChi.Co,
-                                          itemCTBamChi.ChiSo,
-                                          itemCTBamChi.TrangThaiBC,
-                                          itemCTBamChi.VienChi,
-                                          itemCTBamChi.DayChi,
-                                          itemCTBamChi.MaSoBC,
-                                          itemCTBamChi.TheoYeuCau,
-                                          itemCTBamChi.NgayBC,
-                                          CreateBy = itemUser.HoTen,
-                                      };
-                    return LINQToDataTable(query_DonKH.Distinct());
-                }
-                else
-                {
-                    var query_DonTXL = from itemCTBamChi in db.CTBamChis
-                                       join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                                       where itemCTBamChi.BamChi.ToXuLy == true && itemCTBamChi.NgayBC.Value.Date >= TuNgay.Date && itemCTBamChi.NgayBC.Value.Date <= DenNgay.Date
-                                       orderby itemCTBamChi.NgayBC descending
-                                       select new
-                                       {
-                                           itemCTBamChi.BamChi.ToXuLy,
-                                           itemCTBamChi.MaCTBC,
-                                           MaDon = itemCTBamChi.BamChi.MaDonTXL,
-                                           itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD,
-                                           itemCTBamChi.DanhBo,
-                                           itemCTBamChi.HopDong,
-                                           itemCTBamChi.HoTen,
-                                           itemCTBamChi.DiaChi,
-                                           itemCTBamChi.Hieu,
-                                           itemCTBamChi.Co,
-                                           itemCTBamChi.ChiSo,
-                                           itemCTBamChi.TrangThaiBC,
-                                           itemCTBamChi.VienChi,
-                                           itemCTBamChi.DayChi,
-                                           itemCTBamChi.MaSoBC,
-                                           itemCTBamChi.TheoYeuCau,
-                                           itemCTBamChi.NgayBC,
-                                           CreateBy = itemUser.HoTen,
-                                       };
-                    return LINQToDataTable(query_DonTXL.Distinct());
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                case "TKH":
+                    var query = from itemCTBamChi in db.CTBamChis
+                                join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                                where itemCTBamChi.BamChi.MaDon != null
+                                && itemCTBamChi.NgayBC.Value.Date >= FromNgayBC.Date && itemCTBamChi.NgayBC.Value.Date <= ToNgayBC.Date
+                                select new
+                                {
+                                    itemCTBamChi.MaCTBC,
+                                    MaDon = "TKH" + itemCTBamChi.BamChi.MaDon,
+                                    itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD,
+                                    itemCTBamChi.DanhBo,
+                                    itemCTBamChi.HoTen,
+                                    itemCTBamChi.DiaChi,
+                                    itemCTBamChi.NgayBC,
+                                    itemCTBamChi.TrangThaiBC,
+                                    itemCTBamChi.Hieu,
+                                    itemCTBamChi.Co,
+                                    itemCTBamChi.ChiSo,
+                                    itemCTBamChi.VienChi,
+                                    itemCTBamChi.DayChi,
+                                    itemCTBamChi.TheoYeuCau,
+                                    CreateBy = itemUser.HoTen,
+                                };
+                    return LINQToDataTable(query);
+                case "TXL":
+                    query = from itemCTBamChi in db.CTBamChis
+                            join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                            where itemCTBamChi.BamChi.MaDonTXL != null
+                            && itemCTBamChi.NgayBC.Value.Date >= FromNgayBC.Date && itemCTBamChi.NgayBC.Value.Date <= ToNgayBC.Date
+                            select new
+                            {
+                                itemCTBamChi.MaCTBC,
+                                MaDon = "TXL" + itemCTBamChi.BamChi.MaDonTXL,
+                                itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD,
+                                itemCTBamChi.DanhBo,
+                                itemCTBamChi.HoTen,
+                                itemCTBamChi.DiaChi,
+                                itemCTBamChi.NgayBC,
+                                itemCTBamChi.TrangThaiBC,
+                                itemCTBamChi.Hieu,
+                                itemCTBamChi.Co,
+                                itemCTBamChi.ChiSo,
+                                itemCTBamChi.VienChi,
+                                itemCTBamChi.DayChi,
+                                itemCTBamChi.TheoYeuCau,
+                                CreateBy = itemUser.HoTen,
+                            };
+                    return LINQToDataTable(query);
+                case "TBC":
+                    query = from itemCTBamChi in db.CTBamChis
+                            join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                            where itemCTBamChi.BamChi.MaDonTBC != null
+                            && itemCTBamChi.NgayBC.Value.Date >= FromNgayBC.Date && itemCTBamChi.NgayBC.Value.Date <= ToNgayBC.Date
+                            select new
+                            {
+                                itemCTBamChi.MaCTBC,
+                                MaDon = "TBC" + itemCTBamChi.BamChi.MaDonTBC,
+                                itemCTBamChi.BamChi.DonTBC.LoaiDonTBC.TenLD,
+                                itemCTBamChi.DanhBo,
+                                itemCTBamChi.HoTen,
+                                itemCTBamChi.DiaChi,
+                                itemCTBamChi.NgayBC,
+                                itemCTBamChi.TrangThaiBC,
+                                itemCTBamChi.Hieu,
+                                itemCTBamChi.Co,
+                                itemCTBamChi.ChiSo,
+                                itemCTBamChi.VienChi,
+                                itemCTBamChi.DayChi,
+                                itemCTBamChi.TheoYeuCau,
+                                CreateBy = itemUser.HoTen,
+                            };
+                    return LINQToDataTable(query);
+                default:
+                    return null;
             }
         }
 
@@ -837,11 +840,10 @@ namespace KTKS_DonKH.DAL.BamChi
             {
                 var query_DonKH = from itemCTBamChi in db.CTBamChis
                                   join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                                  where itemCTBamChi.BamChi.ToXuLy == false && itemCTBamChi.CreateBy == MaUser
+                                  where itemCTBamChi.BamChi.MaDon != null && itemCTBamChi.CreateBy == MaUser
                                   orderby itemCTBamChi.NgayBC descending
                                   select new
                                   {
-                                      itemCTBamChi.BamChi.ToXuLy,
                                       itemCTBamChi.MaCTBC,
                                       itemCTBamChi.BamChi.MaDon,
                                       itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD,
@@ -863,11 +865,10 @@ namespace KTKS_DonKH.DAL.BamChi
 
                 var query_DonTXL = from itemCTBamChi in db.CTBamChis
                                    join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                                   where itemCTBamChi.BamChi.ToXuLy == true && itemCTBamChi.CreateBy == MaUser
+                                   where itemCTBamChi.BamChi.MaDonTXL != null && itemCTBamChi.CreateBy == MaUser
                                    orderby itemCTBamChi.NgayBC descending
                                    select new
                                    {
-                                       itemCTBamChi.BamChi.ToXuLy,
                                        itemCTBamChi.MaCTBC,
                                        MaDon = itemCTBamChi.BamChi.MaDonTXL,
                                        itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD,
@@ -897,136 +898,164 @@ namespace KTKS_DonKH.DAL.BamChi
             }
         }
 
-        public DataTable LoadDSCTBamChiByMaDon(int MaUser, decimal MaDon)
+        public DataTable GetDS(string Loai, int CreateBy, decimal MaDon)
         {
-            try
+            switch (Loai)
             {
-                var query_DonKH = from itemCTBamChi in db.CTBamChis
-                                  join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                                  where itemCTBamChi.BamChi.ToXuLy == false && itemCTBamChi.CreateBy == MaUser && itemCTBamChi.BamChi.MaDon == MaDon
-                                  orderby itemCTBamChi.NgayBC descending
-                                  select new
-                                  {
-                                      itemCTBamChi.BamChi.ToXuLy,
-                                      itemCTBamChi.MaCTBC,
-                                      itemCTBamChi.BamChi.MaDon,
-                                      itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD,
-                                      itemCTBamChi.DanhBo,
-                                      itemCTBamChi.HopDong,
-                                      itemCTBamChi.HoTen,
-                                      itemCTBamChi.DiaChi,
-                                      itemCTBamChi.Hieu,
-                                      itemCTBamChi.Co,
-                                      itemCTBamChi.ChiSo,
-                                      itemCTBamChi.TrangThaiBC,
-                                      itemCTBamChi.VienChi,
-                                      itemCTBamChi.DayChi,
-                                      itemCTBamChi.MaSoBC,
-                                      itemCTBamChi.TheoYeuCau,
-                                      itemCTBamChi.NgayBC,
-                                      CreateBy = itemUser.HoTen,
-                                  };
-
-                var query_DonTXL = from itemCTBamChi in db.CTBamChis
-                                   join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                                   where itemCTBamChi.BamChi.ToXuLy == true && itemCTBamChi.CreateBy == MaUser && itemCTBamChi.BamChi.MaDonTXL == MaDon
-                                   orderby itemCTBamChi.NgayBC descending
-                                   select new
-                                   {
-                                       itemCTBamChi.BamChi.ToXuLy,
-                                       itemCTBamChi.MaCTBC,
-                                       MaDon = itemCTBamChi.BamChi.MaDonTXL,
-                                       itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD,
-                                       itemCTBamChi.DanhBo,
-                                       itemCTBamChi.HopDong,
-                                       itemCTBamChi.HoTen,
-                                       itemCTBamChi.DiaChi,
-                                       itemCTBamChi.Hieu,
-                                       itemCTBamChi.Co,
-                                       itemCTBamChi.ChiSo,
-                                       itemCTBamChi.TrangThaiBC,
-                                       itemCTBamChi.VienChi,
-                                       itemCTBamChi.DayChi,
-                                       itemCTBamChi.MaSoBC,
-                                       itemCTBamChi.TheoYeuCau,
-                                       itemCTBamChi.NgayBC,
-                                       CreateBy = itemUser.HoTen,
-                                   };
-                DataTable dt = LINQToDataTable(query_DonKH.Distinct());
-                dt.Merge(LINQToDataTable(query_DonTXL.Distinct()));
-                return dt;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                case "TKH":
+                    var query = from itemCTBamChi in db.CTBamChis
+                                join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                                where itemCTBamChi.BamChi.MaDon != null && itemCTBamChi.CreateBy == CreateBy
+                                && itemCTBamChi.BamChi.MaDon == MaDon
+                                select new
+                                {
+                                    itemCTBamChi.MaCTBC,
+                                    MaDon = "TKH" + itemCTBamChi.BamChi.MaDon,
+                                    itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD,
+                                    itemCTBamChi.DanhBo,
+                                    itemCTBamChi.HoTen,
+                                    itemCTBamChi.DiaChi,
+                                    itemCTBamChi.NgayBC,
+                                    itemCTBamChi.TrangThaiBC,
+                                    itemCTBamChi.Hieu,
+                                    itemCTBamChi.Co,
+                                    itemCTBamChi.ChiSo,
+                                    itemCTBamChi.VienChi,
+                                    itemCTBamChi.DayChi,
+                                    itemCTBamChi.TheoYeuCau,
+                                    CreateBy = itemUser.HoTen,
+                                };
+                    return LINQToDataTable(query);
+                case "TXL":
+                    query = from itemCTBamChi in db.CTBamChis
+                            join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                            where itemCTBamChi.BamChi.MaDonTXL != null && itemCTBamChi.CreateBy == CreateBy
+                            && itemCTBamChi.BamChi.MaDonTXL == MaDon
+                            select new
+                            {
+                                itemCTBamChi.MaCTBC,
+                                MaDon = "TXL" + itemCTBamChi.BamChi.MaDonTXL,
+                                itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD,
+                                itemCTBamChi.DanhBo,
+                                itemCTBamChi.HoTen,
+                                itemCTBamChi.DiaChi,
+                                itemCTBamChi.NgayBC,
+                                itemCTBamChi.TrangThaiBC,
+                                itemCTBamChi.Hieu,
+                                itemCTBamChi.Co,
+                                itemCTBamChi.ChiSo,
+                                itemCTBamChi.VienChi,
+                                itemCTBamChi.DayChi,
+                                itemCTBamChi.TheoYeuCau,
+                                CreateBy = itemUser.HoTen,
+                            };
+                    return LINQToDataTable(query);
+                case "TBC":
+                    query = from itemCTBamChi in db.CTBamChis
+                            join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                            where itemCTBamChi.BamChi.MaDonTBC != null && itemCTBamChi.CreateBy == CreateBy
+                            && itemCTBamChi.BamChi.MaDonTBC == MaDon
+                            select new
+                            {
+                                itemCTBamChi.MaCTBC,
+                                MaDon = "TBC" + itemCTBamChi.BamChi.MaDonTBC,
+                                itemCTBamChi.BamChi.DonTBC.LoaiDonTBC.TenLD,
+                                itemCTBamChi.DanhBo,
+                                itemCTBamChi.HoTen,
+                                itemCTBamChi.DiaChi,
+                                itemCTBamChi.NgayBC,
+                                itemCTBamChi.TrangThaiBC,
+                                itemCTBamChi.Hieu,
+                                itemCTBamChi.Co,
+                                itemCTBamChi.ChiSo,
+                                itemCTBamChi.VienChi,
+                                itemCTBamChi.DayChi,
+                                itemCTBamChi.TheoYeuCau,
+                                CreateBy = itemUser.HoTen,
+                            };
+                    return LINQToDataTable(query);
+                default:
+                    return null;
             }
         }
 
-        public DataTable LoadDSCTBamChiByDanhBo(int MaUser, string DanhBo)
+        public DataTable GetDS(int CreateBy, string DanhBo)
         {
-            try
-            {
-                var query_DonKH = from itemCTBamChi in db.CTBamChis
-                                  join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                                  where itemCTBamChi.BamChi.ToXuLy == false && itemCTBamChi.CreateBy == MaUser && itemCTBamChi.DanhBo == DanhBo
-                                  orderby itemCTBamChi.NgayBC descending
-                                  select new
-                                  {
-                                      itemCTBamChi.BamChi.ToXuLy,
-                                      itemCTBamChi.MaCTBC,
-                                      itemCTBamChi.BamChi.MaDon,
-                                      itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD,
-                                      itemCTBamChi.DanhBo,
-                                      itemCTBamChi.HopDong,
-                                      itemCTBamChi.HoTen,
-                                      itemCTBamChi.DiaChi,
-                                      itemCTBamChi.Hieu,
-                                      itemCTBamChi.Co,
-                                      itemCTBamChi.ChiSo,
-                                      itemCTBamChi.TrangThaiBC,
-                                      itemCTBamChi.VienChi,
-                                      itemCTBamChi.DayChi,
-                                      itemCTBamChi.MaSoBC,
-                                      itemCTBamChi.TheoYeuCau,
-                                      itemCTBamChi.NgayBC,
-                                      CreateBy = itemUser.HoTen,
-                                  };
+            DataTable dt = new DataTable();
 
-                var query_DonTXL = from itemCTBamChi in db.CTBamChis
-                                   join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                                   where itemCTBamChi.BamChi.ToXuLy == true && itemCTBamChi.CreateBy == MaUser && itemCTBamChi.DanhBo == DanhBo
-                                   orderby itemCTBamChi.NgayBC descending
-                                   select new
-                                   {
-                                       itemCTBamChi.BamChi.ToXuLy,
-                                       itemCTBamChi.MaCTBC,
-                                       MaDon = itemCTBamChi.BamChi.MaDonTXL,
-                                       itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD,
-                                       itemCTBamChi.DanhBo,
-                                       itemCTBamChi.HopDong,
-                                       itemCTBamChi.HoTen,
-                                       itemCTBamChi.DiaChi,
-                                       itemCTBamChi.Hieu,
-                                       itemCTBamChi.Co,
-                                       itemCTBamChi.ChiSo,
-                                       itemCTBamChi.TrangThaiBC,
-                                       itemCTBamChi.VienChi,
-                                       itemCTBamChi.DayChi,
-                                       itemCTBamChi.MaSoBC,
-                                       itemCTBamChi.TheoYeuCau,
-                                       itemCTBamChi.NgayBC,
-                                       CreateBy = itemUser.HoTen,
-                                   };
-                DataTable dt = LINQToDataTable(query_DonKH.Distinct());
-                dt.Merge(LINQToDataTable(query_DonTXL.Distinct()));
-                return dt;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+            var query = from itemCTBamChi in db.CTBamChis
+                        join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                        where itemCTBamChi.BamChi.MaDon != null && itemCTBamChi.CreateBy == CreateBy
+                        && itemCTBamChi.DanhBo==DanhBo
+                        select new
+                        {
+                            itemCTBamChi.MaCTBC,
+                            MaDon = "TKH" + itemCTBamChi.BamChi.MaDon,
+                            itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD,
+                            itemCTBamChi.DanhBo,
+                            itemCTBamChi.HoTen,
+                            itemCTBamChi.DiaChi,
+                            itemCTBamChi.NgayBC,
+                            itemCTBamChi.TrangThaiBC,
+                            itemCTBamChi.Hieu,
+                            itemCTBamChi.Co,
+                            itemCTBamChi.ChiSo,
+                            itemCTBamChi.VienChi,
+                            itemCTBamChi.DayChi,
+                            itemCTBamChi.TheoYeuCau,
+                            CreateBy = itemUser.HoTen,
+                        };
+            dt = LINQToDataTable(query);
+
+            query = from itemCTBamChi in db.CTBamChis
+                    join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                    where itemCTBamChi.BamChi.MaDonTXL != null && itemCTBamChi.CreateBy == CreateBy
+                    && itemCTBamChi.DanhBo == DanhBo
+                    select new
+                    {
+                        itemCTBamChi.MaCTBC,
+                        MaDon = "TXL" + itemCTBamChi.BamChi.MaDonTXL,
+                        itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD,
+                        itemCTBamChi.DanhBo,
+                        itemCTBamChi.HoTen,
+                        itemCTBamChi.DiaChi,
+                        itemCTBamChi.NgayBC,
+                        itemCTBamChi.TrangThaiBC,
+                        itemCTBamChi.Hieu,
+                        itemCTBamChi.Co,
+                        itemCTBamChi.ChiSo,
+                        itemCTBamChi.VienChi,
+                        itemCTBamChi.DayChi,
+                        itemCTBamChi.TheoYeuCau,
+                        CreateBy = itemUser.HoTen,
+                    };
+            dt.Merge(LINQToDataTable(query));
+
+            query = from itemCTBamChi in db.CTBamChis
+                    join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                    where itemCTBamChi.BamChi.MaDonTBC != null && itemCTBamChi.CreateBy == CreateBy
+                    && itemCTBamChi.DanhBo == DanhBo
+                    select new
+                    {
+                        itemCTBamChi.MaCTBC,
+                        MaDon = "TBC" + itemCTBamChi.BamChi.MaDonTBC,
+                        itemCTBamChi.BamChi.DonTBC.LoaiDonTBC.TenLD,
+                        itemCTBamChi.DanhBo,
+                        itemCTBamChi.HoTen,
+                        itemCTBamChi.DiaChi,
+                        itemCTBamChi.NgayBC,
+                        itemCTBamChi.TrangThaiBC,
+                        itemCTBamChi.Hieu,
+                        itemCTBamChi.Co,
+                        itemCTBamChi.ChiSo,
+                        itemCTBamChi.VienChi,
+                        itemCTBamChi.DayChi,
+                        itemCTBamChi.TheoYeuCau,
+                        CreateBy = itemUser.HoTen,
+                    };
+            dt.Merge(LINQToDataTable(query));
+
+            return dt;
         }
 
         public DataTable LoadDSCTBamChiByDate(int MaUser, DateTime TuNgay)
@@ -1035,11 +1064,10 @@ namespace KTKS_DonKH.DAL.BamChi
             {
                 var query_DonKH = from itemCTBamChi in db.CTBamChis
                                   join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                                  where itemCTBamChi.BamChi.ToXuLy == false && itemCTBamChi.CreateBy == MaUser && itemCTBamChi.NgayBC.Value.Date == TuNgay.Date
+                                  where itemCTBamChi.BamChi.MaDon != null && itemCTBamChi.CreateBy == MaUser && itemCTBamChi.NgayBC.Value.Date == TuNgay.Date
                                   orderby itemCTBamChi.NgayBC descending
                                   select new
                                   {
-                                      itemCTBamChi.BamChi.ToXuLy,
                                       itemCTBamChi.MaCTBC,
                                       itemCTBamChi.BamChi.MaDon,
                                       itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD,
@@ -1061,11 +1089,10 @@ namespace KTKS_DonKH.DAL.BamChi
 
                 var query_DonTXL = from itemCTBamChi in db.CTBamChis
                                    join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                                   where itemCTBamChi.BamChi.ToXuLy == true && itemCTBamChi.CreateBy == MaUser && itemCTBamChi.NgayBC.Value.Date == TuNgay.Date
+                                   where itemCTBamChi.BamChi.MaDonTXL != null && itemCTBamChi.CreateBy == MaUser && itemCTBamChi.NgayBC.Value.Date == TuNgay.Date
                                    orderby itemCTBamChi.NgayBC descending
                                    select new
                                    {
-                                       itemCTBamChi.BamChi.ToXuLy,
                                        itemCTBamChi.MaCTBC,
                                        MaDon = itemCTBamChi.BamChi.MaDonTXL,
                                        itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD,
@@ -1095,70 +1122,83 @@ namespace KTKS_DonKH.DAL.BamChi
             }
         }
 
-        public DataTable LoadDSCTBamChiByDates(int MaUser, DateTime TuNgay, DateTime DenNgay)
+        public DataTable GetDS(int CreateBy, DateTime FromNgayBC, DateTime ToNgayBC)
         {
-            try
-            {
-                var query_DonKH = from itemCTBamChi in db.CTBamChis
-                                  join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                                  where itemCTBamChi.BamChi.ToXuLy == false && itemCTBamChi.CreateBy == MaUser && itemCTBamChi.NgayBC.Value.Date >= TuNgay.Date && itemCTBamChi.NgayBC.Value.Date <= DenNgay.Date
-                                  orderby itemCTBamChi.NgayBC descending
-                                  select new
-                                  {
-                                      itemCTBamChi.BamChi.ToXuLy,
-                                      itemCTBamChi.MaCTBC,
-                                      itemCTBamChi.BamChi.MaDon,
-                                      itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD,
-                                      itemCTBamChi.DanhBo,
-                                      itemCTBamChi.HopDong,
-                                      itemCTBamChi.HoTen,
-                                      itemCTBamChi.DiaChi,
-                                      itemCTBamChi.Hieu,
-                                      itemCTBamChi.Co,
-                                      itemCTBamChi.ChiSo,
-                                      itemCTBamChi.TrangThaiBC,
-                                      itemCTBamChi.VienChi,
-                                      itemCTBamChi.DayChi,
-                                      itemCTBamChi.MaSoBC,
-                                      itemCTBamChi.TheoYeuCau,
-                                      itemCTBamChi.NgayBC,
-                                      CreateBy = itemUser.HoTen,
-                                  };
+            DataTable dt = new DataTable();
 
-                var query_DonTXL = from itemCTBamChi in db.CTBamChis
-                                   join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                                   where itemCTBamChi.BamChi.ToXuLy == true && itemCTBamChi.CreateBy == MaUser && itemCTBamChi.NgayBC.Value.Date >= TuNgay.Date && itemCTBamChi.NgayBC.Value.Date <= DenNgay.Date
-                                   orderby itemCTBamChi.NgayBC descending
-                                   select new
-                                   {
-                                       itemCTBamChi.BamChi.ToXuLy,
-                                       itemCTBamChi.MaCTBC,
-                                       MaDon = itemCTBamChi.BamChi.MaDonTXL,
-                                       itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD,
-                                       itemCTBamChi.DanhBo,
-                                       itemCTBamChi.HopDong,
-                                       itemCTBamChi.HoTen,
-                                       itemCTBamChi.DiaChi,
-                                       itemCTBamChi.Hieu,
-                                       itemCTBamChi.Co,
-                                       itemCTBamChi.ChiSo,
-                                       itemCTBamChi.TrangThaiBC,
-                                       itemCTBamChi.VienChi,
-                                       itemCTBamChi.DayChi,
-                                       itemCTBamChi.MaSoBC,
-                                       itemCTBamChi.TheoYeuCau,
-                                       itemCTBamChi.NgayBC,
-                                       CreateBy = itemUser.HoTen,
-                                   };
-                DataTable dt = LINQToDataTable(query_DonKH.Distinct());
-                dt.Merge(LINQToDataTable(query_DonTXL.Distinct()));
-                return dt;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+            var query = from itemCTBamChi in db.CTBamChis
+                        join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                        where itemCTBamChi.BamChi.MaDon != null && itemCTBamChi.CreateBy == CreateBy
+                        && itemCTBamChi.NgayBC.Value.Date >= FromNgayBC.Date && itemCTBamChi.NgayBC.Value.Date <= ToNgayBC.Date
+                        select new
+                        {
+                            itemCTBamChi.MaCTBC,
+                            MaDon = "TKH" + itemCTBamChi.BamChi.MaDon,
+                            itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD,
+                            itemCTBamChi.DanhBo,
+                            itemCTBamChi.HoTen,
+                            itemCTBamChi.DiaChi,
+                            itemCTBamChi.NgayBC,
+                            itemCTBamChi.TrangThaiBC,
+                            itemCTBamChi.Hieu,
+                            itemCTBamChi.Co,
+                            itemCTBamChi.ChiSo,
+                            itemCTBamChi.VienChi,
+                            itemCTBamChi.DayChi,
+                            itemCTBamChi.TheoYeuCau,
+                            CreateBy = itemUser.HoTen,
+                        };
+            dt = LINQToDataTable(query);
+
+            query = from itemCTBamChi in db.CTBamChis
+                    join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                    where itemCTBamChi.BamChi.MaDonTXL != null && itemCTBamChi.CreateBy == CreateBy
+                    && itemCTBamChi.NgayBC.Value.Date >= FromNgayBC.Date && itemCTBamChi.NgayBC.Value.Date <= ToNgayBC.Date
+                    select new
+                    {
+                        itemCTBamChi.MaCTBC,
+                        MaDon = "TXL" + itemCTBamChi.BamChi.MaDonTXL,
+                        itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD,
+                        itemCTBamChi.DanhBo,
+                        itemCTBamChi.HoTen,
+                        itemCTBamChi.DiaChi,
+                        itemCTBamChi.NgayBC,
+                        itemCTBamChi.TrangThaiBC,
+                        itemCTBamChi.Hieu,
+                        itemCTBamChi.Co,
+                        itemCTBamChi.ChiSo,
+                        itemCTBamChi.VienChi,
+                        itemCTBamChi.DayChi,
+                        itemCTBamChi.TheoYeuCau,
+                        CreateBy = itemUser.HoTen,
+                    };
+            dt.Merge(LINQToDataTable(query));
+
+            query = from itemCTBamChi in db.CTBamChis
+                    join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                    where itemCTBamChi.BamChi.MaDonTBC != null && itemCTBamChi.CreateBy == CreateBy
+                    && itemCTBamChi.NgayBC.Value.Date >= FromNgayBC.Date && itemCTBamChi.NgayBC.Value.Date <= ToNgayBC.Date
+                    select new
+                    {
+                        itemCTBamChi.MaCTBC,
+                        MaDon = "TBC" + itemCTBamChi.BamChi.MaDonTBC,
+                        itemCTBamChi.BamChi.DonTBC.LoaiDonTBC.TenLD,
+                        itemCTBamChi.DanhBo,
+                        itemCTBamChi.HoTen,
+                        itemCTBamChi.DiaChi,
+                        itemCTBamChi.NgayBC,
+                        itemCTBamChi.TrangThaiBC,
+                        itemCTBamChi.Hieu,
+                        itemCTBamChi.Co,
+                        itemCTBamChi.ChiSo,
+                        itemCTBamChi.VienChi,
+                        itemCTBamChi.DayChi,
+                        itemCTBamChi.TheoYeuCau,
+                        CreateBy = itemUser.HoTen,
+                    };
+            dt.Merge(LINQToDataTable(query));
+
+            return dt;
         }
 
         public bool CheckCTBamChibyID(decimal MaCTBC)

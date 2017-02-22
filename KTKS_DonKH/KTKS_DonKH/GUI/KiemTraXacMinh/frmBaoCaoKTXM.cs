@@ -101,7 +101,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             //}
         };
 
-        ThongKeBienBan[] a = new ThongKeBienBan[6];
+        ThongKeBienBan[] a = new ThongKeBienBan[7];
 
         private void btnBaoCaoThongKe_Click(object sender, EventArgs e)
         {
@@ -119,7 +119,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             soDongTien = _cKTXM.countCTKTXMbyNgayDongTien(dateTu.Value, dateDen.Value);
             soChuyenLapTBCat = _cKTXM.countCTKTXMbyNgayChuyenLapTBCat(dateTu.Value, dateDen.Value);
 
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 7; i++)
             {
                 a[i] = new ThongKeBienBan();
             }
@@ -216,6 +216,19 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                     a[5].LoaiBienBan = "BB hủy Danh Bộ";
                                     a[5].TongDanhBo++;
                                 }
+                                else
+                                    if (itemRow["LoaiBienBan"].ToString() == "BB ĐHN bị ngưng")
+                                    {
+                                        a[6].LoaiBienBan = "BB ĐHN bị ngưng";
+                                        a[6].TongDanhBo++;
+                                        if (!string.IsNullOrEmpty(itemRow["MaDon"].ToString()))
+                                            a[6].ToKH++;
+                                        if (!string.IsNullOrEmpty(itemRow["MaDonTXL"].ToString()))
+                                            a[6].ToXuLy++;
+                                        if (!string.IsNullOrEmpty(itemRow["TieuThuTrungBinh"].ToString()))
+                                            a[6].TieuThuTrungBinh += int.Parse(itemRow["TieuThuTrungBinh"].ToString());
+                                    }
+
                 //else
                 //{
                 //    if (bool.Parse(itemRow["LapBangGia"].ToString()))
@@ -261,7 +274,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 7; i++)
                 ///nếu không có if thì sẽ in ra hết 5 loaibienban (có những cái sẽ không có)
                 if (!string.IsNullOrEmpty(a[i].LoaiBienBan))
                 {
@@ -357,9 +370,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 case "Mã Đơn":
                     if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
                         dt = _cKTXM.LoadDSCTKTXMByMaDons(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
-                else
-                    if (txtNoiDungTimKiem.Text.Trim() != "")
-                        dt = _cKTXM.LoadDSCTKTXMByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
+                    else
+                        if (txtNoiDungTimKiem.Text.Trim() != "")
+                            dt = _cKTXM.LoadDSCTKTXMByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
                     break;
                 case "Danh Bộ":
                     dt = _cKTXM.LoadDSCTKTXMByDanhBo(txtNoiDungTimKiem.Text.Trim());
@@ -368,11 +381,14 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     dt = _cKTXM.LoadDSCTKTXMBySoCongVan(txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Ngày":
-                    if(CTaiKhoan.ToXL)
-                    dt = _cKTXM.LoadDSCTKTXMByDates(true,dateTimePicker1.Value, dateTimePicker2.Value);
+                    if (CTaiKhoan.ToKH)
+                        dt = _cKTXM.GetDS("TKH", dateTimePicker1.Value, dateTimePicker2.Value);
                     else
-                        if(CTaiKhoan.ToKH)
-                            dt = _cKTXM.LoadDSCTKTXMByDates(false, dateTimePicker1.Value, dateTimePicker2.Value);
+                        if (CTaiKhoan.ToXL)
+                            dt = _cKTXM.GetDS("TXL", dateTimePicker1.Value, dateTimePicker2.Value);
+                        else
+                            if (CTaiKhoan.ToBC)
+                                dt = _cKTXM.GetDS("TBC", dateTimePicker1.Value, dateTimePicker2.Value);
                     break;
                 default:
                     break;
