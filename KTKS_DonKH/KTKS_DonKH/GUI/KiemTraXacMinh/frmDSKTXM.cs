@@ -90,6 +90,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         dgvDSCTKTXM.DataSource = _cKTXM.GetDS_SoCongVan(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Ngày":
+                    if(CTaiKhoan.TruongPhong)
+                        dgvDSCTKTXM.DataSource = _cKTXM.GetDS(dateTu.Value, dateDen.Value);
+                    else
                     if (CTaiKhoan.ThuKy)
                     {
                         if (CTaiKhoan.ToKH)
@@ -121,23 +124,13 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
                 dr["TenLD"] = itemRow["TenLD"];
                 dr["MaCTKTXM"] = itemRow["MaCTKTXM"];
-                //dr["NgayNhan"] = itemRow["CreateDate"].ToString().Substring(0, 10);
-                //DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
-                if (itemRow["ToXuLy"].ToString() == "True")
-                    dr["MaDon"] = "TXL" + itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
-                else
-                    dr["MaDon"] = itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
+                dr["MaDon"] = itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
                 if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
                     dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                 dr["HoTen"] = itemRow["HoTen"];
                 dr["DiaChi"] = itemRow["DiaChi"];
                 dr["NoiDungKiemTra"] = itemRow["NoiDungKiemTra"];
                 dr["NguoiLap"] = itemRow["CreateBy"];
-                if (_cTaiKhoan.GetByID(int.Parse(itemRow["MaU"].ToString())).ToKH)
-                    dr["To"] = "TKH";
-                else
-                    if (_cTaiKhoan.GetByID(int.Parse(itemRow["MaU"].ToString())).ToXL)
-                        dr["To"] = "TXL";
 
                 dsBaoCao.Tables["DSKTXM"].Rows.Add(dr);
             }

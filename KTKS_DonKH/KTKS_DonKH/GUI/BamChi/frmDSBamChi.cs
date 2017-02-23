@@ -76,16 +76,19 @@ namespace KTKS_DonKH.GUI.BamChi
                         dgvDSCTBamChi.DataSource = _cBamChi.GetDS(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Ngày":
-                    if (CTaiKhoan.ThuKy)
-                    {
-                        if (CTaiKhoan.ToXL)
-                            dgvDSCTBamChi.DataSource = _cBamChi.GetDS("TXL",dateTu.Value, dateDen.Value);
-                        else
-                            if (CTaiKhoan.ToBC)
-                                dgvDSCTBamChi.DataSource = _cBamChi.GetDS("TBC", dateTu.Value, dateDen.Value);
-                    }
+                    if (CTaiKhoan.TruongPhong)
+                        dgvDSCTBamChi.DataSource = _cBamChi.GetDS(dateTu.Value, dateDen.Value);
                     else
-                        dgvDSCTBamChi.DataSource = _cBamChi.GetDS(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
+                        if (CTaiKhoan.ThuKy)
+                        {
+                            if (CTaiKhoan.ToXL)
+                                dgvDSCTBamChi.DataSource = _cBamChi.GetDS("TXL", dateTu.Value, dateDen.Value);
+                            else
+                                if (CTaiKhoan.ToBC)
+                                    dgvDSCTBamChi.DataSource = _cBamChi.GetDS("TBC", dateTu.Value, dateDen.Value);
+                        }
+                        else
+                            dgvDSCTBamChi.DataSource = _cBamChi.GetDS(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
                     break;
                 default:
                     break;

@@ -22,6 +22,7 @@ using KTKS_DonKH.DAL.CatHuyDanhBo;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.GUI.DongNuoc;
 using KTKS_DonKH.DAL;
+using KTKS_DonKH.GUI.ToBamChi;
 
 namespace KTKS_DonKH.GUI.TimKiem
 {
@@ -50,14 +51,6 @@ namespace KTKS_DonKH.GUI.TimKiem
             gridControl.LevelTree.Nodes.Add("Chi Tiết Thảo Thư Trả Lời", gridViewTTTL);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Bấm Chì", gridViewBamChi);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Đóng Nước", gridViewDongNuoc);
-            ///Tổ Xử Lý
-            gridControl.LevelTree.Nodes.Add("Chi Tiết Kiểm Tra Xác Minh TXL", gridViewKTXM_TXL);
-            gridControl.LevelTree.Nodes.Add("Chi Tiết Điều Chỉnh Biến Động TXL", gridViewDCBD_TXL);
-            gridControl.LevelTree.Nodes.Add("Chi Tiết Cắt Tạm/Hủy Danh Bộ TXL", gridViewCHDB_TXL);
-            gridControl.LevelTree.Nodes.Add("Chi Tiết Phiếu Hủy Danh Bộ TXL", gridViewYeuCauCHDB_TXL);
-            gridControl.LevelTree.Nodes.Add("Chi Tiết Thảo Thư Trả Lời TXL", gridViewTTTTL_TXL);
-            gridControl.LevelTree.Nodes.Add("Chi Tiết Bấm Chì TXL", gridViewBamChi_TXL);
-            gridControl.LevelTree.Nodes.Add("Chi Tiết Đóng Nước TXL", gridViewDongNuoc_TXL);
         }
 
         private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
@@ -80,32 +73,25 @@ namespace KTKS_DonKH.GUI.TimKiem
                 switch (cmbTimTheo.SelectedItem.ToString())
                 {
                     case "Mã Đơn":
-                        ///Nếu Đơn thuộc Tổ Xử Lý
                         if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                        {
-                            dt = _cTimKiem.GetTienTrinhbyMaDon_TXL(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", ""))).Tables["Don"];
-                            gridControl.DataSource = dt;
-                        }
-                        ///Nếu Đơn thuộc Tổ Khách Hàng
+                            dt = _cTimKiem.GetTienTrinh_DonTXL(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", ""))).Tables["Don"];
                         else
-                        {
-                            dt = _cTimKiem.GetTienTrinhbyMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", ""))).Tables["Don"];
-                            gridControl.DataSource = dt;
-                        }
+                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                dt = _cTimKiem.GetTienTrinh_DonTBC(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", ""))).Tables["Don"];
+                            else
+                                dt = _cTimKiem.GetTienTrinh_DonTKH(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", ""))).Tables["Don"];
                         break;
                     case "Danh Bộ":
-                        dt = _cTimKiem.GetTienTrinhbyDanhBo(txtNoiDungTimKiem.Text.Trim()).Tables["Don"];
-                        gridControl.DataSource = dt;
+                        dt = _cTimKiem.GetTienTrinhByDanhBo(txtNoiDungTimKiem.Text.Trim()).Tables["Don"];
                         break;
                     case "Họ Tên":
-                        dt = _cTimKiem.GetTienTrinhbyHoTen(txtNoiDungTimKiem.Text.Trim()).Tables["Don"];
-                        gridControl.DataSource = dt;
+                        dt = _cTimKiem.GetTienTrinhByHoTen(txtNoiDungTimKiem.Text.Trim()).Tables["Don"];
                         break;
                     case "Địa Chỉ":
-                        dt = _cTimKiem.GetTienTrinhbyDiaChi(txtNoiDungTimKiem.Text.Trim()).Tables["Don"];
-                        gridControl.DataSource = dt;
+                        dt = _cTimKiem.GetTienTrinhByDiaChi(txtNoiDungTimKiem.Text.Trim()).Tables["Don"];
                         break;
                 }
+                gridControl.DataSource = dt;
             }
             catch (Exception)
             {
@@ -127,14 +113,21 @@ namespace KTKS_DonKH.GUI.TimKiem
         {
             if (gridViewDon.RowCount > 0 && e.Control && e.KeyCode == Keys.F)
             {
-                if (((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["ToXuLy"].ToString() == "True")
+                if (((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString().ToUpper().Contains("TKH"))
                 {
-                    frmNhanDonTXL frm = new frmNhanDonTXL(decimal.Parse(((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString()));
+                    frmNhanDonTKH frm = new frmNhanDonTKH(decimal.Parse(((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString().Substring(3)));
                     frm.ShowDialog();
                 }
                 else
+                if (((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString().ToUpper().Contains("TXL"))
                 {
-                    frmNhanDonTKH frm = new frmNhanDonTKH(decimal.Parse(((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString()));
+                    frmNhanDonTXL frm = new frmNhanDonTXL(decimal.Parse(((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString().Substring(3)));
+                    frm.ShowDialog();
+                }
+                else
+                    if (((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString().ToUpper().Contains("TBC"))
+                {
+                    frmNhanDonTBC frm = new frmNhanDonTBC(decimal.Parse(((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString().Substring(3)));
                     frm.ShowDialog();
                 }
             }
@@ -152,10 +145,10 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         void view_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
-            //if (e.Column.FieldName == "MaDon" && e.Value != null)
-            //{
-            //    e.DisplayText = "TXL" + e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            //}
+            if (e.Column.FieldName == "MaDon" && e.Value != null)
+            {
+                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
         }
 
         #endregion
@@ -189,6 +182,34 @@ namespace KTKS_DonKH.GUI.TimKiem
                 {
                     _CTRow = null;
                 }
+            }
+        }
+
+        #endregion
+
+        #region gridViewBamChi
+
+        private void gridViewBamChi_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName == "MaCTBC" && e.Value != null)
+            {
+                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+        }
+
+        private void gridViewBamChi_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
+            _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
+        }
+
+        private void gridViewBamChi_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
+            {
+                frmBamChi frm = new frmBamChi(decimal.Parse(_CTRow.Row["MaCTBC"].ToString()));
+                if (frm.ShowDialog() == DialogResult.Cancel)
+                    _CTRow = null;
             }
         }
 
@@ -323,64 +344,6 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         #endregion
 
-        #region gridViewTTTL
-
-        private void gridViewTTTL_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
-        {
-            if (e.Column.FieldName == "MaCTTTTL" && e.Value != null)
-            {
-                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            }
-        }
-
-        private void gridViewTTTL_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
-        {
-            GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
-            _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
-        }
-
-        private void gridViewTTTL_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
-            {
-                frmTTTL frm = new frmTTTL(decimal.Parse(_CTRow.Row["MaCTTTTL"].ToString()));
-                if (frm.ShowDialog() == DialogResult.Cancel)
-                {
-                    _CTRow = null;
-                }
-            }
-        }
-
-        #endregion
-
-        #region gridViewBamChi
-
-        private void gridViewBamChi_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
-        {
-            if (e.Column.FieldName == "MaCTBC" && e.Value != null)
-            {
-                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            }
-        }
-
-        private void gridViewBamChi_RowCellClick(object sender, RowCellClickEventArgs e)
-        {
-            GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
-            _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
-        }
-
-        private void gridViewBamChi_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
-            {
-                frmBamChi frm = new frmBamChi(decimal.Parse(_CTRow.Row["MaCTBC"].ToString()));
-                if (frm.ShowDialog() == DialogResult.Cancel)
-                    _CTRow = null;
-            }
-        }
-
-        #endregion
-
         #region gridViewDongNuoc
 
         private void gridViewDongNuoc_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
@@ -442,87 +405,9 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         #endregion
 
-        #region gridViewKTXM_TXL
+        #region gridViewTTTL
 
-        private void gridViewKTXM_TXL_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
-        {
-            if (e.Column.FieldName == "MaCTKTXM" && e.Value != null)
-            {
-                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            }
-            if (e.Column.FieldName == "SoTien" && e.Value != null)
-            {
-                e.DisplayText = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
-            }
-        }
-
-        private void gridViewKTXM_TXL_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
-        {
-            GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
-            _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
-        }
-
-        private void gridViewKTXM_TXL_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
-            {
-                frmKTXM frm = new frmKTXM(decimal.Parse(_CTRow.Row["MaCTKTXM"].ToString()));
-                if (frm.ShowDialog() == DialogResult.Cancel)
-                {
-                    _CTRow = null;
-                }
-            }
-        }
-
-        #endregion
-
-        #region gridViewCHDB_TXL
-
-        private void gridViewCHDB_TXL_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
-        {
-            if (e.Column.FieldName == "MaCH" && e.Value != null)
-            {
-                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            }
-            if (e.Column.FieldName == "SoPhieu")
-                if (e.Value != null)
-                    if (!string.IsNullOrEmpty(e.Value.ToString()))
-                    {
-                        e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-                    }
-        }
-
-        private void gridViewCHDB_TXL_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
-        {
-            GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
-            _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
-        }
-
-        private void gridViewCHDB_TXL_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["LoaiCat"].ToString() == "Cắt Hủy")
-            {
-                frmCHDB frm = new frmCHDB(decimal.Parse(_CTRow.Row["MaCH"].ToString()));
-                if (frm.ShowDialog() == DialogResult.Cancel)
-                {
-                    _CTRow = null;
-                }
-            }
-            if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["LoaiCat"].ToString() == "Cắt Tạm")
-            {
-                frmCTDB frm = new frmCTDB(decimal.Parse(_CTRow.Row["MaCH"].ToString()));
-                if (frm.ShowDialog() == DialogResult.Cancel)
-                {
-                    _CTRow = null;
-                }
-            }
-        }
-
-        #endregion
-
-        #region gridViewTTTL_TXL
-
-        private void gridViewTTTTL_TXL_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        private void gridViewTTTL_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
             if (e.Column.FieldName == "MaCTTTTL" && e.Value != null)
             {
@@ -530,191 +415,22 @@ namespace KTKS_DonKH.GUI.TimKiem
             }
         }
 
-        private void gridViewTTTTL_TXL_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
+        private void gridViewTTTL_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
             GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
             _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
         }
 
-        private void gridViewTTTTL_TXL_KeyDown(object sender, KeyEventArgs e)
+        private void gridViewTTTL_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
             {
                 frmTTTL frm = new frmTTTL(decimal.Parse(_CTRow.Row["MaCTTTTL"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
-                    _CTRow = null;
-            }
-        }
-
-        #endregion
-
-        #region gridViewDCBD_TXL
-
-        private void gridViewDCBD_TXL_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
-        {
-            if (e.Column.FieldName == "MaDC" && e.Value != null)
-            {
-                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            }
-            if (e.Column.FieldName == "TongCong_Start" && e.Value != null)
-            {
-                e.DisplayText = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
-            }
-            if (e.Column.FieldName == "TongCong_End" && e.Value != null)
-            {
-                e.DisplayText = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
-            }
-            if (e.Column.FieldName == "TongCong_BD" && e.Value != null)
-            {
-                e.DisplayText = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
-            }
-        }
-
-        private void gridViewDCBD_TXL_RowCellStyle(object sender, RowCellStyleEventArgs e)
-        {
-            DevExpress.XtraGrid.Views.Grid.GridView view = (DevExpress.XtraGrid.Views.Grid.GridView)sender;
-            if (view.GetRowCellDisplayText(0, "DieuChinh") == "Biến Động")
-            {
-                view.Columns["HoTen_BD"].Visible = true;
-                //view.Columns["DiaChi"].Visible = true;
-                view.Columns["DiaChi_BD"].Visible = true;
-                view.Columns["MSThue"].Visible = true;
-                view.Columns["MSThue_BD"].Visible = true;
-
-                view.Columns["HoTen_BD"].VisibleIndex = 6;
-                //view.Columns["DiaChi"].VisibleIndex = 6;
-                view.Columns["DiaChi_BD"].VisibleIndex = 7;
-                //view.Columns["MSThue"].VisibleIndex = 8;
-                view.Columns["MSThue_BD"].VisibleIndex = 8;
-                //view.Columns["GiaBieu"].VisibleIndex = 10;
-                view.Columns["GiaBieu_BD"].VisibleIndex = 9;
-                //view.Columns["DinhMuc"].VisibleIndex = 12;
-                view.Columns["DinhMuc_BD"].VisibleIndex = 10;
-                view.Columns["CreateBy"].VisibleIndex = 11;
-            }
-            if (view.GetRowCellDisplayText(0, "DieuChinh") == "Hóa Đơn")
-            {
-                view.Columns["TieuThu"].Visible = true;
-                view.Columns["TieuThu_BD"].Visible = true;
-                view.Columns["TongCong_Start"].Visible = true;
-                view.Columns["TongCong_End"].Visible = true;
-                view.Columns["TangGiam"].Visible = true;
-                view.Columns["TongCong_BD"].Visible = true;
-                view.Columns["ThongTin"].Visible = false;
-                view.Columns["CreateBy"].VisibleIndex = 14;
-            }
-        }
-
-        private void gridViewDCBD_TXL_RowCellClick(object sender, RowCellClickEventArgs e)
-        {
-            GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
-            _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
-        }
-
-        private void gridViewDCBD_TXL_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["DieuChinh"].ToString() == "Biến Động")
-            {
-                frmDCBD frm = new frmDCBD(decimal.Parse(_CTRow.Row["MaDC"].ToString()));
-                if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;
                 }
             }
-            if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["DieuChinh"].ToString() == "Hóa Đơn")
-            {
-                frmDCHD frm = new frmDCHD(decimal.Parse(_CTRow.Row["MaDC"].ToString()));
-                if (frm.ShowDialog() == DialogResult.Cancel)
-                {
-                    _CTRow = null;
-                }
-            }
-        }
-
-        #endregion
-
-        #region gridViewBamChi_TXL
-
-        private void gridViewBamChi_TXL_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
-        {
-            if (e.Column.FieldName == "MaCTBC" && e.Value != null)
-            {
-                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            }
-        }
-
-        private void gridViewBamChi_TXL_RowCellClick(object sender, RowCellClickEventArgs e)
-        {
-            GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
-            _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
-        }
-
-        private void gridViewBamChi_TXL_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
-            {
-                frmBamChi frm = new frmBamChi(decimal.Parse(_CTRow.Row["MaCTBC"].ToString()));
-                if (frm.ShowDialog() == DialogResult.Cancel)
-                    _CTRow = null;
-            }
-        }
-
-        #endregion
-
-        #region gridViewDongNuoc_TXL
-
-        private void gridViewDongNuoc_TXL_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
-        {
-            if (e.Column.FieldName == "MaCTDN" && e.Value != null)
-            {
-                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            }
-            if (e.Column.FieldName == "MaCTMN")
-                if (e.Value != null)
-                    if (!string.IsNullOrEmpty(e.Value.ToString()))
-                    {
-                        e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-                    }
-        }
-
-        private void gridViewDongNuoc_TXL_RowCellClick(object sender, RowCellClickEventArgs e)
-        {
-            GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
-            _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
-        }
-
-        private void gridViewDongNuoc_TXL_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
-            {
-                frmDongNuoc frm = new frmDongNuoc(decimal.Parse(_CTRow.Row["MaCTDN"].ToString()));
-                if (frm.ShowDialog() == DialogResult.Cancel)
-                    _CTRow = null;
-            }
-        }
-        #endregion
-
-        #region gridViewYeuCauCHDB_TXL
-
-        private void gridViewYeuCauCHDB_TXL_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
-        {
-            if (e.Column.FieldName == "MaYCCHDB" && e.Value != null)
-            {
-                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            }
-        }
-
-        private void gridViewYeuCauCHDB_TXL_RowCellClick(object sender, RowCellClickEventArgs e)
-        {
-            GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
-            _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
-        }
-
-        private void gridViewYeuCauCHDB_TXL_KeyDown(object sender, KeyEventArgs e)
-        {
-            frmYCCHDB frm = new frmYCCHDB(decimal.Parse(_CTRow.Row["MaYCCHDB"].ToString()));
-            if (frm.ShowDialog() == DialogResult.Cancel)
-                _CTRow = null;
         }
 
         #endregion

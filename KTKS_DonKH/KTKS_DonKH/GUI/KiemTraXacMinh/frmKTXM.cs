@@ -143,13 +143,59 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtTheoYeuCau.Text = "";
             txtTieuThuTrungBinh.Text = "0";
 
-            _ctktxm = null;
             _MaCTKTXM = -1;
+            _ctktxm = null;
             _dontkh = null;
             _dontxl = null;
             _dontbc = null;
             _hoadon = null;
             dgvDSKetQuaKiemTra.DataSource = null;
+        }
+
+        public void Clear_GetDataGridView()
+        {
+            txtDanhBo.Text = "";
+            txtHopDong.Text = "";
+            txtHoTen.Text = "";
+            txtDiaChi.Text = "";
+            txtGiaBieu.Text = "";
+            txtDinhMuc.Text = "";
+            ///
+            //dateKTXM.Value = DateTime.Now;
+            //cmbTinhTrangKiemTra.SelectedIndex = -1;
+            cmbViTriDHN1.SelectedIndex = -1;
+            cmbViTriDHN2.SelectedIndex = -1;
+            txtHieu.Text = "";
+            txtCo.Text = "";
+            txtSoThan.Text = "";
+            txtChiSo.Text = "";
+            cmbTinhTrangChiSo.SelectedIndex = -1;
+            //cmbChiMatSo.SelectedIndex = -1;
+            //cmbChiKhoaGoc.SelectedIndex = -1;
+            txtMucDichSuDung.Text = "";
+            txtDienThoai.Text = "";
+            txtHoTenKHKy.Text = "";
+            txtNoiDungKiemTra.Text = "";
+            txtTheoYeuCau.Text = "";
+            txtTieuThuTrungBinh.Text = "0";
+
+            _MaCTKTXM = -1;
+            _ctktxm = null;
+            _hoadon = null;
+
+            GetDataGridView();
+        }
+
+        public void GetDataGridView()
+        {
+            if (_dontkh != null)
+                dgvDSKetQuaKiemTra.DataSource = _cKTXM.GetDS("TKH",  _dontkh.MaDon);
+            else
+                if (_dontxl != null)
+                    dgvDSKetQuaKiemTra.DataSource = _cKTXM.GetDS("TXL",  _dontxl.MaDon);
+                else
+                    if (_dontbc != null)
+                        dgvDSKetQuaKiemTra.DataSource = _cKTXM.GetDS("TBC",  _dontbc.MaDon);
         }
 
         private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
@@ -166,8 +212,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     {
                         _dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
                         txtMaDon.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
-                        
-                        dgvDSKetQuaKiemTra.DataSource = _cKTXM.GetDS("TXL",_dontxl.MaDon, CTaiKhoan.MaUser);
+
+                        GetDataGridView();
 
                         MessageBox.Show("Mã Đơn TXL này có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtDanhBo.Focus();
@@ -183,8 +229,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         {
                             _dontbc = _cDonTBC.Get(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
                             txtMaDon.Text = "TBC" + _dontbc.MaDon.ToString().Insert(_dontbc.MaDon.ToString().Length - 2, "-");
-                            
-                            dgvDSKetQuaKiemTra.DataSource = _cKTXM.GetDS("TBC",_dontbc.MaDon, CTaiKhoan.MaUser);
+
+                            GetDataGridView();
 
                             MessageBox.Show("Mã Đơn TBC này có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             txtDanhBo.Focus();
@@ -198,8 +244,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         {
                             _dontkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
                             txtMaDon.Text = _dontkh.MaDon.ToString().Insert(_dontkh.MaDon.ToString().Length - 2, "-");
-                            
-                            dgvDSKetQuaKiemTra.DataSource = _cKTXM.GetDS("TKH",_dontkh.MaDon, CTaiKhoan.MaUser);
+
+                            GetDataGridView();
 
                             MessageBox.Show("Mã Đơn TKH này có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             txtDanhBo.Focus();
@@ -241,7 +287,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             MessageBox.Show("Thiếu Tên Khách Hàng Ký", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                    if (txtHoTen.Text.Trim() != "" && txtDiaChi.Text.Trim() != "" && txtNoiDungKiemTra.Text.Trim() != "")
+                    if (txtHoTen.Text.Trim() == "" || txtDiaChi.Text.Trim() == "" || txtNoiDungKiemTra.Text.Trim() == "")
                     {
                         MessageBox.Show("Chưa đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -251,7 +297,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
                     if (_dontkh != null)
                     {
-                        if (!_cKTXM.CheckExist_KTXM("TKH", _dontxl.MaDon))
+                        if (!_cKTXM.CheckExist_KTXM("TKH", _dontkh.MaDon))
                         {
                             KTXM ktxm = new KTXM();
                             ktxm.MaDon = _dontkh.MaDon;
@@ -345,7 +391,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
                     if (_cKTXM.ThemCTKTXM(ctktxm))
                     {
-                        Clear();
+                        Clear_GetDataGridView();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtMaDon.Focus();
                     }
@@ -367,6 +413,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 {
                     if (_ctktxm != null)
                     {
+                        if (_ctktxm.CreateBy != CTaiKhoan.MaUser)
+                        {
+                            MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         if (!txtDanhBo.Text.Trim().Contains("GM"))
                             if ((txtDanhBo.Text.Trim().Length > 0 && txtDanhBo.Text.Trim().Length < 11) || txtDanhBo.Text.Trim().Length > 11)
                             {
@@ -451,6 +502,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 {
                     if (_ctktxm != null && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
+                        if (_ctktxm.CreateBy != CTaiKhoan.MaUser)
+                        {
+                            MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         if (_cKTXM.XoaCTKTXM(_ctktxm))
                         {
                             Clear();

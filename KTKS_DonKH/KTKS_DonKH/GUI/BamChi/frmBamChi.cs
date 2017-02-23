@@ -146,13 +146,59 @@ namespace KTKS_DonKH.GUI.BamChi
             //txtTheoYeuCau.Text = "";
             txtGhiChu.Text = "";
 
+            _MaCTBamChi = -1;
             _ctbamchi = null;
-            _MaCTBamChi = 0;
             _dontkh = null;
             _dontxl = null;
             _dontbc = null;
             _hoadon = null;
             dgvDSNhapBamChi.DataSource = null;
+        }
+
+        public void Clear_GetDataGridView()
+        {
+            txtMaDon.Text = "";
+            txtDanhBo.Text = "";
+            txtHopDong.Text = "";
+            txtHoTen.Text = "";
+            txtDiaChi.Text = "";
+            txtGiaBieu.Text = "";
+            txtDinhMuc.Text = "";
+            ///
+            //dateBamChi.Value = DateTime.Now;
+            //cmbHienTrangKiemTra.SelectedIndex = -1;
+            txtHieu.Text = "";
+            txtCo.Text = "";
+            txtSoThan.Text = "";
+            txtChiSo.Text = "";
+            cmbTinhTrangChiSo.SelectedIndex = -1;
+            cmbChiMatSo.SelectedIndex = -1;
+            cmbChiKhoaGoc.SelectedIndex = -1;
+            //txtMucDichSuDung.Text = "";
+            //txtVienChi.Text = "";
+            //txtDayChi.Text = "";
+            //cmbTrangThaiBC.SelectedIndex = -1;
+            //txtMaSoBC.Text = "";
+            //txtTheoYeuCau.Text = "";
+            txtGhiChu.Text = "";
+
+            _MaCTBamChi = -1;
+            _ctbamchi = null;
+            _hoadon = null;
+
+            GetDataGridView();
+        }
+
+        public void GetDataGridView()
+        {
+            if (_dontkh != null)
+                dgvDSNhapBamChi.DataSource = _cBamChi.GetDS("TKH",  _dontkh.MaDon);
+            else
+                if (_dontxl != null)
+                    dgvDSNhapBamChi.DataSource = _cBamChi.GetDS("TXL",  _dontxl.MaDon);
+                else
+                    if (_dontbc != null)
+                        dgvDSNhapBamChi.DataSource = _cBamChi.GetDS("TBC",  _dontbc.MaDon);
         }
 
         public void Clear2()
@@ -182,8 +228,8 @@ namespace KTKS_DonKH.GUI.BamChi
             txtTheoYeuCau.Text = "";
             txtGhiChu.Text = "";
 
+            _MaCTBamChi = -1;
             _ctbamchi = null;
-            _MaCTBamChi = 0;
             _dontkh = null;
             _dontxl = null;
             _dontbc = null;
@@ -206,7 +252,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         _dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
                         txtMaDon.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
 
-                        dgvDSNhapBamChi.DataSource = _cBamChi.GetDS("TXL", _dontxl.MaDon, CTaiKhoan.MaUser);
+                        GetDataGridView();
 
                         if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
                         {
@@ -228,7 +274,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             _dontbc = _cDonTBC.Get(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
                             txtMaDon.Text = "TBC" + _dontbc.MaDon.ToString().Insert(_dontbc.MaDon.ToString().Length - 2, "-");
 
-                            dgvDSNhapBamChi.DataSource = _cBamChi.GetDS("TBC", _dontbc.MaDon, CTaiKhoan.MaUser);
+                            GetDataGridView();
 
                             if (_cThuTien.GetMoiNhat(_dontbc.DanhBo) != null)
                             {
@@ -248,7 +294,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             _dontkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
                             txtMaDon.Text = _dontkh.MaDon.ToString().Insert(_dontkh.MaDon.ToString().Length - 2, "-");
 
-                            dgvDSNhapBamChi.DataSource = _cBamChi.GetDS("TKH", _dontkh.MaDon, CTaiKhoan.MaUser);
+                            GetDataGridView();
 
                             if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
                             {
@@ -288,7 +334,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         MessageBox.Show("Lỗi Danh Bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    if (txtHoTen.Text.Trim() != "" && txtDiaChi.Text.Trim() != "" && txtTheoYeuCau.Text.Trim() != "")
+                    if (txtHoTen.Text.Trim() == "" || txtDiaChi.Text.Trim() == "" || txtTheoYeuCau.Text.Trim() == "")
                     {
                         MessageBox.Show("Chưa đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -401,7 +447,7 @@ namespace KTKS_DonKH.GUI.BamChi
 
                     if (_cBamChi.ThemCTBamChi(ctbamchi))
                     {
-                        Clear();
+                        Clear_GetDataGridView();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtMaDon.Focus();
                     }
@@ -423,6 +469,11 @@ namespace KTKS_DonKH.GUI.BamChi
                 {
                     if (_ctbamchi != null)
                     {
+                        if (_ctbamchi.CreateBy != CTaiKhoan.MaUser)
+                        {
+                            MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         if ((txtDanhBo.Text.Trim().Length > 0 && txtDanhBo.Text.Trim().Length < 11) || txtDanhBo.Text.Trim().Length > 11)
                         {
                             MessageBox.Show("Lỗi Danh Bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -506,8 +557,13 @@ namespace KTKS_DonKH.GUI.BamChi
             {
                 try
                 {
-                    if (_ctbamchi!=null && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (_ctbamchi != null && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
+                        if (_ctbamchi.CreateBy != CTaiKhoan.MaUser)
+                        {
+                            MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         if (_cBamChi.XoaCTBamChi(_ctbamchi))
                         {
                             Clear2();
