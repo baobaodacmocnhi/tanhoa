@@ -387,7 +387,9 @@ namespace ThuTien.GUI.ToTruong
                         dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
                         dr["Ky"] = Ky;
                         dr["TongCong"] = TongCong;
-                        dr["NhanVien"] = _cNguoiDung.GetHoTenByMaND(int.Parse(item["CreateBy"].ToString())); ;
+                        dr["NhanVien"] = _cNguoiDung.GetHoTenByMaND(int.Parse(item["CreateBy"].ToString()));
+                        if (!string.IsNullOrEmpty(item["CreateBy"].ToString()))
+                            dr["NhanVienDN"] = _cNguoiDung.GetDienThoaiByMaND(int.Parse(item["CreateBy"].ToString()));
                         if (!string.IsNullOrEmpty(item["MaNV_DongNuoc"].ToString()))
                             dr["NhanVienDN"] = _cNguoiDung.GetDienThoaiByMaND(int.Parse(item["MaNV_DongNuoc"].ToString()));
                         if (chkChuKy.Checked)

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.gridViewCTDN = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.SoHoaDon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Ky = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -73,6 +73,7 @@
             this.txtMaDN = new System.Windows.Forms.TextBox();
             this.btnInGiayXN = new System.Windows.Forms.Button();
             this.chkChuKy = new System.Windows.Forms.CheckBox();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -155,10 +156,10 @@
             // 
             // gridControl
             // 
-            gridLevelNode2.LevelTemplate = this.gridViewCTDN;
-            gridLevelNode2.RelationName = "Level1";
+            gridLevelNode1.LevelTemplate = this.gridViewCTDN;
+            gridLevelNode1.RelationName = "Level1";
             this.gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
+            gridLevelNode1});
             this.gridControl.Location = new System.Drawing.Point(247, 40);
             this.gridControl.MainView = this.gridViewDN;
             this.gridControl.Name = "gridControl";
@@ -179,6 +180,7 @@
             this.HoTen,
             this.DiaChi,
             this.MLT,
+            this.gridColumn2,
             this.CreateDate,
             this.gridColumn1});
             this.gridViewDN.GridControl = this.gridControl;
@@ -501,6 +503,12 @@
             this.chkChuKy.Text = "Có Chữ Ký";
             this.chkChuKy.UseVisualStyleBackColor = true;
             // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Người Lập";
+            this.gridColumn2.FieldName = "CreateBy";
+            this.gridColumn2.Name = "gridColumn2";
+            // 
             // frmTBDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -588,6 +596,7 @@
         private System.Windows.Forms.Button btnThemDN;
         private System.Windows.Forms.Button btnInGiayXN;
         private System.Windows.Forms.CheckBox chkChuKy;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
 
     }
 }

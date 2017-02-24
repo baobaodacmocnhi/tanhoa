@@ -192,7 +192,7 @@ namespace ThuTien.DAL.Quay
                             itemTT.Tra,
                             itemTT.NgayTra,
                             itemTT.GhiChuTra,
-                            DangNgan=itemtableDN.HoTen,
+                            DangNgan = itemtableDN.HoTen,
                         };
             return LINQToDataTable(query);
         }

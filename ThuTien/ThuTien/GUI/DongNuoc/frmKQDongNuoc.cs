@@ -115,6 +115,8 @@ namespace ThuTien.GUI.DongNuoc
                         txtHoTen.Text = _dongnuoc.HoTen;
                         txtDiaChi.Text = _dongnuoc.DiaChi;
                         chkHuy.Checked = _dongnuoc.Huy;
+                        cmbTroNgai.SelectedItem = _dongnuoc.TroNgai;
+                        txtGhiChuTroNgai.Text = _dongnuoc.GhiChuTroNgai;
 
                         DataTable dt = _cCapNuocTanHoa.GetTTKH(_dongnuoc.DanhBo);
                         txtHieu.Text = dt.Rows[0]["Hieu"].ToString();
@@ -741,6 +743,24 @@ namespace ThuTien.GUI.DongNuoc
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnCapNhat_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+            {
+                if (_dongnuoc != null)
+                {
+                    _dongnuoc.TroNgai = cmbTroNgai.SelectedItem.ToString();
+                    _dongnuoc.GhiChuTroNgai = txtGhiChuTroNgai.Text.Trim();
+                    if (_cDongNuoc.SuaDN(_dongnuoc))
+                    {
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
 
