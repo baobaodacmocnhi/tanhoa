@@ -358,16 +358,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                                 CTCTDB ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(dgvDSCTCHDB["MaTB", i].Value.ToString()));
 
-                                CTKTXM ctktxm = null;
-                                if (ctctdb.CHDB.ToXuLy)
-                                {
-                                    ctktxm = _cKTXM.getCTKTXMbyMaDonTXLDanhBo(ctctdb.CHDB.MaDonTXL.Value, ctctdb.DanhBo);
-                                }
-                                else
-                                {
-                                    ctktxm = _cKTXM.getCTKTXMbyMaDonKHDanhBo(ctctdb.CHDB.MaDon.Value, ctctdb.DanhBo);
-                                }
-
                                 dr["SoPhieu"] = ctctdb.MaCTCTDB.ToString().Insert(ctctdb.MaCTCTDB.ToString().Length - 2, "-");
                                 dr["HoTen"] = ctctdb.HoTen;
                                 dr["DiaChi"] = ctctdb.DiaChi;
@@ -375,9 +365,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     dr["DanhBo"] = ctctdb.DanhBo.Insert(7, " ").Insert(4, " ");
                                 dr["HopDong"] = ctctdb.HopDong;
 
-                                if (ctktxm != null)
-                                    if (!string.IsNullOrEmpty(ctktxm.ViTriDHN1) || !string.IsNullOrEmpty(ctktxm.ViTriDHN2))
-                                        dr["ViTriDHN"] = "Vị trí ĐHN lắp đặt: " + ctktxm.ViTriDHN1 + ", " + ctktxm.ViTriDHN2;
+                                dr["ViTriDHN"] = "Vị trí ĐHN lắp đặt: " + ctctdb.ViTriDHN1 + ", " + ctctdb.ViTriDHN2;
 
                                 if (ctctdb.LyDo != "Vấn Đề Khác")
                                     dr["LyDo"] = ctctdb.LyDo + ". ";
@@ -417,16 +405,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                                 CTCHDB ctchdb = _cCHDB.getCTCHDBbyID(decimal.Parse(dgvDSCTCHDB["MaTB", i].Value.ToString()));
 
-                                CTKTXM ctktxm = null;
-                                if (ctchdb.CHDB.ToXuLy)
-                                {
-                                    ctktxm = _cKTXM.getCTKTXMbyMaDonTXLDanhBo(ctchdb.CHDB.MaDonTXL.Value, ctchdb.DanhBo);
-                                }
-                                else
-                                {
-                                    ctktxm = _cKTXM.getCTKTXMbyMaDonKHDanhBo(ctchdb.CHDB.MaDon.Value, ctchdb.DanhBo);
-                                }
-
                                 dr["SoPhieu"] = ctchdb.MaCTCHDB.ToString().Insert(ctchdb.MaCTCHDB.ToString().Length - 2, "-");
                                 dr["HoTen"] = ctchdb.HoTen;
                                 dr["DiaChi"] = ctchdb.DiaChi;
@@ -434,9 +412,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     dr["DanhBo"] = ctchdb.DanhBo.Insert(7, " ").Insert(4, " ");
                                 dr["HopDong"] = ctchdb.HopDong;
 
-                                if (ctktxm != null)
-                                    if (!string.IsNullOrEmpty(ctktxm.ViTriDHN1) || !string.IsNullOrEmpty(ctktxm.ViTriDHN2))
-                                        dr["ViTriDHN"] = "Vị trí ĐHN lắp đặt: " + ctktxm.ViTriDHN1 + ", " + ctktxm.ViTriDHN2;
+                                dr["ViTriDHN"] = "Vị trí ĐHN lắp đặt: " + ctchdb.ViTriDHN1 + ", " + ctchdb.ViTriDHN2;
 
                                 if (ctchdb.LyDo != "Vấn Đề Khác")
                                     dr["LyDo"] = ctchdb.LyDo + ". ";

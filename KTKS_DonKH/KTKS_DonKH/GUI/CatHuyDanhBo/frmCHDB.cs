@@ -693,7 +693,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             PhieuCHDB ycchdb = new PhieuCHDB();
                             if (_ctchdb.CHDB.ToXuLy)
                             {
-                                ycchdb.ToXuLy = true;
                                 ycchdb.MaDonTXL = _ctchdb.CHDB.MaDonTXL;
                             }
                             else
@@ -788,7 +787,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 PhieuCHDB ycchdb = new PhieuCHDB();
                                 if (_ctchdb.CHDB.ToXuLy)
                                 {
-                                    ycchdb.ToXuLy = true;
                                     ycchdb.MaDonTXL = _ctchdb.CHDB.MaDonTXL;
                                 }
                                 else

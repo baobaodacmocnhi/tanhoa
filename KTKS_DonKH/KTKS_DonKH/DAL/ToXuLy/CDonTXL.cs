@@ -15,6 +15,67 @@ namespace KTKS_DonKH.DAL.ToXuLy
 
         #region CDonTXL
 
+        public bool SuaDonTXL(DonTXL dontxl)
+        {
+            try
+            {
+                dontxl.ModifyDate = DateTime.Now;
+                dontxl.ModifyBy = CTaiKhoan.MaUser;
+                db.SubmitChanges();
+                //MessageBox.Show("Thành công Sửa DonTXL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new dbKinhDoanhDataContext();
+                return false;
+            }
+        }
+
+        public bool SuaDonTXL(DonTXL dontxl, bool inhertance)
+        {
+            try
+            {
+                if (inhertance)
+                {
+                    dontxl.ModifyDate = DateTime.Now;
+                    dontxl.ModifyBy = CTaiKhoan.MaUser;
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Sửa DonTXL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.DonTXLs);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new dbKinhDoanhDataContext();
+                return false;
+            }
+        }
+
+        public bool XoaDonTXL(DonTXL dontxl)
+        {
+            try
+            {
+                db.DonTXLs.DeleteOnSubmit(dontxl);
+                db.SubmitChanges();
+                //MessageBox.Show("Thành công Xóa DonTXL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new dbKinhDoanhDataContext();
+                return false;
+            }
+        }
+
         /// <summary>
         /// Lấy Mã Đơn kế tiếp
         /// </summary>
@@ -1069,66 +1130,117 @@ namespace KTKS_DonKH.DAL.ToXuLy
             }
         }
 
-        public bool SuaDonTXL(DonTXL dontxl)
+        public DataTable GetDSByMaDon(decimal MaDon)
         {
-            try
-            {
-                    dontxl.ModifyDate = DateTime.Now;
-                    dontxl.ModifyBy = CTaiKhoan.MaUser;
-                    db.SubmitChanges();
-                    //MessageBox.Show("Thành công Sửa DonTXL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
-            }
+            var query = from itemDonTXL in db.DonTXLs
+                        join itemUser in db.Users on itemDonTXL.NguoiDi_KTXM equals itemUser.MaU into tmpUsers
+                        from tmpUser in tmpUsers.DefaultIfEmpty()
+                        where itemDonTXL.MaDon == MaDon
+                        select new
+                        {
+                            MaDon = "TXL" + itemDonTXL.MaDon,
+                            itemDonTXL.LoaiDonTXL.TenLD,
+                            itemDonTXL.SoCongVan,
+                            itemDonTXL.CreateDate,
+                            itemDonTXL.DanhBo,
+                            itemDonTXL.HoTen,
+                            itemDonTXL.DiaChi,
+                            itemDonTXL.NoiDung,
+                            NguoiDi_KTXM = tmpUser.HoTen,
+                            GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM) == true ? true : db.CTBamChis.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM)
+                        };
+            return LINQToDataTable(query);
         }
 
-        public bool SuaDonTXL(DonTXL dontxl, bool inhertance)
+        public DataTable GetDSByDanhBo(string DanhBo)
         {
-            try
-            {
-                if (inhertance)
-                {
-                    dontxl.ModifyDate = DateTime.Now;
-                    dontxl.ModifyBy = CTaiKhoan.MaUser;
-                    db.SubmitChanges();
-                    //MessageBox.Show("Thành công Sửa DonTXL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
-                }
-                else
-                {
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.DonTXLs);
-                    return false;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
-            }
+            var query = from itemDonTXL in db.DonTXLs
+                        join itemUser in db.Users on itemDonTXL.NguoiDi_KTXM equals itemUser.MaU into tmpUsers
+                        from tmpUser in tmpUsers.DefaultIfEmpty()
+                        where itemDonTXL.DanhBo == DanhBo
+                        select new
+                        {
+                            MaDon = "TXL" + itemDonTXL.MaDon,
+                            itemDonTXL.LoaiDonTXL.TenLD,
+                            itemDonTXL.SoCongVan,
+                            itemDonTXL.CreateDate,
+                            itemDonTXL.DanhBo,
+                            itemDonTXL.HoTen,
+                            itemDonTXL.DiaChi,
+                            itemDonTXL.NoiDung,
+                            NguoiDi_KTXM = tmpUser.HoTen,
+                            GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM) == true ? true : db.CTBamChis.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM)
+                        };
+            return LINQToDataTable(query);
         }
 
-        public bool XoaDonTXL(DonTXL dontxl)
+        public DataTable GetDSByDiaChi(string DiaChi)
         {
-            try
-            {
-                    db.DonTXLs.DeleteOnSubmit(dontxl);
-                    db.SubmitChanges();
-                    //MessageBox.Show("Thành công Xóa DonTXL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
-            }
+            var query = from itemDonTXL in db.DonTXLs
+                        join itemUser in db.Users on itemDonTXL.NguoiDi_KTXM equals itemUser.MaU into tmpUsers
+                        from tmpUser in tmpUsers.DefaultIfEmpty()
+                        where itemDonTXL.DiaChi.Contains(DiaChi)
+                        select new
+                        {
+                            MaDon = "TXL" + itemDonTXL.MaDon,
+                            itemDonTXL.LoaiDonTXL.TenLD,
+                            itemDonTXL.SoCongVan,
+                            itemDonTXL.CreateDate,
+                            itemDonTXL.DanhBo,
+                            itemDonTXL.HoTen,
+                            itemDonTXL.DiaChi,
+                            itemDonTXL.NoiDung,
+                            NguoiDi_KTXM = tmpUser.HoTen,
+                            GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM) == true ? true : db.CTBamChis.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM)
+                        };
+            return LINQToDataTable(query);
         }
+
+        public DataTable GetDSBySoCongVan(string SoCongVan)
+        {
+            var query = from itemDonTXL in db.DonTXLs
+                        join itemUser in db.Users on itemDonTXL.NguoiDi_KTXM equals itemUser.MaU into tmpUsers
+                        from tmpUser in tmpUsers.DefaultIfEmpty()
+                        where itemDonTXL.SoCongVan.Contains(SoCongVan)
+                        select new
+                        {
+                            MaDon = "TXL" + itemDonTXL.MaDon,
+                            itemDonTXL.LoaiDonTXL.TenLD,
+                            itemDonTXL.SoCongVan,
+                            itemDonTXL.CreateDate,
+                            itemDonTXL.DanhBo,
+                            itemDonTXL.HoTen,
+                            itemDonTXL.DiaChi,
+                            itemDonTXL.NoiDung,
+                            NguoiDi_KTXM = tmpUser.HoTen,
+                            GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM) == true ? true : db.CTBamChis.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM)
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSByCreateDate(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            var query = from itemDonTXL in db.DonTXLs
+                        join itemUser in db.Users on itemDonTXL.NguoiDi_KTXM equals itemUser.MaU into tmpUsers
+                        from tmpUser in tmpUsers.DefaultIfEmpty()
+                        where itemDonTXL.CreateDate.Value.Date >= FromCreateDate.Date && itemDonTXL.CreateDate.Value.Date <= ToCreateDate.Date
+                        select new
+                        {
+                            MaDon="TXL"+itemDonTXL.MaDon,
+                            itemDonTXL.LoaiDonTXL.TenLD,
+                            itemDonTXL.SoCongVan,
+                            itemDonTXL.CreateDate,
+                            itemDonTXL.DanhBo,
+                            itemDonTXL.HoTen,
+                            itemDonTXL.DiaChi,
+                            itemDonTXL.NoiDung,
+                            NguoiDi_KTXM = tmpUser.HoTen,
+                            GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM) == true ? true : db.CTBamChis.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM)
+                        };
+            return LINQToDataTable(query);
+        }
+
+        
 
         /// <summary>
         /// Kiểm Tra đơn đó có được nhận hay chưa

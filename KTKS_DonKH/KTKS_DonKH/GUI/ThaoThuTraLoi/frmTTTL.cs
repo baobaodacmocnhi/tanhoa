@@ -167,10 +167,15 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             {
                 _cttttl = _cTTTL.GetCTByID(decimal.Parse(txtMaCTTTTL.Text.Trim().Replace("-", "")));
 
-                if (_cttttl.TTTL.ToXuLy)
+                if (_cttttl.TTTL.MaDon!=null)
+                    txtMaDon.Text = _cttttl.TTTL.MaDon.Value.ToString().Insert(_cttttl.TTTL.MaDon.Value.ToString().Length - 2, "-");
+                else
+                    if (_cttttl.TTTL.MaDonTXL != null)
                     txtMaDon.Text = "TXL" + _cttttl.TTTL.MaDonTXL.Value.ToString().Insert(_cttttl.TTTL.MaDonTXL.Value.ToString().Length - 2, "-");
                 else
-                    txtMaDon.Text = _cttttl.TTTL.MaDon.Value.ToString().Insert(_cttttl.TTTL.MaDon.Value.ToString().Length - 2, "-");
+                        if (_cttttl.TTTL.MaDonTBC != null)
+                            txtMaDon.Text = "TBC" + _cttttl.TTTL.MaDonTBC.Value.ToString().Insert(_cttttl.TTTL.MaDonTBC.Value.ToString().Length - 2, "-");
+
                 txtMaCTTTTL.Text = _cttttl.MaCTTTTL.ToString().Insert(_cttttl.MaCTTTTL.ToString().Length - 2, "-");
                 txtDanhBo.Text = _cttttl.DanhBo;
                 txtHopDong.Text = _cttttl.HopDong;
@@ -234,7 +239,6 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                             if (!_cTTTL.CheckByMaDon_TXL(_dontxl.MaDon))
                             {
                                 TTTL tttl = new TTTL();
-                                tttl.ToXuLy = true;
                                 tttl.MaDonTXL = _dontxl.MaDon;
                                 if (_cTTTL.Them(tttl))
                                 {

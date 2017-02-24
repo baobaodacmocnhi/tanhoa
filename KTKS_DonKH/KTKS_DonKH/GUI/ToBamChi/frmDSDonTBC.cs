@@ -40,7 +40,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
         {
             if (dgvDonTBC.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
             {
-                frmNhanDonTBC frm = new frmNhanDonTBC(decimal.Parse(dgvDonTBC["MaDon", dgvDonTBC.CurrentRow.Index].Value.ToString()));
+                frmNhanDonTBC frm = new frmNhanDonTBC(decimal.Parse(dgvDonTBC["MaDon", dgvDonTBC.CurrentRow.Index].Value.ToString().Substring(3)));
                 frm.ShowDialog();
             }
         }
@@ -82,7 +82,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
             {
                 case "Mã Đơn":
                     if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC") && txtNoiDungTimKiem.Text.Trim().Length > 3)
-                        dgvDonTBC.DataSource = _cDonTBC.GetDSByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("TBC", "").Replace("-", "")));
+                        dgvDonTBC.DataSource = _cDonTBC.GetDSByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                     break;
                 case "Số Công Văn":
                     dgvDonTBC.DataSource = _cDonTBC.GetDSBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper());
@@ -107,7 +107,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
                 DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
 
                 dr["LoaiBaoCao"] = "TỔ BẤM CHÌ";
-                dr["MaDon"] = "TBC" + item.Cells["MaDon"].Value.ToString().Insert(item.Cells["MaDon"].Value.ToString().Length - 2, "-");
+                dr["MaDon"] = item.Cells["MaDon"].Value.ToString().Insert(item.Cells["MaDon"].Value.ToString().Length - 2, "-");
                 dr["STT"] = item.Cells["STT"].Value;
                 dr["TenLD"] = item.Cells["TenLD"].Value.ToString();
                 dr["SoCongVan"] = item.Cells["SoCongVan"].Value.ToString();

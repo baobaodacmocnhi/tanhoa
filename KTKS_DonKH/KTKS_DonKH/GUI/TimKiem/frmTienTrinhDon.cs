@@ -51,6 +51,7 @@ namespace KTKS_DonKH.GUI.TimKiem
             gridControl.LevelTree.Nodes.Add("Chi Tiết Thảo Thư Trả Lời", gridViewTTTL);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Bấm Chì", gridViewBamChi);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Đóng Nước", gridViewDongNuoc);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Gian Lận", gridViewGianLan);
         }
 
         private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
@@ -435,6 +436,33 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         #endregion
 
+        #region girdViewGianLan
+
+        private void gridViewGianLan_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+
+        }
+
+        private void gridViewGianLan_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
+            _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
+        }
+
+        private void gridViewGianLan_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
+            {
+                frmGianLan frm = new frmGianLan(int.Parse(_CTRow.Row["ID"].ToString()));
+                if (frm.ShowDialog() == DialogResult.Cancel)
+                {
+                    _CTRow = null;
+                }
+            }
+        }
+
+        #endregion
+
         private void btnIn_Click(object sender, EventArgs e)
         {
             if (gridViewDon.RowCount > 0)
@@ -602,6 +630,8 @@ namespace KTKS_DonKH.GUI.TimKiem
             if (e.KeyChar == 13)
                 btnTimKiemTTKH.PerformClick();
         }
+
+        
 
         
     }

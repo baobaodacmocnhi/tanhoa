@@ -246,6 +246,27 @@ namespace KTKS_DonKH.DAL.TimKiem
                 dtTTTL.TableName = "TTTL";
                 ds.Tables.Add(dtTTTL);
 
+                ///Table GianLan
+                var queryGianLan = from itemGL in db.GianLans
+                                       where itemGL.MaDon == MaDon
+                                select new
+                                {
+                                    MaDon = "TKH" + itemGL.MaDon,
+                                    itemGL.ID,
+                                    itemGL.DanhBo,
+                                    itemGL.HoTen,
+                                    itemGL.DiaChi,
+                                    itemGL.CreateDate,
+                                    itemGL.NoiDungViPham,
+                                    itemGL.TinhTrang,
+                                    itemGL.GiaiQuyet,
+                                };
+
+                DataTable dtGianLan = new DataTable();
+                dtGianLan = LINQToDataTable(queryGianLan);
+                dtGianLan.TableName = "GianLan";
+                ds.Tables.Add(dtGianLan);
+
                 if (dtDon.Rows.Count > 0 && dtKTXM.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Kiểm Tra Xác Minh", ds.Tables["Don"].Columns["MaDon"], ds.Tables["KTXM"].Columns["MaDon"]);
 
@@ -266,6 +287,9 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["Don"].Columns["MaDon"], ds.Tables["TTTL"].Columns["MaDon"]);
+
+                if (dtDon.Rows.Count > 0 && dtGianLan.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết Gian Lận", ds.Tables["Don"].Columns["MaDon"], ds.Tables["GianLan"].Columns["MaDon"]);
 
                 return ds;
             }
@@ -512,6 +536,27 @@ namespace KTKS_DonKH.DAL.TimKiem
                 dtTTTL.TableName = "TTTL";
                 ds.Tables.Add(dtTTTL);
 
+                ///Table GianLan
+                var queryGianLan = from itemGL in db.GianLans
+                                   where itemGL.MaDonTXL == MaDonTXL
+                                   select new
+                                   {
+                                       MaDon = "TXL" + itemGL.MaDonTXL,
+                                       itemGL.ID,
+                                       itemGL.DanhBo,
+                                       itemGL.HoTen,
+                                       itemGL.DiaChi,
+                                       itemGL.CreateDate,
+                                       itemGL.NoiDungViPham,
+                                       itemGL.TinhTrang,
+                                       itemGL.GiaiQuyet,
+                                   };
+
+                DataTable dtGianLan = new DataTable();
+                dtGianLan = LINQToDataTable(queryGianLan);
+                dtGianLan.TableName = "GianLan";
+                ds.Tables.Add(dtGianLan);
+
                 if (dtDon.Rows.Count > 0 && dtKTXM.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Kiểm Tra Xác Minh", ds.Tables["Don"].Columns["MaDon"], ds.Tables["KTXM"].Columns["MaDon"]);
 
@@ -532,6 +577,9 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["Don"].Columns["MaDon"], ds.Tables["TTTL"].Columns["MaDon"]);
+
+                if (dtDon.Rows.Count > 0 && dtGianLan.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết Gian Lận", ds.Tables["Don"].Columns["MaDon"], ds.Tables["GianLan"].Columns["MaDon"]);
 
                 return ds;
             }
@@ -779,6 +827,27 @@ namespace KTKS_DonKH.DAL.TimKiem
                 dtTTTL.TableName = "TTTL";
                 ds.Tables.Add(dtTTTL);
 
+                ///Table GianLan
+                var queryGianLan = from itemGL in db.GianLans
+                                   where itemGL.MaDonTBC == MaDonTBC
+                                   select new
+                                   {
+                                       MaDon = "TBC" + itemGL.MaDonTBC,
+                                       itemGL.ID,
+                                       itemGL.DanhBo,
+                                       itemGL.HoTen,
+                                       itemGL.DiaChi,
+                                       itemGL.CreateDate,
+                                       itemGL.NoiDungViPham,
+                                       itemGL.TinhTrang,
+                                       itemGL.GiaiQuyet,
+                                   };
+
+                DataTable dtGianLan = new DataTable();
+                dtGianLan = LINQToDataTable(queryGianLan);
+                dtGianLan.TableName = "GianLan";
+                ds.Tables.Add(dtGianLan);
+
                 if (dtDon.Rows.Count > 0 && dtKTXM.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Kiểm Tra Xác Minh", ds.Tables["Don"].Columns["MaDon"], ds.Tables["KTXM"].Columns["MaDon"]);
 
@@ -799,6 +868,9 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["Don"].Columns["MaDon"], ds.Tables["TTTL"].Columns["MaDon"]);
+
+                if (dtDon.Rows.Count > 0 && dtGianLan.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết Gian Lận", ds.Tables["Don"].Columns["MaDon"], ds.Tables["GianLan"].Columns["MaDon"]);
 
                 return ds;
             }
@@ -1045,6 +1117,28 @@ namespace KTKS_DonKH.DAL.TimKiem
                 dtTTTL.TableName = "TTTL";
                 ds.Tables.Add(dtTTTL);
 
+                ///Table GianLan
+                var queryGianLan = from itemGL in db.GianLans
+                                   where itemGL.DanhBo==DanhBo
+                                   select new
+                                   {
+                                       MaDon = itemGL.MaDon != null ? "TKH" + itemGL.MaDon
+                                       : itemGL.MaDonTXL != null ? "TXL" + itemGL.MaDonTXL
+                                       : itemGL.MaDonTBC != null ? "TBC" + itemGL.MaDonTBC : null,
+                                       itemGL.ID,
+                                       itemGL.CreateDate,
+                                       itemGL.DanhBo,
+                                       itemGL.HoTen,
+                                       itemGL.DiaChi,
+                                       itemGL.NoiDungViPham,
+                                       itemGL.TinhTrang,
+                                       itemGL.GiaiQuyet,
+                                   };
+                DataTable dtGianLan = new DataTable();
+                dtGianLan = LINQToDataTable(queryGianLan);
+                dtGianLan.TableName = "GianLan";
+                ds.Tables.Add(dtGianLan);
+
                 #endregion
 
                 #region DonKH
@@ -1215,6 +1309,24 @@ namespace KTKS_DonKH.DAL.TimKiem
                 queryDonKH = from itemDon in db.DonKHs
                              join itemCTDongNuoc in db.CTDongNuocs on itemDon.MaDon equals itemCTDongNuoc.DongNuoc.MaDon
                              where itemCTDongNuoc.DanhBo == DanhBo
+                             select new
+                             {
+                                 MaDon = "TKH" + itemDon.MaDon,
+                                 itemDon.LoaiDon.TenLD,
+                                 itemDon.CreateDate,
+                                 itemDon.DanhBo,
+                                 itemDon.HoTen,
+                                 itemDon.DiaChi,
+                                 itemDon.GiaBieu,
+                                 itemDon.DinhMuc,
+                                 itemDon.NoiDung,
+                             };
+                dt.Merge(LINQToDataTable(queryDonKH));
+
+                ///Table GianLans
+                queryDonKH = from itemDon in db.DonKHs
+                             join itemGL in db.GianLans on itemDon.MaDon equals itemGL.MaDon
+                             where itemGL.DanhBo == DanhBo
                              select new
                              {
                                  MaDon = "TKH" + itemDon.MaDon,
@@ -1412,6 +1524,24 @@ namespace KTKS_DonKH.DAL.TimKiem
                               };
                 dt.Merge(LINQToDataTable(queryDonTXL));
 
+                ///Table GianLans
+                queryDonTXL = from itemDonTXL in db.DonTXLs
+                              join itemGL in db.GianLans on itemDonTXL.MaDon equals itemGL.MaDonTXL
+                              where itemGL.DanhBo == DanhBo
+                              select new
+                              {
+                                  MaDon = "TXL" + itemDonTXL.MaDon,
+                                  itemDonTXL.LoaiDonTXL.TenLD,
+                                  itemDonTXL.CreateDate,
+                                  itemDonTXL.DanhBo,
+                                  itemDonTXL.HoTen,
+                                  itemDonTXL.DiaChi,
+                                  itemDonTXL.GiaBieu,
+                                  itemDonTXL.DinhMuc,
+                                  itemDonTXL.NoiDung,
+                              };
+                dt.Merge(LINQToDataTable(queryDonTXL));
+
                 #endregion
 
                 #region DonTBC
@@ -1595,6 +1725,24 @@ namespace KTKS_DonKH.DAL.TimKiem
                               };
                 dt.Merge(LINQToDataTable(queryDonTBC));
 
+                ///Table GianLans
+                queryDonTBC = from itemDon in db.DonTBCs
+                              join itemGL in db.GianLans on itemDon.MaDon equals itemGL.MaDonTBC
+                              where itemGL.DanhBo == DanhBo
+                              select new
+                              {
+                                  MaDon = "TBC" + itemDon.MaDon,
+                                  itemDon.LoaiDonTBC.TenLD,
+                                  itemDon.CreateDate,
+                                  itemDon.DanhBo,
+                                  itemDon.HoTen,
+                                  itemDon.DiaChi,
+                                  itemDon.GiaBieu,
+                                  itemDon.DinhMuc,
+                                  itemDon.NoiDung,
+                              };
+                dt.Merge(LINQToDataTable(queryDonTBC));
+
                 #endregion
 
                 DataTable dtDon = new DataTable();
@@ -1638,6 +1786,9 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["Don"].Columns["MaDon"], ds.Tables["TTTL"].Columns["MaDon"]);
+
+                if (dtDon.Rows.Count > 0 && dtGianLan.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết Gian Lận", ds.Tables["Don"].Columns["MaDon"], ds.Tables["GianLan"].Columns["MaDon"]);
 
                 return ds;
             }
@@ -1883,6 +2034,28 @@ namespace KTKS_DonKH.DAL.TimKiem
                 dtTTTL.TableName = "TTTL";
                 ds.Tables.Add(dtTTTL);
 
+                ///Table GianLan
+                var queryGianLan = from itemGL in db.GianLans
+                                   where itemGL.HoTen.Contains(HoTen)
+                                   select new
+                                   {
+                                       MaDon = itemGL.MaDon != null ? "TKH" + itemGL.MaDon
+                                       : itemGL.MaDonTXL != null ? "TXL" + itemGL.MaDonTXL
+                                       : itemGL.MaDonTBC != null ? "TBC" + itemGL.MaDonTBC : null,
+                                       itemGL.ID,
+                                       itemGL.CreateDate,
+                                       itemGL.DanhBo,
+                                       itemGL.HoTen,
+                                       itemGL.DiaChi,
+                                       itemGL.NoiDungViPham,
+                                       itemGL.TinhTrang,
+                                       itemGL.GiaiQuyet,
+                                   };
+                DataTable dtGianLan = new DataTable();
+                dtGianLan = LINQToDataTable(queryGianLan);
+                dtGianLan.TableName = "GianLan";
+                ds.Tables.Add(dtGianLan);
+
                 #endregion
 
                 #region DonKH
@@ -2053,6 +2226,24 @@ namespace KTKS_DonKH.DAL.TimKiem
                 queryDonKH = from itemDon in db.DonKHs
                              join itemCTDongNuoc in db.CTDongNuocs on itemDon.MaDon equals itemCTDongNuoc.DongNuoc.MaDon
                              where itemCTDongNuoc.HoTen.Contains(HoTen)
+                             select new
+                             {
+                                 MaDon = "TKH" + itemDon.MaDon,
+                                 itemDon.LoaiDon.TenLD,
+                                 itemDon.CreateDate,
+                                 itemDon.DanhBo,
+                                 itemDon.HoTen,
+                                 itemDon.DiaChi,
+                                 itemDon.GiaBieu,
+                                 itemDon.DinhMuc,
+                                 itemDon.NoiDung,
+                             };
+                dt.Merge(LINQToDataTable(queryDonKH));
+
+                ///Table GianLans
+                queryDonKH = from itemDon in db.DonKHs
+                             join itemGL in db.GianLans on itemDon.MaDon equals itemGL.MaDon
+                             where itemGL.HoTen.Contains(HoTen)
                              select new
                              {
                                  MaDon = "TKH" + itemDon.MaDon,
@@ -2477,6 +2668,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                 if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời TXL", ds.Tables["Don"].Columns["MaDon"], ds.Tables["TTTL"].Columns["MaDonTXL"]);
 
+                if (dtDon.Rows.Count > 0 && dtGianLan.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết Gian Lận", ds.Tables["Don"].Columns["MaDon"], ds.Tables["GianLan"].Columns["MaDon"]);
+
                 return ds;
             }
             catch (Exception ex)
@@ -2720,6 +2914,28 @@ namespace KTKS_DonKH.DAL.TimKiem
                 dtTTTL.TableName = "TTTL";
                 ds.Tables.Add(dtTTTL);
 
+                ///Table GianLan
+                var queryGianLan = from itemGL in db.GianLans
+                                   where itemGL.DiaChi.Contains(DiaChi)
+                                select new
+                                {
+                                    MaDon = itemGL.MaDon != null ? "TKH" + itemGL.MaDon
+                                    : itemGL.MaDonTXL != null ? "TXL" + itemGL.MaDonTXL
+                                    : itemGL.MaDonTBC != null ? "TBC" + itemGL.MaDonTBC : null,
+                                    itemGL.ID,
+                                    itemGL.CreateDate,
+                                    itemGL.DanhBo,
+                                    itemGL.HoTen,
+                                    itemGL.DiaChi,
+                                    itemGL.NoiDungViPham,
+                                    itemGL.TinhTrang,
+                                    itemGL.GiaiQuyet,
+                                };
+                DataTable dtGianLan = new DataTable();
+                dtGianLan = LINQToDataTable(queryGianLan);
+                dtGianLan.TableName = "GianLan";
+                ds.Tables.Add(dtGianLan);
+
                 #endregion
 
                 #region DonKH
@@ -2890,6 +3106,24 @@ namespace KTKS_DonKH.DAL.TimKiem
                 queryDonKH = from itemDon in db.DonKHs
                              join itemCTDongNuoc in db.CTDongNuocs on itemDon.MaDon equals itemCTDongNuoc.DongNuoc.MaDon
                              where itemCTDongNuoc.DiaChi.Contains(DiaChi)
+                             select new
+                             {
+                                 MaDon = "TKH" + itemDon.MaDon,
+                                 itemDon.LoaiDon.TenLD,
+                                 itemDon.CreateDate,
+                                 itemDon.DanhBo,
+                                 itemDon.HoTen,
+                                 itemDon.DiaChi,
+                                 itemDon.GiaBieu,
+                                 itemDon.DinhMuc,
+                                 itemDon.NoiDung,
+                             };
+                dt.Merge(LINQToDataTable(queryDonKH));
+
+                ///Table GianLans
+                queryDonKH = from itemDon in db.DonKHs
+                             join itemGL in db.GianLans on itemDon.MaDon equals itemGL.MaDon
+                             where itemGL.DiaChi.Contains(DiaChi)
                              select new
                              {
                                  MaDon = "TKH" + itemDon.MaDon,
@@ -3087,6 +3321,24 @@ namespace KTKS_DonKH.DAL.TimKiem
                               };
                 dt.Merge(LINQToDataTable(queryDonTXL));
 
+                ///Table GianLans
+                queryDonTXL = from itemDonTXL in db.DonTXLs
+                              join itemGL in db.GianLans on itemDonTXL.MaDon equals itemGL.MaDonTXL
+                              where itemGL.DiaChi.Contains(DiaChi)
+                              select new
+                              {
+                                  MaDon = "TXL" + itemDonTXL.MaDon,
+                                  itemDonTXL.LoaiDonTXL.TenLD,
+                                  itemDonTXL.CreateDate,
+                                  itemDonTXL.DanhBo,
+                                  itemDonTXL.HoTen,
+                                  itemDonTXL.DiaChi,
+                                  itemDonTXL.GiaBieu,
+                                  itemDonTXL.DinhMuc,
+                                  itemDonTXL.NoiDung,
+                              };
+                dt.Merge(LINQToDataTable(queryDonTXL));
+
                 #endregion
 
                 #region DonTBC
@@ -3270,6 +3522,24 @@ namespace KTKS_DonKH.DAL.TimKiem
                               };
                 dt.Merge(LINQToDataTable(queryDonTBC));
 
+                ///Table GianLans
+                queryDonTBC = from itemDon in db.DonTBCs
+                              join itemGL in db.GianLans on itemDon.MaDon equals itemGL.MaDonTBC
+                              where itemGL.DiaChi.Contains(DiaChi)
+                              select new
+                              {
+                                  MaDon = "TBC" + itemDon.MaDon,
+                                  itemDon.LoaiDonTBC.TenLD,
+                                  itemDon.CreateDate,
+                                  itemDon.DanhBo,
+                                  itemDon.HoTen,
+                                  itemDon.DiaChi,
+                                  itemDon.GiaBieu,
+                                  itemDon.DinhMuc,
+                                  itemDon.NoiDung,
+                              };
+                dt.Merge(LINQToDataTable(queryDonTBC));
+
                 #endregion
 
                 DataTable dtDon = new DataTable();
@@ -3313,6 +3583,9 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["Don"].Columns["MaDon"], ds.Tables["TTTL"].Columns["MaDon"]);
+
+                if (dtDon.Rows.Count > 0 && dtGianLan.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết Gian Lận", ds.Tables["Don"].Columns["MaDon"], ds.Tables["GianLan"].Columns["MaDon"]);
 
                 return ds;
             }

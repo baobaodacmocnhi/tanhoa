@@ -8,7 +8,7 @@ using System.Data;
 
 namespace KTKS_DonKH.DAL.ToXuLy
 {
-    class CGianLan:CDAL
+    class CGianLan : CDAL
     {
         public bool Them(GianLan entity)
         {
@@ -21,8 +21,8 @@ namespace KTKS_DonKH.DAL.ToXuLy
                 entity.CreateDate = DateTime.Now;
                 entity.CreateBy = CTaiKhoan.MaUser;
                 db.GianLans.InsertOnSubmit(entity);
-                    db.SubmitChanges();
-                    return true;
+                db.SubmitChanges();
+                return true;
             }
             catch (Exception)
             {
@@ -37,8 +37,8 @@ namespace KTKS_DonKH.DAL.ToXuLy
             {
                 entity.ModifyDate = DateTime.Now;
                 entity.ModifyBy = CTaiKhoan.MaUser;
-                    db.SubmitChanges();
-                    return true;
+                db.SubmitChanges();
+                return true;
             }
             catch (Exception)
             {
@@ -64,64 +64,78 @@ namespace KTKS_DonKH.DAL.ToXuLy
 
         public GianLan Get(int ID)
         {
-            return db.GianLans.SingleOrDefault(item=>item.ID==ID);
+            return db.GianLans.SingleOrDefault(item => item.ID == ID);
         }
 
-        public GianLan Get(decimal MaDon)
+        public GianLan Get(string Loai,decimal MaDon)
         {
-            return db.GianLans.SingleOrDefault(item => item.MaDon == MaDon);
+            switch (Loai)
+            {
+                case "TKH":
+                    return db.GianLans.SingleOrDefault(item => item.MaDon == MaDon);
+                case "TXL":
+                    return db.GianLans.SingleOrDefault(item => item.MaDonTXL == MaDon);
+                case "TBC":
+                    return db.GianLans.SingleOrDefault(item => item.MaDonTBC == MaDon);
+                default:
+                    return null;
+            }
+            
         }
 
-        public GianLan Get_TXL(decimal MaDonTXL)
+        public bool CheckExist(string Loai,decimal MaDon)
         {
-            return db.GianLans.SingleOrDefault(item => item.MaDonTXL == MaDonTXL);
+            switch (Loai)
+            {
+                case "TKH":
+                    return db.GianLans.Any(item => item.MaDon == MaDon);
+                case "TXL":
+                    return db.GianLans.Any(item => item.MaDonTXL == MaDon);
+                case "TBC":
+                    return db.GianLans.Any(item => item.MaDonTBC == MaDon);
+                default:
+                    return false;
+            }
         }
 
-        public bool CheckExist(decimal MaDon)
+        public DataTable GetDS(string DanhBo)
         {
-            return db.GianLans.Any(item => item.MaDon == MaDon);
-        }
-
-        public bool CheckExist_TXL(decimal MaDonTXL)
-        {
-            return db.GianLans.Any(item => item.MaDonTXL == MaDonTXL);
+            var query = from item in db.GianLans
+                        where item.DanhBo==DanhBo
+                        select new
+                        {
+                            item.ID,
+                            MaDon = item.MaDon != null ? "TKH" + item.MaDon
+                                    : item.MaDonTXL != null ? "TXL" + item.MaDonTXL
+                                    : item.MaDonTBC != null ? "TBC" + item.MaDonTBC : null,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.NoiDungViPham,
+                            item.TinhTrang,
+                            item.GiaiQuyet
+                        };
+            return LINQToDataTable(query);
         }
 
         public DataTable GetDS(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            DataTable dt = new DataTable();
-
             var query = from item in db.GianLans
-                        where item.ToXuLy == false && item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
+                        where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
                         select new
                         {
                             item.ID,
-                            item.ToXuLy,
-                            MaDon=item.MaDon,
+                            MaDon = item.MaDon != null ? "TKH" + item.MaDon
+                                    : item.MaDonTXL != null ? "TXL" + item.MaDonTXL
+                                    : item.MaDonTBC != null ? "TBC" + item.MaDonTBC : null,
                             item.DanhBo,
                             item.HoTen,
                             item.DiaChi,
                             item.NoiDungViPham,
                             item.TinhTrang,
+                            item.GiaiQuyet
                         };
-            dt = LINQToDataTable(query.ToList());
-
-            var queryTXL = from item in db.GianLans
-                        where item.ToXuLy == true && item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
-                        select new
-                        {
-                            item.ID,
-                            item.ToXuLy,
-                            MaDon = item.MaDonTXL,
-                            item.DanhBo,
-                            item.HoTen,
-                            item.DiaChi,
-                            item.NoiDungViPham,
-                            item.TinhTrang,
-                        };
-            dt.Merge( LINQToDataTable(queryTXL.ToList()));
-
-            return dt;
+            return LINQToDataTable(query);
         }
 
         public DataTable GetDSNoiDungViPham()
