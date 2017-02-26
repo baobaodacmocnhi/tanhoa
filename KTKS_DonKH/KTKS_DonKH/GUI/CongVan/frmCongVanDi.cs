@@ -204,13 +204,13 @@ namespace KTKS_DonKH.GUI.CongVan
                                 item.DiaChi = ctchdb.DiaChi;
                                 break;
                             case "Phiếu Hủy Danh Bộ":
-                                PhieuCHDB ycchdb = _cCHDB.getYeuCauCHDbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                PhieuCHDB ycchdb = _cCHDB.GetPhieuHuy(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = ycchdb.DanhBo;
                                 item.HoTen = ycchdb.HoTen;
                                 item.DiaChi = ycchdb.DiaChi;
                                 break;
                             case "Thư Trả Lời":
-                                CTTTTL cttttl = _cTTTL.GetCTByID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                CTTTTL cttttl = _cTTTL.GetCT(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = cttttl.DanhBo;
                                 item.HoTen = cttttl.HoTen;
                                 item.DiaChi = cttttl.DiaChi;
@@ -309,13 +309,13 @@ namespace KTKS_DonKH.GUI.CongVan
                         txtDiaChi.Text = ctchdb.DiaChi;
                         break;
                     case "Phiếu Hủy Danh Bộ":
-                        PhieuCHDB ycchdb = _cCHDB.getYeuCauCHDbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                        PhieuCHDB ycchdb = _cCHDB.GetPhieuHuy(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = ycchdb.DanhBo;
                         txtHoTen.Text = ycchdb.HoTen;
                         txtDiaChi.Text = ycchdb.DiaChi;
                         break;
                     case "Thư Trả Lời":
-                        CTTTTL cttttl = _cTTTL.GetCTByID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                        CTTTTL cttttl = _cTTTL.GetCT(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = cttttl.DanhBo;
                         txtHoTen.Text = cttttl.HoTen;
                         txtDiaChi.Text = cttttl.DiaChi;

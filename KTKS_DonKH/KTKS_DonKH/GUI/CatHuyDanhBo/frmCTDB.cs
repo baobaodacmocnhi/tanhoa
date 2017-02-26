@@ -319,7 +319,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             if (!_cCHDB.CheckCHDBbyMaDon_TXL(_dontxl.MaDon))
                             {
                                 CHDB chdb = new CHDB();
-                                chdb.ToXuLy = true;
                                 chdb.MaDonTXL = _dontxl.MaDon;
                                 if (_cCHDB.ThemCHDB(chdb))
                                 {
@@ -585,12 +584,15 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         if (txtHieuLucKy.Text.Trim() != "")
                         {
                             PhieuCHDB ycchdb = new PhieuCHDB();
-                            if (_ctctdb.CHDB.ToXuLy)
-                            {
-                                ycchdb.MaDonTXL = _ctctdb.CHDB.MaDonTXL;
-                            }
+                            if (_ctctdb.CHDB.MaDon!=null)
+                                 ycchdb.MaDon = _ctctdb.CHDB.MaDon;
                             else
-                                ycchdb.MaDon = _ctctdb.CHDB.MaDon;
+                                if (_ctctdb.CHDB.MaDonTXL != null)
+                                    ycchdb.MaDonTXL = _ctctdb.CHDB.MaDonTXL;
+                                else
+                                    if (_ctctdb.CHDB.MaDonTBC != null)
+                                        ycchdb.MaDonTBC = _ctctdb.CHDB.MaDonTBC;
+
                             ycchdb.TBCTDB = true;
                             ycchdb.MaCTCTDB = _ctctdb.MaCTCTDB;
                             ycchdb.DanhBo = _ctctdb.DanhBo;
@@ -617,7 +619,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             ycchdb.NguoiKy = bangiamdoc.HoTen.ToUpper();
                             ycchdb.PhieuDuocKy = true;
 
-                            if (_cCHDB.ThemYeuCauCHDB(ycchdb))
+                            if (_cCHDB.ThemPhieuHuy(ycchdb))
                             {
                                 _ctctdb.DaLapPhieu = true;
                                 _ctctdb.SoPhieu = ycchdb.MaYCCHDB;
@@ -678,12 +680,15 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             if (txtHieuLucKy.Text.Trim() != "")
                             {
                                 PhieuCHDB ycchdb = new PhieuCHDB();
-                                if (_ctctdb.CHDB.ToXuLy)
-                                {
-                                    ycchdb.MaDonTXL = _ctctdb.CHDB.MaDonTXL;
-                                }
-                                else
+                                if (_ctctdb.CHDB.MaDon!=null)
                                     ycchdb.MaDon = _ctctdb.CHDB.MaDon;
+                                else
+                                    if (_ctctdb.CHDB.MaDonTXL != null)
+                                    ycchdb.MaDonTXL = _ctctdb.CHDB.MaDonTXL;
+                                else
+                                        if (_ctctdb.CHDB.MaDonTBC != null)
+                                            ycchdb.MaDonTBC = _ctctdb.CHDB.MaDonTBC;
+
                                 ycchdb.TBCTDB = true;
                                 ycchdb.MaCTCTDB = _ctctdb.MaCTCTDB;
                                 ycchdb.DanhBo = _ctctdb.DanhBo;
@@ -710,7 +715,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 ycchdb.NguoiKy = bangiamdoc.HoTen.ToUpper();
                                 ycchdb.PhieuDuocKy = true;
 
-                                if (_cCHDB.ThemYeuCauCHDB(ycchdb))
+                                if (_cCHDB.ThemPhieuHuy(ycchdb))
                                 {
                                     _ctctdb.DaLapPhieu = true;
                                     _ctctdb.SoPhieu = ycchdb.MaYCCHDB;
@@ -951,7 +956,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             if (!_cCHDB.CheckCHDBbyMaDon_TXL(dontxl.MaDon))
                             {
                                 CHDB chdb = new CHDB();
-                                chdb.ToXuLy = true;
                                 chdb.MaDonTXL = dontxl.MaDon;
                                 _cCHDB.ThemCHDB(chdb);
 

@@ -2393,8 +2393,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _MaDon;
 		
-		private bool _ToXuLy;
-		
 		private System.Nullable<decimal> _MaDonTXL;
 		
 		private System.Nullable<decimal> _MaDonTBC;
@@ -2423,8 +2421,6 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaCHDBChanged();
     partial void OnMaDonChanging(System.Nullable<decimal> value);
     partial void OnMaDonChanged();
-    partial void OnToXuLyChanging(bool value);
-    partial void OnToXuLyChanged();
     partial void OnMaDonTXLChanging(System.Nullable<decimal> value);
     partial void OnMaDonTXLChanged();
     partial void OnMaDonTBCChanging(System.Nullable<decimal> value);
@@ -2488,26 +2484,6 @@ namespace KTKS_DonKH.LinQ
 					this._MaDon = value;
 					this.SendPropertyChanged("MaDon");
 					this.OnMaDonChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToXuLy", DbType="Bit NOT NULL")]
-		public bool ToXuLy
-		{
-			get
-			{
-				return this._ToXuLy;
-			}
-			set
-			{
-				if ((this._ToXuLy != value))
-				{
-					this.OnToXuLyChanging(value);
-					this.SendPropertyChanging();
-					this._ToXuLy = value;
-					this.SendPropertyChanged("ToXuLy");
-					this.OnToXuLyChanged();
 				}
 			}
 		}

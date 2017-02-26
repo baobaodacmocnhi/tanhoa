@@ -186,7 +186,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     {
                         PhieuCHDB ycchdb = _cCHDB.getYeuCauCHDBbyMaCTCTDB(ctctdb.MaCTCTDB);
                         ycchdb.PhieuDuocKy = ctctdb.PhieuDuocKy;
-                        _cCHDB.SuaYeuCauCHDB(ycchdb);
+                        _cCHDB.SuaPhieuHuy(ycchdb);
                     }
                 }
             }
@@ -205,7 +205,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     {
                         PhieuCHDB ycchdb = _cCHDB.getYeuCauCHDBbyMaCTCHDB(ctchdb.MaCTCHDB);
                         ycchdb.PhieuDuocKy = ctchdb.PhieuDuocKy;
-                        _cCHDB.SuaYeuCauCHDB(ycchdb);
+                        _cCHDB.SuaPhieuHuy(ycchdb);
                     }
                 }
             }
@@ -278,11 +278,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (radDSYCCHDB.Checked)
             {
-                PhieuCHDB ycchdb = _cCHDB.getYeuCauCHDbyID(decimal.Parse(dgvDSYCCHDB.CurrentRow.Cells["SoPhieu"].Value.ToString()));
+                PhieuCHDB ycchdb = _cCHDB.GetPhieuHuy(decimal.Parse(dgvDSYCCHDB.CurrentRow.Cells["SoPhieu"].Value.ToString()));
                 if (bool.Parse(dgvDSYCCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString()) != ycchdb.PhieuDuocKy)
                 {
                     ycchdb.PhieuDuocKy = bool.Parse(dgvDSYCCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString());
-                    if (_cCHDB.SuaYeuCauCHDB(ycchdb))
+                    if (_cCHDB.SuaPhieuHuy(ycchdb))
                     {
                         if (ycchdb.TBCTDB)
                         {
@@ -448,7 +448,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                 DataRow dr = dsBaoCao.Tables["PhieuCHDB"].NewRow();
 
-                                PhieuCHDB ycchdb = _cCHDB.getYeuCauCHDbyID(decimal.Parse(dgvDSYCCHDB["SoPhieu", i].Value.ToString()));
+                                PhieuCHDB ycchdb = _cCHDB.GetPhieuHuy(decimal.Parse(dgvDSYCCHDB["SoPhieu", i].Value.ToString()));
                                 dr["SoPhieu"] = ycchdb.MaYCCHDB.ToString().Insert(ycchdb.MaYCCHDB.ToString().Length - 2, "-");
                                 dr["HieuLucKy"] = ycchdb.HieuLucKy;
                                 dr["Dot"] = ycchdb.Dot;

@@ -1450,7 +1450,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public bool ThemYeuCauCHDB(PhieuCHDB ycchdb)
+        public bool ThemPhieuHuy(PhieuCHDB ycchdb)
         {
             try
             {
@@ -1481,7 +1481,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public bool SuaYeuCauCHDB(PhieuCHDB ycchdb)
+        public bool SuaPhieuHuy(PhieuCHDB ycchdb)
         {
             try
             {
@@ -1499,7 +1499,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public bool XoaYeuCauCHDB(PhieuCHDB ycchdb)
+        public bool XoaPhieuHuy(PhieuCHDB ycchdb)
         {
             try
             {
@@ -1516,7 +1516,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public PhieuCHDB getYeuCauCHDbyID(decimal MaYCCHDB)
+        public PhieuCHDB GetPhieuHuy(decimal MaYCCHDB)
         {
             try
             {
@@ -1555,6 +1555,21 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
+        public bool CheckExistPhieuHuy(string Loai, decimal MaDon, string DanhBo)
+        {
+            switch (Loai)
+            {
+                case "TKH":
+                    return db.PhieuCHDBs.Any(item => item.MaDon == MaDon && item.DanhBo == DanhBo);
+                case "TXL":
+                    return db.PhieuCHDBs.Any(item => item.MaDonTXL == MaDon && item.DanhBo == DanhBo);
+                case "TBC":
+                    return db.PhieuCHDBs.Any(item => item.MaDonTBC == MaDon && item.DanhBo == DanhBo);
+                default:
+                    return false;
+            }
+        }
+        
         /// <summary>
         /// Kiểm tra Đơn Khách Hàng có được YCCHDB xử lý hay chưa
         /// </summary>

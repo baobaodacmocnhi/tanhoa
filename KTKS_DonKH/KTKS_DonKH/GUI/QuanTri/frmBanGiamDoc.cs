@@ -283,14 +283,14 @@ namespace KTKS_DonKH.GUI.QuanTri
                     for (int i = 0; i < dgvDanhSach.RowCount; i++)
                         if (bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
                         {
-                            PhieuCHDB ycchdb = _cCHDB.getYeuCauCHDbyID(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
+                            PhieuCHDB ycchdb = _cCHDB.GetPhieuHuy(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
 
                             if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                                 ycchdb.ChucVu = "GIÁM ĐỐC";
                             else
                                 ycchdb.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
                             ycchdb.NguoiKy = bangiamdoc.HoTen.ToUpper();
-                            _cCHDB.SuaYeuCauCHDB(ycchdb);
+                            _cCHDB.SuaPhieuHuy(ycchdb);
                         }
                     break;
                 case "Đóng Nước":
@@ -325,7 +325,7 @@ namespace KTKS_DonKH.GUI.QuanTri
                     for (int i = 0; i < dgvDanhSach.RowCount; i++)
                         if (bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
                         {
-                            CTTTTL cttttl = _cTTTL.GetCTByID(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
+                            CTTTTL cttttl = _cTTTL.GetCT(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
 
                             if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                                 cttttl.ChucVu = "GIÁM ĐỐC";

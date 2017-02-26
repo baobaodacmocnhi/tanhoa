@@ -64,7 +64,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             }
         }
 
-        public TTTL GetByID(decimal MaTTTL)
+        public TTTL Get(decimal MaTTTL)
         {
             try
             {
@@ -91,6 +91,21 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
+            }
+        }
+
+        public bool CheckExist(string Loai, decimal MaDon)
+        {
+            switch (Loai)
+            {
+                case "TKH":
+                    return db.TTTLs.Any(item => item.MaDon == MaDon);
+                case "TXL":
+                    return db.TTTLs.Any(item => item.MaDonTXL == MaDon);
+                case "TBC":
+                    return db.TTTLs.Any(item => item.MaDonTBC == MaDon);
+                default:
+                    return false;
             }
         }
 
@@ -172,6 +187,21 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             }
         }
 
+        public TTTL Get(string Loai,decimal MaDon)
+        {
+            switch (Loai)
+            {
+                case "TKH":
+                    return db.TTTLs.SingleOrDefault(item => item.MaDon == MaDon);
+                case "TXL":
+                    return db.TTTLs.SingleOrDefault(item => item.MaDonTXL == MaDon);
+                case "TBC":
+                    return db.TTTLs.SingleOrDefault(item => item.MaDonTBC == MaDon);
+                default:
+                    return null;
+            }
+        }
+
         #endregion
 
         #region CTTTTL (Chi Tiết Thảo Thư Trả Lời)
@@ -245,7 +275,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             }
         }
 
-        public CTTTTL GetCTByID(decimal MaCTTTTL)
+        public CTTTTL GetCT(decimal MaCTTTTL)
         {
             try
             {
@@ -280,31 +310,133 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             return LINQToDataTable(db.CTTTTLs.ToList());
         }
 
-        public DataTable GetDSByMaDon(decimal MaDon)
+        public DataTable GetDSByMaDon(string Loai, decimal MaDon)
         {
-            return LINQToDataTable(db.CTTTTLs.Where(item => item.TTTL.MaDon == MaDon || item.TTTL.MaDonTXL == MaDon).ToList());
+            switch (Loai)
+            {
+                case "TKH":
+                    var query = from item in db.CTTTTLs
+                                where item.TTTL.MaDon == MaDon
+                                select new
+                                {
+                                    MaDon = "TKH" + item.TTTL.MaDon,
+                                    item.CreateDate,
+                                    item.DanhBo,
+                                    item.VeViec,
+                                    item.NoiDung,
+                                    item.NoiNhan,
+                                    item.ThuDuocKy,
+                                };
+                    return LINQToDataTable(query);
+                case "TXL":
+                    query = from item in db.CTTTTLs
+                            where item.TTTL.MaDonTXL == MaDon
+                            select new
+                            {
+                                MaDon = "TXL" + item.TTTL.MaDonTBC,
+                                item.CreateDate,
+                                item.DanhBo,
+                                item.VeViec,
+                                item.NoiDung,
+                                item.NoiNhan,
+                                item.ThuDuocKy,
+                            };
+                    return LINQToDataTable(query);
+                case "TBC":
+                    query = from item in db.CTTTTLs
+                            where item.TTTL.MaDonTBC == MaDon
+                            select new
+                            {
+                                MaDon =  "TBC" + item.TTTL.MaDonTBC,
+                                item.CreateDate,
+                                item.DanhBo,
+                                item.VeViec,
+                                item.NoiDung,
+                                item.NoiNhan,
+                                item.ThuDuocKy,
+                            };
+                    return LINQToDataTable(query);
+                default:
+                    return null;
+            }
         }
 
         public DataTable GetDSByMaTB(decimal MaCTTTTL)
         {
-            return LINQToDataTable(db.CTTTTLs.Where(item => item.MaCTTTTL == MaCTTTTL).ToList());
+            var query = from item in db.CTTTTLs
+                        where item.MaCTTTTL == MaCTTTTL
+                        select new
+                        {
+                            MaDon = item.TTTL.MaDon != null ? "TKH" + item.TTTL.MaDon
+                                : item.TTTL.MaDonTXL != null ? "TXL" + item.TTTL.MaDonTXL
+                                : item.TTTL.MaDonTBC != null ? "TBC" + item.TTTL.MaDonTBC : null,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.VeViec,
+                            item.NoiDung,
+                            item.NoiNhan,
+                            item.ThuDuocKy,
+                        };
+            return LINQToDataTable(query);
         }
 
         public DataTable GetDSByMaTBs(decimal TuMaCTTTTL, decimal DenMaCTTTTL)
         {
-            return LINQToDataTable(db.CTTTTLs.Where(item => item.MaCTTTTL.ToString().Substring(item.MaCTTTTL.ToString().Length - 2, 2) == TuMaCTTTTL.ToString().Substring(TuMaCTTTTL.ToString().Length - 2, 2)
+            var query = from item in db.CTTTTLs
+                        where item.MaCTTTTL.ToString().Substring(item.MaCTTTTL.ToString().Length - 2, 2) == TuMaCTTTTL.ToString().Substring(TuMaCTTTTL.ToString().Length - 2, 2)
                                 && item.MaCTTTTL.ToString().Substring(item.MaCTTTTL.ToString().Length - 2, 2) == DenMaCTTTTL.ToString().Substring(DenMaCTTTTL.ToString().Length - 2, 2)
-                                && item.MaCTTTTL >= TuMaCTTTTL && item.MaCTTTTL <= DenMaCTTTTL).ToList());
+                                && item.MaCTTTTL >= TuMaCTTTTL && item.MaCTTTTL <= DenMaCTTTTL
+                        select new
+                        {
+                            MaDon = item.TTTL.MaDon != null ? "TKH" + item.TTTL.MaDon
+                                : item.TTTL.MaDonTXL != null ? "TXL" + item.TTTL.MaDonTXL
+                                : item.TTTL.MaDonTBC != null ? "TBC" + item.TTTL.MaDonTBC : null,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.VeViec,
+                            item.NoiDung,
+                            item.NoiNhan,
+                            item.ThuDuocKy,
+                        };
+            return LINQToDataTable(query);
         }
 
         public DataTable GetDSByDanhBo(string DanhBo)
         {
-            return LINQToDataTable(db.CTTTTLs.Where(item => item.DanhBo == DanhBo).ToList());
+            var query = from item in db.CTTTTLs
+                        where item.DanhBo == DanhBo
+                        select new
+                        {
+                            MaDon = item.TTTL.MaDon != null ? "TKH" + item.TTTL.MaDon
+                                : item.TTTL.MaDonTXL != null ? "TXL" + item.TTTL.MaDonTXL
+                                : item.TTTL.MaDonTBC != null ? "TBC" + item.TTTL.MaDonTBC : null,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.VeViec,
+                            item.NoiDung,
+                            item.NoiNhan,
+                            item.ThuDuocKy,
+                        };
+            return LINQToDataTable(query);
         }
 
         public DataTable GetDSByCreateDate(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            return LINQToDataTable(db.CTTTTLs.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date).ToList());
+            var query = from item in db.CTTTTLs
+                        where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
+                        select new
+                        {
+                            MaDon = item.TTTL.MaDon != null ? "TKH" + item.TTTL.MaDon
+                                : item.TTTL.MaDonTXL != null ? "TXL" + item.TTTL.MaDonTXL
+                                : item.TTTL.MaDonTBC != null ? "TBC" + item.TTTL.MaDonTBC : null,
+                                item.CreateDate,
+                                item.DanhBo,
+                                item.VeViec,
+                                item.NoiDung,
+                                item.NoiNhan,
+                                item.ThuDuocKy,
+                        };
+            return LINQToDataTable(query);
         }
 
         /// <summary>
@@ -345,6 +477,21 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             }
         }
 
+        public bool CheckExistCT(string Loai,decimal MaDon, string DanhBo, DateTime CreateDate)
+        {
+            switch (Loai)
+            {
+                case "TKH":
+                    return db.CTTTTLs.Any(item => item.TTTL.MaDon == MaDon && item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
+                case "TXL":
+                    return db.CTTTTLs.Any(item => item.TTTL.MaDonTXL == MaDon && item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
+                case "TBC":
+                    return db.CTTTTLs.Any(item => item.TTTL.MaDonTBC == MaDon && item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
+                default:
+                    return false;
+            }
+        }
+
         public bool CheckExist(decimal MaCTTTTL)
         {
             return db.CTTTTLs.Any(item => item.MaCTTTTL == MaCTTTTL);
@@ -352,24 +499,18 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
 
         public DataTable GetLichSuCTByDanhBo(string DanhBo)
         {
-            try
-            {
-                var query = from itemCTTTTL in db.CTTTTLs
-                            where itemCTTTTL.DanhBo == DanhBo
-                            orderby itemCTTTTL.CreateDate descending
-                            select new
-                            {
-                                itemCTTTTL.MaCTTTTL,
-                                itemCTTTTL.TTTL.MaDon,
-                                itemCTTTTL.VeViec,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+            var query = from item in db.CTTTTLs
+                        where item.DanhBo == DanhBo
+                        orderby item.CreateDate descending
+                        select new
+                        {
+                            item.MaCTTTTL,
+                            MaDon = item.TTTL.MaDon != null ? "TKH" + item.TTTL.MaDon
+                                : item.TTTL.MaDonTXL != null ? "TXL" + item.TTTL.MaDonTXL
+                                : item.TTTL.MaDonTBC != null ? "TBC" + item.TTTL.MaDonTBC : null,
+                            item.VeViec,
+                        };
+            return LINQToDataTable(query);
         }
 
         #endregion

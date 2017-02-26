@@ -554,7 +554,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                         if (chkThayDoiTenHopDong.Checked)
                         {
                             donkh.SangTen = true;
-                            donkh.NgayGiaiQuyet = "Quý khách nhận lại Hợp Đồng vào ngày "+GetToDate(DateTime.Now,38).ToString("dd/MM/yyyy")+". Quá thời hạn trên, Khách Hàng không liên hệ nhận Hợp Đồng; mọi Khiếu Nại về sau sẽ không được giải quyết";
+                            donkh.NgayGiaiQuyet = "Quý khách nhận lại Hợp Đồng vào ngày "+GetToDate(DateTime.Now,30).ToString("dd/MM/yyyy")+". Quá thời hạn trên, Khách Hàng không liên hệ nhận Hợp Đồng; mọi Khiếu Nại về sau sẽ không được giải quyết";
                         }
 
                         if (chkCapDM.Checked)
@@ -868,6 +868,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                                 }
                                 #endregion
 
+                                dr["Ngay"] = _donkh.NgayGiaiQuyet;
                                 dr["DinhMucSau"] = donkh.DinhMucSau;
                                 dr["HieuLucTuKy"] = donkh.HieuLucTuKy;
                                 dr["HoTenNV"] = CTaiKhoan.HoTen;
@@ -946,7 +947,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                     if (chkThayDoiTenHopDong.Checked)
                     {
                         _donkh.SangTen = true;
-                        _donkh.NgayGiaiQuyet = "Quý khách nhận lại Hợp Đồng vào ngày " + GetToDate(_donkh.CreateDate.Value, 38).ToString("dd/MM/yyyy") + ". Quá thời hạn trên, Khách Hàng không liên hệ nhận Hợp Đồng; mọi Khiếu Nại về sau sẽ không được giải quyết";
+                        _donkh.NgayGiaiQuyet = "Quý khách nhận lại Hợp Đồng vào ngày " + GetToDate(_donkh.CreateDate.Value, 30).ToString("dd/MM/yyyy") + ". Quá thời hạn trên, Khách Hàng không liên hệ nhận Hợp Đồng; mọi Khiếu Nại về sau sẽ không được giải quyết";
                     }
                     else
                         _donkh.SangTen = false;

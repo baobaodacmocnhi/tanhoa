@@ -15,7 +15,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
 
         #region KTXM (Kiểm Tra Xác Minh)
 
-        public bool ThemKTXM(KTXM ktxm)
+        public bool Them(KTXM ktxm)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
-        public bool SuaKTXM(KTXM ktxm)
+        public bool Sua(KTXM ktxm)
         {
             try
             {
@@ -63,7 +63,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
-        public bool XoaKTXM(KTXM ktxm)
+        public bool Xoa(KTXM ktxm)
         {
             try
             {
@@ -71,76 +71,6 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                 db.SubmitChanges();
                 //MessageBox.Show("Thành công Sửa KTXM", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Hàm này được dùng trong nội bộ DAL
-        /// </summary>
-        /// <param name="ktxm"></param>
-        /// <param name="inhertance">true</param>
-        /// <returns></returns>
-        public bool ThemKTXM(KTXM ktxm, bool inhertance)
-        {
-            try
-            {
-                if (inhertance)
-                {
-                    if (db.KTXMs.Count() > 0)
-                    {
-                        decimal MaKTXM = db.KTXMs.Max(itemKTXM => itemKTXM.MaKTXM);
-                        ktxm.MaKTXM = getMaxNextIDTable(MaKTXM);
-                    }
-                    else
-                        ktxm.MaKTXM = decimal.Parse("1" + DateTime.Now.ToString("yy"));
-                    ktxm.CreateDate = DateTime.Now;
-                    ktxm.CreateBy = CTaiKhoan.MaUser;
-                    db.KTXMs.InsertOnSubmit(ktxm);
-                    db.SubmitChanges();
-                    return true;
-                }
-                else
-                {
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.KTXMs);
-                    return false;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Hàm này được dùng trong nội bộ DAL
-        /// </summary>
-        /// <param name="ktxm"></param>
-        /// <param name="inhertance">true</param>
-        /// <returns></returns>
-        public bool SuaKTXM(KTXM ktxm, bool inhertance)
-        {
-            try
-            {
-                if (inhertance)
-                {
-                    ktxm.ModifyDate = DateTime.Now;
-                    ktxm.ModifyBy = CTaiKhoan.MaUser;
-                    db.SubmitChanges();
-                    return true;
-                }
-                else
-                {
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.KTXMs);
-                    return false;
-                }
             }
             catch (Exception ex)
             {
@@ -163,16 +93,16 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
-        public bool CheckExist_KTXM(string Loai, decimal MaDon)
+        public bool CheckExist(string Loai, decimal MaDon)
         {
             switch (Loai)
             {
                 case "TKH":
-                    return db.KTXMs.Any(itemKTXM => itemKTXM.MaDon == MaDon);
+                    return db.KTXMs.Any(item => item.MaDon == MaDon);
                 case "TXL":
-                    return db.KTXMs.Any(itemKTXM => itemKTXM.MaDonTXL == MaDon);
+                    return db.KTXMs.Any(item => item.MaDonTXL == MaDon);
                 case "TBC":
-                    return db.KTXMs.Any(itemKTXM => itemKTXM.MaDonTBC == MaDon);
+                    return db.KTXMs.Any(item => item.MaDonTBC == MaDon);
                 default:
                     return false;
             }
@@ -1336,7 +1266,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
-        public bool ThemCTKTXM(CTKTXM ctktxm)
+        public bool ThemCT(CTKTXM ctktxm)
         {
             try
             {
@@ -1366,7 +1296,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
-        public bool SuaCTKTXM(CTKTXM ctktxm)
+        public bool SuaCT(CTKTXM ctktxm)
         {
             try
             {
@@ -1383,7 +1313,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
-        public bool XoaCTKTXM(CTKTXM ctktxm)
+        public bool XoaCT(CTKTXM ctktxm)
         {
             try
             {
@@ -1441,7 +1371,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
-        public bool CheckExist_CTKTXM(string Loai,decimal MaDon, string DanhBo, DateTime NgayKTXM)
+        public bool CheckExistCT(string Loai,decimal MaDon, string DanhBo, DateTime NgayKTXM)
         {
             switch (Loai)
             {

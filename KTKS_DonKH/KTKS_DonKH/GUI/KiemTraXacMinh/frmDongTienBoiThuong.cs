@@ -189,7 +189,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             ctktxm.NgayChuyenLapTBCat = null;
                         }
 
-                    if (_cKTXM.SuaCTKTXM(ctktxm))
+                    if (_cKTXM.SuaCT(ctktxm))
                     {
                         Clear();
                         MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

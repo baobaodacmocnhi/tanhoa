@@ -297,13 +297,13 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
                     if (_dontkh != null)
                     {
-                        if (!_cKTXM.CheckExist_KTXM("TKH", _dontkh.MaDon))
+                        if (!_cKTXM.CheckExist("TKH", _dontkh.MaDon))
                         {
                             KTXM ktxm = new KTXM();
                             ktxm.MaDon = _dontkh.MaDon;
-                            _cKTXM.ThemKTXM(ktxm);
+                            _cKTXM.Them(ktxm);
                         }
-                        if (txtDanhBo.Text.Trim() != "" && _cKTXM.CheckExist_CTKTXM("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value))
+                        if (txtDanhBo.Text.Trim() != "" && _cKTXM.CheckExistCT("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value))
                         {
                             MessageBox.Show("Danh Bộ này đã được Lập Nội Dung Kiểm Tra", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
@@ -313,13 +313,13 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     else
                         if (_dontxl != null)
                         {
-                            if (!_cKTXM.CheckExist_KTXM("TXL", _dontxl.MaDon))
+                            if (!_cKTXM.CheckExist("TXL", _dontxl.MaDon))
                             {
                                 KTXM ktxm = new KTXM();
                                 ktxm.MaDonTXL = _dontxl.MaDon;
-                                _cKTXM.ThemKTXM(ktxm);
+                                _cKTXM.Them(ktxm);
                             }
-                            if (txtDanhBo.Text.Trim() != "" && _cKTXM.CheckExist_CTKTXM("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value))
+                            if (txtDanhBo.Text.Trim() != "" && _cKTXM.CheckExistCT("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value))
                             {
                                 MessageBox.Show("Danh Bộ này đã được Lập Nội Dung Kiểm Tra", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
@@ -329,13 +329,13 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         else
                             if (_dontbc != null)
                             {
-                                if (!_cKTXM.CheckExist_KTXM("TBC", _dontbc.MaDon))
+                                if (!_cKTXM.CheckExist("TBC", _dontbc.MaDon))
                                 {
                                     KTXM ktxm = new KTXM();
                                     ktxm.MaDonTBC = _dontbc.MaDon;
-                                    _cKTXM.ThemKTXM(ktxm);
+                                    _cKTXM.Them(ktxm);
                                 }
-                                if (txtDanhBo.Text.Trim() != "" && _cKTXM.CheckExist_CTKTXM("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value))
+                                if (txtDanhBo.Text.Trim() != "" && _cKTXM.CheckExistCT("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value))
                                 {
                                     MessageBox.Show("Danh Bộ này đã được Lập Nội Dung Kiểm Tra", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
@@ -389,7 +389,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     ctktxm.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
                     ctktxm.TieuThuTrungBinh = int.Parse(txtTieuThuTrungBinh.Text.Trim());
 
-                    if (_cKTXM.ThemCTKTXM(ctktxm))
+                    if (_cKTXM.ThemCT(ctktxm))
                     {
                         Clear_GetDataGridView();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -477,7 +477,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         _ctktxm.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
                         _ctktxm.TieuThuTrungBinh = int.Parse(txtTieuThuTrungBinh.Text.Trim());
 
-                        if (_cKTXM.SuaCTKTXM(_ctktxm))
+                        if (_cKTXM.SuaCT(_ctktxm))
                         {
                             Clear();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -507,7 +507,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        if (_cKTXM.XoaCTKTXM(_ctktxm))
+                        if (_cKTXM.XoaCT(_ctktxm))
                         {
                             Clear();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

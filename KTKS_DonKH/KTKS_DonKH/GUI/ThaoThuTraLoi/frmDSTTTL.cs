@@ -88,7 +88,8 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                             DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
 
-                            CTTTTL cttttl = _cTTTL.GetCTByID(decimal.Parse(dgvDSThu["MaCTTTTL", i].Value.ToString()));
+                            CTTTTL cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSThu["MaCTTTTL", i].Value.ToString()));
+
                             dr["SoPhieu"] = cttttl.MaCTTTTL.ToString().Insert(cttttl.MaCTTTTL.ToString().Length - 2, "-");
                             dr["LoTrinh"] = cttttl.LoTrinh;
                             dr["HoTen"] = cttttl.HoTen;
@@ -135,14 +136,16 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         {
             DataSetBaoCao dsBaoCao1 = new DataSetBaoCao();
             DataSetBaoCao dsBaoCao2 = new DataSetBaoCao();
-            bool flag = true;
+            bool flag = true;///in 2 bên
+            
             for (int i = 0; i < dgvDSThu.Rows.Count; i++)
                 if (dgvDSThu["In", i].Value != null && bool.Parse(dgvDSThu["In", i].Value.ToString()) == true)
-                    if (flag)
+                    if (flag==true)
                     {
                         DataRow dr = dsBaoCao1.Tables["ThaoThuTraLoi"].NewRow();
 
-                        CTTTTL cttttl = _cTTTL.GetCTByID(decimal.Parse(dgvDSThu["MaCTTTTL", i].Value.ToString()));
+                        CTTTTL cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSThu["MaCTTTTL", i].Value.ToString()));
+
                         dr["HoTen"] = cttttl.HoTen;
                         dr["DiaChi"] = cttttl.DiaChi;
 
@@ -153,7 +156,8 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                     {
                         DataRow dr = dsBaoCao2.Tables["ThaoThuTraLoi"].NewRow();
 
-                        CTTTTL cttttl = _cTTTL.GetCTByID(decimal.Parse(dgvDSThu["MaCTTTTL", i].Value.ToString()));
+                        CTTTTL cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSThu["MaCTTTTL", i].Value.ToString()));
+
                         dr["HoTen"] = cttttl.HoTen;
                         dr["DiaChi"] = cttttl.DiaChi;
 
@@ -172,7 +176,14 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             switch (cmbTimTheo.SelectedItem.ToString())
             {
                 case "Mã Đơn":
-                    dgvDSThu.DataSource = _cTTTL.GetDSByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
+                    if (txtNoiDungTimKiem.Text.Trim() != "")
+                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                            dgvDSThu.DataSource = _cTTTL.GetDSByMaDon("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                        else
+                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                dgvDSThu.DataSource = _cTTTL.GetDSByMaDon("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                            else
+                                dgvDSThu.DataSource = _cTTTL.GetDSByMaDon("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                     break;
                 case "Mã Thư":
                     if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
@@ -196,7 +207,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         {
             if (dgvDSThu.Columns[e.ColumnIndex].Name == "ThuDuocKy" && e.FormattedValue.ToString() != dgvDSThu[e.ColumnIndex, e.RowIndex].Value.ToString())
             {
-                CTTTTL cttttl = _cTTTL.GetCTByID(decimal.Parse(dgvDSThu["MaCTTTTL", e.RowIndex].Value.ToString()));
+                CTTTTL cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSThu["MaCTTTTL", e.RowIndex].Value.ToString()));
                 cttttl.ThuDuocKy = bool.Parse(e.FormattedValue.ToString());
                 _cTTTL.SuaCT(cttttl);
             }
