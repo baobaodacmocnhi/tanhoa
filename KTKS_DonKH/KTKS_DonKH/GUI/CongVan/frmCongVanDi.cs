@@ -192,13 +192,13 @@ namespace KTKS_DonKH.GUI.CongVan
                                 item.DiaChi = dchd.DiaChi;
                                 break;
                             case "Cắt Tạm Danh Bộ":
-                                CTCTDB ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                CTCTDB ctctdb = _cCHDB.GetCTCTDB(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = ctctdb.DanhBo;
                                 item.HoTen = ctctdb.HoTen;
                                 item.DiaChi = ctctdb.DiaChi;
                                 break;
                             case "Cắt Hủy Danh Bộ":
-                                CTCHDB ctchdb = _cCHDB.getCTCHDBbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                CTCHDB ctchdb = _cCHDB.GetCTCHDB(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = ctchdb.DanhBo;
                                 item.HoTen = ctchdb.HoTen;
                                 item.DiaChi = ctchdb.DiaChi;
@@ -297,13 +297,13 @@ namespace KTKS_DonKH.GUI.CongVan
                         txtDiaChi.Text = dchd.DiaChi;
                         break;
                     case "Cắt Tạm Danh Bộ":
-                        CTCTDB ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                        CTCTDB ctctdb = _cCHDB.GetCTCTDB(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = ctctdb.DanhBo;
                         txtHoTen.Text = ctctdb.HoTen;
                         txtDiaChi.Text = ctctdb.DiaChi;
                         break;
                     case "Cắt Hủy Danh Bộ":
-                        CTCHDB ctchdb = _cCHDB.getCTCHDBbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                        CTCHDB ctchdb = _cCHDB.GetCTCHDB(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = ctchdb.DanhBo;
                         txtHoTen.Text = ctchdb.HoTen;
                         txtDiaChi.Text = ctchdb.DiaChi;
@@ -359,11 +359,11 @@ namespace KTKS_DonKH.GUI.CongVan
                                     lstMa.Items.Add(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2));
                                 break;
                             case "Cắt Tạm Danh Bộ":
-                                if (_cCHDB.CheckCTCTDBbyID(decimal.Parse(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2))))
+                                if (_cCHDB.CheckExist_CTCTDB(decimal.Parse(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2))))
                                     lstMa.Items.Add(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2));
                                 break;
                             case "Cắt Hủy Danh Bộ":
-                                if (_cCHDB.CheckCTCHDBByMaCTCHDB(decimal.Parse(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2))))
+                                if (_cCHDB.CheckExist_CTCHDB(decimal.Parse(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2))))
                                     lstMa.Items.Add(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2));
                                 break;
                             case "Phiếu Hủy Danh Bộ":

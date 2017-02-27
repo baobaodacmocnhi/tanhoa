@@ -515,7 +515,7 @@
             this.cmbNoiDung.FormattingEnabled = true;
             this.cmbNoiDung.Location = new System.Drawing.Point(183, 260);
             this.cmbNoiDung.Name = "cmbNoiDung";
-            this.cmbNoiDung.Size = new System.Drawing.Size(193, 24);
+            this.cmbNoiDung.Size = new System.Drawing.Size(200, 24);
             this.cmbNoiDung.TabIndex = 62;
             // 
             // dateXuLy

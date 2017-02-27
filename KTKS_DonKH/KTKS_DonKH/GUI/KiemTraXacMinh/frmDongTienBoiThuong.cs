@@ -137,7 +137,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 string DanhBo = txtDanhBo.Text.Trim();
                 Clear();
                 txtDanhBo.Text = DanhBo;
-                dgvDSKetQuaKiemTra.DataSource = _cKTXM.LoadDSCTKTXM(txtDanhBo.Text.Trim());
+                dgvDSKetQuaKiemTra.DataSource = _cKTXM.GetDS_DanhBo(txtDanhBo.Text.Trim());
             }
         }
 

@@ -55,10 +55,14 @@ namespace KTKS_DonKH.GUI.ToXuLy
             if (_cTTTN.getTruyThuTienNuocbyMaTTTN(_MaTTTN) != null)
             {
                 _tttn = _cTTTN.getTruyThuTienNuocbyMaTTTN(_MaTTTN);
-                if (_tttn.ToXuLy)
+                if (_tttn.MaDon!=null)
+                     txtMaDon.Text = _tttn.MaDon.Value.ToString().Insert(_tttn.MaDon.Value.ToString().Length - 2, "-");
+                else
+                    if (_tttn.MaDonTXL != null)
                     txtMaDon.Text = "TXL" + _tttn.MaDonTXL.Value.ToString().Insert(_tttn.MaDonTXL.Value.ToString().Length - 2, "-");
                 else
-                    txtMaDon.Text = _tttn.MaDon.Value.ToString().Insert(_tttn.MaDon.Value.ToString().Length - 2, "-");
+                        if (_tttn.MaDonTBC != null)
+                            txtMaDon.Text = "TBC" + _tttn.MaDonTBC.Value.ToString().Insert(_tttn.MaDonTBC.Value.ToString().Length - 2, "-");
 
                 txtDanhBo.Text = _tttn.DanhBo;
                 txtHopDong.Text = _tttn.HopDong;

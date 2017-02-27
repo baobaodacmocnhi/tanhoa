@@ -93,6 +93,32 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             dr2["MaU"] = "0";
             dr2["HoTen"] = "Tổ Bấm Chì";
             dt.Rows.Add(dr2);
+            ///
+            dr2 = dt.NewRow();
+            dr2["MaU"] = "0";
+            dr2["HoTen"] = "Tờ Trình Trình Phòng";
+            dt.Rows.Add(dr2);
+            ///
+            dr2 = dt.NewRow();
+            dr2["MaU"] = "0";
+            dr2["HoTen"] = "Trình Phòng Xem Xét";
+            dt.Rows.Add(dr2);
+            ///
+            dr2 = dt.NewRow();
+            dr2["MaU"] = "0";
+            dr2["HoTen"] = "Hẹn Định Mức 3 Ngày";
+            dt.Rows.Add(dr2);
+            ///
+            dr2 = dt.NewRow();
+            dr2["MaU"] = "0";
+            dr2["HoTen"] = "Hẹn Định Mức Nhà Trọ";
+            dt.Rows.Add(dr2);
+            ///
+            dr2 = dt.NewRow();
+            dr2["MaU"] = "0";
+            dr2["HoTen"] = "Hẹn Kiểm Định";
+            dt.Rows.Add(dr2);
+            ///
             for (int i = 0; i < _dsNoiChuyen.Tables["6"].Rows.Count; i++)
             {
                 DataRow dr = dt.NewRow();
@@ -100,6 +126,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                 dr["HoTen"] = _dsNoiChuyen.Tables["6"].Rows[i]["Name"];
                 dt.Rows.Add(dr);
             }
+            ///
             dr2 = dt.NewRow();
             dr2["MaU"] = "0";
             dr2["HoTen"] = "Khác";

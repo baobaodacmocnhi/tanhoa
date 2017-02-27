@@ -801,6 +801,67 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
+        public DataTable GetDS_DanhBo(string DanhBo)
+        {
+            DataTable dt = new DataTable();
+
+            var query = from itemCTKTXM in db.CTKTXMs
+                        join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                        where itemCTKTXM.KTXM.MaDon != null
+                        && itemCTKTXM.DanhBo == DanhBo
+                        select new
+                        {
+                            itemCTKTXM.MaCTKTXM,
+                            MaDon = "TKH" + itemCTKTXM.KTXM.MaDon,
+                            itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD,
+                            itemCTKTXM.DanhBo,
+                            itemCTKTXM.HoTen,
+                            itemCTKTXM.DiaChi,
+                            itemCTKTXM.NgayKTXM,
+                            itemCTKTXM.NoiDungKiemTra,
+                            CreateBy = itemUser.HoTen,
+                        };
+            dt = LINQToDataTable(query);
+
+            query = from itemCTKTXM in db.CTKTXMs
+                    join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                    where itemCTKTXM.KTXM.MaDonTXL != null
+                    && itemCTKTXM.DanhBo == DanhBo
+                    select new
+                    {
+                        itemCTKTXM.MaCTKTXM,
+                        MaDon = "TXL" + itemCTKTXM.KTXM.MaDonTXL,
+                        itemCTKTXM.KTXM.DonTXL.LoaiDonTXL.TenLD,
+                        itemCTKTXM.DanhBo,
+                        itemCTKTXM.HoTen,
+                        itemCTKTXM.DiaChi,
+                        itemCTKTXM.NgayKTXM,
+                        itemCTKTXM.NoiDungKiemTra,
+                        CreateBy = itemUser.HoTen,
+                    };
+            dt.Merge(LINQToDataTable(query));
+
+            query = from itemCTKTXM in db.CTKTXMs
+                    join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                    where itemCTKTXM.KTXM.MaDonTBC != null
+                    && itemCTKTXM.DanhBo == DanhBo
+                    select new
+                    {
+                        itemCTKTXM.MaCTKTXM,
+                        MaDon = "TBC" + itemCTKTXM.KTXM.MaDonTBC,
+                        itemCTKTXM.KTXM.DonTBC.LoaiDonTBC.TenLD,
+                        itemCTKTXM.DanhBo,
+                        itemCTKTXM.HoTen,
+                        itemCTKTXM.DiaChi,
+                        itemCTKTXM.NgayKTXM,
+                        itemCTKTXM.NoiDungKiemTra,
+                        CreateBy = itemUser.HoTen,
+                    };
+            dt.Merge(LINQToDataTable(query));
+
+            return dt;
+        }
+
         public DataTable GetDS_DanhBo(int CreateBy, string DanhBo)
         {
             DataTable dt = new DataTable();

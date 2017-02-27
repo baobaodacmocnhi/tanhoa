@@ -41,6 +41,9 @@
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBoxNoiDungXuLy = new System.Windows.Forms.GroupBox();
+            this.cmbViTriDHN2 = new System.Windows.Forms.ComboBox();
+            this.cmbViTriDHN1 = new System.Windows.Forms.ComboBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.txtNoiDung = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.chkNgayXuLy = new System.Windows.Forms.CheckBox();
@@ -98,9 +101,6 @@
             this.radTXL = new System.Windows.Forms.RadioButton();
             this.radToKH = new System.Windows.Forms.RadioButton();
             this.btnInThongBao = new System.Windows.Forms.Button();
-            this.label23 = new System.Windows.Forms.Label();
-            this.cmbViTriDHN2 = new System.Windows.Forms.ComboBox();
-            this.cmbViTriDHN1 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBoxNoiDungXuLy.SuspendLayout();
             this.groupBoxGhiChu.SuspendLayout();
@@ -237,6 +237,45 @@
             this.groupBoxNoiDungXuLy.TabStop = false;
             this.groupBoxNoiDungXuLy.Text = "Nội Dung Xử Lý";
             // 
+            // cmbViTriDHN2
+            // 
+            this.cmbViTriDHN2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbViTriDHN2.FormattingEnabled = true;
+            this.cmbViTriDHN2.Items.AddRange(new object[] {
+            "",
+            "Trong Sân",
+            "Trong Nhà",
+            "Vỉa Hè"});
+            this.cmbViTriDHN2.Location = new System.Drawing.Point(600, 57);
+            this.cmbViTriDHN2.MaxDropDownItems = 50;
+            this.cmbViTriDHN2.Name = "cmbViTriDHN2";
+            this.cmbViTriDHN2.Size = new System.Drawing.Size(79, 24);
+            this.cmbViTriDHN2.TabIndex = 64;
+            // 
+            // cmbViTriDHN1
+            // 
+            this.cmbViTriDHN1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbViTriDHN1.FormattingEnabled = true;
+            this.cmbViTriDHN1.Items.AddRange(new object[] {
+            "",
+            "Bên Trái",
+            "Bên Phải",
+            "Ở Giữa"});
+            this.cmbViTriDHN1.Location = new System.Drawing.Point(515, 57);
+            this.cmbViTriDHN1.MaxDropDownItems = 50;
+            this.cmbViTriDHN1.Name = "cmbViTriDHN1";
+            this.cmbViTriDHN1.Size = new System.Drawing.Size(79, 24);
+            this.cmbViTriDHN1.TabIndex = 63;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(435, 60);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(74, 16);
+            this.label23.TabIndex = 62;
+            this.label23.Text = "Vị Trí ĐHN:";
+            // 
             // txtNoiDung
             // 
             this.txtNoiDung.AllowDrop = true;
@@ -282,7 +321,7 @@
             this.cmbNoiDung.FormattingEnabled = true;
             this.cmbNoiDung.Location = new System.Drawing.Point(183, 260);
             this.cmbNoiDung.Name = "cmbNoiDung";
-            this.cmbNoiDung.Size = new System.Drawing.Size(194, 24);
+            this.cmbNoiDung.Size = new System.Drawing.Size(200, 24);
             this.cmbNoiDung.TabIndex = 58;
             // 
             // dateXuLy
@@ -773,45 +812,6 @@
             this.btnInThongBao.Text = "In Thông Báo";
             this.btnInThongBao.UseVisualStyleBackColor = true;
             this.btnInThongBao.Click += new System.EventHandler(this.btnInThongBao_Click);
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(435, 60);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(74, 16);
-            this.label23.TabIndex = 62;
-            this.label23.Text = "Vị Trí ĐHN:";
-            // 
-            // cmbViTriDHN2
-            // 
-            this.cmbViTriDHN2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbViTriDHN2.FormattingEnabled = true;
-            this.cmbViTriDHN2.Items.AddRange(new object[] {
-            "",
-            "Trong Sân",
-            "Trong Nhà",
-            "Vỉa Hè"});
-            this.cmbViTriDHN2.Location = new System.Drawing.Point(600, 57);
-            this.cmbViTriDHN2.MaxDropDownItems = 50;
-            this.cmbViTriDHN2.Name = "cmbViTriDHN2";
-            this.cmbViTriDHN2.Size = new System.Drawing.Size(79, 24);
-            this.cmbViTriDHN2.TabIndex = 64;
-            // 
-            // cmbViTriDHN1
-            // 
-            this.cmbViTriDHN1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbViTriDHN1.FormattingEnabled = true;
-            this.cmbViTriDHN1.Items.AddRange(new object[] {
-            "",
-            "Bên Trái",
-            "Bên Phải",
-            "Ở Giữa"});
-            this.cmbViTriDHN1.Location = new System.Drawing.Point(515, 57);
-            this.cmbViTriDHN1.MaxDropDownItems = 50;
-            this.cmbViTriDHN1.Name = "cmbViTriDHN1";
-            this.cmbViTriDHN1.Size = new System.Drawing.Size(79, 24);
-            this.cmbViTriDHN1.TabIndex = 63;
             // 
             // frmCTDB
             // 

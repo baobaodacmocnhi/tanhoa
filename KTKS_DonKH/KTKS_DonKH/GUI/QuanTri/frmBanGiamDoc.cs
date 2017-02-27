@@ -255,7 +255,7 @@ namespace KTKS_DonKH.GUI.QuanTri
                     for (int i = 0; i < dgvDanhSach.RowCount; i++)
                         if (bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
                         {
-                            CTCTDB ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
+                            CTCTDB ctctdb = _cCHDB.GetCTCTDB(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
 
                             if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                                 ctctdb.ChucVu = "GIÁM ĐỐC";
@@ -269,7 +269,7 @@ namespace KTKS_DonKH.GUI.QuanTri
                     for (int i = 0; i < dgvDanhSach.RowCount; i++)
                         if (bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
                         {
-                            CTCHDB ctchdb = _cCHDB.getCTCHDBbyID(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
+                            CTCHDB ctchdb = _cCHDB.GetCTCHDB(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
 
                             if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                                 ctchdb.ChucVu = "GIÁM ĐỐC";

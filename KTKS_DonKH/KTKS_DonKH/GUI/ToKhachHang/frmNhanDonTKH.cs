@@ -868,7 +868,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                                 }
                                 #endregion
 
-                                dr["Ngay"] = _donkh.NgayGiaiQuyet;
+                                dr["Ngay"] = donkh.NgayGiaiQuyet;
                                 dr["DinhMucSau"] = donkh.DinhMucSau;
                                 dr["HieuLucTuKy"] = donkh.HieuLucTuKy;
                                 dr["HoTenNV"] = CTaiKhoan.HoTen;

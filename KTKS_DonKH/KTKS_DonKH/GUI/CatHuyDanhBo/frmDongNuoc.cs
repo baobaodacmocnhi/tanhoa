@@ -293,7 +293,6 @@ namespace KTKS_DonKH.GUI.DongNuoc
                                 if (!_cDongNuoc.CheckByMaDon_TXL(_dontxl.MaDon))
                                 {
                                     LinQ.DongNuoc dongnuoc = new LinQ.DongNuoc();
-                                    dongnuoc.ToXuLy = true;
                                     dongnuoc.MaDonTXL = _dontxl.MaDon;
                                     if (_cDongNuoc.Them(dongnuoc))
                                     {

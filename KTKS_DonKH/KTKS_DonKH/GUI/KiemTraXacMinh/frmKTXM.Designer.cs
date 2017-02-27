@@ -296,7 +296,7 @@
             this.CreateBy});
             this.dgvDSKetQuaKiemTra.Location = new System.Drawing.Point(11, 316);
             this.dgvDSKetQuaKiemTra.Name = "dgvDSKetQuaKiemTra";
-            this.dgvDSKetQuaKiemTra.Size = new System.Drawing.Size(911, 126);
+            this.dgvDSKetQuaKiemTra.Size = new System.Drawing.Size(1016, 126);
             this.dgvDSKetQuaKiemTra.TabIndex = 6;
             this.dgvDSKetQuaKiemTra.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSKetQuaKiemTra_CellContentClick);
             this.dgvDSKetQuaKiemTra.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSKetQuaKiemTra_CellFormatting);
@@ -706,7 +706,7 @@
             this.DiaChi.DataPropertyName = "DiaChi";
             this.DiaChi.HeaderText = "Địa Chỉ";
             this.DiaChi.Name = "DiaChi";
-            this.DiaChi.Width = 150;
+            this.DiaChi.Width = 250;
             // 
             // NoiDungKiemTra
             // 

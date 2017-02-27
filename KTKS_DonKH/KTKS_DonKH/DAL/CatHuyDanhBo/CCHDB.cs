@@ -111,81 +111,33 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        /// <summary>
-        /// Kiểm tra Đơn Khách Hàng có được CHDB xử lý hay chưa
-        /// </summary>
-        /// <param name="MaDon"></param>
-        /// <returns>true/có</returns>
-        public bool CheckCHDBbyMaDon(decimal MaDon)
+        public bool CheckExist_CHDB(string Loai, decimal MaDon)
         {
-            try
+            switch (Loai)
             {
-                if (db.CHDBs.Any(itemCHDB => itemCHDB.MaDon == MaDon))
-                    return true;
-                else
+                case "TKH":
+                    return db.CHDBs.Any(item => item.MaDon == MaDon);
+                case "TXL":
+                    return db.CHDBs.Any(item => item.MaDonTXL == MaDon);
+                case "TBC":
+                    return db.CHDBs.Any(item => item.MaDonTBC == MaDon);
+                default:
                     return false;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
         }
 
-        /// <summary>
-        /// Kiểm tra Đơn Tổ Xử Lý có được CHDB xử lý hay chưa
-        /// </summary>
-        /// <param name="MaDonTXL"></param>
-        /// <returns>true/có</returns>
-        public bool CheckCHDBbyMaDon_TXL(decimal MaDonTXL)
+        public CHDB GetCHDB(string Loai, decimal MaDon)
         {
-            try
+            switch (Loai)
             {
-                if (db.CHDBs.Any(itemCHDB => itemCHDB.MaDonTXL == MaDonTXL))
-                    return true;
-                else
-                    return false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Lấy CHDB bằng MaDon
-        /// </summary>
-        /// <param name="MaDon"></param>
-        /// <returns></returns>
-        public CHDB getCHDBbyMaDon(decimal MaDon)
-        {
-            try
-            {
-                return db.CHDBs.SingleOrDefault(itemCHDB => itemCHDB.MaDon == MaDon);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Lấy CHDB bằng MaDon Tổ Xử Lý
-        /// </summary>
-        /// <param name="MaDonTXL"></param>
-        /// <returns></returns>
-        public CHDB getCHDBbyMaDon_TXL(decimal MaDonTXL)
-        {
-            try
-            {
-                return db.CHDBs.SingleOrDefault(itemCHDB => itemCHDB.MaDonTXL == MaDonTXL);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                case "TKH":
+                    return db.CHDBs.SingleOrDefault(item => item.MaDon == MaDon);
+                case "TXL":
+                    return db.CHDBs.SingleOrDefault(item => item.MaDonTXL == MaDon);
+                case "TBC":
+                    return db.CHDBs.SingleOrDefault(item => item.MaDonTBC == MaDon);
+                default:
+                    return null;
             }
         }
 
@@ -317,30 +269,14 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public bool CheckCTCTDBbyID(decimal MaCTCTDB)
+        public bool CheckExist_CTCTDB(decimal MaCTCTDB)
         {
-            try
-            {
-                return db.CTCTDBs.Any(itemCTCTDB => itemCTCTDB.MaCTCTDB == MaCTCTDB);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
+                return db.CTCTDBs.Any(item => item.MaCTCTDB == MaCTCTDB);
         }
 
-        public CTCTDB getCTCTDBbyID(decimal MaCTCTDB)
+        public CTCTDB GetCTCTDB(decimal MaCTCTDB)
         {
-            try
-            {
-                return db.CTCTDBs.SingleOrDefault(itemCTCTDB => itemCTCTDB.MaCTCTDB == MaCTCTDB);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+                return db.CTCTDBs.SingleOrDefault(item => item.MaCTCTDB == MaCTCTDB);
         }
 
         public decimal getMaxMaCTCTDB()
@@ -746,41 +682,18 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        /// <summary>
-        /// Kiểm tra CTCTDB đã được tạo cho Mã Đơn KH và Danh Bộ này chưa
-        /// </summary>
-        /// <param name="MaDon"></param>
-        /// <param name="DanhBo"></param>
-        /// <returns></returns>
-        public bool CheckCTCTDBbyMaDonDanhBo(decimal MaDon, string DanhBo)
+        public bool CheckExist_CTCTDB(string Loai, decimal MaDon, string DanhBo)
         {
-            try
+            switch (Loai)
             {
-                return db.CTCTDBs.Any(itemCTCTDB => itemCTCTDB.CHDB.MaDon == MaDon && itemCTCTDB.DanhBo == DanhBo);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Kiểm tra CTCTDB đã được tạo cho Mã Đơn TXL và Danh Bộ này chưa
-        /// </summary>
-        /// <param name="MaDonTXL"></param>
-        /// <param name="DanhBo"></param>
-        /// <returns></returns>
-        public bool CheckCTCTDBbyMaDonDanhBo_TXL(decimal MaDonTXL, string DanhBo)
-        {
-            try
-            {
-                return db.CTCTDBs.Any(itemCTCTDB => itemCTCTDB.CHDB.MaDonTXL == MaDonTXL && itemCTCTDB.DanhBo == DanhBo);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                case "TKH":
+                    return db.CTCTDBs.Any(item => item.CHDB.MaDon == MaDon && item.DanhBo == DanhBo);
+                case "TXL":
+                    return db.CTCTDBs.Any(item => item.CHDB.MaDonTXL == MaDon && item.DanhBo == DanhBo);
+                case "TBC":
+                    return db.CTCTDBs.Any(item => item.CHDB.MaDonTBC == MaDon && item.DanhBo == DanhBo);
+                default:
+                    return false;
             }
         }
 
@@ -872,17 +785,9 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public CTCHDB getCTCHDBbyID(decimal MaCTCHDB)
+        public CTCHDB GetCTCHDB(decimal MaCTCHDB)
         {
-            try
-            {
-                return db.CTCHDBs.SingleOrDefault(itemCTCHDB => itemCTCHDB.MaCTCHDB == MaCTCHDB);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+                return db.CTCHDBs.SingleOrDefault(item => item.MaCTCHDB == MaCTCHDB);
         }
 
         public decimal getMaxMaCTCHDB()
@@ -1309,9 +1214,9 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public bool CheckCTCHDBByMaCTCHDB(decimal MaCTCHDB)
+        public bool CheckExist_CTCHDB(decimal MaCTCHDB)
         {
-            return db.CTCHDBs.Any(itemCTCHDB => itemCTCHDB.MaCTCHDB == MaCTCHDB);
+            return db.CTCHDBs.Any(item => item.MaCTCHDB == MaCTCHDB);
         }
 
         ///// <summary>
@@ -1357,41 +1262,18 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         //    }
         //}
 
-        /// <summary>
-        /// Kiểm tra CTCHDB đã được tạo cho Mã Đơn Khách Hàng và Danh Bộ này chưa
-        /// </summary>
-        /// <param name="MaDon"></param>
-        /// <param name="DanhBo"></param>
-        /// <returns></returns>
-        public bool CheckCTCHDBbyMaDonDanhBo(decimal MaDon, string DanhBo)
+        public bool CheckExist_CTCHDB(string Loai, decimal MaDon, string DanhBo)
         {
-            try
+            switch (Loai)
             {
-                return db.CTCHDBs.Any(itemCTCHDB => itemCTCHDB.CHDB.MaDon == MaDon && itemCTCHDB.DanhBo == DanhBo);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Kiểm tra CTCHDB đã được tạo cho Mã Đơn Tổ Xử Lý và Danh Bộ này chưa
-        /// </summary>
-        /// <param name="MaDonTXL"></param>
-        /// <param name="DanhBo"></param>
-        /// <returns></returns>
-        public bool CheckCTCHDBbyMaDonDanhBo_TXL(decimal MaDonTXL, string DanhBo)
-        {
-            try
-            {
-                return db.CTCHDBs.Any(itemCTCHDB => itemCTCHDB.CHDB.MaDonTXL == MaDonTXL && itemCTCHDB.DanhBo == DanhBo);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                case "TKH":
+                    return db.CTCHDBs.Any(item => item.CHDB.MaDon == MaDon && item.DanhBo == DanhBo);
+                case "TXL":
+                    return db.CTCHDBs.Any(item => item.CHDB.MaDonTXL == MaDon && item.DanhBo == DanhBo);
+                case "TBC":
+                    return db.CTCHDBs.Any(item => item.CHDB.MaDonTBC == MaDon && item.DanhBo == DanhBo);
+                default:
+                    return false;
             }
         }
 
@@ -1419,7 +1301,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         /// </summary>
         /// <param name="MaCTCTDB"></param>
         /// <returns></returns>
-        public bool CheckYeuCauCHDBbyMaCTCTDB(decimal MaCTCTDB)
+        public bool CheckExist_PhieuHuyByMaCTCTDB(decimal MaCTCTDB)
         {
             try
             {
@@ -1437,7 +1319,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         /// </summary>
         /// <param name="MaCTCHDB"></param>
         /// <returns></returns>
-        public bool CheckYeuCauCHDBbyMaCTCHDB(decimal MaCTCHDB)
+        public bool CheckExist_PhieuHuyByMaCTCHDB(decimal MaCTCHDB)
         {
             try
             {
@@ -1555,7 +1437,12 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public bool CheckExistPhieuHuy(string Loai, decimal MaDon, string DanhBo)
+        public bool CheckExist_PhieuHuy(decimal MaYCCHDB)
+        {
+            return db.PhieuCHDBs.Any(item => item.MaYCCHDB == MaYCCHDB);
+        }
+
+        public bool CheckExist_PhieuHuy(string Loai, decimal MaDon, string DanhBo)
         {
             switch (Loai)
             {
@@ -1612,11 +1499,6 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-        }
-
-        public bool CheckExist_PhieuHuy(decimal MaYCCHDB)
-        {
-            return db.PhieuCHDBs.Any(item => item.MaYCCHDB == MaYCCHDB);
         }
 
         /// <summary>

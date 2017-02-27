@@ -107,10 +107,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         public void LoadCTDCHD(CTDCHD ctdchd)
         {
-            if (ctdchd.DCBD.ToXuLy)
+            if (ctdchd.DCBD.MaDon!=null)
+                txtMaDon.Text = ctdchd.DCBD.MaDon.ToString().Insert(ctdchd.DCBD.MaDon.ToString().Length - 2, "-");
+            else
+                if (ctdchd.DCBD.MaDonTXL != null)
                 txtMaDon.Text = "TXL" + ctdchd.DCBD.MaDonTXL.ToString().Insert(ctdchd.DCBD.MaDonTXL.ToString().Length - 2, "-");
             else
-                txtMaDon.Text = ctdchd.DCBD.MaDon.ToString().Insert(ctdchd.DCBD.MaDon.ToString().Length - 2, "-");
+                    if (ctdchd.DCBD.MaDonTBC != null)
+                        txtMaDon.Text = "TBC" + ctdchd.DCBD.MaDonTBC.ToString().Insert(ctdchd.DCBD.MaDonTBC.ToString().Length - 2, "-");
+
             txtSoPhieu.Text = ctdchd.MaCTDCHD.ToString().Insert(ctdchd.MaCTDCHD.ToString().Length - 2, "-");
             ///
             chkCodeF2.Checked = ctdchd.CodeF2;
@@ -337,7 +342,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             if (!_cDCBD.CheckDCBDbyMaDon_TXL(_dontxl.MaDon))
                             {
                                 DCBD dcbd = new DCBD();
-                                dcbd.ToXuLy = true;
                                 dcbd.MaDonTXL = _dontxl.MaDon;
                                 if (_cDCBD.ThemDCBD(dcbd))
                                 {

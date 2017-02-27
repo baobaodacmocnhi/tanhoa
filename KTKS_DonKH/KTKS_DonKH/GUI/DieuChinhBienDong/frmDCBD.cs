@@ -110,10 +110,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         public void LoadCTDCBD(CTDCBD ctdcbd)
         {
-            if (ctdcbd.DCBD.ToXuLy)
+            if (ctdcbd.DCBD.MaDon!=null)
+                 txtMaDon.Text = ctdcbd.DCBD.MaDon.ToString().Insert(ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
+            else
+                if (ctdcbd.DCBD.MaDonTXL != null)
                 txtMaDon.Text = "TXL" + ctdcbd.DCBD.MaDonTXL.ToString().Insert(ctdcbd.DCBD.MaDonTXL.ToString().Length - 2, "-");
             else
-                txtMaDon.Text = ctdcbd.DCBD.MaDon.ToString().Insert(ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
+                    if (ctdcbd.DCBD.MaDonTBC != null)
+                        txtMaDon.Text = "TBC" + ctdcbd.DCBD.MaDonTBC.ToString().Insert(ctdcbd.DCBD.MaDonTBC.ToString().Length - 2, "-");
+
             txtSoPhieu.Text = ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
             ///
             txtDot.Text = ctdcbd.Dot;
@@ -323,7 +328,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             if (!_cDCBD.CheckDCBDbyMaDon_TXL(_dontxl.MaDon))
                             {
                                 DCBD dcbd = new DCBD();
-                                dcbd.ToXuLy = true;
                                 dcbd.MaDonTXL = _dontxl.MaDon;
 
                                 if (_cDCBD.ThemDCBD(dcbd))
@@ -1205,10 +1209,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dr["HieuLucKy"] = ctdcbd.HieuLucKy;
                     dr["DanhBo"] = ctdcbd.DanhBo.Insert(7, " ").Insert(4, " ");
 
-                    if (ctdcbd.DCBD.ToXuLy)
-                        dr["MaDon"] = ctdcbd.DCBD.MaDonTXL.Value.ToString().Insert(ctdcbd.DCBD.MaDonTXL.Value.ToString().Length - 2, "-");
+                    if (ctdcbd.DCBD.MaDon!=null)
+                         dr["MaDon"] = ctdcbd.DCBD.MaDon.Value.ToString().Insert(ctdcbd.DCBD.MaDon.Value.ToString().Length - 2, "-");
                     else
-                        dr["MaDon"] = ctdcbd.DCBD.MaDon.Value.ToString().Insert(ctdcbd.DCBD.MaDon.Value.ToString().Length - 2, "-");
+                        if (ctdcbd.DCBD.MaDonTXL != null)
+                        dr["MaDon"] = "TXL"+ctdcbd.DCBD.MaDonTXL.Value.ToString().Insert(ctdcbd.DCBD.MaDonTXL.Value.ToString().Length - 2, "-");
+                    else
+                            if (ctdcbd.DCBD.MaDonTBC != null)
+                                dr["MaDon"] = "TBC" + ctdcbd.DCBD.MaDonTBC.Value.ToString().Insert(ctdcbd.DCBD.MaDonTBC.Value.ToString().Length - 2, "-");
 
                     dr["HoTen"] = ctdcbd.HoTen;
                     dr["DiaChi"] = ctdcbd.DiaChi;
@@ -1234,10 +1242,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         dr["HieuLucKy"] = ctdcbd.HieuLucKy;
                         dr["DanhBo"] = ctdcbd.DanhBo.Insert(7, " ").Insert(4, " ");
 
-                        if (ctdcbd.DCBD.ToXuLy)
-                            dr["MaDon"] = ctdcbd.DCBD.MaDonTXL.Value.ToString().Insert(ctdcbd.DCBD.MaDonTXL.Value.ToString().Length - 2, "-");
-                        else
+                        if (ctdcbd.DCBD.MaDon!=null)
                             dr["MaDon"] = ctdcbd.DCBD.MaDon.Value.ToString().Insert(ctdcbd.DCBD.MaDon.Value.ToString().Length - 2, "-");
+                        else
+                            if (ctdcbd.DCBD.MaDonTXL != null)
+                            dr["MaDon"] = "TXL"+ctdcbd.DCBD.MaDonTXL.Value.ToString().Insert(ctdcbd.DCBD.MaDonTXL.Value.ToString().Length - 2, "-");
+                        else
+                                if (ctdcbd.DCBD.MaDonTBC != null)
+                                    dr["MaDon"] = "TBC" + ctdcbd.DCBD.MaDonTBC.Value.ToString().Insert(ctdcbd.DCBD.MaDonTBC.Value.ToString().Length - 2, "-");
 
                         dr["HoTen"] = ctdcbd.HoTen;
                         dr["DiaChi"] = ctdcbd.DiaChi;

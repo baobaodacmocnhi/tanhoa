@@ -410,7 +410,6 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         if (!_cTTTN.CheckTruyThuTienNuocbyMaDon_TXL(_dontxl.MaDon))
                         {
                             TruyThuTienNuoc tttn = new TruyThuTienNuoc();
-                            tttn.ToXuLy = true;
                             tttn.MaDonTXL = _dontxl.MaDon;
 
                             tttn.DanhBo = txtDanhBo.Text.Trim();
