@@ -150,7 +150,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     item.DefaultCellStyle.BackColor = Color.Yellow;
                 if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon_TT"].Value.ToString(), out HoTen, out TenTo))
                 {
-                    item.Cells["HanhThu_TT"].Value += "," + HoTen;
+                    item.Cells["HanhThu_TT"].Value = HoTen;
                     item.Cells["To_TT"].Value = TenTo;
                 }
             }

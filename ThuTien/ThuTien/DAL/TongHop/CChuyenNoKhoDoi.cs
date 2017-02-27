@@ -110,7 +110,10 @@ namespace ThuTien.DAL.TongHop
         {
             try
             {
+                decimal MaCNKD = ctcnkd.MaCNKD;
                 _db.TT_CTChuyenNoKhoDois.DeleteOnSubmit(ctcnkd);
+                if (_db.TT_CTChuyenNoKhoDois.Any(item => item.MaCNKD == MaCNKD) == false)
+                    _db.TT_ChuyenNoKhoDois.DeleteOnSubmit(_db.TT_ChuyenNoKhoDois.SingleOrDefault(item => item.MaCNKD == MaCNKD));
                 _db.SubmitChanges();
                 return true;
             }
@@ -187,6 +190,7 @@ namespace ThuTien.DAL.TongHop
                             itemHD.GIABAN,
                             ThueGTGT = itemHD.THUE,
                             PhiBVMT = itemHD.PHI,
+                            itemHD.TONGCONG
                         };
             return LINQToDataTable(query);
         }

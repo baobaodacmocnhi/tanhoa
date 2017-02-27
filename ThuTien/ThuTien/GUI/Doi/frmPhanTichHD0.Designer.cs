@@ -102,12 +102,6 @@
             this.btnXoaDK = new System.Windows.Forms.Button();
             this.btnThemDK = new System.Windows.Forms.Button();
             this.dgvDanhBoDK = new System.Windows.Forms.DataGridView();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtDanhBoDK = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.cmbNhanVienDK = new System.Windows.Forms.ComboBox();
-            this.cmbToDK = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.TenTo_DK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen_DK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo_DK = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -125,6 +119,12 @@
             this.Ky10_DK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky11_DK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky12_DK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtDanhBoDK = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cmbNhanVienDK = new System.Windows.Forms.ComboBox();
+            this.cmbToDK = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSTongHD0)).BeginInit();
@@ -681,7 +681,7 @@
             // txtKy12
             // 
             this.txtKy12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy12.Location = new System.Drawing.Point(1163, 580);
+            this.txtKy12.Location = new System.Drawing.Point(1161, 580);
             this.txtKy12.Name = "txtKy12";
             this.txtKy12.Size = new System.Drawing.Size(60, 20);
             this.txtKy12.TabIndex = 89;
@@ -690,7 +690,7 @@
             // txtKy11
             // 
             this.txtKy11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy11.Location = new System.Drawing.Point(1103, 580);
+            this.txtKy11.Location = new System.Drawing.Point(1101, 580);
             this.txtKy11.Name = "txtKy11";
             this.txtKy11.Size = new System.Drawing.Size(60, 20);
             this.txtKy11.TabIndex = 88;
@@ -699,7 +699,7 @@
             // txtKy10
             // 
             this.txtKy10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy10.Location = new System.Drawing.Point(1043, 580);
+            this.txtKy10.Location = new System.Drawing.Point(1041, 580);
             this.txtKy10.Name = "txtKy10";
             this.txtKy10.Size = new System.Drawing.Size(60, 20);
             this.txtKy10.TabIndex = 87;
@@ -708,7 +708,7 @@
             // txtKy9
             // 
             this.txtKy9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy9.Location = new System.Drawing.Point(983, 580);
+            this.txtKy9.Location = new System.Drawing.Point(981, 580);
             this.txtKy9.Name = "txtKy9";
             this.txtKy9.Size = new System.Drawing.Size(60, 20);
             this.txtKy9.TabIndex = 86;
@@ -717,7 +717,7 @@
             // txtKy8
             // 
             this.txtKy8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy8.Location = new System.Drawing.Point(923, 580);
+            this.txtKy8.Location = new System.Drawing.Point(921, 580);
             this.txtKy8.Name = "txtKy8";
             this.txtKy8.Size = new System.Drawing.Size(60, 20);
             this.txtKy8.TabIndex = 85;
@@ -726,7 +726,7 @@
             // txtKy7
             // 
             this.txtKy7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy7.Location = new System.Drawing.Point(863, 580);
+            this.txtKy7.Location = new System.Drawing.Point(861, 580);
             this.txtKy7.Name = "txtKy7";
             this.txtKy7.Size = new System.Drawing.Size(60, 20);
             this.txtKy7.TabIndex = 84;
@@ -735,7 +735,7 @@
             // txtKy6
             // 
             this.txtKy6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy6.Location = new System.Drawing.Point(803, 580);
+            this.txtKy6.Location = new System.Drawing.Point(801, 580);
             this.txtKy6.Name = "txtKy6";
             this.txtKy6.Size = new System.Drawing.Size(60, 20);
             this.txtKy6.TabIndex = 83;
@@ -744,7 +744,7 @@
             // txtKy5
             // 
             this.txtKy5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy5.Location = new System.Drawing.Point(743, 580);
+            this.txtKy5.Location = new System.Drawing.Point(741, 580);
             this.txtKy5.Name = "txtKy5";
             this.txtKy5.Size = new System.Drawing.Size(60, 20);
             this.txtKy5.TabIndex = 82;
@@ -753,7 +753,7 @@
             // txtKy4
             // 
             this.txtKy4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy4.Location = new System.Drawing.Point(683, 580);
+            this.txtKy4.Location = new System.Drawing.Point(681, 580);
             this.txtKy4.Name = "txtKy4";
             this.txtKy4.Size = new System.Drawing.Size(60, 20);
             this.txtKy4.TabIndex = 81;
@@ -762,7 +762,7 @@
             // txtKy3
             // 
             this.txtKy3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy3.Location = new System.Drawing.Point(623, 580);
+            this.txtKy3.Location = new System.Drawing.Point(621, 580);
             this.txtKy3.Name = "txtKy3";
             this.txtKy3.Size = new System.Drawing.Size(60, 20);
             this.txtKy3.TabIndex = 80;
@@ -771,7 +771,7 @@
             // txtKy2
             // 
             this.txtKy2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy2.Location = new System.Drawing.Point(563, 580);
+            this.txtKy2.Location = new System.Drawing.Point(561, 580);
             this.txtKy2.Name = "txtKy2";
             this.txtKy2.Size = new System.Drawing.Size(60, 20);
             this.txtKy2.TabIndex = 79;
@@ -780,7 +780,7 @@
             // txtKy1
             // 
             this.txtKy1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKy1.Location = new System.Drawing.Point(503, 580);
+            this.txtKy1.Location = new System.Drawing.Point(501, 580);
             this.txtKy1.Name = "txtKy1";
             this.txtKy1.Size = new System.Drawing.Size(60, 20);
             this.txtKy1.TabIndex = 78;
@@ -791,7 +791,7 @@
             this.txtTong.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTong.Location = new System.Drawing.Point(8, 580);
             this.txtTong.Name = "txtTong";
-            this.txtTong.Size = new System.Drawing.Size(50, 20);
+            this.txtTong.Size = new System.Drawing.Size(45, 20);
             this.txtTong.TabIndex = 77;
             this.txtTong.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -890,58 +890,6 @@
             this.dgvDanhBoDK.TabIndex = 71;
             this.dgvDanhBoDK.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDanhBoDK_CellFormatting);
             this.dgvDanhBoDK.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhBoDK_RowPostPaint);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(533, 9);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(52, 13);
-            this.label10.TabIndex = 69;
-            this.label10.Text = "Danh Bộ:";
-            // 
-            // txtDanhBoDK
-            // 
-            this.txtDanhBoDK.Location = new System.Drawing.Point(591, 6);
-            this.txtDanhBoDK.Name = "txtDanhBoDK";
-            this.txtDanhBoDK.Size = new System.Drawing.Size(100, 20);
-            this.txtDanhBoDK.TabIndex = 70;
-            this.txtDanhBoDK.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBoDK_KeyPress);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(238, 9);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(60, 13);
-            this.label8.TabIndex = 67;
-            this.label8.Text = "Nhân Viên:";
-            // 
-            // cmbNhanVienDK
-            // 
-            this.cmbNhanVienDK.FormattingEnabled = true;
-            this.cmbNhanVienDK.Location = new System.Drawing.Point(304, 6);
-            this.cmbNhanVienDK.Name = "cmbNhanVienDK";
-            this.cmbNhanVienDK.Size = new System.Drawing.Size(118, 21);
-            this.cmbNhanVienDK.TabIndex = 68;
-            // 
-            // cmbToDK
-            // 
-            this.cmbToDK.FormattingEnabled = true;
-            this.cmbToDK.Location = new System.Drawing.Point(182, 6);
-            this.cmbToDK.Name = "cmbToDK";
-            this.cmbToDK.Size = new System.Drawing.Size(50, 21);
-            this.cmbToDK.TabIndex = 66;
-            this.cmbToDK.SelectedIndexChanged += new System.EventHandler(this.cmbToDK_SelectedIndexChanged);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(153, 10);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(23, 13);
-            this.label9.TabIndex = 65;
-            this.label9.Text = "Tổ:";
             // 
             // TenTo_DK
             // 
@@ -1059,6 +1007,58 @@
             this.Ky12_DK.HeaderText = "Kỳ 12";
             this.Ky12_DK.Name = "Ky12_DK";
             this.Ky12_DK.Width = 60;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(533, 9);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(52, 13);
+            this.label10.TabIndex = 69;
+            this.label10.Text = "Danh Bộ:";
+            // 
+            // txtDanhBoDK
+            // 
+            this.txtDanhBoDK.Location = new System.Drawing.Point(591, 6);
+            this.txtDanhBoDK.Name = "txtDanhBoDK";
+            this.txtDanhBoDK.Size = new System.Drawing.Size(100, 20);
+            this.txtDanhBoDK.TabIndex = 70;
+            this.txtDanhBoDK.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBoDK_KeyPress);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(238, 9);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(60, 13);
+            this.label8.TabIndex = 67;
+            this.label8.Text = "Nhân Viên:";
+            // 
+            // cmbNhanVienDK
+            // 
+            this.cmbNhanVienDK.FormattingEnabled = true;
+            this.cmbNhanVienDK.Location = new System.Drawing.Point(304, 6);
+            this.cmbNhanVienDK.Name = "cmbNhanVienDK";
+            this.cmbNhanVienDK.Size = new System.Drawing.Size(118, 21);
+            this.cmbNhanVienDK.TabIndex = 68;
+            // 
+            // cmbToDK
+            // 
+            this.cmbToDK.FormattingEnabled = true;
+            this.cmbToDK.Location = new System.Drawing.Point(182, 6);
+            this.cmbToDK.Name = "cmbToDK";
+            this.cmbToDK.Size = new System.Drawing.Size(50, 21);
+            this.cmbToDK.TabIndex = 66;
+            this.cmbToDK.SelectedIndexChanged += new System.EventHandler(this.cmbToDK_SelectedIndexChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(153, 10);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(23, 13);
+            this.label9.TabIndex = 65;
+            this.label9.Text = "Tổ:";
             // 
             // frmPhanTichHD0
             // 

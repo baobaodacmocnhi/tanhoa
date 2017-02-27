@@ -26,7 +26,7 @@ namespace ThuTien.GUI.TongHop
         CHoaDon _cHoaDon = new CHoaDon();
         CTamThu _cTamThu = new CTamThu();
 
-        public frmShowDCHD(int MaHD,string SoHoaDon)
+        public frmShowDCHD(int MaHD, string SoHoaDon)
         {
             InitializeComponent();
             _MaHD = MaHD;
@@ -53,7 +53,7 @@ namespace ThuTien.GUI.TongHop
                 textBox4.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.PHI_BD.Value);
                 textBox5.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.TONGCONG_BD.Value);
 
-                chkChuanThu1.Checked=_dchd.ChuanThu1;
+                chkChuanThu1.Checked = _dchd.ChuanThu1;
 
                 if (_dchd.PHIEU_DC != null)
                     if (!_dchd.TXL)
@@ -116,16 +116,22 @@ namespace ThuTien.GUI.TongHop
             {
                 _ctdchd = _cDCHD.GetCTDCHDBySoPhieu(decimal.Parse(txtSoPhieu.Text.Trim().Replace("-", "")));
 
-                if (_ctdchd.DCBD.ToXuLy)
+                if (_ctdchd.DCBD.MaDon != null)
+                {
+                    txtMaDon.Text = _ctdchd.DCBD.MaDon.ToString().Insert(_ctdchd.DCBD.MaDon.ToString().Length - 2, "-");
+                    dateLap.Value = _ctdchd.DCBD.DonKH.CreateDate.Value;
+                }
+                if (_ctdchd.DCBD.MaDonTXL != null)
                 {
                     txtMaDon.Text = "TXL" + _ctdchd.DCBD.MaDonTXL.ToString().Insert(_ctdchd.DCBD.MaDonTXL.ToString().Length - 2, "-");
                     dateLap.Value = _ctdchd.DCBD.DonTXL.CreateDate.Value;
                 }
                 else
-                {
-                    txtMaDon.Text = _ctdchd.DCBD.MaDon.ToString().Insert(_ctdchd.DCBD.MaDon.ToString().Length - 2, "-");
-                    dateLap.Value = _ctdchd.DCBD.DonKH.CreateDate.Value;
-                }
+                    if (_ctdchd.DCBD.MaDonTBC != null)
+                    {
+                        txtMaDon.Text = "TBC" + _ctdchd.DCBD.MaDonTBC.ToString().Insert(_ctdchd.DCBD.MaDonTBC.ToString().Length - 2, "-");
+                        dateLap.Value = _ctdchd.DCBD.DonTBC.CreateDate.Value;
+                    }
 
                 //if (_dchd.TXL)
                 //{
@@ -189,14 +195,15 @@ namespace ThuTien.GUI.TongHop
                         _dchd.ChuanThu1 = chkChuanThu1.Checked;
                         if (_ctdchd != null)
                         {
-                            if (_ctdchd.DCBD.ToXuLy)
-                            {
-                                _dchd.PHIEU_DC = (int)_ctdchd.DCBD.MaDonTXL;
-                            }
-                            else
-                            {
+                            if (_ctdchd.DCBD.MaDon != null)
                                 _dchd.PHIEU_DC = (int)_ctdchd.DCBD.MaDon;
-                            }
+                            else
+                                if (_ctdchd.DCBD.MaDonTXL != null)
+                                    _dchd.PHIEU_DC = (int)_ctdchd.DCBD.MaDonTXL;
+                                else
+                                    if (_ctdchd.DCBD.MaDonTBC != null)
+                                        _dchd.PHIEU_DC = (int)_ctdchd.DCBD.MaDonTBC;
+
                             _dchd.NGAY_VB = dateLap.Value;
                             _dchd.NGAY_DC = DateTime.Now;
 
@@ -291,8 +298,8 @@ namespace ThuTien.GUI.TongHop
                         dchd.FK_HOADON = _hoadon.ID_HOADON;
                         dchd.SoHoaDon = _hoadon.SOHOADON;
                         dchd.GiaBieu = _hoadon.GB;
-                        if(_hoadon.DM!=null)
-                        dchd.DinhMuc = (int)_hoadon.DM;
+                        if (_hoadon.DM != null)
+                            dchd.DinhMuc = (int)_hoadon.DM;
                         dchd.TIEUTHU_BD = (int)_hoadon.TIEUTHU;
                         dchd.GIABAN_BD = _hoadon.GIABAN;
                         dchd.PHI_BD = _hoadon.PHI;
@@ -302,14 +309,15 @@ namespace ThuTien.GUI.TongHop
                         dchd.ChuanThu1 = chkChuanThu1.Checked;
                         if (_ctdchd != null)
                         {
-                            if (_ctdchd.DCBD.ToXuLy)
-                            {
-                                dchd.PHIEU_DC = (int)_ctdchd.DCBD.MaDonTXL;
-                            }
-                            else
-                            {
+                            if (_ctdchd.DCBD.MaDon != null)
                                 dchd.PHIEU_DC = (int)_ctdchd.DCBD.MaDon;
-                            }
+                            else
+                                if (_ctdchd.DCBD.MaDonTXL != null)
+                                    dchd.PHIEU_DC = (int)_ctdchd.DCBD.MaDonTXL;
+                                else
+                                    if (_ctdchd.DCBD.MaDonTBC != null)
+                                        dchd.PHIEU_DC = (int)_ctdchd.DCBD.MaDonTBC;
+
                             dchd.NGAY_VB = dateLap.Value;
                             dchd.SoPhieu = _ctdchd.MaCTDCHD;
                             dchd.TangGiam = _ctdchd.TangGiam;

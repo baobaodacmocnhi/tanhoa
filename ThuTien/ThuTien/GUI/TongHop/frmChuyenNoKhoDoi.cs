@@ -199,8 +199,8 @@ namespace ThuTien.GUI.TongHop
                                 //_cCNKD.Rollback();
                                 MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
-                            if (_cCNKD.CountCT(ctcnkd.MaCNKD) == 0)
-                                _cCNKD.Xoa(ctcnkd.MaCNKD);
+                            _cCNKD.CountCT(ctcnkd.MaCNKD);
+                                //_cCNKD.Xoa(ctcnkd.MaCNKD);
                         }
                         //_cCNKD.CommitTransaction();
                         lstHD.Items.Clear();
@@ -287,12 +287,14 @@ namespace ThuTien.GUI.TongHop
                         dr["GiaBan"] = dchd.GIABAN_BD;
                         dr["ThueGTGT"] =  dchd.THUE_BD;
                         dr["PhiBVMT"] = dchd.PHI_BD;
+                        dr["TongCong"] = dchd.TONGCONG_BD;
                     }
                     else
                     {
                         dr["GiaBan"] = item["GiaBan"];
                         dr["ThueGTGT"] = item["ThueGTGT"];
                         dr["PhiBVMT"] = item["PhiBVMT"];
+                        dr["TongCong"] = item["TongCong"];
                     }
                     ds.Tables["TongHopNo"].Rows.Add(dr);
                 }
