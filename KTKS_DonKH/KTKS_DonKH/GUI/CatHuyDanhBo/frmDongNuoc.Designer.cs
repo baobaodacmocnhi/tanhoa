@@ -77,11 +77,10 @@
             this.label17 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvDSBamChi = new System.Windows.Forms.DataGridView();
-            this.NgayBC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TrangThaiBC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label22 = new System.Windows.Forms.Label();
+            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaCTDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaCTMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBoxXuLyDongNuoc.SuspendLayout();
             this.groupBoxXuLyMoNuoc.SuspendLayout();
@@ -546,45 +545,13 @@
             this.dgvDSBamChi.AllowUserToDeleteRows = false;
             this.dgvDSBamChi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSBamChi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.NgayBC,
-            this.TrangThaiBC,
-            this.GhiChu,
-            this.CreateBy});
+            this.MaDon,
+            this.MaCTDN,
+            this.MaCTMN});
             this.dgvDSBamChi.Location = new System.Drawing.Point(6, 22);
             this.dgvDSBamChi.Name = "dgvDSBamChi";
             this.dgvDSBamChi.Size = new System.Drawing.Size(899, 125);
             this.dgvDSBamChi.TabIndex = 0;
-            // 
-            // NgayBC
-            // 
-            this.NgayBC.DataPropertyName = "NgayBC";
-            this.NgayBC.HeaderText = "Ngày BC";
-            this.NgayBC.Name = "NgayBC";
-            this.NgayBC.ReadOnly = true;
-            // 
-            // TrangThaiBC
-            // 
-            this.TrangThaiBC.DataPropertyName = "TrangThaiBC";
-            this.TrangThaiBC.HeaderText = "Trạng Thái BC";
-            this.TrangThaiBC.Name = "TrangThaiBC";
-            this.TrangThaiBC.ReadOnly = true;
-            this.TrangThaiBC.Width = 200;
-            // 
-            // GhiChu
-            // 
-            this.GhiChu.DataPropertyName = "GhiChu";
-            this.GhiChu.HeaderText = "Ghi Chú";
-            this.GhiChu.Name = "GhiChu";
-            this.GhiChu.ReadOnly = true;
-            this.GhiChu.Width = 350;
-            // 
-            // CreateBy
-            // 
-            this.CreateBy.DataPropertyName = "CreateBy";
-            this.CreateBy.HeaderText = "Người Thực Hiện";
-            this.CreateBy.Name = "CreateBy";
-            this.CreateBy.ReadOnly = true;
-            this.CreateBy.Width = 180;
             // 
             // label22
             // 
@@ -597,12 +564,30 @@
             this.label22.TabIndex = 91;
             this.label22.Text = "Đóng Nước";
             // 
+            // MaDon
+            // 
+            this.MaDon.DataPropertyName = "MaDon";
+            this.MaDon.HeaderText = "Mã Đơn";
+            this.MaDon.Name = "MaDon";
+            // 
+            // MaCTDN
+            // 
+            this.MaCTDN.DataPropertyName = "MaCTDN";
+            this.MaCTDN.HeaderText = "Mã ĐN";
+            this.MaCTDN.Name = "MaCTDN";
+            // 
+            // MaCTMN
+            // 
+            this.MaCTMN.DataPropertyName = "MaCTMN";
+            this.MaCTMN.HeaderText = "Mã MN";
+            this.MaCTMN.Name = "MaCTMN";
+            // 
             // frmDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1078, 541);
+            this.ClientSize = new System.Drawing.Size(937, 541);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.txtMaThongBao_MN);
@@ -683,10 +668,9 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dgvDSBamChi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NgayBC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TrangThaiBC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaCTDN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaCTMN;
     }
 }

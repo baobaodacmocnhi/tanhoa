@@ -152,8 +152,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             DataTable dtCHDB = new DataTable();
             DataTable dtYCCHDB = new DataTable();
 
-                dtCTDB = _cCHDB.LoadDSCTCTDB(dateTu.Value, dateDen.Value);
-                dtCHDB = _cCHDB.LoadDSCTCHDB(dateTu.Value, dateDen.Value);
+                dtCTDB = _cCHDB.GetDSCatTam(dateTu.Value, dateDen.Value);
+                dtCHDB = _cCHDB.GetDSCatHuy(dateTu.Value, dateDen.Value);
                 dtYCCHDB = _cCHDB.LoadDSYCCHDB_Don(dateTu.Value, dateDen.Value);
 
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();

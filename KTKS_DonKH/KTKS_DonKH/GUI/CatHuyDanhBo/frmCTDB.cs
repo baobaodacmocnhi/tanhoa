@@ -331,11 +331,17 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 try
                 {
+                    if (cmbLyDo.SelectedIndex == -1)
+                    {
+                        MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
                     CTCTDB ctctdb = new CTCTDB();
 
                     if (_donkh != null)
                     {
-                        if (!_cCHDB.CheckExist_CHDB("TKH", _donkh.MaDon))
+                        if (_cCHDB.CheckExist_CHDB("TKH", _donkh.MaDon) == false)
                         {
                             CHDB chdb = new CHDB();
                             chdb.MaDon = _donkh.MaDon;
@@ -351,7 +357,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     else
                         if (_dontxl != null)
                         {
-                            if (!_cCHDB.CheckExist_CHDB("", _dontxl.MaDon))
+                            if (_cCHDB.CheckExist_CHDB("", _dontxl.MaDon) == false)
                             {
                                 CHDB chdb = new CHDB();
                                 chdb.MaDonTXL = _dontxl.MaDon;
@@ -367,7 +373,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         else
                             if (_dontbc != null)
                             {
-                                if (!_cCHDB.CheckExist_CHDB("TBC", _dontbc.MaDon))
+                                if (_cCHDB.CheckExist_CHDB("TBC", _dontbc.MaDon) == false)
                                 {
                                     CHDB chdb = new CHDB();
                                     chdb.MaDonTBC = _dontbc.MaDon;
@@ -766,7 +772,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         ///lấy lại phiếu cũ
                         else
                         {
-                            PhieuCHDB ycchdb = _cCHDB.getYeuCauCHDBbyMaCTCTDB(_ctctdb.MaCTCTDB);
+                            PhieuCHDB ycchdb = _cCHDB.GetPhieuHuyByMaCTCTDB(_ctctdb.MaCTCTDB);
                             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                             DataRow dr = dsBaoCao.Tables["PhieuCHDB"].NewRow();
 

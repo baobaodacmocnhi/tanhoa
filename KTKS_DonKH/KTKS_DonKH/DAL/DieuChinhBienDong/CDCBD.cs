@@ -15,12 +15,58 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         #region DCBD (Điều Chỉnh Biến Động)
 
+        public bool Them(DCBD dcbd)
+        {
+            try
+            {
+                if (db.DCBDs.Count() > 0)
+                {
+                    string ID = "MaDCBD";
+                    string Table = "DCBD";
+                    decimal MaDCBD = db.ExecuteQuery<decimal>("declare @Ma int " +
+                        "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                        "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                    dcbd.MaDCBD = getMaxNextIDTable(MaDCBD);
+                }
+                else
+                    dcbd.MaDCBD = decimal.Parse("1" + DateTime.Now.ToString("yy"));
+                dcbd.CreateDate = DateTime.Now;
+                dcbd.CreateBy = CTaiKhoan.MaUser;
+                db.DCBDs.InsertOnSubmit(dcbd);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new dbKinhDoanhDataContext();
+                return false;
+            }
+        }
+
+        public bool Sua(DCBD dcbd)
+        {
+            try
+            {
+                dcbd.ModifyDate = DateTime.Now;
+                dcbd.ModifyBy = CTaiKhoan.MaUser;
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new dbKinhDoanhDataContext();
+                return false;
+            }
+        }
+
         /// <summary>
         /// Kiểm tra Mã Điều Chỉnh Biến Động đã có hay chưa
         /// </summary>
         /// <param name="MaDCBD"></param>
         /// <returns>true/có</returns>
-        public bool CheckDCBDbyID(decimal MaDCBD)
+        public bool CheckExist(decimal MaDCBD)
         {
             try
             {
@@ -32,55 +78,6 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
-
-        public bool ThemDCBD(DCBD dcbd)
-        {
-            try
-            {
-                if (db.DCBDs.Count() > 0)
-                {
-                    string ID = "MaDCBD";
-                    string Table = "DCBD";
-                    decimal MaDCBD = db.ExecuteQuery<decimal>("declare @Ma int " +
-                        "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
-                        "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
-                    //decimal MaDCBD = db.DCBDs.Max(itemDCBD => itemDCBD.MaDCBD);
-                    dcbd.MaDCBD = getMaxNextIDTable(MaDCBD);
-                }
-                else
-                    dcbd.MaDCBD = decimal.Parse("1" + DateTime.Now.ToString("yy"));
-                dcbd.CreateDate = DateTime.Now;
-                dcbd.CreateBy = CTaiKhoan.MaUser;
-                db.DCBDs.InsertOnSubmit(dcbd);
-                db.SubmitChanges();
-                //MessageBox.Show("Thành công Thêm DCBD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
-            }
-        }
-
-        public bool SuaDCBD(DCBD dcbd)
-        {
-            try
-            {
-                dcbd.ModifyDate = DateTime.Now;
-                dcbd.ModifyBy = CTaiKhoan.MaUser;
-                db.SubmitChanges();
-                //MessageBox.Show("Thành công Sửa DCBD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -125,7 +122,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DCBD getDCBDbyID(decimal MaDCBD)
+        public DCBD Get(decimal MaDCBD)
         {
             try
             {
@@ -273,7 +270,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         #region CTDCBD (Chi Tiết Điều Chỉnh Biến Động)
 
-        public bool ThemCTDCBD(CTDCBD ctdcbd)
+        public bool ThemDCBD(CTDCBD ctdcbd)
         {
             try
             {
@@ -284,7 +281,6 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     decimal MaCTDCBD = db.ExecuteQuery<decimal>("declare @Ma int " +
                         "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
                         "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
-                    //decimal MaCTDCBD = db.CTDCBDs.Max(itemCTDCBD => itemCTDCBD.MaCTDCBD);
                     ctdcbd.MaCTDCBD = getMaxNextIDTable(MaCTDCBD);
                 }
                 else
@@ -293,7 +289,6 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 ctdcbd.CreateBy = CTaiKhoan.MaUser;
                 db.CTDCBDs.InsertOnSubmit(ctdcbd);
                 db.SubmitChanges();
-                //MessageBox.Show("Thành công Thêm CTDCBD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
             catch (Exception ex)
@@ -304,14 +299,13 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public bool SuaCTDCBD(CTDCBD ctdcbd)
+        public bool SuaDCBD(CTDCBD ctdcbd)
         {
             try
             {
                 ctdcbd.ModifyDate = DateTime.Now;
                 ctdcbd.ModifyBy = CTaiKhoan.MaUser;
                 db.SubmitChanges();
-                //MessageBox.Show("Thành công Sửa CTDCBD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
             catch (Exception ex)
@@ -322,7 +316,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public bool XoaCTDCBD(CTDCBD ctdcbd)
+        public bool XoaDCBD(CTDCBD ctdcbd)
         {
             try
             {
@@ -331,7 +325,6 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 if (db.CTDCBDs.Any(item => item.MaDCBD == ID) == false && db.CTDCHDs.Any(item => item.MaDCBD == ID) == false)
                     db.DCBDs.DeleteOnSubmit(db.DCBDs.SingleOrDefault(item => item.MaDCBD == ID));
                 db.SubmitChanges();
-                //MessageBox.Show("Thành công Xóa CTDCBD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
             catch (Exception ex)
@@ -1152,30 +1145,14 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public CTDCBD getCTDCBDbyID(decimal MaCTDCBD)
+        public CTDCBD GetDCBDByMaCTDCBD(decimal MaCTDCBD)
         {
-            try
-            {
-                return db.CTDCBDs.SingleOrDefault(itemCTDCBD => itemCTDCBD.MaCTDCBD == MaCTDCBD);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+                return db.CTDCBDs.SingleOrDefault(item => item.MaCTDCBD == MaCTDCBD);
         }
 
-        public CTDCBD getCTDCBDbyMaDon(decimal MaDon)
+        public CTDCBD GetDCDBByMaDon(decimal MaDon)
         {
-            try
-            {
-                return db.CTDCBDs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DCBD.MaDon == MaDon);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+                return db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == MaDon);
         }
 
         public CTDCBD getLastCTDCBDbyDanhBo(string DanhBo)
@@ -1292,7 +1269,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         #region CTDCHD (Chi Tiết Điều Chỉnh Hóa Đơn)
 
-        public bool ThemCTDCHD(CTDCHD ctdchd)
+        public bool ThemDCHD(CTDCHD ctdchd)
         {
             try
             {
@@ -1323,7 +1300,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public bool SuaCTDCHD(CTDCHD ctdchd)
+        public bool SuaDCHD(CTDCHD ctdchd)
         {
             try
             {
@@ -1341,7 +1318,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public bool XoaCTDCHD(CTDCHD ctdchd)
+        public bool XoaDCHD(CTDCHD ctdchd)
         {
             try
             {

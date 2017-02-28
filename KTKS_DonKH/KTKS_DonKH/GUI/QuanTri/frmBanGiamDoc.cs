@@ -128,7 +128,7 @@ namespace KTKS_DonKH.GUI.QuanTri
 
         private void dgvDanhSach_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvDanhSach.Columns[e.ColumnIndex].Name == "Ma" && e.Value != null)
+            if (dgvDanhSach.Columns[e.ColumnIndex].Name == "ID" && e.Value != null)
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
         }
 
@@ -150,22 +150,22 @@ namespace KTKS_DonKH.GUI.QuanTri
                             dgvDanhSach.DataSource = _cChungTu.LoadDSCatChuyenDMBySoPhieu(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
                             break;
                         case "Cắt Tạm Danh Bộ":
-                            dgvDanhSach.DataSource = _cCHDB.LoadDSCTCTDBByMaTB(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
+                            dgvDanhSach.DataSource = _cCHDB.GetDSCatTam(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
                             break;
                         case "Cắt Hủy Danh Bộ":
-                            dgvDanhSach.DataSource = _cCHDB.LoadDSCTCHDBByMaTB(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
+                            dgvDanhSach.DataSource = _cCHDB.GetDSCatHuy(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
                             break;
                         case "Yêu Cầu Cắt Hủy Danh Bộ":
-                            dgvDanhSach.DataSource = _cCHDB.LoadDSYCCHDBBySoPhieu(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
+                            dgvDanhSach.DataSource = _cCHDB.GetDSPhieuHuy(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
                             break;
                         case "Đóng Nước":
-                            dgvDanhSach.DataSource = _cDongNuoc.GetDSCTDongNuocByMaTB(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
+                            dgvDanhSach.DataSource = _cDongNuoc.GetDSDongNuoc(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
                             break;
                         case "Mở Nước":
-                            dgvDanhSach.DataSource = _cDongNuoc.GetDSCTMoNuocByMaTB(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
+                            dgvDanhSach.DataSource = _cDongNuoc.GetDSMoNuoc(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
                             break;
                         case "Thảo Thư Trả Lời":
-                            dgvDanhSach.DataSource = _cTTTL.GetDSByMaTB(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
+                            dgvDanhSach.DataSource = _cTTTL.GetDS(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
                             break;
                     }
                     break;
@@ -182,22 +182,22 @@ namespace KTKS_DonKH.GUI.QuanTri
                             dgvDanhSach.DataSource = _cChungTu.LoadDSCatChuyenDM(dateTu.Value, dateDen.Value);
                             break;
                         case "Cắt Tạm Danh Bộ":
-                            dgvDanhSach.DataSource = _cCHDB.LoadDSCTCTDB(dateTu.Value, dateDen.Value);
+                            dgvDanhSach.DataSource = _cCHDB.GetDSCatTam(dateTu.Value, dateDen.Value);
                             break;
                         case "Cắt Hủy Danh Bộ":
-                            dgvDanhSach.DataSource = _cCHDB.LoadDSCTCHDB(dateTu.Value, dateDen.Value);
+                            dgvDanhSach.DataSource = _cCHDB.GetDSCatHuy(dateTu.Value, dateDen.Value);
                             break;
                         case "Yêu Cầu Cắt Hủy Danh Bộ":
                             dgvDanhSach.DataSource = _cCHDB.LoadDSYCCHDB_Don(dateTu.Value, dateDen.Value);
                             break;
                         case "Đóng Nước":
-                            dgvDanhSach.DataSource = _cDongNuoc.GetDSCTDongNuoc(dateTu.Value, dateDen.Value);
+                            dgvDanhSach.DataSource = _cDongNuoc.GetDSDongNuoc(dateTu.Value, dateDen.Value);
                             break;
                         case "Mở Nước":
-                            dgvDanhSach.DataSource = _cDongNuoc.GetDSCTMoNuoc(dateTu.Value, dateDen.Value);
+                            dgvDanhSach.DataSource = _cDongNuoc.GetDSMoNuoc(dateTu.Value, dateDen.Value);
                             break;
                         case "Thảo Thư Trả Lời":
-                            dgvDanhSach.DataSource = _cTTTL.GetDSByCreateDate(dateTu.Value, dateDen.Value);
+                            dgvDanhSach.DataSource = _cTTTL.GetDS(dateTu.Value, dateDen.Value);
                             break;
                     }
                     break;
@@ -211,37 +211,37 @@ namespace KTKS_DonKH.GUI.QuanTri
             {
                 case "Điều Chỉnh Biến Động":
                     for (int i = 0; i < dgvDanhSach.RowCount; i++)
-                        if (bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
+                        if (dgvDanhSach["CapNhat", i].Value != null && bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
                         {
-                            CTDCBD ctdcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
+                            CTDCBD ctdcbd = _cDCBD.GetDCBDByMaCTDCBD(decimal.Parse(dgvDanhSach["ID", i].Value.ToString()));
 
                             if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                                 ctdcbd.ChucVu = "GIÁM ĐỐC";
                             else
                                 ctdcbd.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
                             ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
-                            _cDCBD.SuaCTDCBD(ctdcbd);
+                            _cDCBD.SuaDCBD(ctdcbd);
                         }
                     break;
                 case "Điều Chỉnh Hóa Đơn":
                     for (int i = 0; i < dgvDanhSach.RowCount; i++)
-                        if (bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
+                        if (dgvDanhSach["CapNhat", i].Value != null && bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
                         {
-                            CTDCHD ctdchd = _cDCBD.getCTDCHDbyID(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
+                            CTDCHD ctdchd = _cDCBD.getCTDCHDbyID(decimal.Parse(dgvDanhSach["ID", i].Value.ToString()));
 
                             if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                                 ctdchd.ChucVu = "GIÁM ĐỐC";
                             else
                                 ctdchd.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
                             ctdchd.NguoiKy = bangiamdoc.HoTen.ToUpper();
-                            _cDCBD.SuaCTDCHD(ctdchd);
+                            _cDCBD.SuaDCHD(ctdchd);
                         }
                     break;
                 case "Cắt Chuyển":
                     for (int i = 0; i < dgvDanhSach.RowCount; i++)
-                        if (bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
+                        if (dgvDanhSach["CapNhat", i].Value != null && bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
                         {
-                            LichSuChungTu lichsuchungtu = _cChungTu.getLichSuChungTubySoPhieu(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
+                            LichSuChungTu lichsuchungtu = _cChungTu.getLichSuChungTubySoPhieu(decimal.Parse(dgvDanhSach["ID", i].Value.ToString()));
 
                             if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                                 lichsuchungtu.ChucVu = "GIÁM ĐỐC";
@@ -253,9 +253,9 @@ namespace KTKS_DonKH.GUI.QuanTri
                     break;
                 case "Cắt Tạm Danh Bộ":
                     for (int i = 0; i < dgvDanhSach.RowCount; i++)
-                        if (bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
+                        if (dgvDanhSach["CapNhat", i].Value != null && bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
                         {
-                            CTCTDB ctctdb = _cCHDB.GetCTCTDB(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
+                            CTCTDB ctctdb = _cCHDB.GetCTCTDB(decimal.Parse(dgvDanhSach["ID", i].Value.ToString()));
 
                             if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                                 ctctdb.ChucVu = "GIÁM ĐỐC";
@@ -267,9 +267,9 @@ namespace KTKS_DonKH.GUI.QuanTri
                     break;
                 case "Cắt Hủy Danh Bộ":
                     for (int i = 0; i < dgvDanhSach.RowCount; i++)
-                        if (bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
+                        if (dgvDanhSach["CapNhat", i].Value != null && bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
                         {
-                            CTCHDB ctchdb = _cCHDB.GetCTCHDB(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
+                            CTCHDB ctchdb = _cCHDB.GetCTCHDB(decimal.Parse(dgvDanhSach["ID", i].Value.ToString()));
 
                             if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                                 ctchdb.ChucVu = "GIÁM ĐỐC";
@@ -281,9 +281,9 @@ namespace KTKS_DonKH.GUI.QuanTri
                     break;
                 case "Yêu Cầu Cắt Hủy Danh Bộ":
                     for (int i = 0; i < dgvDanhSach.RowCount; i++)
-                        if (bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
+                        if (dgvDanhSach["CapNhat", i].Value != null && bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
                         {
-                            PhieuCHDB ycchdb = _cCHDB.GetPhieuHuy(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
+                            PhieuCHDB ycchdb = _cCHDB.GetPhieuHuy(decimal.Parse(dgvDanhSach["ID", i].Value.ToString()));
 
                             if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                                 ycchdb.ChucVu = "GIÁM ĐỐC";
@@ -295,9 +295,9 @@ namespace KTKS_DonKH.GUI.QuanTri
                     break;
                 case "Đóng Nước":
                     for (int i = 0; i < dgvDanhSach.RowCount; i++)
-                        if (bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
+                        if (dgvDanhSach["CapNhat", i].Value != null && bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
                         {
-                            CTDongNuoc ctdongnuoc = _cDongNuoc.GetCTByMaCTDN(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
+                            CTDongNuoc ctdongnuoc = _cDongNuoc.GetCTByMaCTDN(decimal.Parse(dgvDanhSach["ID", i].Value.ToString()));
 
                             if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                                 ctdongnuoc.ChucVu_DN = "GIÁM ĐỐC";
@@ -309,9 +309,9 @@ namespace KTKS_DonKH.GUI.QuanTri
                     break;
                 case "Mở Nước":
                     for (int i = 0; i < dgvDanhSach.RowCount; i++)
-                        if (bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
+                        if (dgvDanhSach["CapNhat", i].Value != null && bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
                         {
-                            CTDongNuoc ctdongnuoc = _cDongNuoc.GetCTByMaCTMN(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
+                            CTDongNuoc ctdongnuoc = _cDongNuoc.GetCTByMaCTMN(decimal.Parse(dgvDanhSach["ID", i].Value.ToString()));
 
                             if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                                 ctdongnuoc.ChucVu_MN = "GIÁM ĐỐC";
@@ -323,9 +323,9 @@ namespace KTKS_DonKH.GUI.QuanTri
                     break;
                 case "Thảo Thư Trả Lời":
                     for (int i = 0; i < dgvDanhSach.RowCount; i++)
-                        if (bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
+                        if (dgvDanhSach["CapNhat", i].Value != null && bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
                         {
-                            CTTTTL cttttl = _cTTTL.GetCT(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
+                            CTTTTL cttttl = _cTTTL.GetCT(decimal.Parse(dgvDanhSach["ID", i].Value.ToString()));
 
                             if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                                 cttttl.ChucVu = "GIÁM ĐỐC";

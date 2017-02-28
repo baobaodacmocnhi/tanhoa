@@ -59,7 +59,7 @@ namespace KTKS_DonKH.GUI.BamChi
 
             if (_MaCTBamChi != -1)
             {
-                _ctbamchi = _cBamChi.getCTBamChibyID(_MaCTBamChi);
+                _ctbamchi = _cBamChi.GetCT(_MaCTBamChi);
                 if (_ctbamchi.BamChi.MaDon != null)
                     txtMaDon.Text = _ctbamchi.BamChi.MaDon.ToString().Insert(_ctbamchi.BamChi.MaDon.ToString().Length - 2, "-");
                 else
@@ -344,11 +344,11 @@ namespace KTKS_DonKH.GUI.BamChi
 
                     if (_dontkh != null)
                     {
-                        if (!_cBamChi.CheckExist_BamChi("TKH", _dontkh.MaDon))
+                        if (_cBamChi.CheckExist_BamChi("TKH", _dontkh.MaDon)==false)
                         {
                             LinQ.BamChi bamchi = new LinQ.BamChi();
                             bamchi.MaDon = _dontkh.MaDon;
-                            _cBamChi.ThemBamChi(bamchi);
+                            _cBamChi.Them(bamchi);
                         }
                         if (txtDanhBo.Text.Trim() != "" && _cBamChi.CheckExist_CTBamChi("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim(), dateBamChi.Value, cmbTrangThaiBC.SelectedValue.ToString()))
                         {
@@ -360,11 +360,11 @@ namespace KTKS_DonKH.GUI.BamChi
                     else
                         if (_dontxl != null)
                         {
-                            if (!_cBamChi.CheckExist_BamChi("TXL", _dontxl.MaDon))
+                            if (_cBamChi.CheckExist_BamChi("TXL", _dontxl.MaDon) == false)
                             {
                                 LinQ.BamChi bamchi = new LinQ.BamChi();
                                 bamchi.MaDonTXL = _dontxl.MaDon;
-                                _cBamChi.ThemBamChi(bamchi);
+                                _cBamChi.Them(bamchi);
                             }
                             if (txtDanhBo.Text.Trim() != "" && _cBamChi.CheckExist_CTBamChi("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim(), dateBamChi.Value, cmbTrangThaiBC.SelectedValue.ToString()))
                             {
@@ -376,11 +376,11 @@ namespace KTKS_DonKH.GUI.BamChi
                         else
                             if (_dontbc != null)
                             {
-                                if (!_cBamChi.CheckExist_BamChi("TBC", _dontbc.MaDon))
+                                if (_cBamChi.CheckExist_BamChi("TBC", _dontbc.MaDon) == false)
                                 {
                                     LinQ.BamChi bamchi = new LinQ.BamChi();
                                     bamchi.MaDonTBC = _dontbc.MaDon;
-                                    _cBamChi.ThemBamChi(bamchi);
+                                    _cBamChi.Them(bamchi);
                                 }
                                 if (txtDanhBo.Text.Trim() != "" && _cBamChi.CheckExist_CTBamChi("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim(), dateBamChi.Value, cmbTrangThaiBC.SelectedValue.ToString()))
                                 {
@@ -445,7 +445,7 @@ namespace KTKS_DonKH.GUI.BamChi
 
                     ctbamchi.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
 
-                    if (_cBamChi.ThemCTBamChi(ctbamchi))
+                    if (_cBamChi.ThemCT(ctbamchi))
                     {
                         Clear_GetDataGridView();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -534,7 +534,7 @@ namespace KTKS_DonKH.GUI.BamChi
 
                         _ctbamchi.TheoYeuCau = txtTheoYeuCau.Text.Trim();
 
-                        if (_cBamChi.SuaCTBamChi(_ctbamchi))
+                        if (_cBamChi.SuaCT(_ctbamchi))
                         {
                             Clear2();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -564,7 +564,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        if (_cBamChi.XoaCTBamChi(_ctbamchi))
+                        if (_cBamChi.XoaCT(_ctbamchi))
                         {
                             Clear2();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -586,7 +586,7 @@ namespace KTKS_DonKH.GUI.BamChi
             try
             {
                 dgvDSNhapBamChi.Rows[e.RowIndex].Selected = true;
-                _ctbamchi = _cBamChi.getCTBamChibyID(decimal.Parse(dgvDSNhapBamChi["MaCTBC", e.RowIndex].Value.ToString()));
+                _ctbamchi = _cBamChi.GetCT(decimal.Parse(dgvDSNhapBamChi["MaCTBC", e.RowIndex].Value.ToString()));
                 LoadCTBamChi(_ctbamchi);
             }
             catch (Exception)

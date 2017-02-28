@@ -86,6 +86,8 @@
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayBC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TrangThaiBC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -625,10 +627,12 @@
             this.DanhBo,
             this.HoTen,
             this.DiaChi,
+            this.NgayBC,
+            this.TrangThaiBC,
             this.CreateBy});
             this.dgvDSNhapBamChi.Location = new System.Drawing.Point(11, 295);
             this.dgvDSNhapBamChi.Name = "dgvDSNhapBamChi";
-            this.dgvDSNhapBamChi.Size = new System.Drawing.Size(710, 126);
+            this.dgvDSNhapBamChi.Size = new System.Drawing.Size(961, 126);
             this.dgvDSNhapBamChi.TabIndex = 6;
             this.dgvDSNhapBamChi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSNhapBamChi_CellContentClick);
             this.dgvDSNhapBamChi.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSNhapBamChi_CellFormatting);
@@ -679,6 +683,19 @@
             this.DiaChi.HeaderText = "Địa Chỉ";
             this.DiaChi.Name = "DiaChi";
             this.DiaChi.Width = 150;
+            // 
+            // NgayBC
+            // 
+            this.NgayBC.DataPropertyName = "NgayBC";
+            this.NgayBC.HeaderText = "Ngày BC";
+            this.NgayBC.Name = "NgayBC";
+            // 
+            // TrangThaiBC
+            // 
+            this.TrangThaiBC.DataPropertyName = "TrangThaiBC";
+            this.TrangThaiBC.HeaderText = "Trạng Thái BC";
+            this.TrangThaiBC.Name = "TrangThaiBC";
+            this.TrangThaiBC.Width = 150;
             // 
             // CreateBy
             // 
@@ -776,6 +793,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayBC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TrangThaiBC;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
     }
 }

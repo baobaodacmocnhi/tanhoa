@@ -53,7 +53,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
                 if (_cKTXM.CheckExist("TBC",decimal.Parse(item["MaDon"].ToString())))
                     dr["DaGiaiQuyet"] = true;
                 else
-                    if (_cBamChi.CheckBamChibyMaDon_TBC(decimal.Parse(item["MaDon"].ToString())))
+                    if (_cBamChi.CheckExist_BamChi("TBC",decimal.Parse(item["MaDon"].ToString())))
                         dr["DaGiaiQuyet"] = true;
                     else
                         dr["DaGiaiQuyet"] = false;

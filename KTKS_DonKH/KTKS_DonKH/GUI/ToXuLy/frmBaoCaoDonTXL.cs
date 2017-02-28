@@ -52,7 +52,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 if (_cKTXM.CheckExist("TXL",decimal.Parse(item["MaDon"].ToString())))
                     dr["DaGiaiQuyet"] = true;
                 else
-                    if (_cBamChi.CheckBamChibyMaDon_TXL(decimal.Parse(item["MaDon"].ToString())))
+                    if (_cBamChi.CheckExist_BamChi("TXL",decimal.Parse(item["MaDon"].ToString())))
                         dr["DaGiaiQuyet"] = true;
                     else
                         dr["DaGiaiQuyet"] = false;

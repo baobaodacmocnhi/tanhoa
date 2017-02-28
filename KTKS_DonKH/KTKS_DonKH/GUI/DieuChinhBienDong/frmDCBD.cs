@@ -16,6 +16,7 @@ using KTKS_DonKH.BaoCao.DieuChinhBienDong;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.DAL;
+using KTKS_DonKH.DAL.ToBamChi;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -24,6 +25,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         string _mnu = "mnuDCBD";
         DonKH _donkh = null;
         DonTXL _dontxl = null;
+        DonTBC _dontbc = null;
         HOADON _hoadon = null;
         CTDCBD _ctdcbd = null;
         CLoaiChungTu _cLoaiChungTu = new CLoaiChungTu();
@@ -32,11 +34,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CDCBD _cDCBD = new CDCBD();
         CDonKH _cDonKH = new CDonKH();
         CDonTXL _cDonTXL = new CDonTXL();
+        CDonTBC _cDonTBC = new CDonTBC();
         CKTXM _cKTXM = new CKTXM();
         CDocSo _cDocSo = new CDocSo();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         bool _flagCtrl3 = false;
-        decimal _MaCTDCBD = 0;
+        decimal _MaCTDCBD = -1;
 
         public frmDCBD()
         {
@@ -72,7 +75,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             dgvDSChungTu.AutoGenerateColumns = false;
             dgvDSChungTu.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSChungTu.Font, FontStyle.Bold);
 
-            if (_MaCTDCBD != 0)
+            if (_MaCTDCBD != -1)
             {
                 txtSoPhieu.Text = _MaCTDCBD.ToString();
                 KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
@@ -208,6 +211,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             _donkh = null;
             _dontxl = null;
             _ctdcbd = null;
+            _MaCTDCBD = -1;
             ///
             dgvDSSoDangKy.DataSource = null;
             dgvDSDieuChinh.DataSource = null;
@@ -240,7 +244,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 ///Đơn Tổ Xử Lý
                 if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
                 {
-                    if (_cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", ""))) != null)
+                    if (_cDonTXL.CheckExist(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", ""))) == true)
                     {
                         _dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
                         txtMaDon.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
@@ -259,9 +263,31 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     else
                         MessageBox.Show("Mã Đơn TXL này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                else
+                    if (txtMaDon.Text.Trim().ToUpper().Contains("TBC"))
+                    {
+                        if (_cDonTBC.CheckExist(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", ""))) == true)
+                        {
+                            _dontbc = _cDonTBC.Get(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
+                            txtMaDon.Text = "TBC" + _dontbc.MaDon.ToString().Insert(_dontbc.MaDon.ToString().Length - 2, "-");
+                            if (_cThuTien.GetMoiNhat(_dontbc.DanhBo) != null)
+                            {
+                                _hoadon = _cThuTien.GetMoiNhat(_dontbc.DanhBo);
+                                LoadTTKH(_hoadon);
+                                txtDanhBo.Focus();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                txtDanhBo.Focus();
+                            }
+                        }
+                        else
+                            MessageBox.Show("Mã Đơn TXL này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 ///Đơn Tổ Khách Hàng
                 else
-                    if (_cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", ""))) != null)
+                    if (_cDonKH.CheckExist(decimal.Parse(txtMaDon.Text.Trim().Replace("-", ""))) == true)
                     {
                         _donkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
                         txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
@@ -300,11 +326,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void txtSoPhieu_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13 && txtSoPhieu.Text.Trim() != "")
-            {
-                _ctdcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(txtSoPhieu.Text.Trim().Replace("-","")));
-                if (_ctdcbd != null)
+                if (_cDCBD.CheckExist_DCBD(decimal.Parse(txtSoPhieu.Text.Trim().Replace("-", ""))) == true)
+                {
+                    _ctdcbd = _cDCBD.GetDCBDByMaCTDCBD(decimal.Parse(txtSoPhieu.Text.Trim().Replace("-", "")));
                     LoadCTDCBD(_ctdcbd);
-            }
+                }
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -330,7 +356,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 DCBD dcbd = new DCBD();
                                 dcbd.MaDonTXL = _dontxl.MaDon;
 
-                                if (_cDCBD.ThemDCBD(dcbd))
+                                if (_cDCBD.Them(dcbd))
                                 {
                                 }
                             }
@@ -441,7 +467,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 ctdcbd.PhieuDuocKy = true;
                             }
 
-                            if (_cDCBD.ThemCTDCBD(ctdcbd))
+                            if (_cDCBD.ThemDCBD(ctdcbd))
                             {
                                 Clear();
                                 MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -467,7 +493,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             {
                                 DCBD dcbd = new DCBD();
                                 dcbd.MaDon = _donkh.MaDon;
-                                if (_cDCBD.ThemDCBD(dcbd))
+                                if (_cDCBD.Them(dcbd))
                                 {
                                 }
                             }
@@ -580,7 +606,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 ctdcbd.PhieuDuocKy = true;
                             }
 
-                            if (_cDCBD.ThemCTDCBD(ctdcbd))
+                            if (_cDCBD.ThemDCBD(ctdcbd))
                             {
                                 Clear();
                                 MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -722,7 +748,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         _ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
                         _ctdcbd.PhieuDuocKy = true;
                     }
-                    if (_cDCBD.SuaCTDCBD(_ctdcbd))
+                    if (_cDCBD.SuaDCBD(_ctdcbd))
                     {
                         Clear();
                         MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -739,7 +765,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
             {
                 if (_ctdcbd != null && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                    if (_cDCBD.XoaCTDCBD(_ctdcbd))
+                    if (_cDCBD.XoaDCBD(_ctdcbd))
                     {
                         Clear();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1197,7 +1223,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (dgvDSDieuChinh["DieuChinh", e.RowIndex].Value.ToString() == "Biến Động")
             {
-                CTDCBD ctdcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(dgvDSDieuChinh["MaDC", e.RowIndex].Value.ToString()));
+                CTDCBD ctdcbd = _cDCBD.GetDCBDByMaCTDCBD(decimal.Parse(dgvDSDieuChinh["MaDC", e.RowIndex].Value.ToString()));
                 DataTable dt = (DataTable)dgvDSSoDangKy.DataSource;
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 if (dt.Rows.Count == 0)

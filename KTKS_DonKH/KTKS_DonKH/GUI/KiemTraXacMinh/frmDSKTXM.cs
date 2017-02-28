@@ -83,11 +83,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     break;
                 case "Danh Bộ":
                     if (txtNoiDungTimKiem.Text.Trim() != "")
-                        dgvDSCTKTXM.DataSource = _cKTXM.GetDS_DanhBo(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
+                        dgvDSCTKTXM.DataSource = _cKTXM.GetDSByDanhBo(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Số Công Văn":
                     if (txtNoiDungTimKiem.Text.Trim() != "")
-                        dgvDSCTKTXM.DataSource = _cKTXM.GetDS_SoCongVan(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
+                        dgvDSCTKTXM.DataSource = _cKTXM.GetDSBySoCongVan(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Ngày":
                     if(CTaiKhoan.TruongPhong)

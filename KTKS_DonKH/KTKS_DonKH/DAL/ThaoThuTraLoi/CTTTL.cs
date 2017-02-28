@@ -310,7 +310,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             return LINQToDataTable(db.CTTTTLs.ToList());
         }
 
-        public DataTable GetDSByMaDon(string Loai, decimal MaDon)
+        public DataTable GetDS(string Loai, decimal MaDon)
         {
             switch (Loai)
             {
@@ -320,6 +320,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                 select new
                                 {
                                     MaDon = "TKH" + item.TTTL.MaDon,
+                                    item.MaCTTTTL,
                                     item.CreateDate,
                                     item.DanhBo,
                                     item.VeViec,
@@ -334,6 +335,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                             select new
                             {
                                 MaDon = "TXL" + item.TTTL.MaDonTBC,
+                                item.MaCTTTTL,
                                 item.CreateDate,
                                 item.DanhBo,
                                 item.VeViec,
@@ -348,6 +350,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                             select new
                             {
                                 MaDon =  "TBC" + item.TTTL.MaDonTBC,
+                                item.MaCTTTTL,
                                 item.CreateDate,
                                 item.DanhBo,
                                 item.VeViec,
@@ -361,7 +364,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             }
         }
 
-        public DataTable GetDSByMaTB(decimal MaCTTTTL)
+        public DataTable GetDS(decimal MaCTTTTL)
         {
             var query = from item in db.CTTTTLs
                         where item.MaCTTTTL == MaCTTTTL
@@ -370,6 +373,8 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                             MaDon = item.TTTL.MaDon != null ? "TKH" + item.TTTL.MaDon
                                 : item.TTTL.MaDonTXL != null ? "TXL" + item.TTTL.MaDonTXL
                                 : item.TTTL.MaDonTBC != null ? "TBC" + item.TTTL.MaDonTBC : null,
+                            item.MaCTTTTL,
+                            ID=item.MaCTTTTL,
                             item.CreateDate,
                             item.DanhBo,
                             item.VeViec,
@@ -380,7 +385,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSByMaTBs(decimal TuMaCTTTTL, decimal DenMaCTTTTL)
+        public DataTable GetDS(decimal TuMaCTTTTL, decimal DenMaCTTTTL)
         {
             var query = from item in db.CTTTTLs
                         where item.MaCTTTTL.ToString().Substring(item.MaCTTTTL.ToString().Length - 2, 2) == TuMaCTTTTL.ToString().Substring(TuMaCTTTTL.ToString().Length - 2, 2)
@@ -391,6 +396,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                             MaDon = item.TTTL.MaDon != null ? "TKH" + item.TTTL.MaDon
                                 : item.TTTL.MaDonTXL != null ? "TXL" + item.TTTL.MaDonTXL
                                 : item.TTTL.MaDonTBC != null ? "TBC" + item.TTTL.MaDonTBC : null,
+                            item.MaCTTTTL,
                             item.CreateDate,
                             item.DanhBo,
                             item.VeViec,
@@ -401,7 +407,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSByDanhBo(string DanhBo)
+        public DataTable GetDS(string DanhBo)
         {
             var query = from item in db.CTTTTLs
                         where item.DanhBo == DanhBo
@@ -410,6 +416,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                             MaDon = item.TTTL.MaDon != null ? "TKH" + item.TTTL.MaDon
                                 : item.TTTL.MaDonTXL != null ? "TXL" + item.TTTL.MaDonTXL
                                 : item.TTTL.MaDonTBC != null ? "TBC" + item.TTTL.MaDonTBC : null,
+                            item.MaCTTTTL,
                             item.CreateDate,
                             item.DanhBo,
                             item.VeViec,
@@ -420,7 +427,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSByCreateDate(DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable GetDS(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from item in db.CTTTTLs
                         where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
@@ -429,12 +436,14 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                             MaDon = item.TTTL.MaDon != null ? "TKH" + item.TTTL.MaDon
                                 : item.TTTL.MaDonTXL != null ? "TXL" + item.TTTL.MaDonTXL
                                 : item.TTTL.MaDonTBC != null ? "TBC" + item.TTTL.MaDonTBC : null,
-                                item.CreateDate,
-                                item.DanhBo,
-                                item.VeViec,
-                                item.NoiDung,
-                                item.NoiNhan,
-                                item.ThuDuocKy,
+                            item.MaCTTTTL,
+                            ID = item.MaCTTTTL,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.VeViec,
+                            item.NoiDung,
+                            item.NoiNhan,
+                            item.ThuDuocKy,
                         };
             return LINQToDataTable(query);
         }
@@ -477,7 +486,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             }
         }
 
-        public bool CheckExistCT(string Loai,decimal MaDon, string DanhBo, DateTime CreateDate)
+        public bool CheckExist_CT(string Loai,decimal MaDon, string DanhBo, DateTime CreateDate)
         {
             switch (Loai)
             {
@@ -492,7 +501,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             }
         }
 
-        public bool CheckExist(decimal MaCTTTTL)
+        public bool CheckExist_CT(decimal MaCTTTTL)
         {
             return db.CTTTTLs.Any(item => item.MaCTTTTL == MaCTTTTL);
         }

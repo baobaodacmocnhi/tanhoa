@@ -357,7 +357,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                 DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
 
-                                CTDCBD ctdcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
+                                CTDCBD ctdcbd = _cDCBD.GetDCBDByMaCTDCBD(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
                                 if (ctdcbd.DCBD.MaDon!=null)
                                     dr["MaDon"] = ctdcbd.DCBD.MaDon.ToString().Insert(ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
                                 else
@@ -696,7 +696,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         if (bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["PhieuDuocKy", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["ChuyenDocSo", i].Value.ToString()) == false)
                         {
                             CTDCBD ctdcbd = new CTDCBD();
-                            ctdcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
+                            ctdcbd = _cDCBD.GetDCBDByMaCTDCBD(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
 
                             if (ctdcbd != null)
                             {
@@ -752,7 +752,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         ctdcbd.ChuyenDocSo = true;
                                         ctdcbd.NgayChuyenDocSo = DateTime.Now;
                                         ctdcbd.NguoiChuyenDocSo = CTaiKhoan.MaUser;
-                                        _cDCBD.SuaCTDCBD(ctdcbd);
+                                        _cDCBD.SuaDCBD(ctdcbd);
                                     }
 
                                     log.WriteLine(k.ToString() + "/ " + ctdcbd.MaCTDCBD + " ; " + ctdcbd.ThongTin + " ; " + ctdcbd.DanhBo + " ");
@@ -1067,11 +1067,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     ischecked = true;
                 else
                     ischecked = false;
-                CTDCBD ctdcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(dgvDSDCBD.CurrentRow.Cells["SoPhieu"].Value.ToString()));
+                CTDCBD ctdcbd = _cDCBD.GetDCBDByMaCTDCBD(decimal.Parse(dgvDSDCBD.CurrentRow.Cells["SoPhieu"].Value.ToString()));
                 if (ctdcbd.PhieuDuocKy != ischecked)
                 {
                     ctdcbd.PhieuDuocKy = ischecked;
-                    _cDCBD.SuaCTDCBD(ctdcbd);
+                    _cDCBD.SuaDCBD(ctdcbd);
                 }
             }
             if (radDSDCHD.Checked)
@@ -1085,7 +1085,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (ctdchd.PhieuDuocKy != ischecked)
                 {
                     ctdchd.PhieuDuocKy = ischecked;
-                    _cDCBD.SuaCTDCHD(ctdchd);
+                    _cDCBD.SuaDCHD(ctdchd);
                 }
             }
         }
@@ -1177,7 +1177,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 CTDCHD ctdchd = _cDCBD.getCTDCHDbyID(decimal.Parse(dgvDSDCBD["SoPhieu", e.RowIndex].Value.ToString()));
                 ctdchd.CodeF2 = bool.Parse(dgvDSDCBD["CodeF2", e.RowIndex].Value.ToString());
-                _cDCBD.SuaCTDCHD(ctdchd);
+                _cDCBD.SuaDCHD(ctdchd);
             }
         }
 

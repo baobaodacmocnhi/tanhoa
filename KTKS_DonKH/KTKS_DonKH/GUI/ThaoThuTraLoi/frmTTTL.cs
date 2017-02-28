@@ -232,7 +232,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 
         private void txtMaCTTTTL_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13 && _cTTTL.CheckExist(decimal.Parse(txtMaCTTTTL.Text.Trim().Replace("-", ""))) == true)
+            if (e.KeyChar == 13 && _cTTTL.CheckExist_CT(decimal.Parse(txtMaCTTTTL.Text.Trim().Replace("-", ""))) == true)
             {
                 _cttttl = _cTTTL.GetCT(decimal.Parse(txtMaCTTTTL.Text.Trim().Replace("-", "")));
                 LoadTTTL(_cttttl);
@@ -262,7 +262,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             {
                 try
                 {
-                    if (txtVeViec.Text.Trim() != "" && txtNoiDung.Text.Trim() != "" & txtNoiNhan.Text.Trim() != "")
+                    if (txtVeViec.Text.Trim() == "" || txtNoiDung.Text.Trim() == "" || txtNoiNhan.Text.Trim() == "")
                     {
                         MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -272,13 +272,13 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 
                     if (_dontkh != null)
                     {
-                        if (!_cTTTL.CheckExist("TKH", _dontxl.MaDon))
+                        if (_cTTTL.CheckExist("TKH", _dontkh.MaDon) == false)
                         {
                             TTTL tttl = new TTTL();
                             tttl.MaDon = _dontkh.MaDon;
                             _cTTTL.Them(tttl);
                         }
-                        if (_cTTTL.CheckExistCT("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim(), DateTime.Now))
+                        if (_cTTTL.CheckExist_CT("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim(), DateTime.Now)==true)
                         {
                             MessageBox.Show("Danh Bộ này đã được Lập Thư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             //return;
@@ -288,13 +288,13 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                     else
                         if (_dontxl != null)
                         {
-                            if (!_cTTTL.CheckExist("TXL", _dontxl.MaDon))
+                            if (_cTTTL.CheckExist("TXL", _dontxl.MaDon) == false)
                             {
                                 TTTL tttl = new TTTL();
                                 tttl.MaDonTXL = _dontxl.MaDon;
                                 _cTTTL.Them(tttl);
                             }
-                            if (_cTTTL.CheckExistCT("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim(), DateTime.Now))
+                            if (_cTTTL.CheckExist_CT("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim(), DateTime.Now)==true)
                             {
                                 MessageBox.Show("Danh Bộ này đã được Lập Thư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 //return;
@@ -304,13 +304,13 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                         else
                             if (_dontbc != null)
                             {
-                                if (!_cTTTL.CheckExist("TBC", _dontbc.MaDon))
+                                if (_cTTTL.CheckExist("TBC", _dontbc.MaDon) == false)
                                 {
                                     TTTL tttl = new TTTL();
                                     tttl.MaDonTBC = _dontbc.MaDon;
                                     _cTTTL.Them(tttl);
                                 }
-                                if (_cTTTL.CheckExistCT("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim(), DateTime.Now))
+                                if (_cTTTL.CheckExist_CT("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim(), DateTime.Now)==true)
                                 {
                                     MessageBox.Show("Danh Bộ này đã được Lập Thư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     //return;

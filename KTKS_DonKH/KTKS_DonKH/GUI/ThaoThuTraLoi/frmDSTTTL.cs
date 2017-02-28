@@ -35,6 +35,8 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         private void frmDSTTTL_Load(object sender, EventArgs e)
         {
             dgvDSThu.AutoGenerateColumns = false;
+
+            cmbTimTheo.SelectedItem = "Ngày";
         }
 
         private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
@@ -178,25 +180,25 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 case "Mã Đơn":
                     if (txtNoiDungTimKiem.Text.Trim() != "")
                         if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                            dgvDSThu.DataSource = _cTTTL.GetDSByMaDon("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                            dgvDSThu.DataSource = _cTTTL.GetDS("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                         else
                             if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                dgvDSThu.DataSource = _cTTTL.GetDSByMaDon("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                dgvDSThu.DataSource = _cTTTL.GetDS("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                             else
-                                dgvDSThu.DataSource = _cTTTL.GetDSByMaDon("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                dgvDSThu.DataSource = _cTTTL.GetDS("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                     break;
                 case "Mã Thư":
                     if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
-                        dgvDSThu.DataSource = _cTTTL.GetDSByMaTBs(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                        dgvDSThu.DataSource = _cTTTL.GetDS(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
                     else
                         if (txtNoiDungTimKiem.Text.Trim() != "")
-                            dgvDSThu.DataSource = _cTTTL.GetDSByMaTB(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                            dgvDSThu.DataSource = _cTTTL.GetDS(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
                     break;
                 case "Danh Bộ":
-                    dgvDSThu.DataSource = _cTTTL.GetDSByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                    dgvDSThu.DataSource = _cTTTL.GetDS(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
                     break;
                 case "Ngày":
-                    dgvDSThu.DataSource = _cTTTL.GetDSByCreateDate(dateTu.Value, dateDen.Value);
+                    dgvDSThu.DataSource = _cTTTL.GetDS(dateTu.Value, dateDen.Value);
                     break;
                 default:
                     break;
@@ -233,6 +235,10 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         private void dgvDSThu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (dgvDSThu.Columns[e.ColumnIndex].Name == "MaCTTTTL" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+            if (dgvDSThu.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }

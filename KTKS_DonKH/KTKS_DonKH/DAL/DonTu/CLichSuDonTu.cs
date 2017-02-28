@@ -223,6 +223,7 @@ namespace KTKS_DonKH.DAL.DonTu
                                 join itemDonTKH in db.DonKHs on itemChuyenKTXM.MaDon equals itemDonTKH.MaDon
                                 join itemUser in db.Users on itemChuyenKTXM.NguoiDi equals itemUser.MaU
                                 where itemChuyenKTXM.MaDon != null && itemChuyenKTXM.NgayChuyen.Value.Date >= FromNgayChuyen.Date && itemChuyenKTXM.NgayChuyen.Value.Date <= ToNgayChuyen.Date
+                                orderby itemDonTKH.CreateDate ascending
                                 select new
                                 {
                                     itemDonTKH.MaDon,
@@ -244,6 +245,7 @@ namespace KTKS_DonKH.DAL.DonTu
                             join itemDonTXL in db.DonTXLs on itemChuyenKTXM.MaDonTXL equals itemDonTXL.MaDon
                             join itemUser in db.Users on itemChuyenKTXM.NguoiDi equals itemUser.MaU
                             where itemChuyenKTXM.MaDonTXL != null && itemChuyenKTXM.NgayChuyen.Value.Date >= FromNgayChuyen.Date && itemChuyenKTXM.NgayChuyen.Value.Date <= ToNgayChuyen.Date
+                            orderby itemDonTXL.CreateDate ascending
                             select new
                             {
                                 itemDonTXL.MaDon,
@@ -265,6 +267,7 @@ namespace KTKS_DonKH.DAL.DonTu
                             join itemDonTBC in db.DonTBCs on itemChuyenKTXM.MaDonTBC equals itemDonTBC.MaDon
                             join itemUser in db.Users on itemChuyenKTXM.NguoiDi equals itemUser.MaU
                             where itemChuyenKTXM.MaDonTBC != null && itemChuyenKTXM.NgayChuyen.Value.Date >= FromNgayChuyen.Date && itemChuyenKTXM.NgayChuyen.Value.Date <= ToNgayChuyen.Date
+                            orderby itemDonTBC.CreateDate ascending
                             select new
                             {
                                 itemDonTBC.MaDon,
@@ -295,6 +298,7 @@ namespace KTKS_DonKH.DAL.DonTu
                                 join itemDonTKH in db.DonKHs on itemChuyenKTXM.MaDon equals itemDonTKH.MaDon
                                 join itemUser in db.Users on itemChuyenKTXM.NguoiDi equals itemUser.MaU
                                 where itemChuyenKTXM.MaDon != null && itemDonTKH.SoCongVan.Contains(SoCongVan)
+                                orderby itemDonTKH.CreateDate ascending
                                 select new
                                 {
                                     itemDonTKH.MaDon,
@@ -316,6 +320,7 @@ namespace KTKS_DonKH.DAL.DonTu
                             join itemDonTXL in db.DonTXLs on itemChuyenKTXM.MaDonTXL equals itemDonTXL.MaDon
                             join itemUser in db.Users on itemChuyenKTXM.NguoiDi equals itemUser.MaU
                             where itemChuyenKTXM.MaDonTXL != null && itemDonTXL.SoCongVan.Contains(SoCongVan)
+                            orderby itemDonTXL.CreateDate ascending
                             select new
                             {
                                 itemDonTXL.MaDon,
@@ -337,6 +342,7 @@ namespace KTKS_DonKH.DAL.DonTu
                             join itemDonTBC in db.DonTBCs on itemChuyenKTXM.MaDonTBC equals itemDonTBC.MaDon
                             join itemUser in db.Users on itemChuyenKTXM.NguoiDi equals itemUser.MaU
                             where itemChuyenKTXM.MaDonTBC != null && itemDonTBC.SoCongVan.Contains(SoCongVan)
+                            orderby itemDonTBC.CreateDate ascending
                             select new
                             {
                                 itemDonTBC.MaDon,

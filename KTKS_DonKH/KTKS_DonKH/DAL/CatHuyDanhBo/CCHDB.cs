@@ -98,19 +98,6 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public CHDB getCHDBbyID(decimal MaCHDB)
-        {
-            try
-            {
-                return db.CHDBs.SingleOrDefault(itemCHDB => itemCHDB.MaCHDB == MaCHDB);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
         public bool CheckExist_CHDB(string Loai, decimal MaDon)
         {
             switch (Loai)
@@ -124,6 +111,11 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 default:
                     return false;
             }
+        }
+
+        public CHDB GetCHDB(decimal MaCHDB)
+        {
+            return db.CHDBs.SingleOrDefault(item => item.MaCHDB == MaCHDB);
         }
 
         public CHDB GetCHDB(string Loai, decimal MaDon)
@@ -274,6 +266,21 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 return db.CTCTDBs.Any(item => item.MaCTCTDB == MaCTCTDB);
         }
 
+        public bool CheckExist_CTCTDB(string Loai, decimal MaDon, string DanhBo)
+        {
+            switch (Loai)
+            {
+                case "TKH":
+                    return db.CTCTDBs.Any(item => item.CHDB.MaDon == MaDon && item.DanhBo == DanhBo);
+                case "TXL":
+                    return db.CTCTDBs.Any(item => item.CHDB.MaDonTXL == MaDon && item.DanhBo == DanhBo);
+                case "TBC":
+                    return db.CTCTDBs.Any(item => item.CHDB.MaDonTBC == MaDon && item.DanhBo == DanhBo);
+                default:
+                    return false;
+            }
+        }
+
         public CTCTDB GetCTCTDB(decimal MaCTCTDB)
         {
                 return db.CTCTDBs.SingleOrDefault(item => item.MaCTCTDB == MaCTCTDB);
@@ -330,371 +337,202 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public DataTable LoadDSCTCTDBByMaDon(decimal MaDon)
-        {
-            try
-            {
-                var query = from itemCTCTDB in db.CTCTDBs
-                            where itemCTCTDB.CHDB.MaDon == MaDon || itemCTCTDB.CHDB.MaDonTXL == MaDon
-                            orderby itemCTCTDB.CreateDate descending
-                            select new
-                            {
-                                In = false,
-                                itemCTCTDB.PhieuDuocKy,
-                                itemCTCTDB.DaLapPhieu,
-                                itemCTCTDB.SoPhieu,
-                                itemCTCTDB.ThongBaoDuocKy,
-                                MaTB = itemCTCTDB.MaCTCTDB,
-                                Ma = itemCTCTDB.MaCTCTDB,
-                                itemCTCTDB.CreateDate,
-                                itemCTCTDB.DanhBo,
-                                itemCTCTDB.HoTen,
-                                itemCTCTDB.DiaChi,
-                                itemCTCTDB.LyDo,
-                                itemCTCTDB.GhiChuLyDo,
-                                itemCTCTDB.SoTien,
-                                itemCTCTDB.NguoiKy,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public DataTable LoadDSCTCTDBByMaTB(decimal MaTB)
-        {
-            try
-            {
-                var query = from itemCTCTDB in db.CTCTDBs
-                            where itemCTCTDB.MaCTCTDB == MaTB
-                            orderby itemCTCTDB.CreateDate descending
-                            select new
-                            {
-                                In = false,
-                                itemCTCTDB.PhieuDuocKy,
-                                itemCTCTDB.DaLapPhieu,
-                                itemCTCTDB.SoPhieu,
-                                itemCTCTDB.ThongBaoDuocKy,
-                                MaTB = itemCTCTDB.MaCTCTDB,
-                                Ma = itemCTCTDB.MaCTCTDB,
-                                itemCTCTDB.CreateDate,
-                                itemCTCTDB.DanhBo,
-                                itemCTCTDB.HoTen,
-                                itemCTCTDB.DiaChi,
-                                itemCTCTDB.LyDo,
-                                itemCTCTDB.GhiChuLyDo,
-                                itemCTCTDB.SoTien,
-                                itemCTCTDB.NguoiKy,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public DataTable LoadDSCTCTDBByMaTBs(decimal TuMaTB, decimal DenMaTB)
-        {
-            try
-            {
-                var query = from itemCTCTDB in db.CTCTDBs
-                            where itemCTCTDB.MaCTCTDB.ToString().Substring(itemCTCTDB.MaCTCTDB.ToString().Length - 2, 2) == TuMaTB.ToString().Substring(TuMaTB.ToString().Length - 2, 2)
-                            && itemCTCTDB.MaCTCTDB.ToString().Substring(itemCTCTDB.MaCTCTDB.ToString().Length - 2, 2) == DenMaTB.ToString().Substring(DenMaTB.ToString().Length - 2, 2)
-                            && itemCTCTDB.MaCTCTDB >= TuMaTB && itemCTCTDB.MaCTCTDB <= DenMaTB
-                            orderby itemCTCTDB.CreateDate descending
-                            select new
-                            {
-                                In = false,
-                                itemCTCTDB.PhieuDuocKy,
-                                itemCTCTDB.DaLapPhieu,
-                                itemCTCTDB.SoPhieu,
-                                itemCTCTDB.ThongBaoDuocKy,
-                                MaTB = itemCTCTDB.MaCTCTDB,
-                                Ma = itemCTCTDB.MaCTCTDB,
-                                itemCTCTDB.CreateDate,
-                                itemCTCTDB.DanhBo,
-                                itemCTCTDB.HoTen,
-                                itemCTCTDB.DiaChi,
-                                itemCTCTDB.LyDo,
-                                itemCTCTDB.GhiChuLyDo,
-                                itemCTCTDB.SoTien,
-                                itemCTCTDB.NguoiKy,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public DataTable LoadDSCTCTDBByDanhBo(string DanhBo)
-        {
-            try
-            {
-                var query = from itemCTCTDB in db.CTCTDBs
-                            where itemCTCTDB.DanhBo == DanhBo
-                            orderby itemCTCTDB.CreateDate descending
-                            select new
-                            {
-                                In = false,
-                                itemCTCTDB.PhieuDuocKy,
-                                itemCTCTDB.DaLapPhieu,
-                                itemCTCTDB.SoPhieu,
-                                itemCTCTDB.ThongBaoDuocKy,
-                                MaTB = itemCTCTDB.MaCTCTDB,
-                                Ma = itemCTCTDB.MaCTCTDB,
-                                itemCTCTDB.CreateDate,
-                                itemCTCTDB.DanhBo,
-                                itemCTCTDB.HoTen,
-                                itemCTCTDB.DiaChi,
-                                itemCTCTDB.LyDo,
-                                itemCTCTDB.GhiChuLyDo,
-                                itemCTCTDB.SoTien,
-                                itemCTCTDB.NguoiKy,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public DataTable LoadDSCTCTDBByLyDo(string LyDo)
-        {
-            try
-            {
-                var query = from itemCTCTDB in db.CTCTDBs
-                            where itemCTCTDB.LyDo.Contains(LyDo)
-                            orderby itemCTCTDB.CreateDate descending
-                            select new
-                            {
-                                In = false,
-                                itemCTCTDB.PhieuDuocKy,
-                                itemCTCTDB.DaLapPhieu,
-                                itemCTCTDB.SoPhieu,
-                                itemCTCTDB.ThongBaoDuocKy,
-                                MaTB = itemCTCTDB.MaCTCTDB,
-                                Ma = itemCTCTDB.MaCTCTDB,
-                                itemCTCTDB.CreateDate,
-                                itemCTCTDB.DanhBo,
-                                itemCTCTDB.HoTen,
-                                itemCTCTDB.DiaChi,
-                                itemCTCTDB.LyDo,
-                                itemCTCTDB.GhiChuLyDo,
-                                itemCTCTDB.SoTien,
-                                itemCTCTDB.NguoiKy,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public DataTable LoadDSCTCTDBByDate(DateTime TuNgay)
-        {
-            try
-            {
-                var query = from itemCTCTDB in db.CTCTDBs
-                            where itemCTCTDB.CreateDate.Value.Date == TuNgay.Date
-                            orderby itemCTCTDB.CreateDate descending
-                            select new
-                            {
-                                In = false,
-                                itemCTCTDB.PhieuDuocKy,
-                                itemCTCTDB.DaLapPhieu,
-                                itemCTCTDB.SoPhieu,
-                                itemCTCTDB.ThongBaoDuocKy,
-                                MaTB = itemCTCTDB.MaCTCTDB,
-                                Ma = itemCTCTDB.MaCTCTDB,
-                                itemCTCTDB.CreateDate,
-                                itemCTCTDB.DanhBo,
-                                itemCTCTDB.HoTen,
-                                itemCTCTDB.DiaChi,
-                                itemCTCTDB.LyDo,
-                                itemCTCTDB.GhiChuLyDo,
-                                itemCTCTDB.SoTien,
-                                itemCTCTDB.NguoiKy,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public DataTable LoadDSCTCTDBByDates(DateTime TuNgay, DateTime DenNgay)
-        {
-            try
-            {
-                var query = from itemCTCTDB in db.CTCTDBs
-                            where itemCTCTDB.CreateDate.Value.Date >= TuNgay.Date && itemCTCTDB.CreateDate.Value.Date <= DenNgay.Date
-                            orderby itemCTCTDB.CreateDate descending
-                            select new
-                            {
-                                In = false,
-                                itemCTCTDB.PhieuDuocKy,
-                                itemCTCTDB.DaLapPhieu,
-                                itemCTCTDB.SoPhieu,
-                                itemCTCTDB.ThongBaoDuocKy,
-                                MaTB = itemCTCTDB.MaCTCTDB,
-                                Ma = itemCTCTDB.MaCTCTDB,
-                                itemCTCTDB.CreateDate,
-                                itemCTCTDB.DanhBo,
-                                itemCTCTDB.HoTen,
-                                itemCTCTDB.DiaChi,
-                                itemCTCTDB.LyDo,
-                                itemCTCTDB.GhiChuLyDo,
-                                itemCTCTDB.SoTien,
-                                itemCTCTDB.NguoiKy,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Lấy Danh Sách Chi Tiết Cắt Tạm Danh Bộ trong Ngày
-        /// </summary>
-        /// <param name="TuNgay"></param>
-        /// <returns></returns>
-        public DataTable LoadDSCTCTDB(DateTime TuNgay)
-        {
-            try
-            {
-                var query = from itemCTCTDB in db.CTCTDBs
-                            where itemCTCTDB.CreateDate.Value.Date == TuNgay.Date
-                            select new
-                            {
-                                In = false,
-                                itemCTCTDB.PhieuDuocKy,
-                                itemCTCTDB.DaLapPhieu,
-                                itemCTCTDB.ThongBaoDuocKy,
-                                MaTB = itemCTCTDB.MaCTCTDB,
-                                Ma = itemCTCTDB.MaCTCTDB,
-                                itemCTCTDB.CreateDate,
-                                itemCTCTDB.DanhBo,
-                                itemCTCTDB.HoTen,
-                                itemCTCTDB.DiaChi,
-                                itemCTCTDB.LyDo,
-                                itemCTCTDB.GhiChuLyDo,
-                                itemCTCTDB.SoTien,
-                                itemCTCTDB.TCTBXuLy,
-                                itemCTCTDB.TroNgai,
-                                itemCTCTDB.NguoiKy,
-                                itemCTCTDB.NoiDungXuLy,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Lấy Danh Sách Chi Tiết Cắt Tạm Danh Bộ trong Khoảng Thời Gian
-        /// </summary>
-        /// <param name="TuNgay"></param>
-        /// <param name="DenNgay"></param>
-        /// <returns></returns>
-        public DataTable LoadDSCTCTDB(DateTime TuNgay, DateTime DenNgay)
-        {
-            try
-            {
-                var query = from itemCTCTDB in db.CTCTDBs
-                            where itemCTCTDB.CreateDate.Value.Date >= TuNgay.Date && itemCTCTDB.CreateDate.Value.Date <= DenNgay.Date
-                            select new
-                            {
-                                In = false,
-                                itemCTCTDB.PhieuDuocKy,
-                                itemCTCTDB.DaLapPhieu,
-                                itemCTCTDB.ThongBaoDuocKy,
-                                MaTB = itemCTCTDB.MaCTCTDB,
-                                Ma = itemCTCTDB.MaCTCTDB,
-                                itemCTCTDB.CreateDate,
-                                itemCTCTDB.DanhBo,
-                                itemCTCTDB.HoTen,
-                                itemCTCTDB.DiaChi,
-                                itemCTCTDB.LyDo,
-                                itemCTCTDB.GhiChuLyDo,
-                                itemCTCTDB.SoTien,
-                                itemCTCTDB.TCTBXuLy,
-                                itemCTCTDB.TroNgai,
-                                itemCTCTDB.NguoiKy,
-                                itemCTCTDB.NoiDungXuLy,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Lấy Danh Sách Chi Tiết Cắt Tạm Danh Bộ Tổ Xử Lý
-        /// </summary>
-        /// <returns></returns>
-        public DataTable LoadDSCTCTDB_TXL()
-        {
-            try
-            {
-                var query = from itemCTCTDB in db.CTCTDBs
-                            where itemCTCTDB.CHDB.MaDonTXL != null
-                            select new
-                            {
-                                In = false,
-                                MaTB = itemCTCTDB.MaCTCTDB,
-                                itemCTCTDB.DanhBo,
-                                itemCTCTDB.HoTen,
-                                itemCTCTDB.DiaChi,
-                                itemCTCTDB.LyDo,
-                                itemCTCTDB.GhiChuLyDo,
-                                itemCTCTDB.SoTien,
-                                itemCTCTDB.ThongBaoDuocKy,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public bool CheckExist_CTCTDB(string Loai, decimal MaDon, string DanhBo)
+        public DataTable GetDSCatTam(string Loai, decimal MaDon)
         {
             switch (Loai)
             {
                 case "TKH":
-                    return db.CTCTDBs.Any(item => item.CHDB.MaDon == MaDon && item.DanhBo == DanhBo);
+                    var query = from item in db.CTCTDBs
+                                where item.CHDB.MaDon == MaDon
+                                select new
+                                {
+                                    MaDon = "TKH" + item.CHDB.MaDon,
+                                    item.PhieuDuocKy,
+                                    item.DaLapPhieu,
+                                    item.SoPhieu,
+                                    item.ThongBaoDuocKy,
+                                    MaTB = item.MaCTCTDB,
+                                    item.CreateDate,
+                                    item.DanhBo,
+                                    item.HoTen,
+                                    item.DiaChi,
+                                    item.LyDo,
+                                    item.GhiChuLyDo,
+                                    item.SoTien,
+                                };
+                    return LINQToDataTable(query);
                 case "TXL":
-                    return db.CTCTDBs.Any(item => item.CHDB.MaDonTXL == MaDon && item.DanhBo == DanhBo);
+                    query = from item in db.CTCTDBs
+                            where item.CHDB.MaDonTXL == MaDon
+                            select new
+                            {
+                                MaDon = "TXL" + item.CHDB.MaDonTXL,
+                                item.PhieuDuocKy,
+                                item.DaLapPhieu,
+                                item.SoPhieu,
+                                item.ThongBaoDuocKy,
+                                MaTB = item.MaCTCTDB,
+                                item.CreateDate,
+                                item.DanhBo,
+                                item.HoTen,
+                                item.DiaChi,
+                                item.LyDo,
+                                item.GhiChuLyDo,
+                                item.SoTien,
+                            };
+                    return LINQToDataTable(query);
                 case "TBC":
-                    return db.CTCTDBs.Any(item => item.CHDB.MaDonTBC == MaDon && item.DanhBo == DanhBo);
+                    query = from item in db.CTCTDBs
+                            where item.CHDB.MaDonTBC == MaDon
+                            select new
+                            {
+                                MaDon = "TBC" + item.CHDB.MaDonTBC,
+                                item.PhieuDuocKy,
+                                item.DaLapPhieu,
+                                item.SoPhieu,
+                                item.ThongBaoDuocKy,
+                                MaTB = item.MaCTCTDB,
+                                item.CreateDate,
+                                item.DanhBo,
+                                item.HoTen,
+                                item.DiaChi,
+                                item.LyDo,
+                                item.GhiChuLyDo,
+                                item.SoTien,
+                            };
+                    return LINQToDataTable(query);
                 default:
-                    return false;
+                    return null;
             }
+        }
+
+        public DataTable GetDSCatTam(decimal MaCTCTDB)
+        {
+            var query = from item in db.CTCTDBs
+                        where item.MaCTCTDB == MaCTCTDB
+                        select new
+                        {
+                            MaDon = item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
+                                    : item.CHDB.MaDonTXL != null ? "TXL" + item.CHDB.MaDonTXL
+                                    : item.CHDB.MaDonTBC != null ? "TBC" + item.CHDB.MaDonTBC : null,
+                            item.PhieuDuocKy,
+                            item.DaLapPhieu,
+                            item.SoPhieu,
+                            item.ThongBaoDuocKy,
+                            MaTB = item.MaCTCTDB,
+                            ID = item.MaCTCTDB,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.LyDo,
+                            item.GhiChuLyDo,
+                            item.SoTien,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSCatTam(decimal FromMaCTCTDB,decimal ToMaCTCTDB)
+        {
+            var query = from item in db.CTCTDBs
+                        where item.MaCTCTDB.ToString().Substring(item.MaCTCTDB.ToString().Length - 2, 2) == FromMaCTCTDB.ToString().Substring(FromMaCTCTDB.ToString().Length - 2, 2)
+                            && item.MaCTCTDB.ToString().Substring(item.MaCTCTDB.ToString().Length - 2, 2) == ToMaCTCTDB.ToString().Substring(ToMaCTCTDB.ToString().Length - 2, 2)
+                            && item.MaCTCTDB >= FromMaCTCTDB && item.MaCTCTDB <= ToMaCTCTDB
+                        select new
+                        {
+                            MaDon = item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
+                                    : item.CHDB.MaDonTXL != null ? "TXL" + item.CHDB.MaDonTXL
+                                    : item.CHDB.MaDonTBC != null ? "TBC" + item.CHDB.MaDonTBC : null,
+                            item.PhieuDuocKy,
+                            item.DaLapPhieu,
+                            item.SoPhieu,
+                            item.ThongBaoDuocKy,
+                            MaTB = item.MaCTCTDB,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.LyDo,
+                            item.GhiChuLyDo,
+                            item.SoTien,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSCatTamByDanhBo(string DanhBo)
+        {
+            var query = from item in db.CTCTDBs
+                        where item.DanhBo==DanhBo
+                        select new
+                        {
+                            MaDon = item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
+                                    : item.CHDB.MaDonTXL != null ? "TXL" + item.CHDB.MaDonTXL
+                                    : item.CHDB.MaDonTBC != null ? "TBC" + item.CHDB.MaDonTBC : null,
+                            item.PhieuDuocKy,
+                            item.DaLapPhieu,
+                            item.SoPhieu,
+                            item.ThongBaoDuocKy,
+                            MaTB = item.MaCTCTDB,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.LyDo,
+                            item.GhiChuLyDo,
+                            item.SoTien,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSCatTamByLyDo(string LyDo)
+        {
+            var query = from item in db.CTCTDBs
+                        where item.LyDo.Contains(LyDo)
+                        select new
+                        {
+                            MaDon = item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
+                                    : item.CHDB.MaDonTXL != null ? "TXL" + item.CHDB.MaDonTXL
+                                    : item.CHDB.MaDonTBC != null ? "TBC" + item.CHDB.MaDonTBC : null,
+                            item.PhieuDuocKy,
+                            item.DaLapPhieu,
+                            item.SoPhieu,
+                            item.ThongBaoDuocKy,
+                            MaTB = item.MaCTCTDB,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.LyDo,
+                            item.GhiChuLyDo,
+                            item.SoTien,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSCatTam(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            var query = from item in db.CTCTDBs
+                        where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
+                        select new
+                        {
+                            MaDon = item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
+                                    : item.CHDB.MaDonTXL != null ? "TXL" + item.CHDB.MaDonTXL
+                                    : item.CHDB.MaDonTBC != null ? "TBC" + item.CHDB.MaDonTBC : null,
+                            item.PhieuDuocKy,
+                            item.DaLapPhieu,
+                            item.SoPhieu,
+                            item.ThongBaoDuocKy,
+                            MaTB = item.MaCTCTDB,
+                            ID = item.MaCTCTDB,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.LyDo,
+                            item.GhiChuLyDo,
+                            item.SoTien,
+                        };
+            return LINQToDataTable(query);
         }
 
         public DataTable GetDSCatTam_NgayLap_ChuaXuLy(DateTime FromCreateDate, DateTime ToCreateDate)
@@ -785,6 +623,26 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
+        public bool CheckExist_CTCHDB(decimal MaCTCHDB)
+        {
+            return db.CTCHDBs.Any(item => item.MaCTCHDB == MaCTCHDB);
+        }
+
+        public bool CheckExist_CTCHDB(string Loai, decimal MaDon, string DanhBo)
+        {
+            switch (Loai)
+            {
+                case "TKH":
+                    return db.CTCHDBs.Any(item => item.CHDB.MaDon == MaDon && item.DanhBo == DanhBo);
+                case "TXL":
+                    return db.CTCHDBs.Any(item => item.CHDB.MaDonTXL == MaDon && item.DanhBo == DanhBo);
+                case "TBC":
+                    return db.CTCHDBs.Any(item => item.CHDB.MaDonTBC == MaDon && item.DanhBo == DanhBo);
+                default:
+                    return false;
+            }
+        }
+
         public CTCHDB GetCTCHDB(decimal MaCTCHDB)
         {
                 return db.CTCHDBs.SingleOrDefault(item => item.MaCTCHDB == MaCTCHDB);
@@ -803,420 +661,202 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        /// <summary>
-        /// Lấy Danh Sách Chi Tiết Cắt Hủy Danh Bộ
-        /// </summary>
-        /// <returns></returns>
-        public DataTable LoadDSCTCHDB()
+        public DataTable GetDSCatHuy(string Loai, decimal MaDon)
         {
-            try
+            switch (Loai)
             {
-                var query = from itemCTCHDB in db.CTCHDBs
-                            //where itemCTCHDB.CHDB.MaDon!=null
-                            orderby itemCTCHDB.CreateDate descending
+                case "TKH":
+                    var query = from item in db.CTCHDBs
+                                where item.CHDB.MaDon == MaDon
+                                select new
+                                {
+                                    MaDon = "TKH" + item.CHDB.MaDon,
+                                    item.PhieuDuocKy,
+                                    item.DaLapPhieu,
+                                    item.SoPhieu,
+                                    item.ThongBaoDuocKy,
+                                    MaTB = item.MaCTCHDB,
+                                    item.CreateDate,
+                                    item.DanhBo,
+                                    item.HoTen,
+                                    item.DiaChi,
+                                    item.LyDo,
+                                    item.GhiChuLyDo,
+                                    item.SoTien,
+                                };
+                    return LINQToDataTable(query);
+                case "TXL":
+                    query = from item in db.CTCHDBs
+                            where item.CHDB.MaDonTXL == MaDon
                             select new
                             {
-                                In = false,
-                                itemCTCHDB.PhieuDuocKy,
-                                itemCTCHDB.DaLapPhieu,
-                                itemCTCHDB.SoPhieu,
-                                itemCTCHDB.ThongBaoDuocKy,
-                                MaTB = itemCTCHDB.MaCTCHDB,
-                                Ma = itemCTCHDB.MaCTCHDB,
-                                itemCTCHDB.CreateDate,
-                                itemCTCHDB.DanhBo,
-                                itemCTCHDB.HoTen,
-                                itemCTCHDB.DiaChi,
-                                itemCTCHDB.LyDo,
-                                itemCTCHDB.GhiChuLyDo,
-                                itemCTCHDB.SoTien,
-                                itemCTCHDB.NguoiKy,
+                                MaDon = "TXL" + item.CHDB.MaDonTXL,
+                                item.PhieuDuocKy,
+                                item.DaLapPhieu,
+                                item.SoPhieu,
+                                item.ThongBaoDuocKy,
+                                MaTB = item.MaCTCHDB,
+                                item.CreateDate,
+                                item.DanhBo,
+                                item.HoTen,
+                                item.DiaChi,
+                                item.LyDo,
+                                item.GhiChuLyDo,
+                                item.SoTien,
                             };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public DataTable LoadDSCTCHDBByMaDon(decimal MaDon)
-        {
-            try
-            {
-                var query = from itemCTCHDB in db.CTCHDBs
-                            where itemCTCHDB.CHDB.MaDon == MaDon || itemCTCHDB.CHDB.MaDonTXL == MaDon
-                            orderby itemCTCHDB.CreateDate descending
+                    return LINQToDataTable(query);
+                case "TBC":
+                    query = from item in db.CTCHDBs
+                            where item.CHDB.MaDonTBC == MaDon
                             select new
                             {
-                                In = false,
-                                itemCTCHDB.PhieuDuocKy,
-                                itemCTCHDB.DaLapPhieu,
-                                itemCTCHDB.SoPhieu,
-                                itemCTCHDB.ThongBaoDuocKy,
-                                MaTB = itemCTCHDB.MaCTCHDB,
-                                Ma = itemCTCHDB.MaCTCHDB,
-                                itemCTCHDB.CreateDate,
-                                itemCTCHDB.DanhBo,
-                                itemCTCHDB.HoTen,
-                                itemCTCHDB.DiaChi,
-                                itemCTCHDB.LyDo,
-                                itemCTCHDB.GhiChuLyDo,
-                                itemCTCHDB.SoTien,
-                                itemCTCHDB.NguoiKy,
+                                MaDon = "TBC" + item.CHDB.MaDonTBC,
+                                item.PhieuDuocKy,
+                                item.DaLapPhieu,
+                                item.SoPhieu,
+                                item.ThongBaoDuocKy,
+                                MaTB = item.MaCTCHDB,
+                                item.CreateDate,
+                                item.DanhBo,
+                                item.HoTen,
+                                item.DiaChi,
+                                item.LyDo,
+                                item.GhiChuLyDo,
+                                item.SoTien,
                             };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                    return LINQToDataTable(query);
+                default:
+                    return null;
             }
         }
 
-        public DataTable LoadDSCTCHDBByMaTB(decimal MaTB)
+        public DataTable GetDSCatHuy(decimal MaCTCHDB)
         {
-            try
-            {
-                var query = from itemCTCHDB in db.CTCHDBs
-                            where itemCTCHDB.MaCTCHDB == MaTB
-                            orderby itemCTCHDB.CreateDate descending
-                            select new
-                            {
-                                In = false,
-                                itemCTCHDB.PhieuDuocKy,
-                                itemCTCHDB.DaLapPhieu,
-                                itemCTCHDB.SoPhieu,
-                                itemCTCHDB.ThongBaoDuocKy,
-                                MaTB = itemCTCHDB.MaCTCHDB,
-                                Ma = itemCTCHDB.MaCTCHDB,
-                                itemCTCHDB.CreateDate,
-                                itemCTCHDB.DanhBo,
-                                itemCTCHDB.HoTen,
-                                itemCTCHDB.DiaChi,
-                                itemCTCHDB.LyDo,
-                                itemCTCHDB.GhiChuLyDo,
-                                itemCTCHDB.SoTien,
-                                itemCTCHDB.NguoiKy,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+            var query = from item in db.CTCHDBs
+                        where item.MaCTCHDB == MaCTCHDB
+                        select new
+                        {
+                            MaDon = item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
+                                    : item.CHDB.MaDonTXL != null ? "TXL" + item.CHDB.MaDonTXL
+                                    : item.CHDB.MaDonTBC != null ? "TBC" + item.CHDB.MaDonTBC : null,
+                            item.PhieuDuocKy,
+                            item.DaLapPhieu,
+                            item.SoPhieu,
+                            item.ThongBaoDuocKy,
+                            MaTB = item.MaCTCHDB,
+                            ID = item.MaCTCHDB,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.LyDo,
+                            item.GhiChuLyDo,
+                            item.SoTien,
+                        };
+            return LINQToDataTable(query);
         }
 
-        public DataTable LoadDSCTCHDBByMaTBs(decimal TuMaTB, decimal DenMaTB)
+        public DataTable GetDSCatHuy(decimal FromMaCTCHDB, decimal ToMaCTCHDB)
         {
-            try
-            {
-                var query = from itemCTCHDB in db.CTCHDBs
-                            where itemCTCHDB.MaCTCHDB.ToString().Substring(itemCTCHDB.MaCTCHDB.ToString().Length - 2, 2) == TuMaTB.ToString().Substring(TuMaTB.ToString().Length - 2, 2)
-                            && itemCTCHDB.MaCTCHDB.ToString().Substring(itemCTCHDB.MaCTCHDB.ToString().Length - 2, 2) == DenMaTB.ToString().Substring(DenMaTB.ToString().Length - 2, 2)
-                            && itemCTCHDB.MaCTCHDB >= TuMaTB && itemCTCHDB.MaCTCHDB <= DenMaTB
-                            orderby itemCTCHDB.CreateDate descending
-                            select new
-                            {
-                                In = false,
-                                itemCTCHDB.PhieuDuocKy,
-                                itemCTCHDB.DaLapPhieu,
-                                itemCTCHDB.SoPhieu,
-                                itemCTCHDB.ThongBaoDuocKy,
-                                MaTB = itemCTCHDB.MaCTCHDB,
-                                Ma = itemCTCHDB.MaCTCHDB,
-                                itemCTCHDB.CreateDate,
-                                itemCTCHDB.DanhBo,
-                                itemCTCHDB.HoTen,
-                                itemCTCHDB.DiaChi,
-                                itemCTCHDB.LyDo,
-                                itemCTCHDB.GhiChuLyDo,
-                                itemCTCHDB.SoTien,
-                                itemCTCHDB.NguoiKy,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+            var query = from item in db.CTCHDBs
+                        where item.MaCTCHDB.ToString().Substring(item.MaCTCHDB.ToString().Length - 2, 2) == FromMaCTCHDB.ToString().Substring(FromMaCTCHDB.ToString().Length - 2, 2)
+                            && item.MaCTCHDB.ToString().Substring(item.MaCTCHDB.ToString().Length - 2, 2) == ToMaCTCHDB.ToString().Substring(ToMaCTCHDB.ToString().Length - 2, 2)
+                            && item.MaCTCHDB >= FromMaCTCHDB && item.MaCTCHDB <= ToMaCTCHDB
+                        select new
+                        {
+                            MaDon = item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
+                                    : item.CHDB.MaDonTXL != null ? "TXL" + item.CHDB.MaDonTXL
+                                    : item.CHDB.MaDonTBC != null ? "TBC" + item.CHDB.MaDonTBC : null,
+                            item.PhieuDuocKy,
+                            item.DaLapPhieu,
+                            item.SoPhieu,
+                            item.ThongBaoDuocKy,
+                            MaTB = item.MaCTCHDB,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.LyDo,
+                            item.GhiChuLyDo,
+                            item.SoTien,
+                        };
+            return LINQToDataTable(query);
         }
 
-        public DataTable LoadDSCTCHDBByDanhBo(string DanhBo)
+        public DataTable GetDSCatHuyByDanhBo(string DanhBo)
         {
-            try
-            {
-                var query = from itemCTCHDB in db.CTCHDBs
-                            where itemCTCHDB.DanhBo == DanhBo
-                            orderby itemCTCHDB.CreateDate descending
-                            select new
-                            {
-                                In = false,
-                                itemCTCHDB.PhieuDuocKy,
-                                itemCTCHDB.DaLapPhieu,
-                                itemCTCHDB.SoPhieu,
-                                itemCTCHDB.ThongBaoDuocKy,
-                                MaTB = itemCTCHDB.MaCTCHDB,
-                                Ma = itemCTCHDB.MaCTCHDB,
-                                itemCTCHDB.CreateDate,
-                                itemCTCHDB.DanhBo,
-                                itemCTCHDB.HoTen,
-                                itemCTCHDB.DiaChi,
-                                itemCTCHDB.LyDo,
-                                itemCTCHDB.GhiChuLyDo,
-                                itemCTCHDB.SoTien,
-                                itemCTCHDB.NguoiKy,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+            var query = from item in db.CTCHDBs
+                        where item.DanhBo == DanhBo
+                        select new
+                        {
+                            MaDon = item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
+                                    : item.CHDB.MaDonTXL != null ? "TXL" + item.CHDB.MaDonTXL
+                                    : item.CHDB.MaDonTBC != null ? "TBC" + item.CHDB.MaDonTBC : null,
+                            item.PhieuDuocKy,
+                            item.DaLapPhieu,
+                            item.SoPhieu,
+                            item.ThongBaoDuocKy,
+                            MaTB = item.MaCTCHDB,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.LyDo,
+                            item.GhiChuLyDo,
+                            item.SoTien,
+                        };
+            return LINQToDataTable(query);
         }
 
-        public DataTable LoadDSCTCHDBByLyDo(string LyDo)
+        public DataTable GetDSCatHuyByLyDo(string LyDo)
         {
-            try
-            {
-                var query = from itemCTCHDB in db.CTCHDBs
-                            where itemCTCHDB.LyDo.Contains(LyDo)
-                            orderby itemCTCHDB.CreateDate descending
-                            select new
-                            {
-                                In = false,
-                                itemCTCHDB.PhieuDuocKy,
-                                itemCTCHDB.DaLapPhieu,
-                                itemCTCHDB.SoPhieu,
-                                itemCTCHDB.ThongBaoDuocKy,
-                                MaTB = itemCTCHDB.MaCTCHDB,
-                                Ma = itemCTCHDB.MaCTCHDB,
-                                itemCTCHDB.CreateDate,
-                                itemCTCHDB.DanhBo,
-                                itemCTCHDB.HoTen,
-                                itemCTCHDB.DiaChi,
-                                itemCTCHDB.LyDo,
-                                itemCTCHDB.GhiChuLyDo,
-                                itemCTCHDB.SoTien,
-                                itemCTCHDB.NguoiKy,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+            var query = from item in db.CTCHDBs
+                        where item.LyDo.Contains(LyDo)
+                        select new
+                        {
+                            MaDon = item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
+                                    : item.CHDB.MaDonTXL != null ? "TXL" + item.CHDB.MaDonTXL
+                                    : item.CHDB.MaDonTBC != null ? "TBC" + item.CHDB.MaDonTBC : null,
+                            item.PhieuDuocKy,
+                            item.DaLapPhieu,
+                            item.SoPhieu,
+                            item.ThongBaoDuocKy,
+                            MaTB = item.MaCTCHDB,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.LyDo,
+                            item.GhiChuLyDo,
+                            item.SoTien,
+                        };
+            return LINQToDataTable(query);
         }
 
-        public DataTable LoadDSCTCHDBByDate(DateTime TuNgay)
+        public DataTable GetDSCatHuy(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            try
-            {
-                var query = from itemCTCHDB in db.CTCHDBs
-                            where itemCTCHDB.CreateDate.Value.Date == TuNgay.Date
-                            orderby itemCTCHDB.CreateDate descending
-                            select new
-                            {
-                                In = false,
-                                itemCTCHDB.PhieuDuocKy,
-                                itemCTCHDB.DaLapPhieu,
-                                itemCTCHDB.SoPhieu,
-                                itemCTCHDB.ThongBaoDuocKy,
-                                MaTB = itemCTCHDB.MaCTCHDB,
-                                Ma = itemCTCHDB.MaCTCHDB,
-                                itemCTCHDB.CreateDate,
-                                itemCTCHDB.DanhBo,
-                                itemCTCHDB.HoTen,
-                                itemCTCHDB.DiaChi,
-                                itemCTCHDB.LyDo,
-                                itemCTCHDB.GhiChuLyDo,
-                                itemCTCHDB.SoTien,
-                                itemCTCHDB.NguoiKy,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public DataTable LoadDSCTCHDBByDates(DateTime TuNgay, DateTime DenNgay)
-        {
-            try
-            {
-                var query = from itemCTCHDB in db.CTCHDBs
-                            where itemCTCHDB.CreateDate.Value.Date >= TuNgay.Date && itemCTCHDB.CreateDate.Value.Date <= DenNgay.Date
-                            orderby itemCTCHDB.CreateDate descending
-                            select new
-                            {
-                                In = false,
-                                itemCTCHDB.PhieuDuocKy,
-                                itemCTCHDB.DaLapPhieu,
-                                itemCTCHDB.SoPhieu,
-                                itemCTCHDB.ThongBaoDuocKy,
-                                MaTB = itemCTCHDB.MaCTCHDB,
-                                Ma = itemCTCHDB.MaCTCHDB,
-                                itemCTCHDB.CreateDate,
-                                itemCTCHDB.DanhBo,
-                                itemCTCHDB.HoTen,
-                                itemCTCHDB.DiaChi,
-                                itemCTCHDB.LyDo,
-                                itemCTCHDB.GhiChuLyDo,
-                                itemCTCHDB.SoTien,
-                                itemCTCHDB.NguoiKy,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Lấy Danh Sách Chi Tiết Cắt Hủy Danh Bộ trong Ngày
-        /// </summary>
-        /// <param name="TuNgay"></param>
-        /// <returns></returns>
-        public DataTable LoadDSCTCHDB(DateTime TuNgay)
-        {
-            try
-            {
-                var query = from itemCTCHDB in db.CTCHDBs
-                            where itemCTCHDB.CreateDate.Value.Date == TuNgay.Date
-                            select new
-                            {
-                                In = false,
-                                itemCTCHDB.PhieuDuocKy,
-                                itemCTCHDB.DaLapPhieu,
-                                itemCTCHDB.ThongBaoDuocKy,
-                                MaTB = itemCTCHDB.MaCTCHDB,
-                                Ma = itemCTCHDB.MaCTCHDB,
-                                itemCTCHDB.CreateDate,
-                                itemCTCHDB.DanhBo,
-                                itemCTCHDB.HoTen,
-                                itemCTCHDB.DiaChi,
-                                itemCTCHDB.LyDo,
-                                itemCTCHDB.GhiChuLyDo,
-                                itemCTCHDB.SoTien,
-                                itemCTCHDB.TCTBXuLy,
-                                itemCTCHDB.TroNgai,
-                                itemCTCHDB.NguoiKy,
-                                itemCTCHDB.NoiDungXuLy,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Lấy Danh Sách Chi Tiết Cắt Hủy Danh Bộ trong Khoảng Thời Gian
-        /// </summary>
-        /// <param name="TuNgay"></param>
-        /// <param name="DenNgay"></param>
-        /// <returns></returns>
-        public DataTable LoadDSCTCHDB(DateTime TuNgay, DateTime DenNgay)
-        {
-            try
-            {
-                var query = from itemCTCHDB in db.CTCHDBs
-                            where itemCTCHDB.CreateDate.Value.Date >= TuNgay.Date && itemCTCHDB.CreateDate.Value.Date <= DenNgay.Date
-                            select new
-                            {
-                                In = false,
-                                itemCTCHDB.PhieuDuocKy,
-                                itemCTCHDB.DaLapPhieu,
-                                itemCTCHDB.ThongBaoDuocKy,
-                                MaTB = itemCTCHDB.MaCTCHDB,
-                                Ma = itemCTCHDB.MaCTCHDB,
-                                itemCTCHDB.CreateDate,
-                                itemCTCHDB.DanhBo,
-                                itemCTCHDB.HoTen,
-                                itemCTCHDB.DiaChi,
-                                itemCTCHDB.LyDo,
-                                itemCTCHDB.GhiChuLyDo,
-                                itemCTCHDB.SoTien,
-                                itemCTCHDB.TCTBXuLy,
-                                itemCTCHDB.TroNgai,
-                                itemCTCHDB.NguoiKy,
-                                itemCTCHDB.NoiDungXuLy,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Lấy Danh Sách Chi Tiết Cắt Hủy Danh Bộ Tổ Xử Lý
-        /// </summary>
-        /// <returns></returns>
-        public DataTable LoadDSCTCHDB_TXL()
-        {
-            try
-            {
-                var query = from itemCTCHDB in db.CTCHDBs
-                            where itemCTCHDB.CHDB.MaDonTXL != null
-                            select new
-                            {
-                                In = false,
-                                MaTB = itemCTCHDB.MaCTCHDB,
-                                itemCTCHDB.DanhBo,
-                                itemCTCHDB.HoTen,
-                                itemCTCHDB.DiaChi,
-                                itemCTCHDB.LyDo,
-                                itemCTCHDB.GhiChuLyDo,
-                                itemCTCHDB.SoTien,
-                                itemCTCHDB.ThongBaoDuocKy,
-                                itemCTCHDB.DaLapPhieu,
-                                itemCTCHDB.PhieuDuocKy,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-
-        }
-
-        /// <summary>
-        /// Kiểm tra Cắt Hủy đã được lập trước đó chưa, trong record Cắt Hủy có column Mã Chi Tiết Cắt Tạm
-        /// </summary>
-        /// <param name="MaCTCTDB"></param>
-        /// <returns></returns>
-        public bool CheckCTCHDBbyCTCTDB(decimal MaCTCTDB)
-        {
-            try
-            {
-                return db.CTCHDBs.Any(itemCTCHDB => itemCTCHDB.MaCTCTDB == MaCTCTDB);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
-
-        public bool CheckExist_CTCHDB(decimal MaCTCHDB)
-        {
-            return db.CTCHDBs.Any(item => item.MaCTCHDB == MaCTCHDB);
+            var query = from item in db.CTCHDBs
+                        where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
+                        select new
+                        {
+                            MaDon = item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
+                                    : item.CHDB.MaDonTXL != null ? "TXL" + item.CHDB.MaDonTXL
+                                    : item.CHDB.MaDonTBC != null ? "TBC" + item.CHDB.MaDonTBC : null,
+                            item.PhieuDuocKy,
+                            item.DaLapPhieu,
+                            item.SoPhieu,
+                            item.ThongBaoDuocKy,
+                            MaTB = item.MaCTCHDB,
+                            ID = item.MaCTCHDB,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.LyDo,
+                            item.GhiChuLyDo,
+                            item.SoTien,
+                        };
+            return LINQToDataTable(query);
         }
 
         ///// <summary>
@@ -1262,21 +902,6 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         //    }
         //}
 
-        public bool CheckExist_CTCHDB(string Loai, decimal MaDon, string DanhBo)
-        {
-            switch (Loai)
-            {
-                case "TKH":
-                    return db.CTCHDBs.Any(item => item.CHDB.MaDon == MaDon && item.DanhBo == DanhBo);
-                case "TXL":
-                    return db.CTCHDBs.Any(item => item.CHDB.MaDonTXL == MaDon && item.DanhBo == DanhBo);
-                case "TBC":
-                    return db.CTCHDBs.Any(item => item.CHDB.MaDonTBC == MaDon && item.DanhBo == DanhBo);
-                default:
-                    return false;
-            }
-        }
-
         public DataTable GetDSCatHuy_NgayLap_ChuaXuLy(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             return LINQToDataTable(db.CTCHDBs.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.NgayXuLy == null).OrderBy(item => item.CreateDate).ToList());
@@ -1295,6 +920,68 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         #endregion
 
         #region YeuCauCHDB (Phiếu Yêu Cầu Cắt Hủy Danh Bộ)
+
+        public bool ThemPhieuHuy(PhieuCHDB ycchdb)
+        {
+            try
+            {
+                if (db.PhieuCHDBs.Count() > 0)
+                {
+                    string ID = "MaYCCHDB";
+                    string Table = "PhieuCHDB";
+                    decimal MaYCCHDB = db.ExecuteQuery<decimal>("declare @Ma int " +
+                        "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                        "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                    ycchdb.MaYCCHDB = getMaxNextIDTable(MaYCCHDB);
+                }
+                else
+                    ycchdb.MaYCCHDB = decimal.Parse("1" + DateTime.Now.ToString("yy"));
+                ycchdb.CreateDate = DateTime.Now;
+                ycchdb.CreateBy = CTaiKhoan.MaUser;
+                db.PhieuCHDBs.InsertOnSubmit(ycchdb);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new dbKinhDoanhDataContext();
+                return false;
+            }
+        }
+
+        public bool SuaPhieuHuy(PhieuCHDB ycchdb)
+        {
+            try
+            {
+                ycchdb.ModifyDate = DateTime.Now;
+                ycchdb.ModifyBy = CTaiKhoan.MaUser;
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new dbKinhDoanhDataContext();
+                return false;
+            }
+        }
+
+        public bool XoaPhieuHuy(PhieuCHDB ycchdb)
+        {
+            try
+            {
+                db.PhieuCHDBs.DeleteOnSubmit(ycchdb);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new dbKinhDoanhDataContext();
+                return false;
+            }
+        }
 
         /// <summary>
         /// Kiểm tra Thông Báo CTDB có được lấp Phiếu Yếu Cầu CHDB không
@@ -1332,111 +1019,6 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public bool ThemPhieuHuy(PhieuCHDB ycchdb)
-        {
-            try
-            {
-                if (db.PhieuCHDBs.Count() > 0)
-                {
-                    string ID = "MaYCCHDB";
-                    string Table = "PhieuCHDB";
-                    decimal MaYCCHDB = db.ExecuteQuery<decimal>("declare @Ma int " +
-                        "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
-                        "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
-                    //decimal MaYCCHDB = db.YeuCauCHDBs.Max(itemYCCHDB => itemYCCHDB.MaYCCHDB);
-                    ycchdb.MaYCCHDB = getMaxNextIDTable(MaYCCHDB);
-                }
-                else
-                    ycchdb.MaYCCHDB = decimal.Parse("1" + DateTime.Now.ToString("yy"));
-                ycchdb.CreateDate = DateTime.Now;
-                ycchdb.CreateBy = CTaiKhoan.MaUser;
-                db.PhieuCHDBs.InsertOnSubmit(ycchdb);
-                db.SubmitChanges();
-                //MessageBox.Show("Thành công Thêm YeuCauCHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
-            }
-        }
-
-        public bool SuaPhieuHuy(PhieuCHDB ycchdb)
-        {
-            try
-            {
-                ycchdb.ModifyDate = DateTime.Now;
-                ycchdb.ModifyBy = CTaiKhoan.MaUser;
-                db.SubmitChanges();
-                //MessageBox.Show("Thành công Sửa YeuCauCHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
-            }
-        }
-
-        public bool XoaPhieuHuy(PhieuCHDB ycchdb)
-        {
-            try
-            {
-                db.PhieuCHDBs.DeleteOnSubmit(ycchdb);
-                db.SubmitChanges();
-                //MessageBox.Show("Thành công Sửa YeuCauCHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
-            }
-        }
-
-        public PhieuCHDB GetPhieuHuy(decimal MaYCCHDB)
-        {
-            try
-            {
-                return db.PhieuCHDBs.SingleOrDefault(itemYCCHDB => itemYCCHDB.MaYCCHDB == MaYCCHDB);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public PhieuCHDB getYeuCauCHDBbyMaCTCTDB(decimal MaCTCTDB)
-        {
-            try
-            {
-                return db.PhieuCHDBs.Where(itemYCCHDB => itemYCCHDB.MaCTCTDB == MaCTCTDB).OrderBy(item => item.CreateDate).ToList().Last();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public PhieuCHDB getYeuCauCHDBbyMaCTCHDB(decimal MaCTCHDB)
-        {
-            try
-            {
-                return db.PhieuCHDBs.Where(itemYCCHDB => itemYCCHDB.MaCTCHDB == MaCTCHDB).OrderBy(item => item.CreateDate).ToList().Last();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
         public bool CheckExist_PhieuHuy(decimal MaYCCHDB)
         {
             return db.PhieuCHDBs.Any(item => item.MaYCCHDB == MaYCCHDB);
@@ -1456,51 +1038,30 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                     return false;
             }
         }
+
+        public PhieuCHDB GetPhieuHuy(decimal MaYCCHDB)
+        {
+            try
+            {
+                return db.PhieuCHDBs.SingleOrDefault(itemYCCHDB => itemYCCHDB.MaYCCHDB == MaYCCHDB);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public PhieuCHDB GetPhieuHuyByMaCTCTDB(decimal MaCTCTDB)
+        {
+                return db.PhieuCHDBs.Where(itemYCCHDB => itemYCCHDB.MaCTCTDB == MaCTCTDB).OrderBy(item => item.CreateDate).ToList().Last();
+        }
+
+        public PhieuCHDB GetPhieuHuyByMaCTCHDB(decimal MaCTCHDB)
+        {
+                return db.PhieuCHDBs.Where(itemYCCHDB => itemYCCHDB.MaCTCHDB == MaCTCHDB).OrderBy(item => item.CreateDate).ToList().Last();
+        }
         
-        /// <summary>
-        /// Kiểm tra Đơn Khách Hàng có được YCCHDB xử lý hay chưa
-        /// </summary>
-        /// <param name="MaDon"></param>
-        /// <param name="DanhBo"></param>
-        /// <returns>true/có</returns>
-        public bool CheckYCCHDBbyMaDonDanhBo(decimal MaDon, string DanhBo)
-        {
-            try
-            {
-                if (db.PhieuCHDBs.Any(itemYCCHDB => itemYCCHDB.MaDon == MaDon && itemYCCHDB.DanhBo == DanhBo))
-                    return true;
-                else
-                    return false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Kiểm tra Đơn Tổ Xử Lý có được YCCHDB xử lý hay chưa
-        /// </summary>
-        /// <param name="MaDonTXL"></param>
-        /// <param name="DanhBo"></param>
-        /// <returns>true/có</returns>
-        public bool CheckYCCHDBbyMaDonDanhBo_TXL(decimal MaDonTXL, string DanhBo)
-        {
-            try
-            {
-                if (db.PhieuCHDBs.Any(itemYCCHDB => itemYCCHDB.MaDonTXL == MaDonTXL && itemYCCHDB.DanhBo == DanhBo))
-                    return true;
-                else
-                    return false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
-
         /// <summary>
         /// Lấy Danh Sách Yêu Cầu Cắt Hủy Danh Bộ trực tiếp không qua Thông Báo
         /// </summary>
@@ -1536,198 +1097,155 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public DataTable LoadDSYCCHDBByMaDon(decimal MaDon)
+        public DataTable GetDSPhieuHuy(string Loai,decimal MaDon)
         {
-            try
+            switch (Loai)
             {
-                var query = from itemYCCHDB in db.PhieuCHDBs
-                            where itemYCCHDB.MaDon == MaDon || itemYCCHDB.MaDonTXL == MaDon
-                            orderby itemYCCHDB.CreateDate descending
+                case "TKH":
+                    var query = from item in db.PhieuCHDBs
+                                where item.MaDon == MaDon
+                                select new
+                                {
+                                    MaDon = "TKH" + item.MaDon,
+                                    item.PhieuDuocKy,
+                                    MaTB = item.MaYCCHDB,
+                                    item.CreateDate,
+                                    item.DanhBo,
+                                    item.HoTen,
+                                    item.DiaChi,
+                                    item.LyDo,
+                                    item.GhiChuLyDo,
+                                    item.SoTien,
+                                };
+                    return LINQToDataTable(query);
+                case "TXL":
+                    query = from item in db.PhieuCHDBs
+                            where item.MaDonTXL == MaDon
                             select new
                             {
-                                In = false,
-                                itemYCCHDB.PhieuDuocKy,
-                                SoPhieu = itemYCCHDB.MaYCCHDB,
-                                Ma = itemYCCHDB.MaYCCHDB,
-                                itemYCCHDB.CreateDate,
-                                itemYCCHDB.DanhBo,
-                                itemYCCHDB.HoTen,
-                                itemYCCHDB.DiaChi,
-                                itemYCCHDB.LyDo,
-                                itemYCCHDB.GhiChuLyDo,
-                                itemYCCHDB.SoTien,
-                                itemYCCHDB.NguoiKy,
-                                itemYCCHDB.NgayCatTamNutBit,
+                                MaDon = "TXL" + item.MaDonTXL,
+                                item.PhieuDuocKy,
+                                MaTB = item.MaYCCHDB,
+                                item.CreateDate,
+                                item.DanhBo,
+                                item.HoTen,
+                                item.DiaChi,
+                                item.LyDo,
+                                item.GhiChuLyDo,
+                                item.SoTien,
                             };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                    return LINQToDataTable(query);
+                case "TBC":
+                    query = from item in db.PhieuCHDBs
+                            where item.MaDonTBC == MaDon
+                            select new
+                            {
+                                MaDon = "TBC" + item.MaDonTBC,
+                                item.PhieuDuocKy,
+                                MaTB = item.MaYCCHDB,
+                                item.CreateDate,
+                                item.DanhBo,
+                                item.HoTen,
+                                item.DiaChi,
+                                item.LyDo,
+                                item.GhiChuLyDo,
+                                item.SoTien,
+                            };
+                    return LINQToDataTable(query);
+                default:
+                    return null;
             }
         }
 
-        public DataTable LoadDSYCCHDBBySoPhieu(decimal SoPhieu)
+        public DataTable GetDSPhieuHuy(decimal MaYCCHDB)
         {
-            try
-            {
-                var query = from itemYCCHDB in db.PhieuCHDBs
-                            where itemYCCHDB.MaYCCHDB == SoPhieu
-                            orderby itemYCCHDB.CreateDate descending
-                            select new
-                            {
-                                In = false,
-                                itemYCCHDB.PhieuDuocKy,
-                                SoPhieu = itemYCCHDB.MaYCCHDB,
-                                Ma = itemYCCHDB.MaYCCHDB,
-                                itemYCCHDB.CreateDate,
-                                itemYCCHDB.DanhBo,
-                                itemYCCHDB.HoTen,
-                                itemYCCHDB.DiaChi,
-                                itemYCCHDB.LyDo,
-                                itemYCCHDB.GhiChuLyDo,
-                                itemYCCHDB.SoTien,
-                                itemYCCHDB.NguoiKy,
-                                itemYCCHDB.NgayCatTamNutBit,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+            var query = from item in db.PhieuCHDBs
+                        where item.MaYCCHDB == MaYCCHDB
+                        select new
+                        {
+                            MaDon = item.MaDon != null ? "TKH" + item.MaDon
+                                    : item.MaDonTXL != null ? "TXL" + item.MaDonTXL
+                                    : item.MaDonTBC != null ? "TBC" + item.MaDonTBC : null,
+                            item.PhieuDuocKy,
+                            MaTB = item.MaYCCHDB,
+                            ID = item.MaYCCHDB,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.LyDo,
+                            item.GhiChuLyDo,
+                            item.SoTien,
+                        };
+            return LINQToDataTable(query);
         }
 
-        public DataTable LoadDSYCCHDBBySoPhieus(decimal TuSoPhieu, decimal DenSoPhieu)
+        public DataTable GetDSPhieuHuy(decimal FromMaYCCHDB, decimal ToMaYCCHDB)
         {
-            try
-            {
-                var query = from itemYCCHDB in db.PhieuCHDBs
-                            where itemYCCHDB.MaYCCHDB.ToString().Substring(itemYCCHDB.MaYCCHDB.ToString().Length - 2, 2) == TuSoPhieu.ToString().Substring(TuSoPhieu.ToString().Length - 2, 2)
-                            && itemYCCHDB.MaYCCHDB.ToString().Substring(itemYCCHDB.MaYCCHDB.ToString().Length - 2, 2) == DenSoPhieu.ToString().Substring(DenSoPhieu.ToString().Length - 2, 2)
-                            && itemYCCHDB.MaYCCHDB >= TuSoPhieu && itemYCCHDB.MaYCCHDB <= DenSoPhieu
-                            orderby itemYCCHDB.CreateDate descending
-                            select new
-                            {
-                                In = false,
-                                itemYCCHDB.PhieuDuocKy,
-                                SoPhieu = itemYCCHDB.MaYCCHDB,
-                                Ma = itemYCCHDB.MaYCCHDB,
-                                itemYCCHDB.CreateDate,
-                                itemYCCHDB.DanhBo,
-                                itemYCCHDB.HoTen,
-                                itemYCCHDB.DiaChi,
-                                itemYCCHDB.LyDo,
-                                itemYCCHDB.GhiChuLyDo,
-                                itemYCCHDB.SoTien,
-                                itemYCCHDB.NguoiKy,
-                                itemYCCHDB.NgayCatTamNutBit,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+            var query = from item in db.PhieuCHDBs
+                        where item.MaYCCHDB.ToString().Substring(item.MaYCCHDB.ToString().Length - 2, 2) == FromMaYCCHDB.ToString().Substring(FromMaYCCHDB.ToString().Length - 2, 2)
+                            && item.MaYCCHDB.ToString().Substring(item.MaYCCHDB.ToString().Length - 2, 2) == ToMaYCCHDB.ToString().Substring(ToMaYCCHDB.ToString().Length - 2, 2)
+                            && item.MaYCCHDB >= FromMaYCCHDB && item.MaYCCHDB <= ToMaYCCHDB
+                        select new
+                        {
+                            MaDon = item.MaDon != null ? "TKH" + item.MaDon
+                                    : item.MaDonTXL != null ? "TXL" + item.MaDonTXL
+                                    : item.MaDonTBC != null ? "TBC" + item.MaDonTBC : null,
+                            item.PhieuDuocKy,
+                            MaTB = item.MaYCCHDB,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.LyDo,
+                            item.GhiChuLyDo,
+                            item.SoTien,
+                        };
+            return LINQToDataTable(query);
         }
 
-        public DataTable LoadDSYCCHDBByDanhBo(string DanhBo)
+        public DataTable GetDSPhieuHuy(string DanhBo)
         {
-            try
-            {
-                var query = from itemYCCHDB in db.PhieuCHDBs
-                            where itemYCCHDB.DanhBo == DanhBo
-                            orderby itemYCCHDB.CreateDate descending
-                            select new
-                            {
-                                In = false,
-                                itemYCCHDB.PhieuDuocKy,
-                                SoPhieu = itemYCCHDB.MaYCCHDB,
-                                Ma = itemYCCHDB.MaYCCHDB,
-                                itemYCCHDB.CreateDate,
-                                itemYCCHDB.DanhBo,
-                                itemYCCHDB.HoTen,
-                                itemYCCHDB.DiaChi,
-                                itemYCCHDB.LyDo,
-                                itemYCCHDB.GhiChuLyDo,
-                                itemYCCHDB.SoTien,
-                                itemYCCHDB.NguoiKy,
-                                itemYCCHDB.NgayCatTamNutBit,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+            var query = from item in db.PhieuCHDBs
+                        where item.DanhBo == DanhBo
+                        select new
+                        {
+                            MaDon = item.MaDon != null ? "TKH" + item.MaDon
+                                    : item.MaDonTXL != null ? "TXL" + item.MaDonTXL
+                                    : item.MaDonTBC != null ? "TBC" + item.MaDonTBC : null,
+                            item.PhieuDuocKy,
+                            MaTB = item.MaYCCHDB,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.LyDo,
+                            item.GhiChuLyDo,
+                            item.SoTien,
+                        };
+            return LINQToDataTable(query);
         }
 
-        public DataTable LoadDSYCCHDBByDate(DateTime TuNgay)
+        public DataTable GetDSPhieuHuy(DateTime FromCreateDate,DateTime ToCreateDate)
         {
-            try
-            {
-                var query = from itemYCCHDB in db.PhieuCHDBs
-                            where itemYCCHDB.CreateDate.Value.Date == TuNgay.Date
-                            orderby itemYCCHDB.CreateDate descending
-                            select new
-                            {
-                                In = false,
-                                itemYCCHDB.PhieuDuocKy,
-                                SoPhieu = itemYCCHDB.MaYCCHDB,
-                                Ma = itemYCCHDB.MaYCCHDB,
-                                itemYCCHDB.CreateDate,
-                                itemYCCHDB.DanhBo,
-                                itemYCCHDB.HoTen,
-                                itemYCCHDB.DiaChi,
-                                itemYCCHDB.LyDo,
-                                itemYCCHDB.GhiChuLyDo,
-                                itemYCCHDB.SoTien,
-                                itemYCCHDB.NguoiKy,
-                                itemYCCHDB.NgayCatTamNutBit,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public DataTable LoadDSYCCHDBByDates(DateTime TuNgay, DateTime DenNgay)
-        {
-            try
-            {
-                var query = from itemYCCHDB in db.PhieuCHDBs
-                            where itemYCCHDB.CreateDate.Value.Date >= TuNgay.Date && itemYCCHDB.CreateDate.Value.Date <= DenNgay.Date
-                            orderby itemYCCHDB.CreateDate descending
-                            select new
-                            {
-                                In = false,
-                                itemYCCHDB.PhieuDuocKy,
-                                SoPhieu = itemYCCHDB.MaYCCHDB,
-                                Ma = itemYCCHDB.MaYCCHDB,
-                                itemYCCHDB.CreateDate,
-                                itemYCCHDB.DanhBo,
-                                itemYCCHDB.HoTen,
-                                itemYCCHDB.DiaChi,
-                                itemYCCHDB.LyDo,
-                                itemYCCHDB.GhiChuLyDo,
-                                itemYCCHDB.SoTien,
-                                itemYCCHDB.NguoiKy,
-                                itemYCCHDB.NgayCatTamNutBit,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+            var query = from item in db.PhieuCHDBs
+                        where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
+                        select new
+                        {
+                            MaDon = item.MaDon != null ? "TKH" + item.MaDon
+                                    : item.MaDonTXL != null ? "TXL" + item.MaDonTXL
+                                    : item.MaDonTBC != null ? "TBC" + item.MaDonTBC : null,
+                            item.PhieuDuocKy,
+                            MaTB = item.MaYCCHDB,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.LyDo,
+                            item.GhiChuLyDo,
+                            item.SoTien,
+                        };
+            return LINQToDataTable(query);
         }
 
         /// <summary>

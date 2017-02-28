@@ -49,6 +49,7 @@
             this.ThuDuocKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MaCTTTTL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VeViec = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -196,6 +197,7 @@
             this.ThuDuocKy,
             this.MaCTTTTL,
             this.CreateDate,
+            this.MaDon,
             this.DanhBo,
             this.VeViec,
             this.NoiDung,
@@ -203,7 +205,7 @@
             this.dgvDSThu.Location = new System.Drawing.Point(12, 68);
             this.dgvDSThu.Name = "dgvDSThu";
             this.dgvDSThu.RowHeadersWidth = 60;
-            this.dgvDSThu.Size = new System.Drawing.Size(1211, 560);
+            this.dgvDSThu.Size = new System.Drawing.Size(1311, 560);
             this.dgvDSThu.TabIndex = 11;
             this.dgvDSThu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSThu_CellFormatting);
             this.dgvDSThu.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvDSThu_CellValidating);
@@ -262,6 +264,12 @@
             this.CreateDate.Name = "CreateDate";
             this.CreateDate.ReadOnly = true;
             // 
+            // MaDon
+            // 
+            this.MaDon.DataPropertyName = "MaDon";
+            this.MaDon.HeaderText = "Mã Đơn";
+            this.MaDon.Name = "MaDon";
+            // 
             // DanhBo
             // 
             this.DanhBo.DataPropertyName = "DanhBo";
@@ -298,7 +306,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1464, 661);
+            this.ClientSize = new System.Drawing.Size(1331, 661);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.btnInNhan);
             this.Controls.Add(this.chkSelectAll);
@@ -344,6 +352,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn ThuDuocKy;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaCTTTTL;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn VeViec;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;

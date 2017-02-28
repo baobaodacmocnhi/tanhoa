@@ -324,7 +324,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void txtMaThongBaoCH_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13)
+            if (e.KeyChar == 13&&txtMaThongBaoCH.Text.Trim()!="")
             {
                 if (_cCHDB.CheckExist_CTCHDB(decimal.Parse(txtMaThongBaoCH.Text.Trim().Replace("-", ""))) == true)
                 {
@@ -381,10 +381,17 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 try
                 {
+                    if (cmbLyDo.SelectedIndex==-1)
+                    {
+                        MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
                     CTCHDB ctchdb = new CTCHDB();
+
                     if (_donkh != null)
                     {
-                        if (!_cCHDB.CheckExist_CHDB("TKH", _donkh.MaDon))
+                        if (_cCHDB.CheckExist_CHDB("TKH", _donkh.MaDon) == false)
                         {
                             CHDB chdb = new CHDB();
                             chdb.MaDon = _donkh.MaDon;
@@ -400,7 +407,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     else
                         if (_dontxl != null)
                         {
-                            if (!_cCHDB.CheckExist_CHDB("TXL", _dontxl.MaDon))
+                            if (_cCHDB.CheckExist_CHDB("TXL", _dontxl.MaDon) == false)
                             {
                                 CHDB chdb = new CHDB();
                                 chdb.MaDonTXL = _dontxl.MaDon;
@@ -416,7 +423,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         else
                             if (_dontbc != null)
                             {
-                                if (!_cCHDB.CheckExist_CHDB("TBC", _dontxl.MaDon))
+                                if (_cCHDB.CheckExist_CHDB("TBC", _dontxl.MaDon) == false)
                                 {
                                     CHDB chdb = new CHDB();
                                     chdb.MaDonTBC = _dontbc.MaDon;
@@ -854,7 +861,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             ///lấy lại phiếu cũ
                             else
                             {
-                                PhieuCHDB ycchdb = _cCHDB.getYeuCauCHDBbyMaCTCHDB(_ctchdb.MaCTCHDB);
+                                PhieuCHDB ycchdb = _cCHDB.GetPhieuHuyByMaCTCHDB(_ctchdb.MaCTCHDB);
                                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                 DataRow dr = dsBaoCao.Tables["PhieuCHDB"].NewRow();
 

@@ -343,7 +343,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             {
                                 DCBD dcbd = new DCBD();
                                 dcbd.MaDonTXL = _dontxl.MaDon;
-                                if (_cDCBD.ThemDCBD(dcbd))
+                                if (_cDCBD.Them(dcbd))
                                 {
                                 }
                             }
@@ -440,7 +440,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             if (chkCodeF2.Checked)
                                 ctdchd.CodeF2 = true;
 
-                            if (_cDCBD.ThemCTDCHD(ctdchd))
+                            if (_cDCBD.ThemDCHD(ctdchd))
                             {
                                 Clear();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -458,7 +458,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             {
                                 DCBD dcbd = new DCBD();
                                 dcbd.MaDon = _donkh.MaDon;
-                                if (_cDCBD.ThemDCBD(dcbd))
+                                if (_cDCBD.Them(dcbd))
                                 {
                                 }
                             }
@@ -556,7 +556,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             if (chkCodeF2.Checked)
                                 ctdchd.CodeF2 = true;
 
-                            if (_cDCBD.ThemCTDCHD(ctdchd))
+                            if (_cDCBD.ThemDCHD(ctdchd))
                             {
                                 Clear();
                                 MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -694,7 +694,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     else
                         _ctdchd.CodeF2 = false;
 
-                    if (_cDCBD.SuaCTDCHD(_ctdchd))
+                    if (_cDCBD.SuaDCHD(_ctdchd))
                     {
                         Clear();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -711,7 +711,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
             {
                 if (_ctdchd != null && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                    if (_cDCBD.XoaCTDCHD(_ctdchd))
+                    if (_cDCBD.XoaDCHD(_ctdchd))
                     {
                         Clear();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
