@@ -508,6 +508,20 @@ namespace QLVanThu
             head17b.Font.Name = "Times New Roman";
             head17b.Font.Size = "20";
             head17b.Font.Bold = true;
+            ///
+            Microsoft.Office.Interop.Excel.Range head18a = oSheetMucLuc.get_Range("B21", "B21");
+            head18a.Value2 = "17/";
+            head18a.Font.Name = "Times New Roman";
+            head18a.Font.Size = "20";
+            head18a.Font.Bold = true;
+            head18a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head18b = oSheetMucLuc.get_Range("C21", "R21");
+            head18b.MergeCells = true;
+            head18b.Value2 = "DANH MỤC ()";
+            head18b.Font.Name = "Times New Roman";
+            head18b.Font.Size = "20";
+            head18b.Font.Bold = true;
         }
 
         private void ExportToExcel(DataTable dt, string sheetName, string title)
@@ -1239,16 +1253,16 @@ namespace QLVanThu
                 Microsoft.Office.Interop.Excel.Worksheet oSheetBG = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(6);
                 Microsoft.Office.Interop.Excel.Worksheet oSheetCV = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(7);
                 Microsoft.Office.Interop.Excel.Worksheet oSheetDDN = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(8);
-                Microsoft.Office.Interop.Excel.Worksheet oSheetGDNTT = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(8);
-                Microsoft.Office.Interop.Excel.Worksheet oSheetKH = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(9);
-                Microsoft.Office.Interop.Excel.Worksheet oSheetPC = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(10);
-                Microsoft.Office.Interop.Excel.Worksheet oSheetPG = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(11);
-                Microsoft.Office.Interop.Excel.Worksheet oSheetPLHD = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(12);
-                Microsoft.Office.Interop.Excel.Worksheet oSheetTB = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(13);
-                Microsoft.Office.Interop.Excel.Worksheet oSheetTBKC = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(14);
-                Microsoft.Office.Interop.Excel.Worksheet oSheetTM = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(15);
-                Microsoft.Office.Interop.Excel.Worksheet oSheetTTR = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(16);
-                //Microsoft.Office.Interop.Excel.Worksheet oSheetKhac = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(17);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetGDNTT = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(9);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetKH = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(10);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetPC = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(11);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetPG = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(12);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetPLHD = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(13);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetTB = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(14);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetTBKC = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(15);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetTM = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(16);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetTTR = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(17);
+                Microsoft.Office.Interop.Excel.Worksheet oSheetDM = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(18);
 
                 ExportToExcelTongHop(((DataTable)vanthudis.DataSource).DefaultView.ToTable(), oSheetTongHop);
 
@@ -1298,6 +1312,8 @@ namespace QLVanThu
                         a[13].ImportRow(dr);
                     if (dr["LoaiVB"].ToString().Contains("TTr"))
                         a[14].ImportRow(dr);
+                    if (dr["LoaiVB"].ToString().Contains("Danh mục"))
+                        a[15].ImportRow(dr);
                 }
 
                 for (int i = 0; i < 16; i++)
@@ -1348,6 +1364,9 @@ namespace QLVanThu
                             break;
                         case 14:
                             ExportToExcelChiTiet(a[i], oSheetTTR,"TTr", "TỜ TRÌNH");
+                            break;
+                        case 15:
+                            ExportToExcelChiTiet(a[i], oSheetDM, "DM", "DANH MỤC");
                             break;
                         default:
                             break;
@@ -1618,6 +1637,11 @@ namespace QLVanThu
                 if (bool.Parse(dgvDSVanThuDi["File", e.RowIndex].Value.ToString())==true)
                 System.Diagnostics.Process.Start(@"\\server_hp380\WorkflowData\" + dgvDSVanThuDi["PathFile", e.RowIndex].Value.ToString());
             }
+        }
+
+        private void dateTuNgay_ValueChanged(object sender, EventArgs e)
+        {
+
         }
 
 
