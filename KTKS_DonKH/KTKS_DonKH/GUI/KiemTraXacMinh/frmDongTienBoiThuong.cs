@@ -145,9 +145,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             if (_selectedindex != -1)
             {
-                if (_cKTXM.CheckCTKTXMbyID(decimal.Parse(dgvDSKetQuaKiemTra["MaCTKTXM", _selectedindex].Value.ToString())))
+                if (_cKTXM.CheckExist_CT(decimal.Parse(dgvDSKetQuaKiemTra["MaCTKTXM", _selectedindex].Value.ToString()))==true)
                 {
-                    CTKTXM ctktxm = _cKTXM.getCTKTXMbyID(decimal.Parse(dgvDSKetQuaKiemTra["MaCTKTXM", _selectedindex].Value.ToString()));
+                    CTKTXM ctktxm = _cKTXM.GetCT(decimal.Parse(dgvDSKetQuaKiemTra["MaCTKTXM", _selectedindex].Value.ToString()));
 
                     if (ctktxm.LapBangGia != chkLapBangGia.Checked)
                         if (chkLapBangGia.Checked)
@@ -259,7 +259,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             try
             {
                 _selectedindex = e.RowIndex;
-                LoadCTKTXM(_cKTXM.getCTKTXMbyID(decimal.Parse(dgvDSKetQuaKiemTra["MaCTKTXM", e.RowIndex].Value.ToString())));
+                LoadCTKTXM(_cKTXM.GetCT(decimal.Parse(dgvDSKetQuaKiemTra["MaCTKTXM", e.RowIndex].Value.ToString())));
             }
             catch (Exception)
             {

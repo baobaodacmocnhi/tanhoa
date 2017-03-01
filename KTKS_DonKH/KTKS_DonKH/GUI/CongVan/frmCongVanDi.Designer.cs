@@ -95,6 +95,7 @@
             this.cmbLoaiVanBan.Items.AddRange(new object[] {
             "Đơn Tổ Khách Hàng",
             "Đơn Tổ Xử Lý",
+            "Đơn Tổ Bấm Chì",
             "Kiểm Tra Xác Minh",
             "Bấm Chì",
             "Điều Chỉnh Biến Động",

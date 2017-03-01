@@ -74,18 +74,21 @@ namespace KTKS_DonKH.GUI.DongNuoc
         {
             if (ctdongnuoc.DongNuoc.MaDon != null)
             {
+                _dontkh = _cDonKH.getDonKHbyID(ctdongnuoc.DongNuoc.MaDon.Value);
                 txtMaDon.Text = ctdongnuoc.DongNuoc.MaDon.ToString().Insert(ctdongnuoc.DongNuoc.MaDon.ToString().Length - 2, "-");
                 dgvDSBamChi.DataSource = _cBamChi.GetDS("TKH", ctdongnuoc.DongNuoc.MaDon.Value, ctdongnuoc.DanhBo);
             }
             else
                 if (ctdongnuoc.DongNuoc.MaDonTXL != null)
                 {
+                    _dontxl = _cDonTXL.getDonTXLbyID(ctdongnuoc.DongNuoc.MaDonTXL.Value);
                     txtMaDon.Text = "TXL" + ctdongnuoc.DongNuoc.MaDonTXL.ToString().Insert(ctdongnuoc.DongNuoc.MaDonTXL.ToString().Length - 2, "-");
                     dgvDSBamChi.DataSource = _cBamChi.GetDS("TXL", ctdongnuoc.DongNuoc.MaDonTXL.Value, ctdongnuoc.DanhBo);
                 }
                 else
                     if (ctdongnuoc.DongNuoc.MaDonTBC != null)
                     {
+                        _dontbc = _cDonTBC.Get(ctdongnuoc.DongNuoc.MaDonTBC.Value);
                         txtMaDon.Text = "TBC" + ctdongnuoc.DongNuoc.MaDonTBC.ToString().Insert(ctdongnuoc.DongNuoc.MaDonTBC.ToString().Length - 2, "-");
                         dgvDSBamChi.DataSource = _cBamChi.GetDS("TBC", ctdongnuoc.DongNuoc.MaDonTBC.Value, ctdongnuoc.DanhBo);
                     }

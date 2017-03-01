@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>505</ApplicationRevision>
+    <ApplicationRevision>511</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -130,36 +130,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaoCao\BamChi\rptThongKeDSBamChi_LoaiDon.cs">
-      <DependentUpon>rptThongKeDSBamChi_LoaiDon.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="BaoCao\BamChi\rptThongKeDSBamChi_LoaiDon_Sub.cs">
-      <DependentUpon>rptThongKeDSBamChi_LoaiDon_Sub.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="BaoCao\BamChi\rptThongKeDSBamChi_Sub.cs">
-      <DependentUpon>rptThongKeDSBamChi_Sub.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="BaoCao\BamChi\rptThongKeDSBamChi.cs">
-      <DependentUpon>rptThongKeDSBamChi.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="BaoCao\BamChi\rptDSBamChi_ChiThan_BBDCMS.cs">
-      <DependentUpon>rptDSBamChi_ChiThan_BBDCMS.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="BaoCao\BamChi\rptDSBamChi.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -172,8 +142,8 @@
       <DependentUpon>rptQuyetToanVatTu.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BaoCao\BamChi\rptThongKeBamChi.cs">
-      <DependentUpon>rptThongKeBamChi.rpt</DependentUpon>
+    <Compile Include="BaoCao\BamChi\rptThongKeTrangThaiBamChi.cs">
+      <DependentUpon>rptThongKeTrangThaiBamChi.rpt</DependentUpon>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -406,8 +376,8 @@
       <DependentUpon>rptDSKTXM.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BaoCao\KiemTraXacMinh\rptThongKeKTXM.cs">
-      <DependentUpon>rptThongKeKTXM.rpt</DependentUpon>
+    <Compile Include="BaoCao\KiemTraXacMinh\rptThongKeHienTrangKiemTra.cs">
+      <DependentUpon>rptThongKeHienTrangKiemTra.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -928,12 +898,6 @@
     <Compile Include="GUI\KiemTraXacMinh\frmKTXM.Designer.cs">
       <DependentUpon>frmKTXM.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Loading\frmLoading.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Loading\frmLoading.Designer.cs">
-      <DependentUpon>frmLoading.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\QuanTri\frmNhom.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1096,26 +1060,6 @@
     <None Include="LinQ\dbKinhDoanh.dbml.layout">
       <DependentUpon>dbKinhDoanh.dbml</DependentUpon>
     </None>
-    <EmbeddedResource Include="BaoCao\BamChi\rptThongKeDSBamChi_LoaiDon.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptThongKeDSBamChi_LoaiDon.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\BamChi\rptThongKeDSBamChi_LoaiDon_Sub.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptThongKeDSBamChi_LoaiDon_Sub.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\BamChi\rptThongKeDSBamChi_Sub.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptThongKeDSBamChi_Sub.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\BamChi\rptThongKeDSBamChi.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptThongKeDSBamChi.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\BamChi\rptDSBamChi_ChiThan_BBDCMS.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptDSBamChi_ChiThan_BBDCMS.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\BamChi\rptDSBamChi.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSBamChi.cs</LastGenOutput>
@@ -1124,9 +1068,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptQuyetToanVatTu.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\BamChi\rptThongKeBamChi.rpt">
+    <EmbeddedResource Include="BaoCao\BamChi\rptThongKeTrangThaiBamChi.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptThongKeBamChi.cs</LastGenOutput>
+      <LastGenOutput>rptThongKeTrangThaiBamChi.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\BaoCao\rptTienTrinhXuLyDon.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1276,9 +1220,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSKTXM.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\KiemTraXacMinh\rptThongKeKTXM.rpt">
+    <EmbeddedResource Include="BaoCao\KiemTraXacMinh\rptThongKeHienTrangKiemTra.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptThongKeKTXM.cs</LastGenOutput>
+      <LastGenOutput>rptThongKeHienTrangKiemTra.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\rptKinhGui.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1543,9 +1487,6 @@
     </None>
     <EmbeddedResource Include="GUI\KiemTraXacMinh\frmKTXM.resx">
       <DependentUpon>frmKTXM.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Loading\frmLoading.resx">
-      <DependentUpon>frmLoading.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanTri\frmNhom.resx">
       <DependentUpon>frmNhom.cs</DependentUpon>

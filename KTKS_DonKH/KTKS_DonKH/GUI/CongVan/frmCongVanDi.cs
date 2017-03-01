@@ -19,6 +19,7 @@ using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.CongVan;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL;
+using KTKS_DonKH.DAL.ToBamChi;
 
 namespace KTKS_DonKH.GUI.CongVan
 {
@@ -27,6 +28,7 @@ namespace KTKS_DonKH.GUI.CongVan
         CCongVanDi _cCongVanDi = new CCongVanDi();
         CDonKH _cDonKH = new CDonKH();
         CDonTXL _cDonTXL = new CDonTXL();
+        CDonTBC _cDonTBC = new CDonTBC();
         CKTXM _cKTXM = new CKTXM();
         CBamChi _cBamChi = new CBamChi();
         CDCBD _cDCBD = new CDCBD();
@@ -167,8 +169,14 @@ namespace KTKS_DonKH.GUI.CongVan
                                 item.HoTen = dontxl.HoTen;
                                 item.DiaChi = dontxl.DiaChi;
                                 break;
+                            case "Đơn Tổ Bấm Chì":
+                                DonTBC dontbc = _cDonTBC.Get(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                item.DanhBo = dontbc.DanhBo;
+                                item.HoTen = dontbc.HoTen;
+                                item.DiaChi = dontbc.DiaChi;
+                                break;
                             case "Kiểm Tra Xác Minh":
-                                CTKTXM ctktxm = _cKTXM.getCTKTXMbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                CTKTXM ctktxm = _cKTXM.GetCT(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = ctktxm.DanhBo;
                                 item.HoTen = ctktxm.HoTen;
                                 item.DiaChi = ctktxm.DiaChi;
@@ -272,8 +280,14 @@ namespace KTKS_DonKH.GUI.CongVan
                         txtHoTen.Text = dontxl.HoTen;
                         txtDiaChi.Text = dontxl.DiaChi;
                         break;
+                    case "Đơn Tổ Bấm Chì":
+                        DonTBC dontbc = _cDonTBC.Get(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                        txtDanhBo.Text = dontbc.DanhBo;
+                        txtHoTen.Text = dontbc.HoTen;
+                        txtDiaChi.Text = dontbc.DiaChi;
+                        break;
                     case "Kiểm Tra Xác Minh":
-                        CTKTXM ctktxm = _cKTXM.getCTKTXMbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                        CTKTXM ctktxm = _cKTXM.GetCT(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = ctktxm.DanhBo;
                         txtHoTen.Text = ctktxm.HoTen;
                         txtDiaChi.Text = ctktxm.DiaChi;
@@ -344,6 +358,10 @@ namespace KTKS_DonKH.GUI.CongVan
                                 break;
                             case "Đơn Tổ Xử Lý":
                                 if (_cDonTXL.CheckExist(decimal.Parse(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2))))
+                                    lstMa.Items.Add(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2));
+                                break;
+                            case "Đơn Tổ Bấm Chì":
+                                if (_cDonTBC.CheckExist(decimal.Parse(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2))))
                                     lstMa.Items.Add(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2));
                                 break;
                             case "Kiểm Tra Xác Minh":

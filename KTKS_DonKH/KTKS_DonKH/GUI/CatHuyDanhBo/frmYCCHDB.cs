@@ -75,14 +75,23 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         public void LoadPhieuCHDB(PhieuCHDB phieuCHDB)
         {
-            if (phieuCHDB.MaDonTXL!=null)
+            if (phieuCHDB.MaDon != null)
+            {
+                _dontkh = _cDonKH.getDonKHbyID(phieuCHDB.MaDon.Value);
+                txtMaDon.Text = phieuCHDB.MaDon.ToString().Insert(phieuCHDB.MaDon.ToString().Length - 2, "-");
+            }
+            else
+            if (phieuCHDB.MaDonTXL != null)
+            {
+                _dontxl = _cDonTXL.getDonTXLbyID(phieuCHDB.MaDonTXL.Value);
                 txtMaDon.Text = "TXL" + phieuCHDB.MaDonTXL.ToString().Insert(phieuCHDB.MaDonTXL.ToString().Length - 2, "-");
+            }
             else
                 if (phieuCHDB.MaDonTBC != null)
+                {
+                    _dontbc = _cDonTBC.Get(phieuCHDB.MaDonTBC.Value);
                     txtMaDon.Text = "TBC" + phieuCHDB.MaDonTBC.ToString().Insert(phieuCHDB.MaDonTBC.ToString().Length - 2, "-");
-                else
-                    if (phieuCHDB.MaDon != null)
-                    txtMaDon.Text = phieuCHDB.MaDon.ToString().Insert(phieuCHDB.MaDon.ToString().Length - 2, "-");
+                }
 
             txtMaYCCHDB.Text = phieuCHDB.MaYCCHDB.ToString().Insert(phieuCHDB.MaYCCHDB.ToString().Length - 2, "-");
             ///

@@ -188,6 +188,21 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public bool CheckExist(string Loai,decimal MaDon)
+        {
+            switch (Loai)
+            {
+                case "TKH":
+                    return db.DCBDs.Any(item => item.MaDon == MaDon);
+                case "TXL":
+                    return db.DCBDs.Any(item => item.MaDonTXL == MaDon);
+                case "TBC":
+                    return db.DCBDs.Any(item => item.MaDonTBC == MaDon);
+                default:
+                    return false;
+            }
+        }
+
         /// <summary>
         /// Kiểm tra Đơn KH có được DCBD xử lý hay chưa
         /// </summary>
@@ -227,6 +242,21 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
+            }
+        }
+
+        public DCBD Get(string Loai,decimal MaDon)
+        {
+            switch (Loai)
+            {
+                case "TKH":
+                    return db.DCBDs.SingleOrDefault(item => item.MaDon == MaDon);
+                case "TXL":
+                    return db.DCBDs.SingleOrDefault(item => item.MaDonTXL == MaDon);
+                case "TBC":
+                    return db.DCBDs.SingleOrDefault(item => item.MaDonTBC == MaDon);
+                default:
+                    return null;
             }
         }
 
@@ -1181,6 +1211,21 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
+            }
+        }
+
+        public bool CheckExist_DCBD(string Loai,decimal MaDon, string DanhBo)
+        {
+            switch (Loai)
+            {
+                case "TKH":
+                    return db.CTDCBDs.Any(item => item.DCBD.MaDon == MaDon && item.DanhBo == DanhBo);
+                case "TXL":
+                    return db.CTDCBDs.Any(item => item.DCBD.MaDonTXL == MaDon && item.DanhBo == DanhBo);
+                case "TBC":
+                    return db.CTDCBDs.Any(item => item.DCBD.MaDonTBC == MaDon && item.DanhBo == DanhBo);
+                default:
+                    return false;
             }
         }
 

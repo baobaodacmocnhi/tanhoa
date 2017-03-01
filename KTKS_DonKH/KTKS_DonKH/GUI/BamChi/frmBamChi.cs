@@ -89,6 +89,24 @@ namespace KTKS_DonKH.GUI.BamChi
 
         public void LoadCTBamChi(CTBamChi ctbamchi)
         {
+            if (ctbamchi.BamChi.MaDon != null)
+            {
+                _dontkh = _cDonKH.getDonKHbyID(ctbamchi.BamChi.MaDon.Value);
+                txtMaDon.Text = ctbamchi.BamChi.MaDon.ToString().Insert(ctbamchi.BamChi.MaDon.ToString().Length - 2, "-");
+            }
+            else
+                if (ctbamchi.BamChi.MaDonTXL != null)
+                {
+                    _dontxl = _cDonTXL.getDonTXLbyID(ctbamchi.BamChi.MaDonTXL.Value);
+                    txtMaDon.Text = "TXL" + ctbamchi.BamChi.MaDonTXL.ToString().Insert(ctbamchi.BamChi.MaDonTXL.ToString().Length - 2, "-");
+                }
+                else
+            if (ctbamchi.BamChi.MaDonTBC != null)
+            {
+                _dontbc = _cDonTBC.Get(ctbamchi.BamChi.MaDonTBC.Value);
+                txtMaDon.Text = "TBC" + ctbamchi.BamChi.MaDonTBC.ToString().Insert(ctbamchi.BamChi.MaDonTBC.ToString().Length - 2, "-");
+            }
+            ///
             txtDanhBo.Text = ctbamchi.DanhBo;
             txtHopDong.Text = ctbamchi.HopDong;
             txtHoTen.Text = ctbamchi.HoTen;

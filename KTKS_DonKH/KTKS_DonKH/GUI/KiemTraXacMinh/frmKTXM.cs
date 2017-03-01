@@ -57,7 +57,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
             if (_MaCTKTXM != -1)
             {
-                _ctktxm = _cKTXM.getCTKTXMbyID(_MaCTKTXM);
+                _ctktxm = _cKTXM.GetCT(_MaCTKTXM);
                 if (_ctktxm.KTXM.MaDon != null)
                     txtMaDon.Text = _ctktxm.KTXM.MaDon.ToString().Insert(_ctktxm.KTXM.MaDon.ToString().Length - 2, "-");
                 else
@@ -88,6 +88,24 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         public void LoadCTKTXM(CTKTXM ctktxm)
         {
+            if (ctktxm.KTXM.MaDon != null)
+            {
+                _dontkh = _cDonKH.getDonKHbyID(ctktxm.KTXM.MaDon.Value);
+                txtMaDon.Text = ctktxm.KTXM.MaDon.ToString().Insert(ctktxm.KTXM.MaDon.ToString().Length - 2, "-");
+            }
+            else
+                if (ctktxm.KTXM.MaDonTXL != null)
+                {
+                    _dontxl = _cDonTXL.getDonTXLbyID(ctktxm.KTXM.MaDonTXL.Value);
+                    txtMaDon.Text = "TXL" + ctktxm.KTXM.MaDonTXL.ToString().Insert(ctktxm.KTXM.MaDonTXL.ToString().Length - 2, "-");
+                }
+                else
+                    if (ctktxm.KTXM.MaDonTBC != null)
+                    {
+                        _dontbc = _cDonTBC.Get(ctktxm.KTXM.MaDonTBC.Value);
+                        txtMaDon.Text = "TBC" + ctktxm.KTXM.MaDonTBC.ToString().Insert(ctktxm.KTXM.MaDonTBC.ToString().Length - 2, "-");
+                    }
+            ///
             txtDanhBo.Text = ctktxm.DanhBo;
             txtHopDong.Text = ctktxm.HopDong;
             txtHoTen.Text = ctktxm.HoTen;
@@ -303,7 +321,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             ktxm.MaDon = _dontkh.MaDon;
                             _cKTXM.Them(ktxm);
                         }
-                        if (txtDanhBo.Text.Trim() != "" && _cKTXM.CheckExistCT("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value)==true)
+                        if (txtDanhBo.Text.Trim() != "" && _cKTXM.CheckExist_CT("TKH", CTaiKhoan.MaUser, _dontkh.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value) == true)
                         {
                             MessageBox.Show("Danh Bộ này đã được Lập Nội Dung Kiểm Tra", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
@@ -319,7 +337,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                 ktxm.MaDonTXL = _dontxl.MaDon;
                                 _cKTXM.Them(ktxm);
                             }
-                            if (txtDanhBo.Text.Trim() != "" && _cKTXM.CheckExistCT("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value)==true)
+                            if (txtDanhBo.Text.Trim() != "" && _cKTXM.CheckExist_CT("TXL", CTaiKhoan.MaUser, _dontxl.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value) == true)
                             {
                                 MessageBox.Show("Danh Bộ này đã được Lập Nội Dung Kiểm Tra", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
@@ -335,7 +353,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                     ktxm.MaDonTBC = _dontbc.MaDon;
                                     _cKTXM.Them(ktxm);
                                 }
-                                if (txtDanhBo.Text.Trim() != "" && _cKTXM.CheckExistCT("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value)==true)
+                                if (txtDanhBo.Text.Trim() != "" && _cKTXM.CheckExist_CT("TBC", CTaiKhoan.MaUser,_dontbc.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value)==true)
                                 {
                                     MessageBox.Show("Danh Bộ này đã được Lập Nội Dung Kiểm Tra", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
@@ -545,7 +563,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             try
             {
                 dgvDSKetQuaKiemTra.Rows[e.RowIndex].Selected = true;
-                _ctktxm = _cKTXM.getCTKTXMbyID(decimal.Parse(dgvDSKetQuaKiemTra.SelectedRows[0].Cells["MaCTKTXM"].Value.ToString()));
+                _ctktxm = _cKTXM.GetCT(decimal.Parse(dgvDSKetQuaKiemTra.SelectedRows[0].Cells["MaCTKTXM"].Value.ToString()));
                 LoadCTKTXM(_ctktxm);
             }
             catch (Exception)

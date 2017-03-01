@@ -115,7 +115,7 @@ namespace KTKS_DonKH.GUI.BamChi
                 dr["Hieu"] = itemRow["Hieu"];
                 dr["Co"] = itemRow["Co"];
                 dr["ChiSo"] = itemRow["ChiSo"];
-                dr["TrangThai"] = itemRow["TrangThaiBC"];
+                dr["TrangThaiBC"] = itemRow["TrangThaiBC"];
                 dr["VienChi"] = itemRow["VienChi"];
                 dr["DayChi"] = itemRow["DayChi"];
                 dr["MaSoBC"] = itemRow["MaSoBC"];

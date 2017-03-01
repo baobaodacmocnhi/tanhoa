@@ -81,13 +81,22 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         public void LoadTTTL(CTTTTL cttttl)
         {
             if (cttttl.TTTL.MaDon != null)
+            {
+                _dontkh = _cDonKH.getDonKHbyID(cttttl.TTTL.MaDon.Value);
                 txtMaDon.Text = cttttl.TTTL.MaDon.Value.ToString().Insert(cttttl.TTTL.MaDon.Value.ToString().Length - 2, "-");
+            }
             else
                 if (cttttl.TTTL.MaDonTXL != null)
+                {
+                    _dontxl = _cDonTXL.getDonTXLbyID(cttttl.TTTL.MaDonTXL.Value);
                     txtMaDon.Text = "TXL" + cttttl.TTTL.MaDonTXL.Value.ToString().Insert(cttttl.TTTL.MaDonTXL.Value.ToString().Length - 2, "-");
+                }
                 else
                     if (cttttl.TTTL.MaDonTBC != null)
+                    {
+                        _dontbc = _cDonTBC.Get(cttttl.TTTL.MaDonTBC.Value);
                         txtMaDon.Text = "TBC" + cttttl.TTTL.MaDonTBC.Value.ToString().Insert(cttttl.TTTL.MaDonTBC.Value.ToString().Length - 2, "-");
+                    }
 
             txtMaCTTTTL.Text = cttttl.MaCTTTTL.ToString().Insert(cttttl.MaCTTTTL.ToString().Length - 2, "-");
             txtDanhBo.Text = cttttl.DanhBo;

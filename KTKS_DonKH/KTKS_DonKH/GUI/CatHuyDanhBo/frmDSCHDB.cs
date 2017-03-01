@@ -95,8 +95,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 //
                 dgvDSYCCHDB.Columns["YC_LyDo"].Visible = true;
                 dgvDSYCCHDB.Columns["YC_GhiChuLyDo"].Visible = true;
-                dgvDSYCCHDB.Columns["YC_SoTien"].Visible = true;
-                dgvDSYCCHDB.Columns["YC_NgayCatTamNutBit"].Visible = true;
                 dgvDSYCCHDB.Columns["YC_PhieuDuocKy"].HeaderText = "Phiếu Được Ký";
                 dgvDSYCCHDB.Columns["SoPhieu"].HeaderText = "Số Phiếu";
                 //
@@ -118,8 +116,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 //
                 dgvDSYCCHDB.Columns["YC_LyDo"].Visible = false;
                 dgvDSYCCHDB.Columns["YC_GhiChuLyDo"].Visible = false;
-                dgvDSYCCHDB.Columns["YC_SoTien"].Visible = false;
-                dgvDSYCCHDB.Columns["YC_NgayCatTamNutBit"].Visible = false;
                 dgvDSYCCHDB.Columns["YC_PhieuDuocKy"].HeaderText = "TB Được Ký";
                 dgvDSYCCHDB.Columns["SoPhieu"].HeaderText = "Mã TB";
                 //
@@ -443,7 +439,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             }
                     if (radDSYCCHDB.Checked)
                         for (int i = 0; i < dgvDSYCCHDB.Rows.Count; i++)
-                            if (dgvDSCTCHDB["In", i].Value != null && bool.Parse(dgvDSYCCHDB["YC_In", i].Value.ToString()) == true)
+                            if (dgvDSYCCHDB["YC_In", i].Value != null && bool.Parse(dgvDSYCCHDB["YC_In", i].Value.ToString()) == true)
                             {
                                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                 DataRow dr = dsBaoCao.Tables["PhieuCHDB"].NewRow();
@@ -498,7 +494,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             }
                     if (radDSDongNuoc.Checked)
                         for (int i = 0; i < dgvDSYCCHDB.Rows.Count; i++)
-                            if (dgvDSCTCHDB["In", i].Value != null && bool.Parse(dgvDSYCCHDB["YC_In", i].Value.ToString()) == true)
+                            if (dgvDSYCCHDB["YC_In", i].Value != null && bool.Parse(dgvDSYCCHDB["YC_In", i].Value.ToString()) == true)
                             {
                                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                 DataRow dr = dsBaoCao.Tables["ThongBaoDongNuoc"].NewRow();
