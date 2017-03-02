@@ -52,14 +52,22 @@
             this.DanhBo_TH = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnKiemTra = new System.Windows.Forms.Button();
             this.btnKiemTraAll = new System.Windows.Forms.Button();
-            this.listA = new System.Windows.Forms.ListView();
+            this.lstViewA = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.listB = new System.Windows.Forms.ListView();
+            this.lstViewB = new System.Windows.Forms.ListView();
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnChonFileA = new System.Windows.Forms.Button();
             this.btnChonFileB = new System.Windows.Forms.Button();
             this.txtTongA = new System.Windows.Forms.TextBox();
             this.txtTongB = new System.Windows.Forms.TextBox();
+            this.btnCopyToClipboardA = new System.Windows.Forms.Button();
+            this.btnCopyToClipboardB = new System.Windows.Forms.Button();
+            this.btnCopyToClipboard_Billing = new System.Windows.Forms.Button();
+            this.btnCopyToClipboard_TH = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtNoiDungA = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtNoiDungB = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -129,12 +137,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnCopyToClipboard_Billing);
             this.groupBox1.Controls.Add(this.txtTongHD_Billing);
             this.groupBox1.Controls.Add(this.lstView_Billing);
             this.groupBox1.Controls.Add(this.btnChonFile);
             this.groupBox1.Location = new System.Drawing.Point(12, 39);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(360, 453);
+            this.groupBox1.Size = new System.Drawing.Size(360, 479);
             this.groupBox1.TabIndex = 52;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Billing";
@@ -191,6 +200,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnCopyToClipboard_TH);
             this.groupBox2.Controls.Add(this.txtTongHD_TH);
             this.groupBox2.Controls.Add(this.lstView_TH);
             this.groupBox2.Controls.Add(this.label3);
@@ -198,7 +208,7 @@
             this.groupBox2.Controls.Add(this.btnXem);
             this.groupBox2.Location = new System.Drawing.Point(459, 39);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(360, 453);
+            this.groupBox2.Size = new System.Drawing.Size(360, 479);
             this.groupBox2.TabIndex = 53;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tân Hòa";
@@ -255,7 +265,7 @@
             // 
             // btnKiemTraAll
             // 
-            this.btnKiemTraAll.Location = new System.Drawing.Point(951, 66);
+            this.btnKiemTraAll.Location = new System.Drawing.Point(951, 119);
             this.btnKiemTraAll.Name = "btnKiemTraAll";
             this.btnKiemTraAll.Size = new System.Drawing.Size(75, 23);
             this.btnKiemTraAll.TabIndex = 57;
@@ -263,32 +273,32 @@
             this.btnKiemTraAll.UseVisualStyleBackColor = true;
             this.btnKiemTraAll.Click += new System.EventHandler(this.btnKiemTraAll_Click);
             // 
-            // listA
+            // lstViewA
             // 
-            this.listA.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lstViewA.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
-            this.listA.Location = new System.Drawing.Point(825, 66);
-            this.listA.Name = "listA";
-            this.listA.Size = new System.Drawing.Size(120, 426);
-            this.listA.TabIndex = 58;
-            this.listA.UseCompatibleStateImageBehavior = false;
-            this.listA.View = System.Windows.Forms.View.Details;
+            this.lstViewA.Location = new System.Drawing.Point(825, 119);
+            this.lstViewA.Name = "lstViewA";
+            this.lstViewA.Size = new System.Drawing.Size(120, 373);
+            this.lstViewA.TabIndex = 58;
+            this.lstViewA.UseCompatibleStateImageBehavior = false;
+            this.lstViewA.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "Nội Dung";
             this.columnHeader1.Width = 100;
             // 
-            // listB
+            // lstViewB
             // 
-            this.listB.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lstViewB.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader2});
-            this.listB.Location = new System.Drawing.Point(1032, 66);
-            this.listB.Name = "listB";
-            this.listB.Size = new System.Drawing.Size(120, 426);
-            this.listB.TabIndex = 59;
-            this.listB.UseCompatibleStateImageBehavior = false;
-            this.listB.View = System.Windows.Forms.View.Details;
+            this.lstViewB.Location = new System.Drawing.Point(1032, 119);
+            this.lstViewB.Name = "lstViewB";
+            this.lstViewB.Size = new System.Drawing.Size(120, 373);
+            this.lstViewB.TabIndex = 59;
+            this.lstViewB.UseCompatibleStateImageBehavior = false;
+            this.lstViewB.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader2
             // 
@@ -307,7 +317,7 @@
             // 
             // btnChonFileB
             // 
-            this.btnChonFileB.Location = new System.Drawing.Point(1032, 41);
+            this.btnChonFileB.Location = new System.Drawing.Point(1032, 39);
             this.btnChonFileB.Name = "btnChonFileB";
             this.btnChonFileB.Size = new System.Drawing.Size(75, 23);
             this.btnChonFileB.TabIndex = 61;
@@ -329,17 +339,99 @@
             this.txtTongB.Size = new System.Drawing.Size(100, 20);
             this.txtTongB.TabIndex = 63;
             // 
+            // btnCopyToClipboardA
+            // 
+            this.btnCopyToClipboardA.Location = new System.Drawing.Point(825, 524);
+            this.btnCopyToClipboardA.Name = "btnCopyToClipboardA";
+            this.btnCopyToClipboardA.Size = new System.Drawing.Size(110, 23);
+            this.btnCopyToClipboardA.TabIndex = 72;
+            this.btnCopyToClipboardA.Text = "Copy to Clipboard";
+            this.btnCopyToClipboardA.UseVisualStyleBackColor = true;
+            this.btnCopyToClipboardA.Click += new System.EventHandler(this.btnCopyToClipboardA_Click);
+            // 
+            // btnCopyToClipboardB
+            // 
+            this.btnCopyToClipboardB.Location = new System.Drawing.Point(1032, 524);
+            this.btnCopyToClipboardB.Name = "btnCopyToClipboardB";
+            this.btnCopyToClipboardB.Size = new System.Drawing.Size(110, 23);
+            this.btnCopyToClipboardB.TabIndex = 73;
+            this.btnCopyToClipboardB.Text = "Copy to Clipboard";
+            this.btnCopyToClipboardB.UseVisualStyleBackColor = true;
+            this.btnCopyToClipboardB.Click += new System.EventHandler(this.btnCopyToClipboardB_Click);
+            // 
+            // btnCopyToClipboard_Billing
+            // 
+            this.btnCopyToClipboard_Billing.Location = new System.Drawing.Point(6, 450);
+            this.btnCopyToClipboard_Billing.Name = "btnCopyToClipboard_Billing";
+            this.btnCopyToClipboard_Billing.Size = new System.Drawing.Size(110, 23);
+            this.btnCopyToClipboard_Billing.TabIndex = 74;
+            this.btnCopyToClipboard_Billing.Text = "Copy to Clipboard";
+            this.btnCopyToClipboard_Billing.UseVisualStyleBackColor = true;
+            this.btnCopyToClipboard_Billing.Click += new System.EventHandler(this.btnCopyToClipboard_Billing_Click);
+            // 
+            // btnCopyToClipboard_TH
+            // 
+            this.btnCopyToClipboard_TH.Location = new System.Drawing.Point(6, 450);
+            this.btnCopyToClipboard_TH.Name = "btnCopyToClipboard_TH";
+            this.btnCopyToClipboard_TH.Size = new System.Drawing.Size(110, 23);
+            this.btnCopyToClipboard_TH.TabIndex = 73;
+            this.btnCopyToClipboard_TH.Text = "Copy to Clipboard";
+            this.btnCopyToClipboard_TH.UseVisualStyleBackColor = true;
+            this.btnCopyToClipboard_TH.Click += new System.EventHandler(this.btnCopyToClipboard_TH_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(931, 68);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(38, 13);
+            this.label8.TabIndex = 75;
+            this.label8.Text = "(Enter)";
+            // 
+            // txtNoiDungA
+            // 
+            this.txtNoiDungA.Location = new System.Drawing.Point(825, 68);
+            this.txtNoiDungA.Multiline = true;
+            this.txtNoiDungA.Name = "txtNoiDungA";
+            this.txtNoiDungA.Size = new System.Drawing.Size(100, 45);
+            this.txtNoiDungA.TabIndex = 74;
+            this.txtNoiDungA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNoiDungA_KeyPress);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1138, 68);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.TabIndex = 77;
+            this.label1.Text = "(Enter)";
+            // 
+            // txtNoiDungB
+            // 
+            this.txtNoiDungB.Location = new System.Drawing.Point(1032, 68);
+            this.txtNoiDungB.Multiline = true;
+            this.txtNoiDungB.Name = "txtNoiDungB";
+            this.txtNoiDungB.Size = new System.Drawing.Size(100, 45);
+            this.txtNoiDungB.TabIndex = 76;
+            this.txtNoiDungB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNoiDungB_KeyPress);
+            // 
             // frmKiemTraSaiBiet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1234, 536);
+            this.ClientSize = new System.Drawing.Size(1234, 574);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtNoiDungB);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.txtNoiDungA);
+            this.Controls.Add(this.btnCopyToClipboardB);
+            this.Controls.Add(this.btnCopyToClipboardA);
             this.Controls.Add(this.txtTongB);
             this.Controls.Add(this.txtTongA);
             this.Controls.Add(this.btnChonFileB);
             this.Controls.Add(this.btnChonFileA);
-            this.Controls.Add(this.listB);
-            this.Controls.Add(this.listA);
+            this.Controls.Add(this.lstViewB);
+            this.Controls.Add(this.lstViewA);
             this.Controls.Add(this.btnKiemTraAll);
             this.Controls.Add(this.btnKiemTra);
             this.Controls.Add(this.groupBox2);
@@ -386,13 +478,21 @@
         private System.Windows.Forms.ColumnHeader DanhBo_B;
         private System.Windows.Forms.ColumnHeader DanhBo_TH;
         private System.Windows.Forms.Button btnKiemTraAll;
-        private System.Windows.Forms.ListView listA;
+        private System.Windows.Forms.ListView lstViewA;
         private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ListView listB;
+        private System.Windows.Forms.ListView lstViewB;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.Button btnChonFileA;
         private System.Windows.Forms.Button btnChonFileB;
         private System.Windows.Forms.TextBox txtTongA;
         private System.Windows.Forms.TextBox txtTongB;
+        private System.Windows.Forms.Button btnCopyToClipboardA;
+        private System.Windows.Forms.Button btnCopyToClipboardB;
+        private System.Windows.Forms.Button btnCopyToClipboard_Billing;
+        private System.Windows.Forms.Button btnCopyToClipboard_TH;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtNoiDungA;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtNoiDungB;
     }
 }

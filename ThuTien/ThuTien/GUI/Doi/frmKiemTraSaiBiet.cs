@@ -126,12 +126,12 @@ namespace ThuTien.GUI.Doi
 
         private void btnKiemTraAll_Click(object sender, EventArgs e)
         {
-            foreach (ListViewItem item in listA.Items)
+            foreach (ListViewItem item in lstViewA.Items)
             {
-                if (listB.Items.ContainsKey(item.Name))
+                if (lstViewB.Items.ContainsKey(item.Name))
                 {
-                    listB.Items.RemoveByKey(item.Name);
-                    listA.Items.Remove(item);
+                    lstViewB.Items.RemoveByKey(item.Name);
+                    lstViewA.Items.Remove(item);
                 }
             }
         }
@@ -148,13 +148,14 @@ namespace ThuTien.GUI.Doi
                     CExcel fileExcel = new CExcel(dialog.FileName);
                     DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
                     foreach (DataRow item in dtExcel.Rows)
-                    {
-                        ListViewItem lvi = new ListViewItem();
-                        lvi.Text = item[0].ToString();
-                        lvi.Name = item[0].ToString();
+                        if (item[0].ToString().Trim() != "")
+                        {
+                            ListViewItem lvi = new ListViewItem();
+                            lvi.Text = item[0].ToString();
+                            lvi.Name = item[0].ToString();
 
-                        listA.Items.Add(lvi);
-                    }
+                            lstViewA.Items.Add(lvi);
+                        }
                     txtTongA.Text = dtExcel.Rows.Count.ToString();
                 }
             }
@@ -176,19 +177,116 @@ namespace ThuTien.GUI.Doi
                     CExcel fileExcel = new CExcel(dialog.FileName);
                     DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
                     foreach (DataRow item in dtExcel.Rows)
-                    {
-                        ListViewItem lvi = new ListViewItem();
-                        lvi.Text = item[0].ToString();
-                        lvi.Name = item[0].ToString();
+                        if (item[0].ToString().Trim() != "")
+                        {
+                            ListViewItem lvi = new ListViewItem();
+                            lvi.Text = item[0].ToString();
+                            lvi.Name = item[0].ToString();
 
-                        listB.Items.Add(lvi);
-                    }
+                            lstViewB.Items.Add(lvi);
+                        }
                     txtTongB.Text = dtExcel.Rows.Count.ToString();
                 }
             }
             catch (Exception)
             {
                 MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCopyToClipboard_Billing_Click(object sender, EventArgs e)
+        {
+            string str = "";
+            foreach (ListViewItem item in lstView_Billing.Items)
+            {
+                str += item.Text + "\n";
+            }
+            Clipboard.SetText(str);
+        }
+
+        private void btnCopyToClipboard_TH_Click(object sender, EventArgs e)
+        {
+            string str = "";
+            foreach (ListViewItem item in lstView_TH.Items)
+            {
+                str += item.Text + "\n";
+            }
+            Clipboard.SetText(str);
+        }
+
+        private void btnCopyToClipboardA_Click(object sender, EventArgs e)
+        {
+            string str = "";
+            foreach (ListViewItem item in lstViewA.Items)
+            {
+                str += item.Text + "\n";
+            }
+            Clipboard.SetText(str);
+        }
+
+        private void btnCopyToClipboardB_Click(object sender, EventArgs e)
+        {
+            string str = "";
+            foreach (ListViewItem item in lstViewB.Items)
+            {
+                str += item.Text + "\n";
+            }
+            Clipboard.SetText(str);
+        }
+
+        private void txtNoiDungA_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtNoiDungA.Text.Trim()))
+            {
+                foreach (string item in txtNoiDungA.Lines)
+                    if (item.Trim() != "")
+                    {
+                        if (lstViewA.FindItemWithText(item.Trim().ToUpper()) == null)
+                        {
+                            lstViewA.Items.Add(item.Trim().ToUpper());
+                            lstViewA.EnsureVisible(lstViewA.Items.Count - 1);
+                        }
+                    }
+                //else
+                //    ///Trung An thêm 'K' phía cuối liên hóa đơn
+                //    if (item.Trim() != "")
+                //    {
+                //        if (lstViewA.FindItemWithText(item.Trim().ToUpper().Replace("K", "")) == null)
+                //        {
+                //            lstViewA.Items.Add(item.Trim().ToUpper().Replace("K", ""));
+                //            lstViewA.EnsureVisible(lstViewA.Items.Count - 1);
+                //        }
+                //    }
+                txtTongA.Text = lstViewA.Items.Count.ToString();
+                txtNoiDungA.Text = "";
+            }
+        }
+
+        private void txtNoiDungB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtNoiDungB.Text.Trim()))
+            {
+                foreach (string item in txtNoiDungB.Lines)
+                    if (item.Trim() != "")
+                    {
+                        if (lstViewB.FindItemWithText(item.Trim().ToUpper()) == null)
+                        {
+                            lstViewB.Items.Add(item.Trim().ToUpper());
+                            lstViewB.EnsureVisible(lstViewB.Items.Count - 1);
+                        }
+                    }
+                //else
+                //    ///Trung An thêm 'K' phía cuối liên hóa đơn
+                //    if (item.Trim() != "")
+                //    {
+                //        if (lstViewB.FindItemWithText(item.Trim().ToUpper().Replace("K", "")) == null)
+                //        {
+                //            lstViewB.Items.Add(item.Trim().ToUpper().Replace("K", ""));
+                //            lstViewB.EnsureVisible(lstViewB.Items.Count - 1);
+                //        }
+                //    }
+                txtTongB.Text = lstViewB.Items.Count.ToString();
+                txtNoiDungB.Text = "";
             }
         }
 
