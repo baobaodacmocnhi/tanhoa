@@ -44,17 +44,28 @@ namespace KTKS_DonKH.GUI.ToBamChi
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
             {
-                if (txtKyHieuLD.Text.Trim() != "" && txtTenLD.Text.Trim() != "")
+                try
                 {
-                    LoaiDonTBC entity = new LoaiDonTBC();
-                    entity.KyHieuLD = txtKyHieuLD.Text.Trim();
-                    entity.TenLD = txtTenLD.Text.Trim();
+                    if (txtKyHieuLD.Text.Trim() != "" && txtTenLD.Text.Trim() != "")
+                    {
+                        LoaiDonTBC entity = new LoaiDonTBC();
+                        entity.KyHieuLD = txtKyHieuLD.Text.Trim();
+                        entity.TenLD = txtTenLD.Text.Trim();
+                        entity.STT = _cLoaiDonTBC.GetMaxSTT() + 1;
 
-                    if (_cLoaiDonTBC.Them(entity))
-                        Clear();
+                        if (_cLoaiDonTBC.Them(entity))
+                        {
+                            Clear();
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else
+                        MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else
-                    MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
                 MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -64,19 +75,29 @@ namespace KTKS_DonKH.GUI.ToBamChi
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
             {
-                if (_selectedindex != -1)
+                try
                 {
-                    if (txtKyHieuLD.Text.Trim() != "" && txtTenLD.Text.Trim() != "")
+                    if (_selectedindex != -1)
                     {
-                        LoaiDonTBC entity = _cLoaiDonTBC.Get(int.Parse(dgvLoaiDon["MaLD", _selectedindex].Value.ToString()));
-                        entity.KyHieuLD = txtKyHieuLD.Text.Trim();
-                        entity.TenLD = txtTenLD.Text.Trim();
+                        if (txtKyHieuLD.Text.Trim() != "" && txtTenLD.Text.Trim() != "")
+                        {
+                            LoaiDonTBC entity = _cLoaiDonTBC.Get(int.Parse(dgvLoaiDon["MaLD", _selectedindex].Value.ToString()));
+                            entity.KyHieuLD = txtKyHieuLD.Text.Trim();
+                            entity.TenLD = txtTenLD.Text.Trim();
 
-                        if (_cLoaiDonTBC.Sua(entity))
-                            Clear();
+                            if (_cLoaiDonTBC.Sua(entity))
+                            {
+                                Clear();
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                        else
+                            MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else
-                        MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -87,10 +108,20 @@ namespace KTKS_DonKH.GUI.ToBamChi
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
             {
-                if (_selectedindex != -1)
+                try
                 {
-                    if (_cLoaiDonTBC.Xoa(_cLoaiDonTBC.Get(int.Parse(dgvLoaiDon["MaLD", _selectedindex].Value.ToString()))))
-                        Clear();
+                    if (_selectedindex != -1)
+                    {
+                        if (_cLoaiDonTBC.Xoa(_cLoaiDonTBC.Get(int.Parse(dgvLoaiDon["MaLD", _selectedindex].Value.ToString()))))
+                        {
+                            Clear();
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else

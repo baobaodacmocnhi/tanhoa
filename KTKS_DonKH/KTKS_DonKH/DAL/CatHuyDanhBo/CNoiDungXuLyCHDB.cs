@@ -70,7 +70,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return db.NoiDungXuLyCHDBs.OrderBy(item=>item.STT).ToList();
         }
 
-        public NoiDungXuLyCHDB GetByID(int ID)
+        public NoiDungXuLyCHDB Get(int ID)
         {
             return db.NoiDungXuLyCHDBs.SingleOrDefault(item => item.ID == ID);
         }

@@ -70,7 +70,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                 dondt.DienThoai = txtDienThoai.Text.Trim();
                 dondt.NguoiBao = txtNguoiBao.Text.Trim();
                 dondt.NgayBao = dateBao.Value;
-                if (_cDonDT.ThemDonDienThoai(dondt))
+                if (_cDonDT.Them(dondt))
                 {
                     if (dondt.DienThoai!=""&&dondt.DanhBo!=""&& _cTTKH.CheckExist(dondt.DienThoai, dondt.DanhBo) == false)
                     {
@@ -104,7 +104,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                         dondt.DienThoai = txtDienThoai.Text.Trim();
                         dondt.NguoiBao = txtNguoiBao.Text.Trim();
                         dondt.NgayBao = dateBao.Value;
-                        if (_cDonDT.SuaDonDienThoai(dondt))
+                        if (_cDonDT.Sua(dondt))
                         {
                             Clear();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -126,7 +126,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                         if (!_cDonDT.CheckLapDonKH(int.Parse(dgvLichSuDonDT["MaDonDT", _selectedindex].Value.ToString())))
                         {
                             DonDienThoai dondt = _cDonDT.getDonDienThoaibyID(int.Parse(dgvLichSuDonDT["MaDonDT", _selectedindex].Value.ToString()));
-                            if (_cDonDT.XoaDonDienThoai(dondt))
+                            if (_cDonDT.Xoa(dondt))
                             {
                                 Clear();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

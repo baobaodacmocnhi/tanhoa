@@ -150,7 +150,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                         if (_cDonKH.ThemDonKH(donkh))
                         {
                             dondt.MaDon = donkh.MaDon;
-                            _cDonDT.SuaDonDienThoai(dondt);
+                            _cDonDT.Sua(dondt);
                         }
                     }
                 _cDonKH.commitTransaction();

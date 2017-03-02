@@ -66,68 +66,35 @@ namespace KTKS_DonKH.DAL.ToBamChi
 
         public List<LoaiDonTBC> GetDS_All()
         {
-            try
-            {
-                return db.LoaiDonTBCs.OrderBy(item => item.STT).ToList();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+            return db.LoaiDonTBCs.OrderBy(item => item.STT).ToList();
         }
 
         public List<LoaiDonTBC> GetDS()
         {
-            try
-            {
-                return db.LoaiDonTBCs.Where(item => item.An == false).OrderBy(item => item.STT).ToList();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+            return db.LoaiDonTBCs.Where(item => item.An == false).OrderBy(item => item.STT).ToList();
         }
 
         public LoaiDonTBC Get(int MaLD)
         {
-            try
-            {
-                return db.LoaiDonTBCs.SingleOrDefault(item => item.MaLD == MaLD);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+            return db.LoaiDonTBCs.SingleOrDefault(item => item.MaLD == MaLD);
         }
 
         public string GetTenLD(int MaLD)
         {
-            try
-            {
-                return db.LoaiDonTBCs.SingleOrDefault(item => item.MaLD == MaLD).TenLD;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+            return db.LoaiDonTBCs.SingleOrDefault(item => item.MaLD == MaLD).TenLD;
         }
 
         public string GetKyHieuLD(int MaLD)
         {
-            try
-            {
-                return db.LoaiDonTBCs.SingleOrDefault(item => item.MaLD == MaLD).KyHieuLD;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }    
+            return db.LoaiDonTBCs.SingleOrDefault(item => item.MaLD == MaLD).KyHieuLD;
+        }
 
+        public int GetMaxSTT()
+        {
+            if (db.LoaiDonTBCs.Count() == 0)
+                return 0;
+            else
+                return db.LoaiDonTBCs.Max(item => item.STT).Value;
+        }
     }
 }

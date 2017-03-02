@@ -466,11 +466,6 @@ namespace KTKS_DonKH.DAL.DongNuoc
                 return LINQToDataTable(query);
         }
 
-        public int CountCT(decimal MaDN)
-        {
-            return db.CTDongNuocs.Count(item => item.MaDN == MaDN);
-        }
-
         #endregion
     }
 }

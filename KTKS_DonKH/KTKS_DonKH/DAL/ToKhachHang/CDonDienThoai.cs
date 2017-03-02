@@ -11,7 +11,7 @@ namespace KTKS_DonKH.DAL.ToKhachHang
 {
     class CDonDienThoai:CDAL
     {
-        public bool ThemDonDienThoai(DonDienThoai dondt)
+        public bool Them(DonDienThoai dondt)
         {
             try
             {
@@ -41,7 +41,7 @@ namespace KTKS_DonKH.DAL.ToKhachHang
             }
         }
 
-        public bool SuaDonDienThoai(DonDienThoai dondt)
+        public bool Sua(DonDienThoai dondt)
         {
             try
             {
@@ -59,7 +59,7 @@ namespace KTKS_DonKH.DAL.ToKhachHang
             }
         }
 
-        public bool XoaDonDienThoai(DonDienThoai dondt)
+        public bool Xoa(DonDienThoai dondt)
         {
             try
             {

@@ -49,7 +49,7 @@ namespace KTKS_DonKH.GUI.BamChi
         {
             dgvDSNhapBamChi.AutoGenerateColumns = false;
 
-            cmbTrangThaiBC.DataSource = _cTrangThaiBamChi.LoadDSTrangThaiBamChi();
+            cmbTrangThaiBC.DataSource = _cTrangThaiBamChi.GetDS();
             cmbTrangThaiBC.DisplayMember = "TenTTBC";
             cmbTrangThaiBC.ValueMember = "TenTTBC";
             cmbTrangThaiBC.SelectedIndex = -1;

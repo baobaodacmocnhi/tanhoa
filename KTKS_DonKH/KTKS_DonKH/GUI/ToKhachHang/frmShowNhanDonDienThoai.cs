@@ -59,7 +59,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                 dondt.GhiChu = txtGhiChu.Text.Trim();
                 dondt.DienThoai = txtDienThoai.Text.Trim();
                 dondt.NguoiBao = txtNguoiBao.Text.Trim();
-                if (_cDonDT.SuaDonDienThoai(dondt))
+                if (_cDonDT.Sua(dondt))
                 {
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
@@ -74,7 +74,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             if (_dondt!=null&&!_cDonDT.CheckLapDonKH(_dondt.MaDonDT))
             {
                 DonDienThoai dondt = _cDonDT.getDonDienThoaibyID(_dondt.MaDonDT);
-                if (_cDonDT.XoaDonDienThoai(dondt))
+                if (_cDonDT.Xoa(dondt))
                 {
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();

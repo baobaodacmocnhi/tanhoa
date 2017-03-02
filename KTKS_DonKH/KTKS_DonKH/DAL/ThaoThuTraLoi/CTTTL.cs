@@ -26,7 +26,6 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                     decimal MaTTTL = db.ExecuteQuery<decimal>("declare @Ma int " +
                         "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
                         "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
-                    //decimal MaTTTL = db.TTTLs.Max(itemTTTL => itemTTTL.MaTTTL);
                     tttl.MaTTTL = getMaxNextIDTable(MaTTTL);
                 }
                 else
@@ -35,7 +34,6 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                 tttl.CreateBy = CTaiKhoan.MaUser;
                 db.TTTLs.InsertOnSubmit(tttl);
                 db.SubmitChanges();
-                //MessageBox.Show("Thành công Thêm TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
             catch (Exception ex)
@@ -53,7 +51,6 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                 tttl.ModifyDate = DateTime.Now;
                 tttl.ModifyBy = CTaiKhoan.MaUser;
                 db.SubmitChanges();
-                //MessageBox.Show("Thành công Sửa TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
             catch (Exception ex)
@@ -77,20 +74,18 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             }
         }
 
-        /// <summary>
-        /// Lấy Mã Thảo Thư Trả Lời lớn nhất hiện tại
-        /// </summary>
-        /// <returns></returns>
-        public decimal GetMaxMaTTTL()
+        public TTTL Get(string Loai, decimal MaDon)
         {
-            try
+            switch (Loai)
             {
-                return db.TTTLs.Max(itemTTTL => itemTTTL.MaTTTL);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return 0;
+                case "TKH":
+                    return db.TTTLs.SingleOrDefault(item => item.MaDon == MaDon);
+                case "TXL":
+                    return db.TTTLs.SingleOrDefault(item => item.MaDonTXL == MaDon);
+                case "TBC":
+                    return db.TTTLs.SingleOrDefault(item => item.MaDonTBC == MaDon);
+                default:
+                    return null;
             }
         }
 
@@ -109,99 +104,6 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             }
         }
 
-        /// <summary>
-        /// Kiểm tra Đơn KH có được TTTL xử lý hay chưa
-        /// </summary>
-        /// <param name="MaDon"></param>
-        /// <returns>true/có</returns>
-        public bool CheckByMaDon(decimal MaDon)
-        {
-            try
-            {
-                if (db.TTTLs.Any(itemTTTL => itemTTTL.MaDon == MaDon))
-                    return true;
-                else
-                    return false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Kiểm tra Đơn Tổ Xử Lý có được TTTL xử lý hay chưa
-        /// </summary>
-        /// <param name="MaDon"></param>
-        /// <returns>true/có</returns>
-        public bool CheckByMaDon_TXL(decimal MaDonTXL)
-        {
-            try
-            {
-                if (db.TTTLs.Any(itemTTTL => itemTTTL.MaDonTXL == MaDonTXL))
-                    return true;
-                else
-                    return false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Lấy TTTL bằng MaDon
-        /// </summary>
-        /// <param name="MaDon"></param>
-        /// <returns></returns>
-        public TTTL GetByMaDon(decimal MaDon)
-        {
-            try
-            {
-                return db.TTTLs.SingleOrDefault(itemTTTL => itemTTTL.MaDon == MaDon);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Lấy TTTL bằng MaDon Tổ Xử Lý
-        /// </summary>
-        /// <param name="MaDon"></param>
-        /// <returns></returns>
-        public TTTL GetByMaDon_TXL(decimal MaDonTXL)
-        {
-            try
-            {
-                return db.TTTLs.SingleOrDefault(itemTTTL => itemTTTL.MaDonTXL == MaDonTXL);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public TTTL Get(string Loai,decimal MaDon)
-        {
-            switch (Loai)
-            {
-                case "TKH":
-                    return db.TTTLs.SingleOrDefault(item => item.MaDon == MaDon);
-                case "TXL":
-                    return db.TTTLs.SingleOrDefault(item => item.MaDonTXL == MaDon);
-                case "TBC":
-                    return db.TTTLs.SingleOrDefault(item => item.MaDonTBC == MaDon);
-                default:
-                    return null;
-            }
-        }
-
         #endregion
 
         #region CTTTTL (Chi Tiết Thảo Thư Trả Lời)
@@ -217,7 +119,6 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                     decimal MaCTTTTL = db.ExecuteQuery<decimal>("declare @Ma int " +
                         "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
                         "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
-                    //decimal MaCTTTTL = db.CTTTTLs.Max(itemCTTTTL => itemCTTTTL.MaCTTTTL);
                     cttttl.MaCTTTTL = getMaxNextIDTable(MaCTTTTL);
                 }
                 else
@@ -226,7 +127,6 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                 cttttl.CreateBy = CTaiKhoan.MaUser;
                 db.CTTTTLs.InsertOnSubmit(cttttl);
                 db.SubmitChanges();
-                //MessageBox.Show("Thành công Thêm CTTTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
             catch (Exception ex)
@@ -244,7 +144,6 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                 cttttl.ModifyDate = DateTime.Now;
                 cttttl.ModifyBy = CTaiKhoan.MaUser;
                 db.SubmitChanges();
-                //MessageBox.Show("Thành công Sửa CTTTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
             catch (Exception ex)
@@ -264,7 +163,6 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                 if (db.CTTTTLs.Any(item => item.MaTTTL == ID) == false)
                     db.TTTLs.DeleteOnSubmit(db.TTTLs.SingleOrDefault(item => item.MaTTTL == ID));
                 db.SubmitChanges();
-                //MessageBox.Show("Thành công Sửa CTTTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
             catch (Exception ex)
@@ -273,6 +171,26 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                 db = new dbKinhDoanhDataContext();
                 return false;
             }
+        }
+
+        public bool CheckExist_CT(string Loai, decimal MaDon, string DanhBo, DateTime CreateDate)
+        {
+            switch (Loai)
+            {
+                case "TKH":
+                    return db.CTTTTLs.Any(item => item.TTTL.MaDon == MaDon && item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
+                case "TXL":
+                    return db.CTTTTLs.Any(item => item.TTTL.MaDonTXL == MaDon && item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
+                case "TBC":
+                    return db.CTTTTLs.Any(item => item.TTTL.MaDonTBC == MaDon && item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
+                default:
+                    return false;
+            }
+        }
+
+        public bool CheckExist_CT(decimal MaCTTTTL)
+        {
+            return db.CTTTTLs.Any(item => item.MaCTTTTL == MaCTTTTL);
         }
 
         public CTTTTL GetCT(decimal MaCTTTTL)
@@ -288,23 +206,6 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             }
         }
 
-        public decimal GetMaxMaCT()
-        {
-            try
-            {
-                return db.CTTTTLs.Max(itemCTTTTL => itemCTTTTL.MaCTTTTL);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return 0;
-            }
-        }
-
-        /// <summary>
-        /// Lấy Danh Sách Chi Tiết Thảo Thư Trả Lời
-        /// </summary>
-        /// <returns></returns>
         public DataTable GetDS()
         {
             return LINQToDataTable(db.CTTTTLs.ToList());
@@ -446,64 +347,6 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                             item.ThuDuocKy,
                         };
             return LINQToDataTable(query);
-        }
-
-        /// <summary>
-        /// Kiểm tra Thư đã được tạo cho Mã Đơn và Danh Bộ này chưa
-        /// </summary>
-        /// <param name="MaDon"></param>
-        /// <param name="DanhBo"></param>
-        /// <returns></returns>
-        public bool CheckCTByMaDonDanhBo(decimal MaDon, string DanhBo, DateTime CreateDate)
-        {
-            try
-            {
-                return db.CTTTTLs.Any(itemCTTTTL => itemCTTTTL.TTTL.MaDon == MaDon && itemCTTTTL.DanhBo == DanhBo && itemCTTTTL.CreateDate.Value.Date == CreateDate.Date);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Kiểm tra Thư đã được tạo cho Mã Đơn Tổ Xử Lý và Danh Bộ này chưa
-        /// </summary>
-        /// <param name="MaDon"></param>
-        /// <param name="DanhBo"></param>
-        /// <returns></returns>
-        public bool CheckCTByMaDonDanhBo_TXL(decimal MaDonTXL, string DanhBo, DateTime CreateDate)
-        {
-            try
-            {
-                return db.CTTTTLs.Any(itemCTTTTL => itemCTTTTL.TTTL.MaDonTXL == MaDonTXL && itemCTTTTL.DanhBo == DanhBo && itemCTTTTL.CreateDate.Value.Date == CreateDate.Date);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
-
-        public bool CheckExist_CT(string Loai,decimal MaDon, string DanhBo, DateTime CreateDate)
-        {
-            switch (Loai)
-            {
-                case "TKH":
-                    return db.CTTTTLs.Any(item => item.TTTL.MaDon == MaDon && item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
-                case "TXL":
-                    return db.CTTTTLs.Any(item => item.TTTL.MaDonTXL == MaDon && item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
-                case "TBC":
-                    return db.CTTTTLs.Any(item => item.TTTL.MaDonTBC == MaDon && item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
-                default:
-                    return false;
-            }
-        }
-
-        public bool CheckExist_CT(decimal MaCTTTTL)
-        {
-            return db.CTTTTLs.Any(item => item.MaCTTTTL == MaCTTTTL);
         }
 
         public DataTable GetLichSuCTByDanhBo(string DanhBo)

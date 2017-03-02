@@ -63,7 +63,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 if (_selectedindex != -1)
                     {
-                        NoiDungXuLyCHDB nd = _cNoiDungXuLyCHDB.GetByID(int.Parse(dgvNoiDung["ID", _selectedindex].Value.ToString()));
+                        NoiDungXuLyCHDB nd = _cNoiDungXuLyCHDB.Get(int.Parse(dgvNoiDung["ID", _selectedindex].Value.ToString()));
                         nd.NoiDung = txtNoiDung.Text.Trim();
 
                         if (_cNoiDungXuLyCHDB.Sua(nd))
@@ -85,7 +85,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 if (_selectedindex != -1 && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    NoiDungXuLyCHDB nd = _cNoiDungXuLyCHDB.GetByID(int.Parse(dgvNoiDung["ID", _selectedindex].Value.ToString()));
+                    NoiDungXuLyCHDB nd = _cNoiDungXuLyCHDB.Get(int.Parse(dgvNoiDung["ID", _selectedindex].Value.ToString()));
 
                     if (_cNoiDungXuLyCHDB.Xoa(nd))
                     {

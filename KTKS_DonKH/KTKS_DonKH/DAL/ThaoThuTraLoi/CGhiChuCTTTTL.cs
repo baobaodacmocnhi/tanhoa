@@ -9,24 +9,23 @@ using System.Data;
 
 namespace KTKS_DonKH.DAL.ThaoThuTraLoi
 {
-    class CGhiChuCTTTTL:CDAL
+    class CGhiChuCTTTTL : CDAL
     {
         public bool Them(GhiChuCTTTTL ghichu)
         {
             try
             {
-                    if (db.GhiChuCTTTTLs.Count() > 0)
-                    {
-                        ghichu.ID = db.GhiChuCTTTTLs.Max(item => item.ID) + 1;
-                    }
-                    else
-                        ghichu.ID = 1;
-                    ghichu.CreateDate = DateTime.Now;
-                    ghichu.CreateBy = CTaiKhoan.MaUser;
-                    db.GhiChuCTTTTLs.InsertOnSubmit(ghichu);
-                    db.SubmitChanges();
-                    //MessageBox.Show("Thành công Thêm TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
+                if (db.GhiChuCTTTTLs.Count() > 0)
+                {
+                    ghichu.ID = db.GhiChuCTTTTLs.Max(item => item.ID) + 1;
+                }
+                else
+                    ghichu.ID = 1;
+                ghichu.CreateDate = DateTime.Now;
+                ghichu.CreateBy = CTaiKhoan.MaUser;
+                db.GhiChuCTTTTLs.InsertOnSubmit(ghichu);
+                db.SubmitChanges();
+                return true;
             }
             catch (Exception ex)
             {
@@ -40,11 +39,10 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
         {
             try
             {
-                    ghichu.ModifyDate = DateTime.Now;
-                    ghichu.ModifyBy = CTaiKhoan.MaUser;
-                    db.SubmitChanges();
-                    //MessageBox.Show("Thành công Sửa TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
+                ghichu.ModifyDate = DateTime.Now;
+                ghichu.ModifyBy = CTaiKhoan.MaUser;
+                db.SubmitChanges();
+                return true;
             }
             catch (Exception ex)
             {
@@ -58,10 +56,9 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
         {
             try
             {
-                    db.GhiChuCTTTTLs.DeleteOnSubmit(ghichu);
-                    db.SubmitChanges();
-                    //MessageBox.Show("Thành công Sửa TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
+                db.GhiChuCTTTTLs.DeleteOnSubmit(ghichu);
+                db.SubmitChanges();
+                return true;
             }
             catch (Exception ex)
             {
@@ -78,7 +75,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
 
         public DataTable GetDS(decimal MaCTTTTL)
         {
-            return LINQToDataTable(db.GhiChuCTTTTLs.Where(item => item.MaCTTTTL == MaCTTTTL).OrderByDescending(item=>item.CreateDate).ToList());
+            return LINQToDataTable(db.GhiChuCTTTTLs.Where(item => item.MaCTTTTL == MaCTTTTL).OrderByDescending(item => item.CreateDate).ToList());
         }
     }
 }

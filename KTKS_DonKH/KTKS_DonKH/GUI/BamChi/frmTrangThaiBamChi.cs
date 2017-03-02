@@ -32,7 +32,7 @@ namespace KTKS_DonKH.GUI.BamChi
 
         public void LoadDataTable()
         {
-            _blTrangThaiBamChi = new BindingList<TrangThaiBamChi>(_cTrangThaiBamChi.LoadDSTrangThaiBamChi());
+            _blTrangThaiBamChi = new BindingList<TrangThaiBamChi>(_cTrangThaiBamChi.GetDS());
             dgvDSTrangThaiBC.DataSource = _blTrangThaiBamChi;
         }
 
@@ -67,8 +67,9 @@ namespace KTKS_DonKH.GUI.BamChi
                 {
                     TrangThaiBamChi trangthaibamchi = new TrangThaiBamChi();
                     trangthaibamchi.TenTTBC = txtTrangThaiBC.Text.Trim();
+                    trangthaibamchi.STT = _cTrangThaiBamChi.GetMaxSTT() + 1;
 
-                    if (_cTrangThaiBamChi.ThemTrangThaiBamChi(trangthaibamchi))
+                    if (_cTrangThaiBamChi.Them(trangthaibamchi))
                     {
                         txtTrangThaiBC.Text = "";
                         LoadDataTable();
@@ -88,10 +89,10 @@ namespace KTKS_DonKH.GUI.BamChi
                 if (_selectedindexTTBC != -1)
                     if (txtTrangThaiBC.Text.Trim() != "")
                     {
-                        TrangThaiBamChi trangthaibamchi = _cTrangThaiBamChi.getTrangThaiBamChibyID(int.Parse(dgvDSTrangThaiBC["MaTTBC", _selectedindexTTBC].Value.ToString()));
+                        TrangThaiBamChi trangthaibamchi = _cTrangThaiBamChi.Get(int.Parse(dgvDSTrangThaiBC["MaTTBC", _selectedindexTTBC].Value.ToString()));
                         trangthaibamchi.TenTTBC = txtTrangThaiBC.Text.Trim();
 
-                        if (_cTrangThaiBamChi.SuaTrangThaiBamChi(trangthaibamchi))
+                        if (_cTrangThaiBamChi.Sua(trangthaibamchi))
                         {
                             txtTrangThaiBC.Text = "";
                             _selectedindexTTBC = -1;
@@ -110,7 +111,7 @@ namespace KTKS_DonKH.GUI.BamChi
             if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
             {
                 if (_selectedindexTTBC != -1 && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    if (_cTrangThaiBamChi.XoaTrangThaiBamChi(_cTrangThaiBamChi.getTrangThaiBamChibyID(int.Parse(dgvDSTrangThaiBC["MaTTBC", _selectedindexTTBC].Value.ToString()))))
+                    if (_cTrangThaiBamChi.Xoa(_cTrangThaiBamChi.Get(int.Parse(dgvDSTrangThaiBC["MaTTBC", _selectedindexTTBC].Value.ToString()))))
                     {
                         txtTrangThaiBC.Text = "";
                         _selectedindexTTBC = -1;
@@ -145,9 +146,9 @@ namespace KTKS_DonKH.GUI.BamChi
                 //dgvDSTrangThaiBC.Rows[rowIndex].Selected = false;
                 for (int i = 0; i < dgvDSTrangThaiBC.Rows.Count; i++)
                 {
-                    TrangThaiBamChi trangthaibamchi = _cTrangThaiBamChi.getTrangThaiBamChibyID(int.Parse(dgvDSTrangThaiBC["MaTTBC", i].Value.ToString()));
+                    TrangThaiBamChi trangthaibamchi = _cTrangThaiBamChi.Get(int.Parse(dgvDSTrangThaiBC["MaTTBC", i].Value.ToString()));
                     trangthaibamchi.STT = i;
-                    _cTrangThaiBamChi.SuaTrangThaiBamChi(trangthaibamchi);
+                    _cTrangThaiBamChi.Sua(trangthaibamchi);
                 }
                 _selectedindexTTBC = -1;
             }
@@ -180,9 +181,9 @@ namespace KTKS_DonKH.GUI.BamChi
                 //dgvDSTrangThaiBC.Rows[rowIndex].Selected = false;
                 for (int i = 0; i < dgvDSTrangThaiBC.Rows.Count; i++)
                 {
-                    TrangThaiBamChi trangthaibamchi = _cTrangThaiBamChi.getTrangThaiBamChibyID(int.Parse(dgvDSTrangThaiBC["MaTTBC", i].Value.ToString()));
+                    TrangThaiBamChi trangthaibamchi = _cTrangThaiBamChi.Get(int.Parse(dgvDSTrangThaiBC["MaTTBC", i].Value.ToString()));
                     trangthaibamchi.STT = i;
-                    _cTrangThaiBamChi.SuaTrangThaiBamChi(trangthaibamchi);
+                    _cTrangThaiBamChi.Sua(trangthaibamchi);
                 }
                 _selectedindexTTBC = -1;
             }

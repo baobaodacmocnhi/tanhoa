@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnXoaHienTrangKT = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.dgvDSHienTrangKT = new System.Windows.Forms.DataGridView();
             this.MaHTKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenHTKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnSuaHienTrangKT = new System.Windows.Forms.Button();
-            this.btnThemHienTrangKT = new System.Windows.Forms.Button();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
             this.txtHienTrangKT = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -44,10 +44,10 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnXoaHienTrangKT);
+            this.groupBox1.Controls.Add(this.btnXoa);
             this.groupBox1.Controls.Add(this.dgvDSHienTrangKT);
-            this.groupBox1.Controls.Add(this.btnSuaHienTrangKT);
-            this.groupBox1.Controls.Add(this.btnThemHienTrangKT);
+            this.groupBox1.Controls.Add(this.btnSua);
+            this.groupBox1.Controls.Add(this.btnThem);
             this.groupBox1.Controls.Add(this.txtHienTrangKT);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -57,29 +57,29 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Hiện Trạng Kiểm Tra";
             // 
-            // btnXoaHienTrangKT
+            // btnXoa
             // 
-            this.btnXoaHienTrangKT.Location = new System.Drawing.Point(371, 48);
-            this.btnXoaHienTrangKT.Name = "btnXoaHienTrangKT";
-            this.btnXoaHienTrangKT.Size = new System.Drawing.Size(75, 25);
-            this.btnXoaHienTrangKT.TabIndex = 87;
-            this.btnXoaHienTrangKT.Text = "Xóa";
-            this.btnXoaHienTrangKT.UseVisualStyleBackColor = true;
-            this.btnXoaHienTrangKT.Click += new System.EventHandler(this.btnXoaHienTrangKT_Click);
+            this.btnXoa.Location = new System.Drawing.Point(371, 48);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 25);
+            this.btnXoa.TabIndex = 87;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // dgvDSHienTrangKT
             // 
             this.dgvDSHienTrangKT.AllowDrop = true;
             this.dgvDSHienTrangKT.AllowUserToAddRows = false;
             this.dgvDSHienTrangKT.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSHienTrangKT.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSHienTrangKT.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDSHienTrangKT.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSHienTrangKT.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaHTKT,
@@ -110,25 +110,25 @@
             this.TenHTKT.ReadOnly = true;
             this.TenHTKT.Width = 400;
             // 
-            // btnSuaHienTrangKT
+            // btnSua
             // 
-            this.btnSuaHienTrangKT.Location = new System.Drawing.Point(290, 48);
-            this.btnSuaHienTrangKT.Name = "btnSuaHienTrangKT";
-            this.btnSuaHienTrangKT.Size = new System.Drawing.Size(75, 25);
-            this.btnSuaHienTrangKT.TabIndex = 7;
-            this.btnSuaHienTrangKT.Text = "Sửa";
-            this.btnSuaHienTrangKT.UseVisualStyleBackColor = true;
-            this.btnSuaHienTrangKT.Click += new System.EventHandler(this.btnSuaHienTrangKT_Click);
+            this.btnSua.Location = new System.Drawing.Point(290, 48);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(75, 25);
+            this.btnSua.TabIndex = 7;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
-            // btnThemHienTrangKT
+            // btnThem
             // 
-            this.btnThemHienTrangKT.Location = new System.Drawing.Point(209, 48);
-            this.btnThemHienTrangKT.Name = "btnThemHienTrangKT";
-            this.btnThemHienTrangKT.Size = new System.Drawing.Size(75, 25);
-            this.btnThemHienTrangKT.TabIndex = 6;
-            this.btnThemHienTrangKT.Text = "Thêm";
-            this.btnThemHienTrangKT.UseVisualStyleBackColor = true;
-            this.btnThemHienTrangKT.Click += new System.EventHandler(this.btnThemHienTrangKT_Click);
+            this.btnThem.Location = new System.Drawing.Point(209, 48);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(75, 25);
+            this.btnThem.TabIndex = 6;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // txtHienTrangKT
             // 
@@ -170,10 +170,10 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtHienTrangKT;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnSuaHienTrangKT;
-        private System.Windows.Forms.Button btnThemHienTrangKT;
+        private System.Windows.Forms.Button btnSua;
+        private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.DataGridView dgvDSHienTrangKT;
-        private System.Windows.Forms.Button btnXoaHienTrangKT;
+        private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaHTKT;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenHTKT;
     }

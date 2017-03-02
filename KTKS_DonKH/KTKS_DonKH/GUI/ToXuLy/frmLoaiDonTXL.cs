@@ -44,17 +44,28 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
             {
-                if (txtKyHieuLD.Text.Trim() != "" && txtTenLD.Text.Trim() != "")
+                try
                 {
-                    LoaiDonTXL entity = new LoaiDonTXL();
-                    entity.KyHieuLD = txtKyHieuLD.Text.Trim();
-                    entity.TenLD = txtTenLD.Text.Trim();
+                    if (txtKyHieuLD.Text.Trim() != "" && txtTenLD.Text.Trim() != "")
+                    {
+                        LoaiDonTXL entity = new LoaiDonTXL();
+                        entity.KyHieuLD = txtKyHieuLD.Text.Trim();
+                        entity.TenLD = txtTenLD.Text.Trim();
+                        entity.STT = _cLoaiDonTXL.GetMaxSTT() + 1;
 
-                    if (_cLoaiDonTXL.Them(entity))
-                        Clear();
+                        if (_cLoaiDonTXL.Them(entity))
+                        {
+                            Clear();
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else
+                        MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else
-                    MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
                 MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -64,19 +75,29 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
             {
-                if (_selectedindex != -1)
+                try
                 {
-                    if (txtKyHieuLD.Text.Trim() != "" && txtTenLD.Text.Trim() != "")
+                    if (_selectedindex != -1)
                     {
-                        LoaiDonTXL entity = _cLoaiDonTXL.Get(int.Parse(dgvLoaiDon["MaLD", _selectedindex].Value.ToString()));
-                        entity.KyHieuLD = txtKyHieuLD.Text.Trim();
-                        entity.TenLD = txtTenLD.Text.Trim();
+                        if (txtKyHieuLD.Text.Trim() != "" && txtTenLD.Text.Trim() != "")
+                        {
+                            LoaiDonTXL entity = _cLoaiDonTXL.Get(int.Parse(dgvLoaiDon["MaLD", _selectedindex].Value.ToString()));
+                            entity.KyHieuLD = txtKyHieuLD.Text.Trim();
+                            entity.TenLD = txtTenLD.Text.Trim();
 
-                        if (_cLoaiDonTXL.Sua(entity))
-                            Clear();
+                            if (_cLoaiDonTXL.Sua(entity))
+                            {
+                                Clear();
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                        else
+                            MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else
-                        MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -87,10 +108,20 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
             {
-                if (_selectedindex != -1)
+                try
                 {
-                    if (_cLoaiDonTXL.Xoa(_cLoaiDonTXL.Get(int.Parse(dgvLoaiDon["MaLD", _selectedindex].Value.ToString()))))
-                        Clear();
+                    if (_selectedindex != -1)
+                    {
+                        if (_cLoaiDonTXL.Xoa(_cLoaiDonTXL.Get(int.Parse(dgvLoaiDon["MaLD", _selectedindex].Value.ToString()))))
+                        {
+                            Clear();
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -123,9 +154,21 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             if (dgvLoaiDon.Columns[e.ColumnIndex].Name == "An")
             {
-                LoaiDonTXL loaidontxl = _cLoaiDonTXL.Get(int.Parse(dgvLoaiDon["MaLD", e.RowIndex].Value.ToString()));
-                loaidontxl.An = bool.Parse(dgvLoaiDon["An", e.RowIndex].Value.ToString());
-                _cLoaiDonTXL.Sua(loaidontxl);
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                {
+                    try
+                    {
+                        LoaiDonTXL loaidontxl = _cLoaiDonTXL.Get(int.Parse(dgvLoaiDon["MaLD", e.RowIndex].Value.ToString()));
+                        loaidontxl.An = bool.Parse(dgvLoaiDon["An", e.RowIndex].Value.ToString());
+                        _cLoaiDonTXL.Sua(loaidontxl);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

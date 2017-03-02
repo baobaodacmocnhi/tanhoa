@@ -10,63 +10,18 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
 {
     class CHienTrangKiemTra : CDAL
     {
-        public List<HienTrangKiemTra> LoadDSHienTrangKiemTra()
-        {
-            try
-            {
-                return db.HienTrangKiemTras.OrderBy(item => item.STT).ToList();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public List<HienTrangKiemTra> LoadDSHienTrangKiemTra(bool inheritance)
-        {
-            try
-            {
-                if (inheritance)
-                {
-                    return db.HienTrangKiemTras.OrderBy(item => item.STT).ToList();
-                }
-                else
-                    return null;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public HienTrangKiemTra getHienTrangKiemTrabyID(int MaHTKT)
-        {
-            try
-            {
-                return db.HienTrangKiemTras.Single(itemHTKT => itemHTKT.MaHTKT == MaHTKT);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public bool ThemHienTrangKiemTra(HienTrangKiemTra hientrangkiemtra)
+        public bool Them(HienTrangKiemTra entity)
         {
             try
             {
                 if (db.HienTrangKiemTras.Count() > 0)
-                    hientrangkiemtra.MaHTKT = db.HienTrangKiemTras.Max(itemHTKT => itemHTKT.MaHTKT) + 1;
+                    entity.MaHTKT = db.HienTrangKiemTras.Max(itemHTKT => itemHTKT.MaHTKT) + 1;
                 else
-                    hientrangkiemtra.MaHTKT = 1;
-                hientrangkiemtra.CreateDate = DateTime.Now;
-                hientrangkiemtra.CreateBy = CTaiKhoan.MaUser;
-                db.HienTrangKiemTras.InsertOnSubmit(hientrangkiemtra);
+                    entity.MaHTKT = 1;
+                entity.CreateDate = DateTime.Now;
+                entity.CreateBy = CTaiKhoan.MaUser;
+                db.HienTrangKiemTras.InsertOnSubmit(entity);
                 db.SubmitChanges();
-                //MessageBox.Show("Thành công Thêm HienTrangKiemTra", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
             catch (Exception ex)
@@ -77,32 +32,13 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
-        public bool SuaHienTrangKiemTra(HienTrangKiemTra hientrangkiemtra)
+        public bool Sua(HienTrangKiemTra entity)
         {
             try
             {
-                hientrangkiemtra.ModifyDate = DateTime.Now;
-                hientrangkiemtra.ModifyBy = CTaiKhoan.MaUser;
+                entity.ModifyDate = DateTime.Now;
+                entity.ModifyBy = CTaiKhoan.MaUser;
                 db.SubmitChanges();
-                //MessageBox.Show("Thành công Sửa TrangThaiBamChi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return true;
-            }
-            catch (Exception)
-            {
-                //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
-            }
-        }
-
-        public bool SuaHienTrangKiemTra(List<HienTrangKiemTra> lsthientrangkiemtra)
-        {
-            try
-            {
-                //hientrangkiemtra.ModifyDate = DateTime.Now;
-                //hientrangkiemtra.ModifyBy = CTaiKhoan.MaUser;
-                db.SubmitChanges();
-                //MessageBox.Show("Thành công Sửa TrangThaiBamChi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
             catch (Exception ex)
@@ -113,13 +49,12 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
-        public bool XoaHienTrangKiemTra(HienTrangKiemTra hientrangkiemtra)
+        public bool Xoa(HienTrangKiemTra entity)
         {
             try
             {
-                db.HienTrangKiemTras.DeleteOnSubmit(hientrangkiemtra);
+                db.HienTrangKiemTras.DeleteOnSubmit(entity);
                 db.SubmitChanges();
-                //MessageBox.Show("Thành công Sửa TrangThaiBamChi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
             catch (Exception ex)
@@ -128,6 +63,24 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                 db = new dbKinhDoanhDataContext();
                 return false;
             }
+        }
+
+        public HienTrangKiemTra Get(int MaHTKT)
+        {
+            return db.HienTrangKiemTras.SingleOrDefault(itemHTKT => itemHTKT.MaHTKT == MaHTKT);
+        }
+
+        public List<HienTrangKiemTra> GetDS()
+        {
+            return db.HienTrangKiemTras.OrderBy(item => item.STT).ToList();
+        }
+
+        public int GetMaxSTT()
+        {
+            if (db.HienTrangKiemTras.Count() == 0)
+                return 0;
+            else
+                return db.HienTrangKiemTras.Max(item => item.STT).Value;
         }
     }
 }

@@ -70,7 +70,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return db.LyDoCHDBs.OrderBy(item => item.STT).ToList();
         }
 
-        public LyDoCHDB GetByID(int ID)
+        public LyDoCHDB Get(int ID)
         {
             return db.LyDoCHDBs.SingleOrDefault(item => item.ID == ID);
         }

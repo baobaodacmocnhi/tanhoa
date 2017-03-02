@@ -10,6 +10,61 @@ namespace KTKS_DonKH.DAL.ToKhachHang
 {
     class CLoaiDon : CDAL
     {
+        public bool Them(LoaiDon loaidon)
+        {
+            try
+            {
+                if (db.LoaiDons.Count() > 0)
+                    loaidon.MaLD = db.LoaiDons.Max(itemLD => itemLD.MaLD) + 1;
+                else
+                    loaidon.MaLD = 1;
+                loaidon.CreateDate = DateTime.Now;
+                loaidon.CreateBy = CTaiKhoan.MaUser;
+                db.LoaiDons.InsertOnSubmit(loaidon);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new dbKinhDoanhDataContext();
+                return false;
+            }
+        }
+
+        public bool Sua(LoaiDon loaidon)
+        {
+            try
+            {
+                loaidon.ModifyDate = DateTime.Now;
+                loaidon.ModifyBy = CTaiKhoan.MaUser;
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new dbKinhDoanhDataContext();
+                return false;
+            }
+        }
+
+        public bool Xoa(LoaiDon loaidon)
+        {
+            try
+            {
+                db.LoaiDons.DeleteOnSubmit(loaidon);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new dbKinhDoanhDataContext();
+                return false;
+            }
+        }
+
         public List<LoaiDon> LoadDSLoaiDon_All()
         {
             try
@@ -75,64 +130,6 @@ namespace KTKS_DonKH.DAL.ToKhachHang
             }
         }
 
-        public bool ThemLoaiDon(LoaiDon loaidon)
-        {
-            try
-            {
-                if (db.LoaiDons.Count() > 0)
-                    loaidon.MaLD = db.LoaiDons.Max(itemLD => itemLD.MaLD) + 1;
-                else
-                    loaidon.MaLD = 1;
-                loaidon.CreateDate = DateTime.Now;
-                loaidon.CreateBy = CTaiKhoan.MaUser;
-                db.LoaiDons.InsertOnSubmit(loaidon);
-                db.SubmitChanges();
-                //MessageBox.Show("Thành công Thêm LoaiDon", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
-            }
-        }
-
-        public bool SuaLoaiDon(LoaiDon loaidon)
-        {
-            try
-            {
-                loaidon.ModifyDate = DateTime.Now;
-                loaidon.ModifyBy = CTaiKhoan.MaUser;
-                db.SubmitChanges();
-                //MessageBox.Show("Thành công Sửa LoaiDon", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return true;
-            }
-            catch (Exception)
-            {
-                //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
-            }
-        }
-
-        public bool XoaLoaiDon(LoaiDon loaidon)
-        {
-            try
-            {
-                db.LoaiDons.DeleteOnSubmit(loaidon);
-                db.SubmitChanges();
-                //MessageBox.Show("Thành công Sửa LoaiDon", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
-            }
-        }
-
         public int GetSoLuongLoaiDon()
         {
             try
@@ -144,6 +141,14 @@ namespace KTKS_DonKH.DAL.ToKhachHang
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
             }
+        }
+
+        public int GetMaxSTT()
+        {
+            if (db.LoaiDons.Count() == 0)
+                return 0;
+            else
+                return db.LoaiDons.Max(item => item.STT).Value;
         }
     }
 }

@@ -27,17 +27,15 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         private void frmThongTin_KT_BC_Load(object sender, EventArgs e)
         {
             dgvDSHienTrangKT.AutoGenerateColumns = false;
-            
+
             LoadDataTable();
         }
 
         public void LoadDataTable()
         {
-            _blHienTrangKiemTra = new BindingList<HienTrangKiemTra>(_cHienTrangKiemTra.LoadDSHienTrangKiemTra());
+            _blHienTrangKiemTra = new BindingList<HienTrangKiemTra>(_cHienTrangKiemTra.GetDS());
             dgvDSHienTrangKT.DataSource = _blHienTrangKiemTra;
         }
-
-        #region Hiện Trạng Kiểm Tra
 
         private void dgvDSHienTrangKT_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
@@ -60,39 +58,47 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             }
         }
 
-        private void btnThemHienTrangKT_Click(object sender, EventArgs e)
+        private void btnThem_Click(object sender, EventArgs e)
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
             {
-                if (txtHienTrangKT.Text.Trim() != "")
+                try
                 {
-                    HienTrangKiemTra hientrangkiemtra = new HienTrangKiemTra();
-                    hientrangkiemtra.TenHTKT = txtHienTrangKT.Text.Trim();
-
-                    if (_cHienTrangKiemTra.ThemHienTrangKiemTra(hientrangkiemtra))
+                    if (txtHienTrangKT.Text.Trim() != "")
                     {
-                        txtHienTrangKT.Text = "";
-                        LoadDataTable();
+                        HienTrangKiemTra hientrangkiemtra = new HienTrangKiemTra();
+                        hientrangkiemtra.TenHTKT = txtHienTrangKT.Text.Trim();
+                        hientrangkiemtra.STT = _cHienTrangKiemTra.GetMaxSTT() + 1;
+
+                        if (_cHienTrangKiemTra.Them(hientrangkiemtra))
+                        {
+                            txtHienTrangKT.Text = "";
+                            LoadDataTable();
+                        }
                     }
+                    else
+                        MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else
-                    MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
                 MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void btnSuaHienTrangKT_Click(object sender, EventArgs e)
+        private void btnSua_Click(object sender, EventArgs e)
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
             {
                 if (_selectedindexHTKT != -1)
                     if (txtHienTrangKT.Text.Trim() != "")
                     {
-                        HienTrangKiemTra hientrangkiemtra = _cHienTrangKiemTra.getHienTrangKiemTrabyID(int.Parse(dgvDSHienTrangKT["MaHTKT", _selectedindexHTKT].Value.ToString()));
+                        HienTrangKiemTra hientrangkiemtra = _cHienTrangKiemTra.Get(int.Parse(dgvDSHienTrangKT["MaHTKT", _selectedindexHTKT].Value.ToString()));
                         hientrangkiemtra.TenHTKT = txtHienTrangKT.Text.Trim();
 
-                        if (_cHienTrangKiemTra.SuaHienTrangKiemTra(hientrangkiemtra))
+                        if (_cHienTrangKiemTra.Sua(hientrangkiemtra))
                         {
                             txtHienTrangKT.Text = "";
                             _selectedindexHTKT = -1;
@@ -106,93 +112,28 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void btnXoaHienTrangKT_Click(object sender, EventArgs e)
+        private void btnXoa_Click(object sender, EventArgs e)
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
             {
-                if (_selectedindexHTKT != -1 && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    if (_cHienTrangKiemTra.XoaHienTrangKiemTra(_cHienTrangKiemTra.getHienTrangKiemTrabyID(int.Parse(dgvDSHienTrangKT["MaHTKT", _selectedindexHTKT].Value.ToString()))))
-                    {
-                        txtHienTrangKT.Text = "";
-                        _selectedindexHTKT = -1;
-                        LoadDataTable();
-                    }
+                try
+                {
+                    if (_selectedindexHTKT != -1 && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        if (_cHienTrangKiemTra.Xoa(_cHienTrangKiemTra.Get(int.Parse(dgvDSHienTrangKT["MaHTKT", _selectedindexHTKT].Value.ToString()))))
+                        {
+                            txtHienTrangKT.Text = "";
+                            _selectedindexHTKT = -1;
+                            LoadDataTable();
+                        }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-
-        private void btnUpHienTrangKT_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int rowIndex = dgvDSHienTrangKT.SelectedRows[0].Index; // get the index of the currently selected row
-                if (rowIndex == 0)
-                {
-                    MessageBox.Show("first line");
-                    return;
-                }
-                List<string> list = new List<string>();
-                for (int i = 0; i < dgvDSHienTrangKT.Columns.Count; i++)
-                {
-                    list.Add(dgvDSHienTrangKT.SelectedRows[0].Cells[i].Value.ToString());// array of data stored in the list of the currently selected row 
-                }
-                for (int j = 0; j < dgvDSHienTrangKT.Columns.Count; j++)
-                {
-                    dgvDSHienTrangKT.Rows[rowIndex].Cells[j].Value = dgvDSHienTrangKT.Rows[rowIndex - 1].Cells[j].Value;
-                    dgvDSHienTrangKT.Rows[rowIndex - 1].Cells[j].Value = list[j].ToString();
-                }
-                dgvDSHienTrangKT.Rows[rowIndex - 1].Selected = true;
-                //dgvDSHienTrangKT.Rows[rowIndex].Selected = false;
-                for (int i = 0; i < dgvDSHienTrangKT.Rows.Count; i++)
-                {
-                    HienTrangKiemTra hientrangkiemtra = _cHienTrangKiemTra.getHienTrangKiemTrabyID(int.Parse(dgvDSHienTrangKT["MaHTKT", i].Value.ToString()));
-                    hientrangkiemtra.STT = i;
-                    _cHienTrangKiemTra.SuaHienTrangKiemTra(hientrangkiemtra);
-                }
-                _selectedindexHTKT = -1;
-            }
-            catch
-            {
-            }
-        }
-
-        private void btnDownHienTrangKT_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int rowIndex = dgvDSHienTrangKT.SelectedRows[0].Index; // get the index of the currently selected row
-                if (rowIndex == dgvDSHienTrangKT.Rows.Count - 1)
-                {
-                    MessageBox.Show("is the last line!");
-                    return;
-                }
-                List<string> list = new List<string>();
-                for (int i = 0; i < dgvDSHienTrangKT.Columns.Count; i++)
-                {
-                    list.Add(dgvDSHienTrangKT.SelectedRows[0].Cells[i].Value.ToString()); // array of data stored in the list of the currently selected row 
-                }
-                for (int j = 0; j < dgvDSHienTrangKT.Columns.Count; j++)
-                {
-                    dgvDSHienTrangKT.Rows[rowIndex].Cells[j].Value = dgvDSHienTrangKT.Rows[rowIndex + 1].Cells[j].Value;
-                    dgvDSHienTrangKT.Rows[rowIndex + 1].Cells[j].Value = list[j].ToString();
-                }
-                dgvDSHienTrangKT.Rows[rowIndex + 1].Selected = true;
-                //dgvDSTrangThaiBC.Rows[rowIndex].Selected = false;
-                for (int i = 0; i < dgvDSHienTrangKT.Rows.Count; i++)
-                {
-                    HienTrangKiemTra hientrangkiemtra = _cHienTrangKiemTra.getHienTrangKiemTrabyID(int.Parse(dgvDSHienTrangKT["MaHTKT", i].Value.ToString()));
-                    hientrangkiemtra.STT = i;
-                    _cHienTrangKiemTra.SuaHienTrangKiemTra(hientrangkiemtra);
-                }
-                _selectedindexHTKT = -1;
-            }
-            catch
-            {
-            }
-        }
-
-        #endregion
 
         int rowIndexFromMouseDown;
         DataGridViewRow rw;
