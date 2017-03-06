@@ -78,6 +78,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
                 dr["CreateDate"] = item["CreateDate"].ToString();
+                if (item["DanhBo"].ToString()!="")
                 dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                 dr["HoTen"] = item["HoTen"].ToString();
                 dr["DiaChi"] = item["DiaChi"].ToString();
@@ -130,6 +131,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
                 dr["CreateDate"] = item["CreateDate"].ToString();
+                if (item["DanhBo"].ToString() != "")
                 dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                 dr["HoTen"] = item["HoTen"].ToString();
                 dr["DiaChi"] = item["DiaChi"].ToString();
