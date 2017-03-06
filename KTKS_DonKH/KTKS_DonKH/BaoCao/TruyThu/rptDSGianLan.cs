@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KTKS_DonKH.BaoCao.ToXuLy {
+namespace KTKS_DonKH.BaoCao.TruyThu {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace KTKS_DonKH.BaoCao.ToXuLy {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rptTruyThuTienNuoc : ReportClass {
+    public class rptDSGianLan : ReportClass {
         
-        public rptTruyThuTienNuoc() {
+        public rptDSGianLan() {
         }
         
         public override string ResourceName {
             get {
-                return "rptTruyThuTienNuoc.rpt";
+                return "rptDSGianLan.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace KTKS_DonKH.BaoCao.ToXuLy {
         
         public override string FullResourceName {
             get {
-                return "KTKS_DonKH.BaoCao.ToXuLy.rptTruyThuTienNuoc.rpt";
+                return "KTKS_DonKH.BaoCao.TruyThu.rptDSGianLan.rpt";
             }
             set {
                 // Do nothing
@@ -66,7 +66,7 @@ namespace KTKS_DonKH.BaoCao.ToXuLy {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[2];
             }
@@ -74,7 +74,7 @@ namespace KTKS_DonKH.BaoCao.ToXuLy {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,41 +82,17 @@ namespace KTKS_DonKH.BaoCao.ToXuLy {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
-            get {
-                return this.ReportDefinition.Sections[4];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
-            get {
-                return this.ReportDefinition.Sections[5];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section ReportFooterSection2 {
-            get {
-                return this.ReportDefinition.Sections[6];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
-                return this.ReportDefinition.Sections[7];
+                return this.ReportDefinition.Sections[4];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrptTruyThuTienNuoc : Component, ICachedReport {
+    public class CachedrptDSGianLan : Component, ICachedReport {
         
-        public CachedrptTruyThuTienNuoc() {
+        public CachedrptDSGianLan() {
         }
         
         [Browsable(false)]
@@ -153,7 +129,7 @@ namespace KTKS_DonKH.BaoCao.ToXuLy {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rptTruyThuTienNuoc rpt = new rptTruyThuTienNuoc();
+            rptDSGianLan rpt = new rptDSGianLan();
             rpt.Site = this.Site;
             return rpt;
         }

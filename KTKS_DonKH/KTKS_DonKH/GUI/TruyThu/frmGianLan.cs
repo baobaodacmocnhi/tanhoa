@@ -16,8 +16,9 @@ using KTKS_DonKH.BaoCao.ToXuLy;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.ToBamChi;
 using KTKS_DonKH.DAL.QuanTri;
+using KTKS_DonKH.BaoCao.TruyThu;
 
-namespace KTKS_DonKH.GUI.ToXuLy
+namespace KTKS_DonKH.GUI.TruyThu
 {
     public partial class frmGianLan : Form
     {

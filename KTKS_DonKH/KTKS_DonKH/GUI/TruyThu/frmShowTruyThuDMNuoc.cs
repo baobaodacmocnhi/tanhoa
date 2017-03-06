@@ -6,17 +6,17 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using KTKS_DonKH.DAL.ToXuLy;
+using KTKS_DonKH.DAL.TruyThu;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.DieuChinhBienDong;
 using KTKS_DonKH.BaoCao;
-using KTKS_DonKH.BaoCao.ToXuLy;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.QuanTri;
+using KTKS_DonKH.BaoCao.TruyThu;
 
-namespace KTKS_DonKH.GUI.ToXuLy
+namespace KTKS_DonKH.GUI.TruyThu
 {
-    public partial class frmShowTruyThuTienNuoc : Form
+    public partial class frmShowTruyThuDMNuoc : Form
     {
         decimal _MaTTTN = 0;
         TruyThuTienNuoc _tttn = null;
@@ -25,12 +25,12 @@ namespace KTKS_DonKH.GUI.ToXuLy
         private DateTimePicker cellDateTimePicker;
         bool _flagFirst = true;
 
-        public frmShowTruyThuTienNuoc()
+        public frmShowTruyThuDMNuoc()
         {
             InitializeComponent();
         }
 
-        public frmShowTruyThuTienNuoc(decimal MaTTTN)
+        public frmShowTruyThuDMNuoc(decimal MaTTTN)
         {
             InitializeComponent();
             _MaTTTN = MaTTTN;
@@ -50,11 +50,9 @@ namespace KTKS_DonKH.GUI.ToXuLy
             this.dgvThanhToanTruyThuTienNuoc.Controls.Add(cellDateTimePicker);
             try
             {
-
-            
-            if (_cTTTN.getTruyThuTienNuocbyMaTTTN(_MaTTTN) != null)
+            if (_cTTTN.CheckExist(_MaTTTN) == true)
             {
-                _tttn = _cTTTN.getTruyThuTienNuocbyMaTTTN(_MaTTTN);
+                _tttn = _cTTTN.Get(_MaTTTN);
                 if (_tttn.MaDon!=null)
                      txtMaDon.Text = _tttn.MaDon.Value.ToString().Insert(_tttn.MaDon.Value.ToString().Length - 2, "-");
                 else
@@ -154,7 +152,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
             _tttn.NoiDung = txtNoiDung.Text.Trim();
             _tttn.DienThoai = txtDienThoai.Text.Trim();
 
-            if(_cTTTN.SuaTruyThuTienNuoc(_tttn))
+            if(_cTTTN.Sua(_tttn))
                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -162,7 +160,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             if (_tttn != null)
                 if (MessageBox.Show("Bạn có chắc chắn xóa Toàn bộ Truy Thu Tiền Nước?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                    if (_cTTTN.XoaTruyThuTienNuoc(_tttn))
+                    if (_cTTTN.Xoa(_tttn))
                     {
                         this.DialogResult = DialogResult.OK;
                         this.Close();
@@ -189,14 +187,14 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             if (dgvThanhToanTruyThuTienNuoc["MaTTTTTN", e.RowIndex].Value != null)
             {
-                ThanhToanTruyThuTienNuoc tttttn = _cTTTN.getThanhToanTruyThuTienNuocbyMaTTTTTN(int.Parse(dgvThanhToanTruyThuTienNuoc["MaTTTTTN", e.RowIndex].Value.ToString()));
+                ThanhToanTruyThuTienNuoc tttttn = _cTTTN.GetThanhToan(int.Parse(dgvThanhToanTruyThuTienNuoc["MaTTTTTN", e.RowIndex].Value.ToString()));
 
                 string[] date = dgvThanhToanTruyThuTienNuoc["NgayDong", e.RowIndex].Value.ToString().Split('/');
                 tttttn.NgayDong = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
                 tttttn.SoTien = int.Parse(dgvThanhToanTruyThuTienNuoc["SoTien", e.RowIndex].Value.ToString());
                 tttttn.DaThanhToan = bool.Parse(dgvThanhToanTruyThuTienNuoc["DaThanhToan", e.RowIndex].Value.ToString());
 
-                _cTTTN.SuaThanhToanTruyThuTienNuoc(tttttn);
+                _cTTTN.SuaThanhToan(tttttn);
             }
         }
 
@@ -223,9 +221,9 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             if (dgvThanhToanTruyThuTienNuoc["MaTTTTTN", dgvThanhToanTruyThuTienNuoc.CurrentRow.Index].Value != null)
             {
-                ThanhToanTruyThuTienNuoc tttttn = _cTTTN.getThanhToanTruyThuTienNuocbyMaTTTTTN(int.Parse(dgvThanhToanTruyThuTienNuoc["MaTTTTTN", dgvThanhToanTruyThuTienNuoc.CurrentRow.Index].Value.ToString()));
+                ThanhToanTruyThuTienNuoc tttttn = _cTTTN.GetThanhToan(int.Parse(dgvThanhToanTruyThuTienNuoc["MaTTTTTN", dgvThanhToanTruyThuTienNuoc.CurrentRow.Index].Value.ToString()));
 
-                _cTTTN.XoaThanhToanTruyThuTienNuoc(tttttn);
+                _cTTTN.XoaThanhToan(tttttn);
             }
         }
 
@@ -310,7 +308,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
             if (_flagFirst==false&& dgvTruyThuTienNuoc["MaCTTTTN", e.RowIndex].Value != null)
             {
-                CTTruyThuTienNuoc cttttn = _cTTTN.getCTTruyThuTienNuocbyMaCTTTTN(int.Parse(dgvTruyThuTienNuoc["MaCTTTTN", e.RowIndex].Value.ToString()));
+                CTTruyThuTienNuoc cttttn = _cTTTN.GetCT(int.Parse(dgvTruyThuTienNuoc["MaCTTTTN", e.RowIndex].Value.ToString()));
 
                 cttttn.Ky = dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString();
                 cttttn.Nam = dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString();
@@ -331,7 +329,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 cttttn.TongCongMoi = int.Parse(dgvTruyThuTienNuoc["TongCong_Moi", e.RowIndex].Value.ToString());
                 cttttn.TangGiam = dgvTruyThuTienNuoc["TangGiam", e.RowIndex].Value.ToString();
 
-                _cTTTN.SuaCTTruyThuTienNuoc(cttttn);
+                _cTTTN.SuaCT(cttttn);
             }
             if (e.RowIndex > 0 && dgvTruyThuTienNuoc.RowCount > _tttn.CTTruyThuTienNuocs.ToList().Count)
                 _flagFirst = false;
@@ -385,9 +383,9 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             if (dgvTruyThuTienNuoc["MaCTTTTN", dgvTruyThuTienNuoc.CurrentRow.Index].Value != null)
             {
-                CTTruyThuTienNuoc cttttn = _cTTTN.getCTTruyThuTienNuocbyMaCTTTTN(int.Parse(dgvTruyThuTienNuoc["MaCTTTTN", dgvTruyThuTienNuoc.CurrentRow.Index].Value.ToString()));
+                CTTruyThuTienNuoc cttttn = _cTTTN.GetCT(int.Parse(dgvTruyThuTienNuoc["MaCTTTTN", dgvTruyThuTienNuoc.CurrentRow.Index].Value.ToString()));
 
-                _cTTTN.XoaCTTruyThuTienNuoc(cttttn);
+                _cTTTN.XoaCT(cttttn);
             }
         }
 

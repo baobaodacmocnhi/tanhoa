@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 
-namespace KTKS_DonKH.GUI.ToXuLy
+namespace KTKS_DonKH.GUI.TruyThu
 {
     public partial class frmPDFViewer : Form
     {

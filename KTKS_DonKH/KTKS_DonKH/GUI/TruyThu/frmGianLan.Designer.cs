@@ -1,4 +1,4 @@
-﻿namespace KTKS_DonKH.GUI.ToXuLy
+﻿namespace KTKS_DonKH.GUI.TruyThu
 {
     partial class frmGianLan
     {

@@ -15,6 +15,7 @@ using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.ToKhachHang;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.DonTu;
+using KTKS_DonKH.DAL.TruyThu;
 
 namespace KTKS_DonKH.GUI.ToKhachHang
 {
@@ -30,7 +31,8 @@ namespace KTKS_DonKH.GUI.ToKhachHang
         CDocSo _cDocSo = new CDocSo();
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
-        decimal _MaDonTKH = 0;
+        CTruyThuTienNuoc _cTTTN = new CTruyThuTienNuoc();
+        decimal _MaDonTKH = -1;
 
         public frmNhanDonTKH()
         {
@@ -47,13 +49,14 @@ namespace KTKS_DonKH.GUI.ToKhachHang
         {
             dgvLichSuDon.AutoGenerateColumns = false;
             dgvLichSuDonTu.AutoGenerateColumns = false;
+            lbTruyThu.Text = "";
 
             cmbLD.DataSource = _cLoaiDon.LoadDSLoaiDon();
             cmbLD.DisplayMember = "TenLD";
             cmbLD.ValueMember = "MaLD";
             cmbLD.SelectedIndex = -1;
 
-            if (_MaDonTKH != 0)
+            if (_MaDonTKH != -1)
             {
                 txtMaDon.Text = _MaDonTKH.ToString();
                 KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
@@ -111,10 +114,11 @@ namespace KTKS_DonKH.GUI.ToKhachHang
 
             txtDinhMucSau.Text = "";
             txtHieuLucTuKy.Text = "";
+            lbTruyThu.Text = "";
 
             _donkh = null;
             _hoadon = null;
-            _MaDonTKH = 0;
+            _MaDonTKH = -1;
         }
 
         public void LoadTTKH(HOADON hoadon)
@@ -125,6 +129,10 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             txtGiaBieu.Text = hoadon.GB.ToString();
             txtDinhMuc.Text = hoadon.DM.ToString();
             dgvLichSuDon.DataSource = _cDonKH.LoadDSDonKHByDanhBo(hoadon.DANHBA);
+            if (_cTTTN.CheckExist_ChuaXepDon(hoadon.DANHBA))
+                lbTruyThu.Text = "Danh Bộ này đang Truy Thu";
+            else
+                lbTruyThu.Text = "";
         }
 
         public void LoadDonTKH(DonKH dontkh)

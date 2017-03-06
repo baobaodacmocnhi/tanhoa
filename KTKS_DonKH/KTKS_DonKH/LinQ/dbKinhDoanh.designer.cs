@@ -201,6 +201,9 @@ namespace KTKS_DonKH.LinQ
     partial void InsertTruyThuTienNuoc(TruyThuTienNuoc instance);
     partial void UpdateTruyThuTienNuoc(TruyThuTienNuoc instance);
     partial void DeleteTruyThuTienNuoc(TruyThuTienNuoc instance);
+    partial void InsertTruyThuTienNuoc_ThuMoi(TruyThuTienNuoc_ThuMoi instance);
+    partial void UpdateTruyThuTienNuoc_ThuMoi(TruyThuTienNuoc_ThuMoi instance);
+    partial void DeleteTruyThuTienNuoc_ThuMoi(TruyThuTienNuoc_ThuMoi instance);
     partial void InsertTTTL(TTTL instance);
     partial void UpdateTTTL(TTTL instance);
     partial void DeleteTTTL(TTTL instance);
@@ -692,6 +695,14 @@ namespace KTKS_DonKH.LinQ
 			get
 			{
 				return this.GetTable<TruyThuTienNuoc>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TruyThuTienNuoc_ThuMoi> TruyThuTienNuoc_ThuMois
+		{
+			get
+			{
+				return this.GetTable<TruyThuTienNuoc_ThuMoi>();
 			}
 		}
 		
@@ -32547,6 +32558,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _DienThoai;
 		
+		private bool _XepDon;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -32558,6 +32571,8 @@ namespace KTKS_DonKH.LinQ
 		private EntitySet<CTTruyThuTienNuoc> _CTTruyThuTienNuocs;
 		
 		private EntitySet<ThanhToanTruyThuTienNuoc> _ThanhToanTruyThuTienNuocs;
+		
+		private EntitySet<TruyThuTienNuoc_ThuMoi> _TruyThuTienNuoc_ThuMois;
 		
 		private EntityRef<DonKH> _DonKH;
 		
@@ -32599,6 +32614,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnNoiDungChanged();
     partial void OnDienThoaiChanging(string value);
     partial void OnDienThoaiChanged();
+    partial void OnXepDonChanging(bool value);
+    partial void OnXepDonChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -32613,6 +32630,7 @@ namespace KTKS_DonKH.LinQ
 		{
 			this._CTTruyThuTienNuocs = new EntitySet<CTTruyThuTienNuoc>(new Action<CTTruyThuTienNuoc>(this.attach_CTTruyThuTienNuocs), new Action<CTTruyThuTienNuoc>(this.detach_CTTruyThuTienNuocs));
 			this._ThanhToanTruyThuTienNuocs = new EntitySet<ThanhToanTruyThuTienNuoc>(new Action<ThanhToanTruyThuTienNuoc>(this.attach_ThanhToanTruyThuTienNuocs), new Action<ThanhToanTruyThuTienNuoc>(this.detach_ThanhToanTruyThuTienNuocs));
+			this._TruyThuTienNuoc_ThuMois = new EntitySet<TruyThuTienNuoc_ThuMoi>(new Action<TruyThuTienNuoc_ThuMoi>(this.attach_TruyThuTienNuoc_ThuMois), new Action<TruyThuTienNuoc_ThuMoi>(this.detach_TruyThuTienNuoc_ThuMois));
 			this._DonKH = default(EntityRef<DonKH>);
 			this._DonTXL = default(EntityRef<DonTXL>);
 			OnCreated();
@@ -32946,6 +32964,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_XepDon", DbType="Bit NOT NULL")]
+		public bool XepDon
+		{
+			get
+			{
+				return this._XepDon;
+			}
+			set
+			{
+				if ((this._XepDon != value))
+				{
+					this.OnXepDonChanging(value);
+					this.SendPropertyChanging();
+					this._XepDon = value;
+					this.SendPropertyChanged("XepDon");
+					this.OnXepDonChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
 		public System.Nullable<System.DateTime> CreateDate
 		{
@@ -33049,6 +33087,19 @@ namespace KTKS_DonKH.LinQ
 			set
 			{
 				this._ThanhToanTruyThuTienNuocs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TruyThuTienNuoc_TruyThuTienNuoc_ThuMoi", Storage="_TruyThuTienNuoc_ThuMois", ThisKey="MaTTTN", OtherKey="MaTTTN")]
+		public EntitySet<TruyThuTienNuoc_ThuMoi> TruyThuTienNuoc_ThuMois
+		{
+			get
+			{
+				return this._TruyThuTienNuoc_ThuMois;
+			}
+			set
+			{
+				this._TruyThuTienNuoc_ThuMois.Assign(value);
 			}
 		}
 		
@@ -33162,6 +33213,313 @@ namespace KTKS_DonKH.LinQ
 		{
 			this.SendPropertyChanging();
 			entity.TruyThuTienNuoc = null;
+		}
+		
+		private void attach_TruyThuTienNuoc_ThuMois(TruyThuTienNuoc_ThuMoi entity)
+		{
+			this.SendPropertyChanging();
+			entity.TruyThuTienNuoc = this;
+		}
+		
+		private void detach_TruyThuTienNuoc_ThuMois(TruyThuTienNuoc_ThuMoi entity)
+		{
+			this.SendPropertyChanging();
+			entity.TruyThuTienNuoc = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TruyThuTienNuoc_ThuMoi")]
+	public partial class TruyThuTienNuoc_ThuMoi : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Nullable<int> _STT;
+		
+		private string _VaoLuc;
+		
+		private string _VeViec;
+		
+		private System.Nullable<decimal> _MaTTTN;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _ModifyDate;
+		
+		private System.Nullable<int> _ModifyBy;
+		
+		private EntityRef<TruyThuTienNuoc> _TruyThuTienNuoc;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnSTTChanging(System.Nullable<int> value);
+    partial void OnSTTChanged();
+    partial void OnVaoLucChanging(string value);
+    partial void OnVaoLucChanged();
+    partial void OnVeViecChanging(string value);
+    partial void OnVeViecChanged();
+    partial void OnMaTTTNChanging(System.Nullable<decimal> value);
+    partial void OnMaTTTNChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifyDateChanged();
+    partial void OnModifyByChanging(System.Nullable<int> value);
+    partial void OnModifyByChanged();
+    #endregion
+		
+		public TruyThuTienNuoc_ThuMoi()
+		{
+			this._TruyThuTienNuoc = default(EntityRef<TruyThuTienNuoc>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", DbType="Int")]
+		public System.Nullable<int> STT
+		{
+			get
+			{
+				return this._STT;
+			}
+			set
+			{
+				if ((this._STT != value))
+				{
+					this.OnSTTChanging(value);
+					this.SendPropertyChanging();
+					this._STT = value;
+					this.SendPropertyChanged("STT");
+					this.OnSTTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VaoLuc", DbType="NVarChar(100)")]
+		public string VaoLuc
+		{
+			get
+			{
+				return this._VaoLuc;
+			}
+			set
+			{
+				if ((this._VaoLuc != value))
+				{
+					this.OnVaoLucChanging(value);
+					this.SendPropertyChanging();
+					this._VaoLuc = value;
+					this.SendPropertyChanged("VaoLuc");
+					this.OnVaoLucChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VeViec", DbType="NVarChar(MAX)")]
+		public string VeViec
+		{
+			get
+			{
+				return this._VeViec;
+			}
+			set
+			{
+				if ((this._VeViec != value))
+				{
+					this.OnVeViecChanging(value);
+					this.SendPropertyChanging();
+					this._VeViec = value;
+					this.SendPropertyChanged("VeViec");
+					this.OnVeViecChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTTTN", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> MaTTTN
+		{
+			get
+			{
+				return this._MaTTTN;
+			}
+			set
+			{
+				if ((this._MaTTTN != value))
+				{
+					if (this._TruyThuTienNuoc.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMaTTTNChanging(value);
+					this.SendPropertyChanging();
+					this._MaTTTN = value;
+					this.SendPropertyChanged("MaTTTN");
+					this.OnMaTTTNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifyDate
+		{
+			get
+			{
+				return this._ModifyDate;
+			}
+			set
+			{
+				if ((this._ModifyDate != value))
+				{
+					this.OnModifyDateChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyDate = value;
+					this.SendPropertyChanged("ModifyDate");
+					this.OnModifyDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
+		public System.Nullable<int> ModifyBy
+		{
+			get
+			{
+				return this._ModifyBy;
+			}
+			set
+			{
+				if ((this._ModifyBy != value))
+				{
+					this.OnModifyByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyBy = value;
+					this.SendPropertyChanged("ModifyBy");
+					this.OnModifyByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TruyThuTienNuoc_TruyThuTienNuoc_ThuMoi", Storage="_TruyThuTienNuoc", ThisKey="MaTTTN", OtherKey="MaTTTN", IsForeignKey=true)]
+		public TruyThuTienNuoc TruyThuTienNuoc
+		{
+			get
+			{
+				return this._TruyThuTienNuoc.Entity;
+			}
+			set
+			{
+				TruyThuTienNuoc previousValue = this._TruyThuTienNuoc.Entity;
+				if (((previousValue != value) 
+							|| (this._TruyThuTienNuoc.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TruyThuTienNuoc.Entity = null;
+						previousValue.TruyThuTienNuoc_ThuMois.Remove(this);
+					}
+					this._TruyThuTienNuoc.Entity = value;
+					if ((value != null))
+					{
+						value.TruyThuTienNuoc_ThuMois.Add(this);
+						this._MaTTTN = value.MaTTTN;
+					}
+					else
+					{
+						this._MaTTTN = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("TruyThuTienNuoc");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	

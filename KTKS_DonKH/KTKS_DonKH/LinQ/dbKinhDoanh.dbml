@@ -1435,14 +1435,30 @@
       <Column Name="Nam" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="NoiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="DienThoai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="XepDon" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="TruyThuTienNuoc_CTTruyThuTienNuoc" Member="CTTruyThuTienNuocs" ThisKey="MaTTTN" OtherKey="MaTTTN" Type="CTTruyThuTienNuoc" />
       <Association Name="TruyThuTienNuoc_ThanhToanTruyThuTienNuoc" Member="ThanhToanTruyThuTienNuocs" ThisKey="MaTTTN" OtherKey="MaTTTN" Type="ThanhToanTruyThuTienNuoc" />
+      <Association Name="TruyThuTienNuoc_TruyThuTienNuoc_ThuMoi" Member="TruyThuTienNuoc_ThuMois" ThisKey="MaTTTN" OtherKey="MaTTTN" Type="TruyThuTienNuoc_ThuMoi" />
       <Association Name="DonKH_TruyThuTienNuoc" Member="DonKH" ThisKey="MaDon" OtherKey="MaDon" Type="DonKH" IsForeignKey="true" />
       <Association Name="DonTXL_TruyThuTienNuoc" Member="DonTXL" ThisKey="MaDonTXL" OtherKey="MaDon" Type="DonTXL" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TruyThuTienNuoc_ThuMoi" Member="TruyThuTienNuoc_ThuMois">
+    <Type Name="TruyThuTienNuoc_ThuMoi">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="STT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VaoLuc" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="VeViec" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MaTTTN" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="TruyThuTienNuoc_TruyThuTienNuoc_ThuMoi" Member="TruyThuTienNuoc" ThisKey="MaTTTN" OtherKey="MaTTTN" Type="TruyThuTienNuoc" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.TTTL" Member="TTTLs">

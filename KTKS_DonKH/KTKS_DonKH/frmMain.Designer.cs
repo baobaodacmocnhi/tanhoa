@@ -48,6 +48,7 @@
             this.mnuDSDonDienThoai = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLoaiDon = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToTrinhDCHD = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuBaoCaoDonTKH = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToXuLy = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuNhanDonTXL = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDSDonTXL = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,9 +71,9 @@
             this.mnuTrangThaiBamChi = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBaoCaoBamChi = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTruyThu = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuTruyThuTienNuoc = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuTruyThuDMNuoc = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDSTruyThuDMNuoc = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuGianLanTienNuoc = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuDSTruyThuTienNuoc = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDieuChinhBienDong = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDCBD = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDCHD = new System.Windows.Forms.ToolStripMenuItem();
@@ -103,7 +104,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
-            this.mnuBaoCaoDonTKH = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -276,6 +276,13 @@
             this.mnuToTrinhDCHD.Text = "Tờ Trình Điều Chỉnh Hóa Đơn";
             this.mnuToTrinhDCHD.Click += new System.EventHandler(this.mnuToTrinhDCHD_Click);
             // 
+            // mnuBaoCaoDonTKH
+            // 
+            this.mnuBaoCaoDonTKH.Name = "mnuBaoCaoDonTKH";
+            this.mnuBaoCaoDonTKH.Size = new System.Drawing.Size(248, 22);
+            this.mnuBaoCaoDonTKH.Text = "Báo Cáo";
+            this.mnuBaoCaoDonTKH.Click += new System.EventHandler(this.mnuBaoCaoDonTKH_Click);
+            // 
             // mnuToXuLy
             // 
             this.mnuToXuLy.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -443,33 +450,33 @@
             // mnuTruyThu
             // 
             this.mnuTruyThu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuTruyThuTienNuoc,
-            this.mnuGianLanTienNuoc,
-            this.mnuDSTruyThuTienNuoc});
+            this.mnuTruyThuDMNuoc,
+            this.mnuDSTruyThuDMNuoc,
+            this.mnuGianLanTienNuoc});
             this.mnuTruyThu.Name = "mnuTruyThu";
             this.mnuTruyThu.Size = new System.Drawing.Size(73, 20);
             this.mnuTruyThu.Text = "Truy Thu";
             // 
-            // mnuTruyThuTienNuoc
+            // mnuTruyThuDMNuoc
             // 
-            this.mnuTruyThuTienNuoc.Name = "mnuTruyThuTienNuoc";
-            this.mnuTruyThuTienNuoc.Size = new System.Drawing.Size(216, 22);
-            this.mnuTruyThuTienNuoc.Text = "Truy Thu Tiền Nước";
-            this.mnuTruyThuTienNuoc.Click += new System.EventHandler(this.mnuTruyThuTienNuoc_Click);
+            this.mnuTruyThuDMNuoc.Name = "mnuTruyThuDMNuoc";
+            this.mnuTruyThuDMNuoc.Size = new System.Drawing.Size(243, 22);
+            this.mnuTruyThuDMNuoc.Text = "Truy Thu Định Mức Nước";
+            this.mnuTruyThuDMNuoc.Click += new System.EventHandler(this.mnuTruyThuDMNuoc_Click);
+            // 
+            // mnuDSTruyThuDMNuoc
+            // 
+            this.mnuDSTruyThuDMNuoc.Name = "mnuDSTruyThuDMNuoc";
+            this.mnuDSTruyThuDMNuoc.Size = new System.Drawing.Size(243, 22);
+            this.mnuDSTruyThuDMNuoc.Text = "DS Truy Thu Định Mức Nước";
+            this.mnuDSTruyThuDMNuoc.Click += new System.EventHandler(this.mnuDSTruyThuDMNuoc_Click);
             // 
             // mnuGianLanTienNuoc
             // 
             this.mnuGianLanTienNuoc.Name = "mnuGianLanTienNuoc";
-            this.mnuGianLanTienNuoc.Size = new System.Drawing.Size(216, 22);
+            this.mnuGianLanTienNuoc.Size = new System.Drawing.Size(243, 22);
             this.mnuGianLanTienNuoc.Text = "Gian Lận Tiền Nước";
             this.mnuGianLanTienNuoc.Click += new System.EventHandler(this.mnuGianLanTienNuoc_Click);
-            // 
-            // mnuDSTruyThuTienNuoc
-            // 
-            this.mnuDSTruyThuTienNuoc.Name = "mnuDSTruyThuTienNuoc";
-            this.mnuDSTruyThuTienNuoc.Size = new System.Drawing.Size(216, 22);
-            this.mnuDSTruyThuTienNuoc.Text = "DS Truy Thu Tiền Nước";
-            this.mnuDSTruyThuTienNuoc.Click += new System.EventHandler(this.mnuDSTruyThuTienNuoc_Click);
             // 
             // mnuDieuChinhBienDong
             // 
@@ -707,13 +714,6 @@
             this.StripStatus_HoTen.Size = new System.Drawing.Size(58, 17);
             this.StripStatus_HoTen.Text = "Xin Chào:";
             // 
-            // mnuBaoCaoDonTKH
-            // 
-            this.mnuBaoCaoDonTKH.Name = "mnuBaoCaoDonTKH";
-            this.mnuBaoCaoDonTKH.Size = new System.Drawing.Size(248, 22);
-            this.mnuBaoCaoDonTKH.Text = "Báo Cáo";
-            this.mnuBaoCaoDonTKH.Click += new System.EventHandler(this.mnuBaoCaoDonTKH_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -790,7 +790,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuDongNuoc;
         private System.Windows.Forms.ToolStripMenuItem mnuDSCHDB;
         private System.Windows.Forms.ToolStripMenuItem mnuLyDoCHDB;
-        private System.Windows.Forms.ToolStripMenuItem mnuTruyThuTienNuoc;
+        private System.Windows.Forms.ToolStripMenuItem mnuTruyThuDMNuoc;
         private System.Windows.Forms.ToolStripMenuItem mnuToXuLy;
         private System.Windows.Forms.ToolStripMenuItem mnuNhanDonTXL;
         private System.Windows.Forms.ToolStripMenuItem mnuDSDonTXL;
@@ -808,7 +808,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuBaoCaoKTXM;
         private System.Windows.Forms.ToolStripMenuItem mnuBaoCaoBamChi;
         private System.Windows.Forms.ToolStripMenuItem mnuTBKQYCCatDM;
-        private System.Windows.Forms.ToolStripMenuItem mnuDSTruyThuTienNuoc;
+        private System.Windows.Forms.ToolStripMenuItem mnuDSTruyThuDMNuoc;
         private System.Windows.Forms.ToolStripMenuItem mnuBaoCaoDonTXL;
         private System.Windows.Forms.ToolStripMenuItem mnuToTrinhDCHD;
         private System.Windows.Forms.ToolStripMenuItem mnuToBamChi;

@@ -20,6 +20,7 @@ using KTKS_DonKH.GUI.DongNuoc;
 using KTKS_DonKH.GUI.CongVan;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.GUI.QuanTri;
+using KTKS_DonKH.GUI.TruyThu;
 
 namespace KTKS_DonKH
 {
@@ -622,7 +623,7 @@ namespace KTKS_DonKH
         {
             foreach (Form item in this.MdiChildren)
                 item.Close();
-            Form frm = new frmTruyThuTienNuoc();
+            Form frm = new frmTruyThuDMNuoc();
             frm.MdiParent = this;
             frm.Show();
             StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
@@ -632,7 +633,7 @@ namespace KTKS_DonKH
         {
             foreach (Form item in this.MdiChildren)
                 item.Close();
-            Form frm = new frmDSTruyThuTienNuoc();
+            Form frm = new frmDSTruyThuDMNuoc();
             frm.MdiParent = this;
             frm.Show();
             StripStatus_Form.Text = "Đang mở Form: " + frm.Text;

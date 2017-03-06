@@ -1,6 +1,6 @@
-﻿namespace KTKS_DonKH.GUI.ToXuLy
+﻿namespace KTKS_DonKH.GUI.TruyThu
 {
-    partial class frmShowTruyThuTienNuoc
+    partial class frmShowTruyThuDMNuoc
     {
         /// <summary>
         /// Required designer variable.

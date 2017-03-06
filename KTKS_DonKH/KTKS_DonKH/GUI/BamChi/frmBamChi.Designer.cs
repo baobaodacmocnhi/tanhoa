@@ -80,7 +80,6 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.dgvDSNhapBamChi = new System.Windows.Forms.DataGridView();
-            this.btnXoa = new System.Windows.Forms.Button();
             this.MaCTBC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -89,6 +88,7 @@
             this.NgayBC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TrangThaiBC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSNhapBamChi)).BeginInit();
@@ -127,22 +127,22 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(11, 34);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(629, 109);
+            this.groupBox1.Size = new System.Drawing.Size(517, 109);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Khách Hàng";
             // 
             // txtDinhMuc
             // 
-            this.txtDinhMuc.Location = new System.Drawing.Point(531, 50);
+            this.txtDinhMuc.Location = new System.Drawing.Point(457, 48);
             this.txtDinhMuc.Name = "txtDinhMuc";
-            this.txtDinhMuc.Size = new System.Drawing.Size(89, 22);
+            this.txtDinhMuc.Size = new System.Drawing.Size(50, 22);
             this.txtDinhMuc.TabIndex = 9;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(454, 52);
+            this.label10.Location = new System.Drawing.Point(386, 51);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(65, 16);
             this.label10.TabIndex = 8;
@@ -150,15 +150,15 @@
             // 
             // txtDiaChi
             // 
-            this.txtDiaChi.Location = new System.Drawing.Point(98, 79);
+            this.txtDiaChi.Location = new System.Drawing.Point(96, 76);
             this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Size = new System.Drawing.Size(522, 22);
+            this.txtDiaChi.Size = new System.Drawing.Size(411, 22);
             this.txtDiaChi.TabIndex = 11;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(8, 82);
+            this.label9.Location = new System.Drawing.Point(6, 79);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(53, 16);
             this.label9.TabIndex = 10;
@@ -166,15 +166,15 @@
             // 
             // txtHopDong
             // 
-            this.txtHopDong.Location = new System.Drawing.Point(358, 20);
+            this.txtHopDong.Location = new System.Drawing.Point(280, 20);
             this.txtHopDong.Name = "txtHopDong";
-            this.txtHopDong.Size = new System.Drawing.Size(89, 22);
+            this.txtHopDong.Size = new System.Drawing.Size(100, 22);
             this.txtHopDong.TabIndex = 3;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(279, 25);
+            this.label8.Location = new System.Drawing.Point(202, 23);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(72, 16);
             this.label8.TabIndex = 2;
@@ -182,15 +182,15 @@
             // 
             // txtGiaBieu
             // 
-            this.txtGiaBieu.Location = new System.Drawing.Point(531, 20);
+            this.txtGiaBieu.Location = new System.Drawing.Point(457, 20);
             this.txtGiaBieu.Name = "txtGiaBieu";
-            this.txtGiaBieu.Size = new System.Drawing.Size(89, 22);
+            this.txtGiaBieu.Size = new System.Drawing.Size(50, 22);
             this.txtGiaBieu.TabIndex = 5;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(454, 25);
+            this.label7.Location = new System.Drawing.Point(386, 23);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(62, 16);
             this.label7.TabIndex = 4;
@@ -198,15 +198,15 @@
             // 
             // txtHoTen
             // 
-            this.txtHoTen.Location = new System.Drawing.Point(98, 50);
+            this.txtHoTen.Location = new System.Drawing.Point(96, 48);
             this.txtHoTen.Name = "txtHoTen";
-            this.txtHoTen.Size = new System.Drawing.Size(350, 22);
+            this.txtHoTen.Size = new System.Drawing.Size(284, 22);
             this.txtHoTen.TabIndex = 7;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 52);
+            this.label6.Location = new System.Drawing.Point(6, 51);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(84, 16);
             this.label6.TabIndex = 6;
@@ -214,16 +214,16 @@
             // 
             // txtDanhBo
             // 
-            this.txtDanhBo.Location = new System.Drawing.Point(98, 20);
+            this.txtDanhBo.Location = new System.Drawing.Point(96, 20);
             this.txtDanhBo.Name = "txtDanhBo";
-            this.txtDanhBo.Size = new System.Drawing.Size(134, 22);
+            this.txtDanhBo.Size = new System.Drawing.Size(100, 22);
             this.txtDanhBo.TabIndex = 1;
             this.txtDanhBo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBo_KeyPress);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 25);
+            this.label2.Location = new System.Drawing.Point(6, 23);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 16);
             this.label2.TabIndex = 0;
@@ -638,16 +638,6 @@
             this.dgvDSNhapBamChi.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSNhapBamChi_CellFormatting);
             this.dgvDSNhapBamChi.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSNhapBamChi_RowPostPaint);
             // 
-            // btnXoa
-            // 
-            this.btnXoa.Location = new System.Drawing.Point(978, 264);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 25);
-            this.btnXoa.TabIndex = 7;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
             // MaCTBC
             // 
             this.MaCTBC.DataPropertyName = "MaCTBC";
@@ -704,6 +694,16 @@
             this.CreateBy.Name = "CreateBy";
             this.CreateBy.ReadOnly = true;
             this.CreateBy.Width = 150;
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Location = new System.Drawing.Point(978, 264);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 25);
+            this.btnXoa.TabIndex = 7;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // frmBamChi
             // 

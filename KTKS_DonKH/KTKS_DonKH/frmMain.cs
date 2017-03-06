@@ -21,6 +21,7 @@ using KTKS_DonKH.GUI.ToXuLy;
 using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.GUI.QuanTri;
 using KTKS_DonKH.GUI.ToBamChi;
+using KTKS_DonKH.GUI.TruyThu;
 
 namespace KTKS_DonKH
 {
@@ -511,9 +512,9 @@ namespace KTKS_DonKH
 
         #region Truy Thu
 
-        private void mnuTruyThuTienNuoc_Click(object sender, EventArgs e)
+        private void mnuTruyThuDMNuoc_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen("mnuTruyThuTienNuoc", "Xem"))
+            if (CTaiKhoan.CheckQuyen("mnuTruyThuDMNuoc", "Xem"))
             {
                 frmTruyThuTienNuoc frm = new frmTruyThuTienNuoc();
                 OpenForm(frm);
@@ -533,9 +534,9 @@ namespace KTKS_DonKH
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void mnuDSTruyThuTienNuoc_Click(object sender, EventArgs e)
+        private void mnuDSTruyThuDMNuoc_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen("mnuDSTruyThuTienNuoc", "Xem"))
+            if (CTaiKhoan.CheckQuyen("mnuDSTruyThuDMNuoc", "Xem"))
             {
                 frmDSTruyThuTienNuoc frm = new frmDSTruyThuTienNuoc();
                 OpenForm(frm);

@@ -170,7 +170,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             dgvDSKetQuaKiemTra.DataSource = null;
         }
 
-        public void Clear_GetDataGridView()
+        public void Clear_LoadDSKTXM()
         {
             txtDanhBo.Text = "";
             txtHopDong.Text = "";
@@ -201,10 +201,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             _ctktxm = null;
             _hoadon = null;
 
-            GetDataGridView();
+            LoadDSKTXM();
         }
 
-        public void GetDataGridView()
+        public void LoadDSKTXM()
         {
             if (_dontkh != null)
                 dgvDSKetQuaKiemTra.DataSource = _cKTXM.GetDS("TKH",  _dontkh.MaDon);
@@ -231,7 +231,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         _dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
                         txtMaDon.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
 
-                        GetDataGridView();
+                        LoadDSKTXM();
 
                         MessageBox.Show("Mã Đơn TXL này có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtDanhBo.Focus();
@@ -248,7 +248,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             _dontbc = _cDonTBC.Get(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
                             txtMaDon.Text = "TBC" + _dontbc.MaDon.ToString().Insert(_dontbc.MaDon.ToString().Length - 2, "-");
 
-                            GetDataGridView();
+                            LoadDSKTXM();
 
                             MessageBox.Show("Mã Đơn TBC này có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             txtDanhBo.Focus();
@@ -263,7 +263,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             _dontkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
                             txtMaDon.Text = _dontkh.MaDon.ToString().Insert(_dontkh.MaDon.ToString().Length - 2, "-");
 
-                            GetDataGridView();
+                            LoadDSKTXM();
 
                             MessageBox.Show("Mã Đơn TKH này có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             txtDanhBo.Focus();
@@ -409,7 +409,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
                     if (_cKTXM.ThemCT(ctktxm))
                     {
-                        Clear_GetDataGridView();
+                        Clear_LoadDSKTXM();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtMaDon.Focus();
                     }

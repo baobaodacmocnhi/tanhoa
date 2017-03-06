@@ -23,6 +23,7 @@ using KTKS_DonKH.LinQ;
 using KTKS_DonKH.GUI.DongNuoc;
 using KTKS_DonKH.DAL;
 using KTKS_DonKH.GUI.ToBamChi;
+using KTKS_DonKH.GUI.TruyThu;
 
 namespace KTKS_DonKH.GUI.TimKiem
 {

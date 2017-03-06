@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>512</ApplicationRevision>
+    <ApplicationRevision>516</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -481,13 +481,19 @@
       <DependentUpon>rptDSDonTXL_BamChi.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BaoCao\ToXuLy\rptDSGianLan.cs">
+    <Compile Include="BaoCao\TruyThu\rptDSGianLan.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptDSGianLan.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BaoCao\ToXuLy\rptTruyThuTienNuoc.cs">
+    <Compile Include="BaoCao\TruyThu\rptThuMoi.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptThuMoi.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\TruyThu\rptTruyThuTienNuoc.cs">
       <DependentUpon>rptTruyThuTienNuoc.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
@@ -541,7 +547,7 @@
       <DependentUpon>rptThongKeDonTXL.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BaoCao\ToXuLy\rptTruyThuTienNuocChiTiet.cs">
+    <Compile Include="BaoCao\TruyThu\rptTruyThuTienNuocChiTiet.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptTruyThuTienNuocChiTiet.rpt</DependentUpon>
@@ -591,7 +597,7 @@
     <Compile Include="DAL\TimKiem\CTimKiem.cs" />
     <Compile Include="DAL\ToXuLy\CDonTXL.cs" />
     <Compile Include="DAL\ToXuLy\CGianLan.cs" />
-    <Compile Include="DAL\ToXuLy\CTruyThuTienNuoc.cs" />
+    <Compile Include="DAL\TruyThu\CTruyThuTienNuoc.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -964,10 +970,10 @@
     <Compile Include="GUI\ToXuLy\frmDSDonTXL.Designer.cs">
       <DependentUpon>frmDSDonTXL.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ToXuLy\frmGianLan.cs">
+    <Compile Include="GUI\TruyThu\frmGianLan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ToXuLy\frmGianLan.Designer.cs">
+    <Compile Include="GUI\TruyThu\frmGianLan.Designer.cs">
       <DependentUpon>frmGianLan.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ToXuLy\frmLoaiDonTXL.cs">
@@ -988,28 +994,22 @@
     <Compile Include="GUI\ToXuLy\frmNhapNhieuDBTXL.Designer.cs">
       <DependentUpon>frmNhapNhieuDBTXL.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ToXuLy\frmPDFViewer.cs">
+    <Compile Include="GUI\TruyThu\frmPDFViewer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ToXuLy\frmPDFViewer.Designer.cs">
+    <Compile Include="GUI\TruyThu\frmPDFViewer.Designer.cs">
       <DependentUpon>frmPDFViewer.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ToXuLy\frmDSTruyThuTienNuoc.cs">
+    <Compile Include="GUI\TruyThu\frmDSTruyThuTienNuoc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ToXuLy\frmDSTruyThuTienNuoc.Designer.cs">
+    <Compile Include="GUI\TruyThu\frmDSTruyThuTienNuoc.Designer.cs">
       <DependentUpon>frmDSTruyThuTienNuoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ToXuLy\frmShowTruyThuTienNuoc.cs">
+    <Compile Include="GUI\TruyThu\frmTruyThuTienNuoc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ToXuLy\frmShowTruyThuTienNuoc.Designer.cs">
-      <DependentUpon>frmShowTruyThuTienNuoc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\ToXuLy\frmTruyThuTienNuoc.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\ToXuLy\frmTruyThuTienNuoc.Designer.cs">
+    <Compile Include="GUI\TruyThu\frmTruyThuTienNuoc.Designer.cs">
       <DependentUpon>frmTruyThuTienNuoc.cs</DependentUpon>
     </Compile>
     <Compile Include="LinQ\dbThuTien.designer.cs">
@@ -1026,12 +1026,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dbKinhDoanh.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="Main.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1288,11 +1282,15 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSDonTXL_BamChi.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\ToXuLy\rptDSGianLan.rpt">
+    <EmbeddedResource Include="BaoCao\TruyThu\rptDSGianLan.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSGianLan.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\ToXuLy\rptTruyThuTienNuoc.rpt">
+    <EmbeddedResource Include="BaoCao\TruyThu\rptThuMoi.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptThuMoi.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\TruyThu\rptTruyThuTienNuoc.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptTruyThuTienNuoc.cs</LastGenOutput>
     </EmbeddedResource>
@@ -1328,7 +1326,7 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThongKeDonTXL.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\ToXuLy\rptTruyThuTienNuocChiTiet.rpt">
+    <EmbeddedResource Include="BaoCao\TruyThu\rptTruyThuTienNuocChiTiet.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptTruyThuTienNuocChiTiet.cs</LastGenOutput>
     </EmbeddedResource>
@@ -1521,7 +1519,7 @@
     <EmbeddedResource Include="GUI\ToXuLy\frmDSDonTXL.resx">
       <DependentUpon>frmDSDonTXL.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ToXuLy\frmGianLan.resx">
+    <EmbeddedResource Include="GUI\TruyThu\frmGianLan.resx">
       <DependentUpon>frmGianLan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToXuLy\frmLoaiDonTXL.resx">
@@ -1533,24 +1531,18 @@
     <EmbeddedResource Include="GUI\ToXuLy\frmNhapNhieuDBTXL.resx">
       <DependentUpon>frmNhapNhieuDBTXL.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ToXuLy\frmPDFViewer.resx">
+    <EmbeddedResource Include="GUI\TruyThu\frmPDFViewer.resx">
       <DependentUpon>frmPDFViewer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ToXuLy\frmDSTruyThuTienNuoc.resx">
+    <EmbeddedResource Include="GUI\TruyThu\frmDSTruyThuTienNuoc.resx">
       <DependentUpon>frmDSTruyThuTienNuoc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ToXuLy\frmShowTruyThuTienNuoc.resx">
-      <DependentUpon>frmShowTruyThuTienNuoc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ToXuLy\frmTruyThuTienNuoc.resx">
+    <EmbeddedResource Include="GUI\TruyThu\frmTruyThuTienNuoc.resx">
       <DependentUpon>frmTruyThuTienNuoc.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="LinQ\dbThuTien.dbml.layout">
       <DependentUpon>dbThuTien.dbml</DependentUpon>
     </None>
-    <EmbeddedResource Include="Main.resx">
-      <DependentUpon>Main.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
