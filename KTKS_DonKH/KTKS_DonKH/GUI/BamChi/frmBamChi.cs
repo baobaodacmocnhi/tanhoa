@@ -407,6 +407,11 @@ namespace KTKS_DonKH.GUI.BamChi
                                 }
                                 ctbamchi.MaBC = _cBamChi.Get("TBC", _dontbc.MaDon).MaBC;
                             }
+                            else
+                            {
+                                MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
 
                     ctbamchi.DanhBo = txtDanhBo.Text.Trim();
                     ctbamchi.HopDong = txtHopDong.Text.Trim();

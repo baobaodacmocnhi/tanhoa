@@ -459,6 +459,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 }
                                 ctchdb.MaCHDB = _cCHDB.GetCHDB("TBC", _dontbc.MaDon).MaCHDB;
                             }
+                            else
+                            {
+                                MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
 
                     if (txtMaThongBaoCT.Text.Trim().Replace("-", "") != "")
                         ctchdb.MaCTCTDB = decimal.Parse(txtMaThongBaoCT.Text.Trim().Replace("-", ""));

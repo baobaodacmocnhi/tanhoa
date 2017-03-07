@@ -360,6 +360,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                 }
                                 ctktxm.MaKTXM = _cKTXM.Get("TBC", _dontbc.MaDon).MaKTXM;
                             }
+                            else
+                            {
+                                MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
 
                     ctktxm.DanhBo = txtDanhBo.Text.Trim();
                     ctktxm.HopDong = txtHopDong.Text.Trim();

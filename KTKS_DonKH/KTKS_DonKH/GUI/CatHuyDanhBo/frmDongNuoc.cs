@@ -326,6 +326,11 @@ namespace KTKS_DonKH.GUI.DongNuoc
                                     }
                                     ctdongnuoc.MaDN = _cDongNuoc.Get("TBC", _dontbc.MaDon).MaDN;
                                 }
+                                else
+                                {
+                                    MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
 
                         ctdongnuoc.DanhBo = txtDanhBo.Text.Trim();
                         ctdongnuoc.HopDong = txtHopDong.Text.Trim();

@@ -633,6 +633,11 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 }
                                 tttn.MaDonTBC = _dontbc.MaDon;
                             }
+                            else
+                            {
+                                MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
 
                     tttn.DanhBo = txtDanhBo.Text.Trim();
                     tttn.HopDong = txtHopDong.Text.Trim();

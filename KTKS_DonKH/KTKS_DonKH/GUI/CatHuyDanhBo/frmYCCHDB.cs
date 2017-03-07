@@ -301,6 +301,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 else
                                     ycchdb.MaDonTBC = _dontbc.MaDon;
                             }
+                            else
+                            {
+                                MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
 
                     ycchdb.DanhBo = txtDanhBo.Text.Trim();
                     ycchdb.HopDong = txtHopDong.Text.Trim();

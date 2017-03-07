@@ -289,6 +289,11 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 }
                                 entity.MaDon = _dontkh.MaDon;
                             }
+                            else
+                            {
+                                MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
 
                     entity.DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
                     entity.HoTen = txtHoTen.Text.Trim();

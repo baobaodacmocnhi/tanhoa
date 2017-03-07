@@ -406,6 +406,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 }
                                 ctdchd.MaDCBD = _cDCBD.Get("TBC", _dontbc.MaDon).MaDCBD;
                             }
+                            else
+                            {
+                                MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
 
                     ctdchd.DanhBo = txtDanhBo.Text.Trim();
                     ctdchd.HoTen = txtHoTen.Text.Trim();
