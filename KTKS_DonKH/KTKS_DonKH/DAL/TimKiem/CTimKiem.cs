@@ -890,11 +890,11 @@ namespace KTKS_DonKH.DAL.TimKiem
                 DataSet ds = new DataSet();
 
                 #region DanhBo
-
+                ///trường hợp đơn danh bộ cần tìm kiếm nhưng lại xử lý danh bộ khác
                 ///Table CTKTXM
                 var queryKTXM = from itemCTKTXM in db.CTKTXMs
                                 join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                                where itemCTKTXM.DanhBo == DanhBo
+                                where itemCTKTXM.DanhBo == DanhBo || (itemCTKTXM.KTXM.DonKH.DanhBo == DanhBo || itemCTKTXM.KTXM.DonTXL.DanhBo == DanhBo || itemCTKTXM.KTXM.DonTBC.DanhBo == DanhBo)
                                 select new
                                 {
                                     MaDon = itemCTKTXM.KTXM.MaDon != null ? "TKH" + itemCTKTXM.KTXM.MaDon
@@ -919,7 +919,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ///Table CTBamChi
                 var queryBamChi = from itemCTBamChi in db.CTBamChis
                                   join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
-                                  where itemCTBamChi.DanhBo == DanhBo
+                                  where itemCTBamChi.DanhBo == DanhBo || (itemCTBamChi.BamChi.DonKH.DanhBo == DanhBo || itemCTBamChi.BamChi.DonTXL.DanhBo == DanhBo || itemCTBamChi.BamChi.DonTBC.DanhBo == DanhBo)
                                   select new
                                   {
                                       MaDon = itemCTBamChi.BamChi.MaDon != null ? "TKH" + itemCTBamChi.BamChi.MaDon
@@ -944,7 +944,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ///Table CTDongNuoc
                 var queryDongNuoc = from itemCTDongNuoc in db.CTDongNuocs
                                     join itemUser in db.Users on itemCTDongNuoc.CreateBy equals itemUser.MaU
-                                    where itemCTDongNuoc.DanhBo == DanhBo
+                                    where itemCTDongNuoc.DanhBo == DanhBo || (itemCTDongNuoc.DongNuoc.DonKH.DanhBo == DanhBo || itemCTDongNuoc.DongNuoc.DonTXL.DanhBo == DanhBo || itemCTDongNuoc.DongNuoc.DonTBC.DanhBo == DanhBo)
                                     select new
                                     {
                                         MaDon = itemCTDongNuoc.DongNuoc.MaDon != null ? "TKH" + itemCTDongNuoc.DongNuoc.MaDon
@@ -968,7 +968,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ///Table CTDCBD
                 var queryCTDCBD = from itemCTDCBD in db.CTDCBDs
                                   join itemUser in db.Users on itemCTDCBD.CreateBy equals itemUser.MaU
-                                  where itemCTDCBD.DanhBo == DanhBo
+                                  where itemCTDCBD.DanhBo == DanhBo || (itemCTDCBD.DCBD.DonKH.DanhBo == DanhBo || itemCTDCBD.DCBD.DonTXL.DanhBo == DanhBo || itemCTDCBD.DCBD.DonTBC.DanhBo == DanhBo)
                                   select new
                                   {
                                       MaDon = itemCTDCBD.DCBD.MaDon != null ? "TKH" + itemCTDCBD.DCBD.MaDon
@@ -995,7 +995,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ///Bảng CTDCHD
                 var queryCTDCHD = from itemCTDCHD in db.CTDCHDs
                                   join itemUser in db.Users on itemCTDCHD.CreateBy equals itemUser.MaU
-                                  where itemCTDCHD.DanhBo == DanhBo
+                                  where itemCTDCHD.DanhBo == DanhBo || (itemCTDCHD.DCBD.DonKH.DanhBo == DanhBo || itemCTDCHD.DCBD.DonTXL.DanhBo == DanhBo || itemCTDCHD.DCBD.DonTBC.DanhBo == DanhBo)
                                   select new
                                   {
                                       MaDon = itemCTDCHD.DCBD.MaDon != null ? "TKH" + itemCTDCHD.DCBD.MaDon
@@ -1027,7 +1027,7 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table CTCTDB
                 var queryCTCTDB = from itemCTCTDB in db.CTCTDBs
-                                  where itemCTCTDB.DanhBo == DanhBo
+                                  where itemCTCTDB.DanhBo == DanhBo || (itemCTCTDB.CHDB.DonKH.DanhBo == DanhBo || itemCTCTDB.CHDB.DonTXL.DanhBo == DanhBo || itemCTCTDB.CHDB.DonTBC.DanhBo == DanhBo)
                                   select new
                                   {
                                       MaDon = itemCTCTDB.CHDB.MaDon != null ? "TKH" + itemCTCTDB.CHDB.MaDon
@@ -1048,7 +1048,7 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table CTCHDB
                 var queryCTCHDB = from itemCTCHDB in db.CTCHDBs
-                                  where itemCTCHDB.DanhBo == DanhBo
+                                  where itemCTCHDB.DanhBo == DanhBo || (itemCTCHDB.CHDB.DonKH.DanhBo == DanhBo || itemCTCHDB.CHDB.DonTXL.DanhBo == DanhBo || itemCTCHDB.CHDB.DonTBC.DanhBo == DanhBo)
                                   select new
                                   {
                                       MaDon = itemCTCHDB.CHDB.MaDon != null ? "TKH" + itemCTCHDB.CHDB.MaDon
@@ -1074,7 +1074,7 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table PhieuCHDB
                 var queryYCCHDB = from itemYCCHDB in db.PhieuCHDBs
-                                  where itemYCCHDB.DanhBo == DanhBo
+                                  where itemYCCHDB.DanhBo == DanhBo || (itemYCCHDB.DonKH.DanhBo == DanhBo || itemYCCHDB.DonTXL.DanhBo == DanhBo || itemYCCHDB.DonTBC.DanhBo == DanhBo)
                                   select new
                                   {
                                       MaDon = itemYCCHDB.MaDon != null ? "TKH" + itemYCCHDB.MaDonTXL
@@ -1097,7 +1097,7 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table CTTTTL
                 var queryTTTL = from itemCTTTTL in db.CTTTTLs
-                                where itemCTTTTL.DanhBo == DanhBo
+                                where itemCTTTTL.DanhBo == DanhBo || (itemCTTTTL.TTTL.DonKH.DanhBo == DanhBo || itemCTTTTL.TTTL.DonTXL.DanhBo == DanhBo || itemCTTTTL.TTTL.DonTBC.DanhBo == DanhBo)
                                 select new
                                 {
                                     MaDon = itemCTTTTL.TTTL.MaDon != null ? "TKH" + itemCTTTTL.TTTL.MaDon
@@ -1119,7 +1119,7 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table GianLan
                 var queryGianLan = from itemGL in db.GianLans
-                                   where itemGL.DanhBo==DanhBo
+                                   where itemGL.DanhBo == DanhBo || (itemGL.DonKH.DanhBo == DanhBo || itemGL.DonTXL.DanhBo == DanhBo || itemGL.DonTBC.DanhBo == DanhBo)
                                    select new
                                    {
                                        MaDon = itemGL.MaDon != null ? "TKH" + itemGL.MaDon

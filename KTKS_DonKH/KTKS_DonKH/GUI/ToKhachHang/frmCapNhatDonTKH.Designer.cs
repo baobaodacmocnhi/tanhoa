@@ -349,7 +349,7 @@
             // 
             // btnNhapNhieuDB
             // 
-            this.btnNhapNhieuDB.Location = new System.Drawing.Point(736, 165);
+            this.btnNhapNhieuDB.Location = new System.Drawing.Point(736, 205);
             this.btnNhapNhieuDB.Name = "btnNhapNhieuDB";
             this.btnNhapNhieuDB.Size = new System.Drawing.Size(90, 25);
             this.btnNhapNhieuDB.TabIndex = 58;
@@ -525,8 +525,9 @@
             this.dgvLichSuDon.Location = new System.Drawing.Point(736, 9);
             this.dgvLichSuDon.Name = "dgvLichSuDon";
             this.dgvLichSuDon.ReadOnly = true;
-            this.dgvLichSuDon.Size = new System.Drawing.Size(500, 150);
+            this.dgvLichSuDon.Size = new System.Drawing.Size(500, 190);
             this.dgvLichSuDon.TabIndex = 70;
+            this.dgvLichSuDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLichSuDon_CellFormatting);
             // 
             // MaDon
             // 
@@ -558,7 +559,7 @@
             this.NoiDung.Name = "NoiDung";
             this.NoiDung.ReadOnly = true;
             // 
-            // frmCapNhatDonKH
+            // frmCapNhatDonTKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -591,7 +592,7 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.Name = "frmCapNhatDonKH";
+            this.Name = "frmCapNhatDonTKH";
             this.Text = "Cập Nhật Đơn Khách Hàng";
             this.Load += new System.EventHandler(this.frmCapNhatDonKH_Load);
             this.tabControl1.ResumeLayout(false);

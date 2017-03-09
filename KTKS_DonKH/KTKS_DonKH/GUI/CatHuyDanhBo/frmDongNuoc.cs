@@ -74,14 +74,14 @@ namespace KTKS_DonKH.GUI.DongNuoc
         {
             if (ctdongnuoc.DongNuoc.MaDon != null)
             {
-                _dontkh = _cDonKH.getDonKHbyID(ctdongnuoc.DongNuoc.MaDon.Value);
+                _dontkh = _cDonKH.Get(ctdongnuoc.DongNuoc.MaDon.Value);
                 txtMaDon.Text = ctdongnuoc.DongNuoc.MaDon.ToString().Insert(ctdongnuoc.DongNuoc.MaDon.ToString().Length - 2, "-");
                 dgvDSBamChi.DataSource = _cBamChi.GetDS("TKH", ctdongnuoc.DongNuoc.MaDon.Value, ctdongnuoc.DanhBo);
             }
             else
                 if (ctdongnuoc.DongNuoc.MaDonTXL != null)
                 {
-                    _dontxl = _cDonTXL.getDonTXLbyID(ctdongnuoc.DongNuoc.MaDonTXL.Value);
+                    _dontxl = _cDonTXL.Get(ctdongnuoc.DongNuoc.MaDonTXL.Value);
                     txtMaDon.Text = "TXL" + ctdongnuoc.DongNuoc.MaDonTXL.ToString().Insert(ctdongnuoc.DongNuoc.MaDonTXL.ToString().Length - 2, "-");
                     dgvDSBamChi.DataSource = _cBamChi.GetDS("TXL", ctdongnuoc.DongNuoc.MaDonTXL.Value, ctdongnuoc.DanhBo);
                 }
@@ -176,7 +176,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
                 {
                     if (_cDonTXL.CheckExist(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", ""))) == true)
                     {
-                        _dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
+                        _dontxl = _cDonTXL.Get(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
                         txtMaDon.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
                         if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
                         {
@@ -211,7 +211,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
                     else
                         if (_cDonKH.CheckExist(decimal.Parse(txtMaDon.Text.Trim().Replace("-", ""))) == true)
                         {
-                            _dontkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
+                            _dontkh = _cDonKH.Get(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
                             txtMaDon.Text = _dontkh.MaDon.ToString().Insert(_dontkh.MaDon.ToString().Length - 2, "-");
                             if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
                             {

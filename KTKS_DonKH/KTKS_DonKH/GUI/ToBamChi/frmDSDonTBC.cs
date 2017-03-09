@@ -82,7 +82,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
             {
                 case "Mã Đơn":
                     if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC") && txtNoiDungTimKiem.Text.Trim().Length > 3)
-                        dgvDonTBC.DataSource = _cDonTBC.GetDSByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                        dgvDonTBC.DataSource = _cDonTBC.GetDS(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                     break;
                 case "Số Công Văn":
                     dgvDonTBC.DataSource = _cDonTBC.GetDSBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper());
@@ -90,11 +90,11 @@ namespace KTKS_DonKH.GUI.ToBamChi
                 case "Danh Bộ":
                     dgvDonTBC.DataSource = _cDonTBC.GetDSByDanhBo(txtNoiDungTimKiem.Text.Trim().ToUpper());
                     break;
-                case "Địa Chỉ":
-                    dgvDonTBC.DataSource = _cDonTBC.GetDSByDiaChi(txtNoiDungTimKiem.Text.Trim().ToUpper());
-                    break;
+                //case "Địa Chỉ":
+                //    dgvDonTBC.DataSource = _cDonTBC.GetDSByDiaChi(txtNoiDungTimKiem.Text.Trim().ToUpper());
+                //    break;
                 case "Ngày":
-                    dgvDonTBC.DataSource = _cDonTBC.GetDSByCreateDate(dateTu.Value, dateDen.Value);
+                    dgvDonTBC.DataSource = _cDonTBC.GetDS(dateTu.Value, dateDen.Value);
                     break;
             }
         }

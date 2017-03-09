@@ -77,13 +77,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (phieuCHDB.MaDon != null)
             {
-                _dontkh = _cDonKH.getDonKHbyID(phieuCHDB.MaDon.Value);
+                _dontkh = _cDonKH.Get(phieuCHDB.MaDon.Value);
                 txtMaDon.Text = phieuCHDB.MaDon.ToString().Insert(phieuCHDB.MaDon.ToString().Length - 2, "-");
             }
             else
             if (phieuCHDB.MaDonTXL != null)
             {
-                _dontxl = _cDonTXL.getDonTXLbyID(phieuCHDB.MaDonTXL.Value);
+                _dontxl = _cDonTXL.Get(phieuCHDB.MaDonTXL.Value);
                 txtMaDon.Text = "TXL" + phieuCHDB.MaDonTXL.ToString().Insert(phieuCHDB.MaDonTXL.ToString().Length - 2, "-");
             }
             else
@@ -168,7 +168,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 {
                     if (_cDonTXL.CheckExist(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", ""))) == true)
                     {
-                        _dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
+                        _dontxl = _cDonTXL.Get(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
                         txtMaDon.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
                         if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
                         {
@@ -203,7 +203,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 else
                     if (_cDonKH.CheckExist(decimal.Parse(txtMaDon.Text.Trim().Replace("-", ""))) == true)
                     {
-                        _dontkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
+                        _dontkh = _cDonKH.Get(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
                         txtMaDon.Text = _dontkh.MaDon.ToString().Insert(_dontkh.MaDon.ToString().Length - 2, "-");
                         if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
                         {

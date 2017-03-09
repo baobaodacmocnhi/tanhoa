@@ -179,7 +179,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             txtGiaBieu.Text = dontkh.GiaBieu;
             txtDinhMuc.Text = dontkh.DinhMuc;
             ///
-            dgvLichSuDon.DataSource = _cDonKH.LoadDSDonKHByDanhBo(dontkh.DanhBo);
+            dgvLichSuDon.DataSource = _cDonKH.GetDSByDanhBo(dontkh.DanhBo);
             ///
             dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("TKH", dontkh.MaDon);
             dateChuyen.Value = DateTime.Now;
@@ -197,10 +197,9 @@ namespace KTKS_DonKH.GUI.ToKhachHang
         {
             if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
             {
-                if (_cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", ""))) != null)
+                if (_cDonKH.CheckExist(decimal.Parse(txtMaDon.Text.Trim().Replace("-", ""))) == true)
                 {
-                    _donkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
-
+                    _donkh = _cDonKH.Get(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
                     LoadDonTKH(_donkh);
                 }
                 else
@@ -299,7 +298,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                                 _donkh.NguoiDi_KTXM = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
                                 _donkh.NgayChuyen_KTXM = dateChuyen.Value;
                                 _donkh.GhiChuChuyen_KTXM = txtGhiChu.Text.Trim();
-                                _cDonKH.SuaDonKH(_donkh);
+                                _cDonKH.Sua(_donkh);
                             }
                             LichSuDonTu entity = new LichSuDonTu();
                             entity.NgayChuyen = dateChuyen.Value;
@@ -358,6 +357,14 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             if (e.Button == MouseButtons.Right && (_donkh != null))
             {
                 contextMenuStrip1.Show(dgvLichSuDonTu, new Point(e.X, e.Y));
+            }
+        }
+
+        private void dgvLichSuDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvLichSuDon.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
         }
     }

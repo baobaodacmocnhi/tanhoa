@@ -79,7 +79,6 @@
             this.NoiDungKiemTra,
             this.CreateBy});
             this.dgvDSCTKTXM.Location = new System.Drawing.Point(0, 63);
-            this.dgvDSCTKTXM.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dgvDSCTKTXM.MultiSelect = false;
             this.dgvDSCTKTXM.Name = "dgvDSCTKTXM";
             this.dgvDSCTKTXM.RowHeadersWidth = 60;

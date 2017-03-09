@@ -90,6 +90,7 @@
       <Association Name="CHDB_CTCHDB" Member="CTCHDBs" ThisKey="MaCHDB" OtherKey="MaCHDB" Type="CTCHDB" />
       <Association Name="CHDB_CTCTDB" Member="CTCTDBs" ThisKey="MaCHDB" OtherKey="MaCHDB" Type="CTCTDB" />
       <Association Name="DonKH_CHDB" Member="DonKH" ThisKey="MaDon" OtherKey="MaDon" Type="DonKH" IsForeignKey="true" />
+      <Association Name="DonTBC_CHDB" Member="DonTBC" ThisKey="MaDonTBC" OtherKey="MaDon" Type="DonTBC" IsForeignKey="true" />
       <Association Name="DonTXL_CHDB" Member="DonTXL" ThisKey="MaDonTXL" OtherKey="MaDon" Type="DonTXL" IsForeignKey="true" />
     </Type>
   </Table>
@@ -778,6 +779,7 @@
       <Association Name="DonKH_CHDB" Member="CHDBs" ThisKey="MaDon" OtherKey="MaDon" Type="CHDB" />
       <Association Name="DonKH_DCBD" Member="DCBDs" ThisKey="MaDon" OtherKey="MaDon" Type="DCBD" />
       <Association Name="DonKH_DongNuoc" Member="DongNuocs" ThisKey="MaDon" OtherKey="MaDon" Type="DongNuoc" />
+      <Association Name="DonKH_GianLan" Member="GianLans" ThisKey="MaDon" OtherKey="MaDon" Type="GianLan" />
       <Association Name="DonKH_KTXM" Member="KTXMs" ThisKey="MaDon" OtherKey="MaDon" Type="KTXM" />
       <Association Name="DonKH_LichSuChuyenBanDoiKhac" Member="LichSuChuyenBanDoiKhacs" ThisKey="MaDon" OtherKey="MaDon" Type="LichSuChuyenBanDoiKhac" />
       <Association Name="DonKH_LichSuChuyenKhac" Member="LichSuChuyenKhacs" ThisKey="MaDon" OtherKey="MaDon" Type="LichSuChuyenKhac" />
@@ -816,9 +818,12 @@
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="DonTBC_BamChi" Member="BamChis" ThisKey="MaDon" OtherKey="MaDonTBC" Type="BamChi" />
+      <Association Name="DonTBC_CHDB" Member="CHDBs" ThisKey="MaDon" OtherKey="MaDonTBC" Type="CHDB" />
       <Association Name="DonTBC_DCBD" Member="DCBDs" ThisKey="MaDon" OtherKey="MaDonTBC" Type="DCBD" />
       <Association Name="DonTBC_DongNuoc" Member="DongNuocs" ThisKey="MaDon" OtherKey="MaDonTBC" Type="DongNuoc" />
+      <Association Name="DonTBC_GianLan" Member="GianLans" ThisKey="MaDon" OtherKey="MaDonTBC" Type="GianLan" />
       <Association Name="DonTBC_KTXM" Member="KTXMs" ThisKey="MaDon" OtherKey="MaDonTBC" Type="KTXM" />
+      <Association Name="DonTBC_PhieuCHDB" Member="PhieuCHDBs" ThisKey="MaDon" OtherKey="MaDonTBC" Type="PhieuCHDB" />
       <Association Name="DonTBC_TTTL" Member="TTTLs" ThisKey="MaDon" OtherKey="MaDonTBC" Type="TTTL" />
       <Association Name="LoaiDonTBC_DonTBC" Member="LoaiDonTBC" ThisKey="MaLD" OtherKey="MaLD" Type="LoaiDonTBC" IsForeignKey="true" />
     </Type>
@@ -883,6 +888,7 @@
       <Association Name="DonTXL_CHDB" Member="CHDBs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="CHDB" />
       <Association Name="DonTXL_DCBD" Member="DCBDs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="DCBD" />
       <Association Name="DonTXL_DongNuoc" Member="DongNuocs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="DongNuoc" />
+      <Association Name="DonTXL_GianLan" Member="GianLans" ThisKey="MaDon" OtherKey="MaDonTXL" Type="GianLan" />
       <Association Name="DonTXL_KTXM" Member="KTXMs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="KTXM" />
       <Association Name="DonTXL_LichSuChuyenBanDoiKhac" Member="LichSuChuyenBanDoiKhacs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="LichSuChuyenBanDoiKhac" />
       <Association Name="DonTXL_LichSuChuyenKhac" Member="LichSuChuyenKhacs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="LichSuChuyenKhac" />
@@ -965,6 +971,9 @@
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="DonKH_GianLan" Member="DonKH" ThisKey="MaDon" OtherKey="MaDon" Type="DonKH" IsForeignKey="true" />
+      <Association Name="DonTBC_GianLan" Member="DonTBC" ThisKey="MaDonTBC" OtherKey="MaDon" Type="DonTBC" IsForeignKey="true" />
+      <Association Name="DonTXL_GianLan" Member="DonTXL" ThisKey="MaDonTXL" OtherKey="MaDon" Type="DonTXL" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.GiaNuoc" Member="GiaNuocs">
@@ -1322,6 +1331,7 @@
       <Column Name="DocSo_Nhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DocSo_NgayNhan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="DocSo_GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="DonTBC_PhieuCHDB" Member="DonTBC" ThisKey="MaDonTBC" OtherKey="MaDon" Type="DonTBC" IsForeignKey="true" />
       <Association Name="CTCHDB_PhieuCHDB" Member="CTCHDB" ThisKey="MaCTCHDB" OtherKey="MaCTCHDB" Type="CTCHDB" IsForeignKey="true" />
       <Association Name="CTCTDB_PhieuCHDB" Member="CTCTDB" ThisKey="MaCTCTDB" OtherKey="MaCTCTDB" Type="CTCTDB" IsForeignKey="true" />
       <Association Name="DonKH_PhieuCHDB" Member="DonKH" ThisKey="MaDon" OtherKey="MaDon" Type="DonKH" IsForeignKey="true" />

@@ -115,13 +115,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (ctdcbd.DCBD.MaDon != null)
             {
-                _donkh = _cDonKH.getDonKHbyID(ctdcbd.DCBD.MaDon.Value);
+                _donkh = _cDonKH.Get(ctdcbd.DCBD.MaDon.Value);
                 txtMaDon.Text = ctdcbd.DCBD.MaDon.ToString().Insert(ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
             }
             else
                 if (ctdcbd.DCBD.MaDonTXL != null)
                 {
-                    _dontxl = _cDonTXL.getDonTXLbyID(ctdcbd.DCBD.MaDonTXL.Value);
+                    _dontxl = _cDonTXL.Get(ctdcbd.DCBD.MaDonTXL.Value);
                     txtMaDon.Text = "TXL" + ctdcbd.DCBD.MaDonTXL.ToString().Insert(ctdcbd.DCBD.MaDonTXL.ToString().Length - 2, "-");
                 }
                 else
@@ -256,7 +256,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (_cDonTXL.CheckExist(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", ""))) == true)
                     {
-                        _dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
+                        _dontxl = _cDonTXL.Get(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
                         txtMaDon.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
                         if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
                         {
@@ -299,7 +299,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     else
                         if (_cDonKH.CheckExist(decimal.Parse(txtMaDon.Text.Trim().Replace("-", ""))) == true)
                         {
-                            _donkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
+                            _donkh = _cDonKH.Get(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
                             txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
                             if (_cThuTien.GetMoiNhat(_donkh.DanhBo) != null)
                             {

@@ -14,6 +14,7 @@ using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.BaoCao.ToXuLy;
 using KTKS_DonKH.DAL.ToXuLy;
+using KTKS_DonKH.DAL.DonTu;
 
 namespace KTKS_DonKH.GUI.ToKhachHang
 {
@@ -23,6 +24,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
         CLoaiDon _cLoaiDon = new CLoaiDon();
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         CDonTXL _cDonTXL = new CDonTXL();
+        CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
 
         public frmDSDonTKH()
         {
@@ -34,54 +36,6 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             dgvDSDonKH.AutoGenerateColumns = false;
 
             cmbTimTheo.SelectedIndex = 4;
-        }
-            
-        /// <summary>
-        /// Hiện thị số thứ tự dòng
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void dgvDSDonKH_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            using (SolidBrush b = new SolidBrush(dgvDSDonKH.RowHeadersDefaultCellStyle.ForeColor))
-            {
-                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
-            }
-        }
-
-        /// <summary>
-        /// Ctrl+F Tìm kiếm
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void dgvDSDonKH_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (dgvDSDonKH.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
-            {
-                frmNhanDonTKH frm = new frmNhanDonTKH(decimal.Parse(dgvDSDonKH["MaDon", dgvDSDonKH.CurrentRow.Index].Value.ToString()));
-                frm.ShowDialog();
-            }
-        }
-
-        /// <summary>
-        /// Format dữ liệu trong column
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void dgvDSDonKH_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (dgvDSDonKH.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null&&e.Value.ToString().Length>2)
-            {
-                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            }
-            //if (dgvDSDonKH.Columns[e.ColumnIndex].Name == "NVKiemTra")
-            //{
-            //    string str = "";
-            //    DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(dgvDSDonKH["MaDon", e.RowIndex].Value.ToString()));
-            //    if (donkh.ChuyenToXuLy)
-            //        str = ", TXL";
-            //    e.Value = _cDonTXL.GetNVKiemTraDonKHbyMaDon(decimal.Parse(dgvDSDonKH["MaDon", e.RowIndex].Value.ToString())) + str;
-            //}
         }
 
         private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
@@ -122,9 +76,8 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                 dr["MaLD"] = itemRow["MaLD"];
                 dr["TenLD"] = itemRow["TenLD"];
                 dr["NgayNhan"] = itemRow["CreateDate"].ToString().Substring(0, 10);
-                DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
+                DonKH donkh = _cDonKH.Get(decimal.Parse(itemRow["MaDon"].ToString()));
                 dr["MaDon"] = itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-") + "/" + _cLoaiDon.getKyHieuLDubyID(donkh.MaLD.Value);
-                //dr["MaXepDon"] = donkh.MaXepDon.ToString().Insert(donkh.MaXepDon.ToString().Length - 2, "-") + "/" + _cLoaiDon.getKyHieuLDubyID(donkh.MaLD.Value);
                 if (donkh.KiemTraDHN)
                     dr["ChiTiet"] += "Kiểm Tra ĐHN, ";
                 if (donkh.TienNuoc)
@@ -147,11 +100,11 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                 dr["DiaChi"] = itemRow["DiaChi"];
                 dr["NoiDung"] = itemRow["NoiDung"];
 
-                string str = "";
-                str = _cDonTXL.GetNVKiemTraDonKHbyMaDon(donkh.MaDon);
-                if (donkh.ChuyenToXuLy)
-                    str = ", TXL";
-                dr["NVKiemTra"] = str;
+                //string str = "";
+                //str = _cDonTXL.GetNVKiemTraDonKHbyMaDon(donkh.MaDon);
+                //if (donkh.ChuyenToXuLy)
+                //    str = ", TXL";
+                //dr["NVKiemTra"] = str;
 
                 dsBaoCao.Tables["DanhSachDonKH"].Rows.Add(dr);
             }
@@ -162,124 +115,13 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             frm.ShowDialog();
         }
 
-        private void dgvDSDonKH_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
-            e.Control.KeyPress -= new KeyPressEventHandler(itemID_KeyPress);//This line of code resolved my issue
-            if (dgvDSDonKH.CurrentCell.ColumnIndex == dgvDSDonKH.Columns["SoLuongDiaChi"].Index)
-            {
-                TextBox itemID = e.Control as TextBox;
-                if (itemID != null)
-                {
-                    itemID.KeyPress += new KeyPressEventHandler(itemID_KeyPress);
-                }
-            }
-        }
-
-        private void itemID_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar)
-                && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void btnInDSDonTXL_Click(object sender, EventArgs e)
-        {
-            DataTable dt = new DataTable();
-            //DataTable dt = ((DataTable)dgvDSDonKH.DataSource).DefaultView.ToTable();
-            switch (cmbTimTheo.SelectedItem.ToString())
-            {
-                case "Mã Đơn":
-                    dt = _cDonTXL.LoadDSDonTKHDaChuyenKT(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
-                    break;
-                case "Ngày":
-                    dt = _cDonTXL.LoadDSDonTKHDaChuyenKT(dateTu.Value, dateDen.Value);
-                    break;
-                case "Số Công Văn":
-                    dt = _cDonTXL.LoadDSDonTKHDaChuyenKTbySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper());
-                    break;
-            }
-
-            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-            if (chkChuaKT.Checked)
-                foreach (DataRow itemRow in dt.Rows)
-                {
-                    string a = itemRow["NguoiDi"].ToString();
-                    string b = itemRow["MaDon"].ToString();
-                    if (!string.IsNullOrEmpty(itemRow["NguoiDi"].ToString()))
-                    if (!_cDonTXL.CheckGiaiQuyetDonKHbyUser(int.Parse(itemRow["NguoiDi"].ToString()), decimal.Parse(itemRow["MaDon"].ToString())))
-                    {
-                        DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
-
-                        dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
-                        dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-                        dr["MaDon"] = itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
-                        dr["TenLD"] = itemRow["TenLD"];
-                        dr["SoCongVan"] = itemRow["SoCongVan"];
-                        dr["NgayNhan"] = itemRow["CreateDate"].ToString().Substring(0, 10);
-                        if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
-                            dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                        dr["HoTen"] = itemRow["HoTen"];
-                        dr["DiaChi"] = itemRow["DiaChi"];
-                        dr["NoiDung"] = itemRow["NoiDung"];
-                        dr["GhiChuChuyenKT"] = itemRow["GhiChuChuyenKT"];
-                        if (!string.IsNullOrEmpty(itemRow["NguoiDi"].ToString()))
-                        {
-                            dr["NguoiDi"] = _cTaiKhoan.getHoTenUserbyID(int.Parse(itemRow["NguoiDi"].ToString()));
-                            //dr["DaGiaiQuyet"] = _cDonTXL.CheckGiaiQuyetbyUser(int.Parse(itemRow["NguoiDi"].ToString()), dontxl.MaDon).ToString();
-                        }
-
-                        dsBaoCao.Tables["DSDonTXL"].Rows.Add(dr);
-                    }
-                }
-            else
-                foreach (DataRow itemRow in dt.Rows)
-                {
-                    DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
-
-                    dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
-                    dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-                    //dr["MaLD"] = itemRow["MaLD"];
-                    dr["TenLD"] = itemRow["TenLD"];
-                    dr["SoCongVan"] = itemRow["SoCongVan"];
-                    dr["NgayNhan"] = itemRow["CreateDate"].ToString().Substring(0, 10);
-                    DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
-                    dr["MaDon"] = itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
-                    dr["TenLD"] = donkh.LoaiDon.TenLD;
-
-                    if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
-                        dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                    dr["HoTen"] = itemRow["HoTen"];
-                    dr["DiaChi"] = itemRow["DiaChi"];
-                    dr["NoiDung"] = itemRow["NoiDung"];
-                    dr["GhiChuChuyenKT"] = itemRow["GhiChuChuyenKT"];
-                    if (!string.IsNullOrEmpty(itemRow["NguoiDi"].ToString()))
-                    {
-                        dr["NguoiDi"] = _cTaiKhoan.getHoTenUserbyID(int.Parse(itemRow["NguoiDi"].ToString()));
-                        string NgayGiaiQuyet;
-                        dr["DaGiaiQuyet"] = _cDonTXL.CheckGiaiQuyetDonKHbyUser(int.Parse(itemRow["NguoiDi"].ToString()), donkh.MaDon, out NgayGiaiQuyet).ToString();
-                        dr["NgayGiaiQuyet"] = NgayGiaiQuyet;
-                    }
-
-                    dsBaoCao.Tables["DSDonTXL"].Rows.Add(dr);
-                }
-
-            rptDSDonTXLChuyenKTXM rpt = new rptDSDonTXLChuyenKTXM();
-            rpt.SetDataSource(dsBaoCao);
-            rpt.Subreports[0].SetDataSource(dsBaoCao);
-            rpt.Subreports[1].SetDataSource(dsBaoCao);
-            frmShowBaoCao frm = new frmShowBaoCao(rpt);
-            frm.ShowDialog();
-        }
-
         private void btnInChiTiet_Click(object sender, EventArgs e)
         {
             DataTable dt = ((DataTable)dgvDSDonKH.DataSource).DefaultView.ToTable();
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             foreach (DataRow itemRow in dt.Rows)
             {
-                DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
+                DonKH donkh = _cDonKH.Get(decimal.Parse(itemRow["MaDon"].ToString()));
                 if (donkh.Chuyen_KTXM)
                 {
                     DataRow dr = dsBaoCao.Tables["ChiTietDonTXL"].NewRow();
@@ -349,83 +191,56 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             frm.ShowDialog();
         }
 
-        private void btnGiaoTXL_Click(object sender, EventArgs e)
-        {
-            DataTable dt = new DataTable();
-            //DataTable dt = ((DataTable)dgvDSDonTXL.DataSource).DefaultView.ToTable();
-            switch (cmbTimTheo.SelectedItem.ToString())
-            {
-                case "Ngày":
-                    dt = _cDonTXL.LoadDSDonTKHDaChuyenTXL(dateTu.Value, dateDen.Value);
-                    break;
-                case "Số Công Văn":
-                    dt = _cDonTXL.LoadDSDonTKHDaChuyenTXLbySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper());
-                    break;
-            }
-            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-
-            foreach (DataRow itemRow in dt.Rows)
-            {
-                DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
-
-                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
-                dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-                //dr["MaLD"] = itemRow["MaLD"];
-                dr["TenLD"] = itemRow["TenLD"];
-                dr["SoCongVan"] = itemRow["SoCongVan"];
-                dr["NgayNhan"] = itemRow["CreateDate"].ToString().Substring(0, 10);
-                //DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(itemRow["MaDon"].ToString()));
-                dr["MaDon"] = "TXL" + itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
-                dr["TenLD"] = itemRow["TenLD"].ToString();
-
-                if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
-                    dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                dr["HoTen"] = itemRow["HoTen"];
-                dr["DiaChi"] = itemRow["DiaChi"];
-                dr["NoiDung"] = itemRow["NoiDung"];
-                dr["GhiChuChuyenKT"] = itemRow["GhiChuChuyenKT"];
-                //if (!string.IsNullOrEmpty(itemRow["NguoiDi"].ToString()))
-                //{
-                //    dr["NguoiDi"] = _cTaiKhoan.getHoTenUserbyID(int.Parse(itemRow["NguoiDi"].ToString()));
-                //    string NgayGiaiQuyet;
-                //    dr["DaGiaiQuyet"] = _cDonTXL.CheckGiaiQuyetDonTXLbyUser(int.Parse(itemRow["NguoiDi"].ToString()), dontxl.MaDon, out NgayGiaiQuyet).ToString();
-                //    dr["NgayGiaiQuyet"] = NgayGiaiQuyet;
-                //}
-
-                dsBaoCao.Tables["DSDonTXL"].Rows.Add(dr);
-            }
-            rptDSDonTXLChuyenTXL rpt = new rptDSDonTXLChuyenTXL();
-            rpt.SetDataSource(dsBaoCao);
-            frmShowBaoCao frm = new frmShowBaoCao(rpt);
-            frm.ShowDialog();
-        }
-
         private void btnXem_Click(object sender, EventArgs e)
         {
             switch (cmbTimTheo.SelectedItem.ToString())
             {
                 case "Mã Đơn":
                     if (txtNoiDungTimKiem.Text.Trim() != ""&&txtNoiDungTimKiem2.Text.Trim() != "")
-                        dgvDSDonKH.DataSource = _cDonKH.LoadDSDonKHByMaDons(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                        dgvDSDonKH.DataSource = _cDonKH.GetDS(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
                     else
                         if (txtNoiDungTimKiem.Text.Trim() != "")
-                            dgvDSDonKH.DataSource = _cDonKH.LoadDSDonKHByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                            dgvDSDonKH.DataSource = _cDonKH.GetDS(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
                     break;
                 case "Danh Bộ":
                     if (txtNoiDungTimKiem.Text.Trim() != "")
-                        dgvDSDonKH.DataSource = _cDonKH.LoadDSDonKHByDanhBo(txtNoiDungTimKiem.Text.Trim());
+                        dgvDSDonKH.DataSource = _cDonKH.GetDSByDanhBo(txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Số Công Văn":
                     if (txtNoiDungTimKiem.Text.Trim() != "")
-                        dgvDSDonKH.DataSource = _cDonKH.LoadDSDonKHBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper());
+                        dgvDSDonKH.DataSource = _cDonKH.GetDSBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper());
                     break;
                 case "Ngày":
-                    dgvDSDonKH.DataSource = _cDonKH.LoadDSDonKHByDates(dateTu.Value, dateDen.Value);
+                    dgvDSDonKH.DataSource = _cDonKH.GetDS(dateTu.Value, dateDen.Value);
                     break;
                 default:
                     break;
             }
         }
 
+        private void dgvDSDonKH_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDSDonKH.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvDSDonKH_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (dgvDSDonKH.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
+            {
+                frmNhanDonTKH frm = new frmNhanDonTKH(decimal.Parse(dgvDSDonKH["MaDon", dgvDSDonKH.CurrentRow.Index].Value.ToString()));
+                frm.ShowDialog();
+            }
+        }
+
+        private void dgvDSDonKH_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvDSDonKH.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null && e.Value.ToString().Length > 2)
+            {
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+        }
     }
 }

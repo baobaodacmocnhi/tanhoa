@@ -469,8 +469,8 @@
             // 
             // gridColumn99
             // 
-            this.gridColumn99.Caption = "Trạng Thái";
-            this.gridColumn99.FieldName = "TrangThai";
+            this.gridColumn99.Caption = "Trạng Thái BC";
+            this.gridColumn99.FieldName = "TrangThaiBC";
             this.gridColumn99.Name = "gridColumn99";
             this.gridColumn99.OptionsColumn.AllowEdit = false;
             this.gridColumn99.Visible = true;

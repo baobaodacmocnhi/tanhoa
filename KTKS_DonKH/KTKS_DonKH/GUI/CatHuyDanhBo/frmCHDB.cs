@@ -127,13 +127,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (ctchdb.CHDB.MaDon != null)
             {
-                _donkh = _cDonKH.getDonKHbyID(ctchdb.CHDB.MaDon.Value);
+                _donkh = _cDonKH.Get(ctchdb.CHDB.MaDon.Value);
                 txtMaDon.Text = ctchdb.CHDB.MaDon.ToString().Insert(ctchdb.CHDB.MaDon.ToString().Length - 2, "-");
             }
             else
                 if (ctchdb.CHDB.MaDonTXL != null)
                 {
-                    _dontxl = _cDonTXL.getDonTXLbyID(ctchdb.CHDB.MaDonTXL.Value);
+                    _dontxl = _cDonTXL.Get(ctchdb.CHDB.MaDonTXL.Value);
                     txtMaDon.Text = "TXL" + ctchdb.CHDB.MaDonTXL.ToString().Insert(ctchdb.CHDB.MaDonTXL.ToString().Length - 2, "-");
                 }
                 else
@@ -196,13 +196,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (ctctdb.CHDB.MaDon != null)
             {
-                _donkh = _cDonKH.getDonKHbyID(ctctdb.CHDB.MaDon.Value);
+                _donkh = _cDonKH.Get(ctctdb.CHDB.MaDon.Value);
                 txtMaDon.Text = ctctdb.CHDB.MaDon.ToString().Insert(ctctdb.CHDB.MaDon.ToString().Length - 2, "-");
             }
             else
             if (ctctdb.CHDB.MaDonTXL!=null)
             {
-                _dontxl = _cDonTXL.getDonTXLbyID(ctctdb.CHDB.MaDonTXL.Value);
+                _dontxl = _cDonTXL.Get(ctctdb.CHDB.MaDonTXL.Value);
                 txtMaDon.Text = "TXL" + ctctdb.CHDB.MaDonTXL.ToString().Insert(ctctdb.CHDB.MaDonTXL.ToString().Length - 2, "-");
             }
             else
@@ -281,7 +281,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 {
                     if (_cDonTXL.CheckExist(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", ""))) == true)
                     {
-                        _dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
+                        _dontxl = _cDonTXL.Get(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
                         txtMaDon.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
                         if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
                         {
@@ -316,7 +316,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     else
                         if (_cDonKH.CheckExist(decimal.Parse(txtMaDon.Text.Trim().Replace("-", ""))) == true)
                         {
-                            _donkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
+                            _donkh = _cDonKH.Get(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
                             txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
                             if (_cThuTien.GetMoiNhat(_donkh.DanhBo) != null)
                             {
@@ -1040,7 +1040,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     if (radToKH.Checked)
                         foreach (ListViewItem itemMa in lstMa.Items)
                         {
-                            DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                            DonKH donkh = _cDonKH.Get(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
 
                             if (!_cCHDB.CheckExist_CHDB("TKH", donkh.MaDon))
                             {
@@ -1087,7 +1087,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         if (radTXL.Checked)
                             foreach (ListViewItem itemMa in lstMa.Items)
                             {
-                                DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                DonTXL dontxl = _cDonTXL.Get(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
 
                                 if (!_cCHDB.CheckExist_CHDB("TXL", dontxl.MaDon))
                                 {
@@ -1158,13 +1158,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
             if (radToKH.Checked)
             {
-                DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(lstMa.SelectedItems[0].Text.Trim().Replace("-", "")));
+                DonKH donkh = _cDonKH.Get(decimal.Parse(lstMa.SelectedItems[0].Text.Trim().Replace("-", "")));
                 dgvLichSuCHDB.DataSource = _cCHDB.GetLichSuCHDB(donkh.DanhBo);
             }
             else
                 if (radTXL.Checked)
                 {
-                    DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(lstMa.SelectedItems[0].Text.Trim().Replace("-", "")));
+                    DonTXL dontxl = _cDonTXL.Get(decimal.Parse(lstMa.SelectedItems[0].Text.Trim().Replace("-", "")));
                     dgvLichSuCHDB.DataSource = _cCHDB.GetLichSuCHDB(dontxl.DanhBo);
                 }
         }

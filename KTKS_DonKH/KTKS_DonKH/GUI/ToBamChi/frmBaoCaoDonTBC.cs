@@ -16,7 +16,6 @@ using KTKS_DonKH.DAL.DonTu;
 using KTKS_DonKH.BaoCao.CongVan;
 using KTKS_DonKH.DAL.ToBamChi;
 using KTKS_DonKH.LinQ;
-using KTKS_DonKH.DAL.QuanTri;
 
 namespace KTKS_DonKH.GUI.ToBamChi
 {
@@ -26,7 +25,6 @@ namespace KTKS_DonKH.GUI.ToBamChi
         CKTXM _cKTXM = new CKTXM();
         CBamChi _cBamChi = new CBamChi();
         CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
-        CTaiKhoan _cTaiKhoan = new CTaiKhoan();
 
         public frmBaoCaoDonTBC()
         {
@@ -40,7 +38,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
 
         private void btnBaoCao_Click(object sender, EventArgs e)
         {
-            DataTable dt = _cDonTBC.GetDSByCreateDate(dateTu.Value, dateDen.Value);
+            DataTable dt = _cDonTBC.GetDS(dateTu.Value, dateDen.Value);
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
             foreach (DataRow item in dt.Rows)
@@ -50,14 +48,8 @@ namespace KTKS_DonKH.GUI.ToBamChi
                 dr["LoaiBaoCao"] = "TỔ BẤM CHÌ";
                 dr["MaDon"] = item["MaDon"];
                 dr["TenLD"] = item["TenLD"];
-                if (_cKTXM.CheckExist("TBC",decimal.Parse(item["MaDon"].ToString())))
-                    dr["DaGiaiQuyet"] = true;
-                else
-                    if (_cBamChi.CheckExist_BamChi("TBC",decimal.Parse(item["MaDon"].ToString())))
-                        dr["DaGiaiQuyet"] = true;
-                    else
-                        dr["DaGiaiQuyet"] = false;
-
+                dr["DaGiaiQuyet"] = item["GiaiQuyet"];
+               
                 dsBaoCao.Tables["DSDonTXL"].Rows.Add(dr);
             }
 
@@ -135,9 +127,9 @@ namespace KTKS_DonKH.GUI.ToBamChi
                     {
                         DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
 
-                        dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
-                        dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-                        dr["MaDon"] = "TBC" + itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
+                        dr["TuNgay"] = dateTu_DSChuyenKTXM.Value.ToString("dd/MM/yyyy");
+                        dr["DenNgay"] = dateDen_DSChuyenKTXM.Value.ToString("dd/MM/yyyy");
+                        dr["MaDon"] = itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
                         dr["TenLD"] = itemRow["TenLD"];
                         dr["SoCongVan"] = itemRow["SoCongVan"];
                         if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()) && itemRow["DanhBo"].ToString().Length == 11)
@@ -156,9 +148,9 @@ namespace KTKS_DonKH.GUI.ToBamChi
                 {
                     DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
 
-                    dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
-                    dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-                    dr["MaDon"] = "TBC" + itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
+                    dr["TuNgay"] = dateTu_DSChuyenKTXM.Value.ToString("dd/MM/yyyy");
+                    dr["DenNgay"] = dateDen_DSChuyenKTXM.Value.ToString("dd/MM/yyyy");
+                    dr["MaDon"] = itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
                     dr["TenLD"] = itemRow["TenLD"];
                     dr["SoCongVan"] = itemRow["SoCongVan"];
                     if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()) && itemRow["DanhBo"].ToString().Length == 11)

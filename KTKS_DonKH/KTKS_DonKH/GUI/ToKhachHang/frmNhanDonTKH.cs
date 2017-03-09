@@ -128,7 +128,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
             txtGiaBieu.Text = hoadon.GB.ToString();
             txtDinhMuc.Text = hoadon.DM.ToString();
-            dgvLichSuDon.DataSource = _cDonKH.LoadDSDonKHByDanhBo(hoadon.DANHBA);
+            dgvLichSuDon.DataSource = _cDonKH.GetDSByDanhBo(hoadon.DANHBA);
             if (_cTTTN.CheckExist_ChuaXepDon(hoadon.DANHBA))
                 lbTruyThu.Text = "Danh Bộ này đang Truy Thu";
             else
@@ -204,7 +204,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
 
             txtDinhMucSau.Text = dontkh.DinhMucSau;
             txtHieuLucTuKy.Text = dontkh.HieuLucTuKy;
-            dgvLichSuDon.DataSource = _cDonKH.LoadDSDonKHByDanhBo(dontkh.DanhBo);
+            dgvLichSuDon.DataSource = _cDonKH.GetDSByDanhBo(dontkh.DanhBo);
             dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("TKH", dontkh.MaDon);
         }
 
@@ -498,16 +498,15 @@ namespace KTKS_DonKH.GUI.ToKhachHang
         {
             if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
             {
-                if (_cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", ""))) != null)
+                if (_cDonKH.CheckExist(decimal.Parse(txtMaDon.Text.Trim().Replace("-", ""))) == true)
                 {
-                    _donkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
-
+                    _donkh = _cDonKH.Get(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
                     LoadDonTKH(_donkh);
                 }
                 else
                 {
-                    MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Clear();
+                    MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -521,7 +520,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                     if (cmbLD.SelectedIndex != -1)
                     {
                         DonKH donkh = new DonKH();
-                        donkh.MaDon = _cDonKH.getMaxNextID();
+                        donkh.MaDon = _cDonKH.GetNextID();
                         donkh.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                         donkh.SoCongVan = txtSoCongVan.Text.Trim();
                         donkh.NoiDung = txtNoiDung.Text.Trim();
@@ -631,7 +630,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                         #endregion
 
                         _cDonKH.beginTransaction();
-                        if (_cDonKH.ThemDonKH(donkh))
+                        if (_cDonKH.Them(donkh))
                         {
                             _cDonKH.commitTransaction();
                             MessageBox.Show("Thành công/n Mã Đơn:" + donkh.MaDon.ToString().Insert(donkh.MaDon.ToString().Length - 2, "-"), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1068,7 +1067,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
 
                     #endregion
 
-                    if (_cDonKH.SuaDonKH(_donkh))
+                    if (_cDonKH.Sua(_donkh))
                     {
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -1084,7 +1083,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             {
                 if (_donkh != null && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    if (_cDonKH.XoaDonKH(_donkh))
+                    if (_cDonKH.Xoa(_donkh))
                     {
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }

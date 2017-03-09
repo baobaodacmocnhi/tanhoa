@@ -170,7 +170,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                         if (item.Cells["DanhBo"].Value != null || item.Cells["HoTen"].Value != null || item.Cells["DiaChi"].Value != null)
                         {
                             DonKH donkh = new DonKH();
-                            donkh.MaDon = _cDonKH.getMaxNextID();
+                            donkh.MaDon = _cDonKH.GetNextID();
                             donkh.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                             donkh.SoCongVan = txtSoCongVan.Text.Trim();
                             donkh.NoiDung = txtNoiDung.Text.Trim();
@@ -206,7 +206,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                                     donkh.GhiChuChuyen_KTXM = item.Cells["GhiChu"].Value.ToString();
                             }
                             ///
-                            if (_cDonKH.ThemDonKH(donkh))
+                            if (_cDonKH.Them(donkh))
                             {
                                 if (min == 0)
                                     min = donkh.MaDon;
@@ -258,7 +258,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                             if (item.Cells["DanhBoVP"].Value != null || item.Cells["HoTenVP"].Value != null || item.Cells["DiaChiVP"].Value != null)
                             {
                                 DonKH donkh = new DonKH();
-                                donkh.MaDon = _cDonKH.getMaxNextID();
+                                donkh.MaDon = _cDonKH.GetNextID();
                                 donkh.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                                 donkh.SoCongVan = txtSoCongVan.Text.Trim();
                                 donkh.NoiDung = txtNoiDung.Text.Trim();
@@ -294,7 +294,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                                     //    donkh.GhiChuChuyenVanPhong = item.Cells["GhiChuVP"].Value.ToString();
                                 }
                                 ///
-                                if (_cDonKH.ThemDonKH(donkh))
+                                if (_cDonKH.Them(donkh))
                                 {
                                     if (min == 0)
                                         min = donkh.MaDon;

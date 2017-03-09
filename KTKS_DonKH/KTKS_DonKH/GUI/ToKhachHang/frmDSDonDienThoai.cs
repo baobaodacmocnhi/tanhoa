@@ -132,7 +132,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                     {
                         DonDienThoai dondt = _cDonDT.getDonDienThoaibyID(decimal.Parse(item.Cells["MaDonDT"].Value.ToString()));
                         DonKH donkh = new DonKH();
-                        donkh.MaDon = _cDonKH.getMaxNextID();
+                        donkh.MaDon = _cDonKH.GetNextID();
                         donkh.MaLD = int.Parse(item.Cells["MaLD"].Value.ToString());
                         donkh.NoiDung = dondt.NoiDung;
 
@@ -147,7 +147,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                         donkh.Ky = dondt.Ky;
                         donkh.Nam = dondt.Nam;
 
-                        if (_cDonKH.ThemDonKH(donkh))
+                        if (_cDonKH.Them(donkh))
                         {
                             dondt.MaDon = donkh.MaDon;
                             _cDonDT.Sua(dondt);

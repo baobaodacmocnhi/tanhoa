@@ -110,7 +110,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     if (item.Cells["DanhBo"].Value != null || item.Cells["HoTen"].Value != null || item.Cells["DiaChi"].Value != null)
                     {
                         DonTXL dontxl = new DonTXL();
-                        dontxl.MaDon = _cDonTXL.getMaxNextID();
+                        dontxl.MaDon = _cDonTXL.GetNextID();
                         dontxl.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                         dontxl.SoCongVan = txtSoCongVan.Text.Trim();
                         dontxl.NoiDung = txtNoiDung.Text.Trim();
@@ -148,7 +148,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                                 dontxl.GhiChuChuyen_KTXM = item.Cells["GhiChu"].Value.ToString();
                         }
                         ///
-                        if (_cDonTXL.ThemDonTXL(dontxl))
+                        if (_cDonTXL.Them(dontxl))
                         {
                             if (min == 0)
                                 min = dontxl.MaDon;

@@ -135,7 +135,6 @@
             this.NgayBao,
             this.DienThoai});
             this.dgvDonDT.Location = new System.Drawing.Point(0, 63);
-            this.dgvDonDT.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dgvDonDT.Name = "dgvDonDT";
             this.dgvDonDT.Size = new System.Drawing.Size(1365, 493);
             this.dgvDonDT.TabIndex = 16;

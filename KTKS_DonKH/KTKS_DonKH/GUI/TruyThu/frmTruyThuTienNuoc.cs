@@ -79,13 +79,13 @@ namespace KTKS_DonKH.GUI.TruyThu
         {
             if (tttn.MaDon != null)
             {
-                _donkh = _cDonKH.getDonKHbyID(tttn.MaDon.Value);
+                _donkh = _cDonKH.Get(tttn.MaDon.Value);
                 txtMaDon.Text = tttn.MaDon.Value.ToString().Insert(tttn.MaDon.Value.ToString().Length - 2, "-");
             }
             else
                 if (tttn.MaDonTXL != null)
                 {
-                    _dontxl = _cDonTXL.getDonTXLbyID(tttn.MaDonTXL.Value);
+                    _dontxl = _cDonTXL.Get(tttn.MaDonTXL.Value);
                     txtMaDon.Text = "TXL" + tttn.MaDonTXL.Value.ToString().Insert(tttn.MaDonTXL.Value.ToString().Length - 2, "-");
                 }
                 else
@@ -227,7 +227,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 {
                     if (_cDonTXL.CheckExist(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", ""))) == true)
                     {
-                        _dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
+                        _dontxl = _cDonTXL.Get(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
                         txtMaDon.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
                         if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
                         {
@@ -262,7 +262,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     else
                         if (_cDonKH.CheckExist(decimal.Parse(txtMaDon.Text.Trim().Replace("-", ""))) == true)
                         {
-                            _donkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
+                            _donkh = _cDonKH.Get(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
                             txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
                             if (_cThuTien.GetMoiNhat(_donkh.DanhBo) != null)
                             {

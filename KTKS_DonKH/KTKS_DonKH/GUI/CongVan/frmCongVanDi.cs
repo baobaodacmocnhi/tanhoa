@@ -158,13 +158,13 @@ namespace KTKS_DonKH.GUI.CongVan
                         switch (cmbLoaiVanBan.SelectedItem.ToString())
                         {
                             case "Đơn Tổ Khách Hàng":
-                                DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                DonKH donkh = _cDonKH.Get(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = donkh.DanhBo;
                                 item.HoTen = donkh.HoTen;
                                 item.DiaChi = donkh.DiaChi;
                                 break;
                             case "Đơn Tổ Xử Lý":
-                                DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                DonTXL dontxl = _cDonTXL.Get(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                 item.DanhBo = dontxl.DanhBo;
                                 item.HoTen = dontxl.HoTen;
                                 item.DiaChi = dontxl.DiaChi;
@@ -269,13 +269,13 @@ namespace KTKS_DonKH.GUI.CongVan
                 switch (cmbLoaiVanBan.SelectedItem.ToString())
                 {
                     case "Đơn Tổ Khách Hàng":
-                        DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                        DonKH donkh = _cDonKH.Get(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = donkh.DanhBo;
                         txtHoTen.Text = donkh.HoTen;
                         txtDiaChi.Text = donkh.DiaChi;
                         break;
                     case "Đơn Tổ Xử Lý":
-                        DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                        DonTXL dontxl = _cDonTXL.Get(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = dontxl.DanhBo;
                         txtHoTen.Text = dontxl.HoTen;
                         txtDiaChi.Text = dontxl.DiaChi;

@@ -15,7 +15,7 @@ namespace KTKS_DonKH.DAL.ToKhachHang
         /// Lấy Mã Đơn kế tiếp
         /// </summary>
         /// <returns></returns>
-        public decimal getMaxNextID()
+        public decimal GetNextID()
         {
             try
             {
@@ -39,20 +39,7 @@ namespace KTKS_DonKH.DAL.ToKhachHang
 
         }
 
-        public DonKH getDonKHbyID(decimal MaDon)
-        {
-            try
-            {
-                return db.DonKHs.SingleOrDefault(itemDonKH => itemDonKH.MaDon == MaDon);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public bool ThemDonKH(DonKH donkh)
+        public bool Them(DonKH donkh)
         {
             try
             {
@@ -60,7 +47,6 @@ namespace KTKS_DonKH.DAL.ToKhachHang
                 donkh.CreateBy = CTaiKhoan.MaUser;
                 db.DonKHs.InsertOnSubmit(donkh);
                 db.SubmitChanges();
-                //MessageBox.Show("Thành công Thêm DonKH", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
             catch (Exception ex)
@@ -71,282 +57,13 @@ namespace KTKS_DonKH.DAL.ToKhachHang
             }
         }
 
-        public DataTable LoadDSDonKHByMaDon(decimal MaDon)
-        {
-            try
-            {
-                var query = from itemDonKH in db.DonKHs
-                            join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
-                            join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
-                            where itemDonKH.MaDon == MaDon
-                            select new
-                            {
-                                itemDonKH.MaDon,
-                                itemDonKH.MaLD,
-                                itemLoaiDon.TenLD,
-                                itemDonKH.CreateDate,
-                                itemDonKH.DanhBo,
-                                itemDonKH.HoTen,
-                                itemDonKH.DiaChi,
-                                itemDonKH.NoiDung,
-                                CreateBy = itemUser.HoTen,
-                                //itemDonKH.NVKiemTra,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public DataTable LoadDSDonKHByMaDons(decimal FromMaDon, decimal ToMaDon)
-        {
-            try
-            {
-                var query = from itemDonKH in db.DonKHs
-                            join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
-                            join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
-                            where (((itemDonKH.MaDon.ToString().Substring(itemDonKH.MaDon.ToString().Length - 2, 2) == FromMaDon.ToString().Substring(FromMaDon.ToString().Length - 2, 2)
-                            && itemDonKH.MaDon.ToString().Substring(itemDonKH.MaDon.ToString().Length - 2, 2) == ToMaDon.ToString().Substring(ToMaDon.ToString().Length - 2, 2))
-                            && (itemDonKH.MaDon >= FromMaDon && itemDonKH.MaDon <= ToMaDon)))
-                            select new
-                            {
-                                itemDonKH.MaDon,
-                                itemDonKH.MaLD,
-                                itemLoaiDon.TenLD,
-                                itemDonKH.CreateDate,
-                                itemDonKH.DanhBo,
-                                itemDonKH.HoTen,
-                                itemDonKH.DiaChi,
-                                itemDonKH.NoiDung,
-                                CreateBy = itemUser.HoTen,
-                                //itemDonKH.NVKiemTra,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public DataTable LoadDSDonKHByDanhBo(string DanhBo)
-        {
-            try
-            {
-                var query = from itemDonKH in db.DonKHs
-                            join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
-                            join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
-                            where itemDonKH.DanhBo == DanhBo
-                            orderby itemDonKH.CreateDate descending
-                            select new
-                            {
-                                itemDonKH.MaDon,
-                                itemDonKH.MaLD,
-                                itemLoaiDon.TenLD,
-                                itemDonKH.CreateDate,
-                                itemDonKH.DanhBo,
-                                itemDonKH.HoTen,
-                                itemDonKH.DiaChi,
-                                itemDonKH.NoiDung,
-                                CreateBy = itemUser.HoTen,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public DataTable LoadDSDonKHBySoCongVan(string SoCongVan)
-        {
-            try
-            {
-                var query = from itemDonKH in db.DonKHs
-                            join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
-                            join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
-                            where itemDonKH.SoCongVan.Contains(SoCongVan)
-                            //orderby itemDonKH.CreateDate ascending
-                            select new
-                            {
-                                itemDonKH.MaDon,
-                                itemDonKH.MaLD,
-                                itemLoaiDon.TenLD,
-                                itemDonKH.CreateDate,
-                                itemDonKH.DanhBo,
-                                itemDonKH.HoTen,
-                                itemDonKH.DiaChi,
-                                itemDonKH.NoiDung,
-                                itemDonKH.GhiChuChuyen_KTXM,
-                                CreateBy = itemUser.HoTen,
-                                //itemDonKH.NVKiemTra,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public DataTable LoadDSDonKHByDate(DateTime Ngay)
-        {
-            try
-            {
-                var query = from itemDonKH in db.DonKHs
-                            join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
-                            join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
-                            where itemDonKH.CreateDate.Value.Date == Ngay.Date
-                            //orderby itemDonKH.CreateDate ascending
-                            select new
-                            {
-                                itemDonKH.MaDon,
-                                itemDonKH.MaLD,
-                                itemLoaiDon.TenLD,
-                                itemDonKH.CreateDate,
-                                itemDonKH.DanhBo,
-                                itemDonKH.HoTen,
-                                itemDonKH.DiaChi,
-                                itemDonKH.NoiDung,
-                                CreateBy = itemUser.HoTen,
-                                itemDonKH.TienTrinh,
-                                //itemDonKH.NVKiemTra,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public DataTable LoadDSDonKHByDates(DateTime TuNgay, DateTime DenNgay)
-        {
-            try
-            {
-                var query = from itemDonKH in db.DonKHs
-                            join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
-                            join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
-                            where itemDonKH.CreateDate.Value.Date >= TuNgay.Date && itemDonKH.CreateDate.Value.Date <= DenNgay.Date
-                            //orderby itemDonKH.CreateDate ascending
-                            select new
-                            {
-                                itemDonKH.MaDon,
-                                itemDonKH.MaLD,
-                                itemLoaiDon.TenLD,
-                                itemDonKH.CreateDate,
-                                itemDonKH.DanhBo,
-                                itemDonKH.HoTen,
-                                itemDonKH.DiaChi,
-                                itemDonKH.NoiDung,
-                                CreateBy = itemUser.HoTen,
-                                itemDonKH.TienTrinh,
-                                //itemDonKH.NVKiemTra,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public DataTable LoadBaoCaoDSDonKH(DateTime TuNgay)
-        {
-            try
-            {
-                var query = from itemDonKH in db.DonKHs
-                            join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
-                            where itemDonKH.CreateDate.Value.Date == TuNgay.Date
-                            orderby itemDonKH.MaDon ascending
-                            select new
-                            {
-                                itemDonKH.MaDon,
-                                itemDonKH.MaLD,
-                                itemLoaiDon.TenLD,
-                                CapDM = itemDonKH.DangKyDM,
-                                itemDonKH.GiamDM,
-                                itemDonKH.CatChuyenDM,
-                                itemDonKH.KiemTraDHN,
-                                itemDonKH.MatDHN,
-                                itemDonKH.HuHongDHN,
-                                itemDonKH.ChiNiem,
-                                itemDonKH.TienNuoc,
-                                itemDonKH.ChiSoNuoc,
-                                DieuChinhSoNha = itemDonKH.DCSoNha,
-                                ThayDoiTenHopDong = itemDonKH.SangTen,
-                                itemDonKH.ThayDoiMST,
-                                ThayDoiGiaNuoc = itemDonKH.DonGiaNuoc,
-                                itemDonKH.TamNgung,
-                                itemDonKH.HuyHopDong,
-                                itemDonKH.MoNuoc,
-                                itemDonKH.LoaiKhac,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public DataTable LoadBaoCaoDSDonKH(DateTime TuNgay, DateTime DenNgay)
-        {
-            try
-            {
-                var query = from itemDonKH in db.DonKHs
-                            join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
-                            where itemDonKH.CreateDate.Value.Date >= TuNgay.Date && itemDonKH.CreateDate.Value.Date <= DenNgay.Date
-                            orderby itemDonKH.MaDon ascending
-                            select new
-                            {
-                                itemDonKH.MaDon,
-                                itemDonKH.MaLD,
-                                itemLoaiDon.TenLD,
-                                CapDM = itemDonKH.DangKyDM,
-                                itemDonKH.GiamDM,
-                                itemDonKH.CatChuyenDM,
-                                itemDonKH.KiemTraDHN,
-                                itemDonKH.MatDHN,
-                                itemDonKH.HuHongDHN,
-                                itemDonKH.ChiNiem,
-                                itemDonKH.TienNuoc,
-                                itemDonKH.ChiSoNuoc,
-                                DieuChinhSoNha = itemDonKH.DCSoNha,
-                                ThayDoiTenHopDong = itemDonKH.SangTen,
-                                itemDonKH.ThayDoiMST,
-                                ThayDoiGiaNuoc = itemDonKH.DonGiaNuoc,
-                                itemDonKH.TamNgung,
-                                itemDonKH.HuyHopDong,
-                                itemDonKH.MoNuoc,
-                                itemDonKH.LoaiKhac,
-                            };
-                return LINQToDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public bool SuaDonKH(DonKH donkh)
+        public bool Sua(DonKH donkh)
         {
             try
             {
                 donkh.ModifyDate = DateTime.Now;
                 donkh.ModifyBy = CTaiKhoan.MaUser;
                 db.SubmitChanges();
-                //MessageBox.Show("Thành công Sửa DonKH", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
             catch (Exception ex)
@@ -357,66 +74,18 @@ namespace KTKS_DonKH.DAL.ToKhachHang
             }
         }
 
-        public bool SuaDonKH(DonKH donkh, bool inhertance)
-        {
-            try
-            {
-                if (inhertance)
-                {
-                    donkh.ModifyDate = DateTime.Now;
-                    donkh.ModifyBy = CTaiKhoan.MaUser;
-                    db.SubmitChanges();
-                    //MessageBox.Show("Thành công Sửa DonKH", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
-                }
-                else
-                {
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.DonKHs);
-                    return false;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
-            }
-        }
-
-        public bool XoaDonKH(DonKH donkh)
+        public bool Xoa(DonKH donkh)
         {
             try
             {
                 db.DonKHs.DeleteOnSubmit(donkh);
                 db.SubmitChanges();
-                //MessageBox.Show("Thành công Xóa DonKH", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 db = new dbKinhDoanhDataContext();
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Kiểm Tra đơn đó có được nhận hay chưa
-        /// </summary>
-        /// <param name="MaDon"></param>
-        /// <returns></returns>
-        public bool CheckNhan(decimal MaDon)
-        {
-            try
-            {
-                if (db.DonKHs.Any(itemDonKH => itemDonKH.MaDon == MaDon && itemDonKH.Nhan == true))
-                    return true;
-                else
-                    return false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -424,6 +93,132 @@ namespace KTKS_DonKH.DAL.ToKhachHang
         public bool CheckExist(decimal MaDon)
         {
             return db.DonKHs.Any(item => item.MaDon == MaDon);
+        }
+
+        public DonKH Get(decimal MaDon)
+        {
+                return db.DonKHs.SingleOrDefault(item => item.MaDon == MaDon);
+        }
+
+        public DataTable GetDS(decimal MaDon)
+        {
+            var query = from itemDonKH in db.DonKHs
+                        join itemUser in db.Users on itemDonKH.NguoiDi_KTXM equals itemUser.MaU into tmpUsers
+                        from tmpUser in tmpUsers.DefaultIfEmpty()
+                        where itemDonKH.MaDon==MaDon
+                        select new
+                        {
+                            itemDonKH.MaDon,
+                            itemDonKH.LoaiDon.TenLD,
+                            itemDonKH.SoCongVan,
+                            itemDonKH.CreateDate,
+                            itemDonKH.DanhBo,
+                            itemDonKH.HoTen,
+                            itemDonKH.DiaChi,
+                            itemDonKH.NoiDung,
+                            NguoiDi_KTXM = tmpUser.HoTen,
+                            GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDon == itemDonKH.MaDon && item.CreateBy == itemDonKH.NguoiDi_KTXM) == true
+                            ? true : db.CTBamChis.Any(item => item.BamChi.MaDon == itemDonKH.MaDon && item.CreateBy == itemDonKH.NguoiDi_KTXM)
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDS(decimal FromMaDon, decimal ToMaDon)
+        {
+            var query = from itemDonKH in db.DonKHs
+                        join itemUser in db.Users on itemDonKH.NguoiDi_KTXM equals itemUser.MaU into tmpUsers
+                        from tmpUser in tmpUsers.DefaultIfEmpty()
+                        where (((itemDonKH.MaDon.ToString().Substring(itemDonKH.MaDon.ToString().Length - 2, 2) == FromMaDon.ToString().Substring(FromMaDon.ToString().Length - 2, 2)
+                            && itemDonKH.MaDon.ToString().Substring(itemDonKH.MaDon.ToString().Length - 2, 2) == ToMaDon.ToString().Substring(ToMaDon.ToString().Length - 2, 2))
+                            && (itemDonKH.MaDon >= FromMaDon && itemDonKH.MaDon <= ToMaDon)))
+                            orderby itemDonKH.CreateDate descending
+                        select new
+                        {
+                            itemDonKH.MaDon,
+                            itemDonKH.LoaiDon.TenLD,
+                            itemDonKH.SoCongVan,
+                            itemDonKH.CreateDate,
+                            itemDonKH.DanhBo,
+                            itemDonKH.HoTen,
+                            itemDonKH.DiaChi,
+                            itemDonKH.NoiDung,
+                            NguoiDi_KTXM = tmpUser.HoTen,
+                            GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDon == itemDonKH.MaDon && item.CreateBy == itemDonKH.NguoiDi_KTXM) == true
+                            ? true : db.CTBamChis.Any(item => item.BamChi.MaDon == itemDonKH.MaDon && item.CreateBy == itemDonKH.NguoiDi_KTXM)
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSByDanhBo(string DanhBo)
+        {
+            var query = from itemDonKH in db.DonKHs
+                        join itemUser in db.Users on itemDonKH.NguoiDi_KTXM equals itemUser.MaU into tmpUsers
+                        from tmpUser in tmpUsers.DefaultIfEmpty()
+                        where itemDonKH.DanhBo==DanhBo
+                        orderby itemDonKH.CreateDate descending
+                        select new
+                        {
+                            itemDonKH.MaDon,
+                            itemDonKH.LoaiDon.TenLD,
+                            itemDonKH.SoCongVan,
+                            itemDonKH.CreateDate,
+                            itemDonKH.DanhBo,
+                            itemDonKH.HoTen,
+                            itemDonKH.DiaChi,
+                            itemDonKH.NoiDung,
+                            NguoiDi_KTXM = tmpUser.HoTen,
+                            GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDon == itemDonKH.MaDon && item.CreateBy == itemDonKH.NguoiDi_KTXM) == true
+                            ? true : db.CTBamChis.Any(item => item.BamChi.MaDon == itemDonKH.MaDon && item.CreateBy == itemDonKH.NguoiDi_KTXM)
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSBySoCongVan(string SoCongVan)
+        {
+            var query = from itemDonKH in db.DonKHs
+                        join itemUser in db.Users on itemDonKH.NguoiDi_KTXM equals itemUser.MaU into tmpUsers
+                        from tmpUser in tmpUsers.DefaultIfEmpty()
+                        where itemDonKH.SoCongVan.Contains(SoCongVan)
+                        orderby itemDonKH.CreateDate descending
+                        select new
+                        {
+                            itemDonKH.MaDon,
+                            itemDonKH.LoaiDon.TenLD,
+                            itemDonKH.SoCongVan,
+                            itemDonKH.CreateDate,
+                            itemDonKH.DanhBo,
+                            itemDonKH.HoTen,
+                            itemDonKH.DiaChi,
+                            itemDonKH.NoiDung,
+                            NguoiDi_KTXM = tmpUser.HoTen,
+                            GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDon == itemDonKH.MaDon && item.CreateBy == itemDonKH.NguoiDi_KTXM) == true
+                            ? true : db.CTBamChis.Any(item => item.BamChi.MaDon == itemDonKH.MaDon && item.CreateBy == itemDonKH.NguoiDi_KTXM)
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDS(DateTime TuNgay, DateTime DenNgay)
+        {
+            var query = from itemDonKH in db.DonKHs
+                        join itemUser in db.Users on itemDonKH.NguoiDi_KTXM equals itemUser.MaU into tmpUsers
+                        from tmpUser in tmpUsers.DefaultIfEmpty()
+                        where itemDonKH.CreateDate.Value.Date >= TuNgay.Date && itemDonKH.CreateDate.Value.Date <= DenNgay.Date
+                        orderby itemDonKH.CreateDate descending
+                        select new
+                        {
+                            itemDonKH.MaDon,
+                            itemDonKH.LoaiDon.TenLD,
+                            itemDonKH.SoCongVan,
+                            itemDonKH.CreateDate,
+                            itemDonKH.DanhBo,
+                            itemDonKH.HoTen,
+                            itemDonKH.DiaChi,
+                            itemDonKH.NoiDung,
+                            NguoiDi_KTXM = tmpUser.HoTen,
+                            GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDon == itemDonKH.MaDon && item.CreateBy == itemDonKH.NguoiDi_KTXM) == true
+                            ? true : db.CTBamChis.Any(item => item.BamChi.MaDon == itemDonKH.MaDon && item.CreateBy == itemDonKH.NguoiDi_KTXM)
+                        };
+            return LINQToDataTable(query);
         }
 
         #region LichSuChuyenVanPhong

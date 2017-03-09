@@ -83,7 +83,7 @@ namespace KTKS_DonKH.DAL.ToBamChi
             return db.DonTBCs.SingleOrDefault(item => item.MaDon == MaDon);
         }
 
-        public DataTable GetDSByMaDon(decimal MaDon)
+        public DataTable GetDS(decimal MaDon)
         {
             var query = from itemDonTBC in db.DonTBCs
                         join itemUser in db.Users on itemDonTBC.NguoiDi_KTXM equals itemUser.MaU into tmpUsers
@@ -111,6 +111,7 @@ namespace KTKS_DonKH.DAL.ToBamChi
                         join itemUser in db.Users on itemDonTBC.NguoiDi_KTXM equals itemUser.MaU into tmpUsers
                         from tmpUser in tmpUsers.DefaultIfEmpty()
                         where itemDonTBC.DanhBo == DanhBo
+                        orderby itemDonTBC.CreateDate descending
                         select new
                         {
                             MaDon = "TBC" + itemDonTBC.MaDon,
@@ -133,6 +134,7 @@ namespace KTKS_DonKH.DAL.ToBamChi
                         join itemUser in db.Users on itemDonTBC.NguoiDi_KTXM equals itemUser.MaU into tmpUsers
                         from tmpUser in tmpUsers.DefaultIfEmpty()
                         where itemDonTBC.DiaChi.Contains(DiaChi)
+                        orderby itemDonTBC.CreateDate descending
                         select new
                         {
                             MaDon = "TBC" + itemDonTBC.MaDon,
@@ -155,6 +157,7 @@ namespace KTKS_DonKH.DAL.ToBamChi
                         join itemUser in db.Users on itemDonTBC.NguoiDi_KTXM equals itemUser.MaU into tmpUsers
                         from tmpUser in tmpUsers.DefaultIfEmpty()
                         where itemDonTBC.SoCongVan.Contains(SoCongVan)
+                        orderby itemDonTBC.CreateDate descending
                         select new
                         {
                             MaDon = "TBC" + itemDonTBC.MaDon,
@@ -171,12 +174,13 @@ namespace KTKS_DonKH.DAL.ToBamChi
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSByCreateDate(DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable GetDS(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from itemDonTBC in db.DonTBCs
                         join itemUser in db.Users on itemDonTBC.NguoiDi_KTXM equals itemUser.MaU into tmpUsers
                         from tmpUser in tmpUsers.DefaultIfEmpty()
                         where itemDonTBC.CreateDate.Value.Date >= FromCreateDate.Date && itemDonTBC.CreateDate.Value.Date <= ToCreateDate.Date
+                        orderby itemDonTBC.CreateDate descending
                         select new
                         {
                             MaDon = "TBC" + itemDonTBC.MaDon,

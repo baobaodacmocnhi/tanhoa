@@ -88,7 +88,6 @@
             this.MaTTBC,
             this.TenTTBC});
             this.dgvDSTrangThaiBC.Location = new System.Drawing.Point(8, 91);
-            this.dgvDSTrangThaiBC.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSTrangThaiBC.MultiSelect = false;
             this.dgvDSTrangThaiBC.Name = "dgvDSTrangThaiBC";
             this.dgvDSTrangThaiBC.Size = new System.Drawing.Size(466, 486);

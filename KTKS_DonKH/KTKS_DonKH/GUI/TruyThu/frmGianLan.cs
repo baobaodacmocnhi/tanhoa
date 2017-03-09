@@ -203,7 +203,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 {
                     if (_cDonTXL.CheckExist(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", ""))) ==true)
                     {
-                        _dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
+                        _dontxl = _cDonTXL.Get(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
                         txtMaDon.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
                         if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
                         {
@@ -238,7 +238,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 else
                     if (_cDonKH.CheckExist(decimal.Parse(txtMaDon.Text.Trim().Replace("-", ""))) ==true)
                     {
-                        _dontkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
+                        _dontkh = _cDonKH.Get(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
                         txtMaDon.Text = "TKH"+_dontkh.MaDon.ToString().Insert(_dontkh.MaDon.ToString().Length - 2, "-");
                         if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
                         {

@@ -32,7 +32,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
         {
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtMaDon.Text.Trim()))
             {
-                DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
+                DonKH donkh = _cDonKH.Get(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
 
                 txtMaDon.Text = donkh.MaDon.ToString().Insert(donkh.MaDon.ToString().Length - 2, "-");
                 txtCreateDate.Text = donkh.CreateDate.Value.ToString("dd/MM/yyyy");

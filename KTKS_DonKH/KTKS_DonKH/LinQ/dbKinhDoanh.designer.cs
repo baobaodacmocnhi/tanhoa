@@ -2422,6 +2422,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntityRef<DonKH> _DonKH;
 		
+		private EntityRef<DonTBC> _DonTBC;
+		
 		private EntityRef<DonTXL> _DonTXL;
 		
     #region Extensibility Method Definitions
@@ -2451,6 +2453,7 @@ namespace KTKS_DonKH.LinQ
 			this._CTCHDBs = new EntitySet<CTCHDB>(new Action<CTCHDB>(this.attach_CTCHDBs), new Action<CTCHDB>(this.detach_CTCHDBs));
 			this._CTCTDBs = new EntitySet<CTCTDB>(new Action<CTCTDB>(this.attach_CTCTDBs), new Action<CTCTDB>(this.detach_CTCTDBs));
 			this._DonKH = default(EntityRef<DonKH>);
+			this._DonTBC = default(EntityRef<DonTBC>);
 			this._DonTXL = default(EntityRef<DonTXL>);
 			OnCreated();
 		}
@@ -2534,6 +2537,10 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._MaDonTBC != value))
 				{
+					if (this._DonTBC.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMaDonTBCChanging(value);
 					this.SendPropertyChanging();
 					this._MaDonTBC = value;
@@ -2679,6 +2686,40 @@ namespace KTKS_DonKH.LinQ
 						this._MaDon = default(Nullable<decimal>);
 					}
 					this.SendPropertyChanged("DonKH");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTBC_CHDB", Storage="_DonTBC", ThisKey="MaDonTBC", OtherKey="MaDon", IsForeignKey=true)]
+		public DonTBC DonTBC
+		{
+			get
+			{
+				return this._DonTBC.Entity;
+			}
+			set
+			{
+				DonTBC previousValue = this._DonTBC.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTBC.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTBC.Entity = null;
+						previousValue.CHDBs.Remove(this);
+					}
+					this._DonTBC.Entity = value;
+					if ((value != null))
+					{
+						value.CHDBs.Add(this);
+						this._MaDonTBC = value.MaDon;
+					}
+					else
+					{
+						this._MaDonTBC = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("DonTBC");
 				}
 			}
 		}
@@ -16769,6 +16810,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntitySet<DongNuoc> _DongNuocs;
 		
+		private EntitySet<GianLan> _GianLans;
+		
 		private EntitySet<KTXM> _KTXMs;
 		
 		private EntitySet<LichSuChuyenBanDoiKhac> _LichSuChuyenBanDoiKhacs;
@@ -16951,6 +16994,7 @@ namespace KTKS_DonKH.LinQ
 			this._CHDBs = new EntitySet<CHDB>(new Action<CHDB>(this.attach_CHDBs), new Action<CHDB>(this.detach_CHDBs));
 			this._DCBDs = new EntitySet<DCBD>(new Action<DCBD>(this.attach_DCBDs), new Action<DCBD>(this.detach_DCBDs));
 			this._DongNuocs = new EntitySet<DongNuoc>(new Action<DongNuoc>(this.attach_DongNuocs), new Action<DongNuoc>(this.detach_DongNuocs));
+			this._GianLans = new EntitySet<GianLan>(new Action<GianLan>(this.attach_GianLans), new Action<GianLan>(this.detach_GianLans));
 			this._KTXMs = new EntitySet<KTXM>(new Action<KTXM>(this.attach_KTXMs), new Action<KTXM>(this.detach_KTXMs));
 			this._LichSuChuyenBanDoiKhacs = new EntitySet<LichSuChuyenBanDoiKhac>(new Action<LichSuChuyenBanDoiKhac>(this.attach_LichSuChuyenBanDoiKhacs), new Action<LichSuChuyenBanDoiKhac>(this.detach_LichSuChuyenBanDoiKhacs));
 			this._LichSuChuyenKhacs = new EntitySet<LichSuChuyenKhac>(new Action<LichSuChuyenKhac>(this.attach_LichSuChuyenKhacs), new Action<LichSuChuyenKhac>(this.detach_LichSuChuyenKhacs));
@@ -18539,6 +18583,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonKH_GianLan", Storage="_GianLans", ThisKey="MaDon", OtherKey="MaDon")]
+		public EntitySet<GianLan> GianLans
+		{
+			get
+			{
+				return this._GianLans;
+			}
+			set
+			{
+				this._GianLans.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonKH_KTXM", Storage="_KTXMs", ThisKey="MaDon", OtherKey="MaDon")]
 		public EntitySet<KTXM> KTXMs
 		{
@@ -18745,6 +18802,18 @@ namespace KTKS_DonKH.LinQ
 			entity.DonKH = null;
 		}
 		
+		private void attach_GianLans(GianLan entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonKH = this;
+		}
+		
+		private void detach_GianLans(GianLan entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonKH = null;
+		}
+		
 		private void attach_KTXMs(KTXM entity)
 		{
 			this.SendPropertyChanging();
@@ -18898,11 +18967,17 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntitySet<BamChi> _BamChis;
 		
+		private EntitySet<CHDB> _CHDBs;
+		
 		private EntitySet<DCBD> _DCBDs;
 		
 		private EntitySet<DongNuoc> _DongNuocs;
 		
+		private EntitySet<GianLan> _GianLans;
+		
 		private EntitySet<KTXM> _KTXMs;
+		
+		private EntitySet<PhieuCHDB> _PhieuCHDBs;
 		
 		private EntitySet<TTTL> _TTTLs;
 		
@@ -18965,9 +19040,12 @@ namespace KTKS_DonKH.LinQ
 		public DonTBC()
 		{
 			this._BamChis = new EntitySet<BamChi>(new Action<BamChi>(this.attach_BamChis), new Action<BamChi>(this.detach_BamChis));
+			this._CHDBs = new EntitySet<CHDB>(new Action<CHDB>(this.attach_CHDBs), new Action<CHDB>(this.detach_CHDBs));
 			this._DCBDs = new EntitySet<DCBD>(new Action<DCBD>(this.attach_DCBDs), new Action<DCBD>(this.detach_DCBDs));
 			this._DongNuocs = new EntitySet<DongNuoc>(new Action<DongNuoc>(this.attach_DongNuocs), new Action<DongNuoc>(this.detach_DongNuocs));
+			this._GianLans = new EntitySet<GianLan>(new Action<GianLan>(this.attach_GianLans), new Action<GianLan>(this.detach_GianLans));
 			this._KTXMs = new EntitySet<KTXM>(new Action<KTXM>(this.attach_KTXMs), new Action<KTXM>(this.detach_KTXMs));
+			this._PhieuCHDBs = new EntitySet<PhieuCHDB>(new Action<PhieuCHDB>(this.attach_PhieuCHDBs), new Action<PhieuCHDB>(this.detach_PhieuCHDBs));
 			this._TTTLs = new EntitySet<TTTL>(new Action<TTTL>(this.attach_TTTLs), new Action<TTTL>(this.detach_TTTLs));
 			this._LoaiDonTBC = default(EntityRef<LoaiDonTBC>);
 			OnCreated();
@@ -19470,6 +19548,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTBC_CHDB", Storage="_CHDBs", ThisKey="MaDon", OtherKey="MaDonTBC")]
+		public EntitySet<CHDB> CHDBs
+		{
+			get
+			{
+				return this._CHDBs;
+			}
+			set
+			{
+				this._CHDBs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTBC_DCBD", Storage="_DCBDs", ThisKey="MaDon", OtherKey="MaDonTBC")]
 		public EntitySet<DCBD> DCBDs
 		{
@@ -19496,6 +19587,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTBC_GianLan", Storage="_GianLans", ThisKey="MaDon", OtherKey="MaDonTBC")]
+		public EntitySet<GianLan> GianLans
+		{
+			get
+			{
+				return this._GianLans;
+			}
+			set
+			{
+				this._GianLans.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTBC_KTXM", Storage="_KTXMs", ThisKey="MaDon", OtherKey="MaDonTBC")]
 		public EntitySet<KTXM> KTXMs
 		{
@@ -19506,6 +19610,19 @@ namespace KTKS_DonKH.LinQ
 			set
 			{
 				this._KTXMs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTBC_PhieuCHDB", Storage="_PhieuCHDBs", ThisKey="MaDon", OtherKey="MaDonTBC")]
+		public EntitySet<PhieuCHDB> PhieuCHDBs
+		{
+			get
+			{
+				return this._PhieuCHDBs;
+			}
+			set
+			{
+				this._PhieuCHDBs.Assign(value);
 			}
 		}
 		
@@ -19588,6 +19705,18 @@ namespace KTKS_DonKH.LinQ
 			entity.DonTBC = null;
 		}
 		
+		private void attach_CHDBs(CHDB entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTBC = this;
+		}
+		
+		private void detach_CHDBs(CHDB entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTBC = null;
+		}
+		
 		private void attach_DCBDs(DCBD entity)
 		{
 			this.SendPropertyChanging();
@@ -19612,6 +19741,18 @@ namespace KTKS_DonKH.LinQ
 			entity.DonTBC = null;
 		}
 		
+		private void attach_GianLans(GianLan entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTBC = this;
+		}
+		
+		private void detach_GianLans(GianLan entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTBC = null;
+		}
+		
 		private void attach_KTXMs(KTXM entity)
 		{
 			this.SendPropertyChanging();
@@ -19619,6 +19760,18 @@ namespace KTKS_DonKH.LinQ
 		}
 		
 		private void detach_KTXMs(KTXM entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTBC = null;
+		}
+		
+		private void attach_PhieuCHDBs(PhieuCHDB entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTBC = this;
+		}
+		
+		private void detach_PhieuCHDBs(PhieuCHDB entity)
 		{
 			this.SendPropertyChanging();
 			entity.DonTBC = null;
@@ -19759,6 +19912,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntitySet<DongNuoc> _DongNuocs;
 		
+		private EntitySet<GianLan> _GianLans;
+		
 		private EntitySet<KTXM> _KTXMs;
 		
 		private EntitySet<LichSuChuyenBanDoiKhac> _LichSuChuyenBanDoiKhacs;
@@ -19897,6 +20052,7 @@ namespace KTKS_DonKH.LinQ
 			this._CHDBs = new EntitySet<CHDB>(new Action<CHDB>(this.attach_CHDBs), new Action<CHDB>(this.detach_CHDBs));
 			this._DCBDs = new EntitySet<DCBD>(new Action<DCBD>(this.attach_DCBDs), new Action<DCBD>(this.detach_DCBDs));
 			this._DongNuocs = new EntitySet<DongNuoc>(new Action<DongNuoc>(this.attach_DongNuocs), new Action<DongNuoc>(this.detach_DongNuocs));
+			this._GianLans = new EntitySet<GianLan>(new Action<GianLan>(this.attach_GianLans), new Action<GianLan>(this.detach_GianLans));
 			this._KTXMs = new EntitySet<KTXM>(new Action<KTXM>(this.attach_KTXMs), new Action<KTXM>(this.detach_KTXMs));
 			this._LichSuChuyenBanDoiKhacs = new EntitySet<LichSuChuyenBanDoiKhac>(new Action<LichSuChuyenBanDoiKhac>(this.attach_LichSuChuyenBanDoiKhacs), new Action<LichSuChuyenBanDoiKhac>(this.detach_LichSuChuyenBanDoiKhacs));
 			this._LichSuChuyenKhacs = new EntitySet<LichSuChuyenKhac>(new Action<LichSuChuyenKhac>(this.attach_LichSuChuyenKhacs), new Action<LichSuChuyenKhac>(this.detach_LichSuChuyenKhacs));
@@ -21045,6 +21201,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTXL_GianLan", Storage="_GianLans", ThisKey="MaDon", OtherKey="MaDonTXL")]
+		public EntitySet<GianLan> GianLans
+		{
+			get
+			{
+				return this._GianLans;
+			}
+			set
+			{
+				this._GianLans.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTXL_KTXM", Storage="_KTXMs", ThisKey="MaDon", OtherKey="MaDonTXL")]
 		public EntitySet<KTXM> KTXMs
 		{
@@ -21246,6 +21415,18 @@ namespace KTKS_DonKH.LinQ
 		}
 		
 		private void detach_DongNuocs(DongNuoc entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTXL = null;
+		}
+		
+		private void attach_GianLans(GianLan entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTXL = this;
+		}
+		
+		private void detach_GianLans(GianLan entity)
 		{
 			this.SendPropertyChanging();
 			entity.DonTXL = null;
@@ -22048,6 +22229,12 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _ModifyBy;
 		
+		private EntityRef<DonKH> _DonKH;
+		
+		private EntityRef<DonTBC> _DonTBC;
+		
+		private EntityRef<DonTXL> _DonTXL;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -22136,6 +22323,9 @@ namespace KTKS_DonKH.LinQ
 		
 		public GianLan()
 		{
+			this._DonKH = default(EntityRef<DonKH>);
+			this._DonTBC = default(EntityRef<DonTBC>);
+			this._DonTXL = default(EntityRef<DonTXL>);
 			OnCreated();
 		}
 		
@@ -22170,6 +22360,10 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._MaDon != value))
 				{
+					if (this._DonKH.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMaDonChanging(value);
 					this.SendPropertyChanging();
 					this._MaDon = value;
@@ -22190,6 +22384,10 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._MaDonTXL != value))
 				{
+					if (this._DonTXL.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMaDonTXLChanging(value);
 					this.SendPropertyChanging();
 					this._MaDonTXL = value;
@@ -22210,6 +22408,10 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._MaDonTBC != value))
 				{
+					if (this._DonTBC.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMaDonTBCChanging(value);
 					this.SendPropertyChanging();
 					this._MaDonTBC = value;
@@ -22935,6 +23137,108 @@ namespace KTKS_DonKH.LinQ
 					this._ModifyBy = value;
 					this.SendPropertyChanged("ModifyBy");
 					this.OnModifyByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonKH_GianLan", Storage="_DonKH", ThisKey="MaDon", OtherKey="MaDon", IsForeignKey=true)]
+		public DonKH DonKH
+		{
+			get
+			{
+				return this._DonKH.Entity;
+			}
+			set
+			{
+				DonKH previousValue = this._DonKH.Entity;
+				if (((previousValue != value) 
+							|| (this._DonKH.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonKH.Entity = null;
+						previousValue.GianLans.Remove(this);
+					}
+					this._DonKH.Entity = value;
+					if ((value != null))
+					{
+						value.GianLans.Add(this);
+						this._MaDon = value.MaDon;
+					}
+					else
+					{
+						this._MaDon = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("DonKH");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTBC_GianLan", Storage="_DonTBC", ThisKey="MaDonTBC", OtherKey="MaDon", IsForeignKey=true)]
+		public DonTBC DonTBC
+		{
+			get
+			{
+				return this._DonTBC.Entity;
+			}
+			set
+			{
+				DonTBC previousValue = this._DonTBC.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTBC.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTBC.Entity = null;
+						previousValue.GianLans.Remove(this);
+					}
+					this._DonTBC.Entity = value;
+					if ((value != null))
+					{
+						value.GianLans.Add(this);
+						this._MaDonTBC = value.MaDon;
+					}
+					else
+					{
+						this._MaDonTBC = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("DonTBC");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTXL_GianLan", Storage="_DonTXL", ThisKey="MaDonTXL", OtherKey="MaDon", IsForeignKey=true)]
+		public DonTXL DonTXL
+		{
+			get
+			{
+				return this._DonTXL.Entity;
+			}
+			set
+			{
+				DonTXL previousValue = this._DonTXL.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTXL.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTXL.Entity = null;
+						previousValue.GianLans.Remove(this);
+					}
+					this._DonTXL.Entity = value;
+					if ((value != null))
+					{
+						value.GianLans.Add(this);
+						this._MaDonTXL = value.MaDon;
+					}
+					else
+					{
+						this._MaDonTXL = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("DonTXL");
 				}
 			}
 		}
@@ -29755,6 +30059,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _DocSo_GhiChu;
 		
+		private EntityRef<DonTBC> _DonTBC;
+		
 		private EntityRef<CTCHDB> _CTCHDB;
 		
 		private EntityRef<CTCTDB> _CTCTDB;
@@ -29845,6 +30151,7 @@ namespace KTKS_DonKH.LinQ
 		
 		public PhieuCHDB()
 		{
+			this._DonTBC = default(EntityRef<DonTBC>);
 			this._CTCHDB = default(EntityRef<CTCHDB>);
 			this._CTCTDB = default(EntityRef<CTCTDB>);
 			this._DonKH = default(EntityRef<DonKH>);
@@ -30399,6 +30706,10 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._MaDonTBC != value))
 				{
+					if (this._DonTBC.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMaDonTBCChanging(value);
 					this.SendPropertyChanging();
 					this._MaDonTBC = value;
@@ -30604,6 +30915,40 @@ namespace KTKS_DonKH.LinQ
 					this._DocSo_GhiChu = value;
 					this.SendPropertyChanged("DocSo_GhiChu");
 					this.OnDocSo_GhiChuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTBC_PhieuCHDB", Storage="_DonTBC", ThisKey="MaDonTBC", OtherKey="MaDon", IsForeignKey=true)]
+		public DonTBC DonTBC
+		{
+			get
+			{
+				return this._DonTBC.Entity;
+			}
+			set
+			{
+				DonTBC previousValue = this._DonTBC.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTBC.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTBC.Entity = null;
+						previousValue.PhieuCHDBs.Remove(this);
+					}
+					this._DonTBC.Entity = value;
+					if ((value != null))
+					{
+						value.PhieuCHDBs.Add(this);
+						this._MaDonTBC = value.MaDon;
+					}
+					else
+					{
+						this._MaDonTBC = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("DonTBC");
 				}
 			}
 		}
