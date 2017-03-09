@@ -257,7 +257,10 @@ namespace ThuTien.GUI.HanhThu
                     dr["TongCong"] = item.Cells["TongCong_TG"].Value;
                     dr["SoPhatHanh"] = item.Cells["SoPhatHanh_TG"].Value;
                     dr["SoHoaDon"] = item.Cells["SoHoaDon_TG"].Value;
-                    dr["NhanVien"] = CNguoiDung.HoTen;
+                    if (CNguoiDung.ToTruong)
+                        dr["NhanVien"] = ((TT_NguoiDung)cmbNhanVien.SelectedItem).HoTen;
+                    else
+                        dr["NhanVien"] = CNguoiDung.HoTen;
                     ds.Tables["DSHoaDon"].Rows.Add(dr);
                 }
             }
@@ -274,7 +277,10 @@ namespace ThuTien.GUI.HanhThu
                         dr["TongCong"] = item.Cells["TongCong_CQ"].Value;
                         dr["SoPhatHanh"] = item.Cells["SoPhatHanh_CQ"].Value;
                         dr["SoHoaDon"] = item.Cells["SoHoaDon_CQ"].Value;
-                        dr["NhanVien"] = CNguoiDung.HoTen;
+                        if (CNguoiDung.ToTruong)
+                            dr["NhanVien"] = ((TT_NguoiDung)cmbNhanVien.SelectedItem).HoTen;
+                        else
+                            dr["NhanVien"] = CNguoiDung.HoTen;
                         ds.Tables["DSHoaDon"].Rows.Add(dr);
                     }
                 }
@@ -365,7 +371,10 @@ namespace ThuTien.GUI.HanhThu
                     dr["HoTen"] = item.Cells["HoTen_TG"].Value;
                     dr["DiaChi"] = item.Cells["DiaChi_TG"].Value;
                     dr["MLT"] = item.Cells["MLT_TG"].Value.ToString().Insert(4, " ").Insert(2, " ");
-                    dr["NhanVien"] = CNguoiDung.HoTen;
+                    if (CNguoiDung.ToTruong)
+                        dr["NhanVien"] = ((TT_NguoiDung)cmbNhanVien.SelectedItem).HoTen;
+                    else
+                        dr["NhanVien"] = CNguoiDung.HoTen;
                     dsBaoCao.Tables["DSHoaDon"].Rows.Add(dr);
                 }
             }
@@ -379,7 +388,10 @@ namespace ThuTien.GUI.HanhThu
                         dr["HoTen"] = item.Cells["HoTen_CQ"].Value;
                         dr["DiaChi"] = item.Cells["DiaChi_CQ"].Value;
                         dr["MLT"] = item.Cells["MLT_CQ"].Value.ToString().Insert(4, " ").Insert(2, " ");
-                        dr["NhanVien"] = CNguoiDung.HoTen;
+                        if (CNguoiDung.ToTruong)
+                            dr["NhanVien"] = ((TT_NguoiDung)cmbNhanVien.SelectedItem).HoTen;
+                        else
+                            dr["NhanVien"] = CNguoiDung.HoTen;
                         dsBaoCao.Tables["DSHoaDon"].Rows.Add(dr);
                     }
                 }

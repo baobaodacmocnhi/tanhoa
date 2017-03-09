@@ -391,7 +391,7 @@ namespace ThuTien.GUI.ToTruong
                         if (!string.IsNullOrEmpty(item["CreateBy"].ToString()))
                             dr["NhanVienDN"] = _cNguoiDung.GetDienThoaiByMaND(int.Parse(item["CreateBy"].ToString()));
                         if (!string.IsNullOrEmpty(item["MaNV_DongNuoc"].ToString()))
-                            dr["NhanVienDN"] = _cNguoiDung.GetDienThoaiByMaND(int.Parse(item["MaNV_DongNuoc"].ToString()));
+                            dr["NhanVienDN"] +=" hoặc "+ _cNguoiDung.GetDienThoaiByMaND(int.Parse(item["MaNV_DongNuoc"].ToString()));
                         if (chkChuKy.Checked)
                             dr["ChuKy"] = true;
 

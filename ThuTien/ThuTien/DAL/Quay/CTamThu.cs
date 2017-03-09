@@ -163,7 +163,7 @@ namespace ThuTien.DAL.Quay
                         from itemtableDN in tableDN.DefaultIfEmpty()
                         join itemNH in _db.NGANHANGs on itemTT.MaNH equals itemNH.ID_NGANHANG into tableNH
                         from itemtableNH in tableNH.DefaultIfEmpty()
-                        where itemTT.Xoa==false&& itemTT.CreateDate.Value.Date >= TuNgay.Date && itemTT.CreateDate.Value.Date <= DenNgay.Date && itemTT.ChuyenKhoan == ChuyenKhoan
+                        where itemTT.CreateDate.Value.Date >= TuNgay.Date && itemTT.CreateDate.Value.Date <= DenNgay.Date && itemTT.ChuyenKhoan == ChuyenKhoan
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {
