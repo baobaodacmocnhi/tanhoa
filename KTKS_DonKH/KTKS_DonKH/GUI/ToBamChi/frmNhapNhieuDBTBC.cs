@@ -49,7 +49,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
             cmbLD.SelectedIndex = -1;
 
             DataGridViewComboBoxColumn cmbColumn = (DataGridViewComboBoxColumn)dgvDanhBo.Columns["NguoiDi"];
-            cmbColumn.DataSource = _cTaiKhoan.LoadDSTaiKhoanTXL();
+            cmbColumn.DataSource = _cTaiKhoan.GetDS_KTXM("TBC");
             cmbColumn.DisplayMember = "HoTen";
             cmbColumn.ValueMember = "MaU";
         }
@@ -171,7 +171,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
                                 entity.ID_NoiChuyen = 1;
                                 entity.NoiChuyen = "Kiểm Tra Xác Minh";
                                 entity.ID_NoiNhan = int.Parse(item.Cells["NguoiDi"].Value.ToString());
-                                entity.NoiNhan = _cTaiKhoan.getHoTenUserbyID(int.Parse(item.Cells["NguoiDi"].Value.ToString()));
+                                entity.NoiNhan = _cTaiKhoan.GetHoTen(int.Parse(item.Cells["NguoiDi"].Value.ToString()));
                                 if (item.Cells["GhiChu"].Value != null)
                                 entity.GhiChu = item.Cells["GhiChu"].Value.ToString();
                                 entity.MaDonTBC = dontbc.MaDon;

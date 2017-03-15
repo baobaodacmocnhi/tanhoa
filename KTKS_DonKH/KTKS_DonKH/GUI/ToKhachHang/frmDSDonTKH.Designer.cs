@@ -177,7 +177,7 @@
             this.btnInDSDonKH.TabIndex = 6;
             this.btnInDSDonKH.Text = "In DS";
             this.btnInDSDonKH.UseVisualStyleBackColor = true;
-            this.btnInDSDonKH.Click += new System.EventHandler(this.btnInDSDonKH_Click);
+            this.btnInDSDonKH.Click += new System.EventHandler(this.btnInDS_Click);
             // 
             // panel_KhoangThoiGian
             // 

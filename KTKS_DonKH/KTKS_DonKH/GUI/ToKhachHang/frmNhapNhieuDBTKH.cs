@@ -52,7 +52,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             cmbLD.SelectedIndex = -1;
 
             DataGridViewComboBoxColumn cmbColumn = (DataGridViewComboBoxColumn)dgvDanhBoChuyenKT.Columns["NguoiDi"];
-            cmbColumn.DataSource = _cTaiKhoan.LoadDSTaiKhoanTKH();
+            cmbColumn.DataSource = _cTaiKhoan.GetDS_KTXM("TKH");
             cmbColumn.DisplayMember = "HoTen";
             cmbColumn.ValueMember = "MaU";
 
@@ -66,7 +66,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             this.dgvDanhBoChuyenVanPhong.Controls.Add(cellDateTimePickerVP);
 
             DataGridViewComboBoxColumn cmbColumnVP = (DataGridViewComboBoxColumn)dgvDanhBoChuyenVanPhong.Columns["NguoiDiVP"];
-            cmbColumnVP.DataSource = _cTaiKhoan.LoadDSTaiKhoanTVP();
+            cmbColumnVP.DataSource = _cTaiKhoan.GetDS_ThuKy("TVP");
             cmbColumnVP.DisplayMember = "HoTen";
             cmbColumnVP.ValueMember = "MaU";
         }
@@ -227,7 +227,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                                     entity.ID_NoiChuyen = 1;
                                     entity.NoiChuyen = "Kiểm Tra Xác Minh";
                                     entity.ID_NoiNhan = int.Parse(item.Cells["NguoiDi"].Value.ToString());
-                                    entity.NoiNhan = _cTaiKhoan.getHoTenUserbyID(int.Parse(item.Cells["NguoiDi"].Value.ToString()));
+                                    entity.NoiNhan = _cTaiKhoan.GetHoTen(int.Parse(item.Cells["NguoiDi"].Value.ToString()));
                                     if (item.Cells["GhiChu"].Value != null)
                                     entity.GhiChu = item.Cells["GhiChu"].Value.ToString();
                                     entity.MaDon = donkh.MaDon;
@@ -315,7 +315,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                                         entity.ID_NoiChuyen = 4;
                                         entity.NoiChuyen = "Tổ Văn Phòng";
                                         entity.ID_NoiNhan = int.Parse(item.Cells["NguoiDiVP"].Value.ToString());
-                                        entity.NoiNhan = _cTaiKhoan.getHoTenUserbyID(int.Parse(item.Cells["NguoiDiVP"].Value.ToString()));
+                                        entity.NoiNhan = _cTaiKhoan.GetHoTen(int.Parse(item.Cells["NguoiDiVP"].Value.ToString()));
                                         if (item.Cells["GhiChuVP"].Value != null)
                                         entity.GhiChu = item.Cells["GhiChuVP"].Value.ToString();
                                         entity.MaDon = donkh.MaDon;

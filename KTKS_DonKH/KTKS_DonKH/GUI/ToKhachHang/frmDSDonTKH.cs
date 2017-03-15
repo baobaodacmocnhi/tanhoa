@@ -63,7 +63,34 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             dgvDSDonKH.DataSource = null;
         }
 
-        private void btnInDSDonKH_Click(object sender, EventArgs e)
+        private void btnXem_Click(object sender, EventArgs e)
+        {
+            switch (cmbTimTheo.SelectedItem.ToString())
+            {
+                case "Mã Đơn":
+                    if (txtNoiDungTimKiem.Text.Trim() != ""&&txtNoiDungTimKiem2.Text.Trim() != "")
+                        dgvDSDonKH.DataSource = _cDonKH.GetDS(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                    else
+                        if (txtNoiDungTimKiem.Text.Trim() != "")
+                            dgvDSDonKH.DataSource = _cDonKH.GetDS(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                    break;
+                case "Danh Bộ":
+                    if (txtNoiDungTimKiem.Text.Trim() != "")
+                        dgvDSDonKH.DataSource = _cDonKH.GetDSByDanhBo(txtNoiDungTimKiem.Text.Trim());
+                    break;
+                case "Số Công Văn":
+                    if (txtNoiDungTimKiem.Text.Trim() != "")
+                        dgvDSDonKH.DataSource = _cDonKH.GetDSBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper());
+                    break;
+                case "Ngày":
+                    dgvDSDonKH.DataSource = _cDonKH.GetDS(dateTu.Value, dateDen.Value);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void btnInDS_Click(object sender, EventArgs e)
         {
             DataTable dt = ((DataTable)dgvDSDonKH.DataSource).DefaultView.ToTable();
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
@@ -108,11 +135,36 @@ namespace KTKS_DonKH.GUI.ToKhachHang
 
                 dsBaoCao.Tables["DanhSachDonKH"].Rows.Add(dr);
             }
-            
+
             rptDSDonKH rpt = new rptDSDonKH();
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();
+        }
+
+        private void dgvDSDonKH_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDSDonKH.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvDSDonKH_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (dgvDSDonKH.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
+            {
+                frmNhanDonTKH frm = new frmNhanDonTKH(decimal.Parse(dgvDSDonKH["MaDon", dgvDSDonKH.CurrentRow.Index].Value.ToString()));
+                frm.ShowDialog();
+            }
+        }
+
+        private void dgvDSDonKH_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvDSDonKH.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null && e.Value.ToString().Length > 2)
+            {
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
         }
 
         private void btnInChiTiet_Click(object sender, EventArgs e)
@@ -134,7 +186,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                     if (donkh.NgayChuyen_KTXM != null)
                         dr["NgayChuyen"] = donkh.NgayChuyen_KTXM.Value.ToString("dd/MM/yyyy");
                     if (donkh.NguoiDi_KTXM != null)
-                        dr["GhiChu"] = _cTaiKhoan.getHoTenUserbyID(int.Parse(donkh.NguoiDi_KTXM.Value.ToString()));
+                        dr["GhiChu"] = _cTaiKhoan.GetHoTen(int.Parse(donkh.NguoiDi_KTXM.Value.ToString()));
                     dr["GhiChu"] += ". " + donkh.GhiChuChuyen_KTXM;
 
                     dsBaoCao.Tables["ChiTietDonTXL"].Rows.Add(dr);
@@ -189,58 +241,6 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();
-        }
-
-        private void btnXem_Click(object sender, EventArgs e)
-        {
-            switch (cmbTimTheo.SelectedItem.ToString())
-            {
-                case "Mã Đơn":
-                    if (txtNoiDungTimKiem.Text.Trim() != ""&&txtNoiDungTimKiem2.Text.Trim() != "")
-                        dgvDSDonKH.DataSource = _cDonKH.GetDS(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
-                    else
-                        if (txtNoiDungTimKiem.Text.Trim() != "")
-                            dgvDSDonKH.DataSource = _cDonKH.GetDS(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
-                    break;
-                case "Danh Bộ":
-                    if (txtNoiDungTimKiem.Text.Trim() != "")
-                        dgvDSDonKH.DataSource = _cDonKH.GetDSByDanhBo(txtNoiDungTimKiem.Text.Trim());
-                    break;
-                case "Số Công Văn":
-                    if (txtNoiDungTimKiem.Text.Trim() != "")
-                        dgvDSDonKH.DataSource = _cDonKH.GetDSBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper());
-                    break;
-                case "Ngày":
-                    dgvDSDonKH.DataSource = _cDonKH.GetDS(dateTu.Value, dateDen.Value);
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        private void dgvDSDonKH_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            using (SolidBrush b = new SolidBrush(dgvDSDonKH.RowHeadersDefaultCellStyle.ForeColor))
-            {
-                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
-            }
-        }
-
-        private void dgvDSDonKH_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (dgvDSDonKH.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
-            {
-                frmNhanDonTKH frm = new frmNhanDonTKH(decimal.Parse(dgvDSDonKH["MaDon", dgvDSDonKH.CurrentRow.Index].Value.ToString()));
-                frm.ShowDialog();
-            }
-        }
-
-        private void dgvDSDonKH_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (dgvDSDonKH.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null && e.Value.ToString().Length > 2)
-            {
-                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            }
         }
     }
 }

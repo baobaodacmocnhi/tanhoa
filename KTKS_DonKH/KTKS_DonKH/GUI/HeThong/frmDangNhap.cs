@@ -26,7 +26,7 @@ namespace KTKS_DonKH.GUI.HeThong
             CTaiKhoan _CTaiKhoan = new CTaiKhoan();
             if (_CTaiKhoan.DangNhap(txtTaiKhoan.Text.Trim(), txtMatKhau.Text.Trim()))
             {
-                User nguoidung = _CTaiKhoan.GetByTaiKhoan(txtTaiKhoan.Text.Trim());
+                User nguoidung = _CTaiKhoan.Get(txtTaiKhoan.Text.Trim());
                 if (nguoidung != null)
                 {
                     CPhanQuyenNhom _cPhanQuyenNhom = new CPhanQuyenNhom();

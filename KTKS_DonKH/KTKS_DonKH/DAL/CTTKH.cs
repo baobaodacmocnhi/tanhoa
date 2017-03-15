@@ -7,7 +7,7 @@ using KTKS_DonKH.DAL.QuanTri;
 using System.Windows.Forms;
 using System.IO;
 
-namespace KTKS_DonKH.DAL.CapNhat
+namespace KTKS_DonKH.DAL
 {
     class CTTKH : CDAL
     {

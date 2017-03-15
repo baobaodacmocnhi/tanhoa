@@ -124,7 +124,7 @@ namespace KTKS_DonKH.GUI.QuanTri
                 if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     if (_selectedindex != -1)
                     {
-                        User nguoidung = _cTaiKhoan.GetByID(int.Parse(dgvDSTaiKhoan["MaU", _selectedindex].Value.ToString()));
+                        User nguoidung = _cTaiKhoan.Get(int.Parse(dgvDSTaiKhoan["MaU", _selectedindex].Value.ToString()));
                         ///xóa quan hệ 1 nhiều
                         //_cPhanQuyenNguoiDung.Xoa(nguoidung.TT_PhanQuyenNguoiDungs.ToList());
                         nguoidung.An = true;
@@ -145,7 +145,7 @@ namespace KTKS_DonKH.GUI.QuanTri
             {
                 if (_selectedindex != -1)
                 {
-                    User nguoidung = _cTaiKhoan.GetByID(int.Parse(dgvDSTaiKhoan["MaU", _selectedindex].Value.ToString()));
+                    User nguoidung = _cTaiKhoan.Get(int.Parse(dgvDSTaiKhoan["MaU", _selectedindex].Value.ToString()));
                     nguoidung.HoTen = txtHoTen.Text.Trim();
                     nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
                     nguoidung.MatKhau = txtMatKhau.Text.Trim();
@@ -216,7 +216,7 @@ namespace KTKS_DonKH.GUI.QuanTri
         {
             if (dgvDSTaiKhoan.RowCount>0)
             {
-                User taikhoan = _cTaiKhoan.GetByID(int.Parse(dgvDSTaiKhoan["MaU", e.RowIndex].Value.ToString()));
+                User taikhoan = _cTaiKhoan.Get(int.Parse(dgvDSTaiKhoan["MaU", e.RowIndex].Value.ToString()));
                 taikhoan.ToKH = bool.Parse(dgvDSTaiKhoan["ToKH", e.RowIndex].Value.ToString());
                 taikhoan.ToXL = bool.Parse(dgvDSTaiKhoan["ToXL", e.RowIndex].Value.ToString());
                 taikhoan.ToBC = bool.Parse(dgvDSTaiKhoan["ToBC", e.RowIndex].Value.ToString());

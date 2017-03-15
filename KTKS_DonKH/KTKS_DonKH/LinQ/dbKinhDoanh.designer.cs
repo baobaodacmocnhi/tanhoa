@@ -87,9 +87,6 @@ namespace KTKS_DonKH.LinQ
     partial void InsertDCBD(DCBD instance);
     partial void UpdateDCBD(DCBD instance);
     partial void DeleteDCBD(DCBD instance);
-    partial void InsertDetailRole(DetailRole instance);
-    partial void UpdateDetailRole(DetailRole instance);
-    partial void DeleteDetailRole(DetailRole instance);
     partial void InsertDonDienThoai(DonDienThoai instance);
     partial void UpdateDonDienThoai(DonDienThoai instance);
     partial void DeleteDonDienThoai(DonDienThoai instance);
@@ -180,9 +177,6 @@ namespace KTKS_DonKH.LinQ
     partial void InsertPhongBanDoi(PhongBanDoi instance);
     partial void UpdatePhongBanDoi(PhongBanDoi instance);
     partial void DeletePhongBanDoi(PhongBanDoi instance);
-    partial void InsertRole(Role instance);
-    partial void UpdateRole(Role instance);
-    partial void DeleteRole(Role instance);
     partial void InsertTBKetQuaYCCatDM(TBKetQuaYCCatDM instance);
     partial void UpdateTBKetQuaYCCatDM(TBKetQuaYCCatDM instance);
     partial void DeleteTBKetQuaYCCatDM(TBKetQuaYCCatDM instance);
@@ -391,14 +385,6 @@ namespace KTKS_DonKH.LinQ
 			get
 			{
 				return this.GetTable<DCBD>();
-			}
-		}
-		
-		public System.Data.Linq.Table<DetailRole> DetailRoles
-		{
-			get
-			{
-				return this.GetTable<DetailRole>();
 			}
 		}
 		
@@ -639,14 +625,6 @@ namespace KTKS_DonKH.LinQ
 			get
 			{
 				return this.GetTable<PhongBanDoi>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Role> Roles
-		{
-			get
-			{
-				return this.GetTable<Role>();
 			}
 		}
 		
@@ -15406,222 +15384,6 @@ namespace KTKS_DonKH.LinQ
 		{
 			this.SendPropertyChanging();
 			entity.DCBD = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.DetailRoles")]
-	public partial class DetailRole : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _MaU;
-		
-		private int _MaR;
-		
-		private bool _QuyenXem;
-		
-		private bool _QuyenCapNhat;
-		
-		private EntityRef<Role> _Role;
-		
-		private EntityRef<User> _User;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMaUChanging(int value);
-    partial void OnMaUChanged();
-    partial void OnMaRChanging(int value);
-    partial void OnMaRChanged();
-    partial void OnQuyenXemChanging(bool value);
-    partial void OnQuyenXemChanged();
-    partial void OnQuyenCapNhatChanging(bool value);
-    partial void OnQuyenCapNhatChanged();
-    #endregion
-		
-		public DetailRole()
-		{
-			this._Role = default(EntityRef<Role>);
-			this._User = default(EntityRef<User>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaU", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int MaU
-		{
-			get
-			{
-				return this._MaU;
-			}
-			set
-			{
-				if ((this._MaU != value))
-				{
-					if (this._User.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnMaUChanging(value);
-					this.SendPropertyChanging();
-					this._MaU = value;
-					this.SendPropertyChanged("MaU");
-					this.OnMaUChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaR", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int MaR
-		{
-			get
-			{
-				return this._MaR;
-			}
-			set
-			{
-				if ((this._MaR != value))
-				{
-					if (this._Role.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnMaRChanging(value);
-					this.SendPropertyChanging();
-					this._MaR = value;
-					this.SendPropertyChanged("MaR");
-					this.OnMaRChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuyenXem", DbType="Bit NOT NULL")]
-		public bool QuyenXem
-		{
-			get
-			{
-				return this._QuyenXem;
-			}
-			set
-			{
-				if ((this._QuyenXem != value))
-				{
-					this.OnQuyenXemChanging(value);
-					this.SendPropertyChanging();
-					this._QuyenXem = value;
-					this.SendPropertyChanged("QuyenXem");
-					this.OnQuyenXemChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuyenCapNhat", DbType="Bit NOT NULL")]
-		public bool QuyenCapNhat
-		{
-			get
-			{
-				return this._QuyenCapNhat;
-			}
-			set
-			{
-				if ((this._QuyenCapNhat != value))
-				{
-					this.OnQuyenCapNhatChanging(value);
-					this.SendPropertyChanging();
-					this._QuyenCapNhat = value;
-					this.SendPropertyChanged("QuyenCapNhat");
-					this.OnQuyenCapNhatChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Role_DetailRole", Storage="_Role", ThisKey="MaR", OtherKey="MaR", IsForeignKey=true)]
-		public Role Role
-		{
-			get
-			{
-				return this._Role.Entity;
-			}
-			set
-			{
-				Role previousValue = this._Role.Entity;
-				if (((previousValue != value) 
-							|| (this._Role.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Role.Entity = null;
-						previousValue.DetailRoles.Remove(this);
-					}
-					this._Role.Entity = value;
-					if ((value != null))
-					{
-						value.DetailRoles.Add(this);
-						this._MaR = value.MaR;
-					}
-					else
-					{
-						this._MaR = default(int);
-					}
-					this.SendPropertyChanged("Role");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_DetailRole", Storage="_User", ThisKey="MaU", OtherKey="MaU", IsForeignKey=true)]
-		public User User
-		{
-			get
-			{
-				return this._User.Entity;
-			}
-			set
-			{
-				User previousValue = this._User.Entity;
-				if (((previousValue != value) 
-							|| (this._User.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._User.Entity = null;
-						previousValue.DetailRoles.Remove(this);
-					}
-					this._User.Entity = value;
-					if ((value != null))
-					{
-						value.DetailRoles.Add(this);
-						this._MaU = value.MaU;
-					}
-					else
-					{
-						this._MaU = default(int);
-					}
-					this.SendPropertyChanged("User");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 	
@@ -31220,120 +30982,6 @@ namespace KTKS_DonKH.LinQ
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Roles")]
-	public partial class Role : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _MaR;
-		
-		private string _TenR;
-		
-		private EntitySet<DetailRole> _DetailRoles;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMaRChanging(int value);
-    partial void OnMaRChanged();
-    partial void OnTenRChanging(string value);
-    partial void OnTenRChanged();
-    #endregion
-		
-		public Role()
-		{
-			this._DetailRoles = new EntitySet<DetailRole>(new Action<DetailRole>(this.attach_DetailRoles), new Action<DetailRole>(this.detach_DetailRoles));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaR", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int MaR
-		{
-			get
-			{
-				return this._MaR;
-			}
-			set
-			{
-				if ((this._MaR != value))
-				{
-					this.OnMaRChanging(value);
-					this.SendPropertyChanging();
-					this._MaR = value;
-					this.SendPropertyChanged("MaR");
-					this.OnMaRChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenR", DbType="NVarChar(50)")]
-		public string TenR
-		{
-			get
-			{
-				return this._TenR;
-			}
-			set
-			{
-				if ((this._TenR != value))
-				{
-					this.OnTenRChanging(value);
-					this.SendPropertyChanging();
-					this._TenR = value;
-					this.SendPropertyChanged("TenR");
-					this.OnTenRChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Role_DetailRole", Storage="_DetailRoles", ThisKey="MaR", OtherKey="MaR")]
-		public EntitySet<DetailRole> DetailRoles
-		{
-			get
-			{
-				return this._DetailRoles;
-			}
-			set
-			{
-				this._DetailRoles.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_DetailRoles(DetailRole entity)
-		{
-			this.SendPropertyChanging();
-			entity.Role = this;
-		}
-		
-		private void detach_DetailRoles(DetailRole entity)
-		{
-			this.SendPropertyChanging();
-			entity.Role = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBKetQuaYCCatDM")]
 	public partial class TBKetQuaYCCatDM : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -34305,8 +33953,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _ModifyBy;
 		
-		private EntitySet<DetailRole> _DetailRoles;
-		
 		private EntitySet<PhanQuyenNguoiDung> _PhanQuyenNguoiDungs;
 		
 		private EntityRef<Nhom> _Nhom;
@@ -34371,7 +34017,6 @@ namespace KTKS_DonKH.LinQ
 		
 		public User()
 		{
-			this._DetailRoles = new EntitySet<DetailRole>(new Action<DetailRole>(this.attach_DetailRoles), new Action<DetailRole>(this.detach_DetailRoles));
 			this._PhanQuyenNguoiDungs = new EntitySet<PhanQuyenNguoiDung>(new Action<PhanQuyenNguoiDung>(this.attach_PhanQuyenNguoiDungs), new Action<PhanQuyenNguoiDung>(this.detach_PhanQuyenNguoiDungs));
 			this._Nhom = default(EntityRef<Nhom>);
 			this._To = default(EntityRef<To>);
@@ -34886,19 +34531,6 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_DetailRole", Storage="_DetailRoles", ThisKey="MaU", OtherKey="MaU")]
-		public EntitySet<DetailRole> DetailRoles
-		{
-			get
-			{
-				return this._DetailRoles;
-			}
-			set
-			{
-				this._DetailRoles.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_PhanQuyenNguoiDung", Storage="_PhanQuyenNguoiDungs", ThisKey="MaU", OtherKey="MaND")]
 		public EntitySet<PhanQuyenNguoiDung> PhanQuyenNguoiDungs
 		{
@@ -34998,18 +34630,6 @@ namespace KTKS_DonKH.LinQ
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_DetailRoles(DetailRole entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = this;
-		}
-		
-		private void detach_DetailRoles(DetailRole entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = null;
 		}
 		
 		private void attach_PhanQuyenNguoiDungs(PhanQuyenNguoiDung entity)
