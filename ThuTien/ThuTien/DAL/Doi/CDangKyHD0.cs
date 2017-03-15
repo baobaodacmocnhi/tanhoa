@@ -64,7 +64,12 @@ namespace ThuTien.DAL.Doi
             return _db.TT_DangKyHD0s.Any(item => item.DanhBo == DanhBo);
         }
 
-        public TT_DangKyHD0 GetByID(string DanhBo)
+        public string GetHoTen(string DanhBo)
+        {
+            return _db.TT_NguoiDungs.SingleOrDefault(item => item.MaND == _db.TT_DangKyHD0s.SingleOrDefault(item2 => item2.DanhBo == DanhBo).MaNV).HoTen;
+        }
+
+        public TT_DangKyHD0 Get(string DanhBo)
         {
             return _db.TT_DangKyHD0s.SingleOrDefault(item => item.DanhBo == DanhBo);
         }

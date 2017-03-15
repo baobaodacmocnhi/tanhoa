@@ -470,10 +470,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                         DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
 
                         foreach (DataRow item in dtExcel.Rows)
-                            if (item[0].ToString().Length == 11 && !_cDLKH.CheckExistDanhBo(item[0].ToString()))
+                            if (item[0].ToString().Replace(" ", "").Length == 11 && !_cDLKH.CheckExistDanhBo(item[0].ToString().Replace(" ", "")))
                             {
                                 TT_DuLieuKhachHang_DanhBo dlkh = new TT_DuLieuKhachHang_DanhBo();
-                                dlkh.DanhBo = item[0].ToString();
+                                dlkh.DanhBo = item[0].ToString().Replace(" ", "");
                                 dlkh.HoTen = item[1].ToString();
                                 dlkh.SoTaiKhoan = item[2].ToString();
                                 _cDLKH.Them(dlkh);

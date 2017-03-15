@@ -287,13 +287,13 @@ namespace ThuTien.GUI.Doi
                     MessageBox.Show("Chưa chọn Nhân Viên", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (_cDangKyHD0.CheckExist(txtDanhBoDK.Text.Trim()))
+                if (_cDangKyHD0.CheckExist(txtDanhBoDK.Text.Trim().Replace(" ", ""))==true)
                 {
-                    MessageBox.Show("Danh Bộ đã được đăng ký", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(_cDangKyHD0.GetHoTen(txtDanhBoDK.Text.Trim().Replace(" ", "")) + " đã đăng ký " + txtDanhBoDK.Text.Trim().Replace(" ", ""), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
                 TT_DangKyHD0 dangky = new TT_DangKyHD0();
-                dangky.DanhBo = txtDanhBoDK.Text.Trim();
+                dangky.DanhBo = txtDanhBoDK.Text.Trim().Replace(" ", "");
                 dangky.MaNV = int.Parse(cmbNhanVienDK.SelectedValue.ToString());
 
                 if (_cDangKyHD0.Them(dangky))
@@ -314,7 +314,7 @@ namespace ThuTien.GUI.Doi
                 {
                     foreach (DataGridViewRow item in dgvDanhBoDK.SelectedRows)
                     {
-                        TT_DangKyHD0 dangky = _cDangKyHD0.GetByID(item.Cells["DanhBo_DK"].Value.ToString());
+                        TT_DangKyHD0 dangky = _cDangKyHD0.Get(item.Cells["DanhBo_DK"].Value.ToString());
                         _cDangKyHD0.Xoa(dangky);
                     }
                     btnXemDK.PerformClick();
@@ -513,13 +513,20 @@ namespace ThuTien.GUI.Doi
                             DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
 
                             foreach (DataRow item in dtExcel.Rows)
-                                if (item[0].ToString().Length == 11 && !_cDangKyHD0.CheckExist(item[0].ToString()))
+                                if (item[0].ToString().Replace(" ", "").Length == 11)
                                 {
-                                    TT_DangKyHD0 dangky = new TT_DangKyHD0();
-                                    dangky.DanhBo = item[0].ToString();
-                                    dangky.MaNV = int.Parse(cmbNhanVienDK.SelectedValue.ToString());
+                                    if (_cDangKyHD0.CheckExist(item[0].ToString().Replace(" ", ""))==true)
+                                    {
+                                        MessageBox.Show(_cDangKyHD0.GetHoTen(item[0].ToString().Replace(" ", "")) + " đã đăng ký " + item[0].ToString().Replace(" ", ""), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    else
+                                    {
+                                        TT_DangKyHD0 dangky = new TT_DangKyHD0();
+                                        dangky.DanhBo = item[0].ToString().Replace(" ", "");
+                                        dangky.MaNV = int.Parse(cmbNhanVienDK.SelectedValue.ToString());
 
-                                    _cDangKyHD0.Them(dangky);
+                                        _cDangKyHD0.Them(dangky);
+                                    }
                                 }
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             btnXem.PerformClick();

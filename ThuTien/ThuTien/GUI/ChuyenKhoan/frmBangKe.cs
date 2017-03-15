@@ -58,7 +58,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                             DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
 
                             foreach (DataRow item in dtExcel.Rows)
-                                if ((string.IsNullOrEmpty(item[0].ToString()) || item[0].ToString().Length == 11) && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
+                                if ((string.IsNullOrEmpty(item[0].ToString()) || item[0].ToString().Replace(" ", "").Length == 11) && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
                                     using (var scope = new TransactionScope())
                                     {
                                         //if (item[0].ToString().Length == 11 && _cBangKe.CheckExist(item[0].ToString(), DateTime.Now))
@@ -67,7 +67,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                         //    continue;
                                         //}
                                         TT_BangKe bangke = new TT_BangKe();
-                                        bangke.DanhBo = item[0].ToString().Trim();
+                                        bangke.DanhBo = item[0].ToString().Trim().Replace(" ","");
                                         bangke.SoTien = int.Parse(item[1].ToString().Trim());
                                         bangke.MaNH = _cNganHang.GetMaNHByKyHieu(item[2].ToString().Trim());
                                         bangke.CreateDate = DateTime.Now;

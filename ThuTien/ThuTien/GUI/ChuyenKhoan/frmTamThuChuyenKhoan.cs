@@ -293,10 +293,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                 ///kiểm tra danh bộ chặn tiền dư
                 string str = "";
                 foreach (DataRow item in dtExcel.Rows)
-                    if (item[0].ToString().Length == 11 && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
-                        if (_cHoaDon.CheckKhoaTienDuByDanhBo(item[0].ToString()))
+                    if (item[0].ToString().Replace(" ", "").Length == 11 && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
+                        if (_cHoaDon.CheckKhoaTienDuByDanhBo(item[0].ToString().Replace(" ", "")))
                         {
-                            str += item[0].ToString() + "\n";
+                            str += item[0].ToString().Replace(" ", "") + "\n";
                         }
                 if (!string.IsNullOrWhiteSpace(str))
                 {
@@ -306,18 +306,18 @@ namespace ThuTien.GUI.ChuyenKhoan
 
                 DataTable dt = new DataTable();
                 foreach (DataRow item in dtExcel.Rows)
-                    if (item[0].ToString().Length == 11 && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
+                    if (item[0].ToString().Replace(" ", "").Length == 11 && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
                     {
-                        dt.Merge(_cHoaDon.GetDSTonByDanhBo(item[0].ToString()));
+                        dt.Merge(_cHoaDon.GetDSTonByDanhBo(item[0].ToString().Replace(" ", "")));
                     }
                 dgvHoaDon.DataSource = dt;
 
                 foreach (DataRow itemExcel in dtExcel.Rows)
-                    if (itemExcel[0].ToString().Length == 11 && !string.IsNullOrEmpty(itemExcel[1].ToString()) && !string.IsNullOrEmpty(itemExcel[2].ToString()))
+                    if (itemExcel[0].ToString().Replace(" ", "").Length == 11 && !string.IsNullOrEmpty(itemExcel[1].ToString()) && !string.IsNullOrEmpty(itemExcel[2].ToString()))
                     {
                         string ChenhLech = "";
                         int SoTien = 0;
-                        DataRow[] dr = dt.Select("DanhBo like '" + itemExcel[0].ToString() + "'");
+                        DataRow[] dr = dt.Select("DanhBo like '" + itemExcel[0].ToString().Replace(" ", "") + "'");
                         foreach (DataRow itemRow in dr)
                         {
                             SoTien += int.Parse(itemRow["TongCong"].ToString());
@@ -326,7 +326,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         {
                             ChenhLech = "Dư: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (int.Parse(itemExcel[1].ToString()) - SoTien));
                             foreach (DataGridViewRow itemRow in dgvHoaDon.Rows)
-                                if (itemRow.Cells["DanhBo"].Value.ToString() == itemExcel[0].ToString())
+                                if (itemRow.Cells["DanhBo"].Value.ToString() == itemExcel[0].ToString().Replace(" ", ""))
                                 {
                                     itemRow.Cells["ChenhLech"].Value = ChenhLech;
                                     itemRow.DefaultCellStyle.BackColor = Color.GreenYellow;
@@ -338,7 +338,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                             {
                                 ChenhLech = "Thiếu: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (int.Parse(itemExcel[1].ToString()) - SoTien));
                                 foreach (DataGridViewRow itemRow in dgvHoaDon.Rows)
-                                    if (itemRow.Cells["DanhBo"].Value.ToString() == itemExcel[0].ToString())
+                                    if (itemRow.Cells["DanhBo"].Value.ToString() == itemExcel[0].ToString().Replace(" ", ""))
                                     {
                                         itemRow.Cells["ChenhLech"].Value = ChenhLech;
                                         itemRow.DefaultCellStyle.BackColor = Color.Orange;
@@ -348,7 +348,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                             else
                             {
                                 foreach (DataGridViewRow itemRow in dgvHoaDon.Rows)
-                                    if (itemRow.Cells["DanhBo"].Value.ToString() == itemExcel[0].ToString())
+                                    if (itemRow.Cells["DanhBo"].Value.ToString() == itemExcel[0].ToString().Replace(" ", ""))
                                     {
                                         itemRow.Cells["NganHang"].Value = _cNganHang.GetMaNHByKyHieu(itemExcel[2].ToString());
                                     }

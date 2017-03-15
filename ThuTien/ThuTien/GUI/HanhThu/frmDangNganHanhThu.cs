@@ -15,6 +15,7 @@ using ThuTien.BaoCao;
 using ThuTien.GUI.BaoCao;
 using ThuTien.BaoCao.NhanVien;
 using System.Transactions;
+using ThuTien.LinQ;
 
 namespace ThuTien.GUI.HanhThu
 {
@@ -397,7 +398,10 @@ namespace ThuTien.GUI.HanhThu
                     dr["TongCong"] = item.Cells["TongCong_DT"].Value;
                     dr["SoPhatHanh"] = item.Cells["SoPhatHanh_DT"].Value;
                     dr["SoHoaDon"] = item.Cells["SoHoaDon_DT"].Value;
-                    dr["NhanVien"] = CNguoiDung.HoTen;
+                    if (CNguoiDung.ToTruong)
+                        dr["NhanVien"] = ((TT_NguoiDung)cmbNhanVien.SelectedItem).HoTen;
+                    else
+                        dr["NhanVien"] = CNguoiDung.HoTen;
                     ds.Tables["DSHoaDon"].Rows.Add(dr);
                 }
             }
@@ -414,7 +418,10 @@ namespace ThuTien.GUI.HanhThu
                         dr["TongCong"] = item.Cells["TongCong_CT"].Value;
                         dr["SoPhatHanh"] = item.Cells["SoPhatHanh_CT"].Value;
                         dr["SoHoaDon"] = item.Cells["SoHoaDon_CT"].Value;
-                        dr["NhanVien"] = CNguoiDung.HoTen;
+                        if (CNguoiDung.ToTruong)
+                            dr["NhanVien"] = ((TT_NguoiDung)cmbNhanVien.SelectedItem).HoTen;
+                        else
+                            dr["NhanVien"] = CNguoiDung.HoTen;
                         ds.Tables["DSHoaDon"].Rows.Add(dr);
                     }
                 }
@@ -448,7 +455,10 @@ namespace ThuTien.GUI.HanhThu
                 dr["TongThueGTGT"] = item["TongThueGTGT"].ToString();
                 dr["TongPhiBVMT"] = item["TongPhiBVMT"].ToString();
                 dr["TongCong"] = item["TongCong"].ToString();
-                dr["NhanVien"] = CNguoiDung.HoTen;
+                if (CNguoiDung.ToTruong)
+                    dr["NhanVien"] = ((TT_NguoiDung)cmbNhanVien.SelectedItem).HoTen;
+                else
+                    dr["NhanVien"] = CNguoiDung.HoTen;
                 ds.Tables["PhieuDangNgan"].Rows.Add(dr);
             }
 
