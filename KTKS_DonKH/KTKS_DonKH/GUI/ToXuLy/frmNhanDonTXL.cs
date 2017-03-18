@@ -42,6 +42,67 @@ namespace KTKS_DonKH.GUI.ToXuLy
             InitializeComponent();
         }
 
+        private void frmNhanDonTXL_Load(object sender, EventArgs e)
+        {
+            dgvLichSuDon.AutoGenerateColumns = false;
+            dgvLichSuDonTu.AutoGenerateColumns = false;
+
+            cmbLD.DataSource = _cLoaiDonTXL.GetDS();
+            cmbLD.DisplayMember = "TenLD";
+            cmbLD.ValueMember = "MaLD";
+            cmbLD.SelectedIndex = -1;
+
+            cmbNoiChuyen.DataSource = _cNoiChuyen.GetDS("TXL");
+            cmbNoiChuyen.DisplayMember = "Name";
+            cmbNoiChuyen.ValueMember = "ID";
+            cmbNoiChuyen.SelectedIndex = -1;
+
+            _flagFirst = true;
+
+            DataTable dt = new DataTable();
+            dt = _cTaiKhoan.GetDS_KTXM("TXL");
+            dt.TableName = "1";//Kiểm Tra Xác Minh
+            _dsNoiChuyen.Tables.Add(dt);
+            ///
+            dt = new DataTable();
+            dt = _cTaiKhoan.GetDS_ThuKy("TKH");
+            dt.TableName = "2";//Tổ Khách Hàng
+            _dsNoiChuyen.Tables.Add(dt);
+            ///
+            dt = new DataTable();
+            dt = _cTaiKhoan.GetDS_ThuKy("TXL");
+            dt.TableName = "3";//Tổ Xử Lý
+            _dsNoiChuyen.Tables.Add(dt);
+            ///
+            dt = new DataTable();
+            dt = _cTaiKhoan.GetDS_ThuKy("TBC");
+            dt.TableName = "4";//Tổ Bấm Chì
+            _dsNoiChuyen.Tables.Add(dt);
+            ///
+            dt = new DataTable();
+            dt = _cTaiKhoan.GetDS_ThuKy("TVP");
+            dt.TableName = "5";//Tổ Văn Phòng
+            _dsNoiChuyen.Tables.Add(dt);
+            ///
+            dt = new DataTable();
+            dt = _cPhongBanDoi.GetDS();
+            dt.TableName = "6";//Phòng Ban Đội Khác
+            _dsNoiChuyen.Tables.Add(dt);
+            ///
+            dt = new DataTable();
+            dt = _cNoiChuyen.GetDS_CT(10);
+            dt.TableName = "10";//Chuyên Đề Định Mức
+            _dsNoiChuyen.Tables.Add(dt);
+
+            if (_MaDon != 0)
+            {
+                txtMaDon.Text = _MaDon.ToString();
+                KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
+
+                txtMaDon_KeyPress(sender, arg);
+            }
+        }
+
         public void LoadTTKH(HOADON hoadon)
         {
             txtHopDong.Text = hoadon.HOPDONG;
@@ -90,62 +151,6 @@ namespace KTKS_DonKH.GUI.ToXuLy
             txtDienThoai.Text = "";
             _hoadon = null;
             _dontxl = null;
-        }
-
-        private void frmNhanDonTXL_Load(object sender, EventArgs e)
-        {
-            dgvLichSuDon.AutoGenerateColumns = false;
-            dgvLichSuDonTu.AutoGenerateColumns = false;
-
-            cmbLD.DataSource = _cLoaiDonTXL.GetDS();
-            cmbLD.DisplayMember = "TenLD";
-            cmbLD.ValueMember = "MaLD";
-            cmbLD.SelectedIndex = -1;
-
-            cmbNoiChuyen.DataSource = _cNoiChuyen.GetDS();
-            cmbNoiChuyen.DisplayMember = "Name";
-            cmbNoiChuyen.ValueMember = "ID";
-            cmbNoiChuyen.SelectedIndex = -1;
-
-            _flagFirst = true;
-
-            DataTable dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_KTXM("TXL");
-            dt.TableName = "1";//Kiểm Tra Xác Minh
-            _dsNoiChuyen.Tables.Add(dt);
-            ///
-            dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_ThuKy("TKH");
-            dt.TableName = "2";//Tổ Khách Hàng
-            _dsNoiChuyen.Tables.Add(dt);
-            ///
-            dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_ThuKy("TXL");
-            dt.TableName = "3";//Tổ Xử Lý
-            _dsNoiChuyen.Tables.Add(dt);
-            ///
-            dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_ThuKy("TBC");
-            dt.TableName = "4";//Tổ Bấm Chì
-            _dsNoiChuyen.Tables.Add(dt);
-            ///
-            dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_ThuKy("TVP");
-            dt.TableName = "5";//Tổ Văn Phòng
-            _dsNoiChuyen.Tables.Add(dt);
-            ///
-            dt = new DataTable();
-            dt = _cPhongBanDoi.GetDS();
-            dt.TableName = "6";//Phòng Ban Đội Khác
-            _dsNoiChuyen.Tables.Add(dt);
-
-            if (_MaDon != 0)
-            {
-                txtMaDon.Text = _MaDon.ToString();
-                KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
-
-                txtMaDon_KeyPress(sender, arg);
-            }
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
@@ -380,25 +385,22 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             if (_flagFirst == true)
             {
-                //chkcmbNoiNhan.Properties.Items.Clear();
                 if (cmbNoiChuyen.SelectedIndex != -1)
+                {
                     switch (cmbNoiChuyen.SelectedValue.ToString())
                     {
                         case "1"://Kiểm Tra Xác Minh
                             chkcmbNoiNhan.Properties.DataSource = _dsNoiChuyen.Tables["1"];
-                            //chkcmbNoiNhan.Properties.DataSource = _cTaiKhoan.GetDS_KTXM_TXL();
                             chkcmbNoiNhan.Properties.DisplayMember = "HoTen";
                             chkcmbNoiNhan.Properties.ValueMember = "MaU";
                             break;
                         case "2"://Tổ Khách Hàng
                             chkcmbNoiNhan.Properties.DataSource = _dsNoiChuyen.Tables["2"];
-                            //chkcmbNoiNhan.Properties.DataSource = _cTaiKhoan.GetDS_TKH();
                             chkcmbNoiNhan.Properties.DisplayMember = "HoTen";
                             chkcmbNoiNhan.Properties.ValueMember = "MaU";
                             break;
                         case "3"://Tổ Xử Lý
                             chkcmbNoiNhan.Properties.DataSource = _dsNoiChuyen.Tables["3"];
-                            //chkcmbNoiNhan.Properties.DataSource = _cTaiKhoan.GetDS_TXL();
                             chkcmbNoiNhan.Properties.DisplayMember = "HoTen";
                             chkcmbNoiNhan.Properties.ValueMember = "MaU";
                             break;
@@ -409,25 +411,24 @@ namespace KTKS_DonKH.GUI.ToXuLy
                             break;
                         case "5"://Tổ Văn Phòng
                             chkcmbNoiNhan.Properties.DataSource = _dsNoiChuyen.Tables["5"];
-                            //chkcmbNoiNhan.Properties.DataSource = _cTaiKhoan.GetDS_TVP();
                             chkcmbNoiNhan.Properties.DisplayMember = "HoTen";
                             chkcmbNoiNhan.Properties.ValueMember = "MaU";
                             break;
                         case "6"://Phòng Ban Đội Khác
                             chkcmbNoiNhan.Properties.DataSource = _dsNoiChuyen.Tables["6"];
-                            //chkcmbNoiNhan.Properties.DataSource = _cPhongBanDoi.GetDS();
                             chkcmbNoiNhan.Properties.DisplayMember = "Name";
                             chkcmbNoiNhan.Properties.ValueMember = "ID";
                             break;
-                        case "9"://Tiến Trình
-                            chkcmbNoiNhan.Properties.DataSource = _dsNoiChuyen.Tables["9"];
-                            chkcmbNoiNhan.Properties.DisplayMember = "HoTen";
-                            chkcmbNoiNhan.Properties.ValueMember = "MaU";
+                        case "10"://Chuyên Đề Định Mức
+                            chkcmbNoiNhan.Properties.DataSource = _dsNoiChuyen.Tables["10"];
+                            chkcmbNoiNhan.Properties.DisplayMember = "Name";
+                            chkcmbNoiNhan.Properties.ValueMember = "ID";
                             break;
                         default:
-                            //chkcmbNoiNhan.Properties.DataSource = null;
+                            chkcmbNoiNhan.Properties.DataSource = null;
                             break;
                     }
+                }
             }
         }
 

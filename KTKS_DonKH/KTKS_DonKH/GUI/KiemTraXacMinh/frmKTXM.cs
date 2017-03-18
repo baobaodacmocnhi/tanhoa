@@ -112,6 +112,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtDiaChi.Text = ctktxm.DiaChi;
             txtGiaBieu.Text = ctktxm.GiaBieu;
             txtDinhMuc.Text = ctktxm.DinhMuc;
+            if (ctktxm.DinhMucMoi != null)
+                txtDinhMucMoi.Text = ctktxm.DinhMucMoi.Value.ToString();
             ///
             dateKTXM.Value = ctktxm.NgayKTXM.Value;
             if (ctktxm.HienTrangKiemTra != null)
@@ -142,6 +144,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtDiaChi.Text = "";
             txtGiaBieu.Text = "";
             txtDinhMuc.Text = "";
+            txtDinhMucMoi.Text = "";
             ///
             //dateKTXM.Value = DateTime.Now;
             //cmbTinhTrangKiemTra.SelectedIndex = -1;
@@ -178,6 +181,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtDiaChi.Text = "";
             txtGiaBieu.Text = "";
             txtDinhMuc.Text = "";
+            txtDinhMucMoi.Text = "";
             ///
             //dateKTXM.Value = DateTime.Now;
             //cmbTinhTrangKiemTra.SelectedIndex = -1;
@@ -372,6 +376,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     ctktxm.DiaChi = txtDiaChi.Text.Trim().ToUpper();
                     ctktxm.GiaBieu = txtGiaBieu.Text.Trim();
                     ctktxm.DinhMuc = txtDinhMuc.Text.Trim();
+                    if (txtDinhMucMoi.Text.Trim() != "")
+                        ctktxm.DinhMucMoi = int.Parse(txtDinhMucMoi.Text.Trim());
                     if (_hoadon != null)
                     {
                         ctktxm.Dot = _hoadon.DOT.ToString();
@@ -460,6 +466,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         _ctktxm.DiaChi = txtDiaChi.Text.Trim();
                         _ctktxm.GiaBieu = txtGiaBieu.Text.Trim();
                         _ctktxm.DinhMuc = txtDinhMuc.Text.Trim();
+                        if (txtDinhMucMoi.Text.Trim() != "")
+                            _ctktxm.DinhMucMoi = int.Parse(txtDinhMucMoi.Text.Trim());
                         if (_hoadon != null)
                         {
                             _ctktxm.Dot = _hoadon.DOT.ToString();

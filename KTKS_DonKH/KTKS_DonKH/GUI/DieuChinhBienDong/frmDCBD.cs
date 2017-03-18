@@ -356,7 +356,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     //        || !string.IsNullOrEmpty(txtGiaBieu_BD.Text.Trim())
                     //        || !string.IsNullOrEmpty(txtDinhMuc_BD.Text.Trim())
                     //        ))))
-                    if ((chkDMGiuNguyen.Checked == false && chkGiaHan.Checked==false) && (txtHieuLucKy.Text.Trim() == "" || (txtHoTen_BD.Text.Trim() == "" && txtDiaChi_BD.Text.Trim() == "" && txtMSThue_BD.Text.Trim() == "" && txtGiaBieu_BD.Text.Trim() == "" && txtDinhMuc_BD.Text.Trim() == "")))
+                    if ((chkDMGiuNguyen.Checked == false && chkGiaHan.Checked == false) && (txtHieuLucKy.Text.Trim() == "" || (txtHoTen_BD.Text.Trim() == "" && txtDiaChi_BD.Text.Trim() == "" && txtMSThue_BD.Text.Trim() == "" && txtGiaBieu_BD.Text.Trim() == "" && txtDinhMuc_BD.Text.Trim() == "")))
                     {
                         MessageBox.Show("Chưa có Hiệu Lực Kỳ \nHoặc không có biến động", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -366,7 +366,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                     if (_donkh != null)
                     {
-                        if (_cDCBD.CheckExist("TKH", _donkh.MaDon)==false)
+                        if (_cDCBD.CheckExist("TKH", _donkh.MaDon) == false)
                         {
                             DCBD dcbd = new DCBD();
                             dcbd.MaDon = _donkh.MaDon;
@@ -404,7 +404,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     dcbd.MaDonTBC = _dontbc.MaDon;
                                     _cDCBD.Them(dcbd);
                                 }
-                                if (_cDCBD.CheckExist_DCBD("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim())==true)
+                                if (_cDCBD.CheckExist_DCBD("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim()) == true)
                                 {
                                     MessageBox.Show("Danh Bộ này đã được Lập Điều Chỉnh Biến Động", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
@@ -699,20 +699,26 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (e.Control && e.KeyCode == Keys.Add)
                 btnThem.PerformClick();
-            if ((_donkh != null || _dontxl != null) && e.Control && e.KeyCode == Keys.D1)
+            if ((_donkh != null || _dontxl != null||_dontbc!=null) && e.Control && e.KeyCode == Keys.D1)
             {
                 Dictionary<string, string> source = new Dictionary<string, string>();
-                if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
+                if (_donkh != null)
                 {
-                    source.Add("TXL", "True");
-                    source.Add("MaDon", _dontxl.MaDon.ToString());
-                }
-                ///Đơn Tổ Khách Hàng
-                else
-                {
-                    source.Add("TXL", "False");
+                    source.Add("Loai", "TKH");
                     source.Add("MaDon", _donkh.MaDon.ToString());
                 }
+                else
+                    if (_dontxl != null)
+                    {
+                        source.Add("Loai", "TXL");
+                        source.Add("MaDon", _dontxl.MaDon.ToString());
+                    }
+                    else
+                        if (_dontbc != null)
+                        {
+                            source.Add("Loai", "TBC");
+                            source.Add("MaDon", _dontbc.MaDon.ToString());
+                        }
                 source.Add("DanhBo", txtDanhBo.Text.Trim());
                 if (txtHoTen_BD.Text.Trim() == "")
                     source.Add("HoTen", txtHoTen.Text.Trim());
@@ -736,20 +742,26 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 }
                 //thêmToolStripMenuItem.PerformClick();
             }
-            if ((_donkh != null || _dontxl != null) && e.Control && e.KeyCode == Keys.D2)
+            if ((_donkh != null || _dontxl != null||_dontbc!=null) && e.Control && e.KeyCode == Keys.D2)
             {
                 Dictionary<string, string> source = new Dictionary<string, string>();
-                if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
+                if (_donkh != null)
                 {
-                    source.Add("TXL", "True");
-                    source.Add("MaDon", _dontxl.MaDon.ToString());
-                }
-                ///Đơn Tổ Khách Hàng
-                else
-                {
-                    source.Add("TXL", "False");
+                    source.Add("Loai", "TKH");
                     source.Add("MaDon", _donkh.MaDon.ToString());
                 }
+                else
+                    if (_dontxl != null)
+                    {
+                        source.Add("Loai", "TXL");
+                        source.Add("MaDon", _dontxl.MaDon.ToString());
+                    }
+                    else
+                        if (_dontbc != null)
+                        {
+                            source.Add("Loai", "TBC");
+                            source.Add("MaDon", _dontbc.MaDon.ToString());
+                        }
                 source.Add("DanhBo", txtDanhBo.Text.Trim());
                 if (txtHoTen_BD.Text.Trim() == "")
                     source.Add("HoTen", txtHoTen.Text.Trim());
@@ -860,18 +872,25 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
             {
                 Dictionary<string, string> source = new Dictionary<string, string>();
-                ///Đơn Tổ Xử Lý
-                if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
+
+                if (_donkh != null)
                 {
-                    source.Add("TXL", "True");
-                    source.Add("MaDon", _dontxl.MaDon.ToString());
-                }
-                ///Đơn Tổ Khách Hàng
-                else
-                {
-                    source.Add("TXL", "False");
+                    source.Add("Loai", "TKH");
                     source.Add("MaDon", _donkh.MaDon.ToString());
                 }
+                else
+                    if (_dontxl != null)
+                    {
+                        source.Add("Loai", "TXL");
+                        source.Add("MaDon", _dontxl.MaDon.ToString());
+                    }
+                    else
+                        if (_dontbc != null)
+                        {
+                            source.Add("Loai", "TBC");
+                            source.Add("MaDon", _dontbc.MaDon.ToString());
+                        }
+
                 source.Add("DanhBo", txtDanhBo.Text.Trim());
                 if (txtHoTen_BD.Text.Trim() == "")
                     source.Add("HoTen", txtHoTen.Text.Trim());
@@ -903,18 +922,23 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
             {
                 Dictionary<string, string> source = new Dictionary<string, string>();
-                ///Đơn Tổ Xử Lý
-                if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
+                if (_donkh != null)
                 {
-                    source.Add("TXL", "True");
-                    source.Add("MaDon", _dontxl.MaDon.ToString());
-                }
-                ///Đơn Tổ Khách Hàng
-                else
-                {
-                    source.Add("TXL", "False");
+                    source.Add("Loai", "TKH");
                     source.Add("MaDon", _donkh.MaDon.ToString());
                 }
+                else
+                    if (_dontxl != null)
+                    {
+                        source.Add("Loai", "TXL");
+                        source.Add("MaDon", _dontxl.MaDon.ToString());
+                    }
+                    else
+                        if (_dontbc != null)
+                        {
+                            source.Add("Loai", "TBC");
+                            source.Add("MaDon", _dontbc.MaDon.ToString());
+                        }
                 source.Add("DanhBo", txtDanhBo.Text.Trim());
                 source.Add("MaCT", dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString());
                 if (txtHoTen_BD.Text.Trim() == "")
@@ -938,18 +962,23 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
             {
                 Dictionary<string, string> source = new Dictionary<string, string>();
-                ///Đơn Tổ Xử Lý
-                if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
+                if (_donkh != null)
                 {
-                    source.Add("TXL", "True");
-                    source.Add("MaDon", _dontxl.MaDon.ToString());
-                }
-                ///Đơn Tổ Khách Hàng
-                else
-                {
-                    source.Add("TXL", "False");
+                    source.Add("Loai", "TKH");
                     source.Add("MaDon", _donkh.MaDon.ToString());
                 }
+                else
+                    if (_dontxl != null)
+                    {
+                        source.Add("Loai", "TXL");
+                        source.Add("MaDon", _dontxl.MaDon.ToString());
+                    }
+                    else
+                        if (_dontbc != null)
+                        {
+                            source.Add("Loai", "TBC");
+                            source.Add("MaDon", _dontbc.MaDon.ToString());
+                        }
                 source.Add("DanhBo", txtDanhBo.Text.Trim());
                 source.Add("MaCT", dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString());
                 if (txtHoTen_BD.Text.Trim() == "")
@@ -972,18 +1001,23 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
             {
                 Dictionary<string, string> source = new Dictionary<string, string>();
-                ///Đơn Tổ Xử Lý
-                if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
+                if (_donkh != null)
                 {
-                    source.Add("TXL", "True");
-                    source.Add("MaDon", _dontxl.MaDon.ToString());
-                }
-                ///Đơn Tổ Khách Hàng
-                else
-                {
-                    source.Add("TXL", "False");
+                    source.Add("Loai", "TKH");
                     source.Add("MaDon", _donkh.MaDon.ToString());
                 }
+                else
+                    if (_dontxl != null)
+                    {
+                        source.Add("Loai", "TXL");
+                        source.Add("MaDon", _dontxl.MaDon.ToString());
+                    }
+                    else
+                        if (_dontbc != null)
+                        {
+                            source.Add("Loai", "TBC");
+                            source.Add("MaDon", _dontbc.MaDon.ToString());
+                        }
                 source.Add("DanhBo", txtDanhBo.Text.Trim());
                 if (txtHoTen_BD.Text.Trim() == "")
                     source.Add("HoTen", txtHoTen.Text.Trim());
@@ -1014,16 +1048,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 try
                 {
-                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                {
-                    CTChungTu ctchungtu = _cChungTu.getCTChungTubyID(txtDanhBo.Text.Trim(), dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString());
-                    if (_cChungTu.XoaCTChungTu(ctchungtu))
+                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTubyDanhBo(txtDanhBo.Text.Trim());
-                        LoadTongNK();
-                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CTChungTu ctchungtu = _cChungTu.getCTChungTubyID(txtDanhBo.Text.Trim(), dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString());
+                        if (_cChungTu.XoaCTChungTu(ctchungtu))
+                        {
+                            dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTubyDanhBo(txtDanhBo.Text.Trim());
+                            LoadTongNK();
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
-                }
                 }
                 catch (Exception ex)
                 {
@@ -1089,27 +1123,27 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 try
                 {
-                ///Hiện tại nếu check Cat mà exit bằng X thì dữ liệu không được lưu
-                ///Sau khi check phải check qua chỗ khác mới lưu
-                CTChungTu ctchungtu = _cChungTu.getCTChungTubyID(dgvDSSoDangKy["DanhBo", e.RowIndex].Value.ToString(), dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString());
-                if (bool.Parse(dgvDSSoDangKy["Cat", e.RowIndex].Value.ToString()) != ctchungtu.Cat)
-                {
-                    ctchungtu.Cat = bool.Parse(dgvDSSoDangKy["Cat", e.RowIndex].Value.ToString());
-                    _cChungTu.SuaCTChungTu(ctchungtu);
-                }
-                if (bool.Parse(dgvDSSoDangKy["GiaHan_SCT", e.RowIndex].Value.ToString()) != ctchungtu.GiaHan)
-                {
-                    ctchungtu.GiaHan = bool.Parse(dgvDSSoDangKy["GiaHan_SCT", e.RowIndex].Value.ToString());
-                    _cChungTu.SuaCTChungTu(ctchungtu);
-                }
-                if (dgvDSSoDangKy["DienThoai", e.RowIndex].Value.ToString() != ctchungtu.DienThoai)
-                {
-                    ctchungtu.DienThoai = dgvDSSoDangKy["DienThoai", e.RowIndex].Value.ToString();
-                    _cChungTu.SuaCTChungTu(ctchungtu);
-                }
+                    ///Hiện tại nếu check Cat mà exit bằng X thì dữ liệu không được lưu
+                    ///Sau khi check phải check qua chỗ khác mới lưu
+                    CTChungTu ctchungtu = _cChungTu.getCTChungTubyID(dgvDSSoDangKy["DanhBo", e.RowIndex].Value.ToString(), dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString());
+                    if (bool.Parse(dgvDSSoDangKy["Cat", e.RowIndex].Value.ToString()) != ctchungtu.Cat)
+                    {
+                        ctchungtu.Cat = bool.Parse(dgvDSSoDangKy["Cat", e.RowIndex].Value.ToString());
+                        _cChungTu.SuaCTChungTu(ctchungtu);
+                    }
+                    if (bool.Parse(dgvDSSoDangKy["GiaHan_SCT", e.RowIndex].Value.ToString()) != ctchungtu.GiaHan)
+                    {
+                        ctchungtu.GiaHan = bool.Parse(dgvDSSoDangKy["GiaHan_SCT", e.RowIndex].Value.ToString());
+                        _cChungTu.SuaCTChungTu(ctchungtu);
+                    }
+                    if (dgvDSSoDangKy["DienThoai", e.RowIndex].Value.ToString() != ctchungtu.DienThoai)
+                    {
+                        ctchungtu.DienThoai = dgvDSSoDangKy["DienThoai", e.RowIndex].Value.ToString();
+                        _cChungTu.SuaCTChungTu(ctchungtu);
+                    }
 
-                this.ControlBox = true;
-                contextMenuStrip1.Enabled = true;
+                    this.ControlBox = true;
+                    contextMenuStrip1.Enabled = true;
                 }
                 catch (Exception ex)
                 {

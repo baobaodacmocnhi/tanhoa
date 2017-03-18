@@ -247,13 +247,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         #endregion
                         ///Ghi thông tin Lịch Sử chung
                         LichSuChungTu lichsuchungtu = new LichSuChungTu();
-                        if (bool.Parse(_source["TXL"]) == true)
+                        switch (_source["Loai"])
                         {
-                            lichsuchungtu.ToXuLy = true;
-                            lichsuchungtu.MaDonTXL = decimal.Parse(_source["MaDon"]);
+                            case "TKH":
+                                lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
+                                break;
+                            case "TXL":
+                                lichsuchungtu.MaDonTXL = decimal.Parse(_source["MaDon"]);
+                                break;
+                            case "TBC":
+                                lichsuchungtu.MaDonTBC = decimal.Parse(_source["MaDon"]);
+                                break;
+                            default:
+                                break;
                         }
-                        else
-                            lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
                         lichsuchungtu.DanhBo = ctchungtu.DanhBo;
                         lichsuchungtu.MaCT = ctchungtu.MaCT;
                         lichsuchungtu.SoNKTong = _chungtu.SoNKTong;
@@ -574,13 +581,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         #endregion
                         ///Ghi thông tin Lịch Sử chung
                         LichSuChungTu lichsuchungtu = new LichSuChungTu();
-                        if (bool.Parse(_source["TXL"]) == true)
+                        switch (_source["Loai"])
                         {
-                            lichsuchungtu.ToXuLy = true;
-                            lichsuchungtu.MaDonTXL = decimal.Parse(_source["MaDon"]);
+                            case "TKH":
+                                lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
+                                break;
+                            case "TXL":
+                                lichsuchungtu.MaDonTXL = decimal.Parse(_source["MaDon"]);
+                                break;
+                            case "TBC":
+                                lichsuchungtu.MaDonTBC = decimal.Parse(_source["MaDon"]);
+                                break;
+                            default:
+                                break;
                         }
-                        else
-                            lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
                         lichsuchungtu.DanhBo = _ctchungtu.DanhBo;
                         lichsuchungtu.MaCT = _ctchungtu.MaCT;
                         lichsuchungtu.SoNKTong = _ctchungtu.ChungTu.SoNKTong;
@@ -1198,7 +1212,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         public void CopyLichSuChungTu(LichSuChungTu A, ref LichSuChungTu B)
         {
-            B.ToXuLy = A.ToXuLy;
+            B.MaDonTBC = A.MaDonTBC;
             B.MaDonTXL = A.MaDonTXL;
             B.MaDon = A.MaDon;
             B.DanhBo = A.DanhBo;

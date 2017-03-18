@@ -565,7 +565,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1438, 512);
+            this.ClientSize = new System.Drawing.Size(1362, 512);
             this.Controls.Add(this.dgvLichSuDon);
             this.Controls.Add(this.chkcmbNoiNhan);
             this.Controls.Add(this.dgvLichSuDonTu);

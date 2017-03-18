@@ -134,7 +134,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 try
                 {
-                    if (_lichsuchungtu==null && txtSoNK_Cat.Text.Trim() != "" && txtSoNK_Cat.Text.Trim() != "0" && cmbChiNhanh_Nhan.SelectedIndex != -1)
+                    if (_lichsuchungtu == null && txtSoNK_Cat.Text.Trim() != "" && txtSoNK_Cat.Text.Trim() != "0" && cmbChiNhanh_Nhan.SelectedIndex != -1)
                     {
                         if (_ctchungtu.SoNKDangKy < int.Parse(txtSoNK_Cat.Text.Trim()))
                         {
@@ -172,13 +172,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             }
                             ///Cập nhật LichSuChungTu, Chứng Từ & Danh Bộ Cắt
                             LichSuChungTu lichsuchungtu = new LichSuChungTu();
-                            if (bool.Parse(_source["TXL"]) == true)
+                            switch (_source["Loai"])
                             {
-                                lichsuchungtu.ToXuLy = true;
-                                lichsuchungtu.MaDonTXL = decimal.Parse(_source["MaDon"]);
+                                case "TKH":
+                                    lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
+                                    break;
+                                case "TXL":
+                                    lichsuchungtu.MaDonTXL = decimal.Parse(_source["MaDon"]);
+                                    break;
+                                case "TBC":
+                                    lichsuchungtu.MaDonTBC = decimal.Parse(_source["MaDon"]);
+                                    break;
+                                default:
+                                    break;
                             }
-                            else
-                                lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
                             lichsuchungtu.MaCT = _ctchungtu.MaCT;
                             lichsuchungtu.DanhBo = _ctchungtu.DanhBo;
                             lichsuchungtu.SoNKTong = _ctchungtu.ChungTu.SoNKTong;
@@ -203,13 +210,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                             ///Cập nhật LichSuChungTu, Chứng Từ & Danh Bộ Nhận
                             LichSuChungTu lichsuchungtuNhan = new LichSuChungTu();
-                            if (bool.Parse(_source["TXL"]) == true)
+                            switch (_source["Loai"])
                             {
-                                lichsuchungtuNhan.ToXuLy = true;
-                                lichsuchungtuNhan.MaDonTXL = decimal.Parse(_source["MaDon"]);
+                                case "TKH":
+                                    lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
+                                    break;
+                                case "TXL":
+                                    lichsuchungtu.MaDonTXL = decimal.Parse(_source["MaDon"]);
+                                    break;
+                                case "TBC":
+                                    lichsuchungtu.MaDonTBC = decimal.Parse(_source["MaDon"]);
+                                    break;
+                                default:
+                                    break;
                             }
-                            else
-                                lichsuchungtuNhan.MaDon = decimal.Parse(_source["MaDon"]);
                             lichsuchungtuNhan.MaCT = ctchungtuNhan.MaCT;
                             lichsuchungtuNhan.DanhBo = ctchungtuNhan.DanhBo;
                             lichsuchungtuNhan.SoNKTong = ctchungtuNhan.ChungTu.SoNKTong;
@@ -229,7 +243,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             lichsuchungtuNhan.NhanNK_HoTen = lichsuchungtu.CatNK_HoTen;
                             lichsuchungtuNhan.NhanNK_DiaChi = lichsuchungtu.CatNK_DiaChi;
                             lichsuchungtuNhan.NhanNK_GhiChu = txtGhiChu_Nhan.Text.Trim();
-                            lichsuchungtuNhan.SoNK =lichsuchungtu.SoNK;
+                            lichsuchungtuNhan.SoNK = lichsuchungtu.SoNK;
 
                             _cChungTu.ThemLichSuChungTu(lichsuchungtuNhan);
                         }
@@ -241,13 +255,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             _cChungTu.SuaCTChungTu(_ctchungtu);
 
                             LichSuChungTu lichsuchungtu = new LichSuChungTu();
-                            if (bool.Parse(_source["TXL"]) == true)
+                            switch (_source["Loai"])
                             {
-                                lichsuchungtu.ToXuLy = true;
-                                lichsuchungtu.MaDonTXL = decimal.Parse(_source["MaDon"]);
+                                case "TKH":
+                                    lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
+                                    break;
+                                case "TXL":
+                                    lichsuchungtu.MaDonTXL = decimal.Parse(_source["MaDon"]);
+                                    break;
+                                case "TBC":
+                                    lichsuchungtu.MaDonTBC = decimal.Parse(_source["MaDon"]);
+                                    break;
+                                default:
+                                    break;
                             }
-                            else
-                                lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
                             lichsuchungtu.MaCT = _ctchungtu.MaCT;
                             lichsuchungtu.DanhBo = _ctchungtu.DanhBo;
                             lichsuchungtu.SoNKTong = _ctchungtu.ChungTu.SoNKTong;
@@ -332,7 +353,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
             else
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            
+
         }
     }
 }
