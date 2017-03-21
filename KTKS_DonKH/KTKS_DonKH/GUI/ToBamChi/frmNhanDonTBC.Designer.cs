@@ -450,7 +450,7 @@
             this.chkcmbNoiNhan.Properties.Appearance.Options.UseFont = true;
             this.chkcmbNoiNhan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.chkcmbNoiNhan.Properties.PopupFormSize = new System.Drawing.Size(0, 350);
+            this.chkcmbNoiNhan.Properties.PopupFormSize = new System.Drawing.Size(0, 500);
             this.chkcmbNoiNhan.Size = new System.Drawing.Size(201, 22);
             this.chkcmbNoiNhan.TabIndex = 78;
             // 

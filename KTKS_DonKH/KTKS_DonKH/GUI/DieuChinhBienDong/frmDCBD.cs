@@ -1103,7 +1103,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void dgvDSSoDangKy_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right && (_donkh != null || _dontxl != null))
+            if (e.Button == MouseButtons.Right && (_donkh != null || _dontxl != null||_dontbc!=null))
             {
                 thêmToolStripMenuItem.Enabled = true;
                 nhậnĐịnhMứctoolStripMenuItem.Enabled = true;
