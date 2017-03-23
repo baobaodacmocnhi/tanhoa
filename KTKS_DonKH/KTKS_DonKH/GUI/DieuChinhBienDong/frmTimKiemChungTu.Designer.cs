@@ -34,13 +34,15 @@
             this.dgvDSChungTu = new System.Windows.Forms.DataGridView();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoNKDangKy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbLoaiCT = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSChungTu)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 14);
+            this.label1.Location = new System.Drawing.Point(12, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 16);
             this.label1.TabIndex = 0;
@@ -48,7 +50,7 @@
             // 
             // txtMaCT
             // 
-            this.txtMaCT.Location = new System.Drawing.Point(128, 12);
+            this.txtMaCT.Location = new System.Drawing.Point(112, 42);
             this.txtMaCT.Name = "txtMaCT";
             this.txtMaCT.Size = new System.Drawing.Size(100, 22);
             this.txtMaCT.TabIndex = 1;
@@ -70,7 +72,7 @@
             this.dgvDSChungTu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DanhBo,
             this.SoNKDangKy});
-            this.dgvDSChungTu.Location = new System.Drawing.Point(11, 41);
+            this.dgvDSChungTu.Location = new System.Drawing.Point(12, 70);
             this.dgvDSChungTu.Name = "dgvDSChungTu";
             this.dgvDSChungTu.Size = new System.Drawing.Size(301, 197);
             this.dgvDSChungTu.TabIndex = 2;
@@ -87,12 +89,31 @@
             this.SoNKDangKy.HeaderText = "Số NK Đăng Ký";
             this.SoNKDangKy.Name = "SoNKDangKy";
             // 
+            // cmbLoaiCT
+            // 
+            this.cmbLoaiCT.FormattingEnabled = true;
+            this.cmbLoaiCT.Location = new System.Drawing.Point(112, 12);
+            this.cmbLoaiCT.Name = "cmbLoaiCT";
+            this.cmbLoaiCT.Size = new System.Drawing.Size(201, 24);
+            this.cmbLoaiCT.TabIndex = 19;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(97, 16);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Loại Chứng Từ:";
+            // 
             // frmTimKiemChungTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(326, 247);
+            this.ClientSize = new System.Drawing.Size(326, 278);
+            this.Controls.Add(this.cmbLoaiCT);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvDSChungTu);
             this.Controls.Add(this.txtMaCT);
             this.Controls.Add(this.label1);
@@ -116,5 +137,7 @@
         private System.Windows.Forms.DataGridView dgvDSChungTu;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoNKDangKy;
+        private System.Windows.Forms.ComboBox cmbLoaiCT;
+        private System.Windows.Forms.Label label2;
     }
 }

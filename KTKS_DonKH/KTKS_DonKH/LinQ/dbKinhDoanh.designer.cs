@@ -2996,7 +2996,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _YeuCauCat;
 		
-		private System.Nullable<int> _MaLCT;
+		private int _MaLCT;
 		
 		private bool _KhacDiaBan;
 		
@@ -3032,7 +3032,7 @@ namespace KTKS_DonKH.LinQ
     partial void OnSoNKConLaiChanged();
     partial void OnYeuCauCatChanging(bool value);
     partial void OnYeuCauCatChanged();
-    partial void OnMaLCTChanging(System.Nullable<int> value);
+    partial void OnMaLCTChanging(int value);
     partial void OnMaLCTChanged();
     partial void OnKhacDiaBanChanging(bool value);
     partial void OnKhacDiaBanChanged();
@@ -3213,8 +3213,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaLCT", DbType="Int")]
-		public System.Nullable<int> MaLCT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaLCT", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int MaLCT
 		{
 			get
 			{
@@ -3337,7 +3337,7 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ChungTu_CTChungTu", Storage="_CTChungTus", ThisKey="MaCT", OtherKey="MaCT")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ChungTu_CTChungTu", Storage="_CTChungTus", ThisKey="MaCT,MaLCT", OtherKey="MaCT,MaLCT")]
 		public EntitySet<CTChungTu> CTChungTus
 		{
 			get
@@ -3377,7 +3377,7 @@ namespace KTKS_DonKH.LinQ
 					}
 					else
 					{
-						this._MaLCT = default(Nullable<int>);
+						this._MaLCT = default(int);
 					}
 					this.SendPropertyChanged("LoaiChungTu");
 				}
@@ -6055,6 +6055,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _MaCT;
 		
+		private int _MaLCT;
+		
 		private string _DienThoai;
 		
 		private bool _SoChinh;
@@ -6167,6 +6169,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDanhBoChanged();
     partial void OnMaCTChanging(string value);
     partial void OnMaCTChanged();
+    partial void OnMaLCTChanging(int value);
+    partial void OnMaLCTChanged();
     partial void OnDienThoaiChanging(string value);
     partial void OnDienThoaiChanged();
     partial void OnSoChinhChanging(bool value);
@@ -6317,6 +6321,30 @@ namespace KTKS_DonKH.LinQ
 					this._MaCT = value;
 					this.SendPropertyChanged("MaCT");
 					this.OnMaCTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaLCT", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int MaLCT
+		{
+			get
+			{
+				return this._MaLCT;
+			}
+			set
+			{
+				if ((this._MaLCT != value))
+				{
+					if (this._ChungTu.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMaLCTChanging(value);
+					this.SendPropertyChanging();
+					this._MaLCT = value;
+					this.SendPropertyChanged("MaLCT");
+					this.OnMaLCTChanged();
 				}
 			}
 		}
@@ -7341,7 +7369,7 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ChungTu_CTChungTu", Storage="_ChungTu", ThisKey="MaCT", OtherKey="MaCT", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ChungTu_CTChungTu", Storage="_ChungTu", ThisKey="MaCT,MaLCT", OtherKey="MaCT,MaLCT", IsForeignKey=true)]
 		public ChungTu ChungTu
 		{
 			get
@@ -7365,10 +7393,12 @@ namespace KTKS_DonKH.LinQ
 					{
 						value.CTChungTus.Add(this);
 						this._MaCT = value.MaCT;
+						this._MaLCT = value.MaLCT;
 					}
 					else
 					{
 						this._MaCT = default(string);
+						this._MaLCT = default(int);
 					}
 					this.SendPropertyChanged("ChungTu");
 				}
@@ -24041,6 +24071,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _MaCT;
 		
+		private System.Nullable<int> _MaLCT;
+		
 		private string _Lo;
 		
 		private string _Phong;
@@ -24117,6 +24149,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDanhBoChanged();
     partial void OnMaCTChanging(string value);
     partial void OnMaCTChanged();
+    partial void OnMaLCTChanging(System.Nullable<int> value);
+    partial void OnMaLCTChanged();
     partial void OnLoChanging(string value);
     partial void OnLoChanged();
     partial void OnPhongChanging(string value);
@@ -24246,6 +24280,26 @@ namespace KTKS_DonKH.LinQ
 					this._MaCT = value;
 					this.SendPropertyChanged("MaCT");
 					this.OnMaCTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaLCT", DbType="Int")]
+		public System.Nullable<int> MaLCT
+		{
+			get
+			{
+				return this._MaLCT;
+			}
+			set
+			{
+				if ((this._MaLCT != value))
+				{
+					this.OnMaLCTChanging(value);
+					this.SendPropertyChanging();
+					this._MaLCT = value;
+					this.SendPropertyChanged("MaLCT");
+					this.OnMaLCTChanged();
 				}
 			}
 		}

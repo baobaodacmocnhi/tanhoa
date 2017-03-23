@@ -140,13 +140,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         if (int.Parse(txtSoNKTong.Text.Trim()) >= int.Parse(txtSoNKNhan.Text.Trim()))
                         {
                             ///Kiểm tra Danh Bộ & Số Chứng Từ
-                            if (_cChungTu.CheckCTChungTu(txtDanhBo_Nhan.Text.Trim(), txtMaCT.Text.Trim()) == true)
+                            if (_cChungTu.CheckExist_CT(txtDanhBo_Nhan.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())) == true)
                             {
                                 MessageBox.Show("Danh Bộ trên đã đăng ký Số Chứng Từ trên", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
                             ///Kiểm tra Số Chứng Từ
-                            if (_cChungTu.CheckChungTu(txtMaCT.Text.Trim()) == false)
+                            if (_cChungTu.CheckExist(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())) == false)
                             {
                                 ChungTu chungtu = new ChungTu();
                                 chungtu.MaCT = txtMaCT.Text.Trim();
@@ -154,10 +154,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
                                 chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
                                 chungtu.KhacDiaBan = true;
-                                _cChungTu.ThemChungTu(chungtu);
+                                _cChungTu.Them(chungtu);
                             }
                             ///Lấy thông tin Chứng Từ để kiểm tra
-                            ChungTu _chungtu = _cChungTu.getChungTubyID(txtMaCT.Text.Trim());
+                            ChungTu _chungtu = _cChungTu.Get(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
                             if (_chungtu.SoNKTong - _chungtu.CTChungTus.Sum(item => item.SoNKDangKy) < int.Parse(txtSoNKNhan.Text.Trim()))
                             {
                                 MessageBox.Show("Vượt Nhân Khẩu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -165,6 +165,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             }
                             CTChungTu ctchungtu = new CTChungTu();
                             ctchungtu.DanhBo = txtDanhBo_Nhan.Text.Trim();
+                            ctchungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
                             ctchungtu.MaCT = txtMaCT.Text.Trim();
                             ctchungtu.SoNKDangKy = int.Parse(txtSoNKNhan.Text.Trim());
                             if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
@@ -192,6 +193,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     break;
                             }
                             lichsuchungtu.DanhBo = ctchungtu.DanhBo;
+                            lichsuchungtu.MaLCT = ctchungtu.MaLCT;
                             lichsuchungtu.MaCT = ctchungtu.MaCT;
                             lichsuchungtu.SoNKTong = _chungtu.SoNKTong;
                             lichsuchungtu.SoNKDangKy = ctchungtu.SoNKDangKy;
@@ -201,7 +203,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             lichsuchungtu.Lo = ctchungtu.Lo;
                             lichsuchungtu.Phong = ctchungtu.Phong;
 
-                            if (_cChungTu.ThemCTChungTu(ctchungtu))
+                            if (_cChungTu.ThemCT(ctchungtu))
                             {
                                 ///Thêm Lịch Sử đầu tiên
                                 _cChungTu.ThemLichSuChungTu(lichsuchungtu);
@@ -239,7 +241,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     ctchungtu.CatNK_SoNKCat = int.Parse(txtSoNKNhan.Text.Trim());
                                     ctchungtu.SoPhieu = lichsuchungtuCat.SoPhieu;
 
-                                    _cChungTu.SuaCTChungTu(ctchungtu);
+                                    _cChungTu.SuaCT(ctchungtu);
                                 }
 
                                 _cChungTu.SubmitChanges();
@@ -276,6 +278,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             B.MaDonTBC = A.MaDonTBC;
             B.MaDon = A.MaDon;
             B.DanhBo = A.DanhBo;
+            B.MaLCT = A.MaLCT;
             B.MaCT = A.MaCT;
             B.SoNKTong = A.SoNKTong;
             B.SoNKDangKy = A.SoNKDangKy;

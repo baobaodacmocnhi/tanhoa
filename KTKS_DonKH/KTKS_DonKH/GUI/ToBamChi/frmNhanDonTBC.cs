@@ -30,7 +30,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
         CPhongBanDoi _cPhongBanDoi = new CPhongBanDoi();
         DataSet _dsNoiChuyen = new DataSet("NoiChuyen");
         bool _flagFirst = false;
-        decimal _MaDon = 0;
+        decimal _MaDon = -1;
 
         public frmNhanDonTBC()
         {
@@ -91,6 +91,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
             txtDienThoai.Text = "";
             _hoadon = null;
             _dontbc = null;
+            _MaDon = -1;
         }
 
         private void frmNhanDonTBC_Load(object sender, EventArgs e)
@@ -140,7 +141,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
             dt.TableName = "6";//Phòng Ban Đội Khác
             _dsNoiChuyen.Tables.Add(dt);
 
-            if (_MaDon != 0)
+            if (_MaDon != -1)
             {
                 txtMaDon.Text = _MaDon.ToString();
                 KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
@@ -287,10 +288,14 @@ namespace KTKS_DonKH.GUI.ToBamChi
         {
             if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
             {
-                if (_cDonTBC.Get(decimal.Parse(txtMaDon.Text.Trim().Replace("TBC", "").Replace("tbc", "").Replace("-", ""))) != null)
+                string MaDon = "";
+                if (txtMaDon.Text.Trim().ToUpper().Contains("TBC"))
+                    MaDon = txtMaDon.Text.Trim().Substring(3).Replace("-", "");
+                else
+                    MaDon = txtMaDon.Text.Trim().Replace("-", "");
+                if (_cDonTBC.CheckExist(decimal.Parse(MaDon)) == true)
                 {
-                    _dontbc = _cDonTBC.Get(decimal.Parse(txtMaDon.Text.Trim().Replace("TBC", "").Replace("tbc", "").Replace("-", "")));
-
+                    _dontbc = _cDonTBC.Get(decimal.Parse(MaDon));
                     LoadDonTBC(_dontbc);
                 }
                 else

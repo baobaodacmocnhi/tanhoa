@@ -117,7 +117,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "frmBaoCaoBamChi";
-            this.Text = "Các Loại Báo Cáo Bấm Chì";
+            this.Text = "Báo Cáo Bấm Chì";
             this.Load += new System.EventHandler(this.frmBaoCaoBamChi_Load);
             this.panel_KhoangThoiGian.ResumeLayout(false);
             this.panel_KhoangThoiGian.PerformLayout();

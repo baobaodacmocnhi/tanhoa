@@ -129,7 +129,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             txtGiaBieu.Text = hoadon.GB.ToString();
             txtDinhMuc.Text = hoadon.DM.ToString();
             dgvLichSuDon.DataSource = _cDonKH.GetDSByDanhBo(hoadon.DANHBA);
-            if (_cTTTN.CheckExist_ChuaXepDon(hoadon.DANHBA))
+            if (_cTTTN.CheckExist_ChuaXepDon(hoadon.DANHBA)==true)
                 lbTruyThu.Text = "Danh Bộ này đang Truy Thu";
             else
                 lbTruyThu.Text = "";

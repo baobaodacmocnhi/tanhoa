@@ -32,14 +32,19 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         private void btnBaoCao_ThongKeHienTrangKiemTra_Click(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
-            if (CTaiKhoan.ToKH)
-                dt = _cKTXM.GetDS("TKH", dateTu_ThongKeHienTrangKiemTra.Value, dateDen_ThongKeHienTrangKiemTra.Value);
+            if (chkAll_ThongKeHienTrangKiemTra.Checked==true)
+                dt = _cKTXM.GetDS(dateTu_ThongKeHienTrangKiemTra.Value, dateDen_ThongKeHienTrangKiemTra.Value);
             else
-                if (CTaiKhoan.ToXL)
-                    dt = _cKTXM.GetDS("TXL", dateTu_ThongKeHienTrangKiemTra.Value, dateDen_ThongKeHienTrangKiemTra.Value);
+            {
+                if (CTaiKhoan.ToKH)
+                    dt = _cKTXM.GetDS("TKH", dateTu_ThongKeHienTrangKiemTra.Value, dateDen_ThongKeHienTrangKiemTra.Value);
                 else
-                    if (CTaiKhoan.ToBC)
-                        dt = _cKTXM.GetDS("TBC", dateTu_ThongKeHienTrangKiemTra.Value, dateDen_ThongKeHienTrangKiemTra.Value);
+                    if (CTaiKhoan.ToXL)
+                        dt = _cKTXM.GetDS("TXL", dateTu_ThongKeHienTrangKiemTra.Value, dateDen_ThongKeHienTrangKiemTra.Value);
+                    else
+                        if (CTaiKhoan.ToBC)
+                            dt = _cKTXM.GetDS("TBC", dateTu_ThongKeHienTrangKiemTra.Value, dateDen_ThongKeHienTrangKiemTra.Value);
+            }
 
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
@@ -47,17 +52,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             {
                 DataRow dr = dsBaoCao.Tables["DSKTXM"].NewRow();
 
-                if (CTaiKhoan.ToKH)
-                    dr["To"] = "TỔ KHÁCH HÀNG";
-                else
-                    if (CTaiKhoan.ToXL)
-                        dr["To"] = "TỔ XỬ LÝ";
-                    else
-                        if (CTaiKhoan.ToBC)
-                            dr["To"] = "TỔ BẤM CHÌ";
                 dr["TuNgay"] = dateTu_ThongKeHienTrangKiemTra.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen_ThongKeHienTrangKiemTra.Value.ToString("dd/MM/yyyy");
+                if (chkAll_ThongKeHienTrangKiemTra.Checked==false)
+                dr["To"] = item["To"];
                 dr["MaCTKTXM"] = item["MaCTKTXM"];
+                dr["STT_HTKT"] = item["STT_HTKT"];
                 dr["HienTrangKiemTra"] = item["HienTrangKiemTra"];
                 dr["TieuThuTrungBinh"] = item["TieuThuTrungBinh"];
 

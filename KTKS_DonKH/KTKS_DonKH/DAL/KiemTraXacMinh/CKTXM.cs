@@ -231,10 +231,13 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                 case "TKH":
                     var query = from itemCTKTXM in db.CTKTXMs
                                 join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                                join itemHTKT in db.HienTrangKiemTras on itemCTKTXM.HienTrangKiemTra equals itemHTKT.TenHTKT into tableHTKT
+                                from itemtableHTKT in tableHTKT.DefaultIfEmpty()
                                 where itemCTKTXM.KTXM.MaDon != null
                                 && itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date
                                 select new
                                 {
+                                    To="TỔ KHÁCH HÀNG",
                                     itemCTKTXM.MaCTKTXM,
                                     MaDon = "TKH" + itemCTKTXM.KTXM.MaDon,
                                     itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD,
@@ -244,6 +247,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     itemCTKTXM.NgayKTXM,
                                     itemCTKTXM.NoiDungKiemTra,
                                     CreateBy = itemUser.HoTen,
+                                    STT_HTKT=itemtableHTKT.STT,
                                     itemCTKTXM.HienTrangKiemTra,
                                     itemCTKTXM.TieuThuTrungBinh,
                                 };
@@ -251,10 +255,13 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                 case "TXL":
                     query = from itemCTKTXM in db.CTKTXMs
                             join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                            join itemHTKT in db.HienTrangKiemTras on itemCTKTXM.HienTrangKiemTra equals itemHTKT.TenHTKT into tableHTKT
+                            from itemtableHTKT in tableHTKT.DefaultIfEmpty()
                             where itemCTKTXM.KTXM.MaDonTXL != null
                             && itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date
                             select new
                             {
+                                To = "TỔ XỬ LÝ",
                                 itemCTKTXM.MaCTKTXM,
                                 MaDon = "TXL" + itemCTKTXM.KTXM.MaDonTXL,
                                 itemCTKTXM.KTXM.DonTXL.LoaiDonTXL.TenLD,
@@ -264,6 +271,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                 itemCTKTXM.NgayKTXM,
                                 itemCTKTXM.NoiDungKiemTra,
                                 CreateBy = itemUser.HoTen,
+                                STT_HTKT = itemtableHTKT.STT,
                                 itemCTKTXM.HienTrangKiemTra,
                                 itemCTKTXM.TieuThuTrungBinh,
                             };
@@ -271,10 +279,13 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                 case "TBC":
                     query = from itemCTKTXM in db.CTKTXMs
                             join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                            join itemHTKT in db.HienTrangKiemTras on itemCTKTXM.HienTrangKiemTra equals itemHTKT.TenHTKT into tableHTKT
+                            from itemtableHTKT in tableHTKT.DefaultIfEmpty()
                             where itemCTKTXM.KTXM.MaDonTBC != null
                             && itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date
                             select new
                             {
+                                To = "TỔ BẤM CHÌ",
                                 itemCTKTXM.MaCTKTXM,
                                 MaDon = "TBC" + itemCTKTXM.KTXM.MaDonTBC,
                                 itemCTKTXM.KTXM.DonTBC.LoaiDonTBC.TenLD,
@@ -284,6 +295,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                 itemCTKTXM.NgayKTXM,
                                 itemCTKTXM.NoiDungKiemTra,
                                 CreateBy = itemUser.HoTen,
+                                STT_HTKT = itemtableHTKT.STT,
                                 itemCTKTXM.HienTrangKiemTra,
                                 itemCTKTXM.TieuThuTrungBinh,
                             };
@@ -723,10 +735,13 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             DataTable dt = new DataTable();
             var query = from itemCTKTXM in db.CTKTXMs
                         join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                        join itemHTKT in db.HienTrangKiemTras on itemCTKTXM.HienTrangKiemTra equals itemHTKT.TenHTKT into tableHTKT
+                        from itemtableHTKT in tableHTKT.DefaultIfEmpty()
                         where itemCTKTXM.KTXM.MaDon != null
                         && itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date
                         select new
                         {
+                            To = "TỔ KHÁCH HÀNG",
                             itemCTKTXM.MaCTKTXM,
                             MaDon = "TKH" + itemCTKTXM.KTXM.MaDon,
                             itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD,
@@ -736,15 +751,21 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                             itemCTKTXM.NgayKTXM,
                             itemCTKTXM.NoiDungKiemTra,
                             CreateBy = itemUser.HoTen,
+                            STT_HTKT=itemtableHTKT.STT,
+                            itemCTKTXM.HienTrangKiemTra,
+                            itemCTKTXM.TieuThuTrungBinh,
                         };
             dt = LINQToDataTable(query);
 
             query = from itemCTKTXM in db.CTKTXMs
                     join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                    join itemHTKT in db.HienTrangKiemTras on itemCTKTXM.HienTrangKiemTra equals itemHTKT.TenHTKT into tableHTKT
+                    from itemtableHTKT in tableHTKT.DefaultIfEmpty()
                     where itemCTKTXM.KTXM.MaDonTXL != null
                     && itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date
                     select new
                     {
+                        To = "TỔ XỬ LÝ",
                         itemCTKTXM.MaCTKTXM,
                         MaDon = "TXL" + itemCTKTXM.KTXM.MaDonTXL,
                         itemCTKTXM.KTXM.DonTXL.LoaiDonTXL.TenLD,
@@ -754,15 +775,21 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                         itemCTKTXM.NgayKTXM,
                         itemCTKTXM.NoiDungKiemTra,
                         CreateBy = itemUser.HoTen,
+                        STT_HTKT = itemtableHTKT.STT,
+                        itemCTKTXM.HienTrangKiemTra,
+                        itemCTKTXM.TieuThuTrungBinh,
                     };
             dt.Merge(LINQToDataTable(query));
 
             query = from itemCTKTXM in db.CTKTXMs
                     join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                    join itemHTKT in db.HienTrangKiemTras on itemCTKTXM.HienTrangKiemTra equals itemHTKT.TenHTKT into tableHTKT
+                    from itemtableHTKT in tableHTKT.DefaultIfEmpty()
                     where itemCTKTXM.KTXM.MaDonTBC != null
                     && itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date
                     select new
                     {
+                        To = "TỔ BẤM CHÌ",
                         itemCTKTXM.MaCTKTXM,
                         MaDon = "TBC" + itemCTKTXM.KTXM.MaDonTBC,
                         itemCTKTXM.KTXM.DonTBC.LoaiDonTBC.TenLD,
@@ -772,6 +799,9 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                         itemCTKTXM.NgayKTXM,
                         itemCTKTXM.NoiDungKiemTra,
                         CreateBy = itemUser.HoTen,
+                        STT_HTKT = itemtableHTKT.STT,
+                        itemCTKTXM.HienTrangKiemTra,
+                        itemCTKTXM.TieuThuTrungBinh,
                     };
             dt.Merge(LINQToDataTable(query));
 

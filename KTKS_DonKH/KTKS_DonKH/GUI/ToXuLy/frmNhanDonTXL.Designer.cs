@@ -76,12 +76,12 @@
             this.dateChuyen = new System.Windows.Forms.DateTimePicker();
             this.label30 = new System.Windows.Forms.Label();
             this.dgvLichSuDonTu = new System.Windows.Forms.DataGridView();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayChuyenA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnXoa = new System.Windows.Forms.Button();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -540,10 +540,20 @@
             this.dgvLichSuDonTu.Location = new System.Drawing.Point(12, 246);
             this.dgvLichSuDonTu.Name = "dgvLichSuDonTu";
             this.dgvLichSuDonTu.ReadOnly = true;
-            this.dgvLichSuDonTu.Size = new System.Drawing.Size(512, 250);
+            this.dgvLichSuDonTu.Size = new System.Drawing.Size(710, 250);
             this.dgvLichSuDonTu.TabIndex = 79;
             this.dgvLichSuDonTu.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLichSuDonTu_CellMouseClick);
             this.dgvLichSuDonTu.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvLichSuDonTu_MouseClick);
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Location = new System.Drawing.Point(653, 144);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 25);
+            this.btnXoa.TabIndex = 80;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // ID
             // 
@@ -567,6 +577,7 @@
             this.NoiChuyen.HeaderText = "Nơi Chuyển";
             this.NoiChuyen.Name = "NoiChuyen";
             this.NoiChuyen.ReadOnly = true;
+            this.NoiChuyen.Width = 150;
             // 
             // NoiNhan
             // 
@@ -574,6 +585,7 @@
             this.NoiNhan.HeaderText = "Nơi Nhận";
             this.NoiNhan.Name = "NoiNhan";
             this.NoiNhan.ReadOnly = true;
+            this.NoiNhan.Width = 250;
             // 
             // GhiChu
             // 
@@ -581,16 +593,6 @@
             this.GhiChu.HeaderText = "Ghi Chú";
             this.GhiChu.Name = "GhiChu";
             this.GhiChu.ReadOnly = true;
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.Location = new System.Drawing.Point(653, 144);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 25);
-            this.btnXoa.TabIndex = 80;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // frmNhanDonTXL
             // 
@@ -692,12 +694,12 @@
         private System.Windows.Forms.DateTimePicker dateChuyen;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.DataGridView dgvLichSuDonTu;
+        private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayChuyenA;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiChuyen;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiNhan;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
-        private System.Windows.Forms.Button btnXoa;
 
     }
 }

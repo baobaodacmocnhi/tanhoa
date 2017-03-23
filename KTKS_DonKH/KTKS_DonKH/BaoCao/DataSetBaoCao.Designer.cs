@@ -5859,6 +5859,8 @@ namespace KTKS_DonKH.BaoCao {
             
             private global::System.Data.DataColumn columnDiaChi;
             
+            private global::System.Data.DataColumn columnSTT_HTKT;
+            
             private global::System.Data.DataColumn columnHienTrangKiemTra;
             
             private global::System.Data.DataColumn columnNoiDungKiemTra;
@@ -5968,6 +5970,14 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn STT_HTKTColumn {
+                get {
+                    return this.columnSTT_HTKT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn HienTrangKiemTraColumn {
                 get {
                     return this.columnHienTrangKiemTra;
@@ -6043,7 +6053,7 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DSKTXMRow AddDSKTXMRow(string TuNgay, string DenNgay, string MaCTKTXM, string TenLD, string MaDon, string DanhBo, string HoTen, string DiaChi, string HienTrangKiemTra, string NoiDungKiemTra, int TieuThuTrungBinh, string NguoiLap, string To) {
+            public DSKTXMRow AddDSKTXMRow(string TuNgay, string DenNgay, string MaCTKTXM, string TenLD, string MaDon, string DanhBo, string HoTen, string DiaChi, int STT_HTKT, string HienTrangKiemTra, string NoiDungKiemTra, int TieuThuTrungBinh, string NguoiLap, string To) {
                 DSKTXMRow rowDSKTXMRow = ((DSKTXMRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         TuNgay,
@@ -6054,6 +6064,7 @@ namespace KTKS_DonKH.BaoCao {
                         DanhBo,
                         HoTen,
                         DiaChi,
+                        STT_HTKT,
                         HienTrangKiemTra,
                         NoiDungKiemTra,
                         TieuThuTrungBinh,
@@ -6089,6 +6100,7 @@ namespace KTKS_DonKH.BaoCao {
                 this.columnDanhBo = base.Columns["DanhBo"];
                 this.columnHoTen = base.Columns["HoTen"];
                 this.columnDiaChi = base.Columns["DiaChi"];
+                this.columnSTT_HTKT = base.Columns["STT_HTKT"];
                 this.columnHienTrangKiemTra = base.Columns["HienTrangKiemTra"];
                 this.columnNoiDungKiemTra = base.Columns["NoiDungKiemTra"];
                 this.columnTieuThuTrungBinh = base.Columns["TieuThuTrungBinh"];
@@ -6115,6 +6127,8 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnHoTen);
                 this.columnDiaChi = new global::System.Data.DataColumn("DiaChi", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDiaChi);
+                this.columnSTT_HTKT = new global::System.Data.DataColumn("STT_HTKT", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSTT_HTKT);
                 this.columnHienTrangKiemTra = new global::System.Data.DataColumn("HienTrangKiemTra", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHienTrangKiemTra);
                 this.columnNoiDungKiemTra = new global::System.Data.DataColumn("NoiDungKiemTra", typeof(string), null, global::System.Data.MappingType.Element);
@@ -20973,6 +20987,22 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int STT_HTKT {
+                get {
+                    try {
+                        return ((int)(this[this.tableDSKTXM.STT_HTKTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'STT_HTKT\' in table \'DSKTXM\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDSKTXM.STT_HTKTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string HienTrangKiemTra {
                 get {
                     try {
@@ -21145,6 +21175,18 @@ namespace KTKS_DonKH.BaoCao {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDiaChiNull() {
                 this[this.tableDSKTXM.DiaChiColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSTT_HTKTNull() {
+                return this.IsNull(this.tableDSKTXM.STT_HTKTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSTT_HTKTNull() {
+                this[this.tableDSKTXM.STT_HTKTColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

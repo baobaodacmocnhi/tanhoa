@@ -100,7 +100,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
 
                 dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-                dr["MaLD"] = itemRow["MaLD"];
+                //dr["MaLD"] = itemRow["MaLD"];
                 dr["TenLD"] = itemRow["TenLD"];
                 dr["NgayNhan"] = itemRow["CreateDate"].ToString().Substring(0, 10);
                 DonKH donkh = _cDonKH.Get(decimal.Parse(itemRow["MaDon"].ToString()));

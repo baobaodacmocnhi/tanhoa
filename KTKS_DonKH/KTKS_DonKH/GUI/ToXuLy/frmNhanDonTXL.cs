@@ -29,7 +29,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         CPhongBanDoi _cPhongBanDoi = new CPhongBanDoi();
         DataSet _dsNoiChuyen = new DataSet("NoiChuyen");
         bool _flagFirst = false;
-        decimal _MaDon = 0;
+        decimal _MaDon = -1;
 
         public frmNhanDonTXL()
         {
@@ -94,7 +94,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
             dt.TableName = "10";//Chuyên Đề Định Mức
             _dsNoiChuyen.Tables.Add(dt);
 
-            if (_MaDon != 0)
+            if (_MaDon != -1)
             {
                 txtMaDon.Text = _MaDon.ToString();
                 KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
@@ -151,6 +151,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
             txtDienThoai.Text = "";
             _hoadon = null;
             _dontxl = null;
+            _MaDon = -1;
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
@@ -291,9 +292,14 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
             {
-                if (_cDonTXL.CheckExist(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", ""))) == true)
+                string MaDon = "";
+                if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
+                    MaDon = txtMaDon.Text.Trim().Substring(3).Replace("-", "");
+                else
+                    MaDon = txtMaDon.Text.Trim().Replace("-", "");
+                if (_cDonTXL.CheckExist(decimal.Parse(MaDon)) == true)
                 {
-                    _dontxl = _cDonTXL.Get(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
+                    _dontxl = _cDonTXL.Get(decimal.Parse(MaDon));
                     LoadDonTXL(_dontxl);
                 }
                 else

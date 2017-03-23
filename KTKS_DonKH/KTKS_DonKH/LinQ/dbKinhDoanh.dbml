@@ -114,13 +114,13 @@
       <Column Name="SoNKNhan" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="SoNKConLai" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="YeuCauCat" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="MaLCT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaLCT" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="KhacDiaBan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="ChungTu_CTChungTu" Member="CTChungTus" ThisKey="MaCT" OtherKey="MaCT" Type="CTChungTu" />
+      <Association Name="ChungTu_CTChungTu" Member="CTChungTus" ThisKey="MaCT,MaLCT" OtherKey="MaCT,MaLCT" Type="CTChungTu" />
       <Association Name="LoaiChungTu_ChungTu" Member="LoaiChungTu" ThisKey="MaLCT" OtherKey="MaLCT" Type="LoaiChungTu" IsForeignKey="true" />
     </Type>
   </Table>
@@ -243,6 +243,7 @@
     <Type Name="CTChungTu">
       <Column Name="DanhBo" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="MaCT" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaLCT" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="DienThoai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="SoChinh" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="SoNKDangKy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -294,7 +295,7 @@
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="ChungTu_CTChungTu" Member="ChungTu" ThisKey="MaCT" OtherKey="MaCT" Type="ChungTu" IsForeignKey="true" />
+      <Association Name="ChungTu_CTChungTu" Member="ChungTu" ThisKey="MaCT,MaLCT" OtherKey="MaCT,MaLCT" Type="ChungTu" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.CTCTDB" Member="CTCTDBs">
@@ -1019,6 +1020,7 @@
       <Column Name="MaLSCT" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="DanhBo" Type="System.String" DbType="NVarChar(11)" CanBeNull="true" />
       <Column Name="MaCT" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaLCT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Lo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Phong" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="SoNKTong" Type="System.Int32" DbType="Int" CanBeNull="true" />

@@ -737,6 +737,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                             }
 
                     Clear();
+                    _cTTTN.Refresh();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtMaDon.Focus();
                 }
@@ -831,6 +832,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                                     _cTTTN.SuaCT(cttttn);
                                 }
+                        _cTTTN.Refresh();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -854,6 +856,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         if (_cTTTN.Xoa(_tttn))
                         {
                             Clear();
+                            _cTTTN.Refresh();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
