@@ -72,6 +72,7 @@
             this.btnInTB = new System.Windows.Forms.Button();
             this.chkAll = new System.Windows.Forms.CheckBox();
             this.chkChuKy = new System.Windows.Forms.CheckBox();
+            this.btnInDSTBTonThucTeNguoiGiao = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -457,9 +458,9 @@
             // 
             this.btnInDSTBTonNguoiGiao.Location = new System.Drawing.Point(1149, 195);
             this.btnInDSTBTonNguoiGiao.Name = "btnInDSTBTonNguoiGiao";
-            this.btnInDSTBTonNguoiGiao.Size = new System.Drawing.Size(140, 23);
+            this.btnInDSTBTonNguoiGiao.Size = new System.Drawing.Size(145, 23);
             this.btnInDSTBTonNguoiGiao.TabIndex = 34;
-            this.btnInDSTBTonNguoiGiao.Text = "In DS TB Tồn(Người Giao)";
+            this.btnInDSTBTonNguoiGiao.Text = "In DS TB Tồn (Người Giao)";
             this.btnInDSTBTonNguoiGiao.UseVisualStyleBackColor = true;
             this.btnInDSTBTonNguoiGiao.Click += new System.EventHandler(this.btnInDSTBTonNguoiGiao_Click);
             // 
@@ -494,11 +495,22 @@
             this.chkChuKy.Text = "Có Chữ Ký";
             this.chkChuKy.UseVisualStyleBackColor = true;
             // 
+            // btnInDSTBTonThucTeNguoiGiao
+            // 
+            this.btnInDSTBTonThucTeNguoiGiao.Location = new System.Drawing.Point(1149, 224);
+            this.btnInDSTBTonThucTeNguoiGiao.Name = "btnInDSTBTonThucTeNguoiGiao";
+            this.btnInDSTBTonThucTeNguoiGiao.Size = new System.Drawing.Size(190, 23);
+            this.btnInDSTBTonThucTeNguoiGiao.TabIndex = 97;
+            this.btnInDSTBTonThucTeNguoiGiao.Text = "In DS TB Tồn Thực Tế (Người Giao)";
+            this.btnInDSTBTonThucTeNguoiGiao.UseVisualStyleBackColor = true;
+            this.btnInDSTBTonThucTeNguoiGiao.Click += new System.EventHandler(this.btnInDSTBTonThucTeNguoiGiao_Click);
+            // 
             // frmGiaoTBDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1360, 666);
+            this.Controls.Add(this.btnInDSTBTonThucTeNguoiGiao);
             this.Controls.Add(this.chkChuKy);
             this.Controls.Add(this.chkAll);
             this.Controls.Add(this.btnInTB);
@@ -577,5 +589,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn TinhTrang;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private System.Windows.Forms.CheckBox chkChuKy;
+        private System.Windows.Forms.Button btnInDSTBTonThucTeNguoiGiao;
     }
 }

@@ -103,6 +103,7 @@
             this.mnuPhiMoNuocQuay = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTienDuQuay = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLichSuDieuChinhTienDuQuay = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDangNganTienDuQuay = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuQuetGiaoTon = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBaoCaoQuay = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTongHop = new System.Windows.Forms.ToolStripMenuItem();
@@ -125,7 +126,6 @@
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.mnuDangNganTienDuQuay = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -723,6 +723,13 @@
             this.mnuLichSuDieuChinhTienDuQuay.Size = new System.Drawing.Size(218, 22);
             this.mnuLichSuDieuChinhTienDuQuay.Text = "Lịch Sử Điều Chỉnh Tiền Dư";
             // 
+            // mnuDangNganTienDuQuay
+            // 
+            this.mnuDangNganTienDuQuay.Name = "mnuDangNganTienDuQuay";
+            this.mnuDangNganTienDuQuay.Size = new System.Drawing.Size(218, 22);
+            this.mnuDangNganTienDuQuay.Text = "Đăng Ngân Tiền Dư";
+            this.mnuDangNganTienDuQuay.Click += new System.EventHandler(this.mnuDangNganTienDuQuay_Click);
+            // 
             // mnuQuetGiaoTon
             // 
             this.mnuQuetGiaoTon.Name = "mnuQuetGiaoTon";
@@ -891,13 +898,6 @@
             // 
             this.timer.Interval = 1200000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
-            // mnuDangNganTienDuQuay
-            // 
-            this.mnuDangNganTienDuQuay.Name = "mnuDangNganTienDuQuay";
-            this.mnuDangNganTienDuQuay.Size = new System.Drawing.Size(218, 22);
-            this.mnuDangNganTienDuQuay.Text = "Đăng Ngân Tiền Dư";
-            this.mnuDangNganTienDuQuay.Click += new System.EventHandler(this.mnuDangNganTienDuQuay_Click);
             // 
             // frmMain
             // 

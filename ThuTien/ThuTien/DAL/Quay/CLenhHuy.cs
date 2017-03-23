@@ -362,7 +362,21 @@ namespace ThuTien.DAL.Quay
                         };
             return LINQToDataTable(query.Take(1));
         }
-        
+
+        public DataTable GetDSDanhBoTon(int MaTo)
+        {
+            var query = from itemLH in _db.TT_LenhHuys
+                        join itemHD in _db.HOADONs on itemLH.MaHD equals itemHD.ID_HOADON
+                        where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                           && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                           && itemHD.NGAYGIAITRACH == null
+                        select new
+                        {
+                            DanhBo=itemHD.DANHBA,
+                        };
+            return LINQToDataTable(query.Distinct());
+        }
+
         public string GetTinhTrang(string SoHoaDon)
         {
             return _db.TT_LenhHuys.SingleOrDefault(item => item.SoHoaDon == SoHoaDon).TinhTrang;

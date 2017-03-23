@@ -10,6 +10,7 @@ using ThuTien.DAL.Quay;
 using ThuTien.DAL.QuanTri;
 using ThuTien.DAL.DongNuoc;
 using ThuTien.LinQ;
+using ThuTien.DAL.Doi;
 
 namespace ThuTien.GUI.ToTruong
 {
@@ -19,6 +20,7 @@ namespace ThuTien.GUI.ToTruong
         CDongNuoc _cDongNuoc = new CDongNuoc();
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CTo _cTo = new CTo();
+        CHoaDon _cHoaDon = new CHoaDon();
 
         public frmHoaDonTamThu()
         {
@@ -28,7 +30,7 @@ namespace ThuTien.GUI.ToTruong
         private void frmHoaDonTamThu_Load(object sender, EventArgs e)
         {
             dgvHoaDon.AutoGenerateColumns = false;
-
+            dgvHoaDon_LH.AutoGenerateColumns = false;
             if (CNguoiDung.Doi)
             {
                 cmbTo.Visible = true;
@@ -44,6 +46,14 @@ namespace ThuTien.GUI.ToTruong
             }
             else
                 lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
+
+            DataTable dtNam = _cHoaDon.GetNam();
+            DataRow dr = dtNam.NewRow();
+            dr["ID"] = "Tất Cả";
+            dtNam.Rows.InsertAt(dr, 0);
+            cmbNam.DataSource = dtNam;
+            cmbNam.DisplayMember = "ID";
+            cmbNam.ValueMember = "Nam";
         }
 
         private void btnXem_Click(object sender, EventArgs e)
@@ -90,6 +100,25 @@ namespace ThuTien.GUI.ToTruong
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
+        }
+
+        private void btnXem_LH_Click(object sender, EventArgs e)
+        {
+            DataTable dtLH = _cLenhHuy.GetDSDanhBoTon(CNguoiDung.MaTo);
+            DataTable dtHD = _cHoaDon.GetDS(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+            List<DataRow> RowsToDelete = new List<DataRow>();
+
+            for (int i = 0; i < dtHD.Rows.Count; i++)
+                if (dtLH.Select("DanhBo='" + dtHD.Rows[i]["DanhBo"].ToString() + "'").Count() == 0 || _cLenhHuy.CheckExist(dtHD.Rows[i]["SoHoaDon"].ToString())==true)
+                {
+                    RowsToDelete.Add(dtHD.Rows[i]);
+                }
+
+            foreach (var dr in RowsToDelete)
+            {
+                dtHD.Rows.Remove(dr);
+            }
+            dgvHoaDon_LH.DataSource = dtHD;
         }
     }
 }
