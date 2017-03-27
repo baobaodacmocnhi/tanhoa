@@ -35,7 +35,7 @@ namespace ThuTien.GUI.Doi
             dgvHoaDon.AutoGenerateColumns = false;
             dgvDanhBoDK.AutoGenerateColumns = false;
 
-            _lstTo = _cTo.GetDSHanhThu();
+            _lstTo = _cTo.GetDS();
             TT_To to = new TT_To();
             to.MaTo = 0;
             to.TenTo = "Tất Cả";
@@ -224,11 +224,20 @@ namespace ThuTien.GUI.Doi
         {
             if (cmbToDK.SelectedIndex > 0)
             {
-                List<TT_NguoiDung> lstND = _cNguoiDung.GetDSHanhThuByMaTo(int.Parse(cmbToDK.SelectedValue.ToString()));
-                TT_NguoiDung nguoidung = new TT_NguoiDung();
-                nguoidung.MaND = 0;
-                nguoidung.HoTen = "Tất Cả";
-                lstND.Insert(0, nguoidung);
+                List<TT_NguoiDung> lstND=null;
+                if ((_cTo.CheckHanhThu(int.Parse(cmbToDK.SelectedValue.ToString()))))
+                {
+                    lstND = _cNguoiDung.GetDSHanhThuByMaTo(int.Parse(cmbToDK.SelectedValue.ToString()));
+                    TT_NguoiDung nguoidung = new TT_NguoiDung();
+                    nguoidung.MaND = 0;
+                    nguoidung.HoTen = "Tất Cả";
+                    lstND.Insert(0, nguoidung);
+                    
+                }
+                else
+                {
+                    lstND = _cNguoiDung.GetDSByToVanPhong(int.Parse(cmbToDK.SelectedValue.ToString()));
+                }
                 cmbNhanVienDK.DataSource = lstND;
                 cmbNhanVienDK.DisplayMember = "HoTen";
                 cmbNhanVienDK.ValueMember = "MaND";

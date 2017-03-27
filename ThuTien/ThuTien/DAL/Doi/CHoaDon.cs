@@ -645,7 +645,7 @@ namespace ThuTien.DAL.Doi
             {
                 string sql = "declare @nam int;"
                             + " declare @ky int;"
-                             + " declare @dot int;"
+                            + " declare @dot int;"
                             + " set @nam=" + Nam + ";"
                             + " set @ky=" + Ky + ";"
                             + " set @dot=" + Dot + ";"
@@ -677,7 +677,7 @@ namespace ThuTien.DAL.Doi
                 {
                     string sql = "declare @nam int;"
                             + " declare @ky int;"
-                             + " declare @dot int;"
+                            + " declare @dot int;"
                             + " set @nam=" + Nam + ";"
                             + " set @ky=" + Ky + ";"
                             + " set @dot=" + Dot + ";"

@@ -241,7 +241,7 @@ namespace ThuTien.DAL.QuanTri
 
         public List<TT_NguoiDung> GetDSByToVanPhong(int MaTo)
         {
-            return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo&&item.TT_To.HanhThu==false).OrderBy(item => item.STT).ToList();
+            return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo && item.TT_To.HanhThu==false && item.VanPhong == true).OrderBy(item => item.STT).ToList();
         }
 
         public List<TT_NguoiDung> GetDSDongNuocByMaTo(int MaTo)

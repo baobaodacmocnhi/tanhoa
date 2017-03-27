@@ -7,7 +7,7 @@ using ThuTien.LinQ;
 
 namespace ThuTien.DAL.ChuyenKhoan
 {
-    class CDichVuThu:CDAL
+    class CDichVuThu : CDAL
     {
         public TT_DichVuThu Get(string SoHoaDon)
         {
@@ -36,7 +36,7 @@ namespace ThuTien.DAL.ChuyenKhoan
 
         public DataTable GetDichVuThu()
         {
-            return LINQToDataTable(_db.ViewGetDichVuThus.OrderBy(item=>item.TenDichVu));
+            return LINQToDataTable(_db.ViewGetDichVuThus.OrderBy(item => item.TenDichVu));
         }
 
         public DataTable GetDS(string DanhBo)
@@ -47,7 +47,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         from itemtableND in tableND.DefaultIfEmpty()
                         join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
                         from itemtableDN in tableDN.DefaultIfEmpty()
-                        where itemDV.DanhBo==DanhBo
+                        where itemDV.DanhBo == DanhBo
                         orderby itemDV.CreateDate ascending
                         select new
                         {
@@ -68,12 +68,12 @@ namespace ThuTien.DAL.ChuyenKhoan
                             GiaBieu = itemHD.GB,
                             HanhThu = itemtableND.HoTen,
                             To = itemtableND.TT_To.TenTo,
-                            DangNgan=itemtableDN.HoTen,
+                            DangNgan = itemtableDN.HoTen,
                         };
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDS(string TenDichVu,DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable GetDS(string TenDichVu, DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from itemDV in _db.TT_DichVuThus
                         join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
@@ -81,7 +81,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         from itemtableND in tableND.DefaultIfEmpty()
                         join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
                         from itemtableDN in tableDN.DefaultIfEmpty()
-                        where itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate 
+                        where itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate
                         && itemDV.TenDichVu.Contains(TenDichVu)
                         orderby itemDV.CreateDate ascending
                         select new
@@ -99,16 +99,31 @@ namespace ThuTien.DAL.ChuyenKhoan
                             MLT = itemHD.MALOTRINH,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
-                            DiaChi=itemHD.SO+" "+itemHD.DUONG,
-                            GiaBieu=itemHD.GB,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            GiaBieu = itemHD.GB,
                             HanhThu = itemtableND.HoTen,
                             To = itemtableND.TT_To.TenTo,
                             DangNgan = itemtableDN.HoTen,
                         };
             return LINQToDataTable(query);
+            //string sql = "declare @FromCreateDate datetime;"
+            //            + " declare @ToCreateDate datetime;"
+            //            + " set @FromCreateDate='" + FromCreateDate.ToString("yyyy-MM-dd HH:mm:ss") + "';"
+            //            + " set @ToCreateDate='" + ToCreateDate.ToString("yyyy-MM-dd HH:mm:ss") + "';"
+            //            + " select dvt.SoHoaDon,dvt.SoTien,dvt.Phi,dvt.TenDichVu,dvt.CreateDate,"
+            //            + " hd.NGAYGIAITRACH,hd.DangNgan_Quay,hd.DangNgan_ChuyenKhoan,hd.TIEUTHU,"
+            //            + " Ky=(convert(varchar(2),hd.KY)+'/'+convert(varchar(4),hd.NAM)),MLT=hd.MALOTRINH,DanhBo=hd.DANHBA,HoTen=hd.TENKH,"
+            //            + " DiaChi=hd.SO+' '+hd.DUONG,GiaBieu=hd.GB,HanhThu=ndHanhThu.HoTen,'To'=(select TenTo from TT_To where MaTo=ndHanhThu.MaTo),DangNgan=ndDangNgan.HoTen"
+            //            + " from TT_DichVuThu dvt,HOADON hd"
+            //            + " left join TT_NguoiDung ndHanhThu on hd.MaNV_HanhThu=ndHanhThu.MaND"
+            //            + " left join TT_NguoiDung ndDangNgan on hd.MaNV_DangNgan=ndDangNgan.MaND"
+            //            + " where dvt.SoHoaDon=hd.SOHOADON and dvt.TenDichVu like '%" + TenDichVu + "%'"
+            //            + " and dvt.CreateDate>=@FromCreateDate and dvt.CreateDate<=@ToCreateDate";
+
+            //return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
-        public DataTable GetDS(string TenDichVu, DateTime FromCreateDate, DateTime ToCreateDate,int FromDot,int ToDot)
+        public DataTable GetDS(string TenDichVu, DateTime FromCreateDate, DateTime ToCreateDate, int FromDot, int ToDot)
         {
             var query = from itemDV in _db.TT_DichVuThus
                         join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
@@ -215,10 +230,10 @@ namespace ThuTien.DAL.ChuyenKhoan
                         };
             return LINQToDataTable(query);
         }
-        
+
         public DataTable GetDS_NV(int MaNV_HanhThu, string TenDichVu, DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            DataTable dt=new DataTable();
+            DataTable dt = new DataTable();
             var query = from itemDV in _db.TT_DichVuThus
                         join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
@@ -249,7 +264,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                             To = itemtableND.TT_To.TenTo,
                             DangNgan = itemtableDN.HoTen,
                         };
-            dt=LINQToDataTable(query);
+            dt = LINQToDataTable(query);
 
             var queryDN = from itemDV in _db.TT_DichVuThus
                           join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
@@ -258,7 +273,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                           from itemtableND in tableND.DefaultIfEmpty()
                           join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
                           from itemtableDN in tableDN.DefaultIfEmpty()
-                          where itemCTDN.TT_DongNuoc.MaNV_DongNuoc == MaNV_HanhThu && itemCTDN.TT_DongNuoc.Huy==false
+                          where itemCTDN.TT_DongNuoc.MaNV_DongNuoc == MaNV_HanhThu && itemCTDN.TT_DongNuoc.Huy == false
                             && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
                           select new
                           {
@@ -354,13 +369,13 @@ namespace ThuTien.DAL.ChuyenKhoan
                           };
             dt.Merge(LINQToDataTable(queryDN));
             if (dt.Rows.Count > 0)
-            dt.DefaultView.Sort = "CreateDate ASC";
+                dt.DefaultView.Sort = "CreateDate ASC";
             dt = dt.DefaultView.ToTable();
 
             return dt;
         }
 
-        public DataTable GetDS_PGD(int Nam,int Ky)
+        public DataTable GetDS_PGD(int Nam, int Ky)
         {
             var query = from itemDV in _db.TT_DichVuThus
                         join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
@@ -402,7 +417,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         from itemtableND in tableND.DefaultIfEmpty()
                         join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
                         from itemtableDN in tableDN.DefaultIfEmpty()
-                        where itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT==Dot && itemHD.DangNgan_ChuyenKhoan==false
+                        where itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT == Dot && itemHD.DangNgan_ChuyenKhoan == false
                         orderby itemDV.CreateDate ascending
                         select new
                         {
