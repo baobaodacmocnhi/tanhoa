@@ -1,0 +1,24 @@
+﻿#form
+{
+    margin-top: 10px;
+    margin-left: 50px;
+}
+div
+{
+    margin-bottom: 5px;
+}
+.label
+{
+    float: left;
+    width: 80px;
+}
+.hidden
+{
+    display: none;
+}
+.title
+{
+    margin-bottom:30px;
+    font-weight:bold;
+    font-size:large
+}

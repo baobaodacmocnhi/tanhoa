@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode>
+    <siteMapNode url="~/Default.aspx" title="Hệ Thống"  description="">
+      <siteMapNode url="" title=""  description="" />
+    </siteMapNode>
+    <siteMapNode url="" title="Quản Trị"  description="">
+      <siteMapNode url="~/GUI/QuanTri/GiamSat_GNKDT.aspx" title="Giám Sát GNKDT"  description="" />
+      <siteMapNode url="~/GUI/QuanTri/GiamSat_KTCN.aspx" title="Giám Sát KTCN"  description="" />
+      <siteMapNode url="~/GUI/QuanTri/ThiCong_TCTB.aspx" title="Thi Công TCTB"  description="" />
+    </siteMapNode>
+    <siteMapNode url="" title="TCTB"  description="">
+      <siteMapNode url="~/GUI/TCTB/BaoBe.aspx" title="Báo Bể"  description="" />
+    </siteMapNode>
+  </siteMapNode>
+</siteMap>

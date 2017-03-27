@@ -1,0 +1,39 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.Master.cs"
+    Inherits="TCTB_Web.Site" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link href="CSS/main.css" rel="stylesheet" type="text/css" />
+    <link href="CSS/form.css" rel="stylesheet" type="text/css" />
+    <title></title>
+</head>
+<body id="body">
+    <form id="form1" runat="server">
+    <div id="mainWeb">
+        <div id="header">
+            <div class="menu">
+                <asp:SiteMapDataSource ID="SiteMap" runat="server" ShowStartingNode="False" />
+                <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMap" Orientation="Horizontal">
+                    <%--<LevelMenuItemStyles>
+                        <asp:MenuItemStyle CssClass="main_menu" />
+                        <asp:MenuItemStyle CssClass="level_menu" />
+                    </LevelMenuItemStyles>--%>
+                </asp:Menu>
+            </div>
+        </div>
+        <div id="main">
+            <div class="maincontent">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    noi dung
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+        <div id="footer">
+            Website được thiết kế và xây dựng bởi T.CNTT thuộc Công ty Cổ phần Cấp nước Tân
+            Hòa
+        </div>
+    </div>
+    </form>
+</body>
+</html>
