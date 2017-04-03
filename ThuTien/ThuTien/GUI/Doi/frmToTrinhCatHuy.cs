@@ -143,10 +143,10 @@ namespace ThuTien.GUI.Doi
         private void btnXem_Click(object sender, EventArgs e)
         {
             dgvToTrinh.DataSource = _cToTrinhCatHuy.GetDSTT();
-            while (dgvCTToTrinh.Rows.Count > 0)
-            {
+            if (dgvCTToTrinh.DataSource != null)
                 dgvCTToTrinh.DataSource = null;
-            }
+            if (dgvCTToTrinh.Rows.Count > 0)
+                dgvCTToTrinh.Rows.Clear();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -156,7 +156,6 @@ namespace ThuTien.GUI.Doi
                 if (dgvCTToTrinh.Rows.Count > 0)
                     try
                     {
-                        //_cToTrinhCatHuy.BeginTransaction();
                         TT_ToTrinhCatHuy totrinh;
                         if (dgvCTToTrinh.DataSource == null)
                             totrinh = new TT_ToTrinhCatHuy();
@@ -188,31 +187,26 @@ namespace ThuTien.GUI.Doi
                         if (dgvCTToTrinh.DataSource == null)
                             if (_cToTrinhCatHuy.ThemTT(totrinh))
                             {
-                                //_cToTrinhCatHuy.CommitTransaction();
-                                btnXem.PerformClick();
                                 MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                btnXem.PerformClick();
                             }
                             else
                             {
-                                //_cToTrinhCatHuy.Rollback();
                                 MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         else
                             if (_cToTrinhCatHuy.SuaTT(totrinh))
                             {
-                                //_cToTrinhCatHuy.CommitTransaction();
-                                btnXem.PerformClick();
                                 MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                btnXem.PerformClick();
                             }
                             else
                             {
-                                //_cToTrinhCatHuy.Rollback();
                                 MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                     }
                     catch (Exception)
                     {
-                        //_cToTrinhCatHuy.Rollback();
                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
             }
@@ -228,13 +222,11 @@ namespace ThuTien.GUI.Doi
                 {
                     try
                     {
-                        //_cToTrinhCatHuy.BeginTransaction();
                         foreach (DataGridViewRow item in dgvCTToTrinh.SelectedRows)
                         {
                             TT_CTToTrinhCatHuy cttotrinh = _cToTrinhCatHuy.GetCT(int.Parse(item.Cells["MaCTTT"].Value.ToString()));
                             if (!_cToTrinhCatHuy.XoaCT(cttotrinh))
                             {
-                                //_cToTrinhCatHuy.Rollback();
                                 MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
@@ -244,14 +236,11 @@ namespace ThuTien.GUI.Doi
                             TT_ToTrinhCatHuy totrinh = _cToTrinhCatHuy.GetTT(decimal.Parse(dgvToTrinh.SelectedRows[0].Cells["MaTT"].Value.ToString()));
                             _cToTrinhCatHuy.XoaTT(totrinh);
                         }
-
-                        //_cToTrinhCatHuy.CommitTransaction();
-                        btnXem.PerformClick();
                         MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        btnXem.PerformClick();
                     }
                     catch (Exception)
                     {
-                        //_cToTrinhCatHuy.Rollback();
                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
@@ -448,6 +437,7 @@ namespace ThuTien.GUI.Doi
 
         private void dgvCTToTrinh_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
+            if (dgvCTToTrinh["MaCTTT", e.RowIndex].Value!=null)
             if (dgvCTToTrinh["MaCTTT", e.RowIndex].Value.ToString() != "" && dgvCTToTrinh.Columns[e.ColumnIndex].Name == "GhiChu" && (dgvCTToTrinh[e.ColumnIndex, e.RowIndex].Value == null || e.FormattedValue.ToString() != dgvCTToTrinh[e.ColumnIndex, e.RowIndex].Value.ToString()))
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {

@@ -360,7 +360,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 arr[i + j, 5] = dr["TongCong"].ToString();
 
                 arr[i + j, 10] = int.Parse(arr[i + j, 10].ToString()) + int.Parse(dr["TongHD"].ToString());
-                arr[i + j, 11] = int.Parse(arr[i + j, 11].ToString()) + int.Parse(dr["TongCong"].ToString());
+                arr[i + j, 11] = Int64.Parse(arr[i + j, 11].ToString()) + int.Parse(dr["TongCong"].ToString());
 
                 j = j + 2;//nhảy hàng
             }
@@ -394,7 +394,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 arr[i + j, 7] = dr["TongCong"].ToString();
 
                 arr[i + j, 10] = int.Parse(arr[i + j, 10].ToString()) + int.Parse(dr["TongHD"].ToString());
-                arr[i + j, 11] = int.Parse(arr[i + j, 11].ToString()) + int.Parse(dr["TongCong"].ToString());
+                arr[i + j, 11] = Int64.Parse(arr[i + j, 11].ToString()) + int.Parse(dr["TongCong"].ToString());
 
                 j = j + 2;//nhảy hàng
             }
@@ -428,7 +428,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 arr[i + j, 9] = dr["TongCong"].ToString();
 
                 arr[i + j, 10] = int.Parse(arr[i + j, 10].ToString()) + int.Parse(dr["TongHD"].ToString());
-                arr[i + j, 11] = int.Parse(arr[i + j, 11].ToString()) + int.Parse(dr["TongCong"].ToString());
+                arr[i + j, 11] = Int64.Parse(arr[i + j, 11].ToString()) + int.Parse(dr["TongCong"].ToString());
 
                 j = j + 2;//nhảy hàng
             }

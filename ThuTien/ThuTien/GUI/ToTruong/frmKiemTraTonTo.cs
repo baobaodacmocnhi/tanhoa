@@ -175,7 +175,11 @@ namespace ThuTien.GUI.ToTruong
                     else
                         if (chkDenKy.Checked)
                         {
-                            dgvHDTuGia.DataSource = _cHoaDon.GetTongTonDenKy_To("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                            if (cmbFromDot.SelectedIndex == 0)
+                                dgvHDTuGia.DataSource = _cHoaDon.GetTongTonDenKy_To("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                            else
+                                if (cmbFromDot.SelectedIndex > 0)
+                                    dgvHDTuGia.DataSource = _cHoaDon.GetTongTonDenKy_To("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
                         }
                         else
                             if (chkNgayKiemTra.Checked)
@@ -228,20 +232,20 @@ namespace ThuTien.GUI.ToTruong
                         else
                             if (chkDenKy.Checked)
                             {
-                                //dgvHDTuGia.DataSource = _cHoaDon.GetTongTonDenKy_NV("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                                DataTable dt = new DataTable();
                                 if (cmbFromDot.SelectedIndex == 0)
-                                    for (int i = 1; i <= 20; i++)
-                                    {
-                                        dt.Merge(_cHoaDon.GetTongTonDenKy_NV("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
-                                    }
+                                {
+                                    dgvHDTuGia.DataSource = _cHoaDon.GetTongTonDenKy_NV("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                }
                                 else
                                     if (cmbFromDot.SelectedIndex > 0)
+                                    {
+                                        DataTable dt = new DataTable();
                                         for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
                                         {
-                                            dt.Merge(_cHoaDon.GetTongTonDenKy_NV("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
+                                            dt.Merge(_cHoaDon.GetTongTonDenKy_NV("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i)); 
                                         }
-                                dgvHDTuGia.DataSource = dt;
+                                        dgvHDTuGia.DataSource = dt;
+                                    }
                             }
                             else
                                 if (chkNgayKiemTra.Checked)
@@ -268,22 +272,18 @@ namespace ThuTien.GUI.ToTruong
                                                 if (cmbKy.SelectedIndex > 0)
                                                     if (cmbFromDot.SelectedIndex == 0)
                                                     {
-                                                        DataTable dt = new DataTable();
-                                                        for (int i = 1; i <= 20; i++)
-                                                        {
-                                                            dt.Merge(_cHoaDon.GetTongTon_NV("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
-                                                        }
-                                                        dgvHDTuGia.DataSource = dt;
+                                                        dgvHDTuGia.DataSource = _cHoaDon.GetTongTon_NV("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                                                     }
                                                     else
-                                                    {
-                                                        DataTable dt = new DataTable();
-                                                        for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
+                                                        if (cmbFromDot.SelectedIndex > 0)
                                                         {
-                                                            dt.Merge(_cHoaDon.GetTongTon_NV("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
+                                                            DataTable dt = new DataTable();
+                                                            for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
+                                                            {
+                                                                dt.Merge(_cHoaDon.GetTongTon_NV("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
+                                                            }
+                                                            dgvHDTuGia.DataSource = dt;
                                                         }
-                                                        dgvHDTuGia.DataSource = dt;
-                                                    }
                                 }
                     }
                 CountdgvHDTuGia();
@@ -305,7 +305,11 @@ namespace ThuTien.GUI.ToTruong
                         else
                             if (chkDenKy.Checked)
                             {
-                                dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonDenKy_To("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                if (cmbFromDot.SelectedIndex == 0)
+                                    dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonDenKy_To("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                else
+                                    if (cmbFromDot.SelectedIndex > 0)
+                                        dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonDenKy_To("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
                             }
                             else
                                 if (chkNgayKiemTra.Checked)
@@ -358,13 +362,20 @@ namespace ThuTien.GUI.ToTruong
                             else
                                 if (chkDenKy.Checked)
                                 {
-                                    //dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonDenKy_NV("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                                    DataTable dt = new DataTable();
-                                    for (int i = 1; i <= 20; i++)
+                                    if (cmbFromDot.SelectedIndex == 0)
                                     {
-                                        dt.Merge(_cHoaDon.GetTongTonDenKy_NV("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
+                                        dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonDenKy_NV("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                                     }
-                                    dgvHDCoQuan.DataSource = dt;
+                                    else
+                                        if (cmbFromDot.SelectedIndex > 0)
+                                        {
+                                            DataTable dt = new DataTable();
+                                            for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
+                                            {
+                                                dt.Merge(_cHoaDon.GetTongTonDenKy_NV("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
+                                            }
+                                            dgvHDCoQuan.DataSource = dt;
+                                        }
                                 }
                                 else
                                     if (chkNgayKiemTra.Checked)
@@ -391,23 +402,18 @@ namespace ThuTien.GUI.ToTruong
                                                     if (cmbKy.SelectedIndex > 0)
                                                         if (cmbFromDot.SelectedIndex == 0)
                                                         {
-                                                            DataTable dt = new DataTable();
-                                                            for (int i = 1; i <= 20; i++)
-                                                            {
-                                                                dt.Merge(_cHoaDon.GetTongTon_NV("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
-                                                            }
-                                                            dgvHDCoQuan.DataSource = dt;
+                                                            dgvHDCoQuan.DataSource = _cHoaDon.GetTongTon_NV("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                                                         }
                                                         else
-                                                        {
-                                                            DataTable dt = new DataTable();
-                                                            for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
+                                                            if (cmbFromDot.SelectedIndex > 0)
                                                             {
-                                                                dt.Merge(_cHoaDon.GetTongTon_NV("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
+                                                                DataTable dt = new DataTable();
+                                                                for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
+                                                                {
+                                                                    dt.Merge(_cHoaDon.GetTongTon_NV("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
+                                                                }
+                                                                dgvHDCoQuan.DataSource = dt;
                                                             }
-                                                            dgvHDCoQuan.DataSource = dt;
-                                                        }
-
                                     }
                         }
                     CountdgvHDCoQuan();

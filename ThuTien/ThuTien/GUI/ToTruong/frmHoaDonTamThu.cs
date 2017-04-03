@@ -39,7 +39,7 @@ namespace ThuTien.GUI.ToTruong
                 TT_To to = new TT_To();
                 to.MaTo = 0;
                 to.TenTo = "Tất Cả";
-                lstTo.Insert(0, to);
+                lstTo.Insert(0,to);
                 cmbTo.DataSource = lstTo;
                 cmbTo.DisplayMember = "TenTo";
                 cmbTo.ValueMember = "MaTo";
@@ -48,9 +48,9 @@ namespace ThuTien.GUI.ToTruong
                 lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
 
             DataTable dtNam = _cHoaDon.GetNam();
-            DataRow dr = dtNam.NewRow();
-            dr["ID"] = "Tất Cả";
-            dtNam.Rows.InsertAt(dr, 0);
+            //DataRow dr = dtNam.NewRow();
+            //dr["ID"] = "Tất Cả";
+            //dtNam.Rows.InsertAt(dr, 0);
             cmbNam.DataSource = dtNam;
             cmbNam.DisplayMember = "ID";
             cmbNam.ValueMember = "Nam";
@@ -105,11 +105,16 @@ namespace ThuTien.GUI.ToTruong
         private void btnXem_LH_Click(object sender, EventArgs e)
         {
             DataTable dtLH = _cLenhHuy.GetDSDanhBoTon(CNguoiDung.MaTo);
-            DataTable dtHD = _cHoaDon.GetDS(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+            DataTable dtHD = new DataTable();
+            if (cmbDot.SelectedIndex == 0)
+                dtHD = _cHoaDon.GetDS(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+            else
+                if (cmbDot.SelectedIndex > 0)
+                    dtHD = _cHoaDon.GetDS(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
             List<DataRow> RowsToDelete = new List<DataRow>();
 
             for (int i = 0; i < dtHD.Rows.Count; i++)
-                if (dtLH.Select("DanhBo='" + dtHD.Rows[i]["DanhBo"].ToString() + "'").Count() == 0 || _cLenhHuy.CheckExist(dtHD.Rows[i]["SoHoaDon"].ToString())==true)
+                if (dtLH.Select("DanhBo='" + dtHD.Rows[i]["DanhBo"].ToString() + "'").Count() == 0 || _cLenhHuy.CheckExist(dtHD.Rows[i]["SoHoaDon"].ToString()) == true)
                 {
                     RowsToDelete.Add(dtHD.Rows[i]);
                 }
@@ -119,6 +124,22 @@ namespace ThuTien.GUI.ToTruong
                 dtHD.Rows.Remove(dr);
             }
             dgvHoaDon_LH.DataSource = dtHD;
+        }
+
+        private void dgvHoaDon_LH_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvHoaDon_LH.Columns[e.ColumnIndex].Name == "MLT_LH" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(2, " ");
+            }
+            if (dgvHoaDon_LH.Columns[e.ColumnIndex].Name == "DanhBo_LH" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
+            }
+            if (dgvHoaDon_LH.Columns[e.ColumnIndex].Name == "TongCong_LH" && e.Value != null)
+            {
+                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
         }
     }
 }

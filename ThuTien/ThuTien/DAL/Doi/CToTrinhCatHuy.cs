@@ -74,7 +74,7 @@ namespace ThuTien.DAL.Doi
 
         public DataTable GetDSTT()
         {
-           return LINQToDataTable(_db.TT_ToTrinhCatHuys.ToList().OrderByDescending(item=>item.CreateDate));
+           return LINQToDataTable(_db.TT_ToTrinhCatHuys.OrderByDescending(item=>item.CreateDate).ToList());
         }
 
         public TT_ToTrinhCatHuy GetTT(decimal MaTT)
