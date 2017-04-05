@@ -134,7 +134,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
                 dsBaoCao.Tables["DSKTXM"].Rows.Add(dr);
             }
-            rptDSKTXM rpt = new rptDSKTXM();
+            rptKTXM rpt = new rptKTXM();
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();

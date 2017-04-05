@@ -545,6 +545,18 @@ namespace KTKS_DonKH
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
+
+        private void mnuBaoCaoTruyThu_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuBaoCaoTruyThu", "Xem"))
+            {
+                frmBaoCaoTruyThu frm = new frmBaoCaoTruyThu();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
 
         #region Điều Chỉnh Biến Động
@@ -802,7 +814,9 @@ namespace KTKS_DonKH
             OpenForm(frm);
         }
 
-        
+
+
+
 
     }
 }

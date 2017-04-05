@@ -735,10 +735,14 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                                 _cTTTN.ThemCT(cttttn);
                             }
-
-                    Clear();
                     _cTTTN.Refresh();
+
+                    tttn.TongTien = tttn.CTTruyThuTienNuocs.Sum(item => item.TongCongMoi.Value) - tttn.CTTruyThuTienNuocs.Sum(item => item.TongCongCu.Value);
+                    tttn.Tongm3BinhQuan = tttn.TongTien / tttn.SoTien1m3;
+                    _cTTTN.SubmitChanges();
+                    
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Clear();
                     txtMaDon.Focus();
                 }
                 catch (Exception ex)
@@ -833,6 +837,11 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     _cTTTN.SuaCT(cttttn);
                                 }
                         _cTTTN.Refresh();
+
+                        _tttn.TongTien = _tttn.CTTruyThuTienNuocs.Sum(item => item.TongCongMoi.Value) - _tttn.CTTruyThuTienNuocs.Sum(item => item.TongCongCu.Value);
+                        _tttn.Tongm3BinhQuan = _tttn.TongTien / _tttn.SoTien1m3;
+                        _cTTTN.SubmitChanges();
+
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -855,9 +864,9 @@ namespace KTKS_DonKH.GUI.TruyThu
                     {
                         if (_cTTTN.Xoa(_tttn))
                         {
-                            Clear();
                             _cTTTN.Refresh();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Clear();
                         }
                     }
                 }

@@ -267,6 +267,27 @@ namespace KTKS_DonKH.DAL.TimKiem
                 dtGianLan.TableName = "GianLan";
                 ds.Tables.Add(dtGianLan);
 
+                ///Table TruyThu
+                var queryTruyThu = from itemTT in db.TruyThuTienNuocs
+                                   where itemTT.MaDon == MaDon
+                                   select new
+                                   {
+                                       MaDon = "TKH" + itemTT.MaDon,
+                                       itemTT.MaTTTN,
+                                       itemTT.DanhBo,
+                                       itemTT.HoTen,
+                                       itemTT.DiaChi,
+                                       itemTT.CreateDate,
+                                       itemTT.NoiDung,
+                                       itemTT.TongTien,
+                                       itemTT.Tongm3BinhQuan,
+                                   };
+
+                DataTable dtTruyThu = new DataTable();
+                dtTruyThu = LINQToDataTable(queryTruyThu);
+                dtTruyThu.TableName = "TruyThu";
+                ds.Tables.Add(dtTruyThu);
+
                 if (dtDon.Rows.Count > 0 && dtKTXM.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Kiểm Tra Xác Minh", ds.Tables["Don"].Columns["MaDon"], ds.Tables["KTXM"].Columns["MaDon"]);
 
@@ -290,6 +311,9 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 if (dtDon.Rows.Count > 0 && dtGianLan.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Gian Lận", ds.Tables["Don"].Columns["MaDon"], ds.Tables["GianLan"].Columns["MaDon"]);
+
+                if (dtDon.Rows.Count > 0 && dtTruyThu.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết Truy Thu", ds.Tables["Don"].Columns["MaDon"], ds.Tables["TruyThu"].Columns["MaDon"]);
 
                 return ds;
             }
@@ -557,6 +581,27 @@ namespace KTKS_DonKH.DAL.TimKiem
                 dtGianLan.TableName = "GianLan";
                 ds.Tables.Add(dtGianLan);
 
+                ///Table TruyThu
+                var queryTruyThu = from itemTT in db.TruyThuTienNuocs
+                                   where itemTT.MaDonTXL == MaDonTXL
+                                   select new
+                                   {
+                                       MaDon = "TXL" + itemTT.MaDonTXL,
+                                       itemTT.MaTTTN,
+                                       itemTT.DanhBo,
+                                       itemTT.HoTen,
+                                       itemTT.DiaChi,
+                                       itemTT.CreateDate,
+                                       itemTT.NoiDung,
+                                       itemTT.TongTien,
+                                       itemTT.Tongm3BinhQuan,
+                                   };
+
+                DataTable dtTruyThu = new DataTable();
+                dtTruyThu = LINQToDataTable(queryTruyThu);
+                dtTruyThu.TableName = "TruyThu";
+                ds.Tables.Add(dtTruyThu);
+
                 if (dtDon.Rows.Count > 0 && dtKTXM.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Kiểm Tra Xác Minh", ds.Tables["Don"].Columns["MaDon"], ds.Tables["KTXM"].Columns["MaDon"]);
 
@@ -580,6 +625,9 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 if (dtDon.Rows.Count > 0 && dtGianLan.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Gian Lận", ds.Tables["Don"].Columns["MaDon"], ds.Tables["GianLan"].Columns["MaDon"]);
+
+                if (dtDon.Rows.Count > 0 && dtTruyThu.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết Truy Thu", ds.Tables["Don"].Columns["MaDon"], ds.Tables["TruyThu"].Columns["MaDon"]);
 
                 return ds;
             }
@@ -848,6 +896,27 @@ namespace KTKS_DonKH.DAL.TimKiem
                 dtGianLan.TableName = "GianLan";
                 ds.Tables.Add(dtGianLan);
 
+                ///Table TruyThu
+                var queryTruyThu = from itemTT in db.TruyThuTienNuocs
+                                   where itemTT.MaDonTBC == MaDonTBC
+                                   select new
+                                   {
+                                       MaDon = "TBC" + itemTT.MaDonTBC,
+                                       itemTT.MaTTTN,
+                                       itemTT.DanhBo,
+                                       itemTT.HoTen,
+                                       itemTT.DiaChi,
+                                       itemTT.CreateDate,
+                                       itemTT.NoiDung,
+                                       itemTT.TongTien,
+                                       itemTT.Tongm3BinhQuan,
+                                   };
+
+                DataTable dtTruyThu = new DataTable();
+                dtTruyThu = LINQToDataTable(queryTruyThu);
+                dtTruyThu.TableName = "TruyThu";
+                ds.Tables.Add(dtTruyThu);
+
                 if (dtDon.Rows.Count > 0 && dtKTXM.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Kiểm Tra Xác Minh", ds.Tables["Don"].Columns["MaDon"], ds.Tables["KTXM"].Columns["MaDon"]);
 
@@ -871,6 +940,9 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 if (dtDon.Rows.Count > 0 && dtGianLan.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Gian Lận", ds.Tables["Don"].Columns["MaDon"], ds.Tables["GianLan"].Columns["MaDon"]);
+
+                if (dtDon.Rows.Count > 0 && dtTruyThu.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết Truy Thu", ds.Tables["Don"].Columns["MaDon"], ds.Tables["TruyThu"].Columns["MaDon"]);
 
                 return ds;
             }
@@ -1139,6 +1211,28 @@ namespace KTKS_DonKH.DAL.TimKiem
                 dtGianLan.TableName = "GianLan";
                 ds.Tables.Add(dtGianLan);
 
+                ///Table TruyThu
+                var queryTruyThu = from itemTT in db.TruyThuTienNuocs
+                                   where itemTT.DanhBo == DanhBo || (itemTT.DonKH.DanhBo == DanhBo || itemTT.DonTXL.DanhBo == DanhBo || itemTT.DonTBC.DanhBo == DanhBo)
+                                   select new
+                                   {
+                                       MaDon = itemTT.MaDon != null ? "TKH" + itemTT.MaDon
+                                       : itemTT.MaDonTXL != null ? "TXL" + itemTT.MaDonTXL
+                                       : itemTT.MaDonTBC != null ? "TBC" + itemTT.MaDonTBC : null,
+                                       itemTT.MaTTTN,
+                                       itemTT.DanhBo,
+                                       itemTT.HoTen,
+                                       itemTT.DiaChi,
+                                       itemTT.CreateDate,
+                                       itemTT.NoiDung,
+                                       itemTT.TongTien,
+                                       itemTT.Tongm3BinhQuan,
+                                   };
+                DataTable dtTruyThu = new DataTable();
+                dtTruyThu = LINQToDataTable(queryTruyThu);
+                dtTruyThu.TableName = "TruyThu";
+                ds.Tables.Add(dtTruyThu);
+
                 #endregion
 
                 #region DonKH
@@ -1327,6 +1421,24 @@ namespace KTKS_DonKH.DAL.TimKiem
                 queryDonKH = from itemDon in db.DonKHs
                              join itemGL in db.GianLans on itemDon.MaDon equals itemGL.MaDon
                              where itemGL.DanhBo == DanhBo
+                             select new
+                             {
+                                 MaDon = "TKH" + itemDon.MaDon,
+                                 itemDon.LoaiDon.TenLD,
+                                 itemDon.CreateDate,
+                                 itemDon.DanhBo,
+                                 itemDon.HoTen,
+                                 itemDon.DiaChi,
+                                 itemDon.GiaBieu,
+                                 itemDon.DinhMuc,
+                                 itemDon.NoiDung,
+                             };
+                dt.Merge(LINQToDataTable(queryDonKH));
+
+                ///Table TruyThu
+                queryDonKH = from itemDon in db.DonKHs
+                             join itemTT in db.TruyThuTienNuocs on itemDon.MaDon equals itemTT.MaDon
+                             where itemTT.DanhBo == DanhBo
                              select new
                              {
                                  MaDon = "TKH" + itemDon.MaDon,
@@ -1542,6 +1654,24 @@ namespace KTKS_DonKH.DAL.TimKiem
                               };
                 dt.Merge(LINQToDataTable(queryDonTXL));
 
+                ///Table TruyThu
+                queryDonTXL = from itemDonTXL in db.DonTXLs
+                              join itemTT in db.TruyThuTienNuocs on itemDonTXL.MaDon equals itemTT.MaDonTXL
+                              where itemTT.DanhBo == DanhBo
+                              select new
+                              {
+                                  MaDon = "TXL" + itemDonTXL.MaDon,
+                                  itemDonTXL.LoaiDonTXL.TenLD,
+                                  itemDonTXL.CreateDate,
+                                  itemDonTXL.DanhBo,
+                                  itemDonTXL.HoTen,
+                                  itemDonTXL.DiaChi,
+                                  itemDonTXL.GiaBieu,
+                                  itemDonTXL.DinhMuc,
+                                  itemDonTXL.NoiDung,
+                              };
+                dt.Merge(LINQToDataTable(queryDonTXL));
+
                 #endregion
 
                 #region DonTBC
@@ -1743,6 +1873,24 @@ namespace KTKS_DonKH.DAL.TimKiem
                               };
                 dt.Merge(LINQToDataTable(queryDonTBC));
 
+                ///Table TruyThu
+                queryDonTBC = from itemDon in db.DonTBCs
+                              join itemTT in db.TruyThuTienNuocs on itemDon.MaDon equals itemTT.MaDonTBC
+                              where itemTT.DanhBo == DanhBo
+                              select new
+                              {
+                                  MaDon = "TBC" + itemDon.MaDon,
+                                  itemDon.LoaiDonTBC.TenLD,
+                                  itemDon.CreateDate,
+                                  itemDon.DanhBo,
+                                  itemDon.HoTen,
+                                  itemDon.DiaChi,
+                                  itemDon.GiaBieu,
+                                  itemDon.DinhMuc,
+                                  itemDon.NoiDung,
+                              };
+                dt.Merge(LINQToDataTable(queryDonTBC));
+
                 #endregion
 
                 DataTable dtDon = new DataTable();
@@ -1789,6 +1937,9 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 if (dtDon.Rows.Count > 0 && dtGianLan.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Gian Lận", ds.Tables["Don"].Columns["MaDon"], ds.Tables["GianLan"].Columns["MaDon"]);
+
+                if (dtDon.Rows.Count > 0 && dtTruyThu.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết Truy Thu", ds.Tables["Don"].Columns["MaDon"], ds.Tables["TruyThu"].Columns["MaDon"]);
 
                 return ds;
             }
@@ -2056,6 +2207,28 @@ namespace KTKS_DonKH.DAL.TimKiem
                 dtGianLan.TableName = "GianLan";
                 ds.Tables.Add(dtGianLan);
 
+                ///Table TruyThu
+                var queryTruyThu = from itemTT in db.TruyThuTienNuocs
+                                   where itemTT.HoTen.Contains(HoTen)
+                                   select new
+                                   {
+                                       MaDon = itemTT.MaDon != null ? "TKH" + itemTT.MaDon
+                                       : itemTT.MaDonTXL != null ? "TXL" + itemTT.MaDonTXL
+                                       : itemTT.MaDonTBC != null ? "TBC" + itemTT.MaDonTBC : null,
+                                       itemTT.MaTTTN,
+                                       itemTT.DanhBo,
+                                       itemTT.HoTen,
+                                       itemTT.DiaChi,
+                                       itemTT.CreateDate,
+                                       itemTT.NoiDung,
+                                       itemTT.TongTien,
+                                       itemTT.Tongm3BinhQuan,
+                                   };
+                DataTable dtTruyThu = new DataTable();
+                dtTruyThu = LINQToDataTable(queryTruyThu);
+                dtTruyThu.TableName = "TruyThu";
+                ds.Tables.Add(dtTruyThu);
+
                 #endregion
 
                 #region DonKH
@@ -2258,6 +2431,24 @@ namespace KTKS_DonKH.DAL.TimKiem
                              };
                 dt.Merge(LINQToDataTable(queryDonKH));
 
+                ///Table TruyThu
+                queryDonKH = from itemDon in db.DonKHs
+                             join itemTT in db.TruyThuTienNuocs on itemDon.MaDon equals itemTT.MaDon
+                             where itemTT.HoTen.Contains(HoTen)
+                             select new
+                             {
+                                 MaDon = "TKH" + itemDon.MaDon,
+                                 itemDon.LoaiDon.TenLD,
+                                 itemDon.CreateDate,
+                                 itemDon.DanhBo,
+                                 itemDon.HoTen,
+                                 itemDon.DiaChi,
+                                 itemDon.GiaBieu,
+                                 itemDon.DinhMuc,
+                                 itemDon.NoiDung,
+                             };
+                dt.Merge(LINQToDataTable(queryDonKH));
+
                 #endregion
 
                 #region DonTXL
@@ -2439,6 +2630,42 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   itemDonTXL.DinhMuc,
                                   itemDonTXL.NoiDung,
                               };
+                dt.Merge(LINQToDataTable(queryDonTXL));
+
+                ///Table GianLans
+                queryDonTXL = from itemDonTXL in db.DonTXLs
+                             join itemGL in db.GianLans on itemDonTXL.MaDon equals itemGL.MaDonTXL
+                             where itemGL.HoTen.Contains(HoTen)
+                             select new
+                             {
+                                 MaDon = "TXL" + itemDonTXL.MaDon,
+                                 itemDonTXL.LoaiDonTXL.TenLD,
+                                 itemDonTXL.CreateDate,
+                                 itemDonTXL.DanhBo,
+                                 itemDonTXL.HoTen,
+                                 itemDonTXL.DiaChi,
+                                 itemDonTXL.GiaBieu,
+                                 itemDonTXL.DinhMuc,
+                                 itemDonTXL.NoiDung,
+                             };
+                dt.Merge(LINQToDataTable(queryDonTXL));
+
+                ///Table TruyThu
+                queryDonTXL = from itemDonTXL in db.DonTXLs
+                              join itemTT in db.TruyThuTienNuocs on itemDonTXL.MaDon equals itemTT.MaDonTXL
+                             where itemTT.HoTen.Contains(HoTen)
+                             select new
+                             {
+                                 MaDon = "TXL" + itemDonTXL.MaDon,
+                                 itemDonTXL.LoaiDonTXL.TenLD,
+                                 itemDonTXL.CreateDate,
+                                 itemDonTXL.DanhBo,
+                                 itemDonTXL.HoTen,
+                                 itemDonTXL.DiaChi,
+                                 itemDonTXL.GiaBieu,
+                                 itemDonTXL.DinhMuc,
+                                 itemDonTXL.NoiDung,
+                             };
                 dt.Merge(LINQToDataTable(queryDonTXL));
 
                 #endregion
@@ -2624,6 +2851,42 @@ namespace KTKS_DonKH.DAL.TimKiem
                               };
                 dt.Merge(LINQToDataTable(queryDonTBC));
 
+                ///Table GianLans
+                queryDonTBC = from itemDon in db.DonTBCs
+                              join itemGL in db.GianLans on itemDon.MaDon equals itemGL.MaDonTBC
+                              where itemGL.HoTen.Contains(HoTen)
+                              select new
+                              {
+                                  MaDon = "TBC" + itemDon.MaDon,
+                                  itemDon.LoaiDonTBC.TenLD,
+                                  itemDon.CreateDate,
+                                  itemDon.DanhBo,
+                                  itemDon.HoTen,
+                                  itemDon.DiaChi,
+                                  itemDon.GiaBieu,
+                                  itemDon.DinhMuc,
+                                  itemDon.NoiDung,
+                              };
+                dt.Merge(LINQToDataTable(queryDonTBC));
+
+                ///Table TruyThu
+                queryDonTBC = from itemDon in db.DonTBCs
+                              join itemTT in db.TruyThuTienNuocs on itemDon.MaDon equals itemTT.MaDonTBC
+                              where itemTT.HoTen.Contains(HoTen)
+                              select new
+                              {
+                                  MaDon = "TBC" + itemDon.MaDon,
+                                  itemDon.LoaiDonTBC.TenLD,
+                                  itemDon.CreateDate,
+                                  itemDon.DanhBo,
+                                  itemDon.HoTen,
+                                  itemDon.DiaChi,
+                                  itemDon.GiaBieu,
+                                  itemDon.DinhMuc,
+                                  itemDon.NoiDung,
+                              };
+                dt.Merge(LINQToDataTable(queryDonTBC));
+
                 #endregion
 
                 DataTable dtDon = new DataTable();
@@ -2670,6 +2933,9 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 if (dtDon.Rows.Count > 0 && dtGianLan.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Gian Lận", ds.Tables["Don"].Columns["MaDon"], ds.Tables["GianLan"].Columns["MaDon"]);
+
+                if (dtDon.Rows.Count > 0 && dtTruyThu.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết Truy Thu", ds.Tables["Don"].Columns["MaDon"], ds.Tables["TruyThu"].Columns["MaDon"]);
 
                 return ds;
             }
@@ -2936,6 +3202,28 @@ namespace KTKS_DonKH.DAL.TimKiem
                 dtGianLan.TableName = "GianLan";
                 ds.Tables.Add(dtGianLan);
 
+                ///Table TruyThu
+                var queryTruyThu = from itemTT in db.TruyThuTienNuocs
+                                   where itemTT.DiaChi.Contains(DiaChi)
+                                   select new
+                                   {
+                                       MaDon = itemTT.MaDon != null ? "TKH" + itemTT.MaDon
+                                       : itemTT.MaDonTXL != null ? "TXL" + itemTT.MaDonTXL
+                                       : itemTT.MaDonTBC != null ? "TBC" + itemTT.MaDonTBC : null,
+                                       itemTT.MaTTTN,
+                                       itemTT.DanhBo,
+                                       itemTT.HoTen,
+                                       itemTT.DiaChi,
+                                       itemTT.CreateDate,
+                                       itemTT.NoiDung,
+                                       itemTT.TongTien,
+                                       itemTT.Tongm3BinhQuan,
+                                   };
+                DataTable dtTruyThu = new DataTable();
+                dtTruyThu = LINQToDataTable(queryTruyThu);
+                dtTruyThu.TableName = "TruyThu";
+                ds.Tables.Add(dtTruyThu);
+
                 #endregion
 
                 #region DonKH
@@ -3124,6 +3412,24 @@ namespace KTKS_DonKH.DAL.TimKiem
                 queryDonKH = from itemDon in db.DonKHs
                              join itemGL in db.GianLans on itemDon.MaDon equals itemGL.MaDon
                              where itemGL.DiaChi.Contains(DiaChi)
+                             select new
+                             {
+                                 MaDon = "TKH" + itemDon.MaDon,
+                                 itemDon.LoaiDon.TenLD,
+                                 itemDon.CreateDate,
+                                 itemDon.DanhBo,
+                                 itemDon.HoTen,
+                                 itemDon.DiaChi,
+                                 itemDon.GiaBieu,
+                                 itemDon.DinhMuc,
+                                 itemDon.NoiDung,
+                             };
+                dt.Merge(LINQToDataTable(queryDonKH));
+
+                ///Table TruyThu
+                queryDonKH = from itemDon in db.DonKHs
+                             join itemTT in db.TruyThuTienNuocs on itemDon.MaDon equals itemTT.MaDon
+                             where itemTT.DiaChi.Contains(DiaChi)
                              select new
                              {
                                  MaDon = "TKH" + itemDon.MaDon,
@@ -3339,6 +3645,24 @@ namespace KTKS_DonKH.DAL.TimKiem
                               };
                 dt.Merge(LINQToDataTable(queryDonTXL));
 
+                ///Table TruyThu
+                queryDonTXL = from itemDonTXL in db.DonTXLs
+                              join itemTT in db.TruyThuTienNuocs on itemDonTXL.MaDon equals itemTT.MaDonTXL
+                              where itemTT.DiaChi.Contains(DiaChi)
+                              select new
+                              {
+                                  MaDon = "TXL" + itemDonTXL.MaDon,
+                                  itemDonTXL.LoaiDonTXL.TenLD,
+                                  itemDonTXL.CreateDate,
+                                  itemDonTXL.DanhBo,
+                                  itemDonTXL.HoTen,
+                                  itemDonTXL.DiaChi,
+                                  itemDonTXL.GiaBieu,
+                                  itemDonTXL.DinhMuc,
+                                  itemDonTXL.NoiDung,
+                              };
+                dt.Merge(LINQToDataTable(queryDonTXL));
+
                 #endregion
 
                 #region DonTBC
@@ -3540,6 +3864,24 @@ namespace KTKS_DonKH.DAL.TimKiem
                               };
                 dt.Merge(LINQToDataTable(queryDonTBC));
 
+                ///Table TruyThu
+                queryDonTBC = from itemDon in db.DonTBCs
+                              join itemTT in db.TruyThuTienNuocs on itemDon.MaDon equals itemTT.MaDonTBC
+                              where itemTT.DiaChi.Contains(DiaChi)
+                              select new
+                              {
+                                  MaDon = "TBC" + itemDon.MaDon,
+                                  itemDon.LoaiDonTBC.TenLD,
+                                  itemDon.CreateDate,
+                                  itemDon.DanhBo,
+                                  itemDon.HoTen,
+                                  itemDon.DiaChi,
+                                  itemDon.GiaBieu,
+                                  itemDon.DinhMuc,
+                                  itemDon.NoiDung,
+                              };
+                dt.Merge(LINQToDataTable(queryDonTBC));
+
                 #endregion
 
                 DataTable dtDon = new DataTable();
@@ -3586,6 +3928,9 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 if (dtDon.Rows.Count > 0 && dtGianLan.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Gian Lận", ds.Tables["Don"].Columns["MaDon"], ds.Tables["GianLan"].Columns["MaDon"]);
+
+                if (dtDon.Rows.Count > 0 && dtTruyThu.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết Truy Thu", ds.Tables["Don"].Columns["MaDon"], ds.Tables["TruyThu"].Columns["MaDon"]);
 
                 return ds;
             }

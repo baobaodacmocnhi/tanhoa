@@ -104,6 +104,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
+            this.mnuBaoCaoTruyThu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -452,7 +453,8 @@
             this.mnuTruyThu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuTruyThuDMNuoc,
             this.mnuDSTruyThuDMNuoc,
-            this.mnuGianLanTienNuoc});
+            this.mnuGianLanTienNuoc,
+            this.mnuBaoCaoTruyThu});
             this.mnuTruyThu.Name = "mnuTruyThu";
             this.mnuTruyThu.Size = new System.Drawing.Size(73, 20);
             this.mnuTruyThu.Text = "Truy Thu";
@@ -714,6 +716,13 @@
             this.StripStatus_HoTen.Size = new System.Drawing.Size(58, 17);
             this.StripStatus_HoTen.Text = "Xin Chào:";
             // 
+            // mnuBaoCaoTruyThu
+            // 
+            this.mnuBaoCaoTruyThu.Name = "mnuBaoCaoTruyThu";
+            this.mnuBaoCaoTruyThu.Size = new System.Drawing.Size(243, 22);
+            this.mnuBaoCaoTruyThu.Text = "Báo Cáo";
+            this.mnuBaoCaoTruyThu.Click += new System.EventHandler(this.mnuBaoCaoTruyThu_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -818,5 +827,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuLoaiDonTXL;
         private System.Windows.Forms.ToolStripMenuItem mnuLoaiDonTBC;
         private System.Windows.Forms.ToolStripMenuItem mnuBaoCaoDonTKH;
+        private System.Windows.Forms.ToolStripMenuItem mnuBaoCaoTruyThu;
     }
 }

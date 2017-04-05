@@ -11,6 +11,8 @@ namespace KTKS_DonKH.DAL.TruyThu
 {
     class CTruyThuTienNuoc : CDAL
     {
+        int SoTien1m3 = 8546;
+
         #region TruyThuTienNuoc
 
         public bool Them(TruyThuTienNuoc tttn)
@@ -28,6 +30,7 @@ namespace KTKS_DonKH.DAL.TruyThu
                 }
                 else
                     tttn.MaTTTN = decimal.Parse("1" + DateTime.Now.ToString("yy"));
+                tttn.SoTien1m3 = SoTien1m3;//lưu lại số tiền trong quá khứ do có thể thay đổi trong tương lai
                 tttn.CreateDate = DateTime.Now;
                 tttn.CreateBy = CTaiKhoan.MaUser;
                 db.TruyThuTienNuocs.InsertOnSubmit(tttn);
@@ -154,6 +157,10 @@ namespace KTKS_DonKH.DAL.TruyThu
                             item.DiaChi,
                             item.NoiDung,
                             item.DienThoai,
+                            //item.TongTien,
+                            //item.Tongm3BinhQuan,
+                            TongTien = item.CTTruyThuTienNuocs.Count > 0 ? item.CTTruyThuTienNuocs.Sum(itemCT => itemCT.TongCongMoi).Value - item.CTTruyThuTienNuocs.Sum(itemCT => itemCT.TongCongCu).Value : 0,
+                            Tongm3BinhQuan = item.CTTruyThuTienNuocs.Count > 0 ? (item.CTTruyThuTienNuocs.Sum(itemCT => itemCT.TongCongMoi).Value - item.CTTruyThuTienNuocs.Sum(itemCT => itemCT.TongCongCu).Value) / item.SoTien1m3 : 0,
                         };
             return LINQToDataTable(query);
         }
@@ -174,6 +181,10 @@ namespace KTKS_DonKH.DAL.TruyThu
                             item.DiaChi,
                             item.NoiDung,
                             item.DienThoai,
+                            //item.TongTien,
+                            //item.Tongm3BinhQuan,
+                            TongTien = item.CTTruyThuTienNuocs.Count > 0 ? item.CTTruyThuTienNuocs.Sum(itemCT => itemCT.TongCongMoi).Value - item.CTTruyThuTienNuocs.Sum(itemCT => itemCT.TongCongCu).Value : 0,
+                            Tongm3BinhQuan = item.CTTruyThuTienNuocs.Count > 0 ? (item.CTTruyThuTienNuocs.Sum(itemCT => itemCT.TongCongMoi).Value - item.CTTruyThuTienNuocs.Sum(itemCT => itemCT.TongCongCu).Value) / item.SoTien1m3 : 0,
                         };
             return LINQToDataTable(query);
         }
@@ -194,6 +205,10 @@ namespace KTKS_DonKH.DAL.TruyThu
                             item.DiaChi,
                             item.NoiDung,
                             item.DienThoai,
+                            //item.TongTien,
+                            //item.Tongm3BinhQuan,
+                            TongTien = item.CTTruyThuTienNuocs.Count > 0 ? item.CTTruyThuTienNuocs.Sum(itemCT => itemCT.TongCongMoi).Value - item.CTTruyThuTienNuocs.Sum(itemCT => itemCT.TongCongCu).Value : 0,
+                            Tongm3BinhQuan = item.CTTruyThuTienNuocs.Count > 0 ? (item.CTTruyThuTienNuocs.Sum(itemCT => itemCT.TongCongMoi).Value - item.CTTruyThuTienNuocs.Sum(itemCT => itemCT.TongCongCu).Value) / item.SoTien1m3 : 0,
                         };
             return LINQToDataTable(query);
         }
@@ -261,7 +276,7 @@ namespace KTKS_DonKH.DAL.TruyThu
 
         public CTTruyThuTienNuoc GetCT(decimal MaCTTTTN)
         {
-                return db.CTTruyThuTienNuocs.SingleOrDefault(item => item.MaCTTTTN == MaCTTTTN);
+            return db.CTTruyThuTienNuocs.SingleOrDefault(item => item.MaCTTTTN == MaCTTTTN);
         }
 
         public CTTruyThuTienNuoc GetCT(decimal MaTTTN, string Ky, string Nam)

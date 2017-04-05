@@ -53,6 +53,7 @@ namespace KTKS_DonKH.GUI.TimKiem
             gridControl.LevelTree.Nodes.Add("Chi Tiết Bấm Chì", gridViewBamChi);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Đóng Nước", gridViewDongNuoc);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Gian Lận", gridViewGianLan);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Truy Thu", gridViewTruyThu);
         }
 
         private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
@@ -441,7 +442,10 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         private void gridViewGianLan_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
-
+            if (e.Column.FieldName == "ID" && e.Value != null)
+            {
+                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
         }
 
         private void gridViewGianLan_RowCellClick(object sender, RowCellClickEventArgs e)
@@ -455,6 +459,44 @@ namespace KTKS_DonKH.GUI.TimKiem
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
             {
                 frmGianLan frm = new frmGianLan(int.Parse(_CTRow.Row["ID"].ToString()));
+                if (frm.ShowDialog() == DialogResult.Cancel)
+                {
+                    _CTRow = null;
+                }
+            }
+        }
+
+        #endregion
+
+        #region girdViewTruyThu
+
+        private void gridViewTruyThu_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName == "MaTTTN" && e.Value != null)
+            {
+                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+            if (e.Column.FieldName == "Tongm3BinhQuan" && e.Value != null)
+            {
+                e.DisplayText = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (e.Column.FieldName == "TongTien" && e.Value != null)
+            {
+                e.DisplayText = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
+        private void gridViewTruyThu_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
+            _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
+        }
+
+        private void gridViewTruyThu_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
+            {
+                frmTruyThuTienNuoc frm = new frmTruyThuTienNuoc(int.Parse(_CTRow.Row["ID"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;
@@ -632,9 +674,6 @@ namespace KTKS_DonKH.GUI.TimKiem
                 btnTimKiemTTKH.PerformClick();
         }
 
-        
-
-        
     }
 
 }

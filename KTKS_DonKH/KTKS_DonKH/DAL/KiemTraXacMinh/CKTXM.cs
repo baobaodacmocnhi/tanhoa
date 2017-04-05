@@ -96,10 +96,10 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
 
         public KTXM Get(decimal MaKTXM)
         {
-                return db.KTXMs.SingleOrDefault(item => item.MaKTXM == MaKTXM);
+            return db.KTXMs.SingleOrDefault(item => item.MaKTXM == MaKTXM);
         }
 
-        public KTXM Get(string Loai,decimal MaDon)
+        public KTXM Get(string Loai, decimal MaDon)
         {
             switch (Loai)
             {
@@ -188,7 +188,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             switch (Loai)
             {
                 case "TKH":
-                    return db.CTKTXMs.Any(item => item.CreateBy==CreateBy&& item.KTXM.MaDon == MaDon && item.DanhBo == DanhBo && item.NgayKTXM == NgayKTXM);
+                    return db.CTKTXMs.Any(item => item.CreateBy == CreateBy && item.KTXM.MaDon == MaDon && item.DanhBo == DanhBo && item.NgayKTXM == NgayKTXM);
                 case "TXL":
                     return db.CTKTXMs.Any(item => item.CreateBy == CreateBy && item.KTXM.MaDonTXL == MaDon && item.DanhBo == DanhBo && item.NgayKTXM == NgayKTXM);
                 case "TBC":
@@ -221,7 +221,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
 
         public bool CheckExist_CT(decimal MaCTKTXM)
         {
-                return db.CTKTXMs.Any(itemCTKTXM => itemCTKTXM.MaCTKTXM == MaCTKTXM);
+            return db.CTKTXMs.Any(itemCTKTXM => itemCTKTXM.MaCTKTXM == MaCTKTXM);
         }
 
         public DataTable GetDS(string Loai, DateTime FromNgayKTXM, DateTime ToNgayKTXM)
@@ -237,7 +237,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                 && itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date
                                 select new
                                 {
-                                    To="TỔ KHÁCH HÀNG",
+                                    To = "TỔ KHÁCH HÀNG",
                                     itemCTKTXM.MaCTKTXM,
                                     MaDon = "TKH" + itemCTKTXM.KTXM.MaDon,
                                     itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD,
@@ -247,7 +247,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     itemCTKTXM.NgayKTXM,
                                     itemCTKTXM.NoiDungKiemTra,
                                     CreateBy = itemUser.HoTen,
-                                    STT_HTKT=itemtableHTKT.STT,
+                                    STT_HTKT = itemtableHTKT.STT,
                                     itemCTKTXM.HienTrangKiemTra,
                                     itemCTKTXM.TieuThuTrungBinh,
                                 };
@@ -427,17 +427,18 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
 
         public DataTable GetDS(string DanhBo)
         {
-            DataTable dt = new DataTable();
-
             var query = from itemCTKTXM in db.CTKTXMs
                         join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                        where itemCTKTXM.KTXM.MaDon != null
-                        && itemCTKTXM.DanhBo == DanhBo
+                        where itemCTKTXM.DanhBo == DanhBo
                         select new
                         {
+                            MaDon = itemCTKTXM.KTXM.MaDon != null ? "TKH" + itemCTKTXM.KTXM.MaDon
+                                    : itemCTKTXM.KTXM.MaDonTXL != null ? "TXL" + itemCTKTXM.KTXM.MaDonTXL
+                                    : itemCTKTXM.KTXM.MaDonTBC != null ? "TBC" + itemCTKTXM.KTXM.MaDonTBC : null,
                             itemCTKTXM.MaCTKTXM,
-                            MaDon = "TKH" + itemCTKTXM.KTXM.MaDon,
-                            itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD,
+                            TenLD = itemCTKTXM.KTXM.MaDon != null ? itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD
+                                    : itemCTKTXM.KTXM.MaDonTXL != null ? itemCTKTXM.KTXM.DonTXL.LoaiDonTXL.TenLD
+                                    : itemCTKTXM.KTXM.MaDonTBC != null ? itemCTKTXM.KTXM.DonTBC.LoaiDonTBC.TenLD : null,
                             itemCTKTXM.DanhBo,
                             itemCTKTXM.HoTen,
                             itemCTKTXM.DiaChi,
@@ -445,60 +446,23 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                             itemCTKTXM.NoiDungKiemTra,
                             CreateBy = itemUser.HoTen,
                         };
-            dt = LINQToDataTable(query);
-
-            query = from itemCTKTXM in db.CTKTXMs
-                    join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                    where itemCTKTXM.KTXM.MaDonTXL != null
-                    && itemCTKTXM.DanhBo == DanhBo
-                    select new
-                    {
-                        itemCTKTXM.MaCTKTXM,
-                        MaDon = "TXL" + itemCTKTXM.KTXM.MaDonTXL,
-                        itemCTKTXM.KTXM.DonTXL.LoaiDonTXL.TenLD,
-                        itemCTKTXM.DanhBo,
-                        itemCTKTXM.HoTen,
-                        itemCTKTXM.DiaChi,
-                        itemCTKTXM.NgayKTXM,
-                        itemCTKTXM.NoiDungKiemTra,
-                        CreateBy = itemUser.HoTen,
-                    };
-            dt.Merge(LINQToDataTable(query));
-
-            query = from itemCTKTXM in db.CTKTXMs
-                    join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                    where itemCTKTXM.KTXM.MaDonTBC != null
-                    && itemCTKTXM.DanhBo == DanhBo
-                    select new
-                    {
-                        itemCTKTXM.MaCTKTXM,
-                        MaDon = "TBC" + itemCTKTXM.KTXM.MaDonTBC,
-                        itemCTKTXM.KTXM.DonTBC.LoaiDonTBC.TenLD,
-                        itemCTKTXM.DanhBo,
-                        itemCTKTXM.HoTen,
-                        itemCTKTXM.DiaChi,
-                        itemCTKTXM.NgayKTXM,
-                        itemCTKTXM.NoiDungKiemTra,
-                        CreateBy = itemUser.HoTen,
-                    };
-            dt.Merge(LINQToDataTable(query));
-
-            return dt;
+            return LINQToDataTable(query);
         }
 
         public DataTable GetDSByDanhBo(int CreateBy, string DanhBo)
         {
-            DataTable dt = new DataTable();
-
             var query = from itemCTKTXM in db.CTKTXMs
                         join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                        where itemCTKTXM.KTXM.MaDon != null && itemCTKTXM.CreateBy == CreateBy
-                        && itemCTKTXM.DanhBo == DanhBo
+                        where itemCTKTXM.CreateBy == CreateBy && itemCTKTXM.DanhBo == DanhBo
                         select new
                         {
+                            MaDon = itemCTKTXM.KTXM.MaDon != null ? "TKH" + itemCTKTXM.KTXM.MaDon
+                                    : itemCTKTXM.KTXM.MaDonTXL != null ? "TXL" + itemCTKTXM.KTXM.MaDonTXL
+                                    : itemCTKTXM.KTXM.MaDonTBC != null ? "TBC" + itemCTKTXM.KTXM.MaDonTBC : null,
                             itemCTKTXM.MaCTKTXM,
-                            MaDon = "TKH" + itemCTKTXM.KTXM.MaDon,
-                            itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD,
+                            TenLD = itemCTKTXM.KTXM.MaDon != null ? itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD
+                                    : itemCTKTXM.KTXM.MaDonTXL != null ? itemCTKTXM.KTXM.DonTXL.LoaiDonTXL.TenLD
+                                    : itemCTKTXM.KTXM.MaDonTBC != null ? itemCTKTXM.KTXM.DonTBC.LoaiDonTBC.TenLD : null,
                             itemCTKTXM.DanhBo,
                             itemCTKTXM.HoTen,
                             itemCTKTXM.DiaChi,
@@ -506,60 +470,23 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                             itemCTKTXM.NoiDungKiemTra,
                             CreateBy = itemUser.HoTen,
                         };
-            dt = LINQToDataTable(query);
-
-            query = from itemCTKTXM in db.CTKTXMs
-                    join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                    where itemCTKTXM.KTXM.MaDonTXL != null && itemCTKTXM.CreateBy == CreateBy
-                    && itemCTKTXM.DanhBo == DanhBo
-                    select new
-                    {
-                        itemCTKTXM.MaCTKTXM,
-                        MaDon = "TXL" + itemCTKTXM.KTXM.MaDonTXL,
-                        itemCTKTXM.KTXM.DonTXL.LoaiDonTXL.TenLD,
-                        itemCTKTXM.DanhBo,
-                        itemCTKTXM.HoTen,
-                        itemCTKTXM.DiaChi,
-                        itemCTKTXM.NgayKTXM,
-                        itemCTKTXM.NoiDungKiemTra,
-                        CreateBy = itemUser.HoTen,
-                    };
-            dt.Merge(LINQToDataTable(query));
-
-            query = from itemCTKTXM in db.CTKTXMs
-                    join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                    where itemCTKTXM.KTXM.MaDonTBC != null && itemCTKTXM.CreateBy == CreateBy
-                    && itemCTKTXM.DanhBo == DanhBo
-                    select new
-                    {
-                        itemCTKTXM.MaCTKTXM,
-                        MaDon = "TBC" + itemCTKTXM.KTXM.MaDonTBC,
-                        itemCTKTXM.KTXM.DonTBC.LoaiDonTBC.TenLD,
-                        itemCTKTXM.DanhBo,
-                        itemCTKTXM.HoTen,
-                        itemCTKTXM.DiaChi,
-                        itemCTKTXM.NgayKTXM,
-                        itemCTKTXM.NoiDungKiemTra,
-                        CreateBy = itemUser.HoTen,
-                    };
-            dt.Merge(LINQToDataTable(query));
-
-            return dt;
+            return LINQToDataTable(query);
         }
 
         public DataTable GetDSBySoCongVan(int CreateBy, string SoCongVan)
         {
-            DataTable dt = new DataTable();
-
             var query = from itemCTKTXM in db.CTKTXMs
                         join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                        where itemCTKTXM.KTXM.MaDon != null && itemCTKTXM.CreateBy == CreateBy
-                        && itemCTKTXM.KTXM.DonKH.SoCongVan.Contains(SoCongVan)
+                        where itemCTKTXM.CreateBy == CreateBy && itemCTKTXM.KTXM.DonKH.SoCongVan.Contains(SoCongVan)
                         select new
                         {
+                            MaDon = itemCTKTXM.KTXM.MaDon != null ? "TKH" + itemCTKTXM.KTXM.MaDon
+                                       : itemCTKTXM.KTXM.MaDonTXL != null ? "TXL" + itemCTKTXM.KTXM.MaDonTXL
+                                       : itemCTKTXM.KTXM.MaDonTBC != null ? "TBC" + itemCTKTXM.KTXM.MaDonTBC : null,
                             itemCTKTXM.MaCTKTXM,
-                            MaDon = "TKH" + itemCTKTXM.KTXM.MaDon,
-                            itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD,
+                            TenLD = itemCTKTXM.KTXM.MaDon != null ? itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD
+                                    : itemCTKTXM.KTXM.MaDonTXL != null ? itemCTKTXM.KTXM.DonTXL.LoaiDonTXL.TenLD
+                                    : itemCTKTXM.KTXM.MaDonTBC != null ? itemCTKTXM.KTXM.DonTBC.LoaiDonTBC.TenLD : null,
                             itemCTKTXM.DanhBo,
                             itemCTKTXM.HoTen,
                             itemCTKTXM.DiaChi,
@@ -567,60 +494,23 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                             itemCTKTXM.NoiDungKiemTra,
                             CreateBy = itemUser.HoTen,
                         };
-            dt = LINQToDataTable(query);
-
-            query = from itemCTKTXM in db.CTKTXMs
-                    join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                    where itemCTKTXM.KTXM.MaDonTXL != null && itemCTKTXM.CreateBy == CreateBy
-                    && itemCTKTXM.KTXM.DonTXL.SoCongVan.Contains(SoCongVan)
-                    select new
-                    {
-                        itemCTKTXM.MaCTKTXM,
-                        MaDon = "TXL" + itemCTKTXM.KTXM.MaDonTXL,
-                        itemCTKTXM.KTXM.DonTXL.LoaiDonTXL.TenLD,
-                        itemCTKTXM.DanhBo,
-                        itemCTKTXM.HoTen,
-                        itemCTKTXM.DiaChi,
-                        itemCTKTXM.NgayKTXM,
-                        itemCTKTXM.NoiDungKiemTra,
-                        CreateBy = itemUser.HoTen,
-                    };
-            dt.Merge(LINQToDataTable(query));
-
-            query = from itemCTKTXM in db.CTKTXMs
-                    join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                    where itemCTKTXM.KTXM.MaDonTBC != null && itemCTKTXM.CreateBy == CreateBy
-                    && itemCTKTXM.KTXM.DonTBC.SoCongVan.Contains(SoCongVan)
-                    select new
-                    {
-                        itemCTKTXM.MaCTKTXM,
-                        MaDon = "TBC" + itemCTKTXM.KTXM.MaDonTBC,
-                        itemCTKTXM.KTXM.DonTBC.LoaiDonTBC.TenLD,
-                        itemCTKTXM.DanhBo,
-                        itemCTKTXM.HoTen,
-                        itemCTKTXM.DiaChi,
-                        itemCTKTXM.NgayKTXM,
-                        itemCTKTXM.NoiDungKiemTra,
-                        CreateBy = itemUser.HoTen,
-                    };
-            dt.Merge(LINQToDataTable(query));
-
-            return dt;
+            return LINQToDataTable(query);
         }
 
         public DataTable GetDSBySoCongVan(string SoCongVan)
         {
-            DataTable dt = new DataTable();
-
             var query = from itemCTKTXM in db.CTKTXMs
                         join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                        where itemCTKTXM.KTXM.MaDon != null
-                        && itemCTKTXM.KTXM.DonKH.SoCongVan.Contains(SoCongVan)
+                        where itemCTKTXM.KTXM.DonKH.SoCongVan.Contains(SoCongVan)
                         select new
                         {
+                            MaDon = itemCTKTXM.KTXM.MaDon != null ? "TKH" + itemCTKTXM.KTXM.MaDon
+                                    : itemCTKTXM.KTXM.MaDonTXL != null ? "TXL" + itemCTKTXM.KTXM.MaDonTXL
+                                    : itemCTKTXM.KTXM.MaDonTBC != null ? "TBC" + itemCTKTXM.KTXM.MaDonTBC : null,
                             itemCTKTXM.MaCTKTXM,
-                            MaDon = "TKH" + itemCTKTXM.KTXM.MaDon,
-                            itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD,
+                            TenLD = itemCTKTXM.KTXM.MaDon != null ? itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD
+                                    : itemCTKTXM.KTXM.MaDonTXL != null ? itemCTKTXM.KTXM.DonTXL.LoaiDonTXL.TenLD
+                                    : itemCTKTXM.KTXM.MaDonTBC != null ? itemCTKTXM.KTXM.DonTBC.LoaiDonTBC.TenLD : null,
                             itemCTKTXM.DanhBo,
                             itemCTKTXM.HoTen,
                             itemCTKTXM.DiaChi,
@@ -628,60 +518,24 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                             itemCTKTXM.NoiDungKiemTra,
                             CreateBy = itemUser.HoTen,
                         };
-            dt = LINQToDataTable(query);
-
-            query = from itemCTKTXM in db.CTKTXMs
-                    join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                    where itemCTKTXM.KTXM.MaDonTXL != null
-                    && itemCTKTXM.KTXM.DonTXL.SoCongVan.Contains(SoCongVan)
-                    select new
-                    {
-                        itemCTKTXM.MaCTKTXM,
-                        MaDon = "TXL" + itemCTKTXM.KTXM.MaDonTXL,
-                        itemCTKTXM.KTXM.DonTXL.LoaiDonTXL.TenLD,
-                        itemCTKTXM.DanhBo,
-                        itemCTKTXM.HoTen,
-                        itemCTKTXM.DiaChi,
-                        itemCTKTXM.NgayKTXM,
-                        itemCTKTXM.NoiDungKiemTra,
-                        CreateBy = itemUser.HoTen,
-                    };
-            dt.Merge(LINQToDataTable(query));
-
-            query = from itemCTKTXM in db.CTKTXMs
-                    join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                    where itemCTKTXM.KTXM.MaDonTBC != null
-                    && itemCTKTXM.KTXM.DonTBC.SoCongVan.Contains(SoCongVan)
-                    select new
-                    {
-                        itemCTKTXM.MaCTKTXM,
-                        MaDon = "TBC" + itemCTKTXM.KTXM.MaDonTBC,
-                        itemCTKTXM.KTXM.DonTBC.LoaiDonTBC.TenLD,
-                        itemCTKTXM.DanhBo,
-                        itemCTKTXM.HoTen,
-                        itemCTKTXM.DiaChi,
-                        itemCTKTXM.NgayKTXM,
-                        itemCTKTXM.NoiDungKiemTra,
-                        CreateBy = itemUser.HoTen,
-                    };
-            dt.Merge(LINQToDataTable(query));
-
-            return dt;
+            return LINQToDataTable(query);
         }
 
         public DataTable GetDS(int CreateBy, DateTime FromNgayKTXM, DateTime ToNgayKTXM)
         {
-            DataTable dt = new DataTable();
-
             var query = from itemCTKTXM in db.CTKTXMs
                         join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                        where itemCTKTXM.KTXM.MaDon != null && itemCTKTXM.CreateBy == CreateBy
+                        where itemCTKTXM.CreateBy == CreateBy
                         && itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date
                         select new
                         {
+                            MaDon = itemCTKTXM.KTXM.MaDon != null ? "TKH" + itemCTKTXM.KTXM.MaDon
+                                    : itemCTKTXM.KTXM.MaDonTXL != null ? "TXL" + itemCTKTXM.KTXM.MaDonTXL
+                                    : itemCTKTXM.KTXM.MaDonTBC != null ? "TBC" + itemCTKTXM.KTXM.MaDonTBC : null,
                             itemCTKTXM.MaCTKTXM,
-                            MaDon = "TKH" + itemCTKTXM.KTXM.MaDon,
-                            itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD,
+                            TenLD = itemCTKTXM.KTXM.MaDon != null ? itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD
+                                    : itemCTKTXM.KTXM.MaDonTXL != null ? itemCTKTXM.KTXM.DonTXL.LoaiDonTXL.TenLD
+                                    : itemCTKTXM.KTXM.MaDonTBC != null ? itemCTKTXM.KTXM.DonTBC.LoaiDonTBC.TenLD : null,
                             itemCTKTXM.DanhBo,
                             itemCTKTXM.HoTen,
                             itemCTKTXM.DiaChi,
@@ -689,123 +543,67 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                             itemCTKTXM.NoiDungKiemTra,
                             CreateBy = itemUser.HoTen,
                         };
-            dt = LINQToDataTable(query);
-
-            query = from itemCTKTXM in db.CTKTXMs
-                    join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                    where itemCTKTXM.KTXM.MaDonTXL != null && itemCTKTXM.CreateBy == CreateBy
-                    && itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date
-                    select new
-                    {
-                        itemCTKTXM.MaCTKTXM,
-                        MaDon = "TXL" + itemCTKTXM.KTXM.MaDonTXL,
-                        itemCTKTXM.KTXM.DonTXL.LoaiDonTXL.TenLD,
-                        itemCTKTXM.DanhBo,
-                        itemCTKTXM.HoTen,
-                        itemCTKTXM.DiaChi,
-                        itemCTKTXM.NgayKTXM,
-                        itemCTKTXM.NoiDungKiemTra,
-                        CreateBy = itemUser.HoTen,
-                    };
-            dt.Merge(LINQToDataTable(query));
-
-            query = from itemCTKTXM in db.CTKTXMs
-                    join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                    where itemCTKTXM.KTXM.MaDonTBC != null && itemCTKTXM.CreateBy == CreateBy
-                    && itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date
-                    select new
-                    {
-                        itemCTKTXM.MaCTKTXM,
-                        MaDon = "TBC" + itemCTKTXM.KTXM.MaDonTBC,
-                        itemCTKTXM.KTXM.DonTBC.LoaiDonTBC.TenLD,
-                        itemCTKTXM.DanhBo,
-                        itemCTKTXM.HoTen,
-                        itemCTKTXM.DiaChi,
-                        itemCTKTXM.NgayKTXM,
-                        itemCTKTXM.NoiDungKiemTra,
-                        CreateBy = itemUser.HoTen,
-                    };
-            dt.Merge(LINQToDataTable(query));
-
-            return dt;
+            return LINQToDataTable(query);
         }
 
         public DataTable GetDS(DateTime FromNgayKTXM, DateTime ToNgayKTXM)
         {
-            DataTable dt = new DataTable();
             var query = from itemCTKTXM in db.CTKTXMs
                         join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                         join itemHTKT in db.HienTrangKiemTras on itemCTKTXM.HienTrangKiemTra equals itemHTKT.TenHTKT into tableHTKT
                         from itemtableHTKT in tableHTKT.DefaultIfEmpty()
-                        where itemCTKTXM.KTXM.MaDon != null
-                        && itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date
+                        where itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date
                         select new
                         {
-                            To = "TỔ KHÁCH HÀNG",
+                            To = itemCTKTXM.KTXM.MaDon != null ? "TỔ KHÁCH HÀNG" + itemCTKTXM.KTXM.MaDon
+                                    : itemCTKTXM.KTXM.MaDonTXL != null ? "TỔ XỬ LÝ" + itemCTKTXM.KTXM.MaDonTXL
+                                    : itemCTKTXM.KTXM.MaDonTBC != null ? "TỔ BẤM CHÌ" + itemCTKTXM.KTXM.MaDonTBC : null,
+                            MaDon = itemCTKTXM.KTXM.MaDon != null ? "TKH" + itemCTKTXM.KTXM.MaDon
+                                    : itemCTKTXM.KTXM.MaDonTXL != null ? "TXL" + itemCTKTXM.KTXM.MaDonTXL
+                                    : itemCTKTXM.KTXM.MaDonTBC != null ? "TBC" + itemCTKTXM.KTXM.MaDonTBC : null,
                             itemCTKTXM.MaCTKTXM,
-                            MaDon = "TKH" + itemCTKTXM.KTXM.MaDon,
-                            itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD,
+                            TenLD = itemCTKTXM.KTXM.MaDon != null ? itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD
+                                    : itemCTKTXM.KTXM.MaDonTXL != null ? itemCTKTXM.KTXM.DonTXL.LoaiDonTXL.TenLD
+                                    : itemCTKTXM.KTXM.MaDonTBC != null ? itemCTKTXM.KTXM.DonTBC.LoaiDonTBC.TenLD : null,
                             itemCTKTXM.DanhBo,
                             itemCTKTXM.HoTen,
                             itemCTKTXM.DiaChi,
                             itemCTKTXM.NgayKTXM,
                             itemCTKTXM.NoiDungKiemTra,
                             CreateBy = itemUser.HoTen,
-                            STT_HTKT=itemtableHTKT.STT,
+                            STT_HTKT = itemtableHTKT.STT,
                             itemCTKTXM.HienTrangKiemTra,
                             itemCTKTXM.TieuThuTrungBinh,
                         };
-            dt = LINQToDataTable(query);
+            return LINQToDataTable(query);
+        }
 
-            query = from itemCTKTXM in db.CTKTXMs
-                    join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                    join itemHTKT in db.HienTrangKiemTras on itemCTKTXM.HienTrangKiemTra equals itemHTKT.TenHTKT into tableHTKT
-                    from itemtableHTKT in tableHTKT.DefaultIfEmpty()
-                    where itemCTKTXM.KTXM.MaDonTXL != null
-                    && itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date
-                    select new
-                    {
-                        To = "TỔ XỬ LÝ",
-                        itemCTKTXM.MaCTKTXM,
-                        MaDon = "TXL" + itemCTKTXM.KTXM.MaDonTXL,
-                        itemCTKTXM.KTXM.DonTXL.LoaiDonTXL.TenLD,
-                        itemCTKTXM.DanhBo,
-                        itemCTKTXM.HoTen,
-                        itemCTKTXM.DiaChi,
-                        itemCTKTXM.NgayKTXM,
-                        itemCTKTXM.NoiDungKiemTra,
-                        CreateBy = itemUser.HoTen,
-                        STT_HTKT = itemtableHTKT.STT,
-                        itemCTKTXM.HienTrangKiemTra,
-                        itemCTKTXM.TieuThuTrungBinh,
-                    };
-            dt.Merge(LINQToDataTable(query));
-
-            query = from itemCTKTXM in db.CTKTXMs
-                    join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                    join itemHTKT in db.HienTrangKiemTras on itemCTKTXM.HienTrangKiemTra equals itemHTKT.TenHTKT into tableHTKT
-                    from itemtableHTKT in tableHTKT.DefaultIfEmpty()
-                    where itemCTKTXM.KTXM.MaDonTBC != null
-                    && itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date
-                    select new
-                    {
-                        To = "TỔ BẤM CHÌ",
-                        itemCTKTXM.MaCTKTXM,
-                        MaDon = "TBC" + itemCTKTXM.KTXM.MaDonTBC,
-                        itemCTKTXM.KTXM.DonTBC.LoaiDonTBC.TenLD,
-                        itemCTKTXM.DanhBo,
-                        itemCTKTXM.HoTen,
-                        itemCTKTXM.DiaChi,
-                        itemCTKTXM.NgayKTXM,
-                        itemCTKTXM.NoiDungKiemTra,
-                        CreateBy = itemUser.HoTen,
-                        STT_HTKT = itemtableHTKT.STT,
-                        itemCTKTXM.HienTrangKiemTra,
-                        itemCTKTXM.TieuThuTrungBinh,
-                    };
-            dt.Merge(LINQToDataTable(query));
-
-            return dt;
+        public DataTable GetDScoTruyThu(DateTime FromNgayKTXM, DateTime ToNgayKTXM)
+        {
+            var query = from itemCTKTXM in db.CTKTXMs
+                        join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                        join itemHTKT in db.HienTrangKiemTras on itemCTKTXM.HienTrangKiemTra equals itemHTKT.TenHTKT into tableHTKT
+                        from itemtableHTKT in tableHTKT.DefaultIfEmpty()
+                        where itemCTKTXM.DinhMucMoi != null
+                        && itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date
+                        select new
+                        {
+                            MaDon = itemCTKTXM.KTXM.MaDon != null ? "TKH" + itemCTKTXM.KTXM.MaDon
+                                    : itemCTKTXM.KTXM.MaDonTXL != null ? "TXL" + itemCTKTXM.KTXM.MaDonTXL
+                                    : itemCTKTXM.KTXM.MaDonTBC != null ? "TBC" + itemCTKTXM.KTXM.MaDonTBC : null,
+                            itemCTKTXM.MaCTKTXM,
+                            TenLD = itemCTKTXM.KTXM.MaDon != null ? itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD
+                                    : itemCTKTXM.KTXM.MaDonTXL != null ? itemCTKTXM.KTXM.DonTXL.LoaiDonTXL.TenLD
+                                    : itemCTKTXM.KTXM.MaDonTBC != null ? itemCTKTXM.KTXM.DonTBC.LoaiDonTBC.TenLD : null,
+                            itemCTKTXM.DanhBo,
+                            itemCTKTXM.HoTen,
+                            itemCTKTXM.DiaChi,
+                            itemCTKTXM.NgayKTXM,
+                            itemCTKTXM.DinhMuc,
+                            itemCTKTXM.DinhMucMoi,
+                            CreateBy = itemUser.HoTen,
+                        };
+            return LINQToDataTable(query);
         }
 
         #endregion

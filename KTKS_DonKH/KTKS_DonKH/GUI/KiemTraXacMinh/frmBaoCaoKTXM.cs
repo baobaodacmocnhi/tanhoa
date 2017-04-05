@@ -164,5 +164,35 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             frm.ShowDialog();
         }
 
+        private void btnBaoCao_DScoTruyThu_Click(object sender, EventArgs e)
+        {
+            DataTable dt = _cKTXM.GetDScoTruyThu(dateTu_DScoTruyThu.Value, dateDen_DScoTruyThu.Value);
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+
+            foreach (DataRow itemRow in dt.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["DSKTXM"].NewRow();
+
+                dr["TuNgay"] = dateTu_DScoTruyThu.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen_DScoTruyThu.Value.ToString("dd/MM/yyyy");
+                dr["TenLD"] = itemRow["TenLD"];
+                dr["MaCTKTXM"] = itemRow["MaCTKTXM"];
+                dr["MaDon"] = itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
+                if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                    dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                dr["HoTen"] = itemRow["HoTen"];
+                dr["DiaChi"] = itemRow["DiaChi"];
+                dr["DinhMucCu"] = itemRow["DinhMuc"];
+                dr["DinhMucMoi"] = itemRow["DinhMucMoi"];
+                dr["NguoiLap"] = CTaiKhoan.HoTen;
+
+                dsBaoCao.Tables["DSKTXM"].Rows.Add(dr);
+            }
+            rptKTXMcoTruyThu rpt = new rptKTXMcoTruyThu();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.ShowDialog();
+        }
+
     }
 }

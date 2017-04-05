@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>537</ApplicationRevision>
+    <ApplicationRevision>539</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -316,6 +316,12 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="BaoCao\KiemTraXacMinh\rptKTXMcoTruyThu.cs">
+      <DependentUpon>rptKTXMcoTruyThu.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="BaoCao\ToKhachHang\rptToTrinh.cs">
       <DependentUpon>rptToTrinh.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -358,22 +364,16 @@
       <DependentUpon>rptToTrinhDCHD.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BaoCao\KiemTraXacMinh\rptThongKeDSKTXM_LoaiDon.cs">
-      <DependentUpon>rptThongKeDSKTXM_LoaiDon.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="BaoCao\KiemTraXacMinh\rptThongKeDSKTXM.cs">
       <DependentUpon>rptThongKeDSKTXM.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="BaoCao\KiemTraXacMinh\rptDSKTXM.cs">
+    <Compile Include="BaoCao\KiemTraXacMinh\rptKTXM.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>rptDSKTXM.rpt</DependentUpon>
+      <DependentUpon>rptKTXM.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BaoCao\KiemTraXacMinh\rptThongKeHienTrangKiemTra.cs">
@@ -485,6 +485,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptDSGianLan.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\TruyThu\rptThongKeTruyThu.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptThongKeTruyThu.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BaoCao\TruyThu\rptThuMoi.cs">
@@ -970,6 +976,12 @@
     <Compile Include="GUI\ToXuLy\frmDSDonTXL.Designer.cs">
       <DependentUpon>frmDSDonTXL.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\TruyThu\frmBaoCaoTruyThu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\TruyThu\frmBaoCaoTruyThu.Designer.cs">
+      <DependentUpon>frmBaoCaoTruyThu.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\TruyThu\frmGianLan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1174,6 +1186,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThongBaoDN.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\KiemTraXacMinh\rptKTXMcoTruyThu.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptKTXMcoTruyThu.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\ToKhachHang\rptToTrinh.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptToTrinh.cs</LastGenOutput>
@@ -1202,17 +1218,13 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptToTrinhDCHD.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\KiemTraXacMinh\rptThongKeDSKTXM_LoaiDon.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptThongKeDSKTXM_LoaiDon.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\KiemTraXacMinh\rptThongKeDSKTXM.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThongKeDSKTXM.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\KiemTraXacMinh\rptDSKTXM.rpt">
+    <EmbeddedResource Include="BaoCao\KiemTraXacMinh\rptKTXM.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptDSKTXM.cs</LastGenOutput>
+      <LastGenOutput>rptKTXM.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\KiemTraXacMinh\rptThongKeHienTrangKiemTra.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1285,6 +1297,10 @@
     <EmbeddedResource Include="BaoCao\TruyThu\rptDSGianLan.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSGianLan.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\TruyThu\rptThongKeTruyThu.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptThongKeTruyThu.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\TruyThu\rptThuMoi.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1518,6 +1534,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToXuLy\frmDSDonTXL.resx">
       <DependentUpon>frmDSDonTXL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\TruyThu\frmBaoCaoTruyThu.resx">
+      <DependentUpon>frmBaoCaoTruyThu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\TruyThu\frmGianLan.resx">
       <DependentUpon>frmGianLan.cs</DependentUpon>

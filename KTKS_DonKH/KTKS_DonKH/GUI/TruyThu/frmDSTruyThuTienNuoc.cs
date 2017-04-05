@@ -32,8 +32,8 @@ namespace KTKS_DonKH.GUI.TruyThu
             int TongTien = 0;
             foreach (DataGridViewRow item in dgvDSTruyThuTienNuoc.Rows)
             {
-                Tongm3 += _cTTTN.CountTongm3(decimal.Parse(item.Cells["MaTTTN"].Value.ToString()));
-                TongTien += _cTTTN.CountTongTienThanhToan(decimal.Parse(item.Cells["MaTTTN"].Value.ToString()));
+                Tongm3 += int.Parse(item.Cells["Tongm3"].Value.ToString());
+                TongTien += int.Parse(item.Cells["TongTien"].Value.ToString());
             }
             txtTongm3.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", Tongm3);
             txtTongTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongTien);
@@ -102,11 +102,11 @@ namespace KTKS_DonKH.GUI.TruyThu
             }
             if (dgvDSTruyThuTienNuoc.Columns[e.ColumnIndex].Name == "Tongm3")
             {
-                e.Value = _cTTTN.CountTongm3(decimal.Parse(dgvDSTruyThuTienNuoc["MaTTTN", e.RowIndex].Value.ToString()));
+                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", decimal.Parse(dgvDSTruyThuTienNuoc["Tongm3", e.RowIndex].Value.ToString()));
             }
             if (dgvDSTruyThuTienNuoc.Columns[e.ColumnIndex].Name == "TongTien")
             {
-                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _cTTTN.CountTongTienThanhToan(decimal.Parse(dgvDSTruyThuTienNuoc["MaTTTN", e.RowIndex].Value.ToString())));
+                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", decimal.Parse(dgvDSTruyThuTienNuoc["TongTien", e.RowIndex].Value.ToString()));
             }
         }
 

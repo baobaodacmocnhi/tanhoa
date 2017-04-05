@@ -1,0 +1,58 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using KTKS_DonKH.DAL.TruyThu;
+using KTKS_DonKH.BaoCao;
+using KTKS_DonKH.BaoCao.TruyThu;
+using KTKS_DonKH.GUI.BaoCao;
+
+namespace KTKS_DonKH.GUI.TruyThu
+{
+    public partial class frmBaoCaoTruyThu : Form
+    {
+        CTruyThuTienNuoc _cTTTN = new CTruyThuTienNuoc();
+
+        public frmBaoCaoTruyThu()
+        {
+            InitializeComponent();
+        }
+
+        private void frmBaoCaoTruyThu_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnBaoCao_ThongKeTruyThu_Click(object sender, EventArgs e)
+        {
+            DataTable dt =  _cTTTN.GetDS(dateTu_ThongKeTruyThu.Value, dateDen_ThongKeTruyThu.Value);
+
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+
+            foreach (DataRow item in dt.Rows)
+                {
+                    DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
+
+                    dr["TuNgay"] = dateTu_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
+                    dr["DenNgay"] = dateDen_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
+                    if (int.Parse(item["TongTien"].ToString())!=0)
+                        dr["NoiDung"] = "Truy Thu";
+                    else
+                        dr["NoiDung"] = "Thư Mời";
+                    dr["TieuThuMoi"] = item["Tongm3BinhQuan"];
+                    dr["TongCongMoi"] = item["TongTien"];
+
+                    dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
+                }
+
+            rptThongKeTruyThu rpt = new rptThongKeTruyThu();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.ShowDialog();
+        }
+    }
+}

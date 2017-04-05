@@ -35,6 +35,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel_KhoangThoiGian = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkAll_ThongKeHienTrangKiemTra = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnBaoCao_SoLuong = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -47,11 +48,19 @@
             this.dateDen_SoLuong = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.chkAll_ThongKeHienTrangKiemTra = new System.Windows.Forms.CheckBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.dateTu_DScoTruyThu = new System.Windows.Forms.DateTimePicker();
+            this.dateDen_DScoTruyThu = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnBaoCao_DScoTruyThu = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dateTu_ThongKeHienTrangKiemTra
@@ -123,6 +132,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thống Kê Hiện Trạng Kiểm Tra";
             // 
+            // chkAll_ThongKeHienTrangKiemTra
+            // 
+            this.chkAll_ThongKeHienTrangKiemTra.AutoSize = true;
+            this.chkAll_ThongKeHienTrangKiemTra.Location = new System.Drawing.Point(273, 41);
+            this.chkAll_ThongKeHienTrangKiemTra.Name = "chkAll_ThongKeHienTrangKiemTra";
+            this.chkAll_ThongKeHienTrangKiemTra.Size = new System.Drawing.Size(114, 20);
+            this.chkAll_ThongKeHienTrangKiemTra.TabIndex = 25;
+            this.chkAll_ThongKeHienTrangKiemTra.Text = "Tất Cả Các Tổ";
+            this.chkAll_ThongKeHienTrangKiemTra.UseVisualStyleBackColor = true;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnBaoCao_SoLuong);
@@ -177,7 +196,7 @@
             // 
             this.txtNoiDungTimKiem.Location = new System.Drawing.Point(260, 34);
             this.txtNoiDungTimKiem.Name = "txtNoiDungTimKiem";
-            this.txtNoiDungTimKiem.Size = new System.Drawing.Size(130, 22);
+            this.txtNoiDungTimKiem.Size = new System.Drawing.Size(100, 22);
             this.txtNoiDungTimKiem.TabIndex = 17;
             this.txtNoiDungTimKiem.Visible = false;
             // 
@@ -194,7 +213,7 @@
             // 
             this.txtNoiDungTimKiem2.Location = new System.Drawing.Point(260, 58);
             this.txtNoiDungTimKiem2.Name = "txtNoiDungTimKiem2";
-            this.txtNoiDungTimKiem2.Size = new System.Drawing.Size(130, 22);
+            this.txtNoiDungTimKiem2.Size = new System.Drawing.Size(100, 22);
             this.txtNoiDungTimKiem2.TabIndex = 19;
             this.txtNoiDungTimKiem2.Visible = false;
             // 
@@ -246,15 +265,73 @@
             this.label2.TabIndex = 16;
             this.label2.Text = "Đến Ngày:";
             // 
-            // chkAll_ThongKeHienTrangKiemTra
+            // groupBox3
             // 
-            this.chkAll_ThongKeHienTrangKiemTra.AutoSize = true;
-            this.chkAll_ThongKeHienTrangKiemTra.Location = new System.Drawing.Point(273, 41);
-            this.chkAll_ThongKeHienTrangKiemTra.Name = "chkAll_ThongKeHienTrangKiemTra";
-            this.chkAll_ThongKeHienTrangKiemTra.Size = new System.Drawing.Size(114, 20);
-            this.chkAll_ThongKeHienTrangKiemTra.TabIndex = 25;
-            this.chkAll_ThongKeHienTrangKiemTra.Text = "Tất Cả Các Tổ";
-            this.chkAll_ThongKeHienTrangKiemTra.UseVisualStyleBackColor = true;
+            this.groupBox3.Controls.Add(this.panel2);
+            this.groupBox3.Controls.Add(this.btnBaoCao_DScoTruyThu);
+            this.groupBox3.Location = new System.Drawing.Point(12, 204);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(305, 89);
+            this.groupBox3.TabIndex = 27;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Danh Sách có Truy Thu (có nhập Định Mức Mới)";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dateTu_DScoTruyThu);
+            this.panel2.Controls.Add(this.dateDen_DScoTruyThu);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Location = new System.Drawing.Point(6, 21);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(180, 60);
+            this.panel2.TabIndex = 23;
+            // 
+            // dateTu_DScoTruyThu
+            // 
+            this.dateTu_DScoTruyThu.CustomFormat = "dd/MM/yyyy";
+            this.dateTu_DScoTruyThu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTu_DScoTruyThu.Location = new System.Drawing.Point(84, 4);
+            this.dateTu_DScoTruyThu.Name = "dateTu_DScoTruyThu";
+            this.dateTu_DScoTruyThu.Size = new System.Drawing.Size(90, 22);
+            this.dateTu_DScoTruyThu.TabIndex = 13;
+            // 
+            // dateDen_DScoTruyThu
+            // 
+            this.dateDen_DScoTruyThu.CustomFormat = "dd/MM/yyyy";
+            this.dateDen_DScoTruyThu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateDen_DScoTruyThu.Location = new System.Drawing.Point(84, 32);
+            this.dateDen_DScoTruyThu.Name = "dateDen_DScoTruyThu";
+            this.dateDen_DScoTruyThu.Size = new System.Drawing.Size(90, 22);
+            this.dateDen_DScoTruyThu.TabIndex = 14;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(7, 7);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(63, 16);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Từ Ngày:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(7, 37);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(71, 16);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Đến Ngày:";
+            // 
+            // btnBaoCao_DScoTruyThu
+            // 
+            this.btnBaoCao_DScoTruyThu.Location = new System.Drawing.Point(192, 38);
+            this.btnBaoCao_DScoTruyThu.Name = "btnBaoCao_DScoTruyThu";
+            this.btnBaoCao_DScoTruyThu.Size = new System.Drawing.Size(75, 25);
+            this.btnBaoCao_DScoTruyThu.TabIndex = 24;
+            this.btnBaoCao_DScoTruyThu.Text = "Báo Cáo";
+            this.btnBaoCao_DScoTruyThu.UseVisualStyleBackColor = true;
+            this.btnBaoCao_DScoTruyThu.Click += new System.EventHandler(this.btnBaoCao_DScoTruyThu_Click);
             // 
             // frmBaoCaoKTXM
             // 
@@ -262,6 +339,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(676, 436);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -277,6 +355,9 @@
             this.groupBox2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -303,5 +384,12 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtNoiDungTimKiem2;
         private System.Windows.Forms.CheckBox chkAll_ThongKeHienTrangKiemTra;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DateTimePicker dateTu_DScoTruyThu;
+        private System.Windows.Forms.DateTimePicker dateDen_DScoTruyThu;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnBaoCao_DScoTruyThu;
     }
 }
