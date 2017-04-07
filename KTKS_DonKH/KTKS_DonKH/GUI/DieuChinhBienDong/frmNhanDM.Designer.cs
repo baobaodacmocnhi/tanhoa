@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cmbLoaiCT = new System.Windows.Forms.ComboBox();
             this.cmbChiNhanh = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -63,8 +64,13 @@
             this.txtThoiHan = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnThem = new System.Windows.Forms.Button();
+            this.dgvDSDanhBo = new System.Windows.Forms.DataGridView();
+            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoNKDangKy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDSDanhBo)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbLoaiCT
@@ -119,6 +125,7 @@
             this.txtMaCT.Size = new System.Drawing.Size(100, 22);
             this.txtMaCT.TabIndex = 11;
             this.txtMaCT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaCT_KeyPress);
+            this.txtMaCT.Leave += new System.EventHandler(this.txtMaCT_Leave);
             // 
             // label5
             // 
@@ -398,12 +405,53 @@
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
+            // dgvDSDanhBo
+            // 
+            this.dgvDSDanhBo.AllowUserToAddRows = false;
+            this.dgvDSDanhBo.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSDanhBo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvDSDanhBo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDSDanhBo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DanhBo,
+            this.SoNKDangKy,
+            this.CreateDate});
+            this.dgvDSDanhBo.Location = new System.Drawing.Point(12, 134);
+            this.dgvDSDanhBo.Name = "dgvDSDanhBo";
+            this.dgvDSDanhBo.Size = new System.Drawing.Size(357, 160);
+            this.dgvDSDanhBo.TabIndex = 27;
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            // 
+            // SoNKDangKy
+            // 
+            this.SoNKDangKy.DataPropertyName = "SoNKDangKy";
+            this.SoNKDangKy.HeaderText = "Số NK Đăng Ký";
+            this.SoNKDangKy.Name = "SoNKDangKy";
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
+            // 
             // frmNhanDM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(890, 410);
+            this.ClientSize = new System.Drawing.Size(890, 401);
+            this.Controls.Add(this.dgvDSDanhBo);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -417,6 +465,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDSDanhBo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -458,5 +507,9 @@
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.TextBox txtLo;
         private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.DataGridView dgvDSDanhBo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoNKDangKy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
     }
 }

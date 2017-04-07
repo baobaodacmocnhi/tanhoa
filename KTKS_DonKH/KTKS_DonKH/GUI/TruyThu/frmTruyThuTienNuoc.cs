@@ -697,16 +697,16 @@ namespace KTKS_DonKH.GUI.TruyThu
                     _cTTTN.Them(tttn);
                     decimal MaTTTN = tttn.MaTTTN;
 
-                    ///thêm chi tiết
-                    foreach (DataGridViewRow item in dgvTruyThuTienNuoc.Rows)
-                        if (item.Cells["Ky"].Value != null)
-                        {
-                            if (_cTTTN.CheckExist_CT(MaTTTN, item.Cells["Ky"].Value.ToString(), item.Cells["Nam"].Value.ToString()))
-                            {
-                                MessageBox.Show("Kỳ " + item.Cells["Ky"].Value.ToString() + "/" + item.Cells["Nam"].Value.ToString() + " đã có \rVui lòng xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                return;
-                            }
-                        }
+                    /////thêm chi tiết
+                    //foreach (DataGridViewRow item in dgvTruyThuTienNuoc.Rows)
+                    //    if (item.Cells["Ky"].Value != null)
+                    //    {
+                    //        if (_cTTTN.CheckExist_CT(MaTTTN, item.Cells["Ky"].Value.ToString(), item.Cells["Nam"].Value.ToString()))
+                    //        {
+                    //            MessageBox.Show("Kỳ " + item.Cells["Ky"].Value.ToString() + "/" + item.Cells["Nam"].Value.ToString() + " đã có \rVui lòng xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //            return;
+                    //        }
+                    //    }
 
                     foreach (DataGridViewRow item in dgvTruyThuTienNuoc.Rows)
                         if(item.Cells["Ky"].Value != null )
@@ -738,7 +738,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     _cTTTN.Refresh();
 
                     tttn.TongTien = tttn.CTTruyThuTienNuocs.Sum(item => item.TongCongMoi.Value) - tttn.CTTruyThuTienNuocs.Sum(item => item.TongCongCu.Value);
-                    tttn.Tongm3BinhQuan = tttn.TongTien / tttn.SoTien1m3;
+                    tttn.Tongm3BinhQuan = (int)Math.Round((double)tttn.TongTien / tttn.SoTien1m3);
                     _cTTTN.SubmitChanges();
                     
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -839,7 +839,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         _cTTTN.Refresh();
 
                         _tttn.TongTien = _tttn.CTTruyThuTienNuocs.Sum(item => item.TongCongMoi.Value) - _tttn.CTTruyThuTienNuocs.Sum(item => item.TongCongCu.Value);
-                        _tttn.Tongm3BinhQuan = _tttn.TongTien / _tttn.SoTien1m3;
+                        _tttn.Tongm3BinhQuan = (int)Math.Round((double)_tttn.TongTien / _tttn.SoTien1m3);
                         _cTTTN.SubmitChanges();
 
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1244,6 +1244,11 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                 throw;
             }
+        }
+
+        private void chkXepDon_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
 
         
