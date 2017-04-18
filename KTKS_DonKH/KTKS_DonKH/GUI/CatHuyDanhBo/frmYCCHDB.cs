@@ -271,7 +271,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     PhieuCHDB ycchdb = new PhieuCHDB();
                     if (_dontkh != null)
                     {
-                        if (_cCHDB.CheckExist_PhieuHuy("TKH", _dontkh.MaDon, _dontkh.DanhBo)==true)
+                        if (_cCHDB.CheckExist_PhieuHuy("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim())==true)
                         {
                             MessageBox.Show("Danh Bộ này đã được Lập Phiếu Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
@@ -282,7 +282,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     else
                         if (_dontxl != null)
                         {
-                            if (_cCHDB.CheckExist_PhieuHuy("TXL", _dontxl.MaDon, _dontxl.DanhBo)==true)
+                            if (_cCHDB.CheckExist_PhieuHuy("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim()) == true)
                             {
                                 MessageBox.Show("Danh Bộ này đã được Lập Phiếu Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
@@ -293,7 +293,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         else
                             if (_dontbc != null)
                             {
-                                if (_cCHDB.CheckExist_PhieuHuy("TBC", _dontbc.MaDon, _dontbc.DanhBo)==true)
+                                if (_cCHDB.CheckExist_PhieuHuy("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim()) == true)
                                 {
                                     MessageBox.Show("Danh Bộ này đã được Lập Phiếu Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;

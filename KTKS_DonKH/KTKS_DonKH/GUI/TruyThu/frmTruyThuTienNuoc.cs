@@ -55,6 +55,14 @@ namespace KTKS_DonKH.GUI.TruyThu
             dgvThanhToanTruyThuTienNuoc.AutoGenerateColumns = false;
             dgvThuMoi.AutoGenerateColumns = false;
 
+            DataTable dt1 = _cTTTN.GetDSNoiDung();
+            AutoCompleteStringCollection auto1 = new AutoCompleteStringCollection();
+            foreach (DataRow item in dt1.Rows)
+            {
+                auto1.Add(item["NoiDung"].ToString());
+            }
+            txtNoiDung.AutoCompleteCustomSource = auto1;
+
             if (_MaTTTN != -1)
             {
                 txtMaTTTN.Text = _MaTTTN.ToString();

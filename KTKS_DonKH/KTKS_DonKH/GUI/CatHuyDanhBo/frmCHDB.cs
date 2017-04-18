@@ -200,17 +200,17 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 txtMaDon.Text = ctctdb.CHDB.MaDon.ToString().Insert(ctctdb.CHDB.MaDon.ToString().Length - 2, "-");
             }
             else
-            if (ctctdb.CHDB.MaDonTXL!=null)
-            {
-                _dontxl = _cDonTXL.Get(ctctdb.CHDB.MaDonTXL.Value);
-                txtMaDon.Text = "TXL" + ctctdb.CHDB.MaDonTXL.ToString().Insert(ctctdb.CHDB.MaDonTXL.ToString().Length - 2, "-");
-            }
-            else
-                if (ctctdb.CHDB.MaDonTBC != null)
+                if (ctctdb.CHDB.MaDonTXL != null)
                 {
-                    _dontbc = _cDonTBC.Get(ctctdb.CHDB.MaDonTBC.Value);
-                    txtMaDon.Text = "TBC"+ctctdb.CHDB.MaDonTBC.ToString().Insert(ctctdb.CHDB.MaDonTBC.ToString().Length - 2, "-");
+                    _dontxl = _cDonTXL.Get(ctctdb.CHDB.MaDonTXL.Value);
+                    txtMaDon.Text = "TXL" + ctctdb.CHDB.MaDonTXL.ToString().Insert(ctctdb.CHDB.MaDonTXL.ToString().Length - 2, "-");
                 }
+                else
+                    if (ctctdb.CHDB.MaDonTBC != null)
+                    {
+                        _dontbc = _cDonTBC.Get(ctctdb.CHDB.MaDonTBC.Value);
+                        txtMaDon.Text = "TBC" + ctctdb.CHDB.MaDonTBC.ToString().Insert(ctctdb.CHDB.MaDonTBC.ToString().Length - 2, "-");
+                    }
 
             txtMaThongBaoCT.Text = ctctdb.MaCTCTDB.ToString().Insert(ctctdb.MaCTCTDB.ToString().Length - 2, "-");
 
@@ -347,7 +347,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void txtMaThongBaoCH_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13&&txtMaThongBaoCH.Text.Trim()!="")
+            if (e.KeyChar == 13 && txtMaThongBaoCH.Text.Trim() != "")
             {
                 if (_cCHDB.CheckExist_CTCHDB(decimal.Parse(txtMaThongBaoCH.Text.Trim().Replace("-", ""))) == true)
                 {
@@ -407,7 +407,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 try
                 {
-                    if (cmbLyDo.SelectedIndex==-1)
+                    if (cmbLyDo.SelectedIndex == -1)
                     {
                         MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -423,7 +423,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             chdb.MaDon = _donkh.MaDon;
                             _cCHDB.ThemCHDB(chdb);
                         }
-                        if (_cCHDB.CheckExist_CTCHDB("TKH", _donkh.MaDon, txtDanhBo.Text.Trim())==true)
+                        if (_cCHDB.CheckExist_CTCHDB("TKH", _donkh.MaDon, txtDanhBo.Text.Trim()) == true)
                         {
                             MessageBox.Show("Danh Bộ này đã được Lập Cắt Hủy Danh Bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
@@ -439,7 +439,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 chdb.MaDonTXL = _dontxl.MaDon;
                                 _cCHDB.ThemCHDB(chdb);
                             }
-                            if (_cCHDB.CheckExist_CTCHDB("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim())==true)
+                            if (_cCHDB.CheckExist_CTCHDB("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim()) == true)
                             {
                                 MessageBox.Show("Danh Bộ này đã được Lập Cắt Hủy Danh Bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
@@ -449,13 +449,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         else
                             if (_dontbc != null)
                             {
-                                if (_cCHDB.CheckExist_CHDB("TBC", _dontxl.MaDon) == false)
+                                if (_cCHDB.CheckExist_CHDB("TBC", _dontbc.MaDon) == false)
                                 {
                                     CHDB chdb = new CHDB();
                                     chdb.MaDonTBC = _dontbc.MaDon;
                                     _cCHDB.ThemCHDB(chdb);
                                 }
-                                if (_cCHDB.CheckExist_CTCHDB("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim())==true)
+                                if (_cCHDB.CheckExist_CTCHDB("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim()) == true)
                                 {
                                     MessageBox.Show("Danh Bộ này đã được Lập Cắt Hủy Danh Bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
@@ -739,7 +739,20 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     _ctchdb.NgayLapPhieu = ycchdb.CreateDate;
                                     _ctchdb.HieuLucKy = ycchdb.HieuLucKy;
                                     _ctchdb.PhieuDuocKy = true;
+                                    ///
+                                    _ctchdb.NgayXuLy = DateTime.Now;
+                                    _ctchdb.NoiDungXuLy = "Lập phiếu hủy DB";
+                                    _ctchdb.CreateDate_NgayXuLy = DateTime.Now;
                                     _cCHDB.SuaCTCHDB(_ctchdb);
+
+                                    GhiChuCHDB ghichu = new GhiChuCHDB();
+                                    ghichu.NgayLap = _ctchdb.NgayXuLy;
+                                    ghichu.NoiDung = _ctchdb.NoiDungXuLy;
+                                    ghichu.MaCTCHDB = _ctchdb.MaCTCHDB;
+                                    if (_cCHDB.ThemGhiChu(ghichu))
+                                    {
+                                        dgvGhiChu.DataSource = _cCHDB.GetDSGhiChuByMaCTCHDB(_ctchdb.MaCTCHDB);
+                                    }
 
                                     DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                     DataRow dr = dsBaoCao.Tables["PhieuCHDB"].NewRow();

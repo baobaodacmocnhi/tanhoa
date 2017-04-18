@@ -6,26 +6,29 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.DAL;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.DonTu;
+using KTKS_DonKH.DAL.ToBamChi;
+using KTKS_DonKH.DAL.ToXuLy;
 
-namespace KTKS_DonKH.GUI.ToXuLy
+namespace KTKS_DonKH.GUI.ToBamChi
 {
-    public partial class frmNhapNhieuDBTXL : Form
+    public partial class frmNhapNhieuDBTBC_Old : Form
     {
-        CLoaiDonTXL _cLoaiDonTXL = new CLoaiDonTXL();
+        CLoaiDonTBC _cLoaiDonTBC = new CLoaiDonTBC();
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         CThuTien _cThuTien = new CThuTien();
         CDocSo _cDocSo = new CDocSo();
+        CDonTBC _cDonTBC = new CDonTBC();
         CDonTXL _cDonTXL = new CDonTXL();
-        private DateTimePicker cellDateTimePicker;
-        bool _flag = false;
         CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
 
-        public frmNhapNhieuDBTXL()
+        private DateTimePicker cellDateTimePicker;
+        bool _flag = false;
+
+        public frmNhapNhieuDBTBC_Old()
         {
             InitializeComponent();
         }
@@ -42,13 +45,13 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
             dgvDanhBo.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDanhBo.Font, FontStyle.Bold);
 
-            cmbLD.DataSource = _cLoaiDonTXL.GetDS();
+            cmbLD.DataSource = _cLoaiDonTBC.GetDS();
             cmbLD.DisplayMember = "TenLD";
             cmbLD.ValueMember = "MaLD";
             cmbLD.SelectedIndex = -1;
 
             DataGridViewComboBoxColumn cmbColumn = (DataGridViewComboBoxColumn)dgvDanhBo.Columns["NguoiDi"];
-            cmbColumn.DataSource = _cTaiKhoan.GetDS_KTXM("TXL");
+            cmbColumn.DataSource = _cTaiKhoan.GetDS_KTXM("TBC");
             cmbColumn.DisplayMember = "HoTen";
             cmbColumn.ValueMember = "MaU";
         }
@@ -104,55 +107,56 @@ namespace KTKS_DonKH.GUI.ToXuLy
             try
             {
                 decimal min = 0, max = 0;
-                _cDonTXL.beginTransaction();
+                _cDonTBC.beginTransaction();
 
                 foreach (DataGridViewRow item in dgvDanhBo.Rows)
                     if (item.Cells["DanhBo"].Value != null || item.Cells["HoTen"].Value != null || item.Cells["DiaChi"].Value != null)
                     {
-                        DonTXL dontxl = new DonTXL();
-                        dontxl.MaDon = _cDonTXL.GetNextID();
-                        dontxl.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
-                        dontxl.SoCongVan = txtSoCongVan.Text.Trim();
-                        dontxl.NoiDung = txtNoiDung.Text.Trim();
+                        DonTBC dontbc = new DonTBC();
+                        //dontxl.MaDon = _cDonTXL.getMaxNextID();
+                        dontbc.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
+                        dontbc.SoCongVan = txtSoCongVan.Text.Trim();
+                        //dontxl.TongSoDanhBo = int.Parse(txtTongSoDanhBo.Text.Trim());
+                        dontbc.NoiDung = txtNoiDung.Text.Trim();
                         ///
                         if (item.Cells["DanhBo"].Value != null)
-                            dontxl.DanhBo = item.Cells["DanhBo"].Value.ToString();
+                            dontbc.DanhBo = item.Cells["DanhBo"].Value.ToString();
                         if (item.Cells["HopDong"].Value != null)
-                            dontxl.HopDong = item.Cells["HopDong"].Value.ToString();
+                            dontbc.HopDong = item.Cells["HopDong"].Value.ToString();
                         if (item.Cells["HoTen"].Value != null)
-                            dontxl.HoTen = item.Cells["HoTen"].Value.ToString();
+                            dontbc.HoTen = item.Cells["HoTen"].Value.ToString();
                         if (item.Cells["DiaChi"].Value != null)
-                            dontxl.DiaChi = item.Cells["DiaChi"].Value.ToString();
+                            dontbc.DiaChi = item.Cells["DiaChi"].Value.ToString();
                         if (item.Cells["MSThue"].Value != null)
-                            dontxl.MSThue = item.Cells["MSThue"].Value.ToString();
+                            dontbc.MSThue = item.Cells["MSThue"].Value.ToString();
                         if (item.Cells["GiaBieu"].Value != null)
-                            dontxl.GiaBieu = item.Cells["GiaBieu"].Value.ToString();
+                            dontbc.GiaBieu = item.Cells["GiaBieu"].Value.ToString();
                         if (item.Cells["DinhMuc"].Value != null)
-                            dontxl.DinhMuc = item.Cells["DinhMuc"].Value.ToString();
+                            dontbc.DinhMuc = item.Cells["DinhMuc"].Value.ToString();
                         if (item.Cells["Dot"].Value != null)
-                            dontxl.Dot = item.Cells["Dot"].Value.ToString();
+                            dontbc.Dot = item.Cells["Dot"].Value.ToString();
                         if (item.Cells["Ky"].Value != null)
-                            dontxl.Ky = item.Cells["Ky"].Value.ToString();
+                            dontbc.Ky = item.Cells["Ky"].Value.ToString();
                         if (item.Cells["Nam"].Value != null)
-                            dontxl.Nam = item.Cells["Nam"].Value.ToString();
+                            dontbc.Nam = item.Cells["Nam"].Value.ToString();
                         if (item.Cells["MLT"].Value != null)
-                            dontxl.MLT = item.Cells["MLT"].Value.ToString();
+                            dontbc.MLT = item.Cells["MLT"].Value.ToString();
                         ///
                         if (item.Cells["NguoiDi"].Value != null)
                         {
                             string[] date = item.Cells["NgayChuyen"].Value.ToString().Split('/');
-                            dontxl.Chuyen_KTXM = true;
-                            dontxl.NgayChuyen_KTXM = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
-                            dontxl.NguoiDi_KTXM = int.Parse(item.Cells["NguoiDi"].Value.ToString());
+                            dontbc.Chuyen_KTXM = true;
+                            dontbc.NgayChuyen_KTXM = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
+                            dontbc.NguoiDi_KTXM = int.Parse(item.Cells["NguoiDi"].Value.ToString());
                             if (item.Cells["GhiChu"].Value != null)
-                                dontxl.GhiChuChuyen_KTXM = item.Cells["GhiChu"].Value.ToString();
+                                dontbc.GhiChuChuyen_KTXM = item.Cells["GhiChu"].Value.ToString();
                         }
                         ///
-                        if (_cDonTXL.Them(dontxl))
+                        if (_cDonTBC.Them(dontbc))
                         {
                             if (min == 0)
-                                min = dontxl.MaDon;
-                            max = dontxl.MaDon;
+                                min = dontbc.MaDon;
+                            max = dontbc.MaDon;
                             if (item.Cells["NguoiDi"].Value != null)
                             {
                                 string[] date = item.Cells["NgayChuyen"].Value.ToString().Split('/');
@@ -160,8 +164,8 @@ namespace KTKS_DonKH.GUI.ToXuLy
                                 lichsuchuyenkt.NgayChuyen = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
                                 lichsuchuyenkt.NguoiDi = int.Parse(item.Cells["NguoiDi"].Value.ToString());
                                 if (item.Cells["GhiChu"].Value != null)
-                                    lichsuchuyenkt.GhiChuChuyen = item.Cells["GhiChu"].Value.ToString();
-                                lichsuchuyenkt.MaDonTXL = dontxl.MaDon;
+                                lichsuchuyenkt.GhiChuChuyen = item.Cells["GhiChu"].Value.ToString();
+                                lichsuchuyenkt.MaDonTBC = dontbc.MaDon;
                                 _cLichSuDonTu.Them(lichsuchuyenkt);
 
                                 LichSuDonTu entity = new LichSuDonTu();
@@ -171,25 +175,26 @@ namespace KTKS_DonKH.GUI.ToXuLy
                                 entity.ID_NoiNhan = int.Parse(item.Cells["NguoiDi"].Value.ToString());
                                 entity.NoiNhan = _cTaiKhoan.GetHoTen(int.Parse(item.Cells["NguoiDi"].Value.ToString()));
                                 if (item.Cells["GhiChu"].Value != null)
-                                    entity.GhiChu = item.Cells["GhiChu"].Value.ToString();
-                                entity.MaDonTXL = dontxl.MaDon;
+                                entity.GhiChu = item.Cells["GhiChu"].Value.ToString();
+                                entity.MaDonTBC = dontbc.MaDon;
                                 _cLichSuDonTu.Them(entity);
                             }
                         }
                     }
 
-                _cDonTXL.commitTransaction();
-                MessageBox.Show("Thành công\nSố đơn từ TXL" + min.ToString().Insert(min.ToString().Length - 2, "-") + " đến TXL" + max.ToString().Insert(max.ToString().Length - 2, "-"), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _cDonTBC.commitTransaction();
+                MessageBox.Show("Thành công\nSố đơn từ TBC" + min.ToString().Insert(min.ToString().Length - 2, "-") + " đến TBC" + max.ToString().Insert(max.ToString().Length - 2, "-"), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 cmbLD.SelectedIndex = -1;
                 txtNgayNhan.Text = "";
                 txtNoiDung.Text = "";
                 txtSoCongVan.Text = "";
+                //txtTongSoDanhBo.Text = "1";
                 //dgvDanhBo.Rows.Clear();
                 this.Close();
             }
             catch (Exception ex)
             {
-                _cDonTXL.rollback();
+                _cDonTBC.rollback();
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

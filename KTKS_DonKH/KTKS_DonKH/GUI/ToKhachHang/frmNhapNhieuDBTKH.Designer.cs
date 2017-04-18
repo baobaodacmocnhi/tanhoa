@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtTongSoDanhBo = new System.Windows.Forms.TextBox();
             this.btnLuu = new System.Windows.Forms.Button();
             this.dgvDanhBoChuyenKT = new System.Windows.Forms.DataGridView();
             this.NgayChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,7 +44,6 @@
             this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label23 = new System.Windows.Forms.Label();
             this.txtNoiDung = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtNgayNhan = new System.Windows.Forms.TextBox();
@@ -53,8 +51,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtMaDon = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.cmbLD = new System.Windows.Forms.ComboBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabKiemTra = new System.Windows.Forms.TabPage();
@@ -81,19 +77,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhBoChuyenVanPhong)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtTongSoDanhBo
-            // 
-            this.txtTongSoDanhBo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTongSoDanhBo.Location = new System.Drawing.Point(327, 27);
-            this.txtTongSoDanhBo.Name = "txtTongSoDanhBo";
-            this.txtTongSoDanhBo.Size = new System.Drawing.Size(90, 22);
-            this.txtTongSoDanhBo.TabIndex = 31;
-            this.txtTongSoDanhBo.Text = "1";
-            this.txtTongSoDanhBo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(877, 24);
+            this.btnLuu.Location = new System.Drawing.Point(704, 24);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(75, 25);
             this.btnLuu.TabIndex = 39;
@@ -210,21 +196,10 @@
             this.MLT.Name = "MLT";
             this.MLT.Visible = false;
             // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label23.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(327, 9);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(90, 19);
-            this.label23.TabIndex = 30;
-            this.label23.Text = "Tổng Số DB";
-            // 
             // txtNoiDung
             // 
             this.txtNoiDung.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNoiDung.Location = new System.Drawing.Point(581, 27);
+            this.txtNoiDung.Location = new System.Drawing.Point(408, 27);
             this.txtNoiDung.Name = "txtNoiDung";
             this.txtNoiDung.Size = new System.Drawing.Size(290, 22);
             this.txtNoiDung.TabIndex = 37;
@@ -234,7 +209,7 @@
             this.label5.AutoSize = true;
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(581, 9);
+            this.label5.Location = new System.Drawing.Point(408, 9);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(290, 19);
             this.label5.TabIndex = 36;
@@ -243,7 +218,7 @@
             // txtNgayNhan
             // 
             this.txtNgayNhan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNgayNhan.Location = new System.Drawing.Point(501, 27);
+            this.txtNgayNhan.Location = new System.Drawing.Point(328, 27);
             this.txtNgayNhan.Name = "txtNgayNhan";
             this.txtNgayNhan.ReadOnly = true;
             this.txtNgayNhan.Size = new System.Drawing.Size(81, 22);
@@ -286,33 +261,11 @@
             this.label4.AutoSize = true;
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(501, 9);
+            this.label4.Location = new System.Drawing.Point(328, 9);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(81, 19);
             this.label4.TabIndex = 34;
             this.label4.Text = "Ngày Nhận";
-            // 
-            // txtMaDon
-            // 
-            this.txtMaDon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMaDon.Location = new System.Drawing.Point(416, 27);
-            this.txtMaDon.Name = "txtMaDon";
-            this.txtMaDon.Size = new System.Drawing.Size(85, 22);
-            this.txtMaDon.TabIndex = 33;
-            this.txtMaDon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtMaDon.Visible = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(416, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 19);
-            this.label3.TabIndex = 32;
-            this.label3.Text = "   Số Đơn    ";
-            this.label3.Visible = false;
             // 
             // cmbLD
             // 
@@ -474,9 +427,7 @@
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1315, 515);
             this.Controls.Add(this.tabControl);
-            this.Controls.Add(this.txtTongSoDanhBo);
             this.Controls.Add(this.btnLuu);
-            this.Controls.Add(this.label23);
             this.Controls.Add(this.txtNoiDung);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtNgayNhan);
@@ -484,8 +435,6 @@
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtMaDon);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbLD);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -506,10 +455,8 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtTongSoDanhBo;
         private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.DataGridView dgvDanhBoChuyenKT;
-        private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox txtNoiDung;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtNgayNhan;
@@ -517,8 +464,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtMaDon;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbLD;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabKiemTra;

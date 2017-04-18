@@ -213,6 +213,11 @@ namespace KTKS_DonKH.DAL.TruyThu
             return LINQToDataTable(query);
         }
 
+        public DataTable GetDSNoiDung()
+        {
+            return LINQToDataTable(db.TruyThuTienNuocs.Select(item => new { item.NoiDung }).ToList().Distinct());
+        }
+
         #endregion
 
         #region CTTruyThuTienNuoc
@@ -274,6 +279,11 @@ namespace KTKS_DonKH.DAL.TruyThu
             }
         }
 
+        public bool CheckExist_CT(decimal MaTTTN, string Ky, string Nam)
+        {
+            return db.CTTruyThuTienNuocs.Any(item => item.MaTTTN == MaTTTN && item.Ky == Ky && item.Nam == Nam);
+        }
+
         public CTTruyThuTienNuoc GetCT(decimal MaCTTTTN)
         {
             return db.CTTruyThuTienNuocs.SingleOrDefault(item => item.MaCTTTTN == MaCTTTTN);
@@ -282,11 +292,6 @@ namespace KTKS_DonKH.DAL.TruyThu
         public CTTruyThuTienNuoc GetCT(decimal MaTTTN, string Ky, string Nam)
         {
             return db.CTTruyThuTienNuocs.SingleOrDefault(item => item.MaTTTN == MaTTTN && item.Ky == Ky && item.Nam == Nam);
-        }
-
-        public bool CheckExist_CT(decimal MaTTTN, string Ky, string Nam)
-        {
-            return db.CTTruyThuTienNuocs.Any(item => item.MaTTTN == MaTTTN && item.Ky == Ky && item.Nam == Nam);
         }
 
         #endregion

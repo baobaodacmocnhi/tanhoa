@@ -723,6 +723,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     {
                                         _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set HOTEN=N'" + ctdcbd.HoTen_BD.ToString().Replace("'", "") + "' where DANHBO='" + ctdcbd.DanhBo + "'");
                                     }
+                                    if (!string.IsNullOrEmpty(ctdcbd.DiaChi_BD))
+                                    {
+                                        _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set SONHA=N'" + ctdcbd.DiaChi_BD.Substring(0, ctdcbd.DiaChi_BD.IndexOf(" ")) + "',TENDUONG=N'" + ctdcbd.DiaChi_BD.Substring((ctdcbd.DiaChi_BD.IndexOf(" ") + 1), ctdcbd.DiaChi_BD.Length - ctdcbd.DiaChi_BD.IndexOf(" ") - 1) + "' where DANHBO='" + ctdcbd.DanhBo + "'");
+                                    }
                                     if (!string.IsNullOrEmpty(ctdcbd.MSThue_BD))
                                     {
                                         _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set MSTHUE=" + ctdcbd.MSThue_BD.ToString() + " where DANHBO='" + ctdcbd.DanhBo + "'");

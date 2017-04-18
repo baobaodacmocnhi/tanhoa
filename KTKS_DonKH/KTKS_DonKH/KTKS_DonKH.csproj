@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>541</ApplicationRevision>
+    <ApplicationRevision>547</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -652,6 +652,12 @@
     <Compile Include="GUI\CatHuyDanhBo\frmNoiDungXuLyCHDB.Designer.cs">
       <DependentUpon>frmNoiDungXuLyCHDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ToBamChi\frmNhapNhieuDBTBC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToBamChi\frmNhapNhieuDBTBC.Designer.cs">
+      <DependentUpon>frmNhapNhieuDBTBC.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ToKhachHang\frmToTrinhDCHD.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -958,11 +964,11 @@
     <Compile Include="GUI\ToBamChi\frmNhanDonTBC.Designer.cs">
       <DependentUpon>frmNhanDonTBC.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ToBamChi\frmNhapNhieuDBTBC.cs">
+    <Compile Include="GUI\ToBamChi\frmNhapNhieuDBTBC_Old.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ToBamChi\frmNhapNhieuDBTBC.Designer.cs">
-      <DependentUpon>frmNhapNhieuDBTBC.cs</DependentUpon>
+    <Compile Include="GUI\ToBamChi\frmNhapNhieuDBTBC_Old.Designer.cs">
+      <DependentUpon>frmNhapNhieuDBTBC_Old.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ToXuLy\frmBaoCaoDonTXL.cs">
       <SubType>Form</SubType>
@@ -1370,6 +1376,9 @@
     <EmbeddedResource Include="GUI\CatHuyDanhBo\frmNoiDungXuLyCHDB.resx">
       <DependentUpon>frmNoiDungXuLyCHDB.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToBamChi\frmNhapNhieuDBTBC.resx">
+      <DependentUpon>frmNhapNhieuDBTBC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToKhachHang\frmToTrinhDCHD.resx">
       <DependentUpon>frmToTrinhDCHD.cs</DependentUpon>
     </EmbeddedResource>
@@ -1526,8 +1535,8 @@
     <EmbeddedResource Include="GUI\ToBamChi\frmNhanDonTBC.resx">
       <DependentUpon>frmNhanDonTBC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ToBamChi\frmNhapNhieuDBTBC.resx">
-      <DependentUpon>frmNhapNhieuDBTBC.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\ToBamChi\frmNhapNhieuDBTBC_Old.resx">
+      <DependentUpon>frmNhapNhieuDBTBC_Old.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToXuLy\frmBaoCaoDonTXL.resx">
       <DependentUpon>frmBaoCaoDonTXL.cs</DependentUpon>

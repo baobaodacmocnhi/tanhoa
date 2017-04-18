@@ -9,7 +9,6 @@ using System.Windows.Forms;
 using KTKS_DonKH.DAL.ToKhachHang;
 using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.DAL;
-using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.DonTu;
 
@@ -21,7 +20,6 @@ namespace KTKS_DonKH.GUI.ToKhachHang
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         CThuTien _cThuTien = new CThuTien();
         CDocSo _cDocSo = new CDocSo();
-        CDonTXL _cDonTXL = new CDonTXL();
         CDonKH _cDonKH = new CDonKH();
         CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
 
@@ -239,11 +237,9 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                     _cDonKH.commitTransaction();
                     MessageBox.Show("Thành công\nSố đơn từ " + min.ToString().Insert(min.ToString().Length - 2, "-") + " đến " + max.ToString().Insert(max.ToString().Length - 2, "-"), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     cmbLD.SelectedIndex = -1;
-                    txtMaDon.Text = "";
                     txtNgayNhan.Text = "";
                     txtNoiDung.Text = "";
                     txtSoCongVan.Text = "";
-                    txtTongSoDanhBo.Text = "1";
                     //dgvDanhBoChuyenKT.Rows.Clear();
                     //dgvDanhBoChuyenVanPhong.Rows.Clear();
                     this.Close();
@@ -327,11 +323,9 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                         _cDonKH.commitTransaction();
                         MessageBox.Show("Thành công\nSố đơn từ " + min.ToString().Insert(min.ToString().Length - 2, "-") + " đến " + max.ToString().Insert(max.ToString().Length - 2, "-"), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         cmbLD.SelectedIndex = -1;
-                        txtMaDon.Text = "";
                         txtNgayNhan.Text = "";
                         txtNoiDung.Text = "";
                         txtSoCongVan.Text = "";
-                        txtTongSoDanhBo.Text = "1";
                         //dgvDanhBoChuyenKT.Rows.Clear();
                         //dgvDanhBoChuyenVanPhong.Rows.Clear();
                         this.Close();

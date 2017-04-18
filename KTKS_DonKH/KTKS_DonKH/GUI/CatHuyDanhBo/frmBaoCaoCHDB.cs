@@ -56,19 +56,19 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 switch (cmbLoaiBaoCaoNgayLap.SelectedItem.ToString())
                 {
                     case "DS Cắt Hủy Đã Xử Lý":
-                        dr["LoaiBaoCao"] = "CẮT HỦY ĐÃ XỬ LÝ";
+                        dr["LoaiBaoCao"] = "TB CẮT HỦY ĐÃ XỬ LÝ";
                         dr["SoPhieu"] = item["MaCTCHDB"].ToString().Insert(item["MaCTCHDB"].ToString().Length - 2, "-");
                         break;
                     case "DS Cắt Hủy Chưa Xử Lý":
-                        dr["LoaiBaoCao"] = "CẮT HỦY CHƯA XỬ LÝ";
+                        dr["LoaiBaoCao"] = "TB CẮT HỦY CHƯA XỬ LÝ";
                         dr["SoPhieu"] = item["MaCTCHDB"].ToString().Insert(item["MaCTCHDB"].ToString().Length - 2, "-");
                         break;
                     case "DS Cắt Tạm Đã Xử Lý":
-                        dr["LoaiBaoCao"] = "CẮT TẠM ĐÃ XỬ LÝ";
+                        dr["LoaiBaoCao"] = "TB CẮT TẠM ĐÃ XỬ LÝ";
                         dr["SoPhieu"] = item["MaCTCTDB"].ToString().Insert(item["MaCTCTDB"].ToString().Length - 2, "-");
                         break;
                     case "DS Cắt Tạm Chưa Xử Lý":
-                        dr["LoaiBaoCao"] = "CẮT CHƯA ĐÃ XỬ LÝ";
+                        dr["LoaiBaoCao"] = "TB CẮT TẠM CHƯA XỬ LÝ";
                         dr["SoPhieu"] = item["MaCTCTDB"].ToString().Insert(item["MaCTCTDB"].ToString().Length - 2, "-");
                         break;
                     default:

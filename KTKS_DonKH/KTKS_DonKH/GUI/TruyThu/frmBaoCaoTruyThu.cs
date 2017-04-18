@@ -39,10 +39,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                     dr["TuNgay"] = dateTu_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
                     dr["DenNgay"] = dateDen_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
-                    if (int.Parse(item["TongTien"].ToString())!=0)
-                        dr["NoiDung"] = "Truy Thu";
-                    else
-                        dr["NoiDung"] = "Thư Mời";
+                    dr["NoiDung"] = item["NoiDung"];
                     dr["TieuThuMoi"] = item["Tongm3BinhQuan"];
                     dr["TongCongMoi"] = item["TongTien"];
 

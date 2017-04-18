@@ -1,6 +1,6 @@
-﻿namespace KTKS_DonKH.GUI.ToXuLy
+﻿namespace KTKS_DonKH.GUI.ToBamChi
 {
-    partial class frmNhapNhieuDBTXL
+    partial class frmNhapNhieuDBTBC_Old
     {
         /// <summary>
         /// Required designer variable.
@@ -257,7 +257,7 @@
             this.btnLuu.UseVisualStyleBackColor = true;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
-            // frmNhapNhieuDBTXL
+            // frmNhapNhieuDBTBC_Old
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -277,8 +277,8 @@
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmNhapNhieuDBTXL";
-            this.Text = "Nhập Nhiều Danh Bộ Tổ Xử Lý";
+            this.Name = "frmNhapNhieuDBTBC_Old";
+            this.Text = "Nhập Nhiều Danh Bộ Tổ Bấm Chì";
             this.Load += new System.EventHandler(this.frmNhapNhieuDB_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhBo)).EndInit();
             this.ResumeLayout(false);
