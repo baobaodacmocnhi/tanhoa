@@ -8,7 +8,7 @@ using System.Data;
 
 namespace ThuTien.DAL.Quay
 {
-    class CLenhHuy:CDAL
+    class CLenhHuy : CDAL
     {
         public bool Them(TT_LenhHuy lenhhuy)
         {
@@ -104,8 +104,8 @@ namespace ThuTien.DAL.Quay
                             itemHD.NGAYGIAITRACH,
                             itemLH.SoHoaDon,
                             DanhBo = itemHD.DANHBA,
-                            HoTen=itemHD.TENKH,
-                            DiaChi=itemHD.SO+" "+itemHD.DUONG,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
                             Ky = itemHD.KY + "/" + itemHD.NAM,
                             MLT = itemHD.MALOTRINH,
                             itemHD.SOPHATHANH,
@@ -208,7 +208,7 @@ namespace ThuTien.DAL.Quay
                         join itemHD in _db.HOADONs on itemLH.MaHD equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemHD.NGAYGIAITRACH==null
+                        where itemHD.NGAYGIAITRACH == null
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {
@@ -271,16 +271,16 @@ namespace ThuTien.DAL.Quay
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {
-                            MaDN="",
-                            HoTen=itemHD.TENKH,
-                            DiaChi=itemHD.SO+" "+itemHD.DUONG,
-                            DanhBo=itemHD.DANHBA,
-                            MLT=itemHD.MALOTRINH,
+                            MaDN = "",
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            DanhBo = itemHD.DANHBA,
+                            MLT = itemHD.MALOTRINH,
                             itemHD.SOHOADON,
-                            Ky=itemHD.KY+"/"+itemHD.NAM,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
                             itemHD.TONGCONG,
-                            TenTo="",
-                            NhanVien="",
+                            TenTo = "",
+                            NhanVien = "",
                         };
             return LINQToDataTable(query);
         }
@@ -353,11 +353,11 @@ namespace ThuTien.DAL.Quay
         {
             var query = from itemLH in _db.TT_LenhHuys
                         join itemHD in _db.HOADONs on itemLH.MaHD equals itemHD.ID_HOADON
-                        where itemHD.DANHBA==DanhBo
+                        where itemHD.DANHBA == DanhBo
                         orderby itemHD.ID_HOADON descending
                         select new
                         {
-                            Ky=itemHD.KY+"/"+itemHD.NAM,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
                             itemLH.TinhTrang,
                         };
             return LINQToDataTable(query.Take(1));
@@ -372,7 +372,7 @@ namespace ThuTien.DAL.Quay
                            && itemHD.NGAYGIAITRACH == null
                         select new
                         {
-                            DanhBo=itemHD.DANHBA,
+                            DanhBo = itemHD.DANHBA,
                         };
             return LINQToDataTable(query.Distinct());
         }
@@ -398,6 +398,6 @@ namespace ThuTien.DAL.Quay
                 return false;
         }
 
-        
+
     }
 }

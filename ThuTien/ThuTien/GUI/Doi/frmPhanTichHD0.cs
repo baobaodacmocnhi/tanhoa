@@ -291,24 +291,27 @@ namespace ThuTien.GUI.Doi
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
-                if (cmbNhanVienDK.Items.Count == 0 || cmbNhanVienDK.SelectedIndex == 0)
+                if (txtDanhBoDK.Text.Trim().Replace(" ", "") != "")
                 {
-                    MessageBox.Show("Chưa chọn Nhân Viên", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                if (_cDangKyHD0.CheckExist(txtDanhBoDK.Text.Trim().Replace(" ", ""))==true)
-                {
-                    MessageBox.Show(_cDangKyHD0.GetHoTen(txtDanhBoDK.Text.Trim().Replace(" ", "")) + " đã đăng ký " + txtDanhBoDK.Text.Trim().Replace(" ", ""), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                TT_DangKyHD0 dangky = new TT_DangKyHD0();
-                dangky.DanhBo = txtDanhBoDK.Text.Trim().Replace(" ", "");
-                dangky.MaNV = int.Parse(cmbNhanVienDK.SelectedValue.ToString());
+                    if (cmbNhanVienDK.Items.Count == 0 || cmbNhanVienDK.SelectedIndex == 0)
+                    {
+                        MessageBox.Show("Chưa chọn Nhân Viên", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    if (_cDangKyHD0.CheckExist(txtDanhBoDK.Text.Trim().Replace(" ", "")) == true)
+                    {
+                        MessageBox.Show(_cDangKyHD0.GetHoTen(txtDanhBoDK.Text.Trim().Replace(" ", "")) + " đã đăng ký " + txtDanhBoDK.Text.Trim().Replace(" ", ""), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    TT_DangKyHD0 dangky = new TT_DangKyHD0();
+                    dangky.DanhBo = txtDanhBoDK.Text.Trim().Replace(" ", "");
+                    dangky.MaNV = int.Parse(cmbNhanVienDK.SelectedValue.ToString());
 
-                if (_cDangKyHD0.Them(dangky))
-                {
-                    txtDanhBoDK.Text = "";
-                    btnXemDK.PerformClick();
+                    if (_cDangKyHD0.Them(dangky))
+                    {
+                        txtDanhBoDK.Text = "";
+                        btnXemDK.PerformClick();
+                    }
                 }
             }
             else

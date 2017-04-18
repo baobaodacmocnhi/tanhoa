@@ -19,6 +19,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CHoaDon _cHoaDon = new CHoaDon();
         CBangKe _cBangKe = new CBangKe();
         CTienDu _cTienDu = new CTienDu();
+        CNganHang _cNganHang = new CNganHang();
 
         public frmBaoCaoChuyenKhoan()
         {
@@ -1283,6 +1284,10 @@ namespace ThuTien.GUI.ChuyenKhoan
             Microsoft.Office.Interop.Excel.Range cl15 = oSheet.get_Range("O1", "O1");
             cl15.Value2 = "Quận";
             cl15.ColumnWidth = 10;
+
+            //Microsoft.Office.Interop.Excel.Range cl16 = oSheet.get_Range("P1", "P1");
+            //cl16.Value2 = "Bank";
+            //cl16.ColumnWidth = 10;
 
             DataTable dt = _cHoaDon.GetDSChuyenKhoan(int.Parse(cmbNam.SelectedValue.ToString()));
 

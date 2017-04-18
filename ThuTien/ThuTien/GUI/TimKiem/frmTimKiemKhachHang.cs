@@ -27,6 +27,7 @@ namespace ThuTien.GUI.TimKiem
         CKinhDoanh _cKinhDoanh = new CKinhDoanh();
         CChuyenNoKhoDoi _cCNKD = new CChuyenNoKhoDoi();
         CLenhHuy _cLenhHuy = new CLenhHuy();
+        CToTrinhCatHuy _cTTCH = new CToTrinhCatHuy();
         CDocSo _cDocSo = new CDocSo();
 
         public frmTimKiemKhachHang()

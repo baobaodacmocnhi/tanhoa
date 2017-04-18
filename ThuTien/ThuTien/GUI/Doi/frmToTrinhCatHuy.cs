@@ -142,7 +142,7 @@ namespace ThuTien.GUI.Doi
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvToTrinh.DataSource = _cToTrinhCatHuy.GetDSTT();
+            dgvToTrinh.DataSource = _cToTrinhCatHuy.GetDS();
             if (dgvCTToTrinh.DataSource != null)
                 dgvCTToTrinh.DataSource = null;
             if (dgvCTToTrinh.Rows.Count > 0)
@@ -160,7 +160,7 @@ namespace ThuTien.GUI.Doi
                         if (dgvCTToTrinh.DataSource == null)
                             totrinh = new TT_ToTrinhCatHuy();
                         else
-                            totrinh = _cToTrinhCatHuy.GetTT(decimal.Parse(dgvCTToTrinh["MaTT_CT", 0].Value.ToString()));
+                            totrinh = _cToTrinhCatHuy.Get(decimal.Parse(dgvCTToTrinh["MaTT_CT", 0].Value.ToString()));
                         int MaCTTT = _cToTrinhCatHuy.GetMaxMaCTTT();
 
                         foreach (DataGridViewRow item in dgvCTToTrinh.Rows)
@@ -185,7 +185,7 @@ namespace ThuTien.GUI.Doi
                             }
 
                         if (dgvCTToTrinh.DataSource == null)
-                            if (_cToTrinhCatHuy.ThemTT(totrinh))
+                            if (_cToTrinhCatHuy.Them(totrinh))
                             {
                                 MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 btnXem.PerformClick();
@@ -195,7 +195,7 @@ namespace ThuTien.GUI.Doi
                                 MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         else
-                            if (_cToTrinhCatHuy.SuaTT(totrinh))
+                            if (_cToTrinhCatHuy.Sua(totrinh))
                             {
                                 MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 btnXem.PerformClick();
@@ -231,10 +231,10 @@ namespace ThuTien.GUI.Doi
                             }
                         }
                         ///xóa tờ trình nếu hết chi tiết
-                        if (_cToTrinhCatHuy.CountCTTT(decimal.Parse(dgvToTrinh.SelectedRows[0].Cells["MaTT"].Value.ToString())) == 0)
+                        if (_cToTrinhCatHuy.CountCT(decimal.Parse(dgvToTrinh.SelectedRows[0].Cells["MaTT"].Value.ToString())) == 0)
                         {
-                            TT_ToTrinhCatHuy totrinh = _cToTrinhCatHuy.GetTT(decimal.Parse(dgvToTrinh.SelectedRows[0].Cells["MaTT"].Value.ToString()));
-                            _cToTrinhCatHuy.XoaTT(totrinh);
+                            TT_ToTrinhCatHuy totrinh = _cToTrinhCatHuy.Get(decimal.Parse(dgvToTrinh.SelectedRows[0].Cells["MaTT"].Value.ToString()));
+                            _cToTrinhCatHuy.Xoa(totrinh);
                         }
                         MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         btnXem.PerformClick();
@@ -340,23 +340,22 @@ namespace ThuTien.GUI.Doi
         private void dgvToTrinh_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvToTrinh.RowCount > 0)
-                dgvCTToTrinh.DataSource = _cToTrinhCatHuy.GetDSCTTT(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
+                dgvCTToTrinh.DataSource = _cToTrinhCatHuy.GetDSCT(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
         }
 
         private void dgvToTrinh_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if (dgvToTrinh.Columns[e.ColumnIndex].Name == "Khoa" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvToTrinh[e.ColumnIndex, e.RowIndex].Value.ToString()))
-                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
-                {
+            if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+            {
+                if (dgvToTrinh.Columns[e.ColumnIndex].Name == "Khoa" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvToTrinh[e.ColumnIndex, e.RowIndex].Value.ToString()))
                     if (bool.Parse(e.FormattedValue.ToString()) == true)
                     {
-                        TT_ToTrinhCatHuy totrinh = _cToTrinhCatHuy.GetTT(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
-                        //List<TT_CTToTrinhCatHuy> lst = _cToTrinhCatHuy.GetListCTTT(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
+                        TT_ToTrinhCatHuy totrinh = _cToTrinhCatHuy.Get(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
 
                         foreach (TT_CTToTrinhCatHuy item in totrinh.TT_CTToTrinhCatHuys.ToList())
                         {
                             DataTable dtTon = _cHoaDon.GetDSTonByDanhBo_ExceptHD0(item.DanhBo);
-                            string Ky = "";
+                            string Ky = ""; string MaHD = ""; string SoHoaDon = "";
                             int TongCongSo = 0;
                             int TieuThu = 0;
                             foreach (DataRow itemTon in dtTon.Rows)
@@ -367,48 +366,94 @@ namespace ThuTien.GUI.Doi
                                     Ky += ", " + itemTon["Ky"];
                                 TongCongSo += int.Parse(itemTon["TongCong"].ToString());
                                 TieuThu += int.Parse(itemTon["TieuThu"].ToString());
+                                if (MaHD == "")
+                                    MaHD += itemTon["MaHD"].ToString();
+                                else
+                                    MaHD += "," + itemTon["MaHD"].ToString();
+                                if (SoHoaDon == "")
+                                    SoHoaDon += itemTon["SoHoaDon"].ToString();
+                                else
+                                    SoHoaDon += "," + itemTon["SoHoaDon"].ToString();
 
-                                if (!_cLenhHuy.CheckExist(itemTon["SoHoaDon"].ToString()))
-                                {
-                                    TT_LenhHuy lenhhuy = new TT_LenhHuy();
-                                    lenhhuy.MaHD = _cHoaDon.Get(itemTon["SoHoaDon"].ToString()).ID_HOADON;
-                                    lenhhuy.SoHoaDon = itemTon["SoHoaDon"].ToString();
-                                    lenhhuy.TinhTrang = totrinh.TT_CTToTrinhCatHuys.SingleOrDefault(itemLst => itemLst.DanhBo == itemTon["DanhBo"].ToString()).GhiChu;
-                                    _cLenhHuy.Them(lenhhuy);
-                                }
+                                //if (!_cLenhHuy.CheckExist(itemTon["SoHoaDon"].ToString()))
+                                //{
+                                //    TT_LenhHuy lenhhuy = new TT_LenhHuy();
+                                //    lenhhuy.MaHD = _cHoaDon.Get(itemTon["SoHoaDon"].ToString()).ID_HOADON;
+                                //    lenhhuy.SoHoaDon = itemTon["SoHoaDon"].ToString();
+                                //    lenhhuy.TinhTrang = totrinh.TT_CTToTrinhCatHuys.SingleOrDefault(itemLst => itemLst.DanhBo == itemTon["DanhBo"].ToString()).GhiChu;
+                                //    _cLenhHuy.Them(lenhhuy);
+                                //}
                             }
 
                             item.Ky = Ky;
                             item.TongCong = TongCongSo;
                             item.TieuThu = TieuThu;
+                            item.MaHD = MaHD;
+                            item.SoHoaDon = SoHoaDon;
 
-                            _cToTrinhCatHuy.SuaCTTT(item);
+                            _cToTrinhCatHuy.SuaCT(item);
                         }
 
                         totrinh.Khoa = true;
-                        _cToTrinhCatHuy.SuaTT(totrinh);
+                        _cToTrinhCatHuy.Sua(totrinh);
                     }
                     else
+                    {
+                        TT_ToTrinhCatHuy totrinh = _cToTrinhCatHuy.Get(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
+                        
+                        if (totrinh.DaKy == true)
+                        {
+                            MessageBox.Show("Đã Ký, Không tắt được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         if (MessageBox.Show("Đã khóa, bạn có chắc chắn mở khóa?", "Xác nhận khóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
-                            TT_ToTrinhCatHuy totrinh = _cToTrinhCatHuy.GetTT(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
-                            //List<TT_CTToTrinhCatHuy> lst = _cToTrinhCatHuy.GetListCTTT(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
-
                             foreach (TT_CTToTrinhCatHuy item in totrinh.TT_CTToTrinhCatHuys.ToList())
                             {
                                 item.Ky = null;
                                 item.TongCong = null;
                                 item.TieuThu = null;
-
-                                _cToTrinhCatHuy.SuaCTTT(item);
+                                item.MaHD = "";
+                                item.SoHoaDon = "";
+                                _cToTrinhCatHuy.SuaCT(item);
                             }
 
                             totrinh.Khoa = false;
-                            _cToTrinhCatHuy.SuaTT(totrinh);
+                            _cToTrinhCatHuy.Sua(totrinh);
                         }
+                    }
+                ///
+                if (dgvToTrinh.Columns[e.ColumnIndex].Name == "DaKy" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvToTrinh[e.ColumnIndex, e.RowIndex].Value.ToString()))
+                {
+                    TT_ToTrinhCatHuy totrinh = _cToTrinhCatHuy.Get(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
+                    if (totrinh.Khoa == false)
+                    {
+                        MessageBox.Show("Chưa Khóa, Không được check", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    totrinh.DaKy = bool.Parse(e.FormattedValue.ToString());
+                    if (_cToTrinhCatHuy.Sua(totrinh))
+                    {
+                        if (totrinh.DaKy == true)
+                            foreach (TT_CTToTrinhCatHuy item in totrinh.TT_CTToTrinhCatHuys.ToList())
+                            {
+                                //string[] MaHDs = item.MaHD.Split('$');
+                                string[] SoHoaDons = item.SoHoaDon.Split('$');
+                                foreach (string SoHoaDon in SoHoaDons)
+                                    if (!_cLenhHuy.CheckExist(SoHoaDon))
+                                    {
+                                        TT_LenhHuy lenhhuy = new TT_LenhHuy();
+                                        lenhhuy.MaHD = _cHoaDon.Get(SoHoaDon).ID_HOADON;
+                                        lenhhuy.SoHoaDon = SoHoaDon;
+                                        lenhhuy.TinhTrang = totrinh.TT_CTToTrinhCatHuys.SingleOrDefault(itemLst => itemLst.DanhBo == item.DanhBo).GhiChu;
+                                        _cLenhHuy.Them(lenhhuy);
+                                    }
+                            }
+                    }
                 }
-                else
-                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void dgvCTToTrinh_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -437,16 +482,16 @@ namespace ThuTien.GUI.Doi
 
         private void dgvCTToTrinh_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if (dgvCTToTrinh["MaCTTT", e.RowIndex].Value!=null)
-            if (dgvCTToTrinh["MaCTTT", e.RowIndex].Value.ToString() != "" && dgvCTToTrinh.Columns[e.ColumnIndex].Name == "GhiChu" && (dgvCTToTrinh[e.ColumnIndex, e.RowIndex].Value == null || e.FormattedValue.ToString() != dgvCTToTrinh[e.ColumnIndex, e.RowIndex].Value.ToString()))
-                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
-                {
-                    TT_CTToTrinhCatHuy cttotrinh = _cToTrinhCatHuy.GetCT(int.Parse(dgvCTToTrinh["MaCTTT", e.RowIndex].Value.ToString()));
-                    cttotrinh.GhiChu = e.FormattedValue.ToString();
-                    _cToTrinhCatHuy.SuaCTTT(cttotrinh);
-                }
-                else
-                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (dgvCTToTrinh["MaCTTT", e.RowIndex].Value != null)
+                if (dgvCTToTrinh["MaCTTT", e.RowIndex].Value.ToString() != "" && dgvCTToTrinh.Columns[e.ColumnIndex].Name == "GhiChu" && (dgvCTToTrinh[e.ColumnIndex, e.RowIndex].Value == null || e.FormattedValue.ToString() != dgvCTToTrinh[e.ColumnIndex, e.RowIndex].Value.ToString()))
+                    if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                    {
+                        TT_CTToTrinhCatHuy cttotrinh = _cToTrinhCatHuy.GetCT(int.Parse(dgvCTToTrinh["MaCTTT", e.RowIndex].Value.ToString()));
+                        cttotrinh.GhiChu = e.FormattedValue.ToString();
+                        _cToTrinhCatHuy.SuaCT(cttotrinh);
+                    }
+                    else
+                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
     }

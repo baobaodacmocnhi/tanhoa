@@ -8,9 +8,9 @@ using System.Data;
 
 namespace ThuTien.DAL.Doi
 {
-    class CToTrinhCatHuy:CDAL
+    class CToTrinhCatHuy : CDAL
     {
-        public bool ThemTT(TT_ToTrinhCatHuy totrinh)
+        public bool Them(TT_ToTrinhCatHuy totrinh)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace ThuTien.DAL.Doi
             }
         }
 
-        public bool SuaTT(TT_ToTrinhCatHuy totrinh)
+        public bool Sua(TT_ToTrinhCatHuy totrinh)
         {
             try
             {
@@ -57,7 +57,7 @@ namespace ThuTien.DAL.Doi
             }
         }
 
-        public bool XoaTT(TT_ToTrinhCatHuy totrinh)
+        public bool Xoa(TT_ToTrinhCatHuy totrinh)
         {
             try
             {
@@ -72,19 +72,19 @@ namespace ThuTien.DAL.Doi
             }
         }
 
-        public DataTable GetDSTT()
+        public DataTable GetDS()
         {
-           return LINQToDataTable(_db.TT_ToTrinhCatHuys.OrderByDescending(item=>item.CreateDate).ToList());
+            return LINQToDataTable(_db.TT_ToTrinhCatHuys.OrderByDescending(item => item.CreateDate).ToList());
         }
 
-        public TT_ToTrinhCatHuy GetTT(decimal MaTT)
+        public TT_ToTrinhCatHuy Get(decimal MaTT)
         {
             return _db.TT_ToTrinhCatHuys.SingleOrDefault(item => item.MaTT == MaTT);
         }
 
         #region CT Tờ Trình
 
-        public bool SuaCTTT(TT_CTToTrinhCatHuy cttotrinh)
+        public bool SuaCT(TT_CTToTrinhCatHuy cttotrinh)
         {
             try
             {
@@ -116,30 +116,30 @@ namespace ThuTien.DAL.Doi
             }
         }
 
-        public List<TT_CTToTrinhCatHuy> GetListCTTT(decimal MaTT)
+        public TT_CTToTrinhCatHuy GetCT(int MaCTTT)
+        {
+            return _db.TT_CTToTrinhCatHuys.SingleOrDefault(item => item.MaCTTT == MaCTTT);
+
+        }
+        public List<TT_CTToTrinhCatHuy> GetListCT(decimal MaTT)
         {
             return _db.TT_CTToTrinhCatHuys.Where(item => item.MaTT == MaTT).ToList();
         }
 
-        public DataTable GetDSCTTT(decimal MaTT)
+        public DataTable GetDSCT(decimal MaTT)
         {
             return LINQToDataTable(_db.TT_CTToTrinhCatHuys.Where(item => item.MaTT == MaTT).ToList());
         }
 
-        public TT_CTToTrinhCatHuy GetCT(int MaCTTT)
-        {
-            return _db.TT_CTToTrinhCatHuys.SingleOrDefault(item => item.MaCTTT == MaCTTT);
-        }
-
         public int GetMaxMaCTTT()
         {
-            if (_db.TT_CTToTrinhCatHuys.Count()==0)
+            if (_db.TT_CTToTrinhCatHuys.Count() == 0)
                 return 0;
             else
                 return _db.TT_CTToTrinhCatHuys.Max(item => item.MaCTTT);
         }
 
-        public int CountCTTT(decimal MaTT)
+        public int CountCT(decimal MaTT)
         {
             return _db.TT_CTToTrinhCatHuys.Count(item => item.MaTT == MaTT);
         }
