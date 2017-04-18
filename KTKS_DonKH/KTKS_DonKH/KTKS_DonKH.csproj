@@ -86,10 +86,18 @@
     <StartupObject>KTKS_DonKH.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxInterop.AcroPDFLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Sources\AxInterop.AcroPDFLib.dll</HintPath>
+    </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar2, Version=8.0.0.0, Culture=neutral, PublicKeyToken=5fd520d36328f741, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Sources\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.BonusSkins.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Pdf.v13.1.Core, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -104,6 +112,10 @@
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="String_Indentity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Sources\String_Indentity.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -560,6 +572,15 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DAL\BamChi\CBamChi.cs" />
+    <Compile Include="DAL\CallCenter\AddValueCombox.cs" />
+    <Compile Include="DAL\CallCenter\CCallCenter.cs" />
+    <Compile Include="DAL\CallCenter\CGanMoi.cs" />
+    <Compile Include="DAL\CallCenter\CHeThongDuong.cs" />
+    <Compile Include="DAL\CallCenter\CKhachHang.cs" />
+    <Compile Include="DAL\CallCenter\CKinhDoanh.cs" />
+    <Compile Include="DAL\CallCenter\CTiepNhanDon.cs" />
+    <Compile Include="DAL\CallCenter\DataGridV.cs" />
+    <Compile Include="DAL\CallCenter\DateToString.cs" />
     <Compile Include="DAL\CatHuyDanhBo\CNoiDungXuLyCHDB.cs" />
     <Compile Include="DAL\CDocSo.cs" />
     <Compile Include="DAL\DonTu\CLichSuDonTu.cs" />
@@ -645,6 +666,48 @@
     </Compile>
     <Compile Include="GUI\BaoCao\frmShowBaoCao.Designer.cs">
       <DependentUpon>frmShowBaoCao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CallCenter\frmBaoBe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CallCenter\frmBaoBe.designer.cs">
+      <DependentUpon>frmBaoBe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CallCenter\frmDanhSachKN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CallCenter\frmDanhSachKN.designer.cs">
+      <DependentUpon>frmDanhSachKN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CallCenter\frmKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CallCenter\frmKhachHang.designer.cs">
+      <DependentUpon>frmKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CallCenter\frmKhachHangGanMoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CallCenter\frmKhachHangGanMoi.designer.cs">
+      <DependentUpon>frmKhachHangGanMoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CallCenter\frmTiepNhanKN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CallCenter\frmTiepNhanKN.designer.cs">
+      <DependentUpon>frmTiepNhanKN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CallCenter\frmViewPdf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CallCenter\frmViewPdf.designer.cs">
+      <DependentUpon>frmViewPdf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CallCenter\MessChuaXL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CallCenter\MessChuaXL.designer.cs">
+      <DependentUpon>MessChuaXL.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\CatHuyDanhBo\frmNoiDungXuLyCHDB.cs">
       <SubType>Form</SubType>
@@ -1030,6 +1093,16 @@
     <Compile Include="GUI\TruyThu\frmTruyThuTienNuoc.Designer.cs">
       <DependentUpon>frmTruyThuTienNuoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="LinQ\dbGanMoi.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbGanMoi.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="LinQ\dbHandHeld.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbHandHeld.dbml</DependentUpon>
+    </Compile>
     <Compile Include="LinQ\dbThuTien.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1059,6 +1132,16 @@
       <DependentUpon>DataSetBaoCao.xsd</DependentUpon>
     </None>
     <None Include="KTKS_DonKH_TemporaryKey.pfx" />
+    <None Include="LinQ\dbGanMoi.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dbGanMoi.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="LinQ\dbHandHeld.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dbHandHeld.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="LinQ\dbThuTien.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>dbThuTien.designer.cs</LastGenOutput>
@@ -1373,6 +1456,27 @@
     <EmbeddedResource Include="GUI\BaoCao\frmShowBaoCao.resx">
       <DependentUpon>frmShowBaoCao.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CallCenter\frmBaoBe.resx">
+      <DependentUpon>frmBaoBe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CallCenter\frmDanhSachKN.resx">
+      <DependentUpon>frmDanhSachKN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CallCenter\frmKhachHang.resx">
+      <DependentUpon>frmKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CallCenter\frmKhachHangGanMoi.resx">
+      <DependentUpon>frmKhachHangGanMoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CallCenter\frmTiepNhanKN.resx">
+      <DependentUpon>frmTiepNhanKN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CallCenter\frmViewPdf.resx">
+      <DependentUpon>frmViewPdf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CallCenter\MessChuaXL.resx">
+      <DependentUpon>MessChuaXL.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\CatHuyDanhBo\frmNoiDungXuLyCHDB.resx">
       <DependentUpon>frmNoiDungXuLyCHDB.cs</DependentUpon>
     </EmbeddedResource>
@@ -1571,6 +1675,12 @@
     <None Include="LinQ\dbThuTien.dbml.layout">
       <DependentUpon>dbThuTien.dbml</DependentUpon>
     </None>
+    <None Include="LinQ\dbHandHeld.dbml.layout">
+      <DependentUpon>dbHandHeld.dbml</DependentUpon>
+    </None>
+    <None Include="LinQ\dbGanMoi.dbml.layout">
+      <DependentUpon>dbGanMoi.dbml</DependentUpon>
+    </None>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -1600,6 +1710,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Sources\Test.pdf" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="ADOX">
@@ -1683,7 +1794,10 @@
     <None Include="Resources\down 24x24.png" />
     <None Include="Resources\email receive 48.png" />
     <None Include="Resources\email send 48.png" />
+    <Content Include="Sources\AxInterop.AcroPDFLib.dll" />
     <Content Include="Sources\DevComponents.DotNetBar2.dll" />
+    <Content Include="Sources\IrisSkin2.dll" />
+    <Content Include="Sources\String_Indentity.dll" />
     <Content Include="Sources\System.Windows.Forms.Ribbon35.dll" />
   </ItemGroup>
   <ItemGroup>

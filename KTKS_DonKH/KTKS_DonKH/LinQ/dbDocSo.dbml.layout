@@ -1,37 +1,49 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 13.25" name="dbDocSo">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 19, 17.625" name="dbDocSo">
   <DataContextMoniker Name="/dbDocSoDataContext" />
   <nestedChildShapes>
-    <classShape Id="ffe6f3e0-bf97-4617-aaa7-5eb10aec12fd" absoluteBounds="3.5, 0.875, 2, 1.3862939453124998">
-      <DataClassMoniker Name="/dbDocSoDataContext/PHUONG" />
-      <nestedChildShapes>
-        <elementListCompartment Id="19d86977-c170-40ca-9955-a1a52a189933" absoluteBounds="3.515, 1.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="cf1c22ce-e961-4a39-9893-bf50f4120ed4" absoluteBounds="0.75, 1, 2, 1.1939925130208335">
-      <DataClassMoniker Name="/dbDocSoDataContext/QUAN" />
-      <nestedChildShapes>
-        <elementListCompartment Id="814857e0-5765-46e7-9a52-88dcfd332aa5" absoluteBounds="0.765, 1.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(2.75 : 1.59699625651042); (3.5 : 1.59699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/dbDocSoDataContext/QUAN/QUAN_PHUONG" />
-      <nodes>
-        <classShapeMoniker Id="cf1c22ce-e961-4a39-9893-bf50f4120ed4" />
-        <classShapeMoniker Id="ffe6f3e0-bf97-4617-aaa7-5eb10aec12fd" />
-      </nodes>
-    </associationConnector>
-    <classShape Id="34b34611-a8aa-4278-8ff9-d69c3a987ae1" absoluteBounds="7.375, 2.25, 2, 2.3478011067708335">
-      <DataClassMoniker Name="/dbDocSoDataContext/TB_GHICHU" />
-      <nestedChildShapes>
-        <elementListCompartment Id="9ff33bdc-81c7-4b2f-baa3-1831fb1a6e64" absoluteBounds="7.39, 2.71, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="a9484d5b-a774-474a-b6d7-8bbce61fc6a3" absoluteBounds="3.75, 3.125, 2, 9.8475569661458326">
+    <classShape Id="d1a286b7-524e-404b-9210-0bfb28fc9346" absoluteBounds="0.75, 0.75, 2, 9.8475569661458326">
       <DataClassMoniker Name="/dbDocSoDataContext/TB_DULIEUKHACHHANG" />
       <nestedChildShapes>
-        <elementListCompartment Id="396fe382-da8b-4a76-9f0d-458e8d942ba4" absoluteBounds="3.765, 3.585, 1.9700000000000002, 9.2875569661458321" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="af9db131-0765-4b2e-a3c6-28e51cae02b5" absoluteBounds="0.765, 1.21, 1.9700000000000002, 9.2875569661458321" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="7a056c29-d75b-4548-b822-74d3ac127f35" absoluteBounds="3.75, 0.75, 2, 10.809064127604165">
+      <DataClassMoniker Name="/dbDocSoDataContext/TB_DULIEUKHACHHANG_HUYDB" />
+      <nestedChildShapes>
+        <elementListCompartment Id="423044ba-7d6a-4345-af02-427fd8682f0b" absoluteBounds="3.765, 1.21, 1.9700000000000002, 10.249064127604166" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6a30a5ab-e59c-4eb2-bbb1-dfd7614e55fa" absoluteBounds="4.5, 14.875, 2, 2.5401025390625">
+      <DataClassMoniker Name="/dbDocSoDataContext/HOSOGOC" />
+      <nestedChildShapes>
+        <elementListCompartment Id="704bfa0a-6181-46e7-9436-a3889f4fd397" absoluteBounds="4.515, 15.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="76e74fc5-7e86-41ab-9db6-a6aa0183b8e3" absoluteBounds="16.75, 11.875, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/dbDocSoDataContext/TB_GHICHU" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2240daea-b08e-4fdd-a241-f68e41351995" absoluteBounds="16.765, 12.335, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="febf43a0-3de7-4405-b292-886c1e058e9a" absoluteBounds="6.375, 1, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/dbDocSoDataContext/QUAN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f5f37720-4099-4ebb-8de3-e1e61794a0c0" absoluteBounds="6.39, 1.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="af6317ed-e885-450a-8185-64fcf0d2566c" absoluteBounds="9.125, 0.875, 2, 1.3862939453125003">
+      <DataClassMoniker Name="/dbDocSoDataContext/PHUONG" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1606b3f0-e9d0-42d3-bfdb-a8132f7b3863" absoluteBounds="9.14, 1.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.375 : 1.59699625651042); (9.125 : 1.59699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbDocSoDataContext/QUAN/QUAN_PHUONG" />
+      <nodes>
+        <classShapeMoniker Id="febf43a0-3de7-4405-b292-886c1e058e9a" />
+        <classShapeMoniker Id="af6317ed-e885-450a-8185-64fcf0d2566c" />
+      </nodes>
+    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

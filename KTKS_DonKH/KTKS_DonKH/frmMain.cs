@@ -22,6 +22,7 @@ using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.GUI.QuanTri;
 using KTKS_DonKH.GUI.ToBamChi;
 using KTKS_DonKH.GUI.TruyThu;
+using KTKS_DonKH.GUI.CallCenter;
 
 namespace KTKS_DonKH
 {
@@ -811,6 +812,30 @@ namespace KTKS_DonKH
         private void mnuToTrinhDCHD_Click(object sender, EventArgs e)
         {
             frmToTrinhDCHD frm = new frmToTrinhDCHD();
+            OpenForm(frm);
+        }
+
+        private void mnuTTKhachHang_Click(object sender, EventArgs e)
+        {
+            frmKhachHang frm = new frmKhachHang();
+            OpenForm(frm);
+        }
+
+        private void mnuKHGanMoi_Click(object sender, EventArgs e)
+        {
+            frmKhachHangGanMoi frm = new frmKhachHangGanMoi();
+            OpenForm(frm);
+        }
+
+        private void mnBaoBe_Click(object sender, EventArgs e)
+        {
+            frmBaoBe frm = new frmBaoBe();
+            OpenForm(frm);
+        }
+
+        private void mnuDSTiepNhan_Click(object sender, EventArgs e)
+        {
+            frmDanhSachKN frm = new frmDanhSachKN();
             OpenForm(frm);
         }
 
