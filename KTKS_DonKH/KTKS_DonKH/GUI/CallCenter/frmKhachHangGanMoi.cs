@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.CallCenter;
 using KTKS_DonKH.DAL.QuanTri;
+using KTKS_DonKH.GUI.TruyThu;
 
 namespace KTKS_DonKH.GUI.CallCenter
 {
@@ -606,8 +607,15 @@ namespace KTKS_DonKH.GUI.CallCenter
 
         private void btHoSoGoc_Click(object sender, EventArgs e)
         {
-            frmViewPdf F = new frmViewPdf(sodanhbo.Text);
-            F.ShowDialog();
+            if (CKhachHang.findByHoSoGoc(sodanhbo.Text.Replace("-", "")) != null)
+            {
+                frmPDFViewer F = new frmPDFViewer(CKhachHang.GetHoSoGoc(sodanhbo.Text.Replace("-", "")));
+                F.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show(this, "Hồ sơ gốc chưa được cập nhật !", "..: Thông Báo :..", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btTiepNhanKN_Click(object sender, EventArgs e)

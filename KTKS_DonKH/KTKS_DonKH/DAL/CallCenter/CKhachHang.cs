@@ -5,6 +5,7 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using KTKS_DonKH.LinQ;
+using System.IO;
 
 namespace KTKS_DonKH.DAL.CallCenter
 {
@@ -205,6 +206,34 @@ namespace KTKS_DonKH.DAL.CallCenter
           
              return getDataTable(sql);
         
+        }
+
+        public static byte[] GetHoSoGoc(string DanhBo)
+        {
+            if (db.Connection.State == ConnectionState.Open)
+            {
+                db.Connection.Close();
+            }
+            db.Connection.Open();
+
+            SqlConnection sqlCon;
+            sqlCon = new SqlConnection(db.Connection.ConnectionString);
+            sqlCon.Open();
+            using (var sqlQuery = new SqlCommand(@"SELECT DataBlob FROM HOSOGOC WHERE DBDongHoNuoc='" + DanhBo + "' ", sqlCon))
+            {
+
+                using (var sqlQueryResult = sqlQuery.ExecuteReader())
+                    if (sqlQueryResult != null)
+                    {
+                        sqlQueryResult.Read();
+                        var blob = new Byte[(sqlQueryResult.GetBytes(0, 0, null, 0, int.MaxValue))];
+                        sqlQueryResult.GetBytes(0, 0, blob, 0, blob.Length);
+                        sqlCon.Close();
+                        return blob;
+                    }
+            }
+            return null;
+
         }
     }
 }

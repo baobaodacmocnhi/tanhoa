@@ -697,12 +697,6 @@
     <Compile Include="GUI\CallCenter\frmTiepNhanKN.designer.cs">
       <DependentUpon>frmTiepNhanKN.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\CallCenter\frmViewPdf.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\CallCenter\frmViewPdf.designer.cs">
-      <DependentUpon>frmViewPdf.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\CallCenter\MessChuaXL.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1470,9 +1464,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CallCenter\frmTiepNhanKN.resx">
       <DependentUpon>frmTiepNhanKN.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\CallCenter\frmViewPdf.resx">
-      <DependentUpon>frmViewPdf.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CallCenter\MessChuaXL.resx">
       <DependentUpon>MessChuaXL.cs</DependentUpon>

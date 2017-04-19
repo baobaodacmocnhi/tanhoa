@@ -10,6 +10,7 @@ using KTKS_DonKH.DAL.CallCenter;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.Utilities;
 using KTKS_DonKH.DAL.QuanTri;
+using KTKS_DonKH.GUI.TruyThu;
 
 
 namespace KTKS_DonKH.GUI.CallCenter
@@ -245,7 +246,7 @@ namespace KTKS_DonKH.GUI.CallCenter
         {
             if (CKhachHang.findByHoSoGoc(rDanhBo.Text.Replace("-", "")) != null)
             {
-                frmViewPdf F = new frmViewPdf(rDanhBo.Text.Replace("-", ""));
+                frmPDFViewer F = new frmPDFViewer(CKhachHang.GetHoSoGoc(rDanhBo.Text.Replace("-", "")));
                 F.ShowDialog();
             }
             else
