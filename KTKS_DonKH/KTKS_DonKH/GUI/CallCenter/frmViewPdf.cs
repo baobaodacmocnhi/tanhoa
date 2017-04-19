@@ -50,7 +50,7 @@ namespace KTKS_DonKH.GUI.CallCenter
                 sqlCon.Close();
                 string local = varPathToNewLocation.Replace(@"\\", @"\");
                 //MessageBox.Show(this, local);
-                axAcroPDF2.LoadFile(local);
+                axAcroPDF3.LoadFile(local);
 
 
             }

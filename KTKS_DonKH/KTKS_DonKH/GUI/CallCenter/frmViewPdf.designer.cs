@@ -29,49 +29,36 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmViewPdf));
-            this.axAcroPDF1 = new AxAcroPDFLib.AxAcroPDF();
-            this.axAcroPDF2 = new AxAcroPDFLib.AxAcroPDF();
-            ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF2)).BeginInit();
+            this.axAcroPDF3 = new AxAcroPDFLib.AxAcroPDF();
+            ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF3)).BeginInit();
             this.SuspendLayout();
             // 
-            // axAcroPDF1
+            // axAcroPDF3
             // 
-            this.axAcroPDF1.Enabled = true;
-            this.axAcroPDF1.Location = new System.Drawing.Point(0, 0);
-            this.axAcroPDF1.Name = "axAcroPDF1";
-            this.axAcroPDF1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axAcroPDF1.OcxState")));
-            this.axAcroPDF1.Size = new System.Drawing.Size(192, 192);
-            this.axAcroPDF1.TabIndex = 0;
-            // 
-            // axAcroPDF2
-            // 
-            this.axAcroPDF2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axAcroPDF2.Enabled = true;
-            this.axAcroPDF2.Location = new System.Drawing.Point(0, 0);
-            this.axAcroPDF2.Name = "axAcroPDF2";
-            this.axAcroPDF2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axAcroPDF2.OcxState")));
-            this.axAcroPDF2.Size = new System.Drawing.Size(1134, 652);
-            this.axAcroPDF2.TabIndex = 0;
+            this.axAcroPDF3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.axAcroPDF3.Enabled = true;
+            this.axAcroPDF3.Location = new System.Drawing.Point(0, 0);
+            this.axAcroPDF3.Name = "axAcroPDF3";
+            this.axAcroPDF3.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axAcroPDF3.OcxState")));
+            this.axAcroPDF3.Size = new System.Drawing.Size(1134, 652);
+            this.axAcroPDF3.TabIndex = 0;
             // 
             // frmViewPdf
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1134, 652);
-            this.Controls.Add(this.axAcroPDF2);
+            this.Controls.Add(this.axAcroPDF3);
             this.Name = "frmViewPdf";
             this.Text = "frmViewPdf";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF3)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private AxAcroPDFLib.AxAcroPDF axAcroPDF1;
-        private AxAcroPDFLib.AxAcroPDF axAcroPDF2;
+        private AxAcroPDFLib.AxAcroPDF axAcroPDF3;
     }
 }

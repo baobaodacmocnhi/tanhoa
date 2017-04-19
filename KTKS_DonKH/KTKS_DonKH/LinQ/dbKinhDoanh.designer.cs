@@ -35314,6 +35314,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<bool> _ChuyenHS;
 		
+		private System.Nullable<int> _MaDVChuyen;
+		
 		private string _DonViChuyen;
 		
 		private System.Nullable<System.DateTime> _NgayChuyen;
@@ -35364,6 +35366,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnGhiChuChanged();
     partial void OnChuyenHSChanging(System.Nullable<bool> value);
     partial void OnChuyenHSChanged();
+    partial void OnMaDVChuyenChanging(System.Nullable<int> value);
+    partial void OnMaDVChuyenChanged();
     partial void OnDonViChuyenChanging(string value);
     partial void OnDonViChuyenChanged();
     partial void OnNgayChuyenChanging(System.Nullable<System.DateTime> value);
@@ -35651,7 +35655,27 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DonViChuyen", DbType="VarChar(20)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDVChuyen", DbType="Int")]
+		public System.Nullable<int> MaDVChuyen
+		{
+			get
+			{
+				return this._MaDVChuyen;
+			}
+			set
+			{
+				if ((this._MaDVChuyen != value))
+				{
+					this.OnMaDVChuyenChanging(value);
+					this.SendPropertyChanging();
+					this._MaDVChuyen = value;
+					this.SendPropertyChanged("MaDVChuyen");
+					this.OnMaDVChuyenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DonViChuyen", DbType="NVarChar(50)")]
 		public string DonViChuyen
 		{
 			get

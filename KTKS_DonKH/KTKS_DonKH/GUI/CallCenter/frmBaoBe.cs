@@ -117,7 +117,8 @@ namespace KTKS_DonKH.GUI.CallCenter
             tn.NgayNhan = DateTime.Now;
             tn.ChuyenHS = true;
             tn.NgayChuyen = DateTime.Now;
-            tn.DonViChuyen = "TCTB";
+            tn.MaDVChuyen = 1;
+            tn.DonViChuyen = "Đội TCTB";
             tn.Mess = true;
             tn.GhiChu = this.txtGhiChu.Text;
             tn.CreateBy = CTaiKhoan.HoTen + "";

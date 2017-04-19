@@ -42,7 +42,7 @@ namespace KTKS_DonKH.DAL.CallCenter
                 String_Indentity.String_Indentity obj = new String_Indentity.String_Indentity();
                 dbKinhDoanhDataContext db = new dbKinhDoanhDataContext();
                 db.Connection.Open();
-                string sql = " SELECT MAX(SoHoSo) as 'SoHoSo' FROM TiepNhan    ORDER BY SoHoSo DESC";
+                string sql = " SELECT MAX(SoHoSo) as 'SoHoSo' FROM TTKH_TiepNhan    ORDER BY SoHoSo DESC";
                 SqlDataAdapter adapter = new SqlDataAdapter(sql, db.Connection.ConnectionString);
                 DataTable table = new DataTable();
                 adapter.Fill(table);
