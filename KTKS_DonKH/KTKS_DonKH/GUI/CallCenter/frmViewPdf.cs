@@ -54,7 +54,7 @@ namespace KTKS_DonKH.GUI.CallCenter
 
 
             }
-            catch (Exception Ex)
+            catch (Exception)
             {
                 MessageBox.Show(this, "Lỗi ");
             }

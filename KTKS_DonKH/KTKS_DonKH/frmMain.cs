@@ -803,6 +803,54 @@ namespace KTKS_DonKH
 
         #endregion
 
+        #region Trung Tâm Khách Hàng
+
+        private void mnuThongTinKhachHang_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuThongTinKhachHang", "Xem"))
+            {
+                frmKhachHang frm = new frmKhachHang();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuKhachHangGanMoi_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuKhachHangGanMoi", "Xem"))
+            {
+                frmKhachHangGanMoi frm = new frmKhachHangGanMoi();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuDSTiepNhan_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuDSTiepNhan", "Xem"))
+            {
+                frmDanhSachKN frm = new frmDanhSachKN();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnBaoBe_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnBaoBe", "Xem"))
+            {
+                frmBaoBe frm = new frmBaoBe();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion
+
         private void mnuTimKiem_Click(object sender, EventArgs e)
         {
             frmTienTrinhDon frm = new frmTienTrinhDon();
@@ -814,34 +862,6 @@ namespace KTKS_DonKH
             frmToTrinhDCHD frm = new frmToTrinhDCHD();
             OpenForm(frm);
         }
-
-        private void mnuTTKhachHang_Click(object sender, EventArgs e)
-        {
-            frmKhachHang frm = new frmKhachHang();
-            OpenForm(frm);
-        }
-
-        private void mnuKHGanMoi_Click(object sender, EventArgs e)
-        {
-            frmKhachHangGanMoi frm = new frmKhachHangGanMoi();
-            OpenForm(frm);
-        }
-
-        private void mnBaoBe_Click(object sender, EventArgs e)
-        {
-            frmBaoBe frm = new frmBaoBe();
-            OpenForm(frm);
-        }
-
-        private void mnuDSTiepNhan_Click(object sender, EventArgs e)
-        {
-            frmDanhSachKN frm = new frmDanhSachKN();
-            OpenForm(frm);
-        }
-
-
-
-
 
     }
 }

@@ -193,7 +193,6 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.TENDUONG = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.btDongNuoc = new DevComponents.DotNetBar.ButtonX();
             this.btHoSoGoc = new DevComponents.DotNetBar.ButtonX();
             this.rDanhBo = new System.Windows.Forms.MaskedTextBox();
             this.KIEMDINH = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
@@ -1670,7 +1669,6 @@
             // groupControl1
             // 
             this.groupControl1.Controls.Add(this.TENDUONG);
-            this.groupControl1.Controls.Add(this.btDongNuoc);
             this.groupControl1.Controls.Add(this.btHoSoGoc);
             this.groupControl1.Controls.Add(this.rDanhBo);
             this.groupControl1.Controls.Add(this.KIEMDINH);
@@ -1734,20 +1732,6 @@
             this.TENDUONG.TabIndex = 134;
             this.TENDUONG.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TENDUONG.WatermarkColor = System.Drawing.Color.Transparent;
-            // 
-            // btDongNuoc
-            // 
-            this.btDongNuoc.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btDongNuoc.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btDongNuoc.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btDongNuoc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btDongNuoc.Location = new System.Drawing.Point(492, 112);
-            this.btDongNuoc.Name = "btDongNuoc";
-            this.btDongNuoc.Size = new System.Drawing.Size(121, 26);
-            this.btDongNuoc.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
-            this.btDongNuoc.TabIndex = 173;
-            this.btDongNuoc.Text = "Đóng Nước";
-            this.btDongNuoc.Click += new System.EventHandler(this.btDongNuoc_Click);
             // 
             // btHoSoGoc
             // 
@@ -2988,7 +2972,6 @@
         private System.Windows.Forms.DataGridView gHoaDon;
         private DevComponents.DotNetBar.ButtonX btHoSoGoc;
         private DevComponents.DotNetBar.ButtonX btTiepNhanKN;
-        private DevComponents.DotNetBar.ButtonX btDongNuoc;
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.Controls.TextBoxX txtNhanVienDocSo;
         private DevComponents.DotNetBar.LabelX labelX7;

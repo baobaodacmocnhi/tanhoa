@@ -24,7 +24,7 @@ namespace KTKS_DonKH.DAL.CallCenter
                 SqlDataAdapter adapter = new SqlDataAdapter(sql, db.Connection.ConnectionString);
                 adapter.Fill(table);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             finally
@@ -50,7 +50,7 @@ namespace KTKS_DonKH.DAL.CallCenter
                 db.Connection.Close();
                 return dataset.Tables[0];
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             finally
@@ -74,7 +74,7 @@ namespace KTKS_DonKH.DAL.CallCenter
                 //}
                 return donkh;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             return null;
@@ -94,7 +94,7 @@ namespace KTKS_DonKH.DAL.CallCenter
                 //}
                 return donkh;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             return null;
@@ -248,7 +248,7 @@ namespace KTKS_DonKH.DAL.CallCenter
                 var query = from kt in db.BG_KHOILUONGXDCBs where kt.SHS == shs select kt;
                 return query.SingleOrDefault();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             return null;
@@ -271,7 +271,7 @@ namespace KTKS_DonKH.DAL.CallCenter
                 var query = from dottc in db.KH_DOTTHICONGs where dottc.MADOTTC == madot select dottc;
                 return query.SingleOrDefault();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             return null;

@@ -103,7 +103,7 @@ namespace KTKS_DonKH.DAL.CallCenter
                 db.SubmitChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             return false;

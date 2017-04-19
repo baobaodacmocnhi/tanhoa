@@ -425,6 +425,72 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
+        public DataTable GetDS(string Loai, decimal FromMaDon, decimal ToMaDon)
+        {
+            switch (Loai)
+            {
+                case "TKH":
+                    var query = from itemCTKTXM in db.CTKTXMs
+                                join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                                where (((itemCTKTXM.KTXM.MaDon.ToString().Substring(itemCTKTXM.KTXM.MaDon.ToString().Length - 2, 2) == FromMaDon.ToString().Substring(FromMaDon.ToString().Length - 2, 2)
+                                    && itemCTKTXM.KTXM.MaDon.ToString().Substring(itemCTKTXM.KTXM.MaDon.ToString().Length - 2, 2) == ToMaDon.ToString().Substring(ToMaDon.ToString().Length - 2, 2))
+                                    && (itemCTKTXM.KTXM.MaDon >= FromMaDon && itemCTKTXM.KTXM.MaDon <= ToMaDon)))
+                                select new
+                                {
+                                    itemCTKTXM.MaCTKTXM,
+                                    MaDon = "TKH" + itemCTKTXM.KTXM.MaDon,
+                                    itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD,
+                                    itemCTKTXM.DanhBo,
+                                    itemCTKTXM.HoTen,
+                                    itemCTKTXM.DiaChi,
+                                    itemCTKTXM.NgayKTXM,
+                                    itemCTKTXM.NoiDungKiemTra,
+                                    CreateBy = itemUser.HoTen,
+                                };
+                    return LINQToDataTable(query);
+                case "TXL":
+                    query = from itemCTKTXM in db.CTKTXMs
+                            join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                            where (((itemCTKTXM.KTXM.MaDonTXL.ToString().Substring(itemCTKTXM.KTXM.MaDonTXL.ToString().Length - 2, 2) == FromMaDon.ToString().Substring(FromMaDon.ToString().Length - 2, 2)
+                            && itemCTKTXM.KTXM.MaDonTXL.ToString().Substring(itemCTKTXM.KTXM.MaDonTXL.ToString().Length - 2, 2) == ToMaDon.ToString().Substring(ToMaDon.ToString().Length - 2, 2))
+                            && (itemCTKTXM.KTXM.MaDonTXL >= FromMaDon && itemCTKTXM.KTXM.MaDonTXL <= ToMaDon)))
+                            select new
+                            {
+                                itemCTKTXM.MaCTKTXM,
+                                MaDon = "TXL" + itemCTKTXM.KTXM.MaDonTXL,
+                                itemCTKTXM.KTXM.DonTXL.LoaiDonTXL.TenLD,
+                                itemCTKTXM.DanhBo,
+                                itemCTKTXM.HoTen,
+                                itemCTKTXM.DiaChi,
+                                itemCTKTXM.NgayKTXM,
+                                itemCTKTXM.NoiDungKiemTra,
+                                CreateBy = itemUser.HoTen,
+                            };
+                    return LINQToDataTable(query);
+                case "TBC":
+                    query = from itemCTKTXM in db.CTKTXMs
+                            join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                            where (((itemCTKTXM.KTXM.MaDonTBC.ToString().Substring(itemCTKTXM.KTXM.MaDonTBC.ToString().Length - 2, 2) == FromMaDon.ToString().Substring(FromMaDon.ToString().Length - 2, 2)
+                            && itemCTKTXM.KTXM.MaDonTBC.ToString().Substring(itemCTKTXM.KTXM.MaDonTBC.ToString().Length - 2, 2) == ToMaDon.ToString().Substring(ToMaDon.ToString().Length - 2, 2))
+                            && (itemCTKTXM.KTXM.MaDonTBC >= FromMaDon && itemCTKTXM.KTXM.MaDonTBC <= ToMaDon)))
+                            select new
+                            {
+                                itemCTKTXM.MaCTKTXM,
+                                MaDon = "TBC" + itemCTKTXM.KTXM.MaDonTBC,
+                                itemCTKTXM.KTXM.DonTBC.LoaiDonTBC.TenLD,
+                                itemCTKTXM.DanhBo,
+                                itemCTKTXM.HoTen,
+                                itemCTKTXM.DiaChi,
+                                itemCTKTXM.NgayKTXM,
+                                itemCTKTXM.NoiDungKiemTra,
+                                CreateBy = itemUser.HoTen,
+                            };
+                    return LINQToDataTable(query);
+                default:
+                    return null;
+            }
+        }
+
         public DataTable GetDS(string DanhBo)
         {
             var query = from itemCTKTXM in db.CTKTXMs

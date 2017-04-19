@@ -97,19 +97,18 @@
             this.mnuTTTL = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDSTTTL = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuVeViecTTTL = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuBaoCao = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCongVan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCongVanDi = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTimKiem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuTrungTamKhachHang = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuThongTinKhachHang = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuKhachHangGanMoi = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDSTiepNhan = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnBaoBe = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
-            this.trungTâmKHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuTTKhachHang = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuKHGanMoi = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuDSTiepNhan = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnBaoBe = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -124,19 +123,18 @@
             this.mnuDonTu,
             this.mnuToXuLy,
             this.mnuToBamChi,
-            this.trungTâmKHToolStripMenuItem,
             this.mnuKiemTraXacMinh,
             this.mnuBamChi,
             this.mnuTruyThu,
             this.mnuDieuChinhBienDong,
             this.mnuCatHuy,
             this.mnuThuTraLoi,
-            this.mnuBaoCao,
             this.mnuCongVan,
-            this.mnuTimKiem});
+            this.mnuTimKiem,
+            this.mnuTrungTamKhachHang});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1216, 24);
+            this.menuStrip.Size = new System.Drawing.Size(1390, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -666,13 +664,6 @@
             this.mnuVeViecTTTL.Text = "Về Việc Thảo Thư";
             this.mnuVeViecTTTL.Click += new System.EventHandler(this.mnuVeViecTTTL_Click);
             // 
-            // mnuBaoCao
-            // 
-            this.mnuBaoCao.Name = "mnuBaoCao";
-            this.mnuBaoCao.Size = new System.Drawing.Size(73, 20);
-            this.mnuBaoCao.Text = "Báo Cáo";
-            this.mnuBaoCao.Click += new System.EventHandler(this.mnuBaoCao_Click);
-            // 
             // mnuCongVan
             // 
             this.mnuCongVan.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -695,64 +686,30 @@
             this.mnuTimKiem.Text = "Tìm Kiếm";
             this.mnuTimKiem.Click += new System.EventHandler(this.mnuTimKiem_Click);
             // 
-            // tabControl
+            // mnuTrungTamKhachHang
             // 
-            this.tabControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl.Location = new System.Drawing.Point(0, 24);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1216, 26);
-            this.tabControl.TabIndex = 2;
-            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.StripStatus_HoTen});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 448);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1216, 22);
-            this.statusStrip1.TabIndex = 4;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(428, 17);
-            this.toolStripStatusLabel1.Text = "Bản quyền(2015) thuộc Công ty CP Cấp Nước Tân Hòa. Được T.CNTT phát triển";
-            // 
-            // StripStatus_HoTen
-            // 
-            this.StripStatus_HoTen.Name = "StripStatus_HoTen";
-            this.StripStatus_HoTen.Size = new System.Drawing.Size(58, 17);
-            this.StripStatus_HoTen.Text = "Xin Chào:";
-            // 
-            // trungTâmKHToolStripMenuItem
-            // 
-            this.trungTâmKHToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuTTKhachHang,
-            this.mnuKHGanMoi,
+            this.mnuTrungTamKhachHang.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuThongTinKhachHang,
+            this.mnuKhachHangGanMoi,
             this.mnuDSTiepNhan,
             this.mnBaoBe});
-            this.trungTâmKHToolStripMenuItem.Name = "trungTâmKHToolStripMenuItem";
-            this.trungTâmKHToolStripMenuItem.Size = new System.Drawing.Size(107, 20);
-            this.trungTâmKHToolStripMenuItem.Text = "Trung Tâm KH";
+            this.mnuTrungTamKhachHang.Name = "mnuTrungTamKhachHang";
+            this.mnuTrungTamKhachHang.Size = new System.Drawing.Size(162, 20);
+            this.mnuTrungTamKhachHang.Text = "Trung Tâm Khách Hàng";
             // 
-            // mnuTTKhachHang
+            // mnuThongTinKhachHang
             // 
-            this.mnuTTKhachHang.Name = "mnuTTKhachHang";
-            this.mnuTTKhachHang.Size = new System.Drawing.Size(213, 22);
-            this.mnuTTKhachHang.Text = "Thông Tin Khách Hàng";
-            this.mnuTTKhachHang.Click += new System.EventHandler(this.mnuTTKhachHang_Click);
+            this.mnuThongTinKhachHang.Name = "mnuThongTinKhachHang";
+            this.mnuThongTinKhachHang.Size = new System.Drawing.Size(213, 22);
+            this.mnuThongTinKhachHang.Text = "Thông Tin Khách Hàng";
+            this.mnuThongTinKhachHang.Click += new System.EventHandler(this.mnuThongTinKhachHang_Click);
             // 
-            // mnuKHGanMoi
+            // mnuKhachHangGanMoi
             // 
-            this.mnuKHGanMoi.Name = "mnuKHGanMoi";
-            this.mnuKHGanMoi.Size = new System.Drawing.Size(213, 22);
-            this.mnuKHGanMoi.Text = "Khách Hàng Gắn Mới";
-            this.mnuKHGanMoi.Click += new System.EventHandler(this.mnuKHGanMoi_Click);
+            this.mnuKhachHangGanMoi.Name = "mnuKhachHangGanMoi";
+            this.mnuKhachHangGanMoi.Size = new System.Drawing.Size(213, 22);
+            this.mnuKhachHangGanMoi.Text = "Khách Hàng Gắn Mới";
+            this.mnuKhachHangGanMoi.Click += new System.EventHandler(this.mnuKhachHangGanMoi_Click);
             // 
             // mnuDSTiepNhan
             // 
@@ -768,12 +725,46 @@
             this.mnBaoBe.Text = "Báo Bể";
             this.mnBaoBe.Click += new System.EventHandler(this.mnBaoBe_Click);
             // 
+            // tabControl
+            // 
+            this.tabControl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl.Location = new System.Drawing.Point(0, 24);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(1390, 26);
+            this.tabControl.TabIndex = 2;
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.StripStatus_HoTen});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 448);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1390, 22);
+            this.statusStrip1.TabIndex = 4;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(428, 17);
+            this.toolStripStatusLabel1.Text = "Bản quyền(2015) thuộc Công ty CP Cấp Nước Tân Hòa. Được T.CNTT phát triển";
+            // 
+            // StripStatus_HoTen
+            // 
+            this.StripStatus_HoTen.Name = "StripStatus_HoTen";
+            this.StripStatus_HoTen.Size = new System.Drawing.Size(58, 17);
+            this.StripStatus_HoTen.Text = "Xin Chào:";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1216, 470);
+            this.ClientSize = new System.Drawing.Size(1390, 470);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.menuStrip);
@@ -831,7 +822,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuHienTrangKiemTra;
         private System.Windows.Forms.ToolStripMenuItem mnuLoaiChungTu;
         private System.Windows.Forms.ToolStripMenuItem mnuVeViecTTTL;
-        private System.Windows.Forms.ToolStripMenuItem mnuBaoCao;
         private System.Windows.Forms.ToolStripMenuItem mnuCapNhatDon;
         private System.Windows.Forms.ToolStripMenuItem mnuDSDon;
         private System.Windows.Forms.ToolStripMenuItem mnuDSKQKTXM;
@@ -873,9 +863,9 @@
         private System.Windows.Forms.ToolStripMenuItem mnuLoaiDonTBC;
         private System.Windows.Forms.ToolStripMenuItem mnuBaoCaoDonTKH;
         private System.Windows.Forms.ToolStripMenuItem mnuBaoCaoTruyThu;
-        private System.Windows.Forms.ToolStripMenuItem trungTâmKHToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mnuTTKhachHang;
-        private System.Windows.Forms.ToolStripMenuItem mnuKHGanMoi;
+        private System.Windows.Forms.ToolStripMenuItem mnuTrungTamKhachHang;
+        private System.Windows.Forms.ToolStripMenuItem mnuThongTinKhachHang;
+        private System.Windows.Forms.ToolStripMenuItem mnuKhachHangGanMoi;
         private System.Windows.Forms.ToolStripMenuItem mnuDSTiepNhan;
         private System.Windows.Forms.ToolStripMenuItem mnBaoBe;
     }

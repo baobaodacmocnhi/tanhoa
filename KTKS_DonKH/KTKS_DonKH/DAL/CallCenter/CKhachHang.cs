@@ -20,7 +20,7 @@ namespace KTKS_DonKH.DAL.CallCenter
                 SqlDataAdapter adapter = new SqlDataAdapter(sql, db.Connection.ConnectionString);
                 adapter.Fill(table);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             finally
@@ -41,7 +41,7 @@ namespace KTKS_DonKH.DAL.CallCenter
                 SqlDataAdapter adapter = new SqlDataAdapter(sql, db.Connection.ConnectionString);
                 adapter.Fill(table);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             finally
@@ -135,7 +135,7 @@ namespace KTKS_DonKH.DAL.CallCenter
                 var query = from q in db.TB_DULIEUKHACHHANGs where q.DANHBO == danhbo select q;
                 return query.SingleOrDefault();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             return null;
@@ -148,7 +148,7 @@ namespace KTKS_DonKH.DAL.CallCenter
                 var query = (from q in db.TB_DULIEUKHACHHANG_HUYDBs where q.DANHBO == danhbo orderby q.CREATEDATE descending select q).Take(1);
                 return query.SingleOrDefault();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             return null;
@@ -167,7 +167,7 @@ namespace KTKS_DonKH.DAL.CallCenter
                 var query = from q in db.HOSOGOCs where q.DBDongHoNuoc == danhbo orderby q.NgayCapNhat descending select q;
                 return query.First();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -189,7 +189,7 @@ namespace KTKS_DonKH.DAL.CallCenter
                 adapter.Fill(ds, "MayDS");
                 return ds.Tables["MayDS"].Rows[0][0].ToString();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

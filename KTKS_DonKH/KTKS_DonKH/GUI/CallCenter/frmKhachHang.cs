@@ -9,12 +9,14 @@ using System.Windows.Forms;
 using KTKS_DonKH.DAL.CallCenter;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.Utilities;
+using KTKS_DonKH.DAL.QuanTri;
 
 
 namespace KTKS_DonKH.GUI.CallCenter
 {
     public partial class frmKhachHang : Form
     {
+        string _mnu = "mnuThongTinKhachHang";
         CKinhDoanh _cKinhDoanh = new CKinhDoanh();
 
         public frmKhachHang()
@@ -254,9 +256,14 @@ namespace KTKS_DonKH.GUI.CallCenter
 
         private void btTiepNhanKN_Click(object sender, EventArgs e)
         {
-            string db = rDanhBo.Text.Replace("-", "");
-            frmTiepNhanKN f = new frmTiepNhanKN(db,"KH");
-            f.ShowDialog();
+            if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
+            {
+                string db = rDanhBo.Text.Replace("-", "");
+                frmTiepNhanKN f = new frmTiepNhanKN(db, "KH");
+                f.ShowDialog();
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btDongNuoc_Click(object sender, EventArgs e)

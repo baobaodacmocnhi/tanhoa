@@ -40,6 +40,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.g_SoHoSo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gr_HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DIACHI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gr_DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LOAIHS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NGAYNHAN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btHoSoGoc = new DevComponents.DotNetBar.ButtonX();
@@ -111,12 +117,6 @@
             this.lbPaing = new System.Windows.Forms.Label();
             this.lbsohoso = new System.Windows.Forms.Label();
             this.btTiepNhanKN = new DevComponents.DotNetBar.ButtonX();
-            this.g_SoHoSo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gr_HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DIACHI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gr_DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LOAIHS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NGAYNHAN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -238,6 +238,58 @@
             this.dataGridView1.Size = new System.Drawing.Size(327, 485);
             this.dataGridView1.TabIndex = 171;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
+            // g_SoHoSo
+            // 
+            this.g_SoHoSo.DataPropertyName = "SHS";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.g_SoHoSo.DefaultCellStyle = dataGridViewCellStyle1;
+            this.g_SoHoSo.HeaderText = "Số HS";
+            this.g_SoHoSo.Name = "g_SoHoSo";
+            this.g_SoHoSo.ReadOnly = true;
+            this.g_SoHoSo.Width = 80;
+            // 
+            // gr_HoTen
+            // 
+            this.gr_HoTen.DataPropertyName = "HOTEN";
+            this.gr_HoTen.HeaderText = "Họ Tên";
+            this.gr_HoTen.Name = "gr_HoTen";
+            this.gr_HoTen.ReadOnly = true;
+            this.gr_HoTen.Width = 150;
+            // 
+            // DIACHI
+            // 
+            this.DIACHI.DataPropertyName = "DIACHI";
+            this.DIACHI.HeaderText = "Địa Chỉ";
+            this.DIACHI.Name = "DIACHI";
+            this.DIACHI.ReadOnly = true;
+            this.DIACHI.Width = 250;
+            // 
+            // gr_DienThoai
+            // 
+            this.gr_DienThoai.DataPropertyName = "DIENTHOAI";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.gr_DienThoai.DefaultCellStyle = dataGridViewCellStyle2;
+            this.gr_DienThoai.HeaderText = "Điện Thoại";
+            this.gr_DienThoai.Name = "gr_DienThoai";
+            this.gr_DienThoai.ReadOnly = true;
+            this.gr_DienThoai.Width = 120;
+            // 
+            // LOAIHS
+            // 
+            this.LOAIHS.DataPropertyName = "LOAIHS";
+            this.LOAIHS.HeaderText = "LOAIHS";
+            this.LOAIHS.Name = "LOAIHS";
+            this.LOAIHS.ReadOnly = true;
+            this.LOAIHS.Visible = false;
+            // 
+            // NGAYNHAN
+            // 
+            this.NGAYNHAN.DataPropertyName = "NGAYNHAN";
+            this.NGAYNHAN.HeaderText = "NGAYNHAN";
+            this.NGAYNHAN.Name = "NGAYNHAN";
+            this.NGAYNHAN.ReadOnly = true;
+            this.NGAYNHAN.Visible = false;
             // 
             // groupControl1
             // 
@@ -1209,58 +1261,6 @@
             this.btTiepNhanKN.Text = "Tiếp Nhận";
             this.btTiepNhanKN.Click += new System.EventHandler(this.btTiepNhanKN_Click);
             // 
-            // g_SoHoSo
-            // 
-            this.g_SoHoSo.DataPropertyName = "SHS";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.g_SoHoSo.DefaultCellStyle = dataGridViewCellStyle1;
-            this.g_SoHoSo.HeaderText = "Số HS";
-            this.g_SoHoSo.Name = "g_SoHoSo";
-            this.g_SoHoSo.ReadOnly = true;
-            this.g_SoHoSo.Width = 80;
-            // 
-            // gr_HoTen
-            // 
-            this.gr_HoTen.DataPropertyName = "HOTEN";
-            this.gr_HoTen.HeaderText = "Họ Tên";
-            this.gr_HoTen.Name = "gr_HoTen";
-            this.gr_HoTen.ReadOnly = true;
-            this.gr_HoTen.Width = 150;
-            // 
-            // DIACHI
-            // 
-            this.DIACHI.DataPropertyName = "DIACHI";
-            this.DIACHI.HeaderText = "Địa Chỉ";
-            this.DIACHI.Name = "DIACHI";
-            this.DIACHI.ReadOnly = true;
-            this.DIACHI.Width = 250;
-            // 
-            // gr_DienThoai
-            // 
-            this.gr_DienThoai.DataPropertyName = "DIENTHOAI";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.gr_DienThoai.DefaultCellStyle = dataGridViewCellStyle2;
-            this.gr_DienThoai.HeaderText = "Điện Thoại";
-            this.gr_DienThoai.Name = "gr_DienThoai";
-            this.gr_DienThoai.ReadOnly = true;
-            this.gr_DienThoai.Width = 120;
-            // 
-            // LOAIHS
-            // 
-            this.LOAIHS.DataPropertyName = "LOAIHS";
-            this.LOAIHS.HeaderText = "LOAIHS";
-            this.LOAIHS.Name = "LOAIHS";
-            this.LOAIHS.ReadOnly = true;
-            this.LOAIHS.Visible = false;
-            // 
-            // NGAYNHAN
-            // 
-            this.NGAYNHAN.DataPropertyName = "NGAYNHAN";
-            this.NGAYNHAN.HeaderText = "NGAYNHAN";
-            this.NGAYNHAN.Name = "NGAYNHAN";
-            this.NGAYNHAN.ReadOnly = true;
-            this.NGAYNHAN.Visible = false;
-            // 
             // frmKhachHangGanMoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -1285,6 +1285,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmKhachHangGanMoi";
             this.Text = "Thông Tin Khách Hàng Gắn Mới";
+            this.Load += new System.EventHandler(this.frmKhachHangGanMoi_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();

@@ -82,7 +82,7 @@ namespace CallCenter.DAL
                 _db.SubmitChanges();
                 return result;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             finally
@@ -111,7 +111,7 @@ namespace CallCenter.DAL
                 _db.SubmitChanges();
                 return result;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                  
 
@@ -136,7 +136,7 @@ namespace CallCenter.DAL
                 SqlDataAdapter adapter = new SqlDataAdapter(sql, _db.Connection.ConnectionString);
                 adapter.Fill(table);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 
             }

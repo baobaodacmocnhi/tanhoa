@@ -102,7 +102,13 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 case "Mã Đơn":
                     if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
                     {
-                        MessageBox.Show("Liên hệ BảoBảo", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                            dt = _cKTXM.GetDS("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
+                        else
+                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                dt = _cKTXM.GetDS("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Substring(3).Replace("-", "")));
+                            else
+                                dt = _cKTXM.GetDS("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
                     }
                     else
                         if (txtNoiDungTimKiem.Text.Trim() != "")
@@ -113,7 +119,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                 if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
                                     dt = _cKTXM.GetDS("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                                 else
-                                    dt = _cKTXM.GetDS("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                    dt = _cKTXM.GetDS("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
                         }
                     break;
                 case "Danh Bộ":

@@ -14,6 +14,7 @@ namespace KTKS_DonKH.GUI.CallCenter
 {
     public partial class frmDanhSachKN : Form
     {
+        string _mnu = "mnuDSTiepNhan";
 
         public frmDanhSachKN()
         {
@@ -52,7 +53,6 @@ namespace KTKS_DonKH.GUI.CallCenter
             cbPhongBan.DisplayMember = "Name";
             cbPhongBan.ValueMember = "ID";
         }
-
 
         private void check(object sender, EventArgs e)
         {
@@ -116,11 +116,16 @@ namespace KTKS_DonKH.GUI.CallCenter
 
         private void btCapNhat_Click(object sender, EventArgs e)
         {
-            string sql = "UPDATE TTKH_TiepNhan SET ChuyenHS='True',NgayChuyen=GETDATE(),NgayXuLy=GETDATE(),KetQuaXuLy=N'" + txtKetQuaXL.Text + "',NhanVienXuLy=N'" + CTaiKhoan.HoTen + "'  WHERE SoHoSo='" + txtSoHoSo.Text + "'";
-            if (CCallCenter.ExecuteCommand_(sql) > 0)
-            { MessageBox.Show(this, "Cập Nhật Xử Lý Thành Công !", "..: Thông Báo :..", MessageBoxButtons.OK, MessageBoxIcon.Information); pLoad(); }
+            if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+            {
+                string sql = "UPDATE TTKH_TiepNhan SET ChuyenHS='True',NgayChuyen=GETDATE(),NgayXuLy=GETDATE(),KetQuaXuLy=N'" + txtKetQuaXL.Text + "',NhanVienXuLy=N'" + CTaiKhoan.HoTen + "'  WHERE SoHoSo='" + txtSoHoSo.Text + "'";
+                if (CCallCenter.ExecuteCommand_(sql) > 0)
+                { MessageBox.Show(this, "Cập Nhật Xử Lý Thành Công !", "..: Thông Báo :..", MessageBoxButtons.OK, MessageBoxIcon.Information); pLoad(); }
+                else
+                    MessageBox.Show(this, "Cập Nhật Xử Lý Thất Bại !", "..: Thông Báo :..", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else
-                MessageBox.Show(this, "Cập Nhật Xử Lý Thất Bại !", "..: Thông Báo :..", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void dataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -187,6 +192,11 @@ namespace KTKS_DonKH.GUI.CallCenter
             _ticks++;
             if (_ticks % 2 == 0)
                 alrt();
+        }
+
+        private void frmDanhSachKN_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

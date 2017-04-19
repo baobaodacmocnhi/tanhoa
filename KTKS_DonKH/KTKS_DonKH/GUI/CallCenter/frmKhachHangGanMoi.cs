@@ -9,18 +9,19 @@ using System.Windows.Forms;
 
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.CallCenter;
+using KTKS_DonKH.DAL.QuanTri;
 
 namespace KTKS_DonKH.GUI.CallCenter
 {
     public partial class frmKhachHangGanMoi : Form
     {
-
+        string _mnu = "mnuKhachHangGanMoi";
         string title = "";
         string noidungtrongai = "";
         int currentPageIndex = 1;
         int pageSize = 10000;
         int pageNumber = 0;
-        int FirstRow, LastRow;
+        int FirstRow=0;
         int rows;
 
 
@@ -43,7 +44,7 @@ namespace KTKS_DonKH.GUI.CallCenter
                 pageNumber = rows % pageSize != 0 ? rows / pageSize + 1 : rows / pageSize;
                 lbPaing.Text = currentPageIndex + "/" + pageNumber;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
 
@@ -144,7 +145,7 @@ namespace KTKS_DonKH.GUI.CallCenter
             {
                 rows = DAL.CallCenter.CGanMoi.TotalTimDonKH(this.SearchMaHoSo.Text, this.searchHoTenKH.Text, this.searchDiaChi.Text, this.searchDienThoai.Text);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             PageTotal();
@@ -160,7 +161,7 @@ namespace KTKS_DonKH.GUI.CallCenter
                 {
                     rows = DAL.CallCenter.CGanMoi.TotalRecord(this.SearchMaHoSo.Text, this.searchHoTenKH.Text, this.searchDiaChi.Text, this.searchDienThoai.Text);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                 }
                 PageTotal();
@@ -194,7 +195,7 @@ namespace KTKS_DonKH.GUI.CallCenter
                     Result(donkh);
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                 }
             }
@@ -289,7 +290,7 @@ namespace KTKS_DonKH.GUI.CallCenter
                                                     KH_DOTTHICONG dotc = DAL.CallCenter.CGanMoi.findByMadot(hoskh.MADOTTC);
                                                         DotThiCong.Text = dotc.MADOTTC;
                                                         NgayLenDotTC.Text =dotc.NGAYLAP.Value!= null ? Utilities.DateToString.NgayVNVN(dotc.NGAYLAP.Value):"";
-                                                        txtDomViTC.Text = dotc.DONVITHICONG.Value != null ? DAL.CallCenter.CGanMoi.findDVTCbyID(dotc.DONVITHICONG.Value).TENCONGTY : "";
+                                                        txtDomViTC.Text = dotc.DONVITHICONG != null ? DAL.CallCenter.CGanMoi.findDVTCbyID(dotc.DONVITHICONG.Value).TENCONGTY : "";
                                                         txtNgayChuyenTC.Text = dotc.NGAYCHUYENTC.Value != null ? Utilities.DateToString.NgayVNVN(dotc.NGAYCHUYENTC.Value) : "";
 
                                                         txtTuNgay.Text = dotc.TCTUNGAY.Value != null ? Utilities.DateToString.NgayVNVN(dotc.TCTUNGAY.Value) : "";
@@ -611,8 +612,16 @@ namespace KTKS_DonKH.GUI.CallCenter
 
         private void btTiepNhanKN_Click(object sender, EventArgs e)
         {
-            frmTiepNhanKN f = new frmTiepNhanKN(shs, "GM");
-            f.ShowDialog();
+            if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
+            {
+                frmTiepNhanKN f = new frmTiepNhanKN(shs, "GM");
+                f.ShowDialog();
+            }
+        }
+
+        private void frmKhachHangGanMoi_Load(object sender, EventArgs e)
+        {
+
         }
 
        
