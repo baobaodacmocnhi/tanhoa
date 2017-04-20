@@ -149,6 +149,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                   where itemCTDCBD.DanhBo == DanhBo
                                   select new
                                   {
+                                      MaDon = itemCTDCBD.DCBD.MaDon != null ? "TKH" + itemCTDCBD.DCBD.MaDon
+                                      : itemCTDCBD.DCBD.MaDonTXL != null ? "TXL" + itemCTDCBD.DCBD.MaDonTXL
+                                      : itemCTDCBD.DCBD.MaDonTBC != null ? "TBC" + itemCTDCBD.DCBD.MaDonTBC : null,
                                       MaDC = itemCTDCBD.MaCTDCBD,
                                       DieuChinh = "Biến Động",
                                       itemCTDCBD.HieuLucKy,
@@ -159,7 +162,6 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                       itemCTDCBD.MSThue_BD,
                                       itemCTDCBD.GiaBieu_BD,
                                       itemCTDCBD.DinhMuc_BD,
-                                      itemCTDCBD.DCBD.MaDon,
                                       itemCTDCBD.DMGiuNguyen,
                                       itemCTDCBD.GiaHan,
                                   };
@@ -168,10 +170,12 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                   where itemCTDCHD.DanhBo == DanhBo
                                   select new
                                   {
+                                      MaDon = itemCTDCHD.DCBD.MaDon != null ? "TKH" + itemCTDCHD.DCBD.MaDon
+                                      : itemCTDCHD.DCBD.MaDonTXL != null ? "TXL" + itemCTDCHD.DCBD.MaDonTXL
+                                      : itemCTDCHD.DCBD.MaDonTBC != null ? "TBC" + itemCTDCHD.DCBD.MaDonTBC : null,
                                       MaDC = itemCTDCHD.MaCTDCHD,
                                       DieuChinh = "Hóa Đơn",
                                       itemCTDCHD.CreateDate,
-                                      itemCTDCHD.DCBD.MaDon,
                                   };
                 DataTable tableCTDCBD = LINQToDataTable(queryCTDCBD);
                 DataTable tableCTDCHD = LINQToDataTable(queryCTDCHD);

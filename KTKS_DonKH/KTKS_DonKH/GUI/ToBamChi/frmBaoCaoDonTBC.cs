@@ -137,7 +137,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
                         dr["HoTen"] = itemRow["HoTen"];
                         dr["DiaChi"] = itemRow["DiaChi"];
                         dr["NoiDung"] = itemRow["NoiDung"];
-                        dr["GhiChuChuyenKT"] = itemRow["GhiChuChuyen"];
+                        dr["GhiChuChuyenKT"] = itemRow["GhiChu"];
                         dr["NguoiDi"] = itemRow["NguoiDi"];
 
                         dsBaoCao.Tables["DSDonTXL"].Rows.Add(dr);
@@ -158,7 +158,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
                     dr["HoTen"] = itemRow["HoTen"];
                     dr["DiaChi"] = itemRow["DiaChi"];
                     dr["NoiDung"] = itemRow["NoiDung"];
-                    dr["GhiChuChuyenKT"] = itemRow["GhiChuChuyen"];
+                    dr["GhiChuChuyenKT"] = itemRow["GhiChu"];
                     dr["NguoiDi"] = itemRow["NguoiDi"];
                     dr["DaGiaiQuyet"] = itemRow["GiaiQuyet"];
                     dr["NgayGiaiQuyet"] = itemRow["NgayGiaiQuyet"];

@@ -219,10 +219,11 @@ namespace KTKS_DonKH.DAL.DonTu
             switch (Loai)
             {
                 case "TKH":
-                    var query = from itemChuyenKTXM in db.LichSuChuyenKTXMs
+                    var query = from itemChuyenKTXM in db.LichSuDonTus
                                 join itemDonTKH in db.DonKHs on itemChuyenKTXM.MaDon equals itemDonTKH.MaDon
-                                join itemUser in db.Users on itemChuyenKTXM.NguoiDi equals itemUser.MaU
+                                join itemUser in db.Users on itemChuyenKTXM.ID_NoiNhan equals itemUser.MaU
                                 where itemChuyenKTXM.MaDon != null && itemChuyenKTXM.NgayChuyen.Value.Date >= FromNgayChuyen.Date && itemChuyenKTXM.NgayChuyen.Value.Date <= ToNgayChuyen.Date
+                                && itemChuyenKTXM.ID_NoiChuyen==1
                                 orderby itemDonTKH.CreateDate ascending
                                 select new
                                 {
@@ -235,7 +236,7 @@ namespace KTKS_DonKH.DAL.DonTu
                                     itemDonTKH.NoiDung,
                                     itemChuyenKTXM.NgayChuyen,
                                     NguoiDi = itemUser.HoTen,
-                                    itemChuyenKTXM.GhiChuChuyen,
+                                    itemChuyenKTXM.GhiChu,
                                     GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDon == itemDonTKH.MaDon && item.CreateBy == itemDonTKH.NguoiDi_KTXM) == true 
                                     ? true : db.CTBamChis.Any(item => item.BamChi.MaDon == itemDonTKH.MaDon && item.CreateBy == itemDonTKH.NguoiDi_KTXM),
                                     NgayGiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDon == itemDonTKH.MaDon && item.CreateBy == itemDonTKH.NguoiDi_KTXM) == true 
@@ -245,10 +246,11 @@ namespace KTKS_DonKH.DAL.DonTu
                     dt = LINQToDataTable(query.ToList());
                     break;
                 case "TXL":
-                    query = from itemChuyenKTXM in db.LichSuChuyenKTXMs
+                    query = from itemChuyenKTXM in db.LichSuDonTus
                             join itemDonTXL in db.DonTXLs on itemChuyenKTXM.MaDonTXL equals itemDonTXL.MaDon
-                            join itemUser in db.Users on itemChuyenKTXM.NguoiDi equals itemUser.MaU
+                            join itemUser in db.Users on itemChuyenKTXM.ID_NoiNhan equals itemUser.MaU
                             where itemChuyenKTXM.MaDonTXL != null && itemChuyenKTXM.NgayChuyen.Value.Date >= FromNgayChuyen.Date && itemChuyenKTXM.NgayChuyen.Value.Date <= ToNgayChuyen.Date
+                            && itemChuyenKTXM.ID_NoiChuyen == 1
                             orderby itemDonTXL.CreateDate ascending
                             select new
                             {
@@ -261,7 +263,7 @@ namespace KTKS_DonKH.DAL.DonTu
                                 itemDonTXL.NoiDung,
                                 itemChuyenKTXM.NgayChuyen,
                                 NguoiDi = itemUser.HoTen,
-                                itemChuyenKTXM.GhiChuChuyen,
+                                itemChuyenKTXM.GhiChu,
                                 GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM) == true 
                                 ? true : db.CTBamChis.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM),
                                 NgayGiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM) == true 
@@ -271,10 +273,11 @@ namespace KTKS_DonKH.DAL.DonTu
                     dt = LINQToDataTable(query.ToList());
                     break;
                 case "TBC":
-                    query = from itemChuyenKTXM in db.LichSuChuyenKTXMs
+                    query = from itemChuyenKTXM in db.LichSuDonTus
                             join itemDonTBC in db.DonTBCs on itemChuyenKTXM.MaDonTBC equals itemDonTBC.MaDon
-                            join itemUser in db.Users on itemChuyenKTXM.NguoiDi equals itemUser.MaU
+                            join itemUser in db.Users on itemChuyenKTXM.ID_NoiNhan equals itemUser.MaU
                             where itemChuyenKTXM.MaDonTBC != null && itemChuyenKTXM.NgayChuyen.Value.Date >= FromNgayChuyen.Date && itemChuyenKTXM.NgayChuyen.Value.Date <= ToNgayChuyen.Date
+                            && itemChuyenKTXM.ID_NoiChuyen == 1
                             orderby itemDonTBC.CreateDate ascending
                             select new
                             {
@@ -287,7 +290,7 @@ namespace KTKS_DonKH.DAL.DonTu
                                 itemDonTBC.NoiDung,
                                 itemChuyenKTXM.NgayChuyen,
                                 NguoiDi = itemUser.HoTen,
-                                itemChuyenKTXM.GhiChuChuyen,
+                                itemChuyenKTXM.GhiChu,
                                 GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM) == true 
                                 ? true : db.CTBamChis.Any(item => item.BamChi.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM),
                                 NgayGiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM) == true
@@ -306,10 +309,11 @@ namespace KTKS_DonKH.DAL.DonTu
             switch (Loai)
             {
                 case "TKH":
-                    var query = from itemChuyenKTXM in db.LichSuChuyenKTXMs
+                    var query = from itemChuyenKTXM in db.LichSuDonTus
                                 join itemDonTKH in db.DonKHs on itemChuyenKTXM.MaDon equals itemDonTKH.MaDon
-                                join itemUser in db.Users on itemChuyenKTXM.NguoiDi equals itemUser.MaU
+                                join itemUser in db.Users on itemChuyenKTXM.ID_NoiNhan equals itemUser.MaU
                                 where itemChuyenKTXM.MaDon != null && itemDonTKH.SoCongVan.Contains(SoCongVan)
+                                && itemChuyenKTXM.ID_NoiChuyen == 1
                                 orderby itemDonTKH.CreateDate ascending
                                 select new
                                 {
@@ -322,7 +326,7 @@ namespace KTKS_DonKH.DAL.DonTu
                                     itemDonTKH.NoiDung,
                                     itemChuyenKTXM.NgayChuyen,
                                     NguoiDi = itemUser.HoTen,
-                                    itemChuyenKTXM.GhiChuChuyen,
+                                    itemChuyenKTXM.GhiChu,
                                     GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDon == itemDonTKH.MaDon && item.CreateBy == itemDonTKH.NguoiDi_KTXM) == true 
                                     ? true : db.CTBamChis.Any(item => item.BamChi.MaDon == itemDonTKH.MaDon && item.CreateBy == itemDonTKH.NguoiDi_KTXM),
                                     NgayGiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDon == itemDonTKH.MaDon && item.CreateBy == itemDonTKH.NguoiDi_KTXM) == true
@@ -332,10 +336,11 @@ namespace KTKS_DonKH.DAL.DonTu
                     dt = LINQToDataTable(query.ToList());
                     break;
                 case "TXL":
-                    query = from itemChuyenKTXM in db.LichSuChuyenKTXMs
+                    query = from itemChuyenKTXM in db.LichSuDonTus
                             join itemDonTXL in db.DonTXLs on itemChuyenKTXM.MaDonTXL equals itemDonTXL.MaDon
-                            join itemUser in db.Users on itemChuyenKTXM.NguoiDi equals itemUser.MaU
+                            join itemUser in db.Users on itemChuyenKTXM.ID_NoiNhan equals itemUser.MaU
                             where itemChuyenKTXM.MaDonTXL != null && itemDonTXL.SoCongVan.Contains(SoCongVan)
+                            && itemChuyenKTXM.ID_NoiChuyen == 1
                             orderby itemDonTXL.CreateDate ascending
                             select new
                             {
@@ -348,7 +353,7 @@ namespace KTKS_DonKH.DAL.DonTu
                                 itemDonTXL.NoiDung,
                                 itemChuyenKTXM.NgayChuyen,
                                 NguoiDi = itemUser.HoTen,
-                                itemChuyenKTXM.GhiChuChuyen,
+                                itemChuyenKTXM.GhiChu,
                                 GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM) == true 
                                 ? true : db.CTBamChis.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM),
                                 NgayGiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM) == true
@@ -358,10 +363,11 @@ namespace KTKS_DonKH.DAL.DonTu
                     dt = LINQToDataTable(query.ToList());
                     break;
                 case "TBC":
-                    query = from itemChuyenKTXM in db.LichSuChuyenKTXMs
+                    query = from itemChuyenKTXM in db.LichSuDonTus
                             join itemDonTBC in db.DonTBCs on itemChuyenKTXM.MaDonTBC equals itemDonTBC.MaDon
-                            join itemUser in db.Users on itemChuyenKTXM.NguoiDi equals itemUser.MaU
+                            join itemUser in db.Users on itemChuyenKTXM.ID_NoiNhan equals itemUser.MaU
                             where itemChuyenKTXM.MaDonTBC != null && itemDonTBC.SoCongVan.Contains(SoCongVan)
+                            && itemChuyenKTXM.ID_NoiChuyen == 1
                             orderby itemDonTBC.CreateDate ascending
                             select new
                             {
@@ -374,7 +380,7 @@ namespace KTKS_DonKH.DAL.DonTu
                                 itemDonTBC.NoiDung,
                                 itemChuyenKTXM.NgayChuyen,
                                 NguoiDi = itemUser.HoTen,
-                                itemChuyenKTXM.GhiChuChuyen,
+                                itemChuyenKTXM.GhiChu,
                                 GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM) == true 
                                 ? true : db.CTBamChis.Any(item => item.BamChi.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM),
                                 NgayGiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM) == true

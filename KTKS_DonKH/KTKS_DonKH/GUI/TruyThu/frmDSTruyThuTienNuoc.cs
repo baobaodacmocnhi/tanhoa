@@ -8,6 +8,9 @@ using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.TruyThu;
 using KTKS_DonKH.LinQ;
+using KTKS_DonKH.BaoCao;
+using KTKS_DonKH.BaoCao.TruyThu;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace KTKS_DonKH.GUI.TruyThu
 {
@@ -67,7 +70,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             dgvDSTruyThuTienNuoc.DataSource = null;
         }
 
-        
+
 
         private void btnXem_Click(object sender, EventArgs e)
         {
@@ -117,6 +120,35 @@ namespace KTKS_DonKH.GUI.TruyThu
                 frmTruyThuTienNuoc frm = new frmTruyThuTienNuoc(decimal.Parse(dgvDSTruyThuTienNuoc["MaTTTN", dgvDSTruyThuTienNuoc.CurrentRow.Index].Value.ToString()));
                 frm.ShowDialog();
             }
+        }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+
+            foreach (DataGridViewRow item in dgvDSTruyThuTienNuoc.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
+
+                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                dr["MaDon"] = item.Cells["MaDon"].Value.ToString().Insert(item.Cells["MaDon"].Value.ToString().Length - 2, "-");
+                dr["NgayLap"] = item.Cells["CreateDate"].Value;
+                dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
+                dr["HoTen"] = item.Cells["HoTen"].Value;
+                dr["DiaChi"] = item.Cells["DiaChi"].Value;
+                dr["NoiDung"] = item.Cells["NoiDung"].Value;
+
+                dr["TieuThuMoi"] = item.Cells["Tongm3"].Value.ToString();
+                dr["TongCongMoi"] = item.Cells["TongTien"].Value.ToString();
+
+                dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
+            }
+
+            rptDSTruyThuTienNuoc rpt = new rptDSTruyThuTienNuoc();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.ShowDialog();
         }
     }
 }
