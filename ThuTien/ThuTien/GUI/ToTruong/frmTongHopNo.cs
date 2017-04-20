@@ -156,7 +156,9 @@ namespace ThuTien.GUI.ToTruong
                             CTDCBD dcbd = _cKTKS_DonKH.GetDCBD(item["DanhBo"].ToString());
                             if (dcbd != null)
                             {
+                                if (dcbd.DinhMuc!=null)
                                 row["DinhMuc_Cu"] = dcbd.DinhMuc;
+                                if (dcbd.DinhMuc_BD != null)
                                 row["DinhMuc_Moi"] = dcbd.DinhMuc_BD;
                             }
                             row["TienDu"] = _cTienDu.GetTienDu(item["DanhBo"].ToString());

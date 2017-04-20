@@ -548,6 +548,17 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuDangKyKiemTra_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuDangKyKiemTra", "Xem"))
+            {
+                frmDangKyKiemTra frm = new frmDangKyKiemTra();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
 
         #region Hành Thu
@@ -1017,6 +1028,8 @@ namespace ThuTien
         }
 
         #endregion
+
+        
 
     }
 }
