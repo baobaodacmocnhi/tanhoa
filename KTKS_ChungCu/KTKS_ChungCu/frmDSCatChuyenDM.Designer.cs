@@ -35,7 +35,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtNoiDungTimKiem2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimKiem = new System.Windows.Forms.DateTimePicker();
             this.panel_KhoangThoiGian = new System.Windows.Forms.Panel();
             this.dateTu = new System.Windows.Forms.DateTimePicker();
             this.dateDen = new System.Windows.Forms.DateTimePicker();
@@ -76,6 +75,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtLo = new System.Windows.Forms.TextBox();
+            this.btnXem = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCatChuyenDM)).BeginInit();
             this.SuspendLayout();
@@ -97,17 +97,6 @@
             this.label2.Size = new System.Drawing.Size(68, 17);
             this.label2.TabIndex = 26;
             this.label2.Text = "Tìm Theo:";
-            // 
-            // dateTimKiem
-            // 
-            this.dateTimKiem.CustomFormat = "dd/MM/yyyy";
-            this.dateTimKiem.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimKiem.Location = new System.Drawing.Point(514, 39);
-            this.dateTimKiem.Name = "dateTimKiem";
-            this.dateTimKiem.Size = new System.Drawing.Size(130, 25);
-            this.dateTimKiem.TabIndex = 30;
-            this.dateTimKiem.Visible = false;
-            this.dateTimKiem.ValueChanged += new System.EventHandler(this.dateTimKiem_ValueChanged);
             // 
             // panel_KhoangThoiGian
             // 
@@ -167,7 +156,6 @@
             "Số Phiếu",
             "Danh Bộ",
             "Ngày",
-            "Khoảng Thời Gian",
             "Số Thứ Tự"});
             this.cmbTimTheo.Location = new System.Drawing.Point(245, 12);
             this.cmbTimTheo.Name = "cmbTimTheo";
@@ -426,14 +414,11 @@
             // 
             // btnIn
             // 
-            this.btnIn.Image = global::KTKS_ChungCu.Properties.Resources.print_24x24;
-            this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnIn.Location = new System.Drawing.Point(1076, 12);
             this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(92, 35);
+            this.btnIn.Size = new System.Drawing.Size(75, 25);
             this.btnIn.TabIndex = 34;
             this.btnIn.Text = "In Phiếu";
-            this.btnIn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnIn.UseVisualStyleBackColor = true;
             this.btnIn.Visible = false;
             this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
@@ -453,14 +438,11 @@
             // 
             // btnInDS
             // 
-            this.btnInDS.Image = global::KTKS_ChungCu.Properties.Resources.print_24x24;
-            this.btnInDS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInDS.Location = new System.Drawing.Point(700, 12);
+            this.btnInDS.Location = new System.Drawing.Point(841, 15);
             this.btnInDS.Name = "btnInDS";
-            this.btnInDS.Size = new System.Drawing.Size(80, 35);
+            this.btnInDS.Size = new System.Drawing.Size(75, 25);
             this.btnInDS.TabIndex = 36;
             this.btnInDS.Text = "In DS";
-            this.btnInDS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnInDS.UseVisualStyleBackColor = true;
             this.btnInDS.Click += new System.EventHandler(this.btnInDS_Click);
             // 
@@ -496,12 +478,23 @@
             this.txtLo.Size = new System.Drawing.Size(30, 25);
             this.txtLo.TabIndex = 39;
             // 
+            // btnXem
+            // 
+            this.btnXem.Location = new System.Drawing.Point(700, 15);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 25);
+            this.btnXem.TabIndex = 41;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
+            // 
             // frmDSCatChuyenDM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1276, 593);
+            this.Controls.Add(this.btnXem);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtLo);
             this.Controls.Add(this.label5);
@@ -510,12 +503,11 @@
             this.Controls.Add(this.chkSelectAll);
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.dgvDSCatChuyenDM);
-            this.Controls.Add(this.txtNoiDungTimKiem2);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dateTimKiem);
-            this.Controls.Add(this.panel_KhoangThoiGian);
             this.Controls.Add(this.cmbTimTheo);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel_KhoangThoiGian);
+            this.Controls.Add(this.txtNoiDungTimKiem2);
             this.Controls.Add(this.txtNoiDungTimKiem);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -534,7 +526,6 @@
 
         private System.Windows.Forms.TextBox txtNoiDungTimKiem2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimKiem;
         private System.Windows.Forms.Panel panel_KhoangThoiGian;
         private System.Windows.Forms.DateTimePicker dateTu;
         private System.Windows.Forms.DateTimePicker dateDen;
@@ -575,6 +566,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtLo;
+        private System.Windows.Forms.Button btnXem;
 
     }
 }

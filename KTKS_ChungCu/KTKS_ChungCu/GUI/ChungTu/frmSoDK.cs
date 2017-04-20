@@ -216,6 +216,7 @@ namespace KTKS_ChungCu.GUI.ChungTu
             lichsuchungtu.STT = int.Parse(txtSTT.Text.Trim());
             lichsuchungtu.Lo = txtLo.Text.Trim();
             lichsuchungtu.Phong = txtPhong.Text.Trim();
+            lichsuchungtu.ID_DSChungTu = _dsct.ID;
 
             if (chkYCCat1.Checked)
                 if (txtSoNKCat_YCC1.Text.Trim() == "")

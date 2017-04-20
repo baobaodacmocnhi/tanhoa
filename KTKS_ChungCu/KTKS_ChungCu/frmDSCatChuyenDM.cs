@@ -31,31 +31,21 @@ namespace KTKS_ChungCu
                 case "Số Thứ Tự":
                     txtNoiDungTimKiem.Visible = true;
                     txtNoiDungTimKiem2.Visible = true;
-                    dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = false;
                     break;
                 case "Danh Bộ":
                     txtNoiDungTimKiem.Visible = true;
                     txtNoiDungTimKiem2.Visible = false;
-                    dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = false;
                     break;
                 case "Ngày":
                     txtNoiDungTimKiem.Visible = false;
                     txtNoiDungTimKiem2.Visible = false;
-                    dateTimKiem.Visible = true;
-                    panel_KhoangThoiGian.Visible = false;
-                    break;
-                case "Khoảng Thời Gian":
-                    txtNoiDungTimKiem.Visible = false;
-                    txtNoiDungTimKiem2.Visible = false;
-                    dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = true;
                     break;
                 default:
                     txtNoiDungTimKiem.Visible = false;
                     txtNoiDungTimKiem2.Visible = false;
-                    dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = false;
                     //DSDCBD_BS.RemoveFilter();
                     break;
@@ -65,63 +55,58 @@ namespace KTKS_ChungCu
 
         private void dateTu_ValueChanged(object sender, EventArgs e)
         {
-            dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMByDate(dateTu.Value);
+            //dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMByDate(dateTu.Value);
         }
 
         private void dateDen_ValueChanged(object sender, EventArgs e)
         {
-            dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMByDates(dateTu.Value, dateDen.Value);
+            //dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMByDates(dateTu.Value, dateDen.Value);
         }
 
         private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                if (txtNoiDungTimKiem.Text.Trim() != "")
-                {
-                    txtNoiDungTimKiem2.Text = "";
-                    switch (cmbTimTheo.SelectedItem.ToString())
-                    {
-                        case "Số Phiếu":
-                            dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMBySoPhieu(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
-                            break;
-                        case "Danh Bộ":
-                            dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
-                            break;
-                        case "Số Thứ Tự":
-                            if (txtNoiDungTimKiem.Text.Trim() != "")
-                            dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMBySTT(txtDanhBo.Text.Trim().Replace("-", ""),txtLo.Text.Trim(), int.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
-                            break;
-                    }
-                }
-            }
-            catch (Exception)
-            {
+            //try
+            //{
+            //    if (txtNoiDungTimKiem.Text.Trim() != "")
+            //    {
+            //        txtNoiDungTimKiem2.Text = "";
+            //        switch (cmbTimTheo.SelectedItem.ToString())
+            //        {
+            //            case "Số Phiếu":
+            //                dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMBySoPhieu(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+            //                break;
+            //            case "Danh Bộ":
+            //                dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+            //                break;
+            //            case "Số Thứ Tự":
+            //                if (txtNoiDungTimKiem.Text.Trim() != "")
+            //                dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMBySTT(txtDanhBo.Text.Trim().Replace("-", ""),txtLo.Text.Trim(), int.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+            //                break;
+            //        }
+            //    }
+            //}
+            //catch (Exception)
+            //{
 
-            }
+            //}
         }
 
         private void txtNoiDungTimKiem2_TextChanged(object sender, EventArgs e)
         {
-            if (txtNoiDungTimKiem.Text.Trim() != ""  && txtNoiDungTimKiem2.Text.Trim() != "" )
-            {
-                switch (cmbTimTheo.SelectedItem.ToString())
-                {
-                    case "Số Phiếu":
-                        dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMBySoPhieus(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
-                        break;
-                    case "Số Thứ Tự":
-                        if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
-                            dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMBySTTs(txtDanhBo.Text.Trim().Replace("-", ""), txtLo.Text.Trim(), int.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), int.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
-                        break;
-                }
+            //if (txtNoiDungTimKiem.Text.Trim() != ""  && txtNoiDungTimKiem2.Text.Trim() != "" )
+            //{
+            //    switch (cmbTimTheo.SelectedItem.ToString())
+            //    {
+            //        case "Số Phiếu":
+            //            dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMBySoPhieus(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+            //            break;
+            //        case "Số Thứ Tự":
+            //            if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
+            //                dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMBySTTs(txtDanhBo.Text.Trim().Replace("-", ""), txtLo.Text.Trim(), int.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), int.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+            //            break;
+            //    }
 
-            }
-        }
-
-        private void dateTimKiem_ValueChanged(object sender, EventArgs e)
-        {
-            dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMByDate(dateTimKiem.Value);
+            //}
         }
 
         private void frmDSCatChuyenDM_Load(object sender, EventArgs e)
@@ -129,7 +114,6 @@ namespace KTKS_ChungCu
             this.Location = new Point(50,50);
             dgvDSCatChuyenDM.AutoGenerateColumns = false;
 
-            dateTimKiem.Location = txtNoiDungTimKiem.Location;
         }
 
         private void btnIn_Click(object sender, EventArgs e)
@@ -352,6 +336,36 @@ namespace KTKS_ChungCu
                     e.Value = _cChiNhanh.getTenChiNhanhbyID(int.Parse(dgvDSCatChuyenDM["CT_CatNK_MaCN", e.RowIndex].Value.ToString()));
                 else
                     e.Value = _cChiNhanh.getTenChiNhanhbyID(1);
+        }
+
+        private void btnXem_Click(object sender, EventArgs e)
+        {
+            switch (cmbTimTheo.SelectedItem.ToString())
+            {
+                case "Số Phiếu":
+                    if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
+                        dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMBySoPhieus(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                    else
+                        if (txtNoiDungTimKiem.Text.Trim() != "")
+                            dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMBySoPhieu(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                    break;
+                case "Số Thứ Tự":
+                    if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
+                        dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMBySTTs(txtDanhBo.Text.Trim().Replace("-", ""), txtLo.Text.Trim(), int.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), int.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                    else
+                        if (txtNoiDungTimKiem.Text.Trim() != "")
+                            dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMBySTT(txtDanhBo.Text.Trim().Replace("-", ""), txtLo.Text.Trim(), int.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                    break;
+                case "Danh Bộ":
+                    if (txtNoiDungTimKiem.Text.Trim() != "")
+                        dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                    break;
+                case "Ngày":
+                    dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMByDates(txtDanhBo.Text.Trim().Replace("-", ""), dateTu.Value, dateDen.Value);
+                    break;
+                default:
+                    break;
+            }
         }
 
 

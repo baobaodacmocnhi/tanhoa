@@ -152,28 +152,31 @@ namespace KTKS_ChungCu
                         lichsuchungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
                         lichsuchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
 
-                        if (_cDSCT.Them(entity) && _cChungTu.ThemLichSuChungTu(lichsuchungtu))
+                        if (_cDSCT.Them(entity) )
                         {
-                            MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            if (string.IsNullOrEmpty(txtLo.Text.Trim()))
-                                dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_DB(_hoadon.DANHBA);
-                            else
-                                dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_DB_Lo(_hoadon.DANHBA, txtLo.Text.Trim());
-                            if (dgvKhachHangChungCu.Rows.Count>0)
-                            dgvKhachHangChungCu.CurrentCell = dgvKhachHangChungCu.Rows[dgvKhachHangChungCu.RowCount - 1].Cells[0];
-                            //txtSTT.Text = "";
-                            //txtLo.Text = "";
-                            //txtPhong.Text = "";
-                            cmbLoaiCT.SelectedIndex = 0;
-                            txtMaCT.Text = "";
-                            txtHoTenCT.Text = "";
-                            txtSoNKTong.Text = "";
-                            txtSoNKDangKy.Text = "";
-                            txtGhiChu.Text = "";
-                            _selectedindex = -1;
-                            txtSTT.Focus();
+                            lichsuchungtu.ID_DSChungTu = entity.ID;
+                            if (_cChungTu.ThemLichSuChungTu(lichsuchungtu))
+                            {
+                                MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                if (string.IsNullOrEmpty(txtLo.Text.Trim()))
+                                    dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_DB(_hoadon.DANHBA);
+                                else
+                                    dgvKhachHangChungCu.DataSource = _cDSCT.LoadDSChungTu_DB_Lo(_hoadon.DANHBA, txtLo.Text.Trim());
+                                if (dgvKhachHangChungCu.Rows.Count > 0)
+                                    dgvKhachHangChungCu.CurrentCell = dgvKhachHangChungCu.Rows[dgvKhachHangChungCu.RowCount - 1].Cells[0];
+                                //txtSTT.Text = "";
+                                //txtLo.Text = "";
+                                //txtPhong.Text = "";
+                                cmbLoaiCT.SelectedIndex = 0;
+                                txtMaCT.Text = "";
+                                txtHoTenCT.Text = "";
+                                txtSoNKTong.Text = "";
+                                txtSoNKDangKy.Text = "";
+                                txtGhiChu.Text = "";
+                                _selectedindex = -1;
+                                txtSTT.Focus();
+                            }
                         }
-
                     }
                     else
                         MessageBox.Show("Số Nhân Khẩu đăng ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
