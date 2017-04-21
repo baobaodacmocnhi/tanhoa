@@ -1,7 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="ThiCong_TCTB.aspx.cs" Inherits="TCTB_Web.WebForm4" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true"
+    CodeBehind="ThiCong_TCTB.aspx.cs" Inherits="TCTB_Web.WebForm4" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<div id="form">
-<div class="title">NHÂN VIÊN THI CÔNG</div>
+    <div id="form">
+        <div class="title">
+            NHÂN VIÊN THI CÔNG</div>
         <div>
             <asp:Label CssClass="label" ID="Label3" runat="server" Text="ID:" Visible="false"></asp:Label>
             <asp:TextBox ID="txtID" runat="server" Visible="false"></asp:TextBox>

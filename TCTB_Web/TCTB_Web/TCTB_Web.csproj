@@ -74,6 +74,7 @@
     <Compile Include="DAL\CDAL.cs" />
     <Compile Include="DAL\QuanTri\CGiamSat.cs" />
     <Compile Include="DAL\QuanTri\CThiCong.cs" />
+    <Compile Include="DAL\TCTB\CBaoBe.cs" />
     <Compile Include="Database\dbCallCenter.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -123,10 +124,7 @@
       <DependentUpon>BaoBe.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="GUI\HeThong\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="MasterPage.Master" />
   </ItemGroup>

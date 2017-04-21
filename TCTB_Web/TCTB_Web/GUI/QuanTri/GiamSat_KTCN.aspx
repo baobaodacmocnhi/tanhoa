@@ -3,7 +3,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="form">
-    <div class="title">GIÁM SÁT P.KTCN</div>
+        <div class="title">
+            GIÁM SÁT P.KTCN</div>
         <div>
             <asp:Label CssClass="label" ID="Label3" runat="server" Text="ID:" Visible="false"></asp:Label>
             <asp:TextBox ID="txtID" runat="server" Visible="false"></asp:TextBox>
