@@ -26,7 +26,7 @@ namespace KTKS_DonKH.GUI.TruyThu
         private void frmQLTruyThuTienNuoc_Load(object sender, EventArgs e)
         {
             dgvDSTruyThuTienNuoc.AutoGenerateColumns = false;
-
+            cmbTimTheo.SelectedItem = "Ngày";
         }
 
         private void CountdgvDSTruyThuTienNuoc()

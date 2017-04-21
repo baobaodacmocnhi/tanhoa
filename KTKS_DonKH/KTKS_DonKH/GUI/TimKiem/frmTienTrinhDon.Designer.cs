@@ -130,6 +130,12 @@
             this.gridColumn53 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn54 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn55 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn66 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.gridColumn67 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.gridColumn68 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit6 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn56 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridViewTruyThu = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -141,6 +147,8 @@
             this.gridColumn62 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn63 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn64 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn65 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridViewDon = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -204,8 +212,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.gridColumn65 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemCheckEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewKTXM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewBamChi)).BeginInit();
@@ -216,14 +222,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewYeuCauCHDB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewTTTL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewGianLan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewTruyThu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDon)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).BeginInit();
             this.SuspendLayout();
             // 
             // gridViewKTXM
@@ -393,7 +402,10 @@
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1,
             this.repositoryItemCheckEdit2,
-            this.repositoryItemCheckEdit3});
+            this.repositoryItemCheckEdit3,
+            this.repositoryItemCheckEdit4,
+            this.repositoryItemCheckEdit5,
+            this.repositoryItemCheckEdit6});
             this.gridControl.Size = new System.Drawing.Size(1338, 552);
             this.gridControl.TabIndex = 2;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -1237,6 +1249,9 @@
             this.gridColumn53,
             this.gridColumn54,
             this.gridColumn55,
+            this.gridColumn66,
+            this.gridColumn67,
+            this.gridColumn68,
             this.gridColumn56});
             this.gridViewGianLan.GridControl = this.gridControl;
             this.gridViewGianLan.IndicatorWidth = 41;
@@ -1302,7 +1317,7 @@
             this.gridColumn54.Name = "gridColumn54";
             this.gridColumn54.Visible = true;
             this.gridColumn54.VisibleIndex = 5;
-            this.gridColumn54.Width = 200;
+            this.gridColumn54.Width = 150;
             // 
             // gridColumn55
             // 
@@ -1311,7 +1326,55 @@
             this.gridColumn55.Name = "gridColumn55";
             this.gridColumn55.Visible = true;
             this.gridColumn55.VisibleIndex = 6;
-            this.gridColumn55.Width = 200;
+            this.gridColumn55.Width = 150;
+            // 
+            // gridColumn66
+            // 
+            this.gridColumn66.Caption = "TT 1";
+            this.gridColumn66.ColumnEdit = this.repositoryItemCheckEdit4;
+            this.gridColumn66.FieldName = "ThanhToan1";
+            this.gridColumn66.Name = "gridColumn66";
+            this.gridColumn66.Visible = true;
+            this.gridColumn66.VisibleIndex = 7;
+            this.gridColumn66.Width = 50;
+            // 
+            // repositoryItemCheckEdit4
+            // 
+            this.repositoryItemCheckEdit4.AutoHeight = false;
+            this.repositoryItemCheckEdit4.Caption = "Check";
+            this.repositoryItemCheckEdit4.Name = "repositoryItemCheckEdit4";
+            // 
+            // gridColumn67
+            // 
+            this.gridColumn67.Caption = "TT 2";
+            this.gridColumn67.ColumnEdit = this.repositoryItemCheckEdit5;
+            this.gridColumn67.FieldName = "ThanhToan2";
+            this.gridColumn67.Name = "gridColumn67";
+            this.gridColumn67.Visible = true;
+            this.gridColumn67.VisibleIndex = 8;
+            this.gridColumn67.Width = 50;
+            // 
+            // repositoryItemCheckEdit5
+            // 
+            this.repositoryItemCheckEdit5.AutoHeight = false;
+            this.repositoryItemCheckEdit5.Caption = "Check";
+            this.repositoryItemCheckEdit5.Name = "repositoryItemCheckEdit5";
+            // 
+            // gridColumn68
+            // 
+            this.gridColumn68.Caption = "TT 3";
+            this.gridColumn68.ColumnEdit = this.repositoryItemCheckEdit6;
+            this.gridColumn68.FieldName = "ThanhToan3";
+            this.gridColumn68.Name = "gridColumn68";
+            this.gridColumn68.Visible = true;
+            this.gridColumn68.VisibleIndex = 9;
+            this.gridColumn68.Width = 50;
+            // 
+            // repositoryItemCheckEdit6
+            // 
+            this.repositoryItemCheckEdit6.AutoHeight = false;
+            this.repositoryItemCheckEdit6.Caption = "Check";
+            this.repositoryItemCheckEdit6.Name = "repositoryItemCheckEdit6";
             // 
             // gridColumn56
             // 
@@ -1320,7 +1383,7 @@
             this.gridColumn56.FieldName = "GiaiQuyet";
             this.gridColumn56.Name = "gridColumn56";
             this.gridColumn56.Visible = true;
-            this.gridColumn56.VisibleIndex = 7;
+            this.gridColumn56.VisibleIndex = 10;
             this.gridColumn56.Width = 80;
             // 
             // repositoryItemCheckEdit2
@@ -1431,6 +1494,22 @@
             this.gridColumn64.Visible = true;
             this.gridColumn64.VisibleIndex = 7;
             this.gridColumn64.Width = 100;
+            // 
+            // gridColumn65
+            // 
+            this.gridColumn65.Caption = "Thanh Toán";
+            this.gridColumn65.ColumnEdit = this.repositoryItemCheckEdit3;
+            this.gridColumn65.FieldName = "XepDon";
+            this.gridColumn65.Name = "gridColumn65";
+            this.gridColumn65.Visible = true;
+            this.gridColumn65.VisibleIndex = 8;
+            this.gridColumn65.Width = 90;
+            // 
+            // repositoryItemCheckEdit3
+            // 
+            this.repositoryItemCheckEdit3.AutoHeight = false;
+            this.repositoryItemCheckEdit3.Caption = "Check";
+            this.repositoryItemCheckEdit3.Name = "repositoryItemCheckEdit3";
             // 
             // gridViewDon
             // 
@@ -2028,21 +2107,6 @@
             this.label5.TabIndex = 12;
             this.label5.Text = "Danh Bộ:";
             // 
-            // gridColumn65
-            // 
-            this.gridColumn65.Caption = "Xếp Đơn";
-            this.gridColumn65.ColumnEdit = this.repositoryItemCheckEdit3;
-            this.gridColumn65.FieldName = "XepDon";
-            this.gridColumn65.Name = "gridColumn65";
-            this.gridColumn65.Visible = true;
-            this.gridColumn65.VisibleIndex = 8;
-            // 
-            // repositoryItemCheckEdit3
-            // 
-            this.repositoryItemCheckEdit3.AutoHeight = false;
-            this.repositoryItemCheckEdit3.Caption = "Check";
-            this.repositoryItemCheckEdit3.Name = "repositoryItemCheckEdit3";
-            // 
             // frmTienTrinhDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2066,8 +2130,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewYeuCauCHDB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewTTTL)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewGianLan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewTruyThu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDon)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -2075,7 +2143,6 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2249,5 +2316,11 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn64;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn65;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn66;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn67;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn68;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit6;
     }
 }

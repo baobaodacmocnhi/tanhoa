@@ -259,6 +259,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemGL.CreateDate,
                                     itemGL.NoiDungViPham,
                                     itemGL.TinhTrang,
+                                    itemGL.ThanhToan1,
+                                    itemGL.ThanhToan2,
+                                    itemGL.ThanhToan3,
                                     itemGL.GiaiQuyet,
                                 };
 
@@ -573,6 +576,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemGL.CreateDate,
                                        itemGL.NoiDungViPham,
                                        itemGL.TinhTrang,
+                                       itemGL.ThanhToan1,
+                                       itemGL.ThanhToan2,
+                                       itemGL.ThanhToan3,
                                        itemGL.GiaiQuyet,
                                    };
 
@@ -888,6 +894,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemGL.CreateDate,
                                        itemGL.NoiDungViPham,
                                        itemGL.TinhTrang,
+                                       itemGL.ThanhToan1,
+                                       itemGL.ThanhToan2,
+                                       itemGL.ThanhToan3,
                                        itemGL.GiaiQuyet,
                                    };
 
@@ -1204,6 +1213,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemGL.DiaChi,
                                        itemGL.NoiDungViPham,
                                        itemGL.TinhTrang,
+                                       itemGL.ThanhToan1,
+                                       itemGL.ThanhToan2,
+                                       itemGL.ThanhToan3,
                                        itemGL.GiaiQuyet,
                                    };
                 DataTable dtGianLan = new DataTable();
@@ -2200,6 +2212,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemGL.DiaChi,
                                        itemGL.NoiDungViPham,
                                        itemGL.TinhTrang,
+                                       itemGL.ThanhToan1,
+                                       itemGL.ThanhToan2,
+                                       itemGL.ThanhToan3,
                                        itemGL.GiaiQuyet,
                                    };
                 DataTable dtGianLan = new DataTable();
@@ -3195,6 +3210,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemGL.DiaChi,
                                     itemGL.NoiDungViPham,
                                     itemGL.TinhTrang,
+                                    itemGL.ThanhToan1,
+                                    itemGL.ThanhToan2,
+                                    itemGL.ThanhToan3,
                                     itemGL.GiaiQuyet,
                                 };
                 DataTable dtGianLan = new DataTable();
