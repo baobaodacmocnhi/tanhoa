@@ -87,6 +87,7 @@ namespace ThuTien.DAL.ToTruong
                             itemDK.DiaChi,
                             itemDK.GB_DM_Cu,
                             itemDK.NoiDung,
+                            itemDK.CreateDate,
                         };
             return LINQToDataTable(query);
         }

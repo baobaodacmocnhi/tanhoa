@@ -107,18 +107,19 @@ namespace ThuTien.GUI.ToTruong
             DataTable dtLH = _cLenhHuy.GetDSDanhBoTon(CNguoiDung.MaTo);
             DataTable dtHD = new DataTable();
             if (cmbDot.SelectedIndex == 0)
-                dtHD = _cHoaDon.GetDS(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                dtHD = _cHoaDon.GetDS_CoLenhHuyTruoc(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
             else
                 if (cmbDot.SelectedIndex > 0)
-                    dtHD = _cHoaDon.GetDS(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                    dtHD = _cHoaDon.GetDS_CoLenhHuyTruoc(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
             List<DataRow> RowsToDelete = new List<DataRow>();
 
             for (int i = 0; i < dtHD.Rows.Count; i++)
-                if (dtLH.Select("DanhBo='" + dtHD.Rows[i]["DanhBo"].ToString() + "'").Count() == 0 || _cLenhHuy.CheckExist(dtHD.Rows[i]["SoHoaDon"].ToString()) == true)
+            {
+                if (dtLH.Select("DanhBo='" + dtHD.Rows[i]["DanhBo"].ToString() + "'").Count() == 0)
                 {
                     RowsToDelete.Add(dtHD.Rows[i]);
                 }
-
+            }
             foreach (var dr in RowsToDelete)
             {
                 dtHD.Rows.Remove(dr);

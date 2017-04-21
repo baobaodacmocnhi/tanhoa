@@ -7300,12 +7300,12 @@ namespace ThuTien.DAL.Doi
             return _db.HOADONs.Where(item => item.NGAYGIAITRACH == null && item.DANHBA == DanhBo).ToList();
         }
 
-        public DataTable GetDS(int MaTo, int Nam, int Ky, int Dot)
+        public DataTable GetDS_CoLenhHuyTruoc(int MaTo, int Nam, int Ky, int Dot)
         {
             var query = from item in _db.HOADONs
                         where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                             && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                         && item.NAM == Nam && item.KY == Ky && item.DOT == Dot
+                         && item.NAM == Nam && item.KY == Ky && item.DOT == Dot && item.TIEUTHU > 0 && item.NGAYGIAITRACH == null
                         orderby item.MALOTRINH ascending
                         select new
                         {
@@ -7324,12 +7324,12 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDS(int MaTo, int Nam, int Ky)
+        public DataTable GetDS_CoLenhHuyTruoc(int MaTo, int Nam, int Ky)
         {
             var query = from item in _db.HOADONs
                         where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                             && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                         && item.NAM == Nam && item.KY == Ky
+                         && item.NAM == Nam && item.KY == Ky && item.TIEUTHU>0 && item.NGAYGIAITRACH==null
                         orderby item.MALOTRINH ascending
                         select new
                         {

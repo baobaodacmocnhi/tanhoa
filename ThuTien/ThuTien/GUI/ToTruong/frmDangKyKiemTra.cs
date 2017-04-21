@@ -129,6 +129,7 @@ namespace ThuTien.GUI.ToTruong
             {
                 DataRow dr = ds.Tables["DangKyHD0"].NewRow();
                 dr["NhanVien"] = item.Cells["HoTen"].Value;
+                dr["NgayLap"] = item.Cells["CreateDate"].Value;
                 dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
                 dr["MLT"] = item.Cells["MLT"].Value.ToString().Insert(4, " ").Insert(2, " ");
                 dr["DiaChi"] = item.Cells["DiaChi"].Value;
@@ -175,6 +176,14 @@ namespace ThuTien.GUI.ToTruong
             using (SolidBrush b = new SolidBrush(dgvDanhBo.RowHeadersDefaultCellStyle.ForeColor))
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (txtDanhBo.Text.Trim() != "" && e.KeyChar == 13)
+            {
+                btnThem.PerformClick();
             }
         }
 
