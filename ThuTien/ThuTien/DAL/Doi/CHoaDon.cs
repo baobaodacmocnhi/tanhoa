@@ -7302,48 +7302,54 @@ namespace ThuTien.DAL.Doi
 
         public DataTable GetDS_CoLenhHuyTruoc(int MaTo, int Nam, int Ky, int Dot)
         {
-            var query = from item in _db.HOADONs
-                        where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
-                            && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                         && item.NAM == Nam && item.KY == Ky && item.DOT == Dot && item.TIEUTHU > 0 && item.NGAYGIAITRACH == null
-                        orderby item.MALOTRINH ascending
+            var query = from itemHD in _db.HOADONs
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                            && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                         && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT == Dot && itemHD.TIEUTHU > 0 && itemHD.NGAYGIAITRACH == null
+                        orderby itemHD.MALOTRINH ascending
                         select new
                         {
-                            item.NGAYGIAITRACH,
-                            item.SOHOADON,
-                            Ky = item.KY + "/" + item.NAM,
-                            MLT = item.MALOTRINH,
-                            item.SOPHATHANH,
-                            DanhBo = item.DANHBA,
-                            item.TIEUTHU,
-                            item.GIABAN,
-                            ThueGTGT = item.THUE,
-                            PhiBVMT = item.PHI,
-                            item.TONGCONG,
+                            itemHD.NGAYGIAITRACH,
+                            itemHD.SOHOADON,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            itemHD.SOPHATHANH,
+                            DanhBo = itemHD.DANHBA,
+                            itemHD.TIEUTHU,
+                            itemHD.GIABAN,
+                            ThueGTGT = itemHD.THUE,
+                            PhiBVMT = itemHD.PHI,
+                            itemHD.TONGCONG,
+                            HanhThu = itemtableND.HoTen,
                         };
             return LINQToDataTable(query);
         }
 
         public DataTable GetDS_CoLenhHuyTruoc(int MaTo, int Nam, int Ky)
         {
-            var query = from item in _db.HOADONs
-                        where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
-                            && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                         && item.NAM == Nam && item.KY == Ky && item.TIEUTHU>0 && item.NGAYGIAITRACH==null
-                        orderby item.MALOTRINH ascending
+            var query = from itemHD in _db.HOADONs
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                            && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                         && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.TIEUTHU > 0 && itemHD.NGAYGIAITRACH == null
+                        orderby itemHD.MALOTRINH ascending
                         select new
                         {
-                            item.NGAYGIAITRACH,
-                            item.SOHOADON,
-                            Ky = item.KY + "/" + item.NAM,
-                            MLT = item.MALOTRINH,
-                            item.SOPHATHANH,
-                            DanhBo = item.DANHBA,
-                            item.TIEUTHU,
-                            item.GIABAN,
-                            ThueGTGT = item.THUE,
-                            PhiBVMT = item.PHI,
-                            item.TONGCONG,
+                            itemHD.NGAYGIAITRACH,
+                            itemHD.SOHOADON,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            itemHD.SOPHATHANH,
+                            DanhBo = itemHD.DANHBA,
+                            itemHD.TIEUTHU,
+                            itemHD.GIABAN,
+                            ThueGTGT = itemHD.THUE,
+                            PhiBVMT = itemHD.PHI,
+                            itemHD.TONGCONG,
+                            HanhThu=itemtableND.HoTen,
                         };
             return LINQToDataTable(query);
         }

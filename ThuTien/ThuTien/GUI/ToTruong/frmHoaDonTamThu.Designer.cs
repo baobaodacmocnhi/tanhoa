@@ -377,6 +377,7 @@
             this.TongCong_LH.DataPropertyName = "TongCong";
             this.TongCong_LH.HeaderText = "Tổng Cộng";
             this.TongCong_LH.Name = "TongCong_LH";
+            this.TongCong_LH.Width = 80;
             // 
             // HanhThu_LH
             // 

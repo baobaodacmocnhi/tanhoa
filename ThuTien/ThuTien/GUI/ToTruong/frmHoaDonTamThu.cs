@@ -115,7 +115,7 @@ namespace ThuTien.GUI.ToTruong
 
             for (int i = 0; i < dtHD.Rows.Count; i++)
             {
-                if (dtLH.Select("DanhBo='" + dtHD.Rows[i]["DanhBo"].ToString() + "'").Count() == 0)
+                if (dtLH.Select("DanhBo='" + dtHD.Rows[i]["DanhBo"].ToString() + "'").Count() == 0 || _cLenhHuy.CheckExist(dtHD.Rows[i]["SoHoaDon"].ToString())==true)
                 {
                     RowsToDelete.Add(dtHD.Rows[i]);
                 }
