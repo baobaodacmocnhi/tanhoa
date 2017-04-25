@@ -37,6 +37,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
         {
             dgvLichSuDonTu.AutoGenerateColumns = false;
             dgvLichSuDon.AutoGenerateColumns = false;
+            dataGridView1.AutoGenerateColumns = false;
 
             cmbLD.DataSource = _cLoaiDon.LoadDSLoaiDon();
             cmbLD.DisplayMember = "TenLD";
@@ -190,6 +191,8 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             dateChuyen.Value = DateTime.Now;
             cmbNoiChuyen.SelectedIndex = -1;
             txtGhiChu.Text = "";
+            ///
+            dataGridView1.DataSource = _cLichSuDonTu.GetDS_Old("TKH", dontkh.MaDon);
         }
 
         private void btnNhapNhieuDB_Click(object sender, EventArgs e)

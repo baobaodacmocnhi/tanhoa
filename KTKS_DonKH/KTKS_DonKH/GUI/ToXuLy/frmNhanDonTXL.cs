@@ -46,6 +46,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             dgvLichSuDon.AutoGenerateColumns = false;
             dgvLichSuDonTu.AutoGenerateColumns = false;
+            dataGridView1.AutoGenerateColumns = false;
 
             cmbLD.DataSource = _cLoaiDonTXL.GetDS();
             cmbLD.DisplayMember = "TenLD";
@@ -132,6 +133,8 @@ namespace KTKS_DonKH.GUI.ToXuLy
             cmbNoiChuyen.SelectedIndex = -1;
             dateChuyen.Value = DateTime.Now;
             txtGhiChu.Text = "";
+            ///
+            dataGridView1.DataSource = _cLichSuDonTu.GetDS_Old("TXL", dontxl.MaDon);
         }
 
         public void Clear()
