@@ -567,9 +567,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD
-                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD
-                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0,
+                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
@@ -611,9 +611,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD
-                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD
-                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0,
+                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
@@ -651,9 +651,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD
-                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD
-                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0,
+                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
@@ -694,9 +694,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD
-                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD
-                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0,
+                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
@@ -734,9 +734,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD
-                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD
-                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0,
+                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
@@ -774,9 +774,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD
-                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD
-                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0,
+                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
@@ -814,9 +814,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD
-                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD
-                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0,
+                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
@@ -858,9 +858,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD
-                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD
-                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0,
+                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
@@ -898,9 +898,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD
-                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD
-                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0,
+                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
@@ -941,9 +941,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD
-                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD
-                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0,
+                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
@@ -981,9 +981,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD
-                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD
-                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0,
+                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
@@ -1021,9 +1021,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD
-                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD
-                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0,
+                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);

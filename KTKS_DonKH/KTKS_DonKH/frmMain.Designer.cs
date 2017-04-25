@@ -696,6 +696,7 @@
             this.mnuTrungTamKhachHang.Name = "mnuTrungTamKhachHang";
             this.mnuTrungTamKhachHang.Size = new System.Drawing.Size(162, 20);
             this.mnuTrungTamKhachHang.Text = "Trung Tâm Khách Hàng";
+            this.mnuTrungTamKhachHang.Visible = false;
             // 
             // mnuThongTinKhachHang
             // 
