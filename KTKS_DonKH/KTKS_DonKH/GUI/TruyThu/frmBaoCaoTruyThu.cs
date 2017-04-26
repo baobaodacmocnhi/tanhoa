@@ -29,27 +29,54 @@ namespace KTKS_DonKH.GUI.TruyThu
 
         private void btnBaoCao_ThongKeTruyThu_Click(object sender, EventArgs e)
         {
-            DataTable dt =  _cTTTN.GetDS(dateTu_ThongKeTruyThu.Value, dateDen_ThongKeTruyThu.Value);
+            DataTable dt = _cTTTN.GetDS(dateTu_ThongKeTruyThu.Value, dateDen_ThongKeTruyThu.Value);
 
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
             foreach (DataRow item in dt.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
+
+                dr["TuNgay"] = dateTu_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
+                dr["NoiDung"] = item["NoiDung"];
+                dr["TieuThuMoi"] = item["Tongm3BinhQuan"];
+                dr["TongCongMoi"] = item["TongTien"];
+
+                dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
+            }
+
+            rptThongKeTruyThu rpt = new rptThongKeTruyThu();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.ShowDialog();
+
+            dsBaoCao = new DataSetBaoCao();
+            foreach (DataRow item in dt.Rows)
+                if (bool.Parse(item["XepDon"].ToString()) == true)
                 {
                     DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
 
                     dr["TuNgay"] = dateTu_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
                     dr["DenNgay"] = dateDen_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
+                    dr["LoaiBaoCao"] = "ĐÃ THANH TOÁN";
+                    dr["MaDon"] = item["MaDon"].ToString().Insert(item["MaDon"].ToString().Length - 2, "-");
+                    dr["NgayLap"] = item["CreateDate"];
+                    dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = item["HoTen"];
+                    dr["DiaChi"] = item["DiaChi"];
                     dr["NoiDung"] = item["NoiDung"];
+
                     dr["TieuThuMoi"] = item["Tongm3BinhQuan"];
                     dr["TongCongMoi"] = item["TongTien"];
 
                     dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
                 }
 
-            rptThongKeTruyThu rpt = new rptThongKeTruyThu();
-            rpt.SetDataSource(dsBaoCao);
-            frmShowBaoCao frm = new frmShowBaoCao(rpt);
-            frm.ShowDialog();
+            rptDSTruyThuTienNuoc rpt2 = new rptDSTruyThuTienNuoc();
+            rpt2.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm2 = new frmShowBaoCao(rpt2);
+            frm2.ShowDialog();
         }
     }
 }

@@ -115,7 +115,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
             if (dgvDanhBoChuyenKT.Columns[e.ColumnIndex].Name == "DanhBo" && dgvDanhBoChuyenKT["DanhBo", e.RowIndex].Value != null)
             {
                 for (int i = 0; i < dgvDanhBoChuyenKT.Rows.Count-2; i++)
-                    if (dgvDanhBoChuyenKT["DanhBo", i].Value.ToString() == dgvDanhBoChuyenKT["DanhBo", e.RowIndex].Value.ToString())
+                    if ( dgvDanhBoChuyenKT["DanhBo", i].Value!=null&& dgvDanhBoChuyenKT["DanhBo", i].Value.ToString() == dgvDanhBoChuyenKT["DanhBo", e.RowIndex].Value.ToString())
                     {
                         MessageBox.Show("Danh Bộ đã nhập rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -364,7 +364,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
             if (dgvDanhBoChuyenVanPhong.Columns[e.ColumnIndex].Name == "DanhBoVP" && dgvDanhBoChuyenVanPhong["DanhBoVP", e.RowIndex].Value != null)
             {
                 for (int i = 0; i < dgvDanhBoChuyenVanPhong.Rows.Count - 2; i++)
-                    if (dgvDanhBoChuyenVanPhong["DanhBoVP", i].Value.ToString() == dgvDanhBoChuyenVanPhong["DanhBoVP", e.RowIndex].Value.ToString())
+                    if (dgvDanhBoChuyenVanPhong["DanhBoVP", i].Value != null && dgvDanhBoChuyenVanPhong["DanhBoVP", i].Value.ToString() == dgvDanhBoChuyenVanPhong["DanhBoVP", e.RowIndex].Value.ToString())
                     {
                         MessageBox.Show("Danh Bộ đã nhập rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;

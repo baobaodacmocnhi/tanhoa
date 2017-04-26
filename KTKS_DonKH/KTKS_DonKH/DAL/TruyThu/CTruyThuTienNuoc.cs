@@ -209,6 +209,7 @@ namespace KTKS_DonKH.DAL.TruyThu
                             //item.Tongm3BinhQuan,
                             TongTien = item.CTTruyThuTienNuocs.Count > 0 ? item.CTTruyThuTienNuocs.Sum(itemCT => itemCT.TongCongMoi).Value - item.CTTruyThuTienNuocs.Sum(itemCT => itemCT.TongCongCu).Value : 0,
                             Tongm3BinhQuan = item.CTTruyThuTienNuocs.Count > 0 ? (item.CTTruyThuTienNuocs.Sum(itemCT => itemCT.TongCongMoi).Value - item.CTTruyThuTienNuocs.Sum(itemCT => itemCT.TongCongCu).Value) / item.SoTien1m3 : 0,
+                            item.XepDon,
                         };
             return LINQToDataTable(query);
         }

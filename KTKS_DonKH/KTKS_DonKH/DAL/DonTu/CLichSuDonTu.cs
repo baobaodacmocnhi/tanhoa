@@ -497,6 +497,7 @@ namespace KTKS_DonKH.DAL.DonTu
                 case "TBC":
                     break;
             }
+            if(dt.Rows.Count>0)
             dt.DefaultView.Sort = "NgayChuyen DESC";
             return dt.DefaultView.ToTable();
         }
