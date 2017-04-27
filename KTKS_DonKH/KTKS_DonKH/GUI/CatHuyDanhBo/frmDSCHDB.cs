@@ -373,6 +373,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                                 dr["NoiNhan"] = ctctdb.NoiNhan;
 
+                                if (ctctdb.NgayXuLy != null)
+                                    dr["NgayXuLy"] = ctctdb.NgayXuLy.Value.ToString("dd/MM/yyyy") + " : " + ctctdb.NoiDungXuLy;
+
                                 dr["ChucVu"] = ctctdb.ChucVu;
                                 dr["NguoiKy"] = ctctdb.NguoiKy;
 
@@ -419,6 +422,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 dr["NoiDung"] = ctchdb.NoiDung;
 
                                 dr["NoiNhan"] = ctchdb.NoiNhan;
+
+                                if (ctchdb.NgayXuLy != null)
+                                    dr["NgayXuLy"] = ctchdb.NgayXuLy.Value.ToString("dd/MM/yyyy") + " : " + ctchdb.NoiDungXuLy;
 
                                 dr["ChucVu"] = ctchdb.ChucVu;
                                 dr["NguoiKy"] = ctchdb.NguoiKy;

@@ -1133,8 +1133,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                 dr["NoiNhan"] = _ctctdb.NoiNhan;
 
-                if (chkNgayXuLy.Checked)
-                    dr["NgayXuLy"] = dateXuLy.Value.ToString("dd/MM/yyyy") + " : " + cmbNoiDung.SelectedItem.ToString();
+                if (_ctctdb.NgayXuLy!=null)
+                    dr["NgayXuLy"] = _ctctdb.NgayXuLy.Value.ToString("dd/MM/yyyy") + " : " + _ctctdb.NoiDungXuLy;
 
                 dr["ChucVu"] = _ctctdb.ChucVu;
                 dr["NguoiKy"] = _ctctdb.NguoiKy;
