@@ -23,6 +23,7 @@ namespace ThuTien.GUI.Doi
         CHoaDon _cHoaDon = new CHoaDon();
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CDangKyHD0 _cDangKyHD0 = new CDangKyHD0();
+        CDangKy _cDangKy = new CDangKy();
         List<TT_To> _lstTo;
 
         public frmPhanTichHD0()
@@ -58,6 +59,14 @@ namespace ThuTien.GUI.Doi
 
             cmbKy.SelectedItem = DateTime.Now.Month.ToString();
             cmbDot.SelectedIndex = 0;
+
+            cmbToDK2.DataSource = _lstTo;
+            cmbToDK2.DisplayMember = "TenTo";
+            cmbToDK2.ValueMember = "MaTo";
+
+            cmbNamDK2.DataSource = _cHoaDon.GetNam();
+            cmbNamDK2.DisplayMember = "Nam";
+            cmbNamDK2.ValueMember = "Nam";
         }
 
         public void CountdgvDanhBoDK()
@@ -114,6 +123,62 @@ namespace ThuTien.GUI.Doi
             txtKy10.Text = Ky10.ToString();
             txtKy11.Text = Ky11.ToString();
             txtKy12.Text = Ky12.ToString();
+        }
+
+        public void CountdgvDanhBoDK2()
+        {
+            int Ky1 = 0;
+            int Ky2 = 0;
+            int Ky3 = 0;
+            int Ky4 = 0;
+            int Ky5 = 0;
+            int Ky6 = 0;
+            int Ky7 = 0;
+            int Ky8 = 0;
+            int Ky9 = 0;
+            int Ky10 = 0;
+            int Ky11 = 0;
+            int Ky12 = 0;
+            foreach (DataGridViewRow item in dgvDanhBoDK.Rows)
+            {
+                if (item.Cells["Ky1_DK2"] != null && item.Cells["Ky1_DK2"].Value.ToString() != "" && int.Parse(item.Cells["Ky1_DK2"].Value.ToString()) != 0)
+                    Ky1++;
+                if (item.Cells["Ky2_DK2"] != null && item.Cells["Ky2_DK2"].Value.ToString() != "" && int.Parse(item.Cells["Ky2_DK2"].Value.ToString()) != 0)
+                    Ky2++;
+                if (item.Cells["Ky3_DK2"] != null && item.Cells["Ky3_DK2"].Value.ToString() != "" && int.Parse(item.Cells["Ky3_DK2"].Value.ToString()) != 0)
+                    Ky3++;
+                if (item.Cells["Ky4_DK2"] != null && item.Cells["Ky4_DK2"].Value.ToString() != "" && int.Parse(item.Cells["Ky4_DK2"].Value.ToString()) != 0)
+                    Ky4++;
+                if (item.Cells["Ky5_DK2"] != null && item.Cells["Ky5_DK"].Value.ToString() != "" && int.Parse(item.Cells["Ky5_DK2"].Value.ToString()) != 0)
+                    Ky5++;
+                if (item.Cells["Ky6_DK2"] != null && item.Cells["Ky6_DK2"].Value.ToString() != "" && int.Parse(item.Cells["Ky6_DK2"].Value.ToString()) != 0)
+                    Ky6++;
+                if (item.Cells["Ky7_DK2"] != null && item.Cells["Ky7_DK2"].Value.ToString() != "" && int.Parse(item.Cells["Ky7_DK2"].Value.ToString()) != 0)
+                    Ky7++;
+                if (item.Cells["Ky8_DK2"] != null && item.Cells["Ky8_DK2"].Value.ToString() != "" && int.Parse(item.Cells["Ky8_DK2"].Value.ToString()) != 0)
+                    Ky8++;
+                if (item.Cells["Ky9_DK2"] != null && item.Cells["Ky9_DK2"].Value.ToString() != "" && int.Parse(item.Cells["Ky9_DK2"].Value.ToString()) != 0)
+                    Ky9++;
+                if (item.Cells["Ky10_DK2"] != null && item.Cells["Ky10_DK2"].Value.ToString() != "" && int.Parse(item.Cells["Ky10_DK2"].Value.ToString()) != 0)
+                    Ky10++;
+                if (item.Cells["Ky11_DK2"] != null && item.Cells["Ky11_DK2"].Value.ToString() != "" && int.Parse(item.Cells["Ky11_DK2"].Value.ToString()) != 0)
+                    Ky11++;
+                if (item.Cells["Ky12_DK2"] != null && item.Cells["Ky12_DK2"].Value.ToString() != "" && int.Parse(item.Cells["Ky12_DK2"].Value.ToString()) != 0)
+                    Ky12++;
+            }
+            txtTong2.Text = dgvDanhBoDK2.Rows.Count.ToString();
+            txtKy1_2.Text = Ky1.ToString();
+            txtKy2_2.Text = Ky2.ToString();
+            txtKy3_2.Text = Ky3.ToString();
+            txtKy4_2.Text = Ky4.ToString();
+            txtKy5_2.Text = Ky5.ToString();
+            txtKy6_2.Text = Ky6.ToString();
+            txtKy7_2.Text = Ky7.ToString();
+            txtKy8_2.Text = Ky8.ToString();
+            txtKy9_2.Text = Ky9.ToString();
+            txtKy10_2.Text = Ky10.ToString();
+            txtKy11_2.Text = Ky11.ToString();
+            txtKy12_2.Text = Ky12.ToString();
         }
 
         private void cmbTo_SelectedIndexChanged(object sender, EventArgs e)
@@ -541,7 +606,257 @@ namespace ThuTien.GUI.Doi
                                     }
                                 }
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            btnXem.PerformClick();
+                            btnXemDK.PerformClick();
+                        }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void cmbToDK2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbToDK2.SelectedIndex > 0)
+            {
+                List<TT_NguoiDung> lstND = null;
+                if ((_cTo.CheckHanhThu(int.Parse(cmbToDK2.SelectedValue.ToString()))))
+                {
+                    lstND = _cNguoiDung.GetDSHanhThuByMaTo(int.Parse(cmbToDK2.SelectedValue.ToString()));
+                    TT_NguoiDung nguoidung = new TT_NguoiDung();
+                    nguoidung.MaND = 0;
+                    nguoidung.HoTen = "Tất Cả";
+                    lstND.Insert(0, nguoidung);
+
+                }
+                else
+                {
+                    lstND = _cNguoiDung.GetDSByToVanPhong(int.Parse(cmbToDK2.SelectedValue.ToString()));
+                }
+                cmbNhanVienDK2.DataSource = lstND;
+                cmbNhanVienDK2.DisplayMember = "HoTen";
+                cmbNhanVienDK2.ValueMember = "MaND";
+            }
+            else
+            {
+                cmbNhanVienDK2.DataSource = null;
+            }
+        }
+
+        private void btnXemDK2_Click(object sender, EventArgs e)
+        {
+            ///chọn tất cả tổ
+            if (cmbToDK2.SelectedIndex == 0)
+            {
+                DataTable dt = new DataTable();
+                foreach (TT_To itemTo in _lstTo)
+                {
+                    List<TT_NguoiDung> lstND = _cNguoiDung.GetDSHanhThuByMaTo(itemTo.MaTo);
+                    foreach (TT_NguoiDung itemND in lstND)
+                    {
+                        dt.Merge(_cDangKy.GetDS(itemND.MaND, int.Parse(cmbNamDK2.SelectedValue.ToString())));
+                    }
+                }
+                dgvDanhBoDK2.DataSource = dt;
+            }
+            else
+                ///chọn 1 tổ cụ thể
+                if (cmbToDK2.SelectedIndex > 0)
+                    ///chọn tất cả nhân viên
+                    if (cmbNhanVienDK2.SelectedIndex == 0)
+                    {
+                        DataTable dt = new DataTable();
+                        List<TT_NguoiDung> lstND = _cNguoiDung.GetDSHanhThuByMaTo(int.Parse(cmbToDK2.SelectedValue.ToString()));
+                        foreach (TT_NguoiDung itemND in lstND)
+                        {
+                            dt.Merge(_cDangKy.GetDS(itemND.MaND, int.Parse(cmbNamDK2.SelectedValue.ToString())));
+                        }
+                        dgvDanhBoDK2.DataSource = dt;
+                    }
+                    else
+                        ///chọn 1 nhân viên cụ thể
+                        if (cmbNhanVienDK2.SelectedIndex > 0)
+                        {
+                            dgvDanhBoDK2.DataSource = _cDangKy.GetDS(int.Parse(cmbNhanVienDK2.SelectedValue.ToString()), int.Parse(cmbNamDK2.SelectedValue.ToString()));
+                        }
+            CountdgvDanhBoDK2();
+        }
+
+        private void btnThemDK2_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+            {
+                if (txtDanhBoDK2.Text.Trim().Replace(" ", "") != "")
+                {
+                    if (cmbNhanVienDK2.Items.Count == 0 || cmbNhanVienDK2.SelectedIndex == 0)
+                    {
+                        MessageBox.Show("Chưa chọn Nhân Viên", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    if (_cDangKy.CheckExist(txtDanhBoDK2.Text.Trim().Replace(" ", ""), int.Parse(cmbNhanVienDK2.SelectedValue.ToString())) == true)
+                    {
+                        MessageBox.Show(_cDangKy.GetHoTen(txtDanhBoDK2.Text.Trim().Replace(" ", "")) + " đã đăng ký " + txtDanhBoDK2.Text.Trim().Replace(" ", ""), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    TT_DangKy dangky = new TT_DangKy();
+                    dangky.DanhBo = txtDanhBoDK2.Text.Trim().Replace(" ", "");
+                    dangky.MaNV = int.Parse(cmbNhanVienDK2.SelectedValue.ToString());
+
+                    if (_cDangKy.Them(dangky))
+                    {
+                        txtDanhBoDK2.Text = "";
+                        btnXemDK2.PerformClick();
+                    }
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnXoaDK2_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+            {
+                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    foreach (DataGridViewRow item in dgvDanhBoDK2.SelectedRows)
+                    {
+                        TT_DangKy dangky = _cDangKy.Get(item.Cells["DanhBo_DK2"].Value.ToString());
+                        _cDangKy.Xoa(dangky);
+                    }
+                    btnXemDK2.PerformClick();
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void txtDanhBoDK2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtDanhBoDK2.Text.Length == 11)
+                btnThemDK2.PerformClick();
+        }
+
+        private void dgvDanhBoDK2_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvDanhBoDK2.Columns[e.ColumnIndex].Name == "DanhBo_DK2" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
+            }
+        }
+
+        private void dgvDanhBoDK2_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDanhBoDK2.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void btnIn2_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            foreach (DataGridViewRow item in dgvDanhBoDK2.Rows)
+            {
+                DataRow dr = ds.Tables["DangKyHD0"].NewRow();
+                dr["NhanVien"] = item.Cells["HoTen_DK2"].Value;
+                dr["DanhBo"] = item.Cells["DanhBo_DK2"].Value.ToString().Insert(7, " ").Insert(4, " ");
+                dr["DiaChi"] = item.Cells["DiaChi_DK2"].Value;
+                dr["Ky1"] = item.Cells["Ky1_DK2"].Value;
+                dr["Ky2"] = item.Cells["Ky2_DK2"].Value;
+                dr["Ky3"] = item.Cells["Ky3_DK2"].Value;
+                dr["Ky4"] = item.Cells["Ky4_DK2"].Value;
+                dr["Ky5"] = item.Cells["Ky5_DK2"].Value;
+                dr["Ky6"] = item.Cells["Ky6_DK2"].Value;
+                dr["Ky7"] = item.Cells["Ky7_DK2"].Value;
+                dr["Ky8"] = item.Cells["Ky8_DK2"].Value;
+                dr["Ky9"] = item.Cells["Ky9_DK2"].Value;
+                dr["Ky10"] = item.Cells["Ky10_DK2"].Value;
+                dr["Ky11"] = item.Cells["Ky11_DK2"].Value;
+                dr["Ky12"] = item.Cells["Ky12_DK2"].Value;
+                ds.Tables["DangKyHD0"].Rows.Add(dr);
+            }
+
+            rptDangKyHD0 rpt = new rptDangKyHD0();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
+        }
+
+        private void btnInThongKe2_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            foreach (DataGridViewRow item in dgvDanhBoDK2.Rows)
+            {
+                DataRow dr = ds.Tables["DangKyHD0"].NewRow();
+                dr["To"] = item.Cells["TenTo_DK2"].Value;
+                dr["NhanVien"] = item.Cells["HoTen_DK2"].Value;
+                dr["DanhBo"] = item.Cells["DanhBo_DK2"].Value.ToString().Insert(7, " ").Insert(4, " ");
+                dr["DiaChi"] = item.Cells["DiaChi_DK2"].Value;
+                dr["Ky1"] = item.Cells["Ky1_DK2"].Value;
+                dr["Ky2"] = item.Cells["Ky2_DK2"].Value;
+                dr["Ky3"] = item.Cells["Ky3_DK2"].Value;
+                dr["Ky4"] = item.Cells["Ky4_DK2"].Value;
+                dr["Ky5"] = item.Cells["Ky5_DK2"].Value;
+                dr["Ky6"] = item.Cells["Ky6_DK2"].Value;
+                dr["Ky7"] = item.Cells["Ky7_DK2"].Value;
+                dr["Ky8"] = item.Cells["Ky8_DK2"].Value;
+                dr["Ky9"] = item.Cells["Ky9_DK2"].Value;
+                dr["Ky10"] = item.Cells["Ky10_DK2"].Value;
+                dr["Ky11"] = item.Cells["Ky11_DK2"].Value;
+                dr["Ky12"] = item.Cells["Ky12_DK2"].Value;
+                ds.Tables["DangKyHD0"].Rows.Add(dr);
+            }
+
+            rptThongKeDangKyHD0 rpt = new rptThongKeDangKyHD0();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
+        }
+
+        private void btnChonFile2_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+            {
+                try
+                {
+                    if (cmbNhanVienDK2.Items.Count == 0 || cmbNhanVienDK2.SelectedIndex == 0)
+                    {
+                        MessageBox.Show("Chưa chọn Nhân Viên", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    OpenFileDialog dialog = new OpenFileDialog();
+                    dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
+                    dialog.Multiselect = false;
+
+                    if (dialog.ShowDialog() == DialogResult.OK)
+                        if (MessageBox.Show("Bạn có chắc chắn Thêm?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        {
+                            CExcel fileExcel = new CExcel(dialog.FileName);
+                            DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
+
+                            foreach (DataRow item in dtExcel.Rows)
+                                if (item[0].ToString().Replace(" ", "").Length == 11)
+                                {
+                                    if (_cDangKy.CheckExist(item[0].ToString().Replace(" ", ""),int.Parse(cmbNhanVienDK2.SelectedValue.ToString())) == true)
+                                    {
+                                        MessageBox.Show(_cDangKy.GetHoTen(item[0].ToString().Replace(" ", "")) + " đã đăng ký " + item[0].ToString().Replace(" ", ""), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    else
+                                    {
+                                        TT_DangKy dangky = new TT_DangKy();
+                                        dangky.DanhBo = item[0].ToString().Replace(" ", "");
+                                        dangky.MaNV = int.Parse(cmbNhanVienDK2.SelectedValue.ToString());
+
+                                        _cDangKy.Them(dangky);
+                                    }
+                                }
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            btnXemDK2.PerformClick();
                         }
                 }
                 catch (Exception)
