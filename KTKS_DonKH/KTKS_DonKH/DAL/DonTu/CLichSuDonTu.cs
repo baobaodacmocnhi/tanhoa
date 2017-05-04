@@ -312,7 +312,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     var query = from itemChuyenKTXM in db.LichSuDonTus
                                 join itemDonTKH in db.DonKHs on itemChuyenKTXM.MaDon equals itemDonTKH.MaDon
                                 join itemUser in db.Users on itemChuyenKTXM.ID_NoiNhan equals itemUser.MaU
-                                where itemChuyenKTXM.MaDon != null && itemDonTKH.SoCongVan.Contains(SoCongVan)
+                                where itemChuyenKTXM.MaDon != null && itemDonTKH.SoCongVan==(SoCongVan)
                                 && itemChuyenKTXM.ID_NoiChuyen == 1
                                 orderby itemDonTKH.CreateDate ascending
                                 select new

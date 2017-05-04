@@ -52,10 +52,10 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             switch (cmbTimTheo_DSChuyenKTXM.SelectedItem.ToString())
             {
                 case "Ngày":
-                    dt = _cLichSuDonTu.GetDSChuyen_KTXM("TBC", dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
+                    dt = _cLichSuDonTu.GetDSChuyen_KTXM("TKH", dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
                     break;
                 case "Số Công Văn":
-                    dt = _cLichSuDonTu.GetDSChuyen_KTXM("TBC", txtNoiDungTimKiem_DSChuyenKTXM.Text.Trim().ToUpper());
+                    dt = _cLichSuDonTu.GetDSChuyen_KTXM("TKH", txtNoiDungTimKiem_DSChuyenKTXM.Text.Trim().ToUpper());
                     break;
             }
 
