@@ -437,8 +437,8 @@ namespace ThuTien.GUI.Doi
                         if (totrinh.DaKy == true)
                             foreach (TT_CTToTrinhCatHuy item in totrinh.TT_CTToTrinhCatHuys.ToList())
                             {
-                                //string[] MaHDs = item.MaHD.Split('$');
-                                string[] SoHoaDons = item.SoHoaDon.Split('$');
+                                //string[] MaHDs = item.MaHD.Split(',');
+                                string[] SoHoaDons = item.SoHoaDon.Split(',');
                                 foreach (string SoHoaDon in SoHoaDons)
                                     if (!_cLenhHuy.CheckExist(SoHoaDon))
                                     {

@@ -116,11 +116,17 @@ namespace ThuTien.DAL.Doi
             }
         }
 
+        public bool CheckExist_CT(string SoHoaDon)
+        {
+            return _db.TT_CTToTrinhCatHuys.Any(item => item.TT_ToTrinhCatHuy.DaKy==false&& item.SoHoaDon.Contains(SoHoaDon));
+        }
+
         public TT_CTToTrinhCatHuy GetCT(int MaCTTT)
         {
             return _db.TT_CTToTrinhCatHuys.SingleOrDefault(item => item.MaCTTT == MaCTTT);
 
         }
+
         public List<TT_CTToTrinhCatHuy> GetListCT(decimal MaTT)
         {
             return _db.TT_CTToTrinhCatHuys.Where(item => item.MaTT == MaTT).ToList();
