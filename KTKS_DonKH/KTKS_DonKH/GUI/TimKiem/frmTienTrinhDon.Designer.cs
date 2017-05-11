@@ -1497,6 +1497,8 @@
             // 
             // gridColumn65
             // 
+            this.gridColumn65.AppearanceHeader.ForeColor = System.Drawing.Color.Red;
+            this.gridColumn65.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn65.Caption = "Thanh Toán";
             this.gridColumn65.ColumnEdit = this.repositoryItemCheckEdit3;
             this.gridColumn65.FieldName = "XepDon";
