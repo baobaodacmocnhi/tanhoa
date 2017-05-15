@@ -140,7 +140,46 @@ namespace KTKS_DonKH.DAL.DonTu
             return dt;
         }
 
+        public DataTable GetDS_3To(string DanhBo)
+        {
+            DataTable dt = new DataTable();
 
+            var queryTKH = from itemDonTKH in db.DonKHs
+                           where itemDonTKH.DanhBo == DanhBo
+                           select new
+                           {
+                               MaDon="TKH"+itemDonTKH.MaDon,
+                               itemDonTKH.LoaiDon.TenLD,
+                               itemDonTKH.CreateDate,
+                               itemDonTKH.NoiDung,
+                           };
+            dt.Merge(LINQToDataTable(queryTKH));
+
+            var queryTXL = from itemDonTXL in db.DonTXLs
+                           where itemDonTXL.DanhBo == DanhBo
+                           select new
+                           {
+                               MaDon = "TXL" + itemDonTXL.MaDon,
+                               itemDonTXL.LoaiDonTXL.TenLD,
+                               itemDonTXL.CreateDate,
+                               itemDonTXL.NoiDung,
+                           };
+            dt.Merge(LINQToDataTable(queryTXL));
+
+            var queryTBC = from itemDonTBC in db.DonTBCs
+                           where itemDonTBC.DanhBo == DanhBo
+                           select new
+                           {
+                               MaDon = "TBC" + itemDonTBC.MaDon,
+                               itemDonTBC.LoaiDonTBC.TenLD,
+                               itemDonTBC.CreateDate,
+                               itemDonTBC.NoiDung,
+                           };
+            dt.Merge(LINQToDataTable(queryTBC));
+
+            dt.DefaultView.Sort = "CreateDate DESC";
+            return dt.DefaultView.ToTable();
+        }
 
         public bool Them(LichSuChuyenKTXM entity)
         {

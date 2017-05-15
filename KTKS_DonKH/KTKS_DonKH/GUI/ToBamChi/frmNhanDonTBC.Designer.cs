@@ -76,12 +76,12 @@
             this.dateChuyen = new System.Windows.Forms.DateTimePicker();
             this.label30 = new System.Windows.Forms.Label();
             this.dgvLichSuDonTu = new System.Windows.Forms.DataGridView();
-            this.btnXoa = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayChuyenA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -411,6 +411,7 @@
             this.dgvLichSuDon.Size = new System.Drawing.Size(500, 190);
             this.dgvLichSuDon.TabIndex = 55;
             this.dgvLichSuDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLichSuDon_CellFormatting);
+            this.dgvLichSuDon.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvLichSuDon_KeyDown);
             // 
             // MaDon
             // 
@@ -545,16 +546,6 @@
             this.dgvLichSuDonTu.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLichSuDonTu_CellMouseClick);
             this.dgvLichSuDonTu.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvLichSuDonTu_MouseClick);
             // 
-            // btnXoa
-            // 
-            this.btnXoa.Location = new System.Drawing.Point(653, 144);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 25);
-            this.btnXoa.TabIndex = 80;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
             // ID
             // 
             this.ID.DataPropertyName = "ID";
@@ -593,6 +584,16 @@
             this.GhiChu.HeaderText = "Ghi Chú";
             this.GhiChu.Name = "GhiChu";
             this.GhiChu.ReadOnly = true;
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Location = new System.Drawing.Point(653, 144);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 25);
+            this.btnXoa.TabIndex = 80;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // frmNhanDonTBC
             // 

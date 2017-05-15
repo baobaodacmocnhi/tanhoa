@@ -537,6 +537,7 @@
             this.dgvLichSuDon.Size = new System.Drawing.Size(500, 190);
             this.dgvLichSuDon.TabIndex = 70;
             this.dgvLichSuDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLichSuDon_CellFormatting);
+            this.dgvLichSuDon.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvLichSuDon_KeyDown);
             // 
             // MaDon
             // 

@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDSDCBD = new System.Windows.Forms.DataGridView();
             this.In = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ChuyenDocSo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -109,6 +109,7 @@
             this.chkTheoUser = new System.Windows.Forms.CheckBox();
             this.btnInA4 = new System.Windows.Forms.Button();
             this.btnXem = new System.Windows.Forms.Button();
+            this.btnThuHoiCapNhatDocSo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDCBD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCatChuyenDM)).BeginInit();
             this.panel_KhoangThoiGian.SuspendLayout();
@@ -118,14 +119,14 @@
             // 
             this.dgvDSDCBD.AllowUserToAddRows = false;
             this.dgvDSDCBD.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSDCBD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSDCBD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.dgvDSDCBD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSDCBD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.In,
@@ -175,13 +176,13 @@
             // ChuyenDocSo
             // 
             this.ChuyenDocSo.DataPropertyName = "ChuyenDocSo";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Bisque;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.NullValue = false;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.ChuyenDocSo.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.NullValue = false;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.White;
+            this.ChuyenDocSo.DefaultCellStyle = dataGridViewCellStyle18;
             this.ChuyenDocSo.HeaderText = "Chuyển Đọc Số";
             this.ChuyenDocSo.Name = "ChuyenDocSo";
             this.ChuyenDocSo.ReadOnly = true;
@@ -251,8 +252,8 @@
             // HoTen_BD
             // 
             this.HoTen_BD.DataPropertyName = "HoTen_BD";
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.HoTen_BD.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.HoTen_BD.DefaultCellStyle = dataGridViewCellStyle19;
             this.HoTen_BD.HeaderText = "Khách Hàng Mới";
             this.HoTen_BD.Name = "HoTen_BD";
             this.HoTen_BD.ReadOnly = true;
@@ -271,8 +272,8 @@
             // DiaChi_BD
             // 
             this.DiaChi_BD.DataPropertyName = "DiaChi_BD";
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.DiaChi_BD.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.DiaChi_BD.DefaultCellStyle = dataGridViewCellStyle20;
             this.DiaChi_BD.HeaderText = "Địa Chỉ Mới";
             this.DiaChi_BD.Name = "DiaChi_BD";
             this.DiaChi_BD.ReadOnly = true;
@@ -290,8 +291,8 @@
             // MSThue_BD
             // 
             this.MSThue_BD.DataPropertyName = "MSThue_BD";
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.MSThue_BD.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.MSThue_BD.DefaultCellStyle = dataGridViewCellStyle21;
             this.MSThue_BD.HeaderText = "MST Mới";
             this.MSThue_BD.Name = "MSThue_BD";
             this.MSThue_BD.ReadOnly = true;
@@ -309,8 +310,8 @@
             // GiaBieu_BD
             // 
             this.GiaBieu_BD.DataPropertyName = "GiaBieu_BD";
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.GiaBieu_BD.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.GiaBieu_BD.DefaultCellStyle = dataGridViewCellStyle22;
             this.GiaBieu_BD.HeaderText = "GB Mới";
             this.GiaBieu_BD.Name = "GiaBieu_BD";
             this.GiaBieu_BD.ReadOnly = true;
@@ -329,8 +330,8 @@
             // DinhMuc_BD
             // 
             this.DinhMuc_BD.DataPropertyName = "DinhMuc_BD";
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.DinhMuc_BD.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.DinhMuc_BD.DefaultCellStyle = dataGridViewCellStyle23;
             this.DinhMuc_BD.HeaderText = "ĐM Mới";
             this.DinhMuc_BD.Name = "DinhMuc_BD";
             this.DinhMuc_BD.ReadOnly = true;
@@ -349,8 +350,8 @@
             // TieuThu_BD
             // 
             this.TieuThu_BD.DataPropertyName = "TieuThu_BD";
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.TieuThu_BD.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.TieuThu_BD.DefaultCellStyle = dataGridViewCellStyle24;
             this.TieuThu_BD.HeaderText = "TT Mới";
             this.TieuThu_BD.Name = "TieuThu_BD";
             this.TieuThu_BD.ReadOnly = true;
@@ -368,8 +369,8 @@
             // TongCong_End
             // 
             this.TongCong_End.DataPropertyName = "TongCong_End";
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.TongCong_End.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.TongCong_End.DefaultCellStyle = dataGridViewCellStyle25;
             this.TongCong_End.HeaderText = "TC Mới";
             this.TongCong_End.Name = "TongCong_End";
             this.TongCong_End.ReadOnly = true;
@@ -378,8 +379,8 @@
             // TangGiam
             // 
             this.TangGiam.DataPropertyName = "TangGiam";
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.TangGiam.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.TangGiam.DefaultCellStyle = dataGridViewCellStyle26;
             this.TangGiam.HeaderText = "Biến Động";
             this.TangGiam.Name = "TangGiam";
             this.TangGiam.ReadOnly = true;
@@ -389,8 +390,8 @@
             // TongCong_BD
             // 
             this.TongCong_BD.DataPropertyName = "TongCong_BD";
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.TongCong_BD.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.TongCong_BD.DefaultCellStyle = dataGridViewCellStyle27;
             this.TongCong_BD.HeaderText = "TC Biến Động";
             this.TongCong_BD.Name = "TongCong_BD";
             this.TongCong_BD.ReadOnly = true;
@@ -439,14 +440,14 @@
             // 
             this.dgvDSCatChuyenDM.AllowUserToAddRows = false;
             this.dgvDSCatChuyenDM.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSCatChuyenDM.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSCatChuyenDM.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle28;
             this.dgvDSCatChuyenDM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSCatChuyenDM.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaLSCT,
@@ -551,8 +552,8 @@
             // CatNK_MaCN_CC
             // 
             this.CatNK_MaCN_CC.DataPropertyName = "CatNK_MaCN";
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.CatNK_MaCN_CC.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.CatNK_MaCN_CC.DefaultCellStyle = dataGridViewCellStyle29;
             this.CatNK_MaCN_CC.HeaderText = "Chi Nhánh Cắt";
             this.CatNK_MaCN_CC.Name = "CatNK_MaCN_CC";
             this.CatNK_MaCN_CC.ReadOnly = true;
@@ -562,8 +563,8 @@
             // CatNK_DanhBo_CC
             // 
             this.CatNK_DanhBo_CC.DataPropertyName = "CatNK_DanhBo";
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.CatNK_DanhBo_CC.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.CatNK_DanhBo_CC.DefaultCellStyle = dataGridViewCellStyle30;
             this.CatNK_DanhBo_CC.HeaderText = "Danh Bộ Cắt";
             this.CatNK_DanhBo_CC.Name = "CatNK_DanhBo_CC";
             this.CatNK_DanhBo_CC.ReadOnly = true;
@@ -572,8 +573,8 @@
             // CatNK_HoTen_CC
             // 
             this.CatNK_HoTen_CC.DataPropertyName = "CatNK_HoTen";
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.CatNK_HoTen_CC.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.CatNK_HoTen_CC.DefaultCellStyle = dataGridViewCellStyle31;
             this.CatNK_HoTen_CC.HeaderText = "Khách Hàng Cắt";
             this.CatNK_HoTen_CC.Name = "CatNK_HoTen_CC";
             this.CatNK_HoTen_CC.ReadOnly = true;
@@ -582,8 +583,8 @@
             // CatNK_DiaChi_CC
             // 
             this.CatNK_DiaChi_CC.DataPropertyName = "CatNK_DiaChi";
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.CatNK_DiaChi_CC.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.CatNK_DiaChi_CC.DefaultCellStyle = dataGridViewCellStyle32;
             this.CatNK_DiaChi_CC.HeaderText = "Địa Chỉ Cắt";
             this.CatNK_DiaChi_CC.Name = "CatNK_DiaChi_CC";
             this.CatNK_DiaChi_CC.ReadOnly = true;
@@ -801,6 +802,18 @@
             this.btnXem.UseVisualStyleBackColor = true;
             this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
+            // btnThuHoiCapNhatDocSo
+            // 
+            this.btnThuHoiCapNhatDocSo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThuHoiCapNhatDocSo.ForeColor = System.Drawing.Color.Red;
+            this.btnThuHoiCapNhatDocSo.Location = new System.Drawing.Point(1048, 43);
+            this.btnThuHoiCapNhatDocSo.Name = "btnThuHoiCapNhatDocSo";
+            this.btnThuHoiCapNhatDocSo.Size = new System.Drawing.Size(180, 25);
+            this.btnThuHoiCapNhatDocSo.TabIndex = 89;
+            this.btnThuHoiCapNhatDocSo.Text = "Thu Hồi Cập Nhật Đọc Số";
+            this.btnThuHoiCapNhatDocSo.UseVisualStyleBackColor = true;
+            this.btnThuHoiCapNhatDocSo.Click += new System.EventHandler(this.btnThuHoiCapNhatDocSo_Click);
+            // 
             // frmDSDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -808,6 +821,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1360, 729);
+            this.Controls.Add(this.btnThuHoiCapNhatDocSo);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.btnInA4);
             this.Controls.Add(this.chkTheoUser);
@@ -908,5 +922,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NhanNK_HoTen_CC;
         private System.Windows.Forms.DataGridViewTextBoxColumn NhanNK_DiaChi_CC;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy_CC;
+        private System.Windows.Forms.Button btnThuHoiCapNhatDocSo;
     }
 }

@@ -11,6 +11,8 @@ using KTKS_DonKH.DAL;
 using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.DAL.DonTu;
 using KTKS_DonKH.DAL.ToBamChi;
+using KTKS_DonKH.GUI.ToKhachHang;
+using KTKS_DonKH.GUI.ToXuLy;
 
 namespace KTKS_DonKH.GUI.ToBamChi
 {
@@ -68,6 +70,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
             txtGiaBieu.Text = dontbc.GiaBieu;
             txtDinhMuc.Text = dontbc.DinhMuc;
             ///
+            dgvLichSuDon.DataSource = _cLichSuDonTu.GetDS_3To(dontbc.DanhBo);
             dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("TBC", dontbc.MaDon);
             cmbNoiChuyen.SelectedIndex = -1;
             dateChuyen.Value = DateTime.Now;
@@ -150,6 +153,28 @@ namespace KTKS_DonKH.GUI.ToBamChi
             }
         }
 
+        private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
+            {
+                string MaDon = "";
+                if (txtMaDon.Text.Trim().ToUpper().Contains("TBC"))
+                    MaDon = txtMaDon.Text.Trim().Substring(3).Replace("-", "");
+                else
+                    MaDon = txtMaDon.Text.Trim().Replace("-", "");
+                if (_cDonTBC.CheckExist(decimal.Parse(MaDon)) == true)
+                {
+                    _dontbc = _cDonTBC.Get(decimal.Parse(MaDon));
+                    LoadDonTBC(_dontbc);
+                }
+                else
+                {
+                    MessageBox.Show("Mã Đơn TBC này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Clear();
+                }
+            }
+        }
+
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
@@ -158,9 +183,9 @@ namespace KTKS_DonKH.GUI.ToBamChi
                 {
                     _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
                     LoadTTKH(_hoadon);
-                    dgvLichSuDon.DataSource = _cDonTBC.GetDSByDanhBo(txtDanhBo.Text.Trim());
-                    if (dgvLichSuDon.RowCount > 0)
-                        dgvLichSuDon.Sort(dgvLichSuDon.Columns["CreateDate"], ListSortDirection.Descending);
+                    dgvLichSuDon.DataSource = _cLichSuDonTu.GetDS_3To(txtDanhBo.Text.Trim());
+                    //if (dgvLichSuDon.RowCount > 0)
+                    //    dgvLichSuDon.Sort(dgvLichSuDon.Columns["CreateDate"], ListSortDirection.Descending);
                 }
                 else
                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -275,37 +300,6 @@ namespace KTKS_DonKH.GUI.ToBamChi
                 MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void cmbLD_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbLD.SelectedIndex != -1)
-            {
-                //txtMaDon.Text = "TXL" + _cDonTXL.getMaxNextID().ToString().Insert(_cDonTXL.getMaxNextID().ToString().Length - 2, "-");
-                txtNgayNhan.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            }
-        }
-
-        private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
-            {
-                string MaDon = "";
-                if (txtMaDon.Text.Trim().ToUpper().Contains("TBC"))
-                    MaDon = txtMaDon.Text.Trim().Substring(3).Replace("-", "");
-                else
-                    MaDon = txtMaDon.Text.Trim().Replace("-", "");
-                if (_cDonTBC.CheckExist(decimal.Parse(MaDon)) == true)
-                {
-                    _dontbc = _cDonTBC.Get(decimal.Parse(MaDon));
-                    LoadDonTBC(_dontbc);
-                }
-                else
-                {
-                    MessageBox.Show("Mã Đơn TBC này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Clear();
-                }
-            }
-        }
-
         private void btnSua_Click(object sender, EventArgs e)
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
@@ -350,34 +344,36 @@ namespace KTKS_DonKH.GUI.ToBamChi
                 MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void xóaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
             {
-                if (_cLichSuDonTu.Xoa(_cLichSuDonTu.Get(int.Parse(dgvLichSuDonTu.CurrentRow.Cells["ID"].Value.ToString()))))
+                try
                 {
-                    dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("TBC", _dontbc.MaDon);
+                    if (_dontbc != null && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        if (_cDonTBC.Xoa(_dontbc))
+                        {
+                            Clear();
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            else
+                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void txtTongSoDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        private void cmbLD_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
-                e.Handled = true;
-        }
-
-        private void btnNhapNhieuDB_Click(object sender, EventArgs e)
-        {
-            frmNhapNhieuDBTBC frm = new frmNhapNhieuDBTBC();
-            frm.ShowDialog();
-        }
-
-        private void dgvLichSuDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (dgvLichSuDon.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
+            if (cmbLD.SelectedIndex != -1)
             {
-                e.Value = "TBC" + e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+                //txtMaDon.Text = "TXL" + _cDonTXL.getMaxNextID().ToString().Insert(_cDonTXL.getMaxNextID().ToString().Length - 2, "-");
+                txtNgayNhan.Text = DateTime.Now.ToString("dd/MM/yyyy");
             }
         }
 
@@ -506,6 +502,56 @@ namespace KTKS_DonKH.GUI.ToBamChi
                 MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void xóaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                if (_cLichSuDonTu.Xoa(_cLichSuDonTu.Get(int.Parse(dgvLichSuDonTu.CurrentRow.Cells["ID"].Value.ToString()))))
+                {
+                    dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("TBC", _dontbc.MaDon);
+                }
+            }
+        }
+
+        private void btnNhapNhieuDB_Click(object sender, EventArgs e)
+        {
+            frmNhapNhieuDBTBC frm = new frmNhapNhieuDBTBC();
+            frm.ShowDialog();
+        }
+
+        private void dgvLichSuDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvLichSuDon.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+        }
+
+        private void dgvLichSuDon_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (dgvLichSuDon.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
+            {
+                if (dgvLichSuDon["MaDon", dgvLichSuDon.CurrentRow.Index].Value.ToString().ToUpper().Contains("TKH"))
+                {
+                    frmNhanDonTKH frm = new frmNhanDonTKH(decimal.Parse(dgvLichSuDon["MaDon", dgvLichSuDon.CurrentRow.Index].Value.ToString().Substring(3)));
+                    frm.ShowDialog();
+                }
+                else
+                    if (dgvLichSuDon["MaDon", dgvLichSuDon.CurrentRow.Index].Value.ToString().ToUpper().Contains("TXL"))
+                    {
+                        frmNhanDonTXL frm = new frmNhanDonTXL(decimal.Parse(dgvLichSuDon["MaDon", dgvLichSuDon.CurrentRow.Index].Value.ToString().Substring(3)));
+                        frm.ShowDialog();
+                    }
+                    else
+
+                        if (dgvLichSuDon["MaDon", dgvLichSuDon.CurrentRow.Index].Value.ToString().ToUpper().Contains("TBC"))
+                        {
+                            frmNhanDonTBC frm = new frmNhanDonTBC(decimal.Parse(dgvLichSuDon["MaDon", dgvLichSuDon.CurrentRow.Index].Value.ToString().Substring(3)));
+                            frm.ShowDialog();
+                        }
+            }
+        }
+
         private void dgvLichSuDonTu_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.Button == MouseButtons.Right)
@@ -523,28 +569,8 @@ namespace KTKS_DonKH.GUI.ToBamChi
             }
         }
 
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
-            {
-                try
-                {
-                    if (_dontbc != null && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        if (_cDonTBC.Xoa(_dontbc))
-                        {
-                            Clear();
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
+        
+
+        
     }
 }

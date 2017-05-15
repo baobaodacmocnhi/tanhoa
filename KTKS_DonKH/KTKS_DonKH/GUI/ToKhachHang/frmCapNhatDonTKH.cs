@@ -11,6 +11,8 @@ using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.DAL.DonTu;
+using KTKS_DonKH.GUI.ToXuLy;
+using KTKS_DonKH.GUI.ToBamChi;
 
 namespace KTKS_DonKH.GUI.ToKhachHang
 {
@@ -185,7 +187,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             txtGiaBieu.Text = dontkh.GiaBieu;
             txtDinhMuc.Text = dontkh.DinhMuc;
             ///
-            dgvLichSuDon.DataSource = _cDonKH.GetDSByDanhBo(dontkh.DanhBo);
+            dgvLichSuDon.DataSource = _cLichSuDonTu.GetDS_3To(dontkh.DanhBo);
             ///
             dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("TKH", dontkh.MaDon);
             dateChuyen.Value = DateTime.Now;
@@ -370,6 +372,31 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             if (dgvLichSuDon.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+        }
+
+        private void dgvLichSuDon_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (dgvLichSuDon.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
+            {
+                if (dgvLichSuDon["MaDon", dgvLichSuDon.CurrentRow.Index].Value.ToString().ToUpper().Contains("TKH"))
+                {
+                    frmNhanDonTKH frm = new frmNhanDonTKH(decimal.Parse(dgvLichSuDon["MaDon", dgvLichSuDon.CurrentRow.Index].Value.ToString().Substring(3)));
+                    frm.ShowDialog();
+                }
+                else
+                    if (dgvLichSuDon["MaDon", dgvLichSuDon.CurrentRow.Index].Value.ToString().ToUpper().Contains("TXL"))
+                    {
+                        frmNhanDonTXL frm = new frmNhanDonTXL(decimal.Parse(dgvLichSuDon["MaDon", dgvLichSuDon.CurrentRow.Index].Value.ToString().Substring(3)));
+                        frm.ShowDialog();
+                    }
+                    else
+
+                        if (dgvLichSuDon["MaDon", dgvLichSuDon.CurrentRow.Index].Value.ToString().ToUpper().Contains("TBC"))
+                        {
+                            frmNhanDonTBC frm = new frmNhanDonTBC(decimal.Parse(dgvLichSuDon["MaDon", dgvLichSuDon.CurrentRow.Index].Value.ToString().Substring(3)));
+                            frm.ShowDialog();
+                        }
             }
         }
 

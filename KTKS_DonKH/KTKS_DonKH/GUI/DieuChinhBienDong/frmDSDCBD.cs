@@ -1197,6 +1197,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
+        private void btnThuHoiCapNhatDocSo_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn chắc chắn Thu Hồi Cập Nhật Đọc Số những Phiếu trên?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (radDSDCBD.Checked)
+                {
+                    for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
+                        if (bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["PhieuDuocKy", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["ChuyenDocSo", i].Value.ToString()) == true)
+                        {
+
+                        }
+                }
+        }
+
 
     }
 }
