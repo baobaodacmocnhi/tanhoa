@@ -87,7 +87,7 @@ namespace KTKS_ChungCu.DAL
                                 itemCTCT.SoNKDangKy,
                                 itemCTCT.NgayHetHan,
                                 itemCTCT.ThoiHan,
-                                itemCTCT.GhiChu,
+                                itemCTCT.GhiChu,itemCTCT.CreateDate,
                             };
                 return Function.CLinQToDataTable.LINQToDataTable(query);
             }
@@ -118,7 +118,7 @@ namespace KTKS_ChungCu.DAL
                                 itemCTCT.SoNKDangKy,
                                 itemCTCT.NgayHetHan,
                                 itemCTCT.ThoiHan,
-                                itemCTCT.GhiChu,
+                                itemCTCT.GhiChu,itemCTCT.CreateDate,
                             };
                 return Function.CLinQToDataTable.LINQToDataTable(query);
             }
@@ -150,6 +150,7 @@ namespace KTKS_ChungCu.DAL
                                 itemCTCT.NgayHetHan,
                                 itemCTCT.ThoiHan,
                                 itemCTCT.GhiChu,
+                                itemCTCT.CreateDate,
                             };
                 return Function.CLinQToDataTable.LINQToDataTable(query);
             }
@@ -180,7 +181,7 @@ namespace KTKS_ChungCu.DAL
                                 itemCTCT.SoNKDangKy,
                                 itemCTCT.NgayHetHan,
                                 itemCTCT.ThoiHan,
-                                itemCTCT.GhiChu,
+                                itemCTCT.GhiChu,itemCTCT.CreateDate,
                             };
                 return Function.CLinQToDataTable.LINQToDataTable(query);
             }
@@ -211,7 +212,7 @@ namespace KTKS_ChungCu.DAL
                                 itemCTCT.SoNKDangKy,
                                 itemCTCT.NgayHetHan,
                                 itemCTCT.ThoiHan,
-                                itemCTCT.GhiChu,
+                                itemCTCT.GhiChu,itemCTCT.CreateDate,
                             };
                 return Function.CLinQToDataTable.LINQToDataTable(query);
             }
@@ -242,7 +243,7 @@ namespace KTKS_ChungCu.DAL
                                 itemCTCT.SoNKDangKy,
                                 itemCTCT.NgayHetHan,
                                 itemCTCT.ThoiHan,
-                                itemCTCT.GhiChu,
+                                itemCTCT.GhiChu,itemCTCT.CreateDate,
                             };
                 return Function.CLinQToDataTable.LINQToDataTable(query);
             }
@@ -273,7 +274,7 @@ namespace KTKS_ChungCu.DAL
                                 itemCTCT.SoNKDangKy,
                                 itemCTCT.NgayHetHan,
                                 itemCTCT.ThoiHan,
-                                itemCTCT.GhiChu,
+                                itemCTCT.GhiChu,itemCTCT.CreateDate,
                             };
                 return Function.CLinQToDataTable.LINQToDataTable(query);
             }
@@ -304,7 +305,7 @@ namespace KTKS_ChungCu.DAL
                                 itemCTCT.SoNKDangKy,
                                 itemCTCT.NgayHetHan,
                                 itemCTCT.ThoiHan,
-                                itemCTCT.GhiChu,
+                                itemCTCT.GhiChu,itemCTCT.CreateDate,
                             };
                 return Function.CLinQToDataTable.LINQToDataTable(query);
             }
@@ -335,7 +336,7 @@ namespace KTKS_ChungCu.DAL
                                 itemCTCT.SoNKDangKy,
                                 itemCTCT.NgayHetHan,
                                 itemCTCT.ThoiHan,
-                                itemCTCT.GhiChu,
+                                itemCTCT.GhiChu,itemCTCT.CreateDate,
                             };
                 return Function.CLinQToDataTable.LINQToDataTable(query);
             }
@@ -366,7 +367,7 @@ namespace KTKS_ChungCu.DAL
                                 itemCTCT.SoNKDangKy,
                                 itemCTCT.NgayHetHan,
                                 itemCTCT.ThoiHan,
-                                itemCTCT.GhiChu,
+                                itemCTCT.GhiChu,itemCTCT.CreateDate,
                             };
                 return Function.CLinQToDataTable.LINQToDataTable(query);
             }
@@ -397,7 +398,7 @@ namespace KTKS_ChungCu.DAL
                                 itemCTCT.SoNKDangKy,
                                 itemCTCT.NgayHetHan,
                                 itemCTCT.ThoiHan,
-                                itemCTCT.GhiChu,
+                                itemCTCT.GhiChu,itemCTCT.CreateDate,
                             };
                 return Function.CLinQToDataTable.LINQToDataTable(query);
             }
@@ -428,7 +429,7 @@ namespace KTKS_ChungCu.DAL
                                 itemCTCT.SoNKDangKy,
                                 itemCTCT.NgayHetHan,
                                 itemCTCT.ThoiHan,
-                                itemCTCT.GhiChu,
+                                itemCTCT.GhiChu,itemCTCT.CreateDate,
                             };
                 return Function.CLinQToDataTable.LINQToDataTable(query);
             }
@@ -460,7 +461,7 @@ namespace KTKS_ChungCu.DAL
                                 itemCTCT.SoNKDangKy,
                                 itemCTCT.NgayHetHan,
                                 itemCTCT.ThoiHan,
-                                itemCTCT.GhiChu,
+                                itemCTCT.GhiChu,itemCTCT.CreateDate,
                             };
                 return Function.CLinQToDataTable.LINQToDataTable(query);
             }
