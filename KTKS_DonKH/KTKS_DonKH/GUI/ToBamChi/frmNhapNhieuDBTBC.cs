@@ -212,13 +212,13 @@ namespace KTKS_DonKH.GUI.ToBamChi
                                 if (item.Cells["NguoiDi"].Value != null)
                                 {
                                     string[] date = item.Cells["NgayChuyen"].Value.ToString().Split('/');
-                                    LichSuChuyenKTXM lichsuchuyenkt = new LichSuChuyenKTXM();
-                                    lichsuchuyenkt.NgayChuyen = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
-                                    lichsuchuyenkt.NguoiDi = int.Parse(item.Cells["NguoiDi"].Value.ToString());
-                                    if (item.Cells["GhiChu"].Value != null)
-                                    lichsuchuyenkt.GhiChuChuyen = item.Cells["GhiChu"].Value.ToString();
-                                    lichsuchuyenkt.MaDonTBC= dontbc.MaDon;
-                                    _cLichSuDonTu.Them(lichsuchuyenkt);
+                                    //LichSuChuyenKTXM lichsuchuyenkt = new LichSuChuyenKTXM();
+                                    //lichsuchuyenkt.NgayChuyen = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
+                                    //lichsuchuyenkt.NguoiDi = int.Parse(item.Cells["NguoiDi"].Value.ToString());
+                                    //if (item.Cells["GhiChu"].Value != null)
+                                    //lichsuchuyenkt.GhiChuChuyen = item.Cells["GhiChu"].Value.ToString();
+                                    //lichsuchuyenkt.MaDonTBC= dontbc.MaDon;
+                                    //_cLichSuDonTu.Them(lichsuchuyenkt);
 
                                     LichSuDonTu entity = new LichSuDonTu();
                                     entity.NgayChuyen = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));

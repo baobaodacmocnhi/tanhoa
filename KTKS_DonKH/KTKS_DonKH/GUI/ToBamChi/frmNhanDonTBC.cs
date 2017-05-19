@@ -442,12 +442,12 @@ namespace KTKS_DonKH.GUI.ToBamChi
                             {
                                 if (cmbNoiChuyen.SelectedValue.ToString() == "1")///KTXM
                                 {
-                                    LichSuChuyenKTXM lichsuchuyenkt = new LichSuChuyenKTXM();
-                                    lichsuchuyenkt.NgayChuyen = dateChuyen.Value;
-                                    lichsuchuyenkt.NguoiDi = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
-                                    lichsuchuyenkt.GhiChuChuyen = txtGhiChu.Text.Trim();
-                                    lichsuchuyenkt.MaDonTBC = _dontbc.MaDon;
-                                    _cLichSuDonTu.Them(lichsuchuyenkt);
+                                    //LichSuChuyenKTXM lichsuchuyenkt = new LichSuChuyenKTXM();
+                                    //lichsuchuyenkt.NgayChuyen = dateChuyen.Value;
+                                    //lichsuchuyenkt.NguoiDi = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+                                    //lichsuchuyenkt.GhiChuChuyen = txtGhiChu.Text.Trim();
+                                    //lichsuchuyenkt.MaDonTBC = _dontbc.MaDon;
+                                    //_cLichSuDonTu.Them(lichsuchuyenkt);
 
                                     _dontbc.NguoiDi_KTXM = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
                                     _dontbc.NgayChuyen_KTXM = dateChuyen.Value;

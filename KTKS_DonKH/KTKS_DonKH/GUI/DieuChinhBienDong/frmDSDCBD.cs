@@ -703,7 +703,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     //log.WriteLine("Danh Sách chuyển Đọc số ngày " + DateTime.Now);
                     for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
                         if (bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["PhieuDuocKy", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["ChuyenDocSo", i].Value.ToString()) == false)
-                            using (var scope = new TransactionScope())
+                            //using (var scope = new TransactionScope())
                             {
                                 CTDCBD ctdcbd = new CTDCBD();
                                 ctdcbd = _cDCBD.GetDCBDByMaCTDCBD(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
@@ -766,8 +766,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             ctdcbd.ChuyenDocSo = true;
                                             ctdcbd.NgayChuyenDocSo = DateTime.Now;
                                             ctdcbd.NguoiChuyenDocSo = CTaiKhoan.MaUser;
-                                            if (_cDCBD.SuaDCBD(ctdcbd))
-                                                scope.Complete();
+                                            _cDCBD.SuaDCBD(ctdcbd);
+                                                //scope.Complete();
                                         }
 
                                         //log.WriteLine(k.ToString() + "/ " + ctdcbd.MaCTDCBD + " ; " + ctdcbd.ThongTin + " ; " + ctdcbd.DanhBo + " ");
@@ -802,7 +802,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
                         if (bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["PhieuDuocKy", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["ChuyenDocSo", i].Value.ToString()) == true)
-                            using (var scope = new TransactionScope())
+                            //using (var scope = new TransactionScope())
                             {
                                 CTDCBD ctdcbd = new CTDCBD();
                                 ctdcbd = _cDCBD.GetDCBDByMaCTDCBD(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
@@ -839,8 +839,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             ctdcbd.NgayChuyenDocSo = null;
                                             ctdcbd.NguoiChuyenDocSo = null;
                                             ctdcbd.PhieuDuocKy = false;
-                                            if (_cDCBD.SuaDCBD(ctdcbd))
-                                                scope.Complete();
+                                            _cDCBD.SuaDCBD(ctdcbd);
+                                                //scope.Complete();
                                         }
                                     }
                                 }
