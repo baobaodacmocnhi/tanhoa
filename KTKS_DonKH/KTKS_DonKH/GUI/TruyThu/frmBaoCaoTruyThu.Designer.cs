@@ -35,17 +35,23 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnBaoCao_ThongKeTruyThu = new System.Windows.Forms.Button();
+            this.radDaThanhToan = new System.Windows.Forms.RadioButton();
+            this.radGuiThu = new System.Windows.Forms.RadioButton();
+            this.radChuaThanhToan = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.radChuaThanhToan);
+            this.groupBox1.Controls.Add(this.radGuiThu);
+            this.groupBox1.Controls.Add(this.radDaThanhToan);
             this.groupBox1.Controls.Add(this.panel_KhoangThoiGian);
             this.groupBox1.Controls.Add(this.btnBaoCao_ThongKeTruyThu);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(270, 87);
+            this.groupBox1.Size = new System.Drawing.Size(273, 140);
             this.groupBox1.TabIndex = 26;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thống Kê Truy Thu";
@@ -107,6 +113,39 @@
             this.btnBaoCao_ThongKeTruyThu.UseVisualStyleBackColor = true;
             this.btnBaoCao_ThongKeTruyThu.Click += new System.EventHandler(this.btnBaoCao_ThongKeTruyThu_Click);
             // 
+            // radDaThanhToan
+            // 
+            this.radDaThanhToan.AutoSize = true;
+            this.radDaThanhToan.Location = new System.Drawing.Point(12, 87);
+            this.radDaThanhToan.Name = "radDaThanhToan";
+            this.radDaThanhToan.Size = new System.Drawing.Size(119, 20);
+            this.radDaThanhToan.TabIndex = 25;
+            this.radDaThanhToan.TabStop = true;
+            this.radDaThanhToan.Text = "Đã Thanh Toán";
+            this.radDaThanhToan.UseVisualStyleBackColor = true;
+            // 
+            // radGuiThu
+            // 
+            this.radGuiThu.AutoSize = true;
+            this.radGuiThu.Location = new System.Drawing.Point(146, 87);
+            this.radGuiThu.Name = "radGuiThu";
+            this.radGuiThu.Size = new System.Drawing.Size(72, 20);
+            this.radGuiThu.TabIndex = 26;
+            this.radGuiThu.TabStop = true;
+            this.radGuiThu.Text = "Gửi Thư";
+            this.radGuiThu.UseVisualStyleBackColor = true;
+            // 
+            // radChuaThanhToan
+            // 
+            this.radChuaThanhToan.AutoSize = true;
+            this.radChuaThanhToan.Location = new System.Drawing.Point(12, 113);
+            this.radChuaThanhToan.Name = "radChuaThanhToan";
+            this.radChuaThanhToan.Size = new System.Drawing.Size(133, 20);
+            this.radChuaThanhToan.TabIndex = 27;
+            this.radChuaThanhToan.TabStop = true;
+            this.radChuaThanhToan.Text = "Chưa Thanh Toán";
+            this.radChuaThanhToan.UseVisualStyleBackColor = true;
+            // 
             // frmBaoCaoTruyThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -115,11 +154,12 @@
             this.ClientSize = new System.Drawing.Size(969, 545);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmBaoCaoTruyThu";
             this.Text = "Báo Cáo Truy Thu";
             this.Load += new System.EventHandler(this.frmBaoCaoTruyThu_Load);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.panel_KhoangThoiGian.ResumeLayout(false);
             this.panel_KhoangThoiGian.PerformLayout();
             this.ResumeLayout(false);
@@ -135,5 +175,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnBaoCao_ThongKeTruyThu;
+        private System.Windows.Forms.RadioButton radChuaThanhToan;
+        private System.Windows.Forms.RadioButton radGuiThu;
+        private System.Windows.Forms.RadioButton radDaThanhToan;
     }
 }
