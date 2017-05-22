@@ -11,6 +11,7 @@ using KTKS_DonKH.LinQ;
 using KTKS_DonKH.Utilities;
 using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.GUI.TruyThu;
+using KTKS_DonKH.DAL;
 
 
 namespace KTKS_DonKH.GUI.CallCenter
@@ -111,6 +112,19 @@ namespace KTKS_DonKH.GUI.CallCenter
             if (e.KeyChar == 13)
             {
                 Search();
+                // không có danh bộ
+                CDAL t = new CDAL();
+                string sql = " SELECT tn.SoHoSo,DienThoai,DanhBo,lt.TenLoai,NgayNhan, GhiChu,CreateBy,ChuyenHS,DonViChuyen,NgayChuyen,NgayXuLy,KetQuaXuLy,NhanVienXuLy,TenKH,(SoNha + ' ' + TenDuong ) as DiaChi ";
+                sql += "   FROM TTKH_TiepNhan tn, TTKH_LoaiTiepNhan lt ";
+                sql += "   WHERE tn.LoaiHs=lt.ID  ";
+               
+                if (txtSearchDC.Text.Replace("-", "") != "")
+                {
+                    sql += " AND replace((SoNha + ' ' + TenDuong ),' ','') LIKE N'%" + txtSearchDC.Text.Replace(" ", "") + "%' ";
+                }
+                dataGridCall.DataSource = t.ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                Utilities.DataGridV.formatRows(dataGridCall);
+
                 
             }
         }
@@ -269,11 +283,13 @@ namespace KTKS_DonKH.GUI.CallCenter
 
         private void btDongNuoc_Click(object sender, EventArgs e)
         {
-            //string url = "http://hp_g7/callcenter.aspx?add=" + this.TENDUONG.Text;
+             string url = "http://hp_g7/callcenter.aspx";
+             System.Diagnostics.Process.Start(url);
             //frmWeb F = new frmWeb(url);            
             //F.ShowDialog();
         }
 
+       
          
 
         

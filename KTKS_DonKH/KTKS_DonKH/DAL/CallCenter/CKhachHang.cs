@@ -9,9 +9,10 @@ using System.IO;
 
 namespace KTKS_DonKH.DAL.CallCenter
 {
-    class CKhachHang
+    class CKhachHang  
     {
         static dbDocSoDataContext db = new dbDocSoDataContext();
+       
         public static DataTable getDataTable(string sql)
         {
             DataTable table = new DataTable();
@@ -198,13 +199,15 @@ namespace KTKS_DonKH.DAL.CallCenter
         }
 
         public static DataTable getListTiepNhan(string danhbo)
-        { 
+        {
+
+            CDAL t = new CDAL();
             string sql = " SELECT tn.SoHoSo,DienThoai,DanhBo,lt.TenLoai,NgayNhan, GhiChu,CreateBy,ChuyenHS,DonViChuyen,NgayChuyen,NgayXuLy,KetQuaXuLy,NhanVienXuLy,TenKH,(SoNha + ' ' + TenDuong ) as DiaChi ";
-            sql += "   FROM TiepNhan tn, LoaiTiepNhan lt ";
+            sql += "   FROM TTKH_TiepNhan tn, TTKH_LoaiTiepNhan lt ";
             sql += "   WHERE tn.LoaiHs=lt.ID  ";
             sql += " AND DanhBo='" + danhbo + "' ORDER BY  NgayNhan DESC ";
-          
-             return getDataTable(sql);
+
+            return t.ExecuteQuery_SqlDataAdapter_DataTable(sql);
         
         }
 

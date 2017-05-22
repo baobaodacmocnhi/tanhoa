@@ -842,8 +842,12 @@ namespace KTKS_DonKH
         {
             if (CTaiKhoan.CheckQuyen("mnBaoBe", "Xem"))
             {
-                frmBaoBe frm = new frmBaoBe();
-                OpenForm(frm);
+              //  frmBaoBe frm = new frmBaoBe();
+              //  OpenForm(frm);
+                string url = "http://hp_g7/callbaobe.aspx?u=" + CTaiKhoan.HoTen ;
+                System.Diagnostics.Process.Start(url);
+
+
             }
             else
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
