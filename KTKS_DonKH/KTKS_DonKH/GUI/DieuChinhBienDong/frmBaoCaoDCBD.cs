@@ -46,7 +46,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (radDSDMCapCoThoiHan.Checked)
             {
                 DataTable dt = new DataTable();
-                    dt = _cChungTu.LoadDSCapDinhMuc(dateTu.Value, dateDen.Value);
+                dt = _cChungTu.LoadDSCapDinhMuc(dateTu.Value, dateDen.Value);
 
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 foreach (DataRow itemRow in dt.Rows)
@@ -82,7 +82,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             dr["TieuThu"] = _cThuTien.GetTieuThuMoiNhat(itemRow["DanhBo"].ToString());
                         }
                         dr["HoTen"] = hoadon.TENKH;
-                        dr["DiaChi"] = hoadon.SO+" "+hoadon.DUONG;
+                        dr["DiaChi"] = hoadon.SO + " " + hoadon.DUONG;
                         dr["MaLCT"] = itemRow["MaLCT"];
                         dr["TenLCT"] = itemRow["TenLCT"];
                         dr["MaCT"] = itemRow["MaCT"];
@@ -204,7 +204,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (radDSDMCapKThoiHan.Checked)
             {
                 DataTable dt = new DataTable();
-                    dt = _cChungTu.LoadDSCapDinhMucKhongThoiHan(dateTu.Value, dateDen.Value);
+                dt = _cChungTu.LoadDSCapDinhMucKhongThoiHan(dateTu.Value, dateDen.Value);
 
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 foreach (DataRow itemRow in dt.Rows)
@@ -507,9 +507,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 DataTable dtDCHD = new DataTable();
                 DataTable dtCatChuyenDM = new DataTable();
 
-                    dtDCBD = _cDCBD.LoadDSCTDCBD(dateTu.Value, dateDen.Value);
-                    dtDCHD = _cDCBD.LoadDSCTDCHD(dateTu.Value, dateDen.Value);
-                    dtCatChuyenDM = _cChungTu.LoadDSCatChuyenDM(dateTu.Value, dateDen.Value);
+                dtDCBD = _cDCBD.LoadDSCTDCBD(dateTu.Value, dateDen.Value);
+                dtDCHD = _cDCBD.LoadDSCTDCHD(dateTu.Value, dateDen.Value);
+                dtCatChuyenDM = _cChungTu.LoadDSCatChuyenDM(dateTu.Value, dateDen.Value);
 
                 int DanhBoTangDM = 0;
                 int DanhBoGiamDM = 0;
@@ -888,7 +888,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (radThongKeCapDMCoThoiHanTangGiam.Checked)
             {
                 DataTable dt = new DataTable();
-                    dt = _cChungTu.LoadThongKeDMCapCoThoiHan(dateTu.Value, dateDen.Value);
+                dt = _cChungTu.LoadThongKeDMCapCoThoiHan(dateTu.Value, dateDen.Value);
 
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 foreach (DataRow itemRow in dt.Rows)
@@ -1018,7 +1018,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         dr["DiaChi"] = itemRow["DiaChi"];
                         dr["Phuong"] = _cDocSo.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
                         dr["Quan"] = _cDocSo.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
-                        
+
                         dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
                     }
                     else
@@ -1068,7 +1068,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
             if (radDSDanhBoCapDMDoanThanhNien.Checked)
             {
-                DataTable dt = _cChungTu.LoadDSDanhBoCapDinhMucCoThoiHanDoanThanhNien(dateTu.Value,dateDen.Value);
+                DataTable dt = _cChungTu.LoadDSDanhBoCapDinhMucCoThoiHanDoanThanhNien(dateTu.Value, dateDen.Value);
 
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 foreach (DataRow itemRow in dt.Rows)
@@ -1325,6 +1325,36 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 range.Value2 = arr;
 
             }
+        }
+
+        private void btnBaoCao_DSChungCu_Click(object sender, EventArgs e)
+        {
+            DataTable dt = _cDocSo.GetDSChungCu() ;
+
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+
+            foreach (DataRow itemRow in dt.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
+
+                dr["LoaiBaoCao"] = "CHUNG CƯ QUẬN";
+                if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                {
+                    dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                }
+                dr["HoTen"] = itemRow["HoTen"];
+                dr["DiaChi"] = itemRow["DiaChi"];
+                dr["GiaBieu"] = itemRow["GiaBieu"];
+                dr["DinhMucTruoc"] = itemRow["DinhMuc"];
+                dr["Quan"] = itemRow["Quan"];
+
+                dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
+            }
+
+            rptDS_DanhBo rpt = new rptDS_DanhBo();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.Show();
         }
 
     }

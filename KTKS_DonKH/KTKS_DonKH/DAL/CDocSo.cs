@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.QuanTri;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace KTKS_DonKH.DAL
 {
@@ -95,88 +97,36 @@ namespace KTKS_DonKH.DAL
             db.Transaction.Rollback();
         }
 
-        //protected static string _connectionString;
-        //protected SqlConnection connection;
-        //protected SqlCommand command;
-        //protected SqlTransaction transaction;
+        protected static string _connectionString;
+        protected SqlConnection connection;
+        protected SqlDataAdapter adapter;
+        protected SqlCommand command;
 
-        //public CDuLieuKhachHang()
-        //{
-        //    try
-        //    {
-        //        _connectionString = "Data Source=192.168.90.8\\KD;Initial Catalog=CAPNUOCTANHOA;Persist Security Info=True;User ID=sa;Password=123@tanhoa";
-        //        connection = new SqlConnection(_connectionString);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
+        public CDocSo()
+        {
+            try
+            {
+                _connectionString = KTKS_DonKH.Properties.Settings.Default.CAPNUOCTANHOAConnectionString;
+                connection = new SqlConnection(_connectionString);
+            }
+            catch (Exception)
+            {
+                //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
-        //}
+        }
 
-        //public void Connect()
-        //{
-        //    if (connection.State == ConnectionState.Closed)
-        //        connection.Open();
-        //}
+        public void Connect()
+        {
+            if (connection.State == ConnectionState.Closed)
+                connection.Open();
+        }
 
-        //public void Disconnect()
-        //{
-        //    if (connection.State == ConnectionState.Open)
-        //        connection.Close();
-        //}
-
-        //public void SqlBeginTransaction()
-        //{
-        //    try
-        //    {
-        //        Connect();
-        //        transaction = connection.BeginTransaction();
-        //    }
-        //    catch (Exception) { }
-        //}
-
-        //public void SqlCommitTransaction()
-        //{
-        //    try
-        //    {
-        //        transaction.Commit();
-        //        transaction.Dispose();
-        //        Disconnect();
-        //    }
-        //    catch (Exception) { }
-        //}
-
-        //public void SqlRollbackTransaction()
-        //{
-        //    transaction.Rollback();
-        //    transaction.Dispose();
-        //    try
-        //    {
-        //        Disconnect();
-        //    }
-        //    catch (Exception) { }
-        //}
-
-        //public bool ExecuteNonQuery_Transaction(string sql)
-        //{
-        //    try
-        //    {
-        //        if (connection.State == ConnectionState.Closed)
-        //            connection.Open();
-        //        command = new SqlCommand(sql, connection);
-        //        //command.Transaction = transaction;
-        //        if (command.ExecuteNonQuery() == 0)
-        //            return false;
-        //        else
-        //            return true;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-        //        return false;
-        //    }
-        //}
+        public void Disconnect()
+        {
+            if (connection.State == ConnectionState.Open)
+                connection.Close();
+        }
 
         public bool LinQ_ExecuteNonQuery(string sql)
         {
@@ -187,6 +137,58 @@ namespace KTKS_DonKH.DAL
             else
             {
                 return true;
+            }
+        }
+
+        /// <summary>
+        /// Thực thi câu truy vấn SQL trả về một đối tượng DataSet chứa kết quả trả về
+        /// </summary>
+        /// <param name="strSelect">Câu truy vấn cần thực thi lấy dữ liệu</param>
+        /// <returns>Đối tượng dataset chứa dữ liệu kết quả câu truy vấn</returns>
+        public DataSet ExecuteQuery_SqlDataAdapter_DataSet(string sql)
+        {
+            try
+            {
+                Connect();
+                DataSet dataset = new DataSet();
+                command = new SqlCommand();
+                command.Connection = this.connection;
+                adapter = new SqlDataAdapter(sql, connection);
+                try
+                {
+                    adapter.Fill(dataset);
+                }
+                catch (SqlException e)
+                {
+                    throw e;
+                }
+                Disconnect();
+                return dataset;
+            }
+            catch (Exception)
+            {
+                Disconnect();
+                //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Thực thi câu truy vấn SQL trả về một đối tượng DataTable chứa kết quả trả về
+        /// </summary>
+        /// <param name="strSelect">Câu truy vấn cần thực thi lấy dữ liệu</param>
+        /// <returns>Đối tượng datatable chứa dữ liệu kết quả câu truy vấn</returns>
+        public DataTable ExecuteQuery_SqlDataAdapter_DataTable(string sql)
+        {
+            try
+            {
+                return ExecuteQuery_SqlDataAdapter_DataSet(sql).Tables[0];
+            }
+            catch (Exception)
+            {
+                Disconnect();
+                //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
         }
 
@@ -258,6 +260,13 @@ namespace KTKS_DonKH.DAL
             return db.TB_DULIEUKHACHHANGs.SingleOrDefault(item => item.DANHBO == DanhBo).LOTRINH.Substring(0, 2);
         }
 
+        public DataTable GetDSChungCu()
+        {
+            var sql = "select DanhBo,HoTen,DiaChi=SONHA+' '+TENDUONG,GiaBieu,DinhMuc,Quan=b.TENQUAN from TB_DULIEUKHACHHANG a"
+                        + " left join QUAN b on a.QUAN=b.MAQUAN where GIABIEU=51 or GIABIEU=59 or GIABIEU=68";
+
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+        }
 
     }
 }

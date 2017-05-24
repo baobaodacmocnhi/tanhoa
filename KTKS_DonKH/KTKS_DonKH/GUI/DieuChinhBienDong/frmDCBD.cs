@@ -17,6 +17,7 @@ using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.DAL;
 using KTKS_DonKH.DAL.ToBamChi;
+using KTKS_DonKH.DAL.DonTu;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -699,7 +700,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (e.Control && e.KeyCode == Keys.Add)
                 btnThem.PerformClick();
-            if ((_donkh != null || _dontxl != null||_dontbc!=null) && e.Control && e.KeyCode == Keys.D1)
+            if ((_donkh != null || _dontxl != null || _dontbc != null) && e.Control && e.KeyCode == Keys.D1)
             {
                 Dictionary<string, string> source = new Dictionary<string, string>();
                 if (_donkh != null)
@@ -742,7 +743,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 }
                 //thêmToolStripMenuItem.PerformClick();
             }
-            if ((_donkh != null || _dontxl != null||_dontbc!=null) && e.Control && e.KeyCode == Keys.D2)
+            if ((_donkh != null || _dontxl != null || _dontbc != null) && e.Control && e.KeyCode == Keys.D2)
             {
                 Dictionary<string, string> source = new Dictionary<string, string>();
                 if (_donkh != null)
@@ -1052,7 +1053,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        CTChungTu ctchungtu = _cChungTu.GetCT(txtDanhBo.Text.Trim(), dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString(),int.Parse(dgvDSSoDangKy.CurrentRow.Cells["MaLCT"].Value.ToString()));
+                        CTChungTu ctchungtu = _cChungTu.GetCT(txtDanhBo.Text.Trim(), dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString(), int.Parse(dgvDSSoDangKy.CurrentRow.Cells["MaLCT"].Value.ToString()));
                         if (_cChungTu.XoaCT(ctchungtu))
                         {
                             dgvDSSoDangKy.DataSource = _cChungTu.GetDSCT(txtDanhBo.Text.Trim());
@@ -1105,7 +1106,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void dgvDSSoDangKy_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right && (_donkh != null || _dontxl != null||_dontbc!=null))
+            if (e.Button == MouseButtons.Right && (_donkh != null || _dontxl != null || _dontbc != null))
             {
                 thêmToolStripMenuItem.Enabled = true;
                 nhậnĐịnhMứctoolStripMenuItem.Enabled = true;
@@ -1374,6 +1375,38 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         }
 
         #endregion
+
+        private void btnCapNhat_Click(object sender, EventArgs e)
+        {
+            CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
+
+            LichSuDonTu entity = new LichSuDonTu();
+            entity.NgayChuyen = DateTime.Now;
+            //entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+            //entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
+            entity.GhiChu = txtCapNhat.Text.Trim();
+            if (_donkh != null)
+            {
+                entity.MaDon = _donkh.MaDon;
+                entity.ID_NoiChuyen = 2;
+                entity.NoiChuyen = "Tổ Khách Hàng";
+            }
+            else
+                if (_dontxl != null)
+                {
+                    entity.MaDonTXL = _dontxl.MaDon;
+                    entity.ID_NoiChuyen = 3;
+                    entity.NoiChuyen = "Tổ Xử Lý";
+                }
+                else
+                    if (_dontbc != null)
+                    {
+                        entity.MaDonTBC = _dontbc.MaDon;
+                        entity.ID_NoiChuyen = 4;
+                        entity.NoiChuyen = "Tổ Bấm Chì";
+                    }
+            _cLichSuDonTu.Them(entity);
+        }
 
 
 

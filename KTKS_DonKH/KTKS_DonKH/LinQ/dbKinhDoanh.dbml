@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="KTKS_DonKH" Class="dbKinhDoanhDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=SERVER9;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=sa" SettingsObjectName="KTKS_DonKH.Properties.Settings" SettingsPropertyName="KTKS_DonKHConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.90.9;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=sa" SettingsObjectName="KTKS_DonKH.Properties.Settings" SettingsPropertyName="KTKS_DonKHConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.BamChi" Member="BamChis">
     <Type Name="BamChi">
       <Column Name="MaBC" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -772,6 +772,8 @@
       <Column Name="XepDon" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="NgayXepDon" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="GhiChuXepDon" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NamThang" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="STT" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -814,6 +816,8 @@
       <Column Name="NgayChuyen_KTXM" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="NguoiDi_KTXM" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="GhiChuChuyen_KTXM" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NamThang" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="STT" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -828,6 +832,17 @@
       <Association Name="DonTBC_TruyThuTienNuoc" Member="TruyThuTienNuocs" ThisKey="MaDon" OtherKey="MaDonTBC" Type="TruyThuTienNuoc" />
       <Association Name="DonTBC_TTTL" Member="TTTLs" ThisKey="MaDon" OtherKey="MaDonTBC" Type="TTTL" />
       <Association Name="LoaiDonTBC_DonTBC" Member="LoaiDonTBC" ThisKey="MaLD" OtherKey="MaLD" Type="LoaiDonTBC" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DonTu" Member="DonTus">
+    <Type Name="DonTu">
+      <Column Name="NamThang" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="STT" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NoiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.DonTXL" Member="DonTXLs">
@@ -882,6 +897,8 @@
       <Column Name="GiuNguyen" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DieuChinh" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="TruyThu" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="NamThang" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="STT" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -1475,6 +1492,43 @@
       <Association Name="TruyThuTienNuoc_TruyThuTienNuoc_ThuMoi" Member="TruyThuTienNuoc" ThisKey="MaTTTN" OtherKey="MaTTTN" Type="TruyThuTienNuoc" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.TTKH_LoaiTiepNhan" Member="TTKH_LoaiTiepNhans">
+    <Type Name="TTKH_LoaiTiepNhan">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenLoai" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LoaiKH" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TTKH_TiepNhan" Member="TTKH_TiepNhans">
+    <Type Name="TTKH_TiepNhan">
+      <Column Name="LoaiTN" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SoHoSo" Type="System.String" DbType="VarChar(12) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DanhBo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DienThoai" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TenKH" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="SoNha" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="TenDuong" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Phuong" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Quan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LoaiHs" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NgayNhan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ChuyenHS" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="MaDVChuyen" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DonViChuyen" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NgayChuyen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NgayXuLy" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="KetQuaXuLy" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="NhanVienXuLy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Mess" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Lat" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Lng" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.TTTL" Member="TTTLs">
     <Type Name="TTTL">
       <Column Name="MaTTTL" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -1521,41 +1575,6 @@
       <Association Name="User_PhanQuyenNguoiDung" Member="PhanQuyenNguoiDungs" ThisKey="MaU" OtherKey="MaND" Type="PhanQuyenNguoiDung" />
       <Association Name="Nhom_User" Member="Nhom" ThisKey="MaNhom" OtherKey="MaNhom" Type="Nhom" IsForeignKey="true" />
       <Association Name="To_User" Member="To" ThisKey="MaTo" OtherKey="MaTo" Type="To" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TTKH_LoaiTiepNhan" Member="TTKH_LoaiTiepNhans">
-    <Type Name="TTKH_LoaiTiepNhan">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="TenLoai" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="LoaiKH" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TTKH_TiepNhan" Member="TTKH_TiepNhans">
-    <Type Name="TTKH_TiepNhan">
-      <Column Name="LoaiTN" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="SoHoSo" Type="System.String" DbType="VarChar(12) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="DanhBo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="DienThoai" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="TenKH" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
-      <Column Name="SoNha" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
-      <Column Name="TenDuong" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
-      <Column Name="Phuong" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Quan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="LoaiHs" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="NgayNhan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ChuyenHS" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="MaDVChuyen" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DonViChuyen" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="NgayChuyen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="NgayXuLy" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="KetQuaXuLy" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="NhanVienXuLy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Mess" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifyBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>
