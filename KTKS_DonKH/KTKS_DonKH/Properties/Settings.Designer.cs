@@ -26,17 +26,6 @@ namespace KTKS_DonKH.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SERVER9;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID" +
-            "=sa;Password=123@tanhoa")]
-        public string KTKS_DonKHConnectionString {
-            get {
-                return ((string)(this["KTKS_DonKHConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HP_G7\\KD;Initial Catalog=CAPNUOCTANHOA;Persist Security Info=True;Use" +
             "r ID=sa;Password=123@tanhoa")]
         public string CAPNUOCTANHOAConnectionString {
@@ -75,6 +64,17 @@ namespace KTKS_DonKH.Properties {
         public string TANHOA_WATERConnectionString {
             get {
                 return ((string)(this["TANHOA_WATERConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SERVER9;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID" +
+            "=sa;Password=123@tanhoa")]
+        public string KTKS_DonKHConnectionString {
+            get {
+                return ((string)(this["KTKS_DonKHConnectionString"]));
             }
         }
     }

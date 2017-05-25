@@ -304,7 +304,7 @@ namespace KTKS_DonKH.DAL.CallCenter
                                        itemGL.DiaChi,
                                        itemGL.NoiDungViPham,
                                        itemGL.TinhTrang,
-                                       itemGL.GiaiQuyet,
+                                       itemGL.XepDon,
                                    };
                 DataTable dtGianLan = new DataTable();
                 dtGianLan = LINQToDataTable(queryGianLan);

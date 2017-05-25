@@ -148,7 +148,7 @@ namespace KTKS_DonKH.DAL.DonTu
                            where itemDonTKH.DanhBo == DanhBo
                            select new
                            {
-                               MaDon="TKH"+itemDonTKH.MaDon,
+                               MaDon = "TKH" + itemDonTKH.MaDon,
                                itemDonTKH.LoaiDon.TenLD,
                                itemDonTKH.CreateDate,
                                itemDonTKH.NoiDung,
@@ -177,7 +177,8 @@ namespace KTKS_DonKH.DAL.DonTu
                            };
             dt.Merge(LINQToDataTable(queryTBC));
 
-            dt.DefaultView.Sort = "CreateDate DESC";
+            if (dt.Rows.Count > 0)
+                dt.DefaultView.Sort = "CreateDate DESC";
             return dt.DefaultView.ToTable();
         }
 

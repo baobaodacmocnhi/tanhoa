@@ -113,7 +113,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                             item.DiaChi,
                             item.NoiDungViPham,
                             item.TinhTrang,
-                            item.GiaiQuyet
+                            item.XepDon,
                         };
             return LINQToDataTable(query);
         }
@@ -133,7 +133,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                             item.DiaChi,
                             item.NoiDungViPham,
                             item.TinhTrang,
-                            item.GiaiQuyet
+                            item.XepDon,
                         };
             return LINQToDataTable(query);
         }

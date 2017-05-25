@@ -83,6 +83,23 @@ namespace KTKS_DonKH.GUI.TruyThu
 
         public void LoadGianLan(GianLan entity)
         {
+            if (entity.MaDon != null)
+            {
+                _dontkh = _cDonKH.Get(entity.MaDon.Value);
+                txtMaDon.Text = entity.MaDon.Value.ToString().Insert(entity.MaDon.Value.ToString().Length - 2, "-");
+            }
+            else
+                if (entity.MaDonTXL != null)
+                {
+                    _dontxl = _cDonTXL.Get(entity.MaDonTXL.Value);
+                    txtMaDon.Text = "TXL" + entity.MaDonTXL.Value.ToString().Insert(entity.MaDonTXL.Value.ToString().Length - 2, "-");
+                }
+                else
+                    if (entity.MaDonTBC != null)
+                    {
+                        _dontbc = _cDonTBC.Get(entity.MaDonTBC.Value);
+                        txtMaDon.Text = "TBC" + entity.MaDonTBC.Value.ToString().Insert(entity.MaDonTBC.Value.ToString().Length - 2, "-");
+                    }
             txtDanhBo.Text = entity.DanhBo;
             txtHoTen.Text = entity.HoTen;
             txtDiaChi.Text = entity.DiaChi;
@@ -128,12 +145,14 @@ namespace KTKS_DonKH.GUI.TruyThu
                 chkThanhToan1.Checked = true;
                 dateThanhToan1.Value = entity.Ngay1.Value;
                 txtSoTien1.Text = entity.SoTien1.Value.ToString();
+                txtSoPhieu1.Text = entity.SoPhieu1;
             }
             else
             {
                 chkThanhToan1.Checked = false;
                 dateThanhToan1.Value = DateTime.Now;
                 txtSoTien1.Text = "";
+                txtSoPhieu1.Text = "";
             }
             ///
             if (entity.ThanhToan1)
@@ -141,12 +160,14 @@ namespace KTKS_DonKH.GUI.TruyThu
                 chkThanhToan2.Checked = true;
                 dateThanhToan2.Value = entity.Ngay2.Value;
                 txtSoTien2.Text = entity.SoTien2.Value.ToString();
+                txtSoPhieu2.Text = entity.SoPhieu2;
             }
             else
             {
                 chkThanhToan2.Checked = false;
                 dateThanhToan2.Value = DateTime.Now;
                 txtSoTien2.Text = "";
+                txtSoPhieu2.Text = "";
             }
             ///
             if (entity.ThanhToan3)
@@ -154,12 +175,14 @@ namespace KTKS_DonKH.GUI.TruyThu
                 chkThanhToan3.Checked = true;
                 dateThanhToan3.Value = entity.Ngay3.Value;
                 txtSoTien3.Text = entity.SoTien3.Value.ToString();
+                txtSoPhieu3.Text = entity.SoPhieu3;
             }
             else
             {
                 chkThanhToan3.Checked = false;
                 dateThanhToan3.Value = DateTime.Now;
                 txtSoTien3.Text = "";
+                txtSoPhieu3.Text = "";
             }
         }
 
@@ -203,33 +226,49 @@ namespace KTKS_DonKH.GUI.TruyThu
                 {
                     if (_cDonTXL.CheckExist(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", ""))) ==true)
                     {
-                        _dontxl = _cDonTXL.Get(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
-                        txtMaDon.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
-                        if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
+                        if (_cGianLan.CheckExist("TXL", decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", ""))) == true)
                         {
-                            _hoadon = _cThuTien.GetMoiNhat(_dontxl.DanhBo);
-                            LoadTTKH(_hoadon);
+                            _gianlan = _cGianLan.Get("TXL", decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
+                            LoadGianLan(_gianlan);
                         }
                         else
-                            MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        {
+                            _dontxl = _cDonTXL.Get(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
+                            txtMaDon.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
+                            if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
+                            {
+                                _hoadon = _cThuTien.GetMoiNhat(_dontxl.DanhBo);
+                                LoadTTKH(_hoadon);
+                            }
+                            else
+                                MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     else
                         MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
-                    if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
+                    if (txtMaDon.Text.Trim().ToUpper().Contains("TBC"))
                 {
                     if (_cDonTBC.CheckExist(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", ""))) ==true)
                     {
-                        _dontbc = _cDonTBC.Get(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
-                        txtMaDon.Text = "TBC" + _dontbc.MaDon.ToString().Insert(_dontbc.MaDon.ToString().Length - 2, "-");
-                        if (_cThuTien.GetMoiNhat(_dontbc.DanhBo) != null)
+                        if (_cGianLan.CheckExist("TBC", decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", ""))) == true)
                         {
-                            _hoadon = _cThuTien.GetMoiNhat(_dontbc.DanhBo);
-                            LoadTTKH(_hoadon);
+                            _gianlan = _cGianLan.Get("TBC", decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
+                            LoadGianLan(_gianlan);
                         }
                         else
-                            MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        {
+                            _dontbc = _cDonTBC.Get(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
+                            txtMaDon.Text = "TBC" + _dontbc.MaDon.ToString().Insert(_dontbc.MaDon.ToString().Length - 2, "-");
+                            if (_cThuTien.GetMoiNhat(_dontbc.DanhBo) != null)
+                            {
+                                _hoadon = _cThuTien.GetMoiNhat(_dontbc.DanhBo);
+                                LoadTTKH(_hoadon);
+                            }
+                            else
+                                MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     else
                         MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -238,15 +277,23 @@ namespace KTKS_DonKH.GUI.TruyThu
                 else
                     if (_cDonKH.CheckExist(decimal.Parse(txtMaDon.Text.Trim().Replace("-", ""))) ==true)
                     {
-                        _dontkh = _cDonKH.Get(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
-                        txtMaDon.Text = "TKH"+_dontkh.MaDon.ToString().Insert(_dontkh.MaDon.ToString().Length - 2, "-");
-                        if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
+                        if (_cGianLan.CheckExist("TKH", decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", ""))) == true)
                         {
-                            _hoadon = _cThuTien.GetMoiNhat(_dontkh.DanhBo);
-                            LoadTTKH(_hoadon);
+                            _gianlan = _cGianLan.Get("TKH", decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
+                            LoadGianLan(_gianlan);
                         }
                         else
-                            MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        {
+                            _dontkh = _cDonKH.Get(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
+                            txtMaDon.Text = "TKH" + _dontkh.MaDon.ToString().Insert(_dontkh.MaDon.ToString().Length - 2, "-");
+                            if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
+                            {
+                                _hoadon = _cThuTien.GetMoiNhat(_dontkh.DanhBo);
+                                LoadTTKH(_hoadon);
+                            }
+                            else
+                                MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     else
                         MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -782,7 +829,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             if (dgvGianLan.Columns[e.ColumnIndex].Name == "GiaQuyet")
             {
                 _gianlan = _cGianLan.Get(int.Parse(dgvGianLan.SelectedRows[0].Cells["ID"].Value.ToString()));
-                _gianlan.GiaiQuyet = bool.Parse(dgvGianLan.SelectedRows[0].Cells["GiaiQuyet"].Value.ToString());
+                _gianlan.XepDon = bool.Parse(dgvGianLan.SelectedRows[0].Cells["XepDon"].Value.ToString());
                 _cGianLan.Sua(_gianlan);
             }
         }

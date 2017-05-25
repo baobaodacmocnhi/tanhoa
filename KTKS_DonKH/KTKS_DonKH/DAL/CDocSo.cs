@@ -262,8 +262,10 @@ namespace KTKS_DonKH.DAL
 
         public DataTable GetDSChungCu()
         {
-            var sql = "select DanhBo,HoTen,DiaChi=SONHA+' '+TENDUONG,GiaBieu,DinhMuc,Quan=b.TENQUAN from TB_DULIEUKHACHHANG a"
-                        + " left join QUAN b on a.QUAN=b.MAQUAN where GIABIEU=51 or GIABIEU=59 or GIABIEU=68";
+            var sql = "select DanhBo,HoTen,DiaChi=SONHA+' '+TENDUONG,GiaBieu,DinhMuc,Quan=b.TENQUAN,PHUONG=c.TENPHUONG from TB_DULIEUKHACHHANG a"
+                        + " left join QUAN b on a.QUAN=b.MAQUAN"
+                        + " left join PHUONG c on a.QUAN=c.MAQUAN and a.PHUONG=c.MAPHUONG"
+                        + " where GIABIEU=51 or GIABIEU=59 or GIABIEU=68";
 
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }

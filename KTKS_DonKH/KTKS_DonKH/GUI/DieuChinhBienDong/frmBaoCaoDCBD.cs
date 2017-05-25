@@ -1347,6 +1347,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dr["GiaBieu"] = itemRow["GiaBieu"];
                 dr["DinhMucTruoc"] = itemRow["DinhMuc"];
                 dr["Quan"] = itemRow["Quan"];
+                dr["Phuong"] = itemRow["Phuong"];
 
                 dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
             }

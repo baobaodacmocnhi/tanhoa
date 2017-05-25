@@ -1378,9 +1378,9 @@
             // 
             // gridColumn56
             // 
-            this.gridColumn56.Caption = "Giải Quyết";
+            this.gridColumn56.Caption = "Xếp Đơn";
             this.gridColumn56.ColumnEdit = this.repositoryItemCheckEdit2;
-            this.gridColumn56.FieldName = "GiaiQuyet";
+            this.gridColumn56.FieldName = "XepDon";
             this.gridColumn56.Name = "gridColumn56";
             this.gridColumn56.Visible = true;
             this.gridColumn56.VisibleIndex = 10;

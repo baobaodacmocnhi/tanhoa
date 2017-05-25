@@ -262,7 +262,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemGL.ThanhToan1,
                                     itemGL.ThanhToan2,
                                     itemGL.ThanhToan3,
-                                    itemGL.GiaiQuyet,
+                                    itemGL.XepDon,
                                 };
 
                 DataTable dtGianLan = new DataTable();
@@ -580,7 +580,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemGL.ThanhToan1,
                                        itemGL.ThanhToan2,
                                        itemGL.ThanhToan3,
-                                       itemGL.GiaiQuyet,
+                                       itemGL.XepDon,
                                    };
 
                 DataTable dtGianLan = new DataTable();
@@ -899,7 +899,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemGL.ThanhToan1,
                                        itemGL.ThanhToan2,
                                        itemGL.ThanhToan3,
-                                       itemGL.GiaiQuyet,
+                                       itemGL.XepDon,
                                    };
 
                 DataTable dtGianLan = new DataTable();
@@ -1219,7 +1219,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemGL.ThanhToan1,
                                        itemGL.ThanhToan2,
                                        itemGL.ThanhToan3,
-                                       itemGL.GiaiQuyet,
+                                       itemGL.XepDon,
                                    };
                 DataTable dtGianLan = new DataTable();
                 dtGianLan = LINQToDataTable(queryGianLan);
@@ -2219,7 +2219,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemGL.ThanhToan1,
                                        itemGL.ThanhToan2,
                                        itemGL.ThanhToan3,
-                                       itemGL.GiaiQuyet,
+                                       itemGL.XepDon,
                                    };
                 DataTable dtGianLan = new DataTable();
                 dtGianLan = LINQToDataTable(queryGianLan);
@@ -3218,7 +3218,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemGL.ThanhToan1,
                                     itemGL.ThanhToan2,
                                     itemGL.ThanhToan3,
-                                    itemGL.GiaiQuyet,
+                                    itemGL.XepDon,
                                 };
                 DataTable dtGianLan = new DataTable();
                 dtGianLan = LINQToDataTable(queryGianLan);
