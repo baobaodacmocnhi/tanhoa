@@ -147,7 +147,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                 {
                     _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
                     txtHoTen.Text = _hoadon.TENKH;
-                    txtDiaChi.Text = _hoadon.SO + " " + _hoadon.DUONG + _cDocSo.getPhuongQuanByID(_hoadon.Quan, _hoadon.Phuong);
+                    txtDiaChi.Text = _hoadon.SO + " " + _hoadon.DUONG + _cDocSo.GetPhuongQuan(_hoadon.Quan, _hoadon.Phuong);
                     dateBao.Focus();
                 }
                 else

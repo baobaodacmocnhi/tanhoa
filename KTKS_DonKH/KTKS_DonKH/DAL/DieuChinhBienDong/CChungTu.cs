@@ -1107,6 +1107,17 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public DataTable LoadDSCatChuyenDM(DateTime TuNgay, DateTime DenNgay,int MaQuan)
+        {
+            string sql = "select t1.*,t3.TenQuan from LichSuChungTu t1"
+                        + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
+                        + " left join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
+                        + " where CAST(t1.CreateDate as date)>='" + TuNgay.ToString("yyyy-MM-dd") + "' and CAST(t1.CreateDate as date)<='" + DenNgay.ToString("yyyy-MM-dd") + "'"
+                        + " and SoPhieu is not null and MaQuan=" + MaQuan;
+
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+        }
+
         /// <summary>
         /// Lấy Lịch Sử Chứng Từ
         /// </summary>

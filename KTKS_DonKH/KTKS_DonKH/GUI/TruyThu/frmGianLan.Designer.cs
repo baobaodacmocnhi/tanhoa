@@ -113,6 +113,7 @@
             this.dateDen = new System.Windows.Forms.DateTimePicker();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
+            this.chkXepDon = new System.Windows.Forms.CheckBox();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -858,11 +859,10 @@
             this.XepDon});
             this.dgvGianLan.Location = new System.Drawing.Point(12, 390);
             this.dgvGianLan.Name = "dgvGianLan";
-            this.dgvGianLan.Size = new System.Drawing.Size(1214, 235);
+            this.dgvGianLan.Size = new System.Drawing.Size(1180, 235);
             this.dgvGianLan.TabIndex = 8;
             this.dgvGianLan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGianLan_CellContentClick);
             this.dgvGianLan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvGianLan_CellFormatting);
-            this.dgvGianLan.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGianLan_CellValueChanged);
             this.dgvGianLan.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvGianLan_RowPostPaint);
             // 
             // btnXem
@@ -972,11 +972,22 @@
             this.label27.TabIndex = 16;
             this.label27.Text = "Đến Ngày:";
             // 
+            // chkXepDon
+            // 
+            this.chkXepDon.AutoSize = true;
+            this.chkXepDon.Location = new System.Drawing.Point(533, 12);
+            this.chkXepDon.Name = "chkXepDon";
+            this.chkXepDon.Size = new System.Drawing.Size(78, 20);
+            this.chkXepDon.TabIndex = 95;
+            this.chkXepDon.Text = "Xếp Đơn";
+            this.chkXepDon.UseVisualStyleBackColor = true;
+            // 
             // ID
             // 
             this.ID.DataPropertyName = "ID";
             this.ID.HeaderText = "Mã GL";
             this.ID.Name = "ID";
+            this.ID.Width = 70;
             // 
             // MaDon
             // 
@@ -1030,6 +1041,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1291, 637);
+            this.Controls.Add(this.chkXepDon);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.cmbTimTheo);
             this.Controls.Add(this.txtNoiDungTimKiem);
@@ -1156,6 +1168,7 @@
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.TextBox txtSoPhieu1;
         private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.CheckBox chkXepDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;

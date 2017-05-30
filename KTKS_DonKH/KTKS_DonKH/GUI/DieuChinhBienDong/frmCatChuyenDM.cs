@@ -99,7 +99,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             txtDanhBo_Nhan.Text = hoadon.DANHBA;
             txtHoTen_Nhan.Text = hoadon.TENKH;
-            txtDiaChi_Nhan.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+            txtDiaChi_Nhan.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
         }
 
         public void Clear()

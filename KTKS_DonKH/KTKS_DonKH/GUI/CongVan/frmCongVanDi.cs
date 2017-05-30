@@ -20,6 +20,7 @@ using KTKS_DonKH.BaoCao.CongVan;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL;
 using KTKS_DonKH.DAL.ToBamChi;
+using KTKS_DonKH.DAL.QuanTri;
 
 namespace KTKS_DonKH.GUI.CongVan
 {
@@ -56,6 +57,12 @@ namespace KTKS_DonKH.GUI.CongVan
                 auto1.Add(item["NoiDung"].ToString());
             }
             txtNoiDung.AutoCompleteCustomSource = auto1;
+
+            if (CTaiKhoan.Admin == true)
+            {
+                btnTest.Visible = true;
+                dgvTest.Visible = true;
+            }
         }
 
         public string GetTenTable()
@@ -476,7 +483,7 @@ namespace KTKS_DonKH.GUI.CongVan
                 HOADON hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
                 txtDanhBo.Text = hoadon.DANHBA;
                 txtHoTen.Text = hoadon.TENKH;
-                txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+                txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
             }
         }
 
@@ -488,6 +495,15 @@ namespace KTKS_DonKH.GUI.CongVan
         private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            KTKS_DonKH.DAL.DonTu.CDonTu _cDonTu = new DAL.DonTu.CDonTu();
+            DonTu entity=new DonTu();
+            entity.NoiDung="test";
+            _cDonTu.Them(entity);
+            dgvTest.DataSource = _cDonTu.GetDS();
         }
 
        

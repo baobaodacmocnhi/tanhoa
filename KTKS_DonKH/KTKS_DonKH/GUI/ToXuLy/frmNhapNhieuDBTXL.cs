@@ -83,7 +83,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     HOADON hoadon = _cThuTien.GetMoiNhat(dgvDanhBo["DanhBo", e.RowIndex].Value.ToString());
                     dgvDanhBo["HopDong", e.RowIndex].Value = hoadon.HOPDONG;
                     dgvDanhBo["HoTen", e.RowIndex].Value = hoadon.TENKH;
-                    dgvDanhBo["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+                    dgvDanhBo["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
                     dgvDanhBo["MSThue", e.RowIndex].Value = hoadon.MST;
                     dgvDanhBo["GiaBieu", e.RowIndex].Value = hoadon.GB;
                     dgvDanhBo["DinhMuc", e.RowIndex].Value = hoadon.DM;

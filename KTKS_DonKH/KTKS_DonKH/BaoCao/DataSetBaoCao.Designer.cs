@@ -8619,6 +8619,8 @@ namespace KTKS_DonKH.BaoCao {
             
             private global::System.Data.DataColumn columnNhaTro;
             
+            private global::System.Data.DataColumn columnQuan;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ThongKeDCBDDataTable() {
@@ -8774,6 +8776,14 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn QuanColumn {
+                get {
+                    return this.columnQuan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -8809,7 +8819,23 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ThongKeDCBDRow AddThongKeDCBDRow(string TuNgay, string DenNgay, string DanhBo, string HoTen, int GiaBieuCu, int GiaBieuMoi, int DinhMucCu, int DinhMucMoi, string DiaChi, string MSThue, string SH, string SX, string DV, string HCSN, bool NhaTro) {
+            public ThongKeDCBDRow AddThongKeDCBDRow(
+                        string TuNgay, 
+                        string DenNgay, 
+                        string DanhBo, 
+                        string HoTen, 
+                        int GiaBieuCu, 
+                        int GiaBieuMoi, 
+                        int DinhMucCu, 
+                        int DinhMucMoi, 
+                        string DiaChi, 
+                        string MSThue, 
+                        string SH, 
+                        string SX, 
+                        string DV, 
+                        string HCSN, 
+                        bool NhaTro, 
+                        string Quan) {
                 ThongKeDCBDRow rowThongKeDCBDRow = ((ThongKeDCBDRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         TuNgay,
@@ -8826,7 +8852,8 @@ namespace KTKS_DonKH.BaoCao {
                         SX,
                         DV,
                         HCSN,
-                        NhaTro};
+                        NhaTro,
+                        Quan};
                 rowThongKeDCBDRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowThongKeDCBDRow);
                 return rowThongKeDCBDRow;
@@ -8864,6 +8891,7 @@ namespace KTKS_DonKH.BaoCao {
                 this.columnDV = base.Columns["DV"];
                 this.columnHCSN = base.Columns["HCSN"];
                 this.columnNhaTro = base.Columns["NhaTro"];
+                this.columnQuan = base.Columns["Quan"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8899,6 +8927,8 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnHCSN);
                 this.columnNhaTro = new global::System.Data.DataColumn("NhaTro", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNhaTro);
+                this.columnQuan = new global::System.Data.DataColumn("Quan", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQuan);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -23871,6 +23901,22 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Quan {
+                get {
+                    try {
+                        return ((string)(this[this.tableThongKeDCBD.QuanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Quan\' in table \'ThongKeDCBD\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableThongKeDCBD.QuanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsTuNgayNull() {
                 return this.IsNull(this.tableThongKeDCBD.TuNgayColumn);
             }
@@ -24047,6 +24093,18 @@ namespace KTKS_DonKH.BaoCao {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetNhaTroNull() {
                 this[this.tableThongKeDCBD.NhaTroColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsQuanNull() {
+                return this.IsNull(this.tableThongKeDCBD.QuanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetQuanNull() {
+                this[this.tableThongKeDCBD.QuanColumn] = global::System.Convert.DBNull;
             }
         }
         

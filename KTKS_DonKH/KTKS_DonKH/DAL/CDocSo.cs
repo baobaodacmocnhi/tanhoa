@@ -13,90 +13,6 @@ namespace KTKS_DonKH.DAL
     {
         private dbDocSoDataContext db = new dbDocSoDataContext();
 
-        public TB_DULIEUKHACHHANG getDLKH(string DanhBo)
-        {
-            try
-            {
-                return db.TB_DULIEUKHACHHANGs.SingleOrDefault(itemDLKH => itemDLKH.DANHBO == DanhBo);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-        public bool CheckExist(string DanhBo)
-        {
-            try
-            {
-                return db.TB_DULIEUKHACHHANGs.Any(itemDLKH => itemDLKH.DANHBO == DanhBo);
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
-        public bool SuaDLKH(TB_DULIEUKHACHHANG dulieukhachhang)
-        {
-            try
-            {
-                dulieukhachhang.MODIFYDATE = DateTime.Now;
-                dulieukhachhang.MODIFYBY = CTaiKhoan.HoTen;
-                db.SubmitChanges();
-                //db = new DB_CAPNUOCTANHOADataContext();
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
-        public bool ThemGhiChu(TB_GHICHU ghichu)
-        {
-            try
-            {
-                ghichu.CREATEDATE = DateTime.Now;
-                ghichu.CREATEBY = CTaiKhoan.HoTen;
-                db.TB_GHICHUs.InsertOnSubmit(ghichu);
-                db.SubmitChanges();
-                return true;
-            }
-            catch (Exception)
-            {
-                //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
-
-        public string GetDinhMuc(string DanhBo)
-        {
-            return db.TB_DULIEUKHACHHANGs.SingleOrDefault(item => item.DANHBO == DanhBo).DINHMUC;
-        }
-
-        public void Refresh()
-        {
-            db = new dbDocSoDataContext();
-        }
-
-        public void beginTransaction()
-        {
-            if (db.Connection.State == System.Data.ConnectionState.Closed)
-                db.Connection.Open();
-            db.Transaction = db.Connection.BeginTransaction();
-        }
-
-        public void commitTransaction()
-        {
-            db.Transaction.Commit();
-        }
-
-        public void rollback()
-        {
-            db.Transaction.Rollback();
-        }
-
         protected static string _connectionString;
         protected SqlConnection connection;
         protected SqlDataAdapter adapter;
@@ -114,6 +30,11 @@ namespace KTKS_DonKH.DAL
                 //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        public void Refresh()
+        {
+            db = new dbDocSoDataContext();
         }
 
         public void Connect()
@@ -192,13 +113,75 @@ namespace KTKS_DonKH.DAL
             }
         }
 
+        public TB_DULIEUKHACHHANG GetTTKH(string DanhBo)
+        {
+            try
+            {
+                return db.TB_DULIEUKHACHHANGs.SingleOrDefault(itemDLKH => itemDLKH.DANHBO == DanhBo);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public bool CheckExist(string DanhBo)
+        {
+            try
+            {
+                return db.TB_DULIEUKHACHHANGs.Any(itemDLKH => itemDLKH.DANHBO == DanhBo);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool SuaDLKH(TB_DULIEUKHACHHANG dulieukhachhang)
+        {
+            try
+            {
+                dulieukhachhang.MODIFYDATE = DateTime.Now;
+                dulieukhachhang.MODIFYBY = CTaiKhoan.HoTen;
+                db.SubmitChanges();
+                //db = new DB_CAPNUOCTANHOADataContext();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool ThemGhiChu(TB_GHICHU ghichu)
+        {
+            try
+            {
+                ghichu.CREATEDATE = DateTime.Now;
+                ghichu.CREATEBY = CTaiKhoan.HoTen;
+                db.TB_GHICHUs.InsertOnSubmit(ghichu);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public string GetDinhMuc(string DanhBo)
+        {
+            return db.TB_DULIEUKHACHHANGs.SingleOrDefault(item => item.DANHBO == DanhBo).DINHMUC;
+        }
+
         /// <summary>
         /// Lấy Tên Phường & Quận của Danh Bộ
         /// </summary>
         /// <param name="MaQuan"></param>
         /// <param name="MaPhuong"></param>
         /// <returns></returns>
-        public string getPhuongQuanByID(string MaQuan, string MaPhuong)
+        public string GetPhuongQuan(string MaQuan, string MaPhuong)
         {
             try
             {
@@ -212,7 +195,7 @@ namespace KTKS_DonKH.DAL
             }
         }
 
-        public void getTTDHNbyID(string DanhBo, out string Hieu, out string Co, out string SoThan)
+        public void GetDHN(string DanhBo, out string Hieu, out string Co, out string SoThan)
         {
             try
             {
@@ -230,22 +213,22 @@ namespace KTKS_DonKH.DAL
 
         }
 
-        public List<QUAN> LoadDSQuan()
+        public List<QUAN> GetDSQuan()
         {
             return db.QUANs.ToList();
         }
 
-        public List<PHUONG> LoadDSPhuongbyQuan(int MaQuan)
+        public List<PHUONG> GetDSPhuong(int MaQuan)
         {
             return db.PHUONGs.Where(item => item.MAQUAN == MaQuan).ToList();
         }
 
-        public string getTenQuanByMaQuan(int MaQuan)
+        public string GetTenQuan(int MaQuan)
         {
             return db.QUANs.SingleOrDefault(item => item.MAQUAN == MaQuan).TENQUAN;
         }
 
-        public string getTenPhuongByMaQuanPhuong(int MaQuan, string MaPhuong)
+        public string GetTenPhuong(int MaQuan, string MaPhuong)
         {
             return db.PHUONGs.SingleOrDefault(item => item.MAQUAN == MaQuan && item.MAPHUONG == MaPhuong).TENPHUONG;
         }
@@ -255,7 +238,7 @@ namespace KTKS_DonKH.DAL
             return db.TB_DULIEUKHACHHANGs.Where(item => item.SOTHANDH == SoThanDHN).ToList();
         }
 
-        public string getDot(string DanhBo)
+        public string GetDot(string DanhBo)
         {
             return db.TB_DULIEUKHACHHANGs.SingleOrDefault(item => item.DANHBO == DanhBo).LOTRINH.Substring(0, 2);
         }

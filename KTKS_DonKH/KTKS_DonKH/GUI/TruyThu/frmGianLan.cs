@@ -78,7 +78,7 @@ namespace KTKS_DonKH.GUI.TruyThu
         {
             txtDanhBo.Text = hoadon.DANHBA;
             txtHoTen.Text = hoadon.TENKH;
-            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
         }
 
         public void LoadGianLan(GianLan entity)
@@ -100,6 +100,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         _dontbc = _cDonTBC.Get(entity.MaDonTBC.Value);
                         txtMaDon.Text = "TBC" + entity.MaDonTBC.Value.ToString().Insert(entity.MaDonTBC.Value.ToString().Length - 2, "-");
                     }
+            chkXepDon.Checked = entity.XepDon;
             txtDanhBo.Text = entity.DanhBo;
             txtHoTen.Text = entity.HoTen;
             txtDiaChi.Text = entity.DiaChi;
@@ -188,6 +189,8 @@ namespace KTKS_DonKH.GUI.TruyThu
 
         public void Clear()
         {
+            chkXepDon.Checked = false;
+            ///
             txtMaDon.Text = "";
             txtDanhBo.Text = "";
             txtHoTen.Text = "";
@@ -341,7 +344,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-
+                    entity.XepDon = chkXepDon.Checked;
                     entity.DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
                     entity.HoTen = txtHoTen.Text.Trim();
                     entity.DiaChi = txtDiaChi.Text.Trim();
@@ -423,6 +426,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 {
                     if (_gianlan != null)
                     {
+                        _gianlan.XepDon = chkXepDon.Checked;
                         _gianlan.NgayKTXM = dateKTXM.Value;
                         _gianlan.NoiDungViPham = txtNoiDungViPham.Text.Trim();
                         if (!string.IsNullOrEmpty(txtTienDHN.Text.Trim()))
@@ -826,12 +830,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
         private void dgvGianLan_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvGianLan.Columns[e.ColumnIndex].Name == "GiaQuyet")
-            {
-                _gianlan = _cGianLan.Get(int.Parse(dgvGianLan.SelectedRows[0].Cells["ID"].Value.ToString()));
-                _gianlan.XepDon = bool.Parse(dgvGianLan.SelectedRows[0].Cells["XepDon"].Value.ToString());
-                _cGianLan.Sua(_gianlan);
-            }
+
         }
 
         

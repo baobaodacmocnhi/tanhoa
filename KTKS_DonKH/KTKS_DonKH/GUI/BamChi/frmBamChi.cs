@@ -81,7 +81,7 @@ namespace KTKS_DonKH.GUI.BamChi
             txtGiaBieu.Text = hoadon.GB.ToString();
             txtDinhMuc.Text = hoadon.DM.ToString();
             string a, b, c;
-            _cDocSo.getTTDHNbyID(txtDanhBo.Text.Trim(), out a, out b, out c);
+            _cDocSo.GetDHN(txtDanhBo.Text.Trim(), out a, out b, out c);
             txtHieu.Text = a;
             txtCo.Text = b;
             txtSoThan.Text = c;

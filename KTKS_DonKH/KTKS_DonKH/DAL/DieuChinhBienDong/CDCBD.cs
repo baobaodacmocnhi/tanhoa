@@ -1086,6 +1086,17 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public DataTable LoadDSCTDCBD(DateTime TuNgay, DateTime DenNgay, int MaQuan)
+        {
+            string sql = "select t1.*,t3.TenQuan from CTDCBD t1"
+                        + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
+                        + " left join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
+                        + " where CAST(t1.CreateDate as date)>='" + TuNgay.ToString("yyyy-MM-dd") + "' and CAST(t1.CreateDate as date)<='" + DenNgay.ToString("yyyy-MM-dd") + "'"
+                        + " and MaQuan=" + MaQuan;
+
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+        }
+
         public DataTable LoadDSCTDCBDSoCT(DateTime TuNgay, DateTime DenNgay)
         {
             try
@@ -2086,6 +2097,17 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
+        }
+
+        public DataTable LoadDSCTDCHD(DateTime TuNgay, DateTime DenNgay,int MaQuan)
+        {
+            string sql = "select t1.*,t3.TenQuan from CTDCHD t1"
+                        + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
+                        + " left join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
+                        + " where CAST(t1.CreateDate as date)>='" + TuNgay.ToString("yyyy-MM-dd") + "' and CAST(t1.CreateDate as date)<='" + DenNgay.ToString("yyyy-MM-dd") + "'"
+                        + " and MaQuan=" + MaQuan;
+
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
         public DataTable LoadDSCTDCHD(string DanhBo, int Nam, int Ky)

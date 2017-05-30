@@ -97,7 +97,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtDanhBo.Text = hoadon.DANHBA;
             txtHopDong.Text = hoadon.HOPDONG;
             txtHoTen.Text = hoadon.TENKH;
-            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.getPhuongQuanByID(hoadon.Quan, hoadon.Phuong);
+            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
             txtMSThue.Text = hoadon.MST;
             txtGiaBieu.Text = hoadon.GB.ToString();
             txtDinhMuc.Text = hoadon.DM.ToString();
@@ -105,7 +105,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtSX.Text = hoadon.TILESX.ToString();
             txtDV.Text = hoadon.TILEDV.ToString();
             txtHCSN.Text = hoadon.TILEHCSN.ToString();
-            txtDot.Text = _cDocSo.getDot(hoadon.DANHBA);
+            txtDot.Text = _cDocSo.GetDot(hoadon.DANHBA);
 
             dgvDSSoDangKy.DataSource = _cChungTu.GetDSCT(hoadon.DANHBA);
             dgvDSDieuChinh.DataSource = _cDCBD.LoadDSDCbyDanhBo(hoadon.DANHBA);
@@ -846,8 +846,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         dr["HoTen"] = hoadon.TENKH;
                         dr["DiaChi"] = hoadon.SO + " " + hoadon.DUONG;
-                        dr["Phuong"] = _cDocSo.getTenPhuongByMaQuanPhuong(int.Parse(hoadon.Quan), hoadon.Phuong);
-                        dr["Quan"] = _cDocSo.getTenQuanByMaQuan(int.Parse(hoadon.Quan));
+                        dr["Phuong"] = _cDocSo.GetTenPhuong(int.Parse(hoadon.Quan), hoadon.Phuong);
+                        dr["Quan"] = _cDocSo.GetTenQuan(int.Parse(hoadon.Quan));
                     }
 
                     dr["MaLCT"] = itemRow["MaLCT"];

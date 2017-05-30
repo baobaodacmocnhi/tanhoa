@@ -48,7 +48,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void frmPhuongQuan_Load(object sender, EventArgs e)
         {
             this.Location = new Point(200,200);
-            List<QUAN> lst = _cDocSo.LoadDSQuan();
+            List<QUAN> lst = _cDocSo.GetDSQuan();
             QUAN quan = new QUAN();
             quan.MAQUAN = 0;
             quan.TENQUAN = "Tất Cả";
