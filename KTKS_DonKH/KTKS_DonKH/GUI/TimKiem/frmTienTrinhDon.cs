@@ -523,7 +523,7 @@ namespace KTKS_DonKH.GUI.TimKiem
                             foreach (DataRow itemChildRow in childRows)
                             {
                                 DataRow dr = dsBaoCao.Tables["KetQuaTimKiem"].NewRow();
-                                dr["ToXuLy"] = itemRow["ToXuLy"];
+                                //dr["ToXuLy"] = itemRow["ToXuLy"];
                                 dr["MaDon"] = itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
                                 dr["LoaiDon"] = itemRow["TenLD"];
                                 dr["NgayNhan"] = itemRow["CreateDate"];

@@ -81,6 +81,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     var query = from itemLichSuDon in db.LichSuDonTus
                                 join itemDonKH in db.DonKHs on itemLichSuDon.MaDon equals itemDonKH.MaDon
                                 where itemLichSuDon.MaDon != null && itemLichSuDon.NgayChuyen.Value.Date >= FromNgayChuyen.Date && itemLichSuDon.NgayChuyen.Value.Date <= ToNgayChuyen.Date
+                                && itemLichSuDon.ID_NoiChuyen != 1
                                 orderby itemLichSuDon.NgayChuyen ascending
                                 select new
                                 {

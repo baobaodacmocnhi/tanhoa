@@ -84,7 +84,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
             rptDSCongVan rpt = new rptDSCongVan();
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void cmbTimTheo_DSChuyenKTXM_SelectedIndexChanged(object sender, EventArgs e)
@@ -171,7 +171,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
             rpt.Subreports[0].SetDataSource(dsBaoCao);
             rpt.Subreports[1].SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         

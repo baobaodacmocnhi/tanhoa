@@ -717,7 +717,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     //    }
 
                     foreach (DataGridViewRow item in dgvTruyThuTienNuoc.Rows)
-                        if(item.Cells["Ky"].Value != null )
+                        if(item.Cells["Ky"].Value != null&&item.Cells["Ky"].ToString()!="" )
                             if (_cTTTN.CheckExist_CT(MaTTTN, item.Cells["Ky"].Value.ToString(), item.Cells["Nam"].Value.ToString()) == false)
                             {
                                 CTTruyThuTienNuoc cttttn = new CTTruyThuTienNuoc();
@@ -741,13 +741,14 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 cttttn.TongCongMoi = int.Parse(item.Cells["TongCong_Moi"].Value.ToString());
                                 cttttn.TangGiam = item.Cells["TangGiam"].Value.ToString();
 
-                                //_cTTTN.ThemCT(cttttn);
-                                cttttn.CreateBy = CTaiKhoan.MaUser;
-                                cttttn.CreateDate = DateTime.Now;
-                                tttn.CTTruyThuTienNuocs.Add(cttttn);
+                                _cTTTN.ThemCT(cttttn);
+                                //cttttn.CreateBy = CTaiKhoan.MaUser;
+                                //cttttn.CreateDate = DateTime.Now;
+                                //tttn.CTTruyThuTienNuocs.Add(cttttn);
                             }
-                    //_cTTTN.Refresh();
+                    _cTTTN.Refresh();
 
+                    tttn = _cTTTN.Get(tttn.MaTTTN);
                     tttn.TongTien = tttn.CTTruyThuTienNuocs.Sum(item => item.TongCongMoi.Value) - tttn.CTTruyThuTienNuocs.Sum(item => item.TongCongCu.Value);
                     tttn.Tongm3BinhQuan = (int)Math.Round((double)tttn.TongTien / tttn.SoTien1m3);
                     _cTTTN.SubmitChanges();
@@ -793,7 +794,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         }
 
                         foreach (DataGridViewRow item in dgvTruyThuTienNuoc.Rows)
-                            if (item.Cells["Ky"].Value != null)
+                            if (item.Cells["Ky"].Value != null && item.Cells["Ky"].ToString() != "")
                                 //if (_cTTTN.CheckExist_CT(_tttn.MaTTTN, item.Cells["Ky"].Value.ToString(), item.Cells["Nam"].Value.ToString()) == false)
                                 if (item.Cells["MaCTTTTN"].Value == null)
                                 {
@@ -819,10 +820,10 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     cttttn.TongCongMoi = int.Parse(item.Cells["TongCong_Moi"].Value.ToString());
                                     cttttn.TangGiam = item.Cells["TangGiam"].Value.ToString();
 
-                                    //_cTTTN.ThemCT(cttttn);
-                                    cttttn.CreateBy = CTaiKhoan.MaUser;
-                                    cttttn.CreateDate = DateTime.Now;
-                                    _tttn.CTTruyThuTienNuocs.Add(cttttn);
+                                    _cTTTN.ThemCT(cttttn);
+                                    //cttttn.CreateBy = CTaiKhoan.MaUser;
+                                    //cttttn.CreateDate = DateTime.Now;
+                                    //_tttn.CTTruyThuTienNuocs.Add(cttttn);
                                 }
                                 else
                                 {
@@ -850,8 +851,9 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                                     _cTTTN.SuaCT(cttttn);
                                 }
-                        //_cTTTN.Refresh();
+                        _cTTTN.Refresh();
 
+                        _tttn = _cTTTN.Get(_tttn.MaTTTN);
                         _tttn.TongTien = _tttn.CTTruyThuTienNuocs.Sum(item => item.TongCongMoi.Value) - _tttn.CTTruyThuTienNuocs.Sum(item => item.TongCongCu.Value);
                         _tttn.Tongm3BinhQuan = (int)Math.Round((double)_tttn.TongTien / _tttn.SoTien1m3);
                         _cTTTN.SubmitChanges();
