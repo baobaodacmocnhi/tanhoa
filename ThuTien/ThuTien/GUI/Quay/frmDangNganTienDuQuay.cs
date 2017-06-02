@@ -348,7 +348,7 @@ namespace ThuTien.GUI.Quay
         {
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganQuayByMaNVNgayGiaiTrach("TG", dateTu.Value, dateDen.Value);
+                dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganQuay("TG", dateTu.Value, dateDen.Value);
                 CountdgvHDTuGia();
                 //foreach (DataGridViewRow item in dgvHDTuGia.Rows)
                 //{
@@ -359,7 +359,7 @@ namespace ThuTien.GUI.Quay
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
                 {
-                    dgvHDCoQuan.DataSource = _cHoaDon.GetDSDangNganQuayByMaNVNgayGiaiTrach("CQ", dateTu.Value, dateDen.Value);
+                    dgvHDCoQuan.DataSource = _cHoaDon.GetDSDangNganQuay("CQ", dateTu.Value, dateDen.Value);
                     CountdgvHDCoQuan();
                     //foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
                     //{

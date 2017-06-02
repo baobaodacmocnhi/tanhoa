@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>710</ApplicationRevision>
+    <ApplicationRevision>713</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -955,17 +955,23 @@
     <Compile Include="GUI\ToTruong\frmGiaoHDHanhThu.Designer.cs">
       <DependentUpon>frmGiaoHDHanhThu.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ToTruong\frmHDChuyenKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmHDChuyenKhoan.Designer.cs">
+      <DependentUpon>frmHDChuyenKhoan.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ToTruong\frmHDTienLonTo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\ToTruong\frmHDTienLonTo.Designer.cs">
       <DependentUpon>frmHDTienLonTo.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ToTruong\frmHoaDonTamThu.cs">
+    <Compile Include="GUI\ToTruong\frmHDTamThu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ToTruong\frmHoaDonTamThu.Designer.cs">
-      <DependentUpon>frmHoaDonTamThu.cs</DependentUpon>
+    <Compile Include="GUI\ToTruong\frmHDTamThu.Designer.cs">
+      <DependentUpon>frmHDTamThu.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ToTruong\frmKiemTraDangNganTo.cs">
       <SubType>Form</SubType>
@@ -1495,11 +1501,14 @@
     <None Include="LinQ\dbKinhDoanh.dbml.layout">
       <DependentUpon>dbKinhDoanh.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="GUI\ToTruong\frmHDChuyenKhoan.resx">
+      <DependentUpon>frmHDChuyenKhoan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToTruong\frmHDTienLonTo.resx">
       <DependentUpon>frmHDTienLonTo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ToTruong\frmHoaDonTamThu.resx">
-      <DependentUpon>frmHoaDonTamThu.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\ToTruong\frmHDTamThu.resx">
+      <DependentUpon>frmHDTamThu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToTruong\frmKiemTraDangNganTo.resx">
       <DependentUpon>frmKiemTraDangNganTo.cs</DependentUpon>

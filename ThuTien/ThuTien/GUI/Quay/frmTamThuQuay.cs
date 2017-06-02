@@ -18,6 +18,7 @@ using ThuTien.GUI.BaoCao;
 using ThuTien.GUI.TimKiem;
 using ThuTien.BaoCao.ChuyenKhoan;
 using ThuTien.DAL.DongNuoc;
+using ThuTien.DAL.ChuyenKhoan;
 
 namespace ThuTien.GUI.Quay
 {
@@ -31,6 +32,7 @@ namespace ThuTien.GUI.Quay
         CXacNhanNo _cXacNhanNo = new CXacNhanNo();
         CDongNuoc _cDongNuoc = new CDongNuoc();
         CLenhHuy _cLenhHuy = new CLenhHuy();
+        CDichVuThu _cDichVuThu = new CDichVuThu();
 
         public frmTamThuQuay()
         {
@@ -64,14 +66,19 @@ namespace ThuTien.GUI.Quay
 
                     foreach (DataGridViewRow item in dgvHoaDon.Rows)
                     {
-                        item.Cells["Chon"].Value = "True";
-                        if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon"].Value.ToString()))
-                            item.DefaultCellStyle.BackColor = Color.Yellow;
-                        if (_cDongNuoc.CheckExist_KQDongNuocLan2(item.Cells["SoHoaDon"].Value.ToString()))
-                            item.DefaultCellStyle.BackColor = Color.Orange;
-                        item.Cells["DongNuoc"].Value = _cDongNuoc.GetNgayDNBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
-                        if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
-                            item.DefaultCellStyle.BackColor = Color.Red;
+                        if (_cDichVuThu.CheckExist(item.Cells["SoHoaDon"].Value.ToString()) == true)
+                            item.DefaultCellStyle.BackColor = Color.Blue;
+                        else
+                        {
+                            item.Cells["Chon"].Value = "True";
+                            if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon"].Value.ToString()))
+                                item.DefaultCellStyle.BackColor = Color.Yellow;
+                            if (_cDongNuoc.CheckExist_KQDongNuocLan2(item.Cells["SoHoaDon"].Value.ToString()))
+                                item.DefaultCellStyle.BackColor = Color.Orange;
+                            item.Cells["DongNuoc"].Value = _cDongNuoc.GetNgayDNBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
+                            if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
+                                item.DefaultCellStyle.BackColor = Color.Red;
+                        }
                     }
                 }
                 else

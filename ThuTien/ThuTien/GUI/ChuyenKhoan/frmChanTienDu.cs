@@ -227,5 +227,16 @@ namespace ThuTien.GUI.ChuyenKhoan
             else
                 MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        private void btnXoa_DCHD_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #region Điều Chỉnh Tiền Hóa Đơn
+
+
+
+        #endregion
     }
 }

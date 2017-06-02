@@ -537,11 +537,22 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void mnuHoaDonTamThu_Click(object sender, EventArgs e)
+        private void mnuHDTamThu_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen("mnuHoaDonTamThu", "Xem"))
+            if (CNguoiDung.CheckQuyen("mnuHDTamThu", "Xem"))
             {
-                frmHoaDonTamThu frm = new frmHoaDonTamThu();
+                frmHDTamThu frm = new frmHDTamThu();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuHDChuyenKhoan_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuHDChuyenKhoan", "Xem"))
+            {
+                frmHDChuyenKhoan frm = new frmHDChuyenKhoan();
                 OpenForm(frm);
             }
             else
@@ -1028,6 +1039,8 @@ namespace ThuTien
         }
 
         #endregion
+
+       
 
         
 

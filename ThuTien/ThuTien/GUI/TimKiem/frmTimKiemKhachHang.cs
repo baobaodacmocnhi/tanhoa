@@ -39,6 +39,7 @@ namespace ThuTien.GUI.TimKiem
         {
             dgvHoaDon.AutoGenerateColumns = false;
             dgvKinhDoanh.AutoGenerateColumns = false;
+            cmbSoKy.SelectedIndex = 0;
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
@@ -185,8 +186,8 @@ namespace ThuTien.GUI.TimKiem
             //    dr["NgayGiaiTrach"] = item["NgayGiaiTrach"];
             //    ds.Tables["TieuThu"].Rows.Add(dr);
             //}
-            if (dgvHoaDon.RowCount > 10)
-                for (int i = 0; i < 10; i++)
+            if (dgvHoaDon.RowCount > int.Parse(cmbSoKy.SelectedItem.ToString()))
+                for (int i = 0; i < int.Parse(cmbSoKy.SelectedItem.ToString()); i++)
                 {
                     DataRow dr = ds.Tables["TieuThu"].NewRow();
                     dr["Ky"] = dgvHoaDon["Ky", i].Value.ToString();

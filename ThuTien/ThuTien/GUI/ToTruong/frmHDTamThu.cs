@@ -14,7 +14,7 @@ using ThuTien.DAL.Doi;
 
 namespace ThuTien.GUI.ToTruong
 {
-    public partial class frmHoaDonTamThu : Form
+    public partial class frmHDTamThu : Form
     {
         CTamThu _cTamThu = new CTamThu();
         CDongNuoc _cDongNuoc = new CDongNuoc();
@@ -22,7 +22,7 @@ namespace ThuTien.GUI.ToTruong
         CTo _cTo = new CTo();
         CHoaDon _cHoaDon = new CHoaDon();
 
-        public frmHoaDonTamThu()
+        public frmHDTamThu()
         {
             InitializeComponent();
         }
