@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 18.875" name="dbThuTien">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 20.125" name="dbThuTien">
   <DataContextMoniker Name="/dbThuTienDataContext" />
   <nestedChildShapes>
-    <classShape Id="893c4d19-7971-44e3-84e7-ce7a3b189386" absoluteBounds="7, 0.875, 2, 17.731915690104167">
-      <DataClassMoniker Name="/dbThuTienDataContext/TT_HoaDonCu" />
-      <nestedChildShapes>
-        <elementListCompartment Id="185a1148-9305-4c56-ab86-911fad7a9117" absoluteBounds="7.015, 1.335, 1.9700000000000002, 17.171915690104164" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="f810e585-d002-4645-b066-64d5cb78a5b3" absoluteBounds="4, 0.875, 2, 17.731915690104167">
+    <classShape Id="75799a3e-2a15-4e59-bcda-713d8e9e4b06" absoluteBounds="3.75, 1.125, 2, 18.501121419270834">
       <DataClassMoniker Name="/dbThuTienDataContext/HOADON" />
       <nestedChildShapes>
-        <elementListCompartment Id="3aac8a77-ea0d-43c6-a115-d691754f8686" absoluteBounds="4.015, 1.335, 1.9700000000000002, 17.171915690104164" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="bd823121-3032-4cc6-9d48-1ce96d40d57f" absoluteBounds="3.765, 1.585, 1.9700000000000002, 17.941121419270832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="556bf209-1d58-43ab-abab-2693dd693319" absoluteBounds="6.5, 1.375, 2, 18.501121419270834">
+      <DataClassMoniker Name="/dbThuTienDataContext/TT_HoaDonCu" />
+      <nestedChildShapes>
+        <elementListCompartment Id="db7a865b-0740-47f6-b952-32587e3088da" absoluteBounds="6.515, 1.835, 1.9700000000000002, 17.941121419270832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

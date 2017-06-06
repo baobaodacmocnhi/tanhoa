@@ -28,6 +28,9 @@ namespace KTKS_DonKH
 {
     public partial class frmMain : Form
     {
+        CPhanQuyenNhom _cPhanQuyenNhom = new CPhanQuyenNhom();
+        CPhanQuyenNguoiDung _cPhanQuyenNguoiDung = new CPhanQuyenNguoiDung();
+
         public frmMain()
         {
             InitializeComponent();
@@ -136,6 +139,20 @@ namespace KTKS_DonKH
                 //    mnuPhoGiamDoc.Visible = true;
                 //else
                 //    mnuPhoGiamDoc.Visible = false;
+
+                foreach (ToolStripMenuItem itemParent in this.MainMenuStrip.Items)
+                {
+                    if (itemParent.Name == "mnuHeThong" || itemParent.Name == "mnuTimKiem")
+                        continue;
+                    if (_cPhanQuyenNhom.CheckByTenMenuChaMaNhom(itemParent.Name, CTaiKhoan.MaNhom))
+                        itemParent.Visible = true;
+                    else
+                        if (_cPhanQuyenNguoiDung.CheckByTenMenuChaMaND(itemParent.Name, CTaiKhoan.MaUser))
+                            itemParent.Visible = true;
+                        else
+                            itemParent.Visible = false;
+                }
+                    
             }
         }
 

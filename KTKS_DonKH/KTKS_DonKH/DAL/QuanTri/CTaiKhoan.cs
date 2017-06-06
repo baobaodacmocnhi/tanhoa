@@ -26,6 +26,13 @@ namespace KTKS_DonKH.DAL.QuanTri
             set { CTaiKhoan._maUser = value; }
         }
 
+        private static int _maNhom = -1;
+        public static int MaNhom
+        {
+            get { return CTaiKhoan._maNhom; }
+            set { CTaiKhoan._maNhom = value; }
+        }
+
         private static string _taiKhoan = "";
         public static string TaiKhoan
         {

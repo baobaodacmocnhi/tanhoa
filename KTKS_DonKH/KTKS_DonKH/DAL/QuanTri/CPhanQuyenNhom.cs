@@ -74,14 +74,19 @@ namespace KTKS_DonKH.DAL.QuanTri
             }
         }
 
-        public PhanQuyenNhom GetByMaMenuMaNhom(int MaMenu, int MaTT_Nhom)
-        {
-            return db.PhanQuyenNhoms.SingleOrDefault(item => item.MaMenu == MaMenu && item.MaNhom == MaTT_Nhom);
-        }
-
         public bool CheckByMaMenuMaNhom(int MaMenu, int MaTT_Nhom)
         {
             return db.PhanQuyenNhoms.Any(item => item.MaMenu == MaMenu && item.MaNhom == MaTT_Nhom);
+        }
+
+        public bool CheckByTenMenuChaMaNhom(string TenMenuCha, int MaTT_Nhom)
+        {
+            return db.PhanQuyenNhoms.Any(item => item.Menu.TenMenuCha == TenMenuCha && item.MaNhom == MaTT_Nhom && item.Xem == true);
+        }
+
+        public PhanQuyenNhom GetByMaMenuMaNhom(int MaMenu, int MaTT_Nhom)
+        {
+            return db.PhanQuyenNhoms.SingleOrDefault(item => item.MaMenu == MaMenu && item.MaNhom == MaTT_Nhom);
         }
 
         public DataTable GetDSByMaNhom(bool Admin, int MaTT_Nhom)
