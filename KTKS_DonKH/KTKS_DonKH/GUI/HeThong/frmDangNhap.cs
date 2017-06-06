@@ -33,6 +33,7 @@ namespace KTKS_DonKH.GUI.HeThong
                     CPhanQuyenNguoiDung _cPhanQuyenNguoiDung = new CPhanQuyenNguoiDung();
 
                     CTaiKhoan.MaUser = nguoidung.MaU;
+                    CTaiKhoan.TaiKhoan = nguoidung.TaiKhoan;
                     CTaiKhoan.HoTen = nguoidung.HoTen;
                     CTaiKhoan.Admin = nguoidung.Admin;
                     CTaiKhoan.ThuKy = nguoidung.ThuKy;

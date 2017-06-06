@@ -844,7 +844,7 @@ namespace KTKS_DonKH
             {
               //  frmBaoBe frm = new frmBaoBe();
               //  OpenForm(frm);
-                string url = "http://hp_g7/callbaobe.aspx?u=" + CTaiKhoan.HoTen ;
+                string url = "http://hp_g7/callbaobe.aspx?u=" + CTaiKhoan.TaiKhoan ;
                 System.Diagnostics.Process.Start(url);
 
 

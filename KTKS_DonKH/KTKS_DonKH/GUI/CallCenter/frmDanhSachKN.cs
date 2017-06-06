@@ -89,21 +89,29 @@ namespace KTKS_DonKH.GUI.CallCenter
 
         private void btChuyenHS_Click(object sender, EventArgs e)
         {
-            string listDanhBa = "";
-            int flag = 0;
-            for (int i = 0; i < dataGrid.Rows.Count; i++)
+            try
             {
-                if ("True".Equals(this.dataGrid.Rows[i].Cells["checkChon"].Value + ""))
+                string listDanhBa = "";
+                int flag = 0;
+                for (int i = 0; i < dataGrid.Rows.Count; i++)
                 {
-                    flag++;
-                    listDanhBa += ("'" + (this.dataGrid.Rows[i].Cells["sohoso"].Value + "").Replace(" ", "") + "',");
+                    if ("True".Equals(this.dataGrid.Rows[i].Cells["checkChon"].Value + ""))
+                    {
+                        flag++;
+                        listDanhBa += ("'" + (this.dataGrid.Rows[i].Cells["sohoso"].Value + "").Replace(" ", "") + "',");
+                    }
                 }
+                string sql = "UPDATE TTKH_TiepNhan SET ChuyenHS='True',Mess='True' ,NgayChuyen=GETDATE(),MaDVChuyen=" + cbPhongBan.SelectedValue + ",DonViChuyen=N'" + cbPhongBan.Text + "'   WHERE SoHoSo IN (" + listDanhBa.Remove(listDanhBa.Length - 1, 1) + ") ";
+                if (CCallCenter.ExecuteCommand_(sql) > 0)
+                { MessageBox.Show(this, "Chuyển Hồ Sơ Thành Công !", "..: Thông Báo :..", MessageBoxButtons.OK, MessageBoxIcon.Information); pLoad(); }
+                else
+                    MessageBox.Show(this, "Chuyển Hồ Sơ Thất Bại !", "..: Thông Báo :..", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            string sql = "UPDATE TTKH_TiepNhan SET ChuyenHS='True',Mess='True' ,NgayChuyen=GETDATE(),MaDVChuyen=" + cbPhongBan.SelectedValue + ",DonViChuyen=N'" + cbPhongBan.Text  + "'   WHERE SoHoSo IN (" + listDanhBa.Remove(listDanhBa.Length - 1, 1) + ") ";
-            if (CCallCenter.ExecuteCommand_(sql) > 0)
-            { MessageBox.Show(this, "Chuyển Hồ Sơ Thành Công !", "..: Thông Báo :..", MessageBoxButtons.OK, MessageBoxIcon.Information); pLoad(); }
-            else
+            catch (Exception)
+            {
                 MessageBox.Show(this, "Chuyển Hồ Sơ Thất Bại !", "..: Thông Báo :..", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
 
             // MessageBox.Show(this, listDanhBa.Remove(listDanhBa.Length - 1, 1));
 
