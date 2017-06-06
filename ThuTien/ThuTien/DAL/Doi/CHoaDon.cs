@@ -8840,6 +8840,41 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
+        public DataTable GetDSDCHDTienDu()
+        {
+            var query = from itemHD in _db.HOADONs
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        join itemTD in _db.TT_TienDus on itemHD.DANHBA equals itemTD.DanhBo into tableTD
+                        from itemtableTD in tableTD.DefaultIfEmpty()
+                        where itemHD.DCHD == true
+                        orderby itemHD.Ngay_DCHD descending
+                        select new
+                        {
+                            itemHD.ChanTienDu,
+                            itemHD.NgayChanTienDu,
+                            MaHD = itemHD.ID_HOADON,
+                            itemHD.SOHOADON,
+                            itemHD.SOPHATHANH,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            DanhBo = itemHD.DANHBA,
+                            GiaBieu = itemHD.GB,
+                            DinhMuc = itemHD.DM,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            itemHD.TIEUTHU,
+                            itemHD.GIABAN,
+                            ThueGTGT = itemHD.THUE,
+                            PhiBVMT = itemHD.PHI,
+                            itemHD.TONGCONG,
+                            To = itemtableND.TT_To.TenTo,
+                            HanhThu = itemtableND.HoTen,
+                            TienDu = itemtableTD.SoTien,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable GetGiaBanBinhQuan(int Nam)
         {
             var query = from item in _db.HOADONs

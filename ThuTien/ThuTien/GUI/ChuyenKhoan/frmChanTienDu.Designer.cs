@@ -32,10 +32,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label6 = new System.Windows.Forms.Label();
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -69,13 +69,16 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnXoa_DCHD = new System.Windows.Forms.Button();
+            this.dgvDCHD = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.txtDanhBo_DCHD = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvHoaDon_DCHD = new System.Windows.Forms.DataGridView();
+            this.btnThem_DCHD = new System.Windows.Forms.Button();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoHoaDon_HD_DCHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,11 +86,8 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnThem_DCHD = new System.Windows.Forms.Button();
-            this.btnXoa_DCHD = new System.Windows.Forms.Button();
-            this.dgvDCHD = new System.Windows.Forms.DataGridView();
             this.NgayDCHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoHoaDon_DCHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -102,8 +102,8 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon_DCHD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDCHD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon_DCHD)).BeginInit();
             this.SuspendLayout();
             // 
             // label6
@@ -428,6 +428,48 @@
             this.tabPage2.Text = "Điều Chỉnh Tiền Hóa Đơn";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // btnXoa_DCHD
+            // 
+            this.btnXoa_DCHD.Location = new System.Drawing.Point(304, 190);
+            this.btnXoa_DCHD.Name = "btnXoa_DCHD";
+            this.btnXoa_DCHD.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa_DCHD.TabIndex = 11;
+            this.btnXoa_DCHD.Text = "Xóa";
+            this.btnXoa_DCHD.UseVisualStyleBackColor = true;
+            this.btnXoa_DCHD.Click += new System.EventHandler(this.btnXoa_DCHD_Click);
+            // 
+            // dgvDCHD
+            // 
+            this.dgvDCHD.AllowUserToAddRows = false;
+            this.dgvDCHD.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDCHD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            this.dgvDCHD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDCHD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NgayDCHD,
+            this.SoHoaDon_DCHD,
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewTextBoxColumn13,
+            this.dataGridViewTextBoxColumn14,
+            this.dataGridViewTextBoxColumn15,
+            this.dataGridViewTextBoxColumn16,
+            this.dataGridViewTextBoxColumn17,
+            this.dataGridViewTextBoxColumn18,
+            this.dataGridViewTextBoxColumn19,
+            this.TongCongCu});
+            this.dgvDCHD.Location = new System.Drawing.Point(6, 219);
+            this.dgvDCHD.Name = "dgvDCHD";
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvDCHD.RowsDefaultCellStyle = dataGridViewCellStyle14;
+            this.dgvDCHD.Size = new System.Drawing.Size(1198, 369);
+            this.dgvDCHD.TabIndex = 10;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -443,6 +485,7 @@
             this.txtDanhBo_DCHD.Name = "txtDanhBo_DCHD";
             this.txtDanhBo_DCHD.Size = new System.Drawing.Size(100, 20);
             this.txtDanhBo_DCHD.TabIndex = 6;
+            this.txtDanhBo_DCHD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBo_DCHD_KeyPress);
             // 
             // label3
             // 
@@ -469,7 +512,7 @@
             this.dgvHoaDon_DCHD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewCheckBoxColumn1,
             this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
+            this.SoHoaDon_HD_DCHD,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
@@ -483,6 +526,16 @@
             this.dgvHoaDon_DCHD.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvHoaDon_DCHD.Size = new System.Drawing.Size(954, 150);
             this.dgvHoaDon_DCHD.TabIndex = 9;
+            // 
+            // btnThem_DCHD
+            // 
+            this.btnThem_DCHD.Location = new System.Drawing.Point(304, 6);
+            this.btnThem_DCHD.Name = "btnThem_DCHD";
+            this.btnThem_DCHD.Size = new System.Drawing.Size(75, 23);
+            this.btnThem_DCHD.TabIndex = 8;
+            this.btnThem_DCHD.Text = "Thêm";
+            this.btnThem_DCHD.UseVisualStyleBackColor = true;
+            this.btnThem_DCHD.Click += new System.EventHandler(this.btnThem_DCHD_Click);
             // 
             // dataGridViewCheckBoxColumn1
             // 
@@ -501,11 +554,11 @@
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.Visible = false;
             // 
-            // dataGridViewTextBoxColumn2
+            // SoHoaDon_HD_DCHD
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "SoHoaDon";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Số HĐ";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.SoHoaDon_HD_DCHD.DataPropertyName = "SoHoaDon";
+            this.SoHoaDon_HD_DCHD.HeaderText = "Số HĐ";
+            this.SoHoaDon_HD_DCHD.Name = "SoHoaDon_HD_DCHD";
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -553,67 +606,16 @@
             this.dataGridViewTextBoxColumn9.HeaderText = "Hành Thu";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             // 
-            // btnThem_DCHD
-            // 
-            this.btnThem_DCHD.Location = new System.Drawing.Point(304, 6);
-            this.btnThem_DCHD.Name = "btnThem_DCHD";
-            this.btnThem_DCHD.Size = new System.Drawing.Size(75, 23);
-            this.btnThem_DCHD.TabIndex = 8;
-            this.btnThem_DCHD.Text = "Thêm";
-            this.btnThem_DCHD.UseVisualStyleBackColor = true;
-            // 
-            // btnXoa_DCHD
-            // 
-            this.btnXoa_DCHD.Location = new System.Drawing.Point(304, 190);
-            this.btnXoa_DCHD.Name = "btnXoa_DCHD";
-            this.btnXoa_DCHD.Size = new System.Drawing.Size(75, 23);
-            this.btnXoa_DCHD.TabIndex = 11;
-            this.btnXoa_DCHD.Text = "Xóa";
-            this.btnXoa_DCHD.UseVisualStyleBackColor = true;
-            this.btnXoa_DCHD.Click += new System.EventHandler(this.btnXoa_DCHD_Click);
-            // 
-            // dgvDCHD
-            // 
-            this.dgvDCHD.AllowUserToAddRows = false;
-            this.dgvDCHD.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDCHD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
-            this.dgvDCHD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDCHD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.NgayDCHD,
-            this.dataGridViewTextBoxColumn11,
-            this.dataGridViewTextBoxColumn12,
-            this.dataGridViewTextBoxColumn13,
-            this.dataGridViewTextBoxColumn14,
-            this.dataGridViewTextBoxColumn15,
-            this.dataGridViewTextBoxColumn16,
-            this.dataGridViewTextBoxColumn17,
-            this.dataGridViewTextBoxColumn18,
-            this.dataGridViewTextBoxColumn19,
-            this.TongCongCu});
-            this.dgvDCHD.Location = new System.Drawing.Point(6, 219);
-            this.dgvDCHD.Name = "dgvDCHD";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvDCHD.RowsDefaultCellStyle = dataGridViewCellStyle14;
-            this.dgvDCHD.Size = new System.Drawing.Size(1198, 369);
-            this.dgvDCHD.TabIndex = 10;
-            // 
             // NgayDCHD
             // 
             this.NgayDCHD.HeaderText = "Ngày ĐCHD";
             this.NgayDCHD.Name = "NgayDCHD";
             // 
-            // dataGridViewTextBoxColumn11
+            // SoHoaDon_DCHD
             // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "SoHoaDon";
-            this.dataGridViewTextBoxColumn11.HeaderText = "Số HĐ";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.SoHoaDon_DCHD.DataPropertyName = "SoHoaDon";
+            this.SoHoaDon_DCHD.HeaderText = "Số HĐ";
+            this.SoHoaDon_DCHD.Name = "SoHoaDon_DCHD";
             // 
             // dataGridViewTextBoxColumn12
             // 
@@ -688,8 +690,8 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon_DCHD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDCHD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon_DCHD)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -733,9 +735,12 @@
         private System.Windows.Forms.TextBox txtDanhBo_DCHD;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dgvHoaDon_DCHD;
+        private System.Windows.Forms.Button btnThem_DCHD;
+        private System.Windows.Forms.Button btnXoa_DCHD;
+        private System.Windows.Forms.DataGridView dgvDCHD;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDon_HD_DCHD;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
@@ -743,11 +748,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.Button btnThem_DCHD;
-        private System.Windows.Forms.Button btnXoa_DCHD;
-        private System.Windows.Forms.DataGridView dgvDCHD;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayDCHD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDon_DCHD;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;

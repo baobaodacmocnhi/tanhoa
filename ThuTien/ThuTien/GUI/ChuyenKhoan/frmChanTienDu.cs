@@ -18,6 +18,7 @@ namespace ThuTien.GUI.ChuyenKhoan
     {
         string _mnu = "mnuChanTienDu";
         CHoaDon _cHoaDon = new CHoaDon();
+        CTienDu _cTienDu = new CTienDu();
 
         public frmChanTienDu()
         {
@@ -228,15 +229,77 @@ namespace ThuTien.GUI.ChuyenKhoan
                 MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        #region Điều Chỉnh Tiền Hóa Đơn
+
+        private void txtDanhBo_DCHD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim()) && e.KeyChar == 13)
+                dgvHoaDon_DCHD.DataSource = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim().Replace(" ", ""));
+            //foreach (DataGridViewRow item in dgvHoaDon.Rows)
+            //{
+            //    item.Cells["Chon"].Value = "True";
+            //}
+        }
+
+        private void btnThem_DCHD_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+            {
+                try
+                {
+                    foreach (DataGridViewRow item in dgvHoaDon_DCHD.Rows)
+                        if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()))
+                        {
+                            HOADON hoadon = _cHoaDon.Get(item.Cells["SoHoaDon_HD_DCHD"].Value.ToString());
+                            hoadon.DCHD = true;
+                            hoadon.Ngay_DCHD = DateTime.Now;
+                            hoadon.TongCongTruoc_DCHD = (int)hoadon.TONGCONG.Value;
+                            hoadon.TienDuTruoc_DCHD = _cTienDu.GetTienDu(hoadon.DANHBA);
+                            hoadon.TONGCONG -= hoadon.TienDuTruoc_DCHD;
+                            _cHoaDon.Sua(hoadon);
+                        }
+                    dgvDCHD.DataSource = _cHoaDon.GetDSDCHDTienDu();
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         private void btnXoa_DCHD_Click(object sender, EventArgs e)
         {
+            if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+            {
+                try
+                {
+                    foreach (DataGridViewRow item in dgvDCHD.SelectedRows)
+                    {
+                        HOADON hoadon = _cHoaDon.Get(item.Cells["SoHoaDon_DCHD"].Value.ToString());
+                        hoadon.DCHD = false;
+                        hoadon.TONGCONG = hoadon.TongCongTruoc_DCHD;
+                        hoadon.TongCongTruoc_DCHD = null;
+                        hoadon.TienDuTruoc_DCHD = null;
+                        _cHoaDon.Sua(hoadon);
+                    }
+                    dgvDCHD.DataSource = _cHoaDon.GetDSDCHDTienDu();
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
 
-        #region Điều Chỉnh Tiền Hóa Đơn
-
-
-
         #endregion
+
+        
     }
 }
