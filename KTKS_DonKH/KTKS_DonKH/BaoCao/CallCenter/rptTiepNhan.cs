@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KTKS_DonKH.BaoCao.BamChi {
+namespace KTKS_DonKH.BaoCao.CallCenter {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace KTKS_DonKH.BaoCao.BamChi {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rptThongKeTrangThaiBamChi : ReportClass {
+    public class rptTiepNhan : ReportClass {
         
-        public rptThongKeTrangThaiBamChi() {
+        public rptTiepNhan() {
         }
         
         public override string ResourceName {
             get {
-                return "rptThongKeTrangThaiBamChi.rpt";
+                return "rptTiepNhan.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace KTKS_DonKH.BaoCao.BamChi {
         
         public override string FullResourceName {
             get {
-                return "KTKS_DonKH.BaoCao.BamChi.rptThongKeTrangThaiBamChi.rpt";
+                return "KTKS_DonKH.BaoCao.CallCenter.rptTiepNhan.rpt";
             }
             set {
                 // Do nothing
@@ -106,9 +106,9 @@ namespace KTKS_DonKH.BaoCao.BamChi {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrptThongKeTrangThaiBamChi : Component, ICachedReport {
+    public class CachedrptTiepNhan : Component, ICachedReport {
         
-        public CachedrptThongKeTrangThaiBamChi() {
+        public CachedrptTiepNhan() {
         }
         
         [Browsable(false)]
@@ -145,7 +145,7 @@ namespace KTKS_DonKH.BaoCao.BamChi {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rptThongKeTrangThaiBamChi rpt = new rptThongKeTrangThaiBamChi();
+            rptTiepNhan rpt = new rptTiepNhan();
             rpt.Site = this.Site;
             return rpt;
         }

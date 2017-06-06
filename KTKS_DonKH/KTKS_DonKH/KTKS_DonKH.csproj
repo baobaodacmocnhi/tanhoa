@@ -162,6 +162,12 @@
       <DependentUpon>rptTienTrinhXuLyDon.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="BaoCao\CallCenter\rptTiepNhan.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptTiepNhan.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="BaoCao\CatHuyDanhBo\rptDSCHDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -676,6 +682,12 @@
     <Compile Include="GUI\BaoCao\frmShowBaoCao.Designer.cs">
       <DependentUpon>frmShowBaoCao.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\CallCenter\frmKhachHang2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CallCenter\frmKhachHang2.designer.cs">
+      <DependentUpon>frmKhachHang2.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\CallCenter\frmBaoBe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1174,6 +1186,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptTienTrinhXuLyDon.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\CallCenter\rptTiepNhan.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTiepNhan.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\CatHuyDanhBo\rptDSCHDB.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSCHDB.cs</LastGenOutput>
@@ -1466,6 +1482,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\BaoCao\frmShowBaoCao.resx">
       <DependentUpon>frmShowBaoCao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CallCenter\frmKhachHang2.resx">
+      <DependentUpon>frmKhachHang2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CallCenter\frmBaoBe.resx">
       <DependentUpon>frmBaoBe.cs</DependentUpon>

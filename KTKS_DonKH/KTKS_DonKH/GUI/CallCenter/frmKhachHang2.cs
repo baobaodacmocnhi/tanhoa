@@ -16,59 +16,57 @@ using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.CallCenter
 {
-    public partial class frmKhachHang : Form
+    public partial class frmKhachHang2 : Form
     {
         string _mnu = "mnuThongTinKhachHang";
         CKinhDoanh _cKinhDoanh = new CKinhDoanh();
-        string danhbo = "";
-        public frmKhachHang()
+
+        public frmKhachHang2()
         {
             InitializeComponent();
-            cbTieuChi.SelectedIndex = 0;
-            
         }
 
         private void frmKhachHang_Load(object sender, EventArgs e)
         {
-            //gridControl.LevelTree.Nodes.Add("Chi Tiết Kiểm Tra Xác Minh", gridViewKTXM);
-            //gridControl.LevelTree.Nodes.Add("Chi Tiết Điều Chỉnh Biến Động", gridViewDCBD);
-            //gridControl.LevelTree.Nodes.Add("Chi Tiết Cắt Tạm/Hủy Danh Bộ", gridViewCHDB);
-            //gridControl.LevelTree.Nodes.Add("Chi Tiết Phiếu Hủy Danh Bộ", gridViewYeuCauCHDB);
-            //gridControl.LevelTree.Nodes.Add("Chi Tiết Thảo Thư Trả Lời", gridViewTTTL);
-            //gridControl.LevelTree.Nodes.Add("Chi Tiết Bấm Chì", gridViewBamChi);
-            //gridControl.LevelTree.Nodes.Add("Chi Tiết Đóng Nước", gridViewDongNuoc);
-            //gridControl.LevelTree.Nodes.Add("Chi Tiết Gian Lận", gridViewGianLan);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Kiểm Tra Xác Minh", gridViewKTXM);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Điều Chỉnh Biến Động", gridViewDCBD);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Cắt Tạm/Hủy Danh Bộ", gridViewCHDB);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Phiếu Hủy Danh Bộ", gridViewYeuCauCHDB);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Thảo Thư Trả Lời", gridViewTTTL);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Bấm Chì", gridViewBamChi);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Đóng Nước", gridViewDongNuoc);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Gian Lận", gridViewGianLan);
         }
 
         public void searchBaoThay(string db)
         {
-            //string sql = "SELECT N'THAY' + ' ' +  CASE WHEN DHN_LOAIBANGKE='DK' THEN N'ĐỊNH KỲ '   ";
-            //sql += "   ELSE CASE WHEN DHN_LOAIBANGKE='MA' THEN N'DMA'   ";
-            //sql += "    ELSE CASE WHEN DHN_LOAIBANGKE='NG' THEN N'NGƯNG' ELSE N' QUẢN LÝ' END END END AS LOAI, ";
-            //sql += "    DHN_CODH, HCT_CODHNGAN, CONVERT(VARCHAR(50), DHN_NGAYBAOTHAY,103) AS NGAYBAO,CONVERT(VARCHAR(50), HCT_NGAYGAN,103) AS NGAYTHAY  ";
-            //sql += " FROM TB_THAYDHN WHERE DHN_DANHBO IS NOT NULL AND  HCT_NGAYGAN IS NOT NULL ";
-            //sql += "  AND DHN_DANHBO='" + db + "'";
-            //sql += "  ORDER BY DHN_NGAYBAOTHAY DESC  ";
+            string sql = "SELECT N'THAY' + ' ' +  CASE WHEN DHN_LOAIBANGKE='DK' THEN N'ĐỊNH KỲ '   ";
+            sql += "   ELSE CASE WHEN DHN_LOAIBANGKE='MA' THEN N'DMA'   ";
+            sql += "    ELSE CASE WHEN DHN_LOAIBANGKE='NG' THEN N'NGƯNG' ELSE N' QUẢN LÝ' END END END AS LOAI, ";
+            sql += "    DHN_CODH, HCT_CODHNGAN, CONVERT(VARCHAR(50), DHN_NGAYBAOTHAY,103) AS NGAYBAO,CONVERT(VARCHAR(50), HCT_NGAYGAN,103) AS NGAYTHAY  ";
+            sql += " FROM TB_THAYDHN WHERE DHN_DANHBO IS NOT NULL AND  HCT_NGAYGAN IS NOT NULL ";
+            sql += "  AND DHN_DANHBO='" + db + "'";
+            sql += "  ORDER BY DHN_NGAYBAOTHAY DESC  ";
 
-            //DataTable tb = DAL.CallCenter.CKhachHang.getDataTable(sql);
-            //sql = "  SELECT N'THAY ' + CASE WHEN MODIFYBY='0' THEN N'NÂNG CỞ' ELSE N'HẠ CỞ' END AS LOAI, CODHN  AS DHN_CODH ,COMOI AS HCT_CODHNGAN,'' AS NGAYBAO, CONVERT(VARCHAR(50), NGAYLAP,103) AS NGAYTHAY ";
-            //sql += "  FROM TB_DC_CODHN WHERE DANHBO='" + db + "'";
+            DataTable tb = DAL.CallCenter.CKhachHang.getDataTable(sql);
+            sql = "  SELECT N'THAY ' + CASE WHEN MODIFYBY='0' THEN N'NÂNG CỞ' ELSE N'HẠ CỞ' END AS LOAI, CODHN  AS DHN_CODH ,COMOI AS HCT_CODHNGAN,'' AS NGAYBAO, CONVERT(VARCHAR(50), NGAYLAP,103) AS NGAYTHAY ";
+            sql += "  FROM TB_DC_CODHN WHERE DANHBO='" + db + "'";
 
-            //DataTable t2 = DAL.CallCenter.CKhachHang.getDataTable(sql);
+            DataTable t2 = DAL.CallCenter.CKhachHang.getDataTable(sql);
 
-            //if (t2.Rows.Count > 0)
-            //{
-            //    DataTable t3 = DAL.CallCenter.CGanMoi.getDataTable("SELECT CONVERT(VARCHAR(20),don.NGAYNHAN,103) as NGAYBAO ,  CONVERT(VARCHAR(20),hs.NGAYTHICONG,103) as NGAYTHAY FROM  DON_KHACHHANG don,KH_HOSOKHACHHANG hs WHERE don.SHS =hs.SHS and  REPLACE(DANHBO,'-','')='" + db + "' ");
-            //    for (int i = 0; i < t3.Rows.Count; i++)
-            //    {
-            //        t2.Rows[0]["NGAYBAO"] = t3.Rows[i]["NGAYBAO"];
-            //        t2.Rows[0]["NGAYTHAY"] = t3.Rows[i]["NGAYTHAY"];
-            //    }
-            //}
-            ////SELECT CONVERT(VARCHAR(20),hs.NGAYTHICONG,103) FROM  DON_KHACHHANG don,KH_HOSOKHACHHANG hs WHERE don.SHS =hs.SHS and  REPLACE(DANHBO,'-','')='13031133080'
-            //tb.Merge(t2);
+            if (t2.Rows.Count > 0)
+            {
+                DataTable t3 = DAL.CallCenter.CGanMoi.getDataTable("SELECT CONVERT(VARCHAR(20),don.NGAYNHAN,103) as NGAYBAO ,  CONVERT(VARCHAR(20),hs.NGAYTHICONG,103) as NGAYTHAY FROM  DON_KHACHHANG don,KH_HOSOKHACHHANG hs WHERE don.SHS =hs.SHS and  REPLACE(DANHBO,'-','')='" + db + "' ");
+                for (int i = 0; i < t3.Rows.Count; i++)
+                {
+                    t2.Rows[0]["NGAYBAO"] = t3.Rows[i]["NGAYBAO"];
+                    t2.Rows[0]["NGAYTHAY"] = t3.Rows[i]["NGAYTHAY"];
+                }
+            }
+            //SELECT CONVERT(VARCHAR(20),hs.NGAYTHICONG,103) FROM  DON_KHACHHANG don,KH_HOSOKHACHHANG hs WHERE don.SHS =hs.SHS and  REPLACE(DANHBO,'-','')='13031133080'
+            tb.Merge(t2);
 
-            //dataBangKe.DataSource = tb;
+            dataBangKe.DataSource = tb;
         }
 
         public void Search()
@@ -88,26 +86,25 @@ namespace KTKS_DonKH.GUI.CallCenter
 
             if (txtSearchDC.Text.Replace("-", "") != "")
             {
-                sql += " AND DIACHI LIKE '%" + txtSearchDC.Text + "%' ";
+                sql += " AND DIACHI LIKE '%" + txtSearchDC.Text  + "%' ";
             }
             if (txtSearchDT.Text.Replace("-", "") != "")
             {
-                sql += " AND DIENTHOAI LIKE '%" + txtSearchDT.Text + "%' ";
+                sql += " AND DIENTHOAI LIKE '%" + txtSearchDT.Text  + "%' ";
             }
 
             tb = DAL.CallCenter.CKhachHang.getDataTable(sql);
 
             gSearch.DataSource = tb;
             DataGridV.formatRows(gSearch);
-            //  groupBox1.Text = "Tổng số " + tb.Rows.Count + " Khách Hàng !";
+            groupBox1.Text = "Tổng số " + tb.Rows.Count + " Khách Hàng !";
 
             if (tb.Rows.Count == 1)
             {
-                string dbo = gSearch.Rows[0].Cells["DC_DANHBA"].Value + "";
+               string dbo = gSearch.Rows[0].Cells["DC_DANHBA"].Value + "";
                 LoadThongTinDB(dbo.Replace(" ", ""));
-                //  gridControl.DataSource = _cKinhDoanh.GetTienTrinhByDanhBo(dbo.Replace(" ", "")).Tables["Don"];
+                gridControl.DataSource = _cKinhDoanh.GetTienTrinhByDanhBo(dbo.Replace(" ", "")).Tables["Don"];
             }
-            
         }
 
         private void search(object sender, KeyPressEventArgs e)
@@ -120,21 +117,19 @@ namespace KTKS_DonKH.GUI.CallCenter
                 string sql = " SELECT tn.SoHoSo,DienThoai,DanhBo,lt.TenLoai,NgayNhan, GhiChu,CreateBy,ChuyenHS,DonViChuyen,NgayChuyen,NgayXuLy,KetQuaXuLy,NhanVienXuLy,TenKH,(SoNha + ' ' + TenDuong ) as DiaChi ";
                 sql += "   FROM TTKH_TiepNhan tn, TTKH_LoaiTiepNhan lt ";
                 sql += "   WHERE tn.LoaiHs=lt.ID  ";
-
+               
                 if (txtSearchDC.Text.Replace("-", "") != "")
                 {
                     sql += " AND replace((SoNha + ' ' + TenDuong ),' ','') LIKE N'%" + txtSearchDC.Text.Replace(" ", "") + "%' ";
                 }
+                dataGridCall.DataSource = t.ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                Utilities.DataGridV.formatRows(dataGridCall);
 
-                cbTieuChi_SelectedIndexChanged(sender, e);
-                //dataGridCall.DataSource = t.ExecuteQuery_SqlDataAdapter_DataTable(sql);
-                //Utilities.DataGridV.formatRows(dataGridCall);
-
-
+                
             }
         }
 
-
+      
         TB_DULIEUKHACHHANG khachhang = null;
         void LoadThongTinDB(string sodanhbo)
         {
@@ -145,7 +140,7 @@ namespace KTKS_DonKH.GUI.CallCenter
                 {
                     rDanhBo.Text = khachhang.DANHBO;
                     LOTRINH.Text = khachhang.LOTRINH;
-                 //   DOT.Text = khachhang.LOTRINH.Substring(1, 2);
+                    DOT.Text = khachhang.LOTRINH.Substring(1, 2);
                     HOPDONG.Text = khachhang.HOPDONG;
                     HOTEN.Text = khachhang.HOTEN;
                     TENDUONG.Text = khachhang.SONHA + ' ' + khachhang.TENDUONG;
@@ -162,10 +157,15 @@ namespace KTKS_DonKH.GUI.CallCenter
                     SOTHAN.Text = khachhang.SOTHANDH;
                     VITRI.Text = khachhang.VITRIDHN;
                     txtDMA.Text = khachhang.MADMA;
-                    txtApluc.Text =CKhachHang.getApLuc(khachhang.MADMA.Replace("TH-",""));
+
                     txtNhanVienDocSo.Text = CKhachHang.getNVDS(khachhang.LOTRINH.Substring(2, 2));
                     txtNVThuTien.Text = CKhachHang.getNVThuTien(khachhang.DANHBO);
-                   
+                    loadghichu(khachhang.DANHBO);
+                    loadHoaDon(khachhang.DANHBO);
+                    loadDongNuoc(khachhang.DANHBO);
+                    loadCall(khachhang.DANHBO);
+                    searchBaoThay(khachhang.DANHBO);
+                    gridControl.DataSource = _cKinhDoanh.GetTienTrinhByDanhBo(khachhang.DANHBO).Tables["Don"];
                 }
                 else
                 {
@@ -174,7 +174,7 @@ namespace KTKS_DonKH.GUI.CallCenter
                     {
                         rDanhBo.Text = khachhanghuy.DANHBO;
                         LOTRINH.Text = khachhanghuy.LOTRINH;
-                    //    DOT.Text = khachhanghuy.DOT;
+                        DOT.Text = khachhanghuy.DOT;
                         HOPDONG.Text = khachhanghuy.HOPDONG;
                         HOTEN.Text = khachhanghuy.HOTEN;
                         TENDUONG.Text = khachhanghuy.SONHA + " " + khachhanghuy.TENDUONG;
@@ -195,7 +195,12 @@ namespace KTKS_DonKH.GUI.CallCenter
                         txtNhanVienDocSo.Text = CKhachHang.getNVDS(khachhanghuy.LOTRINH.Substring(2, 2));
                         txtNVThuTien.Text = CKhachHang.getNVThuTien(khachhanghuy.DANHBO);
 
-
+                        loadghichu(khachhanghuy.DANHBO);
+                        loadHoaDon(khachhanghuy.DANHBO);
+                        loadDongNuoc(khachhanghuy.DANHBO);
+                        loadCall(khachhanghuy.DANHBO);
+                        searchBaoThay(khachhanghuy.DANHBO);
+                        gridControl.DataSource = _cKinhDoanh.GetTienTrinhByDanhBo(khachhanghuy.DANHBO).Tables["Don"];
                     }
                     else
                     {
@@ -203,7 +208,6 @@ namespace KTKS_DonKH.GUI.CallCenter
                         MessageBox.Show(this, "Không Tìm Thấy Thông Tin !", "..: Thông Báo :..", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         //Refesh();
                     }
-                    
                 }
             }
         }
@@ -226,12 +230,12 @@ namespace KTKS_DonKH.GUI.CallCenter
         public void loadDongNuoc(string danhbo)
         {
             gDongNuoc.DataSource = DAL.CallCenter.CKhachHang.getDongMoiNuoc(danhbo);
-            Utilities.DataGridV.formatRows(gDongNuoc);
+             Utilities.DataGridV.formatRows(gDongNuoc);
         }
         public void loadHoaDon(string danhbo)
         {
             gHoaDon.DataSource = DAL.CallCenter.CKhachHang.getListHoaDonReport(danhbo, 12);
-            Utilities.DataGridV.formatRows(gHoaDon);
+             Utilities.DataGridV.formatRows(gHoaDon);
         }
         public void loadCall(string danhbo)
         {
@@ -244,12 +248,11 @@ namespace KTKS_DonKH.GUI.CallCenter
             try
             {
                 string db = gSearch.Rows[gSearch.CurrentRow.Index].Cells["DC_DANHBA"].Value + "";
-                LoadThongTinDB(db.Replace(" ", ""));
-                cbTieuChi_SelectedIndexChanged(sender, e);
+                LoadThongTinDB(db.Replace(" ",""));
             }
             catch (Exception)
             {
-
+                
             }
         }
 
@@ -280,39 +283,16 @@ namespace KTKS_DonKH.GUI.CallCenter
 
         private void btDongNuoc_Click(object sender, EventArgs e)
         {
-            string url = "http://hp_g7/callcenter.aspx";
-            System.Diagnostics.Process.Start(url);
+             string url = "http://hp_g7/callcenter.aspx";
+             System.Diagnostics.Process.Start(url);
             //frmWeb F = new frmWeb(url);            
             //F.ShowDialog();
         }
 
-        private void cbTieuChi_SelectedIndexChanged(object sender, EventArgs e)
-        {
+       
+         
 
-            gTiepNhanThongTin.Visible = false;
-            gDocSoThuTienNuoc.Visible = false;
-            gLichSuDieuChinhThongTin.Visible = false;
-            gLichSuDonKh.Visible = false;
-            gThongTinDongNuoc.Visible = false;
-            gThongTinThayDhn.Visible = false;
-            
-            int f=cbTieuChi.SelectedIndex;
-            if (khachhang != null)
-            {
-
-                if (f == 0) { gTiepNhanThongTin.Visible = true; gTiepNhanThongTin.Dock = DockStyle.Fill; loadCall(khachhang.DANHBO); }
-                else if (f == 1) { gDocSoThuTienNuoc.Visible = true; gDocSoThuTienNuoc.Dock = DockStyle.Fill; loadHoaDon(khachhang.DANHBO); }
-                else if (f == 2) { gLichSuDieuChinhThongTin.Visible = true; gLichSuDieuChinhThongTin.Dock = DockStyle.Fill; loadghichu(khachhang.DANHBO); }
-                else if (f == 3) { gLichSuDonKh.Visible = true; gLichSuDonKh.Dock = DockStyle.Fill; gridControl.DataSource = _cKinhDoanh.GetTienTrinhByDanhBo(khachhang.DANHBO).Tables["Don"]; }
-                else if (f == 4) { gThongTinDongNuoc.Visible = true; gThongTinDongNuoc.Dock = DockStyle.Fill; loadDongNuoc(khachhang.DANHBO); }
-                else if (f == 5) { gThongTinThayDhn.Visible = true; gThongTinThayDhn.Dock = DockStyle.Fill; searchBaoThay(khachhang.DANHBO); }
-            }
-        }
-
-
-
-
-
-
+        
+  
     }
 }

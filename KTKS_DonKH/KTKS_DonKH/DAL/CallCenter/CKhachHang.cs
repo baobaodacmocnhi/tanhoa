@@ -119,6 +119,23 @@ namespace KTKS_DonKH.DAL.CallCenter
 
 
         }
+        public static string getApLuc(string db)
+        {
+
+            try
+            {
+                string query = " SELECT  [ApLuc]   FROM [KYTHUAT].[dbo].[THONGTINDMA] WHERE MaDma='"+db+"'";
+                DataTable tb = getDataTable(query);
+                return tb.Rows[0][0].ToString();
+            }
+            catch (Exception)
+            {
+                return "";
+            }
+
+
+
+        }
         public static DataTable search(string diachi, string dit)
         {
             DataTable tb = new DataTable();
