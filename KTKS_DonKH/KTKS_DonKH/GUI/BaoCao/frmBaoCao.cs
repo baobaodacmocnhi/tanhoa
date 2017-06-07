@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using KTKS_DonKH.DAL;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.BaoCao;
+using CallCenter.DAL;
 
 namespace KTKS_DonKH.GUI.BaoCao
 {
@@ -28,7 +29,7 @@ namespace KTKS_DonKH.GUI.BaoCao
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            DataTable dt = _cBaoCao.TienTrinhXuLyDon(dateTu.Value,dateDen.Value);
+            DataTable dt = CCallCenter.getDataTable("SELECT * FROM TrungTamKH");
             DataTable dtB = _cBaoCao.TienTrinhXuLyDon_B(dateTu.Value, dateDen.Value);
 
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();

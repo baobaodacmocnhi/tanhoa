@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.QuanTri;
 using CallCenter.DAL;
+using KTKS_DonKH.BaoCao.CallCenter;
+using KTKS_DonKH.GUI.BaoCao;
 
 
 namespace KTKS_DonKH.GUI.CallCenter
@@ -205,6 +207,30 @@ namespace KTKS_DonKH.GUI.CallCenter
         private void frmDanhSachKN_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btIn_Click(object sender, EventArgs e)
+        {
+            string tungay = Utilities.DateToString.NgayVN(dateTuNgay.Value.Date);
+            string denngay = Utilities.DateToString.NgayVN(dateDenNgay.Value.Date);
+
+            string query = " SELECT * FROM  TrungTamKH ";
+            query += " WHERE CONVERT(DATE,NgayNhan,103) BETWEEN CONVERT(DATE,'" + tungay + "',103) AND CONVERT(DATE,'" + denngay + "',103) ";
+
+            DataTable tb = CCallCenter.reportTrungTamKH(query).Tables[0];
+            DataRow[] tsDaXL =  tb.Select("NgayXuLy IS NOT NULL");
+            DataRow[] tsChuaXL = tb.Select("NgayXuLy IS  NULL");
+
+            rptTiepNhan rpt = new rptTiepNhan();
+            rpt.SetDataSource(CCallCenter.reportTrungTamKH(query));
+            rpt.SetParameterValue("tungay", tungay);
+            rpt.SetParameterValue("denngay", denngay);
+            rpt.SetParameterValue("tsCuocGoi", "00");
+            rpt.SetParameterValue("tsTiepNhan", tb.Rows.Count);
+            rpt.SetParameterValue("tsDaXL", tsDaXL.Length);
+            rpt.SetParameterValue("tsChuaXL", tsChuaXL.Length);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.ShowDialog();
         }
     }
 }

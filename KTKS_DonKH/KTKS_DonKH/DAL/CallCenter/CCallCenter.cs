@@ -64,6 +64,21 @@ namespace CallCenter.DAL
         {
             _db = new dbKinhDoanhDataContext();
         }
+
+        public static DataSet reportTrungTamKH(string query)
+        {
+            DataSet ds = new DataSet();
+            if (_db.Connection.State == ConnectionState.Open)
+            {
+                _db.Connection.Close();
+            }
+
+            _db.Connection.Open();          
+            SqlDataAdapter adapter = new SqlDataAdapter(query, _db.Connection.ConnectionString);
+            adapter.Fill(ds, "TrungTamKH");
+            return ds;
+        }
+
         public static int ExecuteCommand(string sql)
         {
             int result = 0;

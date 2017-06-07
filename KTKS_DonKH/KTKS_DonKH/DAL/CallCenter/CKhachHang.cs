@@ -65,7 +65,7 @@ namespace KTKS_DonKH.DAL.CallCenter
             string sql = " select ROW_NUMBER() OVER (ORDER BY NgayDN DESC) [STT], ";
             sql += " case when  kqdn.DongNuoc=1  then CONVERT(varchar(50),NgayDN,103) end as NGAYDN,LyDo, ";
             sql += " case when kqdn.MoNuoc=1   then CONVERT(varchar(50),NgayMN,103) end as NGAYMN ";
-            sql += " from TT_KQDongNuoc kqdn  where DanhBo='" + danhbo + "'  ORDER BY NgayDN DESC";
+            sql += " from TT_KQDongNuoc kqdn  where DanhBo='" + danhbo + "' ";
 
             return getDataTableHoaDon(sql);
         }

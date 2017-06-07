@@ -30,45 +30,45 @@ namespace KTKS_DonKH.GUI.CallCenter
 
         private void frmKhachHang_Load(object sender, EventArgs e)
         {
-            //gridControl.LevelTree.Nodes.Add("Chi Tiết Kiểm Tra Xác Minh", gridViewKTXM);
-            //gridControl.LevelTree.Nodes.Add("Chi Tiết Điều Chỉnh Biến Động", gridViewDCBD);
-            //gridControl.LevelTree.Nodes.Add("Chi Tiết Cắt Tạm/Hủy Danh Bộ", gridViewCHDB);
-            //gridControl.LevelTree.Nodes.Add("Chi Tiết Phiếu Hủy Danh Bộ", gridViewYeuCauCHDB);
-            //gridControl.LevelTree.Nodes.Add("Chi Tiết Thảo Thư Trả Lời", gridViewTTTL);
-            //gridControl.LevelTree.Nodes.Add("Chi Tiết Bấm Chì", gridViewBamChi);
-            //gridControl.LevelTree.Nodes.Add("Chi Tiết Đóng Nước", gridViewDongNuoc);
-            //gridControl.LevelTree.Nodes.Add("Chi Tiết Gian Lận", gridViewGianLan);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Kiểm Tra Xác Minh", gridViewKTXM);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Điều Chỉnh Biến Động", gridViewDCBD);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Cắt Tạm/Hủy Danh Bộ", gridViewCHDB);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Phiếu Hủy Danh Bộ", gridViewYeuCauCHDB);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Thảo Thư Trả Lời", gridViewTTTL);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Bấm Chì", gridViewBamChi);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Đóng Nước", gridViewDongNuoc);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Gian Lận", gridViewGianLan);
         }
 
         public void searchBaoThay(string db)
         {
-            //string sql = "SELECT N'THAY' + ' ' +  CASE WHEN DHN_LOAIBANGKE='DK' THEN N'ĐỊNH KỲ '   ";
-            //sql += "   ELSE CASE WHEN DHN_LOAIBANGKE='MA' THEN N'DMA'   ";
-            //sql += "    ELSE CASE WHEN DHN_LOAIBANGKE='NG' THEN N'NGƯNG' ELSE N' QUẢN LÝ' END END END AS LOAI, ";
-            //sql += "    DHN_CODH, HCT_CODHNGAN, CONVERT(VARCHAR(50), DHN_NGAYBAOTHAY,103) AS NGAYBAO,CONVERT(VARCHAR(50), HCT_NGAYGAN,103) AS NGAYTHAY  ";
-            //sql += " FROM TB_THAYDHN WHERE DHN_DANHBO IS NOT NULL AND  HCT_NGAYGAN IS NOT NULL ";
-            //sql += "  AND DHN_DANHBO='" + db + "'";
-            //sql += "  ORDER BY DHN_NGAYBAOTHAY DESC  ";
+            string sql = "SELECT N'THAY' + ' ' +  CASE WHEN DHN_LOAIBANGKE='DK' THEN N'ĐỊNH KỲ '   ";
+            sql += "   ELSE CASE WHEN DHN_LOAIBANGKE='MA' THEN N'DMA'   ";
+            sql += "    ELSE CASE WHEN DHN_LOAIBANGKE='NG' THEN N'NGƯNG' ELSE N' QUẢN LÝ' END END END AS LOAI, ";
+            sql += "    DHN_CODH, HCT_CODHNGAN, CONVERT(VARCHAR(50), DHN_NGAYBAOTHAY,103) AS NGAYBAO,CONVERT(VARCHAR(50), HCT_NGAYGAN,103) AS NGAYTHAY  ";
+            sql += " FROM TB_THAYDHN WHERE DHN_DANHBO IS NOT NULL AND  HCT_NGAYGAN IS NOT NULL ";
+            sql += "  AND DHN_DANHBO='" + db + "'";
+            sql += "  ORDER BY DHN_NGAYBAOTHAY DESC  ";
 
-            //DataTable tb = DAL.CallCenter.CKhachHang.getDataTable(sql);
-            //sql = "  SELECT N'THAY ' + CASE WHEN MODIFYBY='0' THEN N'NÂNG CỞ' ELSE N'HẠ CỞ' END AS LOAI, CODHN  AS DHN_CODH ,COMOI AS HCT_CODHNGAN,'' AS NGAYBAO, CONVERT(VARCHAR(50), NGAYLAP,103) AS NGAYTHAY ";
-            //sql += "  FROM TB_DC_CODHN WHERE DANHBO='" + db + "'";
+            DataTable tb = DAL.CallCenter.CKhachHang.getDataTable(sql);
+            sql = "  SELECT N'THAY ' + CASE WHEN MODIFYBY='0' THEN N'NÂNG CỞ' ELSE N'HẠ CỞ' END AS LOAI, CODHN  AS DHN_CODH ,COMOI AS HCT_CODHNGAN,'' AS NGAYBAO, CONVERT(VARCHAR(50), NGAYLAP,103) AS NGAYTHAY ";
+            sql += "  FROM TB_DC_CODHN WHERE DANHBO='" + db + "'";
 
-            //DataTable t2 = DAL.CallCenter.CKhachHang.getDataTable(sql);
+            DataTable t2 = DAL.CallCenter.CKhachHang.getDataTable(sql);
 
-            //if (t2.Rows.Count > 0)
-            //{
-            //    DataTable t3 = DAL.CallCenter.CGanMoi.getDataTable("SELECT CONVERT(VARCHAR(20),don.NGAYNHAN,103) as NGAYBAO ,  CONVERT(VARCHAR(20),hs.NGAYTHICONG,103) as NGAYTHAY FROM  DON_KHACHHANG don,KH_HOSOKHACHHANG hs WHERE don.SHS =hs.SHS and  REPLACE(DANHBO,'-','')='" + db + "' ");
-            //    for (int i = 0; i < t3.Rows.Count; i++)
-            //    {
-            //        t2.Rows[0]["NGAYBAO"] = t3.Rows[i]["NGAYBAO"];
-            //        t2.Rows[0]["NGAYTHAY"] = t3.Rows[i]["NGAYTHAY"];
-            //    }
-            //}
-            ////SELECT CONVERT(VARCHAR(20),hs.NGAYTHICONG,103) FROM  DON_KHACHHANG don,KH_HOSOKHACHHANG hs WHERE don.SHS =hs.SHS and  REPLACE(DANHBO,'-','')='13031133080'
-            //tb.Merge(t2);
+            if (t2.Rows.Count > 0)
+            {
+                DataTable t3 = DAL.CallCenter.CGanMoi.getDataTable("SELECT CONVERT(VARCHAR(20),don.NGAYNHAN,103) as NGAYBAO ,  CONVERT(VARCHAR(20),hs.NGAYTHICONG,103) as NGAYTHAY FROM  DON_KHACHHANG don,KH_HOSOKHACHHANG hs WHERE don.SHS =hs.SHS and  REPLACE(DANHBO,'-','')='" + db + "' ");
+                for (int i = 0; i < t3.Rows.Count; i++)
+                {
+                    t2.Rows[0]["NGAYBAO"] = t3.Rows[i]["NGAYBAO"];
+                    t2.Rows[0]["NGAYTHAY"] = t3.Rows[i]["NGAYTHAY"];
+                }
+            }
+            //SELECT CONVERT(VARCHAR(20),hs.NGAYTHICONG,103) FROM  DON_KHACHHANG don,KH_HOSOKHACHHANG hs WHERE don.SHS =hs.SHS and  REPLACE(DANHBO,'-','')='13031133080'
+            tb.Merge(t2);
 
-            //dataBangKe.DataSource = tb;
+            dataBangKe.DataSource = tb;
         }
 
         public void Search()
