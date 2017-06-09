@@ -183,6 +183,54 @@ namespace KTKS_DonKH.DAL.DonTu
             return dt.DefaultView.ToTable();
         }
 
+        public DataTable GetDS_DCBD(string DanhBo)
+        {
+            DataTable dt = new DataTable();
+
+            var queryTKH = from itemLSDT in db.LichSuDonTus
+                           join itemDonTKH in db.DonKHs on itemLSDT.MaDon equals itemDonTKH.MaDon
+                           where itemDonTKH.DanhBo == DanhBo && itemLSDT.ID_NoiNhan==8
+                           select new
+                           {
+                               MaDon = "TKH" + itemDonTKH.MaDon,
+                               itemLSDT.NgayChuyen,
+                               itemLSDT.NoiChuyen,
+                               itemLSDT.NoiNhan,
+                               itemLSDT.GhiChu,
+                           };
+            dt.Merge(LINQToDataTable(queryTKH));
+
+            var queryTXL = from itemLSDT in db.LichSuDonTus
+                           join itemDonTXL in db.DonTXLs on itemLSDT.MaDonTXL equals itemDonTXL.MaDon
+                           where itemDonTXL.DanhBo == DanhBo && itemLSDT.ID_NoiNhan == 8
+                           select new
+                           {
+                               MaDon = "TXL" + itemDonTXL.MaDon,
+                               itemLSDT.NgayChuyen,
+                               itemLSDT.NoiChuyen,
+                               itemLSDT.NoiNhan,
+                               itemLSDT.GhiChu,
+                           };
+            dt.Merge(LINQToDataTable(queryTXL));
+
+            var queryTBC = from itemLSDT in db.LichSuDonTus
+                           join itemDonTBC in db.DonTBCs on itemLSDT.MaDonTBC equals itemDonTBC.MaDon
+                           where itemDonTBC.DanhBo == DanhBo && itemLSDT.ID_NoiNhan == 8
+                           select new
+                           {
+                               MaDon = "TBC" + itemDonTBC.MaDon,
+                               itemLSDT.NgayChuyen,
+                               itemLSDT.NoiChuyen,
+                               itemLSDT.NoiNhan,
+                               itemLSDT.GhiChu,
+                           };
+            dt.Merge(LINQToDataTable(queryTBC));
+
+            if (dt.Rows.Count > 0)
+                dt.DefaultView.Sort = "NgayChuyen DESC";
+            return dt.DefaultView.ToTable();
+        }
+
         public bool Them(LichSuChuyenKTXM entity)
         {
             try

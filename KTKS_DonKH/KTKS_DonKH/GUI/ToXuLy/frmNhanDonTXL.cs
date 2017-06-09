@@ -48,6 +48,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             dgvLichSuDon.AutoGenerateColumns = false;
             dgvLichSuDonTu.AutoGenerateColumns = false;
+            dgvLichSuDonTu_DCBD.AutoGenerateColumns = false;
             dataGridView1.AutoGenerateColumns = false;
 
             cmbLD.DataSource = _cLoaiDonTXL.GetDS();
@@ -113,6 +114,8 @@ namespace KTKS_DonKH.GUI.ToXuLy
             txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
             txtGiaBieu.Text = hoadon.GB.ToString();
             txtDinhMuc.Text = hoadon.DM.ToString();
+            dgvLichSuDon.DataSource = _cLichSuDonTu.GetDS_3To(txtDanhBo.Text.Trim());
+            dgvLichSuDonTu_DCBD.DataSource = _cLichSuDonTu.GetDS_DCBD(txtDanhBo.Text.Trim());
         }
 
         public void LoadDonTXL(DonTXL dontxl)
@@ -133,6 +136,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
             ///
             dgvLichSuDon.DataSource = _cLichSuDonTu.GetDS_3To(dontxl.DanhBo);
             dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("TXL", dontxl.MaDon);
+            dgvLichSuDonTu_DCBD.DataSource = _cLichSuDonTu.GetDS_DCBD(txtDanhBo.Text.Trim());
             cmbNoiChuyen.SelectedIndex = -1;
             dateChuyen.Value = DateTime.Now;
             txtGhiChu.Text = "";
@@ -190,7 +194,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 {
                     _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
                     LoadTTKH(_hoadon);
-                    dgvLichSuDon.DataSource = _cLichSuDonTu.GetDS_3To(txtDanhBo.Text.Trim());
+                    
                     //if (dgvLichSuDon.RowCount > 0)
                     //    dgvLichSuDon.Sort(dgvLichSuDon.Columns["CreateDate"], ListSortDirection.Descending);
                 }

@@ -38,6 +38,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
         private void frmCapNhatDonKH_Load(object sender, EventArgs e)
         {
             dgvLichSuDonTu.AutoGenerateColumns = false;
+            dgvLichSuDonTu_DCBD.AutoGenerateColumns = false;
             dgvLichSuDon.AutoGenerateColumns = false;
             dataGridView1.AutoGenerateColumns = false;
 
@@ -190,6 +191,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             dgvLichSuDon.DataSource = _cLichSuDonTu.GetDS_3To(dontkh.DanhBo);
             ///
             dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("TKH", dontkh.MaDon);
+            dgvLichSuDonTu_DCBD.DataSource = _cLichSuDonTu.GetDS_DCBD(txtDanhBo.Text.Trim());
             dateChuyen.Value = DateTime.Now;
             cmbNoiChuyen.SelectedIndex = -1;
             txtGhiChu.Text = "";
@@ -398,6 +400,12 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                             frm.ShowDialog();
                         }
             }
+        }
+
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            dgvLichSuDon.DataSource = _cLichSuDonTu.GetDS_3To(txtDanhBo.Text.Trim());
+            dgvLichSuDonTu_DCBD.DataSource = _cLichSuDonTu.GetDS_DCBD(txtDanhBo.Text.Trim());
         }
 
     }

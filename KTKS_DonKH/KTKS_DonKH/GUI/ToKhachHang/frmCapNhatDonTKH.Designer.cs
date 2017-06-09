@@ -85,6 +85,15 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.dgvLichSuDonTu_DCBD = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -92,6 +101,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbNoiNhan.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuDon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuDonTu_DCBD)).BeginInit();
             this.SuspendLayout();
             // 
             // txtSoCongVan
@@ -334,6 +344,7 @@
             this.txtDanhBo.Name = "txtDanhBo";
             this.txtDanhBo.Size = new System.Drawing.Size(150, 22);
             this.txtDanhBo.TabIndex = 1;
+            this.txtDanhBo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBo_KeyPress);
             // 
             // label2
             // 
@@ -350,13 +361,13 @@
             this.label28.ForeColor = System.Drawing.Color.Red;
             this.label28.Location = new System.Drawing.Point(8, 225);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(215, 16);
+            this.label28.Size = new System.Drawing.Size(242, 16);
             this.label28.TabIndex = 56;
-            this.label28.Text = "Chuột Phải để XÓA Lịch Sử Chuyển";
+            this.label28.Text = "Chuột Phải để XÓA Lịch Sử Chuyển Đơn";
             // 
             // btnNhapNhieuDB
             // 
-            this.btnNhapNhieuDB.Location = new System.Drawing.Point(736, 205);
+            this.btnNhapNhieuDB.Location = new System.Drawing.Point(1016, 0);
             this.btnNhapNhieuDB.Name = "btnNhapNhieuDB";
             this.btnNhapNhieuDB.Size = new System.Drawing.Size(90, 25);
             this.btnNhapNhieuDB.TabIndex = 58;
@@ -465,7 +476,7 @@
             this.dgvLichSuDonTu.Location = new System.Drawing.Point(11, 244);
             this.dgvLichSuDonTu.Name = "dgvLichSuDonTu";
             this.dgvLichSuDonTu.ReadOnly = true;
-            this.dgvLichSuDonTu.Size = new System.Drawing.Size(710, 250);
+            this.dgvLichSuDonTu.Size = new System.Drawing.Size(710, 200);
             this.dgvLichSuDonTu.TabIndex = 68;
             this.dgvLichSuDonTu.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLichSuDonTu_CellMouseClick);
             this.dgvLichSuDonTu.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvLichSuDonTu_MouseClick);
@@ -531,10 +542,10 @@
             this.TenLD,
             this.CreateDate,
             this.NoiDung});
-            this.dgvLichSuDon.Location = new System.Drawing.Point(736, 9);
+            this.dgvLichSuDon.Location = new System.Drawing.Point(736, 28);
             this.dgvLichSuDon.Name = "dgvLichSuDon";
             this.dgvLichSuDon.ReadOnly = true;
-            this.dgvLichSuDon.Size = new System.Drawing.Size(500, 190);
+            this.dgvLichSuDon.Size = new System.Drawing.Size(500, 150);
             this.dgvLichSuDon.TabIndex = 70;
             this.dgvLichSuDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLichSuDon_CellFormatting);
             this.dgvLichSuDon.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvLichSuDon_KeyDown);
@@ -580,10 +591,10 @@
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5});
-            this.dataGridView1.Location = new System.Drawing.Point(736, 244);
+            this.dataGridView1.Location = new System.Drawing.Point(11, 450);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(461, 250);
+            this.dataGridView1.Size = new System.Drawing.Size(461, 100);
             this.dataGridView1.TabIndex = 82;
             // 
             // dataGridViewTextBoxColumn1
@@ -622,13 +633,99 @@
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.ForeColor = System.Drawing.Color.Red;
+            this.label12.Location = new System.Drawing.Point(736, 9);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(162, 16);
+            this.label12.TabIndex = 83;
+            this.label12.Text = "Lịch Sử Đơn theo Danh Bộ";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(736, 181);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(284, 16);
+            this.label13.TabIndex = 86;
+            this.label13.Text = "Lịch Sử Chuyển Đơn theo Danh Bộ (Điều Chỉnh)";
+            // 
+            // dgvLichSuDonTu_DCBD
+            // 
+            this.dgvLichSuDonTu_DCBD.AllowUserToAddRows = false;
+            this.dgvLichSuDonTu_DCBD.AllowUserToDeleteRows = false;
+            this.dgvLichSuDonTu_DCBD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLichSuDonTu_DCBD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn6,
+            this.Column1,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10});
+            this.dgvLichSuDonTu_DCBD.Location = new System.Drawing.Point(736, 200);
+            this.dgvLichSuDonTu_DCBD.Name = "dgvLichSuDonTu_DCBD";
+            this.dgvLichSuDonTu_DCBD.ReadOnly = true;
+            this.dgvLichSuDonTu_DCBD.Size = new System.Drawing.Size(500, 244);
+            this.dgvLichSuDonTu_DCBD.TabIndex = 88;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "ID";
+            this.dataGridViewTextBoxColumn6.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Visible = false;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "MaDon";
+            this.Column1.HeaderText = "Mã Đơn";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "NgayChuyen";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Ngày Chuyển";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Width = 120;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "NoiChuyen";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Nơi Chuyển";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Width = 120;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "NoiNhan";
+            this.dataGridViewTextBoxColumn9.HeaderText = "Nơi Nhận";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "GhiChu";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Ghi Chú";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            // 
             // frmCapNhatDonTKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1362, 512);
+            this.ClientSize = new System.Drawing.Size(1244, 559);
+            this.Controls.Add(this.dgvLichSuDonTu_DCBD);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.dgvLichSuDon);
             this.Controls.Add(this.chkcmbNoiNhan);
@@ -667,6 +764,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbNoiNhan.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuDon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuDonTu_DCBD)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -730,5 +828,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DataGridView dgvLichSuDonTu_DCBD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
     }
 }

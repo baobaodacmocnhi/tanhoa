@@ -104,6 +104,8 @@
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnThem = new System.Windows.Forms.Button();
             this.lbTruyThu = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -732,10 +734,10 @@
             this.TenLD,
             this.CreateDate,
             this.NoiDung});
-            this.dgvLichSuDon.Location = new System.Drawing.Point(850, 9);
+            this.dgvLichSuDon.Location = new System.Drawing.Point(850, 28);
             this.dgvLichSuDon.Name = "dgvLichSuDon";
             this.dgvLichSuDon.ReadOnly = true;
-            this.dgvLichSuDon.Size = new System.Drawing.Size(505, 190);
+            this.dgvLichSuDon.Size = new System.Drawing.Size(505, 150);
             this.dgvLichSuDon.TabIndex = 54;
             this.dgvLichSuDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLichSuDon_CellFormatting);
             this.dgvLichSuDon.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvLichSuDon_KeyDown);
@@ -791,10 +793,10 @@
             this.NoiChuyen,
             this.NoiNhan,
             this.GhiChu});
-            this.dgvLichSuDonTu.Location = new System.Drawing.Point(849, 205);
+            this.dgvLichSuDonTu.Location = new System.Drawing.Point(850, 200);
             this.dgvLichSuDonTu.Name = "dgvLichSuDonTu";
             this.dgvLichSuDonTu.ReadOnly = true;
-            this.dgvLichSuDonTu.Size = new System.Drawing.Size(506, 250);
+            this.dgvLichSuDonTu.Size = new System.Drawing.Size(506, 200);
             this.dgvLichSuDonTu.TabIndex = 69;
             // 
             // ID
@@ -855,13 +857,35 @@
             this.lbTruyThu.TabIndex = 71;
             this.lbTruyThu.Text = "lbTruyThu";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.ForeColor = System.Drawing.Color.Red;
+            this.label12.Location = new System.Drawing.Point(847, 9);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(162, 16);
+            this.label12.TabIndex = 84;
+            this.label12.Text = "Lịch Sử Đơn theo Danh Bộ";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.ForeColor = System.Drawing.Color.Red;
+            this.label15.Location = new System.Drawing.Point(847, 181);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(126, 16);
+            this.label15.TabIndex = 85;
+            this.label15.Text = "Lịch Sử Chuyển Đơn";
+            // 
             // frmNhanDonTKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1380, 472);
+            this.ClientSize = new System.Drawing.Size(1364, 467);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.lbTruyThu);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.dgvLichSuDonTu);
@@ -1001,6 +1025,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Label lbTruyThu;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label15;
 
 
 

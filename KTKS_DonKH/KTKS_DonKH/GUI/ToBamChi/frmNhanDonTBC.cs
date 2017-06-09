@@ -45,62 +45,11 @@ namespace KTKS_DonKH.GUI.ToBamChi
             InitializeComponent();
         }
 
-        public void LoadTTKH(HOADON hoadon)
-        {
-            txtHopDong.Text = hoadon.HOPDONG;
-            txtHoTen.Text = hoadon.TENKH;
-            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
-            txtGiaBieu.Text = hoadon.GB.ToString();
-            txtDinhMuc.Text = hoadon.DM.ToString();
-        }
-
-        public void LoadDonTBC(DonTBC dontbc)
-        {
-            cmbLD.SelectedValue = dontbc.MaLD.Value;
-            txtSoCongVan.Text = dontbc.SoCongVan;
-            txtMaDon.Text = "TBC" + dontbc.MaDon.ToString().Insert(dontbc.MaDon.ToString().Length - 2, "-");
-            txtNgayNhan.Text = dontbc.CreateDate.Value.ToString("dd/MM/yyyy");
-            txtNoiDung.Text = dontbc.NoiDung;
-            ///
-            txtDanhBo.Text = dontbc.DanhBo;
-            txtHopDong.Text = dontbc.HopDong;
-            txtDienThoai.Text = dontbc.DienThoai;
-            txtHoTen.Text = dontbc.HoTen;
-            txtDiaChi.Text = dontbc.DiaChi;
-            txtGiaBieu.Text = dontbc.GiaBieu;
-            txtDinhMuc.Text = dontbc.DinhMuc;
-            ///
-            dgvLichSuDon.DataSource = _cLichSuDonTu.GetDS_3To(dontbc.DanhBo);
-            dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("TBC", dontbc.MaDon);
-            cmbNoiChuyen.SelectedIndex = -1;
-            dateChuyen.Value = DateTime.Now;
-            txtGhiChu.Text = "";
-        }
-
-        public void Clear()
-        {
-            cmbLD.SelectedIndex = -1;
-            txtMaDon.Text = "";
-            txtNgayNhan.Text = "";
-            txtNoiDung.Text = "";
-            txtSoCongVan.Text = "";
-            ///
-            txtDanhBo.Text = "";
-            txtHopDong.Text = "";
-            txtHoTen.Text = "";
-            txtDiaChi.Text = "";
-            txtGiaBieu.Text = "";
-            txtDinhMuc.Text = "";
-            txtDienThoai.Text = "";
-            _hoadon = null;
-            _dontbc = null;
-            _MaDon = -1;
-        }
-
         private void frmNhanDonTBC_Load(object sender, EventArgs e)
         {
             dgvLichSuDon.AutoGenerateColumns = false;
             dgvLichSuDonTu.AutoGenerateColumns = false;
+            dgvLichSuDonTu_DCBD.AutoGenerateColumns = false;
 
             cmbLD.DataSource = _cLoaiDonTBC.GetDS();
             cmbLD.DisplayMember = "TenLD";
@@ -153,6 +102,61 @@ namespace KTKS_DonKH.GUI.ToBamChi
             }
         }
 
+        public void LoadTTKH(HOADON hoadon)
+        {
+            txtHopDong.Text = hoadon.HOPDONG;
+            txtHoTen.Text = hoadon.TENKH;
+            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
+            txtGiaBieu.Text = hoadon.GB.ToString();
+            txtDinhMuc.Text = hoadon.DM.ToString();
+            dgvLichSuDon.DataSource = _cLichSuDonTu.GetDS_3To(txtDanhBo.Text.Trim());
+            dgvLichSuDonTu_DCBD.DataSource = _cLichSuDonTu.GetDS_DCBD(txtDanhBo.Text.Trim());
+        }
+
+        public void LoadDonTBC(DonTBC dontbc)
+        {
+            cmbLD.SelectedValue = dontbc.MaLD.Value;
+            txtSoCongVan.Text = dontbc.SoCongVan;
+            txtMaDon.Text = "TBC" + dontbc.MaDon.ToString().Insert(dontbc.MaDon.ToString().Length - 2, "-");
+            txtNgayNhan.Text = dontbc.CreateDate.Value.ToString("dd/MM/yyyy");
+            txtNoiDung.Text = dontbc.NoiDung;
+            ///
+            txtDanhBo.Text = dontbc.DanhBo;
+            txtHopDong.Text = dontbc.HopDong;
+            txtDienThoai.Text = dontbc.DienThoai;
+            txtHoTen.Text = dontbc.HoTen;
+            txtDiaChi.Text = dontbc.DiaChi;
+            txtGiaBieu.Text = dontbc.GiaBieu;
+            txtDinhMuc.Text = dontbc.DinhMuc;
+            ///
+            dgvLichSuDon.DataSource = _cLichSuDonTu.GetDS_3To(dontbc.DanhBo);
+            dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("TBC", dontbc.MaDon);
+            dgvLichSuDonTu_DCBD.DataSource = _cLichSuDonTu.GetDS_DCBD(txtDanhBo.Text.Trim());
+            cmbNoiChuyen.SelectedIndex = -1;
+            dateChuyen.Value = DateTime.Now;
+            txtGhiChu.Text = "";
+        }
+
+        public void Clear()
+        {
+            cmbLD.SelectedIndex = -1;
+            txtMaDon.Text = "";
+            txtNgayNhan.Text = "";
+            txtNoiDung.Text = "";
+            txtSoCongVan.Text = "";
+            ///
+            txtDanhBo.Text = "";
+            txtHopDong.Text = "";
+            txtHoTen.Text = "";
+            txtDiaChi.Text = "";
+            txtGiaBieu.Text = "";
+            txtDinhMuc.Text = "";
+            txtDienThoai.Text = "";
+            _hoadon = null;
+            _dontbc = null;
+            _MaDon = -1;
+        }
+
         private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
@@ -183,7 +187,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
                 {
                     _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
                     LoadTTKH(_hoadon);
-                    dgvLichSuDon.DataSource = _cLichSuDonTu.GetDS_3To(txtDanhBo.Text.Trim());
+                    
                     //if (dgvLichSuDon.RowCount > 0)
                     //    dgvLichSuDon.Sort(dgvLichSuDon.Columns["CreateDate"], ListSortDirection.Descending);
                 }
