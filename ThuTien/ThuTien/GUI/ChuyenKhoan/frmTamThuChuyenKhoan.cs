@@ -291,16 +291,28 @@ namespace ThuTien.GUI.ChuyenKhoan
                 DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
 
                 ///kiểm tra danh bộ chặn tiền dư
-                string str = "";
+                string strTienDu = "";
+                string strDCHD = "";
                 foreach (DataRow item in dtExcel.Rows)
                     if (item[0].ToString().Replace(" ", "").Length == 11 && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
                         if (_cHoaDon.CheckKhoaTienDuByDanhBo(item[0].ToString().Replace(" ", "")))
                         {
-                            str += item[0].ToString().Replace(" ", "") + "\n";
+                            strTienDu += item[0].ToString().Replace(" ", "") + "\n";
                         }
-                if (!string.IsNullOrWhiteSpace(str))
+                        else
+                            if (_cHoaDon.CheckDCHDTienDuByDanhBo(item[0].ToString().Replace(" ", "")))
+                            {
+                                strDCHD += item[0].ToString().Replace(" ", "") + "\n";
+                            }
+
+                if (!string.IsNullOrWhiteSpace(strTienDu))
                 {
-                    MessageBox.Show("Chặn Tiền Dư:\n" + str, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Chặn Tiền Dư:\n" + strTienDu, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (!string.IsNullOrWhiteSpace(strDCHD))
+                {
+                    MessageBox.Show("DCHD Tiền Dư:\n" + strDCHD, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 

@@ -8871,6 +8871,7 @@ namespace ThuTien.DAL.Doi
                             To = itemtableND.TT_To.TenTo,
                             HanhThu = itemtableND.HoTen,
                             TienDu = itemtableTD.SoTien,
+                            itemHD.TongCongTruoc_DCHD,
                         };
             return LINQToDataTable(query);
         }
@@ -9558,6 +9559,17 @@ namespace ThuTien.DAL.Doi
         {
             return _db.HOADONs.Any(item => item.DANHBA == DanhBo && item.KhoaTienDu == true);
         }
+
+        public bool CheckDCHDienDuBySoHoaDon(string SoHoaDon)
+        {
+            return _db.HOADONs.Any(item => item.SOHOADON == SoHoaDon && item.DCHD == true);
+        }
+
+        public bool CheckDCHDTienDuByDanhBo(string DanhBo)
+        {
+            return _db.HOADONs.Any(item => item.DANHBA == DanhBo && item.DCHD == true);
+        }
+
     }
 
 }

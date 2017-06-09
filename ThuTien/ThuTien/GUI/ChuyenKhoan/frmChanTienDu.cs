@@ -31,6 +31,11 @@ namespace ThuTien.GUI.ChuyenKhoan
             dgvDSChanTienDu.AutoGenerateColumns = false;
 
             dgvDSChanTienDu.DataSource = _cHoaDon.GetDSChanTienDu();
+
+            dgvHoaDon_DCHD.AutoGenerateColumns = false;
+            dgvDCHD.AutoGenerateColumns = false;
+
+            dgvDCHD.DataSource = _cHoaDon.GetDSDCHDTienDu();
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
@@ -233,8 +238,8 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void txtDanhBo_DCHD_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim()) && e.KeyChar == 13)
-                dgvHoaDon_DCHD.DataSource = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim().Replace(" ", ""));
+            if (!string.IsNullOrEmpty(txtDanhBo_DCHD.Text.Trim()) && e.KeyChar == 13)
+                dgvHoaDon_DCHD.DataSource = _cHoaDon.GetDSTonByDanhBo(txtDanhBo_DCHD.Text.Trim().Replace(" ", ""));
             //foreach (DataGridViewRow item in dgvHoaDon.Rows)
             //{
             //    item.Cells["Chon"].Value = "True";
@@ -248,7 +253,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 try
                 {
                     foreach (DataGridViewRow item in dgvHoaDon_DCHD.Rows)
-                        if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()))
+                        if (item.Cells["Chon_DCHD"].Value != null && bool.Parse(item.Cells["Chon_DCHD"].Value.ToString()))
                         {
                             HOADON hoadon = _cHoaDon.Get(item.Cells["SoHoaDon_HD_DCHD"].Value.ToString());
                             hoadon.DCHD = true;
