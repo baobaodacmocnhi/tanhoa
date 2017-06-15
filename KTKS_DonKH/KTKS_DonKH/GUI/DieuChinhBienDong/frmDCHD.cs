@@ -57,7 +57,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             lstGiaNuoc = _cGiaNuoc.LoadDSGiaNuoc();
             dgvLichSu.AutoGenerateColumns = false;
 
-            if (_MaCTDCHD != 0)
+            if (_MaCTDCHD != -1)
             {
                 txtSoPhieu.Text = _MaCTDCHD.ToString();
                 KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
@@ -382,6 +382,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             dcbd.MaDon = _donkh.MaDon;
                             _cDCBD.Them(dcbd);
                         }
+                        if (_cDCBD.CheckExist_DCHD("TKH", _donkh.MaDon, txtDanhBo.Text.Trim(), txtKyHD.Text.Trim()) == true)
+                        {
+                            MessageBox.Show("Đã Lập ĐCHD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         ctdchd.MaDCBD = _cDCBD.Get("TKH", _donkh.MaDon).MaDCBD;
                     }
                     else
@@ -393,6 +398,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dcbd.MaDonTXL = _dontxl.MaDon;
                                 _cDCBD.Them(dcbd);
                             }
+                            if (_cDCBD.CheckExist_DCHD("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim(), txtKyHD.Text.Trim()) == true)
+                            {
+                                MessageBox.Show("Đã Lập ĐCHD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                             ctdchd.MaDCBD = _cDCBD.Get("TXL", _dontxl.MaDon).MaDCBD;
                         }
                         else
@@ -403,6 +413,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     DCBD dcbd = new DCBD();
                                     dcbd.MaDonTBC = _dontbc.MaDon;
                                     _cDCBD.Them(dcbd);
+                                }
+                                if (_cDCBD.CheckExist_DCHD("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim(), txtKyHD.Text.Trim()) == true)
+                                {
+                                    MessageBox.Show("Đã Lập ĐCHD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
                                 }
                                 ctdchd.MaDCBD = _cDCBD.Get("TBC", _dontbc.MaDon).MaDCBD;
                             }

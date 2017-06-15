@@ -1305,6 +1305,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                 itemYCCHDB.PhieuDuocKy,
                                 SoPhieu = itemYCCHDB.MaYCCHDB,
                                 Ma = itemYCCHDB.MaYCCHDB,
+                                ID = itemYCCHDB.MaYCCHDB,
                                 itemYCCHDB.CreateDate,
                                 itemYCCHDB.DanhBo,
                                 itemYCCHDB.HoTen,

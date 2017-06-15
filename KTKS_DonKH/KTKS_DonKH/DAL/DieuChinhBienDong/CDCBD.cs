@@ -604,6 +604,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemCTDCBD.ChuyenDocSo,
                                 SoPhieu = itemCTDCBD.MaCTDCBD,
                                 Ma = itemCTDCBD.MaCTDCBD,
+                                ID = itemCTDCBD.MaCTDCBD,
                                 DieuChinh = "Biến Động",
                                 itemCTDCBD.CreateDate,
                                 itemCTDCBD.DanhBo,
@@ -1054,6 +1055,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             {
                                 In = false,
                                 itemCTDCBD.ChuyenDocSo,
+                                ID = itemCTDCBD.MaCTDCBD,
                                 SoPhieu = itemCTDCBD.MaCTDCBD,
                                 Ma = itemCTDCBD.MaCTDCBD,
                                 DieuChinh = "Biến Động",
@@ -1548,6 +1550,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 In = false,
                                 SoPhieu = itemCTDCHD.MaCTDCHD,
                                 Ma = itemCTDCHD.MaCTDCHD,
+                                ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
                                 itemCTDCHD.CreateDate,
                                 itemCTDCHD.CodeF2,
@@ -2073,6 +2076,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 In = false,
                                 SoPhieu = itemCTDCHD.MaCTDCHD,
                                 Ma = itemCTDCHD.MaCTDCHD,
+                                ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
                                 itemCTDCHD.CreateDate,
                                 itemCTDCHD.DanhBo,
@@ -2177,6 +2181,21 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         public bool CheckExist_DCHD(decimal MaCTDCHD)
         {
             return db.CTDCHDs.Any(item => item.MaCTDCHD == MaCTDCHD);
+        }
+
+        public bool CheckExist_DCHD(string Loai, decimal MaDon, string DanhBo, string KyHD)
+        {
+            switch (Loai)
+            {
+                case "TKH":
+                    return db.CTDCHDs.Any(item => item.DCBD.MaDon == MaDon && item.DanhBo == DanhBo && item.KyHD == KyHD);
+                case "TXL":
+                    return db.CTDCHDs.Any(item => item.DCBD.MaDonTXL == MaDon && item.DanhBo == DanhBo && item.KyHD == KyHD);
+                case "TBC":
+                    return db.CTDCHDs.Any(item => item.DCBD.MaDonTBC == MaDon && item.DanhBo == DanhBo && item.KyHD == KyHD);
+                default:
+                    return false;
+            }
         }
 
         #endregion
