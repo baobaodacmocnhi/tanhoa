@@ -199,6 +199,11 @@ namespace ThuTien.GUI.ChuyenKhoan
                         MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
+                    if (_cHoaDon.CheckDCHDienDuBySoHoaDon(item.Text))
+                    {
+                        MessageBox.Show("Hóa Đơn đã DCHD Tiền Dư " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
                 try
                 {

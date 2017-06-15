@@ -242,6 +242,10 @@ namespace ThuTien.GUI.ToTruong
                         cttonghopno.ThueGTGT = decimal.Parse(item.Cells["ThueGTGT"].Value.ToString());
                         cttonghopno.PhiBVMT = decimal.Parse(item.Cells["PhiBVMT"].Value.ToString());
                         cttonghopno.TongCong = decimal.Parse(item.Cells["TongCong"].Value.ToString());
+                        if (item.Cells["TienDu"] != null && item.Cells["TienDu"].Value.ToString() != "")
+                            cttonghopno.TienDu = decimal.Parse(item.Cells["TienDu"].Value.ToString());
+                        else
+                            cttonghopno.TienDu = 0;
                         cttonghopno.CreateBy = CNguoiDung.MaND;
                         cttonghopno.CreateDate = DateTime.Now;
                         tonghopno.TT_CTTongHopNos.Add(cttonghopno);
@@ -263,7 +267,11 @@ namespace ThuTien.GUI.ToTruong
                     dr["ThueGTGT"] = item.Cells["ThueGTGT"].Value.ToString();
                     dr["PhiBVMT"] = item.Cells["PhiBVMT"].Value.ToString();
                     dr["TongCong"] = item.Cells["TongCong"].Value.ToString();
-                    TongCongSo += int.Parse(item.Cells["TongCong"].Value.ToString());
+                    if (item.Cells["TienDu"] != null && item.Cells["TienDu"].Value.ToString() != "")
+                        dr["TienDu"] = item.Cells["TienDu"].Value.ToString();
+                    else
+                        dr["TienDu"] = 0;
+                    TongCongSo += int.Parse(item.Cells["TongCong"].Value.ToString()) - int.Parse(dr["TienDu"].ToString());
                     dr["CSM"] = txtCSM.Text.Trim();
                     dr["CSC"] = txtCSC.Text.Trim();
                     dr["TT"] = txtTT.Text.Trim();
@@ -274,6 +282,7 @@ namespace ThuTien.GUI.ToTruong
                     ds.Tables["TongHopNo"].Rows.Add(dr);
                 }
                 DataRow dr1 = ds.Tables["TongHopNo"].NewRow();
+                dr1["TongCongSo"] = TongCongSo;
                 dr1["TongCongChu"] = _cTamThu.ConvertMoneyToWord(TongCongSo.ToString());
                 dr1["NgayThanhToan"] = dateThanhToan.Value.ToString("dd/MM/yyyy");
                 if (radGiamDoc.Checked)
@@ -458,7 +467,11 @@ namespace ThuTien.GUI.ToTruong
                 dr["ThueGTGT"] = item.ThueGTGT.Value.ToString();
                 dr["PhiBVMT"] = item.PhiBVMT.Value.ToString();
                 dr["TongCong"] = item.TongCong.Value.ToString();
-                TongCongSo += (int)item.TongCong.Value;
+                if (item.TienDu != null)
+                    dr["TienDu"] = item.TienDu.Value.ToString();
+                else
+                    dr["TienDu"] = 0;
+                TongCongSo += (int)item.TongCong.Value - int.Parse(dr["TienDu"].ToString());
                 dr["CSM"] = tonghopno.ChiSoMoi;
                 dr["CSC"] = tonghopno.ChiSoCu;
                 dr["TT"] = tonghopno.TieuThu;
@@ -469,6 +482,7 @@ namespace ThuTien.GUI.ToTruong
                 ds.Tables["TongHopNo"].Rows.Add(dr);
             }
             DataRow dr1 = ds.Tables["TongHopNo"].NewRow();
+            dr1["TongCongSo"] = TongCongSo;
             dr1["TongCongChu"] = _cTamThu.ConvertMoneyToWord(TongCongSo.ToString());
             dr1["NgayThanhToan"] = tonghopno.NgayThanhToan.Value.ToString("dd/MM/yyyy");
             if (radGiamDoc.Checked)
@@ -476,6 +490,7 @@ namespace ThuTien.GUI.ToTruong
             else
                 if (radPhoGiamDoc.Checked)
                     dr1["NguoiKy"] = "P.GIÁM ĐỐC";
+
             ds.Tables["TongHopNo"].Rows.Add(dr1);
             rptTongHopNo rpt = new rptTongHopNo();
             rpt.SetDataSource(ds);
