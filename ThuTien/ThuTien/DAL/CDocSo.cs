@@ -15,7 +15,7 @@ namespace ThuTien.DAL
         protected SqlConnection connection;         // Đối tượng kết nối
         protected SqlDataAdapter adapter;           // Đối tượng adapter chứa dữ liệu
         protected SqlCommand command;               // Đối tượng command thực thi truy vấn
-        dbCAPNUOCTANHOADataContext _dbCapNuocTanHoa = new dbCAPNUOCTANHOADataContext();
+        dbCAPNUOCTANHOADataContext _db = new dbCAPNUOCTANHOADataContext();
 
         public CDocSo()
         {
@@ -149,7 +149,7 @@ namespace ThuTien.DAL
 
         public DataTable GetTTKH(string DanhBo)
         {
-            return LINQToDataTable(_dbCapNuocTanHoa.TB_DULIEUKHACHHANGs.Where(item => item.DANHBO == DanhBo)
+            return LINQToDataTable(_db.TB_DULIEUKHACHHANGs.Where(item => item.DANHBO == DanhBo)
                 .Select(item => new
                 {
                     DanhBo = item.DANHBO,
@@ -170,7 +170,7 @@ namespace ThuTien.DAL
 
         public DataTable GetTTKH(string HoTen, string SoNha, string TenDuong)
         {
-            return LINQToDataTable(_dbCapNuocTanHoa.TB_DULIEUKHACHHANGs.Where(item => item.HOTEN.Contains(HoTen.ToUpper()) && item.SONHA.Contains(SoNha.ToUpper()) && item.TENDUONG.Contains(TenDuong.ToUpper()))
+            return LINQToDataTable(_db.TB_DULIEUKHACHHANGs.Where(item => item.HOTEN.Contains(HoTen.ToUpper()) && item.SONHA.Contains(SoNha.ToUpper()) && item.TENDUONG.Contains(TenDuong.ToUpper()))
                 .Select(item => new
                 {
                     DanhBo = item.DANHBO,
@@ -190,18 +190,18 @@ namespace ThuTien.DAL
 
         public DataTable GetGhiChu(string DanhBo)
         {
-            return LINQToDataTable(_dbCapNuocTanHoa.TB_GHICHUs.Where(item => item.DANHBO == DanhBo)
+            return LINQToDataTable(_db.TB_GHICHUs.Where(item => item.DANHBO == DanhBo)
                 .OrderByDescending(item => item.CREATEDATE).Select(item => new { item.CREATEDATE, item.NOIDUNG }).Take(5).ToList());
         }
         
         public string GetDienThoaiKH(string DanhBo)
         {
-            return _dbCapNuocTanHoa.TB_DULIEUKHACHHANGs.SingleOrDefault(item => item.DANHBO == DanhBo).DIENTHOAI;
+            return _db.TB_DULIEUKHACHHANGs.SingleOrDefault(item => item.DANHBO == DanhBo).DIENTHOAI;
         }
 
         public string GetCoDHN(string DanhBo)
         {
-            return _dbCapNuocTanHoa.TB_DULIEUKHACHHANGs.SingleOrDefault(item=>item.DANHBO==DanhBo).CODH;
+            return _db.TB_DULIEUKHACHHANGs.SingleOrDefault(item => item.DANHBO == DanhBo).CODH;
                
         }
 
@@ -238,15 +238,15 @@ namespace ThuTien.DAL
 
         public bool CheckExist(string DanhBo)
         {
-            return _dbCapNuocTanHoa.TB_DULIEUKHACHHANGs.Any(item => item.DANHBO == DanhBo);
+            return _db.TB_DULIEUKHACHHANGs.Any(item => item.DANHBO == DanhBo);
         }
 
         public void GetPhuongQuan(string DanhBo, out string TenPhuong, out string TenQuan)
         {
             TenPhuong = "";
             TenQuan = "";
-            var query = from item in _dbCapNuocTanHoa.TB_DULIEUKHACHHANGs
-                        join itemP in _dbCapNuocTanHoa.PHUONGs on new { p = item.PHUONG, q = Convert.ToInt32(item.QUAN) } equals new { p = itemP.MAPHUONG, q = itemP.MAQUAN }
+            var query = from item in _db.TB_DULIEUKHACHHANGs
+                        join itemP in _db.PHUONGs on new { p = item.PHUONG, q = Convert.ToInt32(item.QUAN) } equals new { p = itemP.MAPHUONG, q = itemP.MAQUAN }
                         where item.DANHBO == DanhBo
                         select new
                         {

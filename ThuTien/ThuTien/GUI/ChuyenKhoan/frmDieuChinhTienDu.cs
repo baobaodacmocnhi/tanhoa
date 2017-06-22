@@ -128,7 +128,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         if (int.Parse(txtSoTienCu.Text.Trim()) >= 50000)
                         {
                             TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByDanhBo_Last(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""));
-                            if (kqdongnuoc != null)
+                            if (kqdongnuoc != null&&kqdongnuoc.DongPhi==false)
                             {
                                 using (var scope = new TransactionScope())
                                 {
@@ -167,7 +167,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 }
                             }
                             else
-                                MessageBox.Show("Không có Kết Quả Đóng Nước", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Không có Kết Quả Đóng Nước, hoặc đã Đóng Phí rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
                             MessageBox.Show("Số tiền không đủ 50.000đ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

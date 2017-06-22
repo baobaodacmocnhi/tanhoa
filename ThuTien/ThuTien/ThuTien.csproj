@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>720</ApplicationRevision>
+    <ApplicationRevision>722</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -454,6 +454,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DAL\CDocSo.cs" />
+    <Compile Include="DAL\CDocSoHandheld.cs" />
     <Compile Include="DAL\ChuyenKhoan\CBangKe.cs" />
     <Compile Include="DAL\ChuyenKhoan\CDichVuThu.cs" />
     <Compile Include="DAL\ChuyenKhoan\CPhiMoNuoc.cs" />
@@ -1008,6 +1009,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbDocSo.dbml</DependentUpon>
     </Compile>
+    <Compile Include="LinQ\dbDocSoHandheld.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbDocSoHandheld.dbml</DependentUpon>
+    </Compile>
     <Compile Include="LinQ\dbKinhDoanh.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1260,6 +1266,11 @@
     <None Include="LinQ\dbDocSo.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>dbDocSo.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="LinQ\dbDocSoHandheld.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dbDocSoHandheld.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="LinQ\dbKinhDoanh.dbml">
@@ -1527,6 +1538,9 @@
     </EmbeddedResource>
     <None Include="LinQ\dbDocSo.dbml.layout">
       <DependentUpon>dbDocSo.dbml</DependentUpon>
+    </None>
+    <None Include="LinQ\dbDocSoHandheld.dbml.layout">
+      <DependentUpon>dbDocSoHandheld.dbml</DependentUpon>
     </None>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

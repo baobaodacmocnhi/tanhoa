@@ -165,11 +165,11 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 if (_cPhiMoNuoc.Xoa(phimonuoc))
                                 {
                                     scope.Complete();
-                                    btnXem.PerformClick();
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
                         }
                     }
+                    btnXem.PerformClick();
                 }
             }
             else
