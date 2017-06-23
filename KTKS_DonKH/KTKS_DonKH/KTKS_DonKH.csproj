@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>589</ApplicationRevision>
+    <ApplicationRevision>591</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -599,6 +599,7 @@
     <Compile Include="DAL\CDocSo.cs" />
     <Compile Include="DAL\DonTu\CDonTu.cs" />
     <Compile Include="DAL\DonTu\CLichSuDonTu.cs" />
+    <Compile Include="DAL\DonTu\CNhomDon.cs" />
     <Compile Include="DAL\DonTu\CNoiChuyen.cs" />
     <Compile Include="DAL\DonTu\CPhongBanDoi.cs" />
     <Compile Include="DAL\CExcel.cs" />
@@ -729,6 +730,12 @@
     </Compile>
     <Compile Include="GUI\CatHuyDanhBo\frmNoiDungXuLyCHDB.Designer.cs">
       <DependentUpon>frmNoiDungXuLyCHDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DonTu\frmDonTu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DonTu\frmDonTu.Designer.cs">
+      <DependentUpon>frmDonTu.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ToBamChi\frmNhapNhieuDBTBC.cs">
       <SubType>Form</SubType>
@@ -1506,6 +1513,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CatHuyDanhBo\frmNoiDungXuLyCHDB.resx">
       <DependentUpon>frmNoiDungXuLyCHDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DonTu\frmDonTu.resx">
+      <DependentUpon>frmDonTu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToBamChi\frmNhapNhieuDBTBC.resx">
       <DependentUpon>frmNhapNhieuDBTBC.cs</DependentUpon>

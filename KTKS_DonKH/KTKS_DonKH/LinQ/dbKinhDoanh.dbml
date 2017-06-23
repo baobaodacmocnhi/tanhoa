@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="KTKS_DonKH" Class="dbKinhDoanhDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=SERVER9;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=sa" SettingsObjectName="KTKS_DonKH.Properties.Settings" SettingsPropertyName="KTKS_DonKHConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=SERVER9;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=sa" SettingsObjectName="KTKS_DonKH.Properties.Settings" SettingsPropertyName="KTKS_DonKHConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.BamChi" Member="BamChis">
     <Type Name="BamChi">
       <Column Name="MaBC" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -782,6 +782,7 @@
       <Association Name="DonKH_CHDB" Member="CHDBs" ThisKey="MaDon" OtherKey="MaDon" Type="CHDB" />
       <Association Name="DonKH_DCBD" Member="DCBDs" ThisKey="MaDon" OtherKey="MaDon" Type="DCBD" />
       <Association Name="DonKH_DongNuoc" Member="DongNuocs" ThisKey="MaDon" OtherKey="MaDon" Type="DongNuoc" />
+      <Association Name="DonKH_GianLan" Member="GianLans" ThisKey="MaDon" OtherKey="MaDon" Type="GianLan" />
       <Association Name="DonKH_KTXM" Member="KTXMs" ThisKey="MaDon" OtherKey="MaDon" Type="KTXM" />
       <Association Name="DonKH_LichSuChuyenBanDoiKhac" Member="LichSuChuyenBanDoiKhacs" ThisKey="MaDon" OtherKey="MaDon" Type="LichSuChuyenBanDoiKhac" />
       <Association Name="DonKH_LichSuChuyenKhac" Member="LichSuChuyenKhacs" ThisKey="MaDon" OtherKey="MaDon" Type="LichSuChuyenKhac" />
@@ -790,7 +791,6 @@
       <Association Name="DonKH_PhieuCHDB" Member="PhieuCHDBs" ThisKey="MaDon" OtherKey="MaDon" Type="PhieuCHDB" />
       <Association Name="DonKH_TruyThuTienNuoc" Member="TruyThuTienNuocs" ThisKey="MaDon" OtherKey="MaDon" Type="TruyThuTienNuoc" />
       <Association Name="DonKH_TTTL" Member="TTTLs" ThisKey="MaDon" OtherKey="MaDon" Type="TTTL" />
-      <Association Name="DonKH_GianLan" Member="GianLans" ThisKey="MaDon" OtherKey="MaDon" Type="GianLan" />
       <Association Name="LoaiDon_DonKH" Member="LoaiDon" ThisKey="MaLD" OtherKey="MaLD" Type="LoaiDon" IsForeignKey="true" />
     </Type>
   </Table>
@@ -826,11 +826,11 @@
       <Association Name="DonTBC_CHDB" Member="CHDBs" ThisKey="MaDon" OtherKey="MaDonTBC" Type="CHDB" />
       <Association Name="DonTBC_DCBD" Member="DCBDs" ThisKey="MaDon" OtherKey="MaDonTBC" Type="DCBD" />
       <Association Name="DonTBC_DongNuoc" Member="DongNuocs" ThisKey="MaDon" OtherKey="MaDonTBC" Type="DongNuoc" />
+      <Association Name="DonTBC_GianLan" Member="GianLans" ThisKey="MaDon" OtherKey="MaDonTBC" Type="GianLan" />
       <Association Name="DonTBC_KTXM" Member="KTXMs" ThisKey="MaDon" OtherKey="MaDonTBC" Type="KTXM" />
       <Association Name="DonTBC_PhieuCHDB" Member="PhieuCHDBs" ThisKey="MaDon" OtherKey="MaDonTBC" Type="PhieuCHDB" />
       <Association Name="DonTBC_TruyThuTienNuoc" Member="TruyThuTienNuocs" ThisKey="MaDon" OtherKey="MaDonTBC" Type="TruyThuTienNuoc" />
       <Association Name="DonTBC_TTTL" Member="TTTLs" ThisKey="MaDon" OtherKey="MaDonTBC" Type="TTTL" />
-      <Association Name="DonTBC_GianLan" Member="GianLans" ThisKey="MaDon" OtherKey="MaDonTBC" Type="GianLan" />
       <Association Name="LoaiDonTBC_DonTBC" Member="LoaiDonTBC" ThisKey="MaLD" OtherKey="MaLD" Type="LoaiDonTBC" IsForeignKey="true" />
     </Type>
   </Table>
@@ -839,6 +839,8 @@
       <Column Name="NamThang" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="STT" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="NoiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SoNK" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VanDeKhac" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -907,6 +909,7 @@
       <Association Name="DonTXL_CHDB" Member="CHDBs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="CHDB" />
       <Association Name="DonTXL_DCBD" Member="DCBDs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="DCBD" />
       <Association Name="DonTXL_DongNuoc" Member="DongNuocs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="DongNuoc" />
+      <Association Name="DonTXL_GianLan" Member="GianLans" ThisKey="MaDon" OtherKey="MaDonTXL" Type="GianLan" />
       <Association Name="DonTXL_KTXM" Member="KTXMs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="KTXM" />
       <Association Name="DonTXL_LichSuChuyenBanDoiKhac" Member="LichSuChuyenBanDoiKhacs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="LichSuChuyenBanDoiKhac" />
       <Association Name="DonTXL_LichSuChuyenKhac" Member="LichSuChuyenKhacs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="LichSuChuyenKhac" />
@@ -915,7 +918,6 @@
       <Association Name="DonTXL_PhieuCHDB" Member="PhieuCHDBs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="PhieuCHDB" />
       <Association Name="DonTXL_TruyThuTienNuoc" Member="TruyThuTienNuocs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="TruyThuTienNuoc" />
       <Association Name="DonTXL_TTTL" Member="TTTLs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="TTTL" />
-      <Association Name="DonTXL_GianLan" Member="GianLans" ThisKey="MaDon" OtherKey="MaDonTXL" Type="GianLan" />
       <Association Name="LoaiDonTXL_DonTXL" Member="LoaiDonTXL" ThisKey="MaLD" OtherKey="MaLD" Type="LoaiDonTXL" IsForeignKey="true" />
     </Type>
   </Table>
@@ -946,6 +948,57 @@
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GianLan" Member="GianLans">
+    <Type Name="GianLan">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaDon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="MaDonTXL" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="MaDonTBC" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="NgayKTXM" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FileBienBan" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DanhBo" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NoiDungViPham" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TienDHN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ToTrinh1" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SoThongBao1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TieuThu1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GiaBan1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="File1" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ToTrinh2" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SoThongBao2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TieuThu2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GiaBan2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="File2" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ThanhToan1" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Ngay1" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SoTien1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoPhieu1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ThanhToan2" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Ngay2" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SoTien2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoPhieu2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ThanhToan3" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Ngay3" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SoTien3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoPhieu3" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ThanhToan4" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Ngay4" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SoTien4" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoPhieu4" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TinhTrang" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NhanVien" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="XepDon" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="DonKH_GianLan" Member="DonKH" ThisKey="MaDon" OtherKey="MaDon" Type="DonKH" IsForeignKey="true" />
+      <Association Name="DonTBC_GianLan" Member="DonTBC" ThisKey="MaDonTBC" OtherKey="MaDon" Type="DonTBC" IsForeignKey="true" />
+      <Association Name="DonTXL_GianLan" Member="DonTXL" ThisKey="MaDonTXL" OtherKey="MaDon" Type="DonTXL" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.GiaNuoc" Member="GiaNuocs">
@@ -1208,6 +1261,20 @@
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Nhom_PhanQuyenNhom" Member="PhanQuyenNhoms" ThisKey="MaNhom" OtherKey="MaNhom" Type="PhanQuyenNhom" />
       <Association Name="Nhom_User" Member="Users" ThisKey="MaNhom" OtherKey="MaNhom" Type="User" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NhomDon" Member="NhomDons">
+    <Type Name="NhomDon">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="STT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="DieuChinh" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="KhieuNai" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DHN" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.NoiChuyen" Member="NoiChuyens">
@@ -1528,57 +1595,6 @@
       <Association Name="User_PhanQuyenNguoiDung" Member="PhanQuyenNguoiDungs" ThisKey="MaU" OtherKey="MaND" Type="PhanQuyenNguoiDung" />
       <Association Name="Nhom_User" Member="Nhom" ThisKey="MaNhom" OtherKey="MaNhom" Type="Nhom" IsForeignKey="true" />
       <Association Name="To_User" Member="To" ThisKey="MaTo" OtherKey="MaTo" Type="To" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.GianLan" Member="GianLans">
-    <Type Name="GianLan">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MaDon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="MaDonTXL" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="MaDonTBC" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="NgayKTXM" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="FileBienBan" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="DanhBo" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
-      <Column Name="HoTen" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="NoiDungViPham" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="TienDHN" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ToTrinh1" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="SoThongBao1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="TieuThu1" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="GiaBan1" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="File1" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="ToTrinh2" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="SoThongBao2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="TieuThu2" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="GiaBan2" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="File2" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="ThanhToan1" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="Ngay1" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="SoTien1" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SoPhieu1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="ThanhToan2" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="Ngay2" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="SoTien2" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SoPhieu2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="ThanhToan3" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="Ngay3" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="SoTien3" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SoPhieu3" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="ThanhToan4" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="Ngay4" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="SoTien4" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SoPhieu4" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="TinhTrang" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="NhanVien" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="XepDon" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="DonKH_GianLan" Member="DonKH" ThisKey="MaDon" OtherKey="MaDon" Type="DonKH" IsForeignKey="true" />
-      <Association Name="DonTBC_GianLan" Member="DonTBC" ThisKey="MaDonTBC" OtherKey="MaDon" Type="DonTBC" IsForeignKey="true" />
-      <Association Name="DonTXL_GianLan" Member="DonTXL" ThisKey="MaDonTXL" OtherKey="MaDon" Type="DonTXL" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

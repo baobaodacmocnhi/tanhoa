@@ -7,7 +7,7 @@ using System.Data;
 
 namespace KTKS_DonKH.DAL.DonTu
 {
-    class CDonTu:CDAL
+    class CDonTu : CDAL
     {
         public bool Them(LinQ.DonTu entity)
         {
@@ -31,6 +31,7 @@ namespace KTKS_DonKH.DAL.DonTu
             }
             catch (Exception)
             {
+                Refresh();
                 return false;
             }
         }
@@ -46,6 +47,7 @@ namespace KTKS_DonKH.DAL.DonTu
             }
             catch (Exception)
             {
+                Refresh();
                 return false;
             }
 
@@ -61,14 +63,16 @@ namespace KTKS_DonKH.DAL.DonTu
             }
             catch (Exception)
             {
+                Refresh();
                 return false;
             }
         }
 
         public DataTable GetDS()
         {
-           return  LINQToDataTable(db.DonTus.ToList());
+            return LINQToDataTable(db.DonTus.ToList());
         }
+
 
     }
 }

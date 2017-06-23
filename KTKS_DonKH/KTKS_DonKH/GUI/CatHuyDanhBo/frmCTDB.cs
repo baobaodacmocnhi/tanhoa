@@ -378,7 +378,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     else
                         if (_dontxl != null)
                         {
-                            if (_cCHDB.CheckExist_CHDB("", _dontxl.MaDon) == false)
+                            if (_cCHDB.CheckExist_CHDB("TXL", _dontxl.MaDon) == false)
                             {
                                 CHDB chdb = new CHDB();
                                 chdb.MaDonTXL = _dontxl.MaDon;

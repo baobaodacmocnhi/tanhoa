@@ -499,11 +499,11 @@ namespace KTKS_DonKH.GUI.CongVan
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            KTKS_DonKH.DAL.DonTu.CDonTu _cDonTu = new DAL.DonTu.CDonTu();
-            DonTu entity=new DonTu();
-            entity.NoiDung="test";
-            _cDonTu.Them(entity);
-            dgvTest.DataSource = _cDonTu.GetDS();
+            //KTKS_DonKH.DAL.DonTu.CDonTu _cDonTu = new DAL.DonTu.CDonTu();
+            //DonTu entity=new DonTu();
+            //entity.NoiDung="test";
+            //_cDonTu.Them(entity);
+            //dgvTest.DataSource = _cDonTu.GetDS();
         }
 
        
