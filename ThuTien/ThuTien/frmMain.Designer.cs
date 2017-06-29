@@ -850,6 +850,7 @@
             this.mnuPhoGiamDoc.Name = "mnuPhoGiamDoc";
             this.mnuPhoGiamDoc.Size = new System.Drawing.Size(95, 20);
             this.mnuPhoGiamDoc.Text = "Phó Giám Đốc";
+            this.mnuPhoGiamDoc.Visible = false;
             // 
             // mnuKiemTraThu2Lan
             // 
