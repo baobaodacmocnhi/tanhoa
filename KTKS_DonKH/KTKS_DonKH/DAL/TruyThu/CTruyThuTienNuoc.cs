@@ -377,12 +377,15 @@ namespace KTKS_DonKH.DAL.TruyThu
                 if (db.TruyThuTienNuoc_ThuMois.Count() > 0)
                 {
                     entity.ID = db.TruyThuTienNuoc_ThuMois.Max(item => item.ID) + 1;
-                    entity.STT = db.TruyThuTienNuoc_ThuMois.Where(item => item.MaTTTN == entity.MaTTTN).Count() + 1;
+                    if (db.TruyThuTienNuoc_ThuMois.Where(item => item.MaTTTN == entity.MaTTTN).Count() == 0)
+                        entity.STT = 2;
+                    else
+                        entity.STT = db.TruyThuTienNuoc_ThuMois.Where(item => item.MaTTTN == entity.MaTTTN).Count() + 1;
                 }
                 else
                 {
                     entity.ID = 1;
-                    entity.STT = 1;
+                    entity.STT = 2;
                 }
                 entity.CreateDate = DateTime.Now;
                 entity.CreateBy = CTaiKhoan.MaUser;
