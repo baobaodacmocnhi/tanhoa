@@ -11,6 +11,7 @@ using ThuTien.DAL.QuanTri;
 using ThuTien.LinQ;
 using System.Globalization;
 using ThuTien.DAL.ChuyenKhoan;
+using System.Transactions;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -256,12 +257,17 @@ namespace ThuTien.GUI.ChuyenKhoan
                         if (item.Cells["Chon_DCHD"].Value != null && bool.Parse(item.Cells["Chon_DCHD"].Value.ToString()))
                         {
                             HOADON hoadon = _cHoaDon.Get(item.Cells["SoHoaDon_HD_DCHD"].Value.ToString());
-                            hoadon.DCHD = true;
-                            hoadon.Ngay_DCHD = DateTime.Now;
-                            hoadon.TongCongTruoc_DCHD = (int)hoadon.TONGCONG.Value;
-                            hoadon.TienDuTruoc_DCHD = _cTienDu.GetTienDu(hoadon.DANHBA);
-                            hoadon.TONGCONG -= hoadon.TienDuTruoc_DCHD;
-                            _cHoaDon.Sua(hoadon);
+                            if (hoadon.DCHD == false)
+                                using (var scope = new TransactionScope())
+                                {
+                                    hoadon.DCHD = true;
+                                    hoadon.Ngay_DCHD = DateTime.Now;
+                                    hoadon.TongCongTruoc_DCHD = (int)hoadon.TONGCONG.Value;
+                                    hoadon.TienDuTruoc_DCHD = _cTienDu.GetTienDu(hoadon.DANHBA);
+                                    hoadon.TONGCONG -= hoadon.TienDuTruoc_DCHD;
+                                    if (_cHoaDon.Sua(hoadon))
+                                        scope.Complete();
+                                }
                         }
                     dgvDCHD.DataSource = _cHoaDon.GetDSDCHDTienDu();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -283,12 +289,16 @@ namespace ThuTien.GUI.ChuyenKhoan
                 {
                     foreach (DataGridViewRow item in dgvDCHD.SelectedRows)
                     {
-                        HOADON hoadon = _cHoaDon.Get(item.Cells["SoHoaDon_DCHD"].Value.ToString());
-                        hoadon.DCHD = false;
-                        hoadon.TONGCONG = hoadon.TongCongTruoc_DCHD;
-                        hoadon.TongCongTruoc_DCHD = null;
-                        hoadon.TienDuTruoc_DCHD = null;
-                        _cHoaDon.Sua(hoadon);
+                        using (var scope = new TransactionScope())
+                        {
+                            HOADON hoadon = _cHoaDon.Get(item.Cells["SoHoaDon_DCHD"].Value.ToString());
+                            hoadon.DCHD = false;
+                            hoadon.TONGCONG = hoadon.TongCongTruoc_DCHD;
+                            hoadon.TongCongTruoc_DCHD = null;
+                            hoadon.TienDuTruoc_DCHD = null;
+                            if (_cHoaDon.Sua(hoadon))
+                                scope.Complete();
+                        }
                     }
                     dgvDCHD.DataSource = _cHoaDon.GetDSDCHDTienDu();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
