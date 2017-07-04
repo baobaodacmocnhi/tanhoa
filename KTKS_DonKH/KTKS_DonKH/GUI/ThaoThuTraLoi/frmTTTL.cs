@@ -14,6 +14,8 @@ using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.DAL;
 using KTKS_DonKH.DAL.ToBamChi;
+using KTKS_DonKH.BaoCao;
+using KTKS_DonKH.BaoCao.ThaoThuTraLoi;
 
 namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 {
@@ -554,6 +556,46 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             else
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+        }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            if (_cttttl != null)
+            {
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
+
+                dr["SoPhieu"] = _cttttl.MaCTTTTL.ToString().Insert(_cttttl.MaCTTTTL.ToString().Length - 2, "-");
+                dr["LoTrinh"] = _cttttl.LoTrinh;
+                dr["HoTen"] = _cttttl.HoTen;
+                dr["DiaChi"] = _cttttl.DiaChi;
+                if (!string.IsNullOrEmpty(_cttttl.DanhBo))
+                    dr["DanhBo"] = _cttttl.DanhBo.Insert(7, " ").Insert(4, " ");
+                dr["HopDong"] = _cttttl.HopDong;
+                dr["GiaBieu"] = _cttttl.GiaBieu;
+                dr["DinhMuc"] = _cttttl.DinhMuc;
+                if (_cttttl.TTTL.MaDon != null)
+                    dr["NgayNhanDon"] = _cttttl.TTTL.DonKH.CreateDate.Value.ToString("dd/MM/yyyy");
+                else
+                    if (_cttttl.TTTL.MaDonTXL != null)
+                        dr["NgayNhanDon"] = _cttttl.TTTL.DonTXL.CreateDate.Value.ToString("dd/MM/yyyy");
+                    else
+                        if (_cttttl.TTTL.MaDonTBC != null)
+                            dr["NgayNhanDon"] = _cttttl.TTTL.DonTBC.CreateDate.Value.ToString("dd/MM/yyyy");
+
+                dr["VeViec"] = _cttttl.VeViec;
+                dr["NoiDung"] = _cttttl.NoiDung;
+                dr["NoiNhan"] = _cttttl.NoiNhan;
+                dr["ChucVu"] = _cttttl.ChucVu;
+                dr["NguoiKy"] = _cttttl.NguoiKy;
+
+                dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+
+                rptThaoThuTraLoi rpt = new rptThaoThuTraLoi();
+                rpt.SetDataSource(dsBaoCao);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.Show();
+            }
         }
 
 

@@ -930,6 +930,18 @@ namespace KTKS_DonKH.GUI.TruyThu
                     dr["TongCongMoi"] = item.Cells["TongCong_Moi"].Value.ToString();
                     dr["TangGiam"] = item.Cells["TangGiam"].Value.ToString();
                     dr["NhanVien"] = CTaiKhoan.HoTen;
+                    TruyThuTienNuoc tttn = new TruyThuTienNuoc();
+                    if (_donkh != null)
+                        tttn = _cTTTN.Get("TKH", _donkh.MaDon);
+                    else
+                        if (_dontxl != null)
+                            tttn = _cTTTN.Get("TXL", _dontxl.MaDon);
+                        else
+                            if (_dontbc != null)
+                                tttn = _cTTTN.Get("TBC", _dontbc.MaDon);
+                    if (tttn != null)
+                        dr["SoTien1m3"] = tttn.SoTien1m3;
+
                     dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
                 }
 
