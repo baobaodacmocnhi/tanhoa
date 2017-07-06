@@ -66,9 +66,6 @@
             this.NgayDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChiSo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvKinhDoanh = new System.Windows.Forms.DataGridView();
-            this.Loai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ThuTien_NgayNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -88,6 +85,10 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.cmbSoKy = new System.Windows.Forms.ComboBox();
+            this.Loai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ThuTien_NgayNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKinhDoanh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLenhHuy)).BeginInit();
@@ -401,6 +402,7 @@
             this.dgvKinhDoanh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Loai,
             this.NoiDung,
+            this.CreateDate,
             this.ThuTien_NgayNhan});
             this.dgvKinhDoanh.Location = new System.Drawing.Point(1, 391);
             this.dgvKinhDoanh.MultiSelect = false;
@@ -411,27 +413,6 @@
             this.dgvKinhDoanh.Size = new System.Drawing.Size(695, 235);
             this.dgvKinhDoanh.TabIndex = 15;
             this.dgvKinhDoanh.Visible = false;
-            // 
-            // Loai
-            // 
-            this.Loai.DataPropertyName = "Loai";
-            this.Loai.HeaderText = "Loại";
-            this.Loai.Name = "Loai";
-            this.Loai.Width = 150;
-            // 
-            // NoiDung
-            // 
-            this.NoiDung.DataPropertyName = "NoiDung";
-            this.NoiDung.HeaderText = "Nội Dung";
-            this.NoiDung.Name = "NoiDung";
-            this.NoiDung.Width = 400;
-            // 
-            // ThuTien_NgayNhan
-            // 
-            this.ThuTien_NgayNhan.DataPropertyName = "ThuTien_NgayNhan";
-            this.ThuTien_NgayNhan.HeaderText = "Ngày Nhận";
-            this.ThuTien_NgayNhan.Name = "ThuTien_NgayNhan";
-            this.ThuTien_NgayNhan.Width = 80;
             // 
             // label4
             // 
@@ -631,6 +612,33 @@
             this.cmbSoKy.Size = new System.Drawing.Size(50, 21);
             this.cmbSoKy.TabIndex = 25;
             // 
+            // Loai
+            // 
+            this.Loai.DataPropertyName = "Loai";
+            this.Loai.HeaderText = "Loại";
+            this.Loai.Name = "Loai";
+            this.Loai.Width = 150;
+            // 
+            // NoiDung
+            // 
+            this.NoiDung.DataPropertyName = "NoiDung";
+            this.NoiDung.HeaderText = "Nội Dung";
+            this.NoiDung.Name = "NoiDung";
+            this.NoiDung.Width = 300;
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
+            // 
+            // ThuTien_NgayNhan
+            // 
+            this.ThuTien_NgayNhan.DataPropertyName = "ThuTien_NgayNhan";
+            this.ThuTien_NgayNhan.HeaderText = "Ngày Nhận";
+            this.ThuTien_NgayNhan.Name = "ThuTien_NgayNhan";
+            this.ThuTien_NgayNhan.Width = 80;
+            // 
             // frmTimKiemKhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -697,9 +705,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TinhTrang_LH;
         private System.Windows.Forms.TextBox txtMLT;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Loai;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ThuTien_NgayNhan;
         private System.Windows.Forms.TextBox txtTenDuong;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnTimKiemTatCa;
@@ -729,5 +734,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ChiSo;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cmbSoKy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Loai;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ThuTien_NgayNhan;
     }
 }

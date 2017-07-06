@@ -148,6 +148,7 @@ namespace ThuTien.GUI.DongNuoc
                     _kqdongnuoc.DiaChi = txtDiaChi.Text.Trim();
 
                     _kqdongnuoc.NgayDN = dateDongNuoc.Value;
+                    _kqdongnuoc.NgayDN_ThucTe = DateTime.Now;
                     if (!string.IsNullOrEmpty(txtChiSoDN.Text.Trim()))
                         _kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN.Text.Trim());
                     _kqdongnuoc.Hieu = txtHieu.Text.Trim();
@@ -166,7 +167,10 @@ namespace ThuTien.GUI.DongNuoc
                         _kqdongnuoc.PhiMoNuoc = _cDongNuoc.GetPhiMoNuoc() * 2;
 
                         if (_kqdongnuoc.NgayDN1 == null)
+                        {
                             _kqdongnuoc.NgayDN1 = _kqdongnuoc.NgayDN;
+                            _kqdongnuoc.NgayDN1_ThucTe = _kqdongnuoc.NgayDN_ThucTe;
+                        }
                         if (_kqdongnuoc.ChiSoDN1 == null)
                             _kqdongnuoc.ChiSoDN1 = _kqdongnuoc.ChiSoDN;
 
@@ -343,12 +347,14 @@ namespace ThuTien.GUI.DongNuoc
                     {
                         _kqdongnuoc.MoNuoc = true;
                         _kqdongnuoc.NgayMN = dateMoNuoc.Value;
+                        _kqdongnuoc.NgayMN_ThucTe = DateTime.Now;
                         _kqdongnuoc.ChiSoMN = int.Parse(txtChiSoMN.Text.Trim());
                     }
                     else
                     {
                         _kqdongnuoc.MoNuoc = false;
                         _kqdongnuoc.NgayMN = null;
+                        _kqdongnuoc.NgayMN_ThucTe = null;
                         _kqdongnuoc.ChiSoMN = null;
                     }
 
