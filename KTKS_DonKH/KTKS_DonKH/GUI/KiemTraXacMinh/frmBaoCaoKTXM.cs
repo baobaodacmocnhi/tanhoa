@@ -188,7 +188,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                 dr["HoTen"] = itemRow["HoTen"];
                 dr["DiaChi"] = itemRow["DiaChi"];
+                if (itemRow["DinhMuc"].ToString()!="")
                 dr["DinhMucCu"] = itemRow["DinhMuc"];
+                if (itemRow["DinhMucMoi"].ToString() != "")
                 dr["DinhMucMoi"] = itemRow["DinhMucMoi"];
                 dr["NguoiLap"] = CTaiKhoan.HoTen;
 

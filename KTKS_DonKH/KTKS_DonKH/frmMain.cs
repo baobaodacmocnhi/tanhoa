@@ -23,6 +23,7 @@ using KTKS_DonKH.GUI.QuanTri;
 using KTKS_DonKH.GUI.ToBamChi;
 using KTKS_DonKH.GUI.TruyThu;
 using KTKS_DonKH.GUI.CallCenter;
+using KTKS_DonKH.GUI.DonTu;
 
 namespace KTKS_DonKH
 {
@@ -883,6 +884,21 @@ namespace KTKS_DonKH
             frmToTrinhDCHD frm = new frmToTrinhDCHD();
             OpenForm(frm);
         }
+
+        #region Đơn Từ
+
+        private void mnuNhanDon_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuNhanDon", "Xem"))
+            {
+                frmNhanDon frm = new frmNhanDon();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion
 
     }
 }

@@ -19976,6 +19976,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _VanDeKhac;
 		
+		private string _ID_NhomDon;
+		
+		private string _Name_NhomDon;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -19998,6 +20002,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnSoNKChanged();
     partial void OnVanDeKhacChanging(string value);
     partial void OnVanDeKhacChanged();
+    partial void OnID_NhomDonChanging(string value);
+    partial void OnID_NhomDonChanged();
+    partial void OnName_NhomDonChanging(string value);
+    partial void OnName_NhomDonChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -20109,6 +20117,46 @@ namespace KTKS_DonKH.LinQ
 					this._VanDeKhac = value;
 					this.SendPropertyChanged("VanDeKhac");
 					this.OnVanDeKhacChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_NhomDon", DbType="VarChar(50)")]
+		public string ID_NhomDon
+		{
+			get
+			{
+				return this._ID_NhomDon;
+			}
+			set
+			{
+				if ((this._ID_NhomDon != value))
+				{
+					this.OnID_NhomDonChanging(value);
+					this.SendPropertyChanging();
+					this._ID_NhomDon = value;
+					this.SendPropertyChanged("ID_NhomDon");
+					this.OnID_NhomDonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name_NhomDon", DbType="NVarChar(MAX)")]
+		public string Name_NhomDon
+		{
+			get
+			{
+				return this._Name_NhomDon;
+			}
+			set
+			{
+				if ((this._Name_NhomDon != value))
+				{
+					this.OnName_NhomDonChanging(value);
+					this.SendPropertyChanging();
+					this._Name_NhomDon = value;
+					this.SendPropertyChanged("Name_NhomDon");
+					this.OnName_NhomDonChanged();
 				}
 			}
 		}

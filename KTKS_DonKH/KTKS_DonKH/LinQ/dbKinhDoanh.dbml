@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="KTKS_DonKH" Class="dbKinhDoanhDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=SERVER9;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=sa" SettingsObjectName="KTKS_DonKH.Properties.Settings" SettingsPropertyName="KTKS_DonKHConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.90.9;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=sa" SettingsObjectName="KTKS_DonKH.Properties.Settings" SettingsPropertyName="KTKS_DonKHConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.BamChi" Member="BamChis">
     <Type Name="BamChi">
       <Column Name="MaBC" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -841,6 +841,8 @@
       <Column Name="NoiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="SoNK" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="VanDeKhac" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ID_NhomDon" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Name_NhomDon" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
