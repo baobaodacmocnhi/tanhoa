@@ -421,7 +421,7 @@ namespace ThuTien.DAL.DongNuoc
             var query = from itemKQ in _db.TT_KQDongNuocs
                         join itemCT in _db.TT_CTDongNuocs on itemKQ.MaDN equals itemCT.MaDN
                         join itemHD in _db.HOADONs on itemCT.MaHD equals itemHD.ID_HOADON
-                        where itemKQ.ChuyenKhoan == ChuyenKhoan && itemKQ.NgayDN != null && itemHD.ChuyenNoKhoDoi == false && itemKQ.DanhBo.Contains(DanhBo)
+                        where itemKQ.ChuyenKhoan == ChuyenKhoan && itemKQ.NgayDN != null && itemHD.ChuyenNoKhoDoi == false && itemKQ.DanhBo==DanhBo
                         select new
                         {
                             itemKQ.MaDN,
@@ -444,7 +444,7 @@ namespace ThuTien.DAL.DongNuoc
             var query = from itemKQ in _db.TT_KQDongNuocs
                         join itemCT in _db.TT_CTDongNuocs on itemKQ.MaDN equals itemCT.MaDN
                         join itemHD in _db.HOADONs on itemCT.MaHD equals itemHD.ID_HOADON
-                        where itemKQ.ChuyenKhoan == ChuyenKhoan && itemKQ.NgayDongPhi.Value.Date >= FromNgayDongPhi && itemKQ.NgayDongPhi.Value.Date <= ToNgayDongPhi
+                        where itemKQ.ChuyenKhoan == ChuyenKhoan && itemHD.ChuyenNoKhoDoi == false && itemKQ.NgayDongPhi.Value.Date >= FromNgayDongPhi && itemKQ.NgayDongPhi.Value.Date <= ToNgayDongPhi
                         select new
                         {
                             itemKQ.MaDN,
