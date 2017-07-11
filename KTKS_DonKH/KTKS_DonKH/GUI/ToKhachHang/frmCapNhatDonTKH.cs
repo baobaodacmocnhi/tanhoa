@@ -13,6 +13,7 @@ using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.DAL.DonTu;
 using KTKS_DonKH.GUI.ToXuLy;
 using KTKS_DonKH.GUI.ToBamChi;
+using KTKS_DonKH.DAL.TruyThu;
 
 namespace KTKS_DonKH.GUI.ToKhachHang
 {
@@ -27,6 +28,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
         CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
         CNoiChuyen _cNoiChuyen = new CNoiChuyen();
         CPhongBanDoi _cPhongBanDoi = new CPhongBanDoi();
+        CTruyThuTienNuoc _cTTTN = new CTruyThuTienNuoc();
         DataSet _dsNoiChuyen = new DataSet("NoiChuyen");
         bool _flagFirst = false;
 
@@ -37,6 +39,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
 
         private void frmCapNhatDonKH_Load(object sender, EventArgs e)
         {
+            lbTruyThu.Text = "";
             dgvLichSuDonTu.AutoGenerateColumns = false;
             dgvLichSuDonTu_DCBD.AutoGenerateColumns = false;
             dgvLichSuDon.AutoGenerateColumns = false;
@@ -191,12 +194,17 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             dgvLichSuDon.DataSource = _cLichSuDonTu.GetDS_3To(dontkh.DanhBo);
             ///
             dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("TKH", dontkh.MaDon);
-            dgvLichSuDonTu_DCBD.DataSource = _cLichSuDonTu.GetDS_DCBD(txtDanhBo.Text.Trim());
+            dgvLichSuDonTu_DCBD.DataSource = _cLichSuDonTu.GetDS_DCBD(dontkh.DanhBo);
             dateChuyen.Value = DateTime.Now;
             cmbNoiChuyen.SelectedIndex = -1;
             txtGhiChu.Text = "";
             ///
             dataGridView1.DataSource = _cLichSuDonTu.GetDS_Old("TKH", dontkh.MaDon);
+            ///
+            if (_cTTTN.CheckExist_ChuaXepDon(_donkh.DanhBo) == true)
+                lbTruyThu.Text = "Danh Bộ này đang Truy Thu";
+            else
+                lbTruyThu.Text = "";
         }
 
         private void btnNhapNhieuDB_Click(object sender, EventArgs e)
@@ -404,6 +412,10 @@ namespace KTKS_DonKH.GUI.ToKhachHang
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (_cTTTN.CheckExist_ChuaXepDon(_donkh.DanhBo) == true)
+                lbTruyThu.Text = "Danh Bộ này đang Truy Thu";
+            else
+                lbTruyThu.Text = "";
             dgvLichSuDon.DataSource = _cLichSuDonTu.GetDS_3To(txtDanhBo.Text.Trim());
             dgvLichSuDonTu_DCBD.DataSource = _cLichSuDonTu.GetDS_DCBD(txtDanhBo.Text.Trim());
         }

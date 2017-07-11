@@ -22,17 +22,23 @@ namespace KTKS_DonKH.GUI.DonTu
 
         private void frmDonTu_Load(object sender, EventArgs e)
         {
-            chkcmbDieuChinh.Properties.DataSource = _cNhomDon.GetDS("DieuChinh");
+            DataTable dt = _cNhomDon.GetDS("DieuChinh");
+            chkcmbDieuChinh.Properties.DataSource = dt;
             chkcmbDieuChinh.Properties.ValueMember = "ID";
             chkcmbDieuChinh.Properties.DisplayMember = "Name";
+            chkcmbDieuChinh.Properties.DropDownRows = dt.Rows.Count + 1;
 
-            chkcmbKhieuNai.Properties.DataSource = _cNhomDon.GetDS("KhieuNai");
+            dt = _cNhomDon.GetDS("KhieuNai");
+            chkcmbKhieuNai.Properties.DataSource = dt;
             chkcmbKhieuNai.Properties.ValueMember = "ID";
             chkcmbKhieuNai.Properties.DisplayMember = "Name";
+            chkcmbKhieuNai.Properties.DropDownRows = dt.Rows.Count + 1;
 
-            chkcmbDHN.Properties.DataSource = _cNhomDon.GetDS("DHN");
+            dt = _cNhomDon.GetDS("DHN");
+            chkcmbDHN.Properties.DataSource = dt;
             chkcmbDHN.Properties.ValueMember = "ID";
             chkcmbDHN.Properties.DisplayMember = "Name";
+            chkcmbDHN.Properties.DropDownRows = dt.Rows.Count + 1;
         }
 
         private void chkcmbDieuChinh_EditValueChanged(object sender, EventArgs e)

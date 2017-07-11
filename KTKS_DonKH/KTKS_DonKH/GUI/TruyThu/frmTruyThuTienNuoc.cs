@@ -851,6 +851,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                                     _cTTTN.SuaCT(cttttn);
                                 }
+                        _cTTTN.SubmitChanges();
                         _cTTTN.Refresh();
 
                         _tttn = _cTTTN.Get(_tttn.MaTTTN);
@@ -1272,11 +1273,6 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                 throw;
             }
-        }
-
-        private void chkXepDon_CheckedChanged(object sender, EventArgs e)
-        {
-
         }
 
         
