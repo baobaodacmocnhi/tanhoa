@@ -58,7 +58,7 @@ namespace ThuTien.GUI.Quay
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim()) && e.KeyChar == 13)
+            if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ","")) && e.KeyChar == 13)
             {
                 if (tabControl.SelectedTab.Name == "tabThongTin")
                 {
@@ -741,6 +741,15 @@ namespace ThuTien.GUI.Quay
                 //    item.DefaultCellStyle.BackColor = Color.Yellow;
                 if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_TT"].Value.ToString()))
                     item.DefaultCellStyle.BackColor = Color.Red;
+            }
+        }
+
+        private void txtDanhBo_Leave(object sender, EventArgs e)
+        {
+            if (tabControl.SelectedTab.Name == "tabThongTin")
+            {
+                if (txtDanhBo.Text.Trim().Replace(" ", "").Length == 11)
+                    dgvHoaDon.DataSource = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim().Replace(" ", ""));
             }
         }  
 

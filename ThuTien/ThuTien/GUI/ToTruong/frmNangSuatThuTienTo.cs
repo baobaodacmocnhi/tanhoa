@@ -912,7 +912,7 @@ namespace ThuTien.GUI.ToTruong
                 dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
             }
 
-            rptDSDongNuoc rpt = new rptDSDongNuoc();
+            rptDSHDDongNuoc rpt = new rptDSHDDongNuoc();
             rpt.SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();

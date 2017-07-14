@@ -219,68 +219,68 @@ namespace ThuTien.GUI.DongNuoc
                     }
                 }
                 else
-                ///thêm kết quả đóng nước
-                if (_dongnuoc != null)
-                {
-                    if (_cDongNuoc.CheckDangNgan(_dongnuoc.MaDN))
+                    ///thêm kết quả đóng nước
+                    if (_dongnuoc != null)
                     {
-                        MessageBox.Show("Hóa Đơn trong Lệnh này đã Đăng Ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    if (_cDongNuoc.CheckExist_KQDongNuoc(_dongnuoc.MaDN))
-                    {
-                        MessageBox.Show("Lệnh này đã nhập Kết Quả", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    if (_cDongNuoc.CheckHuyLenh(_dongnuoc.MaDN))
-                    {
-                        MessageBox.Show("Lệnh này đã bị Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    if (!CNguoiDung.ToTruong && !CNguoiDung.Doi)
-                        if (!_cDongNuoc.CheckExist_DongNuoc(_dongnuoc.MaDN, CNguoiDung.MaND))
+                        if (_cDongNuoc.CheckDangNgan(_dongnuoc.MaDN))
                         {
-                            MessageBox.Show("Thông báo này không được giao cho bạn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Hóa Đơn trong Lệnh này đã Đăng Ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
+                        if (_cDongNuoc.CheckExist_KQDongNuoc(_dongnuoc.MaDN))
+                        {
+                            MessageBox.Show("Lệnh này đã nhập Kết Quả", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        if (_cDongNuoc.CheckHuyLenh(_dongnuoc.MaDN))
+                        {
+                            MessageBox.Show("Lệnh này đã bị Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        if (!CNguoiDung.ToTruong && !CNguoiDung.Doi)
+                            if (!_cDongNuoc.CheckExist_DongNuoc(_dongnuoc.MaDN, CNguoiDung.MaND))
+                            {
+                                MessageBox.Show("Thông báo này không được giao cho bạn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
 
-                    TT_KQDongNuoc kqdongnuoc = new TT_KQDongNuoc();
-                    kqdongnuoc.MaDN = _dongnuoc.MaDN;
-                    kqdongnuoc.DanhBo = txtDanhBo.Text.Trim();
-                    kqdongnuoc.MLT = txtMLT.Text.Trim();
-                    kqdongnuoc.HoTen = txtHoTen.Text.Trim();
-                    kqdongnuoc.DiaChi = txtDiaChi.Text.Trim();
+                        TT_KQDongNuoc kqdongnuoc = new TT_KQDongNuoc();
+                        kqdongnuoc.MaDN = _dongnuoc.MaDN;
+                        kqdongnuoc.DanhBo = txtDanhBo.Text.Trim();
+                        kqdongnuoc.MLT = txtMLT.Text.Trim();
+                        kqdongnuoc.HoTen = txtHoTen.Text.Trim();
+                        kqdongnuoc.DiaChi = txtDiaChi.Text.Trim();
 
-                    kqdongnuoc.DongNuoc = true;
-                    kqdongnuoc.NgayDN = dateDongNuoc.Value;
-                    if (!string.IsNullOrEmpty(txtChiSoDN.Text.Trim()))
-                        kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN.Text.Trim());
-                    kqdongnuoc.Hieu = txtHieu.Text.Trim();
-                    if (!string.IsNullOrEmpty(txtCo.Text.Trim()))
-                        kqdongnuoc.Co = int.Parse(txtCo.Text.Trim());
-                    kqdongnuoc.SoThan = txtSoThan.Text.Trim();
-                    if (cmbChiMatSo.SelectedItem != null)
-                        kqdongnuoc.ChiMatSo = cmbChiMatSo.SelectedItem.ToString();
-                    if (cmbChiKhoaGoc.SelectedItem != null)
-                        kqdongnuoc.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
-                    kqdongnuoc.LyDo = txtLyDo.Text.Trim();
+                        kqdongnuoc.DongNuoc = true;
+                        kqdongnuoc.NgayDN = dateDongNuoc.Value;
+                        if (!string.IsNullOrEmpty(txtChiSoDN.Text.Trim()))
+                            kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN.Text.Trim());
+                        kqdongnuoc.Hieu = txtHieu.Text.Trim();
+                        if (!string.IsNullOrEmpty(txtCo.Text.Trim()))
+                            kqdongnuoc.Co = int.Parse(txtCo.Text.Trim());
+                        kqdongnuoc.SoThan = txtSoThan.Text.Trim();
+                        if (cmbChiMatSo.SelectedItem != null)
+                            kqdongnuoc.ChiMatSo = cmbChiMatSo.SelectedItem.ToString();
+                        if (cmbChiKhoaGoc.SelectedItem != null)
+                            kqdongnuoc.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
+                        kqdongnuoc.LyDo = txtLyDo.Text.Trim();
 
-                    kqdongnuoc.PhiMoNuoc = _cDongNuoc.GetPhiMoNuoc();
+                        kqdongnuoc.PhiMoNuoc = _cDongNuoc.GetPhiMoNuoc();
 
-                    //if (chkMoNuoc.Checked)
-                    //{
-                    //    kqdongnuoc.MoNuoc = true;
-                    //    kqdongnuoc.NgayMN = dateMoNuoc.Value;
-                    //    kqdongnuoc.ChiSoMN = int.Parse(txtChiSoMN.Text.Trim());
-                    //}
+                        //if (chkMoNuoc.Checked)
+                        //{
+                        //    kqdongnuoc.MoNuoc = true;
+                        //    kqdongnuoc.NgayMN = dateMoNuoc.Value;
+                        //    kqdongnuoc.ChiSoMN = int.Parse(txtChiSoMN.Text.Trim());
+                        //}
 
-                    if (_cDongNuoc.ThemKQ(kqdongnuoc))
-                    {
-                        Clear();
-                        btnXem.PerformClick();
-                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (_cDongNuoc.ThemKQ(kqdongnuoc))
+                        {
+                            Clear();
+                            btnXem.PerformClick();
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
-                }
 
             }
             else
@@ -388,8 +388,8 @@ namespace ThuTien.GUI.DongNuoc
                     }
                     else
                     {
-                        DateTime date=new DateTime();
-                        DateTime.TryParse(dgvKQDongNuoc.SelectedRows[0].Cells["CreateDate"].Value.ToString(),out date);
+                        DateTime date = new DateTime();
+                        DateTime.TryParse(dgvKQDongNuoc.SelectedRows[0].Cells["CreateDate"].Value.ToString(), out date);
                         if (date.Date != DateTime.Now.Date)
                         {
                             MessageBox.Show("Chỉ được Xóa trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -767,6 +767,39 @@ namespace ThuTien.GUI.DongNuoc
             }
             else
                 MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnInDS_Click(object sender, EventArgs e)
+        {
+
+            dsBaoCao dsBaoCao = new dsBaoCao();
+            foreach (DataGridViewRow item in dgvKQDongNuoc.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
+                dr["MaDN"] = item.Cells["MaDN"].Value.ToString().Insert(item.Cells["MaDN"].Value.ToString().Length - 2, "-");
+                if (item.Cells["DanhBo"].Value.ToString() != "")
+                    dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
+                dr["HoTen"] = item.Cells["HoTen"].Value;
+                dr["DiaChi"] = item.Cells["DiaChi"].Value;
+
+                if (radDongNuoc.Checked)
+                {
+                    dr["Loai"] = "ĐÓNG NƯỚC";
+                    dr["NgayDongMoNuoc"] = item.Cells["NgayDN"].Value;
+                }
+                else
+                    if (radMoNuoc.Checked)
+                    {
+                        dr["Loai"] = "MỞ NƯỚC";
+                        dr["NgayDongMoNuoc"] = item.Cells["NgayMN"].Value;
+                    }
+
+                dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
+            }
+            rptDSDongNuoc rpt = new rptDSDongNuoc();
+            rpt.SetDataSource(dsBaoCao);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
         }
 
 

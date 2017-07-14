@@ -56,6 +56,7 @@ namespace ThuTien.GUI.DongNuoc
             txtTongDongNuoc.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongDongNuoc);
             txtTongMoNuoc.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongMoNuoc);
 
+            ///
             dgvDongNuoc.DataSource= _cDongNuoc.GetDSKQDongNuocByNgayDNs(dateTu.Value, dateDen.Value);
             foreach (DataGridViewRow item in dgvDongNuoc.Rows)
             {

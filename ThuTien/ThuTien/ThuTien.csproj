@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>726</ApplicationRevision>
+    <ApplicationRevision>729</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -192,6 +192,12 @@
       <DependentUpon>rptToTrinhCatHuy.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="BaoCao\DongNuoc\rptDSDongNuoc.cs">
+      <DependentUpon>rptDSDongNuoc.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="BaoCao\DongNuoc\rptBaoCaoVatTu.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -300,10 +306,10 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="BaoCao\DongNuoc\rptDSDongNuoc.cs">
+    <Compile Include="BaoCao\DongNuoc\rptDSHDDongNuoc.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>rptDSDongNuoc.rpt</DependentUpon>
+      <DependentUpon>rptDSHDDongNuoc.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BaoCao\DongNuoc\rptTBDongNuoc.cs">
@@ -1078,6 +1084,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptToTrinhCatHuy.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\DongNuoc\rptDSDongNuoc.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDSDongNuoc.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\DongNuoc\rptBaoCaoVatTu.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptBaoCaoVatTu.cs</LastGenOutput>
@@ -1150,9 +1160,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptTBDongNuocPhoto.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\DongNuoc\rptDSDongNuoc.rpt">
+    <EmbeddedResource Include="BaoCao\DongNuoc\rptDSHDDongNuoc.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptDSDongNuoc.cs</LastGenOutput>
+      <LastGenOutput>rptDSHDDongNuoc.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\DongNuoc\rptTBDongNuoc.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

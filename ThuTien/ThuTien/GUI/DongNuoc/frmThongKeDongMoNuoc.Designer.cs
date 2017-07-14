@@ -59,6 +59,7 @@
             this.NgayDongPhi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChiSo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKQDongNuoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDongNuoc)).BeginInit();
             this.SuspendLayout();
@@ -226,7 +227,7 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvDongNuoc.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvDongNuoc.Location = new System.Drawing.Point(12, 176);
+            this.dgvDongNuoc.Location = new System.Drawing.Point(12, 189);
             this.dgvDongNuoc.Name = "dgvDongNuoc";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
@@ -239,7 +240,7 @@
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDongNuoc.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvDongNuoc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDongNuoc.Size = new System.Drawing.Size(1102, 450);
+            this.dgvDongNuoc.Size = new System.Drawing.Size(1102, 440);
             this.dgvDongNuoc.TabIndex = 38;
             this.dgvDongNuoc.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDongNuoc_CellFormatting);
             this.dgvDongNuoc.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDongNuoc_RowPostPaint);
@@ -309,11 +310,21 @@
             this.NgayDoc.HeaderText = "Ngày Đọc";
             this.NgayDoc.Name = "NgayDoc";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 173);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(119, 13);
+            this.label1.TabIndex = 39;
+            this.label1.Text = "Danh Sách Đóng Nước";
+            // 
             // frmThongKeDongMoNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1271, 646);
+            this.ClientSize = new System.Drawing.Size(1271, 690);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvDongNuoc);
             this.Controls.Add(this.txtTongMoNuoc);
             this.Controls.Add(this.txtTongDongNuoc);
@@ -358,5 +369,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayDongPhi;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChiSo;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayDoc;
+        private System.Windows.Forms.Label label1;
     }
 }
