@@ -103,7 +103,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                         txtMaDon.Text = "TBC" + tttn.MaDonTBC.Value.ToString().Insert(tttn.MaDonTBC.Value.ToString().Length - 2, "-");
                     }
             txtMaTTTN.Text = tttn.MaTTTN.ToString().Insert(tttn.MaTTTN.ToString().Length - 2, "-");
-            chkXepDon.Checked = tttn.XepDon;
+            //chkXepDon.Checked = tttn.XepDon;
+            cmbTinhTrang.SelectedItem = tttn.TinhTrang;
             txtDanhBo.Text = tttn.DanhBo;
             txtHopDong.Text = tttn.HopDong;
             txtLoTrinh.Text = tttn.LoTrinh;
@@ -181,6 +182,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             txtDinhMuc.Text = "";
             txtDienThoai.Text = "";
             txtNoiDung.Text = "";
+            cmbTinhTrang.SelectedIndex = -1;
             ///
             dateDongTien.Value = DateTime.Now;
             txtSoTien.Text = "";
@@ -693,8 +695,10 @@ namespace KTKS_DonKH.GUI.TruyThu
                         tttn.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
                     if (!string.IsNullOrEmpty(txtDinhMuc.Text.Trim()))
                         tttn.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
-                    tttn.NoiDung = txtNoiDung.Text.Trim();
                     tttn.DienThoai = txtDienThoai.Text.Trim();
+                    tttn.NoiDung = txtNoiDung.Text.Trim();
+                    if (cmbTinhTrang.SelectedIndex != -1)
+                        tttn.TinhTrang = cmbTinhTrang.SelectedItem.ToString();
                     if (_hoadon != null)
                     {
                         tttn.Dot = _hoadon.DOT.ToString();
@@ -774,7 +778,9 @@ namespace KTKS_DonKH.GUI.TruyThu
                 {
                     if (_tttn != null)
                     {
-                        _tttn.XepDon = chkXepDon.Checked;
+                        //_tttn.XepDon = chkXepDon.Checked;
+                        if (cmbTinhTrang.SelectedIndex != -1)
+                        _tttn.TinhTrang = cmbTinhTrang.SelectedItem.ToString();
                         _tttn.DanhBo = txtDanhBo.Text.Trim();
                         _tttn.HopDong = txtHopDong.Text.Trim();
                         _tttn.LoTrinh = txtLoTrinh.Text.Trim();
@@ -1275,9 +1281,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             }
         }
 
-        
-
-        
+             
 
 
     }

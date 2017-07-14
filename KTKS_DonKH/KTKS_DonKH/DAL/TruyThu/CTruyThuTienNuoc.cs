@@ -116,9 +116,9 @@ namespace KTKS_DonKH.DAL.TruyThu
             }
         }
 
-        public bool CheckExist_ChuaXepDon(string DanhBo)
+        public bool CheckExist_XepDon(string DanhBo)
         {
-            return db.TruyThuTienNuocs.Any(item => item.XepDon == false && item.DanhBo == DanhBo);
+            return db.TruyThuTienNuocs.Any(item => (item.TinhTrang != null || item.TinhTrang != "" || item.TinhTrang != "Đang gửi thư mời") && item.DanhBo == DanhBo);
         }
 
         public TruyThuTienNuoc Get(string Loai, decimal MaDon)
@@ -209,7 +209,8 @@ namespace KTKS_DonKH.DAL.TruyThu
                             //item.Tongm3BinhQuan,
                             TongTien = item.CTTruyThuTienNuocs.Count > 0 ? item.CTTruyThuTienNuocs.Sum(itemCT => itemCT.TongCongMoi).Value - item.CTTruyThuTienNuocs.Sum(itemCT => itemCT.TongCongCu).Value : 0,
                             Tongm3BinhQuan = item.CTTruyThuTienNuocs.Count > 0 ? (item.CTTruyThuTienNuocs.Sum(itemCT => itemCT.TongCongMoi).Value - item.CTTruyThuTienNuocs.Sum(itemCT => itemCT.TongCongCu).Value) / item.SoTien1m3 : 0,
-                            item.XepDon,
+                            //XepDon = item.TinhTrang != null ? item.TinhTrang != "" ? item.TinhTrang != "Đang gửi thư mời" ? true : false : false : false,
+                            item.TinhTrang,
                         };
             return LINQToDataTable(query);
         }

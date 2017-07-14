@@ -33809,6 +33809,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _XepDon;
 		
+		private string _TinhTrang;
+		
 		private int _SoTien1m3;
 		
 		private int _Tongm3BinhQuan;
@@ -33873,6 +33875,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDienThoaiChanged();
     partial void OnXepDonChanging(bool value);
     partial void OnXepDonChanged();
+    partial void OnTinhTrangChanging(string value);
+    partial void OnTinhTrangChanged();
     partial void OnSoTien1m3Changing(int value);
     partial void OnSoTien1m3Changed();
     partial void OnTongm3BinhQuanChanging(int value);
@@ -34248,6 +34252,26 @@ namespace KTKS_DonKH.LinQ
 					this._XepDon = value;
 					this.SendPropertyChanged("XepDon");
 					this.OnXepDonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TinhTrang", DbType="NVarChar(MAX)")]
+		public string TinhTrang
+		{
+			get
+			{
+				return this._TinhTrang;
+			}
+			set
+			{
+				if ((this._TinhTrang != value))
+				{
+					this.OnTinhTrangChanging(value);
+					this.SendPropertyChanging();
+					this._TinhTrang = value;
+					this.SendPropertyChanged("TinhTrang");
+					this.OnTinhTrangChanged();
 				}
 			}
 		}

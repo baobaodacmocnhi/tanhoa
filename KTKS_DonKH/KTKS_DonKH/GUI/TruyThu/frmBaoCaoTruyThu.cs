@@ -30,7 +30,6 @@ namespace KTKS_DonKH.GUI.TruyThu
         private void btnBaoCao_ThongKeTruyThu_Click(object sender, EventArgs e)
         {
             DataTable dt = _cTTTN.GetDS(dateTu_ThongKeTruyThu.Value, dateDen_ThongKeTruyThu.Value);
-
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
             foreach (DataRow item in dt.Rows)
@@ -50,13 +49,17 @@ namespace KTKS_DonKH.GUI.TruyThu
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();
+        }
 
-            dsBaoCao = new DataSetBaoCao();
+        private void btnInDS_Click(object sender, EventArgs e)
+        {
+            DataTable dt = _cTTTN.GetDS(dateTu_ThongKeTruyThu.Value, dateDen_ThongKeTruyThu.Value);
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
             if (radDaThanhToan.Checked == true)
             {
                 foreach (DataRow item in dt.Rows)
-                    if (bool.Parse(item["XepDon"].ToString()) == true)
+                    if (item["TinhTrang"].ToString() != "" && item["TinhTrang"].ToString() != "Đang gửi thư mời")
                     {
                         DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
 
@@ -80,7 +83,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 if (radChuaThanhToan.Checked == true)
                 {
                     foreach (DataRow item in dt.Rows)
-                        if (bool.Parse(item["XepDon"].ToString()) == false && int.Parse(item["TongTien"].ToString()) != 0)
+                        if (item["TinhTrang"].ToString() == "")
                         {
                             DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
 
@@ -104,7 +107,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     if (radGuiThu.Checked == true)
                     {
                         foreach (DataRow item in dt.Rows)
-                            if (bool.Parse(item["XepDon"].ToString()) == false && int.Parse(item["TongTien"].ToString()) == 0)
+                            if (item["TinhTrang"].ToString() == "Đang gửi thư mời")
                             {
                                 DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
 
@@ -124,12 +127,10 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
                             }
                     }
-            rptDSTruyThuTienNuoc rpt2 = new rptDSTruyThuTienNuoc();
-            rpt2.SetDataSource(dsBaoCao);
-            frmShowBaoCao frm2 = new frmShowBaoCao(rpt2);
-            frm2.ShowDialog();
-
-
+            rptDSTruyThuTienNuoc rpt = new rptDSTruyThuTienNuoc();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.ShowDialog();
         }
     }
 }

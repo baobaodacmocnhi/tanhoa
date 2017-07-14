@@ -1485,6 +1485,7 @@
       <Column Name="NoiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="DienThoai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="XepDon" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TinhTrang" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="SoTien1m3" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Tongm3BinhQuan" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="TongTien" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />

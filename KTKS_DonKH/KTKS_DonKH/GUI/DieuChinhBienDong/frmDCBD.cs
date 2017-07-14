@@ -1408,6 +1408,82 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             _cLichSuDonTu.Them(entity);
         }
 
+        private void btnInPhieu_Click(object sender, EventArgs e)
+        {
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
+
+            //CTDCBD ctdcbd = _cDCBD.GetDCBDByMaCTDCBD(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
+            if (_ctdcbd.DCBD.MaDon != null)
+                dr["MaDon"] = _ctdcbd.DCBD.MaDon.ToString().Insert(_ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
+            else
+                if (_ctdcbd.DCBD.MaDonTXL != null)
+                    dr["MaDon"] = "TXL" + _ctdcbd.DCBD.MaDonTXL.ToString().Insert(_ctdcbd.DCBD.MaDonTXL.ToString().Length - 2, "-");
+                else
+                    if (_ctdcbd.DCBD.MaDonTBC != null)
+                        dr["MaDon"] = "TBC" + _ctdcbd.DCBD.MaDonTBC.ToString().Insert(_ctdcbd.DCBD.MaDonTBC.ToString().Length - 2, "-");
+
+            dr["SoPhieu"] = _ctdcbd.MaCTDCBD.ToString().Insert(_ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
+            dr["ThongTin"] = _ctdcbd.ThongTin;
+            dr["HieuLucKy"] = _ctdcbd.HieuLucKy;
+            dr["Dot"] = _ctdcbd.Dot;
+            ///Hiện tại xử lý mã số thuế như vậy
+            if (_ctdcbd.CatMSThue)
+                dr["MSThue"] = "MST: Cắt MST";
+            if (!string.IsNullOrEmpty(_ctdcbd.MSThue_BD))
+                dr["MSThue"] = "MST: " + _ctdcbd.MSThue_BD;
+            dr["DanhBo"] = _ctdcbd.DanhBo.Insert(7, " ").Insert(4, " ");
+            dr["HopDong"] = _ctdcbd.HopDong;
+            dr["HoTen"] = _ctdcbd.HoTen;
+            dr["DiaChi"] = _ctdcbd.DiaChi;
+            dr["MaQuanPhuong"] = _ctdcbd.MaQuanPhuong;
+            dr["GiaBieu"] = _ctdcbd.GiaBieu;
+            dr["DinhMuc"] = _ctdcbd.DinhMuc;
+            ///Biến Động
+            dr["HoTenBD"] = _ctdcbd.HoTen_BD;
+            dr["DiaChiBD"] = _ctdcbd.DiaChi_BD;
+            dr["GiaBieuBD"] = _ctdcbd.GiaBieu_BD;
+            dr["DinhMucBD"] = _ctdcbd.DinhMuc_BD;
+            if (!string.IsNullOrEmpty(_ctdcbd.SH_BD))
+                dr["TyLe"] = "Tỷ Lệ SH: " + _ctdcbd.SH_BD + "%";
+
+            if (!string.IsNullOrEmpty(_ctdcbd.SX_BD))
+                if (string.IsNullOrEmpty(dr["TyLe"].ToString()))
+                    dr["TyLe"] = "Tỷ Lệ SX: " + _ctdcbd.SX_BD + "%";
+                else
+                    dr["TyLe"] += ", SX: " + _ctdcbd.SX_BD + "%";
+
+            if (!string.IsNullOrEmpty(_ctdcbd.DV_BD))
+                if (string.IsNullOrEmpty(dr["TyLe"].ToString()))
+                    dr["TyLe"] = "Tỷ Lệ DV: " + _ctdcbd.DV_BD + "%";
+                else
+                    dr["TyLe"] += ", DV: " + _ctdcbd.DV_BD + "%";
+
+            if (!string.IsNullOrEmpty(_ctdcbd.HCSN_BD))
+                if (string.IsNullOrEmpty(dr["TyLe"].ToString()))
+                    dr["TyLe"] = "Tỷ Lệ HCSN: " + _ctdcbd.HCSN_BD + "%";
+                else
+                    dr["TyLe"] += ", HCSN: " + _ctdcbd.HCSN_BD + "%";
+            ///Ký Tên
+            if (_ctdcbd.DMGiuNguyen)
+                dr["KhongBD"] = "ĐM Giữ Nguyên";
+            else
+                if (_ctdcbd.GiaHan)
+                    dr["KhongBD"] = "Gia Hạn";
+                else
+                {
+                    dr["ChucVu"] = _ctdcbd.ChucVu;
+                    dr["NguoiKy"] = _ctdcbd.NguoiKy;
+                }
+
+            dsBaoCao.Tables["DCBD"].Rows.Add(dr);
+
+            rptPhieuDCBD rpt = new rptPhieuDCBD();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.Show();
+        }
+
 
 
     }

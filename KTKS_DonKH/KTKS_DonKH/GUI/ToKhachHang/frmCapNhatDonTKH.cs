@@ -201,7 +201,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             ///
             dataGridView1.DataSource = _cLichSuDonTu.GetDS_Old("TKH", dontkh.MaDon);
             ///
-            if (_cTTTN.CheckExist_ChuaXepDon(_donkh.DanhBo) == true)
+            if (_cTTTN.CheckExist_XepDon(_donkh.DanhBo) == false)
                 lbTruyThu.Text = "Danh Bộ này đang Truy Thu";
             else
                 lbTruyThu.Text = "";
@@ -412,7 +412,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (_cTTTN.CheckExist_ChuaXepDon(_donkh.DanhBo) == true)
+            if (_cTTTN.CheckExist_XepDon(_donkh.DanhBo) == false)
                 lbTruyThu.Text = "Danh Bộ này đang Truy Thu";
             else
                 lbTruyThu.Text = "";

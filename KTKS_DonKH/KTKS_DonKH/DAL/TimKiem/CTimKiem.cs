@@ -284,7 +284,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemTT.NoiDung,
                                        itemTT.TongTien,
                                        itemTT.Tongm3BinhQuan,
-                                       itemTT.XepDon,
+                                       itemTT.TinhTrang,
                                    };
 
                 DataTable dtTruyThu = new DataTable();
@@ -602,7 +602,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemTT.NoiDung,
                                        itemTT.TongTien,
                                        itemTT.Tongm3BinhQuan,
-                                       itemTT.XepDon,
+                                       itemTT.TinhTrang,
                                    };
 
                 DataTable dtTruyThu = new DataTable();
@@ -921,7 +921,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemTT.NoiDung,
                                        itemTT.TongTien,
                                        itemTT.Tongm3BinhQuan,
-                                       itemTT.XepDon,
+                                       itemTT.TinhTrang,
                                    };
 
                 DataTable dtTruyThu = new DataTable();
@@ -1242,7 +1242,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemTT.NoiDung,
                                        itemTT.TongTien,
                                        itemTT.Tongm3BinhQuan,
-                                       itemTT.XepDon,
+                                       itemTT.TinhTrang,
                                    };
                 DataTable dtTruyThu = new DataTable();
                 dtTruyThu = LINQToDataTable(queryTruyThu);
@@ -2242,7 +2242,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemTT.NoiDung,
                                        itemTT.TongTien,
                                        itemTT.Tongm3BinhQuan,
-                                       itemTT.XepDon,
+                                       itemTT.TinhTrang,
                                    };
                 DataTable dtTruyThu = new DataTable();
                 dtTruyThu = LINQToDataTable(queryTruyThu);
@@ -3241,7 +3241,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemTT.NoiDung,
                                        itemTT.TongTien,
                                        itemTT.Tongm3BinhQuan,
-                                       itemTT.XepDon,
+                                       itemTT.TinhTrang,
                                    };
                 DataTable dtTruyThu = new DataTable();
                 dtTruyThu = LINQToDataTable(queryTruyThu);
