@@ -887,11 +887,22 @@ namespace KTKS_DonKH
 
         #region Đơn Từ
 
-        private void mnuNhanDon_Click(object sender, EventArgs e)
+        private void mnuNhanDonTu_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen("mnuNhanDon", "Xem"))
+            if (CTaiKhoan.CheckQuyen("mnuNhanDonTu", "Xem"))
             {
-                frmNhanDon frm = new frmNhanDon();
+                frmNhanDonTu frm = new frmNhanDonTu();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuDSDonTu_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuDSDonTu", "Xem"))
+            {
+                frmDSDonTu frm = new frmDSDonTu();
                 OpenForm(frm);
             }
             else
@@ -899,6 +910,8 @@ namespace KTKS_DonKH
         }
 
         #endregion
+
+        
 
     }
 }

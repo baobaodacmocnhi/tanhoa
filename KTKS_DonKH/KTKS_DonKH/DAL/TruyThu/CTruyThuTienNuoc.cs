@@ -116,9 +116,9 @@ namespace KTKS_DonKH.DAL.TruyThu
             }
         }
 
-        public bool CheckExist_XepDon(string DanhBo)
+        public bool CheckExist_ChuaXepDon(string DanhBo)
         {
-            return db.TruyThuTienNuocs.Any(item => (item.TinhTrang != null || item.TinhTrang != "" || item.TinhTrang != "Đang gửi thư mời") && item.DanhBo == DanhBo);
+            return db.TruyThuTienNuocs.Any(item => (item.TinhTrang == null || item.TinhTrang == "" || item.TinhTrang == "Đang gửi thư mời") && item.DanhBo == DanhBo);
         }
 
         public TruyThuTienNuoc Get(string Loai, decimal MaDon)

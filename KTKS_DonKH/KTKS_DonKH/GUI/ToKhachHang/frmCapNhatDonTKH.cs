@@ -183,7 +183,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             txtNgayNhan.Text = dontkh.CreateDate.Value.ToString("dd/MM/yyyy");
             txtNoiDung.Text = dontkh.NoiDung;
 
-            txtDanhBo.Text = dontkh.DanhBo;
+            txtDanhBo.Text = dontkh.DanhBo.Insert(7, " ").Insert(4, " ");
             txtHopDong.Text = dontkh.HopDong;
             txtDienThoai.Text = dontkh.DienThoai;
             txtHoTen.Text = dontkh.HoTen;
@@ -201,7 +201,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             ///
             dataGridView1.DataSource = _cLichSuDonTu.GetDS_Old("TKH", dontkh.MaDon);
             ///
-            if (_cTTTN.CheckExist_XepDon(_donkh.DanhBo) == false)
+            if (_cTTTN.CheckExist_ChuaXepDon(_donkh.DanhBo) == true)
                 lbTruyThu.Text = "Danh Bộ này đang Truy Thu";
             else
                 lbTruyThu.Text = "";
@@ -412,12 +412,15 @@ namespace KTKS_DonKH.GUI.ToKhachHang
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (_cTTTN.CheckExist_XepDon(_donkh.DanhBo) == false)
-                lbTruyThu.Text = "Danh Bộ này đang Truy Thu";
-            else
-                lbTruyThu.Text = "";
-            dgvLichSuDon.DataSource = _cLichSuDonTu.GetDS_3To(txtDanhBo.Text.Trim());
-            dgvLichSuDonTu_DCBD.DataSource = _cLichSuDonTu.GetDS_DCBD(txtDanhBo.Text.Trim());
+            if (txtDanhBo.Text.Trim().Replace(" ", "").Length == 11 && e.KeyChar == 13)
+            {
+                if (_cTTTN.CheckExist_ChuaXepDon(txtDanhBo.Text.Trim().Replace(" ", "")) == true)
+                    lbTruyThu.Text = "Danh Bộ này đang Truy Thu";
+                else
+                    lbTruyThu.Text = "";
+                dgvLichSuDon.DataSource = _cLichSuDonTu.GetDS_3To(txtDanhBo.Text.Trim());
+                dgvLichSuDonTu_DCBD.DataSource = _cLichSuDonTu.GetDS_DCBD(txtDanhBo.Text.Trim());
+            }
         }
 
     }

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbLoaiVanBan = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -78,10 +77,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.txtNoiDungTimKiem = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.btnTest = new System.Windows.Forms.Button();
-            this.dgvTest = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCongVan)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTest)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -591,46 +587,12 @@
             this.label19.TabIndex = 99;
             this.label19.Text = "Nội Dung:";
             // 
-            // btnTest
-            // 
-            this.btnTest.Location = new System.Drawing.Point(1016, 145);
-            this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(75, 25);
-            this.btnTest.TabIndex = 101;
-            this.btnTest.Text = "Test";
-            this.btnTest.UseVisualStyleBackColor = true;
-            this.btnTest.Visible = false;
-            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
-            // 
-            // dgvTest
-            // 
-            this.dgvTest.AllowUserToAddRows = false;
-            this.dgvTest.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTest.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvTest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTest.Location = new System.Drawing.Point(760, 177);
-            this.dgvTest.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.dgvTest.Name = "dgvTest";
-            this.dgvTest.RowHeadersWidth = 60;
-            this.dgvTest.Size = new System.Drawing.Size(519, 346);
-            this.dgvTest.TabIndex = 102;
-            this.dgvTest.Visible = false;
-            // 
             // frmCongVanDi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1293, 594);
-            this.Controls.Add(this.dgvTest);
-            this.Controls.Add(this.btnTest);
             this.Controls.Add(this.txtNoiDungTimKiem);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.cmbTimKiem);
@@ -676,7 +638,6 @@
             this.Text = "Công Văn Đi";
             this.Load += new System.EventHandler(this.frmCongVanDi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCongVan)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTest)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -732,7 +693,5 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox txtNoiDungTimKiem;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Button btnTest;
-        private System.Windows.Forms.DataGridView dgvTest;
     }
 }

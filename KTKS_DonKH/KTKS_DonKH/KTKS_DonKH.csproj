@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>602</ApplicationRevision>
+    <ApplicationRevision>605</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -332,6 +332,12 @@
     </Compile>
     <Compile Include="BaoCao\DongNuoc\rptThongBaoDN.cs">
       <DependentUpon>rptThongBaoDN.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="BaoCao\DonTu\rptBienNhanDonTu.cs">
+      <DependentUpon>rptBienNhanDonTu.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -731,11 +737,17 @@
     <Compile Include="GUI\CatHuyDanhBo\frmNoiDungXuLyCHDB.Designer.cs">
       <DependentUpon>frmNoiDungXuLyCHDB.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\DonTu\frmNhanDon.cs">
+    <Compile Include="GUI\DonTu\frmDSDonTu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\DonTu\frmNhanDon.Designer.cs">
-      <DependentUpon>frmNhanDon.cs</DependentUpon>
+    <Compile Include="GUI\DonTu\frmDSDonTu.Designer.cs">
+      <DependentUpon>frmDSDonTu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DonTu\frmNhanDonTu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DonTu\frmNhanDonTu.Designer.cs">
+      <DependentUpon>frmNhanDonTu.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ToBamChi\frmNhapNhieuDBTBC.cs">
       <SubType>Form</SubType>
@@ -1305,6 +1317,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThongBaoDN.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\DonTu\rptBienNhanDonTu.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptBienNhanDonTu.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\KiemTraXacMinh\rptKTXMcoTruyThu.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptKTXMcoTruyThu.cs</LastGenOutput>
@@ -1514,8 +1530,11 @@
     <EmbeddedResource Include="GUI\CatHuyDanhBo\frmNoiDungXuLyCHDB.resx">
       <DependentUpon>frmNoiDungXuLyCHDB.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\DonTu\frmNhanDon.resx">
-      <DependentUpon>frmNhanDon.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\DonTu\frmDSDonTu.resx">
+      <DependentUpon>frmDSDonTu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DonTu\frmNhanDonTu.resx">
+      <DependentUpon>frmNhanDonTu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToBamChi\frmNhapNhieuDBTBC.resx">
       <DependentUpon>frmNhapNhieuDBTBC.cs</DependentUpon>

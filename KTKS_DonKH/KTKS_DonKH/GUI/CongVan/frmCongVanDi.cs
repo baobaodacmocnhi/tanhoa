@@ -58,11 +58,6 @@ namespace KTKS_DonKH.GUI.CongVan
             }
             txtNoiDung.AutoCompleteCustomSource = auto1;
 
-            if (CTaiKhoan.Admin == true)
-            {
-                btnTest.Visible = true;
-                dgvTest.Visible = true;
-            }
         }
 
         public string GetTenTable()

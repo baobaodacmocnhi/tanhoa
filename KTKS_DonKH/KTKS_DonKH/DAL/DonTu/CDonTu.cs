@@ -68,9 +68,21 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
-        public DataTable GetDS()
+        public DataTable GetDS(DateTime FromCreateDate,DateTime ToCreateDate)
         {
-            return LINQToDataTable(db.DonTus.ToList());
+            var query = from item in db.DonTus
+                        where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
+                        select new
+                        {
+                            MaDon = item.NamThang + item.STT,
+                            item.SoCongVan,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            NoiDung = item.Name_NhomDon,
+                        };
+            return LINQToDataTable(query);
         }
 
 

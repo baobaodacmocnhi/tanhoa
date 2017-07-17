@@ -104,6 +104,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
 
         public void LoadTTKH(HOADON hoadon)
         {
+            txtDanhBo.Text = hoadon.DANHBA.Insert(7, " ").Insert(4, " ");
             txtHopDong.Text = hoadon.HOPDONG;
             txtHoTen.Text = hoadon.TENKH;
             txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
@@ -121,7 +122,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
             txtNgayNhan.Text = dontbc.CreateDate.Value.ToString("dd/MM/yyyy");
             txtNoiDung.Text = dontbc.NoiDung;
             ///
-            txtDanhBo.Text = dontbc.DanhBo;
+            txtDanhBo.Text = dontbc.DanhBo.Insert(7, " ").Insert(4, " ");
             txtHopDong.Text = dontbc.HopDong;
             txtDienThoai.Text = dontbc.DienThoai;
             txtHoTen.Text = dontbc.HoTen;
@@ -181,11 +182,11 @@ namespace KTKS_DonKH.GUI.ToBamChi
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13)
+            if (txtDanhBo.Text.Trim().Replace(" ", "").Length == 11 && e.KeyChar == 13)
             {
-                if (_cThuTien.GetMoiNhat(txtDanhBo.Text.Trim()) != null)
+                _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim().Replace(" ", ""));
+                if (_hoadon != null)
                 {
-                    _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
                     LoadTTKH(_hoadon);
                     
                     //if (dgvLichSuDon.RowCount > 0)
@@ -210,7 +211,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
                         dontbc.SoCongVan = txtSoCongVan.Text.Trim();
                         dontbc.NoiDung = txtNoiDung.Text.Trim();
 
-                        dontbc.DanhBo = txtDanhBo.Text.Trim();
+                        dontbc.DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
                         dontbc.HopDong = txtHopDong.Text.Trim();
                         dontbc.HoTen = txtHoTen.Text.Trim();
                         dontbc.DiaChi = txtDiaChi.Text.Trim();
@@ -314,14 +315,14 @@ namespace KTKS_DonKH.GUI.ToBamChi
                     {
                         _dontbc.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                         _dontbc.SoCongVan = txtSoCongVan.Text.Trim();
-                        if (_hoadon != null && _dontbc.DanhBo != txtDanhBo.Text.Trim())
+                        if (_hoadon != null && _dontbc.DanhBo != txtDanhBo.Text.Trim().Replace(" ", ""))
                         {
                             _dontbc.Dot = _hoadon.DOT.ToString();
                             _dontbc.Ky = _hoadon.KY.ToString();
                             _dontbc.Nam = _hoadon.NAM.ToString();
                             _dontbc.MLT = _hoadon.MALOTRINH;
                         }
-                        _dontbc.DanhBo = txtDanhBo.Text.Trim();
+                        _dontbc.DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
                         _dontbc.HopDong = txtHopDong.Text.Trim();
                         _dontbc.HoTen = txtHoTen.Text.Trim();
                         _dontbc.DiaChi = txtDiaChi.Text.Trim();

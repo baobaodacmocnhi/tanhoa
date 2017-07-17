@@ -125,13 +125,14 @@ namespace KTKS_DonKH.GUI.ToKhachHang
 
         public void LoadTTKH(HOADON hoadon)
         {
+            txtDanhBo.Text = hoadon.DANHBA.Insert(7, " ").Insert(4, " ");
             txtHopDong.Text = hoadon.HOPDONG;
             txtHoTen.Text = hoadon.TENKH;
             txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
             txtGiaBieu.Text = hoadon.GB.ToString();
             txtDinhMuc.Text = hoadon.DM.ToString();
             dgvLichSuDon.DataSource = _cLichSuDonTu.GetDS_3To(hoadon.DANHBA);
-            if (_cTTTN.CheckExist_XepDon(hoadon.DANHBA)==false)
+            if (_cTTTN.CheckExist_ChuaXepDon(hoadon.DANHBA) == true)
                 lbTruyThu.Text = "Danh Bộ này đang Truy Thu";
             else
                 lbTruyThu.Text = "";
@@ -179,7 +180,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                 chkLyDoKhac.Checked = true;
 
             txtLyDoKhac.Text = dontkh.LyDoLoaiKhac;
-            txtDanhBo.Text = dontkh.DanhBo;
+            txtDanhBo.Text = dontkh.DanhBo.Insert(7, " ").Insert(4, " ");
             txtHopDong.Text = dontkh.HopDong;
             txtDienThoai.Text = dontkh.DienThoai;
             txtHoTen.Text = dontkh.HoTen;
@@ -229,11 +230,11 @@ namespace KTKS_DonKH.GUI.ToKhachHang
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13)
+            if (txtDanhBo.Text.Trim().Replace(" ", "").Length == 11 && e.KeyChar == 13)
             {
-                if (_cThuTien.GetMoiNhat(txtDanhBo.Text.Trim()) != null)
+                _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim().Replace(" ", ""));
+                if (_hoadon != null)
                 {
-                    _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
                     LoadTTKH(_hoadon);
                 }
                 else
@@ -527,7 +528,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                         donkh.SoCongVan = txtSoCongVan.Text.Trim();
                         donkh.NoiDung = txtNoiDung.Text.Trim();
 
-                        donkh.DanhBo = txtDanhBo.Text.Trim();
+                        donkh.DanhBo = txtDanhBo.Text.Trim().Replace(" ","");
                         donkh.HopDong = txtHopDong.Text.Trim();
                         donkh.HoTen = txtHoTen.Text.Trim();
                         donkh.DiaChi = txtDiaChi.Text.Trim();
@@ -909,7 +910,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                 {
                     _donkh.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                     _donkh.SoCongVan = txtSoCongVan.Text.Trim();
-                    if (_donkh.DanhBo != txtDanhBo.Text.Trim())
+                    if (_donkh.DanhBo != txtDanhBo.Text.Trim().Replace(" ", ""))
                         if (_hoadon != null)
                         {
                             _donkh.Dot = _hoadon.DOT.Value.ToString();
@@ -917,7 +918,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                             _donkh.Nam = _hoadon.NAM.Value.ToString();
                             _donkh.MLT = _hoadon.MALOTRINH;
                         }
-                    _donkh.DanhBo = txtDanhBo.Text.Trim();
+                    _donkh.DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
                     _donkh.HopDong = txtHopDong.Text.Trim();
                     _donkh.HoTen = txtHoTen.Text.Trim();
                     _donkh.DiaChi = txtDiaChi.Text.Trim();

@@ -109,6 +109,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
         public void LoadTTKH(HOADON hoadon)
         {
+            txtDanhBo.Text = hoadon.DANHBA.Insert(7, " ").Insert(4, " ");
             txtHopDong.Text = hoadon.HOPDONG;
             txtHoTen.Text = hoadon.TENKH;
             txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
@@ -126,7 +127,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
             txtNgayNhan.Text = dontxl.CreateDate.Value.ToString("dd/MM/yyyy");
             txtNoiDung.Text = dontxl.NoiDung;
             ///
-            txtDanhBo.Text = dontxl.DanhBo;
+            txtDanhBo.Text = dontxl.DanhBo.Insert(7, " ").Insert(4, " ");
             txtHopDong.Text = dontxl.HopDong;
             txtDienThoai.Text = dontxl.DienThoai;
             txtHoTen.Text = dontxl.HoTen;
@@ -188,11 +189,11 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13)
+            if (txtDanhBo.Text.Trim().Replace(" ", "").Length == 11 && e.KeyChar == 13)
             {
-                if (_cThuTien.GetMoiNhat(txtDanhBo.Text.Trim()) != null)
-                {
-                    _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
+                _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim().Replace(" ", ""));
+                if (_hoadon != null)
+                {   
                     LoadTTKH(_hoadon);
                     
                     //if (dgvLichSuDon.RowCount > 0)
@@ -217,7 +218,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         dontxl.SoCongVan = txtSoCongVan.Text.Trim();
                         dontxl.NoiDung = txtNoiDung.Text.Trim();
 
-                        dontxl.DanhBo = txtDanhBo.Text.Trim();
+                        dontxl.DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
                         dontxl.HopDong = txtHopDong.Text.Trim();
                         dontxl.HoTen = txtHoTen.Text.Trim();
                         dontxl.DiaChi = txtDiaChi.Text.Trim();
@@ -323,14 +324,14 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
                         _dontxl.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                         _dontxl.SoCongVan = txtSoCongVan.Text.Trim();
-                        if (_hoadon != null && _dontxl.DanhBo != txtDanhBo.Text.Trim())
+                        if (_hoadon != null && _dontxl.DanhBo != txtDanhBo.Text.Trim().Replace(" ", ""))
                         {
                             _dontxl.Dot = _hoadon.DOT.ToString();
                             _dontxl.Ky = _hoadon.KY.ToString();
                             _dontxl.Nam = _hoadon.NAM.ToString();
                             _dontxl.MLT = _hoadon.MALOTRINH;
                         }
-                        _dontxl.DanhBo = txtDanhBo.Text.Trim();
+                        _dontxl.DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
                         _dontxl.HopDong = txtHopDong.Text.Trim();
                         _dontxl.HoTen = txtHoTen.Text.Trim();
                         _dontxl.DiaChi = txtDiaChi.Text.Trim();
