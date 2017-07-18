@@ -22,6 +22,8 @@ namespace KTKS_DonKH.GUI.DonTu
         private void frmDSDonTu_Load(object sender, EventArgs e)
         {
             dgvDSDonTu.AutoGenerateColumns = false;
+
+            cmbTimTheo.SelectedItem = "Ngày";
         }
 
         private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
@@ -53,26 +55,51 @@ namespace KTKS_DonKH.GUI.DonTu
         {
             switch (cmbTimTheo.SelectedItem.ToString())
             {
-                //case "Mã Đơn":
-                //    if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
-                //        dgvDSDonTu.DataSource = _cDonKH.GetDS(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
-                //    else
-                //        if (txtNoiDungTimKiem.Text.Trim() != "")
-                //            dgvDSDonTu.DataSource = _cDonKH.GetDS(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
-                //    break;
-                //case "Danh Bộ":
-                //    if (txtNoiDungTimKiem.Text.Trim() != "")
-                //        dgvDSDonTu.DataSource = _cDonKH.GetDSByDanhBo(txtNoiDungTimKiem.Text.Trim());
-                //    break;
-                //case "Số Công Văn":
-                //    if (txtNoiDungTimKiem.Text.Trim() != "")
-                //        dgvDSDonTu.DataSource = _cDonKH.GetDSBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper());
-                //    break;
+                case "Mã Đơn":
+                    if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
+                        dgvDSDonTu.DataSource = _cDonTu.GetDS(int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(txtNoiDungTimKiem2.Text.Trim()));
+                    else
+                        if (txtNoiDungTimKiem.Text.Trim() != "")
+                            dgvDSDonTu.DataSource = _cDonTu.GetDS(int.Parse(txtNoiDungTimKiem.Text.Trim()));
+                    break;
+                case "Danh Bộ":
+                    if (txtNoiDungTimKiem.Text.Trim() != "")
+                        dgvDSDonTu.DataSource = _cDonTu.GetDSByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ",""));
+                    break;
+                case "Số Công Văn":
+                    if (txtNoiDungTimKiem.Text.Trim() != "")
+                        dgvDSDonTu.DataSource = _cDonTu.GetDSBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper());
+                    break;
                 case "Ngày":
                     dgvDSDonTu.DataSource = _cDonTu.GetDS(dateTu.Value, dateDen.Value);
                     break;
                 default:
                     break;
+            }
+        }
+
+        private void dgvDSDonTu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvDSDonTu.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null && e.Value.ToString().Length ==11)
+            {
+                e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
+            }
+        }
+
+        private void dgvDSDonTu_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDSDonTu.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvDSDonTu_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (dgvDSDonTu.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
+            {
+                frmNhanDonTu frm = new frmNhanDonTu(int.Parse(dgvDSDonTu["MaDon", dgvDSDonTu.CurrentRow.Index].Value.ToString()));
+                frm.ShowDialog();
             }
         }
 

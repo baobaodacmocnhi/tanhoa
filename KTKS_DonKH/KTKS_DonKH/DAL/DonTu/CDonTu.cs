@@ -23,6 +23,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     entity.NamThang = DateTime.Now.ToString("yyMM");
                     entity.STT = 1.ToString("000");
                 }
+                entity.MaDon = int.Parse(entity.NamThang + entity.STT);
                 entity.CreateBy = CTaiKhoan.MaUser;
                 entity.CreateDate = DateTime.Now;
                 db.DonTus.InsertOnSubmit(entity);
@@ -68,13 +69,91 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
+        public bool CheckExist(int MaDon)
+        {
+            return db.DonTus.Any(item => item.MaDon == MaDon);
+        }
+
+        public LinQ.DonTu Get(int MaDon)
+        {
+            return db.DonTus.SingleOrDefault(item => item.MaDon == MaDon);
+        }
+
+        public DataTable GetDS(int MaDon)
+        {
+            var query = from item in db.DonTus
+                        where item.MaDon == MaDon
+                        select new
+                        {
+                            item.MaDon,
+                            item.SoCongVan,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            NoiDung = item.Name_NhomDon,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDS(int FromMaDon, int ToMaDon)
+        {
+            var query = from item in db.DonTus
+                        where item.MaDon >=FromMaDon && item.MaDon <= ToMaDon
+                        select new
+                        {
+                            item.MaDon,
+                            item.SoCongVan,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            NoiDung = item.Name_NhomDon,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSByDanhBo(string DanhBo)
+        {
+            var query = from item in db.DonTus
+                        where item.DanhBo==DanhBo
+                        select new
+                        {
+                            item.MaDon,
+                            item.SoCongVan,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            NoiDung = item.Name_NhomDon,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSBySoCongVan(string SoCongVan)
+        {
+            var query = from item in db.DonTus
+                        where item.SoCongVan==SoCongVan
+                        select new
+                        {
+                            item.MaDon,
+                            item.SoCongVan,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            NoiDung = item.Name_NhomDon,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable GetDS(DateTime FromCreateDate,DateTime ToCreateDate)
         {
             var query = from item in db.DonTus
                         where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
                         select new
                         {
-                            MaDon = item.NamThang + item.STT,
+                            item.MaDon,
                             item.SoCongVan,
                             item.CreateDate,
                             item.DanhBo,

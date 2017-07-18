@@ -24,6 +24,7 @@ using KTKS_DonKH.GUI.ToBamChi;
 using KTKS_DonKH.GUI.TruyThu;
 using KTKS_DonKH.GUI.CallCenter;
 using KTKS_DonKH.GUI.DonTu;
+using System.Deployment.Application;
 
 namespace KTKS_DonKH
 {
@@ -153,7 +154,6 @@ namespace KTKS_DonKH
                         else
                             itemParent.Visible = false;
                 }
-                    
             }
         }
 

@@ -248,7 +248,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             {
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
-                dr["MaDon"] = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
+                dr["MaDon"] = _donkh.MaDon.ToString();
                 dr["TenLD"] = _donkh.LoaiDon.TenLD;
                 dr["KhachHang"] = _donkh.HoTen;
                 if (_donkh.DanhBo != "")
@@ -485,7 +485,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                 }
                 #endregion
 
-                dr["Ngay"] = _donkh.NgayGiaiQuyet;
+                dr["NgayGiaiQuyet"] = _donkh.NgayGiaiQuyet;
                 dr["DinhMucSau"] = _donkh.DinhMucSau;
                 dr["HieuLucTuKy"] = _donkh.HieuLucTuKy;
                 dr["HoTenNV"] = CTaiKhoan.HoTen;

@@ -50,8 +50,6 @@
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NguoiDi_KTXM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GiaiQuyet = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel_KhoangThoiGian.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDonTu)).BeginInit();
             this.SuspendLayout();
@@ -192,15 +190,16 @@
             this.DanhBo,
             this.HoTen,
             this.DiaChi,
-            this.NoiDung,
-            this.NguoiDi_KTXM,
-            this.GiaiQuyet});
+            this.NoiDung});
             this.dgvDSDonTu.Location = new System.Drawing.Point(0, 67);
             this.dgvDSDonTu.MultiSelect = false;
             this.dgvDSDonTu.Name = "dgvDSDonTu";
             this.dgvDSDonTu.RowHeadersWidth = 60;
             this.dgvDSDonTu.Size = new System.Drawing.Size(1358, 560);
             this.dgvDSDonTu.TabIndex = 20;
+            this.dgvDSDonTu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSDonTu_CellFormatting);
+            this.dgvDSDonTu.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSDonTu_RowPostPaint);
+            this.dgvDSDonTu.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSDonTu_KeyDown);
             // 
             // MaDon
             // 
@@ -255,20 +254,7 @@
             this.NoiDung.HeaderText = "Nội Dung";
             this.NoiDung.Name = "NoiDung";
             this.NoiDung.ReadOnly = true;
-            // 
-            // NguoiDi_KTXM
-            // 
-            this.NguoiDi_KTXM.DataPropertyName = "NguoiDi_KTXM";
-            this.NguoiDi_KTXM.HeaderText = "Người Đi";
-            this.NguoiDi_KTXM.Name = "NguoiDi_KTXM";
-            this.NguoiDi_KTXM.Width = 150;
-            // 
-            // GiaiQuyet
-            // 
-            this.GiaiQuyet.DataPropertyName = "GiaiQuyet";
-            this.GiaiQuyet.HeaderText = "Giải Quyết";
-            this.GiaiQuyet.Name = "GiaiQuyet";
-            this.GiaiQuyet.Width = 50;
+            this.NoiDung.Width = 300;
             // 
             // frmDSDonTu
             // 
@@ -286,7 +272,7 @@
             this.Controls.Add(this.txtNoiDungTimKiem2);
             this.Controls.Add(this.dgvDSDonTu);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmDSDonTu";
             this.Text = "Danh Sách Đơn Từ";
             this.Load += new System.EventHandler(this.frmDSDonTu_Load);
@@ -320,7 +306,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NguoiDi_KTXM;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn GiaiQuyet;
     }
 }

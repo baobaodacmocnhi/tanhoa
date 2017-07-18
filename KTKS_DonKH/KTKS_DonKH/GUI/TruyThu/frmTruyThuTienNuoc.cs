@@ -1172,6 +1172,8 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                         if (_cTTTN.ThemThuMoi(entity))
                         {
+                            _tttn.TinhTrang = "Đang gửi thư mời";
+                            _cTTTN.SubmitChanges();
                             ClearThuMoi();
                             LoadDSThuMoi(_tttn.MaTTTN);
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

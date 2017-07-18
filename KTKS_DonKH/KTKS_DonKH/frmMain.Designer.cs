@@ -42,6 +42,7 @@
             this.mnuBanGiamDoc = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDonTu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuNhanDonTu = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDSDonTu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToKhachHang = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuNhanDonKhachHang = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuNhanDonDienThoai = new System.Windows.Forms.ToolStripMenuItem();
@@ -111,7 +112,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
-            this.mnuDSDonTu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -236,6 +236,13 @@
             this.mnuNhanDonTu.Size = new System.Drawing.Size(169, 22);
             this.mnuNhanDonTu.Text = "Nhận Đơn";
             this.mnuNhanDonTu.Click += new System.EventHandler(this.mnuNhanDonTu_Click);
+            // 
+            // mnuDSDonTu
+            // 
+            this.mnuDSDonTu.Name = "mnuDSDonTu";
+            this.mnuDSDonTu.Size = new System.Drawing.Size(169, 22);
+            this.mnuDSDonTu.Text = "Danh Sách Đơn";
+            this.mnuDSDonTu.Click += new System.EventHandler(this.mnuDSDonTu_Click);
             // 
             // mnuToKhachHang
             // 
@@ -776,15 +783,8 @@
             // StripStatus_HoTen
             // 
             this.StripStatus_HoTen.Name = "StripStatus_HoTen";
-            this.StripStatus_HoTen.Size = new System.Drawing.Size(58, 17);
-            this.StripStatus_HoTen.Text = "Xin Chào:";
-            // 
-            // mnuDSDonTu
-            // 
-            this.mnuDSDonTu.Name = "mnuDSDonTu";
-            this.mnuDSDonTu.Size = new System.Drawing.Size(169, 22);
-            this.mnuDSDonTu.Text = "Danh Sách Đơn";
-            this.mnuDSDonTu.Click += new System.EventHandler(this.mnuDSDonTu_Click);
+            this.StripStatus_HoTen.Size = new System.Drawing.Size(205, 17);
+            this.StripStatus_HoTen.Text = "                                                 Xin Chào:";
             // 
             // frmMain
             // 

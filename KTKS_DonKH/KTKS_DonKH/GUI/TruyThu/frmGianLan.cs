@@ -671,6 +671,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                             dr["MaDon"] = "TKH" + entity.MaDonTBC.Value.ToString().Insert(entity.MaDonTBC.Value.ToString().Length - 2, "-");
                 if (entity.NgayKTXM != null)
                     dr["NgayKTXM"] = entity.NgayKTXM.Value.ToString("dd/MM/yyyy");
+                if (entity.DanhBo!="")
                 dr["DanhBo"] = entity.DanhBo.Insert(7, " ").Insert(4, " ");
                 dr["HoTen"] = entity.HoTen;
                 dr["DiaChi"] = entity.DiaChi;

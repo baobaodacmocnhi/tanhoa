@@ -81,6 +81,7 @@
             this.txtHieuLucKy = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnIn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbDieuChinh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbKhieuNai.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbDHN.Properties)).BeginInit();
@@ -92,6 +93,7 @@
             // 
             // chkcmbDieuChinh
             // 
+            this.chkcmbDieuChinh.EditValue = "";
             this.chkcmbDieuChinh.Location = new System.Drawing.Point(12, 69);
             this.chkcmbDieuChinh.Name = "chkcmbDieuChinh";
             this.chkcmbDieuChinh.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
@@ -102,6 +104,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.chkcmbDieuChinh.Properties.PopupResizeMode = DevExpress.XtraEditors.Controls.ResizeMode.LiveResize;
             this.chkcmbDieuChinh.Properties.SelectAllItemVisible = false;
+            this.chkcmbDieuChinh.Properties.SeparatorChar = ';';
             this.chkcmbDieuChinh.Size = new System.Drawing.Size(250, 22);
             this.chkcmbDieuChinh.TabIndex = 9;
             this.chkcmbDieuChinh.EditValueChanged += new System.EventHandler(this.chkcmbDieuChinh_EditValueChanged);
@@ -117,6 +120,7 @@
             // 
             // chkcmbKhieuNai
             // 
+            this.chkcmbKhieuNai.EditValue = "";
             this.chkcmbKhieuNai.Location = new System.Drawing.Point(268, 69);
             this.chkcmbKhieuNai.Name = "chkcmbKhieuNai";
             this.chkcmbKhieuNai.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
@@ -127,6 +131,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.chkcmbKhieuNai.Properties.PopupResizeMode = DevExpress.XtraEditors.Controls.ResizeMode.LiveResize;
             this.chkcmbKhieuNai.Properties.SelectAllItemVisible = false;
+            this.chkcmbKhieuNai.Properties.SeparatorChar = ';';
             this.chkcmbKhieuNai.Size = new System.Drawing.Size(250, 22);
             this.chkcmbKhieuNai.TabIndex = 11;
             this.chkcmbKhieuNai.EditValueChanged += new System.EventHandler(this.chkcmbKhieuNai_EditValueChanged);
@@ -142,6 +147,7 @@
             // 
             // chkcmbDHN
             // 
+            this.chkcmbDHN.EditValue = "";
             this.chkcmbDHN.Location = new System.Drawing.Point(524, 69);
             this.chkcmbDHN.Name = "chkcmbDHN";
             this.chkcmbDHN.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
@@ -152,6 +158,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.chkcmbDHN.Properties.PopupResizeMode = DevExpress.XtraEditors.Controls.ResizeMode.LiveResize;
             this.chkcmbDHN.Properties.SelectAllItemVisible = false;
+            this.chkcmbDHN.Properties.SeparatorChar = ';';
             this.chkcmbDHN.Size = new System.Drawing.Size(250, 22);
             this.chkcmbDHN.TabIndex = 13;
             this.chkcmbDHN.EditValueChanged += new System.EventHandler(this.chkcmbDHN_EditValueChanged);
@@ -364,6 +371,7 @@
             this.txtMaDon.Name = "txtMaDon";
             this.txtMaDon.Size = new System.Drawing.Size(100, 22);
             this.txtMaDon.TabIndex = 5;
+            this.txtMaDon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDon_KeyPress);
             // 
             // label14
             // 
@@ -601,12 +609,23 @@
             this.panel1.TabIndex = 14;
             this.panel1.Visible = false;
             // 
-            // frmNhanDon
+            // btnIn
+            // 
+            this.btnIn.Location = new System.Drawing.Point(684, 294);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(95, 25);
+            this.btnIn.TabIndex = 24;
+            this.btnIn.Text = "In Biên Nhận";
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
+            // frmNhanDonTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(784, 508);
+            this.Controls.Add(this.btnIn);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label16);
@@ -632,7 +651,7 @@
             this.Controls.Add(this.chkcmbDieuChinh);
             this.Controls.Add(this.label33);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name = "frmNhanDon";
+            this.Name = "frmNhanDonTu";
             this.Text = "Nhận Đơn";
             this.Load += new System.EventHandler(this.frmDonTu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbDieuChinh.Properties)).EndInit();
@@ -705,5 +724,6 @@
         private System.Windows.Forms.TextBox txtHieuLucKy;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnIn;
     }
 }
