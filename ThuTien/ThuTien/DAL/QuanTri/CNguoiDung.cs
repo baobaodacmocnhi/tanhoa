@@ -296,6 +296,11 @@ namespace ThuTien.DAL.QuanTri
             return _db.TT_NguoiDungs.SingleOrDefault(item => item.MaND == MaND).DienThoai;
         }
 
+        public int GetMaNVByHoTen(string HoTen)
+        {
+            return _db.TT_NguoiDungs.SingleOrDefault(item => item.HoTen == HoTen).MaND;
+        }
+
         public int GetMaxSTT()
         {
             if (_db.TT_NguoiDungs.Count() == 0)

@@ -867,5 +867,50 @@ namespace ThuTien.GUI.Doi
             else
                 MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        private void btnChonFileCoNhanVien_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+            {
+                try
+                {
+                    OpenFileDialog dialog = new OpenFileDialog();
+                    dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
+                    dialog.Multiselect = false;
+
+                    if (dialog.ShowDialog() == DialogResult.OK)
+                        if (MessageBox.Show("Bạn có chắc chắn Thêm?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        {
+                            CExcel fileExcel = new CExcel(dialog.FileName);
+                            DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
+
+                            foreach (DataRow item in dtExcel.Rows)
+                                if (item[0].ToString().Replace(" ", "").Length == 11 && item[1].ToString().Trim()!="")
+                                {
+                                    if (_cDangKyHD0.CheckExist(item[0].ToString().Replace(" ", "")) == true)
+                                    {
+                                        MessageBox.Show(_cDangKyHD0.GetHoTen(item[0].ToString().Replace(" ", "")) + " đã đăng ký " + item[0].ToString().Replace(" ", ""), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    else
+                                    {
+                                        TT_DangKyHD0 dangky = new TT_DangKyHD0();
+                                        dangky.DanhBo = item[0].ToString().Replace(" ", "");
+                                        dangky.MaNV = _cNguoiDung.GetMaNVByHoTen(item[1].ToString().Trim());
+
+                                        _cDangKyHD0.Them(dangky);
+                                    }
+                                }
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            btnXemDK.PerformClick();
+                        }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 }

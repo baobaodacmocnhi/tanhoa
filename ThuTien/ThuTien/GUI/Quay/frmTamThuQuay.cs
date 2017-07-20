@@ -33,6 +33,7 @@ namespace ThuTien.GUI.Quay
         CDongNuoc _cDongNuoc = new CDongNuoc();
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CDichVuThu _cDichVuThu = new CDichVuThu();
+        bool _flagEnter = false;
 
         public frmTamThuQuay()
         {
@@ -58,8 +59,13 @@ namespace ThuTien.GUI.Quay
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ","")) && e.KeyChar == 13)
+            if (txtDanhBo.Text.Trim().Replace(" ", "").Length == 11 && e.KeyChar == 13)
             {
+                if (_flagEnter == true)
+                {
+                    _flagEnter = false;
+                    return;
+                }
                 if (tabControl.SelectedTab.Name == "tabThongTin")
                 {
                     dgvHoaDon.DataSource = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim().Replace(" ", ""));
@@ -744,14 +750,44 @@ namespace ThuTien.GUI.Quay
             }
         }
 
-        private void txtDanhBo_Leave(object sender, EventArgs e)
+        private void txtDanhBo_KeyUp(object sender, KeyEventArgs e)
         {
-            if (tabControl.SelectedTab.Name == "tabThongTin")
+            if (txtDanhBo.Text.Trim().Replace(" ", "").Length == 11 )
             {
-                if (txtDanhBo.Text.Trim().Replace(" ", "").Length == 11)
+                if (tabControl.SelectedTab.Name == "tabThongTin")
+                {
                     dgvHoaDon.DataSource = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim().Replace(" ", ""));
+
+                    foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                    {
+                        if (_cDichVuThu.CheckExist(item.Cells["SoHoaDon"].Value.ToString()) == true)
+                            item.DefaultCellStyle.BackColor = Color.Blue;
+                        else
+                        {
+                            item.Cells["Chon"].Value = "True";
+                            if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon"].Value.ToString()))
+                                item.DefaultCellStyle.BackColor = Color.Yellow;
+                            if (_cDongNuoc.CheckExist_KQDongNuocLan2(item.Cells["SoHoaDon"].Value.ToString()))
+                                item.DefaultCellStyle.BackColor = Color.Orange;
+                            item.Cells["DongNuoc"].Value = _cDongNuoc.GetNgayDNBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
+                            if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
+                                item.DefaultCellStyle.BackColor = Color.Red;
+                        }
+                    }
+                }
+                else
+                    if (tabControl.SelectedTab.Name == "tabTamThu")
+                    {
+                        dgvTamThu.DataSource = _cTamThu.GetDS(false, txtDanhBo.Text.Trim().Replace(" ", ""));
+                    }
+                    else
+                        if (tabControl.SelectedTab.Name == "tabXacNhanNo")
+                        {
+                            dgvXacNhanNo.DataSource = _cXacNhanNo.GetDS(txtDanhBo.Text.Trim().Replace(" ", ""));
+                        }
+                _flagEnter = true;
             }
-        }  
+        }
 
     }
 }

@@ -258,11 +258,16 @@ namespace ThuTien.GUI.Doi
                 foreach (DataGridViewRow item in dgvCTToTrinh.Rows)
                 {
                     DataRow dr = ds.Tables["ToTrinhCatHuy"].NewRow();
+                    if (radOng.Checked)
+                        dr["NguoiKy"] = "Ông";
+                    else
+                        if (radBa.Checked)
+                            dr["NguoiKy"] = "Bà";
                     if (radGiamDoc.Checked)
-                        dr["NguoiKy"] = "Giám Đốc";
+                        dr["NguoiKy"] += " Giám Đốc";
                     else
                         if (radPhoGiamDoc.Checked)
-                            dr["NguoiKy"] = "Phó Giám Đốc";
+                            dr["NguoiKy"] += " Phó Giám Đốc";
                     dr["MaTT"] = item.Cells["MaTT_CT"].Value.ToString().Insert(item.Cells["MaTT_CT"].Value.ToString().Length - 2, "-");
                     dr["ThoiGian"] = DateTime.Parse(item.Cells["CreateDate_CT"].Value.ToString()).ToString("MM/yyyy");
                     dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
@@ -345,9 +350,9 @@ namespace ThuTien.GUI.Doi
 
         private void dgvToTrinh_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
-            {
-                if (dgvToTrinh.Columns[e.ColumnIndex].Name == "Khoa" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvToTrinh[e.ColumnIndex, e.RowIndex].Value.ToString()))
+            if (dgvToTrinh.Columns[e.ColumnIndex].Name == "Khoa" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvToTrinh[e.ColumnIndex, e.RowIndex].Value.ToString()))
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
                     if (bool.Parse(e.FormattedValue.ToString()) == true)
                     {
                         TT_ToTrinhCatHuy totrinh = _cToTrinhCatHuy.Get(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
@@ -400,7 +405,7 @@ namespace ThuTien.GUI.Doi
                     else
                     {
                         TT_ToTrinhCatHuy totrinh = _cToTrinhCatHuy.Get(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
-                        
+
                         if (totrinh.DaKy == true)
                         {
                             MessageBox.Show("Đã Ký, Không tắt được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -422,8 +427,12 @@ namespace ThuTien.GUI.Doi
                             _cToTrinhCatHuy.Sua(totrinh);
                         }
                     }
-                ///
-                if (dgvToTrinh.Columns[e.ColumnIndex].Name == "DaKy" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvToTrinh[e.ColumnIndex, e.RowIndex].Value.ToString()))
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            ///
+            if (dgvToTrinh.Columns[e.ColumnIndex].Name == "DaKy" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvToTrinh[e.ColumnIndex, e.RowIndex].Value.ToString()))
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
                     TT_ToTrinhCatHuy totrinh = _cToTrinhCatHuy.Get(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
                     if (totrinh.Khoa == false)
@@ -451,9 +460,8 @@ namespace ThuTien.GUI.Doi
                             }
                     }
                 }
-            }
-            else
-                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void dgvCTToTrinh_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
