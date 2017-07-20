@@ -39,20 +39,44 @@ namespace KTKS_DonKH.DAL.ToKhachHang
 
         }
 
-        public bool Them(DonKH donkh)
+        public bool Them(DonKH entity)
         {
             try
             {
-                donkh.CreateDate = DateTime.Now;
-                donkh.CreateBy = CTaiKhoan.MaUser;
-                db.DonKHs.InsertOnSubmit(donkh);
+                if (db.DonKHs.Count() > 0)
+                {
+                    string ID = "MaDon";
+                    string Table = "DonKH";
+                    decimal MaDon = db.ExecuteQuery<decimal>("declare @Ma int " +
+                        "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                        "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                    entity.MaDon = getMaxNextIDTable(MaDon);
+                }
+                else
+                    entity.MaDon = decimal.Parse("1" + DateTime.Now.ToString("yy"));
+
+                if (entity.MaDon_Cha != null)
+                {
+                    entity.MaDon1 = ".KH";
+                    if (db.DonKHs.Count(item => item.MaDon_Cha == entity.MaDon_Cha) > 0)
+                    {
+                        entity.MaDon2 = db.DonKHs.Max(item => item.MaDon2) + 1;
+                    }
+                    else
+                        entity.MaDon2 = 1;
+                    entity.MaDon_New = entity.MaDon_Cha + entity.MaDon1 + entity.MaDon2;
+                }
+
+                entity.CreateDate = DateTime.Now;
+                entity.CreateBy = CTaiKhoan.MaUser;
+                db.DonKHs.InsertOnSubmit(entity);
                 db.SubmitChanges();
                 return true;
             }
             catch (Exception ex)
             {
+                Refresh();
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -68,8 +92,8 @@ namespace KTKS_DonKH.DAL.ToKhachHang
             }
             catch (Exception ex)
             {
+                Refresh();
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -84,8 +108,8 @@ namespace KTKS_DonKH.DAL.ToKhachHang
             }
             catch (Exception ex)
             {
+                Refresh();
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -93,6 +117,11 @@ namespace KTKS_DonKH.DAL.ToKhachHang
         public bool CheckExist(decimal MaDon)
         {
             return db.DonKHs.Any(item => item.MaDon == MaDon);
+        }
+
+        public bool CheckExist(string DanhBo,DateTime CreateDate)
+        {
+            return db.DonKHs.Any(item => item.DanhBo == DanhBo&&item.CreateDate.Value.Date==CreateDate.Date);
         }
 
         public DonKH Get(decimal MaDon)

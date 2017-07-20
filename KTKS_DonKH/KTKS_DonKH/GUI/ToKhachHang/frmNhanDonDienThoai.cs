@@ -36,6 +36,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
 
         public void Clear()
         {
+            txtDanhBo.Text = "";
             txtHoTen.Text = "";
             txtDiaChi.Text = "";
             txtNoiDung.Text = "";
@@ -45,6 +46,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             dgvLichSuDonDT.DataSource = _cDonDT.getDSDonDienThoaiByDanhBo(txtDanhBo.Text.Trim());
             _selectedindex = -1;
             _hoadon = null;
+            txtDanhBo.Focus();
         }
 
         private void btnThem_Click(object sender, EventArgs e)

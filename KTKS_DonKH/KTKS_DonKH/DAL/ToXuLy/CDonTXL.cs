@@ -11,11 +11,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
 {
     class CDonTXL : CDAL
     {
-        /// <summary>
-        /// Lấy Mã Đơn kế tiếp
-        /// </summary>
-        /// <returns></returns>
-        public decimal GetNextID()
+        public bool Them(DonTXL entity)
         {
             try
             {
@@ -26,66 +22,66 @@ namespace KTKS_DonKH.DAL.ToXuLy
                     decimal MaDon = db.ExecuteQuery<decimal>("declare @Ma int " +
                         "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
                         "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
-                    return getMaxNextIDTable(MaDon);
+                    entity.MaDon = getMaxNextIDTable(MaDon);
                 }
                 else
-                    return decimal.Parse("1" + DateTime.Now.ToString("yy"));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return 0;
-            }
+                    entity.MaDon = decimal.Parse("1" + DateTime.Now.ToString("yy"));
 
-        }
+                if (entity.MaDon_Cha != null)
+                {
+                    entity.MaDon1 = ".XL";
+                    if (db.DonTXLs.Count(item => item.MaDon_Cha == entity.MaDon_Cha) > 0)
+                    {
+                        entity.MaDon2 = db.DonTXLs.Max(item => item.MaDon2) + 1;
+                    }
+                    else
+                        entity.MaDon2 = 1;
+                    entity.MaDon_New = entity.MaDon_Cha + entity.MaDon1 + entity.MaDon2;
+                }
 
-        public bool Them(DonTXL dontxl)
-        {
-            try
-            {
-                dontxl.CreateDate = DateTime.Now;
-                dontxl.CreateBy = CTaiKhoan.MaUser;
-                db.DonTXLs.InsertOnSubmit(dontxl);
+                entity.CreateDate = DateTime.Now;
+                entity.CreateBy = CTaiKhoan.MaUser;
+                db.DonTXLs.InsertOnSubmit(entity);
                 db.SubmitChanges();
                 return true;
             }
             catch (Exception ex)
             {
-                db = new dbKinhDoanhDataContext();
+                Refresh();
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
 
-        public bool Sua(DonTXL dontxl)
+        public bool Sua(DonTXL entity)
         {
             try
             {
-                dontxl.ModifyDate = DateTime.Now;
-                dontxl.ModifyBy = CTaiKhoan.MaUser;
+                entity.ModifyDate = DateTime.Now;
+                entity.ModifyBy = CTaiKhoan.MaUser;
                 db.SubmitChanges();
                 return true;
             }
             catch (Exception ex)
             {
+                Refresh();
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
 
-        public bool Xoa(DonTXL dontxl)
+        public bool Xoa(DonTXL entity)
         {
             try
             {
-                db.DonTXLs.DeleteOnSubmit(dontxl);
+                db.DonTXLs.DeleteOnSubmit(entity);
                 db.SubmitChanges();
                 return true;
             }
             catch (Exception ex)
             {
+                Refresh();
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -93,6 +89,11 @@ namespace KTKS_DonKH.DAL.ToXuLy
         public bool CheckExist(decimal MaDon)
         {
             return db.DonTXLs.Any(item => item.MaDon == MaDon);
+        }
+
+        public bool CheckExist(string DanhBo,DateTime CreateDate)
+        {
+            return db.DonTXLs.Any(item => item.DanhBo == DanhBo&&item.CreateDate.Value.Date==CreateDate.Date);
         }
 
         public DonTXL Get(decimal MaDon)

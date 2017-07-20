@@ -49,7 +49,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
         {
             if (dgvDonTBC.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null&&e.Value.ToString().Length>2)
             {
-                e.Value = "TBC" + e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
         }
 

@@ -26,6 +26,19 @@ namespace KTKS_DonKH.DAL.ToBamChi
                 }
                 else
                     entity.MaDon = decimal.Parse("1" + DateTime.Now.ToString("yy"));
+
+                if (entity.MaDon_Cha != null)
+                {
+                    entity.MaDon1 = ".BC";
+                    if (db.DonTBCs.Count(item => item.MaDon_Cha == entity.MaDon_Cha) > 0)
+                    {
+                        entity.MaDon2 = db.DonTBCs.Max(item => item.MaDon2) + 1;
+                    }
+                    else
+                        entity.MaDon2 = 1;
+                    entity.MaDon_New = entity.MaDon_Cha + entity.MaDon1 + entity.MaDon2;
+                }
+
                 entity.CreateDate = DateTime.Now;
                 entity.CreateBy = CTaiKhoan.MaUser;
                 db.DonTBCs.InsertOnSubmit(entity);
@@ -76,6 +89,11 @@ namespace KTKS_DonKH.DAL.ToBamChi
         public bool CheckExist(decimal MaDon)
         {
             return db.DonTBCs.Any(item => item.MaDon == MaDon);
+        }
+
+        public bool CheckExist(string DanhBo, DateTime CreateDate)
+        {
+            return db.DonTBCs.Any(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
         }
 
         public DonTBC Get(decimal MaDon)

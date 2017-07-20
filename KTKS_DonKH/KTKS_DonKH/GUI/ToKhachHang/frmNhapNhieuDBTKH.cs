@@ -20,8 +20,11 @@ namespace KTKS_DonKH.GUI.ToKhachHang
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         CThuTien _cThuTien = new CThuTien();
         CDocSo _cDocSo = new CDocSo();
+        CDonTu _cDonTu = new CDonTu();
         CDonKH _cDonKH = new CDonKH();
         CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
+
+        LinQ.DonTu _dontu = null;
 
         private DateTimePicker cellDateTimePicker;
         private DateTimePicker cellDateTimePickerVP;
@@ -79,14 +82,6 @@ namespace KTKS_DonKH.GUI.ToKhachHang
         {
             dgvDanhBoChuyenVanPhong.CurrentCell.Value = cellDateTimePickerVP.Value.ToString("dd/MM/yyyy");
             cellDateTimePickerVP.Visible = false;
-        }
-
-        private void cmbLD_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbLD.SelectedIndex != -1)
-            {
-                txtNgayNhan.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            }
         }
 
         private void dgvDanhBo_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
@@ -167,8 +162,20 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                     foreach (DataGridViewRow item in dgvDanhBoChuyenKT.Rows)
                         if (item.Cells["DanhBo"].Value != null || item.Cells["HoTen"].Value != null || item.Cells["DiaChi"].Value != null)
                         {
+                            if (item.Cells["DanhBo"].Value != null)
+                                if (_cDonKH.CheckExist(item.Cells["DanhBo"].Value.ToString(), DateTime.Now) == true)
+                                {
+                                    MessageBox.Show("Danh Bộ này đã nhận đơn trong ngày hôm nay rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+
                             DonKH donkh = new DonKH();
-                            donkh.MaDon = _cDonKH.GetNextID();
+
+                            if (_dontu != null)
+                            {
+                                donkh.MaDon_Cha = _dontu.MaDon;
+                            }
+
                             donkh.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                             donkh.SoCongVan = txtSoCongVan.Text.Trim();
                             donkh.NoiDung = txtNoiDung.Text.Trim();
@@ -237,7 +244,6 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                     _cDonKH.commitTransaction();
                     MessageBox.Show("Thành công\nSố đơn từ " + min.ToString().Insert(min.ToString().Length - 2, "-") + " đến " + max.ToString().Insert(max.ToString().Length - 2, "-"), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     cmbLD.SelectedIndex = -1;
-                    txtNgayNhan.Text = "";
                     txtNoiDung.Text = "";
                     txtSoCongVan.Text = "";
                     //dgvDanhBoChuyenKT.Rows.Clear();
@@ -253,8 +259,20 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                         foreach (DataGridViewRow item in dgvDanhBoChuyenVanPhong.Rows)
                             if (item.Cells["DanhBoVP"].Value != null || item.Cells["HoTenVP"].Value != null || item.Cells["DiaChiVP"].Value != null)
                             {
+                                if (item.Cells["DanhBoVP"].Value != null)
+                                    if (_cDonKH.CheckExist(item.Cells["DanhBoVP"].Value.ToString(), DateTime.Now) == true)
+                                    {
+                                        MessageBox.Show("Danh Bộ này đã nhận đơn trong ngày hôm nay rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+
                                 DonKH donkh = new DonKH();
-                                donkh.MaDon = _cDonKH.GetNextID();
+
+                                if (_dontu != null)
+                                {
+                                    donkh.MaDon_Cha = _dontu.MaDon;
+                                }
+
                                 donkh.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                                 donkh.SoCongVan = txtSoCongVan.Text.Trim();
                                 donkh.NoiDung = txtNoiDung.Text.Trim();
@@ -323,7 +341,6 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                         _cDonKH.commitTransaction();
                         MessageBox.Show("Thành công\nSố đơn từ " + min.ToString().Insert(min.ToString().Length - 2, "-") + " đến " + max.ToString().Insert(max.ToString().Length - 2, "-"), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         cmbLD.SelectedIndex = -1;
-                        txtNgayNhan.Text = "";
                         txtNoiDung.Text = "";
                         txtSoCongVan.Text = "";
                         //dgvDanhBoChuyenKT.Rows.Clear();
@@ -426,6 +443,22 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                 }
                 else
                     _flag = false;
+        }
+
+        private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
+            {
+                if (_cDonTu.CheckExist(int.Parse(txtMaDon.Text.Trim())) == true)
+                {
+                    _dontu = _cDonTu.Get(int.Parse(txtMaDon.Text.Trim()));
+                    txtSoCongVan.Text = _dontu.SoCongVan;
+                }
+                else
+                {
+                    MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

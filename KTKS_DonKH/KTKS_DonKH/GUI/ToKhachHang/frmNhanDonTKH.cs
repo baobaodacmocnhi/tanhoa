@@ -248,11 +248,11 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             {
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
-                dr["MaDon"] = _donkh.MaDon.ToString();
+                dr["MaDon"] = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-"); ;
                 dr["TenLD"] = _donkh.LoaiDon.TenLD;
                 dr["KhachHang"] = _donkh.HoTen;
                 if (_donkh.DanhBo != "")
-                    dr["DanhBo"] = _donkh.DanhBo.Insert(7, ".").Insert(4, ".");
+                    dr["DanhBo"] = _donkh.DanhBo.Insert(7, " ").Insert(4, " ");
                 dr["DiaChi"] = _donkh.DiaChi;
                 dr["HopDong"] = _donkh.HopDong;
                 dr["DienThoai"] = _donkh.DienThoai;
@@ -522,8 +522,13 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                 {
                     if (cmbLD.SelectedIndex != -1)
                     {
+                        if (_cDonKH.CheckExist(txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now) == true)
+                        {
+                            MessageBox.Show("Danh Bộ này đã nhận đơn trong ngày hôm nay rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
                         DonKH donkh = new DonKH();
-                        donkh.MaDon = _cDonKH.GetNextID();
                         donkh.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                         donkh.SoCongVan = txtSoCongVan.Text.Trim();
                         donkh.NoiDung = txtNoiDung.Text.Trim();
@@ -645,7 +650,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                                 dr["TenLD"] = donkh.LoaiDon.TenLD;
                                 dr["KhachHang"] = donkh.HoTen;
                                 if (donkh.DanhBo != "")
-                                    dr["DanhBo"] = donkh.DanhBo.Insert(7, ".").Insert(4, ".");
+                                    dr["DanhBo"] = donkh.DanhBo.Insert(7, " ").Insert(4, " ");
                                 dr["DiaChi"] = donkh.DiaChi;
                                 dr["HopDong"] = donkh.HopDong;
                                 dr["DienThoai"] = donkh.DienThoai;
@@ -878,7 +883,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                                 }
                                 #endregion
 
-                                dr["Ngay"] = donkh.NgayGiaiQuyet;
+                                dr["NgayGiaiQuyet"] = donkh.NgayGiaiQuyet;
                                 dr["DinhMucSau"] = donkh.DinhMucSau;
                                 dr["HieuLucTuKy"] = donkh.HieuLucTuKy;
                                 dr["HoTenNV"] = CTaiKhoan.HoTen;

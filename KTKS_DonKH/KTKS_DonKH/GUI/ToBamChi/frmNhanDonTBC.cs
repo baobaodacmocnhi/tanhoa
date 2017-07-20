@@ -21,27 +21,29 @@ namespace KTKS_DonKH.GUI.ToBamChi
         string _mnu = "mnuNhanDonTBC";
         CDocSo _cDocSo = new CDocSo();
         CThuTien _cThuTien = new CThuTien();
+        CDonTu _cDonTu = new CDonTu();
         CLoaiDonTBC _cLoaiDonTBC = new CLoaiDonTBC();
-        HOADON _hoadon = null;
-        KTKS_DonKH.DAL.ToXuLy.CDonTXL _cDonTXL = new KTKS_DonKH.DAL.ToXuLy.CDonTXL();
         CDonTBC _cDonTBC = new CDonTBC();
-        DonTBC _dontbc = null;
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
         CNoiChuyen _cNoiChuyen = new CNoiChuyen();
         CPhongBanDoi _cPhongBanDoi = new CPhongBanDoi();
+
         DataSet _dsNoiChuyen = new DataSet("NoiChuyen");
+        LinQ.DonTu _dontu = null;
+        DonTBC _dontbc = null;
+        HOADON _hoadon = null;
         bool _flagFirst = false;
-        decimal _MaDon = -1;
+        decimal _MaDonTo = -1;
 
         public frmNhanDonTBC()
         {
             InitializeComponent();
         }
 
-        public frmNhanDonTBC(decimal MaDon)
+        public frmNhanDonTBC(decimal MaDonTo)
         {
-            _MaDon = MaDon;
+            _MaDonTo = MaDonTo;
             InitializeComponent();
         }
 
@@ -93,59 +95,79 @@ namespace KTKS_DonKH.GUI.ToBamChi
             dt.TableName = "6";//Phòng Ban Đội Khác
             _dsNoiChuyen.Tables.Add(dt);
 
-            if (_MaDon != -1)
+            if (_MaDonTo != -1)
             {
-                txtMaDon.Text = _MaDon.ToString();
+                txtMaDonTo.Text = _MaDonTo.ToString();
                 KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
 
-                txtMaDon_KeyPress(sender, arg);
+                txtMaDonTo_KeyPress(sender, arg);
             }
         }
 
-        public void LoadTTKH(HOADON hoadon)
+        public void LoadTTKH(HOADON entity)
         {
-            txtDanhBo.Text = hoadon.DANHBA.Insert(7, " ").Insert(4, " ");
-            txtHopDong.Text = hoadon.HOPDONG;
-            txtHoTen.Text = hoadon.TENKH;
-            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
-            txtGiaBieu.Text = hoadon.GB.ToString();
-            txtDinhMuc.Text = hoadon.DM.ToString();
-            dgvLichSuDon.DataSource = _cLichSuDonTu.GetDS_3To(txtDanhBo.Text.Trim());
-            dgvLichSuDonTu_DCBD.DataSource = _cLichSuDonTu.GetDS_DCBD(txtDanhBo.Text.Trim());
+            txtDanhBo.Text = entity.DANHBA.Insert(7, " ").Insert(4, " ");
+            txtHopDong.Text = entity.HOPDONG;
+            txtHoTen.Text = entity.TENKH;
+            txtDiaChi.Text = entity.SO + " " + entity.DUONG + _cDocSo.GetPhuongQuan(entity.Quan, entity.Phuong);
+            txtGiaBieu.Text = entity.GB.ToString();
+            txtDinhMuc.Text = entity.DM.ToString();
+            dgvLichSuDon.DataSource = _cLichSuDonTu.GetDS_3To(entity.DANHBA);
+            dgvLichSuDonTu_DCBD.DataSource = _cLichSuDonTu.GetDS_DCBD(entity.DANHBA);
         }
 
-        public void LoadDonTBC(DonTBC dontbc)
+        public void LoadDonTBC(DonTBC entity)
         {
-            cmbLD.SelectedValue = dontbc.MaLD.Value;
-            txtSoCongVan.Text = dontbc.SoCongVan;
-            txtMaDon.Text = "TBC" + dontbc.MaDon.ToString().Insert(dontbc.MaDon.ToString().Length - 2, "-");
-            txtNgayNhan.Text = dontbc.CreateDate.Value.ToString("dd/MM/yyyy");
-            txtNoiDung.Text = dontbc.NoiDung;
-            ///
-            txtDanhBo.Text = dontbc.DanhBo.Insert(7, " ").Insert(4, " ");
-            txtHopDong.Text = dontbc.HopDong;
-            txtDienThoai.Text = dontbc.DienThoai;
-            txtHoTen.Text = dontbc.HoTen;
-            txtDiaChi.Text = dontbc.DiaChi;
-            txtGiaBieu.Text = dontbc.GiaBieu;
-            txtDinhMuc.Text = dontbc.DinhMuc;
-            ///
-            dgvLichSuDon.DataSource = _cLichSuDonTu.GetDS_3To(dontbc.DanhBo);
-            dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("TBC", dontbc.MaDon);
+            txtMaDonToMoi.Text = entity.MaDon_New;
+
+            cmbLD.SelectedValue = entity.MaLD.Value;
+            txtSoCongVan.Text = entity.SoCongVan;
+            txtMaDonTo.Text = "TBC" + entity.MaDon.ToString().Insert(entity.MaDon.ToString().Length - 2, "-");
+            txtNgayNhan.Text = entity.CreateDate.Value.ToString("dd/MM/yyyy");
+            txtNoiDung.Text = entity.NoiDung;
+
+            txtDanhBo.Text = entity.DanhBo.Insert(7, " ").Insert(4, " ");
+            txtHopDong.Text = entity.HopDong;
+            txtDienThoai.Text = entity.DienThoai;
+            txtHoTen.Text = entity.HoTen;
+            txtDiaChi.Text = entity.DiaChi;
+            txtGiaBieu.Text = entity.GiaBieu;
+            txtDinhMuc.Text = entity.DinhMuc;
+
+            dgvLichSuDon.DataSource = _cLichSuDonTu.GetDS_3To(entity.DanhBo);
             dgvLichSuDonTu_DCBD.DataSource = _cLichSuDonTu.GetDS_DCBD(txtDanhBo.Text.Trim());
+
+            dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("TBC", entity.MaDon);
             cmbNoiChuyen.SelectedIndex = -1;
             dateChuyen.Value = DateTime.Now;
             txtGhiChu.Text = "";
         }
 
+        public void LoadDonTu(LinQ.DonTu entity)
+        {
+            txtSoCongVan.Text = entity.SoCongVan;
+            txtDanhBo.Text = entity.DanhBo;
+            txtHopDong.Text = entity.HopDong;
+            txtDienThoai.Text = entity.DienThoai;
+            txtHoTen.Text = entity.HoTen;
+            txtDiaChi.Text = entity.DiaChi;
+            if (entity.GiaBieu != null)
+                txtGiaBieu.Text = entity.GiaBieu.Value.ToString();
+            if (entity.DinhMuc != null)
+                txtDinhMuc.Text = entity.DinhMuc.Value.ToString();
+        }
+
         public void Clear()
         {
-            cmbLD.SelectedIndex = -1;
             txtMaDon.Text = "";
+            txtMaDonToMoi.Text = "";
+
+            cmbLD.SelectedIndex = -1;
+            txtMaDonTo.Text = "";
             txtNgayNhan.Text = "";
             txtNoiDung.Text = "";
             txtSoCongVan.Text = "";
-            ///
+            
             txtDanhBo.Text = "";
             txtHopDong.Text = "";
             txtHoTen.Text = "";
@@ -153,20 +175,22 @@ namespace KTKS_DonKH.GUI.ToBamChi
             txtGiaBieu.Text = "";
             txtDinhMuc.Text = "";
             txtDienThoai.Text = "";
-            _hoadon = null;
+
+            _dontu = null;
             _dontbc = null;
-            _MaDon = -1;
+            _hoadon = null;
+            _MaDonTo = -1;
         }
 
-        private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtMaDonTo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
+            if (e.KeyChar == 13 && txtMaDonTo.Text.Trim() != "")
             {
                 string MaDon = "";
-                if (txtMaDon.Text.Trim().ToUpper().Contains("TBC"))
-                    MaDon = txtMaDon.Text.Trim().Substring(3).Replace("-", "");
+                if (txtMaDonTo.Text.Trim().ToUpper().Contains("TBC"))
+                    MaDon = txtMaDonTo.Text.Trim().Substring(3).Replace("-", "");
                 else
-                    MaDon = txtMaDon.Text.Trim().Replace("-", "");
+                    MaDon = txtMaDonTo.Text.Trim().Replace("-", "");
                 if (_cDonTBC.CheckExist(decimal.Parse(MaDon)) == true)
                 {
                     _dontbc = _cDonTBC.Get(decimal.Parse(MaDon));
@@ -205,7 +229,19 @@ namespace KTKS_DonKH.GUI.ToBamChi
                 {
                     if (cmbLD.SelectedIndex != -1)
                     {
+                        if (_cDonTBC.CheckExist(txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now) == true)
+                        {
+                            MessageBox.Show("Danh Bộ này đã nhận đơn trong ngày hôm nay rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
                         DonTBC dontbc = new DonTBC();
+
+                        if (_dontu != null)
+                        {
+                            dontbc.MaDon_Cha = _dontu.MaDon;
+                        }
+
                         //dontbc.MaDon = _cDonTBC.getMaxNextID();
                         dontbc.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                         dontbc.SoCongVan = txtSoCongVan.Text.Trim();
@@ -275,6 +311,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
                                         _cLichSuDonTu.Them(entity);
                                     }
                                 }
+                                ///không có nơi chọn nơi nhận
                                 else
                                 {
                                     LichSuDonTu entity = new LichSuDonTu();
@@ -574,8 +611,22 @@ namespace KTKS_DonKH.GUI.ToBamChi
             }
         }
 
-        
-
+        private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
+            {
+                if (_cDonTu.CheckExist(int.Parse(txtMaDon.Text.Trim())) == true)
+                {
+                    _dontu = _cDonTu.Get(int.Parse(txtMaDon.Text.Trim()));
+                    LoadDonTu(_dontu);
+                }
+                else
+                {
+                    MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Clear();
+                }
+            }
+        }
         
     }
 }

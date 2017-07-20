@@ -20,10 +20,14 @@ namespace KTKS_DonKH.GUI.ToXuLy
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         CThuTien _cThuTien = new CThuTien();
         CDocSo _cDocSo = new CDocSo();
+        CDonTu _cDonTu = new CDonTu();
         CDonTXL _cDonTXL = new CDonTXL();
+        CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
+
+        LinQ.DonTu _dontu = null;
+
         private DateTimePicker cellDateTimePicker;
         bool _flag = false;
-        CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
 
         public frmNhapNhieuDBTXL()
         {
@@ -57,14 +61,6 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             dgvDanhBo.CurrentCell.Value = cellDateTimePicker.Value.ToString("dd/MM/yyyy");
             cellDateTimePicker.Visible = false;
-        }
-
-        private void cmbLD_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbLD.SelectedIndex != -1)
-            {
-                txtNgayNhan.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            }
         }
 
         private void dgvDanhBo_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -116,8 +112,20 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 foreach (DataGridViewRow item in dgvDanhBo.Rows)
                     if (item.Cells["DanhBo"].Value != null || item.Cells["HoTen"].Value != null || item.Cells["DiaChi"].Value != null)
                     {
+                        if (item.Cells["DanhBo"].Value != null)
+                            if (_cDonTXL.CheckExist(item.Cells["DanhBo"].Value.ToString(), DateTime.Now) == true)
+                            {
+                                MessageBox.Show("Danh Bộ này đã nhận đơn trong ngày hôm nay rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+
                         DonTXL dontxl = new DonTXL();
-                        dontxl.MaDon = _cDonTXL.GetNextID();
+
+                        if (_dontu != null)
+                        {
+                            dontxl.MaDon_Cha = _dontu.MaDon;
+                        }
+
                         dontxl.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                         dontxl.SoCongVan = txtSoCongVan.Text.Trim();
                         dontxl.NoiDung = txtNoiDung.Text.Trim();
@@ -163,13 +171,13 @@ namespace KTKS_DonKH.GUI.ToXuLy
                             if (item.Cells["NguoiDi"].Value != null)
                             {
                                 string[] date = item.Cells["NgayChuyen"].Value.ToString().Split('/');
-                                LichSuChuyenKTXM lichsuchuyenkt = new LichSuChuyenKTXM();
-                                lichsuchuyenkt.NgayChuyen = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
-                                lichsuchuyenkt.NguoiDi = int.Parse(item.Cells["NguoiDi"].Value.ToString());
-                                if (item.Cells["GhiChu"].Value != null)
-                                    lichsuchuyenkt.GhiChuChuyen = item.Cells["GhiChu"].Value.ToString();
-                                lichsuchuyenkt.MaDonTXL = dontxl.MaDon;
-                                _cLichSuDonTu.Them(lichsuchuyenkt);
+                                //LichSuChuyenKTXM lichsuchuyenkt = new LichSuChuyenKTXM();
+                                //lichsuchuyenkt.NgayChuyen = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
+                                //lichsuchuyenkt.NguoiDi = int.Parse(item.Cells["NguoiDi"].Value.ToString());
+                                //if (item.Cells["GhiChu"].Value != null)
+                                //    lichsuchuyenkt.GhiChuChuyen = item.Cells["GhiChu"].Value.ToString();
+                                //lichsuchuyenkt.MaDonTXL = dontxl.MaDon;
+                                //_cLichSuDonTu.Them(lichsuchuyenkt);
 
                                 LichSuDonTu entity = new LichSuDonTu();
                                 entity.NgayChuyen = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
@@ -188,7 +196,6 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 _cDonTXL.commitTransaction();
                 MessageBox.Show("Thành công\nSố đơn từ TXL" + min.ToString().Insert(min.ToString().Length - 2, "-") + " đến TXL" + max.ToString().Insert(max.ToString().Length - 2, "-"), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 cmbLD.SelectedIndex = -1;
-                txtNgayNhan.Text = "";
                 txtNoiDung.Text = "";
                 txtSoCongVan.Text = "";
                 //dgvDanhBo.Rows.Clear();
@@ -240,6 +247,22 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 }
                 else
                     _flag = false;
+        }
+
+        private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
+            {
+                if (_cDonTu.CheckExist(int.Parse(txtMaDon.Text.Trim())) == true)
+                {
+                    _dontu = _cDonTu.Get(int.Parse(txtMaDon.Text.Trim()));
+                    txtSoCongVan.Text = _dontu.SoCongVan;
+                }
+                else
+                {
+                    MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

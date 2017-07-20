@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using KTKS_DonKH.DAL.QuanTri;
 using System.Data;
+using System.Windows.Forms;
 
 namespace KTKS_DonKH.DAL.DonTu
 {
@@ -30,9 +31,10 @@ namespace KTKS_DonKH.DAL.DonTu
                 db.SubmitChanges();
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Refresh();
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -46,9 +48,10 @@ namespace KTKS_DonKH.DAL.DonTu
                 db.SubmitChanges();
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Refresh();
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -62,9 +65,10 @@ namespace KTKS_DonKH.DAL.DonTu
                 db.SubmitChanges();
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Refresh();
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }

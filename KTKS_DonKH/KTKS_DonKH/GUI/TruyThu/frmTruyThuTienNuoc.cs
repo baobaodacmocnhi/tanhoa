@@ -802,7 +802,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         foreach (DataGridViewRow item in dgvTruyThuTienNuoc.Rows)
                             if (item.Cells["Ky"].Value != null && item.Cells["Ky"].ToString() != "")
                                 //if (_cTTTN.CheckExist_CT(_tttn.MaTTTN, item.Cells["Ky"].Value.ToString(), item.Cells["Nam"].Value.ToString()) == false)
-                                if (item.Cells["MaCTTTTN"].Value == null)
+                                if (item.Cells["MaCTTTTN"].Value == null || item.Cells["MaCTTTTN"].Value.ToString()=="")
                                 {
                                     CTTruyThuTienNuoc cttttn = new CTTruyThuTienNuoc();
 
