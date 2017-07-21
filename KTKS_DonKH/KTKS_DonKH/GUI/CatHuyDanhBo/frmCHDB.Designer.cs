@@ -46,7 +46,7 @@
             this.NoiNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label28 = new System.Windows.Forms.Label();
-            this.txtMaDon = new System.Windows.Forms.TextBox();
+            this.txtMaDonCu = new System.Windows.Forms.TextBox();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.txtHoTen = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -103,6 +103,8 @@
             this.radToKH = new System.Windows.Forms.RadioButton();
             this.radTXL = new System.Windows.Forms.RadioButton();
             this.btnInThongBao = new System.Windows.Forms.Button();
+            this.txtMaDonMoi = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.groupBoxGhiChu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGhiChu)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -275,13 +277,13 @@
             this.label28.TabIndex = 59;
             this.label28.Text = "Chuột Phải để XÓA Ghi Chú";
             // 
-            // txtMaDon
+            // txtMaDonCu
             // 
-            this.txtMaDon.Location = new System.Drawing.Point(338, 12);
-            this.txtMaDon.Name = "txtMaDon";
-            this.txtMaDon.Size = new System.Drawing.Size(100, 22);
-            this.txtMaDon.TabIndex = 1;
-            this.txtMaDon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDon_KeyPress);
+            this.txtMaDonCu.Location = new System.Drawing.Point(248, 12);
+            this.txtMaDonCu.Name = "txtMaDonCu";
+            this.txtMaDonCu.Size = new System.Drawing.Size(75, 22);
+            this.txtMaDonCu.TabIndex = 1;
+            this.txtMaDonCu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDonCu_KeyPress);
             // 
             // txtDiaChi
             // 
@@ -377,11 +379,11 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(275, 15);
+            this.label21.Location = new System.Drawing.Point(166, 15);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(57, 16);
+            this.label21.Size = new System.Drawing.Size(76, 16);
             this.label21.TabIndex = 0;
-            this.label21.Text = "Mã Đơn:";
+            this.label21.Text = "Mã Đơn Cũ:";
             // 
             // label6
             // 
@@ -593,37 +595,37 @@
             // 
             // txtMaThongBaoCH
             // 
-            this.txtMaThongBaoCH.Location = new System.Drawing.Point(572, 12);
+            this.txtMaThongBaoCH.Location = new System.Drawing.Point(596, 12);
             this.txtMaThongBaoCH.Name = "txtMaThongBaoCH";
-            this.txtMaThongBaoCH.Size = new System.Drawing.Size(100, 22);
+            this.txtMaThongBaoCH.Size = new System.Drawing.Size(60, 22);
             this.txtMaThongBaoCH.TabIndex = 3;
             this.txtMaThongBaoCH.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaThongBaoCH_KeyPress);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(444, 15);
+            this.label14.Location = new System.Drawing.Point(503, 15);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(122, 16);
+            this.label14.Size = new System.Drawing.Size(87, 16);
             this.label14.TabIndex = 2;
-            this.label14.Text = "Mã Thông Báo CH:";
+            this.label14.Text = "Mã TB CHủy:";
             // 
             // txtMaThongBaoCT
             // 
-            this.txtMaThongBaoCT.Location = new System.Drawing.Point(805, 12);
+            this.txtMaThongBaoCT.Location = new System.Drawing.Point(759, 12);
             this.txtMaThongBaoCT.Name = "txtMaThongBaoCT";
-            this.txtMaThongBaoCT.Size = new System.Drawing.Size(100, 22);
+            this.txtMaThongBaoCT.Size = new System.Drawing.Size(60, 22);
             this.txtMaThongBaoCT.TabIndex = 5;
             this.txtMaThongBaoCT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaThongBaoCT_KeyPress);
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(678, 15);
+            this.label15.Location = new System.Drawing.Point(662, 15);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(121, 16);
+            this.label15.Size = new System.Drawing.Size(91, 16);
             this.label15.TabIndex = 4;
-            this.label15.Text = "Mã Thông Báo CT:";
+            this.label15.Text = "Mã TB CTạm:";
             // 
             // contextMenuStrip1
             // 
@@ -645,7 +647,7 @@
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.Red;
-            this.label22.Location = new System.Drawing.Point(176, 9);
+            this.label22.Location = new System.Drawing.Point(12, 9);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(96, 25);
             this.label22.TabIndex = 60;
@@ -829,6 +831,22 @@
             this.btnInThongBao.UseVisualStyleBackColor = true;
             this.btnInThongBao.Click += new System.EventHandler(this.btnInThongBao_Click);
             // 
+            // txtMaDonMoi
+            // 
+            this.txtMaDonMoi.Location = new System.Drawing.Point(417, 12);
+            this.txtMaDonMoi.Name = "txtMaDonMoi";
+            this.txtMaDonMoi.Size = new System.Drawing.Size(80, 22);
+            this.txtMaDonMoi.TabIndex = 115;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(329, 15);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(82, 16);
+            this.label12.TabIndex = 114;
+            this.label12.Text = "Mã Đơn Mới:";
+            // 
             // frmCHDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -836,6 +854,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1298, 652);
+            this.Controls.Add(this.txtMaDonMoi);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnInThongBao);
             this.Controls.Add(this.radTXL);
@@ -857,7 +877,7 @@
             this.Controls.Add(this.txtMaThongBaoCH);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.groupBoxGhiChu);
-            this.Controls.Add(this.txtMaDon);
+            this.Controls.Add(this.txtMaDonCu);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.groupBoxNoiDungXuLy);
@@ -894,7 +914,7 @@
         private System.Windows.Forms.TextBox txtGhiChu;
         private System.Windows.Forms.GroupBox groupBoxGhiChu;
         private System.Windows.Forms.Button btnGhiChu;
-        private System.Windows.Forms.TextBox txtMaDon;
+        private System.Windows.Forms.TextBox txtMaDonCu;
         private System.Windows.Forms.TextBox txtDiaChi;
         private System.Windows.Forms.TextBox txtHoTen;
         private System.Windows.Forms.Label label4;
@@ -958,6 +978,8 @@
         private System.Windows.Forms.ComboBox cmbViTriDHN2;
         private System.Windows.Forms.ComboBox cmbViTriDHN1;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox txtMaDonMoi;
+        private System.Windows.Forms.Label label12;
 
     }
 }

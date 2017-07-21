@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.txtMaDon = new System.Windows.Forms.TextBox();
+            this.txtMaDonCu = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
@@ -101,6 +101,8 @@
             this.radTXL = new System.Windows.Forms.RadioButton();
             this.radToKH = new System.Windows.Forms.RadioButton();
             this.btnInThongBao = new System.Windows.Forms.Button();
+            this.txtMaDonMoi = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBoxNoiDungXuLy.SuspendLayout();
             this.groupBoxGhiChu.SuspendLayout();
@@ -109,22 +111,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuCHDB)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtMaDon
+            // txtMaDonCu
             // 
-            this.txtMaDon.Location = new System.Drawing.Point(338, 12);
-            this.txtMaDon.Name = "txtMaDon";
-            this.txtMaDon.Size = new System.Drawing.Size(100, 22);
-            this.txtMaDon.TabIndex = 1;
-            this.txtMaDon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDon_KeyPress);
+            this.txtMaDonCu.Location = new System.Drawing.Point(248, 12);
+            this.txtMaDonCu.Name = "txtMaDonCu";
+            this.txtMaDonCu.Size = new System.Drawing.Size(75, 22);
+            this.txtMaDonCu.TabIndex = 1;
+            this.txtMaDonCu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDonCu_KeyPress);
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(275, 15);
+            this.label21.Location = new System.Drawing.Point(166, 15);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(57, 16);
+            this.label21.Size = new System.Drawing.Size(76, 16);
             this.label21.TabIndex = 0;
-            this.label21.Text = "Mã Đơn:";
+            this.label21.Text = "Mã Đơn Cũ:";
             // 
             // groupBox1
             // 
@@ -593,20 +595,20 @@
             // 
             // txtMaThongBao
             // 
-            this.txtMaThongBao.Location = new System.Drawing.Point(546, 12);
+            this.txtMaThongBao.Location = new System.Drawing.Point(561, 12);
             this.txtMaThongBao.Name = "txtMaThongBao";
-            this.txtMaThongBao.Size = new System.Drawing.Size(100, 22);
+            this.txtMaThongBao.Size = new System.Drawing.Size(60, 22);
             this.txtMaThongBao.TabIndex = 3;
             this.txtMaThongBao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaThongBao_KeyPress);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(444, 15);
+            this.label10.Location = new System.Drawing.Point(503, 15);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(100, 16);
+            this.label10.Size = new System.Drawing.Size(51, 16);
             this.label10.TabIndex = 2;
-            this.label10.Text = "Mã Thông Báo:";
+            this.label10.Text = "Mã TB:";
             // 
             // contextMenuStrip1
             // 
@@ -628,8 +630,7 @@
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.Red;
-            this.label22.Location = new System.Drawing.Point(176, 9);
-            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label22.Location = new System.Drawing.Point(12, 9);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(100, 25);
             this.label22.TabIndex = 61;
@@ -813,6 +814,22 @@
             this.btnInThongBao.UseVisualStyleBackColor = true;
             this.btnInThongBao.Click += new System.EventHandler(this.btnInThongBao_Click);
             // 
+            // txtMaDonMoi
+            // 
+            this.txtMaDonMoi.Location = new System.Drawing.Point(417, 12);
+            this.txtMaDonMoi.Name = "txtMaDonMoi";
+            this.txtMaDonMoi.Size = new System.Drawing.Size(80, 22);
+            this.txtMaDonMoi.TabIndex = 117;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(329, 15);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(82, 16);
+            this.label12.TabIndex = 116;
+            this.label12.Text = "Mã Đơn Mới:";
+            // 
             // frmCTDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -820,6 +837,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1298, 652);
+            this.Controls.Add(this.txtMaDonMoi);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnInThongBao);
             this.Controls.Add(this.radTXL);
@@ -841,7 +860,7 @@
             this.Controls.Add(this.groupBoxGhiChu);
             this.Controls.Add(this.groupBoxNoiDungXuLy);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.txtMaDon);
+            this.Controls.Add(this.txtMaDonCu);
             this.Controls.Add(this.label21);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmCTDB";
@@ -863,7 +882,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtMaDon;
+        private System.Windows.Forms.TextBox txtMaDonCu;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtDiaChi;
@@ -935,5 +954,7 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ComboBox cmbViTriDHN2;
         private System.Windows.Forms.ComboBox cmbViTriDHN1;
+        private System.Windows.Forms.TextBox txtMaDonMoi;
+        private System.Windows.Forms.Label label12;
     }
 }

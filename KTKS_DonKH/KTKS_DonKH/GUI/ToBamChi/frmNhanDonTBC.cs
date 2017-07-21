@@ -97,7 +97,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
 
             if (_MaDonTo != -1)
             {
-                txtMaDonTo.Text = _MaDonTo.ToString();
+                txtMaDonToCu.Text = _MaDonTo.ToString();
                 KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
 
                 txtMaDonTo_KeyPress(sender, arg);
@@ -122,7 +122,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
 
             cmbLD.SelectedValue = entity.MaLD.Value;
             txtSoCongVan.Text = entity.SoCongVan;
-            txtMaDonTo.Text = "TBC" + entity.MaDon.ToString().Insert(entity.MaDon.ToString().Length - 2, "-");
+            txtMaDonToCu.Text = "TBC" + entity.MaDon.ToString().Insert(entity.MaDon.ToString().Length - 2, "-");
             txtNgayNhan.Text = entity.CreateDate.Value.ToString("dd/MM/yyyy");
             txtNoiDung.Text = entity.NoiDung;
 
@@ -163,7 +163,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
             txtMaDonToMoi.Text = "";
 
             cmbLD.SelectedIndex = -1;
-            txtMaDonTo.Text = "";
+            txtMaDonToCu.Text = "";
             txtNgayNhan.Text = "";
             txtNoiDung.Text = "";
             txtSoCongVan.Text = "";
@@ -184,13 +184,13 @@ namespace KTKS_DonKH.GUI.ToBamChi
 
         private void txtMaDonTo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13 && txtMaDonTo.Text.Trim() != "")
+            if (e.KeyChar == 13 && txtMaDonToCu.Text.Trim() != "")
             {
                 string MaDon = "";
-                if (txtMaDonTo.Text.Trim().ToUpper().Contains("TBC"))
-                    MaDon = txtMaDonTo.Text.Trim().Substring(3).Replace("-", "");
+                if (txtMaDonToCu.Text.Trim().ToUpper().Contains("TBC"))
+                    MaDon = txtMaDonToCu.Text.Trim().Substring(3).Replace("-", "");
                 else
-                    MaDon = txtMaDonTo.Text.Trim().Replace("-", "");
+                    MaDon = txtMaDonToCu.Text.Trim().Replace("-", "");
                 if (_cDonTBC.CheckExist(decimal.Parse(MaDon)) == true)
                 {
                     _dontbc = _cDonTBC.Get(decimal.Parse(MaDon));

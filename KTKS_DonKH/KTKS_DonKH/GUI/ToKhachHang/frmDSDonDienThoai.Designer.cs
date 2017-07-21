@@ -134,9 +134,9 @@
             this.NguoiBao,
             this.NgayBao,
             this.DienThoai});
-            this.dgvDonDT.Location = new System.Drawing.Point(0, 63);
+            this.dgvDonDT.Location = new System.Drawing.Point(0, 66);
             this.dgvDonDT.Name = "dgvDonDT";
-            this.dgvDonDT.Size = new System.Drawing.Size(1365, 493);
+            this.dgvDonDT.Size = new System.Drawing.Size(1360, 560);
             this.dgvDonDT.TabIndex = 16;
             this.dgvDonDT.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDonDT_RowPostPaint);
             this.dgvDonDT.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDonDT_KeyDown);
@@ -367,7 +367,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1378, 586);
+            this.ClientSize = new System.Drawing.Size(1364, 631);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.chkTheoUser);
             this.Controls.Add(this.chkSelectAll);

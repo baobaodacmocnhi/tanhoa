@@ -58,7 +58,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             ///this.KeyPreview = true;
             ///Hàm Properties không có nên phải add code
             ///Dùng để bôi đen Text
-            txtMaDon.GotFocus += new EventHandler(txtMaDon_GotFocus);
+            txtMaDonCu.GotFocus += new EventHandler(txtMaDon_GotFocus);
 
             dgvDSSoDangKy.AutoGenerateColumns = false;
             dgvDSSoDangKy.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSSoDangKy.Font, FontStyle.Bold);
@@ -89,7 +89,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         void txtMaDon_GotFocus(object sender, EventArgs e)
         {
-            txtMaDon.SelectAll();
+            txtMaDonCu.SelectAll();
         }
 
         public void LoadTTKH(HOADON hoadon)
@@ -117,19 +117,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (ctdcbd.DCBD.MaDon != null)
             {
                 _donkh = _cDonKH.Get(ctdcbd.DCBD.MaDon.Value);
-                txtMaDon.Text = ctdcbd.DCBD.MaDon.ToString().Insert(ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
+                txtMaDonCu.Text = ctdcbd.DCBD.MaDon.ToString().Insert(ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
             }
             else
                 if (ctdcbd.DCBD.MaDonTXL != null)
                 {
                     _dontxl = _cDonTXL.Get(ctdcbd.DCBD.MaDonTXL.Value);
-                    txtMaDon.Text = "TXL" + ctdcbd.DCBD.MaDonTXL.ToString().Insert(ctdcbd.DCBD.MaDonTXL.ToString().Length - 2, "-");
+                    txtMaDonCu.Text = "TXL" + ctdcbd.DCBD.MaDonTXL.ToString().Insert(ctdcbd.DCBD.MaDonTXL.ToString().Length - 2, "-");
                 }
                 else
                     if (ctdcbd.DCBD.MaDonTBC != null)
                     {
                         _dontbc = _cDonTBC.Get(ctdcbd.DCBD.MaDonTBC.Value);
-                        txtMaDon.Text = "TBC" + ctdcbd.DCBD.MaDonTBC.ToString().Insert(ctdcbd.DCBD.MaDonTBC.ToString().Length - 2, "-");
+                        txtMaDonCu.Text = "TBC" + ctdcbd.DCBD.MaDonTBC.ToString().Insert(ctdcbd.DCBD.MaDonTBC.ToString().Length - 2, "-");
                     }
 
             txtSoPhieu.Text = ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
@@ -245,20 +245,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             lbTongDM.Text = "Tổng ĐM: " + TongNK * 4;
         }
 
-        private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtMaDonCu_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
+            if (e.KeyChar == 13 && txtMaDonCu.Text.Trim() != "")
             {
-                string MaDon = txtMaDon.Text.Trim();
+                string MaDon = txtMaDonCu.Text.Trim();
                 Clear();
-                txtMaDon.Text = MaDon;
+                txtMaDonCu.Text = MaDon;
                 ///Đơn Tổ Xử Lý
-                if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
+                if (txtMaDonCu.Text.Trim().ToUpper().Contains("TXL"))
                 {
-                    if (_cDonTXL.CheckExist(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", ""))) == true)
+                    if (_cDonTXL.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", ""))) == true)
                     {
-                        _dontxl = _cDonTXL.Get(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
-                        txtMaDon.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
+                        _dontxl = _cDonTXL.Get(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", "")));
+                        txtMaDonCu.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
                         if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
                         {
                             _hoadon = _cThuTien.GetMoiNhat(_dontxl.DanhBo);
@@ -275,12 +275,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         MessageBox.Show("Mã Đơn TXL này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
-                    if (txtMaDon.Text.Trim().ToUpper().Contains("TBC"))
+                    if (txtMaDonCu.Text.Trim().ToUpper().Contains("TBC"))
                     {
-                        if (_cDonTBC.CheckExist(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", ""))) == true)
+                        if (_cDonTBC.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", ""))) == true)
                         {
-                            _dontbc = _cDonTBC.Get(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
-                            txtMaDon.Text = "TBC" + _dontbc.MaDon.ToString().Insert(_dontbc.MaDon.ToString().Length - 2, "-");
+                            _dontbc = _cDonTBC.Get(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", "")));
+                            txtMaDonCu.Text = "TBC" + _dontbc.MaDon.ToString().Insert(_dontbc.MaDon.ToString().Length - 2, "-");
                             if (_cThuTien.GetMoiNhat(_dontbc.DanhBo) != null)
                             {
                                 _hoadon = _cThuTien.GetMoiNhat(_dontbc.DanhBo);
@@ -298,10 +298,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     }
                     ///Đơn Tổ Khách Hàng
                     else
-                        if (_cDonKH.CheckExist(decimal.Parse(txtMaDon.Text.Trim().Replace("-", ""))) == true)
+                        if (_cDonKH.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Replace("-", ""))) == true)
                         {
-                            _donkh = _cDonKH.Get(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
-                            txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
+                            _donkh = _cDonKH.Get(decimal.Parse(txtMaDonCu.Text.Trim().Replace("-", "")));
+                            txtMaDonCu.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
                             if (_cThuTien.GetMoiNhat(_donkh.DanhBo) != null)
                             {
                                 _hoadon = _cThuTien.GetMoiNhat(_donkh.DanhBo);
@@ -520,7 +520,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         Clear();
                         MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtMaDon.Focus();
+                        txtMaDonCu.Focus();
                     }
                 }
                 catch (Exception ex)
@@ -661,7 +661,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             Clear();
                             MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txtMaDon.Focus();
+                            txtMaDonCu.Focus();
                         }
                     }
                 }

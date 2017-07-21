@@ -61,13 +61,13 @@ namespace KTKS_DonKH.GUI.BamChi
             {
                 _ctbamchi = _cBamChi.GetCT(_MaCTBamChi);
                 if (_ctbamchi.BamChi.MaDon != null)
-                    txtMaDon.Text = _ctbamchi.BamChi.MaDon.ToString().Insert(_ctbamchi.BamChi.MaDon.ToString().Length - 2, "-");
+                    txtMaDonCu.Text = _ctbamchi.BamChi.MaDon.ToString().Insert(_ctbamchi.BamChi.MaDon.ToString().Length - 2, "-");
                 else
                     if (_ctbamchi.BamChi.MaDonTXL != null)
-                        txtMaDon.Text = "TXL" + _ctbamchi.BamChi.MaDonTXL.ToString().Insert(_ctbamchi.BamChi.MaDonTXL.ToString().Length - 2, "-");
+                        txtMaDonCu.Text = "TXL" + _ctbamchi.BamChi.MaDonTXL.ToString().Insert(_ctbamchi.BamChi.MaDonTXL.ToString().Length - 2, "-");
                     else
                         if (_ctbamchi.BamChi.MaDonTBC != null)
-                            txtMaDon.Text = "TBC" + _ctbamchi.BamChi.MaDonTBC.ToString().Insert(_ctbamchi.BamChi.MaDonTBC.ToString().Length - 2, "-");
+                            txtMaDonCu.Text = "TBC" + _ctbamchi.BamChi.MaDonTBC.ToString().Insert(_ctbamchi.BamChi.MaDonTBC.ToString().Length - 2, "-");
                 LoadCTBamChi(_ctbamchi);
             }
         }
@@ -92,19 +92,19 @@ namespace KTKS_DonKH.GUI.BamChi
             if (ctbamchi.BamChi.MaDon != null)
             {
                 _dontkh = _cDonKH.Get(ctbamchi.BamChi.MaDon.Value);
-                txtMaDon.Text = ctbamchi.BamChi.MaDon.ToString().Insert(ctbamchi.BamChi.MaDon.ToString().Length - 2, "-");
+                txtMaDonCu.Text = ctbamchi.BamChi.MaDon.ToString().Insert(ctbamchi.BamChi.MaDon.ToString().Length - 2, "-");
             }
             else
                 if (ctbamchi.BamChi.MaDonTXL != null)
                 {
                     _dontxl = _cDonTXL.Get(ctbamchi.BamChi.MaDonTXL.Value);
-                    txtMaDon.Text = "TXL" + ctbamchi.BamChi.MaDonTXL.ToString().Insert(ctbamchi.BamChi.MaDonTXL.ToString().Length - 2, "-");
+                    txtMaDonCu.Text = "TXL" + ctbamchi.BamChi.MaDonTXL.ToString().Insert(ctbamchi.BamChi.MaDonTXL.ToString().Length - 2, "-");
                 }
                 else
             if (ctbamchi.BamChi.MaDonTBC != null)
             {
                 _dontbc = _cDonTBC.Get(ctbamchi.BamChi.MaDonTBC.Value);
-                txtMaDon.Text = "TBC" + ctbamchi.BamChi.MaDonTBC.ToString().Insert(ctbamchi.BamChi.MaDonTBC.ToString().Length - 2, "-");
+                txtMaDonCu.Text = "TBC" + ctbamchi.BamChi.MaDonTBC.ToString().Insert(ctbamchi.BamChi.MaDonTBC.ToString().Length - 2, "-");
             }
             ///
             txtDanhBo.Text = ctbamchi.DanhBo;
@@ -139,7 +139,7 @@ namespace KTKS_DonKH.GUI.BamChi
 
         public void Clear()
         {
-            txtMaDon.Text = "";
+            txtMaDonCu.Text = "";
             txtDanhBo.Text = "";
             txtHopDong.Text = "";
             txtHoTen.Text = "";
@@ -175,7 +175,7 @@ namespace KTKS_DonKH.GUI.BamChi
 
         public void Clear_GetDataGridView()
         {
-            txtMaDon.Text = "";
+            txtMaDonCu.Text = "";
             txtDanhBo.Text = "";
             txtHopDong.Text = "";
             txtHoTen.Text = "";
@@ -221,7 +221,7 @@ namespace KTKS_DonKH.GUI.BamChi
 
         public void Clear2()
         {
-            txtMaDon.Text = "";
+            txtMaDonCu.Text = "";
             txtDanhBo.Text = "";
             txtHopDong.Text = "";
             txtHoTen.Text = "";
@@ -255,20 +255,20 @@ namespace KTKS_DonKH.GUI.BamChi
             dgvDSNhapBamChi.DataSource = null;
         }
 
-        private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtMaDonCu_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
+            if (e.KeyChar == 13 && txtMaDonCu.Text.Trim() != "")
             {
-                string MaDon = txtMaDon.Text.Trim();
+                string MaDon = txtMaDonCu.Text.Trim();
                 Clear();
-                txtMaDon.Text = MaDon;
+                txtMaDonCu.Text = MaDon;
                 ///Đơn Tổ Xử Lý
-                if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
+                if (txtMaDonCu.Text.Trim().ToUpper().Contains("TXL"))
                 {
-                    if (CTaiKhoan.ToXL == true && _cDonTXL.CheckExist(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", ""))) == true)
+                    if (CTaiKhoan.ToXL == true && _cDonTXL.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", ""))) == true)
                     {
-                        _dontxl = _cDonTXL.Get(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
-                        txtMaDon.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
+                        _dontxl = _cDonTXL.Get(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", "")));
+                        txtMaDonCu.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
 
                         GetDataGridView();
 
@@ -285,12 +285,12 @@ namespace KTKS_DonKH.GUI.BamChi
                 }
                 else
                     ///Đơn Tổ Bấm Chì
-                    if (txtMaDon.Text.Trim().ToUpper().Contains("TBC"))
+                    if (txtMaDonCu.Text.Trim().ToUpper().Contains("TBC"))
                     {
-                        if (CTaiKhoan.ToBC == true && _cDonTBC.CheckExist(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", ""))) == true)
+                        if (CTaiKhoan.ToBC == true && _cDonTBC.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", ""))) == true)
                         {
-                            _dontbc = _cDonTBC.Get(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
-                            txtMaDon.Text = "TBC" + _dontbc.MaDon.ToString().Insert(_dontbc.MaDon.ToString().Length - 2, "-");
+                            _dontbc = _cDonTBC.Get(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", "")));
+                            txtMaDonCu.Text = "TBC" + _dontbc.MaDon.ToString().Insert(_dontbc.MaDon.ToString().Length - 2, "-");
 
                             GetDataGridView();
 
@@ -307,10 +307,10 @@ namespace KTKS_DonKH.GUI.BamChi
                     }
                     ///Đơn Tổ Khách Hàng
                     else
-                        if (CTaiKhoan.ToKH == true && _cDonKH.CheckExist(decimal.Parse(txtMaDon.Text.Trim().Replace("-", ""))) == true)
+                        if (CTaiKhoan.ToKH == true && _cDonKH.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Replace("-", ""))) == true)
                         {
-                            _dontkh = _cDonKH.Get(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
-                            txtMaDon.Text = _dontkh.MaDon.ToString().Insert(_dontkh.MaDon.ToString().Length - 2, "-");
+                            _dontkh = _cDonKH.Get(decimal.Parse(txtMaDonCu.Text.Trim().Replace("-", "")));
+                            txtMaDonCu.Text = _dontkh.MaDon.ToString().Insert(_dontkh.MaDon.ToString().Length - 2, "-");
 
                             GetDataGridView();
 
@@ -472,7 +472,7 @@ namespace KTKS_DonKH.GUI.BamChi
                     {
                         Clear_GetDataGridView();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtMaDon.Focus();
+                        txtMaDonCu.Focus();
                     }
                 }
                 catch (Exception ex)
@@ -561,7 +561,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         {
                             Clear2();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txtMaDon.Focus();
+                            txtMaDonCu.Focus();
                         }
                     }
                 }
@@ -591,7 +591,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         {
                             Clear2();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txtMaDon.Focus();
+                            txtMaDonCu.Focus();
                         }
                     }
                 }

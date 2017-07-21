@@ -32,7 +32,7 @@
             this.txtSoCongVan = new System.Windows.Forms.TextBox();
             this.txtNoiDung = new System.Windows.Forms.TextBox();
             this.txtNgayNhan = new System.Windows.Forms.TextBox();
-            this.txtMaDonTo = new System.Windows.Forms.TextBox();
+            this.txtMaDonToCu = new System.Windows.Forms.TextBox();
             this.cmbLD = new System.Windows.Forms.ComboBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -136,14 +136,14 @@
             this.txtNgayNhan.TabIndex = 21;
             this.txtNgayNhan.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtMaDonTo
+            // txtMaDonToCu
             // 
-            this.txtMaDonTo.Location = new System.Drawing.Point(373, 61);
-            this.txtMaDonTo.Name = "txtMaDonTo";
-            this.txtMaDonTo.Size = new System.Drawing.Size(100, 22);
-            this.txtMaDonTo.TabIndex = 19;
-            this.txtMaDonTo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtMaDonTo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDonTo_KeyPress);
+            this.txtMaDonToCu.Location = new System.Drawing.Point(373, 61);
+            this.txtMaDonToCu.Name = "txtMaDonToCu";
+            this.txtMaDonToCu.Size = new System.Drawing.Size(100, 22);
+            this.txtMaDonToCu.TabIndex = 19;
+            this.txtMaDonToCu.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtMaDonToCu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDonTo_KeyPress);
             // 
             // cmbLD
             // 
@@ -691,7 +691,7 @@
             // 
             this.txtMaDonToMoi.Location = new System.Drawing.Point(375, 11);
             this.txtMaDonToMoi.Name = "txtMaDonToMoi";
-            this.txtMaDonToMoi.Size = new System.Drawing.Size(85, 22);
+            this.txtMaDonToMoi.Size = new System.Drawing.Size(100, 22);
             this.txtMaDonToMoi.TabIndex = 104;
             this.txtMaDonToMoi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -736,9 +736,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(370, 42);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 16);
+            this.label3.Size = new System.Drawing.Size(96, 16);
             this.label3.TabIndex = 99;
-            this.label3.Text = "Mã Đơn Tổ:";
+            this.label3.Text = "Mã Đơn Tổ Cũ:";
             // 
             // label14
             // 
@@ -827,7 +827,7 @@
             this.Controls.Add(this.txtSoCongVan);
             this.Controls.Add(this.txtNoiDung);
             this.Controls.Add(this.txtNgayNhan);
-            this.Controls.Add(this.txtMaDonTo);
+            this.Controls.Add(this.txtMaDonToCu);
             this.Controls.Add(this.cmbLD);
             this.Controls.Add(this.lbTruyThu);
             this.Controls.Add(this.tabControl1);
@@ -855,7 +855,7 @@
         private System.Windows.Forms.TextBox txtSoCongVan;
         private System.Windows.Forms.TextBox txtNoiDung;
         private System.Windows.Forms.TextBox txtNgayNhan;
-        private System.Windows.Forms.TextBox txtMaDonTo;
+        private System.Windows.Forms.TextBox txtMaDonToCu;
         private System.Windows.Forms.ComboBox cmbLD;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;

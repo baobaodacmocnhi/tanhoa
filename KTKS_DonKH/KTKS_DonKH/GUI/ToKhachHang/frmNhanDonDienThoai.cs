@@ -39,7 +39,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             txtDanhBo.Text = "";
             txtHoTen.Text = "";
             txtDiaChi.Text = "";
-            txtNoiDung.Text = "";
+            cmbNoiDung.SelectedIndex = -1;
             txtGhiChu.Text = "";
             txtDienThoai.Text = "";
             txtNguoiBao.Text = "";
@@ -67,7 +67,8 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                     dondt.Ky = _hoadon.KY.ToString();
                     dondt.Nam = _hoadon.NAM.ToString();
                 }
-                dondt.NoiDung = txtNoiDung.Text.Trim();
+                if (cmbNoiDung.SelectedIndex != -1)
+                    dondt.NoiDung = cmbNoiDung.SelectedItem.ToString();
                 dondt.GhiChu = txtGhiChu.Text.Trim();
                 dondt.DienThoai = txtDienThoai.Text.Trim();
                 dondt.NguoiBao = txtNguoiBao.Text.Trim();
@@ -101,7 +102,8 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                         //dondt.DanhBo = txtDanhBo.Text;
                         //dondt.HoTen = txtHoTen.Text.Trim();
                         //dondt.DiaChi = txtDiaChi.Text.Trim();
-                        dondt.NoiDung = txtNoiDung.Text.Trim();
+                        if (cmbNoiDung.SelectedIndex != -1)
+                            dondt.NoiDung = cmbNoiDung.SelectedItem.ToString();
                         dondt.GhiChu = txtGhiChu.Text.Trim();
                         dondt.DienThoai = txtDienThoai.Text.Trim();
                         dondt.NguoiBao = txtNguoiBao.Text.Trim();
@@ -165,7 +167,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                 _selectedindex = e.RowIndex;
                 txtHoTen.Text = dgvLichSuDonDT["HoTen", e.RowIndex].Value.ToString();
                 txtDiaChi.Text = dgvLichSuDonDT["DiaChi", e.RowIndex].Value.ToString();
-                txtNoiDung.Text = dgvLichSuDonDT["NoiDung", e.RowIndex].Value.ToString();
+                cmbNoiDung.SelectedItem = dgvLichSuDonDT["NoiDung", e.RowIndex].Value.ToString();
                 txtGhiChu.Text = dgvLichSuDonDT["GhiChu", e.RowIndex].Value.ToString();
                 txtDienThoai.Text = dgvLichSuDonDT["DienThoai", e.RowIndex].Value.ToString();
                 txtNguoiBao.Text = dgvLichSuDonDT["NguoiBao", e.RowIndex].Value.ToString();
@@ -206,7 +208,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
         private void txtDiaChi_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
-                txtNoiDung.Focus();
+                cmbNoiDung.Focus();
         }
 
         private void txtNoiDung_KeyPress(object sender, KeyPressEventArgs e)

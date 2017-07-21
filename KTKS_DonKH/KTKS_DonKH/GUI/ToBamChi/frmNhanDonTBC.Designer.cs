@@ -34,7 +34,7 @@
             this.txtSoCongVan = new System.Windows.Forms.TextBox();
             this.txtDienThoai = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtMaDonTo = new System.Windows.Forms.TextBox();
+            this.txtMaDonToCu = new System.Windows.Forms.TextBox();
             this.cmbLD = new System.Windows.Forms.ComboBox();
             this.txtDinhMuc = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -144,14 +144,14 @@
             this.label11.TabIndex = 4;
             this.label11.Text = "Điện Thoại:";
             // 
-            // txtMaDonTo
+            // txtMaDonToCu
             // 
-            this.txtMaDonTo.Location = new System.Drawing.Point(373, 61);
-            this.txtMaDonTo.Name = "txtMaDonTo";
-            this.txtMaDonTo.Size = new System.Drawing.Size(100, 22);
-            this.txtMaDonTo.TabIndex = 7;
-            this.txtMaDonTo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtMaDonTo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDonTo_KeyPress);
+            this.txtMaDonToCu.Location = new System.Drawing.Point(373, 61);
+            this.txtMaDonToCu.Name = "txtMaDonToCu";
+            this.txtMaDonToCu.Size = new System.Drawing.Size(100, 22);
+            this.txtMaDonToCu.TabIndex = 7;
+            this.txtMaDonToCu.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtMaDonToCu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDonTo_KeyPress);
             // 
             // cmbLD
             // 
@@ -658,9 +658,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(370, 42);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 16);
+            this.label3.Size = new System.Drawing.Size(96, 16);
             this.label3.TabIndex = 90;
-            this.label3.Text = "Mã Đơn Tổ:";
+            this.label3.Text = "Mã Đơn Tổ Cũ:";
             // 
             // label4
             // 
@@ -711,7 +711,7 @@
             // 
             this.txtMaDonToMoi.Location = new System.Drawing.Point(375, 11);
             this.txtMaDonToMoi.Name = "txtMaDonToMoi";
-            this.txtMaDonToMoi.Size = new System.Drawing.Size(85, 22);
+            this.txtMaDonToMoi.Size = new System.Drawing.Size(100, 22);
             this.txtMaDonToMoi.TabIndex = 95;
             this.txtMaDonToMoi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -752,7 +752,7 @@
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.txtNgayNhan);
             this.Controls.Add(this.txtSoCongVan);
-            this.Controls.Add(this.txtMaDonTo);
+            this.Controls.Add(this.txtMaDonToCu);
             this.Controls.Add(this.cmbLD);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnThem);
@@ -781,7 +781,7 @@
         private System.Windows.Forms.TextBox txtSoCongVan;
         private System.Windows.Forms.TextBox txtDienThoai;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtMaDonTo;
+        private System.Windows.Forms.TextBox txtMaDonToCu;
         private System.Windows.Forms.ComboBox cmbLD;
         private System.Windows.Forms.TextBox txtDinhMuc;
         private System.Windows.Forms.Label label10;

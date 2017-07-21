@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtMaDon = new System.Windows.Forms.TextBox();
+            this.txtMaDonCu = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtKyHD = new System.Windows.Forms.TextBox();
@@ -118,28 +118,30 @@
             this.chkCodeF2 = new System.Windows.Forms.CheckBox();
             this.txtSoPhieu = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
+            this.txtMaDonMoi = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSu)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtMaDon
+            // txtMaDonCu
             // 
-            this.txtMaDon.Location = new System.Drawing.Point(220, 12);
-            this.txtMaDon.Name = "txtMaDon";
-            this.txtMaDon.Size = new System.Drawing.Size(100, 22);
-            this.txtMaDon.TabIndex = 1;
-            this.txtMaDon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDon_KeyPress);
+            this.txtMaDonCu.Location = new System.Drawing.Point(222, 12);
+            this.txtMaDonCu.Name = "txtMaDonCu";
+            this.txtMaDonCu.Size = new System.Drawing.Size(75, 22);
+            this.txtMaDonCu.TabIndex = 1;
+            this.txtMaDonCu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDonCu_KeyPress);
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(157, 15);
+            this.label21.Location = new System.Drawing.Point(140, 15);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(57, 16);
+            this.label21.Size = new System.Drawing.Size(76, 16);
             this.label21.TabIndex = 0;
-            this.label21.Text = "Mã Đơn:";
+            this.label21.Text = "Mã Đơn Cũ:";
             // 
             // label1
             // 
@@ -998,7 +1000,7 @@
             // chkCodeF2
             // 
             this.chkCodeF2.AutoSize = true;
-            this.chkCodeF2.Location = new System.Drawing.Point(503, 14);
+            this.chkCodeF2.Location = new System.Drawing.Point(614, 14);
             this.chkCodeF2.Name = "chkCodeF2";
             this.chkCodeF2.Size = new System.Drawing.Size(98, 20);
             this.chkCodeF2.TabIndex = 92;
@@ -1008,20 +1010,36 @@
             // 
             // txtSoPhieu
             // 
-            this.txtSoPhieu.Location = new System.Drawing.Point(397, 12);
+            this.txtSoPhieu.Location = new System.Drawing.Point(548, 12);
             this.txtSoPhieu.Name = "txtSoPhieu";
-            this.txtSoPhieu.Size = new System.Drawing.Size(100, 22);
+            this.txtSoPhieu.Size = new System.Drawing.Size(60, 22);
             this.txtSoPhieu.TabIndex = 94;
             this.txtSoPhieu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoPhieu_KeyPress);
             // 
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(326, 15);
+            this.label28.Location = new System.Drawing.Point(477, 15);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(65, 16);
             this.label28.TabIndex = 93;
             this.label28.Text = "Số Phiếu:";
+            // 
+            // txtMaDonMoi
+            // 
+            this.txtMaDonMoi.Location = new System.Drawing.Point(391, 12);
+            this.txtMaDonMoi.Name = "txtMaDonMoi";
+            this.txtMaDonMoi.Size = new System.Drawing.Size(80, 22);
+            this.txtMaDonMoi.TabIndex = 117;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(303, 15);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(82, 16);
+            this.label29.TabIndex = 116;
+            this.label29.Text = "Mã Đơn Mới:";
             // 
             // frmDCHD
             // 
@@ -1029,6 +1047,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1232, 535);
+            this.Controls.Add(this.txtMaDonMoi);
+            this.Controls.Add(this.label29);
             this.Controls.Add(this.txtSoPhieu);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.chkCodeF2);
@@ -1057,7 +1077,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.txtMaDon);
+            this.Controls.Add(this.txtMaDonCu);
             this.Controls.Add(this.label21);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KeyPreview = true;
@@ -1080,7 +1100,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtMaDon;
+        private System.Windows.Forms.TextBox txtMaDonCu;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtKyHD;
@@ -1170,5 +1190,7 @@
         private System.Windows.Forms.CheckBox chkCodeF2;
         private System.Windows.Forms.TextBox txtSoPhieu;
         private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox txtMaDonMoi;
+        private System.Windows.Forms.Label label29;
     }
 }

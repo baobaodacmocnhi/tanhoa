@@ -35,7 +35,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtMaDon = new System.Windows.Forms.TextBox();
+            this.txtMaDonCu = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnXoa = new System.Windows.Forms.Button();
@@ -102,6 +102,14 @@
             this.txtNoiDungViPham = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dgvGianLan = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiDungViPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TinhTrang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.XepDon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnXem = new System.Windows.Forms.Button();
             this.btnInDS = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
@@ -114,14 +122,8 @@
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.chkXepDon = new System.Windows.Forms.CheckBox();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiDungViPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TinhTrang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.XepDon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.txtMaDonMoi = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.gbThanhToan3.SuspendLayout();
@@ -196,22 +198,22 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Danh Bộ:";
             // 
-            // txtMaDon
+            // txtMaDonCu
             // 
-            this.txtMaDon.Location = new System.Drawing.Point(438, 12);
-            this.txtMaDon.Name = "txtMaDon";
-            this.txtMaDon.Size = new System.Drawing.Size(89, 22);
-            this.txtMaDon.TabIndex = 1;
-            this.txtMaDon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDon_KeyPress);
+            this.txtMaDonCu.Location = new System.Drawing.Point(248, 12);
+            this.txtMaDonCu.Name = "txtMaDonCu";
+            this.txtMaDonCu.Size = new System.Drawing.Size(75, 22);
+            this.txtMaDonCu.TabIndex = 1;
+            this.txtMaDonCu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDonCu_KeyPress);
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(371, 15);
+            this.label21.Location = new System.Drawing.Point(166, 15);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(57, 16);
+            this.label21.Size = new System.Drawing.Size(76, 16);
             this.label21.TabIndex = 0;
-            this.label21.Text = "Mã Đơn:";
+            this.label21.Text = "Mã Đơn Cũ:";
             // 
             // groupBox2
             // 
@@ -865,6 +867,59 @@
             this.dgvGianLan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvGianLan_CellFormatting);
             this.dgvGianLan.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvGianLan_RowPostPaint);
             // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "Mã GL";
+            this.ID.Name = "ID";
+            this.ID.Width = 70;
+            // 
+            // MaDon
+            // 
+            this.MaDon.DataPropertyName = "MaDon";
+            this.MaDon.HeaderText = "Mã Đơn";
+            this.MaDon.Name = "MaDon";
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Khách Hàng";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.Width = 150;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.DataPropertyName = "DiaChi";
+            this.DiaChi.HeaderText = "Địa Chỉ";
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.Width = 200;
+            // 
+            // NoiDungViPham
+            // 
+            this.NoiDungViPham.DataPropertyName = "NoiDungViPham";
+            this.NoiDungViPham.HeaderText = "Nội Dung Vi Phạm";
+            this.NoiDungViPham.Name = "NoiDungViPham";
+            this.NoiDungViPham.Width = 200;
+            // 
+            // TinhTrang
+            // 
+            this.TinhTrang.DataPropertyName = "TinhTrang";
+            this.TinhTrang.HeaderText = "Tình Trạng";
+            this.TinhTrang.Name = "TinhTrang";
+            this.TinhTrang.Width = 200;
+            // 
+            // XepDon
+            // 
+            this.XepDon.DataPropertyName = "XepDon";
+            this.XepDon.HeaderText = "Xếp Đơn";
+            this.XepDon.Name = "XepDon";
+            // 
             // btnXem
             // 
             this.btnXem.Location = new System.Drawing.Point(525, 341);
@@ -975,65 +1030,28 @@
             // chkXepDon
             // 
             this.chkXepDon.AutoSize = true;
-            this.chkXepDon.Location = new System.Drawing.Point(533, 12);
+            this.chkXepDon.Location = new System.Drawing.Point(503, 14);
             this.chkXepDon.Name = "chkXepDon";
             this.chkXepDon.Size = new System.Drawing.Size(78, 20);
             this.chkXepDon.TabIndex = 95;
             this.chkXepDon.Text = "Xếp Đơn";
             this.chkXepDon.UseVisualStyleBackColor = true;
             // 
-            // ID
+            // txtMaDonMoi
             // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "Mã GL";
-            this.ID.Name = "ID";
-            this.ID.Width = 70;
+            this.txtMaDonMoi.Location = new System.Drawing.Point(417, 12);
+            this.txtMaDonMoi.Name = "txtMaDonMoi";
+            this.txtMaDonMoi.Size = new System.Drawing.Size(80, 22);
+            this.txtMaDonMoi.TabIndex = 117;
             // 
-            // MaDon
+            // label31
             // 
-            this.MaDon.DataPropertyName = "MaDon";
-            this.MaDon.HeaderText = "Mã Đơn";
-            this.MaDon.Name = "MaDon";
-            // 
-            // DanhBo
-            // 
-            this.DanhBo.DataPropertyName = "DanhBo";
-            this.DanhBo.HeaderText = "Danh Bộ";
-            this.DanhBo.Name = "DanhBo";
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Khách Hàng";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.Width = 150;
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.DataPropertyName = "DiaChi";
-            this.DiaChi.HeaderText = "Địa Chỉ";
-            this.DiaChi.Name = "DiaChi";
-            this.DiaChi.Width = 200;
-            // 
-            // NoiDungViPham
-            // 
-            this.NoiDungViPham.DataPropertyName = "NoiDungViPham";
-            this.NoiDungViPham.HeaderText = "Nội Dung Vi Phạm";
-            this.NoiDungViPham.Name = "NoiDungViPham";
-            this.NoiDungViPham.Width = 200;
-            // 
-            // TinhTrang
-            // 
-            this.TinhTrang.DataPropertyName = "TinhTrang";
-            this.TinhTrang.HeaderText = "Tình Trạng";
-            this.TinhTrang.Name = "TinhTrang";
-            this.TinhTrang.Width = 200;
-            // 
-            // XepDon
-            // 
-            this.XepDon.DataPropertyName = "XepDon";
-            this.XepDon.HeaderText = "Xếp Đơn";
-            this.XepDon.Name = "XepDon";
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(329, 15);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(82, 16);
+            this.label31.TabIndex = 116;
+            this.label31.Text = "Mã Đơn Mới:";
             // 
             // frmGianLan
             // 
@@ -1041,6 +1059,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1291, 637);
+            this.Controls.Add(this.txtMaDonMoi);
+            this.Controls.Add(this.label31);
             this.Controls.Add(this.chkXepDon);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.cmbTimTheo);
@@ -1052,7 +1072,7 @@
             this.Controls.Add(this.dgvGianLan);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.txtMaDon);
+            this.Controls.Add(this.txtMaDonCu);
             this.Controls.Add(this.label21);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -1090,7 +1110,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtDanhBo;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtMaDon;
+        private System.Windows.Forms.TextBox txtMaDonCu;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtGiaBan1;
@@ -1177,5 +1197,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDungViPham;
         private System.Windows.Forms.DataGridViewTextBoxColumn TinhTrang;
         private System.Windows.Forms.DataGridViewCheckBoxColumn XepDon;
+        private System.Windows.Forms.TextBox txtMaDonMoi;
+        private System.Windows.Forms.Label label31;
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.txtMaDon = new System.Windows.Forms.TextBox();
+            this.txtMaDonCu = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtDinhMuc = new System.Windows.Forms.TextBox();
@@ -92,27 +92,29 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.txtDinhMucMoi = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
+            this.txtMaDonMoi = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKetQuaKiemTra)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // txtMaDon
+            // txtMaDonCu
             // 
-            this.txtMaDon.Location = new System.Drawing.Point(363, 4);
-            this.txtMaDon.Name = "txtMaDon";
-            this.txtMaDon.Size = new System.Drawing.Size(89, 22);
-            this.txtMaDon.TabIndex = 1;
-            this.txtMaDon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDon_KeyPress);
+            this.txtMaDonCu.Location = new System.Drawing.Point(248, 12);
+            this.txtMaDonCu.Name = "txtMaDonCu";
+            this.txtMaDonCu.Size = new System.Drawing.Size(75, 22);
+            this.txtMaDonCu.TabIndex = 1;
+            this.txtMaDonCu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDonCu_KeyPress);
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(296, 7);
+            this.label21.Location = new System.Drawing.Point(166, 15);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(57, 16);
+            this.label21.Size = new System.Drawing.Size(76, 16);
             this.label21.TabIndex = 0;
-            this.label21.Text = "Mã Đơn:";
+            this.label21.Text = "Mã Đơn Cũ:";
             // 
             // groupBox1
             // 
@@ -128,7 +130,7 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtDanhBo);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(11, 34);
+            this.groupBox1.Location = new System.Drawing.Point(12, 40);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(517, 109);
             this.groupBox1.TabIndex = 2;
@@ -267,7 +269,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(1033, 187);
+            this.btnThem.Location = new System.Drawing.Point(1034, 193);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 25);
             this.btnThem.TabIndex = 4;
@@ -296,7 +298,7 @@
             this.DiaChi,
             this.NoiDungKiemTra,
             this.CreateBy});
-            this.dgvDSKetQuaKiemTra.Location = new System.Drawing.Point(11, 316);
+            this.dgvDSKetQuaKiemTra.Location = new System.Drawing.Point(12, 322);
             this.dgvDSKetQuaKiemTra.Name = "dgvDSKetQuaKiemTra";
             this.dgvDSKetQuaKiemTra.Size = new System.Drawing.Size(1016, 126);
             this.dgvDSKetQuaKiemTra.TabIndex = 6;
@@ -390,7 +392,7 @@
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.txtHieu);
             this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Location = new System.Drawing.Point(11, 148);
+            this.groupBox2.Location = new System.Drawing.Point(12, 154);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1016, 161);
             this.groupBox2.TabIndex = 3;
@@ -698,7 +700,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(1033, 218);
+            this.btnSua.Location = new System.Drawing.Point(1034, 224);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 25);
             this.btnSua.TabIndex = 5;
@@ -710,7 +712,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.ForeColor = System.Drawing.Color.Red;
-            this.label22.Location = new System.Drawing.Point(458, 9);
+            this.label22.Location = new System.Drawing.Point(521, 9);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(423, 16);
             this.label22.TabIndex = 7;
@@ -718,7 +720,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(1033, 249);
+            this.btnXoa.Location = new System.Drawing.Point(1034, 255);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 25);
             this.btnXoa.TabIndex = 8;
@@ -728,7 +730,7 @@
             // 
             // txtDinhMucMoi
             // 
-            this.txtDinhMucMoi.Location = new System.Drawing.Point(630, 82);
+            this.txtDinhMucMoi.Location = new System.Drawing.Point(631, 88);
             this.txtDinhMucMoi.Name = "txtDinhMucMoi";
             this.txtDinhMucMoi.Size = new System.Drawing.Size(50, 22);
             this.txtDinhMucMoi.TabIndex = 29;
@@ -736,11 +738,27 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(534, 85);
+            this.label20.Location = new System.Drawing.Point(535, 91);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(90, 16);
             this.label20.TabIndex = 28;
             this.label20.Text = "Định Mức Mới:";
+            // 
+            // txtMaDonMoi
+            // 
+            this.txtMaDonMoi.Location = new System.Drawing.Point(417, 12);
+            this.txtMaDonMoi.Name = "txtMaDonMoi";
+            this.txtMaDonMoi.Size = new System.Drawing.Size(80, 22);
+            this.txtMaDonMoi.TabIndex = 117;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(329, 15);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(82, 16);
+            this.label25.TabIndex = 116;
+            this.label25.Text = "Mã Đơn Mới:";
             // 
             // frmKTXM
             // 
@@ -748,6 +766,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1115, 453);
+            this.Controls.Add(this.txtMaDonMoi);
+            this.Controls.Add(this.label25);
             this.Controls.Add(this.txtDinhMucMoi);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.btnXoa);
@@ -757,7 +777,7 @@
             this.Controls.Add(this.dgvDSKetQuaKiemTra);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.txtMaDon);
+            this.Controls.Add(this.txtMaDonCu);
             this.Controls.Add(this.label21);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -776,7 +796,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtMaDon;
+        private System.Windows.Forms.TextBox txtMaDonCu;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtDienThoai;
@@ -839,5 +859,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
         private System.Windows.Forms.TextBox txtDinhMucMoi;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox txtMaDonMoi;
+        private System.Windows.Forms.Label label25;
     }
 }

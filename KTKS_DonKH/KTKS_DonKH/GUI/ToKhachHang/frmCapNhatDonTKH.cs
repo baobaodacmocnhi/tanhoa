@@ -193,7 +193,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
 
             cmbLD.SelectedValue = entity.MaLD.Value;
             txtSoCongVan.Text = entity.SoCongVan;
-            txtMaDonTo.Text = entity.MaDon.ToString().Insert(entity.MaDon.ToString().Length - 2, "-");
+            txtMaDonToCu.Text = entity.MaDon.ToString().Insert(entity.MaDon.ToString().Length - 2, "-");
             txtNgayNhan.Text = entity.CreateDate.Value.ToString("dd/MM/yyyy");
             txtNoiDung.Text = entity.NoiDung;
 
@@ -240,7 +240,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             txtMaDonToMoi.Text = "";
 
             cmbLD.SelectedIndex = -1;
-            txtMaDonTo.Text = "";
+            txtMaDonToCu.Text = "";
             txtNgayNhan.Text = "";
             txtNoiDung.Text = "";
             txtSoCongVan.Text = "";
@@ -267,11 +267,11 @@ namespace KTKS_DonKH.GUI.ToKhachHang
 
         private void txtMaDonTo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13 && txtMaDonTo.Text.Trim() != "")
+            if (e.KeyChar == 13 && txtMaDonToCu.Text.Trim() != "")
             {
-                if (_cDonKH.CheckExist(decimal.Parse(txtMaDonTo.Text.Trim().Replace("-", ""))) == true)
+                if (_cDonKH.CheckExist(decimal.Parse(txtMaDonToCu.Text.Trim().Replace("-", ""))) == true)
                 {
-                    _dontkh = _cDonKH.Get(decimal.Parse(txtMaDonTo.Text.Trim().Replace("-", "")));
+                    _dontkh = _cDonKH.Get(decimal.Parse(txtMaDonToCu.Text.Trim().Replace("-", "")));
                     LoadDonTKH(_dontkh);
                 }
                 else
