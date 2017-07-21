@@ -252,6 +252,20 @@ namespace ThuTien.DAL.DongNuoc
             return LINQToDataTable(query.Distinct());
         }
 
+        public DataTable GetDSCTDongNuocTon(int MaTo)
+        {
+            var query = from itemCT in _db.TT_CTDongNuocs
+                        join itemHD in _db.HOADONs on itemCT.MaHD equals itemHD.ID_HOADON
+                        where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                           && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                           && itemHD.NGAYGIAITRACH == null
+                        select new
+                        {
+                            DanhBo = itemHD.DANHBA,
+                        };
+            return LINQToDataTable(query.Distinct());
+        }
+
         public DataTable GetDSKQDongNuocByNgayDNs(DateTime FromNgayDN, DateTime ToNgayDN)
         {
             return LINQToDataTable(_db.TT_KQDongNuocs.Where(item => item.NgayDN.Value.Date >= FromNgayDN.Date && item.NgayDN.Value.Date <= ToNgayDN.Date).ToList());
@@ -283,11 +297,11 @@ namespace ThuTien.DAL.DongNuoc
                         + " set @ToDate='" + ToDate.ToString("yyyy-MM-dd") + "'"
                         + " set @MaTo=" + MaTo + ";"
                         + " select dongnuoc.MaTo,(select TenTo from TT_To where MaTo=@MaTo) as TenTo,dongnuoc.DongNuoc,monuoc.MoNuoc from"
-                        + " (select @MaTo as MaTo,COUNT(kqdn.MaKQDN) as DongNuoc from HOADON hd,TT_KQDongNuoc kqdn,TT_CTDongNuoc ctdn"
+                        + " (select @MaTo as MaTo,COUNT(distinct kqdn.DanhBo) as DongNuoc from HOADON hd,TT_KQDongNuoc kqdn,TT_CTDongNuoc ctdn"
                         + " where hd.ID_HOADON=ctdn.MaHD and kqdn.MaDN=ctdn.MaDN and kqdn.NgayDN>=@FromDate and kqdn.NgayDN<=@ToDate"
                         + " and hd.MAY>=(select TuCuonGCS from TT_To where MaTo=@MaTo) and hd.MAY<=(select DenCuonGCS from TT_To where MaTo=@MaTo)) dongnuoc"
                         + " left join"
-                        + " (select @MaTo as MaTo,COUNT(kqdn.MaKQDN) as MoNuoc from HOADON hd,TT_KQDongNuoc kqdn,TT_CTDongNuoc ctdn"
+                        + " (select @MaTo as MaTo,COUNT(distinct kqdn.DanhBo) as MoNuoc from HOADON hd,TT_KQDongNuoc kqdn,TT_CTDongNuoc ctdn"
                         + " where hd.ID_HOADON=ctdn.MaHD and kqdn.MaDN=ctdn.MaDN and kqdn.NgayMN>=@FromDate and kqdn.NgayMN<=@ToDate"
                         + " and hd.MAY>=(select TuCuonGCS from TT_To where MaTo=@MaTo) and hd.MAY<=(select DenCuonGCS from TT_To where MaTo=@MaTo)) monuoc on dongnuoc.MaTo=monuoc.MaTo";
 

@@ -36,9 +36,9 @@ namespace ThuTien.GUI.DongNuoc
             List<TT_To> lstTo = _cTo.GetDSHanhThu();
             DataTable dt = new DataTable();
 
-            for (int i = 1; i <= lstTo.Count; i++)
+            for (int i = 0; i < lstTo.Count; i++)
             {
-                dt.Merge(_cDongNuoc.CountDongMoNuoc(i, dateTu.Value, dateDen.Value));
+                dt.Merge(_cDongNuoc.CountDongMoNuoc(lstTo[i].MaTo, dateTu.Value, dateDen.Value));
             }
 
             dgvKQDongNuoc.DataSource = dt;

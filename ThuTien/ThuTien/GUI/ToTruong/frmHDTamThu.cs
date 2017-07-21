@@ -31,6 +31,8 @@ namespace ThuTien.GUI.ToTruong
         {
             dgvHoaDon.AutoGenerateColumns = false;
             dgvHoaDon_LH.AutoGenerateColumns = false;
+            dgvHoaDon_LL.AutoGenerateColumns = false;
+
             if (CNguoiDung.Doi)
             {
                 cmbTo.Visible = true;
@@ -106,16 +108,19 @@ namespace ThuTien.GUI.ToTruong
         {
             DataTable dtLH = _cLenhHuy.GetDSDanhBoTon(CNguoiDung.MaTo);
             DataTable dtHD = new DataTable();
+            DataTable dtHD2 = new DataTable();
+
             if (cmbDot.SelectedIndex == 0)
-                dtHD = _cHoaDon.GetDS_CoLenhHuyTruoc(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                dtHD = dtHD2 = _cHoaDon.GetDSTon_CoTieuThu(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
             else
                 if (cmbDot.SelectedIndex > 0)
-                    dtHD = _cHoaDon.GetDS_CoLenhHuyTruoc(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                    dtHD = dtHD2 = _cHoaDon.GetDSTon_CoTieuThu(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+            
             List<DataRow> RowsToDelete = new List<DataRow>();
 
             for (int i = 0; i < dtHD.Rows.Count; i++)
             {
-                if (dtLH.Select("DanhBo='" + dtHD.Rows[i]["DanhBo"].ToString() + "'").Count() == 0 || _cLenhHuy.CheckExist(dtHD.Rows[i]["SoHoaDon"].ToString())==true)
+                if (dtLH.Select("DanhBo='" + dtHD.Rows[i]["DanhBo"].ToString() + "'").Count() == 0 || _cLenhHuy.CheckExist(dtHD.Rows[i]["SoHoaDon"].ToString()) == true)
                 {
                     RowsToDelete.Add(dtHD.Rows[i]);
                 }
@@ -125,6 +130,22 @@ namespace ThuTien.GUI.ToTruong
                 dtHD.Rows.Remove(dr);
             }
             dgvHoaDon_LH.DataSource = dtHD;
+            /////////////////
+            DataTable dtLL = _cDongNuoc.GetDSCTDongNuocTon(CNguoiDung.MaTo);
+            RowsToDelete = new List<DataRow>();
+
+            for (int i = 0; i < dtHD2.Rows.Count; i++)
+            {
+                if (dtLL.Select("DanhBo='" + dtHD2.Rows[i]["DanhBo"].ToString() + "'").Count() == 0)
+                {
+                    RowsToDelete.Add(dtHD2.Rows[i]);
+                }
+            }
+            foreach (var dr in RowsToDelete)
+            {
+                dtHD2.Rows.Remove(dr);
+            }
+            dgvHoaDon_LL.DataSource = dtHD2;
         }
 
         private void dgvHoaDon_LH_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -138,6 +159,22 @@ namespace ThuTien.GUI.ToTruong
                 e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
             }
             if (dgvHoaDon_LH.Columns[e.ColumnIndex].Name == "TongCong_LH" && e.Value != null)
+            {
+                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
+        private void dgvHoaDon_LL_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvHoaDon_LL.Columns[e.ColumnIndex].Name == "MLT_LL" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(2, " ");
+            }
+            if (dgvHoaDon_LL.Columns[e.ColumnIndex].Name == "DanhBo_LL" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
+            }
+            if (dgvHoaDon_LL.Columns[e.ColumnIndex].Name == "TongCong_LL" && e.Value != null)
             {
                 e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }

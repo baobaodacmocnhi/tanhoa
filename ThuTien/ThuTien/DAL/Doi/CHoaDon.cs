@@ -7323,7 +7323,7 @@ namespace ThuTien.DAL.Doi
             return _db.HOADONs.Where(item => item.NGAYGIAITRACH == null && item.DANHBA == DanhBo).ToList();
         }
 
-        public DataTable GetDS_CoLenhHuyTruoc(int MaTo, int Nam, int Ky, int Dot)
+        public DataTable GetDSTon_CoTieuThu(int MaTo, int Nam, int Ky, int Dot)
         {
             var query = from itemHD in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
@@ -7350,7 +7350,7 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDS_CoLenhHuyTruoc(int MaTo, int Nam, int Ky)
+        public DataTable GetDSTon_CoTieuThu(int MaTo, int Nam, int Ky)
         {
             var query = from itemHD in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
