@@ -95,6 +95,11 @@ namespace KTKS_DonKH.DAL.BamChi
             }
         }
 
+        public bool CheckExist_BamChi(string MaDonMoi)
+        {
+            return db.BamChis.Any(item => item.MaDon_New == MaDonMoi);
+        }
+
         public LinQ.BamChi Get(decimal MaBC)
         {
             try

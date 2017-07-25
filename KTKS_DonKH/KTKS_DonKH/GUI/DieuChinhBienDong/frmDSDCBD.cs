@@ -584,6 +584,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                 rpt.Subreports[j].SetDataSource(dsBaoCao);
                                             }
 
+                                            //frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                                            //frm.Show();
                                             printDialog.AllowSomePages = true;
                                             printDialog.ShowHelp = true;
 

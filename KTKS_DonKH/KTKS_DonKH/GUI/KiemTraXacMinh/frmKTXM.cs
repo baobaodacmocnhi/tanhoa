@@ -105,7 +105,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         _dontbc = _cDonTBC.Get(ctktxm.KTXM.MaDonTBC.Value);
                         txtMaDonCu.Text = "TBC" + ctktxm.KTXM.MaDonTBC.ToString().Insert(ctktxm.KTXM.MaDonTBC.ToString().Length - 2, "-");
                     }
-            ///
+            txtMaDonMoi.Text = ctktxm.KTXM.MaDon_New;
             txtDanhBo.Text = ctktxm.DanhBo;
             txtHopDong.Text = ctktxm.HopDong;
             txtHoTen.Text = ctktxm.HoTen;
@@ -277,6 +277,66 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             }
         }
 
+        private void txtMaDonMoi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtMaDonMoi.Text.Trim() != "")
+            {
+                string MaDon = txtMaDonMoi.Text.Trim();
+                Clear();
+                txtMaDonMoi.Text = MaDon;
+                ///Đơn Tổ Xử Lý
+                if (txtMaDonMoi.Text.Trim().ToUpper().Contains("XL"))
+                {
+                    if (CTaiKhoan.ToXL == true && _cDonTXL.CheckExist(txtMaDonMoi.Text.Trim()) == true)
+                    {
+                        _dontxl = _cDonTXL.Get(txtMaDonMoi.Text.Trim());
+                        txtMaDonMoi.Text = _dontxl.MaDon_New;
+
+                        LoadDSKTXM();
+
+                        MessageBox.Show("Mã Đơn TXL này có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtDanhBo.Focus();
+                    }
+                    else
+                        MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                    ///Đơn Tổ Bấm Chì
+                    if (txtMaDonMoi.Text.Trim().ToUpper().Contains("BC"))
+                    {
+                        if (CTaiKhoan.ToBC == true && _cDonTBC.CheckExist(txtMaDonMoi.Text.Trim()) == true)
+                        {
+                            _dontbc = _cDonTBC.Get(txtMaDonMoi.Text.Trim());
+                            txtMaDonMoi.Text = _dontbc.MaDon_New;
+
+                            LoadDSKTXM();
+
+                            MessageBox.Show("Mã Đơn TBC này có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtDanhBo.Focus();
+                        }
+                        else
+                            MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    ///Đơn Tổ Khách Hàng
+                    else
+                        if (txtMaDonMoi.Text.Trim().ToUpper().Contains("KH"))
+                        {
+                            if (CTaiKhoan.ToKH == true && _cDonKH.CheckExist(txtMaDonMoi.Text.Trim()) == true)
+                            {
+                                _dontkh = _cDonKH.Get(txtMaDonMoi.Text.Trim());
+                                txtMaDonMoi.Text = _dontkh.MaDon_New;
+
+                                LoadDSKTXM();
+
+                                MessageBox.Show("Mã Đơn TKH này có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                txtDanhBo.Focus();
+                            }
+                            else
+                                MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+            }
+        }
+
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
@@ -323,6 +383,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         {
                             KTXM ktxm = new KTXM();
                             ktxm.MaDon = _dontkh.MaDon;
+                            ktxm.MaDon_New = _dontkh.MaDon_New;
                             _cKTXM.Them(ktxm);
                         }
                         if (txtDanhBo.Text.Trim() != "" && _cKTXM.CheckExist_CT("TKH", CTaiKhoan.MaUser, _dontkh.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value) == true)
@@ -339,6 +400,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             {
                                 KTXM ktxm = new KTXM();
                                 ktxm.MaDonTXL = _dontxl.MaDon;
+                                ktxm.MaDon_New = _dontxl.MaDon_New;
                                 _cKTXM.Them(ktxm);
                             }
                             if (txtDanhBo.Text.Trim() != "" && _cKTXM.CheckExist_CT("TXL", CTaiKhoan.MaUser, _dontxl.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value) == true)
@@ -355,6 +417,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                 {
                                     KTXM ktxm = new KTXM();
                                     ktxm.MaDonTBC = _dontbc.MaDon;
+                                    ktxm.MaDon_New = _dontbc.MaDon_New;
                                     _cKTXM.Them(ktxm);
                                 }
                                 if (txtDanhBo.Text.Trim() != "" && _cKTXM.CheckExist_CT("TBC", CTaiKhoan.MaUser,_dontbc.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value)==true)
@@ -672,7 +735,6 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         }
 
-        
 
     }
 }

@@ -272,6 +272,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 default:
                                     break;
                             }
+                            lichsuchungtu.MaDon_New = _source["MaDonMoi"];
                             lichsuchungtu.DanhBo = ctchungtu.DanhBo;
                             lichsuchungtu.MaLCT = ctchungtu.MaLCT;
                             lichsuchungtu.MaCT = ctchungtu.MaCT;
@@ -613,6 +614,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 default:
                                     break;
                             }
+                            lichsuchungtu.MaDon_New = _source["MaDonMoi"];
                             lichsuchungtu.DanhBo = _ctchungtu.DanhBo;
                             lichsuchungtu.MaLCT = _ctchungtu.MaLCT;
                             lichsuchungtu.MaCT = _ctchungtu.MaCT;

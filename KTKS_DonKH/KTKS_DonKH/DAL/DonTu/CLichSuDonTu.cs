@@ -401,7 +401,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     var query = from itemChuyenKTXM in db.LichSuDonTus
                                 join itemDonTKH in db.DonKHs on itemChuyenKTXM.MaDon equals itemDonTKH.MaDon
                                 join itemUser in db.Users on itemChuyenKTXM.ID_NoiNhan equals itemUser.MaU
-                                where itemChuyenKTXM.MaDon != null && itemDonTKH.SoCongVan==(SoCongVan)
+                                where itemChuyenKTXM.MaDon != null && itemDonTKH.SoCongVan==SoCongVan
                                 && itemChuyenKTXM.ID_NoiChuyen == 1
                                 orderby itemDonTKH.CreateDate ascending
                                 select new
@@ -428,7 +428,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from itemChuyenKTXM in db.LichSuDonTus
                             join itemDonTXL in db.DonTXLs on itemChuyenKTXM.MaDonTXL equals itemDonTXL.MaDon
                             join itemUser in db.Users on itemChuyenKTXM.ID_NoiNhan equals itemUser.MaU
-                            where itemChuyenKTXM.MaDonTXL != null && itemDonTXL.SoCongVan.Contains(SoCongVan)
+                            where itemChuyenKTXM.MaDonTXL != null && itemDonTXL.SoCongVan == SoCongVan
                             && itemChuyenKTXM.ID_NoiChuyen == 1
                             orderby itemDonTXL.CreateDate ascending
                             select new
@@ -455,7 +455,7 @@ namespace KTKS_DonKH.DAL.DonTu
                     query = from itemChuyenKTXM in db.LichSuDonTus
                             join itemDonTBC in db.DonTBCs on itemChuyenKTXM.MaDonTBC equals itemDonTBC.MaDon
                             join itemUser in db.Users on itemChuyenKTXM.ID_NoiNhan equals itemUser.MaU
-                            where itemChuyenKTXM.MaDonTBC != null && itemDonTBC.SoCongVan.Contains(SoCongVan)
+                            where itemChuyenKTXM.MaDonTBC != null && itemDonTBC.SoCongVan == SoCongVan
                             && itemChuyenKTXM.ID_NoiChuyen == 1
                             orderby itemDonTBC.CreateDate ascending
                             select new
@@ -475,6 +475,144 @@ namespace KTKS_DonKH.DAL.DonTu
                                 NgayGiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM && item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date) == true
                                 ? db.CTKTXMs.FirstOrDefault(item => item.KTXM.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM && item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date).NgayKTXM : db.CTBamChis.Any(item => item.BamChi.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM && item.NgayBC.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date) == true
                                 ? db.CTBamChis.FirstOrDefault(item => item.BamChi.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM && item.NgayBC.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date).NgayBC : null,
+                            };
+                    dt = LINQToDataTable(query.ToList());
+                    break;
+            }
+            return dt;
+        }
+
+        public DataTable GetDSChuyen_VP(string Loai, DateTime FromNgayChuyen, DateTime ToNgayChuyen)
+        {
+            DataTable dt = new DataTable();
+            switch (Loai)
+            {
+                case "TKH":
+                    var query = from itemLichSuDon in db.LichSuDonTus
+                                join itemDonKH in db.DonKHs on itemLichSuDon.MaDon equals itemDonKH.MaDon
+                                where itemLichSuDon.MaDon != null && itemLichSuDon.NgayChuyen.Value.Date >= FromNgayChuyen.Date && itemLichSuDon.NgayChuyen.Value.Date <= ToNgayChuyen.Date
+                                && itemLichSuDon.ID_NoiChuyen ==5
+                                orderby itemLichSuDon.NgayChuyen ascending
+                                select new
+                                {
+                                    itemDonKH.MaDon,
+                                    itemDonKH.LoaiDon.TenLD,
+                                    itemDonKH.DanhBo,
+                                    itemDonKH.HoTen,
+                                    itemDonKH.DiaChi,
+                                    itemLichSuDon.NgayChuyen,
+                                    itemLichSuDon.NoiChuyen,
+                                    itemLichSuDon.NoiNhan,
+                                    itemLichSuDon.GhiChu,
+                                };
+                    dt = LINQToDataTable(query.ToList());
+                    break;
+                case "TXL":
+                    query = from itemLichSuDon in db.LichSuDonTus
+                            join itemDonTXL in db.DonTXLs on itemLichSuDon.MaDonTXL equals itemDonTXL.MaDon
+                            where itemLichSuDon.MaDonTXL != null && itemLichSuDon.NgayChuyen.Value.Date >= FromNgayChuyen.Date && itemLichSuDon.NgayChuyen.Value.Date <= ToNgayChuyen.Date
+                            && itemLichSuDon.ID_NoiChuyen == 5
+                            orderby itemLichSuDon.NgayChuyen ascending
+                            select new
+                            {
+                                itemDonTXL.MaDon,
+                                itemDonTXL.LoaiDonTXL.TenLD,
+                                itemDonTXL.DanhBo,
+                                itemDonTXL.HoTen,
+                                itemDonTXL.DiaChi,
+                                itemLichSuDon.NgayChuyen,
+                                itemLichSuDon.NoiChuyen,
+                                itemLichSuDon.NoiNhan,
+                                itemLichSuDon.GhiChu,
+                            };
+                    dt = LINQToDataTable(query.ToList());
+                    break;
+                case "TBC":
+                    query = from itemLichSuDon in db.LichSuDonTus
+                            join itemDonTBC in db.DonTBCs on itemLichSuDon.MaDonTBC equals itemDonTBC.MaDon
+                            where itemLichSuDon.MaDonTBC != null && itemLichSuDon.NgayChuyen.Value.Date >= FromNgayChuyen.Date && itemLichSuDon.NgayChuyen.Value.Date <= ToNgayChuyen.Date
+                            && itemLichSuDon.ID_NoiChuyen == 5
+                            orderby itemLichSuDon.NgayChuyen ascending
+                            select new
+                            {
+                                itemDonTBC.MaDon,
+                                itemDonTBC.LoaiDonTBC.TenLD,
+                                itemDonTBC.DanhBo,
+                                itemDonTBC.HoTen,
+                                itemDonTBC.DiaChi,
+                                itemLichSuDon.NgayChuyen,
+                                itemLichSuDon.NoiChuyen,
+                                itemLichSuDon.NoiNhan,
+                                itemLichSuDon.GhiChu,
+                            };
+                    dt = LINQToDataTable(query.ToList());
+                    break;
+            }
+            return dt;
+        }
+
+        public DataTable GetDSChuyen_VP(string Loai, string SoCongVan)
+        {
+            DataTable dt = new DataTable();
+            switch (Loai)
+            {
+                case "TKH":
+                    var query = from itemLichSuDon in db.LichSuDonTus
+                                join itemDonKH in db.DonKHs on itemLichSuDon.MaDon equals itemDonKH.MaDon
+                                where itemLichSuDon.MaDon != null && itemDonKH.SoCongVan == SoCongVan
+                                && itemLichSuDon.ID_NoiChuyen == 5
+                                orderby itemLichSuDon.NgayChuyen ascending
+                                select new
+                                {
+                                    itemDonKH.MaDon,
+                                    itemDonKH.LoaiDon.TenLD,
+                                    itemDonKH.DanhBo,
+                                    itemDonKH.HoTen,
+                                    itemDonKH.DiaChi,
+                                    itemLichSuDon.NgayChuyen,
+                                    itemLichSuDon.NoiChuyen,
+                                    itemLichSuDon.NoiNhan,
+                                    itemLichSuDon.GhiChu,
+                                };
+                    dt = LINQToDataTable(query.ToList());
+                    break;
+                case "TXL":
+                    query = from itemLichSuDon in db.LichSuDonTus
+                            join itemDonTXL in db.DonTXLs on itemLichSuDon.MaDonTXL equals itemDonTXL.MaDon
+                            where itemLichSuDon.MaDonTXL != null && itemDonTXL.SoCongVan == SoCongVan
+                            && itemLichSuDon.ID_NoiChuyen == 5
+                            orderby itemLichSuDon.NgayChuyen ascending
+                            select new
+                            {
+                                itemDonTXL.MaDon,
+                                itemDonTXL.LoaiDonTXL.TenLD,
+                                itemDonTXL.DanhBo,
+                                itemDonTXL.HoTen,
+                                itemDonTXL.DiaChi,
+                                itemLichSuDon.NgayChuyen,
+                                itemLichSuDon.NoiChuyen,
+                                itemLichSuDon.NoiNhan,
+                                itemLichSuDon.GhiChu,
+                            };
+                    dt = LINQToDataTable(query.ToList());
+                    break;
+                case "TBC":
+                    query = from itemLichSuDon in db.LichSuDonTus
+                            join itemDonTBC in db.DonTBCs on itemLichSuDon.MaDonTBC equals itemDonTBC.MaDon
+                            where itemLichSuDon.MaDonTBC != null && itemDonTBC.SoCongVan == SoCongVan
+                            && itemLichSuDon.ID_NoiChuyen == 5
+                            orderby itemLichSuDon.NgayChuyen ascending
+                            select new
+                            {
+                                itemDonTBC.MaDon,
+                                itemDonTBC.LoaiDonTBC.TenLD,
+                                itemDonTBC.DanhBo,
+                                itemDonTBC.HoTen,
+                                itemDonTBC.DiaChi,
+                                itemLichSuDon.NgayChuyen,
+                                itemLichSuDon.NoiChuyen,
+                                itemLichSuDon.NoiNhan,
+                                itemLichSuDon.GhiChu,
                             };
                     dt = LINQToDataTable(query.ToList());
                     break;

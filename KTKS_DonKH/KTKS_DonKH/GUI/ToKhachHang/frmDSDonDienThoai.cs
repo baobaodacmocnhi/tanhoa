@@ -132,7 +132,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                     {
                         DonDienThoai dondt = _cDonDT.getDonDienThoaibyID(decimal.Parse(item.Cells["MaDonDT"].Value.ToString()));
                         DonKH donkh = new DonKH();
-                        donkh.MaDon = _cDonKH.GetNextID();
+
                         donkh.MaLD = int.Parse(item.Cells["MaLD"].Value.ToString());
                         donkh.NoiDung = dondt.NoiDung;
 

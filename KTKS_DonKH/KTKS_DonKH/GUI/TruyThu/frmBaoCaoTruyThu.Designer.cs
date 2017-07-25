@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnInDS = new System.Windows.Forms.Button();
             this.radChuaThanhToan = new System.Windows.Forms.RadioButton();
             this.radGuiThu = new System.Windows.Forms.RadioButton();
             this.radDaThanhToan = new System.Windows.Forms.RadioButton();
@@ -38,13 +39,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnBaoCao_ThongKeTruyThu = new System.Windows.Forms.Button();
-            this.btnInDS = new System.Windows.Forms.Button();
+            this.radKhongTruyThu = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.radKhongTruyThu);
             this.groupBox1.Controls.Add(this.btnInDS);
             this.groupBox1.Controls.Add(this.radChuaThanhToan);
             this.groupBox1.Controls.Add(this.radGuiThu);
@@ -53,10 +55,20 @@
             this.groupBox1.Controls.Add(this.btnBaoCao_ThongKeTruyThu);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(353, 140);
+            this.groupBox1.Size = new System.Drawing.Size(277, 173);
             this.groupBox1.TabIndex = 26;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thống Kê Truy Thu";
+            // 
+            // btnInDS
+            // 
+            this.btnInDS.Location = new System.Drawing.Point(12, 139);
+            this.btnInDS.Name = "btnInDS";
+            this.btnInDS.Size = new System.Drawing.Size(75, 25);
+            this.btnInDS.TabIndex = 28;
+            this.btnInDS.Text = "In DS";
+            this.btnInDS.UseVisualStyleBackColor = true;
+            this.btnInDS.Click += new System.EventHandler(this.btnInDS_Click);
             // 
             // radChuaThanhToan
             // 
@@ -72,7 +84,7 @@
             // radGuiThu
             // 
             this.radGuiThu.AutoSize = true;
-            this.radGuiThu.Location = new System.Drawing.Point(146, 87);
+            this.radGuiThu.Location = new System.Drawing.Point(151, 87);
             this.radGuiThu.Name = "radGuiThu";
             this.radGuiThu.Size = new System.Drawing.Size(72, 20);
             this.radGuiThu.TabIndex = 26;
@@ -148,15 +160,16 @@
             this.btnBaoCao_ThongKeTruyThu.UseVisualStyleBackColor = true;
             this.btnBaoCao_ThongKeTruyThu.Click += new System.EventHandler(this.btnBaoCao_ThongKeTruyThu_Click);
             // 
-            // btnInDS
+            // radKhongTruyThu
             // 
-            this.btnInDS.Location = new System.Drawing.Point(270, 41);
-            this.btnInDS.Name = "btnInDS";
-            this.btnInDS.Size = new System.Drawing.Size(75, 25);
-            this.btnInDS.TabIndex = 28;
-            this.btnInDS.Text = "In DS";
-            this.btnInDS.UseVisualStyleBackColor = true;
-            this.btnInDS.Click += new System.EventHandler(this.btnInDS_Click);
+            this.radKhongTruyThu.AutoSize = true;
+            this.radKhongTruyThu.Location = new System.Drawing.Point(151, 113);
+            this.radKhongTruyThu.Name = "radKhongTruyThu";
+            this.radKhongTruyThu.Size = new System.Drawing.Size(120, 20);
+            this.radKhongTruyThu.TabIndex = 29;
+            this.radKhongTruyThu.TabStop = true;
+            this.radKhongTruyThu.Text = "Không Truy Thu";
+            this.radKhongTruyThu.UseVisualStyleBackColor = true;
             // 
             // frmBaoCaoTruyThu
             // 
@@ -191,5 +204,6 @@
         private System.Windows.Forms.RadioButton radGuiThu;
         private System.Windows.Forms.RadioButton radDaThanhToan;
         private System.Windows.Forms.Button btnInDS;
+        private System.Windows.Forms.RadioButton radKhongTruyThu;
     }
 }

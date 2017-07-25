@@ -29,7 +29,7 @@ namespace KTKS_DonKH.DAL.ToBamChi
 
                 if (entity.MaDon_Cha != null)
                 {
-                    entity.MaDon1 = ".BC";
+                    entity.MaDon1 = "BC";
                     if (db.DonTBCs.Count(item => item.MaDon_Cha == entity.MaDon_Cha) > 0)
                     {
                         entity.MaDon2 = db.DonTBCs.Max(item => item.MaDon2) + 1;
@@ -91,6 +91,11 @@ namespace KTKS_DonKH.DAL.ToBamChi
             return db.DonTBCs.Any(item => item.MaDon == MaDon);
         }
 
+        public bool CheckExist(string MaDonMoi)
+        {
+            return db.DonTBCs.Any(item => item.MaDon_New == MaDonMoi);
+        }
+
         public bool CheckExist(string DanhBo, DateTime CreateDate)
         {
             return db.DonTBCs.Any(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
@@ -99,6 +104,11 @@ namespace KTKS_DonKH.DAL.ToBamChi
         public DonTBC Get(decimal MaDon)
         {
             return db.DonTBCs.SingleOrDefault(item => item.MaDon == MaDon);
+        }
+
+        public DonTBC Get(string MaDonMoi)
+        {
+            return db.DonTBCs.SingleOrDefault(item => item.MaDon_New == MaDonMoi);
         }
 
         public DataTable GetDS(decimal MaDon)

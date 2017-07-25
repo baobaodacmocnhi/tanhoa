@@ -11,34 +11,6 @@ namespace KTKS_DonKH.DAL.ToKhachHang
 {
     class CDonKH : CDAL
     {
-        /// <summary>
-        /// Lấy Mã Đơn kế tiếp
-        /// </summary>
-        /// <returns></returns>
-        public decimal GetNextID()
-        {
-            try
-            {
-                if (db.DonKHs.Count() > 0)
-                {
-                    string ID = "MaDon";
-                    string Table = "DonKH";
-                    decimal MaDon = db.ExecuteQuery<decimal>("declare @Ma int " +
-                        "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
-                        "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
-                    return getMaxNextIDTable(MaDon);
-                }
-                else
-                    return decimal.Parse("1" + DateTime.Now.ToString("yy"));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return 0;
-            }
-
-        }
-
         public bool Them(DonKH entity)
         {
             try
@@ -57,7 +29,7 @@ namespace KTKS_DonKH.DAL.ToKhachHang
 
                 if (entity.MaDon_Cha != null)
                 {
-                    entity.MaDon1 = ".KH";
+                    entity.MaDon1 = "KH";
                     if (db.DonKHs.Count(item => item.MaDon_Cha == entity.MaDon_Cha) > 0)
                     {
                         entity.MaDon2 = db.DonKHs.Max(item => item.MaDon2) + 1;
@@ -119,6 +91,11 @@ namespace KTKS_DonKH.DAL.ToKhachHang
             return db.DonKHs.Any(item => item.MaDon == MaDon);
         }
 
+        public bool CheckExist(string MaDonMoi)
+        {
+            return db.DonKHs.Any(item => item.MaDon_New == MaDonMoi);
+        }
+
         public bool CheckExist(string DanhBo,DateTime CreateDate)
         {
             return db.DonKHs.Any(item => item.DanhBo == DanhBo&&item.CreateDate.Value.Date==CreateDate.Date);
@@ -127,6 +104,11 @@ namespace KTKS_DonKH.DAL.ToKhachHang
         public DonKH Get(decimal MaDon)
         {
                 return db.DonKHs.SingleOrDefault(item => item.MaDon == MaDon);
+        }
+
+        public DonKH Get(string MaDonMoi)
+        {
+            return db.DonKHs.SingleOrDefault(item => item.MaDon_New == MaDonMoi);
         }
 
         public DataTable GetDS(decimal MaDon)
