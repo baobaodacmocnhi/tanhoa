@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using DocSo_PC.DAL.QuanTri;
+using DocSo_PC.GUI.HeThong;
+using DocSo_PC.GUI.QuanTri;
 
 namespace DocSo_PC
 {
@@ -115,5 +117,76 @@ namespace DocSo_PC
         {
             ((sender as Form).Tag as TabPage).Dispose();
         }
+
+        #region Hệ Thống
+
+        private void mnuDangNhap_Click(object sender, EventArgs e)
+        {
+            frmDangNhap frm = new frmDangNhap();
+            frm.GetLoginResult = new frmDangNhap.GetValue(GetLoginResult);
+            frm.ShowDialog();
+        }
+
+        private void mnuDoiMatKhau_Click(object sender, EventArgs e)
+        {
+            frmDoiMatKhau frm = new frmDoiMatKhau();
+            OpenForm(frm);
+        }
+
+        private void mnuDangXuat_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+            {
+                this.ActiveMdiChild.Close();
+            }
+            StripStatus_HoTen.Text = "";
+            mnuDangNhap_Click(sender, e);
+        }
+
+        private void mnuAdmin_Click(object sender, EventArgs e)
+        {
+            frmAdmin frm = new frmAdmin();
+            OpenForm(frm);
+        }
+
+        #endregion
+
+        #region Quản Trị
+
+        private void mnuTo_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuTo", "Xem"))
+            {
+                frmTo frm = new frmTo();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuNhom_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuNhom", "Xem"))
+            {
+                frmNhom frm = new frmNhom();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuNguoiDung_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuNguoiDung", "Xem"))
+            {
+                frmNguoiDung frm = new frmNguoiDung();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion
+
     }
 }
