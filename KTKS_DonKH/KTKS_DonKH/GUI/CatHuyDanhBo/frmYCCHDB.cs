@@ -23,10 +23,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
     public partial class frmYCCHDB : Form
     {
         string _mnu = "mnuPhieuCHDB";
-        DonKH _dontkh = null;
-        DonTXL _dontxl = null;
-        DonTBC _dontbc = null;
-        HOADON _hoadon = null;
         CThuTien _cThuTien = new CThuTien();
         CDonKH _cDonKH = new CDonKH();
         CDonTXL _cDonTXL = new CDonTXL();
@@ -35,6 +31,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CCHDB _cCHDB = new CCHDB();
         CLyDoCHDB _cLyDoCHDB = new CLyDoCHDB();
+
+        DonKH _dontkh = null;
+        DonTXL _dontxl = null;
+        DonTBC _dontbc = null;
+        HOADON _hoadon = null;
         PhieuCHDB _ycchdb = null;
         decimal _MaYCCHDB = -1;
 

@@ -23,11 +23,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
     public partial class frmDCHD : Form
     {
         string _mnu = "mnuDCHD";
-        DonKH _donkh = null;
-        DonTXL _dontxl = null;
-        DonTBC _dontbc = null;
-        HOADON _hoadon = null;
-        CTDCHD _ctdchd = null;
         CGiaNuoc _cGiaNuoc = new CGiaNuoc();
         CDonKH _cDonKH = new CDonKH();
         CDonTXL _cDonTXL = new CDonTXL();
@@ -37,6 +32,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CDocSo _cDocSo = new CDocSo();
         CThuTien _cThuTien = new CThuTien();
+
+        DonKH _dontkh = null;
+        DonTXL _dontxl = null;
+        DonTBC _dontbc = null;
+        HOADON _hoadon = null;
+        CTDCHD _ctdchd = null;
         int _TieuThu_DieuChinhGia = 0;
         List<GiaNuoc> lstGiaNuoc;
         decimal _MaCTDCHD = -1;
@@ -100,7 +101,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtDV.Text = "";
             txtHCSN.Text = "";
             ///
-            _donkh = null;
+            _dontkh = null;
             _dontxl = null;
             _dontbc = null;
             _hoadon = null;
@@ -127,7 +128,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (ctdchd.DCBD.MaDon != null)
             {
-                _donkh = _cDonKH.Get(ctdchd.DCBD.MaDon.Value);
+                _dontkh = _cDonKH.Get(ctdchd.DCBD.MaDon.Value);
                 txtMaDonCu.Text = ctdchd.DCBD.MaDon.ToString().Insert(ctdchd.DCBD.MaDon.ToString().Length - 2, "-");
             }
             else
@@ -288,12 +289,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 else
                     if (_cDonKH.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Replace("-", ""))) == true)
                     {
-                        _donkh = _cDonKH.Get(decimal.Parse(txtMaDonCu.Text.Trim().Replace("-", "")));
-                        txtMaDonCu.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
+                        _dontkh = _cDonKH.Get(decimal.Parse(txtMaDonCu.Text.Trim().Replace("-", "")));
+                        txtMaDonCu.Text = _dontkh.MaDon.ToString().Insert(_dontkh.MaDon.ToString().Length - 2, "-");
 
-                        if (_cThuTien.GetMoiNhat(_donkh.DanhBo) != null)
+                        if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
                         {
-                            _hoadon = _cThuTien.GetMoiNhat(_donkh.DanhBo);
+                            _hoadon = _cThuTien.GetMoiNhat(_dontkh.DanhBo);
                             LoadTTKH(_hoadon);
                             chkCodeF2.Focus();
                         }
@@ -358,12 +359,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             if (_cDonKH.CheckExist(txtMaDonMoi.Text.Trim()) == true)
                             {
-                                _donkh = _cDonKH.Get(txtMaDonMoi.Text.Trim());
-                                txtMaDonMoi.Text = _donkh.MaDon_New;
+                                _dontkh = _cDonKH.Get(txtMaDonMoi.Text.Trim());
+                                txtMaDonMoi.Text = _dontkh.MaDon_New;
 
-                                if (_cThuTien.GetMoiNhat(_donkh.DanhBo) != null)
+                                if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
                                 {
-                                    _hoadon = _cThuTien.GetMoiNhat(_donkh.DanhBo);
+                                    _hoadon = _cThuTien.GetMoiNhat(_dontkh.DanhBo);
                                     LoadTTKH(_hoadon);
                                     chkCodeF2.Focus();
                                 }
@@ -448,20 +449,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                     CTDCHD ctdchd = new CTDCHD();
 
-                    if (_donkh != null)
+                    if (_dontkh != null)
                     {
-                        if (_cDCBD.CheckExist("TKH", _donkh.MaDon) == false)
+                        if (_cDCBD.CheckExist("TKH", _dontkh.MaDon) == false)
                         {
                             DCBD dcbd = new DCBD();
-                            dcbd.MaDon = _donkh.MaDon;
+                            dcbd.MaDon = _dontkh.MaDon;
                             _cDCBD.Them(dcbd);
                         }
-                        if (_cDCBD.CheckExist_DCHD("TKH", _donkh.MaDon, txtDanhBo.Text.Trim(), txtKyHD.Text.Trim()) == true)
+                        if (_cDCBD.CheckExist_DCHD("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim(), txtKyHD.Text.Trim()) == true)
                         {
                             MessageBox.Show("Đã Lập ĐCHD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        ctdchd.MaDCBD = _cDCBD.Get("TKH", _donkh.MaDon).MaDCBD;
+                        ctdchd.MaDCBD = _cDCBD.Get("TKH", _dontkh.MaDon).MaDCBD;
                     }
                     else
                         if (_dontxl != null)

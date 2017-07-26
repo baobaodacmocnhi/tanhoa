@@ -101,6 +101,11 @@ namespace KTKS_DonKH.DAL.TruyThu
             }
         }
 
+        public bool CheckExist(string MaDonMoi)
+        {
+                    return db.TruyThuTienNuocs.Any(item => item.MaDon_New == MaDonMoi);
+        }
+
         public bool CheckExist(string Loai, decimal MaDon, string DanhBo)
         {
             switch (Loai)
@@ -134,6 +139,11 @@ namespace KTKS_DonKH.DAL.TruyThu
                 default:
                     return null;
             }
+        }
+
+        public TruyThuTienNuoc Get(string MaDonMoi)
+        {
+                    return db.TruyThuTienNuocs.SingleOrDefault(item => item.MaDon_New == MaDonMoi);
         }
 
         public TruyThuTienNuoc Get(decimal MaTTTN)

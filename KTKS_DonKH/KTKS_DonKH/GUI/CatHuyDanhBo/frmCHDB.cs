@@ -24,12 +24,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
     public partial class frmCHDB : Form
     {
         string _mnu = "mnuCHDB";
-        DonKH _donkh = null;
-        DonTXL _dontxl = null;
-        DonTBC _dontbc = null;
-        HOADON _hoadon = null;
-        CTCHDB _ctchdb = null;
-        CTCTDB _ctctdb = null;
         CDonKH _cDonKH = new CDonKH();
         CDonTXL _cDonTXL = new CDonTXL();
         CDonTBC _cDonTBC = new CDonTBC();
@@ -40,6 +34,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CLyDoCHDB _cLyDoCHDB = new CLyDoCHDB();
         CNoiDungXuLyCHDB _cNoiDungXuLyCHDB = new CNoiDungXuLyCHDB();
         CKTXM _cKTXM = new CKTXM();
+
+        DonKH _dontkh = null;
+        DonTXL _dontxl = null;
+        DonTBC _dontbc = null;
+        HOADON _hoadon = null;
+        CTCHDB _ctchdb = null;
+        CTCTDB _ctctdb = null;
         decimal _MaCTCHDB = -1;
 
         public frmCHDB()
@@ -102,9 +103,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             dgvLichSuCHDB.DataSource = _cCHDB.GetLichSuCHDB(hoadon.DANHBA);
             CheckLichSuCHDB();
             CTKTXM ctktxm = null;
-            if (_donkh != null)
+            if (_dontkh != null)
             {
-                ctktxm = _cKTXM.GetCT("TKH", _donkh.MaDon, _donkh.DanhBo);
+                ctktxm = _cKTXM.GetCT("TKH", _dontkh.MaDon, _dontkh.DanhBo);
             }
             else
                 if (_dontxl != null)
@@ -127,7 +128,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (ctchdb.CHDB.MaDon != null)
             {
-                _donkh = _cDonKH.Get(ctchdb.CHDB.MaDon.Value);
+                _dontkh = _cDonKH.Get(ctchdb.CHDB.MaDon.Value);
                 txtMaDonCu.Text = ctchdb.CHDB.MaDon.ToString().Insert(ctchdb.CHDB.MaDon.ToString().Length - 2, "-");
             }
             else
@@ -196,7 +197,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (ctctdb.CHDB.MaDon != null)
             {
-                _donkh = _cDonKH.Get(ctctdb.CHDB.MaDon.Value);
+                _dontkh = _cDonKH.Get(ctctdb.CHDB.MaDon.Value);
                 txtMaDonCu.Text = ctctdb.CHDB.MaDon.ToString().Insert(ctctdb.CHDB.MaDon.ToString().Length - 2, "-");
             }
             else
@@ -252,7 +253,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             txtNoiDungGhiChu.Text = "";
             ///
             txtHieuLucKy.Text = "";
-            _donkh = null;
+            _dontkh = null;
             _dontxl = null;
             _dontbc = null;
             _hoadon = null;
@@ -319,12 +320,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     else
                         if (_cDonKH.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Replace("-", ""))) == true)
                         {
-                            _donkh = _cDonKH.Get(decimal.Parse(txtMaDonCu.Text.Trim().Replace("-", "")));
-                            txtMaDonCu.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
+                            _dontkh = _cDonKH.Get(decimal.Parse(txtMaDonCu.Text.Trim().Replace("-", "")));
+                            txtMaDonCu.Text = _dontkh.MaDon.ToString().Insert(_dontkh.MaDon.ToString().Length - 2, "-");
 
-                            if (_cThuTien.GetMoiNhat(_donkh.DanhBo) != null)
+                            if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
                             {
-                                _hoadon = _cThuTien.GetMoiNhat(_donkh.DanhBo);
+                                _hoadon = _cThuTien.GetMoiNhat(_dontkh.DanhBo);
                                 LoadTTKH(_hoadon);
                             }
                             else
@@ -386,12 +387,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         {
                             if (_cDonKH.CheckExist(txtMaDonMoi.Text.Trim()) == true)
                             {
-                                _donkh = _cDonKH.Get(txtMaDonMoi.Text.Trim());
-                                txtMaDonMoi.Text = _donkh.MaDon_New;
+                                _dontkh = _cDonKH.Get(txtMaDonMoi.Text.Trim());
+                                txtMaDonMoi.Text = _dontkh.MaDon_New;
 
-                                if (_cThuTien.GetMoiNhat(_donkh.DanhBo) != null)
+                                if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
                                 {
-                                    _hoadon = _cThuTien.GetMoiNhat(_donkh.DanhBo);
+                                    _hoadon = _cThuTien.GetMoiNhat(_dontkh.DanhBo);
                                     LoadTTKH(_hoadon);
                                 }
                                 else
@@ -491,21 +492,21 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                     CTCHDB ctchdb = new CTCHDB();
 
-                    if (_donkh != null)
+                    if (_dontkh != null)
                     {
-                        if (_cCHDB.CheckExist_CHDB("TKH", _donkh.MaDon) == false)
+                        if (_cCHDB.CheckExist_CHDB("TKH", _dontkh.MaDon) == false)
                         {
                             CHDB chdb = new CHDB();
-                            chdb.MaDon = _donkh.MaDon;
-                            chdb.MaDon_New = _donkh.MaDon_New;
+                            chdb.MaDon = _dontkh.MaDon;
+                            chdb.MaDon_New = _dontkh.MaDon_New;
                             _cCHDB.ThemCHDB(chdb);
                         }
-                        if (_cCHDB.CheckExist_CTCHDB("TKH", _donkh.MaDon, txtDanhBo.Text.Trim()) == true)
+                        if (_cCHDB.CheckExist_CTCHDB("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim()) == true)
                         {
                             MessageBox.Show("Danh Bộ này đã được Lập Cắt Hủy Danh Bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        ctchdb.MaCHDB = _cCHDB.GetCHDB("TKH", _donkh.MaDon).MaCHDB;
+                        ctchdb.MaCHDB = _cCHDB.GetCHDB("TKH", _dontkh.MaDon).MaCHDB;
                     }
                     else
                         if (_dontxl != null)

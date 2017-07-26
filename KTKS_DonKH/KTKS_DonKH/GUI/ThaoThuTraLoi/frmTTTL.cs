@@ -23,11 +23,6 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
     {
         string _mnu = "mnuTTTL";
         CThuTien _cThuTien = new CThuTien();
-        DonKH _dontkh = null;
-        DonTXL _dontxl = null;
-        DonTBC _dontbc = null;
-        HOADON _hoadon = null;
-        CTTTTL _cttttl = null;
         CDonKH _cDonKH = new CDonKH();
         CDonTXL _cDonTXL = new CDonTXL();
         CDonTBC _cDonTBC = new CDonTBC();
@@ -36,6 +31,12 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         CDocSo _cDocSo = new CDocSo();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CVeViecTTTL _cVeViecTTTL = new CVeViecTTTL();
+
+        DonKH _dontkh = null;
+        DonTXL _dontxl = null;
+        DonTBC _dontbc = null;
+        HOADON _hoadon = null;
+        CTTTTL _cttttl = null;
         decimal _MaCTTTTL = -1;
 
         public frmTTTL()

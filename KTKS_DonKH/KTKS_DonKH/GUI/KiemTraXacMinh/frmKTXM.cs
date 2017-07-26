@@ -19,11 +19,6 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
     public partial class frmKTXM : Form
     {
         string _mnu = "mnuNhapKQKTXM";
-        DonKH _dontkh = null;
-        DonTXL _dontxl = null;
-        DonTBC _dontbc = null;
-        HOADON _hoadon = null;
-        CTKTXM _ctktxm = null;
         CDonKH _cDonKH = new CDonKH();
         CDonTXL _cDonTXL = new CDonTXL();
         CDonTBC _cDonTBC = new CDonTBC();
@@ -31,6 +26,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         CKTXM _cKTXM = new CKTXM();
         CDocSo _cDocSo = new CDocSo();
         CHienTrangKiemTra _cHienTrangKiemTra = new CHienTrangKiemTra();
+
+        DonKH _dontkh = null;
+        DonTXL _dontxl = null;
+        DonTBC _dontbc = null;
+        HOADON _hoadon = null;
+        CTKTXM _ctktxm = null;
         bool _flagFirst = true;
         decimal _MaCTKTXM = -1;
 

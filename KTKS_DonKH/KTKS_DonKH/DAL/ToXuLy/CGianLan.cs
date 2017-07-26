@@ -67,7 +67,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
             return db.GianLans.SingleOrDefault(item => item.ID == ID);
         }
 
-        public GianLan Get(string Loai,decimal MaDon)
+        public GianLan Get(string Loai, decimal MaDon)
         {
             switch (Loai)
             {
@@ -80,10 +80,14 @@ namespace KTKS_DonKH.DAL.ToXuLy
                 default:
                     return null;
             }
-            
         }
 
-        public bool CheckExist(string Loai,decimal MaDon)
+        public GianLan Get(string MaDonMoi)
+        {
+            return db.GianLans.SingleOrDefault(item => item.MaDon_New == MaDonMoi);
+        }
+
+        public bool CheckExist(string Loai, decimal MaDon)
         {
             switch (Loai)
             {
@@ -98,10 +102,15 @@ namespace KTKS_DonKH.DAL.ToXuLy
             }
         }
 
+        public bool CheckExist(string MaDonMoi)
+        {
+            return db.GianLans.Any(item => item.MaDon_New == MaDonMoi);
+        }
+
         public DataTable GetDS(string DanhBo)
         {
             var query = from item in db.GianLans
-                        where item.DanhBo==DanhBo
+                        where item.DanhBo == DanhBo
                         select new
                         {
                             item.ID,

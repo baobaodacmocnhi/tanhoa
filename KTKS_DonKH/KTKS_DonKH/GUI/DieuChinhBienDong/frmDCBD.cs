@@ -24,11 +24,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
     public partial class frmDCBD : Form
     {
         string _mnu = "mnuDCBD";
-        DonKH _donkh = null;
-        DonTXL _dontxl = null;
-        DonTBC _dontbc = null;
-        HOADON _hoadon = null;
-        CTDCBD _ctdcbd = null;
         CLoaiChungTu _cLoaiChungTu = new CLoaiChungTu();
         CChungTu _cChungTu = new CChungTu();
         CThuTien _cThuTien = new CThuTien();
@@ -39,6 +34,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CKTXM _cKTXM = new CKTXM();
         CDocSo _cDocSo = new CDocSo();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
+
+        DonKH _dontkh = null;
+        DonTXL _dontxl = null;
+        DonTBC _dontbc = null;
+        HOADON _hoadon = null;
+        CTDCBD _ctdcbd = null;
         bool _flagCtrl3 = false;
         decimal _MaCTDCBD = -1;
 
@@ -116,7 +117,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (ctdcbd.DCBD.MaDon != null)
             {
-                _donkh = _cDonKH.Get(ctdcbd.DCBD.MaDon.Value);
+                _dontkh = _cDonKH.Get(ctdcbd.DCBD.MaDon.Value);
                 txtMaDonCu.Text = ctdcbd.DCBD.MaDon.ToString().Insert(ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
             }
             else
@@ -218,7 +219,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             lbTongNK.Text = "";
             ///
             _hoadon = null;
-            _donkh = null;
+            _dontkh = null;
             _dontxl = null;
             _dontbc = null;
             _ctdcbd = null;
@@ -302,12 +303,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     else
                         if (_cDonKH.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Replace("-", ""))) == true)
                         {
-                            _donkh = _cDonKH.Get(decimal.Parse(txtMaDonCu.Text.Trim().Replace("-", "")));
-                            txtMaDonCu.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
+                            _dontkh = _cDonKH.Get(decimal.Parse(txtMaDonCu.Text.Trim().Replace("-", "")));
+                            txtMaDonCu.Text = _dontkh.MaDon.ToString().Insert(_dontkh.MaDon.ToString().Length - 2, "-");
 
-                            if (_cThuTien.GetMoiNhat(_donkh.DanhBo) != null)
+                            if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
                             {
-                                _hoadon = _cThuTien.GetMoiNhat(_donkh.DanhBo);
+                                _hoadon = _cThuTien.GetMoiNhat(_dontkh.DanhBo);
                                 LoadTTKH(_hoadon);
                                 txtDanhBo.Focus();
                             }
@@ -381,12 +382,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             if (_cDonKH.CheckExist(txtMaDonMoi.Text.Trim()) == true)
                             {
-                                _donkh = _cDonKH.Get(txtMaDonMoi.Text.Trim());
-                                txtMaDonCu.Text = _donkh.MaDon_New;
+                                _dontkh = _cDonKH.Get(txtMaDonMoi.Text.Trim());
+                                txtMaDonCu.Text = _dontkh.MaDon_New;
 
-                                if (_cThuTien.GetMoiNhat(_donkh.DanhBo) != null)
+                                if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
                                 {
-                                    _hoadon = _cThuTien.GetMoiNhat(_donkh.DanhBo);
+                                    _hoadon = _cThuTien.GetMoiNhat(_dontkh.DanhBo);
                                     LoadTTKH(_hoadon);
                                     txtDanhBo.Focus();
                                 }
@@ -448,21 +449,21 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                     CTDCBD ctdcbd = new CTDCBD();
 
-                    if (_donkh != null)
+                    if (_dontkh != null)
                     {
-                        if (_cDCBD.CheckExist("TKH", _donkh.MaDon) == false)
+                        if (_cDCBD.CheckExist("TKH", _dontkh.MaDon) == false)
                         {
                             DCBD dcbd = new DCBD();
-                            dcbd.MaDon = _donkh.MaDon;
-                            dcbd.MaDon_New = _donkh.MaDon_New;
+                            dcbd.MaDon = _dontkh.MaDon;
+                            dcbd.MaDon_New = _dontkh.MaDon_New;
                             _cDCBD.Them(dcbd);
                         }
-                        if (_cDCBD.CheckExist_DCBD("TKH", _donkh.MaDon, txtDanhBo.Text.Trim()) == true)
+                        if (_cDCBD.CheckExist_DCBD("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim()) == true)
                         {
                             MessageBox.Show("Danh Bộ này đã được Lập Điều Chỉnh Biến Động", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        ctdcbd.MaDCBD = _cDCBD.Get("TKH", _donkh.MaDon).MaDCBD;
+                        ctdcbd.MaDCBD = _cDCBD.Get("TKH", _dontkh.MaDon).MaDCBD;
                     }
                     else
                         if (_dontxl != null)
@@ -786,14 +787,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (e.Control && e.KeyCode == Keys.Add)
                 btnThem.PerformClick();
-            if ((_donkh != null || _dontxl != null || _dontbc != null) && e.Control && e.KeyCode == Keys.D1)
+            if ((_dontkh != null || _dontxl != null || _dontbc != null) && e.Control && e.KeyCode == Keys.D1)
             {
                 Dictionary<string, string> source = new Dictionary<string, string>();
-                if (_donkh != null)
+                if (_dontkh != null)
                 {
                     source.Add("Loai", "TKH");
-                    source.Add("MaDon", _donkh.MaDon.ToString());
-                    source.Add("MaDonMoi", _donkh.MaDon_New);
+                    source.Add("MaDon", _dontkh.MaDon.ToString());
+                    source.Add("MaDonMoi", _dontkh.MaDon_New);
                 }
                 else
                     if (_dontxl != null)
@@ -832,14 +833,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 }
                 //thêmToolStripMenuItem.PerformClick();
             }
-            if ((_donkh != null || _dontxl != null || _dontbc != null) && e.Control && e.KeyCode == Keys.D2)
+            if ((_dontkh != null || _dontxl != null || _dontbc != null) && e.Control && e.KeyCode == Keys.D2)
             {
                 Dictionary<string, string> source = new Dictionary<string, string>();
-                if (_donkh != null)
+                if (_dontkh != null)
                 {
                     source.Add("Loai", "TKH");
-                    source.Add("MaDon", _donkh.MaDon.ToString());
-                    source.Add("MaDonMoi", _donkh.MaDon_New);
+                    source.Add("MaDon", _dontkh.MaDon.ToString());
+                    source.Add("MaDonMoi", _dontkh.MaDon_New);
                 }
                 else
                     if (_dontxl != null)
@@ -966,11 +967,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 Dictionary<string, string> source = new Dictionary<string, string>();
 
-                if (_donkh != null)
+                if (_dontkh != null)
                 {
                     source.Add("Loai", "TKH");
-                    source.Add("MaDon", _donkh.MaDon.ToString());
-                    source.Add("MaDonMoi", _donkh.MaDon_New);
+                    source.Add("MaDon", _dontkh.MaDon.ToString());
+                    source.Add("MaDonMoi", _dontkh.MaDon_New);
                 }
                 else
                     if (_dontxl != null)
@@ -1018,11 +1019,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
             {
                 Dictionary<string, string> source = new Dictionary<string, string>();
-                if (_donkh != null)
+                if (_dontkh != null)
                 {
                     source.Add("Loai", "TKH");
-                    source.Add("MaDon", _donkh.MaDon.ToString());
-                    source.Add("MaDonMoi", _donkh.MaDon_New);
+                    source.Add("MaDon", _dontkh.MaDon.ToString());
+                    source.Add("MaDonMoi", _dontkh.MaDon_New);
                 }
                 else
                     if (_dontxl != null)
@@ -1062,11 +1063,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
             {
                 Dictionary<string, string> source = new Dictionary<string, string>();
-                if (_donkh != null)
+                if (_dontkh != null)
                 {
                     source.Add("Loai", "TKH");
-                    source.Add("MaDon", _donkh.MaDon.ToString());
-                    source.Add("MaDonMoi", _donkh.MaDon_New);
+                    source.Add("MaDon", _dontkh.MaDon.ToString());
+                    source.Add("MaDonMoi", _dontkh.MaDon_New);
                 }
                 else
                     if (_dontxl != null)
@@ -1105,11 +1106,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
             {
                 Dictionary<string, string> source = new Dictionary<string, string>();
-                if (_donkh != null)
+                if (_dontkh != null)
                 {
                     source.Add("Loai", "TKH");
-                    source.Add("MaDon", _donkh.MaDon.ToString());
-                    source.Add("MaDonMoi", _donkh.MaDon_New);
+                    source.Add("MaDon", _dontkh.MaDon.ToString());
+                    source.Add("MaDonMoi", _dontkh.MaDon_New);
                 }
                 else
                     if (_dontxl != null)
@@ -1210,7 +1211,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void dgvDSSoDangKy_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right && (_donkh != null || _dontxl != null || _dontbc != null))
+            if (e.Button == MouseButtons.Right && (_dontkh != null || _dontxl != null || _dontbc != null))
             {
                 thêmToolStripMenuItem.Enabled = true;
                 nhậnĐịnhMứctoolStripMenuItem.Enabled = true;
@@ -1489,9 +1490,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             //entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
             //entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
             entity.GhiChu = txtCapNhat.Text.Trim();
-            if (_donkh != null)
+            if (_dontkh != null)
             {
-                entity.MaDon = _donkh.MaDon;
+                entity.MaDon = _dontkh.MaDon;
                 entity.ID_NoiChuyen = 2;
                 entity.NoiChuyen = "Tổ Khách Hàng";
             }

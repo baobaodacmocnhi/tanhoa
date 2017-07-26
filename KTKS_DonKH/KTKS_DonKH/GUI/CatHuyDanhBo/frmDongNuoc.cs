@@ -23,11 +23,6 @@ namespace KTKS_DonKH.GUI.DongNuoc
     public partial class frmDongNuoc : Form
     {
         string _mnu = "mnuDongNuoc";
-        DonKH _dontkh = null;
-        DonTXL _dontxl = null;
-        DonTBC _dontbc = null;
-        HOADON _hoadon = null;
-        CTDongNuoc _ctdongnuoc = null;
         CDonKH _cDonKH = new CDonKH();
         CDonTXL _cDonTXL = new CDonTXL();
         CDonTBC _cDonTBC = new CDonTBC();
@@ -36,6 +31,12 @@ namespace KTKS_DonKH.GUI.DongNuoc
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CDongNuoc _cDongNuoc = new CDongNuoc();
         CBamChi _cBamChi = new CBamChi();
+
+        DonKH _dontkh = null;
+        DonTXL _dontxl = null;
+        DonTBC _dontbc = null;
+        HOADON _hoadon = null;
+        CTDongNuoc _ctdongnuoc = null;
         decimal _MaCTDN = -1;
 
         public frmDongNuoc()

@@ -19,11 +19,6 @@ namespace KTKS_DonKH.GUI.BamChi
     public partial class frmBamChi : Form
     {
         string _mnu = "mnuNhapKQBamChi";
-        DonKH _dontkh = null;
-        DonTXL _dontxl = null;
-        DonTBC _dontbc = null;
-        HOADON _hoadon = null;
-        CTBamChi _ctbamchi = null;
         CDonKH _cDonKH = new CDonKH();
         CDonTXL _cDonTXL = new CDonTXL();
         CDonTBC _cDonTBC = new CDonTBC();
@@ -31,6 +26,12 @@ namespace KTKS_DonKH.GUI.BamChi
         CBamChi _cBamChi = new CBamChi();
         CDocSo _cDocSo = new CDocSo();
         CTrangThaiBamChi _cTrangThaiBamChi = new CTrangThaiBamChi();
+
+        DonKH _dontkh = null;
+        DonTXL _dontxl = null;
+        DonTBC _dontbc = null;
+        HOADON _hoadon = null;
+        CTBamChi _ctbamchi = null;
         bool _flagFirst = true;
         decimal _MaCTBamChi = -1;
 
