@@ -163,6 +163,8 @@
             this.btnInPhieu = new System.Windows.Forms.Button();
             this.txtMaDonMoi = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
+            this.chkXoaDiaChiLienHe = new System.Windows.Forms.CheckBox();
+            this.chkBoQuaKiemTraTrung = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox_DSSoDangKy.SuspendLayout();
@@ -863,7 +865,7 @@
             // chkCatMSThue
             // 
             this.chkCatMSThue.AutoSize = true;
-            this.chkCatMSThue.Location = new System.Drawing.Point(1165, 156);
+            this.chkCatMSThue.Location = new System.Drawing.Point(1165, 143);
             this.chkCatMSThue.Name = "chkCatMSThue";
             this.chkCatMSThue.Size = new System.Drawing.Size(101, 20);
             this.chkCatMSThue.TabIndex = 11;
@@ -1268,7 +1270,7 @@
             // chkGiaHan
             // 
             this.chkGiaHan.AutoSize = true;
-            this.chkGiaHan.Location = new System.Drawing.Point(1165, 103);
+            this.chkGiaHan.Location = new System.Drawing.Point(1165, 92);
             this.chkGiaHan.Name = "chkGiaHan";
             this.chkGiaHan.Size = new System.Drawing.Size(76, 20);
             this.chkGiaHan.TabIndex = 21;
@@ -1278,7 +1280,7 @@
             // chkDMGiuNguyen
             // 
             this.chkDMGiuNguyen.AutoSize = true;
-            this.chkDMGiuNguyen.Location = new System.Drawing.Point(1165, 78);
+            this.chkDMGiuNguyen.Location = new System.Drawing.Point(1165, 67);
             this.chkDMGiuNguyen.Name = "chkDMGiuNguyen";
             this.chkDMGiuNguyen.Size = new System.Drawing.Size(120, 20);
             this.chkDMGiuNguyen.TabIndex = 22;
@@ -1304,7 +1306,7 @@
             // chkDoanThanhNien
             // 
             this.chkDoanThanhNien.AutoSize = true;
-            this.chkDoanThanhNien.Location = new System.Drawing.Point(1165, 128);
+            this.chkDoanThanhNien.Location = new System.Drawing.Point(1165, 117);
             this.chkDoanThanhNien.Name = "chkDoanThanhNien";
             this.chkDoanThanhNien.Size = new System.Drawing.Size(131, 20);
             this.chkDoanThanhNien.TabIndex = 25;
@@ -1391,6 +1393,26 @@
             this.label33.TabIndex = 116;
             this.label33.Text = "Mã Đơn Mới:";
             // 
+            // chkXoaDiaChiLienHe
+            // 
+            this.chkXoaDiaChiLienHe.AutoSize = true;
+            this.chkXoaDiaChiLienHe.Location = new System.Drawing.Point(1165, 169);
+            this.chkXoaDiaChiLienHe.Name = "chkXoaDiaChiLienHe";
+            this.chkXoaDiaChiLienHe.Size = new System.Drawing.Size(145, 20);
+            this.chkXoaDiaChiLienHe.TabIndex = 118;
+            this.chkXoaDiaChiLienHe.Text = "Xóa Địa Chỉ Liên Hệ";
+            this.chkXoaDiaChiLienHe.UseVisualStyleBackColor = true;
+            // 
+            // chkBoQuaKiemTraTrung
+            // 
+            this.chkBoQuaKiemTraTrung.AutoSize = true;
+            this.chkBoQuaKiemTraTrung.Location = new System.Drawing.Point(1122, 294);
+            this.chkBoQuaKiemTraTrung.Name = "chkBoQuaKiemTraTrung";
+            this.chkBoQuaKiemTraTrung.Size = new System.Drawing.Size(167, 20);
+            this.chkBoQuaKiemTraTrung.TabIndex = 119;
+            this.chkBoQuaKiemTraTrung.Text = "Bỏ Qua Kiểm Tra Trùng";
+            this.chkBoQuaKiemTraTrung.UseVisualStyleBackColor = true;
+            // 
             // frmDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1398,6 +1420,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1311, 659);
+            this.Controls.Add(this.chkBoQuaKiemTraTrung);
+            this.Controls.Add(this.chkXoaDiaChiLienHe);
             this.Controls.Add(this.txtMaDonMoi);
             this.Controls.Add(this.label33);
             this.Controls.Add(this.btnInPhieu);
@@ -1586,6 +1610,8 @@
         private System.Windows.Forms.Button btnInPhieu;
         private System.Windows.Forms.TextBox txtMaDonMoi;
         private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.CheckBox chkXoaDiaChiLienHe;
+        private System.Windows.Forms.CheckBox chkBoQuaKiemTraTrung;
         
     }
 }

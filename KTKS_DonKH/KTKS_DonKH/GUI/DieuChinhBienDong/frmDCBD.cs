@@ -176,6 +176,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             chkGiaHan.Checked = ctdcbd.GiaHan;
             chkDoanThanhNien.Checked = ctdcbd.DoanThanhNien;
             chkCatMSThue.Checked = ctdcbd.CatMSThue;
+            chkXoaDiaChiLienHe.Checked = ctdcbd.XoaDiaChiLienHe;
             ///
             dgvDSSoDangKy.DataSource = _cChungTu.GetDSCT(ctdcbd.DanhBo);
             dgvDSDieuChinh.DataSource = _cDCBD.LoadDSDCbyDanhBo(ctdcbd.DanhBo);
@@ -206,6 +207,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             chkGiaHan.Checked = false;
             chkDoanThanhNien.Checked = false;
             chkCatMSThue.Checked = false;
+            chkXoaDiaChiLienHe.Checked = false;
+            chkBoQuaKiemTraTrung.Checked = false;
             ///
             txtHoTen_BD.Text = "";
             txtDiaChi_BD.Text = "";
@@ -458,7 +461,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             dcbd.MaDon_New = _dontkh.MaDon_New;
                             _cDCBD.Them(dcbd);
                         }
-                        if (_cDCBD.CheckExist_DCBD("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim()) == true)
+                        if (chkBoQuaKiemTraTrung.Checked==false && _cDCBD.CheckExist_DCBD("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim()) == true)
                         {
                             MessageBox.Show("Danh Bộ này đã được Lập Điều Chỉnh Biến Động", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
@@ -475,7 +478,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dcbd.MaDon_New = _dontxl.MaDon_New;
                                 _cDCBD.Them(dcbd);
                             }
-                            if (_cDCBD.CheckExist_DCBD("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim()) == true)
+                            if (chkBoQuaKiemTraTrung.Checked == false && _cDCBD.CheckExist_DCBD("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim()) == true)
                             {
                                 MessageBox.Show("Danh Bộ này đã được Lập Điều Chỉnh Biến Động", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
@@ -492,7 +495,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     dcbd.MaDon_New = _dontbc.MaDon_New;
                                     _cDCBD.Them(dcbd);
                                 }
-                                if (_cDCBD.CheckExist_DCBD("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim()) == true)
+                                if (chkBoQuaKiemTraTrung.Checked == false && _cDCBD.CheckExist_DCBD("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim()) == true)
                                 {
                                     MessageBox.Show("Danh Bộ này đã được Lập Điều Chỉnh Biến Động", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
@@ -545,6 +548,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         ThongTin += "Địa Chỉ. ";
                         ctdcbd.DiaChi_BD = txtDiaChi_BD.Text.Trim();
+                    }
+                    if (chkXoaDiaChiLienHe.Checked)
+                    {
+                        //ThongTin += "Địa Chỉ. ";
+                        ctdcbd.XoaDiaChiLienHe = true;
                     }
                     ///Mã Số Thuế
                     if (txtMSThue_BD.Text.Trim() != "")
@@ -672,6 +680,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         }
                         else
                             _ctdcbd.DiaChi_BD = null;
+                        if (chkXoaDiaChiLienHe.Checked)
+                        {
+                            //ThongTin += "Địa Chỉ. ";
+                            _ctdcbd.XoaDiaChiLienHe = true;
+                        }
+                        else
+                            _ctdcbd.XoaDiaChiLienHe = false;
                         ///Mã Số Thuế
                         if (txtMSThue_BD.Text.Trim() != "")
                         {
@@ -1541,6 +1556,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             dr["HopDong"] = _ctdcbd.HopDong;
             dr["HoTen"] = _ctdcbd.HoTen;
             dr["DiaChi"] = _ctdcbd.DiaChi;
+            if (_ctdcbd.XoaDiaChiLienHe==true)
+                dr["XoaDiaChiLienHe"] = "Xóa Địa Chỉ Liên Hệ";
             dr["MaQuanPhuong"] = _ctdcbd.MaQuanPhuong;
             dr["GiaBieu"] = _ctdcbd.GiaBieu;
             dr["DinhMuc"] = _ctdcbd.DinhMuc;

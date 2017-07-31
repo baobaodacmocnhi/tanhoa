@@ -900,8 +900,8 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                         foreach (DataGridViewRow item in dgvTruyThuTienNuoc.Rows)
                             if (item.Cells["Ky"].Value != null && item.Cells["Ky"].ToString() != "")
-                                //if (_cTTTN.CheckExist_CT(_tttn.MaTTTN, item.Cells["Ky"].Value.ToString(), item.Cells["Nam"].Value.ToString()) == false)
-                                if (item.Cells["MaCTTTTN"].Value == null || item.Cells["MaCTTTTN"].Value.ToString()=="")
+                                if (_cTTTN.CheckExist_CT(_tttn.MaTTTN, item.Cells["Ky"].Value.ToString(), item.Cells["Nam"].Value.ToString()) == false)
+                                //if (item.Cells["MaCTTTTN"].Value == null || item.Cells["MaCTTTTN"].Value.ToString()=="")
                                 {
                                     CTTruyThuTienNuoc cttttn = new CTTruyThuTienNuoc();
 
@@ -932,8 +932,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 }
                                 else
                                 {
-                                    //CTTruyThuTienNuoc cttttn = _cTTTN.GetCT(_tttn.MaTTTN, item.Cells["Ky"].Value.ToString(), item.Cells["Nam"].Value.ToString());
-                                    CTTruyThuTienNuoc cttttn = _cTTTN.GetCT(int.Parse(item.Cells["MaCTTTTN"].Value.ToString()));
+                                    CTTruyThuTienNuoc cttttn = _cTTTN.GetCT(_tttn.MaTTTN, item.Cells["Ky"].Value.ToString(), item.Cells["Nam"].Value.ToString());
+                                    //CTTruyThuTienNuoc cttttn = _cTTTN.GetCT(int.Parse(item.Cells["MaCTTTTN"].Value.ToString()));
 
                                     cttttn.Ky = item.Cells["Ky"].Value.ToString();
                                     cttttn.Nam = item.Cells["Nam"].Value.ToString();
@@ -1382,10 +1382,20 @@ namespace KTKS_DonKH.GUI.TruyThu
             }
         }
 
-       
-
-             
-
+        private void dgvTruyThuTienNuoc_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            if (_tttn != null)
+            {
+                CTTruyThuTienNuoc cttttn = _cTTTN.GetCT(_tttn.MaTTTN, e.Row.Cells["Ky"].Value.ToString(), e.Row.Cells["Nam"].Value.ToString());
+                if (_cTTTN.XoaCT(cttttn))
+                {
+                    _tttn = _cTTTN.Get(_tttn.MaTTTN);
+                    _tttn.TongTien = _tttn.CTTruyThuTienNuocs.Sum(item => item.TongCongMoi.Value) - _tttn.CTTruyThuTienNuocs.Sum(item => item.TongCongCu.Value);
+                    _tttn.Tongm3BinhQuan = (int)Math.Round((double)_tttn.TongTien / _tttn.SoTien1m3);
+                    _cTTTN.SubmitChanges();
+                }
+            }
+        }
 
     }
 }

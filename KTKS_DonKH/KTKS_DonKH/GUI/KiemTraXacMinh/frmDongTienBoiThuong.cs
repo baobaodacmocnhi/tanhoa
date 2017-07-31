@@ -148,7 +148,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 {
                     CTKTXM ctktxm = _cKTXM.GetCT(decimal.Parse(dgvDSKetQuaKiemTra["MaCTKTXM", _selectedindex].Value.ToString()));
 
-                    if (ctktxm.LapBangGia != chkLapBangGia.Checked)
+                    //if (ctktxm.LapBangGia != chkLapBangGia.Checked)
                         if (chkLapBangGia.Checked)
                         {
                             ctktxm.LapBangGia = true;
@@ -160,7 +160,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             ctktxm.NgayLapBangGia = null;
                         }
 
-                    if (ctktxm.DongTienBoiThuong != chkDongTienBoiThuong.Checked)
+                    //if (ctktxm.DongTienBoiThuong != chkDongTienBoiThuong.Checked)
                         if (chkDongTienBoiThuong.Checked)
                         {
                             ctktxm.DongTienBoiThuong = true;
@@ -176,7 +176,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             ctktxm.SoTien = null;
                         }
 
-                    if (ctktxm.ChuyenLapTBCat != chkChuyenCatHuy.Checked)
+                    //if (ctktxm.ChuyenLapTBCat != chkChuyenCatHuy.Checked)
                         if (chkChuyenCatHuy.Checked)
                         {
                             ctktxm.ChuyenLapTBCat = true;

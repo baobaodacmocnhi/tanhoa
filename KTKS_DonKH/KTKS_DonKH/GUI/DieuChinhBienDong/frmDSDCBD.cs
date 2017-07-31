@@ -381,6 +381,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["HopDong"] = ctdcbd.HopDong;
                                 dr["HoTen"] = ctdcbd.HoTen;
                                 dr["DiaChi"] = ctdcbd.DiaChi;
+                                if (ctdcbd.XoaDiaChiLienHe==true)
+                                    dr["XoaDiaChiLienHe"] = "Xóa Địa Chỉ Liên Hệ";
                                 dr["MaQuanPhuong"] = ctdcbd.MaQuanPhuong;
                                 dr["GiaBieu"] = ctdcbd.GiaBieu;
                                 dr["DinhMuc"] = ctdcbd.DinhMuc;

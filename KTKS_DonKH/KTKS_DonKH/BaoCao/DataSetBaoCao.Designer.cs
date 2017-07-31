@@ -3307,6 +3307,8 @@ namespace KTKS_DonKH.BaoCao {
             
             private global::System.Data.DataColumn columnDiaChi;
             
+            private global::System.Data.DataColumn columnBoQuaDiaChiLienHe;
+            
             private global::System.Data.DataColumn columnMSThue;
             
             private global::System.Data.DataColumn columnGiaBieu;
@@ -3445,6 +3447,14 @@ namespace KTKS_DonKH.BaoCao {
             public global::System.Data.DataColumn DiaChiColumn {
                 get {
                     return this.columnDiaChi;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn BoQuaDiaChiLienHeColumn {
+                get {
+                    return this.columnBoQuaDiaChiLienHe;
                 }
             }
             
@@ -3670,6 +3680,7 @@ namespace KTKS_DonKH.BaoCao {
                         string HopDong, 
                         string HoTen, 
                         string DiaChi, 
+                        string BoQuaDiaChiLienHe, 
                         string MSThue, 
                         string GiaBieu, 
                         string DinhMuc, 
@@ -3702,6 +3713,7 @@ namespace KTKS_DonKH.BaoCao {
                         HopDong,
                         HoTen,
                         DiaChi,
+                        BoQuaDiaChiLienHe,
                         MSThue,
                         GiaBieu,
                         DinhMuc,
@@ -3754,6 +3766,7 @@ namespace KTKS_DonKH.BaoCao {
                 this.columnHopDong = base.Columns["HopDong"];
                 this.columnHoTen = base.Columns["HoTen"];
                 this.columnDiaChi = base.Columns["DiaChi"];
+                this.columnBoQuaDiaChiLienHe = base.Columns["BoQuaDiaChiLienHe"];
                 this.columnMSThue = base.Columns["MSThue"];
                 this.columnGiaBieu = base.Columns["GiaBieu"];
                 this.columnDinhMuc = base.Columns["DinhMuc"];
@@ -3797,6 +3810,8 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnHoTen);
                 this.columnDiaChi = new global::System.Data.DataColumn("DiaChi", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDiaChi);
+                this.columnBoQuaDiaChiLienHe = new global::System.Data.DataColumn("BoQuaDiaChiLienHe", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBoQuaDiaChiLienHe);
                 this.columnMSThue = new global::System.Data.DataColumn("MSThue", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMSThue);
                 this.columnGiaBieu = new global::System.Data.DataColumn("GiaBieu", typeof(string), null, global::System.Data.MappingType.Element);
@@ -19064,6 +19079,22 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string BoQuaDiaChiLienHe {
+                get {
+                    try {
+                        return ((string)(this[this.tableDCBD.BoQuaDiaChiLienHeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BoQuaDiaChiLienHe\' in table \'DCBD\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDCBD.BoQuaDiaChiLienHeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string MSThue {
                 get {
                     try {
@@ -19508,6 +19539,18 @@ namespace KTKS_DonKH.BaoCao {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDiaChiNull() {
                 this[this.tableDCBD.DiaChiColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsBoQuaDiaChiLienHeNull() {
+                return this.IsNull(this.tableDCBD.BoQuaDiaChiLienHeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetBoQuaDiaChiLienHeNull() {
+                this[this.tableDCBD.BoQuaDiaChiLienHeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

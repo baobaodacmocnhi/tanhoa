@@ -8841,6 +8841,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _CatMSThue;
 		
+		private bool _XoaDiaChiLienHe;
+		
 		private string _HieuLucKy;
 		
 		private System.Nullable<decimal> _MaDCBD;
@@ -8945,6 +8947,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnHCSN_BDChanged();
     partial void OnCatMSThueChanging(bool value);
     partial void OnCatMSThueChanged();
+    partial void OnXoaDiaChiLienHeChanging(bool value);
+    partial void OnXoaDiaChiLienHeChanged();
     partial void OnHieuLucKyChanging(string value);
     partial void OnHieuLucKyChanged();
     partial void OnMaDCBDChanging(System.Nullable<decimal> value);
@@ -9533,6 +9537,26 @@ namespace KTKS_DonKH.LinQ
 					this._CatMSThue = value;
 					this.SendPropertyChanged("CatMSThue");
 					this.OnCatMSThueChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_XoaDiaChiLienHe", DbType="Bit NOT NULL")]
+		public bool XoaDiaChiLienHe
+		{
+			get
+			{
+				return this._XoaDiaChiLienHe;
+			}
+			set
+			{
+				if ((this._XoaDiaChiLienHe != value))
+				{
+					this.OnXoaDiaChiLienHeChanging(value);
+					this.SendPropertyChanging();
+					this._XoaDiaChiLienHe = value;
+					this.SendPropertyChanged("XoaDiaChiLienHe");
+					this.OnXoaDiaChiLienHeChanged();
 				}
 			}
 		}
