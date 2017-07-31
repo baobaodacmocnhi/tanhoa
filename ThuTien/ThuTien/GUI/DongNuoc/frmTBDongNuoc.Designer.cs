@@ -46,8 +46,9 @@
             this.HoTen = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DiaChi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MLT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CreateBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CreateDate = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MaNV_DongNuoc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnXem = new System.Windows.Forms.Button();
             this.dateDen = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
@@ -73,7 +74,6 @@
             this.txtMaDN = new System.Windows.Forms.TextBox();
             this.btnInGiayXN = new System.Windows.Forms.Button();
             this.chkChuKy = new System.Windows.Forms.CheckBox();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -180,9 +180,9 @@
             this.HoTen,
             this.DiaChi,
             this.MLT,
-            this.gridColumn2,
             this.CreateDate,
-            this.gridColumn1});
+            this.CreateBy,
+            this.MaNV_DongNuoc});
             this.gridViewDN.GridControl = this.gridControl;
             this.gridViewDN.IndicatorWidth = 41;
             this.gridViewDN.Name = "gridViewDN";
@@ -210,12 +210,12 @@
             // 
             // MaDN
             // 
-            this.MaDN.Caption = "Mã Đóng Nước";
+            this.MaDN.Caption = "Mã Lệnh";
             this.MaDN.FieldName = "MaDN";
             this.MaDN.Name = "MaDN";
             this.MaDN.Visible = true;
             this.MaDN.VisibleIndex = 1;
-            this.MaDN.Width = 100;
+            this.MaDN.Width = 70;
             // 
             // DanhBo
             // 
@@ -224,7 +224,7 @@
             this.DanhBo.Name = "DanhBo";
             this.DanhBo.Visible = true;
             this.DanhBo.VisibleIndex = 2;
-            this.DanhBo.Width = 100;
+            this.DanhBo.Width = 85;
             // 
             // HoTen
             // 
@@ -233,7 +233,7 @@
             this.HoTen.Name = "HoTen";
             this.HoTen.Visible = true;
             this.HoTen.VisibleIndex = 3;
-            this.HoTen.Width = 150;
+            this.HoTen.Width = 130;
             // 
             // DiaChi
             // 
@@ -242,15 +242,22 @@
             this.DiaChi.Name = "DiaChi";
             this.DiaChi.Visible = true;
             this.DiaChi.VisibleIndex = 4;
-            this.DiaChi.Width = 200;
+            this.DiaChi.Width = 180;
             // 
             // MLT
             // 
-            this.MLT.Caption = "Mã Lộ Trình";
+            this.MLT.Caption = "MLT";
             this.MLT.FieldName = "MLT";
             this.MLT.Name = "MLT";
             this.MLT.Visible = true;
             this.MLT.VisibleIndex = 5;
+            this.MLT.Width = 80;
+            // 
+            // CreateBy
+            // 
+            this.CreateBy.Caption = "CreateBy";
+            this.CreateBy.FieldName = "CreateBy";
+            this.CreateBy.Name = "CreateBy";
             // 
             // CreateDate
             // 
@@ -259,12 +266,13 @@
             this.CreateDate.Name = "CreateDate";
             this.CreateDate.Visible = true;
             this.CreateDate.VisibleIndex = 6;
+            this.CreateDate.Width = 70;
             // 
-            // gridColumn1
+            // MaNV_DongNuoc
             // 
-            this.gridColumn1.Caption = "MaNV_DongNuoc";
-            this.gridColumn1.FieldName = "MaNV_DongNuoc";
-            this.gridColumn1.Name = "gridColumn1";
+            this.MaNV_DongNuoc.Caption = "MaNV_DongNuoc";
+            this.MaNV_DongNuoc.FieldName = "MaNV_DongNuoc";
+            this.MaNV_DongNuoc.Name = "MaNV_DongNuoc";
             // 
             // btnXem
             // 
@@ -503,12 +511,6 @@
             this.chkChuKy.Text = "Có Chữ Ký";
             this.chkChuKy.UseVisualStyleBackColor = true;
             // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "Người Lập";
-            this.gridColumn2.FieldName = "CreateBy";
-            this.gridColumn2.Name = "gridColumn2";
-            // 
             // frmTBDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -585,7 +587,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn CreateDate;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtSoLuong;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn MaNV_DongNuoc;
         private System.Windows.Forms.ListView lstHD;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.Label label6;
@@ -596,7 +598,7 @@
         private System.Windows.Forms.Button btnThemDN;
         private System.Windows.Forms.Button btnInGiayXN;
         private System.Windows.Forms.CheckBox chkChuKy;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn CreateBy;
 
     }
 }

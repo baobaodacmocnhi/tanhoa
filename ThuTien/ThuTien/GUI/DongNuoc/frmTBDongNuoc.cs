@@ -228,7 +228,7 @@ namespace ThuTien.GUI.DongNuoc
         {
             if (dateTu.Value <= dateDen.Value)
             {
-                gridControl.DataSource = _cDongNuoc.GetDSByMaNVCreateDates(CNguoiDung.TenTo, CNguoiDung.MaND, dateTu.Value, dateDen.Value).Tables["DongNuoc"];
+                gridControl.DataSource = _cDongNuoc.GetDSByCreateByCreateDates(CNguoiDung.TenTo, CNguoiDung.MaND, dateTu.Value, dateDen.Value).Tables["DongNuoc"];
             }
         }
 

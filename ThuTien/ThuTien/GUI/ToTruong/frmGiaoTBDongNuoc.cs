@@ -64,14 +64,14 @@ namespace ThuTien.GUI.ToTruong
                 DataSet ds = null;
                 for (int i = 1; i < _lstND.Count; i++)
                     if (ds == null)
-                        ds = _cDongNuoc.GetDSByMaNVCreateDates(CNguoiDung.TenTo, _lstND[i].MaND, dateTu.Value, dateDen.Value);
+                        ds = _cDongNuoc.GetDSByCreateByCreateDates(CNguoiDung.TenTo, _lstND[i].MaND, dateTu.Value, dateDen.Value);
                     else
-                        ds.Merge(_cDongNuoc.GetDSByMaNVCreateDates(CNguoiDung.TenTo, _lstND[i].MaND, dateTu.Value, dateDen.Value));
+                        ds.Merge(_cDongNuoc.GetDSByCreateByCreateDates(CNguoiDung.TenTo, _lstND[i].MaND, dateTu.Value, dateDen.Value));
                 gridControl.DataSource = ds.Tables["DongNuoc"];
             }
             else
                 if (cmbNhanVienLap.SelectedIndex > 0 && dateTu.Value <= dateDen.Value)
-                    gridControl.DataSource = _cDongNuoc.GetDSByMaNVCreateDates(CNguoiDung.TenTo, int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
+                    gridControl.DataSource = _cDongNuoc.GetDSByCreateByCreateDates(CNguoiDung.TenTo, int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
 
             ///Kiểm Tra Tình Trạng, Giải Trách hết Hóa Đơn trong Thông Báo Đóng Nước mới tính
             for (int i = 0; i < gridViewDN.DataRowCount; i++)
@@ -166,7 +166,7 @@ namespace ThuTien.GUI.ToTruong
                             }
                         }
                     _cDongNuoc.SqlCommitTransaction();
-                    gridControl.DataSource = _cDongNuoc.GetDSByMaNVCreateDates(CNguoiDung.TenTo, int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
+                    gridControl.DataSource = _cDongNuoc.GetDSByCreateByCreateDates(CNguoiDung.TenTo, int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception)
@@ -193,14 +193,14 @@ namespace ThuTien.GUI.ToTruong
             {
                 e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
-            if (e.Column.FieldName == "CreateBy" && !string.IsNullOrEmpty(e.Value.ToString()))
-            {
-                e.DisplayText = _cNguoiDung.GetHoTenByMaND(int.Parse(e.Value.ToString()));
-            }
-            if (e.Column.FieldName == "MaNV_DongNuoc" && !string.IsNullOrEmpty(e.Value.ToString()))
-            {
-                e.DisplayText = _cNguoiDung.GetHoTenByMaND(int.Parse(e.Value.ToString()));
-            }
+            //if (e.Column.FieldName == "CreateBy" && !string.IsNullOrEmpty(e.Value.ToString()))
+            //{
+            //    e.DisplayText = _cNguoiDung.GetHoTenByMaND(int.Parse(e.Value.ToString()));
+            //}
+            //if (e.Column.FieldName == "MaNV_DongNuoc" && !string.IsNullOrEmpty(e.Value.ToString()))
+            //{
+            //    e.DisplayText = _cNguoiDung.GetHoTenByMaND(int.Parse(e.Value.ToString()));
+            //}
         }
 
         private void gridViewDN_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
@@ -248,7 +248,7 @@ namespace ThuTien.GUI.ToTruong
                         DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
                         dr["Loai"] = "CHUYỂN";
                         dr["MaDN"] = row["MaDN"].ToString().Insert(row["MaDN"].ToString().Length - 2, "-");
-                        dr["To"] = CNguoiDung.TenTo;
+                        dr["To"] = row["TenTo"];
                         dr["HoTen"] = row["HoTen"];
                         dr["DiaChi"] = row["DiaChi"];
                         if (!string.IsNullOrEmpty(row["DanhBo"].ToString()))
@@ -257,7 +257,7 @@ namespace ThuTien.GUI.ToTruong
                         dr["Ky"] = itemChild["Ky"];
                         dr["TongCong"] = itemChild["TongCong"];
                         dr["NhanVien"] = cmbNhanVienLap.Text;
-                        dr["HanhThu"] = _cNguoiDung.GetHoTenByMaND(int.Parse(row["CreateBy"].ToString()));
+                        dr["HanhThu"] = row["HanhThu"];
 
                         dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                     }
@@ -286,7 +286,7 @@ namespace ThuTien.GUI.ToTruong
                             DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
                             dr["Loai"] = "CHUYỂN";
                             dr["MaDN"] = row["MaDN"].ToString().Insert(row["MaDN"].ToString().Length - 2, "-");
-                            dr["To"] = CNguoiDung.TenTo;
+                            dr["To"] = row["TenTo"];
                             dr["HoTen"] = row["HoTen"];
                             dr["DiaChi"] = row["DiaChi"];
                             if (!string.IsNullOrEmpty(row["DanhBo"].ToString()))
@@ -295,7 +295,7 @@ namespace ThuTien.GUI.ToTruong
                             dr["Ky"] = itemChild["Ky"];
                             dr["TongCong"] = itemChild["TongCong"];
                             dr["NhanVien"] = cmbNhanVienGiao.Text;
-                            dr["HanhThu"] = _cNguoiDung.GetHoTenByMaND(int.Parse(row["CreateBy"].ToString()));
+                            dr["HanhThu"] = row["HanhThu"];
 
                             dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                         }
@@ -326,7 +326,7 @@ namespace ThuTien.GUI.ToTruong
                                 DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
                                 dr["Loai"] = "CHUYỂN CÒN TỒN";
                                 dr["MaDN"] = row["MaDN"].ToString().Insert(row["MaDN"].ToString().Length - 2, "-");
-                                dr["To"] = CNguoiDung.TenTo;
+                                dr["To"] = row["TenTo"];
                                 dr["HoTen"] = row["HoTen"];
                                 dr["DiaChi"] = row["DiaChi"];
                                 if (!string.IsNullOrEmpty(row["DanhBo"].ToString()))
@@ -335,7 +335,7 @@ namespace ThuTien.GUI.ToTruong
                                 dr["Ky"] = itemChild["Ky"];
                                 dr["TongCong"] = itemChild["TongCong"];
                                 dr["NhanVien"] = cmbNhanVienGiao.Text;
-                                dr["HanhThu"] = _cNguoiDung.GetHoTenByMaND(int.Parse(row["CreateBy"].ToString()));
+                                dr["HanhThu"] = row["HanhThu"];
                                 if (_cLenhHuy.CheckExist(itemChild["SoHoaDon"].ToString()))
                                     dr["LenhHuy"] = true;
                                 else
@@ -435,7 +435,7 @@ namespace ThuTien.GUI.ToTruong
                                 DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
                                 dr["Loai"] = "CHUYỂN CÒN TỒN";
                                 dr["MaDN"] = row["MaDN"].ToString().Insert(row["MaDN"].ToString().Length - 2, "-");
-                                dr["To"] = CNguoiDung.TenTo;
+                                dr["To"] = row["TenTo"];
                                 dr["HoTen"] = row["HoTen"];
                                 dr["DiaChi"] = row["DiaChi"];
                                 if (!string.IsNullOrEmpty(row["DanhBo"].ToString()))
@@ -444,7 +444,7 @@ namespace ThuTien.GUI.ToTruong
                                 dr["Ky"] = itemChild["Ky"];
                                 dr["TongCong"] = itemChild["TongCong"];
                                 dr["NhanVien"] = cmbNhanVienGiao.Text;
-                                dr["HanhThu"] = _cNguoiDung.GetHoTenByMaND(int.Parse(row["CreateBy"].ToString()));
+                                dr["HanhThu"] = row["HanhThu"];
 
                                 dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                             }
@@ -477,8 +477,8 @@ namespace ThuTien.GUI.ToTruong
                         dr["Ky"] = itemChild["Ky"];
                         dr["TongCong"] = itemChild["TongCong"];
                         dr["NhanVien"] = cmbNhanVienLap.Text;
-                        dr["HanhThu"] = _cNguoiDung.GetHoTenByMaND(int.Parse(row["CreateBy"].ToString()));
-                        dr["To"] = CNguoiDung.TenTo;
+                        dr["HanhThu"] = row["HanhThu"];
+                        dr["To"] = row["TenTo"];
 
                         dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                     }

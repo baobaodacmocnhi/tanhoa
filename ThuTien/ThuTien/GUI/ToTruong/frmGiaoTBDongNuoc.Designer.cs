@@ -49,8 +49,8 @@
             this.MLT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CreateDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.CreateBy = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.MaNV_DongNuoc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.HanhThu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.HoTen_DongNuoc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TinhTrang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.cmbNhanVienLap = new System.Windows.Forms.ComboBox();
@@ -74,6 +74,8 @@
             this.chkChuKy = new System.Windows.Forms.CheckBox();
             this.btnInDSTBTonThucTeNguoiGiao = new System.Windows.Forms.Button();
             this.btnXuatExcel = new System.Windows.Forms.Button();
+            this.CreateBy = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MaNV_DongNuoc = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -176,7 +178,7 @@
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1,
             this.repositoryItemCheckEdit2});
-            this.gridControl.Size = new System.Drawing.Size(1107, 590);
+            this.gridControl.Size = new System.Drawing.Size(983, 590);
             this.gridControl.TabIndex = 26;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewDN,
@@ -193,9 +195,11 @@
             this.MLT,
             this.CreateDate,
             this.gridColumn1,
+            this.HanhThu,
+            this.HoTen_DongNuoc,
+            this.TinhTrang,
             this.CreateBy,
-            this.MaNV_DongNuoc,
-            this.TinhTrang});
+            this.MaNV_DongNuoc});
             this.gridViewDN.GridControl = this.gridControl;
             this.gridViewDN.IndicatorWidth = 41;
             this.gridViewDN.Name = "gridViewDN";
@@ -223,12 +227,12 @@
             // 
             // MaDN
             // 
-            this.MaDN.Caption = "Mã Đóng Nước";
+            this.MaDN.Caption = "Mã Lệnh";
             this.MaDN.FieldName = "MaDN";
             this.MaDN.Name = "MaDN";
             this.MaDN.Visible = true;
             this.MaDN.VisibleIndex = 1;
-            this.MaDN.Width = 80;
+            this.MaDN.Width = 70;
             // 
             // DanhBo
             // 
@@ -237,7 +241,7 @@
             this.DanhBo.Name = "DanhBo";
             this.DanhBo.Visible = true;
             this.DanhBo.VisibleIndex = 2;
-            this.DanhBo.Width = 100;
+            this.DanhBo.Width = 85;
             // 
             // HoTen
             // 
@@ -246,7 +250,7 @@
             this.HoTen.Name = "HoTen";
             this.HoTen.Visible = true;
             this.HoTen.VisibleIndex = 3;
-            this.HoTen.Width = 150;
+            this.HoTen.Width = 130;
             // 
             // DiaChi
             // 
@@ -255,15 +259,16 @@
             this.DiaChi.Name = "DiaChi";
             this.DiaChi.Visible = true;
             this.DiaChi.VisibleIndex = 4;
-            this.DiaChi.Width = 200;
+            this.DiaChi.Width = 180;
             // 
             // MLT
             // 
-            this.MLT.Caption = "Mã Lộ Trình";
+            this.MLT.Caption = "MLT";
             this.MLT.FieldName = "MLT";
             this.MLT.Name = "MLT";
             this.MLT.Visible = true;
             this.MLT.VisibleIndex = 5;
+            this.MLT.Width = 70;
             // 
             // CreateDate
             // 
@@ -272,6 +277,7 @@
             this.CreateDate.Name = "CreateDate";
             this.CreateDate.Visible = true;
             this.CreateDate.VisibleIndex = 6;
+            this.CreateDate.Width = 70;
             // 
             // gridColumn1
             // 
@@ -280,24 +286,23 @@
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 7;
+            this.gridColumn1.Width = 70;
             // 
-            // CreateBy
+            // HanhThu
             // 
-            this.CreateBy.Caption = "Người Lập";
-            this.CreateBy.FieldName = "CreateBy";
-            this.CreateBy.Name = "CreateBy";
-            this.CreateBy.Visible = true;
-            this.CreateBy.VisibleIndex = 8;
-            this.CreateBy.Width = 80;
+            this.HanhThu.Caption = "Người Lập";
+            this.HanhThu.FieldName = "HanhThu";
+            this.HanhThu.Name = "HanhThu";
+            this.HanhThu.Visible = true;
+            this.HanhThu.VisibleIndex = 8;
             // 
-            // MaNV_DongNuoc
+            // HoTen_DongNuoc
             // 
-            this.MaNV_DongNuoc.Caption = "Người Giao";
-            this.MaNV_DongNuoc.FieldName = "MaNV_DongNuoc";
-            this.MaNV_DongNuoc.Name = "MaNV_DongNuoc";
-            this.MaNV_DongNuoc.Visible = true;
-            this.MaNV_DongNuoc.VisibleIndex = 9;
-            this.MaNV_DongNuoc.Width = 80;
+            this.HoTen_DongNuoc.Caption = "Người Giao";
+            this.HoTen_DongNuoc.FieldName = "HoTen_DongNuoc";
+            this.HoTen_DongNuoc.Name = "HoTen_DongNuoc";
+            this.HoTen_DongNuoc.Visible = true;
+            this.HoTen_DongNuoc.VisibleIndex = 9;
             // 
             // TinhTrang
             // 
@@ -306,7 +311,6 @@
             this.TinhTrang.Name = "TinhTrang";
             this.TinhTrang.Visible = true;
             this.TinhTrang.VisibleIndex = 10;
-            this.TinhTrang.Width = 80;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -390,7 +394,7 @@
             // cmbNhanVienGiao
             // 
             this.cmbNhanVienGiao.FormattingEnabled = true;
-            this.cmbNhanVienGiao.Location = new System.Drawing.Point(1125, 75);
+            this.cmbNhanVienGiao.Location = new System.Drawing.Point(1001, 94);
             this.cmbNhanVienGiao.Name = "cmbNhanVienGiao";
             this.cmbNhanVienGiao.Size = new System.Drawing.Size(118, 21);
             this.cmbNhanVienGiao.TabIndex = 28;
@@ -398,7 +402,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1122, 59);
+            this.label2.Location = new System.Drawing.Point(998, 78);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 13);
             this.label2.TabIndex = 27;
@@ -406,7 +410,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(1249, 73);
+            this.btnThem.Location = new System.Drawing.Point(1125, 92);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 29;
@@ -416,7 +420,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(1249, 131);
+            this.btnXoa.Location = new System.Drawing.Point(1125, 150);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 31;
@@ -426,7 +430,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(1249, 102);
+            this.btnSua.Location = new System.Drawing.Point(1125, 121);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 30;
@@ -447,7 +451,7 @@
             // 
             // btnInDSTBNguoiGiao
             // 
-            this.btnInDSTBNguoiGiao.Location = new System.Drawing.Point(1125, 175);
+            this.btnInDSTBNguoiGiao.Location = new System.Drawing.Point(1001, 194);
             this.btnInDSTBNguoiGiao.Name = "btnInDSTBNguoiGiao";
             this.btnInDSTBNguoiGiao.Size = new System.Drawing.Size(121, 23);
             this.btnInDSTBNguoiGiao.TabIndex = 33;
@@ -457,7 +461,7 @@
             // 
             // btnInDSTBTonNguoiGiao
             // 
-            this.btnInDSTBTonNguoiGiao.Location = new System.Drawing.Point(1125, 204);
+            this.btnInDSTBTonNguoiGiao.Location = new System.Drawing.Point(1001, 223);
             this.btnInDSTBTonNguoiGiao.Name = "btnInDSTBTonNguoiGiao";
             this.btnInDSTBTonNguoiGiao.Size = new System.Drawing.Size(145, 23);
             this.btnInDSTBTonNguoiGiao.TabIndex = 34;
@@ -489,16 +493,17 @@
             // chkChuKy
             // 
             this.chkChuKy.AutoSize = true;
-            this.chkChuKy.Location = new System.Drawing.Point(1248, 9);
+            this.chkChuKy.Location = new System.Drawing.Point(1001, 38);
             this.chkChuKy.Name = "chkChuKy";
             this.chkChuKy.Size = new System.Drawing.Size(76, 17);
             this.chkChuKy.TabIndex = 96;
             this.chkChuKy.Text = "Có Chữ Ký";
             this.chkChuKy.UseVisualStyleBackColor = true;
+            this.chkChuKy.Visible = false;
             // 
             // btnInDSTBTonThucTeNguoiGiao
             // 
-            this.btnInDSTBTonThucTeNguoiGiao.Location = new System.Drawing.Point(1125, 233);
+            this.btnInDSTBTonThucTeNguoiGiao.Location = new System.Drawing.Point(1001, 252);
             this.btnInDSTBTonThucTeNguoiGiao.Name = "btnInDSTBTonThucTeNguoiGiao";
             this.btnInDSTBTonThucTeNguoiGiao.Size = new System.Drawing.Size(190, 23);
             this.btnInDSTBTonThucTeNguoiGiao.TabIndex = 97;
@@ -516,11 +521,23 @@
             this.btnXuatExcel.UseVisualStyleBackColor = true;
             this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
             // 
+            // CreateBy
+            // 
+            this.CreateBy.Caption = "CreateBy";
+            this.CreateBy.FieldName = "CreateBy";
+            this.CreateBy.Name = "CreateBy";
+            // 
+            // MaNV_DongNuoc
+            // 
+            this.MaNV_DongNuoc.Caption = "MaNV_DongNuoc";
+            this.MaNV_DongNuoc.FieldName = "MaNV_DongNuoc";
+            this.MaNV_DongNuoc.Name = "MaNV_DongNuoc";
+            // 
             // frmGiaoTBDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1360, 666);
+            this.ClientSize = new System.Drawing.Size(1207, 666);
             this.Controls.Add(this.btnXuatExcel);
             this.Controls.Add(this.btnInDSTBTonThucTeNguoiGiao);
             this.Controls.Add(this.chkChuKy);
@@ -587,8 +604,8 @@
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
-        private DevExpress.XtraGrid.Columns.GridColumn CreateBy;
-        private DevExpress.XtraGrid.Columns.GridColumn MaNV_DongNuoc;
+        private DevExpress.XtraGrid.Columns.GridColumn HanhThu;
+        private DevExpress.XtraGrid.Columns.GridColumn HoTen_DongNuoc;
         private DevExpress.XtraGrid.Columns.GridColumn CreateDate;
         private System.Windows.Forms.Button btnInDSTBNguoiLap;
         private System.Windows.Forms.Button btnInDSTBNguoiGiao;
@@ -603,5 +620,7 @@
         private System.Windows.Forms.CheckBox chkChuKy;
         private System.Windows.Forms.Button btnInDSTBTonThucTeNguoiGiao;
         private System.Windows.Forms.Button btnXuatExcel;
+        private DevExpress.XtraGrid.Columns.GridColumn CreateBy;
+        private DevExpress.XtraGrid.Columns.GridColumn MaNV_DongNuoc;
     }
 }

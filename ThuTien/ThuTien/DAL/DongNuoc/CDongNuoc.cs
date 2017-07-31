@@ -169,12 +169,16 @@ namespace ThuTien.DAL.DongNuoc
         /// <param name="TuNgay"></param>
         /// <param name="DenNgay"></param>
         /// <returns></returns>
-        public DataSet GetDSByMaNVCreateDates(string TenTo, int MaNV, DateTime TuNgay, DateTime DenNgay)
+        public DataSet GetDSByCreateByCreateDates(string TenTo, int CreateBy, DateTime FromCreateDate, DateTime ToCreateDate)
         {
             DataSet ds = new DataSet();
 
             var queryDN = from itemDN in _db.TT_DongNuocs
-                          where itemDN.Huy == false && itemDN.CreateBy == MaNV && itemDN.CreateDate.Value.Date >= TuNgay.Date && itemDN.CreateDate.Value.Date <= DenNgay.Date
+                          join itemND1 in _db.TT_NguoiDungs on itemDN.CreateBy equals itemND1.MaND into tableND1
+                          from itemtableND1 in tableND1.DefaultIfEmpty()
+                          join itemND2 in _db.TT_NguoiDungs on itemDN.MaNV_DongNuoc equals itemND2.MaND into tableND2
+                          from itemtableND2 in tableND2.DefaultIfEmpty()
+                          where itemDN.Huy == false && itemDN.CreateBy == CreateBy && itemDN.CreateDate.Value.Date >= FromCreateDate.Date && itemDN.CreateDate.Value.Date <= ToCreateDate.Date
                           orderby itemDN.MLT ascending
                           select new
                             {
@@ -187,9 +191,11 @@ namespace ThuTien.DAL.DongNuoc
                                 TongCong = itemDN.TT_CTDongNuocs.Sum(item => item.TongCong),
                                 itemDN.MLT,
                                 itemDN.CreateBy,
+                                HanhThu=itemtableND1.HoTen,
                                 //NgayGiaiTrach = itemDN.TT_CTDongNuocs.FirstOrDefault().HOADON.NGAYGIAITRACH,
                                 NgayGiaiTrach = _db.HOADONs.SingleOrDefault(itemHD=>itemHD.SOHOADON == itemDN.TT_CTDongNuocs.FirstOrDefault().SoHoaDon).NGAYGIAITRACH,
                                 itemDN.MaNV_DongNuoc,
+                                HoTen_DongNuoc = itemtableND2.HoTen,
                                 itemDN.CreateDate,
                                 TinhTrang = "",///Phải thêm để GridView lấy cột để edit lại sau
                             };
@@ -202,7 +208,7 @@ namespace ThuTien.DAL.DongNuoc
                             join itemDN in _db.TT_DongNuocs on itemCTDN.MaDN equals itemDN.MaDN
                             join itemHD in _db.HOADONs on itemCTDN.MaHD equals itemHD.ID_HOADON //into tableHD
                             //from itemtableHD in tableHD.DefaultIfEmpty()
-                            where itemDN.Huy == false && itemDN.CreateBy == MaNV && itemDN.CreateDate.Value.Date >= TuNgay.Date && itemDN.CreateDate.Value.Date <= DenNgay.Date
+                            where itemDN.Huy == false && itemDN.CreateBy == CreateBy && itemDN.CreateDate.Value.Date >= FromCreateDate.Date && itemDN.CreateDate.Value.Date <= ToCreateDate.Date
                             select new
                             {
                                 itemCTDN.MaDN,
