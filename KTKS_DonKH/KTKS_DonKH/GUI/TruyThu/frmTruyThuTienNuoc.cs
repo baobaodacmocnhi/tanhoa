@@ -335,7 +335,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         else
                         {
                             _dontxl = _cDonTXL.Get(txtMaDonMoi.Text.Trim());
-                            txtMaDonMoi.Text =_dontxl.MaDon_New;
+                            txtMaDonMoi.Text =_dontxl.MaDonMoi;
 
                             if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
                             {
@@ -362,7 +362,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                             else
                             {
                                 _dontbc = _cDonTBC.Get(decimal.Parse(txtMaDonMoi.Text.Trim().Substring(3).Replace("-", "")));
-                                txtMaDonMoi.Text = _dontbc.MaDon_New;
+                                txtMaDonMoi.Text = _dontbc.MaDonMoi;
 
                                 if (_cThuTien.GetMoiNhat(_dontbc.DanhBo) != null)
                                 {
@@ -390,7 +390,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 else
                                 {
                                     _dontkh = _cDonKH.Get(txtMaDonMoi.Text.Trim());
-                                    txtMaDonMoi.Text = _dontkh.MaDon_New;
+                                    txtMaDonMoi.Text = _dontkh.MaDonMoi;
 
                                     if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
                                     {
@@ -755,7 +755,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                             return;
                         }
                         tttn.MaDon = _dontkh.MaDon;
-                        tttn.MaDon_New = _dontkh.MaDon_New;
+                        tttn.MaDonMoi = _dontkh.MaDonMoi;
                     }
                     else
                         if (_dontxl != null)
@@ -766,7 +766,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 return;
                             }
                             tttn.MaDonTXL = _dontxl.MaDon;
-                            tttn.MaDon_New = _dontxl.MaDon_New;
+                            tttn.MaDonMoi = _dontxl.MaDonMoi;
                         }
                         else
                             if (_dontbc != null)
@@ -777,7 +777,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     return;
                                 }
                                 tttn.MaDonTBC = _dontbc.MaDon;
-                                tttn.MaDon_New = _dontbc.MaDon_New;
+                                tttn.MaDonMoi = _dontbc.MaDonMoi;
                             }
                             else
                             {

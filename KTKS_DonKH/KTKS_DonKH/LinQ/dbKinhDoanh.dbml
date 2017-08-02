@@ -5,8 +5,8 @@
       <Column Name="MaBC" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="MaDon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="MaDonTXL" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="MaDon_New" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="MaDonTBC" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="MaDonMoi" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -85,7 +85,7 @@
       <Column Name="MaDon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="MaDonTXL" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="MaDonTBC" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="MaDon_New" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MaDonMoi" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -142,7 +142,7 @@
       <Column Name="MaDon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="MaDonTXL" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="MaDonTBC" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="MaDon_New" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MaDonMoi" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -647,7 +647,7 @@
       <Column Name="MaDon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="MaDonTXL" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="MaDonTBC" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="MaDon_New" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MaDonMoi" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -694,7 +694,7 @@
       <Column Name="MaDon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="MaDonTXL" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="MaDonTBC" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="MaDon_New" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MaDonMoi" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -779,8 +779,8 @@
       <Column Name="XepDon" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="NgayXepDon" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="GhiChuXepDon" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="MaDon_Cha" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MaDon_New" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MaDonCha" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaDonMoi" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="MaDon1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="MaDon2" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -825,8 +825,8 @@
       <Column Name="NgayChuyen_KTXM" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="NguoiDi_KTXM" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="GhiChuChuyen_KTXM" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="MaDon_Cha" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MaDon_New" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MaDonCha" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaDonMoi" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="MaDon1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="MaDon2" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -934,8 +934,8 @@
       <Column Name="GiuNguyen" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DieuChinh" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="TruyThu" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="MaDon_Cha" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MaDon_New" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MaDonCha" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaDonMoi" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="MaDon1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="MaDon2" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -993,7 +993,7 @@
       <Column Name="MaDon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="MaDonTXL" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="MaDonTBC" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="MaDon_New" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MaDonMoi" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="NgayKTXM" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="FileBienBan" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="DanhBo" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
@@ -1067,7 +1067,7 @@
       <Column Name="MaDon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="MaDonTXL" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="MaDonTBC" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="MaDon_New" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MaDonMoi" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -1110,7 +1110,7 @@
       <Column Name="MaDon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="MaDonTXL" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="MaDonTBC" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="MaDon_New" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MaDonMoi" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="NguoiKy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="ChucVu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="PhieuDuocKy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
@@ -1201,7 +1201,7 @@
       <Column Name="MaDon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="MaDonTXL" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="MaDonTBC" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="MaDon_New" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MaDonMoi" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -1406,7 +1406,7 @@
       <Column Name="MaDon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="MaDonTXL" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="MaDonTBC" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="MaDon_New" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MaDonMoi" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -1512,7 +1512,7 @@
       <Column Name="MaDon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="MaDonTXL" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="MaDonTBC" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="MaDon_New" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MaDonMoi" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="DanhBo" Type="System.String" DbType="NVarChar(11)" CanBeNull="true" />
       <Column Name="HopDong" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="LoTrinh" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -1599,7 +1599,7 @@
       <Column Name="MaDon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="MaDonTXL" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="MaDonTBC" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="MaDon_New" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MaDonMoi" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />

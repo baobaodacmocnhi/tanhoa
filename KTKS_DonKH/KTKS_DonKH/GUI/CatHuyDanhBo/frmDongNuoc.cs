@@ -93,7 +93,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
                         txtMaDonCu.Text = "TBC" + ctdongnuoc.DongNuoc.MaDonTBC.ToString().Insert(ctdongnuoc.DongNuoc.MaDonTBC.ToString().Length - 2, "-");
                         dgvDSBamChi.DataSource = _cBamChi.GetDS("TBC", ctdongnuoc.DongNuoc.MaDonTBC.Value, ctdongnuoc.DanhBo);
                     }
-            txtMaDonMoi.Text = ctdongnuoc.DongNuoc.MaDon_New;
+            txtMaDonMoi.Text = ctdongnuoc.DongNuoc.MaDonMoi;
             txtMaThongBao_DN.Text = ctdongnuoc.MaCTDN.ToString().Insert(ctdongnuoc.MaCTDN.ToString().Length - 2, "-");
 
             if (!string.IsNullOrEmpty(ctdongnuoc.MaCTMN.ToString()))
@@ -245,7 +245,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
                     if (_cDonTXL.CheckExist(txtMaDonMoi.Text.Trim()) == true)
                     {
                         _dontxl = _cDonTXL.Get(txtMaDonMoi.Text.Trim());
-                        txtMaDonMoi.Text = _dontxl.MaDon_New;
+                        txtMaDonMoi.Text = _dontxl.MaDonMoi;
 
                         if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
                         {
@@ -264,7 +264,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
                         if (_cDonTBC.CheckExist(txtMaDonMoi.Text.Trim()) == true)
                         {
                             _dontbc = _cDonTBC.Get(txtMaDonMoi.Text.Trim());
-                            txtMaDonMoi.Text = _dontbc.MaDon_New;
+                            txtMaDonMoi.Text = _dontbc.MaDonMoi;
 
                             if (_cThuTien.GetMoiNhat(_dontbc.DanhBo) != null)
                             {
@@ -284,7 +284,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
                             if (_cDonKH.CheckExist(txtMaDonMoi.Text.Trim()) == true)
                             {
                                 _dontkh = _cDonKH.Get(txtMaDonMoi.Text.Trim());
-                                txtMaDonMoi.Text = _dontkh.MaDon_New;
+                                txtMaDonMoi.Text = _dontkh.MaDonMoi;
 
                                 if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
                                 {
@@ -359,7 +359,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
                             {
                                 LinQ.DongNuoc dongnuoc = new LinQ.DongNuoc();
                                 dongnuoc.MaDon = _dontkh.MaDon;
-                                dongnuoc.MaDon_New = _dontkh.MaDon_New;
+                                dongnuoc.MaDonMoi = _dontkh.MaDonMoi;
                                 _cDongNuoc.Them(dongnuoc);
                             }
                             if (_cDongNuoc.CheckExist_CT("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim()))
@@ -376,7 +376,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
                                 {
                                     LinQ.DongNuoc dongnuoc = new LinQ.DongNuoc();
                                     dongnuoc.MaDonTXL = _dontxl.MaDon;
-                                    dongnuoc.MaDon_New = _dontxl.MaDon_New;
+                                    dongnuoc.MaDonMoi = _dontxl.MaDonMoi;
                                     _cDongNuoc.Them(dongnuoc);
                                 }
                                 if (_cDongNuoc.CheckExist_CT("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim()))
@@ -393,7 +393,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
                                     {
                                         LinQ.DongNuoc dongnuoc = new LinQ.DongNuoc();
                                         dongnuoc.MaDonTBC = _dontbc.MaDon;
-                                        dongnuoc.MaDon_New = _dontbc.MaDon_New;
+                                        dongnuoc.MaDonMoi = _dontbc.MaDonMoi;
                                         _cDongNuoc.Them(dongnuoc);
                                     }
                                     if (_cDongNuoc.CheckExist_CT("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim()))

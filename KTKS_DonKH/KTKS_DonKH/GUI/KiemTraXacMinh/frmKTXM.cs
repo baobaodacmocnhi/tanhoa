@@ -106,7 +106,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         _dontbc = _cDonTBC.Get(ctktxm.KTXM.MaDonTBC.Value);
                         txtMaDonCu.Text = "TBC" + ctktxm.KTXM.MaDonTBC.ToString().Insert(ctktxm.KTXM.MaDonTBC.ToString().Length - 2, "-");
                     }
-            txtMaDonMoi.Text = ctktxm.KTXM.MaDon_New;
+            txtMaDonMoi.Text = ctktxm.KTXM.MaDonMoi;
             txtDanhBo.Text = ctktxm.DanhBo;
             txtHopDong.Text = ctktxm.HopDong;
             txtHoTen.Text = ctktxm.HoTen;
@@ -291,7 +291,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     if (CTaiKhoan.ToXL == true && _cDonTXL.CheckExist(txtMaDonMoi.Text.Trim()) == true)
                     {
                         _dontxl = _cDonTXL.Get(txtMaDonMoi.Text.Trim());
-                        txtMaDonMoi.Text = _dontxl.MaDon_New;
+                        txtMaDonMoi.Text = _dontxl.MaDonMoi;
 
                         LoadDSKTXM();
 
@@ -308,7 +308,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         if (CTaiKhoan.ToBC == true && _cDonTBC.CheckExist(txtMaDonMoi.Text.Trim()) == true)
                         {
                             _dontbc = _cDonTBC.Get(txtMaDonMoi.Text.Trim());
-                            txtMaDonMoi.Text = _dontbc.MaDon_New;
+                            txtMaDonMoi.Text = _dontbc.MaDonMoi;
 
                             LoadDSKTXM();
 
@@ -325,7 +325,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             if (CTaiKhoan.ToKH == true && _cDonKH.CheckExist(txtMaDonMoi.Text.Trim()) == true)
                             {
                                 _dontkh = _cDonKH.Get(txtMaDonMoi.Text.Trim());
-                                txtMaDonMoi.Text = _dontkh.MaDon_New;
+                                txtMaDonMoi.Text = _dontkh.MaDonMoi;
 
                                 LoadDSKTXM();
 
@@ -384,7 +384,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         {
                             KTXM ktxm = new KTXM();
                             ktxm.MaDon = _dontkh.MaDon;
-                            ktxm.MaDon_New = _dontkh.MaDon_New;
+                            ktxm.MaDonMoi = _dontkh.MaDonMoi;
                             _cKTXM.Them(ktxm);
                         }
                         if (txtDanhBo.Text.Trim() != "" && _cKTXM.CheckExist_CT("TKH", CTaiKhoan.MaUser, _dontkh.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value) == true)
@@ -401,7 +401,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             {
                                 KTXM ktxm = new KTXM();
                                 ktxm.MaDonTXL = _dontxl.MaDon;
-                                ktxm.MaDon_New = _dontxl.MaDon_New;
+                                ktxm.MaDonMoi = _dontxl.MaDonMoi;
                                 _cKTXM.Them(ktxm);
                             }
                             if (txtDanhBo.Text.Trim() != "" && _cKTXM.CheckExist_CT("TXL", CTaiKhoan.MaUser, _dontxl.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value) == true)
@@ -418,7 +418,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                 {
                                     KTXM ktxm = new KTXM();
                                     ktxm.MaDonTBC = _dontbc.MaDon;
-                                    ktxm.MaDon_New = _dontbc.MaDon_New;
+                                    ktxm.MaDonMoi = _dontbc.MaDonMoi;
                                     _cKTXM.Them(ktxm);
                                 }
                                 if (txtDanhBo.Text.Trim() != "" && _cKTXM.CheckExist_CT("TBC", CTaiKhoan.MaUser,_dontbc.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value)==true)

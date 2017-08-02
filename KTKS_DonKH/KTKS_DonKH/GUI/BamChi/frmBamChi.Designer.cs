@@ -720,9 +720,9 @@
             this.label24.AutoSize = true;
             this.label24.Location = new System.Drawing.Point(329, 15);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(82, 16);
+            this.label24.Size = new System.Drawing.Size(92, 16);
             this.label24.TabIndex = 8;
-            this.label24.Text = "Mã Đơn Mới:";
+            this.label24.Text = "Mã Đơn(New):";
             // 
             // frmBamChi
             // 

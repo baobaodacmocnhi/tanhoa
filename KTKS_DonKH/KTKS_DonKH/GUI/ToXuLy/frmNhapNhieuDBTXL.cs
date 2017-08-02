@@ -123,7 +123,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
                         if (_dontu != null)
                         {
-                            dontxl.MaDon_Cha = _dontu.MaDon;
+                            dontxl.MaDonCha = _dontu.MaDon;
                         }
 
                         dontxl.MaLD = int.Parse(cmbLD.SelectedValue.ToString());

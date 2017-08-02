@@ -227,8 +227,8 @@
             this.mnuNhanDonTu,
             this.mnuDSDonTu});
             this.mnuDonTu.Name = "mnuDonTu";
-            this.mnuDonTu.Size = new System.Drawing.Size(63, 20);
-            this.mnuDonTu.Text = "Đơn Từ";
+            this.mnuDonTu.Size = new System.Drawing.Size(98, 20);
+            this.mnuDonTu.Text = "Đơn Từ(New)";
             // 
             // mnuNhanDonTu
             // 

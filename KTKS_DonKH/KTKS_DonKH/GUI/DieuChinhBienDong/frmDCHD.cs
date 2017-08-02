@@ -319,7 +319,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (_cDonTXL.CheckExist(txtMaDonMoi.Text.Trim()) == true)
                     {
                         _dontxl = _cDonTXL.Get(txtMaDonMoi.Text.Trim());
-                        txtMaDonMoi.Text = _dontxl.MaDon_New;
+                        txtMaDonMoi.Text = _dontxl.MaDonMoi;
 
                         if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
                         {
@@ -339,7 +339,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         if (_cDonTBC.CheckExist(txtMaDonMoi.Text.Trim()) == true)
                         {
                             _dontbc = _cDonTBC.Get(txtMaDonMoi.Text.Trim());
-                            txtMaDonMoi.Text =  _dontbc.MaDon_New;
+                            txtMaDonMoi.Text =  _dontbc.MaDonMoi;
 
                             if (_cThuTien.GetMoiNhat(_dontbc.DanhBo) != null)
                             {
@@ -360,7 +360,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             if (_cDonKH.CheckExist(txtMaDonMoi.Text.Trim()) == true)
                             {
                                 _dontkh = _cDonKH.Get(txtMaDonMoi.Text.Trim());
-                                txtMaDonMoi.Text = _dontkh.MaDon_New;
+                                txtMaDonMoi.Text = _dontkh.MaDonMoi;
 
                                 if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
                                 {

@@ -36,10 +36,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CKTXM _cKTXM = new CKTXM();
         CChiNhanh _cChiNhanh = new CChiNhanh();
         CChungTu _cChungTu = new CChungTu();
-        CCatChuyenDM _cCatChuyenDM = new CCatChuyenDM();
-        List<GiaNuoc> _lstGiaNuoc;
         CGiaNuoc _cGiaNuoc = new CGiaNuoc();
         CDocSo _cDocSo = new CDocSo();
+
+        List<GiaNuoc> _lstGiaNuoc;
 
         public frmDSDCBD()
         {
@@ -1228,8 +1228,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (dgvDSCatChuyenDM.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
             {
-                frmCatChuyenDM frm = new frmCatChuyenDM(decimal.Parse(dgvDSCatChuyenDM["MaLSCT", dgvDSCatChuyenDM.CurrentRow.Index].Value.ToString()));
-                frm.ShowDialog();
+                if (dgvDSCatChuyenDM["Loai_CC", dgvDSCatChuyenDM.CurrentRow.Index].Value.ToString() == "Cắt")
+                {
+                    frmCatChuyenDM frm = new frmCatChuyenDM(decimal.Parse(dgvDSCatChuyenDM["MaLSCT", dgvDSCatChuyenDM.CurrentRow.Index].Value.ToString()));
+                    frm.ShowDialog();
+                }
+                else
+                {
+                    LichSuChungTu entity = _cChungTu.getLSCTbyID(decimal.Parse(dgvDSCatChuyenDM["MaLSCT", dgvDSCatChuyenDM.CurrentRow.Index].Value.ToString()));
+                    frmSoDK frm = new frmSoDK(entity);
+                    frm.ShowDialog();
+                }
             }
         }
 

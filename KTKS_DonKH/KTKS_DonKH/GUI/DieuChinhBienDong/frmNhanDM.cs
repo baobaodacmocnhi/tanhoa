@@ -19,21 +19,22 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
     public partial class frmNhanDM : Form
     {
         string _mnu = "mnuDCBD";
-        Dictionary<string, string> _source = new Dictionary<string, string>();
         CChiNhanh _cChiNhanh = new CChiNhanh();
         CLoaiChungTu _cLoaiChungTu = new CLoaiChungTu();
         CChungTu _cChungTu = new CChungTu();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
+
+        CDataTransfer _dataT = new CDataTransfer();
 
         public frmNhanDM()
         {
             InitializeComponent();
         }
 
-        public frmNhanDM(Dictionary<string, string> source)
+        public frmNhanDM(CDataTransfer dataT)
         {
-            _source = source;
             InitializeComponent();
+            _dataT = dataT;
         }
 
         private void frmNhanDM_Load(object sender, EventArgs e)
@@ -48,9 +49,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             cmbLoaiCT.DisplayMember = "TenLCT";
             cmbLoaiCT.ValueMember = "MaLCT";
 
-            txtDanhBo_Nhan.Text = _source["DanhBo"];
-            txtHoTen_Nhan.Text = _source["HoTen"];
-            txtDiaChi_Nhan.Text = _source["DiaChi"];
+            txtDanhBo_Nhan.Text = _dataT.DanhBo;
+            txtHoTen_Nhan.Text = _dataT.HoTen;
+            txtDiaChi_Nhan.Text = _dataT.DiaChi;
 
             dgvDSDanhBo.AutoGenerateColumns = false;
         }
@@ -187,21 +188,21 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     ctchungtu.Phong = txtPhong.Text.Trim();
                                     ///Ghi thông tin Lịch Sử chung
                                     LichSuChungTu lichsuchungtu = new LichSuChungTu();
-                                    switch (_source["Loai"])
+                                    switch (_dataT.Loai)
                                     {
                                         case "TKH":
-                                            lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
+                                            lichsuchungtu.MaDon = _dataT.MaDon;
                                             break;
                                         case "TXL":
-                                            lichsuchungtu.MaDonTXL = decimal.Parse(_source["MaDon"]);
+                                            lichsuchungtu.MaDonTXL = _dataT.MaDon;
                                             break;
                                         case "TBC":
-                                            lichsuchungtu.MaDonTBC = decimal.Parse(_source["MaDon"]);
+                                            lichsuchungtu.MaDonTBC = _dataT.MaDon;
                                             break;
                                         default:
                                             break;
                                     }
-                                    lichsuchungtu.MaDon_New = _source["MaDonMoi"];
+                                    lichsuchungtu.MaDonMoi = _dataT.MaDonMoi;
                                     lichsuchungtu.DanhBo = txtDanhBo_Nhan.Text.Trim();
                                     lichsuchungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
                                     lichsuchungtu.MaCT = txtMaCT.Text.Trim();
@@ -265,21 +266,21 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     ctchungtu.SoNKDangKy += int.Parse(txtSoNKNhan.Text.Trim());
                                     ///Ghi thông tin Lịch Sử chung
                                     LichSuChungTu lichsuchungtu = new LichSuChungTu();
-                                    switch (_source["Loai"])
+                                    switch (_dataT.Loai)
                                     {
                                         case "TKH":
-                                            lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
+                                            lichsuchungtu.MaDon = _dataT.MaDon;
                                             break;
                                         case "TXL":
-                                            lichsuchungtu.MaDonTXL = decimal.Parse(_source["MaDon"]);
+                                            lichsuchungtu.MaDonTXL = _dataT.MaDon;
                                             break;
                                         case "TBC":
-                                            lichsuchungtu.MaDonTBC = decimal.Parse(_source["MaDon"]);
+                                            lichsuchungtu.MaDonTBC = _dataT.MaDon;
                                             break;
                                         default:
                                             break;
                                     }
-                                    lichsuchungtu.MaDon_New = _source["MaDonMoi"];
+                                    lichsuchungtu.MaDonMoi = _dataT.MaDonMoi;
                                     lichsuchungtu.DanhBo = txtDanhBo_Nhan.Text.Trim();
                                     lichsuchungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
                                     lichsuchungtu.MaCT = txtMaCT.Text.Trim();

@@ -124,7 +124,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
         public void LoadDonTXL(DonTXL entity)
         {
-            txtMaDonToMoi.Text = entity.MaDon_New;
+            txtMaDonToMoi.Text = entity.MaDonMoi;
 
             cmbLD.SelectedValue = entity.MaLD.Value;
             txtSoCongVan.Text = entity.SoCongVan;
@@ -246,7 +246,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
                         if (_dontu != null)
                         {
-                            dontxl.MaDon_Cha = _dontu.MaDon;
+                            dontxl.MaDonCha = _dontu.MaDon;
                         }
 
                         dontxl.MaLD = int.Parse(cmbLD.SelectedValue.ToString());

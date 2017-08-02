@@ -189,7 +189,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
 
         public void LoadDonTKH(DonKH entity)
         {
-            txtMaDonToMoi.Text = entity.MaDon_New;
+            txtMaDonToMoi.Text = entity.MaDonMoi;
 
             cmbLD.SelectedValue = entity.MaLD.Value;
             txtSoCongVan.Text = entity.SoCongVan;
@@ -494,7 +494,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
 
                         if (_dontu != null)
                         {
-                            dontkh.MaDon_Cha = _dontu.MaDon;
+                            dontkh.MaDonCha = _dontu.MaDon;
                         }
 
                         dontkh.MaLD = int.Parse(cmbLD.SelectedValue.ToString());

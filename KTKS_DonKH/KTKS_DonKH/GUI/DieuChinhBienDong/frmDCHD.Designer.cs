@@ -1038,9 +1038,9 @@
             this.label29.AutoSize = true;
             this.label29.Location = new System.Drawing.Point(303, 15);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(82, 16);
+            this.label29.Size = new System.Drawing.Size(92, 16);
             this.label29.TabIndex = 116;
-            this.label29.Text = "Mã Đơn Mới:";
+            this.label29.Text = "Mã Đơn(New):";
             // 
             // frmDCHD
             // 

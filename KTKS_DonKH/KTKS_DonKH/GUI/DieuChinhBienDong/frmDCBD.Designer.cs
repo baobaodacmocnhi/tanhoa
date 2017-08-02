@@ -1389,9 +1389,9 @@
             this.label33.AutoSize = true;
             this.label33.Location = new System.Drawing.Point(497, 15);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(82, 16);
+            this.label33.Size = new System.Drawing.Size(92, 16);
             this.label33.TabIndex = 116;
-            this.label33.Text = "Mã Đơn Mới:";
+            this.label33.Text = "Mã Đơn(New):";
             // 
             // chkXoaDiaChiLienHe
             // 

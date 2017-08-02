@@ -22,8 +22,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CLoaiChungTu _cLoaiChungTu = new CLoaiChungTu();
         CChungTu _cChungTu = new CChungTu();
         CChiNhanh _cChiNhanh = new CChiNhanh();
-        Dictionary<string, string> _source = new Dictionary<string, string>();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
+
+        LichSuChungTu _LSCT = null;
+        CDataTransfer _dataT = new CDataTransfer();
         bool _flagLoadFirst = false;
 
         public frmSoDK()
@@ -31,10 +33,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             InitializeComponent();
         }
 
-        public frmSoDK(Dictionary<string, string> source)
+        public frmSoDK(CDataTransfer dataT)
         {
-            _source = source;
             InitializeComponent();
+            _dataT = dataT;
+        }
+
+        public frmSoDK(LichSuChungTu LSCT)
+        {
+            InitializeComponent();
+            _LSCT = LSCT;
         }
 
         private void frmSoDK_Load(object sender, EventArgs e)
@@ -68,21 +76,123 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 cmbChiNhanh_YCC5.DisplayMember = "TenCN";
                 cmbChiNhanh_YCC5.ValueMember = "MaCN";
 
-                //HOADON hoadon = _cThuTien.GetMoiNhat(_source["DanhBo"]);
-                txtDanhBo.Text = _source["DanhBo"];
-
-                if (_source["MaCT"].ToString().Trim() != "")
+                //hiện thị từ DCBD, bình thường trước giờ
+                if (_LSCT == null)
                 {
-                    if (_cChungTu.CheckExist_CT(_source["DanhBo"], _source["MaCT"], int.Parse(_source["MaLCT"])))
+                    txtDanhBo.Text = _dataT.DanhBo;
+
+                    if (_dataT.MaCT != "")
                     {
-                        CTChungTu ctchungtu = _cChungTu.GetCT(_source["DanhBo"], _source["MaCT"], int.Parse(_source["MaLCT"]));
+                        if (_cChungTu.CheckExist_CT(_dataT.DanhBo, _dataT.MaCT, _dataT.MaLCT))
+                        {
+                            CTChungTu ctchungtu = _cChungTu.GetCT(_dataT.DanhBo, _dataT.MaCT, _dataT.MaLCT);
+                            if (ctchungtu.YeuCauCat2)
+                                this.Location = new Point(10, 70);
+
+                            chkKhacDiaBan.Checked = ctchungtu.ChungTu.KhacDiaBan;
+                            cmbLoaiCT.SelectedValue = ctchungtu.ChungTu.MaLCT;
+                            txtMaCT.Text = ctchungtu.MaCT;
+                            txtHoTen.Text = _dataT.HoTen;
+                            txtDiaChi.Text = ctchungtu.ChungTu.DiaChi;
+                            txtSoNKTong.Text = ctchungtu.ChungTu.SoNKTong.ToString();
+                            txtSoNKDangKy.Text = ctchungtu.SoNKDangKy.ToString();
+                            txtLo.Text = ctchungtu.Lo;
+                            txtPhong.Text = ctchungtu.Phong;
+                            if (ctchungtu.ThoiHan != null)
+                                txtThoiHan.Text = ctchungtu.ThoiHan.Value.ToString();
+                            if (ctchungtu.NgayHetHan != null)
+                            {
+                                dateHetHan.Enabled = true;
+                                dateHetHan.Value = ctchungtu.NgayHetHan.Value;
+                            }
+
+                            txtGhiChu.Text = ctchungtu.GhiChu;
+
+                            if (ctchungtu.YeuCauCat)
+                            {
+                                chkYCCat1.Checked = true;
+                                cmbChiNhanh_YCC1.SelectedValue = ctchungtu.CatNK_MaCN;
+                                txtDanhBo_Cat_YCC1.Text = ctchungtu.CatNK_DanhBo;
+                                txtHoTen_Cat_YCC1.Text = ctchungtu.CatNK_HoTen;
+                                txtDiaChiKH_Cat_YCC1.Text = ctchungtu.CatNK_DiaChi;
+                                txtSoNKCat_YCC1.Text = ctchungtu.CatNK_SoNKCat.ToString();
+                            }
+                            if (ctchungtu.YeuCauCat2)
+                            {
+                                panel_YCCat2.Visible = true;
+                                this.Size = new Size(1370, 356);
+                                this.Location = new Point(10, 70);
+                                ///
+                                chkYCCat2.Checked = true;
+                                cmbChiNhanh_YCC2.SelectedValue = ctchungtu.CatNK_MaCN2;
+                                txtDanhBo_Cat_YCC2.Text = ctchungtu.CatNK_DanhBo2;
+                                txtHoTen_Cat_YCC2.Text = ctchungtu.CatNK_HoTen2;
+                                txtDiaChiKH_Cat_YCC2.Text = ctchungtu.CatNK_DiaChi2;
+                                txtSoNKCat_YCC2.Text = ctchungtu.CatNK_SoNKCat2.ToString();
+                            }
+                            if (ctchungtu.YeuCauCat3)
+                            {
+                                panel_YCCat3.Visible = true;
+                                this.Size = new Size(1370, 477);
+                                ///
+                                chkYCCat3.Checked = true;
+                                cmbChiNhanh_YCC3.SelectedValue = ctchungtu.CatNK_MaCN3;
+                                txtDanhBo_Cat_YCC3.Text = ctchungtu.CatNK_DanhBo3;
+                                txtHoTen_Cat_YCC3.Text = ctchungtu.CatNK_HoTen3;
+                                txtDiaChiKH_Cat_YCC3.Text = ctchungtu.CatNK_DiaChi3;
+                                txtSoNKCat_YCC3.Text = ctchungtu.CatNK_SoNKCat3.ToString();
+                            }
+                            if (ctchungtu.YeuCauCat4)
+                            {
+                                panel_YCCat4.Visible = true;
+                                this.Size = new Size(1370, 477);
+                                ///
+                                chkYCCat4.Checked = true;
+                                cmbChiNhanh_YCC4.SelectedValue = ctchungtu.CatNK_MaCN4;
+                                txtDanhBo_Cat_YCC4.Text = ctchungtu.CatNK_DanhBo4;
+                                txtHoTen_Cat_YCC4.Text = ctchungtu.CatNK_HoTen4;
+                                txtDiaChiKH_Cat_YCC4.Text = ctchungtu.CatNK_DiaChi4;
+                                txtSoNKCat_YCC4.Text = ctchungtu.CatNK_SoNKCat4.ToString();
+                            }
+                            if (ctchungtu.YeuCauCat5)
+                            {
+                                panel_YCCat5.Visible = true;
+                                this.Size = new Size(1370, 515);
+                                ///
+                                chkYCCat5.Checked = true;
+                                cmbChiNhanh_YCC5.SelectedValue = ctchungtu.CatNK_MaCN5;
+                                txtDanhBo_Cat_YCC5.Text = ctchungtu.CatNK_DanhBo5;
+                                txtHoTen_Cat_YCC5.Text = ctchungtu.CatNK_HoTen5;
+                                txtDiaChiKH_Cat_YCC5.Text = ctchungtu.CatNK_DiaChi5;
+                                txtSoNKCat_YCC5.Text = ctchungtu.CatNK_SoNKCat5.ToString();
+                            }
+                        }
+                        else
+                        {
+                            txtHoTen.Text = _dataT.HoTen;
+                            txtDiaChi.Text = _dataT.DiaChi;
+                        }
+                        dgvDSDanhBo.DataSource = _cChungTu.GetDSCT(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
+                    }
+                    else
+                    {
+                        txtHoTen.Text = _dataT.HoTen;
+                        txtDiaChi.Text = _dataT.DiaChi;
+                    }
+                }
+                //hiện thị cắt chuyển từ DSDCBD, cái làm mới
+                else
+                {
+                    if (_cChungTu.CheckExist_CT(_LSCT.DanhBo, _LSCT.MaCT, _LSCT.MaLCT.Value))
+                    {
+                        CTChungTu ctchungtu = _cChungTu.GetCT(_LSCT.DanhBo, _LSCT.MaCT, _LSCT.MaLCT.Value);
                         if (ctchungtu.YeuCauCat2)
                             this.Location = new Point(10, 70);
 
                         chkKhacDiaBan.Checked = ctchungtu.ChungTu.KhacDiaBan;
                         cmbLoaiCT.SelectedValue = ctchungtu.ChungTu.MaLCT;
                         txtMaCT.Text = ctchungtu.MaCT;
-                        txtHoTen.Text = _source["HoTen"];
+                        //txtHoTen.Text = _dataT.HoTen;
                         txtDiaChi.Text = ctchungtu.ChungTu.DiaChi;
                         txtSoNKTong.Text = ctchungtu.ChungTu.SoNKTong.ToString();
                         txtSoNKDangKy.Text = ctchungtu.SoNKDangKy.ToString();
@@ -159,15 +269,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     }
                     else
                     {
-                        txtHoTen.Text = _source["HoTen"];
-                        txtDiaChi.Text = _source["DiaChi"];
+                        txtHoTen.Text = _dataT.HoTen;
+                        txtDiaChi.Text = _dataT.DiaChi;
                     }
                     dgvDSDanhBo.DataSource = _cChungTu.GetDSCT(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
-                }
-                else
-                {
-                    txtHoTen.Text = _source["HoTen"];
-                    txtDiaChi.Text = _source["DiaChi"];
+
                 }
                 _flagLoadFirst = true;
             }
@@ -258,21 +364,21 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             #endregion
                             ///Ghi thông tin Lịch Sử chung
                             LichSuChungTu lichsuchungtu = new LichSuChungTu();
-                            switch (_source["Loai"])
+                            switch (_dataT.Loai)
                             {
                                 case "TKH":
-                                    lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
+                                    lichsuchungtu.MaDon = _dataT.MaDon;
                                     break;
                                 case "TXL":
-                                    lichsuchungtu.MaDonTXL = decimal.Parse(_source["MaDon"]);
+                                    lichsuchungtu.MaDonTXL = _dataT.MaDon;
                                     break;
                                 case "TBC":
-                                    lichsuchungtu.MaDonTBC = decimal.Parse(_source["MaDon"]);
+                                    lichsuchungtu.MaDonTBC = _dataT.MaDon;
                                     break;
                                 default:
                                     break;
                             }
-                            lichsuchungtu.MaDon_New = _source["MaDonMoi"];
+                            lichsuchungtu.MaDonMoi = _dataT.MaDonMoi;
                             lichsuchungtu.DanhBo = ctchungtu.DanhBo;
                             lichsuchungtu.MaLCT = ctchungtu.MaLCT;
                             lichsuchungtu.MaCT = ctchungtu.MaCT;
@@ -600,21 +706,21 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             #endregion
                             ///Ghi thông tin Lịch Sử chung
                             LichSuChungTu lichsuchungtu = new LichSuChungTu();
-                            switch (_source["Loai"])
+                            switch (_dataT.Loai)
                             {
                                 case "TKH":
-                                    lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
+                                    lichsuchungtu.MaDon = _dataT.MaDon;
                                     break;
                                 case "TXL":
-                                    lichsuchungtu.MaDonTXL = decimal.Parse(_source["MaDon"]);
+                                    lichsuchungtu.MaDonTXL = _dataT.MaDon;
                                     break;
                                 case "TBC":
-                                    lichsuchungtu.MaDonTBC = decimal.Parse(_source["MaDon"]);
+                                    lichsuchungtu.MaDonTBC = _dataT.MaDon;
                                     break;
                                 default:
                                     break;
                             }
-                            lichsuchungtu.MaDon_New = _source["MaDonMoi"];
+                            lichsuchungtu.MaDonMoi = _dataT.MaDonMoi;
                             lichsuchungtu.DanhBo = _ctchungtu.DanhBo;
                             lichsuchungtu.MaLCT = _ctchungtu.MaLCT;
                             lichsuchungtu.MaCT = _ctchungtu.MaCT;

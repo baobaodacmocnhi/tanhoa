@@ -101,7 +101,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         _dontbc = _cDonTBC.Get(entity.MaDonTBC.Value);
                         txtMaDonCu.Text = "TBC" + entity.MaDonTBC.Value.ToString().Insert(entity.MaDonTBC.Value.ToString().Length - 2, "-");
                     }
-            txtMaDonMoi.Text = entity.MaDon_New;
+            txtMaDonMoi.Text = entity.MaDonMoi;
             chkXepDon.Checked = entity.XepDon;
             txtDanhBo.Text = entity.DanhBo;
             txtHoTen.Text = entity.HoTen;
@@ -328,7 +328,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         else
                         {
                             _dontxl = _cDonTXL.Get(txtMaDonMoi.Text.Trim());
-                            txtMaDonMoi.Text = _dontxl.MaDon_New;
+                            txtMaDonMoi.Text = _dontxl.MaDonMoi;
 
                             if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
                             {
@@ -355,7 +355,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                             else
                             {
                                 _dontbc = _cDonTBC.Get(txtMaDonMoi.Text.Trim());
-                                txtMaDonMoi.Text = _dontbc.MaDon_New;
+                                txtMaDonMoi.Text = _dontbc.MaDonMoi;
 
                                 if (_cThuTien.GetMoiNhat(_dontbc.DanhBo) != null)
                                 {
@@ -383,7 +383,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 else
                                 {
                                     _dontkh = _cDonKH.Get(txtMaDonMoi.Text.Trim());
-                                    txtMaDonMoi.Text = _dontkh.MaDon_New;
+                                    txtMaDonMoi.Text = _dontkh.MaDonMoi;
 
                                     if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
                                     {
@@ -415,7 +415,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                             return;
                         }
                         entity.MaDonTXL = _dontxl.MaDon;
-                        entity.MaDon_New = _dontxl.MaDon_New;
+                        entity.MaDonMoi = _dontxl.MaDonMoi;
                     }
                     else
                         if (_dontbc != null)
@@ -426,7 +426,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 return;
                             }
                             entity.MaDonTBC = _dontbc.MaDon;
-                            entity.MaDon_New = _dontbc.MaDon_New;
+                            entity.MaDonMoi = _dontbc.MaDonMoi;
                         }
                         else
                             if (_dontkh != null)
@@ -437,7 +437,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     return;
                                 }
                                 entity.MaDon = _dontkh.MaDon;
-                                entity.MaDon_New = _dontkh.MaDon_New;
+                                entity.MaDonMoi = _dontkh.MaDonMoi;
                             }
                             else
                             {

@@ -118,7 +118,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
 
         public void LoadDonTBC(DonTBC entity)
         {
-            txtMaDonToMoi.Text = entity.MaDon_New;
+            txtMaDonToMoi.Text = entity.MaDonMoi;
 
             cmbLD.SelectedValue = entity.MaLD.Value;
             txtSoCongVan.Text = entity.SoCongVan;
@@ -239,7 +239,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
 
                         if (_dontu != null)
                         {
-                            dontbc.MaDon_Cha = _dontu.MaDon;
+                            dontbc.MaDonCha = _dontu.MaDon;
                         }
 
                         //dontbc.MaDon = _cDonTBC.getMaxNextID();

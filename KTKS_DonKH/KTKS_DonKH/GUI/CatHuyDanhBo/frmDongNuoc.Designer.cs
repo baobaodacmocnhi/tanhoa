@@ -597,9 +597,9 @@
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(329, 15);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(82, 16);
+            this.label20.Size = new System.Drawing.Size(92, 16);
             this.label20.TabIndex = 116;
-            this.label20.Text = "Mã Đơn Mới:";
+            this.label20.Text = "Mã Đơn(New):";
             // 
             // frmDongNuoc
             // 

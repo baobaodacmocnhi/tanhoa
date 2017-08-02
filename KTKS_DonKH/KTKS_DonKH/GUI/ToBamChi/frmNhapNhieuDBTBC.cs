@@ -173,7 +173,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
 
                             if (_dontu != null)
                             {
-                                dontbc.MaDon_Cha = _dontu.MaDon;
+                                dontbc.MaDonCha = _dontu.MaDon;
                             }
 
                             dontbc.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
@@ -270,7 +270,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
 
                                 if (_dontu != null)
                                 {
-                                    dontbc.MaDon_Cha = _dontu.MaDon;
+                                    dontbc.MaDonCha = _dontu.MaDon;
                                 }
 
                                 dontbc.MaLD = int.Parse(cmbLD.SelectedValue.ToString());

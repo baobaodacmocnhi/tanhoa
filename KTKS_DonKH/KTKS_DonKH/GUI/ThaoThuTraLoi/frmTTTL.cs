@@ -242,7 +242,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                     if (_cDonTXL.CheckExist(txtMaDonMoi.Text.Trim()) == true)
                     {
                         _dontxl = _cDonTXL.Get(txtMaDonMoi.Text.Trim());
-                        txtMaDonMoi.Text = _dontxl.MaDon_New;
+                        txtMaDonMoi.Text = _dontxl.MaDonMoi;
 
                         if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
                         {
@@ -261,7 +261,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                         if (_cDonTBC.CheckExist(txtMaDonMoi.Text.Trim()) == true)
                         {
                             _dontbc = _cDonTBC.Get(txtMaDonMoi.Text.Trim());
-                            txtMaDonMoi.Text = _dontbc.MaDon_New;
+                            txtMaDonMoi.Text = _dontbc.MaDonMoi;
 
                             if (_cThuTien.GetMoiNhat(_dontbc.DanhBo) != null)
                             {
@@ -281,7 +281,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                             if (_cDonKH.CheckExist(txtMaDonMoi.Text.Trim()) == true)
                             {
                                 _dontkh = _cDonKH.Get(txtMaDonMoi.Text.Trim());
-                                txtMaDonMoi.Text = _dontkh.MaDon_New;
+                                txtMaDonMoi.Text = _dontkh.MaDonMoi;
 
                                 if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
                                 {
@@ -363,7 +363,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                         {
                             TTTL tttl = new TTTL();
                             tttl.MaDon = _dontkh.MaDon;
-                            tttl.MaDon_New = _dontkh.MaDon_New;
+                            tttl.MaDonMoi = _dontkh.MaDonMoi;
                             _cTTTL.Them(tttl);
                         }
                         if (_cTTTL.CheckExist_CT("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim(), DateTime.Now)==true)
@@ -380,7 +380,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                             {
                                 TTTL tttl = new TTTL();
                                 tttl.MaDonTXL = _dontxl.MaDon;
-                                tttl.MaDon_New = _dontxl.MaDon_New;
+                                tttl.MaDonMoi = _dontxl.MaDonMoi;
                                 _cTTTL.Them(tttl);
                             }
                             if (_cTTTL.CheckExist_CT("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim(), DateTime.Now)==true)
@@ -397,7 +397,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                                 {
                                     TTTL tttl = new TTTL();
                                     tttl.MaDonTBC = _dontbc.MaDon;
-                                    tttl.MaDon_New = _dontbc.MaDon_New;
+                                    tttl.MaDonMoi = _dontbc.MaDonMoi;
                                     _cTTTL.Them(tttl);
                                 }
                                 if (_cTTTL.CheckExist_CT("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim(), DateTime.Now)==true)

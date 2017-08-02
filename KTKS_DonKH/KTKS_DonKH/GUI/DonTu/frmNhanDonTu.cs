@@ -333,6 +333,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     {
                         Clear();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        InBienNhan(entity);
                     }
                 }
                 catch (Exception ex)
@@ -532,108 +533,111 @@ namespace KTKS_DonKH.GUI.DonTu
 
         private void btnIn_Click(object sender, EventArgs e)
         {
+            if (_dontu != null)
+                InBienNhan(_dontu);
+        }
+
+        public void InBienNhan(LinQ.DonTu entity)
+        {
             try
             {
-                if (_dontu != null)
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                DataRow dr = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                dr["MaDon"] = entity.MaDon.ToString();
+                dr["KhachHang"] = entity.HoTen;
+                if (entity.DanhBo != "")
+                    dr["DanhBo"] = entity.DanhBo.Insert(7, " ").Insert(4, " ");
+                dr["DiaChi"] = entity.DiaChi;
+                dr["HopDong"] = entity.HopDong;
+                dr["DienThoai"] = entity.DienThoai;
+                dr["NoiDung"] = entity.Name_NhomDon;
+                dr["LyDoLoaiKhac"] = entity.VanDeKhac;
+
+                #region CheckBox
+
+                if (entity.CT_HoaDon)
                 {
-                    DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                    DataRow dr = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
-                    dr["MaDon"] = _dontu.MaDon.ToString().Insert(_dontu.MaDon.ToString().Length - 2, "-");
-                    dr["KhachHang"] = _dontu.HoTen;
-                    if (_dontu.DanhBo != "")
-                        dr["DanhBo"] = _dontu.DanhBo.Insert(7, ".").Insert(4, ".");
-                    dr["DiaChi"] = _dontu.DiaChi;
-                    dr["HopDong"] = _dontu.HopDong;
-                    dr["DienThoai"] = _dontu.DienThoai;
-                    dr["NoiDung"] = _dontu.Name_NhomDon;
-                    dr["LyDoLoaiKhac"] = _dontu.VanDeKhac;
-
-                    #region CheckBox
-
-                    if (_dontu.CT_HoaDon)
-                    {
-                        dr["CT_HoaDon"] = true;
-                    }
-                    else
-                    {
-                        dr["CT_HoaDon"] = false;
-                    }
-
-                    if (_dontu.CT_HK_KT3)
-                    {
-                        dr["CT_HK_KT3"] = true;
-                    }
-                    else
-                    {
-                        dr["CT_HK_KT3"] = false;
-                    }
-
-                    if (_dontu.CT_STT_GXNTT)
-                    {
-                        dr["CT_STT_GXNTT"] = true;
-                    }
-                    else
-                    {
-                        dr["CT_STT_GXNTT"] = false;
-                    }
-
-                    if (_dontu.CT_HDTN_CQN)
-                    {
-                        dr["CT_HDTN_CQN"] = true;
-                    }
-                    else
-                    {
-                        dr["CT_HDTN_CQN"] = false;
-                    }
-
-                    if (_dontu.CT_GC_SDSN)
-                    {
-                        dr["CT_GC_SDSN"] = true;
-                    }
-                    else
-                    {
-                        dr["CT_GC_SDSN"] = false;
-                    }
-
-                    if (_dontu.CT_GXN2SN)
-                    {
-                        dr["CT_GXN2SN"] = true;
-                    }
-                    else
-                    {
-                        dr["CT_GXN2SN"] = false;
-                    }
-
-                    if (_dontu.CT_GDKKD)
-                    {
-                        dr["CT_GDKKD"] = true;
-                    }
-                    else
-                    {
-                        dr["CT_GDKKD"] = false;
-                    }
-
-                    if (_dontu.CT_GCNDTDHN)
-                    {
-                        dr["CT_GCNDTDHN"] = true;
-                    }
-                    else
-                    {
-                        dr["CT_GCNDTDHN"] = false;
-                    }
-                    #endregion
-
-                    dr["NgayGiaiQuyet"] = _dontu.NgayHenGiaiQuyet;
-                    if (_dontu.SoNK != null)
-                        dr["DinhMucSau"] = _dontu.SoNK * 4;
-                    dr["HieuLucTuKy"] = _dontu.HieuLucKy;
-                    dr["HoTenNV"] = CTaiKhoan.HoTen;
-                    dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(dr);
-                    rptBienNhanDonTu rpt = new rptBienNhanDonTu();
-                    rpt.SetDataSource(dsBaoCao);
-                    frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                    frm.ShowDialog();
+                    dr["CT_HoaDon"] = true;
                 }
+                else
+                {
+                    dr["CT_HoaDon"] = false;
+                }
+
+                if (entity.CT_HK_KT3)
+                {
+                    dr["CT_HK_KT3"] = true;
+                }
+                else
+                {
+                    dr["CT_HK_KT3"] = false;
+                }
+
+                if (entity.CT_STT_GXNTT)
+                {
+                    dr["CT_STT_GXNTT"] = true;
+                }
+                else
+                {
+                    dr["CT_STT_GXNTT"] = false;
+                }
+
+                if (entity.CT_HDTN_CQN)
+                {
+                    dr["CT_HDTN_CQN"] = true;
+                }
+                else
+                {
+                    dr["CT_HDTN_CQN"] = false;
+                }
+
+                if (entity.CT_GC_SDSN)
+                {
+                    dr["CT_GC_SDSN"] = true;
+                }
+                else
+                {
+                    dr["CT_GC_SDSN"] = false;
+                }
+
+                if (entity.CT_GXN2SN)
+                {
+                    dr["CT_GXN2SN"] = true;
+                }
+                else
+                {
+                    dr["CT_GXN2SN"] = false;
+                }
+
+                if (entity.CT_GDKKD)
+                {
+                    dr["CT_GDKKD"] = true;
+                }
+                else
+                {
+                    dr["CT_GDKKD"] = false;
+                }
+
+                if (entity.CT_GCNDTDHN)
+                {
+                    dr["CT_GCNDTDHN"] = true;
+                }
+                else
+                {
+                    dr["CT_GCNDTDHN"] = false;
+                }
+                #endregion
+
+                dr["NgayGiaiQuyet"] = entity.NgayHenGiaiQuyet;
+                if (entity.SoNK != null)
+                    dr["DinhMucSau"] = entity.SoNK * 4;
+                dr["HieuLucTuKy"] = entity.HieuLucKy;
+                dr["HoTenNV"] = CTaiKhoan.HoTen;
+                dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(dr);
+                rptBienNhanDonTu rpt = new rptBienNhanDonTu();
+                rpt.SetDataSource(dsBaoCao);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.ShowDialog();
             }
             catch (Exception ex)
             {

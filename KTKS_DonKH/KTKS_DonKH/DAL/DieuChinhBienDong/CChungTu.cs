@@ -1237,7 +1237,6 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         #endregion
 
         #region Method
-        CCatChuyenDM _cCatChuyenDM = new CCatChuyenDM();
 
         /// <summary>
         /// Dùng cho Form Cập Nhật Sổ Đăng Ký, khi có >2 yêu cầu cắt nhân khẩu

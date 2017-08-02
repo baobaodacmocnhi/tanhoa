@@ -245,256 +245,259 @@ namespace KTKS_DonKH.GUI.ToKhachHang
         private void btnInBienNhan_Click(object sender, EventArgs e)
         {
             if (_donkh != null)
+                InBienNhan(_donkh);
+        }
+
+        public void InBienNhan(DonKH entity)
+        {
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            DataRow dr = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+            dr["MaDon"] = entity.MaDon.ToString().Insert(entity.MaDon.ToString().Length - 2, "-"); ;
+            dr["TenLD"] = entity.LoaiDon.TenLD;
+            dr["KhachHang"] = entity.HoTen;
+            if (entity.DanhBo != "")
+                dr["DanhBo"] = entity.DanhBo.Insert(7, " ").Insert(4, " ");
+            dr["DiaChi"] = entity.DiaChi;
+            dr["HopDong"] = entity.HopDong;
+            dr["DienThoai"] = entity.DienThoai;
+
+            #region CheckBox
+            if (entity.KiemTraDHN)
             {
-                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                DataRow dr = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
-                dr["MaDon"] = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-"); ;
-                dr["TenLD"] = _donkh.LoaiDon.TenLD;
-                dr["KhachHang"] = _donkh.HoTen;
-                if (_donkh.DanhBo != "")
-                    dr["DanhBo"] = _donkh.DanhBo.Insert(7, " ").Insert(4, " ");
-                dr["DiaChi"] = _donkh.DiaChi;
-                dr["HopDong"] = _donkh.HopDong;
-                dr["DienThoai"] = _donkh.DienThoai;
-
-                #region CheckBox
-                if (_donkh.KiemTraDHN)
-                {
-                    dr["KiemTraDHN"] = true;
-                }
-                else
-                {
-                    dr["KiemTraDHN"] = false;
-                }
-
-                if (_donkh.TienNuoc)
-                {
-                    dr["TienNuoc"] = true;
-                }
-                else
-                {
-                    dr["TienNuoc"] = false;
-                }
-
-                if (_donkh.ChiSoNuoc)
-                {
-                    dr["ChiSoNuoc"] = true;
-                }
-                else
-                {
-                    dr["ChiSoNuoc"] = false;
-                }
-
-                if (_donkh.DonGiaNuoc)
-                {
-                    dr["DonGiaNuoc"] = true;
-                }
-                else
-                {
-                    dr["DonGiaNuoc"] = false;
-                }
-
-                if (_donkh.DangKyDM)
-                {
-                    dr["DangKyDM"] = true;
-                }
-                else
-                {
-                    dr["DangKyDM"] = false;
-                }
-
-                if (_donkh.CatChuyenDM)
-                {
-                    dr["CatChuyenDM"] = true;
-                }
-                else
-                {
-                    dr["CatChuyenDM"] = false;
-                }
-
-                if (_donkh.GiamDM)
-                {
-                    dr["GiamDM"] = true;
-                }
-                else
-                {
-                    dr["GiamDM"] = false;
-                }
-
-                if (_donkh.DCSoNha)
-                {
-                    dr["DCSoNha"] = true;
-                }
-                else
-                {
-                    dr["DCSoNha"] = false;
-                }
-
-                if (_donkh.MatDHN)
-                {
-                    dr["MatDHN"] = true;
-                }
-                else
-                {
-                    dr["MatDHN"] = false;
-                }
-
-                if (_donkh.HuHongDHN)
-                {
-                    dr["HuHongDHN"] = true;
-                }
-                else
-                {
-                    dr["HuHongDHN"] = false;
-                }
-
-                if (_donkh.ChiNiem)
-                {
-                    dr["ChiNiem"] = true;
-                }
-                else
-                {
-                    dr["ChiNiem"] = false;
-                }
-
-                if (_donkh.ThayDoiMST)
-                {
-                    dr["ThayDoiMST"] = true;
-                }
-                else
-                {
-                    dr["ThayDoiMST"] = false;
-                }
-
-                if (_donkh.TamNgung)
-                {
-                    dr["TamNgung"] = true;
-                }
-                else
-                {
-                    dr["TamNgung"] = false;
-                }
-
-                if (_donkh.HuyHopDong)
-                {
-                    dr["HuyHopDong"] = true;
-                }
-                else
-                {
-                    dr["HuyHopDong"] = false;
-                }
-
-                if (_donkh.MoNuoc)
-                {
-                    dr["MoNuoc"] = true;
-                }
-                else
-                {
-                    dr["MoNuoc"] = false;
-                }
-
-                if (_donkh.LoaiKhac)
-                {
-                    dr["LoaiKhac"] = true;
-                    dr["LyDoLoaiKhac"] = _donkh.LyDoLoaiKhac;
-                }
-                else
-                {
-                    dr["LoaiKhac"] = false;
-                }
-
-                if (_donkh.SangTen)
-                {
-                    dr["SangTen"] = true;
-                }
-                else
-                {
-                    dr["SangTen"] = false;
-                }
-
-                if (_donkh.CT_HoaDon)
-                {
-                    dr["CT_HoaDon"] = true;
-                }
-                else
-                {
-                    dr["CT_HoaDon"] = false;
-                }
-
-                if (_donkh.CT_HK_KT3)
-                {
-                    dr["CT_HK_KT3"] = true;
-                }
-                else
-                {
-                    dr["CT_HK_KT3"] = false;
-                }
-
-                if (_donkh.CT_STT_GXNTT)
-                {
-                    dr["CT_STT_GXNTT"] = true;
-                }
-                else
-                {
-                    dr["CT_STT_GXNTT"] = false;
-                }
-
-                if (_donkh.CT_HDTN_CQN)
-                {
-                    dr["CT_HDTN_CQN"] = true;
-                }
-                else
-                {
-                    dr["CT_HDTN_CQN"] = false;
-                }
-
-                if (_donkh.CT_GC_SDSN)
-                {
-                    dr["CT_GC_SDSN"] = true;
-                }
-                else
-                {
-                    dr["CT_GC_SDSN"] = false;
-                }
-
-                if (_donkh.CT_GXN2SN)
-                {
-                    dr["CT_GXN2SN"] = true;
-                }
-                else
-                {
-                    dr["CT_GXN2SN"] = false;
-                }
-
-                if (_donkh.CT_GDKKD)
-                {
-                    dr["CT_GDKKD"] = true;
-                }
-                else
-                {
-                    dr["CT_GDKKD"] = false;
-                }
-
-                if (_donkh.CT_GCNDTDHN)
-                {
-                    dr["CT_GCNDTDHN"] = true;
-                }
-                else
-                {
-                    dr["CT_GCNDTDHN"] = false;
-                }
-                #endregion
-
-                dr["NgayGiaiQuyet"] = _donkh.NgayGiaiQuyet;
-                dr["DinhMucSau"] = _donkh.DinhMucSau;
-                dr["HieuLucTuKy"] = _donkh.HieuLucTuKy;
-                dr["HoTenNV"] = CTaiKhoan.HoTen;
-                dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(dr);
-                rptBienNhanDonKH rpt = new rptBienNhanDonKH();
-                rpt.SetDataSource(dsBaoCao);
-                frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                frm.ShowDialog();
+                dr["KiemTraDHN"] = true;
             }
+            else
+            {
+                dr["KiemTraDHN"] = false;
+            }
+
+            if (entity.TienNuoc)
+            {
+                dr["TienNuoc"] = true;
+            }
+            else
+            {
+                dr["TienNuoc"] = false;
+            }
+
+            if (entity.ChiSoNuoc)
+            {
+                dr["ChiSoNuoc"] = true;
+            }
+            else
+            {
+                dr["ChiSoNuoc"] = false;
+            }
+
+            if (entity.DonGiaNuoc)
+            {
+                dr["DonGiaNuoc"] = true;
+            }
+            else
+            {
+                dr["DonGiaNuoc"] = false;
+            }
+
+            if (entity.DangKyDM)
+            {
+                dr["DangKyDM"] = true;
+            }
+            else
+            {
+                dr["DangKyDM"] = false;
+            }
+
+            if (entity.CatChuyenDM)
+            {
+                dr["CatChuyenDM"] = true;
+            }
+            else
+            {
+                dr["CatChuyenDM"] = false;
+            }
+
+            if (entity.GiamDM)
+            {
+                dr["GiamDM"] = true;
+            }
+            else
+            {
+                dr["GiamDM"] = false;
+            }
+
+            if (entity.DCSoNha)
+            {
+                dr["DCSoNha"] = true;
+            }
+            else
+            {
+                dr["DCSoNha"] = false;
+            }
+
+            if (entity.MatDHN)
+            {
+                dr["MatDHN"] = true;
+            }
+            else
+            {
+                dr["MatDHN"] = false;
+            }
+
+            if (entity.HuHongDHN)
+            {
+                dr["HuHongDHN"] = true;
+            }
+            else
+            {
+                dr["HuHongDHN"] = false;
+            }
+
+            if (entity.ChiNiem)
+            {
+                dr["ChiNiem"] = true;
+            }
+            else
+            {
+                dr["ChiNiem"] = false;
+            }
+
+            if (entity.ThayDoiMST)
+            {
+                dr["ThayDoiMST"] = true;
+            }
+            else
+            {
+                dr["ThayDoiMST"] = false;
+            }
+
+            if (entity.TamNgung)
+            {
+                dr["TamNgung"] = true;
+            }
+            else
+            {
+                dr["TamNgung"] = false;
+            }
+
+            if (entity.HuyHopDong)
+            {
+                dr["HuyHopDong"] = true;
+            }
+            else
+            {
+                dr["HuyHopDong"] = false;
+            }
+
+            if (entity.MoNuoc)
+            {
+                dr["MoNuoc"] = true;
+            }
+            else
+            {
+                dr["MoNuoc"] = false;
+            }
+
+            if (entity.LoaiKhac)
+            {
+                dr["LoaiKhac"] = true;
+                dr["LyDoLoaiKhac"] = entity.LyDoLoaiKhac;
+            }
+            else
+            {
+                dr["LoaiKhac"] = false;
+            }
+
+            if (entity.SangTen)
+            {
+                dr["SangTen"] = true;
+            }
+            else
+            {
+                dr["SangTen"] = false;
+            }
+
+            if (entity.CT_HoaDon)
+            {
+                dr["CT_HoaDon"] = true;
+            }
+            else
+            {
+                dr["CT_HoaDon"] = false;
+            }
+
+            if (entity.CT_HK_KT3)
+            {
+                dr["CT_HK_KT3"] = true;
+            }
+            else
+            {
+                dr["CT_HK_KT3"] = false;
+            }
+
+            if (entity.CT_STT_GXNTT)
+            {
+                dr["CT_STT_GXNTT"] = true;
+            }
+            else
+            {
+                dr["CT_STT_GXNTT"] = false;
+            }
+
+            if (entity.CT_HDTN_CQN)
+            {
+                dr["CT_HDTN_CQN"] = true;
+            }
+            else
+            {
+                dr["CT_HDTN_CQN"] = false;
+            }
+
+            if (entity.CT_GC_SDSN)
+            {
+                dr["CT_GC_SDSN"] = true;
+            }
+            else
+            {
+                dr["CT_GC_SDSN"] = false;
+            }
+
+            if (entity.CT_GXN2SN)
+            {
+                dr["CT_GXN2SN"] = true;
+            }
+            else
+            {
+                dr["CT_GXN2SN"] = false;
+            }
+
+            if (entity.CT_GDKKD)
+            {
+                dr["CT_GDKKD"] = true;
+            }
+            else
+            {
+                dr["CT_GDKKD"] = false;
+            }
+
+            if (entity.CT_GCNDTDHN)
+            {
+                dr["CT_GCNDTDHN"] = true;
+            }
+            else
+            {
+                dr["CT_GCNDTDHN"] = false;
+            }
+            #endregion
+
+            dr["NgayGiaiQuyet"] = entity.NgayGiaiQuyet;
+            dr["DinhMucSau"] = entity.DinhMucSau;
+            dr["HieuLucTuKy"] = entity.HieuLucTuKy;
+            dr["HoTenNV"] = CTaiKhoan.HoTen;
+            dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(dr);
+            rptBienNhanDonKH rpt = new rptBienNhanDonKH();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.ShowDialog();
         }
 
         private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
@@ -641,259 +644,12 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                         if (_cDonKH.Them(donkh))
                         {
                             _cDonKH.commitTransaction();
-                            MessageBox.Show("Thành công/n Mã Đơn:" + donkh.MaDon.ToString().Insert(donkh.MaDon.ToString().Length - 2, "-"), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            if (!chkKhongInBienNhan.Checked)
-                            {
-                                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                                DataRow dr = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
-                                dr["MaDon"] = donkh.MaDon.ToString().Insert(donkh.MaDon.ToString().Length - 2, "-");
-                                dr["TenLD"] = donkh.LoaiDon.TenLD;
-                                dr["KhachHang"] = donkh.HoTen;
-                                if (donkh.DanhBo != "")
-                                    dr["DanhBo"] = donkh.DanhBo.Insert(7, " ").Insert(4, " ");
-                                dr["DiaChi"] = donkh.DiaChi;
-                                dr["HopDong"] = donkh.HopDong;
-                                dr["DienThoai"] = donkh.DienThoai;
-
-                                #region CheckBox
-                                if (donkh.KiemTraDHN)
-                                {
-                                    dr["KiemTraDHN"] = true;
-                                }
-                                else
-                                {
-                                    dr["KiemTraDHN"] = false;
-                                }
-
-                                if (donkh.TienNuoc)
-                                {
-                                    dr["TienNuoc"] = true;
-                                }
-                                else
-                                {
-                                    dr["TienNuoc"] = false;
-                                }
-
-                                if (donkh.ChiSoNuoc)
-                                {
-                                    dr["ChiSoNuoc"] = true;
-                                }
-                                else
-                                {
-                                    dr["ChiSoNuoc"] = false;
-                                }
-
-                                if (donkh.DonGiaNuoc)
-                                {
-                                    dr["DonGiaNuoc"] = true;
-                                }
-                                else
-                                {
-                                    dr["DonGiaNuoc"] = false;
-                                }
-
-                                if (donkh.DangKyDM)
-                                {
-                                    dr["DangKyDM"] = true;
-                                }
-                                else
-                                {
-                                    dr["DangKyDM"] = false;
-                                }
-
-                                if (donkh.CatChuyenDM)
-                                {
-                                    dr["CatChuyenDM"] = true;
-                                }
-                                else
-                                {
-                                    dr["CatChuyenDM"] = false;
-                                }
-
-                                if (donkh.GiamDM)
-                                {
-                                    dr["GiamDM"] = true;
-                                }
-                                else
-                                {
-                                    dr["GiamDM"] = false;
-                                }
-
-                                if (donkh.DCSoNha)
-                                {
-                                    dr["DCSoNha"] = true;
-                                }
-                                else
-                                {
-                                    dr["DCSoNha"] = false;
-                                }
-
-                                if (donkh.MatDHN)
-                                {
-                                    dr["MatDHN"] = true;
-                                }
-                                else
-                                {
-                                    dr["MatDHN"] = false;
-                                }
-
-                                if (donkh.HuHongDHN)
-                                {
-                                    dr["HuHongDHN"] = true;
-                                }
-                                else
-                                {
-                                    dr["HuHongDHN"] = false;
-                                }
-
-                                if (donkh.ChiNiem)
-                                {
-                                    dr["ChiNiem"] = true;
-                                }
-                                else
-                                {
-                                    dr["ChiNiem"] = false;
-                                }
-
-                                if (donkh.ThayDoiMST)
-                                {
-                                    dr["ThayDoiMST"] = true;
-                                }
-                                else
-                                {
-                                    dr["ThayDoiMST"] = false;
-                                }
-
-                                if (donkh.TamNgung)
-                                {
-                                    dr["TamNgung"] = true;
-                                }
-                                else
-                                {
-                                    dr["TamNgung"] = false;
-                                }
-
-                                if (donkh.HuyHopDong)
-                                {
-                                    dr["HuyHopDong"] = true;
-                                }
-                                else
-                                {
-                                    dr["HuyHopDong"] = false;
-                                }
-
-                                if (donkh.MoNuoc)
-                                {
-                                    dr["MoNuoc"] = true;
-                                }
-                                else
-                                {
-                                    dr["MoNuoc"] = false;
-                                }
-
-                                if (donkh.LoaiKhac)
-                                {
-                                    dr["LoaiKhac"] = true;
-                                    dr["LyDoLoaiKhac"] = donkh.LyDoLoaiKhac;
-                                }
-                                else
-                                {
-                                    dr["LoaiKhac"] = false;
-                                }
-
-                                if (donkh.SangTen)
-                                {
-                                    dr["SangTen"] = true;
-                                }
-                                else
-                                {
-                                    dr["SangTen"] = false;
-                                }
-
-                                if (donkh.CT_HoaDon)
-                                {
-                                    dr["CT_HoaDon"] = true;
-                                }
-                                else
-                                {
-                                    dr["CT_HoaDon"] = false;
-                                }
-
-                                if (donkh.CT_HK_KT3)
-                                {
-                                    dr["CT_HK_KT3"] = true;
-                                }
-                                else
-                                {
-                                    dr["CT_HK_KT3"] = false;
-                                }
-
-                                if (donkh.CT_STT_GXNTT)
-                                {
-                                    dr["CT_STT_GXNTT"] = true;
-                                }
-                                else
-                                {
-                                    dr["CT_STT_GXNTT"] = false;
-                                }
-
-                                if (donkh.CT_HDTN_CQN)
-                                {
-                                    dr["CT_HDTN_CQN"] = true;
-                                }
-                                else
-                                {
-                                    dr["CT_HDTN_CQN"] = false;
-                                }
-
-                                if (donkh.CT_GC_SDSN)
-                                {
-                                    dr["CT_GC_SDSN"] = true;
-                                }
-                                else
-                                {
-                                    dr["CT_GC_SDSN"] = false;
-                                }
-
-                                if (donkh.CT_GXN2SN)
-                                {
-                                    dr["CT_GXN2SN"] = true;
-                                }
-                                else
-                                {
-                                    dr["CT_GXN2SN"] = false;
-                                }
-
-                                if (donkh.CT_GDKKD)
-                                {
-                                    dr["CT_GDKKD"] = true;
-                                }
-                                else
-                                {
-                                    dr["CT_GDKKD"] = false;
-                                }
-
-                                if (donkh.CT_GCNDTDHN)
-                                {
-                                    dr["CT_GCNDTDHN"] = true;
-                                }
-                                else
-                                {
-                                    dr["CT_GCNDTDHN"] = false;
-                                }
-                                #endregion
-
-                                dr["NgayGiaiQuyet"] = donkh.NgayGiaiQuyet;
-                                dr["DinhMucSau"] = donkh.DinhMucSau;
-                                dr["HieuLucTuKy"] = donkh.HieuLucTuKy;
-                                dr["HoTenNV"] = CTaiKhoan.HoTen;
-                                dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(dr);
-                                rptBienNhanDonKH rpt = new rptBienNhanDonKH();
-                                rpt.SetDataSource(dsBaoCao);
-                                frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                                frm.ShowDialog();
-                            }
                             Clear();
+                            MessageBox.Show("Thành công/n Mã Đơn:" + donkh.MaDon.ToString().Insert(donkh.MaDon.ToString().Length - 2, "-"), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (chkKhongInBienNhan.Checked==false)
+                            {
+                                InBienNhan(donkh);
+                            }
                         }
                     }
                 }

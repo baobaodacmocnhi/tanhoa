@@ -27,16 +27,16 @@ namespace KTKS_DonKH.DAL.ToKhachHang
                 else
                     entity.MaDon = decimal.Parse("1" + DateTime.Now.ToString("yy"));
 
-                if (entity.MaDon_Cha != null)
+                if (entity.MaDonCha != null)
                 {
                     entity.MaDon1 = "KH";
-                    if (db.DonKHs.Count(item => item.MaDon_Cha == entity.MaDon_Cha) > 0)
+                    if (db.DonKHs.Count(item => item.MaDonCha == entity.MaDonCha) > 0)
                     {
                         entity.MaDon2 = db.DonKHs.Max(item => item.MaDon2) + 1;
                     }
                     else
                         entity.MaDon2 = 1;
-                    entity.MaDon_New = entity.MaDon_Cha + entity.MaDon1 + entity.MaDon2;
+                    entity.MaDonMoi = entity.MaDonCha + entity.MaDon1 + entity.MaDon2;
                 }
 
                 entity.CreateDate = DateTime.Now;
@@ -93,7 +93,7 @@ namespace KTKS_DonKH.DAL.ToKhachHang
 
         public bool CheckExist(string MaDonMoi)
         {
-            return db.DonKHs.Any(item => item.MaDon_New == MaDonMoi);
+            return db.DonKHs.Any(item => item.MaDonMoi == MaDonMoi);
         }
 
         public bool CheckExist(string DanhBo,DateTime CreateDate)
@@ -108,7 +108,7 @@ namespace KTKS_DonKH.DAL.ToKhachHang
 
         public DonKH Get(string MaDonMoi)
         {
-            return db.DonKHs.SingleOrDefault(item => item.MaDon_New == MaDonMoi);
+            return db.DonKHs.SingleOrDefault(item => item.MaDonMoi == MaDonMoi);
         }
 
         public DataTable GetDS(decimal MaDon)

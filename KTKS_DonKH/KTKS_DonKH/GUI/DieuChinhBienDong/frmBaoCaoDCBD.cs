@@ -18,7 +18,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
     public partial class frmBaoCaoDCBD : Form
     {
         CChungTu _cChungTu = new CChungTu();
-        CCatChuyenDM _cCatChuyenDM = new CCatChuyenDM();
         CDCBD _cDCBD = new CDCBD();
         CDocSo _cDocSo = new CDocSo();
         List<QUAN> _lst;

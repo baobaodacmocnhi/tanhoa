@@ -418,9 +418,9 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(329, 15);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(82, 16);
+            this.label12.Size = new System.Drawing.Size(92, 16);
             this.label12.TabIndex = 116;
-            this.label12.Text = "Mã Đơn Mới:";
+            this.label12.Text = "Mã Đơn(New):";
             // 
             // frmYCCHDB
             // 

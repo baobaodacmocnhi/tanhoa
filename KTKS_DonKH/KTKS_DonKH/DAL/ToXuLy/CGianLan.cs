@@ -84,7 +84,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
 
         public GianLan Get(string MaDonMoi)
         {
-            return db.GianLans.SingleOrDefault(item => item.MaDon_New == MaDonMoi);
+            return db.GianLans.SingleOrDefault(item => item.MaDonMoi == MaDonMoi);
         }
 
         public bool CheckExist(string Loai, decimal MaDon)
@@ -104,7 +104,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
 
         public bool CheckExist(string MaDonMoi)
         {
-            return db.GianLans.Any(item => item.MaDon_New == MaDonMoi);
+            return db.GianLans.Any(item => item.MaDonMoi == MaDonMoi);
         }
 
         public DataTable GetDS(string DanhBo)

@@ -107,7 +107,7 @@ namespace KTKS_DonKH.GUI.BamChi
                 _dontbc = _cDonTBC.Get(ctbamchi.BamChi.MaDonTBC.Value);
                 txtMaDonCu.Text = "TBC" + ctbamchi.BamChi.MaDonTBC.ToString().Insert(ctbamchi.BamChi.MaDonTBC.ToString().Length - 2, "-");
             }
-            txtMaDonMoi.Text = ctbamchi.BamChi.MaDon_New;
+            txtMaDonMoi.Text = ctbamchi.BamChi.MaDonMoi;
             txtDanhBo.Text = ctbamchi.DanhBo;
             txtHopDong.Text = ctbamchi.HopDong;
             txtHoTen.Text = ctbamchi.HoTen;
@@ -341,7 +341,7 @@ namespace KTKS_DonKH.GUI.BamChi
                     if (CTaiKhoan.ToXL == true && _cDonTXL.CheckExist(txtMaDonMoi.Text.Trim()) == true)
                     {
                         _dontxl = _cDonTXL.Get(txtMaDonMoi.Text.Trim());
-                        txtMaDonMoi.Text = _dontxl.MaDon_New;
+                        txtMaDonMoi.Text = _dontxl.MaDonMoi;
 
                         GetDataGridView();
 
@@ -363,7 +363,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         if (CTaiKhoan.ToBC == true && _cDonTBC.CheckExist(txtMaDonMoi.Text.Trim()) == true)
                         {
                             _dontbc = _cDonTBC.Get(txtMaDonMoi.Text.Trim());
-                            txtMaDonMoi.Text = _dontbc.MaDon_New;
+                            txtMaDonMoi.Text = _dontbc.MaDonMoi;
 
                             GetDataGridView();
 
@@ -385,7 +385,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             if (CTaiKhoan.ToKH == true && _cDonKH.CheckExist(txtMaDonMoi.Text.Trim()) == true)
                             {
                                 _dontkh = _cDonKH.Get(txtMaDonMoi.Text.Trim());
-                                txtMaDonMoi.Text = _dontkh.MaDon_New;
+                                txtMaDonMoi.Text = _dontkh.MaDonMoi;
 
                                 GetDataGridView();
 
@@ -442,7 +442,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         {
                             LinQ.BamChi bamchi = new LinQ.BamChi();
                             bamchi.MaDon = _dontkh.MaDon;
-                            bamchi.MaDon_New = _dontkh.MaDon_New;
+                            bamchi.MaDonMoi = _dontkh.MaDonMoi;
                             _cBamChi.Them(bamchi);
                         }
                         if (txtDanhBo.Text.Trim() != "" && _cBamChi.CheckExist_CTBamChi("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim(), dateBamChi.Value, cmbTrangThaiBC.SelectedValue.ToString()))
@@ -459,7 +459,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             {
                                 LinQ.BamChi bamchi = new LinQ.BamChi();
                                 bamchi.MaDonTXL = _dontxl.MaDon;
-                                bamchi.MaDon_New = _dontxl.MaDon_New;
+                                bamchi.MaDonMoi = _dontxl.MaDonMoi;
                                 _cBamChi.Them(bamchi);
                             }
                             if (txtDanhBo.Text.Trim() != "" && _cBamChi.CheckExist_CTBamChi("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim(), dateBamChi.Value, cmbTrangThaiBC.SelectedValue.ToString()))
@@ -476,7 +476,7 @@ namespace KTKS_DonKH.GUI.BamChi
                                 {
                                     LinQ.BamChi bamchi = new LinQ.BamChi();
                                     bamchi.MaDonTBC = _dontbc.MaDon;
-                                    bamchi.MaDon_New = _dontbc.MaDon_New;
+                                    bamchi.MaDonMoi = _dontbc.MaDonMoi;
                                     _cBamChi.Them(bamchi);
                                 }
                                 if (txtDanhBo.Text.Trim() != "" && _cBamChi.CheckExist_CTBamChi("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim(), dateBamChi.Value, cmbTrangThaiBC.SelectedValue.ToString()))

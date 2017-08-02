@@ -96,7 +96,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
 
         public bool CheckExist(string MaDonMoi)
         {
-            return db.KTXMs.Any(item => item.MaDon_New == MaDonMoi);
+            return db.KTXMs.Any(item => item.MaDonMoi == MaDonMoi);
         }
 
         public KTXM Get(decimal MaKTXM)
