@@ -145,7 +145,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 return;
                             }
                             ///Cùng Chi Nhánh
-                            if (_cChiNhanh.getChiNhanhbyID(int.Parse(cmbChiNhanh_Nhan.SelectedValue.ToString())).TenCN.ToUpper().Contains("TÂN HÒA"))
+                            if (((ChiNhanh)cmbChiNhanh_Nhan.SelectedItem).TenCN.ToUpper().Contains("TÂN HÒA")==true)
+                            //if (_cChiNhanh.getChiNhanhbyID(int.Parse(cmbChiNhanh_Nhan.SelectedValue.ToString())).TenCN.ToUpper().Contains("TÂN HÒA"))
                             {
                                 ///Cập nhật CTChungTu, Danh Bộ Cắt
                                 _ctchungtu.SoNKDangKy -= int.Parse(txtSoNK_Cat.Text.Trim());
@@ -330,12 +331,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
             {
-                if (_lichsuchungtu != null)
-                {
+                //if (_lichsuchungtu != null)
+                //{
                     MessageBox.Show("Xin liên hệ BaoBao", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //this.DialogResult = DialogResult.OK;
                     //this.Close();
-                }
+                //}
             }
             else
                 MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

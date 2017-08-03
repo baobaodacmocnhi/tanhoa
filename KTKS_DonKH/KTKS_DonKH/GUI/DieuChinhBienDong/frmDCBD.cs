@@ -173,6 +173,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtHCSN_BD.Text = ctdcbd.HCSN_BD;
             ///
             chkDMGiuNguyen.Checked = ctdcbd.DMGiuNguyen;
+            chkGBGiuNguyen.Checked = ctdcbd.GBGiuNguyen;
             chkGiaHan.Checked = ctdcbd.GiaHan;
             chkDoanThanhNien.Checked = ctdcbd.DoanThanhNien;
             chkCatMSThue.Checked = ctdcbd.CatMSThue;
@@ -204,6 +205,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtHCSN.Text = "";
             ///
             chkDMGiuNguyen.Checked = false;
+            chkGBGiuNguyen.Checked = false;
             chkGiaHan.Checked = false;
             chkDoanThanhNien.Checked = false;
             chkCatMSThue.Checked = false;
@@ -595,10 +597,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     ctdcbd.ThongTin = ThongTin;
 
                     ctdcbd.DMGiuNguyen = chkDMGiuNguyen.Checked;
+                    ctdcbd.GBGiuNguyen = chkGBGiuNguyen.Checked;
                     ctdcbd.GiaHan = chkGiaHan.Checked;
                     ctdcbd.DoanThanhNien = chkDoanThanhNien.Checked;
 
-                    if (chkDMGiuNguyen.Checked || chkGiaHan.Checked)
+                    if (chkDMGiuNguyen.Checked ||chkGBGiuNguyen.Checked|| chkGiaHan.Checked)
                         ctdcbd.PhieuDuocKy = false;
                     else
                     {
@@ -744,10 +747,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         _ctdcbd.ThongTin = ThongTin;
 
                         _ctdcbd.DMGiuNguyen = chkDMGiuNguyen.Checked;
+                        _ctdcbd.GBGiuNguyen = chkGBGiuNguyen.Checked;
                         _ctdcbd.GiaHan = chkGiaHan.Checked;
                         _ctdcbd.DoanThanhNien = chkDoanThanhNien.Checked;
 
-                        if (chkDMGiuNguyen.Checked || chkGiaHan.Checked)
+                        if (chkDMGiuNguyen.Checked || chkGBGiuNguyen.Checked || chkGiaHan.Checked)
                             _ctdcbd.PhieuDuocKy = false;
                         else
                         {
@@ -920,7 +924,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
             {
-                
+                if (_dontkh != null || _dontxl != null || _dontbc != null)
+                    CatChuyen();
             }
             else
                 MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

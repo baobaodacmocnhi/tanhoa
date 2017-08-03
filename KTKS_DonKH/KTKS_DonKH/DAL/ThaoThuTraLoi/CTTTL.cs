@@ -38,8 +38,8 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             }
             catch (Exception ex)
             {
+                Refresh();
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -55,23 +55,15 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             }
             catch (Exception ex)
             {
+                Refresh();
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
 
         public TTTL Get(decimal MaTTTL)
         {
-            try
-            {
-                return db.TTTLs.SingleOrDefault(itemTTTL => itemTTTL.MaTTTL == MaTTTL);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+            return db.TTTLs.SingleOrDefault(itemTTTL => itemTTTL.MaTTTL == MaTTTL);
         }
 
         public TTTL Get(string Loai, decimal MaDon)
@@ -131,8 +123,8 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             }
             catch (Exception ex)
             {
+                Refresh();
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -148,8 +140,8 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             }
             catch (Exception ex)
             {
+                Refresh();
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -167,8 +159,8 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             }
             catch (Exception ex)
             {
+                Refresh();
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
                 return false;
             }
         }
@@ -195,15 +187,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
 
         public CTTTTL GetCT(decimal MaCTTTTL)
         {
-            try
-            {
-                return db.CTTTTLs.SingleOrDefault(itemCTTTTL => itemCTTTTL.MaCTTTTL == MaCTTTTL);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+            return db.CTTTTLs.SingleOrDefault(itemCTTTTL => itemCTTTTL.MaCTTTTL == MaCTTTTL);
         }
 
         public DataTable GetDS()
@@ -250,7 +234,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                             where item.TTTL.MaDonTBC == MaDon
                             select new
                             {
-                                MaDon =  "TBC" + item.TTTL.MaDonTBC,
+                                MaDon = "TBC" + item.TTTL.MaDonTBC,
                                 item.MaCTTTTL,
                                 item.CreateDate,
                                 item.DanhBo,
@@ -275,7 +259,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                 : item.TTTL.MaDonTXL != null ? "TXL" + item.TTTL.MaDonTXL
                                 : item.TTTL.MaDonTBC != null ? "TBC" + item.TTTL.MaDonTBC : null,
                             item.MaCTTTTL,
-                            ID=item.MaCTTTTL,
+                            ID = item.MaCTTTTL,
                             item.CreateDate,
                             item.DanhBo,
                             item.VeViec,

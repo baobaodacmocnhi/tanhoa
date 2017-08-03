@@ -672,7 +672,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     _ctchungtu.CreateDate = DateTime.Now;
                                     _ctchungtu.NgayHetHan = dateHetHan.Value;
                                 }
+
                             #region Yêu Cầu Cắt
+
                             if (chkYCCat1.Checked)
                                 if (txtSoNKCat_YCC1.Text.Trim() == "")
                                 {
@@ -703,7 +705,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     MessageBox.Show("Chưa nhập Số Nhân Khẩu cắt YCC5", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
+
                             #endregion
+
                             ///Ghi thông tin Lịch Sử chung
                             LichSuChungTu lichsuchungtu = new LichSuChungTu();
                             switch (_dataT.Loai)
@@ -736,7 +740,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             {
                                 ///Thêm Lịch Sử đầu tiên
                                 _cChungTu.ThemLichSuChungTu(lichsuchungtu);
+
                                 #region Yêu Cầu Cắt
+
                                 if (chkYCCat1.Checked)
                                 {
                                     if (_ctchungtu.SoPhieu != null)
@@ -1077,7 +1083,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         _ctchungtu.CatNK_SoNKCat5 = null;
                                     }
                                 }
+
                                 #endregion
+
                                 _cChungTu.SubmitChanges();
                                 scope.Complete();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

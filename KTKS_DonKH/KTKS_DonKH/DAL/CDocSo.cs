@@ -235,7 +235,7 @@ namespace KTKS_DonKH.DAL
 
         public List<TB_DULIEUKHACHHANG> GetDS(string SoThanDHN)
         {
-            return db.TB_DULIEUKHACHHANGs.Where(item => item.SOTHANDH == SoThanDHN).ToList();
+            return db.TB_DULIEUKHACHHANGs.Where(item => item.SOTHANDH.ToUpper().Contains(SoThanDHN.ToUpper())).ToList();
         }
 
         public string GetDot(string DanhBo)

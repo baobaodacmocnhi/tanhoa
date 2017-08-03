@@ -390,6 +390,7 @@
       <Column Name="ChucVu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="PhieuDuocKy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DMGiuNguyen" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="GBGiuNguyen" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="GiaHan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DoanThanhNien" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="ChuyenDocSo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
@@ -570,6 +571,40 @@
       <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ID_NoiChuyen" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="NoiChuyen_CTNoiChuyen" Member="NoiChuyen" ThisKey="ID_NoiChuyen" OtherKey="ID" Type="NoiChuyen" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CTToTrinh" Member="CTToTrinhs">
+    <Type Name="CTToTrinh">
+      <Column Name="MaCTTT" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DanhBo" Type="System.String" DbType="NVarChar(11)" CanBeNull="true" />
+      <Column Name="HopDong" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LoTrinh" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GiaBieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DinhMuc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Dot" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Ky" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Nam" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="VeViec" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NoiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NoiNhan" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MaTT" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="NguoiKy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ChucVu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ThuDuocKy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ThuTien_Nhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ThuTien_NgayNhan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ThuTien_GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DocSo_Nhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DocSo_NgayNhan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DocSo_GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="ToTrinh_CTToTrinh" Member="ToTrinh" ThisKey="MaTT" OtherKey="MaTT" Type="ToTrinh" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.CTTruyThuTienNuoc" Member="CTTruyThuTienNuocs">
@@ -1493,6 +1528,20 @@
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="To_User" Member="Users" ThisKey="MaTo" OtherKey="MaTo" Type="User" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ToTrinh" Member="ToTrinhs">
+    <Type Name="ToTrinh">
+      <Column Name="MaTT" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaDon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="MaDonTXL" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="MaDonTBC" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="MaDonMoi" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ToTrinh_CTToTrinh" Member="CTToTrinhs" ThisKey="MaTT" OtherKey="MaTT" Type="CTToTrinh" />
     </Type>
   </Table>
   <Table Name="dbo.TrangThaiBamChi" Member="TrangThaiBamChis">
