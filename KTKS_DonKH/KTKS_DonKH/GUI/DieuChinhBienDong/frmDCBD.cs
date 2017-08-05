@@ -812,7 +812,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
             if ((_dontkh != null || _dontxl != null || _dontbc != null) && e.Control && e.KeyCode == Keys.D2)
             {
-                Sua();
+                Nhan();
             }
             if (e.Control && e.KeyCode == Keys.D3)
             {
