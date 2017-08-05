@@ -147,6 +147,11 @@ namespace ThuTien.DAL
             }
         }
 
+        public bool CheckExist(string DanhBo)
+        {
+            return _db.TB_DULIEUKHACHHANGs.Any(item => item.DANHBO == DanhBo);
+        }
+
         public DataTable GetTTKH(string DanhBo)
         {
             return LINQToDataTable(_db.TB_DULIEUKHACHHANGs.Where(item => item.DANHBO == DanhBo)
@@ -194,7 +199,7 @@ namespace ThuTien.DAL
                 .OrderByDescending(item => item.CREATEDATE).Select(item => new { item.CREATEDATE, item.NOIDUNG }).Take(5).ToList());
         }
         
-        public string GetDienThoaiKH(string DanhBo)
+        public string GetDienThoai(string DanhBo)
         {
             return _db.TB_DULIEUKHACHHANGs.SingleOrDefault(item => item.DANHBO == DanhBo).DIENTHOAI;
         }
@@ -234,11 +239,6 @@ namespace ThuTien.DAL
             MaDMA = cmd.Parameters["@MADMA"].Value + "";
             Disconnect();
 
-        }
-
-        public bool CheckExist(string DanhBo)
-        {
-            return _db.TB_DULIEUKHACHHANGs.Any(item => item.DANHBO == DanhBo);
         }
 
         public void GetPhuongQuan(string DanhBo, out string TenPhuong, out string TenQuan)

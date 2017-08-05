@@ -16,7 +16,7 @@ using ThuTien.DAL.Quay;
 using ThuTien.BaoCao.ChuyenKhoan;
 using ThuTien.GUI.BaoCao;
 using ThuTien.GUI.TimKiem;
-using ThuTien.DAL.HanhThu;
+using ThuTien.DAL;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -30,7 +30,8 @@ namespace ThuTien.GUI.ChuyenKhoan
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CTamThu _cTamThu = new CTamThu();
         CBangKe _cBangKe = new CBangKe();
-        CThongTinKhachHang _cTTKH = new CThongTinKhachHang();
+        CDocSo _cDocSo = new CDocSo();
+
 
         public frmTienDu()
         {
@@ -184,7 +185,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                             dr["DanhBo"] = item.Cells["DanhBo_TienDu"].Value.ToString().Insert(4, " ").Insert(8, " ");
                             dr["HoTen"] = itemHD.TENKH;
                             dr["MLT"] = itemHD.MALOTRINH;
-                            dr["DienThoai"] = _cTTKH.GetDienThoai(itemHD.DANHBA);
+                            dr["DienThoai"] = _cDocSo.GetDienThoai(itemHD.DANHBA);
                             dr["Ky"] = itemHD.KY + "/" + itemHD.NAM;
                             dr["TienDu"] = item.Cells["SoTien_TienDu"].Value;
                             dr["TongCong"] = itemHD.TONGCONG;
@@ -247,7 +248,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dr["DanhBo"] = item.Cells["DanhBo_TienDu"].Value.ToString().Insert(4, " ").Insert(8, " ");
                         dr["HoTen"] = itemHD.TENKH;
                         dr["MLT"] = itemHD.MALOTRINH;
-                        dr["DienThoai"] = _cTTKH.GetDienThoai(itemHD.DANHBA);
+                        dr["DienThoai"] = _cDocSo.GetDienThoai(itemHD.DANHBA);
                         dr["Ky"] = itemHD.KY + "/" + itemHD.NAM;
                         dr["TienDu"] = item.Cells["SoTien_TienDu"].Value;
                         dr["TongCong"] = itemHD.TONGCONG;
@@ -565,7 +566,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["HoTen"] = hoadon.TENKH;
                     dr["DiaChi"] = hoadon.SO + " " + hoadon.DUONG;
                     dr["MLT"] = hoadon.MALOTRINH;
-                    dr["DienThoai"] = _cTTKH.GetDienThoai(hoadon.DANHBA);
+                    dr["DienThoai"] = _cDocSo.GetDienThoai(hoadon.DANHBA);
                     dr["Ky"] = hoadon.KY + "/" + hoadon.NAM;
                     dr["TienDu"] = item.Cells["SoTien_TienDu"].Value;
                     dr["TongCong"] = hoadon.TONGCONG-(int)item.Cells["SoTien_TienDu"].Value;

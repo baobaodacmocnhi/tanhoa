@@ -26,8 +26,7 @@ namespace ThuTien.GUI.HanhThu
         CHoaDon _cHoaDon = new CHoaDon();
         CQuetTam _cQuetTam = new CQuetTam();
         CNguoiDung _cNguoiDung = new CNguoiDung();
-        CThongTinKhachHang _cTTKH = new CThongTinKhachHang();
-        CDocSo _cCapNuocTanHoa = new CDocSo();
+        CDocSo _cDocSo = new CDocSo();
 
         public frmQuetTam()
         {
@@ -489,7 +488,7 @@ namespace ThuTien.GUI.HanhThu
                         if (!string.IsNullOrEmpty(item.Cells["DanhBo_TG"].Value.ToString()))
                         {
                             dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(7, " ").Insert(4, " ");
-                            dr["DienThoai"] = _cTTKH.GetDienThoai(item.Cells["DanhBo_TG"].Value.ToString());
+                            dr["DienThoai"] = _cDocSo.GetDienThoai(item.Cells["DanhBo_TG"].Value.ToString());
                         }
                         dr["MLT"] = item.Cells["MLT_TG"].Value.ToString().Insert(4, " ").Insert(2, " ");
                         dr["Ky"] = Ky;
@@ -526,7 +525,7 @@ namespace ThuTien.GUI.HanhThu
                             if (!string.IsNullOrEmpty(item.Cells["DanhBo_CQ"].Value.ToString()))
                             {
                                 dr["DanhBo"] = item.Cells["DanhBo_CQ"].Value.ToString().Insert(7, " ").Insert(4, " ");
-                                dr["DienThoai"] = _cTTKH.GetDienThoai(item.Cells["DanhBo_CQ"].Value.ToString());
+                                dr["DienThoai"] = _cDocSo.GetDienThoai(item.Cells["DanhBo_CQ"].Value.ToString());
                             }
                             dr["MLT"] = item.Cells["MLT_CQ"].Value.ToString().Insert(4, " ").Insert(2, " ");
                             dr["Ky"] = Ky;
@@ -924,7 +923,7 @@ namespace ThuTien.GUI.HanhThu
                 arr[i, 4] = dr["DiaChi"].ToString();
                 arr[i, 5] = dr["MLT"].ToString();
                 arr[i, 6] = dr["TongCong"].ToString();
-                _cCapNuocTanHoa.GetPhuongQuan(dr["DanhBo"].ToString(), out Phuong, out Quan);
+                _cDocSo.GetPhuongQuan(dr["DanhBo"].ToString(), out Phuong, out Quan);
                 arr[i, 7] = Phuong;
                 arr[i, 8] = Quan;
             }

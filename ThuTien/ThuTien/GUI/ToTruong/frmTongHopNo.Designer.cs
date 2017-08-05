@@ -84,6 +84,10 @@
             this.SoHoaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GiaBieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DinhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TyLeSH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TyLeHCSN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TyLeSX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TyLeDV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TieuThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GiaBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ThueGTGT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -132,7 +136,7 @@
             // dgvHoaDon
             // 
             this.dgvHoaDon.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -150,6 +154,10 @@
             this.SoHoaDon,
             this.GiaBieu,
             this.DinhMuc,
+            this.TyLeSH,
+            this.TyLeHCSN,
+            this.TyLeSX,
+            this.TyLeDV,
             this.TieuThu,
             this.GiaBan,
             this.ThueGTGT,
@@ -162,7 +170,7 @@
             this.dgvHoaDon.Name = "dgvHoaDon";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHoaDon.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvHoaDon.Size = new System.Drawing.Size(1350, 280);
+            this.dgvHoaDon.Size = new System.Drawing.Size(1360, 280);
             this.dgvHoaDon.TabIndex = 21;
             this.dgvHoaDon.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHoaDon_CellContentClick);
             this.dgvHoaDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_CellFormatting);
@@ -529,20 +537,19 @@
             this.DanhBo.DataPropertyName = "DanhBo";
             this.DanhBo.HeaderText = "Danh Bộ";
             this.DanhBo.Name = "DanhBo";
+            this.DanhBo.Width = 90;
             // 
             // HoTen
             // 
             this.HoTen.DataPropertyName = "HoTen";
             this.HoTen.HeaderText = "Khách Hàng";
             this.HoTen.Name = "HoTen";
-            this.HoTen.Width = 150;
             // 
             // DiaChi
             // 
             this.DiaChi.DataPropertyName = "DiaChi";
             this.DiaChi.HeaderText = "Địa Chỉ";
             this.DiaChi.Name = "DiaChi";
-            this.DiaChi.Width = 200;
             // 
             // Ky
             // 
@@ -571,40 +578,68 @@
             this.DinhMuc.Name = "DinhMuc";
             this.DinhMuc.Width = 50;
             // 
+            // TyLeSH
+            // 
+            this.TyLeSH.DataPropertyName = "TyLeSH";
+            this.TyLeSH.HeaderText = "Tỷ Lệ SH";
+            this.TyLeSH.Name = "TyLeSH";
+            this.TyLeSH.Width = 60;
+            // 
+            // TyLeHCSN
+            // 
+            this.TyLeHCSN.DataPropertyName = "TyLeHCSN";
+            this.TyLeHCSN.HeaderText = "Tỷ Lệ HCSN";
+            this.TyLeHCSN.Name = "TyLeHCSN";
+            this.TyLeHCSN.Width = 50;
+            // 
+            // TyLeSX
+            // 
+            this.TyLeSX.DataPropertyName = "TyLeSX";
+            this.TyLeSX.HeaderText = "Tỷ Lệ SX";
+            this.TyLeSX.Name = "TyLeSX";
+            this.TyLeSX.Width = 60;
+            // 
+            // TyLeDV
+            // 
+            this.TyLeDV.DataPropertyName = "TyLeDV";
+            this.TyLeDV.HeaderText = "Tỷ Lệ DV";
+            this.TyLeDV.Name = "TyLeDV";
+            this.TyLeDV.Width = 60;
+            // 
             // TieuThu
             // 
             this.TieuThu.DataPropertyName = "TieuThu";
             this.TieuThu.HeaderText = "Tiêu Thụ";
             this.TieuThu.Name = "TieuThu";
-            this.TieuThu.Width = 80;
+            this.TieuThu.Width = 60;
             // 
             // GiaBan
             // 
             this.GiaBan.DataPropertyName = "GiaBan";
             this.GiaBan.HeaderText = "Giá Bán";
             this.GiaBan.Name = "GiaBan";
-            this.GiaBan.Width = 90;
+            this.GiaBan.Width = 80;
             // 
             // ThueGTGT
             // 
             this.ThueGTGT.DataPropertyName = "ThueGTGT";
             this.ThueGTGT.HeaderText = "Thuế GTGT";
             this.ThueGTGT.Name = "ThueGTGT";
-            this.ThueGTGT.Width = 80;
+            this.ThueGTGT.Width = 70;
             // 
             // PhiBVMT
             // 
             this.PhiBVMT.DataPropertyName = "PhiBVMT";
             this.PhiBVMT.HeaderText = "Phí BVMT";
             this.PhiBVMT.Name = "PhiBVMT";
-            this.PhiBVMT.Width = 80;
+            this.PhiBVMT.Width = 70;
             // 
             // TongCong
             // 
             this.TongCong.DataPropertyName = "TongCong";
             this.TongCong.HeaderText = "Tổng Cộng";
             this.TongCong.Name = "TongCong";
-            this.TongCong.Width = 90;
+            this.TongCong.Width = 80;
             // 
             // DinhMuc_Cu
             // 
@@ -625,7 +660,7 @@
             this.TienDu.DataPropertyName = "TienDu";
             this.TienDu.HeaderText = "Tiền Dư";
             this.TienDu.Name = "TienDu";
-            this.TienDu.Width = 80;
+            this.TienDu.Width = 70;
             // 
             // frmTongHopNo
             // 
@@ -728,6 +763,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn DinhMuc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TyLeSH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TyLeHCSN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TyLeSX;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TyLeDV;
         private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu;
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaBan;
         private System.Windows.Forms.DataGridViewTextBoxColumn ThueGTGT;

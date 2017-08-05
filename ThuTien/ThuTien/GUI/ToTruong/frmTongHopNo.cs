@@ -133,41 +133,41 @@ namespace ThuTien.GUI.ToTruong
         {
             if (e.KeyChar == 13)
             {
-                DataTable dtTemp = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim().Replace(" ",""));
+                DataTable dtTemp = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim().Replace(" ", ""));
                 if (dtTemp.Rows.Count > 0)
                 {
                     foreach (DataRow item in dtTemp.Rows)
-                        //if (!dt.Rows.Contains(item["MaHD"].ToString()))
+                    //if (!dt.Rows.Contains(item["MaHD"].ToString()))
+                    {
+                        DataRow row = dt.NewRow();
+                        row["MaHD"] = item["MaHD"];
+                        row["DanhBo"] = item["DanhBo"];
+                        row["HoTen"] = item["HoTen"];
+                        row["DiaChi"] = item["DiaChi"];
+                        row["Ky"] = item["Ky"];
+                        row["SoHoaDon"] = item["SoHoaDon"];
+                        row["GiaBieu"] = item["GiaBieu"];
+                        row["DinhMuc"] = item["DinhMuc"];
+                        row["TieuThu"] = item["TieuThu"];
+                        row["GiaBan"] = item["GiaBan"];
+                        row["ThueGTGT"] = item["ThueGTGT"];
+                        row["PhiBVMT"] = item["PhiBVMT"];
+                        row["TongCong"] = item["TongCong"];
+                        CTDCBD dcbd = _cKTKS_DonKH.GetDCBD(item["DanhBo"].ToString());
+                        if (dcbd != null)
                         {
-                            DataRow row = dt.NewRow();
-                            row["MaHD"] = item["MaHD"];
-                            row["DanhBo"] = item["DanhBo"];
-                            row["HoTen"] = item["HoTen"];
-                            row["DiaChi"] = item["DiaChi"];
-                            row["Ky"] = item["Ky"];
-                            row["SoHoaDon"] = item["SoHoaDon"];
-                            row["GiaBieu"] = item["GiaBieu"];
-                            row["DinhMuc"] = item["DinhMuc"];
-                            row["TieuThu"] = item["TieuThu"];
-                            row["GiaBan"] = item["GiaBan"];
-                            row["ThueGTGT"] = item["ThueGTGT"];
-                            row["PhiBVMT"] = item["PhiBVMT"];
-                            row["TongCong"] = item["TongCong"];
-                            CTDCBD dcbd = _cKTKS_DonKH.GetDCBD(item["DanhBo"].ToString());
-                            if (dcbd != null)
-                            {
-                                if (dcbd.DinhMuc!=null)
+                            if (dcbd.DinhMuc != null)
                                 row["DinhMuc_Cu"] = dcbd.DinhMuc;
-                                if (dcbd.DinhMuc_BD != null)
+                            if (dcbd.DinhMuc_BD != null)
                                 row["DinhMuc_Moi"] = dcbd.DinhMuc_BD;
-                            }
-                            row["TienDu"] = _cTienDu.GetTienDu(item["DanhBo"].ToString());
-                            dt.Rows.Add(row);
                         }
+                        row["TienDu"] = _cTienDu.GetTienDu(item["DanhBo"].ToString());
+                        dt.Rows.Add(row);
+                    }
                 }
                 else
                 {
-                    HOADON hoadon = _cHoaDon.GetMoiNhat(txtDanhBo.Text.Trim());
+                    HOADON hoadon = _cHoaDon.GetMoiNhat(txtDanhBo.Text.Trim().Replace(" ", ""));
 
                     if (hoadon != null)
                     {
@@ -183,10 +183,10 @@ namespace ThuTien.GUI.ToTruong
                         CTDCBD dcbd = _cKTKS_DonKH.GetDCBD(hoadon.DANHBA);
                         if (dcbd != null)
                         {
-                            if (dcbd.DinhMuc!=null)
-                            row["DinhMuc_Cu"] = dcbd.DinhMuc;
+                            if (dcbd.DinhMuc != null)
+                                row["DinhMuc_Cu"] = dcbd.DinhMuc;
                             if (dcbd.DinhMuc_BD != null)
-                            row["DinhMuc_Moi"] = dcbd.DinhMuc_BD;
+                                row["DinhMuc_Moi"] = dcbd.DinhMuc_BD;
                         }
                         row["TienDu"] = _cTienDu.GetTienDu(hoadon.DANHBA);
                         dt.Rows.Add(row);
@@ -205,7 +205,7 @@ namespace ThuTien.GUI.ToTruong
                 {
                     TT_TongHopNo tonghopno = new TT_TongHopNo();
 
-                    tonghopno.DanhBo = txtDanhBo.Text.Trim().Replace(" ","");
+                    tonghopno.DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
                     tonghopno.KinhGui = txtKinhGui.Text.Trim();
                     if (!string.IsNullOrEmpty(txtCSM.Text.Trim()))
                         tonghopno.ChiSoMoi = txtCSM.Text.Trim();
@@ -366,7 +366,7 @@ namespace ThuTien.GUI.ToTruong
                     GiaBieu = int.Parse(dgvHoaDon["GiaBieu", e.RowIndex].Value.ToString());
                 if (dgvHoaDon["TieuThu", e.RowIndex].Value != null && !string.IsNullOrEmpty(dgvHoaDon["TieuThu", e.RowIndex].Value.ToString()))
                     TieuThu = int.Parse(dgvHoaDon["TieuThu", e.RowIndex].Value.ToString());
-                int TongTien = _cKTKS_DonKH.TinhTienNuoc(false, 0, dgvHoaDon["DanhBo", e.RowIndex].Value.ToString(), GiaBieu, int.Parse(e.FormattedValue.ToString().Replace(".", "")),TieuThu, out ChiTiet);
+                int TongTien = _cKTKS_DonKH.TinhTienNuoc(false, 0, dgvHoaDon["DanhBo", e.RowIndex].Value.ToString(), GiaBieu, int.Parse(e.FormattedValue.ToString().Replace(".", "")), TieuThu, out ChiTiet);
                 dgvHoaDon["GiaBan", e.RowIndex].Value = TongTien;
                 dgvHoaDon["ThueGTGT", e.RowIndex].Value = Math.Round((double)TongTien * 5 / 100);
                 dgvHoaDon["PhiBVMT", e.RowIndex].Value = TongTien * 10 / 100;
@@ -407,11 +407,11 @@ namespace ThuTien.GUI.ToTruong
             {
                 ///chọn tất cả các tổ
                 if (cmbTo.SelectedIndex == 0)
-                    dgvTongHopNo.DataSource = _cTHN.GetDS(dateTu.Value,dateDen.Value);
+                    dgvTongHopNo.DataSource = _cTHN.GetDS(dateTu.Value, dateDen.Value);
                 else
                     ///chọn 1 tổ cụ thể
                     if (cmbTo.SelectedIndex > 0)
-                        dgvTongHopNo.DataSource = _cTHN.GetDS_To(int.Parse(cmbTo.SelectedValue.ToString()),dateTu.Value, dateDen.Value);
+                        dgvTongHopNo.DataSource = _cTHN.GetDS_To(int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
             }
             else
                 dgvTongHopNo.DataSource = _cTHN.GetDS(CNguoiDung.MaND, dateTu.Value, dateDen.Value);
@@ -421,7 +421,7 @@ namespace ThuTien.GUI.ToTruong
         {
             if (dgvTongHopNo.Columns[e.ColumnIndex].Name == "MaTHN" && e.Value != null)
             {
-                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length-2,"-");
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
             if (dgvTongHopNo.Columns[e.ColumnIndex].Name == "DanhBo_THN" && e.Value != null && e.Value.ToString().Length == 11)
             {
@@ -445,7 +445,7 @@ namespace ThuTien.GUI.ToTruong
         {
             if (dgvTongHopNo.RowCount > 0 && e.Button == System.Windows.Forms.MouseButtons.Left)
             {
-                
+
             }
         }
 
@@ -497,6 +497,6 @@ namespace ThuTien.GUI.ToTruong
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();
         }
-        
+
     }
 }
