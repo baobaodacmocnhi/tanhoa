@@ -10,15 +10,6 @@ namespace KTKS_DonKH.DAL.QuanTri
 {
     class CTaiKhoan : CDAL
     {
-        /// <summary>
-        /// Giảm Tiền Nước bao nhiêu %
-        /// </summary>
-        private const int _giamTienNuoc = 10;
-        public static int GiamTienNuoc
-        {
-            get { return CTaiKhoan._giamTienNuoc; }
-        }
-
         private static int _maUser = -1;
         public static int MaUser
         {

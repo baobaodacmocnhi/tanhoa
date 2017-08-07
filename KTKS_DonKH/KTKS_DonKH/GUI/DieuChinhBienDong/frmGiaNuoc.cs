@@ -67,7 +67,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 gianuoc.TenGN = txtDoiTuong.Text.Trim();
                 gianuoc.DonGia = int.Parse(txtGiaNuoc.Text.Trim());
 
-                if (_cGiaNuoc.ThemGiaNuoc(gianuoc))
+                if (_cGiaNuoc.Them(gianuoc))
                     Clear();
             }
             else
@@ -80,10 +80,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 if (txtGiaNuoc.Text.Trim() != "" && txtGiaNuoc.Text.Trim() != "0")
                 {
-                    GiaNuoc gianuoc = _cGiaNuoc.getGiaNuocbyID(int.Parse(dgvDSGiaNuoc["MaGN", selectedindex].Value.ToString()));
+                    GiaNuoc gianuoc = _cGiaNuoc.Get(int.Parse(dgvDSGiaNuoc["MaGN", selectedindex].Value.ToString()));
                     gianuoc.DonGia = int.Parse(txtGiaNuoc.Text.Trim());
 
-                    if (_cGiaNuoc.SuaGiaNuoc(gianuoc))
+                    if (_cGiaNuoc.Sua(gianuoc))
                         Clear();
                 }
                 else
