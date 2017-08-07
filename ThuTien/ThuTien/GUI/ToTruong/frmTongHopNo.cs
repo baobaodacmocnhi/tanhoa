@@ -28,9 +28,9 @@ namespace ThuTien.GUI.ToTruong
         CTo _cTo = new CTo();
         CTamThu _cTamThu = new CTamThu();
         CTienDu _cTienDu = new CTienDu();
-        CKinhDoanh _cKTKS_DonKH = new CKinhDoanh();
+        CKinhDoanh _cKinhDoanh = new CKinhDoanh();
         BindingSource bsHoaDon = new BindingSource();
-        DataTable dt = new DataTable();
+        DataTable _dt = new DataTable();
 
         public frmTongHopNo()
         {
@@ -60,73 +60,89 @@ namespace ThuTien.GUI.ToTruong
                 cmbTo.ValueMember = "MaTo";
             }
 
-            //DataTable dt = new DataTable();
+            //DataTable _dt = new DataTable();
             DataColumn col = new DataColumn("MaHD");
             col.DataType = System.Type.GetType("System.String");
-            dt.Columns.Add(col);
+            _dt.Columns.Add(col);
             //DataColumn[] columns = new DataColumn[1];
-            //columns[0] = dt.Columns["MaHD"];
-            //dt.PrimaryKey = columns;
+            //columns[0] = _dt.Columns["MaHD"];
+            //_dt.PrimaryKey = columns;
 
             col = new DataColumn("HoTen");
             col.DataType = System.Type.GetType("System.String");
-            dt.Columns.Add(col);
+            _dt.Columns.Add(col);
 
             col = new DataColumn("DanhBo");
             col.DataType = System.Type.GetType("System.String");
-            dt.Columns.Add(col);
+            _dt.Columns.Add(col);
 
             col = new DataColumn("DiaChi");
             col.DataType = System.Type.GetType("System.String");
-            dt.Columns.Add(col);
+            _dt.Columns.Add(col);
 
             col = new DataColumn("Ky");
             col.DataType = System.Type.GetType("System.String");
-            dt.Columns.Add(col);
+            _dt.Columns.Add(col);
 
             col = new DataColumn("SoHoaDon");
             col.DataType = System.Type.GetType("System.String");
-            dt.Columns.Add(col);
+            _dt.Columns.Add(col);
 
             col = new DataColumn("GiaBieu");
             col.DataType = System.Type.GetType("System.Int32");
-            dt.Columns.Add(col);
+            _dt.Columns.Add(col);
+
+            col = new DataColumn("TyLeSH");
+            col.DataType = System.Type.GetType("System.Int32");
+            _dt.Columns.Add(col);
+
+            col = new DataColumn("TyLeHCSN");
+            col.DataType = System.Type.GetType("System.Int32");
+            _dt.Columns.Add(col);
+
+            col = new DataColumn("TyLeSX");
+            col.DataType = System.Type.GetType("System.Int32");
+            _dt.Columns.Add(col);
+
+            col = new DataColumn("TyLeDV");
+            col.DataType = System.Type.GetType("System.Int32");
+            _dt.Columns.Add(col);
 
             col = new DataColumn("DinhMuc");
             col.DataType = System.Type.GetType("System.Int32");
+            _dt.Columns.Add(col);
 
-            dt.Columns.Add(col);
             col = new DataColumn("TieuThu");
             col.DataType = System.Type.GetType("System.Int32");
-            dt.Columns.Add(col);
+            _dt.Columns.Add(col);
 
             col = new DataColumn("GiaBan");
             col.DataType = System.Type.GetType("System.Int32");
-            dt.Columns.Add(col);
+            _dt.Columns.Add(col);
 
             col = new DataColumn("ThueGTGT");
             col.DataType = System.Type.GetType("System.Int32");
-            dt.Columns.Add(col);
+            _dt.Columns.Add(col);
 
             col = new DataColumn("PhiBVMT");
             col.DataType = System.Type.GetType("System.Int32");
-            dt.Columns.Add(col);
+            _dt.Columns.Add(col);
 
             col = new DataColumn("TongCong");
             col.DataType = System.Type.GetType("System.Int32");
-            dt.Columns.Add(col);
+            _dt.Columns.Add(col);
 
             col = new DataColumn("DinhMuc_Cu");
             col.DataType = System.Type.GetType("System.Int32");
-            dt.Columns.Add(col);
+            _dt.Columns.Add(col);
 
             col = new DataColumn("DinhMuc_Moi");
             col.DataType = System.Type.GetType("System.Int32");
-            dt.Columns.Add(col);
+            _dt.Columns.Add(col);
 
             col = new DataColumn("TienDu");
             col.DataType = System.Type.GetType("System.Int32");
-            dt.Columns.Add(col);
+            _dt.Columns.Add(col);
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
@@ -137,9 +153,9 @@ namespace ThuTien.GUI.ToTruong
                 if (dtTemp.Rows.Count > 0)
                 {
                     foreach (DataRow item in dtTemp.Rows)
-                    //if (!dt.Rows.Contains(item["MaHD"].ToString()))
+                    //if (!_dt.Rows.Contains(item["MaHD"].ToString()))
                     {
-                        DataRow row = dt.NewRow();
+                        DataRow row = _dt.NewRow();
                         row["MaHD"] = item["MaHD"];
                         row["DanhBo"] = item["DanhBo"];
                         row["HoTen"] = item["HoTen"];
@@ -147,13 +163,32 @@ namespace ThuTien.GUI.ToTruong
                         row["Ky"] = item["Ky"];
                         row["SoHoaDon"] = item["SoHoaDon"];
                         row["GiaBieu"] = item["GiaBieu"];
-                        row["DinhMuc"] = item["DinhMuc"];
+                        if (item["TyLeSH"].ToString() != "")
+                            row["TyLeSH"] = item["TyLeSH"];
+                        else
+                            row["TyLeSH"] = 0;
+                        if (item["TyLeHCSN"].ToString() != "")
+                            row["TyLeHCSN"] = item["TyLeHCSN"];
+                        else
+                            row["TyLeHCSN"] = 0;
+                        if (item["TyLeSX"].ToString() != "")
+                            row["TyLeSX"] = item["TyLeSX"];
+                        else
+                            row["TyLeSX"] = 0;
+                        if (item["TyLeDV"].ToString() != "")
+                            row["TyLeDV"] = item["TyLeDV"];
+                        else
+                            row["TyLeDV"] = 0;
+                        if (item["DinhMuc"].ToString() != "")
+                            row["DinhMuc"] = item["DinhMuc"];
+                        else
+                            row["DinhMuc"] = 0;
                         row["TieuThu"] = item["TieuThu"];
                         row["GiaBan"] = item["GiaBan"];
                         row["ThueGTGT"] = item["ThueGTGT"];
                         row["PhiBVMT"] = item["PhiBVMT"];
                         row["TongCong"] = item["TongCong"];
-                        CTDCBD dcbd = _cKTKS_DonKH.GetDCBD(item["DanhBo"].ToString());
+                        CTDCBD dcbd = _cKinhDoanh.GetDCBD(item["DanhBo"].ToString());
                         if (dcbd != null)
                         {
                             if (dcbd.DinhMuc != null)
@@ -162,7 +197,7 @@ namespace ThuTien.GUI.ToTruong
                                 row["DinhMuc_Moi"] = dcbd.DinhMuc_BD;
                         }
                         row["TienDu"] = _cTienDu.GetTienDu(item["DanhBo"].ToString());
-                        dt.Rows.Add(row);
+                        _dt.Rows.Add(row);
                     }
                 }
                 else
@@ -171,16 +206,34 @@ namespace ThuTien.GUI.ToTruong
 
                     if (hoadon != null)
                     {
-                        DataRow row = dt.NewRow();
+                        DataRow row = _dt.NewRow();
                         row["MaHD"] = hoadon.ID_HOADON;
                         row["HoTen"] = hoadon.TENKH;
                         row["DanhBo"] = hoadon.DANHBA;
                         row["DiaChi"] = hoadon.SO + " " + hoadon.DUONG;
                         row["GiaBieu"] = hoadon.GB;
+                        if (hoadon.TILESH != null)
+                            row["TyLeSH"] = hoadon.TILESH;
+                        else
+                            row["TyLeSH"] = 0;
+                        if (hoadon.TILEHCSN != null)
+                            row["TyLeHCSN"] = hoadon.TILEHCSN;
+                        else
+                            row["TyLeHCSN"] = 0;
+                        if (hoadon.TILESX != null)
+                            row["TyLeSX"] = hoadon.TILESX;
+                        else
+                            row["TyLeSX"] = 0;
+                        if (hoadon.TILEDV != null)
+                            row["TyLeDV"] = hoadon.TILEDV;
+                        else
+                            row["TyLeDV"] = 0;
                         if (hoadon.DM != null)
                             row["DinhMuc"] = hoadon.DM;
+                        else
+                            row["DinhMuc"] = 0;
                         row["TieuThu"] = 0;
-                        CTDCBD dcbd = _cKTKS_DonKH.GetDCBD(hoadon.DANHBA);
+                        CTDCBD dcbd = _cKinhDoanh.GetDCBD(hoadon.DANHBA);
                         if (dcbd != null)
                         {
                             if (dcbd.DinhMuc != null)
@@ -189,10 +242,10 @@ namespace ThuTien.GUI.ToTruong
                                 row["DinhMuc_Moi"] = dcbd.DinhMuc_BD;
                         }
                         row["TienDu"] = _cTienDu.GetTienDu(hoadon.DANHBA);
-                        dt.Rows.Add(row);
+                        _dt.Rows.Add(row);
                     }
                 }
-                bsHoaDon.DataSource = dt;
+                bsHoaDon.DataSource = _dt;
                 txtDanhBo.Text = "";
             }
         }
@@ -306,10 +359,10 @@ namespace ThuTien.GUI.ToTruong
             {
                 e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
             }
-            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "TieuThu" && e.Value != null)
-            {
-                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
-            }
+            //if (dgvHoaDon.Columns[e.ColumnIndex].Name == "TieuThu" && e.Value != null)
+            //{
+            //    e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            //}
             if (dgvHoaDon.Columns[e.ColumnIndex].Name == "GiaBan" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
@@ -342,50 +395,30 @@ namespace ThuTien.GUI.ToTruong
 
         private void dgvHoaDon_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "GB" && e.FormattedValue.ToString().Replace(".", "") != dgvHoaDon[e.ColumnIndex, e.RowIndex].Value.ToString())
+            if (dgvHoaDon["TyLeSH", e.RowIndex].Value.ToString() == "0" && dgvHoaDon["TyLeHCSN", e.RowIndex].Value.ToString() == "0" && dgvHoaDon["TyLeSX", e.RowIndex].Value.ToString() == "0" && dgvHoaDon["TyLeDV", e.RowIndex].Value.ToString() != "0")
             {
-                string ChiTiet = "";
-                int DinhMuc = 0;
-                int TieuThu = 0;
-                if (dgvHoaDon["DinhMuc", e.RowIndex].Value != null && !string.IsNullOrEmpty(dgvHoaDon["DinhMuc", e.RowIndex].Value.ToString()))
-                    DinhMuc = int.Parse(dgvHoaDon["DinhMuc", e.RowIndex].Value.ToString());
-                if (dgvHoaDon["TieuThu", e.RowIndex].Value != null && !string.IsNullOrEmpty(dgvHoaDon["TieuThu", e.RowIndex].Value.ToString()))
-                    TieuThu = int.Parse(dgvHoaDon["TieuThu", e.RowIndex].Value.ToString());
-                int TongTien = _cKTKS_DonKH.TinhTienNuoc(false, 0, dgvHoaDon["DanhBo", e.RowIndex].Value.ToString(), int.Parse(e.FormattedValue.ToString().Replace(".", "")), DinhMuc, TieuThu, out ChiTiet);
-                dgvHoaDon["GiaBan", e.RowIndex].Value = TongTien;
-                dgvHoaDon["ThueGTGT", e.RowIndex].Value = Math.Round((double)TongTien * 5 / 100);
-                dgvHoaDon["PhiBVMT", e.RowIndex].Value = TongTien * 10 / 100;
-                dgvHoaDon["TongCong", e.RowIndex].Value = TongTien + Math.Round((double)TongTien * 5 / 100) + (TongTien * 10 / 100);
+                if (e.FormattedValue.ToString().Replace(".", "") != dgvHoaDon[e.ColumnIndex, e.RowIndex].Value.ToString())
+                {
+                    string ChiTiet = "";
+                    int TongTien = _cKinhDoanh.TinhTienNuoc(false, 0, dgvHoaDon["DanhBo", e.RowIndex].Value.ToString(), int.Parse(dgvHoaDon["GiaBieu", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["DinhMuc", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["TieuThu", e.RowIndex].Value.ToString()), out ChiTiet);
+                    dgvHoaDon["GiaBan", e.RowIndex].Value = TongTien;
+                    dgvHoaDon["ThueGTGT", e.RowIndex].Value = Math.Round((double)TongTien * 5 / 100);
+                    dgvHoaDon["PhiBVMT", e.RowIndex].Value = TongTien * 10 / 100;
+                    dgvHoaDon["TongCong", e.RowIndex].Value = TongTien + Math.Round((double)TongTien * 5 / 100) + (TongTien * 10 / 100);
+                }
             }
-            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "DinhMuc" && e.FormattedValue.ToString().Replace(".", "") != dgvHoaDon[e.ColumnIndex, e.RowIndex].Value.ToString())
+            else
             {
-                string ChiTiet = "";
-                int GiaBieu = 0;
-                int TieuThu = 0;
-                if (dgvHoaDon["GiaBieu", e.RowIndex].Value != null && !string.IsNullOrEmpty(dgvHoaDon["GiaBieu", e.RowIndex].Value.ToString()))
-                    GiaBieu = int.Parse(dgvHoaDon["GiaBieu", e.RowIndex].Value.ToString());
-                if (dgvHoaDon["TieuThu", e.RowIndex].Value != null && !string.IsNullOrEmpty(dgvHoaDon["TieuThu", e.RowIndex].Value.ToString()))
-                    TieuThu = int.Parse(dgvHoaDon["TieuThu", e.RowIndex].Value.ToString());
-                int TongTien = _cKTKS_DonKH.TinhTienNuoc(false, 0, dgvHoaDon["DanhBo", e.RowIndex].Value.ToString(), GiaBieu, int.Parse(e.FormattedValue.ToString().Replace(".", "")), TieuThu, out ChiTiet);
-                dgvHoaDon["GiaBan", e.RowIndex].Value = TongTien;
-                dgvHoaDon["ThueGTGT", e.RowIndex].Value = Math.Round((double)TongTien * 5 / 100);
-                dgvHoaDon["PhiBVMT", e.RowIndex].Value = TongTien * 10 / 100;
-                dgvHoaDon["TongCong", e.RowIndex].Value = TongTien + Math.Round((double)TongTien * 5 / 100) + (TongTien * 10 / 100);
-            }
-            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "TieuThu" && e.FormattedValue.ToString().Replace(".", "") != dgvHoaDon[e.ColumnIndex, e.RowIndex].Value.ToString())
-            {
-                string ChiTiet = "";
-                int GiaBieu = 0;
-                int DinhMuc = 0;
-                if (dgvHoaDon["GiaBieu", e.RowIndex].Value != null && !string.IsNullOrEmpty(dgvHoaDon["GiaBieu", e.RowIndex].Value.ToString()))
-                    GiaBieu = int.Parse(dgvHoaDon["GiaBieu", e.RowIndex].Value.ToString());
-                if (dgvHoaDon["DinhMuc", e.RowIndex].Value != null && !string.IsNullOrEmpty(dgvHoaDon["DinhMuc", e.RowIndex].Value.ToString()))
-                    DinhMuc = int.Parse(dgvHoaDon["DinhMuc", e.RowIndex].Value.ToString());
-                int TongTien = _cKTKS_DonKH.TinhTienNuoc(false, 0, dgvHoaDon["DanhBo", e.RowIndex].Value.ToString(), GiaBieu, DinhMuc, int.Parse(e.FormattedValue.ToString().Replace(".", "")), out ChiTiet);
-                dgvHoaDon["GiaBan", e.RowIndex].Value = TongTien;
-                dgvHoaDon["ThueGTGT", e.RowIndex].Value = Math.Round((double)TongTien * 5 / 100);
-                dgvHoaDon["PhiBVMT", e.RowIndex].Value = TongTien * 10 / 100;
-                dgvHoaDon["TongCong", e.RowIndex].Value = TongTien + Math.Round((double)TongTien * 5 / 100) + (TongTien * 10 / 100);
+                if (e.FormattedValue.ToString().Replace(".", "") != dgvHoaDon[e.ColumnIndex, e.RowIndex].Value.ToString())
+                {
+                    string ChiTiet = "";
+                    int TongTien = _cKinhDoanh.TinhTienNuoc(false, 0, dgvHoaDon["DanhBo", e.RowIndex].Value.ToString(), int.Parse(dgvHoaDon["GiaBieu", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["DinhMuc", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["TieuThu", e.RowIndex].Value.ToString())
+                        , int.Parse(dgvHoaDon["TyLeSH", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["TyLeHCSN", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["TyLeSX", e.RowIndex].Value.ToString()), int.Parse(dgvHoaDon["TyLeDV", e.RowIndex].Value.ToString()), out ChiTiet);
+                    dgvHoaDon["GiaBan", e.RowIndex].Value = TongTien;
+                    dgvHoaDon["ThueGTGT", e.RowIndex].Value = Math.Round((double)TongTien * 5 / 100);
+                    dgvHoaDon["PhiBVMT", e.RowIndex].Value = TongTien * 10 / 100;
+                    dgvHoaDon["TongCong", e.RowIndex].Value = TongTien + Math.Round((double)TongTien * 5 / 100) + (TongTien * 10 / 100);
+                }
             }
         }
 

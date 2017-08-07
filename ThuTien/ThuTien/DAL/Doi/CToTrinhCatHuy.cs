@@ -34,7 +34,7 @@ namespace ThuTien.DAL.Doi
             }
             catch (Exception ex)
             {
-                _db = new dbThuTienDataContext();
+                Refresh();
                 System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return false;
             }
@@ -51,7 +51,7 @@ namespace ThuTien.DAL.Doi
             }
             catch (Exception ex)
             {
-                _db = new dbThuTienDataContext();
+                Refresh();
                 System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return false;
             }
@@ -67,6 +67,7 @@ namespace ThuTien.DAL.Doi
             }
             catch (Exception ex)
             {
+                Refresh();
                 System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return false;
             }
@@ -95,7 +96,7 @@ namespace ThuTien.DAL.Doi
             }
             catch (Exception ex)
             {
-                _db = new dbThuTienDataContext();
+                Refresh();
                 System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return false;
             }
@@ -111,6 +112,7 @@ namespace ThuTien.DAL.Doi
             }
             catch (Exception ex)
             {
+                Refresh();
                 System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return false;
             }

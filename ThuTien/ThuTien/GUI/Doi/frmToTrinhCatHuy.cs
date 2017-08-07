@@ -243,7 +243,6 @@ namespace ThuTien.GUI.Doi
                     {
                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
                 }
             }
             else
