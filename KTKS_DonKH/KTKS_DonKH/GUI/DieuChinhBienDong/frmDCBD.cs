@@ -752,7 +752,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         _ctdcbd.DoanThanhNien = chkDoanThanhNien.Checked;
 
                         if (chkDMGiuNguyen.Checked || chkGBGiuNguyen.Checked || chkGiaHan.Checked)
+                        {
+                            _ctdcbd.ChucVu = null;
+                            _ctdcbd.NguoiKy = null;
                             _ctdcbd.PhieuDuocKy = false;
+                        }
                         else
                         {
                             BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
@@ -1367,6 +1371,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (_ctdcbd.DMGiuNguyen)
                 dr["KhongBD"] = "ĐM Giữ Nguyên";
             else
+                if (_ctdcbd.GBGiuNguyen)
+                    dr["KhongBD"] = "GB Giữ Nguyên";
+                else
                 if (_ctdcbd.GiaHan)
                     dr["KhongBD"] = "Gia Hạn";
                 else

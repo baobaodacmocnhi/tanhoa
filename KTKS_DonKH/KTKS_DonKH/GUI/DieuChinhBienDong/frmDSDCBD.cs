@@ -415,6 +415,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 if (ctdcbd.DMGiuNguyen)
                                     dr["KhongBD"] = "ĐM Giữ Nguyên";
                                 else
+                                    if (ctdcbd.GBGiuNguyen)
+                                        dr["KhongBD"] = "GB Giữ Nguyên";
+                                    else
                                     if (ctdcbd.GiaHan)
                                         dr["KhongBD"] = "Gia Hạn";
                                     else
