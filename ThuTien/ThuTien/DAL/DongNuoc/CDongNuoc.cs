@@ -673,6 +673,19 @@ namespace ThuTien.DAL.DongNuoc
                 return false;
         }
 
+        public bool CheckPhiMoNuoc(string DanhBo)
+        {
+            return _db.TT_KQDongNuocs.Any(item => item.DanhBo == DanhBo && item.DongNuoc == true && item.MoNuoc == false && item.TroNgaiMN == false);
+        }
+
+        public int GetPhiMoNuoc(string DanhBo)
+        {
+            if (CheckPhiMoNuoc(DanhBo) == true)
+                return _db.TT_KQDongNuocs.SingleOrDefault(item => item.DanhBo == DanhBo && item.DongNuoc == true && item.MoNuoc == false && item.TroNgaiMN == false).PhiMoNuoc.Value;
+            else
+                return 0;
+        }
+
         public TT_DongNuoc GetDongNuocByMaDN(decimal MaDN)
         {
             return _db.TT_DongNuocs.SingleOrDefault(item => item.MaDN == MaDN);

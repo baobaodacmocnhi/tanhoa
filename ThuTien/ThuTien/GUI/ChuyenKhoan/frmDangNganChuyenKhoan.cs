@@ -20,6 +20,7 @@ using ThuTien.BaoCao.ChuyenKhoan;
 using ThuTien.BaoCao.Quay;
 using ThuTien.DAL.ChuyenKhoan;
 using System.Transactions;
+using ThuTien.DAL.DongNuoc;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -34,6 +35,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CBangKe _cBangKe = new CBangKe();
         CDichVuThu _cDichVuThu = new CDichVuThu();
+        CDongNuoc _cDongNuoc = new CDongNuoc();
 
         public frmDangNganChuyenKhoan()
         {
@@ -114,7 +116,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         ///Trung An thêm 'K' phía cuối liên hóa đơn
                         if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 14)
                         {
-                            if (lstHD.FindItemWithText(item.Trim().ToUpper().Replace("K","")) == null)
+                            if (lstHD.FindItemWithText(item.Trim().ToUpper().Replace("K", "")) == null)
                             {
                                 lstHD.Items.Add(item.Trim().ToUpper().Replace("K", ""));
                                 lstHD.EnsureVisible(lstHD.Items.Count - 1);
@@ -899,6 +901,54 @@ namespace ThuTien.GUI.ChuyenKhoan
                 str += item.Text + "\n";
             }
             Clipboard.SetText(str);
+        }
+
+        private void btnInDSThieuTienMoNuoc_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            if (tabControl.SelectedTab.Name == "tabTuGia")
+            {
+                foreach (DataGridViewRow item in dgvHDTuGia.Rows)
+                    if (ds.Tables["TamThuChuyenKhoan"].Select("DanhBo='" + item.Cells["DanhBo_TG"].Value.ToString() + "'").Length == 0
+                        && _cDongNuoc.CheckPhiMoNuoc(item.Cells["DanhBo_TG"].Value.ToString()) == true && _cTienDu.GetTienDu(item.Cells["DanhBo_TG"].Value.ToString()) <= _cDongNuoc.GetPhiMoNuoc(item.Cells["DanhBo_TG"].Value.ToString()))
+                    {
+                        DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                        dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                        dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                        dr["LoaiBaoCao"] = "ĐĂNG NGÂN THIẾU TIỀN MỞ NƯỚC";
+                        dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                        dr["HoTen"] = item.Cells["HoTen_TG"].Value.ToString();
+                        dr["MLT"] = item.Cells["MLT_TG"].Value.ToString().Insert(4, " ").Insert(2, " ");
+                        dr["HanhThu"] = item.Cells["HanhThu_TG"].Value.ToString();
+                        dr["To"] = item.Cells["To_TG"].Value.ToString();
+                        dr["Loai"] = "TG";
+                        ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
+                    }
+            }
+            else
+                if (tabControl.SelectedTab.Name == "tabCoQuan")
+                {
+                    foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
+                        if (ds.Tables["TamThuChuyenKhoan"].Select("DanhBo='" + item.Cells["DanhBo_CQ"].Value.ToString() + "'").Length == 0
+                            && _cDongNuoc.CheckPhiMoNuoc(item.Cells["DanhBo_CQ"].Value.ToString()) == true && _cTienDu.GetTienDu(item.Cells["DanhBo_CQ"].Value.ToString()) <= _cDongNuoc.GetPhiMoNuoc(item.Cells["DanhBo_CQ"].Value.ToString()))
+                        {
+                            DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                            dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                            dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                            dr["LoaiBaoCao"] = "ĐĂNG NGÂN THIẾU TIỀN MỞ NƯỚC";
+                            dr["DanhBo"] = item.Cells["DanhBo_CQ"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                            dr["HoTen"] = item.Cells["HoTen_CQ"].Value.ToString();
+                            dr["MLT"] = item.Cells["MLT_CQ"].Value.ToString().Insert(4, " ").Insert(2, " ");
+                            dr["HanhThu"] = item.Cells["HanhThu_CQ"].Value.ToString();
+                            dr["To"] = item.Cells["To_CQ"].Value.ToString();
+                            dr["Loai"] = "CQ";
+                            ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
+                        }
+                }
+            rptDSTamThuChuyenKhoan rpt = new rptDSTamThuChuyenKhoan();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
         }
 
     }

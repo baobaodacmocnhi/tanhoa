@@ -175,5 +175,10 @@ namespace ThuTien.DAL.TongHop
         {
             return _db.TT_CTDangKyKiemTras.Count(item => item.MaDKKT == MaDKKT);
         }
+
+        public decimal GetMaDKKT(string DanhDo)
+        {
+            return _db.TT_CTDangKyKiemTras.SingleOrDefault(item => item.DanhBo == DanhDo).MaDKKT.Value;
+        }
     }
 }

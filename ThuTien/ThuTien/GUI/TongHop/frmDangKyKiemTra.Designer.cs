@@ -43,13 +43,10 @@
             this.cmbNhanVien = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvDangKyKiemTra = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dgvCTDangKyKiemTra = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
             this.MaDKKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateNhap = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dgvCTDangKyKiemTra = new System.Windows.Forms.DataGridView();
             this.MaNV_HanhThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HanhThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +55,10 @@
             this.NgayNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GB_DM_Cu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dateNhap = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnTimKiem = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDangKyKiemTra)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -124,7 +125,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(1001, 15);
+            this.label8.Location = new System.Drawing.Point(1119, 10);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(60, 13);
             this.label8.TabIndex = 91;
@@ -134,7 +135,7 @@
             // cmbNhanVien
             // 
             this.cmbNhanVien.FormattingEnabled = true;
-            this.cmbNhanVien.Location = new System.Drawing.Point(1067, 12);
+            this.cmbNhanVien.Location = new System.Drawing.Point(1185, 7);
             this.cmbNhanVien.Name = "cmbNhanVien";
             this.cmbNhanVien.Size = new System.Drawing.Size(118, 21);
             this.cmbNhanVien.TabIndex = 92;
@@ -169,6 +170,7 @@
             this.dgvDangKyKiemTra.Location = new System.Drawing.Point(6, 19);
             this.dgvDangKyKiemTra.MultiSelect = false;
             this.dgvDangKyKiemTra.Name = "dgvDangKyKiemTra";
+            this.dgvDangKyKiemTra.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDangKyKiemTra.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDangKyKiemTra.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -177,6 +179,20 @@
             this.dgvDangKyKiemTra.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDangKyKiemTra_CellContentClick);
             this.dgvDangKyKiemTra.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDangKyKiemTra_CellFormatting);
             this.dgvDangKyKiemTra.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDangKyKiemTra_RowPostPaint);
+            // 
+            // MaDKKT
+            // 
+            this.MaDKKT.DataPropertyName = "MaDKKT";
+            this.MaDKKT.HeaderText = "Mã Tờ Trình";
+            this.MaDKKT.Name = "MaDKKT";
+            this.MaDKKT.ReadOnly = true;
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
+            this.CreateDate.ReadOnly = true;
             // 
             // groupBox2
             // 
@@ -227,45 +243,6 @@
             this.dgvCTDangKyKiemTra.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvCTDangKyKiemTra_CellFormatting);
             this.dgvCTDangKyKiemTra.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvCTDangKyKiemTra_CellValidating);
             this.dgvCTDangKyKiemTra.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvCTDangKyKiemTra_RowPostPaint);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(639, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 13);
-            this.label2.TabIndex = 102;
-            this.label2.Text = "(enter)";
-            // 
-            // MaDKKT
-            // 
-            this.MaDKKT.DataPropertyName = "MaDKKT";
-            this.MaDKKT.HeaderText = "Mã Tờ Trình";
-            this.MaDKKT.Name = "MaDKKT";
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Ngày Lập";
-            this.CreateDate.Name = "CreateDate";
-            // 
-            // dateNhap
-            // 
-            this.dateNhap.CustomFormat = "dd/MM/yyyy";
-            this.dateNhap.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateNhap.Location = new System.Drawing.Point(369, 12);
-            this.dateNhap.Name = "dateNhap";
-            this.dateNhap.Size = new System.Drawing.Size(100, 20);
-            this.dateNhap.TabIndex = 104;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(299, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 13);
-            this.label1.TabIndex = 103;
-            this.label1.Text = "Ngày Nhập:";
             // 
             // MaNV_HanhThu
             // 
@@ -318,11 +295,49 @@
             this.NoiDung.Name = "NoiDung";
             this.NoiDung.Width = 200;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(639, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(37, 13);
+            this.label2.TabIndex = 102;
+            this.label2.Text = "(enter)";
+            // 
+            // dateNhap
+            // 
+            this.dateNhap.CustomFormat = "dd/MM/yyyy";
+            this.dateNhap.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateNhap.Location = new System.Drawing.Point(369, 12);
+            this.dateNhap.Name = "dateNhap";
+            this.dateNhap.Size = new System.Drawing.Size(100, 20);
+            this.dateNhap.TabIndex = 104;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(299, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 13);
+            this.label1.TabIndex = 103;
+            this.label1.Text = "Ngày Nhập:";
+            // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.Location = new System.Drawing.Point(925, 12);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(75, 23);
+            this.btnTimKiem.TabIndex = 105;
+            this.btnTimKiem.Text = "Tìm Kiếm";
+            this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            // 
             // frmDangKyKiemTra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1315, 675);
+            this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.dateNhap);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
@@ -375,5 +390,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayNhan;
         private System.Windows.Forms.DataGridViewTextBoxColumn GB_DM_Cu;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
+        private System.Windows.Forms.Button btnTimKiem;
     }
 }
