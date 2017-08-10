@@ -96,10 +96,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtTieuThu_DieuChinhGia2.Text = "0";
             txtGiaDieuChinh2.Text = "0";
             chkTyLe.Checked = false;
-            txtSH.Text = "";
-            txtSX.Text = "";
-            txtDV.Text = "";
-            txtHCSN.Text = "";
+            txtSH.Text = "0";
+            txtSX.Text = "0";
+            txtDV.Text = "0";
+            txtHCSN.Text = "0";
             ///
             _dontkh = null;
             _dontxl = null;
@@ -158,7 +158,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtGiaBieu_Cu.Text = ctdchd.GiaBieu.Value.ToString();
             txtDinhMuc_Cu.Text = ctdchd.DinhMuc.Value.ToString();
             txtTieuThu_Cu.Text = ctdchd.TieuThu.Value.ToString();
-            txtChiTietCu.Text = ctdchd.ChiTietCu;
+            
             ///
             chkDieuChinhGia.Checked = ctdchd.DieuChinhGia;
             if (ctdchd.GiaDieuChinh != null)
@@ -169,7 +169,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtGiaBieu_Moi.Text = ctdchd.GiaBieu_BD.Value.ToString();
             txtDinhMuc_Moi.Text = ctdchd.DinhMuc_BD.Value.ToString();
             txtTieuThu_Moi.Text = ctdchd.TieuThu_BD.Value.ToString();
-            txtChiTietMoi.Text = ctdchd.ChiTietMoi;
+            
             ///
             chkKhauTru.Checked = ctdchd.KhauTru;
             if (ctdchd.SoTienKhauTru != null)
@@ -236,6 +236,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtTongCong_End.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.TongCong_End);
             else
                 txtTongCong_End.Text = "0";
+
+            txtChiTietCu.Text = ctdchd.ChiTietCu;
+            txtChiTietMoi.Text = ctdchd.ChiTietMoi;
         }
 
         private void txtMaDonCu_KeyPress(object sender, KeyPressEventArgs e)
