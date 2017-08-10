@@ -21795,6 +21795,8 @@ namespace ThuTien.LinQ
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
+		private int _MaCTDKKT;
+		
 		private string _DanhBo;
 		
 		private int _MaNV_HanhThu;
@@ -21827,6 +21829,8 @@ namespace ThuTien.LinQ
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
+    partial void OnMaCTDKKTChanging(int value);
+    partial void OnMaCTDKKTChanged();
     partial void OnDanhBoChanging(string value);
     partial void OnDanhBoChanged();
     partial void OnMaNV_HanhThuChanging(int value);
@@ -21861,7 +21865,27 @@ namespace ThuTien.LinQ
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DanhBo", DbType="VarChar(11) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaCTDKKT", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int MaCTDKKT
+		{
+			get
+			{
+				return this._MaCTDKKT;
+			}
+			set
+			{
+				if ((this._MaCTDKKT != value))
+				{
+					this.OnMaCTDKKTChanging(value);
+					this.SendPropertyChanging();
+					this._MaCTDKKT = value;
+					this.SendPropertyChanged("MaCTDKKT");
+					this.OnMaCTDKKTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DanhBo", DbType="VarChar(11) NOT NULL", CanBeNull=false)]
 		public string DanhBo
 		{
 			get

@@ -51,8 +51,8 @@ namespace ThuTien.GUI.TongHop
             {
                 if (_cDangKyKT.CheckExist(txtDanhBo.Text.Trim().Replace(" ", "")) == true)
                 {
-                    MessageBox.Show("Danh Bộ này đã nhập rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    string ID = _cDangKyKT.GetMaDKKT(txtDanhBo.Text.Trim().Replace(" ", "")).ToString();
+                    MessageBox.Show("Đã đăng ký ở tờ trình số: " + ID.Insert(ID.Length - 2, "-"), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 bool exist = false;
                 foreach (DataGridViewRow item in dgvCTDangKyKiemTra.Rows)
@@ -64,39 +64,42 @@ namespace ThuTien.GUI.TongHop
                 if (exist == false)
                 {
                     HOADON hoadon = _cHoaDon.GetMoiNhat(txtDanhBo.Text.Trim().Replace(" ", ""));
-                    if (dgvCTDangKyKiemTra.DataSource == null)
-                    {
-                        dgvCTDangKyKiemTra.Rows.Add();
+                    if (hoadon != null)
+                        if (dgvCTDangKyKiemTra.DataSource == null)
+                        {
+                            dgvCTDangKyKiemTra.Rows.Add();
 
-                        dgvCTDangKyKiemTra["MaNV_HanhThu", dgvCTDangKyKiemTra.Rows.Count - 1].Value = hoadon.MaNV_HanhThu;
-                        if (hoadon.MaNV_HanhThu != null)
+                            if (hoadon.MaNV_HanhThu == null)
+                                hoadon = _cHoaDon.GetMoiNhi(hoadon.DANHBA);
+                            dgvCTDangKyKiemTra["MaNV_HanhThu", dgvCTDangKyKiemTra.Rows.Count - 1].Value = hoadon.MaNV_HanhThu;
                             dgvCTDangKyKiemTra["HanhThu", dgvCTDangKyKiemTra.Rows.Count - 1].Value = _cNguoiDung.GetHoTenByMaND(hoadon.MaNV_HanhThu.Value);
-                        dgvCTDangKyKiemTra["DanhBo", dgvCTDangKyKiemTra.Rows.Count - 1].Value = hoadon.DANHBA;
-                        dgvCTDangKyKiemTra["MLT", dgvCTDangKyKiemTra.Rows.Count - 1].Value = hoadon.MALOTRINH;
-                        dgvCTDangKyKiemTra["DiaChi", dgvCTDangKyKiemTra.Rows.Count - 1].Value = hoadon.SO + " " + hoadon.DUONG;
-                        dgvCTDangKyKiemTra["NgayNhan", dgvCTDangKyKiemTra.Rows.Count - 1].Value = dateNhap.Value.ToString("dd/MM/yyyy");
-                        dgvCTDangKyKiemTra["GB_DM_Cu", dgvCTDangKyKiemTra.Rows.Count - 1].Value = hoadon.GB + " - " + hoadon.DM;
-                    }
-                    else
-                    {
-                        DataTable dtTemp = (DataTable)dgvCTDangKyKiemTra.DataSource;
+                            dgvCTDangKyKiemTra["DanhBo", dgvCTDangKyKiemTra.Rows.Count - 1].Value = hoadon.DANHBA;
+                            dgvCTDangKyKiemTra["MLT", dgvCTDangKyKiemTra.Rows.Count - 1].Value = hoadon.MALOTRINH;
+                            dgvCTDangKyKiemTra["DiaChi", dgvCTDangKyKiemTra.Rows.Count - 1].Value = hoadon.SO + " " + hoadon.DUONG;
+                            dgvCTDangKyKiemTra["NgayNhan", dgvCTDangKyKiemTra.Rows.Count - 1].Value = dateNhap.Value.ToString("dd/MM/yyyy");
+                            dgvCTDangKyKiemTra["GB_DM_Cu", dgvCTDangKyKiemTra.Rows.Count - 1].Value = hoadon.GB + " - " + hoadon.DM;
+                        }
+                        else
+                        {
+                            DataTable dtTemp = (DataTable)dgvCTDangKyKiemTra.DataSource;
 
-                        DataRow dr = dtTemp.NewRow();
+                            DataRow dr = dtTemp.NewRow();
 
-                        dr["MaNV_HanhThu"] = hoadon.MaNV_HanhThu;
-                        if (hoadon.MaNV_HanhThu != null)
+                            if (hoadon.MaNV_HanhThu == null)
+                                hoadon = _cHoaDon.GetMoiNhi(hoadon.DANHBA);
+                            dr["MaNV_HanhThu"] = hoadon.MaNV_HanhThu;
                             dr["HanhThu"] = _cNguoiDung.GetHoTenByMaND(hoadon.MaNV_HanhThu.Value);
-                        dr["DanhBo"] = hoadon.DANHBA;
-                        dr["MLT"] = hoadon.MALOTRINH;
-                        dr["DiaChi"] = hoadon.SO + " " + hoadon.DUONG;
-                        dr["NgayNhan"] = dateNhap.Value.ToString("dd/MM/yyyy");
-                        dr["GB_DM_Cu"] = hoadon.GB + " - " + hoadon.DM;
+                            dr["DanhBo"] = hoadon.DANHBA;
+                            dr["MLT"] = hoadon.MALOTRINH;
+                            dr["DiaChi"] = hoadon.SO + " " + hoadon.DUONG;
+                            dr["NgayNhan"] = dateNhap.Value.ToString("dd/MM/yyyy");
+                            dr["GB_DM_Cu"] = hoadon.GB + " - " + hoadon.DM;
 
-                        dtTemp.Rows.Add(dr);
-                        dtTemp.AcceptChanges();
+                            dtTemp.Rows.Add(dr);
+                            dtTemp.AcceptChanges();
 
-                        dgvCTDangKyKiemTra.DataSource = dtTemp;
-                    }
+                            dgvCTDangKyKiemTra.DataSource = dtTemp;
+                        }
 
                     txtDanhBo.Text = "";
                 }
@@ -140,15 +143,14 @@ namespace ThuTien.GUI.TongHop
                         if (dgvCTDangKyKiemTra.DataSource == null)
                             dangky = new TT_DangKyKiemTra();
                         else
-                            dangky = _cDangKyKT.Get(decimal.Parse(dgvCTDangKyKiemTra["MaDKKT", 0].Value.ToString()));
-                        //int MaCTTT = _cDangKyKT.GetMaxMaCTTT();
+                            dangky = _cDangKyKT.Get(decimal.Parse(dgvCTDangKyKiemTra["MaDKKT_CT", 0].Value.ToString()));
+                        int MaCTDKKT = _cDangKyKT.GetMaxMaCTDKKT();
 
                         foreach (DataGridViewRow item in dgvCTDangKyKiemTra.Rows)
-                            if (_cDangKyKT.CheckExist(item.Cells["DanhBo"].Value.ToString())==false)
-                            //if (item.Cells["MaCTTT"].Value == null || string.IsNullOrEmpty(item.Cells["MaCTTT"].Value.ToString()))
+                            if (item.Cells["MaCTDKKT"].Value == null || string.IsNullOrEmpty(item.Cells["MaCTDKKT"].Value.ToString()))
                             {
                                 TT_CTDangKyKiemTra ctdangky = new TT_CTDangKyKiemTra();
-                                //ctdangky.MaCTTT = ++MaCTTT;
+                                ctdangky.MaCTDKKT = ++MaCTDKKT;
                                 ctdangky.MaNV_HanhThu = int.Parse(item.Cells["MaNV_HanhThu"].Value.ToString());
                                 ctdangky.HanhThu = item.Cells["HanhThu"].Value.ToString();
                                 ctdangky.DanhBo = item.Cells["DanhBo"].Value.ToString();
@@ -257,9 +259,9 @@ namespace ThuTien.GUI.TongHop
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
             {
-                if (dgvCTDangKyKiemTra.Columns[e.ColumnIndex].Name == "NoiDung" && e.FormattedValue.ToString() != dgvCTDangKyKiemTra[e.ColumnIndex, e.RowIndex].Value.ToString())
+                if (dgvCTDangKyKiemTra.Columns[e.ColumnIndex].Name == "NoiDung" && dgvCTDangKyKiemTra.CurrentRow.Cells["MaCTDKKT"].Value.ToString()!="" && e.FormattedValue.ToString() != dgvCTDangKyKiemTra[e.ColumnIndex, e.RowIndex].Value.ToString())
                 {
-                    TT_CTDangKyKiemTra ctdangky = _cDangKyKT.GetCT(dgvCTDangKyKiemTra["DanhBo", e.RowIndex].Value.ToString());
+                    TT_CTDangKyKiemTra ctdangky = _cDangKyKT.GetCT(int.Parse(dgvCTDangKyKiemTra["MaCTDKKT", e.RowIndex].Value.ToString()));
                     ctdangky.NoiDung = e.FormattedValue.ToString();
                     _cDangKyKT.SuaCT(ctdangky);
                 }

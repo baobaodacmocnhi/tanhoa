@@ -143,6 +143,11 @@ namespace ThuTien.DAL.TongHop
             return _db.TT_NguoiDungs.SingleOrDefault(item => item.MaND == _db.TT_CTDangKyKiemTras.SingleOrDefault(item2 => item2.DanhBo == DanhBo).MaNV_HanhThu).HoTen;
         }
 
+        public TT_CTDangKyKiemTra GetCT(int MaCTDKKT)
+        {
+            return _db.TT_CTDangKyKiemTras.SingleOrDefault(item => item.MaCTDKKT == MaCTDKKT);
+        }
+
         public TT_CTDangKyKiemTra GetCT(string DanhBo)
         {
             return _db.TT_CTDangKyKiemTras.SingleOrDefault(item => item.DanhBo == DanhBo);
@@ -169,6 +174,14 @@ namespace ThuTien.DAL.TongHop
         public DataTable GetDSCT(decimal MaDKKT)
         {
             return LINQToDataTable(_db.TT_CTDangKyKiemTras.Where(item => item.MaDKKT == MaDKKT).ToList());
+        }
+
+        public int GetMaxMaCTDKKT()
+        {
+            if (_db.TT_CTDangKyKiemTras.Count() == 0)
+                return 0;
+            else
+                return _db.TT_CTDangKyKiemTras.Max(item => item.MaCTDKKT);
         }
 
         public int CountCT(decimal MaDKKT)

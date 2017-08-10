@@ -47,6 +47,12 @@
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvCTDangKyKiemTra = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dateNhap = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnTimKiem = new System.Windows.Forms.Button();
+            this.MaCTDKKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaDKKT_CT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaNV_HanhThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HanhThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,10 +61,6 @@
             this.NgayNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GB_DM_Cu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dateNhap = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnTimKiem = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDangKyKiemTra)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -218,6 +220,8 @@
             this.dgvCTDangKyKiemTra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvCTDangKyKiemTra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCTDangKyKiemTra.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaCTDKKT,
+            this.MaDKKT_CT,
             this.MaNV_HanhThu,
             this.HanhThu,
             this.DanhBo,
@@ -243,6 +247,57 @@
             this.dgvCTDangKyKiemTra.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvCTDangKyKiemTra_CellFormatting);
             this.dgvCTDangKyKiemTra.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvCTDangKyKiemTra_CellValidating);
             this.dgvCTDangKyKiemTra.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvCTDangKyKiemTra_RowPostPaint);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(639, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(37, 13);
+            this.label2.TabIndex = 102;
+            this.label2.Text = "(enter)";
+            // 
+            // dateNhap
+            // 
+            this.dateNhap.CustomFormat = "dd/MM/yyyy";
+            this.dateNhap.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateNhap.Location = new System.Drawing.Point(369, 12);
+            this.dateNhap.Name = "dateNhap";
+            this.dateNhap.Size = new System.Drawing.Size(100, 20);
+            this.dateNhap.TabIndex = 104;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(299, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 13);
+            this.label1.TabIndex = 103;
+            this.label1.Text = "Ngày Nhập:";
+            // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.Location = new System.Drawing.Point(925, 12);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(75, 23);
+            this.btnTimKiem.TabIndex = 105;
+            this.btnTimKiem.Text = "Tìm Kiếm";
+            this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            // 
+            // MaCTDKKT
+            // 
+            this.MaCTDKKT.DataPropertyName = "MaCTDKKT";
+            this.MaCTDKKT.HeaderText = "MaCTDKKT";
+            this.MaCTDKKT.Name = "MaCTDKKT";
+            this.MaCTDKKT.Visible = false;
+            // 
+            // MaDKKT_CT
+            // 
+            this.MaDKKT_CT.DataPropertyName = "MaDKKT";
+            this.MaDKKT_CT.HeaderText = "MaDKKT_CT";
+            this.MaDKKT_CT.Name = "MaDKKT_CT";
+            this.MaDKKT_CT.Visible = false;
             // 
             // MaNV_HanhThu
             // 
@@ -295,43 +350,6 @@
             this.NoiDung.Name = "NoiDung";
             this.NoiDung.Width = 200;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(639, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 13);
-            this.label2.TabIndex = 102;
-            this.label2.Text = "(enter)";
-            // 
-            // dateNhap
-            // 
-            this.dateNhap.CustomFormat = "dd/MM/yyyy";
-            this.dateNhap.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateNhap.Location = new System.Drawing.Point(369, 12);
-            this.dateNhap.Name = "dateNhap";
-            this.dateNhap.Size = new System.Drawing.Size(100, 20);
-            this.dateNhap.TabIndex = 104;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(299, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 13);
-            this.label1.TabIndex = 103;
-            this.label1.Text = "Ngày Nhập:";
-            // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.Location = new System.Drawing.Point(925, 12);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(75, 23);
-            this.btnTimKiem.TabIndex = 105;
-            this.btnTimKiem.Text = "Tìm Kiếm";
-            this.btnTimKiem.UseVisualStyleBackColor = true;
-            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
-            // 
             // frmDangKyKiemTra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -382,6 +400,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DateTimePicker dateNhap;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnTimKiem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaCTDKKT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaDKKT_CT;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaNV_HanhThu;
         private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
@@ -390,6 +411,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayNhan;
         private System.Windows.Forms.DataGridViewTextBoxColumn GB_DM_Cu;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
-        private System.Windows.Forms.Button btnTimKiem;
     }
 }
