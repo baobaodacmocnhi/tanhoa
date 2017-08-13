@@ -14,7 +14,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
 {
     public partial class frmLoaiDonTKH : Form
     {
-        string _mnu = "mnuLoaiDon";
+        string _mnu = "mnuLoaiDonTKH";
         int _selectedindex = -1;
         BindingList<LoaiDon> _bSourceLD;
         CLoaiDon _cLoaiDon = new CLoaiDon();

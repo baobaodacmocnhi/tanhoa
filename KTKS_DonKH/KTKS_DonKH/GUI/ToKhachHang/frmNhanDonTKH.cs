@@ -23,7 +23,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
 {
     public partial class frmNhanDonTKH : Form
     {
-        string _mnu = "mnuNhanDonKhachHang";
+        string _mnu = "mnuNhanDonTKH";
         DonKH _donkh = null;
         HOADON _hoadon = null;
         CLoaiDon _cLoaiDon = new CLoaiDon();

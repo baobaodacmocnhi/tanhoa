@@ -42,14 +42,15 @@
             this.mnuBanGiamDoc = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDonTu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuNhanDonTu = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCapNhatDonTu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDSDonTu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToKhachHang = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuNhanDonKhachHang = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuNhanDonDienThoai = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuNhanDonTKH = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCapNhatDon = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuDSDon = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDSDonTKH = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuNhanDonDienThoai = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDSDonDienThoai = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuLoaiDon = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLoaiDonTKH = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToTrinhDCHD = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBaoCaoDonTKH = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToXuLy = new System.Windows.Forms.ToolStripMenuItem();
@@ -225,6 +226,7 @@
             // 
             this.mnuDonTu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuNhanDonTu,
+            this.mnuCapNhatDonTu,
             this.mnuDSDonTu});
             this.mnuDonTu.Name = "mnuDonTu";
             this.mnuDonTu.Size = new System.Drawing.Size(98, 20);
@@ -237,6 +239,13 @@
             this.mnuNhanDonTu.Text = "Nhận Đơn";
             this.mnuNhanDonTu.Click += new System.EventHandler(this.mnuNhanDonTu_Click);
             // 
+            // mnuCapNhatDonTu
+            // 
+            this.mnuCapNhatDonTu.Name = "mnuCapNhatDonTu";
+            this.mnuCapNhatDonTu.Size = new System.Drawing.Size(169, 22);
+            this.mnuCapNhatDonTu.Text = "Cập Nhật Đơn";
+            this.mnuCapNhatDonTu.Click += new System.EventHandler(this.mnuCapNhatDonTu_Click);
+            // 
             // mnuDSDonTu
             // 
             this.mnuDSDonTu.Name = "mnuDSDonTu";
@@ -247,31 +256,24 @@
             // mnuToKhachHang
             // 
             this.mnuToKhachHang.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuNhanDonKhachHang,
-            this.mnuNhanDonDienThoai,
+            this.mnuNhanDonTKH,
             this.mnuCapNhatDon,
-            this.mnuDSDon,
+            this.mnuDSDonTKH,
+            this.mnuNhanDonDienThoai,
             this.mnuDSDonDienThoai,
-            this.mnuLoaiDon,
+            this.mnuLoaiDonTKH,
             this.mnuToTrinhDCHD,
             this.mnuBaoCaoDonTKH});
             this.mnuToKhachHang.Name = "mnuToKhachHang";
             this.mnuToKhachHang.Size = new System.Drawing.Size(113, 20);
             this.mnuToKhachHang.Text = "Tổ Khách Hàng";
             // 
-            // mnuNhanDonKhachHang
+            // mnuNhanDonTKH
             // 
-            this.mnuNhanDonKhachHang.Name = "mnuNhanDonKhachHang";
-            this.mnuNhanDonKhachHang.Size = new System.Drawing.Size(248, 22);
-            this.mnuNhanDonKhachHang.Text = "Nhận Đơn Khách Hàng";
-            this.mnuNhanDonKhachHang.Click += new System.EventHandler(this.mnuNhanDonKhachHang_Click);
-            // 
-            // mnuNhanDonDienThoai
-            // 
-            this.mnuNhanDonDienThoai.Name = "mnuNhanDonDienThoai";
-            this.mnuNhanDonDienThoai.Size = new System.Drawing.Size(248, 22);
-            this.mnuNhanDonDienThoai.Text = "Nhận Đơn Điện Thoại";
-            this.mnuNhanDonDienThoai.Click += new System.EventHandler(this.mnuNhanDonDienThoai_Click);
+            this.mnuNhanDonTKH.Name = "mnuNhanDonTKH";
+            this.mnuNhanDonTKH.Size = new System.Drawing.Size(248, 22);
+            this.mnuNhanDonTKH.Text = "Nhận Đơn";
+            this.mnuNhanDonTKH.Click += new System.EventHandler(this.mnuNhanDonTKH_Click);
             // 
             // mnuCapNhatDon
             // 
@@ -280,12 +282,18 @@
             this.mnuCapNhatDon.Text = "Cập Nhật Đơn";
             this.mnuCapNhatDon.Click += new System.EventHandler(this.mnuCapNhatDon_Click);
             // 
-            // mnuDSDon
+            // mnuDSDonTKH
             // 
-            this.mnuDSDon.Name = "mnuDSDon";
-            this.mnuDSDon.Size = new System.Drawing.Size(248, 22);
-            this.mnuDSDon.Text = "Danh Sách Đơn";
-            this.mnuDSDon.Click += new System.EventHandler(this.mnuDSDon_Click);
+            this.mnuDSDonTKH.Name = "mnuDSDonTKH";
+            this.mnuDSDonTKH.Size = new System.Drawing.Size(248, 22);
+            this.mnuDSDonTKH.Text = "Danh Sách Đơn";
+            // 
+            // mnuNhanDonDienThoai
+            // 
+            this.mnuNhanDonDienThoai.Name = "mnuNhanDonDienThoai";
+            this.mnuNhanDonDienThoai.Size = new System.Drawing.Size(248, 22);
+            this.mnuNhanDonDienThoai.Text = "Nhận Đơn Điện Thoại";
+            this.mnuNhanDonDienThoai.Click += new System.EventHandler(this.mnuNhanDonDienThoai_Click);
             // 
             // mnuDSDonDienThoai
             // 
@@ -294,12 +302,12 @@
             this.mnuDSDonDienThoai.Text = "Danh Sách Đơn Điện Thoại";
             this.mnuDSDonDienThoai.Click += new System.EventHandler(this.mnuDSDonDienThoai_Click);
             // 
-            // mnuLoaiDon
+            // mnuLoaiDonTKH
             // 
-            this.mnuLoaiDon.Name = "mnuLoaiDon";
-            this.mnuLoaiDon.Size = new System.Drawing.Size(248, 22);
-            this.mnuLoaiDon.Text = "Loại Đơn";
-            this.mnuLoaiDon.Click += new System.EventHandler(this.mnuLoaiDon_Click);
+            this.mnuLoaiDonTKH.Name = "mnuLoaiDonTKH";
+            this.mnuLoaiDonTKH.Size = new System.Drawing.Size(248, 22);
+            this.mnuLoaiDonTKH.Text = "Loại Đơn";
+            this.mnuLoaiDonTKH.Click += new System.EventHandler(this.mnuLoaiDonTKH_Click);
             // 
             // mnuToTrinhDCHD
             // 
@@ -828,7 +836,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuTo;
         private System.Windows.Forms.ToolStripMenuItem mnuNhom;
         private System.Windows.Forms.ToolStripMenuItem mnuNguoiDung;
-        private System.Windows.Forms.ToolStripMenuItem mnuNhanDonKhachHang;
+        private System.Windows.Forms.ToolStripMenuItem mnuNhanDonTKH;
         private System.Windows.Forms.ToolStripMenuItem mnuDangNhap;
         private System.Windows.Forms.ToolStripMenuItem mnuDoiMatKhau;
         private System.Windows.Forms.ToolStripMenuItem mnuDangXuat;
@@ -845,12 +853,12 @@
         private System.Windows.Forms.ToolStripMenuItem mnuAdmin;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.ToolStripMenuItem mnuPhieuCHDB;
-        private System.Windows.Forms.ToolStripMenuItem mnuLoaiDon;
+        private System.Windows.Forms.ToolStripMenuItem mnuLoaiDonTKH;
         private System.Windows.Forms.ToolStripMenuItem mnuHienTrangKiemTra;
         private System.Windows.Forms.ToolStripMenuItem mnuLoaiChungTu;
         private System.Windows.Forms.ToolStripMenuItem mnuVeViecTTTL;
         private System.Windows.Forms.ToolStripMenuItem mnuCapNhatDon;
-        private System.Windows.Forms.ToolStripMenuItem mnuDSDon;
+        private System.Windows.Forms.ToolStripMenuItem mnuDSDonTKH;
         private System.Windows.Forms.ToolStripMenuItem mnuDSKQKTXM;
         private System.Windows.Forms.ToolStripMenuItem mnuDongTienBoiThuong;
         private System.Windows.Forms.ToolStripMenuItem mnuBamChi;
@@ -898,5 +906,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuDonTu;
         private System.Windows.Forms.ToolStripMenuItem mnuNhanDonTu;
         private System.Windows.Forms.ToolStripMenuItem mnuDSDonTu;
+        private System.Windows.Forms.ToolStripMenuItem mnuCapNhatDonTu;
     }
 }

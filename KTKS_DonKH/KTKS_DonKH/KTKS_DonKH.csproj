@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>626</ApplicationRevision>
+    <ApplicationRevision>627</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -740,6 +740,12 @@
     </Compile>
     <Compile Include="GUI\CatHuyDanhBo\frmNoiDungXuLyCHDB.Designer.cs">
       <DependentUpon>frmNoiDungXuLyCHDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DonTu\frmCapNhatDonTu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DonTu\frmCapNhatDonTu.Designer.cs">
+      <DependentUpon>frmCapNhatDonTu.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\DonTu\frmDSDonTu.cs">
       <SubType>Form</SubType>
@@ -1527,6 +1533,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CatHuyDanhBo\frmNoiDungXuLyCHDB.resx">
       <DependentUpon>frmNoiDungXuLyCHDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DonTu\frmCapNhatDonTu.resx">
+      <DependentUpon>frmCapNhatDonTu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DonTu\frmDSDonTu.resx">
       <DependentUpon>frmDSDonTu.cs</DependentUpon>

@@ -59,6 +59,9 @@ namespace KTKS_DonKH.DAL.DonTu
             DataTable dt = new DataTable();
             switch (Loai)
             {
+                case "DonTu":
+                    dt = LINQToDataTable(db.LichSuDonTus.Where(item => item.MaDonMoi.Value == MaDon).OrderByDescending(item => item.NgayChuyen).ThenByDescending(item => item.ID).ToList());
+                    break;
                 case "TKH":
                     dt = LINQToDataTable(db.LichSuDonTus.Where(item => item.MaDon.Value == MaDon).OrderByDescending(item => item.NgayChuyen).ThenByDescending(item => item.ID).ToList());
                     break;

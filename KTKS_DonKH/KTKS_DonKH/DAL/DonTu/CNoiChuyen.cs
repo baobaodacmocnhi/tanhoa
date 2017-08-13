@@ -13,6 +13,8 @@ namespace KTKS_DonKH.DAL.DonTu
         {
             switch (Loai)
             {
+                case "DonTu":
+                    return db.NoiChuyens.Where(item => item.DonTu == true).OrderBy(item => item.STT).ToList();
                 case "TKH":
                     return db.NoiChuyens.Where(item=>item.TKH==true).OrderBy(item => item.STT).ToList();
                 case "TXL":

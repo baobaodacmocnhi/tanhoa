@@ -28918,7 +28918,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _MaDonTBC;
 		
-		private string _MaDonMoi;
+		private System.Nullable<int> _MaDonMoi;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
@@ -28952,7 +28952,7 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaDonTXLChanged();
     partial void OnMaDonTBCChanging(System.Nullable<decimal> value);
     partial void OnMaDonTBCChanged();
-    partial void OnMaDonMoiChanging(string value);
+    partial void OnMaDonMoiChanging(System.Nullable<int> value);
     partial void OnMaDonMoiChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
@@ -29169,8 +29169,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonMoi", DbType="VarChar(50)")]
-		public string MaDonMoi
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonMoi", DbType="Int")]
+		public System.Nullable<int> MaDonMoi
 		{
 			get
 			{
@@ -31510,6 +31510,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _Name;
 		
+		private bool _DonTu;
+		
 		private bool _TKH;
 		
 		private bool _TXL;
@@ -31528,6 +31530,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnSTTChanged();
     partial void OnNameChanging(string value);
     partial void OnNameChanged();
+    partial void OnDonTuChanging(bool value);
+    partial void OnDonTuChanged();
     partial void OnTKHChanging(bool value);
     partial void OnTKHChanged();
     partial void OnTXLChanging(bool value);
@@ -31598,6 +31602,26 @@ namespace KTKS_DonKH.LinQ
 					this._Name = value;
 					this.SendPropertyChanged("Name");
 					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DonTu", DbType="Bit NOT NULL")]
+		public bool DonTu
+		{
+			get
+			{
+				return this._DonTu;
+			}
+			set
+			{
+				if ((this._DonTu != value))
+				{
+					this.OnDonTuChanging(value);
+					this.SendPropertyChanging();
+					this._DonTu = value;
+					this.SendPropertyChanged("DonTu");
+					this.OnDonTuChanged();
 				}
 			}
 		}

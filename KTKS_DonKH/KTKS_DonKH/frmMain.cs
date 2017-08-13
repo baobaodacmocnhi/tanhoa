@@ -247,9 +247,9 @@ namespace KTKS_DonKH
 
         #region Đơn Tổ Khách Hàng
 
-        private void mnuNhanDonKhachHang_Click(object sender, EventArgs e)
+        private void mnuNhanDonTKH_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen("mnuNhanDonKhachHang", "Xem"))
+            if (CTaiKhoan.CheckQuyen("mnuNhanDonTKH", "Xem"))
             {
                 frmNhanDonTKH frm = new frmNhanDonTKH();
                 OpenForm(frm);
@@ -280,9 +280,9 @@ namespace KTKS_DonKH
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void mnuDSDon_Click(object sender, EventArgs e)
+        private void mnuDSDonTKH_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen("mnuDSDon", "Xem"))
+            if (CTaiKhoan.CheckQuyen("mnuDSDonTKH", "Xem"))
             {
                 frmDSDonTKH frm = new frmDSDonTKH();
                 OpenForm(frm);
@@ -302,9 +302,9 @@ namespace KTKS_DonKH
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void mnuLoaiDon_Click(object sender, EventArgs e)
+        private void mnuLoaiDonTKH_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen("mnuLoaiDon", "Xem"))
+            if (CTaiKhoan.CheckQuyen("mnuLoaiDonTKH", "Xem"))
             {
                 frmLoaiDonTKH frm = new frmLoaiDonTKH();
                 OpenForm(frm);
@@ -909,7 +909,20 @@ namespace KTKS_DonKH
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuCapNhatDonTu_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuCapNhatDonTu", "Xem"))
+            {
+                frmCapNhatDonTu frm = new frmCapNhatDonTu();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
+
+        
 
         
 

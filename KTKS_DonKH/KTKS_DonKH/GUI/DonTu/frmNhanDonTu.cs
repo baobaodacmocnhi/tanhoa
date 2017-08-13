@@ -19,12 +19,13 @@ namespace KTKS_DonKH.GUI.DonTu
     public partial class frmNhanDonTu : Form
     {
         string _mnu = "mnuNhanDonTu";
-        LinQ.DonTu _dontu = null;
-        HOADON _hoadon = null;
         CDonTu _cDonTu = new CDonTu();
         CNhomDon _cNhomDon = new CNhomDon();
         CThuTien _cThuTien = new CThuTien();
         CDocSo _cDocSo = new CDocSo();
+
+        LinQ.DonTu _dontu = null;
+        HOADON _hoadon = null;
         int _MaDon = -1;
 
         public frmNhanDonTu()
@@ -162,6 +163,7 @@ namespace KTKS_DonKH.GUI.DonTu
             _hoadon = null;
             _MaDon = -1;
         }
+
         private void chkcmbDieuChinh_EditValueChanged(object sender, EventArgs e)
         {
             if (chkcmbDieuChinh.Properties.Items.Count > 0)
