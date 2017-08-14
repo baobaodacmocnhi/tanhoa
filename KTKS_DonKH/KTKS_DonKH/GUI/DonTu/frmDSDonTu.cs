@@ -7,12 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.DonTu;
+using KTKS_DonKH.DAL.QuanTri;
 
 namespace KTKS_DonKH.GUI.DonTu
 {
     public partial class frmDSDonTu : Form
     {
         CDonTu _cDonTu = new CDonTu();
+        CNoiChuyen _cNoiChuyen = new CNoiChuyen();
+        CTaiKhoan _cTaiKhoan = new CTaiKhoan();
+        CPhongBanDoi _cPhongBanDoi = new CPhongBanDoi();
+
+        DataSet _dsNoiChuyen = new DataSet("NoiChuyen");
 
         public frmDSDonTu()
         {
@@ -22,6 +28,36 @@ namespace KTKS_DonKH.GUI.DonTu
         private void frmDSDonTu_Load(object sender, EventArgs e)
         {
             dgvDSDonTu.AutoGenerateColumns = false;
+
+            repositoryItemLookUpEdit1.DataSource = _cNoiChuyen.GetDS("DonTu");
+            repositoryItemLookUpEdit1.DisplayMember = "Name";
+            repositoryItemLookUpEdit1.ValueMember = "ID";
+
+                DataTable dt = new DataTable();
+            dt = new DataTable();
+            dt = _cTaiKhoan.GetDS_ThuKy("TKH");
+            dt.TableName = "2";//Tổ Khách Hàng
+            _dsNoiChuyen.Tables.Add(dt);
+            ///
+            dt = new DataTable();
+            dt = _cTaiKhoan.GetDS_ThuKy("TXL");
+            dt.TableName = "3";//Tổ Xử Lý
+            _dsNoiChuyen.Tables.Add(dt);
+            ///
+            dt = new DataTable();
+            dt = _cTaiKhoan.GetDS_ThuKy("TBC");
+            dt.TableName = "4";//Tổ Bấm Chì
+            _dsNoiChuyen.Tables.Add(dt);
+            ///
+            dt = new DataTable();
+            dt = _cTaiKhoan.GetDS_ThuKy("TVP");
+            dt.TableName = "5";//Tổ Văn Phòng
+            _dsNoiChuyen.Tables.Add(dt);
+            ///
+            dt = new DataTable();
+            dt = _cPhongBanDoi.GetDS();
+            dt.TableName = "6";//Phòng Ban Đội Khác
+            _dsNoiChuyen.Tables.Add(dt);
 
             cmbTimTheo.SelectedItem = "Ngày";
         }
@@ -71,7 +107,8 @@ namespace KTKS_DonKH.GUI.DonTu
                         dgvDSDonTu.DataSource = _cDonTu.GetDSBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper());
                     break;
                 case "Ngày":
-                    dgvDSDonTu.DataSource = _cDonTu.GetDS(dateTu.Value, dateDen.Value);
+                    //dgvDSDonTu.DataSource = _cDonTu.GetDS(dateTu.Value, dateDen.Value);
+                    gridControl1.DataSource = _cDonTu.GetDS(dateTu.Value, dateDen.Value);
                     break;
                 default:
                     break;
