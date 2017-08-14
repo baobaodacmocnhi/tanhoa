@@ -393,11 +393,6 @@ namespace ThuTien.GUI.ToTruong
             }
         }
 
-        private void dgvHoaDon_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        {
-            
-        }
-
         private void dgvHoaDon_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -509,7 +504,7 @@ namespace ThuTien.GUI.ToTruong
 
         private void dgvHoaDon_CellValidated(object sender, DataGridViewCellEventArgs e)
         {
-            //if (dgvHoaDon.Columns[e.ColumnIndex].Name == "TieuThu")
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name != "GiaBan" && dgvHoaDon.Columns[e.ColumnIndex].Name != "ThueGTGT" && dgvHoaDon.Columns[e.ColumnIndex].Name != "PhiBVMT" && dgvHoaDon.Columns[e.ColumnIndex].Name != "TongCong")
                 if (dgvHoaDon["TyLeSH", e.RowIndex].Value.ToString() == "0" && dgvHoaDon["TyLeHCSN", e.RowIndex].Value.ToString() == "0" && dgvHoaDon["TyLeSX", e.RowIndex].Value.ToString() == "0" && dgvHoaDon["TyLeDV", e.RowIndex].Value.ToString() == "0")
                 {
                     //if (e.FormattedValue.ToString().Replace(".", "") != dgvHoaDon[e.ColumnIndex, e.RowIndex].Value.ToString())

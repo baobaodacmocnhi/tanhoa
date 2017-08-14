@@ -175,7 +175,6 @@
             this.dgvHoaDon.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHoaDon_CellContentClick);
             this.dgvHoaDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_CellFormatting);
             this.dgvHoaDon.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHoaDon_CellValidated);
-            this.dgvHoaDon.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvHoaDon_CellValidating);
             this.dgvHoaDon.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvHoaDon_RowPostPaint);
             // 
             // MaHD
