@@ -562,7 +562,7 @@
             this.label11.Size = new System.Drawing.Size(562, 19);
             this.label11.TabIndex = 27;
             this.label11.Text = "                                                                 Thực Tế         " +
-    "                                                  ";
+                "                                                  ";
             // 
             // groupBox2
             // 
@@ -765,7 +765,7 @@
             // 
             // txtPhiBVMT
             // 
-            this.txtPhiBVMT.Location = new System.Drawing.Point(761, 559);
+            this.txtPhiBVMT.Location = new System.Drawing.Point(760, 559);
             this.txtPhiBVMT.Name = "txtPhiBVMT";
             this.txtPhiBVMT.Size = new System.Drawing.Size(100, 22);
             this.txtPhiBVMT.TabIndex = 39;
@@ -779,7 +779,7 @@
             // 
             // txtGiaBan
             // 
-            this.txtGiaBan.Location = new System.Drawing.Point(559, 559);
+            this.txtGiaBan.Location = new System.Drawing.Point(560, 559);
             this.txtGiaBan.Name = "txtGiaBan";
             this.txtGiaBan.Size = new System.Drawing.Size(100, 22);
             this.txtGiaBan.TabIndex = 35;
