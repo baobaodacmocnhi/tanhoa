@@ -8,17 +8,13 @@ using System.Configuration;
 
 namespace WSSmartPhone
 {
-    class CThuTien : Connection
+    class CThuTien
     {
-
-        public CThuTien()
-        {
-            _connectionString = ConfigurationManager.AppSettings["ThuTien"].ToString();
-        }
-
+        Connection _DAL = new Connection(ConfigurationManager.AppSettings["BaoBao"].ToString());
+        
         public DataTable GetDSHoaDon(string DanhBo)
         {
-            return ExecuteQuery_SqlDataAdapter_DataTable("select * from HOADON where DANHBA='" + DanhBo + "' order by ID_HOADON desc");
+           return _DAL.ExecuteQuery_SqlDataAdapter_DataTable("select * from HOADON where DANHBA='" + DanhBo + "er by ID_HOADON desc");
         }
     }
 }

@@ -15,10 +15,11 @@ namespace WSSmartPhone
         protected SqlCommand command;               // Đối tượng command thực thi truy vấn
         //protected SqlTransaction transaction;       // Đối tượng transaction
 
-        public Connection()
+        public Connection(String connectionString)
         {
             try
-            { 
+            {
+                _connectionString = connectionString;
                 connection = new SqlConnection(_connectionString);
             }
             catch (Exception)

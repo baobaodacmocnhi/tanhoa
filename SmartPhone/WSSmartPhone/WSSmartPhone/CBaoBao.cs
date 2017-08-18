@@ -9,32 +9,29 @@ using System.Configuration;
 
 namespace WSSmartPhone
 {
-    class CBaoBao:Connection
+    class CBaoBao
     {
-        public CBaoBao()
-        {
-            _connectionString = ConfigurationManager.AppSettings["BaoBao"].ToString();
-        }
+        Connection _DAL = new Connection(ConfigurationManager.AppSettings["BaoBao"].ToString());
 
         public bool ThemKhachHang(string HoTen, int GioiTinh)
         {
             int ID = 0;
-            if (int.Parse(ExecuteQuery_SqlDataAdapter_DataTable("select COUNT(ID) from KhachHang").Rows[0][0].ToString()) == 0)
+            if (int.Parse(_DAL.ExecuteQuery_SqlDataAdapter_DataTable("select COUNT(ID) from KhachHang").Rows[0][0].ToString()) == 0)
                 ID = 1;
             else
-                ID = int.Parse(ExecuteQuery_SqlDataAdapter_DataTable("select MAX(ID)+1 from KhachHang").Rows[0][0].ToString());
+                ID = int.Parse(_DAL.ExecuteQuery_SqlDataAdapter_DataTable("select MAX(ID)+1 from KhachHang").Rows[0][0].ToString());
             string sql = "insert into KhachHang(ID,HoTen,GioiTinh)values(" + ID + ",N'" + HoTen + "'," + GioiTinh + ")";
-            return ExecuteNonQuery(sql);
+            return _DAL.ExecuteNonQuery(sql);
         }
 
         public bool XoaKhachHang(string ID)
         {
-            return ExecuteNonQuery("delete KhachHang where ID=" + ID);
+            return _DAL.ExecuteNonQuery("delete KhachHang where ID=" + ID);
         }
 
         public DataTable GetDSKhachHang()
         {
-            return ExecuteQuery_SqlDataAdapter_DataTable("select * from KhachHang");
+            return _DAL.ExecuteQuery_SqlDataAdapter_DataTable("select * from KhachHang");
         }
     }
 }
