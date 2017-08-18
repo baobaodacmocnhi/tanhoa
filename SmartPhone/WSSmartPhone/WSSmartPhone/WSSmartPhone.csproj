@@ -62,7 +62,7 @@
     <Compile Include="CBaoBao.cs" />
     <Compile Include="CDocSo.cs" />
     <Compile Include="CThuTien.cs" />
-    <Compile Include="DAL\Connection.cs" />
+    <Compile Include="Connection.cs" />
     <Compile Include="Service.asmx.cs">
       <DependentUpon>Service.asmx</DependentUpon>
       <SubType>Component</SubType>

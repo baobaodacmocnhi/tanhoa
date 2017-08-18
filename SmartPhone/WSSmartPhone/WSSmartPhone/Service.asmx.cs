@@ -38,6 +38,12 @@ namespace WSSmartPhone
         }
 
         [WebMethod]
+        public bool XoaKhachHang(string ID)
+        {
+            return _cBaoBao.XoaKhachHang(ID);
+        }
+
+        [WebMethod]
         public DataTable GetDSKhachHang()
         {
             return _cBaoBao.GetDSKhachHang();

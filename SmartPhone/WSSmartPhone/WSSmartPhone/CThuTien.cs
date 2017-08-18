@@ -13,21 +13,8 @@ namespace WSSmartPhone
 
         public CThuTien()
         {
-            _connectionString = ConfigurationManager.AppSettings["ThuTien"].ToString(); ;
+            _connectionString = ConfigurationManager.AppSettings["ThuTien"].ToString();
         }
-
-
-        //public CThuTien()
-        //{
-        //    try
-        //    {
-        //        _connectionString = "Data Source=192.168.90.9;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa;Password=123@tanhoa";
-        //        connection = new SqlConnection(_connectionString);
-        //    }
-        //    catch (Exception)
-        //    {
-        //    }
-        //}
 
         public DataTable GetDSHoaDon(string DanhBo)
         {
