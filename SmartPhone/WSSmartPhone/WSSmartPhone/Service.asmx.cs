@@ -32,9 +32,15 @@ namespace WSSmartPhone
         #region BaoBao
 
         [WebMethod]
-        public bool ThemKhachHang(string HoTen,int GioiTinh)
+        public bool ThemKhachHang(string HoTen, string GioiTinh, string MaPhong)
         {
-            return _cBaoBao.ThemKhachHang(HoTen, GioiTinh);
+            return _cBaoBao.ThemKhachHang(HoTen, GioiTinh, MaPhong);
+        }
+
+        [WebMethod]
+        public bool SuaKhachHang(string ID, string HoTen, string GioiTinh, string MaPhong)
+        {
+            return _cBaoBao.SuaKhachHang(ID, HoTen, GioiTinh, MaPhong);
         }
 
         [WebMethod]
@@ -47,6 +53,72 @@ namespace WSSmartPhone
         public DataTable GetDSKhachHang()
         {
             return _cBaoBao.GetDSKhachHang();
+        }
+
+        [WebMethod]
+        public bool SuaPhong(string ID, string Name, string GiaTien, string ChiSoDien, string ChiSoNuoc)
+        {
+            return _cBaoBao.SuaPhong(ID, Name, GiaTien, ChiSoDien, ChiSoNuoc);
+        }
+
+        [WebMethod]
+        public DataTable GetDSPhong()
+        {
+            return _cBaoBao.GetDSPhong();
+        }
+
+        [WebMethod]
+        public bool SuaGiaDien(string ID, string Name, string GiaTien)
+        {
+            return _cBaoBao.SuaGiaDien(ID, Name, GiaTien);
+        }
+
+        [WebMethod]
+        public DataTable GetDSGiaDien()
+        {
+            return _cBaoBao.GetDSGiaDien();
+        }
+
+        [WebMethod]
+        public bool SuaGiaNuoc(string ID, string Name, string GiaTien)
+        {
+            return _cBaoBao.SuaGiaNuoc(ID, Name, GiaTien);
+        }
+
+        [WebMethod]
+        public DataTable GetDSGiaNuoc()
+        {
+            return _cBaoBao.GetDSGiaNuoc();
+        }
+
+        [WebMethod]
+        public bool ThemHoaDon(string MaPhong, string ChiSoDien, string ChiSoNuoc)
+        {
+            return _cBaoBao.ThemHoaDon(MaPhong, int.Parse(ChiSoDien), int.Parse(ChiSoNuoc));
+        }
+
+        [WebMethod]
+        public bool SuaHoaDon(string ID, string ChiSoDien, string ChiSoNuoc)
+        {
+            return _cBaoBao.SuaHoaDon(ID, int.Parse(ChiSoDien), int.Parse(ChiSoNuoc));
+        }
+
+        [WebMethod]
+        public bool XoaHoaDon(string ID)
+        {
+            return _cBaoBao.XoaHoaDon(ID);
+        }
+
+        [WebMethod]
+        public DataTable GetDSHoaDonBB()
+        {
+            return _cBaoBao.GetDSHoaDon();
+        }
+
+        [WebMethod]
+        public DataTable GetDSHoaDonBBByMaPhong(string MaPhong)
+        {
+            return _cBaoBao.GetDSHoaDon(MaPhong);
         }
 
         #endregion

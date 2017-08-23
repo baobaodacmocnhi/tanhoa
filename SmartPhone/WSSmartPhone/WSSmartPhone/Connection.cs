@@ -58,6 +58,21 @@ namespace WSSmartPhone
             }
         }
 
+        public object ExecuteQuery_ReturnOneValue(string sql)
+        {
+            try
+            {
+                Connect();
+                command = new SqlCommand(sql, connection);
+                return command.ExecuteScalar();
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
+        }
+
         /// <summary>
         /// Hàm thực thi các câu truy vấn lấy thông tin dữ liệu như Select
         /// </summary>
