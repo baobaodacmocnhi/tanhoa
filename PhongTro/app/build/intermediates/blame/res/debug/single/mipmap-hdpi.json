@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "D:\\Projects\\PhongTro\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\ic_launcher.png",
+        "source": "D:\\Projects\\PhongTro\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\Projects\\PhongTro\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\ic_launcher_round.png",
+        "source": "D:\\Projects\\PhongTro\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    }
+]

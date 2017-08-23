@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Phòng Trọ</string>
+    <string name="ActivityKhachHang_name">Khách Hàng</string>
+    <string name="ActivityPhong_name">Phòng</string>
+    <string name="ActivityGiaDien_name">Giá Điện</string>
+    <string name="ActivityGiaNuoc_name">Giá Nước</string>
+    <string name="ActivityHoaDon_name">Hóa Đơn</string>
+</resources>
