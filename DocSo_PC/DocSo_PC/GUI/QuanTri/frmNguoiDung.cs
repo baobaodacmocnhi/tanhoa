@@ -101,6 +101,8 @@ namespace DocSo_PC.GUI.QuanTri
                         nguoidung.MaTo = (int)cmbTo.SelectedValue;
                     if (cmbNhom.SelectedIndex != -1)
                         nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
+                    if (txtMay.Text.Trim() != "")
+                        nguoidung.May = int.Parse(txtMay.Text.Trim());
                     nguoidung.PhoGiamDoc = chkPhoGiamDoc.Checked;
                     nguoidung.An = chkAn.Checked;
                     nguoidung.Doi = chkDoi.Checked;
@@ -149,6 +151,10 @@ namespace DocSo_PC.GUI.QuanTri
                         nguoidung.NamVaoLam = int.Parse(txtNam.Text.Trim());
                     nguoidung.MaTo = (int)cmbTo.SelectedValue;
                     nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
+                    if (txtMay.Text.Trim() != "")
+                        nguoidung.May = int.Parse(txtMay.Text.Trim());
+                    else
+                        nguoidung.May = null;
                     nguoidung.PhoGiamDoc = chkPhoGiamDoc.Checked;
                     nguoidung.An = chkAn.Checked;
                     nguoidung.Doi = chkDoi.Checked;
@@ -220,6 +226,7 @@ namespace DocSo_PC.GUI.QuanTri
                     cmbTo.SelectedValue = int.Parse(dgvNguoiDung["MaTo", e.RowIndex].Value.ToString());
                 if (dgvNguoiDung["MaNhom", e.RowIndex].Value != null)
                     cmbNhom.SelectedValue = int.Parse(dgvNguoiDung["MaNhom", e.RowIndex].Value.ToString());
+                txtMay.Text = dgvNguoiDung["May", e.RowIndex].Value.ToString();
                 chkPhoGiamDoc.Checked = bool.Parse(dgvNguoiDung["PhoGiamDoc", e.RowIndex].Value.ToString());
                 chkAn.Checked = bool.Parse(dgvNguoiDung["An", e.RowIndex].Value.ToString());
                 chkDoi.Checked = bool.Parse(dgvNguoiDung["Doi", e.RowIndex].Value.ToString());

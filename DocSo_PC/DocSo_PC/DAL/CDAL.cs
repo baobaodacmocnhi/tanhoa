@@ -158,7 +158,7 @@ namespace DocSo_PC.DAL
             try
             {
                 //_connectionString = "Data Source=192.168.90.8\\KD;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa;Password=123@tanhoa";
-                _connectionString = DocSo_PC.Properties.Settings.Default.DocSoConnectionString;
+                _connectionString = DocSo_PC.Properties.Settings.Default.DocSoTHConnectionString;
                 connection = new SqlConnection(_connectionString);
             }
             catch (Exception)

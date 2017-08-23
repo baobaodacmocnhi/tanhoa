@@ -73,6 +73,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.chkPhoGiamDoc = new System.Windows.Forms.CheckBox();
             this.chkAn = new System.Windows.Forms.CheckBox();
+            this.txtMay = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.MaND = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,6 +85,7 @@
             this.TenTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaNhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenNhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.May = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PhoGiamDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.An = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -201,6 +204,7 @@
             this.TenTo,
             this.MaNhom,
             this.TenNhom,
+            this.May,
             this.PhoGiamDoc,
             this.An,
             this.Doi,
@@ -209,10 +213,10 @@
             this.DongNuoc,
             this.VanPhong,
             this.ChamCong});
-            this.dgvNguoiDung.Location = new System.Drawing.Point(12, 144);
+            this.dgvNguoiDung.Location = new System.Drawing.Point(12, 162);
             this.dgvNguoiDung.MultiSelect = false;
             this.dgvNguoiDung.Name = "dgvNguoiDung";
-            this.dgvNguoiDung.Size = new System.Drawing.Size(680, 485);
+            this.dgvNguoiDung.Size = new System.Drawing.Size(734, 485);
             this.dgvNguoiDung.TabIndex = 10;
             this.dgvNguoiDung.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNguoiDung_CellContentClick);
             this.dgvNguoiDung.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvNguoiDung_CellFormatting);
@@ -254,7 +258,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.gridControl);
-            this.groupBox1.Location = new System.Drawing.Point(698, 144);
+            this.groupBox1.Location = new System.Drawing.Point(752, 162);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(654, 498);
             this.groupBox1.TabIndex = 15;
@@ -426,7 +430,7 @@
             // chkToTruong
             // 
             this.chkToTruong.AutoSize = true;
-            this.chkToTruong.Location = new System.Drawing.Point(252, 121);
+            this.chkToTruong.Location = new System.Drawing.Point(252, 139);
             this.chkToTruong.Name = "chkToTruong";
             this.chkToTruong.Size = new System.Drawing.Size(76, 17);
             this.chkToTruong.TabIndex = 16;
@@ -436,7 +440,7 @@
             // chkHanhThu
             // 
             this.chkHanhThu.AutoSize = true;
-            this.chkHanhThu.Location = new System.Drawing.Point(334, 121);
+            this.chkHanhThu.Location = new System.Drawing.Point(334, 139);
             this.chkHanhThu.Name = "chkHanhThu";
             this.chkHanhThu.Size = new System.Drawing.Size(74, 17);
             this.chkHanhThu.TabIndex = 17;
@@ -446,7 +450,7 @@
             // chkDongNuoc
             // 
             this.chkDongNuoc.AutoSize = true;
-            this.chkDongNuoc.Location = new System.Drawing.Point(414, 121);
+            this.chkDongNuoc.Location = new System.Drawing.Point(414, 139);
             this.chkDongNuoc.Name = "chkDongNuoc";
             this.chkDongNuoc.Size = new System.Drawing.Size(81, 17);
             this.chkDongNuoc.TabIndex = 18;
@@ -456,7 +460,7 @@
             // chkVanPhong
             // 
             this.chkVanPhong.AutoSize = true;
-            this.chkVanPhong.Location = new System.Drawing.Point(501, 121);
+            this.chkVanPhong.Location = new System.Drawing.Point(501, 139);
             this.chkVanPhong.Name = "chkVanPhong";
             this.chkVanPhong.Size = new System.Drawing.Size(79, 17);
             this.chkVanPhong.TabIndex = 19;
@@ -482,7 +486,7 @@
             // chkChamCong
             // 
             this.chkChamCong.AutoSize = true;
-            this.chkChamCong.Location = new System.Drawing.Point(586, 121);
+            this.chkChamCong.Location = new System.Drawing.Point(586, 139);
             this.chkChamCong.Name = "chkChamCong";
             this.chkChamCong.Size = new System.Drawing.Size(81, 17);
             this.chkChamCong.TabIndex = 22;
@@ -492,7 +496,7 @@
             // chkDoi
             // 
             this.chkDoi.AutoSize = true;
-            this.chkDoi.Location = new System.Drawing.Point(204, 121);
+            this.chkDoi.Location = new System.Drawing.Point(204, 139);
             this.chkDoi.Name = "chkDoi";
             this.chkDoi.Size = new System.Drawing.Size(42, 17);
             this.chkDoi.TabIndex = 23;
@@ -518,7 +522,7 @@
             // chkPhoGiamDoc
             // 
             this.chkPhoGiamDoc.AutoSize = true;
-            this.chkPhoGiamDoc.Location = new System.Drawing.Point(204, 98);
+            this.chkPhoGiamDoc.Location = new System.Drawing.Point(204, 116);
             this.chkPhoGiamDoc.Name = "chkPhoGiamDoc";
             this.chkPhoGiamDoc.Size = new System.Drawing.Size(95, 17);
             this.chkPhoGiamDoc.TabIndex = 26;
@@ -529,13 +533,29 @@
             // chkAn
             // 
             this.chkAn.AutoSize = true;
-            this.chkAn.Location = new System.Drawing.Point(586, 98);
+            this.chkAn.Location = new System.Drawing.Point(586, 116);
             this.chkAn.Name = "chkAn";
             this.chkAn.Size = new System.Drawing.Size(39, 17);
             this.chkAn.TabIndex = 27;
             this.chkAn.Text = "Ẩn";
             this.chkAn.UseVisualStyleBackColor = true;
             this.chkAn.Visible = false;
+            // 
+            // txtMay
+            // 
+            this.txtMay.Location = new System.Drawing.Point(269, 90);
+            this.txtMay.Name = "txtMay";
+            this.txtMay.Size = new System.Drawing.Size(121, 20);
+            this.txtMay.TabIndex = 29;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(201, 93);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(30, 13);
+            this.label8.TabIndex = 28;
+            this.label8.Text = "Máy:";
             // 
             // MaND
             // 
@@ -603,6 +623,13 @@
             this.TenNhom.Name = "TenNhom";
             this.TenNhom.Width = 70;
             // 
+            // May
+            // 
+            this.May.DataPropertyName = "May";
+            this.May.HeaderText = "Máy";
+            this.May.Name = "May";
+            this.May.Width = 50;
+            // 
             // PhoGiamDoc
             // 
             this.PhoGiamDoc.DataPropertyName = "PhoGiamDoc";
@@ -664,7 +691,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1360, 666);
+            this.ClientSize = new System.Drawing.Size(1476, 669);
+            this.Controls.Add(this.txtMay);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.chkAn);
             this.Controls.Add(this.chkPhoGiamDoc);
             this.Controls.Add(this.txtNam);
@@ -757,6 +786,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox chkPhoGiamDoc;
         private System.Windows.Forms.CheckBox chkAn;
+        private System.Windows.Forms.TextBox txtMay;
+        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaND;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn DienThoai;
@@ -767,6 +798,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TenTo;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaNhom;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenNhom;
+        private System.Windows.Forms.DataGridViewTextBoxColumn May;
         private System.Windows.Forms.DataGridViewTextBoxColumn PhoGiamDoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn An;
         private System.Windows.Forms.DataGridViewTextBoxColumn Doi;
