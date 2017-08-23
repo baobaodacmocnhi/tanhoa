@@ -174,7 +174,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             ///
             chkDMGiuNguyen.Checked = ctdcbd.DMGiuNguyen;
             chkGBGiuNguyen.Checked = ctdcbd.GBGiuNguyen;
-            chkGiaHan.Checked = ctdcbd.GiaHan;
+            chkGiaHanKT3.Checked = ctdcbd.GiaHanKT3;
+            chkGiaHanNhapCu.Checked = ctdcbd.GiaHanNhapCu;
             chkDoanThanhNien.Checked = ctdcbd.DoanThanhNien;
             chkCatMSThue.Checked = ctdcbd.CatMSThue;
             chkXoaDiaChiLienHe.Checked = ctdcbd.XoaDiaChiLienHe;
@@ -206,7 +207,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             ///
             chkDMGiuNguyen.Checked = false;
             chkGBGiuNguyen.Checked = false;
-            chkGiaHan.Checked = false;
+            chkGiaHanKT3.Checked = false;
+            chkGiaHanNhapCu.Checked = false;
             chkDoanThanhNien.Checked = false;
             chkCatMSThue.Checked = false;
             chkXoaDiaChiLienHe.Checked = false;
@@ -446,7 +448,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     //        || !string.IsNullOrEmpty(txtGiaBieu_BD.Text.Trim())
                     //        || !string.IsNullOrEmpty(txtDinhMuc_BD.Text.Trim())
                     //        ))))
-                    if ((chkDMGiuNguyen.Checked == false && chkGiaHan.Checked == false) && (txtHieuLucKy.Text.Trim() == "" || (txtHoTen_BD.Text.Trim() == "" && txtDiaChi_BD.Text.Trim() == "" && txtMSThue_BD.Text.Trim() == "" && txtGiaBieu_BD.Text.Trim() == "" && txtDinhMuc_BD.Text.Trim() == "")))
+                    if ((chkDMGiuNguyen.Checked == false && chkGBGiuNguyen.Checked == false && chkGiaHanKT3.Checked == false && chkGiaHanNhapCu.Checked == false) && (txtHieuLucKy.Text.Trim() == "" || (txtHoTen_BD.Text.Trim() == "" && txtDiaChi_BD.Text.Trim() == "" && txtMSThue_BD.Text.Trim() == "" && txtGiaBieu_BD.Text.Trim() == "" && txtDinhMuc_BD.Text.Trim() == "")))
                     {
                         MessageBox.Show("Chưa có Hiệu Lực Kỳ \nHoặc không có biến động", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -598,10 +600,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                     ctdcbd.DMGiuNguyen = chkDMGiuNguyen.Checked;
                     ctdcbd.GBGiuNguyen = chkGBGiuNguyen.Checked;
-                    ctdcbd.GiaHan = chkGiaHan.Checked;
+                    ctdcbd.GiaHanKT3 = chkGiaHanKT3.Checked;
+                    ctdcbd.GiaHanNhapCu = chkGiaHanNhapCu.Checked;
                     ctdcbd.DoanThanhNien = chkDoanThanhNien.Checked;
 
-                    if (chkDMGiuNguyen.Checked ||chkGBGiuNguyen.Checked|| chkGiaHan.Checked)
+                    if (chkDMGiuNguyen.Checked || chkGBGiuNguyen.Checked || chkGiaHanKT3.Checked || chkGiaHanNhapCu.Checked)
                         ctdcbd.PhieuDuocKy = false;
                     else
                     {
@@ -748,10 +751,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                         _ctdcbd.DMGiuNguyen = chkDMGiuNguyen.Checked;
                         _ctdcbd.GBGiuNguyen = chkGBGiuNguyen.Checked;
-                        _ctdcbd.GiaHan = chkGiaHan.Checked;
+                        _ctdcbd.GiaHanKT3 = chkGiaHanKT3.Checked;
+                        _ctdcbd.GiaHanNhapCu = chkGiaHanNhapCu.Checked;
                         _ctdcbd.DoanThanhNien = chkDoanThanhNien.Checked;
 
-                        if (chkDMGiuNguyen.Checked || chkGBGiuNguyen.Checked || chkGiaHan.Checked)
+                        if (chkDMGiuNguyen.Checked || chkGBGiuNguyen.Checked || chkGiaHanKT3.Checked||chkGiaHanNhapCu.Checked)
                         {
                             _ctdcbd.ChucVu = null;
                             _ctdcbd.NguoiKy = null;
@@ -1374,13 +1378,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (_ctdcbd.GBGiuNguyen)
                     dr["KhongBD"] = "GB Giữ Nguyên";
                 else
-                if (_ctdcbd.GiaHan)
-                    dr["KhongBD"] = "Gia Hạn";
-                else
-                {
-                    dr["ChucVu"] = _ctdcbd.ChucVu;
-                    dr["NguoiKy"] = _ctdcbd.NguoiKy;
-                }
+                    if (_ctdcbd.GiaHanKT3)
+                        dr["KhongBD"] = "Gia Hạn KT3";
+                    else
+                        if (_ctdcbd.GiaHanNhapCu)
+                            dr["KhongBD"] = "Gia Hạn Nhập Cư";
+                        else
+                        {
+                            dr["ChucVu"] = _ctdcbd.ChucVu;
+                            dr["NguoiKy"] = _ctdcbd.NguoiKy;
+                        }
 
             dsBaoCao.Tables["DCBD"].Rows.Add(dr);
 

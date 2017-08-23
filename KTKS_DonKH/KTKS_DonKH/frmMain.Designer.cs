@@ -287,6 +287,7 @@
             this.mnuDSDonTKH.Name = "mnuDSDonTKH";
             this.mnuDSDonTKH.Size = new System.Drawing.Size(248, 22);
             this.mnuDSDonTKH.Text = "Danh Sách Đơn";
+            this.mnuDSDonTKH.Click += new System.EventHandler(this.mnuDSDonTKH_Click);
             // 
             // mnuNhanDonDienThoai
             // 
@@ -785,7 +786,7 @@
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(428, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(427, 17);
             this.toolStripStatusLabel1.Text = "Bản quyền(2015) thuộc Công ty CP Cấp Nước Tân Hòa. Được T.CNTT phát triển";
             // 
             // StripStatus_HoTen

@@ -215,7 +215,10 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             txtGhiChu.Text = "";
 
             if (_cTTTN.CheckExist_ChuaXepDon(entity.DanhBo) == true)
+            {
                 lbTruyThu.Text = "Danh Bộ này đang Truy Thu";
+                MessageBox.Show("Danh Bộ này đang Truy Thu", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            }
             else
                 lbTruyThu.Text = "";
         }

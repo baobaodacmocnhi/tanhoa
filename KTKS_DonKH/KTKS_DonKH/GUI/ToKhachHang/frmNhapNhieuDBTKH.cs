@@ -156,18 +156,28 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             {
                 if (tabControl.SelectedTab.Name == "tabKiemTra")
                 {
-                    decimal min = 0, max = 0;
-                    _cDonKH.beginTransaction();
-
                     foreach (DataGridViewRow item in dgvDanhBoChuyenKT.Rows)
                         if (item.Cells["DanhBo"].Value != null || item.Cells["HoTen"].Value != null || item.Cells["DiaChi"].Value != null)
                         {
                             if (item.Cells["DanhBo"].Value != null)
                                 if (_cDonKH.CheckExist(item.Cells["DanhBo"].Value.ToString(), DateTime.Now) == true)
                                 {
-                                    MessageBox.Show("Danh Bộ này đã nhận đơn trong ngày hôm nay rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("Danh Bộ " + item.Cells["DanhBo"].Value.ToString() + "đã nhận đơn trong ngày hôm nay rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
+                        }
+
+                    decimal min = 0, max = 0;
+                    _cDonKH.beginTransaction();
+                    foreach (DataGridViewRow item in dgvDanhBoChuyenKT.Rows)
+                        if (item.Cells["DanhBo"].Value != null || item.Cells["HoTen"].Value != null || item.Cells["DiaChi"].Value != null)
+                        {
+                            //if (item.Cells["DanhBo"].Value != null)
+                            //    if (_cDonKH.CheckExist(item.Cells["DanhBo"].Value.ToString(), DateTime.Now) == true)
+                            //    {
+                            //        MessageBox.Show("Danh Bộ này đã nhận đơn trong ngày hôm nay rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //        return;
+                            //    }
 
                             DonKH donkh = new DonKH();
 
@@ -253,18 +263,28 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                 else
                     if (tabControl.SelectedTab.Name == "tabVanPhong")
                     {
-                        decimal min = 0, max = 0;
-                        _cDonKH.beginTransaction();
-
                         foreach (DataGridViewRow item in dgvDanhBoChuyenVanPhong.Rows)
                             if (item.Cells["DanhBoVP"].Value != null || item.Cells["HoTenVP"].Value != null || item.Cells["DiaChiVP"].Value != null)
                             {
                                 if (item.Cells["DanhBoVP"].Value != null)
                                     if (_cDonKH.CheckExist(item.Cells["DanhBoVP"].Value.ToString(), DateTime.Now) == true)
                                     {
-                                        MessageBox.Show("Danh Bộ này đã nhận đơn trong ngày hôm nay rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        MessageBox.Show("Danh Bộ " + item.Cells["DanhBoVP"].Value.ToString() + "đã nhận đơn trong ngày hôm nay rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         return;
                                     }
+                            }
+
+                        decimal min = 0, max = 0;
+                        _cDonKH.beginTransaction();
+                        foreach (DataGridViewRow item in dgvDanhBoChuyenVanPhong.Rows)
+                            if (item.Cells["DanhBoVP"].Value != null || item.Cells["HoTenVP"].Value != null || item.Cells["DiaChiVP"].Value != null)
+                            {
+                                //if (item.Cells["DanhBoVP"].Value != null)
+                                //    if (_cDonKH.CheckExist(item.Cells["DanhBoVP"].Value.ToString(), DateTime.Now) == true)
+                                //    {
+                                //        MessageBox.Show("Danh Bộ này đã nhận đơn trong ngày hôm nay rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                //        return;
+                                //    }
 
                                 DonKH donkh = new DonKH();
 

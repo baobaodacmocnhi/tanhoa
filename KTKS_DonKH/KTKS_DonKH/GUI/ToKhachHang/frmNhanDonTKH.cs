@@ -133,7 +133,10 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             txtDinhMuc.Text = hoadon.DM.ToString();
             dgvLichSuDon.DataSource = _cLichSuDonTu.GetDS_3To(hoadon.DANHBA);
             if (_cTTTN.CheckExist_ChuaXepDon(hoadon.DANHBA) == true)
+            {
                 lbTruyThu.Text = "Danh Bộ này đang Truy Thu";
+                MessageBox.Show("Danh Bộ này đang Truy Thu", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            }
             else
                 lbTruyThu.Text = "";
         }

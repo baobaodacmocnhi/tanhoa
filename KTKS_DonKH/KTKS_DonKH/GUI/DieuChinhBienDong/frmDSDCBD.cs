@@ -381,7 +381,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["HopDong"] = ctdcbd.HopDong;
                                 dr["HoTen"] = ctdcbd.HoTen;
                                 dr["DiaChi"] = ctdcbd.DiaChi;
-                                if (ctdcbd.XoaDiaChiLienHe==true)
+                                if (ctdcbd.XoaDiaChiLienHe == true)
                                     dr["XoaDiaChiLienHe"] = "Xóa Địa Chỉ Liên Hệ";
                                 dr["MaQuanPhuong"] = ctdcbd.MaQuanPhuong;
                                 dr["GiaBieu"] = ctdcbd.GiaBieu;
@@ -418,13 +418,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     if (ctdcbd.GBGiuNguyen)
                                         dr["KhongBD"] = "GB Giữ Nguyên";
                                     else
-                                    if (ctdcbd.GiaHan)
-                                        dr["KhongBD"] = "Gia Hạn";
-                                    else
-                                    {
-                                        dr["ChucVu"] = ctdcbd.ChucVu;
-                                        dr["NguoiKy"] = ctdcbd.NguoiKy;
-                                    }
+                                        if (ctdcbd.GiaHanKT3)
+                                            dr["KhongBD"] = "Gia Hạn KT3";
+                                        else
+                                            if (ctdcbd.GiaHanNhapCu)
+                                                dr["KhongBD"] = "Gia Hạn Nhập Cư";
+                                            else
+                                            {
+                                                dr["ChucVu"] = ctdcbd.ChucVu;
+                                                dr["NguoiKy"] = ctdcbd.NguoiKy;
+                                            }
 
                                 dsBaoCao.Tables["DCBD"].Rows.Add(dr);
 
