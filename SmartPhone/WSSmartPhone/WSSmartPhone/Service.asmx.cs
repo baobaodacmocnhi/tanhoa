@@ -14,21 +14,10 @@ namespace WSSmartPhone
     [System.ComponentModel.ToolboxItem(false)]
     public class Service : System.Web.Services.WebService
     {
-        CThuTien _cThuTien = new CThuTien();
         CBaoBao _cBaoBao = new CBaoBao();
-
-        [WebMethod]
-        public string HelloWorld()
-        {
-            return "Hello World";
-        }
-
-        [WebMethod]
-        public DataTable GetDSHoaDon(string DanhBo)
-        {
-            return _cThuTien.GetDSHoaDon(DanhBo);
-        }
-
+        CDocSo _cDocSo = new CDocSo();
+        CThuTien _cThuTien = new CThuTien();
+        
         #region BaoBao
 
         [WebMethod]
@@ -122,5 +111,34 @@ namespace WSSmartPhone
         }
 
         #endregion
+
+        #region DocSo
+
+        [WebMethod]
+        public bool DS_CheckDangNhap(string TaiKhoan, string MatKhau)
+        {
+            return _cDocSo.CheckDangNhap(TaiKhoan, MatKhau);
+        }
+
+        [WebMethod]
+        public DataTable DS_DangNhap(string TaiKhoan, string MatKhau)
+        {
+            return _cDocSo.DangNhap(TaiKhoan, MatKhau);
+        }
+
+        [WebMethod]
+        public DataTable DS_GetDSCode()
+        {
+            return _cDocSo.GetDSCode();
+        }
+
+        [WebMethod]
+        public DataTable DS_GetDSDocSo(string Nam, string Ky, string Dot, string May)
+        {
+            return _cDocSo.GetDSDocSo(Nam, Ky, Dot, May);
+        }
+
+        #endregion
+
     }
 }

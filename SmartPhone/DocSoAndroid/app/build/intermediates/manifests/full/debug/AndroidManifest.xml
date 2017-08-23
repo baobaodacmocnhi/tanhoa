@@ -8,6 +8,8 @@
         android:minSdkVersion="15"
         android:targetSdkVersion="25" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <meta-data
         android:name="android.support.VERSION"
         android:value="25.3.1" />
@@ -26,8 +28,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="vn.com.abc.docsoandroid.DangNhapActivity" />
-        <activity android:name="vn.com.abc.docsoandroid.DocSoActivity" />
+        <activity
+            android:name="vn.com.abc.docsoandroid.DangNhapActivity"
+            android:label="@string/DangNhapActivity_name" />
+        <activity
+            android:name="vn.com.abc.docsoandroid.DocSoActivity"
+            android:label="@string/DocSoActivity_name" />
     </application>
 
 </manifest>
