@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Đọc Số Tân Hòa</string>
+    <string name="DangNhapActivity_name">Đăng Nhập</string>
+    <string name="DocSoActivity_name">Đọc Số</string>
+</resources>
