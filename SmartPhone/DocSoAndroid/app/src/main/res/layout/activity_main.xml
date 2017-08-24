@@ -20,9 +20,22 @@
             android:text="Đăng Nhập" />
 
         <Button
+            android:id="@+id/btnDanhSachDocSo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Danh Sách Đọc Số" />
+
+        <Button
             android:id="@+id/btnDocSo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Đọc Số" />
+
+        <Button
+            android:id="@+id/btnDangXuat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đăng Xuất" />
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

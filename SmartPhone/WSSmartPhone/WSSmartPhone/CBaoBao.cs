@@ -43,9 +43,9 @@ namespace WSSmartPhone
             return _DAL.ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
-        public bool SuaPhong(string ID, string Name, string GiaTien, string ChiSoDien, string ChiSoNuoc)
+        public bool SuaPhong(string ID, string Name, string GiaTien,string SoNKNuoc, string ChiSoDien, string ChiSoNuoc)
         {
-            string sql = "update Phong set Name=N'" + Name + "',GiaTien=" + GiaTien + ",ChiSoDien=" + ChiSoDien + ",ChiSoNuoc=" + ChiSoNuoc + " where ID=" + ID;
+            string sql = "update Phong set Name=N'" + Name + "',GiaTien=" + GiaTien + ",SoNKNuoc="+SoNKNuoc+",ChiSoDien=" + ChiSoDien + ",ChiSoNuoc=" + ChiSoNuoc + " where ID=" + ID;
             return _DAL.ExecuteNonQuery(sql);
         }
 
