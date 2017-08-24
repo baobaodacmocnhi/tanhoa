@@ -811,16 +811,6 @@
       <Association Name="TT_ToTrinhCatHuy_TT_CTToTrinhCatHuy" Member="TT_ToTrinhCatHuy" ThisKey="MaTT" OtherKey="MaTT" Type="TT_ToTrinhCatHuy" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.TT_DangKy" Member="TT_DangKies">
-    <Type Name="TT_DangKy">
-      <Column Name="DanhBo" Type="System.String" DbType="VarChar(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MaNV" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.HOADON" Member="HOADONs">
     <Type Name="HOADON">
       <Column Name="ID_HOADON" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -1021,6 +1011,16 @@
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="TT_DangKyKiemTra_TT_CTDangKyKiemTra" Member="TT_DangKyKiemTra" ThisKey="MaDKKT" OtherKey="MaDKKT" Type="TT_DangKyKiemTra" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TT_DangKy" Member="TT_DangKies">
+    <Type Name="TT_DangKy">
+      <Column Name="DanhBo" Type="System.String" DbType="VarChar(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaNV" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.TimKiem" Method="TimKiem" IsComposable="true">

@@ -64,6 +64,11 @@ namespace ThuTien.DAL.Doi
             return _db.TT_DangKies.Any(item => item.DanhBo == DanhBo&&item.MaNV==MaNV);
         }
 
+        public bool CheckExist(string DanhBo)
+        {
+            return _db.TT_DangKies.Any(item => item.DanhBo == DanhBo);
+        }
+
         public string GetHoTen(string DanhBo)
         {
             return _db.TT_NguoiDungs.SingleOrDefault(item => item.MaND == _db.TT_DangKies.SingleOrDefault(item2 => item2.DanhBo == DanhBo).MaNV).HoTen;

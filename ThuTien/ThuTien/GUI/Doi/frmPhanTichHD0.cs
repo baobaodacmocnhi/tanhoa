@@ -289,7 +289,7 @@ namespace ThuTien.GUI.Doi
         {
             if (cmbToDK.SelectedIndex > 0)
             {
-                List<TT_NguoiDung> lstND=null;
+                List<TT_NguoiDung> lstND = null;
                 if ((_cTo.CheckHanhThu(int.Parse(cmbToDK.SelectedValue.ToString()))))
                 {
                     lstND = _cNguoiDung.GetDSHanhThuByMaTo(int.Parse(cmbToDK.SelectedValue.ToString()));
@@ -297,7 +297,7 @@ namespace ThuTien.GUI.Doi
                     nguoidung.MaND = 0;
                     nguoidung.HoTen = "Tất Cả";
                     lstND.Insert(0, nguoidung);
-                    
+
                 }
                 else
                 {
@@ -592,7 +592,7 @@ namespace ThuTien.GUI.Doi
                             foreach (DataRow item in dtExcel.Rows)
                                 if (item[0].ToString().Replace(" ", "").Length == 11)
                                 {
-                                    if (_cDangKyHD0.CheckExist(item[0].ToString().Replace(" ", ""))==true)
+                                    if (_cDangKyHD0.CheckExist(item[0].ToString().Replace(" ", "")) == true)
                                     {
                                         MessageBox.Show(_cDangKyHD0.GetHoTen(item[0].ToString().Replace(" ", "")) + " đã đăng ký " + item[0].ToString().Replace(" ", ""), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     }
@@ -842,7 +842,7 @@ namespace ThuTien.GUI.Doi
                             foreach (DataRow item in dtExcel.Rows)
                                 if (item[0].ToString().Replace(" ", "").Length == 11)
                                 {
-                                    if (_cDangKy.CheckExist(item[0].ToString().Replace(" ", ""),int.Parse(cmbNhanVienDK2.SelectedValue.ToString())) == true)
+                                    if (_cDangKy.CheckExist(item[0].ToString().Replace(" ", ""), int.Parse(cmbNhanVienDK2.SelectedValue.ToString())) == true)
                                     {
                                         MessageBox.Show(_cDangKy.GetHoTen(item[0].ToString().Replace(" ", "")) + " đã đăng ký " + item[0].ToString().Replace(" ", ""), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     }
@@ -885,7 +885,7 @@ namespace ThuTien.GUI.Doi
                             DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
 
                             foreach (DataRow item in dtExcel.Rows)
-                                if (item[0].ToString().Replace(" ", "").Length == 11 && item[1].ToString().Trim()!="")
+                                if (item[0].ToString().Replace(" ", "").Length == 11 && item[1].ToString().Trim() != "")
                                 {
                                     if (_cDangKyHD0.CheckExist(item[0].ToString().Replace(" ", "")) == true)
                                     {
@@ -902,6 +902,55 @@ namespace ThuTien.GUI.Doi
                                 }
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             btnXemDK.PerformClick();
+                        }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnChonFile2KhongNhanVien_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+            {
+                try
+                {
+                    OpenFileDialog dialog = new OpenFileDialog();
+                    dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
+                    dialog.Multiselect = false;
+
+                    if (dialog.ShowDialog() == DialogResult.OK)
+                        if (MessageBox.Show("Bạn có chắc chắn Thêm?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        {
+                            CExcel fileExcel = new CExcel(dialog.FileName);
+                            DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
+
+                            foreach (DataRow item in dtExcel.Rows)
+                                if (item[0].ToString().Replace(" ", "").Length == 11)
+                                {
+                                    HOADON hoadon = _cHoaDon.GetMoiNhat(item[0].ToString().Replace(" ", ""));
+                                    if (hoadon.MaNV_HanhThu == null)
+                                        hoadon = _cHoaDon.GetMoiNhi(item[0].ToString().Replace(" ", ""));
+
+                                    if (_cDangKy.CheckExist(item[0].ToString().Replace(" ", ""), hoadon.MaNV_HanhThu.Value) == true)
+                                    {
+                                        MessageBox.Show(_cDangKy.GetHoTen(item[0].ToString().Replace(" ", "")) + " đã đăng ký " + item[0].ToString().Replace(" ", ""), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    else
+                                    {
+                                        TT_DangKy dangky = new TT_DangKy();
+                                        dangky.DanhBo = item[0].ToString().Replace(" ", "");
+                                        dangky.MaNV = hoadon.MaNV_HanhThu.Value;
+
+                                        _cDangKy.Them(dangky);
+                                    }
+                                }
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            btnXemDK2.PerformClick();
                         }
                 }
                 catch (Exception)
