@@ -1,4 +1,5 @@
 package vn.com.abc.phongtro;
+
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.PropertyInfo;
 import org.ksoap2.serialization.SoapObject;
@@ -88,7 +89,7 @@ public class WebService {
         return ExcuteNonReturn(request, SOAP_ACTION);
     }
 
-    public String SuaKhachHang(String ID,String HoTen, String GioiTinh, String MaPhong) {
+    public String SuaKhachHang(String ID, String HoTen, String GioiTinh, String MaPhong) {
         String SOAP_ACTION = "http://tempuri.org/SuaKhachHang";
         String OPERATION_NAME = "SuaKhachHang";
         SoapObject request = new SoapObject(WSDL_TARGET_NAMESPACE, OPERATION_NAME);
@@ -143,7 +144,7 @@ public class WebService {
         return ExcuteReturnTable(request, SOAP_ACTION);
     }
 
-    public String SuaPhong(String ID,String Name, String GiaTien,String ChiSoDien,String ChiSoNuoc) {
+    public String SuaPhong(String ID, String Name, String GiaTien, String SoNKNuoc,String ChiSoDien, String ChiSoNuoc) {
         String SOAP_ACTION = "http://tempuri.org/SuaPhong";
         String OPERATION_NAME = "SuaPhong";
         SoapObject request = new SoapObject(WSDL_TARGET_NAMESPACE, OPERATION_NAME);
@@ -164,6 +165,12 @@ public class WebService {
         pi = new PropertyInfo();
         pi.setName("GiaTien");
         pi.setValue(GiaTien);
+        pi.setType(String.class);
+        request.addProperty(pi);
+
+        pi = new PropertyInfo();
+        pi.setName("SoNKNuoc");
+        pi.setValue(SoNKNuoc);
         pi.setType(String.class);
         request.addProperty(pi);
 
@@ -190,7 +197,7 @@ public class WebService {
         return ExcuteReturnTable(request, SOAP_ACTION);
     }
 
-    public String SuaGiaDien(String ID,String Name, String GiaTien) {
+    public String SuaGiaDien(String ID, String Name, String GiaTien) {
         String SOAP_ACTION = "http://tempuri.org/SuaGiaDien";
         String OPERATION_NAME = "SuaGiaDien";
         SoapObject request = new SoapObject(WSDL_TARGET_NAMESPACE, OPERATION_NAME);
@@ -225,7 +232,7 @@ public class WebService {
         return ExcuteReturnTable(request, SOAP_ACTION);
     }
 
-    public String SuaGiaNuoc(String ID,String Name, String GiaTien) {
+    public String SuaGiaNuoc(String ID, String Name, String GiaTien) {
         String SOAP_ACTION = "http://tempuri.org/SuaGiaNuoc";
         String OPERATION_NAME = "SuaGiaNuoc";
         SoapObject request = new SoapObject(WSDL_TARGET_NAMESPACE, OPERATION_NAME);
@@ -260,7 +267,7 @@ public class WebService {
         return ExcuteReturnTable(request, SOAP_ACTION);
     }
 
-    public String ThemHoaDon(String MaPhong,String ChiSoDien,String ChiSoNuoc) {
+    public String ThemHoaDon(String MaPhong, String ChiSoDien, String ChiSoNuoc) {
         String SOAP_ACTION = "http://tempuri.org/ThemHoaDon";
         String OPERATION_NAME = "ThemHoaDon";
         SoapObject request = new SoapObject(WSDL_TARGET_NAMESPACE, OPERATION_NAME);
@@ -286,7 +293,7 @@ public class WebService {
         return ExcuteNonReturn(request, SOAP_ACTION);
     }
 
-    public String SuaHoaDon(String ID,String ChiSoDien,String ChiSoNuoc) {
+    public String SuaHoaDon(String ID, String ChiSoDien, String ChiSoNuoc) {
         String SOAP_ACTION = "http://tempuri.org/SuaHoaDon";
         String OPERATION_NAME = "SuaHoaDon";
         SoapObject request = new SoapObject(WSDL_TARGET_NAMESPACE, OPERATION_NAME);

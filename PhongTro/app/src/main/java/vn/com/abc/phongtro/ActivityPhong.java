@@ -46,10 +46,11 @@ public class ActivityPhong extends AppCompatActivity {
                     }
                     EditText txtName = (EditText) findViewById(R.id.txtName);
                     EditText txtGiaTien = (EditText) findViewById(R.id.txtGiaTien);
+                    EditText txtSoNKNuoc = (EditText) findViewById(R.id.txtSoNKNuoc);
                     EditText txtChiSoDien = (EditText) findViewById(R.id.txtChiSoDien);
                     EditText txtChiSoNuoc = (EditText) findViewById(R.id.txtChiSoNuoc);
 
-                    String resp = ws.SuaPhong(txtID.getText().toString(), txtName.getText().toString(), txtGiaTien.getText().toString(), txtChiSoDien.getText().toString(), txtChiSoNuoc.getText().toString());
+                    String resp = ws.SuaPhong(txtID.getText().toString(), txtName.getText().toString(), txtGiaTien.getText().toString(),txtSoNKNuoc.getText().toString(), txtChiSoDien.getText().toString(), txtChiSoNuoc.getText().toString());
                     Toast.makeText(ActivityPhong.this, resp.toString(), Toast.LENGTH_SHORT).show();
                     onStart();
                 } catch (Exception ex) {
@@ -66,6 +67,7 @@ public class ActivityPhong extends AppCompatActivity {
                 EditText txtID = (EditText) findViewById(R.id.txtID);
                 EditText txtName = (EditText) findViewById(R.id.txtName);
                 EditText txtGiaTien = (EditText) findViewById(R.id.txtGiaTien);
+                EditText txtSoNKNuoc = (EditText) findViewById(R.id.txtSoNKNuoc);
                 EditText txtChiSoDien = (EditText) findViewById(R.id.txtChiSoDien);
                 EditText txtChiSoNuoc = (EditText) findViewById(R.id.txtChiSoNuoc);
 
@@ -77,6 +79,7 @@ public class ActivityPhong extends AppCompatActivity {
                             txtID.setText(obj.getProperty("ID").toString());
                             txtName.setText(obj.getProperty("Name").toString());
                             txtGiaTien.setText(obj.getProperty("GiaTien").toString());
+                            txtSoNKNuoc.setText(obj.getProperty("SoNKNuoc").toString());
                             txtChiSoDien.setText(obj.getProperty("ChiSoDien").toString());
                             txtChiSoNuoc.setText(obj.getProperty("ChiSoNuoc").toString());
                         }
