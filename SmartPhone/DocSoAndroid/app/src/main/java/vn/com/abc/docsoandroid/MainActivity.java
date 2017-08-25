@@ -52,6 +52,15 @@ public class MainActivity extends AppCompatActivity {
                 btnDangNhap.callOnClick();
             }
         });
+
+        Button btnTest = (Button) findViewById(R.id.btnTest);
+        btnTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Test.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

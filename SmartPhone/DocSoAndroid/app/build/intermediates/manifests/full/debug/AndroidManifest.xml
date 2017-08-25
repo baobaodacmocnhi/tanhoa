@@ -37,6 +37,7 @@
         <activity
             android:name="vn.com.abc.docsoandroid.DocSoActivity"
             android:label="@string/DocSoActivity_name" />
+        <activity android:name="vn.com.abc.docsoandroid.Test" />
     </application>
 
 </manifest>

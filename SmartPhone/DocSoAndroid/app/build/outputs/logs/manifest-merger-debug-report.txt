@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:2:1-34:12
+ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:2:1-33:12
 	package
 		ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:3:5-38
 		INJECTED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml
@@ -18,7 +18,7 @@ ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:
 	android:name
 		ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:5:22-64
 application
-ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:7:5-32:19
+ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:7:5-31:19
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\user\.android\build-cache\031ba8466a515f742e80b70c521c0783bff1014a\output\AndroidManifest.xml:9:5-20
 MERGED from [com.android.support:design:25.3.1] C:\Users\user\.android\build-cache\3bd0e1888cd861c6cfa803e831983ba297b3d732\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\user\.android\build-cache\27198d22c669526406db49e154ac1bd01ea2fb15\output\AndroidManifest.xml:29:5-20
@@ -64,17 +64,21 @@ ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:
 	android:name
 		ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:22:13-45
 activity#vn.com.abc.docsoandroid.DanhSachDocSoActivity
-ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:25:9-26:65
+ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:24:9-26:66
 	android:label
 		ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:26:13-63
 	android:name
-		ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:25:19-56
+		ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:25:13-50
 activity#vn.com.abc.docsoandroid.DocSoActivity
-ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:28:9-30:58
+ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:27:9-29:58
 	android:label
-		ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:30:13-55
+		ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:29:13-55
 	android:name
-		ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:29:13-42
+		ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:28:13-42
+activity#vn.com.abc.docsoandroid.Test
+ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:30:9-51
+	android:name
+		ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:30:19-39
 uses-sdk
 INJECTED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\user\.android\build-cache\031ba8466a515f742e80b70c521c0783bff1014a\output\AndroidManifest.xml:5:5-7:41
