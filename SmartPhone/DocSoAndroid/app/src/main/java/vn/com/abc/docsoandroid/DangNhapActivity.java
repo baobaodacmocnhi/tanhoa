@@ -57,11 +57,18 @@ public class DangNhapActivity extends AppCompatActivity {
                         SoapObject tbCode = ws.GetDSCode();
                         if (tbCode != null) {
                             CNguoiDung.cmbCodeValue = new HashMap<Integer, String>();
-                            CNguoiDung.cmbCodeDisplay = new String[tbCode.getPropertyCount()];
+                            CNguoiDung.cmbCodeDisplay = new String[tbCode.getPropertyCount()+2];
+
+                            CNguoiDung.cmbCodeValue.put(0, "0");
+                            CNguoiDung.cmbCodeDisplay[0] = "Chưa Ghi";
+
+                            CNguoiDung.cmbCodeValue.put(1, "1");
+                            CNguoiDung.cmbCodeDisplay[1] = "Đã Ghi";
+
                             for (int i = 0; i < tbCode.getPropertyCount(); i++) {
                                 SoapObject obj = (SoapObject) tbCode.getProperty(i);
-                                CNguoiDung.cmbCodeValue.put(i, obj.getProperty("CODE").toString());
-                                CNguoiDung.cmbCodeDisplay[i] = obj.getProperty("TTDHN").toString();
+                                CNguoiDung.cmbCodeValue.put(i+2, obj.getProperty("CODE").toString());
+                                CNguoiDung.cmbCodeDisplay[i+2] = obj.getProperty("TTDHN").toString();
                             }
                         }
                         Toast.makeText(DangNhapActivity.this, "Thành công", Toast.LENGTH_SHORT).show();

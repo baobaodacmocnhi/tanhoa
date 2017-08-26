@@ -52,4 +52,5 @@ public class DocSoActivity extends AppCompatActivity {
         adapter.addFragment(new GhiChiSoActivity(), "Ghi Chỉ Số");
         viewPager.setAdapter(adapter);
     }
+
 }

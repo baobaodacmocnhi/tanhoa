@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 public class GhiChiSoActivity extends Fragment {
 
@@ -16,7 +17,15 @@ public class GhiChiSoActivity extends Fragment {
 
         final View rootView = inflater.inflate(R.layout.activity_ghi_chi_so, container, false);
 
+        try {
+            Bundle bundle=getArguments();
+            String strMonth = bundle.getString("ID");
+            Toast.makeText(getActivity(), strMonth, Toast.LENGTH_SHORT).show();
+        }
+        catch (Exception ex){}
 
         return  rootView;
     }
+
+
 }

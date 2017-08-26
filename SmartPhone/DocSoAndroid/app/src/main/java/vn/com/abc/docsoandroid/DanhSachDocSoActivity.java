@@ -1,8 +1,11 @@
 package vn.com.abc.docsoandroid;
 
+import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,11 +79,26 @@ public class DanhSachDocSoActivity extends Fragment {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView ID = (TextView) rootView.findViewById(R.id.lvID);
-                Toast.makeText(getActivity(), ID.getText(), Toast.LENGTH_SHORT).show();
+
+                Bundle bundle = new Bundle();
+                bundle.putString("ID", ID.getText().toString());
+
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
+
+                GhiChiSoActivity ghichiso = new GhiChiSoActivity();
+                ghichiso.setArguments(bundle);
+
+                fragmentTransaction.replace(R.id.container, ghichiso);
+                fragmentTransaction.commit();
+
+//                Toast.makeText(getActivity(), ID.getText(), Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
 
         return rootView;
     }
+
+
 }
