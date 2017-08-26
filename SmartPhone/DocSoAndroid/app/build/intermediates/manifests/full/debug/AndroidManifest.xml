@@ -30,14 +30,10 @@
         </activity>
         <activity
             android:name="vn.com.abc.docsoandroid.DangNhapActivity"
-            android:label="@string/DangNhapActivity_name" />
-        <activity
-            android:name="vn.com.abc.docsoandroid.DanhSachDocSoActivity"
-            android:label="@string/DanhSachDocSoActivity_name" />
+            android:label="@string/title_activity_dang_nhap" />
         <activity
             android:name="vn.com.abc.docsoandroid.DocSoActivity"
-            android:label="@string/DocSoActivity_name" />
-        <activity android:name="vn.com.abc.docsoandroid.Test" />
+            android:label="@string/title_activity_doc_so" />
     </application>
 
 </manifest>

@@ -33,7 +33,22 @@ namespace WSSmartPhone
 
         public DataTable GetDSDocSo(string Nam, string Ky, string Dot, string May)
         {
-            return _DAL_Test.ExecuteQuery_SqlDataAdapter_DataTable("select * from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and May=" + May+" order by MLT1 asc");
+            string sql = "declare @Nam int;"
+                        + " declare @Ky int;"
+                        + " declare @Dot int;"
+                        + " declare @May int;"
+                        + " set @Nam=" + Nam + ";"
+                        + " set @Ky=" + Ky + ";"
+                        + " set @Dot=" + Dot + ";"
+                        + " set @May=" + May + ";"
+                        + " select a.*,b.*,c.* from"
+                        + " (select * from DocSo where Nam=@Nam and Ky=@Ky and Dot=@Dot and May=@May ) a"
+                        + " left join"
+                        + " (select DanhBa,CSCu2=CSCu,CodeCu2=CodeCu,TieuThuCu2=TieuThuCu from DocSo where Nam=@Nam and Ky=@Ky-1 and Dot=@Dot and May=@May ) b on a.DanhBa=b.DanhBa"
+                        + " left join"
+                        + " (select DanhBa,CSCu3=CSCu,CodeCu3=CodeCu,TieuThuCu3=TieuThuCu from DocSo where Nam=@Nam and Ky=@Ky-2 and Dot=@Dot and May=@May ) c on a.DanhBa=c.DanhBa"
+                        + " order by MLT1 asc";
+            return _DAL_Test.ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
     }

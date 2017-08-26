@@ -21,7 +21,7 @@ public class Test extends AppCompatActivity {
 //        tab1.setContent(new Intent(this,DanhSachDocSoActivity.class));
 
         tab2.setIndicator("Tab2");
-//        tab2.setContent(new Intent(this,DocSoActivity.class));
+//        tab2.setContent(new Intent(this,GhiChiSoActivity.class));
 
         tabHost.addTab(tab1);
         tabHost.addTab(tab2);

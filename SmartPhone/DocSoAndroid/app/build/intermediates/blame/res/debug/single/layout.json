@@ -120,6 +120,10 @@
         "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_list_menu_item_layout.xml"
     },
     {
+        "merged": "D:\\Projects\\SmartPhone\\DocSoAndroid\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_ghi_chi_so.xml",
+        "source": "D:\\Projects\\SmartPhone\\DocSoAndroid\\app\\src\\main\\res\\layout\\activity_ghi_chi_so.xml"
+    },
+    {
         "merged": "D:\\Projects\\SmartPhone\\DocSoAndroid\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
         "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_screen_simple.xml"
     },

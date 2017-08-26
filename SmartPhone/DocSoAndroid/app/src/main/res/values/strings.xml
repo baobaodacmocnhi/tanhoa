@@ -1,8 +1,7 @@
 <resources>
-    <string name="app_name">Đọc Số Tân Hòa</string>
-    <string name="DangNhapActivity_name">Đăng Nhập</string>
-    <string name="DanhSachDocSoActivity_name">Danh Sách Đọc Số</string>
-    <string name="DocSoActivity_name">Đọc Số</string>
+    <string name="app_name">Tân Hòa</string>
+    <string name="title_activity_dang_nhap">Đăng Nhập</string>
+    <string name="title_activity_doc_so">Đọc Số</string>
 
     <string-array name="Nam">
         <item>2017</item>
@@ -44,10 +43,4 @@
         <item>19</item>
         <item>20</item>
     </string-array>
-    <string name="title_activity_doc_so2">DocSoActivity2</string>
-    <string name="action_settings">Settings</string>
-    <string name="section_format">Hello World from section: %1$d</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

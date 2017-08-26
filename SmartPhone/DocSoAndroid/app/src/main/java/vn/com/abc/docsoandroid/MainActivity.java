@@ -23,15 +23,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btnDanhSachDocSo = (Button) findViewById(R.id.btnDanhSachDocSo);
-        btnDanhSachDocSo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, DanhSachDocSoActivity.class);
-                startActivity(intent);
-            }
-        });
-
         Button btnDocSo = (Button) findViewById(R.id.btnDocSo);
         btnDocSo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,14 +44,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btnTest = (Button) findViewById(R.id.btnTest);
-        btnTest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Test.class);
-                startActivity(intent);
-            }
-        });
     }
 
     @Override

@@ -20,14 +20,10 @@
         </activity>
         <activity
             android:name=".DangNhapActivity"
-            android:label="@string/DangNhapActivity_name" />
-        <activity
-            android:name=".DanhSachDocSoActivity"
-            android:label="@string/DanhSachDocSoActivity_name" />
+            android:label="@string/title_activity_dang_nhap" />
         <activity
             android:name=".DocSoActivity"
-            android:label="@string/DocSoActivity_name" />
-        <activity android:name=".Test"></activity>
+            android:label="@string/title_activity_doc_so"></activity>
     </application>
 
 </manifest>
