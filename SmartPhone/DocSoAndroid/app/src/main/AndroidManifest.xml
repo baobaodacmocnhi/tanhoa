@@ -23,7 +23,8 @@
             android:label="@string/title_activity_dang_nhap" />
         <activity
             android:name=".DocSoActivity"
-            android:label="@string/title_activity_doc_so"></activity>
+            android:label="@string/title_activity_doc_so"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

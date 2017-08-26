@@ -28,6 +28,10 @@
         "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_list_menu_item_radio.xml"
     },
     {
+        "merged": "D:\\Projects\\SmartPhone\\DocSoAndroid\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_doc_so.xml",
+        "source": "D:\\Projects\\SmartPhone\\DocSoAndroid\\app\\src\\main\\res\\layout\\fragment_doc_so.xml"
+    },
+    {
         "merged": "D:\\Projects\\SmartPhone\\DocSoAndroid\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
         "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\select_dialog_singlechoice_material.xml"
     },
@@ -162,10 +166,6 @@
     {
         "merged": "D:\\Projects\\SmartPhone\\DocSoAndroid\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar_include.xml",
         "source": "C:\\Users\\user\\.android\\build-cache\\3bd0e1888cd861c6cfa803e831983ba297b3d732\\output\\res\\layout\\design_layout_snackbar_include.xml"
-    },
-    {
-        "merged": "D:\\Projects\\SmartPhone\\DocSoAndroid\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_test.xml",
-        "source": "D:\\Projects\\SmartPhone\\DocSoAndroid\\app\\src\\main\\res\\layout\\activity_test.xml"
     },
     {
         "merged": "D:\\Projects\\SmartPhone\\DocSoAndroid\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_title_material.xml",

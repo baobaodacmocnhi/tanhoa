@@ -50,9 +50,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if (CNguoiDung.MaND == "") {
-            Button btnDangNhap = (Button) findViewById(R.id.btnDangNhap);
-
-            btnDangNhap.callOnClick();
+//            Button btnDangNhap = (Button) findViewById(R.id.btnDangNhap);
+//
+//            btnDangNhap.callOnClick();
         }
     }
 
