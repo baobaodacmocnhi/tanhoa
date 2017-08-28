@@ -60,11 +60,11 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnChuyenPhiMoNuoc = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.chkDongNuoc2 = new System.Windows.Forms.CheckBox();
             this.txtSoTien = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.dateBangKe = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
-            this.chkDongNuoc2 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -386,6 +386,17 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Chuyển Phí Mở Nước";
             // 
+            // chkDongNuoc2
+            // 
+            this.chkDongNuoc2.AutoSize = true;
+            this.chkDongNuoc2.Location = new System.Drawing.Point(201, 23);
+            this.chkDongNuoc2.Name = "chkDongNuoc2";
+            this.chkDongNuoc2.Size = new System.Drawing.Size(107, 17);
+            this.chkDongNuoc2.TabIndex = 37;
+            this.chkDongNuoc2.Text = "Đóng Nước 2 lần";
+            this.chkDongNuoc2.UseVisualStyleBackColor = true;
+            this.chkDongNuoc2.Visible = false;
+            // 
             // txtSoTien
             // 
             this.txtSoTien.Location = new System.Drawing.Point(95, 48);
@@ -421,16 +432,6 @@
             this.label12.Size = new System.Drawing.Size(79, 13);
             this.label12.TabIndex = 0;
             this.label12.Text = "Ngày Bảng Kê:";
-            // 
-            // chkDongNuoc2
-            // 
-            this.chkDongNuoc2.AutoSize = true;
-            this.chkDongNuoc2.Location = new System.Drawing.Point(201, 23);
-            this.chkDongNuoc2.Name = "chkDongNuoc2";
-            this.chkDongNuoc2.Size = new System.Drawing.Size(107, 17);
-            this.chkDongNuoc2.TabIndex = 37;
-            this.chkDongNuoc2.Text = "Đóng Nước 2 lần";
-            this.chkDongNuoc2.UseVisualStyleBackColor = true;
             // 
             // frmDieuChinhTienDu
             // 
