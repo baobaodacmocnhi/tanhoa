@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:2:1-30:12
+ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:2:1-31:12
 	package
 		ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:3:5-38
 		INJECTED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml
@@ -18,7 +18,7 @@ ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:
 	android:name
 		ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:5:22-64
 application
-ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:7:5-28:19
+ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:7:5-29:19
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\user\.android\build-cache\031ba8466a515f742e80b70c521c0783bff1014a\output\AndroidManifest.xml:9:5-20
 MERGED from [com.android.support:design:25.3.1] C:\Users\user\.android\build-cache\3bd0e1888cd861c6cfa803e831983ba297b3d732\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\user\.android\build-cache\27198d22c669526406db49e154ac1bd01ea2fb15\output\AndroidManifest.xml:29:5-20
@@ -71,6 +71,10 @@ ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:
 		ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:27:13-56
 	android:name
 		ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:25:13-42
+activity#vn.com.abc.docsoandroid.ChupHinhDocSoActivity
+ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:28:9-68
+	android:name
+		ADDED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml:28:19-56
 uses-sdk
 INJECTED from D:\Projects\SmartPhone\DocSoAndroid\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\user\.android\build-cache\031ba8466a515f742e80b70c521c0783bff1014a\output\AndroidManifest.xml:5:5-7:41

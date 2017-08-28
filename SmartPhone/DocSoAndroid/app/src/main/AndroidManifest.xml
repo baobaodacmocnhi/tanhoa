@@ -25,6 +25,7 @@
             android:name=".DocSoActivity"
             android:label="@string/title_activity_doc_so"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ChupHinhDocSoActivity"></activity>
     </application>
 
 </manifest>

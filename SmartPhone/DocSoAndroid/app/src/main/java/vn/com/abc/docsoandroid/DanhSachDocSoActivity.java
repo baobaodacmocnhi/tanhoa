@@ -2,6 +2,7 @@ package vn.com.abc.docsoandroid;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -22,6 +23,37 @@ import org.ksoap2.serialization.SoapObject;
 import java.util.ArrayList;
 
 public class DanhSachDocSoActivity extends Fragment {
+
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_doc_so);
+//
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//
+//        ViewPager viewPager = (ViewPager) findViewById(R.id.container);
+//        setupViewPager(viewPager);
+//
+//        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+//        tabLayout.setupWithViewPager(viewPager);
+//
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
+//    }
+//
+//    private void setupViewPager(ViewPager viewPager) {
+//        TabPagerAdapter adapter = new TabPagerAdapter(getSupportFragmentManager());
+//        adapter.addFragment(new DanhSachDocSoActivity(), "Danh Sách");
+//        adapter.addFragment(new GhiChiSoActivity(), "Ghi Chỉ Số");
+//        viewPager.setAdapter(adapter);
+//    }
 
     @Nullable
     @Override
@@ -78,21 +110,27 @@ public class DanhSachDocSoActivity extends Fragment {
         lstView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView ID = (TextView) rootView.findViewById(R.id.lvID);
+                try {
+                    TextView ID = (TextView) rootView.findViewById(R.id.lvID);
 
-                Bundle bundle = new Bundle();
-                bundle.putString("ID", ID.getText().toString());
+                    Bundle bundle = new Bundle();
+                    bundle.putString("ID", ID.getText().toString());
 
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-                GhiChiSoActivity ghichiso = new GhiChiSoActivity();
-                ghichiso.setArguments(bundle);
+                    GhiChiSoActivity ghichiso = new GhiChiSoActivity();
+                    ghichiso.setArguments(bundle);
 
-                fragmentTransaction.replace(R.id.container, ghichiso);
-                fragmentTransaction.commit();
+                    fragmentTransaction.replace(R.id.ghichisoxml, ghichiso);
+                    fragmentTransaction.commit();
 
-//                Toast.makeText(getActivity(), ID.getText(), Toast.LENGTH_SHORT).show();
+                    TabLayout tabhost = (TabLayout) getActivity().findViewById(R.id.tabs);
+                    tabhost.getTabAt(1).select();
+                } catch (Exception ex) {
+                    Toast.makeText(getActivity(), ex.toString(), Toast.LENGTH_SHORT).show();
+                }
+
                 return false;
             }
         });

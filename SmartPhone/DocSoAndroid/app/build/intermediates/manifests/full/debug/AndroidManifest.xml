@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="15"
+        android:minSdkVersion="23"
         android:targetSdkVersion="25" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -35,6 +35,7 @@
             android:name="vn.com.abc.docsoandroid.DocSoActivity"
             android:label="@string/title_activity_doc_so"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="vn.com.abc.docsoandroid.ChupHinhDocSoActivity" />
     </application>
 
 </manifest>
