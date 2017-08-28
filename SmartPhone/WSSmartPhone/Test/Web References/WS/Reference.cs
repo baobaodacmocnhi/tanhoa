@@ -32,9 +32,13 @@ namespace Test.WS {
         
         private System.Threading.SendOrPostCallback HelloWorldOperationCompleted;
         
+        private System.Threading.SendOrPostCallback CalTieuThuOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetDSHoaDonOperationCompleted;
         
         private System.Threading.SendOrPostCallback ThemKhachHangOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback XoaKhachHangOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetDSKhachHangOperationCompleted;
         
@@ -80,10 +84,16 @@ namespace Test.WS {
         public event HelloWorldCompletedEventHandler HelloWorldCompleted;
         
         /// <remarks/>
+        public event CalTieuThuCompletedEventHandler CalTieuThuCompleted;
+        
+        /// <remarks/>
         public event GetDSHoaDonCompletedEventHandler GetDSHoaDonCompleted;
         
         /// <remarks/>
         public event ThemKhachHangCompletedEventHandler ThemKhachHangCompleted;
+        
+        /// <remarks/>
+        public event XoaKhachHangCompletedEventHandler XoaKhachHangCompleted;
         
         /// <remarks/>
         public event GetDSKhachHangCompletedEventHandler GetDSKhachHangCompleted;
@@ -112,6 +122,43 @@ namespace Test.WS {
             if ((this.HelloWorldCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.HelloWorldCompleted(this, new HelloWorldCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CalTieuThu", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int CalTieuThu(string DanhBo, string ky, int nam, string code, int csmoi) {
+            object[] results = this.Invoke("CalTieuThu", new object[] {
+                        DanhBo,
+                        ky,
+                        nam,
+                        code,
+                        csmoi});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CalTieuThuAsync(string DanhBo, string ky, int nam, string code, int csmoi) {
+            this.CalTieuThuAsync(DanhBo, ky, nam, code, csmoi, null);
+        }
+        
+        /// <remarks/>
+        public void CalTieuThuAsync(string DanhBo, string ky, int nam, string code, int csmoi, object userState) {
+            if ((this.CalTieuThuOperationCompleted == null)) {
+                this.CalTieuThuOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCalTieuThuOperationCompleted);
+            }
+            this.InvokeAsync("CalTieuThu", new object[] {
+                        DanhBo,
+                        ky,
+                        nam,
+                        code,
+                        csmoi}, this.CalTieuThuOperationCompleted, userState);
+        }
+        
+        private void OnCalTieuThuOperationCompleted(object arg) {
+            if ((this.CalTieuThuCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CalTieuThuCompleted(this, new CalTieuThuCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -172,6 +219,35 @@ namespace Test.WS {
             if ((this.ThemKhachHangCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.ThemKhachHangCompleted(this, new ThemKhachHangCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/XoaKhachHang", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool XoaKhachHang(string ID) {
+            object[] results = this.Invoke("XoaKhachHang", new object[] {
+                        ID});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void XoaKhachHangAsync(string ID) {
+            this.XoaKhachHangAsync(ID, null);
+        }
+        
+        /// <remarks/>
+        public void XoaKhachHangAsync(string ID, object userState) {
+            if ((this.XoaKhachHangOperationCompleted == null)) {
+                this.XoaKhachHangOperationCompleted = new System.Threading.SendOrPostCallback(this.OnXoaKhachHangOperationCompleted);
+            }
+            this.InvokeAsync("XoaKhachHang", new object[] {
+                        ID}, this.XoaKhachHangOperationCompleted, userState);
+        }
+        
+        private void OnXoaKhachHangOperationCompleted(object arg) {
+            if ((this.XoaKhachHangCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.XoaKhachHangCompleted(this, new XoaKhachHangCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -249,6 +325,32 @@ namespace Test.WS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    public delegate void CalTieuThuCompletedEventHandler(object sender, CalTieuThuCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CalTieuThuCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CalTieuThuCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
     public delegate void GetDSHoaDonCompletedEventHandler(object sender, GetDSHoaDonCompletedEventArgs e);
     
     /// <remarks/>
@@ -286,6 +388,32 @@ namespace Test.WS {
         private object[] results;
         
         internal ThemKhachHangCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    public delegate void XoaKhachHangCompletedEventHandler(object sender, XoaKhachHangCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class XoaKhachHangCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal XoaKhachHangCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

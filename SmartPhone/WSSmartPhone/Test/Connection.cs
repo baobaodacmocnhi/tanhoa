@@ -5,7 +5,7 @@ using System.Data;
 using System.Reflection;
 using System.Data.SqlClient;
 
-namespace WSSmartPhone
+namespace Test
 {
     class Connection
     {
@@ -58,21 +58,6 @@ namespace WSSmartPhone
             }
         }
 
-        public object ExecuteQuery_ReturnOneValue(string sql)
-        {
-            try
-            {
-                Connect();
-                command = new SqlCommand(sql, connection);
-                return command.ExecuteScalar();
-            }
-            catch (Exception)
-            {
-                return false;
-                throw;
-            }
-        }
-
         /// <summary>
         /// Hàm thực thi các câu truy vấn lấy thông tin dữ liệu như Select
         /// </summary>
@@ -112,7 +97,7 @@ namespace WSSmartPhone
             {
                 Disconnect();
                 return null;
-            }  
+            }
         }
 
         /// <summary>
@@ -181,7 +166,7 @@ namespace WSSmartPhone
                 //for (int i = 0; i < modelProperties.Count; i++)
                 //    modelProperties[i].SetValue(returnedObject, Convert.ChangeType(reader.GetValue(i), modelProperties[i].PropertyType), null);
                 //return returnedObject;
-                
+
                 while (reader.Read())
                 {
                     obj = Activator.CreateInstance<T>();
@@ -200,7 +185,7 @@ namespace WSSmartPhone
                 //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return obj;
             }
-            
+
         }
 
         #region ConvertMoneyToWord
@@ -278,7 +263,7 @@ namespace WSSmartPhone
 
         public string ConvertMoneyToWord(string money)
         {
-            string str=replace_special_word(join_unit(money));
+            string str = replace_special_word(join_unit(money));
             if (str.Length > 1)
                 return str.Substring(0, 1).ToUpper() + str.Substring(1).ToLower();
             else
@@ -287,7 +272,7 @@ namespace WSSmartPhone
 
         #endregion
 
-    /**/
+        /**/
 
     }
 }

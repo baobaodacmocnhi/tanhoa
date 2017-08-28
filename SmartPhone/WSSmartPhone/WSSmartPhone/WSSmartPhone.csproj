@@ -64,15 +64,46 @@
     <Compile Include="CDocSo.cs" />
     <Compile Include="CThuTien.cs" />
     <Compile Include="Connection.cs" />
+    <Compile Include="HOADON.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HOADON.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="KinhDoanh.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KinhDoanh.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Service.asmx.cs">
       <DependentUpon>Service.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="HOADON.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>HOADON.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="KinhDoanh.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>KinhDoanh.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="HOADON.dbml.layout">
+      <DependentUpon>HOADON.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="KinhDoanh.dbml.layout">
+      <DependentUpon>KinhDoanh.dbml</DependentUpon>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
