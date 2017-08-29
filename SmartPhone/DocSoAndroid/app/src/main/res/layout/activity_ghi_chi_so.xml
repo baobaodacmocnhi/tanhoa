@@ -31,16 +31,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="number"
-                    android:text="DanhBo" />
+                    android:inputType="text"
+                    tools:text="DanhBo" />
 
                 <EditText
                     android:id="@+id/txtMLT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="number"
-                    android:text="MLT" />
+                    android:inputType="text"
+                    tools:text="MLT" />
             </TableRow>
 
             <TableRow
@@ -53,8 +53,8 @@
                     android:layout_height="wrap_content"
                     android:layout_span="2"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="HoTen" />
+                    android:inputType="text"
+                    tools:text="HoTen" />
             </TableRow>
 
             <TableRow
@@ -67,8 +67,8 @@
                     android:layout_height="wrap_content"
                     android:layout_span="2"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="DiaChi" />
+                    android:inputType="text"
+                    tools:text="DiaChi" />
             </TableRow>
 
             <TableRow
@@ -87,25 +87,25 @@
 
                         <TextView
                             android:id="@+id/textView1"
-                            android:layout_width="30dp"
+                            android:layout_width="25dp"
                             android:layout_height="wrap_content"
                             android:text="GB" />
 
                         <EditText
                             android:id="@+id/txtGB"
-                            android:layout_width="wrap_content"
+                            android:layout_width="50dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:inputType="number"
-                            android:text="GB" />
+                            android:inputType="text"
+                            tools:text="GB" />
 
                         <EditText
                             android:id="@+id/txtDienThoai"
-                            android:layout_width="wrap_content"
+                            android:layout_width="150dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:inputType="textPersonName"
-                            android:text="Dien Thoai" />
+                            android:inputType="text"
+                            tools:text="DienThoai" />
 
                     </LinearLayout>
 
@@ -121,18 +121,18 @@
 
                             <TextView
                                 android:id="@+id/textView2"
-                                android:layout_width="30dp"
+                                android:layout_width="25dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="ĐM" />
 
                             <EditText
                                 android:id="@+id/txtDM"
-                                android:layout_width="wrap_content"
+                                android:layout_width="60dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:inputType="number"
-                                android:text="DM" />
+                                android:inputType="text"
+                                tools:text="DM" />
 
                         </LinearLayout>
 
@@ -143,18 +143,18 @@
 
                             <TextView
                                 android:id="@+id/textView8"
-                                android:layout_width="30dp"
+                                android:layout_width="20dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="VT" />
 
                             <EditText
                                 android:id="@+id/txtVT"
-                                android:layout_width="wrap_content"
+                                android:layout_width="35dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:inputType="text"
-                                android:text="VT" />
+                                tools:text="VT" />
 
                         </LinearLayout>
 
@@ -165,18 +165,18 @@
 
                             <TextView
                                 android:id="@+id/textView9"
-                                android:layout_width="30dp"
+                                android:layout_width="20dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Cỡ" />
 
                             <EditText
                                 android:id="@+id/txtCo"
-                                android:layout_width="wrap_content"
+                                android:layout_width="35dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:inputType="text"
-                                android:text="Co" />
+                                tools:text="Co" />
 
                         </LinearLayout>
 
@@ -194,26 +194,26 @@
 
                             <EditText
                                 android:id="@+id/txtTongTien"
-                                android:layout_width="wrap_content"
+                                android:layout_width="120dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:inputType="number"
-                                android:text="TongTien" />
+                                android:inputType="text"
+                                tools:text="TongTien" />
 
                             <TextView
                                 android:id="@+id/textView10"
-                                android:layout_width="0dp"
+                                android:layout_width="20dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="TT" />
 
                             <EditText
                                 android:id="@+id/txtTT"
-                                android:layout_width="wrap_content"
+                                android:layout_width="40dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:inputType="text"
-                                android:text="TT" />
+                                tools:text="TT" />
 
                         </LinearLayout>
 
@@ -233,17 +233,17 @@
 
                         <TextView
                             android:id="@+id/textView3"
-                            android:layout_width="30dp"
+                            android:layout_width="20dp"
                             android:layout_height="wrap_content"
                             android:text="ST" />
 
                         <EditText
-                            android:id="@+id/txtST"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/txtSoThan"
+                            android:layout_width="180dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:inputType="textPersonName"
-                            android:text="ST" />
+                            android:inputType="text"
+                            tools:text="SoThan" />
 
                     </LinearLayout>
 
@@ -260,25 +260,25 @@
 
                         <EditText
                             android:id="@+id/txtHieu"
-                            android:layout_width="wrap_content"
+                            android:layout_width="30dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:inputType="textPersonName"
-                            android:text="Hieu" />
+                            android:inputType="text"
+                            tools:text="Hieu" />
 
                         <TextView
                             android:id="@+id/textView5"
-                            android:layout_width="wrap_content"
+                            android:layout_width="20dp"
                             android:layout_height="wrap_content"
                             android:text="CT" />
 
                         <EditText
                             android:id="@+id/txtCT"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:inputType="textPersonName"
-                            android:text="CT" />
+                            android:inputType="text"
+                            tools:text="CT" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -288,31 +288,31 @@
 
                         <TextView
                             android:id="@+id/textView6"
-                            android:layout_width="30dp"
+                            android:layout_width="20dp"
                             android:layout_height="wrap_content"
                             android:text="3T" />
 
                         <EditText
                             android:id="@+id/txt3T"
-                            android:layout_width="wrap_content"
+                            android:layout_width="30dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:inputType="textPersonName"
-                            android:text="3T" />
+                            android:inputType="text"
+                            tools:text="3T" />
 
                         <TextView
                             android:id="@+id/textView7"
-                            android:layout_width="wrap_content"
+                            android:layout_width="20dp"
                             android:layout_height="wrap_content"
                             android:text="CC" />
 
                         <EditText
                             android:id="@+id/txtCC"
-                            android:layout_width="wrap_content"
+                            android:layout_width="40dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:inputType="textPersonName"
-                            android:text="CC" />
+                            android:inputType="text"
+                            tools:text="CC" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -340,8 +340,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:ems="3"
-                            android:inputType="number"
-                            android:text="Code3" />
+                            android:inputType="text"
+                            tools:text="Code3" />
 
                         <EditText
                             android:id="@+id/txtCode2"
@@ -349,8 +349,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:ems="3"
-                            android:inputType="number"
-                            android:text="Code2" />
+                            android:inputType="text"
+                            tools:text="Code2" />
 
                         <EditText
                             android:id="@+id/txtCode1"
@@ -358,8 +358,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:ems="3"
-                            android:inputType="number"
-                            android:text="Code1" />
+                            android:inputType="text"
+                            tools:text="Code1" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -373,17 +373,16 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:ems="3"
-                            android:inputType="number"
-                            android:text="ChiSo3" />
+                            android:inputType="text"
+                            tools:text="ChiSo3" />
 
                         <EditText
                             android:id="@+id/txtChiSo2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:ems="3"
-                            android:inputType="number"
-                            android:text="ChiSo2" />
+                            android:inputType="text"
+                            tools:text="ChiSo2" />
 
                         <EditText
                             android:id="@+id/txtChiSo1"
@@ -391,8 +390,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:ems="3"
-                            android:inputType="number"
-                            android:text="ChiSo1" />
+                            android:inputType="text"
+                            tools:text="ChiSo1" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -406,8 +405,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:ems="3"
-                            android:inputType="number"
-                            android:text="TieuThu3" />
+                            android:inputType="text"
+                            tools:text="TieuThu3" />
 
                         <EditText
                             android:id="@+id/txtTieuThu2"
@@ -415,8 +414,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:ems="3"
-                            android:inputType="number"
-                            android:text="TieuThu2" />
+                            android:inputType="text"
+                            tools:text="TieuThu2" />
 
                         <EditText
                             android:id="@+id/txtTieuThu1"
@@ -424,8 +423,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:ems="3"
-                            android:inputType="number"
-                            android:text="TieuThu1" />
+                            android:inputType="text"
+                            tools:text="TieuThu1" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -441,7 +440,7 @@
 
                         <Spinner
                             android:id="@+id/cmbCode"
-                            android:layout_width="match_parent"
+                            android:layout_width="200dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1" />
                     </LinearLayout>
@@ -457,8 +456,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:ems="10"
-                            android:inputType="number"
-                            android:text="ChiSo" />
+                            android:inputType="text"
+                            tools:text="ChiSo" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -472,8 +471,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:ems="10"
-                            android:inputType="number"
-                            android:text="TieuThu" />
+                            android:inputType="text"
+                            tools:text="TieuThu" />
                     </LinearLayout>
                 </LinearLayout>
             </TableRow>

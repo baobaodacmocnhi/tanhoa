@@ -52,7 +52,6 @@ namespace WSSmartPhone
             return _DAL_Test.ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
-
         int TinhTieuThu(string DanhBo, int ky, int nam, string code, int csmoi)
         {
             int tieuthu = 0;
@@ -101,7 +100,6 @@ namespace WSSmartPhone
             }
             return tieuthu;
         }
-
 
         /// <summary>
         /// Công thức tính tiền nước theo giá biểu
@@ -1084,5 +1082,6 @@ namespace WSSmartPhone
                 return 0;
             }
         }
+
     }
 }

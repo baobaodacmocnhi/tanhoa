@@ -1,6 +1,5 @@
 package vn.com.abc.docsoandroid;
 
-import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -18,42 +17,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.ksoap2.serialization.PropertyInfo;
 import org.ksoap2.serialization.SoapObject;
 
 import java.util.ArrayList;
 
 public class DanhSachDocSoActivity extends Fragment {
 
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_doc_so);
-//
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//
-//        ViewPager viewPager = (ViewPager) findViewById(R.id.container);
-//        setupViewPager(viewPager);
-//
-//        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-//        tabLayout.setupWithViewPager(viewPager);
-//
-//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                finish();
-//            }
-//        });
-//    }
-//
-//    private void setupViewPager(ViewPager viewPager) {
-//        TabPagerAdapter adapter = new TabPagerAdapter(getSupportFragmentManager());
-//        adapter.addFragment(new DanhSachDocSoActivity(), "Danh Sách");
-//        adapter.addFragment(new GhiChiSoActivity(), "Ghi Chỉ Số");
-//        viewPager.setAdapter(adapter);
-//    }
+    private Spinner cmbCode;
 
     @Nullable
     @Override
@@ -62,7 +33,7 @@ public class DanhSachDocSoActivity extends Fragment {
         final View rootView = inflater.inflate(R.layout.activity_danh_sach_doc_so, container, false);
 
         try {
-            Spinner cmbCode = (Spinner) rootView.findViewById(R.id.cmbCode);
+            cmbCode = (Spinner) rootView.findViewById(R.id.cmbCode);
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, CNguoiDung.cmbCodeDisplay);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             cmbCode.setAdapter(adapter);
@@ -76,9 +47,12 @@ public class DanhSachDocSoActivity extends Fragment {
             public void onClick(View v) {
                 try {
                     if (CNguoiDung.tbDocSo != null) {
+                        DanhSachDocSoFilter(cmbCode.getSelectedItem().toString());
+
                         ArrayList<lstViewEntity> list = new ArrayList<lstViewEntity>();
-                        for (int i = 0; i < CNguoiDung.tbDocSo.getPropertyCount(); i++) {
-                            SoapObject obj = (SoapObject) CNguoiDung.tbDocSo.getProperty(i);
+                        for (int i = 0; i < CNguoiDung.tbDocSoFilter.getPropertyCount(); i++) {
+                            SoapObject obj = (SoapObject) CNguoiDung.tbDocSoFilter.getProperty(i);
+
                             lstViewEntity temp = new lstViewEntity();
                             temp.setID(obj.getProperty("DocSoID").toString());
 
@@ -99,6 +73,9 @@ public class DanhSachDocSoActivity extends Fragment {
                         ListView lstView = (ListView) rootView.findViewById(R.id.lstView);
                         lstViewAdapter adapter = new lstViewAdapter(getActivity(), list);
                         lstView.setAdapter(adapter);
+
+                        TextView txtTongDB=(TextView)rootView.findViewById(R.id.txtTongDB);
+                        txtTongDB.setText("Tổng: "+CNguoiDung.tbDocSoFilter.getPropertyCount()+" DB");
                     }
                 } catch (Exception ex) {
                     Toast.makeText(getActivity(), ex.toString(), Toast.LENGTH_SHORT).show();
@@ -113,18 +90,19 @@ public class DanhSachDocSoActivity extends Fragment {
                 try {
                     TextView ID = (TextView) rootView.findViewById(R.id.lvID);
 
-                    Bundle bundle = new Bundle();
-                    bundle.putString("ID", ID.getText().toString());
+//                    Bundle bundle = new Bundle();
+//                    bundle.putString("ID", ID.getText().toString());
+//
+//                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+//                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//
+//                    GhiChiSoActivity ghichiso = new GhiChiSoActivity();
+//                    ghichiso.setArguments(bundle);
+//
+//                    fragmentTransaction.replace(R.id.ghichisoxml, ghichiso);
+//                    fragmentTransaction.commit();
 
-                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-                    GhiChiSoActivity ghichiso = new GhiChiSoActivity();
-                    ghichiso.setArguments(bundle);
-
-                    fragmentTransaction.replace(R.id.ghichisoxml, ghichiso);
-                    fragmentTransaction.commit();
-
+                    CNguoiDung.ID=ID.getText().toString();
                     TabLayout tabhost = (TabLayout) getActivity().findViewById(R.id.tabs);
                     tabhost.getTabAt(1).select();
                 } catch (Exception ex) {
@@ -138,5 +116,66 @@ public class DanhSachDocSoActivity extends Fragment {
         return rootView;
     }
 
+    private void DanhSachDocSoFilter(String Code) {
+        try {
+            CNguoiDung.tbDocSoFilter = new SoapObject("DocSo", "tbDocSoFilter");
+            if (Code == "Chưa Ghi")
+                for (int i = 0; i < CNguoiDung.tbDocSo.getPropertyCount(); i++) {
+                    SoapObject obj = (SoapObject) CNguoiDung.tbDocSo.getProperty(i);
+                    if (obj.getProperty("TTDHNMoi").toString().matches("") == true)
+                    {
+                        SoapObject temp=new SoapObject("temp","");
+                        PropertyInfo propertyInfoP=new PropertyInfo();
+                        for (int j = 0; j < obj.getPropertyCount(); j++) {
+                            PropertyInfo propertyInfo = new PropertyInfo();
+                            obj.getPropertyInfo(j, propertyInfo);
+                            temp.addProperty(propertyInfo.getName(), obj.getProperty(j));
+                        }
+                        propertyInfoP.setName("Table");
+                        propertyInfoP.setValue(temp);
+                        CNguoiDung.tbDocSoFilter.addProperty(propertyInfoP);
+                    }
+
+                }
+            else if (Code == "Đã Ghi") {
+                for (int i = 0; i < CNguoiDung.tbDocSo.getPropertyCount(); i++) {
+                    SoapObject obj = (SoapObject) CNguoiDung.tbDocSo.getProperty(i);
+                    if (obj.getProperty("TTDHNMoi").toString().matches("") == false) {
+                        SoapObject temp=new SoapObject("temp","");
+                        PropertyInfo propertyInfoP=new PropertyInfo();
+                        for (int j = 0; j < obj.getPropertyCount(); j++) {
+                            PropertyInfo propertyInfo = new PropertyInfo();
+                            obj.getPropertyInfo(j, propertyInfo);
+                            temp.addProperty(propertyInfo.getName(), obj.getProperty(j));
+                        }
+                        propertyInfoP.setName("Table");
+                        propertyInfoP.setValue(temp);
+                        CNguoiDung.tbDocSoFilter.addProperty(propertyInfoP);
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < CNguoiDung.tbDocSo.getPropertyCount(); i++) {
+                    SoapObject obj = (SoapObject) CNguoiDung.tbDocSo.getProperty(i);
+                    if (obj.getProperty("TTDHNMoi").toString().matches(Code) == true) {
+                        SoapObject temp=new SoapObject("temp","");
+                        PropertyInfo propertyInfoP=new PropertyInfo();
+                        for (int j = 0; j < obj.getPropertyCount(); j++) {
+                            PropertyInfo propertyInfo = new PropertyInfo();
+                            obj.getPropertyInfo(j, propertyInfo);
+                            temp.addProperty(propertyInfo.getName(), obj.getProperty(j));
+                        }
+                        propertyInfoP.setName("Table");
+                        propertyInfoP.setValue(temp);
+                        CNguoiDung.tbDocSoFilter.addProperty(propertyInfoP);
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            Toast.makeText(getActivity(), ex.toString(), Toast.LENGTH_SHORT).show();
+        }
+
+    }
 
 }
