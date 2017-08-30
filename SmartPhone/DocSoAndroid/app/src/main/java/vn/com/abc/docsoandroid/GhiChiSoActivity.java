@@ -24,7 +24,7 @@ public class GhiChiSoActivity extends Fragment {
     private View rootView;
     private Integer _index = 0;
     private String ID = "";
-    private Spinner cmbCode;
+//    private Spinner cmbCode;
 
     @Nullable
     @Override
@@ -33,18 +33,20 @@ public class GhiChiSoActivity extends Fragment {
         rootView = inflater.inflate(R.layout.activity_ghi_chi_so, container, false);
 
         try {
-            cmbCode = (Spinner) rootView.findViewById(R.id.cmbCode);
+            Spinner cmbCode = (Spinner) rootView.findViewById(R.id.cmbCode);
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, CNguoiDung.cmbCodeDisplay);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             cmbCode.setAdapter(adapter);
         } catch (Exception ex) {
             Toast.makeText(getActivity(), ex.toString(), Toast.LENGTH_SHORT).show();
         }
+
         try {
-//            Bundle bundle = getArguments();
-//            ID = bundle.getString("ID");
-            if (CNguoiDung.ID != "")
+            Bundle bundle = getArguments();
+            if (bundle != null) {
+                ID = bundle.getString("ID");
                 GetDanhBo(ID);
+            }
         } catch (Exception ex) {
         }
 
@@ -92,8 +94,6 @@ public class GhiChiSoActivity extends Fragment {
 
         return rootView;
     }
-
-
 
     private void GetDanhBo(String ID) {
         try {
@@ -182,18 +182,20 @@ public class GhiChiSoActivity extends Fragment {
                     TT = TT / TB;
                     txt3T.setText(TT.toString());
 
-//                    try {
-//                        Integer index = 0;
-//                        for (Map.Entry<Integer, String> entry : CNguoiDung.cmbCodeValue.entrySet()) {
-//                            if (entry.getValue().equals(obj.getProperty("CodeMoi").toString())) {
-//                                index = entry.getKey();
-//                                break; //breaking because its one to one map
-//                            }
-//                        }
-//                        cmbCode.setSelection(index);
-//                    } catch (Exception ex) {
-//                        cmbCode.setSelection(0);
-//                    }
+                    Spinner cmbCode = (Spinner) rootView.findViewById(R.id.cmbCode);
+
+                    try {
+                        Integer index = 0;
+                        for (Map.Entry<Integer, String> entry : CNguoiDung.cmbCodeValue.entrySet()) {
+                            if (entry.getValue().equals(obj.getProperty("CodeMoi").toString())) {
+                                index = entry.getKey();
+                                break; //breaking because its one to one map
+                            }
+                        }
+                        cmbCode.setSelection(index);
+                    } catch (Exception ex) {
+                        cmbCode.setSelection(0);
+                    }
                     txtChiSo.setText(obj.getProperty("CSMoi").toString());
                     txtTieuThu.setText(obj.getProperty("TieuThuMoi").toString());
                     break;

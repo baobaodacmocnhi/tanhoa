@@ -3192,7 +3192,7 @@ containing a value of this type.
         public static final int fill_horizontal=0x7f0e003d;
         public static final int fill_vertical=0x7f0e0033;
         public static final int fixed=0x7f0e0046;
-        public static final int ghichisoxml=0x7f0e008f;
+        public static final int ghichisolayout=0x7f0e008f;
         public static final int home=0x7f0e0004;
         public static final int homeAsUp=0x7f0e001c;
         public static final int icon=0x7f0e0050;
@@ -3401,25 +3401,26 @@ containing a value of this type.
         public static final int design_navigation_menu=0x7f04002d;
         public static final int design_navigation_menu_item=0x7f04002e;
         public static final int design_text_input_password_icon=0x7f04002f;
-        public static final int notification_action=0x7f040030;
-        public static final int notification_action_tombstone=0x7f040031;
-        public static final int notification_media_action=0x7f040032;
-        public static final int notification_media_cancel_action=0x7f040033;
-        public static final int notification_template_big_media=0x7f040034;
-        public static final int notification_template_big_media_custom=0x7f040035;
-        public static final int notification_template_big_media_narrow=0x7f040036;
-        public static final int notification_template_big_media_narrow_custom=0x7f040037;
-        public static final int notification_template_custom_big=0x7f040038;
-        public static final int notification_template_icon_group=0x7f040039;
-        public static final int notification_template_lines_media=0x7f04003a;
-        public static final int notification_template_media=0x7f04003b;
-        public static final int notification_template_media_custom=0x7f04003c;
-        public static final int notification_template_part_chronometer=0x7f04003d;
-        public static final int notification_template_part_time=0x7f04003e;
-        public static final int select_dialog_item_material=0x7f04003f;
-        public static final int select_dialog_multichoice_material=0x7f040040;
-        public static final int select_dialog_singlechoice_material=0x7f040041;
-        public static final int support_simple_spinner_dropdown_item=0x7f040042;
+        public static final int fragment_doc_so_activity=0x7f040030;
+        public static final int notification_action=0x7f040031;
+        public static final int notification_action_tombstone=0x7f040032;
+        public static final int notification_media_action=0x7f040033;
+        public static final int notification_media_cancel_action=0x7f040034;
+        public static final int notification_template_big_media=0x7f040035;
+        public static final int notification_template_big_media_custom=0x7f040036;
+        public static final int notification_template_big_media_narrow=0x7f040037;
+        public static final int notification_template_big_media_narrow_custom=0x7f040038;
+        public static final int notification_template_custom_big=0x7f040039;
+        public static final int notification_template_icon_group=0x7f04003a;
+        public static final int notification_template_lines_media=0x7f04003b;
+        public static final int notification_template_media=0x7f04003c;
+        public static final int notification_template_media_custom=0x7f04003d;
+        public static final int notification_template_part_chronometer=0x7f04003e;
+        public static final int notification_template_part_time=0x7f04003f;
+        public static final int select_dialog_item_material=0x7f040040;
+        public static final int select_dialog_multichoice_material=0x7f040041;
+        public static final int select_dialog_singlechoice_material=0x7f040042;
+        public static final int support_simple_spinner_dropdown_item=0x7f040043;
     }
     public static final class menu {
         public static final int menu_doc_so=0x7f0f0000;
@@ -3475,7 +3476,8 @@ containing a value of this type.
         public static final int status_bar_notification_info_overflow=0x7f070014;
         public static final int title_activity_dang_nhap=0x7f07002c;
         public static final int title_activity_doc_so=0x7f07002d;
-        public static final int title_activity_main2=0x7f07002e;
+        public static final int title_activity_doc_so2=0x7f07002e;
+        public static final int title_activity_main2=0x7f07002f;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f0900a1;

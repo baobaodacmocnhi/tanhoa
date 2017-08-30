@@ -46,5 +46,6 @@
         <item>20</item>
     </string-array>
     <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_doc_so2">DocSoActivity2</string>
 
 </resources>

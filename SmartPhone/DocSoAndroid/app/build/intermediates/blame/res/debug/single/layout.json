@@ -216,6 +216,10 @@
         "source": "C:\\Users\\user\\.android\\build-cache\\3bd0e1888cd861c6cfa803e831983ba297b3d732\\output\\res\\layout\\design_navigation_item_subheader.xml"
     },
     {
+        "merged": "D:\\Projects\\SmartPhone\\DocSoAndroid\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_doc_so_activity.xml",
+        "source": "D:\\Projects\\SmartPhone\\DocSoAndroid\\app\\src\\main\\res\\layout\\fragment_doc_so_activity.xml"
+    },
+    {
         "merged": "D:\\Projects\\SmartPhone\\DocSoAndroid\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_chup_hinh_doc_so.xml",
         "source": "D:\\Projects\\SmartPhone\\DocSoAndroid\\app\\src\\main\\res\\layout\\activity_chup_hinh_doc_so.xml"
     },

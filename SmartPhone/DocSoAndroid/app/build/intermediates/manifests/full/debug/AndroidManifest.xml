@@ -35,7 +35,7 @@
             android:name="vn.com.abc.docsoandroid.DocSoActivity"
             android:label="@string/title_activity_doc_so"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="vn.com.abc.docsoandroid.ChupHinhDocSoActivity" />
+        <!-- <activity android:name=".ChupHinhDocSoActivity" /> -->
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package vn.com.abc.docsoandroid;
 
+import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -90,19 +91,23 @@ public class DanhSachDocSoActivity extends Fragment {
                 try {
                     TextView ID = (TextView) rootView.findViewById(R.id.lvID);
 
-//                    Bundle bundle = new Bundle();
-//                    bundle.putString("ID", ID.getText().toString());
-//
-//                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-//                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//
-//                    GhiChiSoActivity ghichiso = new GhiChiSoActivity();
-//                    ghichiso.setArguments(bundle);
-//
-//                    fragmentTransaction.replace(R.id.ghichisoxml, ghichiso);
-//                    fragmentTransaction.commit();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("ID", ID.getText().toString());
 
-                    CNguoiDung.ID=ID.getText().toString();
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                    GhiChiSoActivity ghichiso = new GhiChiSoActivity();
+                    ghichiso.setArguments(bundle);
+
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.replace(R.id.ghichisolayout, ghichiso);
+                    fragmentTransaction.commit();
+
+//                    CNguoiDung.ID=ID.getText().toString();
+
+//                    listener.onClickDanhSachDocSoFragment(ID.getText().toString());
+
                     TabLayout tabhost = (TabLayout) getActivity().findViewById(R.id.tabs);
                     tabhost.getTabAt(1).select();
                 } catch (Exception ex) {
