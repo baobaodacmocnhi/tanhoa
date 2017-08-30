@@ -12552,6 +12552,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _TheoYeuCau;
 		
+		private bool _DutChiGoc;
+		
 		private bool _LapBangGia;
 		
 		private System.Nullable<System.DateTime> _NgayLapBangGia;
@@ -12654,6 +12656,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnHoTenKHKyChanged();
     partial void OnTheoYeuCauChanging(string value);
     partial void OnTheoYeuCauChanged();
+    partial void OnDutChiGocChanging(bool value);
+    partial void OnDutChiGocChanged();
     partial void OnLapBangGiaChanging(bool value);
     partial void OnLapBangGiaChanged();
     partial void OnNgayLapBangGiaChanging(System.Nullable<System.DateTime> value);
@@ -13204,6 +13208,26 @@ namespace KTKS_DonKH.LinQ
 					this._TheoYeuCau = value;
 					this.SendPropertyChanged("TheoYeuCau");
 					this.OnTheoYeuCauChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DutChiGoc", DbType="Bit NOT NULL")]
+		public bool DutChiGoc
+		{
+			get
+			{
+				return this._DutChiGoc;
+			}
+			set
+			{
+				if ((this._DutChiGoc != value))
+				{
+					this.OnDutChiGocChanging(value);
+					this.SendPropertyChanging();
+					this._DutChiGoc = value;
+					this.SendPropertyChanged("DutChiGoc");
+					this.OnDutChiGocChanged();
 				}
 			}
 		}

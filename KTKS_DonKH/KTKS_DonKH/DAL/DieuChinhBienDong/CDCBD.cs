@@ -163,7 +163,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                       itemCTDCBD.GiaBieu_BD,
                                       itemCTDCBD.DinhMuc_BD,
                                       itemCTDCBD.DMGiuNguyen,
-                                      itemCTDCBD.GiaHan,
+                                      itemCTDCBD.GBGiuNguyen,
+                                      itemCTDCBD.GiaHanKT3,
+                                      itemCTDCBD.GiaHanNhapCu,
                                   };
                 ///Bảng CTDCHD
                 var queryCTDCHD = from itemCTDCHD in db.CTDCHDs

@@ -1569,5 +1569,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         }
 
         #endregion
+
+        private void btnNhapNhieuGB_Click(object sender, EventArgs e)
+        {
+            frmNhapNhieuGB frm = new frmNhapNhieuGB();
+            frm.ShowDialog();
+        }
     }
 }
