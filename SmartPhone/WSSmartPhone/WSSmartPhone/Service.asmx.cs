@@ -138,6 +138,24 @@ namespace WSSmartPhone
             return _cDocSo.GetDSDocSo(Nam, Ky, Dot, May);
         }
 
+        [WebMethod]
+        public int DS_TinhTieuThu(string DanhBo, string Nam, string Ky, string CodeMoi, string CSMoi)
+        {
+            return _cDocSo.TinhTieuThu(DanhBo, int.Parse(Nam), int.Parse(Ky), CodeMoi, int.Parse(CSMoi));
+        }
+
+        [WebMethod]
+        public int DS_TinhTienNuoc(string DanhBo, string GiaBieu, string DinhMuc, string TieuThu, out string ChiTiet)
+        {
+            return _cDocSo.TinhTienNuoc(DanhBo, int.Parse(GiaBieu), int.Parse(DinhMuc), int.Parse(TieuThu), out ChiTiet);
+        }
+
+        [WebMethod]
+        public bool DS_CapNhat(string ID, string CodeMoi, string TTDHNMoi, string CSMoi, string TieuThuMoi, string TienNuoc, string ChiTiet)
+        {
+            return _cDocSo.CapNhat(ID, CodeMoi, TTDHNMoi, CSMoi, TieuThuMoi, TienNuoc, ChiTiet);
+        }
+
         #endregion
 
     }

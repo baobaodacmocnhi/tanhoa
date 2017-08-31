@@ -14,6 +14,13 @@ namespace WSSmartPhone
         Connection _DAL = new Connection(ConfigurationManager.AppSettings["DocSo"].ToString());
         Connection _DAL_Test = new Connection("Data Source=192.168.1.8\\KD;Initial Catalog=DocSoSP01;Persist Security Info=True;User ID=sa;Password=123@tanhoa");
 
+        public bool CapNhat(string ID, string CodeMoi, string TTDHNMoi, string CSMoi, string TieuThuMoi, string TienNuoc, string ChiTiet)
+        {
+            string sql = "update DocSo set CSMoi=" + CSMoi + ",CodeMoi='" + CodeMoi + "',TTDHNMoi='" + TTDHNMoi + "',TieuThuMoi=" + TieuThuMoi + ",TienNuoc=" + TienNuoc + ",BVMT=" + double.Parse(TienNuoc) * 0.1 + ","
+                + "Thue=" + double.Parse(TienNuoc) * 0.05 + ",TongTien=" + double.Parse(TienNuoc) * 1.15 + ",ChiTiet='" + ChiTiet + "',NgayDS=getdate() where DocSoID=" + ID+" and (NgayDS is null or Cast(NgayDS as date)=Cast(getdate() as date))";
+            return _DAL_Test.ExecuteNonQuery(sql);
+        }
+
         public bool CheckDangNhap(string TaiKhoan, string MatKhau)
         {
             if (_DAL.ExecuteQuery_ReturnOneValue("select MaND from NguoiDung where TaiKhoan='" + TaiKhoan + "' and MatKhau='" + MatKhau + "'") != null)
@@ -52,14 +59,14 @@ namespace WSSmartPhone
             return _DAL_Test.ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
-        int TinhTieuThu(string DanhBo, int ky, int nam, string code, int csmoi)
+        public int TinhTieuThu(string DanhBo, int nam, int ky, string code, int csmoi)
         {
             int tieuthu = 0;
             try
             {
 
-                _DAL.Connect();
-                SqlCommand cmd = new SqlCommand("calTieuTHu", _DAL.connection);
+                _DAL_Test.Connect();
+                SqlCommand cmd = new SqlCommand("calTieuTHu", _DAL_Test.connection);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter _db = cmd.Parameters.Add("@DANHBO", SqlDbType.VarChar);
@@ -96,7 +103,7 @@ namespace WSSmartPhone
             }
             finally
             {
-                _DAL.Disconnect();
+                _DAL_Test.Disconnect();
             }
             return tieuthu;
         }
