@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Linq;
+using System.Drawing;
 
 namespace WSSmartPhone
 {
@@ -17,7 +18,7 @@ namespace WSSmartPhone
         public bool CapNhat(string ID, string CodeMoi, string TTDHNMoi, string CSMoi, string TieuThuMoi, string TienNuoc, string ChiTiet)
         {
             string sql = "update DocSo set CSMoi=" + CSMoi + ",CodeMoi='" + CodeMoi + "',TTDHNMoi='" + TTDHNMoi + "',TieuThuMoi=" + TieuThuMoi + ",TienNuoc=" + TienNuoc + ",BVMT=" + double.Parse(TienNuoc) * 0.1 + ","
-                + "Thue=" + double.Parse(TienNuoc) * 0.05 + ",TongTien=" + double.Parse(TienNuoc) * 1.15 + ",ChiTiet='" + ChiTiet + "',NgayDS=getdate() where DocSoID=" + ID+" and (NgayDS is null or Cast(NgayDS as date)=Cast(getdate() as date))";
+                + "Thue=" + double.Parse(TienNuoc) * 0.05 + ",TongTien=" + double.Parse(TienNuoc) * 1.15 + ",ChiTiet='" + ChiTiet + "',NgayDS=getdate() where DocSoID=" + ID + " and (NgayDS is null or Cast(NgayDS as date)=Cast(getdate() as date))";
             return _DAL_Test.ExecuteNonQuery(sql);
         }
 
@@ -64,8 +65,6 @@ namespace WSSmartPhone
             int tieuthu = 0;
             try
             {
-
-                _DAL_Test.Connect();
                 SqlCommand cmd = new SqlCommand("calTieuTHu", _DAL_Test.connection);
                 cmd.CommandType = CommandType.StoredProcedure;
 
@@ -1087,6 +1086,41 @@ namespace WSSmartPhone
                 //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ChiTiet = "";
                 return 0;
+            }
+        }
+
+        public bool ThemHinhDHN(string DanhBo, string CreateBy, string imageStr)
+        {
+            //int ID = 0;
+            //if (int.Parse(_DAL.ExecuteQuery_SqlDataAdapter_DataTable("select COUNT(ID) from HinhDHN").Rows[0][0].ToString()) == 0)
+            //    ID = 1;
+            //else
+            //    ID = int.Parse(_DAL.ExecuteQuery_SqlDataAdapter_DataTable("select MAX(ID)+1 from HinhDHN").Rows[0][0].ToString());
+            //string sql = "insert into HinhDHN(ID,DanhBo,Hinh,CreateBy,CreateDate)values(" + ID + ",'" + DanhBo + "'," + image + "," + CreateBy + ",GETDATE())";
+            //return _DAL.ExecuteNonQuery(sql);
+
+            try
+            {
+                dbDocSoDataContext db = new dbDocSoDataContext();
+                Byte[] image = System.Convert.FromBase64String(imageStr);
+
+                HinhDHN entity = new HinhDHN();
+                if (db.HinhDHNs.Count() == 0)
+                    entity.ID = 1;
+                else
+                    entity.ID = db.HinhDHNs.Max(item => item.ID) + 1;
+
+                entity.DanhBo = DanhBo;
+                entity.Image = image;
+                entity.CreateBy = int.Parse(CreateBy);
+                entity.CreateDate = DateTime.Now;
+                db.HinhDHNs.InsertOnSubmit(entity);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
 

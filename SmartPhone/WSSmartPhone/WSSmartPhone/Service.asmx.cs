@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.Services;
 using System.Data;
+using System.Drawing;
 
 namespace WSSmartPhone
 {
@@ -154,6 +155,12 @@ namespace WSSmartPhone
         public bool DS_CapNhat(string ID, string CodeMoi, string TTDHNMoi, string CSMoi, string TieuThuMoi, string TienNuoc, string ChiTiet)
         {
             return _cDocSo.CapNhat(ID, CodeMoi, TTDHNMoi, CSMoi, TieuThuMoi, TienNuoc, ChiTiet);
+        }
+
+        [WebMethod]
+        public bool DS_ThemHinhDHN(string DanhBo, string CreateBy, string imageStr)
+        {
+            return _cDocSo.ThemHinhDHN(DanhBo, CreateBy, imageStr);
         }
 
         #endregion
