@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<publishData>
-  <publishProfile publishUrl="\\192.168.90.9\WSSmartPhone$" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
-    <file relUrl="bin/WSSmartPhone.pdb" publishTime="09/01/2017 14:24:28" />
-    <file relUrl="Service.asmx" publishTime="08/18/2017 09:42:36" />
-    <file relUrl="bin/WSSmartPhone.dll" publishTime="09/01/2017 14:24:28" />
-    <file relUrl="Web.config" publishTime="09/01/2017 14:01:46" />
-  </publishProfile>
-</publishData>
