@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\CDAL.cs" />
+    <Compile Include="DAL\ChuanBiDocSo\CChuanBiDs.cs" />
     <Compile Include="DAL\QuanTri\CMenu.cs" />
     <Compile Include="DAL\QuanTri\CNguoiDung.cs" />
     <Compile Include="DAL\QuanTri\CNhom.cs" />
@@ -104,11 +105,11 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Form1.cs">
+    <Compile Include="GUI\ChuanBiDocSo\frmCapNhatHoaDon.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="GUI\ChuanBiDocSo\frmCapNhatHoaDon.Designer.cs">
+      <DependentUpon>frmCapNhatHoaDon.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\HeThong\frmAdmin.cs">
       <SubType>Form</SubType>
@@ -160,8 +161,8 @@
     <None Include="LinQ\dbDocSo.dbml.layout">
       <DependentUpon>dbDocSo.dbml</DependentUpon>
     </None>
-    <EmbeddedResource Include="GUI\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\ChuanBiDocSo\frmCapNhatHoaDon.resx">
+      <DependentUpon>frmCapNhatHoaDon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\HeThong\frmAdmin.resx">
       <DependentUpon>frmAdmin.cs</DependentUpon>
