@@ -50,6 +50,7 @@ namespace DocSo_PC.GUI.HeThong
                     CPhanQuyenNguoiDung _cPhanQuyenNguoiDung = new CPhanQuyenNguoiDung();
 
                     CNguoiDung.MaND = nguoidung.MaND;
+                    CNguoiDung.TaiKhoan = nguoidung.TaiKhoan;
                     CNguoiDung.HoTen = nguoidung.HoTen;
                     CNguoiDung.Admin = nguoidung.Admin;
                     CNguoiDung.PhoGiamDoc = nguoidung.PhoGiamDoc;

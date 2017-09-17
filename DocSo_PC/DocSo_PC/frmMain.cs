@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using DocSo_PC.DAL.QuanTri;
 using DocSo_PC.GUI.HeThong;
 using DocSo_PC.GUI.QuanTri;
+using DocSo_PC.GUI.ChuanBiDocSo;
 
 namespace DocSo_PC
 {
@@ -187,6 +188,31 @@ namespace DocSo_PC
         }
 
         #endregion
+
+        private void mnuLuuHD_Click(object sender, EventArgs e)
+        {
+            //if (CNguoiDung.CheckQuyen("mnuLuuHD", "Xem"))
+            //{
+                frmCapNhatHoaDon frm = new frmCapNhatHoaDon();
+                OpenForm(frm);
+            //}
+            //else
+            //    MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuCapNhatBienDong_Click(object sender, EventArgs e)
+        {
+            //if (CNguoiDung.CheckQuyen("mnuLuuHD", "Xem"))
+            //{
+            frmCapNhatBienDong frm = new frmCapNhatBienDong();
+            OpenForm(frm);
+            //}
+            //else
+            //    MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+           
+            
+        }
 
     }
 }

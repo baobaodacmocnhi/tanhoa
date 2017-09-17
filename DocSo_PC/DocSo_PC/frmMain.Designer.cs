@@ -41,6 +41,11 @@
             this.mnuNguoiDung = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDoi = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToTruong = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuChuanBiDocSo = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLuuHD = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCapNhatBienDong = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuTaoDuLieu = new System.Windows.Forms.ToolStripMenuItem();
+            this.xửLýĐọcSốToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.StripStatus_Version = new System.Windows.Forms.ToolStripStatusLabel();
@@ -48,11 +53,6 @@
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.mnuChuanBiDocSo = new System.Windows.Forms.ToolStripMenuItem();
-            this.xửLýĐọcSốToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuCapNhatHoaDon = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuCapNhatBienDong = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuTaoDuLieu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -120,27 +120,27 @@
             this.mnuNhom,
             this.mnuNguoiDung});
             this.mnuQuanTri.Name = "mnuQuanTri";
-            this.mnuQuanTri.Size = new System.Drawing.Size(64, 20);
+            this.mnuQuanTri.Size = new System.Drawing.Size(65, 20);
             this.mnuQuanTri.Text = "Quản Trị";
             // 
             // mnuTo
             // 
             this.mnuTo.Name = "mnuTo";
-            this.mnuTo.Size = new System.Drawing.Size(152, 22);
+            this.mnuTo.Size = new System.Drawing.Size(139, 22);
             this.mnuTo.Text = "Tổ";
             this.mnuTo.Click += new System.EventHandler(this.mnuTo_Click);
             // 
             // mnuNhom
             // 
             this.mnuNhom.Name = "mnuNhom";
-            this.mnuNhom.Size = new System.Drawing.Size(152, 22);
+            this.mnuNhom.Size = new System.Drawing.Size(139, 22);
             this.mnuNhom.Text = "Nhóm";
             this.mnuNhom.Click += new System.EventHandler(this.mnuNhom_Click);
             // 
             // mnuNguoiDung
             // 
             this.mnuNguoiDung.Name = "mnuNguoiDung";
-            this.mnuNguoiDung.Size = new System.Drawing.Size(152, 22);
+            this.mnuNguoiDung.Size = new System.Drawing.Size(139, 22);
             this.mnuNguoiDung.Text = "Người Dùng";
             this.mnuNguoiDung.Click += new System.EventHandler(this.mnuNguoiDung_Click);
             // 
@@ -153,8 +153,44 @@
             // mnuToTruong
             // 
             this.mnuToTruong.Name = "mnuToTruong";
-            this.mnuToTruong.Size = new System.Drawing.Size(74, 20);
+            this.mnuToTruong.Size = new System.Drawing.Size(75, 20);
             this.mnuToTruong.Text = "Tổ Trưởng";
+            // 
+            // mnuChuanBiDocSo
+            // 
+            this.mnuChuanBiDocSo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuLuuHD,
+            this.mnuCapNhatBienDong,
+            this.mnuTaoDuLieu});
+            this.mnuChuanBiDocSo.Name = "mnuChuanBiDocSo";
+            this.mnuChuanBiDocSo.Size = new System.Drawing.Size(107, 20);
+            this.mnuChuanBiDocSo.Text = "Chuẩn bị Đọc Số";
+            // 
+            // mnuLuuHD
+            // 
+            this.mnuLuuHD.Name = "mnuLuuHD";
+            this.mnuLuuHD.Size = new System.Drawing.Size(179, 22);
+            this.mnuLuuHD.Text = "Cập nhật Hóa đơn";
+            this.mnuLuuHD.Click += new System.EventHandler(this.mnuLuuHD_Click);
+            // 
+            // mnuCapNhatBienDong
+            // 
+            this.mnuCapNhatBienDong.Name = "mnuCapNhatBienDong";
+            this.mnuCapNhatBienDong.Size = new System.Drawing.Size(179, 22);
+            this.mnuCapNhatBienDong.Text = "Cập nhật Biến động";
+            this.mnuCapNhatBienDong.Click += new System.EventHandler(this.mnuCapNhatBienDong_Click);
+            // 
+            // mnuTaoDuLieu
+            // 
+            this.mnuTaoDuLieu.Name = "mnuTaoDuLieu";
+            this.mnuTaoDuLieu.Size = new System.Drawing.Size(179, 22);
+            this.mnuTaoDuLieu.Text = "Tạo dữ liệu Đọc số";
+            // 
+            // xửLýĐọcSốToolStripMenuItem
+            // 
+            this.xửLýĐọcSốToolStripMenuItem.Name = "xửLýĐọcSốToolStripMenuItem";
+            this.xửLýĐọcSốToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
+            this.xửLýĐọcSốToolStripMenuItem.Text = "Xử lý Đọc số";
             // 
             // tabControl
             // 
@@ -182,7 +218,7 @@
             // StripStatus_Version
             // 
             this.StripStatus_Version.Name = "StripStatus_Version";
-            this.StripStatus_Version.Size = new System.Drawing.Size(427, 17);
+            this.StripStatus_Version.Size = new System.Drawing.Size(428, 17);
             this.StripStatus_Version.Text = "Bản quyền(2017) thuộc Công ty CP Cấp Nước Tân Hòa. Được T.CNTT phát triển";
             // 
             // toolStripStatusLabel4
@@ -208,40 +244,6 @@
             // 
             this.timer.Interval = 1200000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
-            // mnuChuanBiDocSo
-            // 
-            this.mnuChuanBiDocSo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuCapNhatHoaDon,
-            this.mnuCapNhatBienDong,
-            this.mnuTaoDuLieu});
-            this.mnuChuanBiDocSo.Name = "mnuChuanBiDocSo";
-            this.mnuChuanBiDocSo.Size = new System.Drawing.Size(107, 20);
-            this.mnuChuanBiDocSo.Text = "Chuẩn bị Đọc Số";
-            // 
-            // xửLýĐọcSốToolStripMenuItem
-            // 
-            this.xửLýĐọcSốToolStripMenuItem.Name = "xửLýĐọcSốToolStripMenuItem";
-            this.xửLýĐọcSốToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
-            this.xửLýĐọcSốToolStripMenuItem.Text = "Xử lý Đọc số";
-            // 
-            // mnuCapNhatHoaDon
-            // 
-            this.mnuCapNhatHoaDon.Name = "mnuCapNhatHoaDon";
-            this.mnuCapNhatHoaDon.Size = new System.Drawing.Size(179, 22);
-            this.mnuCapNhatHoaDon.Text = "Cập nhật Hóa đơn";
-            // 
-            // mnuCapNhatBienDong
-            // 
-            this.mnuCapNhatBienDong.Name = "mnuCapNhatBienDong";
-            this.mnuCapNhatBienDong.Size = new System.Drawing.Size(179, 22);
-            this.mnuCapNhatBienDong.Text = "Cập nhật Biến động";
-            // 
-            // mnuTaoDuLieu
-            // 
-            this.mnuTaoDuLieu.Name = "mnuTaoDuLieu";
-            this.mnuTaoDuLieu.Size = new System.Drawing.Size(179, 22);
-            this.mnuTaoDuLieu.Text = "Tạo dữ liệu Đọc số";
             // 
             // frmMain
             // 
@@ -293,7 +295,7 @@
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.ToolStripMenuItem mnuChuanBiDocSo;
         private System.Windows.Forms.ToolStripMenuItem xửLýĐọcSốToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mnuCapNhatHoaDon;
+        private System.Windows.Forms.ToolStripMenuItem mnuLuuHD;
         private System.Windows.Forms.ToolStripMenuItem mnuCapNhatBienDong;
         private System.Windows.Forms.ToolStripMenuItem mnuTaoDuLieu;
     }

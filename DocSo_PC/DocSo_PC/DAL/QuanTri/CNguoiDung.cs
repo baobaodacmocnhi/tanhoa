@@ -15,6 +15,13 @@ namespace DocSo_PC.DAL.QuanTri
             set { _MaND = value; }
         }
 
+        static string _TaiKhoan;
+        public static string TaiKhoan
+        {
+            get { return CNguoiDung._TaiKhoan; }
+            set { CNguoiDung._TaiKhoan = value; }
+        }
+
         static string _HoTen;
         public static string HoTen
         {
