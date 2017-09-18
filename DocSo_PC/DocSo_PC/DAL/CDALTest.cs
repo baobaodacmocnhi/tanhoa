@@ -14,6 +14,21 @@ namespace DocSo_PC.DAL
     {
         protected static DocSoTestDataContext _db = new DocSoTestDataContext();
 
+        public CDALTest()
+        {
+            try
+            {
+                //_connectionString = "Data Source=192.168.90.8\\KD;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa;Password=123@tanhoa";
+                _connectionString = _db.Connection.ConnectionString;
+                connection = new SqlConnection(_connectionString);
+            }
+            catch (Exception)
+            {
+                //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
         public void BeginTransaction()
         {
             if (_db.Connection.State == System.Data.ConnectionState.Closed)
@@ -153,20 +168,6 @@ namespace DocSo_PC.DAL
         protected SqlCommand command;               // Đối tượng command thực thi truy vấn
         protected SqlTransaction transaction;       // Đối tượng transaction
 
-        public CDALTest()
-        {
-            try
-            {
-                //_connectionString = "Data Source=192.168.90.8\\KD;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa;Password=123@tanhoa";
-                _connectionString = DocSo_PC.Properties.Settings.Default.DocSoTHConnectionString;
-                connection = new SqlConnection(_connectionString);
-            }
-            catch (Exception)
-            {
-                //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            
-        }
 
         public void Connect()
         {

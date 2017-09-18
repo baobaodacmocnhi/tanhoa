@@ -10,6 +10,9 @@ using DocSo_PC.DAL.QuanTri;
 using DocSo_PC.DAL.ChuanBiDocSo;
 using System.IO;
 using DocSo_PC.LinQ;
+using DocSo_PC.DAL;
+using System.Globalization;
+using System.Data.SqlClient;
 
 namespace DocSo_PC.GUI.ChuanBiDocSo
 {
@@ -19,6 +22,7 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
         string _mnu = "mnuLuuHD";
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CChuanBiDS _cHoaDon = new CChuanBiDS();
+        CDALTest _cDAL = new CDALTest();
 
 
         public frmCapNhatBienDong()
@@ -32,6 +36,8 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
             cmbNam.Items.Add(DateTime.Now.Year);
             cmbNam.Items.Add(DateTime.Now.Year + 1);
             cmbNam.SelectedIndex = 2;
+
+
         }
 
         OpenFileDialog dialog = new OpenFileDialog();
@@ -78,10 +84,8 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
         }
 
 
-        private void btnThem_Click(object sender, EventArgs e)
+        public void Add()
         {
-
-
             //if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             //{
             if (txtDuongDan.Text.Trim() != "")
@@ -94,8 +98,8 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
                     string lineR = lines.First().Replace("\",\"", "$").Replace("\"", "");
                     string[] contents = lineR.Split('$');
 
-                    int nam=0;
-                    string ky="", dot="";
+                    int nam = 0;
+                    string ky = "", dot = "";
                     if (!string.IsNullOrWhiteSpace(contents[2]))
                         nam = int.Parse(contents[2]);
                     if (!string.IsNullOrWhiteSpace(contents[3]))
@@ -127,30 +131,23 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
                             hoadon.Dot = dot;
                             if (!string.IsNullOrWhiteSpace(contents[8]))
                                 hoadon.DanhBa = contents[8];
-
                             hoadon.HopDong = null;
-
                             if (!string.IsNullOrWhiteSpace(contents[5]))
                                 hoadon.May = contents[5];
-
                             if (!string.IsNullOrWhiteSpace(contents[9]))
                                 hoadon.TenKH = contents[9];
-
                             if (!string.IsNullOrWhiteSpace(contents[10]))
                                 hoadon.So = contents[10];
                             if (!string.IsNullOrWhiteSpace(contents[11]))
                                 hoadon.Duong = contents[11];
-
                             if (!string.IsNullOrWhiteSpace(contents[13]))
                                 hoadon.Phuong = contents[13];
                             if (!string.IsNullOrWhiteSpace(contents[12]))
                                 hoadon.Quan = contents[12];
-
                             if (!string.IsNullOrWhiteSpace(contents[15]))
                                 hoadon.GB = short.Parse(contents[15]);
                             if (!string.IsNullOrWhiteSpace(contents[16]))
                                 hoadon.DM = int.Parse(contents[16]);
-
                             if (!string.IsNullOrWhiteSpace(contents[17]))
                                 hoadon.SH = short.Parse(contents[17]);
                             if (!string.IsNullOrWhiteSpace(contents[18]))
@@ -159,27 +156,20 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
                                 hoadon.DV = short.Parse(contents[19]);
                             if (!string.IsNullOrWhiteSpace(contents[20]))
                                 hoadon.HC = short.Parse(contents[20]);
-
                             if (!string.IsNullOrWhiteSpace(contents[21]))
                                 hoadon.Co = short.Parse(contents[21]);
-
                             if (!string.IsNullOrWhiteSpace(contents[22]))
                                 hoadon.Hieu = contents[22];
-
                             if (!string.IsNullOrWhiteSpace(contents[23]))
                                 hoadon.SoThan = contents[23];
-
                             if (!string.IsNullOrWhiteSpace(contents[24]))
                                 hoadon.NgayGan = DateTime.ParseExact(contents[24], "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-
                             if (!string.IsNullOrWhiteSpace(contents[25]))
                                 hoadon.Code = contents[25];
                             if (!string.IsNullOrWhiteSpace(contents[26]))
                                 hoadon.ChiSo = int.Parse(contents[26]);
-
                             if (!string.IsNullOrWhiteSpace(contents[27]))
                                 hoadon.TieuThu = int.Parse(contents[27]);
-
                             if (!string.IsNullOrWhiteSpace(contents[0]))
                                 hoadon.STT = int.Parse(contents[0]);
                             if (!string.IsNullOrWhiteSpace(contents[6]))
@@ -202,6 +192,7 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
                         }
 
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadBienDong();
 
                     }
                 }
@@ -214,7 +205,178 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
             //}
             //else
             //    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
         }
 
+        public void AddSQL()
+        {
+            //if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+            //{
+            if (txtDuongDan.Text.Trim() != "")
+            {
+                string[] lines = System.IO.File.ReadAllLines(txtDuongDan.Text.Trim());
+
+                int count = lines.Count();
+                if (count > 0)
+                {
+                    string lineR = lines.First().Replace("\",\"", "$").Replace("\"", "");
+                    string[] contents = lineR.Split('$');
+
+                    int nam = 0;
+                    string ky = "", dot = "";
+                    if (!string.IsNullOrWhiteSpace(contents[2]))
+                        nam = int.Parse(contents[2]);
+                    if (!string.IsNullOrWhiteSpace(contents[3]))
+                        ky = contents[3];
+                    if (!string.IsNullOrWhiteSpace(contents[4]))
+                        dot = contents[4];
+                    if (int.Parse(cmbNam.Text) == nam && cmbKy.Text == ky && cmbDot.Text != dot)
+                    {
+                        MessageBox.Show("File chọn không đúng với đợt đã chọn, kiểm tra lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else
+                    {
+                        progressBar.Minimum = 0;
+                        progressBar.Maximum = count;
+
+                        int i = 1;
+
+                        SqlConnection thisConnection = new SqlConnection(DocSo_PC.Properties.Settings.Default.DocSoSP01ConnectionString);
+                        SqlCommand command = null;
+                        thisConnection.Open();
+
+                        string sql = "DELETE FROM [BienDong] WHERE NAM='" + nam + "' AND KY='" + ky + "' AND DOT='" + dot + "'";
+                        command = new SqlCommand(sql, thisConnection);
+                        command.ExecuteNonQuery();
+
+
+                        foreach (string line in lines)
+                        {
+                            progressBar.Value = i++;
+                            lineR = line.Replace("\",\"", "$").Replace("\"", "");
+                            contents = lineR.Split('$');
+                            string danhba = contents[8];
+
+                            BienDong h = new BienDong();
+                            h.Nam = nam;
+                            h.Ky = ky;
+                            h.Dot = dot;
+                            h.DanhBa = danhba;
+                            h.HopDong = null;
+                            if (!string.IsNullOrWhiteSpace(contents[5]))
+                                h.May = contents[5];
+                            if (!string.IsNullOrWhiteSpace(contents[9]))
+                                h.TenKH = contents[9];
+                            if (!string.IsNullOrWhiteSpace(contents[10]))
+                                h.So = contents[10];
+                            if (!string.IsNullOrWhiteSpace(contents[11]))
+                                h.Duong = contents[11];
+                            if (!string.IsNullOrWhiteSpace(contents[13]))
+                                h.Phuong = contents[13];
+                            if (!string.IsNullOrWhiteSpace(contents[12]))
+                                h.Quan = contents[12];
+                            if (!string.IsNullOrWhiteSpace(contents[15]))
+                                h.GB = short.Parse(contents[15]);
+                            if (!string.IsNullOrWhiteSpace(contents[16]))
+                                h.DM = int.Parse(contents[16]);
+                            if (!string.IsNullOrWhiteSpace(contents[17]))
+                                h.SH = short.Parse(contents[17]);
+                            if (!string.IsNullOrWhiteSpace(contents[18]))
+                                h.SX = short.Parse(contents[18]);
+                            if (!string.IsNullOrWhiteSpace(contents[19]))
+                                h.DV = short.Parse(contents[19]);
+                            if (!string.IsNullOrWhiteSpace(contents[20]))
+                                h.HC = short.Parse(contents[20]);
+                            if (!string.IsNullOrWhiteSpace(contents[21]))
+                                h.Co = short.Parse(contents[21]);
+                            if (!string.IsNullOrWhiteSpace(contents[22]))
+                                h.Hieu = contents[22];
+                            if (!string.IsNullOrWhiteSpace(contents[23]))
+                                h.SoThan = contents[23];
+                            if (!string.IsNullOrWhiteSpace(contents[24]))
+                                h.NgayGan = DateTime.ParseExact(contents[24], "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                            if (!string.IsNullOrWhiteSpace(contents[25]))
+                                h.Code = contents[25];
+                            if (!string.IsNullOrWhiteSpace(contents[26]))
+                                h.ChiSo = int.Parse(contents[26]);
+                            if (!string.IsNullOrWhiteSpace(contents[27]))
+                                h.TieuThu = int.Parse(contents[27]);
+                            if (!string.IsNullOrWhiteSpace(contents[0]))
+                                h.STT = int.Parse(contents[0]);
+                            if (!string.IsNullOrWhiteSpace(contents[6]))
+                                h.MLT1 = h.Dot + "" + contents[6];
+                            h.NVCapNhat = CNguoiDung.TaiKhoan;
+                            h.BienDongID = h.Nam.ToString() + h.Ky + h.DanhBa;
+
+
+
+                            //string cmd = "INSERT INTO [BienDong] ([BienDongID],[Nam],[Ky],[Dot],[DanhBa]) ";
+                            //cmd += "VALUES ('" + BienDongID + "'," + nam + ",'" + ky + "','" + dot + "','" + danhba + "')";
+
+                            string cmd = "INSERT INTO [BienDong] ([BienDongID],[Nam],[Ky],[Dot],[DanhBa],[HopDong],[May],[TenKH],[So],[Duong],[Phuong],[Quan],[GB],[DM],[SH],[SX],[DV],[HC],[Hieu],[Co],[SoThan],[Code],[ChiSo],[TieuThu],[NgayGan],[STT],[MLT1],[NVCapNhat]) ";
+                            cmd += " VALUES ('" + h.BienDongID + "'," + h.Nam + ",'" + h.Ky + "','" + h.Dot + "','" + h.DanhBa + "','" + h.HopDong + "','" + h.May + "','" + h.TenKH + "','" + h.So + "',";
+                            cmd += "'" + h.Duong + "','" + h.Phuong + "','" + h.Quan + "',0" + h.GB + ",0" + h.DM + ",0" + h.SH + ",0" + h.SX + ",0" + h.DV + ",0" + h.HC + ",'" + h.Hieu + "',";
+                            cmd += "'" + h.Co + "','" + h.SoThan + "','" + h.Code + "',0" + h.ChiSo + ",0" + h.TieuThu + ",'" + h.NgayGan + "','" + h.STT + "','" + h.MLT1 + "','" + h.NVCapNhat + "')";
+
+
+                            command = new SqlCommand(cmd, thisConnection);
+                            command.ExecuteNonQuery();
+
+                        }
+
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        thisConnection.Close();
+                        LoadBienDong();
+
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("File biến động không hợp lệ !!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+            }
+            //}
+            //else
+            //    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        }
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            AddSQL();
+
+
+        }
+
+
+        void LoadBienDong()
+        {
+            string sql = " select count(case when LEFT(CODE,1) ='4' then 1 else null end) AS '4',  ";
+            sql += " count(case when LEFT(CODE,1) ='5' then 1 else null end) AS '5',   ";
+            sql += " count(case when LEFT(CODE,1) ='6' then 1 else null end) AS '6',   ";
+            sql += " count(case when LEFT(CODE,1) ='8' then 1 else null end) AS '8',   ";
+            sql += " count(case when LEFT(CODE,1) ='F' then 1 else null end) AS 'F',   ";
+            sql += " count(case when LEFT(CODE,1) ='K' then 1 else null end) AS 'K',   ";
+            sql += " count(case when LEFT(CODE,1) ='M' then 1 else null end) AS 'M',   ";
+            sql += " count(case when LEFT(CODE,1) ='N' then 1 else null end) AS 'N',   ";
+            sql += " count(case when LEFT(CODE,1) ='Q' then 1 else null end) AS 'Q'	     ";
+            sql += " from BienDong where NAM=" + cmbNam.Text + " and KY='" + cmbKy.Text + "' and dot='" + cmbDot.Text + "' ";
+            dataCode.DataSource = _cDAL.ExecuteQuery_SqlDataReader_DataTable(sql);
+
+
+            sql = "select * from BienDong where NAM=" + cmbNam.Text + " and KY='" + cmbKy.Text + "' and dot='" + cmbDot.Text + "' ";
+            DataTable tb = _cDAL.ExecuteQuery_SqlDataReader_DataTable(sql);
+            dataBiendong.DataSource = tb;
+            lbSoLuongBd.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", tb.Rows.Count);
+
+
+        }
+
+        private void cmbDot_SelectedValueChanged(object sender, EventArgs e)
+        {
+            LoadBienDong();
+        }
     }
 }
