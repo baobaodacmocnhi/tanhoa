@@ -212,5 +212,10 @@ namespace DocSo_PC.DAL.ChuanBiDocSo
             }
             return tb;
         }
+
+        public static BillState GetBillState(int Nam, string Ky, string Dot)
+        {
+            return _db.BillStates.SingleOrDefault(item => item.BillID == ("" + Nam+Ky+Dot));
+        }
     }
 }

@@ -8,6 +8,20 @@ namespace DocSo_PC.DAL.QuanTri
 {
     class CNguoiDung : CDAL
     {
+        static int _TuMayDS;
+        public static int TuMayDS
+        {
+            get { return _TuMayDS; }
+            set { _TuMayDS = value; }
+        }
+
+        static int _DenMayDS;
+        public static int DenMayDS
+        {
+            get { return _DenMayDS; }
+            set { _DenMayDS = value; }
+        }
+
         static int _MaND;
         public static int MaND
         {

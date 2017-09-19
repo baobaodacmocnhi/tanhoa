@@ -40,7 +40,7 @@ namespace DocSo_PC.GUI.HeThong
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
             CNguoiDung _cNguoiDung = new CNguoiDung();
-
+            CTo _ct = new CTo();
             if (_cNguoiDung.DangNhap(txtTaiKhoan.Text.Trim(), txtMatKhau.Text.Trim()))
             {
                 NguoiDung nguoidung = _cNguoiDung.GetByTaiKhoan(txtTaiKhoan.Text.Trim());
@@ -48,7 +48,17 @@ namespace DocSo_PC.GUI.HeThong
                 {
                     CPhanQuyenNhom _cPhanQuyenNhom = new CPhanQuyenNhom();
                     CPhanQuyenNguoiDung _cPhanQuyenNguoiDung = new CPhanQuyenNguoiDung();
+                    if (nguoidung.Doi)
+                    {
+                        CNguoiDung.TuMayDS = 0;
+                        CNguoiDung.DenMayDS = 150;
+                    }
+                    else
+                    {
+                        CNguoiDung.TuMayDS = _ct.GetByMaTo(nguoidung.MaTo.Value).TuMay.Value;
+                        CNguoiDung.DenMayDS = _ct.GetByMaTo(nguoidung.MaTo.Value).DenMay.Value;
 
+                    }
                     CNguoiDung.MaND = nguoidung.MaND;
                     CNguoiDung.TaiKhoan = nguoidung.TaiKhoan;
                     CNguoiDung.HoTen = nguoidung.HoTen;
@@ -62,8 +72,8 @@ namespace DocSo_PC.GUI.HeThong
                         CNguoiDung.TenTo = nguoidung.To.TenTo;
                     }
                     if (nguoidung.MaNhom != null)
-                        CNguoiDung.dtQuyenNhom = _cPhanQuyenNhom.GetDSByMaNhom(true,nguoidung.MaNhom.Value);
-                    CNguoiDung.dtQuyenNguoiDung = _cPhanQuyenNguoiDung.GetDSByMaND(true,nguoidung.MaND);
+                        CNguoiDung.dtQuyenNhom = _cPhanQuyenNhom.GetDSByMaNhom(true, nguoidung.MaNhom.Value);
+                    CNguoiDung.dtQuyenNguoiDung = _cPhanQuyenNguoiDung.GetDSByMaND(true, nguoidung.MaND);
 
                     GetLoginResult(true);
                     this.Hide();
