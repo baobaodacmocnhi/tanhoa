@@ -189,12 +189,14 @@ namespace DocSo_PC
 
         #endregion
 
+        #region Chuẩn Bị Đọc Số
+
         private void mnuLuuHD_Click(object sender, EventArgs e)
         {
             //if (CNguoiDung.CheckQuyen("mnuLuuHD", "Xem"))
             //{
-                frmCapNhatHoaDon frm = new frmCapNhatHoaDon();
-                OpenForm(frm);
+            frmCapNhatHoaDon frm = new frmCapNhatHoaDon();
+            OpenForm(frm);
             //}
             //else
             //    MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -210,9 +212,33 @@ namespace DocSo_PC
             //else
             //    MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-           
-            
+
+
         }
+        private void mnuTaoDuLieu_Click(object sender, EventArgs e)
+        {
+            //if (CNguoiDung.CheckQuyen("mnuLuuHD", "Xem"))
+            //{
+            frmTaoDocSo frm = new frmTaoDocSo();
+            OpenForm(frm);
+            //}
+            //else
+            //    MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        }
+        private void mnGiaoTangCuong_Click(object sender, EventArgs e)
+        {
+            //if (CNguoiDung.CheckQuyen("mnuLuuHD", "Xem"))
+            //{
+            frmGiaoTangCuong frm = new frmGiaoTangCuong();
+            OpenForm(frm);
+            //}
+            //else
+            //    MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion
+
 
     }
 }

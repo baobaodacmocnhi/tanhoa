@@ -118,6 +118,18 @@
     <Compile Include="GUI\ChuanBiDocSo\frmCapNhatHoaDon.Designer.cs">
       <DependentUpon>frmCapNhatHoaDon.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ChuanBiDocSo\frmGiaoTangCuong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ChuanBiDocSo\frmGiaoTangCuong.Designer.cs">
+      <DependentUpon>frmGiaoTangCuong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ChuanBiDocSo\frmTaoDocSo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ChuanBiDocSo\frmTaoDocSo.Designer.cs">
+      <DependentUpon>frmTaoDocSo.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\HeThong\frmAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +190,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ChuanBiDocSo\frmCapNhatHoaDon.resx">
       <DependentUpon>frmCapNhatHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ChuanBiDocSo\frmGiaoTangCuong.resx">
+      <DependentUpon>frmGiaoTangCuong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ChuanBiDocSo\frmTaoDocSo.resx">
+      <DependentUpon>frmTaoDocSo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\HeThong\frmAdmin.resx">
       <DependentUpon>frmAdmin.cs</DependentUpon>

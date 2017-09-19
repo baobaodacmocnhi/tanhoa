@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace DocSo_PC.GUI.ChuanBiDocSo
+{
+    public partial class frmGiaoTangCuong : Form
+    {
+        public frmGiaoTangCuong()
+        {
+            InitializeComponent();
+        }
+    }
+}

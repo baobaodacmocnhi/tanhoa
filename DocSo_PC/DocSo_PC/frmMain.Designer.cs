@@ -53,6 +53,7 @@
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.mnGiaoTangCuong = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -120,7 +121,7 @@
             this.mnuNhom,
             this.mnuNguoiDung});
             this.mnuQuanTri.Name = "mnuQuanTri";
-            this.mnuQuanTri.Size = new System.Drawing.Size(65, 20);
+            this.mnuQuanTri.Size = new System.Drawing.Size(64, 20);
             this.mnuQuanTri.Text = "Quản Trị";
             // 
             // mnuTo
@@ -153,7 +154,7 @@
             // mnuToTruong
             // 
             this.mnuToTruong.Name = "mnuToTruong";
-            this.mnuToTruong.Size = new System.Drawing.Size(75, 20);
+            this.mnuToTruong.Size = new System.Drawing.Size(74, 20);
             this.mnuToTruong.Text = "Tổ Trưởng";
             // 
             // mnuChuanBiDocSo
@@ -161,7 +162,8 @@
             this.mnuChuanBiDocSo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuLuuHD,
             this.mnuCapNhatBienDong,
-            this.mnuTaoDuLieu});
+            this.mnuTaoDuLieu,
+            this.mnGiaoTangCuong});
             this.mnuChuanBiDocSo.Name = "mnuChuanBiDocSo";
             this.mnuChuanBiDocSo.Size = new System.Drawing.Size(107, 20);
             this.mnuChuanBiDocSo.Text = "Chuẩn bị Đọc Số";
@@ -185,6 +187,7 @@
             this.mnuTaoDuLieu.Name = "mnuTaoDuLieu";
             this.mnuTaoDuLieu.Size = new System.Drawing.Size(179, 22);
             this.mnuTaoDuLieu.Text = "Tạo dữ liệu Đọc số";
+            this.mnuTaoDuLieu.Click += new System.EventHandler(this.mnuTaoDuLieu_Click);
             // 
             // xửLýĐọcSốToolStripMenuItem
             // 
@@ -218,7 +221,7 @@
             // StripStatus_Version
             // 
             this.StripStatus_Version.Name = "StripStatus_Version";
-            this.StripStatus_Version.Size = new System.Drawing.Size(428, 17);
+            this.StripStatus_Version.Size = new System.Drawing.Size(427, 17);
             this.StripStatus_Version.Text = "Bản quyền(2017) thuộc Công ty CP Cấp Nước Tân Hòa. Được T.CNTT phát triển";
             // 
             // toolStripStatusLabel4
@@ -244,6 +247,13 @@
             // 
             this.timer.Interval = 1200000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // mnGiaoTangCuong
+            // 
+            this.mnGiaoTangCuong.Name = "mnGiaoTangCuong";
+            this.mnGiaoTangCuong.Size = new System.Drawing.Size(179, 22);
+            this.mnGiaoTangCuong.Text = "Giao tăng cường";
+            this.mnGiaoTangCuong.Click += new System.EventHandler(this.mnGiaoTangCuong_Click);
             // 
             // frmMain
             // 
@@ -298,6 +308,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuLuuHD;
         private System.Windows.Forms.ToolStripMenuItem mnuCapNhatBienDong;
         private System.Windows.Forms.ToolStripMenuItem mnuTaoDuLieu;
+        private System.Windows.Forms.ToolStripMenuItem mnGiaoTangCuong;
     }
 }
 

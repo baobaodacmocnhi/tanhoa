@@ -37,7 +37,10 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
             cmbNam.Items.Add(DateTime.Now.Year + 1);
             cmbNam.SelectedIndex = 2;
 
-
+            if (DateTime.Now.Day >= 19)
+                cmbKy.SelectedIndex = DateTime.Now.Month;
+            else
+                cmbKy.SelectedIndex = DateTime.Now.Month - 1;
         }
 
         OpenFileDialog dialog = new OpenFileDialog();
@@ -208,7 +211,7 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
 
         }
 
-        public void AddSQL()
+        public void AddSQL(int _nam, string _ky, string _dot)
         {
             //if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             //{
@@ -230,7 +233,7 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
                         ky = contents[3];
                     if (!string.IsNullOrWhiteSpace(contents[4]))
                         dot = contents[4];
-                    if (int.Parse(cmbNam.Text) == nam && cmbKy.Text == ky && cmbDot.Text != dot)
+                    if (_nam == nam && _ky == ky && _dot != dot)
                     {
                         MessageBox.Show("File chọn không đúng với đợt đã chọn, kiểm tra lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -325,9 +328,8 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
 
                         }
 
-                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         thisConnection.Close();
-                        LoadBienDong();
+                       
 
 
                     }
@@ -345,9 +347,15 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
-            AddSQL();
+            int nam = int.Parse(cmbNam.Text);
+            string ky = cmbKy.Text;
+            string dot = cmbDot.Text;
 
+            AddSQL(nam, ky, dot);
+            // Cập Nhật Thông Tin Biến Động
+            CChuanBiDS.UpdateTTBienDong("UpdateBienDong", nam, ky, dot);
 
+            LoadBienDong();
         }
 
 
@@ -366,7 +374,7 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
             dataCode.DataSource = _cDAL.ExecuteQuery_SqlDataReader_DataTable(sql);
 
 
-            sql = "select * from BienDong where NAM=" + cmbNam.Text + " and KY='" + cmbKy.Text + "' and dot='" + cmbDot.Text + "' ";
+            sql = "select  [MLT1], [DanhBa],[May],[TenKH],[So],[Duong],[Phuong],[Quan],[GB],[DM],[Hieu],[Co],[SoThan],[Code],[ChiSo],[TieuThu],convert(varchar(50),[NgayGan],103) as [NgayGan],[NgayCapNhat],[NVCapNhat] from BienDong where NAM=" + cmbNam.Text + " and KY='" + cmbKy.Text + "' and dot='" + cmbDot.Text + "' ";
             DataTable tb = _cDAL.ExecuteQuery_SqlDataReader_DataTable(sql);
             dataBiendong.DataSource = tb;
             lbSoLuongBd.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", tb.Rows.Count);
@@ -377,6 +385,31 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
         private void cmbDot_SelectedValueChanged(object sender, EventArgs e)
         {
             LoadBienDong();
+        }
+
+        private void dataCode_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                string headerText = dataCode.Columns[e.ColumnIndex].HeaderText;
+
+                string sql = "select [MLT1], [DanhBa],[May],[TenKH],[So],[Duong],[Phuong],[Quan],[GB],[DM],[Hieu],[Co],[SoThan],[Code],[ChiSo],[TieuThu],convert(varchar(50),[NgayGan],103) as [NgayGan],[NgayCapNhat],[NVCapNhat] from BienDong where NAM=" + cmbNam.Text + " and KY='" + cmbKy.Text + "' and dot='" + cmbDot.Text + "'  AND LEFT(CODE,1)='" + headerText + "'";
+                DataTable tb = _cDAL.ExecuteQuery_SqlDataReader_DataTable(sql);
+                dataBiendong.DataSource = tb;
+
+            }
+            catch (Exception)
+            {
+            }
+            
+        }
+
+        private void dataBiendong_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dataBiendong.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
+            }
         }
     }
 }
