@@ -18,7 +18,7 @@
     <ManifestKeyFile>QLVanThuDi_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
     <SignManifests>false</SignManifests>
-    <PublishUrl>\\192.168.90.9\cntt\BaoBao\QLVanThuDi\</PublishUrl>
+    <PublishUrl>\\192.168.90.9\BaoBao%24\QLVanThuDi\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -28,21 +28,21 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <UpdateUrl>\\192.168.90.9\cntt\BaoBao\QLVanThuDi\</UpdateUrl>
+    <UpdateUrl>\\192.168.90.9\BaoBao%24\QLVanThuDi\</UpdateUrl>
     <TargetCulture>vi-VN</TargetCulture>
     <ProductName>Quản Lý Công Văn Đi</ProductName>
     <PublisherName>P.CNTT</PublisherName>
     <MinimumRequiredVersion>1.0.0.0</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>6</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <BootstrapperComponentsLocation>Absolute</BootstrapperComponentsLocation>
-    <BootstrapperComponentsUrl>\\192.168.90.9\cntt\BaoBao\QLVanThuDi</BootstrapperComponentsUrl>
+    <BootstrapperComponentsUrl>\\192.168.90.9\BaoBao%24\QLVanThuDi</BootstrapperComponentsUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
