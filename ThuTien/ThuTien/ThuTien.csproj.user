@@ -2,11 +2,11 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ReferencePath>C:\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\</ReferencePath>
-    <PublishUrlHistory>\\192.168.90.9\cntt\BaoBao\ThuTien\|publish\</PublishUrlHistory>
+    <PublishUrlHistory>\\192.168.90.9\BaoBao%24\ThuTien\|\\192.168.90.9\cntt\BaoBao\ThuTien\|publish\</PublishUrlHistory>
     <InstallUrlHistory />
     <SupportUrlHistory />
     <UpdateUrlHistory>\\192.168.90.9\cntt\BaoBao\ThuTien\</UpdateUrlHistory>
-    <BootstrapperUrlHistory>\\192.168.90.9\cntt\BaoBao\ThuTien</BootstrapperUrlHistory>
+    <BootstrapperUrlHistory>\\192.168.90.9\BaoBao%24\ThuTien|\\192.168.90.9\cntt\BaoBao\ThuTien</BootstrapperUrlHistory>
     <ErrorReportUrlHistory />
     <FallbackCulture>en-US</FallbackCulture>
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
