@@ -2,11 +2,11 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ReferencePath>C:\Program Files\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\;C:\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\</ReferencePath>
-    <PublishUrlHistory>\\192.168.90.9\cntt\BaoBao\KTKS_DonKH\|\\192.168.90.9\cntt\BaoBao\KTKS_DonKHa\|192.168.90.9\cntt\BaoBao\KTKS_DonKH\|192.168.90.90\|publish\</PublishUrlHistory>
+    <PublishUrlHistory>\\192.168.90.9\BaoBao%24\KTKS_DonKH\|\\192.168.90.9\cntt\BaoBao\KTKS_DonKH\|\\192.168.90.9\cntt\BaoBao\KTKS_DonKHa\|192.168.90.9\cntt\BaoBao\KTKS_DonKH\|192.168.90.90\</PublishUrlHistory>
     <InstallUrlHistory />
     <SupportUrlHistory />
-    <UpdateUrlHistory>\\192.168.90.9\cntt\BaoBao\KTKS_DonKH\|\\192.168.90.9\cntt\BaoBao\KTKS_DonKHa\</UpdateUrlHistory>
-    <BootstrapperUrlHistory>\\192.168.90.9\cntt\BaoBao\KTKS_DonKH</BootstrapperUrlHistory>
+    <UpdateUrlHistory>\\192.168.90.9\BaoBao%24\KTKS_DonKH\|\\192.168.90.9\cntt\BaoBao\KTKS_DonKH\|\\192.168.90.9\cntt\BaoBao\KTKS_DonKHa\</UpdateUrlHistory>
+    <BootstrapperUrlHistory>\\192.168.90.9\BaoBao%24\KTKS_DonKH|\\192.168.90.9\cntt\BaoBao\KTKS_DonKH</BootstrapperUrlHistory>
     <ErrorReportUrlHistory />
     <FallbackCulture>en-US</FallbackCulture>
     <VerifyUploadedFiles>false</VerifyUploadedFiles>

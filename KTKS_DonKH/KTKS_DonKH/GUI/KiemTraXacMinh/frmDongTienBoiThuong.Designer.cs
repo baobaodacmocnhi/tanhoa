@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbTheoYeuCau = new System.Windows.Forms.Label();
             this.txtTheoYeuCau = new System.Windows.Forms.TextBox();
             this.cmbTinhTrangDHN = new System.Windows.Forms.ComboBox();
@@ -56,6 +56,7 @@
             this.txtHieu = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chkDutChiGoc = new System.Windows.Forms.CheckBox();
             this.txtDienThoai = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNoiDungKiemTra = new System.Windows.Forms.TextBox();
@@ -85,7 +86,7 @@
             this.dateLapBangGia = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbNoiDung = new System.Windows.Forms.ComboBox();
-            this.chkDutChiGoc = new System.Windows.Forms.CheckBox();
+            this.chkMoNuoc = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKetQuaKiemTra)).BeginInit();
             this.groupBoxDongTienBoiThuong.SuspendLayout();
@@ -375,6 +376,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.chkMoNuoc);
             this.groupBox2.Controls.Add(this.chkDutChiGoc);
             this.groupBox2.Controls.Add(this.cmbTinhTrangDHN);
             this.groupBox2.Controls.Add(this.label20);
@@ -410,6 +412,16 @@
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kết Quả";
+            // 
+            // chkDutChiGoc
+            // 
+            this.chkDutChiGoc.AutoSize = true;
+            this.chkDutChiGoc.Location = new System.Drawing.Point(767, 135);
+            this.chkDutChiGoc.Name = "chkDutChiGoc";
+            this.chkDutChiGoc.Size = new System.Drawing.Size(96, 20);
+            this.chkDutChiGoc.TabIndex = 47;
+            this.chkDutChiGoc.Text = "Đứt Chì Góc";
+            this.chkDutChiGoc.UseVisualStyleBackColor = true;
             // 
             // txtDienThoai
             // 
@@ -457,14 +469,14 @@
             // 
             this.dgvDSKetQuaKiemTra.AllowUserToAddRows = false;
             this.dgvDSKetQuaKiemTra.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSKetQuaKiemTra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSKetQuaKiemTra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDSKetQuaKiemTra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSKetQuaKiemTra.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaCTKTXM,
@@ -695,15 +707,15 @@
             this.cmbNoiDung.Size = new System.Drawing.Size(188, 24);
             this.cmbNoiDung.TabIndex = 32;
             // 
-            // chkDutChiGoc
+            // chkMoNuoc
             // 
-            this.chkDutChiGoc.AutoSize = true;
-            this.chkDutChiGoc.Location = new System.Drawing.Point(767, 135);
-            this.chkDutChiGoc.Name = "chkDutChiGoc";
-            this.chkDutChiGoc.Size = new System.Drawing.Size(96, 20);
-            this.chkDutChiGoc.TabIndex = 47;
-            this.chkDutChiGoc.Text = "Đứt Chì Góc";
-            this.chkDutChiGoc.UseVisualStyleBackColor = true;
+            this.chkMoNuoc.AutoSize = true;
+            this.chkMoNuoc.Location = new System.Drawing.Point(869, 135);
+            this.chkMoNuoc.Name = "chkMoNuoc";
+            this.chkMoNuoc.Size = new System.Drawing.Size(81, 20);
+            this.chkMoNuoc.TabIndex = 48;
+            this.chkMoNuoc.Text = "Mở Nước";
+            this.chkMoNuoc.UseVisualStyleBackColor = true;
             // 
             // frmDongTienBoiThuong
             // 
@@ -803,5 +815,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDungKiemTra;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
         private System.Windows.Forms.CheckBox chkDutChiGoc;
+        private System.Windows.Forms.CheckBox chkMoNuoc;
     }
 }

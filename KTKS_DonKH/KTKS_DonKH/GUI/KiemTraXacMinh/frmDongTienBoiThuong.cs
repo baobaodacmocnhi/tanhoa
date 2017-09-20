@@ -50,6 +50,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             cmbTinhTrangDHN.SelectedItem = ctktxm.TinhTrangDHN;
             txtNoiDungKiemTra.Text = ctktxm.NoiDungKiemTra;
             chkDutChiGoc.Checked = ctktxm.DutChiGoc;
+            chkMoNuoc.Checked = ctktxm.MoNuoc;
 
             if (ctktxm.LapBangGia)
             {
@@ -110,6 +111,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 txtNoiDungKiemTra.Text = "";
                 txtTheoYeuCau.Text = "";
                 chkDutChiGoc.Checked = false;
+                chkMoNuoc.Checked = false;
                 ///
                 chkLapBangGia.Checked = false;
                 dateLapBangGia.Value = DateTime.Now;
@@ -151,6 +153,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     CTKTXM ctktxm = _cKTXM.GetCT(decimal.Parse(dgvDSKetQuaKiemTra["MaCTKTXM", _selectedindex].Value.ToString()));
 
                     ctktxm.DutChiGoc = chkDutChiGoc.Checked;
+                    ctktxm.MoNuoc = chkMoNuoc.Checked;
                     //if (ctktxm.LapBangGia != chkLapBangGia.Checked)
                         if (chkLapBangGia.Checked)
                         {

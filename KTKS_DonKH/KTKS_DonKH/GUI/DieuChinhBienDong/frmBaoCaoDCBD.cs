@@ -354,7 +354,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                         dr["TuNgay"] = dateTu.Value.Date.ToString("dd/MM/yyyy");
                         dr["DenNgay"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
-                        dr["LoaiBaoCao"] = "SẮP THỜI HẠN";
+                        dr["LoaiBaoCao"] = "SẮP HẾT HẠN";
                         if (_cDCBD.checkCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                         {
                             string a = _cDCBD.getCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
@@ -401,7 +401,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                 dr["TuNgay"] = dateTu.Value.Date.ToString("dd/MM/yyyy");
                                 dr["DenNgay"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
-                                dr["LoaiBaoCao"] = "SẮP THỜI HẠN";
+                                dr["LoaiBaoCao"] = "SẮP HẾT HẠN";
                                 if (_cDCBD.checkCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                                 {
                                     string a = _cDCBD.getCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
@@ -448,7 +448,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                 dr["TuNgay"] = dateTu.Value.Date.ToString("dd/MM/yyyy");
                                 dr["DenNgay"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
-                                dr["LoaiBaoCao"] = "SẮP THỜI HẠN";
+                                dr["LoaiBaoCao"] = "SẮP HẾT HẠN";
                                 if (_cDCBD.checkCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                                 {
                                     string a = _cDCBD.getCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
