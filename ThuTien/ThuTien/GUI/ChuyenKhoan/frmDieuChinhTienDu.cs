@@ -146,6 +146,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 phimonuoc.NgayBK = dateBangKe.Value;
                                 phimonuoc.SoTien = _cBangKe.GetSoTien(hoadon.DANHBA, dateBangKe.Value);
                                 phimonuoc.TongCong = phimonuoc.SoTien - kqdongnuoc.PhiMoNuoc.Value;
+                                phimonuoc.PhiMoNuoc = kqdongnuoc.PhiMoNuoc;
                                 phimonuoc.MaKQDN = kqdongnuoc.MaKQDN;
 
                                 if (_cPhiMoNuoc.Them(phimonuoc))

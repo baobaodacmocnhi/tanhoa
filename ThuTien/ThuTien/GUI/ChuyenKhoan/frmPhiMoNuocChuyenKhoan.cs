@@ -137,6 +137,11 @@ namespace ThuTien.GUI.ChuyenKhoan
                 dr["NgayBK"] = NgayBK.ToString("dd/MM/yyyy");
                 dr["SoTien"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(item.Cells["SoTien_PMN"].Value.ToString()));
                 dr["TongCong"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(item.Cells["TongCong_PMN"].Value.ToString()));
+                if (item.Cells["PhiMoNuoc"].Value.ToString() != "")
+                {
+                    dr["PhiMoNuoc"] = int.Parse(item.Cells["PhiMoNuoc"].Value.ToString());
+                    dr["PhiMoNuocChu"] = _cPhiMoNuoc.ConvertMoneyToWord(item.Cells["PhiMoNuoc"].Value.ToString());
+                }
                 ds.Tables["PhiMoNuoc"].Rows.Add(dr);
             }
 

@@ -61,6 +61,7 @@
             this.NgayBK_PMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoTien_PMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong_PMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhiMoNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTienDu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhiMoNuoc)).BeginInit();
             this.SuspendLayout();
@@ -162,7 +163,8 @@
             this.NgayTraHD_PMN,
             this.NgayBK_PMN,
             this.SoTien_PMN,
-            this.TongCong_PMN});
+            this.TongCong_PMN,
+            this.PhiMoNuoc});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -336,6 +338,13 @@
             this.TongCong_PMN.Name = "TongCong_PMN";
             this.TongCong_PMN.Visible = false;
             // 
+            // PhiMoNuoc
+            // 
+            this.PhiMoNuoc.DataPropertyName = "PhiMoNuoc";
+            this.PhiMoNuoc.HeaderText = "PhiMoNuoc";
+            this.PhiMoNuoc.Name = "PhiMoNuoc";
+            this.PhiMoNuoc.Visible = false;
+            // 
             // frmPhiMoNuocChuyenKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -388,5 +397,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayBK_PMN;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoTien_PMN;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_PMN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PhiMoNuoc;
     }
 }
