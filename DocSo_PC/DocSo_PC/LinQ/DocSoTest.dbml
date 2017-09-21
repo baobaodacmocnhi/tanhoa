@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DocSoSP01" Class="DocSoTestDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=113.161.88.180,1833\KD;Initial Catalog=DocSoSP01;Persist Security Info=True;User ID=sa" SettingsObjectName="DocSo_PC.Properties.Settings" SettingsPropertyName="DocSoSP01ConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=HP_G7\KD;Initial Catalog=DocSoSP01;Persist Security Info=True;User ID=sa" SettingsObjectName="DocSo_PC.Properties.Settings" SettingsPropertyName="DocSoSP01ConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.BillState" Member="BillStates">
     <Type Name="BillState">
       <Column Name="BillID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -41,6 +41,30 @@
       <Column Name="MLT1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="NgayCapNhat" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="NVCapNhat" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HoaDon" Member="HoaDons">
+    <Type Name="HoaDon">
+      <Column Name="HoaDonID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nam" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Ky" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Dot" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DanhBa" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TenKH" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="So" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Duong" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="GB" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CSCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CSMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TieuThu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TuNgay" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DenNgay" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="SoHoaDon" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NgayCapNhat" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NVCapNhat" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TienHD" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.DocSo" Member="DocSos">
@@ -118,37 +142,13 @@
       <Column Name="TenKH" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
       <Column Name="NVTaoDS" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
       <Column Name="NgayTaoDS" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="Col04" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="Col05" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="Col06" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="Col07" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DutChiThan" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DutChiGoc" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DHNSaiTT" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="BaoKinhDoanh" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
       <Column Name="Col08" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
       <Column Name="Col09" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
       <Column Name="Col10" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.HoaDon" Member="HoaDons">
-    <Type Name="HoaDon">
-      <Column Name="HoaDonID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Nam" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Ky" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Dot" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="DanhBa" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="TenKH" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="So" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="Duong" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="GB" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DM" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Code" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="CSCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CSMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TieuThu" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TuNgay" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="DenNgay" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="SoHoaDon" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="NgayCapNhat" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="NVCapNhat" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="TienHD" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

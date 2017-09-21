@@ -1,0 +1,7 @@
+INSERT INTO  DocSo(DocSoID,DanhBa,MLT1,MLT2,SoNhaCu,SoNhaMoi,Duong,SDT,GB,DM,Nam,Ky,Dot,May,TBTT,TamTinh,
+CSCu,CSMoi,CodeCu,CodeMoi,TTDHNCu,TTDHNMoi,TieuThuCu,TieuThuMoi,TuNgay,DenNgay,TienNuoc
+,BVMT,Thue,TongTien,SoThanCu,SoThanMoi,HieuCu,HieuMoi,CoCu,CoMoi,GiengCu,GiengMoi,Van1Cu,
+Van1Moi,MVCu,MVMoi,ChiCoCu,ChiCoMoi,ChiThanCu,ChiThanMoi,ViTriCu,ViTriMoi,CapDoCu,CapDoMoi,
+CongDungCu,CongDungMoi,DMACu,DMAMoi,GhiChuKH,GhiChuDS,GhiChuTV,NVGHI,GIOGHI,BARCODE,SOLANGHI,
+GPSDATA,StaCapNhat,NgayCapNhat,NVCapNhat,TODS,NgayDS,ChiTiet,Latitude,Longitude,TenKH,NVTaoDS,
+NgayTaoDS,DutChiThan,DutChiGoc,DHNSaiTT,BaoKinhDoanh)

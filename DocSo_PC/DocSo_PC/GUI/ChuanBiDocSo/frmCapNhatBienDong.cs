@@ -21,7 +21,7 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
         string _fileName = "";
         string _mnu = "mnuLuuHD";
         CNguoiDung _cNguoiDung = new CNguoiDung();
-        CChuanBiDS _cHoaDon = new CChuanBiDS();
+        CChuanBiDS _cChuanBi = new CChuanBiDS();
         CDALTest _cDAL = new CDALTest();
 
 
@@ -181,16 +181,16 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
                             hoadon.BienDongID = hoadon.Nam.ToString() + hoadon.Ky + hoadon.DanhBa;
 
                             ///Nếu chưa có hóa đơn
-                            if (!_cHoaDon.CheckExistBienDong(hoadon.DanhBa, hoadon.Nam.Value, hoadon.Ky, hoadon.Dot))
+                            if (!_cChuanBi.CheckExistBienDong(hoadon.DanhBa, hoadon.Nam.Value, hoadon.Ky, hoadon.Dot))
                             {
-                                _cHoaDon.InsertBienDong(hoadon);
+                                _cChuanBi.InsertBienDong(hoadon);
                             }
                             ///Nếu đã có hóa đơn
                             else
                             {
-                                BienDong hoadonCN = _cHoaDon.GetBienDong(hoadon.DanhBa, hoadon.Nam.Value, hoadon.Ky, hoadon.Dot);
+                                BienDong hoadonCN = _cChuanBi.GetBienDong(hoadon.DanhBa, hoadon.Nam.Value, hoadon.Ky, hoadon.Dot);
                                 Copy(ref hoadonCN, hoadon);
-                                _cHoaDon.UpdateBienDong(hoadonCN);
+                                _cChuanBi.UpdateBienDong(hoadonCN);
                             }
                         }
 
@@ -353,7 +353,7 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
 
             AddSQL(nam, ky, dot);
             // Cập Nhật Thông Tin Biến Động
-            CChuanBiDS.UpdateTTBienDong("UpdateBienDong", nam, ky, dot);
+            _cChuanBi.UpdateStoredProcedure("UpdateBienDong", nam, ky, dot);
 
             LoadBienDong();
         }

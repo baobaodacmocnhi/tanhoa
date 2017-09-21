@@ -17,3 +17,15 @@ SET BienDong.NgayCapNhat =GETDATE()
 FROM BienDong X
 JOIN inserted i ON x.BienDongID = i.BienDongID
 end
+
+
+alter trigger trSetDate3 on DocSo after insert
+as
+begin
+
+UPDATE DocSo
+SET DocSo.NgayTaoDS = CONVERT(VARCHAR(10),GETDATE(),104)
+FROM DocSo X
+JOIN inserted i ON x.DocSoID = i.DocSoID
+end
+

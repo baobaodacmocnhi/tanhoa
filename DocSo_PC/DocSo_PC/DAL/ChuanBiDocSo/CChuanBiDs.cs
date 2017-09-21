@@ -120,7 +120,7 @@ namespace DocSo_PC.DAL.ChuanBiDocSo
             }
         }
 
-        public static void UpdateTTBienDong(string storedNam, int nam, string ky, string dot)
+        public void UpdateStoredProcedure(string storedNam, int nam, string ky, string dot)
         {
 
             SqlConnection conn = new SqlConnection(db.Connection.ConnectionString);
@@ -160,11 +160,11 @@ namespace DocSo_PC.DAL.ChuanBiDocSo
             }
         }
 
-        public static DataTable GetSoDocSo(string storedNam, int nam, string ky, string dot, int tu, int den)
+        public DataTable GetSoDocSo(string storedNam, int nam, string ky, string dot, int tu, int den)
         {
             DataTable tb = new DataTable();
             SqlConnection conn = new SqlConnection(db.Connection.ConnectionString);
-           
+
             try
             {
 
@@ -175,7 +175,7 @@ namespace DocSo_PC.DAL.ChuanBiDocSo
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(storedNam, conn);
                 cmd.CommandType = CommandType.StoredProcedure;
-                
+
 
                 SqlParameter _nam = cmd.Parameters.Add("@NAM", SqlDbType.Int);
                 _nam.Direction = ParameterDirection.Input;
@@ -213,9 +213,51 @@ namespace DocSo_PC.DAL.ChuanBiDocSo
             return tb;
         }
 
-        public static BillState GetBillState(int Nam, string Ky, string Dot)
+        public BillState GetBillState(int Nam, string Ky, string Dot)
         {
-            return _db.BillStates.SingleOrDefault(item => item.BillID == ("" + Nam+Ky+Dot));
+            return _db.BillStates.SingleOrDefault(item => item.BillID == ("" + Nam + Ky + Dot));
+        }
+
+        public List<BienDong> getListBienFong(int nam, string ky, string dot, int tumay, int denmay)
+        {
+            var query = from q in db.BienDongs where q.Nam == nam && q.Ky == ky && q.Dot == dot && Convert.ToInt32(q.May) > tumay && Convert.ToInt32(q.May) <= denmay select q;
+            return query.ToList();
+        }
+        public int getTTTB3ky(string danhba)
+        {
+            try
+            {
+                string sql = " select AVG(TieuThu) from ( ";
+                sql += " SELECT  TOP(3) TieuThu FROM HoaDon  ";
+                sql += " WHERE DanhBa='"+danhba+"'  ";
+                sql += " ORDER   BY  NAM DESC,KY DESC   ";
+                sql += "  as t1";
+                return int.Parse(ExecuteQuery_ReturnOneValue(sql).ToString());
+
+            }
+            catch (Exception)
+            {
+
+            }
+            return 0;
+        }
+
+        public DateTime getDocTuNgay(int nam, string ky, string dot)
+        {
+            DateTime d = DateTime.Now.Date;
+            try
+            {
+                string sql = " SELECT  TOP(1) DenNgay FROM HoaDon  ";
+                sql += " WHERE Nam=" + nam + " AND Ky=" + (int.Parse(ky)-1) + " AND Dot='" + dot + "'  ";
+               
+                d= DateTime.Parse(ExecuteQuery_ReturnOneValue(sql).ToString());
+
+            }
+            catch (Exception)
+            {
+
+            }
+            return d;
         }
     }
 }

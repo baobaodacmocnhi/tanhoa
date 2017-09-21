@@ -14,6 +14,29 @@ namespace DocSo_PC.DAL
     {
         protected static dbDocSoDataContext _db = new dbDocSoDataContext();
 
+
+        protected static string _connectionString;  // Chuỗi kết nối
+        protected SqlConnection connection;         // Đối tượng kết nối
+        protected SqlDataAdapter adapter;           // Đối tượng adapter chứa dữ liệu
+        protected SqlCommand command;               // Đối tượng command thực thi truy vấn
+        //protected SqlTransaction transaction;       // Đối tượng transaction
+
+        public CDAL()
+        {
+            try
+            {
+                //_connectionString = "Data Source=192.168.90.8\\KD;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa;Password=123@tanhoa";
+                _connectionString = DocSo_PC.Properties.Settings.Default.DocSoTHConnectionString;
+                connection = new SqlConnection(_connectionString);
+            }
+            catch (Exception)
+            {
+                //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+
         public void SubmitChanges()
         {
             _db.SubmitChanges();
@@ -108,30 +131,6 @@ namespace DocSo_PC.DAL
             return dt;
         }
 
-
-
-
-
-        protected static string _connectionString;  // Chuỗi kết nối
-        protected SqlConnection connection;         // Đối tượng kết nối
-        protected SqlDataAdapter adapter;           // Đối tượng adapter chứa dữ liệu
-        protected SqlCommand command;               // Đối tượng command thực thi truy vấn
-        //protected SqlTransaction transaction;       // Đối tượng transaction
-
-        public CDAL()
-        {
-            try
-            {
-                //_connectionString = "Data Source=192.168.90.8\\KD;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa;Password=123@tanhoa";
-                _connectionString = DocSo_PC.Properties.Settings.Default.DocSoTHConnectionString;
-                connection = new SqlConnection(_connectionString);
-            }
-            catch (Exception)
-            {
-                //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            
-        }
 
         public void Connect()
         {

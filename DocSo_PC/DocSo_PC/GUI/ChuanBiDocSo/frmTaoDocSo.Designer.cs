@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cmbDot = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbKy = new System.Windows.Forms.ComboBox();
@@ -42,13 +44,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cmbToDS = new System.Windows.Forms.ComboBox();
             this.dataTaoDS = new System.Windows.Forms.DataGridView();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.btnTaoDocSo = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dsTuNgay = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dsDenNgay = new System.Windows.Forms.DateTimePicker();
             this.May = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.slDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DaTao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NguoiTao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayTao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.btnTaoDocSo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataTaoDS)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,7 +82,7 @@
             "18",
             "19",
             "20"});
-            this.cmbDot.Location = new System.Drawing.Point(534, 14);
+            this.cmbDot.Location = new System.Drawing.Point(589, 14);
             this.cmbDot.Margin = new System.Windows.Forms.Padding(4);
             this.cmbDot.Name = "cmbDot";
             this.cmbDot.Size = new System.Drawing.Size(56, 27);
@@ -86,7 +92,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(500, 18);
+            this.label4.Location = new System.Drawing.Point(555, 18);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(32, 19);
@@ -109,7 +115,7 @@
             "10",
             "11",
             "12"});
-            this.cmbKy.Location = new System.Drawing.Point(439, 14);
+            this.cmbKy.Location = new System.Drawing.Point(466, 14);
             this.cmbKy.Margin = new System.Windows.Forms.Padding(4);
             this.cmbKy.Name = "cmbKy";
             this.cmbKy.Size = new System.Drawing.Size(53, 27);
@@ -128,7 +134,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(409, 18);
+            this.label3.Location = new System.Drawing.Point(436, 18);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 19);
@@ -171,7 +177,7 @@
             "10",
             "11",
             "12"});
-            this.cmbToDS.Location = new System.Drawing.Point(99, 13);
+            this.cmbToDS.Location = new System.Drawing.Point(102, 13);
             this.cmbToDS.Margin = new System.Windows.Forms.Padding(4);
             this.cmbToDS.Name = "cmbToDS";
             this.cmbToDS.Size = new System.Drawing.Size(178, 27);
@@ -199,20 +205,77 @@
             this.DaTao,
             this.NguoiTao,
             this.NgayTao});
-            this.dataTaoDS.Location = new System.Drawing.Point(24, 81);
+            this.dataTaoDS.Location = new System.Drawing.Point(12, 123);
             this.dataTaoDS.Name = "dataTaoDS";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 12F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataTaoDS.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Times New Roman", 12F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataTaoDS.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataTaoDS.RowHeadersWidth = 40;
-            this.dataTaoDS.Size = new System.Drawing.Size(669, 646);
+            this.dataTaoDS.Size = new System.Drawing.Size(669, 676);
             this.dataTaoDS.TabIndex = 28;
             this.dataTaoDS.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataTaoDS_RowPostPaint);
+            // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(16, 90);
+            this.progressBar.Margin = new System.Windows.Forms.Padding(4);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(629, 26);
+            this.progressBar.TabIndex = 30;
+            // 
+            // btnTaoDocSo
+            // 
+            this.btnTaoDocSo.Location = new System.Drawing.Point(479, 54);
+            this.btnTaoDocSo.Margin = new System.Windows.Forms.Padding(6);
+            this.btnTaoDocSo.Name = "btnTaoDocSo";
+            this.btnTaoDocSo.Size = new System.Drawing.Size(166, 26);
+            this.btnTaoDocSo.TabIndex = 29;
+            this.btnTaoDocSo.Text = "Tạo Dữ Liệu Đọc Số";
+            this.btnTaoDocSo.UseVisualStyleBackColor = true;
+            this.btnTaoDocSo.Click += new System.EventHandler(this.btnTaoDocSo_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 56);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(94, 19);
+            this.label5.TabIndex = 31;
+            this.label5.Text = "Đọc Từ Ngày";
+            // 
+            // dsTuNgay
+            // 
+            this.dsTuNgay.CustomFormat = "dd/MM/yyyy";
+            this.dsTuNgay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dsTuNgay.Location = new System.Drawing.Point(106, 53);
+            this.dsTuNgay.Name = "dsTuNgay";
+            this.dsTuNgay.Size = new System.Drawing.Size(112, 26);
+            this.dsTuNgay.TabIndex = 32;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(225, 58);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(71, 19);
+            this.label6.TabIndex = 33;
+            this.label6.Text = "Đến Ngày";
+            // 
+            // dsDenNgay
+            // 
+            this.dsDenNgay.CustomFormat = "dd/MM/yyyy";
+            this.dsDenNgay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dsDenNgay.Location = new System.Drawing.Point(303, 53);
+            this.dsDenNgay.Name = "dsDenNgay";
+            this.dsDenNgay.Size = new System.Drawing.Size(112, 26);
+            this.dsDenNgay.TabIndex = 34;
             // 
             // May
             // 
@@ -244,40 +307,29 @@
             // NguoiTao
             // 
             this.NguoiTao.DataPropertyName = "NVTaoDS";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.NguoiTao.DefaultCellStyle = dataGridViewCellStyle5;
             this.NguoiTao.HeaderText = "Người Tạo";
             this.NguoiTao.Name = "NguoiTao";
             // 
             // NgayTao
             // 
             this.NgayTao.DataPropertyName = "NgayTaoDS";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.NgayTao.DefaultCellStyle = dataGridViewCellStyle6;
             this.NgayTao.HeaderText = "Ngày Tạo";
             this.NgayTao.Name = "NgayTao";
             this.NgayTao.Width = 200;
-            // 
-            // progressBar
-            // 
-            this.progressBar.Location = new System.Drawing.Point(289, 46);
-            this.progressBar.Margin = new System.Windows.Forms.Padding(4);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(339, 26);
-            this.progressBar.TabIndex = 30;
-            // 
-            // btnTaoDocSo
-            // 
-            this.btnTaoDocSo.Location = new System.Drawing.Point(99, 46);
-            this.btnTaoDocSo.Margin = new System.Windows.Forms.Padding(6);
-            this.btnTaoDocSo.Name = "btnTaoDocSo";
-            this.btnTaoDocSo.Size = new System.Drawing.Size(178, 26);
-            this.btnTaoDocSo.TabIndex = 29;
-            this.btnTaoDocSo.Text = "Tạo Dữ Liệu Đọc Số";
-            this.btnTaoDocSo.UseVisualStyleBackColor = true;
-            this.btnTaoDocSo.Click += new System.EventHandler(this.btnTaoDocSo_Click);
             // 
             // frmTaoDocSo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(722, 747);
+            this.ClientSize = new System.Drawing.Size(696, 811);
+            this.Controls.Add(this.dsDenNgay);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.dsTuNgay);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.btnTaoDocSo);
             this.Controls.Add(this.dataTaoDS);
@@ -292,7 +344,7 @@
             this.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmTaoDocSo";
-            this.Text = "frmTaoDocSo";
+            this.Text = "Tạo Dữ";
             this.Load += new System.EventHandler(this.frmTaoDocSo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataTaoDS)).EndInit();
             this.ResumeLayout(false);
@@ -311,12 +363,16 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbToDS;
         private System.Windows.Forms.DataGridView dataTaoDS;
+        private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Button btnTaoDocSo;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DateTimePicker dsTuNgay;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DateTimePicker dsDenNgay;
         private System.Windows.Forms.DataGridViewTextBoxColumn May;
         private System.Windows.Forms.DataGridViewTextBoxColumn slDoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn DaTao;
         private System.Windows.Forms.DataGridViewTextBoxColumn NguoiTao;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayTao;
-        private System.Windows.Forms.ProgressBar progressBar;
-        private System.Windows.Forms.Button btnTaoDocSo;
     }
 }

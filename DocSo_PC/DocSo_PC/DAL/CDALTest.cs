@@ -13,6 +13,12 @@ namespace DocSo_PC.DAL
     class CDALTest
     {
         protected static DocSoTestDataContext _db = new DocSoTestDataContext();
+        protected static string _connectionString;  // Chuỗi kết nối
+        protected SqlConnection connection;         // Đối tượng kết nối
+        protected SqlDataAdapter adapter;           // Đối tượng adapter chứa dữ liệu
+        protected SqlCommand command;               // Đối tượng command thực thi truy vấn
+        //protected SqlTransaction transaction;       // Đối tượng transaction
+
 
         public CDALTest()
         {
@@ -29,54 +35,15 @@ namespace DocSo_PC.DAL
 
         }
 
-        public void BeginTransaction()
-        {
-            if (_db.Connection.State == System.Data.ConnectionState.Closed)
-                _db.Connection.Open();
-            _db.Transaction = _db.Connection.BeginTransaction();
-        }
-
-        public void CommitTransaction()
-        {
-            _db.Transaction.Commit();
-        }
-
-        public void Rollback()
-        {
-            _db.Transaction.Rollback();
-        }
-
-        public void NullTransaction()
-        {
-            _db.Transaction = null;
-        }
-
         public void SubmitChanges()
         {
             _db.SubmitChanges();
-        }
-
-        public bool LinQ_ExecuteNonQuery(string sql)
-        {
-            if (_db.ExecuteCommand(sql) == 0)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
         }
 
         public void Refresh()
         {
             _db = new DocSoTestDataContext();
         }
-
-        //public void SubmitChanges()
-        //{
-        //    _db.SubmitChanges();
-        //}
 
         /// <summary>
         /// var vrCountry = from country in objEmpDataContext.CountryMaster
@@ -162,12 +129,6 @@ namespace DocSo_PC.DAL
             return dt;
         }
 
-        protected static string _connectionString;  // Chuỗi kết nối
-        protected SqlConnection connection;         // Đối tượng kết nối
-        protected SqlDataAdapter adapter;           // Đối tượng adapter chứa dữ liệu
-        protected SqlCommand command;               // Đối tượng command thực thi truy vấn
-        protected SqlTransaction transaction;       // Đối tượng transaction
-
 
         public void Connect()
         {
@@ -181,113 +142,37 @@ namespace DocSo_PC.DAL
                 connection.Close();
         }
 
-        public void SqlBeginTransaction()
+        public bool ExecuteNonQuery(string sql)
         {
             try
             {
                 Connect();
-                transaction = connection.BeginTransaction();
-            }
-            catch (Exception) { }
-        }
-
-        public void SqlCommitTransaction()
-        {
-            try
-            {
-                transaction.Commit();
-                transaction.Dispose();
-                Disconnect();
-            }
-            catch (Exception) { }
-        }
-
-        public void SqlRollbackTransaction()
-        {
-            transaction.Rollback();
-            transaction.Dispose();
-            try
-            {
-                Disconnect();
-            }
-            catch (Exception) { }
-        }
-
-        /// <summary>
-        /// Thực thi câu truy vấn SQL không trả về dữ liệu
-        /// </summary>
-        /// <param name="sql">Câu truy vấn cần thực thi</param>
-        /// <param name="flagTransaction">Có hoặc Không transaction</param>
-        public bool ExecuteNonQuery(string sql, bool flagTransaction)
-        {
-            if (!flagTransaction)
-                try
-                {
-                    Connect();
-                    command = new SqlCommand(sql, connection);
-                    int rowAffect = command.ExecuteNonQuery();
-                    Disconnect();
-                    if (rowAffect == 0)
-                        return false;
-                    else
-                    {
-                        //_db = new dbThuTienDataContext();
-                        return true;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Disconnect();
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-            else
-                try
-                {
-                    Connect();
-                    transaction = connection.BeginTransaction();
-                    command = new SqlCommand(sql, connection);
-                    command.Transaction = transaction;
-                    int rowAffect = command.ExecuteNonQuery();
-                    transaction.Commit();
-                    Disconnect();
-                    if (rowAffect == 0)
-                        return false;
-                    else
-                        return true;
-                }
-                catch (Exception ex)
-                {
-                    transaction.Rollback();
-                    Disconnect();
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-        }
-
-        /// <summary>
-        /// Thực thi câu truy vấn SQL không trả về dữ liệu. Trước đó phải mở Transaction/Kết thúc phải đóng Transaction
-        /// </summary>
-        /// <param name="sql"></param>
-        /// <returns></returns>
-        public bool ExecuteNonQuery_Transaction(string sql)
-        {
-            try
-            {
-                if (connection.State == ConnectionState.Closed)
-                    connection.Open();
                 command = new SqlCommand(sql, connection);
-                //command.CommandTimeout = 0;
-                command.Transaction = transaction;
-                if (command.ExecuteNonQuery() == 0)
-                    return false;
-                else
+                int rowsAffected = command.ExecuteNonQuery();
+                if (rowsAffected >= 1)
                     return true;
+                else
+                    return false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
+                throw;
+            }
+        }
+
+        public object ExecuteQuery_ReturnOneValue(string sql)
+        {
+            try
+            {
+                Connect();
+                command = new SqlCommand(sql, connection);
+                return command.ExecuteScalar();
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
             }
         }
 
@@ -423,27 +308,6 @@ namespace DocSo_PC.DAL
                 return obj;
             }
             
-        }
-
-        /// <summary>
-        /// Lấy mã tiếp theo, theo định dạng sttnăm 113(12013)
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public decimal getMaxNextIDTable(decimal id)
-        {
-            string nam = id.ToString().Substring(id.ToString().Length - 2, 2);
-            string stt = id.ToString().Substring(0, id.ToString().Length - 2);
-            if (decimal.Parse(nam) == decimal.Parse(DateTime.Now.ToString("yy")))
-            {
-                stt = (decimal.Parse(stt) + 1).ToString();
-            }
-            else
-            {
-                stt = "1";
-                nam = DateTime.Now.ToString("yy");
-            }
-            return decimal.Parse(stt + nam);
         }
 
         #region ConvertMoneyToWord
