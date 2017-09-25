@@ -220,7 +220,7 @@ namespace DocSo_PC.DAL.ChuanBiDocSo
 
         public List<BienDong> getListBienFong(int nam, string ky, string dot, int tumay, int denmay)
         {
-            var query = from q in db.BienDongs where q.Nam == nam && q.Ky == ky && q.Dot == dot && Convert.ToInt32(q.May) > tumay && Convert.ToInt32(q.May) <= denmay select q;
+            var query = from q in db.BienDongs where q.Nam == nam && q.Ky == ky && q.Dot == dot && Convert.ToInt32(q.May) >= tumay && Convert.ToInt32(q.May) <= denmay select q;
             return query.ToList();
         }
         public int getTTTB3ky(string danhba)
@@ -258,6 +258,21 @@ namespace DocSo_PC.DAL.ChuanBiDocSo
 
             }
             return d;
+        }
+
+        public int getTangCuong(int nam, string ky, string dot, string may)
+        {
+            try
+            {
+                string sql = " select COUNT(*)  from DocSo whereNam=" + nam + " AND Ky=" + (int.Parse(ky) - 1) + " AND Dot='" + dot + "'   AND May='" + may + "' and May <> SUBSTRING(MLT1,3,2) ";
+                return int.Parse(ExecuteQuery_ReturnOneValue(sql).ToString());
+
+            }
+            catch (Exception)
+            {
+
+            }
+            return 0;
         }
     }
 }

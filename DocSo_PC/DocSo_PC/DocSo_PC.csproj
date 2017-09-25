@@ -106,6 +106,12 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ChuanBiDocSo\frmGiaoTangCuong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ChuanBiDocSo\frmGiaoTangCuong.Designer.cs">
+      <DependentUpon>frmGiaoTangCuong.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ChuanBiDocSo\frmCapNhatBienDong.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,12 +123,6 @@
     </Compile>
     <Compile Include="GUI\ChuanBiDocSo\frmCapNhatHoaDon.Designer.cs">
       <DependentUpon>frmCapNhatHoaDon.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\ChuanBiDocSo\frmGiaoTangCuong.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\ChuanBiDocSo\frmGiaoTangCuong.Designer.cs">
-      <DependentUpon>frmGiaoTangCuong.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ChuanBiDocSo\frmTaoDocSo.cs">
       <SubType>Form</SubType>
@@ -185,14 +185,14 @@
     <None Include="LinQ\dbDocSo.dbml.layout">
       <DependentUpon>dbDocSo.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="GUI\ChuanBiDocSo\frmGiaoTangCuong.resx">
+      <DependentUpon>frmGiaoTangCuong.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ChuanBiDocSo\frmCapNhatBienDong.resx">
       <DependentUpon>frmCapNhatBienDong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ChuanBiDocSo\frmCapNhatHoaDon.resx">
       <DependentUpon>frmCapNhatHoaDon.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ChuanBiDocSo\frmGiaoTangCuong.resx">
-      <DependentUpon>frmGiaoTangCuong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ChuanBiDocSo\frmTaoDocSo.resx">
       <DependentUpon>frmTaoDocSo.cs</DependentUpon>
@@ -279,6 +279,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Arrow2 Right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Arrow2 Right1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

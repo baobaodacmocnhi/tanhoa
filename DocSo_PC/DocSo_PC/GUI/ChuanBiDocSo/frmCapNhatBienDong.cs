@@ -308,7 +308,7 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
                             if (!string.IsNullOrWhiteSpace(contents[0]))
                                 h.STT = int.Parse(contents[0]);
                             if (!string.IsNullOrWhiteSpace(contents[6]))
-                                h.MLT1 = h.Dot + "" + contents[6];
+                                h.MLT1 = h.Dot + h.May + "" + contents[6];
                             h.NVCapNhat = CNguoiDung.TaiKhoan;
                             h.BienDongID = h.Nam.ToString() + h.Ky + h.DanhBa;
 

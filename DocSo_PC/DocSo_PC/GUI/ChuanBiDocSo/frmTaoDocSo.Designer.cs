@@ -44,17 +44,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cmbToDS = new System.Windows.Forms.ComboBox();
             this.dataTaoDS = new System.Windows.Forms.DataGridView();
+            this.May = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.slDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DaTao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NguoiTao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayTao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.btnTaoDocSo = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.dsTuNgay = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.dsDenNgay = new System.Windows.Forms.DateTimePicker();
-            this.May = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.slDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DaTao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NguoiTao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayTao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataTaoDS)).BeginInit();
             this.SuspendLayout();
             // 
@@ -220,6 +220,50 @@
             this.dataTaoDS.TabIndex = 28;
             this.dataTaoDS.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataTaoDS_RowPostPaint);
             // 
+            // May
+            // 
+            this.May.DataPropertyName = "May";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.May.DefaultCellStyle = dataGridViewCellStyle2;
+            this.May.HeaderText = "Máy";
+            this.May.Name = "May";
+            this.May.Width = 80;
+            // 
+            // slDoc
+            // 
+            this.slDoc.DataPropertyName = "SOLUONG";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.slDoc.DefaultCellStyle = dataGridViewCellStyle3;
+            this.slDoc.HeaderText = "Số Lượng Đọc";
+            this.slDoc.Name = "slDoc";
+            this.slDoc.Width = 125;
+            // 
+            // DaTao
+            // 
+            this.DaTao.DataPropertyName = "DaTao";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.DaTao.DefaultCellStyle = dataGridViewCellStyle4;
+            this.DaTao.HeaderText = "Đã Tạo";
+            this.DaTao.Name = "DaTao";
+            this.DaTao.Width = 90;
+            // 
+            // NguoiTao
+            // 
+            this.NguoiTao.DataPropertyName = "NVTaoDS";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.NguoiTao.DefaultCellStyle = dataGridViewCellStyle5;
+            this.NguoiTao.HeaderText = "Người Tạo";
+            this.NguoiTao.Name = "NguoiTao";
+            // 
+            // NgayTao
+            // 
+            this.NgayTao.DataPropertyName = "NgayTaoDS";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.NgayTao.DefaultCellStyle = dataGridViewCellStyle6;
+            this.NgayTao.HeaderText = "Ngày Tạo";
+            this.NgayTao.Name = "NgayTao";
+            this.NgayTao.Width = 200;
+            // 
             // progressBar
             // 
             this.progressBar.Location = new System.Drawing.Point(16, 90);
@@ -277,50 +321,6 @@
             this.dsDenNgay.Size = new System.Drawing.Size(112, 26);
             this.dsDenNgay.TabIndex = 34;
             // 
-            // May
-            // 
-            this.May.DataPropertyName = "May";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.May.DefaultCellStyle = dataGridViewCellStyle2;
-            this.May.HeaderText = "Máy";
-            this.May.Name = "May";
-            this.May.Width = 80;
-            // 
-            // slDoc
-            // 
-            this.slDoc.DataPropertyName = "SOLUONG";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.slDoc.DefaultCellStyle = dataGridViewCellStyle3;
-            this.slDoc.HeaderText = "Số Lượng Đọc";
-            this.slDoc.Name = "slDoc";
-            this.slDoc.Width = 125;
-            // 
-            // DaTao
-            // 
-            this.DaTao.DataPropertyName = "DaTao";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.DaTao.DefaultCellStyle = dataGridViewCellStyle4;
-            this.DaTao.HeaderText = "Đã Tạo";
-            this.DaTao.Name = "DaTao";
-            this.DaTao.Width = 90;
-            // 
-            // NguoiTao
-            // 
-            this.NguoiTao.DataPropertyName = "NVTaoDS";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.NguoiTao.DefaultCellStyle = dataGridViewCellStyle5;
-            this.NguoiTao.HeaderText = "Người Tạo";
-            this.NguoiTao.Name = "NguoiTao";
-            // 
-            // NgayTao
-            // 
-            this.NgayTao.DataPropertyName = "NgayTaoDS";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.NgayTao.DefaultCellStyle = dataGridViewCellStyle6;
-            this.NgayTao.HeaderText = "Ngày Tạo";
-            this.NgayTao.Name = "NgayTao";
-            this.NgayTao.Width = 200;
-            // 
             // frmTaoDocSo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -344,7 +344,7 @@
             this.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmTaoDocSo";
-            this.Text = "Tạo Dữ";
+            this.Text = "Tạo Dữ Liệu Đọc Số";
             this.Load += new System.EventHandler(this.frmTaoDocSo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataTaoDS)).EndInit();
             this.ResumeLayout(false);
