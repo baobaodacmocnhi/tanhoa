@@ -264,7 +264,7 @@ namespace DocSo_PC.DAL.ChuanBiDocSo
         {
             try
             {
-                string sql = " select COUNT(*)  from DocSo whereNam=" + nam + " AND Ky=" + (int.Parse(ky) - 1) + " AND Dot='" + dot + "'   AND May='" + may + "' and May <> SUBSTRING(MLT1,3,2) ";
+                string sql = " select COUNT(*)  from DocSo where Nam=" + nam + " AND Ky='" + ky + "' AND Dot='" + dot + "'   AND May='" + may + "'  and CAST( May as int)  != CAST(SUBSTRING(MLT1,3,2) as int) ";
                 return int.Parse(ExecuteQuery_ReturnOneValue(sql).ToString());
 
             }

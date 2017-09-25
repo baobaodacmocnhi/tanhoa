@@ -10,6 +10,7 @@ using DocSo_PC.DAL.QuanTri;
 using DocSo_PC.GUI.HeThong;
 using DocSo_PC.GUI.QuanTri;
 using DocSo_PC.GUI.ChuanBiDocSo;
+using DocSo_PC.GUI.XuLyDocSo;
 
 namespace DocSo_PC
 {
@@ -239,6 +240,14 @@ namespace DocSo_PC
 
         #endregion
 
+        #region Điều chỉnh dữ liệu đọc số
+        private void mnuKiemSoatDS_Click(object sender, EventArgs e)
+        {
+            frmKiemSoatDocSo frm = new frmKiemSoatDocSo();
+            OpenForm(frm);
+            
+        }
 
+        #endregion
     }
 }

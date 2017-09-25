@@ -100,6 +100,7 @@
     <Compile Include="DAL\QuanTri\CPhanQuyenNguoiDung.cs" />
     <Compile Include="DAL\QuanTri\CPhanQuyenNhom.cs" />
     <Compile Include="DAL\QuanTri\CTo.cs" />
+    <Compile Include="DAL\XuLyDocSo\CXuLyDocSo.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +167,12 @@
     <Compile Include="GUI\QuanTri\frmTo.Designer.cs">
       <DependentUpon>frmTo.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\XuLyDocSo\frmKiemSoatDocSo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\XuLyDocSo\frmKiemSoatDocSo.Designer.cs">
+      <DependentUpon>frmKiemSoatDocSo.cs</DependentUpon>
+    </Compile>
     <Compile Include="LinQ\dbDocSo.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -218,6 +225,9 @@
     <None Include="LinQ\DocSoTest.dbml.layout">
       <DependentUpon>DocSoTest.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="GUI\XuLyDocSo\frmKiemSoatDocSo.resx">
+      <DependentUpon>frmKiemSoatDocSo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -286,6 +296,7 @@
   <ItemGroup>
     <None Include="Resources\Arrow2 Right1.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

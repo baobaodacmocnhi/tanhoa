@@ -24,6 +24,7 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
             InitializeComponent();
         }
 
+
         private void dataTaoDS_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             using (SolidBrush b = new SolidBrush(dataDS.RowHeadersDefaultCellStyle.ForeColor))
@@ -31,14 +32,14 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
             }
         }
-        private void dataTC_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        private void dataGiaoTC_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             using (SolidBrush b = new SolidBrush(dataGiaoTC.RowHeadersDefaultCellStyle.ForeColor))
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
             }
         }
-
+        CheckBox checkboxHeader;
         private void frmGiaoTangCuong_Load(object sender, EventArgs e)
         {
             cmbNam.Items.Add(DateTime.Now.Year - 2);
@@ -64,7 +65,7 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
             // set checkbox header to center of header cell. +1 pixel to position correctly.
             rect.X = rect.Location.X + (rect.Width / 4);
 
-            CheckBox checkboxHeader = new CheckBox();
+            checkboxHeader = new CheckBox();
             checkboxHeader.Name = "checkChia";
             checkboxHeader.Size = new Size(17, 17);
             checkboxHeader.Location = rect.Location;
@@ -134,9 +135,7 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
             //    }
             //}
         }
-        CheckBox checkboxHeader1 = new CheckBox();
-        CheckBox checkboxHeader = new CheckBox();
-
+      
         public void _tuMay()
         {
             string sql = " select 'false' as checkChia, MLT1,DanhBa,SoNhaCu,Duong from DocSo WHERE May = " + cmbMay.Text + " AND Nam=" + int.Parse(cmbNam.Text) + "AND Ky='" + cmbKy.Text + "' AND Dot='" + cmbDot.Text + "'   ORDER BY MLT1 ASC ";
@@ -152,7 +151,7 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
         {
             string sql = " select MLT1,DanhBa,SoNhaCu,Duong from DocSo WHERE May = " + cmbDenTC.Text + " AND Nam=" + int.Parse(cmbNam.Text) + "AND Ky='" + cmbKy.Text + "' AND Dot='" + cmbDot.Text + "'   ORDER BY MLT1 ASC ";
             dataGiaoTC.DataSource = _cChuanBi.ExecuteQuery_SqlDataAdapter_DataTable(sql);
-            lbGiaoTC.Text = " Tổng số lượng đọc " + dataGiaoTC.Rows.Count + " đc - Tăn cường " + _cChuanBi.getTangCuong(int.Parse(cmbNam.Text), cmbKy.Text, cmbDot.Text, cmbMay.Text) +" đc";
+            lbGiaoTC.Text = " Tổng số lượng đọc " + dataGiaoTC.Rows.Count + " đc - Tăng cường " + _cChuanBi.getTangCuong(int.Parse(cmbNam.Text), cmbKy.Text, cmbDot.Text, cmbDenTC.Text) + " đc";
 
         
         }
@@ -169,17 +168,20 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
                 try
                 {
                   //  bool chek = false;
+                    string db = "";
                     for (int i = 0; i < dataDS.RowCount; i++)
                     {
                         if (dataDS[0, i].Value != null && "True".Equals(dataDS[0, i].Value.ToString()))
                         {
                             //chek = true;
-                            string db = dataDS.Rows[i].Cells["dbChua"].Value.ToString();
-                            string sql = "Update DocSo Set May='" + cmbDenTC.Text + "' WHERE DanhBa='"+db+"' AND Nam=" + int.Parse(cmbNam.Text) + "AND Ky='" + cmbKy.Text + "' AND Dot='" + cmbDot.Text + "'";
-                            _cChuanBi.ExecuteNonQuery(sql);
+                            db += "'"+dataDS.Rows[i].Cells["dbChua"].Value.ToString()+"',";
+                           
                            // DAL.C_ToThietKe.giaoviecSDV(shs, this.sodovien.SelectedValue.ToString(), DAL.C_USERS._userName);
                         }
                     }
+                    db = db.Remove(db.Length - 1, 1);
+                    string sql = "Update DocSo Set May='" + cmbDenTC.Text + "' WHERE DanhBa IN (" + db + ") AND Nam=" + int.Parse(cmbNam.Text) + "AND Ky='" + cmbKy.Text + "' AND Dot='" + cmbDot.Text + "'";
+                    _cChuanBi.ExecuteNonQuery(sql);
 
                     _tuMay();
                     _denMay();
@@ -205,6 +207,7 @@ namespace DocSo_PC.GUI.ChuanBiDocSo
                 MessageBox.Show("Cần chọn máy đọc số để giao tăng cường  !! ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
        
 
