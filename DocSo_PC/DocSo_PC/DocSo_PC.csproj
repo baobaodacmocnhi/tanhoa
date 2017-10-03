@@ -167,6 +167,18 @@
     <Compile Include="GUI\QuanTri\frmTo.Designer.cs">
       <DependentUpon>frmTo.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\XuLyDocSo\frmChonDot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\XuLyDocSo\frmChonDot.Designer.cs">
+      <DependentUpon>frmChonDot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\XuLyDocSo\frmDieuChinhDocSo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\XuLyDocSo\frmDieuChinhDocSo.Designer.cs">
+      <DependentUpon>frmDieuChinhDocSo.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\XuLyDocSo\frmKiemSoatDocSo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -225,6 +237,12 @@
     <None Include="LinQ\DocSoTest.dbml.layout">
       <DependentUpon>DocSoTest.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="GUI\XuLyDocSo\frmChonDot.resx">
+      <DependentUpon>frmChonDot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\XuLyDocSo\frmDieuChinhDocSo.resx">
+      <DependentUpon>frmDieuChinhDocSo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\XuLyDocSo\frmKiemSoatDocSo.resx">
       <DependentUpon>frmKiemSoatDocSo.cs</DependentUpon>
     </EmbeddedResource>

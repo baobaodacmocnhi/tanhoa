@@ -249,5 +249,11 @@ namespace DocSo_PC
         }
 
         #endregion
+
+        private void mnuDieuChinhDS_Click(object sender, EventArgs e)
+        {
+            frmDieuChinhDocSo frm = new frmDieuChinhDocSo();
+            OpenForm(frm);
+        }
     }
 }
