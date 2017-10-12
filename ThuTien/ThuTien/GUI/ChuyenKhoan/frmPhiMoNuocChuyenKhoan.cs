@@ -142,6 +142,11 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["PhiMoNuoc"] = int.Parse(item.Cells["PhiMoNuoc"].Value.ToString());
                     dr["PhiMoNuocChu"] = _cPhiMoNuoc.ConvertMoneyToWord(item.Cells["PhiMoNuoc"].Value.ToString());
                 }
+                else
+                {
+                    dr["PhiMoNuoc"] = 50000;
+                    dr["PhiMoNuocChu"] = _cPhiMoNuoc.ConvertMoneyToWord(dr["PhiMoNuoc"].ToString());
+                }
                 ds.Tables["PhiMoNuoc"].Rows.Add(dr);
             }
 

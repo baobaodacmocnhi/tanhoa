@@ -370,7 +370,7 @@ namespace ThuTien.GUI.Quay
             TT_XacNhanNo xacnhanno = new TT_XacNhanNo();
             xacnhanno.TinhDenKy = "Tính đến Kỳ " + hoadon.KY + "/" + hoadon.NAM;
             if (_cLenhHuy.GetCatByDanhBo(hoadon.DANHBA))
-                xacnhanno.Cat = "ĐỀ NGHỊ K/H LIÊN HỆ P.KINH DOANH\nLÀM THỦ TỤC VÀ ĐÓNG CHI PHÍ NỐI LẠI ỐNG";
+                xacnhanno.Cat = "ĐỀ NGHỊ K/H LIÊN HỆ QUẦY SỐ 1\nLÀM THỦ TỤC VÀ ĐÓNG CHI PHÍ NỐI LẠI ỐNG NGÁNH";
 
             if (dgvHoaDon.RowCount > 0)
             {

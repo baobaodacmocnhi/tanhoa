@@ -71,6 +71,15 @@ namespace ThuTien.DAL.ChuyenKhoan
                             DangNgan = itemtableDN.HoTen,
                         };
             return LINQToDataTable(query);
+            //string sql = "select dvt.SoHoaDon,dvt.SoTien,dvt.Phi,dvt.TenDichVu,dvt.CreateDate,hd.NGAYGIAITRACH,hd.DangNgan_Quay,hd.DangNgan_ChuyenKhoan,"
+            //            + " hd.TIEUTHU,Ky=convert(varchar(2),hd.KY) +'/'+convert(varchar(4),hd.NAM),MLT=hd.MALOTRINH,DanhBo=hd.DANHBA,HoTen=hd.TENKH,"
+            //            + " DiaChi=hd.SO+' '+hd.DUONG,GiaBieu=hd.GB,HanhThu=hanhthu.HoTen,'To'=(select TenTo from TT_To where MaTo=hanhthu.MaTo),DangNgan=dangngan.HoTen"
+            //            + " from TT_DichVuThu dvt,HOADON hd"
+            //            + " left join TT_NguoiDung hanhthu on hd.MaNV_HanhThu=hanhthu.MaND"
+            //            + " left join TT_NguoiDung dangngan on hd.MaNV_DangNgan=dangngan.MaND"
+            //            + " where dvt.SoHoaDon=hd.SOHOADON and dvt.DanhBo='"+DanhBo+"'"
+            //            + " order by dvt.CreateDate desc";
+            //return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
         public DataTable GetDS(string TenDichVu, DateTime FromCreateDate, DateTime ToCreateDate)
@@ -101,25 +110,22 @@ namespace ThuTien.DAL.ChuyenKhoan
                             HoTen = itemHD.TENKH,
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
                             GiaBieu = itemHD.GB,
-                            HanhThu = itemtableND.HoTen,
-                            To = itemtableND.TT_To.TenTo,
+                            HanhThu = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND=>itemND.MaND== _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).HoTen : itemtableND.HoTen,
+                            //To = itemtableND.TT_To.TenTo,
+                            To = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false) == true ? _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false).TT_DongNuoc.MaNV_DongNuoc).TT_To.TenTo : itemtableND.TT_To.TenTo,
                             DangNgan = itemtableDN.HoTen,
+                            DongNuoc = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon&&item.TT_DongNuoc.Huy==false),
+                            LenhHuy=_db.TT_LenhHuys.Any(item=>item.SoHoaDon==itemDV.SoHoaDon),
                         };
             return LINQToDataTable(query);
-            //string sql = "declare @FromCreateDate datetime;"
-            //            + " declare @ToCreateDate datetime;"
-            //            + " set @FromCreateDate='" + FromCreateDate.ToString("yyyy-MM-dd HH:mm:ss") + "';"
-            //            + " set @ToCreateDate='" + ToCreateDate.ToString("yyyy-MM-dd HH:mm:ss") + "';"
-            //            + " select dvt.SoHoaDon,dvt.SoTien,dvt.Phi,dvt.TenDichVu,dvt.CreateDate,"
-            //            + " hd.NGAYGIAITRACH,hd.DangNgan_Quay,hd.DangNgan_ChuyenKhoan,hd.TIEUTHU,"
-            //            + " Ky=(convert(varchar(2),hd.KY)+'/'+convert(varchar(4),hd.NAM)),MLT=hd.MALOTRINH,DanhBo=hd.DANHBA,HoTen=hd.TENKH,"
-            //            + " DiaChi=hd.SO+' '+hd.DUONG,GiaBieu=hd.GB,HanhThu=ndHanhThu.HoTen,'To'=(select TenTo from TT_To where MaTo=ndHanhThu.MaTo),DangNgan=ndDangNgan.HoTen"
+            //string sql = "select dvt.SoHoaDon,dvt.SoTien,dvt.Phi,dvt.TenDichVu,dvt.CreateDate,hd.NGAYGIAITRACH,hd.DangNgan_Quay,hd.DangNgan_ChuyenKhoan,"
+            //            + " hd.TIEUTHU,Ky=convert(varchar(2),hd.KY) +'/'+convert(varchar(4),hd.NAM),MLT=hd.MALOTRINH,DanhBo=hd.DANHBA,HoTen=hd.TENKH,"
+            //            + " DiaChi=hd.SO+' '+hd.DUONG,GiaBieu=hd.GB,HanhThu=hanhthu.HoTen,'To'=(select TenTo from TT_To where MaTo=hanhthu.MaTo),DangNgan=dangngan.HoTen"
             //            + " from TT_DichVuThu dvt,HOADON hd"
-            //            + " left join TT_NguoiDung ndHanhThu on hd.MaNV_HanhThu=ndHanhThu.MaND"
-            //            + " left join TT_NguoiDung ndDangNgan on hd.MaNV_DangNgan=ndDangNgan.MaND"
-            //            + " where dvt.SoHoaDon=hd.SOHOADON and dvt.TenDichVu like '%" + TenDichVu + "%'"
-            //            + " and dvt.CreateDate>=@FromCreateDate and dvt.CreateDate<=@ToCreateDate";
-
+            //            + " left join TT_NguoiDung hanhthu on hd.MaNV_HanhThu=hanhthu.MaND"
+            //            + " left join TT_NguoiDung dangngan on hd.MaNV_DangNgan=dangngan.MaND"
+            //            + " where dvt.SoHoaDon=hd.SOHOADON and dvt.CreateDate>='" + FromCreateDate.ToString("yyyy-MM-dd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyy-MM-dd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%'"
+            //            + " order by dvt.CreateDate desc";
             //return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 

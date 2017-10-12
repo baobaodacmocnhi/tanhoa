@@ -103,14 +103,22 @@ namespace ThuTien.GUI.ChuyenKhoan
             int TongPhi = 0;
             foreach (DataGridViewRow item in dgvDichVuThu.Rows)
             {
-                string HoTen = "", TenTo = "";
-                if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon"].Value.ToString(), out HoTen, out TenTo))
+                //string HoTen = "", TenTo = "";
+                //if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon"].Value.ToString(), out HoTen, out TenTo))
+            //    {
+            //        item.Cells["HanhThu"].Value = HoTen;
+            //        item.Cells["To"].Value = TenTo;
+            //        item.DefaultCellStyle.BackColor = Color.Yellow;
+            //    }
+            //    if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
+            //    {
+            //        item.DefaultCellStyle.BackColor = Color.Red;
+            //    }
+                if (bool.Parse(item.Cells["DongNuoc"].Value.ToString()) == true)
                 {
-                    item.Cells["HanhThu"].Value = HoTen;
-                    item.Cells["To"].Value = TenTo;
                     item.DefaultCellStyle.BackColor = Color.Yellow;
                 }
-                if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
+                if (bool.Parse(item.Cells["LenhHuy"].Value.ToString())==true)
                 {
                     item.DefaultCellStyle.BackColor = Color.Red;
                 }

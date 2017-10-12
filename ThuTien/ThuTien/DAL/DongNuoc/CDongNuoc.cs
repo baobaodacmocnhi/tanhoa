@@ -304,11 +304,11 @@ namespace ThuTien.DAL.DongNuoc
                         + " set @MaTo=" + MaTo + ";"
                         + " select dongnuoc.MaTo,(select TenTo from TT_To where MaTo=@MaTo) as TenTo,dongnuoc.DongNuoc,monuoc.MoNuoc from"
                         + " (select @MaTo as MaTo,COUNT(distinct kqdn.DanhBo) as DongNuoc from HOADON hd,TT_KQDongNuoc kqdn,TT_CTDongNuoc ctdn"
-                        + " where hd.ID_HOADON=ctdn.MaHD and kqdn.MaDN=ctdn.MaDN and kqdn.NgayDN>=@FromDate and kqdn.NgayDN<=@ToDate"
+                        + " where hd.ID_HOADON=ctdn.MaHD and kqdn.MaDN=ctdn.MaDN and cast(kqdn.NgayDN as date)>=@FromDate and cast(kqdn.NgayDN as date)<=@ToDate"
                         + " and hd.MAY>=(select TuCuonGCS from TT_To where MaTo=@MaTo) and hd.MAY<=(select DenCuonGCS from TT_To where MaTo=@MaTo)) dongnuoc"
                         + " left join"
                         + " (select @MaTo as MaTo,COUNT(distinct kqdn.DanhBo) as MoNuoc from HOADON hd,TT_KQDongNuoc kqdn,TT_CTDongNuoc ctdn"
-                        + " where hd.ID_HOADON=ctdn.MaHD and kqdn.MaDN=ctdn.MaDN and kqdn.NgayMN>=@FromDate and kqdn.NgayMN<=@ToDate"
+                        + " where hd.ID_HOADON=ctdn.MaHD and kqdn.MaDN=ctdn.MaDN and cast(kqdn.NgayMN as date)>=@FromDate and cast(kqdn.NgayMN as date)<=@ToDate"
                         + " and hd.MAY>=(select TuCuonGCS from TT_To where MaTo=@MaTo) and hd.MAY<=(select DenCuonGCS from TT_To where MaTo=@MaTo)) monuoc on dongnuoc.MaTo=monuoc.MaTo";
 
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);

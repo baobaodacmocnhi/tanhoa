@@ -139,7 +139,7 @@ namespace ThuTien.GUI.Doi
             int Ky10 = 0;
             int Ky11 = 0;
             int Ky12 = 0;
-            foreach (DataGridViewRow item in dgvDanhBoDK.Rows)
+            foreach (DataGridViewRow item in dgvDanhBoDK2.Rows)
             {
                 if (item.Cells["Ky1_DK2"] != null && item.Cells["Ky1_DK2"].Value.ToString() != "" && int.Parse(item.Cells["Ky1_DK2"].Value.ToString()) != 0)
                     Ky1++;
@@ -149,7 +149,7 @@ namespace ThuTien.GUI.Doi
                     Ky3++;
                 if (item.Cells["Ky4_DK2"] != null && item.Cells["Ky4_DK2"].Value.ToString() != "" && int.Parse(item.Cells["Ky4_DK2"].Value.ToString()) != 0)
                     Ky4++;
-                if (item.Cells["Ky5_DK2"] != null && item.Cells["Ky5_DK"].Value.ToString() != "" && int.Parse(item.Cells["Ky5_DK2"].Value.ToString()) != 0)
+                if (item.Cells["Ky5_DK2"] != null && item.Cells["Ky5_DK2"].Value.ToString() != "" && int.Parse(item.Cells["Ky5_DK2"].Value.ToString()) != 0)
                     Ky5++;
                 if (item.Cells["Ky6_DK2"] != null && item.Cells["Ky6_DK2"].Value.ToString() != "" && int.Parse(item.Cells["Ky6_DK2"].Value.ToString()) != 0)
                     Ky6++;
