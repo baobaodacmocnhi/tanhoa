@@ -134,6 +134,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtHoTenKHKy.Text = ctktxm.HoTenKHKy;
             txtTheoYeuCau.Text = ctktxm.TheoYeuCau;
             txtNoiDungKiemTra.Text = ctktxm.NoiDungKiemTra;
+            if (ctktxm.TieuThuTrungBinh!=null)
             txtTieuThuTrungBinh.Text = ctktxm.TieuThuTrungBinh.Value.ToString();
         }
 

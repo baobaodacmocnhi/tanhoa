@@ -160,6 +160,9 @@ namespace KTKS_DonKH.DAL.TruyThu
                             MaDon = item.MaDon != null ? "TKH" + item.MaDon
                                 : item.MaDonTXL != null ? "TXL" + item.MaDonTXL
                                 : item.MaDonTBC != null ? "TBC" + item.MaDonTBC : null,
+                            SoCongVan = item.MaDon != null ? item.DonKH.SoCongVan
+                                : item.MaDonTXL != null ? item.DonTXL.SoCongVan
+                                : item.MaDonTBC != null ? item.DonTBC.SoCongVan : null,
                             item.MaTTTN,
                             item.CreateDate,
                             item.DanhBo,
@@ -184,6 +187,9 @@ namespace KTKS_DonKH.DAL.TruyThu
                             MaDon = item.MaDon != null ? "TKH" + item.MaDon
                                 : item.MaDonTXL != null ? "TXL" + item.MaDonTXL
                                 : item.MaDonTBC != null ? "TBC" + item.MaDonTBC : null,
+                            SoCongVan = item.MaDon != null ? item.DonKH.SoCongVan
+                            : item.MaDonTXL != null ? item.DonTXL.SoCongVan
+                            : item.MaDonTBC != null ? item.DonTBC.SoCongVan : null,
                             item.MaTTTN,
                             item.CreateDate,
                             item.DanhBo,
@@ -208,6 +214,9 @@ namespace KTKS_DonKH.DAL.TruyThu
                             MaDon = item.MaDon != null ? "TKH" + item.MaDon
                                 : item.MaDonTXL != null ? "TXL" + item.MaDonTXL
                                 : item.MaDonTBC != null ? "TBC" + item.MaDonTBC : null,
+                            SoCongVan = item.MaDon != null ? item.DonKH.SoCongVan
+                            : item.MaDonTXL != null ? item.DonTXL.SoCongVan
+                            : item.MaDonTBC != null ? item.DonTBC.SoCongVan : null,
                             item.MaTTTN,
                             item.CreateDate,
                             item.DanhBo,

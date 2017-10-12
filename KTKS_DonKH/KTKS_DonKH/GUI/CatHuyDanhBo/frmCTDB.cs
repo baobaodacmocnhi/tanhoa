@@ -414,6 +414,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 else
                     if (cmbLyDo.SelectedValue.ToString() == "Không Thanh Toán Tiền Bồi Thường ĐHN")
                         txtSoTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", 1327591);
+                    else
+                        if (cmbLyDo.SelectedValue.ToString() == "Không Thanh Toán Phí Bấm Chì Góc")
+                            txtSoTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", 112000);
             }
             else
             {

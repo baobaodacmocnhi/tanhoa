@@ -133,7 +133,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
                 dr["MaDon"] = item.Cells["MaDon"].Value.ToString().Insert(item.Cells["MaDon"].Value.ToString().Length - 2, "-");
-                dr["NgayLap"] = item.Cells["CreateDate"].Value;
+                dr["SoCongVan"] = item.Cells["SoCongVan"].Value;
                 dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
                 dr["HoTen"] = item.Cells["HoTen"].Value;
                 dr["DiaChi"] = item.Cells["DiaChi"].Value;

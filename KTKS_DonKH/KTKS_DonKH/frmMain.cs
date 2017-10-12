@@ -144,7 +144,7 @@ namespace KTKS_DonKH
 
                 foreach (ToolStripMenuItem itemParent in this.MainMenuStrip.Items)
                 {
-                    if (itemParent.Name == "mnuHeThong" || itemParent.Name == "mnuTimKiem")
+                    if (itemParent.Name == "mnuHeThong" || itemParent.Name == "mnuTimKiem" || itemParent.Name == "mnuTrungTamKhachHang")
                         continue;
                     if (_cPhanQuyenNhom.CheckByTenMenuChaMaNhom(itemParent.Name, CTaiKhoan.MaNhom))
                         itemParent.Visible = true;
@@ -825,13 +825,13 @@ namespace KTKS_DonKH
 
         private void mnuThongTinKhachHang_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen("mnuThongTinKhachHang", "Xem"))
+            //if (CTaiKhoan.CheckQuyen("mnuThongTinKhachHang", "Xem"))
             {
                 frmKhachHang frm = new frmKhachHang();
                 OpenForm(frm);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //else
+            //    MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void mnuKhachHangGanMoi_Click(object sender, EventArgs e)

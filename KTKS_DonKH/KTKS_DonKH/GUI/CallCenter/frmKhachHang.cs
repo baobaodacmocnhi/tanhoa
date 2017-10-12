@@ -20,7 +20,7 @@ namespace KTKS_DonKH.GUI.CallCenter
     {
         string _mnu = "mnuThongTinKhachHang";
         CKinhDoanh _cKinhDoanh = new CKinhDoanh();
-        string danhbo = "";
+        //string danhbo = "";
         public frmKhachHang()
         {
             InitializeComponent();
