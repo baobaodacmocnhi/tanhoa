@@ -675,13 +675,13 @@ namespace ThuTien.DAL.DongNuoc
 
         public bool CheckPhiMoNuoc(string DanhBo)
         {
-            return _db.TT_KQDongNuocs.Any(item => item.DanhBo == DanhBo && item.DongNuoc == true && item.MoNuoc == false && item.TroNgaiMN == false);
+            return _db.TT_KQDongNuocs.Any(item => item.DanhBo == DanhBo && item.DongNuoc == true && item.MoNuoc == false && item.TroNgaiMN == false && item.TT_DongNuoc.Huy == false);
         }
 
         public int GetPhiMoNuoc(string DanhBo)
         {
             if (CheckPhiMoNuoc(DanhBo) == true)
-                return _db.TT_KQDongNuocs.SingleOrDefault(item => item.DanhBo == DanhBo && item.DongNuoc == true && item.MoNuoc == false && item.TroNgaiMN == false).PhiMoNuoc.Value;
+                return _db.TT_KQDongNuocs.SingleOrDefault(item => item.DanhBo == DanhBo && item.DongNuoc == true && item.MoNuoc == false && item.TroNgaiMN == false && item.TT_DongNuoc.Huy==false).PhiMoNuoc.Value;
             else
                 return 0;
         }
