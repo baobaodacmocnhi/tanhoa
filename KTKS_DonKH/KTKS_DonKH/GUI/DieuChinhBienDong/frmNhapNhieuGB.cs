@@ -139,6 +139,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     }
             }
 
+            if (dgvDanhBo.Columns[e.ColumnIndex].Name == "GBMoi" && dgvDanhBo["GBMoi", e.RowIndex].Value != null)
+            {
+                if (dgvDanhBo["GBMoi", e.RowIndex].Value.ToString() == dgvDanhBo["GiaBieu", e.RowIndex].Value.ToString())
+                    dgvDanhBo.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
+
+            }
+
             //if (dgvDanhBo.Columns[e.ColumnIndex].Name == "DanhBo" && dgvDanhBo["DanhBo", e.RowIndex].Value != null)
             //{
             //    for (int i = 0; i < dgvDanhBo.Rows.Count - 2; i++)

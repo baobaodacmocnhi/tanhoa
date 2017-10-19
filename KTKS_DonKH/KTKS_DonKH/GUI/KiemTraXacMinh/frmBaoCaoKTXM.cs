@@ -32,7 +32,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         private void btnBaoCao_ThongKeHienTrangKiemTra_Click(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
-            if (chkAll_ThongKeHienTrangKiemTra.Checked==true)
+            if (chkAll_ThongKeHienTrangKiemTra.Checked == true)
                 dt = _cKTXM.GetDS(dateTu_ThongKeHienTrangKiemTra.Value, dateDen_ThongKeHienTrangKiemTra.Value);
             else
             {
@@ -54,8 +54,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
                 dr["TuNgay"] = dateTu_ThongKeHienTrangKiemTra.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen_ThongKeHienTrangKiemTra.Value.ToString("dd/MM/yyyy");
-                if (chkAll_ThongKeHienTrangKiemTra.Checked==false)
-                dr["To"] = item["To"];
+                if (chkAll_ThongKeHienTrangKiemTra.Checked == false)
+                    dr["To"] = item["To"];
                 dr["MaCTKTXM"] = item["MaCTKTXM"];
                 dr["STT_HTKT"] = item["STT_HTKT"];
                 dr["HienTrangKiemTra"] = item["HienTrangKiemTra"];
@@ -188,10 +188,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                 dr["HoTen"] = itemRow["HoTen"];
                 dr["DiaChi"] = itemRow["DiaChi"];
-                if (itemRow["DinhMuc"].ToString()!="")
-                dr["DinhMucCu"] = itemRow["DinhMuc"];
+                if (itemRow["DinhMuc"].ToString() != "")
+                    dr["DinhMucCu"] = itemRow["DinhMuc"];
                 if (itemRow["DinhMucMoi"].ToString() != "")
-                dr["DinhMucMoi"] = itemRow["DinhMucMoi"];
+                    dr["DinhMucMoi"] = itemRow["DinhMucMoi"];
                 dr["NguoiLap"] = CTaiKhoan.HoTen;
 
                 dsBaoCao.Tables["DSKTXM"].Rows.Add(dr);
@@ -200,6 +200,44 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();
+        }
+
+        private void btnBaoCao_ThongKeBBDongTienBoiThuong_Click(object sender, EventArgs e)
+        {
+            if (chkDutChiGoc.Checked == true)
+            {
+                if (chkLapBangGia.Checked == true && chkDongTienBoiThuong.Checked == true)
+                    txtSoLuong_ThongKeBBDongTienBoiThuong.Text = _cKTXM.CountLapBangGia_DongTienBoiThuong("DutChiGoc", dateTu_ThongKeBBDongTienBoiThuong.Value, dateDen_ThongKeBBDongTienBoiThuong.Value).ToString();
+                else
+                    if (chkLapBangGia.Checked == true)
+                        txtSoLuong_ThongKeBBDongTienBoiThuong.Text = _cKTXM.CountLapBangGia("DutChiGoc", dateTu_ThongKeBBDongTienBoiThuong.Value, dateDen_ThongKeBBDongTienBoiThuong.Value).ToString();
+                    else
+                        if (chkDongTienBoiThuong.Checked == true)
+                            txtSoLuong_ThongKeBBDongTienBoiThuong.Text = _cKTXM.CountDongTienBoiThuong("DutChiGoc", dateTu_ThongKeBBDongTienBoiThuong.Value, dateDen_ThongKeBBDongTienBoiThuong.Value).ToString();
+            }
+            else
+                if (chkMoNuoc.Checked == true)
+                {
+                    if (chkLapBangGia.Checked == true && chkDongTienBoiThuong.Checked == true)
+                        txtSoLuong_ThongKeBBDongTienBoiThuong.Text = _cKTXM.CountLapBangGia_DongTienBoiThuong("MoNuoc", dateTu_ThongKeBBDongTienBoiThuong.Value, dateDen_ThongKeBBDongTienBoiThuong.Value).ToString();
+                    else
+                        if (chkLapBangGia.Checked == true)
+                            txtSoLuong_ThongKeBBDongTienBoiThuong.Text = _cKTXM.CountLapBangGia("MoNuoc", dateTu_ThongKeBBDongTienBoiThuong.Value, dateDen_ThongKeBBDongTienBoiThuong.Value).ToString();
+                        else
+                            if (chkDongTienBoiThuong.Checked == true)
+                                txtSoLuong_ThongKeBBDongTienBoiThuong.Text = _cKTXM.CountDongTienBoiThuong("MoNuoc", dateTu_ThongKeBBDongTienBoiThuong.Value, dateDen_ThongKeBBDongTienBoiThuong.Value).ToString();
+                }
+                else
+                {
+                    if (chkLapBangGia.Checked == true && chkDongTienBoiThuong.Checked == true)
+                        txtSoLuong_ThongKeBBDongTienBoiThuong.Text = _cKTXM.CountLapBangGia_DongTienBoiThuong("", dateTu_ThongKeBBDongTienBoiThuong.Value, dateDen_ThongKeBBDongTienBoiThuong.Value).ToString();
+                    else
+                        if (chkLapBangGia.Checked == true)
+                            txtSoLuong_ThongKeBBDongTienBoiThuong.Text = _cKTXM.CountLapBangGia("", dateTu_ThongKeBBDongTienBoiThuong.Value, dateDen_ThongKeBBDongTienBoiThuong.Value).ToString();
+                        else
+                            if (chkDongTienBoiThuong.Checked == true)
+                                txtSoLuong_ThongKeBBDongTienBoiThuong.Text = _cKTXM.CountDongTienBoiThuong("", dateTu_ThongKeBBDongTienBoiThuong.Value, dateDen_ThongKeBBDongTienBoiThuong.Value).ToString();
+                }
         }
 
     }

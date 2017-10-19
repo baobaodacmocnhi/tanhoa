@@ -236,7 +236,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 {
                     if (cmbLD.SelectedIndex != -1)
                     {
-                        if (_cDonTXL.CheckExist(txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now) == true)
+                        if (txtDanhBo.Text.Trim().Replace(" ", "")!=""&&_cDonTXL.CheckExist(txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now) == true)
                         {
                             MessageBox.Show("Danh Bộ này đã nhận đơn trong ngày hôm nay rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;

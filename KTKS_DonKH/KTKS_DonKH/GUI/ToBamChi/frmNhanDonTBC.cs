@@ -229,7 +229,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
                 {
                     if (cmbLD.SelectedIndex != -1)
                     {
-                        if (_cDonTBC.CheckExist(txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now) == true)
+                        if (txtDanhBo.Text.Trim().Replace(" ", "") != "" && _cDonTBC.CheckExist(txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now) == true)
                         {
                             MessageBox.Show("Danh Bộ này đã nhận đơn trong ngày hôm nay rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;

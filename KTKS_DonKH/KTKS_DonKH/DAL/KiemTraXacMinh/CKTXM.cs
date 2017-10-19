@@ -677,6 +677,45 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             return LINQToDataTable(query);
         }
 
+        public int CountLapBangGia(String Loai,DateTime FromNgayKTXM, DateTime ToNgayKTXM)
+        {
+            switch (Loai)
+            {
+                case "DutChiGoc":
+                    return db.CTKTXMs.Count(item => item.NgayKTXM.Value.Date >= FromNgayKTXM.Date && item.NgayKTXM.Value.Date <= ToNgayKTXM.Date && item.LapBangGia == true&&item.DutChiGoc==true);
+                case "MoNuoc":
+                    return db.CTKTXMs.Count(item => item.NgayKTXM.Value.Date >= FromNgayKTXM.Date && item.NgayKTXM.Value.Date <= ToNgayKTXM.Date && item.LapBangGia == true&&item.MoNuoc==true);
+                default:
+                    return db.CTKTXMs.Count(item => item.NgayKTXM.Value.Date >= FromNgayKTXM.Date && item.NgayKTXM.Value.Date <= ToNgayKTXM.Date && item.LapBangGia == true);
+            }
+        }
+
+        public int CountDongTienBoiThuong(String Loai, DateTime FromNgayKTXM, DateTime ToNgayKTXM)
+        {
+            switch (Loai)
+            {
+                case "DutChiGoc":
+                    return db.CTKTXMs.Count(item => item.NgayKTXM.Value.Date >= FromNgayKTXM.Date && item.NgayKTXM.Value.Date <= ToNgayKTXM.Date && item.DongTienBoiThuong == true && item.DutChiGoc == true);
+                case "MoNuoc":
+                    return db.CTKTXMs.Count(item => item.NgayKTXM.Value.Date >= FromNgayKTXM.Date && item.NgayKTXM.Value.Date <= ToNgayKTXM.Date && item.DongTienBoiThuong == true && item.MoNuoc == true);
+                default:
+                    return db.CTKTXMs.Count(item => item.NgayKTXM.Value.Date >= FromNgayKTXM.Date && item.NgayKTXM.Value.Date <= ToNgayKTXM.Date && item.DongTienBoiThuong == true);
+            }
+        }
+
+        public int CountLapBangGia_DongTienBoiThuong(String Loai, DateTime FromNgayKTXM, DateTime ToNgayKTXM)
+        {
+            switch (Loai)
+            {
+                case "DutChiGoc":
+                    return db.CTKTXMs.Count(item => item.NgayKTXM.Value.Date >= FromNgayKTXM.Date && item.NgayKTXM.Value.Date <= ToNgayKTXM.Date && item.LapBangGia && item.DongTienBoiThuong == true && item.DutChiGoc == true);
+                case "MoNuoc":
+                    return db.CTKTXMs.Count(item => item.NgayKTXM.Value.Date >= FromNgayKTXM.Date && item.NgayKTXM.Value.Date <= ToNgayKTXM.Date && item.LapBangGia && item.DongTienBoiThuong == true && item.MoNuoc == true);
+                default:
+                    return db.CTKTXMs.Count(item => item.NgayKTXM.Value.Date >= FromNgayKTXM.Date && item.NgayKTXM.Value.Date <= ToNgayKTXM.Date && item.LapBangGia == true && item.DongTienBoiThuong == true);
+            }
+        }
+
         #endregion
     }
 }
