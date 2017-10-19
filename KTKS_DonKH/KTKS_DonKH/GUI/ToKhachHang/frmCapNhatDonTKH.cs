@@ -197,7 +197,10 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             txtNgayNhan.Text = entity.CreateDate.Value.ToString("dd/MM/yyyy");
             txtNoiDung.Text = entity.NoiDung;
 
-            txtDanhBo.Text = entity.DanhBo.Insert(7, " ").Insert(4, " ");
+            if (entity.DanhBo.Length == 11)
+                txtDanhBo.Text = entity.DanhBo.Insert(7, " ").Insert(4, " ");
+            else
+                txtDanhBo.Text = entity.DanhBo;
             txtHopDong.Text = entity.HopDong;
             txtDienThoai.Text = entity.DienThoai;
             txtHoTen.Text = entity.HoTen;
@@ -497,7 +500,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                 {
                     if (cmbLD.SelectedIndex != -1)
                     {
-                        if (_cDonKH.CheckExist(txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now) == true)
+                        if (txtDanhBo.Text.Trim().Replace(" ", "") != "" && _cDonKH.CheckExist(txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now) == true)
                         {
                             MessageBox.Show("Danh Bộ này đã nhận đơn trong ngày hôm nay rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;

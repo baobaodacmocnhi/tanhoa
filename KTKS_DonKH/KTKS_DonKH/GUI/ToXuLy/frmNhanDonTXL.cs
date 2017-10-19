@@ -132,7 +132,10 @@ namespace KTKS_DonKH.GUI.ToXuLy
             txtNgayNhan.Text = entity.CreateDate.Value.ToString("dd/MM/yyyy");
             txtNoiDung.Text = entity.NoiDung;
 
-            txtDanhBo.Text = entity.DanhBo.Insert(7, " ").Insert(4, " ");
+            if (entity.DanhBo.Length == 11)
+                txtDanhBo.Text = entity.DanhBo.Insert(7, " ").Insert(4, " ");
+            else
+                txtDanhBo.Text = entity.DanhBo;
             txtHopDong.Text = entity.HopDong;
             txtDienThoai.Text = entity.DienThoai;
             txtHoTen.Text = entity.HoTen;

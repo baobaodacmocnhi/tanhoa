@@ -141,77 +141,80 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                 lbTruyThu.Text = "";
         }
 
-        public void LoadDonTKH(DonKH dontkh)
+        public void LoadDonTKH(DonKH entity)
         {
-            cmbLD.SelectedValue = dontkh.MaLD.Value;
-            txtSoCongVan.Text = dontkh.SoCongVan;
-            txtMaDon.Text = dontkh.MaDon.ToString().Insert(dontkh.MaDon.ToString().Length - 2, "-");
-            txtNgayNhan.Text = dontkh.CreateDate.Value.ToString("dd/MM/yyyy");
-            txtNoiDung.Text = dontkh.NoiDung;
+            cmbLD.SelectedValue = entity.MaLD.Value;
+            txtSoCongVan.Text = entity.SoCongVan;
+            txtMaDon.Text = entity.MaDon.ToString().Insert(entity.MaDon.ToString().Length - 2, "-");
+            txtNgayNhan.Text = entity.CreateDate.Value.ToString("dd/MM/yyyy");
+            txtNoiDung.Text = entity.NoiDung;
 
-            if (dontkh.KiemTraDHN)
+            if (entity.KiemTraDHN)
                 chkKiemTraDHN.Checked = true;
-            if (dontkh.TienNuoc)
+            if (entity.TienNuoc)
                 chkTienNuoc.Checked = true;
-            if (dontkh.ChiSoNuoc)
+            if (entity.ChiSoNuoc)
                 chkChiSoNuoc.Checked = true;
-            if (dontkh.DonGiaNuoc)
+            if (entity.DonGiaNuoc)
                 chkThayDoiGiaNuoc.Checked = true;
-            if (dontkh.SangTen)
+            if (entity.SangTen)
                 chkThayDoiTenHopDong.Checked = true;
-            if (dontkh.DangKyDM)
+            if (entity.DangKyDM)
                 chkCapDM.Checked = true;
-            if (dontkh.CatChuyenDM)
+            if (entity.CatChuyenDM)
                 chkCatChuyenDM.Checked = true;
-            if (dontkh.GiamDM)
+            if (entity.GiamDM)
                 chkGiamDM.Checked = true;
-            if (dontkh.DCSoNha)
+            if (entity.DCSoNha)
                 chkDieuChinhSoNha.Checked = true;
-            if (dontkh.MatDHN)
+            if (entity.MatDHN)
                 chkMatDHN.Checked = true;
-            if (dontkh.HuHongDHN)
+            if (entity.HuHongDHN)
                 chkHuHongDHN.Checked = true;
-            if (dontkh.ChiNiem)
+            if (entity.ChiNiem)
                 chkChiNiem.Checked = true;
-            if (dontkh.ThayDoiMST)
+            if (entity.ThayDoiMST)
                 chkThayDoiMST.Checked = true;
-            if (dontkh.TamNgung)
+            if (entity.TamNgung)
                 chkTamNgung.Checked = true;
-            if (dontkh.HuyHopDong)
+            if (entity.HuyHopDong)
                 chkHuyHopDong.Checked = true;
-            if (dontkh.LoaiKhac)
+            if (entity.LoaiKhac)
                 chkLyDoKhac.Checked = true;
 
-            txtLyDoKhac.Text = dontkh.LyDoLoaiKhac;
-            txtDanhBo.Text = dontkh.DanhBo.Insert(7, " ").Insert(4, " ");
-            txtHopDong.Text = dontkh.HopDong;
-            txtDienThoai.Text = dontkh.DienThoai;
-            txtHoTen.Text = dontkh.HoTen;
-            txtDiaChi.Text = dontkh.DiaChi;
-            txtGiaBieu.Text = dontkh.GiaBieu;
-            txtDinhMuc.Text = dontkh.DinhMuc;
+            txtLyDoKhac.Text = entity.LyDoLoaiKhac;
+            if (entity.DanhBo.Length == 11)
+            txtDanhBo.Text = entity.DanhBo.Insert(7, " ").Insert(4, " ");
+            else
+                txtDanhBo.Text = entity.DanhBo;
+            txtHopDong.Text = entity.HopDong;
+            txtDienThoai.Text = entity.DienThoai;
+            txtHoTen.Text = entity.HoTen;
+            txtDiaChi.Text = entity.DiaChi;
+            txtGiaBieu.Text = entity.GiaBieu;
+            txtDinhMuc.Text = entity.DinhMuc;
 
-            if (dontkh.CT_HoaDon)
+            if (entity.CT_HoaDon)
                 chkCT_HoaDon.Checked = true;
-            if (dontkh.CT_HK_KT3)
+            if (entity.CT_HK_KT3)
                 chkCT_HK_KT3.Checked = true;
-            if (dontkh.CT_STT_GXNTT)
+            if (entity.CT_STT_GXNTT)
                 chkCT_STT_GXNTT.Checked = true;
-            if (dontkh.CT_HDTN_CQN)
+            if (entity.CT_HDTN_CQN)
                 chkCT_HDTN_CQN.Checked = true;
-            if (dontkh.CT_GC_SDSN)
+            if (entity.CT_GC_SDSN)
                 chkCT_GC_SDSN.Checked = true;
-            if (dontkh.CT_GXN2SN)
+            if (entity.CT_GXN2SN)
                 chkCT_GXN2SN.Checked = true;
-            if (dontkh.CT_GDKKD)
+            if (entity.CT_GDKKD)
                 chkCT_GDKKD.Checked = true;
-            if (dontkh.CT_GCNDTDHN)
+            if (entity.CT_GCNDTDHN)
                 chkCT_GCNDTDHN.Checked = true;
 
-            txtDinhMucSau.Text = dontkh.DinhMucSau;
-            txtHieuLucTuKy.Text = dontkh.HieuLucTuKy;
-            dgvLichSuDon.DataSource = _cLichSuDonTu.GetDS_3To(dontkh.DanhBo);
-            dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("TKH", dontkh.MaDon);
+            txtDinhMucSau.Text = entity.DinhMucSau;
+            txtHieuLucTuKy.Text = entity.HieuLucTuKy;
+            dgvLichSuDon.DataSource = _cLichSuDonTu.GetDS_3To(entity.DanhBo);
+            dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("TKH", entity.MaDon);
         }
 
         private void cmbLD_SelectedIndexChanged(object sender, EventArgs e)
