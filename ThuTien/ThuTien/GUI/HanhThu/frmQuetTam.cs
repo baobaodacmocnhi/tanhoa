@@ -537,7 +537,7 @@ namespace ThuTien.GUI.HanhThu
                             dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                         }
                 }
-
+            dsBaoCao.Tables["TBDongNuoc"].DefaultView.Sort = "MLT ASC";
             rptTBTienNuocPhoto rpt = new rptTBTienNuocPhoto();
             rpt.SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);
@@ -652,7 +652,7 @@ namespace ThuTien.GUI.HanhThu
                             dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                         }
                 }
-
+            dsBaoCao.Tables["TBDongNuoc"].DefaultView.Sort = "MLT ASC";
             rptTBCatOngPhoto rpt = new rptTBCatOngPhoto();
             rpt.SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);
@@ -765,6 +765,7 @@ namespace ThuTien.GUI.HanhThu
                             dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                         }
                 }
+
             rptGiayXacNhanNoKhoDoi rpt = new rptGiayXacNhanNoKhoDoi();
             rpt.SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);
