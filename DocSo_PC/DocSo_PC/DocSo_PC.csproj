@@ -15,7 +15,7 @@
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>\\192.168.90.9\BaoBao%24\DocSo_PC\</PublishUrl>
+    <PublishUrl>\\HP_G7\dhn%24\QUAN LY DONG HO NUOC\DOC SO 2017\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -25,19 +25,19 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <UpdateUrl>\\192.168.90.9\BaoBao%24\DocSo_PC\</UpdateUrl>
+    <UpdateUrl>\\HP_G7\dhn%24\QUAN LY DONG HO NUOC\DOC SO 2017\</UpdateUrl>
     <TargetCulture>vi-VN</TargetCulture>
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <BootstrapperComponentsLocation>Absolute</BootstrapperComponentsLocation>
-    <BootstrapperComponentsUrl>\\192.168.90.9\BaoBao%24\DocSo_PC\</BootstrapperComponentsUrl>
+    <BootstrapperComponentsUrl>\\HP_G7\dhn%24\QUAN LY DONG HO NUOC\DOC SO 2017</BootstrapperComponentsUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -78,9 +78,12 @@
     <Reference Include="DevExpress.XtraGrid.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -92,8 +95,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\CDAL.cs" />
+    <Compile Include="DAL\CFormat.cs" />
     <Compile Include="DAL\ChuanBiDocSo\CChuanBiDS.cs" />
     <Compile Include="DAL\CDALTest.cs" />
+    <Compile Include="DAL\CDuDieuKH.cs" />
+    <Compile Include="DAL\CThuTien.cs" />
     <Compile Include="DAL\QuanTri\CMenu.cs" />
     <Compile Include="DAL\QuanTri\CNguoiDung.cs" />
     <Compile Include="DAL\QuanTri\CNhom.cs" />
@@ -101,6 +107,11 @@
     <Compile Include="DAL\QuanTri\CPhanQuyenNhom.cs" />
     <Compile Include="DAL\QuanTri\CTo.cs" />
     <Compile Include="DAL\XuLyDocSo\CXuLyDocSo.cs" />
+    <Compile Include="DocSoTHDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DocSoTHDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +201,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbDocSo.dbml</DependentUpon>
     </Compile>
+    <Compile Include="LinQ\dbDuLieuKH.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbDuLieuKH.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="LinQ\dbThuTien.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbThuTien.dbml</DependentUpon>
+    </Compile>
     <Compile Include="LinQ\DocSoTest.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -200,6 +221,21 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\XuLyDocSo\rptTieuThu.rdlc" />
+    <None Include="DocSoTHDataSet.xsc">
+      <DependentUpon>DocSoTHDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DocSoTHDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DocSoTHDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DocSoTHDataSet.xss">
+      <DependentUpon>DocSoTHDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="LinQ\dbThuTien.dbml.layout">
+      <DependentUpon>dbThuTien.dbml</DependentUpon>
+    </None>
     <None Include="DocSo_PC_TemporaryKey.pfx" />
     <None Include="LinQ\dbDocSo.dbml.layout">
       <DependentUpon>dbDocSo.dbml</DependentUpon>
@@ -234,6 +270,16 @@
     <EmbeddedResource Include="GUI\QuanTri\frmTo.resx">
       <DependentUpon>frmTo.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="LinQ\dbDuLieuKH.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dbDuLieuKH.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="LinQ\dbThuTien.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dbThuTien.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="LinQ\DocSoTest.dbml.layout">
       <DependentUpon>DocSoTest.dbml</DependentUpon>
     </None>
@@ -246,6 +292,9 @@
     <EmbeddedResource Include="GUI\XuLyDocSo\frmKiemSoatDocSo.resx">
       <DependentUpon>frmKiemSoatDocSo.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="LinQ\dbDuLieuKH.dbml.layout">
+      <DependentUpon>dbDuLieuKH.dbml</DependentUpon>
+    </None>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -279,11 +328,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
@@ -293,16 +337,6 @@
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
-      <Visible>False</Visible>
-      <ProductName>Windows Installer 3.1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="SAP.CrystalReports14.NET.2.0">
-      <Visible>False</Visible>
-      <ProductName>SAP Crystal Reports Runtime Engine for .NET Framework 4.0</ProductName>
-      <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>

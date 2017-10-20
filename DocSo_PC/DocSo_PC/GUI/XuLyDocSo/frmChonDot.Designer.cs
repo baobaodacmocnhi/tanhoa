@@ -157,6 +157,7 @@
             this.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmChonDot";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Chọn Đợt Điều Chỉnh";
             this.Load += new System.EventHandler(this.frmChonDot_Load);
             this.ResumeLayout(false);
