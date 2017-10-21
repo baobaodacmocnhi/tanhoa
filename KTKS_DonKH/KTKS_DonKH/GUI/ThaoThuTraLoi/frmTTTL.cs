@@ -185,7 +185,17 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                             LoadTTKH(_hoadon);
                         }
                         else
+                        {
                             MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            txtDanhBo.Text = _dontxl.DanhBo;
+                            txtHopDong.Text =_dontxl.HopDong;
+                            txtLoTrinh.Text = _dontxl.MLT;
+                            txtHoTen.Text = _dontxl.HoTen;
+                            txtDiaChi.Text = _dontxl.DiaChi;
+                            txtGiaBieu.Text = _dontxl.GiaBieu;
+                            txtDinhMuc.Text = _dontxl.DinhMuc;
+                        }
                     }
                     else
                         MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -204,7 +214,17 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                                 LoadTTKH(_hoadon);
                             }
                             else
+                            {
                                 MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                                txtDanhBo.Text = _dontbc.DanhBo;
+                                txtHopDong.Text = _dontbc.HopDong;
+                                txtLoTrinh.Text = _dontbc.MLT;
+                                txtHoTen.Text = _dontbc.HoTen;
+                                txtDiaChi.Text = _dontbc.DiaChi;
+                                txtGiaBieu.Text = _dontbc.GiaBieu;
+                                txtDinhMuc.Text = _dontbc.DinhMuc;
+                            }
                         }
                         else
                             MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -222,7 +242,17 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                                 LoadTTKH(_hoadon);
                             }
                             else
+                            {
                                 MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                                txtDanhBo.Text = _dontkh.DanhBo;
+                                txtHopDong.Text = _dontkh.HopDong;
+                                txtLoTrinh.Text = _dontkh.MLT;
+                                txtHoTen.Text = _dontkh.HoTen;
+                                txtDiaChi.Text = _dontkh.DiaChi;
+                                txtGiaBieu.Text = _dontkh.GiaBieu;
+                                txtDinhMuc.Text = _dontkh.DinhMuc;
+                            }
                         }
                         else
                             MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
