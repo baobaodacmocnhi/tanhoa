@@ -94,6 +94,8 @@
             this.txtGhiChuTroNgai = new System.Windows.Forms.TextBox();
             this.btnCapNhat = new System.Windows.Forms.Button();
             this.btnInDS = new System.Windows.Forms.Button();
+            this.txtGhiChuMN = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
             this.In = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MaDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -106,6 +108,7 @@
             this.LyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GhiChuMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoPhieuDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoPhieuMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -128,6 +131,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtGhiChuMN);
+            this.groupBox2.Controls.Add(this.label22);
             this.groupBox2.Controls.Add(this.txtChiSoMN);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.dateMoNuoc);
@@ -515,6 +520,7 @@
             this.LyDo,
             this.NgayDN,
             this.NgayMN,
+            this.GhiChuMN,
             this.SoPhieuDN,
             this.SoPhieuMN,
             this.MLT,
@@ -798,6 +804,23 @@
             this.btnInDS.UseVisualStyleBackColor = true;
             this.btnInDS.Click += new System.EventHandler(this.btnInDS_Click);
             // 
+            // txtGhiChuMN
+            // 
+            this.txtGhiChuMN.Location = new System.Drawing.Point(288, 72);
+            this.txtGhiChuMN.Name = "txtGhiChuMN";
+            this.txtGhiChuMN.ReadOnly = true;
+            this.txtGhiChuMN.Size = new System.Drawing.Size(89, 20);
+            this.txtGhiChuMN.TabIndex = 37;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(221, 75);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(68, 13);
+            this.label22.TabIndex = 36;
+            this.label22.Text = "Ghi Chú MN:";
+            // 
             // In
             // 
             this.In.DataPropertyName = "In";
@@ -881,6 +904,13 @@
             this.NgayMN.DataPropertyName = "NgayMN";
             this.NgayMN.HeaderText = "Ngày MN";
             this.NgayMN.Name = "NgayMN";
+            // 
+            // GhiChuMN
+            // 
+            this.GhiChuMN.DataPropertyName = "GhiChuMN";
+            this.GhiChuMN.HeaderText = "GhiChuMN";
+            this.GhiChuMN.Name = "GhiChuMN";
+            this.GhiChuMN.Visible = false;
             // 
             // SoPhieuDN
             // 
@@ -1090,6 +1120,8 @@
         private System.Windows.Forms.TextBox txtGhiChuTroNgai;
         private System.Windows.Forms.Button btnCapNhat;
         private System.Windows.Forms.Button btnInDS;
+        private System.Windows.Forms.TextBox txtGhiChuMN;
+        private System.Windows.Forms.Label label22;
         private System.Windows.Forms.DataGridViewCheckBoxColumn In;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDN;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
@@ -1102,6 +1134,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LyDo;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayDN;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayMN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GhiChuMN;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieuDN;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieuMN;
         private System.Windows.Forms.DataGridViewTextBoxColumn MLT;

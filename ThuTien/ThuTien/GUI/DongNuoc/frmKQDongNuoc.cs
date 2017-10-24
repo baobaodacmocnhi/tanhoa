@@ -93,6 +93,7 @@ namespace ThuTien.GUI.DongNuoc
                         dateMoNuoc.Value = _kqdongnuoc.NgayMN.Value;
                         if (_kqdongnuoc.ChiSoMN != null)
                             txtChiSoMN.Text = _kqdongnuoc.ChiSoMN.Value.ToString();
+                        txtGhiChuMN.Text = _kqdongnuoc.GhiChuMN;
                     }
                     if (_kqdongnuoc.DongNuoc2)
                     {
@@ -349,6 +350,7 @@ namespace ThuTien.GUI.DongNuoc
                         _kqdongnuoc.NgayMN = dateMoNuoc.Value;
                         _kqdongnuoc.NgayMN_ThucTe = DateTime.Now;
                         _kqdongnuoc.ChiSoMN = int.Parse(txtChiSoMN.Text.Trim());
+                        _kqdongnuoc.GhiChuMN = txtGhiChuMN.Text.Trim();
                     }
                     else
                     {
@@ -356,6 +358,7 @@ namespace ThuTien.GUI.DongNuoc
                         _kqdongnuoc.NgayMN = null;
                         _kqdongnuoc.NgayMN_ThucTe = null;
                         _kqdongnuoc.ChiSoMN = null;
+                        _kqdongnuoc.GhiChuMN = null;
                     }
 
                     if (_cDongNuoc.SuaKQ(_kqdongnuoc))
@@ -462,12 +465,14 @@ namespace ThuTien.GUI.DongNuoc
                     chkMoNuoc.Checked = bool.Parse(dgvKQDongNuoc["MoNuoc", e.RowIndex].Value.ToString());
                     dateMoNuoc.Value = DateTime.Parse(dgvKQDongNuoc["NgayMN", e.RowIndex].Value.ToString());
                     txtChiSoMN.Text = dgvKQDongNuoc["ChiSoMN", e.RowIndex].Value.ToString();
+                    txtGhiChuMN.Text = dgvKQDongNuoc["GhiChuMN", e.RowIndex].Value.ToString();
                 }
                 else
                 {
                     chkMoNuoc.Checked = false;
                     dateMoNuoc.Value = DateTime.Now;
                     txtChiSoMN.Text = "";
+                    txtGhiChuMN.Text = "";
                 }
                 if (bool.Parse(dgvKQDongNuoc["DongNuoc2", e.RowIndex].Value.ToString()))
                 {
@@ -554,13 +559,16 @@ namespace ThuTien.GUI.DongNuoc
             {
                 dateMoNuoc.Enabled = true;
                 txtChiSoMN.ReadOnly = false;
+                txtGhiChuMN.ReadOnly = false;
             }
             else
             {
                 dateMoNuoc.Enabled = false;
                 txtChiSoMN.ReadOnly = true;
+                txtGhiChuMN.ReadOnly = true;
                 dateMoNuoc.Value = DateTime.Now;
                 txtChiSoMN.Text = "";
+                txtGhiChuMN.Text = "";
             }
         }
 
@@ -675,10 +683,13 @@ namespace ThuTien.GUI.DongNuoc
                                 }
                                 dr["Ky"] = Ky;
                                 dr["NgayDongMoNuoc"] = item.NgayMN;
-                                if (item.Co <= 25)
-                                    dr["ChiSoDongMoNuoc"] = item.ChiSoMN.Value.ToString("D4");
+                                if (item.GhiChuMN != "")
+                                    dr["ChiSoDongMoNuoc"] = item.GhiChuMN;
                                 else
-                                    dr["ChiSoDongMoNuoc"] = item.ChiSoMN.Value.ToString("D5");
+                                    if (item.Co <= 25)
+                                        dr["ChiSoDongMoNuoc"] = item.ChiSoMN.Value.ToString("D4");
+                                    else
+                                        dr["ChiSoDongMoNuoc"] = item.ChiSoMN.Value.ToString("D5");
 
                                 dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                             }

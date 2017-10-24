@@ -197,6 +197,8 @@ namespace ThuTien.DAL.ChuyenKhoan
                             HanhThu = itemtableND.HoTen,
                             To = itemtableND.TT_To.TenTo,
                             DangNgan = itemtableDN.HoTen,
+                            DongNuoc = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false),
+                            LenhHuy = _db.TT_LenhHuys.Any(item => item.SoHoaDon == itemDV.SoHoaDon),
                         };
             return LINQToDataTable(query);
         }
@@ -270,6 +272,8 @@ namespace ThuTien.DAL.ChuyenKhoan
                             HanhThu = itemtableND.HoTen,
                             To = itemtableND.TT_To.TenTo,
                             DangNgan = itemtableDN.HoTen,
+                            DongNuoc = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false),
+                            LenhHuy = _db.TT_LenhHuys.Any(item => item.SoHoaDon == itemDV.SoHoaDon),
                         };
             dt = LINQToDataTable(query);
 
@@ -300,6 +304,8 @@ namespace ThuTien.DAL.ChuyenKhoan
                               HanhThu = itemtableND.HoTen,
                               To = itemtableND.TT_To.TenTo,
                               DangNgan = itemtableDN.HoTen,
+                              DongNuoc = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false),
+                              LenhHuy = _db.TT_LenhHuys.Any(item => item.SoHoaDon == itemDV.SoHoaDon),
                           };
             dt.Merge(LINQToDataTable(queryDN));
             if (dt.Rows.Count > 0)
