@@ -760,7 +760,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 dgvDSYCCHDB.DataSource = _cCHDB.GetDSPhieuHuy(dateTu.Value, dateDen.Value);
                             else
                                 if (radDSDongNuoc.Checked)
-                                    dgvDSYCCHDB.DataSource = _cDongNuoc.GetDSDongNuoc(dateTu.Value, dateDen.Value);
+                                    dgvDSYCCHDB.DataSource = _cDongNuoc.GetDSDongNuocByCreateDate(dateTu.Value, dateDen.Value);
                     break;
                 default:
                     break;

@@ -191,7 +191,7 @@ namespace KTKS_DonKH.GUI.QuanTri
                             dgvDanhSach.DataSource = _cCHDB.LoadDSYCCHDB_Don(dateTu.Value, dateDen.Value);
                             break;
                         case "Đóng Nước":
-                            dgvDanhSach.DataSource = _cDongNuoc.GetDSDongNuoc(dateTu.Value, dateDen.Value);
+                            dgvDanhSach.DataSource = _cDongNuoc.GetDSDongNuocByCreateDate(dateTu.Value, dateDen.Value);
                             break;
                         case "Mở Nước":
                             dgvDanhSach.DataSource = _cDongNuoc.GetDSMoNuoc(dateTu.Value, dateDen.Value);

@@ -680,6 +680,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 dr["DiaChi"] = _cttttl.DiaChi;
                 if (!string.IsNullOrEmpty(_cttttl.DanhBo))
                     dr["DanhBo"] = _cttttl.DanhBo.Insert(7, " ").Insert(4, " ");
+
                 dr["HopDong"] = _cttttl.HopDong;
                 dr["GiaBieu"] = _cttttl.GiaBieu;
                 dr["DinhMuc"] = _cttttl.DinhMuc;
@@ -700,10 +701,20 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 
                 dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
 
-                rptThaoThuTraLoi rpt = new rptThaoThuTraLoi();
-                rpt.SetDataSource(dsBaoCao);
-                frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                frm.Show();
+                if (!string.IsNullOrEmpty(_cttttl.DanhBo))
+                {
+                    rptThaoThuTraLoi rpt = new rptThaoThuTraLoi();
+                    rpt.SetDataSource(dsBaoCao);
+                    frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                    frm.Show();
+                }
+                else
+                {
+                    rptThaoThuTraLoi_KhongDanhBo rpt = new rptThaoThuTraLoi_KhongDanhBo();
+                    rpt.SetDataSource(dsBaoCao);
+                    frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                    frm.Show();
+                }
             }
         }
 

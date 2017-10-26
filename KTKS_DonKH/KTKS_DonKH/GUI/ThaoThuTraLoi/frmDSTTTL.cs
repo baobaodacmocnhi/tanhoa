@@ -118,17 +118,34 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 
                             dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
 
-                            rptThaoThuTraLoi rpt = new rptThaoThuTraLoi();
-                            rpt.SetDataSource(dsBaoCao);
+                            if (!string.IsNullOrEmpty(cttttl.DanhBo))
+                            {
+                                rptThaoThuTraLoi rpt = new rptThaoThuTraLoi();
+                                rpt.SetDataSource(dsBaoCao);
 
-                            printDialog.AllowSomePages = true;
-                            printDialog.ShowHelp = true;
+                                printDialog.AllowSomePages = true;
+                                printDialog.ShowHelp = true;
 
-                            rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
-                            rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
-                            rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+                                rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                                rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
 
-                            rpt.PrintToPrinter(1, false, 0, 0);
+                                rpt.PrintToPrinter(1, false, 0, 0);
+                            }
+                            else
+                            {
+                                rptThaoThuTraLoi_KhongDanhBo rpt = new rptThaoThuTraLoi_KhongDanhBo();
+                                rpt.SetDataSource(dsBaoCao);
+
+                                printDialog.AllowSomePages = true;
+                                printDialog.ShowHelp = true;
+
+                                rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                                rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+
+                                rpt.PrintToPrinter(1, false, 0, 0);
+                            }
                         }
                 }
             }

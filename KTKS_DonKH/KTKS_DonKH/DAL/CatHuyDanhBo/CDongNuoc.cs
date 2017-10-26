@@ -332,10 +332,30 @@ namespace KTKS_DonKH.DAL.DongNuoc
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSDongNuoc(DateTime FromNgayDN, DateTime ToNgayDN)
+        public DataTable GetDSDongNuocByNgayDN(DateTime FromNgayDN, DateTime ToNgayDN)
         {
             var query = from item in db.CTDongNuocs
                         where item.NgayDN.Value.Date >= FromNgayDN.Date && item.NgayDN.Value.Date <= ToNgayDN.Date
+                        select new
+                        {
+                            MaDon = item.DongNuoc.MaDon != null ? "TKH" + item.DongNuoc.MaDon
+                                : item.DongNuoc.MaDonTXL != null ? "TXL" + item.DongNuoc.MaDonTXL
+                                : item.DongNuoc.MaDonTBC != null ? "TBC" + item.DongNuoc.MaDonTBC : null,
+                            PhieuDuocKy = item.ThongBaoDuocKy_DN,
+                            MaTB = item.MaCTDN,
+                            ID = item.MaCTDN,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSDongNuocByCreateDate(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            var query = from item in db.CTDongNuocs
+                        where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
                         select new
                         {
                             MaDon = item.DongNuoc.MaDon != null ? "TKH" + item.DongNuoc.MaDon
