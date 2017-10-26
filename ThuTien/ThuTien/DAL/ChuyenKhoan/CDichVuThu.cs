@@ -69,6 +69,8 @@ namespace ThuTien.DAL.ChuyenKhoan
                             HanhThu = itemtableND.HoTen,
                             To = itemtableND.TT_To.TenTo,
                             DangNgan = itemtableDN.HoTen,
+                            DongNuoc = _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == itemDV.SoHoaDon && item.TT_DongNuoc.Huy == false),
+                            LenhHuy = _db.TT_LenhHuys.Any(item => item.SoHoaDon == itemDV.SoHoaDon),
                         };
             return LINQToDataTable(query);
             //string sql = "select dvt.SoHoaDon,dvt.SoTien,dvt.Phi,dvt.TenDichVu,dvt.CreateDate,hd.NGAYGIAITRACH,hd.DangNgan_Quay,hd.DangNgan_ChuyenKhoan,"
