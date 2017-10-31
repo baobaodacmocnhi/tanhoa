@@ -106,10 +106,12 @@ namespace KTKS_DonKH.GUI.DongNuoc
             txtDiaChiDHN.Text = ctdongnuoc.DiaChiDHN;
             ///
             dateDongNuoc.Value = ctdongnuoc.NgayDN.Value;
-            txtSoCongVan_DN.Text = ctdongnuoc.SoCongVan_DN;
-            dateCongVan_DN.Value = ctdongnuoc.NgayCongVan_DN.Value;
-            txtPhuong_DN.Text = ctdongnuoc.Phuong;
-            txtQuan_DN.Text = ctdongnuoc.Quan;
+            //txtSoCongVan_DN.Text = ctdongnuoc.SoCongVan_DN;
+            //dateCongVan_DN.Value = ctdongnuoc.NgayCongVan_DN.Value;
+            //txtPhuong_DN.Text = ctdongnuoc.Phuong;
+            //txtQuan_DN.Text = ctdongnuoc.Quan;
+            txtLyDo.Text = ctdongnuoc.LyDoDN;
+            txtNoiDung.Text = ctdongnuoc.NoiDungDN;
             ///
             if (ctdongnuoc.MoNuoc)
             {
@@ -421,10 +423,12 @@ namespace KTKS_DonKH.GUI.DongNuoc
                         }
                         ctdongnuoc.DiaChiDHN = txtDiaChiDHN.Text.Trim();
                         ctdongnuoc.NgayDN = dateDongNuoc.Value;
-                        ctdongnuoc.SoCongVan_DN = txtSoCongVan_DN.Text.Trim();
-                        ctdongnuoc.NgayCongVan_DN = dateCongVan_DN.Value;
-                        ctdongnuoc.Phuong = txtPhuong_DN.Text.Trim();
-                        ctdongnuoc.Quan = txtQuan_DN.Text.Trim();
+                        //ctdongnuoc.SoCongVan_DN = txtSoCongVan_DN.Text.Trim();
+                        //ctdongnuoc.NgayCongVan_DN = dateCongVan_DN.Value;
+                        //ctdongnuoc.Phuong = txtPhuong_DN.Text.Trim();
+                        //ctdongnuoc.Quan = txtQuan_DN.Text.Trim();
+                        ctdongnuoc.LyDoDN = txtLyDo.Text.Trim();
+                        ctdongnuoc.NoiDungDN = txtNoiDung.Text;
                         ///Ký Tên
                         BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
                         if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
@@ -456,10 +460,12 @@ namespace KTKS_DonKH.GUI.DongNuoc
                         }
                         _ctdongnuoc.DiaChiDHN = txtDiaChiDHN.Text.Trim();
                         _ctdongnuoc.NgayDN = dateDongNuoc.Value;
-                        _ctdongnuoc.SoCongVan_DN = txtSoCongVan_DN.Text.Trim();
-                        _ctdongnuoc.NgayCongVan_DN = dateCongVan_DN.Value;
-                        _ctdongnuoc.Phuong = txtPhuong_DN.Text.Trim();
-                        _ctdongnuoc.Quan = txtQuan_DN.Text.Trim();
+                        //_ctdongnuoc.SoCongVan_DN = txtSoCongVan_DN.Text.Trim();
+                        //_ctdongnuoc.NgayCongVan_DN = dateCongVan_DN.Value;
+                        //_ctdongnuoc.Phuong = txtPhuong_DN.Text.Trim();
+                        //_ctdongnuoc.Quan = txtQuan_DN.Text.Trim();
+                        _ctdongnuoc.LyDoDN = txtLyDo.Text.Trim();
+                        _ctdongnuoc.NoiDungDN = txtNoiDung.Text;
 
                         if (_cDongNuoc.SuaCT(_ctdongnuoc))
                         {
@@ -549,10 +555,12 @@ namespace KTKS_DonKH.GUI.DongNuoc
                 dr["DiaChiDHN"] = _ctdongnuoc.DiaChiDHN;
                 ///
                 dr["NgayXuLy"] = _ctdongnuoc.NgayDN.Value.ToString("dd/MM/yyyy");
-                dr["SoCongVan"] = _ctdongnuoc.SoCongVan_DN;
-                dr["NgayCongVan"] = _ctdongnuoc.NgayCongVan_DN.Value.ToString("dd/MM/yyyy");
-                dr["Phuong"] = _ctdongnuoc.Phuong;
-                dr["Quan"] = _ctdongnuoc.Quan;
+                //dr["SoCongVan"] = _ctdongnuoc.SoCongVan_DN;
+                //dr["NgayCongVan"] = _ctdongnuoc.NgayCongVan_DN.Value.ToString("dd/MM/yyyy");
+                //dr["Phuong"] = _ctdongnuoc.Phuong;
+                //dr["Quan"] = _ctdongnuoc.Quan;
+                dr["LyDo"] = _ctdongnuoc.LyDoDN;
+                dr["NoiDung"] = _ctdongnuoc.NoiDungDN;
                 ///
                 dr["ChucVu"] = _ctdongnuoc.ChucVu_DN;
                 dr["NguoiKy"] = _ctdongnuoc.NguoiKy_DN;

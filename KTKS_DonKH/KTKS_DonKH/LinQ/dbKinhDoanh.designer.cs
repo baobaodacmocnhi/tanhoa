@@ -11675,6 +11675,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _NgayDN;
 		
+		private string _LyDoDN;
+		
+		private string _NoiDungDN;
+		
 		private string _SoCongVan_DN;
 		
 		private System.Nullable<System.DateTime> _NgayCongVan_DN;
@@ -11745,6 +11749,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnDiaChiDHNChanged();
     partial void OnNgayDNChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayDNChanged();
+    partial void OnLyDoDNChanging(string value);
+    partial void OnLyDoDNChanged();
+    partial void OnNoiDungDNChanging(string value);
+    partial void OnNoiDungDNChanged();
     partial void OnSoCongVan_DNChanging(string value);
     partial void OnSoCongVan_DNChanged();
     partial void OnNgayCongVan_DNChanging(System.Nullable<System.DateTime> value);
@@ -11993,6 +12001,46 @@ namespace KTKS_DonKH.LinQ
 					this._NgayDN = value;
 					this.SendPropertyChanged("NgayDN");
 					this.OnNgayDNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LyDoDN", DbType="NVarChar(200)")]
+		public string LyDoDN
+		{
+			get
+			{
+				return this._LyDoDN;
+			}
+			set
+			{
+				if ((this._LyDoDN != value))
+				{
+					this.OnLyDoDNChanging(value);
+					this.SendPropertyChanging();
+					this._LyDoDN = value;
+					this.SendPropertyChanged("LyDoDN");
+					this.OnLyDoDNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiDungDN", DbType="NVarChar(MAX)")]
+		public string NoiDungDN
+		{
+			get
+			{
+				return this._NoiDungDN;
+			}
+			set
+			{
+				if ((this._NoiDungDN != value))
+				{
+					this.OnNoiDungDNChanging(value);
+					this.SendPropertyChanging();
+					this._NoiDungDN = value;
+					this.SendPropertyChanged("NoiDungDN");
+					this.OnNoiDungDNChanged();
 				}
 			}
 		}
