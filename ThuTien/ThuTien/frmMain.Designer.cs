@@ -129,6 +129,7 @@
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.mnuPhanTichChuyenKhoan = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -202,7 +203,7 @@
             this.mnuNhom,
             this.mnuNguoiDung});
             this.mnuQuanTri.Name = "mnuQuanTri";
-            this.mnuQuanTri.Size = new System.Drawing.Size(65, 20);
+            this.mnuQuanTri.Size = new System.Drawing.Size(64, 20);
             this.mnuQuanTri.Text = "Quản Trị";
             // 
             // mnuTo
@@ -394,7 +395,7 @@
             this.mnuHDTamThu,
             this.mnuHDChuyenKhoan});
             this.mnuToTruong.Name = "mnuToTruong";
-            this.mnuToTruong.Size = new System.Drawing.Size(75, 20);
+            this.mnuToTruong.Size = new System.Drawing.Size(74, 20);
             this.mnuToTruong.Text = "Tổ Trưởng";
             // 
             // mnuGiaoHDHanhThu
@@ -566,7 +567,8 @@
             this.mnuLichSuDieuChinhTienDu,
             this.mnuPhiMoNuocChuyenKhoan,
             this.mnuChanTienDu,
-            this.mnuBaoCaoChuyenKhoan});
+            this.mnuBaoCaoChuyenKhoan,
+            this.mnuPhanTichChuyenKhoan});
             this.mnuChuyenKhoan.Name = "mnuChuyenKhoan";
             this.mnuChuyenKhoan.Size = new System.Drawing.Size(97, 20);
             this.mnuChuyenKhoan.Text = "Chuyển Khoản";
@@ -855,21 +857,21 @@
             // mnuKiemTraThu2Lan
             // 
             this.mnuKiemTraThu2Lan.Name = "mnuKiemTraThu2Lan";
-            this.mnuKiemTraThu2Lan.Size = new System.Drawing.Size(176, 22);
+            this.mnuKiemTraThu2Lan.Size = new System.Drawing.Size(175, 22);
             this.mnuKiemTraThu2Lan.Text = "Kiểm Tra Thu 2 Lần";
             this.mnuKiemTraThu2Lan.Click += new System.EventHandler(this.mnuKiemTraThu2Lan_Click);
             // 
             // mnuKiemTraTon
             // 
             this.mnuKiemTraTon.Name = "mnuKiemTraTon";
-            this.mnuKiemTraTon.Size = new System.Drawing.Size(176, 22);
+            this.mnuKiemTraTon.Size = new System.Drawing.Size(175, 22);
             this.mnuKiemTraTon.Text = "Kiểm Tra HĐ Tồn";
             this.mnuKiemTraTon.Click += new System.EventHandler(this.mnuKiemTraTon_Click);
             // 
             // mnuTrungTamKhachHang
             // 
             this.mnuTrungTamKhachHang.Name = "mnuTrungTamKhachHang";
-            this.mnuTrungTamKhachHang.Size = new System.Drawing.Size(146, 20);
+            this.mnuTrungTamKhachHang.Size = new System.Drawing.Size(144, 20);
             this.mnuTrungTamKhachHang.Text = "Trung Tâm Khách Hàng";
             this.mnuTrungTamKhachHang.Visible = false;
             // 
@@ -889,7 +891,7 @@
             // StripStatus_Version
             // 
             this.StripStatus_Version.Name = "StripStatus_Version";
-            this.StripStatus_Version.Size = new System.Drawing.Size(428, 17);
+            this.StripStatus_Version.Size = new System.Drawing.Size(427, 17);
             this.StripStatus_Version.Text = "Bản quyền(2015) thuộc Công ty CP Cấp Nước Tân Hòa. Được T.CNTT phát triển";
             // 
             // toolStripStatusLabel4
@@ -925,6 +927,13 @@
             // 
             this.timer.Interval = 1200000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // mnuPhanTichChuyenKhoan
+            // 
+            this.mnuPhanTichChuyenKhoan.Name = "mnuPhanTichChuyenKhoan";
+            this.mnuPhanTichChuyenKhoan.Size = new System.Drawing.Size(265, 22);
+            this.mnuPhanTichChuyenKhoan.Text = "Phân Tích Chuyển Khoản";
+            this.mnuPhanTichChuyenKhoan.Click += new System.EventHandler(this.mnuPhanTichChuyenKhoan_Click);
             // 
             // frmMain
             // 
@@ -1056,6 +1065,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuTrungTamKhachHang;
         private System.Windows.Forms.ToolStripMenuItem mnuHDChuyenKhoan;
         private System.Windows.Forms.ToolStripMenuItem mnuDangKyKiemTra;
+        private System.Windows.Forms.ToolStripMenuItem mnuPhanTichChuyenKhoan;
     }
 }
 

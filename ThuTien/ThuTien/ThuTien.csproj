@@ -578,6 +578,12 @@
     <Compile Include="GUI\ChuyenKhoan\frmNganHang.Designer.cs">
       <DependentUpon>frmNganHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ChuyenKhoan\frmPhanTichChuyenKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ChuyenKhoan\frmPhanTichChuyenKhoan.Designer.cs">
+      <DependentUpon>frmPhanTichChuyenKhoan.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ChuyenKhoan\frmPhiMoNuocChuyenKhoan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1326,6 +1332,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ChuyenKhoan\frmNganHang.resx">
       <DependentUpon>frmNganHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ChuyenKhoan\frmPhanTichChuyenKhoan.resx">
+      <DependentUpon>frmPhanTichChuyenKhoan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ChuyenKhoan\frmPhiMoNuocChuyenKhoan.resx">
       <DependentUpon>frmPhiMoNuocChuyenKhoan.cs</DependentUpon>
