@@ -434,6 +434,7 @@
             this.DanhBo.DataPropertyName = "DanhBo";
             this.DanhBo.HeaderText = "Danh Bộ";
             this.DanhBo.Name = "DanhBo";
+            this.DanhBo.Width = 90;
             // 
             // HoTen
             // 
@@ -475,6 +476,7 @@
             this.HanhThu.DataPropertyName = "HanhThu";
             this.HanhThu.HeaderText = "Hành Thu";
             this.HanhThu.Name = "HanhThu";
+            this.HanhThu.Width = 80;
             // 
             // TenDichVu
             // 

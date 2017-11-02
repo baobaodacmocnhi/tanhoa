@@ -496,52 +496,58 @@ namespace ThuTien.GUI.Doi
 
         private void dgvHDTuGia_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataTable dt = new DataTable();
-            if (chkNgayKiemTra.Checked)
+            if (dgvHDTuGia.RowCount > 0)
             {
-                dt = _cHoaDon.GetNangSuat_To("TG", int.Parse(dgvHDTuGia["MaTo_TG", e.RowIndex].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrach.Value);
-            }
-            else
-            {
-                ///chọn tất cả các kỳ
-                if (cmbKy.SelectedIndex == 0)
+                DataTable dt = new DataTable();
+                if (chkNgayKiemTra.Checked)
                 {
-                    dt = _cHoaDon.GetNangSuat_To("TG", int.Parse(dgvHDTuGia["MaTo_TG", e.RowIndex].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
+                    dt = _cHoaDon.GetNangSuat_To("TG", int.Parse(dgvHDTuGia["MaTo_TG", e.RowIndex].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrach.Value);
                 }
-                ///chọn 1 kỳ cụ thể
                 else
-                    if (cmbKy.SelectedIndex > 0)
+                {
+                    ///chọn tất cả các kỳ
+                    if (cmbKy.SelectedIndex == 0)
                     {
-                        dt = _cHoaDon.GetNangSuat_To("TG", int.Parse(dgvHDTuGia["MaTo_TG", e.RowIndex].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                        dt = _cHoaDon.GetNangSuat_To("TG", int.Parse(dgvHDTuGia["MaTo_TG", e.RowIndex].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
                     }
+                    ///chọn 1 kỳ cụ thể
+                    else
+                        if (cmbKy.SelectedIndex > 0)
+                        {
+                            dt = _cHoaDon.GetNangSuat_To("TG", int.Parse(dgvHDTuGia["MaTo_TG", e.RowIndex].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                        }
+                }
+                dgvNhanVien.DataSource = dt;
+                CountdgvNhanVien();
             }
-            dgvNhanVien.DataSource = dt;
-            CountdgvNhanVien();
         }
 
         private void dgvHDCoQuan_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataTable dt = new DataTable();
-            if (chkNgayKiemTra.Checked)
+            if (dgvHDCoQuan.RowCount > 0)
             {
-                dt = _cHoaDon.GetNangSuat_To("CQ", int.Parse(dgvHDCoQuan["MaTo_CQ", e.RowIndex].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrach.Value);
-            }
-            else
-            {
-                ///chọn tất cả các kỳ
-                if (cmbKy.SelectedIndex == 0)
+                DataTable dt = new DataTable();
+                if (chkNgayKiemTra.Checked)
                 {
-                    dt = _cHoaDon.GetNangSuat_To("CQ", int.Parse(dgvHDCoQuan["MaTo_CQ", e.RowIndex].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
+                    dt = _cHoaDon.GetNangSuat_To("CQ", int.Parse(dgvHDCoQuan["MaTo_CQ", e.RowIndex].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrach.Value);
                 }
-                ///chọn 1 kỳ cụ thể
                 else
-                    if (cmbKy.SelectedIndex > 0)
+                {
+                    ///chọn tất cả các kỳ
+                    if (cmbKy.SelectedIndex == 0)
                     {
-                        dt = _cHoaDon.GetNangSuat_To("CQ", int.Parse(dgvHDCoQuan["MaTo_CQ", e.RowIndex].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                        dt = _cHoaDon.GetNangSuat_To("CQ", int.Parse(dgvHDCoQuan["MaTo_CQ", e.RowIndex].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
                     }
+                    ///chọn 1 kỳ cụ thể
+                    else
+                        if (cmbKy.SelectedIndex > 0)
+                        {
+                            dt = _cHoaDon.GetNangSuat_To("CQ", int.Parse(dgvHDCoQuan["MaTo_CQ", e.RowIndex].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                        }
+                }
+                dgvNhanVien.DataSource = dt;
+                CountdgvNhanVien();
             }
-            dgvNhanVien.DataSource = dt;
-            CountdgvNhanVien();
         }
 
         private void dgvNhanVien_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

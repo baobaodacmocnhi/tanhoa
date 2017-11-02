@@ -4526,45 +4526,225 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
-        public DataTable GetPhanTichChuyenKhoan(int MaTo, int Nam)
+        public DataTable GetPhanTichChuyenKhoan(string DichVuThu,int MaTo, int Nam)
         {
             string sql = "declare @Nam int;"
-                    + " declare @MaTo int;"
-                    + " declare @TuCuonGCS int;"
-                    + " declare @DenCuonGCS int;"
-                    + " set @Nam=" + Nam + ";"
-                    + " set @MaTo=" + MaTo + ";"
-                    + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=@MaTo);"
-                    + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=@MaTo);"
-                    + " select MaTo=@MaTo,TenTo=(select TenTo from TT_To where MaTo=@MaTo), TongHDCK=MAX(t1.TongHDCK),TongGiaBanCK=MAX(t1.TongGiaBanCK),TongCongCK=MAX(t1.TongCongCK)"
-                    + " ,TongHDChuaCK=MAX(t1.TongHDChuaCK),TongGiaBanChuaCK=MAX(t1.TongGiaBanChuaCK),TongCongChuaCK=MAX(t1.TongCongChuaCK) from"
-                    + " ((select TongHDCK=COUNT(ID_HOADON),TongGiaBanCK=SUM(GIABAN),TongCongCK=SUM(TONGCONG),TongHDChuaCK=0,TongGiaBanChuaCK=0,TongCongChuaCK=0 from HOADON"
-                    + " where NAM=@Nam and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and NGAYGIAITRACH is not null and DangNgan_ChuyenKhoan=1)"
-                    + " union"
-                    + " (select TongHDCK=0,TongGiaBanCK=0,TongCongCK=0,TongHDChuaCK=COUNT(ID_HOADON),TongGiaBanChuaCK=SUM(GIABAN),TongCongChuaCK=SUM(TONGCONG) from HOADON"
-                    + " where NAM=@Nam and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and NGAYGIAITRACH is not null and DangNgan_ChuyenKhoan=0))t1";
+                     + " declare @MaTo int;"
+                     + " declare @TuCuonGCS int;"
+                     + " declare @DenCuonGCS int;"
+                     + " set @Nam=" + Nam + " ;"
+                     + " set @MaTo=" + MaTo + " ;"
+                     + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=@MaTo);"
+                     + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=@MaTo);"
+                     + " select MaTo=@MaTo,TenTo=(select TenTo from TT_To where MaTo=@MaTo),TongHD=MAX(t1.TongHD),TongHDCK=MAX(t1.TongHDCK),TongGiaBanCK=MAX(t1.TongGiaBanCK),TongCongCK=MAX(t1.TongCongCK)"
+                     + " ,TongHDChuaCK=MAX(t1.TongHDChuaCK),TongGiaBanChuaCK=MAX(t1.TongGiaBanChuaCK),TongCongChuaCK=MAX(t1.TongCongChuaCK) from"
+                     + " ((select TongHD=COUNT(ID_HOADON),TongHDCK=0,TongGiaBanCK=0,TongCongCK=0,TongHDChuaCK=0,TongGiaBanChuaCK=0,TongCongChuaCK=0 from HOADON"
+                     + " where NAM=@Nam and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS)"
+                     + " union"
+                     + " (select TongHD=0,TongHDCK=COUNT(ID_HOADON),TongGiaBanCK=SUM(GIABAN),TongCongCK=SUM(TONGCONG),TongHDChuaCK=0,TongGiaBanChuaCK=0,TongCongChuaCK=0 from HOADON hd,TT_DichVuThu dvt"
+                     + " where hd.ID_HOADON=dvt.MaHD and hd.NAM=@Nam and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and NGAYGIAITRACH is not null and DangNgan_ChuyenKhoan=1 and TenDichVu like '%" + DichVuThu + "%')"
+                     + " union"
+                     + " (select TongHD=0,TongHDCK=0,TongGiaBanCK=0,TongCongCK=0,TongHDChuaCK=COUNT(ID_HOADON),TongGiaBanChuaCK=SUM(GIABAN),TongCongChuaCK=SUM(TONGCONG) from HOADON"
+                     + " where NAM=@Nam and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and NGAYGIAITRACH is not null and DangNgan_ChuyenKhoan=0))t1";
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
-        public DataTable GetPhanTichChuyenKhoan(int MaTo, int Nam, int Ky)
+        public DataTable GetPhanTichChuyenKhoan(string DichVuThu, int MaTo, int Nam, int Ky)
         {
             string sql = "declare @Nam int;"
                     + " declare @Ky int;"
                     + " declare @MaTo int;"
                     + " declare @TuCuonGCS int;"
                     + " declare @DenCuonGCS int;"
-                    + " set @Nam=" + Nam + ";"
-                    + " set @Ky=" + Ky + ";"
-                    + " set @MaTo=" + MaTo + ";"
+                    + " set @Nam=" + Nam + " ;"
+                    + " set @Ky=" + Ky + " ;"
+                    + " set @MaTo=" + MaTo + " ;"
                     + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=@MaTo);"
                     + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=@MaTo);"
-                    + " select MaTo=@MaTo,TenTo=(select TenTo from TT_To where MaTo=@MaTo), TongHDCK=MAX(t1.TongHDCK),TongGiaBanCK=MAX(t1.TongGiaBanCK),TongCongCK=MAX(t1.TongCongCK)"
+                    + " select MaTo=@MaTo,TenTo=(select TenTo from TT_To where MaTo=@MaTo),TongHD=MAX(t1.TongHD),TongHDCK=MAX(t1.TongHDCK),TongGiaBanCK=MAX(t1.TongGiaBanCK),TongCongCK=MAX(t1.TongCongCK)"
                     + " ,TongHDChuaCK=MAX(t1.TongHDChuaCK),TongGiaBanChuaCK=MAX(t1.TongGiaBanChuaCK),TongCongChuaCK=MAX(t1.TongCongChuaCK) from"
-                    + " ((select TongHDCK=COUNT(ID_HOADON),TongGiaBanCK=SUM(GIABAN),TongCongCK=SUM(TONGCONG),TongHDChuaCK=0,TongGiaBanChuaCK=0,TongCongChuaCK=0 from HOADON"
-                    + " where NAM=@Nam and KY=@Ky and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and NGAYGIAITRACH is not null and DangNgan_ChuyenKhoan=1)"
+                    + " ((select TongHD=COUNT(ID_HOADON),TongHDCK=0,TongGiaBanCK=0,TongCongCK=0,TongHDChuaCK=0,TongGiaBanChuaCK=0,TongCongChuaCK=0 from HOADON"
+                    + " where NAM=@Nam and KY=@Ky and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS)"
                     + " union"
-                    + " (select TongHDCK=0,TongGiaBanCK=0,TongCongCK=0,TongHDChuaCK=COUNT(ID_HOADON),TongGiaBanChuaCK=SUM(GIABAN),TongCongChuaCK=SUM(TONGCONG) from HOADON"
+                    + " (select TongHD=0,TongHDCK=COUNT(ID_HOADON),TongGiaBanCK=SUM(GIABAN),TongCongCK=SUM(TONGCONG),TongHDChuaCK=0,TongGiaBanChuaCK=0,TongCongChuaCK=0 from HOADON hd,TT_DichVuThu dvt"
+                    + " where hd.ID_HOADON=dvt.MaHD and hd.NAM=@Nam and hd.KY=@Ky and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and NGAYGIAITRACH is not null and DangNgan_ChuyenKhoan=1 and TenDichVu like '%"+DichVuThu+"%')"
+                    + " union"
+                    + " (select TongHD=0,TongHDCK=0,TongGiaBanCK=0,TongCongCK=0,TongHDChuaCK=COUNT(ID_HOADON),TongGiaBanChuaCK=SUM(GIABAN),TongCongChuaCK=SUM(TONGCONG) from HOADON"
                     + " where NAM=@Nam and KY=@Ky and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and NGAYGIAITRACH is not null and DangNgan_ChuyenKhoan=0))t1";
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+        }
+
+        public DataTable GetPhanTichChuyenKhoan(string DichVuThu, int MaTo, int Nam, DateTime NgayGiaiTrach)
+        {
+            string sql = "declare @Nam int;"
+                     + " declare @MaTo int;"
+                     + " declare @NgayGiaiTrach date;"
+                     + " declare @TuCuonGCS int;"
+                     + " declare @DenCuonGCS int;"
+                     + " set @Nam=" + Nam + " ;"
+                     + " set @MaTo=" + MaTo + " ;"
+                     + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyy-MM-dd") + "';"
+                     + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=@MaTo);"
+                     + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=@MaTo);"
+                     + " select MaTo=@MaTo,TenTo=(select TenTo from TT_To where MaTo=@MaTo),TongHD=MAX(t1.TongHD),TongHDCK=MAX(t1.TongHDCK),TongGiaBanCK=MAX(t1.TongGiaBanCK),TongCongCK=MAX(t1.TongCongCK)"
+                     + " ,TongHDChuaCK=MAX(t1.TongHDChuaCK),TongGiaBanChuaCK=MAX(t1.TongGiaBanChuaCK),TongCongChuaCK=MAX(t1.TongCongChuaCK) from"
+                     + " ((select TongHD=COUNT(ID_HOADON),TongHDCK=0,TongGiaBanCK=0,TongCongCK=0,TongHDChuaCK=0,TongGiaBanChuaCK=0,TongCongChuaCK=0 from HOADON"
+                     + " where NAM=@Nam and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS)"
+                     + " union"
+                     + " (select TongHD=0,TongHDCK=COUNT(ID_HOADON),TongGiaBanCK=SUM(GIABAN),TongCongCK=SUM(TONGCONG),TongHDChuaCK=0,TongGiaBanChuaCK=0,TongCongChuaCK=0 from HOADON hd,TT_DichVuThu dvt"
+                     + " where hd.ID_HOADON=dvt.MaHD and hd.NAM=@Nam and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                     + " and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach and DangNgan_ChuyenKhoan=1 and TenDichVu like '%" + DichVuThu + "%')"
+                     + " union"
+                     + " (select TongHD=0,TongHDCK=0,TongGiaBanCK=0,TongCongCK=0,TongHDChuaCK=COUNT(ID_HOADON),TongGiaBanChuaCK=SUM(GIABAN),TongCongChuaCK=SUM(TONGCONG) from HOADON"
+                     + " where NAM=@Nam and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach and DangNgan_ChuyenKhoan=0))t1";
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+        }
+
+        public DataTable GetPhanTichChuyenKhoan(string DichVuThu, int MaTo, int Nam, int Ky, DateTime NgayGiaiTrach)
+        {
+            string sql = "declare @Nam int;"
+                    + " declare @Ky int;"
+                    + " declare @MaTo int;"
+                    + " declare @NgayGiaiTrach date;"
+                    + " declare @TuCuonGCS int;"
+                    + " declare @DenCuonGCS int;"
+                    + " set @Nam=" + Nam + " ;"
+                    + " set @Ky=" + Ky + " ;"
+                    + " set @MaTo=" + MaTo + " ;"
+                    + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyy-MM-dd") + "';"
+                    + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=@MaTo);"
+                    + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=@MaTo);"
+                    + " select MaTo=@MaTo,TenTo=(select TenTo from TT_To where MaTo=@MaTo),TongHD=MAX(t1.TongHD),TongHDCK=MAX(t1.TongHDCK),TongGiaBanCK=MAX(t1.TongGiaBanCK),TongCongCK=MAX(t1.TongCongCK)"
+                    + " ,TongHDChuaCK=MAX(t1.TongHDChuaCK),TongGiaBanChuaCK=MAX(t1.TongGiaBanChuaCK),TongCongChuaCK=MAX(t1.TongCongChuaCK) from"
+                    + " ((select TongHD=COUNT(ID_HOADON),TongHDCK=0,TongGiaBanCK=0,TongCongCK=0,TongHDChuaCK=0,TongGiaBanChuaCK=0,TongCongChuaCK=0 from HOADON"
+                    + " where NAM=@Nam and KY=@Ky and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS)"
+                    + " union"
+                    + " (select TongHD=0,TongHDCK=COUNT(ID_HOADON),TongGiaBanCK=SUM(GIABAN),TongCongCK=SUM(TONGCONG),TongHDChuaCK=0,TongGiaBanChuaCK=0,TongCongChuaCK=0 from HOADON hd,TT_DichVuThu dvt"
+                    + " where hd.ID_HOADON=dvt.MaHD and hd.NAM=@Nam and hd.KY=@Ky and MAY>=@TuCuonGCS"
+                    + " and MAY<=@DenCuonGCS and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach and DangNgan_ChuyenKhoan=1 and TenDichVu like '%" + DichVuThu + "%')"
+                    + " union"
+                    + " (select TongHD=0,TongHDCK=0,TongGiaBanCK=0,TongCongCK=0,TongHDChuaCK=COUNT(ID_HOADON),TongGiaBanChuaCK=SUM(GIABAN),TongCongChuaCK=SUM(TONGCONG) from HOADON"
+                    + " where NAM=@Nam and KY=@Ky and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach and DangNgan_ChuyenKhoan=0))t1";
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+        }
+
+        public DataTable GetPhanTichChuyenKhoan_NV(string DichVuThu, int MaTo, int Nam)
+        {
+            string sql = "declare @Nam int;"
+                    + " declare @MaTo int;"
+                    + " declare @TuCuonGCS int;"
+                    + " declare @DenCuonGCS int;"
+                    + " set @Nam=" + Nam + " ;"
+                    + " set @MaTo=" + MaTo + " ;"
+                    + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=@MaTo);"
+                    + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=@MaTo);"
+                    + " select *,HoTen=(select HoTen from TT_NguoiDung where MaND=ck.MaNV_HanhThu) from"
+                    + " (select MaNV_HanhThu,TongHD=COUNT(ID_HOADON) from HOADON"
+                    + " where NAM=@Nam and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                    + " group by MaNV_HanhThu)hd"
+                    + " left join"
+                    + " (select MaNV_HanhThu,TongHDCK=COUNT(ID_HOADON),TongGiaBanCK=SUM(GIABAN),TongCongCK=SUM(TONGCONG) from HOADON hd,TT_DichVuThu dvt"
+                    + " where hd.ID_HOADON=dvt.MaHD and hd.NAM=@Nam and DangNgan_ChuyenKhoan=1 and TenDichVu like '%" + DichVuThu + "%'"
+                    + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and NGAYGIAITRACH is not null"
+                    + " group by MaNV_HanhThu)ck on ck.MaNV_HanhThu=hd.MaNV_HanhThu"
+                    + " left join"
+                    + " (select MaNV_HanhThu,TongHDChuaCK=COUNT(ID_HOADON),TongGiaBanChuaCK=SUM(GIABAN),TongCongChuaCK=SUM(TONGCONG) from HOADON"
+                    + " where NAM=@Nam and DangNgan_ChuyenKhoan=0"
+                    + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and NGAYGIAITRACH is not null"
+                    + " group by MaNV_HanhThu)chuack on chuack.MaNV_HanhThu=hd.MaNV_HanhThu"
+                    + " order by ck.MaNV_HanhThu";
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+        }
+
+        public DataTable GetPhanTichChuyenKhoan_NV(string DichVuThu, int MaTo, int Nam, int Ky)
+        {
+            string sql = "declare @Nam int;"
+                    + " declare @Ky int;"
+                    + " declare @MaTo int;"
+                    + " declare @TuCuonGCS int;"
+                    + " declare @DenCuonGCS int;"
+                    + " set @Nam=" + Nam + " ;"
+                    + " set @Ky=" + Ky + " ;"
+                    + " set @MaTo=" + MaTo + " ;"
+                    + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=@MaTo);"
+                    + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=@MaTo);"
+                    + " select *,HoTen=(select HoTen from TT_NguoiDung where MaND=ck.MaNV_HanhThu) from"
+                    + " (select MaNV_HanhThu,TongHD=COUNT(ID_HOADON) from HOADON"
+                    + " where NAM=@Nam and KY=@Ky and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                    + " group by MaNV_HanhThu)hd"
+                    + " left join"
+                    + " (select MaNV_HanhThu,TongHDCK=COUNT(ID_HOADON),TongGiaBanCK=SUM(GIABAN),TongCongCK=SUM(TONGCONG) from HOADON hd,TT_DichVuThu dvt"
+                    + " where hd.ID_HOADON=dvt.MaHD and hd.NAM=@Nam and hd.KY=@Ky and DangNgan_ChuyenKhoan=1 and TenDichVu like '%" + DichVuThu + "%'"
+                    + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and NGAYGIAITRACH is not null"
+                    + " group by MaNV_HanhThu)ck on ck.MaNV_HanhThu=hd.MaNV_HanhThu"
+                    + " left join"
+                    + " (select MaNV_HanhThu,TongHDChuaCK=COUNT(ID_HOADON),TongGiaBanChuaCK=SUM(GIABAN),TongCongChuaCK=SUM(TONGCONG) from HOADON"
+                    + " where NAM=@Nam and KY=@Ky and DangNgan_ChuyenKhoan=0"
+                    + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and NGAYGIAITRACH is not null"
+                    + " group by MaNV_HanhThu)chuack on chuack.MaNV_HanhThu=hd.MaNV_HanhThu"
+                    + " order by ck.MaNV_HanhThu";
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+        }
+
+        public DataTable GetPhanTichChuyenKhoan_NV(string DichVuThu, int MaTo, int Nam, DateTime NgayGiaiTrach)
+        {
+            string sql = "declare @Nam int;"
+                    + " declare @MaTo int;"
+                    + " declare @NgayGiaiTrach date;"
+                    + " declare @TuCuonGCS int;"
+                    + " declare @DenCuonGCS int;"
+                    + " set @Nam=" + Nam + " ;"
+                    + " set @MaTo=" + MaTo + " ;"
+                    + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyy-MM-dd") + "';"
+                    + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=@MaTo);"
+                    + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=@MaTo);"
+                    + " select *,HoTen=(select HoTen from TT_NguoiDung where MaND=ck.MaNV_HanhThu) from"
+                    + " (select MaNV_HanhThu,TongHD=COUNT(ID_HOADON) from HOADON"
+                    + " where NAM=@Nam and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                    + " group by MaNV_HanhThu)hd"
+                    + " left join"
+                    + " (select MaNV_HanhThu,TongHDCK=COUNT(ID_HOADON),TongGiaBanCK=SUM(GIABAN),TongCongCK=SUM(TONGCONG) from HOADON hd,TT_DichVuThu dvt"
+                    + " where hd.ID_HOADON=dvt.MaHD and hd.NAM=@Nam and DangNgan_ChuyenKhoan=1 and TenDichVu like '%" + DichVuThu + "%'"
+                    + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach"
+                    + " group by MaNV_HanhThu)ck on ck.MaNV_HanhThu=hd.MaNV_HanhThu"
+                    + " left join"
+                    + " (select MaNV_HanhThu,TongHDChuaCK=COUNT(ID_HOADON),TongGiaBanChuaCK=SUM(GIABAN),TongCongChuaCK=SUM(TONGCONG) from HOADON"
+                    + " where NAM=@Nam and DangNgan_ChuyenKhoan=0"
+                    + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach"
+                    + " group by MaNV_HanhThu)chuack on chuack.MaNV_HanhThu=hd.MaNV_HanhThu"
+                    + " order by ck.MaNV_HanhThu";
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+        }
+
+        public DataTable GetPhanTichChuyenKhoan_NV(string DichVuThu, int MaTo, int Nam, int Ky, DateTime NgayGiaiTrach)
+        {
+            string sql = "declare @Nam int;"
+                    + " declare @Ky int;"
+                    + " declare @MaTo int;"
+                    + " declare @NgayGiaiTrach date;"
+                    + " declare @TuCuonGCS int;"
+                    + " declare @DenCuonGCS int;"
+                    + " set @Nam=" + Nam + " ;"
+                    + " set @Ky=" + Ky + " ;"
+                    + " set @MaTo=" + MaTo + " ;"
+                    + " set @NgayGiaiTrach='"+NgayGiaiTrach.ToString("yyyy-MM-dd")+"';"
+                    + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=@MaTo);"
+                    + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=@MaTo);"
+                    + " select *,HoTen=(select HoTen from TT_NguoiDung where MaND=ck.MaNV_HanhThu) from"
+                    + " (select MaNV_HanhThu,TongHD=COUNT(ID_HOADON) from HOADON"
+                    + " where NAM=@Nam and KY=@Ky and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                    + " group by MaNV_HanhThu)hd"
+                    + " left join"
+                    + " (select MaNV_HanhThu,TongHDCK=COUNT(ID_HOADON),TongGiaBanCK=SUM(GIABAN),TongCongCK=SUM(TONGCONG) from HOADON hd,TT_DichVuThu dvt"
+                    + " where hd.ID_HOADON=dvt.MaHD and hd.NAM=@Nam and hd.KY=@Ky and DangNgan_ChuyenKhoan=1 and TenDichVu like '%" + DichVuThu + "%'"
+                    + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach"
+                    + " group by MaNV_HanhThu)ck on ck.MaNV_HanhThu=hd.MaNV_HanhThu"
+                    + " left join"
+                    + " (select MaNV_HanhThu,TongHDChuaCK=COUNT(ID_HOADON),TongGiaBanChuaCK=SUM(GIABAN),TongCongChuaCK=SUM(TONGCONG) from HOADON"
+                    + " where NAM=@Nam and KY=@Ky and DangNgan_ChuyenKhoan=0"
+                    + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach"
+                    + " group by MaNV_HanhThu)chuack on chuack.MaNV_HanhThu=hd.MaNV_HanhThu"
+                    + " order by ck.MaNV_HanhThu";
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 

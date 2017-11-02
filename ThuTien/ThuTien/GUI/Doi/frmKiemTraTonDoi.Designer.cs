@@ -163,7 +163,7 @@
             this.dgvHDCoQuan.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHDCoQuan.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvHDCoQuan.Size = new System.Drawing.Size(1243, 150);
+            this.dgvHDCoQuan.Size = new System.Drawing.Size(1220, 150);
             this.dgvHDCoQuan.TabIndex = 1;
             this.dgvHDCoQuan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHDCoQuan_CellContentClick);
             this.dgvHDCoQuan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHDCoQuan_CellFormatting);
@@ -297,7 +297,7 @@
             this.tabTuGia.Location = new System.Drawing.Point(4, 22);
             this.tabTuGia.Name = "tabTuGia";
             this.tabTuGia.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTuGia.Size = new System.Drawing.Size(1255, 181);
+            this.tabTuGia.Size = new System.Drawing.Size(1232, 181);
             this.tabTuGia.TabIndex = 0;
             this.tabTuGia.Text = "Tư Gia";
             this.tabTuGia.UseVisualStyleBackColor = true;
@@ -408,7 +408,7 @@
             this.dgvHDTuGia.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHDTuGia.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvHDTuGia.Size = new System.Drawing.Size(1243, 150);
+            this.dgvHDTuGia.Size = new System.Drawing.Size(1220, 150);
             this.dgvHDTuGia.TabIndex = 0;
             this.dgvHDTuGia.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHDTuGia_CellContentClick);
             this.dgvHDTuGia.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHDTuGia_CellFormatting);
@@ -543,7 +543,7 @@
             this.tabControl.Location = new System.Drawing.Point(12, 88);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1263, 207);
+            this.tabControl.Size = new System.Drawing.Size(1240, 207);
             this.tabControl.TabIndex = 38;
             // 
             // tabCoQuan
@@ -560,7 +560,7 @@
             this.tabCoQuan.Location = new System.Drawing.Point(4, 22);
             this.tabCoQuan.Name = "tabCoQuan";
             this.tabCoQuan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCoQuan.Size = new System.Drawing.Size(1255, 181);
+            this.tabCoQuan.Size = new System.Drawing.Size(1232, 181);
             this.tabCoQuan.TabIndex = 1;
             this.tabCoQuan.Text = "Cơ Quan";
             this.tabCoQuan.UseVisualStyleBackColor = true;
@@ -739,7 +739,7 @@
             this.dgvNhanVien.ReadOnly = true;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvNhanVien.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvNhanVien.Size = new System.Drawing.Size(1243, 350);
+            this.dgvNhanVien.Size = new System.Drawing.Size(1220, 350);
             this.dgvNhanVien.TabIndex = 19;
             this.dgvNhanVien.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvNhanVien_CellFormatting);
             this.dgvNhanVien.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvNhanVien_RowPostPaint);
@@ -1011,7 +1011,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1315, 742);
+            this.ClientSize = new System.Drawing.Size(1258, 661);
             this.Controls.Add(this.btnBaoCao);
             this.Controls.Add(this.chkTrongKy);
             this.Controls.Add(this.chkDenKy);
