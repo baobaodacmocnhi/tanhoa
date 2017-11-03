@@ -76,11 +76,11 @@ namespace ThuTien.GUI.ChuyenKhoan
                 else
                     ///chọn tất cả nhân viên
                     if (cmbNhanVien.SelectedIndex == 0)
-                        dgvDichVuThu.DataSource = _cDichVuThu.GetDS(int.Parse(cmbTo.SelectedValue.ToString()), cmbDichVuThu.SelectedValue.ToString(), dateTu.Value, dateDen.Value);
+                        dgvDichVuThu.DataSource = _cDichVuThu.GetDS(cmbDichVuThu.SelectedValue.ToString(), int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
                     else
                         ///chọn 1 nhân viên cụ thể
                         if (cmbNhanVien.SelectedIndex > 0)
-                            dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), cmbDichVuThu.SelectedValue.ToString(), dateTu.Value, dateDen.Value);
+                            dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV(cmbDichVuThu.SelectedValue.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
             }
             else
                 if (cmbFromDot.SelectedIndex > 0)
@@ -92,11 +92,11 @@ namespace ThuTien.GUI.ChuyenKhoan
                     else
                         ///chọn tất cả nhân viên
                         if (cmbNhanVien.SelectedIndex == 0)
-                            dgvDichVuThu.DataSource = _cDichVuThu.GetDS(int.Parse(cmbTo.SelectedValue.ToString()), cmbDichVuThu.SelectedValue.ToString(), dateTu.Value, dateDen.Value, int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
+                            dgvDichVuThu.DataSource = _cDichVuThu.GetDS(cmbDichVuThu.SelectedValue.ToString(), int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value, int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
                         else
                             ///chọn 1 nhân viên cụ thể
                             if (cmbNhanVien.SelectedIndex > 0)
-                                dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), cmbDichVuThu.SelectedValue.ToString(), dateTu.Value, dateDen.Value, int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
+                                dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV(cmbDichVuThu.SelectedValue.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString()), dateTu.Value, dateDen.Value, int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
                 }
 
             long TongSoTien = 0;
