@@ -33,6 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtGhiChuMN = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
             this.txtChiSoMN = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.dateMoNuoc = new System.Windows.Forms.DateTimePicker();
@@ -94,8 +96,6 @@
             this.txtGhiChuTroNgai = new System.Windows.Forms.TextBox();
             this.btnCapNhat = new System.Windows.Forms.Button();
             this.btnInDS = new System.Windows.Forms.Button();
-            this.txtGhiChuMN = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
             this.In = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MaDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -159,6 +159,23 @@
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kết Quả Đóng Nước";
+            // 
+            // txtGhiChuMN
+            // 
+            this.txtGhiChuMN.Location = new System.Drawing.Point(288, 72);
+            this.txtGhiChuMN.Name = "txtGhiChuMN";
+            this.txtGhiChuMN.ReadOnly = true;
+            this.txtGhiChuMN.Size = new System.Drawing.Size(89, 20);
+            this.txtGhiChuMN.TabIndex = 37;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(221, 75);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(68, 13);
+            this.label22.TabIndex = 36;
+            this.label22.Text = "Ghi Chú MN:";
             // 
             // txtChiSoMN
             // 
@@ -804,23 +821,6 @@
             this.btnInDS.UseVisualStyleBackColor = true;
             this.btnInDS.Click += new System.EventHandler(this.btnInDS_Click);
             // 
-            // txtGhiChuMN
-            // 
-            this.txtGhiChuMN.Location = new System.Drawing.Point(288, 72);
-            this.txtGhiChuMN.Name = "txtGhiChuMN";
-            this.txtGhiChuMN.ReadOnly = true;
-            this.txtGhiChuMN.Size = new System.Drawing.Size(89, 20);
-            this.txtGhiChuMN.TabIndex = 37;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(221, 75);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(68, 13);
-            this.label22.TabIndex = 36;
-            this.label22.Text = "Ghi Chú MN:";
-            // 
             // In
             // 
             this.In.DataPropertyName = "In";
@@ -836,7 +836,7 @@
             this.MaDN.DataPropertyName = "MaDN";
             this.MaDN.HeaderText = "Mã TB";
             this.MaDN.Name = "MaDN";
-            this.MaDN.Width = 50;
+            this.MaDN.Width = 70;
             // 
             // CreateDate
             // 
@@ -898,12 +898,14 @@
             this.NgayDN.DataPropertyName = "NgayDN";
             this.NgayDN.HeaderText = "Ngày ĐN";
             this.NgayDN.Name = "NgayDN";
+            this.NgayDN.Width = 80;
             // 
             // NgayMN
             // 
             this.NgayMN.DataPropertyName = "NgayMN";
             this.NgayMN.HeaderText = "Ngày MN";
             this.NgayMN.Name = "NgayMN";
+            this.NgayMN.Width = 80;
             // 
             // GhiChuMN
             // 

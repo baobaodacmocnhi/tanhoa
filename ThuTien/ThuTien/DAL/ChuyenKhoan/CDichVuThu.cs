@@ -274,6 +274,24 @@ namespace ThuTien.DAL.ChuyenKhoan
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
+        public DataTable GetBienDongChuyenKhoan(string TenDichVu, int MaTo, int Nam, int Ky)
+        {
+            string sql = "declare @MaTo int;"
+                    + " declare @Nam int;"
+                    + " declare @Ky int;"
+                    + " set @MaTo="+MaTo+";"
+                    + " set @Nam="+Nam+";"
+                    + " set @Ky=" + Ky + ";"
+                    + " select Ky=@Ky-1,TongHDCK=COUNT(*) from TT_DichVuThu dvt,HOADON hd"
+                    + " where dvt.Nam=@Nam and dvt.Ky=@Ky-1 and dvt.TenDichVu like '%"+TenDichVu+"%' and hd.ID_HOADON=dvt.MaHD"
+                    + " and MAY>=(select TuCuonGCS from TT_To where MaTo=@MaTo) and MAY<=(select DenCuonGCS from TT_To where MaTo=@MaTo) and DangNgan_ChuyenKhoan=1 and NGAYGIAITRACH is not null"
+                    + " union"
+                    + " select Ky=@Ky,TongHDCK=COUNT(*) from TT_DichVuThu dvt,HOADON hd"
+                    + " where dvt.Nam=@Nam and dvt.Ky=@Ky and dvt.TenDichVu like '%" + TenDichVu + "%' and hd.ID_HOADON=dvt.MaHD"
+                    + " and MAY>=(select TuCuonGCS from TT_To where MaTo=@MaTo) and MAY<=(select DenCuonGCS from TT_To where MaTo=@MaTo) and DangNgan_ChuyenKhoan=1 and NGAYGIAITRACH is not null";
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+        }
+
         public DataTable GetDS(string TenDichVu, int MaTo, int Nam, int Ky, int FromDot, int ToDot)
         {
             string sql = "declare @MaTo int;"
@@ -313,6 +331,24 @@ namespace ThuTien.DAL.ChuyenKhoan
                     + " where dvt.Nam=" + Nam + " and dvt.Ky=" + Ky + " and dvt.TenDichVu like '%" + TenDichVu + "%' and hd.ID_HOADON=dvt.MaHD"
                     + " and MaNV_HanhThu=@MaNV_HanhThu and DangNgan_ChuyenKhoan=1 and NGAYGIAITRACH is not null"
                     + " order by MALOTRINH asc";
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+        }
+
+        public DataTable GetBienDongChuyenKhoan_NV(string TenDichVu, int MaNV_HanhThu, int Nam, int Ky)
+        {
+            string sql = "declare @MaNV_HanhThu int;"
+                    + " declare @Nam int;"
+                    + " declare @Ky int;"
+                    + " set @MaNV_HanhThu=" + MaNV_HanhThu + ";"
+                    + " set @Nam="+Nam+";"
+                    + " set @Ky="+Ky+";"
+                    + " select Ky=@Ky-1,TongHDCK=COUNT(*) from TT_DichVuThu dvt,HOADON hd"
+                    + " where dvt.Nam=@Nam and dvt.Ky=@Ky-1 and dvt.TenDichVu like '%" + TenDichVu + "%' and hd.ID_HOADON=dvt.MaHD"
+                    + " and MaNV_HanhThu=@MaNV_HanhThu and DangNgan_ChuyenKhoan=1 and NGAYGIAITRACH is not null"
+                    + " union"
+                    + " select Ky=@Ky,TongHDCK=COUNT(*) from TT_DichVuThu dvt,HOADON hd"
+                    + " where dvt.Nam=@Nam and dvt.Ky=@Ky and dvt.TenDichVu like '%" + TenDichVu + "%' and hd.ID_HOADON=dvt.MaHD"
+                    + " and MaNV_HanhThu=@MaNV_HanhThu and DangNgan_ChuyenKhoan=1 and NGAYGIAITRACH is not null";
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 

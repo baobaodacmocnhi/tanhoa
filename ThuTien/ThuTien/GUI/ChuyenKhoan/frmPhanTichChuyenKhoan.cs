@@ -55,6 +55,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             cmbNam_PhanTich.ValueMember = "Nam";
 
             dgvDichVuThu.AutoGenerateColumns = false;
+            dgvBienDong_HD.AutoGenerateColumns = false;
 
             cmbDichVuThu_HD.DataSource = dtDichVuThu;
             cmbDichVuThu_HD.DisplayMember = "TenDichVu";
@@ -392,7 +393,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                             if (cmbKy_HD.SelectedIndex > 0)
                                 ///chọn tất cả đợt
                                 if (cmbFromDot.SelectedIndex == 0)
+                                {
                                     dgvDichVuThu.DataSource = _cDichVuThu.GetDS(cmbDichVuThu_HD.SelectedValue.ToString(), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()));
+                                    dgvBienDong_HD.DataSource = _cDichVuThu.GetBienDongChuyenKhoan(cmbDichVuThu_HD.SelectedValue.ToString(), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()));
+                                }
                                 else
                                     ///chọn từ đợt đến đợt
                                     if (cmbFromDot.SelectedIndex > 0)

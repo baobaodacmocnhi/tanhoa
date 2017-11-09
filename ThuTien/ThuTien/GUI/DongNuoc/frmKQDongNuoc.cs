@@ -797,12 +797,14 @@ namespace ThuTien.GUI.DongNuoc
                 {
                     dr["Loai"] = "ĐÓNG NƯỚC";
                     dr["NgayDongMoNuoc"] = item.Cells["NgayDN"].Value;
+                    dr["NgayMoNuoc"] = item.Cells["NgayMN"].Value;
                 }
                 else
                     if (radMoNuoc.Checked)
                     {
                         dr["Loai"] = "MỞ NƯỚC";
-                        dr["NgayDongMoNuoc"] = item.Cells["NgayMN"].Value;
+                        dr["NgayDongMoNuoc"] = item.Cells["NgayDN"].Value;
+                        dr["NgayMoNuoc"] = item.Cells["NgayMN"].Value;
                     }
 
                 dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
