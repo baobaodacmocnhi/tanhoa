@@ -308,6 +308,7 @@ namespace KTKS_DonKH.DAL.DonTu
         public DataTable GetDSChuyen_KTXM(string Loai, DateTime FromNgayChuyen, DateTime ToNgayChuyen)
         {
             DataTable dt = new DataTable();
+            db.CommandTimeout = 300;
             switch (Loai)
             {
                 case "TKH":

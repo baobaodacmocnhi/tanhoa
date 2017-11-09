@@ -121,7 +121,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                     dr["ChiTiet"] += "Định Mức, ";
                 if (donkh.LoaiKhac)
                     dr["ChiTiet"] += donkh.LyDoLoaiKhac + ", ";
-                if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()) && itemRow["DanhBo"].ToString().Trim().Length==11)
                     dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                 dr["HoTen"] = itemRow["HoTen"];
                 dr["DiaChi"] = itemRow["DiaChi"];
