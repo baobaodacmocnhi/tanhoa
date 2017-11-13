@@ -91,6 +91,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgvBienDong_HD = new System.Windows.Forms.DataGridView();
+            this.Ky_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongHD_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BienDong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtTongSoTien_HD = new System.Windows.Forms.TextBox();
             this.txtTongHD_HD = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -121,9 +124,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.cmbDichVuThu_HD = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.Ky_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongHD_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BienDong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien_PhanTich)).BeginInit();
@@ -699,8 +699,29 @@
             this.dgvBienDong_HD.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvBienDong_HD.RowsDefaultCellStyle = dataGridViewCellStyle12;
-            this.dgvBienDong_HD.Size = new System.Drawing.Size(215, 200);
+            this.dgvBienDong_HD.Size = new System.Drawing.Size(215, 545);
             this.dgvBienDong_HD.TabIndex = 119;
+            // 
+            // Ky_BD
+            // 
+            this.Ky_BD.DataPropertyName = "Ky";
+            this.Ky_BD.HeaderText = "Kỳ";
+            this.Ky_BD.Name = "Ky_BD";
+            this.Ky_BD.Width = 50;
+            // 
+            // TongHD_BD
+            // 
+            this.TongHD_BD.DataPropertyName = "TongHDCK";
+            this.TongHD_BD.HeaderText = "Tổng HĐ";
+            this.TongHD_BD.Name = "TongHD_BD";
+            this.TongHD_BD.Width = 60;
+            // 
+            // BienDong
+            // 
+            this.BienDong.DataPropertyName = "BienDong";
+            this.BienDong.HeaderText = "Biến Động";
+            this.BienDong.Name = "BienDong";
+            this.BienDong.Width = 60;
             // 
             // txtTongSoTien_HD
             // 
@@ -1038,27 +1059,6 @@
             this.label9.Size = new System.Drawing.Size(92, 13);
             this.label9.TabIndex = 101;
             this.label9.Text = "Tên Dịch Vụ Thu:";
-            // 
-            // Ky_BD
-            // 
-            this.Ky_BD.DataPropertyName = "Ky";
-            this.Ky_BD.HeaderText = "Kỳ";
-            this.Ky_BD.Name = "Ky_BD";
-            this.Ky_BD.Width = 50;
-            // 
-            // TongHD_BD
-            // 
-            this.TongHD_BD.DataPropertyName = "TongHDCK";
-            this.TongHD_BD.HeaderText = "Tổng HĐ";
-            this.TongHD_BD.Name = "TongHD_BD";
-            this.TongHD_BD.Width = 60;
-            // 
-            // BienDong
-            // 
-            this.BienDong.DataPropertyName = "BienDong";
-            this.BienDong.HeaderText = "Biến Động";
-            this.BienDong.Name = "BienDong";
-            this.BienDong.Width = 60;
             // 
             // frmPhanTichChuyenKhoan
             // 

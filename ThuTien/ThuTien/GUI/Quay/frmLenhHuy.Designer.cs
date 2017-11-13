@@ -66,12 +66,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.radTon = new System.Windows.Forms.RadioButton();
             this.radDangNgan = new System.Windows.Forms.RadioButton();
+            this.cmbNam = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.SuspendLayout();
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(602, 5);
+            this.btnIn.Location = new System.Drawing.Point(706, 5);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(81, 23);
             this.btnIn.TabIndex = 19;
@@ -274,7 +276,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(521, 5);
+            this.btnXem.Location = new System.Drawing.Point(625, 5);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 25;
@@ -286,7 +288,7 @@
             // 
             this.dateLap.CustomFormat = "dd/MM/yyyy";
             this.dateLap.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateLap.Location = new System.Drawing.Point(908, 7);
+            this.dateLap.Location = new System.Drawing.Point(1146, 5);
             this.dateLap.Name = "dateLap";
             this.dateLap.Size = new System.Drawing.Size(100, 20);
             this.dateLap.TabIndex = 24;
@@ -295,7 +297,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(846, 10);
+            this.label1.Location = new System.Drawing.Point(1084, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 23;
@@ -329,7 +331,7 @@
             // 
             // btnInDSKhongTrung
             // 
-            this.btnInDSKhongTrung.Location = new System.Drawing.Point(689, 5);
+            this.btnInDSKhongTrung.Location = new System.Drawing.Point(793, 5);
             this.btnInDSKhongTrung.Name = "btnInDSKhongTrung";
             this.btnInDSKhongTrung.Size = new System.Drawing.Size(90, 23);
             this.btnInDSKhongTrung.TabIndex = 39;
@@ -404,11 +406,30 @@
             this.radDangNgan.Text = "Đăng Ngân";
             this.radDangNgan.UseVisualStyleBackColor = true;
             // 
+            // cmbNam
+            // 
+            this.cmbNam.FormattingEnabled = true;
+            this.cmbNam.Location = new System.Drawing.Point(559, 6);
+            this.cmbNam.Name = "cmbNam";
+            this.cmbNam.Size = new System.Drawing.Size(60, 21);
+            this.cmbNam.TabIndex = 108;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(521, 9);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(32, 13);
+            this.label7.TabIndex = 107;
+            this.label7.Text = "Năm:";
+            // 
             // frmLenhHuy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1360, 638);
+            this.Controls.Add(this.cmbNam);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.radDangNgan);
             this.Controls.Add(this.radTon);
             this.Controls.Add(this.cmbTo);
@@ -476,5 +497,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DangNgan;
         private System.Windows.Forms.RadioButton radTon;
         private System.Windows.Forms.RadioButton radDangNgan;
+        private System.Windows.Forms.ComboBox cmbNam;
+        private System.Windows.Forms.Label label7;
     }
 }

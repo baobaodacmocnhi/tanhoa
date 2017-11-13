@@ -107,14 +107,13 @@ namespace ThuTien.GUI.ToTruong
         private void btnXem_LH_Click(object sender, EventArgs e)
         {
             DataTable dtLH = _cLenhHuy.GetDSDanhBoTon(CNguoiDung.MaTo);
-            DataTable dtHD = new DataTable();
-            DataTable dtHD2 = new DataTable();
-
+            DataTable dtHD = new DataTable(); 
+            
             if (cmbDot.SelectedIndex == 0)
-                dtHD = dtHD2 = _cHoaDon.GetDSTon_CoTieuThu(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                dtHD =  _cHoaDon.GetDSTon_CoTieuThu(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
             else
                 if (cmbDot.SelectedIndex > 0)
-                    dtHD = dtHD2 = _cHoaDon.GetDSTon_CoTieuThu(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                    dtHD = _cHoaDon.GetDSTon_CoTieuThu(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
             
             List<DataRow> RowsToDelete = new List<DataRow>();
 
@@ -130,8 +129,16 @@ namespace ThuTien.GUI.ToTruong
                 dtHD.Rows.Remove(dr);
             }
             dgvHoaDon_LH.DataSource = dtHD;
+
             /////////////////
+           
             DataTable dtLL = _cDongNuoc.GetDSCTDongNuocTon(CNguoiDung.MaTo);
+            DataTable dtHD2 = new DataTable();
+            if (cmbDot.SelectedIndex == 0)
+                dtHD2 = _cHoaDon.GetDSTon_CoTieuThu(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+            else
+                if (cmbDot.SelectedIndex > 0)
+                    dtHD2 = _cHoaDon.GetDSTon_CoTieuThu(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
             RowsToDelete = new List<DataRow>();
 
             for (int i = 0; i < dtHD2.Rows.Count; i++)

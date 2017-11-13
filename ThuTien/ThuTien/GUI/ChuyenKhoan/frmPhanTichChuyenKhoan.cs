@@ -363,15 +363,26 @@ namespace ThuTien.GUI.ChuyenKhoan
                 DataTable dt = new DataTable();
                 ///chọn tất cả kỳ
                 if (cmbKy_HD.SelectedIndex == 0)
+                {
                     for (int i = 1; i < cmbTo_HD.Items.Count; i++)
                         dt.Merge(_cDichVuThu.GetDS(cmbDichVuThu_HD.SelectedValue.ToString(), ((TT_To)cmbTo_HD.Items[i]).MaTo, int.Parse(cmbNam_HD.SelectedValue.ToString())));
+                    DataTable dtBD = new DataTable();
+                    for (int i = 1; i <= 12; i++)
+                    {
+                        dtBD.Merge(_cDichVuThu.GetBienDongChuyenKhoan(cmbDichVuThu_HD.SelectedValue.ToString(), int.Parse(cmbNam_HD.SelectedValue.ToString()), i));
+                    }
+                    dgvBienDong_HD.DataSource = dtBD;
+                }
                 else
                     ///chọn 1 kỳ
                     if (cmbKy_HD.SelectedIndex > 0)
                         ///chọn tất cả đợt
                         if (cmbFromDot.SelectedIndex == 0)
+                        {
                             for (int i = 1; i < cmbTo_HD.Items.Count; i++)
                                 dt.Merge(_cDichVuThu.GetDS(cmbDichVuThu_HD.SelectedValue.ToString(), ((TT_To)cmbTo_HD.Items[i]).MaTo, int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString())));
+                            dgvBienDong_HD.DataSource = _cDichVuThu.GetBienDongChuyenKhoan(cmbDichVuThu_HD.SelectedValue.ToString(), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()));
+                        }
                         else
                             ///chọn từ đợt đến đợt
                             if (cmbFromDot.SelectedIndex > 0)
@@ -387,7 +398,15 @@ namespace ThuTien.GUI.ChuyenKhoan
                     {
                         ///chọn tất cả kỳ
                         if (cmbKy_HD.SelectedIndex == 0)
+                        {
                             dgvDichVuThu.DataSource = _cDichVuThu.GetDS(cmbDichVuThu_HD.SelectedValue.ToString(), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()));
+                            DataTable dt = new DataTable();
+                            for (int i = 1; i <= 12; i++)
+                            {
+                                dt.Merge(_cDichVuThu.GetBienDongChuyenKhoan(cmbDichVuThu_HD.SelectedValue.ToString(), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), i));
+                            }
+                            dgvBienDong_HD.DataSource = dt;
+                        }
                         else
                             ///chọn 1 kỳ
                             if (cmbKy_HD.SelectedIndex > 0)
@@ -408,13 +427,24 @@ namespace ThuTien.GUI.ChuyenKhoan
                         {
                             ///chọn tất cả kỳ
                             if (cmbKy_HD.SelectedIndex == 0)
+                            {
                                 dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV(cmbDichVuThu_HD.SelectedValue.ToString(), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()));
+                                DataTable dt = new DataTable();
+                                for (int i = 1; i <= 12; i++)
+                                {
+                                    dt.Merge(_cDichVuThu.GetBienDongChuyenKhoan_NV(cmbDichVuThu_HD.SelectedValue.ToString(), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), i));
+                                }
+                                dgvBienDong_HD.DataSource = dt;
+                            }
                             else
                                 ///chọn 1 kỳ
                                 if (cmbKy_HD.SelectedIndex > 0)
                                     ///chọn tất cả đợt
                                     if (cmbFromDot.SelectedIndex == 0)
+                                    {
                                         dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV(cmbDichVuThu_HD.SelectedValue.ToString(), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()));
+                                        dgvBienDong_HD.DataSource = _cDichVuThu.GetBienDongChuyenKhoan_NV(cmbDichVuThu_HD.SelectedValue.ToString(), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()));
+                                    }
                                     else
                                         ///chọn từ đợt đến đợt
                                         if (cmbFromDot.SelectedIndex > 0)

@@ -54,11 +54,6 @@
             this.cmbTo = new System.Windows.Forms.ComboBox();
             this.lbTo = new System.Windows.Forms.Label();
             this.dgvHoaDon_LH = new System.Windows.Forms.DataGridView();
-            this.MLT_LH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo_LH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ky_LH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongCong_LH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HanhThu_LH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmbDot = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbKy = new System.Windows.Forms.ComboBox();
@@ -69,6 +64,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dgvHoaDon_LL = new System.Windows.Forms.DataGridView();
+            this.MLT_LH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo_LH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ky_LH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongCong_LH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HanhThu_LH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MLT_LL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo_LL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky_LL = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -255,42 +255,9 @@
             this.dgvHoaDon_LH.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHoaDon_LH.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvHoaDon_LH.Size = new System.Drawing.Size(447, 250);
+            this.dgvHoaDon_LH.Size = new System.Drawing.Size(447, 200);
             this.dgvHoaDon_LH.TabIndex = 49;
             this.dgvHoaDon_LH.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_LH_CellFormatting);
-            // 
-            // MLT_LH
-            // 
-            this.MLT_LH.DataPropertyName = "MLT";
-            this.MLT_LH.HeaderText = "MLT";
-            this.MLT_LH.Name = "MLT_LH";
-            this.MLT_LH.Width = 80;
-            // 
-            // DanhBo_LH
-            // 
-            this.DanhBo_LH.DataPropertyName = "DanhBo";
-            this.DanhBo_LH.HeaderText = "Danh Bộ";
-            this.DanhBo_LH.Name = "DanhBo_LH";
-            // 
-            // Ky_LH
-            // 
-            this.Ky_LH.DataPropertyName = "Ky";
-            this.Ky_LH.HeaderText = "Kỳ";
-            this.Ky_LH.Name = "Ky_LH";
-            this.Ky_LH.Width = 50;
-            // 
-            // TongCong_LH
-            // 
-            this.TongCong_LH.DataPropertyName = "TongCong";
-            this.TongCong_LH.HeaderText = "Tổng Cộng";
-            this.TongCong_LH.Name = "TongCong_LH";
-            this.TongCong_LH.Width = 80;
-            // 
-            // HanhThu_LH
-            // 
-            this.HanhThu_LH.DataPropertyName = "HanhThu";
-            this.HanhThu_LH.HeaderText = "Hành Thu";
-            this.HanhThu_LH.Name = "HanhThu_LH";
             // 
             // cmbDot
             // 
@@ -400,11 +367,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(911, 310);
+            this.label4.Location = new System.Drawing.Point(911, 260);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(173, 13);
+            this.label4.Size = new System.Drawing.Size(179, 13);
             this.label4.TabIndex = 66;
-            this.label4.Text = "Hóa Đơn của Dan Bộ có Lập Lệnh";
+            this.label4.Text = "Hóa Đơn của Danh Bộ có Lập Lệnh";
             // 
             // dgvHoaDon_LL
             // 
@@ -433,7 +400,7 @@
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvHoaDon_LL.DefaultCellStyle = dataGridViewCellStyle10;
-            this.dgvHoaDon_LL.Location = new System.Drawing.Point(914, 326);
+            this.dgvHoaDon_LL.Location = new System.Drawing.Point(914, 276);
             this.dgvHoaDon_LL.Name = "dgvHoaDon_LL";
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
@@ -445,9 +412,42 @@
             this.dgvHoaDon_LL.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHoaDon_LL.RowsDefaultCellStyle = dataGridViewCellStyle12;
-            this.dgvHoaDon_LL.Size = new System.Drawing.Size(447, 250);
+            this.dgvHoaDon_LL.Size = new System.Drawing.Size(447, 335);
             this.dgvHoaDon_LL.TabIndex = 65;
             this.dgvHoaDon_LL.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_LL_CellFormatting);
+            // 
+            // MLT_LH
+            // 
+            this.MLT_LH.DataPropertyName = "MLT";
+            this.MLT_LH.HeaderText = "MLT";
+            this.MLT_LH.Name = "MLT_LH";
+            this.MLT_LH.Width = 80;
+            // 
+            // DanhBo_LH
+            // 
+            this.DanhBo_LH.DataPropertyName = "DanhBo";
+            this.DanhBo_LH.HeaderText = "Danh Bộ";
+            this.DanhBo_LH.Name = "DanhBo_LH";
+            // 
+            // Ky_LH
+            // 
+            this.Ky_LH.DataPropertyName = "Ky";
+            this.Ky_LH.HeaderText = "Kỳ";
+            this.Ky_LH.Name = "Ky_LH";
+            this.Ky_LH.Width = 50;
+            // 
+            // TongCong_LH
+            // 
+            this.TongCong_LH.DataPropertyName = "TongCong";
+            this.TongCong_LH.HeaderText = "Tổng Cộng";
+            this.TongCong_LH.Name = "TongCong_LH";
+            this.TongCong_LH.Width = 90;
+            // 
+            // HanhThu_LH
+            // 
+            this.HanhThu_LH.DataPropertyName = "HanhThu";
+            this.HanhThu_LH.HeaderText = "Hành Thu";
+            this.HanhThu_LH.Name = "HanhThu_LH";
             // 
             // MLT_LL
             // 
@@ -474,7 +474,7 @@
             this.TongCong_LL.DataPropertyName = "TongCong";
             this.TongCong_LL.HeaderText = "Tổng Cộng";
             this.TongCong_LL.Name = "TongCong_LL";
-            this.TongCong_LL.Width = 80;
+            this.TongCong_LL.Width = 90;
             // 
             // HanhThu_LL
             // 
@@ -537,13 +537,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dgvHoaDon_LL;
         private System.Windows.Forms.DataGridViewTextBoxColumn MLT_LH;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo_LH;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky_LH;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_LH;
         private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu_LH;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridView dgvHoaDon_LL;
         private System.Windows.Forms.DataGridViewTextBoxColumn MLT_LL;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo_LL;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky_LL;

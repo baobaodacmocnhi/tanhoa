@@ -230,7 +230,35 @@ namespace ThuTien.DAL.Quay
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSTon(int MaTo)
+        public DataTable GetDSTon(int Nam)
+        {
+            var query = from itemLH in _db.TT_LenhHuys
+                        join itemHD in _db.HOADONs on itemLH.MaHD equals itemHD.ID_HOADON
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemHD.NAM==Nam && itemHD.NGAYGIAITRACH == null
+                        orderby itemHD.MALOTRINH ascending
+                        select new
+                        {
+                            itemHD.NGAYGIAITRACH,
+                            itemLH.SoHoaDon,
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            itemHD.SOPHATHANH,
+                            itemHD.TONGCONG,
+                            itemLH.TinhTrang,
+                            HanhThu = itemtableND.HoTen,
+                            To = itemtableND.TT_To.TenTo,
+                            GiaBieu = itemHD.GB,
+                            itemLH.Cat,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSTon_To(int MaTo)
         {
             var query = from itemLH in _db.TT_LenhHuys
                         join itemHD in _db.HOADONs on itemLH.MaHD equals itemHD.ID_HOADON
@@ -239,6 +267,36 @@ namespace ThuTien.DAL.Quay
                         where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                            && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                            && itemHD.NGAYGIAITRACH == null
+                        orderby itemHD.MALOTRINH ascending
+                        select new
+                        {
+                            itemHD.NGAYGIAITRACH,
+                            itemLH.SoHoaDon,
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            itemHD.SOPHATHANH,
+                            itemHD.TONGCONG,
+                            itemLH.TinhTrang,
+                            HanhThu = itemtableND.HoTen,
+                            To = itemtableND.TT_To.TenTo,
+                            GiaBieu = itemHD.GB,
+                            itemLH.Cat,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSTon_To(int MaTo, int Nam)
+        {
+            var query = from itemLH in _db.TT_LenhHuys
+                        join itemHD in _db.HOADONs on itemLH.MaHD equals itemHD.ID_HOADON
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                           && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                           && itemHD.NAM==Nam && itemHD.NGAYGIAITRACH == null
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {
@@ -316,7 +374,38 @@ namespace ThuTien.DAL.Quay
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSDangNgan(int MaTo)
+        public DataTable GetDSDangNgan(int Nam)
+        {
+            var query = from itemLH in _db.TT_LenhHuys
+                        join itemHD in _db.HOADONs on itemLH.MaHD equals itemHD.ID_HOADON
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
+                        from itemtableDN in tableDN.DefaultIfEmpty()
+                        where itemHD.NAM==Nam && itemHD.NGAYGIAITRACH != null
+                        orderby itemHD.NGAYGIAITRACH descending
+                        select new
+                        {
+                            itemHD.NGAYGIAITRACH,
+                            itemLH.SoHoaDon,
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            itemHD.SOPHATHANH,
+                            itemHD.TONGCONG,
+                            itemLH.TinhTrang,
+                            HanhThu = itemtableND.HoTen,
+                            To = itemtableND.TT_To.TenTo,
+                            GiaBieu = itemHD.GB,
+                            itemLH.Cat,
+                            DangNgan = itemtableDN.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSDangNgan_To(int MaTo)
         {
             var query = from itemLH in _db.TT_LenhHuys
                         join itemHD in _db.HOADONs on itemLH.MaHD equals itemHD.ID_HOADON
@@ -327,6 +416,39 @@ namespace ThuTien.DAL.Quay
                         where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                            && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                            && itemHD.NGAYGIAITRACH != null
+                        orderby itemHD.NGAYGIAITRACH descending
+                        select new
+                        {
+                            itemHD.NGAYGIAITRACH,
+                            itemLH.SoHoaDon,
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            itemHD.SOPHATHANH,
+                            itemHD.TONGCONG,
+                            itemLH.TinhTrang,
+                            HanhThu = itemtableND.HoTen,
+                            To = itemtableND.TT_To.TenTo,
+                            GiaBieu = itemHD.GB,
+                            itemLH.Cat,
+                            DangNgan = itemtableDN.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSDangNgan_To(int MaTo, int Nam)
+        {
+            var query = from itemLH in _db.TT_LenhHuys
+                        join itemHD in _db.HOADONs on itemLH.MaHD equals itemHD.ID_HOADON
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
+                        from itemtableDN in tableDN.DefaultIfEmpty()
+                        where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                           && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                           && itemHD.NAM==Nam && itemHD.NGAYGIAITRACH != null
                         orderby itemHD.NGAYGIAITRACH descending
                         select new
                         {

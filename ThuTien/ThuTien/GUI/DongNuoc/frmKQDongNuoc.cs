@@ -790,7 +790,7 @@ namespace ThuTien.GUI.DongNuoc
                 dr["MaDN"] = item.Cells["MaDN"].Value.ToString().Insert(item.Cells["MaDN"].Value.ToString().Length - 2, "-");
                 if (item.Cells["DanhBo"].Value.ToString() != "")
                     dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
-                dr["HoTen"] = item.Cells["HoTen"].Value;
+                dr["MLT"] = item.Cells["MLT"].Value.ToString().Insert(4, " ").Insert(2, " ");
                 dr["DiaChi"] = item.Cells["DiaChi"].Value;
 
                 if (radDongNuoc.Checked)
@@ -809,6 +809,7 @@ namespace ThuTien.GUI.DongNuoc
 
                 dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
             }
+
             rptDSDongNuoc rpt = new rptDSDongNuoc();
             rpt.SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);

@@ -111,7 +111,6 @@
             this.GhiChuMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoPhieuDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoPhieuMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Co = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoThan = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -123,6 +122,7 @@
             this.ChiSoDN1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DaKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.NgayKy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKQDongNuoc)).BeginInit();
@@ -540,7 +540,6 @@
             this.GhiChuMN,
             this.SoPhieuDN,
             this.SoPhieuMN,
-            this.MLT,
             this.Hieu,
             this.Co,
             this.SoThan,
@@ -551,7 +550,8 @@
             this.NgayDN1,
             this.ChiSoDN1,
             this.DaKy,
-            this.NgayKy});
+            this.NgayKy,
+            this.MLT});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -928,13 +928,6 @@
             this.SoPhieuMN.Name = "SoPhieuMN";
             this.SoPhieuMN.Width = 80;
             // 
-            // MLT
-            // 
-            this.MLT.DataPropertyName = "MLT";
-            this.MLT.HeaderText = "MLT";
-            this.MLT.Name = "MLT";
-            this.MLT.Visible = false;
-            // 
             // Hieu
             // 
             this.Hieu.DataPropertyName = "Hieu";
@@ -1012,6 +1005,12 @@
             this.NgayKy.Name = "NgayKy";
             this.NgayKy.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.NgayKy.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // MLT
+            // 
+            this.MLT.DataPropertyName = "MLT";
+            this.MLT.HeaderText = "MLT";
+            this.MLT.Name = "MLT";
             // 
             // frmKQDongNuoc
             // 
@@ -1139,7 +1138,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChuMN;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieuDN;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieuMN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MLT;
         private System.Windows.Forms.DataGridViewTextBoxColumn Hieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn Co;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoThan;
@@ -1151,5 +1149,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ChiSoDN1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn DaKy;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayKy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MLT;
     }
 }

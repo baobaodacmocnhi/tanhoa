@@ -334,6 +334,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         {
                             SoTien += int.Parse(itemRow["TongCong"].ToString());
                         }
+                        SoTien += _cDongNuoc.GetPhiMoNuoc(itemExcel[0].ToString().Replace(" ", ""));
                         if (int.Parse(itemExcel[1].ToString()) > SoTien)
                         {
                             ChenhLech = "Dư: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (int.Parse(itemExcel[1].ToString()) - SoTien));

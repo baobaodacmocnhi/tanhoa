@@ -44,6 +44,14 @@ namespace ThuTien.GUI.Quay
             cmbTo.DataSource = lstTo;
             cmbTo.DisplayMember = "TenTo";
             cmbTo.ValueMember = "MaTo";
+
+            DataTable dtNam = _cHoaDon.GetNam();
+            DataRow dr = dtNam.NewRow();
+            dr["ID"] = "Tất Cả";
+            dtNam.Rows.InsertAt(dr, 0);
+            cmbNam.DataSource = dtNam;
+            cmbNam.DisplayMember = "ID";
+            cmbNam.ValueMember = "Nam";
         }
 
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)
@@ -189,13 +197,26 @@ namespace ThuTien.GUI.Quay
                 ///chọn tất cả tổ
                 if (cmbTo.SelectedIndex == 0)
                 {
-                    dgvHoaDon.DataSource = _cLenhHuy.GetDSTon();
+                    ///chọn tất cả năm
+                    if (cmbNam.SelectedIndex == 0)
+                        dgvHoaDon.DataSource = _cLenhHuy.GetDSTon();
+                    else
+                        ///chọn 1 năm cụ thể
+                        if (cmbNam.SelectedIndex > 0)
+                            dgvHoaDon.DataSource = _cLenhHuy.GetDSTon(int.Parse(cmbNam.SelectedValue.ToString()));
                 }
                 ///chọn 1 tổ cụ thể
                 else
                 {
-                    dgvHoaDon.DataSource = _cLenhHuy.GetDSTon(int.Parse(cmbTo.SelectedValue.ToString()));
-                }   
+                    ///chọn tất cả năm
+                    if (cmbNam.SelectedIndex == 0)
+                        dgvHoaDon.DataSource = _cLenhHuy.GetDSTon_To(int.Parse(cmbTo.SelectedValue.ToString()));
+                    else
+                        ///chọn 1 năm cụ thể
+                        if (cmbNam.SelectedIndex > 0)
+                            dgvHoaDon.DataSource = _cLenhHuy.GetDSTon_To(int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
+
+                }
             }
             else
                 if (radDangNgan.Checked)
@@ -203,21 +224,33 @@ namespace ThuTien.GUI.Quay
                     ///chọn tất cả tổ
                     if (cmbTo.SelectedIndex == 0)
                     {
-                        dgvHoaDon.DataSource = _cLenhHuy.GetDSDangNgan();
+                        ///chọn tất cả năm
+                        if (cmbNam.SelectedIndex == 0)
+                            dgvHoaDon.DataSource = _cLenhHuy.GetDSDangNgan();
+                        else
+                            ///chọn 1 năm cụ thể
+                            if (cmbNam.SelectedIndex > 0)
+                                dgvHoaDon.DataSource = _cLenhHuy.GetDSDangNgan(int.Parse(cmbNam.SelectedValue.ToString()));
                     }
                     ///chọn 1 tổ cụ thể
                     else
                     {
-                        dgvHoaDon.DataSource = _cLenhHuy.GetDSDangNgan(int.Parse(cmbTo.SelectedValue.ToString()));
+                        ///chọn tất cả năm
+                        if (cmbNam.SelectedIndex == 0)
+                            dgvHoaDon.DataSource = _cLenhHuy.GetDSDangNgan_To(int.Parse(cmbTo.SelectedValue.ToString()));
+                        else
+                            ///chọn 1 năm cụ thể
+                            if (cmbNam.SelectedIndex > 0)
+                                dgvHoaDon.DataSource = _cLenhHuy.GetDSDangNgan_To(int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
                     }
-                    foreach (DataGridViewRow item in dgvHoaDon.Rows)
-                        if (_cCNKD.CheckExistCT(item.Cells["SoHoaDon"].Value.ToString()))
-                        {
-                            TT_CTChuyenNoKhoDoi ctcnkd = _cCNKD.GetCT(item.Cells["SoHoaDon"].Value.ToString());
+                }
+            foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                if (_cCNKD.CheckExistCT(item.Cells["SoHoaDon"].Value.ToString()))
+                {
+                    TT_CTChuyenNoKhoDoi ctcnkd = _cCNKD.GetCT(item.Cells["SoHoaDon"].Value.ToString());
 
-                            //item.Cells["NgayGiaiTrach"].Value = ctcnkd.CreateDate.Value.ToString("dd/MM/yyyy");
-                            item.Cells["DangNgan"].Value = "CNKĐ";
-                        }
+                    //item.Cells["NgayGiaiTrach"].Value = ctcnkd.CreateDate.Value.ToString("dd/MM/yyyy");
+                    item.Cells["DangNgan"].Value = "CNKĐ";
                 }
         }
 
