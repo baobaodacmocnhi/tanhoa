@@ -241,8 +241,19 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     {
                         if (txtDanhBo.Text.Trim().Replace(" ", "")!=""&&_cDonTXL.CheckExist(txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now) == true)
                         {
-                            MessageBox.Show("Danh Bộ này đã nhận đơn trong ngày hôm nay rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
+                            DialogResult result = MessageBox.Show("Danh Bộ này đã nhận đơn trong ngày hôm nay rồi", "Thông Báo", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+                            if (result == DialogResult.Yes)
+                            {
+                                //code for Yes
+                            }
+                            else if (result == DialogResult.No)
+                            {
+                                return;
+                            }
+                            else if (result == DialogResult.Cancel)
+                            {
+                                return;
+                            }
                         }
 
                         DonTXL dontxl = new DonTXL();
