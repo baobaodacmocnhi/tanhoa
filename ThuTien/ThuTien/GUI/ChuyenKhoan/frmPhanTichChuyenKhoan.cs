@@ -58,6 +58,15 @@ namespace ThuTien.GUI.ChuyenKhoan
             dgvDichVuThu.AutoGenerateColumns = false;
             dgvBienDong_HD.AutoGenerateColumns = false;
 
+            dtNganHang = _cNganHang.GetDS();
+            dr = dtNganHang.NewRow();
+            dr["MaNH"] = "-2";
+            dr["TenNH"] = "Tất Cả";
+            dtNganHang.Rows.InsertAt(dr, 0);
+            dr = dtNganHang.NewRow();
+            dr["MaNH"] = "-1";
+            dr["TenNH"] = "Khác";
+            dtNganHang.Rows.InsertAt(dr, 1);
             cmbNganHang_HD.DataSource = dtNganHang;
             cmbNganHang_HD.DisplayMember = "TenNH";
             cmbNganHang_HD.ValueMember = "MaNH";
@@ -208,11 +217,6 @@ namespace ThuTien.GUI.ChuyenKhoan
             }
         }
 
-        private void cmbTo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         private void btnXem_PhanTich_Click(object sender, EventArgs e)
         {
             if (chkNgayKiemTra.Checked == true)
@@ -225,14 +229,14 @@ namespace ThuTien.GUI.ChuyenKhoan
                     if (cmbKy_PhanTich.SelectedIndex == 0)
                     {
                         for (int i = 1; i < cmbTo_PhanTich.Items.Count; i++)
-                            dt.Merge(_cDichVuThu.GetPhanTichChuyenKhoan(cmbNganHang_PhanTich.SelectedValue.ToString(), ((TT_To)cmbTo_PhanTich.Items[i]).MaTo, int.Parse(cmbNam_PhanTich.SelectedValue.ToString()), dateGiaiTrach.Value));
+                            dt.Merge(_cDichVuThu.GetPhanTichChuyenKhoan(int.Parse(cmbNganHang_PhanTich.SelectedValue.ToString()), ((TT_To)cmbTo_PhanTich.Items[i]).MaTo, int.Parse(cmbNam_PhanTich.SelectedValue.ToString()), dateGiaiTrach.Value));
                     }
                     else
                         ///chọn 1 kỳ
                         if (cmbKy_PhanTich.SelectedIndex > 0)
                         {
                             for (int i = 1; i < cmbTo_PhanTich.Items.Count; i++)
-                                dt.Merge(_cDichVuThu.GetPhanTichChuyenKhoan(cmbNganHang_PhanTich.SelectedValue.ToString(), ((TT_To)cmbTo_PhanTich.Items[i]).MaTo, int.Parse(cmbNam_PhanTich.SelectedValue.ToString()), int.Parse(cmbKy_PhanTich.SelectedItem.ToString()), dateGiaiTrach.Value));
+                                dt.Merge(_cDichVuThu.GetPhanTichChuyenKhoan(int.Parse(cmbNganHang_PhanTich.SelectedValue.ToString()), ((TT_To)cmbTo_PhanTich.Items[i]).MaTo, int.Parse(cmbNam_PhanTich.SelectedValue.ToString()), int.Parse(cmbKy_PhanTich.SelectedItem.ToString()), dateGiaiTrach.Value));
                         }
                     dgvTo_PhanTich.DataSource = dt;
                 }
@@ -241,11 +245,11 @@ namespace ThuTien.GUI.ChuyenKhoan
                     if (cmbTo_PhanTich.SelectedIndex > 0)
                         ///chọn tất cả kỳ
                         if (cmbKy_PhanTich.SelectedIndex == 0)
-                            dgvTo_PhanTich.DataSource = _cDichVuThu.GetPhanTichChuyenKhoan(cmbNganHang_PhanTich.SelectedValue.ToString(), int.Parse(cmbTo_PhanTich.SelectedValue.ToString()), int.Parse(cmbNam_PhanTich.SelectedValue.ToString()), dateGiaiTrach.Value);
+                            dgvTo_PhanTich.DataSource = _cDichVuThu.GetPhanTichChuyenKhoan(int.Parse(cmbNganHang_PhanTich.SelectedValue.ToString()), int.Parse(cmbTo_PhanTich.SelectedValue.ToString()), int.Parse(cmbNam_PhanTich.SelectedValue.ToString()), dateGiaiTrach.Value);
                         else
                             ///chọn 1 kỳ
                             if (cmbKy_PhanTich.SelectedIndex > 0)
-                                dgvTo_PhanTich.DataSource = _cDichVuThu.GetPhanTichChuyenKhoan(cmbNganHang_PhanTich.SelectedValue.ToString(), int.Parse(cmbTo_PhanTich.SelectedValue.ToString()), int.Parse(cmbNam_PhanTich.SelectedValue.ToString()), int.Parse(cmbKy_PhanTich.SelectedItem.ToString()), dateGiaiTrach.Value);
+                                dgvTo_PhanTich.DataSource = _cDichVuThu.GetPhanTichChuyenKhoan(int.Parse(cmbNganHang_PhanTich.SelectedValue.ToString()), int.Parse(cmbTo_PhanTich.SelectedValue.ToString()), int.Parse(cmbNam_PhanTich.SelectedValue.ToString()), int.Parse(cmbKy_PhanTich.SelectedItem.ToString()), dateGiaiTrach.Value);
             }
             else
             {
@@ -257,14 +261,14 @@ namespace ThuTien.GUI.ChuyenKhoan
                     if (cmbKy_PhanTich.SelectedIndex == 0)
                     {
                         for (int i = 1; i < cmbTo_PhanTich.Items.Count; i++)
-                            dt.Merge(_cDichVuThu.GetPhanTichChuyenKhoan(cmbNganHang_PhanTich.SelectedValue.ToString(), ((TT_To)cmbTo_PhanTich.Items[i]).MaTo, int.Parse(cmbNam_PhanTich.SelectedValue.ToString())));
+                            dt.Merge(_cDichVuThu.GetPhanTichChuyenKhoan(int.Parse(cmbNganHang_PhanTich.SelectedValue.ToString()), ((TT_To)cmbTo_PhanTich.Items[i]).MaTo, int.Parse(cmbNam_PhanTich.SelectedValue.ToString())));
                     }
                     else
                         ///chọn 1 kỳ
                         if (cmbKy_PhanTich.SelectedIndex > 0)
                         {
                             for (int i = 1; i < cmbTo_PhanTich.Items.Count; i++)
-                                dt.Merge(_cDichVuThu.GetPhanTichChuyenKhoan(cmbNganHang_PhanTich.SelectedValue.ToString(), ((TT_To)cmbTo_PhanTich.Items[i]).MaTo, int.Parse(cmbNam_PhanTich.SelectedValue.ToString()), int.Parse(cmbKy_PhanTich.SelectedItem.ToString())));
+                                dt.Merge(_cDichVuThu.GetPhanTichChuyenKhoan(int.Parse(cmbNganHang_PhanTich.SelectedValue.ToString()), ((TT_To)cmbTo_PhanTich.Items[i]).MaTo, int.Parse(cmbNam_PhanTich.SelectedValue.ToString()), int.Parse(cmbKy_PhanTich.SelectedItem.ToString())));
                         }
                     dgvTo_PhanTich.DataSource = dt;
                 }
@@ -273,11 +277,11 @@ namespace ThuTien.GUI.ChuyenKhoan
                     if (cmbTo_PhanTich.SelectedIndex > 0)
                         ///chọn tất cả kỳ
                         if (cmbKy_PhanTich.SelectedIndex == 0)
-                            dgvTo_PhanTich.DataSource = _cDichVuThu.GetPhanTichChuyenKhoan(cmbNganHang_PhanTich.SelectedValue.ToString(), int.Parse(cmbTo_PhanTich.SelectedValue.ToString()), int.Parse(cmbNam_PhanTich.SelectedValue.ToString()));
+                            dgvTo_PhanTich.DataSource = _cDichVuThu.GetPhanTichChuyenKhoan(int.Parse(cmbNganHang_PhanTich.SelectedValue.ToString()), int.Parse(cmbTo_PhanTich.SelectedValue.ToString()), int.Parse(cmbNam_PhanTich.SelectedValue.ToString()));
                         else
                             ///chọn 1 kỳ
                             if (cmbKy_PhanTich.SelectedIndex > 0)
-                                dgvTo_PhanTich.DataSource = _cDichVuThu.GetPhanTichChuyenKhoan(cmbNganHang_PhanTich.SelectedValue.ToString(), int.Parse(cmbTo_PhanTich.SelectedValue.ToString()), int.Parse(cmbNam_PhanTich.SelectedValue.ToString()), int.Parse(cmbKy_PhanTich.SelectedItem.ToString()));
+                                dgvTo_PhanTich.DataSource = _cDichVuThu.GetPhanTichChuyenKhoan(int.Parse(cmbNganHang_PhanTich.SelectedValue.ToString()), int.Parse(cmbTo_PhanTich.SelectedValue.ToString()), int.Parse(cmbNam_PhanTich.SelectedValue.ToString()), int.Parse(cmbKy_PhanTich.SelectedItem.ToString()));
             }
             CountdgvTo_PhanTich();
         }
@@ -295,21 +299,21 @@ namespace ThuTien.GUI.ChuyenKhoan
                 {
                     ///chọn tất cả kỳ
                     if (cmbKy_PhanTich.SelectedIndex == 0)
-                        dgvNhanVien_PhanTich.DataSource = _cDichVuThu.GetPhanTichChuyenKhoan_NV(cmbNganHang_PhanTich.SelectedValue.ToString(), int.Parse(dgvTo_PhanTich.CurrentRow.Cells["MaTo"].Value.ToString()), int.Parse(cmbNam_PhanTich.SelectedValue.ToString()), dateGiaiTrach.Value);
+                        dgvNhanVien_PhanTich.DataSource = _cDichVuThu.GetPhanTichChuyenKhoan_NV(int.Parse(cmbNganHang_PhanTich.SelectedValue.ToString()), int.Parse(dgvTo_PhanTich.CurrentRow.Cells["MaTo"].Value.ToString()), int.Parse(cmbNam_PhanTich.SelectedValue.ToString()), dateGiaiTrach.Value);
                     else
                         ///chọn 1 kỳ
                         if (cmbKy_PhanTich.SelectedIndex > 0)
-                            dgvNhanVien_PhanTich.DataSource = _cDichVuThu.GetPhanTichChuyenKhoan_NV(cmbNganHang_PhanTich.SelectedValue.ToString(), int.Parse(dgvTo_PhanTich.CurrentRow.Cells["MaTo"].Value.ToString()), int.Parse(cmbNam_PhanTich.SelectedValue.ToString()), int.Parse(cmbKy_PhanTich.SelectedItem.ToString()), dateGiaiTrach.Value);
+                            dgvNhanVien_PhanTich.DataSource = _cDichVuThu.GetPhanTichChuyenKhoan_NV(int.Parse(cmbNganHang_PhanTich.SelectedValue.ToString()), int.Parse(dgvTo_PhanTich.CurrentRow.Cells["MaTo"].Value.ToString()), int.Parse(cmbNam_PhanTich.SelectedValue.ToString()), int.Parse(cmbKy_PhanTich.SelectedItem.ToString()), dateGiaiTrach.Value);
                 }
                 else
                 {
                     ///chọn tất cả kỳ
                     if (cmbKy_PhanTich.SelectedIndex == 0)
-                        dgvNhanVien_PhanTich.DataSource = _cDichVuThu.GetPhanTichChuyenKhoan_NV(cmbNganHang_PhanTich.SelectedValue.ToString(), int.Parse(dgvTo_PhanTich.CurrentRow.Cells["MaTo"].Value.ToString()), int.Parse(cmbNam_PhanTich.SelectedValue.ToString()));
+                        dgvNhanVien_PhanTich.DataSource = _cDichVuThu.GetPhanTichChuyenKhoan_NV(int.Parse(cmbNganHang_PhanTich.SelectedValue.ToString()), int.Parse(dgvTo_PhanTich.CurrentRow.Cells["MaTo"].Value.ToString()), int.Parse(cmbNam_PhanTich.SelectedValue.ToString()));
                     else
                         ///chọn 1 kỳ
                         if (cmbKy_PhanTich.SelectedIndex > 0)
-                            dgvNhanVien_PhanTich.DataSource = _cDichVuThu.GetPhanTichChuyenKhoan_NV(cmbNganHang_PhanTich.SelectedValue.ToString(), int.Parse(dgvTo_PhanTich.CurrentRow.Cells["MaTo"].Value.ToString()), int.Parse(cmbNam_PhanTich.SelectedValue.ToString()), int.Parse(cmbKy_PhanTich.SelectedItem.ToString()));
+                            dgvNhanVien_PhanTich.DataSource = _cDichVuThu.GetPhanTichChuyenKhoan_NV(int.Parse(cmbNganHang_PhanTich.SelectedValue.ToString()), int.Parse(dgvTo_PhanTich.CurrentRow.Cells["MaTo"].Value.ToString()), int.Parse(cmbNam_PhanTich.SelectedValue.ToString()), int.Parse(cmbKy_PhanTich.SelectedItem.ToString()));
                 }
                 CountdgvNhanVien_PhanTich();
             }
@@ -401,17 +405,17 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         public void CountdgvDichVuThu()
         {
-            long TongSoTien = 0;
+            long TongCong = 0;
 
             if (dgvDichVuThu.RowCount > 0)
             {
                 foreach (DataGridViewRow item in dgvDichVuThu.Rows)
                 {
-                    if (!string.IsNullOrEmpty(item.Cells["SoTien"].Value.ToString()))
-                        TongSoTien += long.Parse(item.Cells["SoTien"].Value.ToString());
+                    if (!string.IsNullOrEmpty(item.Cells["TongCong"].Value.ToString()))
+                        TongCong += long.Parse(item.Cells["TongCong"].Value.ToString());
                 }
                 txtTongHD_HD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", dgvDichVuThu.RowCount);
-                txtTongSoTien_HD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongSoTien);
+                txtTongCong_HD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
             }
         }
 
@@ -425,11 +429,11 @@ namespace ThuTien.GUI.ChuyenKhoan
                 if (cmbKy_HD.SelectedIndex == 0)
                 {
                     for (int i = 1; i < cmbTo_HD.Items.Count; i++)
-                        dt.Merge(_cDichVuThu.GetDS(cmbNganHang_HD.SelectedValue.ToString(), ((TT_To)cmbTo_HD.Items[i]).MaTo, int.Parse(cmbNam_HD.SelectedValue.ToString())));
+                        dt.Merge(_cDichVuThu.GetDS(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), ((TT_To)cmbTo_HD.Items[i]).MaTo, int.Parse(cmbNam_HD.SelectedValue.ToString())));
                     DataTable dtBD = new DataTable();
                     for (int i = 1; i <= 12; i++)
                     {
-                        dtBD.Merge(_cDichVuThu.GetBienDongChuyenKhoan(cmbNganHang_HD.SelectedValue.ToString(), int.Parse(cmbNam_HD.SelectedValue.ToString()), i));
+                        dtBD.Merge(_cDichVuThu.GetBienDongChuyenKhoan(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), i));
                     }
                     dgvBienDong_HD.DataSource = dtBD;
                 }
@@ -440,14 +444,14 @@ namespace ThuTien.GUI.ChuyenKhoan
                         if (cmbFromDot.SelectedIndex == 0)
                         {
                             for (int i = 1; i < cmbTo_HD.Items.Count; i++)
-                                dt.Merge(_cDichVuThu.GetDS(cmbNganHang_HD.SelectedValue.ToString(), ((TT_To)cmbTo_HD.Items[i]).MaTo, int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString())));
-                            dgvBienDong_HD.DataSource = _cDichVuThu.GetBienDongChuyenKhoan(cmbNganHang_HD.SelectedValue.ToString(), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()));
+                                dt.Merge(_cDichVuThu.GetDS(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), ((TT_To)cmbTo_HD.Items[i]).MaTo, int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString())));
+                            dgvBienDong_HD.DataSource = _cDichVuThu.GetBienDongChuyenKhoan(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()));
                         }
                         else
                             ///chọn từ đợt đến đợt
                             if (cmbFromDot.SelectedIndex > 0)
                                 for (int i = 1; i < cmbTo_HD.Items.Count; i++)
-                                    dt.Merge(_cDichVuThu.GetDS(cmbNganHang_HD.SelectedValue.ToString(), ((TT_To)cmbTo_HD.Items[i]).MaTo, int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString())));
+                                    dt.Merge(_cDichVuThu.GetDS(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), ((TT_To)cmbTo_HD.Items[i]).MaTo, int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString())));
                 dgvDichVuThu.DataSource = dt;
             }
             ///chọn 1 tổ
@@ -459,11 +463,11 @@ namespace ThuTien.GUI.ChuyenKhoan
                         ///chọn tất cả kỳ
                         if (cmbKy_HD.SelectedIndex == 0)
                         {
-                            dgvDichVuThu.DataSource = _cDichVuThu.GetDS(cmbNganHang_HD.SelectedValue.ToString(), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()));
+                            dgvDichVuThu.DataSource = _cDichVuThu.GetDS(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()));
                             DataTable dt = new DataTable();
                             for (int i = 1; i <= 12; i++)
                             {
-                                dt.Merge(_cDichVuThu.GetBienDongChuyenKhoan(cmbNganHang_HD.SelectedValue.ToString(), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), i));
+                                dt.Merge(_cDichVuThu.GetBienDongChuyenKhoan(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), i));
                             }
                             dgvBienDong_HD.DataSource = dt;
                         }
@@ -473,13 +477,13 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 ///chọn tất cả đợt
                                 if (cmbFromDot.SelectedIndex == 0)
                                 {
-                                    dgvDichVuThu.DataSource = _cDichVuThu.GetDS(cmbNganHang_HD.SelectedValue.ToString(), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()));
-                                    dgvBienDong_HD.DataSource = _cDichVuThu.GetBienDongChuyenKhoan(cmbNganHang_HD.SelectedValue.ToString(), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()));
+                                    dgvDichVuThu.DataSource = _cDichVuThu.GetDS(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()));
+                                    dgvBienDong_HD.DataSource = _cDichVuThu.GetBienDongChuyenKhoan(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()));
                                 }
                                 else
                                     ///chọn từ đợt đến đợt
                                     if (cmbFromDot.SelectedIndex > 0)
-                                        dgvDichVuThu.DataSource = _cDichVuThu.GetDS(cmbNganHang_HD.SelectedValue.ToString(), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
+                                        dgvDichVuThu.DataSource = _cDichVuThu.GetDS(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
                     }
                     else
                         ///chọn 1 nhân viên
@@ -488,11 +492,11 @@ namespace ThuTien.GUI.ChuyenKhoan
                             ///chọn tất cả kỳ
                             if (cmbKy_HD.SelectedIndex == 0)
                             {
-                                dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV(cmbNganHang_HD.SelectedValue.ToString(), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()));
+                                dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()));
                                 DataTable dt = new DataTable();
                                 for (int i = 1; i <= 12; i++)
                                 {
-                                    dt.Merge(_cDichVuThu.GetBienDongChuyenKhoan_NV(cmbNganHang_HD.SelectedValue.ToString(), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), i));
+                                    dt.Merge(_cDichVuThu.GetBienDongChuyenKhoan_NV(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), i));
                                 }
                                 dgvBienDong_HD.DataSource = dt;
                             }
@@ -502,13 +506,13 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     ///chọn tất cả đợt
                                     if (cmbFromDot.SelectedIndex == 0)
                                     {
-                                        dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV(cmbNganHang_HD.SelectedValue.ToString(), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()));
-                                        dgvBienDong_HD.DataSource = _cDichVuThu.GetBienDongChuyenKhoan_NV(cmbNganHang_HD.SelectedValue.ToString(), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()));
+                                        dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()));
+                                        dgvBienDong_HD.DataSource = _cDichVuThu.GetBienDongChuyenKhoan_NV(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()));
                                     }
                                     else
                                         ///chọn từ đợt đến đợt
                                         if (cmbFromDot.SelectedIndex > 0)
-                                            dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV(cmbNganHang_HD.SelectedValue.ToString(), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
+                                            dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
                         }
             CountdgvDichVuThu();
         }
@@ -523,7 +527,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
             }
-            if (dgvDichVuThu.Columns[e.ColumnIndex].Name == "SoTien" && e.Value != null)
+            if (dgvDichVuThu.Columns[e.ColumnIndex].Name == "TongCong" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }

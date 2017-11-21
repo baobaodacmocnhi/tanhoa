@@ -552,26 +552,37 @@ namespace ThuTien.DAL.Doi
         /// <returns></returns>
         public DataTable GetTongByNamKy(int Nam, int Ky)
         {
-            var query = from item in _db.HOADONs
-                        where item.NAM == Nam && item.KY == Ky
-                        //orderby item.DOT ascending
-                        group item by item.DOT into itemGroup
-                        select new
-                        {
-                            Dot = itemGroup.Key,
-                            TongHD = itemGroup.Count(),
-                            TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
-                            TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
-                            TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
-                            TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
-                            TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
-                            itemGroup.FirstOrDefault().CreateDate,
-                            HD0 = itemGroup.Count(groupItem => groupItem.TIEUTHU == 0),
-                        };
-            return LINQToDataTable(query.OrderBy(item => item.Dot));
-            //string sql = "select DOT,count(ID_HoaDon) as TongHD,sum(TIEUTHU) as TongLNCC,sum(GIABAN) as TongGiaBan,sum(THUE) as TongThueGTGT,sum(PHI) as TongPhiBVMT,sum(TONGCONG) as TongCong "
-            //    + "from HOADON where NAM='" + nam + "' and KY='" + ky + "' group by DOT order by DOT asc";
-            //return ExecuteQuery_SqlDataReader_DataTable(sql);
+            //var query = from item in _db.HOADONs
+            //            where item.NAM == Nam && item.KY == Ky
+            //            //orderby item.DOT ascending
+            //            group item by item.DOT into itemGroup
+            //            select new
+            //            {
+            //                Dot = itemGroup.Key,
+            //                TongHD = itemGroup.Count(),
+            //                TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
+            //                TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+            //                TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
+            //                TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
+            //                TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
+            //                itemGroup.FirstOrDefault().CreateDate,
+            //                HD0 = itemGroup.Count(groupItem => groupItem.TIEUTHU == 0),
+            //            };
+            //return LINQToDataTable(query.OrderBy(item => item.Dot));
+            string sql = "declare @Nam int;"
+                    + " declare @Ky int;"
+                    + " set @Nam="+Nam+";"
+                    + " set @Ky=" + Ky + ";"
+                    + " select * from"
+                    + " (select DOT,TongHD=COUNT(ID_HOADON),TongTieuThu=SUM(TIEUTHU),TongGiaBan=SUM(GIABAN),TongThueGTGT=SUM(THUE),"
+                    + " TongPhiBVMT=SUM(PHI),TongCong=SUM(TONGCONG),HD0=COUNT(case when TIEUTHU = 0 then 1 else null end)"
+                    + " from HOADON where NAM=@Nam and KY=@Ky group by DOT) a,"
+                    + " (select * from"
+                    + " (select DOT,CreateDate,ROW_NUMBER() OVER (PARTITION BY DOT ORDER BY CreateDate DESC) AS rn from HOADON where NAM=@Nam and KY=@Ky) b"
+                    + " where rn=1) c"
+                    + " where a.DOT=c.DOT"
+                    + " order by a.DOT";
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         /// <summary>
