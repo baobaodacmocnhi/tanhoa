@@ -71,6 +71,9 @@ namespace ThuTien.GUI.DongNuoc
                 if (_cDongNuoc.CheckExist_KQDongNuoc(decimal.Parse(txtMaDN.Text.Trim().Replace("-", ""))))
                 {
                     _dongnuoc = _cDongNuoc.GetDongNuocByMaDN(decimal.Parse(txtMaDN.Text.Trim().Replace("-", "")));
+                    chkHuy.Checked = _dongnuoc.Huy;
+                    cmbTroNgai.SelectedItem = _dongnuoc.TroNgai;
+                    txtGhiChuTroNgai.Text = _dongnuoc.GhiChuTroNgai;
 
                     _kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaDN(decimal.Parse(txtMaDN.Text.Trim().Replace("-", "")));
                     txtDanhBo.Text = _kqdongnuoc.DanhBo;
@@ -87,6 +90,7 @@ namespace ThuTien.GUI.DongNuoc
                     cmbChiMatSo.SelectedItem = _kqdongnuoc.ChiMatSo;
                     cmbChiKhoaGoc.SelectedItem = _kqdongnuoc.ChiKhoaGoc;
                     txtLyDo.Text = _kqdongnuoc.LyDo;
+                    chkKhongThuTienMoNuoc.Checked = _kqdongnuoc.KhongThuPhi;
                     if (_kqdongnuoc.MoNuoc)
                     {
                         chkMoNuoc.Checked = _kqdongnuoc.MoNuoc;
@@ -814,6 +818,43 @@ namespace ThuTien.GUI.DongNuoc
             rpt.SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();
+        }
+
+        private void chkKhongThuTienMoNuoc_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+            {
+                if (_kqdongnuoc != null)
+                {
+                    if (!CNguoiDung.ToTruong && !CNguoiDung.Doi)
+                        if (!_cDongNuoc.CheckExist_DongNuoc(_kqdongnuoc.MaDN.Value, CNguoiDung.MaND))
+                        {
+                            MessageBox.Show("Thông báo này không được giao cho bạn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                    if (chkKhongThuTienMoNuoc.Checked)
+                    {
+                        _kqdongnuoc.KhongThuPhi = true;
+                        _kqdongnuoc.PhiMoNuocKhongThu = _kqdongnuoc.PhiMoNuoc;
+                        _kqdongnuoc.PhiMoNuoc = 0;
+                    }
+                    else
+                    {
+                        _kqdongnuoc.KhongThuPhi = false;
+                        if (_kqdongnuoc.PhiMoNuocKhongThu != null)
+                            _kqdongnuoc.PhiMoNuoc = _kqdongnuoc.PhiMoNuocKhongThu;
+                        _kqdongnuoc.PhiMoNuocKhongThu = null;
+                    }
+
+                    if (_cDongNuoc.SuaKQ(_kqdongnuoc))
+                    {
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
 

@@ -20991,6 +20991,10 @@ namespace ThuTien.LinQ
 		
 		private System.Nullable<int> _PhiMoNuoc;
 		
+		private bool _KhongThuPhi;
+		
+		private System.Nullable<int> _PhiMoNuocKhongThu;
+		
 		private bool _DongNuoc2;
 		
 		private System.Nullable<System.DateTime> _NgayDN1;
@@ -21099,6 +21103,10 @@ namespace ThuTien.LinQ
     partial void OnGhiChuChanged();
     partial void OnPhiMoNuocChanging(System.Nullable<int> value);
     partial void OnPhiMoNuocChanged();
+    partial void OnKhongThuPhiChanging(bool value);
+    partial void OnKhongThuPhiChanged();
+    partial void OnPhiMoNuocKhongThuChanging(System.Nullable<int> value);
+    partial void OnPhiMoNuocKhongThuChanged();
     partial void OnDongNuoc2Changing(bool value);
     partial void OnDongNuoc2Changed();
     partial void OnNgayDN1Changing(System.Nullable<System.DateTime> value);
@@ -21529,6 +21537,46 @@ namespace ThuTien.LinQ
 					this._PhiMoNuoc = value;
 					this.SendPropertyChanged("PhiMoNuoc");
 					this.OnPhiMoNuocChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KhongThuPhi", DbType="Bit NOT NULL")]
+		public bool KhongThuPhi
+		{
+			get
+			{
+				return this._KhongThuPhi;
+			}
+			set
+			{
+				if ((this._KhongThuPhi != value))
+				{
+					this.OnKhongThuPhiChanging(value);
+					this.SendPropertyChanging();
+					this._KhongThuPhi = value;
+					this.SendPropertyChanged("KhongThuPhi");
+					this.OnKhongThuPhiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhiMoNuocKhongThu", DbType="Int")]
+		public System.Nullable<int> PhiMoNuocKhongThu
+		{
+			get
+			{
+				return this._PhiMoNuocKhongThu;
+			}
+			set
+			{
+				if ((this._PhiMoNuocKhongThu != value))
+				{
+					this.OnPhiMoNuocKhongThuChanging(value);
+					this.SendPropertyChanging();
+					this._PhiMoNuocKhongThu = value;
+					this.SendPropertyChanged("PhiMoNuocKhongThu");
+					this.OnPhiMoNuocKhongThuChanged();
 				}
 			}
 		}
