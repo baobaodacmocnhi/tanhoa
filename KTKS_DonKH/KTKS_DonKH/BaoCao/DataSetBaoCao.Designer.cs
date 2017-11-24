@@ -5830,6 +5830,8 @@ namespace KTKS_DonKH.BaoCao {
             
             private global::System.Data.DataColumn columnVeViec;
             
+            private global::System.Data.DataColumn columnKinhTrinh;
+            
             private global::System.Data.DataColumn columnNoiDung;
             
             private global::System.Data.DataColumn columnNoiNhan;
@@ -5947,6 +5949,14 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn KinhTrinhColumn {
+                get {
+                    return this.columnKinhTrinh;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn NoiDungColumn {
                 get {
                     return this.columnNoiDung;
@@ -6022,7 +6032,7 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ThaoThuTraLoiRow AddThaoThuTraLoiRow(string SoPhieu, string DanhBo, string HopDong, string HoTen, string DiaChi, string GiaBieu, string DinhMuc, string NgayNhanDon, string VeViec, string NoiDung, string NoiNhan, string ChucVu, string NguoiKy, string LoTrinh) {
+            public ThaoThuTraLoiRow AddThaoThuTraLoiRow(string SoPhieu, string DanhBo, string HopDong, string HoTen, string DiaChi, string GiaBieu, string DinhMuc, string NgayNhanDon, string VeViec, string KinhTrinh, string NoiDung, string NoiNhan, string ChucVu, string NguoiKy, string LoTrinh) {
                 ThaoThuTraLoiRow rowThaoThuTraLoiRow = ((ThaoThuTraLoiRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         SoPhieu,
@@ -6034,6 +6044,7 @@ namespace KTKS_DonKH.BaoCao {
                         DinhMuc,
                         NgayNhanDon,
                         VeViec,
+                        KinhTrinh,
                         NoiDung,
                         NoiNhan,
                         ChucVu,
@@ -6070,6 +6081,7 @@ namespace KTKS_DonKH.BaoCao {
                 this.columnDinhMuc = base.Columns["DinhMuc"];
                 this.columnNgayNhanDon = base.Columns["NgayNhanDon"];
                 this.columnVeViec = base.Columns["VeViec"];
+                this.columnKinhTrinh = base.Columns["KinhTrinh"];
                 this.columnNoiDung = base.Columns["NoiDung"];
                 this.columnNoiNhan = base.Columns["NoiNhan"];
                 this.columnChucVu = base.Columns["ChucVu"];
@@ -6098,6 +6110,8 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnNgayNhanDon);
                 this.columnVeViec = new global::System.Data.DataColumn("VeViec", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnVeViec);
+                this.columnKinhTrinh = new global::System.Data.DataColumn("KinhTrinh", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnKinhTrinh);
                 this.columnNoiDung = new global::System.Data.DataColumn("NoiDung", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNoiDung);
                 this.columnNoiNhan = new global::System.Data.DataColumn("NoiNhan", typeof(string), null, global::System.Data.MappingType.Element);
@@ -23083,6 +23097,22 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string KinhTrinh {
+                get {
+                    try {
+                        return ((string)(this[this.tableThaoThuTraLoi.KinhTrinhColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'KinhTrinh\' in table \'ThaoThuTraLoi\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableThaoThuTraLoi.KinhTrinhColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string NoiDung {
                 get {
                     try {
@@ -23267,6 +23297,18 @@ namespace KTKS_DonKH.BaoCao {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetVeViecNull() {
                 this[this.tableThaoThuTraLoi.VeViecColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsKinhTrinhNull() {
+                return this.IsNull(this.tableThaoThuTraLoi.KinhTrinhColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetKinhTrinhNull() {
+                this[this.tableThaoThuTraLoi.KinhTrinhColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

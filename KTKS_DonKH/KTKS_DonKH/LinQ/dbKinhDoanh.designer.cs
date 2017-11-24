@@ -14028,6 +14028,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _VeViec;
 		
+		private string _KinhTrinh;
+		
 		private string _NoiDung;
 		
 		private string _NoiNhan;
@@ -14092,6 +14094,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnNamChanged();
     partial void OnVeViecChanging(string value);
     partial void OnVeViecChanged();
+    partial void OnKinhTrinhChanging(string value);
+    partial void OnKinhTrinhChanged();
     partial void OnNoiDungChanging(string value);
     partial void OnNoiDungChanged();
     partial void OnNoiNhanChanging(string value);
@@ -14370,6 +14374,26 @@ namespace KTKS_DonKH.LinQ
 					this._VeViec = value;
 					this.SendPropertyChanged("VeViec");
 					this.OnVeViecChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KinhTrinh", DbType="NVarChar(200)")]
+		public string KinhTrinh
+		{
+			get
+			{
+				return this._KinhTrinh;
+			}
+			set
+			{
+				if ((this._KinhTrinh != value))
+				{
+					this.OnKinhTrinhChanging(value);
+					this.SendPropertyChanging();
+					this._KinhTrinh = value;
+					this.SendPropertyChanged("KinhTrinh");
+					this.OnKinhTrinhChanged();
 				}
 			}
 		}

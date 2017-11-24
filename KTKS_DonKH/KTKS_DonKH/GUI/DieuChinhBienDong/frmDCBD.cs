@@ -448,7 +448,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     //        || !string.IsNullOrEmpty(txtGiaBieu_BD.Text.Trim())
                     //        || !string.IsNullOrEmpty(txtDinhMuc_BD.Text.Trim())
                     //        ))))
-                    if ((chkDMGiuNguyen.Checked == false && chkGBGiuNguyen.Checked == false && chkGiaHanKT3.Checked == false && chkGiaHanNhapCu.Checked == false) && (txtHieuLucKy.Text.Trim() == "" || (txtHoTen_BD.Text.Trim() == "" && txtDiaChi_BD.Text.Trim() == "" && txtMSThue_BD.Text.Trim() == "" && txtGiaBieu_BD.Text.Trim() == "" && txtDinhMuc_BD.Text.Trim() == "")))
+                    if ((chkDMGiuNguyen.Checked == false && chkGBGiuNguyen.Checked == false && chkGiaHanKT3.Checked == false && chkGiaHanNhapCu.Checked == false)
+                        && (txtHieuLucKy.Text.Trim() == "" || (txtHoTen_BD.Text.Trim() == "" && txtDiaChi_BD.Text.Trim() == "" && txtMSThue_BD.Text.Trim() == "" && txtGiaBieu_BD.Text.Trim() == "" && txtDinhMuc_BD.Text.Trim() == ""
+                        && txtSH_BD.Text.Trim() == "" && txtSX_BD.Text.Trim() == "" && txtDV_BD.Text.Trim() == "" && txtHCSN_BD.Text.Trim() == "")))
                     {
                         MessageBox.Show("Chưa có Hiệu Lực Kỳ \nHoặc không có biến động", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;

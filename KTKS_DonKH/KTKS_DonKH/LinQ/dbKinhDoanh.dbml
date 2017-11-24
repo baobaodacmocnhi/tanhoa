@@ -593,6 +593,7 @@
       <Column Name="Ky" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Nam" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="VeViec" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="KinhTrinh" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="NoiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="NoiNhan" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="MaTT" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
