@@ -7714,7 +7714,7 @@ namespace ThuTien.DAL.Doi
         public DataTable GetDSChuyenKhoan(int Nam)
         {
             string sql = "declare @Nam int;"
-                        + " set @Nam=" + Nam
+                        + " set @Nam=" + Nam + ";"
                         + " select tt.*,TENPHUONG,TENQUAN from"
                         + " (select t.DANHBA as DanhBo,t1.DangNgan_ChuyenKhoan as Ky1,t2.DangNgan_ChuyenKhoan as Ky2,t3.DangNgan_ChuyenKhoan as Ky3,t4.DangNgan_ChuyenKhoan as Ky4,t5.DangNgan_ChuyenKhoan as Ky5,t6.DangNgan_ChuyenKhoan as Ky6,"
                         + " t7.DangNgan_ChuyenKhoan as Ky7,t8.DangNgan_ChuyenKhoan as Ky8,t9.DangNgan_ChuyenKhoan as Ky9,t10.DangNgan_ChuyenKhoan as Ky10,t11.DangNgan_ChuyenKhoan as Ky11,t12.DangNgan_ChuyenKhoan as Ky12,"

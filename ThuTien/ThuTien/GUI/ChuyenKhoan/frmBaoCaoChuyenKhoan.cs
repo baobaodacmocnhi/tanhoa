@@ -1202,6 +1202,8 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnXuatExcelDSChuyenKhoan_Click(object sender, EventArgs e)
         {
+            DataTable dt = _cHoaDon.GetDSChuyenKhoan(int.Parse(cmbNam.SelectedValue.ToString()));
+
             //Tạo các đối tượng Excel
             Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
             Microsoft.Office.Interop.Excel.Workbooks oBooks;
@@ -1288,8 +1290,6 @@ namespace ThuTien.GUI.ChuyenKhoan
             //Microsoft.Office.Interop.Excel.Range cl16 = oSheet.get_Range("P1", "P1");
             //cl16.Value2 = "Bank";
             //cl16.ColumnWidth = 10;
-
-            DataTable dt = _cHoaDon.GetDSChuyenKhoan(int.Parse(cmbNam.SelectedValue.ToString()));
 
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
