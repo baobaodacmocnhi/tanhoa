@@ -193,7 +193,8 @@
             "Đã thanh toán",
             "Trả góp",
             "Điều chỉnh không phát sinh truy thu",
-            "Miễn truy thu"});
+            "Miễn truy thu",
+            "Đã gửi TB tạm ngưng cung cấp nước"});
             this.cmbTinhTrang.Location = new System.Drawing.Point(286, 160);
             this.cmbTinhTrang.Name = "cmbTinhTrang";
             this.cmbTinhTrang.Size = new System.Drawing.Size(172, 24);

@@ -5,6 +5,7 @@ using System.Text;
 using KTKS_DonKH.LinQ;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.QuanTri;
+using System.Data;
 
 namespace KTKS_DonKH.DAL.ThaoThuTraLoi
 {
@@ -185,6 +186,46 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
         public CTToTrinh GetCT(decimal MaCTTT)
         {
             return db.CTToTrinhs.SingleOrDefault(itemCTTT => itemCTTT.MaCTTT == MaCTTT);
+        }
+
+        public DataTable GetDS(string DanhBo)
+        {
+            var query = from item in db.CTToTrinhs
+                        where item.DanhBo == DanhBo
+                        select new
+                        {
+                            MaDon = item.ToTrinh.MaDon != null ? "TKH" + item.ToTrinh.MaDon
+                                : item.ToTrinh.MaDonTXL != null ? "TXL" + item.ToTrinh.MaDonTXL
+                                : item.ToTrinh.MaDonTBC != null ? "TBC" + item.ToTrinh.MaDonTBC : null,
+                            item.MaCTTT,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.VeViec,
+                            item.NoiDung,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDS(DateTime FromCreateDate,DateTime ToCreateDate)
+        {
+            var query = from item in db.CTToTrinhs
+                        where item.CreateDate.Value.Date >=FromCreateDate.Date && item.CreateDate.Value.Date<=ToCreateDate.Date
+                        select new
+                        {
+                            MaDon = item.ToTrinh.MaDon != null ? "TKH" + item.ToTrinh.MaDon
+                                : item.ToTrinh.MaDonTXL != null ? "TXL" + item.ToTrinh.MaDonTXL
+                                : item.ToTrinh.MaDonTBC != null ? "TBC" + item.ToTrinh.MaDonTBC : null,
+                            item.MaCTTT,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.VeViec,
+                            item.NoiDung,
+                        };
+            return LINQToDataTable(query);
         }
 
         #endregion

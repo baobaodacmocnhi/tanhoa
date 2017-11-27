@@ -13,6 +13,9 @@ using KTKS_DonKH.DAL.ToBamChi;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.ThaoThuTraLoi;
 using KTKS_DonKH.DAL.QuanTri;
+using KTKS_DonKH.BaoCao;
+using KTKS_DonKH.BaoCao.ThaoThuTraLoi;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 {
@@ -39,7 +42,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 
         private void frmToTrinh_Load(object sender, EventArgs e)
         {
-
+            dgvToTrinh.AutoGenerateColumns = false;
         }
 
         public void LoadTTKH(HOADON hoadon)
@@ -83,6 +86,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         public void Clear()
         {
             txtMaDonCu.Text = "";
+            txtMaCTTT.Text = "";
             ///
             txtDanhBo.Text = "";
             txtHoTen.Text = "";
@@ -337,6 +341,74 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             }
             else
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbTimTheo.SelectedItem.ToString())
+            {
+                case "Danh Bộ":
+                    txtNoiDungTimKiem.Visible = true;
+                    panel_KhoangThoiGian.Visible = false;
+                    break;
+                case "Ngày":
+                    txtNoiDungTimKiem.Visible = false;
+                    panel_KhoangThoiGian.Visible = true;
+                    break;
+                default:
+                    txtNoiDungTimKiem.Visible = false;
+                    panel_KhoangThoiGian.Visible = false;
+                    break;
+            }
+            dgvToTrinh.DataSource = null;
+        }
+
+        private void btnXem_Click(object sender, EventArgs e)
+        {
+            switch (cmbTimTheo.SelectedItem.ToString())
+            {
+                case "Danh Bộ":
+                    dgvToTrinh.DataSource = _cTT.GetDS(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""));
+                    break;
+                case "Ngày":
+                    dgvToTrinh.DataSource = _cTT.GetDS(dateTu.Value, dateDen.Value);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void dgvToTrinh_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            _cttt = _cTT.GetCT(decimal.Parse(dgvToTrinh["MaCTTT",e.RowIndex].Value.ToString()));
+            LoadTT(_cttt);
+        }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            if (_cttt != null)
+            {
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
+
+                dr["SoPhieu"] = _cttt.MaCTTT.ToString().Insert(_cttt.MaCTTT.ToString().Length - 2, "-");
+                dr["HoTen"] = _cttt.HoTen;
+                dr["DiaChi"] = _cttt.DiaChi;
+                if (!string.IsNullOrEmpty(_cttt.DanhBo) && _cttt.DanhBo.Length == 11)
+                    dr["DanhBo"] = _cttt.DanhBo.Insert(7, " ").Insert(4, " ");
+
+                dr["VeViec"] = _cttt.VeViec;
+                dr["KinhTrinh"] = _cttt.KinhTrinh;
+                dr["NoiDung"] = _cttt.NoiDung;
+                dr["NoiNhan"] = _cttt.NoiNhan;
+
+                dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+
+                rptToTrinh rpt = new rptToTrinh();
+                    rpt.SetDataSource(dsBaoCao);
+                    frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                    frm.Show();
+            }
         }
 
         
