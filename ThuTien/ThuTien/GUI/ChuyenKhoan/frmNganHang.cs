@@ -32,6 +32,8 @@ namespace ThuTien.GUI.ChuyenKhoan
         public void Clear()
         {
             txtTenNH.Text = "";
+            txtKyHieu.Text = "";
+            txtSoTK.Text = "";
             _selectedindex = -1;
             dgvNganHang.DataSource = _cNganHang.GetDS();
         }
@@ -45,6 +47,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     NGANHANG nganhang = new NGANHANG();
                     nganhang.KyHieu = txtKyHieu.Text.Trim();
                     nganhang.NGANHANG1 = txtTenNH.Text.Trim();
+                    nganhang.SoTK = txtSoTK.Text.Trim();
                     if (_cNganHang.Them(nganhang))
                     {
                         Clear();
@@ -65,6 +68,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     NGANHANG nganhang = _cNganHang.GetByMaNH(int.Parse(dgvNganHang["MaNH", _selectedindex].Value.ToString()));
                     nganhang.KyHieu = txtKyHieu.Text.Trim();
                     nganhang.NGANHANG1 = txtTenNH.Text.Trim();
+                    nganhang.SoTK = txtSoTK.Text.Trim();
                     if (_cNganHang.Sua(nganhang))
                     {
                         Clear();
@@ -101,6 +105,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 _selectedindex = e.RowIndex;
                 txtKyHieu.Text = dgvNganHang["KyHieu", e.RowIndex].Value.ToString();
                 txtTenNH.Text = dgvNganHang["TenNH", e.RowIndex].Value.ToString();
+                txtSoTK.Text = dgvNganHang["SoTK", e.RowIndex].Value.ToString();
             }
             catch
             {

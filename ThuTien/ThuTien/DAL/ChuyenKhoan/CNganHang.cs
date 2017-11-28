@@ -74,7 +74,7 @@ namespace ThuTien.DAL.ChuyenKhoan
 
         public System.Data.DataTable GetDS()
         {
-            return LINQToDataTable(_db.NGANHANGs.Select(item => new { MaNH = item.ID_NGANHANG,item.KyHieu ,TenNH = item.NGANHANG1 }).ToList());
+            return LINQToDataTable(_db.NGANHANGs.Select(item => new { MaNH = item.ID_NGANHANG,item.KyHieu ,TenNH = item.NGANHANG1,item.SoTK }).ToList());
         }
     }
 }

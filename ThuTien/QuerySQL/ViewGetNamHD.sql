@@ -1,0 +1,2 @@
+SELECT DISTINCT NAM, CONVERT(varchar(4), NAM) AS ID
+FROM         dbo.HOADON

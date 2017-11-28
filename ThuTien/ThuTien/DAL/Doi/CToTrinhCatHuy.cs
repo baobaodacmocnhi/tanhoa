@@ -120,7 +120,7 @@ namespace ThuTien.DAL.Doi
 
         public bool CheckExist_CT(string SoHoaDon)
         {
-            return _db.TT_CTToTrinhCatHuys.Any(item => item.TT_ToTrinhCatHuy.DaKy==false&& item.SoHoaDon.Contains(SoHoaDon));
+            return _db.TT_CTToTrinhCatHuys.Any(item => item.TT_ToTrinhCatHuy.DaKy == false && item.SoHoaDon==SoHoaDon);
         }
 
         public TT_CTToTrinhCatHuy GetCT(int MaCTTT)

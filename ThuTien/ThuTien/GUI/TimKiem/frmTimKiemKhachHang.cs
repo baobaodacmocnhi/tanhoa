@@ -58,27 +58,31 @@ namespace ThuTien.GUI.TimKiem
             if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ", "")) || !string.IsNullOrEmpty(txtMLT.Text.Trim().Replace(" ", "")))
                 foreach (DataGridViewRow item in dgvHoaDon.Rows)
                 {
-                    if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon"].Value.ToString()) == true)
+                    //if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon"].Value.ToString()) == true)
+                    if (item.Cells["MaDN"].Value.ToString()!="")
                         item.DefaultCellStyle.BackColor = Color.Yellow;
-                    if (_cDongNuoc.CheckExist_KQDongNuocLan2(item.Cells["SoHoaDon"].Value.ToString()) == true)
+                    //if (_cDongNuoc.CheckExist_KQDongNuocLan2(item.Cells["SoHoaDon"].Value.ToString()) == true)
+                    if (bool.Parse(item.Cells["DongNuoc2"].Value.ToString()) == true)
                         item.DefaultCellStyle.BackColor = Color.Orange;
-                    if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()) == true)
+                    //if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()) == true)
+                    if (bool.Parse(item.Cells["LenhHuy"].Value.ToString()) == true)
                     {
                         //item.Cells["TinhTrang"].Value = _cLenhHuy.GetTinhTrangBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
                         item.DefaultCellStyle.BackColor = Color.Red;
                     }
                     else
-                        if (_cTTCH.CheckExist_CT(item.Cells["SoHoaDon"].Value.ToString()) == true)
+                        //if (_cTTCH.CheckExist_CT(item.Cells["SoHoaDon"].Value.ToString()) == true)
+                        if (bool.Parse(item.Cells["ToTrinh"].Value.ToString()) == true)
                         {
                             item.DefaultCellStyle.BackColor = Color.Green;
                         }
-                    if (_cCNKD.CheckExistCT(item.Cells["SoHoaDon"].Value.ToString()) == true)
-                    {
-                        TT_CTChuyenNoKhoDoi ctcnkd = _cCNKD.GetCT(item.Cells["SoHoaDon"].Value.ToString());
+                    //if (_cCNKD.CheckExistCT(item.Cells["SoHoaDon"].Value.ToString()) == true)
+                    //{
+                    //TT_CTChuyenNoKhoDoi ctcnkd = _cCNKD.GetCT(item.Cells["SoHoaDon"].Value.ToString());
 
-                        //item.Cells["NgayGiaiTrach"].Value = ctcnkd.CreateDate.Value.ToString("dd/MM/yyyy");
-                        item.Cells["DangNgan"].Value = "CNKĐ";
-                    }
+                    //    //item.Cells["NgayGiaiTrach"].Value = ctcnkd.CreateDate.Value.ToString("dd/MM/yyyy");
+                    //    item.Cells["DangNgan"].Value = "CNKĐ";
+                    //}
                 }
         }
 

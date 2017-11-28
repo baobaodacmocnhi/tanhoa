@@ -31,14 +31,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtTenNH = new System.Windows.Forms.TextBox();
             this.dgvNganHang = new System.Windows.Forms.DataGridView();
-            this.MaNH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KyHieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenNH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.txtKyHieu = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.txtSoTK = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.MaNH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KyHieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenNH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoTK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNganHang)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,41 +69,19 @@
             this.dgvNganHang.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaNH,
             this.KyHieu,
-            this.TenNH});
-            this.dgvNganHang.Location = new System.Drawing.Point(13, 64);
+            this.TenNH,
+            this.SoTK});
+            this.dgvNganHang.Location = new System.Drawing.Point(12, 90);
             this.dgvNganHang.MultiSelect = false;
             this.dgvNganHang.Name = "dgvNganHang";
             this.dgvNganHang.ReadOnly = true;
-            this.dgvNganHang.Size = new System.Drawing.Size(465, 378);
+            this.dgvNganHang.Size = new System.Drawing.Size(561, 378);
             this.dgvNganHang.TabIndex = 7;
             this.dgvNganHang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNganHang_CellContentClick);
             // 
-            // MaNH
-            // 
-            this.MaNH.DataPropertyName = "MaNH";
-            this.MaNH.HeaderText = "MaNH";
-            this.MaNH.Name = "MaNH";
-            this.MaNH.ReadOnly = true;
-            this.MaNH.Visible = false;
-            // 
-            // KyHieu
-            // 
-            this.KyHieu.DataPropertyName = "KyHieu";
-            this.KyHieu.HeaderText = "Ký Hiệu";
-            this.KyHieu.Name = "KyHieu";
-            this.KyHieu.ReadOnly = true;
-            // 
-            // TenNH
-            // 
-            this.TenNH.DataPropertyName = "TenNH";
-            this.TenNH.HeaderText = "Tên Ngân Hàng";
-            this.TenNH.Name = "TenNH";
-            this.TenNH.ReadOnly = true;
-            this.TenNH.Width = 300;
-            // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(484, 122);
+            this.btnXoa.Location = new System.Drawing.Point(389, 63);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 6;
@@ -111,7 +92,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(484, 93);
+            this.btnSua.Location = new System.Drawing.Point(389, 34);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 5;
@@ -121,7 +102,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(484, 64);
+            this.btnThem.Location = new System.Drawing.Point(389, 5);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 4;
@@ -145,11 +126,60 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Ký Hiệu:";
             // 
+            // txtSoTK
+            // 
+            this.txtSoTK.Location = new System.Drawing.Point(103, 64);
+            this.txtSoTK.Name = "txtSoTK";
+            this.txtSoTK.Size = new System.Drawing.Size(280, 20);
+            this.txtSoTK.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 67);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(40, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Số TK:";
+            // 
+            // MaNH
+            // 
+            this.MaNH.DataPropertyName = "MaNH";
+            this.MaNH.HeaderText = "MaNH";
+            this.MaNH.Name = "MaNH";
+            this.MaNH.ReadOnly = true;
+            this.MaNH.Visible = false;
+            // 
+            // KyHieu
+            // 
+            this.KyHieu.DataPropertyName = "KyHieu";
+            this.KyHieu.HeaderText = "Ký Hiệu";
+            this.KyHieu.Name = "KyHieu";
+            this.KyHieu.ReadOnly = true;
+            // 
+            // TenNH
+            // 
+            this.TenNH.DataPropertyName = "TenNH";
+            this.TenNH.HeaderText = "Tên Ngân Hàng";
+            this.TenNH.Name = "TenNH";
+            this.TenNH.ReadOnly = true;
+            this.TenNH.Width = 200;
+            // 
+            // SoTK
+            // 
+            this.SoTK.DataPropertyName = "SoTK";
+            this.SoTK.HeaderText = "Số TK";
+            this.SoTK.Name = "SoTK";
+            this.SoTK.ReadOnly = true;
+            this.SoTK.Width = 200;
+            // 
             // frmNganHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(589, 506);
+            this.ClientSize = new System.Drawing.Size(603, 506);
+            this.Controls.Add(this.txtSoTK);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtKyHieu);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnXoa);
@@ -175,10 +205,13 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
+        private System.Windows.Forms.TextBox txtKyHieu;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtSoTK;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaNH;
         private System.Windows.Forms.DataGridViewTextBoxColumn KyHieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenNH;
-        private System.Windows.Forms.TextBox txtKyHieu;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoTK;
     }
 }
