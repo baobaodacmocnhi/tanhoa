@@ -215,9 +215,13 @@ namespace ThuTien.GUI.HanhThu
                                 {
                                     if (_cHoaDon.DangNgan("Ton", item.Text, CNguoiDung.MaND))
                                         if (_cHoaDon.Thu2Lan(item.Text, ChuyenKhoan))
+                                        {
                                             if (_cTamThu.XoaAn(item.Text))
                                                 if (_cTienDuQuay.UpdateXoa(item.Text, "Thu 2 Lần", "Thêm"))
                                                     scope.Complete();
+                                        }
+                                        else
+                                            MessageBox.Show("Lỗi thu 2 lần, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             else
                             {
