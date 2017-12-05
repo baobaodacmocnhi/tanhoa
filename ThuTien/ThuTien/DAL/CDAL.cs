@@ -346,7 +346,7 @@ namespace ThuTien.DAL
                 Connect();
                 DataSet dataset = new DataSet();
                 command = new SqlCommand();
-                command.CommandTimeout = 60;
+                command.CommandTimeout = 300;
                 command.Connection = this.connection;
                 adapter = new SqlDataAdapter(sql, connection);
                 try

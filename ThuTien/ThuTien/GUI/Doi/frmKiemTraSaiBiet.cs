@@ -243,7 +243,10 @@ namespace ThuTien.GUI.Doi
                     {
                         if (lstViewA.FindItemWithText(item.Trim().ToUpper()) == null)
                         {
-                            lstViewA.Items.Add(item.Trim().ToUpper());
+                            ListViewItem lvi = new ListViewItem();
+                            lvi.Text = item.Trim().ToUpper();
+                            lvi.Name = item.Trim().ToUpper();
+                            lstViewA.Items.Add(lvi);
                             lstViewA.EnsureVisible(lstViewA.Items.Count - 1);
                         }
                     }
@@ -271,7 +274,10 @@ namespace ThuTien.GUI.Doi
                     {
                         if (lstViewB.FindItemWithText(item.Trim().ToUpper()) == null)
                         {
-                            lstViewB.Items.Add(item.Trim().ToUpper());
+                            ListViewItem lvi = new ListViewItem();
+                            lvi.Text = item.Trim().ToUpper();
+                            lvi.Name = item.Trim().ToUpper();
+                            lstViewB.Items.Add(lvi);
                             lstViewB.EnsureVisible(lstViewB.Items.Count - 1);
                         }
                     }

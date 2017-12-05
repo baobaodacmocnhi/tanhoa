@@ -135,6 +135,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 DateTime NgayBK = new DateTime();
                 DateTime.TryParse(item.Cells["NgayBK_PMN"].Value.ToString(), out NgayBK);
                 dr["NgayBK"] = NgayBK.ToString("dd/MM/yyyy");
+                dr["NgayGiaiTrach"] = NgayBK.ToString("dd/MM/yyyy");
                 dr["SoTien"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(item.Cells["SoTien_PMN"].Value.ToString()));
                 dr["TongCong"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(item.Cells["TongCong_PMN"].Value.ToString()));
                 if (item.Cells["PhiMoNuoc"].Value.ToString() != "")
@@ -147,6 +148,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["PhiMoNuoc"] = 50000;
                     dr["PhiMoNuocChu"] = _cPhiMoNuoc.ConvertMoneyToWord(dr["PhiMoNuoc"].ToString());
                 }
+                dr["SoTK"] = item.Cells["SoTK_PMN"].Value.ToString();
                 ds.Tables["PhiMoNuoc"].Rows.Add(dr);
             }
 

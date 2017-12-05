@@ -125,6 +125,11 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 if (MessageBox.Show("Bạn có chắc chắn Chuyển Phí Mở Nước?", "Xác nhận sửa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
+                    if (txtSoTien.Text.Trim() == "" && int.Parse(txtSoTien.Text.Trim()) == 0)
+                    {
+                        MessageBox.Show("Chưa chọn Ngày Bảng Kê", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByDanhBo_Last(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""));
                     if (kqdongnuoc != null && kqdongnuoc.DongPhi == false)
                     {
@@ -145,6 +150,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 phimonuoc.DiaChi = hoadon.SO + " " + hoadon.DUONG;
                                 phimonuoc.NgayBK = dateBangKe.Value;
                                 phimonuoc.SoTien = _cBangKe.GetSoTien(hoadon.DANHBA, dateBangKe.Value);
+                                phimonuoc.SoTK = _cBangKe.GetSoTK(hoadon.DANHBA, dateBangKe.Value);
                                 phimonuoc.TongCong = phimonuoc.SoTien - kqdongnuoc.PhiMoNuoc.Value;
                                 phimonuoc.PhiMoNuoc = kqdongnuoc.PhiMoNuoc;
                                 phimonuoc.MaKQDN = kqdongnuoc.MaKQDN;

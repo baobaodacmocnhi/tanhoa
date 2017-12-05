@@ -225,6 +225,14 @@ namespace ThuTien.DAL.ChuyenKhoan
                 return 0;
         }
 
+        public string GetSoTK(string DanhBo, DateTime CreateDate)
+        {
+            if (_db.TT_BangKes.Any(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date))
+                return _db.NGANHANGs.SingleOrDefault(itemB => itemB.ID_NGANHANG == _db.TT_BangKes.FirstOrDefault(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date).MaNH).SoTK;
+            else
+                return "";
+        }
+
         public string GetBank(string DanhBo)
         {
             if (_db.TT_BangKes.Any(itemBK => itemBK.DanhBo == DanhBo && itemBK.MaNH != null))
