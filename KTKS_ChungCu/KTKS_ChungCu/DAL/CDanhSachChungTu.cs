@@ -24,6 +24,7 @@ namespace KTKS_ChungCu.DAL
             }
             catch (Exception)
             {
+                db = new dbChungCuDataContext();
                 return false;
             }
         }
@@ -38,6 +39,7 @@ namespace KTKS_ChungCu.DAL
             }
             catch (Exception)
             {
+                db = new dbChungCuDataContext();
                 return false;
             }
         }
@@ -52,6 +54,7 @@ namespace KTKS_ChungCu.DAL
             }
             catch (Exception)
             {
+                db = new dbChungCuDataContext();
                 return false;
             }
         }
