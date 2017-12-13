@@ -58,23 +58,43 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim()) && e.KeyChar == 13)
+            if (tabControl.SelectedTab.Name == "tabThongTin")
             {
-                DataTable dt = (DataTable)dgvHoaDon.DataSource;
-                foreach (string item in txtDanhBo.Lines)
-                    if (item.Length == 11)
-                    {
-                        if (dt == null)
-                            dt = _cHoaDon.GetDSTonByDanhBo(item);
-                        else
-                            dt.Merge(_cHoaDon.GetDSTonByDanhBo(item));
-                    }
-                dgvHoaDon.DataSource = dt;
-                for (int i = 0; i < dgvHoaDon.Rows.Count; i++)
+                if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim()) && e.KeyChar == 13)
                 {
-                    dgvHoaDon["Chon", i].Value = true;
+                    DataTable dt = (DataTable)dgvHoaDon.DataSource;
+                    foreach (string item in txtDanhBo.Lines)
+                        if (item.Length == 11)
+                        {
+                            if (dt == null)
+                                dt = _cHoaDon.GetDSTonByDanhBo(item);
+                            else
+                                dt.Merge(_cHoaDon.GetDSTonByDanhBo(item));
+                        }
+                    dgvHoaDon.DataSource = dt;
+                    for (int i = 0; i < dgvHoaDon.Rows.Count; i++)
+                    {
+                        dgvHoaDon["Chon", i].Value = true;
+                    }
                 }
             }
+            else
+                if (tabControl.SelectedTab.Name == "tabTamThu")
+                {
+                    if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim()) && e.KeyChar == 13)
+                    {
+                        DataTable dt = new DataTable();
+                        foreach (string item in txtDanhBo.Lines)
+                            if (item.Length == 11)
+                            {
+                                if (dt == null)
+                                    dt = _cTamThu.GetDS(true, item);
+                                else
+                                    dt.Merge(_cTamThu.GetDS(true, item));
+                            }
+                        dgvTamThu.DataSource = dt;
+                    }
+                }
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -226,16 +246,22 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["LoaiBaoCao"] = "TẠM THU CHUYỂN KHOẢN";
                     dr["GhiChu"] = "ĐÃ CHUYỂN KHOẢN";
                     dr["DanhBo"] = item.Cells["DanhBo_TT"].Value.ToString().Insert(4, " ").Insert(8, " ");
-                    dr["HoTen"] = item.Cells["HoTen_TT"].Value.ToString();
+                    
                     dr["MLT"] = item.Cells["MLT_TT"].Value.ToString().Insert(4, " ").Insert(2, " ");
                     dr["Ky"] = item.Cells["Ky_TT"].Value.ToString();
                     dr["TongCong"] = item.Cells["TongCong_TT"].Value.ToString();
                     dr["HanhThu"] = item.Cells["HanhThu_TT"].Value.ToString();
                     dr["To"] = item.Cells["To_TT"].Value.ToString();
                     if (int.Parse(item.Cells["GiaBieu_TT"].Value.ToString()) > 20)
+                    {
                         dr["Loai"] = "CQ";
+                        dr["HoTen"] = item.Cells["HoTen_TT"].Value.ToString();
+                    }
                     else
+                    {
                         dr["Loai"] = "TG";
+                        dr["HoTen"] = item.Cells["DiaChi_TT"].Value.ToString();
+                    }
                     if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_TT"].Value.ToString()))
                         dr["LenhHuy"] = true;
 

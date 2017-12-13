@@ -537,7 +537,7 @@ namespace ThuTien.GUI.HanhThu
                             dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                         }
                 }
-            dsBaoCao.Tables["TBDongNuoc"].DefaultView.Sort = "MLT ASC";
+
             rptTBTienNuocPhoto rpt = new rptTBTienNuocPhoto();
             rpt.SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);
@@ -652,7 +652,7 @@ namespace ThuTien.GUI.HanhThu
                             dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                         }
                 }
-            dsBaoCao.Tables["TBDongNuoc"].DefaultView.Sort = "MLT ASC";
+
             rptTBCatOngPhoto rpt = new rptTBCatOngPhoto();
             rpt.SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);
@@ -729,6 +729,7 @@ namespace ThuTien.GUI.HanhThu
                         dr["DiaChi"] = item.Cells["DiaChi_TG"].Value.ToString();
                         if (!string.IsNullOrEmpty(item.Cells["DanhBo_TG"].Value.ToString()))
                             dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(7, " ").Insert(4, " ");
+                        dr["MLT"] = item.Cells["MLT_TG"].Value.ToString().Insert(4, " ").Insert(2, " ");
                         dr["Ky"] = Ky;
                         dr["SoTien"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
 
@@ -759,6 +760,7 @@ namespace ThuTien.GUI.HanhThu
                             dr["DiaChi"] = item.Cells["DiaChi_CQ"].Value.ToString();
                             if (!string.IsNullOrEmpty(item.Cells["DanhBo_CQ"].Value.ToString()))
                                 dr["DanhBo"] = item.Cells["DanhBo_CQ"].Value.ToString().Insert(7, " ").Insert(4, " ");
+                            dr["MLT"] = item.Cells["MLT_CQ"].Value.ToString().Insert(4, " ").Insert(2, " ");
                             dr["Ky"] = Ky;
                             dr["SoTien"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
 

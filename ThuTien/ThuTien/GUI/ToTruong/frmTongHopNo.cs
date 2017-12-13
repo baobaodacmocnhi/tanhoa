@@ -344,10 +344,21 @@ namespace ThuTien.GUI.ToTruong
                     if (radPhoGiamDoc.Checked)
                         dr1["NguoiKy"] = "P.GIÁM ĐỐC";
                 ds.Tables["TongHopNo"].Rows.Add(dr1);
-                rptTongHopNo rpt = new rptTongHopNo();
-                rpt.SetDataSource(ds);
-                frmBaoCao frm = new frmBaoCao(rpt);
-                frm.Show();
+                if (radA4.Checked)
+                {
+                    rptTongHopNoA4 rpt = new rptTongHopNoA4();
+                    rpt.SetDataSource(ds);
+                    frmBaoCao frm = new frmBaoCao(rpt);
+                    frm.Show();
+                }
+                else
+                    if (radA5.Checked)
+                    {
+                        rptTongHopNoA5 rpt = new rptTongHopNoA5();
+                        rpt.SetDataSource(ds);
+                        frmBaoCao frm = new frmBaoCao(rpt);
+                        frm.Show();
+                    }
             }
             else
                 MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -496,10 +507,21 @@ namespace ThuTien.GUI.ToTruong
                     dr1["NguoiKy"] = "P.GIÁM ĐỐC";
 
             ds.Tables["TongHopNo"].Rows.Add(dr1);
-            rptTongHopNo rpt = new rptTongHopNo();
-            rpt.SetDataSource(ds);
-            frmBaoCao frm = new frmBaoCao(rpt);
-            frm.Show();
+            if (radA4.Checked)
+            {
+                rptTongHopNoA4 rpt = new rptTongHopNoA4();
+                rpt.SetDataSource(ds);
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.Show();
+            }
+            else
+                if (radA5.Checked)
+                {
+                    rptTongHopNoA5 rpt = new rptTongHopNoA5();
+                    rpt.SetDataSource(ds);
+                    frmBaoCao frm = new frmBaoCao(rpt);
+                    frm.Show();
+                }
         }
 
         private void dgvHoaDon_CellValidated(object sender, DataGridViewCellEventArgs e)

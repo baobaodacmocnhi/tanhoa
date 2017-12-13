@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ThuTien.BaoCao.DongNuoc {
+namespace ThuTien.BaoCao.ToTruong {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace ThuTien.BaoCao.DongNuoc {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rptGiayXacNhanNoKhoDoi : ReportClass {
+    public class rptTongHopNoA4 : ReportClass {
         
-        public rptGiayXacNhanNoKhoDoi() {
+        public rptTongHopNoA4() {
         }
         
         public override string ResourceName {
             get {
-                return "rptGiayXacNhanNoKhoDoi.rpt";
+                return "rptTongHopNoA4.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace ThuTien.BaoCao.DongNuoc {
         
         public override string FullResourceName {
             get {
-                return "ThuTien.BaoCao.DongNuoc.rptGiayXacNhanNoKhoDoi.rpt";
+                return "ThuTien.BaoCao.ToTruong.rptTongHopNoA4.rpt";
             }
             set {
                 // Do nothing
@@ -66,7 +66,7 @@ namespace ThuTien.BaoCao.DongNuoc {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection2 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[2];
             }
@@ -74,7 +74,7 @@ namespace ThuTien.BaoCao.DongNuoc {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,7 +82,7 @@ namespace ThuTien.BaoCao.DongNuoc {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+        public CrystalDecisions.CrystalReports.Engine.Section ReportFooterSection2 {
             get {
                 return this.ReportDefinition.Sections[4];
             }
@@ -90,41 +90,17 @@ namespace ThuTien.BaoCao.DongNuoc {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
-            get {
-                return this.ReportDefinition.Sections[5];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection2 {
-            get {
-                return this.ReportDefinition.Sections[6];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
-            get {
-                return this.ReportDefinition.Sections[7];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
-                return this.ReportDefinition.Sections[8];
+                return this.ReportDefinition.Sections[5];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrptGiayXacNhanNoKhoDoi : Component, ICachedReport {
+    public class CachedrptTongHopNoA4 : Component, ICachedReport {
         
-        public CachedrptGiayXacNhanNoKhoDoi() {
+        public CachedrptTongHopNoA4() {
         }
         
         [Browsable(false)]
@@ -161,7 +137,7 @@ namespace ThuTien.BaoCao.DongNuoc {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rptGiayXacNhanNoKhoDoi rpt = new rptGiayXacNhanNoKhoDoi();
+            rptTongHopNoA4 rpt = new rptTongHopNoA4();
             rpt.Site = this.Site;
             return rpt;
         }

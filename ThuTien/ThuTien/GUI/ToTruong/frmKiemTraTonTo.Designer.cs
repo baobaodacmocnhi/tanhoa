@@ -311,7 +311,7 @@
             this.tabCoQuan.Location = new System.Drawing.Point(4, 22);
             this.tabCoQuan.Name = "tabCoQuan";
             this.tabCoQuan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCoQuan.Size = new System.Drawing.Size(1299, 428);
+            this.tabCoQuan.Size = new System.Drawing.Size(1282, 354);
             this.tabCoQuan.TabIndex = 1;
             this.tabCoQuan.Text = "Cơ Quan";
             this.tabCoQuan.UseVisualStyleBackColor = true;
@@ -934,7 +934,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1308, 476);
+            this.ClientSize = new System.Drawing.Size(1330, 476);
             this.Controls.Add(this.cmbToDot);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.cmbFromDot);

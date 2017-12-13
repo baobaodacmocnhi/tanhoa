@@ -823,7 +823,7 @@ namespace ThuTien.GUI.ToTruong
                                     if (cmbKy.SelectedIndex == 0)
                                         dt = _cHoaDon.GetDSTon_NV("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoKy.Text.Trim()));
                                     else
-                                        if (cmbKy.SelectedIndex > 1)
+                                        if (cmbKy.SelectedIndex > 0)
                                             if (cmbNhanVien.SelectedIndex == 0)
                                                 dt = _cHoaDon.GetDSTon_NV("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoKy.Text.Trim()));
                                             else
@@ -899,7 +899,7 @@ namespace ThuTien.GUI.ToTruong
                                         if (cmbKy.SelectedIndex == 0)
                                             dt = _cHoaDon.GetDSTon_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoKy.Text.Trim()));
                                         else
-                                            if (cmbKy.SelectedIndex > 1)
+                                            if (cmbKy.SelectedIndex > 0)
                                                 if (cmbNhanVien.SelectedIndex == 0)
                                                     dt = _cHoaDon.GetDSTon_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoKy.Text.Trim()));
                                                 else
