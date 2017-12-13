@@ -11,11 +11,14 @@ using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.ToXuLy;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.BaoCao.CongVan;
+using KTKS_DonKH.DAL.ToKhachHang;
+using KTKS_DonKH.BaoCao.ToKhachHang;
 
 namespace KTKS_DonKH.GUI.ToKhachHang
 {
     public partial class frmBaoCaoDonTKH : Form
     {
+        CDonKH _cDonKH = new CDonKH();
         CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
 
         public frmBaoCaoDonTKH()
@@ -195,6 +198,31 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                 dsBaoCao.Tables["CongVan"].Rows.Add(dr);
             }
             rptDSCongVan rpt = new rptDSCongVan();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.Show();
+        }
+
+        private void btnBaoCao_ThongKeLoaiDon_Click(object sender, EventArgs e)
+        {
+            DataTable dt = _cDonKH.GetDS(dateTu_ThongKeLoaiDon.Value, dateDen_ThongKeLoaiDon.Value);
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+
+            foreach (DataRow item in dt.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
+
+                dr["TuNgay"] = dateTu_ThongKeLoaiDon.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen_ThongKeLoaiDon.Value.ToString("dd/MM/yyyy");
+                dr["LoaiBaoCao"] = "TỔ KHÁCH HÀNG";
+                dr["MaDon"] = item["MaDon"];
+                dr["TenLD"] = item["TenLD"];
+                dr["DaGiaiQuyet"] = item["GiaiQuyet"];
+
+                dsBaoCao.Tables["DSDonTXL"].Rows.Add(dr);
+            }
+
+            rptThongKeDonTXL rpt = new rptThongKeDonTXL();
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.Show();

@@ -209,7 +209,7 @@
             this.groupBox2.Size = new System.Drawing.Size(270, 87);
             this.groupBox2.TabIndex = 25;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Thống Kê";
+            this.groupBox2.Text = "Thống Kê Theo Loại Đơn";
             // 
             // groupBox3
             // 

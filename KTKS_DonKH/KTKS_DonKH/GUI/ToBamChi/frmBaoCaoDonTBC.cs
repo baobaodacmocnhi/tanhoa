@@ -45,6 +45,8 @@ namespace KTKS_DonKH.GUI.ToBamChi
             {
                 DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
 
+                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
                 dr["LoaiBaoCao"] = "TỔ BẤM CHÌ";
                 dr["MaDon"] = item["MaDon"];
                 dr["TenLD"] = item["TenLD"];

@@ -129,7 +129,8 @@ namespace KTKS_DonKH.DAL.ToKhachHang
                             itemDonKH.NoiDung,
                             NguoiDi_KTXM = tmpUser.HoTen,
                             GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDon == itemDonKH.MaDon && item.CreateBy == itemDonKH.NguoiDi_KTXM) == true
-                            ? true : db.CTBamChis.Any(item => item.BamChi.MaDon == itemDonKH.MaDon && item.CreateBy == itemDonKH.NguoiDi_KTXM)
+                            ? true : db.CTBamChis.Any(item => item.BamChi.MaDon == itemDonKH.MaDon && item.CreateBy == itemDonKH.NguoiDi_KTXM) == true
+                            ? true : db.DCBDs.Any(item => item.MaDon == itemDonKH.MaDon)
                         };
             return LINQToDataTable(query);
         }
@@ -155,7 +156,8 @@ namespace KTKS_DonKH.DAL.ToKhachHang
                             itemDonKH.NoiDung,
                             NguoiDi_KTXM = tmpUser.HoTen,
                             GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDon == itemDonKH.MaDon && item.CreateBy == itemDonKH.NguoiDi_KTXM) == true
-                            ? true : db.CTBamChis.Any(item => item.BamChi.MaDon == itemDonKH.MaDon && item.CreateBy == itemDonKH.NguoiDi_KTXM)
+                            ? true : db.CTBamChis.Any(item => item.BamChi.MaDon == itemDonKH.MaDon && item.CreateBy == itemDonKH.NguoiDi_KTXM) == true
+                            ? true : db.DCBDs.Any(item => item.MaDon == itemDonKH.MaDon)
                         };
             return LINQToDataTable(query);
         }
@@ -179,7 +181,8 @@ namespace KTKS_DonKH.DAL.ToKhachHang
                             itemDonKH.NoiDung,
                             NguoiDi_KTXM = tmpUser.HoTen,
                             GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDon == itemDonKH.MaDon && item.CreateBy == itemDonKH.NguoiDi_KTXM) == true
-                            ? true : db.CTBamChis.Any(item => item.BamChi.MaDon == itemDonKH.MaDon && item.CreateBy == itemDonKH.NguoiDi_KTXM)
+                            ? true : db.CTBamChis.Any(item => item.BamChi.MaDon == itemDonKH.MaDon && item.CreateBy == itemDonKH.NguoiDi_KTXM) == true
+                            ? true : db.DCBDs.Any(item => item.MaDon == itemDonKH.MaDon)
                         };
             return LINQToDataTable(query);
         }
@@ -203,17 +206,18 @@ namespace KTKS_DonKH.DAL.ToKhachHang
                             itemDonKH.NoiDung,
                             NguoiDi_KTXM = tmpUser.HoTen,
                             GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDon == itemDonKH.MaDon && item.CreateBy == itemDonKH.NguoiDi_KTXM) == true
-                            ? true : db.CTBamChis.Any(item => item.BamChi.MaDon == itemDonKH.MaDon && item.CreateBy == itemDonKH.NguoiDi_KTXM)
+                            ? true : db.CTBamChis.Any(item => item.BamChi.MaDon == itemDonKH.MaDon && item.CreateBy == itemDonKH.NguoiDi_KTXM) == true
+                            ? true : db.DCBDs.Any(item => item.MaDon == itemDonKH.MaDon)
                         };
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDS(DateTime TuNgay, DateTime DenNgay)
+        public DataTable GetDS(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from itemDonKH in db.DonKHs
                         join itemUser in db.Users on itemDonKH.NguoiDi_KTXM equals itemUser.MaU into tmpUsers
                         from tmpUser in tmpUsers.DefaultIfEmpty()
-                        where itemDonKH.CreateDate.Value.Date >= TuNgay.Date && itemDonKH.CreateDate.Value.Date <= DenNgay.Date
+                        where itemDonKH.CreateDate.Value.Date >= FromCreateDate.Date && itemDonKH.CreateDate.Value.Date <= ToCreateDate.Date
                         orderby itemDonKH.CreateDate descending
                         select new
                         {
@@ -227,9 +231,18 @@ namespace KTKS_DonKH.DAL.ToKhachHang
                             itemDonKH.NoiDung,
                             NguoiDi_KTXM = tmpUser.HoTen,
                             GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDon == itemDonKH.MaDon && item.CreateBy == itemDonKH.NguoiDi_KTXM) == true
-                            ? true : db.CTBamChis.Any(item => item.BamChi.MaDon == itemDonKH.MaDon && item.CreateBy == itemDonKH.NguoiDi_KTXM)
+                            ? true : db.CTBamChis.Any(item => item.BamChi.MaDon == itemDonKH.MaDon && item.CreateBy == itemDonKH.NguoiDi_KTXM) == true
+                            ? true : db.DCBDs.Any(item => item.MaDon == itemDonKH.MaDon)
                         };
             return LINQToDataTable(query);
+        }
+
+        public DataTable ThongKeLoaiDon(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            string sql = "select b.TenLD,SoLuong=COUNT(a.MaDon) from DonKH a,LoaiDon b"
+                        + " where CAST(a.CreateDate as date)>='" + FromCreateDate.ToString("yyyy-MM-dd") + "' and CAST(a.CreateDate as date)<='" + ToCreateDate.ToString("yyyy-MM-dd") + "' and a.MaLD=b.MaLD"
+                        + " group by b.TenLD";
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
         #region LichSuChuyenVanPhong
