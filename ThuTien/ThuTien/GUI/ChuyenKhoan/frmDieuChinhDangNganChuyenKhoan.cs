@@ -341,7 +341,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             dsBaoCao ds = new dsBaoCao();
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                DataTable dt = _cHoaDon.GetTongDangNganByMaNV_DangNganNgayGiaiTrach("TG", CNguoiDung.MaND, dateGiaiTrach.Value);
+                DataTable dt = _cHoaDon.GetTongDangNgan("TG", CNguoiDung.MaND, dateGiaiTrach.Value);
                 foreach (DataRow item in dt.Rows)
                 {
                     DataRow dr = ds.Tables["PhieuDangNgan"].NewRow();
@@ -360,7 +360,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
                 {
-                    DataTable dt = _cHoaDon.GetTongDangNganByMaNV_DangNganNgayGiaiTrach("CQ", CNguoiDung.MaND, dateGiaiTrach.Value);
+                    DataTable dt = _cHoaDon.GetTongDangNgan("CQ", CNguoiDung.MaND, dateGiaiTrach.Value);
                     foreach (DataRow item in dt.Rows)
                     {
                         DataRow dr = ds.Tables["PhieuDangNgan"].NewRow();

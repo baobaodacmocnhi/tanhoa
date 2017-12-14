@@ -60,7 +60,7 @@ namespace ThuTien.GUI.Quay
                 for (int i = 0; i < lstTo.Count; i++)
                 {
                     dtoSheet[i] = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(i + 1);
-                    XuatExcel(_cHoaDon.GetTongDangNganQuayByMaToNgayGiaiTrachs(lstTo[i].MaTo, dateTu.Value, dateDen.Value), dtoSheet[i], lstTo[i].TenTo, dateDen.Value.Month.ToString() + "/" + dateDen.Value.Year.ToString());
+                    XuatExcel(_cHoaDon.GetTongDangNganQuay(lstTo[i].MaTo, dateTu.Value, dateDen.Value), dtoSheet[i], lstTo[i].TenTo, dateDen.Value.Month.ToString() + "/" + dateDen.Value.Year.ToString());
                 }
             }
         }

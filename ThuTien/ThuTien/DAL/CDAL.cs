@@ -13,7 +13,7 @@ namespace ThuTien.DAL
     class CDAL
     {
         protected static dbThuTienDataContext _db = new dbThuTienDataContext();
-
+        
         public void BeginTransaction()
         {
             if (_db.Connection.State == System.Data.ConnectionState.Closed)
@@ -57,11 +57,6 @@ namespace ThuTien.DAL
         {
             _db = new dbThuTienDataContext();
         }
-
-        //public void SubmitChanges()
-        //{
-        //    _db.SubmitChanges();
-        //}
 
         /// <summary>
         /// var vrCountry = from country in objEmpDataContext.CountryMaster
@@ -210,58 +205,6 @@ namespace ThuTien.DAL
                 Disconnect();
             }
             catch (Exception) { }
-        }
-
-        /// <summary>
-        /// Thực thi câu truy vấn SQL không trả về dữ liệu
-        /// </summary>
-        /// <param name="sql">Câu truy vấn cần thực thi</param>
-        /// <param name="flagTransaction">Có hoặc Không transaction</param>
-        public bool ExecuteNonQuery(string sql, bool flagTransaction)
-        {
-            if (!flagTransaction)
-                try
-                {
-                    Connect();
-                    command = new SqlCommand(sql, connection);
-                    int rowAffect = command.ExecuteNonQuery();
-                    Disconnect();
-                    if (rowAffect == 0)
-                        return false;
-                    else
-                    {
-                        //_db = new dbThuTienDataContext();
-                        return true;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Disconnect();
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-            else
-                try
-                {
-                    Connect();
-                    transaction = connection.BeginTransaction();
-                    command = new SqlCommand(sql, connection);
-                    command.Transaction = transaction;
-                    int rowAffect = command.ExecuteNonQuery();
-                    transaction.Commit();
-                    Disconnect();
-                    if (rowAffect == 0)
-                        return false;
-                    else
-                        return true;
-                }
-                catch (Exception ex)
-                {
-                    transaction.Rollback();
-                    Disconnect();
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
         }
 
         /// <summary>

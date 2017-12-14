@@ -124,7 +124,7 @@ namespace ThuTien.GUI.Doi
         private void btnXem_Click(object sender, EventArgs e)
         {
             List<TT_To> lst = _cTo.GetDS();
-            dgvNhanVien_TC.DataSource = _cHoaDon.GetTongDangNganByNgayGiaiTrach_Doi(dateTu.Value, dateDen.Value);
+            dgvNhanVien_TC.DataSource = _cHoaDon.GetTongDangNgan_Doi(dateTu.Value, dateDen.Value);
             CountdgvNhanVien_TC();
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
@@ -132,17 +132,17 @@ namespace ThuTien.GUI.Doi
                 {
                     DataTable dt = new DataTable();
 
-                    dt = _cHoaDon.GetTongDangNganByNgayGiaiTrach_Doi("TG", lst[0].MaTo, dateTu.Value, dateDen.Value);
+                    dt = _cHoaDon.GetTongDangNgan_Doi("TG", lst[0].MaTo, dateTu.Value, dateDen.Value);
                     for (int i = 1; i < lst.Count; i++)
                     {
-                        dt.Merge(_cHoaDon.GetTongDangNganByNgayGiaiTrach_Doi("TG", lst[i].MaTo, dateTu.Value, dateDen.Value));
+                        dt.Merge(_cHoaDon.GetTongDangNgan_Doi("TG", lst[i].MaTo, dateTu.Value, dateDen.Value));
                     }
 
                     dgvHDTuGia.DataSource = dt;
                 }
                 else
                 {
-                    dgvHDTuGia.DataSource = _cHoaDon.GetTongDangNganByNgayGiaiTrach_Doi("TG", int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
+                    dgvHDTuGia.DataSource = _cHoaDon.GetTongDangNgan_Doi("TG", int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
                 }
                 CountdgvHDTuGia();
             }
@@ -153,17 +153,17 @@ namespace ThuTien.GUI.Doi
                     {
                         DataTable dt = new DataTable();
 
-                        dt = _cHoaDon.GetTongDangNganByNgayGiaiTrach_Doi("CQ", lst[0].MaTo, dateTu.Value, dateDen.Value);
+                        dt = _cHoaDon.GetTongDangNgan_Doi("CQ", lst[0].MaTo, dateTu.Value, dateDen.Value);
                         for (int i = 1; i < lst.Count; i++)
                         {
-                            dt.Merge(_cHoaDon.GetTongDangNganByNgayGiaiTrach_Doi("CQ", lst[i].MaTo, dateTu.Value, dateDen.Value));
+                            dt.Merge(_cHoaDon.GetTongDangNgan_Doi("CQ", lst[i].MaTo, dateTu.Value, dateDen.Value));
                         }
 
                         dgvHDCoQuan.DataSource = dt;
                     }
                     else
                     {
-                        dgvHDCoQuan.DataSource = _cHoaDon.GetTongDangNganByNgayGiaiTrach_Doi("CQ", int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
+                        dgvHDCoQuan.DataSource = _cHoaDon.GetTongDangNgan_Doi("CQ", int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
                     }
                     CountdgvHDCoQuan();
                 }
@@ -235,12 +235,12 @@ namespace ThuTien.GUI.Doi
 
         private void dgvHDTuGia_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            dgvNhanVien.DataSource = _cHoaDon.GetTongDangNganByNgayGiaiTrach_To("TG", int.Parse(dgvHDTuGia["MaTo_TG",e.RowIndex].Value.ToString()), dateTu.Value, dateDen.Value);
+            dgvNhanVien.DataSource = _cHoaDon.GetTongDangNgan_To("TG", int.Parse(dgvHDTuGia["MaTo_TG",e.RowIndex].Value.ToString()), dateTu.Value, dateDen.Value);
         }
 
         private void dgvHDCoQuan_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            dgvNhanVien.DataSource = _cHoaDon.GetTongDangNganByNgayGiaiTrach_To("CQ", int.Parse(dgvHDCoQuan["MaTo_CQ", e.RowIndex].Value.ToString()), dateTu.Value, dateDen.Value);
+            dgvNhanVien.DataSource = _cHoaDon.GetTongDangNgan_To("CQ", int.Parse(dgvHDCoQuan["MaTo_CQ", e.RowIndex].Value.ToString()), dateTu.Value, dateDen.Value);
         }
 
         private void dgvNhanVien_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

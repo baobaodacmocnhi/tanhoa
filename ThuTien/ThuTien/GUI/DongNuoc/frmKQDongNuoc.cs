@@ -123,10 +123,10 @@ namespace ThuTien.GUI.DongNuoc
                         cmbTroNgai.SelectedItem = _dongnuoc.TroNgai;
                         txtGhiChuTroNgai.Text = _dongnuoc.GhiChuTroNgai;
 
-                        DataTable dt = _cCapNuocTanHoa.GetTTKH(_dongnuoc.DanhBo);
-                        txtHieu.Text = dt.Rows[0]["Hieu"].ToString();
-                        txtCo.Text = dt.Rows[0]["Co"].ToString();
-                        txtSoThan.Text = dt.Rows[0]["SoThan"].ToString();
+                        TB_DULIEUKHACHHANG ttkh = _cCapNuocTanHoa.GetTTKH(_dongnuoc.DanhBo);
+                        txtHieu.Text = ttkh.HIEUDH;
+                        txtCo.Text = ttkh.CODH;
+                        txtSoThan.Text = ttkh.SOTHANDH;
                         //dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByMaDNDates(_dongnuoc.MaDN, dateTu.Value, dateDen.Value);
                         //btnXem.PerformClick();
                     }

@@ -152,9 +152,14 @@ namespace ThuTien.DAL
             return _db.TB_DULIEUKHACHHANGs.Any(item => item.DANHBO == DanhBo);
         }
 
-        public DataTable GetTTKH(string DanhBo)
+        public TB_DULIEUKHACHHANG GetTTKH(string DanhBo)
         {
-            return LINQToDataTable(_db.TB_DULIEUKHACHHANGs.Where(item => item.DANHBO == DanhBo)
+            return _db.TB_DULIEUKHACHHANGs.SingleOrDefault(item => item.DANHBO == DanhBo);
+        }
+
+        public DataTable GetTTKH(string HoTen, string SoNha, string TenDuong)
+        {
+            return LINQToDataTable(_db.TB_DULIEUKHACHHANGs.Where(item => item.HOTEN.Contains(HoTen.ToUpper()) && item.SONHA.Contains(SoNha.ToUpper()) && item.TENDUONG.Contains(TenDuong.ToUpper()))
                 .Select(item => new
                 {
                     DanhBo = item.DANHBO,
@@ -170,26 +175,6 @@ namespace ThuTien.DAL
                     DiaChi = item.SONHA + "  " + item.TENDUONG,
                     item.DIENTHOAI,
                     HanhThu = ""
-                }).Take(1).ToList());
-        }
-
-        public DataTable GetTTKH(string HoTen, string SoNha, string TenDuong)
-        {
-            return LINQToDataTable(_db.TB_DULIEUKHACHHANGs.Where(item => item.HOTEN.Contains(HoTen.ToUpper()) && item.SONHA.Contains(SoNha.ToUpper()) && item.TENDUONG.Contains(TenDuong.ToUpper()))
-                .Select(item => new
-                {
-                    DanhBo = item.DANHBO,
-                    item.GIABIEU,
-                    item.DINHMUC,
-                    MLT = item.LOTRINH
-                    ,
-                    Hieu = item.HIEUDH,
-                    Co = item.CODH,
-                    SoThan = item.SOTHANDH,
-                    ViTri = item.VITRIDHN,
-                    HoTen = item.HOTEN
-                    ,
-                    DiaChi = item.SONHA + "  " + item.TENDUONG,
                 }).ToList());
         }
 

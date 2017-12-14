@@ -255,7 +255,12 @@ namespace ThuTien.GUI.DongNuoc
                         dr["DiaChi"] = item["DiaChi"];
                         dr["DienThoai"] = _cDocSo.GetDienThoai(item["DanhBo"].ToString());
                         if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
+                        {
                             dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                            TB_DULIEUKHACHHANG ttkh = _cDocSo.GetTTKH(item["DanhBo"].ToString());
+                            if(ttkh!=null)
+                            dr["DiaChiDHN"] = ttkh.SONHA + " " + ttkh.TENDUONG;
+                        }
                         dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
                         dr["Ky"] = Ky;
                         dr["TongCong"] = TongCong;

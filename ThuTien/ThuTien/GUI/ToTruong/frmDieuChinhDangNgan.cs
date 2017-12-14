@@ -413,7 +413,7 @@ namespace ThuTien.GUI.ToTruong
             dsBaoCao ds = new dsBaoCao();
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                DataTable dt = _cHoaDon.GetTongDangNganByMaNV_DangNganNgayGiaiTrach("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrach.Value);
+                DataTable dt = _cHoaDon.GetTongDangNgan("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrach.Value);
                 foreach (DataRow item in dt.Rows)
                 {
                     DataRow dr = ds.Tables["PhieuDangNgan"].NewRow();
@@ -432,7 +432,7 @@ namespace ThuTien.GUI.ToTruong
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
                 {
-                    DataTable dt = _cHoaDon.GetTongDangNganByMaNV_DangNganNgayGiaiTrach("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrach.Value);
+                    DataTable dt = _cHoaDon.GetTongDangNgan("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrach.Value);
                     foreach (DataRow item in dt.Rows)
                     {
                         DataRow dr = ds.Tables["PhieuDangNgan"].NewRow();

@@ -154,27 +154,27 @@ namespace ThuTien.GUI.TimKiem
         {
             //DataTable dtTieuThu = _cHoaDon.GetDSTieuThu(txtDanhBo.Text.Trim());
 
-            DataTable dtPhieuTieuThu = _cDocSo.GetTTKH(txtDanhBo.Text.Trim().Replace(" ", ""));
+            TB_DULIEUKHACHHANG ttkh = _cDocSo.GetTTKH(txtDanhBo.Text.Trim().Replace(" ", ""));
 
             DataTable dtGhiChu = _cDocSo.GetGhiChu(txtDanhBo.Text.Trim().Replace(" ", ""));
 
             dsBaoCao ds = new dsBaoCao();
 
-            if (dtPhieuTieuThu.Rows.Count > 0)
+            if (ttkh!=null)
             {
                 DataRow dr = ds.Tables["PhieuTieuThu"].NewRow();
-                dr["DanhBo"] = dtPhieuTieuThu.Rows[0]["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                dr["HopDong"] = dtPhieuTieuThu.Rows[0]["HopDong"];
-                dr["GiaBieu"] = dtPhieuTieuThu.Rows[0]["GiaBieu"];
-                dr["DinhMuc"] = dtPhieuTieuThu.Rows[0]["DinhMuc"];
-                dr["MLT"] = dtPhieuTieuThu.Rows[0]["MLT"];
-                dr["Hieu"] = dtPhieuTieuThu.Rows[0]["Hieu"];
-                dr["Co"] = dtPhieuTieuThu.Rows[0]["Co"];
-                dr["SoThan"] = dtPhieuTieuThu.Rows[0]["SoThan"];
-                dr["ViTri"] = dtPhieuTieuThu.Rows[0]["ViTri"];
-                dr["HoTen"] = dtPhieuTieuThu.Rows[0]["HoTen"];
-                dr["DiaChi"] = dtPhieuTieuThu.Rows[0]["DiaChi"];
-                dr["DienThoai"] = dtPhieuTieuThu.Rows[0]["DienThoai"];
+                dr["DanhBo"] = ttkh.DANHBO.Insert(7, " ").Insert(4, " ");
+                dr["HopDong"] = ttkh.HOPDONG;
+                dr["GiaBieu"] = ttkh.GIABIEU;
+                dr["DinhMuc"] = ttkh.DINHMUC;
+                dr["MLT"] = ttkh.LOTRINH;
+                dr["Hieu"] = ttkh.HIEUDH;
+                dr["Co"] = ttkh.CODH;
+                dr["SoThan"] = ttkh.SOTHANDH;
+                dr["ViTri"] = ttkh.VITRIDHN;
+                dr["HoTen"] = ttkh.HOTEN;
+                dr["DiaChi"] = ttkh.SONHA + " " + ttkh.TENDUONG;
+                dr["DienThoai"] = ttkh.DIENTHOAI;
                 if (dgvHoaDon.Rows.Count > 0)
                     dr["HanhThu"] = dgvHoaDon["HanhThu", 0].Value.ToString();
                 ds.Tables["PhieuTieuThu"].Rows.Add(dr);

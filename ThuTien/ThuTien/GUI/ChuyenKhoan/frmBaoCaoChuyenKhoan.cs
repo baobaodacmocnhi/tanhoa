@@ -71,9 +71,9 @@ namespace ThuTien.GUI.ChuyenKhoan
                 for (int i = 0; i < lstTo.Count; i++)
                 {
                     dtoSheet[i] = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(i+1);
-                    dtTongDangNgan[i] = _cHoaDon.GetTongDangNganChuyenKhoanByMaToNgayGiaiTrachs(lstTo[i].MaTo, dateTu.Value, dateDen.Value);
-                    dtTongDangNgan_DongA[i] = _cHoaDon.GetTongDangNganChuyenKhoanDongAByMaToNgayGiaiTrachs(lstTo[i].MaTo, dateTu.Value, dateDen.Value);
-                    dtTongDangNgan_ExceptDongA[i] = _cHoaDon.GetTongDangNganChuyenKhoanExceptDongAByMaToNgayGiaiTrachs(lstTo[i].MaTo, dateTu.Value, dateDen.Value);
+                    dtTongDangNgan[i] = _cHoaDon.GetTongDangNganChuyenKhoan(lstTo[i].MaTo, dateTu.Value, dateDen.Value);
+                    dtTongDangNgan_DongA[i] = _cHoaDon.GetTongDangNganChuyenKhoanDongA(lstTo[i].MaTo, dateTu.Value, dateDen.Value);
+                    dtTongDangNgan_ExceptDongA[i] = _cHoaDon.GetTongDangNganChuyenKhoanExceptDongA(lstTo[i].MaTo, dateTu.Value, dateDen.Value);
                     XuatExcelTongHopDangNgan(dtTongDangNgan[i], dtoSheet[i], lstTo[i].TenTo, dateDen.Value.Month.ToString() + "/" + dateDen.Value.Year.ToString());
                 }
                 dtoSheet[lstTo.Count] = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(lstTo.Count + 1);
