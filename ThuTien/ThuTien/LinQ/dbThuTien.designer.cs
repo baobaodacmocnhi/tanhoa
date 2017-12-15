@@ -22114,6 +22114,8 @@ namespace ThuTien.LinQ
 		
 		private System.Nullable<int> _Phi;
 		
+		private System.Nullable<int> _TienDu;
+		
 		private string _TenDichVu;
 		
 		private string _TenNganHang;
@@ -22138,6 +22140,8 @@ namespace ThuTien.LinQ
     partial void OnSoTienChanged();
     partial void OnPhiChanging(System.Nullable<int> value);
     partial void OnPhiChanged();
+    partial void OnTienDuChanging(System.Nullable<int> value);
+    partial void OnTienDuChanged();
     partial void OnTenDichVuChanging(string value);
     partial void OnTenDichVuChanged();
     partial void OnTenNganHangChanging(string value);
@@ -22287,6 +22291,26 @@ namespace ThuTien.LinQ
 					this._Phi = value;
 					this.SendPropertyChanged("Phi");
 					this.OnPhiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TienDu", DbType="Int")]
+		public System.Nullable<int> TienDu
+		{
+			get
+			{
+				return this._TienDu;
+			}
+			set
+			{
+				if ((this._TienDu != value))
+				{
+					this.OnTienDuChanging(value);
+					this.SendPropertyChanging();
+					this._TienDu = value;
+					this.SendPropertyChanged("TienDu");
+					this.OnTienDuChanged();
 				}
 			}
 		}

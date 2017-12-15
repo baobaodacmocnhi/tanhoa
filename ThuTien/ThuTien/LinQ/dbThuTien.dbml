@@ -1025,6 +1025,7 @@
       <Column Name="Ky" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="SoTien" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Phi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TienDu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TenDichVu" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="TenNganHang" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
