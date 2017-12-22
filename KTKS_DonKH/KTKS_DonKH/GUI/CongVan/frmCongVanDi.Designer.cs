@@ -96,6 +96,7 @@
             "Đơn Tổ Khách Hàng",
             "Đơn Tổ Xử Lý",
             "Đơn Tổ Bấm Chì",
+            "Tổ Giao Dịch Khách Hàng",
             "Kiểm Tra Xác Minh",
             "Bấm Chì",
             "Điều Chỉnh Biến Động",

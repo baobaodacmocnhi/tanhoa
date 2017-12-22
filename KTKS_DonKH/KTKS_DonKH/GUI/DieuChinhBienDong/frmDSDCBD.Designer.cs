@@ -155,7 +155,6 @@
             this.TongCong_BD,
             this.CreateBy});
             this.dgvDSDCBD.Location = new System.Drawing.Point(0, 89);
-            this.dgvDSDCBD.MultiSelect = false;
             this.dgvDSDCBD.Name = "dgvDSDCBD";
             this.dgvDSDCBD.RowHeadersWidth = 60;
             this.dgvDSDCBD.Size = new System.Drawing.Size(1355, 541);
@@ -469,7 +468,6 @@
             this.NhanNK_DiaChi_CC,
             this.CreateBy_CC});
             this.dgvDSCatChuyenDM.Location = new System.Drawing.Point(0, 89);
-            this.dgvDSCatChuyenDM.MultiSelect = false;
             this.dgvDSCatChuyenDM.Name = "dgvDSCatChuyenDM";
             this.dgvDSCatChuyenDM.RowHeadersWidth = 60;
             this.dgvDSCatChuyenDM.Size = new System.Drawing.Size(1355, 541);
@@ -838,8 +836,8 @@
             this.Controls.Add(this.panel_KhoangThoiGian);
             this.Controls.Add(this.txtNoiDungTimKiem);
             this.Controls.Add(this.txtNoiDungTimKiem2);
-            this.Controls.Add(this.dgvDSCatChuyenDM);
             this.Controls.Add(this.dgvDSDCBD);
+            this.Controls.Add(this.dgvDSCatChuyenDM);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "frmDSDCBD";
