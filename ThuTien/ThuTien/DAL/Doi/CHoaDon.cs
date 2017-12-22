@@ -178,6 +178,7 @@ namespace ThuTien.DAL.Doi
         {
             try
             {
+                hoadon.ID_HOADON = _db.HOADONs.Max(item => item.ID_HOADON) + 1;
                 hoadon.CreateBy = CNguoiDung.MaND;
                 hoadon.CreateDate = DateTime.Now;
                 _db.HOADONs.InsertOnSubmit(hoadon);

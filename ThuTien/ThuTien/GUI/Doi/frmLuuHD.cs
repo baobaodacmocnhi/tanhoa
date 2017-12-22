@@ -58,6 +58,9 @@ namespace ThuTien.GUI.Doi
                     progressBar.Minimum = 0;
                     progressBar.Maximum = lines.Count();
                     int i = 1;
+                    int Nam = 0;
+                    int Ky = 0; 
+                    int Dot=0;
                     foreach (string line in lines)
                     {
                         progressBar.Value = i++;
@@ -68,7 +71,7 @@ namespace ThuTien.GUI.Doi
                         //if (!string.IsNullOrWhiteSpace(contents[0]))
                         //    hoadon.Khu = int.Parse(contents[0]);
                         if (!string.IsNullOrWhiteSpace(contents[1]))
-                            hoadon.DOT = int.Parse(contents[1]);
+                            hoadon.DOT =Dot= int.Parse(contents[1]);
                         if (!string.IsNullOrWhiteSpace(contents[2]))
                             hoadon.DANHBA = contents[2];
                         //if (!string.IsNullOrWhiteSpace(contents[3]))
@@ -102,9 +105,9 @@ namespace ThuTien.GUI.Doi
                         if (!string.IsNullOrWhiteSpace(contents[17]))
                             hoadon.DM = int.Parse(contents[17]);
                         if (!string.IsNullOrWhiteSpace(contents[18]))
-                            hoadon.KY = int.Parse(contents[18]);
+                            hoadon.KY = Ky=int.Parse(contents[18]);
                         if (!string.IsNullOrWhiteSpace(contents[19]))
-                            hoadon.NAM = int.Parse("20" + contents[19]);
+                            hoadon.NAM =Nam= int.Parse("20" + contents[19]);
                         if (!string.IsNullOrWhiteSpace(contents[20]))
                             hoadon.CODE = contents[20];
                         //if (!string.IsNullOrWhiteSpace(contents[21]))
@@ -206,15 +209,17 @@ namespace ThuTien.GUI.Doi
                     
                     try
                     {
-                        string lineR_Test = lines[0].Replace("\",\"", "$").Replace("\"", "");
-                        string[] contents_Test = lineR_Test.Split('$');
-                        int Nam = int.Parse("20" + contents_Test[19]);
-                        int Ky = int.Parse(contents_Test[18]);
-                        int Dot = int.Parse(contents_Test[1]);
+                        //string lineR_Test = lines[0].Replace("\",\"", "$").Replace("\"", "");
+                        //string[] contents_Test = lineR_Test.Split('$');
+                        //int Nam = int.Parse("20" + contents_Test[19]);
+                        //int Ky = int.Parse(contents_Test[18]);
+                        //int Dot = int.Parse(contents_Test[1]);
+
                         //string sql = "update HOADON set Quan=DLKH.QUAN,Phuong=DLKH.PHUONG,CoDH=DLKH.CODH,MaDMA=DLKH.MADMA from DLKH where HOADON.DANHBA=DLKH.DANHBO and HOADON.NAM=" + Nam + " and HOADON.KY=" + Ky + " and HOADON.DOT=" + Dot;
                         //_cHoaDon.LinQ_ExecuteNonQuery(sql);
                         //string sql_Huy = "update HOADON set Quan=DLKH_HUY.QUAN,Phuong=DLKH_HUY.PHUONG,CoDH=DLKH_HUY.CODH,MaDMA=DLKH_HUY.MADMA from DLKH_HUY where HOADON.DANHBA=DLKH_HUY.DANHBO and HOADON.NAM=" + Nam + " and HOADON.KY=" + Ky + " and HOADON.DOT=" + Dot;
                         //_cHoaDon.LinQ_ExecuteNonQuery(sql_Huy);
+
                         if (Dot == 20)
                         {
                             CGiaBanBinhQuan _cGBBQ = new CGiaBanBinhQuan();
