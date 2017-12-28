@@ -83,7 +83,7 @@ namespace DocSo_PC.GUI.XuLyDocSo
             string sql = "select May, COUNT(*) as SLDoc,COUNT(CASE WHEN CAST( May as int)  != CAST(SUBSTRING(MLT1,3,2) as int) THEN 1 ELSE NULL END ) AS TANGCUONG ";
             sql += " ,COUNT(CASE WHEN CodeMoi !='' THEN 1 ELSE NULL END) AS DADOC  ";
             sql += " ,COUNT(CASE WHEN CodeMoi = '' THEN 1 ELSE NULL END) AS CHUADOC  ";
-            sql += " ,COUNT(CASE WHEN CodeMoi LIKE 'F%' THEN 1 ELSE NULL END) AS DONGCUA from DocSo where Nam=" + int.Parse(cmbNam.Text) + "AND Ky='" + cmbKy.Text + "' AND Dot='" + cmbDot.Text + "' group by May ";
+            sql += " ,COUNT(CASE WHEN CodeMoi LIKE 'F%' THEN 1 ELSE NULL END) AS DONGCUA from DocSo where Nam=" + int.Parse(cmbNam.Text) + "AND Ky='" + cmbKy.Text + "' AND Dot='" + cmbDot.Text + "' AND TODS=" + int.Parse(cmbToDS.SelectedValue.ToString()) + " group by May ORDER BY MAY ASC ";
             dataTaoDS.DataSource = _cChuanBi.ExecuteQuery_SqlDataReader_DataTable(sql);
         }
        

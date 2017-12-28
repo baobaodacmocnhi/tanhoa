@@ -11,6 +11,7 @@ using DocSo_PC.GUI.HeThong;
 using DocSo_PC.GUI.QuanTri;
 using DocSo_PC.GUI.ChuanBiDocSo;
 using DocSo_PC.GUI.XuLyDocSo;
+using DocSo_PC.GUI.ChuyenBillding;
 
 namespace DocSo_PC
 {
@@ -248,12 +249,22 @@ namespace DocSo_PC
             
         }
 
-        #endregion
+       
 
         private void mnuDieuChinhDS_Click(object sender, EventArgs e)
         {
             frmDieuChinhDocSo frm = new frmDieuChinhDocSo();
             OpenForm(frm);
         }
+         #endregion
+
+          #region Chuyển dữ liệu billding2
+        private void mnuKiemsoatDL_Click(object sender, EventArgs e)
+        {
+            frmKiemTraDuLieu frm = new frmKiemTraDuLieu();
+            OpenForm(frm);
+            
+        }
+          #endregion
     }
 }

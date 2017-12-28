@@ -271,7 +271,7 @@ namespace DocSo_PC.GUI.XuLyDocSo
         {
             this.txtDanhBoDs.Text = "";
             //string db = this.txtDanhBoDs.Text.Replace(" ", "").Replace("-", "");
-            string code = cmbCodeDC.SelectedValue.ToString();
+            string code = cmbCodeDS.SelectedValue.ToString();
             string may = cmbMay.Text;
             dataDieuChinh.DataSource = _cCXuLy.getDuLieuDocSo("", code, may, nam, ky, dot);
         
@@ -311,7 +311,7 @@ namespace DocSo_PC.GUI.XuLyDocSo
                     txtCSCu.Text = csCu;
                     txtCSMoi.Text = csMoi;
                     txtTieuThuMoi.Text = tieuThuMoi;
-                    lbDsId.Text = dsID;
+                    lbDocsoID.Text = dsID;
                     LoadThongTin(db);
                 }
 
@@ -326,6 +326,31 @@ namespace DocSo_PC.GUI.XuLyDocSo
                 danhbo = db;
                 dataDieuChinh.DataSource = _cCXuLy.getDuLieuDocSo(db, "", "", nam, ky, dot);
             }
+        }
+
+        private void txtCSMoi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                txtTieuThuMoi.Text = _cCXuLy.TinhTieuThu(this.txtDanhBo.Text, int.Parse(ky), nam, this.txtCodeM.Text, int.Parse(this.txtCSMoi.Text)).ToString();
+            }
+        }
+
+        private void btCapNhat_Click(object sender, EventArgs e)
+        {
+            //string db = this.txtDanhBoDs.Text.Replace(" ", "").Replace("-", "");
+            //danhbo = db;
+            if (!_cCXuLy.CapNhatChiSo(this.lbDocsoID.Text, this.txtCodeM.Text, this.cmbCodeDC.Text, int.Parse(this.txtCSMoi.Text), int.Parse(txtTieuThuMoi.Text)))
+                MessageBox.Show("Lỗi cập nhật", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                dataDieuChinh.CurrentRow.Cells["TTDHNMoi"].Value = this.cmbCodeDC.Text;
+                dataDieuChinh.CurrentRow.Cells["CodeMoi"].Value = this.txtCodeM.Text;
+                dataDieuChinh.CurrentRow.Cells["CSMoi"].Value = this.txtCSMoi.Text;
+                dataDieuChinh.CurrentRow.Cells["TieuThu"].Value = this.txtTieuThuMoi.Text;
+ 
+            }
+            //dataDieuChinh.DataSource = _cCXuLy.getDuLieuDocSo(danhbo, "", "", nam, ky, dot);
         }
 
         

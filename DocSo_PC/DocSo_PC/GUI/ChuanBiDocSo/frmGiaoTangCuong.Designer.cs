@@ -473,7 +473,7 @@
             this.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmGiaoTangCuong";
-            this.Text = "Tạo Dữ Liệu Đọc Số";
+            this.Text = "Giao Tăng Cường";
             this.Load += new System.EventHandler(this.frmGiaoTangCuong_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btGiaoViec)).EndInit();
