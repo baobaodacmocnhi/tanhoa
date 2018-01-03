@@ -78,6 +78,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             txtDiaChi.Text = cttt.DiaChi;
             txtVeViec.Text = cttt.VeViec;
             txtKinhTrinh.Text = cttt.KinhTrinh;
+            txtThongQua.Text = cttt.ThongQua;
             txtNoiDung.Text = cttt.NoiDung;
             txtNoiNhan.Text = cttt.NoiNhan;
 
@@ -94,6 +95,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             ///
             txtVeViec.Text = "";
             txtKinhTrinh.Text = "";
+            txtThongQua.Text = "";
             txtNoiDung.Text = "";
             txtNoiNhan.Text = "";
             ///
@@ -265,6 +267,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                     cttt.DiaChi = txtDiaChi.Text.Trim();
                     cttt.VeViec = txtVeViec.Text.Trim();
                     cttt.KinhTrinh = txtKinhTrinh.Text.Trim();
+                    cttt.ThongQua = txtThongQua.Text.Trim();
                     cttt.NoiDung = txtNoiDung.Text;
                     cttt.NoiNhan = txtNoiNhan.Text.Trim();
 
@@ -298,6 +301,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                         _cttt.DiaChi = txtDiaChi.Text.Trim();
                         _cttt.VeViec = txtVeViec.Text.Trim();
                         _cttt.KinhTrinh = txtKinhTrinh.Text.Trim();
+                        _cttt.ThongQua = txtThongQua.Text.Trim();
                         _cttt.NoiDung = txtNoiDung.Text;
                         _cttt.NoiNhan = txtNoiNhan.Text.Trim();
 
@@ -399,6 +403,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 
                 dr["VeViec"] = _cttt.VeViec;
                 dr["KinhTrinh"] = _cttt.KinhTrinh;
+                dr["ThongQua"] = _cttt.ThongQua;
                 dr["NoiDung"] = _cttt.NoiDung;
                 dr["NoiNhan"] = _cttt.NoiNhan;
 

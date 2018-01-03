@@ -131,6 +131,7 @@ namespace KTKS_DonKH.DAL
                 command = new SqlCommand();
                 command.Connection = this.connection;
                 adapter = new SqlDataAdapter(sql, connection);
+                adapter.SelectCommand.CommandTimeout = 300;
                 try
                 {
                     adapter.Fill(dataset);
