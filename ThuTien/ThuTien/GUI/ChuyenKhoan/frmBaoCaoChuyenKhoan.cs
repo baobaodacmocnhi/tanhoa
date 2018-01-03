@@ -35,50 +35,47 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnXuatExcelTongHopDangNgan_Click(object sender, EventArgs e)
         {
-            if (dateTu.Value<=dateDen.Value)
+            List<TT_To> lstTo = _cTo.GetDSHanhThu();
+            //DataTable[] dtTo = new DataTable[lstTo.Count];
+
+            //dtTo[0] = _cHoaDon.GetTongDangNganChuyenKhoanByMaToNgayGiaiTrachs(lstTo[0].MaTo, dateTu.Value, dateDen.Value);
+            //for (int i = 1; i < lstTo.Count; i++)
+            //{
+            //    dtTo[i] = _cHoaDon.GetTongDangNganChuyenKhoanByMaToNgayGiaiTrachs(lstTo[i].MaTo, dateTu.Value, dateDen.Value);
+            //}
+
+            //Tạo các đối tượng Excel
+            Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel.Workbooks oBooks;
+            Microsoft.Office.Interop.Excel.Sheets oSheets;
+            Microsoft.Office.Interop.Excel.Workbook oBook;
+
+            //Tạo mới một Excel WorkBook 
+            oExcel.Visible = true;
+            oExcel.DisplayAlerts = false;
+            //khai báo số lượng sheet
+            oExcel.Application.SheetsInNewWorkbook = lstTo.Count + 1;
+            oBooks = oExcel.Workbooks;
+
+            oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
+            oSheets = oBook.Worksheets;
+
+            Microsoft.Office.Interop.Excel.Worksheet[] dtoSheet = new Microsoft.Office.Interop.Excel.Worksheet[lstTo.Count + 1];
+
+            DataTable[] dtTongDangNgan = new DataTable[lstTo.Count];
+            DataTable[] dtTongDangNgan_DongA = new DataTable[lstTo.Count];
+            DataTable[] dtTongDangNgan_ExceptDongA = new DataTable[lstTo.Count];
+
+            for (int i = 0; i < lstTo.Count; i++)
             {
-                List<TT_To> lstTo = _cTo.GetDSHanhThu();
-                //DataTable[] dtTo = new DataTable[lstTo.Count];
-
-                //dtTo[0] = _cHoaDon.GetTongDangNganChuyenKhoanByMaToNgayGiaiTrachs(lstTo[0].MaTo, dateTu.Value, dateDen.Value);
-                //for (int i = 1; i < lstTo.Count; i++)
-                //{
-                //    dtTo[i] = _cHoaDon.GetTongDangNganChuyenKhoanByMaToNgayGiaiTrachs(lstTo[i].MaTo, dateTu.Value, dateDen.Value);
-                //}
-
-                //Tạo các đối tượng Excel
-                Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
-                Microsoft.Office.Interop.Excel.Workbooks oBooks;
-                Microsoft.Office.Interop.Excel.Sheets oSheets;
-                Microsoft.Office.Interop.Excel.Workbook oBook;
-
-                //Tạo mới một Excel WorkBook 
-                oExcel.Visible = true;
-                oExcel.DisplayAlerts = false;
-                //khai báo số lượng sheet
-                oExcel.Application.SheetsInNewWorkbook = lstTo.Count+1;
-                oBooks = oExcel.Workbooks;
-
-                oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
-                oSheets = oBook.Worksheets;
-
-                Microsoft.Office.Interop.Excel.Worksheet[] dtoSheet = new Microsoft.Office.Interop.Excel.Worksheet[lstTo.Count+1];
-
-                DataTable[] dtTongDangNgan = new DataTable[lstTo.Count];
-                DataTable[] dtTongDangNgan_DongA = new DataTable[lstTo.Count];
-                DataTable[] dtTongDangNgan_ExceptDongA = new DataTable[lstTo.Count];
-
-                for (int i = 0; i < lstTo.Count; i++)
-                {
-                    dtoSheet[i] = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(i+1);
-                    dtTongDangNgan[i] = _cHoaDon.GetTongDangNganChuyenKhoan(lstTo[i].MaTo, dateTu.Value, dateDen.Value);
-                    dtTongDangNgan_DongA[i] = _cHoaDon.GetTongDangNganChuyenKhoanDongA(lstTo[i].MaTo, dateTu.Value, dateDen.Value);
-                    dtTongDangNgan_ExceptDongA[i] = _cHoaDon.GetTongDangNganChuyenKhoanExceptDongA(lstTo[i].MaTo, dateTu.Value, dateDen.Value);
-                    XuatExcelTongHopDangNgan(dtTongDangNgan[i], dtoSheet[i], lstTo[i].TenTo, dateDen.Value.Month.ToString() + "/" + dateDen.Value.Year.ToString());
-                }
-                dtoSheet[lstTo.Count] = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(lstTo.Count + 1);
-                XuatExcelTongHopDangNgan_DongA(dtTongDangNgan_ExceptDongA, dtTongDangNgan_DongA, dtoSheet[lstTo.Count], "Đông Á", dateDen.Value.Month.ToString() + "/" + dateDen.Value.Year.ToString());
+                dtoSheet[i] = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(i + 1);
+                dtTongDangNgan[i] = _cHoaDon.GetTongDangNganChuyenKhoan(lstTo[i].MaTo, dateTu.Value, dateDen.Value);
+                dtTongDangNgan_DongA[i] = _cHoaDon.GetTongDangNganChuyenKhoanDongA(lstTo[i].MaTo, dateTu.Value, dateDen.Value);
+                dtTongDangNgan_ExceptDongA[i] = _cHoaDon.GetTongDangNganChuyenKhoanExceptDongA(lstTo[i].MaTo, dateTu.Value, dateDen.Value);
+                XuatExcelTongHopDangNgan(dtTongDangNgan[i], dtoSheet[i], lstTo[i].TenTo, dateDen.Value.Month.ToString() + "/" + dateDen.Value.Year.ToString());
             }
+            dtoSheet[lstTo.Count] = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(lstTo.Count + 1);
+            XuatExcelTongHopDangNgan_DongA(dtTongDangNgan_ExceptDongA, dtTongDangNgan_DongA, dtoSheet[lstTo.Count], "Đông Á", dateDen.Value.Month.ToString() + "/" + dateDen.Value.Year.ToString());
         }
 
         private void XuatExcelTongHopDangNgan(DataTable dt, Microsoft.Office.Interop.Excel.Worksheet oSheet, string SheetName, string Ky)
@@ -541,6 +538,11 @@ namespace ThuTien.GUI.ChuyenKhoan
             DataTable dtBK = _cBangKe.GetDS_BangKe(dateGiaiTrach.Value);
             DataTable dtDN = _cHoaDon.GetDSDangNganChuyenKhoan(dateGiaiTrach.Value);
             DataTable dtBKLui5 = _cBangKe.GetDS_BangKeLui5(dateGiaiTrach.Value);
+            if (dtBK == null || dtDN == null || dtBKLui5 == null)
+            {
+                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             DataTable dt = new DataTable();
             dt.Columns.Add("MaBK", typeof(int));
@@ -1203,6 +1205,11 @@ namespace ThuTien.GUI.ChuyenKhoan
         private void btnXuatExcelDSChuyenKhoan_Click(object sender, EventArgs e)
         {
             DataTable dt = _cHoaDon.GetDSChuyenKhoan(int.Parse(cmbNam.SelectedValue.ToString()));
+            if (dt == null)
+            {
+                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             //Tạo các đối tượng Excel
             Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
