@@ -32,15 +32,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dateTu = new System.Windows.Forms.DateTimePicker();
-            this.btnBaoCaoNgayLap = new System.Windows.Forms.Button();
+            this.btnBaoCao_TheoNgayLap = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cmbLoaiBaoCaoNgayLap = new System.Windows.Forms.ComboBox();
+            this.cmbQuan_TheoNgayLap = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cmbLoaiBaoCao_TheoNgayLap = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cmbLoaiBaoCaoNgayXuLy = new System.Windows.Forms.ComboBox();
+            this.cmbLoaiBaoCao_TheoNgayXuLy = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnBaoCaoNgayXuLy = new System.Windows.Forms.Button();
+            this.btnBaoCao_TheoNgayXuLy = new System.Windows.Forms.Button();
             this.btnThongKe = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -83,15 +85,15 @@
             this.dateTu.Size = new System.Drawing.Size(90, 22);
             this.dateTu.TabIndex = 13;
             // 
-            // btnBaoCaoNgayLap
+            // btnBaoCao_TheoNgayLap
             // 
-            this.btnBaoCaoNgayLap.Location = new System.Drawing.Point(261, 20);
-            this.btnBaoCaoNgayLap.Name = "btnBaoCaoNgayLap";
-            this.btnBaoCaoNgayLap.Size = new System.Drawing.Size(75, 25);
-            this.btnBaoCaoNgayLap.TabIndex = 28;
-            this.btnBaoCaoNgayLap.Text = "Báo Cáo";
-            this.btnBaoCaoNgayLap.UseVisualStyleBackColor = true;
-            this.btnBaoCaoNgayLap.Click += new System.EventHandler(this.btnBaoCaoNgayLap_Click);
+            this.btnBaoCao_TheoNgayLap.Location = new System.Drawing.Point(416, 20);
+            this.btnBaoCao_TheoNgayLap.Name = "btnBaoCao_TheoNgayLap";
+            this.btnBaoCao_TheoNgayLap.Size = new System.Drawing.Size(75, 25);
+            this.btnBaoCao_TheoNgayLap.TabIndex = 28;
+            this.btnBaoCao_TheoNgayLap.Text = "Báo Cáo";
+            this.btnBaoCao_TheoNgayLap.UseVisualStyleBackColor = true;
+            this.btnBaoCao_TheoNgayLap.Click += new System.EventHandler(this.btnBaoCao_TheoNgayLap_Click);
             // 
             // panel_KhoangThoiGian
             // 
@@ -106,28 +108,47 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cmbLoaiBaoCaoNgayLap);
+            this.groupBox1.Controls.Add(this.cmbQuan_TheoNgayLap);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.cmbLoaiBaoCao_TheoNgayLap);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.btnBaoCaoNgayLap);
+            this.groupBox1.Controls.Add(this.btnBaoCao_TheoNgayLap);
             this.groupBox1.Location = new System.Drawing.Point(12, 78);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(345, 56);
+            this.groupBox1.Size = new System.Drawing.Size(502, 56);
             this.groupBox1.TabIndex = 33;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Theo Ngày Lập";
             // 
-            // cmbLoaiBaoCaoNgayLap
+            // cmbQuan_TheoNgayLap
             // 
-            this.cmbLoaiBaoCaoNgayLap.FormattingEnabled = true;
-            this.cmbLoaiBaoCaoNgayLap.Items.AddRange(new object[] {
+            this.cmbQuan_TheoNgayLap.FormattingEnabled = true;
+            this.cmbQuan_TheoNgayLap.Location = new System.Drawing.Point(310, 21);
+            this.cmbQuan_TheoNgayLap.Name = "cmbQuan_TheoNgayLap";
+            this.cmbQuan_TheoNgayLap.Size = new System.Drawing.Size(100, 24);
+            this.cmbQuan_TheoNgayLap.TabIndex = 30;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(261, 25);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(43, 16);
+            this.label9.TabIndex = 29;
+            this.label9.Text = "Quận:";
+            // 
+            // cmbLoaiBaoCao_TheoNgayLap
+            // 
+            this.cmbLoaiBaoCao_TheoNgayLap.FormattingEnabled = true;
+            this.cmbLoaiBaoCao_TheoNgayLap.Items.AddRange(new object[] {
             "DS Cắt Hủy Đã Xử Lý",
             "DS Cắt Hủy Chưa Xử Lý",
             "DS Cắt Tạm Đã Xử Lý",
             "DS Cắt Tạm Chưa Xử Lý"});
-            this.cmbLoaiBaoCaoNgayLap.Location = new System.Drawing.Point(105, 21);
-            this.cmbLoaiBaoCaoNgayLap.Name = "cmbLoaiBaoCaoNgayLap";
-            this.cmbLoaiBaoCaoNgayLap.Size = new System.Drawing.Size(150, 24);
-            this.cmbLoaiBaoCaoNgayLap.TabIndex = 1;
+            this.cmbLoaiBaoCao_TheoNgayLap.Location = new System.Drawing.Point(105, 21);
+            this.cmbLoaiBaoCao_TheoNgayLap.Name = "cmbLoaiBaoCao_TheoNgayLap";
+            this.cmbLoaiBaoCao_TheoNgayLap.Size = new System.Drawing.Size(150, 24);
+            this.cmbLoaiBaoCao_TheoNgayLap.TabIndex = 1;
             // 
             // label1
             // 
@@ -140,9 +161,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.cmbLoaiBaoCaoNgayXuLy);
+            this.groupBox2.Controls.Add(this.cmbLoaiBaoCao_TheoNgayXuLy);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.btnBaoCaoNgayXuLy);
+            this.groupBox2.Controls.Add(this.btnBaoCao_TheoNgayXuLy);
             this.groupBox2.Location = new System.Drawing.Point(12, 140);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(345, 56);
@@ -150,16 +171,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Theo Ngày Xử Lý";
             // 
-            // cmbLoaiBaoCaoNgayXuLy
+            // cmbLoaiBaoCao_TheoNgayXuLy
             // 
-            this.cmbLoaiBaoCaoNgayXuLy.FormattingEnabled = true;
-            this.cmbLoaiBaoCaoNgayXuLy.Items.AddRange(new object[] {
+            this.cmbLoaiBaoCao_TheoNgayXuLy.FormattingEnabled = true;
+            this.cmbLoaiBaoCao_TheoNgayXuLy.Items.AddRange(new object[] {
             "DS Cắt Hủy",
             "DS Cắt Tạm"});
-            this.cmbLoaiBaoCaoNgayXuLy.Location = new System.Drawing.Point(105, 21);
-            this.cmbLoaiBaoCaoNgayXuLy.Name = "cmbLoaiBaoCaoNgayXuLy";
-            this.cmbLoaiBaoCaoNgayXuLy.Size = new System.Drawing.Size(150, 24);
-            this.cmbLoaiBaoCaoNgayXuLy.TabIndex = 1;
+            this.cmbLoaiBaoCao_TheoNgayXuLy.Location = new System.Drawing.Point(105, 21);
+            this.cmbLoaiBaoCao_TheoNgayXuLy.Name = "cmbLoaiBaoCao_TheoNgayXuLy";
+            this.cmbLoaiBaoCao_TheoNgayXuLy.Size = new System.Drawing.Size(150, 24);
+            this.cmbLoaiBaoCao_TheoNgayXuLy.TabIndex = 1;
             // 
             // label2
             // 
@@ -170,15 +191,15 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Loại Báo Cáo:";
             // 
-            // btnBaoCaoNgayXuLy
+            // btnBaoCao_TheoNgayXuLy
             // 
-            this.btnBaoCaoNgayXuLy.Location = new System.Drawing.Point(261, 20);
-            this.btnBaoCaoNgayXuLy.Name = "btnBaoCaoNgayXuLy";
-            this.btnBaoCaoNgayXuLy.Size = new System.Drawing.Size(75, 25);
-            this.btnBaoCaoNgayXuLy.TabIndex = 28;
-            this.btnBaoCaoNgayXuLy.Text = "Báo Cáo";
-            this.btnBaoCaoNgayXuLy.UseVisualStyleBackColor = true;
-            this.btnBaoCaoNgayXuLy.Click += new System.EventHandler(this.btnBaoCaoNgayXuLy_Click);
+            this.btnBaoCao_TheoNgayXuLy.Location = new System.Drawing.Point(261, 20);
+            this.btnBaoCao_TheoNgayXuLy.Name = "btnBaoCao_TheoNgayXuLy";
+            this.btnBaoCao_TheoNgayXuLy.Size = new System.Drawing.Size(75, 25);
+            this.btnBaoCao_TheoNgayXuLy.TabIndex = 28;
+            this.btnBaoCao_TheoNgayXuLy.Text = "Báo Cáo";
+            this.btnBaoCao_TheoNgayXuLy.UseVisualStyleBackColor = true;
+            this.btnBaoCao_TheoNgayXuLy.Click += new System.EventHandler(this.btnBaoCao_TheoNgayXuLy_Click);
             // 
             // btnThongKe
             // 
@@ -221,16 +242,18 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dateTu;
-        private System.Windows.Forms.Button btnBaoCaoNgayLap;
+        private System.Windows.Forms.Button btnBaoCao_TheoNgayLap;
         private System.Windows.Forms.Panel panel_KhoangThoiGian;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox cmbLoaiBaoCaoNgayLap;
+        private System.Windows.Forms.ComboBox cmbLoaiBaoCao_TheoNgayLap;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox cmbLoaiBaoCaoNgayXuLy;
+        private System.Windows.Forms.ComboBox cmbLoaiBaoCao_TheoNgayXuLy;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnBaoCaoNgayXuLy;
+        private System.Windows.Forms.Button btnBaoCao_TheoNgayXuLy;
         private System.Windows.Forms.Button btnThongKe;
+        private System.Windows.Forms.ComboBox cmbQuan_TheoNgayLap;
+        private System.Windows.Forms.Label label9;
 
     }
 }

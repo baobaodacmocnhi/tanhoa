@@ -1101,6 +1101,18 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
+        public DataTable LoadDSCTDCBD(DateTime TuNgay, DateTime DenNgay, int MaQuan, int MaPhuong)
+        {
+            string sql = "select t1.*,t3.TenQuan,t4.TenPhuong from CTDCBD t1"
+                        + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
+                        + " left join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
+                        + " left join SERVER8.CAPNUOCTANHOA.dbo.PHUONG t4 on t2.PHUONG=t4.MAPHUONG and t2.QUAN=t4.MAQUAN"
+                        + " where CAST(t1.CreateDate as date)>='" + TuNgay.ToString("yyyy-MM-dd") + "' and CAST(t1.CreateDate as date)<='" + DenNgay.ToString("yyyy-MM-dd") + "'"
+                        + " and t4.MaQuan=" + MaQuan+" and t4.MaPhuong="+MaPhuong;
+
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+        }
+
         public DataTable LoadDSCTDCBDSoCT(DateTime TuNgay, DateTime DenNgay)
         {
             try
@@ -2112,6 +2124,18 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         + " left join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
                         + " where CAST(t1.CreateDate as date)>='" + TuNgay.ToString("yyyy-MM-dd") + "' and CAST(t1.CreateDate as date)<='" + DenNgay.ToString("yyyy-MM-dd") + "'"
                         + " and MaQuan=" + MaQuan;
+
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+        }
+
+        public DataTable LoadDSCTDCHD(DateTime TuNgay, DateTime DenNgay, int MaQuan, int MaPhuong)
+        {
+            string sql = "select t1.*,t3.TenQuan from CTDCHD t1"
+                        + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
+                        + " left join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
+                        + " left join SERVER8.CAPNUOCTANHOA.dbo.PHUONG t4 on t2.PHUONG=t4.MAPHUONG and t2.QUAN=t4.MAQUAN"
+                        + " where CAST(t1.CreateDate as date)>='" + TuNgay.ToString("yyyy-MM-dd") + "' and CAST(t1.CreateDate as date)<='" + DenNgay.ToString("yyyy-MM-dd") + "'"
+                        + " and t4.MaQuan=" + MaQuan + " and t4.MaPhuong=" + MaPhuong;
 
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }

@@ -51,7 +51,6 @@
             this.groupBox_DSChungCu = new System.Windows.Forms.GroupBox();
             this.btnBaoCao_DSChungCu = new System.Windows.Forms.Button();
             this.groupBox_ThongKeDC = new System.Windows.Forms.GroupBox();
-            this.chkPhanQuan = new System.Windows.Forms.CheckBox();
             this.txtHieuLucKy_ThongKeDC = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -60,6 +59,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.btnBaoCao_ThongKeDC = new System.Windows.Forms.Button();
+            this.cmbPhuong_ThongKeDC = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cmbQuan_ThongKeDC = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.groupBox_DSChungCu.SuspendLayout();
             this.groupBox_ThongKeDC.SuspendLayout();
@@ -284,27 +287,20 @@
             // 
             // groupBox_ThongKeDC
             // 
-            this.groupBox_ThongKeDC.Controls.Add(this.chkPhanQuan);
+            this.groupBox_ThongKeDC.Controls.Add(this.cmbPhuong_ThongKeDC);
+            this.groupBox_ThongKeDC.Controls.Add(this.label5);
+            this.groupBox_ThongKeDC.Controls.Add(this.cmbQuan_ThongKeDC);
+            this.groupBox_ThongKeDC.Controls.Add(this.label9);
             this.groupBox_ThongKeDC.Controls.Add(this.txtHieuLucKy_ThongKeDC);
             this.groupBox_ThongKeDC.Controls.Add(this.label8);
             this.groupBox_ThongKeDC.Controls.Add(this.panel1);
             this.groupBox_ThongKeDC.Controls.Add(this.btnBaoCao_ThongKeDC);
             this.groupBox_ThongKeDC.Location = new System.Drawing.Point(12, 195);
             this.groupBox_ThongKeDC.Name = "groupBox_ThongKeDC";
-            this.groupBox_ThongKeDC.Size = new System.Drawing.Size(365, 91);
+            this.groupBox_ThongKeDC.Size = new System.Drawing.Size(276, 160);
             this.groupBox_ThongKeDC.TabIndex = 22;
             this.groupBox_ThongKeDC.TabStop = false;
             this.groupBox_ThongKeDC.Text = "Thống Kê Điều Chỉnh";
-            // 
-            // chkPhanQuan
-            // 
-            this.chkPhanQuan.AutoSize = true;
-            this.chkPhanQuan.Location = new System.Drawing.Point(187, 65);
-            this.chkPhanQuan.Name = "chkPhanQuan";
-            this.chkPhanQuan.Size = new System.Drawing.Size(93, 20);
-            this.chkPhanQuan.TabIndex = 19;
-            this.chkPhanQuan.Text = "Phân Quận";
-            this.chkPhanQuan.UseVisualStyleBackColor = true;
             // 
             // txtHieuLucKy_ThongKeDC
             // 
@@ -371,13 +367,48 @@
             // 
             // btnBaoCao_ThongKeDC
             // 
-            this.btnBaoCao_ThongKeDC.Location = new System.Drawing.Point(283, 37);
+            this.btnBaoCao_ThongKeDC.Location = new System.Drawing.Point(190, 65);
             this.btnBaoCao_ThongKeDC.Name = "btnBaoCao_ThongKeDC";
             this.btnBaoCao_ThongKeDC.Size = new System.Drawing.Size(75, 25);
             this.btnBaoCao_ThongKeDC.TabIndex = 12;
             this.btnBaoCao_ThongKeDC.Text = "Báo Cáo";
             this.btnBaoCao_ThongKeDC.UseVisualStyleBackColor = true;
             this.btnBaoCao_ThongKeDC.Click += new System.EventHandler(this.btnBaoCao_ThongKeDC_Click);
+            // 
+            // cmbPhuong_ThongKeDC
+            // 
+            this.cmbPhuong_ThongKeDC.FormattingEnabled = true;
+            this.cmbPhuong_ThongKeDC.Location = new System.Drawing.Point(81, 116);
+            this.cmbPhuong_ThongKeDC.Name = "cmbPhuong_ThongKeDC";
+            this.cmbPhuong_ThongKeDC.Size = new System.Drawing.Size(100, 24);
+            this.cmbPhuong_ThongKeDC.TabIndex = 23;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(18, 119);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(57, 16);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "Phường:";
+            // 
+            // cmbQuan_ThongKeDC
+            // 
+            this.cmbQuan_ThongKeDC.FormattingEnabled = true;
+            this.cmbQuan_ThongKeDC.Location = new System.Drawing.Point(81, 87);
+            this.cmbQuan_ThongKeDC.Name = "cmbQuan_ThongKeDC";
+            this.cmbQuan_ThongKeDC.Size = new System.Drawing.Size(100, 24);
+            this.cmbQuan_ThongKeDC.TabIndex = 21;
+            this.cmbQuan_ThongKeDC.SelectedIndexChanged += new System.EventHandler(this.cmbQuan_ThongKeDC_SelectedIndexChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(18, 90);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(43, 16);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Quận:";
             // 
             // frmBaoCaoDCBD
             // 
@@ -446,7 +477,6 @@
         private System.Windows.Forms.Button btnBaoCao_DSChungCu;
         private System.Windows.Forms.GroupBox groupBox_ThongKeDC;
         private System.Windows.Forms.Button btnBaoCao_ThongKeDC;
-        private System.Windows.Forms.CheckBox chkPhanQuan;
         private System.Windows.Forms.TextBox txtHieuLucKy_ThongKeDC;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel1;
@@ -454,5 +484,9 @@
         private System.Windows.Forms.DateTimePicker dateDen_ThongKeDC;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cmbPhuong_ThongKeDC;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cmbQuan_ThongKeDC;
+        private System.Windows.Forms.Label label9;
     }
 }

@@ -71,8 +71,6 @@
             this.VeViec = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnIn = new System.Windows.Forms.Button();
-            this.txtThongQua = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel_KhoangThoiGian.SuspendLayout();
@@ -115,8 +113,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.txtThongQua);
-            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.txtKinhTrinh);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.txtNoiNhan);
@@ -134,16 +130,16 @@
             // 
             // txtKinhTrinh
             // 
-            this.txtKinhTrinh.Location = new System.Drawing.Point(105, 49);
+            this.txtKinhTrinh.Location = new System.Drawing.Point(473, 21);
             this.txtKinhTrinh.Multiline = true;
             this.txtKinhTrinh.Name = "txtKinhTrinh";
-            this.txtKinhTrinh.Size = new System.Drawing.Size(287, 22);
+            this.txtKinhTrinh.Size = new System.Drawing.Size(287, 44);
             this.txtKinhTrinh.TabIndex = 7;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 52);
+            this.label2.Location = new System.Drawing.Point(398, 24);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 16);
             this.label2.TabIndex = 6;
@@ -416,6 +412,8 @@
             this.dgvToTrinh.Size = new System.Drawing.Size(1090, 235);
             this.dgvToTrinh.TabIndex = 95;
             this.dgvToTrinh.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvToTrinh_CellContentClick);
+            this.dgvToTrinh.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvToTrinh_CellFormatting);
+            this.dgvToTrinh.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvToTrinh_RowPostPaint);
             // 
             // MaCTTT
             // 
@@ -473,23 +471,6 @@
             this.btnIn.Text = "In";
             this.btnIn.UseVisualStyleBackColor = true;
             this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
-            // 
-            // txtThongQua
-            // 
-            this.txtThongQua.Location = new System.Drawing.Point(480, 49);
-            this.txtThongQua.Multiline = true;
-            this.txtThongQua.Name = "txtThongQua";
-            this.txtThongQua.Size = new System.Drawing.Size(287, 22);
-            this.txtThongQua.TabIndex = 9;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(398, 52);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 16);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Thông qua:";
             // 
             // frmToTrinh
             // 
@@ -574,7 +555,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn VeViec;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
-        private System.Windows.Forms.TextBox txtThongQua;
-        private System.Windows.Forms.Label label5;
     }
 }

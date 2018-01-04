@@ -43,6 +43,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         private void frmToTrinh_Load(object sender, EventArgs e)
         {
             dgvToTrinh.AutoGenerateColumns = false;
+            cmbTimTheo.SelectedIndex = 2;
         }
 
         public void LoadTTKH(HOADON hoadon)
@@ -78,7 +79,6 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             txtDiaChi.Text = cttt.DiaChi;
             txtVeViec.Text = cttt.VeViec;
             txtKinhTrinh.Text = cttt.KinhTrinh;
-            txtThongQua.Text = cttt.ThongQua;
             txtNoiDung.Text = cttt.NoiDung;
             txtNoiNhan.Text = cttt.NoiNhan;
 
@@ -95,7 +95,6 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             ///
             txtVeViec.Text = "";
             txtKinhTrinh.Text = "";
-            txtThongQua.Text = "";
             txtNoiDung.Text = "";
             txtNoiNhan.Text = "";
             ///
@@ -267,7 +266,6 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                     cttt.DiaChi = txtDiaChi.Text.Trim();
                     cttt.VeViec = txtVeViec.Text.Trim();
                     cttt.KinhTrinh = txtKinhTrinh.Text.Trim();
-                    cttt.ThongQua = txtThongQua.Text.Trim();
                     cttt.NoiDung = txtNoiDung.Text;
                     cttt.NoiNhan = txtNoiNhan.Text.Trim();
 
@@ -301,7 +299,6 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                         _cttt.DiaChi = txtDiaChi.Text.Trim();
                         _cttt.VeViec = txtVeViec.Text.Trim();
                         _cttt.KinhTrinh = txtKinhTrinh.Text.Trim();
-                        _cttt.ThongQua = txtThongQua.Text.Trim();
                         _cttt.NoiDung = txtNoiDung.Text;
                         _cttt.NoiNhan = txtNoiNhan.Text.Trim();
 
@@ -413,6 +410,20 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                     rpt.SetDataSource(dsBaoCao);
                     frmShowBaoCao frm = new frmShowBaoCao(rpt);
                     frm.Show();
+            }
+        }
+
+        private void dgvToTrinh_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvToTrinh.Columns[e.ColumnIndex].Name == "MaCTTT" && e.Value != null)
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+        }
+
+        private void dgvToTrinh_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvToTrinh.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
             }
         }
 

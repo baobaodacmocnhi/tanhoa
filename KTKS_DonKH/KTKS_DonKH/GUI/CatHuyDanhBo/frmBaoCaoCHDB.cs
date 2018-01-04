@@ -10,12 +10,15 @@ using KTKS_DonKH.DAL.CatHuyDanhBo;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.CatHuyDanhBo;
 using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.DAL;
+using KTKS_DonKH.LinQ;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
     public partial class frmBaoCaoCHDB : Form
     {
         CCHDB _cCHDB = new CCHDB();
+        CDocSo _cDocSo = new CDocSo();
 
         public frmBaoCaoCHDB()
         {
@@ -24,13 +27,21 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void frmBaoCaoCHDB_Load(object sender, EventArgs e)
         {
+            List<QUAN> lst = _cDocSo.GetDSQuan();
+            QUAN quan = new QUAN();
+            quan.MAQUAN = 0;
+            quan.TENQUAN = "Tất Cả";
+            lst.Insert(0, quan);
+            cmbQuan_TheoNgayLap.DataSource = lst;
+            cmbQuan_TheoNgayLap.DisplayMember = "TenQuan";
+            cmbQuan_TheoNgayLap.ValueMember = "MaQuan";
 
         }
 
-        private void btnBaoCaoNgayLap_Click(object sender, EventArgs e)
+        private void btnBaoCao_TheoNgayLap_Click(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
-            switch (cmbLoaiBaoCaoNgayLap.SelectedItem.ToString())
+            switch (cmbLoaiBaoCao_TheoNgayLap.SelectedItem.ToString())
             {
                 case "DS Cắt Hủy Đã Xử Lý":
                     dt = _cCHDB.GetDSCatHuy_NgayLap_DaXuLy(dateTu.Value, dateDen.Value);
@@ -53,7 +64,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 DataRow dr = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
 
-                switch (cmbLoaiBaoCaoNgayLap.SelectedItem.ToString())
+                switch (cmbLoaiBaoCao_TheoNgayLap.SelectedItem.ToString())
                 {
                     case "DS Cắt Hủy Đã Xử Lý":
                         dr["LoaiBaoCao"] = "TB CẮT HỦY ĐÃ XỬ LÝ";
@@ -94,10 +105,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             frm.Show();
         }
 
-        private void btnBaoCaoNgayXuLy_Click(object sender, EventArgs e)
+        private void btnBaoCao_TheoNgayXuLy_Click(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
-            switch (cmbLoaiBaoCaoNgayXuLy.SelectedItem.ToString())
+            switch (cmbLoaiBaoCao_TheoNgayXuLy.SelectedItem.ToString())
             {
                 case "DS Cắt Hủy":
                     dt = _cCHDB.GetDSCatHuy_NgayXuLy_DaXuLy(dateTu.Value, dateDen.Value);
@@ -114,7 +125,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 DataRow dr = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
 
-                switch (cmbLoaiBaoCaoNgayXuLy.SelectedItem.ToString())
+                switch (cmbLoaiBaoCao_TheoNgayXuLy.SelectedItem.ToString())
                 {
                     case "DS Cắt Hủy":
                         dr["LoaiBaoCao"] = "CẮT HỦY ĐÃ XỬ LÝ";
