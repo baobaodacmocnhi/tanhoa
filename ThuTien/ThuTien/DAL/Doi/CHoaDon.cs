@@ -7716,8 +7716,8 @@ namespace ThuTien.DAL.Doi
                         + " left join"
                         + " (select DANHBA,DangNgan_ChuyenKhoan from HOADON where NAM=@Nam and DangNgan_ChuyenKhoan=1 and KY=12) t12 on t.DANHBA=t12.DANHBA) tt"
                         + " where RowNumber=1) ttt"
-                        + " left join (select MAPHUONG,MAQUAN,TENPHUONG from SERVER8.CAPNUOCTANHOA.dbo.PHUONG) phuong on ttt.Phuong=phuong.MAPHUONG and ttt.Quan=phuong.MAQUAN"
-                        + " left join (select MAQUAN,TENQUAN from SERVER8.CAPNUOCTANHOA.dbo.QUAN) quan on ttt.Quan=quan.MAQUAN";
+                        + " left join SERVER8.CAPNUOCTANHOA.dbo.PHUONG phuong on ttt.Phuong=phuong.MAPHUONG and ttt.Quan=phuong.MAQUAN"
+                        + " left join SERVER8.CAPNUOCTANHOA.dbo.QUAN quan on ttt.Quan=quan.MAQUAN";
 
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
