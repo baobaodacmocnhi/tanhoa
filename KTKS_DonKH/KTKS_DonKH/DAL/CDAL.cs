@@ -15,29 +15,6 @@ namespace KTKS_DonKH.DAL
         protected static dbThuTienDataContext dbThuTien = new dbThuTienDataContext();
 
         /// <summary>
-        /// Lấy mã tiếp theo, theo định dạng năm-stt (2013-1)
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        //public string getMaxNextIDTable(string id)
-        //{
-        //    string[] id_Sub = id.Split('-');
-        //    string nam = "";
-        //    string stt = "";
-        //    if (id_Sub[0] == DateTime.Now.Year.ToString())
-        //    {
-        //        nam = id_Sub[0];
-        //        stt = (int.Parse(id_Sub[1]) + 1).ToString();
-        //    }
-        //    else
-        //    {
-        //        nam = DateTime.Now.Year.ToString();
-        //        stt = "1";
-        //    }
-        //    return nam + "-" + stt;
-        //}
-
-        /// <summary>
         /// Lấy mã tiếp theo, theo định dạng sttnăm 113(12013)
         /// </summary>
         /// <param name="id"></param>
@@ -97,6 +74,7 @@ namespace KTKS_DonKH.DAL
                 //_connectionString = "Data Source=192.168.90.8\\KD;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa;Password=123@tanhoa";
                 _connectionString = KTKS_DonKH.Properties.Settings.Default.KTKS_DonKHConnectionString;
                 connection = new SqlConnection(_connectionString);
+                db.CommandTimeout = 300;
             }
             catch (Exception)
             {

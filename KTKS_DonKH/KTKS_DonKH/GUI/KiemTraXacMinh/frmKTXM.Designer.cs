@@ -94,6 +94,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.txtMaDonMoi = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
+            this.chkNgayKTXMTruocNgayGiao = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKetQuaKiemTra)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -269,7 +270,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(1034, 193);
+            this.btnThem.Location = new System.Drawing.Point(1034, 220);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 25);
             this.btnThem.TabIndex = 4;
@@ -298,7 +299,7 @@
             this.DiaChi,
             this.NoiDungKiemTra,
             this.CreateBy});
-            this.dgvDSKetQuaKiemTra.Location = new System.Drawing.Point(12, 322);
+            this.dgvDSKetQuaKiemTra.Location = new System.Drawing.Point(12, 349);
             this.dgvDSKetQuaKiemTra.Name = "dgvDSKetQuaKiemTra";
             this.dgvDSKetQuaKiemTra.Size = new System.Drawing.Size(1016, 126);
             this.dgvDSKetQuaKiemTra.TabIndex = 6;
@@ -392,7 +393,7 @@
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.txtHieu);
             this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Location = new System.Drawing.Point(12, 154);
+            this.groupBox2.Location = new System.Drawing.Point(12, 181);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1016, 161);
             this.groupBox2.TabIndex = 3;
@@ -700,7 +701,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(1034, 224);
+            this.btnSua.Location = new System.Drawing.Point(1034, 251);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 25);
             this.btnSua.TabIndex = 5;
@@ -720,7 +721,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(1034, 255);
+            this.btnXoa.Location = new System.Drawing.Point(1034, 282);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 25);
             this.btnXoa.TabIndex = 8;
@@ -761,12 +762,23 @@
             this.label25.TabIndex = 116;
             this.label25.Text = "Mã Đơn(New):";
             // 
+            // chkNgayKTXMTruocNgayGiao
+            // 
+            this.chkNgayKTXMTruocNgayGiao.AutoSize = true;
+            this.chkNgayKTXMTruocNgayGiao.Location = new System.Drawing.Point(108, 155);
+            this.chkNgayKTXMTruocNgayGiao.Name = "chkNgayKTXMTruocNgayGiao";
+            this.chkNgayKTXMTruocNgayGiao.Size = new System.Drawing.Size(205, 20);
+            this.chkNgayKTXMTruocNgayGiao.TabIndex = 118;
+            this.chkNgayKTXMTruocNgayGiao.Text = "Ngày KTXM Trước Ngày Giao";
+            this.chkNgayKTXMTruocNgayGiao.UseVisualStyleBackColor = true;
+            // 
             // frmKTXM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1115, 453);
+            this.ClientSize = new System.Drawing.Size(1115, 484);
+            this.Controls.Add(this.chkNgayKTXMTruocNgayGiao);
             this.Controls.Add(this.txtMaDonMoi);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.txtDinhMucMoi);
@@ -862,5 +874,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtMaDonMoi;
         private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.CheckBox chkNgayKTXMTruocNgayGiao;
     }
 }

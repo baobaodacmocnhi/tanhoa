@@ -308,7 +308,7 @@ namespace KTKS_DonKH.DAL.DonTu
         public DataTable GetDSChuyen_KTXM(string Loai, DateTime FromNgayChuyen, DateTime ToNgayChuyen)
         {
             DataTable dt = new DataTable();
-            db.CommandTimeout = 300;
+            
             switch (Loai)
             {
                 case "TKH":
@@ -330,10 +330,11 @@ namespace KTKS_DonKH.DAL.DonTu
                                     itemChuyenKTXM.NgayChuyen,
                                     NguoiDi = itemUser.HoTen,
                                     itemChuyenKTXM.GhiChu,
-                                    GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDon == itemDonTKH.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date) == true
+                                    GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDon == itemDonTKH.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && (item.NgayKTXM_Truoc_NgayGiao==true||item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date)) == true
                                     ? true : db.CTBamChis.Any(item => item.BamChi.MaDon == itemDonTKH.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayBC.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date),
-                                    NgayGiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDon == itemDonTKH.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date) == true
-                                    ? db.CTKTXMs.FirstOrDefault(item => item.KTXM.MaDon == itemDonTKH.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date).NgayKTXM : db.CTBamChis.Any(item => item.BamChi.MaDon == itemDonTKH.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayBC.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date) == true
+                                    NgayGiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDon == itemDonTKH.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && (item.NgayKTXM_Truoc_NgayGiao == true || item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date)) == true
+                                    ? db.CTKTXMs.FirstOrDefault(item => item.KTXM.MaDon == itemDonTKH.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && (item.NgayKTXM_Truoc_NgayGiao == true || item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date)).NgayKTXM : 
+                                    db.CTBamChis.Any(item => item.BamChi.MaDon == itemDonTKH.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayBC.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date) == true
                                     ? db.CTBamChis.FirstOrDefault(item => item.BamChi.MaDon == itemDonTKH.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayBC.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date).NgayBC : null,
                                 };
                     dt = LINQToDataTable(query.ToList());
@@ -357,10 +358,11 @@ namespace KTKS_DonKH.DAL.DonTu
                                 itemChuyenKTXM.NgayChuyen,
                                 NguoiDi = itemUser.HoTen,
                                 itemChuyenKTXM.GhiChu,
-                                GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date) == true
+                                GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && (item.NgayKTXM_Truoc_NgayGiao == true || item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date)) == true
                                 ? true : db.CTBamChis.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayBC.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date),
-                                NgayGiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date) == true
-                                ? db.CTKTXMs.FirstOrDefault(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date).NgayKTXM : db.CTBamChis.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayBC.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date) == true
+                                NgayGiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && (item.NgayKTXM_Truoc_NgayGiao == true || item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date)) == true
+                                ? db.CTKTXMs.FirstOrDefault(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && (item.NgayKTXM_Truoc_NgayGiao == true || item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date)).NgayKTXM : 
+                                db.CTBamChis.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayBC.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date) == true
                                 ? db.CTBamChis.FirstOrDefault(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayBC.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date).NgayBC : null,
                             };
                     dt = LINQToDataTable(query.ToList());
@@ -384,10 +386,11 @@ namespace KTKS_DonKH.DAL.DonTu
                                 itemChuyenKTXM.NgayChuyen,
                                 NguoiDi = itemUser.HoTen,
                                 itemChuyenKTXM.GhiChu,
-                                GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date) == true
+                                GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && (item.NgayKTXM_Truoc_NgayGiao == true || item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date)) == true
                                 ? true : db.CTBamChis.Any(item => item.BamChi.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayBC.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date),
-                                NgayGiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date) == true
-                                ? db.CTKTXMs.FirstOrDefault(item => item.KTXM.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date).NgayKTXM : db.CTBamChis.Any(item => item.BamChi.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayBC.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date) == true
+                                NgayGiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && (item.NgayKTXM_Truoc_NgayGiao == true || item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date)) == true
+                                ? db.CTKTXMs.FirstOrDefault(item => item.KTXM.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && (item.NgayKTXM_Truoc_NgayGiao == true || item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date)).NgayKTXM : 
+                                db.CTBamChis.Any(item => item.BamChi.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayBC.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date) == true
                                 ? db.CTBamChis.FirstOrDefault(item => item.BamChi.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayBC.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date).NgayBC : null,
                             };
                     dt = LINQToDataTable(query.ToList());
@@ -420,10 +423,11 @@ namespace KTKS_DonKH.DAL.DonTu
                                     itemChuyenKTXM.NgayChuyen,
                                     NguoiDi = itemUser.HoTen,
                                     itemChuyenKTXM.GhiChu,
-                                    GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDon == itemDonTKH.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date) == true
+                                    GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDon == itemDonTKH.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && (item.NgayKTXM_Truoc_NgayGiao == true || item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date)) == true
                                     ? true : db.CTBamChis.Any(item => item.BamChi.MaDon == itemDonTKH.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayBC.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date),
-                                    NgayGiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDon == itemDonTKH.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date) == true
-                                    ? db.CTKTXMs.FirstOrDefault(item => item.KTXM.MaDon == itemDonTKH.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date).NgayKTXM : db.CTBamChis.Any(item => item.BamChi.MaDon == itemDonTKH.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayBC.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date) == true
+                                    NgayGiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDon == itemDonTKH.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && (item.NgayKTXM_Truoc_NgayGiao == true || item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date)) == true
+                                    ? db.CTKTXMs.FirstOrDefault(item => item.KTXM.MaDon == itemDonTKH.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && (item.NgayKTXM_Truoc_NgayGiao == true || item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date)).NgayKTXM : 
+                                    db.CTBamChis.Any(item => item.BamChi.MaDon == itemDonTKH.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayBC.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date) == true
                                     ? db.CTBamChis.FirstOrDefault(item => item.BamChi.MaDon == itemDonTKH.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayBC.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date).NgayBC : null,
                                 };
                     dt = LINQToDataTable(query.ToList());
@@ -447,10 +451,11 @@ namespace KTKS_DonKH.DAL.DonTu
                                 itemChuyenKTXM.NgayChuyen,
                                 NguoiDi = itemUser.HoTen,
                                 itemChuyenKTXM.GhiChu,
-                                GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date) == true
+                                GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && (item.NgayKTXM_Truoc_NgayGiao == true || item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date)) == true
                                 ? true : db.CTBamChis.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayBC.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date),
-                                NgayGiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date) == true
-                                ? db.CTKTXMs.FirstOrDefault(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date).NgayKTXM : db.CTBamChis.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayBC.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date) == true
+                                NgayGiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && (item.NgayKTXM_Truoc_NgayGiao == true || item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date)) == true
+                                ? db.CTKTXMs.FirstOrDefault(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && (item.NgayKTXM_Truoc_NgayGiao == true || item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date)).NgayKTXM : 
+                                db.CTBamChis.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayBC.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date) == true
                                 ? db.CTBamChis.FirstOrDefault(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayBC.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date).NgayBC : null,
                             };
                     dt = LINQToDataTable(query.ToList());
@@ -474,10 +479,11 @@ namespace KTKS_DonKH.DAL.DonTu
                                 itemChuyenKTXM.NgayChuyen,
                                 NguoiDi = itemUser.HoTen,
                                 itemChuyenKTXM.GhiChu,
-                                GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date) == true
+                                GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && (item.NgayKTXM_Truoc_NgayGiao == true || item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date)) == true
                                 ? true : db.CTBamChis.Any(item => item.BamChi.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayBC.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date),
-                                NgayGiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date) == true
-                                ? db.CTKTXMs.FirstOrDefault(item => item.KTXM.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date).NgayKTXM : db.CTBamChis.Any(item => item.BamChi.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayBC.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date) == true
+                                NgayGiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && (item.NgayKTXM_Truoc_NgayGiao == true || item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date)) == true
+                                ? db.CTKTXMs.FirstOrDefault(item => item.KTXM.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && (item.NgayKTXM_Truoc_NgayGiao == true || item.NgayKTXM.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date)).NgayKTXM : 
+                                db.CTBamChis.Any(item => item.BamChi.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayBC.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date) == true
                                 ? db.CTBamChis.FirstOrDefault(item => item.BamChi.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemChuyenKTXM.ID_NoiNhan && item.NgayBC.Value.Date >= itemChuyenKTXM.NgayChuyen.Value.Date).NgayBC : null,
                             };
                     dt = LINQToDataTable(query.ToList());

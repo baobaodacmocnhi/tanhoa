@@ -527,6 +527,7 @@
       <Column Name="Dot" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Ky" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Nam" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NgayKTXM_Truoc_NgayGiao" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="NgayKTXM" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="HienTrangKiemTra" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="Hieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />

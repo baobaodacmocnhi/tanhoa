@@ -12570,6 +12570,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _Nam;
 		
+		private bool _NgayKTXM_Truoc_NgayGiao;
+		
 		private System.Nullable<System.DateTime> _NgayKTXM;
 		
 		private string _HienTrangKiemTra;
@@ -12676,6 +12678,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnKyChanged();
     partial void OnNamChanging(string value);
     partial void OnNamChanged();
+    partial void OnNgayKTXM_Truoc_NgayGiaoChanging(bool value);
+    partial void OnNgayKTXM_Truoc_NgayGiaoChanged();
     partial void OnNgayKTXMChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayKTXMChanged();
     partial void OnHienTrangKiemTraChanging(string value);
@@ -12960,6 +12964,26 @@ namespace KTKS_DonKH.LinQ
 					this._Nam = value;
 					this.SendPropertyChanged("Nam");
 					this.OnNamChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayKTXM_Truoc_NgayGiao", DbType="Bit NOT NULL")]
+		public bool NgayKTXM_Truoc_NgayGiao
+		{
+			get
+			{
+				return this._NgayKTXM_Truoc_NgayGiao;
+			}
+			set
+			{
+				if ((this._NgayKTXM_Truoc_NgayGiao != value))
+				{
+					this.OnNgayKTXM_Truoc_NgayGiaoChanging(value);
+					this.SendPropertyChanging();
+					this._NgayKTXM_Truoc_NgayGiao = value;
+					this.SendPropertyChanged("NgayKTXM_Truoc_NgayGiao");
+					this.OnNgayKTXM_Truoc_NgayGiaoChanged();
 				}
 			}
 		}

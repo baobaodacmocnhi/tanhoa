@@ -116,6 +116,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             if (ctktxm.DinhMucMoi != null)
                 txtDinhMucMoi.Text = ctktxm.DinhMucMoi.Value.ToString();
             ///
+            chkNgayKTXMTruocNgayGiao.Checked = ctktxm.NgayKTXM_Truoc_NgayGiao;
             dateKTXM.Value = ctktxm.NgayKTXM.Value;
             if (ctktxm.HienTrangKiemTra != null)
                 cmbHienTrangKiemTra.SelectedValue = ctktxm.HienTrangKiemTra;
@@ -148,6 +149,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtDinhMuc.Text = "";
             txtDinhMucMoi.Text = "";
             ///
+            chkNgayKTXMTruocNgayGiao.Checked = false;
             //dateKTXM.Value = DateTime.Now;
             //cmbTinhTrangKiemTra.SelectedIndex = -1;
             cmbViTriDHN1.SelectedIndex = -1;
@@ -376,6 +378,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         MessageBox.Show("Chưa đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
+                    if (CTaiKhoan.ToXL==true && txtDienThoai.Text.Trim() == "" )
+                    {
+                        MessageBox.Show("Thiếu điện thoại Khách Hàng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
 
                     CTKTXM ctktxm = new CTKTXM();
 
@@ -422,7 +429,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                     ktxm.MaDonMoi = _dontbc.MaDonMoi;
                                     _cKTXM.Them(ktxm);
                                 }
-                                if (txtDanhBo.Text.Trim() != "" && _cKTXM.CheckExist_CT("TBC", CTaiKhoan.MaUser,_dontbc.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value)==true)
+                                if (txtDanhBo.Text.Trim() != "" && _cKTXM.CheckExist_CT("TBC", CTaiKhoan.MaUser, _dontbc.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value) == true)
                                 {
                                     MessageBox.Show("Danh Bộ này đã được Lập Nội Dung Kiểm Tra", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
@@ -450,6 +457,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         ctktxm.Nam = _hoadon.NAM.ToString();
                     }
                     ///
+                    ctktxm.NgayKTXM_Truoc_NgayGiao = chkNgayKTXMTruocNgayGiao.Checked;
                     ctktxm.NgayKTXM = dateKTXM.Value;
 
                     if (cmbHienTrangKiemTra.SelectedValue != null)
@@ -540,6 +548,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             _ctktxm.Nam = _hoadon.NAM.ToString();
                         }
                         ///
+                        _ctktxm.NgayKTXM_Truoc_NgayGiao = chkNgayKTXMTruocNgayGiao.Checked;
                         _ctktxm.NgayKTXM = dateKTXM.Value;
 
                         if (cmbHienTrangKiemTra.SelectedValue != null)

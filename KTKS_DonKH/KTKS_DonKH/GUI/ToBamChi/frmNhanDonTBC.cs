@@ -126,7 +126,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
             txtNgayNhan.Text = entity.CreateDate.Value.ToString("dd/MM/yyyy");
             txtNoiDung.Text = entity.NoiDung;
 
-            if (entity.DanhBo.Length == 11)
+            if (entity.DanhBo != null && entity.DanhBo.Length == 11)
             txtDanhBo.Text = entity.DanhBo.Insert(7, " ").Insert(4, " ");
             else
                 txtDanhBo.Text = entity.DanhBo;
