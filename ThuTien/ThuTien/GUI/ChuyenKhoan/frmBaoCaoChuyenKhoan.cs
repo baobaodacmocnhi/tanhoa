@@ -538,9 +538,9 @@ namespace ThuTien.GUI.ChuyenKhoan
             DataTable dtBK = _cBangKe.GetDS_BangKe(dateGiaiTrach.Value);
             DataTable dtDN = _cHoaDon.GetDSDangNganChuyenKhoan(dateGiaiTrach.Value);
             DataTable dtBKLui5 = _cBangKe.GetDS_BangKeLui5(dateGiaiTrach.Value);
-            if (dtBK == null || dtDN == null || dtBKLui5 == null)
+            if (dtBK == null || dtBK.Rows.Count == 0 || dtDN == null || dtDN.Rows.Count == 0 || dtBKLui5 == null || dtBKLui5.Rows.Count == 0)
             {
-                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi, Dữ liệu Đăng Ngân không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
