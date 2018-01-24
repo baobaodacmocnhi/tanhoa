@@ -65,6 +65,8 @@
             this.dateDen_ThongKeLoaiDon = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnInDSChuaChuyen_ThongKeLoaiDon = new System.Windows.Forms.Button();
+            this.btnInDSChuaKTXM_ThongKeLoaiDon = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.panel_KhoangThoiGian_DSChuyenKTXM.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -380,11 +382,13 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnInDSChuaKTXM_ThongKeLoaiDon);
+            this.groupBox2.Controls.Add(this.btnInDSChuaChuyen_ThongKeLoaiDon);
             this.groupBox2.Controls.Add(this.btnBaoCao_ThongKeLoaiDon);
             this.groupBox2.Controls.Add(this.panel2);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(270, 87);
+            this.groupBox2.Size = new System.Drawing.Size(465, 87);
             this.groupBox2.TabIndex = 30;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thống Kê Theo Loại Đơn";
@@ -446,12 +450,32 @@
             this.label4.TabIndex = 16;
             this.label4.Text = "Đến Ngày:";
             // 
+            // btnInDSChuaChuyen_ThongKeLoaiDon
+            // 
+            this.btnInDSChuaChuyen_ThongKeLoaiDon.Location = new System.Drawing.Point(270, 40);
+            this.btnInDSChuaChuyen_ThongKeLoaiDon.Name = "btnInDSChuaChuyen_ThongKeLoaiDon";
+            this.btnInDSChuaChuyen_ThongKeLoaiDon.Size = new System.Drawing.Size(90, 41);
+            this.btnInDSChuaChuyen_ThongKeLoaiDon.TabIndex = 26;
+            this.btnInDSChuaChuyen_ThongKeLoaiDon.Text = "In DS Chưa Chuyển";
+            this.btnInDSChuaChuyen_ThongKeLoaiDon.UseVisualStyleBackColor = true;
+            this.btnInDSChuaChuyen_ThongKeLoaiDon.Click += new System.EventHandler(this.btnInDSChuaChuyen_ThongKeLoaiDon_Click);
+            // 
+            // btnInDSChuaKTXM_ThongKeLoaiDon
+            // 
+            this.btnInDSChuaKTXM_ThongKeLoaiDon.Location = new System.Drawing.Point(366, 40);
+            this.btnInDSChuaKTXM_ThongKeLoaiDon.Name = "btnInDSChuaKTXM_ThongKeLoaiDon";
+            this.btnInDSChuaKTXM_ThongKeLoaiDon.Size = new System.Drawing.Size(90, 41);
+            this.btnInDSChuaKTXM_ThongKeLoaiDon.TabIndex = 27;
+            this.btnInDSChuaKTXM_ThongKeLoaiDon.Text = "In DS Chưa KTXM";
+            this.btnInDSChuaKTXM_ThongKeLoaiDon.UseVisualStyleBackColor = true;
+            this.btnInDSChuaKTXM_ThongKeLoaiDon.Click += new System.EventHandler(this.btnInDSChuaKTXM_ThongKeLoaiDon_Click);
+            // 
             // frmBaoCaoDonTKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(872, 474);
+            this.ClientSize = new System.Drawing.Size(626, 474);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox1);
@@ -518,6 +542,8 @@
         private System.Windows.Forms.DateTimePicker dateDen_ThongKeLoaiDon;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnInDSChuaChuyen_ThongKeLoaiDon;
+        private System.Windows.Forms.Button btnInDSChuaKTXM_ThongKeLoaiDon;
 
     }
 }

@@ -237,11 +237,15 @@ namespace KTKS_DonKH.DAL.ToKhachHang
             return LINQToDataTable(query);
         }
 
-        public DataTable ThongKeLoaiDon(DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable BaoCao_ThongKeLoaiDon(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            string sql = "select b.TenLD,SoLuong=COUNT(a.MaDon) from DonKH a,LoaiDon b"
-                        + " where CAST(a.CreateDate as date)>='" + FromCreateDate.ToString("yyyy-MM-dd") + "' and CAST(a.CreateDate as date)<='" + ToCreateDate.ToString("yyyy-MM-dd") + "' and a.MaLD=b.MaLD"
-                        + " group by b.TenLD";
+            string sql = "select MaDon,TenLD,"
+                    + " ChuyenTrucTiep=case when exists(select ID from LichSuDonTu where LichSuDonTu.MaDon=a.MaDon and ID_NoiChuyen=1) then 'false' else 'true' end,"
+                    + " ChuyenKTXM=case when exists(select ID from LichSuDonTu where LichSuDonTu.MaDon=a.MaDon and ID_NoiChuyen=1) then 'true' else 'false' end,"
+                    + " DaKTXM=case when exists(select ID from LichSuDonTu where LichSuDonTu.MaDon=a.MaDon and ID_NoiChuyen=1) then case when exists(select MaKTXM from KTXM where KTXM.MaDon=a.MaDon) then 'true' else 'false' end else 'false' end"
+                    + " from DonKH a,LoaiDon b where CAST(a.CreateDate as date)>='" + FromCreateDate.ToString("yyyy-MM-dd") + "' and CAST(a.CreateDate as date)<='" + ToCreateDate.ToString("yyyy-MM-dd") + "' and a.MaLD=b.MaLD"
+                    + " order by a.CreateDate asc";
+
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
