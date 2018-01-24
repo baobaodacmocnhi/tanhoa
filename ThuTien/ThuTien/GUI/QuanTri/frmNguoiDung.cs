@@ -142,23 +142,27 @@ namespace ThuTien.GUI.QuanTri
                 if (_selectedindex != -1)
                 {
                     TT_NguoiDung nguoidung = _cNguoiDung.GetByMaND(int.Parse(dgvNguoiDung["MaND", _selectedindex].Value.ToString()));
-                    nguoidung.HoTen = txtHoTen.Text.Trim();
-                    nguoidung.DienThoai = txtDienThoai.Text.Trim();
-                    nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
-                    nguoidung.MatKhau = txtMatKhau.Text.Trim();
-                    if (!string.IsNullOrEmpty(txtNam.Text.Trim()))
-                        nguoidung.NamVaoLam = int.Parse(txtNam.Text.Trim());
-                    nguoidung.MaTo = (int)cmbTo.SelectedValue;
-                    nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
-                    nguoidung.PhoGiamDoc = chkPhoGiamDoc.Checked;
-                    nguoidung.An = chkAn.Checked;
-                    nguoidung.Doi = chkDoi.Checked;
-                    nguoidung.ToTruong = chkToTruong.Checked;
-                    nguoidung.HanhThu = chkHanhThu.Checked;
-                    nguoidung.DongNuoc = chkDongNuoc.Checked;
-                    nguoidung.VanPhong = chkVanPhong.Checked;
-                    nguoidung.ChamCong = chkChamCong.Checked;
-                    _cNguoiDung.Sua(nguoidung);
+                    if (txtHoTen.Text.Trim() != "" && txtTaiKhoan.Text.Trim() != "" && txtMatKhau.Text.Trim() != "")
+                    {
+                        nguoidung.HoTen = txtHoTen.Text.Trim();
+                        nguoidung.DienThoai = txtDienThoai.Text.Trim();
+                        nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
+                        nguoidung.MatKhau = txtMatKhau.Text.Trim();
+                        if (!string.IsNullOrEmpty(txtNam.Text.Trim()))
+                            nguoidung.NamVaoLam = int.Parse(txtNam.Text.Trim());
+                        nguoidung.MaTo = (int)cmbTo.SelectedValue;
+                        nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
+                        nguoidung.PhoGiamDoc = chkPhoGiamDoc.Checked;
+                        nguoidung.An = chkAn.Checked;
+                        nguoidung.Doi = chkDoi.Checked;
+                        nguoidung.ToTruong = chkToTruong.Checked;
+                        nguoidung.HanhThu = chkHanhThu.Checked;
+                        nguoidung.DongNuoc = chkDongNuoc.Checked;
+                        nguoidung.VanPhong = chkVanPhong.Checked;
+                        nguoidung.ChamCong = chkChamCong.Checked;
+
+                        _cNguoiDung.Sua(nguoidung);
+                    }
                     DataTable dt = ((DataView)gridView.DataSource).Table;
                     foreach (DataRow item in dt.Rows)
                     {

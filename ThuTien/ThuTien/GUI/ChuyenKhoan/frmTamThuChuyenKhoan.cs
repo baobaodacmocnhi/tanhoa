@@ -31,6 +31,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CDCHD _cDCHD = new CDCHD();
         CDongNuoc _cDongNuoc = new CDongNuoc();
         CLenhHuy _cLenhHuy = new CLenhHuy();
+        CToTrinhCatHuy _cTTCH = new CToTrinhCatHuy();
 
         public frmTamThuChuyenKhoan()
         {
@@ -163,16 +164,16 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             if (dateDen.Value >= dateTu.Value)
                 dgvTamThu.DataSource = _cTamThu.GetDS(true, dateTu.Value, dateDen.Value);
-            string HoTen = "", TenTo = "";
+            //string HoTen = "", TenTo = "";
             foreach (DataGridViewRow item in dgvTamThu.Rows)
             {
                 if (bool.Parse(item.Cells["TienDu_TT"].Value.ToString()))
                     item.DefaultCellStyle.BackColor = Color.Yellow;
-                if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon_TT"].Value.ToString(), out HoTen, out TenTo))
-                {
-                    item.Cells["HanhThu_TT"].Value = HoTen;
-                    item.Cells["To_TT"].Value = TenTo;
-                }
+                //if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon_TT"].Value.ToString(), out HoTen, out TenTo))
+                //{
+                //    item.Cells["HanhThu_TT"].Value = HoTen;
+                //    item.Cells["To_TT"].Value = TenTo;
+                //}
             }
         }
 
@@ -262,9 +263,11 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dr["Loai"] = "TG";
                         dr["HoTen"] = item.Cells["DiaChi_TT"].Value.ToString();
                     }
-                    if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_TT"].Value.ToString()))
+                    if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_TT"].Value.ToString())==true)
                         dr["LenhHuy"] = true;
-
+                    else
+                        if (_cTTCH.CheckExist_CT(item.Cells["SoHoaDon_TT"].Value.ToString()) == true)
+                            dr["ToTrinhCatHuy"] = true;
                     ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
                 }
             rptDSTamThuChuyenKhoan rpt = new rptDSTamThuChuyenKhoan();

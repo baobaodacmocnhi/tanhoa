@@ -63,7 +63,7 @@ namespace ThuTien.GUI.DongNuoc
                 DocSo entity = _cDocSoHandheld.Get(item.Cells["DanhBo"].Value.ToString());
                 item.Cells["ChiSo"].Value = entity.CSMoi;
                 item.Cells["NgayDoc"].Value = entity.DenNgay;
-                if (bool.Parse(item.Cells["DongPhi"].Value.ToString()) == false 
+                if (bool.Parse(item.Cells["DongPhi"].Value.ToString()) == false && item.Cells["ChiSoDN"].Value.ToString() != ""
                     && int.Parse(item.Cells["ChiSoDN"].Value.ToString()) != int.Parse(item.Cells["ChiSo"].Value.ToString())
                     && DateTime.Parse(item.Cells["NgayDN"].Value.ToString()) < DateTime.Parse(item.Cells["NgayDoc"].Value.ToString()))
                 {
