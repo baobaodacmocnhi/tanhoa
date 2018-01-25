@@ -77,7 +77,7 @@ namespace ThuTien.GUI.TimKiem
                             item.DefaultCellStyle.BackColor = Color.Green;
                         }
                     if (bool.Parse(item.Cells["DCHD"].Value.ToString()) == true)
-                        item.DefaultCellStyle.BackColor = Color.Lime;
+                        item.DefaultCellStyle.BackColor = Color.Fuchsia;
                     //if (_cCNKD.CheckExistCT(item.Cells["SoHoaDon"].Value.ToString()) == true)
                     //{
                     //TT_CTChuyenNoKhoDoi ctcnkd = _cCNKD.GetCT(item.Cells["SoHoaDon"].Value.ToString());
