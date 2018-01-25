@@ -67,7 +67,7 @@ namespace ThuTien.GUI.Quay
                     foreach (DataGridViewRow item in dgvHoaDon.Rows)
                     {
                         if (_cDichVuThu.CheckExist(item.Cells["SoHoaDon"].Value.ToString()) == true)
-                            item.DefaultCellStyle.BackColor = Color.Blue;
+                            item.DefaultCellStyle.BackColor = Color.DeepSkyBlue;
                         else
                         {
                             item.Cells["Chon"].Value = "True";
