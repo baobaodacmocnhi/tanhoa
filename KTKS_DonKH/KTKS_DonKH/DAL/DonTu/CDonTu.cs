@@ -16,14 +16,13 @@ namespace KTKS_DonKH.DAL.DonTu
             {
                 if (db.DonTus.Any(item => item.NamThang == DateTime.Now.ToString("yyMM")) == true)
                 {
-                    entity.NamThang = DateTime.Now.ToString("yyMM");
                     entity.STT = (int.Parse(db.DonTus.Where(item => item.NamThang == DateTime.Now.ToString("yyMM")).Max(item => item.STT)) + 1).ToString("000");
                 }
                 else
                 {
-                    entity.NamThang = DateTime.Now.ToString("yyMM");
                     entity.STT = 1.ToString("000");
                 }
+                entity.NamThang = DateTime.Now.ToString("yyMM");
                 entity.MaDon = int.Parse(entity.NamThang + entity.STT);
                 entity.CreateBy = CTaiKhoan.MaUser;
                 entity.CreateDate = DateTime.Now;

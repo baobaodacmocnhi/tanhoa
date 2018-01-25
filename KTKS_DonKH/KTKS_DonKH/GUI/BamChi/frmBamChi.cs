@@ -125,9 +125,10 @@ namespace KTKS_DonKH.GUI.BamChi
             txtMucDichSuDung.Text = ctbamchi.MucDichSuDung;
             txtChiSo.Text = ctbamchi.ChiSo.ToString();
             cmbTinhTrangChiSo.SelectedItem = ctbamchi.TinhTrangChiSo;
+            cmbTrangThaiBC.SelectedValue = ctbamchi.TrangThaiBC;
             txtVienChi.Text = ctbamchi.VienChi.ToString();
             txtDayChi.Text = ctbamchi.DayChi.ToString();
-            cmbTrangThaiBC.SelectedValue = ctbamchi.TrangThaiBC;
+            
             txtGhiChu.Text = ctbamchi.GhiChu;
             txtMaSoBC.Text = ctbamchi.MaSoBC;
             txtTheoYeuCau.Text = ctbamchi.TheoYeuCau;
@@ -242,7 +243,7 @@ namespace KTKS_DonKH.GUI.BamChi
             txtMucDichSuDung.Text = "";
             txtVienChi.Text = "";
             txtDayChi.Text = "";
-            ((ComboBox)cmbTrangThaiBC).SelectedIndex = -1;
+            cmbTrangThaiBC.SelectedIndex = 0;
             txtMaSoBC.Text = "";
             txtTheoYeuCau.Text = "";
             txtGhiChu.Text = "";
@@ -262,6 +263,7 @@ namespace KTKS_DonKH.GUI.BamChi
             {
                 string MaDon = txtMaDonCu.Text.Trim();
                 Clear();
+                txtMaSoBC.Text = CTaiKhoan.MaKiemBamChi;
                 txtMaDonCu.Text = MaDon;
                 ///Đơn Tổ Xử Lý
                 if (txtMaDonCu.Text.Trim().ToUpper().Contains("TXL"))
@@ -543,7 +545,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         ctbamchi.VienChi = int.Parse(txtVienChi.Text.Trim());
 
                     if (!string.IsNullOrEmpty(txtDayChi.Text.Trim()))
-                        ctbamchi.DayChi = double.Parse(txtDayChi.Text.Trim());
+                        ctbamchi.DayChi = Convert.ToDouble(txtDayChi.Text.Trim());
 
                     ctbamchi.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
 
@@ -632,7 +634,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             _ctbamchi.VienChi = int.Parse(txtVienChi.Text.Trim());
 
                         if (!string.IsNullOrEmpty(txtDayChi.Text.Trim()))
-                            _ctbamchi.DayChi = double.Parse(txtDayChi.Text.Trim());
+                            _ctbamchi.DayChi = Convert.ToDouble(txtDayChi.Text.Trim());
 
                         _ctbamchi.TheoYeuCau = txtTheoYeuCau.Text.Trim();
 
