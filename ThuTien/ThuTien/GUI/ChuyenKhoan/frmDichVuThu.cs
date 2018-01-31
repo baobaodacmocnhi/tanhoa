@@ -58,6 +58,10 @@ namespace ThuTien.GUI.ChuyenKhoan
 
             cmbFromDot.SelectedIndex = 0;
             cmbToDot.SelectedIndex = 0;
+
+            cmbNam.DataSource = _cHoaDon.GetNam();
+            cmbNam.DisplayMember = "Nam";
+            cmbNam.ValueMember = "Nam";
         }
 
         private void btnXem_Click(object sender, EventArgs e)
@@ -67,49 +71,86 @@ namespace ThuTien.GUI.ChuyenKhoan
                 dgvDichVuThu.DataSource = _cDichVuThu.GetDS(txtDanhBo.Text.Trim().Replace(" ", ""));
             }
             else
-            if (cmbFromDot.SelectedIndex == 0)
-            {
-                ///chọn tất cả tổ
-                if (cmbTo.SelectedIndex == 0)
-                    dgvDichVuThu.DataSource = _cDichVuThu.GetDS(cmbDichVuThu.SelectedValue.ToString(), dateTu.Value, dateDen.Value);
-                ///chọn 1 tổ
-                else
-                    ///chọn tất cả nhân viên
-                    if (cmbNhanVien.SelectedIndex == 0)
-                        dgvDichVuThu.DataSource = _cDichVuThu.GetDS(cmbDichVuThu.SelectedValue.ToString(), int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
-                    else
-                        ///chọn 1 nhân viên cụ thể
-                        if (cmbNhanVien.SelectedIndex > 0)
-                            dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV(cmbDichVuThu.SelectedValue.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
-            }
-            else
-                if (cmbFromDot.SelectedIndex > 0)
+                ///xem tới kỳ
+                if (chkXemTheoKy.Checked == true)
                 {
-                    ///chọn tất cả tổ
-                    if (cmbTo.SelectedIndex == 0)
-                        dgvDichVuThu.DataSource = _cDichVuThu.GetDS(cmbDichVuThu.SelectedValue.ToString(), dateTu.Value, dateDen.Value, int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
-                    ///chọn 1 tổ
-                    else
-                        ///chọn tất cả nhân viên
-                        if (cmbNhanVien.SelectedIndex == 0)
-                            dgvDichVuThu.DataSource = _cDichVuThu.GetDS(cmbDichVuThu.SelectedValue.ToString(), int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value, int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
+                    if (cmbFromDot.SelectedIndex == 0)
+                    {
+                        ///chọn tất cả tổ
+                        if (cmbTo.SelectedIndex == 0)
+                            dgvDichVuThu.DataSource = _cDichVuThu.GetDS(cmbDichVuThu.SelectedValue.ToString(), dateTu.Value, dateDen.Value, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                        ///chọn 1 tổ
                         else
-                            ///chọn 1 nhân viên cụ thể
-                            if (cmbNhanVien.SelectedIndex > 0)
-                                dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV(cmbDichVuThu.SelectedValue.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString()), dateTu.Value, dateDen.Value, int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
+                            ///chọn tất cả nhân viên
+                            if (cmbNhanVien.SelectedIndex == 0)
+                                dgvDichVuThu.DataSource = _cDichVuThu.GetDS(cmbDichVuThu.SelectedValue.ToString(), int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                            else
+                                ///chọn 1 nhân viên cụ thể
+                                if (cmbNhanVien.SelectedIndex > 0)
+                                    dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV(cmbDichVuThu.SelectedValue.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString()), dateTu.Value, dateDen.Value, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                    }
+                    else
+                        if (cmbFromDot.SelectedIndex > 0)
+                        {
+                            ///chọn tất cả tổ
+                            if (cmbTo.SelectedIndex == 0)
+                                dgvDichVuThu.DataSource = _cDichVuThu.GetDS_Dot(cmbDichVuThu.SelectedValue.ToString(), dateTu.Value, dateDen.Value, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
+                            ///chọn 1 tổ
+                            else
+                                ///chọn tất cả nhân viên
+                                if (cmbNhanVien.SelectedIndex == 0)
+                                    dgvDichVuThu.DataSource = _cDichVuThu.GetDS_Dot(cmbDichVuThu.SelectedValue.ToString(), int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
+                                else
+                                    ///chọn 1 nhân viên cụ thể
+                                    if (cmbNhanVien.SelectedIndex > 0)
+                                        dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV_Dot(cmbDichVuThu.SelectedValue.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString()), dateTu.Value, dateDen.Value, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
+                        }
                 }
+                ///xem thời gian
+                else
+                    if (cmbFromDot.SelectedIndex == 0)
+                    {
+                        ///chọn tất cả tổ
+                        if (cmbTo.SelectedIndex == 0)
+                            dgvDichVuThu.DataSource = _cDichVuThu.GetDS(cmbDichVuThu.SelectedValue.ToString(), dateTu.Value, dateDen.Value);
+                        ///chọn 1 tổ
+                        else
+                            ///chọn tất cả nhân viên
+                            if (cmbNhanVien.SelectedIndex == 0)
+                                dgvDichVuThu.DataSource = _cDichVuThu.GetDS(cmbDichVuThu.SelectedValue.ToString(), int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
+                            else
+                                ///chọn 1 nhân viên cụ thể
+                                if (cmbNhanVien.SelectedIndex > 0)
+                                    dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV(cmbDichVuThu.SelectedValue.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
+                    }
+                    else
+                        if (cmbFromDot.SelectedIndex > 0)
+                        {
+                            ///chọn tất cả tổ
+                            if (cmbTo.SelectedIndex == 0)
+                                dgvDichVuThu.DataSource = _cDichVuThu.GetDS(cmbDichVuThu.SelectedValue.ToString(), dateTu.Value, dateDen.Value, int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
+                            ///chọn 1 tổ
+                            else
+                                ///chọn tất cả nhân viên
+                                if (cmbNhanVien.SelectedIndex == 0)
+                                    dgvDichVuThu.DataSource = _cDichVuThu.GetDS(cmbDichVuThu.SelectedValue.ToString(), int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value, int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
+                                else
+                                    ///chọn 1 nhân viên cụ thể
+                                    if (cmbNhanVien.SelectedIndex > 0)
+                                        dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV(cmbDichVuThu.SelectedValue.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString()), dateTu.Value, dateDen.Value, int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
+                        }
 
             long TongSoTien = 0;
             int TongPhi = 0;
             foreach (DataGridViewRow item in dgvDichVuThu.Rows)
             {
-                string HoTen = "", TenTo = "";
-                if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon"].Value.ToString(), out HoTen, out TenTo))
-                {
-                    item.Cells["HanhThu"].Value = HoTen;
-                    item.Cells["To"].Value = TenTo;
-                    item.DefaultCellStyle.BackColor = Color.Yellow;
-                }
+                //string HoTen = "", TenTo = "";
+                //if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon"].Value.ToString(), out HoTen, out TenTo))
+                //{
+                //    item.Cells["HanhThu"].Value = HoTen;
+                //    item.Cells["To"].Value = TenTo;
+                //    item.DefaultCellStyle.BackColor = Color.Yellow;
+                //}
                 if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
                 {
                     item.DefaultCellStyle.BackColor = Color.Red;
@@ -118,7 +159,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 {
                     item.DefaultCellStyle.BackColor = Color.Yellow;
                 }
-                if (bool.Parse(item.Cells["LenhHuy"].Value.ToString())==true)
+                if (bool.Parse(item.Cells["LenhHuy"].Value.ToString()) == true)
                 {
                     item.DefaultCellStyle.BackColor = Color.Red;
                 }

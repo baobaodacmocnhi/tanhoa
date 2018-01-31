@@ -689,9 +689,9 @@
             this.label12.ForeColor = System.Drawing.Color.Fuchsia;
             this.label12.Location = new System.Drawing.Point(1046, 9);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(106, 15);
+            this.label12.Size = new System.Drawing.Size(115, 15);
             this.label12.TabIndex = 26;
-            this.label12.Text = "ĐCHĐ: màu tím";
+            this.label12.Text = "Tiền dư: màu tím";
             // 
             // frmTimKiemKhachHang
             // 
