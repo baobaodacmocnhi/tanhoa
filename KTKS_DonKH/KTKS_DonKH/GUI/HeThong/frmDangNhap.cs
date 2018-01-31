@@ -37,6 +37,7 @@ namespace KTKS_DonKH.GUI.HeThong
                     CTaiKhoan.MaNhom = nguoidung.MaNhom.Value;
                     CTaiKhoan.TaiKhoan = nguoidung.TaiKhoan;
                     CTaiKhoan.HoTen = nguoidung.HoTen;
+                    CTaiKhoan.MaKiemBamChi = nguoidung.MaKiemBamChi;
                     CTaiKhoan.Admin = nguoidung.Admin;
                     CTaiKhoan.ThuKy = nguoidung.ThuKy;
                     CTaiKhoan.ToKH = nguoidung.ToKH;

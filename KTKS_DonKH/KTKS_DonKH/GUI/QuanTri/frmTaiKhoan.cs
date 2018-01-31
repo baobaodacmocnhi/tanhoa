@@ -149,6 +149,7 @@ namespace KTKS_DonKH.GUI.QuanTri
                     nguoidung.HoTen = txtHoTen.Text.Trim();
                     nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
                     nguoidung.MatKhau = txtMatKhau.Text.Trim();
+                    nguoidung.MaKiemBamChi = txtMaKiemBamChi.Text.Trim();
                     nguoidung.MaTo = (int)cmbTo.SelectedValue;
                     nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
                     nguoidung.PhoGiamDoc = chkPhoGiamDoc.Checked;

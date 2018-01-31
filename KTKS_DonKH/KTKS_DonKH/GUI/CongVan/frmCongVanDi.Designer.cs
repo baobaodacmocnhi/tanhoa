@@ -184,6 +184,7 @@
             this.cmbNoiChuyen.FormattingEnabled = true;
             this.cmbNoiChuyen.Items.AddRange(new object[] {
             "Đội TCTB",
+            "Tổ Thay",
             "Đội QLĐHN",
             "Đội Thu Tiền",
             "P. KHĐT",
