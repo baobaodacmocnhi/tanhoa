@@ -132,7 +132,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             //return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
-        public DataTable GetDS(string TenDichVu, DateTime FromCreateDate, DateTime ToCreateDate, int Nam, int Ky)
+        public DataTable GetDS_DenKy(string TenDichVu, DateTime FromCreateDate, DateTime ToCreateDate, int Nam, int Ky)
         {
             var query = from itemDV in _db.TT_DichVuThus
                         join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
@@ -141,7 +141,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
                         from itemtableDN in tableDN.DefaultIfEmpty()
                         where itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate
-                        && itemDV.TenDichVu.Contains(TenDichVu) && itemHD.NAM == Nam && itemHD.KY == Ky
+                        && itemDV.TenDichVu.Contains(TenDichVu) && (itemHD.NAM < Nam ||(itemHD.NAM == Nam&& itemHD.KY <= Ky))
                         orderby itemDV.CreateDate ascending
                         select new
                         {
@@ -219,7 +219,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDS_Dot(string TenDichVu, DateTime FromCreateDate, DateTime ToCreateDate, int Nam, int Ky, int FromDot, int ToDot)
+        public DataTable GetDS_DenKy_Dot(string TenDichVu, DateTime FromCreateDate, DateTime ToCreateDate, int Nam, int Ky, int FromDot, int ToDot)
         {
             var query = from itemDV in _db.TT_DichVuThus
                         join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
@@ -228,7 +228,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
                         from itemtableDN in tableDN.DefaultIfEmpty()
                         where itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate
-                        && itemDV.TenDichVu.Contains(TenDichVu) && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT.Value >= FromDot && itemHD.DOT.Value <= ToDot
+                        && itemDV.TenDichVu.Contains(TenDichVu) && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky)) && itemHD.DOT.Value >= FromDot && itemHD.DOT.Value <= ToDot
                         orderby itemDV.CreateDate ascending
                         select new
                         {
@@ -298,7 +298,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDS(string TenDichVu, int MaTo, DateTime FromCreateDate, DateTime ToCreateDate, int Nam, int Ky)
+        public DataTable GetDS_DenKy(string TenDichVu, int MaTo, DateTime FromCreateDate, DateTime ToCreateDate, int Nam, int Ky)
         {
             var query = from itemDV in _db.TT_DichVuThus
                         join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
@@ -308,7 +308,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         from itemtableDN in tableDN.DefaultIfEmpty()
                         where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                             && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu) && itemHD.NAM == Nam && itemHD.KY == Ky
+                            && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu) && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky))
                         orderby itemDV.CreateDate ascending
                         select new
                         {
@@ -379,7 +379,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDS_Dot(string TenDichVu, int MaTo, DateTime FromCreateDate, DateTime ToCreateDate, int Nam, int Ky, int FromDot, int ToDot)
+        public DataTable GetDS_DenKy_Dot(string TenDichVu, int MaTo, DateTime FromCreateDate, DateTime ToCreateDate, int Nam, int Ky, int FromDot, int ToDot)
         {
             var query = from itemDV in _db.TT_DichVuThus
                         join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
@@ -390,7 +390,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                             && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                             && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
-                            && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT.Value >= FromDot && itemHD.DOT.Value <= ToDot
+                            && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky)) && itemHD.DOT.Value >= FromDot && itemHD.DOT.Value <= ToDot
                         orderby itemDV.CreateDate ascending
                         select new
                         {
@@ -499,7 +499,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             return dt;
         }
 
-        public DataTable GetDS_NV(string TenDichVu, int MaNV_HanhThu, DateTime FromCreateDate, DateTime ToCreateDate, int Nam, int Ky)
+        public DataTable GetDS_DenKy_NV(string TenDichVu, int MaNV_HanhThu, DateTime FromCreateDate, DateTime ToCreateDate, int Nam, int Ky)
         {
             DataTable dt = new DataTable();
             var query = from itemDV in _db.TT_DichVuThus
@@ -509,7 +509,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
                         from itemtableDN in tableDN.DefaultIfEmpty()
                         where itemHD.MaNV_HanhThu == MaNV_HanhThu
-                            && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu) && itemHD.NAM == Nam && itemHD.KY == Ky
+                            && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu) && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky))
                             && !(from itemCTDN in _db.TT_CTDongNuocs where itemCTDN.TT_DongNuoc.Huy == false select itemCTDN.SoHoaDon).Contains(itemHD.SOHOADON)
                         select new
                         {
@@ -546,7 +546,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                           join itemDN in _db.TT_NguoiDungs on itemHD.MaNV_DangNgan equals itemDN.MaND into tableDN
                           from itemtableDN in tableDN.DefaultIfEmpty()
                           where itemCTDN.TT_DongNuoc.MaNV_DongNuoc == MaNV_HanhThu && itemCTDN.TT_DongNuoc.Huy == false
-                            && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
+                            && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)&&(itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky))
                           select new
                           {
                               itemDV.SoHoaDon,
@@ -659,7 +659,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             return dt;
         }
 
-        public DataTable GetDS_NV_Dot(string TenDichVu, int MaNV_HanhThu, DateTime FromCreateDate, DateTime ToCreateDate, int Nam, int Ky, int FromDot, int ToDot)
+        public DataTable GetDS_DenKy_NV_Dot(string TenDichVu, int MaNV_HanhThu, DateTime FromCreateDate, DateTime ToCreateDate, int Nam, int Ky, int FromDot, int ToDot)
         {
             DataTable dt = new DataTable();
             var query = from itemDV in _db.TT_DichVuThus
@@ -670,7 +670,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         from itemtableDN in tableDN.DefaultIfEmpty()
                         where itemHD.MaNV_HanhThu == MaNV_HanhThu
                             && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
-                            && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT.Value >= FromDot && itemHD.DOT.Value <= ToDot
+                            && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky)) && itemHD.DOT.Value >= FromDot && itemHD.DOT.Value <= ToDot
                             && !(from itemCTDN in _db.TT_CTDongNuocs where itemCTDN.TT_DongNuoc.Huy == false select itemCTDN.SoHoaDon).Contains(itemHD.SOHOADON)
                         select new
                         {
@@ -708,7 +708,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                           from itemtableDN in tableDN.DefaultIfEmpty()
                           where itemCTDN.TT_DongNuoc.MaNV_DongNuoc == MaNV_HanhThu && itemCTDN.TT_DongNuoc.Huy == false
                             && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
-                            && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT.Value >= FromDot && itemHD.DOT.Value <= ToDot
+                            && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky)) && itemHD.DOT.Value >= FromDot && itemHD.DOT.Value <= ToDot
                           select new
                           {
                               itemDV.SoHoaDon,
