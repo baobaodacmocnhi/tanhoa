@@ -724,7 +724,7 @@ namespace ThuTien.GUI.Doi
                 {
                     foreach (DataGridViewRow item in dgvDanhBoDK2.SelectedRows)
                     {
-                        TT_DangKy dangky = _cDangKy.Get(item.Cells["DanhBo_DK2"].Value.ToString());
+                        TT_DangKy dangky = _cDangKy.Get(item.Cells["DanhBo_DK2"].Value.ToString(), int.Parse(item.Cells["MaNV_DK2"].Value.ToString()));
                         _cDangKy.Xoa(dangky);
                     }
                     btnXemDK2.PerformClick();

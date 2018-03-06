@@ -191,7 +191,7 @@ namespace ThuTien.DAL.TongHop
 
         public decimal GetMaDKKT(string DanhDo)
         {
-            return _db.TT_CTDangKyKiemTras.SingleOrDefault(item => item.DanhBo == DanhDo).MaDKKT.Value;
+            return _db.TT_CTDangKyKiemTras.Where(item => item.DanhBo == DanhDo).OrderByDescending(item=>item.CreateDate).First().MaDKKT.Value;
         }
     }
 }

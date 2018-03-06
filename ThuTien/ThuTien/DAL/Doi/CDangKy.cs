@@ -74,17 +74,17 @@ namespace ThuTien.DAL.Doi
             return _db.TT_NguoiDungs.SingleOrDefault(item => item.MaND == _db.TT_DangKies.SingleOrDefault(item2 => item2.DanhBo == DanhBo).MaNV).HoTen;
         }
 
-        public TT_DangKy Get(string DanhBo)
+        public TT_DangKy Get(string DanhBo,int MaNV)
         {
-            return _db.TT_DangKies.SingleOrDefault(item => item.DanhBo == DanhBo);
+            return _db.TT_DangKies.SingleOrDefault(item => item.DanhBo == DanhBo&&item.MaNV==MaNV);
         }
 
         public DataTable GetDS(int MaNV, int Nam)
         {
             string sql = "declare @nam int;"
                         + " declare @MaNV int;"
-                        + " set @nam="+Nam+";"
-                        + " set @MaNV="+MaNV+";"
+                        + " set @nam=" + Nam + ";"
+                        + " set @MaNV=" + MaNV + ";"
                         + " select t1.* from"
                         + " (select distinct db.TenTo,db.MaNV,db.HoTen,db.DanhBo,db.DiaChi,db.DM,ky1.Ky1,ky2.Ky2,ky3.Ky3,ky4.Ky4,"
                         + " ky5.Ky5,ky6.Ky6,ky7.Ky7,ky8.Ky8,ky9.Ky9,ky10.Ky10,ky11.Ky11,ky12.Ky12,row_number() over (partition by db.DanhBo order by db.MaHD desc) as RowNumber"

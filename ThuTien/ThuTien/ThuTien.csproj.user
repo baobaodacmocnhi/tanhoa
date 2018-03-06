@@ -5,7 +5,7 @@
     <PublishUrlHistory>\\192.168.90.9\BaoBao%24\ThuTien\|\\192.168.90.9\cntt\BaoBao\ThuTien\|publish\</PublishUrlHistory>
     <InstallUrlHistory />
     <SupportUrlHistory />
-    <UpdateUrlHistory>\\192.168.90.9\cntt\BaoBao\ThuTien\</UpdateUrlHistory>
+    <UpdateUrlHistory>\\192.168.90.9\BaoBao%24\ThuTien\|\\192.168.90.9\cntt\BaoBao\ThuTien\</UpdateUrlHistory>
     <BootstrapperUrlHistory>\\192.168.90.9\BaoBao%24\ThuTien|\\192.168.90.9\cntt\BaoBao\ThuTien</BootstrapperUrlHistory>
     <ErrorReportUrlHistory />
     <FallbackCulture>en-US</FallbackCulture>

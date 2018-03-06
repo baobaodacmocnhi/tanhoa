@@ -125,7 +125,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 if (MessageBox.Show("Bạn có chắc chắn Chuyển Phí Mở Nước?", "Xác nhận sửa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    if (txtSoTien.Text.Trim() == "" && int.Parse(txtSoTien.Text.Trim()) == 0)
+                    if (txtSoTien.Text.Trim() == "" || int.Parse(txtSoTien.Text.Trim()) == 0)
                     {
                         MessageBox.Show("Chưa chọn Ngày Bảng Kê", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
