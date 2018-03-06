@@ -31,7 +31,7 @@
     <PublisherName>P.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>93</ApplicationRevision>
+    <ApplicationRevision>96</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -245,6 +245,7 @@
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="web.config" />
     <None Include="BaoCao\DataSetBaoCao.xsc">
       <DependentUpon>DataSetBaoCao.xsd</DependentUpon>
     </None>
@@ -256,7 +257,6 @@
     <None Include="BaoCao\DataSetBaoCao.xss">
       <DependentUpon>DataSetBaoCao.xsd</DependentUpon>
     </None>
-    <None Include="KTKS_ChungCu_TemporaryKey.pfx" />
     <EmbeddedResource Include="GUI\ChungTu\frmNhanDM.resx">
       <DependentUpon>frmNhanDM.cs</DependentUpon>
     </EmbeddedResource>

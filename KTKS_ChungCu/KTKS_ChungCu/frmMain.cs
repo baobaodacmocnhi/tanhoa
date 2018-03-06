@@ -118,7 +118,7 @@ namespace KTKS_ChungCu
                 //    MessageBox.Show("Lô, Phòng trên đã có đăng ký trước đó", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //}
                 
-                if (txtMaCT.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0" && txtSoNKDangKy.Text.Trim() != "")
+                if (txtMaCT.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "")
                     if (int.Parse(txtSoNKTong.Text.Trim()) >= int.Parse(txtSoNKDangKy.Text.Trim()))
                     {
                         DanhSachChungTu entity = new DanhSachChungTu();
@@ -200,7 +200,7 @@ namespace KTKS_ChungCu
                     //    MessageBox.Show("Sổ này đã được lưu tại Lô, Phòng trên", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //    return;
                     //}
-                    if (txtSoNKTong.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0" && txtSoNKDangKy.Text.Trim() != "")
+                    if (txtSoNKTong.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "")
                         if (int.Parse(txtSoNKTong.Text.Trim()) >= int.Parse(txtSoNKDangKy.Text.Trim()))
                         {
                             DanhSachChungTu entity = _cDSCT.Get(int.Parse(dgvKhachHangChungCu["ID", _selectedindex].Value.ToString()));
