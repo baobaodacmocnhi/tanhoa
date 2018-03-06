@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>693</ApplicationRevision>
+    <ApplicationRevision>700</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -1199,7 +1199,9 @@
     <None Include="BaoCao\DataSetBaoCao.xss">
       <DependentUpon>DataSetBaoCao.xsd</DependentUpon>
     </None>
-    <None Include="KTKS_DonKH_TemporaryKey.pfx" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="LinQ\dbGanMoi.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>dbGanMoi.designer.cs</LastGenOutput>
@@ -1800,7 +1802,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="app.config">
+    <None Include="web.config">
       <SubType>Designer</SubType>
     </None>
     <None Include="LinQ\dbKinhDoanh.dbml">
