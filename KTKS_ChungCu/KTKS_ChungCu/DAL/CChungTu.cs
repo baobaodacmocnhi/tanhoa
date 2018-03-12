@@ -2690,6 +2690,7 @@ namespace KTKS_ChungCu.DAL
                                     itemLSCT.MaDon,
                                     itemLSCT.NguoiKy,
                                     itemLSCT.CreateBy,
+                                    itemLSCT.SoNKTong,
                                 };
                     if (query.Count() > 0)
                     {
@@ -2826,6 +2827,7 @@ namespace KTKS_ChungCu.DAL
                                     itemLSCT.MaDon,
                                     itemLSCT.NguoiKy,
                                     itemLSCT.CreateBy,
+                                    itemLSCT.SoNKTong,
                                 };
                     if (query.Count() > 0)
                     {
@@ -2959,6 +2961,7 @@ namespace KTKS_ChungCu.DAL
                                     itemLSCT.MaDon,
                                     itemLSCT.NguoiKy,
                                     itemLSCT.CreateBy,
+                                    itemLSCT.SoNKTong,
                                 };
                     if (query.Count() > 0)
                     {
@@ -3092,6 +3095,7 @@ namespace KTKS_ChungCu.DAL
                                 itemLSCT.MaDon,
                                 itemLSCT.NguoiKy,
                                 itemLSCT.CreateBy,
+                                itemLSCT.SoNKTong,
                             };
                 if (query.Count() > 0)
                 {
@@ -3225,6 +3229,7 @@ namespace KTKS_ChungCu.DAL
                                 itemLSCT.MaDon,
                                 itemLSCT.NguoiKy,
                                 itemLSCT.CreateBy,
+                                itemLSCT.SoNKTong,
                             };
                 if (query.Count() > 0)
                 {
@@ -3625,6 +3630,7 @@ namespace KTKS_ChungCu.DAL
                                 itemLSCT.MaDon,
                                 itemLSCT.NguoiKy,
                                 itemLSCT.CreateBy,
+                                itemLSCT.SoNKTong,
                             };
                 if (query.Count() > 0)
                 {

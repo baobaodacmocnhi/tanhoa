@@ -44,6 +44,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtNoiDungTimKiem = new System.Windows.Forms.TextBox();
             this.dgvDSCatChuyenDM = new System.Windows.Forms.DataGridView();
+            this.btnIn = new System.Windows.Forms.Button();
+            this.chkSelectAll = new System.Windows.Forms.CheckBox();
+            this.btnInDS = new System.Windows.Forms.Button();
+            this.txtDanhBo = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtLo = new System.Windows.Forms.TextBox();
+            this.btnXem = new System.Windows.Forms.Button();
             this.MaLSCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Lo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,14 +76,7 @@
             this.CreateBy_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CatNK_MaCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnIn = new System.Windows.Forms.Button();
-            this.chkSelectAll = new System.Windows.Forms.CheckBox();
-            this.btnInDS = new System.Windows.Forms.Button();
-            this.txtDanhBo = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtLo = new System.Windows.Forms.TextBox();
-            this.btnXem = new System.Windows.Forms.Button();
+            this.SoNKTong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel_KhoangThoiGian.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCatChuyenDM)).BeginInit();
             this.SuspendLayout();
@@ -218,7 +219,8 @@
             this.SoNKCat,
             this.CreateBy_CC,
             this.GhiChu,
-            this.CatNK_MaCT});
+            this.CatNK_MaCT,
+            this.SoNKTong});
             this.dgvDSCatChuyenDM.Location = new System.Drawing.Point(0, 71);
             this.dgvDSCatChuyenDM.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSCatChuyenDM.MultiSelect = false;
@@ -227,6 +229,82 @@
             this.dgvDSCatChuyenDM.Size = new System.Drawing.Size(1275, 470);
             this.dgvDSCatChuyenDM.TabIndex = 33;
             this.dgvDSCatChuyenDM.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSCatChuyenDM_CellFormatting);
+            // 
+            // btnIn
+            // 
+            this.btnIn.Location = new System.Drawing.Point(1076, 12);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(75, 25);
+            this.btnIn.TabIndex = 34;
+            this.btnIn.Text = "In Phiếu";
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Visible = false;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
+            // chkSelectAll
+            // 
+            this.chkSelectAll.AutoSize = true;
+            this.chkSelectAll.ForeColor = System.Drawing.Color.Red;
+            this.chkSelectAll.Location = new System.Drawing.Point(12, 44);
+            this.chkSelectAll.Name = "chkSelectAll";
+            this.chkSelectAll.Size = new System.Drawing.Size(119, 21);
+            this.chkSelectAll.TabIndex = 35;
+            this.chkSelectAll.Text = "Chọn In Tất Cả";
+            this.chkSelectAll.UseVisualStyleBackColor = true;
+            this.chkSelectAll.Visible = false;
+            this.chkSelectAll.CheckedChanged += new System.EventHandler(this.chkSelectAll_CheckedChanged);
+            // 
+            // btnInDS
+            // 
+            this.btnInDS.Location = new System.Drawing.Point(841, 15);
+            this.btnInDS.Name = "btnInDS";
+            this.btnInDS.Size = new System.Drawing.Size(75, 25);
+            this.btnInDS.TabIndex = 36;
+            this.btnInDS.Text = "In DS";
+            this.btnInDS.UseVisualStyleBackColor = true;
+            this.btnInDS.Click += new System.EventHandler(this.btnInDS_Click);
+            // 
+            // txtDanhBo
+            // 
+            this.txtDanhBo.Location = new System.Drawing.Point(245, 41);
+            this.txtDanhBo.Name = "txtDanhBo";
+            this.txtDanhBo.Size = new System.Drawing.Size(120, 25);
+            this.txtDanhBo.TabIndex = 37;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(171, 44);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(64, 17);
+            this.label5.TabIndex = 38;
+            this.label5.Text = "Danh Bộ:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(371, 44);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(27, 17);
+            this.label6.TabIndex = 40;
+            this.label6.Text = "Lô:";
+            // 
+            // txtLo
+            // 
+            this.txtLo.Location = new System.Drawing.Point(404, 41);
+            this.txtLo.Name = "txtLo";
+            this.txtLo.Size = new System.Drawing.Size(30, 25);
+            this.txtLo.TabIndex = 39;
+            // 
+            // btnXem
+            // 
+            this.btnXem.Location = new System.Drawing.Point(700, 15);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 25);
+            this.btnXem.TabIndex = 41;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
             // MaLSCT
             // 
@@ -412,81 +490,12 @@
             this.CatNK_MaCT.Name = "CatNK_MaCT";
             this.CatNK_MaCT.Visible = false;
             // 
-            // btnIn
+            // SoNKTong
             // 
-            this.btnIn.Location = new System.Drawing.Point(1076, 12);
-            this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(75, 25);
-            this.btnIn.TabIndex = 34;
-            this.btnIn.Text = "In Phiếu";
-            this.btnIn.UseVisualStyleBackColor = true;
-            this.btnIn.Visible = false;
-            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
-            // 
-            // chkSelectAll
-            // 
-            this.chkSelectAll.AutoSize = true;
-            this.chkSelectAll.ForeColor = System.Drawing.Color.Red;
-            this.chkSelectAll.Location = new System.Drawing.Point(12, 44);
-            this.chkSelectAll.Name = "chkSelectAll";
-            this.chkSelectAll.Size = new System.Drawing.Size(119, 21);
-            this.chkSelectAll.TabIndex = 35;
-            this.chkSelectAll.Text = "Chọn In Tất Cả";
-            this.chkSelectAll.UseVisualStyleBackColor = true;
-            this.chkSelectAll.Visible = false;
-            this.chkSelectAll.CheckedChanged += new System.EventHandler(this.chkSelectAll_CheckedChanged);
-            // 
-            // btnInDS
-            // 
-            this.btnInDS.Location = new System.Drawing.Point(841, 15);
-            this.btnInDS.Name = "btnInDS";
-            this.btnInDS.Size = new System.Drawing.Size(75, 25);
-            this.btnInDS.TabIndex = 36;
-            this.btnInDS.Text = "In DS";
-            this.btnInDS.UseVisualStyleBackColor = true;
-            this.btnInDS.Click += new System.EventHandler(this.btnInDS_Click);
-            // 
-            // txtDanhBo
-            // 
-            this.txtDanhBo.Location = new System.Drawing.Point(245, 41);
-            this.txtDanhBo.Name = "txtDanhBo";
-            this.txtDanhBo.Size = new System.Drawing.Size(120, 25);
-            this.txtDanhBo.TabIndex = 37;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(171, 44);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 17);
-            this.label5.TabIndex = 38;
-            this.label5.Text = "Danh Bộ:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(371, 44);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(27, 17);
-            this.label6.TabIndex = 40;
-            this.label6.Text = "Lô:";
-            // 
-            // txtLo
-            // 
-            this.txtLo.Location = new System.Drawing.Point(404, 41);
-            this.txtLo.Name = "txtLo";
-            this.txtLo.Size = new System.Drawing.Size(30, 25);
-            this.txtLo.TabIndex = 39;
-            // 
-            // btnXem
-            // 
-            this.btnXem.Location = new System.Drawing.Point(700, 15);
-            this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(75, 25);
-            this.btnXem.TabIndex = 41;
-            this.btnXem.Text = "Xem";
-            this.btnXem.UseVisualStyleBackColor = true;
-            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
+            this.SoNKTong.DataPropertyName = "SoNKTong";
+            this.SoNKTong.HeaderText = "SoNKTong";
+            this.SoNKTong.Name = "SoNKTong";
+            this.SoNKTong.Visible = false;
             // 
             // frmDSCatChuyenDM
             // 
@@ -538,6 +547,11 @@
         private System.Windows.Forms.Button btnIn;
         private System.Windows.Forms.CheckBox chkSelectAll;
         private System.Windows.Forms.Button btnInDS;
+        private System.Windows.Forms.TextBox txtDanhBo;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtLo;
+        private System.Windows.Forms.Button btnXem;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaLSCT;
         private System.Windows.Forms.DataGridViewTextBoxColumn STT;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lo;
@@ -562,11 +576,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy_CC;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
         private System.Windows.Forms.DataGridViewTextBoxColumn CatNK_MaCT;
-        private System.Windows.Forms.TextBox txtDanhBo;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtLo;
-        private System.Windows.Forms.Button btnXem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoNKTong;
 
     }
 }

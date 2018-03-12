@@ -310,6 +310,7 @@ namespace KTKS_ChungCu
                 dr["HoTenCT"] = dgvDSCatChuyenDM["CT_CatNK_HoTen", i].Value.ToString();
                 dr["DiaChiCT"] = dgvDSCatChuyenDM["CT_CatNK_DiaChi", i].Value.ToString();
                 dr["MaCT"] = dgvDSCatChuyenDM["CT_MaCT", i].Value.ToString();
+                dr["SoNKTong"] = dgvDSCatChuyenDM["SoNKTong", i].Value.ToString();
                 dr["SoNKDangKy"] = dgvDSCatChuyenDM["SoNKNhan", i].Value.ToString();
                 if (dgvDSCatChuyenDM["CT_CatNK_DanhBo", i].Value.ToString().Length == 11)
                     dr["DanhBoCat"] = dgvDSCatChuyenDM["CT_CatNK_DanhBo", i].Value.ToString().Insert(7, " ").Insert(4, " ");
