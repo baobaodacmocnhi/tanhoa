@@ -711,6 +711,8 @@
             // chkChuKy
             // 
             this.chkChuKy.AutoSize = true;
+            this.chkChuKy.Checked = true;
+            this.chkChuKy.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkChuKy.Location = new System.Drawing.Point(1153, 14);
             this.chkChuKy.Name = "chkChuKy";
             this.chkChuKy.Size = new System.Drawing.Size(76, 17);
@@ -739,7 +741,6 @@
             this.chkCoTenNguoiKy.TabIndex = 98;
             this.chkCoTenNguoiKy.Text = "Có Tên Người Ký";
             this.chkCoTenNguoiKy.UseVisualStyleBackColor = true;
-            this.chkCoTenNguoiKy.Visible = false;
             // 
             // frmQuetTam
             // 
