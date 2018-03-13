@@ -63,11 +63,6 @@
             this.label34 = new System.Windows.Forms.Label();
             this.btnCapNhat = new System.Windows.Forms.Button();
             this.dgvLichSuDonTu = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayChuyenA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chkcmbNoiNhan = new DevExpress.XtraEditors.CheckedComboBoxEdit();
             this.dgvLichSuDon = new System.Windows.Forms.DataGridView();
             this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -102,6 +97,13 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayChuyenA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_NoiChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_NoiNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -418,7 +420,9 @@
             this.dgvLichSuDonTu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.NgayChuyenA,
+            this.ID_NoiChuyen,
             this.NoiChuyen,
+            this.ID_NoiNhan,
             this.NoiNhan,
             this.GhiChu});
             this.dgvLichSuDonTu.Location = new System.Drawing.Point(11, 278);
@@ -426,47 +430,9 @@
             this.dgvLichSuDonTu.ReadOnly = true;
             this.dgvLichSuDonTu.Size = new System.Drawing.Size(710, 200);
             this.dgvLichSuDonTu.TabIndex = 68;
+            this.dgvLichSuDonTu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLichSuDonTu_CellContentClick);
             this.dgvLichSuDonTu.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLichSuDonTu_CellMouseClick);
             this.dgvLichSuDonTu.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvLichSuDonTu_MouseClick);
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
-            // 
-            // NgayChuyenA
-            // 
-            this.NgayChuyenA.DataPropertyName = "NgayChuyen";
-            this.NgayChuyenA.HeaderText = "Ngày Chuyển";
-            this.NgayChuyenA.Name = "NgayChuyenA";
-            this.NgayChuyenA.ReadOnly = true;
-            this.NgayChuyenA.Width = 150;
-            // 
-            // NoiChuyen
-            // 
-            this.NoiChuyen.DataPropertyName = "NoiChuyen";
-            this.NoiChuyen.HeaderText = "Nơi Chuyển";
-            this.NoiChuyen.Name = "NoiChuyen";
-            this.NoiChuyen.ReadOnly = true;
-            this.NoiChuyen.Width = 150;
-            // 
-            // NoiNhan
-            // 
-            this.NoiNhan.DataPropertyName = "NoiNhan";
-            this.NoiNhan.HeaderText = "Nơi Nhận";
-            this.NoiNhan.Name = "NoiNhan";
-            this.NoiNhan.ReadOnly = true;
-            this.NoiNhan.Width = 250;
-            // 
-            // GhiChu
-            // 
-            this.GhiChu.DataPropertyName = "GhiChu";
-            this.GhiChu.HeaderText = "Ghi Chú";
-            this.GhiChu.Name = "GhiChu";
-            this.GhiChu.ReadOnly = true;
             // 
             // chkcmbNoiNhan
             // 
@@ -547,6 +513,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(461, 100);
             this.dataGridView1.TabIndex = 82;
+            this.dataGridView1.Visible = false;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -788,6 +755,61 @@
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
+            // NgayChuyenA
+            // 
+            this.NgayChuyenA.DataPropertyName = "NgayChuyen";
+            this.NgayChuyenA.HeaderText = "Ngày Chuyển";
+            this.NgayChuyenA.Name = "NgayChuyenA";
+            this.NgayChuyenA.ReadOnly = true;
+            this.NgayChuyenA.Width = 150;
+            // 
+            // ID_NoiChuyen
+            // 
+            this.ID_NoiChuyen.DataPropertyName = "ID_NoiChuyen";
+            this.ID_NoiChuyen.HeaderText = "ID_NoiChuyen";
+            this.ID_NoiChuyen.Name = "ID_NoiChuyen";
+            this.ID_NoiChuyen.ReadOnly = true;
+            this.ID_NoiChuyen.Visible = false;
+            // 
+            // NoiChuyen
+            // 
+            this.NoiChuyen.DataPropertyName = "NoiChuyen";
+            this.NoiChuyen.HeaderText = "Nơi Chuyển";
+            this.NoiChuyen.Name = "NoiChuyen";
+            this.NoiChuyen.ReadOnly = true;
+            this.NoiChuyen.Width = 150;
+            // 
+            // ID_NoiNhan
+            // 
+            this.ID_NoiNhan.DataPropertyName = "ID_NoiNhan";
+            this.ID_NoiNhan.HeaderText = "ID_NoiNhan";
+            this.ID_NoiNhan.Name = "ID_NoiNhan";
+            this.ID_NoiNhan.ReadOnly = true;
+            this.ID_NoiNhan.Visible = false;
+            // 
+            // NoiNhan
+            // 
+            this.NoiNhan.DataPropertyName = "NoiNhan";
+            this.NoiNhan.HeaderText = "Nơi Nhận";
+            this.NoiNhan.Name = "NoiNhan";
+            this.NoiNhan.ReadOnly = true;
+            this.NoiNhan.Width = 250;
+            // 
+            // GhiChu
+            // 
+            this.GhiChu.DataPropertyName = "GhiChu";
+            this.GhiChu.HeaderText = "Ghi Chú";
+            this.GhiChu.Name = "GhiChu";
+            this.GhiChu.ReadOnly = true;
+            // 
             // frmCapNhatDonTKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -892,11 +914,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TenLD;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NgayChuyenA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NoiChuyen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NoiNhan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -925,5 +942,12 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayChuyenA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_NoiChuyen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NoiChuyen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_NoiNhan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NoiNhan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
     }
 }

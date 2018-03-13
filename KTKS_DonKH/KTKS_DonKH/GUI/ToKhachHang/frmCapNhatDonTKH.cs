@@ -212,7 +212,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             dgvLichSuDonTu_DCBD.DataSource = _cLichSuDonTu.GetDS_DCBD(entity.DanhBo);
 
             dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("TKH", entity.MaDon);
-            dataGridView1.DataSource = _cLichSuDonTu.GetDS_Old("TKH", entity.MaDon);
+            //dataGridView1.DataSource = _cLichSuDonTu.GetDS_Old("TKH", entity.MaDon);
             dateChuyen.Value = DateTime.Now;
             cmbNoiChuyen.SelectedIndex = -1;
             txtGhiChu.Text = "";
@@ -703,6 +703,24 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                 }
             }
         }
+
+        private void dgvLichSuDonTu_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                //dateChuyen.Value = DateTime.Parse(dgvLichSuDonTu.CurrentRow.Cells["NgayChuyenA"].Value.ToString());
+                //cmbNoiChuyen.SelectedValue = int.Parse(dgvLichSuDonTu.CurrentRow.Cells["ID_NoiChuyen"].Value.ToString());
+                //if (dgvLichSuDonTu.CurrentRow.Cells["ID_NoiNhan"].Value!=null)
+                //chkcmbNoiNhan.SetEditValue(int.Parse(dgvLichSuDonTu.CurrentRow.Cells["ID_NoiNhan"].Value.ToString()));
+            }
+            catch (Exception)
+            {
+                
+                
+            }
+        }
+
+
 
     }
 }
