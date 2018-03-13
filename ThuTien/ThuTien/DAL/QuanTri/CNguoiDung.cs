@@ -78,6 +78,20 @@ namespace ThuTien.DAL.QuanTri
             set { CNguoiDung._dtQuyenNguoiDung = value; }
         }
 
+        static string _Name_PC;
+        public static string Name_PC
+        {
+            get { return CNguoiDung._Name_PC; }
+            set { CNguoiDung._Name_PC = value; }
+        }
+
+        static string _IP_PC;
+        public static string IP_PC
+        {
+            get { return CNguoiDung._IP_PC; }
+            set { CNguoiDung._IP_PC = value; }
+        }
+
         public static bool CheckQuyen(string TenMenu, string LoaiQuyen)
         {
             string query = "";
@@ -272,7 +286,7 @@ namespace ThuTien.DAL.QuanTri
         {
             try
             {
-                return _db.TT_NguoiDungs.Any(item => item.TaiKhoan == TaiKhoan && item.MatKhau == MatKhau);
+                return _db.TT_NguoiDungs.Any(item => item.TaiKhoan == TaiKhoan && item.MatKhau == MatKhau&&item.An==false);
             }
             catch (Exception)
             {

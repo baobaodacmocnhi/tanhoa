@@ -401,6 +401,8 @@ namespace ThuTien.GUI.ToTruong
                             dr["NhanVienDN"] = _cNguoiDung.GetDienThoaiByMaND(int.Parse(item["MaNV_DongNuoc"].ToString()));
                         if (chkChuKy.Checked)
                             dr["ChuKy"] = true;
+                        if (chkCoTenNguoiKy.Checked)
+                            dr["TenNguoiKy"] = "Nguyễn Ngọc Ẩn";
 
                         dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
 

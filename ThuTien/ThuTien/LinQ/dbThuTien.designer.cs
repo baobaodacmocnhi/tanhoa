@@ -20340,6 +20340,10 @@ namespace ThuTien.LinQ
 		
 		private System.Nullable<int> _TienDuTruoc_DCHD;
 		
+		private string _Name_PC;
+		
+		private string _IP_PC;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -20528,6 +20532,10 @@ namespace ThuTien.LinQ
     partial void OnTongCongTruoc_DCHDChanged();
     partial void OnTienDuTruoc_DCHDChanging(System.Nullable<int> value);
     partial void OnTienDuTruoc_DCHDChanged();
+    partial void OnName_PCChanging(string value);
+    partial void OnName_PCChanged();
+    partial void OnIP_PCChanging(string value);
+    partial void OnIP_PCChanged();
     #endregion
 		
 		public HOADON()
@@ -22371,6 +22379,46 @@ namespace ThuTien.LinQ
 					this._TienDuTruoc_DCHD = value;
 					this.SendPropertyChanged("TienDuTruoc_DCHD");
 					this.OnTienDuTruoc_DCHDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name_PC", DbType="VarChar(50)")]
+		public string Name_PC
+		{
+			get
+			{
+				return this._Name_PC;
+			}
+			set
+			{
+				if ((this._Name_PC != value))
+				{
+					this.OnName_PCChanging(value);
+					this.SendPropertyChanging();
+					this._Name_PC = value;
+					this.SendPropertyChanged("Name_PC");
+					this.OnName_PCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IP_PC", DbType="VarChar(50)")]
+		public string IP_PC
+		{
+			get
+			{
+				return this._IP_PC;
+			}
+			set
+			{
+				if ((this._IP_PC != value))
+				{
+					this.OnIP_PCChanging(value);
+					this.SendPropertyChanging();
+					this._IP_PC = value;
+					this.SendPropertyChanged("IP_PC");
+					this.OnIP_PCChanged();
 				}
 			}
 		}

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="HOADON_TA" Class="dbThuTienDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.90.9;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa" SettingsObjectName="ThuTien.Properties.Settings" SettingsPropertyName="HOADON_TAConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.90.9;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa" SettingsObjectName="ThuTien.Properties.Settings" SettingsPropertyName="HOADON_TAConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.TT_LichSuGiaoHD" Member="TT_LichSuGiaoHDs">
     <Type Name="TT_LichSuGiaoHD">
       <Column Name="MaHD" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -1029,6 +1029,8 @@
       <Column Name="Ngay_DCHD" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="TongCongTruoc_DCHD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TienDuTruoc_DCHD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name_PC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IP_PC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.TimKiem" Method="TimKiem" IsComposable="true">

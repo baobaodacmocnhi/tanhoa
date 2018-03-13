@@ -46,8 +46,8 @@
             this.HoTen = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DiaChi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MLT = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.CreateBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CreateDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CreateBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaNV_DongNuoc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnXem = new System.Windows.Forms.Button();
             this.dateDen = new System.Windows.Forms.DateTimePicker();
@@ -74,6 +74,7 @@
             this.txtMaDN = new System.Windows.Forms.TextBox();
             this.btnInGiayXN = new System.Windows.Forms.Button();
             this.chkChuKy = new System.Windows.Forms.CheckBox();
+            this.chkCoTenNguoiKy = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -253,12 +254,6 @@
             this.MLT.VisibleIndex = 5;
             this.MLT.Width = 80;
             // 
-            // CreateBy
-            // 
-            this.CreateBy.Caption = "CreateBy";
-            this.CreateBy.FieldName = "CreateBy";
-            this.CreateBy.Name = "CreateBy";
-            // 
             // CreateDate
             // 
             this.CreateDate.Caption = "Ngày Lập";
@@ -267,6 +262,12 @@
             this.CreateDate.Visible = true;
             this.CreateDate.VisibleIndex = 6;
             this.CreateDate.Width = 70;
+            // 
+            // CreateBy
+            // 
+            this.CreateBy.Caption = "CreateBy";
+            this.CreateBy.FieldName = "CreateBy";
+            this.CreateBy.Name = "CreateBy";
             // 
             // MaNV_DongNuoc
             // 
@@ -511,11 +512,25 @@
             this.chkChuKy.Text = "Có Chữ Ký";
             this.chkChuKy.UseVisualStyleBackColor = true;
             // 
+            // chkCoTenNguoiKy
+            // 
+            this.chkCoTenNguoiKy.AutoSize = true;
+            this.chkCoTenNguoiKy.Checked = true;
+            this.chkCoTenNguoiKy.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkCoTenNguoiKy.Location = new System.Drawing.Point(1118, 37);
+            this.chkCoTenNguoiKy.Name = "chkCoTenNguoiKy";
+            this.chkCoTenNguoiKy.Size = new System.Drawing.Size(107, 17);
+            this.chkCoTenNguoiKy.TabIndex = 97;
+            this.chkCoTenNguoiKy.Text = "Có Tên Người Ký";
+            this.chkCoTenNguoiKy.UseVisualStyleBackColor = true;
+            this.chkCoTenNguoiKy.Visible = false;
+            // 
             // frmTBDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1286, 666);
+            this.Controls.Add(this.chkCoTenNguoiKy);
             this.Controls.Add(this.chkChuKy);
             this.Controls.Add(this.btnInGiayXN);
             this.Controls.Add(this.groupBox_ThemDN);
@@ -599,6 +614,7 @@
         private System.Windows.Forms.Button btnInGiayXN;
         private System.Windows.Forms.CheckBox chkChuKy;
         private DevExpress.XtraGrid.Columns.GridColumn CreateBy;
+        private System.Windows.Forms.CheckBox chkCoTenNguoiKy;
 
     }
 }

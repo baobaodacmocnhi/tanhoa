@@ -52,6 +52,8 @@
             this.HanhThu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HoTen_DongNuoc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TinhTrang = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CreateBy = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MaNV_DongNuoc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.cmbNhanVienLap = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -74,8 +76,7 @@
             this.chkChuKy = new System.Windows.Forms.CheckBox();
             this.btnInDSTBTonThucTeNguoiGiao = new System.Windows.Forms.Button();
             this.btnXuatExcel = new System.Windows.Forms.Button();
-            this.CreateBy = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.MaNV_DongNuoc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.chkCoTenNguoiKy = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -312,6 +313,18 @@
             this.TinhTrang.Visible = true;
             this.TinhTrang.VisibleIndex = 10;
             // 
+            // CreateBy
+            // 
+            this.CreateBy.Caption = "CreateBy";
+            this.CreateBy.FieldName = "CreateBy";
+            this.CreateBy.Name = "CreateBy";
+            // 
+            // MaNV_DongNuoc
+            // 
+            this.MaNV_DongNuoc.Caption = "MaNV_DongNuoc";
+            this.MaNV_DongNuoc.FieldName = "MaNV_DongNuoc";
+            this.MaNV_DongNuoc.Name = "MaNV_DongNuoc";
+            // 
             // repositoryItemCheckEdit1
             // 
             this.repositoryItemCheckEdit1.AutoHeight = false;
@@ -394,7 +407,7 @@
             // cmbNhanVienGiao
             // 
             this.cmbNhanVienGiao.FormattingEnabled = true;
-            this.cmbNhanVienGiao.Location = new System.Drawing.Point(1001, 94);
+            this.cmbNhanVienGiao.Location = new System.Drawing.Point(1001, 107);
             this.cmbNhanVienGiao.Name = "cmbNhanVienGiao";
             this.cmbNhanVienGiao.Size = new System.Drawing.Size(118, 21);
             this.cmbNhanVienGiao.TabIndex = 28;
@@ -402,7 +415,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(998, 78);
+            this.label2.Location = new System.Drawing.Point(998, 91);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 13);
             this.label2.TabIndex = 27;
@@ -410,7 +423,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(1125, 92);
+            this.btnThem.Location = new System.Drawing.Point(1125, 105);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 29;
@@ -420,7 +433,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(1125, 150);
+            this.btnXoa.Location = new System.Drawing.Point(1125, 163);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 31;
@@ -430,7 +443,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(1125, 121);
+            this.btnSua.Location = new System.Drawing.Point(1125, 134);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 30;
@@ -451,7 +464,7 @@
             // 
             // btnInDSTBNguoiGiao
             // 
-            this.btnInDSTBNguoiGiao.Location = new System.Drawing.Point(1001, 194);
+            this.btnInDSTBNguoiGiao.Location = new System.Drawing.Point(1001, 207);
             this.btnInDSTBNguoiGiao.Name = "btnInDSTBNguoiGiao";
             this.btnInDSTBNguoiGiao.Size = new System.Drawing.Size(121, 23);
             this.btnInDSTBNguoiGiao.TabIndex = 33;
@@ -461,7 +474,7 @@
             // 
             // btnInDSTBTonNguoiGiao
             // 
-            this.btnInDSTBTonNguoiGiao.Location = new System.Drawing.Point(1001, 223);
+            this.btnInDSTBTonNguoiGiao.Location = new System.Drawing.Point(1001, 236);
             this.btnInDSTBTonNguoiGiao.Name = "btnInDSTBTonNguoiGiao";
             this.btnInDSTBTonNguoiGiao.Size = new System.Drawing.Size(145, 23);
             this.btnInDSTBTonNguoiGiao.TabIndex = 34;
@@ -503,7 +516,7 @@
             // 
             // btnInDSTBTonThucTeNguoiGiao
             // 
-            this.btnInDSTBTonThucTeNguoiGiao.Location = new System.Drawing.Point(1001, 252);
+            this.btnInDSTBTonThucTeNguoiGiao.Location = new System.Drawing.Point(1001, 265);
             this.btnInDSTBTonThucTeNguoiGiao.Name = "btnInDSTBTonThucTeNguoiGiao";
             this.btnInDSTBTonThucTeNguoiGiao.Size = new System.Drawing.Size(190, 23);
             this.btnInDSTBTonThucTeNguoiGiao.TabIndex = 97;
@@ -521,23 +534,25 @@
             this.btnXuatExcel.UseVisualStyleBackColor = true;
             this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
             // 
-            // CreateBy
+            // chkCoTenNguoiKy
             // 
-            this.CreateBy.Caption = "CreateBy";
-            this.CreateBy.FieldName = "CreateBy";
-            this.CreateBy.Name = "CreateBy";
-            // 
-            // MaNV_DongNuoc
-            // 
-            this.MaNV_DongNuoc.Caption = "MaNV_DongNuoc";
-            this.MaNV_DongNuoc.FieldName = "MaNV_DongNuoc";
-            this.MaNV_DongNuoc.Name = "MaNV_DongNuoc";
+            this.chkCoTenNguoiKy.AutoSize = true;
+            this.chkCoTenNguoiKy.Checked = true;
+            this.chkCoTenNguoiKy.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkCoTenNguoiKy.Location = new System.Drawing.Point(1001, 61);
+            this.chkCoTenNguoiKy.Name = "chkCoTenNguoiKy";
+            this.chkCoTenNguoiKy.Size = new System.Drawing.Size(107, 17);
+            this.chkCoTenNguoiKy.TabIndex = 99;
+            this.chkCoTenNguoiKy.Text = "Có Tên Người Ký";
+            this.chkCoTenNguoiKy.UseVisualStyleBackColor = true;
+            this.chkCoTenNguoiKy.Visible = false;
             // 
             // frmGiaoTBDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1207, 666);
+            this.Controls.Add(this.chkCoTenNguoiKy);
             this.Controls.Add(this.btnXuatExcel);
             this.Controls.Add(this.btnInDSTBTonThucTeNguoiGiao);
             this.Controls.Add(this.chkChuKy);
@@ -622,5 +637,6 @@
         private System.Windows.Forms.Button btnXuatExcel;
         private DevExpress.XtraGrid.Columns.GridColumn CreateBy;
         private DevExpress.XtraGrid.Columns.GridColumn MaNV_DongNuoc;
+        private System.Windows.Forms.CheckBox chkCoTenNguoiKy;
     }
 }

@@ -425,10 +425,10 @@
         <elementListCompartment Id="fafd15f1-ab6a-4022-bab1-294a96855408" absoluteBounds="0.76500000000000012, 7.71, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="79d44c0e-7411-4102-8598-197fe47ed522" absoluteBounds="17.625, 6.375, 2, 18.501121419270834">
+    <classShape Id="675ff166-227e-402c-b4bb-695bf5a28f7d" absoluteBounds="17.875, 6.375, 2, 18.885724283854167">
       <DataClassMoniker Name="/dbThuTienDataContext/HOADON" />
       <nestedChildShapes>
-        <elementListCompartment Id="1d44b0e1-4bea-4a30-8314-6bfd471204e8" absoluteBounds="17.64, 6.835, 1.9700000000000002, 17.941121419270832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="60264de2-2f72-4273-95ea-35cc7cc0022d" absoluteBounds="17.89, 6.835, 1.9700000000000002, 18.325724283854164" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

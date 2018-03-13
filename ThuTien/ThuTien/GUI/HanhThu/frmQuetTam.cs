@@ -54,7 +54,7 @@ namespace ThuTien.GUI.HanhThu
 
         public void CountdgvHDTuGia()
         {
-            int TongCong = 0;
+            long TongCong = 0;
             if (dgvHDTuGia.RowCount > 0)
             {
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
@@ -68,7 +68,7 @@ namespace ThuTien.GUI.HanhThu
 
         public void CountdgvHDCoQuan()
         {
-            int TongCong = 0;
+            long TongCong = 0;
             if (dgvHDCoQuan.RowCount > 0)
             {
                 foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
@@ -496,6 +496,8 @@ namespace ThuTien.GUI.HanhThu
                         dr["TongCong"] = TongCong;
                         if(chkChuKy.Checked)
                             dr["ChuKy"] = true;
+                        if (chkCoTenNguoiKy.Checked)
+                            dr["TenNguoiKy"] = "Nguyễn Ngọc Ẩn";
 
                         dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                     }
@@ -533,6 +535,8 @@ namespace ThuTien.GUI.HanhThu
                             dr["TongCong"] = TongCong;
                             if (chkChuKy.Checked)
                                 dr["ChuKy"] = true;
+                            if (chkCoTenNguoiKy.Checked)
+                                dr["TenNguoiKy"] = "Nguyễn Ngọc Ẩn";
 
                             dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                         }
@@ -612,6 +616,8 @@ namespace ThuTien.GUI.HanhThu
                         dr["TongCong"] = TongCong;
                         if (chkChuKy.Checked)
                             dr["ChuKy"] = true;
+                        if (chkCoTenNguoiKy.Checked)
+                            dr["TenNguoiKy"] = "Nguyễn Ngọc Ẩn";
 
                         dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                     }
@@ -648,6 +654,8 @@ namespace ThuTien.GUI.HanhThu
                             dr["TongCong"] = TongCong;
                             if (chkChuKy.Checked)
                                 dr["ChuKy"] = true;
+                            if (chkCoTenNguoiKy.Checked)
+                                dr["TenNguoiKy"] = "Nguyễn Ngọc Ẩn";
 
                             dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                         }
