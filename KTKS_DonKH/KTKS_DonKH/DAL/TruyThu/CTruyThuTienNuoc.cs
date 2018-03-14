@@ -126,6 +126,14 @@ namespace KTKS_DonKH.DAL.TruyThu
             return db.TruyThuTienNuocs.Any(item => (item.TinhTrang == null || item.TinhTrang == "" || item.TinhTrang == "Đang gửi thư mời") && item.DanhBo == DanhBo);
         }
 
+        public string GetTinhTrang(string DanhBo)
+        {
+            if (db.TruyThuTienNuocs.Any(item => item.DanhBo == DanhBo && (item.TinhTrang != "Đã thanh toán" && item.TinhTrang != "Điều chỉnh không phát sinh truy thu" && item.TinhTrang != "Miễn truy thu")) == true)
+                return db.TruyThuTienNuocs.SingleOrDefault(item => item.DanhBo == DanhBo && (item.TinhTrang != "Đã thanh toán" && item.TinhTrang != "Điều chỉnh không phát sinh truy thu" && item.TinhTrang != "Miễn truy thu")).TinhTrang;
+            else
+                return "";
+        }
+
         public TruyThuTienNuoc Get(string Loai, decimal MaDon)
         {
             switch (Loai)

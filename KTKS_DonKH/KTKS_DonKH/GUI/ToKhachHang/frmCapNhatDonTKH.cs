@@ -181,8 +181,14 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             dgvLichSuDon.DataSource = _cLichSuDonTu.GetDS_3To(entity.DANHBA);
             dgvLichSuDonTu_DCBD.DataSource = _cLichSuDonTu.GetDS_DCBD(entity.DANHBA);
 
-            if (_cTTTN.CheckExist_ChuaXepDon(entity.DANHBA) == true)
-                lbTruyThu.Text = "Danh Bộ này đang Truy Thu";
+            //if (_cTTTN.CheckExist_ChuaXepDon(entity.DANHBA) == true)
+            //    lbTruyThu.Text = "Danh Bộ này đang Truy Thu";
+            //else
+            //    lbTruyThu.Text = "";
+
+            string str= _cTTTN.GetTinhTrang(entity.DANHBA);
+            if (str != "")
+                lbTruyThu.Text = "Tình Trạng Truy Thu: "+str;
             else
                 lbTruyThu.Text = "";
         }
@@ -719,7 +725,6 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                 
             }
         }
-
 
 
     }

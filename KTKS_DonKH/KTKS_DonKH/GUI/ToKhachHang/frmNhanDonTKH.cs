@@ -132,9 +132,17 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             txtGiaBieu.Text = hoadon.GB.ToString();
             txtDinhMuc.Text = hoadon.DM.ToString();
             dgvLichSuDon.DataSource = _cLichSuDonTu.GetDS_3To(hoadon.DANHBA);
-            if (_cTTTN.CheckExist_ChuaXepDon(hoadon.DANHBA) == true)
+            //if (_cTTTN.CheckExist_ChuaXepDon(hoadon.DANHBA) == true)
+            //{
+            //    lbTruyThu.Text = "Danh Bộ này đang Truy Thu";
+            //    MessageBox.Show("Danh Bộ này đang Truy Thu", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            //}
+            //else
+            //    lbTruyThu.Text = "";
+            string str = _cTTTN.GetTinhTrang(hoadon.DANHBA);
+            if (str != "")
             {
-                lbTruyThu.Text = "Danh Bộ này đang Truy Thu";
+                lbTruyThu.Text = "Tình Trạng Truy Thu: " + str;
                 MessageBox.Show("Danh Bộ này đang Truy Thu", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             }
             else
