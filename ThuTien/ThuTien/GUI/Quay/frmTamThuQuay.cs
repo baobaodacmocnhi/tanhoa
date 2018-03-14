@@ -180,6 +180,8 @@ namespace ThuTien.GUI.Quay
                 if (hdIn.MaNV_HanhThu != null)
                     dr["NhanVienThuTien"] = _cNguoiDung.GetHoTenByMaND(hdIn.MaNV_HanhThu.Value);
                 dr["NhanVienQuay"] = CNguoiDung.HoTen;
+                if (chkChuKy.Checked)
+                    dr["ChuKy"] = true;
                 ds.Tables["PhieuTamThu"].Rows.Add(dr);
 
                 rptPhieuTamThu rpt = new rptPhieuTamThu();
