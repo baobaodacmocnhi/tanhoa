@@ -63,6 +63,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                             hoadon.ChanTienDu = true;
                             hoadon.NgayChanTienDu = DateTime.Now;
                             hoadon.NGAYGIAITRACH = DateTime.Now;
+                            hoadon.Name_PC = CNguoiDung.Name_PC;
+                            hoadon.IP_PC = CNguoiDung.IP_PC;
                             _cHoaDon.Sua(hoadon);
                         }
                     dgvDSChanTienDu.DataSource = _cHoaDon.GetDSChanTienDu();
@@ -89,6 +91,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                         hoadon.KhoaTienDu = false;
                         hoadon.ChanTienDu = false;
                         hoadon.NGAYGIAITRACH = null;
+                        hoadon.Name_PC = CNguoiDung.Name_PC;
+                        hoadon.IP_PC = CNguoiDung.IP_PC;
                         _cHoaDon.Sua(hoadon);
                     }
                     dgvDSChanTienDu.DataSource = _cHoaDon.GetDSChanTienDu();
