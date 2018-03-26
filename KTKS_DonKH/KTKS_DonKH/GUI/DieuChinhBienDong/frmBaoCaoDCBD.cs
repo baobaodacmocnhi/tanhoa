@@ -715,12 +715,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
                         {
                             dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                            dr["DinhMucCap"] = _cDocSo.GetDinhMuc(itemRow["DanhBo"].ToString());
+                            dr["DinhMucCap"] = itemRow["DinhMuc"];
+                            if (itemRow["Quan"].ToString() != "")
+                            {
+                                dr["Phuong"] = _cDocSo.GetTenPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                                dr["Quan"] = _cDocSo.GetTenQuan(int.Parse(itemRow["Quan"].ToString()));
+                            }
                         }
                         dr["HoTen"] = itemRow["HoTen"];
                         dr["DiaChi"] = itemRow["DiaChi"];
-                        dr["Phuong"] = _cDocSo.GetTenPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
-                        dr["Quan"] = _cDocSo.GetTenQuan(int.Parse(itemRow["Quan"].ToString()));
+                        
 
                         dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
                     }
@@ -734,12 +738,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
                                 {
                                     dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                                    dr["DinhMucCap"] = _cDocSo.GetDinhMuc(itemRow["DanhBo"].ToString());
+                                    dr["DinhMucCap"] = itemRow["DinhMuc"];
+                                    if (itemRow["Quan"].ToString() != "")
+                                    {
+                                        dr["Phuong"] = _cDocSo.GetTenPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                                        dr["Quan"] = _cDocSo.GetTenQuan(int.Parse(itemRow["Quan"].ToString()));
+                                    }
                                 }
                                 dr["HoTen"] = itemRow["HoTen"];
                                 dr["DiaChi"] = itemRow["DiaChi"];
-                                dr["Phuong"] = _cDocSo.GetTenPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
-                                dr["Quan"] = _cDocSo.GetTenQuan(int.Parse(itemRow["Quan"].ToString()));
+                                
                                 dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
                             }
                         }
@@ -752,12 +760,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
                                 {
                                     dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                                    dr["DinhMucCap"] = _cDocSo.GetDinhMuc(itemRow["DanhBo"].ToString());
+                                    dr["DinhMucCap"] = itemRow["DinhMuc"];
+                                    if (itemRow["Quan"].ToString() != "")
+                                    {
+                                        dr["Phuong"] = _cDocSo.GetTenPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                                        dr["Quan"] = _cDocSo.GetTenQuan(int.Parse(itemRow["Quan"].ToString()));
+                                    }
                                 }
                                 dr["HoTen"] = itemRow["HoTen"];
                                 dr["DiaChi"] = itemRow["DiaChi"];
-                                dr["Phuong"] = _cDocSo.GetTenPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
-                                dr["Quan"] = _cDocSo.GetTenQuan(int.Parse(itemRow["Quan"].ToString()));
+                                
                                 dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
                             }
                         }

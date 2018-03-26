@@ -115,14 +115,59 @@ namespace KTKS_DonKH.DAL
 
         public TB_DULIEUKHACHHANG GetTTKH(string DanhBo)
         {
-            try
-            {
+            //if (db.TB_DULIEUKHACHHANGs.Any(item => item.DANHBO == DanhBo) == true)
                 return db.TB_DULIEUKHACHHANGs.SingleOrDefault(itemDLKH => itemDLKH.DANHBO == DanhBo);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
+            //else
+            //{
+            //    TB_DULIEUKHACHHANG entity = new TB_DULIEUKHACHHANG();
+            //    TB_DULIEUKHACHHANG_HUYDB entity_huy = new TB_DULIEUKHACHHANG_HUYDB();
+
+            //    entity_huy = db.TB_DULIEUKHACHHANG_HUYDBs.SingleOrDefault(itemDLKH => itemDLKH.DANHBO == DanhBo);
+
+            //    entity.KHU = entity_huy.KHU;
+            //    entity.DOT = entity_huy.DOT;
+            //    entity.CUON_GCS = entity_huy.CUON_GCS;
+            //    entity.CUON_STT = entity_huy.CUON_STT;
+            //    entity.LOTRINH = entity_huy.LOTRINH;
+            //    entity.DANHBO = entity_huy.DANHBO;
+            //    entity.NGAYGANDH = entity_huy.NGAYGANDH;
+            //    entity.HOPDONG = entity_huy.HOPDONG;
+            //    entity.HOTEN = entity_huy.HOTEN;
+            //    entity.SONHA = entity_huy.SONHA;
+            //    entity.TENDUONG = entity_huy.TENDUONG;
+            //    entity.PHUONG = entity_huy.PHUONG;
+            //    entity.QUAN = entity_huy.QUAN;
+            //    entity.CHUKY = entity_huy.CHUKY;
+            //    entity.CODE = entity_huy.CODE;
+            //    entity.CODEFU = entity_huy.CODEFU;
+            //    entity.GIABIEU = entity_huy.GIABIEU;
+            //    entity.DINHMUC = entity_huy.DINHMUC;
+            //    entity.SH = entity_huy.SH;
+            //    entity.HCSN = entity_huy.HCSN;
+            //    entity.SX = entity_huy.SX;
+            //    entity.DV = entity_huy.DV;
+            //    entity.CODH = entity_huy.CODH;
+            //    entity.HIEUDH = entity_huy.HIEUDH;
+            //    entity.SOTHANDH = entity_huy.SOTHANDH;
+            //    entity.CAP = entity_huy.CAP;
+            //    entity.CHITHAN = entity_huy.CHITHAN;
+            //    entity.CHIGOC = entity_huy.CHIGOC;
+            //    entity.VITRIDHN = entity_huy.VITRIDHN;
+            //    entity.SODHN = entity_huy.SODHN;
+            //    entity.NGAYTHAY = entity_huy.NGAYTHAY;
+            //    entity.NGAYKIEMDINH = entity_huy.NGAYKIEMDINH;
+            //    entity.MSTHUE = entity_huy.MSTHUE;
+            //    entity.SOHO = entity_huy.SOHO;
+            //    entity.CHISOKYTRUOC = entity_huy.CHISOKYTRUOC;
+            //    entity.CREATEDATE = entity_huy.CREATEDATE;
+            //    entity.CREATEBY = entity_huy.CREATEBY;
+            //    entity.MODIFYDATE = entity_huy.MODIFYDATE;
+            //    entity.MODIFYBY = entity_huy.MODIFYBY;
+            //    entity.MADMA = entity_huy.MADMA;
+            //    entity.CHUKYDS = entity_huy.CHUKYDS;
+
+            //    return entity;
+            //}
         }
 
         public bool CheckExist(string DanhBo)
@@ -172,7 +217,10 @@ namespace KTKS_DonKH.DAL
 
         public string GetDinhMuc(string DanhBo)
         {
-            return db.TB_DULIEUKHACHHANGs.SingleOrDefault(item => item.DANHBO == DanhBo).DINHMUC;
+            if (db.TB_DULIEUKHACHHANGs.Any(item => item.DANHBO == DanhBo) == true)
+                return db.TB_DULIEUKHACHHANGs.SingleOrDefault(item => item.DANHBO == DanhBo).DINHMUC;
+            else
+                return db.TB_DULIEUKHACHHANG_HUYDBs.SingleOrDefault(item => item.DANHBO == DanhBo).DINHMUC;
         }
 
         /// <summary>

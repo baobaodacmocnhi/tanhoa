@@ -49,6 +49,7 @@
             this.HCSN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhBo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,10 +75,11 @@
             this.SH,
             this.HCSN,
             this.SX,
-            this.DV});
+            this.DV,
+            this.GhiChu});
             this.dgvDanhBo.Location = new System.Drawing.Point(12, 43);
             this.dgvDanhBo.Name = "dgvDanhBo";
-            this.dgvDanhBo.Size = new System.Drawing.Size(1175, 441);
+            this.dgvDanhBo.Size = new System.Drawing.Size(1269, 441);
             this.dgvDanhBo.TabIndex = 25;
             this.dgvDanhBo.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhBo_CellEndEdit);
             this.dgvDanhBo.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDanhBo_CellFormatting);
@@ -205,16 +207,22 @@
             this.DV.Name = "DV";
             this.DV.Visible = false;
             // 
+            // GhiChu
+            // 
+            this.GhiChu.DataPropertyName = "GhiChu";
+            this.GhiChu.HeaderText = "Ghi Chú";
+            this.GhiChu.Name = "GhiChu";
+            // 
             // frmNhapNhieuGB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1198, 493);
+            this.ClientSize = new System.Drawing.Size(1290, 493);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.dgvDanhBo);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmNhapNhieuGB";
             this.Text = "Nhập Nhiều GB";
             this.Load += new System.EventHandler(this.frmNhapNhieuGB_Load);
@@ -246,5 +254,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HCSN;
         private System.Windows.Forms.DataGridViewTextBoxColumn SX;
         private System.Windows.Forms.DataGridViewTextBoxColumn DV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
     }
 }
