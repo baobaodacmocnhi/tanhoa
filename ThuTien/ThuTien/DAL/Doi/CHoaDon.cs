@@ -7317,6 +7317,318 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
+        public DataTable GetDSTon_Doi_GiaoTon(string Loai, int Nam)
+        {
+            if (Loai == "TG")
+            {
+                string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
+                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
+                            + " from HOADON hd"
+                            + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
+                            + " left join TT_To tto on tto.MaTo=nd.MaTo"
+                            + " where"
+                            + " NAM=" + Nam + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
+                            + " order by MLT,Ky asc";
+
+                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            }
+            else
+                if (Loai == "CQ")
+                {
+                    string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
+                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
+                            + " from HOADON hd"
+                            + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
+                            + " left join TT_To tto on tto.MaTo=nd.MaTo"
+                            + " where"
+                            + " NAM=" + Nam + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
+                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
+                            + " order by MLT,Ky asc";
+
+                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                }
+            return null;
+        }
+
+        public DataTable GetDSTon_Doi_GiaoTon(string Loai, int Nam, int Ky)
+        {
+            if (Loai == "TG")
+            {
+                string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
+                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
+                            + " from HOADON hd"
+                            + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
+                            + " left join TT_To tto on tto.MaTo=nd.MaTo"
+                            + " where"
+                            + " NAM=" + Nam + " and KY=" + Ky + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
+                            + " order by MLT,Ky asc";
+
+                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            }
+            else
+                if (Loai == "CQ")
+                {
+                    string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
+                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
+                            + " from HOADON hd"
+                            + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
+                            + " left join TT_To tto on tto.MaTo=nd.MaTo"
+                            + " where"
+                            + " NAM=" + Nam + " and KY=" + Ky + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
+                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
+                            + " order by MLT,Ky asc";
+
+                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                }
+            return null;
+        }
+
+        public DataTable GetDSTon_Doi_GiaoTon(string Loai, int Nam, int Ky, int FromDot, int ToDot)
+        {
+            if (Loai == "TG")
+            {
+                string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
+                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
+                            + " from HOADON hd"
+                            + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
+                            + " left join TT_To tto on tto.MaTo=nd.MaTo"
+                            + " where"
+                            + " NAM=" + Nam + " and KY=" + Ky + " and DOT>=" + FromDot + " and DOT<=" + ToDot + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
+                            + " order by MLT,Ky asc";
+
+                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            }
+            else
+                if (Loai == "CQ")
+                {
+                    string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
+                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
+                            + " from HOADON hd"
+                            + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
+                            + " left join TT_To tto on tto.MaTo=nd.MaTo"
+                            + " where"
+                            + " NAM=" + Nam + " and KY=" + Ky + " and DOT>=" + FromDot + " and DOT<=" + ToDot + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
+                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
+                            + " order by MLT,Ky asc";
+
+                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                }
+            return null;
+        }
+
+        public DataTable GetDSTon_To_GiaoTon(string Loai, int MaTo, int Nam)
+        {
+            if (Loai == "TG")
+            {
+                string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
+                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
+                            + " from HOADON hd"
+                            + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
+                            + " left join TT_To tto on tto.MaTo=nd.MaTo"
+                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                            + " and NAM=" + Nam + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
+                            + " order by MLT,Ky asc";
+
+                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            }
+            else
+                if (Loai == "CQ")
+                {
+                    string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
+                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
+                            + " from HOADON hd"
+                            + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
+                            + " left join TT_To tto on tto.MaTo=nd.MaTo"
+                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                            + " and NAM=" + Nam + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
+                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
+                            + " order by MLT,Ky asc";
+
+                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                }
+            return null;
+        }
+
+        public DataTable GetDSTon_To_GiaoTon(string Loai, int MaTo, int Nam, int Ky)
+        {
+            if (Loai == "TG")
+            {
+                string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
+                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
+                            + " from HOADON hd"
+                            + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
+                            + " left join TT_To tto on tto.MaTo=nd.MaTo"
+                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                            + " and NAM=" + Nam + " and KY=" + Ky + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
+                            + " order by MLT,Ky asc";
+
+                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            }
+            else
+                if (Loai == "CQ")
+                {
+                    string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
+                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
+                            + " from HOADON hd"
+                            + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
+                            + " left join TT_To tto on tto.MaTo=nd.MaTo"
+                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                            + " and NAM=" + Nam + " and KY=" + Ky + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
+                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
+                            + " order by MLT,Ky asc";
+
+                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                }
+            return null;
+        }
+
+        public DataTable GetDSTon_To_GiaoTon(string Loai, int MaTo, int Nam, int Ky, int FromDot, int ToDot)
+        {
+            if (Loai == "TG")
+            {
+                string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
+                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
+                            + " from HOADON hd"
+                            + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
+                            + " left join TT_To tto on tto.MaTo=nd.MaTo"
+                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                            + " and NAM=" + Nam + " and KY=" + Ky + " and DOT>=" + FromDot + " and DOT<=" + ToDot + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
+                            + " order by MLT,Ky asc";
+
+                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            }
+            else
+                if (Loai == "CQ")
+                {
+                    string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
+                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
+                            + " from HOADON hd"
+                            + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
+                            + " left join TT_To tto on tto.MaTo=nd.MaTo"
+                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                            + " and NAM=" + Nam + " and KY=" + Ky + " and DOT>=" + FromDot + " and DOT<=" + ToDot + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
+                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
+                            + " order by MLT,Ky asc";
+
+                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                }
+            return null;
+        }
+
+        public DataTable GetDSTon_NV_GiaoTon(string Loai, int MaNV_HanhThu, int Nam)
+        {
+            if (Loai == "TG")
+            {
+                string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
+                            + " from HOADON"
+                            + " where MaNV_HanhThu=" + MaNV_HanhThu
+                            + " and NAM=" + Nam + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
+                            + " order by MLT,Ky asc";
+
+                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            }
+            else
+                if (Loai == "CQ")
+                {
+                    string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
+                            + " from HOADON"
+                            + " where MaNV_HanhThu=" + MaNV_HanhThu
+                            + " and NAM=" + Nam + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
+                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
+                            + " order by MLT,Ky asc";
+
+                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                }
+            return null;
+        }
+
+        public DataTable GetDSTon_NV_GiaoTon(string Loai, int MaNV_HanhThu, int Nam, int Ky)
+        {
+            if (Loai == "TG")
+            {
+                string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
+                            + " from HOADON"
+                            + " where MaNV_HanhThu=" + MaNV_HanhThu
+                            + " and NAM=" + Nam + " and KY=" + Ky + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
+                            + " order by MLT,Ky asc";
+
+                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            }
+            else
+                if (Loai == "CQ")
+                {
+                    string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
+                            + " from HOADON"
+                            + " where MaNV_HanhThu=" + MaNV_HanhThu
+                            + " and NAM=" + Nam + " and KY=" + Ky + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
+                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
+                            + " order by MLT,Ky asc";
+
+                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                }
+            return null;
+        }
+
+        public DataTable GetDSTon_NV_GiaoTon(string Loai, int MaNV_HanhThu, int Nam, int Ky, int FromDot, int ToDot)
+        {
+            if (Loai == "TG")
+            {
+                string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
+                            + " from HOADON"
+                            + " where MaNV_HanhThu=" + MaNV_HanhThu
+                            + " and NAM=" + Nam + " and KY=" + Ky + " and DOT>=" + FromDot + " and DOT<=" + ToDot + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
+                            + " order by MLT,Ky asc";
+
+                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            }
+            else
+                if (Loai == "CQ")
+                {
+                    string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
+                            + " from HOADON"
+                            + " where MaNV_HanhThu=" + MaNV_HanhThu
+                            + " and NAM=" + Nam + " and KY=" + Ky + " and DOT>=" + FromDot + " and DOT<=" + ToDot + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
+                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
+                            + " order by MLT,Ky asc";
+
+                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                }
+            return null;
+        }
+
         /// <summary>
         /// Lấy danh sách tất cả hóa đơn tồn
         /// </summary>

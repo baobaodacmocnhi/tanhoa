@@ -152,6 +152,12 @@ namespace ThuTien.GUI.TimKiem
                 btnTimKiem.PerformClick();
         }
 
+        private void txtTenDuong_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                btnTimKiem.PerformClick();
+        }
+
         private void btnInPhieuTieuThu_Click(object sender, EventArgs e)
         {
             //DataTable dtTieuThu = _cHoaDon.GetDSTieuThu(txtDanhBo.Text.Trim());
@@ -254,6 +260,7 @@ namespace ThuTien.GUI.TimKiem
             txtMLT.Text = "";
             txtHoTen.Text = "";
             txtSoNha.Text = "";
+            txtTenDuong.Text = "";
             txtDanhBo.Focus();
         }
 
@@ -317,6 +324,8 @@ namespace ThuTien.GUI.TimKiem
                     }
                 }
         }
+
+       
 
     }
 }

@@ -206,7 +206,7 @@
             this.dgvHDTuGia.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHDTuGia.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvHDTuGia.Size = new System.Drawing.Size(990, 535);
+            this.dgvHDTuGia.Size = new System.Drawing.Size(938, 535);
             this.dgvHDTuGia.TabIndex = 11;
             this.dgvHDTuGia.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHDTuGia_CellFormatting);
             this.dgvHDTuGia.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvHDTuGia_RowPostPaint);
@@ -356,7 +356,7 @@
             this.tabControl.Location = new System.Drawing.Point(247, 39);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1010, 590);
+            this.tabControl.Size = new System.Drawing.Size(959, 590);
             this.tabControl.TabIndex = 29;
             // 
             // tabTuGia
@@ -384,7 +384,7 @@
             // txtTongCong_TG
             // 
             this.txtTongCong_TG.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongCong_TG.Location = new System.Drawing.Point(521, 541);
+            this.txtTongCong_TG.Location = new System.Drawing.Point(828, 541);
             this.txtTongCong_TG.Name = "txtTongCong_TG";
             this.txtTongCong_TG.Size = new System.Drawing.Size(100, 20);
             this.txtTongCong_TG.TabIndex = 12;
@@ -398,7 +398,7 @@
             this.tabCoQuan.Location = new System.Drawing.Point(4, 22);
             this.tabCoQuan.Name = "tabCoQuan";
             this.tabCoQuan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCoQuan.Size = new System.Drawing.Size(1002, 564);
+            this.tabCoQuan.Size = new System.Drawing.Size(951, 564);
             this.tabCoQuan.TabIndex = 1;
             this.tabCoQuan.Text = "Cơ Quan";
             this.tabCoQuan.UseVisualStyleBackColor = true;
@@ -415,7 +415,7 @@
             // txtTongCong_CQ
             // 
             this.txtTongCong_CQ.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongCong_CQ.Location = new System.Drawing.Point(521, 541);
+            this.txtTongCong_CQ.Location = new System.Drawing.Point(828, 541);
             this.txtTongCong_CQ.Name = "txtTongCong_CQ";
             this.txtTongCong_CQ.Size = new System.Drawing.Size(100, 20);
             this.txtTongCong_CQ.TabIndex = 14;
@@ -471,7 +471,7 @@
             this.dgvHDCoQuan.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHDCoQuan.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvHDCoQuan.Size = new System.Drawing.Size(990, 535);
+            this.dgvHDCoQuan.Size = new System.Drawing.Size(938, 535);
             this.dgvHDCoQuan.TabIndex = 12;
             this.dgvHDCoQuan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHDCoQuan_CellFormatting);
             this.dgvHDCoQuan.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvHDCoQuan_RowPostPaint);

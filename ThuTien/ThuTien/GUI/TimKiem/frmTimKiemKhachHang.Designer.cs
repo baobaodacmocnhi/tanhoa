@@ -629,6 +629,7 @@
             this.txtTenDuong.Name = "txtTenDuong";
             this.txtTenDuong.Size = new System.Drawing.Size(148, 20);
             this.txtTenDuong.TabIndex = 9;
+            this.txtTenDuong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTenDuong_KeyPress);
             // 
             // label9
             // 
