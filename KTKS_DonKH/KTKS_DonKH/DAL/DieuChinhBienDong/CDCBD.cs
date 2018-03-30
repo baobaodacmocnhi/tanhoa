@@ -1356,7 +1356,6 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     decimal MaCTDCHD = db.ExecuteQuery<decimal>("declare @Ma int " +
                         "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
                         "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
-                    //decimal MaCTDCHD = db.CTDCHDs.Max(itemCTDCHD => itemCTDCHD.MaCTDCHD);
                     ctdchd.MaCTDCHD = getMaxNextIDTable(MaCTDCHD);
                 }
                 else
@@ -1365,7 +1364,6 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 ctdchd.CreateBy = CTaiKhoan.MaUser;
                 db.CTDCHDs.InsertOnSubmit(ctdchd);
                 db.SubmitChanges();
-                //MessageBox.Show("Thành công Thêm CTDCHD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
             catch (Exception ex)
