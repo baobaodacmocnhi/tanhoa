@@ -4,7 +4,7 @@
     <PublishUrlHistory>\\192.168.90.9\BaoBao%24\KTCN_CongVan\|publish\</PublishUrlHistory>
     <InstallUrlHistory />
     <SupportUrlHistory />
-    <UpdateUrlHistory />
+    <UpdateUrlHistory>\\192.168.90.9\BaoBao%24\KTCN_CongVan\</UpdateUrlHistory>
     <BootstrapperUrlHistory>\\192.168.90.9\BaoBao%24\KTCN_CongVan\</BootstrapperUrlHistory>
     <ErrorReportUrlHistory />
     <FallbackCulture>en-US</FallbackCulture>

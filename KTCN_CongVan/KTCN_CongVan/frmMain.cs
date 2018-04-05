@@ -45,34 +45,6 @@ namespace KTCN_CongVan
 
         }
 
-        private void LoadCongVanDen(CongVanDen entity)
-        {
-            txtSoCongVan_Den.Text = entity.SoCongVan;
-            dateNgayCongVan_Den.Value = entity.NgayCongVan.Value;
-            dateNgayNhan_Den.Value = entity.NgayNhan.Value;
-            txtLoaiCongVan_Den.Text = entity.LoaiCongVan;
-            txtNoiDung_Den.Text = entity.NoiDung;
-            txtNoiNhan_Den.Text = entity.NoiNhan;
-            txtGhiChu_Den.Text = entity.GhiChu;
-            chkHetHan_Den.Checked = entity.HetHan;
-            dateNgayHetHan_Den.Value = entity.NgayHetHan.Value;
-        }
-
-        private void ClearCongVanDen()
-        {
-            txtSoCongVan_Den.Text = "";
-            dateNgayCongVan_Den.Value = DateTime.Now;
-            dateNgayNhan_Den.Value = DateTime.Now;
-            txtLoaiCongVan_Den.Text = "";
-            txtNoiDung_Den.Text = "";
-            txtNoiNhan_Den.Text = "";
-            txtGhiChu_Den.Text = "";
-            chkHetHan_Den.Checked = false;
-            dateNgayHetHan_Den.Value = DateTime.Now;
-
-            _congvanden = null;
-        }
-
         private void LoadCongVanDi(CongVanDi entity)
         {
             txtSoCongVan_Di.Text = entity.SoCongVan;
@@ -188,9 +160,44 @@ namespace KTCN_CongVan
             }
         }
 
+        private void cmbTimTheo_Di_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbTimTheo_Di.SelectedItem.ToString())
+            {
+                case "Số Công Văn":
+                    panel_NoiDung_Di.Visible = true;
+                    panel_ThoiGian_Di.Visible = false;
+                    break;
+                case "Ngày Nhận":
+                case "Ngày Hết Hạn":
+                    panel_NoiDung_Di.Visible = false;
+                    panel_ThoiGian_Di.Visible = true;
+                    break;
+                default:
+                    panel_NoiDung_Di.Visible = false;
+                    panel_ThoiGian_Di.Visible = false;
+                    break;
+            }
+        }
+
         private void btnXem_Di_Click(object sender, EventArgs e)
         {
-            dgvCongVan_Di.DataSource = _cCongVanDi.GetDS(dateTu_Di.Value,dateDen_Di.Value);
+            
+            switch (cmbTimTheo_Di.SelectedItem.ToString())
+            {
+                case "Số Công Văn":
+                    dgvCongVan_Di.DataSource = _cCongVanDi.GetDS(txtNoiDungTimKiem_Di.Text.Trim());
+                    break;
+                case "Ngày Nhận":
+                    dgvCongVan_Di.DataSource = _cCongVanDi.GetDS(dateTu_Di.Value, dateDen_Di.Value);
+                    break;
+                case "Ngày Hết Hạn":
+                    dgvCongVan_Di.DataSource = _cCongVanDi.GetDS_NgayHetHan(dateTu_Di.Value, dateDen_Di.Value);
+                    break;
+                default:
+                    dgvCongVan_Di.DataSource = null;
+                    break;
+            }
         }
 
         private void dgvCongVan_Di_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -212,6 +219,36 @@ namespace KTCN_CongVan
                 dateNgayHetHan_Di.Enabled = true;
             else
                 dateNgayHetHan_Di.Enabled = false;
+        }
+
+        /////////////////////
+
+        private void LoadCongVanDen(CongVanDen entity)
+        {
+            txtSoCongVan_Den.Text = entity.SoCongVan;
+            dateNgayCongVan_Den.Value = entity.NgayCongVan.Value;
+            dateNgayNhan_Den.Value = entity.NgayNhan.Value;
+            txtLoaiCongVan_Den.Text = entity.LoaiCongVan;
+            txtNoiDung_Den.Text = entity.NoiDung;
+            txtNoiNhan_Den.Text = entity.NoiNhan;
+            txtGhiChu_Den.Text = entity.GhiChu;
+            chkHetHan_Den.Checked = entity.HetHan;
+            dateNgayHetHan_Den.Value = entity.NgayHetHan.Value;
+        }
+
+        private void ClearCongVanDen()
+        {
+            txtSoCongVan_Den.Text = "";
+            dateNgayCongVan_Den.Value = DateTime.Now;
+            dateNgayNhan_Den.Value = DateTime.Now;
+            txtLoaiCongVan_Den.Text = "";
+            txtNoiDung_Den.Text = "";
+            txtNoiNhan_Den.Text = "";
+            txtGhiChu_Den.Text = "";
+            chkHetHan_Den.Checked = false;
+            dateNgayHetHan_Den.Value = DateTime.Now;
+
+            _congvanden = null;
         }
 
         private void btnThem_Den_Click(object sender, EventArgs e)
@@ -297,9 +334,43 @@ namespace KTCN_CongVan
             }
         }
 
+        private void cmbTimTheo_Den_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbTimTheo_Den.SelectedItem.ToString())
+            {
+                case "Số Công Văn":
+                    panel_NoiDung_Den.Visible = true;
+                    panel_ThoiGian_Den.Visible = false;
+                    break;
+                case "Ngày Nhận":
+                case "Ngày Hết Hạn":
+                    panel_NoiDung_Den.Visible = false;
+                    panel_ThoiGian_Den.Visible = true;
+                    break;
+                default:
+                    panel_NoiDung_Den.Visible = false;
+                    panel_ThoiGian_Den.Visible = false;
+                    break;
+            }
+        }
+
         private void btnXem_Den_Click(object sender, EventArgs e)
         {
-            dgvCongVan_Den.DataSource = _cCongVanDen.GetDS(dateTu_Den.Value, dateDen_Den.Value);
+           
+            switch (cmbTimTheo_Den.SelectedItem.ToString())
+            {
+                case "Số Công Văn":
+                    dgvCongVan_Den.DataSource = _cCongVanDen.GetDS(txtNoiDungTimKiem_Den.Text.Trim());
+                    break;
+                case "Ngày Nhận":
+                    dgvCongVan_Den.DataSource = _cCongVanDen.GetDS(dateTu_Den.Value, dateDen_Den.Value);
+                    break;
+                case "Ngày Hết Hạn":
+                    dgvCongVan_Den.DataSource = _cCongVanDen.GetDS_NgayHetHan(dateTu_Den.Value, dateDen_Den.Value);
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void dgvCongVan_Den_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -322,5 +393,9 @@ namespace KTCN_CongVan
             else
                 dateNgayHetHan_Den.Enabled = false;
         }
+
+        
+
+        
     }
 }
