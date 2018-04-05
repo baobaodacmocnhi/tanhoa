@@ -77,6 +77,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             dateNgayKy.Value = DateTime.Now;
             txtKyHD.Text = "";
             txtSoHD.Text = "";
+            chkChuyenNhap.Checked = false;
             txtDanhBo.Text = "";
             txtHoTen.Text = "";
             txtDiaChi.Text = "";
@@ -151,6 +152,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             dateNgayKy.Value = ctdchd.NgayKy.Value;
             txtKyHD.Text = ctdchd.KyHD;
             txtSoHD.Text = ctdchd.SoHD;
+            chkChuyenNhap.Checked = ctdchd.ChuyenNhap;
             txtDanhBo.Text = ctdchd.DanhBo;
             txtHoTen.Text = ctdchd.HoTen;
             txtDiaChi.Text = ctdchd.DiaChi;
@@ -444,11 +446,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 try
                 {
-                    if (txtDanhBo.Text.Trim() == "" || txtKyHD.Text.Trim() == "" || txtSoHD.Text.Trim() == "")
+                    if (chkChuyenNhap.Checked == true)
                     {
-                        MessageBox.Show("Chưa có Mã Đơn/Danh Bộ/Số Văn Bản/Kỳ Hóa Đơn/Số Hóa Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        if (txtDanhBo.Text.Trim() == "" || txtKyHD.Text.Trim() == "")
+                        {
+                            MessageBox.Show("Chưa có Mã Đơn/Danh Bộ/Số Văn Bản/Kỳ Hóa Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                     }
+                    else
+                        if (txtDanhBo.Text.Trim() == "" || txtKyHD.Text.Trim() == "" || txtSoHD.Text.Trim() == "")
+                        {
+                            MessageBox.Show("Chưa có Mã Đơn/Danh Bộ/Số Văn Bản/Kỳ Hóa Đơn/Số Hóa Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
 
                     CTDCHD ctdchd = new CTDCHD();
 
@@ -520,6 +531,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     ctdchd.Nam = int.Parse(KyHD[1]);
 
                     ctdchd.SoHD = txtSoHD.Text.Trim();
+                    ctdchd.ChuyenNhap = chkChuyenNhap.Checked;
                     ///
                     ctdchd.GiaBieu = int.Parse(txtGiaBieu_Cu.Text.Trim().Replace(".", ""));
                     ctdchd.DinhMuc = int.Parse(txtDinhMuc_Cu.Text.Trim().Replace(".", ""));
@@ -630,6 +642,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         _ctdchd.Nam = int.Parse(KyHD[1]);
 
                         _ctdchd.SoHD = txtSoHD.Text.Trim();
+                        _ctdchd.ChuyenNhap = chkChuyenNhap.Checked;
                         ///
                         _ctdchd.GiaBieu = int.Parse(txtGiaBieu_Cu.Text.Trim().Replace(".", ""));
                         _ctdchd.DinhMuc = int.Parse(txtDinhMuc_Cu.Text.Trim().Replace(".", ""));

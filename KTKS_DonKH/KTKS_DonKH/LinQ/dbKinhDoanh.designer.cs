@@ -10180,6 +10180,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _SoHD;
 		
+		private bool _ChuyenNhap;
+		
 		private System.Nullable<int> _GiaBieu;
 		
 		private System.Nullable<int> _DinhMuc;
@@ -10304,6 +10306,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnKyHDChanged();
     partial void OnSoHDChanging(string value);
     partial void OnSoHDChanged();
+    partial void OnChuyenNhapChanging(bool value);
+    partial void OnChuyenNhapChanged();
     partial void OnGiaBieuChanging(System.Nullable<int> value);
     partial void OnGiaBieuChanged();
     partial void OnDinhMucChanging(System.Nullable<int> value);
@@ -10606,6 +10610,26 @@ namespace KTKS_DonKH.LinQ
 					this._SoHD = value;
 					this.SendPropertyChanged("SoHD");
 					this.OnSoHDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChuyenNhap", DbType="Bit NOT NULL")]
+		public bool ChuyenNhap
+		{
+			get
+			{
+				return this._ChuyenNhap;
+			}
+			set
+			{
+				if ((this._ChuyenNhap != value))
+				{
+					this.OnChuyenNhapChanging(value);
+					this.SendPropertyChanging();
+					this._ChuyenNhap = value;
+					this.SendPropertyChanged("ChuyenNhap");
+					this.OnChuyenNhapChanged();
 				}
 			}
 		}

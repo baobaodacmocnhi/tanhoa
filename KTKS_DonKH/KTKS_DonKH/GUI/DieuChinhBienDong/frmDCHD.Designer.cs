@@ -120,6 +120,7 @@
             this.label28 = new System.Windows.Forms.Label();
             this.txtMaDonMoi = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
+            this.chkChuyenNhap = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -557,6 +558,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkChuyenNhap);
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.txtDiaChi);
             this.groupBox1.Controls.Add(this.dateNgayKy);
@@ -1042,6 +1044,16 @@
             this.label29.TabIndex = 116;
             this.label29.Text = "Mã Đơn(New):";
             // 
+            // chkChuyenNhap
+            // 
+            this.chkChuyenNhap.AutoSize = true;
+            this.chkChuyenNhap.Location = new System.Drawing.Point(283, 80);
+            this.chkChuyenNhap.Name = "chkChuyenNhap";
+            this.chkChuyenNhap.Size = new System.Drawing.Size(108, 20);
+            this.chkChuyenNhap.TabIndex = 14;
+            this.chkChuyenNhap.Text = "Chuyển Nháp";
+            this.chkChuyenNhap.UseVisualStyleBackColor = true;
+            // 
             // frmDCHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1193,5 +1205,6 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.TextBox txtMaDonMoi;
         private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.CheckBox chkChuyenNhap;
     }
 }

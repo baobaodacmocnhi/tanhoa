@@ -424,6 +424,7 @@
       <Column Name="Nam" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="KyHD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="SoHD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ChuyenNhap" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="GiaBieu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DinhMuc" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TieuThu" Type="System.Int32" DbType="Int" CanBeNull="true" />
