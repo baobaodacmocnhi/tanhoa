@@ -277,74 +277,74 @@ namespace ThuTien.GUI.Quay
         private void btnInPhieuBao_Click(object sender, EventArgs e)
         {
             dsBaoCao dsBaoCao = new dsBaoCao();
-            //if (tabControl.SelectedTab.Name == "tabTuGia")
-            //{
-            //    foreach (DataGridViewRow item in dgvHDTuGia.Rows)
-            //    {
-            //        DataRow dr = dsBaoCao.Tables["DSHoaDon"].NewRow();
-            //        dr["LoaiBaoCao"] = "TƯ GIA";
-            //        dr["Dot"] = item.Cells["MLT_TG"].Value.ToString().Substring(0, 2);
-            //        dr["SoHoaDon"] = item.Cells["SoHoaDon_TG"].Value.ToString();
-            //        dr["TongCong"] = item.Cells["TongCong_TG"].Value.ToString();
-            //        dr["HanhThu"] = item.Cells["HanhThu_TG"].Value.ToString();
-            //        dr["To"] = item.Cells["To_TG"].Value.ToString();
-            //        dr["NgayLap"] = dateLap.Value.ToString("dd/MM/yyyy");
-            //        dsBaoCao.Tables["DSHoaDon"].Rows.Add(dr);
-            //    }
-            //}
-            //else
-            //    if (tabControl.SelectedTab.Name == "tabCoQuan")
-            //    {
-            //        foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
-            //        {
-            //            DataRow dr = dsBaoCao.Tables["DSHoaDon"].NewRow();
-            //            dr["LoaiBaoCao"] = "CƠ QUAN";
-            //            dr["Dot"] = item.Cells["MLT_CQ"].Value.ToString().Substring(0, 2);
-            //            dr["SoHoaDon"] = item.Cells["SoHoaDon_CQ"].Value.ToString();
-            //            dr["TongCong"] = item.Cells["TongCong_CQ"].Value.ToString();
-            //            dr["HanhThu"] = item.Cells["HanhThu_CQ"].Value.ToString();
-            //            dr["To"] = item.Cells["To_CQ"].Value.ToString();
-            //            dr["NgayLap"] = dateLap.Value.ToString("dd/MM/yyyy");
-            //            dsBaoCao.Tables["DSHoaDon"].Rows.Add(dr);
-            //        }
-            //    }
-
-            DataTable dt = new DataTable();
-            ///chọn tất cả các tổ
-            if (cmbTo.SelectedIndex == 0)
+            if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                dt = _cQuetGiaoTon.GetDS("TG", dateTu.Value.Date, dateDen.Value.Date);
-                dt.Merge(_cQuetGiaoTon.GetDS("CQ", dateTu.Value.Date, dateDen.Value.Date));
+                foreach (DataGridViewRow item in dgvHDTuGia.Rows)
+                {
+                    DataRow dr = dsBaoCao.Tables["DSHoaDon"].NewRow();
+                    dr["LoaiBaoCao"] = "TƯ GIA";
+                    dr["Dot"] = item.Cells["MLT_TG"].Value.ToString().Substring(0, 2);
+                    dr["SoHoaDon"] = item.Cells["SoHoaDon_TG"].Value.ToString();
+                    dr["TongCong"] = item.Cells["TongCong_TG"].Value.ToString();
+                    dr["HanhThu"] = item.Cells["HanhThu_TG"].Value.ToString();
+                    dr["To"] = item.Cells["To_TG"].Value.ToString();
+                    dr["NgayLap"] = dateTu.Value.ToString("dd/MM/yyyy");
+                    dsBaoCao.Tables["DSHoaDon"].Rows.Add(dr);
+                }
             }
             else
-                ///chọn 1 tổ cụ thể
-                if (cmbTo.SelectedIndex > 0)
-                    ///chọn tất cả nhân viên
-                    if (cmbNhanVien.SelectedIndex == 0)
+                if (tabControl.SelectedTab.Name == "tabCoQuan")
+                {
+                    foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
                     {
-                        dt = _cQuetGiaoTon.GetDSByMaTo("TG", int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value.Date, dateDen.Value.Date);
-                        dt.Merge(_cQuetGiaoTon.GetDSByMaTo("CQ", int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value.Date, dateDen.Value.Date));
+                        DataRow dr = dsBaoCao.Tables["DSHoaDon"].NewRow();
+                        dr["LoaiBaoCao"] = "CƠ QUAN";
+                        dr["Dot"] = item.Cells["MLT_CQ"].Value.ToString().Substring(0, 2);
+                        dr["SoHoaDon"] = item.Cells["SoHoaDon_CQ"].Value.ToString();
+                        dr["TongCong"] = item.Cells["TongCong_CQ"].Value.ToString();
+                        dr["HanhThu"] = item.Cells["HanhThu_CQ"].Value.ToString();
+                        dr["To"] = item.Cells["To_CQ"].Value.ToString();
+                        dr["NgayLap"] = dateTu.Value.ToString("dd/MM/yyyy");
+                        dsBaoCao.Tables["DSHoaDon"].Rows.Add(dr);
                     }
-                    else
-                        ///chọn 1 nhân viên cụ thể
-                        if (cmbNhanVien.SelectedIndex > 0)
-                        {
-                            dt = _cQuetGiaoTon.GetDSByMaNV("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), dateTu.Value.Date, dateDen.Value.Date);
-                            dt.Merge(_cQuetGiaoTon.GetDSByMaNV("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), dateTu.Value.Date, dateDen.Value.Date));
-                        }
+                }
 
-            foreach (DataRow item in dt.Rows)
-            {
-                DataRow dr = dsBaoCao.Tables["DSHoaDon"].NewRow();
-                dr["LoaiBaoCao"] = item["Loai"].ToString();
-                dr["Dot"] = item["MLT"].ToString().Substring(0, 2);
-                dr["SoHoaDon"] = item["SoHoaDon"].ToString();
-                dr["TongCong"] = item["TongCong"].ToString();
-                dr["HanhThu"] = item["HanhThu"].ToString();
-                dr["To"] = item["To"].ToString();
-                dr["NgayLap"] = dateTu.Value.ToString("dd/MM/yyyy");
-                dsBaoCao.Tables["DSHoaDon"].Rows.Add(dr);
-            }
+        //    DataTable dt = new DataTable();
+        //    ///chọn tất cả các tổ
+        //    if (cmbTo.SelectedIndex == 0)
+        //    {
+        //        dt = _cQuetGiaoTon.GetDS("TG", dateTu.Value.Date, dateDen.Value.Date);
+        //        dt.Merge(_cQuetGiaoTon.GetDS("CQ", dateTu.Value.Date, dateDen.Value.Date));
+        //    }
+        //    else
+        //        ///chọn 1 tổ cụ thể
+        //        if (cmbTo.SelectedIndex > 0)
+        //            ///chọn tất cả nhân viên
+        //            if (cmbNhanVien.SelectedIndex == 0)
+        //            {
+        //                dt = _cQuetGiaoTon.GetDSByMaTo("TG", int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value.Date, dateDen.Value.Date);
+        //                dt.Merge(_cQuetGiaoTon.GetDSByMaTo("CQ", int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value.Date, dateDen.Value.Date));
+        //            }
+        //            else
+        //                ///chọn 1 nhân viên cụ thể
+        //                if (cmbNhanVien.SelectedIndex > 0)
+        //                {
+        //                    dt = _cQuetGiaoTon.GetDSByMaNV("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), dateTu.Value.Date, dateDen.Value.Date);
+        //                    dt.Merge(_cQuetGiaoTon.GetDSByMaNV("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), dateTu.Value.Date, dateDen.Value.Date));
+        //                }
+
+        //    foreach (DataRow item in dt.Rows)
+        //    {
+        //        DataRow dr = dsBaoCao.Tables["DSHoaDon"].NewRow();
+        //        dr["LoaiBaoCao"] = item["Loai"].ToString();
+        //        dr["Dot"] = item["MLT"].ToString().Substring(0, 2);
+        //        dr["SoHoaDon"] = item["SoHoaDon"].ToString();
+        //        dr["TongCong"] = item["TongCong"].ToString();
+        //        dr["HanhThu"] = item["HanhThu"].ToString();
+        //        dr["To"] = item["To"].ToString();
+        //        dr["NgayLap"] = dateTu.Value.ToString("dd/MM/yyyy");
+        //        dsBaoCao.Tables["DSHoaDon"].Rows.Add(dr);
+        //    }
 
             rptPhieuBaoGiaoTon rpt = new rptPhieuBaoGiaoTon();
             rpt.SetDataSource(dsBaoCao);
