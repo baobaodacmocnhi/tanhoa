@@ -1280,6 +1280,7 @@
             this.gridColumn49.Caption = "Mã Gian Lận";
             this.gridColumn49.FieldName = "ID";
             this.gridColumn49.Name = "gridColumn49";
+            this.gridColumn49.OptionsColumn.AllowEdit = false;
             this.gridColumn49.Visible = true;
             this.gridColumn49.VisibleIndex = 0;
             this.gridColumn49.Width = 100;
@@ -1289,6 +1290,7 @@
             this.gridColumn50.Caption = "Ngày Lập";
             this.gridColumn50.FieldName = "CreateDate";
             this.gridColumn50.Name = "gridColumn50";
+            this.gridColumn50.OptionsColumn.AllowEdit = false;
             this.gridColumn50.Visible = true;
             this.gridColumn50.VisibleIndex = 1;
             this.gridColumn50.Width = 100;
@@ -1298,6 +1300,7 @@
             this.gridColumn51.Caption = "Danh Bộ";
             this.gridColumn51.FieldName = "DanhBo";
             this.gridColumn51.Name = "gridColumn51";
+            this.gridColumn51.OptionsColumn.AllowEdit = false;
             this.gridColumn51.Visible = true;
             this.gridColumn51.VisibleIndex = 2;
             this.gridColumn51.Width = 100;
@@ -1307,6 +1310,7 @@
             this.gridColumn52.Caption = "Khách Hàng";
             this.gridColumn52.FieldName = "HoTen";
             this.gridColumn52.Name = "gridColumn52";
+            this.gridColumn52.OptionsColumn.AllowEdit = false;
             this.gridColumn52.Visible = true;
             this.gridColumn52.VisibleIndex = 3;
             this.gridColumn52.Width = 200;
@@ -1316,6 +1320,7 @@
             this.gridColumn53.Caption = "Địa Chỉ";
             this.gridColumn53.FieldName = "DiaChi";
             this.gridColumn53.Name = "gridColumn53";
+            this.gridColumn53.OptionsColumn.AllowEdit = false;
             this.gridColumn53.Visible = true;
             this.gridColumn53.VisibleIndex = 4;
             this.gridColumn53.Width = 250;
@@ -1325,6 +1330,7 @@
             this.gridColumn54.Caption = "Nội Dung Vi Phạm";
             this.gridColumn54.FieldName = "NoiDungViPham";
             this.gridColumn54.Name = "gridColumn54";
+            this.gridColumn54.OptionsColumn.AllowEdit = false;
             this.gridColumn54.Visible = true;
             this.gridColumn54.VisibleIndex = 5;
             this.gridColumn54.Width = 150;
@@ -1334,6 +1340,7 @@
             this.gridColumn55.Caption = "Tình Trạng";
             this.gridColumn55.FieldName = "TinhTrang";
             this.gridColumn55.Name = "gridColumn55";
+            this.gridColumn55.OptionsColumn.AllowEdit = false;
             this.gridColumn55.Visible = true;
             this.gridColumn55.VisibleIndex = 6;
             this.gridColumn55.Width = 150;
@@ -1344,6 +1351,7 @@
             this.gridColumn66.ColumnEdit = this.repositoryItemCheckEdit4;
             this.gridColumn66.FieldName = "ThanhToan1";
             this.gridColumn66.Name = "gridColumn66";
+            this.gridColumn66.OptionsColumn.AllowEdit = false;
             this.gridColumn66.Visible = true;
             this.gridColumn66.VisibleIndex = 7;
             this.gridColumn66.Width = 50;
@@ -1360,6 +1368,7 @@
             this.gridColumn67.ColumnEdit = this.repositoryItemCheckEdit5;
             this.gridColumn67.FieldName = "ThanhToan2";
             this.gridColumn67.Name = "gridColumn67";
+            this.gridColumn67.OptionsColumn.AllowEdit = false;
             this.gridColumn67.Visible = true;
             this.gridColumn67.VisibleIndex = 8;
             this.gridColumn67.Width = 50;
@@ -1376,6 +1385,7 @@
             this.gridColumn68.ColumnEdit = this.repositoryItemCheckEdit6;
             this.gridColumn68.FieldName = "ThanhToan3";
             this.gridColumn68.Name = "gridColumn68";
+            this.gridColumn68.OptionsColumn.AllowEdit = false;
             this.gridColumn68.Visible = true;
             this.gridColumn68.VisibleIndex = 9;
             this.gridColumn68.Width = 50;
@@ -1392,6 +1402,7 @@
             this.gridColumn56.ColumnEdit = this.repositoryItemCheckEdit2;
             this.gridColumn56.FieldName = "XepDon";
             this.gridColumn56.Name = "gridColumn56";
+            this.gridColumn56.OptionsColumn.AllowEdit = false;
             this.gridColumn56.Visible = true;
             this.gridColumn56.VisibleIndex = 10;
             this.gridColumn56.Width = 80;
@@ -1437,6 +1448,7 @@
             this.gridColumn57.Caption = "Số Phiếu";
             this.gridColumn57.FieldName = "MaTTTN";
             this.gridColumn57.Name = "gridColumn57";
+            this.gridColumn57.OptionsColumn.AllowEdit = false;
             this.gridColumn57.Visible = true;
             this.gridColumn57.VisibleIndex = 0;
             this.gridColumn57.Width = 100;
@@ -1446,6 +1458,7 @@
             this.gridColumn58.Caption = "Ngày Lập";
             this.gridColumn58.FieldName = "CreateDate";
             this.gridColumn58.Name = "gridColumn58";
+            this.gridColumn58.OptionsColumn.AllowEdit = false;
             this.gridColumn58.Visible = true;
             this.gridColumn58.VisibleIndex = 1;
             this.gridColumn58.Width = 100;
@@ -1455,6 +1468,7 @@
             this.gridColumn59.Caption = "Danh Bộ";
             this.gridColumn59.FieldName = "DanhBo";
             this.gridColumn59.Name = "gridColumn59";
+            this.gridColumn59.OptionsColumn.AllowEdit = false;
             this.gridColumn59.Visible = true;
             this.gridColumn59.VisibleIndex = 2;
             this.gridColumn59.Width = 100;
@@ -1464,6 +1478,7 @@
             this.gridColumn60.Caption = "Khách Hàng";
             this.gridColumn60.FieldName = "HoTen";
             this.gridColumn60.Name = "gridColumn60";
+            this.gridColumn60.OptionsColumn.AllowEdit = false;
             this.gridColumn60.Visible = true;
             this.gridColumn60.VisibleIndex = 3;
             this.gridColumn60.Width = 200;
@@ -1473,6 +1488,7 @@
             this.gridColumn61.Caption = "Địa Chỉ";
             this.gridColumn61.FieldName = "DiaChi";
             this.gridColumn61.Name = "gridColumn61";
+            this.gridColumn61.OptionsColumn.AllowEdit = false;
             this.gridColumn61.Visible = true;
             this.gridColumn61.VisibleIndex = 4;
             this.gridColumn61.Width = 250;
@@ -1482,6 +1498,7 @@
             this.gridColumn62.Caption = "Nội Dung";
             this.gridColumn62.FieldName = "NoiDung";
             this.gridColumn62.Name = "gridColumn62";
+            this.gridColumn62.OptionsColumn.AllowEdit = false;
             this.gridColumn62.Visible = true;
             this.gridColumn62.VisibleIndex = 5;
             this.gridColumn62.Width = 100;
@@ -1491,6 +1508,7 @@
             this.gridColumn63.Caption = "Tổng m3";
             this.gridColumn63.FieldName = "Tongm3BinhQuan";
             this.gridColumn63.Name = "gridColumn63";
+            this.gridColumn63.OptionsColumn.AllowEdit = false;
             this.gridColumn63.Visible = true;
             this.gridColumn63.VisibleIndex = 6;
             this.gridColumn63.Width = 100;
@@ -1500,6 +1518,7 @@
             this.gridColumn64.Caption = "Tổng Tiền";
             this.gridColumn64.FieldName = "TongTien";
             this.gridColumn64.Name = "gridColumn64";
+            this.gridColumn64.OptionsColumn.AllowEdit = false;
             this.gridColumn64.Visible = true;
             this.gridColumn64.VisibleIndex = 7;
             this.gridColumn64.Width = 100;
@@ -1509,6 +1528,7 @@
             this.gridColumn65.Caption = "Tình Trạng";
             this.gridColumn65.FieldName = "TinhTrang";
             this.gridColumn65.Name = "gridColumn65";
+            this.gridColumn65.OptionsColumn.AllowEdit = false;
             this.gridColumn65.Visible = true;
             this.gridColumn65.VisibleIndex = 8;
             this.gridColumn65.Width = 200;
@@ -1546,6 +1566,7 @@
             this.gridColumn69.Caption = "Mã TT";
             this.gridColumn69.FieldName = "MaCTTT";
             this.gridColumn69.Name = "gridColumn69";
+            this.gridColumn69.OptionsColumn.AllowEdit = false;
             this.gridColumn69.Visible = true;
             this.gridColumn69.VisibleIndex = 0;
             // 
@@ -1554,6 +1575,7 @@
             this.gridColumn77.Caption = "Ngày Lập";
             this.gridColumn77.FieldName = "CreateDate";
             this.gridColumn77.Name = "gridColumn77";
+            this.gridColumn77.OptionsColumn.AllowEdit = false;
             this.gridColumn77.Visible = true;
             this.gridColumn77.VisibleIndex = 1;
             // 
@@ -1562,6 +1584,7 @@
             this.gridColumn72.Caption = "Danh Bộ";
             this.gridColumn72.FieldName = "DanhBo";
             this.gridColumn72.Name = "gridColumn72";
+            this.gridColumn72.OptionsColumn.AllowEdit = false;
             this.gridColumn72.Visible = true;
             this.gridColumn72.VisibleIndex = 2;
             this.gridColumn72.Width = 100;
@@ -1571,6 +1594,7 @@
             this.gridColumn73.Caption = "Khách Hàng";
             this.gridColumn73.FieldName = "HoTen";
             this.gridColumn73.Name = "gridColumn73";
+            this.gridColumn73.OptionsColumn.AllowEdit = false;
             this.gridColumn73.Visible = true;
             this.gridColumn73.VisibleIndex = 3;
             this.gridColumn73.Width = 200;
@@ -1580,6 +1604,7 @@
             this.gridColumn74.Caption = "Địa Chỉ";
             this.gridColumn74.FieldName = "DiaChi";
             this.gridColumn74.Name = "gridColumn74";
+            this.gridColumn74.OptionsColumn.AllowEdit = false;
             this.gridColumn74.Visible = true;
             this.gridColumn74.VisibleIndex = 4;
             this.gridColumn74.Width = 250;
@@ -1589,6 +1614,7 @@
             this.gridColumn75.Caption = "Về Việc";
             this.gridColumn75.FieldName = "VeViec";
             this.gridColumn75.Name = "gridColumn75";
+            this.gridColumn75.OptionsColumn.AllowEdit = false;
             this.gridColumn75.Visible = true;
             this.gridColumn75.VisibleIndex = 5;
             this.gridColumn75.Width = 300;
@@ -1598,6 +1624,7 @@
             this.gridColumn76.Caption = "Nội Dung";
             this.gridColumn76.FieldName = "NoiDung";
             this.gridColumn76.Name = "gridColumn76";
+            this.gridColumn76.OptionsColumn.AllowEdit = false;
             this.gridColumn76.Visible = true;
             this.gridColumn76.VisibleIndex = 6;
             this.gridColumn76.Width = 300;

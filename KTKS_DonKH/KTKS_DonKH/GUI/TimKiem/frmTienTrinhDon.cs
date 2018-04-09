@@ -527,7 +527,7 @@ namespace KTKS_DonKH.GUI.TimKiem
         {
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
             {
-                frmToTrinh frm = new frmToTrinh(int.Parse(_CTRow.Row["ID"].ToString()));
+                frmToTrinh frm = new frmToTrinh(decimal.Parse(_CTRow.Row["MaCTTT"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;

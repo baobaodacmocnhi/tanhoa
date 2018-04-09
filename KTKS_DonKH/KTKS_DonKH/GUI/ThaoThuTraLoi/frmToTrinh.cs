@@ -50,7 +50,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         private void frmToTrinh_Load(object sender, EventArgs e)
         {
             dgvToTrinh.AutoGenerateColumns = false;
-            cmbTimTheo.SelectedIndex = 2;
+            cmbTimTheo.SelectedIndex = 3;
 
             if (_MaCTTT != -1)
             {
@@ -364,6 +364,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             switch (cmbTimTheo.SelectedItem.ToString())
             {
                 case "Danh Bộ":
+                case "Mã TT":
                     txtNoiDungTimKiem.Visible = true;
                     panel_KhoangThoiGian.Visible = false;
                     break;
@@ -383,6 +384,9 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         {
             switch (cmbTimTheo.SelectedItem.ToString())
             {
+                case "Mã TT":
+                    dgvToTrinh.DataSource = _cTT.GetDS(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace(" ", "").Replace("-","")));
+                    break;
                 case "Danh Bộ":
                     dgvToTrinh.DataSource = _cTT.GetDS(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""));
                     break;

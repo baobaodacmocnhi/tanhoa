@@ -188,6 +188,26 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             return db.CTToTrinhs.SingleOrDefault(itemCTTT => itemCTTT.MaCTTT == MaCTTT);
         }
 
+        public DataTable GetDS(decimal MaCTTT)
+        {
+            var query = from item in db.CTToTrinhs
+                        where item.MaCTTT == MaCTTT
+                        select new
+                        {
+                            MaDon = item.ToTrinh.MaDon != null ? "TKH" + item.ToTrinh.MaDon
+                                : item.ToTrinh.MaDonTXL != null ? "TXL" + item.ToTrinh.MaDonTXL
+                                : item.ToTrinh.MaDonTBC != null ? "TBC" + item.ToTrinh.MaDonTBC : null,
+                            item.MaCTTT,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.VeViec,
+                            item.NoiDung,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable GetDS(string DanhBo)
         {
             var query = from item in db.CTToTrinhs

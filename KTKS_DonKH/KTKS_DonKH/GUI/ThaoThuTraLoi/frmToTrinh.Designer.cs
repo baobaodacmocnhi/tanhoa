@@ -303,6 +303,7 @@
             this.cmbTimTheo.FormattingEnabled = true;
             this.cmbTimTheo.Items.AddRange(new object[] {
             "",
+            "Mã TT",
             "Danh Bộ",
             "Ngày"});
             this.cmbTimTheo.Location = new System.Drawing.Point(162, 400);
