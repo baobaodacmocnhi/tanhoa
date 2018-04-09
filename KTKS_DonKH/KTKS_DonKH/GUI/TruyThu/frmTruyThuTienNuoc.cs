@@ -798,6 +798,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                     tttn.NoiDung = txtNoiDung.Text.Trim();
                     if (cmbTinhTrang.SelectedIndex != -1)
                         tttn.TinhTrang = cmbTinhTrang.SelectedItem.ToString();
+                    else
+                        tttn.TinhTrang = "";
                     if (_hoadon != null)
                     {
                         tttn.Dot = _hoadon.DOT.ToString();
@@ -879,7 +881,9 @@ namespace KTKS_DonKH.GUI.TruyThu
                     {
                         //_tttn.XepDon = chkXepDon.Checked;
                         if (cmbTinhTrang.SelectedIndex != -1)
-                        _tttn.TinhTrang = cmbTinhTrang.SelectedItem.ToString();
+                            _tttn.TinhTrang = cmbTinhTrang.SelectedItem.ToString();
+                        else
+                            _tttn.TinhTrang = "";
                         _tttn.DanhBo = txtDanhBo.Text.Trim();
                         _tttn.HopDong = txtHopDong.Text.Trim();
                         _tttn.LoTrinh = txtLoTrinh.Text.Trim();

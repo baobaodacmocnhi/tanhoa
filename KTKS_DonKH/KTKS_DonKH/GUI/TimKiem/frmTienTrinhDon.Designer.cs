@@ -37,6 +37,7 @@
             DevExpress.XtraGrid.GridLevelNode gridLevelNode7 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode8 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode9 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode10 = new DevExpress.XtraGrid.GridLevelNode();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridViewKTXM = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -148,6 +149,14 @@
             this.gridColumn63 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn64 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn65 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridViewToTrinh = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn69 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn77 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn72 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn73 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn74 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn75 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn76 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridViewDon = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -180,16 +189,6 @@
             this.txtSoThanDHN = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dgvHoaDon = new System.Windows.Forms.DataGridView();
-            this.txtTenDuong = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.btnRefresh = new System.Windows.Forms.Button();
-            this.btnTimKiemTTKH = new System.Windows.Forms.Button();
-            this.txtSoNha = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtHoTen = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtDanhBo = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.MaHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo_TTKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -213,6 +212,16 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChiSo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtTenDuong = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnTimKiemTTKH = new System.Windows.Forms.Button();
+            this.txtSoNha = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtHoTen = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtDanhBo = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewKTXM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewBamChi)).BeginInit();
@@ -228,6 +237,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewTruyThu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewToTrinh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -257,7 +267,6 @@
             this.gridColumn115,
             this.gridColumn116});
             this.gridViewKTXM.GridControl = this.gridControl;
-            this.gridViewKTXM.IndicatorWidth = 41;
             this.gridViewKTXM.Name = "gridViewKTXM";
             this.gridViewKTXM.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewKTXM.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
@@ -387,6 +396,8 @@
             gridLevelNode8.RelationName = "Level8";
             gridLevelNode9.LevelTemplate = this.gridViewTruyThu;
             gridLevelNode9.RelationName = "Level9";
+            gridLevelNode10.LevelTemplate = this.gridViewToTrinh;
+            gridLevelNode10.RelationName = "Level10";
             this.gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
             gridLevelNode1,
             gridLevelNode2,
@@ -396,7 +407,8 @@
             gridLevelNode6,
             gridLevelNode7,
             gridLevelNode8,
-            gridLevelNode9});
+            gridLevelNode9,
+            gridLevelNode10});
             this.gridControl.Location = new System.Drawing.Point(6, 36);
             this.gridControl.MainView = this.gridViewDon;
             this.gridControl.Name = "gridControl";
@@ -418,6 +430,7 @@
             this.gridViewTTTL,
             this.gridViewGianLan,
             this.gridViewTruyThu,
+            this.gridViewToTrinh,
             this.gridViewDon,
             this.gridViewKTXM});
             // 
@@ -657,7 +670,6 @@
             this.gridColumn32,
             this.gridColumn121});
             this.gridViewDCBD.GridControl = this.gridControl;
-            this.gridViewDCBD.IndicatorWidth = 41;
             this.gridViewDCBD.Name = "gridViewDCBD";
             this.gridViewDCBD.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewDCBD.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
@@ -898,7 +910,6 @@
             this.gridColumn112,
             this.gridColumn119});
             this.gridViewCHDB.GridControl = this.gridControl;
-            this.gridViewCHDB.IndicatorWidth = 41;
             this.gridViewCHDB.Name = "gridViewCHDB";
             this.gridViewCHDB.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewCHDB.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
@@ -1143,7 +1154,6 @@
             this.gridColumn47,
             this.gridColumn48});
             this.gridViewTTTL.GridControl = this.gridControl;
-            this.gridViewTTTL.IndicatorWidth = 41;
             this.gridViewTTTL.Name = "gridViewTTTL";
             this.gridViewTTTL.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewTTTL.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
@@ -1255,7 +1265,6 @@
             this.gridColumn68,
             this.gridColumn56});
             this.gridViewGianLan.GridControl = this.gridControl;
-            this.gridViewGianLan.IndicatorWidth = 41;
             this.gridViewGianLan.Name = "gridViewGianLan";
             this.gridViewGianLan.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewGianLan.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
@@ -1413,7 +1422,6 @@
             this.gridColumn64,
             this.gridColumn65});
             this.gridViewTruyThu.GridControl = this.gridControl;
-            this.gridViewTruyThu.IndicatorWidth = 41;
             this.gridViewTruyThu.Name = "gridViewTruyThu";
             this.gridViewTruyThu.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewTruyThu.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
@@ -1504,6 +1512,95 @@
             this.gridColumn65.Visible = true;
             this.gridColumn65.VisibleIndex = 8;
             this.gridColumn65.Width = 200;
+            // 
+            // gridViewToTrinh
+            // 
+            this.gridViewToTrinh.Appearance.HeaderPanel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridViewToTrinh.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridViewToTrinh.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.gridViewToTrinh.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridViewToTrinh.Appearance.Row.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridViewToTrinh.Appearance.Row.Options.UseFont = true;
+            this.gridViewToTrinh.ColumnPanelRowHeight = 25;
+            this.gridViewToTrinh.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn69,
+            this.gridColumn77,
+            this.gridColumn72,
+            this.gridColumn73,
+            this.gridColumn74,
+            this.gridColumn75,
+            this.gridColumn76});
+            this.gridViewToTrinh.GridControl = this.gridControl;
+            this.gridViewToTrinh.Name = "gridViewToTrinh";
+            this.gridViewToTrinh.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridViewToTrinh.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridViewToTrinh.OptionsBehavior.AutoPopulateColumns = false;
+            this.gridViewToTrinh.OptionsView.ColumnAutoWidth = false;
+            this.gridViewToTrinh.OptionsView.ShowGroupPanel = false;
+            this.gridViewToTrinh.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewToTrinh_RowCellClick);
+            this.gridViewToTrinh.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridViewToTrinh_CustomColumnDisplayText);
+            this.gridViewToTrinh.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridViewToTrinh_KeyDown);
+            // 
+            // gridColumn69
+            // 
+            this.gridColumn69.Caption = "Mã TT";
+            this.gridColumn69.FieldName = "MaCTTT";
+            this.gridColumn69.Name = "gridColumn69";
+            this.gridColumn69.Visible = true;
+            this.gridColumn69.VisibleIndex = 0;
+            // 
+            // gridColumn77
+            // 
+            this.gridColumn77.Caption = "Ngày Lập";
+            this.gridColumn77.FieldName = "CreateDate";
+            this.gridColumn77.Name = "gridColumn77";
+            this.gridColumn77.Visible = true;
+            this.gridColumn77.VisibleIndex = 1;
+            // 
+            // gridColumn72
+            // 
+            this.gridColumn72.Caption = "Danh Bộ";
+            this.gridColumn72.FieldName = "DanhBo";
+            this.gridColumn72.Name = "gridColumn72";
+            this.gridColumn72.Visible = true;
+            this.gridColumn72.VisibleIndex = 2;
+            this.gridColumn72.Width = 100;
+            // 
+            // gridColumn73
+            // 
+            this.gridColumn73.Caption = "Khách Hàng";
+            this.gridColumn73.FieldName = "HoTen";
+            this.gridColumn73.Name = "gridColumn73";
+            this.gridColumn73.Visible = true;
+            this.gridColumn73.VisibleIndex = 3;
+            this.gridColumn73.Width = 200;
+            // 
+            // gridColumn74
+            // 
+            this.gridColumn74.Caption = "Địa Chỉ";
+            this.gridColumn74.FieldName = "DiaChi";
+            this.gridColumn74.Name = "gridColumn74";
+            this.gridColumn74.Visible = true;
+            this.gridColumn74.VisibleIndex = 4;
+            this.gridColumn74.Width = 250;
+            // 
+            // gridColumn75
+            // 
+            this.gridColumn75.Caption = "Về Việc";
+            this.gridColumn75.FieldName = "VeViec";
+            this.gridColumn75.Name = "gridColumn75";
+            this.gridColumn75.Visible = true;
+            this.gridColumn75.VisibleIndex = 5;
+            this.gridColumn75.Width = 300;
+            // 
+            // gridColumn76
+            // 
+            this.gridColumn76.Caption = "Nội Dung";
+            this.gridColumn76.FieldName = "NoiDung";
+            this.gridColumn76.Name = "gridColumn76";
+            this.gridColumn76.Visible = true;
+            this.gridColumn76.VisibleIndex = 6;
+            this.gridColumn76.Width = 300;
             // 
             // gridViewDon
             // 
@@ -1846,94 +1943,6 @@
             this.dgvHoaDon.TabIndex = 24;
             this.dgvHoaDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_CellFormatting);
             // 
-            // txtTenDuong
-            // 
-            this.txtTenDuong.Location = new System.Drawing.Point(140, 90);
-            this.txtTenDuong.Name = "txtTenDuong";
-            this.txtTenDuong.Size = new System.Drawing.Size(100, 22);
-            this.txtTenDuong.TabIndex = 21;
-            this.txtTenDuong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTenDuong_KeyPress);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(50, 93);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(77, 16);
-            this.label9.TabIndex = 20;
-            this.label9.Text = "Tên Đường:";
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Location = new System.Drawing.Point(377, 89);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(100, 25);
-            this.btnRefresh.TabIndex = 23;
-            this.btnRefresh.Text = "Xóa Điều Kiện";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
-            // btnTimKiemTTKH
-            // 
-            this.btnTimKiemTTKH.Location = new System.Drawing.Point(296, 89);
-            this.btnTimKiemTTKH.Name = "btnTimKiemTTKH";
-            this.btnTimKiemTTKH.Size = new System.Drawing.Size(75, 25);
-            this.btnTimKiemTTKH.TabIndex = 22;
-            this.btnTimKiemTTKH.Text = "Tìm Kiếm";
-            this.btnTimKiemTTKH.UseVisualStyleBackColor = true;
-            this.btnTimKiemTTKH.Click += new System.EventHandler(this.btnTimKiemTTKH_Click);
-            // 
-            // txtSoNha
-            // 
-            this.txtSoNha.Location = new System.Drawing.Point(140, 62);
-            this.txtSoNha.Name = "txtSoNha";
-            this.txtSoNha.Size = new System.Drawing.Size(100, 22);
-            this.txtSoNha.TabIndex = 19;
-            this.txtSoNha.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoNha_KeyPress);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(50, 65);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 16);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "Số Nhà:";
-            // 
-            // txtHoTen
-            // 
-            this.txtHoTen.Location = new System.Drawing.Point(140, 34);
-            this.txtHoTen.Name = "txtHoTen";
-            this.txtHoTen.Size = new System.Drawing.Size(150, 22);
-            this.txtHoTen.TabIndex = 17;
-            this.txtHoTen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHoTen_KeyPress);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(50, 35);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 16);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "Khách Hàng:";
-            // 
-            // txtDanhBo
-            // 
-            this.txtDanhBo.Location = new System.Drawing.Point(140, 6);
-            this.txtDanhBo.Name = "txtDanhBo";
-            this.txtDanhBo.Size = new System.Drawing.Size(100, 22);
-            this.txtDanhBo.TabIndex = 13;
-            this.txtDanhBo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBo_KeyPress);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(50, 9);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 16);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Danh Bộ:";
-            // 
             // MaHD
             // 
             this.MaHD.DataPropertyName = "MaHD";
@@ -2116,6 +2125,94 @@
             this.ChiSo.ReadOnly = true;
             this.ChiSo.Visible = false;
             // 
+            // txtTenDuong
+            // 
+            this.txtTenDuong.Location = new System.Drawing.Point(140, 90);
+            this.txtTenDuong.Name = "txtTenDuong";
+            this.txtTenDuong.Size = new System.Drawing.Size(100, 22);
+            this.txtTenDuong.TabIndex = 21;
+            this.txtTenDuong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTenDuong_KeyPress);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(50, 93);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(77, 16);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Tên Đường:";
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(377, 89);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(100, 25);
+            this.btnRefresh.TabIndex = 23;
+            this.btnRefresh.Text = "Xóa Điều Kiện";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // btnTimKiemTTKH
+            // 
+            this.btnTimKiemTTKH.Location = new System.Drawing.Point(296, 89);
+            this.btnTimKiemTTKH.Name = "btnTimKiemTTKH";
+            this.btnTimKiemTTKH.Size = new System.Drawing.Size(75, 25);
+            this.btnTimKiemTTKH.TabIndex = 22;
+            this.btnTimKiemTTKH.Text = "Tìm Kiếm";
+            this.btnTimKiemTTKH.UseVisualStyleBackColor = true;
+            this.btnTimKiemTTKH.Click += new System.EventHandler(this.btnTimKiemTTKH_Click);
+            // 
+            // txtSoNha
+            // 
+            this.txtSoNha.Location = new System.Drawing.Point(140, 62);
+            this.txtSoNha.Name = "txtSoNha";
+            this.txtSoNha.Size = new System.Drawing.Size(100, 22);
+            this.txtSoNha.TabIndex = 19;
+            this.txtSoNha.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoNha_KeyPress);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(50, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 16);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Số Nhà:";
+            // 
+            // txtHoTen
+            // 
+            this.txtHoTen.Location = new System.Drawing.Point(140, 34);
+            this.txtHoTen.Name = "txtHoTen";
+            this.txtHoTen.Size = new System.Drawing.Size(150, 22);
+            this.txtHoTen.TabIndex = 17;
+            this.txtHoTen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHoTen_KeyPress);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(50, 35);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(84, 16);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Khách Hàng:";
+            // 
+            // txtDanhBo
+            // 
+            this.txtDanhBo.Location = new System.Drawing.Point(140, 6);
+            this.txtDanhBo.Name = "txtDanhBo";
+            this.txtDanhBo.Size = new System.Drawing.Size(100, 22);
+            this.txtDanhBo.TabIndex = 13;
+            this.txtDanhBo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBo_KeyPress);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(50, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(63, 16);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Danh Bộ:";
+            // 
             // frmTienTrinhDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2144,6 +2241,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewTruyThu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewToTrinh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).EndInit();
             this.tabControl1.ResumeLayout(false);
@@ -2332,5 +2430,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayDoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChiSo;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewToTrinh;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn69;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn72;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn73;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn74;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn75;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn76;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn77;
     }
 }

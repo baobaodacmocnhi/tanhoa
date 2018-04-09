@@ -242,6 +242,35 @@ namespace KTKS_DonKH.DAL.TruyThu
             return LINQToDataTable(query);
         }
 
+        public DataTable GetDS(DateTime FromCreateDate, DateTime ToCreateDate,string TinhTrang)
+        {
+            var query = from item in db.TruyThuTienNuocs
+                        where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.TinhTrang.ToString()==TinhTrang
+                        select new
+                        {
+                            MaDon = item.MaDon != null ? "TKH" + item.MaDon
+                                : item.MaDonTXL != null ? "TXL" + item.MaDonTXL
+                                : item.MaDonTBC != null ? "TBC" + item.MaDonTBC : null,
+                            SoCongVan = item.MaDon != null ? item.DonKH.SoCongVan
+                            : item.MaDonTXL != null ? item.DonTXL.SoCongVan
+                            : item.MaDonTBC != null ? item.DonTBC.SoCongVan : null,
+                            item.MaTTTN,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.NoiDung,
+                            item.DienThoai,
+                            //item.TongTien,
+                            //item.Tongm3BinhQuan,
+                            TongTien = item.CTTruyThuTienNuocs.Count > 0 ? item.CTTruyThuTienNuocs.Sum(itemCT => itemCT.TongCongMoi).Value - item.CTTruyThuTienNuocs.Sum(itemCT => itemCT.TongCongCu).Value : 0,
+                            Tongm3BinhQuan = item.CTTruyThuTienNuocs.Count > 0 ? (item.CTTruyThuTienNuocs.Sum(itemCT => itemCT.TongCongMoi).Value - item.CTTruyThuTienNuocs.Sum(itemCT => itemCT.TongCongCu).Value) / item.SoTien1m3 : 0,
+                            //XepDon = item.TinhTrang != null ? item.TinhTrang != "" ? item.TinhTrang != "Đang gửi thư mời" ? true : false : false : false,
+                            item.TinhTrang,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable GetDSNoiDung()
         {
             return LINQToDataTable(db.TruyThuTienNuocs.Select(item => new { item.NoiDung }).ToList().Distinct());

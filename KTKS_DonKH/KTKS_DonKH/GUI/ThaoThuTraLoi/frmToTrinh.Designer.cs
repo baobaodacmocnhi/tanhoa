@@ -477,7 +477,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1114, 710);
+            this.ClientSize = new System.Drawing.Size(1101, 692);
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.cmbTimTheo);

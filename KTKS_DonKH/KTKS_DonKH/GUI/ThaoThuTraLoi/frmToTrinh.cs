@@ -34,9 +34,16 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         DonTBC _dontbc = null;
         HOADON _hoadon = null;
         CTToTrinh _cttt = null;
+        decimal _MaCTTT = -1;
 
         public frmToTrinh()
         {
+            InitializeComponent();
+        }
+
+        public frmToTrinh(decimal MaCTTT)
+        {
+            _MaCTTT = MaCTTT;
             InitializeComponent();
         }
 
@@ -44,6 +51,14 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         {
             dgvToTrinh.AutoGenerateColumns = false;
             cmbTimTheo.SelectedIndex = 2;
+
+            if (_MaCTTT != -1)
+            {
+                txtMaCTTT.Text = _MaCTTT.ToString();
+                KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
+
+                txtMaCTTT_KeyPress(sender, arg);
+            }
         }
 
         public void LoadTTKH(HOADON hoadon)

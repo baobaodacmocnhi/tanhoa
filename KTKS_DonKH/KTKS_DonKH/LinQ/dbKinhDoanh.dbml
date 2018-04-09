@@ -843,6 +843,7 @@
       <Association Name="DonKH_LichSuChuyenKTXM" Member="LichSuChuyenKTXMs" ThisKey="MaDon" OtherKey="MaDon" Type="LichSuChuyenKTXM" />
       <Association Name="DonKH_LichSuChuyenVanPhong" Member="LichSuChuyenVanPhongs" ThisKey="MaDon" OtherKey="MaDon" Type="LichSuChuyenVanPhong" />
       <Association Name="DonKH_PhieuCHDB" Member="PhieuCHDBs" ThisKey="MaDon" OtherKey="MaDon" Type="PhieuCHDB" />
+      <Association Name="DonKH_ToTrinh" Member="ToTrinhs" ThisKey="MaDon" OtherKey="MaDon" Type="ToTrinh" />
       <Association Name="DonKH_TruyThuTienNuoc" Member="TruyThuTienNuocs" ThisKey="MaDon" OtherKey="MaDon" Type="TruyThuTienNuoc" />
       <Association Name="DonKH_TTTL" Member="TTTLs" ThisKey="MaDon" OtherKey="MaDon" Type="TTTL" />
       <Association Name="LoaiDon_DonKH" Member="LoaiDon" ThisKey="MaLD" OtherKey="MaLD" Type="LoaiDon" IsForeignKey="true" />
@@ -885,6 +886,7 @@
       <Association Name="DonTBC_GianLan" Member="GianLans" ThisKey="MaDon" OtherKey="MaDonTBC" Type="GianLan" />
       <Association Name="DonTBC_KTXM" Member="KTXMs" ThisKey="MaDon" OtherKey="MaDonTBC" Type="KTXM" />
       <Association Name="DonTBC_PhieuCHDB" Member="PhieuCHDBs" ThisKey="MaDon" OtherKey="MaDonTBC" Type="PhieuCHDB" />
+      <Association Name="DonTBC_ToTrinh" Member="ToTrinhs" ThisKey="MaDon" OtherKey="MaDonTBC" Type="ToTrinh" />
       <Association Name="DonTBC_TruyThuTienNuoc" Member="TruyThuTienNuocs" ThisKey="MaDon" OtherKey="MaDonTBC" Type="TruyThuTienNuoc" />
       <Association Name="DonTBC_TTTL" Member="TTTLs" ThisKey="MaDon" OtherKey="MaDonTBC" Type="TTTL" />
       <Association Name="LoaiDonTBC_DonTBC" Member="LoaiDonTBC" ThisKey="MaLD" OtherKey="MaLD" Type="LoaiDonTBC" IsForeignKey="true" />
@@ -998,6 +1000,7 @@
       <Association Name="DonTXL_LichSuChuyenKTXM" Member="LichSuChuyenKTXMs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="LichSuChuyenKTXM" />
       <Association Name="DonTXL_LichSuChuyenVanPhong" Member="LichSuChuyenVanPhongs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="LichSuChuyenVanPhong" />
       <Association Name="DonTXL_PhieuCHDB" Member="PhieuCHDBs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="PhieuCHDB" />
+      <Association Name="DonTXL_ToTrinh" Member="ToTrinhs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="ToTrinh" />
       <Association Name="DonTXL_TruyThuTienNuoc" Member="TruyThuTienNuocs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="TruyThuTienNuoc" />
       <Association Name="DonTXL_TTTL" Member="TTTLs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="TTTL" />
       <Association Name="LoaiDonTXL_DonTXL" Member="LoaiDonTXL" ThisKey="MaLD" OtherKey="MaLD" Type="LoaiDonTXL" IsForeignKey="true" />
@@ -1553,6 +1556,9 @@
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="ToTrinh_CTToTrinh" Member="CTToTrinhs" ThisKey="MaTT" OtherKey="MaTT" Type="CTToTrinh" />
+      <Association Name="DonKH_ToTrinh" Member="DonKH" ThisKey="MaDon" OtherKey="MaDon" Type="DonKH" IsForeignKey="true" />
+      <Association Name="DonTBC_ToTrinh" Member="DonTBC" ThisKey="MaDonTBC" OtherKey="MaDon" Type="DonTBC" IsForeignKey="true" />
+      <Association Name="DonTXL_ToTrinh" Member="DonTXL" ThisKey="MaDonTXL" OtherKey="MaDon" Type="DonTXL" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.TrangThaiBamChi" Member="TrangThaiBamChis">

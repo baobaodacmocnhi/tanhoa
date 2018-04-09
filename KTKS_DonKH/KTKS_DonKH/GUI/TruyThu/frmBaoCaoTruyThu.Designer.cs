@@ -30,78 +30,41 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnInDS = new System.Windows.Forms.Button();
-            this.radChuaThanhToan = new System.Windows.Forms.RadioButton();
-            this.radGuiThu = new System.Windows.Forms.RadioButton();
-            this.radDaThanhToan = new System.Windows.Forms.RadioButton();
             this.panel_KhoangThoiGian = new System.Windows.Forms.Panel();
             this.dateTu_ThongKeTruyThu = new System.Windows.Forms.DateTimePicker();
             this.dateDen_ThongKeTruyThu = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnBaoCao_ThongKeTruyThu = new System.Windows.Forms.Button();
-            this.radKhongTruyThu = new System.Windows.Forms.RadioButton();
+            this.cmbTinhTrang = new System.Windows.Forms.ComboBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.radKhongTruyThu);
+            this.groupBox1.Controls.Add(this.cmbTinhTrang);
+            this.groupBox1.Controls.Add(this.label23);
             this.groupBox1.Controls.Add(this.btnInDS);
-            this.groupBox1.Controls.Add(this.radChuaThanhToan);
-            this.groupBox1.Controls.Add(this.radGuiThu);
-            this.groupBox1.Controls.Add(this.radDaThanhToan);
             this.groupBox1.Controls.Add(this.panel_KhoangThoiGian);
             this.groupBox1.Controls.Add(this.btnBaoCao_ThongKeTruyThu);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(277, 173);
+            this.groupBox1.Size = new System.Drawing.Size(277, 151);
             this.groupBox1.TabIndex = 26;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thống Kê Truy Thu";
             // 
             // btnInDS
             // 
-            this.btnInDS.Location = new System.Drawing.Point(12, 139);
+            this.btnInDS.Location = new System.Drawing.Point(86, 117);
             this.btnInDS.Name = "btnInDS";
             this.btnInDS.Size = new System.Drawing.Size(75, 25);
             this.btnInDS.TabIndex = 28;
             this.btnInDS.Text = "In DS";
             this.btnInDS.UseVisualStyleBackColor = true;
             this.btnInDS.Click += new System.EventHandler(this.btnInDS_Click);
-            // 
-            // radChuaThanhToan
-            // 
-            this.radChuaThanhToan.AutoSize = true;
-            this.radChuaThanhToan.Location = new System.Drawing.Point(12, 113);
-            this.radChuaThanhToan.Name = "radChuaThanhToan";
-            this.radChuaThanhToan.Size = new System.Drawing.Size(133, 20);
-            this.radChuaThanhToan.TabIndex = 27;
-            this.radChuaThanhToan.TabStop = true;
-            this.radChuaThanhToan.Text = "Chưa Thanh Toán";
-            this.radChuaThanhToan.UseVisualStyleBackColor = true;
-            // 
-            // radGuiThu
-            // 
-            this.radGuiThu.AutoSize = true;
-            this.radGuiThu.Location = new System.Drawing.Point(151, 87);
-            this.radGuiThu.Name = "radGuiThu";
-            this.radGuiThu.Size = new System.Drawing.Size(72, 20);
-            this.radGuiThu.TabIndex = 26;
-            this.radGuiThu.TabStop = true;
-            this.radGuiThu.Text = "Gửi Thư";
-            this.radGuiThu.UseVisualStyleBackColor = true;
-            // 
-            // radDaThanhToan
-            // 
-            this.radDaThanhToan.AutoSize = true;
-            this.radDaThanhToan.Location = new System.Drawing.Point(12, 87);
-            this.radDaThanhToan.Name = "radDaThanhToan";
-            this.radDaThanhToan.Size = new System.Drawing.Size(119, 20);
-            this.radDaThanhToan.TabIndex = 25;
-            this.radDaThanhToan.TabStop = true;
-            this.radDaThanhToan.Text = "Đã Thanh Toán";
-            this.radDaThanhToan.UseVisualStyleBackColor = true;
             // 
             // panel_KhoangThoiGian
             // 
@@ -160,16 +123,32 @@
             this.btnBaoCao_ThongKeTruyThu.UseVisualStyleBackColor = true;
             this.btnBaoCao_ThongKeTruyThu.Click += new System.EventHandler(this.btnBaoCao_ThongKeTruyThu_Click);
             // 
-            // radKhongTruyThu
+            // cmbTinhTrang
             // 
-            this.radKhongTruyThu.AutoSize = true;
-            this.radKhongTruyThu.Location = new System.Drawing.Point(151, 113);
-            this.radKhongTruyThu.Name = "radKhongTruyThu";
-            this.radKhongTruyThu.Size = new System.Drawing.Size(120, 20);
-            this.radKhongTruyThu.TabIndex = 29;
-            this.radKhongTruyThu.TabStop = true;
-            this.radKhongTruyThu.Text = "Không Truy Thu";
-            this.radKhongTruyThu.UseVisualStyleBackColor = true;
+            this.cmbTinhTrang.FormattingEnabled = true;
+            this.cmbTinhTrang.Items.AddRange(new object[] {
+            "",
+            "Đang gửi thư mời",
+            "Đã thanh toán",
+            "Trả góp",
+            "Điều chỉnh không phát sinh truy thu",
+            "Miễn truy thu",
+            "Đã gửi TB tạm ngưng cung cấp nước",
+            "Chuyển lập TB hủy",
+            "Giữ nguyên"});
+            this.cmbTinhTrang.Location = new System.Drawing.Point(86, 87);
+            this.cmbTinhTrang.Name = "cmbTinhTrang";
+            this.cmbTinhTrang.Size = new System.Drawing.Size(172, 24);
+            this.cmbTinhTrang.TabIndex = 30;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(4, 90);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(76, 16);
+            this.label23.TabIndex = 29;
+            this.label23.Text = "Tình Trạng:";
             // 
             // frmBaoCaoTruyThu
             // 
@@ -200,10 +179,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnBaoCao_ThongKeTruyThu;
-        private System.Windows.Forms.RadioButton radChuaThanhToan;
-        private System.Windows.Forms.RadioButton radGuiThu;
-        private System.Windows.Forms.RadioButton radDaThanhToan;
         private System.Windows.Forms.Button btnInDS;
-        private System.Windows.Forms.RadioButton radKhongTruyThu;
+        private System.Windows.Forms.ComboBox cmbTinhTrang;
+        private System.Windows.Forms.Label label23;
     }
 }

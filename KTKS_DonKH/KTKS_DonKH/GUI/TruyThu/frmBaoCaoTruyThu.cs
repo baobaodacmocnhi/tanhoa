@@ -38,7 +38,8 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                 dr["TuNgay"] = dateTu_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
-                dr["NoiDung"] = item["NoiDung"];
+                dr["MaDon"] = item["MaDon"];
+                dr["NoiDung"] = item["TinhTrang"];
                 dr["TieuThuMoi"] = item["Tongm3BinhQuan"];
                 dr["TongCongMoi"] = item["TongTien"];
 
@@ -53,104 +54,32 @@ namespace KTKS_DonKH.GUI.TruyThu
 
         private void btnInDS_Click(object sender, EventArgs e)
         {
-            DataTable dt = _cTTTN.GetDS(dateTu_ThongKeTruyThu.Value, dateDen_ThongKeTruyThu.Value);
+            if (cmbTinhTrang.SelectedIndex == -1)
+                return;
+            DataTable dt = _cTTTN.GetDS(dateTu_ThongKeTruyThu.Value, dateDen_ThongKeTruyThu.Value, cmbTinhTrang.SelectedItem.ToString());
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
-            if (radDaThanhToan.Checked == true)
+            foreach (DataRow item in dt.Rows)
+            //if (item["TinhTrang"].ToString() ==cmbTinhTrang.SelectedItem.ToString() )
             {
-                foreach (DataRow item in dt.Rows)
-                    if (item["TinhTrang"].ToString() != "" && item["TinhTrang"].ToString() != "Đang gửi thư mời"&&item["TinhTrang"].ToString() != "Điều chỉnh không phát sinh truy thu" && item["TinhTrang"].ToString() != "Miễn truy thu")
-                    {
-                        DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
+                DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
 
-                        dr["TuNgay"] = dateTu_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
-                        dr["DenNgay"] = dateDen_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
-                        dr["LoaiBaoCao"] = "ĐÃ THANH TOÁN";
-                        dr["MaDon"] = item["MaDon"].ToString().Insert(item["MaDon"].ToString().Length - 2, "-");
-                        dr["SoCongVan"] = item["SoCongVan"];
-                        dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                        dr["HoTen"] = item["HoTen"];
-                        dr["DiaChi"] = item["DiaChi"];
-                        dr["NoiDung"] = item["NoiDung"];
+                dr["TuNgay"] = dateTu_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
+                dr["LoaiBaoCao"] = "ĐÃ THANH TOÁN";
+                dr["MaDon"] = item["MaDon"].ToString().Insert(item["MaDon"].ToString().Length - 2, "-");
+                dr["SoCongVan"] = item["SoCongVan"];
+                dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                dr["HoTen"] = item["HoTen"];
+                dr["DiaChi"] = item["DiaChi"];
+                dr["NoiDung"] = item["NoiDung"];
 
-                        dr["TieuThuMoi"] = item["Tongm3BinhQuan"];
-                        dr["TongCongMoi"] = item["TongTien"];
+                dr["TieuThuMoi"] = item["Tongm3BinhQuan"];
+                dr["TongCongMoi"] = item["TongTien"];
 
-                        dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
-                    }
+                dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
             }
-            else
-                if (radChuaThanhToan.Checked == true)
-                {
-                    foreach (DataRow item in dt.Rows)
-                        if (item["TinhTrang"].ToString() == "")
-                        {
-                            DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
 
-                            dr["TuNgay"] = dateTu_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
-                            dr["DenNgay"] = dateDen_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
-                            dr["LoaiBaoCao"] = "CHƯA THANH TOÁN";
-                            dr["MaDon"] = item["MaDon"].ToString().Insert(item["MaDon"].ToString().Length - 2, "-");
-                            dr["SoCongVan"] = item["SoCongVan"];
-                            dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                            dr["HoTen"] = item["HoTen"];
-                            dr["DiaChi"] = item["DiaChi"];
-                            dr["NoiDung"] = item["NoiDung"];
-
-                            dr["TieuThuMoi"] = item["Tongm3BinhQuan"];
-                            dr["TongCongMoi"] = item["TongTien"];
-
-                            dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
-                        }
-                }
-                else
-                    if (radGuiThu.Checked == true)
-                    {
-                        foreach (DataRow item in dt.Rows)
-                            if (item["TinhTrang"].ToString() == "Đang gửi thư mời")
-                            {
-                                DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
-
-                                dr["TuNgay"] = dateTu_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
-                                dr["DenNgay"] = dateDen_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
-                                dr["LoaiBaoCao"] = "GỬI THƯ";
-                                dr["MaDon"] = item["MaDon"].ToString().Insert(item["MaDon"].ToString().Length - 2, "-");
-                                dr["SoCongVan"] = item["SoCongVan"];
-                                dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                                dr["HoTen"] = item["HoTen"];
-                                dr["DiaChi"] = item["DiaChi"];
-                                dr["NoiDung"] = item["NoiDung"];
-
-                                dr["TieuThuMoi"] = item["Tongm3BinhQuan"];
-                                dr["TongCongMoi"] = item["TongTien"];
-
-                                dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
-                            }
-                    }
-                    else
-                        if (radKhongTruyThu.Checked == true)
-                        {
-                            foreach (DataRow item in dt.Rows)
-                                if (item["TinhTrang"].ToString() == "Điều chỉnh không phát sinh truy thu" || item["TinhTrang"].ToString() == "Miễn truy thu")
-                                {
-                                    DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
-
-                                    dr["TuNgay"] = dateTu_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
-                                    dr["DenNgay"] = dateDen_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
-                                    dr["LoaiBaoCao"] = "KHÔNG TRUY THU";
-                                    dr["MaDon"] = item["MaDon"].ToString().Insert(item["MaDon"].ToString().Length - 2, "-");
-                                    dr["SoCongVan"] = item["SoCongVan"];
-                                    dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                                    dr["HoTen"] = item["HoTen"];
-                                    dr["DiaChi"] = item["DiaChi"];
-                                    dr["NoiDung"] = item["NoiDung"];
-
-                                    dr["TieuThuMoi"] = item["Tongm3BinhQuan"];
-                                    dr["TongCongMoi"] = item["TongTien"];
-
-                                    dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
-                                }
-                        }
             rptDSTruyThuTienNuoc rpt = new rptDSTruyThuTienNuoc();
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
