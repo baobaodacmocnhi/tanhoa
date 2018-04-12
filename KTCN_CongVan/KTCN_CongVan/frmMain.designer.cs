@@ -40,6 +40,11 @@
             this.btnXoa_Den = new System.Windows.Forms.Button();
             this.btnThem_Den = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.panel_NoiDung_Den = new System.Windows.Forms.Panel();
+            this.txtNoiDungTimKiem_Den = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.cmbTimTheo_Den = new System.Windows.Forms.ComboBox();
             this.dgvCongVan_Den = new System.Windows.Forms.DataGridView();
             this.ID_Den = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoCongVan_Den = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,10 +54,11 @@
             this.GhiChu_Den = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayHetHan_Den = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnXem_Den = new System.Windows.Forms.Button();
-            this.dateDen_Den = new System.Windows.Forms.DateTimePicker();
-            this.label10 = new System.Windows.Forms.Label();
-            this.dateTu_Den = new System.Windows.Forms.DateTimePicker();
+            this.panel_ThoiGian_Den = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
+            this.dateTu_Den = new System.Windows.Forms.DateTimePicker();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dateDen_Den = new System.Windows.Forms.DateTimePicker();
             this.dateNgayHetHan_Den = new System.Windows.Forms.DateTimePicker();
             this.txtGhiChu_Den = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -72,6 +78,8 @@
             this.btnXoa_Di = new System.Windows.Forms.Button();
             this.btnThem_Di = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cmbTimTheo_Di = new System.Windows.Forms.ComboBox();
             this.dgvCongVan_Di = new System.Windows.Forms.DataGridView();
             this.ID_Di = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoCongVan_Di = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,6 +89,14 @@
             this.GhiChu_Di = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayHetHan_Di = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnXem_Di = new System.Windows.Forms.Button();
+            this.panel_NoiDung_Di = new System.Windows.Forms.Panel();
+            this.txtNoiDungTimKiem_Di = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.panel_ThoiGian_Di = new System.Windows.Forms.Panel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.dateTu_Di = new System.Windows.Forms.DateTimePicker();
+            this.label21 = new System.Windows.Forms.Label();
+            this.dateDen_Di = new System.Windows.Forms.DateTimePicker();
             this.dateNgayHetHan_Di = new System.Windows.Forms.DateTimePicker();
             this.txtGhiChu_Di = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -94,31 +110,17 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtSoCongVan_Di = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cmbTimTheo_Den = new System.Windows.Forms.ComboBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.panel_NoiDung_Den = new System.Windows.Forms.Panel();
-            this.panel_ThoiGian_Den = new System.Windows.Forms.Panel();
-            this.txtNoiDungTimKiem_Den = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.panel_NoiDung_Di = new System.Windows.Forms.Panel();
-            this.txtNoiDungTimKiem_Di = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.cmbTimTheo_Di = new System.Windows.Forms.ComboBox();
-            this.panel_ThoiGian_Di = new System.Windows.Forms.Panel();
-            this.label20 = new System.Windows.Forms.Label();
-            this.dateTu_Di = new System.Windows.Forms.DateTimePicker();
-            this.label21 = new System.Windows.Forms.Label();
-            this.dateDen_Di = new System.Windows.Forms.DateTimePicker();
+            this.txtDonViPhatHanh_Den = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.panel_NoiDung_Den.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCongVan_Den)).BeginInit();
+            this.panel_ThoiGian_Den.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCongVan_Di)).BeginInit();
-            this.panel_NoiDung_Den.SuspendLayout();
-            this.panel_ThoiGian_Den.SuspendLayout();
             this.panel_NoiDung_Di.SuspendLayout();
             this.panel_ThoiGian_Di.SuspendLayout();
             this.SuspendLayout();
@@ -136,6 +138,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.txtDonViPhatHanh_Den);
+            this.tabPage1.Controls.Add(this.label22);
             this.tabPage1.Controls.Add(this.dateNgayNhan_Den);
             this.tabPage1.Controls.Add(this.label17);
             this.tabPage1.Controls.Add(this.txtNoiNhan_Den);
@@ -168,18 +172,18 @@
             // 
             this.dateNgayNhan_Den.CustomFormat = "dd/MM/yyyy";
             this.dateNgayNhan_Den.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateNgayNhan_Den.Location = new System.Drawing.Point(454, 6);
+            this.dateNgayNhan_Den.Location = new System.Drawing.Point(762, 6);
             this.dateNgayNhan_Den.Name = "dateNgayNhan_Den";
             this.dateNgayNhan_Den.Size = new System.Drawing.Size(95, 20);
-            this.dateNgayNhan_Den.TabIndex = 41;
+            this.dateNgayNhan_Den.TabIndex = 7;
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(384, 9);
+            this.label17.Location = new System.Drawing.Point(692, 9);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(64, 13);
-            this.label17.TabIndex = 40;
+            this.label17.TabIndex = 6;
             this.label17.Text = "Ngày Nhận:";
             // 
             // txtNoiNhan_Den
@@ -187,7 +191,7 @@
             this.txtNoiNhan_Den.Location = new System.Drawing.Point(89, 84);
             this.txtNoiNhan_Den.Name = "txtNoiNhan_Den";
             this.txtNoiNhan_Den.Size = new System.Drawing.Size(393, 20);
-            this.txtNoiNhan_Den.TabIndex = 31;
+            this.txtNoiNhan_Den.TabIndex = 13;
             // 
             // label9
             // 
@@ -195,7 +199,7 @@
             this.label9.Location = new System.Drawing.Point(10, 87);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(55, 13);
-            this.label9.TabIndex = 30;
+            this.label9.TabIndex = 12;
             this.label9.Text = "Nơi Nhận:";
             // 
             // chkHetHan_Den
@@ -204,7 +208,7 @@
             this.chkHetHan_Den.Location = new System.Drawing.Point(89, 136);
             this.chkHetHan_Den.Name = "chkHetHan_Den";
             this.chkHetHan_Den.Size = new System.Drawing.Size(97, 17);
-            this.chkHetHan_Den.TabIndex = 34;
+            this.chkHetHan_Den.TabIndex = 16;
             this.chkHetHan_Den.Text = "Ngày Hết Hạn:";
             this.chkHetHan_Den.UseVisualStyleBackColor = true;
             this.chkHetHan_Den.CheckedChanged += new System.EventHandler(this.chkHetHan_Den_CheckedChanged);
@@ -214,7 +218,7 @@
             this.btnSua_Den.Location = new System.Drawing.Point(488, 113);
             this.btnSua_Den.Name = "btnSua_Den";
             this.btnSua_Den.Size = new System.Drawing.Size(75, 23);
-            this.btnSua_Den.TabIndex = 38;
+            this.btnSua_Den.TabIndex = 20;
             this.btnSua_Den.Text = "Sửa";
             this.btnSua_Den.UseVisualStyleBackColor = true;
             this.btnSua_Den.Click += new System.EventHandler(this.btnSua_Den_Click);
@@ -224,7 +228,7 @@
             this.btnXoa_Den.Location = new System.Drawing.Point(488, 84);
             this.btnXoa_Den.Name = "btnXoa_Den";
             this.btnXoa_Den.Size = new System.Drawing.Size(75, 23);
-            this.btnXoa_Den.TabIndex = 37;
+            this.btnXoa_Den.TabIndex = 19;
             this.btnXoa_Den.Text = "Xóa";
             this.btnXoa_Den.UseVisualStyleBackColor = true;
             this.btnXoa_Den.Click += new System.EventHandler(this.btnXoa_Den_Click);
@@ -234,7 +238,7 @@
             this.btnThem_Den.Location = new System.Drawing.Point(488, 55);
             this.btnThem_Den.Name = "btnThem_Den";
             this.btnThem_Den.Size = new System.Drawing.Size(75, 23);
-            this.btnThem_Den.TabIndex = 36;
+            this.btnThem_Den.TabIndex = 18;
             this.btnThem_Den.Text = "Thêm";
             this.btnThem_Den.UseVisualStyleBackColor = true;
             this.btnThem_Den.Click += new System.EventHandler(this.btnThem_Den_Click);
@@ -250,9 +254,57 @@
             this.groupBox2.Location = new System.Drawing.Point(8, 171);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1070, 411);
-            this.groupBox2.TabIndex = 39;
+            this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh Sách";
+            // 
+            // panel_NoiDung_Den
+            // 
+            this.panel_NoiDung_Den.Controls.Add(this.txtNoiDungTimKiem_Den);
+            this.panel_NoiDung_Den.Controls.Add(this.label19);
+            this.panel_NoiDung_Den.Location = new System.Drawing.Point(274, 17);
+            this.panel_NoiDung_Den.Name = "panel_NoiDung_Den";
+            this.panel_NoiDung_Den.Size = new System.Drawing.Size(168, 26);
+            this.panel_NoiDung_Den.TabIndex = 2;
+            this.panel_NoiDung_Den.Visible = false;
+            // 
+            // txtNoiDungTimKiem_Den
+            // 
+            this.txtNoiDungTimKiem_Den.Location = new System.Drawing.Point(64, 3);
+            this.txtNoiDungTimKiem_Den.Name = "txtNoiDungTimKiem_Den";
+            this.txtNoiDungTimKiem_Den.Size = new System.Drawing.Size(100, 20);
+            this.txtNoiDungTimKiem_Den.TabIndex = 28;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(3, 6);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(55, 13);
+            this.label19.TabIndex = 0;
+            this.label19.Text = "Nội Dung:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(86, 22);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(55, 13);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "Tìm Theo:";
+            // 
+            // cmbTimTheo_Den
+            // 
+            this.cmbTimTheo_Den.FormattingEnabled = true;
+            this.cmbTimTheo_Den.Items.AddRange(new object[] {
+            "Số Công Văn",
+            "Ngày Nhận",
+            "Ngày Hết Hạn"});
+            this.cmbTimTheo_Den.Location = new System.Drawing.Point(147, 19);
+            this.cmbTimTheo_Den.Name = "cmbTimTheo_Den";
+            this.cmbTimTheo_Den.Size = new System.Drawing.Size(121, 21);
+            this.cmbTimTheo_Den.TabIndex = 1;
+            this.cmbTimTheo_Den.SelectedIndexChanged += new System.EventHandler(this.cmbTimTheo_Den_SelectedIndexChanged);
             // 
             // dgvCongVan_Den
             // 
@@ -329,32 +381,17 @@
             this.btnXem_Den.UseVisualStyleBackColor = true;
             this.btnXem_Den.Click += new System.EventHandler(this.btnXem_Den_Click);
             // 
-            // dateDen_Den
+            // panel_ThoiGian_Den
             // 
-            this.dateDen_Den.CustomFormat = "dd/MM/yyyy";
-            this.dateDen_Den.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen_Den.Location = new System.Drawing.Point(225, 3);
-            this.dateDen_Den.Name = "dateDen_Den";
-            this.dateDen_Den.Size = new System.Drawing.Size(95, 20);
-            this.dateDen_Den.TabIndex = 3;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(161, 6);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(58, 13);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "Đến Ngày:";
-            // 
-            // dateTu_Den
-            // 
-            this.dateTu_Den.CustomFormat = "dd/MM/yyyy";
-            this.dateTu_Den.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu_Den.Location = new System.Drawing.Point(60, 3);
-            this.dateTu_Den.Name = "dateTu_Den";
-            this.dateTu_Den.Size = new System.Drawing.Size(95, 20);
-            this.dateTu_Den.TabIndex = 1;
+            this.panel_ThoiGian_Den.Controls.Add(this.label11);
+            this.panel_ThoiGian_Den.Controls.Add(this.dateTu_Den);
+            this.panel_ThoiGian_Den.Controls.Add(this.label10);
+            this.panel_ThoiGian_Den.Controls.Add(this.dateDen_Den);
+            this.panel_ThoiGian_Den.Location = new System.Drawing.Point(275, 17);
+            this.panel_ThoiGian_Den.Name = "panel_ThoiGian_Den";
+            this.panel_ThoiGian_Den.Size = new System.Drawing.Size(324, 26);
+            this.panel_ThoiGian_Den.TabIndex = 4;
+            this.panel_ThoiGian_Den.Visible = false;
             // 
             // label11
             // 
@@ -365,6 +402,33 @@
             this.label11.TabIndex = 0;
             this.label11.Text = "Từ Ngày:";
             // 
+            // dateTu_Den
+            // 
+            this.dateTu_Den.CustomFormat = "dd/MM/yyyy";
+            this.dateTu_Den.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTu_Den.Location = new System.Drawing.Point(60, 3);
+            this.dateTu_Den.Name = "dateTu_Den";
+            this.dateTu_Den.Size = new System.Drawing.Size(95, 20);
+            this.dateTu_Den.TabIndex = 1;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(161, 6);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(58, 13);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "Đến Ngày:";
+            // 
+            // dateDen_Den
+            // 
+            this.dateDen_Den.CustomFormat = "dd/MM/yyyy";
+            this.dateDen_Den.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateDen_Den.Location = new System.Drawing.Point(225, 3);
+            this.dateDen_Den.Name = "dateDen_Den";
+            this.dateDen_Den.Size = new System.Drawing.Size(95, 20);
+            this.dateDen_Den.TabIndex = 3;
+            // 
             // dateNgayHetHan_Den
             // 
             this.dateNgayHetHan_Den.CustomFormat = "dd/MM/yyyy";
@@ -373,14 +437,14 @@
             this.dateNgayHetHan_Den.Location = new System.Drawing.Point(192, 136);
             this.dateNgayHetHan_Den.Name = "dateNgayHetHan_Den";
             this.dateNgayHetHan_Den.Size = new System.Drawing.Size(95, 20);
-            this.dateNgayHetHan_Den.TabIndex = 35;
+            this.dateNgayHetHan_Den.TabIndex = 17;
             // 
             // txtGhiChu_Den
             // 
             this.txtGhiChu_Den.Location = new System.Drawing.Point(89, 110);
             this.txtGhiChu_Den.Name = "txtGhiChu_Den";
             this.txtGhiChu_Den.Size = new System.Drawing.Size(393, 20);
-            this.txtGhiChu_Den.TabIndex = 33;
+            this.txtGhiChu_Den.TabIndex = 15;
             // 
             // label12
             // 
@@ -388,7 +452,7 @@
             this.label12.Location = new System.Drawing.Point(10, 113);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(48, 13);
-            this.label12.TabIndex = 32;
+            this.label12.TabIndex = 14;
             this.label12.Text = "Ghi Chú:";
             // 
             // txtLoaiCongVan_Den
@@ -398,7 +462,7 @@
             this.txtLoaiCongVan_Den.Location = new System.Drawing.Point(89, 32);
             this.txtLoaiCongVan_Den.Name = "txtLoaiCongVan_Den";
             this.txtLoaiCongVan_Den.Size = new System.Drawing.Size(100, 20);
-            this.txtLoaiCongVan_Den.TabIndex = 26;
+            this.txtLoaiCongVan_Den.TabIndex = 9;
             // 
             // label13
             // 
@@ -406,7 +470,7 @@
             this.label13.Location = new System.Drawing.Point(10, 35);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(80, 13);
-            this.label13.TabIndex = 25;
+            this.label13.TabIndex = 8;
             this.label13.Text = "Loại Công Văn:";
             // 
             // txtNoiDung_Den
@@ -414,7 +478,7 @@
             this.txtNoiDung_Den.Location = new System.Drawing.Point(89, 58);
             this.txtNoiDung_Den.Name = "txtNoiDung_Den";
             this.txtNoiDung_Den.Size = new System.Drawing.Size(393, 20);
-            this.txtNoiDung_Den.TabIndex = 29;
+            this.txtNoiDung_Den.TabIndex = 11;
             // 
             // label14
             // 
@@ -422,7 +486,7 @@
             this.label14.Location = new System.Drawing.Point(10, 61);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(55, 13);
-            this.label14.TabIndex = 28;
+            this.label14.TabIndex = 10;
             this.label14.Text = "Nội Dung:";
             // 
             // dateNgayCongVan_Den
@@ -432,7 +496,7 @@
             this.dateNgayCongVan_Den.Location = new System.Drawing.Point(283, 6);
             this.dateNgayCongVan_Den.Name = "dateNgayCongVan_Den";
             this.dateNgayCongVan_Den.Size = new System.Drawing.Size(95, 20);
-            this.dateNgayCongVan_Den.TabIndex = 23;
+            this.dateNgayCongVan_Den.TabIndex = 3;
             // 
             // label15
             // 
@@ -440,7 +504,7 @@
             this.label15.Location = new System.Drawing.Point(195, 9);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(82, 13);
-            this.label15.TabIndex = 22;
+            this.label15.TabIndex = 2;
             this.label15.Text = "Ngày Công Văn";
             // 
             // txtSoCongVan_Den
@@ -448,7 +512,7 @@
             this.txtSoCongVan_Den.Location = new System.Drawing.Point(89, 6);
             this.txtSoCongVan_Den.Name = "txtSoCongVan_Den";
             this.txtSoCongVan_Den.Size = new System.Drawing.Size(100, 20);
-            this.txtSoCongVan_Den.TabIndex = 21;
+            this.txtSoCongVan_Den.TabIndex = 1;
             // 
             // label16
             // 
@@ -456,7 +520,7 @@
             this.label16.Location = new System.Drawing.Point(10, 9);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(73, 13);
-            this.label16.TabIndex = 20;
+            this.label16.TabIndex = 0;
             this.label16.Text = "Số Công Văn:";
             // 
             // tabPage2
@@ -561,6 +625,28 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh Sách";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(86, 22);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(55, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Tìm Theo:";
+            // 
+            // cmbTimTheo_Di
+            // 
+            this.cmbTimTheo_Di.FormattingEnabled = true;
+            this.cmbTimTheo_Di.Items.AddRange(new object[] {
+            "Số Công Văn",
+            "Ngày Nhận",
+            "Ngày Hết Hạn"});
+            this.cmbTimTheo_Di.Location = new System.Drawing.Point(147, 19);
+            this.cmbTimTheo_Di.Name = "cmbTimTheo_Di";
+            this.cmbTimTheo_Di.Size = new System.Drawing.Size(121, 21);
+            this.cmbTimTheo_Di.TabIndex = 1;
+            this.cmbTimTheo_Di.SelectedIndexChanged += new System.EventHandler(this.cmbTimTheo_Di_SelectedIndexChanged);
+            // 
             // dgvCongVan_Di
             // 
             this.dgvCongVan_Di.AllowUserToAddRows = false;
@@ -635,6 +721,80 @@
             this.btnXem_Di.Text = "Xem";
             this.btnXem_Di.UseVisualStyleBackColor = true;
             this.btnXem_Di.Click += new System.EventHandler(this.btnXem_Di_Click);
+            // 
+            // panel_NoiDung_Di
+            // 
+            this.panel_NoiDung_Di.Controls.Add(this.txtNoiDungTimKiem_Di);
+            this.panel_NoiDung_Di.Controls.Add(this.label7);
+            this.panel_NoiDung_Di.Location = new System.Drawing.Point(274, 17);
+            this.panel_NoiDung_Di.Name = "panel_NoiDung_Di";
+            this.panel_NoiDung_Di.Size = new System.Drawing.Size(168, 26);
+            this.panel_NoiDung_Di.TabIndex = 2;
+            this.panel_NoiDung_Di.Visible = false;
+            // 
+            // txtNoiDungTimKiem_Di
+            // 
+            this.txtNoiDungTimKiem_Di.Location = new System.Drawing.Point(64, 3);
+            this.txtNoiDungTimKiem_Di.Name = "txtNoiDungTimKiem_Di";
+            this.txtNoiDungTimKiem_Di.Size = new System.Drawing.Size(100, 20);
+            this.txtNoiDungTimKiem_Di.TabIndex = 28;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 6);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(55, 13);
+            this.label7.TabIndex = 27;
+            this.label7.Text = "Nội Dung:";
+            // 
+            // panel_ThoiGian_Di
+            // 
+            this.panel_ThoiGian_Di.Controls.Add(this.label20);
+            this.panel_ThoiGian_Di.Controls.Add(this.dateTu_Di);
+            this.panel_ThoiGian_Di.Controls.Add(this.label21);
+            this.panel_ThoiGian_Di.Controls.Add(this.dateDen_Di);
+            this.panel_ThoiGian_Di.Location = new System.Drawing.Point(275, 17);
+            this.panel_ThoiGian_Di.Name = "panel_ThoiGian_Di";
+            this.panel_ThoiGian_Di.Size = new System.Drawing.Size(324, 26);
+            this.panel_ThoiGian_Di.TabIndex = 3;
+            this.panel_ThoiGian_Di.Visible = false;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(3, 6);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(51, 13);
+            this.label20.TabIndex = 0;
+            this.label20.Text = "Từ Ngày:";
+            // 
+            // dateTu_Di
+            // 
+            this.dateTu_Di.CustomFormat = "dd/MM/yyyy";
+            this.dateTu_Di.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTu_Di.Location = new System.Drawing.Point(60, 3);
+            this.dateTu_Di.Name = "dateTu_Di";
+            this.dateTu_Di.Size = new System.Drawing.Size(95, 20);
+            this.dateTu_Di.TabIndex = 1;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(161, 6);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(58, 13);
+            this.label21.TabIndex = 2;
+            this.label21.Text = "Đến Ngày:";
+            // 
+            // dateDen_Di
+            // 
+            this.dateDen_Di.CustomFormat = "dd/MM/yyyy";
+            this.dateDen_Di.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateDen_Di.Location = new System.Drawing.Point(225, 3);
+            this.dateDen_Di.Name = "dateDen_Di";
+            this.dateDen_Di.Size = new System.Drawing.Size(95, 20);
+            this.dateDen_Di.TabIndex = 3;
             // 
             // dateNgayHetHan_Di
             // 
@@ -750,161 +910,23 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Số Công Văn:";
             // 
-            // cmbTimTheo_Den
+            // txtDonViPhatHanh_Den
             // 
-            this.cmbTimTheo_Den.FormattingEnabled = true;
-            this.cmbTimTheo_Den.Items.AddRange(new object[] {
-            "Số Công Văn",
-            "Ngày Nhận",
-            "Ngày Hết Hạn"});
-            this.cmbTimTheo_Den.Location = new System.Drawing.Point(147, 19);
-            this.cmbTimTheo_Den.Name = "cmbTimTheo_Den";
-            this.cmbTimTheo_Den.Size = new System.Drawing.Size(121, 21);
-            this.cmbTimTheo_Den.TabIndex = 1;
-            this.cmbTimTheo_Den.SelectedIndexChanged += new System.EventHandler(this.cmbTimTheo_Den_SelectedIndexChanged);
+            this.txtDonViPhatHanh_Den.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtDonViPhatHanh_Den.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtDonViPhatHanh_Den.Location = new System.Drawing.Point(486, 6);
+            this.txtDonViPhatHanh_Den.Name = "txtDonViPhatHanh_Den";
+            this.txtDonViPhatHanh_Den.Size = new System.Drawing.Size(200, 20);
+            this.txtDonViPhatHanh_Den.TabIndex = 5;
             // 
-            // label18
+            // label22
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(86, 22);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(55, 13);
-            this.label18.TabIndex = 0;
-            this.label18.Text = "Tìm Theo:";
-            // 
-            // panel_NoiDung_Den
-            // 
-            this.panel_NoiDung_Den.Controls.Add(this.txtNoiDungTimKiem_Den);
-            this.panel_NoiDung_Den.Controls.Add(this.label19);
-            this.panel_NoiDung_Den.Location = new System.Drawing.Point(274, 17);
-            this.panel_NoiDung_Den.Name = "panel_NoiDung_Den";
-            this.panel_NoiDung_Den.Size = new System.Drawing.Size(168, 26);
-            this.panel_NoiDung_Den.TabIndex = 2;
-            this.panel_NoiDung_Den.Visible = false;
-            // 
-            // panel_ThoiGian_Den
-            // 
-            this.panel_ThoiGian_Den.Controls.Add(this.label11);
-            this.panel_ThoiGian_Den.Controls.Add(this.dateTu_Den);
-            this.panel_ThoiGian_Den.Controls.Add(this.label10);
-            this.panel_ThoiGian_Den.Controls.Add(this.dateDen_Den);
-            this.panel_ThoiGian_Den.Location = new System.Drawing.Point(275, 17);
-            this.panel_ThoiGian_Den.Name = "panel_ThoiGian_Den";
-            this.panel_ThoiGian_Den.Size = new System.Drawing.Size(324, 26);
-            this.panel_ThoiGian_Den.TabIndex = 4;
-            this.panel_ThoiGian_Den.Visible = false;
-            // 
-            // txtNoiDungTimKiem_Den
-            // 
-            this.txtNoiDungTimKiem_Den.Location = new System.Drawing.Point(64, 3);
-            this.txtNoiDungTimKiem_Den.Name = "txtNoiDungTimKiem_Den";
-            this.txtNoiDungTimKiem_Den.Size = new System.Drawing.Size(100, 20);
-            this.txtNoiDungTimKiem_Den.TabIndex = 28;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(3, 6);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(55, 13);
-            this.label19.TabIndex = 0;
-            this.label19.Text = "Nội Dung:";
-            // 
-            // panel_NoiDung_Di
-            // 
-            this.panel_NoiDung_Di.Controls.Add(this.txtNoiDungTimKiem_Di);
-            this.panel_NoiDung_Di.Controls.Add(this.label7);
-            this.panel_NoiDung_Di.Location = new System.Drawing.Point(274, 17);
-            this.panel_NoiDung_Di.Name = "panel_NoiDung_Di";
-            this.panel_NoiDung_Di.Size = new System.Drawing.Size(168, 26);
-            this.panel_NoiDung_Di.TabIndex = 2;
-            this.panel_NoiDung_Di.Visible = false;
-            // 
-            // txtNoiDungTimKiem_Di
-            // 
-            this.txtNoiDungTimKiem_Di.Location = new System.Drawing.Point(64, 3);
-            this.txtNoiDungTimKiem_Di.Name = "txtNoiDungTimKiem_Di";
-            this.txtNoiDungTimKiem_Di.Size = new System.Drawing.Size(100, 20);
-            this.txtNoiDungTimKiem_Di.TabIndex = 28;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 6);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(55, 13);
-            this.label7.TabIndex = 27;
-            this.label7.Text = "Nội Dung:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(86, 22);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(55, 13);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Tìm Theo:";
-            // 
-            // cmbTimTheo_Di
-            // 
-            this.cmbTimTheo_Di.FormattingEnabled = true;
-            this.cmbTimTheo_Di.Items.AddRange(new object[] {
-            "Số Công Văn",
-            "Ngày Nhận",
-            "Ngày Hết Hạn"});
-            this.cmbTimTheo_Di.Location = new System.Drawing.Point(147, 19);
-            this.cmbTimTheo_Di.Name = "cmbTimTheo_Di";
-            this.cmbTimTheo_Di.Size = new System.Drawing.Size(121, 21);
-            this.cmbTimTheo_Di.TabIndex = 1;
-            this.cmbTimTheo_Di.SelectedIndexChanged += new System.EventHandler(this.cmbTimTheo_Di_SelectedIndexChanged);
-            // 
-            // panel_ThoiGian_Di
-            // 
-            this.panel_ThoiGian_Di.Controls.Add(this.label20);
-            this.panel_ThoiGian_Di.Controls.Add(this.dateTu_Di);
-            this.panel_ThoiGian_Di.Controls.Add(this.label21);
-            this.panel_ThoiGian_Di.Controls.Add(this.dateDen_Di);
-            this.panel_ThoiGian_Di.Location = new System.Drawing.Point(275, 17);
-            this.panel_ThoiGian_Di.Name = "panel_ThoiGian_Di";
-            this.panel_ThoiGian_Di.Size = new System.Drawing.Size(324, 26);
-            this.panel_ThoiGian_Di.TabIndex = 3;
-            this.panel_ThoiGian_Di.Visible = false;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(3, 6);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(51, 13);
-            this.label20.TabIndex = 0;
-            this.label20.Text = "Từ Ngày:";
-            // 
-            // dateTu_Di
-            // 
-            this.dateTu_Di.CustomFormat = "dd/MM/yyyy";
-            this.dateTu_Di.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu_Di.Location = new System.Drawing.Point(60, 3);
-            this.dateTu_Di.Name = "dateTu_Di";
-            this.dateTu_Di.Size = new System.Drawing.Size(95, 20);
-            this.dateTu_Di.TabIndex = 1;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(161, 6);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(58, 13);
-            this.label21.TabIndex = 2;
-            this.label21.Text = "Đến Ngày:";
-            // 
-            // dateDen_Di
-            // 
-            this.dateDen_Di.CustomFormat = "dd/MM/yyyy";
-            this.dateDen_Di.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen_Di.Location = new System.Drawing.Point(225, 3);
-            this.dateDen_Di.Name = "dateDen_Di";
-            this.dateDen_Di.Size = new System.Drawing.Size(95, 20);
-            this.dateDen_Di.TabIndex = 3;
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(384, 9);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(96, 13);
+            this.label22.TabIndex = 4;
+            this.label22.Text = "Đơn Vị Phát Hành:";
             // 
             // frmMain
             // 
@@ -921,16 +943,16 @@
             this.tabPage1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.panel_NoiDung_Den.ResumeLayout(false);
+            this.panel_NoiDung_Den.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCongVan_Den)).EndInit();
+            this.panel_ThoiGian_Den.ResumeLayout(false);
+            this.panel_ThoiGian_Den.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCongVan_Di)).EndInit();
-            this.panel_NoiDung_Den.ResumeLayout(false);
-            this.panel_NoiDung_Den.PerformLayout();
-            this.panel_ThoiGian_Den.ResumeLayout(false);
-            this.panel_ThoiGian_Den.PerformLayout();
             this.panel_NoiDung_Di.ResumeLayout(false);
             this.panel_NoiDung_Di.PerformLayout();
             this.panel_ThoiGian_Di.ResumeLayout(false);
@@ -1022,6 +1044,8 @@
         private System.Windows.Forms.DateTimePicker dateTu_Di;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.DateTimePicker dateDen_Di;
+        private System.Windows.Forms.TextBox txtDonViPhatHanh_Den;
+        private System.Windows.Forms.Label label22;
     }
 }
 

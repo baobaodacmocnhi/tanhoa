@@ -227,6 +227,7 @@ namespace KTCN_CongVan
         {
             txtSoCongVan_Den.Text = entity.SoCongVan;
             dateNgayCongVan_Den.Value = entity.NgayCongVan.Value;
+            txtDonViPhatHanh_Den.Text = entity.DonViPhatHanh;
             dateNgayNhan_Den.Value = entity.NgayNhan.Value;
             txtLoaiCongVan_Den.Text = entity.LoaiCongVan;
             txtNoiDung_Den.Text = entity.NoiDung;
@@ -240,6 +241,7 @@ namespace KTCN_CongVan
         {
             txtSoCongVan_Den.Text = "";
             dateNgayCongVan_Den.Value = DateTime.Now;
+            txtDonViPhatHanh_Den.Text = "";
             dateNgayNhan_Den.Value = DateTime.Now;
             txtLoaiCongVan_Den.Text = "";
             txtNoiDung_Den.Text = "";
@@ -258,6 +260,7 @@ namespace KTCN_CongVan
                 CongVanDen entity = new CongVanDen();
                 entity.SoCongVan = txtSoCongVan_Den.Text.Trim();
                 entity.NgayCongVan = dateNgayCongVan_Den.Value;
+                entity.DonViPhatHanh = txtDonViPhatHanh_Den.Text.Trim();
                 entity.NgayNhan = dateNgayNhan_Den.Value;
                 entity.LoaiCongVan = txtLoaiCongVan_Den.Text.Trim();
                 entity.NoiDung = txtNoiDung_Den.Text.Trim();
@@ -307,6 +310,7 @@ namespace KTCN_CongVan
                 {
                     _congvanden.SoCongVan = txtSoCongVan_Den.Text.Trim();
                     _congvanden.NgayCongVan = dateNgayCongVan_Den.Value;
+                    _congvanden.DonViPhatHanh = txtDonViPhatHanh_Den.Text.Trim();
                     _congvanden.NgayNhan = dateNgayNhan_Den.Value;
                     _congvanden.LoaiCongVan = txtLoaiCongVan_Den.Text.Trim();
                     _congvanden.NoiDung = txtNoiDung_Den.Text.Trim();

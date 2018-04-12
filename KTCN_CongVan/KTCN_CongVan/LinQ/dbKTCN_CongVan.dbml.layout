@@ -2,16 +2,16 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="dbKTCN_CongVan">
   <DataContextMoniker Name="/dbKTCN_CongVanDataContext" />
   <nestedChildShapes>
-    <classShape Id="3b28026d-7662-4be2-912e-3a03db991be9" absoluteBounds="0.75, 0.75, 2, 3.1170068359375005">
-      <DataClassMoniker Name="/dbKTCN_CongVanDataContext/CongVanDen" />
-      <nestedChildShapes>
-        <elementListCompartment Id="22f8ec97-7a01-4454-a0d4-9f15edea3413" absoluteBounds="0.765, 1.21, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="9f1e4a97-f628-4069-9339-a18e8d8babe4" absoluteBounds="3.75, 0.75, 2, 3.3093082682291666">
       <DataClassMoniker Name="/dbKTCN_CongVanDataContext/CongVanDi" />
       <nestedChildShapes>
         <elementListCompartment Id="ae522bad-b5b1-4d9e-8ca4-51bf7aa91a79" absoluteBounds="3.765, 1.21, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a2ee84d1-5b9a-4bd4-97aa-c7bf0b550683" absoluteBounds="6.5, 1.375, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/dbKTCN_CongVanDataContext/CongVanDen" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a852a789-1ebb-4d74-9113-3b4559cccd13" absoluteBounds="6.515, 1.835, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

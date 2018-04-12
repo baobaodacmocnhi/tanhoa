@@ -28,9 +28,9 @@
     <UpdateUrl>\\192.168.90.9\BaoBao%24\KTCN_CongVan\</UpdateUrl>
     <ProductName>Quản Lý Công Văn</ProductName>
     <PublisherName>T.CNTT</PublisherName>
-    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>4</ApplicationRevision>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -166,9 +166,6 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\e_mail.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\email.ico" />
