@@ -62,6 +62,11 @@ namespace ThuTien.DAL.ChuyenKhoan
             }
         }
 
+        public bool CheckExist(string KyHieu)
+        {
+            return _db.NGANHANGs.Any(item => item.KyHieu == KyHieu);
+        }
+
         public NGANHANG GetByMaNH(int MaNH)
         {
             return _db.NGANHANGs.SingleOrDefault(item => item.ID_NGANHANG == MaNH);

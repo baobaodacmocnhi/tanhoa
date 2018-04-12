@@ -67,15 +67,21 @@ namespace ThuTien.GUI.ChuyenKhoan
                                         //    continue;
                                         //}
                                         TT_BangKe bangke = new TT_BangKe();
-                                        bangke.DanhBo = item[0].ToString().Trim().Replace(" ","");
+                                        bangke.DanhBo = item[0].ToString().Trim().Replace(" ", "");
                                         bangke.SoTien = int.Parse(item[1].ToString().Trim());
-                                        bangke.MaNH = _cNganHang.GetMaNHByKyHieu(item[2].ToString().Trim());
+                                        if (_cNganHang.CheckExist(item[2].ToString().Trim()))
+                                            bangke.MaNH = _cNganHang.GetMaNHByKyHieu(item[2].ToString().Trim());
+                                        else
+                                        {
+                                            MessageBox.Show("Lỗi Tên Ngân Hàng tại Danh Bộ: " + bangke.DanhBo+"\nBảng Kê đã lưu được tới đây", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            return;
+                                        }
                                         bangke.CreateDate = DateTime.Now;
                                         //bangke.CreateDate = dateNgayLap.Value;
                                         bangke.CreateBy = CNguoiDung.MaND;
                                         bangke.CreateDate2 = DateTime.Now;
                                         if (_cBangKe.Them(bangke))
-                                            if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê", "Thêm",bangke.MaNH.Value))
+                                            if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê", "Thêm", bangke.MaNH.Value))
                                                 scope.Complete();
                                     }
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

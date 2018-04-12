@@ -279,39 +279,53 @@ namespace ThuTien.GUI.HanhThu
                             keyColumns[0] = dt.Columns["SoHoaDon"];
                             dt.PrimaryKey = keyColumns;
                             //string loai;
-                            foreach (ListViewItem item in lstHD.Items)
-                            {
-                                if (!dt.Rows.Contains(item.Text))
+                            //foreach (ListViewItem item in lstHD.Items)
+                            //{
+                            //    if (!dt.Rows.Contains(item.Text))
+                            //    {
+                            //        MessageBox.Show("Hóa Đơn sai: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //        lstHD.Focus();
+                            //        item.Selected = true;
+                            //        item.Focused = true;
+                            //        return;
+                            //    }
+                            //    //if (_cTamThu.CheckBySoHoaDon(item.ToString(),out loai))
+                            //    //{
+                            //    //    MessageBox.Show("Hóa Đơn đã được "+loai+": " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //    //    lstHD.SelectedItem = item;
+                            //    //    return;
+                            //    //}
+                            //    if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(item.Text))
+                            //    {
+                            //        MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //        lstHD.Focus();
+                            //        item.Selected = true;
+                            //        item.Focused = true;
+                            //        return;
+                            //    }
+                            //    if (_cHoaDon.CheckDCHDienDuBySoHoaDon(item.Text))
+                            //    {
+                            //        MessageBox.Show("Hóa Đơn đã DCHD Tiền Dư " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //        lstHD.Focus();
+                            //        item.Selected = true;
+                            //        item.Focused = true;
+                            //        return;
+                            //    }
+                            //}
+                            foreach (DataRow item in dt.Rows)
+                                if (lstHD.FindItemWithText(item["SoHoaDon"].ToString()) == null)
                                 {
-                                    MessageBox.Show("Hóa Đơn sai: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    lstHD.Focus();
-                                    item.Selected = true;
-                                    item.Focused = true;
-                                    return;
+                                    if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(item["SoHoaDon"].ToString()))
+                                    {
+                                        MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item["SoHoaDon"].ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                                    if (_cHoaDon.CheckDCHDienDuBySoHoaDon(item["SoHoaDon"].ToString()))
+                                    {
+                                        MessageBox.Show("Hóa Đơn đã DCHD Tiền Dư " + item["SoHoaDon"].ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
                                 }
-                                //if (_cTamThu.CheckBySoHoaDon(item.ToString(),out loai))
-                                //{
-                                //    MessageBox.Show("Hóa Đơn đã được "+loai+": " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                //    lstHD.SelectedItem = item;
-                                //    return;
-                                //}
-                                if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(item.Text))
-                                {
-                                    MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    lstHD.Focus();
-                                    item.Selected = true;
-                                    item.Focused = true;
-                                    return;
-                                }
-                                if (_cHoaDon.CheckDCHDienDuBySoHoaDon(item.Text))
-                                {
-                                    MessageBox.Show("Hóa Đơn đã DCHD Tiền Dư " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    lstHD.Focus();
-                                    item.Selected = true;
-                                    item.Focused = true;
-                                    return;
-                                }
-                            }
                             try
                             {
                                 //_cHoaDon.SqlBeginTransaction();
