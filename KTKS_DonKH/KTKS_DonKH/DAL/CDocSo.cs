@@ -301,5 +301,9 @@ namespace KTKS_DonKH.DAL
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
+        public List<TB_GHICHU> GetDSGhiChu(string DanhBo)
+        {
+            return db.TB_GHICHUs.Where(item => item.DANHBO == DanhBo).OrderByDescending(item => item.CREATEDATE).ToList();
+        }
     }
 }

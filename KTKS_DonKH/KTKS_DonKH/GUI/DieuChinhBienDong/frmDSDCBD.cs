@@ -36,6 +36,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CKTXM _cKTXM = new CKTXM();
         CChiNhanh _cChiNhanh = new CChiNhanh();
         CChungTu _cChungTu = new CChungTu();
+        CLoaiChungTu _cLoaiChungTu = new CLoaiChungTu();
         CGiaNuoc _cGiaNuoc = new CGiaNuoc();
         CDocSo _cDocSo = new CDocSo();
 
@@ -579,7 +580,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             dr["HoTenCat"] = lichsuchungtu.CatNK_HoTen;
                                             dr["DiaChiCat"] = lichsuchungtu.CatNK_DiaChi;
                                             ///có thể sai MaCT, nếu sai đổi lại lấy txtMaCT
-                                            dr["SoNKCat"] = lichsuchungtu.SoNK.ToString() + " nhân khẩu (HK: " + lichsuchungtu.MaCT + ")";
+                                            dr["SoNKCat"] = lichsuchungtu.SoNK.ToString() + " nhân khẩu ("+_cLoaiChungTu.GetKyHieu(lichsuchungtu.MaLCT.Value)+": " + lichsuchungtu.MaCT + ")";
 
                                             dr["ChucVu"] = lichsuchungtu.ChucVu;
                                             dr["NguoiKy"] = lichsuchungtu.NguoiKy;
@@ -627,7 +628,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                     dr["DanhBoCat"] = lichsuchungtu.CatNK_DanhBo.Insert(7, " ").Insert(4, " "); ;
                                                 dr["HoTenCat"] = lichsuchungtu.CatNK_HoTen;
                                                 dr["DiaChiCat"] = lichsuchungtu.CatNK_DiaChi;
-                                                dr["SoNKCat"] = lichsuchungtu.SoNK + " nhân khẩu (HK: " + lichsuchungtu.MaCT + ")";
+                                                dr["SoNKCat"] = lichsuchungtu.SoNK + " nhân khẩu ("+_cLoaiChungTu.GetKyHieu(lichsuchungtu.MaLCT.Value)+": " + lichsuchungtu.MaCT + ")";
 
                                                 dr["ChucVu"] = lichsuchungtu.ChucVu;
                                                 dr["NguoiKy"] = lichsuchungtu.NguoiKy;
@@ -674,7 +675,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                     dr["HoTenCat"] = lichsuchungtu.CatNK_HoTen;
                                                     dr["DiaChiCat"] = lichsuchungtu.CatNK_DiaChi;
                                                     ///có thể sai MaCT, nếu sai đổi lại lấy txtMaCT
-                                                    dr["SoNKCat"] = lichsuchungtu.SoNK.ToString() + " nhân khẩu (HK: " + lichsuchungtu.MaCT + ")";
+                                                    dr["SoNKCat"] = lichsuchungtu.SoNK.ToString() + " nhân khẩu ("+_cLoaiChungTu.GetKyHieu(lichsuchungtu.MaLCT.Value)+": " + lichsuchungtu.MaCT + ")";
 
                                                     dr["ChucVu"] = lichsuchungtu.ChucVu;
                                                     dr["NguoiKy"] = lichsuchungtu.NguoiKy;
@@ -894,7 +895,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["HoTenCat"] = lichsuchungtu.CatNK_HoTen;
                                 dr["DiaChiCat"] = lichsuchungtu.CatNK_DiaChi;
                                 ///có thể sai MaCT, nếu sai đổi lại lấy txtMaCT
-                                dr["SoNKCat"] = lichsuchungtu.SoNK.ToString() + " nhân khẩu (HK: " + lichsuchungtu.MaCT + ")";
+                                dr["SoNKCat"] = lichsuchungtu.SoNK.ToString() + " nhân khẩu ("+_cLoaiChungTu.GetKyHieu(lichsuchungtu.MaLCT.Value)+": " + lichsuchungtu.MaCT + ")";
 
                                 dr["ChucVu"] = lichsuchungtu.ChucVu;
                                 dr["NguoiKy"] = lichsuchungtu.NguoiKy;
@@ -926,7 +927,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     dr["HoTenCat"] = lichsuchungtu.CatNK_HoTen;
                                     dr["DiaChiCat"] = lichsuchungtu.CatNK_DiaChi;
                                     ///có thể sai MaCT, nếu sai đổi lại lấy txtMaCT
-                                    dr["SoNKCat"] = lichsuchungtu.SoNK.ToString() + " nhân khẩu (HK: " + lichsuchungtu.MaCT + ")";
+                                    dr["SoNKCat"] = lichsuchungtu.SoNK.ToString() + " nhân khẩu ("+_cLoaiChungTu.GetKyHieu(lichsuchungtu.MaLCT.Value)+": " + lichsuchungtu.MaCT + ")";
 
                                     dr["ChucVu"] = lichsuchungtu.ChucVu;
                                     dr["NguoiKy"] = lichsuchungtu.NguoiKy;

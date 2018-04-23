@@ -446,6 +446,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 try
                 {
+                    System.IO.StreamWriter log = System.IO.File.AppendText("\\\\192.168.90.9\\BaoBao$\\KTKS_DonKH\\log.txt");
+                    log.WriteLine("Time 1: " + DateTime.Now);
                     if (chkChuyenNhap.Checked == true)
                     {
                         if (txtDanhBo.Text.Trim() == "" || txtKyHD.Text.Trim() == "")
@@ -518,7 +520,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-
+                    log.WriteLine("Time 2: " + DateTime.Now);
                     ctdchd.DanhBo = txtDanhBo.Text.Trim();
                     ctdchd.HoTen = txtHoTen.Text.Trim();
                     ctdchd.DiaChi = txtDiaChi.Text.Trim();
@@ -585,7 +587,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     ctdchd.PhiBVMT_End = int.Parse(txtPhiBVMT_End.Text.Trim().Replace(".", ""));
                     ctdchd.TongCong_End = int.Parse(txtTongCong_End.Text.Trim().Replace(".", ""));
                     ctdchd.ChiTietMoi = txtChiTietMoi.Text.Trim();
-
+                    log.WriteLine("Time 3: " + DateTime.Now);
                     if (ctdchd.TienNuoc_End - ctdchd.TienNuoc_Start == 0)
                         ctdchd.TangGiam = "";
                     else
@@ -608,10 +610,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                     if (_cDCBD.ThemDCHD(ctdchd))
                     {
-                        Clear();
+                        
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Clear();
                         txtMaDonCu.Focus();
                     }
+                    log.WriteLine("Time 4: " + DateTime.Now);
+                    log.WriteLine("=============================================");
+                    log.Close();
+                    log.Dispose();
                 }
                 catch (Exception ex)
                 {
@@ -746,8 +753,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                         if (_cDCBD.SuaDCHD(_ctdchd))
                         {
-                            Clear();
+                            
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Clear();
                             txtMaDonCu.Focus();
                         }
                     }

@@ -58,6 +58,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             dgvGhiChu.AutoGenerateColumns = false;
             dgvLichSuCHDB.AutoGenerateColumns = false;
+            dgvGhiChuDocSo.AutoGenerateColumns = false;
 
             cmbLyDo.DataSource = _cLyDoCHDB.GetDS();
             cmbLyDo.DisplayMember = "LyDo";
@@ -102,6 +103,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
             dgvLichSuCHDB.DataSource = _cCHDB.GetLichSuCHDB(hoadon.DANHBA);
             CheckLichSuCHDB();
+            dgvGhiChuDocSo.DataSource = _cDocSo.GetDSGhiChu(hoadon.DANHBA);
+
             CTKTXM ctktxm = null;
             if (_dontkh != null)
             {

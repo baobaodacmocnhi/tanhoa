@@ -168,8 +168,7 @@
             this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DMGiuNguyen = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.GBGiuNguyen = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.GiaHanKT3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.GiaHanNhapCu = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.GiaHan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox_DSSoDangKy.SuspendLayout();
@@ -912,7 +911,7 @@
             this.panel_LichSuDieuChinh.Controls.Add(this.dgvDSChungTu);
             this.panel_LichSuDieuChinh.Location = new System.Drawing.Point(0, 434);
             this.panel_LichSuDieuChinh.Name = "panel_LichSuDieuChinh";
-            this.panel_LichSuDieuChinh.Size = new System.Drawing.Size(1120, 367);
+            this.panel_LichSuDieuChinh.Size = new System.Drawing.Size(1170, 367);
             this.panel_LichSuDieuChinh.TabIndex = 15;
             // 
             // label29
@@ -952,13 +951,12 @@
             this.MaDon,
             this.DMGiuNguyen,
             this.GBGiuNguyen,
-            this.GiaHanKT3,
-            this.GiaHanNhapCu});
+            this.GiaHan});
             this.dgvDSDieuChinh.Location = new System.Drawing.Point(5, 5);
             this.dgvDSDieuChinh.MultiSelect = false;
             this.dgvDSDieuChinh.Name = "dgvDSDieuChinh";
             this.dgvDSDieuChinh.ReadOnly = true;
-            this.dgvDSDieuChinh.Size = new System.Drawing.Size(1107, 200);
+            this.dgvDSDieuChinh.Size = new System.Drawing.Size(1161, 200);
             this.dgvDSDieuChinh.TabIndex = 12;
             this.dgvDSDieuChinh.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSDieuChinh_CellFormatting);
             this.dgvDSDieuChinh.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDSDieuChinh_CellMouseDoubleClick);
@@ -1242,14 +1240,14 @@
             // 
             // txtCapNhat
             // 
-            this.txtCapNhat.Location = new System.Drawing.Point(1129, 458);
+            this.txtCapNhat.Location = new System.Drawing.Point(1172, 458);
             this.txtCapNhat.Name = "txtCapNhat";
             this.txtCapNhat.Size = new System.Drawing.Size(100, 22);
             this.txtCapNhat.TabIndex = 22;
             // 
             // btnCapNhat
             // 
-            this.btnCapNhat.Location = new System.Drawing.Point(1129, 486);
+            this.btnCapNhat.Location = new System.Drawing.Point(1172, 486);
             this.btnCapNhat.Name = "btnCapNhat";
             this.btnCapNhat.Size = new System.Drawing.Size(75, 25);
             this.btnCapNhat.TabIndex = 29;
@@ -1260,7 +1258,7 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(1126, 439);
+            this.label32.Location = new System.Drawing.Point(1169, 439);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(137, 16);
             this.label32.TabIndex = 22;
@@ -1335,7 +1333,7 @@
             // 
             // btnNhapNhieuGB
             // 
-            this.btnNhapNhieuGB.Location = new System.Drawing.Point(1129, 517);
+            this.btnNhapNhieuGB.Location = new System.Drawing.Point(1172, 517);
             this.btnNhapNhieuGB.Name = "btnNhapNhieuGB";
             this.btnNhapNhieuGB.Size = new System.Drawing.Size(110, 25);
             this.btnNhapNhieuGB.TabIndex = 122;
@@ -1414,7 +1412,7 @@
             this.GiaBieu_BD.HeaderText = "Giá Biểu BĐ";
             this.GiaBieu_BD.Name = "GiaBieu_BD";
             this.GiaBieu_BD.ReadOnly = true;
-            this.GiaBieu_BD.Width = 90;
+            this.GiaBieu_BD.Width = 80;
             // 
             // DinhMuc_BD
             // 
@@ -1422,7 +1420,7 @@
             this.DinhMuc_BD.HeaderText = "Định Mức BĐ";
             this.DinhMuc_BD.Name = "DinhMuc_BD";
             this.DinhMuc_BD.ReadOnly = true;
-            this.DinhMuc_BD.Width = 90;
+            this.DinhMuc_BD.Width = 80;
             // 
             // MaDon
             // 
@@ -1440,7 +1438,7 @@
             this.DMGiuNguyen.ReadOnly = true;
             this.DMGiuNguyen.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.DMGiuNguyen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.DMGiuNguyen.Width = 60;
+            this.DMGiuNguyen.Width = 70;
             // 
             // GBGiuNguyen
             // 
@@ -1448,25 +1446,17 @@
             this.GBGiuNguyen.HeaderText = "GB Giữ Nguyên";
             this.GBGiuNguyen.Name = "GBGiuNguyen";
             this.GBGiuNguyen.ReadOnly = true;
-            this.GBGiuNguyen.Width = 60;
+            this.GBGiuNguyen.Width = 70;
             // 
-            // GiaHanKT3
+            // GiaHan
             // 
-            this.GiaHanKT3.DataPropertyName = "GiaHanKT3";
-            this.GiaHanKT3.HeaderText = "Gia Hạn KT3";
-            this.GiaHanKT3.Name = "GiaHanKT3";
-            this.GiaHanKT3.ReadOnly = true;
-            this.GiaHanKT3.Width = 60;
-            // 
-            // GiaHanNhapCu
-            // 
-            this.GiaHanNhapCu.DataPropertyName = "GiaHanNhapCu";
-            this.GiaHanNhapCu.HeaderText = "Gia Hạn Nhập Cư";
-            this.GiaHanNhapCu.Name = "GiaHanNhapCu";
-            this.GiaHanNhapCu.ReadOnly = true;
-            this.GiaHanNhapCu.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.GiaHanNhapCu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.GiaHanNhapCu.Width = 80;
+            this.GiaHan.DataPropertyName = "GiaHan";
+            this.GiaHan.HeaderText = "Gia Hạn";
+            this.GiaHan.Name = "GiaHan";
+            this.GiaHan.ReadOnly = true;
+            this.GiaHan.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.GiaHan.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.GiaHan.Width = 50;
             // 
             // frmDCBD
             // 
@@ -1474,7 +1464,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1311, 659);
+            this.ClientSize = new System.Drawing.Size(1320, 659);
             this.Controls.Add(this.btnNhapNhieuGB);
             this.Controls.Add(this.chkGiaHanNhapCu);
             this.Controls.Add(this.chkGBGiuNguyen);
@@ -1673,8 +1663,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
         private System.Windows.Forms.DataGridViewCheckBoxColumn DMGiuNguyen;
         private System.Windows.Forms.DataGridViewCheckBoxColumn GBGiuNguyen;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn GiaHanKT3;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn GiaHanNhapCu;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn GiaHan;
         
     }
 }

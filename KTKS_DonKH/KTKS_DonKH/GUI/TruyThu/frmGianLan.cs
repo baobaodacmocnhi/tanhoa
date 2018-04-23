@@ -158,7 +158,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 txtSoPhieu1.Text = "";
             }
             ///
-            if (entity.ThanhToan1)
+            if (entity.ThanhToan2)
             {
                 chkThanhToan2.Checked = true;
                 dateThanhToan2.Value = entity.Ngay2.Value;

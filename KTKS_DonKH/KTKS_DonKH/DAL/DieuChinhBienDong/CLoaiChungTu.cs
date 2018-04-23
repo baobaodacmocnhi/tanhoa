@@ -98,5 +98,10 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 return 0;
             }
         }
+
+        public string GetKyHieu(int MaLCT)
+        {
+            return db.LoaiChungTus.SingleOrDefault(item => item.MaLCT == MaLCT).KyHieuLCT;
+        }
     }
 }

@@ -105,12 +105,16 @@
             this.btnInThongBao = new System.Windows.Forms.Button();
             this.txtMaDonMoi = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.dgvGhiChuDocSo = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxGhiChu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGhiChu)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBoxNoiDungXuLy.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuCHDB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGhiChuDocSo)).BeginInit();
             this.SuspendLayout();
             // 
             // label9
@@ -126,7 +130,7 @@
             // 
             this.txtNoiDungGhiChu.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtNoiDungGhiChu.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtNoiDungGhiChu.Location = new System.Drawing.Point(79, 51);
+            this.txtNoiDungGhiChu.Location = new System.Drawing.Point(82, 51);
             this.txtNoiDungGhiChu.Name = "txtNoiDungGhiChu";
             this.txtNoiDungGhiChu.Size = new System.Drawing.Size(385, 22);
             this.txtNoiDungGhiChu.TabIndex = 3;
@@ -134,7 +138,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 53);
+            this.label8.Location = new System.Drawing.Point(6, 54);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(67, 16);
             this.label8.TabIndex = 2;
@@ -202,7 +206,7 @@
             // 
             // btnGhiChu
             // 
-            this.btnGhiChu.Location = new System.Drawing.Point(470, 49);
+            this.btnGhiChu.Location = new System.Drawing.Point(473, 48);
             this.btnGhiChu.Name = "btnGhiChu";
             this.btnGhiChu.Size = new System.Drawing.Size(75, 25);
             this.btnGhiChu.TabIndex = 0;
@@ -848,6 +852,35 @@
             this.label12.TabIndex = 114;
             this.label12.Text = "Mã Đơn(New):";
             // 
+            // dgvGhiChuDocSo
+            // 
+            this.dgvGhiChuDocSo.AllowUserToAddRows = false;
+            this.dgvGhiChuDocSo.AllowUserToDeleteRows = false;
+            this.dgvGhiChuDocSo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvGhiChuDocSo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2});
+            this.dgvGhiChuDocSo.Location = new System.Drawing.Point(977, 205);
+            this.dgvGhiChuDocSo.Name = "dgvGhiChuDocSo";
+            this.dgvGhiChuDocSo.ReadOnly = true;
+            this.dgvGhiChuDocSo.Size = new System.Drawing.Size(315, 278);
+            this.dgvGhiChuDocSo.TabIndex = 116;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "CreateDate";
+            this.Column1.HeaderText = "Ngày Lập";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "NoiDung";
+            this.Column2.HeaderText = "NoiDung";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 150;
+            // 
             // frmCHDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -855,6 +888,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1298, 652);
+            this.Controls.Add(this.dgvGhiChuDocSo);
             this.Controls.Add(this.txtMaDonMoi);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.btnXoa);
@@ -898,6 +932,7 @@
             this.groupBoxNoiDungXuLy.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuCHDB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGhiChuDocSo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -981,6 +1016,9 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox txtMaDonMoi;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DataGridView dgvGhiChuDocSo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
 
     }
 }
