@@ -165,6 +165,7 @@ namespace KTCN_CongVan
             switch (cmbTimTheo_Di.SelectedItem.ToString())
             {
                 case "Số Công Văn":
+                case "Nơi Nhận":
                     panel_NoiDung_Di.Visible = true;
                     panel_ThoiGian_Di.Visible = false;
                     break;
@@ -186,7 +187,10 @@ namespace KTCN_CongVan
             switch (cmbTimTheo_Di.SelectedItem.ToString())
             {
                 case "Số Công Văn":
-                    dgvCongVan_Di.DataSource = _cCongVanDi.GetDS(txtNoiDungTimKiem_Di.Text.Trim());
+                    dgvCongVan_Di.DataSource = _cCongVanDi.GetDS_SoCongVan(txtNoiDungTimKiem_Di.Text.Trim());
+                    break;
+                case "Nơi Nhận":
+                    dgvCongVan_Di.DataSource = _cCongVanDi.GetDS_NoiNhan(txtNoiDungTimKiem_Di.Text.Trim());
                     break;
                 case "Ngày Nhận":
                     dgvCongVan_Di.DataSource = _cCongVanDi.GetDS(dateTu_Di.Value, dateDen_Di.Value);
@@ -343,6 +347,7 @@ namespace KTCN_CongVan
             switch (cmbTimTheo_Den.SelectedItem.ToString())
             {
                 case "Số Công Văn":
+                case "Nơi Nhận":
                     panel_NoiDung_Den.Visible = true;
                     panel_ThoiGian_Den.Visible = false;
                     break;
@@ -364,7 +369,10 @@ namespace KTCN_CongVan
             switch (cmbTimTheo_Den.SelectedItem.ToString())
             {
                 case "Số Công Văn":
-                    dgvCongVan_Den.DataSource = _cCongVanDen.GetDS(txtNoiDungTimKiem_Den.Text.Trim());
+                    dgvCongVan_Den.DataSource = _cCongVanDen.GetDS_SoCongVan(txtNoiDungTimKiem_Den.Text.Trim());
+                    break;
+                case "Nơi Nhận":
+                    dgvCongVan_Den.DataSource = _cCongVanDen.GetDS_NoiNhan(txtNoiDungTimKiem_Den.Text.Trim());
                     break;
                 case "Ngày Nhận":
                     dgvCongVan_Den.DataSource = _cCongVanDen.GetDS(dateTu_Den.Value, dateDen_Den.Value);

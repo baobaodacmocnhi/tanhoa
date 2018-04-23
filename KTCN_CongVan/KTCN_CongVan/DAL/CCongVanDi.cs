@@ -76,9 +76,14 @@ namespace KTCN_CongVan.DAL
             return LINQToDataTable(_db.CongVanDis.ToList());
         }
 
-        public DataTable GetDS(string SoCongVan)
+        public DataTable GetDS_SoCongVan(string SoCongVan)
         {
             return LINQToDataTable(_db.CongVanDis.Where(item => item.SoCongVan.Contains(SoCongVan)).ToList());
+        }
+
+        public DataTable GetDS_NoiNhan(string NoiNhan)
+        {
+            return LINQToDataTable(_db.CongVanDis.Where(item => item.NoiNhan.Contains(NoiNhan)).ToList());
         }
 
         public DataTable GetDS(DateTime FromNgayNhan,DateTime ToNgayNhan)

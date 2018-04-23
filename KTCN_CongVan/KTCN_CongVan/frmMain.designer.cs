@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.txtDonViPhatHanh_Den = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
             this.dateNgayNhan_Den = new System.Windows.Forms.DateTimePicker();
             this.label17 = new System.Windows.Forms.Label();
             this.txtNoiNhan_Den = new System.Windows.Forms.TextBox();
@@ -110,8 +112,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtSoCongVan_Di = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtDonViPhatHanh_Den = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -167,6 +167,24 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Công Văn Đến";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // txtDonViPhatHanh_Den
+            // 
+            this.txtDonViPhatHanh_Den.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtDonViPhatHanh_Den.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtDonViPhatHanh_Den.Location = new System.Drawing.Point(486, 6);
+            this.txtDonViPhatHanh_Den.Name = "txtDonViPhatHanh_Den";
+            this.txtDonViPhatHanh_Den.Size = new System.Drawing.Size(200, 20);
+            this.txtDonViPhatHanh_Den.TabIndex = 5;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(384, 9);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(96, 13);
+            this.label22.TabIndex = 4;
+            this.label22.Text = "Đơn Vị Phát Hành:";
             // 
             // dateNgayNhan_Den
             // 
@@ -298,6 +316,7 @@
             this.cmbTimTheo_Den.FormattingEnabled = true;
             this.cmbTimTheo_Den.Items.AddRange(new object[] {
             "Số Công Văn",
+            "Nơi Nhận",
             "Ngày Nhận",
             "Ngày Hết Hạn"});
             this.cmbTimTheo_Den.Location = new System.Drawing.Point(147, 19);
@@ -639,6 +658,7 @@
             this.cmbTimTheo_Di.FormattingEnabled = true;
             this.cmbTimTheo_Di.Items.AddRange(new object[] {
             "Số Công Văn",
+            "Nơi Nhận",
             "Ngày Nhận",
             "Ngày Hết Hạn"});
             this.cmbTimTheo_Di.Location = new System.Drawing.Point(147, 19);
@@ -909,24 +929,6 @@
             this.label1.Size = new System.Drawing.Size(73, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Số Công Văn:";
-            // 
-            // txtDonViPhatHanh_Den
-            // 
-            this.txtDonViPhatHanh_Den.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.txtDonViPhatHanh_Den.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtDonViPhatHanh_Den.Location = new System.Drawing.Point(486, 6);
-            this.txtDonViPhatHanh_Den.Name = "txtDonViPhatHanh_Den";
-            this.txtDonViPhatHanh_Den.Size = new System.Drawing.Size(200, 20);
-            this.txtDonViPhatHanh_Den.TabIndex = 5;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(384, 9);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(96, 13);
-            this.label22.TabIndex = 4;
-            this.label22.Text = "Đơn Vị Phát Hành:";
             // 
             // frmMain
             // 
