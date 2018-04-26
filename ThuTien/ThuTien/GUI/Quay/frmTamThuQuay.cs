@@ -164,30 +164,33 @@ namespace ThuTien.GUI.Quay
                     TongCongSo += (Int32)hd.TONGCONG;
                 }
 
-                dsBaoCao ds = new dsBaoCao();
-                HOADON hdIn = _cHoaDon.Get(lstTamThu[0].SoHoaDon);
-                DataRow dr = ds.Tables["PhieuTamThu"].NewRow();
-                dr["SoPhieu"] = lstTamThu[0].SoPhieu.ToString().Insert(lstTamThu[0].SoPhieu.ToString().Length - 2, "-");
-                dr["DanhBo"] = lstTamThu[0].DANHBA.Insert(7, " ").Insert(4, " ");
-                dr["HoTen"] = hdIn.TENKH;
-                dr["DiaChi"] = hdIn.SO + " " + hdIn.DUONG;
-                dr["MLT"] = hdIn.MALOTRINH.Insert(4, " ").Insert(2, " ");
-                dr["GiaBieu"] = hdIn.GB;
-                dr["DinhMuc"] = hdIn.DM;
-                dr["Ky"] = Ky;
-                dr["TongCongSo"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongSo);
-                dr["TongCongChu"] = _cTamThu.ConvertMoneyToWord(TongCongSo.ToString());
-                if (hdIn.MaNV_HanhThu != null)
-                    dr["NhanVienThuTien"] = _cNguoiDung.GetHoTenByMaND(hdIn.MaNV_HanhThu.Value);
-                dr["NhanVienQuay"] = CNguoiDung.HoTen;
-                if (chkChuKy.Checked)
-                    dr["ChuKy"] = true;
-                ds.Tables["PhieuTamThu"].Rows.Add(dr);
+                if (lstTamThu.Count > 0)
+                {
+                    dsBaoCao ds = new dsBaoCao();
+                    HOADON hdIn = _cHoaDon.Get(lstTamThu[0].SoHoaDon);
+                    DataRow dr = ds.Tables["PhieuTamThu"].NewRow();
+                    dr["SoPhieu"] = lstTamThu[0].SoPhieu.ToString().Insert(lstTamThu[0].SoPhieu.ToString().Length - 2, "-");
+                    dr["DanhBo"] = lstTamThu[0].DANHBA.Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = hdIn.TENKH;
+                    dr["DiaChi"] = hdIn.SO + " " + hdIn.DUONG;
+                    dr["MLT"] = hdIn.MALOTRINH.Insert(4, " ").Insert(2, " ");
+                    dr["GiaBieu"] = hdIn.GB;
+                    dr["DinhMuc"] = hdIn.DM;
+                    dr["Ky"] = Ky;
+                    dr["TongCongSo"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongSo);
+                    dr["TongCongChu"] = _cTamThu.ConvertMoneyToWord(TongCongSo.ToString());
+                    if (hdIn.MaNV_HanhThu != null)
+                        dr["NhanVienThuTien"] = _cNguoiDung.GetHoTenByMaND(hdIn.MaNV_HanhThu.Value);
+                    dr["NhanVienQuay"] = CNguoiDung.HoTen;
+                    if (chkChuKy.Checked)
+                        dr["ChuKy"] = true;
+                    ds.Tables["PhieuTamThu"].Rows.Add(dr);
 
-                rptPhieuTamThu rpt = new rptPhieuTamThu();
-                rpt.SetDataSource(ds);
-                frmInQuay frm = new frmInQuay(rpt);
-                frm.ShowDialog();
+                    rptPhieuTamThu rpt = new rptPhieuTamThu();
+                    rpt.SetDataSource(ds);
+                    frmInQuay frm = new frmInQuay(rpt);
+                    frm.ShowDialog();
+                }
             }
             else
                 MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -149,6 +149,7 @@ namespace ThuTien.GUI.Quay
                     if (_cHoaDon.CheckExist(item.Text)==false)
                     {
                         MessageBox.Show("Hóa Đơn sai: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        lstHD.Focus();
                         item.Selected = true;
                         item.Focused = true;
                         return;
@@ -282,7 +283,7 @@ namespace ThuTien.GUI.Quay
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
                 {
                     DataRow dr = dsBaoCao.Tables["DSHoaDon"].NewRow();
-                    dr["LoaiBaoCao"] = "TƯ GIA";
+                    dr["LoaiBaoCao"] = "TG";
                     dr["Dot"] = item.Cells["MLT_TG"].Value.ToString().Substring(0, 2);
                     dr["SoHoaDon"] = item.Cells["SoHoaDon_TG"].Value.ToString();
                     dr["TongCong"] = item.Cells["TongCong_TG"].Value.ToString();
@@ -298,7 +299,7 @@ namespace ThuTien.GUI.Quay
                     foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
                     {
                         DataRow dr = dsBaoCao.Tables["DSHoaDon"].NewRow();
-                        dr["LoaiBaoCao"] = "CƠ QUAN";
+                        dr["LoaiBaoCao"] = "CQ";
                         dr["Dot"] = item.Cells["MLT_CQ"].Value.ToString().Substring(0, 2);
                         dr["SoHoaDon"] = item.Cells["SoHoaDon_CQ"].Value.ToString();
                         dr["TongCong"] = item.Cells["TongCong_CQ"].Value.ToString();

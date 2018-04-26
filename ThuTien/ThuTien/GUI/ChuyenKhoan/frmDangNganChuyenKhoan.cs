@@ -198,7 +198,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     //}
                     if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(item.Text))
                     {
-                        MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         lstHD.Focus();
                         item.Selected = true;
                         item.Focused = true;
@@ -206,7 +206,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     }
                     if (_cHoaDon.CheckDCHDienDuBySoHoaDon(item.Text))
                     {
-                        MessageBox.Show("Hóa Đơn đã DCHD Tiền Dư " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Hóa Đơn đã DCHD Tiền Dư " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         lstHD.Focus();
                         item.Selected = true;
                         item.Focused = true;
