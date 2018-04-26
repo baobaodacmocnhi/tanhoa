@@ -60,8 +60,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void txtMaCT_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
-                e.Handled = true;
+            //if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+            //    e.Handled = true;
             if (e.KeyChar == 13)
                 txtThoiHan.Focus();
         }
