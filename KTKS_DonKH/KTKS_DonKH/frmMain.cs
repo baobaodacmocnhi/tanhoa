@@ -809,6 +809,17 @@ namespace KTKS_DonKH
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuVeViecToTrinh_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuVeViecToTrinh", "Xem"))
+            {
+                frmVeViecToTrinh frm = new frmVeViecToTrinh();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
 
         #region Báo Cáo
@@ -932,6 +943,8 @@ namespace KTKS_DonKH
         }
 
         #endregion
+
+        
 
         
 

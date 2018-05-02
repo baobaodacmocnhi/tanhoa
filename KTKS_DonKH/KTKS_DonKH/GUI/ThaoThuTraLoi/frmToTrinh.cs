@@ -28,6 +28,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         CDonTBC _cDonTBC = new CDonTBC();
         CToTrinh _cTT = new CToTrinh();
         CDocSo _cDocSo = new CDocSo();
+        CVeViecToTrinh _cVeViecToTrinh = new CVeViecToTrinh();
 
         DonKH _dontkh = null;
         DonTXL _dontxl = null;
@@ -51,6 +52,10 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         {
             dgvToTrinh.AutoGenerateColumns = false;
             cmbTimTheo.SelectedIndex = 3;
+
+            cmbVeViec.DataSource = _cVeViecToTrinh.GetDS();
+            cmbVeViec.DisplayMember = "TenVV";
+            cmbVeViec.SelectedIndex = -1;
 
             if (_MaCTTT != -1)
             {
@@ -443,6 +448,27 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             using (SolidBrush b = new SolidBrush(dgvToTrinh.RowHeadersDefaultCellStyle.ForeColor))
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void cmbVeViec_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbVeViec.SelectedIndex != -1)
+            {
+                VeViecToTrinh vv = (VeViecToTrinh)cmbVeViec.SelectedItem;
+                txtVeViec.Text = vv.TenVV;
+                txtNoiDung.Text = vv.NoiDung;
+                if (txtMaDonCu.Text.Trim() != "")
+                    txtNoiNhan.Text = vv.NoiNhan + " (" + txtMaDonCu.Text.Trim() + ")";
+                //else
+                //    if (txtMaDonMoi.Text.Trim() != "")
+                //        txtNoiNhan.Text = vv.NoiNhan + " (" + txtMaDonMoi.Text.Trim() + ")";
+            }
+            else
+            {
+                txtVeViec.Text = "";
+                txtNoiDung.Text = "";
+                txtNoiNhan.Text = "";
             }
         }
 

@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>715</ApplicationRevision>
+    <ApplicationRevision>717</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -632,6 +632,7 @@
     <Compile Include="DAL\DonTu\CNoiChuyen.cs" />
     <Compile Include="DAL\DonTu\CPhongBanDoi.cs" />
     <Compile Include="DAL\CExcel.cs" />
+    <Compile Include="DAL\ThaoThuTraLoi\CVeViecToTrinh.cs" />
     <Compile Include="DAL\ThaoThuTraLoi\CToTrinh.cs" />
     <Compile Include="DAL\ToKhachHang\CThongTinKhachHang.cs" />
     <Compile Include="DAL\QuanTri\CBanGiamDoc.cs" />
@@ -783,6 +784,12 @@
     </Compile>
     <Compile Include="GUI\DonTu\frmNhanDonTu.Designer.cs">
       <DependentUpon>frmNhanDonTu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThaoThuTraLoi\frmVeViecToTrinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThaoThuTraLoi\frmVeViecToTrinh.Designer.cs">
+      <DependentUpon>frmVeViecToTrinh.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ThaoThuTraLoi\frmToTrinh.cs">
       <SubType>Form</SubType>
@@ -1590,6 +1597,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DonTu\frmNhanDonTu.resx">
       <DependentUpon>frmNhanDonTu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThaoThuTraLoi\frmVeViecToTrinh.resx">
+      <DependentUpon>frmVeViecToTrinh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThaoThuTraLoi\frmToTrinh.resx">
       <DependentUpon>frmToTrinh.cs</DependentUpon>

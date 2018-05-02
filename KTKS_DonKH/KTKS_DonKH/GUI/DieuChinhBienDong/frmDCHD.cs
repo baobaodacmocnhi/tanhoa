@@ -444,9 +444,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
             {
+                System.IO.StreamWriter log = System.IO.File.AppendText("\\\\192.168.90.9\\BaoBao$\\KTKS_DonKH\\log.txt");
                 try
                 {
-                    System.IO.StreamWriter log = System.IO.File.AppendText("\\\\192.168.90.9\\BaoBao$\\KTKS_DonKH\\log.txt");
+                    
                     log.WriteLine("Time 1: " + DateTime.Now);
                     if (chkChuyenNhap.Checked == true)
                     {
@@ -622,6 +623,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 }
                 catch (Exception ex)
                 {
+                    log.WriteLine("=============================================");
+                    log.Close();
+                    log.Dispose();
                     MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
