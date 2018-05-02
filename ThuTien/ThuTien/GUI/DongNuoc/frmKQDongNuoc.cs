@@ -258,6 +258,7 @@ namespace ThuTien.GUI.DongNuoc
 
                         kqdongnuoc.DongNuoc = true;
                         kqdongnuoc.NgayDN = dateDongNuoc.Value;
+                        kqdongnuoc.NgayDN_ThucTe = DateTime.Now;
                         if (!string.IsNullOrEmpty(txtChiSoDN.Text.Trim()))
                             kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN.Text.Trim());
                         kqdongnuoc.Hieu = txtHieu.Text.Trim();
