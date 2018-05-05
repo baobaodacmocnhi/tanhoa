@@ -1297,6 +1297,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 entity.MaDon = _dontkh.MaDon;
                 entity.ID_NoiChuyen = 2;
                 entity.NoiChuyen = "Tổ Khách Hàng";
+                entity.GhiChu = "cTrân trả về tổ";
             }
             else
                 if (_dontxl != null)
@@ -1304,6 +1305,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     entity.MaDonTXL = _dontxl.MaDon;
                     entity.ID_NoiChuyen = 3;
                     entity.NoiChuyen = "Tổ Xử Lý";
+                    entity.GhiChu = "cTrân trả về tổ";
                 }
                 else
                     if (_dontbc != null)
@@ -1311,6 +1313,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         entity.MaDonTBC = _dontbc.MaDon;
                         entity.ID_NoiChuyen = 4;
                         entity.NoiChuyen = "Tổ Bấm Chì";
+                        entity.GhiChu = "cTrân trả về tổ";
                     }
             _cLichSuDonTu.Them(entity);
         }
