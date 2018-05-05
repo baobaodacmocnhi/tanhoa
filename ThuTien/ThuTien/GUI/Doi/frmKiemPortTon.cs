@@ -150,7 +150,7 @@ namespace ThuTien.GUI.Doi
 
                             }
                             TT_TestHoaDonTon hoadon = new TT_TestHoaDonTon();
-                            hoadon.MaHD = _db.TT_TestHoaDonTons.Count() + 1;
+                            hoadon.MaHD = _db.TT_TestHoaDonTons.Max(item=>item.MaHD) + 1;
                             hoadon.DanhBo = valueArray[row, 4].ToString();
                             hoadon.Nam = int.Parse(valueArray[row, 5].ToString());
                             hoadon.Ky = int.Parse(valueArray[row, 6].ToString());

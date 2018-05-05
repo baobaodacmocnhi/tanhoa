@@ -9159,6 +9159,18 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
+        public DataTable GetGroupGiaBieu(int Nam)
+        {
+            var query = from item in _db.HOADONs
+                        where item.NAM == Nam
+                        group item by item.GB into itemGroup
+                        select new
+                        {
+                            GiaBieu = itemGroup.Key,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable GetGiaBanBinhQuan(int Nam)
         {
             var query = from item in _db.HOADONs

@@ -21201,6 +21201,8 @@ namespace ThuTien.LinQ
 		
 		private bool _MoNuoc;
 		
+		private System.Data.Linq.Binary _HinhMN;
+		
 		private System.Nullable<System.DateTime> _NgayMN;
 		
 		private System.Nullable<System.DateTime> _NgayMN_ThucTe;
@@ -21317,6 +21319,8 @@ namespace ThuTien.LinQ
     partial void OnTroNgaiMNChanged();
     partial void OnMoNuocChanging(bool value);
     partial void OnMoNuocChanged();
+    partial void OnHinhMNChanging(System.Data.Linq.Binary value);
+    partial void OnHinhMNChanged();
     partial void OnNgayMNChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayMNChanged();
     partial void OnNgayMN_ThucTeChanging(System.Nullable<System.DateTime> value);
@@ -22133,6 +22137,26 @@ namespace ThuTien.LinQ
 					this._MoNuoc = value;
 					this.SendPropertyChanged("MoNuoc");
 					this.OnMoNuocChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HinhMN", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary HinhMN
+		{
+			get
+			{
+				return this._HinhMN;
+			}
+			set
+			{
+				if ((this._HinhMN != value))
+				{
+					this.OnHinhMNChanging(value);
+					this.SendPropertyChanging();
+					this._HinhMN = value;
+					this.SendPropertyChanged("HinhMN");
+					this.OnHinhMNChanged();
 				}
 			}
 		}
