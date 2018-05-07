@@ -858,6 +858,24 @@ namespace ThuTien.GUI.DongNuoc
                 MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void btnHinhDongNuoc_Click(object sender, EventArgs e)
+        {
+            if (_kqdongnuoc != null && _kqdongnuoc.HinhDN != null)
+            {
+                frmHinhDongMoNuoc frm = new frmHinhDongMoNuoc(_kqdongnuoc.HinhDN.ToArray());
+                frm.ShowDialog();
+            }
+        }
+
+        private void btnHinhMoNuoc_Click(object sender, EventArgs e)
+        {
+            if (_kqdongnuoc != null && _kqdongnuoc.HinhMN != null)
+            {
+                frmHinhDongMoNuoc frm = new frmHinhDongMoNuoc(_kqdongnuoc.HinhMN.ToArray());
+                frm.ShowDialog();
+            }
+        }
+
 
     }
 }

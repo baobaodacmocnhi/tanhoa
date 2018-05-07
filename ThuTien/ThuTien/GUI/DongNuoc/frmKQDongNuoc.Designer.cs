@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chkKhongThuTienMoNuoc = new System.Windows.Forms.CheckBox();
             this.txtGhiChuMN = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.txtChiSoMN = new System.Windows.Forms.TextBox();
@@ -123,7 +124,8 @@
             this.txtGhiChuTroNgai = new System.Windows.Forms.TextBox();
             this.btnCapNhat = new System.Windows.Forms.Button();
             this.btnInDS = new System.Windows.Forms.Button();
-            this.chkKhongThuTienMoNuoc = new System.Windows.Forms.CheckBox();
+            this.btnHinhDongNuoc = new System.Windows.Forms.Button();
+            this.btnHinhMoNuoc = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKQDongNuoc)).BeginInit();
@@ -132,6 +134,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnHinhMoNuoc);
+            this.groupBox2.Controls.Add(this.btnHinhDongNuoc);
             this.groupBox2.Controls.Add(this.chkKhongThuTienMoNuoc);
             this.groupBox2.Controls.Add(this.txtGhiChuMN);
             this.groupBox2.Controls.Add(this.label22);
@@ -157,10 +161,21 @@
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Location = new System.Drawing.Point(1, 184);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(401, 233);
+            this.groupBox2.Size = new System.Drawing.Size(401, 285);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kết Quả Đóng Nước";
+            // 
+            // chkKhongThuTienMoNuoc
+            // 
+            this.chkKhongThuTienMoNuoc.AutoSize = true;
+            this.chkKhongThuTienMoNuoc.Location = new System.Drawing.Point(212, 149);
+            this.chkKhongThuTienMoNuoc.Name = "chkKhongThuTienMoNuoc";
+            this.chkKhongThuTienMoNuoc.Size = new System.Drawing.Size(150, 17);
+            this.chkKhongThuTienMoNuoc.TabIndex = 38;
+            this.chkKhongThuTienMoNuoc.Text = "Không Thu Tiền Mở Nước";
+            this.chkKhongThuTienMoNuoc.UseVisualStyleBackColor = true;
+            this.chkKhongThuTienMoNuoc.CheckedChanged += new System.EventHandler(this.chkKhongThuTienMoNuoc_CheckedChanged);
             // 
             // txtGhiChuMN
             // 
@@ -868,7 +883,7 @@
             this.groupBox3.Controls.Add(this.dateDongNuoc2);
             this.groupBox3.Controls.Add(this.label17);
             this.groupBox3.Controls.Add(this.chkDongNuoc2);
-            this.groupBox3.Location = new System.Drawing.Point(1, 423);
+            this.groupBox3.Location = new System.Drawing.Point(1, 475);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(359, 140);
             this.groupBox3.TabIndex = 39;
@@ -1014,16 +1029,25 @@
             this.btnInDS.UseVisualStyleBackColor = true;
             this.btnInDS.Click += new System.EventHandler(this.btnInDS_Click);
             // 
-            // chkKhongThuTienMoNuoc
+            // btnHinhDongNuoc
             // 
-            this.chkKhongThuTienMoNuoc.AutoSize = true;
-            this.chkKhongThuTienMoNuoc.Location = new System.Drawing.Point(212, 126);
-            this.chkKhongThuTienMoNuoc.Name = "chkKhongThuTienMoNuoc";
-            this.chkKhongThuTienMoNuoc.Size = new System.Drawing.Size(150, 17);
-            this.chkKhongThuTienMoNuoc.TabIndex = 38;
-            this.chkKhongThuTienMoNuoc.Text = "Không Thu Tiền Mở Nước";
-            this.chkKhongThuTienMoNuoc.UseVisualStyleBackColor = true;
-            this.chkKhongThuTienMoNuoc.CheckedChanged += new System.EventHandler(this.chkKhongThuTienMoNuoc_CheckedChanged);
+            this.btnHinhDongNuoc.Location = new System.Drawing.Point(91, 230);
+            this.btnHinhDongNuoc.Name = "btnHinhDongNuoc";
+            this.btnHinhDongNuoc.Size = new System.Drawing.Size(100, 23);
+            this.btnHinhDongNuoc.TabIndex = 39;
+            this.btnHinhDongNuoc.Text = "Hình Đóng Nước";
+            this.btnHinhDongNuoc.UseVisualStyleBackColor = true;
+            this.btnHinhDongNuoc.Click += new System.EventHandler(this.btnHinhDongNuoc_Click);
+            // 
+            // btnHinhMoNuoc
+            // 
+            this.btnHinhMoNuoc.Location = new System.Drawing.Point(288, 98);
+            this.btnHinhMoNuoc.Name = "btnHinhMoNuoc";
+            this.btnHinhMoNuoc.Size = new System.Drawing.Size(100, 23);
+            this.btnHinhMoNuoc.TabIndex = 40;
+            this.btnHinhMoNuoc.Text = "Hình Mở Nước";
+            this.btnHinhMoNuoc.UseVisualStyleBackColor = true;
+            this.btnHinhMoNuoc.Click += new System.EventHandler(this.btnHinhMoNuoc_Click);
             // 
             // frmKQDongNuoc
             // 
@@ -1164,5 +1188,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayKy;
         private System.Windows.Forms.DataGridViewTextBoxColumn MLT;
         private System.Windows.Forms.CheckBox chkKhongThuTienMoNuoc;
+        private System.Windows.Forms.Button btnHinhMoNuoc;
+        private System.Windows.Forms.Button btnHinhDongNuoc;
     }
 }

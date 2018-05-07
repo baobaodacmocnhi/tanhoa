@@ -200,12 +200,12 @@ namespace ThuTien.DAL.ChuyenKhoan
             {
                 if (LinQ_ExecuteNonQuery("update TT_TienDu set SoTien=SoTien-(select TienDu from HOADON where SOHOADON='" + SoHoaDon + "'),ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=GETDATE() where DanhBo=(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "')"))
                 {
-                    return LinQ_ExecuteNonQuery("insert into TT_TienDuLichSu(ID,DanhBo,SoTien,Loai,GhiChu,SoHoaDon,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSu),(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TienDu=-TienDu from HOADON where SOHOADON='" + SoHoaDon + "'),N'Đăng Ngân',N'Thêm '+(select CONVERT(varchar(2),ky)+'/'+CONVERT(varchar(4),NAM) from HOADON where SOHOADON='" + SoHoaDon + "'),'" + SoHoaDon + "'," + CNguoiDung.MaND + ",GETDATE())");
+                    return LinQ_ExecuteNonQuery("insert into TT_TienDuLichSu(ID,DanhBo,SoTien,Loai,GhiChu,SoHoaDon,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSu),(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TienDu=-TienDu from HOADON where SOHOADON='" + SoHoaDon + "'),N'Đăng Ngân Tiền Mặt',N'Thêm '+(select CONVERT(varchar(2),ky)+'/'+CONVERT(varchar(4),NAM) from HOADON where SOHOADON='" + SoHoaDon + "'),'" + SoHoaDon + "'," + CNguoiDung.MaND + ",GETDATE())");
                 }
                 else
                     if (LinQ_ExecuteNonQuery("insert into TT_TienDu(DanhBo,SoTien,CreateBy,CreateDate,ModifyBy,ModifyDate) values((select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TienDu=-TienDu from HOADON where SOHOADON='" + SoHoaDon + "')," + CNguoiDung.MaND + ",GETDATE()," + CNguoiDung.MaND + ",GETDATE())"))
                     {
-                        return LinQ_ExecuteNonQuery("insert into TT_TienDuLichSu(ID,DanhBo,SoTien,Loai,GhiChu,SoHoaDon,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSu),(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TienDu=-TienDu from HOADON where SOHOADON='" + SoHoaDon + "'),N'Đăng Ngân',N'Thêm '+(select CONVERT(varchar(2),ky)+'/'+CONVERT(varchar(4),NAM) from HOADON where SOHOADON='" + SoHoaDon + "'),'" + SoHoaDon + "'," + CNguoiDung.MaND + ",GETDATE())");
+                        return LinQ_ExecuteNonQuery("insert into TT_TienDuLichSu(ID,DanhBo,SoTien,Loai,GhiChu,SoHoaDon,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSu),(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TienDu=-TienDu from HOADON where SOHOADON='" + SoHoaDon + "'),N'Đăng Ngân Tiền Mặt',N'Thêm '+(select CONVERT(varchar(2),ky)+'/'+CONVERT(varchar(4),NAM) from HOADON where SOHOADON='" + SoHoaDon + "'),'" + SoHoaDon + "'," + CNguoiDung.MaND + ",GETDATE())");
                     }
                     else
                     {
