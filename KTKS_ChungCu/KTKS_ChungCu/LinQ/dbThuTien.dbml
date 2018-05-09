@@ -2,12 +2,10 @@
   <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.90.9;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa" SettingsObjectName="KTKS_ChungCu.Properties.Settings" SettingsPropertyName="HOADON_TAConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.HOADON" Member="HOADONs">
     <Type Name="HOADON">
-      <Column Name="ID_HOADON" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_HOADON" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="DOT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DANHBA" Type="System.String" DbType="NVarChar(11) NOT NULL" CanBeNull="false" />
       <Column Name="HOPDONG" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="TENKH_" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
-      <Column Name="SO_" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="DUONG" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="GB" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TILESH" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -44,17 +42,12 @@
       <Column Name="DENNGAY" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="GIO_TT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="NAM" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TO_THUNGAN" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="L_THANHTOAN" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="FK_DIEUCHINH" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MAY" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
       <Column Name="STT" Type="System.String" DbType="NChar(5)" CanBeNull="true" />
       <Column Name="MALOTRINH" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
       <Column Name="DOTCHIA" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="MA_NHANVIENGIAI" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="MA_NHANVIENTON" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
       <Column Name="NGAYGIAOTON" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="PHI_MONUOC" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="Pol" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
       <Column Name="TENKH" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
       <Column Name="SO" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
@@ -89,6 +82,13 @@
       <Column Name="NAMLD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="HIEUDH" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="KhoaTienDu" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SoThanDHN" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DCHD" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Ngay_DCHD" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TongCongTruoc_DCHD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TienDuTruoc_DCHD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name_PC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IP_PC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>
