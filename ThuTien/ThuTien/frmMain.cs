@@ -422,7 +422,18 @@ namespace ThuTien
             else
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-        
+
+        private void mnuDieuChinhMLT_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuDieuChinhMLT", "Xem"))
+            {
+                frmDieuChinhMLT frm = new frmDieuChinhMLT();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
 
         #region Tổ Trưởng
@@ -443,6 +454,17 @@ namespace ThuTien
             if (CNguoiDung.CheckQuyen("mnuGiaoHDTon", "Xem"))
             {
                 frmGiaoHDTon frm = new frmGiaoHDTon();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuGiaoHDDienThoai_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuGiaoHDDienThoai", "Xem"))
+            {
+                frmGiaoHDDienThoai frm = new frmGiaoHDDienThoai();
                 OpenForm(frm);
             }
             else
@@ -1050,6 +1072,10 @@ namespace ThuTien
         }
 
         #endregion
+
+        
+
+        
 
         
 

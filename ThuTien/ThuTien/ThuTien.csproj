@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>857</ApplicationRevision>
+    <ApplicationRevision>859</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -505,6 +505,7 @@
     <Compile Include="DAL\TongHop\CCongVan.cs" />
     <Compile Include="DAL\TongHop\CDCHD.cs" />
     <Compile Include="DAL\TongHop\CDangKyKiemTra.cs" />
+    <Compile Include="DAL\ToTruong\CGiaoHDDienThoai.cs" />
     <Compile Include="DAL\ToTruong\CTongHopNo.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -631,6 +632,12 @@
     </Compile>
     <Compile Include="GUI\Doi\frmDieuChinhDangNganDoi.Designer.cs">
       <DependentUpon>frmDieuChinhDangNganDoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Doi\frmDieuChinhMLT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Doi\frmDieuChinhMLT.Designer.cs">
+      <DependentUpon>frmDieuChinhMLT.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Doi\frmKetThucNamTaiKhoa.cs">
       <SubType>Form</SubType>
@@ -1028,6 +1035,12 @@
     <Compile Include="GUI\ToTruong\frmTongHopNo.Designer.cs">
       <DependentUpon>frmTongHopNo.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ToTruong\frmGiaoHDDienThoai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmGiaoHDDienThoai.Designer.cs">
+      <DependentUpon>frmGiaoHDDienThoai.cs</DependentUpon>
+    </Compile>
     <Compile Include="LinQ\dbDocSo.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1377,6 +1390,9 @@
     <EmbeddedResource Include="GUI\Doi\frmDieuChinhDangNganDoi.resx">
       <DependentUpon>frmDieuChinhDangNganDoi.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Doi\frmDieuChinhMLT.resx">
+      <DependentUpon>frmDieuChinhMLT.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmKetThucNamTaiKhoa.resx">
       <DependentUpon>frmKetThucNamTaiKhoa.cs</DependentUpon>
     </EmbeddedResource>
@@ -1584,6 +1600,9 @@
     <None Include="LinQ\dbDocSoHandheld.dbml.layout">
       <DependentUpon>dbDocSoHandheld.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="GUI\ToTruong\frmGiaoHDDienThoai.resx">
+      <DependentUpon>frmGiaoHDDienThoai.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

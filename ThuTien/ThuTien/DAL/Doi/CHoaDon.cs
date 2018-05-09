@@ -6883,7 +6883,7 @@ namespace ThuTien.DAL.Doi
             {
                 string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
                             + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
-                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
+                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,MaNV="+MaNV+",HanhThu=(select HoTen from TT_NguoiDung where MaND="+MaNV+")"
                             + " from HOADON"
                             + " where MaNV_HanhThu=" + MaNV
                             + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<=" + Ky + ")) and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20 and DANHBA in"
@@ -6901,7 +6901,7 @@ namespace ThuTien.DAL.Doi
                 {
                     string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
                             + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
-                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
+                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,MaNV=" + MaNV + ",HanhThu=(select HoTen from TT_NguoiDung where MaND=" + MaNV + ")"
                             + " from HOADON"
                             + " where MaNV_HanhThu=" + MaNV
                             + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<=" + Ky + ")) and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20 and DANHBA in"
@@ -6923,7 +6923,7 @@ namespace ThuTien.DAL.Doi
             {
                 string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
                             + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
-                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
+                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,MaNV="+MaNV+",HanhThu=(select HoTen from TT_NguoiDung where MaND="+MaNV+")"
                             + " from HOADON"
                             + " where MaNV_HanhThu=" + MaNV
                             + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<=" + Ky + ")) and DOT=" + Dot + " and NGAYGIAITRACH is null and GB>=11 and GB<=20 and DANHBA in"
@@ -6941,7 +6941,7 @@ namespace ThuTien.DAL.Doi
                 {
                     string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
                             + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
-                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
+                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,MaNV="+MaNV+",HanhThu=(select HoTen from TT_NguoiDung where MaND="+MaNV+")"
                             + " from HOADON"
                             + " where MaNV_HanhThu=" + MaNV
                             + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<=" + Ky + ")) and DOT=" + Dot + " and NGAYGIAITRACH is null and GB>20 and DANHBA in"
@@ -7633,14 +7633,17 @@ namespace ThuTien.DAL.Doi
         /// Lấy danh sách tất cả hóa đơn tồn
         /// </summary>
         /// <returns></returns>
-        public DataTable GetDSTon()
+        public DataTable GetDSTon_DieuChinhMLT(string DanhBo,string MLT_Moi)
         {
             var query = from item in _db.HOADONs
-                        where item.NGAYGIAITRACH == null
+                        where item.DANHBA == DanhBo && item.MALOTRINH != MLT_Moi && item.NGAYGIAITRACH == null
                         select new
                         {
+                            MaHD=item.ID_HOADON,
+                            DanhBo=item.DANHBA,
+                            MLT=item.MALOTRINH,
                             item.SOHOADON,
-                            item.TONGCONG,
+                            Ky=item.KY+"/"+item.NAM,
                         };
             return LINQToDataTable(query);
         }
@@ -7747,34 +7750,6 @@ namespace ThuTien.DAL.Doi
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemHD.DANHBA == DanhBo && itemHD.NGAYGIAITRACH == null && itemHD.TONGCONG != 0
                         orderby itemHD.ID_HOADON ascending
-                        select new
-                        {
-                            MaHD = itemHD.ID_HOADON,
-                            itemHD.SOHOADON,
-                            Ky = itemHD.KY + "/" + itemHD.NAM,
-                            MLT = itemHD.MALOTRINH,
-                            DanhBo = itemHD.DANHBA,
-                            GiaBieu = itemHD.GB,
-                            DinhMuc = itemHD.DM,
-                            HoTen = itemHD.TENKH,
-                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
-                            itemHD.TIEUTHU,
-                            itemHD.GIABAN,
-                            ThueGTGT = itemHD.THUE,
-                            PhiBVMT = itemHD.PHI,
-                            itemHD.TONGCONG,
-                            HanhThu = itemtableND.HoTen,
-                        };
-            return LINQToDataTable(query);
-        }
-
-        public DataTable GetDSTonBySoHoaDon(string SoHoaDon)
-        {
-            var query = from itemHD in _db.HOADONs
-                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
-                        from itemtableND in tableND.DefaultIfEmpty()
-                        where itemHD.SOHOADON == SoHoaDon && itemHD.NGAYGIAITRACH == null
-                        orderby itemHD.ID_HOADON descending
                         select new
                         {
                             MaHD = itemHD.ID_HOADON,

@@ -440,5 +440,10 @@ namespace ThuTien.GUI.ToTruong
             frm.Show();
         }
 
+        private void cmbTo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

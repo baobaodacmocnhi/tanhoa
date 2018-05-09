@@ -105,7 +105,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(395, 10);
+            this.btnXem.Location = new System.Drawing.Point(395, 11);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 6;
@@ -754,6 +754,7 @@
             this.cmbTo.Size = new System.Drawing.Size(60, 21);
             this.cmbTo.TabIndex = 46;
             this.cmbTo.Visible = false;
+            this.cmbTo.SelectedIndexChanged += new System.EventHandler(this.cmbTo_SelectedIndexChanged);
             // 
             // frmGiaoHDHanhThu
             // 

@@ -387,6 +387,11 @@ namespace ThuTien.GUI.DongNuoc
                     if (CNguoiDung.Doi)
                     {
                         TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dgvKQDongNuoc.SelectedRows[0].Cells["MaKQDN"].Value.ToString()));
+                        if (kqdongnuoc.MoNuoc == true)
+                        {
+                            MessageBox.Show("Có mở nước, Không được Xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         if (_cDongNuoc.XoaKQ(kqdongnuoc))
                         {
                             Clear();
@@ -405,6 +410,11 @@ namespace ThuTien.GUI.DongNuoc
                         }
 
                         TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dgvKQDongNuoc.SelectedRows[0].Cells["MaKQDN"].Value.ToString()));
+                        if (kqdongnuoc.MoNuoc == true)
+                        {
+                            MessageBox.Show("Có mở nước, Không được Xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         if (_cDongNuoc.XoaKQ(kqdongnuoc))
                         {
                             Clear();
