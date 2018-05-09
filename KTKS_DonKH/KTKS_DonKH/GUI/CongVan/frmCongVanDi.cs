@@ -111,131 +111,141 @@ namespace KTKS_DonKH.GUI.CongVan
             txtDanhBo.Text = "";
             txtHoTen.Text = "";
             txtDiaChi.Text = "";
+            for (int i = 0; i < chkcmbNoiNhan.Properties.Items.Count; i++)
+                chkcmbNoiNhan.Properties.Items[i].CheckState = CheckState.Unchecked;
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (cmbLoaiVanBan.SelectedIndex != -1 && cmbNoiChuyen.SelectedIndex != -1)
+            if (cmbLoaiVanBan.SelectedIndex != -1 )
                 if (lstMa.Items.Count == 0)
                 {
-                    CongVanDi item = new CongVanDi();
-                    item.LoaiVanBan = cmbLoaiVanBan.SelectedItem.ToString();
-                    item.TenTable = GetTenTable();
-                    item.Ma = txtTuMa.Text.Trim().Replace("-", "");
-                    item.DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
-                    item.HoTen = txtHoTen.Text.Trim();
-                    item.DiaChi = txtDiaChi.Text.Trim();
-                    item.NoiDung = txtNoiDung.Text.Trim();
-                    item.NoiChuyen = cmbNoiChuyen.SelectedItem.ToString();
+                    for (int i = 0; i < chkcmbNoiNhan.Properties.Items.Count; i++)
+                        if (chkcmbNoiNhan.Properties.Items[i].CheckState == CheckState.Checked)
+                        {
+                            CongVanDi item = new CongVanDi();
+                            item.LoaiVanBan = cmbLoaiVanBan.SelectedItem.ToString();
+                            item.TenTable = GetTenTable();
+                            item.Ma = txtTuMa.Text.Trim().Replace("-", "");
+                            item.DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
+                            item.HoTen = txtHoTen.Text.Trim();
+                            item.DiaChi = txtDiaChi.Text.Trim();
+                            item.NoiDung = txtNoiDung.Text.Trim();
+                            item.NoiChuyen = chkcmbNoiNhan.Properties.Items[i].ToString();
 
-                    if (txtTuMa.Text.Trim().Replace("-", "") != "")
-                        if (!_cCongVanDi.CheckExist(item.LoaiVanBan, item.Ma, item.NoiChuyen, DateTime.Now))
-                        {
-                            if (_cCongVanDi.Them(item))
-                            {
-                                Clear();
-                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                btnXem.PerformClick();
-                            }
-                        }
-                        else
-                            MessageBox.Show("Đã có: " + item.Ma, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    else
-                        if (_cCongVanDi.Them(item))
-                        {
-                            Clear();
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            btnXem.PerformClick();
+                            if (txtTuMa.Text.Trim().Replace("-", "") != "")
+                                if (!_cCongVanDi.CheckExist(item.LoaiVanBan, item.Ma, item.NoiChuyen, DateTime.Now))
+                                {
+                                    if (_cCongVanDi.Them(item))
+                                    {
+                                        Clear();
+                                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        btnXem.PerformClick();
+                                    }
+                                }
+                                else
+                                    MessageBox.Show("Đã có: " + item.Ma, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            else
+                                if (_cCongVanDi.Them(item))
+                                {
+                                    Clear();
+                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    btnXem.PerformClick();
+                                }
                         }
                 }
                 else
                 {
                     foreach (ListViewItem itemMa in lstMa.Items)
                     {
-                        CongVanDi item = new CongVanDi();
-                        item.LoaiVanBan = cmbLoaiVanBan.SelectedItem.ToString();
-                        item.TenTable = GetTenTable();
-                        item.Ma = itemMa.Text.Replace("-", "");
+                        for (int i = 0; i < chkcmbNoiNhan.Properties.Items.Count; i++)
+                            if (chkcmbNoiNhan.Properties.Items[i].CheckState == CheckState.Checked)
+                            {
+                                CongVanDi item = new CongVanDi();
+                                item.LoaiVanBan = cmbLoaiVanBan.SelectedItem.ToString();
+                                item.TenTable = GetTenTable();
+                                item.Ma = itemMa.Text.Replace("-", "");
 
-                        switch (cmbLoaiVanBan.SelectedItem.ToString())
-                        {
-                            case "Đơn Tổ Khách Hàng":
-                                DonKH donkh = _cDonKH.Get(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
-                                item.DanhBo = donkh.DanhBo;
-                                item.HoTen = donkh.HoTen;
-                                item.DiaChi = donkh.DiaChi;
-                                break;
-                            case "Đơn Tổ Xử Lý":
-                                DonTXL dontxl = _cDonTXL.Get(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
-                                item.DanhBo = dontxl.DanhBo;
-                                item.HoTen = dontxl.HoTen;
-                                item.DiaChi = dontxl.DiaChi;
-                                break;
-                            case "Đơn Tổ Bấm Chì":
-                                DonTBC dontbc = _cDonTBC.Get(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
-                                item.DanhBo = dontbc.DanhBo;
-                                item.HoTen = dontbc.HoTen;
-                                item.DiaChi = dontbc.DiaChi;
-                                break;
-                            case "Kiểm Tra Xác Minh":
-                                CTKTXM ctktxm = _cKTXM.GetCT(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
-                                item.DanhBo = ctktxm.DanhBo;
-                                item.HoTen = ctktxm.HoTen;
-                                item.DiaChi = ctktxm.DiaChi;
-                                break;
-                            case "Bấm Chì":
-                                CTBamChi ctbamchi = _cBamChi.GetCT(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
-                                item.DanhBo = ctbamchi.DanhBo;
-                                item.HoTen = ctbamchi.HoTen;
-                                item.DiaChi = ctbamchi.DiaChi;
-                                break;
-                            case "Điều Chỉnh Biến Động":
-                                CTDCBD dcbd = _cDCBD.GetDCBDByMaCTDCBD(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
-                                item.DanhBo = dcbd.DanhBo;
-                                item.HoTen = dcbd.HoTen;
-                                item.DiaChi = dcbd.DiaChi;
-                                break;
-                            case "Điều Chỉnh Hóa Đơn":
-                                CTDCHD dchd = _cDCBD.getCTDCHDbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
-                                item.DanhBo = dchd.DanhBo;
-                                item.HoTen = dchd.HoTen;
-                                item.DiaChi = dchd.DiaChi;
-                                break;
-                            case "Cắt Tạm Danh Bộ":
-                                CTCTDB ctctdb = _cCHDB.GetCTCTDB(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
-                                item.DanhBo = ctctdb.DanhBo;
-                                item.HoTen = ctctdb.HoTen;
-                                item.DiaChi = ctctdb.DiaChi;
-                                break;
-                            case "Cắt Hủy Danh Bộ":
-                                CTCHDB ctchdb = _cCHDB.GetCTCHDB(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
-                                item.DanhBo = ctchdb.DanhBo;
-                                item.HoTen = ctchdb.HoTen;
-                                item.DiaChi = ctchdb.DiaChi;
-                                break;
-                            case "Phiếu Hủy Danh Bộ":
-                                PhieuCHDB ycchdb = _cCHDB.GetPhieuHuy(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
-                                item.DanhBo = ycchdb.DanhBo;
-                                item.HoTen = ycchdb.HoTen;
-                                item.DiaChi = ycchdb.DiaChi;
-                                break;
-                            case "Thư Trả Lời":
-                                CTTTTL cttttl = _cTTTL.GetCT(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
-                                item.DanhBo = cttttl.DanhBo;
-                                item.HoTen = cttttl.HoTen;
-                                item.DiaChi = cttttl.DiaChi;
-                                break;
-                            default:
+                                switch (cmbLoaiVanBan.SelectedItem.ToString())
+                                {
+                                    case "Đơn Tổ Khách Hàng":
+                                        DonKH donkh = _cDonKH.Get(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                        item.DanhBo = donkh.DanhBo;
+                                        item.HoTen = donkh.HoTen;
+                                        item.DiaChi = donkh.DiaChi;
+                                        break;
+                                    case "Đơn Tổ Xử Lý":
+                                        DonTXL dontxl = _cDonTXL.Get(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                        item.DanhBo = dontxl.DanhBo;
+                                        item.HoTen = dontxl.HoTen;
+                                        item.DiaChi = dontxl.DiaChi;
+                                        break;
+                                    case "Đơn Tổ Bấm Chì":
+                                        DonTBC dontbc = _cDonTBC.Get(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                        item.DanhBo = dontbc.DanhBo;
+                                        item.HoTen = dontbc.HoTen;
+                                        item.DiaChi = dontbc.DiaChi;
+                                        break;
+                                    case "Kiểm Tra Xác Minh":
+                                        CTKTXM ctktxm = _cKTXM.GetCT(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                        item.DanhBo = ctktxm.DanhBo;
+                                        item.HoTen = ctktxm.HoTen;
+                                        item.DiaChi = ctktxm.DiaChi;
+                                        break;
+                                    case "Bấm Chì":
+                                        CTBamChi ctbamchi = _cBamChi.GetCT(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                        item.DanhBo = ctbamchi.DanhBo;
+                                        item.HoTen = ctbamchi.HoTen;
+                                        item.DiaChi = ctbamchi.DiaChi;
+                                        break;
+                                    case "Điều Chỉnh Biến Động":
+                                        CTDCBD dcbd = _cDCBD.GetDCBDByMaCTDCBD(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                        item.DanhBo = dcbd.DanhBo;
+                                        item.HoTen = dcbd.HoTen;
+                                        item.DiaChi = dcbd.DiaChi;
+                                        break;
+                                    case "Điều Chỉnh Hóa Đơn":
+                                        CTDCHD dchd = _cDCBD.getCTDCHDbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                        item.DanhBo = dchd.DanhBo;
+                                        item.HoTen = dchd.HoTen;
+                                        item.DiaChi = dchd.DiaChi;
+                                        break;
+                                    case "Cắt Tạm Danh Bộ":
+                                        CTCTDB ctctdb = _cCHDB.GetCTCTDB(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                        item.DanhBo = ctctdb.DanhBo;
+                                        item.HoTen = ctctdb.HoTen;
+                                        item.DiaChi = ctctdb.DiaChi;
+                                        break;
+                                    case "Cắt Hủy Danh Bộ":
+                                        CTCHDB ctchdb = _cCHDB.GetCTCHDB(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                        item.DanhBo = ctchdb.DanhBo;
+                                        item.HoTen = ctchdb.HoTen;
+                                        item.DiaChi = ctchdb.DiaChi;
+                                        break;
+                                    case "Phiếu Hủy Danh Bộ":
+                                        PhieuCHDB ycchdb = _cCHDB.GetPhieuHuy(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                        item.DanhBo = ycchdb.DanhBo;
+                                        item.HoTen = ycchdb.HoTen;
+                                        item.DiaChi = ycchdb.DiaChi;
+                                        break;
+                                    case "Thư Trả Lời":
+                                        CTTTTL cttttl = _cTTTL.GetCT(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                        item.DanhBo = cttttl.DanhBo;
+                                        item.HoTen = cttttl.HoTen;
+                                        item.DiaChi = cttttl.DiaChi;
+                                        break;
+                                    default:
 
-                                break;
-                        }
-                        item.NoiDung = txtNoiDung.Text.Trim();
-                        item.NoiChuyen = cmbNoiChuyen.SelectedItem.ToString();
+                                        break;
+                                }
+                                item.NoiDung = txtNoiDung.Text.Trim();
+                                item.NoiChuyen = chkcmbNoiNhan.Properties.Items[i].ToString();
 
-                        if (!_cCongVanDi.CheckExist(item.LoaiVanBan, item.Ma, item.NoiChuyen, DateTime.Now))
-                            _cCongVanDi.Them(item);
-                        else
-                            MessageBox.Show("Đã có: " + item.Ma, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                if (!_cCongVanDi.CheckExist(item.LoaiVanBan, item.Ma, item.NoiChuyen, DateTime.Now))
+                                    _cCongVanDi.Them(item);
+                                else
+                                    MessageBox.Show("Đã có: " + item.Ma, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                     }
                     Clear();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

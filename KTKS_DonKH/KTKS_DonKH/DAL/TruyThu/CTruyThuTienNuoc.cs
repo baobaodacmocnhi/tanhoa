@@ -11,7 +11,8 @@ namespace KTKS_DonKH.DAL.TruyThu
 {
     class CTruyThuTienNuoc : CDAL
     {
-        int SoTien1m3 = 19345;
+        //int SoTien1m3 = 19345;
+        int SoTien1m3 = 19435;
 
         #region TruyThuTienNuoc
 

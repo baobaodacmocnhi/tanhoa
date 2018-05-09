@@ -77,7 +77,9 @@
             this.label18 = new System.Windows.Forms.Label();
             this.txtNoiDungTimKiem = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
+            this.chkcmbNoiNhan = new DevExpress.XtraEditors.CheckedComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCongVan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkcmbNoiNhan.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -197,10 +199,11 @@
             "Tổ Xử Lý",
             "Tổ Bấm Chì",
             "Tổ Giao Dịch Khách Hàng"});
-            this.cmbNoiChuyen.Location = new System.Drawing.Point(958, 74);
+            this.cmbNoiChuyen.Location = new System.Drawing.Point(959, 102);
             this.cmbNoiChuyen.Name = "cmbNoiChuyen";
             this.cmbNoiChuyen.Size = new System.Drawing.Size(100, 24);
             this.cmbNoiChuyen.TabIndex = 15;
+            this.cmbNoiChuyen.Visible = false;
             // 
             // label7
             // 
@@ -590,12 +593,44 @@
             this.label19.TabIndex = 99;
             this.label19.Text = "Nội Dung:";
             // 
+            // chkcmbNoiNhan
+            // 
+            this.chkcmbNoiNhan.EditValue = "";
+            this.chkcmbNoiNhan.Location = new System.Drawing.Point(959, 74);
+            this.chkcmbNoiNhan.Name = "chkcmbNoiNhan";
+            this.chkcmbNoiNhan.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.chkcmbNoiNhan.Properties.Appearance.Options.UseFont = true;
+            this.chkcmbNoiNhan.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkcmbNoiNhan.Properties.AppearanceDropDown.Options.UseFont = true;
+            this.chkcmbNoiNhan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.chkcmbNoiNhan.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.CheckedListBoxItem[] {
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Đội TCTB"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Tổ Thay"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Đội QLĐHN"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Đội Thu Tiền"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "P. KHĐT"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "P. GNKDT"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Ban QLDA"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "P. Kế Toán"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "P. TCHC"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "P. KTCN"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Đội TCXL"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Tổ Xử Lý"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Tổ Bấm Chì"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Tổ Giao Dịch Khách Hàng")});
+            this.chkcmbNoiNhan.Properties.PopupFormSize = new System.Drawing.Size(0, 500);
+            this.chkcmbNoiNhan.Properties.SelectAllItemVisible = false;
+            this.chkcmbNoiNhan.Size = new System.Drawing.Size(100, 22);
+            this.chkcmbNoiNhan.TabIndex = 101;
+            // 
             // frmCongVanDi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1293, 594);
+            this.ClientSize = new System.Drawing.Size(1284, 594);
+            this.Controls.Add(this.chkcmbNoiNhan);
             this.Controls.Add(this.txtNoiDungTimKiem);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.cmbTimKiem);
@@ -641,6 +676,7 @@
             this.Text = "Công Văn Đi";
             this.Load += new System.EventHandler(this.frmCongVanDi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCongVan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkcmbNoiNhan.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -696,5 +732,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox txtNoiDungTimKiem;
         private System.Windows.Forms.Label label19;
+        private DevExpress.XtraEditors.CheckedComboBoxEdit chkcmbNoiNhan;
     }
 }
