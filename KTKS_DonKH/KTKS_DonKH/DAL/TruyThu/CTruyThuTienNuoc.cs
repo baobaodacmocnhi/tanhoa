@@ -129,8 +129,8 @@ namespace KTKS_DonKH.DAL.TruyThu
 
         public string GetTinhTrang(string DanhBo)
         {
-            if (db.TruyThuTienNuocs.Any(item => item.DanhBo == DanhBo && (item.TinhTrang != "Đã thanh toán" && item.TinhTrang != "Điều chỉnh không phát sinh truy thu" && item.TinhTrang != "Miễn truy thu")) == true)
-                return db.TruyThuTienNuocs.SingleOrDefault(item => item.DanhBo == DanhBo && (item.TinhTrang != "Đã thanh toán" && item.TinhTrang != "Điều chỉnh không phát sinh truy thu" && item.TinhTrang != "Miễn truy thu")).TinhTrang;
+            if (db.TruyThuTienNuocs.Any(item => item.DanhBo == DanhBo && (item.TinhTrang == "Đang gửi thư mời" || item.TinhTrang == "Trả góp" || item.TinhTrang == "Đã gửi TB tạm ngưng cung cấp nước" || item.TinhTrang == "Chuyển lập TB hủy")) == true)
+                return db.TruyThuTienNuocs.SingleOrDefault(item => item.DanhBo == DanhBo && (item.TinhTrang == "Đang gửi thư mời" || item.TinhTrang == "Trả góp" || item.TinhTrang == "Đã gửi TB tạm ngưng cung cấp nước" || item.TinhTrang == "Chuyển lập TB hủy")).TinhTrang;
             else
                 return "";
         }

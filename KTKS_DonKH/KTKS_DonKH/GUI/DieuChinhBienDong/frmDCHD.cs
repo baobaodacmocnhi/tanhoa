@@ -398,7 +398,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void txtKyHD_Leave(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtKyHD.Text.Trim()))
+            if (!string.IsNullOrEmpty(txtKyHD.Text.Trim()) && !string.IsNullOrEmpty(txtDanhBo.Text.Trim()))
             {
                 string[] KyHD = txtKyHD.Text.Trim().Split('/');
                 HOADON hoadon = _cThuTien.Get(txtDanhBo.Text.Trim(), int.Parse(KyHD[0]), int.Parse(KyHD[1]));
@@ -444,11 +444,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
             {
-                System.IO.StreamWriter log = System.IO.File.AppendText("\\\\192.168.90.9\\BaoBao$\\KTKS_DonKH\\log.txt");
                 try
                 {
                     
-                    log.WriteLine("Time 1: " + DateTime.Now);
                     if (chkChuyenNhap.Checked == true)
                     {
                         if (txtDanhBo.Text.Trim() == "" || txtKyHD.Text.Trim() == "")
@@ -521,7 +519,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-                    log.WriteLine("Time 2: " + DateTime.Now);
                     ctdchd.DanhBo = txtDanhBo.Text.Trim();
                     ctdchd.HoTen = txtHoTen.Text.Trim();
                     ctdchd.DiaChi = txtDiaChi.Text.Trim();
@@ -588,7 +585,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     ctdchd.PhiBVMT_End = int.Parse(txtPhiBVMT_End.Text.Trim().Replace(".", ""));
                     ctdchd.TongCong_End = int.Parse(txtTongCong_End.Text.Trim().Replace(".", ""));
                     ctdchd.ChiTietMoi = txtChiTietMoi.Text.Trim();
-                    log.WriteLine("Time 3: " + DateTime.Now);
                     if (ctdchd.TienNuoc_End - ctdchd.TienNuoc_Start == 0)
                         ctdchd.TangGiam = "";
                     else
@@ -616,16 +612,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         Clear();
                         txtMaDonCu.Focus();
                     }
-                    log.WriteLine("Time 4: " + DateTime.Now);
-                    log.WriteLine("=============================================");
-                    log.Close();
-                    log.Dispose();
                 }
                 catch (Exception ex)
                 {
-                    log.WriteLine("=============================================");
-                    log.Close();
-                    log.Dispose();
                     MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -1251,6 +1240,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void TinhTienNuoc()
         {
+            if (String.IsNullOrEmpty(txtDanhBo.Text.Trim()))
+            {
+                return;
+            }
             string ChiTietCu = "";
             string ChiTietMoi = "";
             int TieuThu_DieuChinhGia = 0;

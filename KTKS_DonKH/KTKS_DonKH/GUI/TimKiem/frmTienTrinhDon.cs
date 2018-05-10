@@ -497,7 +497,7 @@ namespace KTKS_DonKH.GUI.TimKiem
         {
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
             {
-                frmTruyThuTienNuoc frm = new frmTruyThuTienNuoc(int.Parse(_CTRow.Row["ID"].ToString()));
+                frmTruyThuTienNuoc frm = new frmTruyThuTienNuoc(int.Parse(_CTRow.Row["MaTTTN"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;
