@@ -1615,8 +1615,6 @@
             this.gridColumn75.FieldName = "VeViec";
             this.gridColumn75.Name = "gridColumn75";
             this.gridColumn75.OptionsColumn.AllowEdit = false;
-            this.gridColumn75.Visible = true;
-            this.gridColumn75.VisibleIndex = 5;
             this.gridColumn75.Width = 300;
             // 
             // gridColumn76
@@ -1625,8 +1623,6 @@
             this.gridColumn76.FieldName = "NoiDung";
             this.gridColumn76.Name = "gridColumn76";
             this.gridColumn76.OptionsColumn.AllowEdit = false;
-            this.gridColumn76.Visible = true;
-            this.gridColumn76.VisibleIndex = 6;
             this.gridColumn76.Width = 300;
             // 
             // gridViewDon

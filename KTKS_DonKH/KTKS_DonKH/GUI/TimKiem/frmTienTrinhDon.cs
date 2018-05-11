@@ -525,14 +525,14 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         private void gridViewToTrinh_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
-            {
-                frmToTrinh frm = new frmToTrinh(decimal.Parse(_CTRow.Row["MaCTTT"].ToString()));
-                if (frm.ShowDialog() == DialogResult.Cancel)
-                {
-                    _CTRow = null;
-                }
-            }
+            //if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
+            //{
+            //    frmToTrinh frm = new frmToTrinh(decimal.Parse(_CTRow.Row["MaCTTT"].ToString()));
+            //    if (frm.ShowDialog() == DialogResult.Cancel)
+            //    {
+            //        _CTRow = null;
+            //    }
+            //}
         }
 
         #endregion
