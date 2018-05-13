@@ -212,5 +212,29 @@ namespace ThuTien.GUI.ToTruong
             else
                 MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+            {
+                try
+                {
+                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    foreach (DataGridViewRow item in dgvHDGiaoDienThoai.SelectedRows)
+                    {
+                        string sql = "delete TT_GiaoHDDienThoai where MaHD=" + item.Cells["MaHD_Giao"].Value.ToString() + " and MaNV=" + item.Cells["MaNV_Giao"].Value.ToString()
+                            + " and NgayDi='" + DateTime.Parse(item.Cells["NgayDi_Giao"].Value.ToString()).ToString("yyyy-MM-dd") + "'";
+                        _cGiaoHDDienThoai.LinQ_ExecuteNonQuery(sql);
+                    }
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 }
