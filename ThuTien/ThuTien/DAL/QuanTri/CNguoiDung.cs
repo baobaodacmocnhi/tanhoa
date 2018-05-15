@@ -233,6 +233,11 @@ namespace ThuTien.DAL.QuanTri
             return _db.TT_NguoiDungs.Where(item => item.MaND != MaND && item.MaND != 0&&item.An==false && item.PhoGiamDoc == false).OrderBy(item => item.STT).ToList();
         }
 
+        public List<TT_NguoiDung> GetDSExceptMaND_Doi(int MaND)
+        {
+            return _db.TT_NguoiDungs.Where(item => item.MaND != MaND && item.MaND != 0 && item.PhoGiamDoc == false).OrderBy(item => item.STT).ToList();
+        }
+
         public List<TT_NguoiDung> GetDS_Admin()
         {
             return _db.TT_NguoiDungs.OrderBy(item => item.STT).ToList();

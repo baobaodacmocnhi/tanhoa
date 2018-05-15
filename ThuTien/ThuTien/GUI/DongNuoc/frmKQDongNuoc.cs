@@ -13,6 +13,9 @@ using ThuTien.DAL;
 using ThuTien.BaoCao;
 using ThuTien.BaoCao.DongNuoc;
 using ThuTien.GUI.BaoCao;
+using System.IO;
+using System.Drawing.Imaging;
+using System.Diagnostics;
 
 namespace ThuTien.GUI.DongNuoc
 {
@@ -872,8 +875,7 @@ namespace ThuTien.GUI.DongNuoc
         {
             if (_kqdongnuoc != null && _kqdongnuoc.HinhDN != null)
             {
-                frmHinhDongMoNuoc frm = new frmHinhDongMoNuoc(_kqdongnuoc.HinhDN.ToArray());
-                frm.ShowDialog();
+                LoadImageView(_kqdongnuoc.HinhDN.ToArray());
             }
         }
 
@@ -881,11 +883,45 @@ namespace ThuTien.GUI.DongNuoc
         {
             if (_kqdongnuoc != null && _kqdongnuoc.HinhMN != null)
             {
-                frmHinhDongMoNuoc frm = new frmHinhDongMoNuoc(_kqdongnuoc.HinhMN.ToArray());
-                frm.ShowDialog();
+                LoadImageView(_kqdongnuoc.HinhMN.ToArray());
             }
         }
 
+        public void LoadImageView(byte[] pData)
+        {
+            // get a tempfilename and store the image
+            var tempFileName = Path.GetTempFileName();
 
+            FileStream mStream = new FileStream(tempFileName, FileMode.Create);
+            //byte[] pData = entity.Image.ToArray();
+            mStream.Write(pData, 0, Convert.ToInt32(pData.Length));
+            Bitmap bm = new Bitmap(mStream, false);
+            mStream.Dispose();
+
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+
+            // create our startup process and argument
+            var psi = new ProcessStartInfo(
+                "rundll32.exe",
+                String.Format(
+                    "\"{0}{1}\", ImageView_Fullscreen {2}",
+                    Environment.Is64BitOperatingSystem ?
+                        path.Replace(" (x86)", "") :
+                        path
+                        ,
+                    @"\Windows Photo Viewer\PhotoViewer.dll",
+                    tempFileName)
+                );
+
+            psi.UseShellExecute = false;
+
+            var viewer = Process.Start(psi);
+            // cleanup when done...
+            viewer.EnableRaisingEvents = true;
+            viewer.Exited += (o, args) =>
+            {
+                File.Delete(tempFileName);
+            };
+        }
     }
 }

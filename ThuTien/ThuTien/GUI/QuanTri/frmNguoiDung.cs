@@ -61,6 +61,11 @@ namespace ThuTien.GUI.QuanTri
                 _blNguoiDung = new BindingList<TT_NguoiDung>(_cNguoiDung.GetDS_Admin());
             }
             else
+                if (CNguoiDung.Doi)
+                {
+                    chkAn.Visible = true;
+                    _blNguoiDung = new BindingList<TT_NguoiDung>(_cNguoiDung.GetDSExceptMaND_Doi(CNguoiDung.MaND));
+                }else
             {
                 chkPhoGiamDoc.Visible = false;
                 chkAn.Visible = false;

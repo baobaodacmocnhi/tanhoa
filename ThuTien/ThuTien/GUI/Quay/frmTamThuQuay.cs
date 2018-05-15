@@ -131,7 +131,6 @@ namespace ThuTien.GUI.Quay
                             tamthu.FK_HOADON = int.Parse(item.Cells["MaHD"].Value.ToString());
                             tamthu.SoHoaDon = item.Cells["SoHoaDon"].Value.ToString();
                             tamthu.SoPhieu = SoPhieu;
-
                             if (_cTamThu.Them(tamthu))
                             {
                                 lstTamThu.Add(tamthu);

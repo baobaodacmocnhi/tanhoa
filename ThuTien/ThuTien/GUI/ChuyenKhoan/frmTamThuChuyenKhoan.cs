@@ -124,7 +124,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
                 try
                 {
-                    _cTamThu.BeginTransaction();
+                    //_cTamThu.BeginTransaction();
                     foreach (DataGridViewRow item in dgvHoaDon.Rows)
                         if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()))
                             if (!_cTamThu.CheckExist(item.Cells["SoHoaDon"].Value.ToString(), true))
@@ -140,20 +140,19 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     tamthu.MaNH = int.Parse(cmbNganHang.SelectedValue.ToString());
                                 if (!_cTamThu.Them(tamthu))
                                 {
-                                    _cTamThu.Rollback();
+                                    //_cTamThu.Rollback();
                                     MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
                             }
-                    _cTamThu.CommitTransaction();
-                    Clear();
+                    //_cTamThu.CommitTransaction();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Clear();
                 }
                 catch (Exception)
                 {
-                    _cTamThu.Rollback();
+                    //_cTamThu.Rollback();
                     MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
                 }
             }
             else
