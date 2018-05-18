@@ -62,6 +62,11 @@ namespace ThuTien.GUI.Quay
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
                     TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dgvKQDongNuoc["MaKQDN", e.RowIndex].Value.ToString()));
+                    if (kqdongnuoc.DongPhi == true && kqdongnuoc.ChuyenKhoan == true)
+                    {
+                        MessageBox.Show("Đã có đóng phí Chuyển Khoản", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     kqdongnuoc.DongPhi = bool.Parse(e.FormattedValue.ToString());
                     if (kqdongnuoc.DongPhi)
                         kqdongnuoc.NgayDongPhi = DateTime.Now;

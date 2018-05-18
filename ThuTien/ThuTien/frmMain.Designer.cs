@@ -59,6 +59,7 @@
             this.mnuKiemTraSaiBiet = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBaoCaoVatTu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPhiMoNuocDoi = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDieuChinhMLT = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToTruong = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuGiaoHDHanhThu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuGiaoHDTon = new System.Windows.Forms.ToolStripMenuItem();
@@ -131,7 +132,6 @@
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.mnuDieuChinhMLT = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -381,6 +381,13 @@
             this.mnuPhiMoNuocDoi.Size = new System.Drawing.Size(223, 22);
             this.mnuPhiMoNuocDoi.Text = "Phí Mở Nước";
             this.mnuPhiMoNuocDoi.Click += new System.EventHandler(this.mnuPhiMoNuocDoi_Click);
+            // 
+            // mnuDieuChinhMLT
+            // 
+            this.mnuDieuChinhMLT.Name = "mnuDieuChinhMLT";
+            this.mnuDieuChinhMLT.Size = new System.Drawing.Size(223, 22);
+            this.mnuDieuChinhMLT.Text = "Điều Chỉnh MLT";
+            this.mnuDieuChinhMLT.Click += new System.EventHandler(this.mnuDieuChinhMLT_Click);
             // 
             // mnuToTruong
             // 
@@ -946,13 +953,6 @@
             this.timer.Interval = 1200000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // mnuDieuChinhMLT
-            // 
-            this.mnuDieuChinhMLT.Name = "mnuDieuChinhMLT";
-            this.mnuDieuChinhMLT.Size = new System.Drawing.Size(223, 22);
-            this.mnuDieuChinhMLT.Text = "Điều Chỉnh MLT";
-            this.mnuDieuChinhMLT.Click += new System.EventHandler(this.mnuDieuChinhMLT_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -966,7 +966,6 @@
             this.IsMdiContainer = true;
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip;
-            this.MinimumSize = new System.Drawing.Size(1200, 600);
             this.Name = "frmMain";
             this.Text = "Quản Lý Thu Ngân";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

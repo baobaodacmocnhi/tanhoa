@@ -768,7 +768,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                     + " else"
                     + " 	if @MaNH=-1"//khác
                     + " 		select MLT=MALOTRINH,hd.SoHoaDon,Ky=CONVERT(varchar(2),hd.Ky)+'/'+CONVERT(varchar(4),hd.Nam),DanhBo=hd.DANHBA,HoTen=TENKH,DiaChi=SO+' '+DUONG,NGAYGIAITRACH,"
-                    + " 		'To'=(select TenTo from TT_To where MaTo=@MaTo),HanhThu=(select HoTen from TT_NguoiDung where MaND=MaNV_HanhThu),TONGCONG,TenNH=N'Khác',GiaBieu=GB"
+                    + " 		'To'=(select TenTo from TT_To where 2=@MaTo),HanhThu=(select HoTen from TT_NguoiDung where MaND=MaNV_HanhThu),TONGCONG,TenNH=N'Khác',GiaBieu=GB"
                     + " 		from HOADON hd"
                     + " 		where NAM=@Nam and ID_HOADON not in (select FK_HOADON from TAMTHU)"
                     + " 		and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and DangNgan_ChuyenKhoan=1 and NGAYGIAITRACH is not null"
