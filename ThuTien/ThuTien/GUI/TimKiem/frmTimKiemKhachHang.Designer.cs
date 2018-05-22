@@ -676,8 +676,9 @@
             // 
             this.cmbSoKy.FormattingEnabled = true;
             this.cmbSoKy.Items.AddRange(new object[] {
-            "10",
-            "16"});
+            "12",
+            "24",
+            "36"});
             this.cmbSoKy.Location = new System.Drawing.Point(553, 1);
             this.cmbSoKy.Name = "cmbSoKy";
             this.cmbSoKy.Size = new System.Drawing.Size(50, 21);
