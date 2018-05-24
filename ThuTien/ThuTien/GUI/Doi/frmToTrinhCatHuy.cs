@@ -448,7 +448,7 @@ namespace ThuTien.GUI.Doi
                                 //string[] MaHDs = item.MaHD.Split(',');
                                 string[] SoHoaDons = item.SoHoaDon.Split(',');
                                 foreach (string SoHoaDon in SoHoaDons)
-                                    if (!_cLenhHuy.CheckExist(SoHoaDon))
+                                    if (String.IsNullOrEmpty(SoHoaDon)==false&&_cLenhHuy.CheckExist(SoHoaDon)==false)
                                     {
                                         TT_LenhHuy lenhhuy = new TT_LenhHuy();
                                         lenhhuy.MaHD = _cHoaDon.Get(SoHoaDon).ID_HOADON;

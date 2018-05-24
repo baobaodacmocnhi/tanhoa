@@ -144,6 +144,9 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
+                                else
+                                {
+                                }
                             }
                     //_cTamThu.CommitTransaction();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
