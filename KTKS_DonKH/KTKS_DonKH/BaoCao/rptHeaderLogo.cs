@@ -16,14 +16,14 @@ namespace KTKS_DonKH.BaoCao {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rptHeader : ReportClass {
+    public class rptHeaderLogo : ReportClass {
         
-        public rptHeader() {
+        public rptHeaderLogo() {
         }
         
         public override string ResourceName {
             get {
-                return "rptHeader.rpt";
+                return "rptHeaderLogo.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace KTKS_DonKH.BaoCao {
         
         public override string FullResourceName {
             get {
-                return "KTKS_DonKH.BaoCao.rptHeader.rpt";
+                return "KTKS_DonKH.BaoCao.rptHeaderLogo.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace KTKS_DonKH.BaoCao {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrptHeader : Component, ICachedReport {
+    public class CachedrptHeaderLogo : Component, ICachedReport {
         
-        public CachedrptHeader() {
+        public CachedrptHeaderLogo() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace KTKS_DonKH.BaoCao {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rptHeader rpt = new rptHeader();
+            rptHeaderLogo rpt = new rptHeaderLogo();
             rpt.Site = this.Site;
             return rpt;
         }
