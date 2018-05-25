@@ -66,9 +66,46 @@ namespace ThuTien.GUI.DongNuoc
             _kqdongnuoc = null;
         }
 
+        public void LoadEntity(TT_KQDongNuoc entity)
+        {
+            txtDanhBo.Text = _kqdongnuoc.DanhBo;
+            txtMLT.Text = entity.MLT;
+            txtHoTen.Text = entity.HoTen;
+            txtDiaChi.Text = entity.DiaChi;
+            dateDongNuoc.Value = entity.NgayDN.Value;
+            if (entity.ChiSoDN != null)
+                txtChiSoDN.Text = entity.ChiSoDN.Value.ToString();
+            txtHieu.Text = entity.Hieu;
+            if (entity.Co != null)
+                txtCo.Text = entity.Co.Value.ToString();
+            txtSoThan.Text = entity.SoThan;
+            cmbChiMatSo.SelectedItem = entity.ChiMatSo;
+            cmbChiKhoaGoc.SelectedItem = entity.ChiKhoaGoc;
+            txtLyDo.Text = entity.LyDo;
+            chkKhongThuTienMoNuoc.Checked = entity.KhongThuPhi;
+            if (entity.MoNuoc)
+            {
+                chkMoNuoc.Checked = entity.MoNuoc;
+                dateMoNuoc.Value = entity.NgayMN.Value;
+                if (entity.ChiSoMN != null)
+                    txtChiSoMN.Text = entity.ChiSoMN.Value.ToString();
+                txtGhiChuMN.Text = entity.GhiChuMN;
+            }
+            if (entity.DongNuoc2)
+            {
+                chkDongNuoc2.Checked = entity.DongNuoc2;
+                dateDongNuoc2.Value = entity.NgayDN.Value;
+                if (entity.ChiSoDN != null)
+                    txtChiSoDN2.Text = entity.ChiSoDN.Value.ToString();
+                dateDongNuoc1.Value = entity.NgayDN1.Value;
+                if (entity.ChiSoDN1 != null)
+                    txtChiSoDN1.Text = entity.ChiSoDN1.Value.ToString();
+            }
+        }
+
         private void txtMaDN_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtMaDN.Text.Trim()) && e.KeyChar == 13)
+            if (!string.IsNullOrEmpty(txtMaDN.Text.Trim().Replace("-", "")) && e.KeyChar == 13)
             {
                 Clear();
                 if (_cDongNuoc.CheckExist_KQDongNuoc(decimal.Parse(txtMaDN.Text.Trim().Replace("-", ""))))
@@ -79,39 +116,40 @@ namespace ThuTien.GUI.DongNuoc
                     txtGhiChuTroNgai.Text = _dongnuoc.GhiChuTroNgai;
 
                     _kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaDN(decimal.Parse(txtMaDN.Text.Trim().Replace("-", "")));
-                    txtDanhBo.Text = _kqdongnuoc.DanhBo;
-                    txtMLT.Text = _kqdongnuoc.MLT;
-                    txtHoTen.Text = _kqdongnuoc.HoTen;
-                    txtDiaChi.Text = _kqdongnuoc.DiaChi;
-                    dateDongNuoc.Value = _kqdongnuoc.NgayDN.Value;
-                    if (_kqdongnuoc.ChiSoDN != null)
-                        txtChiSoDN.Text = _kqdongnuoc.ChiSoDN.Value.ToString();
-                    txtHieu.Text = _kqdongnuoc.Hieu;
-                    if (_kqdongnuoc.Co != null)
-                        txtCo.Text = _kqdongnuoc.Co.Value.ToString();
-                    txtSoThan.Text = _kqdongnuoc.SoThan;
-                    cmbChiMatSo.SelectedItem = _kqdongnuoc.ChiMatSo;
-                    cmbChiKhoaGoc.SelectedItem = _kqdongnuoc.ChiKhoaGoc;
-                    txtLyDo.Text = _kqdongnuoc.LyDo;
-                    chkKhongThuTienMoNuoc.Checked = _kqdongnuoc.KhongThuPhi;
-                    if (_kqdongnuoc.MoNuoc)
-                    {
-                        chkMoNuoc.Checked = _kqdongnuoc.MoNuoc;
-                        dateMoNuoc.Value = _kqdongnuoc.NgayMN.Value;
-                        if (_kqdongnuoc.ChiSoMN != null)
-                            txtChiSoMN.Text = _kqdongnuoc.ChiSoMN.Value.ToString();
-                        txtGhiChuMN.Text = _kqdongnuoc.GhiChuMN;
-                    }
-                    if (_kqdongnuoc.DongNuoc2)
-                    {
-                        chkDongNuoc2.Checked = _kqdongnuoc.DongNuoc2;
-                        dateDongNuoc2.Value = _kqdongnuoc.NgayDN.Value;
-                        if (_kqdongnuoc.ChiSoDN != null)
-                            txtChiSoDN2.Text = _kqdongnuoc.ChiSoDN.Value.ToString();
-                        dateDongNuoc1.Value = _kqdongnuoc.NgayDN1.Value;
-                        if (_kqdongnuoc.ChiSoDN1 != null)
-                            txtChiSoDN1.Text = _kqdongnuoc.ChiSoDN1.Value.ToString();
-                    }
+                    LoadEntity(_kqdongnuoc);
+                    //txtDanhBo.Text = _kqdongnuoc.DanhBo;
+                    //txtMLT.Text = _kqdongnuoc.MLT;
+                    //txtHoTen.Text = _kqdongnuoc.HoTen;
+                    //txtDiaChi.Text = _kqdongnuoc.DiaChi;
+                    //dateDongNuoc.Value = _kqdongnuoc.NgayDN.Value;
+                    //if (_kqdongnuoc.ChiSoDN != null)
+                    //    txtChiSoDN.Text = _kqdongnuoc.ChiSoDN.Value.ToString();
+                    //txtHieu.Text = _kqdongnuoc.Hieu;
+                    //if (_kqdongnuoc.Co != null)
+                    //    txtCo.Text = _kqdongnuoc.Co.Value.ToString();
+                    //txtSoThan.Text = _kqdongnuoc.SoThan;
+                    //cmbChiMatSo.SelectedItem = _kqdongnuoc.ChiMatSo;
+                    //cmbChiKhoaGoc.SelectedItem = _kqdongnuoc.ChiKhoaGoc;
+                    //txtLyDo.Text = _kqdongnuoc.LyDo;
+                    //chkKhongThuTienMoNuoc.Checked = _kqdongnuoc.KhongThuPhi;
+                    //if (_kqdongnuoc.MoNuoc)
+                    //{
+                    //    chkMoNuoc.Checked = _kqdongnuoc.MoNuoc;
+                    //    dateMoNuoc.Value = _kqdongnuoc.NgayMN.Value;
+                    //    if (_kqdongnuoc.ChiSoMN != null)
+                    //        txtChiSoMN.Text = _kqdongnuoc.ChiSoMN.Value.ToString();
+                    //    txtGhiChuMN.Text = _kqdongnuoc.GhiChuMN;
+                    //}
+                    //if (_kqdongnuoc.DongNuoc2)
+                    //{
+                    //    chkDongNuoc2.Checked = _kqdongnuoc.DongNuoc2;
+                    //    dateDongNuoc2.Value = _kqdongnuoc.NgayDN.Value;
+                    //    if (_kqdongnuoc.ChiSoDN != null)
+                    //        txtChiSoDN2.Text = _kqdongnuoc.ChiSoDN.Value.ToString();
+                    //    dateDongNuoc1.Value = _kqdongnuoc.NgayDN1.Value;
+                    //    if (_kqdongnuoc.ChiSoDN1 != null)
+                    //        txtChiSoDN1.Text = _kqdongnuoc.ChiSoDN1.Value.ToString();
+                    //}
                 }
                 else
                     if (_cDongNuoc.GetDongNuocByMaDN(decimal.Parse(txtMaDN.Text.Trim().Replace("-", ""))) != null)
@@ -174,6 +212,8 @@ namespace ThuTien.GUI.DongNuoc
                         _kqdongnuoc.DongNuoc2 = true;
                         _kqdongnuoc.PhiMoNuoc = _cDongNuoc.GetPhiMoNuoc() * 2;
 
+                        if (_kqdongnuoc.HinhDN1 == null)
+                            _kqdongnuoc.HinhDN1 = _kqdongnuoc.HinhDN;
                         if (_kqdongnuoc.NgayDN1 == null)
                         {
                             _kqdongnuoc.NgayDN1 = _kqdongnuoc.NgayDN;
@@ -183,6 +223,7 @@ namespace ThuTien.GUI.DongNuoc
                             _kqdongnuoc.ChiSoDN1 = _kqdongnuoc.ChiSoDN;
 
                         _kqdongnuoc.NgayDN = dateDongNuoc2.Value;
+                        _kqdongnuoc.NgayDN_ThucTe = DateTime.Now;
                         if (!string.IsNullOrEmpty(txtChiSoDN2.Text.Trim()))
                             _kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN2.Text.Trim());
 
@@ -204,6 +245,8 @@ namespace ThuTien.GUI.DongNuoc
                         {
                             _kqdongnuoc.DongNuoc2 = false;
                             _kqdongnuoc.PhiMoNuoc = _kqdongnuoc.PhiMoNuoc / 2;
+                            if (_kqdongnuoc.HinhDN1 != null)
+                                _kqdongnuoc.HinhDN = _kqdongnuoc.HinhDN1;
                             _kqdongnuoc.NgayDN = _kqdongnuoc.NgayDN1;
                             _kqdongnuoc.ChiSoDN = _kqdongnuoc.ChiSoDN1;
                             _kqdongnuoc.NgayDN1 = null;
@@ -466,48 +509,49 @@ namespace ThuTien.GUI.DongNuoc
             {
                 //dgvKQDongNuoc.Rows[e.RowIndex].Selected = true;
                 _kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dgvKQDongNuoc.SelectedRows[0].Cells["MaKQDN"].Value.ToString()));
-                txtDanhBo.Text = dgvKQDongNuoc["DanhBo", e.RowIndex].Value.ToString();
-                txtMLT.Text = dgvKQDongNuoc["MLT", e.RowIndex].Value.ToString();
-                txtHoTen.Text = dgvKQDongNuoc["HoTen", e.RowIndex].Value.ToString();
-                txtDiaChi.Text = dgvKQDongNuoc["DiaChi", e.RowIndex].Value.ToString();
-                dateDongNuoc.Value = DateTime.Parse(dgvKQDongNuoc["NgayDN", e.RowIndex].Value.ToString());
-                txtChiSoDN.Text = dgvKQDongNuoc["ChiSoDN", e.RowIndex].Value.ToString();
-                txtHieu.Text = dgvKQDongNuoc["Hieu", e.RowIndex].Value.ToString();
-                txtCo.Text = dgvKQDongNuoc["Co", e.RowIndex].Value.ToString();
-                txtSoThan.Text = dgvKQDongNuoc["SoThan", e.RowIndex].Value.ToString();
-                cmbChiMatSo.SelectedItem = dgvKQDongNuoc["ChiMatSo", e.RowIndex].Value.ToString();
-                cmbChiKhoaGoc.SelectedItem = dgvKQDongNuoc["ChiKhoaGoc", e.RowIndex].Value.ToString();
-                txtLyDo.Text = dgvKQDongNuoc["LyDo", e.RowIndex].Value.ToString();
-                if (bool.Parse(dgvKQDongNuoc["MoNuoc", e.RowIndex].Value.ToString()))
-                {
-                    chkMoNuoc.Checked = bool.Parse(dgvKQDongNuoc["MoNuoc", e.RowIndex].Value.ToString());
-                    dateMoNuoc.Value = DateTime.Parse(dgvKQDongNuoc["NgayMN", e.RowIndex].Value.ToString());
-                    txtChiSoMN.Text = dgvKQDongNuoc["ChiSoMN", e.RowIndex].Value.ToString();
-                    txtGhiChuMN.Text = dgvKQDongNuoc["GhiChuMN", e.RowIndex].Value.ToString();
-                }
-                else
-                {
-                    chkMoNuoc.Checked = false;
-                    dateMoNuoc.Value = DateTime.Now;
-                    txtChiSoMN.Text = "";
-                    txtGhiChuMN.Text = "";
-                }
-                if (bool.Parse(dgvKQDongNuoc["DongNuoc2", e.RowIndex].Value.ToString()))
-                {
-                    chkDongNuoc2.Checked = bool.Parse(dgvKQDongNuoc["DongNuoc2", e.RowIndex].Value.ToString());
-                    dateDongNuoc2.Value = DateTime.Parse(dgvKQDongNuoc["NgayDN", e.RowIndex].Value.ToString());
-                    txtChiSoDN2.Text = dgvKQDongNuoc["ChiSoDN", e.RowIndex].Value.ToString();
-                    dateDongNuoc1.Value = DateTime.Parse(dgvKQDongNuoc["NgayDN1", e.RowIndex].Value.ToString());
-                    txtChiSoDN1.Text = dgvKQDongNuoc["ChiSoDN1", e.RowIndex].Value.ToString();
-                }
-                else
-                {
-                    chkDongNuoc2.Checked = false;
-                    dateDongNuoc2.Value = DateTime.Now;
-                    txtChiSoDN2.Text = "";
-                    dateDongNuoc1.Value = DateTime.Now;
-                    txtChiSoDN1.Text = "";
-                }
+                LoadEntity(_kqdongnuoc);
+                //txtDanhBo.Text = dgvKQDongNuoc["DanhBo", e.RowIndex].Value.ToString();
+                //txtMLT.Text = dgvKQDongNuoc["MLT", e.RowIndex].Value.ToString();
+                //txtHoTen.Text = dgvKQDongNuoc["HoTen", e.RowIndex].Value.ToString();
+                //txtDiaChi.Text = dgvKQDongNuoc["DiaChi", e.RowIndex].Value.ToString();
+                //dateDongNuoc.Value = DateTime.Parse(dgvKQDongNuoc["NgayDN", e.RowIndex].Value.ToString());
+                //txtChiSoDN.Text = dgvKQDongNuoc["ChiSoDN", e.RowIndex].Value.ToString();
+                //txtHieu.Text = dgvKQDongNuoc["Hieu", e.RowIndex].Value.ToString();
+                //txtCo.Text = dgvKQDongNuoc["Co", e.RowIndex].Value.ToString();
+                //txtSoThan.Text = dgvKQDongNuoc["SoThan", e.RowIndex].Value.ToString();
+                //cmbChiMatSo.SelectedItem = dgvKQDongNuoc["ChiMatSo", e.RowIndex].Value.ToString();
+                //cmbChiKhoaGoc.SelectedItem = dgvKQDongNuoc["ChiKhoaGoc", e.RowIndex].Value.ToString();
+                //txtLyDo.Text = dgvKQDongNuoc["LyDo", e.RowIndex].Value.ToString();
+                //if (bool.Parse(dgvKQDongNuoc["MoNuoc", e.RowIndex].Value.ToString()))
+                //{
+                //    chkMoNuoc.Checked = bool.Parse(dgvKQDongNuoc["MoNuoc", e.RowIndex].Value.ToString());
+                //    dateMoNuoc.Value = DateTime.Parse(dgvKQDongNuoc["NgayMN", e.RowIndex].Value.ToString());
+                //    txtChiSoMN.Text = dgvKQDongNuoc["ChiSoMN", e.RowIndex].Value.ToString();
+                //    txtGhiChuMN.Text = dgvKQDongNuoc["GhiChuMN", e.RowIndex].Value.ToString();
+                //}
+                //else
+                //{
+                //    chkMoNuoc.Checked = false;
+                //    dateMoNuoc.Value = DateTime.Now;
+                //    txtChiSoMN.Text = "";
+                //    txtGhiChuMN.Text = "";
+                //}
+                //if (bool.Parse(dgvKQDongNuoc["DongNuoc2", e.RowIndex].Value.ToString()))
+                //{
+                //    chkDongNuoc2.Checked = bool.Parse(dgvKQDongNuoc["DongNuoc2", e.RowIndex].Value.ToString());
+                //    dateDongNuoc2.Value = DateTime.Parse(dgvKQDongNuoc["NgayDN", e.RowIndex].Value.ToString());
+                //    txtChiSoDN2.Text = dgvKQDongNuoc["ChiSoDN", e.RowIndex].Value.ToString();
+                //    dateDongNuoc1.Value = DateTime.Parse(dgvKQDongNuoc["NgayDN1", e.RowIndex].Value.ToString());
+                //    txtChiSoDN1.Text = dgvKQDongNuoc["ChiSoDN1", e.RowIndex].Value.ToString();
+                //}
+                //else
+                //{
+                //    chkDongNuoc2.Checked = false;
+                //    dateDongNuoc2.Value = DateTime.Now;
+                //    txtChiSoDN2.Text = "";
+                //    dateDongNuoc1.Value = DateTime.Now;
+                //    txtChiSoDN1.Text = "";
+                //}
             }
             catch
             {
@@ -887,6 +931,14 @@ namespace ThuTien.GUI.DongNuoc
             }
         }
 
+        private void btnHinhDongNuoc2_Click(object sender, EventArgs e)
+        {
+            if (_kqdongnuoc != null && _kqdongnuoc.HinhDN1 != null)
+            {
+                LoadImageView(_kqdongnuoc.HinhDN1.ToArray());
+            }
+        }
+
         public void LoadImageView(byte[] pData)
         {
             // get a tempfilename and store the image
@@ -923,5 +975,6 @@ namespace ThuTien.GUI.DongNuoc
                 File.Delete(tempFileName);
             };
         }
+
     }
 }
