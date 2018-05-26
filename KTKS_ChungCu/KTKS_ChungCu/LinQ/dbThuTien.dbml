@@ -89,6 +89,7 @@
       <Column Name="TienDuTruoc_DCHD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Name_PC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="IP_PC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DangNgan_DienThoai" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>

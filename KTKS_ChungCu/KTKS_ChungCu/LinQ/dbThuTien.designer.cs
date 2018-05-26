@@ -254,6 +254,8 @@ namespace KTKS_ChungCu.LinQ
 		
 		private string _IP_PC;
 		
+		private bool _DangNgan_DienThoai;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -432,6 +434,8 @@ namespace KTKS_ChungCu.LinQ
     partial void OnName_PCChanged();
     partial void OnIP_PCChanging(string value);
     partial void OnIP_PCChanged();
+    partial void OnDangNgan_DienThoaiChanging(bool value);
+    partial void OnDangNgan_DienThoaiChanged();
     #endregion
 		
 		public HOADON()
@@ -2175,6 +2179,26 @@ namespace KTKS_ChungCu.LinQ
 					this._IP_PC = value;
 					this.SendPropertyChanged("IP_PC");
 					this.OnIP_PCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DangNgan_DienThoai", DbType="Bit NOT NULL")]
+		public bool DangNgan_DienThoai
+		{
+			get
+			{
+				return this._DangNgan_DienThoai;
+			}
+			set
+			{
+				if ((this._DangNgan_DienThoai != value))
+				{
+					this.OnDangNgan_DienThoaiChanging(value);
+					this.SendPropertyChanging();
+					this._DangNgan_DienThoai = value;
+					this.SendPropertyChanged("DangNgan_DienThoai");
+					this.OnDangNgan_DienThoaiChanged();
 				}
 			}
 		}
