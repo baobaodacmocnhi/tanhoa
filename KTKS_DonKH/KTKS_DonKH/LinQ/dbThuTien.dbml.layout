@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 20.125" name="dbThuTien">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 20.25" name="dbThuTien">
   <DataContextMoniker Name="/dbThuTienDataContext" />
   <nestedChildShapes>
-    <classShape Id="556bf209-1d58-43ab-abab-2693dd693319" absoluteBounds="6.5, 1.375, 2, 18.501121419270834">
-      <DataClassMoniker Name="/dbThuTienDataContext/TT_HoaDonCu" />
-      <nestedChildShapes>
-        <elementListCompartment Id="db7a865b-0740-47f6-b952-32587e3088da" absoluteBounds="6.515, 1.835, 1.9700000000000002, 17.941121419270832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="9a485348-8ffb-435e-9b68-e0d5f23b4684" absoluteBounds="3.5, 0.75, 2, 17.539614257812502">
+    <classShape Id="877c7819-f613-429c-946c-fbd3a8635171" absoluteBounds="5, 2.125, 2, 17.731915690104167">
       <DataClassMoniker Name="/dbThuTienDataContext/HOADON" />
       <nestedChildShapes>
-        <elementListCompartment Id="8b1ab129-9c5f-44c1-a19c-16bc0365c78a" absoluteBounds="3.515, 1.21, 1.9700000000000002, 16.9796142578125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="9650a81f-88d1-4d8f-ad60-f31cfe57d7ae" absoluteBounds="5.015, 2.585, 1.9700000000000002, 17.171915690104164" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ddb0db14-d42e-4728-a132-28d3b3c3ff1d" absoluteBounds="8.5, 2.25, 2, 17.731915690104167">
+      <DataClassMoniker Name="/dbThuTienDataContext/TT_HoaDonCu" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1566991c-170a-44b1-9f48-c10435a91d02" absoluteBounds="8.515, 2.71, 1.9700000000000002, 17.171915690104164" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
