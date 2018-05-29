@@ -293,16 +293,17 @@ namespace ThuTien.GUI.ChuyenKhoan
                 {
                     foreach (DataGridViewRow item in dgvDCHD.SelectedRows)
                     {
-                        using (var scope = new TransactionScope())
-                        {
-                            HOADON hoadon = _cHoaDon.Get(item.Cells["SoHoaDon_DCHD"].Value.ToString());
-                            hoadon.DCHD = false;
-                            hoadon.TONGCONG = hoadon.TongCongTruoc_DCHD;
-                            hoadon.TongCongTruoc_DCHD = null;
-                            hoadon.TienDuTruoc_DCHD = null;
-                            if (_cHoaDon.Sua(hoadon))
-                                scope.Complete();
-                        }
+                        HOADON hoadon = _cHoaDon.Get(item.Cells["SoHoaDon_DCHD"].Value.ToString());
+                        if (hoadon.DCHD == true)
+                            using (var scope = new TransactionScope())
+                            {
+                                hoadon.DCHD = false;
+                                hoadon.TONGCONG = (decimal)hoadon.TongCongTruoc_DCHD;
+                                hoadon.TongCongTruoc_DCHD = null;
+                                hoadon.TienDuTruoc_DCHD = null;
+                                if (_cHoaDon.Sua(hoadon))
+                                    scope.Complete();
+                            }
                     }
                     dgvDCHD.DataSource = _cHoaDon.GetDSDCHDTienDu();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

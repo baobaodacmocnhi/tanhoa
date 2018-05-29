@@ -318,91 +318,100 @@ namespace ThuTien.GUI.ChuyenKhoan
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                CExcel fileExcel = new CExcel(dialog.FileName);
-                DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
+                string DanhBo = "";
+                try
+                {
+                    CExcel fileExcel = new CExcel(dialog.FileName);
+                    DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
 
-                ///kiểm tra danh bộ chặn tiền dư
-                string strTienDu = "";
-                string strDCHD = "";
-                foreach (DataRow item in dtExcel.Rows)
-                    if (item[0].ToString().Replace(" ", "").Length == 11 && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
-                        if (_cHoaDon.CheckKhoaTienDuByDanhBo(item[0].ToString().Replace(" ", "")))
-                        {
-                            strTienDu += item[0].ToString().Replace(" ", "") + "\n";
-                        }
-                        else
-                            if (_cHoaDon.CheckDCHDTienDuByDanhBo(item[0].ToString().Replace(" ", "")))
+                    ///kiểm tra danh bộ chặn tiền dư
+                    string strTienDu = "";
+                    string strDCHD = "";
+                    foreach (DataRow item in dtExcel.Rows)
+                        if (item[0].ToString().Replace(" ", "").Length == 11 && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
+                            if (_cHoaDon.CheckKhoaTienDuByDanhBo(item[0].ToString().Replace(" ", "")))
                             {
-                                strDCHD += item[0].ToString().Replace(" ", "") + "\n";
+                                strTienDu += item[0].ToString().Replace(" ", "") + "\n";
                             }
-
-                if (!string.IsNullOrWhiteSpace(strTienDu))
-                {
-                    MessageBox.Show("Chặn Tiền Dư:\n" + strTienDu, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                if (!string.IsNullOrWhiteSpace(strDCHD))
-                {
-                    MessageBox.Show("DCHD Tiền Dư:\n" + strDCHD, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                DataTable dt = new DataTable();
-                foreach (DataRow item in dtExcel.Rows)
-                    if (item[0].ToString().Replace(" ", "").Length == 11 && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
-                    {
-                        dt.Merge(_cHoaDon.GetDSTonByDanhBo(item[0].ToString().Replace(" ", "")));
-                    }
-                dgvHoaDon.DataSource = dt;
-
-                foreach (DataRow itemExcel in dtExcel.Rows)
-                    if (itemExcel[0].ToString().Replace(" ", "").Length == 11 && !string.IsNullOrEmpty(itemExcel[1].ToString()) && !string.IsNullOrEmpty(itemExcel[2].ToString()))
-                    {
-                        string ChenhLech = "";
-                        int SoTien = 0;
-                        DataRow[] dr = dt.Select("DanhBo like '" + itemExcel[0].ToString().Replace(" ", "") + "'");
-                        foreach (DataRow itemRow in dr)
-                        {
-                            SoTien += int.Parse(itemRow["TongCong"].ToString());
-                        }
-                        //SoTien += _cDongNuoc.GetPhiMoNuoc(itemExcel[0].ToString().Replace(" ", ""));
-                        if (int.Parse(itemExcel[1].ToString()) > SoTien)
-                        {
-                            ChenhLech = "Dư: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (int.Parse(itemExcel[1].ToString()) - SoTien));
-                            foreach (DataGridViewRow itemRow in dgvHoaDon.Rows)
-                                if (itemRow.Cells["DanhBo"].Value.ToString() == itemExcel[0].ToString().Replace(" ", ""))
+                            else
+                                if (_cHoaDon.CheckDCHDTienDuByDanhBo(item[0].ToString().Replace(" ", "")))
                                 {
-                                    itemRow.Cells["ChenhLech"].Value = ChenhLech;
-                                    itemRow.DefaultCellStyle.BackColor = Color.GreenYellow;
-                                    itemRow.Cells["NganHang"].Value = _cNganHang.GetMaNHByKyHieu(itemExcel[2].ToString());
+                                    strDCHD += item[0].ToString().Replace(" ", "") + "\n";
                                 }
+
+                    if (!string.IsNullOrWhiteSpace(strTienDu))
+                    {
+                        MessageBox.Show("Chặn Tiền Dư:\n" + strTienDu, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    if (!string.IsNullOrWhiteSpace(strDCHD))
+                    {
+                        MessageBox.Show("DCHD Tiền Dư:\n" + strDCHD, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    DataTable dt = new DataTable();
+                    foreach (DataRow item in dtExcel.Rows)
+                        if (item[0].ToString().Replace(" ", "").Length == 11 && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
+                        {
+                            dt.Merge(_cHoaDon.GetDSTonByDanhBo(item[0].ToString().Replace(" ", "")));
                         }
-                        else
-                            if (int.Parse(itemExcel[1].ToString()) < SoTien)
+                    dgvHoaDon.DataSource = dt;
+
+                    foreach (DataRow itemExcel in dtExcel.Rows)
+                        if (itemExcel[0].ToString().Replace(" ", "").Length == 11 && !string.IsNullOrEmpty(itemExcel[1].ToString()) && !string.IsNullOrEmpty(itemExcel[2].ToString()))
+                        {
+                            DanhBo = itemExcel[0].ToString().Replace(" ", "");
+                            string ChenhLech = "";
+                            int SoTien = 0;
+                            DataRow[] dr = dt.Select("DanhBo like '" + itemExcel[0].ToString().Replace(" ", "") + "'");
+                            foreach (DataRow itemRow in dr)
                             {
-                                ChenhLech = "Thiếu: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (int.Parse(itemExcel[1].ToString()) - SoTien));
+                                SoTien += int.Parse(itemRow["TongCong"].ToString());
+                            }
+                            //SoTien += _cDongNuoc.GetPhiMoNuoc(itemExcel[0].ToString().Replace(" ", ""));
+                            if (int.Parse(itemExcel[1].ToString()) > SoTien)
+                            {
+                                ChenhLech = "Dư: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (int.Parse(itemExcel[1].ToString()) - SoTien));
                                 foreach (DataGridViewRow itemRow in dgvHoaDon.Rows)
                                     if (itemRow.Cells["DanhBo"].Value.ToString() == itemExcel[0].ToString().Replace(" ", ""))
                                     {
                                         itemRow.Cells["ChenhLech"].Value = ChenhLech;
-                                        itemRow.DefaultCellStyle.BackColor = Color.Orange;
+                                        itemRow.DefaultCellStyle.BackColor = Color.GreenYellow;
                                         itemRow.Cells["NganHang"].Value = _cNganHang.GetMaNHByKyHieu(itemExcel[2].ToString());
                                     }
                             }
                             else
-                            {
-                                foreach (DataGridViewRow itemRow in dgvHoaDon.Rows)
-                                    if (itemRow.Cells["DanhBo"].Value.ToString() == itemExcel[0].ToString().Replace(" ", ""))
-                                    {
-                                        itemRow.Cells["NganHang"].Value = _cNganHang.GetMaNHByKyHieu(itemExcel[2].ToString());
-                                        if (_cDongNuoc.CheckPhiMoNuoc(itemRow.Cells["DanhBo"].Value.ToString()) == true)
-                                            itemRow.DefaultCellStyle.BackColor = Color.Yellow;
-                                    }
-                            }
+                                if (int.Parse(itemExcel[1].ToString()) < SoTien)
+                                {
+                                    ChenhLech = "Thiếu: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (int.Parse(itemExcel[1].ToString()) - SoTien));
+                                    foreach (DataGridViewRow itemRow in dgvHoaDon.Rows)
+                                        if (itemRow.Cells["DanhBo"].Value.ToString() == itemExcel[0].ToString().Replace(" ", ""))
+                                        {
+                                            itemRow.Cells["ChenhLech"].Value = ChenhLech;
+                                            itemRow.DefaultCellStyle.BackColor = Color.Orange;
+                                            itemRow.Cells["NganHang"].Value = _cNganHang.GetMaNHByKyHieu(itemExcel[2].ToString());
+                                        }
+                                }
+                                else
+                                {
+                                    foreach (DataGridViewRow itemRow in dgvHoaDon.Rows)
+                                        if (itemRow.Cells["DanhBo"].Value.ToString() == itemExcel[0].ToString().Replace(" ", ""))
+                                        {
+                                            itemRow.Cells["NganHang"].Value = _cNganHang.GetMaNHByKyHieu(itemExcel[2].ToString());
+                                            if (_cDongNuoc.CheckPhiMoNuoc(itemRow.Cells["DanhBo"].Value.ToString()) == true)
+                                                itemRow.DefaultCellStyle.BackColor = Color.Yellow;
+                                        }
+                                }
+                        }
+                    foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                    {
+                        item.Cells["Chon"].Value = true;
                     }
-                foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                }
+                catch (Exception)
                 {
-                    item.Cells["Chon"].Value = true;
+                    MessageBox.Show("Lỗi, "+DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
