@@ -34,6 +34,15 @@ namespace KTCN_CongVan
             }
             txtLoaiCongVan_Den.AutoCompleteCustomSource = auto_Den;
 
+            DataTable dtNoiDung_Den = _cCongVanDen.GetNoiDung();
+            AutoCompleteStringCollection autoNoiDung_Den = new AutoCompleteStringCollection();
+            foreach (DataRow item in dtNoiDung_Den.Rows)
+            {
+                autoNoiDung_Den.Add(item["NoiDung"].ToString());
+            }
+            txtNoiDung_Den.AutoCompleteCustomSource = autoNoiDung_Den;
+
+            //////////////
             dgvCongVan_Di.AutoGenerateColumns = false;
             DataTable dtLoaiCongVan_Di = _cCongVanDi.GetLoaiCongVan();
             AutoCompleteStringCollection auto_Di = new AutoCompleteStringCollection();
@@ -43,6 +52,13 @@ namespace KTCN_CongVan
             }
             txtLoaiCongVan_Di.AutoCompleteCustomSource = auto_Di;
 
+            DataTable dtNoiDung_Di = _cCongVanDi.GetNoiDung();
+            AutoCompleteStringCollection autoNoiDung_Di = new AutoCompleteStringCollection();
+            foreach (DataRow item in dtNoiDung_Di.Rows)
+            {
+                autoNoiDung_Di.Add(item["NoiDung"].ToString());
+            }
+            txtNoiDung_Di.AutoCompleteCustomSource = autoNoiDung_Di;
         }
 
         private void LoadCongVanDi(CongVanDi entity)

@@ -71,6 +71,11 @@ namespace KTCN_CongVan.DAL
             return LINQToDataTable(_db.CongVanDis.Select(item => new { item.LoaiCongVan }).ToList().Distinct());
         }
 
+        public DataTable GetNoiDung()
+        {
+            return LINQToDataTable(_db.CongVanDis.Select(item => new { item.NoiDung }).ToList().Distinct());
+        }
+
         public DataTable GetDS()
         {
             return LINQToDataTable(_db.CongVanDis.ToList());

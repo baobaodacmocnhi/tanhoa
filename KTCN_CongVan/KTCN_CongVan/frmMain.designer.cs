@@ -494,6 +494,8 @@
             // 
             // txtNoiDung_Den
             // 
+            this.txtNoiDung_Den.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtNoiDung_Den.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtNoiDung_Den.Location = new System.Drawing.Point(89, 58);
             this.txtNoiDung_Den.Name = "txtNoiDung_Den";
             this.txtNoiDung_Den.Size = new System.Drawing.Size(393, 20);
@@ -872,6 +874,8 @@
             // 
             // txtNoiDung_Di
             // 
+            this.txtNoiDung_Di.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtNoiDung_Di.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtNoiDung_Di.Location = new System.Drawing.Point(89, 58);
             this.txtNoiDung_Di.Name = "txtNoiDung_Di";
             this.txtNoiDung_Di.Size = new System.Drawing.Size(393, 20);
