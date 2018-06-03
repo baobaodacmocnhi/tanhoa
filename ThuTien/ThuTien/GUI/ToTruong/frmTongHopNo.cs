@@ -338,11 +338,15 @@ namespace ThuTien.GUI.ToTruong
                 dr1["TongCongSo"] = TongCongSo;
                 dr1["TongCongChu"] = _cTamThu.ConvertMoneyToWord(TongCongSo.ToString());
                 dr1["NgayThanhToan"] = dateThanhToan.Value.ToString("dd/MM/yyyy");
-                if (radGiamDoc.Checked)
-                    dr1["NguoiKy"] = "GIÁM ĐỐC";
-                else
-                    if (radPhoGiamDoc.Checked)
-                        dr1["NguoiKy"] = "P.GIÁM ĐỐC";
+                //if (radGiamDoc.Checked)
+                //    dr1["NguoiKy"] = "GIÁM ĐỐC";
+                //else
+                //    if (radPhoGiamDoc.Checked)
+                //        dr1["NguoiKy"] = "P.GIÁM ĐỐC";
+                if (chkChuKy.Checked == true)
+                    dr1["ChuKy"] = true;
+                dr1["NguoiKy"] = "Nguyễn Ngọc Ẩn";
+
                 ds.Tables["TongHopNo"].Rows.Add(dr1);
                 if (radA4.Checked)
                 {
@@ -500,11 +504,14 @@ namespace ThuTien.GUI.ToTruong
             dr1["TongCongSo"] = TongCongSo;
             dr1["TongCongChu"] = _cTamThu.ConvertMoneyToWord(TongCongSo.ToString());
             dr1["NgayThanhToan"] = tonghopno.NgayThanhToan.Value.ToString("dd/MM/yyyy");
-            if (radGiamDoc.Checked)
-                dr1["NguoiKy"] = "GIÁM ĐỐC";
-            else
-                if (radPhoGiamDoc.Checked)
-                    dr1["NguoiKy"] = "P.GIÁM ĐỐC";
+            //if (radGiamDoc.Checked)
+            //    dr1["NguoiKy"] = "GIÁM ĐỐC";
+            //else
+            //    if (radPhoGiamDoc.Checked)
+            //        dr1["NguoiKy"] = "P.GIÁM ĐỐC";
+            if (chkChuKy.Checked == true)
+                dr1["ChuKy"] = true;
+            dr1["NguoiKy"] = "Nguyễn Ngọc Ẩn";
 
             ds.Tables["TongHopNo"].Rows.Add(dr1);
             if (radA4.Checked)

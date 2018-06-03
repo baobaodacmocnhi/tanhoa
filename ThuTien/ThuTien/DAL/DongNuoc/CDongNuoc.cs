@@ -299,8 +299,8 @@ namespace ThuTien.DAL.DongNuoc
             string sql = "declare @FromDate datetime;"
                         + " declare @ToDate datetime;"
                         + " declare @MaTo int;"
-                        + " set @FromDate='" + FromDate.ToString("yyyy-MM-dd") + "'"
-                        + " set @ToDate='" + ToDate.ToString("yyyy-MM-dd") + "'"
+                        + " set @FromDate='" + FromDate.ToString("yyyyMMdd") + "'"
+                        + " set @ToDate='" + ToDate.ToString("yyyyMMdd") + "'"
                         + " set @MaTo=" + MaTo + ";"
                         + " select MaTo=@MaTo,TenTo=(select TenTo from TT_To where MaTo=@MaTo)"
                         + " ,DongNuoc=(select count(*) from (select distinct kqdn.MaKQDN,kqdn.DanhBo as DongNuoc from HOADON hd,TT_KQDongNuoc kqdn,TT_CTDongNuoc ctdn"
@@ -440,9 +440,9 @@ namespace ThuTien.DAL.DongNuoc
             var query = from itemKQ in _db.TT_KQDongNuocs
                         join itemCT in _db.TT_CTDongNuocs on itemKQ.MaDN equals itemCT.MaDN
                         join itemHD in _db.HOADONs on itemCT.MaHD equals itemHD.ID_HOADON
-                        where itemKQ.ChuyenKhoan == ChuyenKhoan && itemKQ.NgayDN != null && itemHD.ChuyenNoKhoDoi == false && itemKQ.DanhBo==DanhBo
+                        where itemKQ.ChuyenKhoan == ChuyenKhoan && itemKQ.NgayDN != null && itemKQ.NgayMN == null && itemKQ.TroNgaiMN==false && itemHD.ChuyenNoKhoDoi == false && itemKQ.DanhBo == DanhBo
                         select new
-                        {
+                        { 
                             itemKQ.MaDN,
                             itemKQ.MaKQDN,
                             itemKQ.CreateDate,
@@ -508,8 +508,8 @@ namespace ThuTien.DAL.DongNuoc
         {
             string sql = "declare @FromDate date;"
                         + " declare @ToDate date;"
-                        + " set @FromDate='" + FromDate.ToString("yyyy-MM-dd") + "';"
-                        + " set @ToDate='" + ToDate.ToString("yyyy-MM-dd") + "';"
+                        + " set @FromDate='" + FromDate.ToString("yyyyMMdd") + "';"
+                        + " set @ToDate='" + ToDate.ToString("yyyyMMdd") + "';"
                         + " select nd.MaND as MaNV,nd.HoTen,nd.STT,toncu.DCTonCu,toncu.HDTonCu,toncu.TCTonCu,nhan.DCNhan,nhan.HDNhan,nhan.TCNhan"
                         + ",dangngan.DCDangNgan,dangngan.HDDangNgan,dangngan.TCDangNgan,lenhhuy.DCHuy,lenhhuy.HDHuy,lenhhuy.TCHuy,tongton.DCTongTon,tongton.HDTongTon,tongton.TCTongTon,khoanuoc.DCKhoaNuoc from"
                         + " (select MaND,HoTen,STT from TT_NguoiDung where DongNuoc=1 and MaTo="+MaTo+") nd"

@@ -1199,8 +1199,8 @@ namespace ThuTien.DAL.TongHop
         {
             string sql = "declare @FromDate date;"
                         + " declare @ToDate date;"
-                        + " set @FromDate='" + FromDate.ToString("yyyy-MM-dd") + "';"
-                        + " set @ToDate='" + ToDate.ToString("yyyy-MM-dd") + "';"
+                        + " set @FromDate='" + FromDate.ToString("yyyyMMdd") + "';"
+                        + " set @ToDate='" + ToDate.ToString("yyyyMMdd") + "';"
                         + " select nd.MaND as MaNV,nd.HoTen,nd.STT,toncu.TCTonCu_BD,toncu.TCTonCu_END,nhan.TCNhan_BD,nhan.TCNhan_END"
                         + ",dangngan.TCDangNgan_BD,dangngan.TCDangNgan_END,lenhhuy.TCHuy_BD,lenhhuy.TCHuy_END,tongton.TCTongTon_BD,tongton.TCTongTon_END from"
                         + " (select MaND,HoTen,STT from TT_NguoiDung where DongNuoc=1 and MaTo=" + MaTo + ") nd"

@@ -67,7 +67,7 @@ namespace ThuTien.DAL.ChuyenKhoan
         public DataTable GetDSTienDu(DateTime NgayGiaiTrach)
         {
             string sql = "declare @NgayGiaiTrach date;"
-                    + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyy-MM-dd") + "'"
+                    + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "'"
                     + " select a.DanhBo,CASE WHEN b.SoTien is null THEN a.SoTien ELSE a.SoTien-b.SoTien END as SoTien,DienThoai from"
                     + " (select DanhBo,SoTien from TT_TienDu) a"
                     + " left join"

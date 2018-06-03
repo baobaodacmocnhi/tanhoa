@@ -154,8 +154,8 @@ namespace ThuTien.DAL.ChuyenKhoan
         {
             string sql = "declare @FromNgayGiaiTrach date;"
                 + " declare @ToNgayGiaiTrach date;"
-                + " set @FromNgayGiaiTrach='" + TuNgay.ToString("yyyy-MM-dd") + "';"
-                + " set @ToNgayGiaiTrach='" + DenNgay.ToString("yyyy-MM-dd") + "';"
+                + " set @FromNgayGiaiTrach='" + TuNgay.ToString("yyyyMMdd") + "';"
+                + " set @ToNgayGiaiTrach='" + DenNgay.ToString("yyyyMMdd") + "';"
                 + " select * from"
                 + " (select MaBK,bk.DanhBo,SoTien,Phi,CreateDate,TenNH,HoaDon,TongCong,CASE WHEN TongCong is null THEN SoTien ELSE SoTien-TongCong END as ChenhLech from"
                 + " (select MaBK,DanhBo,SoTien,Phi,MaNH,CreateDate from TT_BangKe where CAST(CreateDate as date)>=@FromNgayGiaiTrach and CAST(CreateDate as date)<=@ToNgayGiaiTrach) bk"

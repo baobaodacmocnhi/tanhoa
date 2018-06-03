@@ -69,83 +69,112 @@ namespace ThuTien.DAL.ToTruong
 
         public DataTable GetDS(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            var query = from item in _db.TT_TongHopNos
-                        //from itemHD in _db.HOADONs.Where(itemA => itemA.DANHBA == item.DanhBo).ToList().OrderByDescending(itemA => itemA.ID_HOADON).Take(1).DefaultIfEmpty()
-                        where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
-                        select new
-                        {
-                            item.MaTHN,
-                            item.DanhBo,
-                            item.KinhGui,
-                            TongCong = item.TT_CTTongHopNos.Sum(itemCT => itemCT.TongCong),
-                            item.ChiSoCu,
-                            item.ChiSoMoi,
-                            //item.TieuThu,
-                            //item.DinhMuc,
-                            item.TT_CTTongHopNos.OrderByDescending(itemB => itemB.CreateDate).First().TieuThu,
-                            item.TT_CTTongHopNos.OrderByDescending(itemB => itemB.CreateDate).First().DinhMuc,
-                            item.NgayThanhToan,
-                            item.CreateDate,
-                            TieuThuHD=_db.HOADONs.SingleOrDefault(itemB => itemB.DANHBA == item.DanhBo && (itemB.KY + "/" + itemB.NAM) == item.TT_CTTongHopNos.OrderByDescending(itemC => itemC.CreateDate).First().Ky).TIEUTHU,
-                            KyHD=_db.HOADONs.SingleOrDefault(itemB => itemB.DANHBA == item.DanhBo && (itemB.KY + "/" + itemB.NAM) == item.TT_CTTongHopNos.OrderByDescending(itemC => itemC.CreateDate).First().Ky).KY+"/"+_db.HOADONs.SingleOrDefault(itemB => itemB.DANHBA == item.DanhBo && (itemB.KY + "/" + itemB.NAM) == item.TT_CTTongHopNos.OrderByDescending(itemC => itemC.CreateDate).First().Ky).NAM,
-                            //TieuThuHD = itemHD.TIEUTHU,
-                            //KyHD = itemHD.KY + "/" + itemHD.NAM,
-                        };
-            return LINQToDataTable(query);
+            //var query = from item in _db.TT_TongHopNos
+            //            //from itemHD in _db.HOADONs.Where(itemA => itemA.DANHBA == item.DanhBo).ToList().OrderByDescending(itemA => itemA.ID_HOADON).Take(1).DefaultIfEmpty()
+            //            where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
+            //            select new
+            //            {
+            //                item.MaTHN,
+            //                item.DanhBo,
+            //                item.KinhGui,
+            //                TongCong = item.TT_CTTongHopNos.Sum(itemCT => itemCT.TongCong),
+            //                item.ChiSoCu,
+            //                item.ChiSoMoi,
+            //                //item.TieuThu,
+            //                //item.DinhMuc,
+            //                item.TT_CTTongHopNos.OrderByDescending(itemB => itemB.CreateDate).First().TieuThu,
+            //                item.TT_CTTongHopNos.OrderByDescending(itemB => itemB.CreateDate).First().DinhMuc,
+            //                item.NgayThanhToan,
+            //                item.CreateDate,
+            //                TieuThuHD=_db.HOADONs.SingleOrDefault(itemB => itemB.DANHBA == item.DanhBo && (itemB.KY + "/" + itemB.NAM) == item.TT_CTTongHopNos.OrderByDescending(itemC => itemC.CreateDate).First().Ky).TIEUTHU,
+            //                KyHD=_db.HOADONs.SingleOrDefault(itemB => itemB.DANHBA == item.DanhBo && (itemB.KY + "/" + itemB.NAM) == item.TT_CTTongHopNos.OrderByDescending(itemC => itemC.CreateDate).First().Ky).KY+"/"+_db.HOADONs.SingleOrDefault(itemB => itemB.DANHBA == item.DanhBo && (itemB.KY + "/" + itemB.NAM) == item.TT_CTTongHopNos.OrderByDescending(itemC => itemC.CreateDate).First().Ky).NAM,
+            //                //TieuThuHD = itemHD.TIEUTHU,
+            //                //KyHD = itemHD.KY + "/" + itemHD.NAM,
+            //            };
+            //return LINQToDataTable(query);
+            string sql = "select MaTHN,DanhBo,KinhGui,ChiSoCu,ChiSoMoi,NgayThanhToan,CreateDate,TieuThu,DinhMuc,"
+                        + " TongCong=(select SUM(TongCong) from TT_CTTongHopNo ctthn where ctthn.MaTHN=thn.MaTHN),"
+                        //+ " TieuThu=(select top 1 TieuThu from TT_CTTongHopNo ctthn where ctthn.MaTHN=thn.MaTHN order by ctthn.CreateDate desc),"
+                        //+ " DinhMuc=(select top 1 DinhMuc from TT_CTTongHopNo ctthn where ctthn.MaTHN=thn.MaTHN order by ctthn.CreateDate desc)"
+                        //+ " --TieuThuHD=(select TieuThu from HOADON hd where (convert(varchar(2),hd.KY)+'/'+convert(varchar(4),hd.NAM))=(select top 1 Ky from TT_CTTongHopNo ctthn where ctthn.MaTHN=thn.MaTHN order by ctthn.CreateDate desc) and DANHBA=thn.DanhBo),"
+                        //+ " --KyHD=''"
+                        + " from TT_TongHopNo thn"
+                        + " where CAST(CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'";
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
         public DataTable GetDS_To(int MaTo, DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            var query = from item in _db.TT_TongHopNos
-                        //from itemHD in _db.HOADONs.Where(itemA => itemA.DANHBA == item.DanhBo).ToList().OrderByDescending(itemA => itemA.ID_HOADON).Take(1).DefaultIfEmpty()
-                        where _db.TT_NguoiDungs.SingleOrDefault(itemND=>itemND.MaND==item.CreateBy.Value).MaTo == MaTo && item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
-                        select new
-                        {
-                            item.MaTHN,
-                            item.DanhBo,
-                            item.KinhGui,
-                            TongCong = item.TT_CTTongHopNos.Sum(itemCT => itemCT.TongCong),
-                            item.ChiSoCu,
-                            item.ChiSoMoi,
-                            //item.TieuThu,
-                            //item.DinhMuc,
-                            item.TT_CTTongHopNos.OrderByDescending(itemB => itemB.CreateDate).First().TieuThu,
-                            item.TT_CTTongHopNos.OrderByDescending(itemB => itemB.CreateDate).First().DinhMuc,
-                            item.NgayThanhToan,
-                            item.CreateDate,
-                            TieuThuHD = _db.HOADONs.SingleOrDefault(itemB => itemB.DANHBA == item.DanhBo && (itemB.KY + "/" + itemB.NAM) == item.TT_CTTongHopNos.OrderByDescending(itemC => itemC.CreateDate).First().Ky).TIEUTHU,
-                            KyHD = _db.HOADONs.SingleOrDefault(itemB => itemB.DANHBA == item.DanhBo && (itemB.KY + "/" + itemB.NAM) == item.TT_CTTongHopNos.OrderByDescending(itemC => itemC.CreateDate).First().Ky).KY + "/" + _db.HOADONs.SingleOrDefault(itemB => itemB.DANHBA == item.DanhBo && (itemB.KY + "/" + itemB.NAM) == item.TT_CTTongHopNos.OrderByDescending(itemC => itemC.CreateDate).First().Ky).NAM,
-                            //TieuThuHD=itemHD.TIEUTHU,
-                            //KyHD = itemHD.KY + "/" + itemHD.NAM,
-                        };
-            return LINQToDataTable(query);
+            //var query = from item in _db.TT_TongHopNos
+            //            //from itemHD in _db.HOADONs.Where(itemA => itemA.DANHBA == item.DanhBo).ToList().OrderByDescending(itemA => itemA.ID_HOADON).Take(1).DefaultIfEmpty()
+            //            where _db.TT_NguoiDungs.SingleOrDefault(itemND=>itemND.MaND==item.CreateBy.Value).MaTo == MaTo && item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
+            //            select new
+            //            {
+            //                item.MaTHN,
+            //                item.DanhBo,
+            //                item.KinhGui,
+            //                TongCong = item.TT_CTTongHopNos.Sum(itemCT => itemCT.TongCong),
+            //                item.ChiSoCu,
+            //                item.ChiSoMoi,
+            //                //item.TieuThu,
+            //                //item.DinhMuc,
+            //                item.TT_CTTongHopNos.OrderByDescending(itemB => itemB.CreateDate).First().TieuThu,
+            //                item.TT_CTTongHopNos.OrderByDescending(itemB => itemB.CreateDate).First().DinhMuc,
+            //                item.NgayThanhToan,
+            //                item.CreateDate,
+            //                TieuThuHD = _db.HOADONs.SingleOrDefault(itemB => itemB.DANHBA == item.DanhBo && (itemB.KY + "/" + itemB.NAM) == item.TT_CTTongHopNos.OrderByDescending(itemC => itemC.CreateDate).First().Ky).TIEUTHU,
+            //                KyHD = _db.HOADONs.SingleOrDefault(itemB => itemB.DANHBA == item.DanhBo && (itemB.KY + "/" + itemB.NAM) == item.TT_CTTongHopNos.OrderByDescending(itemC => itemC.CreateDate).First().Ky).KY + "/" + _db.HOADONs.SingleOrDefault(itemB => itemB.DANHBA == item.DanhBo && (itemB.KY + "/" + itemB.NAM) == item.TT_CTTongHopNos.OrderByDescending(itemC => itemC.CreateDate).First().Ky).NAM,
+            //                //TieuThuHD=itemHD.TIEUTHU,
+            //                //KyHD = itemHD.KY + "/" + itemHD.NAM,
+            //            };
+            //return LINQToDataTable(query);
+            string sql = "select MaTHN,DanhBo,KinhGui,ChiSoCu,ChiSoMoi,NgayThanhToan,CreateDate,TieuThu,DinhMuc,"
+                        + " TongCong=(select SUM(TongCong) from TT_CTTongHopNo ctthn where ctthn.MaTHN=thn.MaTHN),"
+                        //+ " TieuThu=(select top 1 TieuThu from TT_CTTongHopNo ctthn where ctthn.MaTHN=thn.MaTHN order by ctthn.CreateDate desc),"
+                        //+ " DinhMuc=(select top 1 DinhMuc from TT_CTTongHopNo ctthn where ctthn.MaTHN=thn.MaTHN order by ctthn.CreateDate desc)"
+                        //+ " --TieuThuHD=(select TieuThu from HOADON hd where (convert(varchar(2),hd.KY)+'/'+convert(varchar(4),hd.NAM))=(select top 1 Ky from TT_CTTongHopNo ctthn where ctthn.MaTHN=thn.MaTHN order by ctthn.CreateDate desc) and DANHBA=thn.DanhBo),"
+                        //+ " --KyHD=''"
+                        + " from TT_TongHopNo thn"
+                        + " where CAST(CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
+                        + " and (select MaTo from TT_NguoiDung where MaND=thn.CreateBy)="+MaTo;
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
         public DataTable GetDS(int CreateBy,DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            var query = from item in _db.TT_TongHopNos
-                        //from itemHD in _db.HOADONs.Where(itemA => itemA.DANHBA == item.DanhBo).ToList().OrderByDescending(itemA => itemA.ID_HOADON).Take(1).DefaultIfEmpty()
-                        where item.CreateBy == CreateBy && item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
-                        select new
-                        {
-                            item.MaTHN,
-                            item.DanhBo,
-                            item.KinhGui,
-                            TongCong = item.TT_CTTongHopNos.Sum(itemCT => itemCT.TongCong),
-                            item.ChiSoCu,
-                            item.ChiSoMoi,
-                            //item.TieuThu,
-                            //item.DinhMuc,
-                            item.TT_CTTongHopNos.OrderByDescending(itemB => itemB.CreateDate).First().TieuThu,
-                            item.TT_CTTongHopNos.OrderByDescending(itemB => itemB.CreateDate).First().DinhMuc,
-                            item.NgayThanhToan,
-                            item.CreateDate,
-                            TieuThuHD = _db.HOADONs.SingleOrDefault(itemB => itemB.DANHBA == item.DanhBo && (itemB.KY + "/" + itemB.NAM) == item.TT_CTTongHopNos.OrderByDescending(itemC => itemC.CreateDate).First().Ky).TIEUTHU,
-                            KyHD = _db.HOADONs.SingleOrDefault(itemB => itemB.DANHBA == item.DanhBo && (itemB.KY + "/" + itemB.NAM) == item.TT_CTTongHopNos.OrderByDescending(itemC => itemC.CreateDate).First().Ky).KY + "/" + _db.HOADONs.SingleOrDefault(itemB => itemB.DANHBA == item.DanhBo && (itemB.KY + "/" + itemB.NAM) == item.TT_CTTongHopNos.OrderByDescending(itemC => itemC.CreateDate).First().Ky).NAM,
-                            //TieuThuHD = itemHD.TIEUTHU,
-                            //KyHD = itemHD.KY + "/" + itemHD.NAM,
-                        };
-            return LINQToDataTable(query);
+            //var query = from item in _db.TT_TongHopNos
+            //            //from itemHD in _db.HOADONs.Where(itemA => itemA.DANHBA == item.DanhBo).ToList().OrderByDescending(itemA => itemA.ID_HOADON).Take(1).DefaultIfEmpty()
+            //            where item.CreateBy == CreateBy && item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
+            //            select new
+            //            {
+            //                item.MaTHN,
+            //                item.DanhBo,
+            //                item.KinhGui,
+            //                TongCong = item.TT_CTTongHopNos.Sum(itemCT => itemCT.TongCong),
+            //                item.ChiSoCu,
+            //                item.ChiSoMoi,
+            //                //item.TieuThu,
+            //                //item.DinhMuc,
+            //                item.TT_CTTongHopNos.OrderByDescending(itemB => itemB.CreateDate).First().TieuThu,
+            //                item.TT_CTTongHopNos.OrderByDescending(itemB => itemB.CreateDate).First().DinhMuc,
+            //                item.NgayThanhToan,
+            //                item.CreateDate,
+            //                TieuThuHD = _db.HOADONs.SingleOrDefault(itemB => itemB.DANHBA == item.DanhBo && (itemB.KY + "/" + itemB.NAM) == item.TT_CTTongHopNos.OrderByDescending(itemC => itemC.CreateDate).First().Ky).TIEUTHU,
+            //                KyHD = _db.HOADONs.SingleOrDefault(itemB => itemB.DANHBA == item.DanhBo && (itemB.KY + "/" + itemB.NAM) == item.TT_CTTongHopNos.OrderByDescending(itemC => itemC.CreateDate).First().Ky).KY + "/" + _db.HOADONs.SingleOrDefault(itemB => itemB.DANHBA == item.DanhBo && (itemB.KY + "/" + itemB.NAM) == item.TT_CTTongHopNos.OrderByDescending(itemC => itemC.CreateDate).First().Ky).NAM,
+            //                //TieuThuHD = itemHD.TIEUTHU,
+            //                //KyHD = itemHD.KY + "/" + itemHD.NAM,
+            //            };
+            //return LINQToDataTable(query);
+            string sql = "select MaTHN,DanhBo,KinhGui,ChiSoCu,ChiSoMoi,NgayThanhToan,CreateDate,TieuThu,DinhMuc,"
+                        + " TongCong=(select SUM(TongCong) from TT_CTTongHopNo ctthn where ctthn.MaTHN=thn.MaTHN),"
+                        //+ " TieuThu=(select top 1 TieuThu from TT_CTTongHopNo ctthn where ctthn.MaTHN=thn.MaTHN order by ctthn.CreateDate desc),"
+                        //+ " DinhMuc=(select top 1 DinhMuc from TT_CTTongHopNo ctthn where ctthn.MaTHN=thn.MaTHN order by ctthn.CreateDate desc)"
+                        //+ " --TieuThuHD=(select TieuThu from HOADON hd where (convert(varchar(2),hd.KY)+'/'+convert(varchar(4),hd.NAM))=(select top 1 Ky from TT_CTTongHopNo ctthn where ctthn.MaTHN=thn.MaTHN order by ctthn.CreateDate desc) and DANHBA=thn.DanhBo),"
+                        //+ " --KyHD=''"
+                        + " from TT_TongHopNo thn"
+                        + " where CAST(CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
+                        + " and thn.CreateBy=" + CreateBy;
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
         public TT_TongHopNo Get(decimal MaTHN)

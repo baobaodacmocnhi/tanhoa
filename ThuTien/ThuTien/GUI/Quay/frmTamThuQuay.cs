@@ -71,13 +71,20 @@ namespace ThuTien.GUI.Quay
                         else
                         {
                             item.Cells["Chon"].Value = "True";
-                            if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon"].Value.ToString()))
-                                item.DefaultCellStyle.BackColor = Color.Yellow;
-                            if (_cDongNuoc.CheckExist_KQDongNuocLan2(item.Cells["SoHoaDon"].Value.ToString()))
-                                item.DefaultCellStyle.BackColor = Color.Orange;
-                            item.Cells["DongNuoc"].Value = _cDongNuoc.GetNgayDNBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
                             if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
                                 item.DefaultCellStyle.BackColor = Color.Red;
+                            else
+                                if (_cDongNuoc.CheckExist_KQDongNuocLan2(item.Cells["SoHoaDon"].Value.ToString()))
+                                {
+                                    item.DefaultCellStyle.BackColor = Color.Orange;
+                                    item.Cells["DongNuoc"].Value = _cDongNuoc.GetNgayDNBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
+                                }
+                                else
+                                    if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon"].Value.ToString()))
+                                    {
+                                        item.DefaultCellStyle.BackColor = Color.Yellow;
+                                        item.Cells["DongNuoc"].Value = _cDongNuoc.GetNgayDNBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
+                                    }
                         }
                     }
                 }
@@ -142,6 +149,15 @@ namespace ThuTien.GUI.Quay
                                 return;
                             }
                         }
+                    //DataTable dt = _cDongNuoc.GetDSKQDongNuoc_PhiMoNuoc(false,lstTamThu[0].DANHBA);
+                    //TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dt.Rows[0]["MaKQDN"].ToString()));
+                    //if (kqdongnuoc.DongPhi != true && kqdongnuoc.ChuyenKhoan != true)
+                    //{
+                    //    kqdongnuoc.DongPhi = true;
+                    //    kqdongnuoc.NgayDongPhi = DateTime.Now;
+                    //    _cDongNuoc.SuaKQ(kqdongnuoc);
+                    //}
+
                     _cTamThu.CommitTransaction();
                 }
                 catch (Exception)

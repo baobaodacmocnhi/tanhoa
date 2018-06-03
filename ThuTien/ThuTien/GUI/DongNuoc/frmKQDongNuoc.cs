@@ -745,9 +745,6 @@ namespace ThuTien.GUI.DongNuoc
                                 }
                                 dr["Ky"] = Ky;
                                 dr["NgayDongMoNuoc"] = item.NgayMN;
-                                if (item.GhiChuMN != "")
-                                    dr["ChiSoDongMoNuoc"] = item.GhiChuMN;
-                                else
                                     if (item.Co <= 25)
                                         dr["ChiSoDongMoNuoc"] = item.ChiSoMN.Value.ToString("D4");
                                     else
