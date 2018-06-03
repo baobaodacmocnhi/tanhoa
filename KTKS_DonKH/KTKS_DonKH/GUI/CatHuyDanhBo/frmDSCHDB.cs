@@ -22,6 +22,7 @@ using KTKS_DonKH.DAL.DongNuoc;
 using KTKS_DonKH.BaoCao.DongNuoc;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.GUI.DongNuoc;
+using KTKS_DonKH.DAL.QuanTri;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -167,42 +168,106 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         /// <param name="e"></param>
         private void dgvDSCTCHDB_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (radDSCatTamDanhBo.Checked)
+            //if (radDSCatTamDanhBo.Checked)
+            //{
+            //    CTCTDB ctctdb = _cCHDB.GetCTCTDB(decimal.Parse(dgvDSCTCHDB.CurrentRow.Cells["MaTB"].Value.ToString()));
+            //    if (bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["ThongBaoDuocKy"].Value.ToString()) != ctctdb.ThongBaoDuocKy)
+            //    {
+            //        ctctdb.ThongBaoDuocKy = bool.Parse(dgvDSCTCHDB.CurrentCell.Value.ToString());
+            //        _cCHDB.SuaCTCTDB(ctctdb);
+            //    }
+            //    if (bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["PhieuDuocKy"].Value.ToString()) != ctctdb.PhieuDuocKy)
+            //    {
+            //        ctctdb.PhieuDuocKy = bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["PhieuDuocKy"].Value.ToString());
+            //        if (_cCHDB.SuaCTCTDB(ctctdb))
+            //        {
+            //            PhieuCHDB ycchdb = _cCHDB.GetPhieuHuyByMaCTCTDB(ctctdb.MaCTCTDB);
+            //            ycchdb.PhieuDuocKy = ctctdb.PhieuDuocKy;
+            //            _cCHDB.SuaPhieuHuy(ycchdb);
+            //        }
+            //    }
+            //}
+            //if (radDSCatHuyDanhBo.Checked)
+            //{
+            //    CTCHDB ctchdb = _cCHDB.GetCTCHDB(decimal.Parse(dgvDSCTCHDB.CurrentRow.Cells["MaTB"].Value.ToString()));
+            //    if (bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["ThongBaoDuocKy"].Value.ToString()) != ctchdb.ThongBaoDuocKy)
+            //    {
+            //        ctchdb.ThongBaoDuocKy = bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["ThongBaoDuocKy"].Value.ToString());
+            //        _cCHDB.SuaCTCHDB(ctchdb);
+            //    }
+            //    if (bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["PhieuDuocKy"].Value.ToString()) != ctchdb.PhieuDuocKy)
+            //    {
+            //        ctchdb.PhieuDuocKy = bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["PhieuDuocKy"].Value.ToString());
+            //        if (_cCHDB.SuaCTCHDB(ctchdb))
+            //        {
+            //            PhieuCHDB ycchdb = _cCHDB.GetPhieuHuyByMaCTCHDB(ctchdb.MaCTCHDB);
+            //            ycchdb.PhieuDuocKy = ctchdb.PhieuDuocKy;
+            //            _cCHDB.SuaPhieuHuy(ycchdb);
+            //        }
+            //    }
+            //}
+        }
+
+        private void dgvDSCTCHDB_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (dgvDSCTCHDB.Columns[e.ColumnIndex].Name == "ThongBaoDuocKy" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvDSCTCHDB[e.ColumnIndex, e.RowIndex].Value.ToString()))
             {
-                CTCTDB ctctdb = _cCHDB.GetCTCTDB(decimal.Parse(dgvDSCTCHDB.CurrentRow.Cells["MaTB"].Value.ToString()));
-                if (bool.Parse(dgvDSCTCHDB.CurrentCell.Value.ToString()) != ctctdb.ThongBaoDuocKy)
+                if (radDSCatTamDanhBo.Checked)
                 {
-                    ctctdb.ThongBaoDuocKy = bool.Parse(dgvDSCTCHDB.CurrentCell.Value.ToString());
-                    _cCHDB.SuaCTCTDB(ctctdb);
-                }
-                if (bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["PhieuDuocKy"].Value.ToString()) != ctctdb.PhieuDuocKy)
-                {
-                    ctctdb.PhieuDuocKy = bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["PhieuDuocKy"].Value.ToString());
-                    if (_cCHDB.SuaCTCTDB(ctctdb))
+                    if (CTaiKhoan.CheckQuyen("mnuCTDB", "Sua"))
                     {
-                        PhieuCHDB ycchdb = _cCHDB.GetPhieuHuyByMaCTCTDB(ctctdb.MaCTCTDB);
-                        ycchdb.PhieuDuocKy = ctctdb.PhieuDuocKy;
-                        _cCHDB.SuaPhieuHuy(ycchdb);
+                        CTCTDB ctctdb = _cCHDB.GetCTCTDB(decimal.Parse(dgvDSCTCHDB.CurrentRow.Cells["MaTB"].Value.ToString()));
+                        ctctdb.ThongBaoDuocKy = bool.Parse(e.FormattedValue.ToString());
+                        _cCHDB.SuaCTCTDB(ctctdb);
                     }
+                    else
+                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (radDSCatHuyDanhBo.Checked)
+                {
+                    if (CTaiKhoan.CheckQuyen("mnuCHDB", "Sua"))
+                    {
+                        CTCHDB ctchdb = _cCHDB.GetCTCHDB(decimal.Parse(dgvDSCTCHDB.CurrentRow.Cells["MaTB"].Value.ToString()));
+                        ctchdb.ThongBaoDuocKy = bool.Parse(e.FormattedValue.ToString());
+                        _cCHDB.SuaCTCHDB(ctchdb);
+                    }
+                    else
+                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            if (radDSCatHuyDanhBo.Checked)
+            if (dgvDSCTCHDB.Columns[e.ColumnIndex].Name == "PhieuDuocKy" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvDSCTCHDB[e.ColumnIndex, e.RowIndex].Value.ToString()))
             {
-                CTCHDB ctchdb = _cCHDB.GetCTCHDB(decimal.Parse(dgvDSCTCHDB.CurrentRow.Cells["MaTB"].Value.ToString()));
-                if (bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["ThongBaoDuocKy"].Value.ToString()) != ctchdb.ThongBaoDuocKy)
+                if (radDSCatTamDanhBo.Checked)
                 {
-                    ctchdb.ThongBaoDuocKy = bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["ThongBaoDuocKy"].Value.ToString());
-                    _cCHDB.SuaCTCHDB(ctchdb);
-                }
-                if (bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["PhieuDuocKy"].Value.ToString()) != ctchdb.PhieuDuocKy)
-                {
-                    ctchdb.PhieuDuocKy = bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["PhieuDuocKy"].Value.ToString());
-                    if (_cCHDB.SuaCTCHDB(ctchdb))
+                    if (CTaiKhoan.CheckQuyen("mnuCTDB", "Sua"))
                     {
-                        PhieuCHDB ycchdb = _cCHDB.GetPhieuHuyByMaCTCHDB(ctchdb.MaCTCHDB);
-                        ycchdb.PhieuDuocKy = ctchdb.PhieuDuocKy;
-                        _cCHDB.SuaPhieuHuy(ycchdb);
+                        CTCTDB ctctdb = _cCHDB.GetCTCTDB(decimal.Parse(dgvDSCTCHDB.CurrentRow.Cells["MaTB"].Value.ToString()));
+                        ctctdb.PhieuDuocKy = bool.Parse(e.FormattedValue.ToString());
+                        if (_cCHDB.SuaCTCTDB(ctctdb))
+                        {
+                            PhieuCHDB ycchdb = _cCHDB.GetPhieuHuyByMaCTCTDB(ctctdb.MaCTCTDB);
+                            ycchdb.PhieuDuocKy = ctctdb.PhieuDuocKy;
+                            _cCHDB.SuaPhieuHuy(ycchdb);
+                        }
                     }
+                    else
+                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (radDSCatHuyDanhBo.Checked)
+                {
+                    if (CTaiKhoan.CheckQuyen("mnuCHDB", "Sua"))
+                    {
+                        CTCHDB ctchdb = _cCHDB.GetCTCHDB(decimal.Parse(dgvDSCTCHDB.CurrentRow.Cells["MaTB"].Value.ToString()));
+                        ctchdb.PhieuDuocKy = bool.Parse(e.FormattedValue.ToString());
+                        if (_cCHDB.SuaCTCHDB(ctchdb))
+                        {
+                            PhieuCHDB ycchdb = _cCHDB.GetPhieuHuyByMaCTCHDB(ctchdb.MaCTCHDB);
+                            ycchdb.PhieuDuocKy = ctchdb.PhieuDuocKy;
+                            _cCHDB.SuaPhieuHuy(ycchdb);
+                        }
+                    }
+                    else
+                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -272,37 +337,81 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void dgvDSYCCHDB_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (radDSYCCHDB.Checked)
+            //if (radDSYCCHDB.Checked)
+            //{
+            //    PhieuCHDB ycchdb = _cCHDB.GetPhieuHuy(decimal.Parse(dgvDSYCCHDB.CurrentRow.Cells["SoPhieu"].Value.ToString()));
+            //    if (bool.Parse(dgvDSYCCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString()) != ycchdb.PhieuDuocKy)
+            //    {
+            //        ycchdb.PhieuDuocKy = bool.Parse(dgvDSYCCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString());
+            //        if (_cCHDB.SuaPhieuHuy(ycchdb))
+            //        {
+            //            if (ycchdb.TBCTDB)
+            //            {
+            //                CTCTDB ctctdb = _cCHDB.GetCTCTDB(ycchdb.MaCTCTDB.Value);
+            //                ctctdb.PhieuDuocKy = bool.Parse(dgvDSYCCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString());
+            //                _cCHDB.SuaCTCTDB(ctctdb);
+            //            }
+            //            else
+            //                if (ycchdb.TBCHDB)
+            //                {
+            //                    CTCHDB ctchdb = _cCHDB.GetCTCHDB(ycchdb.MaCTCHDB.Value);
+            //                    ctchdb.PhieuDuocKy = bool.Parse(dgvDSYCCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString());
+            //                    _cCHDB.SuaCTCHDB(ctchdb);
+            //                }
+            //        }
+            //    }
+            //}
+            //if (radDSDongNuoc.Checked)
+            //{
+            //    CTDongNuoc ctdongnuoc = _cDongNuoc.GetCTByMaCTDN(decimal.Parse(dgvDSYCCHDB.CurrentRow.Cells["SoPhieu"].Value.ToString()));
+            //    if (bool.Parse(dgvDSYCCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString()) != ctdongnuoc.ThongBaoDuocKy_DN)
+            //    {
+            //        ctdongnuoc.ThongBaoDuocKy_DN = bool.Parse(dgvDSYCCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString());
+            //        _cDongNuoc.SuaCT(ctdongnuoc);
+            //    }
+            //}
+        }
+
+        private void dgvDSYCCHDB_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (dgvDSYCCHDB.Columns[e.ColumnIndex].Name == "YC_PhieuDuocKy" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvDSYCCHDB[e.ColumnIndex, e.RowIndex].Value.ToString()))
             {
-                PhieuCHDB ycchdb = _cCHDB.GetPhieuHuy(decimal.Parse(dgvDSYCCHDB.CurrentRow.Cells["SoPhieu"].Value.ToString()));
-                if (bool.Parse(dgvDSYCCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString()) != ycchdb.PhieuDuocKy)
+                if (radDSYCCHDB.Checked)
                 {
-                    ycchdb.PhieuDuocKy = bool.Parse(dgvDSYCCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString());
-                    if (_cCHDB.SuaPhieuHuy(ycchdb))
+                    if (CTaiKhoan.CheckQuyen("mnuPhieuCHDB", "Sua"))
                     {
-                        if (ycchdb.TBCTDB)
+                        PhieuCHDB ycchdb = _cCHDB.GetPhieuHuy(decimal.Parse(dgvDSYCCHDB.CurrentRow.Cells["SoPhieu"].Value.ToString()));
+                        ycchdb.PhieuDuocKy = bool.Parse(e.FormattedValue.ToString());
+                        if (_cCHDB.SuaPhieuHuy(ycchdb))
                         {
-                            CTCTDB ctctdb = _cCHDB.GetCTCTDB(ycchdb.MaCTCTDB.Value);
-                            ctctdb.PhieuDuocKy = bool.Parse(dgvDSYCCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString());
-                            _cCHDB.SuaCTCTDB(ctctdb);
-                        }
-                        else
-                            if (ycchdb.TBCHDB)
+                            if (ycchdb.TBCTDB)
                             {
-                                CTCHDB ctchdb = _cCHDB.GetCTCHDB(ycchdb.MaCTCHDB.Value);
-                                ctchdb.PhieuDuocKy = bool.Parse(dgvDSYCCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString());
-                                _cCHDB.SuaCTCHDB(ctchdb);
+                                CTCTDB ctctdb = _cCHDB.GetCTCTDB(ycchdb.MaCTCTDB.Value);
+                                ctctdb.PhieuDuocKy = ycchdb.PhieuDuocKy;
+                                _cCHDB.SuaCTCTDB(ctctdb);
                             }
+                            else
+                                if (ycchdb.TBCHDB)
+                                {
+                                    CTCHDB ctchdb = _cCHDB.GetCTCHDB(ycchdb.MaCTCHDB.Value);
+                                    ctchdb.PhieuDuocKy = ycchdb.PhieuDuocKy;
+                                    _cCHDB.SuaCTCHDB(ctchdb);
+                                }
+                        }
                     }
+                    else
+                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-            if (radDSDongNuoc.Checked)
-            {
-                CTDongNuoc ctdongnuoc = _cDongNuoc.GetCTByMaCTDN(decimal.Parse(dgvDSYCCHDB.CurrentRow.Cells["SoPhieu"].Value.ToString()));
-                if (bool.Parse(dgvDSYCCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString()) != ctdongnuoc.ThongBaoDuocKy_DN)
+                else if (radDSDongNuoc.Checked)
                 {
-                    ctdongnuoc.ThongBaoDuocKy_DN = bool.Parse(dgvDSYCCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString());
-                    _cDongNuoc.SuaCT(ctdongnuoc);
+                    if (CTaiKhoan.CheckQuyen("mnuDongNuoc", "Sua"))
+                    {
+                        CTDongNuoc ctdongnuoc = _cDongNuoc.GetCTByMaCTDN(decimal.Parse(dgvDSYCCHDB.CurrentRow.Cells["SoPhieu"].Value.ToString()));
+                        ctdongnuoc.ThongBaoDuocKy_DN = bool.Parse(e.FormattedValue.ToString());
+                        _cDongNuoc.SuaCT(ctdongnuoc);
+                    }
+                    else
+                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -391,7 +500,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
                                 rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
 
-                                rpt.PrintToPrinter(1, false,1,1);
+                                rpt.PrintToPrinter(1, false, 1, 1);
                                 rpt.Clone();
                                 rpt.Dispose();
                             }
@@ -771,31 +880,29 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             if (radDSCatTamDanhBo.Checked)
-                
 
-            if (radDSCatHuyDanhBo.Checked)
-                foreach (DataGridViewRow item in dgvDSCTCHDB.Rows)
-                {
-                    DataRow dr = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
 
-                    dr["LoaiBaoCao"] = "CẮT HỦY";
-                    dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
-                    dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-                    dr["SoPhieu"] = item.Cells["MaTB"].Value.ToString().Insert(item.Cells["MaTB"].Value.ToString().Length - 2, "-");
-                    dr["CreateDate"] = item.Cells["CreateDate"].Value.ToString();
-                    dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
-                    dr["HoTen"] = item.Cells["HoTen"].Value.ToString();
-                    dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
-                    dr["LyDo"] = item.Cells["LyDo"].Value.ToString();
-                    dr["NgayXuLy"] = item.Cells["NgayXuLyCHDB"].Value.ToString();
-                    dr["NoiDungXuLy"] = item.Cells["NoiDungXuLy"].Value.ToString();
-                    dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr);
-                }
+                if (radDSCatHuyDanhBo.Checked)
+                    foreach (DataGridViewRow item in dgvDSCTCHDB.Rows)
+                    {
+                        DataRow dr = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
 
-            
+                        dr["LoaiBaoCao"] = "CẮT HỦY";
+                        dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                        dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                        dr["SoPhieu"] = item.Cells["MaTB"].Value.ToString().Insert(item.Cells["MaTB"].Value.ToString().Length - 2, "-");
+                        dr["CreateDate"] = item.Cells["CreateDate"].Value.ToString();
+                        dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
+                        dr["HoTen"] = item.Cells["HoTen"].Value.ToString();
+                        dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
+                        dr["LyDo"] = item.Cells["LyDo"].Value.ToString();
+                        dr["NgayXuLy"] = item.Cells["NgayXuLyCHDB"].Value.ToString();
+                        dr["NoiDungXuLy"] = item.Cells["NoiDungXuLy"].Value.ToString();
+                        dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr);
+                    }
+
+
         }
-
-
 
     }
 }

@@ -110,6 +110,7 @@
             this.btnInA4 = new System.Windows.Forms.Button();
             this.btnXem = new System.Windows.Forms.Button();
             this.btnThuHoiCapNhatDocSo = new System.Windows.Forms.Button();
+            this.btnInThuBao = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDCBD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCatChuyenDM)).BeginInit();
             this.panel_KhoangThoiGian.SuspendLayout();
@@ -812,6 +813,16 @@
             this.btnThuHoiCapNhatDocSo.UseVisualStyleBackColor = true;
             this.btnThuHoiCapNhatDocSo.Click += new System.EventHandler(this.btnThuHoiCapNhatDocSo_Click);
             // 
+            // btnInThuBao
+            // 
+            this.btnInThuBao.Location = new System.Drawing.Point(956, 43);
+            this.btnInThuBao.Name = "btnInThuBao";
+            this.btnInThuBao.Size = new System.Drawing.Size(91, 25);
+            this.btnInThuBao.TabIndex = 90;
+            this.btnInThuBao.Text = "In Thư Báo";
+            this.btnInThuBao.UseVisualStyleBackColor = true;
+            this.btnInThuBao.Click += new System.EventHandler(this.btnInThuBao_Click);
+            // 
             // frmDSDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -819,6 +830,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1360, 647);
+            this.Controls.Add(this.btnInThuBao);
             this.Controls.Add(this.btnThuHoiCapNhatDocSo);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.btnInA4);
@@ -921,5 +933,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NhanNK_DiaChi_CC;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy_CC;
         private System.Windows.Forms.Button btnThuHoiCapNhatDocSo;
+        private System.Windows.Forms.Button btnInThuBao;
     }
 }

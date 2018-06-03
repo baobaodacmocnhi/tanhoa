@@ -155,8 +155,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private int _KY;
 		
-		private string _MA_NHANVIEN;
-		
 		private System.Nullable<System.DateTime> _NGAYGIAO;
 		
 		private string _MST;
@@ -167,11 +165,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _DENNGAY;
 		
-		private System.Nullable<System.DateTime> _GIO_TT;
-		
 		private System.Nullable<int> _NAM;
-		
-		private System.Nullable<int> _FK_DIEUCHINH;
 		
 		private string _MAY;
 		
@@ -182,8 +176,6 @@ namespace KTKS_DonKH.LinQ
 		private System.Nullable<short> _DOTCHIA;
 		
 		private System.Nullable<System.DateTime> _NGAYGIAOTON;
-		
-		private System.Nullable<byte> _Pol;
 		
 		private string _TENKH;
 		
@@ -335,8 +327,6 @@ namespace KTKS_DonKH.LinQ
     partial void OnSOHOADONChanged();
     partial void OnKYChanging(int value);
     partial void OnKYChanged();
-    partial void OnMA_NHANVIENChanging(string value);
-    partial void OnMA_NHANVIENChanged();
     partial void OnNGAYGIAOChanging(System.Nullable<System.DateTime> value);
     partial void OnNGAYGIAOChanged();
     partial void OnMSTChanging(string value);
@@ -347,12 +337,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnTUNGAYChanged();
     partial void OnDENNGAYChanging(System.Nullable<System.DateTime> value);
     partial void OnDENNGAYChanged();
-    partial void OnGIO_TTChanging(System.Nullable<System.DateTime> value);
-    partial void OnGIO_TTChanged();
     partial void OnNAMChanging(System.Nullable<int> value);
     partial void OnNAMChanged();
-    partial void OnFK_DIEUCHINHChanging(System.Nullable<int> value);
-    partial void OnFK_DIEUCHINHChanged();
     partial void OnMAYChanging(string value);
     partial void OnMAYChanged();
     partial void OnSTTChanging(string value);
@@ -363,8 +349,6 @@ namespace KTKS_DonKH.LinQ
     partial void OnDOTCHIAChanged();
     partial void OnNGAYGIAOTONChanging(System.Nullable<System.DateTime> value);
     partial void OnNGAYGIAOTONChanged();
-    partial void OnPolChanging(System.Nullable<byte> value);
-    partial void OnPolChanged();
     partial void OnTENKHChanging(string value);
     partial void OnTENKHChanged();
     partial void OnSOChanging(string value);
@@ -1094,26 +1078,6 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MA_NHANVIEN", DbType="VarChar(10)")]
-		public string MA_NHANVIEN
-		{
-			get
-			{
-				return this._MA_NHANVIEN;
-			}
-			set
-			{
-				if ((this._MA_NHANVIEN != value))
-				{
-					this.OnMA_NHANVIENChanging(value);
-					this.SendPropertyChanging();
-					this._MA_NHANVIEN = value;
-					this.SendPropertyChanged("MA_NHANVIEN");
-					this.OnMA_NHANVIENChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGAYGIAO", DbType="DateTime")]
 		public System.Nullable<System.DateTime> NGAYGIAO
 		{
@@ -1214,26 +1178,6 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GIO_TT", DbType="DateTime")]
-		public System.Nullable<System.DateTime> GIO_TT
-		{
-			get
-			{
-				return this._GIO_TT;
-			}
-			set
-			{
-				if ((this._GIO_TT != value))
-				{
-					this.OnGIO_TTChanging(value);
-					this.SendPropertyChanging();
-					this._GIO_TT = value;
-					this.SendPropertyChanged("GIO_TT");
-					this.OnGIO_TTChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAM", DbType="Int")]
 		public System.Nullable<int> NAM
 		{
@@ -1250,26 +1194,6 @@ namespace KTKS_DonKH.LinQ
 					this._NAM = value;
 					this.SendPropertyChanged("NAM");
 					this.OnNAMChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FK_DIEUCHINH", DbType="Int")]
-		public System.Nullable<int> FK_DIEUCHINH
-		{
-			get
-			{
-				return this._FK_DIEUCHINH;
-			}
-			set
-			{
-				if ((this._FK_DIEUCHINH != value))
-				{
-					this.OnFK_DIEUCHINHChanging(value);
-					this.SendPropertyChanging();
-					this._FK_DIEUCHINH = value;
-					this.SendPropertyChanged("FK_DIEUCHINH");
-					this.OnFK_DIEUCHINHChanged();
 				}
 			}
 		}
@@ -1370,26 +1294,6 @@ namespace KTKS_DonKH.LinQ
 					this._NGAYGIAOTON = value;
 					this.SendPropertyChanged("NGAYGIAOTON");
 					this.OnNGAYGIAOTONChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Pol", DbType="TinyInt")]
-		public System.Nullable<byte> Pol
-		{
-			get
-			{
-				return this._Pol;
-			}
-			set
-			{
-				if ((this._Pol != value))
-				{
-					this.OnPolChanging(value);
-					this.SendPropertyChanging();
-					this._Pol = value;
-					this.SendPropertyChanged("Pol");
-					this.OnPolChanged();
 				}
 			}
 		}
@@ -2305,8 +2209,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private int _KY;
 		
-		private string _MA_NHANVIEN;
-		
 		private System.Nullable<System.DateTime> _NGAYGIAO;
 		
 		private string _MST;
@@ -2317,11 +2219,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _DENNGAY;
 		
-		private System.Nullable<System.DateTime> _GIO_TT;
-		
 		private System.Nullable<int> _NAM;
-		
-		private System.Nullable<int> _FK_DIEUCHINH;
 		
 		private string _MAY;
 		
@@ -2332,8 +2230,6 @@ namespace KTKS_DonKH.LinQ
 		private System.Nullable<short> _DOTCHIA;
 		
 		private System.Nullable<System.DateTime> _NGAYGIAOTON;
-		
-		private System.Nullable<byte> _Pol;
 		
 		private string _TENKH;
 		
@@ -2485,8 +2381,6 @@ namespace KTKS_DonKH.LinQ
     partial void OnSOHOADONChanged();
     partial void OnKYChanging(int value);
     partial void OnKYChanged();
-    partial void OnMA_NHANVIENChanging(string value);
-    partial void OnMA_NHANVIENChanged();
     partial void OnNGAYGIAOChanging(System.Nullable<System.DateTime> value);
     partial void OnNGAYGIAOChanged();
     partial void OnMSTChanging(string value);
@@ -2497,12 +2391,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnTUNGAYChanged();
     partial void OnDENNGAYChanging(System.Nullable<System.DateTime> value);
     partial void OnDENNGAYChanged();
-    partial void OnGIO_TTChanging(System.Nullable<System.DateTime> value);
-    partial void OnGIO_TTChanged();
     partial void OnNAMChanging(System.Nullable<int> value);
     partial void OnNAMChanged();
-    partial void OnFK_DIEUCHINHChanging(System.Nullable<int> value);
-    partial void OnFK_DIEUCHINHChanged();
     partial void OnMAYChanging(string value);
     partial void OnMAYChanged();
     partial void OnSTTChanging(string value);
@@ -2513,8 +2403,6 @@ namespace KTKS_DonKH.LinQ
     partial void OnDOTCHIAChanged();
     partial void OnNGAYGIAOTONChanging(System.Nullable<System.DateTime> value);
     partial void OnNGAYGIAOTONChanged();
-    partial void OnPolChanging(System.Nullable<byte> value);
-    partial void OnPolChanged();
     partial void OnTENKHChanging(string value);
     partial void OnTENKHChanged();
     partial void OnSOChanging(string value);
@@ -3244,26 +3132,6 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MA_NHANVIEN", DbType="VarChar(10)")]
-		public string MA_NHANVIEN
-		{
-			get
-			{
-				return this._MA_NHANVIEN;
-			}
-			set
-			{
-				if ((this._MA_NHANVIEN != value))
-				{
-					this.OnMA_NHANVIENChanging(value);
-					this.SendPropertyChanging();
-					this._MA_NHANVIEN = value;
-					this.SendPropertyChanged("MA_NHANVIEN");
-					this.OnMA_NHANVIENChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGAYGIAO", DbType="DateTime")]
 		public System.Nullable<System.DateTime> NGAYGIAO
 		{
@@ -3364,26 +3232,6 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GIO_TT", DbType="DateTime")]
-		public System.Nullable<System.DateTime> GIO_TT
-		{
-			get
-			{
-				return this._GIO_TT;
-			}
-			set
-			{
-				if ((this._GIO_TT != value))
-				{
-					this.OnGIO_TTChanging(value);
-					this.SendPropertyChanging();
-					this._GIO_TT = value;
-					this.SendPropertyChanged("GIO_TT");
-					this.OnGIO_TTChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAM", DbType="Int")]
 		public System.Nullable<int> NAM
 		{
@@ -3400,26 +3248,6 @@ namespace KTKS_DonKH.LinQ
 					this._NAM = value;
 					this.SendPropertyChanged("NAM");
 					this.OnNAMChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FK_DIEUCHINH", DbType="Int")]
-		public System.Nullable<int> FK_DIEUCHINH
-		{
-			get
-			{
-				return this._FK_DIEUCHINH;
-			}
-			set
-			{
-				if ((this._FK_DIEUCHINH != value))
-				{
-					this.OnFK_DIEUCHINHChanging(value);
-					this.SendPropertyChanging();
-					this._FK_DIEUCHINH = value;
-					this.SendPropertyChanged("FK_DIEUCHINH");
-					this.OnFK_DIEUCHINHChanged();
 				}
 			}
 		}
@@ -3520,26 +3348,6 @@ namespace KTKS_DonKH.LinQ
 					this._NGAYGIAOTON = value;
 					this.SendPropertyChanged("NGAYGIAOTON");
 					this.OnNGAYGIAOTONChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Pol", DbType="TinyInt")]
-		public System.Nullable<byte> Pol
-		{
-			get
-			{
-				return this._Pol;
-			}
-			set
-			{
-				if ((this._Pol != value))
-				{
-					this.OnPolChanging(value);
-					this.SendPropertyChanging();
-					this._Pol = value;
-					this.SendPropertyChanged("Pol");
-					this.OnPolChanged();
 				}
 			}
 		}
