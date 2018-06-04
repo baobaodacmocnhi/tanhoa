@@ -111,6 +111,7 @@
             this.btnXem = new System.Windows.Forms.Button();
             this.btnThuHoiCapNhatDocSo = new System.Windows.Forms.Button();
             this.btnInThuBao = new System.Windows.Forms.Button();
+            this.btnInNhan = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDCBD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCatChuyenDM)).BeginInit();
             this.panel_KhoangThoiGian.SuspendLayout();
@@ -753,7 +754,7 @@
             // 
             this.btnCapNhatDocSo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCapNhatDocSo.ForeColor = System.Drawing.Color.Red;
-            this.btnCapNhatDocSo.Location = new System.Drawing.Point(1048, 12);
+            this.btnCapNhatDocSo.Location = new System.Drawing.Point(1129, 12);
             this.btnCapNhatDocSo.Name = "btnCapNhatDocSo";
             this.btnCapNhatDocSo.Size = new System.Drawing.Size(130, 25);
             this.btnCapNhatDocSo.TabIndex = 22;
@@ -785,7 +786,7 @@
             // 
             this.btnInA4.Location = new System.Drawing.Point(859, 43);
             this.btnInA4.Name = "btnInA4";
-            this.btnInA4.Size = new System.Drawing.Size(91, 25);
+            this.btnInA4.Size = new System.Drawing.Size(86, 25);
             this.btnInA4.TabIndex = 87;
             this.btnInA4.Text = "In Phiếu A4";
             this.btnInA4.UseVisualStyleBackColor = true;
@@ -805,7 +806,7 @@
             // 
             this.btnThuHoiCapNhatDocSo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThuHoiCapNhatDocSo.ForeColor = System.Drawing.Color.Red;
-            this.btnThuHoiCapNhatDocSo.Location = new System.Drawing.Point(1048, 43);
+            this.btnThuHoiCapNhatDocSo.Location = new System.Drawing.Point(1129, 43);
             this.btnThuHoiCapNhatDocSo.Name = "btnThuHoiCapNhatDocSo";
             this.btnThuHoiCapNhatDocSo.Size = new System.Drawing.Size(180, 25);
             this.btnThuHoiCapNhatDocSo.TabIndex = 89;
@@ -815,13 +816,23 @@
             // 
             // btnInThuBao
             // 
-            this.btnInThuBao.Location = new System.Drawing.Point(956, 43);
+            this.btnInThuBao.Location = new System.Drawing.Point(951, 43);
             this.btnInThuBao.Name = "btnInThuBao";
             this.btnInThuBao.Size = new System.Drawing.Size(91, 25);
             this.btnInThuBao.TabIndex = 90;
             this.btnInThuBao.Text = "In Thư Báo";
             this.btnInThuBao.UseVisualStyleBackColor = true;
             this.btnInThuBao.Click += new System.EventHandler(this.btnInThuBao_Click);
+            // 
+            // btnInNhan
+            // 
+            this.btnInNhan.Location = new System.Drawing.Point(1048, 43);
+            this.btnInNhan.Name = "btnInNhan";
+            this.btnInNhan.Size = new System.Drawing.Size(75, 25);
+            this.btnInNhan.TabIndex = 91;
+            this.btnInNhan.Text = "In Nhãn";
+            this.btnInNhan.UseVisualStyleBackColor = true;
+            this.btnInNhan.Click += new System.EventHandler(this.btnInNhan_Click);
             // 
             // frmDSDCBD
             // 
@@ -830,6 +841,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1360, 647);
+            this.Controls.Add(this.btnInNhan);
             this.Controls.Add(this.btnInThuBao);
             this.Controls.Add(this.btnThuHoiCapNhatDocSo);
             this.Controls.Add(this.btnXem);
@@ -934,5 +946,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy_CC;
         private System.Windows.Forms.Button btnThuHoiCapNhatDocSo;
         private System.Windows.Forms.Button btnInThuBao;
+        private System.Windows.Forms.Button btnInNhan;
     }
 }

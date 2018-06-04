@@ -1122,7 +1122,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 printDialog.ShowHelp = true;
 
                                 rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
-                                rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                                rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
                                 rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
                                 rpt.PrintToPrinter(1, false, 1, 1);
                             }
@@ -1311,20 +1311,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void btnInThuBao_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn chắc chắn In những Thư trên?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == DialogResult.OK)
             {
-                PrintDialog printDialog = new PrintDialog();
-                if (printDialog.ShowDialog() == DialogResult.OK)
+                if (radDSDCBD.Checked)
                 {
-                    if (radDSDCBD.Checked)
-                    {
-                        for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
-                            if (dgvDSDCBD["In", i].Value != null && bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true)
+                    for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
+                        if (dgvDSDCBD["In", i].Value != null && bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true)
+                        {
+                            CTDCBD ctdcbd = _cDCBD.GetDCBDByMaCTDCBD(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
+                            if (ctdcbd.GhiChu != null && ctdcbd.GhiChu != "")
                             {
                                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                 DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
 
-                                CTDCBD ctdcbd = _cDCBD.GetDCBDByMaCTDCBD(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
                                 if (ctdcbd.DCBD.MaDon != null)
                                     dr["SoPhieu"] = ctdcbd.DCBD.MaDon.ToString().Insert(ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
                                 else
@@ -1350,14 +1350,56 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 printDialog.ShowHelp = true;
 
                                 rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
-                                rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                                rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
                                 rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
                                 rpt.PrintToPrinter(1, false, 1, 1);
-                                rpt.Clone();
-                                rpt.Dispose();
                             }
-                    }
+                        }
                 }
+            }
+        }
+
+        private void btnInNhan_Click(object sender, EventArgs e)
+        {
+            if (radDSDCBD.Checked)
+            {
+                DataSetBaoCao dsBaoCao1 = new DataSetBaoCao();
+                DataSetBaoCao dsBaoCao2 = new DataSetBaoCao();
+                bool flag = true;///in 2 bên
+                                 ///
+                for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
+                    if (dgvDSDCBD["In", i].Value != null && bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true)
+                    {
+                        CTDCBD ctdcbd = _cDCBD.GetDCBDByMaCTDCBD(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
+                        if (ctdcbd.GhiChu != null && ctdcbd.GhiChu != "")
+                        {
+                            if (flag == true)
+                            {
+                                DataRow dr = dsBaoCao1.Tables["ThaoThuTraLoi"].NewRow();
+
+                                dr["HoTen"] = ctdcbd.HoTen;
+                                dr["DiaChi"] = ctdcbd.DiaChi;
+
+                                dsBaoCao1.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+                                flag = false;
+                            }
+                            else
+                            {
+                                DataRow dr = dsBaoCao2.Tables["ThaoThuTraLoi"].NewRow();
+
+                                dr["HoTen"] = ctdcbd.HoTen;
+                                dr["DiaChi"] = ctdcbd.DiaChi;
+
+                                dsBaoCao2.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+                                flag = true;
+                            }
+                        }
+                    }
+                rptKinhGui rpt = new rptKinhGui();
+                rpt.Subreports[0].SetDataSource(dsBaoCao1);
+                rpt.Subreports[1].SetDataSource(dsBaoCao2);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.ShowDialog();
             }
         }
 
