@@ -78,6 +78,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             cmbNam_HD.DataSource = dtNam;
             cmbNam_HD.DisplayMember = "Nam";
             cmbNam_HD.ValueMember = "Nam";
+            cmbNam_HD.SelectedIndex = -1;
         }
 
         public void CountdgvTo_TuGia_PhanTich()
@@ -740,82 +741,55 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnXem_HD_Click(object sender, EventArgs e)
         {
-            ///chọn tất cả tổ
-            if (cmbTo_HD.SelectedIndex == 0)
+            if (cmbGiaBieu_HD.SelectedIndex == 0)
             {
-                DataTable dt = new DataTable();
-                ///chọn tất cả kỳ
-                if (cmbKy_HD.SelectedIndex == 0)
+                ///chọn tất cả tổ
+                if (cmbTo_HD.SelectedIndex == 0)
                 {
-                    for (int i = 1; i < cmbTo_HD.Items.Count; i++)
-                        dt.Merge(_cDichVuThu.GetDS(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), ((TT_To)cmbTo_HD.Items[i]).MaTo, int.Parse(cmbNam_HD.SelectedValue.ToString())));
-                    DataTable dtBD = new DataTable();
-                    for (int i = 1; i <= 12; i++)
+                    DataTable dt = new DataTable();
+                    ///chọn tất cả kỳ
+                    if (cmbKy_HD.SelectedIndex == 0)
                     {
-                        dtBD.Merge(_cDichVuThu.GetBienDongChuyenKhoan(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), i));
-                    }
-                    dgvBienDong_HD.DataSource = dtBD;
-                }
-                else
-                    ///chọn 1 kỳ
-                    if (cmbKy_HD.SelectedIndex > 0)
-                        ///chọn tất cả đợt
-                        if (cmbFromDot_HD.SelectedIndex == 0)
+                        for (int i = 1; i < cmbTo_HD.Items.Count; i++)
+                            dt.Merge(_cDichVuThu.GetDS(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), ((TT_To)cmbTo_HD.Items[i]).MaTo, int.Parse(cmbNam_HD.SelectedValue.ToString())));
+                        DataTable dtBD = new DataTable();
+                        for (int i = 1; i <= 12; i++)
                         {
-                            for (int i = 1; i < cmbTo_HD.Items.Count; i++)
-                                dt.Merge(_cDichVuThu.GetDS(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), ((TT_To)cmbTo_HD.Items[i]).MaTo, int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString())));
-                            dgvBienDong_HD.DataSource = _cDichVuThu.GetBienDongChuyenKhoan(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()));
+                            dtBD.Merge(_cDichVuThu.GetBienDongChuyenKhoan(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), i));
                         }
-                        else
-                            ///chọn từ đợt đến đợt
-                            if (cmbFromDot_HD.SelectedIndex > 0)
-                                for (int i = 1; i < cmbTo_HD.Items.Count; i++)
-                                    dt.Merge(_cDichVuThu.GetDS(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), ((TT_To)cmbTo_HD.Items[i]).MaTo, int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()), int.Parse(cmbFromDot_HD.SelectedItem.ToString()), int.Parse(cmbToDot_HD.SelectedItem.ToString())));
-                dgvDichVuThu.DataSource = dt;
-            }
-            ///chọn 1 tổ
-            else
-                if (cmbTo_HD.SelectedIndex > 0)
-                    ///chọn tất cả nhân viên
-                    if (cmbNhanVien_HD.SelectedIndex == 0)
-                    {
-                        ///chọn tất cả kỳ
-                        if (cmbKy_HD.SelectedIndex == 0)
-                        {
-                            dgvDichVuThu.DataSource = _cDichVuThu.GetDS(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()));
-                            DataTable dt = new DataTable();
-                            for (int i = 1; i <= 12; i++)
-                            {
-                                dt.Merge(_cDichVuThu.GetBienDongChuyenKhoan(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), i));
-                            }
-                            dgvBienDong_HD.DataSource = dt;
-                        }
-                        else
-                            ///chọn 1 kỳ
-                            if (cmbKy_HD.SelectedIndex > 0)
-                                ///chọn tất cả đợt
-                                if (cmbFromDot_HD.SelectedIndex == 0)
-                                {
-                                    dgvDichVuThu.DataSource = _cDichVuThu.GetDS(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()));
-                                    dgvBienDong_HD.DataSource = _cDichVuThu.GetBienDongChuyenKhoan(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()));
-                                }
-                                else
-                                    ///chọn từ đợt đến đợt
-                                    if (cmbFromDot_HD.SelectedIndex > 0)
-                                        dgvDichVuThu.DataSource = _cDichVuThu.GetDS(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()), int.Parse(cmbFromDot_HD.SelectedItem.ToString()), int.Parse(cmbToDot_HD.SelectedItem.ToString()));
+                        dgvBienDong_HD.DataSource = dtBD;
                     }
                     else
-                        ///chọn 1 nhân viên
-                        if (cmbNhanVien_HD.SelectedIndex > 0)
+                        ///chọn 1 kỳ
+                        if (cmbKy_HD.SelectedIndex > 0)
+                            ///chọn tất cả đợt
+                            if (cmbFromDot_HD.SelectedIndex == 0)
+                            {
+                                for (int i = 1; i < cmbTo_HD.Items.Count; i++)
+                                    dt.Merge(_cDichVuThu.GetDS(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), ((TT_To)cmbTo_HD.Items[i]).MaTo, int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString())));
+                                dgvBienDong_HD.DataSource = _cDichVuThu.GetBienDongChuyenKhoan(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()));
+                            }
+                            else
+                                ///chọn từ đợt đến đợt
+                                if (cmbFromDot_HD.SelectedIndex > 0)
+                                    for (int i = 1; i < cmbTo_HD.Items.Count; i++)
+                                        dt.Merge(_cDichVuThu.GetDS(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), ((TT_To)cmbTo_HD.Items[i]).MaTo, int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()), int.Parse(cmbFromDot_HD.SelectedItem.ToString()), int.Parse(cmbToDot_HD.SelectedItem.ToString())));
+                    dgvDichVuThu.DataSource = dt;
+                }
+                ///chọn 1 tổ
+                else
+                    if (cmbTo_HD.SelectedIndex > 0)
+                        ///chọn tất cả nhân viên
+                        if (cmbNhanVien_HD.SelectedIndex == 0)
                         {
                             ///chọn tất cả kỳ
                             if (cmbKy_HD.SelectedIndex == 0)
                             {
-                                dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()));
+                                dgvDichVuThu.DataSource = _cDichVuThu.GetDS(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()));
                                 DataTable dt = new DataTable();
                                 for (int i = 1; i <= 12; i++)
                                 {
-                                    dt.Merge(_cDichVuThu.GetBienDongChuyenKhoan_NV(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), i));
+                                    dt.Merge(_cDichVuThu.GetBienDongChuyenKhoan(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), i));
                                 }
                                 dgvBienDong_HD.DataSource = dt;
                             }
@@ -825,14 +799,141 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     ///chọn tất cả đợt
                                     if (cmbFromDot_HD.SelectedIndex == 0)
                                     {
-                                        dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()));
-                                        dgvBienDong_HD.DataSource = _cDichVuThu.GetBienDongChuyenKhoan_NV(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()));
+                                        dgvDichVuThu.DataSource = _cDichVuThu.GetDS(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()));
+                                        dgvBienDong_HD.DataSource = _cDichVuThu.GetBienDongChuyenKhoan(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()));
                                     }
                                     else
                                         ///chọn từ đợt đến đợt
                                         if (cmbFromDot_HD.SelectedIndex > 0)
-                                            dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()), int.Parse(cmbFromDot_HD.SelectedItem.ToString()), int.Parse(cmbToDot_HD.SelectedItem.ToString()));
+                                            dgvDichVuThu.DataSource = _cDichVuThu.GetDS(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()), int.Parse(cmbFromDot_HD.SelectedItem.ToString()), int.Parse(cmbToDot_HD.SelectedItem.ToString()));
                         }
+                        else
+                            ///chọn 1 nhân viên
+                            if (cmbNhanVien_HD.SelectedIndex > 0)
+                            {
+                                ///chọn tất cả kỳ
+                                if (cmbKy_HD.SelectedIndex == 0)
+                                {
+                                    dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()));
+                                    DataTable dt = new DataTable();
+                                    for (int i = 1; i <= 12; i++)
+                                    {
+                                        dt.Merge(_cDichVuThu.GetBienDongChuyenKhoan_NV(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), i));
+                                    }
+                                    dgvBienDong_HD.DataSource = dt;
+                                }
+                                else
+                                    ///chọn 1 kỳ
+                                    if (cmbKy_HD.SelectedIndex > 0)
+                                        ///chọn tất cả đợt
+                                        if (cmbFromDot_HD.SelectedIndex == 0)
+                                        {
+                                            dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()));
+                                            dgvBienDong_HD.DataSource = _cDichVuThu.GetBienDongChuyenKhoan_NV(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()));
+                                        }
+                                        else
+                                            ///chọn từ đợt đến đợt
+                                            if (cmbFromDot_HD.SelectedIndex > 0)
+                                                dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()), int.Parse(cmbFromDot_HD.SelectedItem.ToString()), int.Parse(cmbToDot_HD.SelectedItem.ToString()));
+                            }
+            }
+            else
+                if (cmbGiaBieu_HD.SelectedIndex > 0)
+                {
+                    ///chọn tất cả tổ
+                    if (cmbTo_HD.SelectedIndex == 0)
+                    {
+                        DataTable dt = new DataTable();
+                        ///chọn tất cả kỳ
+                        if (cmbKy_HD.SelectedIndex == 0)
+                        {
+                            for (int i = 1; i < cmbTo_HD.Items.Count; i++)
+                                dt.Merge(_cDichVuThu.GetDS_GiaBieu(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), ((TT_To)cmbTo_HD.Items[i]).MaTo, int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbGiaBieu_HD.SelectedValue.ToString())));
+                            DataTable dtBD = new DataTable();
+                            for (int i = 1; i <= 12; i++)
+                            {
+                                dtBD.Merge(_cDichVuThu.GetBienDongChuyenKhoan_GiaBieu(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), i, int.Parse(cmbGiaBieu_HD.SelectedValue.ToString())));
+                            }
+                            dgvBienDong_HD.DataSource = dtBD;
+                        }
+                        else
+                            ///chọn 1 kỳ
+                            if (cmbKy_HD.SelectedIndex > 0)
+                                ///chọn tất cả đợt
+                                if (cmbFromDot_HD.SelectedIndex == 0)
+                                {
+                                    for (int i = 1; i < cmbTo_HD.Items.Count; i++)
+                                        dt.Merge(_cDichVuThu.GetDS_GiaBieu(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), ((TT_To)cmbTo_HD.Items[i]).MaTo, int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()), int.Parse(cmbGiaBieu_HD.SelectedValue.ToString())));
+                                    dgvBienDong_HD.DataSource = _cDichVuThu.GetBienDongChuyenKhoan_GiaBieu(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()), int.Parse(cmbGiaBieu_HD.SelectedValue.ToString()));
+                                }
+                                else
+                                    ///chọn từ đợt đến đợt
+                                    if (cmbFromDot_HD.SelectedIndex > 0)
+                                        for (int i = 1; i < cmbTo_HD.Items.Count; i++)
+                                            dt.Merge(_cDichVuThu.GetDS(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), ((TT_To)cmbTo_HD.Items[i]).MaTo, int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()), int.Parse(cmbFromDot_HD.SelectedItem.ToString()), int.Parse(cmbToDot_HD.SelectedItem.ToString())));
+                        dgvDichVuThu.DataSource = dt;
+                    }
+                    ///chọn 1 tổ
+                    else
+                        if (cmbTo_HD.SelectedIndex > 0)
+                            ///chọn tất cả nhân viên
+                            if (cmbNhanVien_HD.SelectedIndex == 0)
+                            {
+                                ///chọn tất cả kỳ
+                                if (cmbKy_HD.SelectedIndex == 0)
+                                {
+                                    dgvDichVuThu.DataSource = _cDichVuThu.GetDS_GiaBieu(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbGiaBieu_HD.SelectedValue.ToString()));
+                                    DataTable dt = new DataTable();
+                                    for (int i = 1; i <= 12; i++)
+                                    {
+                                        dt.Merge(_cDichVuThu.GetBienDongChuyenKhoan_GiaBieu(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), i, int.Parse(cmbGiaBieu_HD.SelectedValue.ToString())));
+                                    }
+                                    dgvBienDong_HD.DataSource = dt;
+                                }
+                                else
+                                    ///chọn 1 kỳ
+                                    if (cmbKy_HD.SelectedIndex > 0)
+                                        ///chọn tất cả đợt
+                                        if (cmbFromDot_HD.SelectedIndex == 0)
+                                        {
+                                            dgvDichVuThu.DataSource = _cDichVuThu.GetDS_GiaBieu(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()), int.Parse(cmbGiaBieu_HD.SelectedValue.ToString()));
+                                            dgvBienDong_HD.DataSource = _cDichVuThu.GetBienDongChuyenKhoan_GiaBieu(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()), int.Parse(cmbGiaBieu_HD.SelectedValue.ToString()));
+                                        }
+                                        else
+                                            ///chọn từ đợt đến đợt
+                                            if (cmbFromDot_HD.SelectedIndex > 0)
+                                                dgvDichVuThu.DataSource = _cDichVuThu.GetDS(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()), int.Parse(cmbFromDot_HD.SelectedItem.ToString()), int.Parse(cmbToDot_HD.SelectedItem.ToString()));
+                            }
+                            else
+                                ///chọn 1 nhân viên
+                                if (cmbNhanVien_HD.SelectedIndex > 0)
+                                {
+                                    ///chọn tất cả kỳ
+                                    if (cmbKy_HD.SelectedIndex == 0)
+                                    {
+                                        dgvDichVuThu.DataSource = _cDichVuThu.GetDS_GiaBieu_NV(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbGiaBieu_HD.SelectedValue.ToString()));
+                                        DataTable dt = new DataTable();
+                                        for (int i = 1; i <= 12; i++)
+                                        {
+                                            dt.Merge(_cDichVuThu.GetBienDongChuyenKhoan_GiaBieu_NV(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), i, int.Parse(cmbGiaBieu_HD.SelectedValue.ToString())));
+                                        }
+                                        dgvBienDong_HD.DataSource = dt;
+                                    }
+                                    else
+                                        ///chọn 1 kỳ
+                                        if (cmbKy_HD.SelectedIndex > 0)
+                                            ///chọn tất cả đợt
+                                            if (cmbFromDot_HD.SelectedIndex == 0)
+                                            {
+                                                dgvDichVuThu.DataSource = _cDichVuThu.GetDS_GiaBieu_NV(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()), int.Parse(cmbGiaBieu_HD.SelectedValue.ToString()));
+                                                dgvBienDong_HD.DataSource = _cDichVuThu.GetBienDongChuyenKhoan_GiaBieu_NV(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()), int.Parse(cmbGiaBieu_HD.SelectedValue.ToString()));
+                                            }
+                                            else
+                                                ///chọn từ đợt đến đợt
+                                                if (cmbFromDot_HD.SelectedIndex > 0)
+                                                    dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV(int.Parse(cmbNganHang_HD.SelectedValue.ToString()), int.Parse(cmbNhanVien_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()), int.Parse(cmbFromDot_HD.SelectedItem.ToString()), int.Parse(cmbToDot_HD.SelectedItem.ToString()));
+                                }
+                }
             CountdgvDichVuThu();
         }
 
@@ -893,18 +994,193 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 if (cmbNam_HD.SelectedIndex >= 0)
                 {
-                    //DataTable dt = _cHoaDon.GetGroupGiaBieu(int.Parse(cmbNam_HD.SelectedValue.ToString()));
-                    //DataRow dr = dt.NewRow();
-                    //dr["GiaBieu"] = "Tất Cả";
-                    //dt.Rows.InsertAt(dr, 0);
-                    //cmbGiaBieu_HD.DataSource = dt;
-                    //cmbGiaBieu_HD.DisplayMember = "GiaBieu";
-                    //cmbGiaBieu_HD.ValueMember = "GiaBieu";
+                    DataTable dt = _cHoaDon.GetGroupGiaBieu(int.Parse(cmbNam_HD.SelectedValue.ToString()));
+                    DataRow dr = dt.NewRow();
+                    dr["ID"] = "0";
+                    dr["GiaBieu"] = "Tất Cả";
+                    dt.Rows.InsertAt(dr, 0);
+                    cmbGiaBieu_HD.DataSource = dt;
+                    cmbGiaBieu_HD.DisplayMember = "GiaBieu";
+                    cmbGiaBieu_HD.ValueMember = "ID";
                 }
             }
             catch (Exception)
             {
             }
+        }
+
+        private void btnXuatExcel_HD_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            ///chọn tất cả tổ
+            if (cmbTo_HD.SelectedIndex == 0)
+            {
+                ///chọn tất cả kỳ
+                if (cmbKy_HD.SelectedIndex == 0)
+                {
+                    for (int i = 1; i < cmbTo_HD.Items.Count; i++)
+                        dt.Merge(_cDichVuThu.GetDS_XuatExcel(((TT_To)cmbTo_HD.Items[i]).MaTo, int.Parse(cmbNam_HD.SelectedValue.ToString())));
+                }
+                else
+                    ///chọn 1 kỳ
+                    if (cmbKy_HD.SelectedIndex > 0)
+                        ///chọn tất cả đợt
+                        if (cmbFromDot_HD.SelectedIndex == 0)
+                        {
+                            for (int i = 1; i < cmbTo_HD.Items.Count; i++)
+                                dt.Merge(_cDichVuThu.GetDS_XuatExcel(((TT_To)cmbTo_HD.Items[i]).MaTo, int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString())));
+                        }
+            }
+            ///chọn 1 tổ
+            else
+                if (cmbTo_HD.SelectedIndex > 0)
+                    ///chọn tất cả nhân viên
+                    if (cmbNhanVien_HD.SelectedIndex == 0)
+                    {
+                        ///chọn tất cả kỳ
+                        if (cmbKy_HD.SelectedIndex == 0)
+                        {
+                            dt = _cDichVuThu.GetDS_XuatExcel(int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()));
+                        }
+                        else
+                            ///chọn 1 kỳ
+                            if (cmbKy_HD.SelectedIndex > 0)
+                                ///chọn tất cả đợt
+                                if (cmbFromDot_HD.SelectedIndex == 0)
+                                {
+                                    dt = _cDichVuThu.GetDS_XuatExcel(int.Parse(cmbTo_HD.SelectedValue.ToString()), int.Parse(cmbNam_HD.SelectedValue.ToString()), int.Parse(cmbKy_HD.SelectedItem.ToString()));
+                                }
+                    }
+
+            //Tạo các đối tượng Excel
+            Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel.Workbooks oBooks;
+            Microsoft.Office.Interop.Excel.Sheets oSheets;
+            Microsoft.Office.Interop.Excel.Workbook oBook;
+            Microsoft.Office.Interop.Excel.Worksheet oSheet;
+
+            //Tạo mới một Excel WorkBook 
+            oExcel.Visible = true;
+            oExcel.DisplayAlerts = false;
+            //khai báo số lượng sheet
+            oExcel.Application.SheetsInNewWorkbook = 1;
+            oBooks = oExcel.Workbooks;
+
+            oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
+            oSheets = oBook.Worksheets;
+            oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
+
+            oSheet.Name = "PHÂN TÍCH ĐĂNG NGÂN";
+            // Tạo tiêu đề cột 
+            Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A1", "A1");
+            cl1.Value2 = "Số Hóa Đơn";
+            cl1.ColumnWidth = 15;
+
+            Microsoft.Office.Interop.Excel.Range cl2 = oSheet.get_Range("B1", "B1");
+            cl2.Value2 = "Kỳ";
+            cl2.ColumnWidth = 10;
+
+            Microsoft.Office.Interop.Excel.Range cl3 = oSheet.get_Range("C1", "C1");
+            cl3.Value2 = "Danh Bộ";
+            cl3.ColumnWidth = 15;
+
+            Microsoft.Office.Interop.Excel.Range cl4 = oSheet.get_Range("D1", "D1");
+            cl4.Value2 = "Khách Hàng";
+            cl4.ColumnWidth = 30;
+
+            Microsoft.Office.Interop.Excel.Range cl5 = oSheet.get_Range("E1", "E1");
+            cl5.Value2 = "Địa Chỉ";
+            cl5.ColumnWidth = 12;
+
+            Microsoft.Office.Interop.Excel.Range cl6 = oSheet.get_Range("F1", "F1");
+            cl6.Value2 = "MLT";
+            cl6.ColumnWidth = 15;
+
+            Microsoft.Office.Interop.Excel.Range cl7 = oSheet.get_Range("G1", "G1");
+            cl7.Value2 = "Tổng Cộng";
+            cl7.ColumnWidth = 15;
+
+            Microsoft.Office.Interop.Excel.Range cl8 = oSheet.get_Range("H1", "H1");
+            cl8.Value2 = "Đăng Ngân";
+            cl8.ColumnWidth = 15;
+
+            Microsoft.Office.Interop.Excel.Range cl9 = oSheet.get_Range("I1", "I1");
+            cl9.Value2 = "Ngân Hàng";
+            cl9.ColumnWidth = 10;
+
+            Microsoft.Office.Interop.Excel.Range cl10 = oSheet.get_Range("J1", "J1");
+            cl10.Value2 = "Giá Biểu";
+            cl10.ColumnWidth = 10;
+
+            Microsoft.Office.Interop.Excel.Range cl11 = oSheet.get_Range("K1", "K1");
+            cl11.Value2 = "Hành Thu";
+            cl11.ColumnWidth = 20;
+
+            Microsoft.Office.Interop.Excel.Range cl12 = oSheet.get_Range("L1", "L1");
+            cl11.Value2 = "Tổ";
+            cl11.ColumnWidth = 5;
+
+            // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
+            // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
+            object[,] arr = new object[dt.Rows.Count, 12];
+
+            //Chuyển dữ liệu từ DataTable vào mảng đối tượng
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                DataRow dr = dt.Rows[i];
+
+                arr[i, 0] = dr["SoHoaDon"].ToString();
+                arr[i, 1] = dr["Ky"].ToString();
+                arr[i, 2] = dr["DanhBo"].ToString();
+                arr[i, 3] = dr["HoTen"].ToString();
+                arr[i, 4] = dr["DiaChi"].ToString();
+                arr[i, 5] = dr["MLT"].ToString();
+                arr[i, 6] = dr["TongCong"].ToString();
+                arr[i, 7] = dr["DangNgan"].ToString();
+                arr[i, 8] = dr["TenNH"].ToString();
+                arr[i, 9] = dr["GiaBieu"].ToString();
+                arr[i, 10] = dr["HanhThu"].ToString();
+                arr[i, 11] = dr["To"].ToString();
+            }
+
+            //Thiết lập vùng điền dữ liệu
+            int rowStart = 2;
+            int columnStart = 1;
+
+            int rowEnd = rowStart + dt.Rows.Count - 1;
+            int columnEnd = 12;
+
+            // Ô bắt đầu điền dữ liệu
+            Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
+            // Ô kết thúc điền dữ liệu
+            Microsoft.Office.Interop.Excel.Range c2 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, columnEnd];
+            // Lấy về vùng điền dữ liệu
+            Microsoft.Office.Interop.Excel.Range range = oSheet.get_Range(c1, c2);
+
+            Microsoft.Office.Interop.Excel.Range c1a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 1];
+            Microsoft.Office.Interop.Excel.Range c2a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 1];
+            Microsoft.Office.Interop.Excel.Range c3a = oSheet.get_Range(c1a, c2a);
+            c3a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+            Microsoft.Office.Interop.Excel.Range c1b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 2];
+            Microsoft.Office.Interop.Excel.Range c2b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 2];
+            Microsoft.Office.Interop.Excel.Range c3b = oSheet.get_Range(c1b, c2b);
+            c3b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+            c3b.NumberFormat = "@";
+
+            Microsoft.Office.Interop.Excel.Range c1c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 3];
+            Microsoft.Office.Interop.Excel.Range c2c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 3];
+            Microsoft.Office.Interop.Excel.Range c3c = oSheet.get_Range(c1c, c2c);
+            c3c.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+            Microsoft.Office.Interop.Excel.Range c1d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 4];
+            Microsoft.Office.Interop.Excel.Range c2d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 4];
+            Microsoft.Office.Interop.Excel.Range c3d = oSheet.get_Range(c1d, c2d);
+            c3d.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+            //Điền dữ liệu vào vùng đã thiết lập
+            range.Value2 = arr;
+
         }
 
        

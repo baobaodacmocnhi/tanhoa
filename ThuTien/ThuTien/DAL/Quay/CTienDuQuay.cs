@@ -5,11 +5,28 @@ using System.Text;
 using System.Data;
 using ThuTien.DAL.QuanTri;
 using System.Windows.Forms;
+using ThuTien.LinQ;
 
 namespace ThuTien.DAL.Quay
 {
     class CTienDuQuay : CDAL
     {
+        public bool Sua(TT_TienDuQuay tiendu)
+        {
+            try
+            {
+                tiendu.ModifyDate = DateTime.Now;
+                tiendu.ModifyBy = CNguoiDung.MaND;
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         public DataTable GetDSTienAm()
         {
             return LINQToDataTable(_db.TT_TienDuQuays.Where(item => item.SoTien < 0).ToList());
@@ -18,6 +35,20 @@ namespace ThuTien.DAL.Quay
         public DataTable GetDSTienDu()
         {
             return LINQToDataTable(_db.TT_TienDuQuays.Where(item => item.SoTien > 0).ToList());
+        }
+
+        public DataTable GetDSTienDu(DateTime NgayGiaiTrach)
+        {
+            string sql = "declare @NgayGiaiTrach date;"
+                    + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "'"
+                    + " select a.DanhBo,CASE WHEN b.SoTien is null THEN a.SoTien ELSE a.SoTien-b.SoTien END as SoTien,DienThoai from"
+                    + " (select DanhBo,SoTien from TT_TienDuQuay) a"
+                    + " left join"
+                    + " (select DanhBo,SUM(SoTien) as SoTien from TT_TienDuLichSuQuay where CAST(CreateDate as date)>@NgayGiaiTrach group by DanhBo) b on a.DanhBo=b.DanhBo"
+                    + " left join"
+                    + " (select DanhBo,DienThoai from TT_ThongTinKhachHang) c on a.DanhBo=c.DanhBo"
+                    + " where case when b.SoTien is null then a.SoTien else a.SoTien-b.SoTien end>0";
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
         public bool Update(string DanhBo, int SoTien, string Loai, string GhiChu)
@@ -43,6 +74,11 @@ namespace ThuTien.DAL.Quay
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+        }
+
+        public TT_TienDuQuay Get(string DanhBo)
+        {
+            return _db.TT_TienDuQuays.SingleOrDefault(item => item.DanhBo == DanhBo);
         }
 
         public bool UpdateThem(string SoHoaDon, string Loai, string GhiChu)
@@ -95,5 +131,22 @@ namespace ThuTien.DAL.Quay
             }
         }
 
+        public int GetTienDu(string DanhBo)
+        {
+            if (_db.TT_TienDuLichSuQuays.Any(item => item.DanhBo == DanhBo))
+                return _db.TT_TienDuLichSuQuays.SingleOrDefault(item => item.DanhBo == DanhBo).SoTien.Value;
+            else
+                return 0;
+        }
+
+        public DataTable GetDSLichSu(string DanhBo)
+        {
+            return LINQToDataTable(_db.TT_TienDuLichSuQuays.Where(item => item.DanhBo == DanhBo).OrderByDescending(item => item.CreateDate).ToList());
+        }
+
+        public DataTable GetDSLichSu(string Loai, DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            return LINQToDataTable(_db.TT_TienDuLichSuQuays.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Loai.Contains(Loai)));
+        }
     }
 }

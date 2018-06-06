@@ -210,7 +210,7 @@ namespace ThuTien.GUI.HanhThu
                         {
                             ///ưu tiên đăng ngân hành thu, tự động xóa tạm thu chuyển qua thu 2 lần
                             bool ChuyenKhoan = false;
-                            if (_cTamThu.CheckExist(item.Text, out ChuyenKhoan))
+                            if (_cTamThu.CheckExist_Quay(item.Text))
                                 using (var scope = new TransactionScope())
                                 {
                                     if (_cHoaDon.DangNgan("Ton", item.Text, CNguoiDung.MaND))

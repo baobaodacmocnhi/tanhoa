@@ -62,6 +62,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cmbLoai = new System.Windows.Forms.ComboBox();
             this.txtTongCong = new System.Windows.Forms.TextBox();
+            this.txtTongCong_LSGD = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuDieuChinhTienDu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuTienDu)).BeginInit();
             this.SuspendLayout();
@@ -279,7 +280,7 @@
             this.dgvLichSuTienDu.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvLichSuTienDu.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvLichSuTienDu.Size = new System.Drawing.Size(580, 587);
+            this.dgvLichSuTienDu.Size = new System.Drawing.Size(580, 565);
             this.dgvLichSuTienDu.TabIndex = 90;
             this.dgvLichSuTienDu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLichSuTienDu_CellFormatting);
             this.dgvLichSuTienDu.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvLichSuTienDu_RowPostPaint);
@@ -349,11 +350,21 @@
             this.txtTongCong.TabIndex = 98;
             this.txtTongCong.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // txtTongCong_LSGD
+            // 
+            this.txtTongCong_LSGD.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongCong_LSGD.Location = new System.Drawing.Point(821, 603);
+            this.txtTongCong_LSGD.Name = "txtTongCong_LSGD";
+            this.txtTongCong_LSGD.Size = new System.Drawing.Size(100, 20);
+            this.txtTongCong_LSGD.TabIndex = 99;
+            this.txtTongCong_LSGD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // frmLichSuDieuChinhTienDu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1304, 656);
+            this.Controls.Add(this.txtTongCong_LSGD);
             this.Controls.Add(this.txtTongCong);
             this.Controls.Add(this.cmbLoai);
             this.Controls.Add(this.label1);
@@ -407,5 +418,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBoChuyenNhan_LSTD;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.TextBox txtTongCong;
+        private System.Windows.Forms.TextBox txtTongCong_LSGD;
     }
 }

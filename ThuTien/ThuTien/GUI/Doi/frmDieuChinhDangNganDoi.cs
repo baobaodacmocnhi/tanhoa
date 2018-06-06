@@ -244,7 +244,7 @@ namespace ThuTien.GUI.Doi
                             {
                                 ///ưu tiên đăng ngân hành thu, tự động xóa tạm thu chuyển qua thu 2 lần
                                 bool ChuyenKhoan = false;
-                                if (_cTamThu.CheckExist(item.Text, out ChuyenKhoan))
+                                if (_cTamThu.CheckExist_Quay(item.Text))
                                     using (var scope = new TransactionScope())
                                     {
                                         if (_cHoaDon.DangNgan("HanhThu", item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value))

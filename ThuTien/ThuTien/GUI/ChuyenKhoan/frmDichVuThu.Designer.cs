@@ -83,7 +83,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.cmbNam = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDichVuThu)).BeginInit();
             this.SuspendLayout();
             // 
@@ -608,20 +607,11 @@
             this.label9.TabIndex = 102;
             this.label9.Text = "Năm:";
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Location = new System.Drawing.Point(1106, 17);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(173, 62);
-            this.groupBox1.TabIndex = 106;
-            this.groupBox1.TabStop = false;
-            // 
             // frmDichVuThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1360, 676);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cmbKy);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.cmbNam);
@@ -715,6 +705,5 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cmbNam;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

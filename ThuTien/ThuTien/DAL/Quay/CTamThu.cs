@@ -112,6 +112,11 @@ namespace ThuTien.DAL.Quay
             return _db.TAMTHUs.Any(item => item.SoHoaDon == SoHoaDon);
         }
 
+        public bool CheckExist_Quay(string SoHoaDon)
+        {
+            return _db.TAMTHUs.Any(item => item.SoHoaDon == SoHoaDon && item.ChuyenKhoan == false);
+        }
+
         public DataTable GetDS(bool ChuyenKhoan, DateTime TuNgay, DateTime DenNgay)
         {
             var query = from itemTT in _db.TAMTHUs

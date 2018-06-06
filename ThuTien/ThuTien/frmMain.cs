@@ -883,17 +883,6 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void mnuBaoCaoQuay_Click(object sender, EventArgs e)
-        {
-            if (CNguoiDung.CheckQuyen("mnuBaoCaoQuay", "Xem"))
-            {
-                frmBaoCaoQuay frm = new frmBaoCaoQuay();
-                OpenForm(frm);
-            }
-            else
-                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
         private void mnuPhiMoNuocQuay_Click(object sender, EventArgs e)
         {
             if (CNguoiDung.CheckQuyen("mnuPhiMoNuocQuay", "Xem"))
@@ -905,11 +894,11 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void mnuQuetGiaoTon_Click(object sender, EventArgs e)
+        private void mnuThu2Lan_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen("mnuQuetGiaoTon", "Xem"))
+            if (CNguoiDung.CheckQuyen("mnuThu2Lan", "Xem"))
             {
-                frmQuetGiaoTon frm = new frmQuetGiaoTon();
+                frmThu2Lan frm = new frmThu2Lan();
                 OpenForm(frm);
             }
             else
@@ -927,11 +916,44 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuLichSuDieuChinhTienDuQuay_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuLichSuDieuChinhTienDuQuay", "Xem"))
+            {
+                frmLichSuDieuChinhTienDuQuay frm = new frmLichSuDieuChinhTienDuQuay();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         private void mnuDangNganTienDuQuay_Click(object sender, EventArgs e)
         {
             if (CNguoiDung.CheckQuyen("mnuDangNganTienDuQuay", "Xem"))
             {
                 frmDangNganTienDuQuay frm = new frmDangNganTienDuQuay();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuQuetGiaoTon_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuQuetGiaoTon", "Xem"))
+            {
+                frmQuetGiaoTon frm = new frmQuetGiaoTon();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuBaoCaoQuay_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuBaoCaoQuay", "Xem"))
+            {
+                frmBaoCaoQuay frm = new frmBaoCaoQuay();
                 OpenForm(frm);
             }
             else
@@ -953,15 +975,15 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void mnuThu2Lan_Click(object sender, EventArgs e)
+        private void mnuThu2LanTH_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen("mnuThu2Lan", "Xem"))
-            {
-                frmThu2Lan frm = new frmThu2Lan();
-                OpenForm(frm);
-            }
-            else
-                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //if (CNguoiDung.CheckQuyen("mnuThu2Lan", "Xem"))
+            //{
+            //    frmThu2Lan frm = new frmThu2Lan();
+            //    OpenForm(frm);
+            //}
+            //else
+            //    MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void mnuChuyenNoKhoDoi_Click(object sender, EventArgs e)
@@ -1072,6 +1094,10 @@ namespace ThuTien
         }
 
         #endregion
+
+        
+
+       
 
         
 

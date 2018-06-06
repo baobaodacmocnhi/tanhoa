@@ -149,14 +149,18 @@ namespace ThuTien.GUI.Quay
                                 return;
                             }
                         }
-                    //DataTable dt = _cDongNuoc.GetDSKQDongNuoc_PhiMoNuoc(false,lstTamThu[0].DANHBA);
-                    //TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dt.Rows[0]["MaKQDN"].ToString()));
-                    //if (kqdongnuoc.DongPhi != true && kqdongnuoc.ChuyenKhoan != true)
-                    //{
-                    //    kqdongnuoc.DongPhi = true;
-                    //    kqdongnuoc.NgayDongPhi = DateTime.Now;
-                    //    _cDongNuoc.SuaKQ(kqdongnuoc);
-                    //}
+                    ///ghi nhận đóng phí mở nước
+                    DataTable dt = _cDongNuoc.GetDSKQDongNuoc_PhiMoNuoc(false, lstTamThu[0].DANHBA);
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dt.Rows[0]["MaKQDN"].ToString()));
+                        if (kqdongnuoc.DongPhi != true && kqdongnuoc.ChuyenKhoan != true)
+                        {
+                            kqdongnuoc.DongPhi = true;
+                            kqdongnuoc.NgayDongPhi = DateTime.Now;
+                            _cDongNuoc.SuaKQ(kqdongnuoc);
+                        }
+                    }
 
                     _cTamThu.CommitTransaction();
                 }

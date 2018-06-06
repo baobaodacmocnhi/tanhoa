@@ -32,7 +32,6 @@ namespace ThuTien.GUI.ChuyenKhoan
         CBangKe _cBangKe = new CBangKe();
         CDocSo _cDocSo = new CDocSo();
 
-
         public frmTienDu()
         {
             InitializeComponent();

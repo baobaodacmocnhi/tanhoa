@@ -96,6 +96,12 @@ namespace ThuTien.GUI.ChuyenKhoan
             if (e.KeyChar == 13 && txtDanhBo.Text.Trim().Replace(" ", "").Length == 11)
             {
                 dgvLichSuTienDu.DataSource = _cTienDu.GetDSLichSu(txtDanhBo.Text.Trim().Replace(" ", ""));
+                long TongCong = 0;
+                foreach (DataGridViewRow item in dgvLichSuTienDu.Rows)
+                {
+                    TongCong += int.Parse(item.Cells["SoTien_LSGD"].Value.ToString());
+                }
+                txtTongCong_LSGD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
             }
         }
 
@@ -208,7 +214,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void dgvLichSuTienDu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvLichSuTienDu.Columns[e.ColumnIndex].Name == "TongCong_LSTD" && e.Value != null)
+            if (dgvLichSuTienDu.Columns[e.ColumnIndex].Name == "SoTien_LSTD" && e.Value != null)
             {
                 e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }

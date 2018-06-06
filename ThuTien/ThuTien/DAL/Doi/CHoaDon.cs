@@ -9038,15 +9038,15 @@ namespace ThuTien.DAL.Doi
             //    + " left join TT_KQDongNuoc c on a.MaDN=c.MaDN where Huy=0) as dn on  a.SOHOADON=dn.SoHoaDon"
             //    + " where a.DANHBA like '%" + DanhBo + "%' and a.TENKH like '%" + HoTen + "%' and (SO+' '+DUONG) like '%" + DiaChi + "%'"
             //    + "order by ID_HOADON desc";
-            string sql = "select * from TimKiem('" + DanhBo + "','" + MLT + "') order by MaHD desc";
+            string sql = "select * from fnTimKiem('" + DanhBo + "','" + MLT + "') order by MaHD desc";
 
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
         public DataTable GetDSTimKiemTatCa(string DanhBo, string MLT)
         {
-            string sqlCu = "select * from TimKiemCu('" + DanhBo + "','" + MLT + "')";
-            string sql = "select * from TimKiem('" + DanhBo + "','" + MLT + "')";
+            string sqlCu = "select * from fnTimKiemCu('" + DanhBo + "','" + MLT + "')";
+            string sql = "select * from fnTimKiem('" + DanhBo + "','" + MLT + "')";
 
             DataTable dt = ExecuteQuery_SqlDataAdapter_DataTable(sql);
             dt.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sqlCu));
@@ -9056,7 +9056,7 @@ namespace ThuTien.DAL.Doi
 
         public DataTable GetDSTimKiemTTKH(string HoTen, string SoNha, string TenDuong)
         {
-            string sql = "select * from TimKiemTTKH('" + HoTen + "','" + SoNha + "','" + TenDuong + "')";
+            string sql = "select * from fnTimKiemTTKH('" + HoTen + "','" + SoNha + "','" + TenDuong + "')";
 
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
@@ -9141,7 +9141,8 @@ namespace ThuTien.DAL.Doi
                         group item by item.GB into itemGroup
                         select new
                         {
-                            GiaBieu = itemGroup.Key,
+                            ID=itemGroup.Key,
+                            GiaBieu = itemGroup.Key.ToString(),
                         };
             return LINQToDataTable(query);
         }
