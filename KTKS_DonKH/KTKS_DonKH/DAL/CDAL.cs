@@ -95,6 +95,23 @@ namespace KTKS_DonKH.DAL
                 connection.Close();
         }
 
+        public object ExecuteQuery_ReturnOneValue(string sql)
+        {
+            try
+            {
+                Connect();
+                command = new SqlCommand(sql, connection);
+                object result = command.ExecuteScalar();
+                Disconnect();
+                return result;
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
+        }
+
         /// <summary>
         /// Thực thi câu truy vấn SQL trả về một đối tượng DataSet chứa kết quả trả về
         /// </summary>
@@ -138,7 +155,31 @@ namespace KTKS_DonKH.DAL
         {
             try
             {
-                return ExecuteQuery_SqlDataAdapter_DataSet(sql).Tables[0];
+                try
+                {
+                    Connect();
+                    DataTable datatable = new DataTable();
+                    command = new SqlCommand();
+                    command.Connection = this.connection;
+                    adapter = new SqlDataAdapter(sql, connection);
+                    //adapter.SelectCommand.CommandTimeout = 300;
+                    try
+                    {
+                        adapter.Fill(datatable);
+                    }
+                    catch (SqlException e)
+                    {
+                        throw e;
+                    }
+                    Disconnect();
+                    return datatable;
+                }
+                catch (Exception)
+                {
+                    Disconnect();
+                    //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
             }
             catch (Exception)
             {

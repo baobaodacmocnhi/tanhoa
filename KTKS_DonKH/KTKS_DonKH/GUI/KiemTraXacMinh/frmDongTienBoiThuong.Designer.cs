@@ -56,6 +56,7 @@
             this.txtHieu = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chkMoNuoc = new System.Windows.Forms.CheckBox();
             this.chkDutChiGoc = new System.Windows.Forms.CheckBox();
             this.txtDienThoai = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -77,7 +78,7 @@
             this.label23 = new System.Windows.Forms.Label();
             this.dateDongTien = new System.Windows.Forms.DateTimePicker();
             this.label22 = new System.Windows.Forms.Label();
-            this.chkChuyenCatHuy = new System.Windows.Forms.CheckBox();
+            this.chkChuyenLapTBCat = new System.Windows.Forms.CheckBox();
             this.groupBoxChuyenCatHuy = new System.Windows.Forms.GroupBox();
             this.dateChuyenCatHuy = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
@@ -86,7 +87,6 @@
             this.dateLapBangGia = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbNoiDung = new System.Windows.Forms.ComboBox();
-            this.chkMoNuoc = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKetQuaKiemTra)).BeginInit();
             this.groupBoxDongTienBoiThuong.SuspendLayout();
@@ -413,6 +413,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kết Quả";
             // 
+            // chkMoNuoc
+            // 
+            this.chkMoNuoc.AutoSize = true;
+            this.chkMoNuoc.Location = new System.Drawing.Point(869, 135);
+            this.chkMoNuoc.Name = "chkMoNuoc";
+            this.chkMoNuoc.Size = new System.Drawing.Size(81, 20);
+            this.chkMoNuoc.TabIndex = 48;
+            this.chkMoNuoc.Text = "Mở Nước";
+            this.chkMoNuoc.UseVisualStyleBackColor = true;
+            // 
             // chkDutChiGoc
             // 
             this.chkDutChiGoc.AutoSize = true;
@@ -613,16 +623,16 @@
             this.label22.TabIndex = 56;
             this.label22.Text = "Ngày";
             // 
-            // chkChuyenCatHuy
+            // chkChuyenLapTBCat
             // 
-            this.chkChuyenCatHuy.AutoSize = true;
-            this.chkChuyenCatHuy.Location = new System.Drawing.Point(998, 207);
-            this.chkChuyenCatHuy.Name = "chkChuyenCatHuy";
-            this.chkChuyenCatHuy.Size = new System.Drawing.Size(142, 20);
-            this.chkChuyenCatHuy.TabIndex = 44;
-            this.chkChuyenCatHuy.Text = "Chuyển Lập TB Cắt";
-            this.chkChuyenCatHuy.UseVisualStyleBackColor = true;
-            this.chkChuyenCatHuy.CheckedChanged += new System.EventHandler(this.chkChuyenCatHuy_CheckedChanged);
+            this.chkChuyenLapTBCat.AutoSize = true;
+            this.chkChuyenLapTBCat.Location = new System.Drawing.Point(998, 207);
+            this.chkChuyenLapTBCat.Name = "chkChuyenLapTBCat";
+            this.chkChuyenLapTBCat.Size = new System.Drawing.Size(142, 20);
+            this.chkChuyenLapTBCat.TabIndex = 44;
+            this.chkChuyenLapTBCat.Text = "Chuyển Lập TB Cắt";
+            this.chkChuyenLapTBCat.UseVisualStyleBackColor = true;
+            this.chkChuyenLapTBCat.CheckedChanged += new System.EventHandler(this.chkChuyenCatHuy_CheckedChanged);
             // 
             // groupBoxChuyenCatHuy
             // 
@@ -707,16 +717,6 @@
             this.cmbNoiDung.Size = new System.Drawing.Size(188, 24);
             this.cmbNoiDung.TabIndex = 32;
             // 
-            // chkMoNuoc
-            // 
-            this.chkMoNuoc.AutoSize = true;
-            this.chkMoNuoc.Location = new System.Drawing.Point(869, 135);
-            this.chkMoNuoc.Name = "chkMoNuoc";
-            this.chkMoNuoc.Size = new System.Drawing.Size(81, 20);
-            this.chkMoNuoc.TabIndex = 48;
-            this.chkMoNuoc.Text = "Mở Nước";
-            this.chkMoNuoc.UseVisualStyleBackColor = true;
-            // 
             // frmDongTienBoiThuong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -728,7 +728,7 @@
             this.Controls.Add(this.txtTheoYeuCau);
             this.Controls.Add(this.chkLapBangGia);
             this.Controls.Add(this.groupBoxLapBangGia);
-            this.Controls.Add(this.chkChuyenCatHuy);
+            this.Controls.Add(this.chkChuyenLapTBCat);
             this.Controls.Add(this.groupBoxChuyenCatHuy);
             this.Controls.Add(this.chkDongTienBoiThuong);
             this.Controls.Add(this.groupBoxDongTienBoiThuong);
@@ -799,7 +799,7 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.DateTimePicker dateDongTien;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.CheckBox chkChuyenCatHuy;
+        private System.Windows.Forms.CheckBox chkChuyenLapTBCat;
         private System.Windows.Forms.GroupBox groupBoxChuyenCatHuy;
         private System.Windows.Forms.DateTimePicker dateChuyenCatHuy;
         private System.Windows.Forms.Label label6;

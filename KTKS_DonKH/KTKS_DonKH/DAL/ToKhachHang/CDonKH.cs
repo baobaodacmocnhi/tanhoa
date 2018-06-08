@@ -237,6 +237,31 @@ namespace KTKS_DonKH.DAL.ToKhachHang
             return LINQToDataTable(query);
         }
 
+        public DataTable GetDS(int MaLD,DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            var query = from itemDonKH in db.DonKHs
+                        join itemUser in db.Users on itemDonKH.NguoiDi_KTXM equals itemUser.MaU into tmpUsers
+                        from tmpUser in tmpUsers.DefaultIfEmpty()
+                        where itemDonKH.MaLD==MaLD&&itemDonKH.CreateDate.Value.Date >= FromCreateDate.Date && itemDonKH.CreateDate.Value.Date <= ToCreateDate.Date
+                        orderby itemDonKH.CreateDate descending
+                        select new
+                        {
+                            itemDonKH.MaDon,
+                            itemDonKH.LoaiDon.TenLD,
+                            itemDonKH.SoCongVan,
+                            itemDonKH.CreateDate,
+                            itemDonKH.DanhBo,
+                            itemDonKH.HoTen,
+                            itemDonKH.DiaChi,
+                            itemDonKH.NoiDung,
+                            NguoiDi_KTXM = tmpUser.HoTen,
+                            GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDon == itemDonKH.MaDon && item.CreateBy == itemDonKH.NguoiDi_KTXM) == true
+                            ? true : db.CTBamChis.Any(item => item.BamChi.MaDon == itemDonKH.MaDon && item.CreateBy == itemDonKH.NguoiDi_KTXM) == true
+                            ? true : db.DCBDs.Any(item => item.MaDon == itemDonKH.MaDon)
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable BaoCao_ThongKeLoaiDon(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             string sql = "select MaDon,TenLD,"

@@ -316,6 +316,10 @@
               <xs:element name="TieuThuTrungBinh" msprop:Generator_ColumnVarNameInTable="columnTieuThuTrungBinh" msprop:Generator_ColumnPropNameInRow="TieuThuTrungBinh" msprop:Generator_ColumnPropNameInTable="TieuThuTrungBinhColumn" msprop:Generator_UserColumnName="TieuThuTrungBinh" type="xs:int" minOccurs="0" />
               <xs:element name="NguoiLap" msprop:Generator_ColumnVarNameInTable="columnNguoiLap" msprop:Generator_ColumnPropNameInRow="NguoiLap" msprop:Generator_ColumnPropNameInTable="NguoiLapColumn" msprop:Generator_UserColumnName="NguoiLap" type="xs:string" minOccurs="0" />
               <xs:element name="To" msprop:Generator_ColumnVarNameInTable="columnTo" msprop:Generator_ColumnPropNameInRow="To" msprop:Generator_ColumnPropNameInTable="ToColumn" msprop:Generator_UserColumnName="To" type="xs:string" minOccurs="0" />
+              <xs:element name="NgayLapBangGia" msprop:Generator_ColumnVarNameInTable="columnNgayLapBangGia" msprop:Generator_ColumnPropNameInRow="NgayLapBangGia" msprop:Generator_ColumnPropNameInTable="NgayLapBangGiaColumn" msprop:Generator_UserColumnName="NgayLapBangGia" type="xs:string" minOccurs="0" />
+              <xs:element name="NgayDongTienBoiThuong" msprop:Generator_ColumnVarNameInTable="columnNgayDongTienBoiThuong" msprop:Generator_ColumnPropNameInRow="NgayDongTienBoiThuong" msprop:Generator_ColumnPropNameInTable="NgayDongTienBoiThuongColumn" msprop:Generator_UserColumnName="NgayDongTienBoiThuong" type="xs:string" minOccurs="0" />
+              <xs:element name="NgayChuyenLapTBCat" msprop:Generator_ColumnVarNameInTable="columnNgayChuyenLapTBCat" msprop:Generator_ColumnPropNameInRow="NgayChuyenLapTBCat" msprop:Generator_ColumnPropNameInTable="NgayChuyenLapTBCatColumn" msprop:Generator_UserColumnName="NgayChuyenLapTBCat" type="xs:string" minOccurs="0" />
+              <xs:element name="SoTien" msprop:Generator_ColumnVarNameInTable="columnSoTien" msprop:Generator_ColumnPropNameInRow="SoTien" msprop:Generator_ColumnPropNameInTable="SoTienColumn" msprop:Generator_UserColumnName="SoTien" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

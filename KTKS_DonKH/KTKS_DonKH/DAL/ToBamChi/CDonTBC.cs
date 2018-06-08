@@ -225,6 +225,27 @@ namespace KTKS_DonKH.DAL.ToBamChi
             return LINQToDataTable(query);
         }
 
-
+        public DataTable GetDS(int MaLD,DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            var query = from itemDonTBC in db.DonTBCs
+                        join itemUser in db.Users on itemDonTBC.NguoiDi_KTXM equals itemUser.MaU into tmpUsers
+                        from tmpUser in tmpUsers.DefaultIfEmpty()
+                        where itemDonTBC.MaLD==MaLD&&itemDonTBC.CreateDate.Value.Date >= FromCreateDate.Date && itemDonTBC.CreateDate.Value.Date <= ToCreateDate.Date
+                        orderby itemDonTBC.CreateDate descending
+                        select new
+                        {
+                            MaDon = "TBC" + itemDonTBC.MaDon,
+                            itemDonTBC.LoaiDonTBC.TenLD,
+                            itemDonTBC.SoCongVan,
+                            itemDonTBC.CreateDate,
+                            itemDonTBC.DanhBo,
+                            itemDonTBC.HoTen,
+                            itemDonTBC.DiaChi,
+                            itemDonTBC.NoiDung,
+                            NguoiDi_KTXM = tmpUser.HoTen,
+                            GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM) == true ? true : db.CTBamChis.Any(item => item.BamChi.MaDonTBC == itemDonTBC.MaDon && item.CreateBy == itemDonTBC.NguoiDi_KTXM)
+                        };
+            return LINQToDataTable(query);
+        }
     }
 }

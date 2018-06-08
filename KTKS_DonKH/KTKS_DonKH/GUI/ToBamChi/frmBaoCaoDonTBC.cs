@@ -9,7 +9,6 @@ using System.Windows.Forms;
 using KTKS_DonKH.BaoCao.ToXuLy;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.GUI.BaoCao;
-using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.DAL.KiemTraXacMinh;
 using KTKS_DonKH.DAL.BamChi;
 using KTKS_DonKH.DAL.DonTu;
@@ -25,6 +24,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
         CKTXM _cKTXM = new CKTXM();
         CBamChi _cBamChi = new CBamChi();
         CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
+        CLoaiDonTBC _cLoaiDonTBC = new CLoaiDonTBC();
 
         public frmBaoCaoDonTBC()
         {
@@ -33,7 +33,10 @@ namespace KTKS_DonKH.GUI.ToBamChi
 
         private void frmBaoCaoDonTBC_Load(object sender, EventArgs e)
         {
-
+            cmbLD_DSLoaiDon.DataSource = _cLoaiDonTBC.GetDS();
+            cmbLD_DSLoaiDon.DisplayMember = "TenLD";
+            cmbLD_DSLoaiDon.ValueMember = "MaLD";
+            cmbLD_DSLoaiDon.SelectedIndex = -1;
         }
 
         private void btnBaoCao_Click(object sender, EventArgs e)
@@ -231,6 +234,38 @@ namespace KTKS_DonKH.GUI.ToBamChi
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.Show();
+        }
+
+        private void btnBaoCao_DSLoaiDon_Click(object sender, EventArgs e)
+        {
+            if (cmbLD_DSLoaiDon.SelectedIndex > -1)
+            {
+                DataTable dt = _cDonTBC.GetDS(int.Parse(cmbLD_DSLoaiDon.SelectedValue.ToString()),dateTu_DSLoaiDon.Value,dateDen_DSLoaiDon.Value);
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                foreach (DataRow item in dt.Rows)
+                {
+                    DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
+
+                    dr["LoaiBaoCao"] = "TỔ BẤM CHÌ";
+                    dr["MaDon"] = item["MaDon"].ToString().Insert(item["MaDon"].ToString().Length - 2, "-");
+                    //dr["STT"] = item.Cells["STT"].Value;
+                    dr["TenLD"] = item["TenLD"].ToString();
+                    dr["SoCongVan"] = item["SoCongVan"].ToString();
+                    dr["NgayNhan"] = item["CreateDate"].ToString();
+                    if (!string.IsNullOrEmpty(item["DanhBo"].ToString()) && item["DanhBo"].ToString().Length == 11)
+                        dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = item["HoTen"];
+                    dr["DiaChi"] = item["DiaChi"];
+                    dr["NoiDung"] = item["NoiDung"];
+
+                    dsBaoCao.Tables["DSDonTXL"].Rows.Add(dr);
+                }
+                rptDSDonTXL rpt = new rptDSDonTXL();
+                rpt.SetDataSource(dsBaoCao);
+                rpt.Subreports[0].SetDataSource(dsBaoCao);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.ShowDialog();
+            }
         }
 
         

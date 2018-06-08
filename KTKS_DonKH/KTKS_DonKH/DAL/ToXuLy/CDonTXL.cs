@@ -238,6 +238,30 @@ namespace KTKS_DonKH.DAL.ToXuLy
             return LINQToDataTable(query);
         }
 
+        public DataTable GetDS(int MaLD,DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            var query = from itemDonTXL in db.DonTXLs
+                        join itemUser in db.Users on itemDonTXL.NguoiDi_KTXM equals itemUser.MaU into tmpUsers
+                        from tmpUser in tmpUsers.DefaultIfEmpty()
+                        where itemDonTXL.MaLD==MaLD&&itemDonTXL.CreateDate.Value.Date >= FromCreateDate.Date && itemDonTXL.CreateDate.Value.Date <= ToCreateDate.Date
+                        orderby itemDonTXL.CreateDate descending
+                        select new
+                        {
+                            MaDon = "TXL" + itemDonTXL.MaDon,
+                            itemDonTXL.LoaiDonTXL.TenLD,
+                            itemDonTXL.SoCongVan,
+                            itemDonTXL.CreateDate,
+                            itemDonTXL.DanhBo,
+                            itemDonTXL.HoTen,
+                            itemDonTXL.DiaChi,
+                            itemDonTXL.NoiDung,
+                            NguoiDi_KTXM = tmpUser.HoTen,
+                            GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM) == true
+                            ? true : db.CTBamChis.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM)
+                        };
+            return LINQToDataTable(query);
+        }
+
         /// <summary>
         /// Lấy thông tin Đơn Tổ Xử Lý
         /// </summary>

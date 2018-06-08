@@ -80,12 +80,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
             if (ctktxm.ChuyenLapTBCat)
             {
-                chkChuyenCatHuy.Checked = true;
+                chkChuyenLapTBCat.Checked = true;
                 dateChuyenCatHuy.Value = ctktxm.NgayChuyenLapTBCat.Value;
             }
             else
             {
-                chkChuyenCatHuy.Checked = false;
+                chkChuyenLapTBCat.Checked = false;
                 dateChuyenCatHuy.Value = DateTime.Now;
             }
             cmbHienTrangKiemTra.SelectedValue = ctktxm.HienTrangKiemTra;
@@ -121,7 +121,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 dateDongTien.Value = DateTime.Now;
                 txtSoTien.Text = "";
                 ///
-                chkChuyenCatHuy.Checked = false;
+                chkChuyenLapTBCat.Checked = false;
                 dateChuyenCatHuy.Value = DateTime.Now;
                 _selectedindex = -1;
                 ///
@@ -183,7 +183,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         }
 
                     //if (ctktxm.ChuyenLapTBCat != chkChuyenCatHuy.Checked)
-                        if (chkChuyenCatHuy.Checked)
+                        if (chkChuyenLapTBCat.Checked)
                         {
                             ctktxm.ChuyenLapTBCat = true;
                             ctktxm.NgayChuyenLapTBCat = dateChuyenCatHuy.Value;
@@ -231,7 +231,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         private void chkChuyenCatHuy_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkChuyenCatHuy.Checked)
+            if (chkChuyenLapTBCat.Checked)
                 groupBoxChuyenCatHuy.Enabled = true;
             else
                 groupBoxChuyenCatHuy.Enabled = false;

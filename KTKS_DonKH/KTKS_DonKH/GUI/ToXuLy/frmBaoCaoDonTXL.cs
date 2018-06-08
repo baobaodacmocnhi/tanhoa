@@ -24,6 +24,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         CKTXM _cKTXM = new CKTXM();
         CBamChi _cBamChi = new CBamChi();
         CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
+        CLoaiDonTXL _cLoaiDonTXL = new CLoaiDonTXL();
 
         public frmBaoCaoDonTXL()
         {
@@ -32,7 +33,10 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
         private void frmBaoCaoDonTXL_Load(object sender, EventArgs e)
         {
-
+            cmbLD_DSLoaiDon.DataSource = _cLoaiDonTXL.GetDS();
+            cmbLD_DSLoaiDon.DisplayMember = "TenLD";
+            cmbLD_DSLoaiDon.ValueMember = "MaLD";
+            cmbLD_DSLoaiDon.SelectedIndex = -1;
         }
 
         private void btnBaoCao_Click(object sender, EventArgs e)
@@ -230,6 +234,38 @@ namespace KTKS_DonKH.GUI.ToXuLy
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.Show();
+        }
+
+        private void btnBaoCao_DSLoaiDon_Click(object sender, EventArgs e)
+        {
+            if (cmbLD_DSLoaiDon.SelectedIndex > -1)
+            {
+                DataTable dt = _cDonTXL.GetDS(int.Parse(cmbLD_DSLoaiDon.SelectedValue.ToString()), dateTu_DSLoaiDon.Value, dateDen_DSLoaiDon.Value);
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                foreach (DataRow item in dt.Rows)
+                {
+                    DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
+
+                    dr["LoaiBaoCao"] = "TỔ XỬ LÝ";
+                    dr["MaDon"] = item["MaDon"].ToString().Insert(item["MaDon"].ToString().Length - 2, "-");
+                    //dr["STT"] = item.Cells["STT"].Value;
+                    dr["TenLD"] = item["TenLD"].ToString();
+                    dr["SoCongVan"] = item["SoCongVan"].ToString();
+                    dr["NgayNhan"] = item["CreateDate"].ToString();
+                    if (!string.IsNullOrEmpty(item["DanhBo"].ToString()) && item["DanhBo"].ToString().Length == 11)
+                        dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = item["HoTen"];
+                    dr["DiaChi"] = item["DiaChi"];
+                    dr["NoiDung"] = item["NoiDung"];
+
+                    dsBaoCao.Tables["DSDonTXL"].Rows.Add(dr);
+                }
+                rptDSDonTXL rpt = new rptDSDonTXL();
+                rpt.SetDataSource(dsBaoCao);
+                rpt.Subreports[0].SetDataSource(dsBaoCao);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.ShowDialog();
+            }
         }
 
         

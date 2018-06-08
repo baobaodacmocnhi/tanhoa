@@ -351,10 +351,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void dgvDanhBo_RowLeave(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex > 0)
-                {
-                    dgvDanhBo["GBMoi", e.RowIndex].Value = dgvDanhBo["GBMoi", e.RowIndex - 1].Value;
-                }
+            //if (e.RowIndex > 0)
+            //    {
+            //        dgvDanhBo["GBMoi", e.RowIndex].Value = dgvDanhBo["GBMoi", e.RowIndex - 1].Value;
+            //    }
         }
     }
 }
