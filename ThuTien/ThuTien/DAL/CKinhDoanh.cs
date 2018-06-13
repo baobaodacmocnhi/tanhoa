@@ -13,7 +13,6 @@ namespace ThuTien.DAL
     {
         protected static string _connectionString;  // Chuỗi kết nối
         protected SqlConnection connection;         // Đối tượng kết nối
-        protected SqlDataAdapter adapter;           // Đối tượng adapter chứa dữ liệu
         protected SqlCommand command;               // Đối tượng command thực thi truy vấn
         //protected SqlTransaction transaction;       // Đối tượng transaction
         dbKTKS_DonKHDataContext _dbKinhDoanh = new dbKTKS_DonKHDataContext();
@@ -46,49 +45,18 @@ namespace ThuTien.DAL
                 connection.Close();
         }
 
-        /// <summary>
-        /// Thực thi câu truy vấn SQL trả về một đối tượng DataSet chứa kết quả trả về
-        /// </summary>
-        /// <param name="strSelect">Câu truy vấn cần thực thi lấy dữ liệu</param>
-        /// <returns>Đối tượng dataset chứa dữ liệu kết quả câu truy vấn</returns>
-        public DataSet ExecuteQuery_SqlDataAdapter_DataSet(string sql)
+        public DataTable ExecuteQuery_SqlDataReader_DataTable(string sql)
         {
             try
             {
+                DataTable dt = new DataTable();
                 Connect();
-                DataSet dataset = new DataSet();
-                command = new SqlCommand();
-                command.Connection = this.connection;
-                adapter = new SqlDataAdapter(sql, connection);
-                try
-                {
-                    adapter.Fill(dataset);
-                }
-                catch (SqlException e)
-                {
-                    throw e;
-                }
+                command = new SqlCommand(sql, connection);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                    dt.Load(reader);
                 Disconnect();
-                return dataset;
-            }
-            catch (Exception ex)
-            {
-                Disconnect();
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Thực thi câu truy vấn SQL trả về một đối tượng DataTable chứa kết quả trả về
-        /// </summary>
-        /// <param name="strSelect">Câu truy vấn cần thực thi lấy dữ liệu</param>
-        /// <returns>Đối tượng datatable chứa dữ liệu kết quả câu truy vấn</returns>
-        public DataTable ExecuteQuery_SqlDataAdapter_DataTable(string sql)
-        {
-            try
-            {
-                return ExecuteQuery_SqlDataAdapter_DataSet(sql).Tables[0];
+                return dt;
             }
             catch (Exception ex)
             {
@@ -108,13 +76,13 @@ namespace ThuTien.DAL
             string sqlPhieuCHDB = "select db='Kinh Doanh',Loai=N'Phiếu Yêu Cầu Cắt Hủy Danh Bộ',LyDo+'. '+GhiChuLyDo as NoiDung,CreateDate,'Table'='PhieuCHDB','Column'='MaYCCHDB',MaYCCHDB as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from PhieuCHDB where DanhBo='" + DanhBo + "'";
             string sqlTTTL = "select db='Kinh Doanh',Loai=N'Thư Trả Lời',NoiDung,CreateDate,'Table'='CTTTTL','Column'='MaCTTTTL',MaCTTTTL as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from CTTTTL where DanhBo='" + DanhBo + "'";
 
-            DataTable dt = ExecuteQuery_SqlDataAdapter_DataTable(sqlKTXM);
-            dt.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sqlDCBD));
-            dt.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sqlDCHD));
-            dt.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sqlCTDB));
-            dt.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sqlCHDB));
-            dt.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sqlPhieuCHDB));
-            dt.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sqlTTTL));
+            DataTable dt = ExecuteQuery_SqlDataReader_DataTable(sqlKTXM);
+            dt.Merge(ExecuteQuery_SqlDataReader_DataTable(sqlDCBD));
+            dt.Merge(ExecuteQuery_SqlDataReader_DataTable(sqlDCHD));
+            dt.Merge(ExecuteQuery_SqlDataReader_DataTable(sqlCTDB));
+            dt.Merge(ExecuteQuery_SqlDataReader_DataTable(sqlCHDB));
+            dt.Merge(ExecuteQuery_SqlDataReader_DataTable(sqlPhieuCHDB));
+            dt.Merge(ExecuteQuery_SqlDataReader_DataTable(sqlTTTL));
             dt.DefaultView.Sort = "CreateDate desc";
             return dt.DefaultView.ToTable();
         }
@@ -127,37 +95,37 @@ namespace ThuTien.DAL
                 case "Kiểm Tra Xác Minh":
                     string sqlKTXM = "select Loai=N'Kiểm Tra Xác Minh',DanhBo,DiaChi,NoiDungKiemTra as NoiDung,CreateDate,'Table'='CTKTXM','Column'='MaCTKTXM',MaCTKTXM as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from CTKTXM"
                         + " where ThuTien_NgayNhan>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "' and ThuTien_NgayNhan<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "'";
-                    dt = ExecuteQuery_SqlDataAdapter_DataTable(sqlKTXM);
+                    dt = ExecuteQuery_SqlDataReader_DataTable(sqlKTXM);
                     break;
                 case "Điều Chỉnh Biến Động":
                     string sqlDCBD = "select Loai=N'Điều Chỉnh Biến Động',DanhBo,DiaChi,ThongTin as NoiDung,CreateDate,'Table'='CTDCBD','Column'='MaCTDCBD',MaCTDCBD as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from CTDCBD"
                         + " where ThuTien_NgayNhan>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "' and ThuTien_NgayNhan<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "'";
-                    dt = ExecuteQuery_SqlDataAdapter_DataTable(sqlDCBD);
+                    dt = ExecuteQuery_SqlDataReader_DataTable(sqlDCBD);
                     break;
                 case "Điều Chỉnh Hóa Đơn":
                     string sqlDCHD = "select Loai=N'Điều Chỉnh Hóa Đơn',DanhBo,DiaChi,TangGiam as NoiDung,CreateDate,'Table'='CTDCHD','Column'='MaCTDCHD',MaCTDCHD as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from CTDCHD"
                         + " where ThuTien_NgayNhan>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "' and ThuTien_NgayNhan<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "'";
-                    dt = ExecuteQuery_SqlDataAdapter_DataTable(sqlDCHD);
+                    dt = ExecuteQuery_SqlDataReader_DataTable(sqlDCHD);
                     break;
                 case "TB Cắt Tạm Danh Bộ":
                     string sqlCTDB = "select Loai=N'TB Cắt Tạm Danh Bộ',DanhBo,DiaChi,LyDo+'. '+GhiChuLyDo as NoiDung,CreateDate,'Table'='CTCTDB','Column'='MaCTCTDB',MaCTCTDB as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from CTCTDB"
                         + " where ThuTien_NgayNhan>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "' and ThuTien_NgayNhan<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "'";
-                    dt = ExecuteQuery_SqlDataAdapter_DataTable(sqlCTDB);
+                    dt = ExecuteQuery_SqlDataReader_DataTable(sqlCTDB);
                     break;
                 case "TB Cắt Hủy Danh Bộ":
                     string sqlCHDB = "select Loai=N'TB Cắt Hủy Danh Bộ',DanhBo,DiaChi,LyDo+'. '+GhiChuLyDo as NoiDung,CreateDate,'Table'='CTCHDB','Column'='MaCTCHDB',MaCTCHDB as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from CTCHDB"
                         + " where ThuTien_NgayNhan>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "' and ThuTien_NgayNhan<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "'";
-                    dt = ExecuteQuery_SqlDataAdapter_DataTable(sqlCHDB);
+                    dt = ExecuteQuery_SqlDataReader_DataTable(sqlCHDB);
                     break;
                 case "Phiếu Yêu Cầu Cắt Hủy Danh Bộ":
                     string sqlPhieuCHDB = "select Loai=N'Phiếu Yêu Cầu Cắt Hủy Danh Bộ',DanhBo,DiaChi,LyDo+'. '+GhiChuLyDo as NoiDung,CreateDate,'Table'='PhieuCHDB','Column'='MaYCCHDB',MaYCCHDB as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from PhieuCHDB"
                         + " where ThuTien_NgayNhan>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "' and ThuTien_NgayNhan<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "'";
-                    dt = ExecuteQuery_SqlDataAdapter_DataTable(sqlPhieuCHDB);
+                    dt = ExecuteQuery_SqlDataReader_DataTable(sqlPhieuCHDB);
                     break;
                 case "Thư Trả Lời":
                     string sqlTTTL = "select Loai=N'Thư Trả Lời',DanhBo,DiaChi,NoiDung,CreateDate,'Table'='CTTTTL','Column'='MaCTTTTL',MaCTTTTL as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from CTTTTL"
                         + " where ThuTien_NgayNhan>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "' and ThuTien_NgayNhan<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "'";
-                    dt = ExecuteQuery_SqlDataAdapter_DataTable(sqlTTTL);
+                    dt = ExecuteQuery_SqlDataReader_DataTable(sqlTTTL);
                     break;
                 default:
                     sqlKTXM = "select Loai=N'Kiểm Tra Xác Minh',DanhBo,DiaChi,NoiDungKiemTra as NoiDung,CreateDate,'Table'='CTKTXM','Column'='MaCTKTXM',MaCTKTXM as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from CTKTXM"
@@ -175,13 +143,13 @@ namespace ThuTien.DAL
                     sqlTTTL = "select Loai=N'Thư Trả Lời',DanhBo,DiaChi,NoiDung,CreateDate,'Table'='CTTTTL','Column'='MaCTTTTL',MaCTTTTL as Ma,ThuTien_Nhan,ThuTien_NgayNhan,ThuTien_GhiChu from CTTTTL"
                         + " where ThuTien_NgayNhan>='" + FromThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "' and ThuTien_NgayNhan<='" + ToThuTien_NgayNhan.ToString("yyyy-MM-dd HH:mm:ss") + "'";
 
-                    dt = ExecuteQuery_SqlDataAdapter_DataTable(sqlKTXM);
-                    dt.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sqlDCBD));
-                    dt.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sqlDCHD));
-                    dt.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sqlCTDB));
-                    dt.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sqlCHDB));
-                    dt.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sqlPhieuCHDB));
-                    dt.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sqlTTTL));
+                    dt = ExecuteQuery_SqlDataReader_DataTable(sqlKTXM);
+                    dt.Merge(ExecuteQuery_SqlDataReader_DataTable(sqlDCBD));
+                    dt.Merge(ExecuteQuery_SqlDataReader_DataTable(sqlDCHD));
+                    dt.Merge(ExecuteQuery_SqlDataReader_DataTable(sqlCTDB));
+                    dt.Merge(ExecuteQuery_SqlDataReader_DataTable(sqlCHDB));
+                    dt.Merge(ExecuteQuery_SqlDataReader_DataTable(sqlPhieuCHDB));
+                    dt.Merge(ExecuteQuery_SqlDataReader_DataTable(sqlTTTL));
                     break;
             }
 

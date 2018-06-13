@@ -1241,7 +1241,7 @@ namespace ThuTien.DAL.TongHop
                         + " group by nd.MaND,nd.HoTen,nd.STT) tongton on nd.MaND=tongton.MaND"
                         + " order by nd.STT asc";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable GetDSByNgayDC(DateTime TuNgay, DateTime DenNgay)

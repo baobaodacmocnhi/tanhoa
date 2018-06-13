@@ -108,7 +108,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " left join TT_To tto on nd.MaTo=tto.MaTo"
                         + " where dlkhDB.DanhBo=hd.DANHBA and NGAYGIAITRACH is null and DOT="+Dot+" and SOHOADON not in (select SoHoaDon from TT_DuLieuKhachHang_SoHoaDon)"
                         + " order by MALOTRINH asc";
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable GetDSDanhBoTon(int TuDot, int DenDot)
@@ -128,7 +128,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " left join TT_To tto on nd.MaTo=tto.MaTo"
                         + " where dlkhDB.DanhBo=hd.DANHBA and NGAYGIAITRACH is null and DOT>=" + TuDot + " and DOT<="+DenDot+" and SOHOADON not in (select SoHoaDon from TT_DuLieuKhachHang_SoHoaDon)"
                         + " order by MALOTRINH asc";
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable GetDSDanhBoTon()
@@ -140,7 +140,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " left join TT_To tto on nd.MaTo=tto.MaTo"
                         + " where dlkhDB.DanhBo=hd.DANHBA and NGAYGIAITRACH is null and SOHOADON not in (select SoHoaDon from TT_DuLieuKhachHang_SoHoaDon)"
                         + " order by MALOTRINH asc";
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable GetDSTon(int Nam, int Ky)

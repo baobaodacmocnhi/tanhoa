@@ -142,7 +142,7 @@ namespace ThuTien.DAL.Doi
                         + " where dk.DanhBo=hd.DANHBA and dk.MaNV=@MaNV and NAM=@nam and KY=12) ky12 on db.DanhBo=ky12.DanhBo) t1"
                         + " where RowNumber=1";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
     }
 }

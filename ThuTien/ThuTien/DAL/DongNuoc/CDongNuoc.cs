@@ -310,7 +310,7 @@ namespace ThuTien.DAL.DongNuoc
                         + " where hd.ID_HOADON=ctdn.MaHD and kqdn.MaDN=ctdn.MaDN and cast(kqdn.NgayMN as date)>=@FromDate and cast(kqdn.NgayMN as date)<=@ToDate"
                         + " and hd.MAY>=(select TuCuonGCS from TT_To where MaTo=@MaTo) and hd.MAY<=(select DenCuonGCS from TT_To where MaTo=@MaTo))mn)";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable BaoCaoVatTu(DateTime FromNgayDN, DateTime ToNgayDN)
@@ -557,7 +557,7 @@ namespace ThuTien.DAL.DongNuoc
                         + " group by nd.MaND,nd.HoTen,nd.STT) khoanuoc on nd.MaND=khoanuoc.MaND"
                         + " order by nd.STT asc";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public bool CheckHuyLenh(decimal MaDN)

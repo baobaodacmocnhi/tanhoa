@@ -682,7 +682,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen,DOT,KY,NAM) ton on tong.MaND=ton.MaND"
                             + " order by tong.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -714,7 +714,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen,DOT,KY,NAM) ton on tong.MaND=ton.MaND"
                             + " order by tong.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -766,7 +766,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -805,7 +805,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -846,7 +846,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -883,7 +883,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -922,7 +922,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -957,7 +957,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -998,7 +998,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -1035,7 +1035,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -1078,7 +1078,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -1117,7 +1117,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -1164,7 +1164,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -1207,7 +1207,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -1252,7 +1252,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -1293,7 +1293,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -1338,7 +1338,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -1379,7 +1379,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -1407,7 +1407,7 @@ namespace ThuTien.DAL.Doi
                             + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                             + " and NAM=@Nam and KY=@Ky and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20 group by DOT,KY,NAM)) t1";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -1431,7 +1431,7 @@ namespace ThuTien.DAL.Doi
                             + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                             + " and NAM=@Nam and KY=@Ky and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20 group by DOT,KY,NAM)) t1";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -1465,7 +1465,7 @@ namespace ThuTien.DAL.Doi
                             + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                             + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20 group by KY,NAM)) t1";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -1487,7 +1487,7 @@ namespace ThuTien.DAL.Doi
                             + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                             + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20 group by KY,NAM)) t1";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -1511,7 +1511,7 @@ namespace ThuTien.DAL.Doi
                             + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                             + " and NAM=@Nam and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20 group by NAM)) t1";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -1531,7 +1531,7 @@ namespace ThuTien.DAL.Doi
                             + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                             + " and NAM=@Nam and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20 group by NAM)) t1";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -1553,7 +1553,7 @@ namespace ThuTien.DAL.Doi
                             + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                             + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20)) t1";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -1571,7 +1571,7 @@ namespace ThuTien.DAL.Doi
                             + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                             + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20)) t1";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -1595,7 +1595,7 @@ namespace ThuTien.DAL.Doi
                             + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                             + " and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20)) t1";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -1615,7 +1615,7 @@ namespace ThuTien.DAL.Doi
                             + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                             + " and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20)) t1";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -1641,7 +1641,7 @@ namespace ThuTien.DAL.Doi
                             + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                             + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20)) t1";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -1663,7 +1663,7 @@ namespace ThuTien.DAL.Doi
                             + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                             + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20)) t1";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -1691,7 +1691,7 @@ namespace ThuTien.DAL.Doi
                             + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                             + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20)) t1";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -1715,7 +1715,7 @@ namespace ThuTien.DAL.Doi
                             + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                             + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20)) t1";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -1743,7 +1743,7 @@ namespace ThuTien.DAL.Doi
                             + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                             + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20)) t1";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -1767,7 +1767,7 @@ namespace ThuTien.DAL.Doi
                             + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                             + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20)) t1";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -1812,7 +1812,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen,DOT) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -1853,7 +1853,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -1896,7 +1896,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -1935,7 +1935,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -1976,7 +1976,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -2013,7 +2013,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -2052,7 +2052,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -2087,7 +2087,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -2128,7 +2128,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -2165,7 +2165,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -2208,7 +2208,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -2247,7 +2247,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -2292,7 +2292,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen,DOT) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -2333,7 +2333,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen,DOT) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -2378,7 +2378,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -2419,7 +2419,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -2464,7 +2464,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -2505,7 +2505,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -2560,7 +2560,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                             + " order by nhanvien.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -2611,7 +2611,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                             + " order by nhanvien.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -2666,7 +2666,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                             + " order by nhanvien.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -2717,7 +2717,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                             + " order by nhanvien.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -2770,7 +2770,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                             + " order by nhanvien.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -2819,7 +2819,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                             + " order by nhanvien.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -2870,7 +2870,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                             + " order by nhanvien.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -2917,7 +2917,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                             + " order by nhanvien.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -2966,7 +2966,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                             + " order by nhanvien.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -3011,7 +3011,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                             + " order by nhanvien.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -3062,7 +3062,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                             + " order by nhanvien.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -3109,7 +3109,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                             + " order by nhanvien.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -3162,7 +3162,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                             + " order by nhanvien.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -3211,7 +3211,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                             + " order by nhanvien.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -3266,7 +3266,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                             + " order by nhanvien.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -3317,7 +3317,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                             + " order by nhanvien.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -3370,7 +3370,7 @@ namespace ThuTien.DAL.Doi
                         + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                         + " order by nhanvien.MaND asc";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable GetBaoCaoTonTrongKyDenNgay_To(int MaTo, int Nam, int Ky, DateTime NgayGiaiTrach)
@@ -3421,7 +3421,7 @@ namespace ThuTien.DAL.Doi
                         + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                         + " order by nhanvien.MaND asc";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable GetBaoCaoTonDenKy_To(int MaTo, int Nam, int Ky)
@@ -3470,7 +3470,7 @@ namespace ThuTien.DAL.Doi
                         + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                         + " order by nhanvien.MaND asc";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable GetBaoCaoTon_To(int MaTo, DateTime NgayGiaiTrach)
@@ -3517,7 +3517,7 @@ namespace ThuTien.DAL.Doi
                         + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                         + " order by nhanvien.MaND asc";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable GetBaoCaoTon_To(int MaTo)
@@ -3562,7 +3562,7 @@ namespace ThuTien.DAL.Doi
                         + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                         + " order by nhanvien.MaND asc";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable GetBaoCaoTon_To(int MaTo, int Nam)
@@ -3609,7 +3609,7 @@ namespace ThuTien.DAL.Doi
                         + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                         + " order by nhanvien.MaND asc";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable GetBaoCaoTon_To(int MaTo, int Nam, int Ky)
@@ -3658,7 +3658,7 @@ namespace ThuTien.DAL.Doi
                         + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                         + " order by nhanvien.MaND asc";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable GetBaoCaoTon_To(int MaTo, int Nam, int Ky, int Dot)
@@ -3709,7 +3709,7 @@ namespace ThuTien.DAL.Doi
                         + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                         + " order by nhanvien.MaND asc";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable GetNangSuat_To(string Loai, int MaTo, int Nam, int Ky, int Dot)
@@ -3743,7 +3743,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen,DOT,KY,NAM) ton on tong.MaND=ton.MaND"
                             + " order by tong.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -3775,7 +3775,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen,DOT,KY,NAM) ton on tong.MaND=ton.MaND"
                             + " order by tong.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -3809,7 +3809,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen,KY,NAM) ton on tong.MaND=ton.MaND"
                             + " order by tong.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -3839,7 +3839,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen,KY,NAM) ton on tong.MaND=ton.MaND"
                             + " order by tong.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -3893,7 +3893,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen,NAM) ton on tong.MaND=ton.MaND"
                             + " order by tong.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -3943,7 +3943,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen,NAM) ton on tong.MaND=ton.MaND"
                             + " order by tong.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -3997,7 +3997,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
                             + " order by tong.MaND asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -4047,7 +4047,7 @@ namespace ThuTien.DAL.Doi
                             + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
                             + " order by tong.MaND asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -4233,7 +4233,7 @@ namespace ThuTien.DAL.Doi
                             + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                             + " and NAM=" + Nam + " and KY=" + Ky + " and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20)) t1";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -4253,7 +4253,7 @@ namespace ThuTien.DAL.Doi
                             + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                             + " and NAM=" + Nam + " and KY=" + Ky + " and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20)) t1";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -4277,7 +4277,7 @@ namespace ThuTien.DAL.Doi
                             + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                             + " and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20)) t1";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -4297,7 +4297,7 @@ namespace ThuTien.DAL.Doi
                             + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                             + " and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20)) t1";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -4363,7 +4363,7 @@ namespace ThuTien.DAL.Doi
                         + " (select 0 as HDTonCu,0 as GTTonCu,0 as HDChuanThu,0 as GTChuanThu,0 as HDTonThu,0 as GTTonThu,COUNT(ID_HOADON) as HDTongTon,SUM(TONGCONG) as GTTongTon"
                         + " from HOADON where (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (NGAYGIAITRACH is null or (CAST(NGAYGIAITRACH as date)>@NgayGiaiTrachNow) or KhoaTienDu=1) and GB>=11 and GB<=20))t1";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -4389,7 +4389,7 @@ namespace ThuTien.DAL.Doi
                         + " (select 0 as HDTonCu,0 as GTTonCu,0 as HDChuanThu,0 as GTChuanThu,0 as HDTonThu,0 as GTTonThu,COUNT(ID_HOADON) as HDTongTon,SUM(TONGCONG) as GTTongTon"
                         + " from HOADON where (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (NGAYGIAITRACH is null or (CAST(NGAYGIAITRACH as date)>@NgayGiaiTrachNow) or KhoaTienDu=1) and GB>20))t1";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -4423,7 +4423,7 @@ namespace ThuTien.DAL.Doi
                         + " from HOADON where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                         + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (NGAYGIAITRACH is null or (CAST(NGAYGIAITRACH as date)>@NgayGiaiTrachNow) or KhoaTienDu=1) and GB>=11 and GB<=20))t1";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -4453,7 +4453,7 @@ namespace ThuTien.DAL.Doi
                             + " from HOADON where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                             + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (NGAYGIAITRACH is null or (CAST(NGAYGIAITRACH as date)>@NgayGiaiTrachNow) or KhoaTienDu=1) and GB>20))t1";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -4495,7 +4495,7 @@ namespace ThuTien.DAL.Doi
                         + " and GB>=11 and GB<=20 group by nd.MaND,nd.HoTen,nd.STT) tongton on nd.MaND=tongton.MaND"
                         + " order by nd.STT asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -4533,7 +4533,7 @@ namespace ThuTien.DAL.Doi
                         + " and GB>20 group by nd.MaND,nd.HoTen,nd.STT) tongton on nd.MaND=tongton.MaND"
                         + " order by nd.STT asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -5297,7 +5297,7 @@ namespace ThuTien.DAL.Doi
             //            + " and DangNgan_ChuyenKhoan='True' and NGAYGIAITRACH>=@Tungaygiaitrach and NGAYGIAITRACH<=@Denngaygiaitrach"
             //            + " group by nd.MaTo,TenTo,day(NGAYGIAITRACH)";
 
-            //return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            //return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable GetTongDangNganChuyenKhoanDongA(int MaTo, DateTime TuNgayGiaiTrach, DateTime DenNgayGiaiTrach)
@@ -5327,7 +5327,7 @@ namespace ThuTien.DAL.Doi
             //            + " and DangNgan_ChuyenKhoan='True' and NGAYGIAITRACH>=@Tungaygiaitrach and NGAYGIAITRACH<=@Denngaygiaitrach"
             //            + " group by nd.MaTo,TenTo,day(NGAYGIAITRACH)";
 
-            //return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            //return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable GetTongDangNganChuyenKhoanExceptDongA(int MaTo, DateTime TuNgayGiaiTrach, DateTime DenNgayGiaiTrach)
@@ -5357,7 +5357,7 @@ namespace ThuTien.DAL.Doi
             //            + " and DangNgan_ChuyenKhoan='True' and NGAYGIAITRACH>=@Tungaygiaitrach and NGAYGIAITRACH<=@Denngaygiaitrach"
             //            + " group by nd.MaTo,TenTo,day(NGAYGIAITRACH)";
 
-            //return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            //return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         /// <summary>
@@ -5393,7 +5393,7 @@ namespace ThuTien.DAL.Doi
             //            + " and DangNgan_ChuyenKhoan='True' and NGAYGIAITRACH>=@Tungaygiaitrach and NGAYGIAITRACH<=@Denngaygiaitrach"
             //            + " group by nd.MaTo,TenTo,day(NGAYGIAITRACH)";
 
-            //return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            //return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         /// <summary>
@@ -5953,7 +5953,7 @@ namespace ThuTien.DAL.Doi
                         + " (select MaNV_DangNgan,COUNT(*)as TongHD,SUM(GIABAN)as TongGiaBan,SUM(THUE)as TongThueGTGT,SUM(PHI)as TongPhiBVMT,SUM(TONGCONG)as TongCong"
                         + " from HOADON where ChuyenNoKhoDoi=0 and KhoaTienDu=0 and GB>=1 and GB<=20 and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' group by MaNV_DangNgan)hd on hd.MaNV_DangNgan=nd.MaND"
                         + " order by nd.STT asc";
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable GetTongHopDangNganChiTiet_HanhThuTG_PhanKyLon(int Nam, int Ky, DateTime NgayGiaiTrach)
@@ -5964,7 +5964,7 @@ namespace ThuTien.DAL.Doi
                         + " (select MaNV_DangNgan,COUNT(*)as TongHD,SUM(GIABAN)as TongGiaBan,SUM(THUE)as TongThueGTGT,SUM(PHI)as TongPhiBVMT,SUM(TONGCONG)as TongCong"
                         + " from HOADON where ChuyenNoKhoDoi=0 and KhoaTienDu=0 and GB>=1 and GB<=20 and NAM=" + Nam + " and KY=" + Ky + " and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' group by MaNV_DangNgan)hd on hd.MaNV_DangNgan=nd.MaND"
                         + " order by nd.STT asc";
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable GetTongHopDangNganChiTiet_HanhThuTG_PhanKyNho(int Nam, int Ky, DateTime NgayGiaiTrach)
@@ -5975,7 +5975,7 @@ namespace ThuTien.DAL.Doi
                         + " (select MaNV_DangNgan,COUNT(*)as TongHD,SUM(GIABAN)as TongGiaBan,SUM(THUE)as TongThueGTGT,SUM(PHI)as TongPhiBVMT,SUM(TONGCONG)as TongCong"
                         + " from HOADON where ChuyenNoKhoDoi=0 and KhoaTienDu=0 and GB>=1 and GB<=20 and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<" + Ky + ")) and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' group by MaNV_DangNgan)hd on hd.MaNV_DangNgan=nd.MaND"
                         + " order by nd.STT asc";
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         /// <summary>
@@ -6249,7 +6249,7 @@ namespace ThuTien.DAL.Doi
                         + " where MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ") and"
                         + " CAST(NGAYGIAITRACH as date)='"+NgayGiaiTrach.ToString("yyyyMMdd")+"' and hd.DangNgan_HanhThu=1 and GB>=11 and GB<=20";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -6262,7 +6262,7 @@ namespace ThuTien.DAL.Doi
                          + " where MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ") and"
                          + " CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' and hd.DangNgan_HanhThu=1 and GB>20";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -6690,7 +6690,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -6708,7 +6708,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -6730,7 +6730,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -6748,7 +6748,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -6770,7 +6770,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -6788,7 +6788,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -6810,7 +6810,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -6828,7 +6828,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -6852,7 +6852,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -6872,7 +6872,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -6894,7 +6894,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -6912,7 +6912,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -6934,7 +6934,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -6952,7 +6952,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -6976,7 +6976,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -6996,7 +6996,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -7020,7 +7020,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -7040,7 +7040,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -7064,7 +7064,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -7084,7 +7084,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -7108,7 +7108,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -7128,7 +7128,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -7152,7 +7152,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -7172,7 +7172,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -7198,7 +7198,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -7220,7 +7220,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -7244,7 +7244,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -7264,7 +7264,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -7290,7 +7290,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -7312,7 +7312,7 @@ namespace ThuTien.DAL.Doi
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -7332,7 +7332,7 @@ namespace ThuTien.DAL.Doi
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " order by MLT,Ky asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -7348,7 +7348,7 @@ namespace ThuTien.DAL.Doi
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " order by MLT,Ky asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -7368,7 +7368,7 @@ namespace ThuTien.DAL.Doi
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " order by MLT,Ky asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -7384,7 +7384,7 @@ namespace ThuTien.DAL.Doi
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " order by MLT,Ky asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -7404,7 +7404,7 @@ namespace ThuTien.DAL.Doi
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " order by MLT,Ky asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -7420,7 +7420,7 @@ namespace ThuTien.DAL.Doi
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " order by MLT,Ky asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -7440,7 +7440,7 @@ namespace ThuTien.DAL.Doi
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " order by MLT,Ky asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -7456,7 +7456,7 @@ namespace ThuTien.DAL.Doi
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " order by MLT,Ky asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -7476,7 +7476,7 @@ namespace ThuTien.DAL.Doi
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " order by MLT,Ky asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -7492,7 +7492,7 @@ namespace ThuTien.DAL.Doi
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " order by MLT,Ky asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -7512,7 +7512,7 @@ namespace ThuTien.DAL.Doi
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " order by MLT,Ky asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -7528,7 +7528,7 @@ namespace ThuTien.DAL.Doi
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " order by MLT,Ky asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -7546,7 +7546,7 @@ namespace ThuTien.DAL.Doi
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " order by MLT,Ky asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -7560,7 +7560,7 @@ namespace ThuTien.DAL.Doi
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " order by MLT,Ky asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -7578,7 +7578,7 @@ namespace ThuTien.DAL.Doi
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " order by MLT,Ky asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -7592,7 +7592,7 @@ namespace ThuTien.DAL.Doi
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " order by MLT,Ky asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -7610,7 +7610,7 @@ namespace ThuTien.DAL.Doi
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " order by MLT,Ky asc";
 
-                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                return ExecuteQuery_SqlDataReader_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -7624,7 +7624,7 @@ namespace ThuTien.DAL.Doi
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " order by MLT,Ky asc";
 
-                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                    return ExecuteQuery_SqlDataReader_DataTable(sql);
                 }
             return null;
         }
@@ -8006,7 +8006,7 @@ namespace ThuTien.DAL.Doi
                         + " left join SERVER8.CAPNUOCTANHOA.dbo.PHUONG phuong on ttt.Phuong=phuong.MAPHUONG and ttt.Quan=phuong.MAQUAN"
                         + " left join SERVER8.CAPNUOCTANHOA.dbo.QUAN quan on ttt.Quan=quan.MAQUAN";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable GetDSByTienLon_To(string Loai, int MaNV, int Nam, int SoTien)
@@ -8992,7 +8992,7 @@ namespace ThuTien.DAL.Doi
                          + " group by CODE) t2 on t1.CODE=t2.CODE"
                          + " order by t1.CODE asc";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable ThongKeHD0_Code_To(int MaTo, int Nam, int Ky)
@@ -9007,7 +9007,7 @@ namespace ThuTien.DAL.Doi
                          + " group by CODE) t2 on t1.CODE=t2.CODE"
                          + " order by t1.CODE asc";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable ThongKeHD0_Code_NV(int MaNV_HanhThu, int Nam, int Ky)
@@ -9022,7 +9022,7 @@ namespace ThuTien.DAL.Doi
                          + " group by CODE) t2 on t1.CODE=t2.CODE"
                          + " order by t1.CODE asc";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable GetDSTimKiem(string DanhBo, string MLT)
@@ -9040,7 +9040,7 @@ namespace ThuTien.DAL.Doi
             //    + "order by ID_HOADON desc";
             string sql = "select * from fnTimKiem('" + DanhBo + "','" + MLT + "') order by MaHD desc";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable GetDSTimKiemTatCa(string DanhBo, string MLT)
@@ -9048,8 +9048,8 @@ namespace ThuTien.DAL.Doi
             string sqlCu = "select * from fnTimKiemCu('" + DanhBo + "','" + MLT + "')";
             string sql = "select * from fnTimKiem('" + DanhBo + "','" + MLT + "')";
 
-            DataTable dt = ExecuteQuery_SqlDataAdapter_DataTable(sql);
-            dt.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sqlCu));
+            DataTable dt = ExecuteQuery_SqlDataReader_DataTable(sql);
+            dt.Merge(ExecuteQuery_SqlDataReader_DataTable(sqlCu));
             dt.DefaultView.Sort = "MaHD DESC";
             return dt;
         }
@@ -9058,7 +9058,7 @@ namespace ThuTien.DAL.Doi
         {
             string sql = "select * from fnTimKiemTTKH('" + HoTen + "','" + SoNha + "','" + TenDuong + "')";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         /// <summary>

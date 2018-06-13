@@ -48,7 +48,7 @@ namespace ThuTien.DAL.Quay
                     + " left join"
                     + " (select DanhBo,DienThoai from TT_ThongTinKhachHang) c on a.DanhBo=c.DanhBo"
                     + " where case when b.SoTien is null then a.SoTien else a.SoTien-b.SoTien end>0";
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public bool Update(string DanhBo, int SoTien, string Loai, string GhiChu)

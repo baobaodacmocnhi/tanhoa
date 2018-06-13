@@ -167,7 +167,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                 + " outer apply"
                 + " (select top 1 TENKH as HoTen from HOADON where DANHBA=t1.DanhBo order by ID_HOADON desc) as la";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable GetDS_Group(DateTime TuNgay, DateTime DenNgay)

@@ -13,7 +13,6 @@ namespace ThuTien.DAL
     {
         protected static string _connectionString;  // Chuỗi kết nối
         protected SqlConnection connection;         // Đối tượng kết nối
-        protected SqlDataAdapter adapter;           // Đối tượng adapter chứa dữ liệu
         protected SqlCommand command;               // Đối tượng command thực thi truy vấn
         dbCAPNUOCTANHOADataContext _db = new dbCAPNUOCTANHOADataContext();
 
@@ -94,50 +93,18 @@ namespace ThuTien.DAL
             return dtReturn;
         }
 
-        /// <summary>
-        /// Thực thi câu truy vấn SQL trả về một đối tượng DataSet chứa kết quả trả về
-        /// </summary>
-        /// <param name="strSelect">Câu truy vấn cần thực thi lấy dữ liệu</param>
-        /// <returns>Đối tượng dataset chứa dữ liệu kết quả câu truy vấn</returns>
-        public DataSet ExecuteQuery_SqlDataAdapter_DataSet(string sql)
+        public DataTable ExecuteQuery_SqlDataReader_DataTable(string sql)
         {
             try
             {
+                DataTable dt = new DataTable();
                 Connect();
-                DataSet dataset = new DataSet();
-                command = new SqlCommand();
-                command.Connection = this.connection;
-                adapter = new SqlDataAdapter(sql, connection);
-                try
-                {
-                    adapter.Fill(dataset);
-                }
-                catch (SqlException e)
-                {
-                    throw e;
-                }
+                command = new SqlCommand(sql, connection);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                    dt.Load(reader);
                 Disconnect();
-                return dataset;
-            }
-            catch (Exception ex)
-            {
-                Disconnect();
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Thực thi câu truy vấn SQL trả về một đối tượng DataTable chứa kết quả trả về
-        /// </summary>
-        /// <param name="strSelect">Câu truy vấn cần thực thi lấy dữ liệu</param>
-        /// <returns>Đối tượng datatable chứa dữ liệu kết quả câu truy vấn</returns>
-        public DataTable ExecuteQuery_SqlDataAdapter_DataTable(string sql)
-        {
-            
-            try
-            {
-                return ExecuteQuery_SqlDataAdapter_DataSet(sql).Tables[0];
+                return dt;
             }
             catch (Exception ex)
             {

@@ -246,6 +246,9 @@ namespace ThuTien.GUI.Doi
                                     _cGBBQ.Sua(entity);
                                 }
                         }
+
+                        _cHoaDon.ExecuteNonQuery("exec spUpdateHoaDonFromDHN " + Dot + "," + Ky + "," + Nam);
+                        
                     }
                     catch (Exception)
                     {
