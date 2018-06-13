@@ -48,9 +48,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemCTKTXM.DiaChi,
                                     itemCTKTXM.NoiDungKiemTra,
                                     CreateBy = itemUser.HoTen,
-                                    itemCTKTXM.NoiDung,
+                                    itemCTKTXM.NoiDungDongTien,
                                     itemCTKTXM.NgayDongTien,
-                                    itemCTKTXM.SoTien,
+                                    itemCTKTXM.GhiChuDongTien,
                                 };
 
                 DataTable dtKTXM = new DataTable();
@@ -390,9 +390,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemCTKTXM.DiaChi,
                                     itemCTKTXM.NoiDungKiemTra,
                                     CreateBy = itemUser.HoTen,
-                                    itemCTKTXM.NoiDung,
+                                    itemCTKTXM.NoiDungDongTien,
                                     itemCTKTXM.NgayDongTien,
-                                    itemCTKTXM.SoTien,
+                                    itemCTKTXM.GhiChuDongTien,
                                 };
 
                 DataTable dtKTXM = new DataTable();
@@ -731,9 +731,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemCTKTXM.DiaChi,
                                     itemCTKTXM.NoiDungKiemTra,
                                     CreateBy = itemUser.HoTen,
-                                    itemCTKTXM.NoiDung,
+                                    itemCTKTXM.NoiDungDongTien,
                                     itemCTKTXM.NgayDongTien,
-                                    itemCTKTXM.SoTien,
+                                    itemCTKTXM.GhiChuDongTien,
                                 };
 
                 DataTable dtKTXM = new DataTable();
@@ -1060,9 +1060,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemCTKTXM.DiaChi,
                                     itemCTKTXM.NoiDungKiemTra,
                                     CreateBy = itemUser.HoTen,
-                                    itemCTKTXM.NoiDung,
+                                    itemCTKTXM.NoiDungDongTien,
                                     itemCTKTXM.NgayDongTien,
-                                    itemCTKTXM.SoTien,
+                                    itemCTKTXM.GhiChuDongTien,
                                 };
                 DataTable dtKTXM = new DataTable();
                 dtKTXM = LINQToDataTable(queryKTXM);
@@ -2137,9 +2137,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemCTKTXM.DiaChi,
                                     itemCTKTXM.NoiDungKiemTra,
                                     CreateBy = itemUser.HoTen,
-                                    itemCTKTXM.NoiDung,
+                                    itemCTKTXM.NoiDungDongTien,
                                     itemCTKTXM.NgayDongTien,
-                                    itemCTKTXM.SoTien,
+                                    itemCTKTXM.GhiChuDongTien,
                                 };
                 DataTable dtKTXM = new DataTable();
                 dtKTXM = LINQToDataTable(queryKTXM);
@@ -3215,9 +3215,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemCTKTXM.DiaChi,
                                     itemCTKTXM.NoiDungKiemTra,
                                     CreateBy = itemUser.HoTen,
-                                    itemCTKTXM.NoiDung,
+                                    itemCTKTXM.NoiDungDongTien,
                                     itemCTKTXM.NgayDongTien,
-                                    itemCTKTXM.SoTien,
+                                    itemCTKTXM.GhiChuDongTien,
                                 };
                 DataTable dtKTXM = new DataTable();
                 dtKTXM = LINQToDataTable(queryKTXM);

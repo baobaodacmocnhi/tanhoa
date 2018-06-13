@@ -280,6 +280,8 @@ namespace KTKS_DonKH.GUI.ToXuLy
                             dontxl.Ky = _hoadon.KY.ToString();
                             dontxl.Nam = _hoadon.NAM.ToString();
                             dontxl.MLT = _hoadon.MALOTRINH;
+                            dontxl.Phuong = _hoadon.Phuong;
+                            dontxl.Quan = _hoadon.Quan;
                         }
 
                         _cDonTXL.beginTransaction();
@@ -378,6 +380,8 @@ namespace KTKS_DonKH.GUI.ToXuLy
                             _dontxl.Ky = _hoadon.KY.ToString();
                             _dontxl.Nam = _hoadon.NAM.ToString();
                             _dontxl.MLT = _hoadon.MALOTRINH;
+                            _dontxl.Phuong = _hoadon.Phuong;
+                            _dontxl.Quan = _hoadon.Quan;
                         }
                         _dontxl.DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
                         _dontxl.HopDong = txtHopDong.Text.Trim();

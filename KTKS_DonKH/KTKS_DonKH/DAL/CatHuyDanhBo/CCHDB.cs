@@ -550,7 +550,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                         + " and MaQuan=" + MaQuan + ""
                         + " order by t1.CreateDate";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable GetDSCatTam_NgayLap_DaXuLy(DateTime FromCreateDate, DateTime ToCreateDate)
@@ -567,7 +567,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                         + " and MaQuan=" + MaQuan + ""
                         + " order by t1.CreateDate";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable GetDSCatTam_NgayXuLy_DaXuLy(DateTime FromNgayXuLy, DateTime ToNgayXuLy)
@@ -942,7 +942,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                         + " and MaQuan=" + MaQuan + ""
                         + " order by t1.CreateDate";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable GetDSCatHuy_NgayLap_DaXuLy(DateTime FromCreateDate, DateTime ToCreateDate)
@@ -959,7 +959,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                         + " and MaQuan=" + MaQuan+""
                         + " order by t1.CreateDate";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable GetDSCatHuy_NgayXuLy_DaXuLy(DateTime FromNgayXuLy, DateTime ToNgayXuLy)

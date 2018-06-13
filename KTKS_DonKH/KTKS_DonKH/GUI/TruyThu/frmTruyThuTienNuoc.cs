@@ -805,6 +805,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                         tttn.Dot = _hoadon.DOT.ToString();
                         tttn.Ky = _hoadon.KY.ToString();
                         tttn.Nam = _hoadon.NAM.ToString();
+                        tttn.Phuong = _hoadon.Phuong;
+                        tttn.Quan = _hoadon.Quan;
                     }
 
                     _cTTTN.Them(tttn);
@@ -900,6 +902,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                             _tttn.Dot = _hoadon.DOT.ToString();
                             _tttn.Ky = _hoadon.KY.ToString();
                             _tttn.Nam = _hoadon.NAM.ToString();
+                            _tttn.Phuong = _hoadon.Phuong;
+                            _tttn.Quan = _hoadon.Quan;
                         }
 
                         foreach (DataGridViewRow item in dgvTruyThuTienNuoc.Rows)

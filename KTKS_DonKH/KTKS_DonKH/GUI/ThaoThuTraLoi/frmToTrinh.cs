@@ -288,6 +288,14 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                     cttt.KinhTrinh = txtKinhTrinh.Text.Trim();
                     cttt.NoiDung = txtNoiDung.Text;
                     cttt.NoiNhan = txtNoiNhan.Text.Trim();
+                    if (_hoadon != null)
+                    {
+                        cttt.Dot = _hoadon.DOT.ToString();
+                        cttt.Ky = _hoadon.KY.ToString();
+                        cttt.Nam = _hoadon.NAM.ToString();
+                        cttt.Phuong = _hoadon.Phuong;
+                        cttt.Quan = _hoadon.Quan;
+                    }
 
                     if (_cTT.ThemCT(cttt))
                     {
@@ -321,6 +329,14 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                         _cttt.KinhTrinh = txtKinhTrinh.Text.Trim();
                         _cttt.NoiDung = txtNoiDung.Text;
                         _cttt.NoiNhan = txtNoiNhan.Text.Trim();
+                        if (_hoadon != null)
+                        {
+                            _cttt.Dot = _hoadon.DOT.ToString();
+                            _cttt.Ky = _hoadon.KY.ToString();
+                            _cttt.Nam = _hoadon.NAM.ToString();
+                            _cttt.Phuong = _hoadon.Phuong;
+                            _cttt.Quan = _hoadon.Quan;
+                        }
 
                         if (_cTT.SuaCT(_cttt))
                         {
@@ -455,7 +471,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         {
             if (cmbVeViec.SelectedIndex != -1)
             {
-                VeViecToTrinh vv = (VeViecToTrinh)cmbVeViec.SelectedItem;
+                ToTrinhVeViec vv = (ToTrinhVeViec)cmbVeViec.SelectedItem;
                 txtVeViec.Text = vv.TenVV;
                 txtNoiDung.Text = vv.NoiDung;
                 if (txtMaDonCu.Text.Trim() != "")

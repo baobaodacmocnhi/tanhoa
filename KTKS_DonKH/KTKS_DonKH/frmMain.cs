@@ -435,11 +435,11 @@ namespace KTKS_DonKH
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void mnuDongTienBoiThuong_Click(object sender, EventArgs e)
+        private void mnuDongTien_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen("mnuDongTienBoiThuong", "Xem"))
+            if (CTaiKhoan.CheckQuyen("mnuDongTien", "Xem"))
             {
-                frmDongTienBoiThuong frm = new frmDongTienBoiThuong();
+                frmDongTien frm = new frmDongTien();
                 OpenForm(frm);
             }
             else

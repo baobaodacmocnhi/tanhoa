@@ -507,6 +507,8 @@ namespace KTKS_DonKH.GUI.BamChi
                         ctbamchi.Dot = _hoadon.DOT.ToString();
                         ctbamchi.Ky = _hoadon.KY.ToString();
                         ctbamchi.Nam = _hoadon.NAM.ToString();
+                        ctbamchi.Phuong = _hoadon.Phuong;
+                        ctbamchi.Quan = _hoadon.Quan;
                     }
                     ///
                     ctbamchi.NgayBC = dateBamChi.Value;
@@ -596,6 +598,8 @@ namespace KTKS_DonKH.GUI.BamChi
                             _ctbamchi.Dot = _hoadon.DOT.ToString();
                             _ctbamchi.Ky = _hoadon.KY.ToString();
                             _ctbamchi.Nam = _hoadon.NAM.ToString();
+                            _ctbamchi.Phuong = _hoadon.Phuong;
+                            _ctbamchi.Quan = _hoadon.Quan;
                         }
                         ///
                         _ctbamchi.NgayBC = dateBamChi.Value;

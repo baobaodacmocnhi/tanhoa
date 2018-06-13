@@ -677,7 +677,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             return LINQToDataTable(query);
         }
 
-        public int CountXuLySauBienBan(String TenTo, DateTime FromNgayKTXM, DateTime ToNgayKTXM, bool LapBangGia, bool DongTienBoiThuong, bool ChuyenLapTBCat,bool DutChiGoc,bool MoNuoc)
+        public int CountXuLySauBienBan(string TenTo, DateTime FromNgayKTXM, DateTime ToNgayKTXM, bool LapBangGia, bool DongTienBoiThuong, bool ChuyenLapTBCat, bool DutChiGoc, bool MoNuoc)
         {
             string sql = "select COUNT(MaCTKTXM) from KTXM ktxm,CTKTXM ctktxm where ktxm.MaKTXM=ctktxm.MaKTXM and CAST(NgayKTXM as date)>='" + FromNgayKTXM.ToString("yyyyMMdd") + "' and CAST(NgayKTXM as date)<='" + ToNgayKTXM.ToString("yyyyMMdd") + "'";
             switch (TenTo)
@@ -708,7 +708,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             return (int)ExecuteQuery_ReturnOneValue(sql);
         }
 
-        public DataTable GetDSXuLySauBienBan(String TenTo, DateTime FromNgayKTXM, DateTime ToNgayKTXM, bool LapBangGia, bool DongTienBoiThuong, bool ChuyenLapTBCat, bool DutChiGoc, bool MoNuoc)
+        public DataTable GetDSXuLySauBienBan(string TenTo, DateTime FromNgayKTXM, DateTime ToNgayKTXM, bool LapBangGia, bool DongTienBoiThuong, bool ChuyenLapTBCat, bool DutChiGoc, bool MoNuoc)
         {
             string sql = "select MaDon=case when MaDon is not null then 'TKH'+ CONVERT(varchar(10),MaDon)"
 					    + " when MaDonTXL is not null then 'TXL'+CONVERT(varchar(10),MaDonTXL)"
@@ -739,12 +739,16 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             if (MoNuoc == true)
                 sql += " and MoNuoc=1";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
-        public int CountLapBangGia(String TenTo, String Loai, DateTime FromNgayKTXM, DateTime ToNgayKTXM)
+        public DataTable GetDSLapBangGia(string TenTo, DateTime FromNgayLapBangGia, DateTime ToNgayLapBangGia)
         {
-            string sql = "select COUNT(MaCTKTXM) from KTXM ktxm,CTKTXM ctktxm where ktxm.MaKTXM=ctktxm.MaKTXM and CAST(NgayKTXM as date)>='" + FromNgayKTXM.ToString("yyyyMMdd") + "' and CAST(NgayKTXM as date)<='" + ToNgayKTXM.ToString("yyyyMMdd") + "'";
+            string sql = "select MaDon=case when MaDon is not null then 'TKH'+ CONVERT(varchar(10),MaDon)"
+                        + " when MaDonTXL is not null then 'TXL'+CONVERT(varchar(10),MaDonTXL)"
+                        + " when MaDonTBC is not null then 'TBC'+CONVERT(varchar(10),MaDonTBC) end"
+                        + " ,DanhBo,HoTen,DiaChi,NgayLap=NgayLapBangGia,GhiChu='' from KTXM ktxm,CTKTXM ctktxm where ktxm.MaKTXM=ctktxm.MaKTXM and LapBangGia=1"
+                        + " and CAST(NgayLapBangGia as date)>='" + FromNgayLapBangGia.ToString("yyyyMMdd") + "' and CAST(NgayLapBangGia as date)<='" + ToNgayLapBangGia.ToString("yyyyMMdd") + "'";
             switch (TenTo)
             {
                 case "TKH":
@@ -759,27 +763,82 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                 default:
                     break;
             }
-            switch (Loai)
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
+        }
+
+        public DataTable GetDSDongTien(string TenTo, string NoiDungDongTien, DateTime FromNgayDongTien, DateTime ToNgayDongTien)
+        {
+            string sql = "select MaDon=case when MaDon is not null then 'TKH'+ CONVERT(varchar(10),MaDon)"
+                        + " when MaDonTXL is not null then 'TXL'+CONVERT(varchar(10),MaDonTXL)"
+                        + " when MaDonTBC is not null then 'TBC'+CONVERT(varchar(10),MaDonTBC) end"
+                        + " ,DanhBo,HoTen,DiaChi,NgayLap=NgayDongTien,NoiDungDongTien,GhiChu=GhiChuDongTien from KTXM ktxm,CTKTXM ctktxm where ktxm.MaKTXM=ctktxm.MaKTXM and DongTien=1 and NoiDungDongTien like N'" + NoiDungDongTien + "'"
+                        + " and CAST(NgayDongTien as date)>='" + FromNgayDongTien.ToString("yyyyMMdd") + "' and CAST(NgayDongTien as date)<='" + ToNgayDongTien.ToString("yyyyMMdd") + "'";
+            switch (TenTo)
             {
-                case "DutChiGoc":
-                    sql += " and LapBangGia=1 and DutChiGoc=1";
+                case "TKH":
+                    sql += " and MaDon is not null";
                     break;
-                    //return db.CTKTXMs.Count(item => item.NgayKTXM.Value.Date >= FromNgayKTXM.Date && item.NgayKTXM.Value.Date <= ToNgayKTXM.Date && item.LapBangGia == true && item.DutChiGoc == true);
-                case "MoNuoc":
-                    sql += " and LapBangGia=1 and MoNuoc=1";
+                case "TXL":
+                    sql += " and MaDonTXL is not null";
                     break;
-                    //return db.CTKTXMs.Count(item => item.NgayKTXM.Value.Date >= FromNgayKTXM.Date && item.NgayKTXM.Value.Date <= ToNgayKTXM.Date && item.LapBangGia == true&&item.MoNuoc==true);
+                case "TBC":
+                    sql += " and MaDonTBC is not null";
+                    break;
                 default:
-                    sql += " and LapBangGia=1";
                     break;
-                    //return db.CTKTXMs.Count(item => item.NgayKTXM.Value.Date >= FromNgayKTXM.Date && item.NgayKTXM.Value.Date <= ToNgayKTXM.Date && item.LapBangGia == true);
+            }
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
+        }
+
+        public DataTable GetDSChuyenLapTBCat(String TenTo, DateTime FromNgayChuyenLapTBCat, DateTime ToNgayChuyenLapTBCat)
+        {
+            string sql = "select MaDon=case when MaDon is not null then 'TKH'+ CONVERT(varchar(10),MaDon)"
+                        + " when MaDonTXL is not null then 'TXL'+CONVERT(varchar(10),MaDonTXL)"
+                        + " when MaDonTBC is not null then 'TBC'+CONVERT(varchar(10),MaDonTBC) end"
+                        + " ,DanhBo,HoTen,DiaChi,NgayLap=NgayChuyenLapTBCat,GhiChu='' from KTXM ktxm,CTKTXM ctktxm where ktxm.MaKTXM=ctktxm.MaKTXM and NgayChuyenLapTBCat=1"
+                        + " and CAST(NgayChuyenLapTBCat as date)>='" + FromNgayChuyenLapTBCat.ToString("yyyyMMdd") + "' and CAST(NgayChuyenLapTBCat as date)<='" + ToNgayChuyenLapTBCat.ToString("yyyyMMdd") + "'";
+            switch (TenTo)
+            {
+                case "TKH":
+                    sql += " and MaDon is not null";
+                    break;
+                case "TXL":
+                    sql += " and MaDonTXL is not null";
+                    break;
+                case "TBC":
+                    sql += " and MaDonTBC is not null";
+                    break;
+                default:
+                    break;
+            }
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
+        }
+
+        public int CountLapBangGia(String TenTo, DateTime FromNgayLapBangGia, DateTime ToNgayLapBangGia)
+        {
+            string sql = "select COUNT(MaCTKTXM) from KTXM ktxm,CTKTXM ctktxm where ktxm.MaKTXM=ctktxm.MaKTXM and LapBangGia=1"
+                        + " and CAST(NgayLapBangGia as date)>='" + FromNgayLapBangGia.ToString("yyyyMMdd") + "' and CAST(NgayLapBangGia as date)<='" + ToNgayLapBangGia.ToString("yyyyMMdd") + "'";
+            switch (TenTo)
+            {
+                case "TKH":
+                    sql += " and MaDon is not null";
+                    break;
+                case "TXL":
+                    sql += " and MaDonTXL is not null";
+                    break;
+                case "TBC":
+                    sql += " and MaDonTBC is not null";
+                    break;
+                default:
+                    break;
             }
             return (int)ExecuteQuery_ReturnOneValue(sql);
         }
 
-        public int CountDongTienBoiThuong(String TenTo, String Loai, DateTime FromNgayKTXM, DateTime ToNgayKTXM)
+        public int CountDongTien(String TenTo, DateTime FromNgayDongTien, DateTime ToNgayDongTien)
         {
-            string sql = "select COUNT(MaCTKTXM) from KTXM ktxm,CTKTXM ctktxm where ktxm.MaKTXM=ctktxm.MaKTXM and CAST(NgayKTXM as date)>='" + FromNgayKTXM.ToString("yyyyMMdd") + "' and CAST(NgayKTXM as date)<='" + ToNgayKTXM.ToString("yyyyMMdd") + "'";
+            string sql = "select COUNT(MaCTKTXM) from KTXM ktxm,CTKTXM ctktxm where ktxm.MaKTXM=ctktxm.MaKTXM and DongTien=1"
+                        + " and CAST(NgayDongTien as date)>='" + FromNgayDongTien.ToString("yyyyMMdd") + "' and CAST(NgayDongTien as date)<='" + ToNgayDongTien.ToString("yyyyMMdd") + "'";
             switch (TenTo)
             {
                 case "TKH":
@@ -793,28 +852,14 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                     break;
                 default:
                     break;
-            }
-            switch (Loai)
-            {
-                case "DutChiGoc":
-                     sql += " and DongTienBoiThuong=1 and DutChiGoc=1";
-                    break;
-                    //return db.CTKTXMs.Count(item => item.NgayKTXM.Value.Date >= FromNgayKTXM.Date && item.NgayKTXM.Value.Date <= ToNgayKTXM.Date && item.DongTienBoiThuong == true && item.DutChiGoc == true);
-                case "MoNuoc":
-                    sql += " and DongTienBoiThuong=1 and MoNuoc=1";
-                    break;
-                    //return db.CTKTXMs.Count(item => item.NgayKTXM.Value.Date >= FromNgayKTXM.Date && item.NgayKTXM.Value.Date <= ToNgayKTXM.Date && item.DongTienBoiThuong == true && item.MoNuoc == true);
-                default:
-                     sql += " and DongTienBoiThuong=1";
-                    break;
-                    //return db.CTKTXMs.Count(item => item.NgayKTXM.Value.Date >= FromNgayKTXM.Date && item.NgayKTXM.Value.Date <= ToNgayKTXM.Date && item.DongTienBoiThuong == true);
             }
             return (int)ExecuteQuery_ReturnOneValue(sql);
         }
 
-        public int CountLapBangGia_DongTienBoiThuong(String TenTo,String Loai, DateTime FromNgayKTXM, DateTime ToNgayKTXM)
+        public int CountChuyenLapTBCat(String TenTo, DateTime FromNgayChuyenLapTBCat, DateTime ToNgayChuyenLapTBCat)
         {
-            string sql = "select COUNT(MaCTKTXM) from KTXM ktxm,CTKTXM ctktxm where ktxm.MaKTXM=ctktxm.MaKTXM and CAST(NgayKTXM as date)>='" + FromNgayKTXM.ToString("yyyyMMdd") + "' and CAST(NgayKTXM as date)<='" + ToNgayKTXM.ToString("yyyyMMdd") + "'";
+            string sql = "select COUNT(MaCTKTXM) from KTXM ktxm,CTKTXM ctktxm where ktxm.MaKTXM=ctktxm.MaKTXM and ChuyenLapTBCat=1"
+                        + " and CAST(NgayChuyenLapTBCat as date)>='" + FromNgayChuyenLapTBCat.ToString("yyyyMMdd") + "' and CAST(NgayChuyenLapTBCat as date)<='" + ToNgayChuyenLapTBCat.ToString("yyyyMMdd") + "'";
             switch (TenTo)
             {
                 case "TKH":
@@ -828,21 +873,6 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                     break;
                 default:
                     break;
-            }
-            switch (Loai)
-            {
-                case "DutChiGoc":
-                    sql += " and LapBangGia=1 and DongTienBoiThuong=1 and DutChiGoc=1";
-                    break;
-                    //return db.CTKTXMs.Count(item => item.NgayKTXM.Value.Date >= FromNgayKTXM.Date && item.NgayKTXM.Value.Date <= ToNgayKTXM.Date && item.LapBangGia && item.DongTienBoiThuong == true && item.DutChiGoc == true);
-                case "MoNuoc":
-                    sql += " and LapBangGia=1 and DongTienBoiThuong=1 and MoNuoc=1";
-                    break;
-                    //return db.CTKTXMs.Count(item => item.NgayKTXM.Value.Date >= FromNgayKTXM.Date && item.NgayKTXM.Value.Date <= ToNgayKTXM.Date && item.LapBangGia && item.DongTienBoiThuong == true && item.MoNuoc == true);
-                default:
-                    sql += " and LapBangGia=1 and DongTienBoiThuong=1";
-                    break;
-                    //return db.CTKTXMs.Count(item => item.NgayKTXM.Value.Date >= FromNgayKTXM.Date && item.NgayKTXM.Value.Date <= ToNgayKTXM.Date && item.LapBangGia == true && item.DongTienBoiThuong == true);
             }
             return (int)ExecuteQuery_ReturnOneValue(sql);
         }

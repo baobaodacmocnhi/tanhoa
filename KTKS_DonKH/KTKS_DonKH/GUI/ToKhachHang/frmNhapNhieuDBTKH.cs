@@ -128,6 +128,8 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                     dgvDanhBoChuyenKT["Ky", e.RowIndex].Value = hoadon.KY;
                     dgvDanhBoChuyenKT["Nam", e.RowIndex].Value = hoadon.NAM;
                     dgvDanhBoChuyenKT["MLT", e.RowIndex].Value = hoadon.MALOTRINH;
+                    dgvDanhBoChuyenKT["Quan", e.RowIndex].Value = hoadon.Quan;
+                    dgvDanhBoChuyenKT["Phuong", e.RowIndex].Value = hoadon.Phuong;
                 }
                 else
                 {
@@ -210,6 +212,10 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                                 donkh.Nam = item.Cells["Nam"].Value.ToString();
                             if (item.Cells["MLT"].Value != null)
                                 donkh.MLT = item.Cells["MLT"].Value.ToString();
+                            if (item.Cells["Quan"].Value != null)
+                                donkh.Quan = item.Cells["Quan"].Value.ToString();
+                            if (item.Cells["Phuong"].Value != null)
+                                donkh.Phuong = item.Cells["Phuong"].Value.ToString();
                             ///
                             if (item.Cells["NguoiDi"].Value != null)
                             {
@@ -317,6 +323,10 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                                     donkh.Nam = item.Cells["NamVP"].Value.ToString();
                                 if (item.Cells["MLTVP"].Value != null)
                                     donkh.MLT = item.Cells["MLTVP"].Value.ToString();
+                                if (item.Cells["QuanVP"].Value != null)
+                                    donkh.Quan = item.Cells["QuanVP"].Value.ToString();
+                                if (item.Cells["PhuongVP"].Value != null)
+                                    donkh.Phuong = item.Cells["PhuongVP"].Value.ToString();
                                 ///
                                 if (item.Cells["NguoiDiVP"].Value != null)
                                 {
@@ -419,6 +429,8 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                     dgvDanhBoChuyenVanPhong["KyVP", e.RowIndex].Value = hoadon.KY;
                     dgvDanhBoChuyenVanPhong["NamVP", e.RowIndex].Value = hoadon.NAM;
                     dgvDanhBoChuyenVanPhong["MLTVP", e.RowIndex].Value = hoadon.MALOTRINH;
+                    dgvDanhBoChuyenVanPhong["QuanVP", e.RowIndex].Value = hoadon.Quan;
+                    dgvDanhBoChuyenVanPhong["PhuongVP", e.RowIndex].Value = hoadon.Phuong;
                 }
                 else
                 {

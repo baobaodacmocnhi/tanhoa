@@ -420,6 +420,8 @@ namespace KTKS_DonKH.GUI.DongNuoc
                             ctdongnuoc.Dot = _hoadon.DOT.ToString();
                             ctdongnuoc.Ky = _hoadon.KY.ToString();
                             ctdongnuoc.Nam = _hoadon.NAM.ToString();
+                            ctdongnuoc.Phuong = _hoadon.Phuong;
+                            ctdongnuoc.Quan = _hoadon.Quan;
                         }
                         ctdongnuoc.DiaChiDHN = txtDiaChiDHN.Text.Trim();
                         ctdongnuoc.NgayDN = dateDongNuoc.Value;
@@ -593,8 +595,8 @@ namespace KTKS_DonKH.GUI.DongNuoc
                 dr["NgayXuLy"] = _ctdongnuoc.NgayMN.Value.ToString("dd/MM/yyyy");
                 dr["SoCongVan"] = _ctdongnuoc.SoCongVan_MN;
                 dr["NgayCongVan"] = _ctdongnuoc.NgayCongVan_MN.Value.ToString("dd/MM/yyyy");
-                dr["Phuong"] = _ctdongnuoc.Phuong;
-                dr["Quan"] = _ctdongnuoc.Quan;
+                dr["Phuong"] = _ctdongnuoc.TenPhuong;
+                dr["Quan"] = _ctdongnuoc.TenQuan;
                 dr["LyDo"] = _ctdongnuoc.LyDo_DN;
                 dr["HinhThuc"] = _ctdongnuoc.HinhThuc_DN;
                 dr["SoPhieuDN"] = _ctdongnuoc.MaCTDN.ToString().Insert(_ctdongnuoc.MaCTDN.ToString().Length - 2, "-");

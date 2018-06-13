@@ -18,6 +18,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
     {
         CKTXM _cKTXM = new CKTXM();
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
+        CDongTienNoiDung _cDongTienNoiDung = new CDongTienNoiDung();
+        string TenTo = "";
 
         public frmBaoCaoKTXM()
         {
@@ -26,7 +28,19 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         private void frmBaoCaoKTXM_Load(object sender, EventArgs e)
         {
+            if (CTaiKhoan.ToKH == true)
+                TenTo = "TKH";
+            else
+                if (CTaiKhoan.ToXL == true)
+                    TenTo = "TXL";
+                else
+                    if (CTaiKhoan.ToBC == true)
+                        TenTo = "TBC";
 
+            cmbNoiDungDongTien_ThongKeXuLyBB.DataSource = _cDongTienNoiDung.getDS(TenTo);
+            cmbNoiDungDongTien_ThongKeXuLyBB.DisplayMember = "Name";
+            cmbNoiDungDongTien_ThongKeXuLyBB.ValueMember = "Name";
+            cmbNoiDungDongTien_ThongKeXuLyBB.SelectedIndex = -1;
         }
 
         private void btnBaoCao_ThongKeHienTrangKiemTra_Click(object sender, EventArgs e)
@@ -202,19 +216,26 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             frm.ShowDialog();
         }
 
-        private void btnBaoCao_ThongKeBBDongTienBoiThuong_Click(object sender, EventArgs e)
+        private void btnBaoCao_ThongKeXuLyBB_Click(object sender, EventArgs e)
         {
-            string TenTo = "";
-            if (CTaiKhoan.ToKH == true)
-                TenTo = "TKH";
-            else
-                if (CTaiKhoan.ToXL == true)
-                    TenTo = "TXL";
-                else
-                    if (CTaiKhoan.ToBC == true)
-                        TenTo = "TBC";
+            //string TenTo = "";
+            //if (CTaiKhoan.ToKH == true)
+            //    TenTo = "TKH";
+            //else
+            //    if (CTaiKhoan.ToXL == true)
+            //        TenTo = "TXL";
+            //    else
+            //        if (CTaiKhoan.ToBC == true)
+            //            TenTo = "TBC";
 
-            txtSoLuong_ThongKeBBDongTienBoiThuong.Text = _cKTXM.CountXuLySauBienBan(TenTo,  dateTu_ThongKeBBDongTienBoiThuong.Value, dateDen_ThongKeBBDongTienBoiThuong.Value,chkLapBangGia.Checked,chkDongTienBoiThuong.Checked,chkChuyenLapTBCat.Checked,chkDutChiGoc.Checked,chkMoNuoc.Checked).ToString();
+            if (radLapBangGia.Checked == true)
+                txtSoLuong_ThongKeXuLyBB.Text = _cKTXM.CountLapBangGia(TenTo, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value).ToString();
+            else
+                if (radDongTien.Checked == true)
+                    txtSoLuong_ThongKeXuLyBB.Text = _cKTXM.CountDongTien(TenTo, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value).ToString();
+                else
+                    if (radChuyenLapTBCat.Checked == true)
+                        txtSoLuong_ThongKeXuLyBB.Text = _cKTXM.CountChuyenLapTBCat(TenTo, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value).ToString();
             //if (chkDutChiGoc.Checked == true)
             //{
             //    if (chkLapBangGia.Checked == true && chkDongTienBoiThuong.Checked == true)
@@ -251,35 +272,51 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             //    }
         }
 
-        private void btnInDS_ThongKeBBDongTienBoiThuong_Click(object sender, EventArgs e)
+        private void btnInDS_ThongKeXuLyBB_Click(object sender, EventArgs e)
         {
-            string TenTo = "";
-            if (CTaiKhoan.ToKH == true)
-                TenTo = "TKH";
+            //string TenTo = "";
+            //if (CTaiKhoan.ToKH == true)
+            //    TenTo = "TKH";
+            //else
+            //    if (CTaiKhoan.ToXL == true)
+            //        TenTo = "TXL";
+            //    else
+            //        if (CTaiKhoan.ToBC == true)
+            //            TenTo = "TBC";
+            string LoaiBaoCao = "";
+            DataTable dt = new DataTable();
+            if (radLapBangGia.Checked == true)
+            {
+                LoaiBaoCao = "LẬP BẢNG GIÁ";
+                dt = _cKTXM.GetDSLapBangGia(TenTo, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
+            }
             else
-                if (CTaiKhoan.ToXL == true)
-                    TenTo = "TXL";
+                if (radDongTien.Checked == true)
+                {
+                    LoaiBaoCao = "ĐÓNG TIỀN " + cmbNoiDungDongTien_ThongKeXuLyBB.SelectedValue.ToString().ToUpper();
+                    dt = _cKTXM.GetDSDongTien(TenTo, cmbNoiDungDongTien_ThongKeXuLyBB.SelectedValue.ToString(), dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
+                }
                 else
-                    if (CTaiKhoan.ToBC == true)
-                        TenTo = "TBC";
+                    if (radChuyenLapTBCat.Checked == true)
+                    {
+                        LoaiBaoCao = "CHUYỂN LẬP TB CẮT";
+                        dt = _cKTXM.GetDSChuyenLapTBCat(TenTo, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
+                    }
 
-            DataTable dt = _cKTXM.GetDSXuLySauBienBan(TenTo, dateTu_ThongKeBBDongTienBoiThuong.Value, dateDen_ThongKeBBDongTienBoiThuong.Value, chkLapBangGia.Checked, chkDongTienBoiThuong.Checked, chkChuyenLapTBCat.Checked, chkDutChiGoc.Checked, chkMoNuoc.Checked);
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             foreach (DataRow item in dt.Rows)
             {
                 DataRow dr = dsBaoCao.Tables["DSKTXM"].NewRow();
 
-                dr["TuNgay"] = dateTu_ThongKeBBDongTienBoiThuong.Value.ToString("dd/MM/yyyy");
-                dr["DenNgay"] = dateDen_ThongKeBBDongTienBoiThuong.Value.ToString("dd/MM/yyyy");
+                dr["TuNgay"] = dateTu_ThongKeXuLyBB.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen_ThongKeXuLyBB.Value.ToString("dd/MM/yyyy");
+                dr["LoaiBaoCao"] = LoaiBaoCao;
                 dr["MaDon"] = item["MaDon"];
                 dr["DanhBo"] = item["DanhBo"];
                 dr["HoTen"] = item["HoTen"];
                 dr["DiaChi"] = item["DiaChi"];
-                dr["NgayLapBangGia"] = item["NgayLapBangGia"];
-                dr["NgayDongTienBoiThuong"] = item["NgayDongTien"];
-                dr["NgayChuyenLapTBCat"] = item["NgayChuyenLapTBCat"];
-                if (String.IsNullOrEmpty(item["SoTien"].ToString())==false)
-                    dr["SoTien"] = item["SoTien"];
+                dr["NgayLapBangGia"] = item["NgayLap"];
+                dr["GhiChu"] = item["GhiChu"];
 
                 dsBaoCao.Tables["DSKTXM"].Rows.Add(dr);
             }
@@ -288,6 +325,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.Show();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
     }

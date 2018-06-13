@@ -415,27 +415,27 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 }
                 if (txtDanhBo.Text.Trim().Length == 11 && txtKyHD.Text.Trim() != "")
                 {
-                    dgvLichSu.DataSource = _cDCBD.LoadDSCTDCHD(txtDanhBo.Text.Trim(), int.Parse(KyHD[1]), int.Parse(KyHD[0]));
+                    dgvLichSu.DataSource = _cDCBD.getDSHoaDon(txtDanhBo.Text.Trim(), int.Parse(KyHD[1]), int.Parse(KyHD[0]));
                 }
             }
         }
 
         private void txtDanhBo_Leave(object sender, EventArgs e)
         {
-            if (txtDanhBo.Text.Trim().Length == 11 && txtKyHD.Text.Trim() != "")
-            {
-                string[] KyHD = txtKyHD.Text.Trim().Split('/');
+            //if (txtDanhBo.Text.Trim().Length == 11 && txtKyHD.Text.Trim() != "")
+            //{
+            //    string[] KyHD = txtKyHD.Text.Trim().Split('/');
 
-                dgvLichSu.DataSource = _cDCBD.LoadDSCTDCHD(txtDanhBo.Text.Trim(), int.Parse(KyHD[1]), int.Parse(KyHD[0]));
-            }
+            //    dgvLichSu.DataSource = _cDCBD.getDSHoaDon(txtDanhBo.Text.Trim(), int.Parse(KyHD[1]), int.Parse(KyHD[0]));
+            //}
         }
 
         private void txtSoPhieu_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13 && txtSoPhieu.Text.Trim() != "")
-                if (_cDCBD.CheckExist_DCHD(decimal.Parse(txtSoPhieu.Text.Trim().Replace("-", ""))) == true)
+                if (_cDCBD.CheckExist_HoaDon(decimal.Parse(txtSoPhieu.Text.Trim().Replace("-", ""))) == true)
                 {
-                    _ctdchd = _cDCBD.getCTDCHDbyID(decimal.Parse(txtSoPhieu.Text.Trim().Replace("-", "")));
+                    _ctdchd = _cDCBD.getHoaDon(decimal.Parse(txtSoPhieu.Text.Trim().Replace("-", "")));
                     LoadDCHD(_ctdchd);
                 }
         }
@@ -473,7 +473,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             dcbd.MaDonMoi = _dontkh.MaDonMoi;
                             _cDCBD.Them(dcbd);
                         }
-                        if (_cDCBD.CheckExist_DCHD("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim(), txtKyHD.Text.Trim()) == true)
+                        if (_cDCBD.CheckExist_HoaDon("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim(), txtKyHD.Text.Trim()) == true)
                         {
                             MessageBox.Show("Đã Lập ĐCHD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
@@ -490,7 +490,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dcbd.MaDonMoi = _dontxl.MaDonMoi;
                                 _cDCBD.Them(dcbd);
                             }
-                            if (_cDCBD.CheckExist_DCHD("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim(), txtKyHD.Text.Trim()) == true)
+                            if (_cDCBD.CheckExist_HoaDon("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim(), txtKyHD.Text.Trim()) == true)
                             {
                                 MessageBox.Show("Đã Lập ĐCHD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
@@ -507,7 +507,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     dcbd.MaDonMoi = _dontbc.MaDonMoi;
                                     _cDCBD.Them(dcbd);
                                 }
-                                if (_cDCBD.CheckExist_DCHD("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim(), txtKyHD.Text.Trim()) == true)
+                                if (_cDCBD.CheckExist_HoaDon("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim(), txtKyHD.Text.Trim()) == true)
                                 {
                                     MessageBox.Show("Đã Lập ĐCHD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
@@ -529,7 +529,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     string[] KyHD = txtKyHD.Text.Trim().Split('/');
                     ctdchd.Ky = int.Parse(KyHD[0]);
                     ctdchd.Nam = int.Parse(KyHD[1]);
-
+                    if (_hoadon != null)
+                    {
+                        ctdchd.Phuong = _hoadon.Phuong;
+                        ctdchd.Quan = _hoadon.Quan;
+                    }
                     ctdchd.SoHD = txtSoHD.Text.Trim();
                     ctdchd.ChuyenNhap = chkChuyenNhap.Checked;
                     ///
@@ -640,6 +644,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         string[] KyHD = txtKyHD.Text.Trim().Split('/');
                         _ctdchd.Ky = int.Parse(KyHD[0]);
                         _ctdchd.Nam = int.Parse(KyHD[1]);
+                        if (_hoadon != null)
+                        {
+                            _ctdchd.Phuong = _hoadon.Phuong;
+                            _ctdchd.Quan = _hoadon.Quan;
+                        }
 
                         _ctdchd.SoHD = txtSoHD.Text.Trim();
                         _ctdchd.ChuyenNhap = chkChuyenNhap.Checked;

@@ -79,9 +79,9 @@ namespace KTKS_DonKH.DAL.CallCenter
                                     itemCTKTXM.DiaChi,
                                     itemCTKTXM.NoiDungKiemTra,
                                     CreateBy = itemUser.HoTen,
-                                    itemCTKTXM.NoiDung,
+                                    itemCTKTXM.NoiDungDongTien,
                                     itemCTKTXM.NgayDongTien,
-                                    itemCTKTXM.SoTien,
+                                    itemCTKTXM.GhiChuDongTien,
                                 };
                 DataTable dtKTXM = new DataTable();
                 dtKTXM = LINQToDataTable(queryKTXM);

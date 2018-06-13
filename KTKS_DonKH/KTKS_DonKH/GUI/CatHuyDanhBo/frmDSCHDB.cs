@@ -625,8 +625,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 dr["NgayXuLy"] = ctdongnuoc.NgayDN.Value.ToString("dd/MM/yyyy");
                                 dr["SoCongVan"] = ctdongnuoc.SoCongVan_DN;
                                 dr["NgayCongVan"] = ctdongnuoc.NgayCongVan_DN.Value.ToString("dd/MM/yyyy");
-                                dr["Phuong"] = ctdongnuoc.Phuong;
-                                dr["Quan"] = ctdongnuoc.Quan;
+                                dr["Phuong"] = ctdongnuoc.TenPhuong;
+                                dr["Quan"] = ctdongnuoc.TenQuan;
                                 ///
                                 dr["ChucVu"] = ctdongnuoc.ChucVu_DN;
                                 dr["NguoiKy"] = ctdongnuoc.NguoiKy_DN;

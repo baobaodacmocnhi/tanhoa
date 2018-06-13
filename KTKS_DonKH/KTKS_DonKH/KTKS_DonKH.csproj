@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>749</ApplicationRevision>
+    <ApplicationRevision>760</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -650,6 +650,7 @@
     <Compile Include="DAL\DonTu\CNoiChuyen.cs" />
     <Compile Include="DAL\DonTu\CPhongBanDoi.cs" />
     <Compile Include="DAL\CExcel.cs" />
+    <Compile Include="DAL\KiemTraXacMinh\CDongTienNoiDung.cs" />
     <Compile Include="DAL\ThaoThuTraLoi\CVeViecToTrinh.cs" />
     <Compile Include="DAL\ThaoThuTraLoi\CToTrinh.cs" />
     <Compile Include="DAL\ToKhachHang\CThongTinKhachHang.cs" />
@@ -1061,11 +1062,11 @@
     <Compile Include="GUI\KiemTraXacMinh\frmBaoCaoKTXM.Designer.cs">
       <DependentUpon>frmBaoCaoKTXM.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\KiemTraXacMinh\frmDongTienBoiThuong.cs">
+    <Compile Include="GUI\KiemTraXacMinh\frmDongTien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\KiemTraXacMinh\frmDongTienBoiThuong.Designer.cs">
-      <DependentUpon>frmDongTienBoiThuong.cs</DependentUpon>
+    <Compile Include="GUI\KiemTraXacMinh\frmDongTien.Designer.cs">
+      <DependentUpon>frmDongTien.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\KiemTraXacMinh\frmDSKTXM.cs">
       <SubType>Form</SubType>
@@ -1757,8 +1758,8 @@
     <EmbeddedResource Include="GUI\KiemTraXacMinh\frmBaoCaoKTXM.resx">
       <DependentUpon>frmBaoCaoKTXM.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\KiemTraXacMinh\frmDongTienBoiThuong.resx">
-      <DependentUpon>frmDongTienBoiThuong.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\KiemTraXacMinh\frmDongTien.resx">
+      <DependentUpon>frmDongTien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\KiemTraXacMinh\frmDSKTXM.resx">
       <DependentUpon>frmDSKTXM.cs</DependentUpon>
@@ -2313,7 +2314,37 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
+    <PublishFile Include="Sources\AxInterop.AcroPDFLib.dll">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
     <PublishFile Include="Sources\DevComponents.DotNetBar2.dll">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Sources\IrisSkin2.dll">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Sources\String_Indentity.dll">
       <Visible>False</Visible>
       <Group>
       </Group>

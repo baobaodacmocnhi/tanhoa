@@ -89,7 +89,7 @@ namespace KTKS_DonKH.GUI.HeThong
         {
             if (e.KeyChar == 13)
             {
-                dgvResult.DataSource = _cMenu.ExecuteQuery_SqlDataAdapter_DataTable(txtQuery.Text.Trim());
+                dgvResult.DataSource = _cMenu.ExecuteQuery_SqlDataReader_DataTable(txtQuery.Text.Trim());
             }
         }
 

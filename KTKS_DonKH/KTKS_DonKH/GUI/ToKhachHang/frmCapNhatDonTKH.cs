@@ -547,6 +547,8 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                             dontkh.Ky = _hoadon.KY.ToString();
                             dontkh.Nam = _hoadon.NAM.ToString();
                             dontkh.MLT = _hoadon.MALOTRINH;
+                            dontkh.Phuong = _hoadon.Phuong;
+                            dontkh.Quan = _hoadon.Quan;
                         }
 
                         _cDonKH.beginTransaction();
@@ -643,6 +645,8 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                             _dontkh.Ky = _hoadon.KY.ToString();
                             _dontkh.Nam = _hoadon.NAM.ToString();
                             _dontkh.MLT = _hoadon.MALOTRINH;
+                            _dontkh.Phuong = _hoadon.Phuong;
+                            _dontkh.Quan = _hoadon.Quan;
                         }
                         _dontkh.DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
                         _dontkh.HopDong = txtHopDong.Text.Trim();

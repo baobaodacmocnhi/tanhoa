@@ -505,6 +505,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         ctctdb.Dot = _hoadon.DOT.ToString();
                         ctctdb.Ky = _hoadon.KY.ToString();
                         ctctdb.Nam = _hoadon.NAM.ToString();
+                        ctctdb.Phuong = _hoadon.Phuong;
+                        ctctdb.Quan = _hoadon.Quan;
                     }
                     ctctdb.LyDo = cmbLyDo.SelectedValue.ToString();
                     ctctdb.GhiChuLyDo = txtGhiChu.Text.Trim();
@@ -559,6 +561,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             _ctctdb.Dot = _hoadon.DOT.ToString();
                             _ctctdb.Ky = _hoadon.KY.ToString();
                             _ctctdb.Nam = _hoadon.NAM.ToString();
+                            _ctctdb.Phuong = _hoadon.Phuong;
+                            _ctctdb.Quan = _hoadon.Quan;
                         }
 
                         if (!string.IsNullOrEmpty(cmbLyDo.SelectedValue.ToString()))

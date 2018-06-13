@@ -109,7 +109,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtDot.Text = _cDocSo.GetDot(hoadon.DANHBA);
 
             dgvDSSoDangKy.DataSource = _cChungTu.GetDSCT(hoadon.DANHBA);
-            dgvDSDieuChinh.DataSource = _cDCBD.LoadDSDCbyDanhBo(hoadon.DANHBA);
+            dgvDSDieuChinh.DataSource = _cDCBD.getDSDCBD(hoadon.DANHBA);
             LoadTongNK();
         }
 
@@ -181,7 +181,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             chkXoaDiaChiLienHe.Checked = ctdcbd.XoaDiaChiLienHe;
             ///
             dgvDSSoDangKy.DataSource = _cChungTu.GetDSCT(ctdcbd.DanhBo);
-            dgvDSDieuChinh.DataSource = _cDCBD.LoadDSDCbyDanhBo(ctdcbd.DanhBo);
+            dgvDSDieuChinh.DataSource = _cDCBD.getDSDCBD(ctdcbd.DanhBo);
             LoadTongNK();
         }
 
@@ -428,9 +428,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void txtSoPhieu_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13 && txtSoPhieu.Text.Trim() != "")
-                if (_cDCBD.CheckExist_DCBD(decimal.Parse(txtSoPhieu.Text.Trim().Replace("-", ""))) == true)
+                if (_cDCBD.checkExist_BienDong(decimal.Parse(txtSoPhieu.Text.Trim().Replace("-", ""))) == true)
                 {
-                    _ctdcbd = _cDCBD.GetDCBDByMaCTDCBD(decimal.Parse(txtSoPhieu.Text.Trim().Replace("-", "")));
+                    _ctdcbd = _cDCBD.getBienDong(decimal.Parse(txtSoPhieu.Text.Trim().Replace("-", "")));
                     LoadDCBD(_ctdcbd);
                 }
         }
@@ -467,7 +467,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             dcbd.MaDonMoi = _dontkh.MaDonMoi;
                             _cDCBD.Them(dcbd);
                         }
-                        if (chkBoQuaKiemTraTrung.Checked == false && _cDCBD.CheckExist_DCBD("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim()) == true)
+                        if (chkBoQuaKiemTraTrung.Checked == false && _cDCBD.checkExist_BienDong("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim()) == true)
                         {
                             MessageBox.Show("Danh Bộ này đã được Lập Điều Chỉnh Biến Động", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
@@ -484,7 +484,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dcbd.MaDonMoi = _dontxl.MaDonMoi;
                                 _cDCBD.Them(dcbd);
                             }
-                            if (chkBoQuaKiemTraTrung.Checked == false && _cDCBD.CheckExist_DCBD("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim()) == true)
+                            if (chkBoQuaKiemTraTrung.Checked == false && _cDCBD.checkExist_BienDong("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim()) == true)
                             {
                                 MessageBox.Show("Danh Bộ này đã được Lập Điều Chỉnh Biến Động", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
@@ -501,7 +501,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     dcbd.MaDonMoi = _dontbc.MaDonMoi;
                                     _cDCBD.Them(dcbd);
                                 }
-                                if (chkBoQuaKiemTraTrung.Checked == false && _cDCBD.CheckExist_DCBD("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim()) == true)
+                                if (chkBoQuaKiemTraTrung.Checked == false && _cDCBD.checkExist_BienDong("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim()) == true)
                                 {
                                     MessageBox.Show("Danh Bộ này đã được Lập Điều Chỉnh Biến Động", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
@@ -523,6 +523,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         ctdcbd.MaQuanPhuong = _hoadon.Quan + " " + _hoadon.Phuong;
                         ctdcbd.Ky = _hoadon.KY.ToString();
                         ctdcbd.Nam = _hoadon.NAM.ToString();
+                        ctdcbd.Phuong = _hoadon.Phuong;
+                        ctdcbd.Quan = _hoadon.Quan;
                     }
                     ctdcbd.MSThue = txtMSThue.Text.Trim();
                     if (!string.IsNullOrEmpty(txtGiaBieu.Text.Trim()))
@@ -652,6 +654,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             _ctdcbd.MaQuanPhuong = _hoadon.Quan + " " + _hoadon.Phuong;
                             _ctdcbd.Ky = _hoadon.KY.ToString();
                             _ctdcbd.Nam = _hoadon.NAM.ToString();
+                            _ctdcbd.Phuong = _hoadon.Phuong;
+                            _ctdcbd.Quan = _hoadon.Quan;
                         }
                         _ctdcbd.MSThue = txtMSThue.Text.Trim();
                         if (!string.IsNullOrEmpty(txtGiaBieu.Text.Trim()))
@@ -862,9 +866,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                     dr["TuNgay"] = "";
                     dr["DenNgay"] = "";
-                    if (_cDCBD.checkCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
+                    if (_cDCBD.checkExist_BienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                     {
-                        string a = _cDCBD.getCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
+                        string a = _cDCBD.getBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
                         dr["SoPhieu"] = a.Insert(a.Length - 2, "-");
                     }
                     else
@@ -1101,7 +1105,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (dgvDSDieuChinh["DieuChinh", e.RowIndex].Value.ToString() == "Biến Động")
             {
-                CTDCBD ctdcbd = _cDCBD.GetDCBDByMaCTDCBD(decimal.Parse(dgvDSDieuChinh["MaDC", e.RowIndex].Value.ToString()));
+                CTDCBD ctdcbd = _cDCBD.getBienDong(decimal.Parse(dgvDSDieuChinh["MaDC", e.RowIndex].Value.ToString()));
                 DataTable dt = (DataTable)dgvDSSoDangKy.DataSource;
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 if (dt.Rows.Count == 0)

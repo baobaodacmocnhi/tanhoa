@@ -16,7 +16,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
     {
         string _mnu = "mnuVeViecToTrinh";
         CVeViecToTrinh _cVeViecToTrinh = new CVeViecToTrinh();
-        BindingList<VeViecToTrinh> _bSource;
+        BindingList<ToTrinhVeViec> _bSource;
         int selectedindex = -1;
 
         public frmVeViecToTrinh()
@@ -27,7 +27,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         private void frmVeViecTTTL_Load(object sender, EventArgs e)
         {
             dgvDSVeViecTTTL.AutoGenerateColumns = false;
-            _bSource = new BindingList<VeViecToTrinh>(_cVeViecToTrinh.GetDS());
+            _bSource = new BindingList<ToTrinhVeViec>(_cVeViecToTrinh.GetDS());
             dgvDSVeViecTTTL.DataSource = _bSource;
         }
 
@@ -37,7 +37,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             txtNoiDung.Text = "";
             txtNoiNhan.Text = "";
             selectedindex = -1;
-            _bSource = new BindingList<VeViecToTrinh>(_cVeViecToTrinh.GetDS());
+            _bSource = new BindingList<ToTrinhVeViec>(_cVeViecToTrinh.GetDS());
             dgvDSVeViecTTTL.DataSource = _bSource;
         }
 
@@ -47,7 +47,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             {
                 if (txtVeViec.Text.Trim() != "" && txtNoiDung.Text.Trim() != "" && txtNoiNhan.Text.Trim() != "")
                 {
-                    VeViecToTrinh vv = new VeViecToTrinh();
+                    ToTrinhVeViec vv = new ToTrinhVeViec();
                     vv.STT = _cVeViecToTrinh.GetMaxSTT() + 1;
                     vv.TenVV = txtVeViec.Text.Trim();
                     vv.NoiDung = txtNoiDung.Text;
@@ -73,7 +73,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 if (selectedindex != -1)
                     if (txtVeViec.Text.Trim() != "" && txtNoiDung.Text.Trim() != "" && txtNoiNhan.Text.Trim() != "")
                     {
-                        VeViecToTrinh vv = _cVeViecToTrinh.Get(int.Parse(dgvDSVeViecTTTL["MaVV", selectedindex].Value.ToString()));
+                        ToTrinhVeViec vv = _cVeViecToTrinh.Get(int.Parse(dgvDSVeViecTTTL["MaVV", selectedindex].Value.ToString()));
                         vv.TenVV = txtVeViec.Text.Trim();
                         vv.NoiDung = txtNoiDung.Text;
                         vv.NoiNhan = txtNoiNhan.Text.Trim();
@@ -98,7 +98,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             {
                 if (selectedindex != -1 && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        VeViecToTrinh vv = _cVeViecToTrinh.Get(int.Parse(dgvDSVeViecTTTL["MaVV", selectedindex].Value.ToString()));
+                        ToTrinhVeViec vv = _cVeViecToTrinh.Get(int.Parse(dgvDSVeViecTTTL["MaVV", selectedindex].Value.ToString()));
 
                         if (_cVeViecToTrinh.Xoa(vv))
                         {

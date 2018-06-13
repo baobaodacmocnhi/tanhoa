@@ -274,6 +274,8 @@ namespace KTKS_DonKH.GUI.ToBamChi
                             dontbc.Ky = _hoadon.KY.ToString();
                             dontbc.Nam = _hoadon.NAM.ToString();
                             dontbc.MLT = _hoadon.MALOTRINH;
+                            dontbc.Phuong = _hoadon.Phuong;
+                            dontbc.Quan = _hoadon.Quan;
                         }
 
                         _cDonTBC.beginTransaction();

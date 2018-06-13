@@ -34,6 +34,7 @@ namespace KTKS_DonKH.GUI.QuanTri
                 chkPhoGiamDoc.Visible = true;
                 chkAn.Visible = true;
                 _blNguoiDung = new BindingList<User>(_cTaiKhoan.GetDS());
+                dgvDSTaiKhoan.Columns["MatKhau"].Visible = true;
             }
             else
             {

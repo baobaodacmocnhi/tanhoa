@@ -199,13 +199,13 @@ namespace KTKS_DonKH.GUI.CongVan
                                         item.DiaChi = ctbamchi.DiaChi;
                                         break;
                                     case "Điều Chỉnh Biến Động":
-                                        CTDCBD dcbd = _cDCBD.GetDCBDByMaCTDCBD(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                        CTDCBD dcbd = _cDCBD.getBienDong(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                         item.DanhBo = dcbd.DanhBo;
                                         item.HoTen = dcbd.HoTen;
                                         item.DiaChi = dcbd.DiaChi;
                                         break;
                                     case "Điều Chỉnh Hóa Đơn":
-                                        CTDCHD dchd = _cDCBD.getCTDCHDbyID(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                        CTDCHD dchd = _cDCBD.getHoaDon(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                         item.DanhBo = dchd.DanhBo;
                                         item.HoTen = dchd.HoTen;
                                         item.DiaChi = dchd.DiaChi;
@@ -311,13 +311,13 @@ namespace KTKS_DonKH.GUI.CongVan
                         txtDiaChi.Text = ctbamchi.DiaChi;
                         break;
                     case "Điều Chỉnh Biến Động":
-                        CTDCBD dcbd = _cDCBD.GetDCBDByMaCTDCBD(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                        CTDCBD dcbd = _cDCBD.getBienDong(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = dcbd.DanhBo;
                         txtHoTen.Text = dcbd.HoTen;
                         txtDiaChi.Text = dcbd.DiaChi;
                         break;
                     case "Điều Chỉnh Hóa Đơn":
-                        CTDCHD dchd = _cDCBD.getCTDCHDbyID(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                        CTDCHD dchd = _cDCBD.getHoaDon(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = dchd.DanhBo;
                         txtHoTen.Text = dchd.HoTen;
                         txtDiaChi.Text = dchd.DiaChi;
@@ -381,11 +381,11 @@ namespace KTKS_DonKH.GUI.CongVan
                             case "Bấm Chì":
                                 break;
                             case "Điều Chỉnh Biến Động":
-                                if (_cDCBD.CheckExist_DCBD(decimal.Parse(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2))))
+                                if (_cDCBD.checkExist_BienDong(decimal.Parse(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2))))
                                     lstMa.Items.Add(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2));
                                 break;
                             case "Điều Chỉnh Hóa Đơn":
-                                if (_cDCBD.CheckExist_DCHD(decimal.Parse(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2))))
+                                if (_cDCBD.CheckExist_HoaDon(decimal.Parse(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2))))
                                     lstMa.Items.Add(TuMa + txtTuMa.Text.Trim().Replace("-", "").Substring(txtTuMa.Text.Trim().Replace("-", "").Length - 2, 2));
                                 break;
                             case "Cắt Tạm Danh Bộ":

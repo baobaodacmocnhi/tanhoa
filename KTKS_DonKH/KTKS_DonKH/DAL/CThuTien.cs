@@ -15,7 +15,6 @@ namespace KTKS_DonKH.DAL
         protected static string _connectionString;  // Chuỗi kết nối
         protected SqlConnection connection;         // Đối tượng kết nối
         protected SqlCommand command;               // Đối tượng command thực thi truy vấn
-        protected SqlDataAdapter adapter;           // Đối tượng adapter chứa dữ liệu
 
         public CThuTien()
         {
@@ -42,52 +41,23 @@ namespace KTKS_DonKH.DAL
                 connection.Close();
         }
 
-        /// <summary>
-        /// Thực thi câu truy vấn SQL trả về một đối tượng DataSet chứa kết quả trả về
-        /// </summary>
-        /// <param name="strSelect">Câu truy vấn cần thực thi lấy dữ liệu</param>
-        /// <returns>Đối tượng dataset chứa dữ liệu kết quả câu truy vấn</returns>
-        public DataSet ExecuteQuery_SqlDataAdapter_DataSet(string sql)
+        public DataTable ExecuteQuery_SqlDataReader_DataTable(string sql)
         {
             try
             {
+                DataTable dt = new DataTable();
                 Connect();
-                DataSet dataset = new DataSet();
-                command = new SqlCommand();
-                command.Connection = this.connection;
-                adapter = new SqlDataAdapter(sql, connection);
-                try
-                {
-                    adapter.Fill(dataset);
-                }
-                catch (SqlException e)
-                {
-                    throw e;
-                }
+                command = new SqlCommand(sql, connection);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                    dt.Load(reader);
                 Disconnect();
-                return dataset;
+                return dt;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Disconnect();
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Thực thi câu truy vấn SQL trả về một đối tượng DataTable chứa kết quả trả về
-        /// </summary>
-        /// <param name="strSelect">Câu truy vấn cần thực thi lấy dữ liệu</param>
-        /// <returns>Đối tượng datatable chứa dữ liệu kết quả câu truy vấn</returns>
-        public DataTable ExecuteQuery_SqlDataAdapter_DataTable(string sql)
-        {
-            try
-            {
-                return ExecuteQuery_SqlDataAdapter_DataSet(sql).Tables[0];
-            }
-            catch (Exception)
-            {
-                Disconnect();
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return null;
             }
         }
@@ -122,16 +92,16 @@ namespace KTKS_DonKH.DAL
 
         public DataTable GetDSTimKiem(string DanhBo, string MLT)
         {
-            string sql = "select * from TimKiem('" + DanhBo + "','" + MLT + "') order by MaHD desc";
+            string sql = "select * from fnTimKiem('" + DanhBo + "','" + MLT + "') order by MaHD desc";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable GetDSTimKiemTTKH(string HoTen, string SoNha, string TenDuong)
         {
-            string sql = "select * from TimKiemTTKH('" + HoTen + "','" + SoNha + "','" + TenDuong + "')";
+            string sql = "select * from fnTimKiemTTKH('" + HoTen + "','" + SoNha + "','" + TenDuong + "')";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public HOADON Copy(HOADON a, TT_HoaDonCu b)

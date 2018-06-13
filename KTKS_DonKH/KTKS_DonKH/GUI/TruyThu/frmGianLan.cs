@@ -448,6 +448,16 @@ namespace KTKS_DonKH.GUI.TruyThu
                     entity.DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
                     entity.HoTen = txtHoTen.Text.Trim();
                     entity.DiaChi = txtDiaChi.Text.Trim();
+
+                    if (_hoadon != null)
+                    {
+                        entity.Dot = _hoadon.DOT.ToString();
+                        entity.Ky = _hoadon.KY.ToString();
+                        entity.Nam = _hoadon.NAM.ToString();
+                        entity.Phuong = _hoadon.Phuong;
+                        entity.Quan = _hoadon.Quan;
+                    }
+
                     entity.NgayKTXM = dateKTXM.Value;
                     entity.NoiDungViPham = txtNoiDungViPham.Text.Trim();
                     if (!string.IsNullOrEmpty(txtTienDHN.Text.Trim()))

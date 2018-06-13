@@ -51,6 +51,10 @@
             this.groupBox_DSChungCu = new System.Windows.Forms.GroupBox();
             this.btnBaoCao_DSChungCu = new System.Windows.Forms.Button();
             this.groupBox_ThongKeDC = new System.Windows.Forms.GroupBox();
+            this.cmbPhuong_ThongKeDC = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cmbQuan_ThongKeDC = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.txtHieuLucKy_ThongKeDC = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -59,14 +63,27 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.btnBaoCao_ThongKeDC = new System.Windows.Forms.Button();
-            this.cmbPhuong_ThongKeDC = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cmbQuan_ThongKeDC = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.dateTu_DSDCBD = new System.Windows.Forms.DateTimePicker();
+            this.dateDen_DSDCBD = new System.Windows.Forms.DateTimePicker();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.btnXuatExcel_DSDCBD = new System.Windows.Forms.Button();
+            this.radBienDong = new System.Windows.Forms.RadioButton();
+            this.radHoaDon = new System.Windows.Forms.RadioButton();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.groupBox_DSChungCu.SuspendLayout();
             this.groupBox_ThongKeDC.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_KhoangThoiGian
@@ -302,6 +319,41 @@
             this.groupBox_ThongKeDC.TabStop = false;
             this.groupBox_ThongKeDC.Text = "Thống Kê Điều Chỉnh";
             // 
+            // cmbPhuong_ThongKeDC
+            // 
+            this.cmbPhuong_ThongKeDC.FormattingEnabled = true;
+            this.cmbPhuong_ThongKeDC.Location = new System.Drawing.Point(81, 116);
+            this.cmbPhuong_ThongKeDC.Name = "cmbPhuong_ThongKeDC";
+            this.cmbPhuong_ThongKeDC.Size = new System.Drawing.Size(100, 24);
+            this.cmbPhuong_ThongKeDC.TabIndex = 23;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(18, 119);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(57, 16);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "Phường:";
+            // 
+            // cmbQuan_ThongKeDC
+            // 
+            this.cmbQuan_ThongKeDC.FormattingEnabled = true;
+            this.cmbQuan_ThongKeDC.Location = new System.Drawing.Point(81, 87);
+            this.cmbQuan_ThongKeDC.Name = "cmbQuan_ThongKeDC";
+            this.cmbQuan_ThongKeDC.Size = new System.Drawing.Size(100, 24);
+            this.cmbQuan_ThongKeDC.TabIndex = 21;
+            this.cmbQuan_ThongKeDC.SelectedIndexChanged += new System.EventHandler(this.cmbQuan_ThongKeDC_SelectedIndexChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(18, 90);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(43, 16);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Quận:";
+            // 
             // txtHieuLucKy_ThongKeDC
             // 
             this.txtHieuLucKy_ThongKeDC.Location = new System.Drawing.Point(198, 37);
@@ -375,40 +427,159 @@
             this.btnBaoCao_ThongKeDC.UseVisualStyleBackColor = true;
             this.btnBaoCao_ThongKeDC.Click += new System.EventHandler(this.btnBaoCao_ThongKeDC_Click);
             // 
-            // cmbPhuong_ThongKeDC
+            // groupBox1
             // 
-            this.cmbPhuong_ThongKeDC.FormattingEnabled = true;
-            this.cmbPhuong_ThongKeDC.Location = new System.Drawing.Point(81, 116);
-            this.cmbPhuong_ThongKeDC.Name = "cmbPhuong_ThongKeDC";
-            this.cmbPhuong_ThongKeDC.Size = new System.Drawing.Size(100, 24);
-            this.cmbPhuong_ThongKeDC.TabIndex = 23;
+            this.groupBox1.Controls.Add(this.radHoaDon);
+            this.groupBox1.Controls.Add(this.radBienDong);
+            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.panel2);
+            this.groupBox1.Controls.Add(this.btnXuatExcel_DSDCBD);
+            this.groupBox1.Location = new System.Drawing.Point(294, 195);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(276, 232);
+            this.groupBox1.TabIndex = 23;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Danh Sách Điều Chỉnh";
             // 
-            // label5
+            // comboBox1
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(18, 119);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 16);
-            this.label5.TabIndex = 22;
-            this.label5.Text = "Phường:";
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(81, 165);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(100, 24);
+            this.comboBox1.TabIndex = 23;
+            this.comboBox1.Visible = false;
             // 
-            // cmbQuan_ThongKeDC
+            // label10
             // 
-            this.cmbQuan_ThongKeDC.FormattingEnabled = true;
-            this.cmbQuan_ThongKeDC.Location = new System.Drawing.Point(81, 87);
-            this.cmbQuan_ThongKeDC.Name = "cmbQuan_ThongKeDC";
-            this.cmbQuan_ThongKeDC.Size = new System.Drawing.Size(100, 24);
-            this.cmbQuan_ThongKeDC.TabIndex = 21;
-            this.cmbQuan_ThongKeDC.SelectedIndexChanged += new System.EventHandler(this.cmbQuan_ThongKeDC_SelectedIndexChanged);
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(18, 168);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(57, 16);
+            this.label10.TabIndex = 22;
+            this.label10.Text = "Phường:";
+            this.label10.Visible = false;
             // 
-            // label9
+            // comboBox2
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(18, 90);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(43, 16);
-            this.label9.TabIndex = 20;
-            this.label9.Text = "Quận:";
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(81, 136);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(100, 24);
+            this.comboBox2.TabIndex = 21;
+            this.comboBox2.Visible = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(18, 139);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(43, 16);
+            this.label11.TabIndex = 20;
+            this.label11.Text = "Quận:";
+            this.label11.Visible = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(198, 37);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(55, 22);
+            this.textBox1.TabIndex = 18;
+            this.textBox1.Visible = false;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(187, 18);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(78, 16);
+            this.label12.TabIndex = 17;
+            this.label12.Text = "Hiệu Lực Kỳ";
+            this.label12.Visible = false;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dateTu_DSDCBD);
+            this.panel2.Controls.Add(this.dateDen_DSDCBD);
+            this.panel2.Controls.Add(this.label13);
+            this.panel2.Controls.Add(this.label14);
+            this.panel2.Location = new System.Drawing.Point(6, 21);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(175, 60);
+            this.panel2.TabIndex = 13;
+            // 
+            // dateTu_DSDCBD
+            // 
+            this.dateTu_DSDCBD.CustomFormat = "dd/MM/yyyy";
+            this.dateTu_DSDCBD.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTu_DSDCBD.Location = new System.Drawing.Point(80, 5);
+            this.dateTu_DSDCBD.Name = "dateTu_DSDCBD";
+            this.dateTu_DSDCBD.Size = new System.Drawing.Size(90, 22);
+            this.dateTu_DSDCBD.TabIndex = 13;
+            // 
+            // dateDen_DSDCBD
+            // 
+            this.dateDen_DSDCBD.CustomFormat = "dd/MM/yyyy";
+            this.dateDen_DSDCBD.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateDen_DSDCBD.Location = new System.Drawing.Point(80, 33);
+            this.dateDen_DSDCBD.Name = "dateDen_DSDCBD";
+            this.dateDen_DSDCBD.Size = new System.Drawing.Size(90, 22);
+            this.dateDen_DSDCBD.TabIndex = 14;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(3, 10);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(63, 16);
+            this.label13.TabIndex = 15;
+            this.label13.Text = "Từ Ngày:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(3, 38);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(71, 16);
+            this.label14.TabIndex = 16;
+            this.label14.Text = "Đến Ngày:";
+            // 
+            // btnXuatExcel_DSDCBD
+            // 
+            this.btnXuatExcel_DSDCBD.Location = new System.Drawing.Point(190, 65);
+            this.btnXuatExcel_DSDCBD.Name = "btnXuatExcel_DSDCBD";
+            this.btnXuatExcel_DSDCBD.Size = new System.Drawing.Size(80, 25);
+            this.btnXuatExcel_DSDCBD.TabIndex = 12;
+            this.btnXuatExcel_DSDCBD.Text = "Xuất Excel";
+            this.btnXuatExcel_DSDCBD.UseVisualStyleBackColor = true;
+            this.btnXuatExcel_DSDCBD.Click += new System.EventHandler(this.btnXuatExcel_DSDCBD_Click);
+            // 
+            // radBienDong
+            // 
+            this.radBienDong.AutoSize = true;
+            this.radBienDong.Checked = true;
+            this.radBienDong.Location = new System.Drawing.Point(6, 87);
+            this.radBienDong.Name = "radBienDong";
+            this.radBienDong.Size = new System.Drawing.Size(88, 20);
+            this.radBienDong.TabIndex = 24;
+            this.radBienDong.TabStop = true;
+            this.radBienDong.Text = "Biến Động";
+            this.radBienDong.UseVisualStyleBackColor = true;
+            // 
+            // radHoaDon
+            // 
+            this.radHoaDon.AutoSize = true;
+            this.radHoaDon.Location = new System.Drawing.Point(100, 88);
+            this.radHoaDon.Name = "radHoaDon";
+            this.radHoaDon.Size = new System.Drawing.Size(79, 20);
+            this.radHoaDon.TabIndex = 25;
+            this.radHoaDon.Text = "Hóa Đơn";
+            this.radHoaDon.UseVisualStyleBackColor = true;
             // 
             // frmBaoCaoDCBD
             // 
@@ -416,6 +587,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1321, 563);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox_ThongKeDC);
             this.Controls.Add(this.groupBox_DSChungCu);
             this.Controls.Add(this.btnXuatExcel);
@@ -446,6 +618,10 @@
             this.groupBox_ThongKeDC.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -488,5 +664,20 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cmbQuan_ThongKeDC;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DateTimePicker dateTu_DSDCBD;
+        private System.Windows.Forms.DateTimePicker dateDen_DSDCBD;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button btnXuatExcel_DSDCBD;
+        private System.Windows.Forms.RadioButton radHoaDon;
+        private System.Windows.Forms.RadioButton radBienDong;
     }
 }

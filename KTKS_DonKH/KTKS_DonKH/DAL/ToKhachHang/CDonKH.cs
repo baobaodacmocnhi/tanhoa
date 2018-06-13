@@ -271,7 +271,7 @@ namespace KTKS_DonKH.DAL.ToKhachHang
                     + " from DonKH a,LoaiDon b where CAST(a.CreateDate as date)>='" + FromCreateDate.ToString("yyyy-MM-dd") + "' and CAST(a.CreateDate as date)<='" + ToCreateDate.ToString("yyyy-MM-dd") + "' and a.MaLD=b.MaLD"
                     + " order by a.CreateDate asc";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         #region LichSuChuyenVanPhong

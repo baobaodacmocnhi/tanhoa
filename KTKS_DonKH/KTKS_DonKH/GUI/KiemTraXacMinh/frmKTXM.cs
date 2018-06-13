@@ -455,6 +455,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         ctktxm.Dot = _hoadon.DOT.ToString();
                         ctktxm.Ky = _hoadon.KY.ToString();
                         ctktxm.Nam = _hoadon.NAM.ToString();
+                        ctktxm.Phuong = _hoadon.Phuong;
+                        ctktxm.Quan = _hoadon.Quan;
                     }
                     ///
                     ctktxm.NgayKTXM_Truoc_NgayGiao = chkNgayKTXMTruocNgayGiao.Checked;
@@ -546,6 +548,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             _ctktxm.Dot = _hoadon.DOT.ToString();
                             _ctktxm.Ky = _hoadon.KY.ToString();
                             _ctktxm.Nam = _hoadon.NAM.ToString();
+                            _ctktxm.Phuong = _hoadon.Phuong;
+                            _ctktxm.Quan = _hoadon.Quan;
                         }
                         ///
                         _ctktxm.NgayKTXM_Truoc_NgayGiao = chkNgayKTXMTruocNgayGiao.Checked;

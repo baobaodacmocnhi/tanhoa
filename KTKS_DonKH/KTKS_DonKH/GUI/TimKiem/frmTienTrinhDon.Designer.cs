@@ -350,7 +350,7 @@
             // gridColumn148
             // 
             this.gridColumn148.Caption = "Nội Dung Xử Lý";
-            this.gridColumn148.FieldName = "NoiDung";
+            this.gridColumn148.FieldName = "NoiDungDongTien";
             this.gridColumn148.Name = "gridColumn148";
             this.gridColumn148.OptionsColumn.AllowEdit = false;
             this.gridColumn148.Visible = true;
@@ -370,7 +370,7 @@
             // gridColumn116
             // 
             this.gridColumn116.Caption = "Số Tiền";
-            this.gridColumn116.FieldName = "SoTien";
+            this.gridColumn116.FieldName = "GhiChuDongTien";
             this.gridColumn116.Name = "gridColumn116";
             this.gridColumn116.OptionsColumn.AllowEdit = false;
             this.gridColumn116.Visible = true;

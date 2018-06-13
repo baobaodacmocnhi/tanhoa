@@ -206,7 +206,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             ///Đơn Tổ Xử Lý
                             if (item.Cells["MaDon"].Value.ToString().ToUpper().Contains("TXL"))
                             {
-                                if (_cDCBD.CheckExist_DCBD("TKH", decimal.Parse(item.Cells["MaDon"].Value.ToString().Substring(3).Replace("-", "")), item.Cells["DanhBo"].Value.ToString()) == true)
+                                if (_cDCBD.checkExist_BienDong("TKH", decimal.Parse(item.Cells["MaDon"].Value.ToString().Substring(3).Replace("-", "")), item.Cells["DanhBo"].Value.ToString()) == true)
                                 {
                                     MessageBox.Show("Danh Bộ này đã được Lập Điều Chỉnh Biến Động", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
@@ -215,7 +215,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             else
                                 if (item.Cells["MaDon"].Value.ToString().ToUpper().Contains("TBC"))
                                 {
-                                    if (_cDCBD.CheckExist_DCBD("TKH", decimal.Parse(item.Cells["MaDon"].Value.ToString().Substring(3).Replace("-", "")), item.Cells["DanhBo"].Value.ToString()) == true)
+                                    if (_cDCBD.checkExist_BienDong("TKH", decimal.Parse(item.Cells["MaDon"].Value.ToString().Substring(3).Replace("-", "")), item.Cells["DanhBo"].Value.ToString()) == true)
                                     {
                                         MessageBox.Show("Danh Bộ này đã được Lập Điều Chỉnh Biến Động", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         return;
@@ -224,7 +224,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 ///Đơn Tổ Khách Hàng
                                 else
                                 {
-                                    if (_cDCBD.CheckExist_DCBD("TKH", decimal.Parse(item.Cells["MaDon"].Value.ToString().Replace("-", "")), item.Cells["DanhBo"].Value.ToString()) == true)
+                                    if (_cDCBD.checkExist_BienDong("TKH", decimal.Parse(item.Cells["MaDon"].Value.ToString().Replace("-", "")), item.Cells["DanhBo"].Value.ToString()) == true)
                                     {
                                         MessageBox.Show("Danh Bộ này đã được Lập Điều Chỉnh Biến Động", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         return;

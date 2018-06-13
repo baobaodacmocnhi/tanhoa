@@ -87,6 +87,8 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     dgvDanhBo["Ky", e.RowIndex].Value = hoadon.KY.ToString();
                     dgvDanhBo["Nam", e.RowIndex].Value = hoadon.NAM.ToString();
                     dgvDanhBo["MLT", e.RowIndex].Value = hoadon.MALOTRINH.ToString();
+                    dgvDanhBo["Quan", e.RowIndex].Value = hoadon.Quan.ToString();
+                    dgvDanhBo["Phuong", e.RowIndex].Value = hoadon.Phuong.ToString();
                 }
                 else
                 {
@@ -162,6 +164,10 @@ namespace KTKS_DonKH.GUI.ToXuLy
                             dontxl.Nam = item.Cells["Nam"].Value.ToString();
                         if (item.Cells["MLT"].Value != null)
                             dontxl.MLT = item.Cells["MLT"].Value.ToString();
+                        if (item.Cells["Quan"].Value != null)
+                            dontxl.Quan = item.Cells["Quan"].Value.ToString();
+                        if (item.Cells["Phuong"].Value != null)
+                            dontxl.Phuong = item.Cells["Phuong"].Value.ToString();
                         ///
                         if (item.Cells["NguoiDi"].Value != null)
                         {

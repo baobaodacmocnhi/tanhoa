@@ -96,9 +96,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                         dr["TuNgay"] = _TuNgay;
                         dr["DenNgay"] = _DenNgay;
-                        if (_cDCBD.checkCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
+                        if (_cDCBD.checkExist_BienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                         {
-                            string a = _cDCBD.getCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
+                            string a = _cDCBD.getBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
                             dr["SoPhieu"] = a.Insert(a.Length - 2, "-");
                         }
                         else
@@ -135,9 +135,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                 dr["TuNgay"] = _TuNgay;
                                 dr["DenNgay"] = _DenNgay;
-                                if (_cDCBD.checkCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
+                                if (_cDCBD.checkExist_BienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                                 {
-                                    string a = _cDCBD.getCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
+                                    string a = _cDCBD.getBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
                                     dr["SoPhieu"] = a.Insert(a.Length - 2, "-");
                                 }
                                 else
@@ -174,9 +174,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                 dr["TuNgay"] = _TuNgay;
                                 dr["DenNgay"] = _DenNgay;
-                                if (_cDCBD.checkCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
+                                if (_cDCBD.checkExist_BienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
                                 {
-                                    string a = _cDCBD.getCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
+                                    string a = _cDCBD.getBienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
                                     dr["SoPhieu"] = a.Insert(a.Length - 2, "-");
                                 }
                                 else

@@ -16,7 +16,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
     {
         string _mnu = "mnuVeViecTTTL";
         CVeViecTTTL _cVeViecTTTL = new CVeViecTTTL();
-        BindingList<VeViecTTTL> _bSource;
+        BindingList<TTTLVeViec> _bSource;
         int selectedindex = -1;
 
         public frmVeViecTTTL()
@@ -27,7 +27,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         private void frmVeViecTTTL_Load(object sender, EventArgs e)
         {
             dgvDSVeViecTTTL.AutoGenerateColumns = false;
-            _bSource = new BindingList<VeViecTTTL>(_cVeViecTTTL.GetDS());
+            _bSource = new BindingList<TTTLVeViec>(_cVeViecTTTL.GetDS());
             dgvDSVeViecTTTL.DataSource = _bSource;
         }
 
@@ -37,7 +37,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             txtNoiDung.Text = "";
             txtNoiNhan.Text = "";
             selectedindex = -1;
-            _bSource = new BindingList<VeViecTTTL>(_cVeViecTTTL.GetDS());
+            _bSource = new BindingList<TTTLVeViec>(_cVeViecTTTL.GetDS());
             dgvDSVeViecTTTL.DataSource = _bSource;
         }
 
@@ -47,7 +47,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             {
                 if (txtVeViec.Text.Trim() != "" && txtNoiDung.Text.Trim() != "" && txtNoiNhan.Text.Trim() != "")
                 {
-                    VeViecTTTL vv = new VeViecTTTL();
+                    TTTLVeViec vv = new TTTLVeViec();
                     vv.STT = _cVeViecTTTL.GetMaxSTT() + 1;
                     vv.TenVV = txtVeViec.Text.Trim();
                     vv.NoiDung = txtNoiDung.Text;
@@ -73,7 +73,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 if (selectedindex != -1)
                     if (txtVeViec.Text.Trim() != "" && txtNoiDung.Text.Trim() != "" && txtNoiNhan.Text.Trim() != "")
                     {
-                        VeViecTTTL vv = _cVeViecTTTL.Get(int.Parse(dgvDSVeViecTTTL["MaVV", selectedindex].Value.ToString()));
+                        TTTLVeViec vv = _cVeViecTTTL.Get(int.Parse(dgvDSVeViecTTTL["MaVV", selectedindex].Value.ToString()));
                         vv.TenVV = txtVeViec.Text.Trim();
                         vv.NoiDung = txtNoiDung.Text;
                         vv.NoiNhan = txtNoiNhan.Text.Trim();
@@ -98,7 +98,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             {
                 if (selectedindex != -1 && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        VeViecTTTL vv = _cVeViecTTTL.Get(int.Parse(dgvDSVeViecTTTL["MaVV", selectedindex].Value.ToString()));
+                        TTTLVeViec vv = _cVeViecTTTL.Get(int.Parse(dgvDSVeViecTTTL["MaVV", selectedindex].Value.ToString()));
 
                         if (_cVeViecTTTL.Xoa(vv))
                         {
