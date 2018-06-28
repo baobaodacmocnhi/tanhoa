@@ -77,6 +77,7 @@ namespace ThuTien.DAL.HanhThu
                                 itemQT.ID,
                                 itemQT.CreateBy,
                                 itemQT.SoHoaDon,
+                                itemQT.SoPhieu,
                                 DanhBo = itemHD.DANHBA,
                                 HoTen = itemHD.TENKH,
                                 DiaChi = itemHD.SO + " " + itemHD.DUONG,
@@ -104,6 +105,7 @@ namespace ThuTien.DAL.HanhThu
                                     itemQT.ID,
                                     itemQT.CreateBy,
                                     itemQT.SoHoaDon,
+                                    itemQT.SoPhieu,
                                     DanhBo = itemHD.DANHBA,
                                     HoTen = itemHD.TENKH,
                                     DiaChi = itemHD.SO + " " + itemHD.DUONG,
@@ -132,10 +134,10 @@ namespace ThuTien.DAL.HanhThu
                             orderby itemHD.MALOTRINH ascending
                             select new
                             {
-                                In=true,
                                 itemQT.ID,
                                 itemQT.CreateBy,
                                 itemQT.SoHoaDon,
+                                itemQT.SoPhieu,
                                 DanhBo = itemHD.DANHBA,
                                 HoTen = itemHD.TENKH,
                                 DiaChi = itemHD.SO + " " + itemHD.DUONG,
@@ -161,10 +163,10 @@ namespace ThuTien.DAL.HanhThu
                                 orderby itemHD.MALOTRINH ascending
                                 select new
                                 {
-                                    In = true,
                                     itemQT.ID,
                                     itemQT.CreateBy,
                                     itemQT.SoHoaDon,
+                                    itemQT.SoPhieu,
                                     DanhBo = itemHD.DANHBA,
                                     HoTen = itemHD.TENKH,
                                     DiaChi = itemHD.SO + " " + itemHD.DUONG,
@@ -195,6 +197,21 @@ namespace ThuTien.DAL.HanhThu
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
                         };
             return LINQToDataTable(query);
+        }
+
+        public int GetNextSoPhieu()
+        {
+            if (_db.TT_QuetTams.Max(item => item.SoPhieu) == null)
+                return int.Parse("1" + DateTime.Now.ToString("yy"));
+            else
+            {
+                string ID = "SoPhieu";
+                string Table = "TT_QuetTam";
+                decimal SoPhieu = _db.ExecuteQuery<int>("declare @Ma int " +
+                    "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                    "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                return (int)getMaxNextIDTable(SoPhieu);
+            }
         }
     }
 }

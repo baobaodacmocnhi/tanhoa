@@ -36,19 +36,19 @@ namespace ThuTien.GUI.Doi
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
+            DataTable dtTong = new DataTable();
             DataTable dtPhanTich = new DataTable();
             if (radGiaBieu.Checked)
             {
                 if (cmbKy.SelectedIndex == 0)
                 {
-                    dt = _cHoaDon.GetGiaBanBinhQuan(int.Parse(cmbNam.SelectedValue.ToString()));
+                    dtTong = _cHoaDon.GetGiaBanBinhQuan(int.Parse(cmbNam.SelectedValue.ToString()));
                     dtPhanTich = _cHoaDon.PhanTichDoanhThuByGiaBieu(int.Parse(cmbNam.SelectedValue.ToString()));
                 }
                 else
                     if (cmbKy.SelectedIndex > 0)
                     {
-                         dt = _cHoaDon.GetGiaBanBinhQuan(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                         dtTong = _cHoaDon.GetGiaBanBinhQuan(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                          dtPhanTich = _cHoaDon.PhanTichDoanhThuByGiaBieu(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                     }
             }
@@ -57,22 +57,28 @@ namespace ThuTien.GUI.Doi
                 {
                     if (cmbKy.SelectedIndex == 0)
                     {
-                        dt = _cHoaDon.GetGiaBanBinhQuan(int.Parse(cmbNam.SelectedValue.ToString()));
+                        dtTong = _cHoaDon.GetGiaBanBinhQuan(int.Parse(cmbNam.SelectedValue.ToString()));
                         dtPhanTich = _cHoaDon.PhanTichDoanhThuByDinhMuc(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtTuDM.Text.Trim()), int.Parse(txtDenDM.Text.Trim()));
                     }
                     else
                         if (cmbKy.SelectedIndex > 0)
                         {
-                            dt = _cHoaDon.GetGiaBanBinhQuan(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                            dtPhanTich = _cHoaDon.PhanTichDoanhThuByDinhMuc(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtTuDM.Text.Trim()), int.Parse(txtDenDM.Text.Trim()));
+                            dtTong = _cHoaDon.GetGiaBanBinhQuan(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                            if (string.IsNullOrEmpty(txtTuDM2.Text.Trim()) == false && string.IsNullOrEmpty(txtTuDM2.Text.Trim()) == false && string.IsNullOrEmpty(txtTuDM3.Text.Trim()) == false && string.IsNullOrEmpty(txtTuDM3.Text.Trim()) == false)
+                                dtPhanTich = _cHoaDon.PhanTichDoanhThuByDinhMuc(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtTuDM.Text.Trim()), int.Parse(txtDenDM.Text.Trim()), int.Parse(txtTuDM2.Text.Trim()), int.Parse(txtDenDM2.Text.Trim()), int.Parse(txtTuDM3.Text.Trim()), int.Parse(txtDenDM3.Text.Trim()));
+                            else
+                                if (string.IsNullOrEmpty(txtTuDM2.Text.Trim()) == false && string.IsNullOrEmpty(txtTuDM2.Text.Trim()) == false)
+                                    dtPhanTich = _cHoaDon.PhanTichDoanhThuByDinhMuc(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtTuDM.Text.Trim()), int.Parse(txtDenDM.Text.Trim()), int.Parse(txtTuDM2.Text.Trim()), int.Parse(txtDenDM2.Text.Trim()));
+                                else
+                                    dtPhanTich = _cHoaDon.PhanTichDoanhThuByDinhMuc(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtTuDM.Text.Trim()), int.Parse(txtDenDM.Text.Trim()));
                         }
                 }
 
-            txtTongHD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", decimal.Parse(dt.Rows[0]["TongHD"].ToString()));
-            txtTongDinhMuc.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", decimal.Parse(dt.Rows[0]["TongDinhMuc"].ToString()));
-            txtTongTieuThu.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", decimal.Parse(dt.Rows[0]["TongTieuThu"].ToString()));
-            txtTongGiaBan.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", decimal.Parse(dt.Rows[0]["TongGiaBan"].ToString()));
-            txtGiaBanBinhQuan.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", decimal.Parse(dt.Rows[0]["GiaBanBinhQuan"].ToString()));
+            txtTongHD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", decimal.Parse(dtTong.Rows[0]["TongHD"].ToString()));
+            txtTongDinhMuc.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", decimal.Parse(dtTong.Rows[0]["TongDinhMuc"].ToString()));
+            txtTongTieuThu.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", decimal.Parse(dtTong.Rows[0]["TongTieuThu"].ToString()));
+            txtTongGiaBan.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", decimal.Parse(dtTong.Rows[0]["TongGiaBan"].ToString()));
+            txtGiaBanBinhQuan.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", decimal.Parse(dtTong.Rows[0]["GiaBanBinhQuan"].ToString()));
 
             dgvDoanhThu.DataSource = dtPhanTich;
 
@@ -80,8 +86,8 @@ namespace ThuTien.GUI.Doi
                 if ((decimal)item.Cells["TongGiaBan"].Value > 0 && (decimal)item.Cells["TongTieuThu"].Value > 0)
                 {
                     item.Cells["GiaBanBinhQuan"].Value = (decimal)item.Cells["TongGiaBan"].Value / (decimal)item.Cells["TongTieuThu"].Value;
-                    item.Cells["TyLeTongTieuThu"].Value = Math.Round(((decimal)item.Cells["TongTieuThu"].Value / decimal.Parse(dt.Rows[0]["TongTieuThu"].ToString()))*100,2);
-                    item.Cells["TyLeTongGiaBan"].Value = Math.Round(((decimal)item.Cells["TongGiaBan"].Value / decimal.Parse(dt.Rows[0]["TongGiaBan"].ToString()))*100,2);
+                    item.Cells["TyLeTongTieuThu"].Value = Math.Round(((decimal)item.Cells["TongTieuThu"].Value / decimal.Parse(dtTong.Rows[0]["TongTieuThu"].ToString()))*100,2);
+                    item.Cells["TyLeTongGiaBan"].Value = Math.Round(((decimal)item.Cells["TongGiaBan"].Value / decimal.Parse(dtTong.Rows[0]["TongGiaBan"].ToString()))*100,2);
                 }
                 else
                 {
@@ -131,6 +137,16 @@ namespace ThuTien.GUI.Doi
                 txtTuDM.Visible = true;
                 lbDenDM.Visible = true;
                 txtDenDM.Visible = true;
+                ///
+                lbTuDM2.Visible = true;
+                txtTuDM2.Visible = true;
+                lbDenDM2.Visible = true;
+                txtDenDM2.Visible = true;
+                ///
+                lbTuDM3.Visible = true;
+                txtTuDM3.Visible = true;
+                lbDenDM3.Visible = true;
+                txtDenDM3.Visible = true;
             }
         }
 
@@ -142,6 +158,16 @@ namespace ThuTien.GUI.Doi
                 txtTuDM.Visible = false;
                 lbDenDM.Visible = false;
                 txtDenDM.Visible = false;
+                ///
+                lbTuDM2.Visible = false;
+                txtTuDM2.Visible = false;
+                lbDenDM2.Visible = false;
+                txtDenDM2.Visible = false;
+                ///
+                lbTuDM3.Visible = false;
+                txtTuDM3.Visible = false;
+                lbDenDM3.Visible = false;
+                txtDenDM3.Visible = false;
             }
         }
 
@@ -156,7 +182,8 @@ namespace ThuTien.GUI.Doi
                     else
                         if (radDinhMuc.Checked)
                             dr["LoaiBaoCao"] = "Định Mức";
-                    dr["Ky"] = cmbKy.SelectedItem.ToString() + "/" + cmbNam.SelectedValue.ToString();
+                    dr["Ky"] = cmbKy.SelectedItem.ToString();
+                    dr["Nam"] = cmbNam.SelectedValue.ToString();
                     dr["Loai"] = item.Cells["Loai"].Value.ToString();
                     dr["TongHD"] = item.Cells["TongHD"].Value;
                     dr["TongDinhMuc"] = item.Cells["TongDinhMuc"].Value;

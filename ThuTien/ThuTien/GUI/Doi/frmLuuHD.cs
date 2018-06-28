@@ -11,6 +11,9 @@ using ThuTien.DAL.Doi;
 using System.Globalization;
 using ThuTien.LinQ;
 using ThuTien.DAL;
+using ThuTien.BaoCao;
+using ThuTien.BaoCao.Doi;
+using ThuTien.GUI.BaoCao;
 
 namespace ThuTien.GUI.Doi
 {
@@ -21,7 +24,7 @@ namespace ThuTien.GUI.Doi
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CHoaDon _cHoaDon = new CHoaDon();
         CDocSo _cCapNuocTanHoa = new CDocSo();
-         
+
         public frmLuuHD()
         {
             InitializeComponent();
@@ -59,8 +62,8 @@ namespace ThuTien.GUI.Doi
                     progressBar.Maximum = lines.Count();
                     int i = 1;
                     int Nam = 0;
-                    int Ky = 0; 
-                    int Dot=0;
+                    int Ky = 0;
+                    int Dot = 0;
                     foreach (string line in lines)
                     {
                         progressBar.Value = i++;
@@ -71,7 +74,7 @@ namespace ThuTien.GUI.Doi
                         //if (!string.IsNullOrWhiteSpace(contents[0]))
                         //    hoadon.Khu = int.Parse(contents[0]);
                         if (!string.IsNullOrWhiteSpace(contents[1]))
-                            hoadon.DOT =Dot= int.Parse(contents[1]);
+                            hoadon.DOT = Dot = int.Parse(contents[1]);
                         if (!string.IsNullOrWhiteSpace(contents[2]))
                             hoadon.DANHBA = contents[2];
                         //if (!string.IsNullOrWhiteSpace(contents[3]))
@@ -105,9 +108,9 @@ namespace ThuTien.GUI.Doi
                         if (!string.IsNullOrWhiteSpace(contents[17]))
                             hoadon.DM = int.Parse(contents[17]);
                         if (!string.IsNullOrWhiteSpace(contents[18]))
-                            hoadon.KY = Ky=int.Parse(contents[18]);
+                            hoadon.KY = Ky = int.Parse(contents[18]);
                         if (!string.IsNullOrWhiteSpace(contents[19]))
-                            hoadon.NAM =Nam= int.Parse("20" + contents[19]);
+                            hoadon.NAM = Nam = int.Parse("20" + contents[19]);
                         if (!string.IsNullOrWhiteSpace(contents[20]))
                             hoadon.CODE = contents[20];
                         //if (!string.IsNullOrWhiteSpace(contents[21]))
@@ -206,7 +209,7 @@ namespace ThuTien.GUI.Doi
                             _cHoaDon.Sua(hoadonCN);
                         }
                     }
-                    
+
                     try
                     {
                         //string lineR_Test = lines[0].Replace("\",\"", "$").Replace("\"", "");
@@ -242,13 +245,13 @@ namespace ThuTien.GUI.Doi
                                     entity.TongGiaBan = decimal.Parse(dt.Rows[0]["TongGiaBan"].ToString());
                                     entity.TongTieuThu = decimal.Parse(dt.Rows[0]["TongTieuThu"].ToString());
                                     entity.GiaBanBinhQuan = float.Parse(dt.Rows[0]["GiaBanBinhQuan"].ToString());
-                                    
+
                                     _cGBBQ.Sua(entity);
                                 }
                         }
 
                         _cHoaDon.ExecuteNonQuery("exec spUpdateHoaDonFromDHN " + Dot + "," + Ky + "," + Nam);
-                        
+
                     }
                     catch (Exception)
                     {
@@ -332,48 +335,94 @@ namespace ThuTien.GUI.Doi
 
         private void Copy(ref HOADON hoadonCu, HOADON hoadonMoi)
         {
-                hoadonCu.DOT = hoadonMoi.DOT;
-                hoadonCu.DANHBA = hoadonMoi.DANHBA;
-                hoadonCu.HOPDONG = hoadonMoi.HOPDONG;
-                hoadonCu.TENKH = hoadonMoi.TENKH;
-                hoadonCu.SO = hoadonMoi.SO;
-                hoadonCu.DUONG = hoadonMoi.DUONG;
-                hoadonCu.GB = hoadonMoi.GB;
-                hoadonCu.TILESH = hoadonMoi.TILESH;
-                hoadonCu.TILEHCSN =hoadonMoi.TILEHCSN;
-                hoadonCu.TILESX = hoadonMoi.TILESX;
-                hoadonCu.TILEDV = hoadonMoi.TILEDV;
-                hoadonCu.DM = hoadonMoi.DM;
-                hoadonCu.KY = hoadonMoi.KY;
-                hoadonCu.NAM = hoadonMoi.NAM;
-                hoadonCu.CODE = hoadonMoi.CODE;
-                hoadonCu.CSCU = hoadonMoi.CSCU;
-                hoadonCu.CSMOI = hoadonMoi.CSMOI;
-                hoadonCu.TUNGAY = hoadonMoi.TUNGAY;
-                hoadonCu.DENNGAY = hoadonMoi.DENNGAY;
-                hoadonCu.SONGAY = hoadonMoi.SONGAY;
-                hoadonCu.TIEUTHU = hoadonMoi.TIEUTHU;
-                hoadonCu.TIEUTHUBU = hoadonMoi.TIEUTHUBU;
-                hoadonCu.TIEUTHUSH = hoadonMoi.TIEUTHUSH;
-                hoadonCu.TIEUTHUHCSN = hoadonMoi.TIEUTHUHCSN;
-                hoadonCu.TIEUTHUSX = hoadonMoi.TIEUTHUSX;
-                hoadonCu.TIEUTHUDV = hoadonMoi.TIEUTHUDV;
-                hoadonCu.MAY = hoadonMoi.MAY;
-                hoadonCu.STT = hoadonMoi.STT;
-                hoadonCu.GIABAN =hoadonMoi.GIABAN;
-                hoadonCu.THUE = hoadonMoi.THUE;
-                hoadonCu.PHI = hoadonMoi.PHI;
-                hoadonCu.TONGCONG = hoadonMoi.TONGCONG;
-                hoadonCu.GIABAN_BU = hoadonMoi.GIABAN_BU;
-                hoadonCu.THUE_BU = hoadonMoi.THUE_BU;
-                hoadonCu.PHI_BU = hoadonMoi.PHI_BU;
-                hoadonCu.TONGCONG_BU = hoadonMoi.TONGCONG_BU;
-                hoadonCu.SOPHATHANH = hoadonMoi.SOPHATHANH;
-                hoadonCu.SOHOADON = hoadonMoi.SOHOADON;
-                hoadonCu.Quan = hoadonMoi.Quan;
-                hoadonCu.Phuong = hoadonMoi.Phuong;
-                hoadonCu.MST = hoadonMoi.MST;
-                hoadonCu.MALOTRINH = hoadonMoi.MALOTRINH;
+            hoadonCu.DOT = hoadonMoi.DOT;
+            hoadonCu.DANHBA = hoadonMoi.DANHBA;
+            hoadonCu.HOPDONG = hoadonMoi.HOPDONG;
+            hoadonCu.TENKH = hoadonMoi.TENKH;
+            hoadonCu.SO = hoadonMoi.SO;
+            hoadonCu.DUONG = hoadonMoi.DUONG;
+            hoadonCu.GB = hoadonMoi.GB;
+            hoadonCu.TILESH = hoadonMoi.TILESH;
+            hoadonCu.TILEHCSN = hoadonMoi.TILEHCSN;
+            hoadonCu.TILESX = hoadonMoi.TILESX;
+            hoadonCu.TILEDV = hoadonMoi.TILEDV;
+            hoadonCu.DM = hoadonMoi.DM;
+            hoadonCu.KY = hoadonMoi.KY;
+            hoadonCu.NAM = hoadonMoi.NAM;
+            hoadonCu.CODE = hoadonMoi.CODE;
+            hoadonCu.CSCU = hoadonMoi.CSCU;
+            hoadonCu.CSMOI = hoadonMoi.CSMOI;
+            hoadonCu.TUNGAY = hoadonMoi.TUNGAY;
+            hoadonCu.DENNGAY = hoadonMoi.DENNGAY;
+            hoadonCu.SONGAY = hoadonMoi.SONGAY;
+            hoadonCu.TIEUTHU = hoadonMoi.TIEUTHU;
+            hoadonCu.TIEUTHUBU = hoadonMoi.TIEUTHUBU;
+            hoadonCu.TIEUTHUSH = hoadonMoi.TIEUTHUSH;
+            hoadonCu.TIEUTHUHCSN = hoadonMoi.TIEUTHUHCSN;
+            hoadonCu.TIEUTHUSX = hoadonMoi.TIEUTHUSX;
+            hoadonCu.TIEUTHUDV = hoadonMoi.TIEUTHUDV;
+            hoadonCu.MAY = hoadonMoi.MAY;
+            hoadonCu.STT = hoadonMoi.STT;
+            hoadonCu.GIABAN = hoadonMoi.GIABAN;
+            hoadonCu.THUE = hoadonMoi.THUE;
+            hoadonCu.PHI = hoadonMoi.PHI;
+            hoadonCu.TONGCONG = hoadonMoi.TONGCONG;
+            hoadonCu.GIABAN_BU = hoadonMoi.GIABAN_BU;
+            hoadonCu.THUE_BU = hoadonMoi.THUE_BU;
+            hoadonCu.PHI_BU = hoadonMoi.PHI_BU;
+            hoadonCu.TONGCONG_BU = hoadonMoi.TONGCONG_BU;
+            hoadonCu.SOPHATHANH = hoadonMoi.SOPHATHANH;
+            hoadonCu.SOHOADON = hoadonMoi.SOHOADON;
+            hoadonCu.Quan = hoadonMoi.Quan;
+            hoadonCu.Phuong = hoadonMoi.Phuong;
+            hoadonCu.MST = hoadonMoi.MST;
+            hoadonCu.MALOTRINH = hoadonMoi.MALOTRINH;
+        }
+
+        private void btnSoSanhKyTruoc_Click(object sender, EventArgs e)
+        {
+            if (cmbKy.SelectedIndex != -1)
+            {
+                int Nam, NamTruoc, Ky, KyTruoc;
+                Nam = int.Parse(cmbNam.SelectedValue.ToString());
+                Ky = int.Parse(cmbKy.SelectedItem.ToString());
+                if (Ky == 1)
+                {
+                    NamTruoc = int.Parse(cmbNam.SelectedValue.ToString()) - 1;
+                    KyTruoc = 12;
+                }
+                else
+                {
+                    NamTruoc = Nam;
+                    KyTruoc = Ky - 1;
+                }
+                DataTable dt = _cHoaDon.GetTongByNamKy(Nam, Ky);
+                DataTable dtTruoc = _cHoaDon.GetTongByNamKy(NamTruoc, KyTruoc);
+                dsBaoCao ds = new dsBaoCao();
+                for (int i = 0; i < dtTruoc.Rows.Count; i++)
+                {
+                    DataRow dr = ds.Tables["PhanTichDoanhThu"].NewRow();
+                    dr["LoaiBaoCao"] = "Đợt";
+                    dr["Ky"] = cmbKy.SelectedItem.ToString();
+                    dr["Nam"] = cmbNam.SelectedValue.ToString();
+                    dr["Loai"] = dtTruoc.Rows[i]["Dot"].ToString();
+                    dr["TongHDTruoc"] = dtTruoc.Rows[i]["TongHD"].ToString();
+                    dr["TongTieuThuTruoc"] = dtTruoc.Rows[i]["TongTieuThu"].ToString();
+                    dr["TongCongTruoc"] = dtTruoc.Rows[i]["TongCong"].ToString();
+                    if (dt.Rows.Count-1>=i)
+                    {
+                        dr["TongHD"] = dt.Rows[i]["TongHD"].ToString();
+                        dr["TongTieuThu"] = dt.Rows[i]["TongTieuThu"].ToString();
+                        dr["TongCong"] = dt.Rows[i]["TongCong"].ToString();
+                    }
+                    
+                    ds.Tables["PhanTichDoanhThu"].Rows.Add(dr);
+                }
+                rptPhanTichBienDongHoaDon rpt = new rptPhanTichBienDongHoaDon();
+                rpt.SetDataSource(ds);
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.Show();
+            }
         }
     }
 }

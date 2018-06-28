@@ -475,14 +475,26 @@ namespace ThuTien.GUI.HanhThu
                         string Ky = "";
                         string SoTien = "";
                         int TongCong = 0;
+                        int SoPhieu = 0;
                         foreach (DataRow itemChild in drTemp)
                         {
                             Ky += itemChild["Ky"] + "\n";
                             SoTien += String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemChild["TongCong"]) + "\n";
                             TongCong += int.Parse(itemChild["TongCong"].ToString());
+                            if (string.IsNullOrEmpty(itemChild["SoPhieu"].ToString()) == true)
+                            {
+                                SoPhieu = _cQuetTam.GetNextSoPhieu();
+                                TT_QuetTam entity = _cQuetTam.Get(int.Parse(itemChild["ID"].ToString()));
+                                entity.SoPhieu = SoPhieu;
+                                _cQuetTam.SubmitChanges();
+                            }
                         }
 
                         DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
+                        if (SoPhieu == 0)
+                            dr["MaDN"] = item.Cells["SoPhieu_TG"].Value.ToString().Insert(item.Cells["SoPhieu_TG"].Value.ToString().Length - 2, "-");
+                        else
+                            dr["MaDN"] = SoPhieu.ToString().Insert(SoPhieu.ToString().Length - 2, "-");
                         dr["HoTen"] = item.Cells["HoTen_TG"].Value;
                         dr["DiaChi"] = item.Cells["DiaChi_TG"].Value;
                         if (!string.IsNullOrEmpty(item.Cells["DanhBo_TG"].Value.ToString()))
@@ -514,14 +526,26 @@ namespace ThuTien.GUI.HanhThu
                             string Ky = "";
                             string SoTien = "";
                             int TongCong = 0;
+                            int SoPhieu = 0;
                             foreach (DataRow itemChild in drTemp)
                             {
                                 Ky += itemChild["Ky"] + "\n";
                                 SoTien += String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemChild["TongCong"]) + "\n";
                                 TongCong += int.Parse(itemChild["TongCong"].ToString());
+                                if (string.IsNullOrEmpty(itemChild["SoPhieu"].ToString()) == true)
+                                {
+                                    SoPhieu = _cQuetTam.GetNextSoPhieu();
+                                    TT_QuetTam entity = _cQuetTam.Get(int.Parse(itemChild["ID"].ToString()));
+                                    entity.SoPhieu = SoPhieu;
+                                    _cQuetTam.SubmitChanges();
+                                }
                             }
 
                             DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
+                            if (SoPhieu == 0)
+                                dr["MaDN"] = item.Cells["SoPhieu_CQ"].Value.ToString().Insert(item.Cells["SoPhieu_CQ"].Value.ToString().Length - 2, "-");
+                            else
+                                dr["MaDN"] = SoPhieu.ToString().Insert(SoPhieu.ToString().Length - 2, "-");
                             dr["HoTen"] = item.Cells["HoTen_CQ"].Value;
                             dr["DiaChi"] = item.Cells["DiaChi_CQ"].Value;
                             if (!string.IsNullOrEmpty(item.Cells["DanhBo_CQ"].Value.ToString()))
@@ -589,7 +613,6 @@ namespace ThuTien.GUI.HanhThu
             {
                 dt = (DataTable)dgvHDTuGia.DataSource;
 
-                int stt = 1;
                 dsBaoCao.Tables["TBDongNuoc"].PrimaryKey = new DataColumn[] { dsBaoCao.Tables["TBDongNuoc"].Columns["DanhBo"] };
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
                     if (!dsBaoCao.Tables["TBDongNuoc"].Rows.Contains(item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ")))
@@ -598,14 +621,25 @@ namespace ThuTien.GUI.HanhThu
 
                         string Ky = "";
                         int TongCong = 0;
+                        int SoPhieu = 0;
                         foreach (DataRow itemChild in drTemp)
                         {
                             Ky += itemChild["Ky"] + "  Số tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemChild["TongCong"]) + "\n";
                             TongCong += int.Parse(itemChild["TongCong"].ToString());
+                            if (string.IsNullOrEmpty(itemChild["SoPhieu"].ToString()) == true)
+                            {
+                                SoPhieu = _cQuetTam.GetNextSoPhieu();
+                                TT_QuetTam entity = _cQuetTam.Get(int.Parse(itemChild["ID"].ToString()));
+                                entity.SoPhieu = SoPhieu;
+                                _cQuetTam.SubmitChanges();
+                            }
                         }
 
                         DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
-                        dr["MaDN"] = stt++;
+                        if (SoPhieu == 0)
+                            dr["MaDN"] = item.Cells["SoPhieu_TG"].Value.ToString().Insert(item.Cells["SoPhieu_TG"].Value.ToString().Length - 2, "-");
+                        else
+                            dr["MaDN"] = SoPhieu.ToString().Insert(SoPhieu.ToString().Length - 2, "-");
                         dr["HoTen"] = item.Cells["HoTen_TG"].Value;
                         dr["DiaChi"] = item.Cells["DiaChi_TG"].Value;
                         if (!string.IsNullOrEmpty(item.Cells["DanhBo_TG"].Value.ToString()))
@@ -627,7 +661,6 @@ namespace ThuTien.GUI.HanhThu
                 {
                     dt = (DataTable)dgvHDCoQuan.DataSource;
 
-                    int stt = 1;
                     dsBaoCao.Tables["TBDongNuoc"].PrimaryKey = new DataColumn[] { dsBaoCao.Tables["TBDongNuoc"].Columns["DanhBo"] };
                     foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
                         if (!dsBaoCao.Tables["TBDongNuoc"].Rows.Contains(item.Cells["DanhBo_CQ"].Value.ToString().Insert(4, " ").Insert(8, " ")))
@@ -636,14 +669,25 @@ namespace ThuTien.GUI.HanhThu
 
                             string Ky = "";
                             int TongCong = 0;
+                            int SoPhieu = 0;
                             foreach (DataRow itemChild in drTemp)
                             {
                                 Ky += itemChild["Ky"] + "  Số tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemChild["TongCong"]) + "\n";
                                 TongCong += int.Parse(itemChild["TongCong"].ToString());
+                                if (string.IsNullOrEmpty(itemChild["SoPhieu"].ToString()) == true)
+                                {
+                                    SoPhieu = _cQuetTam.GetNextSoPhieu();
+                                    TT_QuetTam entity = _cQuetTam.Get(int.Parse(itemChild["ID"].ToString()));
+                                    entity.SoPhieu = SoPhieu;
+                                    _cQuetTam.SubmitChanges();
+                                }
                             }
 
                             DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
-                            dr["MaDN"] = stt++;
+                            if (SoPhieu == 0)
+                                dr["MaDN"] = item.Cells["SoPhieu_CQ"].Value.ToString().Insert(item.Cells["SoPhieu_CQ"].Value.ToString().Length - 2, "-");
+                            else
+                                dr["MaDN"] = SoPhieu.ToString().Insert(SoPhieu.ToString().Length - 2, "-");
                             dr["HoTen"] = item.Cells["HoTen_CQ"].Value;
                             dr["DiaChi"] = item.Cells["DiaChi_CQ"].Value;
                             if (!string.IsNullOrEmpty(item.Cells["DanhBo_CQ"].Value.ToString()))

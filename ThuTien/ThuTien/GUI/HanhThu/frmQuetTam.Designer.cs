@@ -42,22 +42,6 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.dgvHDTuGia = new System.Windows.Forms.DataGridView();
-            this.In_TG = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ID_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoHoaDon_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ky_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MLT_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoPhatHanh_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HopDong_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongCong_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GiaBieu_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HanhThu_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.To_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Phuong_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quan_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnXem = new System.Windows.Forms.Button();
             this.btnIn = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -69,22 +53,6 @@
             this.txtTongHD_CQ = new System.Windows.Forms.TextBox();
             this.txtTongCong_CQ = new System.Windows.Forms.TextBox();
             this.dgvHDCoQuan = new System.Windows.Forms.DataGridView();
-            this.In_CQ = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ID_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoHoaDon_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ky_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MLT_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoPhatHanh_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongCong_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HopDong_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GiaBieu_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HanhThu_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.To_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Phuong_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quan_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.txtSoLuong = new System.Windows.Forms.TextBox();
             this.btnInDSDiaChi = new System.Windows.Forms.Button();
@@ -101,6 +69,40 @@
             this.chkChuKy = new System.Windows.Forms.CheckBox();
             this.btnXuatExcel = new System.Windows.Forms.Button();
             this.chkCoTenNguoiKy = new System.Windows.Forms.CheckBox();
+            this.In_TG = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ID_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoHoaDon_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoPhieu_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ky_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MLT_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoPhatHanh_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HopDong_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongCong_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBieu_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HanhThu_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.To_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Phuong_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quan_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.In_CQ = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ID_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoHoaDon_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoPhieu_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ky_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MLT_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoPhatHanh_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongCong_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HopDong_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBieu_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HanhThu_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.To_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Phuong_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quan_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabTuGia.SuspendLayout();
@@ -173,6 +175,7 @@
             this.In_TG,
             this.ID_TG,
             this.SoHoaDon_TG,
+            this.SoPhieu_TG,
             this.Ky_TG,
             this.MLT_TG,
             this.SoPhatHanh_TG,
@@ -210,115 +213,6 @@
             this.dgvHDTuGia.TabIndex = 11;
             this.dgvHDTuGia.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHDTuGia_CellFormatting);
             this.dgvHDTuGia.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvHDTuGia_RowPostPaint);
-            // 
-            // In_TG
-            // 
-            this.In_TG.DataPropertyName = "In";
-            this.In_TG.HeaderText = "In";
-            this.In_TG.Name = "In_TG";
-            this.In_TG.Visible = false;
-            this.In_TG.Width = 30;
-            // 
-            // ID_TG
-            // 
-            this.ID_TG.DataPropertyName = "ID";
-            this.ID_TG.HeaderText = "MaQT";
-            this.ID_TG.Name = "ID_TG";
-            this.ID_TG.Visible = false;
-            // 
-            // SoHoaDon_TG
-            // 
-            this.SoHoaDon_TG.DataPropertyName = "SoHoaDon";
-            this.SoHoaDon_TG.HeaderText = "Số Hóa Đơn";
-            this.SoHoaDon_TG.Name = "SoHoaDon_TG";
-            // 
-            // Ky_TG
-            // 
-            this.Ky_TG.DataPropertyName = "Ky";
-            this.Ky_TG.HeaderText = "Kỳ";
-            this.Ky_TG.Name = "Ky_TG";
-            this.Ky_TG.Width = 50;
-            // 
-            // MLT_TG
-            // 
-            this.MLT_TG.DataPropertyName = "MLT";
-            this.MLT_TG.HeaderText = "MLT";
-            this.MLT_TG.Name = "MLT_TG";
-            this.MLT_TG.Width = 80;
-            // 
-            // SoPhatHanh_TG
-            // 
-            this.SoPhatHanh_TG.DataPropertyName = "SoPhatHanh";
-            this.SoPhatHanh_TG.HeaderText = "Số Phát Hành";
-            this.SoPhatHanh_TG.Name = "SoPhatHanh_TG";
-            // 
-            // DanhBo_TG
-            // 
-            this.DanhBo_TG.DataPropertyName = "DanhBo";
-            this.DanhBo_TG.HeaderText = "Danh Bộ";
-            this.DanhBo_TG.Name = "DanhBo_TG";
-            // 
-            // HoTen_TG
-            // 
-            this.HoTen_TG.DataPropertyName = "HoTen";
-            this.HoTen_TG.HeaderText = "Khách Hàng";
-            this.HoTen_TG.Name = "HoTen_TG";
-            this.HoTen_TG.Width = 150;
-            // 
-            // DiaChi_TG
-            // 
-            this.DiaChi_TG.DataPropertyName = "DiaChi";
-            this.DiaChi_TG.HeaderText = "Địa Chỉ";
-            this.DiaChi_TG.Name = "DiaChi_TG";
-            this.DiaChi_TG.Width = 200;
-            // 
-            // HopDong_TG
-            // 
-            this.HopDong_TG.DataPropertyName = "HopDong";
-            this.HopDong_TG.HeaderText = "HopDong";
-            this.HopDong_TG.Name = "HopDong_TG";
-            this.HopDong_TG.Visible = false;
-            // 
-            // TongCong_TG
-            // 
-            this.TongCong_TG.DataPropertyName = "TongCong";
-            this.TongCong_TG.HeaderText = "Tổng Cộng";
-            this.TongCong_TG.Name = "TongCong_TG";
-            // 
-            // GiaBieu_TG
-            // 
-            this.GiaBieu_TG.DataPropertyName = "GiaBieu";
-            this.GiaBieu_TG.HeaderText = "GiaBieu";
-            this.GiaBieu_TG.Name = "GiaBieu_TG";
-            this.GiaBieu_TG.Visible = false;
-            // 
-            // HanhThu_TG
-            // 
-            this.HanhThu_TG.DataPropertyName = "HanhThu";
-            this.HanhThu_TG.HeaderText = "HanhThu";
-            this.HanhThu_TG.Name = "HanhThu_TG";
-            this.HanhThu_TG.Visible = false;
-            // 
-            // To_TG
-            // 
-            this.To_TG.DataPropertyName = "To";
-            this.To_TG.HeaderText = "To";
-            this.To_TG.Name = "To_TG";
-            this.To_TG.Visible = false;
-            // 
-            // Phuong_TG
-            // 
-            this.Phuong_TG.DataPropertyName = "Phuong";
-            this.Phuong_TG.HeaderText = "Phuong";
-            this.Phuong_TG.Name = "Phuong_TG";
-            this.Phuong_TG.Visible = false;
-            // 
-            // Quan_TG
-            // 
-            this.Quan_TG.DataPropertyName = "Quan";
-            this.Quan_TG.HeaderText = "Quan";
-            this.Quan_TG.Name = "Quan_TG";
-            this.Quan_TG.Visible = false;
             // 
             // btnXem
             // 
@@ -367,7 +261,7 @@
             this.tabTuGia.Location = new System.Drawing.Point(4, 22);
             this.tabTuGia.Name = "tabTuGia";
             this.tabTuGia.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTuGia.Size = new System.Drawing.Size(1002, 564);
+            this.tabTuGia.Size = new System.Drawing.Size(951, 564);
             this.tabTuGia.TabIndex = 0;
             this.tabTuGia.Text = "Tư Gia";
             this.tabTuGia.UseVisualStyleBackColor = true;
@@ -438,6 +332,7 @@
             this.In_CQ,
             this.ID_CQ,
             this.SoHoaDon_CQ,
+            this.SoPhieu_CQ,
             this.Ky_CQ,
             this.MLT_CQ,
             this.SoPhatHanh_CQ,
@@ -475,115 +370,6 @@
             this.dgvHDCoQuan.TabIndex = 12;
             this.dgvHDCoQuan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHDCoQuan_CellFormatting);
             this.dgvHDCoQuan.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvHDCoQuan_RowPostPaint);
-            // 
-            // In_CQ
-            // 
-            this.In_CQ.DataPropertyName = "In";
-            this.In_CQ.HeaderText = "In";
-            this.In_CQ.Name = "In_CQ";
-            this.In_CQ.Visible = false;
-            this.In_CQ.Width = 30;
-            // 
-            // ID_CQ
-            // 
-            this.ID_CQ.DataPropertyName = "ID";
-            this.ID_CQ.HeaderText = "MaQT";
-            this.ID_CQ.Name = "ID_CQ";
-            this.ID_CQ.Visible = false;
-            // 
-            // SoHoaDon_CQ
-            // 
-            this.SoHoaDon_CQ.DataPropertyName = "SoHoaDon";
-            this.SoHoaDon_CQ.HeaderText = "Số Hóa Đơn";
-            this.SoHoaDon_CQ.Name = "SoHoaDon_CQ";
-            // 
-            // Ky_CQ
-            // 
-            this.Ky_CQ.DataPropertyName = "Ky";
-            this.Ky_CQ.HeaderText = "Kỳ";
-            this.Ky_CQ.Name = "Ky_CQ";
-            this.Ky_CQ.Width = 50;
-            // 
-            // MLT_CQ
-            // 
-            this.MLT_CQ.DataPropertyName = "MLT";
-            this.MLT_CQ.HeaderText = "MLT";
-            this.MLT_CQ.Name = "MLT_CQ";
-            this.MLT_CQ.Width = 80;
-            // 
-            // SoPhatHanh_CQ
-            // 
-            this.SoPhatHanh_CQ.DataPropertyName = "SoPhatHanh";
-            this.SoPhatHanh_CQ.HeaderText = "Số Phát Hành";
-            this.SoPhatHanh_CQ.Name = "SoPhatHanh_CQ";
-            // 
-            // DanhBo_CQ
-            // 
-            this.DanhBo_CQ.DataPropertyName = "DanhBo";
-            this.DanhBo_CQ.HeaderText = "Danh Bộ";
-            this.DanhBo_CQ.Name = "DanhBo_CQ";
-            // 
-            // HoTen_CQ
-            // 
-            this.HoTen_CQ.DataPropertyName = "HoTen";
-            this.HoTen_CQ.HeaderText = "Khách Hàng";
-            this.HoTen_CQ.Name = "HoTen_CQ";
-            this.HoTen_CQ.Width = 150;
-            // 
-            // DiaChi_CQ
-            // 
-            this.DiaChi_CQ.DataPropertyName = "DiaChi";
-            this.DiaChi_CQ.HeaderText = "Địa Chỉ";
-            this.DiaChi_CQ.Name = "DiaChi_CQ";
-            this.DiaChi_CQ.Width = 200;
-            // 
-            // TongCong_CQ
-            // 
-            this.TongCong_CQ.DataPropertyName = "TongCong";
-            this.TongCong_CQ.HeaderText = "Tổng Cộng";
-            this.TongCong_CQ.Name = "TongCong_CQ";
-            // 
-            // HopDong_CQ
-            // 
-            this.HopDong_CQ.DataPropertyName = "HopDong";
-            this.HopDong_CQ.HeaderText = "HopDong";
-            this.HopDong_CQ.Name = "HopDong_CQ";
-            this.HopDong_CQ.Visible = false;
-            // 
-            // GiaBieu_CQ
-            // 
-            this.GiaBieu_CQ.DataPropertyName = "GiaBieu";
-            this.GiaBieu_CQ.HeaderText = "GiaBieu";
-            this.GiaBieu_CQ.Name = "GiaBieu_CQ";
-            this.GiaBieu_CQ.Visible = false;
-            // 
-            // HanhThu_CQ
-            // 
-            this.HanhThu_CQ.DataPropertyName = "HanhThu";
-            this.HanhThu_CQ.HeaderText = "HanhThu";
-            this.HanhThu_CQ.Name = "HanhThu_CQ";
-            this.HanhThu_CQ.Visible = false;
-            // 
-            // To_CQ
-            // 
-            this.To_CQ.DataPropertyName = "To";
-            this.To_CQ.HeaderText = "To";
-            this.To_CQ.Name = "To_CQ";
-            this.To_CQ.Visible = false;
-            // 
-            // Phuong_CQ
-            // 
-            this.Phuong_CQ.DataPropertyName = "Phuong";
-            this.Phuong_CQ.HeaderText = "Phuong";
-            this.Phuong_CQ.Name = "Phuong_CQ";
-            this.Phuong_CQ.Visible = false;
-            // 
-            // Quan_CQ
-            // 
-            this.Quan_CQ.DataPropertyName = "Quan";
-            this.Quan_CQ.HeaderText = "Quan";
-            this.Quan_CQ.Name = "Quan_CQ";
-            this.Quan_CQ.Visible = false;
             // 
             // label7
             // 
@@ -740,6 +526,244 @@
             this.chkCoTenNguoiKy.Text = "Có Tên Người Ký";
             this.chkCoTenNguoiKy.UseVisualStyleBackColor = true;
             // 
+            // In_TG
+            // 
+            this.In_TG.DataPropertyName = "In";
+            this.In_TG.FalseValue = "false";
+            this.In_TG.HeaderText = "In";
+            this.In_TG.IndeterminateValue = "false";
+            this.In_TG.Name = "In_TG";
+            this.In_TG.TrueValue = "true";
+            this.In_TG.Visible = false;
+            this.In_TG.Width = 30;
+            // 
+            // ID_TG
+            // 
+            this.ID_TG.DataPropertyName = "ID";
+            this.ID_TG.HeaderText = "MaQT";
+            this.ID_TG.Name = "ID_TG";
+            this.ID_TG.Visible = false;
+            // 
+            // SoHoaDon_TG
+            // 
+            this.SoHoaDon_TG.DataPropertyName = "SoHoaDon";
+            this.SoHoaDon_TG.HeaderText = "Số Hóa Đơn";
+            this.SoHoaDon_TG.Name = "SoHoaDon_TG";
+            // 
+            // SoPhieu_TG
+            // 
+            this.SoPhieu_TG.DataPropertyName = "SoPhieu";
+            this.SoPhieu_TG.HeaderText = "SoPhieu";
+            this.SoPhieu_TG.Name = "SoPhieu_TG";
+            this.SoPhieu_TG.Visible = false;
+            // 
+            // Ky_TG
+            // 
+            this.Ky_TG.DataPropertyName = "Ky";
+            this.Ky_TG.HeaderText = "Kỳ";
+            this.Ky_TG.Name = "Ky_TG";
+            this.Ky_TG.Width = 50;
+            // 
+            // MLT_TG
+            // 
+            this.MLT_TG.DataPropertyName = "MLT";
+            this.MLT_TG.HeaderText = "MLT";
+            this.MLT_TG.Name = "MLT_TG";
+            this.MLT_TG.Width = 80;
+            // 
+            // SoPhatHanh_TG
+            // 
+            this.SoPhatHanh_TG.DataPropertyName = "SoPhatHanh";
+            this.SoPhatHanh_TG.HeaderText = "Số Phát Hành";
+            this.SoPhatHanh_TG.Name = "SoPhatHanh_TG";
+            // 
+            // DanhBo_TG
+            // 
+            this.DanhBo_TG.DataPropertyName = "DanhBo";
+            this.DanhBo_TG.HeaderText = "Danh Bộ";
+            this.DanhBo_TG.Name = "DanhBo_TG";
+            // 
+            // HoTen_TG
+            // 
+            this.HoTen_TG.DataPropertyName = "HoTen";
+            this.HoTen_TG.HeaderText = "Khách Hàng";
+            this.HoTen_TG.Name = "HoTen_TG";
+            this.HoTen_TG.Width = 150;
+            // 
+            // DiaChi_TG
+            // 
+            this.DiaChi_TG.DataPropertyName = "DiaChi";
+            this.DiaChi_TG.HeaderText = "Địa Chỉ";
+            this.DiaChi_TG.Name = "DiaChi_TG";
+            this.DiaChi_TG.Width = 200;
+            // 
+            // HopDong_TG
+            // 
+            this.HopDong_TG.DataPropertyName = "HopDong";
+            this.HopDong_TG.HeaderText = "HopDong";
+            this.HopDong_TG.Name = "HopDong_TG";
+            this.HopDong_TG.Visible = false;
+            // 
+            // TongCong_TG
+            // 
+            this.TongCong_TG.DataPropertyName = "TongCong";
+            this.TongCong_TG.HeaderText = "Tổng Cộng";
+            this.TongCong_TG.Name = "TongCong_TG";
+            // 
+            // GiaBieu_TG
+            // 
+            this.GiaBieu_TG.DataPropertyName = "GiaBieu";
+            this.GiaBieu_TG.HeaderText = "GiaBieu";
+            this.GiaBieu_TG.Name = "GiaBieu_TG";
+            this.GiaBieu_TG.Visible = false;
+            // 
+            // HanhThu_TG
+            // 
+            this.HanhThu_TG.DataPropertyName = "HanhThu";
+            this.HanhThu_TG.HeaderText = "HanhThu";
+            this.HanhThu_TG.Name = "HanhThu_TG";
+            this.HanhThu_TG.Visible = false;
+            // 
+            // To_TG
+            // 
+            this.To_TG.DataPropertyName = "To";
+            this.To_TG.HeaderText = "To";
+            this.To_TG.Name = "To_TG";
+            this.To_TG.Visible = false;
+            // 
+            // Phuong_TG
+            // 
+            this.Phuong_TG.DataPropertyName = "Phuong";
+            this.Phuong_TG.HeaderText = "Phuong";
+            this.Phuong_TG.Name = "Phuong_TG";
+            this.Phuong_TG.Visible = false;
+            // 
+            // Quan_TG
+            // 
+            this.Quan_TG.DataPropertyName = "Quan";
+            this.Quan_TG.HeaderText = "Quan";
+            this.Quan_TG.Name = "Quan_TG";
+            this.Quan_TG.Visible = false;
+            // 
+            // In_CQ
+            // 
+            this.In_CQ.DataPropertyName = "In";
+            this.In_CQ.FalseValue = "false";
+            this.In_CQ.HeaderText = "In";
+            this.In_CQ.IndeterminateValue = "false";
+            this.In_CQ.Name = "In_CQ";
+            this.In_CQ.TrueValue = "true";
+            this.In_CQ.Visible = false;
+            this.In_CQ.Width = 30;
+            // 
+            // ID_CQ
+            // 
+            this.ID_CQ.DataPropertyName = "ID";
+            this.ID_CQ.HeaderText = "MaQT";
+            this.ID_CQ.Name = "ID_CQ";
+            this.ID_CQ.Visible = false;
+            // 
+            // SoHoaDon_CQ
+            // 
+            this.SoHoaDon_CQ.DataPropertyName = "SoHoaDon";
+            this.SoHoaDon_CQ.HeaderText = "Số Hóa Đơn";
+            this.SoHoaDon_CQ.Name = "SoHoaDon_CQ";
+            // 
+            // SoPhieu_CQ
+            // 
+            this.SoPhieu_CQ.DataPropertyName = "SoPhieu";
+            this.SoPhieu_CQ.HeaderText = "SoPhieu";
+            this.SoPhieu_CQ.Name = "SoPhieu_CQ";
+            this.SoPhieu_CQ.Visible = false;
+            // 
+            // Ky_CQ
+            // 
+            this.Ky_CQ.DataPropertyName = "Ky";
+            this.Ky_CQ.HeaderText = "Kỳ";
+            this.Ky_CQ.Name = "Ky_CQ";
+            this.Ky_CQ.Width = 50;
+            // 
+            // MLT_CQ
+            // 
+            this.MLT_CQ.DataPropertyName = "MLT";
+            this.MLT_CQ.HeaderText = "MLT";
+            this.MLT_CQ.Name = "MLT_CQ";
+            this.MLT_CQ.Width = 80;
+            // 
+            // SoPhatHanh_CQ
+            // 
+            this.SoPhatHanh_CQ.DataPropertyName = "SoPhatHanh";
+            this.SoPhatHanh_CQ.HeaderText = "Số Phát Hành";
+            this.SoPhatHanh_CQ.Name = "SoPhatHanh_CQ";
+            // 
+            // DanhBo_CQ
+            // 
+            this.DanhBo_CQ.DataPropertyName = "DanhBo";
+            this.DanhBo_CQ.HeaderText = "Danh Bộ";
+            this.DanhBo_CQ.Name = "DanhBo_CQ";
+            // 
+            // HoTen_CQ
+            // 
+            this.HoTen_CQ.DataPropertyName = "HoTen";
+            this.HoTen_CQ.HeaderText = "Khách Hàng";
+            this.HoTen_CQ.Name = "HoTen_CQ";
+            this.HoTen_CQ.Width = 150;
+            // 
+            // DiaChi_CQ
+            // 
+            this.DiaChi_CQ.DataPropertyName = "DiaChi";
+            this.DiaChi_CQ.HeaderText = "Địa Chỉ";
+            this.DiaChi_CQ.Name = "DiaChi_CQ";
+            this.DiaChi_CQ.Width = 200;
+            // 
+            // TongCong_CQ
+            // 
+            this.TongCong_CQ.DataPropertyName = "TongCong";
+            this.TongCong_CQ.HeaderText = "Tổng Cộng";
+            this.TongCong_CQ.Name = "TongCong_CQ";
+            // 
+            // HopDong_CQ
+            // 
+            this.HopDong_CQ.DataPropertyName = "HopDong";
+            this.HopDong_CQ.HeaderText = "HopDong";
+            this.HopDong_CQ.Name = "HopDong_CQ";
+            this.HopDong_CQ.Visible = false;
+            // 
+            // GiaBieu_CQ
+            // 
+            this.GiaBieu_CQ.DataPropertyName = "GiaBieu";
+            this.GiaBieu_CQ.HeaderText = "GiaBieu";
+            this.GiaBieu_CQ.Name = "GiaBieu_CQ";
+            this.GiaBieu_CQ.Visible = false;
+            // 
+            // HanhThu_CQ
+            // 
+            this.HanhThu_CQ.DataPropertyName = "HanhThu";
+            this.HanhThu_CQ.HeaderText = "HanhThu";
+            this.HanhThu_CQ.Name = "HanhThu_CQ";
+            this.HanhThu_CQ.Visible = false;
+            // 
+            // To_CQ
+            // 
+            this.To_CQ.DataPropertyName = "To";
+            this.To_CQ.HeaderText = "To";
+            this.To_CQ.Name = "To_CQ";
+            this.To_CQ.Visible = false;
+            // 
+            // Phuong_CQ
+            // 
+            this.Phuong_CQ.DataPropertyName = "Phuong";
+            this.Phuong_CQ.HeaderText = "Phuong";
+            this.Phuong_CQ.Name = "Phuong_CQ";
+            this.Phuong_CQ.Visible = false;
+            // 
+            // Quan_CQ
+            // 
+            this.Quan_CQ.DataPropertyName = "Quan";
+            this.Quan_CQ.HeaderText = "Quan";
+            this.Quan_CQ.Name = "Quan_CQ";
+            this.Quan_CQ.Visible = false;
+            // 
             // frmQuetTam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -818,9 +842,11 @@
         private System.Windows.Forms.Button btnChonFile;
         private System.Windows.Forms.CheckBox chkChuKy;
         private System.Windows.Forms.Button btnXuatExcel;
+        private System.Windows.Forms.CheckBox chkCoTenNguoiKy;
         private System.Windows.Forms.DataGridViewCheckBoxColumn In_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDon_TG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieu_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn MLT_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoPhatHanh_TG;
@@ -837,6 +863,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn In_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDon_CQ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieu_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn MLT_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoPhatHanh_CQ;
@@ -850,6 +877,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn To_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn Phuong_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quan_CQ;
-        private System.Windows.Forms.CheckBox chkCoTenNguoiKy;
     }
 }

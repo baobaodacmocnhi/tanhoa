@@ -100,7 +100,7 @@ namespace ThuTien.DAL.ToTruong
                         //+ " --KyHD=''"
                         + " from TT_TongHopNo thn"
                         + " where CAST(CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'";
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetDS_To(int MaTo, DateTime FromCreateDate, DateTime ToCreateDate)
@@ -137,7 +137,7 @@ namespace ThuTien.DAL.ToTruong
                         + " from TT_TongHopNo thn"
                         + " where CAST(CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
                         + " and (select MaTo from TT_NguoiDung where MaND=thn.CreateBy)="+MaTo;
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetDS(int CreateBy,DateTime FromCreateDate, DateTime ToCreateDate)
@@ -174,7 +174,7 @@ namespace ThuTien.DAL.ToTruong
                         + " from TT_TongHopNo thn"
                         + " where CAST(CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
                         + " and thn.CreateBy=" + CreateBy;
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public TT_TongHopNo Get(decimal MaTHN)

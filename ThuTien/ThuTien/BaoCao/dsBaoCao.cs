@@ -2,5 +2,8 @@
     
     
     public partial class dsBaoCao {
+        partial class PhanTichDoanhThuDataTable
+        {
+        }
     }
 }

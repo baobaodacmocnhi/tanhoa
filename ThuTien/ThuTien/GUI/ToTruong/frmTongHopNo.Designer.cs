@@ -101,6 +101,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.chkChuKy = new System.Windows.Forms.CheckBox();
+            this.chkTenKy = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTongHopNo)).BeginInit();
             this.panel1.SuspendLayout();
@@ -699,7 +700,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(44, 50);
             this.panel1.TabIndex = 64;
-            this.panel1.Visible = false;
             // 
             // panel2
             // 
@@ -721,11 +721,24 @@
             this.chkChuKy.Text = "Có Chữ Ký";
             this.chkChuKy.UseVisualStyleBackColor = true;
             // 
+            // chkTenKy
+            // 
+            this.chkTenKy.AutoSize = true;
+            this.chkTenKy.Checked = true;
+            this.chkTenKy.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkTenKy.Location = new System.Drawing.Point(1167, 27);
+            this.chkTenKy.Name = "chkTenKy";
+            this.chkTenKy.Size = new System.Drawing.Size(76, 17);
+            this.chkTenKy.TabIndex = 98;
+            this.chkTenKy.Text = "Có Tên Ký";
+            this.chkTenKy.UseVisualStyleBackColor = true;
+            // 
             // frmTongHopNo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1360, 675);
+            this.Controls.Add(this.chkTenKy);
             this.Controls.Add(this.chkChuKy);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -844,5 +857,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.CheckBox chkChuKy;
+        private System.Windows.Forms.CheckBox chkTenKy;
     }
 }

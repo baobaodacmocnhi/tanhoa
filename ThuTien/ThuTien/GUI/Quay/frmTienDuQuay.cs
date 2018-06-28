@@ -246,6 +246,15 @@ namespace ThuTien.GUI.Quay
                     }
                 }
             }
+            rptTienDuKhachHang rpt = new rptTienDuKhachHang();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
+
+            rptDSTamThuChuyenKhoan rptTT = new rptDSTamThuChuyenKhoan();
+            rptTT.SetDataSource(ds);
+            frmBaoCao frmTT = new frmBaoCao(rptTT);
+            frmTT.ShowDialog();
         }
 
         private void dgvTienDu_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)

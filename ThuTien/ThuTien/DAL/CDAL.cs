@@ -109,6 +109,7 @@ namespace ThuTien.DAL
 
         protected static string _connectionString;  // Chuỗi kết nối
         protected SqlConnection connection;         // Đối tượng kết nối
+        protected SqlDataAdapter adapter;           // Đối tượng adapter chứa dữ liệu
         protected SqlCommand command;               // Đối tượng command thực thi truy vấn
         protected SqlTransaction transaction;       // Đối tượng transaction
 
@@ -202,9 +203,9 @@ namespace ThuTien.DAL
             {
                 if (connection.State == ConnectionState.Closed)
                     connection.Open();
-                command = new SqlCommand(sql, connection);
+                command = new SqlCommand(sql, connection,transaction);
                 //command.CommandTimeout = 0;
-                command.Transaction = transaction;
+                //command.Transaction = transaction;
                 if (command.ExecuteNonQuery() == 0)
                     return false;
                 else
@@ -217,48 +218,23 @@ namespace ThuTien.DAL
             }
         }
 
-        /// <summary>
-        /// Hàm thực thi các câu truy vấn lấy thông tin dữ liệu như Select
-        /// </summary>
-        /// <param name="sqlString"> Câu truy vấn (Select) cần thực thi </param>
-        /// <returns> Hàm trả về một đối tượng SqlDataReader chứa thông tin dữ liệu trả về </returns>
-        public SqlDataReader ExecuteQuery_SqlDataReader(string sql)
+        public DataTable ExecuteQuery_DataTable(string sql)
         {
+            this.Connect();
+            DataTable dt = new DataTable();
+            command = new SqlCommand();
+            command.Connection = this.connection;
+            adapter = new SqlDataAdapter(sql, connection);
             try
             {
-                Connect();
-                command = new SqlCommand(sql, connection);
-                SqlDataReader reader = command.ExecuteReader();
-                //Disconnect();
-                return reader;
+                adapter.Fill(dt);
             }
-            catch (Exception ex)
+            catch (SqlException e)
             {
-                Disconnect();
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return null;
+                throw e;
             }
-        }
-
-        public DataTable ExecuteQuery_SqlDataReader_DataTable(string sql)
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                Connect();
-                command = new SqlCommand(sql, connection);
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.HasRows)
-                    dt.Load(reader);
-                Disconnect();
-                return dt;
-            }
-            catch (Exception ex)
-            {
-                Disconnect();
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return null;
-            }  
+            this.Disconnect();
+            return dt;
         }
 
         /// <summary>

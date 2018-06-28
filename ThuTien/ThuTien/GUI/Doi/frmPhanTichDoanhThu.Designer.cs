@@ -66,6 +66,14 @@
             this.txtTongDinhMuc = new System.Windows.Forms.TextBox();
             this.txtGiaBanBinhQuan = new System.Windows.Forms.TextBox();
             this.btnIn = new System.Windows.Forms.Button();
+            this.txtDenDM2 = new System.Windows.Forms.TextBox();
+            this.lbDenDM2 = new System.Windows.Forms.Label();
+            this.txtTuDM2 = new System.Windows.Forms.TextBox();
+            this.lbTuDM2 = new System.Windows.Forms.Label();
+            this.txtDenDM3 = new System.Windows.Forms.TextBox();
+            this.lbDenDM3 = new System.Windows.Forms.Label();
+            this.txtTuDM3 = new System.Windows.Forms.TextBox();
+            this.lbTuDM3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDoanhThu)).BeginInit();
             this.SuspendLayout();
             // 
@@ -363,11 +371,91 @@
             this.btnIn.UseVisualStyleBackColor = true;
             this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
+            // txtDenDM2
+            // 
+            this.txtDenDM2.Location = new System.Drawing.Point(442, 39);
+            this.txtDenDM2.Name = "txtDenDM2";
+            this.txtDenDM2.Size = new System.Drawing.Size(30, 20);
+            this.txtDenDM2.TabIndex = 37;
+            this.txtDenDM2.Visible = false;
+            // 
+            // lbDenDM2
+            // 
+            this.lbDenDM2.AutoSize = true;
+            this.lbDenDM2.Location = new System.Drawing.Point(386, 42);
+            this.lbDenDM2.Name = "lbDenDM2";
+            this.lbDenDM2.Size = new System.Drawing.Size(50, 13);
+            this.lbDenDM2.TabIndex = 36;
+            this.lbDenDM2.Text = "Đến ĐM:";
+            this.lbDenDM2.Visible = false;
+            // 
+            // txtTuDM2
+            // 
+            this.txtTuDM2.Location = new System.Drawing.Point(350, 39);
+            this.txtTuDM2.Name = "txtTuDM2";
+            this.txtTuDM2.Size = new System.Drawing.Size(30, 20);
+            this.txtTuDM2.TabIndex = 35;
+            this.txtTuDM2.Visible = false;
+            // 
+            // lbTuDM2
+            // 
+            this.lbTuDM2.AutoSize = true;
+            this.lbTuDM2.Location = new System.Drawing.Point(301, 42);
+            this.lbTuDM2.Name = "lbTuDM2";
+            this.lbTuDM2.Size = new System.Drawing.Size(43, 13);
+            this.lbTuDM2.TabIndex = 34;
+            this.lbTuDM2.Text = "Từ ĐM:";
+            this.lbTuDM2.Visible = false;
+            // 
+            // txtDenDM3
+            // 
+            this.txtDenDM3.Location = new System.Drawing.Point(619, 39);
+            this.txtDenDM3.Name = "txtDenDM3";
+            this.txtDenDM3.Size = new System.Drawing.Size(30, 20);
+            this.txtDenDM3.TabIndex = 41;
+            this.txtDenDM3.Visible = false;
+            // 
+            // lbDenDM3
+            // 
+            this.lbDenDM3.AutoSize = true;
+            this.lbDenDM3.Location = new System.Drawing.Point(563, 42);
+            this.lbDenDM3.Name = "lbDenDM3";
+            this.lbDenDM3.Size = new System.Drawing.Size(50, 13);
+            this.lbDenDM3.TabIndex = 40;
+            this.lbDenDM3.Text = "Đến ĐM:";
+            this.lbDenDM3.Visible = false;
+            // 
+            // txtTuDM3
+            // 
+            this.txtTuDM3.Location = new System.Drawing.Point(527, 39);
+            this.txtTuDM3.Name = "txtTuDM3";
+            this.txtTuDM3.Size = new System.Drawing.Size(30, 20);
+            this.txtTuDM3.TabIndex = 39;
+            this.txtTuDM3.Visible = false;
+            // 
+            // lbTuDM3
+            // 
+            this.lbTuDM3.AutoSize = true;
+            this.lbTuDM3.Location = new System.Drawing.Point(478, 42);
+            this.lbTuDM3.Name = "lbTuDM3";
+            this.lbTuDM3.Size = new System.Drawing.Size(43, 13);
+            this.lbTuDM3.TabIndex = 38;
+            this.lbTuDM3.Text = "Từ ĐM:";
+            this.lbTuDM3.Visible = false;
+            // 
             // frmPhanTichDoanhThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(906, 619);
+            this.Controls.Add(this.txtDenDM3);
+            this.Controls.Add(this.lbDenDM3);
+            this.Controls.Add(this.txtTuDM3);
+            this.Controls.Add(this.lbTuDM3);
+            this.Controls.Add(this.txtDenDM2);
+            this.Controls.Add(this.lbDenDM2);
+            this.Controls.Add(this.txtTuDM2);
+            this.Controls.Add(this.lbTuDM2);
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.txtGiaBanBinhQuan);
             this.Controls.Add(this.txtTongDinhMuc);
@@ -425,5 +513,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaBanBinhQuan;
         private System.Windows.Forms.DataGridViewTextBoxColumn TyLeTongTieuThu;
         private System.Windows.Forms.DataGridViewTextBoxColumn TyLeTongGiaBan;
+        private System.Windows.Forms.TextBox txtDenDM2;
+        private System.Windows.Forms.Label lbDenDM2;
+        private System.Windows.Forms.TextBox txtTuDM2;
+        private System.Windows.Forms.Label lbTuDM2;
+        private System.Windows.Forms.TextBox txtDenDM3;
+        private System.Windows.Forms.Label lbDenDM3;
+        private System.Windows.Forms.TextBox txtTuDM3;
+        private System.Windows.Forms.Label lbTuDM3;
     }
 }

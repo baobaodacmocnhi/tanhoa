@@ -528,7 +528,8 @@
           <xs:complexType>
             <xs:sequence>
               <xs:element name="LoaiBaoCao" msprop:Generator_ColumnVarNameInTable="columnLoaiBaoCao" msprop:Generator_ColumnPropNameInRow="LoaiBaoCao" msprop:Generator_ColumnPropNameInTable="LoaiBaoCaoColumn" msprop:Generator_UserColumnName="LoaiBaoCao" type="xs:string" minOccurs="0" />
-              <xs:element name="Ky" msprop:Generator_ColumnVarNameInTable="columnKy" msprop:Generator_ColumnPropNameInRow="Ky" msprop:Generator_ColumnPropNameInTable="KyColumn" msprop:Generator_UserColumnName="Ky" type="xs:string" minOccurs="0" />
+              <xs:element name="Ky" msprop:Generator_ColumnVarNameInTable="columnKy" msprop:Generator_ColumnPropNameInRow="Ky" msprop:Generator_ColumnPropNameInTable="KyColumn" msprop:Generator_UserColumnName="Ky" type="xs:int" minOccurs="0" />
+              <xs:element name="Nam" msprop:Generator_ColumnVarNameInTable="columnNam" msprop:Generator_ColumnPropNameInRow="Nam" msprop:Generator_ColumnPropNameInTable="NamColumn" msprop:Generator_UserColumnName="Nam" type="xs:int" minOccurs="0" />
               <xs:element name="Loai" msprop:Generator_ColumnVarNameInTable="columnLoai" msprop:Generator_ColumnPropNameInRow="Loai" msprop:Generator_ColumnPropNameInTable="LoaiColumn" msprop:Generator_UserColumnName="Loai" type="xs:string" minOccurs="0" />
               <xs:element name="TongHD" msprop:Generator_ColumnVarNameInTable="columnTongHD" msprop:Generator_ColumnPropNameInRow="TongHD" msprop:Generator_ColumnPropNameInTable="TongHDColumn" msprop:Generator_UserColumnName="TongHD" type="xs:int" minOccurs="0" />
               <xs:element name="TongDinhMuc" msprop:Generator_ColumnVarNameInTable="columnTongDinhMuc" msprop:Generator_ColumnPropNameInRow="TongDinhMuc" msprop:Generator_ColumnPropNameInTable="TongDinhMucColumn" msprop:Generator_UserColumnName="TongDinhMuc" type="xs:decimal" minOccurs="0" />
@@ -537,6 +538,10 @@
               <xs:element name="GiaBanBinhQuan" msprop:Generator_ColumnVarNameInTable="columnGiaBanBinhQuan" msprop:Generator_ColumnPropNameInRow="GiaBanBinhQuan" msprop:Generator_ColumnPropNameInTable="GiaBanBinhQuanColumn" msprop:Generator_UserColumnName="GiaBanBinhQuan" type="xs:decimal" minOccurs="0" />
               <xs:element name="TyLeTongTieuThu" msprop:Generator_ColumnVarNameInTable="columnTyLeTongTieuThu" msprop:Generator_ColumnPropNameInRow="TyLeTongTieuThu" msprop:Generator_ColumnPropNameInTable="TyLeTongTieuThuColumn" msprop:Generator_UserColumnName="TyLeTongTieuThu" type="xs:double" minOccurs="0" />
               <xs:element name="TyLeTongGiaBan" msprop:Generator_ColumnVarNameInTable="columnTyLeTongGiaBan" msprop:Generator_ColumnPropNameInRow="TyLeTongGiaBan" msprop:Generator_ColumnPropNameInTable="TyLeTongGiaBanColumn" msprop:Generator_UserColumnName="TyLeTongGiaBan" type="xs:double" minOccurs="0" />
+              <xs:element name="TongHDTruoc" msprop:Generator_ColumnVarNameInTable="columnTongHDTruoc" msprop:Generator_ColumnPropNameInRow="TongHDTruoc" msprop:Generator_ColumnPropNameInTable="TongHDTruocColumn" msprop:Generator_UserColumnName="TongHDTruoc" type="xs:double" minOccurs="0" />
+              <xs:element name="TongTieuThuTruoc" msprop:Generator_ColumnVarNameInTable="columnTongTieuThuTruoc" msprop:Generator_ColumnPropNameInRow="TongTieuThuTruoc" msprop:Generator_ColumnPropNameInTable="TongTieuThuTruocColumn" msprop:Generator_UserColumnName="TongTieuThuTruoc" type="xs:double" minOccurs="0" />
+              <xs:element name="TongCong" msprop:Generator_ColumnVarNameInTable="columnTongCong" msprop:Generator_ColumnPropNameInRow="TongCong" msprop:Generator_ColumnPropNameInTable="TongCongColumn" msprop:Generator_UserColumnName="TongCong" type="xs:double" minOccurs="0" />
+              <xs:element name="TongCongTruoc" msprop:Generator_ColumnVarNameInTable="columnTongCongTruoc" msprop:Generator_ColumnPropNameInRow="TongCongTruoc" msprop:Generator_ColumnPropNameInTable="TongCongTruocColumn" msprop:Generator_UserColumnName="TongCongTruoc" type="xs:double" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -292,7 +292,7 @@ namespace ThuTien.DAL.TongHop
                         + " where a.MaHD=b.ID_HOADON and GB>=11 and GB<=20 and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
-                return ExecuteQuery_SqlDataReader_DataTable(sql);
+                return ExecuteQuery_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -315,7 +315,7 @@ namespace ThuTien.DAL.TongHop
                         + " where a.MaHD=b.ID_HOADON and GB>20 and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
-                    return ExecuteQuery_SqlDataReader_DataTable(sql);
+                    return ExecuteQuery_DataTable(sql);
                 }
             return null;
         }
@@ -328,7 +328,7 @@ namespace ThuTien.DAL.TongHop
                         + " where a.MaHD=b.ID_HOADON and GB>=11 and GB<=20 and b.NAM=" + Nam + " and b.KY=" + Ky + " and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
-                return ExecuteQuery_SqlDataReader_DataTable(sql);
+                return ExecuteQuery_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -337,7 +337,7 @@ namespace ThuTien.DAL.TongHop
                         + " where a.MaHD=b.ID_HOADON and GB>20 and b.NAM=" + Nam + " and b.KY=" + Ky + " and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
-                    return ExecuteQuery_SqlDataReader_DataTable(sql);
+                    return ExecuteQuery_DataTable(sql);
                 }
             return null;
         }
@@ -350,7 +350,7 @@ namespace ThuTien.DAL.TongHop
                         + " where a.MaHD=b.ID_HOADON and GB>=11 and GB<=20 and (b.NAM<" + Nam + " or(b.NAM=" + Nam + " and b.KY<" + Ky + ")) and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
-                return ExecuteQuery_SqlDataReader_DataTable(sql);
+                return ExecuteQuery_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -359,7 +359,7 @@ namespace ThuTien.DAL.TongHop
                         + " where a.MaHD=b.ID_HOADON and GB>20 and (b.NAM<" + Nam + " or(b.NAM=" + Nam + " and b.KY<" + Ky + ")) and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
-                    return ExecuteQuery_SqlDataReader_DataTable(sql);
+                    return ExecuteQuery_DataTable(sql);
                 }
             return null;
         }
@@ -372,7 +372,7 @@ namespace ThuTien.DAL.TongHop
                         + " where a.MaHD=b.ID_HOADON and a.MaHD=dchd.FK_HOADON and GB>=11 and GB<=20 and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
-                return ExecuteQuery_SqlDataReader_DataTable(sql);
+                return ExecuteQuery_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -381,7 +381,7 @@ namespace ThuTien.DAL.TongHop
                         + " where a.MaHD=b.ID_HOADON and a.MaHD=dchd.FK_HOADON and GB>20 and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
-                    return ExecuteQuery_SqlDataReader_DataTable(sql);
+                    return ExecuteQuery_DataTable(sql);
                 }
             return null;
         }
@@ -394,7 +394,7 @@ namespace ThuTien.DAL.TongHop
                         + " where a.MaHD=b.ID_HOADON and a.MaHD=dchd.FK_HOADON and GB>=11 and GB<=20 and b.NAM=" + Nam + " and b.KY=" + Ky + " and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
-                return ExecuteQuery_SqlDataReader_DataTable(sql);
+                return ExecuteQuery_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -403,7 +403,7 @@ namespace ThuTien.DAL.TongHop
                         + " where a.MaHD=b.ID_HOADON and a.MaHD=dchd.FK_HOADON and GB>20 and b.NAM=" + Nam + " and b.KY=" + Ky + " and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
-                    return ExecuteQuery_SqlDataReader_DataTable(sql);
+                    return ExecuteQuery_DataTable(sql);
                 }
             return null;
         }
@@ -416,7 +416,7 @@ namespace ThuTien.DAL.TongHop
                         + " where a.MaHD=b.ID_HOADON and a.MaHD=dchd.FK_HOADON and GB>=11 and GB<=20 and (b.NAM<" + Nam + " or (b.NAM=" + Nam + " and b.KY<" + Ky + ")) and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
-                return ExecuteQuery_SqlDataReader_DataTable(sql);
+                return ExecuteQuery_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -425,7 +425,7 @@ namespace ThuTien.DAL.TongHop
                         + " where a.MaHD=b.ID_HOADON and a.MaHD=dchd.FK_HOADON and GB>20 and (b.NAM<" + Nam + " or (b.NAM=" + Nam + " and b.KY<" + Ky + ")) and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
-                    return ExecuteQuery_SqlDataReader_DataTable(sql);
+                    return ExecuteQuery_DataTable(sql);
                 }
             return null;
         }
@@ -450,7 +450,7 @@ namespace ThuTien.DAL.TongHop
                         + " where a.MaHD=b.ID_HOADON and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetTongHopDangNgan_PhanKyLon(int Nam,int Ky,DateTime CreateDate)
@@ -459,7 +459,7 @@ namespace ThuTien.DAL.TongHop
                         + " where a.MaHD=b.ID_HOADON and b.NAM=" + Nam + " and b.KY=" + Ky + " and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetTongHopDangNgan_PhanKyNho(int Nam, int Ky, DateTime CreateDate)
@@ -468,7 +468,7 @@ namespace ThuTien.DAL.TongHop
                         + " where a.MaHD=b.ID_HOADON and (b.NAM<" + Nam + " or (b.NAM=" + Nam + " and b.KY<" + Ky + ")) and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetTongHopDangNganDCHD(DateTime CreateDate)
@@ -477,7 +477,7 @@ namespace ThuTien.DAL.TongHop
                         + " where a.MaHD=b.FK_HOADON and b.FK_HOADON=c.ID_HOADON and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetTongHopDangNganDCHD_PhanKyLon(int Nam, int Ky, DateTime CreateDate)
@@ -486,7 +486,7 @@ namespace ThuTien.DAL.TongHop
                         + " where a.MaHD=b.FK_HOADON and b.FK_HOADON=c.ID_HOADON and c.NAM=" + Nam + " and c.KY=" + Ky + " and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetTongHopDangNganDCHD_PhanKyNho(int Nam, int Ky, DateTime CreateDate)
@@ -495,7 +495,7 @@ namespace ThuTien.DAL.TongHop
                         + " where a.MaHD=b.FK_HOADON and b.FK_HOADON=c.ID_HOADON and (c.NAM<" + Nam + " or (c.NAM=" + Nam + " and c.KY<" + Ky + ")) and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public int CountCT(decimal MaCNKD)

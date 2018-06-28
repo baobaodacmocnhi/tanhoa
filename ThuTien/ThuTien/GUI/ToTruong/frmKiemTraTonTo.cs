@@ -204,17 +204,17 @@ namespace ThuTien.GUI.ToTruong
                                         ///chọn 1 kỳ cụ thể
                                         else
                                             if (cmbKy.SelectedIndex > 0)
-                                            ///chọn tất cả các đợt
-                                            //if (cmbDot.SelectedIndex == 0)
-                                            {
-                                                dgvHDTuGia.DataSource = _cHoaDon.GetTongTon_To("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                                            }
-                                //else
-                                //    ///chọn 1 đợt cụ thể
-                                //    if (cmbDot.SelectedIndex > 0)
-                                //    {
-                                //        dgvHDTuGia.DataSource = _cHoaDon.GetTongTon_To("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
-                                //    }
+                                                ///chọn tất cả các đợt
+                                                if (cmbFromDot.SelectedIndex == 0)
+                                                {
+                                                    dgvHDTuGia.DataSource = _cHoaDon.GetTongTon_To("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                                }
+                                                else
+                                                    ///chọn 1 đợt cụ thể
+                                                    if (cmbFromDot.SelectedIndex > 0)
+                                                    {
+                                                        dgvHDTuGia.DataSource = _cHoaDon.GetTongTon_To("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
+                                                    }
                             }
                 }
                 else
@@ -242,7 +242,7 @@ namespace ThuTien.GUI.ToTruong
                                         DataTable dt = new DataTable();
                                         for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
                                         {
-                                            dt.Merge(_cHoaDon.GetTongTonDenKy_NV("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i)); 
+                                            dt.Merge(_cHoaDon.GetTongTonDenKy_NV("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
                                         }
                                         dgvHDTuGia.DataSource = dt;
                                     }
@@ -335,16 +335,16 @@ namespace ThuTien.GUI.ToTruong
                                             else
                                                 if (cmbKy.SelectedIndex > 0)
                                                 ///chọn tất cả các đợt
-                                                //if (cmbDot.SelectedIndex == 0)
+                                                    if (cmbFromDot.SelectedIndex == 0)
                                                 {
                                                     dgvHDCoQuan.DataSource = _cHoaDon.GetTongTon_To("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                                                 }
-                                    //else
-                                    //    ///chọn 1 đợt cụ thể
-                                    //    if (cmbDot.SelectedIndex > 0)
-                                    //    {
-                                    //        dgvHDCoQuan.DataSource = _cHoaDon.GetTongTon_To("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
-                                    //    }
+                                                    else
+                                                        ///chọn 1 đợt cụ thể
+                                                        if (cmbFromDot.SelectedIndex > 0)
+                                                        {
+                                                            dgvHDCoQuan.DataSource = _cHoaDon.GetTongTon_To("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
+                                                        }
                                 }
                     }
                     else

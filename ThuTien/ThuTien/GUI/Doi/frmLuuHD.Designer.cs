@@ -35,6 +35,7 @@
             this.btnChonFile = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtTongHD0 = new System.Windows.Forms.TextBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.txtTongCong = new System.Windows.Forms.TextBox();
             this.txtTongPhiBVMT = new System.Windows.Forms.TextBox();
@@ -43,11 +44,6 @@
             this.txtTongTieuThu = new System.Windows.Forms.TextBox();
             this.txtTongHD = new System.Windows.Forms.TextBox();
             this.dgvHoaDon = new System.Windows.Forms.DataGridView();
-            this.btnXem = new System.Windows.Forms.Button();
-            this.cmbKy = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cmbNam = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.Dot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongTieuThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,7 +53,12 @@
             this.TongCong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HD0 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtTongHD0 = new System.Windows.Forms.TextBox();
+            this.btnXem = new System.Windows.Forms.Button();
+            this.cmbKy = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbNam = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnSoSanhKyTruoc = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.SuspendLayout();
@@ -102,6 +103,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnSoSanhKyTruoc);
             this.groupBox1.Controls.Add(this.txtTongHD0);
             this.groupBox1.Controls.Add(this.progressBar);
             this.groupBox1.Controls.Add(this.txtTongCong);
@@ -122,6 +124,15 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Hóa Đơn";
+            // 
+            // txtTongHD0
+            // 
+            this.txtTongHD0.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongHD0.Location = new System.Drawing.Point(762, 519);
+            this.txtTongHD0.Name = "txtTongHD0";
+            this.txtTongHD0.Size = new System.Drawing.Size(50, 20);
+            this.txtTongHD0.TabIndex = 13;
+            this.txtTongHD0.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // progressBar
             // 
@@ -216,63 +227,6 @@
             this.dgvHoaDon.TabIndex = 5;
             this.dgvHoaDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_CellFormatting);
             // 
-            // btnXem
-            // 
-            this.btnXem.Location = new System.Drawing.Point(214, 25);
-            this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(75, 23);
-            this.btnXem.TabIndex = 4;
-            this.btnXem.Text = "Xem";
-            this.btnXem.UseVisualStyleBackColor = true;
-            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
-            // 
-            // cmbKy
-            // 
-            this.cmbKy.FormattingEnabled = true;
-            this.cmbKy.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12"});
-            this.cmbKy.Location = new System.Drawing.Point(143, 25);
-            this.cmbKy.Name = "cmbKy";
-            this.cmbKy.Size = new System.Drawing.Size(65, 21);
-            this.cmbKy.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(115, 28);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(22, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Kỳ:";
-            // 
-            // cmbNam
-            // 
-            this.cmbNam.FormattingEnabled = true;
-            this.cmbNam.Location = new System.Drawing.Point(44, 25);
-            this.cmbNam.Name = "cmbNam";
-            this.cmbNam.Size = new System.Drawing.Size(65, 21);
-            this.cmbNam.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 28);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Năm:";
-            // 
             // Dot
             // 
             this.Dot.DataPropertyName = "Dot";
@@ -331,14 +285,72 @@
             this.HD0.Name = "HD0";
             this.HD0.Width = 50;
             // 
-            // txtTongHD0
+            // btnXem
             // 
-            this.txtTongHD0.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongHD0.Location = new System.Drawing.Point(762, 519);
-            this.txtTongHD0.Name = "txtTongHD0";
-            this.txtTongHD0.Size = new System.Drawing.Size(50, 20);
-            this.txtTongHD0.TabIndex = 13;
-            this.txtTongHD0.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnXem.Location = new System.Drawing.Point(214, 25);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 23);
+            this.btnXem.TabIndex = 4;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
+            // 
+            // cmbKy
+            // 
+            this.cmbKy.FormattingEnabled = true;
+            this.cmbKy.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.cmbKy.Location = new System.Drawing.Point(143, 25);
+            this.cmbKy.Name = "cmbKy";
+            this.cmbKy.Size = new System.Drawing.Size(65, 21);
+            this.cmbKy.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(115, 28);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(22, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Kỳ:";
+            // 
+            // cmbNam
+            // 
+            this.cmbNam.FormattingEnabled = true;
+            this.cmbNam.Location = new System.Drawing.Point(44, 25);
+            this.cmbNam.Name = "cmbNam";
+            this.cmbNam.Size = new System.Drawing.Size(65, 21);
+            this.cmbNam.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(32, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Năm:";
+            // 
+            // btnSoSanhKyTruoc
+            // 
+            this.btnSoSanhKyTruoc.Location = new System.Drawing.Point(295, 25);
+            this.btnSoSanhKyTruoc.Name = "btnSoSanhKyTruoc";
+            this.btnSoSanhKyTruoc.Size = new System.Drawing.Size(105, 23);
+            this.btnSoSanhKyTruoc.TabIndex = 14;
+            this.btnSoSanhKyTruoc.Text = "So Sánh Kỳ Trước";
+            this.btnSoSanhKyTruoc.UseVisualStyleBackColor = true;
+            this.btnSoSanhKyTruoc.Click += new System.EventHandler(this.btnSoSanhKyTruoc_Click);
             // 
             // frmLuuHD
             // 
@@ -391,5 +403,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn HD0;
         private System.Windows.Forms.TextBox txtTongHD0;
+        private System.Windows.Forms.Button btnSoSanhKyTruoc;
     }
 }

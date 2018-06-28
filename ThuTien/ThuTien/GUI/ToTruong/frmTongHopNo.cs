@@ -304,13 +304,13 @@ namespace ThuTien.GUI.ToTruong
                         tonghopno.TT_CTTongHopNos.Add(cttonghopno);
                     }
                     _cTHN.Them(tonghopno);
-                }
-
+                
                 dsBaoCao ds = new dsBaoCao();
                 int TongCongSo = 0;
                 foreach (DataGridViewRow item in dgvHoaDon.Rows)
                 {
                     DataRow dr = ds.Tables["TongHopNo"].NewRow();
+                    dr["SoPhieu"] = tonghopno.MaTHN.ToString().Insert(tonghopno.MaTHN.ToString().Length - 2, "-");
                     dr["KinhGui"] = txtKinhGui.Text.Trim();
                     dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
                     dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
@@ -345,7 +345,8 @@ namespace ThuTien.GUI.ToTruong
                 //        dr1["NguoiKy"] = "P.GIÁM ĐỐC";
                 if (chkChuKy.Checked == true)
                     dr1["ChuKy"] = true;
-                dr1["NguoiKy"] = "Nguyễn Ngọc Ẩn";
+                if (chkTenKy.Checked == true)
+                    dr1["NguoiKy"] = "Nguyễn Ngọc Ẩn";
 
                 ds.Tables["TongHopNo"].Rows.Add(dr1);
                 if (radA4.Checked)
@@ -362,6 +363,7 @@ namespace ThuTien.GUI.ToTruong
                         rpt.SetDataSource(ds);
                         frmBaoCao frm = new frmBaoCao(rpt);
                         frm.Show();
+                    }
                     }
             }
             else
@@ -477,6 +479,7 @@ namespace ThuTien.GUI.ToTruong
             foreach (TT_CTTongHopNo item in tonghopno.TT_CTTongHopNos)
             {
                 DataRow dr = ds.Tables["TongHopNo"].NewRow();
+                dr["SoPhieu"] = tonghopno.MaTHN.ToString().Insert(tonghopno.MaTHN.ToString().Length - 2, "-");
                 dr["KinhGui"] = tonghopno.KinhGui;
                 dr["DanhBo"] = item.DanhBo.Insert(4, " ").Insert(8, " ");
                 dr["DiaChi"] = item.DiaChi;
@@ -511,7 +514,8 @@ namespace ThuTien.GUI.ToTruong
             //        dr1["NguoiKy"] = "P.GIÁM ĐỐC";
             if (chkChuKy.Checked == true)
                 dr1["ChuKy"] = true;
-            dr1["NguoiKy"] = "Nguyễn Ngọc Ẩn";
+            if (chkTenKy.Checked == true)
+                dr1["NguoiKy"] = "Nguyễn Ngọc Ẩn";
 
             ds.Tables["TongHopNo"].Rows.Add(dr1);
             if (radA4.Checked)

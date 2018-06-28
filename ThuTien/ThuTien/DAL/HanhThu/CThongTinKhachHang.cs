@@ -76,7 +76,7 @@ namespace ThuTien.DAL.HanhThu
                            + " (select DanhBo,DienThoai from TT_ThongTinKhachHang) ttkh on hd.DANHBA=ttkh.DanhBo"
                            + " order by hd.MLT asc";
 
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetDS(string Loai, int MaNV, int Dot)
@@ -100,7 +100,7 @@ namespace ThuTien.DAL.HanhThu
                            + " (select DanhBo,DienThoai from TT_ThongTinKhachHang) ttkh on hd.DANHBA=ttkh.DanhBo"
                            + " order by hd.MLT asc";
 
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetDS(string Loai, int MaNV, int FromDot, int ToDot)
@@ -124,7 +124,7 @@ namespace ThuTien.DAL.HanhThu
                     + " (select DanhBo,DienThoai from TT_ThongTinKhachHang) ttkh on hd.DANHBA=ttkh.DanhBo"
                     + " order by hd.MLT asc";
 
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public string GetDienThoai1(string DanhBo)

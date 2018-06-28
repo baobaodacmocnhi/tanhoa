@@ -81,7 +81,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             //            + " left join TT_NguoiDung dangngan on hd.MaNV_DangNgan=dangngan.MaND"
             //            + " where dvt.SoHoaDon=hd.SOHOADON and dvt.DanhBo='"+DanhBo+"'"
             //            + " order by dvt.CreateDate desc";
-            //return ExecuteQuery_SqlDataReader_DataTable(sql);
+            //return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetDS(string TenDichVu, DateTime FromCreateDate, DateTime ToCreateDate)
@@ -129,7 +129,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             //            + " left join TT_NguoiDung dangngan on hd.MaNV_DangNgan=dangngan.MaND"
             //            + " where dvt.SoHoaDon=hd.SOHOADON and dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%'"
             //            + " order by dvt.CreateDate desc";
-            //return ExecuteQuery_SqlDataReader_DataTable(sql);
+            //return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetDS_DenKy(string TenDichVu, DateTime FromCreateDate, DateTime ToCreateDate, int Nam, int Ky)
@@ -177,7 +177,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             //            + " left join TT_NguoiDung dangngan on hd.MaNV_DangNgan=dangngan.MaND"
             //            + " where dvt.SoHoaDon=hd.SOHOADON and dvt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm:ss") + "' and dvt.TenDichVu like '%" + TenDichVu + "%'"
             //            + " order by dvt.CreateDate desc";
-            //return ExecuteQuery_SqlDataReader_DataTable(sql);
+            //return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetDS_Dot(string TenDichVu, DateTime FromCreateDate, DateTime ToCreateDate, int FromDot, int ToDot)
@@ -780,7 +780,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                     + " 		where NAM=@Nam and hd.ID_HOADON=tt.FK_HOADON and nh.ID_NGANHANG=tt.MaNH and MaNH=@MaNH"
                     + " 		and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and DangNgan_ChuyenKhoan=1 and NGAYGIAITRACH is not null"
                     + " 		order by MALOTRINH asc";
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetDS(int MaNH, int MaTo, int Nam, int Ky)
@@ -825,7 +825,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                     + " 		where NAM=@Nam and KY=@Ky and hd.ID_HOADON=tt.FK_HOADON and nh.ID_NGANHANG=tt.MaNH and MaNH=@MaNH"
                     + " 		and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and DangNgan_ChuyenKhoan=1 and NGAYGIAITRACH is not null"
                     + " 		order by MALOTRINH asc";
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetDS(int MaNH, int MaTo, int Nam, int Ky, int FromDot, int ToDot)
@@ -874,7 +874,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                     + " 		where NAM=@Nam and KY=@Ky and DOT=>@FromDot and DOT<=@ToDot and hd.ID_HOADON=tt.FK_HOADON and nh.ID_NGANHANG=tt.MaNH and MaNH=@MaNH"
                     + " 		and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and DangNgan_ChuyenKhoan=1 and NGAYGIAITRACH is not null"
                     + " 		order by MALOTRINH asc";
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetDS_NV(int MaNH, int MaNV_HanhThu, int Nam)
@@ -913,7 +913,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                     + " 		where NAM=@Nam and hd.ID_HOADON=tt.FK_HOADON and nh.ID_NGANHANG=tt.MaNH and MaNH=@MaNH"
                     + " 		and MaNV_HanhThu=@MaNV_HanhThu and DangNgan_ChuyenKhoan=1 and NGAYGIAITRACH is not null"
                     + " 		order by MALOTRINH asc";
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetDS_NV(int MaNH, int MaNV_HanhThu, int Nam, int Ky)
@@ -954,7 +954,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                     + " 		where NAM=@Nam and KY=@Ky and hd.ID_HOADON=tt.FK_HOADON and nh.ID_NGANHANG=tt.MaNH and MaNH=@MaNH"
                     + " 		and MaNV_HanhThu=@MaNV_HanhThu and DangNgan_ChuyenKhoan=1 and NGAYGIAITRACH is not null"
                     + " 		order by MALOTRINH asc";
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetDS_NV(int MaNH, int MaNV_HanhThu, int Nam, int Ky, int FromDot, int ToDot)
@@ -999,7 +999,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                     + " 		where NAM=@Nam and KY=@Ky and DOT=>@FromDot and DOT<=@ToDot and hd.ID_HOADON=tt.FK_HOADON and nh.ID_NGANHANG=tt.MaNH and MaNH=@MaNH"
                     + " 		and MaNV_HanhThu=@MaNV_HanhThu and DangNgan_ChuyenKhoan=1 and NGAYGIAITRACH is not null"
                     + " 		order by MALOTRINH asc";
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetDS_GiaBieu(int MaNH, int MaTo, int Nam, int GiaBieu)
@@ -1044,7 +1044,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                     + " 		where NAM=@Nam and GB=@GiaBieu and hd.ID_HOADON=tt.FK_HOADON and nh.ID_NGANHANG=tt.MaNH and MaNH=@MaNH"
                     + " 		and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and DangNgan_ChuyenKhoan=1 and NGAYGIAITRACH is not null"
                     + " 		order by MALOTRINH asc";
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetDS_GiaBieu(int MaNH, int MaTo, int Nam, int Ky, int GiaBieu)
@@ -1091,7 +1091,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                     + " 		where NAM=@Nam and KY=@Ky and GB=@GiaBieu and hd.ID_HOADON=tt.FK_HOADON and nh.ID_NGANHANG=tt.MaNH and MaNH=@MaNH"
                     + " 		and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and DangNgan_ChuyenKhoan=1 and NGAYGIAITRACH is not null"
                     + " 		order by MALOTRINH asc";
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetDS_GiaBieu_NV(int MaNH, int MaNV_HanhThu, int Nam, int GiaBieu)
@@ -1132,7 +1132,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                     + " 		where NAM=@Nam and GB=@GiaBieu and hd.ID_HOADON=tt.FK_HOADON and nh.ID_NGANHANG=tt.MaNH and MaNH=@MaNH"
                     + " 		and MaNV_HanhThu=@MaNV_HanhThu and DangNgan_ChuyenKhoan=1 and NGAYGIAITRACH is not null"
                     + " 		order by MALOTRINH asc";
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetDS_GiaBieu_NV(int MaNH, int MaNV_HanhThu, int Nam, int Ky, int GiaBieu)
@@ -1175,7 +1175,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                     + " 		where NAM=@Nam and KY=@Ky and GB=@GiaBieu and hd.ID_HOADON=tt.FK_HOADON and nh.ID_NGANHANG=tt.MaNH and MaNH=@MaNH"
                     + " 		and MaNV_HanhThu=@MaNV_HanhThu and DangNgan_ChuyenKhoan=1 and NGAYGIAITRACH is not null"
                     + " 		order by MALOTRINH asc";
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetDS_PGD(int Nam, int Ky)
@@ -1301,7 +1301,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                     + " 		from TAMTHU tt,HOADON hd"
                     + " 		where NAM=@Nam and KY=@Ky and MaNH=@MaNH and hd.ID_HOADON=tt.FK_HOADON"
                     + " 		and DangNgan_ChuyenKhoan=1 and NGAYGIAITRACH is not null";
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetBienDongChuyenKhoan(int MaNH, int MaTo, int Nam, int Ky)
@@ -1365,7 +1365,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                     + " 		from TAMTHU tt,HOADON hd"
                     + " 		where NAM=@Nam and KY=@Ky and MaNH=@MaNH and hd.ID_HOADON=tt.FK_HOADON"
                     + " 		and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and DangNgan_ChuyenKhoan=1 and NGAYGIAITRACH is not null";
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetBienDongChuyenKhoan_NV(int MaNH, int MaNV_HanhThu, int Nam, int Ky)
@@ -1425,7 +1425,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                     + " 		from TAMTHU tt,HOADON hd"
                     + " 		where NAM=@Nam and KY=@Ky and MaNH=@MaNH and hd.ID_HOADON=tt.FK_HOADON"
                     + " 		and MaNV_HanhThu=@MaNV_HanhThu and DangNgan_ChuyenKhoan=1 and NGAYGIAITRACH is not null";
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetBienDongChuyenKhoan_GiaBieu(int MaNH, int Nam, int Ky, int GiaBieu)
@@ -1485,7 +1485,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                     + " 		from TAMTHU tt,HOADON hd"
                     + " 		where NAM=@Nam and KY=@Ky and GB=@GiaBieu and MaNH=@MaNH and hd.ID_HOADON=tt.FK_HOADON"
                     + " 		and DangNgan_ChuyenKhoan=1 and NGAYGIAITRACH is not null";
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetBienDongChuyenKhoan_GiaBieu(int MaNH, int MaTo, int Nam, int Ky, int GiaBieu)
@@ -1551,7 +1551,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                     + " 		from TAMTHU tt,HOADON hd"
                     + " 		where NAM=@Nam and KY=@Ky and GB=@GiaBieu and MaNH=@MaNH and hd.ID_HOADON=tt.FK_HOADON"
                     + " 		and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and DangNgan_ChuyenKhoan=1 and NGAYGIAITRACH is not null";
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetBienDongChuyenKhoan_GiaBieu_NV(int MaNH, int MaNV_HanhThu, int Nam, int Ky, int GiaBieu)
@@ -1613,7 +1613,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                     + " 		from TAMTHU tt,HOADON hd"
                     + " 		where NAM=@Nam and KY=@Ky and GB=@GiaBieu and MaNH=@MaNH and hd.ID_HOADON=tt.FK_HOADON"
                     + " 		and MaNV_HanhThu=@MaNV_HanhThu and DangNgan_ChuyenKhoan=1 and NGAYGIAITRACH is not null";
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetPhanTichChuyenKhoan(string Loai, int MaNH, int MaTo, int Nam)
@@ -1642,7 +1642,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " where NAM=@Nam and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and GB>=11 and GB<=20 and NGAYGIAITRACH is not null and DangNgan_ChuyenKhoan=0)khongck,"
                         + " "
                         + " (select TongHDTon=COUNT(ID_HOADON) from HOADON where NAM=@Nam and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and GB>=11 and GB<=20 and NGAYGIAITRACH is null)ton";
-                return ExecuteQuery_SqlDataReader_DataTable(sql);
+                return ExecuteQuery_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -1669,7 +1669,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " where NAM=@Nam and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and GB>20 and NGAYGIAITRACH is not null and DangNgan_ChuyenKhoan=0)khongck,"
                         + " "
                         + " (select TongHDTon=COUNT(ID_HOADON) from HOADON where NAM=@Nam and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and GB>20 and NGAYGIAITRACH is null)ton";
-                    return ExecuteQuery_SqlDataReader_DataTable(sql);
+                    return ExecuteQuery_DataTable(sql);
                 }
             return null;
         }
@@ -1702,7 +1702,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " where NAM=@Nam and KY=@Ky and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and GB>=11 and GB<=20 and NGAYGIAITRACH is not null and DangNgan_ChuyenKhoan=0)khongck,"
                         + " "
                         + " (select TongHDTon=COUNT(ID_HOADON) from HOADON where NAM=@Nam and KY=@Ky and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and GB>=11 and GB<=20 and NGAYGIAITRACH is null)ton";
-                return ExecuteQuery_SqlDataReader_DataTable(sql);
+                return ExecuteQuery_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -1731,7 +1731,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " where NAM=@Nam and KY=@Ky and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and GB>20 and NGAYGIAITRACH is not null and DangNgan_ChuyenKhoan=0)khongck,"
                         + " "
                         + " (select TongHDTon=COUNT(ID_HOADON) from HOADON where NAM=@Nam and KY=@Ky and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and GB>20 and NGAYGIAITRACH is null)ton";
-                    return ExecuteQuery_SqlDataReader_DataTable(sql);
+                    return ExecuteQuery_DataTable(sql);
                 }
             return null;
         }
@@ -1764,7 +1764,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " where NAM=@Nam and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and GB>=11 and GB<=20 and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach and DangNgan_ChuyenKhoan=0)khongck,"
                         + " "
                         + " (select TongHDTon=COUNT(ID_HOADON) from HOADON where NAM=@Nam and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and GB>=11 and GB<=20 and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach))ton";
-                return ExecuteQuery_SqlDataReader_DataTable(sql);
+                return ExecuteQuery_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -1793,7 +1793,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " where NAM=@Nam and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and GB>20 and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach and DangNgan_ChuyenKhoan=0)khongck,"
                         + " "
                         + " (select TongHDTon=COUNT(ID_HOADON) from HOADON where NAM=@Nam and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and GB>20 and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach))ton";
-                    return ExecuteQuery_SqlDataReader_DataTable(sql);
+                    return ExecuteQuery_DataTable(sql);
                 }
             return null;
         }
@@ -1828,7 +1828,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " where NAM=@Nam and KY=@Ky and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and GB>=11 and GB<=20 and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach and DangNgan_ChuyenKhoan=0)khongck,"
                         + " "
                         + " (select TongHDTon=COUNT(ID_HOADON) from HOADON where NAM=@Nam and KY=@Ky and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and GB>=11 and GB<=20 and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach))ton";
-                return ExecuteQuery_SqlDataReader_DataTable(sql);
+                return ExecuteQuery_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -1859,7 +1859,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " where NAM=@Nam and KY=@Ky and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and GB>20 and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach and DangNgan_ChuyenKhoan=0)khongck,"
                         + " "
                         + " (select TongHDTon=COUNT(ID_HOADON) from HOADON where NAM=@Nam and KY=@Ky and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and GB>20 and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach))ton";
-                    return ExecuteQuery_SqlDataReader_DataTable(sql);
+                    return ExecuteQuery_DataTable(sql);
                 }
             return null;
         }
@@ -1891,7 +1891,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " left join"
                         + " (select MaNV_HanhThu,TongHDTon=COUNT(ID_HOADON) from HOADON where NAM=@Nam and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and GB>=11 and GB<=20 and NGAYGIAITRACH is null group by MaNV_HanhThu)ton on tong.MaNV_HanhThu=ton.MaNV_HanhThu"
                         + " order by (select STT from TT_NguoiDung where MaND=tong.MaNV_HanhThu)";
-                return ExecuteQuery_SqlDataReader_DataTable(sql);
+                return ExecuteQuery_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -1919,7 +1919,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " left join"
                         + " (select MaNV_HanhThu,TongHDTon=COUNT(ID_HOADON) from HOADON where NAM=@Nam and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and GB>20 and NGAYGIAITRACH is null group by MaNV_HanhThu)ton on tong.MaNV_HanhThu=ton.MaNV_HanhThu"
                         + " order by (select STT from TT_NguoiDung where MaND=tong.MaNV_HanhThu)";
-                    return ExecuteQuery_SqlDataReader_DataTable(sql);
+                    return ExecuteQuery_DataTable(sql);
                 }
             return null;
         }
@@ -1953,7 +1953,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " left join"
                         + " (select MaNV_HanhThu,TongHDTon=COUNT(ID_HOADON) from HOADON where NAM=@Nam and KY=@Ky and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and GB>=11 and GB<=20 and NGAYGIAITRACH is null group by MaNV_HanhThu)ton on tong.MaNV_HanhThu=ton.MaNV_HanhThu"
                         + " order by (select STT from TT_NguoiDung where MaND=tong.MaNV_HanhThu)";
-                return ExecuteQuery_SqlDataReader_DataTable(sql);
+                return ExecuteQuery_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -1983,7 +1983,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " left join"
                         + " (select MaNV_HanhThu,TongHDTon=COUNT(ID_HOADON) from HOADON where NAM=@Nam and KY=@Ky and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and GB>20 and NGAYGIAITRACH is null group by MaNV_HanhThu)ton on tong.MaNV_HanhThu=ton.MaNV_HanhThu"
                         + " order by (select STT from TT_NguoiDung where MaND=tong.MaNV_HanhThu)";
-                    return ExecuteQuery_SqlDataReader_DataTable(sql);
+                    return ExecuteQuery_DataTable(sql);
                 }
             return null;
         }
@@ -2017,7 +2017,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                                  + " left join"
                                  + " (select MaNV_HanhThu,TongHDTon=COUNT(ID_HOADON) from HOADON where NAM=@Nam and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and GB>=11 and GB<=20 and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) group by MaNV_HanhThu)ton on tong.MaNV_HanhThu=ton.MaNV_HanhThu"
                                  + " order by (select STT from TT_NguoiDung where MaND=tong.MaNV_HanhThu)";
-                return ExecuteQuery_SqlDataReader_DataTable(sql);
+                return ExecuteQuery_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -2047,7 +2047,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                                 + " left join"
                                 + " (select MaNV_HanhThu,TongHDTon=COUNT(ID_HOADON) from HOADON where NAM=@Nam and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and GB>20 and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) group by MaNV_HanhThu)ton on tong.MaNV_HanhThu=ton.MaNV_HanhThu"
                                 + " order by (select STT from TT_NguoiDung where MaND=tong.MaNV_HanhThu)";
-                    return ExecuteQuery_SqlDataReader_DataTable(sql);
+                    return ExecuteQuery_DataTable(sql);
                 }
             return null;
         }
@@ -2083,7 +2083,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                                  + " left join"
                                  + " (select MaNV_HanhThu,TongHDTon=COUNT(ID_HOADON) from HOADON where NAM=@Nam and KY=@Ky and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and GB>=11 and GB<=20 and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) group by MaNV_HanhThu)ton on tong.MaNV_HanhThu=ton.MaNV_HanhThu"
                                  + " order by (select STT from TT_NguoiDung where MaND=tong.MaNV_HanhThu)";
-                return ExecuteQuery_SqlDataReader_DataTable(sql);
+                return ExecuteQuery_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
@@ -2115,7 +2115,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                                  + " left join"
                                  + " (select MaNV_HanhThu,TongHDTon=COUNT(ID_HOADON) from HOADON where NAM=@Nam and KY=@Ky and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and GB>20 and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) group by MaNV_HanhThu)ton on tong.MaNV_HanhThu=ton.MaNV_HanhThu"
                                  + " order by (select STT from TT_NguoiDung where MaND=tong.MaNV_HanhThu)";
-                    return ExecuteQuery_SqlDataReader_DataTable(sql);
+                    return ExecuteQuery_DataTable(sql);
                 }
             return null;
         }
@@ -2149,7 +2149,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " where NAM=@Nam and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and DangNgan_ChuyenKhoan=0 and NGAYGIAITRACH is not null"
                         + " order by MALOTRINH asc";
 
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetDS_XuatExcel(int MaTo, int Nam, int Ky)
@@ -2183,7 +2183,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " where NAM=@Nam and KY=@Ky and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and DangNgan_ChuyenKhoan=0 and NGAYGIAITRACH is not null"
                         + " order by MALOTRINH asc";
 
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
     }
 }
