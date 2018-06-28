@@ -309,7 +309,34 @@ namespace KTKS_DonKH.DAL.BamChi
                             };
                     return LINQToDataTable(query);
                 default:
-                    return null;
+                    query = from itemCTBamChi in db.CTBamChis
+                            join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                            where itemCTBamChi.NgayBC.Value.Date >= FromNgayBC.Date && itemCTBamChi.NgayBC.Value.Date <= ToNgayBC.Date
+                            select new
+                            {
+                                itemCTBamChi.MaCTBC,
+                                MaDon = itemCTBamChi.BamChi.MaDon != null ? "TKH" + itemCTBamChi.BamChi.MaDon
+                                   : itemCTBamChi.BamChi.MaDonTXL != null ? "TXL" + itemCTBamChi.BamChi.MaDonTXL
+                                   : itemCTBamChi.BamChi.MaDonTBC != null ? "TBC" + itemCTBamChi.BamChi.MaDonTBC : null,
+                                TenLD = itemCTBamChi.BamChi.MaDon != null ? itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD
+                                    : itemCTBamChi.BamChi.MaDonTXL != null ? itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD
+                                    : itemCTBamChi.BamChi.MaDonTBC != null ? itemCTBamChi.BamChi.DonTBC.LoaiDonTBC.TenLD : null,
+                                itemCTBamChi.DanhBo,
+                                itemCTBamChi.HoTen,
+                                itemCTBamChi.DiaChi,
+                                itemCTBamChi.HopDong,
+                                itemCTBamChi.NgayBC,
+                                itemCTBamChi.TrangThaiBC,
+                                itemCTBamChi.Hieu,
+                                itemCTBamChi.Co,
+                                itemCTBamChi.ChiSo,
+                                itemCTBamChi.VienChi,
+                                itemCTBamChi.DayChi,
+                                itemCTBamChi.TheoYeuCau,
+                                itemCTBamChi.MaSoBC,
+                                CreateBy = itemUser.HoTen,
+                            };
+                    return LINQToDataTable(query);
             }
         }
 

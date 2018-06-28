@@ -35,6 +35,7 @@
             this.btnBaoCao_ThongKeTrangThaiBamChi = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkAll_ThongKeHienTrangKiemTra = new System.Windows.Forms.CheckBox();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -51,7 +52,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 10);
+            this.label3.Location = new System.Drawing.Point(3, 8);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 16);
             this.label3.TabIndex = 15;
@@ -60,7 +61,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 38);
+            this.label4.Location = new System.Drawing.Point(3, 36);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 16);
             this.label4.TabIndex = 16;
@@ -77,7 +78,7 @@
             // 
             // btnBaoCao_ThongKeTrangThaiBamChi
             // 
-            this.btnBaoCao_ThongKeTrangThaiBamChi.Location = new System.Drawing.Point(192, 41);
+            this.btnBaoCao_ThongKeTrangThaiBamChi.Location = new System.Drawing.Point(187, 39);
             this.btnBaoCao_ThongKeTrangThaiBamChi.Name = "btnBaoCao_ThongKeTrangThaiBamChi";
             this.btnBaoCao_ThongKeTrangThaiBamChi.Size = new System.Drawing.Size(75, 25);
             this.btnBaoCao_ThongKeTrangThaiBamChi.TabIndex = 28;
@@ -91,21 +92,32 @@
             this.panel_KhoangThoiGian.Controls.Add(this.dateDen_ThongKeTrangThaiBamChi);
             this.panel_KhoangThoiGian.Controls.Add(this.label3);
             this.panel_KhoangThoiGian.Controls.Add(this.label4);
-            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(6, 22);
+            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(6, 21);
             this.panel_KhoangThoiGian.Name = "panel_KhoangThoiGian";
-            this.panel_KhoangThoiGian.Size = new System.Drawing.Size(180, 60);
+            this.panel_KhoangThoiGian.Size = new System.Drawing.Size(175, 60);
             this.panel_KhoangThoiGian.TabIndex = 27;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkAll_ThongKeHienTrangKiemTra);
             this.groupBox1.Controls.Add(this.panel_KhoangThoiGian);
             this.groupBox1.Controls.Add(this.btnBaoCao_ThongKeTrangThaiBamChi);
-            this.groupBox1.Location = new System.Drawing.Point(11, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(277, 90);
+            this.groupBox1.Size = new System.Drawing.Size(389, 90);
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Thống Kê Trạng Thái Bấm Chì";
+            this.groupBox1.Text = "Thống Kê theo Loại Đơn (ngày Bấm Chì)";
+            // 
+            // chkAll_ThongKeHienTrangKiemTra
+            // 
+            this.chkAll_ThongKeHienTrangKiemTra.AutoSize = true;
+            this.chkAll_ThongKeHienTrangKiemTra.Location = new System.Drawing.Point(268, 42);
+            this.chkAll_ThongKeHienTrangKiemTra.Name = "chkAll_ThongKeHienTrangKiemTra";
+            this.chkAll_ThongKeHienTrangKiemTra.Size = new System.Drawing.Size(114, 20);
+            this.chkAll_ThongKeHienTrangKiemTra.TabIndex = 29;
+            this.chkAll_ThongKeHienTrangKiemTra.Text = "Tất Cả Các Tổ";
+            this.chkAll_ThongKeHienTrangKiemTra.UseVisualStyleBackColor = true;
             // 
             // frmBaoCaoBamChi
             // 
@@ -122,6 +134,7 @@
             this.panel_KhoangThoiGian.ResumeLayout(false);
             this.panel_KhoangThoiGian.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -135,6 +148,7 @@
         private System.Windows.Forms.Button btnBaoCao_ThongKeTrangThaiBamChi;
         private System.Windows.Forms.Panel panel_KhoangThoiGian;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox chkAll_ThongKeHienTrangKiemTra;
 
     }
 }

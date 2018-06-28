@@ -11,6 +11,7 @@ using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.DAL.KiemTraXacMinh;
 using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.BaoCao.BamChi;
 
 namespace KTKS_DonKH.GUI.KiemTraXacMinh
 {
@@ -36,8 +37,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 else
                     if (CTaiKhoan.ToBC == true)
                         TenTo = "TBC";
-
-            cmbNoiDungDongTien_ThongKeXuLyBB.DataSource = _cDongTienNoiDung.getDS(TenTo);
+            DataTable dt = _cDongTienNoiDung.getDS(TenTo);
+                DataRow dr=dt.NewRow();
+                dr["ID"] = "0";
+            dr["Name"]="Tất Cả";
+            dt.Rows.InsertAt(dr, 0);
+            cmbNoiDungDongTien_ThongKeXuLyBB.DataSource =dt;
             cmbNoiDungDongTien_ThongKeXuLyBB.DisplayMember = "Name";
             cmbNoiDungDongTien_ThongKeXuLyBB.ValueMember = "Name";
             cmbNoiDungDongTien_ThongKeXuLyBB.SelectedIndex = -1;
@@ -274,35 +279,101 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         private void btnInDS_ThongKeXuLyBB_Click(object sender, EventArgs e)
         {
-            //string TenTo = "";
-            //if (CTaiKhoan.ToKH == true)
-            //    TenTo = "TKH";
-            //else
-            //    if (CTaiKhoan.ToXL == true)
-            //        TenTo = "TXL";
-            //    else
-            //        if (CTaiKhoan.ToBC == true)
-            //            TenTo = "TBC";
+            if (cmbNoiDungDongTien_ThongKeXuLyBB.SelectedIndex == -1)
+                return;
+            string NoiDungXuLy = "";
+            if (cmbNoiDungDongTien_ThongKeXuLyBB.SelectedIndex > 0)
+                NoiDungXuLy = cmbNoiDungDongTien_ThongKeXuLyBB.SelectedValue.ToString();
+
             string LoaiBaoCao = "";
             DataTable dt = new DataTable();
-            if (radLapBangGia.Checked == true)
+            if (chkAll_ThongKeXuLyBB.Checked == true)
             {
-                LoaiBaoCao = "LẬP BẢNG GIÁ";
-                dt = _cKTXM.GetDSLapBangGia(TenTo, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
-            }
-            else
-                if (radDongTien.Checked == true)
+                if (String.IsNullOrEmpty(txtSoCongVan_ThongKeXuLyBB.Text.Trim()) == true)
                 {
-                    LoaiBaoCao = "ĐÓNG TIỀN " + cmbNoiDungDongTien_ThongKeXuLyBB.SelectedValue.ToString().ToUpper();
-                    dt = _cKTXM.GetDSDongTien(TenTo, cmbNoiDungDongTien_ThongKeXuLyBB.SelectedValue.ToString(), dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
+                    if (radLapBangGia.Checked == true)
+                    {
+                        LoaiBaoCao = "LẬP BẢNG GIÁ";
+                        dt = _cKTXM.GetDSLapBangGia("", NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
+                    }
+                    else
+                        if (radDongTien.Checked == true)
+                        {
+                            LoaiBaoCao = "ĐÓNG TIỀN";
+                            dt = _cKTXM.GetDSDongTien("", NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
+                        }
+                        else
+                            if (radChuyenLapTBCat.Checked == true)
+                            {
+                                LoaiBaoCao = "CHUYỂN LẬP TB CẮT";
+                                dt = _cKTXM.GetDSChuyenLapTBCat("", NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
+                            }
                 }
                 else
-                    if (radChuyenLapTBCat.Checked == true)
+                {
+                    if (radLapBangGia.Checked == true)
                     {
-                        LoaiBaoCao = "CHUYỂN LẬP TB CẮT";
-                        dt = _cKTXM.GetDSChuyenLapTBCat(TenTo, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
+                        LoaiBaoCao = "LẬP BẢNG GIÁ";
+                        dt = _cKTXM.GetDSLapBangGia("", txtSoCongVan_ThongKeXuLyBB.Text.Trim(), NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
                     }
-
+                    else
+                        if (radDongTien.Checked == true)
+                        {
+                            LoaiBaoCao = "ĐÓNG TIỀN";
+                            dt = _cKTXM.GetDSDongTien("", txtSoCongVan_ThongKeXuLyBB.Text.Trim(), NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
+                        }
+                        else
+                            if (radChuyenLapTBCat.Checked == true)
+                            {
+                                LoaiBaoCao = "CHUYỂN LẬP TB CẮT";
+                                dt = _cKTXM.GetDSChuyenLapTBCat("", txtSoCongVan_ThongKeXuLyBB.Text.Trim(), NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
+                            }
+                }
+            }
+            else
+            {
+                if (String.IsNullOrEmpty(txtSoCongVan_ThongKeXuLyBB.Text.Trim()) == true)
+                {
+                    if (radLapBangGia.Checked == true)
+                    {
+                        LoaiBaoCao = "LẬP BẢNG GIÁ";
+                        dt = _cKTXM.GetDSLapBangGia(TenTo, NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
+                    }
+                    else
+                        if (radDongTien.Checked == true)
+                        {
+                            LoaiBaoCao = "ĐÓNG TIỀN";
+                            dt = _cKTXM.GetDSDongTien(TenTo, NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
+                        }
+                        else
+                            if (radChuyenLapTBCat.Checked == true)
+                            {
+                                LoaiBaoCao = "CHUYỂN LẬP TB CẮT";
+                                dt = _cKTXM.GetDSChuyenLapTBCat(TenTo, NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
+                            }
+                }
+                else
+                {
+                    if (radLapBangGia.Checked == true)
+                    {
+                        LoaiBaoCao = "LẬP BẢNG GIÁ";
+                        dt = _cKTXM.GetDSLapBangGia(TenTo, txtSoCongVan_ThongKeXuLyBB.Text.Trim(), NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
+                    }
+                    else
+                        if (radDongTien.Checked == true)
+                        {
+                            LoaiBaoCao = "ĐÓNG TIỀN";
+                            dt = _cKTXM.GetDSDongTien(TenTo, txtSoCongVan_ThongKeXuLyBB.Text.Trim(), NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
+                        }
+                        else
+                            if (radChuyenLapTBCat.Checked == true)
+                            {
+                                LoaiBaoCao = "CHUYỂN LẬP TB CẮT";
+                                dt = _cKTXM.GetDSChuyenLapTBCat(TenTo, txtSoCongVan_ThongKeXuLyBB.Text.Trim(), NoiDungXuLy, dateTu_ThongKeXuLyBB.Value, dateDen_ThongKeXuLyBB.Value);
+                            }
+                }
+            }
+            LoaiBaoCao += " " + NoiDungXuLy.ToUpper();
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             foreach (DataRow item in dt.Rows)
             {
@@ -311,12 +382,19 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 dr["TuNgay"] = dateTu_ThongKeXuLyBB.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen_ThongKeXuLyBB.Value.ToString("dd/MM/yyyy");
                 dr["LoaiBaoCao"] = LoaiBaoCao;
-                dr["MaDon"] = item["MaDon"];
-                dr["DanhBo"] = item["DanhBo"];
+                dr["MaDon"] = item["MaDon"].ToString().Insert(item["MaDon"].ToString().Length-2,"-");
+                dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                 dr["HoTen"] = item["HoTen"];
                 dr["DiaChi"] = item["DiaChi"];
                 dr["NgayLapBangGia"] = item["NgayLap"];
-                dr["GhiChu"] = item["GhiChu"];
+                dr["GhiChu"] = item["GhiChuNoiDungXuLy"];
+                if (dt.Columns.Contains("SoTienDongTien") == true)
+                {
+                    if (String.IsNullOrEmpty(dr["GhiChu"].ToString()) == true)
+                        dr["GhiChu"] = item["SoTienDongTien"];
+                    else
+                        dr["GhiChu"] += ", " + item["SoTienDongTien"];
+                }
 
                 dsBaoCao.Tables["DSKTXM"].Rows.Add(dr);
             }
@@ -327,10 +405,43 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             frm.Show();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void btnBaoCao_ThongKeLoaiDon_Click(object sender, EventArgs e)
         {
+            DataTable dt = new DataTable();
+            if (chkAll_ThongKeLoaiDon.Checked == true)
+                dt = _cKTXM.GetDS("", dateTu_ThongKeLoaiDon.Value, dateDen_ThongKeLoaiDon.Value);
+            else
+            {
+                if (CTaiKhoan.ToKH)
+                    dt = _cKTXM.GetDS("TKH", dateTu_ThongKeLoaiDon.Value, dateDen_ThongKeLoaiDon.Value);
+                else
+                    if (CTaiKhoan.ToXL)
+                        dt = _cKTXM.GetDS("TXL", dateTu_ThongKeLoaiDon.Value, dateDen_ThongKeLoaiDon.Value);
+                    else
+                        if (CTaiKhoan.ToBC)
+                            dt = _cKTXM.GetDS("TBC", dateTu_ThongKeLoaiDon.Value, dateDen_ThongKeLoaiDon.Value);
+            }
 
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+
+            foreach (DataRow item in dt.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["DSKTXM"].NewRow();
+                dr["TuNgay"] = dateTu_ThongKeLoaiDon.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen_ThongKeLoaiDon.Value.ToString("dd/MM/yyyy");
+                dr["MaCTKTXM"] = item["MaCTKTXM"];
+                dr["TenLD"] = item["TenLD"];
+
+                dsBaoCao.Tables["DSKTXM"].Rows.Add(dr);
+            }
+
+            rptThongKetheoLoaiDon rpt = new rptThongKetheoLoaiDon();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.Show();
         }
+
+        
 
     }
 }

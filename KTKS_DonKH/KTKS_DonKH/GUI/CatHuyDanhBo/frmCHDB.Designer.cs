@@ -108,6 +108,8 @@
             this.dgvGhiChuDocSo = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtTCHC = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.groupBoxGhiChu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGhiChu)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -599,7 +601,7 @@
             // 
             // txtMaThongBaoCH
             // 
-            this.txtMaThongBaoCH.Location = new System.Drawing.Point(596, 12);
+            this.txtMaThongBaoCH.Location = new System.Drawing.Point(606, 12);
             this.txtMaThongBaoCH.Name = "txtMaThongBaoCH";
             this.txtMaThongBaoCH.Size = new System.Drawing.Size(60, 22);
             this.txtMaThongBaoCH.TabIndex = 3;
@@ -608,7 +610,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(503, 15);
+            this.label14.Location = new System.Drawing.Point(513, 15);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(87, 16);
             this.label14.TabIndex = 2;
@@ -616,7 +618,7 @@
             // 
             // txtMaThongBaoCT
             // 
-            this.txtMaThongBaoCT.Location = new System.Drawing.Point(759, 12);
+            this.txtMaThongBaoCT.Location = new System.Drawing.Point(769, 12);
             this.txtMaThongBaoCT.Name = "txtMaThongBaoCT";
             this.txtMaThongBaoCT.Size = new System.Drawing.Size(60, 22);
             this.txtMaThongBaoCT.TabIndex = 5;
@@ -625,7 +627,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(662, 15);
+            this.label15.Location = new System.Drawing.Point(672, 15);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(91, 16);
             this.label15.TabIndex = 4;
@@ -837,7 +839,7 @@
             // 
             // txtMaDonMoi
             // 
-            this.txtMaDonMoi.Location = new System.Drawing.Point(417, 12);
+            this.txtMaDonMoi.Location = new System.Drawing.Point(427, 12);
             this.txtMaDonMoi.Name = "txtMaDonMoi";
             this.txtMaDonMoi.Size = new System.Drawing.Size(80, 22);
             this.txtMaDonMoi.TabIndex = 115;
@@ -881,6 +883,22 @@
             this.Column2.ReadOnly = true;
             this.Column2.Width = 150;
             // 
+            // txtTCHC
+            // 
+            this.txtTCHC.Location = new System.Drawing.Point(889, 12);
+            this.txtTCHC.Name = "txtTCHC";
+            this.txtTCHC.Size = new System.Drawing.Size(60, 22);
+            this.txtTCHC.TabIndex = 122;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(835, 15);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(48, 16);
+            this.label13.TabIndex = 121;
+            this.label13.Text = "TCHC:";
+            // 
             // frmCHDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -888,6 +906,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1298, 652);
+            this.Controls.Add(this.txtTCHC);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.dgvGhiChuDocSo);
             this.Controls.Add(this.txtMaDonMoi);
             this.Controls.Add(this.label12);
@@ -1019,6 +1039,8 @@
         private System.Windows.Forms.DataGridView dgvGhiChuDocSo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.TextBox txtTCHC;
+        private System.Windows.Forms.Label label13;
 
     }
 }

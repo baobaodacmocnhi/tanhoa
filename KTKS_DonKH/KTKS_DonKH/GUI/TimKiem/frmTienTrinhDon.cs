@@ -544,7 +544,6 @@ namespace KTKS_DonKH.GUI.TimKiem
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow[] childRows;
 
-
                 foreach (DataRow itemRow in dt.Rows)
                 {
                     foreach (DataRelation itemRelation in dt.ChildRelations)

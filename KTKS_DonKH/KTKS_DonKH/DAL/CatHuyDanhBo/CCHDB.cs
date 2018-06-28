@@ -351,7 +351,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     item.DaLapPhieu,
                                     item.SoPhieu,
                                     item.ThongBaoDuocKy,
-                                    MaTB = item.MaCTCTDB,
+                                    ID = item.MaCTCTDB,
                                     item.CreateDate,
                                     item.DanhBo,
                                     item.HoTen,
@@ -371,7 +371,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                 item.DaLapPhieu,
                                 item.SoPhieu,
                                 item.ThongBaoDuocKy,
-                                MaTB = item.MaCTCTDB,
+                                ID = item.MaCTCTDB,
                                 item.CreateDate,
                                 item.DanhBo,
                                 item.HoTen,
@@ -391,7 +391,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                 item.DaLapPhieu,
                                 item.SoPhieu,
                                 item.ThongBaoDuocKy,
-                                MaTB = item.MaCTCTDB,
+                                ID = item.MaCTCTDB,
                                 item.CreateDate,
                                 item.DanhBo,
                                 item.HoTen,
@@ -419,7 +419,6 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             item.DaLapPhieu,
                             item.SoPhieu,
                             item.ThongBaoDuocKy,
-                            MaTB = item.MaCTCTDB,
                             ID = item.MaCTCTDB,
                             item.CreateDate,
                             item.DanhBo,
@@ -428,6 +427,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             item.LyDo,
                             item.GhiChuLyDo,
                             item.SoTien,
+                            item.NguoiKy
                         };
             return LINQToDataTable(query);
         }
@@ -447,7 +447,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             item.DaLapPhieu,
                             item.SoPhieu,
                             item.ThongBaoDuocKy,
-                            MaTB = item.MaCTCTDB,
+                            ID = item.MaCTCTDB,
                             item.CreateDate,
                             item.DanhBo,
                             item.HoTen,
@@ -472,7 +472,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             item.DaLapPhieu,
                             item.SoPhieu,
                             item.ThongBaoDuocKy,
-                            MaTB = item.MaCTCTDB,
+                            ID = item.MaCTCTDB,
                             item.CreateDate,
                             item.DanhBo,
                             item.HoTen,
@@ -497,7 +497,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             item.DaLapPhieu,
                             item.SoPhieu,
                             item.ThongBaoDuocKy,
-                            MaTB = item.MaCTCTDB,
+                            ID = item.MaCTCTDB,
                             item.CreateDate,
                             item.DanhBo,
                             item.HoTen,
@@ -522,7 +522,6 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             item.DaLapPhieu,
                             item.SoPhieu,
                             item.ThongBaoDuocKy,
-                            MaTB = item.MaCTCTDB,
                             ID = item.MaCTCTDB,
                             item.CreateDate,
                             item.DanhBo,
@@ -532,6 +531,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             item.GhiChuLyDo,
                             item.SoTien,
                             item.NoiDungXuLy,
+                            item.NguoiKy
                         };
             return LINQToDataTable(query);
         }
@@ -550,7 +550,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                         + " and MaQuan=" + MaQuan + ""
                         + " order by t1.CreateDate";
 
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetDSCatTam_NgayLap_DaXuLy(DateTime FromCreateDate, DateTime ToCreateDate)
@@ -567,7 +567,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                         + " and MaQuan=" + MaQuan + ""
                         + " order by t1.CreateDate";
 
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetDSCatTam_NgayXuLy_DaXuLy(DateTime FromNgayXuLy, DateTime ToNgayXuLy)
@@ -700,7 +700,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     item.DaLapPhieu,
                                     item.SoPhieu,
                                     item.ThongBaoDuocKy,
-                                    MaTB = item.MaCTCHDB,
+                                    ID = item.MaCTCHDB,
                                     item.CreateDate,
                                     item.DanhBo,
                                     item.HoTen,
@@ -720,7 +720,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                 item.DaLapPhieu,
                                 item.SoPhieu,
                                 item.ThongBaoDuocKy,
-                                MaTB = item.MaCTCHDB,
+                                ID = item.MaCTCHDB,
                                 item.CreateDate,
                                 item.DanhBo,
                                 item.HoTen,
@@ -740,7 +740,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                 item.DaLapPhieu,
                                 item.SoPhieu,
                                 item.ThongBaoDuocKy,
-                                MaTB = item.MaCTCHDB,
+                                ID = item.MaCTCHDB,
                                 item.CreateDate,
                                 item.DanhBo,
                                 item.HoTen,
@@ -768,7 +768,6 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             item.DaLapPhieu,
                             item.SoPhieu,
                             item.ThongBaoDuocKy,
-                            MaTB = item.MaCTCHDB,
                             ID = item.MaCTCHDB,
                             item.CreateDate,
                             item.DanhBo,
@@ -777,6 +776,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             item.LyDo,
                             item.GhiChuLyDo,
                             item.SoTien,
+                            item.NguoiKy
                         };
             return LINQToDataTable(query);
         }
@@ -796,7 +796,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             item.DaLapPhieu,
                             item.SoPhieu,
                             item.ThongBaoDuocKy,
-                            MaTB = item.MaCTCHDB,
+                            ID = item.MaCTCHDB,
                             item.CreateDate,
                             item.DanhBo,
                             item.HoTen,
@@ -821,7 +821,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             item.DaLapPhieu,
                             item.SoPhieu,
                             item.ThongBaoDuocKy,
-                            MaTB = item.MaCTCHDB,
+                            ID = item.MaCTCHDB,
                             item.CreateDate,
                             item.DanhBo,
                             item.HoTen,
@@ -846,7 +846,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             item.DaLapPhieu,
                             item.SoPhieu,
                             item.ThongBaoDuocKy,
-                            MaTB = item.MaCTCHDB,
+                            ID = item.MaCTCHDB,
                             item.CreateDate,
                             item.DanhBo,
                             item.HoTen,
@@ -871,7 +871,6 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             item.DaLapPhieu,
                             item.SoPhieu,
                             item.ThongBaoDuocKy,
-                            MaTB = item.MaCTCHDB,
                             ID = item.MaCTCHDB,
                             item.CreateDate,
                             item.DanhBo,
@@ -881,6 +880,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             item.GhiChuLyDo,
                             item.SoTien,
                             item.NoiDungXuLy,
+                            item.NguoiKy
                         };
             return LINQToDataTable(query);
         }
@@ -942,7 +942,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                         + " and MaQuan=" + MaQuan + ""
                         + " order by t1.CreateDate";
 
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetDSCatHuy_NgayLap_DaXuLy(DateTime FromCreateDate, DateTime ToCreateDate)
@@ -959,7 +959,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                         + " and MaQuan=" + MaQuan+""
                         + " order by t1.CreateDate";
 
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetDSCatHuy_NgayXuLy_DaXuLy(DateTime FromNgayXuLy, DateTime ToNgayXuLy)

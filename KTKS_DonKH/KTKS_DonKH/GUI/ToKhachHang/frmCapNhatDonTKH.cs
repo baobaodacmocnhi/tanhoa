@@ -508,19 +508,8 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                     {
                         if (txtDanhBo.Text.Trim().Replace(" ", "") != "" && _cDonKH.CheckExist(txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now) == true)
                         {
-                            DialogResult result = MessageBox.Show("Danh Bộ này đã nhận đơn trong ngày hôm nay rồi", "Thông Báo", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
-                            if (result == DialogResult.Yes)
-                            {
-                                //code for Yes
-                            }
-                            else if (result == DialogResult.No)
-                            {
+                            if (MessageBox.Show("Danh Bộ này đã nhận đơn trong ngày hôm nay rồi\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                                 return;
-                            }
-                            else if (result == DialogResult.Cancel)
-                            {
-                                return;
-                            }
                         }
 
                         DonKH dontkh = new DonKH();

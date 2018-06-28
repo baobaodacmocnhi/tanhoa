@@ -29,26 +29,14 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.radDSCatTamDanhBo = new System.Windows.Forms.RadioButton();
             this.radDSCatHuyDanhBo = new System.Windows.Forms.RadioButton();
             this.dgvDSCTCHDB = new System.Windows.Forms.DataGridView();
-            this.In = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.PhieuDuocKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.DaLapPhieu = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.SoPhieuYCCHDB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ThongBaoDuocKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.MaTB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GhiChuLyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbTimTheo = new System.Windows.Forms.ComboBox();
             this.txtNoiDungTimKiem = new System.Windows.Forms.TextBox();
@@ -64,6 +52,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dgvDSYCCHDB = new System.Windows.Forms.DataGridView();
+            this.txtNoiDungTimKiem2 = new System.Windows.Forms.TextBox();
+            this.btnXem = new System.Windows.Forms.Button();
             this.YC_In = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.YC_PhieuDuocKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.SoPhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,8 +63,18 @@
             this.YC_DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.YC_LyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.YC_GhiChuLyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtNoiDungTimKiem2 = new System.Windows.Forms.TextBox();
-            this.btnXem = new System.Windows.Forms.Button();
+            this.In = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.PhieuDuocKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.DaLapPhieu = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.SoPhieuYCCHDB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ThongBaoDuocKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.MaTB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GhiChuLyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCTCHDB)).BeginInit();
             this.panel_KhoangThoiGian.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSYCCHDB)).BeginInit();
@@ -139,110 +139,6 @@
             this.dgvDSCTCHDB.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvDSCTCHDB_CellValidating);
             this.dgvDSCTCHDB.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSCTCHDB_RowPostPaint);
             this.dgvDSCTCHDB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSCTCHDB_KeyDown);
-            // 
-            // In
-            // 
-            this.In.DataPropertyName = "In";
-            this.In.FalseValue = "False";
-            this.In.HeaderText = "In";
-            this.In.Name = "In";
-            this.In.TrueValue = "True";
-            this.In.Width = 30;
-            // 
-            // PhieuDuocKy
-            // 
-            this.PhieuDuocKy.DataPropertyName = "PhieuDuocKy";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle2.NullValue = false;
-            this.PhieuDuocKy.DefaultCellStyle = dataGridViewCellStyle2;
-            this.PhieuDuocKy.HeaderText = "Phiếu Được Ký";
-            this.PhieuDuocKy.Name = "PhieuDuocKy";
-            this.PhieuDuocKy.Width = 80;
-            // 
-            // DaLapPhieu
-            // 
-            this.DaLapPhieu.DataPropertyName = "DaLapPhieu";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightCoral;
-            dataGridViewCellStyle3.NullValue = false;
-            this.DaLapPhieu.DefaultCellStyle = dataGridViewCellStyle3;
-            this.DaLapPhieu.HeaderText = "Đã Lập Phiếu";
-            this.DaLapPhieu.Name = "DaLapPhieu";
-            this.DaLapPhieu.ReadOnly = true;
-            this.DaLapPhieu.Width = 70;
-            // 
-            // SoPhieuYCCHDB
-            // 
-            this.SoPhieuYCCHDB.DataPropertyName = "SoPhieu";
-            this.SoPhieuYCCHDB.HeaderText = "Số Phiếu";
-            this.SoPhieuYCCHDB.Name = "SoPhieuYCCHDB";
-            this.SoPhieuYCCHDB.Width = 90;
-            // 
-            // ThongBaoDuocKy
-            // 
-            this.ThongBaoDuocKy.DataPropertyName = "ThongBaoDuocKy";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle4.NullValue = false;
-            this.ThongBaoDuocKy.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ThongBaoDuocKy.HeaderText = "TB Được Ký";
-            this.ThongBaoDuocKy.Name = "ThongBaoDuocKy";
-            this.ThongBaoDuocKy.Width = 80;
-            // 
-            // MaTB
-            // 
-            this.MaTB.DataPropertyName = "MaTB";
-            this.MaTB.HeaderText = "Mã Thông Báo";
-            this.MaTB.Name = "MaTB";
-            this.MaTB.ReadOnly = true;
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Ngày Lập";
-            this.CreateDate.Name = "CreateDate";
-            this.CreateDate.ReadOnly = true;
-            this.CreateDate.Width = 90;
-            // 
-            // DanhBo
-            // 
-            this.DanhBo.DataPropertyName = "DanhBo";
-            this.DanhBo.HeaderText = "Danh Bộ";
-            this.DanhBo.Name = "DanhBo";
-            this.DanhBo.ReadOnly = true;
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Khách Hàng";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.ReadOnly = true;
-            this.HoTen.Width = 150;
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.DataPropertyName = "DiaChi";
-            this.DiaChi.HeaderText = "Địa Chỉ";
-            this.DiaChi.Name = "DiaChi";
-            this.DiaChi.ReadOnly = true;
-            this.DiaChi.Width = 200;
-            // 
-            // LyDo
-            // 
-            this.LyDo.DataPropertyName = "LyDo";
-            this.LyDo.HeaderText = "Lý Do";
-            this.LyDo.Name = "LyDo";
-            this.LyDo.ReadOnly = true;
-            this.LyDo.Width = 200;
-            // 
-            // GhiChuLyDo
-            // 
-            this.GhiChuLyDo.DataPropertyName = "GhiChuLyDo";
-            this.GhiChuLyDo.HeaderText = "Ghi Chú";
-            this.GhiChuLyDo.Name = "GhiChuLyDo";
-            this.GhiChuLyDo.ReadOnly = true;
-            this.GhiChuLyDo.Width = 200;
             // 
             // label2
             // 
@@ -424,6 +320,24 @@
             this.dgvDSYCCHDB.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSYCCHDB_RowPostPaint);
             this.dgvDSYCCHDB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSYCCHDB_KeyDown);
             // 
+            // txtNoiDungTimKiem2
+            // 
+            this.txtNoiDungTimKiem2.Location = new System.Drawing.Point(621, 37);
+            this.txtNoiDungTimKiem2.Name = "txtNoiDungTimKiem2";
+            this.txtNoiDungTimKiem2.Size = new System.Drawing.Size(100, 22);
+            this.txtNoiDungTimKiem2.TabIndex = 5;
+            this.txtNoiDungTimKiem2.Visible = false;
+            // 
+            // btnXem
+            // 
+            this.btnXem.Location = new System.Drawing.Point(799, 18);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 25);
+            this.btnXem.TabIndex = 27;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
+            // 
             // YC_In
             // 
             this.YC_In.DataPropertyName = "In";
@@ -446,7 +360,7 @@
             // 
             // SoPhieu
             // 
-            this.SoPhieu.DataPropertyName = "MaTB";
+            this.SoPhieu.DataPropertyName = "ID";
             this.SoPhieu.HeaderText = "Số Phiếu";
             this.SoPhieu.Name = "SoPhieu";
             this.SoPhieu.ReadOnly = true;
@@ -498,23 +412,109 @@
             this.YC_GhiChuLyDo.ReadOnly = true;
             this.YC_GhiChuLyDo.Width = 200;
             // 
-            // txtNoiDungTimKiem2
+            // In
             // 
-            this.txtNoiDungTimKiem2.Location = new System.Drawing.Point(621, 37);
-            this.txtNoiDungTimKiem2.Name = "txtNoiDungTimKiem2";
-            this.txtNoiDungTimKiem2.Size = new System.Drawing.Size(100, 22);
-            this.txtNoiDungTimKiem2.TabIndex = 5;
-            this.txtNoiDungTimKiem2.Visible = false;
+            this.In.DataPropertyName = "In";
+            this.In.FalseValue = "False";
+            this.In.HeaderText = "In";
+            this.In.Name = "In";
+            this.In.TrueValue = "True";
+            this.In.Width = 30;
             // 
-            // btnXem
+            // PhieuDuocKy
             // 
-            this.btnXem.Location = new System.Drawing.Point(799, 18);
-            this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(75, 25);
-            this.btnXem.TabIndex = 27;
-            this.btnXem.Text = "Xem";
-            this.btnXem.UseVisualStyleBackColor = true;
-            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
+            this.PhieuDuocKy.DataPropertyName = "PhieuDuocKy";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle2.NullValue = false;
+            this.PhieuDuocKy.DefaultCellStyle = dataGridViewCellStyle2;
+            this.PhieuDuocKy.HeaderText = "Phiếu Được Ký";
+            this.PhieuDuocKy.Name = "PhieuDuocKy";
+            this.PhieuDuocKy.Width = 80;
+            // 
+            // DaLapPhieu
+            // 
+            this.DaLapPhieu.DataPropertyName = "DaLapPhieu";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightCoral;
+            dataGridViewCellStyle3.NullValue = false;
+            this.DaLapPhieu.DefaultCellStyle = dataGridViewCellStyle3;
+            this.DaLapPhieu.HeaderText = "Đã Lập Phiếu";
+            this.DaLapPhieu.Name = "DaLapPhieu";
+            this.DaLapPhieu.ReadOnly = true;
+            this.DaLapPhieu.Width = 70;
+            // 
+            // SoPhieuYCCHDB
+            // 
+            this.SoPhieuYCCHDB.DataPropertyName = "SoPhieu";
+            this.SoPhieuYCCHDB.HeaderText = "Số Phiếu";
+            this.SoPhieuYCCHDB.Name = "SoPhieuYCCHDB";
+            this.SoPhieuYCCHDB.Width = 90;
+            // 
+            // ThongBaoDuocKy
+            // 
+            this.ThongBaoDuocKy.DataPropertyName = "ThongBaoDuocKy";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle4.NullValue = false;
+            this.ThongBaoDuocKy.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ThongBaoDuocKy.HeaderText = "TB Được Ký";
+            this.ThongBaoDuocKy.Name = "ThongBaoDuocKy";
+            this.ThongBaoDuocKy.Width = 80;
+            // 
+            // MaTB
+            // 
+            this.MaTB.DataPropertyName = "ID";
+            this.MaTB.HeaderText = "Mã Thông Báo";
+            this.MaTB.Name = "MaTB";
+            this.MaTB.ReadOnly = true;
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
+            this.CreateDate.ReadOnly = true;
+            this.CreateDate.Width = 90;
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            this.DanhBo.ReadOnly = true;
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Khách Hàng";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.ReadOnly = true;
+            this.HoTen.Width = 150;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.DataPropertyName = "DiaChi";
+            this.DiaChi.HeaderText = "Địa Chỉ";
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.ReadOnly = true;
+            this.DiaChi.Width = 200;
+            // 
+            // LyDo
+            // 
+            this.LyDo.DataPropertyName = "LyDo";
+            this.LyDo.HeaderText = "Lý Do";
+            this.LyDo.Name = "LyDo";
+            this.LyDo.ReadOnly = true;
+            this.LyDo.Width = 200;
+            // 
+            // GhiChuLyDo
+            // 
+            this.GhiChuLyDo.DataPropertyName = "GhiChuLyDo";
+            this.GhiChuLyDo.HeaderText = "Ghi Chú";
+            this.GhiChuLyDo.Name = "GhiChuLyDo";
+            this.GhiChuLyDo.ReadOnly = true;
+            this.GhiChuLyDo.Width = 200;
             // 
             // frmDSCHDB
             // 

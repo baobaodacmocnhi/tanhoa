@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbTinhTrang = new System.Windows.Forms.ComboBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.btnInDS = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian = new System.Windows.Forms.Panel();
             this.dateTu_ThongKeTruyThu = new System.Windows.Forms.DateTimePicker();
@@ -36,8 +38,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnBaoCao_ThongKeTruyThu = new System.Windows.Forms.Button();
-            this.cmbTinhTrang = new System.Windows.Forms.ComboBox();
-            this.label23 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.SuspendLayout();
@@ -55,6 +55,34 @@
             this.groupBox1.TabIndex = 26;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thống Kê Truy Thu";
+            // 
+            // cmbTinhTrang
+            // 
+            this.cmbTinhTrang.FormattingEnabled = true;
+            this.cmbTinhTrang.Items.AddRange(new object[] {
+            "",
+            "Đang gửi thư mời",
+            "Chưa thanh toán",
+            "Đã thanh toán",
+            "Trả góp",
+            "Điều chỉnh không phát sinh truy thu",
+            "Miễn truy thu",
+            "Đã gửi TB tạm ngưng cung cấp nước",
+            "Chuyển lập TB hủy",
+            "Giữ nguyên"});
+            this.cmbTinhTrang.Location = new System.Drawing.Point(86, 87);
+            this.cmbTinhTrang.Name = "cmbTinhTrang";
+            this.cmbTinhTrang.Size = new System.Drawing.Size(172, 24);
+            this.cmbTinhTrang.TabIndex = 30;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(4, 90);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(76, 16);
+            this.label23.TabIndex = 29;
+            this.label23.Text = "Tình Trạng:";
             // 
             // btnInDS
             // 
@@ -122,33 +150,6 @@
             this.btnBaoCao_ThongKeTruyThu.Text = "Báo Cáo";
             this.btnBaoCao_ThongKeTruyThu.UseVisualStyleBackColor = true;
             this.btnBaoCao_ThongKeTruyThu.Click += new System.EventHandler(this.btnBaoCao_ThongKeTruyThu_Click);
-            // 
-            // cmbTinhTrang
-            // 
-            this.cmbTinhTrang.FormattingEnabled = true;
-            this.cmbTinhTrang.Items.AddRange(new object[] {
-            "",
-            "Đang gửi thư mời",
-            "Đã thanh toán",
-            "Trả góp",
-            "Điều chỉnh không phát sinh truy thu",
-            "Miễn truy thu",
-            "Đã gửi TB tạm ngưng cung cấp nước",
-            "Chuyển lập TB hủy",
-            "Giữ nguyên"});
-            this.cmbTinhTrang.Location = new System.Drawing.Point(86, 87);
-            this.cmbTinhTrang.Name = "cmbTinhTrang";
-            this.cmbTinhTrang.Size = new System.Drawing.Size(172, 24);
-            this.cmbTinhTrang.TabIndex = 30;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(4, 90);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(76, 16);
-            this.label23.TabIndex = 29;
-            this.label23.Text = "Tình Trạng:";
             // 
             // frmBaoCaoTruyThu
             // 

@@ -37,6 +37,8 @@
             this.txtMaDonCu = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dateTinhTrang = new System.Windows.Forms.DateTimePicker();
+            this.label25 = new System.Windows.Forms.Label();
             this.cmbTinhTrang = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
             this.txtNoiDung = new System.Windows.Forms.TextBox();
@@ -157,6 +159,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dateTinhTrang);
+            this.groupBox1.Controls.Add(this.label25);
             this.groupBox1.Controls.Add(this.cmbTinhTrang);
             this.groupBox1.Controls.Add(this.label23);
             this.groupBox1.Controls.Add(this.txtNoiDung);
@@ -184,12 +188,31 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Khách Hàng";
             // 
+            // dateTinhTrang
+            // 
+            this.dateTinhTrang.CustomFormat = "dd/MM/yyyy";
+            this.dateTinhTrang.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTinhTrang.Location = new System.Drawing.Point(313, 132);
+            this.dateTinhTrang.Name = "dateTinhTrang";
+            this.dateTinhTrang.Size = new System.Drawing.Size(90, 22);
+            this.dateTinhTrang.TabIndex = 33;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(204, 137);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(103, 16);
+            this.label25.TabIndex = 32;
+            this.label25.Text = "Ngày Cập Nhật:";
+            // 
             // cmbTinhTrang
             // 
             this.cmbTinhTrang.FormattingEnabled = true;
             this.cmbTinhTrang.Items.AddRange(new object[] {
             "",
             "Đang gửi thư mời",
+            "Chưa thanh toán",
             "Đã thanh toán",
             "Trả góp",
             "Điều chỉnh không phát sinh truy thu",
@@ -1192,5 +1215,7 @@
         private System.Windows.Forms.ComboBox cmbTinhTrang;
         private System.Windows.Forms.TextBox txtMaDonMoi;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.DateTimePicker dateTinhTrang;
+        private System.Windows.Forms.Label label25;
     }
 }

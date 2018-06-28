@@ -43,7 +43,7 @@ namespace KTKS_DonKH.DAL
                             + " select 0 as TongDonKH,0 as TongDonTXL,0 as TongDCHD,0 as TongDCBD,0 as TongCTDB,0 as TongCHDB,COUNT(*) as TongTTTL from TTTL a,CTTTTL b where a.MaTTTL=b.MaTTTL and CAST(b.CreateDate as date)>=@FromDate and CAST(b.CreateDate as date)<=@ToDate"
                             + " ) t1";
 
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace KTKS_DonKH.DAL
                             + " and (MaDon in (select MaDon from DonKH where CAST(CreateDate as date)>=@FromDate and CAST(CreateDate as date)<=@ToDate) or MaDonTXL in (select MaDon from DonTXL where CAST(CreateDate as date)>=@FromDate and CAST(CreateDate as date)<=@ToDate))"
                             + " ) t1";
 
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
     }

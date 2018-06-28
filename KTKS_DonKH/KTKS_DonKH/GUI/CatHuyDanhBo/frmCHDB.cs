@@ -148,6 +148,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     }
             txtMaDonMoi.Text = ctchdb.CHDB.MaDonMoi;
             txtMaThongBaoCH.Text = ctchdb.MaCTCHDB.ToString().Insert(ctchdb.MaCTCHDB.ToString().Length - 2, "-");
+            txtTCHC.Text = ctchdb.TCHC;
 
             if (!string.IsNullOrEmpty(ctchdb.MaCTCTDB.ToString()))
                 txtMaThongBaoCT.Text = ctchdb.MaCTCTDB.ToString().Insert(ctchdb.MaCTCTDB.ToString().Length - 2, "-");
@@ -238,6 +239,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             txtMaDonMoi.Text = "";
             txtMaThongBaoCH.Text = "";
             txtMaThongBaoCT.Text = "";
+            txtTCHC.Text = "";
             ///
             txtDanhBo.Text = "";
             txtHopDong.Text = "";
@@ -630,6 +632,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 {
                     if (_ctchdb != null)
                     {
+                        _ctchdb.TCHC = txtTCHC.Text.Trim();
                         _ctchdb.DanhBo = txtDanhBo.Text.Trim();
                         _ctchdb.HopDong = txtHopDong.Text.Trim();
                         _ctchdb.HoTen = txtHoTen.Text.Trim();

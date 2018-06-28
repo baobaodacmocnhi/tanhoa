@@ -1325,21 +1325,32 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                 DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
 
-                                if (ctdcbd.DCBD.MaDon != null)
-                                    dr["SoPhieu"] = ctdcbd.DCBD.MaDon.ToString().Insert(ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
-                                else
-                                    if (ctdcbd.DCBD.MaDonTXL != null)
-                                        dr["SoPhieu"] = "TXL" + ctdcbd.DCBD.MaDonTXL.ToString().Insert(ctdcbd.DCBD.MaDonTXL.ToString().Length - 2, "-");
-                                    else
-                                        if (ctdcbd.DCBD.MaDonTBC != null)
-                                            dr["SoPhieu"] = "TBC" + ctdcbd.DCBD.MaDonTBC.ToString().Insert(ctdcbd.DCBD.MaDonTBC.ToString().Length - 2, "-");
-
+                                dr["SoPhieu"] = ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
                                 dr["HieuLucKy"] = ctdcbd.HieuLucKy;
                                 dr["DanhBo"] = ctdcbd.DanhBo.Insert(7, " ").Insert(4, " ");
                                 dr["HopDong"] = ctdcbd.HopDong;
                                 dr["HoTen"] = ctdcbd.HoTen;
                                 dr["DiaChi"] = ctdcbd.DiaChi;
                                 dr["ThongTin"] = ctdcbd.GhiChu;
+                                if (ctdcbd.DCBD.MaDon != null)
+                                    dr["MaDon"] = ctdcbd.DCBD.MaDon.ToString().Insert(ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
+                                else
+                                    if (ctdcbd.DCBD.MaDonTXL != null)
+                                        dr["MaDon"] = "TXL" + ctdcbd.DCBD.MaDonTXL.ToString().Insert(ctdcbd.DCBD.MaDonTXL.ToString().Length - 2, "-");
+                                    else
+                                        if (ctdcbd.DCBD.MaDonTBC != null)
+                                            dr["MaDon"] = "TBC" + ctdcbd.DCBD.MaDonTBC.ToString().Insert(ctdcbd.DCBD.MaDonTBC.ToString().Length - 2, "-");
+                                if (radTruongPhong.Checked==true)
+                                {
+                                    dr["ChucVu"]="TRƯỞNG";
+                                    dr["NguoiKy"] = radTruongPhong.Text;
+                                }
+                                else
+                                    if (radPhoPhong.Checked == true)
+                                    {
+                                        dr["ChucVu"] = "PHÓ";
+                                        dr["NguoiKy"] = radPhoPhong.Text;
+                                    }
 
                                 dsBaoCao.Tables["DCBD"].Rows.Add(dr);
 
@@ -1349,10 +1360,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 printDialog.AllowSomePages = true;
                                 printDialog.ShowHelp = true;
 
-                                rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
-                                rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
+                                //rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
                                 rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-                                rpt.PrintToPrinter(1, false, 1, 1);
+                                //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, false, 0,0);
+                                rpt.PrintToPrinter(printDialog.PrinterSettings, printDialog.PrinterSettings.DefaultPageSettings, false);
                             }
                         }
                 }
@@ -1379,6 +1391,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                 dr["HoTen"] = ctdcbd.HoTen;
                                 dr["DiaChi"] = ctdcbd.DiaChi;
+                                dr["SoPhieu"] = ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-")+"/TB";
 
                                 dsBaoCao1.Tables["ThaoThuTraLoi"].Rows.Add(dr);
                                 flag = false;
@@ -1389,6 +1402,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                 dr["HoTen"] = ctdcbd.HoTen;
                                 dr["DiaChi"] = ctdcbd.DiaChi;
+                                dr["SoPhieu"] = ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-") + "/TB";
 
                                 dsBaoCao2.Tables["ThaoThuTraLoi"].Rows.Add(dr);
                                 flag = true;

@@ -1004,7 +1004,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         + " where CAST(t1.CreateDate as date)>='" + TuNgay.ToString("yyyy-MM-dd") + "' and CAST(t1.CreateDate as date)<='" + DenNgay.ToString("yyyy-MM-dd") + "'"
                         + " and MaQuan=" + MaQuan;
 
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable LoadDSCTDCBD(DateTime TuNgay, DateTime DenNgay, int MaQuan, int MaPhuong)
@@ -1016,7 +1016,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         + " where CAST(t1.CreateDate as date)>='" + TuNgay.ToString("yyyy-MM-dd") + "' and CAST(t1.CreateDate as date)<='" + DenNgay.ToString("yyyy-MM-dd") + "'"
                         + " and t4.MaQuan=" + MaQuan+" and t4.MaPhuong="+MaPhuong;
 
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable LoadDSCTDCBDSoCT(DateTime TuNgay, DateTime DenNgay)
@@ -1684,7 +1684,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         + " where CAST(t1.CreateDate as date)>='" + TuNgay.ToString("yyyy-MM-dd") + "' and CAST(t1.CreateDate as date)<='" + DenNgay.ToString("yyyy-MM-dd") + "'"
                         + " and MaQuan=" + MaQuan;
 
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable LoadDSCTDCHD(DateTime TuNgay, DateTime DenNgay, int MaQuan, int MaPhuong)
@@ -1696,7 +1696,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         + " where CAST(t1.CreateDate as date)>='" + TuNgay.ToString("yyyy-MM-dd") + "' and CAST(t1.CreateDate as date)<='" + DenNgay.ToString("yyyy-MM-dd") + "'"
                         + " and t4.MaQuan=" + MaQuan + " and t4.MaPhuong=" + MaPhuong;
 
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable getDSHoaDon(string DanhBo, int Nam, int Ky)

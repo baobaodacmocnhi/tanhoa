@@ -95,6 +95,7 @@
             this.txtMaDonMoi = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.chkNgayKTXMTruocNgayGiao = new System.Windows.Forms.CheckBox();
+            this.chkBaoThay = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKetQuaKiemTra)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -299,7 +300,7 @@
             this.DiaChi,
             this.NoiDungKiemTra,
             this.CreateBy});
-            this.dgvDSKetQuaKiemTra.Location = new System.Drawing.Point(12, 349);
+            this.dgvDSKetQuaKiemTra.Location = new System.Drawing.Point(12, 365);
             this.dgvDSKetQuaKiemTra.Name = "dgvDSKetQuaKiemTra";
             this.dgvDSKetQuaKiemTra.Size = new System.Drawing.Size(1016, 126);
             this.dgvDSKetQuaKiemTra.TabIndex = 6;
@@ -360,6 +361,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.chkBaoThay);
             this.groupBox2.Controls.Add(this.label24);
             this.groupBox2.Controls.Add(this.label23);
             this.groupBox2.Controls.Add(this.txtTieuThuTrungBinh);
@@ -395,7 +397,7 @@
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Location = new System.Drawing.Point(12, 181);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1016, 161);
+            this.groupBox2.Size = new System.Drawing.Size(1016, 178);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kết Quả";
@@ -772,12 +774,22 @@
             this.chkNgayKTXMTruocNgayGiao.Text = "Ngày KTXM Trước Ngày Giao";
             this.chkNgayKTXMTruocNgayGiao.UseVisualStyleBackColor = true;
             // 
+            // chkBaoThay
+            // 
+            this.chkBaoThay.AutoSize = true;
+            this.chkBaoThay.Location = new System.Drawing.Point(713, 155);
+            this.chkBaoThay.Name = "chkBaoThay";
+            this.chkBaoThay.Size = new System.Drawing.Size(86, 20);
+            this.chkBaoThay.TabIndex = 119;
+            this.chkBaoThay.Text = "Báo Thay";
+            this.chkBaoThay.UseVisualStyleBackColor = true;
+            // 
             // frmKTXM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1115, 484);
+            this.ClientSize = new System.Drawing.Size(1115, 502);
             this.Controls.Add(this.chkNgayKTXMTruocNgayGiao);
             this.Controls.Add(this.txtMaDonMoi);
             this.Controls.Add(this.label25);
@@ -875,5 +887,6 @@
         private System.Windows.Forms.TextBox txtMaDonMoi;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.CheckBox chkNgayKTXMTruocNgayGiao;
+        private System.Windows.Forms.CheckBox chkBaoThay;
     }
 }

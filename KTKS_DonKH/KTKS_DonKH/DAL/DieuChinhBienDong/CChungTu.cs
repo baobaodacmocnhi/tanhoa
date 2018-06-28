@@ -1117,7 +1117,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         + " where CAST(t1.CreateDate as date)>='" + TuNgay.ToString("yyyy-MM-dd") + "' and CAST(t1.CreateDate as date)<='" + DenNgay.ToString("yyyy-MM-dd") + "'"
                         + " and SoPhieu is not null and MaQuan=" + MaQuan;
 
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable LoadDSCatChuyenDM(DateTime TuNgay, DateTime DenNgay, int MaQuan, int MaPhuong)
@@ -1129,7 +1129,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         + " where CAST(t1.CreateDate as date)>='" + TuNgay.ToString("yyyy-MM-dd") + "' and CAST(t1.CreateDate as date)<='" + DenNgay.ToString("yyyy-MM-dd") + "'"
                         + " and SoPhieu is not null and t4.MaQuan=" + MaQuan + " and t4.MaPhuong=" + MaPhuong;
 
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         /// <summary>
@@ -3104,7 +3104,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             + " left join"
                             + " (select DANHBA,TIEUTHU,ROW_NUMBER() OVER (PARTITION BY DanhBa ORDER BY ID_HOADON DESC) AS rn from HOADON_TA.dbo.HOADON) t2 on t1.DanhBo=t2.DANHBA"
                             + " where rn=1";
-                return ExecuteQuery_SqlDataReader_DataTable(sql);
+                return ExecuteQuery_DataTable(sql);
             }
             catch (Exception ex)
             {
@@ -3120,7 +3120,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
                         + " where RowNumber=1";
 
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable LoadDSDanhBoCapDinhMucCoThoiHanDoanThanhNien(DateTime FromCreateDate, DateTime ToCreateDate)
@@ -3129,7 +3129,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         + " (select DanhBo,HoTen,DiaChi from CTDCBD where DoanThanhNien=1 and CAST(CreateDate as date)>='" + FromCreateDate.Date.ToString("yyyy-MM-dd") + "' and CAST(CreateDate as date)<='" + ToCreateDate.Date.ToString("yyyy-MM-dd") + "') t1"
                         + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo";
 
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable LoadDSDanhBoDCHDCodeF2(DateTime FromCreateDate, DateTime ToCreateDate)
@@ -3138,7 +3138,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         + " (select DanhBo,HoTen,DiaChi from CTDCHD where Codef2=1 and CAST(CreateDate as date)>='" + FromCreateDate.Date.ToString("yyyy-MM-dd") + "' and CAST(CreateDate as date)<='" + ToCreateDate.Date.ToString("yyyy-MM-dd") + "') t1"
                         + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo";
 
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         #endregion

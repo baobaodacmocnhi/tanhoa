@@ -14,6 +14,7 @@ namespace KTKS_DonKH.DAL
 
         protected static string _connectionString;  // Chuỗi kết nối
         protected SqlConnection connection;         // Đối tượng kết nối
+        protected SqlDataAdapter adapter;           // Đối tượng adapter chứa dữ liệu
         protected SqlCommand command;               // Đối tượng command thực thi truy vấn
 
         public CThuTien()
@@ -41,25 +42,22 @@ namespace KTKS_DonKH.DAL
                 connection.Close();
         }
 
-        public DataTable ExecuteQuery_SqlDataReader_DataTable(string sql)
+        public DataTable ExecuteQuery_DataTable(string sql)
         {
+            this.Connect();
+            DataTable dt = new DataTable();
+            command = new SqlCommand(sql, connection);
+            adapter = new SqlDataAdapter(command);
             try
             {
-                DataTable dt = new DataTable();
-                Connect();
-                command = new SqlCommand(sql, connection);
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.HasRows)
-                    dt.Load(reader);
-                Disconnect();
-                return dt;
+                adapter.Fill(dt);
             }
-            catch (Exception ex)
+            catch (SqlException e)
             {
-                Disconnect();
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return null;
+                throw e;
             }
+            this.Disconnect();
+            return dt;
         }
 
         public HOADON GetMoiNhat(string DanhBo)
@@ -94,14 +92,14 @@ namespace KTKS_DonKH.DAL
         {
             string sql = "select * from fnTimKiem('" + DanhBo + "','" + MLT + "') order by MaHD desc";
 
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetDSTimKiemTTKH(string HoTen, string SoNha, string TenDuong)
         {
             string sql = "select * from fnTimKiemTTKH('" + HoTen + "','" + SoNha + "','" + TenDuong + "')";
 
-            return ExecuteQuery_SqlDataReader_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public HOADON Copy(HOADON a, TT_HoaDonCu b)

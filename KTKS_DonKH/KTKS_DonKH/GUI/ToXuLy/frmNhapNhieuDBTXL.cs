@@ -114,8 +114,8 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         if (item.Cells["DanhBo"].Value != null)
                             if (_cDonTXL.CheckExist(item.Cells["DanhBo"].Value.ToString(), DateTime.Now) == true)
                             {
-                                MessageBox.Show("Danh Bộ " + item.Cells["DanhBo"].Value.ToString() + "đã nhận đơn trong ngày hôm nay rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
+                                if (MessageBox.Show("Danh Bộ " + item.Cells["DanhBo"].Value.ToString() + "đã nhận đơn trong ngày hôm nay rồi\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                                    return;
                             }
                     }
 

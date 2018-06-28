@@ -141,7 +141,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                     dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                 dr["DiaChi"] = item["DiaChi"].ToString();
                 dr["NoiChuyen"] = item["NoiChuyen"].ToString();
-                dr["NoiDung"] = item["NoiNhan"].ToString();
+                dr["NoiDung"] = item["NoiNhan"].ToString() + ", " + item["GhiChu"].ToString();
 
                 dsBaoCao.Tables["CongVan"].Rows.Add(dr);
             }
@@ -188,8 +188,8 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             {
                 DataRow dr = dsBaoCao.Tables["CongVan"].NewRow();
 
-                dr["TuNgay"] = dateTu_LichSuChuyenDon.Value.ToString("dd/MM/yyyy");
-                dr["DenNgay"] = dateDen_LichSuChuyenDon.Value.ToString("dd/MM/yyyy");
+                dr["TuNgay"] = dateTu_DSChuyenVP.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen_DSChuyenVP.Value.ToString("dd/MM/yyyy");
                 dr["LoaiVanBan"] = item["TenLD"].ToString();
                 if (item["MaDon"].ToString().Length > 2)
                     dr["Ma"] = item["MaDon"].ToString().Insert(item["MaDon"].ToString().Length - 2, "-");
@@ -198,7 +198,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                     dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                 dr["DiaChi"] = item["DiaChi"].ToString();
                 dr["NoiChuyen"] = item["NoiChuyen"].ToString();
-                dr["NoiDung"] = item["NoiNhan"].ToString();
+                dr["NoiDung"] = item["NoiNhan"].ToString() + ", " + item["GhiChu"].ToString();
 
                 dsBaoCao.Tables["CongVan"].Rows.Add(dr);
             }

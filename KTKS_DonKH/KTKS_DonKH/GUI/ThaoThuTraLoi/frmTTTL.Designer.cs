@@ -86,6 +86,8 @@
             this.btnIn = new System.Windows.Forms.Button();
             this.txtMaDonMoi = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.txtTCHC = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuTTTL)).BeginInit();
@@ -454,7 +456,7 @@
             // 
             // txtMaCTTTTL
             // 
-            this.txtMaCTTTTL.Location = new System.Drawing.Point(565, 12);
+            this.txtMaCTTTTL.Location = new System.Drawing.Point(575, 12);
             this.txtMaCTTTTL.Name = "txtMaCTTTTL";
             this.txtMaCTTTTL.Size = new System.Drawing.Size(60, 22);
             this.txtMaCTTTTL.TabIndex = 16;
@@ -463,7 +465,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(503, 15);
+            this.label9.Location = new System.Drawing.Point(513, 15);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(56, 16);
             this.label9.TabIndex = 15;
@@ -606,7 +608,7 @@
             // 
             // txtMaDonMoi
             // 
-            this.txtMaDonMoi.Location = new System.Drawing.Point(417, 13);
+            this.txtMaDonMoi.Location = new System.Drawing.Point(427, 12);
             this.txtMaDonMoi.Name = "txtMaDonMoi";
             this.txtMaDonMoi.Size = new System.Drawing.Size(80, 22);
             this.txtMaDonMoi.TabIndex = 117;
@@ -621,6 +623,22 @@
             this.label15.TabIndex = 116;
             this.label15.Text = "Mã Đơn(New):";
             // 
+            // txtTCHC
+            // 
+            this.txtTCHC.Location = new System.Drawing.Point(695, 12);
+            this.txtTCHC.Name = "txtTCHC";
+            this.txtTCHC.Size = new System.Drawing.Size(60, 22);
+            this.txtTCHC.TabIndex = 122;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(641, 15);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(48, 16);
+            this.label16.TabIndex = 121;
+            this.label16.Text = "TCHC:";
+            // 
             // frmTTTL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -628,6 +646,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1251, 518);
+            this.Controls.Add(this.txtTCHC);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.txtMaDonMoi);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.btnIn);
@@ -733,5 +753,7 @@
         private System.Windows.Forms.Button btnIn;
         private System.Windows.Forms.TextBox txtMaDonMoi;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtTCHC;
+        private System.Windows.Forms.Label label16;
     }
 }

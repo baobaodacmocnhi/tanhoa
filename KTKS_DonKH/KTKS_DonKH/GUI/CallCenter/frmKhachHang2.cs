@@ -122,7 +122,7 @@ namespace KTKS_DonKH.GUI.CallCenter
                 {
                     sql += " AND replace((SoNha + ' ' + TenDuong ),' ','') LIKE N'%" + txtSearchDC.Text.Replace(" ", "") + "%' ";
                 }
-                dataGridCall.DataSource = t.ExecuteQuery_SqlDataReader_DataTable(sql);
+                dataGridCall.DataSource = t.ExecuteQuery_DataTable(sql);
                 Utilities.DataGridV.formatRows(dataGridCall);
 
                 

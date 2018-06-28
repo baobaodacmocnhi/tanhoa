@@ -224,7 +224,7 @@ namespace KTKS_DonKH.DAL.CallCenter
             sql += "   WHERE tn.LoaiHs=lt.ID  ";
             sql += " AND DanhBo='" + danhbo + "' ORDER BY  NgayNhan DESC ";
 
-            return t.ExecuteQuery_SqlDataReader_DataTable(sql);
+            return t.ExecuteQuery_DataTable(sql);
         
         }
 

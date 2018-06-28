@@ -71,6 +71,11 @@
             this.groupBoxGhiChu = new System.Windows.Forms.GroupBox();
             this.btnGhiChu = new System.Windows.Forms.Button();
             this.dgvGhiChu = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayLap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label28 = new System.Windows.Forms.Label();
             this.txtMaThongBao = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -101,11 +106,8 @@
             this.dgvGhiChuDocSo = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayLap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtTCHC = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBoxNoiDungXuLy.SuspendLayout();
             this.groupBoxGhiChu.SuspendLayout();
@@ -548,6 +550,43 @@
             this.dgvGhiChu.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvLichSuXuLy_RowPostPaint);
             this.dgvGhiChu.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvLichSuXuLy_MouseClick);
             // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
+            // NgayLap
+            // 
+            this.NgayLap.DataPropertyName = "NgayLap";
+            this.NgayLap.HeaderText = "Ngày Lập";
+            this.NgayLap.Name = "NgayLap";
+            this.NgayLap.ReadOnly = true;
+            // 
+            // NoiDung
+            // 
+            this.NoiDung.DataPropertyName = "NoiDung";
+            this.NoiDung.HeaderText = "Nội Dung";
+            this.NoiDung.Name = "NoiDung";
+            this.NoiDung.ReadOnly = true;
+            this.NoiDung.Width = 200;
+            // 
+            // NoiNhan
+            // 
+            this.NoiNhan.DataPropertyName = "NoiNhan";
+            this.NoiNhan.HeaderText = "Nơi Nhận";
+            this.NoiNhan.Name = "NoiNhan";
+            this.NoiNhan.ReadOnly = true;
+            // 
+            // GhiChu
+            // 
+            this.GhiChu.DataPropertyName = "GhiChu";
+            this.GhiChu.HeaderText = "Ghi Chú";
+            this.GhiChu.Name = "GhiChu";
+            this.GhiChu.ReadOnly = true;
+            // 
             // label28
             // 
             this.label28.AutoSize = true;
@@ -560,7 +599,7 @@
             // 
             // txtMaThongBao
             // 
-            this.txtMaThongBao.Location = new System.Drawing.Point(561, 12);
+            this.txtMaThongBao.Location = new System.Drawing.Point(570, 12);
             this.txtMaThongBao.Name = "txtMaThongBao";
             this.txtMaThongBao.Size = new System.Drawing.Size(60, 22);
             this.txtMaThongBao.TabIndex = 3;
@@ -569,7 +608,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(503, 15);
+            this.label10.Location = new System.Drawing.Point(513, 15);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(51, 16);
             this.label10.TabIndex = 2;
@@ -781,7 +820,7 @@
             // 
             // txtMaDonMoi
             // 
-            this.txtMaDonMoi.Location = new System.Drawing.Point(417, 12);
+            this.txtMaDonMoi.Location = new System.Drawing.Point(427, 12);
             this.txtMaDonMoi.Name = "txtMaDonMoi";
             this.txtMaDonMoi.Size = new System.Drawing.Size(80, 22);
             this.txtMaDonMoi.TabIndex = 117;
@@ -825,42 +864,21 @@
             this.Column2.ReadOnly = true;
             this.Column2.Width = 150;
             // 
-            // ID
+            // txtTCHC
             // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
+            this.txtTCHC.Location = new System.Drawing.Point(690, 12);
+            this.txtTCHC.Name = "txtTCHC";
+            this.txtTCHC.Size = new System.Drawing.Size(60, 22);
+            this.txtTCHC.TabIndex = 120;
             // 
-            // NgayLap
+            // label13
             // 
-            this.NgayLap.DataPropertyName = "NgayLap";
-            this.NgayLap.HeaderText = "Ngày Lập";
-            this.NgayLap.Name = "NgayLap";
-            this.NgayLap.ReadOnly = true;
-            // 
-            // NoiDung
-            // 
-            this.NoiDung.DataPropertyName = "NoiDung";
-            this.NoiDung.HeaderText = "Nội Dung";
-            this.NoiDung.Name = "NoiDung";
-            this.NoiDung.ReadOnly = true;
-            this.NoiDung.Width = 200;
-            // 
-            // NoiNhan
-            // 
-            this.NoiNhan.DataPropertyName = "NoiNhan";
-            this.NoiNhan.HeaderText = "Nơi Nhận";
-            this.NoiNhan.Name = "NoiNhan";
-            this.NoiNhan.ReadOnly = true;
-            // 
-            // GhiChu
-            // 
-            this.GhiChu.DataPropertyName = "GhiChu";
-            this.GhiChu.HeaderText = "Ghi Chú";
-            this.GhiChu.Name = "GhiChu";
-            this.GhiChu.ReadOnly = true;
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(636, 15);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(48, 16);
+            this.label13.TabIndex = 119;
+            this.label13.Text = "TCHC:";
             // 
             // frmCTDB
             // 
@@ -869,6 +887,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1298, 652);
+            this.Controls.Add(this.txtTCHC);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.dgvGhiChuDocSo);
             this.Controls.Add(this.txtMaDonMoi);
             this.Controls.Add(this.label12);
@@ -993,5 +1013,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiNhan;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
+        private System.Windows.Forms.TextBox txtTCHC;
+        private System.Windows.Forms.Label label13;
     }
 }

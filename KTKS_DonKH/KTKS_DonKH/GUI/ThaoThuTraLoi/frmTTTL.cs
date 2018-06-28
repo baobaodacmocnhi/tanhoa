@@ -100,8 +100,9 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                         _dontbc = _cDonTBC.Get(cttttl.TTTL.MaDonTBC.Value);
                         txtMaDonCu.Text = "TBC" + cttttl.TTTL.MaDonTBC.Value.ToString().Insert(cttttl.TTTL.MaDonTBC.Value.ToString().Length - 2, "-");
                     }
-
             txtMaCTTTTL.Text = cttttl.MaCTTTTL.ToString().Insert(cttttl.MaCTTTTL.ToString().Length - 2, "-");
+            txtTCHC.Text = cttttl.TCHC;
+
             txtDanhBo.Text = cttttl.DanhBo;
             txtHopDong.Text = cttttl.HopDong;
             txtLoTrinh.Text = cttttl.LoTrinh;
@@ -136,6 +137,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         {
             txtMaDonCu.Text = "";
             txtMaCTTTTL.Text = "";
+            txtTCHC.Text = "";
             ///
             txtDanhBo.Text = "";
             txtHopDong.Text = "";
@@ -510,6 +512,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 {
                     if (_cttttl != null)
                     {
+                        _cttttl.TCHC = txtTCHC.Text.Trim();
                         _cttttl.DanhBo = txtDanhBo.Text.Trim();
                         _cttttl.HopDong = txtHopDong.Text.Trim();
                         _cttttl.LoTrinh = txtLoTrinh.Text.Trim();

@@ -226,7 +226,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                 dr["DiaChi"] = item["DiaChi"].ToString();
                 dr["NoiChuyen"] = item["NoiChuyen"].ToString();
-                dr["NoiDung"] = item["NoiNhan"].ToString();
+                dr["NoiDung"] = item["NoiNhan"].ToString() + ", " + item["GhiChu"].ToString();
 
                 dsBaoCao.Tables["CongVan"].Rows.Add(dr);
             }

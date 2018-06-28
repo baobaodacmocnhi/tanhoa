@@ -32,7 +32,10 @@ namespace KTKS_DonKH.GUI.BamChi
         private void btnBaoCao_ThongKeTrangThaiBamChi_Click(object sender, EventArgs e)
         {
             DataTable dt=new DataTable();
-
+            if (chkAll_ThongKeHienTrangKiemTra.Checked == true)
+                dt = _cBamChi.GetDS("", dateTu_ThongKeTrangThaiBamChi.Value, dateDen_ThongKeTrangThaiBamChi.Value);
+            else
+            {
             if (CTaiKhoan.ToKH)
                 dt = _cBamChi.GetDS("TKH",dateTu_ThongKeTrangThaiBamChi.Value, dateDen_ThongKeTrangThaiBamChi.Value);
             else
@@ -41,6 +44,7 @@ namespace KTKS_DonKH.GUI.BamChi
                 else
                     if (CTaiKhoan.ToBC)
                         dt = _cBamChi.GetDS("TBC", dateTu_ThongKeTrangThaiBamChi.Value, dateDen_ThongKeTrangThaiBamChi.Value);
+            }
 
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
@@ -49,8 +53,8 @@ namespace KTKS_DonKH.GUI.BamChi
                 DataRow dr = dsBaoCao.Tables["DSBamChi"].NewRow();
                 dr["TuNgay"] = dateTu_ThongKeTrangThaiBamChi.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen_ThongKeTrangThaiBamChi.Value.ToString("dd/MM/yyyy");
-                dr["MaCTBC"] = item["MaCTBC"];
-                dr["TrangThaiBC"] = item["TrangThaiBC"];
+                //dr["MaCTBC"] = item["MaCTBC"];
+                dr["TenLD"] = item["TenLD"];
                 
                 dsBaoCao.Tables["DSBamChi"].Rows.Add(dr);
             }

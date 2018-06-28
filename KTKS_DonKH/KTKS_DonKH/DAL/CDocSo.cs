@@ -15,7 +15,7 @@ namespace KTKS_DonKH.DAL
 
         protected static string _connectionString;
         protected SqlConnection connection;
-        protected SqlDataAdapter adapter;
+        protected SqlDataAdapter adapter;           // Đối tượng adapter chứa dữ liệu
         protected SqlCommand command;
 
         public CDocSo()
@@ -61,56 +61,22 @@ namespace KTKS_DonKH.DAL
             }
         }
 
-        /// <summary>
-        /// Thực thi câu truy vấn SQL trả về một đối tượng DataSet chứa kết quả trả về
-        /// </summary>
-        /// <param name="strSelect">Câu truy vấn cần thực thi lấy dữ liệu</param>
-        /// <returns>Đối tượng dataset chứa dữ liệu kết quả câu truy vấn</returns>
-        public DataSet ExecuteQuery_SqlDataAdapter_DataSet(string sql)
+        public DataTable ExecuteQuery_DataTable(string sql)
         {
+            this.Connect();
+            DataTable dt = new DataTable();
+            command = new SqlCommand(sql, connection);
+            adapter = new SqlDataAdapter(command);
             try
             {
-                Connect();
-                DataSet dataset = new DataSet();
-                command = new SqlCommand();
-                command.Connection = this.connection;
-                adapter = new SqlDataAdapter(sql, connection);
-                try
-                {
-                    adapter.Fill(dataset);
-                }
-                catch (SqlException e)
-                {
-                    throw e;
-                }
-                Disconnect();
-                return dataset;
+                adapter.Fill(dt);
             }
-            catch (Exception)
+            catch (SqlException e)
             {
-                Disconnect();
-                //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                throw e;
             }
-        }
-
-        /// <summary>
-        /// Thực thi câu truy vấn SQL trả về một đối tượng DataTable chứa kết quả trả về
-        /// </summary>
-        /// <param name="strSelect">Câu truy vấn cần thực thi lấy dữ liệu</param>
-        /// <returns>Đối tượng datatable chứa dữ liệu kết quả câu truy vấn</returns>
-        public DataTable ExecuteQuery_SqlDataAdapter_DataTable(string sql)
-        {
-            try
-            {
-                return ExecuteQuery_SqlDataAdapter_DataSet(sql).Tables[0];
-            }
-            catch (Exception)
-            {
-                Disconnect();
-                //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+            this.Disconnect();
+            return dt;
         }
 
         public TB_DULIEUKHACHHANG GetTTKH(string DanhBo)
@@ -288,7 +254,10 @@ namespace KTKS_DonKH.DAL
 
         public string GetDot(string DanhBo)
         {
+            if (db.TB_DULIEUKHACHHANGs.Any(item => item.DANHBO == DanhBo)==true)
             return db.TB_DULIEUKHACHHANGs.SingleOrDefault(item => item.DANHBO == DanhBo).LOTRINH.Substring(0, 2);
+            else
+                return db.TB_DULIEUKHACHHANG_HUYDBs.SingleOrDefault(item => item.DANHBO == DanhBo).LOTRINH.Substring(0, 2);
         }
 
         public DataTable GetDSChungCu()
@@ -298,7 +267,7 @@ namespace KTKS_DonKH.DAL
                         + " left join PHUONG c on a.QUAN=c.MAQUAN and a.PHUONG=c.MAPHUONG"
                         + " where GIABIEU=51 or GIABIEU=59 or GIABIEU=68";
 
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            return ExecuteQuery_DataTable(sql);
         }
 
         public List<TB_GHICHU> GetDSGhiChu(string DanhBo)

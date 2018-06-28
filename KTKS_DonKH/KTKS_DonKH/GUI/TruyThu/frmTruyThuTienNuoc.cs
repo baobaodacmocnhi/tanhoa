@@ -105,6 +105,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                     }
             txtMaTTTN.Text = tttn.MaTTTN.ToString().Insert(tttn.MaTTTN.ToString().Length - 2, "-");
             //chkXepDon.Checked = tttn.XepDon;
+            if (tttn.NgayTinhTrang != null)
+            dateTinhTrang.Value = tttn.NgayTinhTrang.Value;
             cmbTinhTrang.SelectedItem = tttn.TinhTrang;
             txtDanhBo.Text = tttn.DanhBo;
             txtHopDong.Text = tttn.HopDong;
@@ -797,7 +799,10 @@ namespace KTKS_DonKH.GUI.TruyThu
                     tttn.DienThoai = txtDienThoai.Text.Trim();
                     tttn.NoiDung = txtNoiDung.Text.Trim();
                     if (cmbTinhTrang.SelectedIndex != -1)
+                    {
+                        tttn.NgayTinhTrang = dateTinhTrang.Value;
                         tttn.TinhTrang = cmbTinhTrang.SelectedItem.ToString();
+                    }
                     else
                         tttn.TinhTrang = "";
                     if (_hoadon != null)
@@ -883,7 +888,10 @@ namespace KTKS_DonKH.GUI.TruyThu
                     {
                         //_tttn.XepDon = chkXepDon.Checked;
                         if (cmbTinhTrang.SelectedIndex != -1)
+                        {
+                            _tttn.NgayTinhTrang = dateTinhTrang.Value;
                             _tttn.TinhTrang = cmbTinhTrang.SelectedItem.ToString();
+                        }
                         else
                             _tttn.TinhTrang = "";
                         _tttn.DanhBo = txtDanhBo.Text.Trim();
@@ -1279,6 +1287,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                         if (_cTTTN.ThemThuMoi(entity))
                         {
+                            _tttn.NgayTinhTrang = DateTime.Now;
                             _tttn.TinhTrang = "Đang gửi thư mời";
                             _cTTTN.SubmitChanges();
                             ClearThuMoi();
