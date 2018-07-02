@@ -406,11 +406,13 @@ namespace ThuTien.GUI.Doi
                     dr["Ky"] = cmbKy.SelectedItem.ToString();
                     dr["Nam"] = cmbNam.SelectedValue.ToString();
                     dr["Loai"] = dtTruoc.Rows[i]["Dot"].ToString();
+                    dr["ChuKyTruoc"] = dtTruoc.Rows[i]["SoNgay"].ToString();
                     dr["TongHDTruoc"] = dtTruoc.Rows[i]["TongHD"].ToString();
                     dr["TongTieuThuTruoc"] = dtTruoc.Rows[i]["TongTieuThu"].ToString();
                     dr["TongCongTruoc"] = dtTruoc.Rows[i]["TongCong"].ToString();
                     if (dt.Rows.Count-1>=i)
                     {
+                        dr["ChuKy"] = dt.Rows[i]["SoNgay"].ToString();
                         dr["TongHD"] = dt.Rows[i]["TongHD"].ToString();
                         dr["TongTieuThu"] = dt.Rows[i]["TongTieuThu"].ToString();
                         dr["TongCong"] = dt.Rows[i]["TongCong"].ToString();

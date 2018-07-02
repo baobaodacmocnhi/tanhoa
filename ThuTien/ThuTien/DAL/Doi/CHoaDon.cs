@@ -579,7 +579,7 @@ namespace ThuTien.DAL.Doi
                     + " TongPhiBVMT=SUM(PHI),TongCong=SUM(TONGCONG),HD0=COUNT(case when TIEUTHU = 0 then 1 else null end)"
                     + " from HOADON where NAM=@Nam and KY=@Ky group by DOT) a,"
                     + " (select * from"
-                    + " (select DOT,CreateDate,ROW_NUMBER() OVER (PARTITION BY DOT ORDER BY CreateDate DESC) AS rn from HOADON where NAM=@Nam and KY=@Ky) b"
+                    + " (select DOT,SoNgay,CreateDate,ROW_NUMBER() OVER (PARTITION BY DOT ORDER BY CreateDate DESC) AS rn from HOADON where NAM=@Nam and KY=@Ky) b"
                     + " where rn=1) c"
                     + " where a.DOT=c.DOT"
                     + " order by a.DOT";
