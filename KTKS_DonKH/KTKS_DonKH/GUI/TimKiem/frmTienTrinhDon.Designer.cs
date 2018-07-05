@@ -370,7 +370,7 @@
             // gridColumn116
             // 
             this.gridColumn116.Caption = "Số Tiền";
-            this.gridColumn116.FieldName = "GhiChuDongTien";
+            this.gridColumn116.FieldName = "SoTienDongTien";
             this.gridColumn116.Name = "gridColumn116";
             this.gridColumn116.OptionsColumn.AllowEdit = false;
             this.gridColumn116.Visible = true;

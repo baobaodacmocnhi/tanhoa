@@ -137,7 +137,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtNoiDungKiemTra.Text = ctktxm.NoiDungKiemTra;
             if (ctktxm.TieuThuTrungBinh!=null)
             txtTieuThuTrungBinh.Text = ctktxm.TieuThuTrungBinh.Value.ToString();
-            chkBaoThay.Checked = ctktxm.BaoThay;
+            if (ctktxm.NoiDungBaoThay != null)
+                cmbNoiDungBaoThay.SelectedText = ctktxm.NoiDungBaoThay;
         }
 
         public void Clear()
@@ -168,7 +169,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtNoiDungKiemTra.Text = "";
             txtTheoYeuCau.Text = "";
             txtTieuThuTrungBinh.Text = "0";
-            chkBaoThay.Checked = false;
+            cmbNoiDungBaoThay.SelectedIndex=-1;
 
             _MaCTKTXM = -1;
             _ctktxm = null;
@@ -206,7 +207,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtNoiDungKiemTra.Text = "";
             txtTheoYeuCau.Text = "";
             txtTieuThuTrungBinh.Text = "0";
-            chkBaoThay.Checked = false;
+            cmbNoiDungBaoThay.SelectedIndex = -1 ;
 
             _MaCTKTXM = -1;
             _ctktxm = null;
@@ -495,7 +496,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     ctktxm.NoiDungKiemTra = txtNoiDungKiemTra.Text.Trim();
                     ctktxm.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
                     ctktxm.TieuThuTrungBinh = int.Parse(txtTieuThuTrungBinh.Text.Trim());
-                    ctktxm.BaoThay = chkBaoThay.Checked;
+                    if (cmbNoiDungBaoThay.SelectedIndex!=-1&& string.IsNullOrEmpty(cmbNoiDungBaoThay.SelectedText) == false)
+                        ctktxm.NoiDungBaoThay = cmbNoiDungBaoThay.SelectedText;
 
                     if (_cKTXM.ThemCT(ctktxm))
                     {
@@ -589,7 +591,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         _ctktxm.NoiDungKiemTra = txtNoiDungKiemTra.Text.Trim();
                         _ctktxm.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
                         _ctktxm.TieuThuTrungBinh = int.Parse(txtTieuThuTrungBinh.Text.Trim());
-                        _ctktxm.BaoThay = chkBaoThay.Checked;
+                        if (cmbNoiDungBaoThay.SelectedIndex != -1 && string.IsNullOrEmpty(cmbNoiDungBaoThay.SelectedText) == false)
+                            _ctktxm.NoiDungBaoThay = cmbNoiDungBaoThay.SelectedText;
 
                         if (_cKTXM.SuaCT(_ctktxm))
                         {

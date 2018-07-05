@@ -92,7 +92,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 
                             CTTTTL cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSThu["MaCTTTTL", i].Value.ToString()));
 
-                            dr["SoPhieu"] = cttttl.MaCTTTTL.ToString().Insert(cttttl.MaCTTTTL.ToString().Length - 2, "-");
+                            //dr["SoPhieu"] = cttttl.MaCTTTTL.ToString().Insert(cttttl.MaCTTTTL.ToString().Length - 2, "-");
                             dr["LoTrinh"] = cttttl.LoTrinh;
                             dr["HoTen"] = cttttl.HoTen;
                             dr["DiaChi"] = cttttl.DiaChi;
@@ -112,7 +112,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 
                             dr["VeViec"] = cttttl.VeViec;
                             dr["NoiDung"] = cttttl.NoiDung;
-                            dr["NoiNhan"] = cttttl.NoiNhan;
+                            dr["NoiNhan"] = cttttl.NoiNhan + "\r\nTTL" + cttttl.MaCTTTTL.ToString().Insert(cttttl.MaCTTTTL.ToString().Length - 2, "-");
                             dr["ChucVu"] = cttttl.ChucVu;
                             dr["NguoiKy"] = cttttl.NguoiKy;
 

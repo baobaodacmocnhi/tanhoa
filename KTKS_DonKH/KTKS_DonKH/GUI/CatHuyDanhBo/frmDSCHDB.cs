@@ -463,7 +463,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                                 CTCTDB ctctdb = _cCHDB.GetCTCTDB(decimal.Parse(dgvDSCTCHDB["MaTB", i].Value.ToString()));
 
-                                dr["SoPhieu"] = ctctdb.MaCTCTDB.ToString().Insert(ctctdb.MaCTCTDB.ToString().Length - 2, "-");
+                                //dr["SoPhieu"] = ctctdb.MaCTCTDB.ToString().Insert(ctctdb.MaCTCTDB.ToString().Length - 2, "-");
                                 dr["HoTen"] = ctctdb.HoTen;
                                 dr["DiaChi"] = ctctdb.DiaChi;
                                 if (!string.IsNullOrEmpty(ctctdb.DanhBo))
@@ -480,7 +480,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     dr["LyDo"] += "Số Tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", ctctdb.SoTien);
                                 dr["NoiDung"] = ctctdb.NoiDung;
 
-                                dr["NoiNhan"] = ctctdb.NoiNhan;
+                                dr["NoiNhan"] = ctctdb.NoiNhan + "\r\nTB" + ctctdb.MaCTCTDB.ToString().Insert(ctctdb.MaCTCTDB.ToString().Length - 2, "-");
 
                                 if (ctctdb.NgayXuLy != null)
                                     dr["NgayXuLy"] = ctctdb.NgayXuLy.Value.ToString("dd/MM/yyyy") + " : " + ctctdb.NoiDungXuLy;
@@ -513,7 +513,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                                 CTCHDB ctchdb = _cCHDB.GetCTCHDB(decimal.Parse(dgvDSCTCHDB["MaTB", i].Value.ToString()));
 
-                                dr["SoPhieu"] = ctchdb.MaCTCHDB.ToString().Insert(ctchdb.MaCTCHDB.ToString().Length - 2, "-");
+                                //dr["SoPhieu"] = ctchdb.MaCTCHDB.ToString().Insert(ctchdb.MaCTCHDB.ToString().Length - 2, "-");
                                 dr["HoTen"] = ctchdb.HoTen;
                                 dr["DiaChi"] = ctchdb.DiaChi;
                                 if (!string.IsNullOrEmpty(ctchdb.DanhBo))
@@ -530,7 +530,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     dr["LyDo"] += "Số Tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", ctchdb.SoTien);
                                 dr["NoiDung"] = ctchdb.NoiDung;
 
-                                dr["NoiNhan"] = ctchdb.NoiNhan;
+                                dr["NoiNhan"] = ctchdb.NoiNhan + "\r\nTB" + ctchdb.MaCTCHDB.ToString().Insert(ctchdb.MaCTCHDB.ToString().Length - 2, "-");
 
                                 if (ctchdb.NgayXuLy != null)
                                     dr["NgayXuLy"] = ctchdb.NgayXuLy.Value.ToString("dd/MM/yyyy") + " : " + ctchdb.NoiDungXuLy;

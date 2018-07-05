@@ -1204,7 +1204,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
 
-                dr["SoPhieu"] = _ctctdb.MaCTCTDB.ToString().Insert(_ctctdb.MaCTCTDB.ToString().Length - 2, "-");
+                //dr["SoPhieu"] = _ctctdb.MaCTCTDB.ToString().Insert(_ctctdb.MaCTCTDB.ToString().Length - 2, "-");
                 dr["HoTen"] = _ctctdb.HoTen;
                 dr["DiaChi"] = _ctctdb.DiaChi;
                 if (!string.IsNullOrEmpty(_ctctdb.DanhBo))
@@ -1221,7 +1221,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     dr["LyDo"] += "Số Tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", _ctctdb.SoTien);
                 dr["NoiDung"] = _ctctdb.NoiDung;
 
-                dr["NoiNhan"] = _ctctdb.NoiNhan;
+                dr["NoiNhan"] = _ctctdb.NoiNhan + "\r\nTB" + _ctctdb.MaCTCTDB.ToString().Insert(_ctctdb.MaCTCTDB.ToString().Length - 2, "-");
 
                 if (_ctctdb.NgayXuLy!=null)
                     dr["NgayXuLy"] = _ctctdb.NgayXuLy.Value.ToString("dd/MM/yyyy") + " : " + _ctctdb.NoiDungXuLy;

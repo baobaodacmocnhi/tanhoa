@@ -681,7 +681,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
 
-                dr["SoPhieu"] = _cttttl.MaCTTTTL.ToString().Insert(_cttttl.MaCTTTTL.ToString().Length - 2, "-");
+                //dr["SoPhieu"] = _cttttl.MaCTTTTL.ToString().Insert(_cttttl.MaCTTTTL.ToString().Length - 2, "-");
                 dr["LoTrinh"] = _cttttl.LoTrinh;
                 dr["HoTen"] = _cttttl.HoTen;
                 dr["DiaChi"] = _cttttl.DiaChi;
@@ -702,7 +702,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 
                 dr["VeViec"] = _cttttl.VeViec;
                 dr["NoiDung"] = _cttttl.NoiDung;
-                dr["NoiNhan"] = _cttttl.NoiNhan;
+                dr["NoiNhan"] = _cttttl.NoiNhan + "\r\nTTL" + _cttttl.MaCTTTTL.ToString().Insert(_cttttl.MaCTTTTL.ToString().Length - 2, "-");
                 dr["ChucVu"] = _cttttl.ChucVu;
                 dr["NguoiKy"] = _cttttl.NguoiKy;
 
