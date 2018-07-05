@@ -380,9 +380,9 @@ namespace ThuTien.GUI.ChuyenKhoan
                         btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Lỗi, Vui lòng thử lại\n"+ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
             }
             else

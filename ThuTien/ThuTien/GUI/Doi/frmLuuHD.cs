@@ -409,13 +409,13 @@ namespace ThuTien.GUI.Doi
                     dr["ChuKyTruoc"] = dtTruoc.Rows[i]["SoNgay"].ToString();
                     dr["TongHDTruoc"] = dtTruoc.Rows[i]["TongHD"].ToString();
                     dr["TongTieuThuTruoc"] = dtTruoc.Rows[i]["TongTieuThu"].ToString();
-                    dr["TongCongTruoc"] = dtTruoc.Rows[i]["TongCong"].ToString();
+                    dr["TongCongTruoc"] = dtTruoc.Rows[i]["TongGiaBan"].ToString();
                     if (dt.Rows.Count-1>=i)
                     {
                         dr["ChuKy"] = dt.Rows[i]["SoNgay"].ToString();
                         dr["TongHD"] = dt.Rows[i]["TongHD"].ToString();
                         dr["TongTieuThu"] = dt.Rows[i]["TongTieuThu"].ToString();
-                        dr["TongCong"] = dt.Rows[i]["TongCong"].ToString();
+                        dr["TongCong"] = dt.Rows[i]["TongGiaBan"].ToString();
                     }
                     
                     ds.Tables["PhanTichDoanhThu"].Rows.Add(dr);

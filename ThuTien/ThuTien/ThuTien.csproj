@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>909</ApplicationRevision>
+    <ApplicationRevision>914</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -436,6 +436,12 @@
       <DependentUpon>rptTongHopDangNganChiTiet.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="BaoCao\ToTruong\rptDSKiemTraHienTruong.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptDSKiemTraHienTruong.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="BaoCao\ToTruong\rptTongHopNoA5.cs">
       <DependentUpon>rptTongHopNoA5.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -525,6 +531,7 @@
     <Compile Include="DAL\TongHop\CDCHD.cs" />
     <Compile Include="DAL\TongHop\CDangKyKiemTra.cs" />
     <Compile Include="DAL\ToTruong\CGiaoHDDienThoai.cs" />
+    <Compile Include="DAL\ToTruong\CKiemTraHienTruong.cs" />
     <Compile Include="DAL\ToTruong\CTongHopNo.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -904,10 +911,10 @@
     <Compile Include="GUI\TongHop\frmShowChuyenNoKhoDoi.Designer.cs">
       <DependentUpon>frmShowChuyenNoKhoDoi.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\TongHop\frmThu2Lan.cs">
+    <Compile Include="GUI\Quay\frmThu2Lan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\TongHop\frmThu2Lan.Designer.cs">
+    <Compile Include="GUI\Quay\frmThu2Lan.Designer.cs">
       <DependentUpon>frmThu2Lan.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\TongHop\frmDangKyKiemTra.cs">
@@ -1035,6 +1042,12 @@
     </Compile>
     <Compile Include="GUI\ToTruong\frmKiemTraDangNganTo.Designer.cs">
       <DependentUpon>frmKiemTraDangNganTo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmKiemTraHienTruong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmKiemTraHienTruong.Designer.cs">
+      <DependentUpon>frmKiemTraHienTruong.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ToTruong\frmKiemTraTonTo.cs">
       <SubType>Form</SubType>
@@ -1293,6 +1306,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptTongHopDangNganChiTiet.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\ToTruong\rptDSKiemTraHienTruong.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDSKiemTraHienTruong.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\ToTruong\rptTongHopNoA5.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptTongHopNoA5.cs</LastGenOutput>
@@ -1549,7 +1566,7 @@
     <EmbeddedResource Include="GUI\TongHop\frmShowChuyenNoKhoDoi.resx">
       <DependentUpon>frmShowChuyenNoKhoDoi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\TongHop\frmThu2Lan.resx">
+    <EmbeddedResource Include="GUI\Quay\frmThu2Lan.resx">
       <DependentUpon>frmThu2Lan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\TongHop\frmDangKyKiemTra.resx">
@@ -1617,6 +1634,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToTruong\frmKiemTraDangNganTo.resx">
       <DependentUpon>frmKiemTraDangNganTo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToTruong\frmKiemTraHienTruong.resx">
+      <DependentUpon>frmKiemTraHienTruong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToTruong\frmKiemTraTonTo.resx">
       <DependentUpon>frmKiemTraTonTo.cs</DependentUpon>

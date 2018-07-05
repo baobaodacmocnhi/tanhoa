@@ -55,7 +55,6 @@ namespace ThuTien.GUI.ToTruong
             cmbNam.DataSource = _cHoaDon.GetNam();
             cmbNam.DisplayMember = "Nam";
             cmbNam.ValueMember = "Nam";
-
         }
 
         public void CountdgvHDTuGia()
