@@ -10,16 +10,16 @@ using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraEditors.Controls;
 using KTKS_DonKH.DAL.ToKhachHang;
 using DevExpress.XtraGrid.Views.Grid;
-using KTKS_DonKH.DAL.ThaoThuTraLoi;
+using KTKS_DonKH.DAL.ThuTraLoi;
 using KTKS_DonKH.GUI.ToKhachHang;
 using KTKS_DonKH.DAL.KiemTraXacMinh;
 using KTKS_DonKH.LinQ;
-using KTKS_DonKH.BaoCao.ThaoThuTraLoi;
+using KTKS_DonKH.BaoCao.ThuTraLoi;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.GUI.ToXuLy;
 using KTKS_DonKH.GUI.BaoCao;
 
-namespace KTKS_DonKH.GUI.ThaoThuTraLoi
+namespace KTKS_DonKH.GUI.ThuTraLoi
 {
     public partial class frmDSTTTL : Form
     {

@@ -11,7 +11,7 @@ using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.GUI.ToKhachHang;
 using KTKS_DonKH.GUI.TimKiem;
 using KTKS_DonKH.GUI.CongVan;
-using KTKS_DonKH.GUI.ThaoThuTraLoi;
+using KTKS_DonKH.GUI.ThuTraLoi;
 using KTKS_DonKH.GUI.KiemTraXacMinh;
 using KTKS_DonKH.GUI.BamChi;
 using KTKS_DonKH.GUI.DieuChinhBienDong;
@@ -25,6 +25,7 @@ using KTKS_DonKH.GUI.TruyThu;
 using KTKS_DonKH.GUI.CallCenter;
 using KTKS_DonKH.GUI.DonTu;
 using System.Deployment.Application;
+using KTKS_DonKH.GUI.ThuMoi;
 
 namespace KTKS_DonKH
 {
@@ -822,6 +823,32 @@ namespace KTKS_DonKH
 
         #endregion
 
+        #region Thư Mời
+
+        private void mnuThaoThuMoi_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuThaoThuMoi", "Xem"))
+            {
+                frmThaoThuMoi frm = new frmThaoThuMoi();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuDSThuMoi_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuDSThuMoi", "Xem"))
+            {
+                frmDSThuMoi frm = new frmDSThuMoi();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion
+
         #region Báo Cáo
 
 
@@ -944,13 +971,7 @@ namespace KTKS_DonKH
 
         #endregion
 
-        
 
-        
-
-        
-
-        
 
     }
 }

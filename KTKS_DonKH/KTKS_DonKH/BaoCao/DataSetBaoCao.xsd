@@ -267,6 +267,9 @@
               <xs:element name="ChucVu" msprop:Generator_ColumnVarNameInTable="columnChucVu" msprop:Generator_ColumnPropNameInRow="ChucVu" msprop:Generator_ColumnPropNameInTable="ChucVuColumn" msprop:Generator_UserColumnName="ChucVu" type="xs:string" minOccurs="0" />
               <xs:element name="NguoiKy" msprop:Generator_ColumnVarNameInTable="columnNguoiKy" msprop:Generator_ColumnPropNameInRow="NguoiKy" msprop:Generator_ColumnPropNameInTable="NguoiKyColumn" msprop:Generator_UserColumnName="NguoiKy" type="xs:string" minOccurs="0" />
               <xs:element name="LoTrinh" msprop:Generator_ColumnVarNameInTable="columnLoTrinh" msprop:Generator_ColumnPropNameInRow="LoTrinh" msprop:Generator_ColumnPropNameInTable="LoTrinhColumn" msprop:Generator_UserColumnName="LoTrinh" type="xs:string" minOccurs="0" />
+              <xs:element name="VaoLuc" msprop:Generator_ColumnVarNameInTable="columnVaoLuc" msprop:Generator_ColumnPropNameInRow="VaoLuc" msprop:Generator_ColumnPropNameInTable="VaoLucColumn" msprop:Generator_UserColumnName="VaoLuc" type="xs:string" minOccurs="0" />
+              <xs:element name="Lan" msprop:Generator_ColumnVarNameInTable="columnLan" msprop:Generator_ColumnPropNameInRow="Lan" msprop:Generator_ColumnPropNameInTable="LanColumn" msprop:Generator_UserColumnName="Lan" type="xs:string" minOccurs="0" />
+              <xs:element name="CanCu" msprop:Generator_ColumnVarNameInTable="columnCanCu" msprop:Generator_ColumnPropNameInRow="CanCu" msprop:Generator_ColumnPropNameInTable="CanCuColumn" msprop:Generator_UserColumnName="CanCu" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

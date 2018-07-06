@@ -1,4 +1,4 @@
-﻿namespace KTKS_DonKH.GUI.ThaoThuTraLoi
+﻿namespace KTKS_DonKH.GUI.ThuTraLoi
 {
     partial class frmVeViecToTrinh
     {

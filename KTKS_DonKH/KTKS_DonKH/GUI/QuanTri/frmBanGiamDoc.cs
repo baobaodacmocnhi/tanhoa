@@ -10,7 +10,7 @@ using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.DieuChinhBienDong;
 using KTKS_DonKH.DAL.CatHuyDanhBo;
-using KTKS_DonKH.DAL.ThaoThuTraLoi;
+using KTKS_DonKH.DAL.ThuTraLoi;
 using KTKS_DonKH.DAL.DongNuoc;
 
 namespace KTKS_DonKH.GUI.QuanTri

@@ -6,11 +6,11 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using KTKS_DonKH.DAL.ThaoThuTraLoi;
+using KTKS_DonKH.DAL.ThuTraLoi;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.QuanTri;
 
-namespace KTKS_DonKH.GUI.ThaoThuTraLoi
+namespace KTKS_DonKH.GUI.ThuTraLoi
 {
     public partial class frmVeViecToTrinh : Form
     {

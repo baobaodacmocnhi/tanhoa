@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KTKS_DonKH.BaoCao.ThaoThuTraLoi {
+namespace KTKS_DonKH.BaoCao.ThuTraLoi {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -41,7 +41,7 @@ namespace KTKS_DonKH.BaoCao.ThaoThuTraLoi {
         
         public override string FullResourceName {
             get {
-                return "KTKS_DonKH.BaoCao.ThaoThuTraLoi.rptThaoThuTraLoi_KhongDanhBo.rpt";
+                return "KTKS_DonKH.BaoCao.ThuTraLoi.rptThaoThuTraLoi_KhongDanhBo.rpt";
             }
             set {
                 // Do nothing

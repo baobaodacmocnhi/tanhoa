@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>784</ApplicationRevision>
+    <ApplicationRevision>786</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -382,13 +382,19 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="BaoCao\ThaoThuTraLoi\rptToTrinh.cs">
+    <Compile Include="BaoCao\ThuMoi\rptThuMoi.cs">
+      <DependentUpon>rptThuMoi.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="BaoCao\ThuTraLoi\rptToTrinh.cs">
       <DependentUpon>rptToTrinh.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="BaoCao\ThaoThuTraLoi\rptThaoThuTraLoi_KhongDanhBo.cs">
+    <Compile Include="BaoCao\ThuTraLoi\rptThaoThuTraLoi_KhongDanhBo.cs">
       <DependentUpon>rptThaoThuTraLoi_KhongDanhBo.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
@@ -460,7 +466,7 @@
       <DependentUpon>rptKinhGui.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BaoCao\ThaoThuTraLoi\rptThaoThuTraLoi.cs">
+    <Compile Include="BaoCao\ThuTraLoi\rptThaoThuTraLoi.cs">
       <DependentUpon>rptThaoThuTraLoi.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
@@ -571,10 +577,10 @@
       <DependentUpon>rptThongKeTruyThu.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BaoCao\TruyThu\rptThuMoi.cs">
+    <Compile Include="BaoCao\TruyThu\rptThuMoiTruyThu.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>rptThuMoi.rpt</DependentUpon>
+      <DependentUpon>rptThuMoiTruyThu.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BaoCao\TruyThu\rptTruyThuTienNuoc.cs">
@@ -658,8 +664,9 @@
     <Compile Include="DAL\CExcel.cs" />
     <Compile Include="DAL\KiemTraXacMinh\CChuyenDe.cs" />
     <Compile Include="DAL\KiemTraXacMinh\CDongTienNoiDung.cs" />
-    <Compile Include="DAL\ThaoThuTraLoi\CVeViecToTrinh.cs" />
-    <Compile Include="DAL\ThaoThuTraLoi\CToTrinh.cs" />
+    <Compile Include="DAL\ThuMoi\CThuMoi.cs" />
+    <Compile Include="DAL\ThuTraLoi\CVeViecToTrinh.cs" />
+    <Compile Include="DAL\ThuTraLoi\CToTrinh.cs" />
     <Compile Include="DAL\ToKhachHang\CThongTinKhachHang.cs" />
     <Compile Include="DAL\QuanTri\CBanGiamDoc.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CChiNhanh.cs" />
@@ -690,9 +697,9 @@
     <Compile Include="DAL\ToKhachHang\CDonDienThoai.cs" />
     <Compile Include="DAL\ToKhachHang\CDonKH.cs" />
     <Compile Include="DAL\KiemTraXacMinh\CKTXM.cs" />
-    <Compile Include="DAL\ThaoThuTraLoi\CGhiChuCTTTTL.cs" />
-    <Compile Include="DAL\ThaoThuTraLoi\CTTTL.cs" />
-    <Compile Include="DAL\ThaoThuTraLoi\CVeViecTTTL.cs" />
+    <Compile Include="DAL\ThuTraLoi\CGhiChuCTTTTL.cs" />
+    <Compile Include="DAL\ThuTraLoi\CTTTL.cs" />
+    <Compile Include="DAL\ThuTraLoi\CVeViecTTTL.cs" />
     <Compile Include="DAL\TimKiem\CTimKiem.cs" />
     <Compile Include="DAL\ToXuLy\CDonTXL.cs" />
     <Compile Include="DAL\ToXuLy\CGianLan.cs" />
@@ -811,17 +818,29 @@
     <Compile Include="GUI\DonTu\frmNhanDonTu.Designer.cs">
       <DependentUpon>frmNhanDonTu.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ThaoThuTraLoi\frmVeViecToTrinh.cs">
+    <Compile Include="GUI\ThuTraLoi\frmVeViecToTrinh.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ThaoThuTraLoi\frmVeViecToTrinh.Designer.cs">
+    <Compile Include="GUI\ThuTraLoi\frmVeViecToTrinh.Designer.cs">
       <DependentUpon>frmVeViecToTrinh.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ThaoThuTraLoi\frmToTrinh.cs">
+    <Compile Include="GUI\ThuTraLoi\frmToTrinh.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ThaoThuTraLoi\frmToTrinh.Designer.cs">
+    <Compile Include="GUI\ThuTraLoi\frmToTrinh.Designer.cs">
       <DependentUpon>frmToTrinh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThuMoi\frmDSThuMoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThuMoi\frmDSThuMoi.Designer.cs">
+      <DependentUpon>frmDSThuMoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThuMoi\frmThaoThuMoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThuMoi\frmThaoThuMoi.Designer.cs">
+      <DependentUpon>frmThaoThuMoi.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ToBamChi\frmNhapNhieuDBTBC.cs">
       <SubType>Form</SubType>
@@ -883,10 +902,10 @@
     <Compile Include="GUI\QuanTri\frmTo.Designer.cs">
       <DependentUpon>frmTo.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ThaoThuTraLoi\frmVeViecTTTL.cs">
+    <Compile Include="GUI\ThuTraLoi\frmVeViecTTTL.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ThaoThuTraLoi\frmVeViecTTTL.Designer.cs">
+    <Compile Include="GUI\ThuTraLoi\frmVeViecTTTL.Designer.cs">
       <DependentUpon>frmVeViecTTTL.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\CatHuyDanhBo\frmBaoCaoCHDB.cs">
@@ -1093,16 +1112,16 @@
     <Compile Include="GUI\QuanTri\frmNhom.Designer.cs">
       <DependentUpon>frmNhom.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ThaoThuTraLoi\frmDSTTTL.cs">
+    <Compile Include="GUI\ThuTraLoi\frmDSTTTL.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ThaoThuTraLoi\frmDSTTTL.Designer.cs">
+    <Compile Include="GUI\ThuTraLoi\frmDSTTTL.Designer.cs">
       <DependentUpon>frmDSTTTL.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ThaoThuTraLoi\frmTTTL.cs">
+    <Compile Include="GUI\ThuTraLoi\frmTTTL.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ThaoThuTraLoi\frmTTTL.Designer.cs">
+    <Compile Include="GUI\ThuTraLoi\frmTTTL.Designer.cs">
       <DependentUpon>frmTTTL.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\TimKiem\frmTienTrinhDon.cs">
@@ -1415,11 +1434,15 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptKTXMcoTruyThu.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\ThaoThuTraLoi\rptToTrinh.rpt">
+    <EmbeddedResource Include="BaoCao\ThuMoi\rptThuMoi.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptThuMoi.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\ThuTraLoi\rptToTrinh.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptToTrinh.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\ThaoThuTraLoi\rptThaoThuTraLoi_KhongDanhBo.rpt">
+    <EmbeddedResource Include="BaoCao\ThuTraLoi\rptThaoThuTraLoi_KhongDanhBo.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThaoThuTraLoi_KhongDanhBo.cs</LastGenOutput>
     </EmbeddedResource>
@@ -1467,7 +1490,7 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptKinhGui.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\ThaoThuTraLoi\rptThaoThuTraLoi.rpt">
+    <EmbeddedResource Include="BaoCao\ThuTraLoi\rptThaoThuTraLoi.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThaoThuTraLoi.cs</LastGenOutput>
     </EmbeddedResource>
@@ -1539,9 +1562,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThongKeTruyThu.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\TruyThu\rptThuMoi.rpt">
+    <EmbeddedResource Include="BaoCao\TruyThu\rptThuMoiTruyThu.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptThuMoi.cs</LastGenOutput>
+      <LastGenOutput>rptThuMoiTruyThu.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\TruyThu\rptTruyThuTienNuoc.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1640,11 +1663,17 @@
     <EmbeddedResource Include="GUI\DonTu\frmNhanDonTu.resx">
       <DependentUpon>frmNhanDonTu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ThaoThuTraLoi\frmVeViecToTrinh.resx">
+    <EmbeddedResource Include="GUI\ThuTraLoi\frmVeViecToTrinh.resx">
       <DependentUpon>frmVeViecToTrinh.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ThaoThuTraLoi\frmToTrinh.resx">
+    <EmbeddedResource Include="GUI\ThuTraLoi\frmToTrinh.resx">
       <DependentUpon>frmToTrinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThuMoi\frmDSThuMoi.resx">
+      <DependentUpon>frmDSThuMoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThuMoi\frmThaoThuMoi.resx">
+      <DependentUpon>frmThaoThuMoi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToBamChi\frmNhapNhieuDBTBC.resx">
       <DependentUpon>frmNhapNhieuDBTBC.cs</DependentUpon>
@@ -1676,7 +1705,7 @@
     <EmbeddedResource Include="GUI\QuanTri\frmTo.resx">
       <DependentUpon>frmTo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ThaoThuTraLoi\frmVeViecTTTL.resx">
+    <EmbeddedResource Include="GUI\ThuTraLoi\frmVeViecTTTL.resx">
       <DependentUpon>frmVeViecTTTL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CatHuyDanhBo\frmBaoCaoCHDB.resx">
@@ -1784,10 +1813,10 @@
     <EmbeddedResource Include="GUI\QuanTri\frmNhom.resx">
       <DependentUpon>frmNhom.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ThaoThuTraLoi\frmDSTTTL.resx">
+    <EmbeddedResource Include="GUI\ThuTraLoi\frmDSTTTL.resx">
       <DependentUpon>frmDSTTTL.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ThaoThuTraLoi\frmTTTL.resx">
+    <EmbeddedResource Include="GUI\ThuTraLoi\frmTTTL.resx">
       <DependentUpon>frmTTTL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\TimKiem\frmTienTrinhDon.resx">

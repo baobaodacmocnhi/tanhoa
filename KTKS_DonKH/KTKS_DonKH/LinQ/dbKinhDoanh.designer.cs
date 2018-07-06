@@ -17160,7 +17160,7 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DanhBo", DbType="NVarChar(11)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DanhBo", DbType="Char(11)")]
 		public string DanhBo
 		{
 			get
@@ -37666,6 +37666,14 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _STT;
 		
+		private string _DanhBo;
+		
+		private string _HoTen;
+		
+		private string _DiaChi;
+		
+		private string _CanCu;
+		
 		private string _VaoLuc;
 		
 		private string _VeViec;
@@ -37694,6 +37702,14 @@ namespace KTKS_DonKH.LinQ
     partial void OnIDChanged();
     partial void OnSTTChanging(System.Nullable<int> value);
     partial void OnSTTChanged();
+    partial void OnDanhBoChanging(string value);
+    partial void OnDanhBoChanged();
+    partial void OnHoTenChanging(string value);
+    partial void OnHoTenChanged();
+    partial void OnDiaChiChanging(string value);
+    partial void OnDiaChiChanged();
+    partial void OnCanCuChanging(string value);
+    partial void OnCanCuChanged();
     partial void OnVaoLucChanging(string value);
     partial void OnVaoLucChanged();
     partial void OnVeViecChanging(string value);
@@ -37757,6 +37773,86 @@ namespace KTKS_DonKH.LinQ
 					this._STT = value;
 					this.SendPropertyChanged("STT");
 					this.OnSTTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DanhBo", DbType="Char(11)")]
+		public string DanhBo
+		{
+			get
+			{
+				return this._DanhBo;
+			}
+			set
+			{
+				if ((this._DanhBo != value))
+				{
+					this.OnDanhBoChanging(value);
+					this.SendPropertyChanging();
+					this._DanhBo = value;
+					this.SendPropertyChanged("DanhBo");
+					this.OnDanhBoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoTen", DbType="NVarChar(500)")]
+		public string HoTen
+		{
+			get
+			{
+				return this._HoTen;
+			}
+			set
+			{
+				if ((this._HoTen != value))
+				{
+					this.OnHoTenChanging(value);
+					this.SendPropertyChanging();
+					this._HoTen = value;
+					this.SendPropertyChanged("HoTen");
+					this.OnHoTenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DiaChi", DbType="NVarChar(500)")]
+		public string DiaChi
+		{
+			get
+			{
+				return this._DiaChi;
+			}
+			set
+			{
+				if ((this._DiaChi != value))
+				{
+					this.OnDiaChiChanging(value);
+					this.SendPropertyChanging();
+					this._DiaChi = value;
+					this.SendPropertyChanged("DiaChi");
+					this.OnDiaChiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CanCu", DbType="NVarChar(100)")]
+		public string CanCu
+		{
+			get
+			{
+				return this._CanCu;
+			}
+			set
+			{
+				if ((this._CanCu != value))
+				{
+					this.OnCanCuChanging(value);
+					this.SendPropertyChanging();
+					this._CanCu = value;
+					this.SendPropertyChanged("CanCu");
+					this.OnCanCuChanged();
 				}
 			}
 		}

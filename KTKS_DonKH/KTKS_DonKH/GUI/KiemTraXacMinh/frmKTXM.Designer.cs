@@ -58,6 +58,7 @@
             this.NoiDungKiemTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.cmbNoiDungBaoThay = new System.Windows.Forms.ComboBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
@@ -96,7 +97,6 @@
             this.txtMaDonMoi = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.chkNgayKTXMTruocNgayGiao = new System.Windows.Forms.CheckBox();
-            this.label26 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKetQuaKiemTra)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -301,7 +301,7 @@
             this.DiaChi,
             this.NoiDungKiemTra,
             this.CreateBy});
-            this.dgvDSKetQuaKiemTra.Location = new System.Drawing.Point(3, 374);
+            this.dgvDSKetQuaKiemTra.Location = new System.Drawing.Point(12, 374);
             this.dgvDSKetQuaKiemTra.Name = "dgvDSKetQuaKiemTra";
             this.dgvDSKetQuaKiemTra.Size = new System.Drawing.Size(1016, 126);
             this.dgvDSKetQuaKiemTra.TabIndex = 6;
@@ -404,6 +404,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kết Quả";
             // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(7, 158);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(70, 16);
+            this.label26.TabIndex = 121;
+            this.label26.Text = "Báo Thay:";
+            // 
             // cmbNoiDungBaoThay
             // 
             this.cmbNoiDungBaoThay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -420,7 +429,6 @@
             this.cmbNoiDungBaoThay.Name = "cmbNoiDungBaoThay";
             this.cmbNoiDungBaoThay.Size = new System.Drawing.Size(165, 24);
             this.cmbNoiDungBaoThay.TabIndex = 120;
-            this.cmbNoiDungBaoThay.Visible = false;
             // 
             // label24
             // 
@@ -793,15 +801,6 @@
             this.chkNgayKTXMTruocNgayGiao.TabIndex = 118;
             this.chkNgayKTXMTruocNgayGiao.Text = "Ngày KTXM Trước Ngày Giao";
             this.chkNgayKTXMTruocNgayGiao.UseVisualStyleBackColor = true;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(7, 158);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(70, 16);
-            this.label26.TabIndex = 121;
-            this.label26.Text = "Báo Thay:";
             // 
             // frmKTXM
             // 

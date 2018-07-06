@@ -10,7 +10,7 @@ using KTKS_DonKH.DAL.TimKiem;
 using KTKS_DonKH.GUI.ToKhachHang;
 using DevExpress.XtraGrid.Views.Grid;
 using KTKS_DonKH.GUI.KiemTraXacMinh;
-using KTKS_DonKH.GUI.ThaoThuTraLoi;
+using KTKS_DonKH.GUI.ThuTraLoi;
 using KTKS_DonKH.GUI.DieuChinhBienDong;
 using KTKS_DonKH.GUI.CatHuyDanhBo;
 using KTKS_DonKH.GUI.ToXuLy;

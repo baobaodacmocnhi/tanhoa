@@ -1,4 +1,4 @@
-﻿namespace KTKS_DonKH.GUI.ThaoThuTraLoi
+﻿namespace KTKS_DonKH.GUI.ThuTraLoi
 {
     partial class frmTTTL
     {
@@ -53,13 +53,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.txtVeViec = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.chkThuBao = new System.Windows.Forms.CheckBox();
-            this.chkThuMoi = new System.Windows.Forms.CheckBox();
-            this.chkDieuChinh_GB_DM = new System.Windows.Forms.CheckBox();
-            this.chkThayDHN = new System.Windows.Forms.CheckBox();
-            this.chkKiemDinhDHN_Dung = new System.Windows.Forms.CheckBox();
-            this.chkKiemDinhDHN_Sai = new System.Windows.Forms.CheckBox();
-            this.chkGiamNuocXaBo = new System.Windows.Forms.CheckBox();
             this.btnThem = new System.Windows.Forms.Button();
             this.dgvLichSuTTTL = new System.Windows.Forms.DataGridView();
             this.MaCTTTTL = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -313,83 +306,6 @@
             this.label12.Size = new System.Drawing.Size(58, 16);
             this.label12.TabIndex = 0;
             this.label12.Text = "Về Việc:";
-            // 
-            // chkThuBao
-            // 
-            this.chkThuBao.AutoSize = true;
-            this.chkThuBao.Location = new System.Drawing.Point(1168, 362);
-            this.chkThuBao.Name = "chkThuBao";
-            this.chkThuBao.Size = new System.Drawing.Size(78, 20);
-            this.chkThuBao.TabIndex = 12;
-            this.chkThuBao.Text = "Thư Báo";
-            this.chkThuBao.UseVisualStyleBackColor = true;
-            this.chkThuBao.Visible = false;
-            // 
-            // chkThuMoi
-            // 
-            this.chkThuMoi.AutoSize = true;
-            this.chkThuMoi.Location = new System.Drawing.Point(1168, 336);
-            this.chkThuMoi.Name = "chkThuMoi";
-            this.chkThuMoi.Size = new System.Drawing.Size(75, 20);
-            this.chkThuMoi.TabIndex = 11;
-            this.chkThuMoi.Text = "Thư Mời";
-            this.chkThuMoi.UseVisualStyleBackColor = true;
-            this.chkThuMoi.Visible = false;
-            // 
-            // chkDieuChinh_GB_DM
-            // 
-            this.chkDieuChinh_GB_DM.AutoSize = true;
-            this.chkDieuChinh_GB_DM.Location = new System.Drawing.Point(986, 486);
-            this.chkDieuChinh_GB_DM.Name = "chkDieuChinh_GB_DM";
-            this.chkDieuChinh_GB_DM.Size = new System.Drawing.Size(136, 20);
-            this.chkDieuChinh_GB_DM.TabIndex = 10;
-            this.chkDieuChinh_GB_DM.Text = "Điều Chỉnh GB-ĐM";
-            this.chkDieuChinh_GB_DM.UseVisualStyleBackColor = true;
-            this.chkDieuChinh_GB_DM.Visible = false;
-            // 
-            // chkThayDHN
-            // 
-            this.chkThayDHN.AutoSize = true;
-            this.chkThayDHN.Location = new System.Drawing.Point(986, 462);
-            this.chkThayDHN.Name = "chkThayDHN";
-            this.chkThayDHN.Size = new System.Drawing.Size(90, 20);
-            this.chkThayDHN.TabIndex = 9;
-            this.chkThayDHN.Text = "Thay ĐHN";
-            this.chkThayDHN.UseVisualStyleBackColor = true;
-            this.chkThayDHN.Visible = false;
-            // 
-            // chkKiemDinhDHN_Dung
-            // 
-            this.chkKiemDinhDHN_Dung.AutoSize = true;
-            this.chkKiemDinhDHN_Dung.Location = new System.Drawing.Point(986, 436);
-            this.chkKiemDinhDHN_Dung.Name = "chkKiemDinhDHN_Dung";
-            this.chkKiemDinhDHN_Dung.Size = new System.Drawing.Size(173, 20);
-            this.chkKiemDinhDHN_Dung.TabIndex = 8;
-            this.chkKiemDinhDHN_Dung.Text = "Thử Kiểm Định ĐHN (sai)";
-            this.chkKiemDinhDHN_Dung.UseVisualStyleBackColor = true;
-            this.chkKiemDinhDHN_Dung.Visible = false;
-            // 
-            // chkKiemDinhDHN_Sai
-            // 
-            this.chkKiemDinhDHN_Sai.AutoSize = true;
-            this.chkKiemDinhDHN_Sai.Location = new System.Drawing.Point(986, 411);
-            this.chkKiemDinhDHN_Sai.Name = "chkKiemDinhDHN_Sai";
-            this.chkKiemDinhDHN_Sai.Size = new System.Drawing.Size(185, 20);
-            this.chkKiemDinhDHN_Sai.TabIndex = 7;
-            this.chkKiemDinhDHN_Sai.Text = "Thử Kiểm Định ĐHN (đúng)";
-            this.chkKiemDinhDHN_Sai.UseVisualStyleBackColor = true;
-            this.chkKiemDinhDHN_Sai.Visible = false;
-            // 
-            // chkGiamNuocXaBo
-            // 
-            this.chkGiamNuocXaBo.AutoSize = true;
-            this.chkGiamNuocXaBo.Location = new System.Drawing.Point(986, 385);
-            this.chkGiamNuocXaBo.Name = "chkGiamNuocXaBo";
-            this.chkGiamNuocXaBo.Size = new System.Drawing.Size(173, 20);
-            this.chkGiamNuocXaBo.TabIndex = 6;
-            this.chkGiamNuocXaBo.Text = "Giảm Lượng Nước Xả Bỏ";
-            this.chkGiamNuocXaBo.UseVisualStyleBackColor = true;
-            this.chkGiamNuocXaBo.Visible = false;
             // 
             // btnThem
             // 
@@ -653,18 +569,11 @@
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
-            this.Controls.Add(this.chkThuBao);
-            this.Controls.Add(this.chkThuMoi);
             this.Controls.Add(this.label28);
-            this.Controls.Add(this.chkDieuChinh_GB_DM);
             this.Controls.Add(this.btnCapNhatGhiChu);
-            this.Controls.Add(this.chkThayDHN);
             this.Controls.Add(this.dgvGhiChu);
-            this.Controls.Add(this.chkKiemDinhDHN_Dung);
             this.Controls.Add(this.txtGhiChu);
-            this.Controls.Add(this.chkKiemDinhDHN_Sai);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.chkGiamNuocXaBo);
             this.Controls.Add(this.dateGhiChu);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.txtMaCTTTTL);
@@ -719,13 +628,6 @@
         private System.Windows.Forms.TextBox txtVeViec;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btnThem;
-        private System.Windows.Forms.CheckBox chkThuBao;
-        private System.Windows.Forms.CheckBox chkThuMoi;
-        private System.Windows.Forms.CheckBox chkDieuChinh_GB_DM;
-        private System.Windows.Forms.CheckBox chkThayDHN;
-        private System.Windows.Forms.CheckBox chkKiemDinhDHN_Dung;
-        private System.Windows.Forms.CheckBox chkKiemDinhDHN_Sai;
-        private System.Windows.Forms.CheckBox chkGiamNuocXaBo;
         private System.Windows.Forms.TextBox txtLoTrinh;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dgvLichSuTTTL;

@@ -14,7 +14,7 @@ using KTKS_DonKH.DAL.KiemTraXacMinh;
 using KTKS_DonKH.DAL.BamChi;
 using KTKS_DonKH.DAL.DieuChinhBienDong;
 using KTKS_DonKH.DAL.CatHuyDanhBo;
-using KTKS_DonKH.DAL.ThaoThuTraLoi;
+using KTKS_DonKH.DAL.ThuTraLoi;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.CongVan;
 using KTKS_DonKH.GUI.BaoCao;

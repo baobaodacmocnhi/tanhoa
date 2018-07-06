@@ -7,7 +7,7 @@ using KTKS_DonKH.DAL.QuanTri;
 using System.Windows.Forms;
 using KTKS_DonKH.LinQ;
 
-namespace KTKS_DonKH.DAL.ThaoThuTraLoi
+namespace KTKS_DonKH.DAL.ThuTraLoi
 {
     class CTTTL : CDAL
     {

@@ -1364,7 +1364,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
         private void btnInThuMoi_Click(object sender, EventArgs e)
         {
-            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
             DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
 
@@ -1378,7 +1378,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
             dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
 
-            rptThuMoi rpt = new rptThuMoi();
+            rptThuMoiTruyThu rpt = new rptThuMoiTruyThu();
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();

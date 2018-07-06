@@ -11,13 +11,13 @@ using KTKS_DonKH.DAL.ToKhachHang;
 using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.DAL.ToBamChi;
 using KTKS_DonKH.LinQ;
-using KTKS_DonKH.DAL.ThaoThuTraLoi;
+using KTKS_DonKH.DAL.ThuTraLoi;
 using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.BaoCao;
-using KTKS_DonKH.BaoCao.ThaoThuTraLoi;
+using KTKS_DonKH.BaoCao.ThuTraLoi;
 using KTKS_DonKH.GUI.BaoCao;
 
-namespace KTKS_DonKH.GUI.ThaoThuTraLoi
+namespace KTKS_DonKH.GUI.ThuTraLoi
 {
     public partial class frmToTrinh : Form
     {

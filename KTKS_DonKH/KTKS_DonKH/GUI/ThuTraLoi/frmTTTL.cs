@@ -9,15 +9,15 @@ using System.Windows.Forms;
 using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.ToKhachHang;
-using KTKS_DonKH.DAL.ThaoThuTraLoi;
+using KTKS_DonKH.DAL.ThuTraLoi;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.DAL;
 using KTKS_DonKH.DAL.ToBamChi;
 using KTKS_DonKH.BaoCao;
-using KTKS_DonKH.BaoCao.ThaoThuTraLoi;
+using KTKS_DonKH.BaoCao.ThuTraLoi;
 
-namespace KTKS_DonKH.GUI.ThaoThuTraLoi
+namespace KTKS_DonKH.GUI.ThuTraLoi
 {
     public partial class frmTTTL : Form
     {
@@ -114,21 +114,6 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             txtNoiDung.Text = cttttl.NoiDung;
             txtNoiNhan.Text = cttttl.NoiNhan;
 
-            if (cttttl.GiamNuocXaBo)
-                chkGiamNuocXaBo.Checked = true;
-            if (cttttl.KiemDinhDHN_Dung)
-                chkKiemDinhDHN_Dung.Checked = true;
-            if (cttttl.KiemDinhDHN_Sai)
-                chkKiemDinhDHN_Sai.Checked = true;
-            if (cttttl.ThayDHN)
-                chkThayDHN.Checked = true;
-            if (cttttl.DieuChinh_GB_DM)
-                chkDieuChinh_GB_DM.Checked = true;
-            if (cttttl.ThuMoi)
-                chkThuMoi.Checked = true;
-            if (cttttl.ThuBao)
-                chkThuBao.Checked = true;
-
             dgvLichSuTTTL.DataSource = _cTTTL.GetLichSuCTByDanhBo(cttttl.DanhBo);
             dgvGhiChu.DataSource = _cGhiChuCTTTTL.GetDS(cttttl.MaCTTTTL);
         }
@@ -149,14 +134,6 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             txtVeViec.Text = "";
             txtNoiDung.Text = "";
             txtNoiNhan.Text = "";
-            ///
-            chkGiamNuocXaBo.Checked = false;
-            chkKiemDinhDHN_Dung.Checked = false;
-            chkKiemDinhDHN_Sai.Checked = false;
-            chkThayDHN.Checked = false;
-            chkDieuChinh_GB_DM.Checked = false;
-            chkThuMoi.Checked = false;
-            chkThuBao.Checked = false;
 
             _dontkh = null;
             _dontxl = null;
@@ -463,21 +440,6 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                     cttttl.VeViec = txtVeViec.Text.Trim();
                     cttttl.NoiDung = txtNoiDung.Text;
                     cttttl.NoiNhan = txtNoiNhan.Text.Trim();
-                    ///
-                    if (chkGiamNuocXaBo.Checked)
-                        cttttl.GiamNuocXaBo = true;
-                    if (chkKiemDinhDHN_Dung.Checked)
-                        cttttl.KiemDinhDHN_Dung = true;
-                    if (chkKiemDinhDHN_Sai.Checked)
-                        cttttl.KiemDinhDHN_Sai = true;
-                    if (chkThayDHN.Checked)
-                        cttttl.ThayDHN = true;
-                    if (chkDieuChinh_GB_DM.Checked)
-                        cttttl.DieuChinh_GB_DM = true;
-                    if (chkThuMoi.Checked)
-                        cttttl.ThuMoi = true;
-                    if (chkThuBao.Checked)
-                        cttttl.ThuBao = true;
 
                     ///Ký Tên
                     BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
@@ -531,21 +493,6 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                         _cttttl.VeViec = txtVeViec.Text.Trim();
                         _cttttl.NoiDung = txtNoiDung.Text;
                         _cttttl.NoiNhan = txtNoiNhan.Text.Trim();
-                        ///
-                        if (chkGiamNuocXaBo.Checked)
-                            _cttttl.GiamNuocXaBo = true;
-                        if (chkKiemDinhDHN_Dung.Checked)
-                            _cttttl.KiemDinhDHN_Dung = true;
-                        if (chkKiemDinhDHN_Sai.Checked)
-                            _cttttl.KiemDinhDHN_Sai = true;
-                        if (chkThayDHN.Checked)
-                            _cttttl.ThayDHN = true;
-                        if (chkDieuChinh_GB_DM.Checked)
-                            _cttttl.DieuChinh_GB_DM = true;
-                        if (chkThuMoi.Checked)
-                            _cttttl.ThuMoi = true;
-                        if (chkThuBao.Checked)
-                            _cttttl.ThuBao = true;
 
                         ///Ký Tên
                         BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();

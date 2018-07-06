@@ -6,21 +6,21 @@ using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.QuanTri;
 using System.Windows.Forms;
 
-namespace KTKS_DonKH.DAL.ThaoThuTraLoi
+namespace KTKS_DonKH.DAL.ThuTraLoi
 {
-    class CVeViecTTTL : CDAL
+    class CVeViecToTrinh : CDAL
     {
-        public bool Them(TTTLVeViec vv)
+        public bool Them(ToTrinhVeViec vv)
         {
             try
             {
-                if (db.TTTLVeViecs.Count() > 0)
-                    vv.MaVV = db.TTTLVeViecs.Max(item => item.MaVV) + 1;
+                if (db.ToTrinhVeViecs.Count() > 0)
+                    vv.MaVV = db.ToTrinhVeViecs.Max(item => item.MaVV) + 1;
                 else
                     vv.MaVV = 1;
                 vv.CreateDate = DateTime.Now;
                 vv.CreateBy = CTaiKhoan.MaUser;
-                db.TTTLVeViecs.InsertOnSubmit(vv);
+                db.ToTrinhVeViecs.InsertOnSubmit(vv);
                 db.SubmitChanges();
                 return true;
             }
@@ -32,7 +32,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             }
         }
 
-        public bool Sua(TTTLVeViec vv)
+        public bool Sua(ToTrinhVeViec vv)
         {
             try
             {
@@ -49,11 +49,11 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             }
         }
 
-        public bool Xoa(TTTLVeViec vv)
+        public bool Xoa(ToTrinhVeViec vv)
         {
             try
             {
-                db.TTTLVeViecs.DeleteOnSubmit(vv);
+                db.ToTrinhVeViecs.DeleteOnSubmit(vv);
                 db.SubmitChanges();
                 return true;
             }
@@ -65,22 +65,22 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             }
         }
 
-        public List<TTTLVeViec> GetDS()
+        public List<ToTrinhVeViec> GetDS()
         {
-            return db.TTTLVeViecs.OrderBy(item => item.STT).ToList();
+            return db.ToTrinhVeViecs.OrderBy(item => item.STT).ToList();
         }
 
-        public TTTLVeViec Get(int MaVV)
+        public ToTrinhVeViec Get(int MaVV)
         {
-            return db.TTTLVeViecs.Single(item => item.MaVV == MaVV);
+            return db.ToTrinhVeViecs.Single(item => item.MaVV == MaVV);
         }
 
         public int GetMaxSTT()
         {
-            if (db.TTTLVeViecs.Count() == 0)
+            if (db.ToTrinhVeViecs.Count() == 0)
                 return 0;
             else
-                return db.TTTLVeViecs.Max(item => item.STT).Value;
+                return db.ToTrinhVeViecs.Max(item => item.STT).Value;
         }
     }
 }
