@@ -95,6 +95,26 @@ namespace KTKS_DonKH.DAL
                 connection.Close();
         }
 
+        public bool ExecuteNonQuery(string sql)
+        {
+            try
+            {
+                Connect();
+                command = new SqlCommand(sql, connection);
+                int rowsAffected = command.ExecuteNonQuery();
+                Disconnect();
+                if (rowsAffected >= 1)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
+        }
+
         public object ExecuteQuery_ReturnOneValue(string sql)
         {
             try

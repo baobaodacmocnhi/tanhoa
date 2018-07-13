@@ -94,14 +94,15 @@ namespace KTKS_DonKH.GUI.ThuMoi
             ///
             txtDanhBo.Text = "";
             txtHopDong.Text = "";
+            txtLoTrinh.Text = "";
             txtHoTen.Text = "";
             txtDiaChi.Text = "";
             txtGiaBieu.Text = "";
             txtDinhMuc.Text = "";
             ///
-            txtCanCu.Text = "";
+            txtCanCu.Text = "Theo biên bản kiểm tra sử dụng nước";
             txtVaoLuc.Text = "";
-            txtVeViec.Text = "";
+            txtVeViec.Text = "Thanh toán chi phí (đồng hồ nước) đứt chì góc theo biên bản số";
 
             _dontkh = null;
             _dontxl = null;
@@ -124,6 +125,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                     {
                         _dontxl = _cDonTXL.Get(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", "")));
                         txtMaDonCu.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
+                        
                         dgvDSThu.DataSource = _cThuMoi.GetDS("TXL", _dontxl.MaDon);
 
                         if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
@@ -205,6 +207,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                         }
                         else
                             MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtVeViec.Text += " " + txtMaDonCu.Text.Trim();
             }
         }
 
@@ -220,17 +223,17 @@ namespace KTKS_DonKH.GUI.ThuMoi
                         entity.MaDonTKH = _dontkh.MaDon;
                     else
                         if (_dontxl != null)
-                            entity.MaDonTKH = _dontxl.MaDon;
+                            entity.MaDonTXL = _dontxl.MaDon;
                         else
                             if (_dontbc != null)
-                                entity.MaDonTKH = _dontbc.MaDon;
+                                entity.MaDonTBC = _dontbc.MaDon;
 
                     entity.DanhBo = txtDanhBo.Text.Trim();
                     entity.HoTen = txtHoTen.Text.Trim();
                     entity.DiaChi = txtDiaChi.Text.Trim();
-                    entity.CanCu = txtCanCu.Text;
+                    entity.CanCu = txtCanCu.Text.Trim();
                     entity.VaoLuc = txtVaoLuc.Text.Trim();
-                    entity.VeViec = txtCanCu.Text.Trim();
+                    entity.VeViec = txtVeViec.Text.Trim();
 
                     if (_cThuMoi.Them(entity))
                     {
@@ -258,9 +261,9 @@ namespace KTKS_DonKH.GUI.ThuMoi
                         _thumoi.DanhBo = txtDanhBo.Text.Trim();
                         _thumoi.HoTen = txtHoTen.Text.Trim();
                         _thumoi.DiaChi = txtDiaChi.Text.Trim();
-                        _thumoi.CanCu = txtCanCu.Text;
+                        _thumoi.CanCu = txtCanCu.Text.Trim();
                         _thumoi.VaoLuc = txtVaoLuc.Text.Trim();
-                        _thumoi.VeViec = txtCanCu.Text.Trim();
+                        _thumoi.VeViec = txtVeViec.Text.Trim();
 
                         if (_cThuMoi.Sua(_thumoi))
                         {
@@ -268,6 +271,8 @@ namespace KTKS_DonKH.GUI.ThuMoi
                             Clear();
                         }
                     }
+                    else
+                    MessageBox.Show("Chưa chọn thư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (Exception ex)
                 {
@@ -292,6 +297,8 @@ namespace KTKS_DonKH.GUI.ThuMoi
                             Clear();
                         }
                     }
+                    else
+                        MessageBox.Show("Chưa chọn thư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (Exception ex)
                 {
@@ -335,6 +342,8 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.Show();
             }
+            else
+                MessageBox.Show("Chưa chọn thư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void dgvDSThu_CellContentClick(object sender, DataGridViewCellEventArgs e)

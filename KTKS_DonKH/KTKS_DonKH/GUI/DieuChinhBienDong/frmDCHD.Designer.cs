@@ -74,6 +74,7 @@
             this.txtTieuThu_End = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkChuyenNhap = new System.Windows.Forms.CheckBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.dateNgayKy = new System.Windows.Forms.DateTimePicker();
@@ -106,13 +107,6 @@
             this.label27 = new System.Windows.Forms.Label();
             this.btnInA4 = new System.Windows.Forms.Button();
             this.dgvLichSu = new System.Windows.Forms.DataGridView();
-            this.MaCTDCHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KyHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TienNuoc_End = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ThueGTGT_End = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PhiBVMT_End = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongCong_End = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.chkCodeF2 = new System.Windows.Forms.CheckBox();
@@ -120,7 +114,15 @@
             this.label28 = new System.Windows.Forms.Label();
             this.txtMaDonMoi = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
-            this.chkChuyenNhap = new System.Windows.Forms.CheckBox();
+            this.MaCTDCHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KyHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TienNuoc_End = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ThueGTGT_End = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhiBVMT_End = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongCong_End = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtLyDoDieuChinh = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -580,6 +582,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Hóa Đơn";
             // 
+            // chkChuyenNhap
+            // 
+            this.chkChuyenNhap.AutoSize = true;
+            this.chkChuyenNhap.Location = new System.Drawing.Point(283, 80);
+            this.chkChuyenNhap.Name = "chkChuyenNhap";
+            this.chkChuyenNhap.Size = new System.Drawing.Size(108, 20);
+            this.chkChuyenNhap.TabIndex = 14;
+            this.chkChuyenNhap.Text = "Chuyển Nháp";
+            this.chkChuyenNhap.UseVisualStyleBackColor = true;
+            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -693,7 +705,7 @@
             // txtChiTietCu
             // 
             this.txtChiTietCu.ForeColor = System.Drawing.Color.Red;
-            this.txtChiTietCu.Location = new System.Drawing.Point(165, 50);
+            this.txtChiTietCu.Location = new System.Drawing.Point(163, 50);
             this.txtChiTietCu.Multiline = true;
             this.txtChiTietCu.Name = "txtChiTietCu";
             this.txtChiTietCu.Size = new System.Drawing.Size(100, 113);
@@ -932,52 +944,8 @@
             this.TongCong_End});
             this.dgvLichSu.Location = new System.Drawing.Point(0, 389);
             this.dgvLichSu.Name = "dgvLichSu";
-            this.dgvLichSu.Size = new System.Drawing.Size(815, 141);
+            this.dgvLichSu.Size = new System.Drawing.Size(805, 141);
             this.dgvLichSu.TabIndex = 89;
-            // 
-            // MaCTDCHD
-            // 
-            this.MaCTDCHD.DataPropertyName = "MaCTDCHD";
-            this.MaCTDCHD.HeaderText = "Số Phiếu";
-            this.MaCTDCHD.Name = "MaCTDCHD";
-            this.MaCTDCHD.Width = 80;
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Ngày Lập";
-            this.CreateDate.Name = "CreateDate";
-            // 
-            // KyHD
-            // 
-            this.KyHD.DataPropertyName = "KyHD";
-            this.KyHD.HeaderText = "Kỳ";
-            this.KyHD.Name = "KyHD";
-            this.KyHD.Width = 70;
-            // 
-            // TienNuoc_End
-            // 
-            this.TienNuoc_End.DataPropertyName = "TienNuoc_End";
-            this.TienNuoc_End.HeaderText = "Tiền Nước";
-            this.TienNuoc_End.Name = "TienNuoc_End";
-            // 
-            // ThueGTGT_End
-            // 
-            this.ThueGTGT_End.DataPropertyName = "ThueGTGT_End";
-            this.ThueGTGT_End.HeaderText = "Thuế GTGT";
-            this.ThueGTGT_End.Name = "ThueGTGT_End";
-            // 
-            // PhiBVMT_End
-            // 
-            this.PhiBVMT_End.DataPropertyName = "PhiBVMT_End";
-            this.PhiBVMT_End.HeaderText = "Phí BVMT";
-            this.PhiBVMT_End.Name = "PhiBVMT_End";
-            // 
-            // TongCong_End
-            // 
-            this.TongCong_End.DataPropertyName = "TongCong_End";
-            this.TongCong_End.HeaderText = "Tổng Cộng";
-            this.TongCong_End.Name = "TongCong_End";
             // 
             // btnSua
             // 
@@ -1044,15 +1012,65 @@
             this.label29.TabIndex = 116;
             this.label29.Text = "Mã Đơn(New):";
             // 
-            // chkChuyenNhap
+            // MaCTDCHD
             // 
-            this.chkChuyenNhap.AutoSize = true;
-            this.chkChuyenNhap.Location = new System.Drawing.Point(283, 80);
-            this.chkChuyenNhap.Name = "chkChuyenNhap";
-            this.chkChuyenNhap.Size = new System.Drawing.Size(108, 20);
-            this.chkChuyenNhap.TabIndex = 14;
-            this.chkChuyenNhap.Text = "Chuyển Nháp";
-            this.chkChuyenNhap.UseVisualStyleBackColor = true;
+            this.MaCTDCHD.DataPropertyName = "MaCTDCHD";
+            this.MaCTDCHD.HeaderText = "Số Phiếu";
+            this.MaCTDCHD.Name = "MaCTDCHD";
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
+            // 
+            // KyHD
+            // 
+            this.KyHD.DataPropertyName = "KyHD";
+            this.KyHD.HeaderText = "Kỳ";
+            this.KyHD.Name = "KyHD";
+            this.KyHD.Width = 70;
+            // 
+            // TienNuoc_End
+            // 
+            this.TienNuoc_End.DataPropertyName = "TienNuoc_End";
+            this.TienNuoc_End.HeaderText = "Tiền Nước";
+            this.TienNuoc_End.Name = "TienNuoc_End";
+            // 
+            // ThueGTGT_End
+            // 
+            this.ThueGTGT_End.DataPropertyName = "ThueGTGT_End";
+            this.ThueGTGT_End.HeaderText = "Thuế GTGT";
+            this.ThueGTGT_End.Name = "ThueGTGT_End";
+            this.ThueGTGT_End.Width = 110;
+            // 
+            // PhiBVMT_End
+            // 
+            this.PhiBVMT_End.DataPropertyName = "PhiBVMT_End";
+            this.PhiBVMT_End.HeaderText = "Phí BVMT";
+            this.PhiBVMT_End.Name = "PhiBVMT_End";
+            // 
+            // TongCong_End
+            // 
+            this.TongCong_End.DataPropertyName = "TongCong_End";
+            this.TongCong_End.HeaderText = "Tổng Cộng";
+            this.TongCong_End.Name = "TongCong_End";
+            // 
+            // txtLyDoDieuChinh
+            // 
+            this.txtLyDoDieuChinh.Location = new System.Drawing.Point(744, 216);
+            this.txtLyDoDieuChinh.Name = "txtLyDoDieuChinh";
+            this.txtLyDoDieuChinh.Size = new System.Drawing.Size(200, 22);
+            this.txtLyDoDieuChinh.TabIndex = 119;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(626, 221);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(112, 16);
+            this.label30.TabIndex = 118;
+            this.label30.Text = "Lý Do Điều Chỉnh:";
             // 
             // frmDCHD
             // 
@@ -1060,6 +1078,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1232, 535);
+            this.Controls.Add(this.txtLyDoDieuChinh);
+            this.Controls.Add(this.label30);
             this.Controls.Add(this.txtMaDonMoi);
             this.Controls.Add(this.label29);
             this.Controls.Add(this.txtSoPhieu);
@@ -1191,13 +1211,6 @@
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Button btnInA4;
         private System.Windows.Forms.DataGridView dgvLichSu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaCTDCHD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn KyHD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TienNuoc_End;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ThueGTGT_End;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PhiBVMT_End;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_End;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.CheckBox chkCodeF2;
@@ -1206,5 +1219,14 @@
         private System.Windows.Forms.TextBox txtMaDonMoi;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.CheckBox chkChuyenNhap;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaCTDCHD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KyHD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TienNuoc_End;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ThueGTGT_End;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PhiBVMT_End;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_End;
+        private System.Windows.Forms.TextBox txtLyDoDieuChinh;
+        private System.Windows.Forms.Label label30;
     }
 }

@@ -20,7 +20,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                     if (entity.MaDonTKH != null)
                     {
                         if (db.ThuMois.Any(item => item.MaDonTKH == entity.MaDonTKH) == false)
-                            entity.STT = 1;
+                            entity.STT = 2;
                         else
                             entity.STT = db.ThuMois.Where(item => item.MaDonTKH == entity.MaDonTKH).Count() + 1;
                     }
@@ -28,7 +28,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                         if (entity.MaDonTXL != null)
                         {
                             if (db.ThuMois.Any(item => item.MaDonTXL == entity.MaDonTXL) == false)
-                                entity.STT = 1;
+                                entity.STT = 2;
                             else
                                 entity.STT = db.ThuMois.Where(item => item.MaDonTXL == entity.MaDonTXL).Count() + 1;
                         }
@@ -36,7 +36,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                             if (entity.MaDonTBC != null)
                             {
                                 if (db.ThuMois.Any(item => item.MaDonTBC == entity.MaDonTBC) == false)
-                                    entity.STT = 1;
+                                    entity.STT = 2;
                                 else
                                     entity.STT = db.ThuMois.Where(item => item.MaDonTBC == entity.MaDonTBC).Count() + 1;
                             }
@@ -44,7 +44,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                 else
                 {
                     entity.ID = 1;
-                    entity.STT = 1;
+                    entity.STT = 2;
                 }
                 entity.CreateDate = DateTime.Now;
                 entity.CreateBy = CTaiKhoan.MaUser;

@@ -488,6 +488,8 @@
       <Column Name="TongCong_Start" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ChiTietCu" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
       <Column Name="TangGiam" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ThongTin" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="LyDoDieuChinh" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="DieuChinhGia" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="TieuThu_DieuChinhGia" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="GiaDieuChinh" Type="System.Int32" DbType="Int" CanBeNull="true" />

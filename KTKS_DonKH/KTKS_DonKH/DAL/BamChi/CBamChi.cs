@@ -255,7 +255,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                     itemCTBamChi.MaSoBC,
                                     CreateBy = itemUser.HoTen,
                                 };
-                    return LINQToDataTable(query);
+                    return LINQToDataTable(query.OrderBy(item=>item.TenLD));
                 case "TXL":
                     query = from itemCTBamChi in db.CTBamChis
                             join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
@@ -281,7 +281,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.MaSoBC,
                                 CreateBy = itemUser.HoTen,
                             };
-                    return LINQToDataTable(query);
+                    return LINQToDataTable(query.OrderBy(item => item.TenLD));
                 case "TBC":
                     query = from itemCTBamChi in db.CTBamChis
                             join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
@@ -307,7 +307,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.MaSoBC,
                                 CreateBy = itemUser.HoTen,
                             };
-                    return LINQToDataTable(query);
+                    return LINQToDataTable(query.OrderBy(item => item.TenLD));
                 default:
                     query = from itemCTBamChi in db.CTBamChis
                             join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
@@ -336,7 +336,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.MaSoBC,
                                 CreateBy = itemUser.HoTen,
                             };
-                    return LINQToDataTable(query);
+                    return LINQToDataTable(query.OrderBy(item => item.TenLD));
             }
         }
 

@@ -36,6 +36,7 @@
             this.panel_KhoangThoiGian = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chkAll_ThongKeHienTrangKiemTra = new System.Windows.Forms.CheckBox();
+            this.btnIn_ThongKeTrangThaiBamChi = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -78,7 +79,7 @@
             // 
             // btnBaoCao_ThongKeTrangThaiBamChi
             // 
-            this.btnBaoCao_ThongKeTrangThaiBamChi.Location = new System.Drawing.Point(187, 39);
+            this.btnBaoCao_ThongKeTrangThaiBamChi.Location = new System.Drawing.Point(187, 25);
             this.btnBaoCao_ThongKeTrangThaiBamChi.Name = "btnBaoCao_ThongKeTrangThaiBamChi";
             this.btnBaoCao_ThongKeTrangThaiBamChi.Size = new System.Drawing.Size(75, 25);
             this.btnBaoCao_ThongKeTrangThaiBamChi.TabIndex = 28;
@@ -99,12 +100,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnIn_ThongKeTrangThaiBamChi);
             this.groupBox1.Controls.Add(this.chkAll_ThongKeHienTrangKiemTra);
             this.groupBox1.Controls.Add(this.panel_KhoangThoiGian);
             this.groupBox1.Controls.Add(this.btnBaoCao_ThongKeTrangThaiBamChi);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(389, 90);
+            this.groupBox1.Size = new System.Drawing.Size(384, 88);
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thống Kê theo Loại Đơn (ngày Bấm Chì)";
@@ -118,6 +120,16 @@
             this.chkAll_ThongKeHienTrangKiemTra.TabIndex = 29;
             this.chkAll_ThongKeHienTrangKiemTra.Text = "Tất Cả Các Tổ";
             this.chkAll_ThongKeHienTrangKiemTra.UseVisualStyleBackColor = true;
+            // 
+            // btnIn_ThongKeTrangThaiBamChi
+            // 
+            this.btnIn_ThongKeTrangThaiBamChi.Location = new System.Drawing.Point(187, 54);
+            this.btnIn_ThongKeTrangThaiBamChi.Name = "btnIn_ThongKeTrangThaiBamChi";
+            this.btnIn_ThongKeTrangThaiBamChi.Size = new System.Drawing.Size(75, 25);
+            this.btnIn_ThongKeTrangThaiBamChi.TabIndex = 30;
+            this.btnIn_ThongKeTrangThaiBamChi.Text = "In DS";
+            this.btnIn_ThongKeTrangThaiBamChi.UseVisualStyleBackColor = true;
+            this.btnIn_ThongKeTrangThaiBamChi.Click += new System.EventHandler(this.btnIn_ThongKeTrangThaiBamChi_Click);
             // 
             // frmBaoCaoBamChi
             // 
@@ -149,6 +161,7 @@
         private System.Windows.Forms.Panel panel_KhoangThoiGian;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox chkAll_ThongKeHienTrangKiemTra;
+        private System.Windows.Forms.Button btnIn_ThongKeTrangThaiBamChi;
 
     }
 }

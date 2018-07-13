@@ -11410,6 +11410,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _TangGiam;
 		
+		private string _ThongTin;
+		
+		private string _LyDoDieuChinh;
+		
 		private bool _DieuChinhGia;
 		
 		private System.Nullable<int> _TieuThu_DieuChinhGia;
@@ -11540,6 +11544,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnChiTietCuChanged();
     partial void OnTangGiamChanging(string value);
     partial void OnTangGiamChanged();
+    partial void OnThongTinChanging(string value);
+    partial void OnThongTinChanged();
+    partial void OnLyDoDieuChinhChanging(string value);
+    partial void OnLyDoDieuChinhChanged();
     partial void OnDieuChinhGiaChanging(bool value);
     partial void OnDieuChinhGiaChanged();
     partial void OnTieuThu_DieuChinhGiaChanging(System.Nullable<int> value);
@@ -12118,6 +12126,46 @@ namespace KTKS_DonKH.LinQ
 					this._TangGiam = value;
 					this.SendPropertyChanged("TangGiam");
 					this.OnTangGiamChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThongTin", DbType="NVarChar(200)")]
+		public string ThongTin
+		{
+			get
+			{
+				return this._ThongTin;
+			}
+			set
+			{
+				if ((this._ThongTin != value))
+				{
+					this.OnThongTinChanging(value);
+					this.SendPropertyChanging();
+					this._ThongTin = value;
+					this.SendPropertyChanged("ThongTin");
+					this.OnThongTinChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LyDoDieuChinh", DbType="NVarChar(200)")]
+		public string LyDoDieuChinh
+		{
+			get
+			{
+				return this._LyDoDieuChinh;
+			}
+			set
+			{
+				if ((this._LyDoDieuChinh != value))
+				{
+					this.OnLyDoDieuChinhChanging(value);
+					this.SendPropertyChanging();
+					this._LyDoDieuChinh = value;
+					this.SendPropertyChanged("LyDoDieuChinh");
+					this.OnLyDoDieuChinhChanged();
 				}
 			}
 		}

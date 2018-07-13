@@ -1152,6 +1152,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dr["SX"] = itemRow["SX_BD"];
                     dr["DV"] = itemRow["DV_BD"];
                     dr["HCSN"] = itemRow["HCSN_BD"];
+                    if (string.IsNullOrEmpty(itemRow["GhiChu"].ToString()) == false)
+                    dr["GuiThongBao"] = itemRow["GhiChu"];
                     dr["NhaTro"] = _cChungTu.CheckDinhMucNhaTro(itemRow["DanhBo"].ToString());
 
                     if (!string.IsNullOrEmpty(itemRow["DinhMuc_BD"].ToString()))
@@ -1243,6 +1245,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["SX"] = itemRow["SX_BD"];
                                 dr["DV"] = itemRow["DV_BD"];
                                 dr["HCSN"] = itemRow["HCSN_BD"];
+                                if (string.IsNullOrEmpty(itemRow["GhiChu"].ToString())==false)
+                                dr["GuiThongBao"] = itemRow["GhiChu"];
                                 dr["NhaTro"] = _cChungTu.CheckDinhMucNhaTro(itemRow["DanhBo"].ToString());
 
                                 if (!string.IsNullOrEmpty(itemRow["DinhMuc_BD"].ToString()))
