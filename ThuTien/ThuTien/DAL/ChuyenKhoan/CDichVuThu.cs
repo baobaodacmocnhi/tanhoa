@@ -2144,9 +2144,15 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " union all"
                         + " select MLT=MALOTRINH,hd.SoHoaDon,Ky=CONVERT(varchar(2),hd.Ky)+'/'+CONVERT(varchar(4),hd.Nam),DanhBo=hd.DANHBA,HoTen=TENKH,DiaChi=SO+' '+DUONG,NGAYGIAITRACH,"
                         + " 'To'=(select TenTo from TT_To where MaTo=@MaTo),HanhThu=(select HoTen from TT_NguoiDung where MaND=MaNV_HanhThu),TONGCONG,"
-                        + " DangNgan=case when DangNgan_HanhThu=1 then N'Hành Thu' when DangNgan_Ton=1 then N'Tồn Thu' when DangNgan_Quay=1 then N'Quầy' end,TenNH=N'',GiaBieu=GB"
+                        + " DangNgan=case when DangNgan_HanhThu=1 then N'Hành Thu' when DangNgan_Ton=1 then N'Đăng Ngân Tồn' when DangNgan_Quay=1 then N'Quầy' end,TenNH=N'',GiaBieu=GB"
                         + " from HOADON hd"
                         + " where NAM=@Nam and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and DangNgan_ChuyenKhoan=0 and NGAYGIAITRACH is not null"
+                        + " union all"
+                        + " select MLT=MALOTRINH,hd.SoHoaDon,Ky=CONVERT(varchar(2),hd.Ky)+'/'+CONVERT(varchar(4),hd.Nam),DanhBo=hd.DANHBA,HoTen=TENKH,DiaChi=SO+' '+DUONG,NGAYGIAITRACH,"
+                        + " 'To'=(select TenTo from TT_To where MaTo=@MaTo),HanhThu=(select HoTen from TT_NguoiDung where MaND=MaNV_HanhThu),TONGCONG,"
+                        + " DangNgan=N'',TenNH=N'',GiaBieu=GB"
+                        + " from HOADON hd"
+                        + " where NAM=@Nam and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and NGAYGIAITRACH is null"
                         + " order by MALOTRINH asc";
 
             return ExecuteQuery_DataTable(sql);
@@ -2178,9 +2184,15 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " union all"
                         + " select MLT=MALOTRINH,hd.SoHoaDon,Ky=CONVERT(varchar(2),hd.Ky)+'/'+CONVERT(varchar(4),hd.Nam),DanhBo=hd.DANHBA,HoTen=TENKH,DiaChi=SO+' '+DUONG,NGAYGIAITRACH,"
                         + " 'To'=(select TenTo from TT_To where MaTo=@MaTo),HanhThu=(select HoTen from TT_NguoiDung where MaND=MaNV_HanhThu),TONGCONG,"
-                        + " DangNgan=case when DangNgan_HanhThu=1 then N'Hành Thu' when DangNgan_Ton=1 then N'Tồn Thu' when DangNgan_Quay=1 then N'Quầy' end,TenNH=N'',GiaBieu=GB"
+                        + " DangNgan=case when DangNgan_HanhThu=1 then N'Hành Thu' when DangNgan_Ton=1 then N'Đăng Ngân Tồn' when DangNgan_Quay=1 then N'Quầy' end,TenNH=N'',GiaBieu=GB"
                         + " from HOADON hd"
                         + " where NAM=@Nam and KY=@Ky and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and DangNgan_ChuyenKhoan=0 and NGAYGIAITRACH is not null"
+                        + " union all"
+                        + " select MLT=MALOTRINH,hd.SoHoaDon,Ky=CONVERT(varchar(2),hd.Ky)+'/'+CONVERT(varchar(4),hd.Nam),DanhBo=hd.DANHBA,HoTen=TENKH,DiaChi=SO+' '+DUONG,NGAYGIAITRACH,"
+                        + " 'To'=(select TenTo from TT_To where MaTo=@MaTo),HanhThu=(select HoTen from TT_NguoiDung where MaND=MaNV_HanhThu),TONGCONG,"
+                        + " DangNgan=N'',TenNH=N'',GiaBieu=GB"
+                        + " from HOADON hd"
+                        + " where NAM=@Nam and KY=@Ky and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS and NGAYGIAITRACH is null"
                         + " order by MALOTRINH asc";
 
             return ExecuteQuery_DataTable(sql);

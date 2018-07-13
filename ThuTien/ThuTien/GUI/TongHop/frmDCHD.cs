@@ -139,23 +139,27 @@ namespace ThuTien.GUI.TongHop
         {
             DataTable dt = _cDCHD.GetDSDangNgan(dateTu.Value, dateDen.Value);
             dsBaoCao ds = new dsBaoCao();
-            foreach (DataRow item in dt.Rows)
-            {
-                DataRow dr = ds.Tables["DSDCHD"].NewRow();
-                dr["LoaiBaoCao"] = "ĐĂNG NGÂN";
-                dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
-                dr["Ky"] = item["Ky"].ToString();
-                dr["SoHoaDon"] = item["SoHoaDon"].ToString();
-                dr["GiaBan"] = item["GiaBan_End"].ToString();
-                dr["ThueGTGT"] = item["ThueGTGT_End"].ToString();
-                dr["PhiBVMT"] = item["PhiBVMT_End"].ToString();
-                dr["TongCong"] = item["TongCong_End"].ToString();
-                dr["TongCongTruoc"] = item["TongCong_Start"].ToString();
-                dr["TongCongBD"] = item["TongCong_BD"].ToString();
-                dr["HanhThu"] = item["HanhThu"].ToString();
-                dr["To"] = item["To"].ToString();
-                ds.Tables["DSDCHD"].Rows.Add(dr);
-            }
+                foreach (DataRow item in dt.Rows)
+                    {
+                        DataRow dr = ds.Tables["DSDCHD"].NewRow();
+                        dr["LoaiBaoCao"] = "ĐĂNG NGÂN";
+                        dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                        dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                        dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+                        dr["Ky"] = item["Ky"];
+                        dr["SoHoaDon"] = item["SoHoaDon"];
+                        dr["GiaBan"] = item["GiaBan_End"];
+                        dr["ThueGTGT"] = item["ThueGTGT_End"];
+                        dr["PhiBVMT"] = item["PhiBVMT_End"];
+                        dr["TongCong"] = item["TongCong_End"];
+                        dr["TongCongTruoc"] = item["TongCong_Start"];
+                        dr["TongCongBD"] = item["TongCong_BD"];
+                        dr["TieuThuBD"] = item["TieuThu_BD"];
+                        dr["HanhThu"] = item["HanhThu"];
+                        dr["To"] = item["To"];
+                        ds.Tables["DSDCHD"].Rows.Add(dr);
+                    }
+            
             rptDSDCHD rpt = new rptDSDCHD();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
@@ -167,22 +171,25 @@ namespace ThuTien.GUI.TongHop
             DataTable dt = _cDCHD.GetDSTon();
             dsBaoCao ds = new dsBaoCao();
             foreach (DataRow item in dt.Rows)
-            {
-                DataRow dr = ds.Tables["DSDCHD"].NewRow();
-                dr["LoaiBaoCao"] = "TỒN";
-                dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
-                dr["Ky"] = item["Ky"].ToString();
-                dr["SoHoaDon"] = item["SoHoaDon"].ToString();
-                dr["GiaBan"] = item["GiaBan_End"].ToString();
-                dr["ThueGTGT"] = item["ThueGTGT_End"].ToString();
-                dr["PhiBVMT"] = item["PhiBVMT_End"].ToString();
-                dr["TongCong"] = item["TongCong_End"].ToString();
-                dr["TongCongTruoc"] = item["TongCong_Start"].ToString();
-                dr["TongCongBD"] = item["TongCong_BD"].ToString();
-                dr["HanhThu"] = item["HanhThu"].ToString();
-                dr["To"] = item["To"].ToString();
-                ds.Tables["DSDCHD"].Rows.Add(dr);
-            }
+                {
+                    DataRow dr = ds.Tables["DSDCHD"].NewRow();
+                    dr["LoaiBaoCao"] = "TỒN";
+                    //dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                    //dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                    dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+                    dr["Ky"] = item["Ky"];
+                    dr["SoHoaDon"] = item["SoHoaDon"];
+                    dr["GiaBan"] = item["GiaBan_End"];
+                    dr["ThueGTGT"] = item["ThueGTGT_End"];
+                    dr["PhiBVMT"] = item["PhiBVMT_End"];
+                    dr["TongCong"] = item["TongCong_End"];
+                    dr["TongCongTruoc"] = item["TongCong_Start"];
+                    dr["TongCongBD"] = item["TongCong_BD"];
+                    dr["TieuThuBD"] = item["TieuThu_BD"];
+                    dr["HanhThu"] = item["HanhThu"];
+                    dr["To"] = item["To"];
+                    ds.Tables["DSDCHD"].Rows.Add(dr);
+                }
             rptDSDCHD rpt = new rptDSDCHD();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);

@@ -1267,9 +1267,11 @@ namespace ThuTien.DAL.TongHop
                             itemDC.TangGiam,
                             TongCong_BD = itemDC.TONGCONG_DC,
                             TongCong_Start = itemDC.TONGCONG_BD,
+                            TieuThu_BD=itemDC.TIEUTHU_DC-itemDC.TIEUTHU_BD,
                             To = itemtableND.TT_To.TenTo,
                             HanhThu = itemtableND.HoTen,
                             itemDC.ChuanThu1,
+                            itemHD.NGAYGIAITRACH,
                         };
             return LINQToDataTable(query);
         }
@@ -1296,6 +1298,7 @@ namespace ThuTien.DAL.TongHop
                             itemDC.TangGiam,
                             TongCong_BD = itemDC.TONGCONG_DC,
                             TongCong_Start = itemDC.TONGCONG_BD,
+                            TieuThu_BD = itemDC.TIEUTHU_DC - itemDC.TIEUTHU_BD,
                             To = itemtableND.TT_To.TenTo,
                             HanhThu = itemtableND.HoTen,
                         };
@@ -1324,6 +1327,7 @@ namespace ThuTien.DAL.TongHop
                             itemDC.TangGiam,
                             TongCong_BD = itemDC.TONGCONG_DC,
                             TongCong_Start = itemDC.TONGCONG_BD,
+                            TieuThu_BD = itemDC.TIEUTHU_DC - itemDC.TIEUTHU_BD,
                             To = itemtableND.TT_To.TenTo,
                             HanhThu = itemtableND.HoTen,
                         };

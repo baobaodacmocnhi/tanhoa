@@ -88,9 +88,9 @@ namespace ThuTien.GUI.ChuyenKhoan
                             btnXem.PerformClick();
                         }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lỗi, Vui lòng thử lại\n"+ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -152,9 +152,9 @@ namespace ThuTien.GUI.ChuyenKhoan
                         btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Lỗi, Vui lòng thử lại\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
             }
             else
@@ -223,21 +223,23 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
-                    if (CNguoiDung.Doi==false)
+                    try
                     {
-                        DateTime CreateDate = new DateTime();
-                        DateTime.TryParse(dgvBangKe["CreateDate", e.RowIndex].Value.ToString(), out CreateDate);
-                        if (CreateDate.Date != DateTime.Now.Date)
+                        if (CNguoiDung.Doi == false)
                         {
-                            MessageBox.Show("Chỉ được Điều Chỉnh trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
+                            DateTime CreateDate = new DateTime();
+                            DateTime.TryParse(dgvBangKe["CreateDate", e.RowIndex].Value.ToString(), out CreateDate);
+                            if (CreateDate.Date != DateTime.Now.Date)
+                            {
+                                MessageBox.Show("Chỉ được Điều Chỉnh trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         }
-                    }
-                    using (var scope = new TransactionScope())
-                    {
-                        TT_BangKe bangke = _cBangKe.Get(int.Parse(dgvBangKe["MaBK", e.RowIndex].Value.ToString()));
-                        int SoTien = bangke.SoTien.Value;
-                        bangke.DanhBo = e.FormattedValue.ToString().Replace(" ", "");
+                        using (var scope = new TransactionScope())
+                        {
+                            TT_BangKe bangke = _cBangKe.Get(int.Parse(dgvBangKe["MaBK", e.RowIndex].Value.ToString()));
+                            int SoTien = bangke.SoTien.Value;
+                            bangke.DanhBo = e.FormattedValue.ToString().Replace(" ", "");
                             if (_cBangKe.Sua(bangke))
                                 if (_cTienDu.Update(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", ""), bangke.SoTien.Value * (-1), "Bảng Kê", "Sửa Đến Danh Bộ " + e.FormattedValue.ToString().Replace(" ", "").Insert(7, " ").Insert(4, " ")))
                                     if (string.IsNullOrEmpty(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", "")))
@@ -248,8 +250,13 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     else
                                         if (_cTienDu.Update(bangke.DanhBo, SoTien, "Bảng Kê", "Sửa Từ Danh Bộ " + dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", "").Insert(7, " ").Insert(4, " ")))
                                             scope.Complete();
+                        }
+                        _cTienDu.Refresh();
                     }
-                    _cTienDu.Refresh();
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi, Vui lòng thử lại\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

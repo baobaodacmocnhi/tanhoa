@@ -409,9 +409,9 @@ namespace ThuTien.GUI.ChuyenKhoan
                         item.Cells["Chon"].Value = true;
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi, "+DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lỗi, "+DanhBo+"\n"+ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

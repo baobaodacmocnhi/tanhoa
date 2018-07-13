@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>914</ApplicationRevision>
+    <ApplicationRevision>923</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -173,6 +173,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptTienDuKhachHang.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\Doi\rptGuiThongBao.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptGuiThongBao.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BaoCao\Doi\rptPhanTichBienDongHoaDon.cs">
@@ -503,6 +509,7 @@
     <Compile Include="DAL\ChuyenKhoan\CThongTinDanhBo.cs" />
     <Compile Include="DAL\Doi\CDangKyHD0.cs" />
     <Compile Include="DAL\Doi\CGiaBanBinhQuan.cs" />
+    <Compile Include="DAL\Doi\CGuiThongBao.cs" />
     <Compile Include="DAL\Doi\CHoaDon.cs" />
     <Compile Include="DAL\Doi\CHoaDonTon.cs" />
     <Compile Include="DAL\Doi\CDangKy.cs" />
@@ -664,6 +671,12 @@
     </Compile>
     <Compile Include="GUI\Doi\frmDieuChinhMLT.Designer.cs">
       <DependentUpon>frmDieuChinhMLT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Doi\frmGuiThongBao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Doi\frmGuiThongBao.Designer.cs">
+      <DependentUpon>frmGuiThongBao.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Doi\frmKetThucNamTaiKhoa.cs">
       <SubType>Form</SubType>
@@ -1138,6 +1151,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptTienDuKhachHang.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\Doi\rptGuiThongBao.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptGuiThongBao.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\Doi\rptPhanTichBienDongHoaDon.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPhanTichBienDongHoaDon.cs</LastGenOutput>
@@ -1442,6 +1459,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmDieuChinhMLT.resx">
       <DependentUpon>frmDieuChinhMLT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Doi\frmGuiThongBao.resx">
+      <DependentUpon>frmGuiThongBao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmKetThucNamTaiKhoa.resx">
       <DependentUpon>frmKetThucNamTaiKhoa.cs</DependentUpon>

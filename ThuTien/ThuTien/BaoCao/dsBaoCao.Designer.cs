@@ -7738,6 +7738,8 @@ namespace ThuTien.BaoCao {
             
             private global::System.Data.DataColumn columnTongCongBD;
             
+            private global::System.Data.DataColumn columnTieuThuBD;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DSDCHDDataTable() {
@@ -7885,6 +7887,14 @@ namespace ThuTien.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TieuThuBDColumn {
+                get {
+                    return this.columnTieuThuBD;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -7920,7 +7930,7 @@ namespace ThuTien.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DSDCHDRow AddDSDCHDRow(string TuNgay, string DenNgay, string LoaiBaoCao, string DanhBo, string Ky, string SoHoaDon, string To, string HanhThu, int GiaBan, int ThueGTGT, int PhiBVMT, int TongCong, int TongCongTruoc, int TongCongBD) {
+            public DSDCHDRow AddDSDCHDRow(string TuNgay, string DenNgay, string LoaiBaoCao, string DanhBo, string Ky, string SoHoaDon, string To, string HanhThu, int GiaBan, int ThueGTGT, int PhiBVMT, int TongCong, int TongCongTruoc, int TongCongBD, int TieuThuBD) {
                 DSDCHDRow rowDSDCHDRow = ((DSDCHDRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         TuNgay,
@@ -7936,7 +7946,8 @@ namespace ThuTien.BaoCao {
                         PhiBVMT,
                         TongCong,
                         TongCongTruoc,
-                        TongCongBD};
+                        TongCongBD,
+                        TieuThuBD};
                 rowDSDCHDRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDSDCHDRow);
                 return rowDSDCHDRow;
@@ -7973,6 +7984,7 @@ namespace ThuTien.BaoCao {
                 this.columnTongCong = base.Columns["TongCong"];
                 this.columnTongCongTruoc = base.Columns["TongCongTruoc"];
                 this.columnTongCongBD = base.Columns["TongCongBD"];
+                this.columnTieuThuBD = base.Columns["TieuThuBD"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8006,6 +8018,8 @@ namespace ThuTien.BaoCao {
                 base.Columns.Add(this.columnTongCongTruoc);
                 this.columnTongCongBD = new global::System.Data.DataColumn("TongCongBD", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTongCongBD);
+                this.columnTieuThuBD = new global::System.Data.DataColumn("TieuThuBD", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTieuThuBD);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -19280,6 +19294,22 @@ namespace ThuTien.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int TieuThuBD {
+                get {
+                    try {
+                        return ((int)(this[this.tableDSDCHD.TieuThuBDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TieuThuBD\' in table \'DSDCHD\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDSDCHD.TieuThuBDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsTuNgayNull() {
                 return this.IsNull(this.tableDSDCHD.TuNgayColumn);
             }
@@ -19444,6 +19474,18 @@ namespace ThuTien.BaoCao {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTongCongBDNull() {
                 this[this.tableDSDCHD.TongCongBDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTieuThuBDNull() {
+                return this.IsNull(this.tableDSDCHD.TieuThuBDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTieuThuBDNull() {
+                this[this.tableDSDCHD.TieuThuBDColumn] = global::System.Convert.DBNull;
             }
         }
         

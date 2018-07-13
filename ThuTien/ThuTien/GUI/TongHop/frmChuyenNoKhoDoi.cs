@@ -14,6 +14,7 @@ using ThuTien.BaoCao;
 using ThuTien.BaoCao.TongHop;
 using ThuTien.GUI.BaoCao;
 using ThuTien.DAL.Quay;
+using System.Globalization;
 
 namespace ThuTien.GUI.TongHop
 {
@@ -221,12 +222,18 @@ namespace ThuTien.GUI.TongHop
         private void btnXem_Click(object sender, EventArgs e)
         {
             dgvHoaDon.DataSource = _cCNKD.GetDSCT(dateTu.Value, dateDen.Value);
+            int TongCong = 0;
             foreach (DataGridViewRow item in dgvHoaDon.Rows)
+            {
                 if (_cDCHD.CheckExist_ChuanThu(int.Parse(item.Cells["MaHD"].Value.ToString())))
                 {
                     DIEUCHINH_HD dchd = _cDCHD.Get(int.Parse(item.Cells["MaHD"].Value.ToString()));
                     item.Cells["TongCong"].Value = dchd.TONGCONG_BD;
                 }
+                TongCong += int.Parse(item.Cells["TongCong"].Value.ToString());
+            }
+            txtTongHD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", dgvHoaDon.RowCount);
+            txtTongCong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
         }
 
         private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
