@@ -32,6 +32,14 @@ namespace ThuTien.GUI.Doi
         private void frmGuiThongBao_Load(object sender, EventArgs e)
         {
             dgvGuiThongBao.AutoGenerateColumns = false;
+            DataTable dt = _cHoaDon.GetGroupGiaBieu(DateTime.Now.Year);
+            DataRow dr = dt.NewRow();
+            dr["ID"] = "0";
+            dr["GiaBieu"] = "Tất Cả";
+            dt.Rows.InsertAt(dr, 0);
+            cmbGiaBieu.DataSource = dt;
+            cmbGiaBieu.DisplayMember = "GiaBieu";
+            cmbGiaBieu.ValueMember = "ID";
             btnXemAll.PerformClick();
         }
 
@@ -90,7 +98,15 @@ namespace ThuTien.GUI.Doi
 
         private void btnXem_HD_Click(object sender, EventArgs e)
         {
-            dgvGuiThongBao.DataSource = _cGuiThongBao.GetDS(int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
+            if (cmbGiaBieu.SelectedIndex == 0)
+            {
+                dgvGuiThongBao.DataSource = _cGuiThongBao.GetDS(int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
+            }
+            else
+            if (cmbGiaBieu.SelectedIndex > 0)
+            {
+                dgvGuiThongBao.DataSource = _cGuiThongBao.GetDS(int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()),int.Parse(cmbGiaBieu.SelectedValue.ToString()));
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)

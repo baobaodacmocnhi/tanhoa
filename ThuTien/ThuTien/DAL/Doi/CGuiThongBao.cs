@@ -82,7 +82,7 @@ namespace ThuTien.DAL.Doi
             string sql = ";with ttkh as"
                         + " ("
                         + " 	select b.*,'To'=(select TenTo from TT_To where MaTo=nd.MaTo),HanhThu=nd.HoTen from"
-                        + " 	(select DANHBA,HoTen=TENKH,DiaChi=SO+' '+DUONG,HOPDONG,MaNV_HanhThu,ROW_NUMBER() OVER (PARTITION BY DANHBA ORDER BY CreateDate DESC) AS rn from HOADON where DOT>="+FromDot+" and DOT<="+ToDot+") b"
+                        + " 	(select DANHBA,HoTen=TENKH,DiaChi=SO+' '+DUONG,HOPDONG,GiaBieu=GB,MaNV_HanhThu,ROW_NUMBER() OVER (PARTITION BY DANHBA ORDER BY CreateDate DESC) AS rn from HOADON where DOT>="+FromDot+" and DOT<="+ToDot+") b"
                         + " 	left join TT_NguoiDung nd on b.MaNV_HanhThu=nd.MaND"
                         + " 	where rn=1"
                         + " )"
@@ -92,5 +92,19 @@ namespace ThuTien.DAL.Doi
             return ExecuteQuery_DataTable(sql);
         }
 
+        public DataTable GetDS(int FromDot, int ToDot,int GiaBieu)
+        {
+            string sql = ";with ttkh as"
+                        + " ("
+                        + " 	select b.*,'To'=(select TenTo from TT_To where MaTo=nd.MaTo),HanhThu=nd.HoTen from"
+                        + " 	(select DANHBA,HoTen=TENKH,DiaChi=SO+' '+DUONG,HOPDONG,MaNV_HanhThu,GiaBieu=GB,ROW_NUMBER() OVER (PARTITION BY DANHBA ORDER BY CreateDate DESC) AS rn from HOADON where DOT>=" + FromDot + " and DOT<=" + ToDot + " and GB=" + GiaBieu + ") b"
+                        + " 	left join TT_NguoiDung nd on b.MaNV_HanhThu=nd.MaND"
+                        + " 	where rn=1"
+                        + " )"
+                        + " select * from"
+                        + " (select ID,DanhBo,CreateDate from TT_GuiThongBao) a,ttkh"
+                        + " where a.DanhBo=ttkh.DANHBA";
+            return ExecuteQuery_DataTable(sql);
+        }
     }
 }

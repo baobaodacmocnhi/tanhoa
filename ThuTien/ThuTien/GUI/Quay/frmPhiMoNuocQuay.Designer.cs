@@ -51,6 +51,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dateDen = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnSua = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKQDongNuoc)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,9 +110,9 @@
             this.dgvKQDongNuoc.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvKQDongNuoc.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvKQDongNuoc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvKQDongNuoc.Size = new System.Drawing.Size(1027, 557);
             this.dgvKQDongNuoc.TabIndex = 33;
+            this.dgvKQDongNuoc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKQDongNuoc_CellClick);
             this.dgvKQDongNuoc.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvKQDongNuoc_CellFormatting);
             this.dgvKQDongNuoc.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvKQDongNuoc_CellValidating);
             this.dgvKQDongNuoc.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvKQDongNuoc_RowPostPaint);
@@ -246,11 +247,22 @@
             this.label3.TabIndex = 39;
             this.label3.Text = "Đến Ngày:";
             // 
+            // btnSua
+            // 
+            this.btnSua.Location = new System.Drawing.Point(784, 35);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(75, 23);
+            this.btnSua.TabIndex = 43;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
             // frmPhiMoNuocQuay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1051, 665);
+            this.Controls.Add(this.btnSua);
             this.Controls.Add(this.dateTu);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dateDen);
@@ -289,5 +301,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dateDen;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnSua;
     }
 }

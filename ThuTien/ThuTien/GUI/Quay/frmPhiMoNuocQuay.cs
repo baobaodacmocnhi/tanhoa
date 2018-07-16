@@ -16,6 +16,7 @@ namespace ThuTien.GUI.Quay
     {
         string _mnu = "mnuPhiMoNuocQuay";
         CDongNuoc _cDongNuoc = new CDongNuoc();
+        DateTimePicker cellDateTimePicker;
 
         public frmPhiMoNuocQuay()
         {
@@ -86,6 +87,88 @@ namespace ThuTien.GUI.Quay
         {
             if (e.KeyChar == 13 && txtDanhBo.Text.Trim().Replace(" ", "").Length == 11)
                 btnXem.PerformClick();
+        }
+
+        private void dgvKQDongNuoc_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvKQDongNuoc.Columns[e.ColumnIndex].Name == "NgayDongPhi")
+            {
+                //Initialized a new DateTimePicker Control  
+                cellDateTimePicker = new DateTimePicker();
+
+                //Adding DateTimePicker control into DataGridView   
+                dgvKQDongNuoc.Controls.Add(cellDateTimePicker);
+
+                // Setting the format (i.e. 2014-10-10)  
+                cellDateTimePicker.CustomFormat ="dd/MM/yyyy";
+
+                // It returns the retangular area that represents the Display area for a cell  
+                Rectangle oRectangle = dgvKQDongNuoc.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
+
+                //Setting area for DateTimePicker Control  
+                cellDateTimePicker.Size = new Size(oRectangle.Width, oRectangle.Height);
+
+                // Setting Location  
+                cellDateTimePicker.Location = new Point(oRectangle.X, oRectangle.Y);
+
+                // An event attached to dateTimePicker Control which is fired when DateTimeControl is closed  
+                cellDateTimePicker.CloseUp += new EventHandler(cellDateTimePicker_CloseUp);
+
+                // An event attached to dateTimePicker Control which is fired when any date is selected  
+                cellDateTimePicker.TextChanged += new EventHandler(cellDateTimePicker_TextChanged);
+
+                // Now make it visible  
+                cellDateTimePicker.Visible = true;
+            }
+        }
+
+        void cellDateTimePicker_TextChanged(object sender, EventArgs e)
+        {
+            // Saving the 'Selected Date on Calendar' into DataGridView current cell  
+            dgvKQDongNuoc.CurrentCell.Value = cellDateTimePicker.Text.ToString();
+        }
+
+        void cellDateTimePicker_CloseUp(object sender, EventArgs e)
+        {   // Hiding the control after use   
+            cellDateTimePicker.Visible = false;
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+            {
+                try
+                {
+                    foreach (DataGridViewRow item in dgvKQDongNuoc.Rows)
+                    {
+                        TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(item.Cells["MaKQDN"].Value.ToString()));
+                        if (kqdongnuoc.DongPhi == true && kqdongnuoc.ChuyenKhoan == true)
+                        {
+                            MessageBox.Show("Đã có đóng phí Chuyển Khoản: " + item.Cells["DanhBo"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        if (bool.Parse(item.Cells["DongPhi"].Value.ToString()) == true)
+                        {
+                            kqdongnuoc.DongPhi = true;
+                            string[] date = item.Cells["NgayDongPhi"].Value.ToString().Split('/');
+                            kqdongnuoc.NgayDongPhi = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]), DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, DateTime.Now.Millisecond);
+                        }
+                        else
+                        {
+                            kqdongnuoc.DongPhi = false;
+                            kqdongnuoc.NgayDongPhi = null;
+                        }
+                        _cDongNuoc.SuaKQ(kqdongnuoc);
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi " + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
     }
