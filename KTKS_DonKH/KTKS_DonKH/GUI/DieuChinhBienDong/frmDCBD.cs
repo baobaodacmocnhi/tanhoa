@@ -549,9 +549,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (txtHoTen_BD.Text.Trim() != "")
                     {
                         if(string.IsNullOrEmpty(ThongTin)==true)
-                        ThongTin += "Họ Tên";
+                        ThongTin += "Tên";
                         else
-                            ThongTin += ". Họ Tên";
+                            ThongTin += ". Tên";
                         ctdcbd.HoTen_BD = txtHoTen_BD.Text.Trim();
                     }
                     ///Địa Chỉ
@@ -589,18 +589,18 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (txtGiaBieu_BD.Text.Trim() != "")
                     {
                         if (string.IsNullOrEmpty(ThongTin) == true)
-                            ThongTin += "GB";
+                            ThongTin += "Giá Biểu";
                         else
-                            ThongTin += ". GB";
+                            ThongTin += ". Giá Biểu";
                         ctdcbd.GiaBieu_BD = int.Parse(txtGiaBieu_BD.Text.Trim());
                     }
                     ///Định Mức
                     if (txtDinhMuc_BD.Text.Trim() != "")
                     {
                         if (string.IsNullOrEmpty(ThongTin) == true)
-                            ThongTin += "ĐM";
+                            ThongTin += "Định Mức";
                         else
-                            ThongTin += ". ĐM";
+                            ThongTin += ". Định Mức";
                         ctdcbd.DinhMuc_BD = int.Parse(txtDinhMuc_BD.Text.Trim());
                     }
                     if (txtSH_BD.Text.Trim() != "" || txtSX_BD.Text.Trim() != "" || txtDV_BD.Text.Trim() != "" || txtHCSN_BD.Text.Trim() != "")
@@ -703,9 +703,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         if (txtHoTen_BD.Text.Trim() != "")
                         {
                             if (string.IsNullOrEmpty(ThongTin) == true)
-                                ThongTin += "Họ Tên";
+                                ThongTin += "Tên";
                             else
-                                ThongTin += ". Họ Tên";
+                                ThongTin += ". Tên";
                             _ctdcbd.HoTen_BD = txtHoTen_BD.Text.Trim();
                         }
                         else
@@ -753,9 +753,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         if (txtGiaBieu_BD.Text.Trim() != "")
                         {
                             if (string.IsNullOrEmpty(ThongTin) == true)
-                                ThongTin += "GB";
+                                ThongTin += "Giá Biểu";
                             else
-                                ThongTin += ". GB";
+                                ThongTin += ". Giá Biểu";
                             _ctdcbd.GiaBieu_BD = int.Parse(txtGiaBieu_BD.Text.Trim());
                         }
                         else
@@ -764,9 +764,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         if (txtDinhMuc_BD.Text.Trim() != "")
                         {
                             if (string.IsNullOrEmpty(ThongTin) == true)
-                                ThongTin += "ĐM";
+                                ThongTin += "Định Mức";
                             else
-                                ThongTin += ". ĐM";
+                                ThongTin += ". Định Mức";
                             _ctdcbd.DinhMuc_BD = int.Parse(txtDinhMuc_BD.Text.Trim());
                         }
                         else

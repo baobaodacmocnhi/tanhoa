@@ -71,6 +71,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             txtDanhBo.Text = hoadon.DANHBA;
             txtHoTen.Text = hoadon.TENKH;
             txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
+            txtGiaBieu.Text = hoadon.GB.ToString();
+            txtDinhMuc.Text = hoadon.DM.ToString();
         }
 
         public void LoadTT(CTToTrinh cttt)
@@ -97,6 +99,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             txtDanhBo.Text = cttt.DanhBo;
             txtHoTen.Text = cttt.HoTen;
             txtDiaChi.Text = cttt.DiaChi;
+            txtGiaBieu.Text = cttt.GiaBieu;
+            txtDinhMuc.Text = cttt.DinhMuc;
             txtVeViec.Text = cttt.VeViec;
             txtKinhTrinh.Text = cttt.KinhTrinh;
             txtNoiDung.Text = cttt.NoiDung;
@@ -284,6 +288,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     cttt.DanhBo = txtDanhBo.Text.Trim();
                     cttt.HoTen = txtHoTen.Text.Trim();
                     cttt.DiaChi = txtDiaChi.Text.Trim();
+                    cttt.GiaBieu = txtGiaBieu.Text.Trim();
+                    cttt.DinhMuc = txtDinhMuc.Text.Trim();
                     cttt.VeViec = txtVeViec.Text.Trim();
                     cttt.KinhTrinh = txtKinhTrinh.Text.Trim();
                     cttt.NoiDung = txtNoiDung.Text;
@@ -325,6 +331,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         _cttt.DanhBo = txtDanhBo.Text.Trim();
                         _cttt.HoTen = txtHoTen.Text.Trim();
                         _cttt.DiaChi = txtDiaChi.Text.Trim();
+                        _cttt.GiaBieu = txtGiaBieu.Text.Trim();
+                        _cttt.DinhMuc = txtDinhMuc.Text.Trim();
                         _cttt.VeViec = txtVeViec.Text.Trim();
                         _cttt.KinhTrinh = txtKinhTrinh.Text.Trim();
                         _cttt.NoiDung = txtNoiDung.Text;

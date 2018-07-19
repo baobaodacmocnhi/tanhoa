@@ -78,9 +78,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.btnXuatExcel_DSDCBD = new System.Windows.Forms.Button();
-            this.radAll_ThongKeDC = new System.Windows.Forms.RadioButton();
-            this.radSoCongVan_ThongKeDC = new System.Windows.Forms.RadioButton();
-            this.radConLai_ThongKeDC = new System.Windows.Forms.RadioButton();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.groupBox_DSChungCu.SuspendLayout();
             this.groupBox_ThongKeDC.SuspendLayout();
@@ -307,9 +304,6 @@
             // 
             // groupBox_ThongKeDC
             // 
-            this.groupBox_ThongKeDC.Controls.Add(this.radConLai_ThongKeDC);
-            this.groupBox_ThongKeDC.Controls.Add(this.radSoCongVan_ThongKeDC);
-            this.groupBox_ThongKeDC.Controls.Add(this.radAll_ThongKeDC);
             this.groupBox_ThongKeDC.Controls.Add(this.cmbPhuong_ThongKeDC);
             this.groupBox_ThongKeDC.Controls.Add(this.label5);
             this.groupBox_ThongKeDC.Controls.Add(this.cmbQuan_ThongKeDC);
@@ -320,7 +314,7 @@
             this.groupBox_ThongKeDC.Controls.Add(this.btnBaoCao_ThongKeDC);
             this.groupBox_ThongKeDC.Location = new System.Drawing.Point(12, 195);
             this.groupBox_ThongKeDC.Name = "groupBox_ThongKeDC";
-            this.groupBox_ThongKeDC.Size = new System.Drawing.Size(399, 149);
+            this.groupBox_ThongKeDC.Size = new System.Drawing.Size(276, 149);
             this.groupBox_ThongKeDC.TabIndex = 22;
             this.groupBox_ThongKeDC.TabStop = false;
             this.groupBox_ThongKeDC.Text = "Thống Kê Điều Chỉnh";
@@ -425,7 +419,7 @@
             // 
             // btnBaoCao_ThongKeDC
             // 
-            this.btnBaoCao_ThongKeDC.Location = new System.Drawing.Point(271, 36);
+            this.btnBaoCao_ThongKeDC.Location = new System.Drawing.Point(187, 65);
             this.btnBaoCao_ThongKeDC.Name = "btnBaoCao_ThongKeDC";
             this.btnBaoCao_ThongKeDC.Size = new System.Drawing.Size(75, 25);
             this.btnBaoCao_ThongKeDC.TabIndex = 12;
@@ -445,7 +439,7 @@
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.panel2);
             this.groupBox1.Controls.Add(this.btnXuatExcel_DSDCBD);
-            this.groupBox1.Location = new System.Drawing.Point(417, 195);
+            this.groupBox1.Location = new System.Drawing.Point(295, 195);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(276, 176);
             this.groupBox1.TabIndex = 23;
@@ -587,37 +581,6 @@
             this.btnXuatExcel_DSDCBD.UseVisualStyleBackColor = true;
             this.btnXuatExcel_DSDCBD.Click += new System.EventHandler(this.btnXuatExcel_DSDCBD_Click);
             // 
-            // radAll_ThongKeDC
-            // 
-            this.radAll_ThongKeDC.AutoSize = true;
-            this.radAll_ThongKeDC.Checked = true;
-            this.radAll_ThongKeDC.Location = new System.Drawing.Point(190, 70);
-            this.radAll_ThongKeDC.Name = "radAll_ThongKeDC";
-            this.radAll_ThongKeDC.Size = new System.Drawing.Size(66, 20);
-            this.radAll_ThongKeDC.TabIndex = 25;
-            this.radAll_ThongKeDC.Text = "Tất Cả";
-            this.radAll_ThongKeDC.UseVisualStyleBackColor = true;
-            // 
-            // radSoCongVan_ThongKeDC
-            // 
-            this.radSoCongVan_ThongKeDC.AutoSize = true;
-            this.radSoCongVan_ThongKeDC.Location = new System.Drawing.Point(190, 96);
-            this.radSoCongVan_ThongKeDC.Name = "radSoCongVan_ThongKeDC";
-            this.radSoCongVan_ThongKeDC.Size = new System.Drawing.Size(105, 20);
-            this.radSoCongVan_ThongKeDC.TabIndex = 26;
-            this.radSoCongVan_ThongKeDC.Text = "Số Công Văn";
-            this.radSoCongVan_ThongKeDC.UseVisualStyleBackColor = true;
-            // 
-            // radConLai_ThongKeDC
-            // 
-            this.radConLai_ThongKeDC.AutoSize = true;
-            this.radConLai_ThongKeDC.Location = new System.Drawing.Point(190, 122);
-            this.radConLai_ThongKeDC.Name = "radConLai_ThongKeDC";
-            this.radConLai_ThongKeDC.Size = new System.Drawing.Size(71, 20);
-            this.radConLai_ThongKeDC.TabIndex = 27;
-            this.radConLai_ThongKeDC.Text = "Còn Lại";
-            this.radConLai_ThongKeDC.UseVisualStyleBackColor = true;
-            // 
             // frmBaoCaoDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -716,8 +679,5 @@
         private System.Windows.Forms.Button btnXuatExcel_DSDCBD;
         private System.Windows.Forms.RadioButton radHoaDon;
         private System.Windows.Forms.RadioButton radBienDong;
-        private System.Windows.Forms.RadioButton radConLai_ThongKeDC;
-        private System.Windows.Forms.RadioButton radSoCongVan_ThongKeDC;
-        private System.Windows.Forms.RadioButton radAll_ThongKeDC;
     }
 }

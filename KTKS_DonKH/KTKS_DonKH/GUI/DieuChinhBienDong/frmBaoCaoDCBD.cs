@@ -1140,6 +1140,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                     dr["TuNgay"] = dateTu_ThongKeDC.Value.Date.ToString("dd/MM/yyyy");
                     dr["DenNgay"] = dateDen_ThongKeDC.Value.Date.ToString("dd/MM/yyyy");
+                    if (string.IsNullOrEmpty(itemRow["SoCongVan"].ToString()) == true)
+                        dr["SoCongVan"] = "(theo đơn khách hàng)";
+                    else
+                        dr["SoCongVan"] = "(theo công văn)";
                     dr["DanhBo"] = itemRow["DanhBo"];
                     dr["HoTen"] = itemRow["HoTen_BD"];
                     dr["GiaBieuCu"] = itemRow["GiaBieu"];
@@ -1233,6 +1237,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                 dr["TuNgay"] = dateTu_ThongKeDC.Value.Date.ToString("dd/MM/yyyy");
                                 dr["DenNgay"] = dateDen_ThongKeDC.Value.Date.ToString("dd/MM/yyyy");
+                                if (string.IsNullOrEmpty(itemRow["SoCongVan"].ToString()) == true)
+                                    dr["SoCongVan"] = "(theo đơn khách hàng)";
+                                else
+                                    dr["SoCongVan"] = "(theo công văn)";
                                 dr["DanhBo"] = itemRow["DanhBo"];
                                 dr["HoTen"] = itemRow["HoTen_BD"];
                                 dr["GiaBieuCu"] = itemRow["GiaBieu"];

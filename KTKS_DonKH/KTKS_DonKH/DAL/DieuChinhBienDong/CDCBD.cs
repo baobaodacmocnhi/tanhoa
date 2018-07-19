@@ -937,6 +937,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemCTDCBD.ChuyenDocSo,
                                 ID = itemCTDCBD.MaCTDCBD,
                                 DieuChinh = "Biến Động",
+                                SoCongVan = itemCTDCBD.DCBD.MaDon != null ? itemCTDCBD.DCBD.DonKH.SoCongVan : itemCTDCBD.DCBD.MaDonTXL != null ? itemCTDCBD.DCBD.DonTXL.SoCongVan : itemCTDCBD.DCBD.MaDonTBC != null ? itemCTDCBD.DCBD.DonTBC.SoCongVan : "",
                                 itemCTDCBD.ThongTin,
                                 itemCTDCBD.GhiChu,
                                 itemCTDCBD.CreateDate,
@@ -975,7 +976,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable getDSBienDongByCreateDate(bool SoCongVan,DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable getDSBienDongByCreateDate(bool SoCongVan, DateTime FromCreateDate, DateTime ToCreateDate)
         {
             try
             {
@@ -1324,7 +1325,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             {
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
-                                ThongTin = itemCTDCHD.ThongTin + ". " + itemCTDCHD.LyDoDieuChinh,
+                                itemCTDCHD.ThongTin,
+                                itemCTDCHD.LyDoDieuChinh,
                                 itemCTDCHD.CreateDate,
                                 itemCTDCHD.CodeF2,
                                 itemCTDCHD.DanhBo,
@@ -1367,7 +1369,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             {
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
-                                ThongTin = itemCTDCHD.ThongTin + ". " + itemCTDCHD.LyDoDieuChinh,
+                                itemCTDCHD.ThongTin,
+                                itemCTDCHD.LyDoDieuChinh,
                                 itemCTDCHD.CreateDate,
                                 itemCTDCHD.CodeF2,
                                 itemCTDCHD.DanhBo,
@@ -1407,7 +1410,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             {
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
-                                ThongTin = itemCTDCHD.ThongTin + ". " + itemCTDCHD.LyDoDieuChinh,
+                                itemCTDCHD.ThongTin,
+                                itemCTDCHD.LyDoDieuChinh,
                                 itemCTDCHD.CreateDate,
                                 itemCTDCHD.CodeF2,
                                 itemCTDCHD.DanhBo,
@@ -1450,7 +1454,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             {
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
-                                ThongTin = itemCTDCHD.ThongTin + ". " + itemCTDCHD.LyDoDieuChinh,
+                                itemCTDCHD.ThongTin,
+                                itemCTDCHD.LyDoDieuChinh,
                                 itemCTDCHD.CreateDate,
                                 itemCTDCHD.CodeF2,
                                 itemCTDCHD.DanhBo,
@@ -1490,7 +1495,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             {
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
-                                ThongTin = itemCTDCHD.ThongTin + ". " + itemCTDCHD.LyDoDieuChinh,
+                                itemCTDCHD.ThongTin,
+                                itemCTDCHD.LyDoDieuChinh,
                                 itemCTDCHD.CreateDate,
                                 itemCTDCHD.CodeF2,
                                 itemCTDCHD.DanhBo,
@@ -1532,7 +1538,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             {
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
-                                ThongTin = itemCTDCHD.ThongTin + ". " + itemCTDCHD.LyDoDieuChinh,
+                                itemCTDCHD.ThongTin,
+                                itemCTDCHD.LyDoDieuChinh,
                                 itemCTDCHD.CreateDate,
                                 itemCTDCHD.CodeF2,
                                 itemCTDCHD.DanhBo,
@@ -1572,7 +1579,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             {
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
-                                ThongTin = itemCTDCHD.ThongTin + ". " + itemCTDCHD.LyDoDieuChinh,
+                                itemCTDCHD.ThongTin,
+                                itemCTDCHD.LyDoDieuChinh,
                                 itemCTDCHD.CreateDate,
                                 itemCTDCHD.CodeF2,
                                 itemCTDCHD.DanhBo,
@@ -1614,7 +1622,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             {
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
-                                ThongTin = itemCTDCHD.ThongTin + ". " + itemCTDCHD.LyDoDieuChinh,
+                                itemCTDCHD.ThongTin,
+                                itemCTDCHD.LyDoDieuChinh,
                                 itemCTDCHD.CreateDate,
                                 itemCTDCHD.CodeF2,
                                 itemCTDCHD.DanhBo,
@@ -1654,7 +1663,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             {
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
-                                ThongTin = itemCTDCHD.ThongTin + ". " + itemCTDCHD.LyDoDieuChinh,
+                                itemCTDCHD.ThongTin,
+                                itemCTDCHD.LyDoDieuChinh,
                                 itemCTDCHD.CreateDate,
                                 itemCTDCHD.CodeF2,
                                 itemCTDCHD.DanhBo,
@@ -1694,7 +1704,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             {
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
-                                ThongTin = itemCTDCHD.ThongTin + ". " + itemCTDCHD.LyDoDieuChinh,
+                                itemCTDCHD.ThongTin,
+                                itemCTDCHD.LyDoDieuChinh,
                                 itemCTDCHD.CreateDate,
                                 itemCTDCHD.CodeF2,
                                 itemCTDCHD.DanhBo,
@@ -1735,7 +1746,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             {
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
-                                ThongTin = itemCTDCHD.ThongTin + ". " + itemCTDCHD.LyDoDieuChinh,
+                                itemCTDCHD.ThongTin,
+                                itemCTDCHD.LyDoDieuChinh,
                                 itemCTDCHD.CreateDate,
                                 itemCTDCHD.CodeF2,
                                 itemCTDCHD.DanhBo,
@@ -1775,7 +1787,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             {
                                 ID = itemCTDCHD.MaCTDCHD,
                                 DieuChinh = "Hóa Đơn",
-                                ThongTin = itemCTDCHD.ThongTin + ". " + itemCTDCHD.LyDoDieuChinh,
+                                itemCTDCHD.ThongTin,
+                                itemCTDCHD.LyDoDieuChinh,
                                 itemCTDCHD.CreateDate,
                                 itemCTDCHD.CodeF2,
                                 itemCTDCHD.DanhBo,

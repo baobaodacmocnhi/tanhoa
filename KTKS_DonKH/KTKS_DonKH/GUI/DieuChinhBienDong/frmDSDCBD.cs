@@ -590,114 +590,116 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                             dsBaoCao.Tables["PhieuCatChuyenDM"].Rows.Add(dr);
 
-                                            rptPhieuYCCatDMx2 rpt = new rptPhieuYCCatDMx2();
-                                            for (int j = 0; j < rpt.Subreports.Count; j++)
-                                            {
-                                                rpt.Subreports[j].SetDataSource(dsBaoCao);
-                                            }
+                                            rptPhieuYCCatDMA4 rpt = new rptPhieuYCCatDMA4();
+                                            //for (int j = 0; j < rpt.Subreports.Count; j++)
+                                            //{
+                                            //    rpt.Subreports[j].SetDataSource(dsBaoCao);
+                                            //}
 
-                                            //frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                                            //frm.Show();
-                                            printDialog.AllowSomePages = true;
-                                            printDialog.ShowHelp = true;
+                                            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                                            frm.Show();
+                                            //printDialog.AllowSomePages = true;
+                                            //printDialog.ShowHelp = true;
 
-                                            rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
-                                            rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
-                                            rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-                                            rpt.PrintToPrinter(1, false, 1, 1);
+                                            //rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                            //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
+                                            //rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+                                            //rpt.PrintToPrinter(1, false, 1, 1);
                                         }
                                         else
                                             if (lichsuchungtu.CatDM)
                                             {
-                                                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                                                DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
+                                                //DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                                                //DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
 
-                                                if (lichsuchungtu.MaDon != null)
-                                                    dr["MaDon"] = lichsuchungtu.MaDon.ToString().Insert(lichsuchungtu.MaDon.ToString().Length - 2, "-");
-                                                else
-                                                    if (lichsuchungtu.MaDonTXL != null)
-                                                        dr["MaDon"] = "TXL" + lichsuchungtu.MaDonTXL.ToString().Insert(lichsuchungtu.MaDonTXL.ToString().Length - 2, "-");
-                                                    else
-                                                        if (lichsuchungtu.MaDonTBC != null)
-                                                            dr["MaDon"] = "TBC" + lichsuchungtu.MaDonTBC.ToString().Insert(lichsuchungtu.MaDonTBC.ToString().Length - 2, "-");
+                                                //if (lichsuchungtu.MaDon != null)
+                                                //    dr["MaDon"] = lichsuchungtu.MaDon.ToString().Insert(lichsuchungtu.MaDon.ToString().Length - 2, "-");
+                                                //else
+                                                //    if (lichsuchungtu.MaDonTXL != null)
+                                                //        dr["MaDon"] = "TXL" + lichsuchungtu.MaDonTXL.ToString().Insert(lichsuchungtu.MaDonTXL.ToString().Length - 2, "-");
+                                                //    else
+                                                //        if (lichsuchungtu.MaDonTBC != null)
+                                                //            dr["MaDon"] = "TBC" + lichsuchungtu.MaDonTBC.ToString().Insert(lichsuchungtu.MaDonTBC.ToString().Length - 2, "-");
 
-                                                dr["SoPhieu"] = lichsuchungtu.SoPhieu.ToString().Insert(lichsuchungtu.SoPhieu.ToString().Length - 2, "-");
-                                                dr["ChiNhanh"] = _cChiNhanh.getTenChiNhanhbyID(lichsuchungtu.NhanNK_MaCN.Value);
-                                                if (!string.IsNullOrEmpty(lichsuchungtu.NhanNK_DanhBo))
-                                                    dr["DanhBoNhan"] = lichsuchungtu.NhanNK_DanhBo.Insert(7, " ").Insert(4, " "); ;
-                                                dr["HoTenNhan"] = lichsuchungtu.NhanNK_HoTen;
-                                                dr["DiaChiNhan"] = lichsuchungtu.NhanNK_DiaChi;
-                                                if (!string.IsNullOrEmpty(lichsuchungtu.CatNK_DanhBo))
-                                                    dr["DanhBoCat"] = lichsuchungtu.CatNK_DanhBo.Insert(7, " ").Insert(4, " "); ;
-                                                dr["HoTenCat"] = lichsuchungtu.CatNK_HoTen;
-                                                dr["DiaChiCat"] = lichsuchungtu.CatNK_DiaChi;
-                                                dr["SoNKCat"] = lichsuchungtu.SoNK + " nhân khẩu (" + _cLoaiChungTu.GetKyHieu(lichsuchungtu.MaLCT.Value) + ": " + lichsuchungtu.MaCT + ")";
+                                                //dr["SoPhieu"] = lichsuchungtu.SoPhieu.ToString().Insert(lichsuchungtu.SoPhieu.ToString().Length - 2, "-");
+                                                //dr["ChiNhanh"] = _cChiNhanh.getTenChiNhanhbyID(lichsuchungtu.NhanNK_MaCN.Value);
+                                                //if (!string.IsNullOrEmpty(lichsuchungtu.NhanNK_DanhBo))
+                                                //    dr["DanhBoNhan"] = lichsuchungtu.NhanNK_DanhBo.Insert(7, " ").Insert(4, " "); ;
+                                                //dr["HoTenNhan"] = lichsuchungtu.NhanNK_HoTen;
+                                                //dr["DiaChiNhan"] = lichsuchungtu.NhanNK_DiaChi;
+                                                //if (!string.IsNullOrEmpty(lichsuchungtu.CatNK_DanhBo))
+                                                //    dr["DanhBoCat"] = lichsuchungtu.CatNK_DanhBo.Insert(7, " ").Insert(4, " "); ;
+                                                //dr["HoTenCat"] = lichsuchungtu.CatNK_HoTen;
+                                                //dr["DiaChiCat"] = lichsuchungtu.CatNK_DiaChi;
+                                                //dr["SoNKCat"] = lichsuchungtu.SoNK + " nhân khẩu (" + _cLoaiChungTu.GetKyHieu(lichsuchungtu.MaLCT.Value) + ": " + lichsuchungtu.MaCT + ")";
 
-                                                dr["ChucVu"] = lichsuchungtu.ChucVu;
-                                                dr["NguoiKy"] = lichsuchungtu.NguoiKy;
+                                                //dr["ChucVu"] = lichsuchungtu.ChucVu;
+                                                //dr["NguoiKy"] = lichsuchungtu.NguoiKy;
 
-                                                dsBaoCao.Tables["PhieuCatChuyenDM"].Rows.Add(dr);
+                                                //dsBaoCao.Tables["PhieuCatChuyenDM"].Rows.Add(dr);
 
-                                                rptPhieuYCNhanDMx2 rpt = new rptPhieuYCNhanDMx2();
-                                                for (int j = 0; j < rpt.Subreports.Count; j++)
-                                                {
-                                                    rpt.Subreports[j].SetDataSource(dsBaoCao);
-                                                }
+                                                //rptPhieuYCNhanDMx2 rpt = new rptPhieuYCNhanDMx2();
+                                                //for (int j = 0; j < rpt.Subreports.Count; j++)
+                                                //{
+                                                //    rpt.Subreports[j].SetDataSource(dsBaoCao);
+                                                //}
 
-                                                printDialog.AllowSomePages = true;
-                                                printDialog.ShowHelp = true;
+                                                //printDialog.AllowSomePages = true;
+                                                //printDialog.ShowHelp = true;
 
-                                                rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
-                                                rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
-                                                rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-                                                rpt.PrintToPrinter(1, false, 1, 1);
+                                                //rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                                //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
+                                                //rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+                                                //rpt.PrintToPrinter(1, false, 1, 1);
+                                                MessageBox.Show("Liện hệ BB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                             }
                                             else
                                                 if (lichsuchungtu.NhanDM)
                                                 {
-                                                    DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                                                    DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
+                                                    //DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                                                    //DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
 
-                                                    if (lichsuchungtu.MaDon != null)
-                                                        dr["MaDon"] = lichsuchungtu.MaDon.ToString().Insert(lichsuchungtu.MaDon.ToString().Length - 2, "-");
-                                                    else
-                                                        if (lichsuchungtu.MaDonTXL != null)
-                                                            dr["MaDon"] = "TXL" + lichsuchungtu.MaDonTXL.ToString().Insert(lichsuchungtu.MaDonTXL.ToString().Length - 2, "-");
-                                                        else
-                                                            if (lichsuchungtu.MaDonTBC != null)
-                                                                dr["MaDon"] = "TBC" + lichsuchungtu.MaDonTBC.ToString().Insert(lichsuchungtu.MaDonTBC.ToString().Length - 2, "-");
+                                                    //if (lichsuchungtu.MaDon != null)
+                                                    //    dr["MaDon"] = lichsuchungtu.MaDon.ToString().Insert(lichsuchungtu.MaDon.ToString().Length - 2, "-");
+                                                    //else
+                                                    //    if (lichsuchungtu.MaDonTXL != null)
+                                                    //        dr["MaDon"] = "TXL" + lichsuchungtu.MaDonTXL.ToString().Insert(lichsuchungtu.MaDonTXL.ToString().Length - 2, "-");
+                                                    //    else
+                                                    //        if (lichsuchungtu.MaDonTBC != null)
+                                                    //            dr["MaDon"] = "TBC" + lichsuchungtu.MaDonTBC.ToString().Insert(lichsuchungtu.MaDonTBC.ToString().Length - 2, "-");
 
-                                                    dr["SoPhieu"] = lichsuchungtu.SoPhieu.ToString().Insert(lichsuchungtu.SoPhieu.ToString().Length - 2, "-");
-                                                    dr["ChiNhanh"] = _cChiNhanh.getTenChiNhanhbyID(lichsuchungtu.CatNK_MaCN.Value);
-                                                    if (!string.IsNullOrEmpty(lichsuchungtu.NhanNK_DanhBo))
-                                                        dr["DanhBoNhan"] = lichsuchungtu.NhanNK_DanhBo.Insert(7, " ").Insert(4, " "); ;
-                                                    dr["HoTenNhan"] = lichsuchungtu.NhanNK_HoTen;
-                                                    dr["DiaChiNhan"] = lichsuchungtu.NhanNK_DiaChi;
-                                                    if (!string.IsNullOrEmpty(lichsuchungtu.CatNK_DanhBo))
-                                                        dr["DanhBoCat"] = lichsuchungtu.CatNK_DanhBo.Insert(7, " ").Insert(4, " "); ;
-                                                    dr["HoTenCat"] = lichsuchungtu.CatNK_HoTen;
-                                                    dr["DiaChiCat"] = lichsuchungtu.CatNK_DiaChi;
-                                                    ///có thể sai MaCT, nếu sai đổi lại lấy txtMaCT
-                                                    dr["SoNKCat"] = lichsuchungtu.SoNK.ToString() + " nhân khẩu (" + _cLoaiChungTu.GetKyHieu(lichsuchungtu.MaLCT.Value) + ": " + lichsuchungtu.MaCT + ")";
+                                                    //dr["SoPhieu"] = lichsuchungtu.SoPhieu.ToString().Insert(lichsuchungtu.SoPhieu.ToString().Length - 2, "-");
+                                                    //dr["ChiNhanh"] = _cChiNhanh.getTenChiNhanhbyID(lichsuchungtu.CatNK_MaCN.Value);
+                                                    //if (!string.IsNullOrEmpty(lichsuchungtu.NhanNK_DanhBo))
+                                                    //    dr["DanhBoNhan"] = lichsuchungtu.NhanNK_DanhBo.Insert(7, " ").Insert(4, " "); ;
+                                                    //dr["HoTenNhan"] = lichsuchungtu.NhanNK_HoTen;
+                                                    //dr["DiaChiNhan"] = lichsuchungtu.NhanNK_DiaChi;
+                                                    //if (!string.IsNullOrEmpty(lichsuchungtu.CatNK_DanhBo))
+                                                    //    dr["DanhBoCat"] = lichsuchungtu.CatNK_DanhBo.Insert(7, " ").Insert(4, " "); ;
+                                                    //dr["HoTenCat"] = lichsuchungtu.CatNK_HoTen;
+                                                    //dr["DiaChiCat"] = lichsuchungtu.CatNK_DiaChi;
+                                                    /////có thể sai MaCT, nếu sai đổi lại lấy txtMaCT
+                                                    //dr["SoNKCat"] = lichsuchungtu.SoNK.ToString() + " nhân khẩu (" + _cLoaiChungTu.GetKyHieu(lichsuchungtu.MaLCT.Value) + ": " + lichsuchungtu.MaCT + ")";
 
-                                                    dr["ChucVu"] = lichsuchungtu.ChucVu;
-                                                    dr["NguoiKy"] = lichsuchungtu.NguoiKy;
+                                                    //dr["ChucVu"] = lichsuchungtu.ChucVu;
+                                                    //dr["NguoiKy"] = lichsuchungtu.NguoiKy;
 
-                                                    dsBaoCao.Tables["PhieuCatChuyenDM"].Rows.Add(dr);
+                                                    //dsBaoCao.Tables["PhieuCatChuyenDM"].Rows.Add(dr);
 
-                                                    rptPhieuYCCatDMx2 rpt = new rptPhieuYCCatDMx2();
-                                                    for (int j = 0; j < rpt.Subreports.Count; j++)
-                                                    {
-                                                        rpt.Subreports[j].SetDataSource(dsBaoCao);
-                                                    }
+                                                    //rptPhieuYCCatDMx2 rpt = new rptPhieuYCCatDMx2();
+                                                    //for (int j = 0; j < rpt.Subreports.Count; j++)
+                                                    //{
+                                                    //    rpt.Subreports[j].SetDataSource(dsBaoCao);
+                                                    //}
 
-                                                    printDialog.AllowSomePages = true;
-                                                    printDialog.ShowHelp = true;
+                                                    //printDialog.AllowSomePages = true;
+                                                    //printDialog.ShowHelp = true;
 
-                                                    rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
-                                                    rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
-                                                    rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-                                                    rpt.PrintToPrinter(1, false, 1, 1);
+                                                    //rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                                    //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
+                                                    //rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+                                                    //rpt.PrintToPrinter(1, false, 1, 1);
+                                                    MessageBox.Show("Liện hệ BB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                                 }
                                     }
                             }
