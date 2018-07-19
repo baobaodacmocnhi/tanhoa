@@ -143,6 +143,8 @@ namespace ThuTien.GUI.Doi
                 dr["HoTen"] = item.Cells["HoTen"].Value;
                 dr["DiaChi"] = item.Cells["DiaChi"].Value;
                 dr["SoPhatHanh"] = item.Cells["HopDong"].Value;
+                dr["SoHoaDon"] = item.Cells["GiaBieu"].Value;
+                dr["MLT"] = item.Cells["MLT"].Value.ToString().Insert(4, " ").Insert(2, " ");
                 dr["To"] = item.Cells["To"].Value;
                 dr["HanhThu"] = item.Cells["HanhThu"].Value;
                 ds.Tables["DSHoaDon"].Rows.Add(dr);
