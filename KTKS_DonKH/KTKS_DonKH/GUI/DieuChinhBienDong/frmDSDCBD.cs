@@ -591,6 +591,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             dsBaoCao.Tables["PhieuCatChuyenDM"].Rows.Add(dr);
 
                                             rptPhieuYCCatDMA4 rpt = new rptPhieuYCCatDMA4();
+                                            rpt.SetDataSource(dsBaoCao);
                                             //for (int j = 0; j < rpt.Subreports.Count; j++)
                                             //{
                                             //    rpt.Subreports[j].SetDataSource(dsBaoCao);

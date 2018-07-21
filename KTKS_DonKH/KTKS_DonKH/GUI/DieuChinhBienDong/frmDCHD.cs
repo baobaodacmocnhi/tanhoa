@@ -619,6 +619,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         ctdchd.DV = int.Parse(txtDV.Text.Trim().Replace(".", ""));
                         ctdchd.HCSN = int.Parse(txtHCSN.Text.Trim().Replace(".", ""));
                     }
+                    ctdchd.ThongTin = ThongTin;
                     ctdchd.LyDoDieuChinh = txtLyDoDieuChinh.Text.Trim();
 
                     ctdchd.TienNuoc_BD = int.Parse(txtTienNuoc_BD.Text.Trim().Replace(".", ""));
@@ -638,7 +639,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             ctdchd.TangGiam = "Tăng";
                         else
                             ctdchd.TangGiam = "Giảm";
-
+                   
                     ///Ký Tên
                     BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
                     if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
@@ -800,7 +801,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             _ctdchd.DV = null;
                             _ctdchd.HCSN = null;
                         }
-
+                        _ctdchd.ThongTin = ThongTin;
                         _ctdchd.LyDoDieuChinh = txtLyDoDieuChinh.Text.Trim();
 
                         _ctdchd.TienNuoc_BD = int.Parse(txtTienNuoc_BD.Text.Trim().Replace(".", ""));
@@ -856,32 +857,32 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            //DataTable dt = _cDCBD.ExecuteQuery_DataTable("select * from ctdchd");
+            //DataTable dt = _cDCBD.ExecuteQuery_DataTable("select * from ctdchd where thongtin is null");
             //foreach (DataRow item in dt.Rows)
             //{
             //    string ThongTin = "";
-            //    if (item["GiaBieu"].ToString()!=item["GiaBieu_BD"].ToString())
+            //    if (item["GiaBieu"].ToString() != item["GiaBieu_BD"].ToString())
             //    {
             //        if (string.IsNullOrEmpty(ThongTin) == true)
             //            ThongTin += "GB";
             //        else
             //            ThongTin += ". GB";
             //    }
-            //    if (item["DinhMuc"].ToString()!=item["DinhMuc_BD"].ToString())
+            //    if (item["DinhMuc"].ToString() != item["DinhMuc_BD"].ToString())
             //    {
             //        if (string.IsNullOrEmpty(ThongTin) == true)
             //            ThongTin += "ĐM";
             //        else
             //            ThongTin += ". ĐM";
             //    }
-            //    if (item["TieuThu"].ToString()!=item["TieuThu_BD"].ToString())
+            //    if (item["TieuThu"].ToString() != item["TieuThu_BD"].ToString())
             //    {
             //        if (string.IsNullOrEmpty(ThongTin) == true)
             //            ThongTin += "Tiêu Thụ";
             //        else
             //            ThongTin += ". Tiêu Thụ";
             //    }
-            //    if(bool.Parse(item["DieuChinhGia"].ToString())==true)
+            //    if (bool.Parse(item["DieuChinhGia"].ToString()) == true)
             //        if (string.IsNullOrEmpty(ThongTin) == true)
             //            ThongTin += "Điều Chỉnh Giá";
             //        else
