@@ -86,6 +86,11 @@ namespace KTCN_CongVan.DAL
             return LINQToDataTable(_db.CongVanDis.Where(item => item.SoCongVan.Contains(SoCongVan)).ToList());
         }
 
+        public DataTable GetDS_NoiDung(string NoiDung)
+        {
+            return LINQToDataTable(_db.CongVanDis.Where(item => item.NoiDung.Contains(NoiDung)).ToList());
+        }
+
         public DataTable GetDS_NoiNhan(string NoiNhan)
         {
             return LINQToDataTable(_db.CongVanDis.Where(item => item.NoiNhan.Contains(NoiNhan)).ToList());

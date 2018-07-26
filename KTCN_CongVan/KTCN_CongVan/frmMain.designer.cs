@@ -316,6 +316,7 @@
             this.cmbTimTheo_Den.FormattingEnabled = true;
             this.cmbTimTheo_Den.Items.AddRange(new object[] {
             "Số Công Văn",
+            "Nội Dung",
             "Nơi Nhận",
             "Ngày Nhận",
             "Ngày Hết Hạn"});
@@ -660,6 +661,7 @@
             this.cmbTimTheo_Di.FormattingEnabled = true;
             this.cmbTimTheo_Di.Items.AddRange(new object[] {
             "Số Công Văn",
+            "Nội Dung",
             "Nơi Nhận",
             "Ngày Nhận",
             "Ngày Hết Hạn"});
