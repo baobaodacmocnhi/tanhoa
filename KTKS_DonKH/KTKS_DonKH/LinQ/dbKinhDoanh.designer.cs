@@ -3658,6 +3658,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _MaCT;
 		
+		private string _HoTen;
+		
 		private string _DiaChi;
 		
 		private int _SoNKTong;
@@ -3694,6 +3696,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreated();
     partial void OnMaCTChanging(string value);
     partial void OnMaCTChanged();
+    partial void OnHoTenChanging(string value);
+    partial void OnHoTenChanged();
     partial void OnDiaChiChanging(string value);
     partial void OnDiaChiChanged();
     partial void OnSoNKTongChanging(int value);
@@ -3749,7 +3753,27 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DiaChi", DbType="NVarChar(MAX)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoTen", DbType="NVarChar(500)")]
+		public string HoTen
+		{
+			get
+			{
+				return this._HoTen;
+			}
+			set
+			{
+				if ((this._HoTen != value))
+				{
+					this.OnHoTenChanging(value);
+					this.SendPropertyChanging();
+					this._HoTen = value;
+					this.SendPropertyChanged("HoTen");
+					this.OnHoTenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DiaChi", DbType="NVarChar(500)")]
 		public string DiaChi
 		{
 			get
@@ -35366,6 +35390,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _MaDonMoi;
 		
+		private string _TCHC;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -35460,6 +35486,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaDonTBCChanged();
     partial void OnMaDonMoiChanging(string value);
     partial void OnMaDonMoiChanged();
+    partial void OnTCHCChanging(string value);
+    partial void OnTCHCChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -36108,6 +36136,26 @@ namespace KTKS_DonKH.LinQ
 					this._MaDonMoi = value;
 					this.SendPropertyChanged("MaDonMoi");
 					this.OnMaDonMoiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TCHC", DbType="VarChar(50)")]
+		public string TCHC
+		{
+			get
+			{
+				return this._TCHC;
+			}
+			set
+			{
+				if ((this._TCHC != value))
+				{
+					this.OnTCHCChanging(value);
+					this.SendPropertyChanging();
+					this._TCHC = value;
+					this.SendPropertyChanged("TCHC");
+					this.OnTCHCChanged();
 				}
 			}
 		}

@@ -65,6 +65,8 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.txtMaDonMoi = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.txtTCHC = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBoxNoiDungXuLy.SuspendLayout();
             this.groupBoxCatTamNutBit.SuspendLayout();
@@ -344,11 +346,11 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.Red;
             this.label22.Location = new System.Drawing.Point(12, 9);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(84, 18);
+            this.label22.Size = new System.Drawing.Size(120, 25);
             this.label22.TabIndex = 90;
             this.label22.Text = "Phiếu Hủy";
             // 
@@ -422,12 +424,30 @@
             this.label12.TabIndex = 116;
             this.label12.Text = "Mã Đơn(New):";
             // 
+            // txtTCHC
+            // 
+            this.txtTCHC.Location = new System.Drawing.Point(694, 12);
+            this.txtTCHC.Name = "txtTCHC";
+            this.txtTCHC.Size = new System.Drawing.Size(60, 22);
+            this.txtTCHC.TabIndex = 122;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(640, 15);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(48, 16);
+            this.label13.TabIndex = 121;
+            this.label13.Text = "TCHC:";
+            // 
             // frmYCCHDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(927, 304);
+            this.Controls.Add(this.txtTCHC);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.txtMaDonMoi);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.btnXoa);
@@ -502,5 +522,7 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.TextBox txtMaDonMoi;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtTCHC;
+        private System.Windows.Forms.Label label13;
     }
 }

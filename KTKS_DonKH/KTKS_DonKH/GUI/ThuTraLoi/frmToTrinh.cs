@@ -445,6 +445,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 dr["DiaChi"] = _cttt.DiaChi;
                 if (!string.IsNullOrEmpty(_cttt.DanhBo) && _cttt.DanhBo.Length == 11)
                     dr["DanhBo"] = _cttt.DanhBo.Insert(7, " ").Insert(4, " ");
+                dr["GiaBieu"] = _cttt.GiaBieu;
+                dr["DinhMuc"] = _cttt.DinhMuc;
 
                 dr["VeViec"] = _cttt.VeViec;
                 dr["KinhTrinh"] = _cttt.KinhTrinh;

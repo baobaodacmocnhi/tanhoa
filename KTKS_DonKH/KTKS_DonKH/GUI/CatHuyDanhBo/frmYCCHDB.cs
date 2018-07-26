@@ -95,6 +95,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 }
 
             txtMaYCCHDB.Text = phieuCHDB.MaYCCHDB.ToString().Insert(phieuCHDB.MaYCCHDB.ToString().Length - 2, "-");
+            txtTCHC.Text = phieuCHDB.TCHC;
             ///
             txtDanhBo.Text = phieuCHDB.DanhBo;
             txtHopDong.Text = phieuCHDB.HopDong;
@@ -135,6 +136,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             txtMaDonCu.Text = "";
             txtMaYCCHDB.Text = "";
+            txtTCHC.Text = "";
             ///
             txtDanhBo.Text = "";
             txtHopDong.Text = "";
@@ -429,6 +431,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 {
                     if (_ycchdb != null)
                     {
+                        _ycchdb.TCHC = txtTCHC.Text.Trim();
                         _ycchdb.DanhBo = txtDanhBo.Text.Trim();
                         _ycchdb.HopDong = txtHopDong.Text.Trim();
                         _ycchdb.HoTen = txtHoTen.Text.Trim();

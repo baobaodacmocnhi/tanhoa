@@ -26,33 +26,11 @@ namespace KTKS_DonKH.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HP_G7\\KD;Initial Catalog=CAPNUOCTANHOA;Persist Security Info=True;Use" +
-            "r ID=sa;Password=P@ssW012d")]
-        public string CAPNUOCTANHOAConnectionString {
-            get {
-                return ((string)(this["CAPNUOCTANHOAConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HP_G7\\KD;Initial Catalog=DocSoTH;Persist Security Info=True;User ID=s" +
             "a;Password=P@ssW012d")]
         public string DocSoTHConnectionString {
             get {
                 return ((string)(this["DocSoTHConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.90.9;Initial Catalog=HOADON_TA;Persist Security Info=True;Use" +
-            "r ID=sa;Password=P@ssW012d9")]
-        public string HOADON_TAConnectionString {
-            get {
-                return ((string)(this["HOADON_TAConnectionString"]));
             }
         }
         
@@ -70,11 +48,33 @@ namespace KTKS_DonKH.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.90.11;Initial Catalog=KTKS_DonKH;Persist Security Info=True;U" +
-            "ser ID=sa;Password=capnuoctanhoa789")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SERVERG8-01;Initial Catalog=KTKS_DonKH;Persist Security Info=True;Use" +
+            "r ID=tanhoa;Password=tanhoavn@11")]
         public string KTKS_DonKHConnectionString {
             get {
                 return ((string)(this["KTKS_DonKHConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=server9;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=" +
+            "tanhoa;Password=tanhoavn@9")]
+        public string HOADON_TAConnectionString {
+            get {
+                return ((string)(this["HOADON_TAConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HP_G7\\KD;Initial Catalog=CAPNUOCTANHOA;Persist Security Info=True;Use" +
+            "r ID=tanhoa;Password=tanhoavn@8")]
+        public string CAPNUOCTANHOAConnectionString {
+            get {
+                return ((string)(this["CAPNUOCTANHOAConnectionString"]));
             }
         }
     }

@@ -1,5 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="CAPNUOCTANHOA" Class="dbDocSoDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=HP_G7\KD;Initial Catalog=CAPNUOCTANHOA;Persist Security Info=True;User ID=sa" SettingsObjectName="KTKS_DonKH.Properties.Settings" SettingsPropertyName="CAPNUOCTANHOAConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=HP_G7\KD;Initial Catalog=CAPNUOCTANHOA;Persist Security Info=True;User ID=tanhoa" SettingsObjectName="KTKS_DonKH.Properties.Settings" SettingsPropertyName="CAPNUOCTANHOAConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.HOSOGOC" Member="HOSOGOCs">
+    <Type Name="HOSOGOC">
+      <Column Name="OBJECTID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DBDongHoNuoc" Type="System.String" DbType="NVarChar(11)" CanBeNull="true" />
+      <Column Name="MaHoSo" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="MoTa" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="DataBlob" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="NgayCapNhat" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="NguoiCapNhat" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LoaiFile" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="TenHoSo" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.TB_DULIEUKHACHHANG" Member="TB_DULIEUKHACHHANGs">
     <Type Name="TB_DULIEUKHACHHANG">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
@@ -107,31 +120,6 @@
       <Column Name="CHUKYDS" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.HOSOGOC" Member="HOSOGOCs">
-    <Type Name="HOSOGOC">
-      <Column Name="OBJECTID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="DBDongHoNuoc" Type="System.String" DbType="NVarChar(11)" CanBeNull="true" />
-      <Column Name="MaHoSo" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="MoTa" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="DataBlob" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="NgayCapNhat" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
-      <Column Name="NguoiCapNhat" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="LoaiFile" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="TenHoSo" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TB_GHICHU" Member="TB_GHICHUs">
-    <Type Name="TB_GHICHU">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="DANHBO" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="NOIDUNG" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="DONVI" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="CREATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CREATEBY" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="MODIFYDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="MODIFYBY" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.QUAN" Member="QUANs">
     <Type Name="QUAN">
       <Column Name="MAQUAN" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -145,6 +133,19 @@
       <Column Name="MAPHUONG" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="TENPHUONG" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="QUAN_PHUONG" Member="QUAN" ThisKey="MAQUAN" OtherKey="MAQUAN" Type="QUAN" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_GHICHU" Member="TB_GHICHUs">
+    <Type Name="TB_GHICHU">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DANHBO" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="NOIDUNG" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DONVI" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CREATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CREATEBY" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MODIFYDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MODIFYBY" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="HIENTHI" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

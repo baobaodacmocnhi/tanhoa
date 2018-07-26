@@ -93,7 +93,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             chkKhacDiaBan.Checked = ctchungtu.ChungTu.KhacDiaBan;
                             cmbLoaiCT.SelectedValue = ctchungtu.ChungTu.MaLCT;
                             txtMaCT.Text = ctchungtu.MaCT;
-                            txtHoTen.Text = _dataT.HoTen;
+                            txtHoTen.Text = ctchungtu.ChungTu.HoTen;
                             txtDiaChi.Text = ctchungtu.ChungTu.DiaChi;
                             txtSoNKTong.Text = ctchungtu.ChungTu.SoNKTong.ToString();
                             txtSoNKDangKy.Text = ctchungtu.SoNKDangKy.ToString();
@@ -306,6 +306,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             {
                                 ChungTu chungtu = new ChungTu();
                                 chungtu.MaCT = txtMaCT.Text.Trim();
+                                chungtu.HoTen = txtHoTen.Text.Trim();
                                 chungtu.DiaChi = txtDiaChi.Text.Trim();
                                 chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
                                 chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
@@ -626,7 +627,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             ChungTu _chungtu = _cChungTu.Get(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
                             CTChungTu _ctchungtu = _cChungTu.GetCT(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
-
+                            
+                            _chungtu.HoTen = txtHoTen.Text.Trim();
                             _chungtu.DiaChi = txtDiaChi.Text.Trim();
                             _chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
                             if (_chungtu.MaLCT != int.Parse(cmbLoaiCT.SelectedValue.ToString()))
