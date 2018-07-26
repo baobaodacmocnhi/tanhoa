@@ -1,2 +1,4 @@
-select * from BGW_HOADON where DANHBA=''
-select * from BGW_DANGNGAN_UNC where FK_HOADON=(select ID_Hoadon from HOADON where SOHOADON='CT/18P2067889')
+select ID_HOADON,KY,NAM,TONGCONG from BGW_HOADON where DANHBA='13152188655' order by ID_HOADON desc
+--select * from BGW_DANGNGAN_UNC where FK_HOADON=18078896
+--delete BGW_HOADON where ID_HOADON=18094667
+--delete BGW_DANGNGAN_UNC where FK_HOADON=18094667
