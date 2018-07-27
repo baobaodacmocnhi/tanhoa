@@ -52,6 +52,7 @@
             this.dateDen = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSua = new System.Windows.Forms.Button();
+            this.chkAll = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKQDongNuoc)).BeginInit();
             this.SuspendLayout();
             // 
@@ -257,11 +258,22 @@
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
+            // chkAll
+            // 
+            this.chkAll.AutoSize = true;
+            this.chkAll.Location = new System.Drawing.Point(388, 39);
+            this.chkAll.Name = "chkAll";
+            this.chkAll.Size = new System.Drawing.Size(82, 17);
+            this.chkAll.TabIndex = 44;
+            this.chkAll.Text = "Xem Tất Cả";
+            this.chkAll.UseVisualStyleBackColor = true;
+            // 
             // frmPhiMoNuocQuay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1051, 665);
+            this.Controls.Add(this.chkAll);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.dateTu);
             this.Controls.Add(this.label2);
@@ -302,5 +314,6 @@
         private System.Windows.Forms.DateTimePicker dateDen;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSua;
+        private System.Windows.Forms.CheckBox chkAll;
     }
 }

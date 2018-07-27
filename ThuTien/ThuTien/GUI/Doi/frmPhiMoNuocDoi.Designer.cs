@@ -42,11 +42,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnXem = new System.Windows.Forms.Button();
             this.dgvPhiMoNuoc = new System.Windows.Forms.DataGridView();
-            this.NgayDongPhi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ChuyenKhoan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dgvPhiMoNuocDoi = new System.Windows.Forms.DataGridView();
             this.ID_Doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate_Doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,6 +49,12 @@
             this.HoTen_Doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi_Doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
+            this.NgayDongPhi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ChuyenKhoan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.PhiMoNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhiMoNuoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhiMoNuocDoi)).BeginInit();
             this.SuspendLayout();
@@ -122,7 +123,8 @@
             this.DanhBo,
             this.HoTen,
             this.DiaChi,
-            this.ChuyenKhoan});
+            this.ChuyenKhoan,
+            this.PhiMoNuoc});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -147,40 +149,6 @@
             this.dgvPhiMoNuoc.TabIndex = 37;
             this.dgvPhiMoNuoc.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvPhiMoNuoc_CellFormatting);
             this.dgvPhiMoNuoc.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvPhiMoNuoc_RowPostPaint);
-            // 
-            // NgayDongPhi
-            // 
-            this.NgayDongPhi.DataPropertyName = "NgayDongPhi";
-            this.NgayDongPhi.HeaderText = "Ngày Đóng Phí";
-            this.NgayDongPhi.Name = "NgayDongPhi";
-            this.NgayDongPhi.Width = 80;
-            // 
-            // DanhBo
-            // 
-            this.DanhBo.DataPropertyName = "DanhBo";
-            this.DanhBo.HeaderText = "Danh Bộ";
-            this.DanhBo.Name = "DanhBo";
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Khách Hàng";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.Width = 150;
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.DataPropertyName = "DiaChi";
-            this.DiaChi.HeaderText = "Địa Chỉ";
-            this.DiaChi.Name = "DiaChi";
-            this.DiaChi.Width = 200;
-            // 
-            // ChuyenKhoan
-            // 
-            this.ChuyenKhoan.DataPropertyName = "ChuyenKhoan";
-            this.ChuyenKhoan.HeaderText = "Chuyển Khoản";
-            this.ChuyenKhoan.Name = "ChuyenKhoan";
-            this.ChuyenKhoan.Width = 50;
             // 
             // dgvPhiMoNuocDoi
             // 
@@ -270,6 +238,47 @@
             this.label1.TabIndex = 39;
             this.label1.Text = "Danh Sách Tự Nhập:";
             // 
+            // NgayDongPhi
+            // 
+            this.NgayDongPhi.DataPropertyName = "NgayDongPhi";
+            this.NgayDongPhi.HeaderText = "Ngày Đóng Phí";
+            this.NgayDongPhi.Name = "NgayDongPhi";
+            this.NgayDongPhi.Width = 80;
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Khách Hàng";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.Width = 150;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.DataPropertyName = "DiaChi";
+            this.DiaChi.HeaderText = "Địa Chỉ";
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.Width = 200;
+            // 
+            // ChuyenKhoan
+            // 
+            this.ChuyenKhoan.DataPropertyName = "ChuyenKhoan";
+            this.ChuyenKhoan.HeaderText = "Chuyển Khoản";
+            this.ChuyenKhoan.Name = "ChuyenKhoan";
+            this.ChuyenKhoan.Width = 50;
+            // 
+            // PhiMoNuoc
+            // 
+            this.PhiMoNuoc.DataPropertyName = "PhiMoNuoc";
+            this.PhiMoNuoc.HeaderText = "PhiMoNuoc";
+            this.PhiMoNuoc.Name = "PhiMoNuoc";
+            this.PhiMoNuoc.Visible = false;
+            // 
             // frmPhiMoNuocDoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -313,5 +322,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ChuyenKhoan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PhiMoNuoc;
     }
 }

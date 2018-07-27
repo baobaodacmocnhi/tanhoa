@@ -114,6 +114,7 @@
             this.dgvTienDu.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvTienDu.Size = new System.Drawing.Size(237, 580);
             this.dgvTienDu.TabIndex = 6;
+            this.dgvTienDu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTienDu_CellContentClick);
             // 
             // DanhBo
             // 

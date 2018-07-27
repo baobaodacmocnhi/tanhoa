@@ -30,10 +30,20 @@ namespace ThuTien.GUI.Quay
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            if (txtDanhBo.Text.Trim().Replace(" ", "").Length == 11)
-                dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuoc_PhiMoNuoc(false, txtDanhBo.Text.Trim().Replace(" ", ""));
+            if (chkAll.Checked == true)
+            {
+                if (txtDanhBo.Text.Trim().Replace(" ", "").Length == 11)
+                    dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuoc_PhiMoNuoc_All(false, txtDanhBo.Text.Trim().Replace(" ", ""));
+                else
+                    dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuoc_PhiMoNuoc_All(false, dateTu.Value, dateDen.Value);
+            }
             else
-                dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuoc_PhiMoNuoc(false, dateTu.Value, dateDen.Value);
+            {
+                if (txtDanhBo.Text.Trim().Replace(" ", "").Length == 11)
+                    dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuoc_PhiMoNuoc(false, txtDanhBo.Text.Trim().Replace(" ", ""));
+                else
+                    dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuoc_PhiMoNuoc(false, dateTu.Value, dateDen.Value);
+            }
         }
 
         private void dgvKQDongNuoc_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

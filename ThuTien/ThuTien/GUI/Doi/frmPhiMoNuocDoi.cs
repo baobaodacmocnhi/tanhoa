@@ -34,6 +34,12 @@ namespace ThuTien.GUI.Doi
         private void btnXem_Click(object sender, EventArgs e)
         {
             dgvPhiMoNuoc.DataSource = _cDongNuoc.GetDSKQDongNuoc_PhiMoNuoc(dateTu.Value, dateDen.Value);
+
+            foreach (DataGridViewRow item in dgvPhiMoNuoc.Rows)
+            {
+                if (int.Parse(item.Cells["PhiMoNuoc"].Value.ToString()) / _cDongNuoc.GetPhiMoNuoc() > 1)
+                    item.DefaultCellStyle.BackColor = Color.Orange;
+            }
         }
 
         private void dgvPhiMoNuoc_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

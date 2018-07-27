@@ -174,6 +174,13 @@ namespace ThuTien.GUI.Doi
             }
         }
 
+        private void btnInToRoi_Click(object sender, EventArgs e)
+        {
+            rptGuiThongBaoToRoi rpt = new rptGuiThongBaoToRoi();
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
+        }
+
         
 
         

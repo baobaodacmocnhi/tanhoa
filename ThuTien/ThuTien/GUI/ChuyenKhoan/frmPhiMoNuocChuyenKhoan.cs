@@ -44,6 +44,12 @@ namespace ThuTien.GUI.ChuyenKhoan
 
             if (dateTu.Value <= dateDen.Value)
                 dgvPhiMoNuoc.DataSource = _cPhiMoNuoc.GetDS(dateTu.Value, dateDen.Value);
+
+            foreach (DataGridViewRow item in dgvPhiMoNuoc.Rows)
+            {
+                if(int.Parse(item.Cells["PhiMoNuoc"].Value.ToString())/_cDongNuoc.GetPhiMoNuoc()>1)
+                    item.DefaultCellStyle.BackColor = Color.Orange;
+            }
         }
 
         private void dgvPhiMoNuoc_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -186,6 +192,11 @@ namespace ThuTien.GUI.ChuyenKhoan
             }
             else
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void dgvTienDu_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
         

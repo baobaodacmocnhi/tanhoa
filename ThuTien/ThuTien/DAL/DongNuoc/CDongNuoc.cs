@@ -435,6 +435,54 @@ namespace ThuTien.DAL.DongNuoc
             return LINQToDataTable(query.GroupBy(item=>item.MaDN).Select(item=>item.First()).ToList());
         }
 
+        public DataTable GetDSKQDongNuoc_PhiMoNuoc_All(bool ChuyenKhoan, string DanhBo)
+        {
+            var query = from itemKQ in _db.TT_KQDongNuocs
+                        join itemCT in _db.TT_CTDongNuocs on itemKQ.MaDN equals itemCT.MaDN
+                        join itemHD in _db.HOADONs on itemCT.MaHD equals itemHD.ID_HOADON
+                        where itemKQ.ChuyenKhoan == ChuyenKhoan && itemKQ.NgayDN != null && itemKQ.DanhBo == DanhBo
+                        select new
+                        {
+                            itemKQ.MaDN,
+                            itemKQ.MaKQDN,
+                            itemKQ.CreateDate,
+                            itemKQ.DanhBo,
+                            itemKQ.HoTen,
+                            itemKQ.DiaChi,
+                            itemKQ.NgayDN,
+                            itemKQ.PhiMoNuoc,
+                            itemKQ.DongPhi,
+                            itemKQ.NgayDongPhi,
+                            itemKQ.ChuyenKhoan,
+                            itemHD.NGAYGIAITRACH,
+                        };
+            return LINQToDataTable(query.GroupBy(item => item.MaDN).Select(item => item.First()).ToList());
+        }
+
+        public DataTable GetDSKQDongNuoc_PhiMoNuoc_All(bool ChuyenKhoan, DateTime FromNgayDongPhi, DateTime ToNgayDongPhi)
+        {
+            var query = from itemKQ in _db.TT_KQDongNuocs
+                        join itemCT in _db.TT_CTDongNuocs on itemKQ.MaDN equals itemCT.MaDN
+                        join itemHD in _db.HOADONs on itemCT.MaHD equals itemHD.ID_HOADON
+                        where itemKQ.ChuyenKhoan == ChuyenKhoan && itemKQ.NgayDongPhi.Value.Date >= FromNgayDongPhi.Date && itemKQ.NgayDongPhi.Value.Date <= ToNgayDongPhi.Date
+                        select new
+                        {
+                            itemKQ.MaDN,
+                            itemKQ.MaKQDN,
+                            itemKQ.CreateDate,
+                            itemKQ.DanhBo,
+                            itemKQ.HoTen,
+                            itemKQ.DiaChi,
+                            itemKQ.NgayDN,
+                            itemKQ.PhiMoNuoc,
+                            itemKQ.DongPhi,
+                            itemKQ.NgayDongPhi,
+                            itemKQ.ChuyenKhoan,
+                            itemHD.NGAYGIAITRACH,
+                        };
+            return LINQToDataTable(query.GroupBy(item => item.MaDN).Select(item => item.First()).ToList());
+        }
+
         public DataTable GetDSKQDongNuoc_PhiMoNuoc(bool ChuyenKhoan,string DanhBo)
         {
             var query = from itemKQ in _db.TT_KQDongNuocs
@@ -450,6 +498,7 @@ namespace ThuTien.DAL.DongNuoc
                             itemKQ.HoTen,
                             itemKQ.DiaChi,
                             itemKQ.NgayDN,
+                            itemKQ.PhiMoNuoc,
                             itemKQ.DongPhi,
                             itemKQ.NgayDongPhi,
                             itemKQ.ChuyenKhoan,
@@ -473,6 +522,7 @@ namespace ThuTien.DAL.DongNuoc
                             itemKQ.HoTen,
                             itemKQ.DiaChi,
                             itemKQ.NgayDN,
+                            itemKQ.PhiMoNuoc,
                             itemKQ.DongPhi,
                             itemKQ.NgayDongPhi,
                             itemKQ.ChuyenKhoan,
@@ -496,6 +546,7 @@ namespace ThuTien.DAL.DongNuoc
                             itemKQ.HoTen,
                             itemKQ.DiaChi,
                             itemKQ.NgayDN,
+                            itemKQ.PhiMoNuoc,
                             itemKQ.DongPhi,
                             itemKQ.NgayDongPhi,
                             itemKQ.ChuyenKhoan,
