@@ -140,5 +140,13 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
         }
+
+        private void dgvDSThu_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDSThu.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
+            }
+        }
     }
 }

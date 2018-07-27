@@ -36,13 +36,6 @@
             this.dateTu = new System.Windows.Forms.DateTimePicker();
             this.cmbTimTheo = new System.Windows.Forms.ComboBox();
             this.dgvDSThu = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtNoiDungTimKiem = new System.Windows.Forms.TextBox();
-            this.txtNoiDungTimKiem2 = new System.Windows.Forms.TextBox();
-            this.dateDen = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel_KhoangThoiGian = new System.Windows.Forms.Panel();
             this.In = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +46,13 @@
             this.CanCu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VaoLuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VeViec = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtNoiDungTimKiem = new System.Windows.Forms.TextBox();
+            this.txtNoiDungTimKiem2 = new System.Windows.Forms.TextBox();
+            this.dateDen = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel_KhoangThoiGian = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSThu)).BeginInit();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.SuspendLayout();
@@ -150,70 +150,7 @@
             this.dgvDSThu.Size = new System.Drawing.Size(1311, 560);
             this.dgvDSThu.TabIndex = 36;
             this.dgvDSThu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSThu_CellFormatting);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(360, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 16);
-            this.label1.TabIndex = 32;
-            this.label1.Text = "Nội Dung:";
-            // 
-            // txtNoiDungTimKiem
-            // 
-            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(434, 15);
-            this.txtNoiDungTimKiem.Name = "txtNoiDungTimKiem";
-            this.txtNoiDungTimKiem.Size = new System.Drawing.Size(100, 22);
-            this.txtNoiDungTimKiem.TabIndex = 33;
-            this.txtNoiDungTimKiem.Visible = false;
-            // 
-            // txtNoiDungTimKiem2
-            // 
-            this.txtNoiDungTimKiem2.Location = new System.Drawing.Point(434, 37);
-            this.txtNoiDungTimKiem2.Name = "txtNoiDungTimKiem2";
-            this.txtNoiDungTimKiem2.Size = new System.Drawing.Size(100, 22);
-            this.txtNoiDungTimKiem2.TabIndex = 38;
-            this.txtNoiDungTimKiem2.Visible = false;
-            // 
-            // dateDen
-            // 
-            this.dateDen.CustomFormat = "dd/MM/yyyy";
-            this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen.Location = new System.Drawing.Point(80, 33);
-            this.dateDen.Name = "dateDen";
-            this.dateDen.Size = new System.Drawing.Size(90, 22);
-            this.dateDen.TabIndex = 14;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 33);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 16);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "Đến Ngày:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 5);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 16);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Từ Ngày:";
-            // 
-            // panel_KhoangThoiGian
-            // 
-            this.panel_KhoangThoiGian.Controls.Add(this.dateTu);
-            this.panel_KhoangThoiGian.Controls.Add(this.dateDen);
-            this.panel_KhoangThoiGian.Controls.Add(this.label3);
-            this.panel_KhoangThoiGian.Controls.Add(this.label4);
-            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(433, 3);
-            this.panel_KhoangThoiGian.Name = "panel_KhoangThoiGian";
-            this.panel_KhoangThoiGian.Size = new System.Drawing.Size(175, 59);
-            this.panel_KhoangThoiGian.TabIndex = 37;
-            this.panel_KhoangThoiGian.Visible = false;
+            this.dgvDSThu.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSThu_RowPostPaint);
             // 
             // In
             // 
@@ -287,6 +224,70 @@
             this.VeViec.ReadOnly = true;
             this.VeViec.Width = 150;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(360, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 16);
+            this.label1.TabIndex = 32;
+            this.label1.Text = "Nội Dung:";
+            // 
+            // txtNoiDungTimKiem
+            // 
+            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(434, 15);
+            this.txtNoiDungTimKiem.Name = "txtNoiDungTimKiem";
+            this.txtNoiDungTimKiem.Size = new System.Drawing.Size(100, 22);
+            this.txtNoiDungTimKiem.TabIndex = 33;
+            this.txtNoiDungTimKiem.Visible = false;
+            // 
+            // txtNoiDungTimKiem2
+            // 
+            this.txtNoiDungTimKiem2.Location = new System.Drawing.Point(434, 37);
+            this.txtNoiDungTimKiem2.Name = "txtNoiDungTimKiem2";
+            this.txtNoiDungTimKiem2.Size = new System.Drawing.Size(100, 22);
+            this.txtNoiDungTimKiem2.TabIndex = 38;
+            this.txtNoiDungTimKiem2.Visible = false;
+            // 
+            // dateDen
+            // 
+            this.dateDen.CustomFormat = "dd/MM/yyyy";
+            this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateDen.Location = new System.Drawing.Point(80, 33);
+            this.dateDen.Name = "dateDen";
+            this.dateDen.Size = new System.Drawing.Size(90, 22);
+            this.dateDen.TabIndex = 14;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 33);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(71, 16);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Đến Ngày:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 5);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(63, 16);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Từ Ngày:";
+            // 
+            // panel_KhoangThoiGian
+            // 
+            this.panel_KhoangThoiGian.Controls.Add(this.dateTu);
+            this.panel_KhoangThoiGian.Controls.Add(this.dateDen);
+            this.panel_KhoangThoiGian.Controls.Add(this.label3);
+            this.panel_KhoangThoiGian.Controls.Add(this.label4);
+            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(433, 3);
+            this.panel_KhoangThoiGian.Name = "panel_KhoangThoiGian";
+            this.panel_KhoangThoiGian.Size = new System.Drawing.Size(175, 59);
+            this.panel_KhoangThoiGian.TabIndex = 37;
+            this.panel_KhoangThoiGian.Visible = false;
+            // 
             // frmDSThuMoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -304,7 +305,7 @@
             this.Controls.Add(this.txtNoiDungTimKiem2);
             this.Controls.Add(this.panel_KhoangThoiGian);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmDSThuMoi";
             this.Text = "Danh Sách Thư Mời";
             this.Load += new System.EventHandler(this.frmDSThuMoi_Load);

@@ -107,8 +107,8 @@ namespace KTKS_DonKH.GUI.DonTu
                         dgvDSDonTu.DataSource = _cDonTu.GetDSBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper());
                     break;
                 case "Ngày":
-                    //dgvDSDonTu.DataSource = _cDonTu.GetDS(dateTu.Value, dateDen.Value);
-                    gridControl1.DataSource = _cDonTu.GetDS(dateTu.Value, dateDen.Value);
+                    dgvDSDonTu.DataSource = _cDonTu.GetDS(dateTu.Value, dateDen.Value);
+                    //gridControl1.DataSource = _cDonTu.GetDS(dateTu.Value, dateDen.Value);
                     break;
                 default:
                     break;
