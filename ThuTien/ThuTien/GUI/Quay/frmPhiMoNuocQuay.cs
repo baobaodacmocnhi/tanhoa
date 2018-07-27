@@ -70,26 +70,26 @@ namespace ThuTien.GUI.Quay
         {
             if (dgvKQDongNuoc.Columns[e.ColumnIndex].Name == "DongPhi" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvKQDongNuoc[e.ColumnIndex, e.RowIndex].Value.ToString()))
             {
-                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
-                {
-                    TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dgvKQDongNuoc["MaKQDN", e.RowIndex].Value.ToString()));
-                    if (kqdongnuoc.DongPhi == true && kqdongnuoc.ChuyenKhoan == true)
-                    {
-                        MessageBox.Show("Đã có đóng phí Chuyển Khoản", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    kqdongnuoc.DongPhi = bool.Parse(e.FormattedValue.ToString());
-                    if (kqdongnuoc.DongPhi)
-                        kqdongnuoc.NgayDongPhi = DateTime.Now;
-                    else
-                        kqdongnuoc.NgayDongPhi = null;
-                    if (_cDongNuoc.SuaKQ(kqdongnuoc))
-                    {
-                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-                else
-                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                //{
+                //    TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dgvKQDongNuoc["MaKQDN", e.RowIndex].Value.ToString()));
+                //    if (kqdongnuoc.DongPhi == true && kqdongnuoc.ChuyenKhoan == true)
+                //    {
+                //        MessageBox.Show("Đã có đóng phí Chuyển Khoản", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //        return;
+                //    }
+                //    kqdongnuoc.DongPhi = bool.Parse(e.FormattedValue.ToString());
+                //    if (kqdongnuoc.DongPhi)
+                //        kqdongnuoc.NgayDongPhi = DateTime.Now;
+                //    else
+                //        kqdongnuoc.NgayDongPhi = null;
+                //    if (_cDongNuoc.SuaKQ(kqdongnuoc))
+                //    {
+                //        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //    }
+                //}
+                //else
+                //    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -106,11 +106,12 @@ namespace ThuTien.GUI.Quay
                 //Initialized a new DateTimePicker Control  
                 cellDateTimePicker = new DateTimePicker();
 
-                //Adding DateTimePicker control into DataGridView   
-                dgvKQDongNuoc.Controls.Add(cellDateTimePicker);
-
                 // Setting the format (i.e. 2014-10-10)  
                 cellDateTimePicker.CustomFormat ="dd/MM/yyyy";
+                cellDateTimePicker.Format = DateTimePickerFormat.Custom;
+
+                //Adding DateTimePicker control into DataGridView   
+                dgvKQDongNuoc.Controls.Add(cellDateTimePicker);
 
                 // It returns the retangular area that represents the Display area for a cell  
                 Rectangle oRectangle = dgvKQDongNuoc.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
@@ -135,7 +136,7 @@ namespace ThuTien.GUI.Quay
         void cellDateTimePicker_TextChanged(object sender, EventArgs e)
         {
             // Saving the 'Selected Date on Calendar' into DataGridView current cell  
-            dgvKQDongNuoc.CurrentCell.Value = cellDateTimePicker.Text.ToString();
+            dgvKQDongNuoc.CurrentCell.Value = cellDateTimePicker.Value.ToString("dd/MM/yyyy");
         }
 
         void cellDateTimePicker_CloseUp(object sender, EventArgs e)
