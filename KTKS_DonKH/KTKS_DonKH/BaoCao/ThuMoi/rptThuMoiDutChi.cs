@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KTKS_DonKH.BaoCao.ToKhachHang {
+namespace KTKS_DonKH.BaoCao.ThuMoi {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace KTKS_DonKH.BaoCao.ToKhachHang {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rptToTrinhDCHD : ReportClass {
+    public class rptThuMoiDutChi : ReportClass {
         
-        public rptToTrinhDCHD() {
+        public rptThuMoiDutChi() {
         }
         
         public override string ResourceName {
             get {
-                return "rptToTrinhDCHD.rpt";
+                return "rptThuMoiDutChi.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace KTKS_DonKH.BaoCao.ToKhachHang {
         
         public override string FullResourceName {
             get {
-                return "KTKS_DonKH.BaoCao.ToKhachHang.rptToTrinhDCHD.rpt";
+                return "KTKS_DonKH.BaoCao.ThuMoi.rptThuMoiDutChi.rpt";
             }
             set {
                 // Do nothing
@@ -66,7 +66,7 @@ namespace KTKS_DonKH.BaoCao.ToKhachHang {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection1 {
             get {
                 return this.ReportDefinition.Sections[2];
             }
@@ -74,7 +74,7 @@ namespace KTKS_DonKH.BaoCao.ToKhachHang {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,17 +82,33 @@ namespace KTKS_DonKH.BaoCao.ToKhachHang {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
             get {
                 return this.ReportDefinition.Sections[4];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+            get {
+                return this.ReportDefinition.Sections[5];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+            get {
+                return this.ReportDefinition.Sections[6];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrptToTrinhDCHD : Component, ICachedReport {
+    public class CachedrptThuMoiDutChi : Component, ICachedReport {
         
-        public CachedrptToTrinhDCHD() {
+        public CachedrptThuMoiDutChi() {
         }
         
         [Browsable(false)]
@@ -129,7 +145,7 @@ namespace KTKS_DonKH.BaoCao.ToKhachHang {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rptToTrinhDCHD rpt = new rptToTrinhDCHD();
+            rptThuMoiDutChi rpt = new rptThuMoiDutChi();
             rpt.Site = this.Site;
             return rpt;
         }

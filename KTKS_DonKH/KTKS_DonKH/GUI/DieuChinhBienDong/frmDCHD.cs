@@ -1193,6 +1193,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void txtTieuThu_Moi_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
+                txtLyDoDieuChinh.Focus();
+        }
+
+        private void txtLyDoDieuChinh_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
                 btnThem.Focus();
         }
 
@@ -1555,6 +1561,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (txtTongCong_End.Text.Length > 0)
                 txtTongCong_BD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",(int.Parse(txtTongCong_End.Text.Trim().Replace(".", "")) - int.Parse(txtTongCong_Start.Text.Trim().Replace(".", ""))));
         }
+
+        
 
         
 

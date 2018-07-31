@@ -107,13 +107,6 @@
             this.label27 = new System.Windows.Forms.Label();
             this.btnInA4 = new System.Windows.Forms.Button();
             this.dgvLichSu = new System.Windows.Forms.DataGridView();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.chkCodeF2 = new System.Windows.Forms.CheckBox();
-            this.txtSoPhieu = new System.Windows.Forms.TextBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.txtMaDonMoi = new System.Windows.Forms.TextBox();
-            this.label29 = new System.Windows.Forms.Label();
             this.MaCTDCHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KyHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -121,6 +114,13 @@
             this.ThueGTGT_End = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PhiBVMT_End = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong_End = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.chkCodeF2 = new System.Windows.Forms.CheckBox();
+            this.txtSoPhieu = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.txtMaDonMoi = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
             this.txtLyDoDieuChinh = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -947,6 +947,50 @@
             this.dgvLichSu.Size = new System.Drawing.Size(805, 141);
             this.dgvLichSu.TabIndex = 89;
             // 
+            // MaCTDCHD
+            // 
+            this.MaCTDCHD.DataPropertyName = "MaCTDCHD";
+            this.MaCTDCHD.HeaderText = "Số Phiếu";
+            this.MaCTDCHD.Name = "MaCTDCHD";
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
+            // 
+            // KyHD
+            // 
+            this.KyHD.DataPropertyName = "KyHD";
+            this.KyHD.HeaderText = "Kỳ";
+            this.KyHD.Name = "KyHD";
+            this.KyHD.Width = 70;
+            // 
+            // TienNuoc_End
+            // 
+            this.TienNuoc_End.DataPropertyName = "TienNuoc_End";
+            this.TienNuoc_End.HeaderText = "Tiền Nước";
+            this.TienNuoc_End.Name = "TienNuoc_End";
+            // 
+            // ThueGTGT_End
+            // 
+            this.ThueGTGT_End.DataPropertyName = "ThueGTGT_End";
+            this.ThueGTGT_End.HeaderText = "Thuế GTGT";
+            this.ThueGTGT_End.Name = "ThueGTGT_End";
+            this.ThueGTGT_End.Width = 110;
+            // 
+            // PhiBVMT_End
+            // 
+            this.PhiBVMT_End.DataPropertyName = "PhiBVMT_End";
+            this.PhiBVMT_End.HeaderText = "Phí BVMT";
+            this.PhiBVMT_End.Name = "PhiBVMT_End";
+            // 
+            // TongCong_End
+            // 
+            this.TongCong_End.DataPropertyName = "TongCong_End";
+            this.TongCong_End.HeaderText = "Tổng Cộng";
+            this.TongCong_End.Name = "TongCong_End";
+            // 
             // btnSua
             // 
             this.btnSua.Location = new System.Drawing.Point(638, 318);
@@ -1012,56 +1056,13 @@
             this.label29.TabIndex = 116;
             this.label29.Text = "Mã Đơn(New):";
             // 
-            // MaCTDCHD
-            // 
-            this.MaCTDCHD.DataPropertyName = "MaCTDCHD";
-            this.MaCTDCHD.HeaderText = "Số Phiếu";
-            this.MaCTDCHD.Name = "MaCTDCHD";
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Ngày Lập";
-            this.CreateDate.Name = "CreateDate";
-            // 
-            // KyHD
-            // 
-            this.KyHD.DataPropertyName = "KyHD";
-            this.KyHD.HeaderText = "Kỳ";
-            this.KyHD.Name = "KyHD";
-            this.KyHD.Width = 70;
-            // 
-            // TienNuoc_End
-            // 
-            this.TienNuoc_End.DataPropertyName = "TienNuoc_End";
-            this.TienNuoc_End.HeaderText = "Tiền Nước";
-            this.TienNuoc_End.Name = "TienNuoc_End";
-            // 
-            // ThueGTGT_End
-            // 
-            this.ThueGTGT_End.DataPropertyName = "ThueGTGT_End";
-            this.ThueGTGT_End.HeaderText = "Thuế GTGT";
-            this.ThueGTGT_End.Name = "ThueGTGT_End";
-            this.ThueGTGT_End.Width = 110;
-            // 
-            // PhiBVMT_End
-            // 
-            this.PhiBVMT_End.DataPropertyName = "PhiBVMT_End";
-            this.PhiBVMT_End.HeaderText = "Phí BVMT";
-            this.PhiBVMT_End.Name = "PhiBVMT_End";
-            // 
-            // TongCong_End
-            // 
-            this.TongCong_End.DataPropertyName = "TongCong_End";
-            this.TongCong_End.HeaderText = "Tổng Cộng";
-            this.TongCong_End.Name = "TongCong_End";
-            // 
             // txtLyDoDieuChinh
             // 
             this.txtLyDoDieuChinh.Location = new System.Drawing.Point(744, 216);
             this.txtLyDoDieuChinh.Name = "txtLyDoDieuChinh";
             this.txtLyDoDieuChinh.Size = new System.Drawing.Size(200, 22);
             this.txtLyDoDieuChinh.TabIndex = 119;
+            this.txtLyDoDieuChinh.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLyDoDieuChinh_KeyPress);
             // 
             // label30
             // 

@@ -16,6 +16,7 @@ using KTKS_DonKH.DAL.ThuMoi;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.ThuMoi;
 using KTKS_DonKH.GUI.BaoCao;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace KTKS_DonKH.GUI.ThuMoi
 {
@@ -231,6 +232,9 @@ namespace KTKS_DonKH.GUI.ThuMoi
                     entity.DanhBo = txtDanhBo.Text.Trim();
                     entity.HoTen = txtHoTen.Text.Trim();
                     entity.DiaChi = txtDiaChi.Text.Trim();
+                    entity.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
+                    if(string.IsNullOrEmpty(txtDinhMuc.Text.Trim())==false)
+                        entity.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                     entity.CanCu = txtCanCu.Text.Trim();
                     entity.VaoLuc = txtVaoLuc.Text.Trim();
                     entity.VeViec = txtVeViec.Text.Trim();
@@ -329,7 +333,8 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 dr["DiaChi"] = _thumoi.DiaChi;
                 if (!string.IsNullOrEmpty(_thumoi.DanhBo) && _thumoi.DanhBo.Length == 11)
                     dr["DanhBo"] = _thumoi.DanhBo.Insert(7, " ").Insert(4, " ");
-
+                dr["GiaBieu"] = _thumoi.GiaBieu.Value.ToString();
+                dr["DinhMuc"] = _thumoi.DinhMuc.Value.ToString();
                 dr["CanCu"] = _thumoi.CanCu;
                 dr["VaoLuc"] = _thumoi.VaoLuc;
                 dr["VeViec"] = _thumoi.VeViec;
@@ -337,7 +342,12 @@ namespace KTKS_DonKH.GUI.ThuMoi
 
                 dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
 
-                rptThuMoi rpt = new rptThuMoi();
+                ReportDocument rpt=new ReportDocument();
+                if (radDutChi.Checked == true)
+                    rpt = new rptThuMoiDutChi();
+                else
+                    if (radCDDM.Checked == true)
+                        rpt = new rptThuMoiChuyenDe();
                 rpt.SetDataSource(dsBaoCao);
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.Show();

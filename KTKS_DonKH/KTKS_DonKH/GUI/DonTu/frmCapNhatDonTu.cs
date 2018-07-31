@@ -98,7 +98,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 txtGiaBieu.Text = entity.GiaBieu.Value.ToString();
             if (entity.DinhMuc != null)
                 txtDinhMuc.Text = entity.DinhMuc.Value.ToString();
-            
+            dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("", entity.MaDon);
         }
 
         public void Clear()
@@ -282,6 +282,24 @@ namespace KTKS_DonKH.GUI.DonTu
                     dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("TXL", _dontu.MaDon);
                 }
             }
+        }
+
+        private void dgvLichSuDonTu_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (dgvLichSuDonTu.Columns[e.ColumnIndex].Name == "HoanLenh" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvLichSuDonTu[e.ColumnIndex, e.RowIndex].Value.ToString()))
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                {
+                    LichSuDonTu entity = _cLichSuDonTu.Get(int.Parse(dgvLichSuDonTu["ID", e.RowIndex].Value.ToString()));
+                    entity.HoanLenh = bool.Parse(e.FormattedValue.ToString());
+                    if (entity.HoanLenh == true)
+                        entity.NgayHoanLenh = DateTime.Now;
+                    else
+                        entity.NgayHoanLenh = null;
+                    if(_cLichSuDonTu.Sua(entity))
+                        MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

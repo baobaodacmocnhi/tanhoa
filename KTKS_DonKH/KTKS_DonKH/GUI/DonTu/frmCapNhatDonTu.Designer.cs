@@ -41,7 +41,7 @@
             this.txtNoiDung = new System.Windows.Forms.TextBox();
             this.txtVanDeKhac = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.txtDienThoai = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -72,10 +72,13 @@
             this.NoiChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoanLenh = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.NgayHoanLenh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label28 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabControl1.SuspendLayout();
+            this.tabNhapCongVan = new System.Windows.Forms.TabPage();
+            this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbNoiNhan.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuDonTu)).BeginInit();
@@ -182,14 +185,15 @@
             this.label4.TabIndex = 21;
             this.label4.Text = "Vấn Đề Khác:";
             // 
-            // tabControl1
+            // tabControl
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(15, 173);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(585, 120);
-            this.tabControl1.TabIndex = 23;
+            this.tabControl.Controls.Add(this.tabPage1);
+            this.tabControl.Controls.Add(this.tabNhapCongVan);
+            this.tabControl.Location = new System.Drawing.Point(15, 173);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(585, 120);
+            this.tabControl.TabIndex = 23;
             // 
             // tabPage1
             // 
@@ -424,13 +428,16 @@
             this.NgayChuyenA,
             this.NoiChuyen,
             this.NoiNhan,
-            this.GhiChu});
+            this.GhiChu,
+            this.HoanLenh,
+            this.NgayHoanLenh});
             this.dgvLichSuDonTu.Location = new System.Drawing.Point(15, 361);
             this.dgvLichSuDonTu.Name = "dgvLichSuDonTu";
             this.dgvLichSuDonTu.ReadOnly = true;
-            this.dgvLichSuDonTu.Size = new System.Drawing.Size(710, 200);
+            this.dgvLichSuDonTu.Size = new System.Drawing.Size(862, 200);
             this.dgvLichSuDonTu.TabIndex = 80;
             this.dgvLichSuDonTu.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLichSuDonTu_CellMouseClick);
+            this.dgvLichSuDonTu.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvLichSuDonTu_CellValidating);
             this.dgvLichSuDonTu.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvLichSuDonTu_MouseClick);
             // 
             // ID
@@ -472,6 +479,21 @@
             this.GhiChu.Name = "GhiChu";
             this.GhiChu.ReadOnly = true;
             // 
+            // HoanLenh
+            // 
+            this.HoanLenh.DataPropertyName = "HoanLenh";
+            this.HoanLenh.HeaderText = "Hoàn Lệnh";
+            this.HoanLenh.Name = "HoanLenh";
+            this.HoanLenh.ReadOnly = true;
+            this.HoanLenh.Width = 50;
+            // 
+            // NgayHoanLenh
+            // 
+            this.NgayHoanLenh.DataPropertyName = "NgayHoanLenh";
+            this.NgayHoanLenh.HeaderText = "Ngày Hoàn Lệnh";
+            this.NgayHoanLenh.Name = "NgayHoanLenh";
+            this.NgayHoanLenh.ReadOnly = true;
+            // 
             // label28
             // 
             this.label28.AutoSize = true;
@@ -497,12 +519,21 @@
             this.xóaToolStripMenuItem.Text = "Xóa";
             this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
             // 
+            // tabNhapCongVan
+            // 
+            this.tabNhapCongVan.Location = new System.Drawing.Point(4, 25);
+            this.tabNhapCongVan.Name = "tabNhapCongVan";
+            this.tabNhapCongVan.Size = new System.Drawing.Size(577, 91);
+            this.tabNhapCongVan.TabIndex = 1;
+            this.tabNhapCongVan.Text = "Nhập Công Văn";
+            this.tabNhapCongVan.UseVisualStyleBackColor = true;
+            // 
             // frmCapNhatDonTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(738, 572);
+            this.ClientSize = new System.Drawing.Size(891, 572);
             this.Controls.Add(this.dgvLichSuDonTu);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.chkcmbNoiNhan);
@@ -514,7 +545,7 @@
             this.Controls.Add(this.label32);
             this.Controls.Add(this.dateChuyen);
             this.Controls.Add(this.label30);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControl);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtNoiDung);
             this.Controls.Add(this.txtVanDeKhac);
@@ -532,7 +563,7 @@
             this.Name = "frmCapNhatDonTu";
             this.Text = "Cập Nhật Đơn Từ";
             this.Load += new System.EventHandler(this.frmCapNhatDonTu_Load);
-            this.tabControl1.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbNoiNhan.Properties)).EndInit();
@@ -557,7 +588,7 @@
         private System.Windows.Forms.TextBox txtNoiDung;
         private System.Windows.Forms.TextBox txtVanDeKhac;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TextBox txtDienThoai;
         private System.Windows.Forms.Label label11;
@@ -583,14 +614,17 @@
         private System.Windows.Forms.DateTimePicker dateChuyen;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.DataGridView dgvLichSuDonTu;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem xóaToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayChuyenA;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiChuyen;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiNhan;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem xóaToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn HoanLenh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayHoanLenh;
+        private System.Windows.Forms.TabPage tabNhapCongVan;
 
     }
 }

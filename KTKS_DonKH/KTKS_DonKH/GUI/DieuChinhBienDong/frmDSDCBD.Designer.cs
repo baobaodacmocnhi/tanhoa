@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -44,7 +39,37 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDSDCBD = new System.Windows.Forms.DataGridView();
+            this.In = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ChuyenDocSo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.PhieuDuocKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.SoPhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DieuChinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodeF2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MSThue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MSThue_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBieu_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DinhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DinhMuc_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TieuThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TieuThu_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongCong_Start = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongCong_End = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TangGiam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongCong_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.radDSDCBD = new System.Windows.Forms.RadioButton();
             this.radDSDCHD = new System.Windows.Forms.RadioButton();
             this.radDSCatChuyenDM = new System.Windows.Forms.RadioButton();
@@ -81,7 +106,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnCapNhatDocSo = new System.Windows.Forms.Button();
             this.btnInDSPhieu = new System.Windows.Forms.Button();
-            this.chkTheoUser = new System.Windows.Forms.CheckBox();
+            this.chkCreateBy = new System.Windows.Forms.CheckBox();
             this.btnInA4 = new System.Windows.Forms.Button();
             this.btnXem = new System.Windows.Forms.Button();
             this.btnThuHoiCapNhatDocSo = new System.Windows.Forms.Button();
@@ -90,31 +115,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.radPhoPhong = new System.Windows.Forms.RadioButton();
             this.radTruongPhong = new System.Windows.Forms.RadioButton();
-            this.In = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ChuyenDocSo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.PhieuDuocKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.SoPhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DieuChinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CodeF2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MSThue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MSThue_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GiaBieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GiaBieu_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DinhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DinhMuc_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TieuThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TieuThu_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongCong_Start = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongCong_End = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TangGiam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongCong_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDCBD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCatChuyenDM)).BeginInit();
             this.panel_KhoangThoiGian.SuspendLayout();
@@ -170,6 +170,246 @@
             this.dgvDSDCBD.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSDCBD_CellValueChanged);
             this.dgvDSDCBD.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSDCBD_RowPostPaint);
             this.dgvDSDCBD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSDCBD_KeyDown);
+            // 
+            // In
+            // 
+            this.In.DataPropertyName = "In";
+            this.In.FalseValue = "False";
+            this.In.HeaderText = "In";
+            this.In.IndeterminateValue = "false";
+            this.In.Name = "In";
+            this.In.TrueValue = "true";
+            this.In.Width = 30;
+            // 
+            // ChuyenDocSo
+            // 
+            this.ChuyenDocSo.DataPropertyName = "ChuyenDocSo";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.NullValue = false;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.ChuyenDocSo.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ChuyenDocSo.HeaderText = "Chuyển Đọc Số";
+            this.ChuyenDocSo.Name = "ChuyenDocSo";
+            this.ChuyenDocSo.ReadOnly = true;
+            this.ChuyenDocSo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ChuyenDocSo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ChuyenDocSo.Width = 70;
+            // 
+            // PhieuDuocKy
+            // 
+            this.PhieuDuocKy.DataPropertyName = "PhieuDuocKy";
+            this.PhieuDuocKy.HeaderText = "Phiếu Được Ký";
+            this.PhieuDuocKy.Name = "PhieuDuocKy";
+            this.PhieuDuocKy.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.PhieuDuocKy.Width = 80;
+            // 
+            // SoPhieu
+            // 
+            this.SoPhieu.DataPropertyName = "ID";
+            this.SoPhieu.HeaderText = "Số Phiếu";
+            this.SoPhieu.Name = "SoPhieu";
+            this.SoPhieu.ReadOnly = true;
+            this.SoPhieu.Width = 90;
+            // 
+            // DieuChinh
+            // 
+            this.DieuChinh.DataPropertyName = "DieuChinh";
+            this.DieuChinh.HeaderText = "Điều Chỉnh";
+            this.DieuChinh.Name = "DieuChinh";
+            this.DieuChinh.ReadOnly = true;
+            this.DieuChinh.Visible = false;
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
+            this.CreateDate.ReadOnly = true;
+            this.CreateDate.Width = 90;
+            // 
+            // CodeF2
+            // 
+            this.CodeF2.DataPropertyName = "CodeF2";
+            this.CodeF2.HeaderText = "CodeF2";
+            this.CodeF2.Name = "CodeF2";
+            this.CodeF2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CodeF2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.CodeF2.Visible = false;
+            this.CodeF2.Width = 50;
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            this.DanhBo.ReadOnly = true;
+            this.DanhBo.Width = 90;
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Khách Hàng Cũ";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.ReadOnly = true;
+            this.HoTen.Visible = false;
+            this.HoTen.Width = 200;
+            // 
+            // HoTen_BD
+            // 
+            this.HoTen_BD.DataPropertyName = "HoTen_BD";
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.HoTen_BD.DefaultCellStyle = dataGridViewCellStyle3;
+            this.HoTen_BD.HeaderText = "Khách Hàng Mới";
+            this.HoTen_BD.Name = "HoTen_BD";
+            this.HoTen_BD.ReadOnly = true;
+            this.HoTen_BD.Visible = false;
+            this.HoTen_BD.Width = 200;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.DataPropertyName = "DiaChi";
+            this.DiaChi.HeaderText = "Địa Chỉ Cũ";
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.ReadOnly = true;
+            this.DiaChi.Visible = false;
+            this.DiaChi.Width = 300;
+            // 
+            // DiaChi_BD
+            // 
+            this.DiaChi_BD.DataPropertyName = "DiaChi_BD";
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.DiaChi_BD.DefaultCellStyle = dataGridViewCellStyle4;
+            this.DiaChi_BD.HeaderText = "Địa Chỉ Mới";
+            this.DiaChi_BD.Name = "DiaChi_BD";
+            this.DiaChi_BD.ReadOnly = true;
+            this.DiaChi_BD.Visible = false;
+            this.DiaChi_BD.Width = 300;
+            // 
+            // MSThue
+            // 
+            this.MSThue.DataPropertyName = "MSThue";
+            this.MSThue.HeaderText = "MST Cũ";
+            this.MSThue.Name = "MSThue";
+            this.MSThue.ReadOnly = true;
+            this.MSThue.Visible = false;
+            // 
+            // MSThue_BD
+            // 
+            this.MSThue_BD.DataPropertyName = "MSThue_BD";
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.MSThue_BD.DefaultCellStyle = dataGridViewCellStyle5;
+            this.MSThue_BD.HeaderText = "MST Mới";
+            this.MSThue_BD.Name = "MSThue_BD";
+            this.MSThue_BD.ReadOnly = true;
+            this.MSThue_BD.Visible = false;
+            // 
+            // GiaBieu
+            // 
+            this.GiaBieu.DataPropertyName = "GiaBieu";
+            this.GiaBieu.HeaderText = "GB Cũ";
+            this.GiaBieu.Name = "GiaBieu";
+            this.GiaBieu.ReadOnly = true;
+            this.GiaBieu.Visible = false;
+            this.GiaBieu.Width = 60;
+            // 
+            // GiaBieu_BD
+            // 
+            this.GiaBieu_BD.DataPropertyName = "GiaBieu_BD";
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.GiaBieu_BD.DefaultCellStyle = dataGridViewCellStyle6;
+            this.GiaBieu_BD.HeaderText = "GB Mới";
+            this.GiaBieu_BD.Name = "GiaBieu_BD";
+            this.GiaBieu_BD.ReadOnly = true;
+            this.GiaBieu_BD.Visible = false;
+            this.GiaBieu_BD.Width = 60;
+            // 
+            // DinhMuc
+            // 
+            this.DinhMuc.DataPropertyName = "DinhMuc";
+            this.DinhMuc.HeaderText = "ĐM Cũ";
+            this.DinhMuc.Name = "DinhMuc";
+            this.DinhMuc.ReadOnly = true;
+            this.DinhMuc.Visible = false;
+            this.DinhMuc.Width = 60;
+            // 
+            // DinhMuc_BD
+            // 
+            this.DinhMuc_BD.DataPropertyName = "DinhMuc_BD";
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.DinhMuc_BD.DefaultCellStyle = dataGridViewCellStyle7;
+            this.DinhMuc_BD.HeaderText = "ĐM Mới";
+            this.DinhMuc_BD.Name = "DinhMuc_BD";
+            this.DinhMuc_BD.ReadOnly = true;
+            this.DinhMuc_BD.Visible = false;
+            this.DinhMuc_BD.Width = 60;
+            // 
+            // TieuThu
+            // 
+            this.TieuThu.DataPropertyName = "TieuThu";
+            this.TieuThu.HeaderText = "TT Cũ";
+            this.TieuThu.Name = "TieuThu";
+            this.TieuThu.ReadOnly = true;
+            this.TieuThu.Visible = false;
+            this.TieuThu.Width = 60;
+            // 
+            // TieuThu_BD
+            // 
+            this.TieuThu_BD.DataPropertyName = "TieuThu_BD";
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.TieuThu_BD.DefaultCellStyle = dataGridViewCellStyle8;
+            this.TieuThu_BD.HeaderText = "TT Mới";
+            this.TieuThu_BD.Name = "TieuThu_BD";
+            this.TieuThu_BD.ReadOnly = true;
+            this.TieuThu_BD.Visible = false;
+            this.TieuThu_BD.Width = 70;
+            // 
+            // TongCong_Start
+            // 
+            this.TongCong_Start.DataPropertyName = "TongCong_Start";
+            this.TongCong_Start.HeaderText = "TC Cũ";
+            this.TongCong_Start.Name = "TongCong_Start";
+            this.TongCong_Start.ReadOnly = true;
+            this.TongCong_Start.Visible = false;
+            // 
+            // TongCong_End
+            // 
+            this.TongCong_End.DataPropertyName = "TongCong_End";
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.TongCong_End.DefaultCellStyle = dataGridViewCellStyle9;
+            this.TongCong_End.HeaderText = "TC Mới";
+            this.TongCong_End.Name = "TongCong_End";
+            this.TongCong_End.ReadOnly = true;
+            this.TongCong_End.Visible = false;
+            // 
+            // TangGiam
+            // 
+            this.TangGiam.DataPropertyName = "TangGiam";
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.TangGiam.DefaultCellStyle = dataGridViewCellStyle10;
+            this.TangGiam.HeaderText = "Biến Động";
+            this.TangGiam.Name = "TangGiam";
+            this.TangGiam.ReadOnly = true;
+            this.TangGiam.Visible = false;
+            this.TangGiam.Width = 90;
+            // 
+            // TongCong_BD
+            // 
+            this.TongCong_BD.DataPropertyName = "TongCong_BD";
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.TongCong_BD.DefaultCellStyle = dataGridViewCellStyle11;
+            this.TongCong_BD.HeaderText = "TC Biến Động";
+            this.TongCong_BD.Name = "TongCong_BD";
+            this.TongCong_BD.ReadOnly = true;
+            this.TongCong_BD.Visible = false;
+            // 
+            // CreateBy
+            // 
+            this.CreateBy.DataPropertyName = "CreateBy";
+            this.CreateBy.HeaderText = "CreateBy";
+            this.CreateBy.Name = "CreateBy";
             // 
             // radDSDCBD
             // 
@@ -540,15 +780,15 @@
             this.btnInDSPhieu.UseVisualStyleBackColor = true;
             this.btnInDSPhieu.Click += new System.EventHandler(this.btnInDSPhieu_Click);
             // 
-            // chkTheoUser
+            // chkCreateBy
             // 
-            this.chkTheoUser.AutoSize = true;
-            this.chkTheoUser.Location = new System.Drawing.Point(424, 38);
-            this.chkTheoUser.Name = "chkTheoUser";
-            this.chkTheoUser.Size = new System.Drawing.Size(91, 20);
-            this.chkTheoUser.TabIndex = 25;
-            this.chkTheoUser.Text = "Theo User";
-            this.chkTheoUser.UseVisualStyleBackColor = true;
+            this.chkCreateBy.AutoSize = true;
+            this.chkCreateBy.Location = new System.Drawing.Point(424, 38);
+            this.chkCreateBy.Name = "chkCreateBy";
+            this.chkCreateBy.Size = new System.Drawing.Size(89, 20);
+            this.chkCreateBy.TabIndex = 25;
+            this.chkCreateBy.Text = "Người Lập";
+            this.chkCreateBy.UseVisualStyleBackColor = true;
             // 
             // btnInA4
             // 
@@ -633,246 +873,6 @@
             this.radTruongPhong.Text = "NGUYỄN VĂN ĐẢM";
             this.radTruongPhong.UseVisualStyleBackColor = true;
             // 
-            // In
-            // 
-            this.In.DataPropertyName = "In";
-            this.In.FalseValue = "False";
-            this.In.HeaderText = "In";
-            this.In.IndeterminateValue = "false";
-            this.In.Name = "In";
-            this.In.TrueValue = "true";
-            this.In.Width = 30;
-            // 
-            // ChuyenDocSo
-            // 
-            this.ChuyenDocSo.DataPropertyName = "ChuyenDocSo";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Bisque;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.NullValue = false;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.ChuyenDocSo.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ChuyenDocSo.HeaderText = "Chuyển Đọc Số";
-            this.ChuyenDocSo.Name = "ChuyenDocSo";
-            this.ChuyenDocSo.ReadOnly = true;
-            this.ChuyenDocSo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ChuyenDocSo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ChuyenDocSo.Width = 70;
-            // 
-            // PhieuDuocKy
-            // 
-            this.PhieuDuocKy.DataPropertyName = "PhieuDuocKy";
-            this.PhieuDuocKy.HeaderText = "Phiếu Được Ký";
-            this.PhieuDuocKy.Name = "PhieuDuocKy";
-            this.PhieuDuocKy.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.PhieuDuocKy.Width = 80;
-            // 
-            // SoPhieu
-            // 
-            this.SoPhieu.DataPropertyName = "ID";
-            this.SoPhieu.HeaderText = "Số Phiếu";
-            this.SoPhieu.Name = "SoPhieu";
-            this.SoPhieu.ReadOnly = true;
-            this.SoPhieu.Width = 90;
-            // 
-            // DieuChinh
-            // 
-            this.DieuChinh.DataPropertyName = "DieuChinh";
-            this.DieuChinh.HeaderText = "Điều Chỉnh";
-            this.DieuChinh.Name = "DieuChinh";
-            this.DieuChinh.ReadOnly = true;
-            this.DieuChinh.Visible = false;
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Ngày Lập";
-            this.CreateDate.Name = "CreateDate";
-            this.CreateDate.ReadOnly = true;
-            this.CreateDate.Width = 90;
-            // 
-            // CodeF2
-            // 
-            this.CodeF2.DataPropertyName = "CodeF2";
-            this.CodeF2.HeaderText = "CodeF2";
-            this.CodeF2.Name = "CodeF2";
-            this.CodeF2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CodeF2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.CodeF2.Visible = false;
-            this.CodeF2.Width = 50;
-            // 
-            // DanhBo
-            // 
-            this.DanhBo.DataPropertyName = "DanhBo";
-            this.DanhBo.HeaderText = "Danh Bộ";
-            this.DanhBo.Name = "DanhBo";
-            this.DanhBo.ReadOnly = true;
-            this.DanhBo.Width = 90;
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Khách Hàng Cũ";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.ReadOnly = true;
-            this.HoTen.Visible = false;
-            this.HoTen.Width = 200;
-            // 
-            // HoTen_BD
-            // 
-            this.HoTen_BD.DataPropertyName = "HoTen_BD";
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.HoTen_BD.DefaultCellStyle = dataGridViewCellStyle3;
-            this.HoTen_BD.HeaderText = "Khách Hàng Mới";
-            this.HoTen_BD.Name = "HoTen_BD";
-            this.HoTen_BD.ReadOnly = true;
-            this.HoTen_BD.Visible = false;
-            this.HoTen_BD.Width = 200;
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.DataPropertyName = "DiaChi";
-            this.DiaChi.HeaderText = "Địa Chỉ Cũ";
-            this.DiaChi.Name = "DiaChi";
-            this.DiaChi.ReadOnly = true;
-            this.DiaChi.Visible = false;
-            this.DiaChi.Width = 300;
-            // 
-            // DiaChi_BD
-            // 
-            this.DiaChi_BD.DataPropertyName = "DiaChi_BD";
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.DiaChi_BD.DefaultCellStyle = dataGridViewCellStyle4;
-            this.DiaChi_BD.HeaderText = "Địa Chỉ Mới";
-            this.DiaChi_BD.Name = "DiaChi_BD";
-            this.DiaChi_BD.ReadOnly = true;
-            this.DiaChi_BD.Visible = false;
-            this.DiaChi_BD.Width = 300;
-            // 
-            // MSThue
-            // 
-            this.MSThue.DataPropertyName = "MSThue";
-            this.MSThue.HeaderText = "MST Cũ";
-            this.MSThue.Name = "MSThue";
-            this.MSThue.ReadOnly = true;
-            this.MSThue.Visible = false;
-            // 
-            // MSThue_BD
-            // 
-            this.MSThue_BD.DataPropertyName = "MSThue_BD";
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.MSThue_BD.DefaultCellStyle = dataGridViewCellStyle5;
-            this.MSThue_BD.HeaderText = "MST Mới";
-            this.MSThue_BD.Name = "MSThue_BD";
-            this.MSThue_BD.ReadOnly = true;
-            this.MSThue_BD.Visible = false;
-            // 
-            // GiaBieu
-            // 
-            this.GiaBieu.DataPropertyName = "GiaBieu";
-            this.GiaBieu.HeaderText = "GB Cũ";
-            this.GiaBieu.Name = "GiaBieu";
-            this.GiaBieu.ReadOnly = true;
-            this.GiaBieu.Visible = false;
-            this.GiaBieu.Width = 60;
-            // 
-            // GiaBieu_BD
-            // 
-            this.GiaBieu_BD.DataPropertyName = "GiaBieu_BD";
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.GiaBieu_BD.DefaultCellStyle = dataGridViewCellStyle6;
-            this.GiaBieu_BD.HeaderText = "GB Mới";
-            this.GiaBieu_BD.Name = "GiaBieu_BD";
-            this.GiaBieu_BD.ReadOnly = true;
-            this.GiaBieu_BD.Visible = false;
-            this.GiaBieu_BD.Width = 60;
-            // 
-            // DinhMuc
-            // 
-            this.DinhMuc.DataPropertyName = "DinhMuc";
-            this.DinhMuc.HeaderText = "ĐM Cũ";
-            this.DinhMuc.Name = "DinhMuc";
-            this.DinhMuc.ReadOnly = true;
-            this.DinhMuc.Visible = false;
-            this.DinhMuc.Width = 60;
-            // 
-            // DinhMuc_BD
-            // 
-            this.DinhMuc_BD.DataPropertyName = "DinhMuc_BD";
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.DinhMuc_BD.DefaultCellStyle = dataGridViewCellStyle7;
-            this.DinhMuc_BD.HeaderText = "ĐM Mới";
-            this.DinhMuc_BD.Name = "DinhMuc_BD";
-            this.DinhMuc_BD.ReadOnly = true;
-            this.DinhMuc_BD.Visible = false;
-            this.DinhMuc_BD.Width = 60;
-            // 
-            // TieuThu
-            // 
-            this.TieuThu.DataPropertyName = "TieuThu";
-            this.TieuThu.HeaderText = "TT Cũ";
-            this.TieuThu.Name = "TieuThu";
-            this.TieuThu.ReadOnly = true;
-            this.TieuThu.Visible = false;
-            this.TieuThu.Width = 60;
-            // 
-            // TieuThu_BD
-            // 
-            this.TieuThu_BD.DataPropertyName = "TieuThu_BD";
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.TieuThu_BD.DefaultCellStyle = dataGridViewCellStyle8;
-            this.TieuThu_BD.HeaderText = "TT Mới";
-            this.TieuThu_BD.Name = "TieuThu_BD";
-            this.TieuThu_BD.ReadOnly = true;
-            this.TieuThu_BD.Visible = false;
-            this.TieuThu_BD.Width = 70;
-            // 
-            // TongCong_Start
-            // 
-            this.TongCong_Start.DataPropertyName = "TongCong_Start";
-            this.TongCong_Start.HeaderText = "TC Cũ";
-            this.TongCong_Start.Name = "TongCong_Start";
-            this.TongCong_Start.ReadOnly = true;
-            this.TongCong_Start.Visible = false;
-            // 
-            // TongCong_End
-            // 
-            this.TongCong_End.DataPropertyName = "TongCong_End";
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.TongCong_End.DefaultCellStyle = dataGridViewCellStyle9;
-            this.TongCong_End.HeaderText = "TC Mới";
-            this.TongCong_End.Name = "TongCong_End";
-            this.TongCong_End.ReadOnly = true;
-            this.TongCong_End.Visible = false;
-            // 
-            // TangGiam
-            // 
-            this.TangGiam.DataPropertyName = "TangGiam";
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.TangGiam.DefaultCellStyle = dataGridViewCellStyle10;
-            this.TangGiam.HeaderText = "Biến Động";
-            this.TangGiam.Name = "TangGiam";
-            this.TangGiam.ReadOnly = true;
-            this.TangGiam.Visible = false;
-            this.TangGiam.Width = 90;
-            // 
-            // TongCong_BD
-            // 
-            this.TongCong_BD.DataPropertyName = "TongCong_BD";
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.TongCong_BD.DefaultCellStyle = dataGridViewCellStyle11;
-            this.TongCong_BD.HeaderText = "TC Biến Động";
-            this.TongCong_BD.Name = "TongCong_BD";
-            this.TongCong_BD.ReadOnly = true;
-            this.TongCong_BD.Visible = false;
-            // 
-            // CreateBy
-            // 
-            this.CreateBy.DataPropertyName = "CreateBy";
-            this.CreateBy.HeaderText = "CreateBy";
-            this.CreateBy.Name = "CreateBy";
-            // 
             // frmDSDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -886,7 +886,7 @@
             this.Controls.Add(this.btnThuHoiCapNhatDocSo);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.btnInA4);
-            this.Controls.Add(this.chkTheoUser);
+            this.Controls.Add(this.chkCreateBy);
             this.Controls.Add(this.btnCapNhatDocSo);
             this.Controls.Add(this.chkSelectAll);
             this.Controls.Add(this.label2);
@@ -940,7 +940,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnCapNhatDocSo;
         private System.Windows.Forms.Button btnInDSPhieu;
-        private System.Windows.Forms.CheckBox chkTheoUser;
+        private System.Windows.Forms.CheckBox chkCreateBy;
         private System.Windows.Forms.Button btnInA4;
         private System.Windows.Forms.Button btnXem;
         private System.Windows.Forms.Button btnThuHoiCapNhatDocSo;

@@ -111,6 +111,8 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                     item.DanhBo,
                                     item.HoTen,
                                     item.DiaChi,
+                                    item.GiaBieu,
+                                    item.DinhMuc,
                                     item.STT,
                                     item.CanCu,
                                     item.VaoLuc,
@@ -130,6 +132,8 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                      item.DanhBo,
                                      item.HoTen,
                                      item.DiaChi,
+                                     item.GiaBieu,
+                                     item.DinhMuc,
                                      item.STT,
                                      item.CanCu,
                                      item.VaoLuc,
@@ -149,6 +153,8 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                      item.DanhBo,
                                      item.HoTen,
                                      item.DiaChi,
+                                     item.GiaBieu,
+                                     item.DinhMuc,
                                      item.STT,
                                      item.CanCu,
                                      item.VaoLuc,
@@ -174,6 +180,8 @@ namespace KTKS_DonKH.DAL.ThuMoi
                             item.DanhBo,
                             item.HoTen,
                             item.DiaChi,
+                            item.GiaBieu,
+                            item.DinhMuc,
                             item.STT,
                             item.CanCu,
                             item.VaoLuc,
@@ -196,6 +204,32 @@ namespace KTKS_DonKH.DAL.ThuMoi
                             item.DanhBo,
                             item.HoTen,
                             item.DiaChi,
+                            item.GiaBieu,
+                            item.DinhMuc,
+                            item.STT,
+                            item.CanCu,
+                            item.VaoLuc,
+                            item.VeViec,
+                            item.CreateDate,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDS(int CreateBy,DateTime FromCreatDate, DateTime ToCreateDate)
+        {
+            var query = from item in db.ThuMois
+                        where item.CreateBy==CreateBy&&item.CreateDate.Value.Date >= FromCreatDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
+                        select new
+                        {
+                            MaDon = item.MaDonTKH != null ? "TKH" + item.MaDonTKH
+                                : item.MaDonTXL != null ? "TXL" + item.MaDonTXL
+                                : item.MaDonTBC != null ? "TBC" + item.MaDonTBC : null,
+                            item.ID,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.GiaBieu,
+                            item.DinhMuc,
                             item.STT,
                             item.CanCu,
                             item.VaoLuc,

@@ -1158,7 +1158,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                 {
                                     MaDon = "TKH" + item.MaDon,
                                     item.PhieuDuocKy,
-                                    MaTB = item.MaYCCHDB,
+                                    ID = item.MaYCCHDB,
                                     item.CreateDate,
                                     item.DanhBo,
                                     item.HoTen,
@@ -1175,7 +1175,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             {
                                 MaDon = "TXL" + item.MaDonTXL,
                                 item.PhieuDuocKy,
-                                MaTB = item.MaYCCHDB,
+                                ID = item.MaYCCHDB,
                                 item.CreateDate,
                                 item.DanhBo,
                                 item.HoTen,
@@ -1192,7 +1192,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             {
                                 MaDon = "TBC" + item.MaDonTBC,
                                 item.PhieuDuocKy,
-                                MaTB = item.MaYCCHDB,
+                                ID = item.MaYCCHDB,
                                 item.CreateDate,
                                 item.DanhBo,
                                 item.HoTen,
@@ -1217,7 +1217,6 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     : item.MaDonTXL != null ? "TXL" + item.MaDonTXL
                                     : item.MaDonTBC != null ? "TBC" + item.MaDonTBC : null,
                             item.PhieuDuocKy,
-                            MaTB = item.MaYCCHDB,
                             ID = item.MaYCCHDB,
                             item.CreateDate,
                             item.DanhBo,
@@ -1242,7 +1241,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     : item.MaDonTXL != null ? "TXL" + item.MaDonTXL
                                     : item.MaDonTBC != null ? "TBC" + item.MaDonTBC : null,
                             item.PhieuDuocKy,
-                            MaTB = item.MaYCCHDB,
+                            ID = item.MaYCCHDB,
                             item.CreateDate,
                             item.DanhBo,
                             item.HoTen,
@@ -1264,7 +1263,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     : item.MaDonTXL != null ? "TXL" + item.MaDonTXL
                                     : item.MaDonTBC != null ? "TBC" + item.MaDonTBC : null,
                             item.PhieuDuocKy,
-                            MaTB = item.MaYCCHDB,
+                            ID = item.MaYCCHDB,
                             item.CreateDate,
                             item.DanhBo,
                             item.HoTen,
@@ -1286,7 +1285,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     : item.MaDonTXL != null ? "TXL" + item.MaDonTXL
                                     : item.MaDonTBC != null ? "TBC" + item.MaDonTBC : null,
                             item.PhieuDuocKy,
-                            MaTB = item.MaYCCHDB,
+                            ID = item.MaYCCHDB,
                             item.CreateDate,
                             item.DanhBo,
                             item.HoTen,
@@ -1313,8 +1312,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             {
                                 In = false,
                                 itemYCCHDB.PhieuDuocKy,
-                                SoPhieu = itemYCCHDB.MaYCCHDB,
-                                Ma = itemYCCHDB.MaYCCHDB,
+                                ID = itemYCCHDB.MaYCCHDB,
                                 itemYCCHDB.CreateDate,
                                 itemYCCHDB.DanhBo,
                                 itemYCCHDB.HoTen,
@@ -1351,8 +1349,6 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             {
                                 In = false,
                                 itemYCCHDB.PhieuDuocKy,
-                                SoPhieu = itemYCCHDB.MaYCCHDB,
-                                Ma = itemYCCHDB.MaYCCHDB,
                                 ID = itemYCCHDB.MaYCCHDB,
                                 itemYCCHDB.CreateDate,
                                 itemYCCHDB.DanhBo,
@@ -1389,8 +1385,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             {
                                 In = false,
                                 itemYCCHDB.PhieuDuocKy,
-                                SoPhieu = itemYCCHDB.MaYCCHDB,
-                                Ma = itemYCCHDB.MaYCCHDB,
+                                ID = itemYCCHDB.MaYCCHDB,
                                 itemYCCHDB.CreateDate,
                                 itemYCCHDB.DanhBo,
                                 itemYCCHDB.HoTen,
@@ -1427,8 +1422,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             {
                                 In = false,
                                 itemYCCHDB.PhieuDuocKy,
-                                SoPhieu = itemYCCHDB.MaYCCHDB,
-                                Ma = itemYCCHDB.MaYCCHDB,
+                                ID = itemYCCHDB.MaYCCHDB,
                                 itemYCCHDB.CreateDate,
                                 itemYCCHDB.DanhBo,
                                 itemYCCHDB.HoTen,

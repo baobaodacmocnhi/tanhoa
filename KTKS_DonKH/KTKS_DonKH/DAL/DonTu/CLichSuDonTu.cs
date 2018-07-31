@@ -30,6 +30,22 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
+        public bool Sua(LichSuDonTu entity)
+        {
+            try
+            {
+                entity.ModifyDate = DateTime.Now;
+                entity.ModifyBy = CTaiKhoan.MaUser;
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                Refresh();
+                return false;
+            }
+        }
+
         public bool Xoa(LichSuDonTu entity)
         {
             try
@@ -59,9 +75,6 @@ namespace KTKS_DonKH.DAL.DonTu
             DataTable dt = new DataTable();
             switch (Loai)
             {
-                case "DonTu":
-                    dt = LINQToDataTable(db.LichSuDonTus.Where(item => item.MaDonMoi.Value == MaDon).OrderByDescending(item => item.NgayChuyen).ThenByDescending(item => item.ID).ToList());
-                    break;
                 case "TKH":
                     dt = LINQToDataTable(db.LichSuDonTus.Where(item => item.MaDon.Value == MaDon).OrderByDescending(item => item.NgayChuyen).ThenByDescending(item => item.ID).ToList());
                     break;
@@ -70,6 +83,9 @@ namespace KTKS_DonKH.DAL.DonTu
                     break;
                 case "TBC":
                     dt = LINQToDataTable(db.LichSuDonTus.Where(item => item.MaDonTBC.Value == MaDon).OrderByDescending(item => item.NgayChuyen).ThenByDescending(item => item.ID).ToList());
+                    break;
+                default:
+                    dt = LINQToDataTable(db.LichSuDonTus.Where(item => item.MaDonMoi.Value == MaDon).OrderByDescending(item => item.NgayChuyen).ThenByDescending(item => item.ID).ToList());
                     break;
             }
             return dt;

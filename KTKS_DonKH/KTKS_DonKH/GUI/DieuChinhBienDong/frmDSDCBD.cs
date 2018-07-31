@@ -167,7 +167,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 case "Mã Đơn":
                     if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
-                        if (chkTheoUser.Checked)
+                        if (chkCreateBy.Checked)
                         {
                             if (radDSDCBD.Checked)
                                 dgvDSDCBD.DataSource = _cDCBD.getDSBienDongByMaDon(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
@@ -191,7 +191,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         }
                     else
                         if (txtNoiDungTimKiem.Text.Trim() != "")
-                            if (chkTheoUser.Checked)
+                            if (chkCreateBy.Checked)
                             {
                                 if (radDSDCBD.Checked)
                                     dgvDSDCBD.DataSource = _cDCBD.getDSBienDongByMaDon(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
@@ -216,7 +216,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     break;
                 case "Số Phiếu":
                     if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
-                        if (chkTheoUser.Checked)
+                        if (chkCreateBy.Checked)
                         {
                             if (radDSDCBD.Checked)
                                 dgvDSDCBD.DataSource = _cDCBD.getDSBienDongBySoPhieu(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
@@ -240,7 +240,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         }
                     else
                         if (txtNoiDungTimKiem.Text.Trim() != "")
-                            if (chkTheoUser.Checked)
+                            if (chkCreateBy.Checked)
                             {
                                 if (radDSDCBD.Checked)
                                     dgvDSDCBD.DataSource = _cDCBD.getDSBienDongBySoPhieu(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
@@ -265,7 +265,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     break;
                 case "Danh Bộ":
                     if (txtNoiDungTimKiem.Text.Trim() != "")
-                        if (chkTheoUser.Checked)
+                        if (chkCreateBy.Checked)
                         {
                             if (radDSDCBD.Checked)
                                 dgvDSDCBD.DataSource = _cDCBD.getDSBienDongByDanhBo(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
@@ -289,7 +289,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         }
                     break;
                 case "Ngày":
-                    if (chkTheoUser.Checked)
+                    if (chkCreateBy.Checked)
                     {
                         if (radDSDCBD.Checked)
                             dgvDSDCBD.DataSource = _cDCBD.getDSBienDongByCreateDate(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
@@ -355,7 +355,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (printDialog.ShowDialog() == DialogResult.OK)
                 {
                     if (radDSDCBD.Checked)
-                    {
+                    {                    
                         for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
                             if (dgvDSDCBD["In", i].Value != null && bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true)
                             {
@@ -444,7 +444,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
                                 rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
                                 rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-                                rpt.PrintToPrinter(1, false, 1, 1);
+                                rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
                                 rpt.Clone();
                                 rpt.Dispose();
                             }
@@ -542,10 +542,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     printDialog.AllowSomePages = true;
                                     printDialog.ShowHelp = true;
 
-                                    rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
-                                    rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                                    //rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                    //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
                                     rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-                                    rpt.PrintToPrinter(1, false, 1, 1);
+                                    rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
                                     rpt.Clone();
                                     rpt.Dispose();
                                 }
@@ -597,15 +597,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             //    rpt.Subreports[j].SetDataSource(dsBaoCao);
                                             //}
 
-                                            frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                                            frm.Show();
-                                            //printDialog.AllowSomePages = true;
-                                            //printDialog.ShowHelp = true;
+                                            //frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                                            //frm.Show();
+                                            printDialog.AllowSomePages = true;
+                                            printDialog.ShowHelp = true;
 
                                             //rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
                                             //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
-                                            //rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-                                            //rpt.PrintToPrinter(1, false, 1, 1);
+                                            rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+                                            rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
                                         }
                                         else
                                             if (lichsuchungtu.CatDM)

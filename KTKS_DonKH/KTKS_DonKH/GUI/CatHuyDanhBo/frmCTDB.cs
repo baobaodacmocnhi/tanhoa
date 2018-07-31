@@ -788,11 +788,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                                 dsBaoCao.Tables["PhieuCHDB"].Rows.Add(dr);
 
-                                rptPhieuCHDBx2 rpt = new rptPhieuCHDBx2();
-                                for (int j = 0; j < rpt.Subreports.Count; j++)
-                                {
-                                    rpt.Subreports[j].SetDataSource(dsBaoCao);
-                                }
+                                //rptPhieuCHDBx2 rpt = new rptPhieuCHDBx2();
+                                //for (int j = 0; j < rpt.Subreports.Count; j++)
+                                //{
+                                //    rpt.Subreports[j].SetDataSource(dsBaoCao);
+                                //}
+                                rptPhieuCHDB rpt = new rptPhieuCHDB();
+                                rpt.SetDataSource(dsBaoCao);
                                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
                                 frm.ShowDialog();
                             }
@@ -887,11 +889,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                                     dsBaoCao.Tables["PhieuCHDB"].Rows.Add(dr);
 
-                                    rptPhieuCHDBx2 rpt = new rptPhieuCHDBx2();
-                                    for (int j = 0; j < rpt.Subreports.Count; j++)
-                                    {
-                                        rpt.Subreports[j].SetDataSource(dsBaoCao);
-                                    }
+                                    //rptPhieuCHDBx2 rpt = new rptPhieuCHDBx2();
+                                    //for (int j = 0; j < rpt.Subreports.Count; j++)
+                                    //{
+                                    //    rpt.Subreports[j].SetDataSource(dsBaoCao);
+                                    //}
+                                    rptPhieuCHDB rpt = new rptPhieuCHDB();
+                                    rpt.SetDataSource(dsBaoCao);
                                     frmShowBaoCao frm = new frmShowBaoCao(rpt);
                                     frm.ShowDialog();
                                 }
@@ -938,11 +942,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                             dsBaoCao.Tables["PhieuCHDB"].Rows.Add(dr);
 
-                            rptPhieuCHDBx2 rpt = new rptPhieuCHDBx2();
-                            for (int j = 0; j < rpt.Subreports.Count; j++)
-                            {
-                                rpt.Subreports[j].SetDataSource(dsBaoCao);
-                            }
+                            //rptPhieuCHDBx2 rpt = new rptPhieuCHDBx2();
+                            //for (int j = 0; j < rpt.Subreports.Count; j++)
+                            //{
+                            //    rpt.Subreports[j].SetDataSource(dsBaoCao);
+                            //}
+                            rptPhieuCHDB rpt = new rptPhieuCHDB();
+                            rpt.SetDataSource(dsBaoCao);
                             frmShowBaoCao frm = new frmShowBaoCao(rpt);
                             frm.ShowDialog();
                         }

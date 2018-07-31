@@ -77,6 +77,22 @@ namespace KTKS_DonKH.DAL.DonTu
             return db.DonTus.Any(item => item.MaDon == MaDon);
         }
 
+        public bool CheckExist(string DanhBo,DateTime CreateDate)
+        {
+            if (db.DonTus.Any(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date) == true)
+                return true;
+            else
+                return db.DonTu_ChiTiets.Any(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
+        }
+
+        public int getMaxID_ChiTiet()
+        {
+            if (db.DonTu_ChiTiets.Count() == 0)
+                return 0;
+            else
+                return db.DonTu_ChiTiets.Max(item => item.ID);
+        }
+
         public LinQ.DonTu Get(int MaDon)
         {
             return db.DonTus.SingleOrDefault(item => item.MaDon == MaDon);
