@@ -317,7 +317,7 @@ namespace ThuTien.GUI.Quay
 
         private void btnInPhieu_Click(object sender, EventArgs e)
         {
-                dsBaoCao ds = new dsBaoCao();
+            dsBaoCao ds = new dsBaoCao();
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
                 DataTable dt = _cHoaDon.GetTongDangNgan("TG", CNguoiDung.MaND, dateDen.Value);
@@ -335,7 +335,7 @@ namespace ThuTien.GUI.Quay
                     dr["NhanVien"] = CNguoiDung.HoTen;
                     ds.Tables["PhieuDangNgan"].Rows.Add(dr);
                 }
-                }
+            }
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
                 {
@@ -355,10 +355,10 @@ namespace ThuTien.GUI.Quay
                         ds.Tables["PhieuDangNgan"].Rows.Add(dr);
                     }
                 }
-                rptPhieuDangNgan rpt = new rptPhieuDangNgan();
-                rpt.SetDataSource(ds);
-                frmBaoCao frm = new frmBaoCao(rpt);
-                frm.Show();
+            rptPhieuDangNgan rpt = new rptPhieuDangNgan();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
         }
 
         private void btnXuatExcel_Click(object sender, EventArgs e)

@@ -181,6 +181,35 @@ namespace ThuTien.DAL.HanhThu
                                 };
                     return LINQToDataTable(query);
                 }
+                else
+            if(Loai=="")
+            {
+                var query = from itemQT in _db.TT_QuetTams
+                            join itemHD in _db.HOADONs on itemQT.SoHoaDon equals itemHD.SOHOADON
+                            join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemQT.CreateBy == MaNV
+                            orderby itemHD.MALOTRINH ascending
+                            select new
+                            {
+                                itemQT.ID,
+                                itemQT.CreateBy,
+                                itemQT.SoHoaDon,
+                                itemQT.SoPhieu,
+                                DanhBo = itemHD.DANHBA,
+                                HoTen = itemHD.TENKH,
+                                DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                                Ky = itemHD.KY + "/" + itemHD.NAM,
+                                MLT = itemHD.MALOTRINH,
+                                itemHD.SOPHATHANH,
+                                itemHD.TONGCONG,
+                                GiaBieu = itemHD.GB,
+                                itemHD.HOPDONG,
+                                HanhThu = itemtableND.HoTen,
+                                To = itemtableND.TT_To.TenTo,
+                            };
+                return LINQToDataTable(query);
+            }
             return null;
         }
 

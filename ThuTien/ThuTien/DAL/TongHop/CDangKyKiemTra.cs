@@ -189,6 +189,16 @@ namespace ThuTien.DAL.TongHop
             return _db.TT_CTDangKyKiemTras.Count(item => item.MaDKKT == MaDKKT);
         }
 
+        public int CountCT(DateTime FromCreateDate,DateTime ToCreateDate)
+        {
+            return _db.TT_CTDangKyKiemTras.Count(item => item.TT_DangKyKiemTra.CreateDate.Value.Date >= FromCreateDate.Date && item.TT_DangKyKiemTra.CreateDate.Value.Date <= ToCreateDate.Date);
+        }
+
+        public int CountCT_BinhThuong(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            return _db.TT_CTDangKyKiemTras.Where(item => item.TT_DangKyKiemTra.CreateDate.Value.Date >= FromCreateDate.Date && item.TT_DangKyKiemTra.CreateDate.Value.Date <= ToCreateDate.Date).Select(item=>item.DanhBo).Distinct().Count();
+        }
+
         public decimal GetMaDKKT(string DanhDo)
         {
             return _db.TT_CTDangKyKiemTras.Where(item => item.DanhBo == DanhDo).OrderByDescending(item=>item.CreateDate).First().MaDKKT.Value;

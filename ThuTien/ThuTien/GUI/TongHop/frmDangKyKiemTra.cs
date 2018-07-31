@@ -323,6 +323,13 @@ namespace ThuTien.GUI.TongHop
                 MessageBox.Show("Chưa đăng ký", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void btnBaoCao_Click(object sender, EventArgs e)
+        {
+            txtTongSo.Text = _cDangKyKT.CountCT(dateTu.Value,dateDen.Value).ToString();
+            txtBaoBinhThuong.Text = _cDangKyKT.CountCT_BinhThuong(dateTu.Value, dateDen.Value).ToString();
+            txtBaoTrung.Text = (int.Parse(txtTongSo.Text.Trim()) - int.Parse(txtBaoBinhThuong.Text.Trim())).ToString();
+        }
+
         
     }
 }

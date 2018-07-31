@@ -15,6 +15,7 @@ using ThuTien.BaoCao.DongNuoc;
 using ThuTien.GUI.BaoCao;
 using System.Globalization;
 using ThuTien.DAL;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace ThuTien.GUI.DongNuoc
 {
@@ -276,18 +277,23 @@ namespace ThuTien.GUI.DongNuoc
 
                         dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
 
-                        rptTBDongNuocPhoto rpt = new rptTBDongNuocPhoto();
+                        ReportDocument rpt = new ReportDocument();
+                        if (radA4.Checked == true)
+                            rpt = new rptTBDongNuocPhotoA4();
+                        else
+                            if (radA5.Checked == true)
+                                rpt = new rptTBDongNuocPhotoA5();
                         rpt.SetDataSource(dsBaoCao);
                         //frmBaoCao frm = new frmBaoCao(rpt);
                         //frm.ShowDialog();
                         printDialog.AllowSomePages = true;
                         printDialog.ShowHelp = true;
 
-                        rpt.PrintOptions.PaperOrientation = rpt.PrintOptions.PaperOrientation;
-                        rpt.PrintOptions.PaperSize = rpt.PrintOptions.PaperSize;
+                        //rpt.PrintOptions.PaperOrientation = rpt.PrintOptions.PaperOrientation;
+                        //rpt.PrintOptions.PaperSize = rpt.PrintOptions.PaperSize;
                         rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
 
-                        rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, false, 1, 1);
+                        rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
                     }
             }
         }

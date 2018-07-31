@@ -77,6 +77,8 @@
             this.btnInDSTBTonThucTeNguoiGiao = new System.Windows.Forms.Button();
             this.btnXuatExcel = new System.Windows.Forms.Button();
             this.chkCoTenNguoiKy = new System.Windows.Forms.CheckBox();
+            this.radA4 = new System.Windows.Forms.RadioButton();
+            this.radA5 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -545,11 +547,35 @@
             this.chkCoTenNguoiKy.Text = "Có Tên Người Ký";
             this.chkCoTenNguoiKy.UseVisualStyleBackColor = true;
             // 
+            // radA4
+            // 
+            this.radA4.AutoSize = true;
+            this.radA4.Checked = true;
+            this.radA4.Location = new System.Drawing.Point(1119, 37);
+            this.radA4.Name = "radA4";
+            this.radA4.Size = new System.Drawing.Size(38, 17);
+            this.radA4.TabIndex = 100;
+            this.radA4.TabStop = true;
+            this.radA4.Text = "A4";
+            this.radA4.UseVisualStyleBackColor = true;
+            // 
+            // radA5
+            // 
+            this.radA5.AutoSize = true;
+            this.radA5.Location = new System.Drawing.Point(1119, 60);
+            this.radA5.Name = "radA5";
+            this.radA5.Size = new System.Drawing.Size(38, 17);
+            this.radA5.TabIndex = 101;
+            this.radA5.Text = "A5";
+            this.radA5.UseVisualStyleBackColor = true;
+            // 
             // frmGiaoTBDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1207, 666);
+            this.Controls.Add(this.radA5);
+            this.Controls.Add(this.radA4);
             this.Controls.Add(this.chkCoTenNguoiKy);
             this.Controls.Add(this.btnXuatExcel);
             this.Controls.Add(this.btnInDSTBTonThucTeNguoiGiao);
@@ -636,5 +662,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn CreateBy;
         private DevExpress.XtraGrid.Columns.GridColumn MaNV_DongNuoc;
         private System.Windows.Forms.CheckBox chkCoTenNguoiKy;
+        private System.Windows.Forms.RadioButton radA4;
+        private System.Windows.Forms.RadioButton radA5;
     }
 }

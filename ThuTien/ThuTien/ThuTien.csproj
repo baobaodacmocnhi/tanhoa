@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>930</ApplicationRevision>
+    <ApplicationRevision>932</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -193,6 +193,12 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="BaoCao\DongNuoc\rptTBDongNuocPhotoA5.cs">
+      <DependentUpon>rptTBDongNuocPhotoA5.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="BaoCao\rptHeaderLogo.cs">
       <DependentUpon>rptHeaderLogo.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -336,8 +342,8 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="BaoCao\DongNuoc\rptTBDongNuocPhoto.cs">
-      <DependentUpon>rptTBDongNuocPhoto.rpt</DependentUpon>
+    <Compile Include="BaoCao\DongNuoc\rptTBDongNuocPhotoA4.cs">
+      <DependentUpon>rptTBDongNuocPhotoA4.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -1169,6 +1175,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPhanTichBienDongHoaDon.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\DongNuoc\rptTBDongNuocPhotoA5.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTBDongNuocPhotoA5.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\rptHeaderLogo.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptHeaderLogo.cs</LastGenOutput>
@@ -1261,9 +1271,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptNangSuatThuTien_Doi.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\DongNuoc\rptTBDongNuocPhoto.rpt">
+    <EmbeddedResource Include="BaoCao\DongNuoc\rptTBDongNuocPhotoA4.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptTBDongNuocPhoto.cs</LastGenOutput>
+      <LastGenOutput>rptTBDongNuocPhotoA4.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\DongNuoc\rptDSHDDongNuoc.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

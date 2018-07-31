@@ -161,7 +161,7 @@ namespace ThuTien.GUI.Quay
                         if (bool.Parse(item.Cells["DongPhi"].Value.ToString()) == true)
                         {
                             kqdongnuoc.DongPhi = true;
-                            string[] date = item.Cells["NgayDongPhi"].Value.ToString().Split('/');
+                            string[] date = item.Cells["NgayDongPhi"].Value.ToString().Substring(0, item.Cells["NgayDongPhi"].Value.ToString().IndexOf(" ")).Split('/');
                             kqdongnuoc.NgayDongPhi = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]), DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, DateTime.Now.Millisecond);
                         }
                         else
