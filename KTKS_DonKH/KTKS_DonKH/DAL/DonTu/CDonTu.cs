@@ -79,9 +79,6 @@ namespace KTKS_DonKH.DAL.DonTu
 
         public bool CheckExist(string DanhBo,DateTime CreateDate)
         {
-            if (db.DonTus.Any(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date) == true)
-                return true;
-            else
                 return db.DonTu_ChiTiets.Any(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
         }
 

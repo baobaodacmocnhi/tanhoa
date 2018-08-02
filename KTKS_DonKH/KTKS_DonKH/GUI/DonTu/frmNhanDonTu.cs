@@ -82,49 +82,57 @@ namespace KTKS_DonKH.GUI.DonTu
 
         public void LoadDonTu(LinQ.DonTu entity)
         {
-            if (entity.SoCongVan != null)
+            try
             {
+            if (entity.SoCongVan == null)
+            {
+                tabControl.SelectTab("tabTTKH");
+                if (entity.SoNK != null)
+                {
+                    txtSoNK.Text = entity.SoNK.Value.ToString();
+                    txtHieuLucKy.Text = entity.HieuLucKy;
+                }
+                if (entity.DonTu_ChiTiets.SingleOrDefault().DanhBo.Length == 11)
+                    txtDanhBo.Text = entity.DonTu_ChiTiets.SingleOrDefault().DanhBo.Insert(7, " ").Insert(4, " ");
+                txtHopDong.Text = entity.DonTu_ChiTiets.SingleOrDefault().HopDong;
+                txtDienThoai.Text = entity.DonTu_ChiTiets.SingleOrDefault().DienThoai;
+                txtHoTen.Text = entity.DonTu_ChiTiets.SingleOrDefault().HoTen;
+                txtDiaChi.Text = entity.DonTu_ChiTiets.SingleOrDefault().DiaChi;
+                if (entity.GiaBieu != null)
+                    txtGiaBieu.Text = entity.DonTu_ChiTiets.SingleOrDefault().GiaBieu.Value.ToString();
+                if (entity.DinhMuc != null)
+                    txtDinhMuc.Text = entity.DonTu_ChiTiets.SingleOrDefault().DinhMuc.Value.ToString();
+            }
+            else
+            {
+                tabControl.SelectTab("tabCongVan");
                 txtSoCongVan.Text = entity.SoCongVan;
                 txtTongDB.Text = entity.TongDB.ToString();
+
+                dgvDanhBo.DataSource = entity.DonTu_ChiTiets.ToList();
             }
+            txtMaDon.Text = entity.MaDon.ToString();
             dateCreateDate.Value = entity.CreateDate.Value;
 
             chkcmbDieuChinh.SetEditValue(entity.ID_NhomDon);
             chkcmbKhieuNai.SetEditValue(entity.ID_NhomDon);
             chkcmbDHN.SetEditValue(entity.ID_NhomDon);
 
-            if (entity.SoNK != null)
-            {
-                txtSoNK.Text = entity.SoNK.Value.ToString();
-                txtHieuLucKy.Text = entity.HieuLucKy;
-            }
-
+            txtNoiDung.Text=entity.Name_NhomDon;
             txtVanDeKhac.Text = entity.VanDeKhac;
-            if (string.IsNullOrEmpty(entity.SoCongVan) == true)
-            {
-                if (entity.DanhBo.Length == 11)
-                    txtDanhBo.Text = entity.DanhBo.Insert(7, " ").Insert(4, " ");
-                txtHopDong.Text = entity.HopDong;
-                txtDienThoai.Text = entity.DienThoai;
-                txtHoTen.Text = entity.HoTen;
-                txtDiaChi.Text = entity.DiaChi;
-                if (entity.GiaBieu != null)
-                    txtGiaBieu.Text = entity.GiaBieu.Value.ToString();
-                if (entity.DinhMuc != null)
-                    txtDinhMuc.Text = entity.DinhMuc.Value.ToString();
 
-                chkCT_HoaDon.Checked = entity.CT_HoaDon;
-                chkCT_HK_KT3.Checked = entity.CT_HK_KT3;
-                chkCT_STT_GXNTT.Checked = entity.CT_STT_GXNTT;
-                chkCT_HDTN_CQN.Checked = entity.CT_HDTN_CQN;
-                chkCT_GC_SDSN.Checked = entity.CT_GC_SDSN;
-                chkCT_GXN2SN.Checked = entity.CT_GXN2SN;
-                chkCT_GDKKD.Checked = entity.CT_GDKKD;
-                chkCT_GCNDTDHN.Checked = entity.CT_GCNDTDHN;
+            chkCT_HoaDon.Checked = entity.CT_HoaDon;
+            chkCT_HK_KT3.Checked = entity.CT_HK_KT3;
+            chkCT_STT_GXNTT.Checked = entity.CT_STT_GXNTT;
+            chkCT_HDTN_CQN.Checked = entity.CT_HDTN_CQN;
+            chkCT_GC_SDSN.Checked = entity.CT_GC_SDSN;
+            chkCT_GXN2SN.Checked = entity.CT_GXN2SN;
+            chkCT_GDKKD.Checked = entity.CT_GDKKD;
+            chkCT_GCNDTDHN.Checked = entity.CT_GCNDTDHN;
             }
-            else
+            catch (Exception ex)
             {
-                dgvDanhBo.DataSource = entity.DonTu_ChiTiets.ToList();
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -255,11 +263,50 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 try
                 {
-                    if (tabControl.SelectedTab.Name == "tabNhapCongVan")
+                    LinQ.DonTu entity = new LinQ.DonTu();
+                    if (string.IsNullOrEmpty(txtSoCongVan.Text.Trim()) == true)
                     {
-                        LinQ.DonTu entity = new LinQ.DonTu();
+                        if (_cDonTu.CheckExist(txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now) == true)
+                        {
+                            if (MessageBox.Show("Danh Bộ " + txtDanhBo.Text.Trim().Replace(" ", "") + " đã nhận đơn trong ngày hôm nay rồi\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                                return;
+                        }
+                        if (txtSoNK.Text.Trim() != "")
+                        {
+                            entity.SoNK = int.Parse(txtSoNK.Text.Trim());
+                            entity.HieuLucKy = txtHieuLucKy.Text.Trim();
+                        }
+                        DonTu_ChiTiet entityCT = new DonTu_ChiTiet();
+                        entityCT.ID = _cDonTu.getMaxID_ChiTiet() + 1;
+                        entityCT.STT = 1;
+                        entityCT.DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
+                        entityCT.HopDong = txtHopDong.Text.Trim();
+                        entityCT.DienThoai = txtDienThoai.Text.Trim();
+                        entityCT.HoTen = txtHoTen.Text.Trim();
+                        entityCT.DiaChi = txtDiaChi.Text.Trim();
+                        if (txtGiaBieu.Text.Trim() != "")
+                            entityCT.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
+                        if (txtDinhMuc.Text.Trim() != "")
+                            entityCT.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
+                        if (_hoadon != null)
+                        {
+                            entityCT.MLT = _hoadon.MALOTRINH;
+                            entityCT.Dot = _hoadon.DOT;
+                            entityCT.Ky = _hoadon.KY;
+                            entityCT.Nam = _hoadon.NAM;
+                            entityCT.Quan = _hoadon.Quan;
+                            entityCT.Phuong = _hoadon.Phuong;
+                        }
+                        entityCT.CreateBy = CTaiKhoan.MaUser;
+                        entityCT.CreateDate = DateTime.Now;
+
+                        entity.DonTu_ChiTiets.Add(entityCT); 
+                    }
+                    else
+                    {
                         entity.SoCongVan = txtSoCongVan.Text.Trim();
                         entity.TongDB = int.Parse(txtTongDB.Text.Trim());
+
                         foreach (DataGridViewRow item in dgvDanhBo.Rows)
                         {
                             if (item.Cells["DanhBo"].Value != null || item.Cells["HoTen"].Value != null || item.Cells["DiaChi"].Value != null)
@@ -267,18 +314,20 @@ namespace KTKS_DonKH.GUI.DonTu
                                 if (item.Cells["DanhBo"].Value != null)
                                     if (_cDonTu.CheckExist(item.Cells["DanhBo"].Value.ToString(), DateTime.Now) == true)
                                     {
-                                        if (MessageBox.Show("Danh Bộ " + item.Cells["DanhBo"].Value.ToString() + "đã nhận đơn trong ngày hôm nay rồi\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                                        if (MessageBox.Show("Danh Bộ " + item.Cells["DanhBo"].Value.ToString() + " đã nhận đơn trong ngày hôm nay rồi\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                                             return;
                                     }
                             }
                         }
                         int ID = _cDonTu.getMaxID_ChiTiet();
+                        int STT = 0;
                         foreach (DataGridViewRow item in dgvDanhBo.Rows)
                         {
                             if (item.Cells["DanhBo"].Value != null || item.Cells["HoTen"].Value != null || item.Cells["DiaChi"].Value != null)
                             {
                                 DonTu_ChiTiet entityCT = new DonTu_ChiTiet();
                                 entityCT.ID = ++ID;
+                                entityCT.STT = ++STT;
 
                                 if (item.Cells["DanhBo"].Value != null)
                                     entityCT.DanhBo = item.Cells["DanhBo"].Value.ToString();
@@ -307,145 +356,72 @@ namespace KTKS_DonKH.GUI.DonTu
 
                                 entityCT.CreateBy = CTaiKhoan.MaUser;
                                 entityCT.CreateDate = DateTime.Now;
+
                                 entity.DonTu_ChiTiets.Add(entityCT);
                             }
                         }
-                        ///
-                        entity.NgayHenGiaiQuyet = "Trong thời gian 5 ngày làm việc kể từ ngày nhận hồ sơ, Công ty sẽ giải quyết theo quy định hiện hành";
-                        entity.ID_NhomDon = "";
-                        for (int i = 0; i < chkcmbDieuChinh.Properties.Items.Count; i++)
-                            if (chkcmbDieuChinh.Properties.Items[i].CheckState == CheckState.Checked)
-                            {
-                                if (entity.ID_NhomDon == "")
-                                    entity.ID_NhomDon = chkcmbDieuChinh.Properties.Items[i].Value.ToString();
-                                else
-                                    entity.ID_NhomDon += ";" + chkcmbDieuChinh.Properties.Items[i].Value.ToString();
-                                if (chkcmbDieuChinh.Properties.Items[i].Value.ToString() == "4")
-                                    entity.NgayHenGiaiQuyet = "Quý khách nhận lại Hợp Đồng vào ngày " + GetToDate(DateTime.Now, 30).ToString("dd/MM/yyyy") + ". Quá thời hạn trên, Khách Hàng không liên hệ nhận Hợp Đồng; mọi Khiếu Nại về sau sẽ không được giải quyết";
-                            }
-                        for (int i = 0; i < chkcmbKhieuNai.Properties.Items.Count; i++)
-                            if (chkcmbKhieuNai.Properties.Items[i].CheckState == CheckState.Checked)
-                            {
-                                if (entity.ID_NhomDon == "")
-                                    entity.ID_NhomDon = chkcmbKhieuNai.Properties.Items[i].Value.ToString();
-                                else
-                                    entity.ID_NhomDon += ";" + chkcmbKhieuNai.Properties.Items[i].Value.ToString();
-                            }
-                        for (int i = 0; i < chkcmbDHN.Properties.Items.Count; i++)
-                            if (chkcmbDHN.Properties.Items[i].CheckState == CheckState.Checked)
-                            {
-                                if (entity.ID_NhomDon == "")
-                                    entity.ID_NhomDon = chkcmbDHN.Properties.Items[i].Value.ToString();
-                                else
-                                    entity.ID_NhomDon += ";" + chkcmbDHN.Properties.Items[i].Value.ToString();
-                            }
-                        entity.Name_NhomDon = txtNoiDung.Text.Trim();
-                        if (txtVanDeKhac.Text.Trim() != "")
-                            entity.VanDeKhac = txtVanDeKhac.Text.Trim();
-                        ///
-                        if (_cDonTu.Them(entity))
-                        {
-                            Clear();
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
                     }
-                    else
+                    ///
+                    entity.NgayHenGiaiQuyet = "Trong thời gian 5 ngày làm việc kể từ ngày nhận hồ sơ, Công ty sẽ giải quyết theo quy định hiện hành";
+                    entity.ID_NhomDon = "";
+                    for (int i = 0; i < chkcmbDieuChinh.Properties.Items.Count; i++)
+                        if (chkcmbDieuChinh.Properties.Items[i].CheckState == CheckState.Checked)
+                        {
+                            if (entity.ID_NhomDon == "")
+                                entity.ID_NhomDon = chkcmbDieuChinh.Properties.Items[i].Value.ToString();
+                            else
+                                entity.ID_NhomDon += ";" + chkcmbDieuChinh.Properties.Items[i].Value.ToString();
+                            if (chkcmbDieuChinh.Properties.Items[i].Value.ToString() == "4")
+                                entity.NgayHenGiaiQuyet = "Quý khách nhận lại Hợp Đồng vào ngày " + GetToDate(DateTime.Now, 30).ToString("dd/MM/yyyy") + ". Quá thời hạn trên, Khách Hàng không liên hệ nhận Hợp Đồng; mọi Khiếu Nại về sau sẽ không được giải quyết";
+                        }
+                    for (int i = 0; i < chkcmbKhieuNai.Properties.Items.Count; i++)
+                        if (chkcmbKhieuNai.Properties.Items[i].CheckState == CheckState.Checked)
+                        {
+                            if (entity.ID_NhomDon == "")
+                                entity.ID_NhomDon = chkcmbKhieuNai.Properties.Items[i].Value.ToString();
+                            else
+                                entity.ID_NhomDon += ";" + chkcmbKhieuNai.Properties.Items[i].Value.ToString();
+                        }
+                    for (int i = 0; i < chkcmbDHN.Properties.Items.Count; i++)
+                        if (chkcmbDHN.Properties.Items[i].CheckState == CheckState.Checked)
+                        {
+                            if (entity.ID_NhomDon == "")
+                                entity.ID_NhomDon = chkcmbDHN.Properties.Items[i].Value.ToString();
+                            else
+                                entity.ID_NhomDon += ";" + chkcmbDHN.Properties.Items[i].Value.ToString();
+                        }
+                    entity.Name_NhomDon = txtNoiDung.Text.Trim();
+                    if (txtVanDeKhac.Text.Trim() != "")
+                        entity.VanDeKhac = txtVanDeKhac.Text.Trim();
+                    ///
+                    if (chkCT_HoaDon.Checked)
+                        entity.CT_HoaDon = true;
+
+                    if (chkCT_HK_KT3.Checked)
+                        entity.CT_HK_KT3 = true;
+
+                    if (chkCT_STT_GXNTT.Checked)
+                        entity.CT_STT_GXNTT = true;
+
+                    if (chkCT_HDTN_CQN.Checked)
+                        entity.CT_HDTN_CQN = true;
+
+                    if (chkCT_GC_SDSN.Checked)
+                        entity.CT_GC_SDSN = true;
+
+                    if (chkCT_GXN2SN.Checked)
+                        entity.CT_GXN2SN = true;
+
+                    if (chkCT_GDKKD.Checked)
+                        entity.CT_GDKKD = true;
+
+                    if (chkCT_GCNDTDHN.Checked)
+                        entity.CT_GCNDTDHN = true;
+                    ///
+                    if (_cDonTu.Them(entity))
                     {
-                        LinQ.DonTu entity = new LinQ.DonTu();
-                        //if (txtSoCongVan.Text.Trim() != "")
-                        //{
-                        //    entity.SoCongVan = txtSoCongVan.Text.Trim();
-                        //    entity.TongDB = int.Parse(txtTongDB.Text.Trim());
-                        //}
-                        //else
-                        {
-                            entity.DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
-                            entity.HopDong = txtHopDong.Text.Trim();
-                            entity.DienThoai = txtDienThoai.Text.Trim();
-                            entity.HoTen = txtHoTen.Text.Trim();
-                            entity.DiaChi = txtDiaChi.Text.Trim();
-                            if (txtGiaBieu.Text.Trim() != "")
-                                entity.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
-                            if (txtDinhMuc.Text.Trim() != "")
-                                entity.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
-                            if (_hoadon != null)
-                            {
-                                entity.MLT = _hoadon.MALOTRINH;
-                                entity.Dot = _hoadon.DOT;
-                                entity.Ky = _hoadon.KY;
-                                entity.Nam = _hoadon.NAM;
-                                entity.Quan = _hoadon.Quan;
-                                entity.Phuong = _hoadon.Phuong;
-                            }
-                        }
-                        if (txtSoNK.Text.Trim() != "")
-                        {
-                            entity.SoNK = int.Parse(txtSoNK.Text.Trim());
-                            entity.HieuLucKy = txtHieuLucKy.Text.Trim();
-                        }
-                        ///
-                        entity.NgayHenGiaiQuyet = "Trong thời gian 5 ngày làm việc kể từ ngày nhận hồ sơ, Công ty sẽ giải quyết theo quy định hiện hành";
-                        entity.ID_NhomDon = "";
-                        for (int i = 0; i < chkcmbDieuChinh.Properties.Items.Count; i++)
-                            if (chkcmbDieuChinh.Properties.Items[i].CheckState == CheckState.Checked)
-                            {
-                                if (entity.ID_NhomDon == "")
-                                    entity.ID_NhomDon = chkcmbDieuChinh.Properties.Items[i].Value.ToString();
-                                else
-                                    entity.ID_NhomDon += ";" + chkcmbDieuChinh.Properties.Items[i].Value.ToString();
-                                if (chkcmbDieuChinh.Properties.Items[i].Value.ToString() == "4")
-                                    entity.NgayHenGiaiQuyet = "Quý khách nhận lại Hợp Đồng vào ngày " + GetToDate(DateTime.Now, 30).ToString("dd/MM/yyyy") + ". Quá thời hạn trên, Khách Hàng không liên hệ nhận Hợp Đồng; mọi Khiếu Nại về sau sẽ không được giải quyết";
-                            }
-                        for (int i = 0; i < chkcmbKhieuNai.Properties.Items.Count; i++)
-                            if (chkcmbKhieuNai.Properties.Items[i].CheckState == CheckState.Checked)
-                            {
-                                if (entity.ID_NhomDon == "")
-                                    entity.ID_NhomDon = chkcmbKhieuNai.Properties.Items[i].Value.ToString();
-                                else
-                                    entity.ID_NhomDon += ";" + chkcmbKhieuNai.Properties.Items[i].Value.ToString();
-                            }
-                        for (int i = 0; i < chkcmbDHN.Properties.Items.Count; i++)
-                            if (chkcmbDHN.Properties.Items[i].CheckState == CheckState.Checked)
-                            {
-                                if (entity.ID_NhomDon == "")
-                                    entity.ID_NhomDon = chkcmbDHN.Properties.Items[i].Value.ToString();
-                                else
-                                    entity.ID_NhomDon += ";" + chkcmbDHN.Properties.Items[i].Value.ToString();
-                            }
-                        entity.Name_NhomDon = txtNoiDung.Text.Trim();
-                        if (txtVanDeKhac.Text.Trim() != "")
-                            entity.VanDeKhac = txtVanDeKhac.Text.Trim();
-                        ///
-                        if (chkCT_HoaDon.Checked)
-                            entity.CT_HoaDon = true;
-
-                        if (chkCT_HK_KT3.Checked)
-                            entity.CT_HK_KT3 = true;
-
-                        if (chkCT_STT_GXNTT.Checked)
-                            entity.CT_STT_GXNTT = true;
-
-                        if (chkCT_HDTN_CQN.Checked)
-                            entity.CT_HDTN_CQN = true;
-
-                        if (chkCT_GC_SDSN.Checked)
-                            entity.CT_GC_SDSN = true;
-
-                        if (chkCT_GXN2SN.Checked)
-                            entity.CT_GXN2SN = true;
-
-                        if (chkCT_GDKKD.Checked)
-                            entity.CT_GDKKD = true;
-
-                        if (chkCT_GCNDTDHN.Checked)
-                            entity.CT_GCNDTDHN = true;
-                        ///
-                        if (_cDonTu.Them(entity))
-                        {
-                            Clear();
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            InBienNhan(entity);
-                        }
+                        Clear();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 catch (Exception ex)
@@ -465,119 +441,119 @@ namespace KTKS_DonKH.GUI.DonTu
                 {
                     if (_dontu != null)
                     {
-                        if (tabControl.SelectedTab.Name == "tabNhapCongVan")
+                        if (_dontu.SoCongVan == null)
                         {
-                            MessageBox.Show("Liên hệ BB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            //if (txtSoCongVan.Text.Trim() != "")
-                            //{
-                            //    _dontu.SoCongVan = txtSoCongVan.Text.Trim();
-                            //    _dontu.TongDB = int.Parse(txtTongDB.Text.Trim());
-                            //}
-                            //else
+                            if (_cDonTu.CheckExist(txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now) == true)
                             {
-                                _dontu.DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
-                                _dontu.HopDong = txtHopDong.Text.Trim();
-                                _dontu.DienThoai = txtDienThoai.Text.Trim();
-                                _dontu.HoTen = txtHoTen.Text.Trim();
-                                _dontu.DiaChi = txtDiaChi.Text.Trim();
-                                if (txtGiaBieu.Text.Trim() != "")
-                                    _dontu.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
-                                if (txtDinhMuc.Text.Trim() != "")
-                                    _dontu.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
-                                if (_hoadon != null && _hoadon.DANHBA != txtDanhBo.Text.Trim().Replace(" ", ""))
-                                {
-                                    _dontu.MLT = _hoadon.MALOTRINH;
-                                    _dontu.Dot = _hoadon.DOT;
-                                    _dontu.Ky = _hoadon.KY;
-                                    _dontu.Nam = _hoadon.NAM;
-                                }
+                                if (MessageBox.Show("Danh Bộ " + txtDanhBo.Text.Trim().Replace(" ", "") + " đã nhận đơn trong ngày hôm nay rồi\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                                    return;
                             }
                             if (txtSoNK.Text.Trim() != "")
                             {
                                 _dontu.SoNK = int.Parse(txtSoNK.Text.Trim());
                                 _dontu.HieuLucKy = txtHieuLucKy.Text.Trim();
                             }
-                            ///
-                            _dontu.ID_NhomDon = "";
-                            _dontu.NgayHenGiaiQuyet = "Trong thời gian 5 ngày làm việc kể từ ngày nhận hồ sơ, Công ty sẽ giải quyết theo quy định hiện hành";
-                            for (int i = 0; i < chkcmbDieuChinh.Properties.Items.Count; i++)
-                                if (chkcmbDieuChinh.Properties.Items[i].CheckState == CheckState.Checked)
-                                {
-                                    if (_dontu.ID_NhomDon == "")
-                                        _dontu.ID_NhomDon = chkcmbDieuChinh.Properties.Items[i].Value.ToString();
-                                    else
-                                        _dontu.ID_NhomDon += ";" + chkcmbDieuChinh.Properties.Items[i].Value.ToString();
-                                    if (chkcmbDieuChinh.Properties.Items[i].Value.ToString() == "4")
-                                        _dontu.NgayHenGiaiQuyet = "Quý khách nhận lại Hợp Đồng vào ngày " + GetToDate(_dontu.CreateDate.Value, 30).ToString("dd/MM/yyyy") + ". Quá thời hạn trên, Khách Hàng không liên hệ nhận Hợp Đồng; mọi Khiếu Nại về sau sẽ không được giải quyết";
-                                }
-                            for (int i = 0; i < chkcmbKhieuNai.Properties.Items.Count; i++)
-                                if (chkcmbKhieuNai.Properties.Items[i].CheckState == CheckState.Checked)
-                                {
-                                    if (_dontu.ID_NhomDon == "")
-                                        _dontu.ID_NhomDon = chkcmbKhieuNai.Properties.Items[i].Value.ToString();
-                                    else
-                                        _dontu.ID_NhomDon += ";" + chkcmbKhieuNai.Properties.Items[i].Value.ToString();
-                                }
-                            for (int i = 0; i < chkcmbDHN.Properties.Items.Count; i++)
-                                if (chkcmbDHN.Properties.Items[i].CheckState == CheckState.Checked)
-                                {
-                                    if (_dontu.ID_NhomDon == "")
-                                        _dontu.ID_NhomDon = chkcmbDHN.Properties.Items[i].Value.ToString();
-                                    else
-                                        _dontu.ID_NhomDon += ";" + chkcmbDHN.Properties.Items[i].Value.ToString();
-                                }
-                            _dontu.Name_NhomDon = txtNoiDung.Text.Trim();
-                            if (txtVanDeKhac.Text.Trim() != "")
-                                _dontu.VanDeKhac = txtVanDeKhac.Text.Trim();
-                            ///
-                            if (chkCT_HoaDon.Checked)
-                                _dontu.CT_HoaDon = true;
-                            else
-                                _dontu.CT_HoaDon = false;
-
-                            if (chkCT_HK_KT3.Checked)
-                                _dontu.CT_HK_KT3 = true;
-                            else
-                                _dontu.CT_HK_KT3 = false;
-
-                            if (chkCT_STT_GXNTT.Checked)
-                                _dontu.CT_STT_GXNTT = true;
-                            else
-                                _dontu.CT_STT_GXNTT = false;
-
-                            if (chkCT_HDTN_CQN.Checked)
-                                _dontu.CT_HDTN_CQN = true;
-                            else
-                                _dontu.CT_HDTN_CQN = false;
-
-                            if (chkCT_GC_SDSN.Checked)
-                                _dontu.CT_GC_SDSN = true;
-                            else
-                                _dontu.CT_GC_SDSN = false;
-
-                            if (chkCT_GXN2SN.Checked)
-                                _dontu.CT_GXN2SN = true;
-                            else
-                                _dontu.CT_GXN2SN = false;
-
-                            if (chkCT_GDKKD.Checked)
-                                _dontu.CT_GDKKD = true;
-                            else
-                                _dontu.CT_GDKKD = false;
-
-                            if (chkCT_GCNDTDHN.Checked)
-                                _dontu.CT_GCNDTDHN = true;
-                            else
-                                _dontu.CT_GCNDTDHN = false;
-                            ///
-                            if (_cDonTu.Sua(_dontu))
+                            _dontu.DonTu_ChiTiets.SingleOrDefault().DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
+                            _dontu.DonTu_ChiTiets.SingleOrDefault().HopDong = txtHopDong.Text.Trim();
+                            _dontu.DonTu_ChiTiets.SingleOrDefault().DienThoai = txtDienThoai.Text.Trim();
+                            _dontu.DonTu_ChiTiets.SingleOrDefault().HoTen = txtHoTen.Text.Trim();
+                            _dontu.DonTu_ChiTiets.SingleOrDefault().DiaChi = txtDiaChi.Text.Trim();
+                            if (txtGiaBieu.Text.Trim() != "")
+                                _dontu.DonTu_ChiTiets.SingleOrDefault().GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
+                            if (txtDinhMuc.Text.Trim() != "")
+                                _dontu.DonTu_ChiTiets.SingleOrDefault().DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
+                            if (_hoadon != null && _hoadon.DANHBA != txtDanhBo.Text.Trim().Replace(" ", ""))
                             {
-                                Clear();
-                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                _dontu.DonTu_ChiTiets.SingleOrDefault().MLT = _hoadon.MALOTRINH;
+                                _dontu.DonTu_ChiTiets.SingleOrDefault().Dot = _hoadon.DOT;
+                                _dontu.DonTu_ChiTiets.SingleOrDefault().Ky = _hoadon.KY;
+                                _dontu.DonTu_ChiTiets.SingleOrDefault().Nam = _hoadon.NAM;
+                                _dontu.DonTu_ChiTiets.SingleOrDefault().Quan = _hoadon.Quan;
+                                _dontu.DonTu_ChiTiets.SingleOrDefault().Phuong = _hoadon.Phuong;
                             }
+                        }
+                        else
+                        {
+                            _dontu.SoCongVan = txtSoCongVan.Text.Trim();
+                            _dontu.TongDB = int.Parse(txtTongDB.Text.Trim());
+                        }
+                        ///
+                        _dontu.ID_NhomDon = "";
+                        _dontu.NgayHenGiaiQuyet = "Trong thời gian 5 ngày làm việc kể từ ngày nhận hồ sơ, Công ty sẽ giải quyết theo quy định hiện hành";
+                        for (int i = 0; i < chkcmbDieuChinh.Properties.Items.Count; i++)
+                            if (chkcmbDieuChinh.Properties.Items[i].CheckState == CheckState.Checked)
+                            {
+                                if (_dontu.ID_NhomDon == "")
+                                    _dontu.ID_NhomDon = chkcmbDieuChinh.Properties.Items[i].Value.ToString();
+                                else
+                                    _dontu.ID_NhomDon += ";" + chkcmbDieuChinh.Properties.Items[i].Value.ToString();
+                                if (chkcmbDieuChinh.Properties.Items[i].Value.ToString() == "4")
+                                    _dontu.NgayHenGiaiQuyet = "Quý khách nhận lại Hợp Đồng vào ngày " + GetToDate(_dontu.CreateDate.Value, 30).ToString("dd/MM/yyyy") + ". Quá thời hạn trên, Khách Hàng không liên hệ nhận Hợp Đồng; mọi Khiếu Nại về sau sẽ không được giải quyết";
+                            }
+                        for (int i = 0; i < chkcmbKhieuNai.Properties.Items.Count; i++)
+                            if (chkcmbKhieuNai.Properties.Items[i].CheckState == CheckState.Checked)
+                            {
+                                if (_dontu.ID_NhomDon == "")
+                                    _dontu.ID_NhomDon = chkcmbKhieuNai.Properties.Items[i].Value.ToString();
+                                else
+                                    _dontu.ID_NhomDon += ";" + chkcmbKhieuNai.Properties.Items[i].Value.ToString();
+                            }
+                        for (int i = 0; i < chkcmbDHN.Properties.Items.Count; i++)
+                            if (chkcmbDHN.Properties.Items[i].CheckState == CheckState.Checked)
+                            {
+                                if (_dontu.ID_NhomDon == "")
+                                    _dontu.ID_NhomDon = chkcmbDHN.Properties.Items[i].Value.ToString();
+                                else
+                                    _dontu.ID_NhomDon += ";" + chkcmbDHN.Properties.Items[i].Value.ToString();
+                            }
+                        _dontu.Name_NhomDon = txtNoiDung.Text.Trim();
+                        if (txtVanDeKhac.Text.Trim() != "")
+                            _dontu.VanDeKhac = txtVanDeKhac.Text.Trim();
+                        ///
+                        if (chkCT_HoaDon.Checked)
+                            _dontu.CT_HoaDon = true;
+                        else
+                            _dontu.CT_HoaDon = false;
+
+                        if (chkCT_HK_KT3.Checked)
+                            _dontu.CT_HK_KT3 = true;
+                        else
+                            _dontu.CT_HK_KT3 = false;
+
+                        if (chkCT_STT_GXNTT.Checked)
+                            _dontu.CT_STT_GXNTT = true;
+                        else
+                            _dontu.CT_STT_GXNTT = false;
+
+                        if (chkCT_HDTN_CQN.Checked)
+                            _dontu.CT_HDTN_CQN = true;
+                        else
+                            _dontu.CT_HDTN_CQN = false;
+
+                        if (chkCT_GC_SDSN.Checked)
+                            _dontu.CT_GC_SDSN = true;
+                        else
+                            _dontu.CT_GC_SDSN = false;
+
+                        if (chkCT_GXN2SN.Checked)
+                            _dontu.CT_GXN2SN = true;
+                        else
+                            _dontu.CT_GXN2SN = false;
+
+                        if (chkCT_GDKKD.Checked)
+                            _dontu.CT_GDKKD = true;
+                        else
+                            _dontu.CT_GDKKD = false;
+
+                        if (chkCT_GCNDTDHN.Checked)
+                            _dontu.CT_GCNDTDHN = true;
+                        else
+                            _dontu.CT_GCNDTDHN = false;
+                        ///
+                        if (_cDonTu.Sua(_dontu))
+                        {
+                            Clear();
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }
@@ -614,12 +590,6 @@ namespace KTKS_DonKH.GUI.DonTu
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void txtSoNK_Leave(object sender, EventArgs e)
-        {
-            if (txtSoNK.Text.Trim() != "")
-                txtDM.Text = (int.Parse(txtSoNK.Text.Trim()) * 4).ToString();
-        }
-
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (txtDanhBo.Text.Trim().Replace(" ", "").Length == 11 && e.KeyChar == 13)
@@ -638,9 +608,11 @@ namespace KTKS_DonKH.GUI.DonTu
         {
             if (txtMaDon.Text.Trim() != "" && e.KeyChar == 13)
             {
-                if (_cDonTu.CheckExist(int.Parse(txtMaDon.Text.Trim())) == true)
+                int MaDon = int.Parse(txtMaDon.Text.Trim());
+                Clear();
+                _dontu = _cDonTu.Get(MaDon);
+                if (_dontu != null)
                 {
-                    _dontu = _cDonTu.Get(int.Parse(txtMaDon.Text.Trim()));
                     LoadDonTu(_dontu);
                 }
                 else
@@ -818,6 +790,20 @@ namespace KTKS_DonKH.GUI.DonTu
             using (SolidBrush b = new SolidBrush(dgvDanhBo.RowHeadersDefaultCellStyle.ForeColor))
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void txtSoNK_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSoNK.Text.Trim() != "")
+                txtDM.Text = (int.Parse(txtSoNK.Text.Trim()) * 4).ToString();
+        }
+
+        private void txtSoNK_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }

@@ -22,8 +22,6 @@ namespace KTKS_DonKH.GUI.DonTu
         CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
 
         LinQ.DonTu _dontu = null;
-        DataSet _dsNoiChuyen = new DataSet("NoiChuyen");
-        bool _flagFirst = false;
 
         public frmCapNhatDonTu()
         {
@@ -32,73 +30,62 @@ namespace KTKS_DonKH.GUI.DonTu
 
         private void frmCapNhatDonTu_Load(object sender, EventArgs e)
         {
+            dgvDanhBo.AutoGenerateColumns = false;
             dgvLichSuDonTu.AutoGenerateColumns = false;
 
-            cmbNoiChuyen.DataSource = _cNoiChuyen.GetDS("DonTu");
-            cmbNoiChuyen.DisplayMember = "Name";
+            cmbNoiChuyen.DataSource = _cNoiChuyen.GetDS("DonTuChuyen");
             cmbNoiChuyen.ValueMember = "ID";
+            cmbNoiChuyen.DisplayMember = "Name";
             cmbNoiChuyen.SelectedIndex = -1;
 
-            _flagFirst = true;
+            chkcmbNoiNhan.Properties.DataSource = _cNoiChuyen.GetDS("DonTuNhan");
+            chkcmbNoiNhan.Properties.ValueMember = "ID";
+            chkcmbNoiNhan.Properties.DisplayMember = "Name";
+            //chkcmbNoiNhan.Properties.DropDownRows = dt.Rows.Count + 1;
 
-            DataTable dt = new DataTable();
-            dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_ThuKy("TKH");
-            dt.TableName = "2";//Tổ Khách Hàng
-            _dsNoiChuyen.Tables.Add(dt);
-            ///
-            dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_ThuKy("TXL");
-            dt.TableName = "3";//Tổ Xử Lý
-            _dsNoiChuyen.Tables.Add(dt);
-            ///
-            dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_ThuKy("TBC");
-            dt.TableName = "4";//Tổ Bấm Chì
-            _dsNoiChuyen.Tables.Add(dt);
-            ///
-            dt = new DataTable();
-            dt = _cTaiKhoan.GetDS_ThuKy("TVP");
-            dt.TableName = "5";//Tổ Văn Phòng
-            _dsNoiChuyen.Tables.Add(dt);
-            ///
-            dt = new DataTable();
-            dt = _cPhongBanDoi.GetDS();
-            dt.TableName = "6";//Phòng Ban Đội Khác
-            _dsNoiChuyen.Tables.Add(dt);
         }
 
         public void LoadDonTu(LinQ.DonTu entity)
         {
-            if (entity.SoCongVan != null)
+            try
             {
-                txtSoCongVan.Text = entity.SoCongVan;
-                txtTongDB.Text = entity.TongDB.ToString();
+                if (entity.SoCongVan == null)
+                {
+                    tabControl.SelectTab("tabTTKH");
+                    if (entity.SoNK != null)
+                    {
+                        txtSoNK.Text = entity.SoNK.Value.ToString();
+                        txtHieuLucKy.Text = entity.HieuLucKy;
+                    }
+                    if (entity.DonTu_ChiTiets.SingleOrDefault().DanhBo.Length == 11)
+                        txtDanhBo.Text = entity.DonTu_ChiTiets.SingleOrDefault().DanhBo.Insert(7, " ").Insert(4, " ");
+                    txtHopDong.Text = entity.DonTu_ChiTiets.SingleOrDefault().HopDong;
+                    txtDienThoai.Text = entity.DonTu_ChiTiets.SingleOrDefault().DienThoai;
+                    txtHoTen.Text = entity.DonTu_ChiTiets.SingleOrDefault().HoTen;
+                    txtDiaChi.Text = entity.DonTu_ChiTiets.SingleOrDefault().DiaChi;
+                    if (entity.GiaBieu != null)
+                        txtGiaBieu.Text = entity.DonTu_ChiTiets.SingleOrDefault().GiaBieu.Value.ToString();
+                    if (entity.DinhMuc != null)
+                        txtDinhMuc.Text = entity.DonTu_ChiTiets.SingleOrDefault().DinhMuc.Value.ToString();
+                }
+                else
+                {
+                    tabControl.SelectTab("tabCongVan");
+                    txtSoCongVan.Text = entity.SoCongVan;
+                    txtTongDB.Text = entity.TongDB.ToString();
+
+                    dgvDanhBo.DataSource = entity.DonTu_ChiTiets.ToList();
+                }
+                txtMaDon.Text = entity.MaDon.ToString();
+                dateCreateDate.Value = entity.CreateDate.Value;
+
+                txtNoiDung.Text = entity.Name_NhomDon;
+                txtVanDeKhac.Text = entity.VanDeKhac;
             }
-            dateCreateDate.Value = entity.CreateDate.Value;
-
-            //chkcmbDieuChinh.SetEditValue(entity.ID_NhomDon);
-            //chkcmbKhieuNai.SetEditValue(entity.ID_NhomDon);
-            //chkcmbDHN.SetEditValue(entity.ID_NhomDon);
-
-            //if (entity.SoNK != null)
-            //{
-            //    txtSoNK.Text = entity.SoNK.Value.ToString();
-            //    txtHieuLucKy.Text = entity.HieuLucKy;
-            //}
-            txtNoiDung.Text = entity.Name_NhomDon;
-            txtVanDeKhac.Text = entity.VanDeKhac;
-            if (entity.DanhBo.Length == 11)
-                txtDanhBo.Text = entity.DanhBo.Insert(7, " ").Insert(4, " ");
-            txtHopDong.Text = entity.HopDong;
-            txtDienThoai.Text = entity.DienThoai;
-            txtHoTen.Text = entity.HoTen;
-            txtDiaChi.Text = entity.DiaChi;
-            if (entity.GiaBieu != null)
-                txtGiaBieu.Text = entity.GiaBieu.Value.ToString();
-            if (entity.DinhMuc != null)
-                txtDinhMuc.Text = entity.DinhMuc.Value.ToString();
-            dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("", entity.MaDon);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void Clear()
@@ -148,47 +135,6 @@ namespace KTKS_DonKH.GUI.DonTu
                 {
                     MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Clear();
-                }
-            }
-        }
-
-        private void cmbNoiChuyen_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (_flagFirst == true)
-            {
-                if (cmbNoiChuyen.SelectedIndex != -1)
-                {
-                    switch (cmbNoiChuyen.SelectedValue.ToString())
-                    {
-                        case "2"://Tổ Khách Hàng
-                            chkcmbNoiNhan.Properties.DataSource = _dsNoiChuyen.Tables["2"];
-                            chkcmbNoiNhan.Properties.DisplayMember = "HoTen";
-                            chkcmbNoiNhan.Properties.ValueMember = "MaU";
-                            break;
-                        case "3"://Tổ Xử Lý
-                            chkcmbNoiNhan.Properties.DataSource = _dsNoiChuyen.Tables["3"];
-                            chkcmbNoiNhan.Properties.DisplayMember = "HoTen";
-                            chkcmbNoiNhan.Properties.ValueMember = "MaU";
-                            break;
-                        case "4"://Tổ Bấm Chì
-                            chkcmbNoiNhan.Properties.DataSource = _dsNoiChuyen.Tables["4"];
-                            chkcmbNoiNhan.Properties.DisplayMember = "HoTen";
-                            chkcmbNoiNhan.Properties.ValueMember = "MaU";
-                            break;
-                        case "5"://Tổ Văn Phòng
-                            chkcmbNoiNhan.Properties.DataSource = _dsNoiChuyen.Tables["5"];
-                            chkcmbNoiNhan.Properties.DisplayMember = "HoTen";
-                            chkcmbNoiNhan.Properties.ValueMember = "MaU";
-                            break;
-                        case "6"://Phòng Ban Đội Khác
-                            chkcmbNoiNhan.Properties.DataSource = _dsNoiChuyen.Tables["6"];
-                            chkcmbNoiNhan.Properties.DisplayMember = "Name";
-                            chkcmbNoiNhan.Properties.ValueMember = "ID";
-                            break;
-                        default:
-                            chkcmbNoiNhan.Properties.DataSource = null;
-                            break;
-                    }
                 }
             }
         }
@@ -295,11 +241,44 @@ namespace KTKS_DonKH.GUI.DonTu
                         entity.NgayHoanLenh = DateTime.Now;
                     else
                         entity.NgayHoanLenh = null;
-                    if(_cLichSuDonTu.Sua(entity))
+                    if (_cLichSuDonTu.Sua(entity))
                         MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void txtSoNK_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSoNK.Text.Trim() != "")
+                txtDM.Text = (int.Parse(txtSoNK.Text.Trim()) * 4).ToString();
+        }
+
+        private void txtSoNK_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void chkcmbNoiNhan_EditValueChanged(object sender, EventArgs e)
+        {
+            for (int i = 0; i < chkcmbNoiNhan.Properties.Items.Count; i++)
+                if (chkcmbNoiNhan.Properties.Items[i].CheckState == CheckState.Checked && chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "1")
+                {
+                    DataTable dt = new DataTable();
+                    
+                    //if(CTaiKhoan.ToKH==true)
+                        dt = _cTaiKhoan.GetDS_KTXM("TKH");
+                    //else if(CTaiKhoan.ToKH==true)
+                    //    dt = _cTaiKhoan.GetDS_KTXM("TXL");
+                    //else if(CTaiKhoan.ToKH==true)
+                    //    dt = _cTaiKhoan.GetDS_KTXM("TBC");
+                    chkcmbNoiNhanKTXM.Properties.DataSource = dt;
+                    chkcmbNoiNhanKTXM.Properties.ValueMember = "MaU";
+                    chkcmbNoiNhanKTXM.Properties.DisplayMember = "HoTen";
+                }
         }
     }
 }
