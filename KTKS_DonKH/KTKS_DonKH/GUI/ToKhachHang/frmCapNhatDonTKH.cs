@@ -688,19 +688,19 @@ namespace KTKS_DonKH.GUI.ToKhachHang
 
         private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
-            {
-                if (_cDonTu.CheckExist(int.Parse(txtMaDon.Text.Trim())) == true)
-                {
-                    _dontu = _cDonTu.Get(int.Parse(txtMaDon.Text.Trim()));
-                    LoadDonTu(_dontu);
-                }
-                else
-                {
-                    MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Clear();
-                }
-            }
+            //if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
+            //{
+            //    if (_cDonTu.CheckExist(int.Parse(txtMaDon.Text.Trim())) == true)
+            //    {
+            //        _dontu = _cDonTu.getDonTu(int.Parse(txtMaDon.Text.Trim()));
+            //        LoadDonTu(_dontu);
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        Clear();
+            //    }
+            //}
         }
 
         private void dgvLichSuDonTu_CellContentClick(object sender, DataGridViewCellEventArgs e)

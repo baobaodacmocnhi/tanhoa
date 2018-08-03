@@ -27,6 +27,7 @@ namespace KTKS_DonKH.GUI.BamChi
         CDocSo _cDocSo = new CDocSo();
         CTrangThaiBamChi _cTrangThaiBamChi = new CTrangThaiBamChi();
 
+        DonTu_ChiTiet _dontu = null;
         DonKH _dontkh = null;
         DonTXL _dontxl = null;
         DonTBC _dontbc = null;
@@ -107,7 +108,6 @@ namespace KTKS_DonKH.GUI.BamChi
                 _dontbc = _cDonTBC.Get(ctbamchi.BamChi.MaDonTBC.Value);
                 txtMaDonCu.Text = "TBC" + ctbamchi.BamChi.MaDonTBC.ToString().Insert(ctbamchi.BamChi.MaDonTBC.ToString().Length - 2, "-");
             }
-            txtMaDonMoi.Text = ctbamchi.BamChi.MaDonMoi;
             txtDanhBo.Text = ctbamchi.DanhBo;
             txtHopDong.Text = ctbamchi.HopDong;
             txtHoTen.Text = ctbamchi.HoTen;
@@ -168,6 +168,7 @@ namespace KTKS_DonKH.GUI.BamChi
 
             _MaCTBamChi = -1;
             _ctbamchi = null;
+            _dontu = null;
             _dontkh = null;
             _dontxl = null;
             _dontbc = null;
@@ -444,7 +445,6 @@ namespace KTKS_DonKH.GUI.BamChi
                         {
                             LinQ.BamChi bamchi = new LinQ.BamChi();
                             bamchi.MaDon = _dontkh.MaDon;
-                            bamchi.MaDonMoi = _dontkh.MaDonMoi;
                             _cBamChi.Them(bamchi);
                         }
                         if (txtDanhBo.Text.Trim() != "" && _cBamChi.CheckExist_CTBamChi("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim(), dateBamChi.Value, cmbTrangThaiBC.SelectedValue.ToString()))
@@ -461,7 +461,6 @@ namespace KTKS_DonKH.GUI.BamChi
                             {
                                 LinQ.BamChi bamchi = new LinQ.BamChi();
                                 bamchi.MaDonTXL = _dontxl.MaDon;
-                                bamchi.MaDonMoi = _dontxl.MaDonMoi;
                                 _cBamChi.Them(bamchi);
                             }
                             if (txtDanhBo.Text.Trim() != "" && _cBamChi.CheckExist_CTBamChi("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim(), dateBamChi.Value, cmbTrangThaiBC.SelectedValue.ToString()))
@@ -478,7 +477,6 @@ namespace KTKS_DonKH.GUI.BamChi
                                 {
                                     LinQ.BamChi bamchi = new LinQ.BamChi();
                                     bamchi.MaDonTBC = _dontbc.MaDon;
-                                    bamchi.MaDonMoi = _dontbc.MaDonMoi;
                                     _cBamChi.Them(bamchi);
                                 }
                                 if (txtDanhBo.Text.Trim() != "" && _cBamChi.CheckExist_CTBamChi("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim(), dateBamChi.Value, cmbTrangThaiBC.SelectedValue.ToString()))

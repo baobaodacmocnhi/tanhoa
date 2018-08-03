@@ -266,7 +266,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     LinQ.DonTu entity = new LinQ.DonTu();
                     if (string.IsNullOrEmpty(txtSoCongVan.Text.Trim()) == true)
                     {
-                        if (_cDonTu.CheckExist(txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now) == true)
+                        if (_cDonTu.checkExist_ChiTiet(txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now) == true)
                         {
                             if (MessageBox.Show("Danh Bộ " + txtDanhBo.Text.Trim().Replace(" ", "") + " đã nhận đơn trong ngày hôm nay rồi\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                                 return;
@@ -312,7 +312,7 @@ namespace KTKS_DonKH.GUI.DonTu
                             if (item.Cells["DanhBo"].Value != null || item.Cells["HoTen"].Value != null || item.Cells["DiaChi"].Value != null)
                             {
                                 if (item.Cells["DanhBo"].Value != null)
-                                    if (_cDonTu.CheckExist(item.Cells["DanhBo"].Value.ToString(), DateTime.Now) == true)
+                                    if (_cDonTu.checkExist_ChiTiet(item.Cells["DanhBo"].Value.ToString(), DateTime.Now) == true)
                                     {
                                         if (MessageBox.Show("Danh Bộ " + item.Cells["DanhBo"].Value.ToString() + " đã nhận đơn trong ngày hôm nay rồi\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                                             return;
@@ -443,7 +443,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     {
                         if (_dontu.SoCongVan == null)
                         {
-                            if (_cDonTu.CheckExist(txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now) == true)
+                            if (_cDonTu.checkExist_ChiTiet(txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now) == true)
                             {
                                 if (MessageBox.Show("Danh Bộ " + txtDanhBo.Text.Trim().Replace(" ", "") + " đã nhận đơn trong ngày hôm nay rồi\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                                     return;
@@ -610,7 +610,7 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 int MaDon = int.Parse(txtMaDon.Text.Trim());
                 Clear();
-                _dontu = _cDonTu.Get(MaDon);
+                _dontu = _cDonTu.getDonTu(MaDon);
                 if (_dontu != null)
                 {
                     LoadDonTu(_dontu);

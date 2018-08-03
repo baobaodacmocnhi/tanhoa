@@ -372,7 +372,6 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         {
                             TTTL tttl = new TTTL();
                             tttl.MaDon = _dontkh.MaDon;
-                            tttl.MaDonMoi = _dontkh.MaDonMoi;
                             _cTTTL.Them(tttl);
                         }
                         if (_cTTTL.CheckExist_CT("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim(), DateTime.Now)==true)
@@ -389,7 +388,6 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             {
                                 TTTL tttl = new TTTL();
                                 tttl.MaDonTXL = _dontxl.MaDon;
-                                tttl.MaDonMoi = _dontxl.MaDonMoi;
                                 _cTTTL.Them(tttl);
                             }
                             if (_cTTTL.CheckExist_CT("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim(), DateTime.Now)==true)
@@ -406,7 +404,6 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 {
                                     TTTL tttl = new TTTL();
                                     tttl.MaDonTBC = _dontbc.MaDon;
-                                    tttl.MaDonMoi = _dontbc.MaDonMoi;
                                     _cTTTL.Them(tttl);
                                 }
                                 if (_cTTTL.CheckExist_CT("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim(), DateTime.Now)==true)

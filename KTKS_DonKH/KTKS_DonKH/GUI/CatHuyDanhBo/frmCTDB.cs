@@ -145,7 +145,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         _dontbc = _cDonTBC.Get(ctctdb.CHDB.MaDonTBC.Value);
                         txtMaDonCu.Text = "TBC" + ctctdb.CHDB.MaDonTBC.ToString().Insert(ctctdb.CHDB.MaDonTBC.ToString().Length - 2, "-");
                     }
-            txtMaDonMoi.Text = ctctdb.CHDB.MaDonMoi;
             txtMaThongBao.Text = ctctdb.MaCTCTDB.ToString().Insert(ctctdb.MaCTCTDB.ToString().Length - 2, "-");
             txtTCHC.Text = ctctdb.TCHC;
             ///

@@ -84,39 +84,51 @@ namespace KTKS_DonKH.GUI.ThuMoi
 
         private void btnIn_Click(object sender, EventArgs e)
         {
-            //if (MessageBox.Show("Bạn chắc chắn In những Thư trên?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Bạn chắc chắn In những Thư trên?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                for (int i = 0; i < dgvDSThu.Rows.Count; i++)
-                    if (dgvDSThu["In", i].Value != null && bool.Parse(dgvDSThu["In", i].Value.ToString()) == true)
-                    {
-                        DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
+                PrintDialog printDialog = new PrintDialog();
+                if (printDialog.ShowDialog() == DialogResult.OK)
+                {
+                    DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                    for (int i = 0; i < dgvDSThu.Rows.Count; i++)
+                        if (dgvDSThu["In", i].Value != null && bool.Parse(dgvDSThu["In", i].Value.ToString()) == true)
+                        {
+                            DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
 
-                        dr["SoPhieu"] = dgvDSThu["MaDon", i].Value.ToString().Insert(dgvDSThu["MaDon", i].Value.ToString().Length - 2, "-");
+                            dr["SoPhieu"] = dgvDSThu["MaDon", i].Value.ToString().Insert(dgvDSThu["MaDon", i].Value.ToString().Length - 2, "-");
 
-                        dr["HoTen"] = dgvDSThu["HoTen", i].Value.ToString();
-                        dr["DiaChi"] = dgvDSThu["DiaChi", i].Value.ToString();
-                        if (!string.IsNullOrEmpty(dgvDSThu["DanhBo", i].Value.ToString()) && dgvDSThu["DanhBo", i].Value.ToString().Length == 11)
-                            dr["DanhBo"] = dgvDSThu["DanhBo", i].Value.ToString().Insert(7, " ").Insert(4, " ");
-                        dr["GiaBieu"] = dgvDSThu["GiaBieu", i].Value.ToString();
-                        dr["DinhMuc"] = dgvDSThu["DinhMuc", i].Value.ToString();
-                        dr["CanCu"] = dgvDSThu["CanCu", i].Value.ToString();
-                        dr["VaoLuc"] = dgvDSThu["VaoLuc", i].Value.ToString();
-                        dr["VeViec"] = dgvDSThu["VeViec", i].Value.ToString();
-                        dr["Lan"] = dgvDSThu["Lan", i].Value.ToString();
+                            dr["HoTen"] = dgvDSThu["HoTen", i].Value.ToString();
+                            dr["DiaChi"] = dgvDSThu["DiaChi", i].Value.ToString();
+                            if (!string.IsNullOrEmpty(dgvDSThu["DanhBo", i].Value.ToString()) && dgvDSThu["DanhBo", i].Value.ToString().Length == 11)
+                                dr["DanhBo"] = dgvDSThu["DanhBo", i].Value.ToString().Insert(7, " ").Insert(4, " ");
+                            dr["GiaBieu"] = dgvDSThu["GiaBieu", i].Value.ToString();
+                            dr["DinhMuc"] = dgvDSThu["DinhMuc", i].Value.ToString();
+                            dr["CanCu"] = dgvDSThu["CanCu", i].Value.ToString();
+                            dr["VaoLuc"] = dgvDSThu["VaoLuc", i].Value.ToString();
+                            dr["VeViec"] = dgvDSThu["VeViec", i].Value.ToString();
+                            dr["Lan"] = dgvDSThu["Lan", i].Value.ToString();
 
-                        dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
-                    }
-                ReportDocument rpt = new ReportDocument();
-                if (radDutChi.Checked == true)
-                    rpt = new rptThuMoiDutChi();
-                else
-                    if (radCDDM.Checked == true)
-                        rpt = new rptThuMoiChuyenDe();
-                rpt.SetDataSource(dsBaoCao);
+                            dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
 
-                frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                frm.Show();
+                            ReportDocument rpt = new ReportDocument();
+                            if (radDutChi.Checked == true)
+                                rpt = new rptThuMoiDutChi();
+                            else
+                                if (radCDDM.Checked == true)
+                                    rpt = new rptThuMoiChuyenDe();
+                            rpt.SetDataSource(dsBaoCao);
+
+                            printDialog.AllowSomePages = true;
+                            printDialog.ShowHelp = true;
+
+                            //rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                            //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                            rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+                            rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
+                            rpt.Clone();
+                            rpt.Dispose();
+                        }
+                }
             }
         }
 
@@ -148,6 +160,29 @@ namespace KTKS_DonKH.GUI.ThuMoi
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
             }
+        }
+
+        private void btnInDS_Click(object sender, EventArgs e)
+        {
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            foreach (DataGridViewRow item in dgvDSThu.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["DanhSach"].NewRow();
+
+                dr["LoaiBaoCao"] = "GỬI THƯ MỜI";
+                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                if (string.IsNullOrEmpty(item.Cells["DanhBo"].Value.ToString())==false && item.Cells["DanhBo"].Value.ToString().Length == 11)
+                    dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
+                dr["HoTen"] = item.Cells["HoTen"].Value.ToString();
+                dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
+                
+                dsBaoCao.Tables["DanhSach"].Rows.Add(dr);
+            }
+            rptDanhSach rpt = new rptDanhSach();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.Show();
         }
     }
 }

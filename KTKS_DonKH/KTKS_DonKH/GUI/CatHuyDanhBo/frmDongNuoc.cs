@@ -93,7 +93,6 @@ namespace KTKS_DonKH.GUI.DongNuoc
                         txtMaDonCu.Text = "TBC" + ctdongnuoc.DongNuoc.MaDonTBC.ToString().Insert(ctdongnuoc.DongNuoc.MaDonTBC.ToString().Length - 2, "-");
                         dgvDSBamChi.DataSource = _cBamChi.GetDS("TBC", ctdongnuoc.DongNuoc.MaDonTBC.Value, ctdongnuoc.DanhBo);
                     }
-            txtMaDonMoi.Text = ctdongnuoc.DongNuoc.MaDonMoi;
             txtMaThongBao_DN.Text = ctdongnuoc.MaCTDN.ToString().Insert(ctdongnuoc.MaCTDN.ToString().Length - 2, "-");
 
             if (!string.IsNullOrEmpty(ctdongnuoc.MaCTMN.ToString()))
@@ -361,7 +360,6 @@ namespace KTKS_DonKH.GUI.DongNuoc
                             {
                                 LinQ.DongNuoc dongnuoc = new LinQ.DongNuoc();
                                 dongnuoc.MaDon = _dontkh.MaDon;
-                                dongnuoc.MaDonMoi = _dontkh.MaDonMoi;
                                 _cDongNuoc.Them(dongnuoc);
                             }
                             if (_cDongNuoc.CheckExist_CT("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim()))
@@ -378,7 +376,6 @@ namespace KTKS_DonKH.GUI.DongNuoc
                                 {
                                     LinQ.DongNuoc dongnuoc = new LinQ.DongNuoc();
                                     dongnuoc.MaDonTXL = _dontxl.MaDon;
-                                    dongnuoc.MaDonMoi = _dontxl.MaDonMoi;
                                     _cDongNuoc.Them(dongnuoc);
                                 }
                                 if (_cDongNuoc.CheckExist_CT("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim()))
@@ -395,7 +392,6 @@ namespace KTKS_DonKH.GUI.DongNuoc
                                     {
                                         LinQ.DongNuoc dongnuoc = new LinQ.DongNuoc();
                                         dongnuoc.MaDonTBC = _dontbc.MaDon;
-                                        dongnuoc.MaDonMoi = _dontbc.MaDonMoi;
                                         _cDongNuoc.Them(dongnuoc);
                                     }
                                     if (_cDongNuoc.CheckExist_CT("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim()))

@@ -748,6 +748,7 @@
             this.label15.Size = new System.Drawing.Size(57, 16);
             this.label15.TabIndex = 99;
             this.label15.Text = "Mã Đơn:";
+            this.label15.Visible = false;
             // 
             // txtMaDon
             // 
@@ -756,6 +757,7 @@
             this.txtMaDon.Size = new System.Drawing.Size(85, 22);
             this.txtMaDon.TabIndex = 98;
             this.txtMaDon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtMaDon.Visible = false;
             this.txtMaDon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDon_KeyPress);
             // 
             // label16
@@ -766,6 +768,7 @@
             this.label16.Size = new System.Drawing.Size(102, 16);
             this.label16.TabIndex = 101;
             this.label16.Text = "Mã Đơn Tổ Mới:";
+            this.label16.Visible = false;
             // 
             // txtMaDonToMoi
             // 
@@ -774,6 +777,7 @@
             this.txtMaDonToMoi.Size = new System.Drawing.Size(100, 22);
             this.txtMaDonToMoi.TabIndex = 100;
             this.txtMaDonToMoi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtMaDonToMoi.Visible = false;
             // 
             // frmNhanDonTXL
             // 

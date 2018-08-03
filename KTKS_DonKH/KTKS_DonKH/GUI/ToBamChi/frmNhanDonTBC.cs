@@ -623,16 +623,16 @@ namespace KTKS_DonKH.GUI.ToBamChi
         {
             if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
             {
-                if (_cDonTu.CheckExist(int.Parse(txtMaDon.Text.Trim())) == true)
-                {
-                    _dontu = _cDonTu.Get(int.Parse(txtMaDon.Text.Trim()));
-                    LoadDonTu(_dontu);
-                }
-                else
-                {
-                    MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Clear();
-                }
+                //if (_cDonTu.CheckExist(int.Parse(txtMaDon.Text.Trim())) == true)
+                //{
+                //    _dontu = _cDonTu.getDonTu(int.Parse(txtMaDon.Text.Trim()));
+                //    LoadDonTu(_dontu);
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    Clear();
+                //}
             }
         }
         

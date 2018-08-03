@@ -93,21 +93,21 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 case "Mã Đơn":
                     if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
-                        dgvDSDonTu.DataSource = _cDonTu.GetDS(int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(txtNoiDungTimKiem2.Text.Trim()));
+                        dgvDSDonTu.DataSource = _cDonTu.getDS(int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(txtNoiDungTimKiem2.Text.Trim()));
                     else
                         if (txtNoiDungTimKiem.Text.Trim() != "")
-                            dgvDSDonTu.DataSource = _cDonTu.GetDS(int.Parse(txtNoiDungTimKiem.Text.Trim()));
+                            dgvDSDonTu.DataSource = _cDonTu.getDS(int.Parse(txtNoiDungTimKiem.Text.Trim()));
                     break;
                 case "Danh Bộ":
                     if (txtNoiDungTimKiem.Text.Trim() != "")
-                        dgvDSDonTu.DataSource = _cDonTu.GetDSByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ",""));
+                        dgvDSDonTu.DataSource = _cDonTu.getDSByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ",""));
                     break;
                 case "Số Công Văn":
                     if (txtNoiDungTimKiem.Text.Trim() != "")
-                        dgvDSDonTu.DataSource = _cDonTu.GetDSBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper());
+                        dgvDSDonTu.DataSource = _cDonTu.getDSBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper());
                     break;
                 case "Ngày":
-                    dgvDSDonTu.DataSource = _cDonTu.GetDS(dateTu.Value, dateDen.Value);
+                    dgvDSDonTu.DataSource = _cDonTu.getDS(dateTu.Value, dateDen.Value);
                     //gridControl1.DataSource = _cDonTu.GetDS(dateTu.Value, dateDen.Value);
                     break;
                 default:

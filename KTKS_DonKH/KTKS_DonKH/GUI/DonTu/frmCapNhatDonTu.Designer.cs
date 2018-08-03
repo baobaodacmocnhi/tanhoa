@@ -74,7 +74,7 @@
             this.Phuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chkcmbNoiNhan = new DevExpress.XtraEditors.CheckedComboBoxEdit();
             this.btnCapNhat = new System.Windows.Forms.Button();
-            this.txtGhiChu = new System.Windows.Forms.TextBox();
+            this.txtNoiDung_LichSu = new System.Windows.Forms.TextBox();
             this.label34 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
             this.cmbNoiChuyen = new System.Windows.Forms.ComboBox();
@@ -507,21 +507,21 @@
             this.btnCapNhat.UseVisualStyleBackColor = true;
             this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
             // 
-            // txtGhiChu
+            // txtNoiDung_LichSu
             // 
-            this.txtGhiChu.Location = new System.Drawing.Point(680, 343);
-            this.txtGhiChu.Name = "txtGhiChu";
-            this.txtGhiChu.Size = new System.Drawing.Size(150, 22);
-            this.txtGhiChu.TabIndex = 76;
+            this.txtNoiDung_LichSu.Location = new System.Drawing.Point(680, 343);
+            this.txtNoiDung_LichSu.Name = "txtNoiDung_LichSu";
+            this.txtNoiDung_LichSu.Size = new System.Drawing.Size(150, 22);
+            this.txtNoiDung_LichSu.TabIndex = 76;
             // 
             // label34
             // 
             this.label34.AutoSize = true;
             this.label34.Location = new System.Drawing.Point(676, 324);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(57, 16);
+            this.label34.Size = new System.Drawing.Size(67, 16);
             this.label34.TabIndex = 75;
-            this.label34.Text = "Ghi Chú:";
+            this.label34.Text = "Nội Dung:";
             // 
             // label33
             // 
@@ -584,10 +584,9 @@
             this.dgvLichSuDonTu.Location = new System.Drawing.Point(15, 389);
             this.dgvLichSuDonTu.Name = "dgvLichSuDonTu";
             this.dgvLichSuDonTu.ReadOnly = true;
-            this.dgvLichSuDonTu.Size = new System.Drawing.Size(864, 200);
+            this.dgvLichSuDonTu.Size = new System.Drawing.Size(858, 200);
             this.dgvLichSuDonTu.TabIndex = 80;
             this.dgvLichSuDonTu.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLichSuDonTu_CellMouseClick);
-            this.dgvLichSuDonTu.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvLichSuDonTu_CellValidating);
             this.dgvLichSuDonTu.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvLichSuDonTu_MouseClick);
             // 
             // label28
@@ -718,7 +717,7 @@
             this.NgayChuyen.HeaderText = "Ngày Chuyển";
             this.NgayChuyen.Name = "NgayChuyen";
             this.NgayChuyen.ReadOnly = true;
-            this.NgayChuyen.Width = 150;
+            this.NgayChuyen.Width = 120;
             // 
             // NoiChuyen
             // 
@@ -726,7 +725,7 @@
             this.NoiChuyen.HeaderText = "Nơi Chuyển";
             this.NoiChuyen.Name = "NoiChuyen";
             this.NoiChuyen.ReadOnly = true;
-            this.NoiChuyen.Width = 150;
+            this.NoiChuyen.Width = 140;
             // 
             // NoiNhan
             // 
@@ -734,7 +733,7 @@
             this.NoiNhan.HeaderText = "Nơi Nhận";
             this.NoiNhan.Name = "NoiNhan";
             this.NoiNhan.ReadOnly = true;
-            this.NoiNhan.Width = 150;
+            this.NoiNhan.Width = 140;
             // 
             // GhiChu
             // 
@@ -750,6 +749,7 @@
             this.KTXM.HeaderText = "KTXM";
             this.KTXM.Name = "KTXM";
             this.KTXM.ReadOnly = true;
+            this.KTXM.Width = 120;
             // 
             // CreateBy
             // 
@@ -757,13 +757,14 @@
             this.CreateBy.HeaderText = "Người Lập";
             this.CreateBy.Name = "CreateBy";
             this.CreateBy.ReadOnly = true;
+            this.CreateBy.Width = 120;
             // 
             // frmCapNhatDonTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1049, 601);
+            this.ClientSize = new System.Drawing.Size(924, 601);
             this.Controls.Add(this.chkcmbNoiNhanKTXM);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
@@ -771,7 +772,7 @@
             this.Controls.Add(this.label28);
             this.Controls.Add(this.chkcmbNoiNhan);
             this.Controls.Add(this.btnCapNhat);
-            this.Controls.Add(this.txtGhiChu);
+            this.Controls.Add(this.txtNoiDung_LichSu);
             this.Controls.Add(this.label34);
             this.Controls.Add(this.label33);
             this.Controls.Add(this.cmbNoiChuyen);
@@ -844,7 +845,7 @@
         private System.Windows.Forms.Label label3;
         private DevExpress.XtraEditors.CheckedComboBoxEdit chkcmbNoiNhan;
         private System.Windows.Forms.Button btnCapNhat;
-        private System.Windows.Forms.TextBox txtGhiChu;
+        private System.Windows.Forms.TextBox txtNoiDung_LichSu;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.ComboBox cmbNoiChuyen;

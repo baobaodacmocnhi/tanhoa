@@ -472,7 +472,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             DCBD dcbd = new DCBD();
                             dcbd.MaDon = _dontkh.MaDon;
-                            dcbd.MaDonMoi = _dontkh.MaDonMoi;
                             _cDCBD.Them(dcbd);
                         }
                         if (_cDCBD.CheckExist_HoaDon("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim(), txtKyHD.Text.Trim()) == true)
@@ -489,7 +488,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             {
                                 DCBD dcbd = new DCBD();
                                 dcbd.MaDonTXL = _dontxl.MaDon;
-                                dcbd.MaDonMoi = _dontxl.MaDonMoi;
                                 _cDCBD.Them(dcbd);
                             }
                             if (_cDCBD.CheckExist_HoaDon("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim(), txtKyHD.Text.Trim()) == true)
@@ -506,7 +504,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 {
                                     DCBD dcbd = new DCBD();
                                     dcbd.MaDonTBC = _dontbc.MaDon;
-                                    dcbd.MaDonMoi = _dontbc.MaDonMoi;
                                     _cDCBD.Them(dcbd);
                                 }
                                 if (_cDCBD.CheckExist_HoaDon("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim(), txtKyHD.Text.Trim()) == true)

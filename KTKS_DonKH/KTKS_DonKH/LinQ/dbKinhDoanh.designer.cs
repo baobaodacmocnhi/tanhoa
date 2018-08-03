@@ -858,7 +858,9 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _MaDonTBC;
 		
-		private string _MaDonMoi;
+		private System.Nullable<int> _MaDonMoi;
+		
+		private System.Nullable<int> _STT;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
@@ -888,8 +890,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaDonTXLChanged();
     partial void OnMaDonTBCChanging(System.Nullable<decimal> value);
     partial void OnMaDonTBCChanged();
-    partial void OnMaDonMoiChanging(string value);
+    partial void OnMaDonMoiChanging(System.Nullable<int> value);
     partial void OnMaDonMoiChanged();
+    partial void OnSTTChanging(System.Nullable<int> value);
+    partial void OnSTTChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -1001,8 +1005,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonMoi", DbType="VarChar(50)")]
-		public string MaDonMoi
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonMoi", DbType="Int")]
+		public System.Nullable<int> MaDonMoi
 		{
 			get
 			{
@@ -1017,6 +1021,26 @@ namespace KTKS_DonKH.LinQ
 					this._MaDonMoi = value;
 					this.SendPropertyChanged("MaDonMoi");
 					this.OnMaDonMoiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", DbType="Int")]
+		public System.Nullable<int> STT
+		{
+			get
+			{
+				return this._STT;
+			}
+			set
+			{
+				if ((this._STT != value))
+				{
+					this.OnSTTChanging(value);
+					this.SendPropertyChanging();
+					this._STT = value;
+					this.SendPropertyChanged("STT");
+					this.OnSTTChanged();
 				}
 			}
 		}
@@ -3071,7 +3095,9 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _MaDonTBC;
 		
-		private string _MaDonMoi;
+		private System.Nullable<int> _MaDonMoi;
+		
+		private System.Nullable<int> _STT;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
@@ -3103,8 +3129,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaDonTXLChanged();
     partial void OnMaDonTBCChanging(System.Nullable<decimal> value);
     partial void OnMaDonTBCChanged();
-    partial void OnMaDonMoiChanging(string value);
+    partial void OnMaDonMoiChanging(System.Nullable<int> value);
     partial void OnMaDonMoiChanged();
+    partial void OnSTTChanging(System.Nullable<int> value);
+    partial void OnSTTChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(string value);
@@ -3217,8 +3245,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonMoi", DbType="VarChar(50)")]
-		public string MaDonMoi
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonMoi", DbType="Int")]
+		public System.Nullable<int> MaDonMoi
 		{
 			get
 			{
@@ -3233,6 +3261,26 @@ namespace KTKS_DonKH.LinQ
 					this._MaDonMoi = value;
 					this.SendPropertyChanged("MaDonMoi");
 					this.OnMaDonMoiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", DbType="Int")]
+		public System.Nullable<int> STT
+		{
+			get
+			{
+				return this._STT;
+			}
+			set
+			{
+				if ((this._STT != value))
+				{
+					this.OnSTTChanging(value);
+					this.SendPropertyChanging();
+					this._STT = value;
+					this.SendPropertyChanged("STT");
+					this.OnSTTChanged();
 				}
 			}
 		}
@@ -18087,7 +18135,9 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _MaDonTBC;
 		
-		private string _MaDonMoi;
+		private System.Nullable<int> _MaDonMoi;
+		
+		private System.Nullable<int> _STT;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
@@ -18119,8 +18169,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaDonTXLChanged();
     partial void OnMaDonTBCChanging(System.Nullable<decimal> value);
     partial void OnMaDonTBCChanged();
-    partial void OnMaDonMoiChanging(string value);
+    partial void OnMaDonMoiChanging(System.Nullable<int> value);
     partial void OnMaDonMoiChanged();
+    partial void OnSTTChanging(System.Nullable<int> value);
+    partial void OnSTTChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -18233,8 +18285,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonMoi", DbType="VarChar(50)")]
-		public string MaDonMoi
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonMoi", DbType="Int")]
+		public System.Nullable<int> MaDonMoi
 		{
 			get
 			{
@@ -18249,6 +18301,26 @@ namespace KTKS_DonKH.LinQ
 					this._MaDonMoi = value;
 					this.SendPropertyChanged("MaDonMoi");
 					this.OnMaDonMoiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", DbType="Int")]
+		public System.Nullable<int> STT
+		{
+			get
+			{
+				return this._STT;
+			}
+			set
+			{
+				if ((this._STT != value))
+				{
+					this.OnSTTChanging(value);
+					this.SendPropertyChanging();
+					this._STT = value;
+					this.SendPropertyChanged("STT");
+					this.OnSTTChanged();
 				}
 			}
 		}
@@ -19158,7 +19230,9 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _MaDonTBC;
 		
-		private string _MaDonMoi;
+		private System.Nullable<int> _MaDonMoi;
+		
+		private System.Nullable<int> _STT;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
@@ -19188,8 +19262,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaDonTXLChanged();
     partial void OnMaDonTBCChanging(System.Nullable<decimal> value);
     partial void OnMaDonTBCChanged();
-    partial void OnMaDonMoiChanging(string value);
+    partial void OnMaDonMoiChanging(System.Nullable<int> value);
     partial void OnMaDonMoiChanged();
+    partial void OnSTTChanging(System.Nullable<int> value);
+    partial void OnSTTChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -19301,8 +19377,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonMoi", DbType="VarChar(50)")]
-		public string MaDonMoi
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonMoi", DbType="Int")]
+		public System.Nullable<int> MaDonMoi
 		{
 			get
 			{
@@ -19317,6 +19393,26 @@ namespace KTKS_DonKH.LinQ
 					this._MaDonMoi = value;
 					this.SendPropertyChanged("MaDonMoi");
 					this.OnMaDonMoiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", DbType="Int")]
+		public System.Nullable<int> STT
+		{
+			get
+			{
+				return this._STT;
+			}
+			set
+			{
+				if ((this._STT != value))
+				{
+					this.OnSTTChanging(value);
+					this.SendPropertyChanging();
+					this._STT = value;
+					this.SendPropertyChanged("STT");
+					this.OnSTTChanged();
 				}
 			}
 		}
@@ -24896,9 +24992,17 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _NgayChuyen;
 		
+		private System.Nullable<int> _ID_NoiChuyen;
+		
 		private string _NoiChuyen;
 		
+		private System.Nullable<int> _ID_NoiNhan;
+		
 		private string _NoiNhan;
+		
+		private System.Nullable<int> _ID_KTXM;
+		
+		private string _KTXM;
 		
 		private string _NoiDung;
 		
@@ -24920,10 +25024,18 @@ namespace KTKS_DonKH.LinQ
     partial void OnIDChanged();
     partial void OnNgayChuyenChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayChuyenChanged();
+    partial void OnID_NoiChuyenChanging(System.Nullable<int> value);
+    partial void OnID_NoiChuyenChanged();
     partial void OnNoiChuyenChanging(string value);
     partial void OnNoiChuyenChanged();
+    partial void OnID_NoiNhanChanging(System.Nullable<int> value);
+    partial void OnID_NoiNhanChanged();
     partial void OnNoiNhanChanging(string value);
     partial void OnNoiNhanChanged();
+    partial void OnID_KTXMChanging(System.Nullable<int> value);
+    partial void OnID_KTXMChanged();
+    partial void OnKTXMChanging(string value);
+    partial void OnKTXMChanged();
     partial void OnNoiDungChanging(string value);
     partial void OnNoiDungChanged();
     partial void OnMaDonChanging(System.Nullable<int> value);
@@ -24982,6 +25094,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_NoiChuyen", DbType="Int")]
+		public System.Nullable<int> ID_NoiChuyen
+		{
+			get
+			{
+				return this._ID_NoiChuyen;
+			}
+			set
+			{
+				if ((this._ID_NoiChuyen != value))
+				{
+					this.OnID_NoiChuyenChanging(value);
+					this.SendPropertyChanging();
+					this._ID_NoiChuyen = value;
+					this.SendPropertyChanged("ID_NoiChuyen");
+					this.OnID_NoiChuyenChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiChuyen", DbType="NVarChar(50)")]
 		public string NoiChuyen
 		{
@@ -25002,6 +25134,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_NoiNhan", DbType="Int")]
+		public System.Nullable<int> ID_NoiNhan
+		{
+			get
+			{
+				return this._ID_NoiNhan;
+			}
+			set
+			{
+				if ((this._ID_NoiNhan != value))
+				{
+					this.OnID_NoiNhanChanging(value);
+					this.SendPropertyChanging();
+					this._ID_NoiNhan = value;
+					this.SendPropertyChanged("ID_NoiNhan");
+					this.OnID_NoiNhanChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiNhan", DbType="NVarChar(50)")]
 		public string NoiNhan
 		{
@@ -25018,6 +25170,46 @@ namespace KTKS_DonKH.LinQ
 					this._NoiNhan = value;
 					this.SendPropertyChanged("NoiNhan");
 					this.OnNoiNhanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_KTXM", DbType="Int")]
+		public System.Nullable<int> ID_KTXM
+		{
+			get
+			{
+				return this._ID_KTXM;
+			}
+			set
+			{
+				if ((this._ID_KTXM != value))
+				{
+					this.OnID_KTXMChanging(value);
+					this.SendPropertyChanging();
+					this._ID_KTXM = value;
+					this.SendPropertyChanged("ID_KTXM");
+					this.OnID_KTXMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KTXM", DbType="NVarChar(50)")]
+		public string KTXM
+		{
+			get
+			{
+				return this._KTXM;
+			}
+			set
+			{
+				if ((this._KTXM != value))
+				{
+					this.OnKTXMChanging(value);
+					this.SendPropertyChanging();
+					this._KTXM = value;
+					this.SendPropertyChanged("KTXM");
+					this.OnKTXMChanged();
 				}
 			}
 		}
@@ -27720,7 +27912,9 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _MaDonTBC;
 		
-		private string _MaDonMoi;
+		private System.Nullable<int> _MaDonMoi;
+		
+		private System.Nullable<int> _STT;
 		
 		private System.Nullable<System.DateTime> _NgayKTXM;
 		
@@ -27830,8 +28024,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaDonTXLChanged();
     partial void OnMaDonTBCChanging(System.Nullable<decimal> value);
     partial void OnMaDonTBCChanged();
-    partial void OnMaDonMoiChanging(string value);
+    partial void OnMaDonMoiChanging(System.Nullable<int> value);
     partial void OnMaDonMoiChanged();
+    partial void OnSTTChanging(System.Nullable<int> value);
+    partial void OnSTTChanged();
     partial void OnNgayKTXMChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayKTXMChanged();
     partial void OnFileBienBanChanging(System.Data.Linq.Binary value);
@@ -28024,8 +28220,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonMoi", DbType="VarChar(50)")]
-		public string MaDonMoi
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonMoi", DbType="Int")]
+		public System.Nullable<int> MaDonMoi
 		{
 			get
 			{
@@ -28040,6 +28236,26 @@ namespace KTKS_DonKH.LinQ
 					this._MaDonMoi = value;
 					this.SendPropertyChanged("MaDonMoi");
 					this.OnMaDonMoiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", DbType="Int")]
+		public System.Nullable<int> STT
+		{
+			get
+			{
+				return this._STT;
+			}
+			set
+			{
+				if ((this._STT != value))
+				{
+					this.OnSTTChanging(value);
+					this.SendPropertyChanging();
+					this._STT = value;
+					this.SendPropertyChanged("STT");
+					this.OnSTTChanged();
 				}
 			}
 		}
@@ -29493,7 +29709,9 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _MaDonTBC;
 		
-		private string _MaDonMoi;
+		private System.Nullable<int> _MaDonMoi;
+		
+		private System.Nullable<int> _STT;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
@@ -29523,8 +29741,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaDonTXLChanged();
     partial void OnMaDonTBCChanging(System.Nullable<decimal> value);
     partial void OnMaDonTBCChanged();
-    partial void OnMaDonMoiChanging(string value);
+    partial void OnMaDonMoiChanging(System.Nullable<int> value);
     partial void OnMaDonMoiChanged();
+    partial void OnSTTChanging(System.Nullable<int> value);
+    partial void OnSTTChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -29636,8 +29856,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonMoi", DbType="VarChar(50)")]
-		public string MaDonMoi
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonMoi", DbType="Int")]
+		public System.Nullable<int> MaDonMoi
 		{
 			get
 			{
@@ -29652,6 +29872,26 @@ namespace KTKS_DonKH.LinQ
 					this._MaDonMoi = value;
 					this.SendPropertyChanged("MaDonMoi");
 					this.OnMaDonMoiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", DbType="Int")]
+		public System.Nullable<int> STT
+		{
+			get
+			{
+				return this._STT;
+			}
+			set
+			{
+				if ((this._STT != value))
+				{
+					this.OnSTTChanging(value);
+					this.SendPropertyChanging();
+					this._STT = value;
+					this.SendPropertyChanged("STT");
+					this.OnSTTChanged();
 				}
 			}
 		}
@@ -36416,7 +36656,9 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _MaDonTBC;
 		
-		private string _MaDonMoi;
+		private System.Nullable<int> _MaDonMoi;
+		
+		private System.Nullable<int> _STT;
 		
 		private string _TCHC;
 		
@@ -36512,8 +36754,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaDonTXLChanged();
     partial void OnMaDonTBCChanging(System.Nullable<decimal> value);
     partial void OnMaDonTBCChanged();
-    partial void OnMaDonMoiChanging(string value);
+    partial void OnMaDonMoiChanging(System.Nullable<int> value);
     partial void OnMaDonMoiChanged();
+    partial void OnSTTChanging(System.Nullable<int> value);
+    partial void OnSTTChanged();
     partial void OnTCHCChanging(string value);
     partial void OnTCHCChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -37148,8 +37392,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonMoi", DbType="VarChar(50)")]
-		public string MaDonMoi
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonMoi", DbType="Int")]
+		public System.Nullable<int> MaDonMoi
 		{
 			get
 			{
@@ -37164,6 +37408,26 @@ namespace KTKS_DonKH.LinQ
 					this._MaDonMoi = value;
 					this.SendPropertyChanged("MaDonMoi");
 					this.OnMaDonMoiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", DbType="Int")]
+		public System.Nullable<int> STT
+		{
+			get
+			{
+				return this._STT;
+			}
+			set
+			{
+				if ((this._STT != value))
+				{
+					this.OnSTTChanging(value);
+					this.SendPropertyChanging();
+					this._STT = value;
+					this.SendPropertyChanged("STT");
+					this.OnSTTChanged();
 				}
 			}
 		}
@@ -38788,7 +39052,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private int _ID;
 		
-		private System.Nullable<int> _STT;
+		private System.Nullable<int> _Lan;
 		
 		private string _DanhBo;
 		
@@ -38828,8 +39092,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
-    partial void OnSTTChanging(System.Nullable<int> value);
-    partial void OnSTTChanged();
+    partial void OnLanChanging(System.Nullable<int> value);
+    partial void OnLanChanged();
     partial void OnDanhBoChanging(string value);
     partial void OnDanhBoChanged();
     partial void OnHoTenChanging(string value);
@@ -38889,22 +39153,22 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", DbType="Int")]
-		public System.Nullable<int> STT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Lan", DbType="Int")]
+		public System.Nullable<int> Lan
 		{
 			get
 			{
-				return this._STT;
+				return this._Lan;
 			}
 			set
 			{
-				if ((this._STT != value))
+				if ((this._Lan != value))
 				{
-					this.OnSTTChanging(value);
+					this.OnLanChanging(value);
 					this.SendPropertyChanging();
-					this._STT = value;
-					this.SendPropertyChanged("STT");
-					this.OnSTTChanged();
+					this._Lan = value;
+					this.SendPropertyChanged("Lan");
+					this.OnLanChanged();
 				}
 			}
 		}
@@ -39498,7 +39762,9 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _MaDonTBC;
 		
-		private string _MaDonMoi;
+		private System.Nullable<int> _MaDonMoi;
+		
+		private System.Nullable<int> _STT;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
@@ -39528,8 +39794,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaDonTXLChanged();
     partial void OnMaDonTBCChanging(System.Nullable<decimal> value);
     partial void OnMaDonTBCChanged();
-    partial void OnMaDonMoiChanging(string value);
+    partial void OnMaDonMoiChanging(System.Nullable<int> value);
     partial void OnMaDonMoiChanged();
+    partial void OnSTTChanging(System.Nullable<int> value);
+    partial void OnSTTChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -39641,8 +39909,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonMoi", DbType="VarChar(50)")]
-		public string MaDonMoi
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonMoi", DbType="Int")]
+		public System.Nullable<int> MaDonMoi
 		{
 			get
 			{
@@ -39657,6 +39925,26 @@ namespace KTKS_DonKH.LinQ
 					this._MaDonMoi = value;
 					this.SendPropertyChanged("MaDonMoi");
 					this.OnMaDonMoiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", DbType="Int")]
+		public System.Nullable<int> STT
+		{
+			get
+			{
+				return this._STT;
+			}
+			set
+			{
+				if ((this._STT != value))
+				{
+					this.OnSTTChanging(value);
+					this.SendPropertyChanging();
+					this._STT = value;
+					this.SendPropertyChanged("STT");
+					this.OnSTTChanged();
 				}
 			}
 		}
@@ -40363,7 +40651,9 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _MaDonTBC;
 		
-		private string _MaDonMoi;
+		private System.Nullable<int> _MaDonMoi;
+		
+		private System.Nullable<int> _STT;
 		
 		private string _DanhBo;
 		
@@ -40437,8 +40727,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaDonTXLChanged();
     partial void OnMaDonTBCChanging(System.Nullable<decimal> value);
     partial void OnMaDonTBCChanged();
-    partial void OnMaDonMoiChanging(string value);
+    partial void OnMaDonMoiChanging(System.Nullable<int> value);
     partial void OnMaDonMoiChanged();
+    partial void OnSTTChanging(System.Nullable<int> value);
+    partial void OnSTTChanged();
     partial void OnDanhBoChanging(string value);
     partial void OnDanhBoChanged();
     partial void OnHopDongChanging(string value);
@@ -40592,8 +40884,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonMoi", DbType="VarChar(50)")]
-		public string MaDonMoi
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonMoi", DbType="Int")]
+		public System.Nullable<int> MaDonMoi
 		{
 			get
 			{
@@ -40608,6 +40900,26 @@ namespace KTKS_DonKH.LinQ
 					this._MaDonMoi = value;
 					this.SendPropertyChanged("MaDonMoi");
 					this.OnMaDonMoiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", DbType="Int")]
+		public System.Nullable<int> STT
+		{
+			get
+			{
+				return this._STT;
+			}
+			set
+			{
+				if ((this._STT != value))
+				{
+					this.OnSTTChanging(value);
+					this.SendPropertyChanging();
+					this._STT = value;
+					this.SendPropertyChanged("STT");
+					this.OnSTTChanged();
 				}
 			}
 		}
@@ -42371,7 +42683,9 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _MaDonTBC;
 		
-		private string _MaDonMoi;
+		private System.Nullable<int> _MaDonMoi;
+		
+		private System.Nullable<int> _STT;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
@@ -42401,8 +42715,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaDonTXLChanged();
     partial void OnMaDonTBCChanging(System.Nullable<decimal> value);
     partial void OnMaDonTBCChanged();
-    partial void OnMaDonMoiChanging(string value);
+    partial void OnMaDonMoiChanging(System.Nullable<int> value);
     partial void OnMaDonMoiChanged();
+    partial void OnSTTChanging(System.Nullable<int> value);
+    partial void OnSTTChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -42514,8 +42830,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonMoi", DbType="VarChar(50)")]
-		public string MaDonMoi
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonMoi", DbType="Int")]
+		public System.Nullable<int> MaDonMoi
 		{
 			get
 			{
@@ -42530,6 +42846,26 @@ namespace KTKS_DonKH.LinQ
 					this._MaDonMoi = value;
 					this.SendPropertyChanged("MaDonMoi");
 					this.OnMaDonMoiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", DbType="Int")]
+		public System.Nullable<int> STT
+		{
+			get
+			{
+				return this._STT;
+			}
+			set
+			{
+				if ((this._STT != value))
+				{
+					this.OnSTTChanging(value);
+					this.SendPropertyChanging();
+					this._STT = value;
+					this.SendPropertyChanged("STT");
+					this.OnSTTChanged();
 				}
 			}
 		}

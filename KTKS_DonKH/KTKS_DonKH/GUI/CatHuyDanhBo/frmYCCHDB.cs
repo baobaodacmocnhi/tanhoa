@@ -351,7 +351,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             return;
                         }
                         ycchdb.MaDon = _dontkh.MaDon;
-                        ycchdb.MaDonMoi = _dontkh.MaDonMoi;
                     }
                     else
                         if (_dontxl != null)
@@ -362,7 +361,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 return;
                             }
                             ycchdb.MaDonTXL = _dontxl.MaDon;
-                            ycchdb.MaDonMoi = _dontxl.MaDonMoi;
                         }
                         else
                             if (_dontbc != null)
@@ -373,7 +371,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     return;
                                 }
                                 ycchdb.MaDonTBC = _dontbc.MaDon;
-                                ycchdb.MaDonMoi = _dontbc.MaDonMoi;
                             }
                             else
                             {

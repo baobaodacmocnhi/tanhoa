@@ -338,7 +338,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 dr["CanCu"] = _thumoi.CanCu;
                 dr["VaoLuc"] = _thumoi.VaoLuc;
                 dr["VeViec"] = _thumoi.VeViec;
-                dr["Lan"] = _thumoi.STT;
+                dr["Lan"] = _thumoi.Lan;
 
                 dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
 

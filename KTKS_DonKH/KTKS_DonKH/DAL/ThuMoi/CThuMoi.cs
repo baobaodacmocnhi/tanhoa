@@ -20,31 +20,31 @@ namespace KTKS_DonKH.DAL.ThuMoi
                     if (entity.MaDonTKH != null)
                     {
                         if (db.ThuMois.Any(item => item.MaDonTKH == entity.MaDonTKH) == false)
-                            entity.STT = 2;
+                            entity.Lan = 2;
                         else
-                            entity.STT = db.ThuMois.Where(item => item.MaDonTKH == entity.MaDonTKH).Count() + 1;
+                            entity.Lan = db.ThuMois.Where(item => item.MaDonTKH == entity.MaDonTKH).Count() + 1;
                     }
                     else
                         if (entity.MaDonTXL != null)
                         {
                             if (db.ThuMois.Any(item => item.MaDonTXL == entity.MaDonTXL) == false)
-                                entity.STT = 2;
+                                entity.Lan = 2;
                             else
-                                entity.STT = db.ThuMois.Where(item => item.MaDonTXL == entity.MaDonTXL).Count() + 1;
+                                entity.Lan = db.ThuMois.Where(item => item.MaDonTXL == entity.MaDonTXL).Count() + 1;
                         }
                         else
                             if (entity.MaDonTBC != null)
                             {
                                 if (db.ThuMois.Any(item => item.MaDonTBC == entity.MaDonTBC) == false)
-                                    entity.STT = 2;
+                                    entity.Lan = 2;
                                 else
-                                    entity.STT = db.ThuMois.Where(item => item.MaDonTBC == entity.MaDonTBC).Count() + 1;
+                                    entity.Lan = db.ThuMois.Where(item => item.MaDonTBC == entity.MaDonTBC).Count() + 1;
                             }
                 }
                 else
                 {
                     entity.ID = 1;
-                    entity.STT = 2;
+                    entity.Lan = 2;
                 }
                 entity.CreateDate = DateTime.Now;
                 entity.CreateBy = CTaiKhoan.MaUser;
@@ -113,7 +113,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                     item.DiaChi,
                                     item.GiaBieu,
                                     item.DinhMuc,
-                                    item.STT,
+                                    item.Lan,
                                     item.CanCu,
                                     item.VaoLuc,
                                     item.VeViec,
@@ -134,7 +134,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                      item.DiaChi,
                                      item.GiaBieu,
                                      item.DinhMuc,
-                                     item.STT,
+                                     item.Lan,
                                      item.CanCu,
                                      item.VaoLuc,
                                      item.VeViec,
@@ -155,7 +155,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                      item.DiaChi,
                                      item.GiaBieu,
                                      item.DinhMuc,
-                                     item.STT,
+                                     item.Lan,
                                      item.CanCu,
                                      item.VaoLuc,
                                      item.VeViec,
@@ -182,7 +182,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                             item.DiaChi,
                             item.GiaBieu,
                             item.DinhMuc,
-                            item.STT,
+                            item.Lan,
                             item.CanCu,
                             item.VaoLuc,
                             item.VeViec,
@@ -206,7 +206,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                             item.DiaChi,
                             item.GiaBieu,
                             item.DinhMuc,
-                            item.STT,
+                            item.Lan,
                             item.CanCu,
                             item.VaoLuc,
                             item.VeViec,
@@ -230,7 +230,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                             item.DiaChi,
                             item.GiaBieu,
                             item.DinhMuc,
-                            item.STT,
+                            item.Lan,
                             item.CanCu,
                             item.VaoLuc,
                             item.VeViec,

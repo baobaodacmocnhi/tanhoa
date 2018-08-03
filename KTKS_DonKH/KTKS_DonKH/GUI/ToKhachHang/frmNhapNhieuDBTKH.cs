@@ -481,15 +481,15 @@ namespace KTKS_DonKH.GUI.ToKhachHang
         {
             if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
             {
-                if (_cDonTu.CheckExist(int.Parse(txtMaDon.Text.Trim())) == true)
-                {
-                    _dontu = _cDonTu.Get(int.Parse(txtMaDon.Text.Trim()));
-                    txtSoCongVan.Text = _dontu.SoCongVan;
-                }
-                else
-                {
-                    MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                //if (_cDonTu.CheckExist(int.Parse(txtMaDon.Text.Trim())) == true)
+                //{
+                //    _dontu = _cDonTu.getDonTu(int.Parse(txtMaDon.Text.Trim()));
+                //    txtSoCongVan.Text = _dontu.SoCongVan;
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //}
             }
         }
     }

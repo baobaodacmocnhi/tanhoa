@@ -101,7 +101,6 @@ namespace KTKS_DonKH.GUI.TruyThu
                         _dontbc = _cDonTBC.Get(entity.MaDonTBC.Value);
                         txtMaDonCu.Text = "TBC" + entity.MaDonTBC.Value.ToString().Insert(entity.MaDonTBC.Value.ToString().Length - 2, "-");
                     }
-            txtMaDonMoi.Text = entity.MaDonMoi;
             chkXepDon.Checked = entity.XepDon;
             txtDanhBo.Text = entity.DanhBo;
             txtHoTen.Text = entity.HoTen;
@@ -312,91 +311,91 @@ namespace KTKS_DonKH.GUI.TruyThu
         {
             if (e.KeyChar == 13 && txtMaDonMoi.Text.Trim() != "")
             {
-                string MaDon = txtMaDonMoi.Text.Trim();
-                Clear();
-                txtMaDonMoi.Text = MaDon;
-                ///Đơn Tổ Xử Lý
-                if (txtMaDonMoi.Text.Trim().ToUpper().Contains("XL"))
-                {
-                    if (_cDonTXL.CheckExist(txtMaDonMoi.Text.Trim()) == true)
-                    {
-                        if (_cGianLan.CheckExist(txtMaDonMoi.Text.Trim()) == true)
-                        {
-                            _gianlan = _cGianLan.Get(txtMaDonMoi.Text.Trim());
-                            LoadGianLan(_gianlan);
-                        }
-                        else
-                        {
-                            _dontxl = _cDonTXL.Get(txtMaDonMoi.Text.Trim());
-                            txtMaDonMoi.Text = _dontxl.MaDonMoi;
+                //string MaDon = txtMaDonMoi.Text.Trim();
+                //Clear();
+                //txtMaDonMoi.Text = MaDon;
+                /////Đơn Tổ Xử Lý
+                //if (txtMaDonMoi.Text.Trim().ToUpper().Contains("XL"))
+                //{
+                //    if (_cDonTXL.CheckExist(txtMaDonMoi.Text.Trim()) == true)
+                //    {
+                //        if (_cGianLan.CheckExist(txtMaDonMoi.Text.Trim()) == true)
+                //        {
+                //            _gianlan = _cGianLan.Get(txtMaDonMoi.Text.Trim());
+                //            LoadGianLan(_gianlan);
+                //        }
+                //        else
+                //        {
+                //            _dontxl = _cDonTXL.Get(txtMaDonMoi.Text.Trim());
+                //            txtMaDonMoi.Text = _dontxl.MaDonMoi;
 
-                            if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
-                            {
-                                _hoadon = _cThuTien.GetMoiNhat(_dontxl.DanhBo);
-                                LoadTTKH(_hoadon);
-                            }
-                            else
-                                MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    else
-                        MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                    if (txtMaDonMoi.Text.Trim().ToUpper().Contains("BC"))
-                    {
-                        if (_cDonTBC.CheckExist(txtMaDonMoi.Text.Trim()) == true)
-                        {
-                            if (_cGianLan.CheckExist(txtMaDonMoi.Text.Trim()) == true)
-                            {
-                                _gianlan = _cGianLan.Get(txtMaDonMoi.Text.Trim());
-                                LoadGianLan(_gianlan);
-                            }
-                            else
-                            {
-                                _dontbc = _cDonTBC.Get(txtMaDonMoi.Text.Trim());
-                                txtMaDonMoi.Text = _dontbc.MaDonMoi;
+                //            if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
+                //            {
+                //                _hoadon = _cThuTien.GetMoiNhat(_dontxl.DanhBo);
+                //                LoadTTKH(_hoadon);
+                //            }
+                //            else
+                //                MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //        }
+                //    }
+                //    else
+                //        MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //}
+                //else
+                //    if (txtMaDonMoi.Text.Trim().ToUpper().Contains("BC"))
+                //    {
+                //        if (_cDonTBC.CheckExist(txtMaDonMoi.Text.Trim()) == true)
+                //        {
+                //            if (_cGianLan.CheckExist(txtMaDonMoi.Text.Trim()) == true)
+                //            {
+                //                _gianlan = _cGianLan.Get(txtMaDonMoi.Text.Trim());
+                //                LoadGianLan(_gianlan);
+                //            }
+                //            else
+                //            {
+                //                _dontbc = _cDonTBC.Get(txtMaDonMoi.Text.Trim());
+                //                txtMaDonMoi.Text = _dontbc.MaDonMoi;
 
-                                if (_cThuTien.GetMoiNhat(_dontbc.DanhBo) != null)
-                                {
-                                    _hoadon = _cThuTien.GetMoiNhat(_dontbc.DanhBo);
-                                    LoadTTKH(_hoadon);
-                                }
-                                else
-                                    MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                        else
-                            MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    ///Đơn Tổ Khách Hàng
-                    else
-                        if (txtMaDonMoi.Text.Trim().ToUpper().Contains("KH"))
-                        {
-                            if (_cDonKH.CheckExist(txtMaDonMoi.Text.Trim()) == true)
-                            {
-                                if (_cGianLan.CheckExist(txtMaDonMoi.Text.Trim()) == true)
-                                {
-                                    _gianlan = _cGianLan.Get(txtMaDonMoi.Text.Trim());
-                                    LoadGianLan(_gianlan);
-                                }
-                                else
-                                {
-                                    _dontkh = _cDonKH.Get(txtMaDonMoi.Text.Trim());
-                                    txtMaDonMoi.Text = _dontkh.MaDonMoi;
+                //                if (_cThuTien.GetMoiNhat(_dontbc.DanhBo) != null)
+                //                {
+                //                    _hoadon = _cThuTien.GetMoiNhat(_dontbc.DanhBo);
+                //                    LoadTTKH(_hoadon);
+                //                }
+                //                else
+                //                    MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //            }
+                //        }
+                //        else
+                //            MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    }
+                //    ///Đơn Tổ Khách Hàng
+                //    else
+                //        if (txtMaDonMoi.Text.Trim().ToUpper().Contains("KH"))
+                //        {
+                //            if (_cDonKH.CheckExist(txtMaDonMoi.Text.Trim()) == true)
+                //            {
+                //                if (_cGianLan.CheckExist(txtMaDonMoi.Text.Trim()) == true)
+                //                {
+                //                    _gianlan = _cGianLan.Get(txtMaDonMoi.Text.Trim());
+                //                    LoadGianLan(_gianlan);
+                //                }
+                //                else
+                //                {
+                //                    _dontkh = _cDonKH.Get(txtMaDonMoi.Text.Trim());
+                //                    txtMaDonMoi.Text = _dontkh.MaDonMoi;
 
-                                    if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
-                                    {
-                                        _hoadon = _cThuTien.GetMoiNhat(_dontkh.DanhBo);
-                                        LoadTTKH(_hoadon);
-                                    }
-                                    else
-                                        MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
-                            }
-                            else
-                                MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                //                    if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
+                //                    {
+                //                        _hoadon = _cThuTien.GetMoiNhat(_dontkh.DanhBo);
+                //                        LoadTTKH(_hoadon);
+                //                    }
+                //                    else
+                //                        MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //                }
+                //            }
+                //            else
+                //                MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //        }
             }
         }
 
@@ -415,7 +414,6 @@ namespace KTKS_DonKH.GUI.TruyThu
                             return;
                         }
                         entity.MaDonTXL = _dontxl.MaDon;
-                        entity.MaDonMoi = _dontxl.MaDonMoi;
                     }
                     else
                         if (_dontbc != null)
@@ -426,7 +424,6 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 return;
                             }
                             entity.MaDonTBC = _dontbc.MaDon;
-                            entity.MaDonMoi = _dontbc.MaDonMoi;
                         }
                         else
                             if (_dontkh != null)
@@ -437,7 +434,6 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     return;
                                 }
                                 entity.MaDon = _dontkh.MaDon;
-                                entity.MaDonMoi = _dontkh.MaDonMoi;
                             }
                             else
                             {

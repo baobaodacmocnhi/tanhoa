@@ -146,7 +146,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         _dontbc = _cDonTBC.Get(ctchdb.CHDB.MaDonTBC.Value);
                         txtMaDonCu.Text = "TBC" + ctchdb.CHDB.MaDonTBC.ToString().Insert(ctchdb.CHDB.MaDonTBC.ToString().Length - 2, "-");
                     }
-            txtMaDonMoi.Text = ctchdb.CHDB.MaDonMoi;
             txtMaThongBaoCH.Text = ctchdb.MaCTCHDB.ToString().Insert(ctchdb.MaCTCHDB.ToString().Length - 2, "-");
             txtTCHC.Text = ctchdb.TCHC;
 
@@ -216,7 +215,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         _dontbc = _cDonTBC.Get(ctctdb.CHDB.MaDonTBC.Value);
                         txtMaDonCu.Text = "TBC" + ctctdb.CHDB.MaDonTBC.ToString().Insert(ctctdb.CHDB.MaDonTBC.ToString().Length - 2, "-");
                     }
-            txtMaDonMoi.Text = ctctdb.CHDB.MaDonMoi;
             txtMaThongBaoCT.Text = ctctdb.MaCTCTDB.ToString().Insert(ctctdb.MaCTCTDB.ToString().Length - 2, "-");
 
             txtDanhBo.Text = ctctdb.DanhBo;
@@ -503,7 +501,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         {
                             CHDB chdb = new CHDB();
                             chdb.MaDon = _dontkh.MaDon;
-                            chdb.MaDonMoi = _dontkh.MaDonMoi;
                             _cCHDB.ThemCHDB(chdb);
                         }
                         if (_cCHDB.CheckExist_CTCHDB("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim()) == true)
@@ -520,7 +517,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             {
                                 CHDB chdb = new CHDB();
                                 chdb.MaDonTXL = _dontxl.MaDon;
-                                chdb.MaDonMoi = _dontxl.MaDonMoi;
                                 _cCHDB.ThemCHDB(chdb);
                             }
                             if (_cCHDB.CheckExist_CTCHDB("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim()) == true)
@@ -537,7 +533,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 {
                                     CHDB chdb = new CHDB();
                                     chdb.MaDonTBC = _dontbc.MaDon;
-                                    chdb.MaDonMoi = _dontbc.MaDonMoi;
                                     _cCHDB.ThemCHDB(chdb);
                                 }
                                 if (_cCHDB.CheckExist_CTCHDB("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim()) == true)
