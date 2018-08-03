@@ -32,7 +32,7 @@ namespace KTKS_DonKH.GUI.BamChi
         DonTXL _dontxl = null;
         DonTBC _dontbc = null;
         HOADON _hoadon = null;
-        CTBamChi _ctbamchi = null;
+        BamChi_ChiTiet _ctbamchi = null;
         bool _flagFirst = true;
         decimal _MaCTBamChi = -1;
 
@@ -89,7 +89,7 @@ namespace KTKS_DonKH.GUI.BamChi
             txtSoThan.Text = c;
         }
 
-        public void LoadCTBamChi(CTBamChi ctbamchi)
+        public void LoadCTBamChi(BamChi_ChiTiet ctbamchi)
         {
             if (ctbamchi.BamChi.MaDon != null)
             {
@@ -437,7 +437,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         return;
                     }
 
-                    CTBamChi ctbamchi = new CTBamChi();
+                    BamChi_ChiTiet ctbamchi = new BamChi_ChiTiet();
 
                     if (_dontkh != null)
                     {
@@ -723,7 +723,7 @@ namespace KTKS_DonKH.GUI.BamChi
 
             }
             else
-                switch (((TrangThaiBamChi)cmbTrangThaiBC.SelectedItem).TenTTBC)
+                switch (((BamChi_TrangThai)cmbTrangThaiBC.SelectedItem).TenTTBC)
                 {
                     case "Bấm Chì Thân":
                     case "Đóng Cửa":

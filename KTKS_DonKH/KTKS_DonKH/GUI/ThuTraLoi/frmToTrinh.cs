@@ -28,13 +28,13 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         CDonTBC _cDonTBC = new CDonTBC();
         CToTrinh _cTT = new CToTrinh();
         CDocSo _cDocSo = new CDocSo();
-        CVeViecToTrinh _cVeViecToTrinh = new CVeViecToTrinh();
+        CToTrinh_VeViec _cVeViecToTrinh = new CToTrinh_VeViec();
 
         DonKH _dontkh = null;
         DonTXL _dontxl = null;
         DonTBC _dontbc = null;
         HOADON _hoadon = null;
-        CTToTrinh _cttt = null;
+        ToTrinh_ChiTiet _cttt = null;
         decimal _MaCTTT = -1;
 
         public frmToTrinh()
@@ -75,7 +75,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             txtDinhMuc.Text = hoadon.DM.ToString();
         }
 
-        public void LoadTT(CTToTrinh cttt)
+        public void LoadTT(ToTrinh_ChiTiet cttt)
         {
             if (cttt.ToTrinh.MaDon != null)
             {
@@ -227,7 +227,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             {
                 try
                 {
-                    CTToTrinh cttt = new CTToTrinh();
+                    ToTrinh_ChiTiet cttt = new ToTrinh_ChiTiet();
 
                     if (_dontkh != null)
                     {
@@ -478,7 +478,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         {
             if (cmbVeViec.SelectedIndex != -1)
             {
-                ToTrinhVeViec vv = (ToTrinhVeViec)cmbVeViec.SelectedItem;
+                ToTrinh_VeViec vv = (ToTrinh_VeViec)cmbVeViec.SelectedItem;
                 txtVeViec.Text = vv.TenVV;
                 txtNoiDung.Text = vv.NoiDung;
                 if (txtMaDonCu.Text.Trim() != "")

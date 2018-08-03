@@ -237,7 +237,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     foreach (DataGridViewRow item in dgvDanhBo.Rows)
                         if (item.Cells["MaDon"].Value != null && item.Cells["DanhBo"].Value != null && item.Cells["GBMoi"].Value != null)
                         {
-                            CTDCBD ctdcbd = new CTDCBD();
+                            DCBD_ChiTietBienDong ctdcbd = new DCBD_ChiTietBienDong();
 
                             ///Đơn Tổ Xử Lý
                             if (item.Cells["MaDon"].Value.ToString().ToUpper().Contains("TXL"))

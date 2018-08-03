@@ -11,7 +11,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
 {
     class CDongNuoc : CDAL
     {
-        ///Chứa hàm truy xuất dữ liệu từ bảng DongNuoc & CTDongNuoc
+        ///Chứa hàm truy xuất dữ liệu từ bảng DongNuoc & DongNuoc_ChiTiet
 
         #region DongNuoc
 
@@ -109,16 +109,16 @@ namespace KTKS_DonKH.DAL.DongNuoc
 
         #endregion
 
-        #region CTDongNuoc
+        #region DongNuoc_ChiTiet
 
-        public bool ThemCT(CTDongNuoc ctdongnuoc)
+        public bool ThemCT(DongNuoc_ChiTiet ctdongnuoc)
         {
             try
             {
-                if (db.CTDongNuocs.Count() > 0)
+                if (db.DongNuoc_ChiTiets.Count() > 0)
                 {
                     string ID = "MaCTDN";
-                    string Table = "CTDongNuoc";
+                    string Table = "DongNuoc_ChiTiet";
                     decimal MaCTDN = db.ExecuteQuery<decimal>("declare @Ma int " +
                         "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
                         "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
@@ -128,7 +128,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
                     ctdongnuoc.MaCTDN = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                 ctdongnuoc.CreateDate = DateTime.Now;
                 ctdongnuoc.CreateBy = CTaiKhoan.MaUser;
-                db.CTDongNuocs.InsertOnSubmit(ctdongnuoc);
+                db.DongNuoc_ChiTiets.InsertOnSubmit(ctdongnuoc);
                 db.SubmitChanges();
                 return true;
             }
@@ -140,7 +140,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public bool SuaCT(CTDongNuoc ctdongnuoc)
+        public bool SuaCT(DongNuoc_ChiTiet ctdongnuoc)
         {
             try
             {
@@ -157,13 +157,13 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public bool XoaCT(CTDongNuoc ctdongnuoc)
+        public bool XoaCT(DongNuoc_ChiTiet ctdongnuoc)
         {
             try
             {
                 decimal ID = ctdongnuoc.MaDN.Value;
-                db.CTDongNuocs.DeleteOnSubmit(ctdongnuoc);
-                if (db.CTDongNuocs.Any(item => item.MaDN == ID) == false)
+                db.DongNuoc_ChiTiets.DeleteOnSubmit(ctdongnuoc);
+                if (db.DongNuoc_ChiTiets.Any(item => item.MaDN == ID) == false)
                     db.DongNuocs.DeleteOnSubmit(db.DongNuocs.SingleOrDefault(item => item.MaDN == ID));
                 db.SubmitChanges();
                 return true;
@@ -181,11 +181,11 @@ namespace KTKS_DonKH.DAL.DongNuoc
             switch (Loai)
             {
                 case "TKH":
-                    return db.CTDongNuocs.Any(item => item.DongNuoc.MaDon == MaDon && item.DanhBo == DanhBo);
+                    return db.DongNuoc_ChiTiets.Any(item => item.DongNuoc.MaDon == MaDon && item.DanhBo == DanhBo);
                 case "TXL":
-                    return db.CTDongNuocs.Any(item => item.DongNuoc.MaDonTXL == MaDon && item.DanhBo == DanhBo);
+                    return db.DongNuoc_ChiTiets.Any(item => item.DongNuoc.MaDonTXL == MaDon && item.DanhBo == DanhBo);
                 case "TBC":
-                    return db.CTDongNuocs.Any(item => item.DongNuoc.MaDonTBC == MaDon && item.DanhBo == DanhBo);
+                    return db.DongNuoc_ChiTiets.Any(item => item.DongNuoc.MaDonTBC == MaDon && item.DanhBo == DanhBo);
                 default:
                     return false;
             }
@@ -199,12 +199,12 @@ namespace KTKS_DonKH.DAL.DongNuoc
         {
             try
             {
-                if (db.CTDongNuocs.Count() > 0)
+                if (db.DongNuoc_ChiTiets.Count() > 0)
                 {
-                    if (db.CTDongNuocs.Max(itemCTDN => itemCTDN.MaCTMN) == null)
+                    if (db.DongNuoc_ChiTiets.Max(itemCTDN => itemCTDN.MaCTMN) == null)
                         return decimal.Parse("1" + DateTime.Now.ToString("yy"));
                     else
-                        return getMaxNextIDTable(db.CTDongNuocs.Max(itemCTDN => itemCTDN.MaCTMN).Value);
+                        return getMaxNextIDTable(db.DongNuoc_ChiTiets.Max(itemCTDN => itemCTDN.MaCTMN).Value);
                 }
                 else
                     return decimal.Parse("1" + DateTime.Now.ToString("yy"));
@@ -216,11 +216,11 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public CTDongNuoc GetCTByMaCTDN(decimal MaCTDN)
+        public DongNuoc_ChiTiet GetCTByMaCTDN(decimal MaCTDN)
         {
             try
             {
-                return db.CTDongNuocs.SingleOrDefault(itemCTDN => itemCTDN.MaCTDN == MaCTDN);
+                return db.DongNuoc_ChiTiets.SingleOrDefault(itemCTDN => itemCTDN.MaCTDN == MaCTDN);
             }
             catch (Exception ex)
             {
@@ -229,11 +229,11 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public CTDongNuoc GetCTByMaCTMN(decimal MaCTMN)
+        public DongNuoc_ChiTiet GetCTByMaCTMN(decimal MaCTMN)
         {
             try
             {
-                return db.CTDongNuocs.SingleOrDefault(itemCTDN => itemCTDN.MaCTMN == MaCTMN);
+                return db.DongNuoc_ChiTiets.SingleOrDefault(itemCTDN => itemCTDN.MaCTMN == MaCTMN);
             }
             catch (Exception ex)
             {
@@ -247,7 +247,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
             switch (Loai)
             {
                 case "TKH":
-                    var query = from item in db.CTDongNuocs
+                    var query = from item in db.DongNuoc_ChiTiets
                                 where item.DongNuoc.MaDon == MaDon
                                 select new
                                 {
@@ -261,7 +261,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
                                 };
                     return LINQToDataTable(query);
                 case "TXL":
-                    query = from item in db.CTDongNuocs
+                    query = from item in db.DongNuoc_ChiTiets
                             where item.DongNuoc.MaDonTXL == MaDon
                             select new
                             {
@@ -275,7 +275,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
                             };
                     return LINQToDataTable(query);
                 case "TBC":
-                    query = from item in db.CTDongNuocs
+                    query = from item in db.DongNuoc_ChiTiets
                             where item.DongNuoc.MaDonTBC == MaDon
                             select new
                             {
@@ -295,7 +295,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
 
         public DataTable GetDSDongNuoc(decimal MaCTDN)
         {
-            var query = from item in db.CTDongNuocs
+            var query = from item in db.DongNuoc_ChiTiets
                         where item.MaCTDN == MaCTDN
                         select new
                         {
@@ -315,7 +315,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
 
         public DataTable GetDSDongNuoc(string DanhBo)
         {
-            var query = from item in db.CTDongNuocs
+            var query = from item in db.DongNuoc_ChiTiets
                         where item.DanhBo==DanhBo
                         select new
                         {
@@ -334,7 +334,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
 
         public DataTable GetDSDongNuocByNgayDN(DateTime FromNgayDN, DateTime ToNgayDN)
         {
-            var query = from item in db.CTDongNuocs
+            var query = from item in db.DongNuoc_ChiTiets
                         where item.NgayDN.Value.Date >= FromNgayDN.Date && item.NgayDN.Value.Date <= ToNgayDN.Date
                         select new
                         {
@@ -354,7 +354,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
 
         public DataTable GetDSDongNuocByCreateDate(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            var query = from item in db.CTDongNuocs
+            var query = from item in db.DongNuoc_ChiTiets
                         where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
                         select new
                         {
@@ -377,7 +377,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
             switch (Loai)
             {
                 case "TKH":
-                    var query = from item in db.CTDongNuocs
+                    var query = from item in db.DongNuoc_ChiTiets
                                 where item.MoNuoc == true && item.DongNuoc.MaDon == MaDon
                                 select new
                                 {
@@ -392,7 +392,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
                                 };
                     return LINQToDataTable(query);
                 case "TXL":
-                    query = from item in db.CTDongNuocs
+                    query = from item in db.DongNuoc_ChiTiets
                             where item.MoNuoc == true && item.DongNuoc.MaDonTXL == MaDon
                             select new
                             {
@@ -407,7 +407,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
                             };
                     return LINQToDataTable(query);
                 case "TBC":
-                    query = from item in db.CTDongNuocs
+                    query = from item in db.DongNuoc_ChiTiets
                             where item.MoNuoc == true && item.DongNuoc.MaDonTBC == MaDon
                             select new
                             {
@@ -428,7 +428,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
 
         public DataTable GetDSMoNuoc(decimal MaCTMN)
         {
-            var query = from item in db.CTDongNuocs
+            var query = from item in db.DongNuoc_ChiTiets
                         where item.MoNuoc == true && item.MaCTMN == MaCTMN
                         select new
                         {
@@ -448,7 +448,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
 
         public DataTable GetDSMoNuoc(string DanhBo)
         {
-            var query = from item in db.CTDongNuocs
+            var query = from item in db.DongNuoc_ChiTiets
                         where item.MoNuoc == true && item.DanhBo==DanhBo
                         select new
                         {
@@ -468,7 +468,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
 
         public DataTable GetDSMoNuoc(DateTime FromNgayMN, DateTime ToNgayMN)
         {
-                var query = from item in db.CTDongNuocs
+                var query = from item in db.DongNuoc_ChiTiets
                             where item.MoNuoc == true && item.NgayMN.Value.Date >= FromNgayMN.Date && item.NgayMN.Value.Date <= ToNgayMN.Date
                             select new
                             {

@@ -10,17 +10,17 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
 {
     class CHienTrangKiemTra : CDAL
     {
-        public bool Them(HienTrangKiemTra entity)
+        public bool Them(KTXM_HienTrang entity)
         {
             try
             {
-                if (db.HienTrangKiemTras.Count() > 0)
-                    entity.MaHTKT = db.HienTrangKiemTras.Max(itemHTKT => itemHTKT.MaHTKT) + 1;
+                if (db.KTXM_HienTrangs.Count() > 0)
+                    entity.MaHTKT = db.KTXM_HienTrangs.Max(itemHTKT => itemHTKT.MaHTKT) + 1;
                 else
                     entity.MaHTKT = 1;
                 entity.CreateDate = DateTime.Now;
                 entity.CreateBy = CTaiKhoan.MaUser;
-                db.HienTrangKiemTras.InsertOnSubmit(entity);
+                db.KTXM_HienTrangs.InsertOnSubmit(entity);
                 db.SubmitChanges();
                 return true;
             }
@@ -32,7 +32,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
-        public bool Sua(HienTrangKiemTra entity)
+        public bool Sua(KTXM_HienTrang entity)
         {
             try
             {
@@ -49,11 +49,11 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
-        public bool Xoa(HienTrangKiemTra entity)
+        public bool Xoa(KTXM_HienTrang entity)
         {
             try
             {
-                db.HienTrangKiemTras.DeleteOnSubmit(entity);
+                db.KTXM_HienTrangs.DeleteOnSubmit(entity);
                 db.SubmitChanges();
                 return true;
             }
@@ -65,22 +65,22 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
-        public HienTrangKiemTra Get(int MaHTKT)
+        public KTXM_HienTrang Get(int MaHTKT)
         {
-            return db.HienTrangKiemTras.SingleOrDefault(itemHTKT => itemHTKT.MaHTKT == MaHTKT);
+            return db.KTXM_HienTrangs.SingleOrDefault(itemHTKT => itemHTKT.MaHTKT == MaHTKT);
         }
 
-        public List<HienTrangKiemTra> GetDS()
+        public List<KTXM_HienTrang> GetDS()
         {
-            return db.HienTrangKiemTras.OrderBy(item => item.STT).ToList();
+            return db.KTXM_HienTrangs.OrderBy(item => item.STT).ToList();
         }
 
         public int GetMaxSTT()
         {
-            if (db.HienTrangKiemTras.Count() == 0)
+            if (db.KTXM_HienTrangs.Count() == 0)
                 return 0;
             else
-                return db.HienTrangKiemTras.Max(item => item.STT).Value;
+                return db.KTXM_HienTrangs.Max(item => item.STT).Value;
         }
     }
 }

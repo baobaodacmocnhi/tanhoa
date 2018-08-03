@@ -160,8 +160,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            //string sql = "select *,SoPhieu=MaCTDCBD,'In'='false' from CTDCBD where CAST(CreateDate as date)>='2018-03-01' and CAST(CreateDate as date)<='2018-03-31' and ChuyenDocSo=0 and PhieuDuocKy=1"
-            //+ " and DanhBo not in (select DanhBo from CTDCBD where CAST(CreateDate as date)>'2018-03-31') order by CreateDate asc";
+            //string sql = "select *,SoPhieu=MaCTDCBD,'In'='false' from DCBD_ChiTietBienDong where CAST(CreateDate as date)>='2018-03-01' and CAST(CreateDate as date)<='2018-03-31' and ChuyenDocSo=0 and PhieuDuocKy=1"
+            //+ " and DanhBo not in (select DanhBo from DCBD_ChiTietBienDong where CAST(CreateDate as date)>'2018-03-31') order by CreateDate asc";
             //dgvDSDCBD.DataSource = _cDCBD.ExecuteQuery_SqlDataAdapter_DataTable(sql);
             switch (cmbTimTheo.SelectedItem.ToString())
             {
@@ -362,7 +362,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                 DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
 
-                                CTDCBD ctdcbd = _cDCBD.getBienDong(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
+                                DCBD_ChiTietBienDong ctdcbd = _cDCBD.getBienDong(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
                                 if (ctdcbd.DCBD.MaDon != null)
                                     dr["MaDon"] = ctdcbd.DCBD.MaDon.ToString().Insert(ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
                                 else
@@ -458,7 +458,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                     DataRow dr = dsBaoCao.Tables["DCHD"].NewRow();
 
-                                    CTDCHD ctdchd = _cDCBD.getHoaDon(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
+                                    DCBD_ChiTietHoaDon ctdchd = _cDCBD.getHoaDon(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
                                     dr["SoPhieu"] = ctdchd.MaCTDCHD.ToString().Insert(ctdchd.MaCTDCHD.ToString().Length - 2, "-");
                                     dr["DanhBo"] = ctdchd.DanhBo.Insert(7, " ").Insert(4, " "); ;
                                     dr["HoTen"] = ctdchd.HoTen;
@@ -722,7 +722,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             if (dgvDSDCBD["In", i].Value != null && bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["PhieuDuocKy", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["ChuyenDocSo", i].Value.ToString()) == false)
                             //using (var scope = new TransactionScope())
                             {
-                                CTDCBD ctdcbd = new CTDCBD();
+                                DCBD_ChiTietBienDong ctdcbd = new DCBD_ChiTietBienDong();
                                 ctdcbd = _cDCBD.getBienDong(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
 
                                 if (ctdcbd != null)
@@ -822,7 +822,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         if (bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["PhieuDuocKy", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["ChuyenDocSo", i].Value.ToString()) == true)
                         //using (var scope = new TransactionScope())
                         {
-                            CTDCBD ctdcbd = new CTDCBD();
+                            DCBD_ChiTietBienDong ctdcbd = new DCBD_ChiTietBienDong();
                             ctdcbd = _cDCBD.getBienDong(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
 
                             if (ctdcbd != null)
@@ -966,7 +966,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                 DataRow dr = dsBaoCao.Tables["DCHD"].NewRow();
 
-                                CTDCHD ctdchd = _cDCBD.getHoaDon(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
+                                DCBD_ChiTietHoaDon ctdchd = _cDCBD.getHoaDon(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
                                 dr["SoPhieu"] = ctdchd.MaCTDCHD.ToString().Insert(ctdchd.MaCTDCHD.ToString().Length - 2, "-");
                                 dr["DanhBo"] = ctdchd.DanhBo.Insert(7, " ").Insert(4, " "); ;
                                 dr["HoTen"] = ctdchd.HoTen;
@@ -1189,7 +1189,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     ischecked = true;
                 else
                     ischecked = false;
-                CTDCBD ctdcbd = _cDCBD.getBienDong(decimal.Parse(dgvDSDCBD.CurrentRow.Cells["SoPhieu"].Value.ToString()));
+                DCBD_ChiTietBienDong ctdcbd = _cDCBD.getBienDong(decimal.Parse(dgvDSDCBD.CurrentRow.Cells["SoPhieu"].Value.ToString()));
                 if (ctdcbd.PhieuDuocKy != ischecked)
                 {
                     ctdcbd.PhieuDuocKy = ischecked;
@@ -1203,7 +1203,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     ischecked = true;
                 else
                     ischecked = false;
-                CTDCHD ctdchd = _cDCBD.getHoaDon(decimal.Parse(dgvDSDCBD.CurrentRow.Cells["SoPhieu"].Value.ToString()));
+                DCBD_ChiTietHoaDon ctdchd = _cDCBD.getHoaDon(decimal.Parse(dgvDSDCBD.CurrentRow.Cells["SoPhieu"].Value.ToString()));
                 if (ctdchd.PhieuDuocKy != ischecked)
                 {
                     ctdchd.PhieuDuocKy = ischecked;
@@ -1306,7 +1306,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (dgvDSDCBD.Columns[e.ColumnIndex].Name == "CodeF2")
             {
-                CTDCHD ctdchd = _cDCBD.getHoaDon(decimal.Parse(dgvDSDCBD["SoPhieu", e.RowIndex].Value.ToString()));
+                DCBD_ChiTietHoaDon ctdchd = _cDCBD.getHoaDon(decimal.Parse(dgvDSDCBD["SoPhieu", e.RowIndex].Value.ToString()));
                 ctdchd.CodeF2 = bool.Parse(dgvDSDCBD["CodeF2", e.RowIndex].Value.ToString());
                 _cDCBD.SuaDCHD(ctdchd);
             }
@@ -1322,7 +1322,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
                         if (dgvDSDCBD["In", i].Value != null && bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true)
                         {
-                            CTDCBD ctdcbd = _cDCBD.getBienDong(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
+                            DCBD_ChiTietBienDong ctdcbd = _cDCBD.getBienDong(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
                             if (ctdcbd.GhiChu != null && ctdcbd.GhiChu != "")
                             {
                                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
@@ -1385,7 +1385,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
                     if (dgvDSDCBD["In", i].Value != null && bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true)
                     {
-                        CTDCBD ctdcbd = _cDCBD.getBienDong(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
+                        DCBD_ChiTietBienDong ctdcbd = _cDCBD.getBienDong(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
                         if (ctdcbd.GhiChu != null && ctdcbd.GhiChu != "")
                         {
                             if (flag == true)

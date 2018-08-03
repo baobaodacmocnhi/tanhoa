@@ -31,7 +31,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         DonTXL _dontxl = null;
         DonTBC _dontbc = null;
         HOADON _hoadon = null;
-        CTKTXM _ctktxm = null;
+        KTXM_ChiTiet _ctktxm = null;
         bool _flagFirst = true;
         decimal _MaCTKTXM = -1;
 
@@ -87,7 +87,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtSoThan.Text = c;
         }
 
-        public void LoadCTKTXM(CTKTXM ctktxm)
+        public void LoadCTKTXM(KTXM_ChiTiet ctktxm)
         {
             if (ctktxm.KTXM.MaDon != null)
             {
@@ -387,7 +387,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         return;
                     }
 
-                    CTKTXM ctktxm = new CTKTXM();
+                    KTXM_ChiTiet ctktxm = new KTXM_ChiTiet();
 
                     if (_dontkh != null)
                     {
@@ -673,7 +673,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
             }
             else
-                switch (((HienTrangKiemTra)cmbHienTrangKiemTra.SelectedItem).TenHTKT)
+                switch (((KTXM_HienTrang)cmbHienTrangKiemTra.SelectedItem).TenHTKT)
                 {
                     case "Nhà đóng cửa":
                         txtChiSo.Enabled = false;

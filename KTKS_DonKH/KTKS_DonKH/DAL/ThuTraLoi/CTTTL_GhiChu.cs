@@ -5,39 +5,42 @@ using System.Text;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.QuanTri;
 using System.Windows.Forms;
+using System.Data;
 
 namespace KTKS_DonKH.DAL.ThuTraLoi
 {
-    class CVeViecTTTL : CDAL
+    class CTTTL_GhiChu : CDAL
     {
-        public bool Them(TTTLVeViec vv)
+        public bool Them(TTTL_GhiChu ghichu)
         {
             try
             {
-                if (db.TTTLVeViecs.Count() > 0)
-                    vv.MaVV = db.TTTLVeViecs.Max(item => item.MaVV) + 1;
+                if (db.TTTL_GhiChus.Count() > 0)
+                {
+                    ghichu.ID = db.TTTL_GhiChus.Max(item => item.ID) + 1;
+                }
                 else
-                    vv.MaVV = 1;
-                vv.CreateDate = DateTime.Now;
-                vv.CreateBy = CTaiKhoan.MaUser;
-                db.TTTLVeViecs.InsertOnSubmit(vv);
+                    ghichu.ID = 1;
+                ghichu.CreateDate = DateTime.Now;
+                ghichu.CreateBy = CTaiKhoan.MaUser;
+                db.TTTL_GhiChus.InsertOnSubmit(ghichu);
                 db.SubmitChanges();
                 return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 db = new dbKinhDoanhDataContext();
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
 
-        public bool Sua(TTTLVeViec vv)
+        public bool Sua(TTTL_GhiChu ghichu)
         {
             try
             {
-                vv.ModifyDate = DateTime.Now;
-                vv.ModifyBy = CTaiKhoan.MaUser;
+                ghichu.ModifyDate = DateTime.Now;
+                ghichu.ModifyBy = CTaiKhoan.MaUser;
                 db.SubmitChanges();
                 return true;
             }
@@ -49,11 +52,11 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             }
         }
 
-        public bool Xoa(TTTLVeViec vv)
+        public bool Xoa(TTTL_GhiChu ghichu)
         {
             try
             {
-                db.TTTLVeViecs.DeleteOnSubmit(vv);
+                db.TTTL_GhiChus.DeleteOnSubmit(ghichu);
                 db.SubmitChanges();
                 return true;
             }
@@ -65,22 +68,14 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             }
         }
 
-        public List<TTTLVeViec> GetDS()
+        public TTTL_GhiChu Get(int ID)
         {
-            return db.TTTLVeViecs.OrderBy(item => item.STT).ToList();
+            return db.TTTL_GhiChus.SingleOrDefault(item => item.ID == ID);
         }
 
-        public TTTLVeViec Get(int MaVV)
+        public DataTable GetDS(decimal MaCTTTTL)
         {
-            return db.TTTLVeViecs.Single(item => item.MaVV == MaVV);
-        }
-
-        public int GetMaxSTT()
-        {
-            if (db.TTTLVeViecs.Count() == 0)
-                return 0;
-            else
-                return db.TTTLVeViecs.Max(item => item.STT).Value;
+            return LINQToDataTable(db.TTTL_GhiChus.Where(item => item.MaCTTTTL == MaCTTTTL).OrderByDescending(item => item.CreateDate).ToList());
         }
     }
 }

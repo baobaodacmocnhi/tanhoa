@@ -11,7 +11,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 {
     class CDCBD : CDAL
     {
-        ///Chứa hàm truy xuất dữ liệu từ bảng DCBD & CTDCBD & CTDCHD
+        ///Chứa hàm truy xuất dữ liệu từ bảng DCBD & DCBD_ChiTietBienDong & DCBD_ChiTietHoaDon
 
         #region DCBD (Điều Chỉnh Biến Động)
 
@@ -144,8 +144,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                ///Bảng CTDCBD
-                var queryCTDCBD = from itemCTDCBD in db.CTDCBDs
+                ///Bảng DCBD_ChiTietBienDong
+                var queryCTDCBD = from itemCTDCBD in db.DCBD_ChiTietBienDongs
                                   where itemCTDCBD.DanhBo == DanhBo
                                   select new
                                   {
@@ -169,8 +169,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                       //itemCTDCBD.GiaHanKT3,
                                       //itemCTDCBD.GiaHanNhapCu,
                                   };
-                ///Bảng CTDCHD
-                var queryCTDCHD = from itemCTDCHD in db.CTDCHDs
+                ///Bảng DCBD_ChiTietHoaDon
+                var queryCTDCHD = from itemCTDCHD in db.DCBD_ChiTietHoaDons
                                   where itemCTDCHD.DanhBo == DanhBo
                                   select new
                                   {
@@ -306,16 +306,16 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         #endregion
 
-        #region CTDCBD (Chi Tiết Điều Chỉnh Biến Động)
+        #region DCBD_ChiTietBienDong (Chi Tiết Điều Chỉnh Biến Động)
 
-        public bool ThemDCBD(CTDCBD ctdcbd)
+        public bool ThemDCBD(DCBD_ChiTietBienDong ctdcbd)
         {
             try
             {
-                if (db.CTDCBDs.Count() > 0)
+                if (db.DCBD_ChiTietBienDongs.Count() > 0)
                 {
                     string ID = "MaCTDCBD";
-                    string Table = "CTDCBD";
+                    string Table = "DCBD_ChiTietBienDong";
                     decimal MaCTDCBD = db.ExecuteQuery<decimal>("declare @Ma int " +
                         "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
                         "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
@@ -325,7 +325,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     ctdcbd.MaCTDCBD = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                 ctdcbd.CreateDate = DateTime.Now;
                 ctdcbd.CreateBy = CTaiKhoan.MaUser;
-                db.CTDCBDs.InsertOnSubmit(ctdcbd);
+                db.DCBD_ChiTietBienDongs.InsertOnSubmit(ctdcbd);
                 db.SubmitChanges();
                 return true;
             }
@@ -337,7 +337,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public bool SuaDCBD(CTDCBD ctdcbd)
+        public bool SuaDCBD(DCBD_ChiTietBienDong ctdcbd)
         {
             try
             {
@@ -354,13 +354,13 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public bool XoaDCBD(CTDCBD ctdcbd)
+        public bool XoaDCBD(DCBD_ChiTietBienDong ctdcbd)
         {
             try
             {
                 decimal ID = ctdcbd.MaDCBD.Value;
-                db.CTDCBDs.DeleteOnSubmit(ctdcbd);
-                if (db.CTDCBDs.Any(item => item.MaDCBD == ID) == false && db.CTDCHDs.Any(item => item.MaDCBD == ID) == false)
+                db.DCBD_ChiTietBienDongs.DeleteOnSubmit(ctdcbd);
+                if (db.DCBD_ChiTietBienDongs.Any(item => item.MaDCBD == ID) == false && db.DCBD_ChiTietHoaDons.Any(item => item.MaDCBD == ID) == false)
                     db.DCBDs.DeleteOnSubmit(db.DCBDs.SingleOrDefault(item => item.MaDCBD == ID));
                 db.SubmitChanges();
                 return true;
@@ -377,7 +377,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                return db.CTDCBDs.Max(itemCTDCBD => itemCTDCBD.MaCTDCBD);
+                return db.DCBD_ChiTietBienDongs.Max(itemCTDCBD => itemCTDCBD.MaCTDCBD);
             }
             catch (Exception ex)
             {
@@ -386,17 +386,17 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public CTDCBD getBienDong(decimal MaCTDCBD)
+        public DCBD_ChiTietBienDong getBienDong(decimal MaCTDCBD)
         {
-            return db.CTDCBDs.SingleOrDefault(item => item.MaCTDCBD == MaCTDCBD);
+            return db.DCBD_ChiTietBienDongs.SingleOrDefault(item => item.MaCTDCBD == MaCTDCBD);
         }
 
-        public CTDCBD getBienDong_Last(string DanhBo)
+        public DCBD_ChiTietBienDong getBienDong_Last(string DanhBo)
         {
             try
             {
-                if (db.CTDCBDs.Where(itemCTDCBD => itemCTDCBD.DanhBo == DanhBo && itemCTDCBD.PhieuDuocKy == true && itemCTDCBD.DinhMuc_BD != null).Count() > 0)
-                    return db.CTDCBDs.Where(itemCTDCBD => itemCTDCBD.DanhBo == DanhBo && itemCTDCBD.PhieuDuocKy == true && itemCTDCBD.DinhMuc_BD != null).OrderByDescending(item => item.CreateDate).First();
+                if (db.DCBD_ChiTietBienDongs.Where(itemCTDCBD => itemCTDCBD.DanhBo == DanhBo && itemCTDCBD.PhieuDuocKy == true && itemCTDCBD.DinhMuc_BD != null).Count() > 0)
+                    return db.DCBD_ChiTietBienDongs.Where(itemCTDCBD => itemCTDCBD.DanhBo == DanhBo && itemCTDCBD.PhieuDuocKy == true && itemCTDCBD.DinhMuc_BD != null).OrderByDescending(item => item.CreateDate).First();
                 else
                     return null;
             }
@@ -411,7 +411,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                return db.CTDCBDs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DanhBo == DanhBo && itemCTDCBD.CreateDate.Value.Date == CreateDate.Date).MaCTDCBD;
+                return db.DCBD_ChiTietBienDongs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DanhBo == DanhBo && itemCTDCBD.CreateDate.Value.Date == CreateDate.Date).MaCTDCBD;
             }
             catch (Exception ex)
             {
@@ -422,14 +422,14 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public bool checkExist_BienDong(decimal MaCTDCBD)
         {
-            return db.CTDCBDs.Any(item => item.MaCTDCBD == MaCTDCBD);
+            return db.DCBD_ChiTietBienDongs.Any(item => item.MaCTDCBD == MaCTDCBD);
         }
 
         public bool checkExist_BienDong(string DanhBo, DateTime CreateDate)
         {
             try
             {
-                return db.CTDCBDs.Any(itemCTDCBD => itemCTDCBD.DanhBo == DanhBo && itemCTDCBD.CreateDate.Value.Date == CreateDate.Date);
+                return db.DCBD_ChiTietBienDongs.Any(itemCTDCBD => itemCTDCBD.DanhBo == DanhBo && itemCTDCBD.CreateDate.Value.Date == CreateDate.Date);
             }
             catch (Exception ex)
             {
@@ -443,11 +443,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             switch (Loai)
             {
                 case "TKH":
-                    return db.CTDCBDs.Any(item => item.DCBD.MaDon == MaDon && item.DanhBo == DanhBo);
+                    return db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == MaDon && item.DanhBo == DanhBo);
                 case "TXL":
-                    return db.CTDCBDs.Any(item => item.DCBD.MaDonTXL == MaDon && item.DanhBo == DanhBo);
+                    return db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == MaDon && item.DanhBo == DanhBo);
                 case "TBC":
-                    return db.CTDCBDs.Any(item => item.DCBD.MaDonTBC == MaDon && item.DanhBo == DanhBo);
+                    return db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == MaDon && item.DanhBo == DanhBo);
                 default:
                     return false;
             }
@@ -457,7 +457,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTDCBD in db.CTDCBDs
+                var query = from itemCTDCBD in db.DCBD_ChiTietBienDongs
                             join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
                             where itemCTDCBD.DCBD.MaDon == MaDon || itemCTDCBD.DCBD.MaDonTXL == MaDon
@@ -503,7 +503,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTDCBD in db.CTDCBDs
+                var query = from itemCTDCBD in db.DCBD_ChiTietBienDongs
                             join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
                             where ((itemCTDCBD.DCBD.MaDon.Value.ToString().Substring(itemCTDCBD.DCBD.MaDon.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCBD.DCBD.MaDon.Value.ToString().Substring(itemCTDCBD.DCBD.MaDon.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
@@ -552,7 +552,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTDCBD in db.CTDCBDs
+                var query = from itemCTDCBD in db.DCBD_ChiTietBienDongs
                             join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
                             where itemCTDCBD.CreateBy == CreateBy && (itemCTDCBD.DCBD.MaDon == MaDon || itemCTDCBD.DCBD.MaDonTXL == MaDon)
@@ -598,7 +598,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTDCBD in db.CTDCBDs
+                var query = from itemCTDCBD in db.DCBD_ChiTietBienDongs
                             join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
                             where itemCTDCBD.CreateBy == CreateBy && (((itemCTDCBD.DCBD.MaDon.Value.ToString().Substring(itemCTDCBD.DCBD.MaDon.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCBD.DCBD.MaDon.Value.ToString().Substring(itemCTDCBD.DCBD.MaDon.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
@@ -647,7 +647,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTDCBD in db.CTDCBDs
+                var query = from itemCTDCBD in db.DCBD_ChiTietBienDongs
                             join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
                             where itemCTDCBD.MaCTDCBD == SoPhieu
@@ -693,7 +693,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTDCBD in db.CTDCBDs
+                var query = from itemCTDCBD in db.DCBD_ChiTietBienDongs
                             join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
                             where itemCTDCBD.MaCTDCBD.ToString().Substring(itemCTDCBD.MaCTDCBD.ToString().Length - 2, 2) == TuSoPhieu.ToString().Substring(TuSoPhieu.ToString().Length - 2, 2)
@@ -741,7 +741,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTDCBD in db.CTDCBDs
+                var query = from itemCTDCBD in db.DCBD_ChiTietBienDongs
                             join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
                             where itemCTDCBD.CreateBy == CreateBy && itemCTDCBD.MaCTDCBD == SoPhieu
@@ -787,7 +787,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTDCBD in db.CTDCBDs
+                var query = from itemCTDCBD in db.DCBD_ChiTietBienDongs
                             join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
                             where itemCTDCBD.CreateBy == CreateBy && itemCTDCBD.MaCTDCBD.ToString().Substring(itemCTDCBD.MaCTDCBD.ToString().Length - 2, 2) == TuSoPhieu.ToString().Substring(TuSoPhieu.ToString().Length - 2, 2)
@@ -835,7 +835,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTDCBD in db.CTDCBDs
+                var query = from itemCTDCBD in db.DCBD_ChiTietBienDongs
                             join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
                             where itemCTDCBD.DanhBo == DanhBo
@@ -881,7 +881,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTDCBD in db.CTDCBDs
+                var query = from itemCTDCBD in db.DCBD_ChiTietBienDongs
                             join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
                             where itemCTDCBD.CreateBy == CreateBy && itemCTDCBD.DanhBo == DanhBo
@@ -927,7 +927,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTDCBD in db.CTDCBDs
+                var query = from itemCTDCBD in db.DCBD_ChiTietBienDongs
                             join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
                             where itemCTDCBD.CreateDate.Value.Date >= FromCreateDate.Date && itemCTDCBD.CreateDate.Value.Date <= ToCreateDate.Date
@@ -964,7 +964,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 return LINQToDataTable(query);
                 //string sql = "select MaCTDCBD,DanhBo,HopDong,HoTen,DiaChi,MaQuanPhuong,MSThue,GiaBieu,DinhMuc,SH,SX,DV,HCSN,Dot,Ky,Nam"
                 //            + " ,ThongTin,HoTen_BD,DiaChi_BD,MSThue_BD,GiaBieu_BD,DinhMuc_BD,SH_BD,SX_BD,DV_BD,HCSN_BD,HieuLucKy,CreateDate=convert(varchar(10),CreateDate,103)"
-                //            + " from CTDCBD where cast(CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and cast(CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
+                //            + " from DCBD_ChiTietBienDong where cast(CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and cast(CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
                 //            + " order by CreateDate asc";
 
                 //return ExecuteQuery_SqlDataAdapter_DataTable(sql);
@@ -982,7 +982,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 if (SoCongVan == true)
                 {
-                    var query = from itemCTDCBD in db.CTDCBDs
+                    var query = from itemCTDCBD in db.DCBD_ChiTietBienDongs
                                 join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
                                 from itemtableND in tableND.DefaultIfEmpty()
                                 where (itemCTDCBD.DCBD.MaDon != null ? itemCTDCBD.DCBD.DonKH.SoCongVan : itemCTDCBD.DCBD.MaDonTXL != null ? itemCTDCBD.DCBD.DonTXL.SoCongVan : itemCTDCBD.DCBD.MaDonTBC != null ? itemCTDCBD.DCBD.DonTBC.SoCongVan : "") != ""
@@ -1020,7 +1020,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 }
                 else
                 {
-                    var query = from itemCTDCBD in db.CTDCBDs
+                    var query = from itemCTDCBD in db.DCBD_ChiTietBienDongs
                                 join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
                                 from itemtableND in tableND.DefaultIfEmpty()
                                 where (itemCTDCBD.DCBD.MaDon != null ? itemCTDCBD.DCBD.DonKH.SoCongVan : itemCTDCBD.DCBD.MaDonTXL != null ? itemCTDCBD.DCBD.DonTXL.SoCongVan : itemCTDCBD.DCBD.MaDonTBC != null ? itemCTDCBD.DCBD.DonTBC.SoCongVan : "") == ""
@@ -1068,7 +1068,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTDCBD in db.CTDCBDs
+                var query = from itemCTDCBD in db.DCBD_ChiTietBienDongs
                             join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
                             where itemCTDCBD.CreateBy == CreateBy && itemCTDCBD.CreateDate.Value.Date >= FromCreateDate.Date && itemCTDCBD.CreateDate.Value.Date <= ToCreateDate.Date
@@ -1112,7 +1112,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public DataTable LoadDSCTDCBD(DateTime TuNgay, DateTime DenNgay, int MaQuan)
         {
-            string sql = "select t1.*,t3.TenQuan from CTDCBD t1"
+            string sql = "select t1.*,t3.TenQuan from DCBD_ChiTietBienDong t1"
                         + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
                         + " left join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
                         + " where CAST(t1.CreateDate as date)>='" + TuNgay.ToString("yyyy-MM-dd") + "' and CAST(t1.CreateDate as date)<='" + DenNgay.ToString("yyyy-MM-dd") + "'"
@@ -1123,7 +1123,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public DataTable LoadDSCTDCBD(DateTime TuNgay, DateTime DenNgay, int MaQuan, int MaPhuong)
         {
-            string sql = "select t1.*,t3.TenQuan,t4.TenPhuong from CTDCBD t1"
+            string sql = "select t1.*,t3.TenQuan,t4.TenPhuong from DCBD_ChiTietBienDong t1"
                         + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
                         + " left join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
                         + " left join SERVER8.CAPNUOCTANHOA.dbo.PHUONG t4 on t2.PHUONG=t4.MAPHUONG and t2.QUAN=t4.MAQUAN"
@@ -1137,8 +1137,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTDCBD in db.CTDCBDs
-                            join itemCTCT in db.CTChungTus on itemCTDCBD.DanhBo equals itemCTCT.DanhBo
+                var query = from itemCTDCBD in db.DCBD_ChiTietBienDongs
+                            join itemCTCT in db.ChungTu_ChiTiets on itemCTDCBD.DanhBo equals itemCTCT.DanhBo
                             join itemTTKH in dbThuTien.HOADONs.GroupBy(item => item.DANHBA).Select(item => item.OrderByDescending(itemB => itemB.CreateDate)).First() on itemCTDCBD.DanhBo equals itemTTKH.DANHBA
                             where itemCTCT.Cat == false && (itemCTCT.ChungTu.MaLCT == 2 || itemCTCT.ChungTu.MaLCT == 5 || itemCTCT.ChungTu.MaLCT == 6 || itemCTCT.ChungTu.MaLCT == 7)
                             && itemCTDCBD.CreateDate.Value.Date >= TuNgay.Date && itemCTDCBD.CreateDate.Value.Date <= DenNgay.Date
@@ -1160,7 +1160,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         }
 
         /// <summary>
-        /// Lấy Danh Sách CTDCBD theo khoảng thời gian Chuyển Đọc Số
+        /// Lấy Danh Sách DCBD_ChiTietBienDong theo khoảng thời gian Chuyển Đọc Số
         /// </summary>
         /// <param name="TuNgay"></param>
         /// <param name="DenNgay"></param>
@@ -1169,7 +1169,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTDCBD in db.CTDCBDs
+                var query = from itemCTDCBD in db.DCBD_ChiTietBienDongs
                             join itemUser in db.Users on itemCTDCBD.CreateBy equals itemUser.MaU
                             where itemCTDCBD.ChuyenDocSo == true && itemCTDCBD.NgayChuyenDocSo.Value.Date >= TuNgay.Date && itemCTDCBD.NgayChuyenDocSo.Value.Date <= DenNgay.Date
                             select new
@@ -1197,16 +1197,16 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         #endregion
 
-        #region CTDCHD (Chi Tiết Điều Chỉnh Hóa Đơn)
+        #region DCBD_ChiTietHoaDon (Chi Tiết Điều Chỉnh Hóa Đơn)
 
-        public bool ThemDCHD(CTDCHD ctdchd)
+        public bool ThemDCHD(DCBD_ChiTietHoaDon ctdchd)
         {
             try
             {
-                if (db.CTDCHDs.Count() > 0)
+                if (db.DCBD_ChiTietHoaDons.Count() > 0)
                 {
                     string ID = "MaCTDCHD";
-                    string Table = "CTDCHD";
+                    string Table = "DCBD_ChiTietHoaDon";
                     decimal MaCTDCHD = db.ExecuteQuery<decimal>("declare @Ma int " +
                         "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
                         "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
@@ -1216,7 +1216,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     ctdchd.MaCTDCHD = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                 ctdchd.CreateDate = DateTime.Now;
                 ctdchd.CreateBy = CTaiKhoan.MaUser;
-                db.CTDCHDs.InsertOnSubmit(ctdchd);
+                db.DCBD_ChiTietHoaDons.InsertOnSubmit(ctdchd);
                 db.SubmitChanges();
                 return true;
             }
@@ -1228,14 +1228,14 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public bool SuaDCHD(CTDCHD ctdchd)
+        public bool SuaDCHD(DCBD_ChiTietHoaDon ctdchd)
         {
             try
             {
                 ctdchd.ModifyDate = DateTime.Now;
                 ctdchd.ModifyBy = CTaiKhoan.MaUser;
                 db.SubmitChanges();
-                //MessageBox.Show("Thành công Sửa CTDCHD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Thành công Sửa DCBD_ChiTietHoaDon", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
             catch (Exception ex)
@@ -1246,16 +1246,16 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public bool XoaDCHD(CTDCHD ctdchd)
+        public bool XoaDCHD(DCBD_ChiTietHoaDon ctdchd)
         {
             try
             {
                 decimal ID = ctdchd.MaDCBD;
-                db.CTDCHDs.DeleteOnSubmit(ctdchd);
-                if (db.CTDCBDs.Any(item => item.MaDCBD == ID) == false && db.CTDCHDs.Any(item => item.MaDCBD == ID) == false)
+                db.DCBD_ChiTietHoaDons.DeleteOnSubmit(ctdchd);
+                if (db.DCBD_ChiTietBienDongs.Any(item => item.MaDCBD == ID) == false && db.DCBD_ChiTietHoaDons.Any(item => item.MaDCBD == ID) == false)
                     db.DCBDs.DeleteOnSubmit(db.DCBDs.SingleOrDefault(item => item.MaDCBD == ID));
                 db.SubmitChanges();
-                //MessageBox.Show("Thành công Xóa CTDCHD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Thành công Xóa DCBD_ChiTietHoaDon", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
             catch (Exception ex)
@@ -1270,7 +1270,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                return db.CTDCHDs.Max(itemCTDCHD => itemCTDCHD.MaCTDCHD);
+                return db.DCBD_ChiTietHoaDons.Max(itemCTDCHD => itemCTDCHD.MaCTDCHD);
             }
             catch (Exception ex)
             {
@@ -1279,11 +1279,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public CTDCHD getHoaDon(decimal MaCTDCHD)
+        public DCBD_ChiTietHoaDon getHoaDon(decimal MaCTDCHD)
         {
             try
             {
-                return db.CTDCHDs.SingleOrDefault(itemCTDCHD => itemCTDCHD.MaCTDCHD == MaCTDCHD);
+                return db.DCBD_ChiTietHoaDons.SingleOrDefault(itemCTDCHD => itemCTDCHD.MaCTDCHD == MaCTDCHD);
             }
             catch (Exception ex)
             {
@@ -1294,7 +1294,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public bool CheckExist_HoaDon(decimal MaCTDCHD)
         {
-            return db.CTDCHDs.Any(item => item.MaCTDCHD == MaCTDCHD);
+            return db.DCBD_ChiTietHoaDons.Any(item => item.MaCTDCHD == MaCTDCHD);
         }
 
         public bool CheckExist_HoaDon(string Loai, decimal MaDon, string DanhBo, string KyHD)
@@ -1302,11 +1302,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             switch (Loai)
             {
                 case "TKH":
-                    return db.CTDCHDs.Any(item => item.DCBD.MaDon == MaDon && item.DanhBo == DanhBo && item.KyHD == KyHD);
+                    return db.DCBD_ChiTietHoaDons.Any(item => item.DCBD.MaDon == MaDon && item.DanhBo == DanhBo && item.KyHD == KyHD);
                 case "TXL":
-                    return db.CTDCHDs.Any(item => item.DCBD.MaDonTXL == MaDon && item.DanhBo == DanhBo && item.KyHD == KyHD);
+                    return db.DCBD_ChiTietHoaDons.Any(item => item.DCBD.MaDonTXL == MaDon && item.DanhBo == DanhBo && item.KyHD == KyHD);
                 case "TBC":
-                    return db.CTDCHDs.Any(item => item.DCBD.MaDonTBC == MaDon && item.DanhBo == DanhBo && item.KyHD == KyHD);
+                    return db.DCBD_ChiTietHoaDons.Any(item => item.DCBD.MaDonTBC == MaDon && item.DanhBo == DanhBo && item.KyHD == KyHD);
                 default:
                     return false;
             }
@@ -1316,7 +1316,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTDCHD in db.CTDCHDs
+                var query = from itemCTDCHD in db.DCBD_ChiTietHoaDons
                             join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
                             where itemCTDCHD.DCBD.MaDon == MaDon || itemCTDCHD.DCBD.MaDonTXL == MaDon
@@ -1357,7 +1357,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTDCHD in db.CTDCHDs
+                var query = from itemCTDCHD in db.DCBD_ChiTietHoaDons
                             join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
                             where ((itemCTDCHD.DCBD.MaDon.Value.ToString().Substring(itemCTDCHD.DCBD.MaDon.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCHD.DCBD.MaDon.Value.ToString().Substring(itemCTDCHD.DCBD.MaDon.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
@@ -1401,7 +1401,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTDCHD in db.CTDCHDs
+                var query = from itemCTDCHD in db.DCBD_ChiTietHoaDons
                             join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
                             where itemCTDCHD.CreateBy == CreateBy && (itemCTDCHD.DCBD.MaDon == MaDon || itemCTDCHD.DCBD.MaDonTXL == MaDon)
@@ -1442,7 +1442,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTDCHD in db.CTDCHDs
+                var query = from itemCTDCHD in db.DCBD_ChiTietHoaDons
                             join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
                             where itemCTDCHD.CreateBy == CreateBy && (((itemCTDCHD.DCBD.MaDon.Value.ToString().Substring(itemCTDCHD.DCBD.MaDon.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCHD.DCBD.MaDon.Value.ToString().Substring(itemCTDCHD.DCBD.MaDon.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
@@ -1486,7 +1486,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTDCHD in db.CTDCHDs
+                var query = from itemCTDCHD in db.DCBD_ChiTietHoaDons
                             join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
                             where itemCTDCHD.MaCTDCHD == SoPhieu
@@ -1527,7 +1527,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTDCHD in db.CTDCHDs
+                var query = from itemCTDCHD in db.DCBD_ChiTietHoaDons
                             join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
                             where itemCTDCHD.MaCTDCHD.ToString().Substring(itemCTDCHD.MaCTDCHD.ToString().Length - 2, 2) == TuSoPhieu.ToString().Substring(TuSoPhieu.ToString().Length - 2, 2)
@@ -1570,7 +1570,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTDCHD in db.CTDCHDs
+                var query = from itemCTDCHD in db.DCBD_ChiTietHoaDons
                             join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
                             where itemCTDCHD.CreateBy == CreateBy && itemCTDCHD.MaCTDCHD == SoPhieu
@@ -1611,7 +1611,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTDCHD in db.CTDCHDs
+                var query = from itemCTDCHD in db.DCBD_ChiTietHoaDons
                             join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
                             where itemCTDCHD.CreateBy == CreateBy && itemCTDCHD.MaCTDCHD.ToString().Substring(itemCTDCHD.MaCTDCHD.ToString().Length - 2, 2) == TuSoPhieu.ToString().Substring(TuSoPhieu.ToString().Length - 2, 2)
@@ -1654,7 +1654,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTDCHD in db.CTDCHDs
+                var query = from itemCTDCHD in db.DCBD_ChiTietHoaDons
                             join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
                             where itemCTDCHD.DanhBo == DanhBo
@@ -1695,7 +1695,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTDCHD in db.CTDCHDs
+                var query = from itemCTDCHD in db.DCBD_ChiTietHoaDons
                             join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
                             where itemCTDCHD.CreateBy == CreateBy && itemCTDCHD.DanhBo == DanhBo
@@ -1737,7 +1737,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTDCHD in db.CTDCHDs
+                var query = from itemCTDCHD in db.DCBD_ChiTietHoaDons
                             join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
                             where itemCTDCHD.CreateDate.Value.Date >= FromCreateDate.Date && itemCTDCHD.CreateDate.Value.Date <= ToCreateDate.Date
@@ -1778,7 +1778,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTDCHD in db.CTDCHDs
+                var query = from itemCTDCHD in db.DCBD_ChiTietHoaDons
                             join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
                             where itemCTDCHD.CreateBy == CreateBy && itemCTDCHD.CreateDate.Value.Date >= FromCreateDate.Date && itemCTDCHD.CreateDate.Value.Date <= ToCreateDate.Date
@@ -1817,7 +1817,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public DataTable LoadDSCTDCHD(DateTime TuNgay, DateTime DenNgay, int MaQuan)
         {
-            string sql = "select t1.*,t3.TenQuan from CTDCHD t1"
+            string sql = "select t1.*,t3.TenQuan from DCBD_ChiTietHoaDon t1"
                         + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
                         + " left join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
                         + " where CAST(t1.CreateDate as date)>='" + TuNgay.ToString("yyyy-MM-dd") + "' and CAST(t1.CreateDate as date)<='" + DenNgay.ToString("yyyy-MM-dd") + "'"
@@ -1828,7 +1828,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public DataTable LoadDSCTDCHD(DateTime TuNgay, DateTime DenNgay, int MaQuan, int MaPhuong)
         {
-            string sql = "select t1.*,t3.TenQuan from CTDCHD t1"
+            string sql = "select t1.*,t3.TenQuan from DCBD_ChiTietHoaDon t1"
                         + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
                         + " left join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
                         + " left join SERVER8.CAPNUOCTANHOA.dbo.PHUONG t4 on t2.PHUONG=t4.MAPHUONG and t2.QUAN=t4.MAQUAN"
@@ -1842,7 +1842,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                return LINQToDataTable(db.CTDCHDs.Where(itemCTDCHD => itemCTDCHD.DanhBo == DanhBo && itemCTDCHD.Nam == Nam && itemCTDCHD.Ky == Ky).ToList());
+                return LINQToDataTable(db.DCBD_ChiTietHoaDons.Where(itemCTDCHD => itemCTDCHD.DanhBo == DanhBo && itemCTDCHD.Nam == Nam && itemCTDCHD.Ky == Ky).ToList());
             }
             catch (Exception ex)
             {

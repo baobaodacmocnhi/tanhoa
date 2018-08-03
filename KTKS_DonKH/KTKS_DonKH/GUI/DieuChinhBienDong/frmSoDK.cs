@@ -85,7 +85,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         if (_cChungTu.CheckExist_CT(_dataT.DanhBo, _dataT.MaCT, _dataT.MaLCT))
                         {
-                            CTChungTu ctchungtu = _cChungTu.GetCT(_dataT.DanhBo, _dataT.MaCT, _dataT.MaLCT);
+                            ChungTu_ChiTiet ctchungtu = _cChungTu.GetCT(_dataT.DanhBo, _dataT.MaCT, _dataT.MaLCT);
                             if (ctchungtu.YeuCauCat2)
                                 this.Location = new Point(10, 70);
 
@@ -186,7 +186,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (_cChungTu.CheckExist_CT(_LSCT.DanhBo, _LSCT.MaCT, _LSCT.MaLCT.Value))
                     {
-                        CTChungTu ctchungtu = _cChungTu.GetCT(_LSCT.DanhBo, _LSCT.MaCT, _LSCT.MaLCT.Value);
+                        ChungTu_ChiTiet ctchungtu = _cChungTu.GetCT(_LSCT.DanhBo, _LSCT.MaCT, _LSCT.MaLCT.Value);
                         if (ctchungtu.YeuCauCat2)
                             this.Location = new Point(10, 70);
 
@@ -314,13 +314,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             }
                             ///Lấy thông tin Chứng Từ để kiểm tra
                             ChungTu _chungtu = _cChungTu.Get(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
-                            if (_chungtu.SoNKTong - _chungtu.CTChungTus.Sum(item => item.SoNKDangKy) < int.Parse(txtSoNKDangKy.Text.Trim()))
+                            if (_chungtu.SoNKTong - _chungtu.ChungTu_ChiTiets.Sum(item => item.SoNKDangKy) < int.Parse(txtSoNKDangKy.Text.Trim()))
                             {
                                 MessageBox.Show("Vượt Nhân Khẩu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
                             ///
-                            CTChungTu ctchungtu = new CTChungTu();
+                            ChungTu_ChiTiet ctchungtu = new ChungTu_ChiTiet();
                             ctchungtu.DanhBo = txtDanhBo.Text.Trim();
                             ctchungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
                             ctchungtu.MaCT = txtMaCT.Text.Trim();
@@ -626,7 +626,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         using (var scope = new TransactionScope())
                         {
                             ChungTu _chungtu = _cChungTu.Get(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
-                            CTChungTu _ctchungtu = _cChungTu.GetCT(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
+                            ChungTu_ChiTiet _ctchungtu = _cChungTu.GetCT(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
                             
                             _chungtu.HoTen = txtHoTen.Text.Trim();
                             _chungtu.DiaChi = txtDiaChi.Text.Trim();
@@ -638,7 +638,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             }
                             _cChungTu.Sua(_chungtu);
 
-                            if (_chungtu.SoNKTong - _chungtu.CTChungTus.Sum(item => item.SoNKDangKy) + _ctchungtu.SoNKDangKy < int.Parse(txtSoNKDangKy.Text.Trim()))
+                            if (_chungtu.SoNKTong - _chungtu.ChungTu_ChiTiets.Sum(item => item.SoNKDangKy) + _ctchungtu.SoNKDangKy < int.Parse(txtSoNKDangKy.Text.Trim()))
                             {
                                 MessageBox.Show("Vượt Nhân Khẩu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;

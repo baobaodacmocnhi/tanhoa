@@ -90,7 +90,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                             DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
 
-                            CTTTTL cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSThu["MaCTTTTL", i].Value.ToString()));
+                            TTTL_ChiTiet cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSThu["MaCTTTTL", i].Value.ToString()));
 
                             //dr["SoPhieu"] = cttttl.MaCTTTTL.ToString().Insert(cttttl.MaCTTTTL.ToString().Length - 2, "-");
                             dr["LoTrinh"] = cttttl.LoTrinh;
@@ -163,7 +163,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     {
                         DataRow dr = dsBaoCao1.Tables["ThaoThuTraLoi"].NewRow();
 
-                        CTTTTL cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSThu["MaCTTTTL", i].Value.ToString()));
+                        TTTL_ChiTiet cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSThu["MaCTTTTL", i].Value.ToString()));
 
                         dr["HoTen"] = cttttl.HoTen;
                         dr["DiaChi"] = cttttl.DiaChi;
@@ -175,7 +175,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     {
                         DataRow dr = dsBaoCao2.Tables["ThaoThuTraLoi"].NewRow();
 
-                        CTTTTL cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSThu["MaCTTTTL", i].Value.ToString()));
+                        TTTL_ChiTiet cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSThu["MaCTTTTL", i].Value.ToString()));
 
                         dr["HoTen"] = cttttl.HoTen;
                         dr["DiaChi"] = cttttl.DiaChi;
@@ -226,7 +226,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         {
             if (dgvDSThu.Columns[e.ColumnIndex].Name == "ThuDuocKy" && e.FormattedValue.ToString() != dgvDSThu[e.ColumnIndex, e.RowIndex].Value.ToString())
             {
-                CTTTTL cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSThu["MaCTTTTL", e.RowIndex].Value.ToString()));
+                TTTL_ChiTiet cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSThu["MaCTTTTL", e.RowIndex].Value.ToString()));
                 cttttl.ThuDuocKy = bool.Parse(e.FormattedValue.ToString());
                 _cTTTL.SuaCT(cttttl);
             }

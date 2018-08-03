@@ -15,8 +15,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
     public partial class frmNoiDungXuLyCHDB : Form
     {
         string _mnu = "mnuNoiDungXuLyCHDB";
-        CNoiDungXuLyCHDB _cNoiDungXuLyCHDB = new CNoiDungXuLyCHDB();
-        BindingList<NoiDungXuLyCHDB> _bSource;
+        CCHDB_NoiDungXuLy _cNoiDungXuLyCHDB = new CCHDB_NoiDungXuLy();
+        BindingList<CHDB_NoiDungXuLy> _bSource;
         int _selectedindex = -1;
 
         public frmNoiDungXuLyCHDB()
@@ -27,7 +27,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         private void frmNoiDungXuLyCHDB_Load(object sender, EventArgs e)
         {
             dgvNoiDung.AutoGenerateColumns = false;
-            _bSource = new BindingList<NoiDungXuLyCHDB>(_cNoiDungXuLyCHDB.GetDS());
+            _bSource = new BindingList<CHDB_NoiDungXuLy>(_cNoiDungXuLyCHDB.GetDS());
             dgvNoiDung.DataSource = _bSource;
         }
 
@@ -35,7 +35,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             txtNoiDung.Text = "";
             _selectedindex = -1;
-            _bSource = new BindingList<NoiDungXuLyCHDB>(_cNoiDungXuLyCHDB.GetDS());
+            _bSource = new BindingList<CHDB_NoiDungXuLy>(_cNoiDungXuLyCHDB.GetDS());
             dgvNoiDung.DataSource = _bSource;
         }
 
@@ -43,7 +43,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
             {
-                NoiDungXuLyCHDB nd = new NoiDungXuLyCHDB();
+                CHDB_NoiDungXuLy nd = new CHDB_NoiDungXuLy();
                 nd.STT = _cNoiDungXuLyCHDB.GetMaxSTT() + 1;
                 nd.NoiDung = txtNoiDung.Text.Trim();
 
@@ -63,7 +63,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 if (_selectedindex != -1)
                     {
-                        NoiDungXuLyCHDB nd = _cNoiDungXuLyCHDB.Get(int.Parse(dgvNoiDung["ID", _selectedindex].Value.ToString()));
+                        CHDB_NoiDungXuLy nd = _cNoiDungXuLyCHDB.Get(int.Parse(dgvNoiDung["ID", _selectedindex].Value.ToString()));
                         nd.NoiDung = txtNoiDung.Text.Trim();
 
                         if (_cNoiDungXuLyCHDB.Sua(nd))
@@ -85,7 +85,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 if (_selectedindex != -1 && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    NoiDungXuLyCHDB nd = _cNoiDungXuLyCHDB.Get(int.Parse(dgvNoiDung["ID", _selectedindex].Value.ToString()));
+                    CHDB_NoiDungXuLy nd = _cNoiDungXuLyCHDB.Get(int.Parse(dgvNoiDung["ID", _selectedindex].Value.ToString()));
 
                     if (_cNoiDungXuLyCHDB.Xoa(nd))
                     {

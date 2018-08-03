@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>817</ApplicationRevision>
+    <ApplicationRevision>818</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -671,7 +671,7 @@
     <Compile Include="DAL\CallCenter\CTiepNhanDon.cs" />
     <Compile Include="DAL\CallCenter\DataGridV.cs" />
     <Compile Include="DAL\CallCenter\DateToString.cs" />
-    <Compile Include="DAL\CatHuyDanhBo\CNoiDungXuLyCHDB.cs" />
+    <Compile Include="DAL\CatHuyDanhBo\CCHDB_NoiDungXuLy.cs" />
     <Compile Include="DAL\CDocSo.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CDataTransfer.cs" />
     <Compile Include="DAL\DonTu\CDonTu.cs" />
@@ -683,7 +683,7 @@
     <Compile Include="DAL\KiemTraXacMinh\CChuyenDe.cs" />
     <Compile Include="DAL\KiemTraXacMinh\CDongTienNoiDung.cs" />
     <Compile Include="DAL\ThuMoi\CThuMoi.cs" />
-    <Compile Include="DAL\ThuTraLoi\CVeViecToTrinh.cs" />
+    <Compile Include="DAL\ThuTraLoi\CToTrinh_VeViec.cs" />
     <Compile Include="DAL\ThuTraLoi\CToTrinh.cs" />
     <Compile Include="DAL\ToKhachHang\CThongTinKhachHang.cs" />
     <Compile Include="DAL\QuanTri\CBanGiamDoc.cs" />
@@ -701,7 +701,7 @@
     <Compile Include="DAL\ToBamChi\CLoaiDonTBC.cs" />
     <Compile Include="DAL\ToXuLy\CLoaiDonTXL.cs" />
     <Compile Include="DAL\BamChi\CTrangThaiBamChi.cs" />
-    <Compile Include="DAL\CatHuyDanhBo\CLyDoCHDB.cs" />
+    <Compile Include="DAL\CatHuyDanhBo\CCHDB_LyDo.cs" />
     <Compile Include="DAL\CatHuyDanhBo\CCHDB.cs" />
     <Compile Include="DAL\CBaoCao.cs" />
     <Compile Include="DAL\CDAL.cs" />
@@ -715,9 +715,9 @@
     <Compile Include="DAL\ToKhachHang\CDonDienThoai.cs" />
     <Compile Include="DAL\ToKhachHang\CDonKH.cs" />
     <Compile Include="DAL\KiemTraXacMinh\CKTXM.cs" />
-    <Compile Include="DAL\ThuTraLoi\CGhiChuCTTTTL.cs" />
+    <Compile Include="DAL\ThuTraLoi\CTTTL_GhiChu.cs" />
     <Compile Include="DAL\ThuTraLoi\CTTTL.cs" />
-    <Compile Include="DAL\ThuTraLoi\CVeViecTTTL.cs" />
+    <Compile Include="DAL\ThuTraLoi\CTTTL_VeViec.cs" />
     <Compile Include="DAL\TimKiem\CTimKiem.cs" />
     <Compile Include="DAL\ToXuLy\CDonTXL.cs" />
     <Compile Include="DAL\ToXuLy\CGianLan.cs" />

@@ -39,7 +39,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         DonTXL _dontxl = null;
         DonTBC _dontbc = null;
         HOADON _hoadon = null;
-        CTDCBD _ctdcbd = null;
+        DCBD_ChiTietBienDong _ctdcbd = null;
         bool _flagCtrl3 = false;
         decimal _MaCTDCBD = -1;
 
@@ -113,7 +113,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             LoadTongNK();
         }
 
-        private void LoadDCBD(CTDCBD ctdcbd)
+        private void LoadDCBD(DCBD_ChiTietBienDong ctdcbd)
         {
             if (ctdcbd.DCBD.MaDon != null)
             {
@@ -456,7 +456,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         return;
                     }
 
-                    CTDCBD ctdcbd = new CTDCBD();
+                    DCBD_ChiTietBienDong ctdcbd = new DCBD_ChiTietBienDong();
 
                     if (_dontkh != null)
                     {
@@ -1007,7 +1007,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        CTChungTu ctchungtu = _cChungTu.GetCT(txtDanhBo.Text.Trim(), dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString(), int.Parse(dgvDSSoDangKy.CurrentRow.Cells["MaLCT"].Value.ToString()));
+                        ChungTu_ChiTiet ctchungtu = _cChungTu.GetCT(txtDanhBo.Text.Trim(), dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString(), int.Parse(dgvDSSoDangKy.CurrentRow.Cells["MaLCT"].Value.ToString()));
                         if (_cChungTu.XoaCT(ctchungtu))
                         {
                             dgvDSSoDangKy.DataSource = _cChungTu.GetDSCT(txtDanhBo.Text.Trim());
@@ -1082,7 +1082,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     ///Hiện tại nếu check Cat mà exit bằng X thì dữ liệu không được lưu
                     ///Sau khi check phải check qua chỗ khác mới lưu
-                    CTChungTu ctchungtu = _cChungTu.GetCT(dgvDSSoDangKy["DanhBo", e.RowIndex].Value.ToString(), dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString(), int.Parse(dgvDSSoDangKy["MaLCT", e.RowIndex].Value.ToString()));
+                    ChungTu_ChiTiet ctchungtu = _cChungTu.GetCT(dgvDSSoDangKy["DanhBo", e.RowIndex].Value.ToString(), dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString(), int.Parse(dgvDSSoDangKy["MaLCT", e.RowIndex].Value.ToString()));
                     if (bool.Parse(dgvDSSoDangKy["Cat", e.RowIndex].Value.ToString()) != ctchungtu.Cat)
                     {
                         ctchungtu.Cat = bool.Parse(dgvDSSoDangKy["Cat", e.RowIndex].Value.ToString());
@@ -1148,7 +1148,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (dgvDSDieuChinh["DieuChinh", e.RowIndex].Value.ToString() == "Biến Động")
             {
-                CTDCBD ctdcbd = _cDCBD.getBienDong(decimal.Parse(dgvDSDieuChinh["MaDC", e.RowIndex].Value.ToString()));
+                DCBD_ChiTietBienDong ctdcbd = _cDCBD.getBienDong(decimal.Parse(dgvDSDieuChinh["MaDC", e.RowIndex].Value.ToString()));
                 DataTable dt = (DataTable)dgvDSSoDangKy.DataSource;
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 if (dt.Rows.Count == 0)
@@ -1370,7 +1370,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
 
-            //CTDCBD ctdcbd = _cDCBD.GetDCBDByMaCTDCBD(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
+            //DCBD_ChiTietBienDong ctdcbd = _cDCBD.GetDCBDByMaCTDCBD(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
             if (_ctdcbd.DCBD.MaDon != null)
                 dr["MaDon"] = _ctdcbd.DCBD.MaDon.ToString().Insert(_ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
             else

@@ -591,7 +591,7 @@ namespace KTKS_DonKH.GUI.TimKiem
                                     if (itemChildRow["DaLapPhieu"].ToString() == "True")
                                     {
                                         CCHDB cCHDB = new CCHDB();
-                                        PhieuCHDB ycchdb = cCHDB.GetPhieuHuy(decimal.Parse(itemChildRow["SoPhieu"].ToString()));
+                                        CHDB_Phieu ycchdb = cCHDB.GetPhieuHuy(decimal.Parse(itemChildRow["SoPhieu"].ToString()));
                                         dr["NoiDungXuLy"] += ", Đã Lập Phiếu YCCH số: " + itemChildRow["SoPhieu"].ToString().Insert(itemChildRow["SoPhieu"].ToString().Length - 2, "-") + ", Ngày Lập: " + itemChildRow["NgayLapPhieu"] + ", Hiệu Lực Kỳ: " + ycchdb.HieuLucKy;
                                     }
                                 }

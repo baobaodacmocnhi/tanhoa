@@ -17,7 +17,7 @@ namespace KTKS_DonKH.GUI.BamChi
         string _mnu = "mnuTrangThaiBamChi";
         CTrangThaiBamChi _cTrangThaiBamChi = new CTrangThaiBamChi();
         int _selectedindexTTBC = -1;
-        BindingList<TrangThaiBamChi> _blTrangThaiBamChi;
+        BindingList<BamChi_TrangThai> _blTrangThaiBamChi;
 
         public frmTrangThaiBamChi()
         {
@@ -32,7 +32,7 @@ namespace KTKS_DonKH.GUI.BamChi
 
         public void LoadDataTable()
         {
-            _blTrangThaiBamChi = new BindingList<TrangThaiBamChi>(_cTrangThaiBamChi.GetDS());
+            _blTrangThaiBamChi = new BindingList<BamChi_TrangThai>(_cTrangThaiBamChi.GetDS());
             dgvDSTrangThaiBC.DataSource = _blTrangThaiBamChi;
         }
 
@@ -65,7 +65,7 @@ namespace KTKS_DonKH.GUI.BamChi
             {
                 if (txtTrangThaiBC.Text.Trim() != "")
                 {
-                    TrangThaiBamChi trangthaibamchi = new TrangThaiBamChi();
+                    BamChi_TrangThai trangthaibamchi = new BamChi_TrangThai();
                     trangthaibamchi.TenTTBC = txtTrangThaiBC.Text.Trim();
                     trangthaibamchi.STT = _cTrangThaiBamChi.GetMaxSTT() + 1;
 
@@ -89,7 +89,7 @@ namespace KTKS_DonKH.GUI.BamChi
                 if (_selectedindexTTBC != -1)
                     if (txtTrangThaiBC.Text.Trim() != "")
                     {
-                        TrangThaiBamChi trangthaibamchi = _cTrangThaiBamChi.Get(int.Parse(dgvDSTrangThaiBC["MaTTBC", _selectedindexTTBC].Value.ToString()));
+                        BamChi_TrangThai trangthaibamchi = _cTrangThaiBamChi.Get(int.Parse(dgvDSTrangThaiBC["MaTTBC", _selectedindexTTBC].Value.ToString()));
                         trangthaibamchi.TenTTBC = txtTrangThaiBC.Text.Trim();
 
                         if (_cTrangThaiBamChi.Sua(trangthaibamchi))
@@ -146,7 +146,7 @@ namespace KTKS_DonKH.GUI.BamChi
                 //dgvDSTrangThaiBC.Rows[rowIndex].Selected = false;
                 for (int i = 0; i < dgvDSTrangThaiBC.Rows.Count; i++)
                 {
-                    TrangThaiBamChi trangthaibamchi = _cTrangThaiBamChi.Get(int.Parse(dgvDSTrangThaiBC["MaTTBC", i].Value.ToString()));
+                    BamChi_TrangThai trangthaibamchi = _cTrangThaiBamChi.Get(int.Parse(dgvDSTrangThaiBC["MaTTBC", i].Value.ToString()));
                     trangthaibamchi.STT = i;
                     _cTrangThaiBamChi.Sua(trangthaibamchi);
                 }
@@ -181,7 +181,7 @@ namespace KTKS_DonKH.GUI.BamChi
                 //dgvDSTrangThaiBC.Rows[rowIndex].Selected = false;
                 for (int i = 0; i < dgvDSTrangThaiBC.Rows.Count; i++)
                 {
-                    TrangThaiBamChi trangthaibamchi = _cTrangThaiBamChi.Get(int.Parse(dgvDSTrangThaiBC["MaTTBC", i].Value.ToString()));
+                    BamChi_TrangThai trangthaibamchi = _cTrangThaiBamChi.Get(int.Parse(dgvDSTrangThaiBC["MaTTBC", i].Value.ToString()));
                     trangthaibamchi.STT = i;
                     _cTrangThaiBamChi.Sua(trangthaibamchi);
                 }

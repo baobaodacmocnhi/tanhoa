@@ -30,13 +30,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CDocSo _cDocSo = new CDocSo();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CCHDB _cCHDB = new CCHDB();
-        CLyDoCHDB _cLyDoCHDB = new CLyDoCHDB();
+        CCHDB_LyDo _cLyDoCHDB = new CCHDB_LyDo();
 
         DonKH _dontkh = null;
         DonTXL _dontxl = null;
         DonTBC _dontbc = null;
         HOADON _hoadon = null;
-        PhieuCHDB _ycchdb = null;
+        CHDB_Phieu _ycchdb = null;
         decimal _MaYCCHDB = -1;
 
         public frmYCCHDB()
@@ -74,7 +74,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
         }
 
-        public void LoadPhieuCHDB(PhieuCHDB phieuCHDB)
+        public void LoadPhieuCHDB(CHDB_Phieu phieuCHDB)
         {
             if (phieuCHDB.MaDon != null)
             {
@@ -342,7 +342,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 try
                 {
-                    PhieuCHDB ycchdb = new PhieuCHDB();
+                    CHDB_Phieu ycchdb = new CHDB_Phieu();
                     if (_dontkh != null)
                     {
                         if (_cCHDB.CheckExist_PhieuHuy("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim()) == true)
@@ -524,7 +524,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 if (_ycchdb != null)
                 {
                     DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                    DataRow dr = dsBaoCao.Tables["PhieuCHDB"].NewRow();
+                    DataRow dr = dsBaoCao.Tables["CHDB_Phieu"].NewRow();
 
                     dr["SoPhieu"] = _ycchdb.MaYCCHDB.ToString().Insert(_ycchdb.MaYCCHDB.ToString().Length - 2, "-");
                     dr["HieuLucKy"] = _ycchdb.HieuLucKy;
@@ -556,7 +556,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             if (_ycchdb.MaDonTBC != null)
                                 dr["MaDon"] = "TBC" + _ycchdb.MaDonTBC.ToString().Insert(_ycchdb.MaDonTBC.ToString().Length - 2, "-");
 
-                    dsBaoCao.Tables["PhieuCHDB"].Rows.Add(dr);
+                    dsBaoCao.Tables["CHDB_Phieu"].Rows.Add(dr);
 
                     //rptPhieuCHDBx2 rpt = new rptPhieuCHDBx2();
                     //for (int j = 0; j < rpt.Subreports.Count; j++)

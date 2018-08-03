@@ -11,7 +11,7 @@ namespace KTKS_DonKH.DAL.BamChi
 {
     class CBamChi : CDAL
     {
-        ///Chứa hàm truy xuất dữ liệu từ bảng BamChi & CTBamChi
+        ///Chứa hàm truy xuất dữ liệu từ bảng BamChi & BamChi_ChiTiet
 
         #region BamChi (Bấm Chì)
 
@@ -125,27 +125,27 @@ namespace KTKS_DonKH.DAL.BamChi
 
         #endregion
 
-        #region CTBamChi (Chi Tiết Bấm Chì)
+        #region BamChi_ChiTiet (Chi Tiết Bấm Chì)
 
-        public bool ThemCT(CTBamChi ctbamchi)
+        public bool ThemCT(BamChi_ChiTiet ctbamchi)
         {
             try
             {
-                if (db.CTBamChis.Count() > 0)
+                if (db.BamChi_ChiTiets.Count() > 0)
                 {
                     string ID = "MaCTBC";
-                    string Table = "CTBamChi";
+                    string Table = "BamChi_ChiTiet";
                     decimal MaCTBC = db.ExecuteQuery<decimal>("declare @Ma int " +
                         "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
                         "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
-                    //decimal MaCTBC = db.CTBamChis.Max(itemCTBamChi => itemCTBamChi.MaCTBC);
+                    //decimal MaCTBC = db.BamChi_ChiTiets.Max(itemCTBamChi => itemCTBamChi.MaCTBC);
                     ctbamchi.MaCTBC = getMaxNextIDTable(MaCTBC);
                 }
                 else
                     ctbamchi.MaCTBC = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                 ctbamchi.CreateDate = DateTime.Now;
                 ctbamchi.CreateBy = CTaiKhoan.MaUser;
-                db.CTBamChis.InsertOnSubmit(ctbamchi);
+                db.BamChi_ChiTiets.InsertOnSubmit(ctbamchi);
                 db.SubmitChanges();
                 return true;
             }
@@ -157,7 +157,7 @@ namespace KTKS_DonKH.DAL.BamChi
             }
         }
 
-        public bool SuaCT(CTBamChi ctbamchi)
+        public bool SuaCT(BamChi_ChiTiet ctbamchi)
         {
             try
             {
@@ -174,13 +174,13 @@ namespace KTKS_DonKH.DAL.BamChi
             }
         }
 
-        public bool XoaCT(CTBamChi ctbamchi)
+        public bool XoaCT(BamChi_ChiTiet ctbamchi)
         {
             try
             {
                 decimal MaBC = ctbamchi.MaBC.Value;
-                db.CTBamChis.DeleteOnSubmit(ctbamchi);
-                if (db.CTBamChis.Any(item => item.MaBC == MaBC) == false)
+                db.BamChi_ChiTiets.DeleteOnSubmit(ctbamchi);
+                if (db.BamChi_ChiTiets.Any(item => item.MaBC == MaBC) == false)
                     db.BamChis.DeleteOnSubmit(db.BamChis.SingleOrDefault(item => item.MaBC == MaBC));
                 db.SubmitChanges();
                 return true;
@@ -198,21 +198,21 @@ namespace KTKS_DonKH.DAL.BamChi
             switch (Loai)
             {
                 case "TKH":
-                    return db.CTBamChis.Any(item => item.BamChi.MaDon == MaDon && item.DanhBo == DanhBo && item.NgayBC.Value.Date == NgayBC.Date && item.TrangThaiBC == TrangThaiBamChi);
+                    return db.BamChi_ChiTiets.Any(item => item.BamChi.MaDon == MaDon && item.DanhBo == DanhBo && item.NgayBC.Value.Date == NgayBC.Date && item.TrangThaiBC == TrangThaiBamChi);
                 case "TXL":
-                    return db.CTBamChis.Any(item => item.BamChi.MaDonTXL == MaDon && item.DanhBo == DanhBo && item.NgayBC.Value.Date == NgayBC.Date && item.TrangThaiBC == TrangThaiBamChi);
+                    return db.BamChi_ChiTiets.Any(item => item.BamChi.MaDonTXL == MaDon && item.DanhBo == DanhBo && item.NgayBC.Value.Date == NgayBC.Date && item.TrangThaiBC == TrangThaiBamChi);
                 case "TBC":
-                    return db.CTBamChis.Any(item => item.BamChi.MaDonTBC == MaDon && item.DanhBo == DanhBo && item.NgayBC.Value.Date == NgayBC.Date && item.TrangThaiBC == TrangThaiBamChi);
+                    return db.BamChi_ChiTiets.Any(item => item.BamChi.MaDonTBC == MaDon && item.DanhBo == DanhBo && item.NgayBC.Value.Date == NgayBC.Date && item.TrangThaiBC == TrangThaiBamChi);
                 default:
                     return false;
             }
         }
 
-        public CTBamChi GetCT(decimal MaCTBC)
+        public BamChi_ChiTiet GetCT(decimal MaCTBC)
         {
             try
             {
-                return db.CTBamChis.SingleOrDefault(itemCTBamChi => itemCTBamChi.MaCTBC == MaCTBC);
+                return db.BamChi_ChiTiets.SingleOrDefault(itemCTBamChi => itemCTBamChi.MaCTBC == MaCTBC);
             }
             catch (Exception ex)
             {
@@ -226,7 +226,7 @@ namespace KTKS_DonKH.DAL.BamChi
             switch (Loai)
             {
                 case "TKH":
-                    var query = from itemCTBamChi in db.CTBamChis
+                    var query = from itemCTBamChi in db.BamChi_ChiTiets
                                 join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
                                 where itemCTBamChi.BamChi.MaDon != null
                                 && itemCTBamChi.NgayBC.Value.Date >= FromNgayBC.Date && itemCTBamChi.NgayBC.Value.Date <= ToNgayBC.Date
@@ -252,7 +252,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 };
                     return LINQToDataTable(query.OrderBy(item=>item.TenLD));
                 case "TXL":
-                    query = from itemCTBamChi in db.CTBamChis
+                    query = from itemCTBamChi in db.BamChi_ChiTiets
                             join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
                             where itemCTBamChi.BamChi.MaDonTXL != null
                             && itemCTBamChi.NgayBC.Value.Date >= FromNgayBC.Date && itemCTBamChi.NgayBC.Value.Date <= ToNgayBC.Date
@@ -278,7 +278,7 @@ namespace KTKS_DonKH.DAL.BamChi
                             };
                     return LINQToDataTable(query.OrderBy(item => item.TenLD));
                 case "TBC":
-                    query = from itemCTBamChi in db.CTBamChis
+                    query = from itemCTBamChi in db.BamChi_ChiTiets
                             join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
                             where itemCTBamChi.BamChi.MaDonTBC != null
                             && itemCTBamChi.NgayBC.Value.Date >= FromNgayBC.Date && itemCTBamChi.NgayBC.Value.Date <= ToNgayBC.Date
@@ -304,7 +304,7 @@ namespace KTKS_DonKH.DAL.BamChi
                             };
                     return LINQToDataTable(query.OrderBy(item => item.TenLD));
                 default:
-                    query = from itemCTBamChi in db.CTBamChis
+                    query = from itemCTBamChi in db.BamChi_ChiTiets
                             join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
                             where itemCTBamChi.NgayBC.Value.Date >= FromNgayBC.Date && itemCTBamChi.NgayBC.Value.Date <= ToNgayBC.Date
                             select new
@@ -340,7 +340,7 @@ namespace KTKS_DonKH.DAL.BamChi
             switch (Loai)
             {
                 case "TKH":
-                    var query = from itemCTBamChi in db.CTBamChis
+                    var query = from itemCTBamChi in db.BamChi_ChiTiets
                                 join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
                                 where itemCTBamChi.CreateBy == CreateBy && itemCTBamChi.BamChi.MaDon == MaDon
                                 select new
@@ -365,7 +365,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 };
                     return LINQToDataTable(query);
                 case "TXL":
-                    query = from itemCTBamChi in db.CTBamChis
+                    query = from itemCTBamChi in db.BamChi_ChiTiets
                             join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
                             where itemCTBamChi.CreateBy == CreateBy && itemCTBamChi.BamChi.MaDonTXL == MaDon
                             select new
@@ -390,7 +390,7 @@ namespace KTKS_DonKH.DAL.BamChi
                             };
                     return LINQToDataTable(query);
                 case "TBC":
-                    query = from itemCTBamChi in db.CTBamChis
+                    query = from itemCTBamChi in db.BamChi_ChiTiets
                             join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
                             where itemCTBamChi.CreateBy == CreateBy && itemCTBamChi.BamChi.MaDonTBC == MaDon
                             select new
@@ -424,7 +424,7 @@ namespace KTKS_DonKH.DAL.BamChi
             switch (Loai)
             {
                 case "TKH":
-                    var query = from itemCTBamChi in db.CTBamChis
+                    var query = from itemCTBamChi in db.BamChi_ChiTiets
                                 join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
                                 where itemCTBamChi.BamChi.MaDon == MaDon
                                 select new
@@ -449,7 +449,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 };
                     return LINQToDataTable(query);
                 case "TXL":
-                    query = from itemCTBamChi in db.CTBamChis
+                    query = from itemCTBamChi in db.BamChi_ChiTiets
                             join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
                             where itemCTBamChi.BamChi.MaDonTXL == MaDon
                             select new
@@ -474,7 +474,7 @@ namespace KTKS_DonKH.DAL.BamChi
                             };
                     return LINQToDataTable(query);
                 case "TBC":
-                    query = from itemCTBamChi in db.CTBamChis
+                    query = from itemCTBamChi in db.BamChi_ChiTiets
                             join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
                             where itemCTBamChi.BamChi.MaDonTBC == MaDon
                             select new
@@ -508,7 +508,7 @@ namespace KTKS_DonKH.DAL.BamChi
             switch (Loai)
             {
                 case "TKH":
-                    var query = from itemCTBamChi in db.CTBamChis
+                    var query = from itemCTBamChi in db.BamChi_ChiTiets
                                 join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
                                 where itemCTBamChi.BamChi.MaDon == MaDon && itemCTBamChi.DanhBo == DanhBo
                                 select new
@@ -533,7 +533,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 };
                     return LINQToDataTable(query);
                 case "TXL":
-                    query = from itemCTBamChi in db.CTBamChis
+                    query = from itemCTBamChi in db.BamChi_ChiTiets
                             join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
                             where itemCTBamChi.BamChi.MaDonTXL == MaDon && itemCTBamChi.DanhBo == DanhBo
                             select new
@@ -558,7 +558,7 @@ namespace KTKS_DonKH.DAL.BamChi
                             };
                     return LINQToDataTable(query);
                 case "TBC":
-                    query = from itemCTBamChi in db.CTBamChis
+                    query = from itemCTBamChi in db.BamChi_ChiTiets
                             join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
                             where itemCTBamChi.BamChi.MaDonTBC == MaDon && itemCTBamChi.DanhBo == DanhBo
                             select new
@@ -591,7 +591,7 @@ namespace KTKS_DonKH.DAL.BamChi
         {
             DataTable dt = new DataTable();
 
-            var query = from itemCTBamChi in db.CTBamChis
+            var query = from itemCTBamChi in db.BamChi_ChiTiets
                         join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
                         where itemCTBamChi.BamChi.MaDon != null && itemCTBamChi.CreateBy == CreateBy
                         && itemCTBamChi.DanhBo == DanhBo
@@ -617,7 +617,7 @@ namespace KTKS_DonKH.DAL.BamChi
                         };
             dt = LINQToDataTable(query);
 
-            query = from itemCTBamChi in db.CTBamChis
+            query = from itemCTBamChi in db.BamChi_ChiTiets
                     join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
                     where itemCTBamChi.BamChi.MaDonTXL != null && itemCTBamChi.CreateBy == CreateBy
                     && itemCTBamChi.DanhBo == DanhBo
@@ -643,7 +643,7 @@ namespace KTKS_DonKH.DAL.BamChi
                     };
             dt.Merge(LINQToDataTable(query));
 
-            query = from itemCTBamChi in db.CTBamChis
+            query = from itemCTBamChi in db.BamChi_ChiTiets
                     join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
                     where itemCTBamChi.BamChi.MaDonTBC != null && itemCTBamChi.CreateBy == CreateBy
                     && itemCTBamChi.DanhBo == DanhBo
@@ -676,7 +676,7 @@ namespace KTKS_DonKH.DAL.BamChi
         {
             DataTable dt = new DataTable();
 
-            var query = from itemCTBamChi in db.CTBamChis
+            var query = from itemCTBamChi in db.BamChi_ChiTiets
                         join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
                         where itemCTBamChi.BamChi.MaDon != null && itemCTBamChi.CreateBy == CreateBy
                         && itemCTBamChi.NgayBC.Value.Date >= FromNgayBC.Date && itemCTBamChi.NgayBC.Value.Date <= ToNgayBC.Date
@@ -702,7 +702,7 @@ namespace KTKS_DonKH.DAL.BamChi
                         };
             dt = LINQToDataTable(query);
 
-            query = from itemCTBamChi in db.CTBamChis
+            query = from itemCTBamChi in db.BamChi_ChiTiets
                     join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
                     where itemCTBamChi.BamChi.MaDonTXL != null && itemCTBamChi.CreateBy == CreateBy
                     && itemCTBamChi.NgayBC.Value.Date >= FromNgayBC.Date && itemCTBamChi.NgayBC.Value.Date <= ToNgayBC.Date
@@ -728,7 +728,7 @@ namespace KTKS_DonKH.DAL.BamChi
                     };
             dt.Merge(LINQToDataTable(query));
 
-            query = from itemCTBamChi in db.CTBamChis
+            query = from itemCTBamChi in db.BamChi_ChiTiets
                     join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
                     where itemCTBamChi.BamChi.MaDonTBC != null && itemCTBamChi.CreateBy == CreateBy
                     && itemCTBamChi.NgayBC.Value.Date >= FromNgayBC.Date && itemCTBamChi.NgayBC.Value.Date <= ToNgayBC.Date
@@ -760,7 +760,7 @@ namespace KTKS_DonKH.DAL.BamChi
         public DataTable GetDS(DateTime FromNgayBC, DateTime ToNgayBC)
         {
             DataTable dt = new DataTable();
-            var query = from itemCTBamChi in db.CTBamChis
+            var query = from itemCTBamChi in db.BamChi_ChiTiets
                         join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
                         where itemCTBamChi.BamChi.MaDon != null
                         && itemCTBamChi.NgayBC.Value.Date >= FromNgayBC.Date && itemCTBamChi.NgayBC.Value.Date <= ToNgayBC.Date
@@ -786,7 +786,7 @@ namespace KTKS_DonKH.DAL.BamChi
                         };
             dt = LINQToDataTable(query);
 
-            query = from itemCTBamChi in db.CTBamChis
+            query = from itemCTBamChi in db.BamChi_ChiTiets
                     join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
                     where itemCTBamChi.BamChi.MaDonTXL != null
                     && itemCTBamChi.NgayBC.Value.Date >= FromNgayBC.Date && itemCTBamChi.NgayBC.Value.Date <= ToNgayBC.Date
@@ -812,7 +812,7 @@ namespace KTKS_DonKH.DAL.BamChi
                     };
             dt.Merge(LINQToDataTable(query));
 
-            query = from itemCTBamChi in db.CTBamChis
+            query = from itemCTBamChi in db.BamChi_ChiTiets
                     join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
                     where itemCTBamChi.BamChi.MaDonTBC != null
                     && itemCTBamChi.NgayBC.Value.Date >= FromNgayBC.Date && itemCTBamChi.NgayBC.Value.Date <= ToNgayBC.Date

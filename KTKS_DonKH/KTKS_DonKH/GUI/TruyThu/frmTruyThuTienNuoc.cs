@@ -119,7 +119,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             txtDienThoai.Text = tttn.DienThoai;
             txtNoiDung.Text = tttn.NoiDung;
 
-            foreach (CTTruyThuTienNuoc item in tttn.CTTruyThuTienNuocs.ToList())
+            foreach (TruyThuTienNuoc_ChiTiet item in tttn.TruyThuTienNuoc_ChiTiets.ToList())
             {
                 dgvTruyThuTienNuoc.Rows.Insert(dgvTruyThuTienNuoc.RowCount - 1, 1);
 
@@ -736,7 +736,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             if (e.KeyCode == Keys.Delete)
                 if (dgvTruyThuTienNuoc.SelectedRows[0].Cells["MaCTTTTN"].Value != null)
                 {
-                    CTTruyThuTienNuoc cttttn = _cTTTN.GetCT(int.Parse(dgvTruyThuTienNuoc.SelectedRows[0].Cells["MaCTTTTN"].Value.ToString()));
+                    TruyThuTienNuoc_ChiTiet cttttn = _cTTTN.GetCT(int.Parse(dgvTruyThuTienNuoc.SelectedRows[0].Cells["MaCTTTTN"].Value.ToString()));
                     _cTTTN.XoaCT(cttttn);
                 }
         }
@@ -829,7 +829,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         if(item.Cells["Ky"].Value != null&&item.Cells["Ky"].ToString()!="" )
                             if (_cTTTN.CheckExist_CT(MaTTTN, item.Cells["Ky"].Value.ToString(), item.Cells["Nam"].Value.ToString()) == false)
                             {
-                                CTTruyThuTienNuoc cttttn = new CTTruyThuTienNuoc();
+                                TruyThuTienNuoc_ChiTiet cttttn = new TruyThuTienNuoc_ChiTiet();
                                 cttttn.MaTTTN = MaTTTN;
                                 cttttn.Ky = item.Cells["Ky"].Value.ToString();
                                 cttttn.Nam = item.Cells["Nam"].Value.ToString();
@@ -853,12 +853,12 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 _cTTTN.ThemCT(cttttn);
                                 //cttttn.CreateBy = CTaiKhoan.MaUser;
                                 //cttttn.CreateDate = DateTime.Now;
-                                //tttn.CTTruyThuTienNuocs.Add(cttttn);
+                                //tttn.TruyThuTienNuoc_ChiTiets.Add(cttttn);
                             }
                     _cTTTN.Refresh();
 
                     tttn = _cTTTN.Get(tttn.MaTTTN);
-                    tttn.TongTien = tttn.CTTruyThuTienNuocs.Sum(item => item.TongCongMoi.Value) - tttn.CTTruyThuTienNuocs.Sum(item => item.TongCongCu.Value);
+                    tttn.TongTien = tttn.TruyThuTienNuoc_ChiTiets.Sum(item => item.TongCongMoi.Value) - tttn.TruyThuTienNuoc_ChiTiets.Sum(item => item.TongCongCu.Value);
                     tttn.Tongm3BinhQuan = (int)Math.Round((double)tttn.TongTien / tttn.SoTien1m3);
                     _cTTTN.SubmitChanges();
                     
@@ -916,7 +916,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 if (_cTTTN.CheckExist_CT(_tttn.MaTTTN, item.Cells["Ky"].Value.ToString(), item.Cells["Nam"].Value.ToString()) == false)
                                 //if (item.Cells["MaCTTTTN"].Value == null || item.Cells["MaCTTTTN"].Value.ToString()=="")
                                 {
-                                    CTTruyThuTienNuoc cttttn = new CTTruyThuTienNuoc();
+                                    TruyThuTienNuoc_ChiTiet cttttn = new TruyThuTienNuoc_ChiTiet();
 
                                     cttttn.MaTTTN = _tttn.MaTTTN;
                                     cttttn.Ky = item.Cells["Ky"].Value.ToString();
@@ -941,12 +941,12 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     _cTTTN.ThemCT(cttttn);
                                     //cttttn.CreateBy = CTaiKhoan.MaUser;
                                     //cttttn.CreateDate = DateTime.Now;
-                                    //_tttn.CTTruyThuTienNuocs.Add(cttttn);
+                                    //_tttn.TruyThuTienNuoc_ChiTiets.Add(cttttn);
                                 }
                                 else
                                 {
-                                    CTTruyThuTienNuoc cttttn = _cTTTN.GetCT(_tttn.MaTTTN, item.Cells["Ky"].Value.ToString(), item.Cells["Nam"].Value.ToString());
-                                    //CTTruyThuTienNuoc cttttn = _cTTTN.GetCT(int.Parse(item.Cells["MaCTTTTN"].Value.ToString()));
+                                    TruyThuTienNuoc_ChiTiet cttttn = _cTTTN.GetCT(_tttn.MaTTTN, item.Cells["Ky"].Value.ToString(), item.Cells["Nam"].Value.ToString());
+                                    //TruyThuTienNuoc_ChiTiet cttttn = _cTTTN.GetCT(int.Parse(item.Cells["MaCTTTTN"].Value.ToString()));
 
                                     cttttn.Ky = item.Cells["Ky"].Value.ToString();
                                     cttttn.Nam = item.Cells["Nam"].Value.ToString();
@@ -973,7 +973,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         _cTTTN.Refresh();
 
                         _tttn = _cTTTN.Get(_tttn.MaTTTN);
-                        _tttn.TongTien = _tttn.CTTruyThuTienNuocs.Sum(item => item.TongCongMoi.Value) - _tttn.CTTruyThuTienNuocs.Sum(item => item.TongCongCu.Value);
+                        _tttn.TongTien = _tttn.TruyThuTienNuoc_ChiTiets.Sum(item => item.TongCongMoi.Value) - _tttn.TruyThuTienNuoc_ChiTiets.Sum(item => item.TongCongCu.Value);
                         _tttn.Tongm3BinhQuan = (int)Math.Round((double)_tttn.TongTien / _tttn.SoTien1m3);
                         _cTTTN.SubmitChanges();
 
@@ -1125,7 +1125,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 {
                     if (_tttn != null)
                     {
-                        ThanhToanTruyThuTienNuoc entity = new ThanhToanTruyThuTienNuoc();
+                        TruyThuTienNuoc_ThanhToan entity = new TruyThuTienNuoc_ThanhToan();
 
                         entity.MaTTTN = _tttn.MaTTTN;
                         entity.NgayDong = dateDongTien.Value;
@@ -1156,7 +1156,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 {
                     if (_tttn != null)
                     {
-                        ThanhToanTruyThuTienNuoc entity = _cTTTN.GetThanhToan(int.Parse(dgvThanhToanTruyThuTienNuoc.SelectedRows[0].Cells["MaTTTTTN"].Value.ToString()));
+                        TruyThuTienNuoc_ThanhToan entity = _cTTTN.GetThanhToan(int.Parse(dgvThanhToanTruyThuTienNuoc.SelectedRows[0].Cells["MaTTTTTN"].Value.ToString()));
 
                         entity.NgayDong = dateDongTien.Value;
                         entity.SoTien = int.Parse(txtSoTien.Text.Trim());
@@ -1186,7 +1186,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 {
                     if (_tttn != null && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        ThanhToanTruyThuTienNuoc entity = _cTTTN.GetThanhToan(int.Parse(dgvThanhToanTruyThuTienNuoc.SelectedRows[0].Cells["MaTTTTTN"].Value.ToString()));
+                        TruyThuTienNuoc_ThanhToan entity = _cTTTN.GetThanhToan(int.Parse(dgvThanhToanTruyThuTienNuoc.SelectedRows[0].Cells["MaTTTTTN"].Value.ToString()));
 
                         if (_cTTTN.XoaThanhToan(entity))
                         {
@@ -1230,7 +1230,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     {
                         if (_tttn != null)
                         {
-                            ThanhToanTruyThuTienNuoc entity = _cTTTN.GetThanhToan(int.Parse(dgvThanhToanTruyThuTienNuoc.SelectedRows[0].Cells["MaTTTTTN"].Value.ToString()));
+                            TruyThuTienNuoc_ThanhToan entity = _cTTTN.GetThanhToan(int.Parse(dgvThanhToanTruyThuTienNuoc.SelectedRows[0].Cells["MaTTTTTN"].Value.ToString()));
 
                             entity.DaThanhToan = bool.Parse(dgvThanhToanTruyThuTienNuoc.SelectedRows[0].Cells["DaThanhToan"].Value.ToString());
 
@@ -1400,11 +1400,11 @@ namespace KTKS_DonKH.GUI.TruyThu
         {
             if (_tttn != null)
             {
-                CTTruyThuTienNuoc cttttn = _cTTTN.GetCT(_tttn.MaTTTN, e.Row.Cells["Ky"].Value.ToString(), e.Row.Cells["Nam"].Value.ToString());
+                TruyThuTienNuoc_ChiTiet cttttn = _cTTTN.GetCT(_tttn.MaTTTN, e.Row.Cells["Ky"].Value.ToString(), e.Row.Cells["Nam"].Value.ToString());
                 if (_cTTTN.XoaCT(cttttn))
                 {
                     _tttn = _cTTTN.Get(_tttn.MaTTTN);
-                    _tttn.TongTien = _tttn.CTTruyThuTienNuocs.Sum(item => item.TongCongMoi.Value) - _tttn.CTTruyThuTienNuocs.Sum(item => item.TongCongCu.Value);
+                    _tttn.TongTien = _tttn.TruyThuTienNuoc_ChiTiets.Sum(item => item.TongCongMoi.Value) - _tttn.TruyThuTienNuoc_ChiTiets.Sum(item => item.TongCongCu.Value);
                     _tttn.Tongm3BinhQuan = (int)Math.Round((double)_tttn.TongTien / _tttn.SoTien1m3);
                     _cTTTN.SubmitChanges();
                 }

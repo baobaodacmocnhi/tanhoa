@@ -136,8 +136,8 @@ namespace KTKS_DonKH.DAL.ToXuLy
                             itemDonTXL.DiaChi,
                             itemDonTXL.NoiDung,
                             NguoiDi_KTXM = tmpUser.HoTen,
-                            GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM) == true
-                            ? true : db.CTBamChis.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM)
+                            GiaiQuyet = db.KTXM_ChiTiets.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM) == true
+                            ? true : db.BamChi_ChiTiets.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM)
                         };
             return LINQToDataTable(query);
         }
@@ -160,8 +160,8 @@ namespace KTKS_DonKH.DAL.ToXuLy
                             itemDonTXL.DiaChi,
                             itemDonTXL.NoiDung,
                             NguoiDi_KTXM = tmpUser.HoTen,
-                            GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM) == true
-                            ? true : db.CTBamChis.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM)
+                            GiaiQuyet = db.KTXM_ChiTiets.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM) == true
+                            ? true : db.BamChi_ChiTiets.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM)
                         };
             return LINQToDataTable(query);
         }
@@ -184,8 +184,8 @@ namespace KTKS_DonKH.DAL.ToXuLy
                             itemDonTXL.DiaChi,
                             itemDonTXL.NoiDung,
                             NguoiDi_KTXM = tmpUser.HoTen,
-                            GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM) == true
-                            ? true : db.CTBamChis.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM)
+                            GiaiQuyet = db.KTXM_ChiTiets.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM) == true
+                            ? true : db.BamChi_ChiTiets.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM)
                         };
             return LINQToDataTable(query);
         }
@@ -208,8 +208,8 @@ namespace KTKS_DonKH.DAL.ToXuLy
                             itemDonTXL.DiaChi,
                             itemDonTXL.NoiDung,
                             NguoiDi_KTXM = tmpUser.HoTen,
-                            GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM) == true
-                            ? true : db.CTBamChis.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM)
+                            GiaiQuyet = db.KTXM_ChiTiets.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM) == true
+                            ? true : db.BamChi_ChiTiets.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM)
                         };
             return LINQToDataTable(query);
         }
@@ -232,8 +232,8 @@ namespace KTKS_DonKH.DAL.ToXuLy
                             itemDonTXL.DiaChi,
                             itemDonTXL.NoiDung,
                             NguoiDi_KTXM = tmpUser.HoTen,
-                            GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM) == true
-                            ? true : db.CTBamChis.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM)
+                            GiaiQuyet = db.KTXM_ChiTiets.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM) == true
+                            ? true : db.BamChi_ChiTiets.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM)
                         };
             return LINQToDataTable(query);
         }
@@ -256,8 +256,8 @@ namespace KTKS_DonKH.DAL.ToXuLy
                             itemDonTXL.DiaChi,
                             itemDonTXL.NoiDung,
                             NguoiDi_KTXM = tmpUser.HoTen,
-                            GiaiQuyet = db.CTKTXMs.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM) == true
-                            ? true : db.CTBamChis.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM)
+                            GiaiQuyet = db.KTXM_ChiTiets.Any(item => item.KTXM.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM) == true
+                            ? true : db.BamChi_ChiTiets.Any(item => item.BamChi.MaDonTXL == itemDonTXL.MaDon && item.CreateBy == itemDonTXL.NguoiDi_KTXM)
                         };
             return LINQToDataTable(query);
         }

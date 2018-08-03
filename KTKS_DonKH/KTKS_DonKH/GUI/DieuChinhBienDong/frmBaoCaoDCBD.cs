@@ -556,7 +556,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                         dr["TuNgay"] = "";
                         dr["DenNgay"] = "";
-                        CTDCBD ctdcbd = _cDCBD.getBienDong_Last(itemRow["DanhBo"].ToString());
+                        DCBD_ChiTietBienDong ctdcbd = _cDCBD.getBienDong_Last(itemRow["DanhBo"].ToString());
                         if (ctdcbd != null)
                         {
                             dr["SoPhieu"] = ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
@@ -604,7 +604,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         dr["TuNgay"] = dateTu.Value.Date.ToString("dd/MM/yyyy");
                         dr["DenNgay"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
 
-                        CTDCBD ctdcbd = _cDCBD.getBienDong_Last(itemRow["DanhBo"].ToString());
+                        DCBD_ChiTietBienDong ctdcbd = _cDCBD.getBienDong_Last(itemRow["DanhBo"].ToString());
                         if (ctdcbd != null)
                         {
                             if (ctdcbd.DinhMuc_BD != null)
@@ -636,7 +636,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["TuNgay"] = dateTu.Value.Date.ToString("dd/MM/yyyy");
                                 dr["DenNgay"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
 
-                                CTDCBD ctdcbd = _cDCBD.getBienDong_Last(itemRow["DanhBo"].ToString());
+                                DCBD_ChiTietBienDong ctdcbd = _cDCBD.getBienDong_Last(itemRow["DanhBo"].ToString());
                                 if (ctdcbd != null)
                                 {
                                     if (ctdcbd.DinhMuc_BD != null)
@@ -668,7 +668,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["TuNgay"] = dateTu.Value.Date.ToString("dd/MM/yyyy");
                                 dr["DenNgay"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
 
-                                CTDCBD ctdcbd = _cDCBD.getBienDong_Last(itemRow["DanhBo"].ToString());
+                                DCBD_ChiTietBienDong ctdcbd = _cDCBD.getBienDong_Last(itemRow["DanhBo"].ToString());
                                 if (ctdcbd != null)
                                 {
                                     dr["DinhMucCap"] = ctdcbd.DinhMuc_BD;

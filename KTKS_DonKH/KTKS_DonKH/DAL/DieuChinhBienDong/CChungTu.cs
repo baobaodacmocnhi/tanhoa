@@ -12,7 +12,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 {
     class CChungTu : CDAL
     {
-        ///Chứa hàm truy xuất dữ liệu từ bảng ChungTu & CTChungTu & LichSuChungTu
+        ///Chứa hàm truy xuất dữ liệu từ bảng ChungTu & ChungTu_ChiTiet & LichSuChungTu
 
         #region ChungTu
 
@@ -63,15 +63,15 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         #endregion
 
-        #region CTChungTu
+        #region ChungTu_ChiTiet
 
-        public bool ThemCT(CTChungTu ctchungtu)
+        public bool ThemCT(ChungTu_ChiTiet ctchungtu)
         {
             try
             {
                 ctchungtu.CreateDate = DateTime.Now;
                 ctchungtu.CreateBy = CTaiKhoan.MaUser;
-                db.CTChungTus.InsertOnSubmit(ctchungtu);
+                db.ChungTu_ChiTiets.InsertOnSubmit(ctchungtu);
                 db.SubmitChanges();
                 return true;
             }
@@ -83,7 +83,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public bool SuaCT(CTChungTu ctchungtu)
+        public bool SuaCT(ChungTu_ChiTiet ctchungtu)
         {
             try
             {
@@ -100,11 +100,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public bool XoaCT(CTChungTu ctchungtu)
+        public bool XoaCT(ChungTu_ChiTiet ctchungtu)
         {
             try
             {
-                db.CTChungTus.DeleteOnSubmit(ctchungtu);
+                db.ChungTu_ChiTiets.DeleteOnSubmit(ctchungtu);
                 db.SubmitChanges();
                 return true;
             }
@@ -118,22 +118,22 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public bool CheckExist_CT(string DanhBo, string MaCT, int MaLCT)
         {
-            return db.CTChungTus.Any(itemCT => itemCT.DanhBo == DanhBo && itemCT.MaCT == MaCT && itemCT.MaLCT == MaLCT);
+            return db.ChungTu_ChiTiets.Any(itemCT => itemCT.DanhBo == DanhBo && itemCT.MaCT == MaCT && itemCT.MaLCT == MaLCT);
         }
 
         public bool CheckExist_CT(string MaCT, int MaLCT)
         {
-            return db.CTChungTus.Any(itemCT => itemCT.MaCT == MaCT && itemCT.MaLCT == MaLCT);
+            return db.ChungTu_ChiTiets.Any(itemCT => itemCT.MaCT == MaCT && itemCT.MaLCT == MaLCT);
         }
 
         public bool CheckDinhMucNhaTro(string DanhBo)
         {
-            return db.CTChungTus.Any(item => item.DanhBo == DanhBo && item.Cat == false && (item.ChungTu.LoaiChungTu.MaLCT == 7 || item.ChungTu.LoaiChungTu.MaLCT == 8));
+            return db.ChungTu_ChiTiets.Any(item => item.DanhBo == DanhBo && item.Cat == false && (item.ChungTu.LoaiChungTu.MaLCT == 7 || item.ChungTu.LoaiChungTu.MaLCT == 8));
         }
 
-        public CTChungTu GetCT(string DanhBo, string MaCT, int MaLCT)
+        public ChungTu_ChiTiet GetCT(string DanhBo, string MaCT, int MaLCT)
         {
-            return db.CTChungTus.SingleOrDefault(itemCT => itemCT.DanhBo == DanhBo && itemCT.MaCT == MaCT && itemCT.MaLCT == MaLCT);
+            return db.ChungTu_ChiTiets.SingleOrDefault(itemCT => itemCT.DanhBo == DanhBo && itemCT.MaCT == MaCT && itemCT.MaLCT == MaLCT);
         }
 
         /// <summary>
@@ -141,14 +141,14 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         /// </summary>
         /// <param name="MaCT"></param>
         /// <returns></returns>
-        public List<CTChungTu> GetDSCT(string MaCT, int MaLCT)
+        public List<ChungTu_ChiTiet> GetDSCT(string MaCT, int MaLCT)
         {
-            return db.CTChungTus.Where(itemCTChungTu => itemCTChungTu.MaCT == MaCT && itemCTChungTu.MaLCT == MaLCT).ToList();
+            return db.ChungTu_ChiTiets.Where(itemCTChungTu => itemCTChungTu.MaCT == MaCT && itemCTChungTu.MaLCT == MaLCT).ToList();
         }
 
         public DataTable GetDSCT(string DanhBo)
         {
-            var query = from itemCTCT in db.CTChungTus
+            var query = from itemCTCT in db.ChungTu_ChiTiets
                         join itemCT in db.ChungTus on new { itemCTCT.MaCT, itemCTCT.MaLCT } equals new { itemCT.MaCT ,itemCT.MaLCT}
                         join itemLCT in db.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
                         where itemCTCT.DanhBo == DanhBo
@@ -299,7 +299,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         //                        itemLSCT.MaLSCT,
         //                        itemLSCT.SoPhieu,
         //                        Ma = itemLSCT.SoPhieu,
-        //                        //SoPhieuDCBD = itemDCBD.CTDCBDs.SingleOrDefault(itemCTDCBD => itemCTDCBD.DanhBo == itemCCDM.DanhBo).MaCTDCBD,
+        //                        //SoPhieuDCBD = itemDCBD.DCBD_ChiTietBienDongs.SingleOrDefault(itemCTDCBD => itemCTDCBD.DanhBo == itemCCDM.DanhBo).MaCTDCBD,
         //                        itemLSCT.CreateDate,
         //                        itemLSCT.MaCT,
         //                        itemLSCT.CatDM,
@@ -353,8 +353,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         //            //    Row["MaLSCT"] = itemRow["MaLSCT"];
         //            //    Row["SoPhieu"] = itemRow["SoPhieu"];
         //            //    if (!string.IsNullOrEmpty(itemRow["MaDon"].ToString()))
-        //            //        if (db.CTDCBDs.Any(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())))
-        //            //            Row["SoPhieuDCBD"] = db.CTDCBDs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())).MaCTDCBD;
+        //            //        if (db.DCBD_ChiTietBienDongs.Any(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())))
+        //            //            Row["SoPhieuDCBD"] = db.DCBD_ChiTietBienDongs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())).MaCTDCBD;
         //            //        else
         //            //            Row["SoPhieuDCBD"] = "";
         //            //    else
@@ -429,7 +429,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         //                        itemLSCT.MaLSCT,
         //                        itemLSCT.SoPhieu,
         //                        Ma = itemLSCT.SoPhieu,
-        //                        //SoPhieuDCBD = itemDCBD.CTDCBDs.SingleOrDefault(itemCTDCBD => itemCTDCBD.DanhBo == itemCCDM.DanhBo).MaCTDCBD,
+        //                        //SoPhieuDCBD = itemDCBD.DCBD_ChiTietBienDongs.SingleOrDefault(itemCTDCBD => itemCTDCBD.DanhBo == itemCCDM.DanhBo).MaCTDCBD,
         //                        itemLSCT.CreateDate,
         //                        itemLSCT.MaCT,
         //                        itemLSCT.CatDM,
@@ -483,8 +483,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         //            //    Row["MaLSCT"] = itemRow["MaLSCT"];
         //            //    Row["SoPhieu"] = itemRow["SoPhieu"];
         //            //    if (!string.IsNullOrEmpty(itemRow["MaDon"].ToString()))
-        //            //        if (db.CTDCBDs.Any(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())))
-        //            //            Row["SoPhieuDCBD"] = db.CTDCBDs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())).MaCTDCBD;
+        //            //        if (db.DCBD_ChiTietBienDongs.Any(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())))
+        //            //            Row["SoPhieuDCBD"] = db.DCBD_ChiTietBienDongs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())).MaCTDCBD;
         //            //        else
         //            //            Row["SoPhieuDCBD"] = "";
         //            //    else
@@ -567,9 +567,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
-                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
-                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
+                                MaCTDCBD = itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
@@ -611,9 +611,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
-                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
-                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
+                                MaCTDCBD = itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
@@ -652,9 +652,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
-                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
-                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
+                                MaCTDCBD = itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
@@ -695,9 +695,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
-                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
-                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
+                                MaCTDCBD = itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
@@ -735,9 +735,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
-                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
-                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
+                                MaCTDCBD = itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
@@ -775,9 +775,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
-                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
-                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
+                                MaCTDCBD = itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
@@ -815,9 +815,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
-                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
-                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
+                                MaCTDCBD = itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
@@ -859,9 +859,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
-                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
-                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
+                                MaCTDCBD = itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
@@ -899,9 +899,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
-                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
-                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
+                                MaCTDCBD = itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
@@ -942,9 +942,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
-                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
-                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
+                                MaCTDCBD = itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
@@ -982,9 +982,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
-                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
-                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
+                                MaCTDCBD = itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
@@ -1022,9 +1022,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemLSCT.NhanNK_DanhBo,
                                 itemLSCT.NhanNK_HoTen,
                                 itemLSCT.NhanNK_DiaChi,
-                                MaCTDCBD = itemLSCT.MaDon != null ? db.CTDCBDs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
-                                : itemLSCT.MaDonTXL != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
-                                : itemLSCT.MaDonTBC != null ? db.CTDCBDs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.CTDCBDs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
+                                MaCTDCBD = itemLSCT.MaDon != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDon == itemLSCT.MaDon) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDon == itemLSCT.MaDon).MaCTDCBD : 0
+                                : itemLSCT.MaDonTXL != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTXL == itemLSCT.MaDonTXL).MaCTDCBD : 0
+                                : itemLSCT.MaDonTBC != null ? db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC) == true ? db.DCBD_ChiTietBienDongs.FirstOrDefault(item => item.DCBD.MaDonTBC == itemLSCT.MaDonTBC).MaCTDCBD : 0 : 0,
                                 CreateBy = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
@@ -1258,7 +1258,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         /// <param name="lichsuchungtu"></param>
         /// <param name="lstLichSuChungTu"></param>
         /// <returns></returns>
-        //public bool ThemChungTu(ChungTu chungtu, CTChungTu ctchungtu, LichSuChungTu lichsuchungtu)
+        //public bool ThemChungTu(ChungTu chungtu, ChungTu_ChiTiet ctchungtu, LichSuChungTu lichsuchungtu)
         //{
         //    try
         //    {
@@ -1272,7 +1272,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         //            ////db.SubmitChanges();
         //            ThemChungTu(chungtu);
         //        }
-        //        ///Kiểm tra nếu CTChungTu(danh bộ, sổ đăng ký) chưa có thì thêm vào
+        //        ///Kiểm tra nếu ChungTu_ChiTiet(danh bộ, sổ đăng ký) chưa có thì thêm vào
         //        if (!CheckCTChungTu(ctchungtu.DanhBo, ctchungtu.MaCT))
         //        {
         //            ChungTu chungtuCN = getChungTubyID(ctchungtu.MaCT);
@@ -1286,7 +1286,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         //                    ctchungtu.NgayHetHan = null;
         //                //ctchungtu.CreateDate = DateTime.Now;
         //                //ctchungtu.CreateBy = CTaiKhoan.TaiKhoan;
-        //                //db.CTChungTus.InsertOnSubmit(ctchungtu);
+        //                //db.ChungTu_ChiTiets.InsertOnSubmit(ctchungtu);
         //                ThemCTChungTu(ctchungtu);
 
         //                ///Cập nhật Số Nhân Khẩu Cấp cho bảng ChungTu
@@ -1611,7 +1611,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         /// <param name="lichsuchungtu"></param>
         /// <param name="lstLichSuChungTu"></param>
         /// <returns></returns>
-        //public bool SuaChungTu(ChungTu chungtu, CTChungTu ctchungtu, LichSuChungTu lichsuchungtu)
+        //public bool SuaChungTu(ChungTu chungtu, ChungTu_ChiTiet ctchungtu, LichSuChungTu lichsuchungtu)
         //{
         //    try
         //    {
@@ -1651,8 +1651,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         //            chungtuCN.ModifyBy = CTaiKhoan.MaUser;
         //        }
 
-        //        ///Cập Nhật bảng CTChungTu khi thay đổi Số Nhân Khẩu đăng ký (frmSoDK)
-        //        CTChungTu ctchungtuCN = getCTChungTubyID(ctchungtu.DanhBo, ctchungtu.MaCT);
+        //        ///Cập Nhật bảng ChungTu_ChiTiet khi thay đổi Số Nhân Khẩu đăng ký (frmSoDK)
+        //        ChungTu_ChiTiet ctchungtuCN = getCTChungTubyID(ctchungtu.DanhBo, ctchungtu.MaCT);
         //        ///Kiểm tra Số Nhân Khẩu đăng ký có thay đổi hay không
         //        if (ctchungtuCN.SoNKDangKy != ctchungtu.SoNKDangKy)
         //            if (flagGiam)
@@ -1662,7 +1662,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         //                chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy;
         //                chungtuCN.ModifyDate = DateTime.Now;
         //                chungtuCN.ModifyBy = CTaiKhoan.MaUser;
-        //                ///Cập nhật bảng CTChungTu
+        //                ///Cập nhật bảng ChungTu_ChiTiet
         //                ctchungtuCN.SoNKDangKy = ctchungtu.SoNKDangKy;
         //                ctchungtuCN.ModifyDate = DateTime.Now;
         //                ctchungtuCN.ModifyBy = CTaiKhoan.MaUser;
@@ -1676,7 +1676,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         //                    chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy;
         //                    chungtuCN.ModifyDate = DateTime.Now;
         //                    chungtuCN.ModifyBy = CTaiKhoan.MaUser;
-        //                    ///Cập nhật bảng CTChungTu
+        //                    ///Cập nhật bảng ChungTu_ChiTiet
         //                    ctchungtuCN.SoNKDangKy = ctchungtu.SoNKDangKy;
 
         //                    //ctchungtuCN.ThoiHan = ctchungtu.ThoiHan;
@@ -2150,18 +2150,18 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                if (db.CTChungTus.Count(itemCTCT => itemCTCT.MaCT == MaCT_Cu) > 1)
+                if (db.ChungTu_ChiTiets.Count(itemCTCT => itemCTCT.MaCT == MaCT_Cu) > 1)
                 {
                     MessageBox.Show("Sổ đăng ký trên 1 danh bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
-                List<CTChungTu> lstCTCT = db.CTChungTus.Where(itemCTCT => itemCTCT.DanhBo == DanhBo && itemCTCT.MaCT == MaCT_Cu).ToList();
-                //foreach (CTChungTu itemCTCT in lstCTCT)
+                List<ChungTu_ChiTiet> lstCTCT = db.ChungTu_ChiTiets.Where(itemCTCT => itemCTCT.DanhBo == DanhBo && itemCTCT.MaCT == MaCT_Cu).ToList();
+                //foreach (ChungTu_ChiTiet itemCTCT in lstCTCT)
                 //{
                 //    itemCTCT.MaCT = "bb";
                 //}
                 db.ChungTus.FirstOrDefault(itemCT => itemCT.MaCT == MaCT_Cu).MaCT = MaCT_Moi;
-                foreach (CTChungTu itemCTCT in lstCTCT)
+                foreach (ChungTu_ChiTiet itemCTCT in lstCTCT)
                 {
                     itemCTCT.MaCT = MaCT_Moi;
                 }
@@ -2188,7 +2188,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         /// <param name="ctchungtu"></param>
         /// <param name="lichsuchungtu"></param>
         /// <returns></returns>
-        //public bool NhanChungTu(ChungTu chungtu, CTChungTu ctchungtu, LichSuChungTu lichsuchungtu)
+        //public bool NhanChungTu(ChungTu chungtu, ChungTu_ChiTiet ctchungtu, LichSuChungTu lichsuchungtu)
         //{
         //    try
         //    {
@@ -2201,7 +2201,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         //            flagAddCT = true;
         //        }
         //        ChungTu chungtuCN = getChungTubyID(ctchungtu.MaCT);
-        //        CTChungTu ctchungtuCN = new CTChungTu();
+        //        ChungTu_ChiTiet ctchungtuCN = new ChungTu_ChiTiet();
         //        ctchungtuCN = null;
         //        ///Nếu đã có đăng ký thì ta xét số Nhân Khẩu nhận thêm có vượt quá Tổng số Nhân Khẩu hay không
         //        if (CheckCTChungTu(ctchungtu.DanhBo, ctchungtu.MaCT))
@@ -2215,7 +2215,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         //                chungtuCN.ModifyDate = DateTime.Now;
         //                chungtuCN.ModifyBy = CTaiKhoan.MaUser;
 
-        //                ///Cập nhật CTChungTu
+        //                ///Cập nhật ChungTu_ChiTiet
         //                ctchungtuCN = getCTChungTubyID(ctchungtu.DanhBo, ctchungtu.MaCT);
         //                ctchungtuCN.SoNKDangKy += ctchungtu.SoNKDangKy;
         //                ///Cập nhật ngày hết hạn dựa vào ngày tạo record này(ngày nhận đơn)
@@ -2306,13 +2306,13 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         /// <param name="ctchungtu"></param>
         /// <param name="lichsuchungtu"></param>
         /// <returns></returns>
-        //public bool SuaNhanChungTu(ChungTu chungtu, CTChungTu ctchungtu, LichSuChungTu lichsuchungtu)
+        //public bool SuaNhanChungTu(ChungTu chungtu, ChungTu_ChiTiet ctchungtu, LichSuChungTu lichsuchungtu)
         //{
         //    try
         //    {
         //        bool flagGiam = false;
         //        ChungTu chungtuCN = getChungTubyID(ctchungtu.MaCT);
-        //        CTChungTu ctchungtuCN = getCTChungTubyID(ctchungtu.DanhBo, ctchungtu.MaCT);
+        //        ChungTu_ChiTiet ctchungtuCN = getCTChungTubyID(ctchungtu.DanhBo, ctchungtu.MaCT);
 
         //        ///Kiểm tra Tổng Nhân Khẩu có thay đổi hay không
         //        if (chungtuCN.SoNKTong != chungtu.SoNKTong)
@@ -2350,7 +2350,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         //                chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy.Value;
         //                chungtuCN.ModifyDate = DateTime.Now;
         //                chungtuCN.ModifyBy = CTaiKhoan.MaUser;
-        //                ///Cập nhật bảng CTChungTu
+        //                ///Cập nhật bảng ChungTu_ChiTiet
         //                ctchungtuCN.SoNKDangKy = ctchungtu.SoNKDangKy;
         //                ctchungtuCN.ModifyDate = DateTime.Now;
         //                ctchungtuCN.ModifyBy = CTaiKhoan.MaUser;
@@ -2363,7 +2363,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         //                    chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy.Value;
         //                    chungtuCN.ModifyDate = DateTime.Now;
         //                    chungtuCN.ModifyBy = CTaiKhoan.MaUser;
-        //                    ///Cập nhật bảng CTChungTu
+        //                    ///Cập nhật bảng ChungTu_ChiTiet
         //                    ctchungtuCN.SoNKDangKy = ctchungtu.SoNKDangKy;
 
         //                    //ctchungtuCN.ThoiHan = ctchungtu.ThoiHan;
@@ -2423,12 +2423,12 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         /// <param name="ctchungtu"></param>
         /// <param name="lichsuchungtu"></param>
         /// <returns></returns>
-        //public bool SuaNhanChungTu(ChungTu chungtu, CTChungTu ctchungtu, LichSuChungTu lichsuchungtu)
+        //public bool SuaNhanChungTu(ChungTu chungtu, ChungTu_ChiTiet ctchungtu, LichSuChungTu lichsuchungtu)
         //{
         //    try
         //    {
         //        ChungTu chungtuCN = getChungTubyID(ctchungtu.MaCT);
-        //        CTChungTu ctchungtuCN = getCTChungTubyID(ctchungtu.DanhBo, ctchungtu.MaCT);
+        //        ChungTu_ChiTiet ctchungtuCN = getCTChungTubyID(ctchungtu.DanhBo, ctchungtu.MaCT);
 
         //        ///Kiểm tra Tổng Nhân Khẩu có thay đổi hay không
         //        if (chungtuCN.SoNKTong != chungtu.SoNKTong)
@@ -2471,7 +2471,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         //                chungtuCN.SoNKNhan = ctchungtu.SoNKDangKy + (ctchungtuCN.SoNKDangKy - chungtuCN.SoNKNhan);
         //                chungtuCN.ModifyDate = DateTime.Now;
         //                chungtuCN.ModifyBy = CTaiKhoan.MaUser;
-        //                ///Cập nhật bảng CTChungTu
+        //                ///Cập nhật bảng ChungTu_ChiTiet
         //                ctchungtuCN.SoNKDangKy = ctchungtu.SoNKDangKy;
         //                ctchungtuCN.ModifyDate = DateTime.Now;
         //                ctchungtuCN.ModifyBy = CTaiKhoan.MaUser;
@@ -2539,7 +2539,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         /// <param name="SoNKCat"></param>
         /// <param name="lichsuchungtu"></param>
         /// <returns></returns>
-        //public bool CatChuyenChungTu(CTChungTu ctchungtuCat, CTChungTu ctchungtuNhan, int SoNKCat, LichSuChungTu lichsuchungtu)
+        //public bool CatChuyenChungTu(ChungTu_ChiTiet ctchungtuCat, ChungTu_ChiTiet ctchungtuNhan, int SoNKCat, LichSuChungTu lichsuchungtu)
         //{
         //    try
         //    {
@@ -2547,19 +2547,19 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         //        ///Cùng Chi Nhánh
         //        if (_cChiNhanh.getChiNhanhbyID(lichsuchungtu.NhanNK_MaCN.Value).TenCN.ToUpper().Contains("TÂN HÒA"))
         //        {
-        //            CTChungTu ctchungtuCatCN = getCTChungTubyID(ctchungtuCat.DanhBo, ctchungtuCat.MaCT);
+        //            ChungTu_ChiTiet ctchungtuCatCN = getCTChungTubyID(ctchungtuCat.DanhBo, ctchungtuCat.MaCT);
         //            ///Nếu Chứng Từ đã đăng ký với Danh Bộ
         //            if (CheckCTChungTu(ctchungtuNhan.DanhBo, ctchungtuNhan.MaCT))
         //            {
         //                if (ctchungtuCatCN.SoNKDangKy >= SoNKCat)
         //                {
-        //                    ///Cập nhật CTChungTu, Danh Bộ Cắt
+        //                    ///Cập nhật ChungTu_ChiTiet, Danh Bộ Cắt
         //                    ctchungtuCatCN.SoNKDangKy -= SoNKCat;
         //                    ctchungtuCatCN.ModifyDate = DateTime.Now;
         //                    ctchungtuCatCN.ModifyBy = CTaiKhoan.MaUser;
 
-        //                    ///Cập nhật CTChungTu, Danh Bộ Nhận
-        //                    CTChungTu ctchungtuNhanCN = getCTChungTubyID(ctchungtuNhan.DanhBo, ctchungtuNhan.MaCT);
+        //                    ///Cập nhật ChungTu_ChiTiet, Danh Bộ Nhận
+        //                    ChungTu_ChiTiet ctchungtuNhanCN = getCTChungTubyID(ctchungtuNhan.DanhBo, ctchungtuNhan.MaCT);
         //                    ctchungtuNhanCN.SoNKDangKy += SoNKCat;
         //                    ctchungtuNhanCN.ModifyDate = DateTime.Now;
         //                    ctchungtuNhanCN.ModifyBy = CTaiKhoan.MaUser;
@@ -2623,14 +2623,14 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         //            {
         //                if (ctchungtuCatCN.SoNKDangKy >= SoNKCat)
         //                {
-        //                    ///Cập nhật CTChungTu, Danh Bộ Cắt
+        //                    ///Cập nhật ChungTu_ChiTiet, Danh Bộ Cắt
         //                    ctchungtuCatCN.SoNKDangKy -= SoNKCat;
         //                    ctchungtuCatCN.ModifyDate = DateTime.Now;
         //                    ctchungtuCatCN.ModifyBy = CTaiKhoan.MaUser;
 
         //                    db.SubmitChanges();
 
-        //                    ///Thêm CTChungTu, Danh Bộ nhận
+        //                    ///Thêm ChungTu_ChiTiet, Danh Bộ nhận
         //                    ctchungtuNhan.SoNKDangKy = SoNKCat;
         //                    ThemCTChungTu(ctchungtuNhan);
 
@@ -2690,7 +2690,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         //        ///Khác Chi Nhánh
         //        else
         //        {
-        //            CTChungTu ctchungtuCN = getCTChungTubyID(ctchungtuCat.DanhBo, ctchungtuCat.MaCT);
+        //            ChungTu_ChiTiet ctchungtuCN = getCTChungTubyID(ctchungtuCat.DanhBo, ctchungtuCat.MaCT);
         //            if (ctchungtuCN.SoNKDangKy >= SoNKCat)
         //            {
         //                ctchungtuCN.SoNKDangKy -= SoNKCat;
@@ -2748,7 +2748,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTChungTu in db.CTChungTus
+                var query = from itemCTChungTu in db.ChungTu_ChiTiets
                             //join itemTTKH in dbThuTien.HOADONs.GroupBy(item => item.DANHBA).Select(item => item.OrderByDescending(itemB => itemB.CreateDate)).First() on itemCTChungTu.DanhBo equals itemTTKH.DANHBA
                             where (itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 6 || itemCTChungTu.ChungTu.MaLCT == 7 || itemCTChungTu.ChungTu.MaLCT == 8) && itemCTChungTu.CreateDate.Value.Date == TuNgay.Date
                             && itemCTChungTu.Cat == false && itemCTChungTu.DanhBo == DanhBo
@@ -2787,7 +2787,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTChungTu in db.CTChungTus
+                var query = from itemCTChungTu in db.ChungTu_ChiTiets
                             join itemTTKH in dbThuTien.HOADONs.GroupBy(item => item.DANHBA).Select(item => item.OrderByDescending(itemB => itemB.CreateDate)).First() on itemCTChungTu.DanhBo equals itemTTKH.DANHBA
                             where (itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 6 || itemCTChungTu.ChungTu.MaLCT == 7 || itemCTChungTu.ChungTu.MaLCT == 8) && itemCTChungTu.CreateDate.Value.Date == TuNgay.Date
                             && itemCTChungTu.Cat == false
@@ -2826,7 +2826,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTChungTu in db.CTChungTus
+                var query = from itemCTChungTu in db.ChungTu_ChiTiets
                             where (itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 6 || itemCTChungTu.ChungTu.MaLCT == 7 || itemCTChungTu.ChungTu.MaLCT == 8)
                             && itemCTChungTu.NgayHetHan != null
                             && itemCTChungTu.CreateDate.Value.Date >= TuNgay.Date && itemCTChungTu.CreateDate.Value.Date <= DenNgay.Date
@@ -2857,7 +2857,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTChungTu in db.CTChungTus
+                var query = from itemCTChungTu in db.ChungTu_ChiTiets
                             join itemTTKH in dbThuTien.HOADONs.GroupBy(item => item.DANHBA).Select(item => item.OrderByDescending(itemB => itemB.CreateDate)).First() on itemCTChungTu.DanhBo equals itemTTKH.DANHBA
                             where (itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 6 || itemCTChungTu.ChungTu.MaLCT == 7 || itemCTChungTu.ChungTu.MaLCT == 8) && itemCTChungTu.CreateDate.Value.Date == TuNgay.Date
                             && itemCTChungTu.Cat == false && itemCTChungTu.ThoiHan != null
@@ -2883,7 +2883,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTChungTu in db.CTChungTus
+                var query = from itemCTChungTu in db.ChungTu_ChiTiets
                             where (itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 6 || itemCTChungTu.ChungTu.MaLCT == 7 || itemCTChungTu.ChungTu.MaLCT == 8) && itemCTChungTu.CreateDate.Value.Date >= TuNgay.Date && itemCTChungTu.CreateDate.Value.Date <= DenNgay.Date
                             && itemCTChungTu.Cat == false && itemCTChungTu.ThoiHan != null
                             orderby itemCTChungTu.NgayHetHan ascending
@@ -2906,7 +2906,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTChungTu in db.CTChungTus
+                var query = from itemCTChungTu in db.ChungTu_ChiTiets
                             join itemTTKH in dbThuTien.HOADONs.GroupBy(item => item.DANHBA).Select(item => item.OrderByDescending(itemB => itemB.CreateDate)).First() on itemCTChungTu.DanhBo equals itemTTKH.DANHBA
                             where (itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 6 || itemCTChungTu.ChungTu.MaLCT == 7 || itemCTChungTu.ChungTu.MaLCT == 8) && itemCTChungTu.NgayHetHan.Value.Date == TuNgay.Date
                             && itemCTChungTu.Cat == false
@@ -2940,7 +2940,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTChungTu in db.CTChungTus
+                var query = from itemCTChungTu in db.ChungTu_ChiTiets
                             where (itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 6 || itemCTChungTu.ChungTu.MaLCT == 7 || itemCTChungTu.ChungTu.MaLCT == 8) && itemCTChungTu.NgayHetHan.Value.Date >= TuNgay.Date && itemCTChungTu.NgayHetHan.Value.Date <= DenNgay.Date
                             && itemCTChungTu.Cat == false
                             orderby itemCTChungTu.NgayHetHan ascending
@@ -2969,7 +2969,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTChungTu in db.CTChungTus
+                var query = from itemCTChungTu in db.ChungTu_ChiTiets
                             join itemTTKH in dbThuTien.HOADONs.GroupBy(item => item.DANHBA).Select(item => item.OrderByDescending(itemB => itemB.CreateDate)).First() on itemCTChungTu.DanhBo equals itemTTKH.DANHBA
                             where (itemCTChungTu.ChungTu.MaLCT != 2 && itemCTChungTu.ChungTu.MaLCT != 5 && itemCTChungTu.ChungTu.MaLCT != 6 && itemCTChungTu.ChungTu.MaLCT != 7 && itemCTChungTu.ChungTu.MaLCT != 8) && itemCTChungTu.CreateDate.Value.Date == TuNgay.Date
                             && itemCTChungTu.Cat == false
@@ -3003,7 +3003,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTChungTu in db.CTChungTus
+                var query = from itemCTChungTu in db.ChungTu_ChiTiets
                             where (itemCTChungTu.ChungTu.MaLCT != 2 && itemCTChungTu.ChungTu.MaLCT != 5 && itemCTChungTu.ChungTu.MaLCT != 6 && itemCTChungTu.ChungTu.MaLCT != 7 && itemCTChungTu.ChungTu.MaLCT != 8)
                             && itemCTChungTu.NgayHetHan == null
                             && itemCTChungTu.CreateDate.Value.Date >= TuNgay.Date && itemCTChungTu.CreateDate.Value.Date <= DenNgay.Date
@@ -3038,7 +3038,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTChungTu in db.CTChungTus
+                var query = from itemCTChungTu in db.ChungTu_ChiTiets
                             where itemCTChungTu.Cat == false && itemCTChungTu.ThoiHan != null && itemCTChungTu.NgayHetHan <= DateTime.Now.AddDays(15)
                             orderby itemCTChungTu.NgayHetHan ascending
                             select new
@@ -3066,7 +3066,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                var query = from itemCTChungTu in db.CTChungTus
+                var query = from itemCTChungTu in db.ChungTu_ChiTiets
                             //join itemTTKH in dbThuTien.HOADONs.GroupBy(item => item.DANHBA).Select(item => item.OrderByDescending(itemB => itemB.CreateDate)).First() on itemCTChungTu.DanhBo equals itemTTKH.DANHBA
                             where itemCTChungTu.Cat == false && itemCTChungTu.ThoiHan != null && itemCTChungTu.NgayHetHan <= DateTime.Now.AddDays(15)
                             group itemCTChungTu by itemCTChungTu.DanhBo into itemGroup
@@ -3093,7 +3093,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 string sql = "select t1.*,t2.TIEUTHU from"
                             + " (select ct.DanhBo,ttkh.HoTen,ttkh.DiaChi,Phuong,Quan,case when DinhMuc_BD is null then DinhMuc else DinhMuc_BD end as DinhMuc from"
-                            + " (select DanhBo from ChungTu ct,CTChungTu ctct,LoaiChungTu lct where ct.MaCT=ctct.MaCT and lct.MaLCT=ct.MaLCT and NgayHetHan is not null and Cat=0"
+                            + " (select DanhBo from ChungTu ct,ChungTu_ChiTiet ctct,LoaiChungTu lct where ct.MaCT=ctct.MaCT and lct.MaLCT=ct.MaLCT and NgayHetHan is not null and Cat=0"
                             + " and (lct.MaLCT=2 or lct.MaLCT=5 or lct.MaLCT=6 or lct.MaLCT=7 or lct.MaLCT=8)"
                             + " group by DanhBo) ct"
                             + " left join"
@@ -3116,7 +3116,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         public DataTable LoadDSDanhBoCapDinhMucCoThoiHan()
         {
             string sql = "select t1.DanhBo,HOTEN,SONHA+' '+TENDUONG as DiaChi,Phuong,Quan,t2.DINHMUC from"
-                        + " (select DanhBo,row_number() over (partition by DanhBo order by DanhBo) as RowNumber from CTChungTu where NgayHetHan is not null and Cat=0) t1"
+                        + " (select DanhBo,row_number() over (partition by DanhBo order by DanhBo) as RowNumber from ChungTu_ChiTiet where NgayHetHan is not null and Cat=0) t1"
                         + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
                         + " where RowNumber=1";
 

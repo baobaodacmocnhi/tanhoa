@@ -36,7 +36,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
         DonTXL _dontxl = null;
         DonTBC _dontbc = null;
         HOADON _hoadon = null;
-        CTDongNuoc _ctdongnuoc = null;
+        DongNuoc_ChiTiet _ctdongnuoc = null;
         decimal _MaCTDN = -1;
 
         public frmDongNuoc()
@@ -71,7 +71,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
             txtDiaChiDHN.Text = txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
         }
 
-        public void LoadDongNuoc(CTDongNuoc ctdongnuoc)
+        public void LoadDongNuoc(DongNuoc_ChiTiet ctdongnuoc)
         {
             if (ctdongnuoc.DongNuoc.MaDon != null)
             {
@@ -352,7 +352,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
                     ///Thêm
                     if (_ctdongnuoc == null)
                     {
-                        CTDongNuoc ctdongnuoc = new CTDongNuoc();
+                        DongNuoc_ChiTiet ctdongnuoc = new DongNuoc_ChiTiet();
 
                         if (_dontkh != null)
                         {

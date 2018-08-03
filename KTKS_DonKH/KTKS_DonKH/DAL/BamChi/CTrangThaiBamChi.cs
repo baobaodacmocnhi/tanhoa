@@ -10,17 +10,17 @@ namespace KTKS_DonKH.DAL.BamChi
 {
     class CTrangThaiBamChi : CDAL
     {
-        public bool Them(TrangThaiBamChi entity)
+        public bool Them(BamChi_TrangThai entity)
         {
             try
             {
-                if (db.TrangThaiBamChis.Count() > 0)
-                    entity.MaTTBC = db.TrangThaiBamChis.Max(itemTTBC => itemTTBC.MaTTBC) + 1;
+                if (db.BamChi_TrangThais.Count() > 0)
+                    entity.MaTTBC = db.BamChi_TrangThais.Max(itemTTBC => itemTTBC.MaTTBC) + 1;
                 else
                     entity.MaTTBC = 1;
                 entity.CreateDate = DateTime.Now;
                 entity.CreateBy = CTaiKhoan.MaUser;
-                db.TrangThaiBamChis.InsertOnSubmit(entity);
+                db.BamChi_TrangThais.InsertOnSubmit(entity);
                 db.SubmitChanges();
                 return true;
             }
@@ -32,7 +32,7 @@ namespace KTKS_DonKH.DAL.BamChi
             }
         }
 
-        public bool Sua(TrangThaiBamChi entity)
+        public bool Sua(BamChi_TrangThai entity)
         {
             try
             {
@@ -49,11 +49,11 @@ namespace KTKS_DonKH.DAL.BamChi
             }
         }
 
-        public bool Xoa(TrangThaiBamChi entity)
+        public bool Xoa(BamChi_TrangThai entity)
         {
             try
             {
-                db.TrangThaiBamChis.DeleteOnSubmit(entity);
+                db.BamChi_TrangThais.DeleteOnSubmit(entity);
                 db.SubmitChanges();
                 return true;
             }
@@ -65,22 +65,22 @@ namespace KTKS_DonKH.DAL.BamChi
             }
         }
 
-        public TrangThaiBamChi Get(int MaTTBC)
+        public BamChi_TrangThai Get(int MaTTBC)
         {
-            return db.TrangThaiBamChis.SingleOrDefault(item => item.MaTTBC == MaTTBC);
+            return db.BamChi_TrangThais.SingleOrDefault(item => item.MaTTBC == MaTTBC);
         }
 
-        public List<TrangThaiBamChi> GetDS()
+        public List<BamChi_TrangThai> GetDS()
         {
-                    return db.TrangThaiBamChis.OrderBy(item => item.STT).ToList();
+                    return db.BamChi_TrangThais.OrderBy(item => item.STT).ToList();
         }
 
         public int GetMaxSTT()
         {
-            if (db.TrangThaiBamChis.Count() == 0)
+            if (db.BamChi_TrangThais.Count() == 0)
                 return 0;
             else
-                return db.TrangThaiBamChis.Max(item => item.STT).Value;
+                return db.BamChi_TrangThais.Max(item => item.STT).Value;
         }
     }
 }

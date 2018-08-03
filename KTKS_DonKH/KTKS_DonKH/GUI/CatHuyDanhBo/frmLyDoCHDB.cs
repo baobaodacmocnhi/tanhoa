@@ -15,8 +15,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
     public partial class frmLyDoCHDB : Form
     {
         string _mnu = "mnuLyDoCHDB";
-        CLyDoCHDB _cLyDoCHDB = new CLyDoCHDB();
-        BindingList<LyDoCHDB> _bSource;
+        CCHDB_LyDo _cLyDoCHDB = new CCHDB_LyDo();
+        BindingList<CHDB_LyDo> _bSource;
         int _selectedindex = -1;
 
         public frmLyDoCHDB()
@@ -27,7 +27,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         private void frmVeViecCHDB_Load(object sender, EventArgs e)
         {
             dgvLyDoCHDB.AutoGenerateColumns = false;
-            _bSource = new BindingList<LyDoCHDB>(_cLyDoCHDB.GetDS());
+            _bSource = new BindingList<CHDB_LyDo>(_cLyDoCHDB.GetDS());
             dgvLyDoCHDB.DataSource = _bSource;
         }
 
@@ -37,7 +37,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             txtNoiDung.Text = "";
             txtNoiNhan.Text = "";
             _selectedindex = -1;
-            _bSource = new BindingList<LyDoCHDB>(_cLyDoCHDB.GetDS());
+            _bSource = new BindingList<CHDB_LyDo>(_cLyDoCHDB.GetDS());
             dgvLyDoCHDB.DataSource = _bSource;
         }
 
@@ -47,7 +47,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 if (txtLyDo.Text.Trim() != "" && txtNoiDung.Text.Trim() != "")
                 {
-                    LyDoCHDB vv = new LyDoCHDB();
+                    CHDB_LyDo vv = new CHDB_LyDo();
                     vv.STT = _cLyDoCHDB.GetMaxSTT() + 1;
                     vv.LyDo = txtLyDo.Text.Trim();
                     vv.NoiDung = txtNoiDung.Text;
@@ -73,7 +73,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 if (_selectedindex != -1)
                     if (txtLyDo.Text.Trim() != "" && txtNoiDung.Text.Trim() != "")
                     {
-                        LyDoCHDB vv = _cLyDoCHDB.Get(int.Parse(dgvLyDoCHDB["ID", _selectedindex].Value.ToString()));
+                        CHDB_LyDo vv = _cLyDoCHDB.Get(int.Parse(dgvLyDoCHDB["ID", _selectedindex].Value.ToString()));
                         vv.LyDo = txtLyDo.Text.Trim();
                         vv.NoiDung = txtNoiDung.Text;
                         vv.NoiNhan = txtNoiNhan.Text.Trim();
@@ -111,7 +111,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 if (_selectedindex != -1 && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    LyDoCHDB vv = _cLyDoCHDB.Get(int.Parse(dgvLyDoCHDB["ID", _selectedindex].Value.ToString()));
+                    CHDB_LyDo vv = _cLyDoCHDB.Get(int.Parse(dgvLyDoCHDB["ID", _selectedindex].Value.ToString()));
                     if (_cLyDoCHDB.Xoa(vv))
                     {
                         Clear();

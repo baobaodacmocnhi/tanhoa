@@ -165,7 +165,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 ChungTu _chungtu = _cChungTu.Get(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
                                 _chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
 
-                                if (_chungtu.SoNKTong - _chungtu.CTChungTus.Sum(item => item.SoNKDangKy) < int.Parse(txtSoNKNhan.Text.Trim()))
+                                if (_chungtu.SoNKTong - _chungtu.ChungTu_ChiTiets.Sum(item => item.SoNKDangKy) < int.Parse(txtSoNKNhan.Text.Trim()))
                                 {
                                     MessageBox.Show("Vượt Nhân Khẩu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
@@ -173,7 +173,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 //chưa có
                                 if (_cChungTu.CheckExist_CT(txtDanhBo_Nhan.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())) == false)
                                 {
-                                    CTChungTu ctchungtu = new CTChungTu();
+                                    ChungTu_ChiTiet ctchungtu = new ChungTu_ChiTiet();
                                     ctchungtu.DanhBo = txtDanhBo_Nhan.Text.Trim();
                                     ctchungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
                                     ctchungtu.MaCT = txtMaCT.Text.Trim();
@@ -262,7 +262,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 //đã có
                                 else
                                 {
-                                    CTChungTu ctchungtu = _cChungTu.GetCT(txtDanhBo_Nhan.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
+                                    ChungTu_ChiTiet ctchungtu = _cChungTu.GetCT(txtDanhBo_Nhan.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
                                     ctchungtu.SoNKDangKy += int.Parse(txtSoNKNhan.Text.Trim());
                                     ///Ghi thông tin Lịch Sử chung
                                     LichSuChungTu lichsuchungtu = new LichSuChungTu();

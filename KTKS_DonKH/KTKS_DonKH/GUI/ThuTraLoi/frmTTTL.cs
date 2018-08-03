@@ -27,16 +27,16 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         CDonTXL _cDonTXL = new CDonTXL();
         CDonTBC _cDonTBC = new CDonTBC();
         CTTTL _cTTTL = new CTTTL();
-        CGhiChuCTTTTL _cGhiChuCTTTTL = new CGhiChuCTTTTL();
+        CTTTL_GhiChu _cGhiChuCTTTTL = new CTTTL_GhiChu();
         CDocSo _cDocSo = new CDocSo();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
-        CVeViecTTTL _cVeViecTTTL = new CVeViecTTTL();
+        CTTTL_VeViec _cVeViecTTTL = new CTTTL_VeViec();
 
         DonKH _dontkh = null;
         DonTXL _dontxl = null;
         DonTBC _dontbc = null;
         HOADON _hoadon = null;
-        CTTTTL _cttttl = null;
+        TTTL_ChiTiet _cttttl = null;
         decimal _MaCTTTTL = -1;
 
         public frmTTTL()
@@ -81,7 +81,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             dgvLichSuTTTL.DataSource = _cTTTL.GetLichSuCTByDanhBo(_hoadon.DANHBA);
         }
 
-        public void LoadTTTL(CTTTTL cttttl)
+        public void LoadTTTL(TTTL_ChiTiet cttttl)
         {
             if (cttttl.TTTL.MaDon != null)
             {
@@ -335,7 +335,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         {
             if (cmbVeViec.SelectedIndex != -1)
             {
-                TTTLVeViec vv = (TTTLVeViec)cmbVeViec.SelectedItem;
+                TTTL_VeViec vv = (TTTL_VeViec)cmbVeViec.SelectedItem;
                 txtVeViec.Text = vv.TenVV;
                 txtNoiDung.Text = vv.NoiDung;
                 if (txtMaDonCu.Text.Trim() != "")
@@ -364,7 +364,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         return;
                     }
 
-                    CTTTTL cttttl = new CTTTTL();
+                    TTTL_ChiTiet cttttl = new TTTL_ChiTiet();
 
                     if (_dontkh != null)
                     {
@@ -550,7 +550,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 {
                     if (_cttttl != null)
                     {
-                        GhiChuCTTTTL ghichu = new GhiChuCTTTTL();
+                        TTTL_GhiChu ghichu = new TTTL_GhiChu();
                         ghichu.NgayGhiChu = dateGhiChu.Value;
                         ghichu.GhiChu = txtGhiChu.Text.Trim();
                         ghichu.MaCTTTTL = _cttttl.MaCTTTTL;

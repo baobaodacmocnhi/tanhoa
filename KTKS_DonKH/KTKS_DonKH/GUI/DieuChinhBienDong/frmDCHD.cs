@@ -37,7 +37,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         DonTXL _dontxl = null;
         DonTBC _dontbc = null;
         HOADON _hoadon = null;
-        CTDCHD _ctdchd = null;
+        DCBD_ChiTietHoaDon _ctdchd = null;
         int _TieuThu_DieuChinhGia = 0;
         List<GiaNuoc> lstGiaNuoc;
         decimal _MaCTDCHD = -1;
@@ -125,7 +125,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtDinhMuc_Cu.Text = txtDinhMuc_Moi.Text = "0";
         }
 
-        public void LoadDCHD(CTDCHD ctdchd)
+        public void LoadDCHD(DCBD_ChiTietHoaDon ctdchd)
         {
             if (ctdchd.DCBD.MaDon != null)
             {
@@ -464,7 +464,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             return;
                         }
 
-                    CTDCHD ctdchd = new CTDCHD();
+                    DCBD_ChiTietHoaDon ctdchd = new DCBD_ChiTietHoaDon();
 
                     if (_dontkh != null)
                     {

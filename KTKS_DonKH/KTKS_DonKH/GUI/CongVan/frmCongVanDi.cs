@@ -74,28 +74,28 @@ namespace KTKS_DonKH.GUI.CongVan
                         TenTable = "DonTXL";
                         break;
                     case "Kiểm Tra Xác Minh":
-                        TenTable = "CTKTXM";
+                        TenTable = "KTXM_ChiTiet";
                         break;
                     case "Bấm Chì":
-                        TenTable = "CTBamChi";
+                        TenTable = "BamChi_ChiTiet";
                         break;
                     case "Điều Chỉnh Biến Động":
-                        TenTable = "CTDCBD";
+                        TenTable = "DCBD_ChiTietBienDong";
                         break;
                     case "Điều Chỉnh Hóa Đơn":
-                        TenTable = "CTDCHD";
+                        TenTable = "DCBD_ChiTietHoaDon";
                         break;
                     case "Cắt Tạm Danh Bộ":
-                        TenTable = "CTCTDB";
+                        TenTable = "CHDB_ChiTietCatTam";
                         break;
                     case "Cắt Hủy Danh Bộ":
-                        TenTable = "CTCHDB";
+                        TenTable = "CHDB_ChiTietCatHuy";
                         break;
                     case "Phiếu Hủy Danh Bộ":
-                        TenTable = "PhieuCHDB";
+                        TenTable = "CHDB_Phieu";
                         break;
                     case "Thư Trả Lời":
-                        TenTable = "CTTTTL";
+                        TenTable = "TTTL_ChiTiet";
                         break;
                     default:
 
@@ -187,49 +187,49 @@ namespace KTKS_DonKH.GUI.CongVan
                                         item.DiaChi = dontbc.DiaChi;
                                         break;
                                     case "Kiểm Tra Xác Minh":
-                                        CTKTXM ctktxm = _cKTXM.GetCT(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                        KTXM_ChiTiet ctktxm = _cKTXM.GetCT(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                         item.DanhBo = ctktxm.DanhBo;
                                         item.HoTen = ctktxm.HoTen;
                                         item.DiaChi = ctktxm.DiaChi;
                                         break;
                                     case "Bấm Chì":
-                                        CTBamChi ctbamchi = _cBamChi.GetCT(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                        BamChi_ChiTiet ctbamchi = _cBamChi.GetCT(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                         item.DanhBo = ctbamchi.DanhBo;
                                         item.HoTen = ctbamchi.HoTen;
                                         item.DiaChi = ctbamchi.DiaChi;
                                         break;
                                     case "Điều Chỉnh Biến Động":
-                                        CTDCBD dcbd = _cDCBD.getBienDong(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                        DCBD_ChiTietBienDong dcbd = _cDCBD.getBienDong(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                         item.DanhBo = dcbd.DanhBo;
                                         item.HoTen = dcbd.HoTen;
                                         item.DiaChi = dcbd.DiaChi;
                                         break;
                                     case "Điều Chỉnh Hóa Đơn":
-                                        CTDCHD dchd = _cDCBD.getHoaDon(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                        DCBD_ChiTietHoaDon dchd = _cDCBD.getHoaDon(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                         item.DanhBo = dchd.DanhBo;
                                         item.HoTen = dchd.HoTen;
                                         item.DiaChi = dchd.DiaChi;
                                         break;
                                     case "Cắt Tạm Danh Bộ":
-                                        CTCTDB ctctdb = _cCHDB.GetCTCTDB(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                        CHDB_ChiTietCatTam ctctdb = _cCHDB.GetCTCTDB(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                         item.DanhBo = ctctdb.DanhBo;
                                         item.HoTen = ctctdb.HoTen;
                                         item.DiaChi = ctctdb.DiaChi;
                                         break;
                                     case "Cắt Hủy Danh Bộ":
-                                        CTCHDB ctchdb = _cCHDB.GetCTCHDB(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                        CHDB_ChiTietCatHuy ctchdb = _cCHDB.GetCTCHDB(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                         item.DanhBo = ctchdb.DanhBo;
                                         item.HoTen = ctchdb.HoTen;
                                         item.DiaChi = ctchdb.DiaChi;
                                         break;
                                     case "Phiếu Hủy Danh Bộ":
-                                        PhieuCHDB ycchdb = _cCHDB.GetPhieuHuy(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                        CHDB_Phieu ycchdb = _cCHDB.GetPhieuHuy(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                         item.DanhBo = ycchdb.DanhBo;
                                         item.HoTen = ycchdb.HoTen;
                                         item.DiaChi = ycchdb.DiaChi;
                                         break;
                                     case "Thư Trả Lời":
-                                        CTTTTL cttttl = _cTTTL.GetCT(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
+                                        TTTL_ChiTiet cttttl = _cTTTL.GetCT(decimal.Parse(itemMa.Text.Trim().Replace("-", "")));
                                         item.DanhBo = cttttl.DanhBo;
                                         item.HoTen = cttttl.HoTen;
                                         item.DiaChi = cttttl.DiaChi;
@@ -299,49 +299,49 @@ namespace KTKS_DonKH.GUI.CongVan
                         txtDiaChi.Text = dontbc.DiaChi;
                         break;
                     case "Kiểm Tra Xác Minh":
-                        CTKTXM ctktxm = _cKTXM.GetCT(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                        KTXM_ChiTiet ctktxm = _cKTXM.GetCT(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = ctktxm.DanhBo;
                         txtHoTen.Text = ctktxm.HoTen;
                         txtDiaChi.Text = ctktxm.DiaChi;
                         break;
                     case "Bấm Chì":
-                        CTBamChi ctbamchi = _cBamChi.GetCT(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                        BamChi_ChiTiet ctbamchi = _cBamChi.GetCT(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = ctbamchi.DanhBo;
                         txtHoTen.Text = ctbamchi.HoTen;
                         txtDiaChi.Text = ctbamchi.DiaChi;
                         break;
                     case "Điều Chỉnh Biến Động":
-                        CTDCBD dcbd = _cDCBD.getBienDong(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                        DCBD_ChiTietBienDong dcbd = _cDCBD.getBienDong(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = dcbd.DanhBo;
                         txtHoTen.Text = dcbd.HoTen;
                         txtDiaChi.Text = dcbd.DiaChi;
                         break;
                     case "Điều Chỉnh Hóa Đơn":
-                        CTDCHD dchd = _cDCBD.getHoaDon(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                        DCBD_ChiTietHoaDon dchd = _cDCBD.getHoaDon(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = dchd.DanhBo;
                         txtHoTen.Text = dchd.HoTen;
                         txtDiaChi.Text = dchd.DiaChi;
                         break;
                     case "Cắt Tạm Danh Bộ":
-                        CTCTDB ctctdb = _cCHDB.GetCTCTDB(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                        CHDB_ChiTietCatTam ctctdb = _cCHDB.GetCTCTDB(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = ctctdb.DanhBo;
                         txtHoTen.Text = ctctdb.HoTen;
                         txtDiaChi.Text = ctctdb.DiaChi;
                         break;
                     case "Cắt Hủy Danh Bộ":
-                        CTCHDB ctchdb = _cCHDB.GetCTCHDB(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                        CHDB_ChiTietCatHuy ctchdb = _cCHDB.GetCTCHDB(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = ctchdb.DanhBo;
                         txtHoTen.Text = ctchdb.HoTen;
                         txtDiaChi.Text = ctchdb.DiaChi;
                         break;
                     case "Phiếu Hủy Danh Bộ":
-                        PhieuCHDB ycchdb = _cCHDB.GetPhieuHuy(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                        CHDB_Phieu ycchdb = _cCHDB.GetPhieuHuy(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = ycchdb.DanhBo;
                         txtHoTen.Text = ycchdb.HoTen;
                         txtDiaChi.Text = ycchdb.DiaChi;
                         break;
                     case "Thư Trả Lời":
-                        CTTTTL cttttl = _cTTTL.GetCT(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
+                        TTTL_ChiTiet cttttl = _cTTTL.GetCT(decimal.Parse(txtTuMa.Text.Trim().Replace("-", "")));
                         txtDanhBo.Text = cttttl.DanhBo;
                         txtHoTen.Text = cttttl.HoTen;
                         txtDiaChi.Text = cttttl.DiaChi;

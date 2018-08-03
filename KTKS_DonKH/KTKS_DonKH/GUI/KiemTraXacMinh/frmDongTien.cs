@@ -57,7 +57,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtGhiChuNoiDungXuLy.AutoCompleteCustomSource = auto;
         }
 
-        public void LoadCTKTXM(CTKTXM ctktxm)
+        public void LoadCTKTXM(KTXM_ChiTiet ctktxm)
         {
             dateKTXM.Value = ctktxm.NgayKTXM.Value;
 
@@ -187,7 +187,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 {
                     if (_cKTXM.CheckExist_CT(decimal.Parse(dgvDSKetQuaKiemTra["MaCTKTXM", _selectedindex].Value.ToString())) == true)
                     {
-                        CTKTXM ctktxm = _cKTXM.GetCT(decimal.Parse(dgvDSKetQuaKiemTra["MaCTKTXM", _selectedindex].Value.ToString()));
+                        KTXM_ChiTiet ctktxm = _cKTXM.GetCT(decimal.Parse(dgvDSKetQuaKiemTra["MaCTKTXM", _selectedindex].Value.ToString()));
 
                         ctktxm.DutChiGoc = chkDutChiGoc.Checked;
                         ctktxm.MoNuoc = chkMoNuoc.Checked;

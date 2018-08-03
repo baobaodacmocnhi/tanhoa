@@ -8,19 +8,19 @@ using System.Windows.Forms;
 
 namespace KTKS_DonKH.DAL.CatHuyDanhBo
 {
-    class CNoiDungXuLyCHDB:CDAL
+    class CCHDB_LyDo : CDAL
     {
-        public bool Them(NoiDungXuLyCHDB vv)
+        public bool Them(CHDB_LyDo vv)
         {
             try
             {
-                if (db.NoiDungXuLyCHDBs.Count() > 0)
-                    vv.ID = db.NoiDungXuLyCHDBs.Max(item => item.ID) + 1;
+                if (db.CHDB_LyDos.Count() > 0)
+                    vv.ID = db.CHDB_LyDos.Max(item => item.ID) + 1;
                 else
                     vv.ID = 1;
                 vv.CreateDate = DateTime.Now;
                 vv.CreateBy = CTaiKhoan.MaUser;
-                db.NoiDungXuLyCHDBs.InsertOnSubmit(vv);
+                db.CHDB_LyDos.InsertOnSubmit(vv);
                 db.SubmitChanges();
                 return true;
             }
@@ -32,7 +32,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public bool Sua(NoiDungXuLyCHDB vv)
+        public bool Sua(CHDB_LyDo vv)
         {
             try
             {
@@ -49,11 +49,11 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public bool Xoa(NoiDungXuLyCHDB vv)
+        public bool Xoa(CHDB_LyDo vv)
         {
             try
             {
-                db.NoiDungXuLyCHDBs.DeleteOnSubmit(vv);
+                db.CHDB_LyDos.DeleteOnSubmit(vv);
                 db.SubmitChanges();
                 return true;
             }
@@ -65,23 +65,22 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public List<NoiDungXuLyCHDB> GetDS()
+        public List<CHDB_LyDo> GetDS()
         {
-            return db.NoiDungXuLyCHDBs.OrderBy(item=>item.STT).ToList();
+            return db.CHDB_LyDos.OrderBy(item => item.STT).ToList();
         }
 
-        public NoiDungXuLyCHDB Get(int ID)
+        public CHDB_LyDo Get(int ID)
         {
-            return db.NoiDungXuLyCHDBs.SingleOrDefault(item => item.ID == ID);
+            return db.CHDB_LyDos.SingleOrDefault(item => item.ID == ID);
         }
 
         public int GetMaxSTT()
         {
-            if (db.NoiDungXuLyCHDBs.Count() == 0)
+            if (db.CHDB_LyDos.Count() == 0)
                 return 0;
             else
-                return db.NoiDungXuLyCHDBs.Max(item => item.STT).Value;
+                return db.CHDB_LyDos.Max(item => item.STT).Value;
         }
-
     }
 }

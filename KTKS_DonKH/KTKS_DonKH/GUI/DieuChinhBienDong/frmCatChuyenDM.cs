@@ -27,7 +27,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CDocSo _cDocSo = new CDocSo();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
 
-        CTChungTu _ctchungtu = null;
+        ChungTu_ChiTiet _ctchungtu = null;
         LichSuChungTu _lichsuchungtu = null;
         CDataTransfer _dataT = new CDataTransfer();
         decimal _MaLSCT = -1;
@@ -148,17 +148,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             if (((ChiNhanh)cmbChiNhanh_Nhan.SelectedItem).TenCN.ToUpper().Contains("TÂN HÒA")==true)
                             //if (_cChiNhanh.getChiNhanhbyID(int.Parse(cmbChiNhanh_Nhan.SelectedValue.ToString())).TenCN.ToUpper().Contains("TÂN HÒA"))
                             {
-                                ///Cập nhật CTChungTu, Danh Bộ Cắt
+                                ///Cập nhật ChungTu_ChiTiet, Danh Bộ Cắt
                                 _ctchungtu.SoNKDangKy -= int.Parse(txtSoNK_Cat.Text.Trim());
                                 _ctchungtu.GhiChu = txtGhiChu_Cat.Text.Trim();
                                 _ctchungtu.ModifyDate = DateTime.Now;
                                 _ctchungtu.ModifyBy = CTaiKhoan.MaUser;
 
-                                CTChungTu ctchungtuNhan = new CTChungTu();
+                                ChungTu_ChiTiet ctchungtuNhan = new ChungTu_ChiTiet();
                                 ///Nếu Chứng Từ đã đăng ký với Danh Bộ
                                 if (_cChungTu.CheckExist_CT(txtDanhBo_Nhan.Text.Trim(), txtMaCT_Cat.Text.Trim(), int.Parse(cmbLoaiCT_Cat.SelectedValue.ToString())))
                                 {
-                                    ///Cập nhật CTChungTu, Danh Bộ Nhận
+                                    ///Cập nhật ChungTu_ChiTiet, Danh Bộ Nhận
                                     ctchungtuNhan = _cChungTu.GetCT(txtDanhBo_Nhan.Text.Trim(), txtMaCT_Cat.Text.Trim(), int.Parse(cmbLoaiCT_Cat.SelectedValue.ToString()));
                                     ctchungtuNhan.SoNKDangKy += int.Parse(txtSoNK_Cat.Text.Trim());
                                     ctchungtuNhan.GhiChu = txtGhiChu_Nhan.Text.Trim();
@@ -167,7 +167,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 ///Nếu Chứng Từ chưa đăng ký với Danh Bộ
                                 else
                                 {
-                                    ///Thêm CTChungTu, Danh Bộ Nhận
+                                    ///Thêm ChungTu_ChiTiet, Danh Bộ Nhận
                                     ctchungtuNhan.DanhBo = txtDanhBo_Nhan.Text.Trim();
                                     ctchungtuNhan.MaLCT = int.Parse(cmbLoaiCT_Cat.SelectedValue.ToString());
                                     ctchungtuNhan.MaCT = txtMaCT_Cat.Text.Trim();

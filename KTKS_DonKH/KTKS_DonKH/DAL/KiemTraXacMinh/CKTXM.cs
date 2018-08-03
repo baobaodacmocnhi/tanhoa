@@ -116,16 +116,16 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
 
         #endregion
 
-        #region CTKTXM (Chi Tiết Kiểm Tra Xác Minh)
+        #region KTXM_ChiTiet (Chi Tiết Kiểm Tra Xác Minh)
 
-        public bool ThemCT(CTKTXM ctktxm)
+        public bool ThemCT(KTXM_ChiTiet ctktxm)
         {
             try
             {
-                if (db.CTKTXMs.Count() > 0)
+                if (db.KTXM_ChiTiets.Count() > 0)
                 {
                     string ID = "MaCTKTXM";
-                    string Table = "CTKTXM";
+                    string Table = "KTXM_ChiTiet";
                     decimal MaCTKTXM = db.ExecuteQuery<decimal>("declare @Ma int " +
                         "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
                         "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
@@ -135,7 +135,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                     ctktxm.MaCTKTXM = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                 ctktxm.CreateDate = DateTime.Now;
                 ctktxm.CreateBy = CTaiKhoan.MaUser;
-                db.CTKTXMs.InsertOnSubmit(ctktxm);
+                db.KTXM_ChiTiets.InsertOnSubmit(ctktxm);
                 db.SubmitChanges();
                 return true;
             }
@@ -147,7 +147,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
-        public bool SuaCT(CTKTXM ctktxm)
+        public bool SuaCT(KTXM_ChiTiet ctktxm)
         {
             try
             {
@@ -164,13 +164,13 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
-        public bool XoaCT(CTKTXM ctktxm)
+        public bool XoaCT(KTXM_ChiTiet ctktxm)
         {
             try
             {
                 decimal MaKTXM = ctktxm.MaKTXM.Value;
-                db.CTKTXMs.DeleteOnSubmit(ctktxm);
-                if (db.CTKTXMs.Any(item => item.MaKTXM == MaKTXM) == false)
+                db.KTXM_ChiTiets.DeleteOnSubmit(ctktxm);
+                if (db.KTXM_ChiTiets.Any(item => item.MaKTXM == MaKTXM) == false)
                     db.KTXMs.DeleteOnSubmit(db.KTXMs.SingleOrDefault(item => item.MaKTXM == MaKTXM));
                 db.SubmitChanges();
                 return true;
@@ -188,31 +188,31 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             switch (Loai)
             {
                 case "TKH":
-                    return db.CTKTXMs.Any(item => item.CreateBy == CreateBy && item.KTXM.MaDon == MaDon && item.DanhBo == DanhBo && item.NgayKTXM == NgayKTXM);
+                    return db.KTXM_ChiTiets.Any(item => item.CreateBy == CreateBy && item.KTXM.MaDon == MaDon && item.DanhBo == DanhBo && item.NgayKTXM == NgayKTXM);
                 case "TXL":
-                    return db.CTKTXMs.Any(item => item.CreateBy == CreateBy && item.KTXM.MaDonTXL == MaDon && item.DanhBo == DanhBo && item.NgayKTXM == NgayKTXM);
+                    return db.KTXM_ChiTiets.Any(item => item.CreateBy == CreateBy && item.KTXM.MaDonTXL == MaDon && item.DanhBo == DanhBo && item.NgayKTXM == NgayKTXM);
                 case "TBC":
-                    return db.CTKTXMs.Any(item => item.CreateBy == CreateBy && item.KTXM.MaDonTBC == MaDon && item.DanhBo == DanhBo && item.NgayKTXM == NgayKTXM);
+                    return db.KTXM_ChiTiets.Any(item => item.CreateBy == CreateBy && item.KTXM.MaDonTBC == MaDon && item.DanhBo == DanhBo && item.NgayKTXM == NgayKTXM);
                 default:
                     return false;
             }
         }
 
-        public CTKTXM GetCT(decimal MaCTKTXM)
+        public KTXM_ChiTiet GetCT(decimal MaCTKTXM)
         {
-            return db.CTKTXMs.SingleOrDefault(item => item.MaCTKTXM == MaCTKTXM);
+            return db.KTXM_ChiTiets.SingleOrDefault(item => item.MaCTKTXM == MaCTKTXM);
         }
 
-        public CTKTXM GetCT(string Loai, decimal MaDon, string DanhBo)
+        public KTXM_ChiTiet GetCT(string Loai, decimal MaDon, string DanhBo)
         {
             switch (Loai)
             {
                 case "TKH":
-                    return db.CTKTXMs.SingleOrDefault(item => item.KTXM.MaDon == MaDon && item.DanhBo == DanhBo);
+                    return db.KTXM_ChiTiets.SingleOrDefault(item => item.KTXM.MaDon == MaDon && item.DanhBo == DanhBo);
                 case "TXL":
-                    return db.CTKTXMs.SingleOrDefault(item => item.KTXM.MaDonTXL == MaDon && item.DanhBo == DanhBo);
+                    return db.KTXM_ChiTiets.SingleOrDefault(item => item.KTXM.MaDonTXL == MaDon && item.DanhBo == DanhBo);
                 case "TBC":
-                    return db.CTKTXMs.SingleOrDefault(item => item.KTXM.MaDonTBC == MaDon && item.DanhBo == DanhBo);
+                    return db.KTXM_ChiTiets.SingleOrDefault(item => item.KTXM.MaDonTBC == MaDon && item.DanhBo == DanhBo);
                 default:
                     return null;
             }
@@ -221,7 +221,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
 
         public bool CheckExist_CT(decimal MaCTKTXM)
         {
-            return db.CTKTXMs.Any(itemCTKTXM => itemCTKTXM.MaCTKTXM == MaCTKTXM);
+            return db.KTXM_ChiTiets.Any(itemCTKTXM => itemCTKTXM.MaCTKTXM == MaCTKTXM);
         }
 
         public DataTable GetDS(string Loai, DateTime FromNgayKTXM, DateTime ToNgayKTXM)
@@ -229,9 +229,9 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             switch (Loai)
             {
                 case "TKH":
-                    var query = from itemCTKTXM in db.CTKTXMs
+                    var query = from itemCTKTXM in db.KTXM_ChiTiets
                                 join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                                join itemHTKT in db.HienTrangKiemTras on itemCTKTXM.HienTrangKiemTra equals itemHTKT.TenHTKT into tableHTKT
+                                join itemHTKT in db.KTXM_HienTrangs on itemCTKTXM.HienTrangKiemTra equals itemHTKT.TenHTKT into tableHTKT
                                 from itemtableHTKT in tableHTKT.DefaultIfEmpty()
                                 where itemCTKTXM.KTXM.MaDon != null
                                 && itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date
@@ -253,9 +253,9 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                 };
                     return LINQToDataTable(query);
                 case "TXL":
-                    query = from itemCTKTXM in db.CTKTXMs
+                    query = from itemCTKTXM in db.KTXM_ChiTiets
                             join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                            join itemHTKT in db.HienTrangKiemTras on itemCTKTXM.HienTrangKiemTra equals itemHTKT.TenHTKT into tableHTKT
+                            join itemHTKT in db.KTXM_HienTrangs on itemCTKTXM.HienTrangKiemTra equals itemHTKT.TenHTKT into tableHTKT
                             from itemtableHTKT in tableHTKT.DefaultIfEmpty()
                             where itemCTKTXM.KTXM.MaDonTXL != null
                             && itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date
@@ -277,9 +277,9 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                             };
                     return LINQToDataTable(query);
                 case "TBC":
-                    query = from itemCTKTXM in db.CTKTXMs
+                    query = from itemCTKTXM in db.KTXM_ChiTiets
                             join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                            join itemHTKT in db.HienTrangKiemTras on itemCTKTXM.HienTrangKiemTra equals itemHTKT.TenHTKT into tableHTKT
+                            join itemHTKT in db.KTXM_HienTrangs on itemCTKTXM.HienTrangKiemTra equals itemHTKT.TenHTKT into tableHTKT
                             from itemtableHTKT in tableHTKT.DefaultIfEmpty()
                             where itemCTKTXM.KTXM.MaDonTBC != null
                             && itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date
@@ -301,9 +301,9 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                             };
                     return LINQToDataTable(query);
                 default:
-                   query = from itemCTKTXM in db.CTKTXMs
+                   query = from itemCTKTXM in db.KTXM_ChiTiets
                             join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                            join itemHTKT in db.HienTrangKiemTras on itemCTKTXM.HienTrangKiemTra equals itemHTKT.TenHTKT into tableHTKT
+                            join itemHTKT in db.KTXM_HienTrangs on itemCTKTXM.HienTrangKiemTra equals itemHTKT.TenHTKT into tableHTKT
                             from itemtableHTKT in tableHTKT.DefaultIfEmpty()
                             where itemCTKTXM.KTXM.MaDonTBC != null
                             && itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date
@@ -336,7 +336,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             switch (Loai)
             {
                 case "TKH":
-                    var query = from itemCTKTXM in db.CTKTXMs
+                    var query = from itemCTKTXM in db.KTXM_ChiTiets
                                 join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                                 where itemCTKTXM.CreateBy == CreateBy && itemCTKTXM.KTXM.MaDon == MaDon
                                 select new
@@ -353,7 +353,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                 };
                     return LINQToDataTable(query);
                 case "TXL":
-                    query = from itemCTKTXM in db.CTKTXMs
+                    query = from itemCTKTXM in db.KTXM_ChiTiets
                             join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                             where itemCTKTXM.CreateBy == CreateBy && itemCTKTXM.KTXM.MaDonTXL == MaDon
                             select new
@@ -370,7 +370,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                             };
                     return LINQToDataTable(query);
                 case "TBC":
-                    query = from itemCTKTXM in db.CTKTXMs
+                    query = from itemCTKTXM in db.KTXM_ChiTiets
                             join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                             where itemCTKTXM.CreateBy == CreateBy && itemCTKTXM.KTXM.MaDonTBC == MaDon
                             select new
@@ -396,7 +396,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             switch (Loai)
             {
                 case "TKH":
-                    var query = from itemCTKTXM in db.CTKTXMs
+                    var query = from itemCTKTXM in db.KTXM_ChiTiets
                                 join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                                 where itemCTKTXM.KTXM.MaDon == MaDon
                                 select new
@@ -413,7 +413,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                 };
                     return LINQToDataTable(query);
                 case "TXL":
-                    query = from itemCTKTXM in db.CTKTXMs
+                    query = from itemCTKTXM in db.KTXM_ChiTiets
                             join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                             where itemCTKTXM.KTXM.MaDonTXL == MaDon
                             select new
@@ -430,7 +430,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                             };
                     return LINQToDataTable(query);
                 case "TBC":
-                    query = from itemCTKTXM in db.CTKTXMs
+                    query = from itemCTKTXM in db.KTXM_ChiTiets
                             join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                             where itemCTKTXM.KTXM.MaDonTBC == MaDon
                             select new
@@ -456,7 +456,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             switch (Loai)
             {
                 case "TKH":
-                    var query = from itemCTKTXM in db.CTKTXMs
+                    var query = from itemCTKTXM in db.KTXM_ChiTiets
                                 join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                                 where (((itemCTKTXM.KTXM.MaDon.ToString().Substring(itemCTKTXM.KTXM.MaDon.ToString().Length - 2, 2) == FromMaDon.ToString().Substring(FromMaDon.ToString().Length - 2, 2)
                                     && itemCTKTXM.KTXM.MaDon.ToString().Substring(itemCTKTXM.KTXM.MaDon.ToString().Length - 2, 2) == ToMaDon.ToString().Substring(ToMaDon.ToString().Length - 2, 2))
@@ -475,7 +475,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                 };
                     return LINQToDataTable(query);
                 case "TXL":
-                    query = from itemCTKTXM in db.CTKTXMs
+                    query = from itemCTKTXM in db.KTXM_ChiTiets
                             join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                             where (((itemCTKTXM.KTXM.MaDonTXL.ToString().Substring(itemCTKTXM.KTXM.MaDonTXL.ToString().Length - 2, 2) == FromMaDon.ToString().Substring(FromMaDon.ToString().Length - 2, 2)
                             && itemCTKTXM.KTXM.MaDonTXL.ToString().Substring(itemCTKTXM.KTXM.MaDonTXL.ToString().Length - 2, 2) == ToMaDon.ToString().Substring(ToMaDon.ToString().Length - 2, 2))
@@ -494,7 +494,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                             };
                     return LINQToDataTable(query);
                 case "TBC":
-                    query = from itemCTKTXM in db.CTKTXMs
+                    query = from itemCTKTXM in db.KTXM_ChiTiets
                             join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                             where (((itemCTKTXM.KTXM.MaDonTBC.ToString().Substring(itemCTKTXM.KTXM.MaDonTBC.ToString().Length - 2, 2) == FromMaDon.ToString().Substring(FromMaDon.ToString().Length - 2, 2)
                             && itemCTKTXM.KTXM.MaDonTBC.ToString().Substring(itemCTKTXM.KTXM.MaDonTBC.ToString().Length - 2, 2) == ToMaDon.ToString().Substring(ToMaDon.ToString().Length - 2, 2))
@@ -519,7 +519,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
 
         public DataTable GetDS(string DanhBo)
         {
-            var query = from itemCTKTXM in db.CTKTXMs
+            var query = from itemCTKTXM in db.KTXM_ChiTiets
                         join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                         where itemCTKTXM.DanhBo == DanhBo
                         select new
@@ -543,7 +543,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
 
         public DataTable GetDSByDanhBo(int CreateBy, string DanhBo)
         {
-            var query = from itemCTKTXM in db.CTKTXMs
+            var query = from itemCTKTXM in db.KTXM_ChiTiets
                         join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                         where itemCTKTXM.CreateBy == CreateBy && itemCTKTXM.DanhBo == DanhBo
                         select new
@@ -567,7 +567,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
 
         public DataTable GetDSBySoCongVan(int CreateBy, string SoCongVan)
         {
-            var query = from itemCTKTXM in db.CTKTXMs
+            var query = from itemCTKTXM in db.KTXM_ChiTiets
                         join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                         where itemCTKTXM.CreateBy == CreateBy && itemCTKTXM.KTXM.DonKH.SoCongVan.Contains(SoCongVan)
                         select new
@@ -591,7 +591,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
 
         public DataTable GetDSBySoCongVan(string SoCongVan)
         {
-            var query = from itemCTKTXM in db.CTKTXMs
+            var query = from itemCTKTXM in db.KTXM_ChiTiets
                         join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                         where itemCTKTXM.KTXM.DonKH.SoCongVan.Contains(SoCongVan)
                         select new
@@ -615,7 +615,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
 
         public DataTable GetDS(int CreateBy, DateTime FromNgayKTXM, DateTime ToNgayKTXM)
         {
-            var query = from itemCTKTXM in db.CTKTXMs
+            var query = from itemCTKTXM in db.KTXM_ChiTiets
                         join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                         where itemCTKTXM.CreateBy == CreateBy
                         && itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date
@@ -640,9 +640,9 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
 
         public DataTable GetDS(DateTime FromNgayKTXM, DateTime ToNgayKTXM)
         {
-            var query = from itemCTKTXM in db.CTKTXMs
+            var query = from itemCTKTXM in db.KTXM_ChiTiets
                         join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                        join itemHTKT in db.HienTrangKiemTras on itemCTKTXM.HienTrangKiemTra equals itemHTKT.TenHTKT into tableHTKT
+                        join itemHTKT in db.KTXM_HienTrangs on itemCTKTXM.HienTrangKiemTra equals itemHTKT.TenHTKT into tableHTKT
                         from itemtableHTKT in tableHTKT.DefaultIfEmpty()
                         where itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date
                         select new
@@ -672,9 +672,9 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
 
         public DataTable GetDScoTruyThu(DateTime FromNgayKTXM, DateTime ToNgayKTXM)
         {
-            var query = from itemCTKTXM in db.CTKTXMs
+            var query = from itemCTKTXM in db.KTXM_ChiTiets
                         join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                        join itemHTKT in db.HienTrangKiemTras on itemCTKTXM.HienTrangKiemTra equals itemHTKT.TenHTKT into tableHTKT
+                        join itemHTKT in db.KTXM_HienTrangs on itemCTKTXM.HienTrangKiemTra equals itemHTKT.TenHTKT into tableHTKT
                         from itemtableHTKT in tableHTKT.DefaultIfEmpty()
                         where itemCTKTXM.DinhMucMoi != null
                         && itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date
@@ -700,7 +700,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
 
         public int CountXuLySauBienBan(string TenTo, DateTime FromNgayKTXM, DateTime ToNgayKTXM, bool LapBangGia, bool DongTienBoiThuong, bool ChuyenLapTBCat, bool DutChiGoc, bool MoNuoc)
         {
-            string sql = "select COUNT(MaCTKTXM) from KTXM ktxm,CTKTXM ctktxm where ktxm.MaKTXM=ctktxm.MaKTXM and CAST(NgayKTXM as date)>='" + FromNgayKTXM.ToString("yyyyMMdd") + "' and CAST(NgayKTXM as date)<='" + ToNgayKTXM.ToString("yyyyMMdd") + "'";
+            string sql = "select COUNT(MaCTKTXM) from KTXM ktxm,KTXM_ChiTiet ctktxm where ktxm.MaKTXM=ctktxm.MaKTXM and CAST(NgayKTXM as date)>='" + FromNgayKTXM.ToString("yyyyMMdd") + "' and CAST(NgayKTXM as date)<='" + ToNgayKTXM.ToString("yyyyMMdd") + "'";
             switch (TenTo)
             {
                 case "TKH":
@@ -734,7 +734,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             string sql = "select MaDon=case when MaDon is not null then 'TKH'+ CONVERT(varchar(10),MaDon)"
 					    + " when MaDonTXL is not null then 'TXL'+CONVERT(varchar(10),MaDonTXL)"
 					    + " when MaDonTBC is not null then 'TBC'+CONVERT(varchar(10),MaDonTBC) end"
-                        + " ,DanhBo,HoTen,DiaChi,NgayLapBangGia,NgayDongTien,NgayChuyenLapTBCat,SoTien from KTXM ktxm,CTKTXM ctktxm where ktxm.MaKTXM=ctktxm.MaKTXM and CAST(NgayKTXM as date)>='" + FromNgayKTXM.ToString("yyyyMMdd") + "' and CAST(NgayKTXM as date)<='" + ToNgayKTXM.ToString("yyyyMMdd") + "'";
+                        + " ,DanhBo,HoTen,DiaChi,NgayLapBangGia,NgayDongTien,NgayChuyenLapTBCat,SoTien from KTXM ktxm,KTXM_ChiTiet ctktxm where ktxm.MaKTXM=ctktxm.MaKTXM and CAST(NgayKTXM as date)>='" + FromNgayKTXM.ToString("yyyyMMdd") + "' and CAST(NgayKTXM as date)<='" + ToNgayKTXM.ToString("yyyyMMdd") + "'";
             switch (TenTo)
             {
                 case "TKH":
@@ -768,7 +768,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             string sql = "select MaDon=case when MaDon is not null then 'TKH'+ CONVERT(varchar(10),MaDon)"
                         + " when MaDonTXL is not null then 'TXL'+CONVERT(varchar(10),MaDonTXL)"
                         + " when MaDonTBC is not null then 'TBC'+CONVERT(varchar(10),MaDonTBC) end"
-                        + " ,DanhBo,HoTen,DiaChi,NgayLap=NgayLapBangGia,NoiDungXuLy,GhiChuNoiDungXuLy from KTXM ktxm,CTKTXM ctktxm"
+                        + " ,DanhBo,HoTen,DiaChi,NgayLap=NgayLapBangGia,NoiDungXuLy,GhiChuNoiDungXuLy from KTXM ktxm,KTXM_ChiTiet ctktxm"
                         + " where ktxm.MaKTXM=ctktxm.MaKTXM and LapBangGia=1 and NoiDungXuLy like N'%"+NoiDungXuLy+"%'"
                         + " and CAST(NgayLapBangGia as date)>='" + FromNgayLapBangGia.ToString("yyyyMMdd") + "' and CAST(NgayLapBangGia as date)<='" + ToNgayLapBangGia.ToString("yyyyMMdd") + "'";
             switch (TenTo)
@@ -794,7 +794,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             string sql = "select MaDon=case when MaDon is not null then 'TKH'+ CONVERT(varchar(10),MaDon)"
                         + " when MaDonTXL is not null then 'TXL'+CONVERT(varchar(10),MaDonTXL)"
                         + " when MaDonTBC is not null then 'TBC'+CONVERT(varchar(10),MaDonTBC) end"
-                        + " ,DanhBo,HoTen,DiaChi,NgayLap=NgayDongTien,NoiDungXuLy,GhiChuNoiDungXuLy,SoTienDongTien from KTXM ktxm,CTKTXM ctktxm"
+                        + " ,DanhBo,HoTen,DiaChi,NgayLap=NgayDongTien,NoiDungXuLy,GhiChuNoiDungXuLy,SoTienDongTien from KTXM ktxm,KTXM_ChiTiet ctktxm"
                         + " where ktxm.MaKTXM=ctktxm.MaKTXM and DongTien=1 and NoiDungXuLy like N'%" + NoiDungXuLy + "%'"
                         + " and CAST(NgayDongTien as date)>='" + FromNgayDongTien.ToString("yyyyMMdd") + "' and CAST(NgayDongTien as date)<='" + ToNgayDongTien.ToString("yyyyMMdd") + "'";
             switch (TenTo)
@@ -820,7 +820,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             string sql = "select MaDon=case when MaDon is not null then 'TKH'+ CONVERT(varchar(10),MaDon)"
                         + " when MaDonTXL is not null then 'TXL'+CONVERT(varchar(10),MaDonTXL)"
                         + " when MaDonTBC is not null then 'TBC'+CONVERT(varchar(10),MaDonTBC) end"
-                        + " ,DanhBo,HoTen,DiaChi,NgayLap=NgayChuyenLapTBCat,NoiDungXuLy,GhiChuNoiDungXuLy from KTXM ktxm,CTKTXM ctktxm"
+                        + " ,DanhBo,HoTen,DiaChi,NgayLap=NgayChuyenLapTBCat,NoiDungXuLy,GhiChuNoiDungXuLy from KTXM ktxm,KTXM_ChiTiet ctktxm"
                         + " where ktxm.MaKTXM=ctktxm.MaKTXM and ChuyenLapTBCat=1 and NoiDungXuLy like N'%" + NoiDungXuLy + "%'"
                         + " and CAST(NgayChuyenLapTBCat as date)>='" + FromNgayChuyenLapTBCat.ToString("yyyyMMdd") + "' and CAST(NgayChuyenLapTBCat as date)<='" + ToNgayChuyenLapTBCat.ToString("yyyyMMdd") + "'";
             switch (TenTo)
@@ -849,7 +849,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                         + " SoCongVan=case when MaDon is not null then (select top 1 SoCongVan from DonKH where DonKH.MaDon=MaDon)"
                         + " when MaDonTXL is not null then (select top 1 SoCongVan from DonTXL where DonTXL.MaDon=MaDonTXL)"
                         + " when MaDonTBC is not null then (select top 1 SoCongVan from DonTBC where DonTBC.MaDon=MaDonTBC) end"
-                        + " ,DanhBo,HoTen,DiaChi,NgayLap=NgayLapBangGia,NoiDungXuLy,GhiChuNoiDungXuLy from KTXM ktxm,CTKTXM ctktxm"
+                        + " ,DanhBo,HoTen,DiaChi,NgayLap=NgayLapBangGia,NoiDungXuLy,GhiChuNoiDungXuLy from KTXM ktxm,KTXM_ChiTiet ctktxm"
                         + " where ktxm.MaKTXM=ctktxm.MaKTXM and LapBangGia=1 and NoiDungXuLy like N'%" + NoiDungXuLy + "%'"
                         + " and N'" + SoCongVan + "'=(case when MaDon is not null then (select top 1 SoCongVan from DonKH where DonKH.MaDon=MaDon)"
                         + " when MaDonTXL is not null then (select top 1 SoCongVan from DonTXL where DonTXL.MaDon=MaDonTXL)"
@@ -881,7 +881,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                         + " SoCongVan=case when MaDon is not null then (select top 1 SoCongVan from DonKH where DonKH.MaDon=MaDon)"
                         + " when MaDonTXL is not null then (select top 1 SoCongVan from DonTXL where DonTXL.MaDon=MaDonTXL)"
                         + " when MaDonTBC is not null then (select top 1 SoCongVan from DonTBC where DonTBC.MaDon=MaDonTBC) end"
-                        + " ,DanhBo,HoTen,DiaChi,NgayLap=NgayDongTien,NoiDungXuLy,GhiChuNoiDungXuLy,SoTienDongTien from KTXM ktxm,CTKTXM ctktxm"
+                        + " ,DanhBo,HoTen,DiaChi,NgayLap=NgayDongTien,NoiDungXuLy,GhiChuNoiDungXuLy,SoTienDongTien from KTXM ktxm,KTXM_ChiTiet ctktxm"
                         + " where ktxm.MaKTXM=ctktxm.MaKTXM and DongTien=1 and NoiDungXuLy like N'%" + NoiDungXuLy + "%'"
                         + " and N'" + SoCongVan + "'=(case when MaDon is not null then (select top 1 SoCongVan from DonKH where DonKH.MaDon=MaDon)"
                         + " when MaDonTXL is not null then (select top 1 SoCongVan from DonTXL where DonTXL.MaDon=MaDonTXL)"
@@ -913,7 +913,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                         + " SoCongVan=case when MaDon is not null then (select top 1 SoCongVan from DonKH where DonKH.MaDon=MaDon)"
                         + " when MaDonTXL is not null then (select top 1 SoCongVan from DonTXL where DonTXL.MaDon=MaDonTXL)"
                         + " when MaDonTBC is not null then (select top 1 SoCongVan from DonTBC where DonTBC.MaDon=MaDonTBC) end"
-                        + " ,DanhBo,HoTen,DiaChi,NgayLap=NgayChuyenLapTBCat,NoiDungXuLy,GhiChuNoiDungXuLy from KTXM ktxm,CTKTXM ctktxm"
+                        + " ,DanhBo,HoTen,DiaChi,NgayLap=NgayChuyenLapTBCat,NoiDungXuLy,GhiChuNoiDungXuLy from KTXM ktxm,KTXM_ChiTiet ctktxm"
                         + " where ktxm.MaKTXM=ctktxm.MaKTXM and ChuyenLapTBCat=1 and NoiDungXuLy like N'%" + NoiDungXuLy + "%'"
                         + " and N'" + SoCongVan + "'=(case when MaDon is not null then (select top 1 SoCongVan from DonKH where DonKH.MaDon=MaDon)"
                         + " when MaDonTXL is not null then (select top 1 SoCongVan from DonTXL where DonTXL.MaDon=MaDonTXL)"
@@ -939,7 +939,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
 
         public int CountLapBangGia(string TenTo, DateTime FromNgayLapBangGia, DateTime ToNgayLapBangGia)
         {
-            string sql = "select COUNT(MaCTKTXM) from KTXM ktxm,CTKTXM ctktxm where ktxm.MaKTXM=ctktxm.MaKTXM and LapBangGia=1"
+            string sql = "select COUNT(MaCTKTXM) from KTXM ktxm,KTXM_ChiTiet ctktxm where ktxm.MaKTXM=ctktxm.MaKTXM and LapBangGia=1"
                         + " and CAST(NgayLapBangGia as date)>='" + FromNgayLapBangGia.ToString("yyyyMMdd") + "' and CAST(NgayLapBangGia as date)<='" + ToNgayLapBangGia.ToString("yyyyMMdd") + "'";
             switch (TenTo)
             {
@@ -960,7 +960,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
 
         public int CountDongTien(string TenTo, DateTime FromNgayDongTien, DateTime ToNgayDongTien)
         {
-            string sql = "select COUNT(MaCTKTXM) from KTXM ktxm,CTKTXM ctktxm where ktxm.MaKTXM=ctktxm.MaKTXM and DongTien=1"
+            string sql = "select COUNT(MaCTKTXM) from KTXM ktxm,KTXM_ChiTiet ctktxm where ktxm.MaKTXM=ctktxm.MaKTXM and DongTien=1"
                         + " and CAST(NgayDongTien as date)>='" + FromNgayDongTien.ToString("yyyyMMdd") + "' and CAST(NgayDongTien as date)<='" + ToNgayDongTien.ToString("yyyyMMdd") + "'";
             switch (TenTo)
             {
@@ -981,7 +981,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
 
         public int CountChuyenLapTBCat(string TenTo, DateTime FromNgayChuyenLapTBCat, DateTime ToNgayChuyenLapTBCat)
         {
-            string sql = "select COUNT(MaCTKTXM) from KTXM ktxm,CTKTXM ctktxm where ktxm.MaKTXM=ctktxm.MaKTXM and ChuyenLapTBCat=1"
+            string sql = "select COUNT(MaCTKTXM) from KTXM ktxm,KTXM_ChiTiet ctktxm where ktxm.MaKTXM=ctktxm.MaKTXM and ChuyenLapTBCat=1"
                         + " and CAST(NgayChuyenLapTBCat as date)>='" + FromNgayChuyenLapTBCat.ToString("yyyyMMdd") + "' and CAST(NgayChuyenLapTBCat as date)<='" + ToNgayChuyenLapTBCat.ToString("yyyyMMdd") + "'";
             switch (TenTo)
             {
@@ -1002,7 +1002,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
 
         public DataTable GetGhiChuNoiDungXuLy()
         {
-            return LINQToDataTable(db.CTKTXMs.Select(item => new { item.GhiChuNoiDungXuLy }).ToList().Distinct());
+            return LINQToDataTable(db.KTXM_ChiTiets.Select(item => new { item.GhiChuNoiDungXuLy }).ToList().Distinct());
         }
 
         #endregion

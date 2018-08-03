@@ -17,7 +17,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         string _mnu = "mnuHienTrangKiemTra";
         CHienTrangKiemTra _cHienTrangKiemTra = new CHienTrangKiemTra();
         int _selectedindexHTKT = -1;
-        BindingList<HienTrangKiemTra> _blHienTrangKiemTra;
+        BindingList<KTXM_HienTrang> _blHienTrangKiemTra;
 
         public frmHienTrangKiemTra()
         {
@@ -33,7 +33,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         public void LoadDataTable()
         {
-            _blHienTrangKiemTra = new BindingList<HienTrangKiemTra>(_cHienTrangKiemTra.GetDS());
+            _blHienTrangKiemTra = new BindingList<KTXM_HienTrang>(_cHienTrangKiemTra.GetDS());
             dgvDSHienTrangKT.DataSource = _blHienTrangKiemTra;
         }
 
@@ -66,7 +66,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 {
                     if (txtHienTrangKT.Text.Trim() != "")
                     {
-                        HienTrangKiemTra hientrangkiemtra = new HienTrangKiemTra();
+                        KTXM_HienTrang hientrangkiemtra = new KTXM_HienTrang();
                         hientrangkiemtra.TenHTKT = txtHienTrangKT.Text.Trim();
                         hientrangkiemtra.STT = _cHienTrangKiemTra.GetMaxSTT() + 1;
 
@@ -95,7 +95,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 if (_selectedindexHTKT != -1)
                     if (txtHienTrangKT.Text.Trim() != "")
                     {
-                        HienTrangKiemTra hientrangkiemtra = _cHienTrangKiemTra.Get(int.Parse(dgvDSHienTrangKT["MaHTKT", _selectedindexHTKT].Value.ToString()));
+                        KTXM_HienTrang hientrangkiemtra = _cHienTrangKiemTra.Get(int.Parse(dgvDSHienTrangKT["MaHTKT", _selectedindexHTKT].Value.ToString()));
                         hientrangkiemtra.TenHTKT = txtHienTrangKT.Text.Trim();
 
                         if (_cHienTrangKiemTra.Sua(hientrangkiemtra))
