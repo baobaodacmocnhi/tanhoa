@@ -89,10 +89,11 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 PrintDialog printDialog = new PrintDialog();
                 if (printDialog.ShowDialog() == DialogResult.OK)
                 {
-                    DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                    
                     for (int i = 0; i < dgvDSThu.Rows.Count; i++)
                         if (dgvDSThu["In", i].Value != null && bool.Parse(dgvDSThu["In", i].Value.ToString()) == true)
                         {
+                            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                             DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
 
                             dr["SoPhieu"] = dgvDSThu["MaDon", i].Value.ToString().Insert(dgvDSThu["MaDon", i].Value.ToString().Length - 2, "-");

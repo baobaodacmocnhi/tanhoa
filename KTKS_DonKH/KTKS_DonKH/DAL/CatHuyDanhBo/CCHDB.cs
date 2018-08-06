@@ -263,7 +263,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         public bool CheckExist_CTCTDB(decimal MaCTCTDB)
         {
-                return db.CHDB_ChiTietCatTams.Any(item => item.MaCTCTDB == MaCTCTDB);
+            return db.CHDB_ChiTietCatTams.Any(item => item.MaCTCTDB == MaCTCTDB);
         }
 
         public bool CheckExist_CTCTDB(string Loai, decimal MaDon, string DanhBo)
@@ -283,7 +283,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         public CHDB_ChiTietCatTam GetCTCTDB(decimal MaCTCTDB)
         {
-                return db.CHDB_ChiTietCatTams.SingleOrDefault(item => item.MaCTCTDB == MaCTCTDB);
+            return db.CHDB_ChiTietCatTams.SingleOrDefault(item => item.MaCTCTDB == MaCTCTDB);
         }
 
         public decimal getMaxMaCTCTDB()
@@ -432,7 +432,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSCatTam(decimal FromMaCTCTDB,decimal ToMaCTCTDB)
+        public DataTable GetDSCatTam(decimal FromMaCTCTDB, decimal ToMaCTCTDB)
         {
             var query = from item in db.CHDB_ChiTietCatTams
                         where item.MaCTCTDB.ToString().Substring(item.MaCTCTDB.ToString().Length - 2, 2) == FromMaCTCTDB.ToString().Substring(FromMaCTCTDB.ToString().Length - 2, 2)
@@ -462,7 +462,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         public DataTable GetDSCatTamByDanhBo(string DanhBo)
         {
             var query = from item in db.CHDB_ChiTietCatTams
-                        where item.DanhBo==DanhBo
+                        where item.DanhBo == DanhBo
                         select new
                         {
                             MaDon = item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
@@ -670,7 +670,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         public CHDB_ChiTietCatHuy GetCTCHDB(decimal MaCTCHDB)
         {
-                return db.CHDB_ChiTietCatHuys.SingleOrDefault(item => item.MaCTCHDB == MaCTCHDB);
+            return db.CHDB_ChiTietCatHuys.SingleOrDefault(item => item.MaCTCHDB == MaCTCHDB);
         }
 
         public decimal getMaxMaCTCHDB()
@@ -956,7 +956,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                         + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
                         + " left join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
                         + " where CAST(t1.CreateDate as date)>='" + FromCreateDate.ToString("yyyy-MM-dd") + "' and CAST(t1.CreateDate as date)<='" + ToCreateDate.ToString("yyyy-MM-dd") + "' and NgayXuLy is not null"
-                        + " and MaQuan=" + MaQuan+""
+                        + " and MaQuan=" + MaQuan + ""
                         + " order by t1.CreateDate";
 
             return ExecuteQuery_DataTable(sql);
@@ -1104,14 +1104,14 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         public CHDB_Phieu GetPhieuHuyByMaCTCTDB(decimal MaCTCTDB)
         {
-                return db.CHDB_Phieus.Where(itemYCCHDB => itemYCCHDB.MaCTCTDB == MaCTCTDB).OrderBy(item => item.CreateDate).ToList().Last();
+            return db.CHDB_Phieus.Where(itemYCCHDB => itemYCCHDB.MaCTCTDB == MaCTCTDB).OrderBy(item => item.CreateDate).ToList().Last();
         }
 
         public CHDB_Phieu GetPhieuHuyByMaCTCHDB(decimal MaCTCHDB)
         {
-                return db.CHDB_Phieus.Where(itemYCCHDB => itemYCCHDB.MaCTCHDB == MaCTCHDB).OrderBy(item => item.CreateDate).ToList().Last();
+            return db.CHDB_Phieus.Where(itemYCCHDB => itemYCCHDB.MaCTCHDB == MaCTCHDB).OrderBy(item => item.CreateDate).ToList().Last();
         }
-        
+
         /// <summary>
         /// Lấy Danh Sách Yêu Cầu Cắt Hủy Danh Bộ trực tiếp không qua Thông Báo
         /// </summary>
@@ -1147,7 +1147,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public DataTable GetDSPhieuHuy(string Loai,decimal MaDon)
+        public DataTable GetDSPhieuHuy(string Loai, decimal MaDon)
         {
             switch (Loai)
             {
@@ -1275,7 +1275,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSPhieuHuy(DateTime FromCreateDate,DateTime ToCreateDate)
+        public DataTable GetDSPhieuHuy(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from item in db.CHDB_Phieus
                         where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
@@ -1581,6 +1581,33 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             if (dt.Rows.Count > 0)
                 dt.DefaultView.Sort = "CreateDate DESC";
             return dt;
+        }
+
+        //MaDonMoi
+
+        public bool checkExist(int MaDon)
+        {
+            return db.CHDBs.Any(item => item.MaDonMoi == MaDon);
+        }
+
+        public bool checkExist_CatTam(int MaDon, string DanhBo)
+        {
+            return db.CHDB_ChiTietCatTams.Any(item => item.CHDB.MaDonMoi == MaDon && item.DanhBo == DanhBo);
+        }
+
+        public bool checkExist_CatHuy(int MaDon, string DanhBo)
+        {
+            return db.CHDB_ChiTietCatHuys.Any(item => item.CHDB.MaDonMoi == MaDon && item.DanhBo == DanhBo);
+        }
+
+        public bool checkExist_PhieuHuy(int MaDon, string DanhBo)
+        {
+            return db.CHDB_Phieus.Any(item => item.CHDB.MaDonMoi == MaDon && item.DanhBo == DanhBo);
+        }
+
+        public CHDB get(int MaDon)
+        {
+            return db.CHDBs.SingleOrDefault(item => item.MaDonMoi == MaDon);
         }
     }
 }

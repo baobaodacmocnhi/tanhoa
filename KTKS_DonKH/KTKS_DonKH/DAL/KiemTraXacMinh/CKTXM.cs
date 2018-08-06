@@ -524,7 +524,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                         where itemCTKTXM.DanhBo == DanhBo
                         select new
                         {
-                            MaDon = itemCTKTXM.KTXM.MaDon != null ? "TKH" + itemCTKTXM.KTXM.MaDon
+                            MaDon = itemCTKTXM.KTXM.MaDonMoi != null ? itemCTKTXM.KTXM.MaDonMoi.Value.ToString()
+                                    : itemCTKTXM.KTXM.MaDon != null ? "TKH" + itemCTKTXM.KTXM.MaDon
                                     : itemCTKTXM.KTXM.MaDonTXL != null ? "TXL" + itemCTKTXM.KTXM.MaDonTXL
                                     : itemCTKTXM.KTXM.MaDonTBC != null ? "TBC" + itemCTKTXM.KTXM.MaDonTBC : null,
                             itemCTKTXM.MaCTKTXM,
@@ -1006,5 +1007,49 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         }
 
         #endregion
+
+        //MaDonMoi
+
+        public bool checkExist(int MaDon)
+        {
+            return db.KTXMs.Any(item => item.MaDonMoi == MaDon);
+        }
+
+        public bool checkExist_ChiTiet(int CreateBy, int MaDon, string DanhBo, DateTime NgayKTXM)
+        {
+            return db.KTXM_ChiTiets.Any(item => item.CreateBy == CreateBy && item.KTXM.MaDonMoi == MaDon && item.DanhBo == DanhBo && item.NgayKTXM == NgayKTXM);
+        }
+
+        public KTXM get(int MaDon)
+        {
+                    return db.KTXMs.SingleOrDefault(item => item.MaDonMoi == MaDon);
+        }
+
+        public KTXM_ChiTiet get_ChiTiet(int MaDon, string DanhBo)
+        {
+                    return db.KTXM_ChiTiets.SingleOrDefault(item => item.KTXM.MaDonMoi == MaDon && item.DanhBo == DanhBo);
+        }
+
+        public DataTable getDS(int MaDon)
+        {
+            var query = from itemCTKTXM in db.KTXM_ChiTiets
+                        join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                        where itemCTKTXM.KTXM.MaDonMoi == MaDon
+                        select new
+                        {
+                            itemCTKTXM.MaCTKTXM,
+                            MaDon = itemCTKTXM.KTXM.MaDonMoi,
+                            itemCTKTXM.STT,
+                            itemCTKTXM.DanhBo,
+                            itemCTKTXM.HoTen,
+                            itemCTKTXM.DiaChi,
+                            itemCTKTXM.NgayKTXM,
+                            itemCTKTXM.NoiDungKiemTra,
+                            CreateBy = itemUser.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        
     }
 }

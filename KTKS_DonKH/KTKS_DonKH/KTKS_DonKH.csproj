@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>818</ApplicationRevision>
+    <ApplicationRevision>821</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -1891,9 +1891,6 @@
     <EmbeddedResource Include="GUI\TruyThu\frmDSTruyThuTienNuoc.resx">
       <DependentUpon>frmDSTruyThuTienNuoc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\TruyThu\frmTruyThuTienNuoc.resx">
-      <DependentUpon>frmTruyThuTienNuoc.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="LinQ\dbThuTien.dbml.layout">
       <DependentUpon>dbThuTien.dbml</DependentUpon>
     </None>
@@ -1903,6 +1900,9 @@
     <None Include="LinQ\dbGanMoi.dbml.layout">
       <DependentUpon>dbGanMoi.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="GUI\TruyThu\frmTruyThuTienNuoc.resx">
+      <DependentUpon>frmTruyThuTienNuoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

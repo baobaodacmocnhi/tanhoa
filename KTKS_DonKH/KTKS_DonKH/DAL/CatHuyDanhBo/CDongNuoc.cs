@@ -487,5 +487,22 @@ namespace KTKS_DonKH.DAL.DongNuoc
         }
 
         #endregion
+
+        //MaDonMoi
+
+        public bool checkExist(int MaDon)
+        {
+                    return db.DongNuocs.Any(item => item.MaDonMoi == MaDon);
+        }
+
+        public bool checkExist_ChiTiet(int MaDon, string DanhBo)
+        {
+                    return db.DongNuoc_ChiTiets.Any(item => item.DongNuoc.MaDonMoi == MaDon && item.DanhBo == DanhBo);
+        }
+
+        public LinQ.DongNuoc get(int MaDon)
+        {
+                    return db.DongNuocs.SingleOrDefault(item => item.MaDonMoi == MaDon);
+        }
     }
 }

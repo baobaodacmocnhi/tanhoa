@@ -582,11 +582,17 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 dr["ChucVu"] = ycchdb.ChucVu;
                                 dr["NguoiKy"] = ycchdb.NguoiKy;
 
-                                if (!string.IsNullOrEmpty(ycchdb.MaDonTXL.ToString()))
-                                    dr["MaDon"] = "TXL" + ycchdb.MaDonTXL.ToString().Insert(ycchdb.MaDonTXL.ToString().Length - 2, "-");
+                                if (ycchdb.CHDB.MaDonMoi != null)
+                                    dr["MaDon"] = ycchdb.CHDB.MaDonMoi.ToString();
                                 else
-                                    if (!string.IsNullOrEmpty(ycchdb.MaDon.ToString()))
-                                        dr["MaDon"] = ycchdb.MaDon.ToString().Insert(ycchdb.MaDon.ToString().Length - 2, "-");
+                                    if (ycchdb.CHDB.MaDon != null)
+                                        dr["MaDon"] = ycchdb.CHDB.MaDon.ToString().Insert(ycchdb.CHDB.MaDon.ToString().Length - 2, "-");
+                                    else
+                                        if (ycchdb.CHDB.MaDonTXL != null)
+                                            dr["MaDon"] = "TXL" + ycchdb.CHDB.MaDonTXL.ToString().Insert(ycchdb.CHDB.MaDonTXL.ToString().Length - 2, "-");
+                                        else
+                                            if (ycchdb.CHDB.MaDonTBC != null)
+                                                dr["MaDon"] = "TBC" + ycchdb.CHDB.MaDonTBC.ToString().Insert(ycchdb.CHDB.MaDonTBC.ToString().Length - 2, "-");
 
                                 dsBaoCao.Tables["CHDB_Phieu"].Rows.Add(dr);
 

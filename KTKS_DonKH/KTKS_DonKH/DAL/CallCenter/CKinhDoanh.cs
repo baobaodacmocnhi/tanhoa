@@ -246,7 +246,7 @@ namespace KTKS_DonKH.DAL.CallCenter
 
                 ///Table PhieuCHDB
                 var queryYCCHDB = from itemYCCHDB in db.CHDB_Phieus
-                                  where itemYCCHDB.DanhBo == DanhBo || (itemYCCHDB.DonKH.DanhBo == DanhBo || itemYCCHDB.DonTXL.DanhBo == DanhBo || itemYCCHDB.DonTBC.DanhBo == DanhBo)
+                                  where itemYCCHDB.DanhBo == DanhBo || (itemYCCHDB.CHDB.DonKH.DanhBo == DanhBo || itemYCCHDB.CHDB.DonTXL.DanhBo == DanhBo || itemYCCHDB.CHDB.DonTBC.DanhBo == DanhBo)
                                   select new
                                   {
                                       MaDon = itemYCCHDB.MaDon != null ? "TKH" + itemYCCHDB.MaDonTXL
