@@ -1346,9 +1346,9 @@ namespace ThuTien.DAL.TongHop
             return _dbKTKS_DonKH.DonTXLs.SingleOrDefault(itemDonTXL => itemDonTXL.MaDon == MaDon);
         }
 
-        public CTDCHD GetCTDCHDBySoPhieu(decimal SoPhieu)
+        public DCBD_ChiTietHoaDon GetCTDCHDBySoPhieu(decimal SoPhieu)
         {
-            return _dbKTKS_DonKH.CTDCHDs.SingleOrDefault(item => item.MaCTDCHD == SoPhieu);
+            return _dbKTKS_DonKH.DCBD_ChiTietHoaDons.SingleOrDefault(item => item.MaCTDCHD == SoPhieu);
         }
 
     }

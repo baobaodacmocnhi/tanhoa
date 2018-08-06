@@ -20,7 +20,7 @@ namespace ThuTien.GUI.TongHop
         int _MaHD;
         string _SoHoaDon;
         DIEUCHINH_HD _dchd = null;
-        CTDCHD _ctdchd;
+        DCBD_ChiTietHoaDon _ctdchd;
         HOADON _hoadon = null;
         CDCHD _cDCHD = new CDCHD();
         CHoaDon _cHoaDon = new CHoaDon();

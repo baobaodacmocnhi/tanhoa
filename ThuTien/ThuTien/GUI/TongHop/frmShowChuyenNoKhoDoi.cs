@@ -19,7 +19,7 @@ namespace ThuTien.GUI.TongHop
         decimal _MaCNKD;
         int _MaHD;
         TT_ChuyenNoKhoDoi _cnkd = null;
-        PhieuCHDB _ycch = null;
+        CHDB_Phieu _ycch = null;
         TT_CTChuyenNoKhoDoi _ctcnkd = null;
         CChuyenNoKhoDoi _cCNKD = new CChuyenNoKhoDoi();
         CHoaDon _cHoaDon = new CHoaDon();
