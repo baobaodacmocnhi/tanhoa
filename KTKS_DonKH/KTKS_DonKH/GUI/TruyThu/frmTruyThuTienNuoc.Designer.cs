@@ -60,7 +60,7 @@
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvTruyThuTienNuoc = new System.Windows.Forms.DataGridView();
-            this.MaCTTTTN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_HoaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GiaBieu_Cu = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -111,7 +111,7 @@
             this.txtTongThanhToan = new System.Windows.Forms.TextBox();
             this.btnIn = new System.Windows.Forms.Button();
             this.btnInChiTiet = new System.Windows.Forms.Button();
-            this.txtMaTTTN = new System.Windows.Forms.TextBox();
+            this.txtMaCTTTTN = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
@@ -385,7 +385,7 @@
             // 
             this.dgvTruyThuTienNuoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTruyThuTienNuoc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MaCTTTTN,
+            this.ID_HoaDon,
             this.Ky,
             this.Nam,
             this.GiaBieu_Cu,
@@ -416,12 +416,12 @@
             this.dgvTruyThuTienNuoc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvTruyThuTienNuoc_KeyDown);
             this.dgvTruyThuTienNuoc.Leave += new System.EventHandler(this.dgvTruyThuTienNuoc_Leave);
             // 
-            // MaCTTTTN
+            // ID_HoaDon
             // 
-            this.MaCTTTTN.DataPropertyName = "MaCTTTTN";
-            this.MaCTTTTN.HeaderText = "MaCTTTTN";
-            this.MaCTTTTN.Name = "MaCTTTTN";
-            this.MaCTTTTN.Visible = false;
+            this.ID_HoaDon.DataPropertyName = "ID";
+            this.ID_HoaDon.HeaderText = "ID";
+            this.ID_HoaDon.Name = "ID_HoaDon";
+            this.ID_HoaDon.Visible = false;
             // 
             // Ky
             // 
@@ -860,13 +860,13 @@
             this.btnInChiTiet.UseVisualStyleBackColor = true;
             this.btnInChiTiet.Click += new System.EventHandler(this.btnInChiTiet_Click);
             // 
-            // txtMaTTTN
+            // txtMaCTTTTN
             // 
-            this.txtMaTTTN.Location = new System.Drawing.Point(422, 12);
-            this.txtMaTTTN.Name = "txtMaTTTN";
-            this.txtMaTTTN.Size = new System.Drawing.Size(60, 22);
-            this.txtMaTTTN.TabIndex = 47;
-            this.txtMaTTTN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaTTTN_KeyPress);
+            this.txtMaCTTTTN.Location = new System.Drawing.Point(422, 12);
+            this.txtMaCTTTTN.Name = "txtMaCTTTTN";
+            this.txtMaCTTTTN.Size = new System.Drawing.Size(60, 22);
+            this.txtMaCTTTTN.TabIndex = 47;
+            this.txtMaCTTTTN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaCTTTTN_KeyPress);
             // 
             // label16
             // 
@@ -1071,7 +1071,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
-            this.Controls.Add(this.txtMaTTTN);
+            this.Controls.Add(this.txtMaCTTTTN);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.btnInChiTiet);
             this.Controls.Add(this.btnIn);
@@ -1167,7 +1167,7 @@
         private System.Windows.Forms.TextBox txtTongThanhToan;
         private System.Windows.Forms.Button btnIn;
         private System.Windows.Forms.Button btnInChiTiet;
-        private System.Windows.Forms.TextBox txtMaTTTN;
+        private System.Windows.Forms.TextBox txtMaCTTTTN;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnXoa;
@@ -1193,7 +1193,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Lan;
         private System.Windows.Forms.DataGridViewTextBoxColumn VaoLuc;
         private System.Windows.Forms.DataGridViewTextBoxColumn VeViec;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaCTTTTN;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.ComboBox cmbTinhTrang;
+        private System.Windows.Forms.TextBox txtMaDonMoi;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.DateTimePicker dateTinhTrang;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_HoaDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nam;
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu_Cu;
@@ -1211,11 +1217,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PhiBVMT_Moi;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_Moi;
         private System.Windows.Forms.DataGridViewTextBoxColumn TangGiam;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.ComboBox cmbTinhTrang;
-        private System.Windows.Forms.TextBox txtMaDonMoi;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.DateTimePicker dateTinhTrang;
-        private System.Windows.Forms.Label label25;
     }
 }

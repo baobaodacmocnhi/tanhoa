@@ -78,6 +78,7 @@
             this.txtNoiDungTimKiem = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.chkcmbNoiNhan = new DevExpress.XtraEditors.CheckedComboBoxEdit();
+            this.chkCreateBy = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCongVan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbNoiNhan.Properties)).BeginInit();
             this.SuspendLayout();
@@ -298,7 +299,7 @@
             this.NoiChuyen,
             this.DanhBo,
             this.DiaChi});
-            this.dgvDSCongVan.Location = new System.Drawing.Point(14, 226);
+            this.dgvDSCongVan.Location = new System.Drawing.Point(11, 251);
             this.dgvDSCongVan.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dgvDSCongVan.Name = "dgvDSCongVan";
             this.dgvDSCongVan.RowHeadersWidth = 60;
@@ -380,7 +381,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(677, 226);
+            this.btnXoa.Location = new System.Drawing.Point(674, 251);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 25);
             this.btnXoa.TabIndex = 23;
@@ -489,7 +490,7 @@
             "21",
             "22",
             "23"});
-            this.cmbTuGio.Location = new System.Drawing.Point(202, 168);
+            this.cmbTuGio.Location = new System.Drawing.Point(192, 168);
             this.cmbTuGio.Name = "cmbTuGio";
             this.cmbTuGio.Size = new System.Drawing.Size(41, 24);
             this.cmbTuGio.TabIndex = 92;
@@ -522,7 +523,7 @@
             "21",
             "22",
             "23"});
-            this.cmbDenGio.Location = new System.Drawing.Point(202, 196);
+            this.cmbDenGio.Location = new System.Drawing.Point(192, 196);
             this.cmbDenGio.Name = "cmbDenGio";
             this.cmbDenGio.Size = new System.Drawing.Size(41, 24);
             this.cmbDenGio.TabIndex = 93;
@@ -530,7 +531,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(244, 173);
+            this.label15.Location = new System.Drawing.Point(234, 173);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(15, 16);
             this.label15.TabIndex = 94;
@@ -539,7 +540,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(244, 200);
+            this.label16.Location = new System.Drawing.Point(234, 200);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(15, 16);
             this.label16.TabIndex = 95;
@@ -616,20 +617,33 @@
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "P. TCHC"),
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "P. KTCN"),
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Đội TCXL"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Tổ Khách Hàng"),
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Tổ Xử Lý"),
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Tổ Bấm Chì"),
-            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Tổ Giao Dịch Khách Hàng")});
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Tổ Giao Dịch Khách Hàng"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "c.Trân (Điều Chỉnh)")});
             this.chkcmbNoiNhan.Properties.PopupFormSize = new System.Drawing.Size(0, 500);
             this.chkcmbNoiNhan.Properties.SelectAllItemVisible = false;
             this.chkcmbNoiNhan.Size = new System.Drawing.Size(100, 22);
             this.chkcmbNoiNhan.TabIndex = 101;
+            // 
+            // chkCreateBy
+            // 
+            this.chkCreateBy.AutoSize = true;
+            this.chkCreateBy.Location = new System.Drawing.Point(96, 224);
+            this.chkCreateBy.Name = "chkCreateBy";
+            this.chkCreateBy.Size = new System.Drawing.Size(124, 20);
+            this.chkCreateBy.TabIndex = 102;
+            this.chkCreateBy.Text = "Theo Người Lập";
+            this.chkCreateBy.UseVisualStyleBackColor = true;
             // 
             // frmCongVanDi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1284, 594);
+            this.ClientSize = new System.Drawing.Size(1284, 609);
+            this.Controls.Add(this.chkCreateBy);
             this.Controls.Add(this.chkcmbNoiNhan);
             this.Controls.Add(this.txtNoiDungTimKiem);
             this.Controls.Add(this.label19);
@@ -733,5 +747,6 @@
         private System.Windows.Forms.TextBox txtNoiDungTimKiem;
         private System.Windows.Forms.Label label19;
         private DevExpress.XtraEditors.CheckedComboBoxEdit chkcmbNoiNhan;
+        private System.Windows.Forms.CheckBox chkCreateBy;
     }
 }

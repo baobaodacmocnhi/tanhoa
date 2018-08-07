@@ -255,23 +255,46 @@ namespace KTKS_DonKH.GUI.CongVan
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtNoiDungTimKiem.Text.Trim()))
-            dgvDSCongVan.DataSource = _cCongVanDi.GetDS(dateTu.Value, int.Parse(cmbTuGio.SelectedItem.ToString()), dateDen.Value, int.Parse(cmbDenGio.SelectedItem.ToString()));
+            if (chkCreateBy.Checked == true)
+            {
+                if (string.IsNullOrEmpty(txtNoiDungTimKiem.Text.Trim()))
+                    dgvDSCongVan.DataSource = _cCongVanDi.GetDS(CTaiKhoan.MaUser,dateTu.Value, int.Parse(cmbTuGio.SelectedItem.ToString()), dateDen.Value, int.Parse(cmbDenGio.SelectedItem.ToString()));
+                else
+                    switch (cmbTimKiem.SelectedItem.ToString())
+                    {
+                        case "Danh Bộ":
+                            if (txtNoiDungTimKiem.Text.Trim().Length == 11)
+                            {
+                                dgvDSCongVan.DataSource = _cCongVanDi.GetDS(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
+                            }
+                            break;
+                        case "Mã Đơn/TB":
+                            dgvDSCongVan.DataSource = _cCongVanDi.GetDS_Ma(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            break;
+                        default:
+                            break;
+                    }
+            }
             else
-                switch (cmbTimKiem.SelectedItem.ToString())
-                {
-                    case "Danh Bộ":
-                        if (txtNoiDungTimKiem.Text.Trim().Length == 11)
-                        {
-                            dgvDSCongVan.DataSource = _cCongVanDi.GetDS(txtNoiDungTimKiem.Text.Trim());
-                        }
-                        break;
-                    case "Mã Đơn/TB":
-                        dgvDSCongVan.DataSource = _cCongVanDi.GetDS_Ma(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
-                        break;
-                    default:
-                        break;
-                }
+            {
+                if (string.IsNullOrEmpty(txtNoiDungTimKiem.Text.Trim()))
+                    dgvDSCongVan.DataSource = _cCongVanDi.GetDS(dateTu.Value, int.Parse(cmbTuGio.SelectedItem.ToString()), dateDen.Value, int.Parse(cmbDenGio.SelectedItem.ToString()));
+                else
+                    switch (cmbTimKiem.SelectedItem.ToString())
+                    {
+                        case "Danh Bộ":
+                            if (txtNoiDungTimKiem.Text.Trim().Length == 11)
+                            {
+                                dgvDSCongVan.DataSource = _cCongVanDi.GetDS(txtNoiDungTimKiem.Text.Trim());
+                            }
+                            break;
+                        case "Mã Đơn/TB":
+                            dgvDSCongVan.DataSource = _cCongVanDi.GetDS_Ma(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            break;
+                        default:
+                            break;
+                    }
+            }
         }
 
         private void txtTuMa_KeyPress(object sender, KeyPressEventArgs e)

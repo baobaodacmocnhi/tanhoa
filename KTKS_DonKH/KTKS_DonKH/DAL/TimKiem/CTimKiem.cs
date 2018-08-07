@@ -247,12 +247,12 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ds.Tables.Add(dtTTTL);
 
                 ///Table GianLan
-                var queryGianLan = from itemGL in db.GianLans
-                                       where itemGL.MaDon == MaDon
+                var queryGianLan = from itemGL in db.GianLan_ChiTiets
+                                   where itemGL.GianLan.MaDon == MaDon
                                 select new
                                 {
-                                    MaDon = "TKH" + itemGL.MaDon,
-                                    itemGL.ID,
+                                    MaDon = "TKH" + itemGL.GianLan.MaDon,
+                                    ID=itemGL.MaCTGL,
                                     itemGL.DanhBo,
                                     itemGL.HoTen,
                                     itemGL.DiaChi,
@@ -272,10 +272,10 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table TruyThu
                 var queryTruyThu = from itemTT in db.TruyThuTienNuoc_ChiTiets
-                                   where itemTT.TruyThuTienNuoc_Tong.MaDon == MaDon
+                                   where itemTT.TruyThuTienNuoc.MaDon == MaDon
                                    select new
                                    {
-                                       MaDon = "TKH" + itemTT.TruyThuTienNuoc_Tong.MaDon,
+                                       MaDon = "TKH" + itemTT.TruyThuTienNuoc.MaDon,
                                        itemTT.MaTTTN,
                                        itemTT.DanhBo,
                                        itemTT.HoTen,
@@ -588,12 +588,12 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ds.Tables.Add(dtTTTL);
 
                 ///Table GianLan
-                var queryGianLan = from itemGL in db.GianLans
-                                   where itemGL.MaDonTXL == MaDonTXL
+                var queryGianLan = from itemGL in db.GianLan_ChiTiets
+                                   where itemGL.GianLan.MaDonTXL == MaDonTXL
                                    select new
                                    {
-                                       MaDon = "TXL" + itemGL.MaDonTXL,
-                                       itemGL.ID,
+                                       MaDon = "TXL" + itemGL.GianLan.MaDonTXL,
+                                       ID = itemGL.MaCTGL,
                                        itemGL.DanhBo,
                                        itemGL.HoTen,
                                        itemGL.DiaChi,
@@ -613,10 +613,10 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table TruyThu
                 var queryTruyThu = from itemTT in db.TruyThuTienNuoc_ChiTiets
-                                   where itemTT.TruyThuTienNuoc_Tong.MaDonTXL == MaDonTXL
+                                   where itemTT.TruyThuTienNuoc.MaDonTXL == MaDonTXL
                                    select new
                                    {
-                                       MaDon = "TXL" + itemTT.TruyThuTienNuoc_Tong.MaDonTXL,
+                                       MaDon = "TXL" + itemTT.TruyThuTienNuoc.MaDonTXL,
                                        itemTT.MaTTTN,
                                        itemTT.DanhBo,
                                        itemTT.HoTen,
@@ -930,12 +930,12 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ds.Tables.Add(dtTTTL);
 
                 ///Table GianLan
-                var queryGianLan = from itemGL in db.GianLans
-                                   where itemGL.MaDonTBC == MaDonTBC
+                var queryGianLan = from itemGL in db.GianLan_ChiTiets
+                                   where itemGL.GianLan.MaDonTBC == MaDonTBC
                                    select new
                                    {
-                                       MaDon = "TBC" + itemGL.MaDonTBC,
-                                       itemGL.ID,
+                                       MaDon = "TBC" + itemGL.GianLan.MaDonTBC,
+                                       ID=itemGL.MaCTGL,
                                        itemGL.DanhBo,
                                        itemGL.HoTen,
                                        itemGL.DiaChi,
@@ -955,10 +955,10 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table TruyThu
                 var queryTruyThu = from itemTT in db.TruyThuTienNuoc_ChiTiets
-                                   where itemTT.TruyThuTienNuoc_Tong.MaDonTBC == MaDonTBC
+                                   where itemTT.TruyThuTienNuoc.MaDonTBC == MaDonTBC
                                    select new
                                    {
-                                       MaDon = "TBC" + itemTT.TruyThuTienNuoc_Tong.MaDonTBC,
+                                       MaDon = "TBC" + itemTT.TruyThuTienNuoc.MaDonTBC,
                                        itemTT.MaTTTN,
                                        itemTT.DanhBo,
                                        itemTT.HoTen,
@@ -1271,14 +1271,14 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ds.Tables.Add(dtTTTL);
 
                 ///Table GianLan
-                var queryGianLan = from itemGL in db.GianLans
-                                   where itemGL.DanhBo == DanhBo || (itemGL.DonKH.DanhBo == DanhBo || itemGL.DonTXL.DanhBo == DanhBo || itemGL.DonTBC.DanhBo == DanhBo)
+                var queryGianLan = from itemGL in db.GianLan_ChiTiets
+                                   where itemGL.DanhBo == DanhBo || (itemGL.GianLan.DonKH.DanhBo == DanhBo || itemGL.GianLan.DonTXL.DanhBo == DanhBo || itemGL.GianLan.DonTBC.DanhBo == DanhBo)
                                    select new
                                    {
-                                       MaDon = itemGL.MaDon != null ? "TKH" + itemGL.MaDon
-                                       : itemGL.MaDonTXL != null ? "TXL" + itemGL.MaDonTXL
-                                       : itemGL.MaDonTBC != null ? "TBC" + itemGL.MaDonTBC : null,
-                                       itemGL.ID,
+                                       MaDon = itemGL.GianLan.MaDon != null ? "TKH" + itemGL.GianLan.MaDon
+                                       : itemGL.GianLan.MaDonTXL != null ? "TXL" + itemGL.GianLan.MaDonTXL
+                                       : itemGL.GianLan.MaDonTBC != null ? "TBC" + itemGL.GianLan.MaDonTBC : null,
+                                       ID = itemGL.MaCTGL,
                                        itemGL.CreateDate,
                                        itemGL.DanhBo,
                                        itemGL.HoTen,
@@ -1297,12 +1297,12 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table TruyThu
                 var queryTruyThu = from itemTT in db.TruyThuTienNuoc_ChiTiets
-                                   where itemTT.DanhBo == DanhBo || (itemTT.TruyThuTienNuoc_Tong.DonKH.DanhBo == DanhBo || itemTT.TruyThuTienNuoc_Tong.DonTXL.DanhBo == DanhBo || itemTT.TruyThuTienNuoc_Tong.DonTBC.DanhBo == DanhBo)
+                                   where itemTT.DanhBo == DanhBo || (itemTT.TruyThuTienNuoc.DonKH.DanhBo == DanhBo || itemTT.TruyThuTienNuoc.DonTXL.DanhBo == DanhBo || itemTT.TruyThuTienNuoc.DonTBC.DanhBo == DanhBo)
                                    select new
                                    {
-                                       MaDon = itemTT.TruyThuTienNuoc_Tong.MaDon != null ? "TKH" + itemTT.TruyThuTienNuoc_Tong.MaDon
-                                       : itemTT.TruyThuTienNuoc_Tong.MaDonTXL != null ? "TXL" + itemTT.TruyThuTienNuoc_Tong.MaDonTXL
-                                       : itemTT.TruyThuTienNuoc_Tong.MaDonTBC != null ? "TBC" + itemTT.TruyThuTienNuoc_Tong.MaDonTBC : null,
+                                       MaDon = itemTT.TruyThuTienNuoc.MaDon != null ? "TKH" + itemTT.TruyThuTienNuoc.MaDon
+                                       : itemTT.TruyThuTienNuoc.MaDonTXL != null ? "TXL" + itemTT.TruyThuTienNuoc.MaDonTXL
+                                       : itemTT.TruyThuTienNuoc.MaDonTBC != null ? "TBC" + itemTT.TruyThuTienNuoc.MaDonTBC : null,
                                        itemTT.MaTTTN,
                                        itemTT.DanhBo,
                                        itemTT.HoTen,
@@ -1523,9 +1523,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                              };
                 dt.Merge(LINQToDataTable(queryDonKH));
 
-                ///Table GianLans
+                ///Table GianLan_ChiTiets
                 queryDonKH = from itemDon in db.DonKHs
-                             join itemGL in db.GianLans on itemDon.MaDon equals itemGL.MaDon
+                             join itemGL in db.GianLan_ChiTiets on itemDon.MaDon equals itemGL.GianLan.MaDon
                              where itemGL.DanhBo == DanhBo
                              select new
                              {
@@ -1543,7 +1543,7 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table TruyThu
                 queryDonKH = from itemDon in db.DonKHs
-                             join itemTT in db.TruyThuTienNuoc_ChiTiets on itemDon.MaDon equals itemTT.TruyThuTienNuoc_Tong.MaDon
+                             join itemTT in db.TruyThuTienNuoc_ChiTiets on itemDon.MaDon equals itemTT.TruyThuTienNuoc.MaDon
                              where itemTT.DanhBo == DanhBo
                              select new
                              {
@@ -1760,9 +1760,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                               };
                 dt.Merge(LINQToDataTable(queryDonTXL));
 
-                ///Table GianLans
+                ///Table GianLan_ChiTiets
                 queryDonTXL = from itemDonTXL in db.DonTXLs
-                              join itemGL in db.GianLans on itemDonTXL.MaDon equals itemGL.MaDonTXL
+                              join itemGL in db.GianLan_ChiTiets on itemDonTXL.MaDon equals itemGL.GianLan.MaDonTXL
                               where itemGL.DanhBo == DanhBo
                               select new
                               {
@@ -1780,7 +1780,7 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table TruyThu
                 queryDonTXL = from itemDonTXL in db.DonTXLs
-                              join itemTT in db.TruyThuTienNuoc_ChiTiets on itemDonTXL.MaDon equals itemTT.TruyThuTienNuoc_Tong.MaDonTXL
+                              join itemTT in db.TruyThuTienNuoc_ChiTiets on itemDonTXL.MaDon equals itemTT.TruyThuTienNuoc.MaDonTXL
                               where itemTT.DanhBo == DanhBo
                               select new
                               {
@@ -1997,9 +1997,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                               };
                 dt.Merge(LINQToDataTable(queryDonTBC));
 
-                ///Table GianLans
+                ///Table GianLan_ChiTiets
                 queryDonTBC = from itemDon in db.DonTBCs
-                              join itemGL in db.GianLans on itemDon.MaDon equals itemGL.MaDonTBC
+                              join itemGL in db.GianLan_ChiTiets on itemDon.MaDon equals itemGL.GianLan.MaDonTBC
                               where itemGL.DanhBo == DanhBo
                               select new
                               {
@@ -2017,7 +2017,7 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table TruyThu
                 queryDonTBC = from itemDon in db.DonTBCs
-                              join itemTT in db.TruyThuTienNuoc_ChiTiets on itemDon.MaDon equals itemTT.TruyThuTienNuoc_Tong.MaDonTBC
+                              join itemTT in db.TruyThuTienNuoc_ChiTiets on itemDon.MaDon equals itemTT.TruyThuTienNuoc.MaDonTBC
                               where itemTT.DanhBo == DanhBo
                               select new
                               {
@@ -2349,14 +2349,14 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ds.Tables.Add(dtTTTL);
 
                 ///Table GianLan
-                var queryGianLan = from itemGL in db.GianLans
+                var queryGianLan = from itemGL in db.GianLan_ChiTiets
                                    where itemGL.HoTen.Contains(HoTen)
                                    select new
                                    {
-                                       MaDon = itemGL.MaDon != null ? "TKH" + itemGL.MaDon
-                                       : itemGL.MaDonTXL != null ? "TXL" + itemGL.MaDonTXL
-                                       : itemGL.MaDonTBC != null ? "TBC" + itemGL.MaDonTBC : null,
-                                       itemGL.ID,
+                                       MaDon = itemGL.GianLan.MaDon != null ? "TKH" + itemGL.GianLan.MaDon
+                                       : itemGL.GianLan.MaDonTXL != null ? "TXL" + itemGL.GianLan.MaDonTXL
+                                       : itemGL.GianLan.MaDonTBC != null ? "TBC" + itemGL.GianLan.MaDonTBC : null,
+                                        ID=itemGL.MaCTGL,
                                        itemGL.CreateDate,
                                        itemGL.DanhBo,
                                        itemGL.HoTen,
@@ -2378,9 +2378,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    where itemTT.HoTen.Contains(HoTen)
                                    select new
                                    {
-                                       MaDon = itemTT.TruyThuTienNuoc_Tong.MaDon != null ? "TKH" + itemTT.TruyThuTienNuoc_Tong.MaDon
-                                       : itemTT.TruyThuTienNuoc_Tong.MaDonTXL != null ? "TXL" + itemTT.TruyThuTienNuoc_Tong.MaDonTXL
-                                       : itemTT.TruyThuTienNuoc_Tong.MaDonTBC != null ? "TBC" + itemTT.TruyThuTienNuoc_Tong.MaDonTBC : null,
+                                       MaDon = itemTT.TruyThuTienNuoc.MaDon != null ? "TKH" + itemTT.TruyThuTienNuoc.MaDon
+                                       : itemTT.TruyThuTienNuoc.MaDonTXL != null ? "TXL" + itemTT.TruyThuTienNuoc.MaDonTXL
+                                       : itemTT.TruyThuTienNuoc.MaDonTBC != null ? "TBC" + itemTT.TruyThuTienNuoc.MaDonTBC : null,
                                        itemTT.MaTTTN,
                                        itemTT.DanhBo,
                                        itemTT.HoTen,
@@ -2601,9 +2601,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                              };
                 dt.Merge(LINQToDataTable(queryDonKH));
 
-                ///Table GianLans
+                ///Table GianLan_ChiTiets
                 queryDonKH = from itemDon in db.DonKHs
-                             join itemGL in db.GianLans on itemDon.MaDon equals itemGL.MaDon
+                             join itemGL in db.GianLan_ChiTiets on itemDon.MaDon equals itemGL.GianLan.MaDon
                              where itemGL.HoTen.Contains(HoTen)
                              select new
                              {
@@ -2621,7 +2621,7 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table TruyThu
                 queryDonKH = from itemDon in db.DonKHs
-                             join itemTT in db.TruyThuTienNuoc_ChiTiets on itemDon.MaDon equals itemTT.TruyThuTienNuoc_Tong.MaDon
+                             join itemTT in db.TruyThuTienNuoc_ChiTiets on itemDon.MaDon equals itemTT.TruyThuTienNuoc.MaDon
                              where itemTT.HoTen.Contains(HoTen)
                              select new
                              {
@@ -2838,9 +2838,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                               };
                 dt.Merge(LINQToDataTable(queryDonTXL));
 
-                ///Table GianLans
+                ///Table GianLan_ChiTiets
                 queryDonTXL = from itemDonTXL in db.DonTXLs
-                             join itemGL in db.GianLans on itemDonTXL.MaDon equals itemGL.MaDonTXL
+                              join itemGL in db.GianLan_ChiTiets on itemDonTXL.MaDon equals itemGL.GianLan.MaDonTXL
                              where itemGL.HoTen.Contains(HoTen)
                              select new
                              {
@@ -2858,7 +2858,7 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table TruyThu
                 queryDonTXL = from itemDonTXL in db.DonTXLs
-                              join itemTT in db.TruyThuTienNuoc_ChiTiets on itemDonTXL.MaDon equals itemTT.TruyThuTienNuoc_Tong.MaDonTXL
+                              join itemTT in db.TruyThuTienNuoc_ChiTiets on itemDonTXL.MaDon equals itemTT.TruyThuTienNuoc.MaDonTXL
                              where itemTT.HoTen.Contains(HoTen)
                              select new
                              {
@@ -3075,9 +3075,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                               };
                 dt.Merge(LINQToDataTable(queryDonTBC));
 
-                ///Table GianLans
+                ///Table GianLan_ChiTiets
                 queryDonTBC = from itemDon in db.DonTBCs
-                              join itemGL in db.GianLans on itemDon.MaDon equals itemGL.MaDonTBC
+                              join itemGL in db.GianLan_ChiTiets on itemDon.MaDon equals itemGL.GianLan.MaDonTBC
                               where itemGL.HoTen.Contains(HoTen)
                               select new
                               {
@@ -3095,7 +3095,7 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table TruyThu
                 queryDonTBC = from itemDon in db.DonTBCs
-                              join itemTT in db.TruyThuTienNuoc_ChiTiets on itemDon.MaDon equals itemTT.TruyThuTienNuoc_Tong.MaDonTBC
+                              join itemTT in db.TruyThuTienNuoc_ChiTiets on itemDon.MaDon equals itemTT.TruyThuTienNuoc.MaDonTBC
                               where itemTT.HoTen.Contains(HoTen)
                               select new
                               {
@@ -3426,14 +3426,14 @@ namespace KTKS_DonKH.DAL.TimKiem
                 ds.Tables.Add(dtTTTL);
 
                 ///Table GianLan
-                var queryGianLan = from itemGL in db.GianLans
+                var queryGianLan = from itemGL in db.GianLan_ChiTiets
                                    where itemGL.DiaChi.Contains(DiaChi)
                                 select new
                                 {
-                                    MaDon = itemGL.MaDon != null ? "TKH" + itemGL.MaDon
-                                    : itemGL.MaDonTXL != null ? "TXL" + itemGL.MaDonTXL
-                                    : itemGL.MaDonTBC != null ? "TBC" + itemGL.MaDonTBC : null,
-                                    itemGL.ID,
+                                    MaDon = itemGL.GianLan.MaDon != null ? "TKH" + itemGL.GianLan.MaDon
+                                    : itemGL.GianLan.MaDonTXL != null ? "TXL" + itemGL.GianLan.MaDonTXL
+                                    : itemGL.GianLan.MaDonTBC != null ? "TBC" + itemGL.GianLan.MaDonTBC : null,
+                                     ID=itemGL.MaCTGL,
                                     itemGL.CreateDate,
                                     itemGL.DanhBo,
                                     itemGL.HoTen,
@@ -3455,9 +3455,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    where itemTT.DiaChi.Contains(DiaChi)
                                    select new
                                    {
-                                       MaDon = itemTT.TruyThuTienNuoc_Tong.MaDon != null ? "TKH" + itemTT.TruyThuTienNuoc_Tong.MaDon
-                                       : itemTT.TruyThuTienNuoc_Tong.MaDonTXL != null ? "TXL" + itemTT.TruyThuTienNuoc_Tong.MaDonTXL
-                                       : itemTT.TruyThuTienNuoc_Tong.MaDonTBC != null ? "TBC" + itemTT.TruyThuTienNuoc_Tong.MaDonTBC : null,
+                                       MaDon = itemTT.TruyThuTienNuoc.MaDon != null ? "TKH" + itemTT.TruyThuTienNuoc.MaDon
+                                       : itemTT.TruyThuTienNuoc.MaDonTXL != null ? "TXL" + itemTT.TruyThuTienNuoc.MaDonTXL
+                                       : itemTT.TruyThuTienNuoc.MaDonTBC != null ? "TBC" + itemTT.TruyThuTienNuoc.MaDonTBC : null,
                                        itemTT.MaTTTN,
                                        itemTT.DanhBo,
                                        itemTT.HoTen,
@@ -3678,9 +3678,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                              };
                 dt.Merge(LINQToDataTable(queryDonKH));
 
-                ///Table GianLans
+                ///Table GianLan_ChiTiets
                 queryDonKH = from itemDon in db.DonKHs
-                             join itemGL in db.GianLans on itemDon.MaDon equals itemGL.MaDon
+                             join itemGL in db.GianLan_ChiTiets on itemDon.MaDon equals itemGL.GianLan.MaDon
                              where itemGL.DiaChi.Contains(DiaChi)
                              select new
                              {
@@ -3698,7 +3698,7 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table TruyThu
                 queryDonKH = from itemDon in db.DonKHs
-                             join itemTT in db.TruyThuTienNuoc_ChiTiets on itemDon.MaDon equals itemTT.TruyThuTienNuoc_Tong.MaDon
+                             join itemTT in db.TruyThuTienNuoc_ChiTiets on itemDon.MaDon equals itemTT.TruyThuTienNuoc.MaDon
                              where itemTT.DiaChi.Contains(DiaChi)
                              select new
                              {
@@ -3915,9 +3915,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                               };
                 dt.Merge(LINQToDataTable(queryDonTXL));
 
-                ///Table GianLans
+                ///Table GianLan_ChiTiets
                 queryDonTXL = from itemDonTXL in db.DonTXLs
-                              join itemGL in db.GianLans on itemDonTXL.MaDon equals itemGL.MaDonTXL
+                              join itemGL in db.GianLan_ChiTiets on itemDonTXL.MaDon equals itemGL.GianLan.MaDonTXL
                               where itemGL.DiaChi.Contains(DiaChi)
                               select new
                               {
@@ -3935,7 +3935,7 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table TruyThu
                 queryDonTXL = from itemDonTXL in db.DonTXLs
-                              join itemTT in db.TruyThuTienNuoc_ChiTiets on itemDonTXL.MaDon equals itemTT.TruyThuTienNuoc_Tong.MaDonTXL
+                              join itemTT in db.TruyThuTienNuoc_ChiTiets on itemDonTXL.MaDon equals itemTT.TruyThuTienNuoc.MaDonTXL
                               where itemTT.DiaChi.Contains(DiaChi)
                               select new
                               {
@@ -4152,9 +4152,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                               };
                 dt.Merge(LINQToDataTable(queryDonTBC));
 
-                ///Table GianLans
+                ///Table GianLan_ChiTiets
                 queryDonTBC = from itemDon in db.DonTBCs
-                              join itemGL in db.GianLans on itemDon.MaDon equals itemGL.MaDonTBC
+                              join itemGL in db.GianLan_ChiTiets on itemDon.MaDon equals itemGL.GianLan.MaDonTBC
                               where itemGL.DiaChi.Contains(DiaChi)
                               select new
                               {
@@ -4172,7 +4172,7 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table TruyThu
                 queryDonTBC = from itemDon in db.DonTBCs
-                              join itemTT in db.TruyThuTienNuoc_ChiTiets on itemDon.MaDon equals itemTT.TruyThuTienNuoc_Tong.MaDonTBC
+                              join itemTT in db.TruyThuTienNuoc_ChiTiets on itemDon.MaDon equals itemTT.TruyThuTienNuoc.MaDonTBC
                               where itemTT.DiaChi.Contains(DiaChi)
                               select new
                               {

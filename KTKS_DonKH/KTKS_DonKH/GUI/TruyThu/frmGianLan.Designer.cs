@@ -125,6 +125,8 @@
             this.chkXepDon = new System.Windows.Forms.CheckBox();
             this.txtMaDonMoi = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
+            this.txtMaCTGL = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.gbThanhToan3.SuspendLayout();
@@ -1039,7 +1041,7 @@
             // chkXepDon
             // 
             this.chkXepDon.AutoSize = true;
-            this.chkXepDon.Location = new System.Drawing.Point(503, 14);
+            this.chkXepDon.Location = new System.Drawing.Point(645, 14);
             this.chkXepDon.Name = "chkXepDon";
             this.chkXepDon.Size = new System.Drawing.Size(78, 20);
             this.chkXepDon.TabIndex = 95;
@@ -1063,12 +1065,31 @@
             this.label31.TabIndex = 116;
             this.label31.Text = "Mã Đơn(New):";
             // 
+            // txtMaCTGL
+            // 
+            this.txtMaCTGL.Location = new System.Drawing.Point(559, 12);
+            this.txtMaCTGL.Name = "txtMaCTGL";
+            this.txtMaCTGL.Size = new System.Drawing.Size(80, 22);
+            this.txtMaCTGL.TabIndex = 119;
+            this.txtMaCTGL.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaCTGL_KeyPress);
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(503, 15);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(50, 16);
+            this.label32.TabIndex = 118;
+            this.label32.Text = "Mã GL:";
+            // 
             // frmGianLan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1291, 637);
+            this.Controls.Add(this.txtMaCTGL);
+            this.Controls.Add(this.label32);
             this.Controls.Add(this.txtMaDonMoi);
             this.Controls.Add(this.label31);
             this.Controls.Add(this.chkXepDon);
@@ -1209,5 +1230,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn XepDon;
         private System.Windows.Forms.TextBox txtMaDonMoi;
         private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.TextBox txtMaCTGL;
+        private System.Windows.Forms.Label label32;
     }
 }

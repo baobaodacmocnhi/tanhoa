@@ -501,58 +501,58 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         ctchdb.STT = _dontu_ChiTiet.STT;
                     }
                     else
-                    if (_dontkh != null)
-                    {
-                        if (_cCHDB.CheckExist_CHDB("TKH", _dontkh.MaDon) == false)
+                        if (_dontkh != null)
                         {
-                            CHDB chdb = new CHDB();
-                            chdb.MaDon = _dontkh.MaDon;
-                            _cCHDB.ThemCHDB(chdb);
-                        }
-                        if (_cCHDB.CheckExist_CTCHDB("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim()) == true)
-                        {
-                            MessageBox.Show("Danh Bộ này đã được Lập Cắt Hủy Danh Bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                        ctchdb.MaCHDB = _cCHDB.GetCHDB("TKH", _dontkh.MaDon).MaCHDB;
-                    }
-                    else
-                        if (_dontxl != null)
-                        {
-                            if (_cCHDB.CheckExist_CHDB("TXL", _dontxl.MaDon) == false)
+                            if (_cCHDB.CheckExist_CHDB("TKH", _dontkh.MaDon) == false)
                             {
                                 CHDB chdb = new CHDB();
-                                chdb.MaDonTXL = _dontxl.MaDon;
+                                chdb.MaDon = _dontkh.MaDon;
                                 _cCHDB.ThemCHDB(chdb);
                             }
-                            if (_cCHDB.CheckExist_CTCHDB("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim()) == true)
+                            if (_cCHDB.CheckExist_CTCHDB("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim()) == true)
                             {
                                 MessageBox.Show("Danh Bộ này đã được Lập Cắt Hủy Danh Bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-                            ctchdb.MaCHDB = _cCHDB.GetCHDB("TXL", _dontxl.MaDon).MaCHDB;
+                            ctchdb.MaCHDB = _cCHDB.GetCHDB("TKH", _dontkh.MaDon).MaCHDB;
                         }
                         else
-                            if (_dontbc != null)
+                            if (_dontxl != null)
                             {
-                                if (_cCHDB.CheckExist_CHDB("TBC", _dontbc.MaDon) == false)
+                                if (_cCHDB.CheckExist_CHDB("TXL", _dontxl.MaDon) == false)
                                 {
                                     CHDB chdb = new CHDB();
-                                    chdb.MaDonTBC = _dontbc.MaDon;
+                                    chdb.MaDonTXL = _dontxl.MaDon;
                                     _cCHDB.ThemCHDB(chdb);
                                 }
-                                if (_cCHDB.CheckExist_CTCHDB("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim()) == true)
+                                if (_cCHDB.CheckExist_CTCHDB("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim()) == true)
                                 {
                                     MessageBox.Show("Danh Bộ này đã được Lập Cắt Hủy Danh Bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
-                                ctchdb.MaCHDB = _cCHDB.GetCHDB("TBC", _dontbc.MaDon).MaCHDB;
+                                ctchdb.MaCHDB = _cCHDB.GetCHDB("TXL", _dontxl.MaDon).MaCHDB;
                             }
                             else
-                            {
-                                MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
+                                if (_dontbc != null)
+                                {
+                                    if (_cCHDB.CheckExist_CHDB("TBC", _dontbc.MaDon) == false)
+                                    {
+                                        CHDB chdb = new CHDB();
+                                        chdb.MaDonTBC = _dontbc.MaDon;
+                                        _cCHDB.ThemCHDB(chdb);
+                                    }
+                                    if (_cCHDB.CheckExist_CTCHDB("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim()) == true)
+                                    {
+                                        MessageBox.Show("Danh Bộ này đã được Lập Cắt Hủy Danh Bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                                    ctchdb.MaCHDB = _cCHDB.GetCHDB("TBC", _dontbc.MaDon).MaCHDB;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
 
                     if (txtMaThongBaoCT.Text.Trim().Replace("-", "") != "")
                         ctchdb.MaCTCTDB = decimal.Parse(txtMaThongBaoCT.Text.Trim().Replace("-", ""));

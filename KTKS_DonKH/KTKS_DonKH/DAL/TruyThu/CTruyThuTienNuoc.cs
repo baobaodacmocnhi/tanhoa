@@ -14,16 +14,16 @@ namespace KTKS_DonKH.DAL.TruyThu
         //int SoTien1m3 = 19345;
         int SoTien1m3 = 19435;
 
-        #region TruyThuTienNuoc_ChiTiet
+        #region TruyThuTienNuoc
 
-        public bool Them(TruyThuTienNuoc_ChiTiet tttn)
+        public bool Them(TruyThuTienNuoc tttn)
         {
             try
             {
-                if (db.TruyThuTienNuoc_ChiTiets.Count() > 0)
+                if (db.TruyThuTienNuocs.Count() > 0)
                 {
                     string ID = "MaTTTN";
-                    string Table = "TruyThuTienNuoc_ChiTiet";
+                    string Table = "TruyThuTienNuoc";
                     decimal MaTTTN = db.ExecuteQuery<decimal>("declare @Ma int " +
                         "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
                         "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
@@ -31,22 +31,20 @@ namespace KTKS_DonKH.DAL.TruyThu
                 }
                 else
                     tttn.MaTTTN = decimal.Parse("1" + DateTime.Now.ToString("yy"));
-                tttn.SoTien1m3 = SoTien1m3;//lưu lại số tiền trong quá khứ do có thể thay đổi trong tương lai
                 tttn.CreateDate = DateTime.Now;
                 tttn.CreateBy = CTaiKhoan.MaUser;
-                db.TruyThuTienNuoc_ChiTiets.InsertOnSubmit(tttn);
+                db.TruyThuTienNuocs.InsertOnSubmit(tttn);
                 db.SubmitChanges();
                 return true;
             }
             catch (Exception ex)
             {
-                db = new dbKinhDoanhDataContext();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
-        public bool Sua(TruyThuTienNuoc_ChiTiet tttn)
+        public bool Sua(TruyThuTienNuoc tttn)
         {
             try
             {
@@ -57,61 +55,154 @@ namespace KTKS_DonKH.DAL.TruyThu
             }
             catch (Exception ex)
             {
-                db = new dbKinhDoanhDataContext();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
-        public bool Xoa(TruyThuTienNuoc_ChiTiet tttn)
+        public bool Xoa(TruyThuTienNuoc tttn)
         {
             try
             {
-                db.TruyThuTienNuoc_HoaDons.DeleteAllOnSubmit(tttn.TruyThuTienNuoc_HoaDons.ToList());
-                db.TruyThuTienNuoc_ThanhToans.DeleteAllOnSubmit(tttn.TruyThuTienNuoc_ThanhToans.ToList());
-                db.TruyThuTienNuoc_ThuMois.DeleteAllOnSubmit(tttn.TruyThuTienNuoc_ThuMois.ToList());
-                db.TruyThuTienNuoc_ChiTiets.DeleteOnSubmit(tttn);
+                db.TruyThuTienNuocs.DeleteOnSubmit(tttn);
                 db.SubmitChanges();
                 return true;
             }
             catch (Exception ex)
             {
-                db = new dbKinhDoanhDataContext();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
-        public bool CheckExist(decimal MaTTTN)
-        {
-            return db.TruyThuTienNuoc_ChiTiets.Any(item => item.MaTTTN == MaTTTN);
-        }
-
-        public bool CheckExist(string Loai, decimal MaDon)
+        public bool checkExist(string Loai, decimal MaDon)
         {
             switch (Loai)
             {
                 case "TKH":
-                    return db.TruyThuTienNuoc_ChiTiets.Any(item => item.TruyThuTienNuoc_Tong.MaDon == MaDon);
+                    return db.TruyThuTienNuocs.Any(item => item.MaDon == MaDon);
                 case "TXL":
-                    return db.TruyThuTienNuoc_ChiTiets.Any(item => item.TruyThuTienNuoc_Tong.MaDonTXL == MaDon);
+                    return db.TruyThuTienNuocs.Any(item => item.MaDonTXL == MaDon);
                 case "TBC":
-                    return db.TruyThuTienNuoc_ChiTiets.Any(item => item.TruyThuTienNuoc_Tong.MaDonTBC == MaDon);
+                    return db.TruyThuTienNuocs.Any(item => item.MaDonTBC == MaDon);
                 default:
                     return false;
             }
         }
 
-        public bool CheckExist(string Loai, decimal MaDon, string DanhBo)
+        public TruyThuTienNuoc get(string Loai, decimal MaDon)
         {
             switch (Loai)
             {
                 case "TKH":
-                    return db.TruyThuTienNuoc_ChiTiets.Any(item => item.TruyThuTienNuoc_Tong.MaDon == MaDon && item.DanhBo == DanhBo);
+                    return db.TruyThuTienNuocs.SingleOrDefault(item => item.MaDon == MaDon);
                 case "TXL":
-                    return db.TruyThuTienNuoc_ChiTiets.Any(item => item.TruyThuTienNuoc_Tong.MaDonTXL == MaDon && item.DanhBo == DanhBo);
+                    return db.TruyThuTienNuocs.SingleOrDefault(item => item.MaDonTXL == MaDon);
                 case "TBC":
-                    return db.TruyThuTienNuoc_ChiTiets.Any(item => item.TruyThuTienNuoc_Tong.MaDonTBC == MaDon && item.DanhBo == DanhBo);
+                    return db.TruyThuTienNuocs.SingleOrDefault(item => item.MaDonTBC == MaDon);
+                default:
+                    return null;
+            }
+        }
+
+        #endregion
+
+        #region TruyThuTienNuoc_ChiTiet
+
+        public bool Them_ChiTiet(TruyThuTienNuoc_ChiTiet cttttn)
+        {
+            try
+            {
+                if (db.TruyThuTienNuoc_ChiTiets.Count() > 0)
+                {
+                    string ID = "MaCTTTTN";
+                    string Table = "TruyThuTienNuoc_ChiTiet";
+                    decimal MaCTTTTN = db.ExecuteQuery<decimal>("declare @Ma int " +
+                        "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                        "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                    cttttn.MaCTTTTN = getMaxNextIDTable(MaCTTTTN);
+                }
+                else
+                    cttttn.MaCTTTTN = decimal.Parse("1" + DateTime.Now.ToString("yy"));
+                cttttn.SoTien1m3 = SoTien1m3;//lưu lại số tiền trong quá khứ do có thể thay đổi trong tương lai
+                cttttn.CreateDate = DateTime.Now;
+                cttttn.CreateBy = CTaiKhoan.MaUser;
+                db.TruyThuTienNuoc_ChiTiets.InsertOnSubmit(cttttn);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool Sua_ChiTiet(TruyThuTienNuoc_ChiTiet cttttn)
+        {
+            try
+            {
+                cttttn.ModifyDate = DateTime.Now;
+                cttttn.ModifyBy = CTaiKhoan.MaUser;
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool Xoa_ChiTiet(TruyThuTienNuoc_ChiTiet cttttn)
+        {
+            try
+            {
+                db.TruyThuTienNuoc_HoaDons.DeleteAllOnSubmit(cttttn.TruyThuTienNuoc_HoaDons.ToList());
+                db.TruyThuTienNuoc_ThanhToans.DeleteAllOnSubmit(cttttn.TruyThuTienNuoc_ThanhToans.ToList());
+                db.TruyThuTienNuoc_ThuMois.DeleteAllOnSubmit(cttttn.TruyThuTienNuoc_ThuMois.ToList());
+                db.TruyThuTienNuoc_ChiTiets.DeleteOnSubmit(cttttn);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool checkExist_ChiTiet(decimal MaCTTTTN)
+        {
+            return db.TruyThuTienNuoc_ChiTiets.Any(item => item.MaCTTTTN == MaCTTTTN);
+        }
+
+        public bool checkExist_ChiTiet(string Loai, decimal MaDon)
+        {
+            switch (Loai)
+            {
+                case "TKH":
+                    return db.TruyThuTienNuoc_ChiTiets.Any(item => item.TruyThuTienNuoc.MaDon == MaDon);
+                case "TXL":
+                    return db.TruyThuTienNuoc_ChiTiets.Any(item => item.TruyThuTienNuoc.MaDonTXL == MaDon);
+                case "TBC":
+                    return db.TruyThuTienNuoc_ChiTiets.Any(item => item.TruyThuTienNuoc.MaDonTBC == MaDon);
+                default:
+                    return false;
+            }
+
+        }
+
+        public bool checkExist_ChiTiet(string Loai, decimal MaDon, string DanhBo)
+        {
+            switch (Loai)
+            {
+                case "TKH":
+                    return db.TruyThuTienNuoc_ChiTiets.Any(item => item.TruyThuTienNuoc.MaDon == MaDon && item.DanhBo == DanhBo);
+                case "TXL":
+                    return db.TruyThuTienNuoc_ChiTiets.Any(item => item.TruyThuTienNuoc.MaDonTXL == MaDon && item.DanhBo == DanhBo);
+                case "TBC":
+                    return db.TruyThuTienNuoc_ChiTiets.Any(item => item.TruyThuTienNuoc.MaDonTBC == MaDon && item.DanhBo == DanhBo);
                 default:
                     return false;
             }
@@ -130,39 +221,39 @@ namespace KTKS_DonKH.DAL.TruyThu
                 return "";
         }
 
-        public TruyThuTienNuoc_ChiTiet Get(string Loai, decimal MaDon)
+        public TruyThuTienNuoc_ChiTiet get_ChiTiet(decimal MaCTTTTN)
+        {
+            return db.TruyThuTienNuoc_ChiTiets.SingleOrDefault(item => item.MaCTTTTN == MaCTTTTN);
+        }
+
+        public TruyThuTienNuoc_ChiTiet get_ChiTiet(string Loai, decimal MaDon)
         {
             switch (Loai)
             {
                 case "TKH":
-                    return db.TruyThuTienNuoc_ChiTiets.SingleOrDefault(item => item.TruyThuTienNuoc_Tong.MaDon == MaDon);
+                    return db.TruyThuTienNuoc_ChiTiets.SingleOrDefault(item => item.TruyThuTienNuoc.MaDon == MaDon);
                 case "TXL":
-                    return db.TruyThuTienNuoc_ChiTiets.SingleOrDefault(item => item.TruyThuTienNuoc_Tong.MaDonTXL == MaDon);
+                    return db.TruyThuTienNuoc_ChiTiets.SingleOrDefault(item => item.TruyThuTienNuoc.MaDonTXL == MaDon);
                 case "TBC":
-                    return db.TruyThuTienNuoc_ChiTiets.SingleOrDefault(item => item.TruyThuTienNuoc_Tong.MaDonTBC == MaDon);
+                    return db.TruyThuTienNuoc_ChiTiets.SingleOrDefault(item => item.TruyThuTienNuoc.MaDonTBC == MaDon);
                 default:
                     return null;
             }
         }
 
-        public TruyThuTienNuoc_ChiTiet Get(decimal MaTTTN)
-        {
-            return db.TruyThuTienNuoc_ChiTiets.SingleOrDefault(item => item.MaTTTN == MaTTTN);
-        }
-
-        public DataTable GetDS(decimal MaTTTN)
+        public DataTable GetDS(decimal MaCTTTTN)
         {
             var query = from item in db.TruyThuTienNuoc_ChiTiets
-                        where item.MaTTTN == MaTTTN
+                        where item.MaCTTTTN == MaCTTTTN
                         select new
                         {
-                            MaDon = item.TruyThuTienNuoc_Tong.MaDon != null ? "TKH" + item.TruyThuTienNuoc_Tong.MaDon
-                                : item.TruyThuTienNuoc_Tong.MaDonTXL != null ? "TXL" + item.TruyThuTienNuoc_Tong.MaDonTXL
-                                : item.TruyThuTienNuoc_Tong.MaDonTBC != null ? "TBC" + item.TruyThuTienNuoc_Tong.MaDonTBC : null,
-                            SoCongVan = item.TruyThuTienNuoc_Tong.MaDon != null ? item.TruyThuTienNuoc_Tong.DonKH.SoCongVan
-                                : item.TruyThuTienNuoc_Tong.MaDonTXL != null ? item.TruyThuTienNuoc_Tong.DonTXL.SoCongVan
-                                : item.TruyThuTienNuoc_Tong.MaDonTBC != null ? item.TruyThuTienNuoc_Tong.DonTBC.SoCongVan : null,
-                            item.MaTTTN,
+                            MaDon = item.TruyThuTienNuoc.MaDon != null ? "TKH" + item.TruyThuTienNuoc.MaDon
+                                : item.TruyThuTienNuoc.MaDonTXL != null ? "TXL" + item.TruyThuTienNuoc.MaDonTXL
+                                : item.TruyThuTienNuoc.MaDonTBC != null ? "TBC" + item.TruyThuTienNuoc.MaDonTBC : null,
+                            SoCongVan = item.TruyThuTienNuoc.MaDon != null ? item.TruyThuTienNuoc.DonKH.SoCongVan
+                                : item.TruyThuTienNuoc.MaDonTXL != null ? item.TruyThuTienNuoc.DonTXL.SoCongVan
+                                : item.TruyThuTienNuoc.MaDonTBC != null ? item.TruyThuTienNuoc.DonTBC.SoCongVan : null,
+                            item.MaCTTTTN,
                             item.CreateDate,
                             item.DanhBo,
                             item.HoTen,
@@ -183,13 +274,13 @@ namespace KTKS_DonKH.DAL.TruyThu
                         where item.DanhBo == DanhBo
                         select new
                         {
-                            MaDon = item.TruyThuTienNuoc_Tong.MaDon != null ? "TKH" + item.TruyThuTienNuoc_Tong.MaDon
-                                : item.TruyThuTienNuoc_Tong.MaDonTXL != null ? "TXL" + item.TruyThuTienNuoc_Tong.MaDonTXL
-                                : item.TruyThuTienNuoc_Tong.MaDonTBC != null ? "TBC" + item.TruyThuTienNuoc_Tong.MaDonTBC : null,
-                            SoCongVan = item.TruyThuTienNuoc_Tong.MaDon != null ? item.TruyThuTienNuoc_Tong.DonKH.SoCongVan
-                            : item.TruyThuTienNuoc_Tong.MaDonTXL != null ? item.TruyThuTienNuoc_Tong.DonTXL.SoCongVan
-                            : item.TruyThuTienNuoc_Tong.MaDonTBC != null ? item.TruyThuTienNuoc_Tong.DonTBC.SoCongVan : null,
-                            item.MaTTTN,
+                            MaDon = item.TruyThuTienNuoc.MaDon != null ? "TKH" + item.TruyThuTienNuoc.MaDon
+                                : item.TruyThuTienNuoc.MaDonTXL != null ? "TXL" + item.TruyThuTienNuoc.MaDonTXL
+                                : item.TruyThuTienNuoc.MaDonTBC != null ? "TBC" + item.TruyThuTienNuoc.MaDonTBC : null,
+                            SoCongVan = item.TruyThuTienNuoc.MaDon != null ? item.TruyThuTienNuoc.DonKH.SoCongVan
+                            : item.TruyThuTienNuoc.MaDonTXL != null ? item.TruyThuTienNuoc.DonTXL.SoCongVan
+                            : item.TruyThuTienNuoc.MaDonTBC != null ? item.TruyThuTienNuoc.DonTBC.SoCongVan : null,
+                            item.MaCTTTTN,
                             item.CreateDate,
                             item.DanhBo,
                             item.HoTen,
@@ -210,13 +301,13 @@ namespace KTKS_DonKH.DAL.TruyThu
                         where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
                         select new
                         {
-                            MaDon = item.TruyThuTienNuoc_Tong.MaDon != null ? "TKH" + item.TruyThuTienNuoc_Tong.MaDon
-                                : item.TruyThuTienNuoc_Tong.MaDonTXL != null ? "TXL" + item.TruyThuTienNuoc_Tong.MaDonTXL
-                                : item.TruyThuTienNuoc_Tong.MaDonTBC != null ? "TBC" + item.TruyThuTienNuoc_Tong.MaDonTBC : null,
-                            SoCongVan = item.TruyThuTienNuoc_Tong.MaDon != null ? item.TruyThuTienNuoc_Tong.DonKH.SoCongVan
-                            : item.TruyThuTienNuoc_Tong.MaDonTXL != null ? item.TruyThuTienNuoc_Tong.DonTXL.SoCongVan
-                            : item.TruyThuTienNuoc_Tong.MaDonTBC != null ? item.TruyThuTienNuoc_Tong.DonTBC.SoCongVan : null,
-                            item.MaTTTN,
+                            MaDon = item.TruyThuTienNuoc.MaDon != null ? "TKH" + item.TruyThuTienNuoc.MaDon
+                                : item.TruyThuTienNuoc.MaDonTXL != null ? "TXL" + item.TruyThuTienNuoc.MaDonTXL
+                                : item.TruyThuTienNuoc.MaDonTBC != null ? "TBC" + item.TruyThuTienNuoc.MaDonTBC : null,
+                            SoCongVan = item.TruyThuTienNuoc.MaDon != null ? item.TruyThuTienNuoc.DonKH.SoCongVan
+                            : item.TruyThuTienNuoc.MaDonTXL != null ? item.TruyThuTienNuoc.DonTXL.SoCongVan
+                            : item.TruyThuTienNuoc.MaDonTBC != null ? item.TruyThuTienNuoc.DonTBC.SoCongVan : null,
+                            item.MaCTTTTN,
                             item.CreateDate,
                             item.DanhBo,
                             item.HoTen,
@@ -233,19 +324,19 @@ namespace KTKS_DonKH.DAL.TruyThu
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDS(DateTime FromCreateDate, DateTime ToCreateDate,string TinhTrang)
+        public DataTable GetDS(DateTime FromNgayTinhTrang, DateTime ToNgayTinhTrang, string TinhTrang)
         {
             var query = from item in db.TruyThuTienNuoc_ChiTiets
-                        where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.TinhTrang.ToString()==TinhTrang
+                        where item.NgayTinhTrang.Value.Date >= FromNgayTinhTrang.Date && item.NgayTinhTrang.Value.Date <= ToNgayTinhTrang.Date && item.TinhTrang.ToString() == TinhTrang
                         select new
                         {
-                            MaDon = item.TruyThuTienNuoc_Tong.MaDon != null ? "TKH" + item.TruyThuTienNuoc_Tong.MaDon
-                                : item.TruyThuTienNuoc_Tong.MaDonTXL != null ? "TXL" + item.TruyThuTienNuoc_Tong.MaDonTXL
-                                : item.TruyThuTienNuoc_Tong.MaDonTBC != null ? "TBC" + item.TruyThuTienNuoc_Tong.MaDonTBC : null,
-                            SoCongVan = item.TruyThuTienNuoc_Tong.MaDon != null ? item.TruyThuTienNuoc_Tong.DonKH.SoCongVan
-                            : item.TruyThuTienNuoc_Tong.MaDonTXL != null ? item.TruyThuTienNuoc_Tong.DonTXL.SoCongVan
-                            : item.TruyThuTienNuoc_Tong.MaDonTBC != null ? item.TruyThuTienNuoc_Tong.DonTBC.SoCongVan : null,
-                            item.MaTTTN,
+                            MaDon = item.TruyThuTienNuoc.MaDon != null ? "TKH" + item.TruyThuTienNuoc.MaDon
+                                : item.TruyThuTienNuoc.MaDonTXL != null ? "TXL" + item.TruyThuTienNuoc.MaDonTXL
+                                : item.TruyThuTienNuoc.MaDonTBC != null ? "TBC" + item.TruyThuTienNuoc.MaDonTBC : null,
+                            SoCongVan = item.TruyThuTienNuoc.MaDon != null ? item.TruyThuTienNuoc.DonKH.SoCongVan
+                            : item.TruyThuTienNuoc.MaDonTXL != null ? item.TruyThuTienNuoc.DonTXL.SoCongVan
+                            : item.TruyThuTienNuoc.MaDonTBC != null ? item.TruyThuTienNuoc.DonTBC.SoCongVan : null,
+                            item.MaCTTTTN,
                             item.CreateDate,
                             item.DanhBo,
                             item.HoTen,
@@ -271,7 +362,7 @@ namespace KTKS_DonKH.DAL.TruyThu
 
         #region TruyThuTienNuoc_HoaDon
 
-        public bool ThemCT(TruyThuTienNuoc_HoaDon cttttn)
+        public bool Them_HoaDon(TruyThuTienNuoc_HoaDon cttttn)
         {
             try
             {
@@ -289,13 +380,12 @@ namespace KTKS_DonKH.DAL.TruyThu
             }
             catch (Exception ex)
             {
-                db = new dbKinhDoanhDataContext();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
-        public bool SuaCT(TruyThuTienNuoc_HoaDon cttttn)
+        public bool Sua_HoaDon(TruyThuTienNuoc_HoaDon cttttn)
         {
             try
             {
@@ -306,13 +396,12 @@ namespace KTKS_DonKH.DAL.TruyThu
             }
             catch (Exception ex)
             {
-                db = new dbKinhDoanhDataContext();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
-        public bool XoaCT(TruyThuTienNuoc_HoaDon cttttn)
+        public bool Xoa_HoaDon(TruyThuTienNuoc_HoaDon cttttn)
         {
             try
             {
@@ -322,23 +411,22 @@ namespace KTKS_DonKH.DAL.TruyThu
             }
             catch (Exception ex)
             {
-                db = new dbKinhDoanhDataContext();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
-        public bool CheckExist_CT(decimal MaCTTTTN, string Ky, string Nam)
+        public bool CheckExist_HoaDon(decimal MaCTTTTN, string Ky, string Nam)
         {
             return db.TruyThuTienNuoc_HoaDons.Any(item => item.MaCTTTTN == MaCTTTTN && item.Ky == Ky && item.Nam == Nam);
         }
 
-        public TruyThuTienNuoc_HoaDon GetCT(decimal MaCTTTTN)
+        public TruyThuTienNuoc_HoaDon get_HoaDon(decimal MaCTTTTN)
         {
             return db.TruyThuTienNuoc_HoaDons.SingleOrDefault(item => item.MaCTTTTN == MaCTTTTN);
         }
 
-        public TruyThuTienNuoc_HoaDon GetCT(decimal MaCTTTTN, string Ky, string Nam)
+        public TruyThuTienNuoc_HoaDon get_HoaDon(decimal MaCTTTTN, string Ky, string Nam)
         {
             return db.TruyThuTienNuoc_HoaDons.SingleOrDefault(item => item.MaCTTTTN == MaCTTTTN && item.Ky == Ky && item.Nam == Nam);
         }
@@ -347,7 +435,7 @@ namespace KTKS_DonKH.DAL.TruyThu
 
         #region TruyThuTienNuoc_ThanhToan
 
-        public bool ThemThanhToan(TruyThuTienNuoc_ThanhToan tttttn)
+        public bool Them_ThanhToan(TruyThuTienNuoc_ThanhToan tttttn)
         {
             try
             {
@@ -365,13 +453,12 @@ namespace KTKS_DonKH.DAL.TruyThu
             }
             catch (Exception ex)
             {
-                db = new dbKinhDoanhDataContext();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
-        public bool SuaThanhToan(TruyThuTienNuoc_ThanhToan tttttn)
+        public bool Sua_ThanhToan(TruyThuTienNuoc_ThanhToan tttttn)
         {
             try
             {
@@ -382,13 +469,12 @@ namespace KTKS_DonKH.DAL.TruyThu
             }
             catch (Exception ex)
             {
-                db = new dbKinhDoanhDataContext();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
-        public bool XoaThanhToan(TruyThuTienNuoc_ThanhToan tttttn)
+        public bool Xoa_ThanhToan(TruyThuTienNuoc_ThanhToan tttttn)
         {
             try
             {
@@ -398,18 +484,17 @@ namespace KTKS_DonKH.DAL.TruyThu
             }
             catch (Exception ex)
             {
-                db = new dbKinhDoanhDataContext();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
-        public TruyThuTienNuoc_ThanhToan GetThanhToan(int ID)
+        public TruyThuTienNuoc_ThanhToan get_ThanhToan(int ID)
         {
             return db.TruyThuTienNuoc_ThanhToans.SingleOrDefault(item => item.ID == ID);
         }
 
-        public List<TruyThuTienNuoc_ThanhToan> GetDSThanhToan(decimal MaCTTTTN)
+        public List<TruyThuTienNuoc_ThanhToan> getDS_ThanhToan(decimal MaCTTTTN)
         {
             return db.TruyThuTienNuoc_ThanhToans.Where(item => item.MaCTTTTN == MaCTTTTN).ToList();
         }
@@ -418,7 +503,7 @@ namespace KTKS_DonKH.DAL.TruyThu
 
         #region Thư Mời
 
-        public bool ThemThuMoi(TruyThuTienNuoc_ThuMoi entity)
+        public bool Them_ThuMoi(TruyThuTienNuoc_ThuMoi entity)
         {
             try
             {
@@ -443,13 +528,12 @@ namespace KTKS_DonKH.DAL.TruyThu
             }
             catch (Exception ex)
             {
-                db = new dbKinhDoanhDataContext();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
-        public bool SuaThuMoi(TruyThuTienNuoc_ThuMoi entity)
+        public bool Sua_ThuMoi(TruyThuTienNuoc_ThuMoi entity)
         {
             try
             {
@@ -460,13 +544,12 @@ namespace KTKS_DonKH.DAL.TruyThu
             }
             catch (Exception ex)
             {
-                db = new dbKinhDoanhDataContext();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
-        public bool XoaThuMoi(TruyThuTienNuoc_ThuMoi entity)
+        public bool Xoa_ThuMoi(TruyThuTienNuoc_ThuMoi entity)
         {
             try
             {
@@ -476,18 +559,17 @@ namespace KTKS_DonKH.DAL.TruyThu
             }
             catch (Exception ex)
             {
-                db = new dbKinhDoanhDataContext();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
-        public TruyThuTienNuoc_ThuMoi GetThuMoi(int ID)
+        public TruyThuTienNuoc_ThuMoi get_ThuMoi(int ID)
         {
             return db.TruyThuTienNuoc_ThuMois.SingleOrDefault(item => item.ID == ID);
         }
 
-        public List<TruyThuTienNuoc_ThuMoi> GetDSThuMoi(decimal MaCTTTTN)
+        public List<TruyThuTienNuoc_ThuMoi> getDS_ThuMoi(decimal MaCTTTTN)
         {
             return db.TruyThuTienNuoc_ThuMois.Where(item => item.MaCTTTTN == MaCTTTTN).ToList();
         }
@@ -524,6 +606,23 @@ namespace KTKS_DonKH.DAL.TruyThu
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
             }
+        }
+
+        //MaDonMoi
+
+        public bool checkExist(int MaDon)
+        {
+                    return db.TruyThuTienNuocs.Any(item => item.MaDonMoi == MaDon);
+        }
+
+        public bool checkExist_ChiTiet(int MaDon, string DanhBo)
+        {
+                    return db.TruyThuTienNuoc_ChiTiets.Any(item => item.TruyThuTienNuoc.MaDonMoi == MaDon && item.DanhBo == DanhBo);
+        }
+
+        public TruyThuTienNuoc get(int MaDon)
+        {
+                    return db.TruyThuTienNuocs.SingleOrDefault(item => item.MaDonMoi == MaDon);
         }
     }
 }

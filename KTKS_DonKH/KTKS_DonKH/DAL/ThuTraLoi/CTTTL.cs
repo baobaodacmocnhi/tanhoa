@@ -350,5 +350,23 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
         }
 
         #endregion
+
+        //MaDonMoi
+
+        public bool checkExist(int MaDon)
+        {
+                    return db.TTTLs.Any(item => item.MaDonMoi == MaDon);
+        }
+
+        public bool checkExist_ChiTiet(int MaDon, string DanhBo, DateTime CreateDate)
+        {
+                    return db.TTTL_ChiTiets.Any(item => item.TTTL.MaDonMoi == MaDon && item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
+        }
+
+        public TTTL get(int MaDon)
+        {
+                    return db.TTTLs.SingleOrDefault(item => item.MaDonMoi == MaDon);
+        }
+
     }
 }

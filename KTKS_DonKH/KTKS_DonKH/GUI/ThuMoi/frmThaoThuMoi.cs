@@ -17,19 +17,22 @@ using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.ThuMoi;
 using KTKS_DonKH.GUI.BaoCao;
 using CrystalDecisions.CrystalReports.Engine;
+using KTKS_DonKH.DAL.DonTu;
 
 namespace KTKS_DonKH.GUI.ThuMoi
 {
     public partial class frmThaoThuMoi : Form
     {
         string _mnu = "mnuThaoThuMoi";
-        CDocSo _cDocSo = new CDocSo();
-        CThuTien _cThuTien = new CThuTien();
+        CDonTu _cDonTu = new CDonTu();
         CDonKH _cDonKH = new CDonKH();
         CDonTXL _cDonTXL = new CDonTXL();
         CDonTBC _cDonTBC = new CDonTBC();
         CThuMoi _cThuMoi = new CThuMoi();
+        CDocSo _cDocSo = new CDocSo();
+        CThuTien _cThuTien = new CThuTien();
 
+        DonTu_ChiTiet _dontu_ChiTiet = null;
         DonKH _dontkh = null;
         DonTXL _dontxl = null;
         DonTBC _dontbc = null;
@@ -59,6 +62,12 @@ namespace KTKS_DonKH.GUI.ThuMoi
 
         public void LoadEntity(LinQ.ThuMoi entity)
         {
+            if (entity.MaDonMoi != null)
+            {
+                _dontu_ChiTiet = _cDonTu.getDonTu_ChiTiet(entity.MaDonMoi.Value, entity.STT.Value);
+                txtMaDonMoi.Text = entity.MaDonMoi.Value.ToString();
+            }
+            else
             if (entity.MaDonTKH != null)
             {
                 _dontkh = _cDonKH.Get(entity.MaDonTKH.Value);
@@ -105,6 +114,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
             txtVaoLuc.Text = "";
             txtVeViec.Text = "Thanh toán chi phí (đồng hồ nước) đứt chì góc theo biên bản số";
 
+            _dontu_ChiTiet = null;
             _dontkh = null;
             _dontxl = null;
             _dontbc = null;
@@ -212,6 +222,39 @@ namespace KTKS_DonKH.GUI.ThuMoi
             }
         }
 
+        private void txtMaDonMoi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtMaDonMoi.Text.Trim() != "")
+            {
+                string MaDon = txtMaDonMoi.Text.Trim();
+                Clear();
+                if (MaDon.Contains(".") == true)
+                {
+                    string[] MaDons = MaDon.Split('.');
+                    _dontu_ChiTiet = _cDonTu.getDonTu_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
+                }
+                else
+                {
+                    _dontu_ChiTiet = _cDonTu.getDonTu(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
+                }
+                //
+                if (_dontu_ChiTiet != null)
+                {
+                    txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString();
+
+                    _hoadon = _cThuTien.GetMoiNhat(_dontu_ChiTiet.DanhBo);
+                    if (_hoadon != null)
+                    {
+                        LoadTTKH(_hoadon);
+                    }
+                    else
+                        MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                    MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void btnThem_Click(object sender, EventArgs e)
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
@@ -220,6 +263,9 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 {
                     LinQ.ThuMoi entity = new LinQ.ThuMoi();
 
+                    if (_dontu_ChiTiet != null)
+                        entity.MaDonMoi = _dontu_ChiTiet.MaDon.Value;
+                    else
                     if (_dontkh != null)
                         entity.MaDonTKH = _dontkh.MaDon;
                     else
@@ -320,6 +366,9 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
 
+                if (_thumoi.MaDonMoi != null)
+                    dr["SoPhieu"] = _thumoi.MaDonMoi.ToString();
+                else
                 if (_thumoi.MaDonTKH != null)
                     dr["SoPhieu"] = _thumoi.MaDonTKH.ToString().Insert(_thumoi.MaDonTKH.ToString().Length - 2, "-");
                 else
@@ -369,6 +418,8 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 throw;
             }
         }
+
+       
 
         
     }

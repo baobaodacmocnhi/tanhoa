@@ -1,6 +1,6 @@
 ﻿namespace KTKS_DonKH.GUI.ThuTraLoi
 {
-    partial class frmVeViecTTTL
+    partial class frmToTrinhVeViec
     {
         /// <summary>
         /// Required designer variable.
@@ -185,7 +185,7 @@
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
-            // frmVeViecTTTL
+            // frmVeViecToTrinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -203,8 +203,8 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.Name = "frmVeViecTTTL";
-            this.Text = "Về Việc Thảo Thư Trả Lời";
+            this.Name = "frmVeViecToTrinh";
+            this.Text = "Về Việc Tờ Trình";
             this.Load += new System.EventHandler(this.frmVeViecTTTL_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSVeViecTTTL)).EndInit();
             this.ResumeLayout(false);

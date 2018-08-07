@@ -318,51 +318,76 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 try
                 {
                     CHDB_Phieu ycchdb = new CHDB_Phieu();
+
                     if (_dontu_ChiTiet != null)
                     {
+                        if (_cCHDB.checkExist(_dontu_ChiTiet.MaDon.Value) == false)
+                        {
+                            CHDB chdb = new CHDB();
+                            chdb.MaDonMoi = _dontu_ChiTiet.MaDon.Value;
+                            _cCHDB.ThemCHDB(chdb);
+                        }
                         if (_cCHDB.checkExist_PhieuHuy(_dontu_ChiTiet.MaDon.Value, txtDanhBo.Text.Trim()) == true)
                         {
                             MessageBox.Show("Danh Bộ này đã được Lập Phiếu Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        ycchdb.MaDon = _dontu_ChiTiet.MaDon.Value;
-                        ycchdb.STT = _dontu_ChiTiet.STT.Value;
+                        ycchdb.MaCHDB = _cCHDB.get(_dontu_ChiTiet.MaDon.Value).MaCHDB;
+                        ycchdb.STT = _dontu_ChiTiet.STT;
                     }
                     else
-                    if (_dontkh != null)
-                    {
-                        if (_cCHDB.CheckExist_PhieuHuy("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim()) == true)
+                        if (_dontkh != null)
                         {
-                            MessageBox.Show("Danh Bộ này đã được Lập Phiếu Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                        ycchdb.MaDon = _dontkh.MaDon;
-                    }
-                    else
-                        if (_dontxl != null)
-                        {
-                            if (_cCHDB.CheckExist_PhieuHuy("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim()) == true)
+                            if (_cCHDB.CheckExist_CHDB("TKH", _dontkh.MaDon) == false)
+                            {
+                                CHDB chdb = new CHDB();
+                                chdb.MaDon = _dontkh.MaDon;
+                                _cCHDB.ThemCHDB(chdb);
+                            }
+                            if (_cCHDB.CheckExist_PhieuHuy("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim()) == true)
                             {
                                 MessageBox.Show("Danh Bộ này đã được Lập Phiếu Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-                            ycchdb.MaDonTXL = _dontxl.MaDon;
+                            ycchdb.MaCHDB = _cCHDB.GetCHDB("TKH", _dontkh.MaDon).MaCHDB;
                         }
                         else
-                            if (_dontbc != null)
+                            if (_dontxl != null)
                             {
-                                if (_cCHDB.CheckExist_PhieuHuy("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim()) == true)
+                                if (_cCHDB.CheckExist_CHDB("TXL", _dontxl.MaDon) == false)
+                                {
+                                    CHDB chdb = new CHDB();
+                                    chdb.MaDonTXL = _dontxl.MaDon;
+                                    _cCHDB.ThemCHDB(chdb);
+                                }
+                                if (_cCHDB.CheckExist_PhieuHuy("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim()) == true)
                                 {
                                     MessageBox.Show("Danh Bộ này đã được Lập Phiếu Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
-                                ycchdb.MaDonTBC = _dontbc.MaDon;
+                                ycchdb.MaCHDB = _cCHDB.GetCHDB("TXL", _dontxl.MaDon).MaCHDB;
                             }
                             else
-                            {
-                                MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
+                                if (_dontbc != null)
+                                {
+                                    if (_cCHDB.CheckExist_CHDB("TBC", _dontbc.MaDon) == false)
+                                    {
+                                        CHDB chdb = new CHDB();
+                                        chdb.MaDonTBC = _dontbc.MaDon;
+                                        _cCHDB.ThemCHDB(chdb);
+                                    }
+                                    if (_cCHDB.CheckExist_PhieuHuy("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim()) == true)
+                                    {
+                                        MessageBox.Show("Danh Bộ này đã được Lập Phiếu Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                                    ycchdb.MaCHDB = _cCHDB.GetCHDB("TBC", _dontbc.MaDon).MaCHDB;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
 
                     ycchdb.DanhBo = txtDanhBo.Text.Trim();
                     ycchdb.HopDong = txtHopDong.Text.Trim();
@@ -392,8 +417,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                     if (_cCHDB.ThemPhieuHuy(ycchdb))
                     {
-                        Clear();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Clear();
                         txtMaDonCu.Focus();
                     }
                 }

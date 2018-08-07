@@ -290,14 +290,14 @@ namespace KTKS_DonKH.DAL.CallCenter
                 ds.Tables.Add(dtTTTL);
 
                 ///Table GianLan
-                var queryGianLan = from itemGL in db.GianLans
-                                   where itemGL.DanhBo == DanhBo || (itemGL.DonKH.DanhBo == DanhBo || itemGL.DonTXL.DanhBo == DanhBo || itemGL.DonTBC.DanhBo == DanhBo)
+                var queryGianLan = from itemGL in db.GianLan_ChiTiets
+                                   where itemGL.DanhBo == DanhBo || (itemGL.GianLan.DonKH.DanhBo == DanhBo || itemGL.GianLan.DonTXL.DanhBo == DanhBo || itemGL.GianLan.DonTBC.DanhBo == DanhBo)
                                    select new
                                    {
-                                       MaDon = itemGL.MaDon != null ? "TKH" + itemGL.MaDon
-                                       : itemGL.MaDonTXL != null ? "TXL" + itemGL.MaDonTXL
-                                       : itemGL.MaDonTBC != null ? "TBC" + itemGL.MaDonTBC : null,
-                                       itemGL.ID,
+                                       MaDon = itemGL.GianLan.MaDon != null ? "TKH" + itemGL.GianLan.MaDon
+                                       : itemGL.GianLan.MaDonTXL != null ? "TXL" + itemGL.GianLan.MaDonTXL
+                                       : itemGL.GianLan.MaDonTBC != null ? "TBC" + itemGL.GianLan.MaDonTBC : null,
+                                       ID=itemGL.MaCTGL,
                                        itemGL.CreateDate,
                                        itemGL.DanhBo,
                                        itemGL.HoTen,
@@ -495,9 +495,9 @@ namespace KTKS_DonKH.DAL.CallCenter
                              };
                 dt.Merge(LINQToDataTable(queryDonKH));
 
-                ///Table GianLans
+                ///Table GianLan_ChiTiets
                 queryDonKH = from itemDon in db.DonKHs
-                             join itemGL in db.GianLans on itemDon.MaDon equals itemGL.MaDon
+                             join itemGL in db.GianLan_ChiTiets on itemDon.MaDon equals itemGL.GianLan.MaDon
                              where itemGL.DanhBo == DanhBo
                              select new
                              {
@@ -696,9 +696,9 @@ namespace KTKS_DonKH.DAL.CallCenter
                               };
                 dt.Merge(LINQToDataTable(queryDonTXL));
 
-                ///Table GianLans
+                ///Table GianLan_ChiTiets
                 queryDonTXL = from itemDonTXL in db.DonTXLs
-                              join itemGL in db.GianLans on itemDonTXL.MaDon equals itemGL.MaDonTXL
+                              join itemGL in db.GianLan_ChiTiets on itemDonTXL.MaDon equals itemGL.GianLan.MaDonTXL
                               where itemGL.DanhBo == DanhBo
                               select new
                               {
@@ -897,9 +897,9 @@ namespace KTKS_DonKH.DAL.CallCenter
                               };
                 dt.Merge(LINQToDataTable(queryDonTBC));
 
-                ///Table GianLans
+                ///Table GianLan_ChiTiets
                 queryDonTBC = from itemDon in db.DonTBCs
-                              join itemGL in db.GianLans on itemDon.MaDon equals itemGL.MaDonTBC
+                              join itemGL in db.GianLan_ChiTiets on itemDon.MaDon equals itemGL.GianLan.MaDonTBC
                               where itemGL.DanhBo == DanhBo
                               select new
                               {

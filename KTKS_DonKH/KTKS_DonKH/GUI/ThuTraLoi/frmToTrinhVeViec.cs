@@ -12,14 +12,14 @@ using KTKS_DonKH.DAL.QuanTri;
 
 namespace KTKS_DonKH.GUI.ThuTraLoi
 {
-    public partial class frmVeViecTTTL : Form
+    public partial class frmToTrinhVeViec : Form
     {
-        string _mnu = "mnuVeViecTTTL";
-        CTTTL_VeViec _cVeViecTTTL = new CTTTL_VeViec();
-        BindingList<TTTL_VeViec> _bSource;
+        string _mnu = "mnuVeViecToTrinh";
+        CToTrinh_VeViec _cVeViecToTrinh = new CToTrinh_VeViec();
+        BindingList<ToTrinh_VeViec> _bSource;
         int selectedindex = -1;
 
-        public frmVeViecTTTL()
+        public frmToTrinhVeViec()
         {
             InitializeComponent();
         }
@@ -27,7 +27,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         private void frmVeViecTTTL_Load(object sender, EventArgs e)
         {
             dgvDSVeViecTTTL.AutoGenerateColumns = false;
-            _bSource = new BindingList<TTTL_VeViec>(_cVeViecTTTL.GetDS());
+            _bSource = new BindingList<ToTrinh_VeViec>(_cVeViecToTrinh.GetDS());
             dgvDSVeViecTTTL.DataSource = _bSource;
         }
 
@@ -37,7 +37,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             txtNoiDung.Text = "";
             txtNoiNhan.Text = "";
             selectedindex = -1;
-            _bSource = new BindingList<TTTL_VeViec>(_cVeViecTTTL.GetDS());
+            _bSource = new BindingList<ToTrinh_VeViec>(_cVeViecToTrinh.GetDS());
             dgvDSVeViecTTTL.DataSource = _bSource;
         }
 
@@ -47,13 +47,13 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             {
                 if (txtVeViec.Text.Trim() != "" && txtNoiDung.Text.Trim() != "" && txtNoiNhan.Text.Trim() != "")
                 {
-                    TTTL_VeViec vv = new TTTL_VeViec();
-                    vv.STT = _cVeViecTTTL.GetMaxSTT() + 1;
+                    ToTrinh_VeViec vv = new ToTrinh_VeViec();
+                    vv.STT = _cVeViecToTrinh.GetMaxSTT() + 1;
                     vv.TenVV = txtVeViec.Text.Trim();
                     vv.NoiDung = txtNoiDung.Text;
                     vv.NoiNhan = txtNoiNhan.Text.Trim();
 
-                    if (_cVeViecTTTL.Them(vv))
+                    if (_cVeViecToTrinh.Them(vv))
                     {
                         Clear();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -73,12 +73,12 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 if (selectedindex != -1)
                     if (txtVeViec.Text.Trim() != "" && txtNoiDung.Text.Trim() != "" && txtNoiNhan.Text.Trim() != "")
                     {
-                        TTTL_VeViec vv = _cVeViecTTTL.Get(int.Parse(dgvDSVeViecTTTL["MaVV", selectedindex].Value.ToString()));
+                        ToTrinh_VeViec vv = _cVeViecToTrinh.Get(int.Parse(dgvDSVeViecTTTL["MaVV", selectedindex].Value.ToString()));
                         vv.TenVV = txtVeViec.Text.Trim();
                         vv.NoiDung = txtNoiDung.Text;
                         vv.NoiNhan = txtNoiNhan.Text.Trim();
 
-                        if (_cVeViecTTTL.Sua(vv))
+                        if (_cVeViecToTrinh.Sua(vv))
                         {
                             Clear();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -98,9 +98,9 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             {
                 if (selectedindex != -1 && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        TTTL_VeViec vv = _cVeViecTTTL.Get(int.Parse(dgvDSVeViecTTTL["MaVV", selectedindex].Value.ToString()));
+                        ToTrinh_VeViec vv = _cVeViecToTrinh.Get(int.Parse(dgvDSVeViecTTTL["MaVV", selectedindex].Value.ToString()));
 
-                        if (_cVeViecTTTL.Xoa(vv))
+                        if (_cVeViecToTrinh.Xoa(vv))
                         {
                             Clear();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -158,7 +158,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 {
                     _bSource[i].STT = i + 1;
                 }
-                _cVeViecTTTL.SubmitChanges();
+                _cVeViecToTrinh.SubmitChanges();
             }
         }
 

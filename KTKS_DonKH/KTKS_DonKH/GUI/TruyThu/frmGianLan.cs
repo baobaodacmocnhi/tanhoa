@@ -17,12 +17,14 @@ using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.ToBamChi;
 using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.BaoCao.TruyThu;
+using KTKS_DonKH.DAL.DonTu;
 
 namespace KTKS_DonKH.GUI.TruyThu
 {
     public partial class frmGianLan : Form
     {
         string _mnu = "mnuGianLanTienNuoc";
+        CDonTu _cDonTu = new CDonTu();
         CDonKH _cDonKH = new CDonKH();
         CDonTXL _cDonTXL = new CDonTXL();
         CDonTBC _cDonTBC = new CDonTBC();
@@ -30,11 +32,12 @@ namespace KTKS_DonKH.GUI.TruyThu
         CDocSo _cDocSo = new CDocSo();
         CGianLan _cGianLan = new CGianLan();
 
+        DonTu_ChiTiet _dontu_ChiTiet = null;
         DonKH _dontkh = null;
         DonTXL _dontxl = null;
         DonTBC _dontbc = null;
         HOADON _hoadon = null;
-        GianLan _gianlan = null;
+        GianLan_ChiTiet _gianlan = null;
         int _ID = -1;
 
         public frmGianLan()
@@ -70,7 +73,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
             if (_ID != -1)
             {
-                _gianlan = _cGianLan.Get(int.Parse(dgvGianLan.SelectedRows[0].Cells["ID"].Value.ToString()));
+                _gianlan = _cGianLan.get_ChiTiet(int.Parse(dgvGianLan.SelectedRows[0].Cells["ID"].Value.ToString()));
                 LoadGianLan(_gianlan);
             }
         }
@@ -82,24 +85,24 @@ namespace KTKS_DonKH.GUI.TruyThu
             txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
         }
 
-        public void LoadGianLan(GianLan entity)
+        public void LoadGianLan(GianLan_ChiTiet entity)
         {
-            if (entity.MaDon != null)
+            if (entity.GianLan.MaDon != null)
             {
-                _dontkh = _cDonKH.Get(entity.MaDon.Value);
-                txtMaDonCu.Text = entity.MaDon.Value.ToString().Insert(entity.MaDon.Value.ToString().Length - 2, "-");
+                _dontkh = _cDonKH.Get(entity.GianLan.MaDon.Value);
+                txtMaDonCu.Text = entity.GianLan.MaDon.Value.ToString().Insert(entity.GianLan.MaDon.Value.ToString().Length - 2, "-");
             }
             else
-                if (entity.MaDonTXL != null)
+                if (entity.GianLan.MaDonTXL != null)
                 {
-                    _dontxl = _cDonTXL.Get(entity.MaDonTXL.Value);
-                    txtMaDonCu.Text = "TXL" + entity.MaDonTXL.Value.ToString().Insert(entity.MaDonTXL.Value.ToString().Length - 2, "-");
+                    _dontxl = _cDonTXL.Get(entity.GianLan.MaDonTXL.Value);
+                    txtMaDonCu.Text = "TXL" + entity.GianLan.MaDonTXL.Value.ToString().Insert(entity.GianLan.MaDonTXL.Value.ToString().Length - 2, "-");
                 }
                 else
-                    if (entity.MaDonTBC != null)
+                    if (entity.GianLan.MaDonTBC != null)
                     {
-                        _dontbc = _cDonTBC.Get(entity.MaDonTBC.Value);
-                        txtMaDonCu.Text = "TBC" + entity.MaDonTBC.Value.ToString().Insert(entity.MaDonTBC.Value.ToString().Length - 2, "-");
+                        _dontbc = _cDonTBC.Get(entity.GianLan.MaDonTBC.Value);
+                        txtMaDonCu.Text = "TBC" + entity.GianLan.MaDonTBC.Value.ToString().Insert(entity.GianLan.MaDonTBC.Value.ToString().Length - 2, "-");
                     }
             chkXepDon.Checked = entity.XepDon;
             txtDanhBo.Text = entity.DanhBo;
@@ -208,6 +211,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             chkThanhToan2.Checked = false;
             chkThanhToan3.Checked = false;
             ///
+            _dontu_ChiTiet = null;
             _dontkh = null;
             _dontxl = null;
             _dontbc = null;
@@ -230,9 +234,9 @@ namespace KTKS_DonKH.GUI.TruyThu
                 {
                     if (_cDonTXL.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", ""))) == true)
                     {
-                        if (_cGianLan.CheckExist("TXL", decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", ""))) == true)
+                        _gianlan = _cGianLan.get_ChiTiet("TXL", decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", "")));
+                        if (_gianlan!=null)
                         {
-                            _gianlan = _cGianLan.Get("TXL", decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", "")));
                             LoadGianLan(_gianlan);
                         }
                         else
@@ -240,9 +244,9 @@ namespace KTKS_DonKH.GUI.TruyThu
                             _dontxl = _cDonTXL.Get(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", "")));
                             txtMaDonCu.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
 
-                            if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
+                            _hoadon = _cThuTien.GetMoiNhat(_dontxl.DanhBo);
+                            if (_hoadon != null)
                             {
-                                _hoadon = _cThuTien.GetMoiNhat(_dontxl.DanhBo);
                                 LoadTTKH(_hoadon);
                             }
                             else
@@ -257,9 +261,9 @@ namespace KTKS_DonKH.GUI.TruyThu
                     {
                         if (_cDonTBC.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", ""))) == true)
                         {
-                            if (_cGianLan.CheckExist("TBC", decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", ""))) == true)
+                            _gianlan = _cGianLan.get_ChiTiet("TBC", decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", "")));
+                            if (_gianlan!=null)
                             {
-                                _gianlan = _cGianLan.Get("TBC", decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", "")));
                                 LoadGianLan(_gianlan);
                             }
                             else
@@ -267,9 +271,9 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 _dontbc = _cDonTBC.Get(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", "")));
                                 txtMaDonCu.Text = "TBC" + _dontbc.MaDon.ToString().Insert(_dontbc.MaDon.ToString().Length - 2, "-");
 
-                                if (_cThuTien.GetMoiNhat(_dontbc.DanhBo) != null)
+                                _hoadon = _cThuTien.GetMoiNhat(_dontbc.DanhBo);
+                                if (_hoadon != null)
                                 {
-                                    _hoadon = _cThuTien.GetMoiNhat(_dontbc.DanhBo);
                                     LoadTTKH(_hoadon);
                                 }
                                 else
@@ -283,9 +287,9 @@ namespace KTKS_DonKH.GUI.TruyThu
                     else
                         if (_cDonKH.CheckExist(decimal.Parse(txtMaDonCu.Text.Trim().Replace("-", ""))) == true)
                         {
-                            if (_cGianLan.CheckExist("TKH", decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", ""))) == true)
+                            _gianlan = _cGianLan.get_ChiTiet("TKH", decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", "")));
+                            if (_gianlan!=null)
                             {
-                                _gianlan = _cGianLan.Get("TKH", decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", "")));
                                 LoadGianLan(_gianlan);
                             }
                             else
@@ -293,9 +297,9 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 _dontkh = _cDonKH.Get(decimal.Parse(txtMaDonCu.Text.Trim().Replace("-", "")));
                                 txtMaDonCu.Text = "TKH" + _dontkh.MaDon.ToString().Insert(_dontkh.MaDon.ToString().Length - 2, "-");
 
-                                if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
+                                _hoadon = _cThuTien.GetMoiNhat(_dontkh.DanhBo);
+                                if (_hoadon != null)
                                 {
-                                    _hoadon = _cThuTien.GetMoiNhat(_dontkh.DanhBo);
                                     LoadTTKH(_hoadon);
                                 }
                                 else
@@ -311,91 +315,32 @@ namespace KTKS_DonKH.GUI.TruyThu
         {
             if (e.KeyChar == 13 && txtMaDonMoi.Text.Trim() != "")
             {
-                //string MaDon = txtMaDonMoi.Text.Trim();
-                //Clear();
-                //txtMaDonMoi.Text = MaDon;
-                /////Đơn Tổ Xử Lý
-                //if (txtMaDonMoi.Text.Trim().ToUpper().Contains("XL"))
-                //{
-                //    if (_cDonTXL.CheckExist(txtMaDonMoi.Text.Trim()) == true)
-                //    {
-                //        if (_cGianLan.CheckExist(txtMaDonMoi.Text.Trim()) == true)
-                //        {
-                //            _gianlan = _cGianLan.Get(txtMaDonMoi.Text.Trim());
-                //            LoadGianLan(_gianlan);
-                //        }
-                //        else
-                //        {
-                //            _dontxl = _cDonTXL.Get(txtMaDonMoi.Text.Trim());
-                //            txtMaDonMoi.Text = _dontxl.MaDonMoi;
+                string MaDon = txtMaDonMoi.Text.Trim();
+                Clear();
+                if (MaDon.Contains(".") == true)
+                {
+                    string[] MaDons = MaDon.Split('.');
+                    _dontu_ChiTiet = _cDonTu.getDonTu_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
+                }
+                else
+                {
+                    _dontu_ChiTiet = _cDonTu.getDonTu(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
+                }
+                //
+                if (_dontu_ChiTiet != null)
+                {
+                    txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString();
 
-                //            if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
-                //            {
-                //                _hoadon = _cThuTien.GetMoiNhat(_dontxl.DanhBo);
-                //                LoadTTKH(_hoadon);
-                //            }
-                //            else
-                //                MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //        }
-                //    }
-                //    else
-                //        MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //}
-                //else
-                //    if (txtMaDonMoi.Text.Trim().ToUpper().Contains("BC"))
-                //    {
-                //        if (_cDonTBC.CheckExist(txtMaDonMoi.Text.Trim()) == true)
-                //        {
-                //            if (_cGianLan.CheckExist(txtMaDonMoi.Text.Trim()) == true)
-                //            {
-                //                _gianlan = _cGianLan.Get(txtMaDonMoi.Text.Trim());
-                //                LoadGianLan(_gianlan);
-                //            }
-                //            else
-                //            {
-                //                _dontbc = _cDonTBC.Get(txtMaDonMoi.Text.Trim());
-                //                txtMaDonMoi.Text = _dontbc.MaDonMoi;
-
-                //                if (_cThuTien.GetMoiNhat(_dontbc.DanhBo) != null)
-                //                {
-                //                    _hoadon = _cThuTien.GetMoiNhat(_dontbc.DanhBo);
-                //                    LoadTTKH(_hoadon);
-                //                }
-                //                else
-                //                    MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //            }
-                //        }
-                //        else
-                //            MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    }
-                //    ///Đơn Tổ Khách Hàng
-                //    else
-                //        if (txtMaDonMoi.Text.Trim().ToUpper().Contains("KH"))
-                //        {
-                //            if (_cDonKH.CheckExist(txtMaDonMoi.Text.Trim()) == true)
-                //            {
-                //                if (_cGianLan.CheckExist(txtMaDonMoi.Text.Trim()) == true)
-                //                {
-                //                    _gianlan = _cGianLan.Get(txtMaDonMoi.Text.Trim());
-                //                    LoadGianLan(_gianlan);
-                //                }
-                //                else
-                //                {
-                //                    _dontkh = _cDonKH.Get(txtMaDonMoi.Text.Trim());
-                //                    txtMaDonMoi.Text = _dontkh.MaDonMoi;
-
-                //                    if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
-                //                    {
-                //                        _hoadon = _cThuTien.GetMoiNhat(_dontkh.DanhBo);
-                //                        LoadTTKH(_hoadon);
-                //                    }
-                //                    else
-                //                        MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //                }
-                //            }
-                //            else
-                //                MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //        }
+                    _hoadon = _cThuTien.GetMoiNhat(_dontu_ChiTiet.DanhBo);
+                    if (_hoadon != null)
+                    {
+                        LoadTTKH(_hoadon);
+                    }
+                    else
+                        MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                    MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -405,41 +350,77 @@ namespace KTKS_DonKH.GUI.TruyThu
             {
                 try
                 {
-                    GianLan entity = new GianLan();
-                    if (_dontxl != null)
+                    GianLan_ChiTiet entity = new GianLan_ChiTiet();
+
+                    if (_dontu_ChiTiet != null)
                     {
-                        if (_cGianLan.CheckExist("TXL", _dontxl.MaDon))
+                        if (_cGianLan.checkExist(_dontu_ChiTiet.MaDon.Value) == false)
+                        {
+                            GianLan gl = new GianLan();
+                            gl.MaDonMoi = _dontu_ChiTiet.MaDon.Value;
+                            _cGianLan.Them(gl);
+                        }
+                        if (_cGianLan.checkExist_ChiTiet(_dontu_ChiTiet.MaDon.Value, txtDanhBo.Text.Trim()) == true)
                         {
                             MessageBox.Show("Đơn này đã lập Gian Lận", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        entity.MaDonTXL = _dontxl.MaDon;
+                        entity.MaGL = _cGianLan.get(_dontu_ChiTiet.MaDon.Value).MaGL;
+                        entity.STT = _dontu_ChiTiet.STT.Value;
                     }
                     else
-                        if (_dontbc != null)
+                        if (_dontkh != null)
                         {
-                            if (_cGianLan.CheckExist("TBC", _dontbc.MaDon))
+                            if (_cGianLan.checkExist("TKH", _dontkh.MaDon) == false)
+                            {
+                                GianLan gl = new GianLan();
+                                gl.MaDon = _dontkh.MaDon;
+                                _cGianLan.Them(gl);
+                            }
+                            if (_cGianLan.checkExist_ChiTiet("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim()) == true)
                             {
                                 MessageBox.Show("Đơn này đã lập Gian Lận", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-                            entity.MaDonTBC = _dontbc.MaDon;
+                            entity.MaGL = _cGianLan.get("TKH", _dontkh.MaDon).MaGL;
                         }
                         else
-                            if (_dontkh != null)
+                            if (_dontxl != null)
                             {
-                                if (_cGianLan.CheckExist("TKH", _dontkh.MaDon))
+                                if (_cGianLan.checkExist("TXL", _dontxl.MaDon) == false)
+                                {
+                                    GianLan gl = new GianLan();
+                                    gl.MaDonTXL = _dontxl.MaDon;
+                                    _cGianLan.Them(gl);
+                                }
+                                if (_cGianLan.checkExist_ChiTiet("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim()) == true)
                                 {
                                     MessageBox.Show("Đơn này đã lập Gian Lận", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
-                                entity.MaDon = _dontkh.MaDon;
+                                entity.MaGL = _cGianLan.get("TXL", _dontxl.MaDon).MaGL;
                             }
                             else
-                            {
-                                MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
+                                if (_dontbc != null)
+                                {
+                                    if (_cGianLan.checkExist("TBC", _dontbc.MaDon) == false)
+                                    {
+                                        GianLan gl = new GianLan();
+                                        gl.MaDonTBC = _dontbc.MaDon;
+                                        _cGianLan.Them(gl);
+                                    }
+                                    if (_cGianLan.checkExist_ChiTiet("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim()) == true)
+                                    {
+                                        MessageBox.Show("Đơn này đã lập Gian Lận", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                                    entity.MaGL = _cGianLan.get("TBC", _dontxl.MaDon).MaGL;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
                     entity.XepDon = chkXepDon.Checked;
                     entity.DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
                     entity.HoTen = txtHoTen.Text.Trim();
@@ -509,10 +490,10 @@ namespace KTKS_DonKH.GUI.TruyThu
                         entity.SoTien3 = int.Parse(txtSoTien3.Text.Trim());
                     }
 
-                    if (_cGianLan.Them(entity))
+                    if (_cGianLan.Them_ChiTiet(entity))
                     {
-                        Clear();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Clear();
                     }
                 }
                 catch (Exception ex)
@@ -620,10 +601,10 @@ namespace KTKS_DonKH.GUI.TruyThu
                             _gianlan.SoTien3 = null;
                         }
 
-                        if (_cGianLan.Sua(_gianlan))
+                        if (_cGianLan.Sua_ChiTiet(_gianlan))
                         {
-                            Clear();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Clear(); 
                         }
                     }
                 }
@@ -644,11 +625,11 @@ namespace KTKS_DonKH.GUI.TruyThu
                 {
                     if (_gianlan != null && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        if (_cGianLan.Xoa(_gianlan))
+                        if (_cGianLan.Xoa_ChiTiet(_gianlan))
                         {
-                            Clear();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txtMaDonCu.Focus();
+                            Clear();
+                               txtMaDonCu.Focus();
                         }
                     }
                 }
@@ -746,10 +727,10 @@ namespace KTKS_DonKH.GUI.TruyThu
             switch (cmbTimTheo.SelectedItem.ToString())
             {
                 case "Danh Bộ":
-                    dgvGianLan.DataSource = _cGianLan.GetDS(txtNoiDungTimKiem.Text.Trim().Replace(" ",""));
+                    dgvGianLan.DataSource = _cGianLan.getDS_ChiTiet(txtNoiDungTimKiem.Text.Trim().Replace(" ",""));
                     break;
                 case "Ngày":
-                    dgvGianLan.DataSource = _cGianLan.GetDS(dateTu.Value, dateDen.Value);
+                    dgvGianLan.DataSource = _cGianLan.getDS_ChiTiet(dateTu.Value, dateDen.Value);
                     break;
                 default:
                     break;
@@ -761,20 +742,20 @@ namespace KTKS_DonKH.GUI.TruyThu
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             foreach (DataGridViewRow item in dgvGianLan.Rows)
             {
-                DataRow dr = dsBaoCao.Tables["GianLan"].NewRow();
+                DataRow dr = dsBaoCao.Tables["GianLan_ChiTiet"].NewRow();
                 dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
 
-                GianLan entity = _cGianLan.Get(int.Parse(item.Cells["ID"].Value.ToString()));
+                GianLan_ChiTiet entity = _cGianLan.get_ChiTiet(int.Parse(item.Cells["ID"].Value.ToString()));
 
-                if (entity.MaDon != null)
-                    dr["MaDon"] = "TKH" + entity.MaDon.Value.ToString().Insert(entity.MaDon.Value.ToString().Length - 2, "-");
+                if (entity.GianLan.MaDon != null)
+                    dr["MaDon"] = "TKH" + entity.GianLan.MaDon.Value.ToString().Insert(entity.GianLan.MaDon.Value.ToString().Length - 2, "-");
                 else
-                    if (entity.MaDonTXL != null)
-                        dr["MaDon"] = "TKH" + entity.MaDonTXL.Value.ToString().Insert(entity.MaDonTXL.Value.ToString().Length - 2, "-");
+                    if (entity.GianLan.MaDonTXL != null)
+                        dr["MaDon"] = "TKH" + entity.GianLan.MaDonTXL.Value.ToString().Insert(entity.GianLan.MaDonTXL.Value.ToString().Length - 2, "-");
                     else
-                        if (entity.MaDonTBC != null)
-                            dr["MaDon"] = "TKH" + entity.MaDonTBC.Value.ToString().Insert(entity.MaDonTBC.Value.ToString().Length - 2, "-");
+                        if (entity.GianLan.MaDonTBC != null)
+                            dr["MaDon"] = "TKH" + entity.GianLan.MaDonTBC.Value.ToString().Insert(entity.GianLan.MaDonTBC.Value.ToString().Length - 2, "-");
                 if (entity.NgayKTXM != null)
                     dr["NgayKTXM"] = entity.NgayKTXM.Value.ToString("dd/MM/yyyy");
                 if (entity.DanhBo!="")
@@ -808,7 +789,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     dr["SoTien3"] = entity.SoTien3;
                 }
 
-                dsBaoCao.Tables["GianLan"].Rows.Add(dr);
+                dsBaoCao.Tables["GianLan_ChiTiet"].Rows.Add(dr);
             }
             rptDSGianLan rpt = new rptDSGianLan();
             rpt.SetDataSource(dsBaoCao);
@@ -910,7 +891,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             try
             {
                 dgvGianLan.Rows[e.RowIndex].Selected = true;
-                _gianlan = _cGianLan.Get(int.Parse(dgvGianLan.SelectedRows[0].Cells["ID"].Value.ToString()));
+                _gianlan = _cGianLan.get_ChiTiet(int.Parse(dgvGianLan.SelectedRows[0].Cells["ID"].Value.ToString()));
                 LoadGianLan(_gianlan);
             }
             catch
@@ -932,6 +913,20 @@ namespace KTKS_DonKH.GUI.TruyThu
             if (dgvGianLan.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+        }
+
+        private void txtMaCTGL_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtMaCTGL.Text.Trim() != "")
+            {
+                string MaCTGL = txtMaCTGL.Text.Trim();
+                Clear();
+                _gianlan = _cGianLan.get_ChiTiet(int.Parse(MaCTGL));
+                if (_gianlan != null)
+                    LoadGianLan(_gianlan);
+                else
+                    MessageBox.Show("Không có Mã Gian Lận này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

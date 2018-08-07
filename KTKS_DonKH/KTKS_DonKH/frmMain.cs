@@ -781,7 +781,7 @@ namespace KTKS_DonKH
         {
             if (CTaiKhoan.CheckQuyen("mnuVeViecTTTL", "Xem"))
             {
-                frmVeViecTTTL frm = new frmVeViecTTTL();
+                frmTTTLVeViec frm = new frmTTTLVeViec();
                 OpenForm(frm);
             }
             else
@@ -814,7 +814,7 @@ namespace KTKS_DonKH
         {
             if (CTaiKhoan.CheckQuyen("mnuVeViecToTrinh", "Xem"))
             {
-                frmVeViecToTrinh frm = new frmVeViecToTrinh();
+                frmToTrinhVeViec frm = new frmToTrinhVeViec();
                 OpenForm(frm);
             }
             else
