@@ -22,6 +22,7 @@ namespace ThuTien.GUI.ToTruong
     public partial class frmGiaoTBDongNuoc : Form
     {
         string _mnu = "mnuGiaoTBDongNuoc";
+        CTo _cTo = new CTo();
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CDongNuoc _cDongNuoc = new CDongNuoc();
         List<TT_NguoiDung> _lstND = new List<TT_NguoiDung>();
@@ -54,6 +55,10 @@ namespace ThuTien.GUI.ToTruong
 
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
+
+            cmbTo.DataSource = _cTo.GetDSHanhThu();
+            cmbTo.ValueMember = "MaTo";
+            cmbTo.DisplayMember = "TenTo";
         }
 
         private void btnXem_Click(object sender, EventArgs e)
@@ -124,10 +129,10 @@ namespace ThuTien.GUI.ToTruong
                     //gridControl.DataSource = _cDongNuoc.GetDSByMaNVCreateDates(int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     _cDongNuoc.SqlRollbackTransaction();
-                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lỗi, Vui lòng thử lại\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -168,10 +173,10 @@ namespace ThuTien.GUI.ToTruong
                     gridControl.DataSource = _cDongNuoc.GetDSByCreateByCreateDates(CNguoiDung.TenTo, int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     _cDongNuoc.SqlRollbackTransaction();
-                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lỗi, Vui lòng thử lại\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -604,6 +609,43 @@ namespace ThuTien.GUI.ToTruong
 
             //Điền dữ liệu vào vùng đã thiết lập
             range.Value2 = arr;
+        }
+
+        private void cmbTo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbTo.SelectedIndex > -1)
+            {
+                cmbNhanVien.DataSource = _cNguoiDung.GetDSHanhThuByMaTo(((TT_To)cmbTo.SelectedItem).MaTo);
+                cmbNhanVien.ValueMember = "MaND";
+                cmbNhanVien.DisplayMember = "HoTen";
+            }
+        }
+
+        private void btnCapNhat_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+            {
+                try
+                {
+                    DataTable dt = ((DataTable)gridControl.DataSource).DefaultView.Table;
+                    foreach (DataRow item in dt.Rows)
+                        if (bool.Parse(item["In"].ToString()))
+                        {
+                            TT_DongNuoc dn = _cDongNuoc.GetDongNuocByMaDN(decimal.Parse(item["MaDN"].ToString()));
+                            dn.CreateBy_Old = dn.CreateBy;
+                            dn.CreateBy = ((TT_NguoiDung)cmbNhanVien.SelectedItem).MaND;
+                            dn.CreateDate_New = DateTime.Now;
+                            _cDongNuoc.SuaDN(dn);
+                        }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi, Vui lòng thử lại\n"+ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
         }
 
     }

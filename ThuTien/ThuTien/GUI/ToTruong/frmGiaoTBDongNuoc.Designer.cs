@@ -79,11 +79,18 @@
             this.chkCoTenNguoiKy = new System.Windows.Forms.CheckBox();
             this.radA4 = new System.Windows.Forms.RadioButton();
             this.radA5 = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cmbTo = new System.Windows.Forms.ComboBox();
+            this.cmbNhanVien = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnCapNhat = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gridViewCTDN
@@ -569,11 +576,71 @@
             this.radA5.Text = "A5";
             this.radA5.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnCapNhat);
+            this.groupBox1.Controls.Add(this.cmbNhanVien);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.cmbTo);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Location = new System.Drawing.Point(1001, 326);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(140, 130);
+            this.groupBox1.TabIndex = 102;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Cập Nhật Người Lập";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(23, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Tổ:";
+            // 
+            // cmbTo
+            // 
+            this.cmbTo.FormattingEnabled = true;
+            this.cmbTo.Location = new System.Drawing.Point(9, 32);
+            this.cmbTo.Name = "cmbTo";
+            this.cmbTo.Size = new System.Drawing.Size(121, 21);
+            this.cmbTo.TabIndex = 1;
+            this.cmbTo.SelectedIndexChanged += new System.EventHandler(this.cmbTo_SelectedIndexChanged);
+            // 
+            // cmbNhanVien
+            // 
+            this.cmbNhanVien.FormattingEnabled = true;
+            this.cmbNhanVien.Location = new System.Drawing.Point(9, 72);
+            this.cmbNhanVien.Name = "cmbNhanVien";
+            this.cmbNhanVien.Size = new System.Drawing.Size(121, 21);
+            this.cmbNhanVien.TabIndex = 3;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 56);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(60, 13);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Nhân Viên:";
+            // 
+            // btnCapNhat
+            // 
+            this.btnCapNhat.Location = new System.Drawing.Point(9, 99);
+            this.btnCapNhat.Name = "btnCapNhat";
+            this.btnCapNhat.Size = new System.Drawing.Size(75, 23);
+            this.btnCapNhat.TabIndex = 31;
+            this.btnCapNhat.Text = "Cập Nhật";
+            this.btnCapNhat.UseVisualStyleBackColor = true;
+            this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
+            // 
             // frmGiaoTBDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1207, 666);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.radA5);
             this.Controls.Add(this.radA4);
             this.Controls.Add(this.chkCoTenNguoiKy);
@@ -607,6 +674,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -664,5 +733,11 @@
         private System.Windows.Forms.CheckBox chkCoTenNguoiKy;
         private System.Windows.Forms.RadioButton radA4;
         private System.Windows.Forms.RadioButton radA5;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnCapNhat;
+        private System.Windows.Forms.ComboBox cmbNhanVien;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cmbTo;
+        private System.Windows.Forms.Label label5;
     }
 }
