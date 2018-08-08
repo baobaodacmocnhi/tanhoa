@@ -610,7 +610,7 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 int MaDon = int.Parse(txtMaDon.Text.Trim());
                 Clear();
-                _dontu = _cDonTu.getDonTu(MaDon);
+                _dontu = _cDonTu.get(MaDon);
                 if (_dontu != null)
                 {
                     LoadDonTu(_dontu);

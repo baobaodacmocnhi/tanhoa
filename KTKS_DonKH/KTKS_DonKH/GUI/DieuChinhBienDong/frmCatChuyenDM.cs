@@ -28,7 +28,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
 
         ChungTu_ChiTiet _ctchungtu = null;
-        LichSuChungTu _lichsuchungtu = null;
+        ChungTu_LichSu _lichsuchungtu = null;
         CDataTransfer _dataT = new CDataTransfer();
         decimal _MaLSCT = -1;
 
@@ -175,10 +175,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     ctchungtuNhan.GhiChu = txtGhiChu_Nhan.Text.Trim();
                                     _cChungTu.ThemCT(ctchungtuNhan);
                                 }
-                                ///Cập nhật LichSuChungTu, Chứng Từ & Danh Bộ Cắt
-                                LichSuChungTu lichsuchungtu = new LichSuChungTu();
+                                ///Cập nhật ChungTu_LichSu, Chứng Từ & Danh Bộ Cắt
+                                ChungTu_LichSu lichsuchungtu = new ChungTu_LichSu();
                                 switch (_dataT.Loai)
                                 {
+                                    case "MaDonMoi":
+                                        lichsuchungtu.MaDonMoi = _dataT.MaDonMoi;
+                                        lichsuchungtu.STT = _dataT.STT;
+                                        break;
                                     case "TKH":
                                         lichsuchungtu.MaDon = _dataT.MaDon;
                                         break;
@@ -191,7 +195,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     default:
                                         break;
                                 }
-                                lichsuchungtu.MaDonMoi = _dataT.MaDonMoi;
+
                                 lichsuchungtu.MaLCT = _ctchungtu.MaLCT;
                                 lichsuchungtu.MaCT = _ctchungtu.MaCT;
                                 lichsuchungtu.DanhBo = _ctchungtu.DanhBo;
@@ -215,10 +219,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                 _cChungTu.ThemLichSuChungTu(lichsuchungtu);
 
-                                ///Cập nhật LichSuChungTu, Chứng Từ & Danh Bộ Nhận
-                                LichSuChungTu lichsuchungtuNhan = new LichSuChungTu();
+                                ///Cập nhật ChungTu_LichSu, Chứng Từ & Danh Bộ Nhận
+                                ChungTu_LichSu lichsuchungtuNhan = new ChungTu_LichSu();
                                 switch (_dataT.Loai)
                                 {
+                                    case "MaDonMoi":
+                                        lichsuchungtu.MaDonMoi = _dataT.MaDonMoi;
+                                        lichsuchungtu.STT = _dataT.STT;
+                                        break;
                                     case "TKH":
                                         lichsuchungtu.MaDon = _dataT.MaDon;
                                         break;
@@ -231,7 +239,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     default:
                                         break;
                                 }
-                                lichsuchungtuNhan.MaDonMoi = _dataT.MaDonMoi;
+
                                 lichsuchungtuNhan.MaLCT = ctchungtuNhan.MaLCT;
                                 lichsuchungtuNhan.MaCT = ctchungtuNhan.MaCT;
                                 lichsuchungtuNhan.DanhBo = ctchungtuNhan.DanhBo;
@@ -263,9 +271,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 _ctchungtu.GhiChu = txtGhiChu_Cat.Text.Trim();
                                 _cChungTu.SuaCT(_ctchungtu);
 
-                                LichSuChungTu lichsuchungtu = new LichSuChungTu();
+                                ChungTu_LichSu lichsuchungtu = new ChungTu_LichSu();
                                 switch (_dataT.Loai)
                                 {
+                                    case "MaDonMoi":
+                                        lichsuchungtu.MaDonMoi = _dataT.MaDonMoi;
+                                        lichsuchungtu.STT = _dataT.STT;
+                                        break;
                                     case "TKH":
                                         lichsuchungtu.MaDon = _dataT.MaDon;
                                         break;
@@ -278,7 +290,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     default:
                                         break;
                                 }
-                                lichsuchungtu.MaDonMoi = _dataT.MaDonMoi;
+
                                 lichsuchungtu.MaLCT = _ctchungtu.MaLCT;
                                 lichsuchungtu.MaCT = _ctchungtu.MaCT;
                                 lichsuchungtu.DanhBo = _ctchungtu.DanhBo;

@@ -73,7 +73,7 @@ namespace KTKS_DonKH.DAL.DonTu
             return db.DonTus.Any(item => item.MaDon == MaDon);
         }
   
-        public LinQ.DonTu getDonTu(int MaDon)
+        public LinQ.DonTu get(int MaDon)
         {
             return db.DonTus.SingleOrDefault(item => item.MaDon == MaDon);
         }
@@ -178,7 +178,7 @@ namespace KTKS_DonKH.DAL.DonTu
             return db.DonTu_ChiTiets.Any(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
         }
 
-        public DonTu_ChiTiet getDonTu_ChiTiet(int MaDon, int STT)
+        public DonTu_ChiTiet get_ChiTiet(int MaDon, int STT)
         {
             return db.DonTu_ChiTiets.SingleOrDefault(item => item.MaDon == MaDon && item.STT == STT);
         }
@@ -221,7 +221,7 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
-        public DonTu_LichSu getDonTu_LichSu(int ID)
+        public DonTu_LichSu get_LichSu(int ID)
         {
             return db.DonTu_LichSus.SingleOrDefault(item => item.ID == ID);
         }

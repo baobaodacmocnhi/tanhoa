@@ -81,7 +81,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (phieuCHDB.CHDB.MaDonMoi != null)
             {
-                _dontu_ChiTiet = _cDonTu.getDonTu_ChiTiet(phieuCHDB.CHDB.MaDonMoi.Value,phieuCHDB.STT.Value);
+                _dontu_ChiTiet = _cDonTu.get_ChiTiet(phieuCHDB.CHDB.MaDonMoi.Value, phieuCHDB.STT.Value);
                 txtMaDonMoi.Text = phieuCHDB.CHDB.MaDonMoi.ToString();
             }
             else
@@ -243,11 +243,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 if (MaDon.Contains(".") == true)
                 {
                     string[] MaDons = MaDon.Split('.');
-                    _dontu_ChiTiet = _cDonTu.getDonTu_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
+                    _dontu_ChiTiet = _cDonTu.get_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
                 }
                 else
                 {
-                    _dontu_ChiTiet = _cDonTu.getDonTu(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
+                    _dontu_ChiTiet = _cDonTu.get(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
                 }
                 //
                 if (_dontu_ChiTiet != null)

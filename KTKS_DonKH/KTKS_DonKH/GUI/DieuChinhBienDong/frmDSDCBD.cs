@@ -556,7 +556,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 for (int i = 0; i < dgvDSCatChuyenDM.Rows.Count; i++)
                                     if (dgvDSCatChuyenDM["In_CC", i].Value != null && bool.Parse(dgvDSCatChuyenDM["In_CC", i].Value.ToString()) == true)
                                     {
-                                        LichSuChungTu lichsuchungtu = _cChungTu.getLichSuChungTubySoPhieu(decimal.Parse(dgvDSCatChuyenDM["SoPhieu_CC", i].Value.ToString()));
+                                        ChungTu_LichSu lichsuchungtu = _cChungTu.getLichSuChungTubySoPhieu(decimal.Parse(dgvDSCatChuyenDM["SoPhieu_CC", i].Value.ToString()));
 
                                         if (lichsuchungtu.YeuCauCat)
                                         {
@@ -877,7 +877,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     for (int i = 0; i < dgvDSCatChuyenDM.Rows.Count; i++)
                         if (dgvDSCatChuyenDM["In_CC", i].Value != null && bool.Parse(dgvDSCatChuyenDM["In_CC", i].Value.ToString()) == true)
                         {
-                            LichSuChungTu lichsuchungtu = _cChungTu.getLichSuChungTubySoPhieu(decimal.Parse(dgvDSCatChuyenDM["SoPhieu_CC", i].Value.ToString()));
+                            ChungTu_LichSu lichsuchungtu = _cChungTu.getLichSuChungTubySoPhieu(decimal.Parse(dgvDSCatChuyenDM["SoPhieu_CC", i].Value.ToString()));
                             if (lichsuchungtu.YeuCauCat)
                             {
                                 DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
@@ -1252,7 +1252,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (dgvDSCatChuyenDM.Columns[e.ColumnIndex].Name == "PhieuDuocKy_CC")
             {
-                LichSuChungTu lichsuchungtu = _cChungTu.getLSCTbyID(decimal.Parse(dgvDSCatChuyenDM.CurrentRow.Cells["MaLSCT"].Value.ToString()));
+                ChungTu_LichSu lichsuchungtu = _cChungTu.getLSCTbyID(decimal.Parse(dgvDSCatChuyenDM.CurrentRow.Cells["MaLSCT"].Value.ToString()));
                 lichsuchungtu.PhieuDuocKy = bool.Parse(dgvDSCatChuyenDM["PhieuDuocKy_CC", e.RowIndex].Value.ToString());
                 _cChungTu.SuaLichSuChungTu(lichsuchungtu);
             }
@@ -1281,7 +1281,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 }
                 else
                 {
-                    LichSuChungTu entity = _cChungTu.getLSCTbyID(decimal.Parse(dgvDSCatChuyenDM["MaLSCT", dgvDSCatChuyenDM.CurrentRow.Index].Value.ToString()));
+                    ChungTu_LichSu entity = _cChungTu.getLSCTbyID(decimal.Parse(dgvDSCatChuyenDM["MaLSCT", dgvDSCatChuyenDM.CurrentRow.Index].Value.ToString()));
                     frmSoDK frm = new frmSoDK(entity);
                     frm.ShowDialog();
                 }

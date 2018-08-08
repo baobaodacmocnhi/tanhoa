@@ -88,7 +88,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         {
             if (cttttl.TTTL.MaDonMoi != null)
             {
-                _dontu_ChiTiet = _cDonTu.getDonTu_ChiTiet(cttttl.TTTL.MaDonMoi.Value,cttttl.STT.Value);
+                _dontu_ChiTiet = _cDonTu.get_ChiTiet(cttttl.TTTL.MaDonMoi.Value, cttttl.STT.Value);
                 txtMaDonMoi.Text = cttttl.TTTL.MaDonMoi.Value.ToString();
             }
             else
@@ -257,11 +257,11 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 if (MaDon.Contains(".") == true)
                 {
                     string[] MaDons = MaDon.Split('.');
-                    _dontu_ChiTiet = _cDonTu.getDonTu_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
+                    _dontu_ChiTiet = _cDonTu.get_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
                 }
                 else
                 {
-                    _dontu_ChiTiet = _cDonTu.getDonTu(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
+                    _dontu_ChiTiet = _cDonTu.get(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
                 }
                 //
                 if (_dontu_ChiTiet != null)
@@ -630,7 +630,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 dr["GiaBieu"] = _cttttl.GiaBieu;
                 dr["DinhMuc"] = _cttttl.DinhMuc;
                 if (_cttttl.TTTL.MaDonMoi != null)
-                    dr["NgayNhanDon"] = _cDonTu.getDonTu(_cttttl.TTTL.MaDonMoi.Value).CreateDate.Value.ToString("dd/MM/yyyy");
+                    dr["NgayNhanDon"] = _cDonTu.get(_cttttl.TTTL.MaDonMoi.Value).CreateDate.Value.ToString("dd/MM/yyyy");
                 else
                 if (_cttttl.TTTL.MaDon != null)
                     dr["NgayNhanDon"] = _cttttl.TTTL.DonKH.CreateDate.Value.ToString("dd/MM/yyyy");

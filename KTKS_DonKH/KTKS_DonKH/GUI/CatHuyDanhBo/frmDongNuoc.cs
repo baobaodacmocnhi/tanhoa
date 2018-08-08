@@ -78,7 +78,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
         {
             if (ctdongnuoc.DongNuoc.MaDonMoi != null)
             {
-                _dontu_ChiTiet = _cDonTu.getDonTu_ChiTiet(ctdongnuoc.DongNuoc.MaDonMoi.Value, ctdongnuoc.STT.Value);
+                _dontu_ChiTiet = _cDonTu.get_ChiTiet(ctdongnuoc.DongNuoc.MaDonMoi.Value, ctdongnuoc.STT.Value);
                 txtMaDonMoi.Text = ctdongnuoc.DongNuoc.MaDonMoi.ToString();
                 dgvDSBamChi.DataSource = _cBamChi.getDS(ctdongnuoc.DongNuoc.MaDonMoi.Value, ctdongnuoc.DanhBo);
             }
@@ -252,11 +252,11 @@ namespace KTKS_DonKH.GUI.DongNuoc
                 if (MaDon.Contains(".") == true)
                 {
                     string[] MaDons = MaDon.Split('.');
-                    _dontu_ChiTiet = _cDonTu.getDonTu_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
+                    _dontu_ChiTiet = _cDonTu.get_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
                 }
                 else
                 {
-                    _dontu_ChiTiet = _cDonTu.getDonTu(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
+                    _dontu_ChiTiet = _cDonTu.get(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
                 }
                 //
                 if (_dontu_ChiTiet != null)

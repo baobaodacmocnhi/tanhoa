@@ -94,7 +94,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             if (ctktxm.KTXM.MaDonMoi != null)
             {
-                _dontu_ChiTiet = _cDonTu.getDonTu_ChiTiet(ctktxm.KTXM.MaDonMoi.Value, ctktxm.STT.Value);
+                _dontu_ChiTiet = _cDonTu.get_ChiTiet(ctktxm.KTXM.MaDonMoi.Value, ctktxm.STT.Value);
                 txtMaDonMoi.Text = ctktxm.KTXM.MaDonMoi.ToString();
             }
             else
@@ -307,11 +307,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 if (MaDon.Contains(".") == true)
                 {
                     string[] MaDons = MaDon.Split('.');
-                    _dontu_ChiTiet = _cDonTu.getDonTu_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
+                    _dontu_ChiTiet = _cDonTu.get_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
                 }
                 else
                 {
-                    _dontu_ChiTiet = _cDonTu.getDonTu(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
+                    _dontu_ChiTiet = _cDonTu.get(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
                 }
                 //
                 if (_dontu_ChiTiet != null)

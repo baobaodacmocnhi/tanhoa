@@ -61,21 +61,21 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 case "Mã Đơn":
                     if (txtNoiDungTimKiem.Text.Trim() != "")
                         if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                            dgvDSThu.DataSource = _cThuMoi.GetDS("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                            dgvDSThu.DataSource = _cThuMoi.getDS_ChiTiet("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                         else
                             if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                dgvDSThu.DataSource = _cThuMoi.GetDS("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                dgvDSThu.DataSource = _cThuMoi.getDS_ChiTiet("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                             else
-                                dgvDSThu.DataSource = _cThuMoi.GetDS("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                dgvDSThu.DataSource = _cThuMoi.getDS_ChiTiet("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                     break;
                 case "Danh Bộ":
-                    dgvDSThu.DataSource = _cThuMoi.GetDS(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                    dgvDSThu.DataSource = _cThuMoi.getDS_ChiTiet(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
                     break;
                 case "Ngày":
                     if (chkCreateBy.Checked == true)
-                        dgvDSThu.DataSource = _cThuMoi.GetDS(CTaiKhoan.MaUser,dateTu.Value, dateDen.Value);
+                        dgvDSThu.DataSource = _cThuMoi.getDS_ChiTiet(CTaiKhoan.MaUser,dateTu.Value, dateDen.Value);
                     else
-                        dgvDSThu.DataSource = _cThuMoi.GetDS(dateTu.Value, dateDen.Value);
+                        dgvDSThu.DataSource = _cThuMoi.getDS_ChiTiet(dateTu.Value, dateDen.Value);
                     break;
                 default:
                     break;

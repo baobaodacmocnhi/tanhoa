@@ -137,12 +137,12 @@ namespace KTKS_DonKH.GUI.DonTu
                 if (MaDon.Contains(".") == true)
                 {
                     string[] MaDons = MaDon.Split('.');
-                    _dontu = _cDonTu.getDonTu(int.Parse(MaDons[0]));
-                    _dontu_ChiTiet = _cDonTu.getDonTu_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
+                    _dontu = _cDonTu.get(int.Parse(MaDons[0]));
+                    _dontu_ChiTiet = _cDonTu.get_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
                 }
                 else
                 {
-                    _dontu = _cDonTu.getDonTu(int.Parse(MaDon));
+                    _dontu = _cDonTu.get(int.Parse(MaDon));
                 }
                 
                 if (_dontu!=null)
@@ -269,7 +269,7 @@ namespace KTKS_DonKH.GUI.DonTu
         {
             if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                if (_cDonTu.Xoa(_cDonTu.getDonTu_LichSu(int.Parse(dgvLichSuDonTu.CurrentRow.Cells["ID"].Value.ToString()))))
+                if (_cDonTu.Xoa(_cDonTu.get_LichSu(int.Parse(dgvLichSuDonTu.CurrentRow.Cells["ID"].Value.ToString()))))
                 {
                     LoadLichSu();
                 }

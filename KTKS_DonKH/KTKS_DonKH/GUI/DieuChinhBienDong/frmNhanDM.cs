@@ -187,9 +187,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     ctchungtu.Lo = txtLo.Text.Trim();
                                     ctchungtu.Phong = txtPhong.Text.Trim();
                                     ///Ghi thông tin Lịch Sử chung
-                                    LichSuChungTu lichsuchungtu = new LichSuChungTu();
+                                    ChungTu_LichSu lichsuchungtu = new ChungTu_LichSu();
                                     switch (_dataT.Loai)
                                     {
+                                        case "MaDonMoi":
+                                            lichsuchungtu.MaDonMoi = _dataT.MaDonMoi;
+                                            lichsuchungtu.STT = _dataT.STT;
+                                            break;
                                         case "TKH":
                                             lichsuchungtu.MaDon = _dataT.MaDon;
                                             break;
@@ -202,7 +206,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         default:
                                             break;
                                     }
-                                    lichsuchungtu.MaDonMoi = _dataT.MaDonMoi;
                                     lichsuchungtu.DanhBo = txtDanhBo_Nhan.Text.Trim();
                                     lichsuchungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
                                     lichsuchungtu.MaCT = txtMaCT.Text.Trim();
@@ -222,7 +225,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         ///Thêm Lịch Sử đầu tiên
                                         _cChungTu.ThemLichSuChungTu(lichsuchungtu);
 
-                                        LichSuChungTu lichsuchungtuCat = new LichSuChungTu();
+                                        ChungTu_LichSu lichsuchungtuCat = new ChungTu_LichSu();
                                         CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtuCat);
                                         lichsuchungtuCat.SoPhieu = _cChungTu.getMaxNextSoPhieuLSCT();
                                         lichsuchungtuCat.YeuCauCat = true;
@@ -265,9 +268,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     ChungTu_ChiTiet ctchungtu = _cChungTu.GetCT(txtDanhBo_Nhan.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
                                     ctchungtu.SoNKDangKy += int.Parse(txtSoNKNhan.Text.Trim());
                                     ///Ghi thông tin Lịch Sử chung
-                                    LichSuChungTu lichsuchungtu = new LichSuChungTu();
+                                    ChungTu_LichSu lichsuchungtu = new ChungTu_LichSu();
                                     switch (_dataT.Loai)
                                     {
+                                        case "MaDonMoi":
+                                            lichsuchungtu.MaDonMoi = _dataT.MaDonMoi;
+                                            lichsuchungtu.STT = _dataT.STT;
+                                            break;
                                         case "TKH":
                                             lichsuchungtu.MaDon = _dataT.MaDon;
                                             break;
@@ -280,7 +287,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         default:
                                             break;
                                     }
-                                    lichsuchungtu.MaDonMoi = _dataT.MaDonMoi;
                                     lichsuchungtu.DanhBo = txtDanhBo_Nhan.Text.Trim();
                                     lichsuchungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
                                     lichsuchungtu.MaCT = txtMaCT.Text.Trim();
@@ -300,7 +306,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         ///Thêm Lịch Sử đầu tiên
                                         _cChungTu.ThemLichSuChungTu(lichsuchungtu);
 
-                                        LichSuChungTu lichsuchungtuCat = new LichSuChungTu();
+                                        ChungTu_LichSu lichsuchungtuCat = new ChungTu_LichSu();
                                         CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtuCat);
                                         lichsuchungtuCat.SoPhieu = _cChungTu.getMaxNextSoPhieuLSCT();
                                         lichsuchungtuCat.YeuCauCat = true;
@@ -416,7 +422,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtDiaChiCT_Cat.Text = txtDiaChi_Cat.Text.Trim();
         }
 
-        public void CopyLichSuChungTu(LichSuChungTu A, ref LichSuChungTu B)
+        public void CopyLichSuChungTu(ChungTu_LichSu A, ref ChungTu_LichSu B)
         {
             B.MaDonTXL = A.MaDonTXL;
             B.MaDonTBC = A.MaDonTBC;

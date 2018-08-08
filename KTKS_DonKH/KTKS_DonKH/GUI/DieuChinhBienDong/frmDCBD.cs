@@ -24,17 +24,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
     public partial class frmDCBD : Form
     {
         string _mnu = "mnuDCBD";
+        CDonTu _cDonTu = new CDonTu();
+        CDonKH _cDonKH = new CDonKH();
+        CDonTXL _cDonTXL = new CDonTXL();
+        CDonTBC _cDonTBC = new CDonTBC();
         CLoaiChungTu _cLoaiChungTu = new CLoaiChungTu();
         CChungTu _cChungTu = new CChungTu();
         CThuTien _cThuTien = new CThuTien();
         CDCBD _cDCBD = new CDCBD();
-        CDonKH _cDonKH = new CDonKH();
-        CDonTXL _cDonTXL = new CDonTXL();
-        CDonTBC _cDonTBC = new CDonTBC();
         CKTXM _cKTXM = new CKTXM();
         CDocSo _cDocSo = new CDocSo();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
 
+        DonTu_ChiTiet _dontu_ChiTiet = null;
         DonKH _dontkh = null;
         DonTXL _dontxl = null;
         DonTBC _dontbc = null;
@@ -115,6 +117,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void LoadDCBD(DCBD_ChiTietBienDong ctdcbd)
         {
+            if (ctdcbd.DCBD.MaDonMoi != null)
+            {
+                _dontu_ChiTiet = _cDonTu.get_ChiTiet(ctdcbd.DCBD.MaDonMoi.Value, ctdcbd.STT.Value);
+                txtMaDonMoi.Text = ctdcbd.DCBD.MaDonMoi.ToString();
+            }
+            else
             if (ctdcbd.DCBD.MaDon != null)
             {
                 _dontkh = _cDonKH.Get(ctdcbd.DCBD.MaDon.Value);
@@ -225,10 +233,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtHCSN_BD.Text = "";
             lbTongNK.Text = "";
             ///
-            _hoadon = null;
+            _dontu_ChiTiet = null;
             _dontkh = null;
             _dontxl = null;
             _dontbc = null;
+            _hoadon = null;
             _ctdcbd = null;
             _MaCTDCBD = -1;
             ///
@@ -336,77 +345,30 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 string MaDon = txtMaDonMoi.Text.Trim();
                 Clear();
-                txtMaDonMoi.Text = MaDon;
-                ///Đơn Tổ Xử Lý
-                if (txtMaDonMoi.Text.Trim().ToUpper().Contains("XL"))
+                if (MaDon.Contains(".") == true)
                 {
-                    if (_cDonTXL.CheckExist(txtMaDonMoi.Text.Trim()) == true)
-                    {
-                        _dontxl = _cDonTXL.Get(txtMaDonMoi.Text.Trim());
-                        txtMaDonMoi.Text = _dontxl.MaDonMoi;
-
-                        if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
-                        {
-                            _hoadon = _cThuTien.GetMoiNhat(_dontxl.DanhBo);
-                            LoadTTKH(_hoadon);
-                            txtDanhBo.Focus();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            txtDanhBo.Focus();
-                        }
-                    }
-                    else
-                        MessageBox.Show("Mã Đơn TXL này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    string[] MaDons = MaDon.Split('.');
+                    _dontu_ChiTiet = _cDonTu.get_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
                 }
                 else
-                    if (txtMaDonMoi.Text.Trim().ToUpper().Contains("BC"))
+                {
+                    _dontu_ChiTiet = _cDonTu.get(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
+                }
+                //
+                if (_dontu_ChiTiet != null)
+                {
+                    txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString();
+
+                    _hoadon = _cThuTien.GetMoiNhat(_dontu_ChiTiet.DanhBo);
+                    if (_hoadon != null)
                     {
-                        if (_cDonTBC.CheckExist(txtMaDonMoi.Text.Trim()) == true)
-                        {
-                            _dontbc = _cDonTBC.Get(txtMaDonMoi.Text.Trim());
-                            txtMaDonMoi.Text = _dontbc.MaDonMoi;
-
-                            if (_cThuTien.GetMoiNhat(_dontbc.DanhBo) != null)
-                            {
-                                _hoadon = _cThuTien.GetMoiNhat(_dontbc.DanhBo);
-                                LoadTTKH(_hoadon);
-                                txtDanhBo.Focus();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                txtDanhBo.Focus();
-                            }
-                        }
-                        else
-                            MessageBox.Show("Mã Đơn TXL này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        LoadTTKH(_hoadon);
                     }
-                    ///Đơn Tổ Khách Hàng
                     else
-                        if (txtMaDonMoi.Text.Trim().ToUpper().Contains("KH"))
-                        {
-                            if (_cDonKH.CheckExist(txtMaDonMoi.Text.Trim()) == true)
-                            {
-                                _dontkh = _cDonKH.Get(txtMaDonMoi.Text.Trim());
-                                txtMaDonCu.Text = _dontkh.MaDonMoi;
-
-                                if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
-                                {
-                                    _hoadon = _cThuTien.GetMoiNhat(_dontkh.DanhBo);
-                                    LoadTTKH(_hoadon);
-                                    txtDanhBo.Focus();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    txtDanhBo.Focus();
-                                }
-                            }
-                            else
-                                MessageBox.Show("Mã Đơn KH này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                    MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -414,9 +376,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (e.KeyChar == 13)
             {
-                if (_cThuTien.GetMoiNhat(txtDanhBo.Text.Trim()) != null)
+                _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
+                if (_hoadon != null)
                 {
-                    _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
                     LoadTTKH(_hoadon);
                     txtHieuLucKy.Focus();
                 }
@@ -428,11 +390,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void txtSoPhieu_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13 && txtSoPhieu.Text.Trim() != "")
-                if (_cDCBD.checkExist_BienDong(decimal.Parse(txtSoPhieu.Text.Trim().Replace("-", ""))) == true)
+            {
+                _ctdcbd = _cDCBD.getBienDong(decimal.Parse(txtSoPhieu.Text.Trim().Replace("-", "")));
+                if (_ctdcbd!=null)
                 {
-                    _ctdcbd = _cDCBD.getBienDong(decimal.Parse(txtSoPhieu.Text.Trim().Replace("-", "")));
                     LoadDCBD(_ctdcbd);
                 }
+                else
+                    MessageBox.Show("Số Phiếu này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -458,6 +424,23 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                     DCBD_ChiTietBienDong ctdcbd = new DCBD_ChiTietBienDong();
 
+                    if (_dontu_ChiTiet != null)
+                    {
+                        if (_cDCBD.checkExist(_dontu_ChiTiet.MaDon.Value) == false)
+                        {
+                            DCBD dcbd = new DCBD();
+                            dcbd.MaDonMoi = _dontu_ChiTiet.MaDon.Value;
+                            _cDCBD.Them(dcbd);
+                        }
+                        if (chkBoQuaKiemTraTrung.Checked == false && _cDCBD.checkExist_BienDong(_dontu_ChiTiet.MaDon.Value, txtDanhBo.Text.Trim()) == true)
+                        {
+                            MessageBox.Show("Danh Bộ này đã được Lập Điều Chỉnh Biến Động", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        ctdcbd.MaDCBD = _cDCBD.get(_dontu_ChiTiet.MaDon.Value).MaDCBD;
+                        ctdcbd.STT = _dontu_ChiTiet.STT.Value;
+                    }
+                    else
                     if (_dontkh != null)
                     {
                         if (_cDCBD.CheckExist("TKH", _dontkh.MaDon) == false)
@@ -1371,6 +1354,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
 
             //DCBD_ChiTietBienDong ctdcbd = _cDCBD.GetDCBDByMaCTDCBD(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
+            if (_ctdcbd.DCBD.MaDonMoi != null)
+                dr["MaDon"] = _ctdcbd.DCBD.MaDonMoi.ToString();
+            else
             if (_ctdcbd.DCBD.MaDon != null)
                 dr["MaDon"] = _ctdcbd.DCBD.MaDon.ToString().Insert(_ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
             else
@@ -1454,25 +1440,29 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void Them()
         {
             CDataTransfer dataT = new CDataTransfer();
+            if (_dontu_ChiTiet != null)
+            {
+                dataT.Loai = "MaDonMoi";
+                dataT.MaDonMoi = _dontu_ChiTiet.MaDon.Value;
+                dataT.STT = _dontu_ChiTiet.STT.Value;
+            }
+            else
             if (_dontkh != null)
             {
                 dataT.Loai = "TKH";
                 dataT.MaDon = _dontkh.MaDon;
-                dataT.MaDonMoi = _dontkh.MaDonMoi;
             }
             else
                 if (_dontxl != null)
                 {
                     dataT.Loai = "TXL";
                     dataT.MaDon = _dontxl.MaDon;
-                    dataT.MaDonMoi = _dontxl.MaDonMoi;
                 }
                 else
                     if (_dontbc != null)
                     {
                         dataT.Loai = "TBC";
                         dataT.MaDon = _dontbc.MaDon;
-                        dataT.MaDonMoi = _dontbc.MaDonMoi;
                     }
             dataT.DanhBo = txtDanhBo.Text.Trim();
             if (txtHoTen_BD.Text.Trim() == "")
@@ -1500,25 +1490,29 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void Sua()
         {
             CDataTransfer dataT = new CDataTransfer();
+            if (_dontu_ChiTiet != null)
+            {
+                dataT.Loai = "MaDonMoi";
+                dataT.MaDonMoi = _dontu_ChiTiet.MaDon.Value;
+                dataT.STT = _dontu_ChiTiet.STT.Value;
+            }
+            else
             if (_dontkh != null)
             {
                 dataT.Loai = "TKH";
                 dataT.MaDon = _dontkh.MaDon;
-                dataT.MaDonMoi = _dontkh.MaDonMoi;
             }
             else
                 if (_dontxl != null)
                 {
                     dataT.Loai = "TXL";
                     dataT.MaDon = _dontxl.MaDon;
-                    dataT.MaDonMoi = _dontxl.MaDonMoi;
                 }
                 else
                     if (_dontbc != null)
                     {
                         dataT.Loai = "TBC";
                         dataT.MaDon = _dontbc.MaDon;
-                        dataT.MaDonMoi = _dontbc.MaDonMoi;
                     }
             dataT.DanhBo = txtDanhBo.Text.Trim();
             if (txtHoTen_BD.Text.Trim() == "")
@@ -1539,25 +1533,29 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void Nhan()
         {
             CDataTransfer dataT = new CDataTransfer();
+            if (_dontu_ChiTiet != null)
+            {
+                dataT.Loai = "MaDonMoi";
+                dataT.MaDonMoi = _dontu_ChiTiet.MaDon.Value;
+                dataT.STT = _dontu_ChiTiet.STT.Value;
+            }
+            else
             if (_dontkh != null)
             {
                 dataT.Loai = "TKH";
                 dataT.MaDon = _dontkh.MaDon;
-                dataT.MaDonMoi = _dontkh.MaDonMoi;
             }
             else
                 if (_dontxl != null)
                 {
                     dataT.Loai = "TXL";
                     dataT.MaDon = _dontxl.MaDon;
-                    dataT.MaDonMoi = _dontxl.MaDonMoi;
                 }
                 else
                     if (_dontbc != null)
                     {
                         dataT.Loai = "TBC";
                         dataT.MaDon = _dontbc.MaDon;
-                        dataT.MaDonMoi = _dontbc.MaDonMoi;
                     }
             dataT.DanhBo = txtDanhBo.Text.Trim();
             if (txtHoTen_BD.Text.Trim() == "")
@@ -1583,25 +1581,29 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void CatChuyen()
         {
             CDataTransfer dataT = new CDataTransfer();
+            if (_dontu_ChiTiet != null)
+            {
+                dataT.Loai = "MaDonMoi";
+                dataT.MaDonMoi = _dontu_ChiTiet.MaDon.Value;
+                dataT.STT = _dontu_ChiTiet.STT.Value;
+            }
+            else
             if (_dontkh != null)
             {
                 dataT.Loai = "TKH";
                 dataT.MaDon = _dontkh.MaDon;
-                dataT.MaDonMoi = _dontkh.MaDonMoi;
             }
             else
                 if (_dontxl != null)
                 {
                     dataT.Loai = "TXL";
                     dataT.MaDon = _dontxl.MaDon;
-                    dataT.MaDonMoi = _dontxl.MaDonMoi;
                 }
                 else
                     if (_dontbc != null)
                     {
                         dataT.Loai = "TBC";
                         dataT.MaDon = _dontbc.MaDon;
-                        dataT.MaDonMoi = _dontbc.MaDonMoi;
                     }
             dataT.DanhBo = txtDanhBo.Text.Trim();
 

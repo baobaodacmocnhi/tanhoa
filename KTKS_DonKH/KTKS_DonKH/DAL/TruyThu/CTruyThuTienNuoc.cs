@@ -158,10 +158,12 @@ namespace KTKS_DonKH.DAL.TruyThu
         {
             try
             {
+                decimal ID = cttttn.MaTTTN.Value;
                 db.TruyThuTienNuoc_HoaDons.DeleteAllOnSubmit(cttttn.TruyThuTienNuoc_HoaDons.ToList());
                 db.TruyThuTienNuoc_ThanhToans.DeleteAllOnSubmit(cttttn.TruyThuTienNuoc_ThanhToans.ToList());
                 db.TruyThuTienNuoc_ThuMois.DeleteAllOnSubmit(cttttn.TruyThuTienNuoc_ThuMois.ToList());
                 db.TruyThuTienNuoc_ChiTiets.DeleteOnSubmit(cttttn);
+                db.TruyThuTienNuocs.DeleteOnSubmit(db.TruyThuTienNuocs.SingleOrDefault(item=>item.MaTTTN==ID));
                 db.SubmitChanges();
                 return true;
             }

@@ -1855,5 +1855,27 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         #endregion
 
+        //MaDonMoi
+
+        public bool checkExist(int MaDon)
+        {
+                    return db.DCBDs.Any(item => item.MaDonMoi == MaDon);
+        }
+
+        public DCBD get(int MaDon)
+        {
+                    return db.DCBDs.SingleOrDefault(item => item.MaDonMoi == MaDon);
+        }
+
+        public bool checkExist_BienDong(int MaDon, string DanhBo)
+        {
+                    return db.DCBD_ChiTietBienDongs.Any(item => item.DCBD.MaDonMoi == MaDon && item.DanhBo == DanhBo);
+        }
+
+        public bool checkExist_HoaDon(int MaDon, string DanhBo, string KyHD)
+        {
+                    return db.DCBD_ChiTietHoaDons.Any(item => item.DCBD.MaDonMoi == MaDon && item.DanhBo == DanhBo && item.KyHD == KyHD);
+        }
+
     }
 }

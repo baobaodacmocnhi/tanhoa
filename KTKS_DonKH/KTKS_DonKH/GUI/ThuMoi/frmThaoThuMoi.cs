@@ -37,7 +37,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
         DonTXL _dontxl = null;
         DonTBC _dontbc = null;
         HOADON _hoadon = null;
-        LinQ.ThuMoi _thumoi = null;
+        LinQ.ThuMoi_ChiTiet _thumoi = null;
 
         public frmThaoThuMoi()
         {
@@ -60,30 +60,30 @@ namespace KTKS_DonKH.GUI.ThuMoi
             txtDinhMuc.Text = hoadon.DM.ToString();
         }
 
-        public void LoadEntity(LinQ.ThuMoi entity)
+        public void LoadEntity(LinQ.ThuMoi_ChiTiet entity)
         {
-            if (entity.MaDonMoi != null)
+            if (entity.ThuMoi.MaDonMoi != null)
             {
-                _dontu_ChiTiet = _cDonTu.getDonTu_ChiTiet(entity.MaDonMoi.Value, entity.STT.Value);
-                txtMaDonMoi.Text = entity.MaDonMoi.Value.ToString();
+                _dontu_ChiTiet = _cDonTu.get_ChiTiet(entity.ThuMoi.MaDonMoi.Value, entity.STT.Value);
+                txtMaDonMoi.Text = entity.ThuMoi.MaDonMoi.Value.ToString();
             }
             else
-            if (entity.MaDonTKH != null)
+                if (entity.ThuMoi.MaDonTKH != null)
             {
-                _dontkh = _cDonKH.Get(entity.MaDonTKH.Value);
-                txtMaDonCu.Text = entity.MaDonTKH.Value.ToString().Insert(entity.MaDonTKH.Value.ToString().Length - 2, "-");
+                _dontkh = _cDonKH.Get(entity.ThuMoi.MaDonTKH.Value);
+                txtMaDonCu.Text = entity.ThuMoi.MaDonTKH.Value.ToString().Insert(entity.ThuMoi.MaDonTKH.Value.ToString().Length - 2, "-");
             }
             else
-                if (entity.MaDonTXL != null)
+                    if (entity.ThuMoi.MaDonTXL != null)
                 {
-                    _dontxl = _cDonTXL.Get(entity.MaDonTXL.Value);
-                    txtMaDonCu.Text = "TXL" + entity.MaDonTXL.Value.ToString().Insert(entity.MaDonTXL.Value.ToString().Length - 2, "-");
+                    _dontxl = _cDonTXL.Get(entity.ThuMoi.MaDonTXL.Value);
+                    txtMaDonCu.Text = "TXL" + entity.ThuMoi.MaDonTXL.Value.ToString().Insert(entity.ThuMoi.MaDonTXL.Value.ToString().Length - 2, "-");
                 }
                 else
-                    if (entity.MaDonTBC != null)
+                        if (entity.ThuMoi.MaDonTBC != null)
                     {
-                        _dontbc = _cDonTBC.Get(entity.MaDonTBC.Value);
-                        txtMaDonCu.Text = "TBC" + entity.MaDonTBC.Value.ToString().Insert(entity.MaDonTBC.Value.ToString().Length - 2, "-");
+                        _dontbc = _cDonTBC.Get(entity.ThuMoi.MaDonTBC.Value);
+                        txtMaDonCu.Text = "TBC" + entity.ThuMoi.MaDonTBC.Value.ToString().Insert(entity.ThuMoi.MaDonTBC.Value.ToString().Length - 2, "-");
                     }
 
             txtDanhBo.Text = entity.DanhBo;
@@ -137,7 +137,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                         _dontxl = _cDonTXL.Get(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", "")));
                         txtMaDonCu.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
                         
-                        dgvDSThu.DataSource = _cThuMoi.GetDS("TXL", _dontxl.MaDon);
+                        dgvDSThu.DataSource = _cThuMoi.getDS_ChiTiet("TXL", _dontxl.MaDon);
 
                         if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
                         {
@@ -167,7 +167,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                         {
                             _dontbc = _cDonTBC.Get(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", "")));
                             txtMaDonCu.Text = "TBC" + _dontbc.MaDon.ToString().Insert(_dontbc.MaDon.ToString().Length - 2, "-");
-                            dgvDSThu.DataSource = _cThuMoi.GetDS("TBC", _dontbc.MaDon);
+                            dgvDSThu.DataSource = _cThuMoi.getDS_ChiTiet("TBC", _dontbc.MaDon);
 
                             if (_cThuTien.GetMoiNhat(_dontbc.DanhBo) != null)
                             {
@@ -196,7 +196,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                         {
                             _dontkh = _cDonKH.Get(decimal.Parse(txtMaDonCu.Text.Trim().Replace("-", "")));
                             txtMaDonCu.Text = _dontkh.MaDon.ToString().Insert(_dontkh.MaDon.ToString().Length - 2, "-");
-                            dgvDSThu.DataSource = _cThuMoi.GetDS("TKH", _dontkh.MaDon);
+                            dgvDSThu.DataSource = _cThuMoi.getDS_ChiTiet("TKH", _dontkh.MaDon);
 
                             if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
                             {
@@ -231,16 +231,17 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 if (MaDon.Contains(".") == true)
                 {
                     string[] MaDons = MaDon.Split('.');
-                    _dontu_ChiTiet = _cDonTu.getDonTu_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
+                    _dontu_ChiTiet = _cDonTu.get_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
                 }
                 else
                 {
-                    _dontu_ChiTiet = _cDonTu.getDonTu(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
+                    _dontu_ChiTiet = _cDonTu.get(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
                 }
                 //
                 if (_dontu_ChiTiet != null)
                 {
                     txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString();
+                    dgvDSThu.DataSource = _cThuMoi.getDS_ChiTiet("TBC", _dontbc.MaDon);
 
                     _hoadon = _cThuTien.GetMoiNhat(_dontu_ChiTiet.DanhBo);
                     if (_hoadon != null)
@@ -261,19 +262,76 @@ namespace KTKS_DonKH.GUI.ThuMoi
             {
                 try
                 {
-                    LinQ.ThuMoi entity = new LinQ.ThuMoi();
+                    LinQ.ThuMoi_ChiTiet entity = new LinQ.ThuMoi_ChiTiet();
 
                     if (_dontu_ChiTiet != null)
-                        entity.MaDonMoi = _dontu_ChiTiet.MaDon.Value;
+                    {
+                        if (_cThuMoi.checkExist( _dontu_ChiTiet.MaDon.Value) == false)
+                        {
+                            LinQ.ThuMoi tm = new LinQ.ThuMoi();
+                            tm.MaDonTKH = _dontu_ChiTiet.MaDon;
+                            _cThuMoi.them(tm);
+                        }
+                        if (_cThuMoi.checkExist_ChiTiet(_dontu_ChiTiet.MaDon.Value, txtDanhBo.Text.Trim()) == true)
+                        {
+                            if (MessageBox.Show("Danh Bộ này đã được Lập Thư\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                                return;
+                        }
+                        entity.ID = _cThuMoi.get(_dontu_ChiTiet.MaDon.Value).ID;
+                    }
                     else
                     if (_dontkh != null)
-                        entity.MaDonTKH = _dontkh.MaDon;
+                    {
+                        if (_cThuMoi.checkExist("TKH", _dontkh.MaDon) == false)
+                        {
+                            LinQ.ThuMoi tm = new LinQ.ThuMoi();
+                            tm.MaDonTKH = _dontkh.MaDon;
+                            _cThuMoi.them(tm);
+                        }
+                        if (_cThuMoi.checkExist_ChiTiet("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim()) == true)
+                        {
+                            if (MessageBox.Show("Danh Bộ này đã được Lập Thư\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                            return;
+                        }
+                        entity.ID = _cThuMoi.get("TKH", _dontkh.MaDon).ID;
+                    }
                     else
                         if (_dontxl != null)
-                            entity.MaDonTXL = _dontxl.MaDon;
+                        {
+                            if (_cThuMoi.checkExist("TXL", _dontkh.MaDon) == false)
+                            {
+                                LinQ.ThuMoi tm = new LinQ.ThuMoi();
+                                tm.MaDonTXL = _dontxl.MaDon;
+                                _cThuMoi.them(tm);
+                            }
+                            if (_cThuMoi.checkExist_ChiTiet("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim()) == true)
+                            {
+                                if (MessageBox.Show("Danh Bộ này đã được Lập Thư\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                                    return;
+                            }
+                            entity.ID = _cThuMoi.get("TXL", _dontxl.MaDon).ID;
+                        }
                         else
                             if (_dontbc != null)
-                                entity.MaDonTBC = _dontbc.MaDon;
+                            {
+                                if (_cThuMoi.checkExist("TBC", _dontbc.MaDon) == false)
+                                {
+                                    LinQ.ThuMoi tm = new LinQ.ThuMoi();
+                                    tm.MaDonTBC = _dontbc.MaDon;
+                                    _cThuMoi.them(tm);
+                                }
+                                if (_cThuMoi.checkExist_ChiTiet("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim()) == true)
+                                {
+                                    if (MessageBox.Show("Danh Bộ này đã được Lập Thư\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                                        return;
+                                }
+                                entity.ID = _cThuMoi.get("TBC", _dontbc.MaDon).ID;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
 
                     entity.DanhBo = txtDanhBo.Text.Trim();
                     entity.HoTen = txtHoTen.Text.Trim();
@@ -285,7 +343,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                     entity.VaoLuc = txtVaoLuc.Text.Trim();
                     entity.VeViec = txtVeViec.Text.Trim();
 
-                    if (_cThuMoi.Them(entity))
+                    if (_cThuMoi.them_ChiTiet(entity))
                     {
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
@@ -315,7 +373,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                         _thumoi.VaoLuc = txtVaoLuc.Text.Trim();
                         _thumoi.VeViec = txtVeViec.Text.Trim();
 
-                        if (_cThuMoi.Sua(_thumoi))
+                        if (_cThuMoi.sua_ChiTiet(_thumoi))
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Clear();
@@ -341,7 +399,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 {
                     if (_thumoi != null)
                     {
-                        if (_cThuMoi.Xoa(_thumoi))
+                        if (_cThuMoi.xoa_ChiTiet(_thumoi))
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Clear();
@@ -366,17 +424,17 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
 
-                if (_thumoi.MaDonMoi != null)
-                    dr["SoPhieu"] = _thumoi.MaDonMoi.ToString();
+                if (_thumoi.ThuMoi.MaDonMoi != null)
+                    dr["SoPhieu"] = _thumoi.ThuMoi.MaDonMoi.ToString();
                 else
-                if (_thumoi.MaDonTKH != null)
-                    dr["SoPhieu"] = _thumoi.MaDonTKH.ToString().Insert(_thumoi.MaDonTKH.ToString().Length - 2, "-");
+                    if (_thumoi.ThuMoi.MaDonTKH != null)
+                        dr["SoPhieu"] = _thumoi.ThuMoi.MaDonTKH.ToString().Insert(_thumoi.ThuMoi.MaDonTKH.ToString().Length - 2, "-");
                 else
-                    if (_thumoi.MaDonTXL != null)
-                        dr["SoPhieu"] = _thumoi.MaDonTXL.ToString().Insert(_thumoi.MaDonTXL.ToString().Length - 2, "-");
+                        if (_thumoi.ThuMoi.MaDonTXL != null)
+                            dr["SoPhieu"] = _thumoi.ThuMoi.MaDonTXL.ToString().Insert(_thumoi.ThuMoi.MaDonTXL.ToString().Length - 2, "-");
                     else
-                        if (_thumoi.MaDonTBC != null)
-                            dr["SoPhieu"] = _thumoi.MaDonTBC.ToString().Insert(_thumoi.MaDonTBC.ToString().Length - 2, "-");
+                            if (_thumoi.ThuMoi.MaDonTBC != null)
+                            dr["SoPhieu"] = _thumoi.ThuMoi.MaDonTBC.ToString().Insert(_thumoi.ThuMoi.MaDonTBC.ToString().Length - 2, "-");
 
                 dr["HoTen"] = _thumoi.HoTen;
                 dr["DiaChi"] = _thumoi.DiaChi;
@@ -409,7 +467,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
         {
             try
             {
-                _thumoi = _cThuMoi.Get(int.Parse(dgvDSThu.CurrentRow.Cells["ID"].Value.ToString()));
+                _thumoi = _cThuMoi.get_ChiTiet(int.Parse(dgvDSThu.CurrentRow.Cells["IDCT"].Value.ToString()));
                 LoadEntity(_thumoi);
             }
             catch (Exception)

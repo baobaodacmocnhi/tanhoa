@@ -9,7 +9,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
     {
         private string _Loai;
         private decimal _MaDon;
-        private string _MaDonMoi;
+        private int _MaDonMoi;
+        private int _STT;
         private string _DanhBo;
         private string _HoTen;
         private string _DiaChi;
@@ -26,10 +27,15 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             get { return _MaDon; }
             set { _MaDon = value; }
         }
-        public string MaDonMoi
+        public int MaDonMoi
         {
             get { return _MaDonMoi; }
             set { _MaDonMoi = value; }
+        }
+        public int STT
+        {
+            get { return _STT; }
+            set { _STT = value; }
         }
         public string DanhBo
         {
@@ -61,7 +67,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             _Loai = "";
             _MaDon = -1;
-            _MaDonMoi = "";
+            _MaDonMoi = -1;
+            _STT = -1;
             _DanhBo = "";
             _HoTen = "";
             _DiaChi = "";

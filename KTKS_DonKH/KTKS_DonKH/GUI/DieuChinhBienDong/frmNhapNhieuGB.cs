@@ -13,19 +13,22 @@ using KTKS_DonKH.DAL.DieuChinhBienDong;
 using KTKS_DonKH.DAL.ToKhachHang;
 using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.DAL.ToBamChi;
+using KTKS_DonKH.DAL.DonTu;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
     public partial class frmNhapNhieuGB : Form
     {
         string _mnu = "mnuDCBD";
+        CDonTu _cDonTu=new CDonTu();
+        CDonKH _cDonKH = new CDonKH();
+        CDonTXL _cDonTXL = new CDonTXL();
+        CDonTBC _cDonTBC = new CDonTBC();
         CThuTien _cThuTien = new CThuTien();
         CDocSo _cDocSo = new CDocSo();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CDCBD _cDCBD = new CDCBD();
-        CDonKH _cDonKH = new CDonKH();
-        CDonTXL _cDonTXL = new CDonTXL();
-        CDonTBC _cDonTBC = new CDonTBC();
+
 
         public frmNhapNhieuGB()
         {
@@ -41,15 +44,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (dgvDanhBo.Columns[e.ColumnIndex].Name == "MaDon" && dgvDanhBo["MaDon", e.RowIndex].Value != null)
             {
-                ///Đơn Tổ Xử Lý
-                if (dgvDanhBo["MaDon", e.RowIndex].Value.ToString().ToUpper().Contains("TXL"))
+                //Đơn Tổ Khách Hàng
+                if (dgvDanhBo["MaDon", e.RowIndex].Value.ToString().ToUpper().Contains("TKH"))
                 {
-                    DonTXL dontxl = _cDonTXL.Get(decimal.Parse(dgvDanhBo["MaDon", e.RowIndex].Value.ToString().Substring(3).Replace("-", "")));
-                    if (dontxl != null)
+                    DonKH dontkh = _cDonKH.Get(decimal.Parse(dgvDanhBo["MaDon", e.RowIndex].Value.ToString().Replace("-", "")));
+                    if (dontkh != null)
                     {
-                        if (_cThuTien.GetMoiNhat(dontxl.DanhBo) != null)
+                        HOADON hoadon = _cThuTien.GetMoiNhat(dontkh.DanhBo);
+                        if (hoadon != null)
                         {
-                            HOADON hoadon = _cThuTien.GetMoiNhat(dontxl.DanhBo);
                             dgvDanhBo["DanhBo", e.RowIndex].Value = hoadon.DANHBA;
                             dgvDanhBo["HopDong", e.RowIndex].Value = hoadon.HOPDONG;
                             dgvDanhBo["HoTen", e.RowIndex].Value = hoadon.TENKH;
@@ -74,69 +77,112 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     }
                 }
                 else
-                    if (dgvDanhBo["MaDon", e.RowIndex].Value.ToString().ToUpper().Contains("TBC"))
+                    //Đơn Tổ Xử Lý
+                    if (dgvDanhBo["MaDon", e.RowIndex].Value.ToString().ToUpper().Contains("TXL"))
                     {
-                        DonTBC dontbc = _cDonTBC.Get(decimal.Parse(dgvDanhBo["MaDon", e.RowIndex].Value.ToString().Substring(3).Replace("-", "")));
-                        if (dontbc != null)
+                        DonTXL dontxl = _cDonTXL.Get(decimal.Parse(dgvDanhBo["MaDon", e.RowIndex].Value.ToString().Substring(3).Replace("-", "")));
+                        if (dontxl != null)
                         {
-                            if (_cThuTien.GetMoiNhat(dontbc.DanhBo) != null)
+                            HOADON hoadon = _cThuTien.GetMoiNhat(dontxl.DanhBo);
+                            if (hoadon != null)
+                            {  
+                                dgvDanhBo["DanhBo", e.RowIndex].Value = hoadon.DANHBA;
+                                dgvDanhBo["HopDong", e.RowIndex].Value = hoadon.HOPDONG;
+                                dgvDanhBo["HoTen", e.RowIndex].Value = hoadon.TENKH;
+                                dgvDanhBo["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
+                                dgvDanhBo["MSThue", e.RowIndex].Value = hoadon.MST;
+                                dgvDanhBo["GiaBieu", e.RowIndex].Value = hoadon.GB;
+                                dgvDanhBo["DinhMuc", e.RowIndex].Value = hoadon.DM;
+                                dgvDanhBo["Dot", e.RowIndex].Value = hoadon.DOT.ToString();
+                                dgvDanhBo["Ky", e.RowIndex].Value = hoadon.KY.ToString();
+                                dgvDanhBo["Nam", e.RowIndex].Value = hoadon.NAM.ToString();
+                                dgvDanhBo["MLT", e.RowIndex].Value = hoadon.MALOTRINH.ToString();
+                                dgvDanhBo["SX", e.RowIndex].Value = hoadon.TILESX.ToString();
+                                dgvDanhBo["SH", e.RowIndex].Value = hoadon.TILESH.ToString();
+                                dgvDanhBo["DV", e.RowIndex].Value = hoadon.TILEDV.ToString();
+                                dgvDanhBo["HCSN", e.RowIndex].Value = hoadon.TILEHCSN.ToString();
+                                dgvDanhBo["MaQuanPhuong", e.RowIndex].Value = hoadon.Quan + " " + hoadon.Phuong;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                    else
+                        if (dgvDanhBo["MaDon", e.RowIndex].Value.ToString().ToUpper().Contains("TBC"))
+                        {
+                            DonTBC dontbc = _cDonTBC.Get(decimal.Parse(dgvDanhBo["MaDon", e.RowIndex].Value.ToString().Substring(3).Replace("-", "")));
+                            if (dontbc != null)
                             {
                                 HOADON hoadon = _cThuTien.GetMoiNhat(dontbc.DanhBo);
-                                dgvDanhBo["DanhBo", e.RowIndex].Value = hoadon.DANHBA;
-                                dgvDanhBo["HopDong", e.RowIndex].Value = hoadon.HOPDONG;
-                                dgvDanhBo["HoTen", e.RowIndex].Value = hoadon.TENKH;
-                                dgvDanhBo["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
-                                dgvDanhBo["MSThue", e.RowIndex].Value = hoadon.MST;
-                                dgvDanhBo["GiaBieu", e.RowIndex].Value = hoadon.GB;
-                                dgvDanhBo["DinhMuc", e.RowIndex].Value = hoadon.DM;
-                                dgvDanhBo["Dot", e.RowIndex].Value = hoadon.DOT.ToString();
-                                dgvDanhBo["Ky", e.RowIndex].Value = hoadon.KY.ToString();
-                                dgvDanhBo["Nam", e.RowIndex].Value = hoadon.NAM.ToString();
-                                dgvDanhBo["MLT", e.RowIndex].Value = hoadon.MALOTRINH.ToString();
-                                dgvDanhBo["SX", e.RowIndex].Value = hoadon.TILESX.ToString();
-                                dgvDanhBo["SH", e.RowIndex].Value = hoadon.TILESH.ToString();
-                                dgvDanhBo["DV", e.RowIndex].Value = hoadon.TILEDV.ToString();
-                                dgvDanhBo["HCSN", e.RowIndex].Value = hoadon.TILEHCSN.ToString();
-                                dgvDanhBo["MaQuanPhuong", e.RowIndex].Value = hoadon.Quan + " " + hoadon.Phuong;
-                            }
-                            else
-                            {
-                                MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                if (hoadon != null)
+                                {
+                                    dgvDanhBo["DanhBo", e.RowIndex].Value = hoadon.DANHBA;
+                                    dgvDanhBo["HopDong", e.RowIndex].Value = hoadon.HOPDONG;
+                                    dgvDanhBo["HoTen", e.RowIndex].Value = hoadon.TENKH;
+                                    dgvDanhBo["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
+                                    dgvDanhBo["MSThue", e.RowIndex].Value = hoadon.MST;
+                                    dgvDanhBo["GiaBieu", e.RowIndex].Value = hoadon.GB;
+                                    dgvDanhBo["DinhMuc", e.RowIndex].Value = hoadon.DM;
+                                    dgvDanhBo["Dot", e.RowIndex].Value = hoadon.DOT.ToString();
+                                    dgvDanhBo["Ky", e.RowIndex].Value = hoadon.KY.ToString();
+                                    dgvDanhBo["Nam", e.RowIndex].Value = hoadon.NAM.ToString();
+                                    dgvDanhBo["MLT", e.RowIndex].Value = hoadon.MALOTRINH.ToString();
+                                    dgvDanhBo["SX", e.RowIndex].Value = hoadon.TILESX.ToString();
+                                    dgvDanhBo["SH", e.RowIndex].Value = hoadon.TILESH.ToString();
+                                    dgvDanhBo["DV", e.RowIndex].Value = hoadon.TILEDV.ToString();
+                                    dgvDanhBo["HCSN", e.RowIndex].Value = hoadon.TILEHCSN.ToString();
+                                    dgvDanhBo["MaQuanPhuong", e.RowIndex].Value = hoadon.Quan + " " + hoadon.Phuong;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
                         }
-                    }
-                    ///Đơn Tổ Khách Hàng
-                    else
-                    {
-                        DonKH dontkh = _cDonKH.Get(decimal.Parse(dgvDanhBo["MaDon", e.RowIndex].Value.ToString().Replace("-", "")));
-                        if (dontkh != null)
+                        else
                         {
-                            if (_cThuTien.GetMoiNhat(dontkh.DanhBo) != null)
+                            string MaDon = dgvDanhBo["MaDon", e.RowIndex].Value.ToString();
+                            DonTu_ChiTiet dontu_ChiTiet = null;
+                            if (MaDon.Contains(".") == true)
                             {
-                                HOADON hoadon = _cThuTien.GetMoiNhat(dontkh.DanhBo);
-                                dgvDanhBo["DanhBo", e.RowIndex].Value = hoadon.DANHBA;
-                                dgvDanhBo["HopDong", e.RowIndex].Value = hoadon.HOPDONG;
-                                dgvDanhBo["HoTen", e.RowIndex].Value = hoadon.TENKH;
-                                dgvDanhBo["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
-                                dgvDanhBo["MSThue", e.RowIndex].Value = hoadon.MST;
-                                dgvDanhBo["GiaBieu", e.RowIndex].Value = hoadon.GB;
-                                dgvDanhBo["DinhMuc", e.RowIndex].Value = hoadon.DM;
-                                dgvDanhBo["Dot", e.RowIndex].Value = hoadon.DOT.ToString();
-                                dgvDanhBo["Ky", e.RowIndex].Value = hoadon.KY.ToString();
-                                dgvDanhBo["Nam", e.RowIndex].Value = hoadon.NAM.ToString();
-                                dgvDanhBo["MLT", e.RowIndex].Value = hoadon.MALOTRINH.ToString();
-                                dgvDanhBo["SX", e.RowIndex].Value = hoadon.TILESX.ToString();
-                                dgvDanhBo["SH", e.RowIndex].Value = hoadon.TILESH.ToString();
-                                dgvDanhBo["DV", e.RowIndex].Value = hoadon.TILEDV.ToString();
-                                dgvDanhBo["HCSN", e.RowIndex].Value = hoadon.TILEHCSN.ToString();
-                                dgvDanhBo["MaQuanPhuong", e.RowIndex].Value = hoadon.Quan + " " + hoadon.Phuong;
+                                string[] MaDons = MaDon.Split('.');
+                                dontu_ChiTiet = _cDonTu.get_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
                             }
                             else
                             {
-                                MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                dontu_ChiTiet = _cDonTu.get(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
+                            }
+                            //
+                            if (dontu_ChiTiet != null)
+                            {
+                                HOADON hoadon = _cThuTien.GetMoiNhat(dontu_ChiTiet.DanhBo);
+                                if (hoadon != null)
+                                {
+                                    dgvDanhBo["DanhBo", e.RowIndex].Value = hoadon.DANHBA;
+                                    dgvDanhBo["HopDong", e.RowIndex].Value = hoadon.HOPDONG;
+                                    dgvDanhBo["HoTen", e.RowIndex].Value = hoadon.TENKH;
+                                    dgvDanhBo["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
+                                    dgvDanhBo["MSThue", e.RowIndex].Value = hoadon.MST;
+                                    dgvDanhBo["GiaBieu", e.RowIndex].Value = hoadon.GB;
+                                    dgvDanhBo["DinhMuc", e.RowIndex].Value = hoadon.DM;
+                                    dgvDanhBo["Dot", e.RowIndex].Value = hoadon.DOT.ToString();
+                                    dgvDanhBo["Ky", e.RowIndex].Value = hoadon.KY.ToString();
+                                    dgvDanhBo["Nam", e.RowIndex].Value = hoadon.NAM.ToString();
+                                    dgvDanhBo["MLT", e.RowIndex].Value = hoadon.MALOTRINH.ToString();
+                                    dgvDanhBo["SX", e.RowIndex].Value = hoadon.TILESX.ToString();
+                                    dgvDanhBo["SH", e.RowIndex].Value = hoadon.TILESH.ToString();
+                                    dgvDanhBo["DV", e.RowIndex].Value = hoadon.TILEDV.ToString();
+                                    dgvDanhBo["HCSN", e.RowIndex].Value = hoadon.TILEHCSN.ToString();
+                                    dgvDanhBo["MaQuanPhuong", e.RowIndex].Value = hoadon.Quan + " " + hoadon.Phuong;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
                         }
-                    }
             }
 
             if (dgvDanhBo.Columns[e.ColumnIndex].Name == "GBMoi" && dgvDanhBo["GBMoi", e.RowIndex].Value != null)
@@ -203,17 +249,18 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     foreach (DataGridViewRow item in dgvDanhBo.Rows)
                         if (item.Cells["MaDon"].Value != null && item.Cells["DanhBo"].Value != null)
                         {
-                            ///Đơn Tổ Xử Lý
-                            if (item.Cells["MaDon"].Value.ToString().ToUpper().Contains("TXL"))
+                            //Đơn Tổ Khách Hàng
+                            if (item.Cells["MaDon"].Value.ToString().ToUpper().Contains("TKH"))
                             {
-                                if (_cDCBD.checkExist_BienDong("TKH", decimal.Parse(item.Cells["MaDon"].Value.ToString().Substring(3).Replace("-", "")), item.Cells["DanhBo"].Value.ToString()) == true)
+                                if (_cDCBD.checkExist_BienDong("TKH", decimal.Parse(item.Cells["MaDon"].Value.ToString().Replace("-", "")), item.Cells["DanhBo"].Value.ToString()) == true)
                                 {
                                     MessageBox.Show("Danh Bộ này đã được Lập Điều Chỉnh Biến Động", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
                             }
                             else
-                                if (item.Cells["MaDon"].Value.ToString().ToUpper().Contains("TBC"))
+                                //Đơn Tổ Xử Lý
+                                if (item.Cells["MaDon"].Value.ToString().ToUpper().Contains("TXL"))
                                 {
                                     if (_cDCBD.checkExist_BienDong("TKH", decimal.Parse(item.Cells["MaDon"].Value.ToString().Substring(3).Replace("-", "")), item.Cells["DanhBo"].Value.ToString()) == true)
                                     {
@@ -221,15 +268,35 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         return;
                                     }
                                 }
-                                ///Đơn Tổ Khách Hàng
                                 else
-                                {
-                                    if (_cDCBD.checkExist_BienDong("TKH", decimal.Parse(item.Cells["MaDon"].Value.ToString().Replace("-", "")), item.Cells["DanhBo"].Value.ToString()) == true)
+                                    //Đơn Tổ Bấm Chì
+                                    if (item.Cells["MaDon"].Value.ToString().ToUpper().Contains("TBC"))
                                     {
-                                        MessageBox.Show("Danh Bộ này đã được Lập Điều Chỉnh Biến Động", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
+                                        if (_cDCBD.checkExist_BienDong("TKH", decimal.Parse(item.Cells["MaDon"].Value.ToString().Substring(3).Replace("-", "")), item.Cells["DanhBo"].Value.ToString()) == true)
+                                        {
+                                            MessageBox.Show("Danh Bộ này đã được Lập Điều Chỉnh Biến Động", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            return;
+                                        }
                                     }
-                                }
+                                    else
+                                    {
+                                        string MaDon = item.Cells["MaDon"].Value.ToString();
+                                        DonTu_ChiTiet dontu_ChiTiet = null;
+                                        if (MaDon.Contains(".") == true)
+                                        {
+                                            string[] MaDons = MaDon.Split('.');
+                                            dontu_ChiTiet = _cDonTu.get_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
+                                        }
+                                        else
+                                        {
+                                            dontu_ChiTiet = _cDonTu.get(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
+                                        }
+                                        if (_cDCBD.checkExist_BienDong(dontu_ChiTiet.MaDon.Value, item.Cells["DanhBo"].Value.ToString()) == true)
+                                        {
+                                            MessageBox.Show("Danh Bộ này đã được Lập Điều Chỉnh Biến Động", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            return;
+                                        }
+                                    }
                         }
 
                     decimal min = 0, max = 0;
@@ -239,7 +306,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             DCBD_ChiTietBienDong ctdcbd = new DCBD_ChiTietBienDong();
 
-                            ///Đơn Tổ Xử Lý
+                            //Đơn Tổ Khách Hàng
+                            if (item.Cells["MaDon"].Value.ToString().ToUpper().Contains("TKH"))
+                                {
+                                    if (_cDCBD.CheckExist("TKH", decimal.Parse(item.Cells["MaDon"].Value.ToString().Replace("-", ""))) == false)
+                                    {
+                                        DCBD dcbd = new DCBD();
+                                        dcbd.MaDon = decimal.Parse(item.Cells["MaDon"].Value.ToString().Replace("-", ""));
+                                        //dcbd.MaDonMoi = _dontkh.MaDonMoi;
+                                        _cDCBD.Them(dcbd);
+                                    }
+                                    ctdcbd.MaDCBD = _cDCBD.Get("TKH", decimal.Parse(item.Cells["MaDon"].Value.ToString().Replace("-", ""))).MaDCBD;
+                                }
+                            //Đơn Tổ Xử Lý
                             if (item.Cells["MaDon"].Value.ToString().ToUpper().Contains("TXL"))
                             {
                                 if (_cDCBD.CheckExist("TXL", decimal.Parse(item.Cells["MaDon"].Value.ToString().Substring(3).Replace("-", ""))) == false)
@@ -252,6 +331,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 ctdcbd.MaDCBD = _cDCBD.Get("TXL", decimal.Parse(item.Cells["MaDon"].Value.ToString().Substring(3).Replace("-", ""))).MaDCBD;
                             }
                             else
+                                //Tổ Bấm Chì
                                 if (item.Cells["MaDon"].Value.ToString().ToUpper().Contains("TBC"))
                                 {
                                     if (_cDCBD.CheckExist("TBC", decimal.Parse(item.Cells["MaDon"].Value.ToString().Substring(3).Replace("-", ""))) == false)
@@ -263,17 +343,27 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     }
                                     ctdcbd.MaDCBD = _cDCBD.Get("TBC", decimal.Parse(item.Cells["MaDon"].Value.ToString().Substring(3).Replace("-", ""))).MaDCBD;
                                 }
-                                ///Đơn Tổ Khách Hàng
                                 else
                                 {
-                                    if (_cDCBD.CheckExist("TKH", decimal.Parse(item.Cells["MaDon"].Value.ToString().Replace("-", ""))) == false)
+                                    string MaDon = item.Cells["MaDon"].Value.ToString();
+                                    DonTu_ChiTiet dontu_ChiTiet = null;
+                                    if (MaDon.Contains(".") == true)
+                                    {
+                                        string[] MaDons = MaDon.Split('.');
+                                        dontu_ChiTiet = _cDonTu.get_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
+                                    }
+                                    else
+                                    {
+                                        dontu_ChiTiet = _cDonTu.get(int.Parse(MaDon)).DonTu_ChiTiets.SingleOrDefault();
+                                    }
+                                    if (_cDCBD.checkExist(dontu_ChiTiet.MaDon.Value) == false)
                                     {
                                         DCBD dcbd = new DCBD();
-                                        dcbd.MaDon = decimal.Parse(item.Cells["MaDon"].Value.ToString().Replace("-", ""));
-                                        //dcbd.MaDonMoi = _dontkh.MaDonMoi;
+                                        dcbd.MaDonMoi = dontu_ChiTiet.MaDon.Value;
                                         _cDCBD.Them(dcbd);
                                     }
-                                    ctdcbd.MaDCBD = _cDCBD.Get("TKH", decimal.Parse(item.Cells["MaDon"].Value.ToString().Replace("-", ""))).MaDCBD;
+                                    ctdcbd.MaDCBD = _cDCBD.get(dontu_ChiTiet.MaDon.Value).MaDCBD;
+                                    ctdcbd.STT = dontu_ChiTiet.STT.Value;
                                 }
 
                             if (item.Cells["DanhBo"].Value != null)
