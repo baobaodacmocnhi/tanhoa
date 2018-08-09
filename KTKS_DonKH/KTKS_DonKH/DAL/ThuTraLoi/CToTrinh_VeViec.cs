@@ -15,9 +15,9 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             try
             {
                 if (db.ToTrinh_VeViecs.Count() > 0)
-                    vv.MaVV = db.ToTrinh_VeViecs.Max(item => item.MaVV) + 1;
+                    vv.ID = db.ToTrinh_VeViecs.Max(item => item.ID) + 1;
                 else
-                    vv.MaVV = 1;
+                    vv.ID = 1;
                 vv.CreateDate = DateTime.Now;
                 vv.CreateBy = CTaiKhoan.MaUser;
                 db.ToTrinh_VeViecs.InsertOnSubmit(vv);
@@ -70,9 +70,9 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             return db.ToTrinh_VeViecs.OrderBy(item => item.STT).ToList();
         }
 
-        public ToTrinh_VeViec Get(int MaVV)
+        public ToTrinh_VeViec Get(int ID)
         {
-            return db.ToTrinh_VeViecs.Single(item => item.MaVV == MaVV);
+            return db.ToTrinh_VeViecs.Single(item => item.ID == ID);
         }
 
         public int GetMaxSTT()

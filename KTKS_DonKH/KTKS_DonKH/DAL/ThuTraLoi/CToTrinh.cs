@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using KTKS_DonKH.LinQ;
-using System.Windows.Forms;
 using KTKS_DonKH.DAL.QuanTri;
 using System.Data;
 
@@ -13,55 +12,55 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
     {
         #region ToTrinh (Tờ Trình)
 
-        public bool Them(ToTrinh tt)
+        public bool Them(ToTrinh en)
         {
             try
             {
                 if (db.ToTrinhs.Count() > 0)
                 {
-                    string ID = "MaTT";
-                    string Table = "ToTrinh";
-                    decimal MaTT = db.ExecuteQuery<decimal>("declare @Ma int " +
-                        "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
-                        "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
-                    tt.MaTT = getMaxNextIDTable(MaTT);
+                    en.ID = db.ToTrinhs.Max(item => item.ID) + 1;
+                    //string Column = "ID";
+                    //string Table = "ToTrinh";
+                    //int ID = db.ExecuteQuery<int>("declare @Ma int " +
+                    //    "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + Column + "),LEN(CONVERT(nvarchar(50)," + Column + "))-1,2)) from " + Table + " " +
+                    //    "select MAX(" + Column + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + Column + "),LEN(CONVERT(nvarchar(50)," + Column + "))-1,2)=@Ma").Single();
+                    //en.ID = (int)getMaxNextIDTable(ID);
                 }
                 else
-                    tt.MaTT = decimal.Parse("1" + DateTime.Now.ToString("yy"));
-                tt.CreateDate = DateTime.Now;
-                tt.CreateBy = CTaiKhoan.MaUser;
-                db.ToTrinhs.InsertOnSubmit(tt);
+                    en.ID = 1;
+                    //en.ID = int.Parse("1" + DateTime.Now.ToString("yy"));
+                en.CreateDate = DateTime.Now;
+                en.CreateBy = CTaiKhoan.MaUser;
+                db.ToTrinhs.InsertOnSubmit(en);
                 db.SubmitChanges();
                 return true;
             }
             catch (Exception ex)
             {
                 Refresh();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
-        public bool Sua(ToTrinh tt)
+        public bool Sua(ToTrinh en)
         {
             try
             {
-                tt.ModifyDate = DateTime.Now;
-                tt.ModifyBy = CTaiKhoan.MaUser;
+                en.ModifyDate = DateTime.Now;
+                en.ModifyBy = CTaiKhoan.MaUser;
                 db.SubmitChanges();
                 return true;
             }
             catch (Exception ex)
             {
                 Refresh();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
-        public ToTrinh Get(decimal MaTT)
+        public ToTrinh Get(int ID)
         {
-            return db.ToTrinhs.SingleOrDefault(itemTT => itemTT.MaTT == MaTT);
+            return db.ToTrinhs.SingleOrDefault(itemTT => itemTT.ID == ID);
         }
 
         public ToTrinh Get(string Loai, decimal MaDon)
@@ -98,77 +97,77 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
 
         #region ToTrinh_ChiTiet (Chi Tiết Tờ Trình)
 
-        public bool ThemCT(ToTrinh_ChiTiet cttt)
+        public bool Them_ChiTiet(ToTrinh_ChiTiet en)
         {
             try
             {
                 if (db.ToTrinh_ChiTiets.Count() > 0)
                 {
-                    string ID = "MaCTTT";
+                    string Column = "IDCT";
                     string Table = "ToTrinh_ChiTiet";
-                    decimal MaCTTT = db.ExecuteQuery<decimal>("declare @Ma int " +
-                        "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
-                        "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
-                    cttt.MaCTTT = getMaxNextIDTable(MaCTTT);
+                    int IDCT = db.ExecuteQuery<int>("declare @Ma int " +
+                        "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + Column + "),LEN(CONVERT(nvarchar(50)," + Column + "))-1,2)) from " + Table + " " +
+                        "select MAX(" + Column + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + Column + "),LEN(CONVERT(nvarchar(50)," + Column + "))-1,2)=@Ma").Single();
+                    en.IDCT = (int)getMaxNextIDTable(IDCT);
                 }
                 else
-                    cttt.MaCTTT = decimal.Parse("1" + DateTime.Now.ToString("yy"));
-                cttt.CreateDate = DateTime.Now;
-                cttt.CreateBy = CTaiKhoan.MaUser;
-                db.ToTrinh_ChiTiets.InsertOnSubmit(cttt);
+                {
+                    en.IDCT = int.Parse("1" + DateTime.Now.ToString("yy"));
+                }
+                en.CreateDate = DateTime.Now;
+                en.CreateBy = CTaiKhoan.MaUser;
+                db.ToTrinh_ChiTiets.InsertOnSubmit(en);
                 db.SubmitChanges();
                 return true;
             }
             catch (Exception ex)
             {
                 Refresh();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
-        public bool SuaCT(ToTrinh_ChiTiet cttt)
+        public bool Sua_ChiTiet(ToTrinh_ChiTiet en)
         {
             try
             {
-                cttt.ModifyDate = DateTime.Now;
-                cttt.ModifyBy = CTaiKhoan.MaUser;
+                en.ModifyDate = DateTime.Now;
+                en.ModifyBy = CTaiKhoan.MaUser;
                 db.SubmitChanges();
                 return true;
             }
             catch (Exception ex)
             {
                 Refresh();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
-        public bool XoaCT(ToTrinh_ChiTiet cttt)
+        public bool Xoa_ChiTiet(ToTrinh_ChiTiet en)
         {
             try
             {
-                decimal ID = cttt.MaTT;
-                db.ToTrinh_ChiTiets.DeleteOnSubmit(cttt);
-                if (db.ToTrinh_ChiTiets.Any(item => item.MaTT == ID) == false)
-                    db.ToTrinhs.DeleteOnSubmit(db.ToTrinhs.SingleOrDefault(item => item.MaTT == ID));
+                decimal ID = en.ID;
+                db.ToTrinh_ChiTiets.DeleteOnSubmit(en);
+                db.SubmitChanges();
+                if (db.ToTrinh_ChiTiets.Any(item => item.ID == ID) == false)
+                    db.ToTrinhs.DeleteOnSubmit(db.ToTrinhs.SingleOrDefault(item => item.ID == ID));
                 db.SubmitChanges();
                 return true;
             }
             catch (Exception ex)
             {
                 Refresh();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
-        public bool CheckExist_CT(decimal MaCTTT)
+        public bool checkExist_ChiTiet(int IDCT)
         {
-            return db.ToTrinh_ChiTiets.Any(item => item.MaCTTT == MaCTTT);
+            return db.ToTrinh_ChiTiets.Any(item => item.IDCT == IDCT);
         }
 
-        public bool CheckExist_CT(string Loai, decimal MaDon, string DanhBo, DateTime CreateDate)
+        public bool checkExist_ChiTiet(string Loai, decimal MaDon, string DanhBo, DateTime CreateDate)
         {
             switch (Loai)
             {
@@ -183,21 +182,21 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             }
         }
 
-        public ToTrinh_ChiTiet GetCT(decimal MaCTTT)
+        public ToTrinh_ChiTiet get_ChiTiet(int IDCT)
         {
-            return db.ToTrinh_ChiTiets.SingleOrDefault(itemCTTT => itemCTTT.MaCTTT == MaCTTT);
+            return db.ToTrinh_ChiTiets.SingleOrDefault(item => item.IDCT == IDCT);
         }
 
-        public DataTable GetDS(decimal MaCTTT)
+        public DataTable getDS_ChiTiet(int IDCT)
         {
             var query = from item in db.ToTrinh_ChiTiets
-                        where item.MaCTTT == MaCTTT
+                        where item.IDCT == IDCT
                         select new
                         {
                             MaDon = item.ToTrinh.MaDon != null ? "TKH" + item.ToTrinh.MaDon
                                 : item.ToTrinh.MaDonTXL != null ? "TXL" + item.ToTrinh.MaDonTXL
                                 : item.ToTrinh.MaDonTBC != null ? "TBC" + item.ToTrinh.MaDonTBC : null,
-                            item.MaCTTT,
+                            item.IDCT,
                             item.CreateDate,
                             item.DanhBo,
                             item.HoTen,
@@ -208,7 +207,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDS(string DanhBo)
+        public DataTable getDS_ChiTiet(string DanhBo)
         {
             var query = from item in db.ToTrinh_ChiTiets
                         where item.DanhBo == DanhBo
@@ -217,7 +216,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                             MaDon = item.ToTrinh.MaDon != null ? "TKH" + item.ToTrinh.MaDon
                                 : item.ToTrinh.MaDonTXL != null ? "TXL" + item.ToTrinh.MaDonTXL
                                 : item.ToTrinh.MaDonTBC != null ? "TBC" + item.ToTrinh.MaDonTBC : null,
-                            item.MaCTTT,
+                            item.IDCT,
                             item.CreateDate,
                             item.DanhBo,
                             item.HoTen,
@@ -228,7 +227,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDS(DateTime FromCreateDate,DateTime ToCreateDate)
+        public DataTable getDS_ChiTiet(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from item in db.ToTrinh_ChiTiets
                         where item.CreateDate.Value.Date >=FromCreateDate.Date && item.CreateDate.Value.Date<=ToCreateDate.Date
@@ -237,7 +236,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                             MaDon = item.ToTrinh.MaDon != null ? "TKH" + item.ToTrinh.MaDon
                                 : item.ToTrinh.MaDonTXL != null ? "TXL" + item.ToTrinh.MaDonTXL
                                 : item.ToTrinh.MaDonTBC != null ? "TBC" + item.ToTrinh.MaDonTBC : null,
-                            item.MaCTTT,
+                            item.IDCT,
                             item.CreateDate,
                             item.DanhBo,
                             item.HoTen,

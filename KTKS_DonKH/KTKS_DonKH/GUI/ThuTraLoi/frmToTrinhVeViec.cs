@@ -49,7 +49,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 {
                     ToTrinh_VeViec vv = new ToTrinh_VeViec();
                     vv.STT = _cVeViecToTrinh.GetMaxSTT() + 1;
-                    vv.TenVV = txtVeViec.Text.Trim();
+                    vv.Name = txtVeViec.Text.Trim();
                     vv.NoiDung = txtNoiDung.Text;
                     vv.NoiNhan = txtNoiNhan.Text.Trim();
 
@@ -73,8 +73,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 if (selectedindex != -1)
                     if (txtVeViec.Text.Trim() != "" && txtNoiDung.Text.Trim() != "" && txtNoiNhan.Text.Trim() != "")
                     {
-                        ToTrinh_VeViec vv = _cVeViecToTrinh.Get(int.Parse(dgvDSVeViecTTTL["MaVV", selectedindex].Value.ToString()));
-                        vv.TenVV = txtVeViec.Text.Trim();
+                        ToTrinh_VeViec vv = _cVeViecToTrinh.Get(int.Parse(dgvDSVeViecTTTL["ID", selectedindex].Value.ToString()));
+                        vv.Name = txtVeViec.Text.Trim();
                         vv.NoiDung = txtNoiDung.Text;
                         vv.NoiNhan = txtNoiNhan.Text.Trim();
 
@@ -98,7 +98,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             {
                 if (selectedindex != -1 && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        ToTrinh_VeViec vv = _cVeViecToTrinh.Get(int.Parse(dgvDSVeViecTTTL["MaVV", selectedindex].Value.ToString()));
+                        ToTrinh_VeViec vv = _cVeViecToTrinh.Get(int.Parse(dgvDSVeViecTTTL["ID", selectedindex].Value.ToString()));
 
                         if (_cVeViecToTrinh.Xoa(vv))
                         {
@@ -116,7 +116,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             try
             {
                 selectedindex = e.RowIndex;
-                txtVeViec.Text = dgvDSVeViecTTTL["TenVV", e.RowIndex].Value.ToString();
+                txtVeViec.Text = dgvDSVeViecTTTL["Namee", e.RowIndex].Value.ToString();
                 txtNoiDung.Text = dgvDSVeViecTTTL["NoiDung", e.RowIndex].Value.ToString();
                 txtNoiNhan.Text = dgvDSVeViecTTTL["NoiNhan", e.RowIndex].Value.ToString();
             }

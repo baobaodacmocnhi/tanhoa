@@ -360,6 +360,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 decimal ID = ctdcbd.MaDCBD.Value;
                 db.DCBD_ChiTietBienDongs.DeleteOnSubmit(ctdcbd);
+                db.SubmitChanges();
                 if (db.DCBD_ChiTietBienDongs.Any(item => item.MaDCBD == ID) == false && db.DCBD_ChiTietHoaDons.Any(item => item.MaDCBD == ID) == false)
                     db.DCBDs.DeleteOnSubmit(db.DCBDs.SingleOrDefault(item => item.MaDCBD == ID));
                 db.SubmitChanges();
@@ -1252,6 +1253,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 decimal ID = ctdchd.MaDCBD;
                 db.DCBD_ChiTietHoaDons.DeleteOnSubmit(ctdchd);
+                db.SubmitChanges();
                 if (db.DCBD_ChiTietBienDongs.Any(item => item.MaDCBD == ID) == false && db.DCBD_ChiTietHoaDons.Any(item => item.MaDCBD == ID) == false)
                     db.DCBDs.DeleteOnSubmit(db.DCBDs.SingleOrDefault(item => item.MaDCBD == ID));
                 db.SubmitChanges();

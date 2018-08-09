@@ -40,16 +40,16 @@ namespace KTKS_DonKH.GUI.TruyThu
         DonTBC _dontbc = null;
         HOADON _hoadon = null;
         TruyThuTienNuoc_ChiTiet _cttttn = null;
-        decimal _MaCTTTTN = -1;
+        int _IDCT = -1;
 
         public frmTruyThuTienNuoc()
         {
             InitializeComponent();
         }
 
-        public frmTruyThuTienNuoc(decimal MaCTTTTN)
+        public frmTruyThuTienNuoc(int IDCT)
         {
-            _MaCTTTTN = MaCTTTTN;
+            _IDCT = IDCT;
             InitializeComponent();
         }
 
@@ -67,9 +67,9 @@ namespace KTKS_DonKH.GUI.TruyThu
             }
             txtNoiDung.AutoCompleteCustomSource = auto1;
 
-            if (_MaCTTTTN != -1)
+            if (_IDCT != -1)
             {
-                txtMaCTTTTN.Text = _MaCTTTTN.ToString();
+                txtMaCTTTTN.Text = _IDCT.ToString();
                 KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
 
                 txtMaCTTTTN_KeyPress(sender, arg);
@@ -106,7 +106,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         _dontbc = _cDonTBC.Get(cttttn.TruyThuTienNuoc.MaDonTBC.Value);
                         txtMaDonCu.Text = "TBC" + cttttn.TruyThuTienNuoc.MaDonTBC.Value.ToString().Insert(cttttn.TruyThuTienNuoc.MaDonTBC.Value.ToString().Length - 2, "-");
                     }
-            txtMaCTTTTN.Text = cttttn.MaCTTTTN.ToString().Insert(cttttn.MaCTTTTN.ToString().Length - 2, "-");
+            txtMaCTTTTN.Text = cttttn.IDCT.ToString().Insert(cttttn.IDCT.ToString().Length - 2, "-");
             //chkXepDon.Checked = cttttn.XepDon;
             if (cttttn.NgayTinhTrang != null)
                 dateTinhTrang.Value = cttttn.NgayTinhTrang.Value;
@@ -142,8 +142,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                 dgvTruyThuTienNuoc["TongCong_Moi", dgvTruyThuTienNuoc.RowCount - 2].Value = item.TongCongMoi;
             }
 
-            LoadDSThanhToan(cttttn.MaCTTTTN);
-            LoadDSThuMoi(cttttn.MaCTTTTN);
+            LoadDSThanhToan(cttttn.IDCT);
+            LoadDSThuMoi(cttttn.IDCT);
 
             int Tongm3HoaDon = 0;
             int Tongm3ThucTe = 0;
@@ -201,7 +201,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             _dontbc = null;
             _hoadon = null;
             _cttttn = null;
-            _MaCTTTTN = -1;
+            _IDCT = -1;
             ///
             //dgvTruyThuTienNuoc.DataSource = null;
             dgvTruyThuTienNuoc.Rows.Clear();
@@ -221,14 +221,14 @@ namespace KTKS_DonKH.GUI.TruyThu
             txtVeViec.Text = "";
         }
 
-        public void LoadDSThanhToan(decimal MaCTTTTN)
+        public void LoadDSThanhToan(int IDCT)
         {
-            dgvThanhToanTruyThuTienNuoc.DataSource = _cTTTN.getDS_ThanhToan(MaCTTTTN);
+            dgvThanhToanTruyThuTienNuoc.DataSource = _cTTTN.getDS_ThanhToan(IDCT);
         }
 
-        public void LoadDSThuMoi(decimal MaCTTTTN)
+        public void LoadDSThuMoi(int IDCT)
         {
-            dgvThuMoi.DataSource = _cTTTN.getDS_ThuMoi(MaCTTTTN);
+            dgvThuMoi.DataSource = _cTTTN.getDS_ThuMoi(IDCT);
         }
 
         private void txtMaDonCu_KeyPress(object sender, KeyPressEventArgs e)
@@ -366,9 +366,9 @@ namespace KTKS_DonKH.GUI.TruyThu
         {
             if (e.KeyChar == 13 && txtMaCTTTTN.Text.Trim() != "")
             {
-                string MaCTTTTN = txtMaCTTTTN.Text.Trim();
+                string IDCT = txtMaCTTTTN.Text.Trim();
                 Clear();
-                _cttttn = _cTTTN.get_ChiTiet(decimal.Parse(MaCTTTTN));
+                _cttttn = _cTTTN.get_ChiTiet(int.Parse(IDCT));
                 if (_cttttn != null)
                     LoadTTTN(_cttttn);
                 else
@@ -708,7 +708,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                             MessageBox.Show("Danh Bộ này đã được Lập Truy Thu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        cttttn.MaTTTN = _cTTTN.get(_dontu_ChiTiet.MaDon.Value).MaTTTN;
+                        cttttn.ID = _cTTTN.get(_dontu_ChiTiet.MaDon.Value).ID;
                         cttttn.STT = _dontu_ChiTiet.STT.Value;
                     }
                     else
@@ -725,7 +725,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                             MessageBox.Show("Danh Bộ này đã được Lập Truy Thu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        cttttn.MaTTTN = _cTTTN.get("TKH", _dontkh.MaDon).MaTTTN;
+                        cttttn.ID = _cTTTN.get("TKH", _dontkh.MaDon).ID;
                     }
                     else
                         if (_dontxl != null)
@@ -741,7 +741,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 MessageBox.Show("Danh Bộ này đã được Lập Truy Thu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-                            cttttn.MaTTTN = _cTTTN.get("TXL", _dontkh.MaDon).MaTTTN;
+                            cttttn.ID = _cTTTN.get("TXL", _dontxl.MaDon).ID;
                         }
                         else
                             if (_dontbc != null)
@@ -757,7 +757,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     MessageBox.Show("Danh Bộ này đã được Lập Truy Thu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
-                                cttttn.MaTTTN = _cTTTN.get("TBC", _dontkh.MaDon).MaTTTN;
+                                cttttn.ID = _cTTTN.get("TBC", _dontbc.MaDon).ID;
                             }
                             else
                             {
@@ -793,13 +793,13 @@ namespace KTKS_DonKH.GUI.TruyThu
                     }
 
                     _cTTTN.Them_ChiTiet(cttttn);
-                    decimal MaCTTTTN = cttttn.MaCTTTTN;
+                    int IDCT = cttttn.IDCT;
 
                     /////thêm chi tiết
                     //foreach (DataGridViewRow item in dgvTruyThuTienNuoc.Rows)
                     //    if (item.Cells["Ky"].Value != null)
                     //    {
-                    //        if (_cTTTN.CheckExist_CT(MaCTTTTN, item.Cells["Ky"].Value.ToString(), item.Cells["Nam"].Value.ToString()))
+                    //        if (_cTTTN.CheckExist_CT(IDCT, item.Cells["Ky"].Value.ToString(), item.Cells["Nam"].Value.ToString()))
                     //        {
                     //            MessageBox.Show("Kỳ " + item.Cells["Ky"].Value.ToString() + "/" + item.Cells["Nam"].Value.ToString() + " đã có \rVui lòng xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //            return;
@@ -808,10 +808,10 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                     foreach (DataGridViewRow item in dgvTruyThuTienNuoc.Rows)
                         if(item.Cells["Ky"].Value != null&&item.Cells["Ky"].ToString()!="" )
-                            if (_cTTTN.CheckExist_HoaDon(MaCTTTTN, item.Cells["Ky"].Value.ToString(), item.Cells["Nam"].Value.ToString()) == false)
+                            if (_cTTTN.CheckExist_HoaDon(IDCT, item.Cells["Ky"].Value.ToString(), item.Cells["Nam"].Value.ToString()) == false)
                             {
                                 TruyThuTienNuoc_HoaDon cttttn_hoadon = new TruyThuTienNuoc_HoaDon();
-                                cttttn_hoadon.MaCTTTTN = MaCTTTTN;
+                                cttttn_hoadon.IDCT = IDCT;
                                 cttttn_hoadon.Ky = item.Cells["Ky"].Value.ToString();
                                 cttttn_hoadon.Nam = item.Cells["Nam"].Value.ToString();
                                 cttttn_hoadon.GiaBieuCu = int.Parse(item.Cells["GiaBieu_Cu"].Value.ToString());
@@ -838,7 +838,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                             }
                     _cTTTN.Refresh();
 
-                    cttttn = _cTTTN.get_ChiTiet(cttttn.MaCTTTTN);
+                    cttttn = _cTTTN.get_ChiTiet(cttttn.IDCT);
                     cttttn.TongTien = cttttn.TruyThuTienNuoc_HoaDons.Sum(item => item.TongCongMoi.Value) - cttttn.TruyThuTienNuoc_HoaDons.Sum(item => item.TongCongCu.Value);
                     cttttn.Tongm3BinhQuan = (int)Math.Round((double)cttttn.TongTien / cttttn.SoTien1m3);
                     _cTTTN.SubmitChanges();
@@ -894,12 +894,12 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                         foreach (DataGridViewRow item in dgvTruyThuTienNuoc.Rows)
                             if (item.Cells["Ky"].Value != null && item.Cells["Ky"].ToString() != "")
-                                if (_cTTTN.CheckExist_HoaDon(_cttttn.MaCTTTTN, item.Cells["Ky"].Value.ToString(), item.Cells["Nam"].Value.ToString()) == false)
-                                //if (item.Cells["MaCTTTTN"].Value == null || item.Cells["MaCTTTTN"].Value.ToString()=="")
+                                if (_cTTTN.CheckExist_HoaDon(_cttttn.IDCT, item.Cells["Ky"].Value.ToString(), item.Cells["Nam"].Value.ToString()) == false)
+                                //if (item.Cells["IDCT"].Value == null || item.Cells["IDCT"].Value.ToString()=="")
                                 {
                                     TruyThuTienNuoc_HoaDon cttttn_hoadon = new TruyThuTienNuoc_HoaDon();
 
-                                    cttttn_hoadon.MaCTTTTN = _cttttn.MaCTTTTN;
+                                    cttttn_hoadon.IDCT = _cttttn.IDCT;
                                     cttttn_hoadon.Ky = item.Cells["Ky"].Value.ToString();
                                     cttttn_hoadon.Nam = item.Cells["Nam"].Value.ToString();
                                     cttttn_hoadon.GiaBieuCu = int.Parse(item.Cells["GiaBieu_Cu"].Value.ToString());
@@ -926,8 +926,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 }
                                 else
                                 {
-                                    TruyThuTienNuoc_HoaDon cttttn_hoadon = _cTTTN.get_HoaDon(_cttttn.MaCTTTTN, item.Cells["Ky"].Value.ToString(), item.Cells["Nam"].Value.ToString());
-                                    //TruyThuTienNuoc_HoaDon cttttn_hoadon = _cTTTN.GetCT(int.Parse(item.Cells["MaCTTTTN"].Value.ToString()));
+                                    TruyThuTienNuoc_HoaDon cttttn_hoadon = _cTTTN.get_HoaDon(_cttttn.IDCT, item.Cells["Ky"].Value.ToString(), item.Cells["Nam"].Value.ToString());
+                                    //TruyThuTienNuoc_HoaDon cttttn_hoadon = _cTTTN.GetCT(int.Parse(item.Cells["IDCT"].Value.ToString()));
 
                                     cttttn_hoadon.Ky = item.Cells["Ky"].Value.ToString();
                                     cttttn_hoadon.Nam = item.Cells["Nam"].Value.ToString();
@@ -953,7 +953,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         _cTTTN.SubmitChanges();
                         _cTTTN.Refresh();
 
-                        _cttttn = _cTTTN.get_ChiTiet(_cttttn.MaCTTTTN);
+                        _cttttn = _cTTTN.get_ChiTiet(_cttttn.IDCT);
                         _cttttn.TongTien = _cttttn.TruyThuTienNuoc_HoaDons.Sum(item => item.TongCongMoi.Value) - _cttttn.TruyThuTienNuoc_HoaDons.Sum(item => item.TongCongCu.Value);
                         _cttttn.Tongm3BinhQuan = (int)Math.Round((double)_cttttn.TongTien / _cttttn.SoTien1m3);
                         _cTTTN.SubmitChanges();
@@ -1108,7 +1108,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     {
                         TruyThuTienNuoc_ThanhToan entity = new TruyThuTienNuoc_ThanhToan();
 
-                        entity.MaCTTTTN = _cttttn.MaCTTTTN;
+                        entity.IDCT = _cttttn.IDCT;
                         entity.NgayDong = dateDongTien.Value;
                         entity.SoTien = int.Parse(txtSoTien.Text.Trim());
 
@@ -1116,7 +1116,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             ClearThanhToan();
-                            LoadDSThanhToan(_cttttn.MaCTTTTN);
+                            LoadDSThanhToan(_cttttn.IDCT);
                         }
                     }
                 }
@@ -1146,7 +1146,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             ClearThanhToan();
-                            LoadDSThanhToan(_cttttn.MaCTTTTN);
+                            LoadDSThanhToan(_cttttn.IDCT);
                         }
                     }
                 }
@@ -1173,7 +1173,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             ClearThanhToan();
-                            LoadDSThanhToan(_cttttn.MaCTTTTN);
+                            LoadDSThanhToan(_cttttn.IDCT);
                         }
                     }
                 }
@@ -1218,7 +1218,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                             if (_cTTTN.Sua_ThanhToan(entity))
                             {
                                 ClearThanhToan();
-                                LoadDSThanhToan(_cttttn.MaCTTTTN);
+                                LoadDSThanhToan(_cttttn.IDCT);
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
@@ -1259,7 +1259,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     {
                         TruyThuTienNuoc_ThuMoi entity = new TruyThuTienNuoc_ThuMoi();
 
-                        entity.MaCTTTTN = _cttttn.MaCTTTTN;
+                        entity.IDCT = _cttttn.IDCT;
                         entity.VaoLuc = txtVaoLuc.Text.Trim();
                         entity.VeViec = txtVeViec.Text.Trim();
 
@@ -1270,7 +1270,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                             _cTTTN.SubmitChanges();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             ClearThuMoi();
-                            LoadDSThuMoi(_cttttn.MaCTTTTN);
+                            LoadDSThuMoi(_cttttn.IDCT);
                         }
                     }
                 }
@@ -1300,7 +1300,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             ClearThuMoi();
-                            LoadDSThuMoi(_cttttn.MaCTTTTN); 
+                            LoadDSThuMoi(_cttttn.IDCT); 
                         }
                     }
                 }
@@ -1327,7 +1327,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             ClearThuMoi();
-                            LoadDSThuMoi(_cttttn.MaCTTTTN);  
+                            LoadDSThuMoi(_cttttn.IDCT);  
                         }
                     }
                 }
@@ -1381,10 +1381,10 @@ namespace KTKS_DonKH.GUI.TruyThu
         {
             if (_cttttn != null)
             {
-                TruyThuTienNuoc_HoaDon cttttn = _cTTTN.get_HoaDon(_cttttn.MaCTTTTN, e.Row.Cells["Ky"].Value.ToString(), e.Row.Cells["Nam"].Value.ToString());
+                TruyThuTienNuoc_HoaDon cttttn = _cTTTN.get_HoaDon(_cttttn.IDCT, e.Row.Cells["Ky"].Value.ToString(), e.Row.Cells["Nam"].Value.ToString());
                 if (_cTTTN.Xoa_HoaDon(cttttn))
                 {
-                    _cttttn = _cTTTN.get_ChiTiet(_cttttn.MaCTTTTN);
+                    _cttttn = _cTTTN.get_ChiTiet(_cttttn.IDCT);
                     _cttttn.TongTien = _cttttn.TruyThuTienNuoc_HoaDons.Sum(item => item.TongCongMoi.Value) - _cttttn.TruyThuTienNuoc_HoaDons.Sum(item => item.TongCongCu.Value);
                     _cttttn.Tongm3BinhQuan = (int)Math.Round((double)_cttttn.TongTien / _cttttn.SoTien1m3);
                     _cTTTN.SubmitChanges();

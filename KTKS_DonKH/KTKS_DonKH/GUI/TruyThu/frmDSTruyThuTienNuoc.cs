@@ -78,7 +78,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             {
                 case "Số Phiếu":
                     if (txtNoiDungTimKiem.Text.Trim() != "")
-                        dgvDSTruyThuTienNuoc.DataSource = _cTTTN.GetDS(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                        dgvDSTruyThuTienNuoc.DataSource = _cTTTN.GetDS(int.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
                     break;
                 case "Danh Bộ":
                     if (txtNoiDungTimKiem.Text.Trim() != "")
@@ -117,7 +117,7 @@ namespace KTKS_DonKH.GUI.TruyThu
         {
             if (dgvDSTruyThuTienNuoc.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
             {
-                frmTruyThuTienNuoc frm = new frmTruyThuTienNuoc(decimal.Parse(dgvDSTruyThuTienNuoc["MaTTTN", dgvDSTruyThuTienNuoc.CurrentRow.Index].Value.ToString()));
+                frmTruyThuTienNuoc frm = new frmTruyThuTienNuoc(int.Parse(dgvDSTruyThuTienNuoc["IDCT", dgvDSTruyThuTienNuoc.CurrentRow.Index].Value.ToString()));
                 frm.ShowDialog();
             }
         }

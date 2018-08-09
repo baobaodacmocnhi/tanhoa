@@ -36764,9 +36764,9 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _VeViec;
 		
-		private System.Nullable<int> _STT;
+		private int _ID;
 		
-		private System.Nullable<int> _ID;
+		private System.Nullable<int> _STT;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
@@ -36804,10 +36804,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnVaoLucChanged();
     partial void OnVeViecChanging(string value);
     partial void OnVeViecChanged();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
     partial void OnSTTChanging(System.Nullable<int> value);
     partial void OnSTTChanged();
-    partial void OnIDChanging(System.Nullable<int> value);
-    partial void OnIDChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -37044,28 +37044,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", DbType="Int")]
-		public System.Nullable<int> STT
-		{
-			get
-			{
-				return this._STT;
-			}
-			set
-			{
-				if ((this._STT != value))
-				{
-					this.OnSTTChanging(value);
-					this.SendPropertyChanging();
-					this._STT = value;
-					this.SendPropertyChanged("STT");
-					this.OnSTTChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int")]
-		public System.Nullable<int> ID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
 		{
 			get
 			{
@@ -37084,6 +37064,26 @@ namespace KTKS_DonKH.LinQ
 					this._ID = value;
 					this.SendPropertyChanged("ID");
 					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", DbType="Int")]
+		public System.Nullable<int> STT
+		{
+			get
+			{
+				return this._STT;
+			}
+			set
+			{
+				if ((this._STT != value))
+				{
+					this.OnSTTChanging(value);
+					this.SendPropertyChanging();
+					this._STT = value;
+					this.SendPropertyChanged("STT");
+					this.OnSTTChanged();
 				}
 			}
 		}
@@ -37195,7 +37195,7 @@ namespace KTKS_DonKH.LinQ
 					}
 					else
 					{
-						this._ID = default(Nullable<int>);
+						this._ID = default(int);
 					}
 					this.SendPropertyChanged("ThuMoi");
 				}
@@ -37463,7 +37463,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private decimal _MaTT;
+		private int _ID;
 		
 		private System.Nullable<decimal> _MaDon;
 		
@@ -37493,8 +37493,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaTTChanging(decimal value);
-    partial void OnMaTTChanged();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
     partial void OnMaDonChanging(System.Nullable<decimal> value);
     partial void OnMaDonChanged();
     partial void OnMaDonTXLChanging(System.Nullable<decimal> value);
@@ -37522,22 +37522,22 @@ namespace KTKS_DonKH.LinQ
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTT", DbType="Decimal(18,0) NOT NULL", IsPrimaryKey=true)]
-		public decimal MaTT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
 		{
 			get
 			{
-				return this._MaTT;
+				return this._ID;
 			}
 			set
 			{
-				if ((this._MaTT != value))
+				if ((this._ID != value))
 				{
-					this.OnMaTTChanging(value);
+					this.OnIDChanging(value);
 					this.SendPropertyChanging();
-					this._MaTT = value;
-					this.SendPropertyChanged("MaTT");
-					this.OnMaTTChanged();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
 				}
 			}
 		}
@@ -37714,7 +37714,7 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ToTrinh_ToTrinh_ChiTiet", Storage="_ToTrinh_ChiTiets", ThisKey="MaTT", OtherKey="MaTT")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ToTrinh_ToTrinh_ChiTiet", Storage="_ToTrinh_ChiTiets", ThisKey="ID", OtherKey="ID")]
 		public EntitySet<ToTrinh_ChiTiet> ToTrinh_ChiTiets
 		{
 			get
@@ -37868,7 +37868,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private decimal _MaCTTT;
+		private int _IDCT;
 		
 		private string _DanhBo;
 		
@@ -37904,7 +37904,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _NoiNhan;
 		
-		private decimal _MaTT;
+		private int _ID;
 		
 		private System.Nullable<int> _STT;
 		
@@ -37942,8 +37942,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaCTTTChanging(decimal value);
-    partial void OnMaCTTTChanged();
+    partial void OnIDCTChanging(int value);
+    partial void OnIDCTChanged();
     partial void OnDanhBoChanging(string value);
     partial void OnDanhBoChanged();
     partial void OnHopDongChanging(string value);
@@ -37978,8 +37978,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnNoiDungChanged();
     partial void OnNoiNhanChanging(string value);
     partial void OnNoiNhanChanged();
-    partial void OnMaTTChanging(decimal value);
-    partial void OnMaTTChanged();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
     partial void OnSTTChanging(System.Nullable<int> value);
     partial void OnSTTChanged();
     partial void OnNguoiKyChanging(string value);
@@ -38018,22 +38018,22 @@ namespace KTKS_DonKH.LinQ
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaCTTT", DbType="Decimal(18,0) NOT NULL", IsPrimaryKey=true)]
-		public decimal MaCTTT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDCT", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int IDCT
 		{
 			get
 			{
-				return this._MaCTTT;
+				return this._IDCT;
 			}
 			set
 			{
-				if ((this._MaCTTT != value))
+				if ((this._IDCT != value))
 				{
-					this.OnMaCTTTChanging(value);
+					this.OnIDCTChanging(value);
 					this.SendPropertyChanging();
-					this._MaCTTT = value;
-					this.SendPropertyChanged("MaCTTT");
-					this.OnMaCTTTChanged();
+					this._IDCT = value;
+					this.SendPropertyChanged("IDCT");
+					this.OnIDCTChanged();
 				}
 			}
 		}
@@ -38378,26 +38378,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTT", DbType="Decimal(18,0) NOT NULL")]
-		public decimal MaTT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
 		{
 			get
 			{
-				return this._MaTT;
+				return this._ID;
 			}
 			set
 			{
-				if ((this._MaTT != value))
+				if ((this._ID != value))
 				{
 					if (this._ToTrinh.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnMaTTChanging(value);
+					this.OnIDChanging(value);
 					this.SendPropertyChanging();
-					this._MaTT = value;
-					this.SendPropertyChanged("MaTT");
-					this.OnMaTTChanged();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
 				}
 			}
 		}
@@ -38702,7 +38702,7 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ToTrinh_ToTrinh_ChiTiet", Storage="_ToTrinh", ThisKey="MaTT", OtherKey="MaTT", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ToTrinh_ToTrinh_ChiTiet", Storage="_ToTrinh", ThisKey="ID", OtherKey="ID", IsForeignKey=true)]
 		public ToTrinh ToTrinh
 		{
 			get
@@ -38725,11 +38725,11 @@ namespace KTKS_DonKH.LinQ
 					if ((value != null))
 					{
 						value.ToTrinh_ChiTiets.Add(this);
-						this._MaTT = value.MaTT;
+						this._ID = value.ID;
 					}
 					else
 					{
-						this._MaTT = default(decimal);
+						this._ID = default(int);
 					}
 					this.SendPropertyChanged("ToTrinh");
 				}
@@ -38763,11 +38763,11 @@ namespace KTKS_DonKH.LinQ
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _MaVV;
+		private int _ID;
 		
 		private System.Nullable<int> _STT;
 		
-		private string _TenVV;
+		private string _Name;
 		
 		private string _NoiDung;
 		
@@ -38785,12 +38785,12 @@ namespace KTKS_DonKH.LinQ
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaVVChanging(int value);
-    partial void OnMaVVChanged();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
     partial void OnSTTChanging(System.Nullable<int> value);
     partial void OnSTTChanged();
-    partial void OnTenVVChanging(string value);
-    partial void OnTenVVChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
     partial void OnNoiDungChanging(string value);
     partial void OnNoiDungChanged();
     partial void OnNoiNhanChanging(string value);
@@ -38810,22 +38810,22 @@ namespace KTKS_DonKH.LinQ
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaVV", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int MaVV
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
 		{
 			get
 			{
-				return this._MaVV;
+				return this._ID;
 			}
 			set
 			{
-				if ((this._MaVV != value))
+				if ((this._ID != value))
 				{
-					this.OnMaVVChanging(value);
+					this.OnIDChanging(value);
 					this.SendPropertyChanging();
-					this._MaVV = value;
-					this.SendPropertyChanged("MaVV");
-					this.OnMaVVChanged();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
 				}
 			}
 		}
@@ -38850,22 +38850,22 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenVV", DbType="NVarChar(MAX)")]
-		public string TenVV
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(MAX)")]
+		public string Name
 		{
 			get
 			{
-				return this._TenVV;
+				return this._Name;
 			}
 			set
 			{
-				if ((this._TenVV != value))
+				if ((this._Name != value))
 				{
-					this.OnTenVVChanging(value);
+					this.OnNameChanging(value);
 					this.SendPropertyChanging();
-					this._TenVV = value;
-					this.SendPropertyChanged("TenVV");
-					this.OnTenVVChanged();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
 				}
 			}
 		}
@@ -39017,7 +39017,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private decimal _MaTTTN;
+		private int _ID;
 		
 		private System.Nullable<decimal> _MaDon;
 		
@@ -39049,8 +39049,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaTTTNChanging(decimal value);
-    partial void OnMaTTTNChanged();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
     partial void OnMaDonChanging(System.Nullable<decimal> value);
     partial void OnMaDonChanged();
     partial void OnMaDonTXLChanging(System.Nullable<decimal> value);
@@ -39079,22 +39079,22 @@ namespace KTKS_DonKH.LinQ
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTTTN", DbType="Decimal(18,0) NOT NULL", IsPrimaryKey=true)]
-		public decimal MaTTTN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
 		{
 			get
 			{
-				return this._MaTTTN;
+				return this._ID;
 			}
 			set
 			{
-				if ((this._MaTTTN != value))
+				if ((this._ID != value))
 				{
-					this.OnMaTTTNChanging(value);
+					this.OnIDChanging(value);
 					this.SendPropertyChanging();
-					this._MaTTTN = value;
-					this.SendPropertyChanged("MaTTTN");
-					this.OnMaTTTNChanged();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
 				}
 			}
 		}
@@ -39275,7 +39275,7 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TruyThuTienNuoc_TruyThuTienNuoc_ChiTiet", Storage="_TruyThuTienNuoc_ChiTiets", ThisKey="MaTTTN", OtherKey="MaTTTN")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TruyThuTienNuoc_TruyThuTienNuoc_ChiTiet", Storage="_TruyThuTienNuoc_ChiTiets", ThisKey="ID", OtherKey="ID")]
 		public EntitySet<TruyThuTienNuoc_ChiTiet> TruyThuTienNuoc_ChiTiets
 		{
 			get
@@ -39463,7 +39463,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private decimal _MaCTTTTN;
+		private int _IDCT;
 		
 		private System.Nullable<int> _STT;
 		
@@ -39507,7 +39507,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private int _TongTien;
 		
-		private System.Nullable<decimal> _MaTTTN;
+		private System.Nullable<int> _ID;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
@@ -39519,8 +39519,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntitySet<TruyThuTienNuoc_HoaDon> _TruyThuTienNuoc_HoaDons;
 		
-		private EntitySet<TruyThuTienNuoc_ThanhToan> _TruyThuTienNuoc_ThanhToans;
-		
 		private EntitySet<TruyThuTienNuoc_ThuMoi> _TruyThuTienNuoc_ThuMois;
 		
 		private EntityRef<TruyThuTienNuoc> _TruyThuTienNuoc;
@@ -39529,8 +39527,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaCTTTTNChanging(decimal value);
-    partial void OnMaCTTTTNChanged();
+    partial void OnIDCTChanging(int value);
+    partial void OnIDCTChanged();
     partial void OnSTTChanging(System.Nullable<int> value);
     partial void OnSTTChanged();
     partial void OnDanhBoChanging(string value);
@@ -39573,8 +39571,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnTongm3BinhQuanChanged();
     partial void OnTongTienChanging(int value);
     partial void OnTongTienChanged();
-    partial void OnMaTTTNChanging(System.Nullable<decimal> value);
-    partial void OnMaTTTNChanged();
+    partial void OnIDChanging(System.Nullable<int> value);
+    partial void OnIDChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -39588,28 +39586,27 @@ namespace KTKS_DonKH.LinQ
 		public TruyThuTienNuoc_ChiTiet()
 		{
 			this._TruyThuTienNuoc_HoaDons = new EntitySet<TruyThuTienNuoc_HoaDon>(new Action<TruyThuTienNuoc_HoaDon>(this.attach_TruyThuTienNuoc_HoaDons), new Action<TruyThuTienNuoc_HoaDon>(this.detach_TruyThuTienNuoc_HoaDons));
-			this._TruyThuTienNuoc_ThanhToans = new EntitySet<TruyThuTienNuoc_ThanhToan>(new Action<TruyThuTienNuoc_ThanhToan>(this.attach_TruyThuTienNuoc_ThanhToans), new Action<TruyThuTienNuoc_ThanhToan>(this.detach_TruyThuTienNuoc_ThanhToans));
 			this._TruyThuTienNuoc_ThuMois = new EntitySet<TruyThuTienNuoc_ThuMoi>(new Action<TruyThuTienNuoc_ThuMoi>(this.attach_TruyThuTienNuoc_ThuMois), new Action<TruyThuTienNuoc_ThuMoi>(this.detach_TruyThuTienNuoc_ThuMois));
 			this._TruyThuTienNuoc = default(EntityRef<TruyThuTienNuoc>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaCTTTTN", DbType="Decimal(18,0) NOT NULL", IsPrimaryKey=true)]
-		public decimal MaCTTTTN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDCT", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int IDCT
 		{
 			get
 			{
-				return this._MaCTTTTN;
+				return this._IDCT;
 			}
 			set
 			{
-				if ((this._MaCTTTTN != value))
+				if ((this._IDCT != value))
 				{
-					this.OnMaCTTTTNChanging(value);
+					this.OnIDCTChanging(value);
 					this.SendPropertyChanging();
-					this._MaCTTTTN = value;
-					this.SendPropertyChanged("MaCTTTTN");
-					this.OnMaCTTTTNChanged();
+					this._IDCT = value;
+					this.SendPropertyChanged("IDCT");
+					this.OnIDCTChanged();
 				}
 			}
 		}
@@ -40034,26 +40031,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTTTN", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> MaTTTN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int")]
+		public System.Nullable<int> ID
 		{
 			get
 			{
-				return this._MaTTTN;
+				return this._ID;
 			}
 			set
 			{
-				if ((this._MaTTTN != value))
+				if ((this._ID != value))
 				{
 					if (this._TruyThuTienNuoc.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnMaTTTNChanging(value);
+					this.OnIDChanging(value);
 					this.SendPropertyChanging();
-					this._MaTTTN = value;
-					this.SendPropertyChanged("MaTTTN");
-					this.OnMaTTTNChanged();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
 				}
 			}
 		}
@@ -40138,7 +40135,7 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TruyThuTienNuoc_ChiTiet_TruyThuTienNuoc_HoaDon", Storage="_TruyThuTienNuoc_HoaDons", ThisKey="MaCTTTTN", OtherKey="MaCTTTTN")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TruyThuTienNuoc_ChiTiet_TruyThuTienNuoc_HoaDon", Storage="_TruyThuTienNuoc_HoaDons", ThisKey="IDCT", OtherKey="IDCT")]
 		public EntitySet<TruyThuTienNuoc_HoaDon> TruyThuTienNuoc_HoaDons
 		{
 			get
@@ -40151,20 +40148,7 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TruyThuTienNuoc_ChiTiet_TruyThuTienNuoc_ThanhToan", Storage="_TruyThuTienNuoc_ThanhToans", ThisKey="MaCTTTTN", OtherKey="MaCTTTTN")]
-		public EntitySet<TruyThuTienNuoc_ThanhToan> TruyThuTienNuoc_ThanhToans
-		{
-			get
-			{
-				return this._TruyThuTienNuoc_ThanhToans;
-			}
-			set
-			{
-				this._TruyThuTienNuoc_ThanhToans.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TruyThuTienNuoc_ChiTiet_TruyThuTienNuoc_ThuMoi", Storage="_TruyThuTienNuoc_ThuMois", ThisKey="MaCTTTTN", OtherKey="MaCTTTTN")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TruyThuTienNuoc_ChiTiet_TruyThuTienNuoc_ThuMoi", Storage="_TruyThuTienNuoc_ThuMois", ThisKey="IDCT", OtherKey="IDCT")]
 		public EntitySet<TruyThuTienNuoc_ThuMoi> TruyThuTienNuoc_ThuMois
 		{
 			get
@@ -40177,7 +40161,7 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TruyThuTienNuoc_TruyThuTienNuoc_ChiTiet", Storage="_TruyThuTienNuoc", ThisKey="MaTTTN", OtherKey="MaTTTN", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TruyThuTienNuoc_TruyThuTienNuoc_ChiTiet", Storage="_TruyThuTienNuoc", ThisKey="ID", OtherKey="ID", IsForeignKey=true)]
 		public TruyThuTienNuoc TruyThuTienNuoc
 		{
 			get
@@ -40200,11 +40184,11 @@ namespace KTKS_DonKH.LinQ
 					if ((value != null))
 					{
 						value.TruyThuTienNuoc_ChiTiets.Add(this);
-						this._MaTTTN = value.MaTTTN;
+						this._ID = value.ID;
 					}
 					else
 					{
-						this._MaTTTN = default(Nullable<decimal>);
+						this._ID = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("TruyThuTienNuoc");
 				}
@@ -40238,18 +40222,6 @@ namespace KTKS_DonKH.LinQ
 		}
 		
 		private void detach_TruyThuTienNuoc_HoaDons(TruyThuTienNuoc_HoaDon entity)
-		{
-			this.SendPropertyChanging();
-			entity.TruyThuTienNuoc_ChiTiet = null;
-		}
-		
-		private void attach_TruyThuTienNuoc_ThanhToans(TruyThuTienNuoc_ThanhToan entity)
-		{
-			this.SendPropertyChanging();
-			entity.TruyThuTienNuoc_ChiTiet = this;
-		}
-		
-		private void detach_TruyThuTienNuoc_ThanhToans(TruyThuTienNuoc_ThanhToan entity)
 		{
 			this.SendPropertyChanging();
 			entity.TruyThuTienNuoc_ChiTiet = null;
@@ -40310,7 +40282,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _TangGiam;
 		
-		private System.Nullable<decimal> _MaCTTTTN;
+		private System.Nullable<int> _IDCT;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
@@ -40362,8 +40334,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnTongCongMoiChanged();
     partial void OnTangGiamChanging(string value);
     partial void OnTangGiamChanged();
-    partial void OnMaCTTTTNChanging(System.Nullable<decimal> value);
-    partial void OnMaCTTTTNChanged();
+    partial void OnIDCTChanging(System.Nullable<int> value);
+    partial void OnIDCTChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -40740,26 +40712,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaCTTTTN", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> MaCTTTTN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDCT", DbType="Int")]
+		public System.Nullable<int> IDCT
 		{
 			get
 			{
-				return this._MaCTTTTN;
+				return this._IDCT;
 			}
 			set
 			{
-				if ((this._MaCTTTTN != value))
+				if ((this._IDCT != value))
 				{
 					if (this._TruyThuTienNuoc_ChiTiet.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnMaCTTTTNChanging(value);
+					this.OnIDCTChanging(value);
 					this.SendPropertyChanging();
-					this._MaCTTTTN = value;
-					this.SendPropertyChanged("MaCTTTTN");
-					this.OnMaCTTTTNChanged();
+					this._IDCT = value;
+					this.SendPropertyChanged("IDCT");
+					this.OnIDCTChanged();
 				}
 			}
 		}
@@ -40844,7 +40816,7 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TruyThuTienNuoc_ChiTiet_TruyThuTienNuoc_HoaDon", Storage="_TruyThuTienNuoc_ChiTiet", ThisKey="MaCTTTTN", OtherKey="MaCTTTTN", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TruyThuTienNuoc_ChiTiet_TruyThuTienNuoc_HoaDon", Storage="_TruyThuTienNuoc_ChiTiet", ThisKey="IDCT", OtherKey="IDCT", IsForeignKey=true)]
 		public TruyThuTienNuoc_ChiTiet TruyThuTienNuoc_ChiTiet
 		{
 			get
@@ -40867,11 +40839,11 @@ namespace KTKS_DonKH.LinQ
 					if ((value != null))
 					{
 						value.TruyThuTienNuoc_HoaDons.Add(this);
-						this._MaCTTTTN = value.MaCTTTTN;
+						this._IDCT = value.IDCT;
 					}
 					else
 					{
-						this._MaCTTTTN = default(Nullable<decimal>);
+						this._IDCT = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("TruyThuTienNuoc_ChiTiet");
 				}
@@ -40913,7 +40885,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _DaThanhToan;
 		
-		private System.Nullable<decimal> _MaCTTTTN;
+		private System.Nullable<int> _IDCT;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
@@ -40922,8 +40894,6 @@ namespace KTKS_DonKH.LinQ
 		private System.Nullable<System.DateTime> _ModifyDate;
 		
 		private System.Nullable<int> _ModifyBy;
-		
-		private EntityRef<TruyThuTienNuoc_ChiTiet> _TruyThuTienNuoc_ChiTiet;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -40937,8 +40907,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnSoTienChanged();
     partial void OnDaThanhToanChanging(bool value);
     partial void OnDaThanhToanChanged();
-    partial void OnMaCTTTTNChanging(System.Nullable<decimal> value);
-    partial void OnMaCTTTTNChanged();
+    partial void OnIDCTChanging(System.Nullable<int> value);
+    partial void OnIDCTChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -40951,7 +40921,6 @@ namespace KTKS_DonKH.LinQ
 		
 		public TruyThuTienNuoc_ThanhToan()
 		{
-			this._TruyThuTienNuoc_ChiTiet = default(EntityRef<TruyThuTienNuoc_ChiTiet>);
 			OnCreated();
 		}
 		
@@ -41035,26 +41004,22 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaCTTTTN", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> MaCTTTTN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDCT", DbType="Int")]
+		public System.Nullable<int> IDCT
 		{
 			get
 			{
-				return this._MaCTTTTN;
+				return this._IDCT;
 			}
 			set
 			{
-				if ((this._MaCTTTTN != value))
+				if ((this._IDCT != value))
 				{
-					if (this._TruyThuTienNuoc_ChiTiet.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnMaCTTTTNChanging(value);
+					this.OnIDCTChanging(value);
 					this.SendPropertyChanging();
-					this._MaCTTTTN = value;
-					this.SendPropertyChanged("MaCTTTTN");
-					this.OnMaCTTTTNChanged();
+					this._IDCT = value;
+					this.SendPropertyChanged("IDCT");
+					this.OnIDCTChanged();
 				}
 			}
 		}
@@ -41139,40 +41104,6 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TruyThuTienNuoc_ChiTiet_TruyThuTienNuoc_ThanhToan", Storage="_TruyThuTienNuoc_ChiTiet", ThisKey="MaCTTTTN", OtherKey="MaCTTTTN", IsForeignKey=true)]
-		public TruyThuTienNuoc_ChiTiet TruyThuTienNuoc_ChiTiet
-		{
-			get
-			{
-				return this._TruyThuTienNuoc_ChiTiet.Entity;
-			}
-			set
-			{
-				TruyThuTienNuoc_ChiTiet previousValue = this._TruyThuTienNuoc_ChiTiet.Entity;
-				if (((previousValue != value) 
-							|| (this._TruyThuTienNuoc_ChiTiet.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TruyThuTienNuoc_ChiTiet.Entity = null;
-						previousValue.TruyThuTienNuoc_ThanhToans.Remove(this);
-					}
-					this._TruyThuTienNuoc_ChiTiet.Entity = value;
-					if ((value != null))
-					{
-						value.TruyThuTienNuoc_ThanhToans.Add(this);
-						this._MaCTTTTN = value.MaCTTTTN;
-					}
-					else
-					{
-						this._MaCTTTTN = default(Nullable<decimal>);
-					}
-					this.SendPropertyChanged("TruyThuTienNuoc_ChiTiet");
-				}
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -41208,7 +41139,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _VeViec;
 		
-		private System.Nullable<decimal> _MaCTTTTN;
+		private System.Nullable<int> _IDCT;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
@@ -41232,8 +41163,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnVaoLucChanged();
     partial void OnVeViecChanging(string value);
     partial void OnVeViecChanged();
-    partial void OnMaCTTTTNChanging(System.Nullable<decimal> value);
-    partial void OnMaCTTTTNChanged();
+    partial void OnIDCTChanging(System.Nullable<int> value);
+    partial void OnIDCTChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -41330,26 +41261,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaCTTTTN", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> MaCTTTTN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDCT", DbType="Int")]
+		public System.Nullable<int> IDCT
 		{
 			get
 			{
-				return this._MaCTTTTN;
+				return this._IDCT;
 			}
 			set
 			{
-				if ((this._MaCTTTTN != value))
+				if ((this._IDCT != value))
 				{
 					if (this._TruyThuTienNuoc_ChiTiet.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnMaCTTTTNChanging(value);
+					this.OnIDCTChanging(value);
 					this.SendPropertyChanging();
-					this._MaCTTTTN = value;
-					this.SendPropertyChanged("MaCTTTTN");
-					this.OnMaCTTTTNChanged();
+					this._IDCT = value;
+					this.SendPropertyChanged("IDCT");
+					this.OnIDCTChanged();
 				}
 			}
 		}
@@ -41434,7 +41365,7 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TruyThuTienNuoc_ChiTiet_TruyThuTienNuoc_ThuMoi", Storage="_TruyThuTienNuoc_ChiTiet", ThisKey="MaCTTTTN", OtherKey="MaCTTTTN", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TruyThuTienNuoc_ChiTiet_TruyThuTienNuoc_ThuMoi", Storage="_TruyThuTienNuoc_ChiTiet", ThisKey="IDCT", OtherKey="IDCT", IsForeignKey=true)]
 		public TruyThuTienNuoc_ChiTiet TruyThuTienNuoc_ChiTiet
 		{
 			get
@@ -41457,11 +41388,11 @@ namespace KTKS_DonKH.LinQ
 					if ((value != null))
 					{
 						value.TruyThuTienNuoc_ThuMois.Add(this);
-						this._MaCTTTTN = value.MaCTTTTN;
+						this._IDCT = value.IDCT;
 					}
 					else
 					{
-						this._MaCTTTTN = default(Nullable<decimal>);
+						this._IDCT = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("TruyThuTienNuoc_ChiTiet");
 				}

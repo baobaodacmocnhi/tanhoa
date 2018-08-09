@@ -1564,7 +1564,7 @@
             // gridColumn69
             // 
             this.gridColumn69.Caption = "Mã TT";
-            this.gridColumn69.FieldName = "MaCTTT";
+            this.gridColumn69.FieldName = "IDCT";
             this.gridColumn69.Name = "gridColumn69";
             this.gridColumn69.OptionsColumn.AllowEdit = false;
             this.gridColumn69.Visible = true;

@@ -43,6 +43,10 @@
             this.txtVeViec = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtDinhMuc = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtGiaBieu = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtHoTen = new System.Windows.Forms.TextBox();
@@ -63,20 +67,16 @@
             this.label27 = new System.Windows.Forms.Label();
             this.btnXem = new System.Windows.Forms.Button();
             this.dgvToTrinh = new System.Windows.Forms.DataGridView();
-            this.MaCTTT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnIn = new System.Windows.Forms.Button();
+            this.cmbVeViec = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.IDCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VeViec = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnIn = new System.Windows.Forms.Button();
-            this.cmbVeViec = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtDinhMuc = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtGiaBieu = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel_KhoangThoiGian.SuspendLayout();
@@ -220,6 +220,38 @@
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Khách Hàng";
+            // 
+            // txtDinhMuc
+            // 
+            this.txtDinhMuc.Location = new System.Drawing.Point(720, 24);
+            this.txtDinhMuc.Name = "txtDinhMuc";
+            this.txtDinhMuc.Size = new System.Drawing.Size(35, 22);
+            this.txtDinhMuc.TabIndex = 17;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(649, 27);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 16);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Định Mức:";
+            // 
+            // txtGiaBieu
+            // 
+            this.txtGiaBieu.Location = new System.Drawing.Point(608, 24);
+            this.txtGiaBieu.Name = "txtGiaBieu";
+            this.txtGiaBieu.Size = new System.Drawing.Size(35, 22);
+            this.txtGiaBieu.TabIndex = 15;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(540, 28);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(62, 16);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Giá Biểu:";
             // 
             // txtDiaChi
             // 
@@ -411,7 +443,7 @@
             this.dgvToTrinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvToTrinh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvToTrinh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MaCTTT,
+            this.IDCT,
             this.MaDon,
             this.DanhBo,
             this.HoTen,
@@ -426,12 +458,40 @@
             this.dgvToTrinh.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvToTrinh_CellFormatting);
             this.dgvToTrinh.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvToTrinh_RowPostPaint);
             // 
-            // MaCTTT
+            // btnIn
             // 
-            this.MaCTTT.DataPropertyName = "MaCTTT";
-            this.MaCTTT.HeaderText = "Mã TT";
-            this.MaCTTT.Name = "MaCTTT";
-            this.MaCTTT.Width = 80;
+            this.btnIn.Location = new System.Drawing.Point(796, 319);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(75, 25);
+            this.btnIn.TabIndex = 102;
+            this.btnIn.Text = "In";
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
+            // cmbVeViec
+            // 
+            this.cmbVeViec.FormattingEnabled = true;
+            this.cmbVeViec.Location = new System.Drawing.Point(796, 149);
+            this.cmbVeViec.Name = "cmbVeViec";
+            this.cmbVeViec.Size = new System.Drawing.Size(300, 24);
+            this.cmbVeViec.TabIndex = 104;
+            this.cmbVeViec.SelectedIndexChanged += new System.EventHandler(this.cmbVeViec_SelectedIndexChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(796, 130);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(58, 16);
+            this.label8.TabIndex = 103;
+            this.label8.Text = "Về Việc:";
+            // 
+            // IDCT
+            // 
+            this.IDCT.DataPropertyName = "IDCT";
+            this.IDCT.HeaderText = "Mã TT";
+            this.IDCT.Name = "IDCT";
+            this.IDCT.Width = 80;
             // 
             // MaDon
             // 
@@ -472,66 +532,6 @@
             this.NoiDung.HeaderText = "Nội Dung";
             this.NoiDung.Name = "NoiDung";
             this.NoiDung.Width = 200;
-            // 
-            // btnIn
-            // 
-            this.btnIn.Location = new System.Drawing.Point(796, 319);
-            this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(75, 25);
-            this.btnIn.TabIndex = 102;
-            this.btnIn.Text = "In";
-            this.btnIn.UseVisualStyleBackColor = true;
-            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
-            // 
-            // cmbVeViec
-            // 
-            this.cmbVeViec.FormattingEnabled = true;
-            this.cmbVeViec.Location = new System.Drawing.Point(796, 149);
-            this.cmbVeViec.Name = "cmbVeViec";
-            this.cmbVeViec.Size = new System.Drawing.Size(300, 24);
-            this.cmbVeViec.TabIndex = 104;
-            this.cmbVeViec.SelectedIndexChanged += new System.EventHandler(this.cmbVeViec_SelectedIndexChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(796, 130);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(58, 16);
-            this.label8.TabIndex = 103;
-            this.label8.Text = "Về Việc:";
-            // 
-            // txtDinhMuc
-            // 
-            this.txtDinhMuc.Location = new System.Drawing.Point(720, 24);
-            this.txtDinhMuc.Name = "txtDinhMuc";
-            this.txtDinhMuc.Size = new System.Drawing.Size(35, 22);
-            this.txtDinhMuc.TabIndex = 17;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(649, 27);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(65, 16);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "Định Mức:";
-            // 
-            // txtGiaBieu
-            // 
-            this.txtGiaBieu.Location = new System.Drawing.Point(608, 24);
-            this.txtGiaBieu.Name = "txtGiaBieu";
-            this.txtGiaBieu.Size = new System.Drawing.Size(35, 22);
-            this.txtGiaBieu.TabIndex = 15;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(540, 28);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 16);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Giá Biểu:";
             // 
             // frmToTrinh
             // 
@@ -611,18 +611,18 @@
         private System.Windows.Forms.Button btnXem;
         private System.Windows.Forms.DataGridView dgvToTrinh;
         private System.Windows.Forms.Button btnIn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaCTTT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn VeViec;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
         private System.Windows.Forms.ComboBox cmbVeViec;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtDinhMuc;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtGiaBieu;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDCT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VeViec;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
     }
 }

@@ -110,9 +110,11 @@ namespace KTKS_DonKH.GUI.ThuMoi
             txtGiaBieu.Text = "";
             txtDinhMuc.Text = "";
             ///
-            txtCanCu.Text = "Theo biên bản kiểm tra sử dụng nước";
+            //txtCanCu.Text = "Theo biên bản kiểm tra sử dụng nước";
+            txtCanCu.Text = "";
             txtVaoLuc.Text = "";
-            txtVeViec.Text = "Thanh toán chi phí (đồng hồ nước) đứt chì góc theo biên bản số";
+            //txtVeViec.Text = "Thanh toán chi phí (đồng hồ nước) đứt chì góc theo biên bản số";
+            txtVeViec.Text = "";
 
             _dontu_ChiTiet = null;
             _dontkh = null;
@@ -139,22 +141,22 @@ namespace KTKS_DonKH.GUI.ThuMoi
                         
                         dgvDSThu.DataSource = _cThuMoi.getDS_ChiTiet("TXL", _dontxl.MaDon);
 
-                        if (_cThuTien.GetMoiNhat(_dontxl.DanhBo) != null)
+                        _hoadon = _cThuTien.GetMoiNhat(_dontxl.DanhBo);
+                        if (_hoadon != null)
                         {
-                            _hoadon = _cThuTien.GetMoiNhat(_dontxl.DanhBo);
                             LoadTTKH(_hoadon);
                         }
                         else
                         {
                             MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                            txtDanhBo.Text = _dontxl.DanhBo;
-                            txtHopDong.Text = _dontxl.HopDong;
-                            txtLoTrinh.Text = _dontxl.MLT;
-                            txtHoTen.Text = _dontxl.HoTen;
-                            txtDiaChi.Text = _dontxl.DiaChi;
-                            txtGiaBieu.Text = _dontxl.GiaBieu;
-                            txtDinhMuc.Text = _dontxl.DinhMuc;
+                            //txtDanhBo.Text = _dontxl.DanhBo;
+                            //txtHopDong.Text = _dontxl.HopDong;
+                            //txtLoTrinh.Text = _dontxl.MLT;
+                            //txtHoTen.Text = _dontxl.HoTen;
+                            //txtDiaChi.Text = _dontxl.DiaChi;
+                            //txtGiaBieu.Text = _dontxl.GiaBieu;
+                            //txtDinhMuc.Text = _dontxl.DinhMuc;
                         }
                     }
                     else
@@ -169,22 +171,22 @@ namespace KTKS_DonKH.GUI.ThuMoi
                             txtMaDonCu.Text = "TBC" + _dontbc.MaDon.ToString().Insert(_dontbc.MaDon.ToString().Length - 2, "-");
                             dgvDSThu.DataSource = _cThuMoi.getDS_ChiTiet("TBC", _dontbc.MaDon);
 
-                            if (_cThuTien.GetMoiNhat(_dontbc.DanhBo) != null)
+                            _hoadon = _cThuTien.GetMoiNhat(_dontbc.DanhBo);
+                            if (_hoadon != null)
                             {
-                                _hoadon = _cThuTien.GetMoiNhat(_dontbc.DanhBo);
                                 LoadTTKH(_hoadon);
                             }
                             else
                             {
                                 MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                                txtDanhBo.Text = _dontbc.DanhBo;
-                                txtHopDong.Text = _dontbc.HopDong;
-                                txtLoTrinh.Text = _dontbc.MLT;
-                                txtHoTen.Text = _dontbc.HoTen;
-                                txtDiaChi.Text = _dontbc.DiaChi;
-                                txtGiaBieu.Text = _dontbc.GiaBieu;
-                                txtDinhMuc.Text = _dontbc.DinhMuc;
+                                //txtDanhBo.Text = _dontbc.DanhBo;
+                                //txtHopDong.Text = _dontbc.HopDong;
+                                //txtLoTrinh.Text = _dontbc.MLT;
+                                //txtHoTen.Text = _dontbc.HoTen;
+                                //txtDiaChi.Text = _dontbc.DiaChi;
+                                //txtGiaBieu.Text = _dontbc.GiaBieu;
+                                //txtDinhMuc.Text = _dontbc.DinhMuc;
                             }
                         }
                         else
@@ -198,22 +200,22 @@ namespace KTKS_DonKH.GUI.ThuMoi
                             txtMaDonCu.Text = _dontkh.MaDon.ToString().Insert(_dontkh.MaDon.ToString().Length - 2, "-");
                             dgvDSThu.DataSource = _cThuMoi.getDS_ChiTiet("TKH", _dontkh.MaDon);
 
-                            if (_cThuTien.GetMoiNhat(_dontkh.DanhBo) != null)
+                            _hoadon = _cThuTien.GetMoiNhat(_dontkh.DanhBo);
+                            if (_hoadon != null)
                             {
-                                _hoadon = _cThuTien.GetMoiNhat(_dontkh.DanhBo);
                                 LoadTTKH(_hoadon);
                             }
                             else
                             {
                                 MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                                txtDanhBo.Text = _dontkh.DanhBo;
-                                txtHopDong.Text = _dontkh.HopDong;
-                                txtLoTrinh.Text = _dontkh.MLT;
-                                txtHoTen.Text = _dontkh.HoTen;
-                                txtDiaChi.Text = _dontkh.DiaChi;
-                                txtGiaBieu.Text = _dontkh.GiaBieu;
-                                txtDinhMuc.Text = _dontkh.DinhMuc;
+                                //txtDanhBo.Text = _dontkh.DanhBo;
+                                //txtHopDong.Text = _dontkh.HopDong;
+                                //txtLoTrinh.Text = _dontkh.MLT;
+                                //txtHoTen.Text = _dontkh.HoTen;
+                                //txtDiaChi.Text = _dontkh.DiaChi;
+                                //txtGiaBieu.Text = _dontkh.GiaBieu;
+                                //txtDinhMuc.Text = _dontkh.DinhMuc;
                             }
                         }
                         else
@@ -266,7 +268,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
 
                     if (_dontu_ChiTiet != null)
                     {
-                        if (_cThuMoi.checkExist( _dontu_ChiTiet.MaDon.Value) == false)
+                        if (_cThuMoi.checkExist(_dontu_ChiTiet.MaDon.Value) == false)
                         {
                             LinQ.ThuMoi tm = new LinQ.ThuMoi();
                             tm.MaDonTKH = _dontu_ChiTiet.MaDon;
@@ -276,68 +278,84 @@ namespace KTKS_DonKH.GUI.ThuMoi
                         {
                             if (MessageBox.Show("Danh Bộ này đã được Lập Thư\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                                 return;
+                            else
+                                entity.Lan = _cThuMoi.maxLan_ChiTiet(_dontu_ChiTiet.MaDon.Value, txtDanhBo.Text.Trim()) + 1;
                         }
+                        else
+                            entity.Lan = 2;
                         entity.ID = _cThuMoi.get(_dontu_ChiTiet.MaDon.Value).ID;
                     }
                     else
-                    if (_dontkh != null)
-                    {
-                        if (_cThuMoi.checkExist("TKH", _dontkh.MaDon) == false)
+                        if (_dontkh != null)
                         {
-                            LinQ.ThuMoi tm = new LinQ.ThuMoi();
-                            tm.MaDonTKH = _dontkh.MaDon;
-                            _cThuMoi.them(tm);
-                        }
-                        if (_cThuMoi.checkExist_ChiTiet("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim()) == true)
-                        {
-                            if (MessageBox.Show("Danh Bộ này đã được Lập Thư\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                            return;
-                        }
-                        entity.ID = _cThuMoi.get("TKH", _dontkh.MaDon).ID;
-                    }
-                    else
-                        if (_dontxl != null)
-                        {
-                            if (_cThuMoi.checkExist("TXL", _dontkh.MaDon) == false)
+                            if (_cThuMoi.checkExist("TKH", _dontkh.MaDon) == false)
                             {
                                 LinQ.ThuMoi tm = new LinQ.ThuMoi();
-                                tm.MaDonTXL = _dontxl.MaDon;
+                                tm.MaDonTKH = _dontkh.MaDon;
                                 _cThuMoi.them(tm);
                             }
-                            if (_cThuMoi.checkExist_ChiTiet("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim()) == true)
+                            if (_cThuMoi.checkExist_ChiTiet("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim()) == true)
                             {
                                 if (MessageBox.Show("Danh Bộ này đã được Lập Thư\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                                     return;
+                                else
+                                    entity.Lan = _cThuMoi.maxLan_ChiTiet("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim())+1;
                             }
-                            entity.ID = _cThuMoi.get("TXL", _dontxl.MaDon).ID;
+                            else
+                                entity.Lan = 2;
+                            entity.ID = _cThuMoi.get("TKH", _dontkh.MaDon).ID;
                         }
                         else
-                            if (_dontbc != null)
+                            if (_dontxl != null)
                             {
-                                if (_cThuMoi.checkExist("TBC", _dontbc.MaDon) == false)
+                                if (_cThuMoi.checkExist("TXL", _dontxl.MaDon) == false)
                                 {
                                     LinQ.ThuMoi tm = new LinQ.ThuMoi();
-                                    tm.MaDonTBC = _dontbc.MaDon;
+                                    tm.MaDonTXL = _dontxl.MaDon;
                                     _cThuMoi.them(tm);
                                 }
-                                if (_cThuMoi.checkExist_ChiTiet("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim()) == true)
+                                if (_cThuMoi.checkExist_ChiTiet("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim()) == true)
                                 {
                                     if (MessageBox.Show("Danh Bộ này đã được Lập Thư\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                                         return;
+                                    else
+                                        entity.Lan = _cThuMoi.maxLan_ChiTiet("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim()) + 1;
                                 }
-                                entity.ID = _cThuMoi.get("TBC", _dontbc.MaDon).ID;
+                                else
+                                    entity.Lan = 2;
+                                entity.ID = _cThuMoi.get("TXL", _dontxl.MaDon).ID;
                             }
                             else
-                            {
-                                MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
-
+                                if (_dontbc != null)
+                                {
+                                    if (_cThuMoi.checkExist("TBC", _dontbc.MaDon) == false)
+                                    {
+                                        LinQ.ThuMoi tm = new LinQ.ThuMoi();
+                                        tm.MaDonTBC = _dontbc.MaDon;
+                                        _cThuMoi.them(tm);
+                                    }
+                                    if (_cThuMoi.checkExist_ChiTiet("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim()) == true)
+                                    {
+                                        if (MessageBox.Show("Danh Bộ này đã được Lập Thư\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                                            return;
+                                        else
+                                            entity.Lan = _cThuMoi.maxLan_ChiTiet("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim()) + 1;
+                                    }
+                                    else
+                                        entity.Lan = 2;
+                                    entity.ID = _cThuMoi.get("TBC", _dontbc.MaDon).ID;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                  
                     entity.DanhBo = txtDanhBo.Text.Trim();
                     entity.HoTen = txtHoTen.Text.Trim();
                     entity.DiaChi = txtDiaChi.Text.Trim();
                     entity.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
-                    if(string.IsNullOrEmpty(txtDinhMuc.Text.Trim())==false)
+                    if (string.IsNullOrEmpty(txtDinhMuc.Text.Trim()) == false)
                         entity.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                     entity.CanCu = txtCanCu.Text.Trim();
                     entity.VaoLuc = txtVaoLuc.Text.Trim();

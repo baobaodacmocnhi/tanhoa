@@ -72,29 +72,29 @@ namespace KTKS_DonKH.DAL.ThuMoi
                 if (db.ThuMoi_ChiTiets.Count() > 0)
                 {
                     entity.IDCT = db.ThuMoi_ChiTiets.Max(item => item.IDCT) + 1;
-                    if (entity.ThuMoi.MaDonTKH != null)
-                    {
-                        if (db.ThuMoi_ChiTiets.Any(item => item.ThuMoi.MaDonTKH == entity.ThuMoi.MaDonTKH&&item.DanhBo==entity.DanhBo) == false)
-                            entity.Lan = 2;
-                        else
-                            entity.Lan = db.ThuMoi_ChiTiets.Where(item => item.ThuMoi.MaDonTKH == entity.ThuMoi.MaDonTKH && item.DanhBo == entity.DanhBo).Count() + 1;
-                    }
-                    else
-                        if (entity.ThuMoi.MaDonTXL != null)
-                        {
-                            if (db.ThuMoi_ChiTiets.Any(item => item.ThuMoi.MaDonTXL == entity.ThuMoi.MaDonTXL && item.DanhBo == entity.DanhBo) == false)
-                                entity.Lan = 2;
-                            else
-                                entity.Lan = db.ThuMoi_ChiTiets.Where(item => item.ThuMoi.MaDonTXL == entity.ThuMoi.MaDonTXL && item.DanhBo == entity.DanhBo).Count() + 1;
-                        }
-                        else
-                            if (entity.ThuMoi.MaDonTBC != null)
-                            {
-                                if (db.ThuMoi_ChiTiets.Any(item => item.ThuMoi.MaDonTBC == entity.ThuMoi.MaDonTBC && item.DanhBo == entity.DanhBo) == false)
-                                    entity.Lan = 2;
-                                else
-                                    entity.Lan = db.ThuMoi_ChiTiets.Where(item => item.ThuMoi.MaDonTBC == entity.ThuMoi.MaDonTBC && item.DanhBo == entity.DanhBo).Count() + 1;
-                            }
+                    //if (entity.ThuMoi.MaDonTKH != null)
+                    //{
+                    //    if (db.ThuMoi_ChiTiets.Any(item => item.ThuMoi.MaDonTKH == entity.ThuMoi.MaDonTKH&&item.DanhBo==entity.DanhBo) == false)
+                    //        entity.Lan = 2;
+                    //    else
+                    //        entity.Lan = db.ThuMoi_ChiTiets.Where(item => item.ThuMoi.MaDonTKH == entity.ThuMoi.MaDonTKH && item.DanhBo == entity.DanhBo).Count() + 1;
+                    //}
+                    //else
+                    //    if (entity.ThuMoi.MaDonTXL != null)
+                    //    {
+                    //        if (db.ThuMoi_ChiTiets.Any(item => item.ThuMoi.MaDonTXL == entity.ThuMoi.MaDonTXL && item.DanhBo == entity.DanhBo) == false)
+                    //            entity.Lan = 2;
+                    //        else
+                    //            entity.Lan = db.ThuMoi_ChiTiets.Where(item => item.ThuMoi.MaDonTXL == entity.ThuMoi.MaDonTXL && item.DanhBo == entity.DanhBo).Count() + 1;
+                    //    }
+                    //    else
+                    //        if (entity.ThuMoi.MaDonTBC != null)
+                    //        {
+                    //            if (db.ThuMoi_ChiTiets.Any(item => item.ThuMoi.MaDonTBC == entity.ThuMoi.MaDonTBC && item.DanhBo == entity.DanhBo) == false)
+                    //                entity.Lan = 2;
+                    //            else
+                    //                entity.Lan = db.ThuMoi_ChiTiets.Where(item => item.ThuMoi.MaDonTBC == entity.ThuMoi.MaDonTBC && item.DanhBo == entity.DanhBo).Count() + 1;
+                    //        }
                     string Column = "SoPhieu";
                     string Table = "ThuMoi_ChiTiet";
                     int SoPhieu = db.ExecuteQuery<int>("declare @Ma int " +
@@ -105,7 +105,6 @@ namespace KTKS_DonKH.DAL.ThuMoi
                 else
                 {
                     entity.IDCT = 1;
-                    entity.Lan = 2;
                     entity.SoPhieu = int.Parse("1" + DateTime.Now.ToString("yy"));
                 }
                 entity.CreateDate = DateTime.Now;
@@ -141,8 +140,9 @@ namespace KTKS_DonKH.DAL.ThuMoi
         {
             try
             {
-                int ID = entity.ID.Value;
+                int ID = entity.ID;
                 db.ThuMoi_ChiTiets.DeleteOnSubmit(entity);
+                db.SubmitChanges();
                 if (db.ThuMoi_ChiTiets.Any(item => item.ID == ID) == false)
                     db.ThuMois.DeleteOnSubmit(db.ThuMois.SingleOrDefault(item => item.ID == ID));
                 db.SubmitChanges();
@@ -167,6 +167,21 @@ namespace KTKS_DonKH.DAL.ThuMoi
                     return db.ThuMoi_ChiTiets.Any(item => item.ThuMoi.MaDonTBC == MaDon && item.DanhBo == DanhBo);
                 default:
                     return false;
+            }
+        }
+
+        public int maxLan_ChiTiet(string Loai, decimal MaDon, string DanhBo)
+        {
+            switch (Loai)
+            {
+                case "TKH":
+                    return db.ThuMoi_ChiTiets.Where(item => item.ThuMoi.MaDonTKH == MaDon && item.DanhBo == DanhBo).Max(item=>item.Lan).Value;
+                case "TXL":
+                    return db.ThuMoi_ChiTiets.Where(item => item.ThuMoi.MaDonTXL == MaDon && item.DanhBo == DanhBo).Max(item => item.Lan).Value;
+                case "TBC":
+                    return db.ThuMoi_ChiTiets.Where(item => item.ThuMoi.MaDonTBC == MaDon && item.DanhBo == DanhBo).Max(item => item.Lan).Value;
+                default:
+                    return -1;
             }
         }
 
@@ -329,6 +344,11 @@ namespace KTKS_DonKH.DAL.ThuMoi
         public bool checkExist_ChiTiet(int MaDon, string DanhBo)
         {
                     return db.ThuMoi_ChiTiets.Any(item => item.ThuMoi.MaDonMoi == MaDon && item.DanhBo == DanhBo);
+        }
+
+        public int maxLan_ChiTiet(int MaDon, string DanhBo)
+        {
+                    return db.ThuMoi_ChiTiets.Where(item => item.ThuMoi.MaDonMoi == MaDon && item.DanhBo == DanhBo).Max(item => item.Lan).Value;
         }
 
         public LinQ.ThuMoi get(int MaDon)

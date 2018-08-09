@@ -152,6 +152,7 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             {
                 decimal ID = cttttl.MaTTTL;
                 db.TTTL_ChiTiets.DeleteOnSubmit(cttttl);
+                db.SubmitChanges();
                 if (db.TTTL_ChiTiets.Any(item => item.MaTTTL == ID) == false)
                     db.TTTLs.DeleteOnSubmit(db.TTTLs.SingleOrDefault(item => item.MaTTTL == ID));
                 db.SubmitChanges();

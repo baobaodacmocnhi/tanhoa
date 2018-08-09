@@ -276,7 +276,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    select new
                                    {
                                        MaDon = "TKH" + itemTT.TruyThuTienNuoc.MaDon,
-                                       itemTT.MaTTTN,
+                                       itemTT.IDCT,
                                        itemTT.DanhBo,
                                        itemTT.HoTen,
                                        itemTT.DiaChi,
@@ -298,7 +298,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    select new
                                    {
                                        MaDon = "TKH" + itemCTTT.ToTrinh.MaDon,
-                                       itemCTTT.MaCTTT,
+                                       itemCTTT.IDCT,
                                        itemCTTT.DanhBo,
                                        itemCTTT.HoTen,
                                        itemCTTT.DiaChi,
@@ -617,7 +617,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    select new
                                    {
                                        MaDon = "TXL" + itemTT.TruyThuTienNuoc.MaDonTXL,
-                                       itemTT.MaTTTN,
+                                       itemTT.IDCT,
                                        itemTT.DanhBo,
                                        itemTT.HoTen,
                                        itemTT.DiaChi,
@@ -639,7 +639,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    select new
                                    {
                                        MaDon = "TXL" + itemCTTT.ToTrinh.MaDonTXL,
-                                       itemCTTT.MaCTTT,
+                                       itemCTTT.IDCT,
                                        itemCTTT.DanhBo,
                                        itemCTTT.HoTen,
                                        itemCTTT.DiaChi,
@@ -959,7 +959,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    select new
                                    {
                                        MaDon = "TBC" + itemTT.TruyThuTienNuoc.MaDonTBC,
-                                       itemTT.MaTTTN,
+                                       itemTT.IDCT,
                                        itemTT.DanhBo,
                                        itemTT.HoTen,
                                        itemTT.DiaChi,
@@ -981,7 +981,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    select new
                                    {
                                        MaDon = "TBC" + itemCTTT.ToTrinh.MaDonTBC,
-                                       itemCTTT.MaCTTT,
+                                       itemCTTT.IDCT,
                                        itemCTTT.DanhBo,
                                        itemCTTT.HoTen,
                                        itemCTTT.DiaChi,
@@ -1303,7 +1303,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        MaDon = itemTT.TruyThuTienNuoc.MaDon != null ? "TKH" + itemTT.TruyThuTienNuoc.MaDon
                                        : itemTT.TruyThuTienNuoc.MaDonTXL != null ? "TXL" + itemTT.TruyThuTienNuoc.MaDonTXL
                                        : itemTT.TruyThuTienNuoc.MaDonTBC != null ? "TBC" + itemTT.TruyThuTienNuoc.MaDonTBC : null,
-                                       itemTT.MaTTTN,
+                                       itemTT.IDCT,
                                        itemTT.DanhBo,
                                        itemTT.HoTen,
                                        itemTT.DiaChi,
@@ -1326,7 +1326,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        MaDon = itemCTTT.ToTrinh.MaDon != null ? "TKH" + itemCTTT.ToTrinh.MaDon
                                        : itemCTTT.ToTrinh.MaDonTXL != null ? "TXL" + itemCTTT.ToTrinh.MaDonTXL
                                        : itemCTTT.ToTrinh.MaDonTBC != null ? "TBC" + itemCTTT.ToTrinh.MaDonTBC : null,
-                                       itemCTTT.MaCTTT,
+                                       itemCTTT.IDCT,
                                        itemCTTT.DanhBo,
                                        itemCTTT.HoTen,
                                        itemCTTT.DiaChi,
@@ -2381,7 +2381,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        MaDon = itemTT.TruyThuTienNuoc.MaDon != null ? "TKH" + itemTT.TruyThuTienNuoc.MaDon
                                        : itemTT.TruyThuTienNuoc.MaDonTXL != null ? "TXL" + itemTT.TruyThuTienNuoc.MaDonTXL
                                        : itemTT.TruyThuTienNuoc.MaDonTBC != null ? "TBC" + itemTT.TruyThuTienNuoc.MaDonTBC : null,
-                                       itemTT.MaTTTN,
+                                       itemTT.IDCT,
                                        itemTT.DanhBo,
                                        itemTT.HoTen,
                                        itemTT.DiaChi,
@@ -2404,7 +2404,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        MaDon = itemCTTT.ToTrinh.MaDon != null ? "TKH" + itemCTTT.ToTrinh.MaDon
                                        : itemCTTT.ToTrinh.MaDonTXL != null ? "TXL" + itemCTTT.ToTrinh.MaDonTXL
                                        : itemCTTT.ToTrinh.MaDonTBC != null ? "TBC" + itemCTTT.ToTrinh.MaDonTBC : null,
-                                       itemCTTT.MaCTTT,
+                                       itemCTTT.IDCT,
                                        itemCTTT.DanhBo,
                                        itemCTTT.HoTen,
                                        itemCTTT.DiaChi,
@@ -3458,7 +3458,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        MaDon = itemTT.TruyThuTienNuoc.MaDon != null ? "TKH" + itemTT.TruyThuTienNuoc.MaDon
                                        : itemTT.TruyThuTienNuoc.MaDonTXL != null ? "TXL" + itemTT.TruyThuTienNuoc.MaDonTXL
                                        : itemTT.TruyThuTienNuoc.MaDonTBC != null ? "TBC" + itemTT.TruyThuTienNuoc.MaDonTBC : null,
-                                       itemTT.MaTTTN,
+                                       itemTT.IDCT,
                                        itemTT.DanhBo,
                                        itemTT.HoTen,
                                        itemTT.DiaChi,
@@ -3481,7 +3481,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        MaDon = itemCTTT.ToTrinh.MaDon != null ? "TKH" + itemCTTT.ToTrinh.MaDon
                                        : itemCTTT.ToTrinh.MaDonTXL != null ? "TXL" + itemCTTT.ToTrinh.MaDonTXL
                                        : itemCTTT.ToTrinh.MaDonTBC != null ? "TBC" + itemCTTT.ToTrinh.MaDonTBC : null,
-                                       itemCTTT.MaCTTT,
+                                       itemCTTT.IDCT,
                                        itemCTTT.DanhBo,
                                        itemCTTT.HoTen,
                                        itemCTTT.DiaChi,

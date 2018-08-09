@@ -62,23 +62,6 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
-        public bool Xoa(KTXM ktxm)
-        {
-            try
-            {
-                db.KTXMs.DeleteOnSubmit(ktxm);
-                db.SubmitChanges();
-                //MessageBox.Show("Thành công Sửa KTXM", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
-            }
-        }
-
         public bool CheckExist(string Loai, decimal MaDon)
         {
             switch (Loai)
@@ -170,6 +153,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             {
                 decimal MaKTXM = ctktxm.MaKTXM.Value;
                 db.KTXM_ChiTiets.DeleteOnSubmit(ctktxm);
+                db.SubmitChanges();
                 if (db.KTXM_ChiTiets.Any(item => item.MaKTXM == MaKTXM) == false)
                     db.KTXMs.DeleteOnSubmit(db.KTXMs.SingleOrDefault(item => item.MaKTXM == MaKTXM));
                 db.SubmitChanges();

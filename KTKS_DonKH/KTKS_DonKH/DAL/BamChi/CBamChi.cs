@@ -180,6 +180,7 @@ namespace KTKS_DonKH.DAL.BamChi
             {
                 decimal MaBC = ctbamchi.MaBC.Value;
                 db.BamChi_ChiTiets.DeleteOnSubmit(ctbamchi);
+                db.SubmitChanges();
                 if (db.BamChi_ChiTiets.Any(item => item.MaBC == MaBC) == false)
                     db.BamChis.DeleteOnSubmit(db.BamChis.SingleOrDefault(item => item.MaBC == MaBC));
                 db.SubmitChanges();

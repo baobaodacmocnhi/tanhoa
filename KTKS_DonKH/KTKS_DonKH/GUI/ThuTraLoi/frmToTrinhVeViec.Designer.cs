@@ -30,10 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDSVeViecTTTL = new System.Windows.Forms.DataGridView();
-            this.MaVV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenVV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.txtNoiDung = new System.Windows.Forms.TextBox();
@@ -43,6 +39,10 @@
             this.txtNoiNhan = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnXoa = new System.Windows.Forms.Button();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Namee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSVeViecTTTL)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,8 +60,8 @@
             this.dgvDSVeViecTTTL.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDSVeViecTTTL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSVeViecTTTL.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MaVV,
-            this.TenVV,
+            this.ID,
+            this.Namee,
             this.NoiDung,
             this.NoiNhan});
             this.dgvDSVeViecTTTL.Location = new System.Drawing.Point(12, 282);
@@ -73,37 +73,6 @@
             this.dgvDSVeViecTTTL.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvDSVeViecTTTL_DragDrop);
             this.dgvDSVeViecTTTL.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvDSVeViecTTTL_DragEnter);
             this.dgvDSVeViecTTTL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvDSVeViecTTTL_MouseClick);
-            // 
-            // MaVV
-            // 
-            this.MaVV.DataPropertyName = "MaVV";
-            this.MaVV.HeaderText = "MaVV";
-            this.MaVV.Name = "MaVV";
-            this.MaVV.Visible = false;
-            // 
-            // TenVV
-            // 
-            this.TenVV.DataPropertyName = "TenVV";
-            this.TenVV.HeaderText = "Về Việc";
-            this.TenVV.Name = "TenVV";
-            this.TenVV.ReadOnly = true;
-            this.TenVV.Width = 300;
-            // 
-            // NoiDung
-            // 
-            this.NoiDung.DataPropertyName = "NoiDung";
-            this.NoiDung.HeaderText = "Nội Dung";
-            this.NoiDung.Name = "NoiDung";
-            this.NoiDung.ReadOnly = true;
-            this.NoiDung.Width = 350;
-            // 
-            // NoiNhan
-            // 
-            this.NoiNhan.DataPropertyName = "NoiNhan";
-            this.NoiNhan.HeaderText = "Nơi Nhận";
-            this.NoiNhan.Name = "NoiNhan";
-            this.NoiNhan.ReadOnly = true;
-            this.NoiNhan.Width = 150;
             // 
             // btnSua
             // 
@@ -185,7 +154,38 @@
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
-            // frmVeViecToTrinh
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "MaVV";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // Namee
+            // 
+            this.Namee.DataPropertyName = "Name";
+            this.Namee.HeaderText = "Về Việc";
+            this.Namee.Name = "Namee";
+            this.Namee.ReadOnly = true;
+            this.Namee.Width = 300;
+            // 
+            // NoiDung
+            // 
+            this.NoiDung.DataPropertyName = "NoiDung";
+            this.NoiDung.HeaderText = "Nội Dung";
+            this.NoiDung.Name = "NoiDung";
+            this.NoiDung.ReadOnly = true;
+            this.NoiDung.Width = 350;
+            // 
+            // NoiNhan
+            // 
+            this.NoiNhan.DataPropertyName = "NoiNhan";
+            this.NoiNhan.HeaderText = "Nơi Nhận";
+            this.NoiNhan.Name = "NoiNhan";
+            this.NoiNhan.ReadOnly = true;
+            this.NoiNhan.Width = 150;
+            // 
+            // frmToTrinhVeViec
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -203,7 +203,7 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.Name = "frmVeViecToTrinh";
+            this.Name = "frmToTrinhVeViec";
             this.Text = "Về Việc Tờ Trình";
             this.Load += new System.EventHandler(this.frmVeViecTTTL_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSVeViecTTTL)).EndInit();
@@ -223,11 +223,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNoiNhan;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaVV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenVV;
+        private System.Windows.Forms.Button btnXoa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Namee;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiNhan;
-        private System.Windows.Forms.Button btnXoa;
 
     }
 }

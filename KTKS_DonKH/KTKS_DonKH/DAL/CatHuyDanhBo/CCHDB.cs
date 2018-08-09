@@ -64,23 +64,6 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public bool XoaCHDB(CHDB chdb)
-        {
-            try
-            {
-                db.CHDBs.DeleteOnSubmit(chdb);
-                db.SubmitChanges();
-                //MessageBox.Show("Thành công Sửa CHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
-            }
-        }
-
         /// <summary>
         /// Lấy Mã Cắt Hủy Danh Bộ lớn nhất hiện tại
         /// </summary>
@@ -247,7 +230,8 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             {
                 decimal ID = ctctdb.MaCHDB.Value;
                 db.CHDB_ChiTietCatTams.DeleteOnSubmit(ctctdb);
-                if (db.CHDB_ChiTietCatTams.Any(item => item.MaCHDB == ID) == false && db.CHDB_ChiTietCatHuys.Any(item => item.MaCHDB == ID) == false)
+                db.SubmitChanges();
+                if (db.CHDB_ChiTietCatTams.Any(item => item.MaCHDB == ID) == false && db.CHDB_ChiTietCatHuys.Any(item => item.MaCHDB == ID) == false && db.CHDB_Phieus.Any(item => item.MaCHDB == ID) == false)
                     db.CHDBs.DeleteOnSubmit(db.CHDBs.SingleOrDefault(item => item.MaCHDB == ID));
                 db.SubmitChanges();
                 //MessageBox.Show("Thành công Xóa CHDB_ChiTietCatTam", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -634,7 +618,8 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             {
                 decimal ID = ctchdb.MaCHDB.Value;
                 db.CHDB_ChiTietCatHuys.DeleteOnSubmit(ctchdb);
-                if (db.CHDB_ChiTietCatTams.Any(item => item.MaCHDB == ID) == false && db.CHDB_ChiTietCatHuys.Any(item => item.MaCHDB == ID) == false)
+                db.SubmitChanges();
+                if (db.CHDB_ChiTietCatTams.Any(item => item.MaCHDB == ID) == false && db.CHDB_ChiTietCatHuys.Any(item => item.MaCHDB == ID) == false && db.CHDB_Phieus.Any(item => item.MaCHDB == ID) == false)
                     db.CHDBs.DeleteOnSubmit(db.CHDBs.SingleOrDefault(item => item.MaCHDB == ID));
                 db.SubmitChanges();
                 //MessageBox.Show("Thành công Xóa CHDB_ChiTietCatHuy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1021,7 +1006,11 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
+                decimal ID = ycchdb.MaCHDB.Value;
                 db.CHDB_Phieus.DeleteOnSubmit(ycchdb);
+                db.SubmitChanges();
+                if (db.CHDB_ChiTietCatTams.Any(item => item.MaCHDB == ID) == false && db.CHDB_ChiTietCatHuys.Any(item => item.MaCHDB == ID) == false && db.CHDB_Phieus.Any(item => item.MaCHDB == ID) == false)
+                    db.CHDBs.DeleteOnSubmit(db.CHDBs.SingleOrDefault(item => item.MaCHDB == ID));
                 db.SubmitChanges();
                 return true;
             }
