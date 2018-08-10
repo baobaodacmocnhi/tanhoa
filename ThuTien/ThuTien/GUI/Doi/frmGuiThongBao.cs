@@ -172,11 +172,22 @@ namespace ThuTien.GUI.Doi
             {
                 e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
             }
+            if (dgvGuiThongBao.Columns[e.ColumnIndex].Name == "MLT" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(2, " ");
+            }
         }
 
         private void btnInToRoi_Click(object sender, EventArgs e)
         {
             rptGuiThongBaoToRoi rpt = new rptGuiThongBaoToRoi();
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
+        }
+
+        private void btnInToRoi_PGD_Click(object sender, EventArgs e)
+        {
+            rptGuiThongBaoToRoi_PGD rpt = new rptGuiThongBaoToRoi_PGD();
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();
         }
