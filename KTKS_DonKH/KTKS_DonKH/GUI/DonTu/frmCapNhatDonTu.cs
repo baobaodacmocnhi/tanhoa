@@ -235,7 +235,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                 _cDonTu.Them(entity);
                             }
                         }
-                        
+                        LoadLichSu();
                         //dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("DonTu", _dontu.MaDon);
                     }
                 }

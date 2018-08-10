@@ -27027,8 +27027,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private int _MaCTGL;
 		
-		private System.Nullable<int> _STT;
-		
 		private System.Nullable<System.DateTime> _NgayKTXM;
 		
 		private System.Data.Linq.Binary _FileBienBan;
@@ -27113,6 +27111,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _MaGL;
 		
+		private System.Nullable<int> _STT;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -27129,8 +27129,6 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreated();
     partial void OnMaCTGLChanging(int value);
     partial void OnMaCTGLChanged();
-    partial void OnSTTChanging(System.Nullable<int> value);
-    partial void OnSTTChanged();
     partial void OnNgayKTXMChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayKTXMChanged();
     partial void OnFileBienBanChanging(System.Data.Linq.Binary value);
@@ -27215,6 +27213,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnXepDonChanged();
     partial void OnMaGLChanging(System.Nullable<int> value);
     partial void OnMaGLChanged();
+    partial void OnSTTChanging(System.Nullable<int> value);
+    partial void OnSTTChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -27247,26 +27247,6 @@ namespace KTKS_DonKH.LinQ
 					this._MaCTGL = value;
 					this.SendPropertyChanged("MaCTGL");
 					this.OnMaCTGLChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", DbType="Int")]
-		public System.Nullable<int> STT
-		{
-			get
-			{
-				return this._STT;
-			}
-			set
-			{
-				if ((this._STT != value))
-				{
-					this.OnSTTChanging(value);
-					this.SendPropertyChanging();
-					this._STT = value;
-					this.SendPropertyChanged("STT");
-					this.OnSTTChanged();
 				}
 			}
 		}
@@ -28111,6 +28091,26 @@ namespace KTKS_DonKH.LinQ
 					this._MaGL = value;
 					this.SendPropertyChanged("MaGL");
 					this.OnMaGLChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", DbType="Int")]
+		public System.Nullable<int> STT
+		{
+			get
+			{
+				return this._STT;
+			}
+			set
+			{
+				if ((this._STT != value))
+				{
+					this.OnSTTChanging(value);
+					this.SendPropertyChanging();
+					this._STT = value;
+					this.SendPropertyChanged("STT");
+					this.OnSTTChanged();
 				}
 			}
 		}
@@ -39519,6 +39519,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntitySet<TruyThuTienNuoc_HoaDon> _TruyThuTienNuoc_HoaDons;
 		
+		private EntitySet<TruyThuTienNuoc_ThanhToan> _TruyThuTienNuoc_ThanhToans;
+		
 		private EntitySet<TruyThuTienNuoc_ThuMoi> _TruyThuTienNuoc_ThuMois;
 		
 		private EntityRef<TruyThuTienNuoc> _TruyThuTienNuoc;
@@ -39586,6 +39588,7 @@ namespace KTKS_DonKH.LinQ
 		public TruyThuTienNuoc_ChiTiet()
 		{
 			this._TruyThuTienNuoc_HoaDons = new EntitySet<TruyThuTienNuoc_HoaDon>(new Action<TruyThuTienNuoc_HoaDon>(this.attach_TruyThuTienNuoc_HoaDons), new Action<TruyThuTienNuoc_HoaDon>(this.detach_TruyThuTienNuoc_HoaDons));
+			this._TruyThuTienNuoc_ThanhToans = new EntitySet<TruyThuTienNuoc_ThanhToan>(new Action<TruyThuTienNuoc_ThanhToan>(this.attach_TruyThuTienNuoc_ThanhToans), new Action<TruyThuTienNuoc_ThanhToan>(this.detach_TruyThuTienNuoc_ThanhToans));
 			this._TruyThuTienNuoc_ThuMois = new EntitySet<TruyThuTienNuoc_ThuMoi>(new Action<TruyThuTienNuoc_ThuMoi>(this.attach_TruyThuTienNuoc_ThuMois), new Action<TruyThuTienNuoc_ThuMoi>(this.detach_TruyThuTienNuoc_ThuMois));
 			this._TruyThuTienNuoc = default(EntityRef<TruyThuTienNuoc>);
 			OnCreated();
@@ -40148,6 +40151,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TruyThuTienNuoc_ChiTiet_TruyThuTienNuoc_ThanhToan", Storage="_TruyThuTienNuoc_ThanhToans", ThisKey="IDCT", OtherKey="IDCT")]
+		public EntitySet<TruyThuTienNuoc_ThanhToan> TruyThuTienNuoc_ThanhToans
+		{
+			get
+			{
+				return this._TruyThuTienNuoc_ThanhToans;
+			}
+			set
+			{
+				this._TruyThuTienNuoc_ThanhToans.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TruyThuTienNuoc_ChiTiet_TruyThuTienNuoc_ThuMoi", Storage="_TruyThuTienNuoc_ThuMois", ThisKey="IDCT", OtherKey="IDCT")]
 		public EntitySet<TruyThuTienNuoc_ThuMoi> TruyThuTienNuoc_ThuMois
 		{
@@ -40222,6 +40238,18 @@ namespace KTKS_DonKH.LinQ
 		}
 		
 		private void detach_TruyThuTienNuoc_HoaDons(TruyThuTienNuoc_HoaDon entity)
+		{
+			this.SendPropertyChanging();
+			entity.TruyThuTienNuoc_ChiTiet = null;
+		}
+		
+		private void attach_TruyThuTienNuoc_ThanhToans(TruyThuTienNuoc_ThanhToan entity)
+		{
+			this.SendPropertyChanging();
+			entity.TruyThuTienNuoc_ChiTiet = this;
+		}
+		
+		private void detach_TruyThuTienNuoc_ThanhToans(TruyThuTienNuoc_ThanhToan entity)
 		{
 			this.SendPropertyChanging();
 			entity.TruyThuTienNuoc_ChiTiet = null;
@@ -40895,6 +40923,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _ModifyBy;
 		
+		private EntityRef<TruyThuTienNuoc_ChiTiet> _TruyThuTienNuoc_ChiTiet;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -40921,6 +40951,7 @@ namespace KTKS_DonKH.LinQ
 		
 		public TruyThuTienNuoc_ThanhToan()
 		{
+			this._TruyThuTienNuoc_ChiTiet = default(EntityRef<TruyThuTienNuoc_ChiTiet>);
 			OnCreated();
 		}
 		
@@ -41015,6 +41046,10 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._IDCT != value))
 				{
+					if (this._TruyThuTienNuoc_ChiTiet.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnIDCTChanging(value);
 					this.SendPropertyChanging();
 					this._IDCT = value;
@@ -41100,6 +41135,40 @@ namespace KTKS_DonKH.LinQ
 					this._ModifyBy = value;
 					this.SendPropertyChanged("ModifyBy");
 					this.OnModifyByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TruyThuTienNuoc_ChiTiet_TruyThuTienNuoc_ThanhToan", Storage="_TruyThuTienNuoc_ChiTiet", ThisKey="IDCT", OtherKey="IDCT", IsForeignKey=true)]
+		public TruyThuTienNuoc_ChiTiet TruyThuTienNuoc_ChiTiet
+		{
+			get
+			{
+				return this._TruyThuTienNuoc_ChiTiet.Entity;
+			}
+			set
+			{
+				TruyThuTienNuoc_ChiTiet previousValue = this._TruyThuTienNuoc_ChiTiet.Entity;
+				if (((previousValue != value) 
+							|| (this._TruyThuTienNuoc_ChiTiet.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TruyThuTienNuoc_ChiTiet.Entity = null;
+						previousValue.TruyThuTienNuoc_ThanhToans.Remove(this);
+					}
+					this._TruyThuTienNuoc_ChiTiet.Entity = value;
+					if ((value != null))
+					{
+						value.TruyThuTienNuoc_ThanhToans.Add(this);
+						this._IDCT = value.IDCT;
+					}
+					else
+					{
+						this._IDCT = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("TruyThuTienNuoc_ChiTiet");
 				}
 			}
 		}

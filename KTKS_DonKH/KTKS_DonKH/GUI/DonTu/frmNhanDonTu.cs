@@ -636,12 +636,12 @@ namespace KTKS_DonKH.GUI.DonTu
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
                 dr["MaDon"] = entity.MaDon.ToString();
-                dr["KhachHang"] = entity.HoTen;
-                if (entity.DanhBo != "")
-                    dr["DanhBo"] = entity.DanhBo.Insert(7, " ").Insert(4, " ");
-                dr["DiaChi"] = entity.DiaChi;
-                dr["HopDong"] = entity.HopDong;
-                dr["DienThoai"] = entity.DienThoai;
+                dr["KhachHang"] = entity.DonTu_ChiTiets.SingleOrDefault().HoTen;
+                if (entity.DonTu_ChiTiets.SingleOrDefault().DanhBo != "")
+                    dr["DanhBo"] = entity.DonTu_ChiTiets.SingleOrDefault().DanhBo.Insert(7, " ").Insert(4, " ");
+                dr["DiaChi"] = entity.DonTu_ChiTiets.SingleOrDefault().DiaChi;
+                dr["HopDong"] = entity.DonTu_ChiTiets.SingleOrDefault().HopDong;
+                dr["DienThoai"] = entity.DonTu_ChiTiets.SingleOrDefault().DienThoai;
                 dr["NoiDung"] = entity.Name_NhomDon;
                 dr["LyDoLoaiKhac"] = entity.VanDeKhac;
 

@@ -222,8 +222,8 @@ namespace KTKS_DonKH.DAL.TruyThu
 
         public string GetTinhTrang(string DanhBo)
         {
-            if (db.TruyThuTienNuoc_ChiTiets.Any(item => item.DanhBo == DanhBo && (item.TinhTrang == "Đang gửi thư mời" || item.TinhTrang == "Trả góp" || item.TinhTrang == "Đã gửi TB tạm ngưng cung cấp nước" || item.TinhTrang == "Chuyển lập TB hủy")) == true)
-                return db.TruyThuTienNuoc_ChiTiets.SingleOrDefault(item => item.DanhBo == DanhBo && (item.TinhTrang == "Đang gửi thư mời" || item.TinhTrang == "Trả góp" || item.TinhTrang == "Đã gửi TB tạm ngưng cung cấp nước" || item.TinhTrang == "Chuyển lập TB hủy")).TinhTrang;
+            if (db.TruyThuTienNuoc_ChiTiets.Any(item => item.DanhBo == DanhBo && (item.TinhTrang == "Chưa thanh toán" || item.TinhTrang == "Đang gửi thư mời" || item.TinhTrang == "Trả góp" || item.TinhTrang == "Đã gửi TB tạm ngưng cung cấp nước" || item.TinhTrang == "Chuyển lập TB hủy")) == true)
+                return db.TruyThuTienNuoc_ChiTiets.SingleOrDefault(item => item.DanhBo == DanhBo && (item.TinhTrang == "Chưa thanh toán" || item.TinhTrang == "Đang gửi thư mời" || item.TinhTrang == "Trả góp" || item.TinhTrang == "Đã gửi TB tạm ngưng cung cấp nước" || item.TinhTrang == "Chuyển lập TB hủy")).TinhTrang;
             else
                 return "";
         }
@@ -302,10 +302,10 @@ namespace KTKS_DonKH.DAL.TruyThu
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDS(DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable GetDS(DateTime FromNgayTinhTrang, DateTime ToNgayTinhTrang)
         {
             var query = from item in db.TruyThuTienNuoc_ChiTiets
-                        where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
+                        where item.NgayTinhTrang.Value.Date >= FromNgayTinhTrang.Date && item.NgayTinhTrang.Value.Date <= ToNgayTinhTrang.Date
                         select new
                         {
                             MaDon = item.TruyThuTienNuoc.MaDon != null ? "TKH" + item.TruyThuTienNuoc.MaDon

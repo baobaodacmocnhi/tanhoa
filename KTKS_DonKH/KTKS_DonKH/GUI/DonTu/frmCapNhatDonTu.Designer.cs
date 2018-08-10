@@ -98,7 +98,7 @@
             this.NgayChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KTXM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl.SuspendLayout();
@@ -578,7 +578,7 @@
             this.NgayChuyen,
             this.NoiChuyen,
             this.NoiNhan,
-            this.GhiChu,
+            this.NoiDung,
             this.KTXM,
             this.CreateBy});
             this.dgvLichSuDonTu.Location = new System.Drawing.Point(15, 389);
@@ -735,13 +735,13 @@
             this.NoiNhan.ReadOnly = true;
             this.NoiNhan.Width = 140;
             // 
-            // GhiChu
+            // NoiDung
             // 
-            this.GhiChu.DataPropertyName = "GhiChu";
-            this.GhiChu.HeaderText = "Ghi Chú";
-            this.GhiChu.Name = "GhiChu";
-            this.GhiChu.ReadOnly = true;
-            this.GhiChu.Width = 150;
+            this.NoiDung.DataPropertyName = "NoiDung";
+            this.NoiDung.HeaderText = "Nội Dung";
+            this.NoiDung.Name = "NoiDung";
+            this.NoiDung.ReadOnly = true;
+            this.NoiDung.Width = 150;
             // 
             // KTXM
             // 
@@ -884,7 +884,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayChuyen;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiChuyen;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiNhan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
         private System.Windows.Forms.DataGridViewTextBoxColumn KTXM;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
 

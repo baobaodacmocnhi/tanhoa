@@ -1140,7 +1140,6 @@
   <Table Name="dbo.GianLan_ChiTiet" Member="GianLan_ChiTiets">
     <Type Name="GianLan_ChiTiet">
       <Column Name="MaCTGL" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="STT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NgayKTXM" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="FileBienBan" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="DanhBo" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
@@ -1183,6 +1182,7 @@
       <Column Name="NhanVien" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="XepDon" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="MaGL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="STT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -1737,6 +1737,7 @@
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="TruyThuTienNuoc_ChiTiet_TruyThuTienNuoc_HoaDon" Member="TruyThuTienNuoc_HoaDons" ThisKey="IDCT" OtherKey="IDCT" Type="TruyThuTienNuoc_HoaDon" />
+      <Association Name="TruyThuTienNuoc_ChiTiet_TruyThuTienNuoc_ThanhToan" Member="TruyThuTienNuoc_ThanhToans" ThisKey="IDCT" OtherKey="IDCT" Type="TruyThuTienNuoc_ThanhToan" />
       <Association Name="TruyThuTienNuoc_ChiTiet_TruyThuTienNuoc_ThuMoi" Member="TruyThuTienNuoc_ThuMois" ThisKey="IDCT" OtherKey="IDCT" Type="TruyThuTienNuoc_ThuMoi" />
       <Association Name="TruyThuTienNuoc_TruyThuTienNuoc_ChiTiet" Member="TruyThuTienNuoc" ThisKey="ID" OtherKey="ID" Type="TruyThuTienNuoc" IsForeignKey="true" />
     </Type>
@@ -1780,6 +1781,7 @@
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="TruyThuTienNuoc_ChiTiet_TruyThuTienNuoc_ThanhToan" Member="TruyThuTienNuoc_ChiTiet" ThisKey="IDCT" OtherKey="IDCT" Type="TruyThuTienNuoc_ChiTiet" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.TruyThuTienNuoc_ThuMoi" Member="TruyThuTienNuoc_ThuMois">

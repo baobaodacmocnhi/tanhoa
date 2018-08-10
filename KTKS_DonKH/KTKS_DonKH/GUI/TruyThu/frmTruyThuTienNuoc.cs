@@ -883,6 +883,13 @@ namespace KTKS_DonKH.GUI.TruyThu
                             _cttttn.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                         _cttttn.NoiDung = txtNoiDung.Text.Trim();
                         _cttttn.DienThoai = txtDienThoai.Text.Trim();
+                        if (cmbTinhTrang.SelectedIndex != -1)
+                        {
+                            _cttttn.NgayTinhTrang = dateTinhTrang.Value;
+                            _cttttn.TinhTrang = cmbTinhTrang.SelectedItem.ToString();
+                        }
+                        else
+                            _cttttn.TinhTrang = "";
                         if (_hoadon != null&&_hoadon.DANHBA != txtDanhBo.Text.Trim())
                         {
                             _cttttn.Dot = _hoadon.DOT.ToString();
@@ -1002,7 +1009,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             foreach (DataGridViewRow item in dgvTruyThuTienNuoc.Rows)
                 if (item.Cells["Ky"].Value != null)
                 {
-                    DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc_ChiTiet"].NewRow();
+                    DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
 
                     dr["MaDon"] = txtMaDonCu.Text.Trim();
                     dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " ");
@@ -1031,6 +1038,9 @@ namespace KTKS_DonKH.GUI.TruyThu
                     dr["TangGiam"] = item.Cells["TangGiam"].Value.ToString();
                     dr["NhanVien"] = CTaiKhoan.HoTen;
                     TruyThuTienNuoc_ChiTiet cttttn = new TruyThuTienNuoc_ChiTiet();
+                    if (_dontu_ChiTiet != null)
+                        cttttn = _cTTTN.get_ChiTiet(_dontu_ChiTiet.MaDon.Value);
+                    else
                     if (_dontkh != null)
                         cttttn = _cTTTN.get_ChiTiet("TKH", _dontkh.MaDon);
                     else
@@ -1042,7 +1052,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     if (cttttn != null)
                         dr["SoTien1m3"] = cttttn.SoTien1m3;
 
-                    dsBaoCao.Tables["TruyThuTienNuoc_ChiTiet"].Rows.Add(dr);
+                    dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
                 }
 
             rptTruyThuTienNuoc rpt = new rptTruyThuTienNuoc();
@@ -1058,7 +1068,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             foreach (DataGridViewRow item in dgvTruyThuTienNuoc.Rows)
                 if (item.Cells["Ky"].Value != null)
                 {
-                    DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc_ChiTiet"].NewRow();
+                    DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
 
                     dr["MaDon"] = txtMaDonCu.Text.Trim();
                     dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " ");
@@ -1089,7 +1099,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     if (item.Cells["TangGiam"].Value != null)
                         dr["TangGiam"] = item.Cells["TangGiam"].Value.ToString();
                     dr["NhanVien"] = CTaiKhoan.HoTen;
-                    dsBaoCao.Tables["TruyThuTienNuoc_ChiTiet"].Rows.Add(dr);
+                    dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
                 }
 
             rptTruyThuTienNuocChiTiet rpt = new rptTruyThuTienNuocChiTiet();

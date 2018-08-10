@@ -99,7 +99,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
-            if (dgvDSTruyThuTienNuoc.Columns[e.ColumnIndex].Name == "MaTTTN" && e.Value != null && e.Value.ToString().Length > 2)
+            if (dgvDSTruyThuTienNuoc.Columns[e.ColumnIndex].Name == "IDCT" && e.Value != null && e.Value.ToString().Length > 2)
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }

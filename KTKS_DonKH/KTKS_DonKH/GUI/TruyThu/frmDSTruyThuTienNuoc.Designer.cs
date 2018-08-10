@@ -45,7 +45,7 @@
             this.btnXem = new System.Windows.Forms.Button();
             this.btnIn = new System.Windows.Forms.Button();
             this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaTTTN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoCongVan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -170,7 +170,7 @@
             this.dgvDSTruyThuTienNuoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSTruyThuTienNuoc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaDon,
-            this.MaTTTN,
+            this.IDCT,
             this.CreateDate,
             this.SoCongVan,
             this.DanhBo,
@@ -229,11 +229,11 @@
             this.MaDon.HeaderText = "Mã Đơn";
             this.MaDon.Name = "MaDon";
             // 
-            // MaTTTN
+            // IDCT
             // 
-            this.MaTTTN.DataPropertyName = "MaTTTN";
-            this.MaTTTN.HeaderText = "Số Phiếu";
-            this.MaTTTN.Name = "MaTTTN";
+            this.IDCT.DataPropertyName = "IDCT";
+            this.IDCT.HeaderText = "Số Phiếu";
+            this.IDCT.Name = "IDCT";
             // 
             // CreateDate
             // 
@@ -339,7 +339,7 @@
         private System.Windows.Forms.Button btnXem;
         private System.Windows.Forms.Button btnIn;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaTTTN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDCT;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoCongVan;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
