@@ -102,6 +102,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.chkChuKy = new System.Windows.Forms.CheckBox();
             this.chkTenKy = new System.Windows.Forms.CheckBox();
+            this.btnXoa = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTongHopNo)).BeginInit();
             this.panel1.SuspendLayout();
@@ -733,11 +734,22 @@
             this.chkTenKy.Text = "Có Tên Ký";
             this.chkTenKy.UseVisualStyleBackColor = true;
             // 
+            // btnXoa
+            // 
+            this.btnXoa.Location = new System.Drawing.Point(740, 350);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.TabIndex = 99;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
             // frmTongHopNo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1360, 675);
+            this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.chkTenKy);
             this.Controls.Add(this.chkChuKy);
             this.Controls.Add(this.panel2);
@@ -858,5 +870,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.CheckBox chkChuKy;
         private System.Windows.Forms.CheckBox chkTenKy;
+        private System.Windows.Forms.Button btnXoa;
     }
 }

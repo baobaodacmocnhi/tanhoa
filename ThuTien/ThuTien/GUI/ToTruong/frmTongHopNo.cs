@@ -271,11 +271,11 @@ namespace ThuTien.GUI.ToTruong
                     tonghopno.NgayThanhToan = dateThanhToan.Value;
                     tonghopno.TuNgay = txtTuNgay.Text.Trim();
                     tonghopno.DenNgay = txtDenNgay.Text.Trim();
-                    if (radGiamDoc.Checked)
-                        tonghopno.NguoiKy = "GIÁM ĐỐC";
-                    else
-                        if (radPhoGiamDoc.Checked)
-                            tonghopno.NguoiKy = "P.GIÁM ĐỐC";
+                    //if (radGiamDoc.Checked)
+                    //    tonghopno.NguoiKy = "GIÁM ĐỐC";
+                    //else
+                    //    if (radPhoGiamDoc.Checked)
+                    //        tonghopno.NguoiKy = "P.GIÁM ĐỐC";
 
                     int ID = _cTHN.GetNextID_CTTongHopNo();
                     foreach (DataGridViewRow item in dgvHoaDon.Rows)
@@ -365,6 +365,8 @@ namespace ThuTien.GUI.ToTruong
                         frm.Show();
                     }
                     }
+                else
+                    MessageBox.Show("Đã lập trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
                 MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -563,6 +565,27 @@ namespace ThuTien.GUI.ToTruong
                         dgvHoaDon["TongCong", e.RowIndex].Value = TongTien + Math.Round((double)TongTien * 5 / 100) + (TongTien * 10 / 100);
                     }
                 }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+            {
+                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    TT_TongHopNo tonghopno = _cTHN.Get(decimal.Parse(dgvTongHopNo.SelectedRows[0].Cells["MaTHN"].Value.ToString()));
+                    if (tonghopno != null)
+                    {
+                        if (_cTHN.Xoa(tonghopno))
+                        {
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            btnXem.PerformClick();
+                        }
+                    }
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
     }
