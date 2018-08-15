@@ -147,6 +147,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             }
             else
                 lbTruyThu.Text = "";
+            
         }
 
         public void LoadDonTKH(DonKH entity)
@@ -541,20 +542,14 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                     {
                         if (txtDanhBo.Text.Trim().Replace(" ", "") != "" && _cDonKH.CheckExist(txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now) == true)
                         {
-                            
-                            DialogResult result = MessageBox.Show("Danh Bộ này đã nhận đơn trong ngày hôm nay rồi", "Thông Báo",MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
-                            if (result == DialogResult.Yes)
-                            {
-                                //code for Yes
-                            }
-                            else if (result == DialogResult.No)
-                            {
+                             if (MessageBox.Show("Danh Bộ này đã nhận đơn trong ngày hôm nay rồi\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                                 return;
-                            }
-                            else if (result == DialogResult.Cancel)
-                            {
+                        }
+
+                        if (_cDonKH.checkKhongLienHe(txtDanhBo.Text.Trim().Replace(" ", "")) == true)
+                        {
+                            if (MessageBox.Show("Danh Bộ này Đã có THƯ MỜI ĐỊNH MỨC, nhưng không liên hệ\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                                 return;
-                            }
                         }
 
                         DonKH donkh = new DonKH();

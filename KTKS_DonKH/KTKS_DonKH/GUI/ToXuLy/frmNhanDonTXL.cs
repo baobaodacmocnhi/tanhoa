@@ -30,7 +30,6 @@ namespace KTKS_DonKH.GUI.ToXuLy
         CPhongBanDoi _cPhongBanDoi = new CPhongBanDoi();
 
         DataSet _dsNoiChuyen = new DataSet("NoiChuyen");
-        LinQ.DonTu _dontu = null;
         DonTXL _dontxl = null;
         HOADON _hoadon = null;
         bool _flagFirst = false;
@@ -124,8 +123,6 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
         public void LoadDonTXL(DonTXL entity)
         {
-            txtMaDonToMoi.Text = entity.MaDonMoi;
-
             cmbLD.SelectedValue = entity.MaLD.Value;
             txtSoCongVan.Text = entity.SoCongVan;
             txtMaDonToCu.Text = "TXL" + entity.MaDon.ToString().Insert(entity.MaDon.ToString().Length - 2, "-");
@@ -186,7 +183,6 @@ namespace KTKS_DonKH.GUI.ToXuLy
             txtDinhMuc.Text = "";
             txtDienThoai.Text = "";
 
-            _dontu = null;
             _hoadon = null;
             _dontxl = null;
             _MaDonTo = -1;
@@ -246,11 +242,6 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         }
 
                         DonTXL dontxl = new DonTXL();
-
-                        if (_dontu != null)
-                        {
-                            dontxl.MaDonCha = _dontu.MaDon;
-                        }
 
                         dontxl.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                         dontxl.SoCongVan = txtSoCongVan.Text.Trim();

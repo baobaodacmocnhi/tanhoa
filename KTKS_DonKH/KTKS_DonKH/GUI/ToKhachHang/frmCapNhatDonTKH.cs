@@ -32,7 +32,6 @@ namespace KTKS_DonKH.GUI.ToKhachHang
         CTruyThuTienNuoc _cTTTN = new CTruyThuTienNuoc();
 
         DataSet _dsNoiChuyen = new DataSet("NoiChuyen");
-        LinQ.DonTu _dontu = null;
         DonKH _dontkh = null;
         HOADON _hoadon = null;
         bool _flagFirst = false;
@@ -195,8 +194,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
 
         public void LoadDonTKH(DonKH entity)
         {
-            txtMaDonToMoi.Text = entity.MaDonMoi;
-
+            chkKhongLienHe.Checked = entity.KhongLienHe;
             cmbLD.SelectedValue = entity.MaLD.Value;
             txtSoCongVan.Text = entity.SoCongVan;
             txtMaDonToCu.Text = entity.MaDon.ToString().Insert(entity.MaDon.ToString().Length - 2, "-");
@@ -248,6 +246,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
 
         public void Clear()
         {
+            chkKhongLienHe.Checked = false;
             txtMaDon.Text = "";
             txtMaDonToMoi.Text = "";
 
@@ -265,7 +264,6 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             txtGiaBieu.Text = "";
             txtDinhMuc.Text = "";
 
-            _dontu = null;
             _dontkh = null;
             _hoadon = null;
             _MaDonTo = -1;
@@ -512,12 +510,15 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                                 return;
                         }
 
+                        if (_cDonKH.checkKhongLienHe(txtDanhBo.Text.Trim().Replace(" ", "")) == true)
+                        {
+                            if (MessageBox.Show("Danh Bộ này Đã có THƯ MỜI ĐỊNH MỨC, nhưng không liên hệ\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                                return;
+                        }
+
                         DonKH dontkh = new DonKH();
 
-                        if (_dontu != null)
-                        {
-                            dontkh.MaDonCha = _dontu.MaDon;
-                        }
+                        dontkh.KhongLienHe = chkKhongLienHe.Checked;
 
                         dontkh.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                         dontkh.SoCongVan = txtSoCongVan.Text.Trim();
@@ -626,6 +627,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                 {
                     if (_dontkh != null)
                     {
+                        _dontkh.KhongLienHe = chkKhongLienHe.Checked;
                         _dontkh.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                         _dontkh.SoCongVan = txtSoCongVan.Text.Trim();
                         if (_hoadon != null && _dontkh.DanhBo != txtDanhBo.Text.Trim().Replace(" ", ""))

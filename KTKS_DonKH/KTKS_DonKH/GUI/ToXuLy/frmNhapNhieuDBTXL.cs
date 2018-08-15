@@ -24,8 +24,6 @@ namespace KTKS_DonKH.GUI.ToXuLy
         CDonTXL _cDonTXL = new CDonTXL();
         CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
 
-        LinQ.DonTu _dontu = null;
-
         private DateTimePicker cellDateTimePicker;
         bool _flag = false;
 
@@ -132,11 +130,6 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         //    }
 
                         DonTXL dontxl = new DonTXL();
-
-                        if (_dontu != null)
-                        {
-                            dontxl.MaDonCha = _dontu.MaDon;
-                        }
 
                         dontxl.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                         dontxl.SoCongVan = txtSoCongVan.Text.Trim();

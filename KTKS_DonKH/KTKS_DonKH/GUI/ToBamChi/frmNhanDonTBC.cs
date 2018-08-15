@@ -30,7 +30,6 @@ namespace KTKS_DonKH.GUI.ToBamChi
         CPhongBanDoi _cPhongBanDoi = new CPhongBanDoi();
 
         DataSet _dsNoiChuyen = new DataSet("NoiChuyen");
-        LinQ.DonTu _dontu = null;
         DonTBC _dontbc = null;
         HOADON _hoadon = null;
         bool _flagFirst = false;
@@ -118,8 +117,6 @@ namespace KTKS_DonKH.GUI.ToBamChi
 
         public void LoadDonTBC(DonTBC entity)
         {
-            txtMaDonToMoi.Text = entity.MaDonMoi;
-
             cmbLD.SelectedValue = entity.MaLD.Value;
             txtSoCongVan.Text = entity.SoCongVan;
             txtMaDonToCu.Text = "TBC" + entity.MaDon.ToString().Insert(entity.MaDon.ToString().Length - 2, "-");
@@ -179,7 +176,6 @@ namespace KTKS_DonKH.GUI.ToBamChi
             txtDinhMuc.Text = "";
             txtDienThoai.Text = "";
 
-            _dontu = null;
             _dontbc = null;
             _hoadon = null;
             _MaDonTo = -1;
@@ -239,11 +235,6 @@ namespace KTKS_DonKH.GUI.ToBamChi
                         }
 
                         DonTBC dontbc = new DonTBC();
-
-                        if (_dontu != null)
-                        {
-                            dontbc.MaDonCha = _dontu.MaDon;
-                        }
 
                         //dontbc.MaDon = _cDonTBC.getMaxNextID();
                         dontbc.MaLD = int.Parse(cmbLD.SelectedValue.ToString());

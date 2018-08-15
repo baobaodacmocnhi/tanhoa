@@ -19487,13 +19487,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _GhiChuXepDon;
 		
-		private System.Nullable<int> _MaDonCha;
-		
-		private string _MaDonMoi;
-		
-		private string _MaDon1;
-		
-		private System.Nullable<int> _MaDon2;
+		private bool _KhongLienHe;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
@@ -19683,14 +19677,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnNgayXepDonChanged();
     partial void OnGhiChuXepDonChanging(string value);
     partial void OnGhiChuXepDonChanged();
-    partial void OnMaDonChaChanging(System.Nullable<int> value);
-    partial void OnMaDonChaChanged();
-    partial void OnMaDonMoiChanging(string value);
-    partial void OnMaDonMoiChanged();
-    partial void OnMaDon1Changing(string value);
-    partial void OnMaDon1Changed();
-    partial void OnMaDon2Changing(System.Nullable<int> value);
-    partial void OnMaDon2Changed();
+    partial void OnKhongLienHeChanging(bool value);
+    partial void OnKhongLienHeChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -21204,82 +21192,22 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonCha", DbType="Int")]
-		public System.Nullable<int> MaDonCha
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KhongLienHe", DbType="Bit NOT NULL")]
+		public bool KhongLienHe
 		{
 			get
 			{
-				return this._MaDonCha;
+				return this._KhongLienHe;
 			}
 			set
 			{
-				if ((this._MaDonCha != value))
+				if ((this._KhongLienHe != value))
 				{
-					this.OnMaDonChaChanging(value);
+					this.OnKhongLienHeChanging(value);
 					this.SendPropertyChanging();
-					this._MaDonCha = value;
-					this.SendPropertyChanged("MaDonCha");
-					this.OnMaDonChaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonMoi", DbType="VarChar(50)")]
-		public string MaDonMoi
-		{
-			get
-			{
-				return this._MaDonMoi;
-			}
-			set
-			{
-				if ((this._MaDonMoi != value))
-				{
-					this.OnMaDonMoiChanging(value);
-					this.SendPropertyChanging();
-					this._MaDonMoi = value;
-					this.SendPropertyChanged("MaDonMoi");
-					this.OnMaDonMoiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDon1", DbType="VarChar(50)")]
-		public string MaDon1
-		{
-			get
-			{
-				return this._MaDon1;
-			}
-			set
-			{
-				if ((this._MaDon1 != value))
-				{
-					this.OnMaDon1Changing(value);
-					this.SendPropertyChanging();
-					this._MaDon1 = value;
-					this.SendPropertyChanged("MaDon1");
-					this.OnMaDon1Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDon2", DbType="Int")]
-		public System.Nullable<int> MaDon2
-		{
-			get
-			{
-				return this._MaDon2;
-			}
-			set
-			{
-				if ((this._MaDon2 != value))
-				{
-					this.OnMaDon2Changing(value);
-					this.SendPropertyChanging();
-					this._MaDon2 = value;
-					this.SendPropertyChanged("MaDon2");
-					this.OnMaDon2Changed();
+					this._KhongLienHe = value;
+					this.SendPropertyChanged("KhongLienHe");
+					this.OnKhongLienHeChanged();
 				}
 			}
 		}
@@ -21794,14 +21722,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _GhiChuChuyen_KTXM;
 		
-		private System.Nullable<int> _MaDonCha;
-		
-		private string _MaDonMoi;
-		
-		private string _MaDon1;
-		
-		private System.Nullable<int> _MaDon2;
-		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -21878,14 +21798,6 @@ namespace KTKS_DonKH.LinQ
     partial void OnNguoiDi_KTXMChanged();
     partial void OnGhiChuChuyen_KTXMChanging(string value);
     partial void OnGhiChuChuyen_KTXMChanged();
-    partial void OnMaDonChaChanging(System.Nullable<int> value);
-    partial void OnMaDonChaChanged();
-    partial void OnMaDonMoiChanging(string value);
-    partial void OnMaDonMoiChanged();
-    partial void OnMaDon1Changing(string value);
-    partial void OnMaDon1Changed();
-    partial void OnMaDon2Changing(System.Nullable<int> value);
-    partial void OnMaDon2Changed();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -22351,86 +22263,6 @@ namespace KTKS_DonKH.LinQ
 					this._GhiChuChuyen_KTXM = value;
 					this.SendPropertyChanged("GhiChuChuyen_KTXM");
 					this.OnGhiChuChuyen_KTXMChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonCha", DbType="Int")]
-		public System.Nullable<int> MaDonCha
-		{
-			get
-			{
-				return this._MaDonCha;
-			}
-			set
-			{
-				if ((this._MaDonCha != value))
-				{
-					this.OnMaDonChaChanging(value);
-					this.SendPropertyChanging();
-					this._MaDonCha = value;
-					this.SendPropertyChanged("MaDonCha");
-					this.OnMaDonChaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonMoi", DbType="VarChar(50)")]
-		public string MaDonMoi
-		{
-			get
-			{
-				return this._MaDonMoi;
-			}
-			set
-			{
-				if ((this._MaDonMoi != value))
-				{
-					this.OnMaDonMoiChanging(value);
-					this.SendPropertyChanging();
-					this._MaDonMoi = value;
-					this.SendPropertyChanged("MaDonMoi");
-					this.OnMaDonMoiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDon1", DbType="VarChar(50)")]
-		public string MaDon1
-		{
-			get
-			{
-				return this._MaDon1;
-			}
-			set
-			{
-				if ((this._MaDon1 != value))
-				{
-					this.OnMaDon1Changing(value);
-					this.SendPropertyChanging();
-					this._MaDon1 = value;
-					this.SendPropertyChanged("MaDon1");
-					this.OnMaDon1Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDon2", DbType="Int")]
-		public System.Nullable<int> MaDon2
-		{
-			get
-			{
-				return this._MaDon2;
-			}
-			set
-			{
-				if ((this._MaDon2 != value))
-				{
-					this.OnMaDon2Changing(value);
-					this.SendPropertyChanging();
-					this._MaDon2 = value;
-					this.SendPropertyChanged("MaDon2");
-					this.OnMaDon2Changed();
 				}
 			}
 		}
@@ -24841,14 +24673,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _TruyThu;
 		
-		private System.Nullable<int> _MaDonCha;
-		
-		private string _MaDonMoi;
-		
-		private string _MaDon1;
-		
-		private System.Nullable<int> _MaDon2;
-		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -24993,14 +24817,6 @@ namespace KTKS_DonKH.LinQ
     partial void OnDieuChinhChanged();
     partial void OnTruyThuChanging(bool value);
     partial void OnTruyThuChanged();
-    partial void OnMaDonChaChanging(System.Nullable<int> value);
-    partial void OnMaDonChaChanged();
-    partial void OnMaDonMoiChanging(string value);
-    partial void OnMaDonMoiChanged();
-    partial void OnMaDon1Changing(string value);
-    partial void OnMaDon1Changed();
-    partial void OnMaDon2Changing(System.Nullable<int> value);
-    partial void OnMaDon2Changed();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -26070,86 +25886,6 @@ namespace KTKS_DonKH.LinQ
 					this._TruyThu = value;
 					this.SendPropertyChanged("TruyThu");
 					this.OnTruyThuChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonCha", DbType="Int")]
-		public System.Nullable<int> MaDonCha
-		{
-			get
-			{
-				return this._MaDonCha;
-			}
-			set
-			{
-				if ((this._MaDonCha != value))
-				{
-					this.OnMaDonChaChanging(value);
-					this.SendPropertyChanging();
-					this._MaDonCha = value;
-					this.SendPropertyChanged("MaDonCha");
-					this.OnMaDonChaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonMoi", DbType="VarChar(50)")]
-		public string MaDonMoi
-		{
-			get
-			{
-				return this._MaDonMoi;
-			}
-			set
-			{
-				if ((this._MaDonMoi != value))
-				{
-					this.OnMaDonMoiChanging(value);
-					this.SendPropertyChanging();
-					this._MaDonMoi = value;
-					this.SendPropertyChanged("MaDonMoi");
-					this.OnMaDonMoiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDon1", DbType="VarChar(50)")]
-		public string MaDon1
-		{
-			get
-			{
-				return this._MaDon1;
-			}
-			set
-			{
-				if ((this._MaDon1 != value))
-				{
-					this.OnMaDon1Changing(value);
-					this.SendPropertyChanging();
-					this._MaDon1 = value;
-					this.SendPropertyChanged("MaDon1");
-					this.OnMaDon1Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDon2", DbType="Int")]
-		public System.Nullable<int> MaDon2
-		{
-			get
-			{
-				return this._MaDon2;
-			}
-			set
-			{
-				if ((this._MaDon2 != value))
-				{
-					this.OnMaDon2Changing(value);
-					this.SendPropertyChanging();
-					this._MaDon2 = value;
-					this.SendPropertyChanged("MaDon2");
-					this.OnMaDon2Changed();
 				}
 			}
 		}

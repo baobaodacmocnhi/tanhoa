@@ -104,6 +104,7 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
+            this.chkKhongLienHe = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -708,6 +709,7 @@
             this.label16.Size = new System.Drawing.Size(102, 16);
             this.label16.TabIndex = 105;
             this.label16.Text = "Mã Đơn Tổ Mới:";
+            this.label16.Visible = false;
             // 
             // txtMaDonToMoi
             // 
@@ -716,6 +718,7 @@
             this.txtMaDonToMoi.Size = new System.Drawing.Size(100, 22);
             this.txtMaDonToMoi.TabIndex = 104;
             this.txtMaDonToMoi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtMaDonToMoi.Visible = false;
             // 
             // label15
             // 
@@ -725,6 +728,7 @@
             this.label15.Size = new System.Drawing.Size(57, 16);
             this.label15.TabIndex = 103;
             this.label15.Text = "Mã Đơn:";
+            this.label15.Visible = false;
             // 
             // txtMaDon
             // 
@@ -733,6 +737,7 @@
             this.txtMaDon.Size = new System.Drawing.Size(85, 22);
             this.txtMaDon.TabIndex = 102;
             this.txtMaDon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtMaDon.Visible = false;
             this.txtMaDon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDon_KeyPress);
             // 
             // label5
@@ -810,6 +815,16 @@
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
+            // chkKhongLienHe
+            // 
+            this.chkKhongLienHe.AutoSize = true;
+            this.chkKhongLienHe.Location = new System.Drawing.Point(481, 13);
+            this.chkKhongLienHe.Name = "chkKhongLienHe";
+            this.chkKhongLienHe.Size = new System.Drawing.Size(190, 20);
+            this.chkKhongLienHe.TabIndex = 109;
+            this.chkKhongLienHe.Text = "Khách Hàng Không Liên Hệ";
+            this.chkKhongLienHe.UseVisualStyleBackColor = true;
+            // 
             // frmCapNhatDonTKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -817,6 +832,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1229, 587);
+            this.Controls.Add(this.chkKhongLienHe);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);
@@ -949,5 +965,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_NoiNhan;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiNhan;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
+        private System.Windows.Forms.CheckBox chkKhongLienHe;
     }
 }

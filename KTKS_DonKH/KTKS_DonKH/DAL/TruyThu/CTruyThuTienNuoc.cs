@@ -392,12 +392,12 @@ namespace KTKS_DonKH.DAL.TruyThu
             }
         }
 
-        public bool Sua_HoaDon(TruyThuTienNuoc_HoaDon cttttn)
+        public bool Sua_HoaDon(TruyThuTienNuoc_HoaDon hoadon)
         {
             try
             {
-                cttttn.ModifyDate = DateTime.Now;
-                cttttn.ModifyBy = CTaiKhoan.MaUser;
+                hoadon.ModifyDate = DateTime.Now;
+                hoadon.ModifyBy = CTaiKhoan.MaUser;
                 db.SubmitChanges();
                 return true;
             }
@@ -408,11 +408,11 @@ namespace KTKS_DonKH.DAL.TruyThu
             }
         }
 
-        public bool Xoa_HoaDon(TruyThuTienNuoc_HoaDon cttttn)
+        public bool Xoa_HoaDon(TruyThuTienNuoc_HoaDon hoadon)
         {
             try
             {
-                db.TruyThuTienNuoc_HoaDons.DeleteOnSubmit(cttttn);
+                db.TruyThuTienNuoc_HoaDons.DeleteOnSubmit(hoadon);
                 db.SubmitChanges();
                 return true;
             }

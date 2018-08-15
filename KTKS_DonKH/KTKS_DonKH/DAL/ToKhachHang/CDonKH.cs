@@ -27,18 +27,6 @@ namespace KTKS_DonKH.DAL.ToKhachHang
                 else
                     entity.MaDon = decimal.Parse("1" + DateTime.Now.ToString("yy"));
 
-                if (entity.MaDonCha != null)
-                {
-                    entity.MaDon1 = "KH";
-                    if (db.DonKHs.Count(item => item.MaDonCha == entity.MaDonCha) > 0)
-                    {
-                        entity.MaDon2 = db.DonKHs.Max(item => item.MaDon2) + 1;
-                    }
-                    else
-                        entity.MaDon2 = 1;
-                    entity.MaDonMoi = entity.MaDonCha + entity.MaDon1 + entity.MaDon2;
-                }
-
                 entity.CreateDate = DateTime.Now;
                 entity.CreateBy = CTaiKhoan.MaUser;
                 db.DonKHs.InsertOnSubmit(entity);
@@ -91,24 +79,19 @@ namespace KTKS_DonKH.DAL.ToKhachHang
             return db.DonKHs.Any(item => item.MaDon == MaDon);
         }
 
-        public bool CheckExist(string MaDonMoi)
-        {
-            return db.DonKHs.Any(item => item.MaDonMoi == MaDonMoi);
-        }
-
         public bool CheckExist(string DanhBo,DateTime CreateDate)
         {
             return db.DonKHs.Any(item => item.DanhBo == DanhBo&&item.CreateDate.Value.Date==CreateDate.Date);
         }
 
+        public bool checkKhongLienHe(string DanhBo)
+        {
+            return db.DonKHs.Any(item => item.DanhBo == DanhBo && item.KhongLienHe == true);
+        }
+
         public DonKH Get(decimal MaDon)
         {
                 return db.DonKHs.SingleOrDefault(item => item.MaDon == MaDon);
-        }
-
-        public DonKH Get(string MaDonMoi)
-        {
-            return db.DonKHs.SingleOrDefault(item => item.MaDonMoi == MaDonMoi);
         }
 
         public DataTable GetDS(decimal MaDon)

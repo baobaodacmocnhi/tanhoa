@@ -27,18 +27,6 @@ namespace KTKS_DonKH.DAL.ToXuLy
                 else
                     entity.MaDon = decimal.Parse("1" + DateTime.Now.ToString("yy"));
 
-                if (entity.MaDonCha != null)
-                {
-                    entity.MaDon1 = "XL";
-                    if (db.DonTXLs.Count(item => item.MaDonCha == entity.MaDonCha) > 0)
-                    {
-                        entity.MaDon2 = db.DonTXLs.Max(item => item.MaDon2) + 1;
-                    }
-                    else
-                        entity.MaDon2 = 1;
-                    entity.MaDonMoi = entity.MaDonCha + entity.MaDon1 + entity.MaDon2;
-                }
-
                 entity.CreateDate = DateTime.Now;
                 entity.CreateBy = CTaiKhoan.MaUser;
                 db.DonTXLs.InsertOnSubmit(entity);
@@ -91,11 +79,6 @@ namespace KTKS_DonKH.DAL.ToXuLy
             return db.DonTXLs.Any(item => item.MaDon == MaDon);
         }
 
-        public bool CheckExist(string MaDonMoi)
-        {
-            return db.DonTXLs.Any(item => item.MaDonMoi == MaDonMoi);
-        }
-
         public bool CheckExist(string DanhBo,DateTime CreateDate)
         {
             return db.DonTXLs.Any(item => item.DanhBo == DanhBo&&item.CreateDate.Value.Date==CreateDate.Date);
@@ -112,11 +95,6 @@ namespace KTKS_DonKH.DAL.ToXuLy
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
-        }
-
-        public DonTXL Get(string MaDonMoi)
-        {
-                return db.DonTXLs.SingleOrDefault(itemDonTXL => itemDonTXL.MaDonMoi == MaDonMoi);
         }
 
         public DataTable GetDS(decimal MaDon)

@@ -155,6 +155,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 {
                                     ChungTu chungtu = new ChungTu();
                                     chungtu.MaCT = txtMaCT.Text.Trim();
+                                    chungtu.HoTen = txtHoTen_Cat.Text.Trim();
                                     chungtu.DiaChi = txtDiaChiCT_Cat.Text.Trim();
                                     chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
                                     chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());

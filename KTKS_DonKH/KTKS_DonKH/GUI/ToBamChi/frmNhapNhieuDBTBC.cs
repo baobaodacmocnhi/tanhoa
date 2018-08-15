@@ -24,8 +24,6 @@ namespace KTKS_DonKH.GUI.ToBamChi
         CDonTBC _cDonTBC = new CDonTBC();
         CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
 
-        LinQ.DonTu _dontu = null;
-
         private DateTimePicker cellDateTimePicker;
         private DateTimePicker cellDateTimePickerVP;
         bool _flag = false;
@@ -183,11 +181,6 @@ namespace KTKS_DonKH.GUI.ToBamChi
 
                             DonTBC dontbc = new DonTBC();
 
-                            if (_dontu != null)
-                            {
-                                dontbc.MaDonCha = _dontu.MaDon;
-                            }
-
                             dontbc.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                             dontbc.SoCongVan = txtSoCongVan.Text.Trim();
                             dontbc.NoiDung = txtNoiDung.Text.Trim();
@@ -293,11 +286,6 @@ namespace KTKS_DonKH.GUI.ToBamChi
                                 //    }
 
                                 DonTBC dontbc = new DonTBC();
-
-                                if (_dontu != null)
-                                {
-                                    dontbc.MaDonCha = _dontu.MaDon;
-                                }
 
                                 dontbc.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                                 dontbc.SoCongVan = txtSoCongVan.Text.Trim();
