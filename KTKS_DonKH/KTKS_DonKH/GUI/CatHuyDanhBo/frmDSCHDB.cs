@@ -557,7 +557,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             if (dgvDSYCCHDB["YC_In", i].Value != null && bool.Parse(dgvDSYCCHDB["YC_In", i].Value.ToString()) == true)
                             {
                                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                                DataRow dr = dsBaoCao.Tables["CHDB_Phieu"].NewRow();
+                                DataRow dr = dsBaoCao.Tables["PhieuCHDB"].NewRow();
 
                                 CHDB_Phieu ycchdb = _cCHDB.GetPhieuHuy(decimal.Parse(dgvDSYCCHDB["SoPhieu", i].Value.ToString()));
                                 dr["SoPhieu"] = ycchdb.MaYCCHDB.ToString().Insert(ycchdb.MaYCCHDB.ToString().Length - 2, "-");
@@ -594,7 +594,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                             if (ycchdb.CHDB.MaDonTBC != null)
                                                 dr["MaDon"] = "TBC" + ycchdb.CHDB.MaDonTBC.ToString().Insert(ycchdb.CHDB.MaDonTBC.ToString().Length - 2, "-");
 
-                                dsBaoCao.Tables["CHDB_Phieu"].Rows.Add(dr);
+                                dsBaoCao.Tables["PhieuCHDB"].Rows.Add(dr);
 
                                 //rptPhieuCHDBx2 rpt = new rptPhieuCHDBx2();
                                 //for (int j = 0; j < rpt.Subreports.Count; j++)
