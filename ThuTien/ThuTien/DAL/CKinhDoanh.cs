@@ -46,6 +46,23 @@ namespace ThuTien.DAL
                 connection.Close();
         }
 
+        public object ExecuteQuery_ReturnOneValue(string sql)
+        {
+            try
+            {
+                Connect();
+                command = new SqlCommand(sql, connection);
+                object result = command.ExecuteScalar();
+                Disconnect();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Disconnect();
+                throw ex;
+            }
+        }
+
         public DataTable ExecuteQuery_DataTable(string sql)
         {
             this.Connect();
@@ -868,8 +885,8 @@ namespace ThuTien.DAL
                                         _chiTiet = DinhMuc + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * _GiamTienNuoc / 100)) + "\r\n"
                                              + (_SH - DinhMuc) + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (GiaDieuChinh - GiaDieuChinh * _GiamTienNuoc / 100));
                                     }
-                                TongTien += _DV * lstGiaNuoc[5].DonGia.Value ;
-                                _chiTiet += "\r\n" + _DV + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[5].DonGia.Value );
+                                TongTien += _DV * lstGiaNuoc[5].DonGia.Value;
+                                _chiTiet += "\r\n" + _DV + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[5].DonGia.Value);
                                 //TongTien -= TongTien * 10 / 100;
                             }
                         break;
@@ -1590,8 +1607,8 @@ namespace ThuTien.DAL
                                     _chiTiet = DinhMuc + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * _GiamTienNuoc / 100)) + "\r\n"
                                          + (_SH - DinhMuc) + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (GiaDieuChinh - GiaDieuChinh * _GiamTienNuoc / 100));
                                 }
-                            TongTien += _DV * lstGiaNuoc[5].DonGia.Value ;
-                            _chiTiet += "\r\n" + _DV + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[5].DonGia.Value );
+                            TongTien += _DV * lstGiaNuoc[5].DonGia.Value;
+                            _chiTiet += "\r\n" + _DV + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", lstGiaNuoc[5].DonGia.Value);
                             //TongTien -= TongTien * 10 / 100;
                         }
                         break;
@@ -1630,6 +1647,19 @@ namespace ThuTien.DAL
                 return _dbKinhDoanh.DCBD_ChiTietBienDongs.Where(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date >= DateTime.Now.AddDays(-31).Date).OrderByDescending(item => item.CreateDate).First();
             else
                 return null;
+        }
+
+        public decimal getLastMaCatHuy(string DanhBo)
+        {
+            try
+            {
+                string sql = "select top 1 MaCTCHDB from CHDB_ChiTietCatHuy where DanhBo='" + DanhBo + "' order by CreateDate desc";
+                return (decimal)ExecuteQuery_ReturnOneValue(sql);
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
         }
     }
 }

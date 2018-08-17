@@ -192,6 +192,23 @@ namespace ThuTien.DAL
             }
         }
 
+        public object ExecuteQuery_ReturnOneValue(string sql)
+        {
+            try
+            {
+                Connect();
+                command = new SqlCommand(sql, connection);
+                object result = command.ExecuteScalar();
+                Disconnect();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Disconnect();
+                throw ex;
+            }
+        }
+
         /// <summary>
         /// Thực thi câu truy vấn SQL không trả về dữ liệu. Trước đó phải mở Transaction/Kết thúc phải đóng Transaction
         /// </summary>

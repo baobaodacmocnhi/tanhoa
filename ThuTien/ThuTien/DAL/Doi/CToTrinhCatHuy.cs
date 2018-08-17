@@ -120,7 +120,7 @@ namespace ThuTien.DAL.Doi
 
         public bool CheckExist_CT(string SoHoaDon)
         {
-            return _db.TT_CTToTrinhCatHuys.Any(item => item.TT_ToTrinhCatHuy.DaKy == false && item.SoHoaDon==SoHoaDon);
+            return _db.TT_CTToTrinhCatHuys.Any(item => item.TT_ToTrinhCatHuy.DaKy == false && item.SoHoaDon == SoHoaDon);
         }
 
         public TT_CTToTrinhCatHuy GetCT(int MaCTTT)
@@ -150,6 +150,18 @@ namespace ThuTien.DAL.Doi
         public int CountCT(decimal MaTT)
         {
             return _db.TT_CTToTrinhCatHuys.Count(item => item.MaTT == MaTT);
+        }
+
+        public decimal getMaTT(string SoHoaDon)
+        {
+            try
+            {
+                return _db.TT_CTToTrinhCatHuys.Where(item => item.SoHoaDon.Contains(SoHoaDon)).OrderByDescending(item => item.CreateDate).First().MaTT.Value;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
         }
 
         #endregion

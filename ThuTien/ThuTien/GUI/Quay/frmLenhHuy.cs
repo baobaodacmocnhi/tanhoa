@@ -14,6 +14,7 @@ using ThuTien.BaoCao;
 using ThuTien.BaoCao.Quay;
 using ThuTien.GUI.BaoCao;
 using ThuTien.DAL.TongHop;
+using ThuTien.DAL;
 
 namespace ThuTien.GUI.Quay
 {
@@ -24,6 +25,8 @@ namespace ThuTien.GUI.Quay
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CChuyenNoKhoDoi _cCNKD = new CChuyenNoKhoDoi();
         CTo _cTo = new CTo();
+        CToTrinhCatHuy _cTTCH = new CToTrinhCatHuy();
+        CKinhDoanh _cKinhDoanh = new CKinhDoanh();
 
         public frmLenhHuy()
         {
@@ -245,13 +248,22 @@ namespace ThuTien.GUI.Quay
                     }
                 }
             foreach (DataGridViewRow item in dgvHoaDon.Rows)
-                if (_cCNKD.CheckExistCT(item.Cells["SoHoaDon"].Value.ToString()))
+            {
+                TT_CTChuyenNoKhoDoi ctcnkd = _cCNKD.GetCT(item.Cells["SoHoaDon"].Value.ToString());
+                //if (_cCNKD.CheckExistCT(item.Cells["SoHoaDon"].Value.ToString()))
+                if (ctcnkd!=null)
                 {
-                    TT_CTChuyenNoKhoDoi ctcnkd = _cCNKD.GetCT(item.Cells["SoHoaDon"].Value.ToString());
+                    //TT_CTChuyenNoKhoDoi ctcnkd = _cCNKD.GetCT(item.Cells["SoHoaDon"].Value.ToString());
 
                     //item.Cells["NgayGiaiTrach"].Value = ctcnkd.CreateDate.Value.ToString("dd/MM/yyyy");
                     item.Cells["DangNgan"].Value = "CNKĐ";
                 }
+                if (chkKiemTraToTrinh.Checked==true)
+                {
+                    item.Cells["MaTT"].Value = _cTTCH.getMaTT(item.Cells["SoHoaDon"].Value.ToString());
+                    item.Cells["MaCatHuy"].Value = _cKinhDoanh.getLastMaCatHuy(item.Cells["DanhBo"].Value.ToString());
+                }
+            }
         }
 
         private void dgvHD_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
