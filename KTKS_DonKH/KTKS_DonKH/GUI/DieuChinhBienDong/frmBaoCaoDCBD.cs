@@ -1574,5 +1574,39 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             range.Value2 = arr;
         }
 
+        private void btnInDS_DSDCBD_Click(object sender, EventArgs e)
+        {
+            if (radHoaDon.Checked)
+            {
+                DataTable dt = _cDCBD.getDSHoaDonByCreateDate(dateTu_DSDCBD.Value, dateDen_DSDCBD.Value);
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                foreach (DataRow item in dt.Rows)
+                {
+                    DataRow dr = dsBaoCao.Tables["DCHD"].NewRow();
+                    dr["TuNgay"] = dateTu_DSDCBD.Value.ToString("dd/MM/yyyy");
+                    dr["DenNgay"] = dateDen_DSDCBD.Value.ToString("dd/MM/yyyy");
+                    dr["SoPhieu"] = item["ID"].ToString();
+                    if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
+                        dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " "); ;
+                    dr["GiaBieuStart"] = item["GiaBieu"].ToString();
+                    dr["GiaBieuEnd"] = item["GiaBieu_BD"].ToString();
+                    dr["DinhMucStart"] = item["DinhMuc"].ToString();
+                    dr["DinhMucEnd"] = item["DinhMuc_BD"].ToString();
+                    dr["TieuThuStart"] = item["TieuThu"].ToString();
+                    dr["TieuThuEnd"] = item["TieuThu_BD"].ToString();
+                    dr["TongCongStart"] = item["TongCong_Start"].ToString();
+                    dr["TongCongEnd"] = item["TongCong_End"].ToString();
+                    dr["TongCongBD"] = item["TongCong_BD"].ToString();
+                    dr["TangGiam"] = item["TangGiam"].ToString();
+                    dr["ThongTin"] = item["ThongTin"].ToString() + ". " + item["LyDoDieuChinh"].ToString();
+                    dsBaoCao.Tables["DCHD"].Rows.Add(dr);
+                }
+                rptDSDCHD rpt = new rptDSDCHD();
+                rpt.SetDataSource(dsBaoCao);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.ShowDialog();
+            }
+        }
+
     }
 }

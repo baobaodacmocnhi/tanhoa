@@ -78,6 +78,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.btnXuatExcel_DSDCBD = new System.Windows.Forms.Button();
+            this.btnInDS_DSDCBD = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.groupBox_DSChungCu.SuspendLayout();
             this.groupBox_ThongKeDC.SuspendLayout();
@@ -429,6 +430,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnInDS_DSDCBD);
             this.groupBox1.Controls.Add(this.radHoaDon);
             this.groupBox1.Controls.Add(this.radBienDong);
             this.groupBox1.Controls.Add(this.comboBox1);
@@ -581,6 +583,16 @@
             this.btnXuatExcel_DSDCBD.UseVisualStyleBackColor = true;
             this.btnXuatExcel_DSDCBD.Click += new System.EventHandler(this.btnXuatExcel_DSDCBD_Click);
             // 
+            // btnInDS_DSDCBD
+            // 
+            this.btnInDS_DSDCBD.Location = new System.Drawing.Point(190, 96);
+            this.btnInDS_DSDCBD.Name = "btnInDS_DSDCBD";
+            this.btnInDS_DSDCBD.Size = new System.Drawing.Size(80, 25);
+            this.btnInDS_DSDCBD.TabIndex = 26;
+            this.btnInDS_DSDCBD.Text = "In DS";
+            this.btnInDS_DSDCBD.UseVisualStyleBackColor = true;
+            this.btnInDS_DSDCBD.Click += new System.EventHandler(this.btnInDS_DSDCBD_Click);
+            // 
             // frmBaoCaoDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -679,5 +691,6 @@
         private System.Windows.Forms.Button btnXuatExcel_DSDCBD;
         private System.Windows.Forms.RadioButton radHoaDon;
         private System.Windows.Forms.RadioButton radBienDong;
+        private System.Windows.Forms.Button btnInDS_DSDCBD;
     }
 }
