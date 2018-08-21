@@ -27,7 +27,7 @@ namespace KTKS_DonKH.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HP_G7\\KD;Initial Catalog=DocSoTH;Persist Security Info=True;User ID=s" +
-            "a;Password=P@ssW012d")]
+            "a;Password=db8@tanhoa")]
         public string DocSoTHConnectionString {
             get {
                 return ((string)(this["DocSoTHConnectionString"]));
@@ -38,7 +38,7 @@ namespace KTKS_DonKH.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.90.9;Initial Catalog=TANHOA_WATER;Persist Security Info=True;" +
-            "User ID=sa;Password=P@ssW012d9")]
+            "User ID=sa;Password=db9@tanhoa")]
         public string TANHOA_WATERConnectionString {
             get {
                 return ((string)(this["TANHOA_WATERConnectionString"]));
@@ -49,7 +49,7 @@ namespace KTKS_DonKH.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SERVERG8-01;Initial Catalog=KTKS_DonKH;Persist Security Info=True;Use" +
-            "r ID=tanhoa;Password=tanhoavn@11")]
+            "r ID=sa;Password=db11@tanhoa")]
         public string KTKS_DonKHConnectionString {
             get {
                 return ((string)(this["KTKS_DonKHConnectionString"]));
@@ -60,7 +60,7 @@ namespace KTKS_DonKH.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=server9;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=" +
-            "tanhoa;Password=tanhoavn@9")]
+            "sa;Password=db9@tanhoa")]
         public string HOADON_TAConnectionString {
             get {
                 return ((string)(this["HOADON_TAConnectionString"]));
@@ -71,7 +71,7 @@ namespace KTKS_DonKH.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HP_G7\\KD;Initial Catalog=CAPNUOCTANHOA;Persist Security Info=True;Use" +
-            "r ID=tanhoa;Password=tanhoavn@8")]
+            "r ID=sa;Password=db8@tanhoa")]
         public string CAPNUOCTANHOAConnectionString {
             get {
                 return ((string)(this["CAPNUOCTANHOAConnectionString"]));

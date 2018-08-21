@@ -491,7 +491,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     if (ctdchd.TongCong_Start == 0)
                                         dr["TongCongStart"] = 0;
                                     else
-                                        dr["TongCongStart"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.TongCong_Start);
+                                        dr["TongCongStart"] =  ctdchd.TongCong_Start;
                                     ///
                                     dr["TangGiam"] = ctdchd.TangGiam;
                                     ///
@@ -511,7 +511,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     if (ctdchd.TongCong_BD == 0)
                                         dr["TongCongBD"] = 0;
                                     else
-                                        dr["TongCongBD"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.TongCong_BD);
+                                        dr["TongCongBD"] = ctdchd.TongCong_BD;
                                     ///
                                     dr["TieuThuEnd"] = ctdchd.TieuThu_BD;
                                     if (ctdchd.TienNuoc_End == 0)
@@ -529,7 +529,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     if (ctdchd.TongCong_End == 0)
                                         dr["TongCongEnd"] = 0;
                                     else
-                                        dr["TongCongEnd"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.TongCong_End);
+                                        dr["TongCongEnd"] = ctdchd.TongCong_End;
 
                                     dr["ChucVu"] = ctdchd.ChucVu;
                                     dr["NguoiKy"] = ctdchd.NguoiKy;
@@ -1111,7 +1111,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 if (ctdchd.TongCong_End == 0)
                                     dr["TongCongEnd"] = 0;
                                 else
-                                    dr["TongCongEnd"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.TongCong_End);
+                                    dr["TongCongEnd"] =  ctdchd.TongCong_End;
 
                                 dr["ChucVu"] = ctdchd.ChucVu;
                                 dr["NguoiKy"] = ctdchd.NguoiKy;

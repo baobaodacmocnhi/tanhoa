@@ -928,7 +928,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dr["TienNuocStart"] = txtChiTietCu.Text.Trim() + "\n=  " + txtTienNuoc_Start.Text.Trim();
                 dr["ThueGTGTStart"] = txtTienNuoc_Start.Text.Trim() + " x 5% \n=  " + txtThueGTGT_Start.Text.Trim();
                 dr["PhiBVMTStart"] = txtTienNuoc_Start.Text.Trim() + " x 10% \n=  " + txtPhiBVMT_Start.Text.Trim();
-                dr["TongCongStart"] = txtTongCong_Start.Text.Trim();
+                dr["TongCongStart"] = txtTongCong_Start.Text.Trim().Replace(".", "");
                 ///
                 dr["TangGiam"] = lbTangGiam.Text;
                 ///
@@ -938,7 +938,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dr["TienNuocBD"] = txtTienNuoc_BD.Text.Trim();
                 dr["ThueGTGTBD"] = txtThueGTGT_BD.Text.Trim();
                 dr["PhiBVMTBD"] = txtPhiBVMT_BD.Text.Trim();
-                dr["TongCongBD"] = txtTongCong_BD.Text.Trim();
+                dr["TongCongBD"] = txtTongCong_BD.Text.Trim().Replace(".", "");
                 ///
                 dr["GiaBieuEnd"] = txtGiaBieu_Moi.Text.Trim();
                 dr["DinhMucEnd"] = txtDinhMuc_Moi.Text.Trim();
@@ -950,7 +950,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (!string.IsNullOrEmpty(txtPhiBVMT_End.Text.Trim()))
                     dr["PhiBVMTEnd"] = txtTienNuoc_End.Text.Trim() + " x 10% \n=  " + txtPhiBVMT_End.Text.Trim();
                 if (!string.IsNullOrEmpty(txtTongCong_End.Text.Trim()))
-                    dr["TongCongEnd"] = txtTongCong_End.Text.Trim();
+                    dr["TongCongEnd"] = txtTongCong_End.Text.Trim().Replace(".", "");
                 ///
                 if (txtSH.Text.Trim() != "0")
                     dr["SH"] = "SH: " + txtSH.Text.Trim();
@@ -967,14 +967,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.ShowDialog();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnInA4_Click(object sender, EventArgs e)
         {
+            try
+            {
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             DataRow dr = dsBaoCao.Tables["DCHD"].NewRow();
 
@@ -1076,7 +1078,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (txtTongCong_Start.Text.Trim() == "0")
                 dr["TongCongStart"] = 0;
             else
-                dr["TongCongStart"] = txtTongCong_Start.Text.Trim();
+                dr["TongCongStart"] = txtTongCong_Start.Text.Trim().Replace(".","");
             ///
             if (int.Parse(txtTienNuoc_End.Text.Trim().Replace(".", "")) - int.Parse(txtTienNuoc_Start.Text.Trim().Replace(".", "")) == 0)
                 dr["TangGiam"] = "";
@@ -1102,7 +1104,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (txtTongCong_BD.Text.Trim() == "0")
                 dr["TongCongBD"] = 0;
             else
-                dr["TongCongBD"] = txtTongCong_BD.Text.Trim();
+                dr["TongCongBD"] = txtTongCong_BD.Text.Trim().Replace(".", "");
             ///
             dr["TieuThuEnd"] = txtTieuThu_Moi.Text.Trim();
             if (txtTienNuoc_End.Text.Trim() == "0")
@@ -1120,7 +1122,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (txtTongCong_End.Text.Trim() == "0")
                 dr["TongCongEnd"] = 0;
             else
-                dr["TongCongEnd"] = txtTongCong_End.Text.Trim();
+                dr["TongCongEnd"] = txtTongCong_End.Text.Trim().Replace(".", "");
 
             //dr["ChucVu"] = ctdchd.ChucVu;
             //dr["NguoiKy"] = ctdchd.NguoiKy;
@@ -1131,6 +1133,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         #region Configure TextBox

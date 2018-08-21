@@ -15,6 +15,7 @@ namespace KTKS_DonKH.GUI.QuanTri
     {
         string _mnu = "mnuNguoiDung";
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
+        CPhanQuyenNhom _cPhanQuyenNhom = new CPhanQuyenNhom();
         CPhanQuyenNguoiDung _cPhanQuyenNguoiDung = new CPhanQuyenNguoiDung();
         CNhom _cNhom = new CNhom();
         CMenu _cMenu = new CMenu();
@@ -33,7 +34,7 @@ namespace KTKS_DonKH.GUI.QuanTri
             {
                 chkPhoGiamDoc.Visible = true;
                 chkAn.Visible = true;
-                _blNguoiDung = new BindingList<User>(_cTaiKhoan.GetDS());
+                _blNguoiDung = new BindingList<User>(_cTaiKhoan.GetDS_Admin());
                 dgvDSTaiKhoan.Columns["MatKhau"].Visible = true;
             }
             else
@@ -68,7 +69,7 @@ namespace KTKS_DonKH.GUI.QuanTri
             chkBamChi.Checked = false;
             if (CTaiKhoan.Admin)
             {
-                _blNguoiDung = new BindingList<User>(_cTaiKhoan.GetDS());
+                _blNguoiDung = new BindingList<User>(_cTaiKhoan.GetDS_Admin());
             }
             else
             {
@@ -127,7 +128,8 @@ namespace KTKS_DonKH.GUI.QuanTri
                     {
                         User nguoidung = _cTaiKhoan.Get(int.Parse(dgvDSTaiKhoan["MaU", _selectedindex].Value.ToString()));
                         ///xóa quan hệ 1 nhiều
-                        //_cPhanQuyenNguoiDung.Xoa(nguoidung.TT_PhanQuyenNguoiDungs.ToList());
+                        //_cPhanQuyenNguoiDung.Xoa(nguoidung.PhanQuyenNguoiDungs.ToList());
+                        //_cTaiKhoan.Xoa(nguoidung);
                         nguoidung.An = true;
                         _cTaiKhoan.Sua(nguoidung);
                         Clear();

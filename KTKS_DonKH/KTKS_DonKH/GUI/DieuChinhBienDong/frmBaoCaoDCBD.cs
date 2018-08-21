@@ -1598,7 +1598,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dr["TongCongEnd"] = item["TongCong_End"].ToString();
                     dr["TongCongBD"] = item["TongCong_BD"].ToString();
                     dr["TangGiam"] = item["TangGiam"].ToString();
-                    dr["ThongTin"] = item["ThongTin"].ToString() + ". " + item["LyDoDieuChinh"].ToString();
+                    dr["ThongTin"] = item["ThongTin"].ToString();
+                    dr["LyDoDieuChinh"] = item["LyDoDieuChinh"].ToString();
                     dsBaoCao.Tables["DCHD"].Rows.Add(dr);
                 }
                 rptDSDCHD rpt = new rptDSDCHD();
