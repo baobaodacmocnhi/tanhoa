@@ -57,7 +57,7 @@ namespace ThuTien.GUI.Doi
                                 ListViewItem lviR = new ListViewItem();
                                 lviR.Text = itemR["SoHoaDon"].ToString();
                                 lviR.SubItems.Add(itemR["Ky"].ToString());
-                                lviR.SubItems.Add(itemR["SoHoaDon"].ToString());
+                                lviR.SubItems.Add(itemR["DanhBo"].ToString());
                                 lviR.SubItems.Add(itemR["MLT"].ToString());
                                 lviR.SubItems.Add(item[1].ToString().Replace(" ", ""));
                                 lviR.Name = itemR["MaHD"].ToString();
@@ -65,7 +65,7 @@ namespace ThuTien.GUI.Doi
                                 lstView_B.Items.Add(lviR);
                             }
                         }
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
@@ -89,10 +89,11 @@ namespace ThuTien.GUI.Doi
                         string sql = "update HOADON set DOT=" + Dot + ",MAY='" + May + "',STT='" + Stt + "',MALOTRINH='" + item.SubItems[4].Text + "' where ID_HOADON=" + item.Name;
                         _cHoaDon.LinQ_ExecuteNonQuery(sql);
                     }
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi, Vui lòng thử lại "+ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lỗi, Vui lòng thử lại\n"+ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }            
             else

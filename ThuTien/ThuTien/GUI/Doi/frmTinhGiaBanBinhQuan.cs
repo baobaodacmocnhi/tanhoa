@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using ThuTien.DAL.Doi;
 using ThuTien.DAL.TongHop;
 using System.Globalization;
+using ThuTien.DAL;
 
 namespace ThuTien.GUI.Doi
 {
@@ -17,6 +18,7 @@ namespace ThuTien.GUI.Doi
         CHoaDon _cHoaDon = new CHoaDon();
         CDCHD _cDCHD = new CDCHD();
         CGiaBanBinhQuan _cGBBQ = new CGiaBanBinhQuan();
+        CKinhDoanh _cKinhDoanh = new CKinhDoanh();
 
         public frmTinhGiaBanBinhQuan()
         {
@@ -75,6 +77,21 @@ namespace ThuTien.GUI.Doi
             if (dgvGiaBanBinhQuan.Columns[e.ColumnIndex].Name == "GiaBanBinhQuan" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            switch (cmbLoai.SelectedItem.ToString())
+            {
+                case "Cắt Tạm":
+                    txtDanhBo.Text = _cKinhDoanh.getDanhBo_CatTam(int.Parse(txtMa.Text.Trim().Replace("-","")));
+                    break;
+                case "Cắt Hủy":
+                    txtDanhBo.Text = _cKinhDoanh.getDanhBo_CatHuy(int.Parse(txtMa.Text.Trim().Replace("-", "")));
+                    break;
+                default:
+                    break;
             }
         }
 

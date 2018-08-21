@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="HOADON_TA" Class="dbThuTienDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=server9;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=tanhoa" SettingsObjectName="ThuTien.Properties.Settings" SettingsPropertyName="HOADON_TAConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=server9;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa" SettingsObjectName="ThuTien.Properties.Settings" SettingsPropertyName="HOADON_TAConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.TT_LichSuGiaoHD" Member="TT_LichSuGiaoHDs">
     <Type Name="TT_LichSuGiaoHD">
       <Column Name="MaHD" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -279,30 +279,6 @@
       <Column Name="DanhBo" Type="System.String" DbType="VarChar(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TT_TestHoaDonTon" Member="TT_TestHoaDonTons">
-    <Type Name="TT_TestHoaDonTon">
-      <Column Name="MaHD" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="DanhBo" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
-      <Column Name="Nam" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Ky" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Loai" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
-      <Column Name="SoPhatHanh" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
-      <Column Name="TieuThu" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="GiaBan" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ThueGTGT" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PhiBVMT" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MLT" Type="System.String" DbType="VarChar(9)" CanBeNull="true" />
-      <Column Name="SoHoaDon" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="HoTen" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="SoNha" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Duong" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="Xoa" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.TT_XacNhanNo" Member="TT_XacNhanNos">
@@ -1076,6 +1052,38 @@
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="TT_TongHopNo_TT_CTTongHopNo" Member="TT_CTTongHopNos" ThisKey="MaTHN" OtherKey="MaTHN" Type="TT_CTTongHopNo" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TT_PortTon" Member="TT_PortTons">
+    <Type Name="TT_PortTon">
+      <Column Name="MaHD" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DanhBo" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Column Name="Nam" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Ky" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Loai" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="SoPhatHanh" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="TieuThu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GiaBan" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ThueGTGT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PhiBVMT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MLT" Type="System.String" DbType="VarChar(9)" CanBeNull="true" />
+      <Column Name="SoHoaDon" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="HoTen" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="SoNha" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Duong" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Xoa" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TT_PortTon_SaiBiet" Member="TT_PortTon_SaiBiets">
+    <Type Name="TT_PortTon_SaiBiet">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SoHoaDon" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.TimKiem" Method="TimKiem" IsComposable="true">

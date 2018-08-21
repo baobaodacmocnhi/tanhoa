@@ -1661,5 +1661,15 @@ namespace ThuTien.DAL
                 return 0;
             }
         }
+
+        public string getDanhBo_CatTam(int ID)
+        {
+            return (string)ExecuteQuery_ReturnOneValue("select DanhBo from CHDB_ChiTietCatTam where MaCTCTDB="+ID);
+        }
+
+        public string getDanhBo_CatHuy(int ID)
+        {
+            return (string)ExecuteQuery_ReturnOneValue("select DanhBo from CHDB_ChiTietCatHuy where MaCTCHDB=" + ID);
+        }
     }
 }

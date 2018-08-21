@@ -34,7 +34,7 @@ namespace ThuTien.GUI.Doi
 
         public void LoadDSHoaDon()
         {
-            var query = from item in _db.TT_TestHoaDonTons
+            var query = from item in _db.TT_PortTons
                         join itemHD in _db.HOADONs on item.SoHoaDon equals itemHD.SOHOADON into tableHD
                         from itemtableHD in tableHD.DefaultIfEmpty()
                         join itemND in _db.TT_NguoiDungs on itemtableHD.MaNV_HanhThu equals itemND.MaND into tableND
@@ -59,6 +59,8 @@ namespace ThuTien.GUI.Doi
                         };
 
             dgvHoaDon.DataSource = _cDAL.LINQToDataTable(query);
+
+            dgvHoaDon2.DataSource = _cDAL.LINQToDataTable(_db.TT_PortTon_SaiBiets.ToList());
         }
 
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)
@@ -145,12 +147,8 @@ namespace ThuTien.GUI.Doi
                         //access each cell
                         //if (!_db.TT_TestHoaDonTons.Any(itemHD => itemHD.SoHoaDon == valueArray[row, 14].ToString()))
                         //{
-                            if (k == 31)
-                            {
-
-                            }
-                            TT_TestHoaDonTon hoadon = new TT_TestHoaDonTon();
-                            hoadon.MaHD = _db.TT_TestHoaDonTons.Max(item=>item.MaHD) + 1;
+                            TT_PortTon hoadon = new TT_PortTon();
+                            hoadon.MaHD = _db.TT_PortTons.Max(item => item.MaHD) + 1;
                             hoadon.DanhBo = valueArray[row, 4].ToString();
                             hoadon.Nam = int.Parse(valueArray[row, 5].ToString());
                             hoadon.Ky = int.Parse(valueArray[row, 6].ToString());
@@ -169,7 +167,7 @@ namespace ThuTien.GUI.Doi
                             hoadon.CreateBy = CNguoiDung.MaND;
                             hoadon.CreateDate = dateNgayLap.Value;
 
-                            _db.TT_TestHoaDonTons.InsertOnSubmit(hoadon);
+                            _db.TT_PortTons.InsertOnSubmit(hoadon);
                             _db.SubmitChanges();
                         //}
                         //}
@@ -199,17 +197,30 @@ namespace ThuTien.GUI.Doi
         }
 
         private void btnThem_Click(object sender, EventArgs e)
-        {
+        {   
             try
             {
                 foreach (ListViewItem item in lstHD.Items)
-                    if (_db.TT_TestHoaDonTons.Any(itemHD => itemHD.SoHoaDon == item.Text))
+                    if (_db.TT_PortTons.Any(itemHD => itemHD.SoHoaDon == item.Text && itemHD.Xoa == false))
                     {
-                        TT_TestHoaDonTon hoadon = _db.TT_TestHoaDonTons.Where(itemHD => itemHD.SoHoaDon == item.Text).OrderByDescending(itemHD => itemHD.MaHD).First();
+                        TT_PortTon hoadon = _db.TT_PortTons.Where(itemHD => itemHD.SoHoaDon == item.Text && itemHD.Xoa == false).OrderByDescending(itemHD => itemHD.MaHD).First();
                         //_db.TT_TestHoaDonTons.DeleteOnSubmit(hoadon);
                         hoadon.Xoa = true;
                         hoadon.ModifyBy = CNguoiDung.MaND;
                         hoadon.ModifyDate = DateTime.Now;
+                        _db.SubmitChanges();
+                    }
+                    else
+                    {
+                        TT_PortTon_SaiBiet hoadon = new TT_PortTon_SaiBiet();
+                        if (_db.TT_PortTon_SaiBiets.Count() > 0)
+                            hoadon.ID = _db.TT_PortTon_SaiBiets.Max(itemHD => itemHD.ID) + 1;
+                        else
+                            hoadon.ID = 1;
+                        hoadon.SoHoaDon = item.Text;
+                        hoadon.CreateBy = CNguoiDung.MaND;
+                        hoadon.CreateDate = DateTime.Now;
+                        _db.TT_PortTon_SaiBiets.InsertOnSubmit(hoadon);
                         _db.SubmitChanges();
                     }
                 lstHD.Items.Clear();
@@ -227,7 +238,7 @@ namespace ThuTien.GUI.Doi
             try
             {
                 foreach (DataGridViewRow item in dgvHoaDon.SelectedRows)
-                    if (_db.TT_TestHoaDonTons.Any(itemHD => itemHD.SoHoaDon == item.Cells["SoHoaDon"].Value.ToString()))
+                    if (_db.TT_PortTons.Any(itemHD => itemHD.SoHoaDon == item.Cells["SoHoaDon"].Value.ToString()))
                     {
                         //TT_TestHoaDonTon hoadon = _db.TT_TestHoaDonTons.SingleOrDefault(itemHD => itemHD.SoHoaDon == item.Cells["SoHoaDon"].Value.ToString());
                         //_db.TT_TestHoaDonTons.DeleteOnSubmit(hoadon);

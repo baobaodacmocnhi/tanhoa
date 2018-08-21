@@ -1319,16 +1319,12 @@ namespace ThuTien.GUI.TongHop
                 long TongCongCK = 0;
                 long TongTienMat = 0;
 
-                //dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThuTG(dateGiaiTrachTongHopDangNgan.Value);
-                //for (int i = 0; i < lst.Count; i++)
-                //    if (lst[i].HanhThu == false)
-                //    {
-                //        dt.Merge(_cHoaDon.GetTongHopDangNganChiTiet("TG", lst[i].MaTo, dateGiaiTrachTongHopDangNgan.Value));
-                //    }
+                dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThu(dateGiaiTrachTongHopDangNgan.Value);
                 for (int i = 0; i < lst.Count; i++)
-                {
-                    dt.Merge(_cHoaDon.GetTongHopDangNganChiTiet("", lst[i].MaTo, dateGiaiTrachTongHopDangNgan.Value));
-                }
+                    if (lst[i].HanhThu == false)
+                    {
+                        dt.Merge(_cHoaDon.GetTongHopDangNganChiTiet("", lst[i].MaTo, dateGiaiTrachTongHopDangNgan.Value));
+                    }
 
                 dtCNKD = _cCNKD.GetTongHopDangNgan("", dateGiaiTrachTongHopDangNgan.Value);
 
@@ -1439,16 +1435,12 @@ namespace ThuTien.GUI.TongHop
                 long TongCongCK = 0;
                 long TongTienMat = 0;
 
-                //dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThuTG_PhanKyLon(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
-                //for (int i = 0; i < lst.Count; i++)
-                //    if (lst[i].HanhThu == false)
-                //    {
-                //        dt.Merge(_cHoaDon.GetTongHopDangNganChiTiet_PhanKyLon("", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value));
-                //    }
+                dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThu_PhanKyLon(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
                 for (int i = 0; i < lst.Count; i++)
-                {
-                    dt.Merge(_cHoaDon.GetTongHopDangNganChiTiet_PhanKyLon("", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value));
-                }
+                    if (lst[i].HanhThu == false)
+                    {
+                        dt.Merge(_cHoaDon.GetTongHopDangNganChiTiet_PhanKyLon("", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value));
+                    }
 
                 dtCNKD = _cCNKD.GetTongHopDangNgan_PhanKyLon("", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
 
@@ -1555,17 +1547,12 @@ namespace ThuTien.GUI.TongHop
                 TongCongCK = 0;
                 TongTienMat = 0;
 
-                //dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThuTG_PhanKyNho(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
-                //for (int i = 0; i < lst.Count; i++)
-                //    if (lst[i].HanhThu == false)
-                //    {
-                //        dt.Merge(_cHoaDon.GetTongHopDangNganChiTiet_PhanKyNho("", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value));
-                //    }
-
+                dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThu_PhanKyNho(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
                 for (int i = 0; i < lst.Count; i++)
-                {
-                    dt.Merge(_cHoaDon.GetTongHopDangNganChiTiet_PhanKyNho("", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value));
-                }
+                    if (lst[i].HanhThu == false)
+                    {
+                        dt.Merge(_cHoaDon.GetTongHopDangNganChiTiet_PhanKyNho("", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value));
+                    }
 
                 dtCNKD = _cCNKD.GetTongHopDangNgan_PhanKyNho("", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
 

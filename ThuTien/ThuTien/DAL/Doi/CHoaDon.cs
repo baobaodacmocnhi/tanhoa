@@ -6394,6 +6394,39 @@ namespace ThuTien.DAL.Doi
             return ExecuteQuery_DataTable(sql);
         }
 
+        public DataTable GetTongHopDangNganChiTiet_HanhThu(DateTime NgayGiaiTrach)
+        {
+            string sql = "select MaND as MaNV,STT,HoTen,CAST(0 as bit) as ChuyenKhoan,TongHD,TongGiaBan,TongThueGTGT,TongPhiBVMT,TongCong from"
+                        + " (select MaND,STT,HoTen from TT_NguoiDung where HanhThu=1)nd"
+                        + " left join"
+                        + " (select MaNV_DangNgan,COUNT(*)as TongHD,SUM(GIABAN)as TongGiaBan,SUM(THUE)as TongThueGTGT,SUM(PHI)as TongPhiBVMT,SUM(TONGCONG)as TongCong"
+                        + " from HOADON where ChuyenNoKhoDoi=0 and KhoaTienDu=0 and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' group by MaNV_DangNgan)hd on hd.MaNV_DangNgan=nd.MaND"
+                        + " order by nd.STT asc";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetTongHopDangNganChiTiet_HanhThu_PhanKyLon(int Nam, int Ky, DateTime NgayGiaiTrach)
+        {
+            string sql = "select MaND as MaNV,STT,HoTen,CAST(0 as bit) as ChuyenKhoan,TongHD,TongGiaBan,TongThueGTGT,TongPhiBVMT,TongCong from"
+                        + " (select MaND,STT,HoTen from TT_NguoiDung where HanhThu=1)nd"
+                        + " left join"
+                        + " (select MaNV_DangNgan,COUNT(*)as TongHD,SUM(GIABAN)as TongGiaBan,SUM(THUE)as TongThueGTGT,SUM(PHI)as TongPhiBVMT,SUM(TONGCONG)as TongCong"
+                        + " from HOADON where ChuyenNoKhoDoi=0 and KhoaTienDu=0 and NAM=" + Nam + " and KY=" + Ky + " and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' group by MaNV_DangNgan)hd on hd.MaNV_DangNgan=nd.MaND"
+                        + " order by nd.STT asc";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetTongHopDangNganChiTiet_HanhThu_PhanKyNho(int Nam, int Ky, DateTime NgayGiaiTrach)
+        {
+            string sql = "select MaND as MaNV,STT,HoTen,CAST(0 as bit) as ChuyenKhoan,TongHD,TongGiaBan,TongThueGTGT,TongPhiBVMT,TongCong from"
+                        + " (select MaND,STT,HoTen from TT_NguoiDung where HanhThu=1)nd"
+                        + " left join"
+                        + " (select MaNV_DangNgan,COUNT(*)as TongHD,SUM(GIABAN)as TongGiaBan,SUM(THUE)as TongThueGTGT,SUM(PHI)as TongPhiBVMT,SUM(TONGCONG)as TongCong"
+                        + " from HOADON where ChuyenNoKhoDoi=0 and KhoaTienDu=0 and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<" + Ky + ")) and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' group by MaNV_DangNgan)hd on hd.MaNV_DangNgan=nd.MaND"
+                        + " order by nd.STT asc";
+            return ExecuteQuery_DataTable(sql);
+        }
+
         /// <summary>
         /// Lấy Sum thông tin những hóa đơn đã chia cho từng anh/em cụ thể
         /// </summary>
