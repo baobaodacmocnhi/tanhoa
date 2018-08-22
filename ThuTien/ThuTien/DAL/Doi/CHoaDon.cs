@@ -9807,9 +9807,10 @@ namespace ThuTien.DAL.Doi
         public DataTable PhanTichDoanhThuByDinhMuc(int Nam, int FromDinhMuc, int ToDinhMuc)
         {
             DataTable dt = new DataTable();
+            int DinhMuc = 4;
 
             var query0 = from item in _db.HOADONs
-                         where item.NAM == Nam && item.DM == 0
+                         where item.NAM == Nam && (item.DM == 0 || item.DM == null)
                          group item by item.DM into itemGroup
                          select new
                          {
@@ -9821,96 +9822,47 @@ namespace ThuTien.DAL.Doi
                          };
             dt.Merge(LINQToDataTable(query0));
 
-            var query4 = from item in _db.HOADONs
-                         where item.NAM == Nam && item.DM == 4
-                         group item by item.DM into itemGroup
-                         select new
-                         {
-                             Loai = itemGroup.Key.ToString(),
-                             TongHD = itemGroup.Count(),
-                             TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
-                             TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
-                             TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
-                         };
-            dt.Merge(LINQToDataTable(query4));
-
-            var query8 = from item in _db.HOADONs
-                         where item.NAM == Nam && item.DM == 8
-                         group item by item.DM into itemGroup
-                         select new
-                         {
-                             Loai = itemGroup.Key.ToString(),
-                             TongHD = itemGroup.Count(),
-                             TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
-                             TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
-                             TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
-                         };
-            dt.Merge(LINQToDataTable(query8));
-
-            var query12 = from item in _db.HOADONs
-                          where item.NAM == Nam && item.DM == 12
-                          group item by item.DM into itemGroup
+            while (DinhMuc < FromDinhMuc)
+            {
+                var query = from item in _db.HOADONs
+                            where item.NAM == Nam && item.DM == DinhMuc
+                            group item by item.DM into itemGroup
+                            select new
+                            {
+                                Loai = itemGroup.Key.ToString(),
+                                TongHD = itemGroup.Count(),
+                                TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
+                                TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                                TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
+                            };
+                dt.Merge(LINQToDataTable(query));
+                DinhMuc += 4;
+            }
+            var queryDM = from item in _db.HOADONs
+                          where item.NAM == Nam && item.DM >= FromDinhMuc && item.DM <= ToDinhMuc
+                          group item by item.DM >= FromDinhMuc && item.DM <= ToDinhMuc into itemGroup
                           select new
                           {
-                              Loai = itemGroup.Key.ToString(),
+                              Loai = FromDinhMuc + " - " + ToDinhMuc,
                               TongHD = itemGroup.Count(),
                               TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
                               TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
                               TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
                           };
-            dt.Merge(LINQToDataTable(query12));
+            dt.Merge(LINQToDataTable(queryDM));
 
-            var query16 = from item in _db.HOADONs
-                          where item.NAM == Nam && item.DM == 16
-                          group item by item.DM into itemGroup
-                          select new
-                          {
-                              Loai = itemGroup.Key.ToString(),
-                              TongHD = itemGroup.Count(),
-                              TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
-                              TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
-                              TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
-                          };
-            dt.Merge(LINQToDataTable(query16));
-
-            var query20 = from item in _db.HOADONs
-                          where item.NAM == Nam && item.DM == 20
-                          group item by item.DM into itemGroup
-                          select new
-                          {
-                              Loai = itemGroup.Key.ToString(),
-                              TongHD = itemGroup.Count(),
-                              TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
-                              TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
-                              TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
-                          };
-            dt.Merge(LINQToDataTable(query20));
-
-            var queryK = from item in _db.HOADONs
-                         where item.NAM == Nam && item.DM >= FromDinhMuc && item.DM <= ToDinhMuc
-                         group item by item.DM >= FromDinhMuc && item.DM <= ToDinhMuc into itemGroup
-                         select new
-                         {
-                             Loai = FromDinhMuc + "-" + ToDinhMuc,
-                             TongHD = itemGroup.Count(),
-                             TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
-                             TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
-                             TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
-                         };
-            dt.Merge(LINQToDataTable(queryK));
-
-            var queryKK = from item in _db.HOADONs
-                          where item.NAM == Nam && (item.DM != 0 && item.DM != 4 && item.DM != 8 && item.DM != 12 && item.DM != 16 && item.DM != 20 && (item.DM < FromDinhMuc || item.DM > ToDinhMuc) || item.DM == null)
-                          group item by (item.DM != 0 && item.DM != 4 && item.DM != 8 && item.DM != 12 && (item.DM < FromDinhMuc || item.DM > ToDinhMuc) || item.DM == null) into itemGroup
-                          select new
-                          {
-                              Loai = "Còn Lại",
-                              TongHD = itemGroup.Count(),
-                              TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
-                              TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
-                              TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
-                          };
-            dt.Merge(LINQToDataTable(queryKK));
+            queryDM = from item in _db.HOADONs
+                      where item.NAM == Nam && item.DM > ToDinhMuc
+                      group item by item.DM > ToDinhMuc into itemGroup
+                      select new
+                      {
+                          Loai = ToDinhMuc + 4 + " - Còn Lại",
+                          TongHD = itemGroup.Count(),
+                          TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
+                          TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                          TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
+                      };
+            dt.Merge(LINQToDataTable(queryDM));
 
             return dt;
         }
@@ -9918,7 +9870,20 @@ namespace ThuTien.DAL.Doi
         public DataTable PhanTichDoanhThuByDinhMuc(int Nam, int Ky, int FromDinhMuc, int ToDinhMuc)
         {
             DataTable dt = new DataTable();
-            int DinhMuc = 0;
+            int DinhMuc = 4;
+
+            var query0 = from item in _db.HOADONs
+                        where item.NAM == Nam && item.KY == Ky && (item.DM == 0 || item.DM==null)
+                        group item by item.DM into itemGroup
+                        select new
+                        {
+                            Loai = itemGroup.Key.ToString(),
+                            TongHD = itemGroup.Count(),
+                            TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
+                            TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                            TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
+                        };
+            dt.Merge(LINQToDataTable(query0));
 
             while (DinhMuc < FromDinhMuc)
             {
@@ -10072,7 +10037,20 @@ namespace ThuTien.DAL.Doi
         public DataTable PhanTichDoanhThuByDinhMuc(int Nam, int Ky, int FromDinhMuc, int ToDinhMuc, int FromDinhMuc2, int ToDinhMuc2)
         {
             DataTable dt = new DataTable();
-            int DinhMuc = 0;
+            int DinhMuc = 4;
+
+            var query0 = from item in _db.HOADONs
+                         where item.NAM == Nam && item.KY == Ky && (item.DM == 0 || item.DM == null)
+                        group item by item.DM into itemGroup
+                        select new
+                        {
+                            Loai = itemGroup.Key.ToString(),
+                            TongHD = itemGroup.Count(),
+                            TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
+                            TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                            TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
+                        };
+            dt.Merge(LINQToDataTable(query0));
 
             while (DinhMuc < FromDinhMuc)
             {
@@ -10156,7 +10134,20 @@ namespace ThuTien.DAL.Doi
         public DataTable PhanTichDoanhThuByDinhMuc(int Nam, int Ky, int FromDinhMuc, int ToDinhMuc, int FromDinhMuc2, int ToDinhMuc2, int FromDinhMuc3, int ToDinhMuc3)
         {
             DataTable dt = new DataTable();
-            int DinhMuc = 0;
+            int DinhMuc = 4;
+
+            var query0 = from item in _db.HOADONs
+                         where item.NAM == Nam && item.KY == Ky && (item.DM == 0 || item.DM == null)
+                         group item by item.DM into itemGroup
+                         select new
+                         {
+                             Loai = itemGroup.Key.ToString(),
+                             TongHD = itemGroup.Count(),
+                             TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
+                             TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                             TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
+                         };
+            dt.Merge(LINQToDataTable(query0));
 
             while (DinhMuc < FromDinhMuc)
             {

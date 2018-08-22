@@ -14,6 +14,7 @@ using ThuTien.DAL;
 using ThuTien.BaoCao;
 using ThuTien.BaoCao.Doi;
 using ThuTien.GUI.BaoCao;
+using ThuTien.DAL.TongHop;
 
 namespace ThuTien.GUI.Doi
 {
@@ -24,6 +25,7 @@ namespace ThuTien.GUI.Doi
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CHoaDon _cHoaDon = new CHoaDon();
         CDocSo _cCapNuocTanHoa = new CDocSo();
+        CDCHD _cDCHD = new CDCHD();
 
         public frmLuuHD()
         {
@@ -272,6 +274,18 @@ namespace ThuTien.GUI.Doi
                 dgvHoaDon.DataSource = _cHoaDon.GetTongByNamKy(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                 //startTime.Stop();
                 //MessageBox.Show(startTime.ElapsedMilliseconds.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                //for (int i = 0; i < dgvHoaDon.Rows.Count; i++)
+                //{
+                //    DataTable dtDCHD = _cDCHD.GetTongChuanThu(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i);
+                //    if (dtDCHD != null && dtDCHD.Rows.Count > 0)
+                //    {
+                //        dgvHoaDon["TongGiaBan", i].Value = long.Parse(dgvHoaDon["TongGiaBan", i].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["GIABAN_End"].ToString()) + long.Parse(dtDCHD.Rows[0]["GIABAN_BD"].ToString());
+                //        dgvHoaDon["TongThueGTGT", i].Value = long.Parse(dgvHoaDon["TongThueGTGT", i].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["ThueGTGT_End"].ToString()) + long.Parse(dtDCHD.Rows[0]["ThueGTGT_BD"].ToString());
+                //        dgvHoaDon["TongPhiBVMT", i].Value = long.Parse(dgvHoaDon["TongPhiBVMT", i].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["PhiBVMT_End"].ToString()) + long.Parse(dtDCHD.Rows[0]["PhiBVMT_BD"].ToString());
+                //        dgvHoaDon["TongCong", i].Value = long.Parse(dgvHoaDon["TongCong", i].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["TONGCONG_End"].ToString()) + long.Parse(dtDCHD.Rows[0]["TONGCONG_BD"].ToString());
+                //    }
+                //}
 
                 int TongHD = 0;
                 int TongTieuThu = 0;

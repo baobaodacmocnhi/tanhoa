@@ -130,8 +130,32 @@ namespace ThuTien.DAL.TongHop
                         {
                             Ky = Ky,
                             GIABAN_BD = itemGroup.Sum(groupItem => groupItem.GIABAN_BD),
+                            ThueGTGT_BD = itemGroup.Sum(groupItem => groupItem.THUE_BD),
+                            PhiBVMT_BD = itemGroup.Sum(groupItem => groupItem.PHI_BD),
                             TONGCONG_BD = itemGroup.Sum(groupItem => groupItem.TONGCONG_BD),
                             GIABAN_END = itemGroup.Sum(groupItem => groupItem.GIABAN_END),
+                            ThueGTGT_End = itemGroup.Sum(groupItem => groupItem.THUE_END),
+                            PhiBVMT_End = itemGroup.Sum(groupItem => groupItem.PHI_END),
+                            TONGCONG_END = itemGroup.Sum(groupItem => groupItem.TONGCONG_END),
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetTongChuanThu(int Nam, int Ky, int Dot)
+        {
+            var query = from itemDC in _db.DIEUCHINH_HDs
+                        join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                        where itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT==Dot
+                        group itemDC by itemHD.DOT into itemGroup
+                        select new
+                        {
+                            GIABAN_BD = itemGroup.Sum(groupItem => groupItem.GIABAN_BD),
+                            ThueGTGT_BD = itemGroup.Sum(groupItem => groupItem.THUE_BD),
+                            PhiBVMT_BD = itemGroup.Sum(groupItem => groupItem.PHI_BD),
+                            TONGCONG_BD = itemGroup.Sum(groupItem => groupItem.TONGCONG_BD),
+                            GIABAN_END = itemGroup.Sum(groupItem => groupItem.GIABAN_END),
+                            ThueGTGT_End = itemGroup.Sum(groupItem => groupItem.THUE_END),
+                            PhiBVMT_End = itemGroup.Sum(groupItem => groupItem.PHI_END),
                             TONGCONG_END = itemGroup.Sum(groupItem => groupItem.TONGCONG_END),
                         };
             return LINQToDataTable(query);
