@@ -81,6 +81,13 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.btnBaoCao_ThongKeLoaiDon = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.dateTu_BaoThay = new System.Windows.Forms.DateTimePicker();
+            this.dateDen_BaoThay = new System.Windows.Forms.DateTimePicker();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.btnBaoCao_BaoThay = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -91,6 +98,8 @@
             this.panel3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // dateTu_ThongKeHienTrangKiemTra
@@ -157,7 +166,7 @@
             this.groupBox1.Controls.Add(this.btnBaoCao_ThongKeHienTrangKiemTra);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(390, 89);
+            this.groupBox1.Size = new System.Drawing.Size(536, 89);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thống Kê Hiện Trạng Kiểm Tra";
@@ -183,10 +192,10 @@
             this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Location = new System.Drawing.Point(12, 107);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(521, 91);
+            this.groupBox2.Size = new System.Drawing.Size(536, 91);
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Số Lượng Biên Bản";
+            this.groupBox2.Text = "Thống Kê Số Lượng Biên Bản";
             // 
             // btnBaoCao_SoLuong
             // 
@@ -301,7 +310,7 @@
             this.groupBox3.Controls.Add(this.btnBaoCao_DScoTruyThu);
             this.groupBox3.Location = new System.Drawing.Point(12, 204);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(305, 89);
+            this.groupBox3.Size = new System.Drawing.Size(536, 89);
             this.groupBox3.TabIndex = 27;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Danh Sách có Truy Thu (có nhập Định Mức Mới)";
@@ -557,7 +566,7 @@
             this.groupBox5.Controls.Add(this.chkAll_ThongKeLoaiDon);
             this.groupBox5.Controls.Add(this.panel4);
             this.groupBox5.Controls.Add(this.btnBaoCao_ThongKeLoaiDon);
-            this.groupBox5.Location = new System.Drawing.Point(408, 12);
+            this.groupBox5.Location = new System.Drawing.Point(554, 12);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(390, 89);
             this.groupBox5.TabIndex = 29;
@@ -631,12 +640,81 @@
             this.btnBaoCao_ThongKeLoaiDon.UseVisualStyleBackColor = true;
             this.btnBaoCao_ThongKeLoaiDon.Click += new System.EventHandler(this.btnBaoCao_ThongKeLoaiDon_Click);
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.panel5);
+            this.groupBox6.Controls.Add(this.btnBaoCao_BaoThay);
+            this.groupBox6.Location = new System.Drawing.Point(554, 107);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(390, 89);
+            this.groupBox6.TabIndex = 30;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Danh Sách - Thống Kê có Báo Thay (ngày KTXM)";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.dateTu_BaoThay);
+            this.panel5.Controls.Add(this.dateDen_BaoThay);
+            this.panel5.Controls.Add(this.label16);
+            this.panel5.Controls.Add(this.label17);
+            this.panel5.Location = new System.Drawing.Point(6, 21);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(175, 60);
+            this.panel5.TabIndex = 23;
+            // 
+            // dateTu_BaoThay
+            // 
+            this.dateTu_BaoThay.CustomFormat = "dd/MM/yyyy";
+            this.dateTu_BaoThay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTu_BaoThay.Location = new System.Drawing.Point(80, 5);
+            this.dateTu_BaoThay.Name = "dateTu_BaoThay";
+            this.dateTu_BaoThay.Size = new System.Drawing.Size(90, 22);
+            this.dateTu_BaoThay.TabIndex = 13;
+            // 
+            // dateDen_BaoThay
+            // 
+            this.dateDen_BaoThay.CustomFormat = "dd/MM/yyyy";
+            this.dateDen_BaoThay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateDen_BaoThay.Location = new System.Drawing.Point(80, 33);
+            this.dateDen_BaoThay.Name = "dateDen_BaoThay";
+            this.dateDen_BaoThay.Size = new System.Drawing.Size(90, 22);
+            this.dateDen_BaoThay.TabIndex = 14;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(3, 8);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(63, 16);
+            this.label16.TabIndex = 15;
+            this.label16.Text = "Từ Ngày:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(3, 36);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(71, 16);
+            this.label17.TabIndex = 16;
+            this.label17.Text = "Đến Ngày:";
+            // 
+            // btnBaoCao_BaoThay
+            // 
+            this.btnBaoCao_BaoThay.Location = new System.Drawing.Point(187, 39);
+            this.btnBaoCao_BaoThay.Name = "btnBaoCao_BaoThay";
+            this.btnBaoCao_BaoThay.Size = new System.Drawing.Size(75, 25);
+            this.btnBaoCao_BaoThay.TabIndex = 24;
+            this.btnBaoCao_BaoThay.Text = "Báo Cáo";
+            this.btnBaoCao_BaoThay.UseVisualStyleBackColor = true;
+            this.btnBaoCao_BaoThay.Click += new System.EventHandler(this.btnBaoCao_BaoThay_Click);
+            // 
             // frmBaoCaoKTXM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(975, 542);
+            this.ClientSize = new System.Drawing.Size(1174, 542);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -666,6 +744,9 @@
             this.groupBox5.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -725,5 +806,12 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button btnBaoCao_ThongKeLoaiDon;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.DateTimePicker dateTu_BaoThay;
+        private System.Windows.Forms.DateTimePicker dateDen_BaoThay;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Button btnBaoCao_BaoThay;
     }
 }

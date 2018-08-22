@@ -289,8 +289,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                             join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                             join itemHTKT in db.KTXM_HienTrangs on itemCTKTXM.HienTrangKiemTra equals itemHTKT.TenHTKT into tableHTKT
                             from itemtableHTKT in tableHTKT.DefaultIfEmpty()
-                            where itemCTKTXM.KTXM.MaDonTBC != null
-                            && itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date
+                            where itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date
                             select new
                             {
                                 To="",
@@ -655,7 +654,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDScoTruyThu(DateTime FromNgayKTXM, DateTime ToNgayKTXM)
+        public DataTable GetDS_TruyThu(DateTime FromNgayKTXM, DateTime ToNgayKTXM)
         {
             var query = from itemCTKTXM in db.KTXM_ChiTiets
                         join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
@@ -679,6 +678,31 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                             itemCTKTXM.DinhMuc,
                             itemCTKTXM.DinhMucMoi,
                             CreateBy = itemUser.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDS_BaoThay(DateTime FromNgayKTXM, DateTime ToNgayKTXM)
+        {
+            var query = from itemCTKTXM in db.KTXM_ChiTiets
+                        join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                        where itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date && itemCTKTXM.NoiDungBaoThay!=null
+                        select new
+                        {
+                            itemCTKTXM.MaCTKTXM,
+                            MaDon = itemCTKTXM.KTXM.MaDon != null ? "TKH" + itemCTKTXM.KTXM.MaDon
+                               : itemCTKTXM.KTXM.MaDonTXL != null ? "TXL" + itemCTKTXM.KTXM.MaDonTXL
+                               : itemCTKTXM.KTXM.MaDonTBC != null ? "TBC" + itemCTKTXM.KTXM.MaDonTBC : null,
+                            TenLD = itemCTKTXM.KTXM.MaDon != null ? itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD
+                                : itemCTKTXM.KTXM.MaDonTXL != null ? itemCTKTXM.KTXM.DonTXL.LoaiDonTXL.TenLD
+                                : itemCTKTXM.KTXM.MaDonTBC != null ? itemCTKTXM.KTXM.DonTBC.LoaiDonTBC.TenLD : null,
+                            itemCTKTXM.DanhBo,
+                            itemCTKTXM.HoTen,
+                            itemCTKTXM.DiaChi,
+                            itemCTKTXM.NgayKTXM,
+                            itemCTKTXM.NoiDungKiemTra,
+                            CreateBy = itemUser.HoTen,
+                            itemCTKTXM.NoiDungBaoThay,
                         };
             return LINQToDataTable(query);
         }

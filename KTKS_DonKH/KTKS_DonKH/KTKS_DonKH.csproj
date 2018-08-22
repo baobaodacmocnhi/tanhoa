@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>852</ApplicationRevision>
+    <ApplicationRevision>853</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -213,6 +213,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>rptThuBaoDCBD.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\KiemTraXacMinh\rptKTXM_BaoThay.cs">
+      <DependentUpon>rptKTXM_BaoThay.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="BaoCao\KiemTraXacMinh\rptThongKetheoLoaiDon.cs">
       <DependentUpon>rptThongKetheoLoaiDon.rpt</DependentUpon>
@@ -1349,6 +1355,10 @@
     <EmbeddedResource Include="BaoCao\DieuChinhBienDong\rptThuBaoDCBD.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThuBaoDCBD.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\KiemTraXacMinh\rptKTXM_BaoThay.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptKTXM_BaoThay.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\KiemTraXacMinh\rptThongKetheoLoaiDon.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

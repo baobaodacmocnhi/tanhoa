@@ -54,7 +54,7 @@
             this.groupBox1.Size = new System.Drawing.Size(277, 151);
             this.groupBox1.TabIndex = 26;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Thống Kê Truy Thu";
+            this.groupBox1.Text = "Thống Kê Truy Thu (theo Ngày Cập Nhật)";
             // 
             // cmbTinhTrang
             // 

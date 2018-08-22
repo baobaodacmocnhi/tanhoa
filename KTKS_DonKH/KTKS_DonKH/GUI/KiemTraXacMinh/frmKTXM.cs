@@ -497,8 +497,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     ctktxm.NoiDungKiemTra = txtNoiDungKiemTra.Text.Trim();
                     ctktxm.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
                     ctktxm.TieuThuTrungBinh = int.Parse(txtTieuThuTrungBinh.Text.Trim());
-                    if (cmbNoiDungBaoThay.SelectedIndex != -1 && string.IsNullOrEmpty(cmbNoiDungBaoThay.SelectedText) == false)
-                        ctktxm.NoiDungBaoThay = cmbNoiDungBaoThay.SelectedText;
+                    if (cmbNoiDungBaoThay.SelectedIndex != -1 && string.IsNullOrEmpty(cmbNoiDungBaoThay.SelectedItem.ToString()) == false)
+                        ctktxm.NoiDungBaoThay = cmbNoiDungBaoThay.SelectedItem.ToString();
 
                     if (_cKTXM.ThemCT(ctktxm))
                     {

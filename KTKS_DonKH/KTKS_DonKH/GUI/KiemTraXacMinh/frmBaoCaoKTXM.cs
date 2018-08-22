@@ -441,6 +441,35 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             frm.Show();
         }
 
+        private void btnBaoCao_BaoThay_Click(object sender, EventArgs e)
+        {
+            DataTable dt = _cKTXM.GetDS_BaoThay(dateTu_BaoThay.Value, dateDen_BaoThay.Value);
+
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+
+            foreach (DataRow item in dt.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["DSKTXM"].NewRow();
+
+                dr["TuNgay"] = dateTu_BaoThay.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen_BaoThay.Value.ToString("dd/MM/yyyy");
+                dr["LoaiBaoCao"] = "KIỂM TRA XÁC MINH CÓ BÁO THAY";
+                dr["MaDon"] = item["MaDon"].ToString().Insert(item["MaDon"].ToString().Length - 2, "-");
+                dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                dr["HoTen"] = item["HoTen"];
+                dr["DiaChi"] = item["DiaChi"];
+                dr["NgayLapBangGia"] = item["CreateDate"];
+                dr["GhiChu"] = item["NoiDungBaoThay"];
+
+                dsBaoCao.Tables["DSKTXM"].Rows.Add(dr);
+            }
+
+            rptKTXM_BaoThay rpt = new rptKTXM_BaoThay();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.Show();
+        }
+
         
 
     }
