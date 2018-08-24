@@ -191,7 +191,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         private void btnBaoCao_DScoTruyThu_Click(object sender, EventArgs e)
         {
-            DataTable dt = _cKTXM.GetDScoTruyThu(dateTu_DScoTruyThu.Value, dateDen_DScoTruyThu.Value);
+            DataTable dt = _cKTXM.GetDS_TruyThu(dateTu_DScoTruyThu.Value, dateDen_DScoTruyThu.Value);
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
             foreach (DataRow itemRow in dt.Rows)

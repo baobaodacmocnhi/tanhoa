@@ -19,6 +19,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
     {
         CCHDB _cCHDB = new CCHDB();
         CDocSo _cDocSo = new CDocSo();
+        CCHDB_NoiDungXuLy _cNoiDungXuLyCHDB = new CCHDB_NoiDungXuLy();
 
         public frmBaoCaoCHDB()
         {
@@ -36,6 +37,14 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             cmbQuan_TheoNgayLap.DisplayMember = "TenQuan";
             cmbQuan_TheoNgayLap.ValueMember = "MaQuan";
 
+            List<CHDB_NoiDungXuLy> lst2 = _cNoiDungXuLyCHDB.GetDS();
+            CHDB_NoiDungXuLy item2 = new CHDB_NoiDungXuLy();
+            item2.ID = 0;
+            item2.NoiDung = "Tất Cả";
+            lst2.Insert(0, item2);
+            cmbNoiDung_TheoNgayXuLy.DataSource = lst2;
+            cmbNoiDung_TheoNgayXuLy.DisplayMember = "NoiDung";
+            cmbNoiDung_TheoNgayXuLy.ValueMember = "NoiDung";
         }
 
         private void btnBaoCao_TheoNgayLap_Click(object sender, EventArgs e)
@@ -153,10 +162,18 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             switch (cmbLoaiBaoCao_TheoNgayXuLy.SelectedItem.ToString())
             {
                 case "DS Cắt Hủy":
-                    dt = _cCHDB.GetDSCatHuy_NgayXuLy_DaXuLy(dateTu.Value, dateDen.Value);
+                    if (cmbNoiDung_TheoNgayXuLy.SelectedIndex == 0)
+                        dt = _cCHDB.GetDSCatHuy_NgayXuLy_DaXuLy(dateTu.Value, dateDen.Value);
+                    else
+                        if (cmbNoiDung_TheoNgayXuLy.SelectedIndex > 0)
+                            dt = _cCHDB.GetDSCatHuy_NgayXuLy_DaXuLy(dateTu.Value, dateDen.Value, cmbNoiDung_TheoNgayXuLy.SelectedValue.ToString());
                     break;
                 case "DS Cắt Tạm":
-                    dt = _cCHDB.GetDSCatTam_NgayXuLy_DaXuLy(dateTu.Value, dateDen.Value);
+                    if (cmbNoiDung_TheoNgayXuLy.SelectedIndex == 0)
+                        dt = _cCHDB.GetDSCatTam_NgayXuLy_DaXuLy(dateTu.Value, dateDen.Value);
+                    else
+                        if (cmbNoiDung_TheoNgayXuLy.SelectedIndex > 0)
+                            dt = _cCHDB.GetDSCatHuy_NgayXuLy_DaXuLy(dateTu.Value, dateDen.Value,cmbNoiDung_TheoNgayXuLy.SelectedValue.ToString());
                     break;
                 default:
                     break;

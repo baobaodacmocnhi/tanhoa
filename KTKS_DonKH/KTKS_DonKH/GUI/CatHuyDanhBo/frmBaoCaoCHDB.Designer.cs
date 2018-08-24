@@ -44,6 +44,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnBaoCao_TheoNgayXuLy = new System.Windows.Forms.Button();
             this.btnThongKe = new System.Windows.Forms.Button();
+            this.cmbNoiDung_TheoNgayXuLy = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -63,18 +65,18 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(7, 10);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 16);
+            this.label3.Size = new System.Drawing.Size(60, 16);
             this.label3.TabIndex = 15;
-            this.label3.Text = "Từ Ngày:";
+            this.label3.Text = "Từ Ngày";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(7, 38);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 16);
+            this.label4.Size = new System.Drawing.Size(68, 16);
             this.label4.TabIndex = 16;
-            this.label4.Text = "Đến Ngày:";
+            this.label4.Text = "Đến Ngày";
             // 
             // dateTu
             // 
@@ -87,7 +89,7 @@
             // 
             // btnBaoCao_TheoNgayLap
             // 
-            this.btnBaoCao_TheoNgayLap.Location = new System.Drawing.Point(416, 20);
+            this.btnBaoCao_TheoNgayLap.Location = new System.Drawing.Point(261, 20);
             this.btnBaoCao_TheoNgayLap.Name = "btnBaoCao_TheoNgayLap";
             this.btnBaoCao_TheoNgayLap.Size = new System.Drawing.Size(75, 25);
             this.btnBaoCao_TheoNgayLap.TabIndex = 28;
@@ -115,7 +117,7 @@
             this.groupBox1.Controls.Add(this.btnBaoCao_TheoNgayLap);
             this.groupBox1.Location = new System.Drawing.Point(12, 78);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(502, 56);
+            this.groupBox1.Size = new System.Drawing.Size(345, 86);
             this.groupBox1.TabIndex = 33;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Theo Ngày Lập";
@@ -123,7 +125,7 @@
             // cmbQuan_TheoNgayLap
             // 
             this.cmbQuan_TheoNgayLap.FormattingEnabled = true;
-            this.cmbQuan_TheoNgayLap.Location = new System.Drawing.Point(310, 21);
+            this.cmbQuan_TheoNgayLap.Location = new System.Drawing.Point(105, 51);
             this.cmbQuan_TheoNgayLap.Name = "cmbQuan_TheoNgayLap";
             this.cmbQuan_TheoNgayLap.Size = new System.Drawing.Size(100, 24);
             this.cmbQuan_TheoNgayLap.TabIndex = 30;
@@ -131,11 +133,11 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(261, 25);
+            this.label9.Location = new System.Drawing.Point(6, 54);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(43, 16);
+            this.label9.Size = new System.Drawing.Size(40, 16);
             this.label9.TabIndex = 29;
-            this.label9.Text = "Quận:";
+            this.label9.Text = "Quận";
             // 
             // cmbLoaiBaoCao_TheoNgayLap
             // 
@@ -155,18 +157,20 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 16);
+            this.label1.Size = new System.Drawing.Size(90, 16);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Loại Báo Cáo:";
+            this.label1.Text = "Loại Báo Cáo";
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cmbNoiDung_TheoNgayXuLy);
+            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.cmbLoaiBaoCao_TheoNgayXuLy);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.btnBaoCao_TheoNgayXuLy);
-            this.groupBox2.Location = new System.Drawing.Point(12, 140);
+            this.groupBox2.Location = new System.Drawing.Point(12, 193);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(345, 56);
+            this.groupBox2.Size = new System.Drawing.Size(448, 86);
             this.groupBox2.TabIndex = 34;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Theo Ngày Xử Lý";
@@ -187,13 +191,13 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 24);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 16);
+            this.label2.Size = new System.Drawing.Size(90, 16);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Loại Báo Cáo:";
+            this.label2.Text = "Loại Báo Cáo";
             // 
             // btnBaoCao_TheoNgayXuLy
             // 
-            this.btnBaoCao_TheoNgayXuLy.Location = new System.Drawing.Point(261, 20);
+            this.btnBaoCao_TheoNgayXuLy.Location = new System.Drawing.Point(361, 50);
             this.btnBaoCao_TheoNgayXuLy.Name = "btnBaoCao_TheoNgayXuLy";
             this.btnBaoCao_TheoNgayXuLy.Size = new System.Drawing.Size(75, 25);
             this.btnBaoCao_TheoNgayXuLy.TabIndex = 28;
@@ -210,6 +214,26 @@
             this.btnThongKe.Text = "Thống Kê";
             this.btnThongKe.UseVisualStyleBackColor = true;
             this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
+            // 
+            // cmbNoiDung_TheoNgayXuLy
+            // 
+            this.cmbNoiDung_TheoNgayXuLy.FormattingEnabled = true;
+            this.cmbNoiDung_TheoNgayXuLy.Items.AddRange(new object[] {
+            "DS Cắt Hủy",
+            "DS Cắt Tạm"});
+            this.cmbNoiDung_TheoNgayXuLy.Location = new System.Drawing.Point(105, 51);
+            this.cmbNoiDung_TheoNgayXuLy.Name = "cmbNoiDung_TheoNgayXuLy";
+            this.cmbNoiDung_TheoNgayXuLy.Size = new System.Drawing.Size(250, 24);
+            this.cmbNoiDung_TheoNgayXuLy.TabIndex = 30;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 54);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(64, 16);
+            this.label5.TabIndex = 29;
+            this.label5.Text = "Nội Dung";
             // 
             // frmBaoCaoCHDB
             // 
@@ -254,6 +278,8 @@
         private System.Windows.Forms.Button btnThongKe;
         private System.Windows.Forms.ComboBox cmbQuan_TheoNgayLap;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cmbNoiDung_TheoNgayXuLy;
+        private System.Windows.Forms.Label label5;
 
     }
 }

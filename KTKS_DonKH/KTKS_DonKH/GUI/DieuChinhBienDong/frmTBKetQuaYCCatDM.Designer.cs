@@ -404,7 +404,7 @@
             this.dgvDSTBKetQuaYCCatDM.MultiSelect = false;
             this.dgvDSTBKetQuaYCCatDM.Name = "dgvDSTBKetQuaYCCatDM";
             this.dgvDSTBKetQuaYCCatDM.RowHeadersWidth = 60;
-            this.dgvDSTBKetQuaYCCatDM.Size = new System.Drawing.Size(1465, 260);
+            this.dgvDSTBKetQuaYCCatDM.Size = new System.Drawing.Size(1280, 382);
             this.dgvDSTBKetQuaYCCatDM.TabIndex = 17;
             this.dgvDSTBKetQuaYCCatDM.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSTBKetQuaYCCatDM_CellContentClick);
             this.dgvDSTBKetQuaYCCatDM.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSTBKetQuaYCCatDM_CellFormatting);
@@ -553,7 +553,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1512, 531);
+            this.ClientSize = new System.Drawing.Size(1304, 654);
             this.Controls.Add(this.btnInDongY);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);

@@ -139,13 +139,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 dsBaoCao.Tables["PhieuCatChuyenDM"].Rows.Add(dr);
 
-                //rptPhieuYCNhanDM rpt = new rptPhieuYCNhanDM();
-                //rpt.SetDataSource(dsBaoCao);
-                rptPhieuTBYCNhanDMx2_N rpt = new rptPhieuTBYCNhanDMx2_N();
-                for (int j = 0; j < rpt.Subreports.Count; j++)
-                {
-                    rpt.Subreports[j].SetDataSource(dsBaoCao);
-                }
+                rptPhieuTBYCNhanDMA4_N rpt = new rptPhieuTBYCNhanDMA4_N();
+                rpt.SetDataSource(dsBaoCao);
+                //rptPhieuTBYCNhanDMx2_N rpt = new rptPhieuTBYCNhanDMx2_N();
+                //for (int j = 0; j < rpt.Subreports.Count; j++)
+                //{
+                //    rpt.Subreports[j].SetDataSource(dsBaoCao);
+                //}
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.ShowDialog();
             }
@@ -229,13 +229,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 dsBaoCao.Tables["PhieuCatChuyenDM"].Rows.Add(dr);
 
-                //rptPhieuYCNhanDM rpt = new rptPhieuYCNhanDM();
-                //rpt.SetDataSource(dsBaoCao);
-                rptPhieuTBYCNhanDMx2_Y rpt = new rptPhieuTBYCNhanDMx2_Y();
-                for (int j = 0; j < rpt.Subreports.Count; j++)
-                {
-                    rpt.Subreports[j].SetDataSource(dsBaoCao);
-                }
+                rptPhieuTBYCNhanDMA4_Y rpt = new rptPhieuTBYCNhanDMA4_Y();
+                rpt.SetDataSource(dsBaoCao);
+                //rptPhieuTBYCNhanDMx2_Y rpt = new rptPhieuTBYCNhanDMx2_Y();
+                //for (int j = 0; j < rpt.Subreports.Count; j++)
+                //{
+                //    rpt.Subreports[j].SetDataSource(dsBaoCao);
+                //}
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.ShowDialog();
             }
