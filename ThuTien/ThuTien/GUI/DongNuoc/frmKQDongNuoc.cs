@@ -22,6 +22,7 @@ namespace ThuTien.GUI.DongNuoc
     public partial class frmKQDongNuoc : Form
     {
         string _mnu = "mnuKQDongNuoc";
+        CTo _cTo = new CTo();
         CDongNuoc _cDongNuoc = new CDongNuoc();
         TT_DongNuoc _dongnuoc = null;
         TT_KQDongNuoc _kqdongnuoc = null;
@@ -35,6 +36,22 @@ namespace ThuTien.GUI.DongNuoc
         private void frmKQDongNuoc_Load(object sender, EventArgs e)
         {
             dgvKQDongNuoc.AutoGenerateColumns = false;
+
+            if (CNguoiDung.Doi)
+            {
+                cmbTo.Visible = true;
+
+                List<TT_To> lstTo = _cTo.GetDSHanhThu();
+                TT_To to = new TT_To();
+                to.MaTo = 0;
+                to.TenTo = "Tất Cả";
+                lstTo.Insert(0, to);
+                cmbTo.DataSource = lstTo;
+                cmbTo.DisplayMember = "TenTo";
+                cmbTo.ValueMember = "MaTo";
+            }
+            else
+                lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
 
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
@@ -479,7 +496,13 @@ namespace ThuTien.GUI.DongNuoc
             if (radDongNuoc.Checked)
             {
                 if (CNguoiDung.Doi)
-                    dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByNgayDNs(dateTu.Value, dateDen.Value);
+                {
+                    if(cmbTo.SelectedIndex==0)
+                        dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByNgayDNs( dateTu.Value, dateDen.Value);
+                    else
+                        if(cmbTo.SelectedIndex>0)
+                    dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByMaToNgayDNs((int)cmbTo.SelectedValue, dateTu.Value, dateDen.Value);
+                }
                 else
                     if (CNguoiDung.ToTruong)
                         dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByMaToNgayDNs(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
@@ -490,7 +513,13 @@ namespace ThuTien.GUI.DongNuoc
                 if (radMoNuoc.Checked)
                 {
                     if (CNguoiDung.Doi)
-                        dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQMoNuocByDates(dateTu.Value, dateDen.Value);
+                    {
+                        if (cmbTo.SelectedIndex == 0)
+                            dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQMoNuocByDates(dateTu.Value, dateDen.Value);
+                        else
+                            if (cmbTo.SelectedIndex > 0)
+                                dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQMoNuocByMaToDates((int)cmbTo.SelectedValue, dateTu.Value, dateDen.Value);
+                    }
                     else
                         if (CNguoiDung.ToTruong)
                             dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQMoNuocByMaToDates(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);

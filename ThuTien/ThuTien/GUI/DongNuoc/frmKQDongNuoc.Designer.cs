@@ -111,6 +111,7 @@
             this.btnInPhieu = new System.Windows.Forms.Button();
             this.btnXoaPhieu = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnHinhDongNuoc2 = new System.Windows.Forms.Button();
             this.txtChiSoDN1 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.dateDongNuoc1 = new System.Windows.Forms.DateTimePicker();
@@ -126,7 +127,8 @@
             this.txtGhiChuTroNgai = new System.Windows.Forms.TextBox();
             this.btnCapNhat = new System.Windows.Forms.Button();
             this.btnInDS = new System.Windows.Forms.Button();
-            this.btnHinhDongNuoc2 = new System.Windows.Forms.Button();
+            this.cmbTo = new System.Windows.Forms.ComboBox();
+            this.lbTo = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKQDongNuoc)).BeginInit();
@@ -505,7 +507,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(872, 10);
+            this.btnXem.Location = new System.Drawing.Point(938, 9);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 29;
@@ -517,7 +519,7 @@
             // 
             this.dateDen.CustomFormat = "dd/MM/yyyy";
             this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen.Location = new System.Drawing.Point(766, 12);
+            this.dateDen.Location = new System.Drawing.Point(832, 11);
             this.dateDen.Name = "dateDen";
             this.dateDen.Size = new System.Drawing.Size(100, 20);
             this.dateDen.TabIndex = 28;
@@ -525,7 +527,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(702, 13);
+            this.label4.Location = new System.Drawing.Point(768, 12);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 27;
@@ -535,7 +537,7 @@
             // 
             this.dateTu.CustomFormat = "dd/MM/yyyy";
             this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu.Location = new System.Drawing.Point(596, 12);
+            this.dateTu.Location = new System.Drawing.Point(662, 11);
             this.dateTu.Name = "dateTu";
             this.dateTu.Size = new System.Drawing.Size(100, 20);
             this.dateTu.TabIndex = 26;
@@ -543,7 +545,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(539, 13);
+            this.label5.Location = new System.Drawing.Point(605, 12);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(51, 13);
             this.label5.TabIndex = 25;
@@ -855,7 +857,7 @@
             // 
             this.radDongNuoc.AutoSize = true;
             this.radDongNuoc.Checked = true;
-            this.radDongNuoc.Location = new System.Drawing.Point(446, 3);
+            this.radDongNuoc.Location = new System.Drawing.Point(512, 2);
             this.radDongNuoc.Name = "radDongNuoc";
             this.radDongNuoc.Size = new System.Drawing.Size(80, 17);
             this.radDongNuoc.TabIndex = 35;
@@ -866,7 +868,7 @@
             // radMoNuoc
             // 
             this.radMoNuoc.AutoSize = true;
-            this.radMoNuoc.Location = new System.Drawing.Point(446, 26);
+            this.radMoNuoc.Location = new System.Drawing.Point(512, 25);
             this.radMoNuoc.Name = "radMoNuoc";
             this.radMoNuoc.Size = new System.Drawing.Size(69, 17);
             this.radMoNuoc.TabIndex = 36;
@@ -875,7 +877,7 @@
             // 
             // btnInPhieu
             // 
-            this.btnInPhieu.Location = new System.Drawing.Point(953, 10);
+            this.btnInPhieu.Location = new System.Drawing.Point(1019, 9);
             this.btnInPhieu.Name = "btnInPhieu";
             this.btnInPhieu.Size = new System.Drawing.Size(75, 23);
             this.btnInPhieu.TabIndex = 37;
@@ -885,7 +887,7 @@
             // 
             // btnXoaPhieu
             // 
-            this.btnXoaPhieu.Location = new System.Drawing.Point(1034, 10);
+            this.btnXoaPhieu.Location = new System.Drawing.Point(1100, 9);
             this.btnXoaPhieu.Name = "btnXoaPhieu";
             this.btnXoaPhieu.Size = new System.Drawing.Size(75, 23);
             this.btnXoaPhieu.TabIndex = 38;
@@ -911,6 +913,16 @@
             this.groupBox3.TabIndex = 39;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Kết Quả Đóng Nước lần 2";
+            // 
+            // btnHinhDongNuoc2
+            // 
+            this.btnHinhDongNuoc2.Location = new System.Drawing.Point(24, 101);
+            this.btnHinhDongNuoc2.Name = "btnHinhDongNuoc2";
+            this.btnHinhDongNuoc2.Size = new System.Drawing.Size(100, 23);
+            this.btnHinhDongNuoc2.TabIndex = 45;
+            this.btnHinhDongNuoc2.Text = "Hình Đóng Nước";
+            this.btnHinhDongNuoc2.UseVisualStyleBackColor = true;
+            this.btnHinhDongNuoc2.Click += new System.EventHandler(this.btnHinhDongNuoc2_Click);
             // 
             // txtChiSoDN1
             // 
@@ -1043,7 +1055,7 @@
             // 
             // btnInDS
             // 
-            this.btnInDS.Location = new System.Drawing.Point(1115, 10);
+            this.btnInDS.Location = new System.Drawing.Point(1181, 9);
             this.btnInDS.Name = "btnInDS";
             this.btnInDS.Size = new System.Drawing.Size(75, 23);
             this.btnInDS.TabIndex = 45;
@@ -1051,21 +1063,32 @@
             this.btnInDS.UseVisualStyleBackColor = true;
             this.btnInDS.Click += new System.EventHandler(this.btnInDS_Click);
             // 
-            // btnHinhDongNuoc2
+            // cmbTo
             // 
-            this.btnHinhDongNuoc2.Location = new System.Drawing.Point(24, 101);
-            this.btnHinhDongNuoc2.Name = "btnHinhDongNuoc2";
-            this.btnHinhDongNuoc2.Size = new System.Drawing.Size(100, 23);
-            this.btnHinhDongNuoc2.TabIndex = 45;
-            this.btnHinhDongNuoc2.Text = "Hình Đóng Nước";
-            this.btnHinhDongNuoc2.UseVisualStyleBackColor = true;
-            this.btnHinhDongNuoc2.Click += new System.EventHandler(this.btnHinhDongNuoc2_Click);
+            this.cmbTo.FormattingEnabled = true;
+            this.cmbTo.Location = new System.Drawing.Point(446, 12);
+            this.cmbTo.Name = "cmbTo";
+            this.cmbTo.Size = new System.Drawing.Size(60, 21);
+            this.cmbTo.TabIndex = 48;
+            this.cmbTo.Visible = false;
+            // 
+            // lbTo
+            // 
+            this.lbTo.AutoSize = true;
+            this.lbTo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTo.Location = new System.Drawing.Point(408, 15);
+            this.lbTo.Name = "lbTo";
+            this.lbTo.Size = new System.Drawing.Size(32, 19);
+            this.lbTo.TabIndex = 47;
+            this.lbTo.Text = "Tổ:";
             // 
             // frmKQDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1360, 627);
+            this.Controls.Add(this.cmbTo);
+            this.Controls.Add(this.lbTo);
             this.Controls.Add(this.btnInDS);
             this.Controls.Add(this.btnCapNhat);
             this.Controls.Add(this.txtGhiChuTroNgai);
@@ -1203,5 +1226,7 @@
         private System.Windows.Forms.Button btnHinhMoNuoc;
         private System.Windows.Forms.Button btnHinhDongNuoc;
         private System.Windows.Forms.Button btnHinhDongNuoc2;
+        private System.Windows.Forms.ComboBox cmbTo;
+        private System.Windows.Forms.Label lbTo;
     }
 }
