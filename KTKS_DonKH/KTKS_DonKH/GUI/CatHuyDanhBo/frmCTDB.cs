@@ -532,8 +532,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                     if (_cCHDB.ThemCTCTDB(ctctdb))
                     {
-                        Clear();
+                        if (_dontu_ChiTiet != null)
+                            _cDonTu.Them("Cắt Hủy", "Đã Thông Báo Cắt Tạm", _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Clear();
                         txtMaDonCu.Focus();
                     }
                 }

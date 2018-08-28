@@ -538,8 +538,10 @@ namespace KTKS_DonKH.GUI.BamChi
 
                     if (_cBamChi.ThemCT(ctbamchi))
                     {
-                        Clear_GetDataGridView();
+                        if (_dontu_ChiTiet != null)
+                            _cDonTu.Them("Bấm Chì", "Đã Bấm Chì", _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Clear_GetDataGridView();
                         txtMaDonCu.Focus();
                     }
                 }

@@ -492,6 +492,8 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                     if (_cGianLan.Them_ChiTiet(entity))
                     {
+                        if (_dontu_ChiTiet != null)
+                            _cDonTu.Them("Gian Lận", "Đã Lập Gian Lận", _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
                     }

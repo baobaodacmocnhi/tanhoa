@@ -858,6 +858,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                     cttttn.Tongm3BinhQuan = (int)Math.Round((double)cttttn.TongTien / cttttn.SoTien1m3);
                     _cTTTN.SubmitChanges();
 
+                    if (_dontu_ChiTiet != null)
+                        _cDonTu.Them("Truy Thu", "Đã Lập Truy Thu", _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Clear();
                     txtMaDonCu.Focus();
@@ -1293,6 +1295,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                             _cttttn.NgayTinhTrang = DateTime.Now;
                             _cttttn.TinhTrang = "Đang gửi thư mời";
                             _cTTTN.SubmitChanges();
+                            if (_dontu_ChiTiet != null)
+                                _cDonTu.Them("Truy Thu", "Đã Gửi Thư Mời", _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             ClearThuMoi();
                             LoadDSThuMoi(_cttttn.IDCT);

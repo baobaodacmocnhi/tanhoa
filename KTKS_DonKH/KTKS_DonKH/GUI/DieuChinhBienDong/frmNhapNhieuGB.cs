@@ -304,6 +304,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     foreach (DataGridViewRow item in dgvDanhBo.Rows)
                         if (item.Cells["MaDon"].Value != null && item.Cells["DanhBo"].Value != null && item.Cells["GBMoi"].Value != null)
                         {
+                            DonTu_ChiTiet dontu_ChiTiet =null;
                             DCBD_ChiTietBienDong ctdcbd = new DCBD_ChiTietBienDong();
 
                             //Đơn Tổ Khách Hàng
@@ -346,7 +347,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 else
                                 {
                                     string MaDon = item.Cells["MaDon"].Value.ToString();
-                                    DonTu_ChiTiet dontu_ChiTiet = null;
+                                    
                                     if (MaDon.Contains(".") == true)
                                     {
                                         string[] MaDons = MaDon.Split('.');
@@ -419,6 +420,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                             if (_cDCBD.ThemDCBD(ctdcbd))
                             {
+                                if (dontu_ChiTiet != null)
+                                    _cDonTu.Them("Điều Chỉnh", "Đã Điều Chỉnh Biến Động", dontu_ChiTiet.MaDon.Value, dontu_ChiTiet.STT.Value);
                                 if (min == 0)
                                     min = ctdcbd.MaCTDCBD;
                                 max = ctdcbd.MaCTDCBD;

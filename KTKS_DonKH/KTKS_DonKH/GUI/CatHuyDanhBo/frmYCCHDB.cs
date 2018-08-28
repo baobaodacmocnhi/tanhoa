@@ -417,6 +417,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                     if (_cCHDB.ThemPhieuHuy(ycchdb))
                     {
+                        if (_dontu_ChiTiet != null)
+                            _cDonTu.Them("Cắt Hủy", "Đã Lập Phiếu Hủy", _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
                         txtMaDonCu.Focus();

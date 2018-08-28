@@ -206,6 +206,34 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
+        public bool Them(string NoiChuyen, string NoiDung, int MaDon, int STT)
+        {
+            try
+            {
+                DonTu_LichSu entity = new DonTu_LichSu();
+                entity.NgayChuyen = DateTime.Now;
+                //entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
+                entity.NoiChuyen = NoiChuyen;
+                entity.NoiDung = NoiDung;
+                entity.MaDon = MaDon;
+                entity.STT = STT;
+                if (db.DonTu_LichSus.Count() == 0)
+                    entity.ID = 1;
+                else
+                    entity.ID = db.DonTu_LichSus.Max(item => item.ID) + 1;
+                entity.CreateBy = CTaiKhoan.MaUser;
+                entity.CreateDate = DateTime.Now;
+                db.DonTu_LichSus.InsertOnSubmit(entity);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
         public bool Xoa(DonTu_LichSu entity)
         {
             try
