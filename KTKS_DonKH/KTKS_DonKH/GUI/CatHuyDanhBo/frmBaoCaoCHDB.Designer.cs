@@ -35,6 +35,8 @@
             this.btnBaoCao_TheoNgayLap = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbLyDo_TheoNgayLap = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.cmbQuan_TheoNgayLap = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cmbLoaiBaoCao_TheoNgayLap = new System.Windows.Forms.ComboBox();
@@ -46,8 +48,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnBaoCao_TheoNgayXuLy = new System.Windows.Forms.Button();
             this.btnThongKe = new System.Windows.Forms.Button();
-            this.cmbLyDo_TheoNgayLap = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -91,7 +91,7 @@
             // 
             // btnBaoCao_TheoNgayLap
             // 
-            this.btnBaoCao_TheoNgayLap.Location = new System.Drawing.Point(261, 20);
+            this.btnBaoCao_TheoNgayLap.Location = new System.Drawing.Point(361, 80);
             this.btnBaoCao_TheoNgayLap.Name = "btnBaoCao_TheoNgayLap";
             this.btnBaoCao_TheoNgayLap.Size = new System.Drawing.Size(75, 25);
             this.btnBaoCao_TheoNgayLap.TabIndex = 28;
@@ -125,6 +125,26 @@
             this.groupBox1.TabIndex = 33;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Theo Ngày Lập";
+            // 
+            // cmbLyDo_TheoNgayLap
+            // 
+            this.cmbLyDo_TheoNgayLap.FormattingEnabled = true;
+            this.cmbLyDo_TheoNgayLap.Items.AddRange(new object[] {
+            "DS Cắt Hủy",
+            "DS Cắt Tạm"});
+            this.cmbLyDo_TheoNgayLap.Location = new System.Drawing.Point(105, 81);
+            this.cmbLyDo_TheoNgayLap.Name = "cmbLyDo_TheoNgayLap";
+            this.cmbLyDo_TheoNgayLap.Size = new System.Drawing.Size(250, 24);
+            this.cmbLyDo_TheoNgayLap.TabIndex = 32;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 84);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(43, 16);
+            this.label6.TabIndex = 31;
+            this.label6.Text = "Lý Do";
             // 
             // cmbQuan_TheoNgayLap
             // 
@@ -238,26 +258,6 @@
             this.btnThongKe.Text = "Thống Kê";
             this.btnThongKe.UseVisualStyleBackColor = true;
             this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
-            // 
-            // cmbLyDo_TheoNgayLap
-            // 
-            this.cmbLyDo_TheoNgayLap.FormattingEnabled = true;
-            this.cmbLyDo_TheoNgayLap.Items.AddRange(new object[] {
-            "DS Cắt Hủy",
-            "DS Cắt Tạm"});
-            this.cmbLyDo_TheoNgayLap.Location = new System.Drawing.Point(105, 81);
-            this.cmbLyDo_TheoNgayLap.Name = "cmbLyDo_TheoNgayLap";
-            this.cmbLyDo_TheoNgayLap.Size = new System.Drawing.Size(250, 24);
-            this.cmbLyDo_TheoNgayLap.TabIndex = 32;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 84);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 16);
-            this.label6.TabIndex = 31;
-            this.label6.Text = "Lý Do";
             // 
             // frmBaoCaoCHDB
             // 
