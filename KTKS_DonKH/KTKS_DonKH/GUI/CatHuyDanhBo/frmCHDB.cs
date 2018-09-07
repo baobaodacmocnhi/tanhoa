@@ -450,17 +450,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 if (txtMaDonMoi.Text.Trim() != "")
                     txtNoiNhan.Text = vv.NoiNhan + "\r\n(" + txtMaDonMoi.Text.Trim() + ")";
                 else
-                if (txtMaDonCu.Text.Trim()!="")
-                txtNoiNhan.Text = vv.NoiNhan + "\r\n(" + txtMaDonCu.Text.Trim() + ")";
-                else
-                    if (txtMaDonMoi.Text.Trim() != "")
-                        txtNoiNhan.Text = vv.NoiNhan + "\r\n(" + txtMaDonMoi.Text.Trim() + ")";
+                    if (txtMaDonCu.Text.Trim() != "")
+                        txtNoiNhan.Text = vv.NoiNhan + "\r\n(" + txtMaDonCu.Text.Trim() + ")";
 
-                if (cmbLyDo.SelectedValue.ToString() == "Nợ Tiền Gian Lận Nước")
-                    txtSoTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", 1283641);
-                else
-                    if (cmbLyDo.SelectedValue.ToString() == "Không Thanh Toán Tiền Bồi Thường ĐHN")
-                        txtSoTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", 1329053);
+                if (vv.SoTien != null)
+                    txtSoTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", vv.SoTien);
             }
             else
             {

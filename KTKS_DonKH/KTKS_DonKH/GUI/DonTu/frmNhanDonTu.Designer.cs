@@ -97,6 +97,8 @@
             this.label18 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnIn = new System.Windows.Forms.Button();
+            this.txtNguoiBao = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbDieuChinh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbKhieuNai.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbDHN.Properties)).BeginInit();
@@ -355,6 +357,7 @@
             this.txtNoiDung.Location = new System.Drawing.Point(108, 162);
             this.txtNoiDung.Multiline = true;
             this.txtNoiDung.Name = "txtNoiDung";
+            this.txtNoiDung.ReadOnly = true;
             this.txtNoiDung.Size = new System.Drawing.Size(669, 44);
             this.txtNoiDung.TabIndex = 16;
             // 
@@ -446,6 +449,8 @@
             // 
             // tabTTKH
             // 
+            this.tabTTKH.Controls.Add(this.txtNguoiBao);
+            this.tabTTKH.Controls.Add(this.label19);
             this.tabTTKH.Controls.Add(this.txtDienThoai);
             this.tabTTKH.Controls.Add(this.label11);
             this.tabTTKH.Controls.Add(this.txtDinhMuc);
@@ -470,7 +475,7 @@
             // 
             // txtDienThoai
             // 
-            this.txtDienThoai.Location = new System.Drawing.Point(470, 5);
+            this.txtDienThoai.Location = new System.Drawing.Point(287, 89);
             this.txtDienThoai.Name = "txtDienThoai";
             this.txtDienThoai.Size = new System.Drawing.Size(100, 22);
             this.txtDienThoai.TabIndex = 5;
@@ -478,7 +483,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(388, 8);
+            this.label11.Location = new System.Drawing.Point(205, 92);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(76, 16);
             this.label11.TabIndex = 4;
@@ -763,6 +768,22 @@
             this.btnIn.UseVisualStyleBackColor = true;
             this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
+            // txtNguoiBao
+            // 
+            this.txtNguoiBao.Location = new System.Drawing.Point(98, 89);
+            this.txtNguoiBao.Name = "txtNguoiBao";
+            this.txtNguoiBao.Size = new System.Drawing.Size(100, 22);
+            this.txtNguoiBao.TabIndex = 15;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(6, 92);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(72, 16);
+            this.label19.TabIndex = 14;
+            this.label19.Text = "Người Báo";
+            // 
             // frmNhanDonTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -886,5 +907,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nam;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quan;
         private System.Windows.Forms.DataGridViewTextBoxColumn Phuong;
+        private System.Windows.Forms.TextBox txtNguoiBao;
+        private System.Windows.Forms.Label label19;
     }
 }

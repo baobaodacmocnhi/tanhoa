@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>856</ApplicationRevision>
+    <ApplicationRevision>859</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -231,6 +231,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>rptThuBaoDCBD.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\DonTu\rptDSChuyenDonTu.cs">
+      <DependentUpon>rptDSChuyenDonTu.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="BaoCao\KiemTraXacMinh\rptKTXM_BaoThay.cs">
       <DependentUpon>rptKTXM_BaoThay.rpt</DependentUpon>
@@ -824,6 +830,12 @@
     <Compile Include="GUI\DieuChinhBienDong\frmNhapNhieuGB.Designer.cs">
       <DependentUpon>frmNhapNhieuGB.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\DonTu\frmBaoCaoDonTu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DonTu\frmBaoCaoDonTu.Designer.cs">
+      <DependentUpon>frmBaoCaoDonTu.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\DonTu\frmCapNhatDonTu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1362,6 +1374,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThuBaoDCBD.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\DonTu\rptDSChuyenDonTu.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDSChuyenDonTu.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\KiemTraXacMinh\rptKTXM_BaoThay.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptKTXM_BaoThay.cs</LastGenOutput>
@@ -1693,6 +1709,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DieuChinhBienDong\frmNhapNhieuGB.resx">
       <DependentUpon>frmNhapNhieuGB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DonTu\frmBaoCaoDonTu.resx">
+      <DependentUpon>frmBaoCaoDonTu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DonTu\frmCapNhatDonTu.resx">
       <DependentUpon>frmCapNhatDonTu.cs</DependentUpon>

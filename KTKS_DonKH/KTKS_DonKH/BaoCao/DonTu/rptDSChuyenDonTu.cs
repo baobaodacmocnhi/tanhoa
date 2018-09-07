@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KTKS_DonKH.BaoCao.CongVan {
+namespace KTKS_DonKH.BaoCao.DonTu {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace KTKS_DonKH.BaoCao.CongVan {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rptDSCongVan : ReportClass {
+    public class rptDSChuyenDonTu : ReportClass {
         
-        public rptDSCongVan() {
+        public rptDSChuyenDonTu() {
         }
         
         public override string ResourceName {
             get {
-                return "rptDSCongVan.rpt";
+                return "rptDSChuyenDonTu.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace KTKS_DonKH.BaoCao.CongVan {
         
         public override string FullResourceName {
             get {
-                return "KTKS_DonKH.BaoCao.CongVan.rptDSCongVan.rpt";
+                return "KTKS_DonKH.BaoCao.DonTu.rptDSChuyenDonTu.rpt";
             }
             set {
                 // Do nothing
@@ -74,7 +74,7 @@ namespace KTKS_DonKH.BaoCao.CongVan {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection2 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,7 +82,7 @@ namespace KTKS_DonKH.BaoCao.CongVan {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
             get {
                 return this.ReportDefinition.Sections[4];
             }
@@ -90,7 +90,7 @@ namespace KTKS_DonKH.BaoCao.CongVan {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection2 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[5];
             }
@@ -98,33 +98,17 @@ namespace KTKS_DonKH.BaoCao.CongVan {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
-            get {
-                return this.ReportDefinition.Sections[6];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
-            get {
-                return this.ReportDefinition.Sections[7];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
-                return this.ReportDefinition.Sections[8];
+                return this.ReportDefinition.Sections[6];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrptDSCongVan : Component, ICachedReport {
+    public class CachedrptDSChuyenDonTu : Component, ICachedReport {
         
-        public CachedrptDSCongVan() {
+        public CachedrptDSChuyenDonTu() {
         }
         
         [Browsable(false)]
@@ -161,7 +145,7 @@ namespace KTKS_DonKH.BaoCao.CongVan {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rptDSCongVan rpt = new rptDSCongVan();
+            rptDSChuyenDonTu rpt = new rptDSChuyenDonTu();
             rpt.Site = this.Site;
             return rpt;
         }

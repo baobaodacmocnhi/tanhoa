@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using KTKS_DonKH.DAL.CatHuyDanhBo;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.QuanTri;
+using System.Globalization;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -34,6 +35,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         public void Clear()
         {
             txtLyDo.Text = "";
+            txtSoTien.Text = "";
             txtNoiDung.Text = "";
             txtNoiNhan.Text = "";
             _selectedindex = -1;
@@ -50,6 +52,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     CHDB_LyDo vv = new CHDB_LyDo();
                     vv.STT = _cLyDoCHDB.GetMaxSTT() + 1;
                     vv.LyDo = txtLyDo.Text.Trim();
+                    if (txtSoTien.Text.Trim()!="")
+                    vv.SoTien = int.Parse(txtSoTien.Text.Trim());
                     vv.NoiDung = txtNoiDung.Text;
                     vv.NoiNhan = txtNoiNhan.Text.Trim();
 
@@ -75,6 +79,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     {
                         CHDB_LyDo vv = _cLyDoCHDB.Get(int.Parse(dgvLyDoCHDB["ID", _selectedindex].Value.ToString()));
                         vv.LyDo = txtLyDo.Text.Trim();
+                        if (txtSoTien.Text.Trim() != "")
+                            vv.SoTien = int.Parse(txtSoTien.Text.Trim());
+                        else
+                            vv.SoTien = null;
                         vv.NoiDung = txtNoiDung.Text;
                         vv.NoiNhan = txtNoiNhan.Text.Trim();
 
@@ -97,6 +105,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 _selectedindex = e.RowIndex;
                 txtLyDo.Text = dgvLyDoCHDB["LyDo", e.RowIndex].Value.ToString();
+                if (dgvLyDoCHDB["SoTien", e.RowIndex].Value!=null)
+                txtSoTien.Text = dgvLyDoCHDB["SoTien", e.RowIndex].Value.ToString();
                 txtNoiDung.Text = dgvLyDoCHDB["NoiDung", e.RowIndex].Value.ToString();
                 txtNoiNhan.Text = dgvLyDoCHDB["NoiNhan", e.RowIndex].Value.ToString();
             }
@@ -172,6 +182,14 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     rowIndexFromMouseDown = dgvLyDoCHDB.SelectedRows[0].Index;
                     dgvLyDoCHDB.DoDragDrop(rw, DragDropEffects.Move);
                 }
+            }
+        }
+
+        private void dgvLyDoCHDB_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvLyDoCHDB.Columns[e.ColumnIndex].Name == "SoTien" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
         }
 

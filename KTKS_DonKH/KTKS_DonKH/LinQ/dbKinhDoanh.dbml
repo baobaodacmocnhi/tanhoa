@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="KTKS_DonKH" Class="dbKinhDoanhDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=SERVERG8-01;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=tanhoa" SettingsObjectName="KTKS_DonKH.Properties.Settings" SettingsPropertyName="KTKS_DonKHConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=SERVERG8-01;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=sa" SettingsObjectName="KTKS_DonKH.Properties.Settings" SettingsPropertyName="KTKS_DonKHConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.BamChi" Member="BamChis">
     <Type Name="BamChi">
       <Column Name="MaBC" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -27,10 +27,16 @@
       <Column Name="MaKiemBamChi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="KTXM" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="BamChi" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ToGD" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="ToKH" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="ToXL" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="ToBC" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="ToVP" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TruyThu" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DieuChinh" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CatHuy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ThuTraLoi" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ThuMoi" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="Login" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="An" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="Admin" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
@@ -307,6 +313,7 @@
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="STT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="LyDo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SoTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NoiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="NoiNhan" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -1009,6 +1016,7 @@
       <Column Name="Quan" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="Phuong" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="DienThoai" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NguoiBao" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="MaDon" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -1347,6 +1355,15 @@
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="DonKH_LichSuChuyenVanPhong" Member="DonKH" ThisKey="MaDon" OtherKey="MaDon" Type="DonKH" IsForeignKey="true" />
       <Association Name="DonTXL_LichSuChuyenVanPhong" Member="DonTXL" ThisKey="MaDonTXL" OtherKey="MaDon" Type="DonTXL" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LichSuCongTac" Member="LichSuCongTacs">
+    <Type Name="LichSuCongTac">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaNV" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NoiDung" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.LichSuDonTu" Member="LichSuDonTus">

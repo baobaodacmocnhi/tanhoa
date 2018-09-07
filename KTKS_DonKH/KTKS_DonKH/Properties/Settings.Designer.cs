@@ -37,8 +37,8 @@ namespace KTKS_DonKH.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.90.9;Initial Catalog=TANHOA_WATER;Persist Security Info=True;" +
-            "User ID=sa;Password=db9@tanhoa")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=server9;Initial Catalog=TANHOA_WATER;Persist Security Info=True;User " +
+            "ID=sa;Password=db9@tanhoa")]
         public string TANHOA_WATERConnectionString {
             get {
                 return ((string)(this["TANHOA_WATERConnectionString"]));

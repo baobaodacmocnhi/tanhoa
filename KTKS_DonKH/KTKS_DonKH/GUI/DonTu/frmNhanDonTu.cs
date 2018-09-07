@@ -84,51 +84,52 @@ namespace KTKS_DonKH.GUI.DonTu
         {
             try
             {
-            if (entity.SoCongVan == null)
-            {
-                tabControl.SelectTab("tabTTKH");
-                if (entity.SoNK != null)
+                if (entity.SoCongVan == null)
                 {
-                    txtSoNK.Text = entity.SoNK.Value.ToString();
-                    txtHieuLucKy.Text = entity.HieuLucKy;
+                    tabControl.SelectTab("tabTTKH");
+                    if (entity.SoNK != null)
+                    {
+                        txtSoNK.Text = entity.SoNK.Value.ToString();
+                        txtHieuLucKy.Text = entity.HieuLucKy;
+                    }
+                    if (entity.DonTu_ChiTiets.SingleOrDefault().DanhBo.Length == 11)
+                        txtDanhBo.Text = entity.DonTu_ChiTiets.SingleOrDefault().DanhBo.Insert(7, " ").Insert(4, " ");
+                    txtHopDong.Text = entity.DonTu_ChiTiets.SingleOrDefault().HopDong;
+                    txtDienThoai.Text = entity.DonTu_ChiTiets.SingleOrDefault().DienThoai;
+                    txtNguoiBao.Text = entity.DonTu_ChiTiets.SingleOrDefault().NguoiBao;
+                    txtHoTen.Text = entity.DonTu_ChiTiets.SingleOrDefault().HoTen;
+                    txtDiaChi.Text = entity.DonTu_ChiTiets.SingleOrDefault().DiaChi;
+                    if (entity.GiaBieu != null)
+                        txtGiaBieu.Text = entity.DonTu_ChiTiets.SingleOrDefault().GiaBieu.Value.ToString();
+                    if (entity.DinhMuc != null)
+                        txtDinhMuc.Text = entity.DonTu_ChiTiets.SingleOrDefault().DinhMuc.Value.ToString();
                 }
-                if (entity.DonTu_ChiTiets.SingleOrDefault().DanhBo.Length == 11)
-                    txtDanhBo.Text = entity.DonTu_ChiTiets.SingleOrDefault().DanhBo.Insert(7, " ").Insert(4, " ");
-                txtHopDong.Text = entity.DonTu_ChiTiets.SingleOrDefault().HopDong;
-                txtDienThoai.Text = entity.DonTu_ChiTiets.SingleOrDefault().DienThoai;
-                txtHoTen.Text = entity.DonTu_ChiTiets.SingleOrDefault().HoTen;
-                txtDiaChi.Text = entity.DonTu_ChiTiets.SingleOrDefault().DiaChi;
-                if (entity.GiaBieu != null)
-                    txtGiaBieu.Text = entity.DonTu_ChiTiets.SingleOrDefault().GiaBieu.Value.ToString();
-                if (entity.DinhMuc != null)
-                    txtDinhMuc.Text = entity.DonTu_ChiTiets.SingleOrDefault().DinhMuc.Value.ToString();
-            }
-            else
-            {
-                tabControl.SelectTab("tabCongVan");
-                txtSoCongVan.Text = entity.SoCongVan;
-                txtTongDB.Text = entity.TongDB.ToString();
+                else
+                {
+                    tabControl.SelectTab("tabCongVan");
+                    txtSoCongVan.Text = entity.SoCongVan;
+                    txtTongDB.Text = entity.TongDB.ToString();
 
-                dgvDanhBo.DataSource = entity.DonTu_ChiTiets.ToList();
-            }
-            txtMaDon.Text = entity.MaDon.ToString();
-            dateCreateDate.Value = entity.CreateDate.Value;
+                    dgvDanhBo.DataSource = entity.DonTu_ChiTiets.ToList();
+                }
+                txtMaDon.Text = entity.MaDon.ToString();
+                dateCreateDate.Value = entity.CreateDate.Value;
 
-            chkcmbDieuChinh.SetEditValue(entity.ID_NhomDon);
-            chkcmbKhieuNai.SetEditValue(entity.ID_NhomDon);
-            chkcmbDHN.SetEditValue(entity.ID_NhomDon);
+                chkcmbDieuChinh.SetEditValue(entity.ID_NhomDon);
+                chkcmbKhieuNai.SetEditValue(entity.ID_NhomDon);
+                chkcmbDHN.SetEditValue(entity.ID_NhomDon);
 
-            txtNoiDung.Text=entity.Name_NhomDon;
-            txtVanDeKhac.Text = entity.VanDeKhac;
+                txtNoiDung.Text = entity.Name_NhomDon;
+                txtVanDeKhac.Text = entity.VanDeKhac;
 
-            chkCT_HoaDon.Checked = entity.CT_HoaDon;
-            chkCT_HK_KT3.Checked = entity.CT_HK_KT3;
-            chkCT_STT_GXNTT.Checked = entity.CT_STT_GXNTT;
-            chkCT_HDTN_CQN.Checked = entity.CT_HDTN_CQN;
-            chkCT_GC_SDSN.Checked = entity.CT_GC_SDSN;
-            chkCT_GXN2SN.Checked = entity.CT_GXN2SN;
-            chkCT_GDKKD.Checked = entity.CT_GDKKD;
-            chkCT_GCNDTDHN.Checked = entity.CT_GCNDTDHN;
+                chkCT_HoaDon.Checked = entity.CT_HoaDon;
+                chkCT_HK_KT3.Checked = entity.CT_HK_KT3;
+                chkCT_STT_GXNTT.Checked = entity.CT_STT_GXNTT;
+                chkCT_HDTN_CQN.Checked = entity.CT_HDTN_CQN;
+                chkCT_GC_SDSN.Checked = entity.CT_GC_SDSN;
+                chkCT_GXN2SN.Checked = entity.CT_GXN2SN;
+                chkCT_GDKKD.Checked = entity.CT_GDKKD;
+                chkCT_GCNDTDHN.Checked = entity.CT_GCNDTDHN;
             }
             catch (Exception ex)
             {
@@ -282,6 +283,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         entityCT.DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
                         entityCT.HopDong = txtHopDong.Text.Trim();
                         entityCT.DienThoai = txtDienThoai.Text.Trim();
+                        entityCT.NguoiBao = txtNguoiBao.Text.Trim();
                         entityCT.HoTen = txtHoTen.Text.Trim();
                         entityCT.DiaChi = txtDiaChi.Text.Trim();
                         if (txtGiaBieu.Text.Trim() != "")
@@ -300,7 +302,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         entityCT.CreateBy = CTaiKhoan.MaUser;
                         entityCT.CreateDate = DateTime.Now;
 
-                        entity.DonTu_ChiTiets.Add(entityCT); 
+                        entity.DonTu_ChiTiets.Add(entityCT);
                     }
                     else
                     {
@@ -456,6 +458,7 @@ namespace KTKS_DonKH.GUI.DonTu
                             _dontu.DonTu_ChiTiets.SingleOrDefault().DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
                             _dontu.DonTu_ChiTiets.SingleOrDefault().HopDong = txtHopDong.Text.Trim();
                             _dontu.DonTu_ChiTiets.SingleOrDefault().DienThoai = txtDienThoai.Text.Trim();
+                            _dontu.DonTu_ChiTiets.SingleOrDefault().NguoiBao = txtNguoiBao.Text.Trim();
                             _dontu.DonTu_ChiTiets.SingleOrDefault().HoTen = txtHoTen.Text.Trim();
                             _dontu.DonTu_ChiTiets.SingleOrDefault().DiaChi = txtDiaChi.Text.Trim();
                             if (txtGiaBieu.Text.Trim() != "")
