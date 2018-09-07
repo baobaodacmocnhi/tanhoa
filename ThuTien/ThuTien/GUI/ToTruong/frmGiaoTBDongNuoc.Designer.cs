@@ -80,11 +80,12 @@
             this.radA4 = new System.Windows.Forms.RadioButton();
             this.radA5 = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cmbTo = new System.Windows.Forms.ComboBox();
+            this.btnCapNhat = new System.Windows.Forms.Button();
             this.cmbNhanVien = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnCapNhat = new System.Windows.Forms.Button();
+            this.cmbToCapNhat = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cmbTo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -361,7 +362,7 @@
             // 
             this.lbTo.AutoSize = true;
             this.lbTo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTo.Location = new System.Drawing.Point(151, 9);
+            this.lbTo.Location = new System.Drawing.Point(149, 13);
             this.lbTo.Name = "lbTo";
             this.lbTo.Size = new System.Drawing.Size(32, 19);
             this.lbTo.TabIndex = 10;
@@ -504,7 +505,7 @@
             // chkAll
             // 
             this.chkAll.AutoSize = true;
-            this.chkAll.Location = new System.Drawing.Point(53, 17);
+            this.chkAll.Location = new System.Drawing.Point(12, 15);
             this.chkAll.Name = "chkAll";
             this.chkAll.Size = new System.Drawing.Size(86, 17);
             this.chkAll.TabIndex = 36;
@@ -581,7 +582,7 @@
             this.groupBox1.Controls.Add(this.btnCapNhat);
             this.groupBox1.Controls.Add(this.cmbNhanVien);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.cmbTo);
+            this.groupBox1.Controls.Add(this.cmbToCapNhat);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Location = new System.Drawing.Point(1001, 326);
             this.groupBox1.Name = "groupBox1";
@@ -590,23 +591,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cập Nhật Người Lập";
             // 
-            // label5
+            // btnCapNhat
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 16);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(23, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Tổ:";
-            // 
-            // cmbTo
-            // 
-            this.cmbTo.FormattingEnabled = true;
-            this.cmbTo.Location = new System.Drawing.Point(9, 32);
-            this.cmbTo.Name = "cmbTo";
-            this.cmbTo.Size = new System.Drawing.Size(121, 21);
-            this.cmbTo.TabIndex = 1;
-            this.cmbTo.SelectedIndexChanged += new System.EventHandler(this.cmbTo_SelectedIndexChanged);
+            this.btnCapNhat.Location = new System.Drawing.Point(9, 99);
+            this.btnCapNhat.Name = "btnCapNhat";
+            this.btnCapNhat.Size = new System.Drawing.Size(75, 23);
+            this.btnCapNhat.TabIndex = 31;
+            this.btnCapNhat.Text = "Cập Nhật";
+            this.btnCapNhat.UseVisualStyleBackColor = true;
+            this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
             // 
             // cmbNhanVien
             // 
@@ -625,21 +618,40 @@
             this.label6.TabIndex = 2;
             this.label6.Text = "Nhân Viên:";
             // 
-            // btnCapNhat
+            // cmbToCapNhat
             // 
-            this.btnCapNhat.Location = new System.Drawing.Point(9, 99);
-            this.btnCapNhat.Name = "btnCapNhat";
-            this.btnCapNhat.Size = new System.Drawing.Size(75, 23);
-            this.btnCapNhat.TabIndex = 31;
-            this.btnCapNhat.Text = "Cập Nhật";
-            this.btnCapNhat.UseVisualStyleBackColor = true;
-            this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
+            this.cmbToCapNhat.FormattingEnabled = true;
+            this.cmbToCapNhat.Location = new System.Drawing.Point(9, 32);
+            this.cmbToCapNhat.Name = "cmbToCapNhat";
+            this.cmbToCapNhat.Size = new System.Drawing.Size(121, 21);
+            this.cmbToCapNhat.TabIndex = 1;
+            this.cmbToCapNhat.SelectedIndexChanged += new System.EventHandler(this.cmbTo_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(23, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Tổ:";
+            // 
+            // cmbTo
+            // 
+            this.cmbTo.FormattingEnabled = true;
+            this.cmbTo.Location = new System.Drawing.Point(187, 11);
+            this.cmbTo.Name = "cmbTo";
+            this.cmbTo.Size = new System.Drawing.Size(60, 21);
+            this.cmbTo.TabIndex = 103;
+            this.cmbTo.Visible = false;
+            this.cmbTo.SelectedIndexChanged += new System.EventHandler(this.cmbTo_SelectedIndexChanged_1);
             // 
             // frmGiaoTBDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1207, 666);
+            this.Controls.Add(this.cmbTo);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.radA5);
             this.Controls.Add(this.radA4);
@@ -737,7 +749,8 @@
         private System.Windows.Forms.Button btnCapNhat;
         private System.Windows.Forms.ComboBox cmbNhanVien;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cmbTo;
+        private System.Windows.Forms.ComboBox cmbToCapNhat;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cmbTo;
     }
 }

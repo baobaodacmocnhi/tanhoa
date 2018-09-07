@@ -36,46 +36,76 @@ namespace ThuTien.GUI.ToTruong
 
         private void frmGiaoTBDongNuoc_Load(object sender, EventArgs e)
         {
-            TT_NguoiDung nguoidung = new TT_NguoiDung();
-            nguoidung.MaND = -1;
-            nguoidung.HoTen = "Tất cả";
-            _lstND = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
-            _lstND.Insert(0, nguoidung);
-            cmbNhanVienLap.DataSource = _lstND;
-            cmbNhanVienLap.DisplayMember = "HoTen";
-            cmbNhanVienLap.ValueMember = "MaND";
+            if (CNguoiDung.Doi)
+            {
+                cmbTo.Visible = true;
 
-            cmbNhanVienGiao.DataSource = _cNguoiDung.GetDSDongNuocByMaTo(CNguoiDung.MaTo);
-            cmbNhanVienGiao.DisplayMember = "HoTen";
-            cmbNhanVienGiao.ValueMember = "MaND";
+                cmbTo.DataSource = _cTo.GetDSHanhThu();
+                cmbTo.DisplayMember = "TenTo";
+                cmbTo.ValueMember = "MaTo";
+            }
+            else
+            {
+                lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
 
-            lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
+                TT_NguoiDung nguoidung = new TT_NguoiDung();
+                nguoidung.MaND = -1;
+                nguoidung.HoTen = "Tất cả";
+                _lstND = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
+                _lstND.Insert(0, nguoidung);
+                cmbNhanVienLap.DataSource = _lstND;
+                cmbNhanVienLap.DisplayMember = "HoTen";
+                cmbNhanVienLap.ValueMember = "MaND";
+
+                cmbNhanVienGiao.DataSource = _cNguoiDung.GetDSDongNuocByMaTo(CNguoiDung.MaTo);
+                cmbNhanVienGiao.DisplayMember = "HoTen";
+                cmbNhanVienGiao.ValueMember = "MaND";
+            }
 
             gridControl.LevelTree.Nodes.Add("Chi Tiết Đóng Nước", gridViewCTDN);
 
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
 
-            cmbTo.DataSource = _cTo.GetDSHanhThu();
-            cmbTo.ValueMember = "MaTo";
-            cmbTo.DisplayMember = "TenTo";
+            cmbToCapNhat.DataSource = _cTo.GetDSHanhThu();
+            cmbToCapNhat.ValueMember = "MaTo";
+            cmbToCapNhat.DisplayMember = "TenTo";
         }
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            if (cmbNhanVienLap.SelectedIndex == 0 && dateTu.Value <= dateDen.Value)
+            if (CNguoiDung.Doi == true)
             {
-                DataSet ds = null;
-                for (int i = 1; i < _lstND.Count; i++)
-                    if (ds == null)
-                        ds = _cDongNuoc.GetDSByCreateByCreateDates(CNguoiDung.TenTo, _lstND[i].MaND, dateTu.Value, dateDen.Value);
-                    else
-                        ds.Merge(_cDongNuoc.GetDSByCreateByCreateDates(CNguoiDung.TenTo, _lstND[i].MaND, dateTu.Value, dateDen.Value));
-                gridControl.DataSource = ds.Tables["DongNuoc"];
+                if (cmbNhanVienLap.SelectedIndex == 0 && dateTu.Value <= dateDen.Value)
+                {
+                    DataSet ds = null;
+                    for (int i = 1; i < _lstND.Count; i++)
+                        if (ds == null)
+                            ds = _cDongNuoc.GetDSByCreateByCreateDates(((TT_To)cmbTo.SelectedItem).TenTo, _lstND[i].MaND, dateTu.Value, dateDen.Value);
+                        else
+                            ds.Merge(_cDongNuoc.GetDSByCreateByCreateDates(((TT_To)cmbTo.SelectedItem).TenTo, _lstND[i].MaND, dateTu.Value, dateDen.Value));
+                    gridControl.DataSource = ds.Tables["DongNuoc"];
+                }
+                else
+                    if (cmbNhanVienLap.SelectedIndex > 0 && dateTu.Value <= dateDen.Value)
+                        gridControl.DataSource = _cDongNuoc.GetDSByCreateByCreateDates(((TT_To)cmbTo.SelectedItem).TenTo, int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
             }
             else
-                if (cmbNhanVienLap.SelectedIndex > 0 && dateTu.Value <= dateDen.Value)
-                    gridControl.DataSource = _cDongNuoc.GetDSByCreateByCreateDates(CNguoiDung.TenTo, int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
+            {
+                if (cmbNhanVienLap.SelectedIndex == 0 && dateTu.Value <= dateDen.Value)
+                {
+                    DataSet ds = null;
+                    for (int i = 1; i < _lstND.Count; i++)
+                        if (ds == null)
+                            ds = _cDongNuoc.GetDSByCreateByCreateDates(CNguoiDung.TenTo, _lstND[i].MaND, dateTu.Value, dateDen.Value);
+                        else
+                            ds.Merge(_cDongNuoc.GetDSByCreateByCreateDates(CNguoiDung.TenTo, _lstND[i].MaND, dateTu.Value, dateDen.Value));
+                    gridControl.DataSource = ds.Tables["DongNuoc"];
+                }
+                else
+                    if (cmbNhanVienLap.SelectedIndex > 0 && dateTu.Value <= dateDen.Value)
+                        gridControl.DataSource = _cDongNuoc.GetDSByCreateByCreateDates(CNguoiDung.TenTo, int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
+            }
 
             ///Kiểm Tra Tình Trạng, Giải Trách hết Hóa Đơn trong Thông Báo Đóng Nước mới tính
             for (int i = 0; i < gridViewDN.DataRowCount; i++)
@@ -368,8 +398,8 @@ namespace ThuTien.GUI.ToTruong
 
         private void btnInTB_Click(object sender, EventArgs e)
         {
-            PrintDialog printDialog = new PrintDialog();
-            if (printDialog.ShowDialog() == DialogResult.OK)
+            //PrintDialog printDialog = new PrintDialog();
+            //if (printDialog.ShowDialog() == DialogResult.OK)
             {
                 dsBaoCao dsBaoCao = new dsBaoCao();
                 DataTable dt = ((DataTable)gridControl.DataSource).DefaultView.Table;
@@ -412,24 +442,33 @@ namespace ThuTien.GUI.ToTruong
 
                         dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
 
-                        ReportDocument rpt = new ReportDocument();
-                        if(radA4.Checked==true)
-                         rpt = new rptTBDongNuocPhotoA4();
-                        else
-                            if(radA5.Checked==true)
-                                rpt = new rptTBDongNuocPhotoA5();
-                        rpt.SetDataSource(dsBaoCao);
-                        //frmBaoCao frm = new frmBaoCao(rpt);
-                        //frm.ShowDialog();
-                        printDialog.AllowSomePages = true;
-                        printDialog.ShowHelp = true;
+                        //ReportDocument rpt = new ReportDocument();
+                        //if(radA4.Checked==true)
+                        // rpt = new rptTBDongNuocPhotoA4();
+                        //else
+                        //    if(radA5.Checked==true)
+                        //        rpt = new rptTBDongNuocPhotoA5();
+                        //rpt.SetDataSource(dsBaoCao);
+
+                        //printDialog.AllowSomePages = true;
+                        //printDialog.ShowHelp = true;
 
                         //rpt.PrintOptions.PaperOrientation = rpt.PrintOptions.PaperOrientation;
                         //rpt.PrintOptions.PaperSize = rpt.PrintOptions.PaperSize;
                         //rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
 
-                        rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
+                        //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, true, 0, 0);
+                        //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
                     }
+                ReportDocument rpt = new ReportDocument();
+                if (radA4.Checked == true)
+                    rpt = new rptTBDongNuocPhotoA4();
+                else
+                    if (radA5.Checked == true)
+                        rpt = new rptTBDongNuocPhotoA5();
+                rpt.SetDataSource(dsBaoCao);
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.ShowDialog();
             }
         }
 
@@ -613,9 +652,9 @@ namespace ThuTien.GUI.ToTruong
 
         private void cmbTo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbTo.SelectedIndex > -1)
+            if (cmbToCapNhat.SelectedIndex > -1)
             {
-                cmbNhanVien.DataSource = _cNguoiDung.GetDSHanhThuByMaTo(((TT_To)cmbTo.SelectedItem).MaTo);
+                cmbNhanVien.DataSource = _cNguoiDung.GetDSHanhThuByMaTo(((TT_To)cmbToCapNhat.SelectedItem).MaTo);
                 cmbNhanVien.ValueMember = "MaND";
                 cmbNhanVien.DisplayMember = "HoTen";
             }
@@ -646,6 +685,22 @@ namespace ThuTien.GUI.ToTruong
             else
                 MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+        }
+
+        private void cmbTo_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            TT_NguoiDung nguoidung = new TT_NguoiDung();
+            nguoidung.MaND = -1;
+            nguoidung.HoTen = "Tất cả";
+            _lstND = _cNguoiDung.GetDSHanhThuByMaTo(((TT_To)cmbTo.SelectedItem).MaTo);
+            _lstND.Insert(0, nguoidung);
+            cmbNhanVienLap.DataSource = _lstND;
+            cmbNhanVienLap.DisplayMember = "HoTen";
+            cmbNhanVienLap.ValueMember = "MaND";
+
+            cmbNhanVienGiao.DataSource = _cNguoiDung.GetDSDongNuocByMaTo(((TT_To)cmbTo.SelectedItem).MaTo);
+            cmbNhanVienGiao.DisplayMember = "HoTen";
+            cmbNhanVienGiao.ValueMember = "MaND";
         }
 
     }

@@ -559,7 +559,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             dt.Columns.Add("TongCong", typeof(int));
             dt.Columns.Add("Lech", typeof(int));
             dt.Columns.Add("TienMat", typeof(int));
-            dt.Columns.Add("Loai", typeof(string));
+            //dt.Columns.Add("Loai", typeof(string));
 
             foreach (DataRow item in dtBK.Rows)
             {
@@ -607,10 +607,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                             dr["TongCong"] = int.Parse(itemdrDN["TongCong"].ToString()) - int.Parse(itemdrDN["TienMat"].ToString());
                         }
                         dr["TienMat"] = itemdrDN["TienMat"];
-                        if (int.Parse(itemdrDN["GiaBieu"].ToString()) > 20)
-                            dr["Loai"] = "CQ";
-                        else
-                            dr["Loai"] = "TG";
+                        //if (int.Parse(itemdrDN["GiaBieu"].ToString()) > 20)
+                        //    dr["Loai"] = "CQ";
+                        //else
+                        //    dr["Loai"] = "TG";
 
                         dt.Rows.Add(dr);
                         i++;
@@ -630,29 +630,30 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["MaNH"] = item["MaNH"];
                     dr["NganHang"] = item["TenNH"];
 
-                    if (item["DanhBo"].ToString().Length == 11)
-                    {
-                        HOADON hoadon = _cHoaDon.GetMoiNhat(item["DanhBo"].ToString());
-                        if (hoadon != null)
-                            if (hoadon.GB > 20)
-                                dr["Loai"] = "CQ";
-                            else
-                                dr["Loai"] = "TG";
-                    }
+                    //if (item["DanhBo"].ToString().Length == 11)
+                    //{
+                    //    HOADON hoadon = _cHoaDon.GetMoiNhat(item["DanhBo"].ToString());
+                    //    if (hoadon != null)
+                    //        if (hoadon.GB > 20)
+                    //            dr["Loai"] = "CQ";
+                    //        else
+                    //            dr["Loai"] = "TG";
+                    //}
 
                     dt.Rows.Add(dr);
                 }
             }
 
-            dt.DefaultView.Sort = "Loai DESC,MaBK ASC";
+            //dt.DefaultView.Sort = "Loai DESC,MaBK ASC";
+            dt.DefaultView.Sort = "MaBK ASC";
             dt = dt.DefaultView.ToTable();
 
             ///danh sách đăng ngân còn lại
-            if (dtDN.Rows.Count > 0)
-            {
-                dtDN.DefaultView.Sort = "GiaBieu ASC";
-                dtDN = dtDN.DefaultView.ToTable();
-            }
+            //if (dtDN.Rows.Count > 0)
+            //{
+            //    dtDN.DefaultView.Sort = "GiaBieu ASC";
+            //    dtDN = dtDN.DefaultView.ToTable();
+            //}
             foreach (DataRow item in dtDN.Rows)
             {
                 DataRow[] drBKLui5 = dtBKLui5.Select("DanhBo like '" + item["DanhBo"].ToString() + "'");
@@ -687,10 +688,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dr["TongCong"] = int.Parse(item["TongCong"].ToString()) - int.Parse(item["TienMat"].ToString());
                     }
                     dr["TienMat"] = item["TienMat"];
-                    if (int.Parse(item["GiaBieu"].ToString()) > 20)
-                        dr["Loai"] = "CQ";
-                    else
-                        dr["Loai"] = "TG";
+                    //if (int.Parse(item["GiaBieu"].ToString()) > 20)
+                    //    dr["Loai"] = "CQ";
+                    //else
+                    //    dr["Loai"] = "TG";
 
                     dt.Rows.Add(dr);
                 }
@@ -717,10 +718,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dr["TongCong"] = int.Parse(item["TongCong"].ToString()) - int.Parse(item["TienMat"].ToString());
                     }
                     dr["TienMat"] = item["TienMat"];
-                    if (int.Parse(item["GiaBieu"].ToString()) > 20)
-                        dr["Loai"] = "CQ";
-                    else
-                        dr["Loai"] = "TG";
+                    //if (int.Parse(item["GiaBieu"].ToString()) > 20)
+                    //    dr["Loai"] = "CQ";
+                    //else
+                    //    dr["Loai"] = "TG";
 
                     dt.Rows.Add(dr);
                 }
@@ -915,7 +916,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 //if (!string.IsNullOrEmpty(dr["SoTien"].ToString()) && !string.IsNullOrEmpty(dr["TongCong"].ToString()))
                 //    arr[i, 12] = int.Parse(dr["SoTien"].ToString()) - int.Parse(dr["TongCong"].ToString());
                 arr[i, 12] = dr["Lech"];
-                arr[i, 13] = dr["Loai"];
+                //arr[i, 13] = dr["Loai"];
 
                 arr[i, 14] = dr["NganHang"];
                 arr[i, 15] = dr["TienMat"];
@@ -989,12 +990,12 @@ namespace ThuTien.GUI.ChuyenKhoan
             oSheet.Cells[rowEnd + 3, 2] = "AGR";
             oSheet.Cells[rowEnd + 4, 2] = "MB";
             oSheet.Cells[rowEnd + 5, 2] = "KHO BẠC";
-            oSheet.Cells[rowEnd + 6, 2] = "BIDV";
+            oSheet.Cells[rowEnd + 6, 2] = "VCB";
 
-            oSheet.Cells[rowEnd + 3, 3] = dt.Compute("sum(SoTien)", "MaNH <> 3 and MaNH <> 4 and MaNH <> 9 and CreateDate >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
+            oSheet.Cells[rowEnd + 3, 3] = dt.Compute("sum(SoTien)", "MaNH <> 3 and MaNH <> 4 and MaNH <> 10 and CreateDate >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
             oSheet.Cells[rowEnd + 4, 3] = dt.Compute("sum(SoTien)", "MaNH = 4 and CreateDate >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
             oSheet.Cells[rowEnd + 5, 3] = dt.Compute("sum(SoTien)", "MaNH = 3 and CreateDate >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
-            oSheet.Cells[rowEnd + 6, 3] = dt.Compute("sum(SoTien)", "MaNH = 9 and CreateDate >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
+            oSheet.Cells[rowEnd + 6, 3] = dt.Compute("sum(SoTien)", "MaNH = 10 and CreateDate >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
 
             oSheet.Cells[rowEnd + 8, 2] = "Tồn cuối ngày: "+_cTienDu.GetTongTienTonDenNgay(dateGiaiTrach.Value);
         }

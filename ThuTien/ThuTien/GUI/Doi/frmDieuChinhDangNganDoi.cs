@@ -47,6 +47,9 @@ namespace ThuTien.GUI.Doi
             dateGiaiTrach.Value = DateTime.Now;
 
             _flagLoadFirst = true;
+
+            tabTuGia.Text = "Hóa Đơn";
+            tabControl.TabPages.Remove(tabCoQuan);
         }
 
         private void cmbTo_SelectedIndexChanged(object sender, EventArgs e)
@@ -119,7 +122,7 @@ namespace ThuTien.GUI.Doi
             if (cmbNhanVien.Items.Count > 0 && cmbNhanVien.SelectedIndex >= 0)
                 if (tabControl.SelectedTab.Name == "tabTuGia")
                 {
-                    dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNgan("TG", (int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
+                    dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNgan("", (int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
                     CountdgvHDTuGia();
                 }
                 else

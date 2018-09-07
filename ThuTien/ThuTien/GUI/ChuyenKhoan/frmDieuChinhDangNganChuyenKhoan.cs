@@ -39,6 +39,9 @@ namespace ThuTien.GUI.ChuyenKhoan
             dgvHDCoQuan.AutoGenerateColumns = false;
 
             dateGiaiTrach.Value = DateTime.Now;
+
+            tabTuGia.Text = "Hóa Đơn";
+            tabControl.TabPages.Remove(tabCoQuan);
         }
 
         public void CountdgvHDTuGia()
@@ -93,7 +96,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNgan("TG", CNguoiDung.MaND, dateGiaiTrach.Value);
+                dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNgan("", CNguoiDung.MaND, dateGiaiTrach.Value);
                 CountdgvHDTuGia();
             }
             else
@@ -341,12 +344,12 @@ namespace ThuTien.GUI.ChuyenKhoan
             dsBaoCao ds = new dsBaoCao();
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                DataTable dt = _cHoaDon.GetTongDangNgan("TG", CNguoiDung.MaND, dateGiaiTrach.Value);
+                DataTable dt = _cHoaDon.GetTongDangNgan("", CNguoiDung.MaND, dateGiaiTrach.Value);
                 foreach (DataRow item in dt.Rows)
                 {
                     DataRow dr = ds.Tables["PhieuDangNgan"].NewRow();
                     dr["To"] = CNguoiDung.TenTo;
-                    dr["Loai"] = "Tư Gia";
+                    dr["Loai"] = "";
                     dr["NgayDangNgan"] = dateGiaiTrach.Value.Date.ToString("dd/MM/yyyy");
                     dr["TongHD"] = item["TongHD"].ToString();
                     dr["TongGiaBan"] = item["TongGiaBan"].ToString();

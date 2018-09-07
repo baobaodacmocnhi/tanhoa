@@ -49,6 +49,10 @@ namespace ThuTien.GUI.HanhThu
 
                 cmbNhanVien.SelectedValue = CNguoiDung.MaND;
             }
+
+            tabTuGia.Text = "Hóa Đơn";
+            tabControl.TabPages.Remove(tabCoQuan);
+
             btnXem.PerformClick();
         }
 
@@ -249,13 +253,17 @@ namespace ThuTien.GUI.HanhThu
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
                 {
                     DataRow dr = ds.Tables["DSHoaDon"].NewRow();
-                    dr["LoaiBaoCao"] = "TƯ GIA";
+                    dr["LoaiBaoCao"] = "";
                     dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ");
                     dr["Ky"] = item.Cells["Ky_TG"].Value;
                     dr["MLT"] = item.Cells["MLT_TG"].Value.ToString().Insert(4, " ").Insert(2, " ");
                     dr["TongCong"] = item.Cells["TongCong_TG"].Value;
                     dr["SoPhatHanh"] = item.Cells["SoPhatHanh_TG"].Value;
                     dr["SoHoaDon"] = item.Cells["SoHoaDon_TG"].Value;
+                    if (int.Parse(item.Cells["GiaBieu_TG"].Value.ToString()) > 20)
+                        dr["Loai"] = "CQ";
+                    else
+                        dr["Loai"] = "TG";
                     if (CNguoiDung.ToTruong)
                         dr["NhanVien"] = ((TT_NguoiDung)cmbNhanVien.SelectedItem).HoTen;
                     else
@@ -294,9 +302,9 @@ namespace ThuTien.GUI.HanhThu
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
                 if (CNguoiDung.ToTruong)
-                    dgvHDTuGia.DataSource = _cQuetTam.GetDSByMaNVCreatedDate("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()));
+                    dgvHDTuGia.DataSource = _cQuetTam.GetDSByMaNVCreatedDate("", int.Parse(cmbNhanVien.SelectedValue.ToString()));
                 else
-                    dgvHDTuGia.DataSource = _cQuetTam.GetDSByMaNVCreatedDate("TG", CNguoiDung.MaND);
+                    dgvHDTuGia.DataSource = _cQuetTam.GetDSByMaNVCreatedDate("", CNguoiDung.MaND);
                 CountdgvHDTuGia();
             }
             else
@@ -410,7 +418,7 @@ namespace ThuTien.GUI.HanhThu
                     DataRow dr = dsBaoCao.Tables["TamThuChuyenKhoan"].NewRow();
                     dr["TuNgay"] = DateTime.Now.ToString("dd/MM/yyyy");
                     dr["DenNgay"] = DateTime.Now.ToString("dd/MM/yyyy");
-                    dr["LoaiBaoCao"] = "HÓA ĐƠN TƯ GIA";
+                    dr["LoaiBaoCao"] = "HÓA ĐƠN";
                     dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ");
                     dr["HoTen"] = item.Cells["HoTen_TG"].Value.ToString();
                     dr["MLT"] = item.Cells["MLT_TG"].Value.ToString().ToString().Insert(4, " ").Insert(2, " ");
@@ -891,7 +899,7 @@ namespace ThuTien.GUI.HanhThu
                 oSheets = oBook.Worksheets;
                 oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
 
-                XuatExcel((DataTable)dgvHDTuGia.DataSource, oSheet, "TƯ GIA");
+                XuatExcel((DataTable)dgvHDTuGia.DataSource, oSheet, "HÓA ĐƠN");
             }
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
@@ -915,7 +923,7 @@ namespace ThuTien.GUI.HanhThu
                     oSheets = oBook.Worksheets;
                     oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
 
-                    XuatExcel((DataTable)dgvHDCoQuan.DataSource, oSheet, "TƯ GIA");
+                    XuatExcel((DataTable)dgvHDCoQuan.DataSource, oSheet, "CƠ QUAN");
                 }
         }
 

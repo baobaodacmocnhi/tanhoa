@@ -55,6 +55,9 @@ namespace ThuTien.GUI.Quay
             cmbNam.ValueMember = "Nam";
 
             _flagLoadFirst = true;
+
+            tabTuGia.Text = "Hóa Đơn";
+            tabControl.TabPages.Remove(tabCoQuan);
         }
 
         public void CountdgvHDTuGia()
@@ -283,7 +286,7 @@ namespace ThuTien.GUI.Quay
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
                 {
                     DataRow dr = dsBaoCao.Tables["DSHoaDon"].NewRow();
-                    dr["LoaiBaoCao"] = "TG";
+                    dr["LoaiBaoCao"] = "";
                     dr["Dot"] = item.Cells["MLT_TG"].Value.ToString().Substring(0, 2);
                     dr["SoHoaDon"] = item.Cells["SoHoaDon_TG"].Value.ToString();
                     dr["TongCong"] = item.Cells["TongCong_TG"].Value.ToString();
@@ -437,7 +440,7 @@ namespace ThuTien.GUI.Quay
                 ///chọn tất cả các tổ
                 if (cmbTo.SelectedIndex == 0)
                 {
-                    dgvHDTuGia.DataSource = _cQuetGiaoTon.GetDS("TG", dateTu.Value.Date, dateDen.Value.Date);
+                    dgvHDTuGia.DataSource = _cQuetGiaoTon.GetDS("", dateTu.Value.Date, dateDen.Value.Date);
                 }
                 else
                     ///chọn 1 tổ cụ thể
@@ -445,13 +448,13 @@ namespace ThuTien.GUI.Quay
                         ///chọn tất cả nhân viên
                         if (cmbNhanVien.SelectedIndex == 0)
                         {
-                            dgvHDTuGia.DataSource = _cQuetGiaoTon.GetDSByMaTo("TG", int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value.Date, dateDen.Value.Date);
+                            dgvHDTuGia.DataSource = _cQuetGiaoTon.GetDSByMaTo("", int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value.Date, dateDen.Value.Date);
                         }
                         else
                             ///chọn 1 nhân viên cụ thể
                             if (cmbNhanVien.SelectedIndex > 0)
                             {
-                                dgvHDTuGia.DataSource = _cQuetGiaoTon.GetDSByMaNV("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), dateTu.Value.Date, dateDen.Value.Date);
+                                dgvHDTuGia.DataSource = _cQuetGiaoTon.GetDSByMaNV("", int.Parse(cmbNhanVien.SelectedValue.ToString()), dateTu.Value.Date, dateDen.Value.Date);
                             }
                 CountdgvHDTuGia();
             }
@@ -490,13 +493,17 @@ namespace ThuTien.GUI.Quay
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
                 {
                     DataRow dr = ds.Tables["DSHoaDon"].NewRow();
-                    dr["LoaiBaoCao"] = "TƯ GIA";
+                    dr["LoaiBaoCao"] = "";
                     dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ");
                     dr["Ky"] = item.Cells["Ky_TG"].Value;
                     dr["MLT"] = item.Cells["MLT_TG"].Value.ToString().Insert(4, " ").Insert(2, " ");
                     dr["TongCong"] = item.Cells["TongCong_TG"].Value;
                     dr["SoPhatHanh"] = item.Cells["SoPhatHanh_TG"].Value;
                     dr["SoHoaDon"] = item.Cells["SoHoaDon_TG"].Value;
+                    if (int.Parse(item.Cells["GiaBieu"].Value.ToString()) > 20)
+                        dr["Loai"] = "CQ";
+                    else
+                        dr["Loai"] = "TG";
                     dr["NhanVien"] = CNguoiDung.HoTen;
                     ds.Tables["DSHoaDon"].Rows.Add(dr);
                 }

@@ -249,22 +249,22 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["LoaiBaoCao"] = "TẠM THU CHUYỂN KHOẢN";
                     dr["GhiChu"] = "ĐÃ CHUYỂN KHOẢN";
                     dr["DanhBo"] = item.Cells["DanhBo_TT"].Value.ToString().Insert(4, " ").Insert(8, " ");
-                    
                     dr["MLT"] = item.Cells["MLT_TT"].Value.ToString().Insert(4, " ").Insert(2, " ");
                     dr["Ky"] = item.Cells["Ky_TT"].Value.ToString();
                     dr["TongCong"] = item.Cells["TongCong_TT"].Value.ToString();
                     dr["HanhThu"] = item.Cells["HanhThu_TT"].Value.ToString();
                     dr["To"] = item.Cells["To_TT"].Value.ToString();
-                    if (int.Parse(item.Cells["GiaBieu_TT"].Value.ToString()) > 20)
-                    {
-                        dr["Loai"] = "CQ";
-                        dr["HoTen"] = item.Cells["HoTen_TT"].Value.ToString();
-                    }
-                    else
-                    {
-                        dr["Loai"] = "TG";
-                        dr["HoTen"] = item.Cells["DiaChi_TT"].Value.ToString();
-                    }
+                    //if (int.Parse(item.Cells["GiaBieu_TT"].Value.ToString()) > 20)
+                    //{
+                    //    dr["Loai"] = "CQ";
+                    //    dr["HoTen"] = item.Cells["HoTen_TT"].Value.ToString();
+                    //}
+                    //else
+                    //{
+                    //    dr["Loai"] = "TG";
+                    //    dr["HoTen"] = item.Cells["DiaChi_TT"].Value.ToString();
+                    //}
+                    dr["HoTen"] = item.Cells["DiaChi_TT"].Value.ToString();
                     if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_TT"].Value.ToString())==true)
                         dr["LenhHuy"] = true;
                     else
@@ -296,10 +296,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["TongCong"] = item.Cells["TongCong_TT"].Value.ToString();
                     dr["HanhThu"] = item.Cells["HanhThu_TT"].Value.ToString();
                     dr["To"] = item.Cells["To_TT"].Value.ToString();
-                    if (int.Parse(item.Cells["GiaBieu_TT"].Value.ToString()) > 20)
-                        dr["Loai"] = "CQ";
-                    else
-                        dr["Loai"] = "TG";
+                    //if (int.Parse(item.Cells["GiaBieu_TT"].Value.ToString()) > 20)
+                    //    dr["Loai"] = "CQ";
+                    //else
+                    //    dr["Loai"] = "TG";
                     if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_TT"].Value.ToString()))
                         dr["LenhHuy"] = true;
                     ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
@@ -765,10 +765,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["TongCong"] = item.Cells["TongCong_TT"].Value.ToString();
                     dr["HanhThu"] = item.Cells["HanhThu_TT"].Value.ToString();
                     dr["To"] = item.Cells["To_TT"].Value.ToString();
-                    if (int.Parse(item.Cells["GiaBieu_TT"].Value.ToString()) > 20)
-                        dr["Loai"] = "CQ";
-                    else
-                        dr["Loai"] = "TG";
+                    //if (int.Parse(item.Cells["GiaBieu_TT"].Value.ToString()) > 20)
+                    //    dr["Loai"] = "CQ";
+                    //else
+                    //    dr["Loai"] = "TG";
                     if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_TT"].Value.ToString()))
                         dr["LenhHuy"] = true;
 

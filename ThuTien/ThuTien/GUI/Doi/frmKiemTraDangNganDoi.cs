@@ -43,6 +43,9 @@ namespace ThuTien.GUI.Doi
 
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
+
+            tabTuGia.Text = "Hóa Đơn";
+            tabControl.TabPages.Remove(tabCoQuan);
         }
 
         public void CountdgvHDTuGia()
@@ -132,17 +135,17 @@ namespace ThuTien.GUI.Doi
                 {
                     DataTable dt = new DataTable();
 
-                    dt = _cHoaDon.GetTongDangNgan_Doi("TG", lst[0].MaTo, dateTu.Value, dateDen.Value);
+                    dt = _cHoaDon.GetTongDangNgan_Doi("", lst[0].MaTo, dateTu.Value, dateDen.Value);
                     for (int i = 1; i < lst.Count; i++)
                     {
-                        dt.Merge(_cHoaDon.GetTongDangNgan_Doi("TG", lst[i].MaTo, dateTu.Value, dateDen.Value));
+                        dt.Merge(_cHoaDon.GetTongDangNgan_Doi("", lst[i].MaTo, dateTu.Value, dateDen.Value));
                     }
 
                     dgvHDTuGia.DataSource = dt;
                 }
                 else
                 {
-                    dgvHDTuGia.DataSource = _cHoaDon.GetTongDangNgan_Doi("TG", int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
+                    dgvHDTuGia.DataSource = _cHoaDon.GetTongDangNgan_Doi("", int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
                 }
                 CountdgvHDTuGia();
             }
@@ -235,7 +238,7 @@ namespace ThuTien.GUI.Doi
 
         private void dgvHDTuGia_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            dgvNhanVien.DataSource = _cHoaDon.GetTongDangNgan_To("TG", int.Parse(dgvHDTuGia["MaTo_TG",e.RowIndex].Value.ToString()), dateTu.Value, dateDen.Value);
+            dgvNhanVien.DataSource = _cHoaDon.GetTongDangNgan_To("", int.Parse(dgvHDTuGia["MaTo_TG",e.RowIndex].Value.ToString()), dateTu.Value, dateDen.Value);
         }
 
         private void dgvHDCoQuan_CellContentClick(object sender, DataGridViewCellEventArgs e)

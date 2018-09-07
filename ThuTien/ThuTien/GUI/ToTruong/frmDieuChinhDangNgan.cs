@@ -49,6 +49,9 @@ namespace ThuTien.GUI.ToTruong
             lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
 
             dateGiaiTrach.Value = DateTime.Now;
+
+            tabTuGia.Text = "Hóa Đơn";
+            tabControl.TabPages.Remove(tabCoQuan);
         }
 
         public void CountdgvHDTuGia()
@@ -105,7 +108,7 @@ namespace ThuTien.GUI.ToTruong
         {
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNgan("TG", (int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
+                dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNgan("", (int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
                 CountdgvHDTuGia();
             }
             else
@@ -413,12 +416,12 @@ namespace ThuTien.GUI.ToTruong
             dsBaoCao ds = new dsBaoCao();
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                DataTable dt = _cHoaDon.GetTongDangNgan("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrach.Value);
+                DataTable dt = _cHoaDon.GetTongDangNgan("", int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrach.Value);
                 foreach (DataRow item in dt.Rows)
                 {
                     DataRow dr = ds.Tables["PhieuDangNgan"].NewRow();
                     dr["To"] = CNguoiDung.TenTo;
-                    dr["Loai"] = "Tư Gia";
+                    dr["Loai"] = "";
                     dr["NgayDangNgan"] = dateGiaiTrach.Value.Date.ToString("dd/MM/yyyy");
                     dr["TongHD"] = item["TongHD"].ToString();
                     dr["TongGiaBan"] = item["TongGiaBan"].ToString();

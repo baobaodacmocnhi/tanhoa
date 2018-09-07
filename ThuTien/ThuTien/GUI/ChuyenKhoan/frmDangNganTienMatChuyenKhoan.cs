@@ -29,8 +29,12 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             dgvHDTuGia.AutoGenerateColumns = false;
             dgvHDCoQuan.AutoGenerateColumns = false;
+
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
+
+            tabTuGia.Text = "Hóa Đơn";
+            tabControl.TabPages.Remove(tabCoQuan);
         }
 
         public void CountdgvHDTuGia()
@@ -144,7 +148,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganTienMatChuyenKhoan("TG", dateTu.Value, dateDen.Value);
+                dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganTienMatChuyenKhoan("", dateTu.Value, dateDen.Value);
                 CountdgvHDTuGia();
             }
             else

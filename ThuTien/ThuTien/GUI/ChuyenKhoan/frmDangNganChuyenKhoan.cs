@@ -49,6 +49,9 @@ namespace ThuTien.GUI.ChuyenKhoan
 
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
+
+            tabTuGia.Text = "Hóa Đơn";
+            tabControl.TabPages.Remove(tabCoQuan);
         }
 
         public void CountdgvHDTuGia()
@@ -148,7 +151,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganChuyenKhoan("TG", dateTu.Value, dateDen.Value);
+                dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganChuyenKhoan("", dateTu.Value, dateDen.Value);
                 CountdgvHDTuGia();
             }
             else
@@ -306,12 +309,12 @@ namespace ThuTien.GUI.ChuyenKhoan
             dsBaoCao ds = new dsBaoCao();
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                DataTable dt = _cHoaDon.GetTongDangNgan("TG", CNguoiDung.MaND, dateDen.Value);
+                DataTable dt = _cHoaDon.GetTongDangNgan("", CNguoiDung.MaND, dateDen.Value);
                 foreach (DataRow item in dt.Rows)
                 {
                     DataRow dr = ds.Tables["PhieuDangNgan"].NewRow();
                     dr["To"] = CNguoiDung.TenTo;
-                    dr["Loai"] = "Tư Gia";
+                    dr["Loai"] = "";
                     dr["NgayDangNgan"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
                     dr["TongHD"] = item["TongHD"].ToString();
                     dr["TongGiaBan"] = item["TongGiaBan"].ToString();
@@ -363,7 +366,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
                 {
                     DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
-                    dr["LoaiBaoCao"] = "CHUYỂN KHOẢN TƯ GIA";
+                    dr["LoaiBaoCao"] = "CHUYỂN KHOẢN";
                     dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ");
                     dr["HoTen"] = item.Cells["HoTen_TG"].Value;
                     dr["Ky"] = item.Cells["Ky_TG"].Value;
@@ -372,7 +375,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["SoHoaDon"] = item.Cells["SoHoaDon_TG"].Value;
                     dr["HanhThu"] = item.Cells["HanhThu_TG"].Value.ToString();
                     dr["To"] = item.Cells["To_TG"].Value.ToString();
-                    dr["Loai"] = "TG";
+                    dr["Loai"] = "";
                     ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
                 }
             }
@@ -542,7 +545,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 oSheets = oBook.Worksheets;
                 oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
 
-                XuatExcel(dt, oSheet, "ĐĂNG NGÂN TƯ GIA");
+                XuatExcel(dt, oSheet, "ĐĂNG NGÂN");
             }
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
@@ -624,9 +627,13 @@ namespace ThuTien.GUI.ChuyenKhoan
             cl12.Value2 = "Ngân Hàng";
             cl12.ColumnWidth = 20;
 
+            Microsoft.Office.Interop.Excel.Range cl13 = oSheet.get_Range("M1", "M1");
+            cl13.Value2 = "Loại";
+            cl13.ColumnWidth = 5;
+
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
-            object[,] arr = new object[dt.Rows.Count, 12];
+            object[,] arr = new object[dt.Rows.Count, 13];
 
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
             for (int i = 0; i < dt.Rows.Count; i++)
@@ -645,6 +652,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                 arr[i, 9] = dr["HanhThu"].ToString();
                 arr[i, 10] = dr["To"].ToString();
                 arr[i, 11] = _cTamThu.GetTenNganHang(dr["SoHoaDon"].ToString());
+                if (int.Parse(dr["GiaBieu"].ToString()) > 20)
+                    arr[i, 12] = "CQ";
+                else
+                    arr[i, 12] = "TG";
             }
 
             //Thiết lập vùng điền dữ liệu
@@ -652,7 +663,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             int columnStart = 1;
 
             int rowEnd = rowStart + dt.Rows.Count - 1;
-            int columnEnd = 12;
+            int columnEnd = 13;
 
             // Ô bắt đầu điền dữ liệu
             Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
@@ -697,7 +708,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
                         dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                         dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-                        dr["LoaiBaoCao"] = "ĐĂNG NGÂN KHÔNG CÓ TẠM THU TƯ GIA";
+                        dr["LoaiBaoCao"] = "ĐĂNG NGÂN KHÔNG CÓ TẠM THU";
                         dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ");
                         dr["HoTen"] = item.Cells["HoTen_TG"].Value.ToString();
                         dr["MLT"] = item.Cells["MLT_TG"].Value.ToString().Insert(4, " ").Insert(2, " ");
@@ -705,7 +716,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dr["TongCong"] = item.Cells["TongCong_TG"].Value.ToString();
                         dr["HanhThu"] = item.Cells["HanhThu_TG"].Value.ToString();
                         dr["To"] = item.Cells["To_TG"].Value.ToString();
-                        dr["Loai"] = "TG";
+                        dr["Loai"] = "";
                         ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
                     }
             }
@@ -921,7 +932,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dr["MLT"] = item.Cells["MLT_TG"].Value.ToString().Insert(4, " ").Insert(2, " ");
                         dr["HanhThu"] = item.Cells["HanhThu_TG"].Value.ToString();
                         dr["To"] = item.Cells["To_TG"].Value.ToString();
-                        dr["Loai"] = "TG";
+                        dr["Loai"] = "";
                         ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
                     }
             }

@@ -54,6 +54,9 @@ namespace ThuTien.GUI.ToTruong
             cmbNhanVien.ValueMember = "MaND";
 
             cmbCucChia.SelectedIndex = 0;
+
+            tabTuGia.Text = "Hóa Đơn";
+            tabControl.TabPages.Remove(tabCoQuan);
         }
 
         public void Clear()
@@ -146,7 +149,7 @@ namespace ThuTien.GUI.ToTruong
                 {
                     if (tabControl.SelectedTab.Name == "tabTuGia")
                     {
-                        dgvHDTuGia.DataSource = _cHoaDon.GetTongGiaoByNamKyDot("TG", (int)cmbTo.SelectedValue, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                        dgvHDTuGia.DataSource = _cHoaDon.GetTongGiaoByNamKyDot("", (int)cmbTo.SelectedValue, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
                         CountdgvHDTuGia();
                     }
                     else
@@ -163,7 +166,7 @@ namespace ThuTien.GUI.ToTruong
                 {
                     if (tabControl.SelectedTab.Name == "tabTuGia")
                     {
-                        dgvHDTuGia.DataSource = _cHoaDon.GetTongGiaoByNamKyDot("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                        dgvHDTuGia.DataSource = _cHoaDon.GetTongGiaoByNamKyDot("", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
                         CountdgvHDTuGia();
                     }
                     else
@@ -284,10 +287,10 @@ namespace ThuTien.GUI.ToTruong
                     {
                         if (int.Parse(txtTuSoPhatHanh.Text.Trim()) <= int.Parse(txtDenSoPhatHanh.Text.Trim()))
                             if (!_cHoaDon.CheckGiaoBySoPhatHanhsNam(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString())))
-                                if (_cHoaDon.CheckSoPhatHanhByNamKyDot("TG", CNguoiDung.MaTo, decimal.Parse(txtTuSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()))
-                                    && _cHoaDon.CheckSoPhatHanhByNamKyDot("TG", CNguoiDung.MaTo, decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
+                                if (_cHoaDon.CheckSoPhatHanhByNamKyDot("", CNguoiDung.MaTo, decimal.Parse(txtTuSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()))
+                                    && _cHoaDon.CheckSoPhatHanhByNamKyDot("", CNguoiDung.MaTo, decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
                                 {
-                                    if (_cHoaDon.ThemChia("TG", CNguoiDung.MaTo, int.Parse(cmbCucChia.SelectedItem.ToString()), decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()),
+                                    if (_cHoaDon.ThemChia("", CNguoiDung.MaTo, int.Parse(cmbCucChia.SelectedItem.ToString()), decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()),
                                         int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(cmbNhanVien.SelectedValue.ToString())))
                                     {
                                         btnXem.PerformClick();
@@ -348,7 +351,7 @@ namespace ThuTien.GUI.ToTruong
                         {
                             //if (!_cHoaDon.CheckDangNganBySoPhatHanhsNam(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbNhanVien.SelectedValue.ToString())))
                             //{
-                                if (_cHoaDon.XoaChia("TG", CNguoiDung.MaTo, decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()),
+                                if (_cHoaDon.XoaChia("", CNguoiDung.MaTo, decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()),
                                                     int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
                                 {
                                     btnXem.PerformClick();
@@ -396,7 +399,7 @@ namespace ThuTien.GUI.ToTruong
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
                 {
                     DataRow dr = ds.Tables["ChiaHoaDon"].NewRow();
-                    dr["LoaiBaoCao"] = "TƯ GIA";
+                    dr["LoaiBaoCao"] = "";
                     dr["To"] = CNguoiDung.TenTo;
                     dr["Dot"] = cmbDot.SelectedItem.ToString();
                     dr["Ky"] = cmbKy.SelectedItem.ToString();

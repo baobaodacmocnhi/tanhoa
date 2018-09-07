@@ -32,6 +32,7 @@
               <xs:element name="HanhThu" msprop:Generator_ColumnVarNameInTable="columnHanhThu" msprop:Generator_ColumnPropNameInRow="HanhThu" msprop:Generator_ColumnPropNameInTable="HanhThuColumn" msprop:Generator_UserColumnName="HanhThu" type="xs:string" minOccurs="0" />
               <xs:element name="NhanVien" msprop:Generator_ColumnVarNameInTable="columnNhanVien" msprop:Generator_ColumnPropNameInRow="NhanVien" msprop:Generator_ColumnPropNameInTable="NhanVienColumn" msprop:Generator_UserColumnName="NhanVien" type="xs:string" minOccurs="0" />
               <xs:element name="NgayLap" msprop:Generator_ColumnVarNameInTable="columnNgayLap" msprop:Generator_ColumnPropNameInRow="NgayLap" msprop:Generator_ColumnPropNameInTable="NgayLapColumn" msprop:Generator_UserColumnName="NgayLap" type="xs:string" minOccurs="0" />
+              <xs:element name="Loai" msprop:Generator_ColumnVarNameInTable="columnLoai" msprop:Generator_ColumnPropNameInRow="Loai" msprop:Generator_ColumnPropNameInTable="LoaiColumn" msprop:Generator_UserColumnName="Loai" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

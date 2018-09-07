@@ -107,17 +107,17 @@ namespace ThuTien.GUI.HanhThu
             {
                 if (CNguoiDung.ToTruong)
                 {
-                    dgvTongHD.DataSource = _cHoaDon.GetTongTGByMaNVNamKyDot(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
-                    dgvHDDaThuDum.DataSource = _cHoaDon.GetTongDangNgan("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
-                    dgvHDDaThu.DataSource = _cHoaDon.GetDSDangNganHanhThuTG(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
-                    dgvHDChuaThu.DataSource = _cHoaDon.GetDSTon_NV("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), 1);
+                    dgvTongHD.DataSource = _cHoaDon.GetTongByMaNVNamKyDot(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                    dgvHDDaThuDum.DataSource = _cHoaDon.GetTongDangNgan("", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                    dgvHDDaThu.DataSource = _cHoaDon.GetDSDangNganHanhThu(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                    dgvHDChuaThu.DataSource = _cHoaDon.GetDSTon_NV("", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), 1);
                 }
                 else
                 {
-                    dgvTongHD.DataSource = _cHoaDon.GetTongTGByMaNVNamKyDot(CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
-                    dgvHDDaThuDum.DataSource = _cHoaDon.GetTongDangNgan("TG", CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
-                    dgvHDDaThu.DataSource = _cHoaDon.GetDSDangNganHanhThuTG(CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
-                    dgvHDChuaThu.DataSource = _cHoaDon.GetDSTon_NV("TG", CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), 1);
+                    dgvTongHD.DataSource = _cHoaDon.GetTongByMaNVNamKyDot(CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                    dgvHDDaThuDum.DataSource = _cHoaDon.GetTongDangNgan("", CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                    dgvHDDaThu.DataSource = _cHoaDon.GetDSDangNganHanhThu(CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                    dgvHDChuaThu.DataSource = _cHoaDon.GetDSTon_NV("", CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), 1);
                 }
                 LoadDataGridView();
             }
@@ -482,19 +482,19 @@ namespace ThuTien.GUI.HanhThu
             //_flagNgayDangNgan = true;
             cmbKy.SelectedIndex = -1;
             cmbDot.SelectedIndex = -1;
-            dgvHDDaThu.DataSource = _cHoaDon.GetDSDangNganHanhThu("TG", CNguoiDung.MaND, dateDangNgan.Value);
+            dgvHDDaThu.DataSource = _cHoaDon.GetDSDangNganHanhThu("", CNguoiDung.MaND, dateDangNgan.Value);
             dgvHDChuaThu.Rows.Clear();
         }
 
         private void btnInPhieu_Click(object sender, EventArgs e)
         {
             dsBaoCao ds = new dsBaoCao();
-            DataTable dt = _cHoaDon.GetTongDangNgan("TG", CNguoiDung.MaND, dateDangNgan.Value);
+            DataTable dt = _cHoaDon.GetTongDangNgan("", CNguoiDung.MaND, dateDangNgan.Value);
             foreach (DataRow item in dt.Rows)
             {
                 DataRow dr = ds.Tables["PhieuDangNgan"].NewRow();
                 dr["To"] = CNguoiDung.TenTo;
-                dr["Loai"] = "Tư Gia";
+                dr["Loai"] = "";
                 dr["NgayDangNgan"] = dateDangNgan.Value.Date.ToString("dd/MM/yyyy");
                 dr["TongHD"] = item["TongHD"].ToString();
                 dr["TongGiaBan"] = item["TongGiaBan"].ToString();
@@ -534,10 +534,10 @@ namespace ThuTien.GUI.HanhThu
         {
             if (dgvTongHD.Columns[e.ColumnIndex].Name == "Loai" && e.Value != null)
             {
-                if (bool.Parse(e.Value.ToString()))
-                    e.Value = "TG";
-                else
-                    e.Value = "CQ";
+                //if (bool.Parse(e.Value.ToString()))
+                //    e.Value = "TG";
+                //else
+                //    e.Value = "CQ";
             }
             if (dgvTongHD.Columns[e.ColumnIndex].Name == "TongHD" && e.Value != null)
             {
@@ -721,7 +721,7 @@ namespace ThuTien.GUI.HanhThu
                 if (MessageBox.Show("Bạn có chắc chắn Xóa Đăng Ngân Năm " + cmbNam.SelectedValue.ToString() + " Kỳ " + cmbKy.SelectedItem.ToString() + " Đợt " + cmbDot.SelectedItem.ToString(), "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     if (_cHoaDon.CheckCoTheXoaDangNgan(CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
                     {
-                        DataTable dt = _cHoaDon.GetDSDangNganHanhThuTG(CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                        DataTable dt = _cHoaDon.GetDSDangNganHanhThu(CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
                         foreach (DataRow item in dt.Rows)
                         {
                             _cHoaDon.XoaDangNgan("HanhThu", item["SoHoaDon"].ToString(), CNguoiDung.MaND);

@@ -117,6 +117,33 @@ namespace ThuTien.DAL.Quay
                                 };
                     return LINQToDataTable(query);
                 }
+                else
+                    if (Loai == "")
+                    {
+                        var query = from itemQT in _db.TT_QuetGiaoTons
+                                    join itemHD in _db.HOADONs on itemQT.SoHoaDon equals itemHD.SOHOADON
+                                    join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                                    from itemtableND in tableND.DefaultIfEmpty()
+                                    where itemQT.CreateDate.Value.Date >= FromCreatedDate.Date && itemQT.CreateDate.Value.Date <= ToCreatedDate.Date
+                                    orderby itemHD.MALOTRINH ascending
+                                    select new
+                                    {
+                                        Loai = "",
+                                        itemQT.ID,
+                                        itemQT.SoHoaDon,
+                                        DanhBo = itemHD.DANHBA,
+                                        HoTen = itemHD.TENKH,
+                                        DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                                        Ky = itemHD.KY + "/" + itemHD.NAM,
+                                        MLT = itemHD.MALOTRINH,
+                                        itemHD.SOPHATHANH,
+                                        itemHD.TONGCONG,
+                                        GiaBieu = itemHD.GB,
+                                        HanhThu = itemtableND.HoTen,
+                                        To = itemtableND.TT_To.TenTo,
+                                    };
+                        return LINQToDataTable(query);
+                    }
             return null;
         }
 
@@ -179,6 +206,35 @@ namespace ThuTien.DAL.Quay
                                 };
                     return LINQToDataTable(query);
                 }
+                else
+            if (Loai == "")
+            {
+                var query = from itemQT in _db.TT_QuetGiaoTons
+                            join itemHD in _db.HOADONs on itemQT.SoHoaDon equals itemHD.SOHOADON
+                            join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                            && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                            && itemQT.CreateDate.Value.Date >= FromCreatedDate.Date && itemQT.CreateDate.Value.Date <= ToCreatedDate.Date
+                            orderby itemHD.MALOTRINH ascending
+                            select new
+                            {
+                                Loai = "",
+                                itemQT.ID,
+                                itemQT.SoHoaDon,
+                                DanhBo = itemHD.DANHBA,
+                                HoTen = itemHD.TENKH,
+                                DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                                Ky = itemHD.KY + "/" + itemHD.NAM,
+                                MLT = itemHD.MALOTRINH,
+                                itemHD.SOPHATHANH,
+                                itemHD.TONGCONG,
+                                GiaBieu = itemHD.GB,
+                                HanhThu = itemtableND.HoTen,
+                                To = itemtableND.TT_To.TenTo,
+                            };
+                return LINQToDataTable(query);
+            }
             return null;
         }
 
@@ -237,6 +293,33 @@ namespace ThuTien.DAL.Quay
                                 };
                     return LINQToDataTable(query);
                 }
+                else
+                    if (Loai == "")
+                    {
+                        var query = from itemQT in _db.TT_QuetGiaoTons
+                                    join itemHD in _db.HOADONs on itemQT.SoHoaDon equals itemHD.SOHOADON
+                                    join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                                    from itemtableND in tableND.DefaultIfEmpty()
+                                    where itemQT.CreateDate.Value.Date >= FromCreatedDate.Date && itemQT.CreateDate.Value.Date <= ToCreatedDate.Date && itemHD.MaNV_HanhThu == MaNV_HanhThu
+                                    orderby itemHD.MALOTRINH ascending
+                                    select new
+                                    {
+                                        Loai = "",
+                                        itemQT.ID,
+                                        itemQT.SoHoaDon,
+                                        DanhBo = itemHD.DANHBA,
+                                        HoTen = itemHD.TENKH,
+                                        DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                                        Ky = itemHD.KY + "/" + itemHD.NAM,
+                                        MLT = itemHD.MALOTRINH,
+                                        itemHD.SOPHATHANH,
+                                        itemHD.TONGCONG,
+                                        GiaBieu = itemHD.GB,
+                                        HanhThu = itemtableND.HoTen,
+                                        To = itemtableND.TT_To.TenTo,
+                                    };
+                        return LINQToDataTable(query);
+                    }
             return null;
         }
 

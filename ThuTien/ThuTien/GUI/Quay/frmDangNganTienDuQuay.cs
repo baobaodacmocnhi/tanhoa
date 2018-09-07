@@ -27,7 +27,14 @@ namespace ThuTien.GUI.Quay
 
         private void frmDangNganTienDuQuay_Load(object sender, EventArgs e)
         {
+            dgvHDTuGia.AutoGenerateColumns = false;
+            dgvHDCoQuan.AutoGenerateColumns = false;
 
+            dateTu.Value = DateTime.Now;
+            dateDen.Value = DateTime.Now;
+
+            tabTuGia.Text = "Hóa Đơn";
+            tabControl.TabPages.Remove(tabCoQuan);
         }
 
         public void CountdgvHDTuGia()
@@ -348,7 +355,7 @@ namespace ThuTien.GUI.Quay
         {
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganQuay("TG", dateTu.Value, dateDen.Value);
+                dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganQuay("", dateTu.Value, dateDen.Value);
                 CountdgvHDTuGia();
                 //foreach (DataGridViewRow item in dgvHDTuGia.Rows)
                 //{

@@ -233,8 +233,8 @@ namespace ThuTien.GUI.DongNuoc
 
         private void btnInTB_Click(object sender, EventArgs e)
         {
-            PrintDialog printDialog = new PrintDialog();
-            if (printDialog.ShowDialog() == DialogResult.OK)
+            //PrintDialog printDialog = new PrintDialog();
+            //if (printDialog.ShowDialog() == DialogResult.OK)
             {
                 dsBaoCao dsBaoCao = new dsBaoCao();
                 DataTable dt = ((DataTable)gridControl.DataSource).DefaultView.Table;
@@ -277,24 +277,33 @@ namespace ThuTien.GUI.DongNuoc
 
                         dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
 
-                        ReportDocument rpt = new ReportDocument();
-                        if (radA4.Checked == true)
-                            rpt = new rptTBDongNuocPhotoA4();
-                        else
-                            if (radA5.Checked == true)
-                                rpt = new rptTBDongNuocPhotoA5();
-                        rpt.SetDataSource(dsBaoCao);
-                        //frmBaoCao frm = new frmBaoCao(rpt);
-                        //frm.ShowDialog();
-                        printDialog.AllowSomePages = true;
-                        printDialog.ShowHelp = true;
+                        //ReportDocument rpt = new ReportDocument();
+                        //if (radA4.Checked == true)
+                        //    rpt = new rptTBDongNuocPhotoA4();
+                        //else
+                        //    if (radA5.Checked == true)
+                        //        rpt = new rptTBDongNuocPhotoA5();
+                        //rpt.SetDataSource(dsBaoCao);
+
+                        //printDialog.AllowSomePages = true;
+                        //printDialog.ShowHelp = true;
 
                         //rpt.PrintOptions.PaperOrientation = rpt.PrintOptions.PaperOrientation;
                         //rpt.PrintOptions.PaperSize = rpt.PrintOptions.PaperSize;
-                        rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+                        //rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
 
-                        rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
+                        //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, true, 0, 0);
+                        //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
                     }
+                ReportDocument rpt = new ReportDocument();
+                if (radA4.Checked == true)
+                    rpt = new rptTBDongNuocPhotoA4();
+                else
+                    if (radA5.Checked == true)
+                        rpt = new rptTBDongNuocPhotoA5();
+                rpt.SetDataSource(dsBaoCao);
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.ShowDialog();
             }
         }
 
