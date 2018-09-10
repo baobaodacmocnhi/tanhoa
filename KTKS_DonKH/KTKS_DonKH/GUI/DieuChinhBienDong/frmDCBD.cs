@@ -627,7 +627,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (_cDCBD.ThemDCBD(ctdcbd))
                     {
                         if (_dontu_ChiTiet != null)
-                            _cDonTu.Them("Điều Chỉnh", "Đã Điều Chỉnh Biến Động", _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
+                            _cDonTu.Them_LichSu("Điều Chỉnh", "Đã Điều Chỉnh Biến Động", _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
                         MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
                         txtMaDonCu.Focus();

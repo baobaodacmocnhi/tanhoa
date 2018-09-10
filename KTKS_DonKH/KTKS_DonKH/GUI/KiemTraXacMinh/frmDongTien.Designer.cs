@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbTheoYeuCau = new System.Windows.Forms.Label();
             this.txtTheoYeuCau = new System.Windows.Forms.TextBox();
             this.cmbTinhTrangDHN = new System.Windows.Forms.ComboBox();
@@ -90,6 +90,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtGhiChuNoiDungXuLy = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.chkKhongLienHe = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKetQuaKiemTra)).BeginInit();
             this.groupBoxDongTien.SuspendLayout();
@@ -374,6 +375,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.chkKhongLienHe);
             this.groupBox2.Controls.Add(this.chkMoNuoc);
             this.groupBox2.Controls.Add(this.chkDutChiGoc);
             this.groupBox2.Controls.Add(this.cmbTinhTrangDHN);
@@ -479,14 +481,14 @@
             // 
             this.dgvDSKetQuaKiemTra.AllowUserToAddRows = false;
             this.dgvDSKetQuaKiemTra.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSKetQuaKiemTra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSKetQuaKiemTra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDSKetQuaKiemTra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSKetQuaKiemTra.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaCTKTXM,
@@ -744,6 +746,16 @@
             this.label8.TabIndex = 59;
             this.label8.Text = "Ghi Chú Nội Dung Xử Lý";
             // 
+            // chkKhongLienHe
+            // 
+            this.chkKhongLienHe.AutoSize = true;
+            this.chkKhongLienHe.Location = new System.Drawing.Point(956, 135);
+            this.chkKhongLienHe.Name = "chkKhongLienHe";
+            this.chkKhongLienHe.Size = new System.Drawing.Size(190, 20);
+            this.chkKhongLienHe.TabIndex = 110;
+            this.chkKhongLienHe.Text = "Khách Hàng Không Liên Hệ";
+            this.chkKhongLienHe.UseVisualStyleBackColor = true;
+            // 
             // frmDongTien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -849,5 +861,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtGhiChuNoiDungXuLy;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox chkKhongLienHe;
     }
 }

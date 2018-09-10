@@ -444,7 +444,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     if (_cTTTL.ThemCT(cttttl))
                     {
                         if (_dontu_ChiTiet != null)
-                            _cDonTu.Them("Thư Trả Lời", "Đã Thảo Thư Trả Lời", _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
+                            _cDonTu.Them_LichSu("Thư Trả Lời", "Đã Gửi Thư Trả Lời", _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
                         MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
                         txtMaDonCu.Focus();

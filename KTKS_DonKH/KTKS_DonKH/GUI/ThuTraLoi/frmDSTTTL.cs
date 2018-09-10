@@ -126,11 +126,11 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 printDialog.AllowSomePages = true;
                                 printDialog.ShowHelp = true;
 
-                                rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
-                                rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                                //rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
                                 rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
 
-                                rpt.PrintToPrinter(1, false, 0, 0);
+                                rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
                             }
                             else
                             {
@@ -140,11 +140,11 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 printDialog.AllowSomePages = true;
                                 printDialog.ShowHelp = true;
 
-                                rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
-                                rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                                //rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
                                 rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
 
-                                rpt.PrintToPrinter(1, false, 0, 0);
+                                rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
                             }
                         }
                 }

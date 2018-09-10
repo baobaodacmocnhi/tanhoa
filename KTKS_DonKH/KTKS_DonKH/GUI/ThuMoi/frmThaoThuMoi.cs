@@ -363,6 +363,8 @@ namespace KTKS_DonKH.GUI.ThuMoi
 
                     if (_cThuMoi.them_ChiTiet(entity))
                     {
+                        if (_dontu_ChiTiet != null)
+                            _cDonTu.Them_LichSu("Thư Mời", "Đã Gửi Thư Mời", _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
                     }

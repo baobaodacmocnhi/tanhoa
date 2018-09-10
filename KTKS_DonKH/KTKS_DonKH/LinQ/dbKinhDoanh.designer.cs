@@ -28896,6 +28896,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _NoiDungBaoThay;
 		
+		private bool _KhongLienHe;
+		
 		private System.Nullable<decimal> _MaKTXM;
 		
 		private System.Nullable<int> _STT;
@@ -29016,6 +29018,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDinhMucMoiChanged();
     partial void OnNoiDungBaoThayChanging(string value);
     partial void OnNoiDungBaoThayChanged();
+    partial void OnKhongLienHeChanging(bool value);
+    partial void OnKhongLienHeChanged();
     partial void OnMaKTXMChanging(System.Nullable<decimal> value);
     partial void OnMaKTXMChanged();
     partial void OnSTTChanging(System.Nullable<int> value);
@@ -29944,6 +29948,26 @@ namespace KTKS_DonKH.LinQ
 					this._NoiDungBaoThay = value;
 					this.SendPropertyChanged("NoiDungBaoThay");
 					this.OnNoiDungBaoThayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KhongLienHe", DbType="Bit NOT NULL")]
+		public bool KhongLienHe
+		{
+			get
+			{
+				return this._KhongLienHe;
+			}
+			set
+			{
+				if ((this._KhongLienHe != value))
+				{
+					this.OnKhongLienHeChanging(value);
+					this.SendPropertyChanging();
+					this._KhongLienHe = value;
+					this.SendPropertyChanged("KhongLienHe");
+					this.OnKhongLienHeChanged();
 				}
 			}
 		}

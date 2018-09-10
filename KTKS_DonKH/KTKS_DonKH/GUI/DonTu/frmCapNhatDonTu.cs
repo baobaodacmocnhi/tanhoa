@@ -63,6 +63,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         txtDanhBo.Text = entity.DonTu_ChiTiets.SingleOrDefault().DanhBo.Insert(7, " ").Insert(4, " ");
                     txtHopDong.Text = entity.DonTu_ChiTiets.SingleOrDefault().HopDong;
                     txtDienThoai.Text = entity.DonTu_ChiTiets.SingleOrDefault().DienThoai;
+                    txtNguoiBao.Text = entity.DonTu_ChiTiets.SingleOrDefault().NguoiBao;
                     txtHoTen.Text = entity.DonTu_ChiTiets.SingleOrDefault().HoTen;
                     txtDiaChi.Text = entity.DonTu_ChiTiets.SingleOrDefault().DiaChi;
                     if (entity.GiaBieu != null)
@@ -196,7 +197,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                             {
                                                 entity.ID_KTXM = int.Parse(chkcmbNoiNhanKTXM.Properties.Items[j].Value.ToString());
                                                 entity.KTXM = chkcmbNoiNhanKTXM.Properties.Items[j].ToString();
-                                                _cDonTu.Them(entity);
+                                                _cDonTu.Them_LichSu(entity);
                                             }
                                     }
                                     else
@@ -213,7 +214,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                             entity.STT = 1;
                                         else
                                             entity.STT = _dontu_ChiTiet.STT;
-                                        _cDonTu.Them(entity);
+                                        _cDonTu.Them_LichSu(entity);
                                     }
                                     flag = true;
                                     chkcmbNoiNhan.Properties.Items[i].CheckState = CheckState.Unchecked;
@@ -232,7 +233,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                     entity.STT = 1;
                                 else
                                     entity.STT = _dontu_ChiTiet.STT;
-                                _cDonTu.Them(entity);
+                                _cDonTu.Them_LichSu(entity);
                             }
                         }
                         LoadLichSu();
@@ -269,7 +270,7 @@ namespace KTKS_DonKH.GUI.DonTu
         {
             if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                if (_cDonTu.Xoa(_cDonTu.get_LichSu(int.Parse(dgvLichSuDonTu.CurrentRow.Cells["ID"].Value.ToString()))))
+                if (_cDonTu.Xoa_LichSu(_cDonTu.get_LichSu(int.Parse(dgvLichSuDonTu.CurrentRow.Cells["ID"].Value.ToString()))))
                 {
                     LoadLichSu();
                 }

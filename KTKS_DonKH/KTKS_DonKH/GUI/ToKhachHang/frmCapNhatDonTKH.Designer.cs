@@ -824,6 +824,7 @@
             this.chkKhongLienHe.TabIndex = 109;
             this.chkKhongLienHe.Text = "Khách Hàng Không Liên Hệ";
             this.chkKhongLienHe.UseVisualStyleBackColor = true;
+            this.chkKhongLienHe.Visible = false;
             // 
             // frmCapNhatDonTKH
             // 

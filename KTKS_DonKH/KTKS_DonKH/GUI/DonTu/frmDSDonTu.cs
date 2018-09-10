@@ -140,6 +140,11 @@ namespace KTKS_DonKH.GUI.DonTu
             }
         }
 
+        private void btnInDSDonKH_Click(object sender, EventArgs e)
+        {
+
+        }
+
         
     }
 }

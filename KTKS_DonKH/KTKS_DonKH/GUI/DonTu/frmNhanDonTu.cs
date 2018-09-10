@@ -42,6 +42,7 @@ namespace KTKS_DonKH.GUI.DonTu
         private void frmDonTu_Load(object sender, EventArgs e)
         {
             dgvDanhBo.AutoGenerateColumns = false;
+            dgvLichSuNhanDon.AutoGenerateColumns = false;
 
             DataTable dt = _cNhomDon.GetDS("DieuChinh");
             chkcmbDieuChinh.Properties.DataSource = dt;
@@ -78,6 +79,7 @@ namespace KTKS_DonKH.GUI.DonTu
             txtDiaChi.Text = entity.SO + " " + entity.DUONG + _cDocSo.GetPhuongQuan(entity.Quan, entity.Phuong);
             txtGiaBieu.Text = entity.GB.ToString();
             txtDinhMuc.Text = entity.DM.ToString();
+            dgvLichSuNhanDon.DataSource = _cDonTu.getDSByDanhBo(entity.DANHBA);
         }
 
         public void LoadDonTu(LinQ.DonTu entity)
@@ -808,6 +810,14 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 e.Handled = true;
             }
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            if (txtDanhBo_TimKiem.Text.Trim() != "")
+                dgvLichSuNhanDon.DataSource = _cDocSo.TimKiem(txtDanhBo_TimKiem.Text.Trim());
+            else
+                dgvLichSuNhanDon.DataSource = _cDocSo.TimKiem(txtHoTen_TimKiem.Text.Trim(), txtSoNha_TimKiem.Text.Trim(), txtTenDuong_TimKiem.Text.Trim());
         }
     }
 }

@@ -18,6 +18,7 @@ using KTKS_DonKH.DAL.DonTu;
 using KTKS_DonKH.DAL.TruyThu;
 using KTKS_DonKH.GUI.ToXuLy;
 using KTKS_DonKH.GUI.ToBamChi;
+using KTKS_DonKH.DAL.KiemTraXacMinh;
 
 namespace KTKS_DonKH.GUI.ToKhachHang
 {
@@ -34,6 +35,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
         CTruyThuTienNuoc _cTTTN = new CTruyThuTienNuoc();
+        CKTXM _cKTXM = new CKTXM();
         decimal _MaDonTKH = -1;
 
         public frmNhanDonTKH()
@@ -546,7 +548,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                                 return;
                         }
 
-                        if (_cDonKH.checkKhongLienHe(txtDanhBo.Text.Trim().Replace(" ", "")) == true)
+                        if (_cKTXM.checkKhongLienHe(txtDanhBo.Text.Trim().Replace(" ", "")) == true)
                         {
                             if (MessageBox.Show("Danh Bộ này Đã có THƯ MỜI ĐỊNH MỨC, nhưng không liên hệ\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                                 return;

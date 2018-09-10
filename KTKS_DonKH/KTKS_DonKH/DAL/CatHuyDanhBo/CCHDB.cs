@@ -980,6 +980,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                         + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
                         + " join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
                         + " where CAST(t1.CreateDate as date)>='" + FromCreateDate.ToString("yyyy-MM-dd") + "' and CAST(t1.CreateDate as date)<='" + ToCreateDate.ToString("yyyy-MM-dd") + "' and NgayXuLy is null and LyDo like N'%" + LyDo + "%'"
+                        + " and MaQuan=" + MaQuan + ""
                         + " order by t1.CreateDate";
 
             return ExecuteQuery_DataTable(sql);

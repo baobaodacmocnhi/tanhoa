@@ -183,9 +183,9 @@ namespace KTKS_DonKH.DAL.DonTu
             return db.DonTu_ChiTiets.SingleOrDefault(item => item.MaDon == MaDon && item.STT == STT);
         }
 
-        // lịch sử
+        // lịch sử chuyển đơn
 
-        public bool Them(DonTu_LichSu entity)
+        public bool Them_LichSu(DonTu_LichSu entity)
         {
             try
             {
@@ -206,7 +206,7 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
-        public bool Them(string NoiChuyen, string NoiDung, int MaDon, int STT)
+        public bool Them_LichSu(string NoiChuyen, string NoiDung, int MaDon, int STT)
         {
             try
             {
@@ -234,7 +234,7 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
-        public bool Xoa(DonTu_LichSu entity)
+        public bool Xoa_LichSu(DonTu_LichSu entity)
         {
             try
             {

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dateDen = new System.Windows.Forms.DateTimePicker();
             this.cmbTimTheo = new System.Windows.Forms.ComboBox();
             this.dateTu = new System.Windows.Forms.DateTimePicker();
@@ -43,6 +43,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtNoiDungTimKiem2 = new System.Windows.Forms.TextBox();
             this.dgvDSDonTu = new System.Windows.Forms.DataGridView();
+            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoCongVan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemCheckedComboBoxEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
@@ -53,13 +60,6 @@
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoCongVan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel_KhoangThoiGian.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDonTu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
@@ -119,6 +119,7 @@
             this.btnInDSDonKH.TabIndex = 17;
             this.btnInDSDonKH.Text = "In DS";
             this.btnInDSDonKH.UseVisualStyleBackColor = true;
+            this.btnInDSDonKH.Click += new System.EventHandler(this.btnInDSDonKH_Click);
             // 
             // label3
             // 
@@ -145,7 +146,7 @@
             this.panel_KhoangThoiGian.Controls.Add(this.dateDen);
             this.panel_KhoangThoiGian.Controls.Add(this.label3);
             this.panel_KhoangThoiGian.Controls.Add(this.label4);
-            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(535, 0);
+            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(535, 2);
             this.panel_KhoangThoiGian.Name = "panel_KhoangThoiGian";
             this.panel_KhoangThoiGian.Size = new System.Drawing.Size(176, 60);
             this.panel_KhoangThoiGian.TabIndex = 15;
@@ -189,14 +190,14 @@
             // 
             this.dgvDSDonTu.AllowUserToAddRows = false;
             this.dgvDSDonTu.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSDonTu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSDonTu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvDSDonTu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSDonTu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaDon,
@@ -210,11 +211,66 @@
             this.dgvDSDonTu.MultiSelect = false;
             this.dgvDSDonTu.Name = "dgvDSDonTu";
             this.dgvDSDonTu.RowHeadersWidth = 60;
-            this.dgvDSDonTu.Size = new System.Drawing.Size(1358, 560);
+            this.dgvDSDonTu.Size = new System.Drawing.Size(1132, 560);
             this.dgvDSDonTu.TabIndex = 20;
             this.dgvDSDonTu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSDonTu_CellFormatting);
             this.dgvDSDonTu.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSDonTu_RowPostPaint);
             this.dgvDSDonTu.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSDonTu_KeyDown);
+            // 
+            // MaDon
+            // 
+            this.MaDon.DataPropertyName = "MaDon";
+            dataGridViewCellStyle6.NullValue = null;
+            this.MaDon.DefaultCellStyle = dataGridViewCellStyle6;
+            this.MaDon.HeaderText = "Mã Đơn";
+            this.MaDon.Name = "MaDon";
+            this.MaDon.ReadOnly = true;
+            this.MaDon.Width = 90;
+            // 
+            // SoCongVan
+            // 
+            this.SoCongVan.DataPropertyName = "SoCongVan";
+            this.SoCongVan.HeaderText = "Số Công Văn";
+            this.SoCongVan.Name = "SoCongVan";
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Nhận";
+            this.CreateDate.Name = "CreateDate";
+            this.CreateDate.ReadOnly = true;
+            this.CreateDate.Width = 110;
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            this.DanhBo.ReadOnly = true;
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Khách Hàng";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.ReadOnly = true;
+            this.HoTen.Width = 200;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.DataPropertyName = "DiaChi";
+            this.DiaChi.HeaderText = "Địa Chỉ";
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.ReadOnly = true;
+            this.DiaChi.Width = 250;
+            // 
+            // NoiDung
+            // 
+            this.NoiDung.DataPropertyName = "NoiDung";
+            this.NoiDung.HeaderText = "Nội Dung";
+            this.NoiDung.Name = "NoiDung";
+            this.NoiDung.ReadOnly = true;
+            this.NoiDung.Width = 200;
             // 
             // repositoryItemComboBox1
             // 
@@ -297,66 +353,11 @@
             this.repositoryItemComboBox1,
             this.repositoryItemCheckedComboBoxEdit1,
             this.repositoryItemLookUpEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(1251, 542);
+            this.gridControl1.Size = new System.Drawing.Size(1027, 542);
             this.gridControl1.TabIndex = 21;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             this.gridControl1.Visible = false;
-            // 
-            // MaDon
-            // 
-            this.MaDon.DataPropertyName = "MaDon";
-            dataGridViewCellStyle2.NullValue = null;
-            this.MaDon.DefaultCellStyle = dataGridViewCellStyle2;
-            this.MaDon.HeaderText = "Mã Đơn";
-            this.MaDon.Name = "MaDon";
-            this.MaDon.ReadOnly = true;
-            this.MaDon.Width = 90;
-            // 
-            // SoCongVan
-            // 
-            this.SoCongVan.DataPropertyName = "SoCongVan";
-            this.SoCongVan.HeaderText = "Số Công Văn";
-            this.SoCongVan.Name = "SoCongVan";
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Ngày Nhận";
-            this.CreateDate.Name = "CreateDate";
-            this.CreateDate.ReadOnly = true;
-            this.CreateDate.Width = 110;
-            // 
-            // DanhBo
-            // 
-            this.DanhBo.DataPropertyName = "DanhBo";
-            this.DanhBo.HeaderText = "Danh Bộ";
-            this.DanhBo.Name = "DanhBo";
-            this.DanhBo.ReadOnly = true;
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Khách Hàng";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.ReadOnly = true;
-            this.HoTen.Width = 200;
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.DataPropertyName = "DiaChi";
-            this.DiaChi.HeaderText = "Địa Chỉ";
-            this.DiaChi.Name = "DiaChi";
-            this.DiaChi.ReadOnly = true;
-            this.DiaChi.Width = 250;
-            // 
-            // NoiDung
-            // 
-            this.NoiDung.DataPropertyName = "NoiDung";
-            this.NoiDung.HeaderText = "Nội Dung";
-            this.NoiDung.Name = "NoiDung";
-            this.NoiDung.ReadOnly = true;
-            this.NoiDung.Width = 200;
             // 
             // frmDSDonTu
             // 
@@ -364,13 +365,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1375, 635);
+            this.Controls.Add(this.panel_KhoangThoiGian);
             this.Controls.Add(this.dgvDSDonTu);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.cmbTimTheo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnInDSDonKH);
             this.Controls.Add(this.btnXem);
-            this.Controls.Add(this.panel_KhoangThoiGian);
             this.Controls.Add(this.txtNoiDungTimKiem);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNoiDungTimKiem2);

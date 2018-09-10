@@ -182,6 +182,11 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
+        public bool checkKhongLienHe(string DanhBo)
+        {
+            return db.KTXM_ChiTiets.Any(item => item.DanhBo == DanhBo && item.KhongLienHe == true);
+        }
+
         public KTXM_ChiTiet GetCT(decimal MaCTKTXM)
         {
             return db.KTXM_ChiTiets.SingleOrDefault(item => item.MaCTKTXM == MaCTKTXM);

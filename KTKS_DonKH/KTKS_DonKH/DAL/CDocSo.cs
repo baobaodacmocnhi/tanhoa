@@ -274,5 +274,15 @@ namespace KTKS_DonKH.DAL
         {
             return db.TB_GHICHUs.Where(item => item.DANHBO == DanhBo).OrderByDescending(item => item.CREATEDATE).ToList();
         }
+
+        public DataTable TimKiem(string DanhBo)
+        {
+            return ExecuteQuery_DataTable("select DanhBo,HoTen,DiaChi=(SONHA+' '+TENDUONG) from TB_DULIEUKHACHHANG where DanhBo like '%"+DanhBo+"%'");
+        }
+
+        public DataTable TimKiem(string HoTen,string SoNha,string TenDuong)
+        {
+            return ExecuteQuery_DataTable("select DanhBo,HoTen,DiaChi=(SONHA+' '+TENDUONG) from TB_DULIEUKHACHHANG where HoTen like '%" + HoTen + "%' and SONHA like '%" + SoNha + "%' and TENDUONG like '%" + TenDuong + "%'");
+        }
     }
 }
