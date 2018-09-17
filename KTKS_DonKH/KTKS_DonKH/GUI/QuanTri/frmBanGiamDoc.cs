@@ -179,7 +179,7 @@ namespace KTKS_DonKH.GUI.QuanTri
                             dgvDanhSach.DataSource = _cDCBD.getDSHoaDonByCreateDate(dateTu.Value, dateDen.Value);
                             break;
                         case "Cắt Chuyển":
-                            dgvDanhSach.DataSource = _cChungTu.LoadDSCatChuyenDM(dateTu.Value, dateDen.Value);
+                            dgvDanhSach.DataSource = _cChungTu.getDSCatChuyenDM(dateTu.Value, dateDen.Value);
                             break;
                         case "Cắt Tạm Danh Bộ":
                             dgvDanhSach.DataSource = _cCHDB.GetDSCatTam(dateTu.Value, dateDen.Value);

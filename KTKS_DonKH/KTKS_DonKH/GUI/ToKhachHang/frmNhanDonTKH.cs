@@ -550,7 +550,8 @@ namespace KTKS_DonKH.GUI.ToKhachHang
 
                         if (_cKTXM.checkKhongLienHe(txtDanhBo.Text.Trim().Replace(" ", "")) == true)
                         {
-                            if (MessageBox.Show("Danh Bộ này Đã có THƯ MỜI ĐỊNH MỨC, nhưng không liên hệ\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                            //if (MessageBox.Show("Danh Bộ này Đã có THƯ MỜI ĐỊNH MỨC, nhưng không liên hệ\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                            MessageBox.Show("Danh Bộ này Đã có THƯ MỜI, nhưng không liên hệ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 return;
                         }
 

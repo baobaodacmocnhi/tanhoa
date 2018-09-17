@@ -350,13 +350,21 @@ namespace KTKS_DonKH.GUI.ThuMoi
                                     MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
-                  
+                    
                     entity.DanhBo = txtDanhBo.Text.Trim();
                     entity.HoTen = txtHoTen.Text.Trim();
                     entity.DiaChi = txtDiaChi.Text.Trim();
                     entity.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
                     if (string.IsNullOrEmpty(txtDinhMuc.Text.Trim()) == false)
                         entity.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
+                    if (_hoadon != null)
+                    {
+                        entity.Nam = _hoadon.NAM;
+                        entity.Ky = _hoadon.KY;
+                        entity.Dot = _hoadon.DOT;
+                        entity.Quan = _hoadon.Quan;
+                        entity.Phuong = _hoadon.Phuong;
+                    }
                     entity.CanCu = txtCanCu.Text.Trim();
                     entity.VaoLuc = txtVaoLuc.Text.Trim();
                     entity.VeViec = txtVeViec.Text.Trim();
@@ -389,6 +397,14 @@ namespace KTKS_DonKH.GUI.ThuMoi
                         _thumoi.DanhBo = txtDanhBo.Text.Trim();
                         _thumoi.HoTen = txtHoTen.Text.Trim();
                         _thumoi.DiaChi = txtDiaChi.Text.Trim();
+                        if (_hoadon != null)
+                        {
+                            _thumoi.Nam = _hoadon.NAM;
+                            _thumoi.Ky = _hoadon.KY;
+                            _thumoi.Dot = _hoadon.DOT;
+                            _thumoi.Quan = _hoadon.Quan;
+                            _thumoi.Phuong = _hoadon.Phuong;
+                        }
                         _thumoi.CanCu = txtCanCu.Text.Trim();
                         _thumoi.VaoLuc = txtVaoLuc.Text.Trim();
                         _thumoi.VeViec = txtVeViec.Text.Trim();

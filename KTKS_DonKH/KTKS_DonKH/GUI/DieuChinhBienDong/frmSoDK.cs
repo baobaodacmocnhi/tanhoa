@@ -385,6 +385,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 default:
                                     break;
                             }
+                            lichsuchungtu.Quan = _dataT.Quan;
+                            lichsuchungtu.Phuong = _dataT.Phuong;
                             lichsuchungtu.DanhBo = ctchungtu.DanhBo;
                             lichsuchungtu.MaLCT = ctchungtu.MaLCT;
                             lichsuchungtu.MaCT = ctchungtu.MaCT;
@@ -735,7 +737,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 default:
                                     break;
                             }
-
+                            lichsuchungtu.Quan = _dataT.Quan;
+                            lichsuchungtu.Phuong = _dataT.Phuong;
                             lichsuchungtu.DanhBo = _ctchungtu.DanhBo;
                             lichsuchungtu.MaLCT = _ctchungtu.MaLCT;
                             lichsuchungtu.MaCT = _ctchungtu.MaCT;
@@ -1422,6 +1425,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             B.GhiChu = A.GhiChu;
             B.Lo = A.Lo;
             B.Phong = A.Phong;
+            B.Quan = A.Quan;
+            B.Phuong = A.Phuong;
         }
 
     }

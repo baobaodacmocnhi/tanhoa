@@ -64,6 +64,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnBaoCao_ThongKeDC = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnInDS_DSDCBD = new System.Windows.Forms.Button();
             this.radHoaDon = new System.Windows.Forms.RadioButton();
             this.radBienDong = new System.Windows.Forms.RadioButton();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -78,7 +79,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.btnXuatExcel_DSDCBD = new System.Windows.Forms.Button();
-            this.btnInDS_DSDCBD = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.groupBox_DSChungCu.SuspendLayout();
             this.groupBox_ThongKeDC.SuspendLayout();
@@ -448,6 +448,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh Sách Điều Chỉnh";
             // 
+            // btnInDS_DSDCBD
+            // 
+            this.btnInDS_DSDCBD.Location = new System.Drawing.Point(190, 96);
+            this.btnInDS_DSDCBD.Name = "btnInDS_DSDCBD";
+            this.btnInDS_DSDCBD.Size = new System.Drawing.Size(80, 25);
+            this.btnInDS_DSDCBD.TabIndex = 26;
+            this.btnInDS_DSDCBD.Text = "In DS";
+            this.btnInDS_DSDCBD.UseVisualStyleBackColor = true;
+            this.btnInDS_DSDCBD.Click += new System.EventHandler(this.btnInDS_DSDCBD_Click);
+            // 
             // radHoaDon
             // 
             this.radHoaDon.AutoSize = true;
@@ -582,16 +592,6 @@
             this.btnXuatExcel_DSDCBD.Text = "Xuất Excel";
             this.btnXuatExcel_DSDCBD.UseVisualStyleBackColor = true;
             this.btnXuatExcel_DSDCBD.Click += new System.EventHandler(this.btnXuatExcel_DSDCBD_Click);
-            // 
-            // btnInDS_DSDCBD
-            // 
-            this.btnInDS_DSDCBD.Location = new System.Drawing.Point(190, 96);
-            this.btnInDS_DSDCBD.Name = "btnInDS_DSDCBD";
-            this.btnInDS_DSDCBD.Size = new System.Drawing.Size(80, 25);
-            this.btnInDS_DSDCBD.TabIndex = 26;
-            this.btnInDS_DSDCBD.Text = "In DS";
-            this.btnInDS_DSDCBD.UseVisualStyleBackColor = true;
-            this.btnInDS_DSDCBD.Click += new System.EventHandler(this.btnInDS_DSDCBD_Click);
             // 
             // frmBaoCaoDCBD
             // 

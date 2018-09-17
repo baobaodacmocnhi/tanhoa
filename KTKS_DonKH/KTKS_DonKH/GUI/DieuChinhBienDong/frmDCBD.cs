@@ -848,11 +848,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (e.Control && e.KeyCode == Keys.Add)
                 btnThem.PerformClick();
-            if ((_dontkh != null || _dontxl != null || _dontbc != null) && e.Control && e.KeyCode == Keys.D1)
+            if ((_dontu_ChiTiet != null || _dontkh != null || _dontxl != null || _dontbc != null) && e.Control && e.KeyCode == Keys.D1)
             {
                 Them();
             }
-            if ((_dontkh != null || _dontxl != null || _dontbc != null) && e.Control && e.KeyCode == Keys.D2)
+            if ((_dontu_ChiTiet != null || _dontkh != null || _dontxl != null || _dontbc != null) && e.Control && e.KeyCode == Keys.D2)
             {
                 Nhan();
             }
@@ -944,7 +944,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
             {
-                if (_dontkh != null || _dontxl != null || _dontbc != null)
+                if (_dontu_ChiTiet!=null|| _dontkh != null || _dontxl != null || _dontbc != null)
                     Them();
             }
             else
@@ -955,7 +955,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
             {
-                if (_dontkh != null || _dontxl != null || _dontbc != null)
+                if (_dontu_ChiTiet != null || _dontkh != null || _dontxl != null || _dontbc != null)
                     Sua();
             }
             else
@@ -966,7 +966,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
             {
-                if (_dontkh != null || _dontxl != null || _dontbc != null)
+                if (_dontu_ChiTiet != null || _dontkh != null || _dontxl != null || _dontbc != null)
                     CatChuyen();
             }
             else
@@ -977,7 +977,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
             {
-                if (_dontkh != null || _dontxl != null || _dontbc != null)
+                if (_dontu_ChiTiet != null || _dontkh != null || _dontxl != null || _dontbc != null)
                     Nhan();
             }
             else
@@ -1478,9 +1478,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dataT.DiaChi = txtDiaChi.Text.Trim();
             else
                 dataT.DiaChi = txtDiaChi_BD.Text.Trim();
-            //dataT.MaCT = "";
-            //dataT.MaLCT = "";
-
+            if (_hoadon != null)
+            {
+                dataT.Quan = _hoadon.Quan;
+                dataT.Phuong = _hoadon.Phuong;
+            }
             frmSoDK frm = new frmSoDK(dataT);
             if (frm.ShowDialog() == DialogResult.OK)
             {
@@ -1521,6 +1523,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dataT.HoTen = txtHoTen.Text.Trim();
             else
                 dataT.HoTen = txtHoTen_BD.Text.Trim();
+            if (_hoadon != null)
+            {
+                dataT.Quan = _hoadon.Quan;
+                dataT.Phuong = _hoadon.Phuong;
+            }
             dataT.MaCT = dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString();
             dataT.MaLCT = int.Parse(dgvDSSoDangKy.CurrentRow.Cells["MaLCT"].Value.ToString());
 
@@ -1571,6 +1578,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dataT.DiaChi = txtDiaChi.Text.Trim();
             else
                 dataT.DiaChi = txtDiaChi_BD.Text.Trim();
+            if (_hoadon != null)
+            {
+                dataT.Quan = _hoadon.Quan;
+                dataT.Phuong = _hoadon.Phuong;
+            }
 
             frmNhanDM frm = new frmNhanDM(dataT);
             if (frm.ShowDialog() == DialogResult.OK)
@@ -1613,6 +1625,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dataT.HoTen = txtHoTen.Text.Trim();
             else
                 dataT.HoTen = txtHoTen_BD.Text.Trim();
+            if (_hoadon != null)
+            {
+                dataT.Quan = _hoadon.Quan;
+                dataT.Phuong = _hoadon.Phuong;
+            }
+
             dataT.MaCT = dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString();
             dataT.MaLCT = int.Parse(dgvDSSoDangKy.CurrentRow.Cells["MaLCT"].Value.ToString());
 

@@ -1111,27 +1111,111 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable LoadDSCTDCBD(DateTime TuNgay, DateTime DenNgay, int MaQuan)
+        public DataTable getDSBienDongByCreateDate(DateTime FromCreateDate, DateTime ToCreateDate, int MaQuan)
         {
-            string sql = "select t1.*,t3.TenQuan from DCBD_ChiTietBienDong t1"
-                        + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
-                        + " left join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
-                        + " where CAST(t1.CreateDate as date)>='" + TuNgay.ToString("yyyy-MM-dd") + "' and CAST(t1.CreateDate as date)<='" + DenNgay.ToString("yyyy-MM-dd") + "'"
-                        + " and MaQuan=" + MaQuan;
-
-            return ExecuteQuery_DataTable(sql);
+            //string sql = "select t1.*,t3.TenQuan from DCBD_ChiTietBienDong t1"
+            //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
+            //            + " left join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
+            //            + " where CAST(t1.CreateDate as date)>='" + TuNgay.ToString("yyyy-MM-dd") + "' and CAST(t1.CreateDate as date)<='" + DenNgay.ToString("yyyy-MM-dd") + "'"
+            //            + " and MaQuan=" + MaQuan;
+            //return ExecuteQuery_DataTable(sql);
+            try
+            {
+                var query = from itemCTDCBD in db.DCBD_ChiTietBienDongs
+                            join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemCTDCBD.CreateDate.Value.Date >= FromCreateDate.Date && itemCTDCBD.CreateDate.Value.Date <= ToCreateDate.Date && Convert.ToInt32(itemCTDCBD.Quan)==MaQuan
+                            orderby itemCTDCBD.CreateDate ascending
+                            select new
+                            {
+                                itemCTDCBD.ChuyenDocSo,
+                                ID = itemCTDCBD.MaCTDCBD,
+                                DieuChinh = "Biến Động",
+                                SoCongVan = itemCTDCBD.DCBD.MaDon != null ? itemCTDCBD.DCBD.DonKH.SoCongVan : itemCTDCBD.DCBD.MaDonTXL != null ? itemCTDCBD.DCBD.DonTXL.SoCongVan : itemCTDCBD.DCBD.MaDonTBC != null ? itemCTDCBD.DCBD.DonTBC.SoCongVan : "",
+                                itemCTDCBD.ThongTin,
+                                itemCTDCBD.GhiChu,
+                                itemCTDCBD.CreateDate,
+                                itemCTDCBD.DanhBo,
+                                itemCTDCBD.HoTen,
+                                itemCTDCBD.HoTen_BD,
+                                itemCTDCBD.DiaChi,
+                                itemCTDCBD.DiaChi_BD,
+                                itemCTDCBD.MSThue,
+                                itemCTDCBD.MSThue_BD,
+                                itemCTDCBD.GiaBieu,
+                                itemCTDCBD.GiaBieu_BD,
+                                itemCTDCBD.DinhMuc,
+                                itemCTDCBD.DinhMuc_BD,
+                                itemCTDCBD.SH_BD,
+                                itemCTDCBD.SX_BD,
+                                itemCTDCBD.DV_BD,
+                                itemCTDCBD.HCSN_BD,
+                                itemCTDCBD.PhieuDuocKy,
+                                itemCTDCBD.NguoiKy,
+                                itemCTDCBD.HieuLucKy,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
 
-        public DataTable LoadDSCTDCBD(DateTime TuNgay, DateTime DenNgay, int MaQuan, int MaPhuong)
+        public DataTable getDSBienDongByCreateDate(DateTime FromCreateDate, DateTime ToCreateDate, int MaQuan, int MaPhuong)
         {
-            string sql = "select t1.*,t3.TenQuan,t4.TenPhuong from DCBD_ChiTietBienDong t1"
-                        + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
-                        + " left join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
-                        + " left join SERVER8.CAPNUOCTANHOA.dbo.PHUONG t4 on t2.PHUONG=t4.MAPHUONG and t2.QUAN=t4.MAQUAN"
-                        + " where CAST(t1.CreateDate as date)>='" + TuNgay.ToString("yyyy-MM-dd") + "' and CAST(t1.CreateDate as date)<='" + DenNgay.ToString("yyyy-MM-dd") + "'"
-                        + " and t4.MaQuan=" + MaQuan + " and t4.MaPhuong=" + MaPhuong;
-
-            return ExecuteQuery_DataTable(sql);
+            //string sql = "select t1.*,t3.TenQuan,t4.TenPhuong from DCBD_ChiTietBienDong t1"
+            //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
+            //            + " left join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
+            //            + " left join SERVER8.CAPNUOCTANHOA.dbo.PHUONG t4 on t2.PHUONG=t4.MAPHUONG and t2.QUAN=t4.MAQUAN"
+            //            + " where CAST(t1.CreateDate as date)>='" + FromCreateDate.ToString("yyyy-MM-dd") + "' and CAST(t1.CreateDate as date)<='" + ToCreateDate.ToString("yyyy-MM-dd") + "'"
+            //            + " and t4.MaQuan=" + MaQuan + " and t4.MaPhuong=" + MaPhuong;
+            //return ExecuteQuery_DataTable(sql);
+            try
+            {
+                var query = from itemCTDCBD in db.DCBD_ChiTietBienDongs
+                            join itemND in db.Users on itemCTDCBD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemCTDCBD.CreateDate.Value.Date >= FromCreateDate.Date && itemCTDCBD.CreateDate.Value.Date <= ToCreateDate.Date && Convert.ToInt32(itemCTDCBD.Quan) == MaQuan && Convert.ToInt32(itemCTDCBD.Phuong) == MaPhuong
+                            orderby itemCTDCBD.CreateDate ascending
+                            select new
+                            {
+                                itemCTDCBD.ChuyenDocSo,
+                                ID = itemCTDCBD.MaCTDCBD,
+                                DieuChinh = "Biến Động",
+                                SoCongVan = itemCTDCBD.DCBD.MaDon != null ? itemCTDCBD.DCBD.DonKH.SoCongVan : itemCTDCBD.DCBD.MaDonTXL != null ? itemCTDCBD.DCBD.DonTXL.SoCongVan : itemCTDCBD.DCBD.MaDonTBC != null ? itemCTDCBD.DCBD.DonTBC.SoCongVan : "",
+                                itemCTDCBD.ThongTin,
+                                itemCTDCBD.GhiChu,
+                                itemCTDCBD.CreateDate,
+                                itemCTDCBD.DanhBo,
+                                itemCTDCBD.HoTen,
+                                itemCTDCBD.HoTen_BD,
+                                itemCTDCBD.DiaChi,
+                                itemCTDCBD.DiaChi_BD,
+                                itemCTDCBD.MSThue,
+                                itemCTDCBD.MSThue_BD,
+                                itemCTDCBD.GiaBieu,
+                                itemCTDCBD.GiaBieu_BD,
+                                itemCTDCBD.DinhMuc,
+                                itemCTDCBD.DinhMuc_BD,
+                                itemCTDCBD.SH_BD,
+                                itemCTDCBD.SX_BD,
+                                itemCTDCBD.DV_BD,
+                                itemCTDCBD.HCSN_BD,
+                                itemCTDCBD.PhieuDuocKy,
+                                itemCTDCBD.NguoiKy,
+                                itemCTDCBD.HieuLucKy,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
 
         public DataTable LoadDSCTDCBDSoCT(DateTime TuNgay, DateTime DenNgay)
@@ -1817,27 +1901,99 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable LoadDSCTDCHD(DateTime TuNgay, DateTime DenNgay, int MaQuan)
+        public DataTable getDSHoaDonByCreateDate(DateTime FromCreateDate, DateTime ToCreateDate, int MaQuan)
         {
-            string sql = "select t1.*,t3.TenQuan from DCBD_ChiTietHoaDon t1"
-                        + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
-                        + " left join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
-                        + " where CAST(t1.CreateDate as date)>='" + TuNgay.ToString("yyyy-MM-dd") + "' and CAST(t1.CreateDate as date)<='" + DenNgay.ToString("yyyy-MM-dd") + "'"
-                        + " and MaQuan=" + MaQuan;
-
-            return ExecuteQuery_DataTable(sql);
+            //string sql = "select t1.*,t3.TenQuan from DCBD_ChiTietHoaDon t1"
+            //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
+            //            + " left join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
+            //            + " where CAST(t1.CreateDate as date)>='" + FromCreateDate.ToString("yyyy-MM-dd") + "' and CAST(t1.CreateDate as date)<='" + ToCreateDate.ToString("yyyy-MM-dd") + "'"
+            //            + " and MaQuan=" + MaQuan;
+            //return ExecuteQuery_DataTable(sql);
+            try
+            {
+                var query = from itemCTDCHD in db.DCBD_ChiTietHoaDons
+                            join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemCTDCHD.CreateDate.Value.Date >= FromCreateDate.Date && itemCTDCHD.CreateDate.Value.Date <= ToCreateDate.Date&&Convert.ToInt32(itemCTDCHD.Quan)==MaQuan
+                            orderby itemCTDCHD.CreateDate ascending
+                            select new
+                            {
+                                ID = itemCTDCHD.MaCTDCHD,
+                                DieuChinh = "Hóa Đơn",
+                                itemCTDCHD.ThongTin,
+                                itemCTDCHD.LyDoDieuChinh,
+                                itemCTDCHD.CreateDate,
+                                itemCTDCHD.CodeF2,
+                                itemCTDCHD.DanhBo,
+                                itemCTDCHD.GiaBieu,
+                                itemCTDCHD.GiaBieu_BD,
+                                itemCTDCHD.DinhMuc,
+                                itemCTDCHD.DinhMuc_BD,
+                                itemCTDCHD.TieuThu,
+                                itemCTDCHD.TieuThu_BD,
+                                itemCTDCHD.TongCong_Start,
+                                itemCTDCHD.TongCong_End,
+                                itemCTDCHD.TongCong_BD,
+                                itemCTDCHD.TangGiam,
+                                itemCTDCHD.PhieuDuocKy,
+                                itemCTDCHD.NguoiKy,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
 
-        public DataTable LoadDSCTDCHD(DateTime TuNgay, DateTime DenNgay, int MaQuan, int MaPhuong)
+        public DataTable getDSHoaDonByCreateDate(DateTime FromCreateDate, DateTime ToCreateDate, int MaQuan, int MaPhuong)
         {
-            string sql = "select t1.*,t3.TenQuan from DCBD_ChiTietHoaDon t1"
-                        + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
-                        + " left join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
-                        + " left join SERVER8.CAPNUOCTANHOA.dbo.PHUONG t4 on t2.PHUONG=t4.MAPHUONG and t2.QUAN=t4.MAQUAN"
-                        + " where CAST(t1.CreateDate as date)>='" + TuNgay.ToString("yyyy-MM-dd") + "' and CAST(t1.CreateDate as date)<='" + DenNgay.ToString("yyyy-MM-dd") + "'"
-                        + " and t4.MaQuan=" + MaQuan + " and t4.MaPhuong=" + MaPhuong;
-
-            return ExecuteQuery_DataTable(sql);
+            //string sql = "select t1.*,t3.TenQuan from DCBD_ChiTietHoaDon t1"
+            //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
+            //            + " left join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
+            //            + " left join SERVER8.CAPNUOCTANHOA.dbo.PHUONG t4 on t2.PHUONG=t4.MAPHUONG and t2.QUAN=t4.MAQUAN"
+            //            + " where CAST(t1.CreateDate as date)>='" + TuNgay.ToString("yyyy-MM-dd") + "' and CAST(t1.CreateDate as date)<='" + DenNgay.ToString("yyyy-MM-dd") + "'"
+            //            + " and t4.MaQuan=" + MaQuan + " and t4.MaPhuong=" + MaPhuong;
+            //return ExecuteQuery_DataTable(sql);
+            try
+            {
+                var query = from itemCTDCHD in db.DCBD_ChiTietHoaDons
+                            join itemND in db.Users on itemCTDCHD.CreateBy equals itemND.MaU into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemCTDCHD.CreateDate.Value.Date >= FromCreateDate.Date && itemCTDCHD.CreateDate.Value.Date <= ToCreateDate.Date && Convert.ToInt32(itemCTDCHD.Quan) == MaQuan && Convert.ToInt32(itemCTDCHD.Phuong) == MaPhuong
+                            orderby itemCTDCHD.CreateDate ascending
+                            select new
+                            {
+                                ID = itemCTDCHD.MaCTDCHD,
+                                DieuChinh = "Hóa Đơn",
+                                itemCTDCHD.ThongTin,
+                                itemCTDCHD.LyDoDieuChinh,
+                                itemCTDCHD.CreateDate,
+                                itemCTDCHD.CodeF2,
+                                itemCTDCHD.DanhBo,
+                                itemCTDCHD.GiaBieu,
+                                itemCTDCHD.GiaBieu_BD,
+                                itemCTDCHD.DinhMuc,
+                                itemCTDCHD.DinhMuc_BD,
+                                itemCTDCHD.TieuThu,
+                                itemCTDCHD.TieuThu_BD,
+                                itemCTDCHD.TongCong_Start,
+                                itemCTDCHD.TongCong_End,
+                                itemCTDCHD.TongCong_BD,
+                                itemCTDCHD.TangGiam,
+                                itemCTDCHD.PhieuDuocKy,
+                                itemCTDCHD.NguoiKy,
+                                CreateBy = itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
 
         public DataTable getDSHoaDon(string DanhBo, int Nam, int Ky)

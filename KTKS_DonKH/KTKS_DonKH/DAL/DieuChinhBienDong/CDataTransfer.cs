@@ -16,6 +16,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         private string _DiaChi;
         private string _MaCT;
         private int _MaLCT;
+        private string _Quan;
+        private string _Phuong;
 
         public string Loai
         {
@@ -62,6 +64,16 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             get { return _MaLCT; }
             set { _MaLCT = value; }
         }
+        public string Quan
+        {
+            get { return _Quan; }
+            set { _Quan = value; }
+        }
+        public string Phuong
+        {
+            get { return _Phuong; }
+            set { _Phuong = value; }
+        }
 
         public CDataTransfer()
         {
@@ -74,6 +86,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             _DiaChi = "";
             _MaCT = "";
             _MaLCT = -1;
+            _Quan = "";
+            _Phuong = "";
         }
     }
 }

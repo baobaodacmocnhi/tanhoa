@@ -1085,20 +1085,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 dtDCBD = _cDCBD.getDSBienDongByCreateDate(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value);
                 dtDCHD = _cDCBD.getDSHoaDonByCreateDate(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value);
-                dtCatChuyenDM = _cChungTu.LoadDSCatChuyenDM(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value);
+                dtCatChuyenDM = _cChungTu.getDSCatChuyenDM(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value);
             }
             else
                 if (int.Parse(cmbPhuong_ThongKeDC.SelectedValue.ToString()) == 0)
                 {
-                    dtDCBD = _cDCBD.LoadDSCTDCBD(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value, int.Parse(cmbQuan_ThongKeDC.SelectedValue.ToString()));
-                    dtDCHD = _cDCBD.LoadDSCTDCHD(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value, int.Parse(cmbQuan_ThongKeDC.SelectedValue.ToString()));
-                    dtCatChuyenDM = _cChungTu.LoadDSCatChuyenDM(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value, int.Parse(cmbQuan_ThongKeDC.SelectedValue.ToString()));
+                    dtDCBD = _cDCBD.getDSBienDongByCreateDate(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value, int.Parse(cmbQuan_ThongKeDC.SelectedValue.ToString()));
+                    dtDCHD = _cDCBD.getDSHoaDonByCreateDate(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value, int.Parse(cmbQuan_ThongKeDC.SelectedValue.ToString()));
+                    dtCatChuyenDM = _cChungTu.getDSCatChuyenDM(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value, int.Parse(cmbQuan_ThongKeDC.SelectedValue.ToString()));
                 }
                 else
                 {
-                    dtDCBD = _cDCBD.LoadDSCTDCBD(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value, int.Parse(cmbQuan_ThongKeDC.SelectedValue.ToString()), int.Parse(cmbPhuong_ThongKeDC.SelectedValue.ToString()));
-                    dtDCHD = _cDCBD.LoadDSCTDCHD(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value, int.Parse(cmbQuan_ThongKeDC.SelectedValue.ToString()), int.Parse(cmbPhuong_ThongKeDC.SelectedValue.ToString()));
-                    dtCatChuyenDM = _cChungTu.LoadDSCatChuyenDM(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value, int.Parse(cmbQuan_ThongKeDC.SelectedValue.ToString()), int.Parse(cmbPhuong_ThongKeDC.SelectedValue.ToString()));
+                    dtDCBD = _cDCBD.getDSBienDongByCreateDate(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value, int.Parse(cmbQuan_ThongKeDC.SelectedValue.ToString()), int.Parse(cmbPhuong_ThongKeDC.SelectedValue.ToString()));
+                    dtDCHD = _cDCBD.getDSHoaDonByCreateDate(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value, int.Parse(cmbQuan_ThongKeDC.SelectedValue.ToString()), int.Parse(cmbPhuong_ThongKeDC.SelectedValue.ToString()));
+                    dtCatChuyenDM = _cChungTu.getDSCatChuyenDM(dateTu_ThongKeDC.Value, dateDen_ThongKeDC.Value, int.Parse(cmbQuan_ThongKeDC.SelectedValue.ToString()), int.Parse(cmbPhuong_ThongKeDC.SelectedValue.ToString()));
                 }
 
             int DanhBoTangDM = 0;
@@ -1130,12 +1130,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     else
                         if (int.Parse(cmbPhuong_ThongKeDC.SelectedValue.ToString()) == 0)
                         {
-                            dr["Quan"] = itemRow["TenQuan"];
+                            //dr["Quan"] = itemRow["TenQuan"];
+                            dr["Quan"] = cmbQuan_ThongKeDC.Text;
                         }
                         else
                         {
-                            dr["Quan"] = itemRow["TenQuan"];
-                            dr["Phuong"] = itemRow["TenPhuong"];
+                            //dr["Quan"] = itemRow["TenQuan"];
+                            //dr["Phuong"] = itemRow["TenPhuong"];
+                            dr["Quan"] = cmbQuan_ThongKeDC.Text;
+                            dr["Phuong"] = cmbPhuong_ThongKeDC.Text;
                         }
 
                     dr["TuNgay"] = dateTu_ThongKeDC.Value.Date.ToString("dd/MM/yyyy");
@@ -1227,12 +1230,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 else
                                     if (int.Parse(cmbPhuong_ThongKeDC.SelectedValue.ToString()) == 0)
                                     {
-                                        dr["Quan"] = itemRow["TenQuan"];
+                                        //dr["Quan"] = itemRow["TenQuan"];
+                                        dr["Quan"] = cmbQuan_ThongKeDC.Text;
                                     }
                                     else
                                     {
-                                        dr["Quan"] = itemRow["TenQuan"];
-                                        dr["Phuong"] = itemRow["TenPhuong"];
+                                        //dr["Quan"] = itemRow["TenQuan"];
+                                        //dr["Phuong"] = itemRow["TenPhuong"];
+                                        dr["Quan"] = cmbQuan_ThongKeDC.Text;
+                                        dr["Phuong"] = cmbPhuong_ThongKeDC.Text;
                                     }
 
                                 dr["TuNgay"] = dateTu_ThongKeDC.Value.Date.ToString("dd/MM/yyyy");
@@ -1608,6 +1614,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 frm.ShowDialog();
             }
         }
+
 
     }
 }

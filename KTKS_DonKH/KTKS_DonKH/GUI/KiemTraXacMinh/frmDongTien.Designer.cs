@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbTheoYeuCau = new System.Windows.Forms.Label();
             this.txtTheoYeuCau = new System.Windows.Forms.TextBox();
             this.cmbTinhTrangDHN = new System.Windows.Forms.ComboBox();
@@ -62,6 +62,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtNoiDungKiemTra = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.chkKhongLienHe = new System.Windows.Forms.CheckBox();
             this.label21 = new System.Windows.Forms.Label();
             this.dgvDSKetQuaKiemTra = new System.Windows.Forms.DataGridView();
             this.MaCTKTXM = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -90,7 +91,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtGhiChuNoiDungXuLy = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.chkKhongLienHe = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKetQuaKiemTra)).BeginInit();
             this.groupBoxDongTien.SuspendLayout();
@@ -375,11 +375,10 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.chkKhongLienHe);
             this.groupBox2.Controls.Add(this.chkMoNuoc);
-            this.groupBox2.Controls.Add(this.chkDutChiGoc);
             this.groupBox2.Controls.Add(this.cmbTinhTrangDHN);
             this.groupBox2.Controls.Add(this.label20);
+            this.groupBox2.Controls.Add(this.chkDutChiGoc);
             this.groupBox2.Controls.Add(this.cmbChiKhoaGoc);
             this.groupBox2.Controls.Add(this.cmbChiMatSo);
             this.groupBox2.Controls.Add(this.cmbTinhTrangChiSo);
@@ -416,7 +415,7 @@
             // chkMoNuoc
             // 
             this.chkMoNuoc.AutoSize = true;
-            this.chkMoNuoc.Location = new System.Drawing.Point(869, 135);
+            this.chkMoNuoc.Location = new System.Drawing.Point(855, 127);
             this.chkMoNuoc.Name = "chkMoNuoc";
             this.chkMoNuoc.Size = new System.Drawing.Size(81, 20);
             this.chkMoNuoc.TabIndex = 48;
@@ -427,7 +426,7 @@
             // chkDutChiGoc
             // 
             this.chkDutChiGoc.AutoSize = true;
-            this.chkDutChiGoc.Location = new System.Drawing.Point(767, 135);
+            this.chkDutChiGoc.Location = new System.Drawing.Point(753, 127);
             this.chkDutChiGoc.Name = "chkDutChiGoc";
             this.chkDutChiGoc.Size = new System.Drawing.Size(96, 20);
             this.chkDutChiGoc.TabIndex = 47;
@@ -468,6 +467,16 @@
             this.label11.TabIndex = 22;
             this.label11.Text = "Điện Thoại:";
             // 
+            // chkKhongLienHe
+            // 
+            this.chkKhongLienHe.AutoSize = true;
+            this.chkKhongLienHe.Location = new System.Drawing.Point(582, 413);
+            this.chkKhongLienHe.Name = "chkKhongLienHe";
+            this.chkKhongLienHe.Size = new System.Drawing.Size(190, 20);
+            this.chkKhongLienHe.TabIndex = 110;
+            this.chkKhongLienHe.Text = "Khách Hàng Không Liên Hệ";
+            this.chkKhongLienHe.UseVisualStyleBackColor = true;
+            // 
             // label21
             // 
             this.label21.AutoSize = true;
@@ -481,14 +490,14 @@
             // 
             this.dgvDSKetQuaKiemTra.AllowUserToAddRows = false;
             this.dgvDSKetQuaKiemTra.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSKetQuaKiemTra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSKetQuaKiemTra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDSKetQuaKiemTra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSKetQuaKiemTra.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaCTKTXM,
@@ -746,22 +755,13 @@
             this.label8.TabIndex = 59;
             this.label8.Text = "Ghi Chú Nội Dung Xử Lý";
             // 
-            // chkKhongLienHe
-            // 
-            this.chkKhongLienHe.AutoSize = true;
-            this.chkKhongLienHe.Location = new System.Drawing.Point(956, 135);
-            this.chkKhongLienHe.Name = "chkKhongLienHe";
-            this.chkKhongLienHe.Size = new System.Drawing.Size(190, 20);
-            this.chkKhongLienHe.TabIndex = 110;
-            this.chkKhongLienHe.Text = "Khách Hàng Không Liên Hệ";
-            this.chkKhongLienHe.UseVisualStyleBackColor = true;
-            // 
             // frmDongTien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1167, 463);
+            this.Controls.Add(this.chkKhongLienHe);
             this.Controls.Add(this.txtGhiChuNoiDungXuLy);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);

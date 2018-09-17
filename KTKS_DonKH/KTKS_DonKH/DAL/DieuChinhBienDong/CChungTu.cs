@@ -1079,12 +1079,12 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         /// <param name="TuNgay"></param>
         /// <param name="DenNgay"></param>
         /// <returns></returns>
-        public DataTable LoadDSCatChuyenDM(DateTime TuNgay, DateTime DenNgay)
+        public DataTable getDSCatChuyenDM(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             try
             {
                 var query = from itemLSCT in db.ChungTu_LichSus
-                            where itemLSCT.CreateDate.Value.Date >= TuNgay.Date && itemLSCT.CreateDate.Value.Date <= DenNgay.Date && itemLSCT.SoPhieu != null
+                            where itemLSCT.SoPhieu != null&&itemLSCT.CreateDate.Value.Date >= FromCreateDate.Date && itemLSCT.CreateDate.Value.Date <= ToCreateDate.Date 
                             select new
                             {
                                 In = false,
@@ -1103,33 +1103,80 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(a, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }
 
-        public DataTable LoadDSCatChuyenDM(DateTime TuNgay, DateTime DenNgay,int MaQuan)
+        public DataTable getDSCatChuyenDM(DateTime FromCreateDate, DateTime ToCreateDate, int MaQuan)
         {
-            string sql = "select t1.*,t3.TenQuan from ChungTu_LichSu t1"
-                        + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
-                        + " left join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
-                        + " where CAST(t1.CreateDate as date)>='" + TuNgay.ToString("yyyy-MM-dd") + "' and CAST(t1.CreateDate as date)<='" + DenNgay.ToString("yyyy-MM-dd") + "'"
-                        + " and SoPhieu is not null and MaQuan=" + MaQuan;
-
-            return ExecuteQuery_DataTable(sql);
+            //string sql = "select t1.*,t3.TenQuan from ChungTu_LichSu t1"
+            //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
+            //            + " left join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
+            //            + " where CAST(t1.CreateDate as date)>='" + FromCreateDate.ToString("yyyy-MM-dd") + "' and CAST(t1.CreateDate as date)<='" + ToCreateDate.ToString("yyyy-MM-dd") + "'"
+            //            + " and SoPhieu is not null and MaQuan=" + MaQuan;
+            //return ExecuteQuery_DataTable(sql);
+            try
+            {
+                var query = from itemLSCT in db.ChungTu_LichSus
+                            where itemLSCT.SoPhieu != null && itemLSCT.CreateDate.Value.Date >= FromCreateDate.Date && itemLSCT.CreateDate.Value.Date <= ToCreateDate.Date && Convert.ToInt32(itemLSCT.Quan) == MaQuan
+                            select new
+                            {
+                                In = false,
+                                itemLSCT.SoPhieu,
+                                Ma = itemLSCT.SoPhieu,
+                                ID = itemLSCT.SoPhieu,
+                                DanhBo = itemLSCT.NhanNK_DanhBo,
+                                HoTen = itemLSCT.NhanNK_HoTen,
+                                itemLSCT.NguoiKy,
+                                itemLSCT.CatDM,
+                                itemLSCT.YeuCauCat,
+                                itemLSCT.NhanDM,
+                                itemLSCT.SoNK,
+                            };
+                return LINQToDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
 
-        public DataTable LoadDSCatChuyenDM(DateTime TuNgay, DateTime DenNgay, int MaQuan, int MaPhuong)
+        public DataTable getDSCatChuyenDM(DateTime FromCreateDate, DateTime ToCreateDate, int MaQuan, int MaPhuong)
         {
-            string sql = "select t1.*,t3.TenQuan from ChungTu_LichSu t1"
-                        + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
-                        + " left join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
-                        + " left join SERVER8.CAPNUOCTANHOA.dbo.PHUONG t4 on t2.PHUONG=t4.MAPHUONG and t2.QUAN=t4.MAQUAN"
-                        + " where CAST(t1.CreateDate as date)>='" + TuNgay.ToString("yyyy-MM-dd") + "' and CAST(t1.CreateDate as date)<='" + DenNgay.ToString("yyyy-MM-dd") + "'"
-                        + " and SoPhieu is not null and t4.MaQuan=" + MaQuan + " and t4.MaPhuong=" + MaPhuong;
-
-            return ExecuteQuery_DataTable(sql);
+            //string sql = "select t1.*,t3.TenQuan from ChungTu_LichSu t1"
+            //            + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo"
+            //            + " left join SERVER8.CAPNUOCTANHOA.dbo.QUAN t3 on t2.QUAN=t3.MAQUAN"
+            //            + " left join SERVER8.CAPNUOCTANHOA.dbo.PHUONG t4 on t2.PHUONG=t4.MAPHUONG and t2.QUAN=t4.MAQUAN"
+            //            + " where CAST(t1.CreateDate as date)>='" + FromCreateDate.ToString("yyyy-MM-dd") + "' and CAST(t1.CreateDate as date)<='" + ToCreateDate.ToString("yyyy-MM-dd") + "'"
+            //            + " and SoPhieu is not null and t4.MaQuan=" + MaQuan + " and t4.MaPhuong=" + MaPhuong;
+            //return ExecuteQuery_DataTable(sql);
+            try
+            {
+                var query = from itemLSCT in db.ChungTu_LichSus
+                            where itemLSCT.SoPhieu != null && itemLSCT.CreateDate.Value.Date >= FromCreateDate.Date && itemLSCT.CreateDate.Value.Date <= ToCreateDate.Date && Convert.ToInt32(itemLSCT.Quan) == MaQuan && Convert.ToInt32(itemLSCT.Phuong) == MaPhuong
+                            select new
+                            {
+                                In = false,
+                                itemLSCT.SoPhieu,
+                                Ma = itemLSCT.SoPhieu,
+                                ID = itemLSCT.SoPhieu,
+                                DanhBo = itemLSCT.NhanNK_DanhBo,
+                                HoTen = itemLSCT.NhanNK_HoTen,
+                                itemLSCT.NguoiKy,
+                                itemLSCT.CatDM,
+                                itemLSCT.YeuCauCat,
+                                itemLSCT.NhanDM,
+                                itemLSCT.SoNK,
+                            };
+                return LINQToDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
 
         /// <summary>

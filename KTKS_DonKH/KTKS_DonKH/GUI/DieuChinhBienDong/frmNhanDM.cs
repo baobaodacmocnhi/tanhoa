@@ -207,6 +207,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         default:
                                             break;
                                     }
+                                    lichsuchungtu.Quan = _dataT.Quan;
+                                    lichsuchungtu.Phuong = _dataT.Phuong;
                                     lichsuchungtu.DanhBo = txtDanhBo_Nhan.Text.Trim();
                                     lichsuchungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
                                     lichsuchungtu.MaCT = txtMaCT.Text.Trim();
@@ -288,6 +290,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         default:
                                             break;
                                     }
+                                    lichsuchungtu.Quan = _dataT.Quan;
+                                    lichsuchungtu.Phuong = _dataT.Phuong;
                                     lichsuchungtu.DanhBo = txtDanhBo_Nhan.Text.Trim();
                                     lichsuchungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
                                     lichsuchungtu.MaCT = txtMaCT.Text.Trim();
