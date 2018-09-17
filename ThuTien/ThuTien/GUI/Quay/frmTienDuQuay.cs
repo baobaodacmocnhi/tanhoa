@@ -457,5 +457,57 @@ namespace ThuTien.GUI.Quay
                 //    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void dgvTienAm_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (dgvTienAm.RowCount > 0 && e.Button == MouseButtons.Left && dgvTienAm.Columns[e.ColumnIndex].Name != "DienThoai_TienDu")
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    frmDieuChinhTienDuQuay frm = new frmDieuChinhTienDuQuay(dgvTienAm["DanhBo_TienAm", e.RowIndex].Value.ToString(), dgvTienAm["SoTien_TienAm", e.RowIndex].Value.ToString());
+                    if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        _cTienDuQuay.Refresh();
+                        btnXem.PerformClick();
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnInDSPhanTo_Click(object sender, EventArgs e)
+        {
+            dsBaoCao dsBaoCao = new dsBaoCao();
+            foreach (DataGridViewRow item in dgvTienDu.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["TamThuChuyenKhoan"].NewRow();
+
+                HOADON hoadon = _cHoaDon.GetMoiNhat(item.Cells["DanhBo_TienDu"].Value.ToString());
+                dr["LoaiBaoCao"] = "TIỀN DƯ QUẦY";
+                dr["DanhBo"] = hoadon.DANHBA.Insert(7, " ").Insert(4, " ");
+                dr["HoTen"] = hoadon.TENKH;
+                dr["MLT"] = hoadon.MALOTRINH.Insert(4, " ").Insert(2, " ");
+                //dr["Ky"] = item.Cells["Ky_TG"].Value.ToString();
+                //dr["TongCong"] = item.Cells["TongCong_TG"].Value.ToString();
+                if (hoadon.MaNV_HanhThu != null)
+                {
+                    TT_NguoiDung nguoidung = _cNguoiDung.GetByMaND(hoadon.MaNV_HanhThu.Value);
+                    dr["HanhThu"] = nguoidung.HoTen;
+                    dr["To"] = nguoidung.TT_To.TenTo;
+                }
+                if (hoadon.GB > 20)
+                    dr["Loai"] = "CQ";
+                else
+                    dr["Loai"] = "TG";
+                dsBaoCao.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
+            }
+            rptDSTamThuChuyenKhoan rpt = new rptDSTamThuChuyenKhoan();
+            rpt.SetDataSource(dsBaoCao);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
+        }
+
+
     }
 }

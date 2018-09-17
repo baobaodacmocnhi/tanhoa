@@ -334,11 +334,11 @@ namespace ThuTien.GUI.ToTruong
                                             ///chọn 1 kỳ cụ thể
                                             else
                                                 if (cmbKy.SelectedIndex > 0)
-                                                ///chọn tất cả các đợt
+                                                    ///chọn tất cả các đợt
                                                     if (cmbFromDot.SelectedIndex == 0)
-                                                {
-                                                    dgvHDCoQuan.DataSource = _cHoaDon.GetTongTon_To("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                                                }
+                                                    {
+                                                        dgvHDCoQuan.DataSource = _cHoaDon.GetTongTon_To("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                                    }
                                                     else
                                                         ///chọn 1 đợt cụ thể
                                                         if (cmbFromDot.SelectedIndex > 0)
