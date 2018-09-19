@@ -43,6 +43,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabTTKH = new System.Windows.Forms.TabPage();
+            this.txtNguoiBao = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.txtDienThoai = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtDinhMuc = new System.Windows.Forms.TextBox();
@@ -101,8 +103,6 @@
             this.txtDM = new System.Windows.Forms.TextBox();
             this.chkcmbNoiNhanKTXM = new DevExpress.XtraEditors.CheckedComboBoxEdit();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtNguoiBao = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tabTTKH.SuspendLayout();
             this.tabCongVan.SuspendLayout();
@@ -249,6 +249,22 @@
             this.tabTTKH.TabIndex = 0;
             this.tabTTKH.Text = "Thông Tin Khách Hàng";
             this.tabTTKH.UseVisualStyleBackColor = true;
+            // 
+            // txtNguoiBao
+            // 
+            this.txtNguoiBao.Location = new System.Drawing.Point(98, 89);
+            this.txtNguoiBao.Name = "txtNguoiBao";
+            this.txtNguoiBao.Size = new System.Drawing.Size(100, 22);
+            this.txtNguoiBao.TabIndex = 17;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(6, 92);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(72, 16);
+            this.label19.TabIndex = 16;
+            this.label19.Text = "Người Báo";
             // 
             // txtDienThoai
             // 
@@ -590,6 +606,7 @@
             this.dgvLichSuDonTu.ReadOnly = true;
             this.dgvLichSuDonTu.Size = new System.Drawing.Size(858, 200);
             this.dgvLichSuDonTu.TabIndex = 80;
+            this.dgvLichSuDonTu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLichSuDonTu_CellContentClick);
             this.dgvLichSuDonTu.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLichSuDonTu_CellMouseClick);
             this.dgvLichSuDonTu.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvLichSuDonTu_MouseClick);
             // 
@@ -762,22 +779,6 @@
             this.label1.Size = new System.Drawing.Size(184, 16);
             this.label1.TabIndex = 82;
             this.label1.Text = "Nhân Viên Kiểm Tra Xác Minh";
-            // 
-            // txtNguoiBao
-            // 
-            this.txtNguoiBao.Location = new System.Drawing.Point(98, 89);
-            this.txtNguoiBao.Name = "txtNguoiBao";
-            this.txtNguoiBao.Size = new System.Drawing.Size(100, 22);
-            this.txtNguoiBao.TabIndex = 17;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(6, 92);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(72, 16);
-            this.label19.TabIndex = 16;
-            this.label19.Text = "Người Báo";
             // 
             // frmCapNhatDonTu
             // 

@@ -23,6 +23,7 @@ namespace KTKS_DonKH.GUI.DonTu
 
         LinQ.DonTu _dontu = null;
         DonTu_ChiTiet _dontu_ChiTiet = null;
+        DonTu_LichSu _dontu_LichSu = null;
 
         public frmCapNhatDonTu()
         {
@@ -103,6 +104,17 @@ namespace KTKS_DonKH.GUI.DonTu
                     dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
         }
 
+        public void FillLichSu(DonTu_LichSu en)
+        {
+            dateChuyen.Value = en.NgayChuyen.Value;
+            cmbNoiChuyen.SelectedValue = en.ID_NoiChuyen;
+            if (en.ID_NoiNhan!=null)
+            chkcmbNoiNhan.SetEditValue(en.ID_NoiNhan);
+            if (en.ID_KTXM != null)
+            chkcmbNoiNhanKTXM.SetEditValue(en.ID_KTXM);
+            txtNoiDung_LichSu.Text = en.NoiDung;
+        }
+
         public void Clear()
         {
             txtSoCongVan.Text = "";
@@ -127,6 +139,7 @@ namespace KTKS_DonKH.GUI.DonTu
 
             _dontu = null;
             _dontu_ChiTiet = null;
+            _dontu_LichSu = null;
         }
 
         private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
@@ -169,6 +182,11 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 try
                 {
+                    if (_dontu_LichSu != null)
+                    {
+
+                    }
+                    else
                     if (_dontu != null)
                     {
                         bool flag = false;//ghi nhận có chọn checkcombobox
@@ -308,6 +326,19 @@ namespace KTKS_DonKH.GUI.DonTu
                     chkcmbNoiNhanKTXM.Properties.ValueMember = "MaU";
                     chkcmbNoiNhanKTXM.Properties.DisplayMember = "HoTen";
                 }
+        }
+
+        private void dgvLichSuDonTu_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                _dontu_LichSu = _cDonTu.get_LichSu(int.Parse(dgvLichSuDonTu.CurrentRow.Cells["ID"].Value.ToString()));
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
         }
     }
 }
