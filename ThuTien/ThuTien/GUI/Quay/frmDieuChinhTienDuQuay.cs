@@ -19,7 +19,7 @@ namespace ThuTien.GUI.Quay
     {
         string _DanhBo = "";
         string _SoTien = "";
-        string _mnu = "mnuTienDu";
+        string _mnu = "mnuTienDuQuay";
         CTienDuQuay _cTienDu = new CTienDuQuay();
         CHoaDon _cHoaDon = new CHoaDon();
 
@@ -43,10 +43,10 @@ namespace ThuTien.GUI.Quay
                 txtDanhBoCTA.Text = txtDanhBoSuaTien.Text = _DanhBo.Insert(7, " ").Insert(4, " ");
             txtSoTienCTA.Text = txtSoTienCu.Text = _SoTien;
 
-            if (CNguoiDung.MaND == 0||CNguoiDung.Doi == true)
-                btnSua.Enabled = true;
-            else
-                btnSua.Enabled = false;
+            //if (CNguoiDung.MaND == 0||CNguoiDung.Doi == true)
+            //    btnSua.Enabled = true;
+            //else
+            //    btnSua.Enabled = false;
         }
 
         private void txtDanhBoCTB_KeyPress(object sender, KeyPressEventArgs e)
