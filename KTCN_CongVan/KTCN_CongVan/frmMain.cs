@@ -17,6 +17,7 @@ namespace KTCN_CongVan
         CongVanDen _congvanden = null;
         CCongVanDi _cCongVanDi = new CCongVanDi();
         CCongVanDen _cCongVanDen = new CCongVanDen();
+        CToThietKe _cTTK = new CToThietKe();
 
         public frmMain()
         {
@@ -42,7 +43,8 @@ namespace KTCN_CongVan
             }
             txtNoiDung_Den.AutoCompleteCustomSource = autoNoiDung_Den;
 
-            //////////////
+            /////////////////////
+
             dgvCongVan_Di.AutoGenerateColumns = false;
             DataTable dtLoaiCongVan_Di = _cCongVanDi.GetLoaiCongVan();
             AutoCompleteStringCollection auto_Di = new AutoCompleteStringCollection();
@@ -59,6 +61,13 @@ namespace KTCN_CongVan
                 autoNoiDung_Di.Add(item["NoiDung"].ToString());
             }
             txtNoiDung_Di.AutoCompleteCustomSource = autoNoiDung_Di;
+
+            /////////////////////
+
+            dgvDotThiCong.AutoGenerateColumns = false;
+            dgvDSHoSo.AutoGenerateColumns = false;
+
+            
         }
 
         private void LoadCongVanDi(CongVanDi entity)
@@ -430,8 +439,58 @@ namespace KTCN_CongVan
                 dateNgayHetHan_Den.Enabled = false;
         }
 
-        
+        /////////////////////
 
-        
+        private void btnXem_TTK_Click(object sender, EventArgs e)
+        {
+            if (radNgayLap.Checked == true)
+                dgvDotThiCong.DataSource = _cTTK.getDSDotThiCong_NgayLap(dateTu.Value, dateDen.Value);
+            else
+                if (radNgayChuyen.Checked == true)
+                    dgvDotThiCong.DataSource = _cTTK.getDSDotThiCong_NgayChuyen(dateTu.Value, dateDen.Value);
+                else
+                    if (radTon.Checked == true)
+                        dgvDotThiCong.DataSource = _cTTK.getDSDotThiCong_Ton();
+        }
+
+        private void dgvDotThiCong_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                dgvDSHoSo.DataSource = _cTTK.getDSHoSo(dgvDotThiCong.CurrentRow.Cells["MaDot"].Value.ToString());
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private void dgvDotThiCong_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDotThiCong.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvDSHoSo_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDSHoSo.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvDotThiCong_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            if (dgvDotThiCong.Rows[e.RowIndex].Cells["Ton"].Value!=null&&bool.Parse(dgvDotThiCong.Rows[e.RowIndex].Cells["Ton"].Value.ToString()) == true)
+                dgvDotThiCong.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
+        }
+
+        private void dgvDSHoSo_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            if (DateTime.Parse(dgvDSHoSo.Rows[e.RowIndex].Cells["NgayGiaoSDV"].Value.ToString()).AddDays(5).Date <= DateTime.Now.Date && dgvDSHoSo.Rows[e.RowIndex].Cells["NgayLapBG"].Value.ToString() == "" && dgvDSHoSo.Rows[e.RowIndex].Cells["NgayTraHS"].Value.ToString() == "")
+                dgvDSHoSo.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
+        }
     }
 }

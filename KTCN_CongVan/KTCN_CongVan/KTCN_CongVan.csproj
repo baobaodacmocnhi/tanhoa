@@ -30,7 +30,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>11</ApplicationRevision>
+    <ApplicationRevision>14</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -93,9 +93,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\CConnection.cs" />
     <Compile Include="DAL\CCongVanDen.cs" />
     <Compile Include="DAL\CCongVanDi.cs" />
     <Compile Include="DAL\CDAL.cs" />
+    <Compile Include="DAL\CToThietKe.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -27,7 +27,7 @@ namespace KTCN_CongVan.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=serverg8-01;Initial Catalog=KTCN_CongVan;Persist Security Info=True;U" +
-            "ser ID=tanhoa;Password=tanhoavn@11")]
+            "ser ID=sa;Password=db11@tanhoa")]
         public string KTCN_CongVanConnectionString {
             get {
                 return ((string)(this["KTCN_CongVanConnectionString"]));
