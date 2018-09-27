@@ -66,8 +66,8 @@ namespace KTCN_CongVan
 
             dgvDotThiCong.AutoGenerateColumns = false;
             dgvDSHoSo.AutoGenerateColumns = false;
+            cmbLoaiHoSo_TTK.SelectedIndex = 0;
 
-            
         }
 
         private void LoadCongVanDi(CongVanDi entity)
@@ -209,7 +209,7 @@ namespace KTCN_CongVan
 
         private void btnXem_Di_Click(object sender, EventArgs e)
         {
-            
+
             switch (cmbTimTheo_Di.SelectedItem.ToString())
             {
                 case "Số Công Văn":
@@ -395,7 +395,7 @@ namespace KTCN_CongVan
 
         private void btnXem_Den_Click(object sender, EventArgs e)
         {
-           
+
             switch (cmbTimTheo_Den.SelectedItem.ToString())
             {
                 case "Số Công Văn":
@@ -443,14 +443,51 @@ namespace KTCN_CongVan
 
         private void btnXem_TTK_Click(object sender, EventArgs e)
         {
-            if (radNgayLap.Checked == true)
-                dgvDotThiCong.DataSource = _cTTK.getDSDotThiCong_NgayLap(dateTu.Value, dateDen.Value);
-            else
-                if (radNgayChuyen.Checked == true)
-                    dgvDotThiCong.DataSource = _cTTK.getDSDotThiCong_NgayChuyen(dateTu.Value, dateDen.Value);
+            try
+            {
+                string LoaiHoSo = "";
+                switch (cmbLoaiHoSo_TTK.SelectedIndex)
+                {
+                    case 0:
+                        LoaiHoSo = "";
+                        break;
+                    case 1:
+                        LoaiHoSo = "GanMoi";
+                        break;
+                    case 2:
+                        LoaiHoSo = "CatHuy";
+                        break;
+                    case 3:
+                        LoaiHoSo = "DichVu";
+                        break;
+                    default:
+                        break;
+                }
+                if (radNgayLap.Checked == true)
+                    dgvDotThiCong.DataSource = _cTTK.getDSDotThiCong_NgayLap(LoaiHoSo, dateTu.Value, dateDen.Value);
                 else
-                    if (radTon.Checked == true)
-                        dgvDotThiCong.DataSource = _cTTK.getDSDotThiCong_Ton();
+                    if (radNgayChuyen.Checked == true)
+                        dgvDotThiCong.DataSource = _cTTK.getDSDotThiCong_NgayChuyen(LoaiHoSo, dateTu.Value, dateDen.Value);
+                    else
+                        if (radTon.Checked == true)
+                            dgvDotThiCong.DataSource = _cTTK.getDSDotThiCong_Ton(LoaiHoSo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnTimKiem_TTK_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dgvDotThiCong.DataSource = _cTTK.getDSDotThiCong(txtMaDot_TTK.Text.Trim());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dgvDotThiCong_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -483,14 +520,35 @@ namespace KTCN_CongVan
 
         private void dgvDotThiCong_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
-            if (dgvDotThiCong.Rows[e.RowIndex].Cells["Ton"].Value!=null&&bool.Parse(dgvDotThiCong.Rows[e.RowIndex].Cells["Ton"].Value.ToString()) == true)
-                dgvDotThiCong.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
+            if (dgvDotThiCong.Rows[e.RowIndex].Cells["NgayGiaoSDV_DTC"].Value != null && dgvDotThiCong.Rows[e.RowIndex].Cells["NgayGiaoSDV_DTC"].Value.ToString() != "")
+                if (dgvDotThiCong.Rows[e.RowIndex].Cells["MaLoai"].Value.ToString() == "GM" || dgvDotThiCong.Rows[e.RowIndex].Cells["MaLoai"].Value.ToString() == "HD")
+                {
+                    if (_cTTK.GetToDate(DateTime.Parse(dgvDotThiCong.Rows[e.RowIndex].Cells["NgayGiaoSDV_DTC"].Value.ToString()), 5).Date <= DateTime.Now.Date)
+                        dgvDotThiCong.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
+                }
+                else
+                    if (_cTTK.GetToDate(DateTime.Parse(dgvDotThiCong.Rows[e.RowIndex].Cells["NgayGiaoSDV_DTC"].Value.ToString()), 2).Date <= DateTime.Now.Date)
+                        dgvDotThiCong.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
         }
 
         private void dgvDSHoSo_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
-            if (DateTime.Parse(dgvDSHoSo.Rows[e.RowIndex].Cells["NgayGiaoSDV"].Value.ToString()).AddDays(5).Date <= DateTime.Now.Date && dgvDSHoSo.Rows[e.RowIndex].Cells["NgayLapBG"].Value.ToString() == "" && dgvDSHoSo.Rows[e.RowIndex].Cells["NgayTraHS"].Value.ToString() == "")
-                dgvDSHoSo.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
+            if (dgvDSHoSo.Rows[e.RowIndex].Cells["MaLoaiHoSo"].Value.ToString() == "GM" || dgvDSHoSo.Rows[e.RowIndex].Cells["MaLoaiHoSo"].Value.ToString() == "HD")
+            {
+                if (dgvDSHoSo.Rows[e.RowIndex].Cells["HoSoCha"].Value.ToString() == "" && (dgvDSHoSo.Rows[e.RowIndex].Cells["NgayGiaoSDV"].Value.ToString() == "" || (_cTTK.GetToDate(DateTime.Parse(dgvDSHoSo.Rows[e.RowIndex].Cells["NgayGiaoSDV"].Value.ToString()), 5).Date <= DateTime.Now.Date && dgvDSHoSo.Rows[e.RowIndex].Cells["NgayLapBG"].Value.ToString() == "" && dgvDSHoSo.Rows[e.RowIndex].Cells["NgayTraHS"].Value.ToString() == "")))
+                    dgvDSHoSo.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
+            }
+            else
+                if (dgvDSHoSo.Rows[e.RowIndex].Cells["HoSoCha"].Value.ToString() == "" && (dgvDSHoSo.Rows[e.RowIndex].Cells["NgayGiaoSDV"].Value.ToString() == "" || (_cTTK.GetToDate(DateTime.Parse(dgvDSHoSo.Rows[e.RowIndex].Cells["NgayGiaoSDV"].Value.ToString()), 2).Date <= DateTime.Now.Date && dgvDSHoSo.Rows[e.RowIndex].Cells["NgayLapBG"].Value.ToString() == "" && dgvDSHoSo.Rows[e.RowIndex].Cells["NgayTraHS"].Value.ToString() == "")))
+                    dgvDSHoSo.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
         }
+
+        private void txtMaDot_TTK_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                btnTimKiem_TTK.PerformClick();
+        }
+
+
     }
 }
