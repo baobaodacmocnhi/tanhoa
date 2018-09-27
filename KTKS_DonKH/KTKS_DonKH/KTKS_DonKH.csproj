@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>871</ApplicationRevision>
+    <ApplicationRevision>873</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -62,7 +62,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\logoicon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Treetog Documents.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>329B80D84C8AA29BDC70CF7EFD0D83652F374D05</ManifestCertificateThumbprint>
@@ -2033,6 +2033,7 @@
     <None Include="Resources\down 24x24.png" />
     <None Include="Resources\email receive 48.png" />
     <None Include="Resources\email send 48.png" />
+    <None Include="Resources\Treetog Documents.ico" />
     <Content Include="Sources\AxInterop.AcroPDFLib.dll" />
     <Content Include="Sources\DevComponents.DotNetBar2.dll" />
     <Content Include="Sources\IrisSkin2.dll" />

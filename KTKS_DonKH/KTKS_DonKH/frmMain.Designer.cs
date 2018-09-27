@@ -44,6 +44,7 @@
             this.mnuNhanDonTu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCapNhatDonTu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDSDonTu = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuBaoCaoDonTu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToKhachHang = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuNhanDonTKH = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCapNhatDon = new System.Windows.Forms.ToolStripMenuItem();
@@ -118,7 +119,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
-            this.mnuBaoCaoDonTu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -260,6 +260,13 @@
             this.mnuDSDonTu.Size = new System.Drawing.Size(169, 22);
             this.mnuDSDonTu.Text = "Danh Sách Đơn";
             this.mnuDSDonTu.Click += new System.EventHandler(this.mnuDSDonTu_Click);
+            // 
+            // mnuBaoCaoDonTu
+            // 
+            this.mnuBaoCaoDonTu.Name = "mnuBaoCaoDonTu";
+            this.mnuBaoCaoDonTu.Size = new System.Drawing.Size(169, 22);
+            this.mnuBaoCaoDonTu.Text = "Báo Cáo";
+            this.mnuBaoCaoDonTu.Click += new System.EventHandler(this.mnuBaoCaoDonTu_Click);
             // 
             // mnuToKhachHang
             // 
@@ -841,13 +848,6 @@
             this.StripStatus_HoTen.Name = "StripStatus_HoTen";
             this.StripStatus_HoTen.Size = new System.Drawing.Size(205, 17);
             this.StripStatus_HoTen.Text = "                                                 Xin Chào:";
-            // 
-            // mnuBaoCaoDonTu
-            // 
-            this.mnuBaoCaoDonTu.Name = "mnuBaoCaoDonTu";
-            this.mnuBaoCaoDonTu.Size = new System.Drawing.Size(169, 22);
-            this.mnuBaoCaoDonTu.Text = "Báo Cáo";
-            this.mnuBaoCaoDonTu.Click += new System.EventHandler(this.mnuBaoCaoDonTu_Click);
             // 
             // frmMain
             // 

@@ -10,84 +10,64 @@ namespace KTKS_DonKH.DAL.QuanTri
 {
     class CBanGiamDoc : CDAL
     {
-        public List<BanGiamDoc> LoadDSBanGiamDoc()
+        public List<BanGiamDoc> getDS_Admin()
         {
-            try
-            {
-                    return db.BanGiamDocs.ToList();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+            return db.BanGiamDocs.ToList();
         }
 
-        public BanGiamDoc getBanGiamDocbyID(int MaBGD)
+        public List<BanGiamDoc> getDS()
         {
-            try
-            {
-                return db.BanGiamDocs.Single(itemBGD => itemBGD.MaBGD == MaBGD);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+            return db.BanGiamDocs.Where(item=>item.An==false).ToList();
         }
 
-        public bool ThemBanGiamDoc(BanGiamDoc bangiamdoc)
+        public BanGiamDoc get(int ID)
         {
-            try
-            {
-                    if (db.BanGiamDocs.Count() > 0)
-                        bangiamdoc.MaBGD = db.BanGiamDocs.Max(itemBGD => itemBGD.MaBGD) + 1;
-                    else
-                        bangiamdoc.MaBGD = 1;
-                    bangiamdoc.CreateDate = DateTime.Now;
-                    bangiamdoc.CreateBy = CTaiKhoan.MaUser;
-                    db.BanGiamDocs.InsertOnSubmit(bangiamdoc);
-                    db.SubmitChanges();
-                    MessageBox.Show("Thành công Thêm BanGiamDoc", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
-            }
-        }
-
-        public bool SuaBanGiamDoc(BanGiamDoc bangiamdoc)
-        {
-            try
-            {
-                    bangiamdoc.ModifyDate = DateTime.Now;
-                    bangiamdoc.ModifyBy = CTaiKhoan.MaUser;
-                    db.SubmitChanges();
-                    MessageBox.Show("Thành công Sửa BanGiamDoc", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
-            }
+            return db.BanGiamDocs.Single(itemBGD => itemBGD.MaBGD == ID);
         }
 
         public BanGiamDoc getBGDNguoiKy()
         {
+            return db.BanGiamDocs.SingleOrDefault(itemBGD => itemBGD.KyTen == true);
+        }
+
+        public bool Them(BanGiamDoc bangiamdoc)
+        {
             try
             {
-                return db.BanGiamDocs.SingleOrDefault(itemBGD => itemBGD.KyTen == true);
+                if (db.BanGiamDocs.Count() > 0)
+                    bangiamdoc.MaBGD = db.BanGiamDocs.Max(itemBGD => itemBGD.MaBGD) + 1;
+                else
+                    bangiamdoc.MaBGD = 1;
+                bangiamdoc.CreateDate = DateTime.Now;
+                bangiamdoc.CreateBy = CTaiKhoan.MaUser;
+                db.BanGiamDocs.InsertOnSubmit(bangiamdoc);
+                db.SubmitChanges();
+                MessageBox.Show("Thành công Thêm BanGiamDoc", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                Refresh();
+                throw ex;
             }
         }
+
+        public bool Sua(BanGiamDoc bangiamdoc)
+        {
+            try
+            {
+                bangiamdoc.ModifyDate = DateTime.Now;
+                bangiamdoc.ModifyBy = CTaiKhoan.MaUser;
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        
     }
 }

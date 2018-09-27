@@ -3300,6 +3300,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _KyTen;
 		
+		private bool _An;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -3320,6 +3322,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnHoTenChanged();
     partial void OnKyTenChanging(bool value);
     partial void OnKyTenChanged();
+    partial void OnAnChanging(bool value);
+    partial void OnAnChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -3411,6 +3415,26 @@ namespace KTKS_DonKH.LinQ
 					this._KyTen = value;
 					this.SendPropertyChanged("KyTen");
 					this.OnKyTenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_An", DbType="Bit NOT NULL")]
+		public bool An
+		{
+			get
+			{
+				return this._An;
+			}
+			set
+			{
+				if ((this._An != value))
+				{
+					this.OnAnChanging(value);
+					this.SendPropertyChanging();
+					this._An = value;
+					this.SendPropertyChanged("An");
+					this.OnAnChanged();
 				}
 			}
 		}

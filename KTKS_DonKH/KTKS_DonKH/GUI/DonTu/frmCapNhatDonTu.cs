@@ -106,12 +106,16 @@ namespace KTKS_DonKH.GUI.DonTu
 
         public void FillLichSu(DonTu_LichSu en)
         {
+            for (int i = 0; i < chkcmbNoiNhan.Properties.Items.Count; i++)
+                chkcmbNoiNhan.Properties.Items[i].CheckState = CheckState.Unchecked;
+            for (int i = 0; i < chkcmbNoiNhanKTXM.Properties.Items.Count; i++)
+                chkcmbNoiNhanKTXM.Properties.Items[i].CheckState = CheckState.Unchecked;
             dateChuyen.Value = en.NgayChuyen.Value;
             cmbNoiChuyen.SelectedValue = en.ID_NoiChuyen;
-            if (en.ID_NoiNhan!=null)
-            chkcmbNoiNhan.SetEditValue(en.ID_NoiNhan);
+            if (en.ID_NoiNhan != null)
+                chkcmbNoiNhan.SetEditValue(en.ID_NoiNhan);
             if (en.ID_KTXM != null)
-            chkcmbNoiNhanKTXM.SetEditValue(en.ID_KTXM);
+                chkcmbNoiNhanKTXM.SetEditValue(en.ID_KTXM);
             txtNoiDung_LichSu.Text = en.NoiDung;
         }
 
@@ -184,79 +188,144 @@ namespace KTKS_DonKH.GUI.DonTu
                 {
                     if (_dontu_LichSu != null)
                     {
-
+                        //bool flag = false;//ghi nhận có chọn checkcombobox
+                        //if (chkcmbNoiNhan.Properties.Items.Count > 0)
+                        //{
+                        //    for (int i = 0; i < chkcmbNoiNhan.Properties.Items.Count; i++)
+                        //        if (chkcmbNoiNhan.Properties.Items[i].CheckState == CheckState.Checked)
+                        //        {
+                        //            //đi KTXM
+                        //            if (chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "1")
+                        //            {
+                        //                DonTu_LichSu entity = new DonTu_LichSu();
+                        //                entity.NgayChuyen = dateChuyen.Value;
+                        //                entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
+                        //                entity.NoiChuyen = cmbNoiChuyen.Text;
+                        //                entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+                        //                entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
+                        //                entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
+                        //                entity.MaDon = _dontu.MaDon;
+                        //                if (_dontu_ChiTiet == null)
+                        //                    entity.STT = 1;
+                        //                else
+                        //                    entity.STT = _dontu_ChiTiet.STT;
+                        //                for (int j = 0; j < chkcmbNoiNhanKTXM.Properties.Items.Count; j++)
+                        //                    if (chkcmbNoiNhanKTXM.Properties.Items[j].CheckState == CheckState.Checked)
+                        //                    {
+                        //                        entity.ID_KTXM = int.Parse(chkcmbNoiNhanKTXM.Properties.Items[j].Value.ToString());
+                        //                        entity.KTXM = chkcmbNoiNhanKTXM.Properties.Items[j].ToString();
+                        //                        _cDonTu.Them_LichSu(entity);
+                        //                    }
+                        //            }
+                        //            else
+                        //            {
+                        //                DonTu_LichSu entity = new DonTu_LichSu();
+                        //                entity.NgayChuyen = dateChuyen.Value;
+                        //                entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
+                        //                entity.NoiChuyen = cmbNoiChuyen.Text;
+                        //                entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+                        //                entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
+                        //                entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
+                        //                entity.MaDon = _dontu.MaDon;
+                        //                if (_dontu_ChiTiet == null)
+                        //                    entity.STT = 1;
+                        //                else
+                        //                    entity.STT = _dontu_ChiTiet.STT;
+                        //                _cDonTu.Them_LichSu(entity);
+                        //            }
+                        //            flag = true;
+                        //            chkcmbNoiNhan.Properties.Items[i].CheckState = CheckState.Unchecked;
+                        //        }
+                        //    if (flag == false)
+                        //    {
+                        //        DonTu_LichSu entity = new DonTu_LichSu();
+                        //        entity.NgayChuyen = dateChuyen.Value;
+                        //        entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
+                        //        entity.NoiChuyen = cmbNoiChuyen.Text;
+                        //        //entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+                        //        //entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
+                        //        entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
+                        //        entity.MaDon = _dontu.MaDon;
+                        //        if (_dontu_ChiTiet == null)
+                        //            entity.STT = 1;
+                        //        else
+                        //            entity.STT = _dontu_ChiTiet.STT;
+                        //        _cDonTu.Them_LichSu(entity);
+                        //    }
+                        //}
+                        //LoadLichSu();
                     }
                     else
-                    if (_dontu != null)
-                    {
-                        bool flag = false;//ghi nhận có chọn checkcombobox
-                        if (chkcmbNoiNhan.Properties.Items.Count > 0)
+                        if (_dontu != null)
                         {
-                            for (int i = 0; i < chkcmbNoiNhan.Properties.Items.Count; i++)
-                                if (chkcmbNoiNhan.Properties.Items[i].CheckState == CheckState.Checked)
-                                {
-                                    //đi KTXM
-                                    if (chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "1")
-                                    {
-                                        DonTu_LichSu entity = new DonTu_LichSu();
-                                        entity.NgayChuyen = dateChuyen.Value;
-                                        entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
-                                        entity.NoiChuyen = cmbNoiChuyen.Text;
-                                        entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
-                                        entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
-                                        entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
-                                        entity.MaDon = _dontu.MaDon;
-                                        if (_dontu_ChiTiet == null)
-                                            entity.STT = 1;
-                                        else
-                                            entity.STT = _dontu_ChiTiet.STT;
-                                        for (int j = 0; j < chkcmbNoiNhanKTXM.Properties.Items.Count; j++)
-                                            if (chkcmbNoiNhanKTXM.Properties.Items[j].CheckState == CheckState.Checked)
-                                            {
-                                                entity.ID_KTXM = int.Parse(chkcmbNoiNhanKTXM.Properties.Items[j].Value.ToString());
-                                                entity.KTXM = chkcmbNoiNhanKTXM.Properties.Items[j].ToString();
-                                                _cDonTu.Them_LichSu(entity);
-                                            }
-                                    }
-                                    else
-                                    {
-                                        DonTu_LichSu entity = new DonTu_LichSu();
-                                        entity.NgayChuyen = dateChuyen.Value;
-                                        entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
-                                        entity.NoiChuyen = cmbNoiChuyen.Text;
-                                        entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
-                                        entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
-                                        entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
-                                        entity.MaDon = _dontu.MaDon;
-                                        if (_dontu_ChiTiet == null)
-                                            entity.STT = 1;
-                                        else
-                                            entity.STT = _dontu_ChiTiet.STT;
-                                        _cDonTu.Them_LichSu(entity);
-                                    }
-                                    flag = true;
-                                    chkcmbNoiNhan.Properties.Items[i].CheckState = CheckState.Unchecked;
-                                }
-                            if (flag == false)
+                            bool flag = false;//ghi nhận có chọn checkcombobox
+                            if (chkcmbNoiNhan.Properties.Items.Count > 0)
                             {
-                                DonTu_LichSu entity = new DonTu_LichSu();
-                                entity.NgayChuyen = dateChuyen.Value;
-                                entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
-                                entity.NoiChuyen = cmbNoiChuyen.Text;
-                                //entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
-                                //entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
-                                entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
-                                entity.MaDon = _dontu.MaDon;
-                                if (_dontu_ChiTiet == null)
-                                    entity.STT = 1;
-                                else
-                                    entity.STT = _dontu_ChiTiet.STT;
-                                _cDonTu.Them_LichSu(entity);
+                                for (int i = 0; i < chkcmbNoiNhan.Properties.Items.Count; i++)
+                                    if (chkcmbNoiNhan.Properties.Items[i].CheckState == CheckState.Checked)
+                                    {
+                                        //đi KTXM
+                                        if (chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "1")
+                                        {
+                                            DonTu_LichSu entity = new DonTu_LichSu();
+                                            entity.NgayChuyen = dateChuyen.Value;
+                                            entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
+                                            entity.NoiChuyen = cmbNoiChuyen.Text;
+                                            entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+                                            entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
+                                            entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
+                                            entity.MaDon = _dontu.MaDon;
+                                            if (_dontu_ChiTiet == null)
+                                                entity.STT = 1;
+                                            else
+                                                entity.STT = _dontu_ChiTiet.STT;
+                                            for (int j = 0; j < chkcmbNoiNhanKTXM.Properties.Items.Count; j++)
+                                                if (chkcmbNoiNhanKTXM.Properties.Items[j].CheckState == CheckState.Checked)
+                                                {
+                                                    entity.ID_KTXM = int.Parse(chkcmbNoiNhanKTXM.Properties.Items[j].Value.ToString());
+                                                    entity.KTXM = chkcmbNoiNhanKTXM.Properties.Items[j].ToString();
+                                                    _cDonTu.Them_LichSu(entity);
+                                                }
+                                        }
+                                        else
+                                        {
+                                            DonTu_LichSu entity = new DonTu_LichSu();
+                                            entity.NgayChuyen = dateChuyen.Value;
+                                            entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
+                                            entity.NoiChuyen = cmbNoiChuyen.Text;
+                                            entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+                                            entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
+                                            entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
+                                            entity.MaDon = _dontu.MaDon;
+                                            if (_dontu_ChiTiet == null)
+                                                entity.STT = 1;
+                                            else
+                                                entity.STT = _dontu_ChiTiet.STT;
+                                            _cDonTu.Them_LichSu(entity);
+                                        }
+                                        flag = true;
+                                        chkcmbNoiNhan.Properties.Items[i].CheckState = CheckState.Unchecked;
+                                    }
+                                if (flag == false)
+                                {
+                                    DonTu_LichSu entity = new DonTu_LichSu();
+                                    entity.NgayChuyen = dateChuyen.Value;
+                                    entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
+                                    entity.NoiChuyen = cmbNoiChuyen.Text;
+                                    //entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+                                    //entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
+                                    entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
+                                    entity.MaDon = _dontu.MaDon;
+                                    if (_dontu_ChiTiet == null)
+                                        entity.STT = 1;
+                                    else
+                                        entity.STT = _dontu_ChiTiet.STT;
+                                    _cDonTu.Them_LichSu(entity);
+                                }
                             }
+                            LoadLichSu();
+                            //dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("DonTu", _dontu.MaDon);
                         }
-                        LoadLichSu();
-                        //dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("DonTu", _dontu.MaDon);
-                    }
                 }
                 catch (Exception ex)
                 {
@@ -333,6 +402,7 @@ namespace KTKS_DonKH.GUI.DonTu
             try
             {
                 _dontu_LichSu = _cDonTu.get_LichSu(int.Parse(dgvLichSuDonTu.CurrentRow.Cells["ID"].Value.ToString()));
+                FillLichSu(_dontu_LichSu);
             }
             catch (Exception)
             {

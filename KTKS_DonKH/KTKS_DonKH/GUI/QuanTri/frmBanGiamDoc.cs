@@ -17,6 +17,7 @@ namespace KTKS_DonKH.GUI.QuanTri
 {
     public partial class frmBanGiamDoc : Form
     {
+        string _mnu = "mnuBanGiamDoc";
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         int selectedindex = -1;
         CDCBD _cDCBD = new CDCBD();
@@ -43,14 +44,17 @@ namespace KTKS_DonKH.GUI.QuanTri
             txtChucVu.Text = "";
             txtHoTen.Text = "";
             selectedindex = -1;
-            dgvDSBanGiamDoc.DataSource = _cBanGiamDoc.LoadDSBanGiamDoc();
+            if (CTaiKhoan.Admin == true)
+                dgvDSBanGiamDoc.DataSource = _cBanGiamDoc.getDS_Admin();
+            else
+                dgvDSBanGiamDoc.DataSource = _cBanGiamDoc.getDS();
         }
 
         private void frmBanGiamDoc_Load(object sender, EventArgs e)
         {
             dgvDSBanGiamDoc.AutoGenerateColumns = false;
             dgvDSBanGiamDoc.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSBanGiamDoc.Font, FontStyle.Bold);
-            dgvDSBanGiamDoc.DataSource = _cBanGiamDoc.LoadDSBanGiamDoc();
+            dgvDSBanGiamDoc.DataSource = _cBanGiamDoc.getDS();
 
             dgvDanhSach.AutoGenerateColumns = false;
             dgvDanhSach.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDanhSach.Font, FontStyle.Bold);
@@ -58,33 +62,84 @@ namespace KTKS_DonKH.GUI.QuanTri
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (txtChucVu.Text.Trim() != "" && txtHoTen.Text.Trim() != "")
+            if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
             {
-                BanGiamDoc bangiamdoc = new BanGiamDoc();
-                bangiamdoc.ChucVu = txtChucVu.Text.Trim();
-                bangiamdoc.HoTen = txtHoTen.Text.Trim();
+                try
+                {
+                    if (txtChucVu.Text.Trim() != "" && txtHoTen.Text.Trim() != "")
+                    {
+                        BanGiamDoc bangiamdoc = new BanGiamDoc();
+                        bangiamdoc.ChucVu = txtChucVu.Text.Trim();
+                        bangiamdoc.HoTen = txtHoTen.Text.Trim();
 
-                if (_cBanGiamDoc.ThemBanGiamDoc(bangiamdoc))
-                    Clear();
+                        if (_cBanGiamDoc.Them(bangiamdoc))
+                            Clear();
+                    }
+                    else
+                        MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
-                MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (selectedindex != -1)
-                if (txtChucVu.Text.Trim() != "" && txtHoTen.Text.Trim() != "")
+            if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+            {
+                try
                 {
-                    BanGiamDoc bangiamdoc = _cBanGiamDoc.getBanGiamDocbyID(int.Parse(dgvDSBanGiamDoc["MaBGD", selectedindex].Value.ToString()));
-                    bangiamdoc.ChucVu = txtChucVu.Text.Trim();
-                    bangiamdoc.HoTen = txtHoTen.Text.Trim();
+                    if (selectedindex != -1)
+                        if (txtChucVu.Text.Trim() != "" && txtHoTen.Text.Trim() != "")
+                        {
+                            BanGiamDoc bangiamdoc = _cBanGiamDoc.get(int.Parse(dgvDSBanGiamDoc["MaBGD", selectedindex].Value.ToString()));
+                            bangiamdoc.ChucVu = txtChucVu.Text.Trim();
+                            bangiamdoc.HoTen = txtHoTen.Text.Trim();
 
-                    if (_cBanGiamDoc.SuaBanGiamDoc(bangiamdoc))
-                        Clear();
+                            if (_cBanGiamDoc.Sua(bangiamdoc))
+                                Clear();
+                        }
+                        else
+                            MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else
-                    MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
+            {
+                try
+                {
+                    if (selectedindex != -1)
+                        if (txtChucVu.Text.Trim() != "" && txtHoTen.Text.Trim() != "")
+                        {
+                            BanGiamDoc bangiamdoc = _cBanGiamDoc.get(int.Parse(dgvDSBanGiamDoc["MaBGD", selectedindex].Value.ToString()));
+                            bangiamdoc.An = true;
+
+                            if (_cBanGiamDoc.Sua(bangiamdoc))
+                                Clear();
+                        }
+                        else
+                            MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void dgvDSBanGiamDoc_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -110,11 +165,11 @@ namespace KTKS_DonKH.GUI.QuanTri
 
         private void dgvDSBanGiamDoc_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            BanGiamDoc bangiamdoc = _cBanGiamDoc.getBanGiamDocbyID(int.Parse(dgvDSBanGiamDoc["MaBGD", selectedindex].Value.ToString()));
+            BanGiamDoc bangiamdoc = _cBanGiamDoc.get(int.Parse(dgvDSBanGiamDoc["MaBGD", selectedindex].Value.ToString()));
             if (bool.Parse(dgvDSBanGiamDoc["KyTen", e.RowIndex].Value.ToString()) != bangiamdoc.KyTen)
             {
                 bangiamdoc.KyTen = bool.Parse(dgvDSBanGiamDoc["KyTen", e.RowIndex].Value.ToString());
-                _cBanGiamDoc.SuaBanGiamDoc(bangiamdoc);
+                _cBanGiamDoc.Sua(bangiamdoc);
             }
         }
 
@@ -134,7 +189,7 @@ namespace KTKS_DonKH.GUI.QuanTri
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            
+
             switch (cmbTimTheo.SelectedItem.ToString())
             {
                 case "Mã":
@@ -376,6 +431,8 @@ namespace KTKS_DonKH.GUI.QuanTri
                     break;
             }
         }
+
+
 
     }
 }
