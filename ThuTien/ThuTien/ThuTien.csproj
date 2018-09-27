@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>967</ApplicationRevision>
+    <ApplicationRevision>968</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -531,6 +531,7 @@
     <Compile Include="DAL\Doi\CHoaDon.cs" />
     <Compile Include="DAL\Doi\CHoaDonTon.cs" />
     <Compile Include="DAL\Doi\CDangKy.cs" />
+    <Compile Include="DAL\Doi\CNiemChi.cs" />
     <Compile Include="DAL\Doi\CPhiMoNuocDoi.cs" />
     <Compile Include="DAL\Doi\CToTrinhCatHuy.cs" />
     <Compile Include="DAL\DongNuoc\CDongNuoc.cs" />
@@ -701,6 +702,12 @@
     </Compile>
     <Compile Include="GUI\Doi\frmKetThucNamTaiKhoa.Designer.cs">
       <DependentUpon>frmKetThucNamTaiKhoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Doi\frmNiemChi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Doi\frmNiemChi.Designer.cs">
+      <DependentUpon>frmNiemChi.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Doi\frmKiemPortTon.cs">
       <SubType>Form</SubType>
@@ -1495,6 +1502,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmKetThucNamTaiKhoa.resx">
       <DependentUpon>frmKetThucNamTaiKhoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Doi\frmNiemChi.resx">
+      <DependentUpon>frmNiemChi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmKiemPortTon.resx">
       <DependentUpon>frmKiemPortTon.cs</DependentUpon>

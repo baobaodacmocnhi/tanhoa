@@ -110,14 +110,14 @@ namespace ThuTien.GUI.HanhThu
                     dgvTongHD.DataSource = _cHoaDon.GetTongByMaNVNamKyDot(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
                     dgvHDDaThuDum.DataSource = _cHoaDon.GetTongDangNgan("", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
                     dgvHDDaThu.DataSource = _cHoaDon.GetDSDangNganHanhThu(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
-                    dgvHDChuaThu.DataSource = _cHoaDon.GetDSTon_NV("", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), 1);
+                    dgvHDChuaThu.DataSource = _cHoaDon.GetDSTon_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), 1);
                 }
                 else
                 {
                     dgvTongHD.DataSource = _cHoaDon.GetTongByMaNVNamKyDot(CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
                     dgvHDDaThuDum.DataSource = _cHoaDon.GetTongDangNgan("", CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
                     dgvHDDaThu.DataSource = _cHoaDon.GetDSDangNganHanhThu(CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
-                    dgvHDChuaThu.DataSource = _cHoaDon.GetDSTon_NV("", CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), 1);
+                    dgvHDChuaThu.DataSource = _cHoaDon.GetDSTon_NV(CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), 1);
                 }
                 LoadDataGridView();
             }

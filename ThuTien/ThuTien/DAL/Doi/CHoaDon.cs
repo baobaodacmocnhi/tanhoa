@@ -700,244 +700,94 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
-        public DataTable GetTongTon_To(string Loai, int MaTo, int Nam, int Ky, int Dot)
+        public DataTable GetTongTon_To(int MaTo, int Nam, int Ky, int Dot)
         {
-            //if (Loai == "TG")
-            //{
-            //    string sql = "declare @Nam int;"
-            //                + " declare @Ky int;"
-            //                + " declare @Dot int;"
-            //                + " set @Nam=" + Nam + ";"
-            //                + " set @Ky=" + Ky + ";"
-            //                + " set @Dot=" + Dot + ";"
-            //                + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongGiaBanTon,TongCongTon,TongCongTonBilling"
-            //                + " from"
-            //                + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
-            //                + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-            //                + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-            //                + " and NAM=@Nam and KY=@Ky and DOT=@Dot and GB>=11 and GB<=20"
-            //                + " group by nd.MaND,nd.HoTen,DOT,KY,NAM) tong"
-            //                + " left join"
-            //                + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
-            //                + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-            //                + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-            //                + " and NAM=@Nam and KY=@Ky and DOT=@Dot and NGAYGIAITRACH is not null and GB>=11 and GB<=20"
-            //                + " group by nd.MaND,nd.HoTen,DOT,KY,NAM) thu on tong.MaND=thu.MaND"
-            //                + " left join"
-            //                + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-            //                + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-            //                + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-            //                + " and NAM=@Nam and KY=@Ky and DOT=@Dot and NGAYGIAITRACH is null and GB>=11 and GB<=20"
-            //                + " group by nd.MaND,nd.HoTen,DOT,KY,NAM) ton on tong.MaND=ton.MaND"
-            //                + " order by tong.MaND asc";
-
-            //    return ExecuteQuery_DataTable(sql);
-            //}
-            //else
-            //    if (Loai == "CQ")
-            //    {
-            //        string sql = "declare @Nam int;"
-            //                + " declare @Ky int;"
-            //                + " declare @Dot int;"
-            //                + " set @Nam=" + Nam + ";"
-            //                + " set @Ky=" + Ky + ";"
-            //                + " set @Dot=" + Dot + ";"
-            //                + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongGiaBanTon,TongCongTon,TongCongTonBilling"
-            //                + " from"
-            //                + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
-            //                + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-            //                + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-            //                + " and NAM=@Nam and KY=@Ky and DOT=@Dot and GB>20"
-            //                + " group by nd.MaND,nd.HoTen,DOT,KY,NAM) tong"
-            //                + " left join"
-            //                + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
-            //                + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-            //                + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-            //                + " and NAM=@Nam and KY=@Ky and DOT=@Dot and NGAYGIAITRACH is not null and GB>20"
-            //                + " group by nd.MaND,nd.HoTen,DOT,KY,NAM) thu on tong.MaND=thu.MaND"
-            //                + " left join"
-            //                + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-            //                + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-            //                + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-            //                + " and NAM=@Nam and KY=@Ky and DOT=@Dot and NGAYGIAITRACH is null and GB>20"
-            //                + " group by nd.MaND,nd.HoTen,DOT,KY,NAM) ton on tong.MaND=ton.MaND"
-            //                + " order by tong.MaND asc";
-
-            //        return ExecuteQuery_DataTable(sql);
-            //    }
-            //return null;
-            if (Loai == "TG")
-            {
                 string sql = "declare @Nam int;"
                             + " declare @Ky int;"
                             + " declare @Dot int;"
+                            + " declare @TuCuonGCS int;"
+                            + " declare @DenCuonGCS int;"
                             + " set @Nam=" + Nam + ";"
                             + " set @Ky=" + Ky + ";"
                             + " set @Dot=" + Dot + ";"
+                            + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
                             + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongGiaBanTon,TongCongTon,TongCongTonBilling,TongHDTonThucTe,TongGiaBanTonThucTe,TongCongTonThucTe,TongCongTonBillingThucTe"
                             + " from"
                             + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and GB>=11 and GB<=20"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot"
                             + " group by nd.MaND,nd.HoTen,DOT,KY,NAM) tong"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and NGAYGIAITRACH is not null and GB>=11 and GB<=20"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and NGAYGIAITRACH is not null"
                             + " group by nd.MaND,nd.HoTen,DOT,KY,NAM) thu on tong.MaND=thu.MaND"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
                             + " group by nd.MaND,nd.HoTen,DOT,KY,NAM) ton on tong.MaND=ton.MaND"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.GIABAN) as TongGiaBanTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe,sum(hd.TONGCONG) as TongCongTonBillingThucTe"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                             + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
-
                 return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " declare @Dot int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " set @Dot=" + Dot + ";"
-                            + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongGiaBanTon,TongCongTon,TongCongTonBilling,TongHDTonThucTe,TongGiaBanTonThucTe,TongCongTonThucTe,TongCongTonBillingThucTe"
-                            + " from"
-                            + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and GB>20"
-                            + " group by nd.MaND,nd.HoTen,DOT,KY,NAM) tong"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and NGAYGIAITRACH is not null and GB>20"
-                            + " group by nd.MaND,nd.HoTen,DOT,KY,NAM) thu on tong.MaND=thu.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by nd.MaND,nd.HoTen,DOT,KY,NAM) ton on tong.MaND=ton.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.GIABAN) as TongGiaBanTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe,sum(hd.TONGCONG) as TongCongTonBillingThucTe"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
-                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
-                            + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
-                            + " order by tong.MaND asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
         }
 
-        public DataTable GetTongTon_To(string Loai, int MaTo, int Nam, int Ky, int FromDot,int ToDot)
+        public DataTable GetTongTon_To(int MaTo, int Nam, int Ky, int FromDot, int ToDot)
         {
-            if (Loai == "TG")
-            {
-                string sql = "declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " declare @FromDot int;"
-                            + " declare @ToDot int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " set @FromDot=" + FromDot + ";"
-                            + " set @ToDot=" + ToDot + ";"
-                            + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongGiaBanTon,TongCongTon,TongCongTonBilling,TongHDTonThucTe,TongGiaBanTonThucTe,TongCongTonThucTe,TongCongTonBillingThucTe"
-                            + " from"
-                            + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen,KY,NAM) tong"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and NGAYGIAITRACH is not null and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen,KY,NAM) thu on tong.MaND=thu.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen,KY,NAM) ton on tong.MaND=ton.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.GIABAN) as TongGiaBanTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe,sum(hd.TONGCONG) as TongCongTonBillingThucTe"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
-                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
-                            + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
-                            + " order by tong.MaND asc";
-
-                return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " declare @FromDot int;"
-                            + " declare @ToDot int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " set @FromDot=" + FromDot + ";"
-                            + " set @ToDot=" + ToDot + ";"
-                            + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongGiaBanTon,TongCongTon,TongCongTonBilling,TongHDTonThucTe,TongGiaBanTonThucTe,TongCongTonThucTe,TongCongTonBillingThucTe"
-                            + " from"
-                            + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and GB>20"
-                            + " group by nd.MaND,nd.HoTen,KY,NAM) tong"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and NGAYGIAITRACH is not null and GB>20"
-                            + " group by nd.MaND,nd.HoTen,KY,NAM) thu on tong.MaND=thu.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by nd.MaND,nd.HoTen,KY,NAM) ton on tong.MaND=ton.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.GIABAN) as TongGiaBanTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe,sum(hd.TONGCONG) as TongCongTonBillingThucTe"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
-                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
-                            + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
-                            + " order by tong.MaND asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
+            string sql = "declare @Nam int;"
+                        + " declare @Ky int;"
+                        + " declare @FromDot int;"
+                        + " declare @ToDot int;"
+                        + " declare @TuCuonGCS int;"
+                        + " declare @DenCuonGCS int;"
+                        + " set @Nam=" + Nam + ";"
+                        + " set @Ky=" + Ky + ";"
+                        + " set @FromDot=" + FromDot + ";"
+                        + " set @ToDot=" + ToDot + ";"
+                        + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongGiaBanTon,TongCongTon,TongCongTonBilling,TongHDTonThucTe,TongGiaBanTonThucTe,TongCongTonThucTe,TongCongTonBillingThucTe"
+                        + " from"
+                        + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
+                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot"
+                        + " group by nd.MaND,nd.HoTen,KY,NAM) tong"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
+                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and NGAYGIAITRACH is not null"
+                        + " group by nd.MaND,nd.HoTen,KY,NAM) thu on tong.MaND=thu.MaND"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
+                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
+                        + " group by nd.MaND,nd.HoTen,KY,NAM) ton on tong.MaND=ton.MaND"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.GIABAN) as TongGiaBanTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe,sum(hd.TONGCONG) as TongCongTonBillingThucTe"
+                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
+                        + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
+                        + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
+                        + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
+                        + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
+                        + " order by tong.MaND asc";
+            return ExecuteQuery_DataTable(sql);
         }
 
         /// <summary>
@@ -949,1057 +799,759 @@ namespace ThuTien.DAL.Doi
         /// <param name="ky"></param>
         /// <param name="dot"></param>
         /// <returns></returns>
-        public DataTable GetTongTon_To(string Loai, int MaTo, int Nam, int Ky)
+        public DataTable GetTongTon_To( int MaTo, int Nam, int Ky)
         {
-            if (Loai == "TG")
-            {
                 string sql = "declare @Nam int;"
                             + " declare @Ky int;"
+                            + " declare @TuCuonGCS int;"
+                            + " declare @DenCuonGCS int;"
                             + " set @Nam=" + Nam + ";"
                             + " set @Ky=" + Ky + ";"
+                            + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
                             + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongGiaBanTon,TongCongTon,TongCongTonBilling,TongHDTonThucTe,TongGiaBanTonThucTe,TongCongTonThucTe,TongCongTonBillingThucTe"
                             + " from"
                             + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and GB>=11 and GB<=20"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and NAM=@Nam and KY=@Ky"
                             + " group by nd.MaND,nd.HoTen,KY,NAM) tong"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and NGAYGIAITRACH is not null and GB>=11 and GB<=20"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and NAM=@Nam and KY=@Ky and NGAYGIAITRACH is not null"
                             + " group by nd.MaND,nd.HoTen,KY,NAM) thu on tong.MaND=thu.MaND"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
                             + " group by nd.MaND,nd.HoTen,KY,NAM) ton on tong.MaND=ton.MaND"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.GIABAN) as TongGiaBanTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe,sum(hd.TONGCONG) as TongCongTonBillingThucTe"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                             + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
-
                 return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongGiaBanTon,TongCongTon,TongCongTonBilling,TongHDTonThucTe,TongGiaBanTonThucTe,TongCongTonThucTe,TongCongTonBillingThucTe"
-                            + " from"
-                            + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and GB>20"
-                            + " group by nd.MaND,nd.HoTen,KY,NAM) tong"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and NGAYGIAITRACH is not null and GB>20"
-                            + " group by nd.MaND,nd.HoTen,KY,NAM) thu on tong.MaND=thu.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by nd.MaND,nd.HoTen,KY,NAM) ton on tong.MaND=ton.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.GIABAN) as TongGiaBanTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe,sum(hd.TONGCONG) as TongCongTonBillingThucTe"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
-                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
-                            + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
-                            + " order by tong.MaND asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
         }
 
-        public DataTable GetTongTon_To(string Loai, int MaTo, int Nam)
+        public DataTable GetTongTon_To(int MaTo, int Nam)
         {
-            if (Loai == "TG")
-            {
                 string sql = "declare @Nam int;"
+                            + " declare @TuCuonGCS int;"
+                            + " declare @DenCuonGCS int;"
                             + " set @Nam=" + Nam + ";"
+                            + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
                             + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongGiaBanTon,TongCongTon,TongCongTonBilling,TongHDTonThucTe,TongGiaBanTonThucTe,TongCongTonThucTe,TongCongTonBillingThucTe"
                             + " from"
                             + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and GB>=11 and GB<=20"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and NAM=@Nam"
                             + " group by nd.MaND,nd.HoTen,NAM) tong"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and NGAYGIAITRACH is not null and GB>=11 and GB<=20"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and NAM=@Nam and NGAYGIAITRACH is not null"
                             + " group by nd.MaND,nd.HoTen,NAM) thu on tong.MaND=thu.MaND"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and NAM=@Nam and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
                             + " group by nd.MaND,nd.HoTen,NAM) ton on tong.MaND=ton.MaND"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.GIABAN) as TongGiaBanTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe,sum(hd.TONGCONG) as TongCongTonBillingThucTe"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                             + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and NAM=@Nam and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " and NAM=@Nam and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
-
                 return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @Nam int;"
-                            + " set @Nam=" + Nam + ";"
+        }
+
+        public DataTable GetTongTon_To(int MaTo)
+        {
+                string sql = "declare @TuCuonGCS int;"
+                            + " declare @DenCuonGCS int;"
+                            + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
                             + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongGiaBanTon,TongCongTon,TongCongTonBilling,TongHDTonThucTe,TongGiaBanTonThucTe,TongCongTonThucTe,TongCongTonBillingThucTe"
                             + " from"
                             + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and GB>20"
-                            + " group by nd.MaND,nd.HoTen,NAM) tong"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and NGAYGIAITRACH is not null and GB>20"
-                            + " group by nd.MaND,nd.HoTen,NAM) thu on tong.MaND=thu.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by nd.MaND,nd.HoTen,NAM) ton on tong.MaND=ton.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.GIABAN) as TongGiaBanTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe,sum(hd.TONGCONG) as TongCongTonBillingThucTe"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
-                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
-                            + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and NAM=@Nam and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
-                            + " order by tong.MaND asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
-        }
-
-        public DataTable GetTongTon_To(string Loai, int MaTo)
-        {
-            if (Loai == "TG")
-            {
-                string sql = "select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongGiaBanTon,TongCongTon,TongCongTonBilling,TongHDTonThucTe,TongGiaBanTonThucTe,TongCongTonThucTe,TongCongTonBillingThucTe"
-                            + " from"
-                            + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and GB>=11 and GB<=20"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                             + " group by nd.MaND,nd.HoTen) tong"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NGAYGIAITRACH is not null and GB>=11 and GB<=20"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and NGAYGIAITRACH is not null"
                             + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
                             + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.GIABAN) as TongGiaBanTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe,sum(hd.TONGCONG) as TongCongTonBillingThucTe"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                             + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
-
                 return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongGiaBanTon,TongCongTon,TongCongTonBilling,TongHDTonThucTe,TongGiaBanTonThucTe,TongCongTonThucTe,TongCongTonBillingThucTe"
-                            + " from"
-                            + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tong"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NGAYGIAITRACH is not null and GB>20"
-                            + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.GIABAN) as TongGiaBanTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe,sum(hd.TONGCONG) as TongCongTonBillingThucTe"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
-                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
-                            + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
-                            + " order by tong.MaND asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
         }
 
-        public DataTable GetTongTon_To(string Loai, int MaTo, DateTime NgayGiaiTrach)
+        public DataTable GetTongTon_To(int MaTo, DateTime NgayGiaiTrach)
         {
-            if (Loai == "TG")
-            {
                 string sql = "declare @NgayGiaiTrach date;"
-                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
-                            + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongGiaBanTon,TongCongTon,TongCongTonBilling,TongHDTonThucTe,TongGiaBanTonThucTe,TongCongTonThucTe,TongCongTonBillingThucTe"
-                            + " from"
-                            + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) tong"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.GIABAN) as TongGiaBanTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe,sum(hd.TONGCONG) as TongCongTonBillingThucTe"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
-                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
-                            + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
-                            + " order by tong.MaND asc";
-
+                        + " declare @TuCuonGCS int;"
+                        + " declare @DenCuonGCS int;"
+                        + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                        + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongGiaBanTon,TongCongTon,TongCongTonBilling,TongHDTonThucTe,TongGiaBanTonThucTe,TongCongTonThucTe,TongCongTonBillingThucTe"
+                        + " from"
+                        + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
+                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " group by nd.MaND,nd.HoTen) tong"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
+                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach"
+                        + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
+                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
+                        + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.GIABAN) as TongGiaBanTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe,sum(hd.TONGCONG) as TongCongTonBillingThucTe"
+                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
+                        + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
+                        + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
+                        + " and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
+                        + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
+                        + " order by tong.MaND asc";
                 return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @NgayGiaiTrach date;"
-                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
-                            + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongGiaBanTon,TongCongTon,TongCongTonBilling,TongHDTonThucTe,TongGiaBanTonThucTe,TongCongTonThucTe,TongCongTonBillingThucTe"
-                            + " from"
-                            + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tong"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach and GB>20"
-                            + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.GIABAN) as TongGiaBanTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe,sum(hd.TONGCONG) as TongCongTonBillingThucTe"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
-                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
-                            + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
-                            + " order by tong.MaND asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
         }
 
-        public DataTable GetTongTonDenKy_To(string Loai, int MaTo, int Nam, int Ky)
+        public DataTable GetTongTonDenKy_To( int MaTo, int Nam, int Ky)
         {
-            if (Loai == "TG")
-            {
                 string sql = "declare @Nam int;"
                             + " declare @Ky int;"
+                            + " declare @TuCuonGCS int;"
+                            + " declare @DenCuonGCS int;"
                             + " set @Nam=" + Nam + ";"
                             + " set @Ky=" + Ky + ";"
+                            + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
                             + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongGiaBanTon,TongCongTon,TongCongTonBilling,TongHDTonThucTe,TongGiaBanTonThucTe,TongCongTonThucTe,TongCongTonBillingThucTe"
                             + " from"
                             + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and GB>=11 and GB<=20"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky))"
                             + " group by nd.MaND,nd.HoTen) tong"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and NGAYGIAITRACH is not null and GB>=11 and GB<=20"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and NGAYGIAITRACH is not null"
                             + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
                             + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.GIABAN) as TongGiaBanTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe,sum(hd.TONGCONG) as TongCongTonBillingThucTe"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                             + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
-
                 return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongGiaBanTon,TongCongTon,TongCongTonBilling,TongHDTonThucTe,TongGiaBanTonThucTe,TongCongTonThucTe,TongCongTonBillingThucTe"
-                            + " from"
-                            + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tong"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and NGAYGIAITRACH is not null and GB>20"
-                            + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.GIABAN) as TongGiaBanTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe,sum(hd.TONGCONG) as TongCongTonBillingThucTe"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
-                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
-                            + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
-                            + " order by tong.MaND asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
         }
 
-        public DataTable GetTongTonDenKy_To(string Loai, int MaTo, int Nam, int Ky, int FromDot, int ToDot)
+        public DataTable GetTongTonDenKy_To(int MaTo, int Nam, int Ky, int FromDot, int ToDot)
         {
-            if (Loai == "TG")
-            {
+            string sql = "declare @Nam int;"
+                        + " declare @Ky int;"
+                        + " declare @FromDot int;"
+                        + " declare @ToDot int;"
+                        + " declare @TuCuonGCS int;"
+                        + " declare @DenCuonGCS int;"
+                        + " set @Nam=" + Nam + ";"
+                        + " set @Ky=" + Ky + ";"
+                        + " set @FromDot=" + FromDot + ";"
+                        + " set @ToDot=" + ToDot + ";"
+                        + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongGiaBanTon,TongCongTon,TongCongTonBilling,TongHDTonThucTe,TongGiaBanTonThucTe,TongCongTonThucTe,TongCongTonBillingThucTe"
+                        + " from"
+                        + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
+                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot"
+                        + " group by nd.MaND,nd.HoTen) tong"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
+                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and NGAYGIAITRACH is not null"
+                        + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
+                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
+                        + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.GIABAN) as TongGiaBanTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe,sum(hd.TONGCONG) as TongCongTonBillingThucTe"
+                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
+                        + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
+                        + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
+                        + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
+                        + " order by tong.MaND asc";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetTongTonDenKyDenNgay_To( int MaTo, int Nam, int Ky, DateTime NgayGiaiTrach)
+        {
                 string sql = "declare @Nam int;"
                             + " declare @Ky int;"
-                            + " declare @fromdot int;"
-                            + " declare @todot int;"
+                            + " declare @NgayGiaiTrach date;"
+                            + " declare @TuCuonGCS int;"
+                            + " declare @DenCuonGCS int;"
                             + " set @Nam=" + Nam + ";"
                             + " set @Ky=" + Ky + ";"
-                            + " set @fromdot=" + FromDot + ";"
-                            + " set @todot=" + ToDot + ";"
+                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                            + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
                             + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongGiaBanTon,TongCongTon,TongCongTonBilling,TongHDTonThucTe,TongGiaBanTonThucTe,TongCongTonThucTe,TongCongTonBillingThucTe"
                             + " from"
                             + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@fromdot and DOT<=@todot and GB>=11 and GB<=20"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky))"
                             + " group by nd.MaND,nd.HoTen) tong"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@fromdot and DOT<=@todot and NGAYGIAITRACH is not null and GB>=11 and GB<=20"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach"
                             + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@fromdot and DOT<=@todot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
                             + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.GIABAN) as TongGiaBanTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe,sum(hd.TONGCONG) as TongCongTonBillingThucTe"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                             + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@fromdot and DOT<=@todot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
-
                 return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " declare @fromdot int;"
-                            + " declare @todot int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " set @fromdot=" + FromDot + ";"
-                            + " set @todot=" + ToDot + ";"
-                            + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongGiaBanTon,TongCongTon,TongCongTonBilling,TongHDTonThucTe,TongGiaBanTonThucTe,TongCongTonThucTe,TongCongTonBillingThucTe"
-                            + " from"
-                            + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@fromdot and DOT<=@todot and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tong"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@fromdot and DOT<=@todot and NGAYGIAITRACH is not null and GB>20"
-                            + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@fromdot and DOT<=@todot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.GIABAN) as TongGiaBanTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe,sum(hd.TONGCONG) as TongCongTonBillingThucTe"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
-                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
-                            + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@fromdot and DOT<=@todot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
-                            + " order by tong.MaND asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
         }
 
-        public DataTable GetTongTonDenKyDenNgay_To(string Loai, int MaTo, int Nam, int Ky, DateTime NgayGiaiTrach)
+        public DataTable GetTongTonDenKyDenNgay_To(int MaTo, int Nam, int Ky, int FromDot, int ToDot, DateTime NgayGiaiTrach)
         {
-            if (Loai == "TG")
-            {
+            string sql = "declare @Nam int;"
+                    + " declare @Ky int;"
+                    + " declare @FromDot int;"
+                    + " declare @ToDot int;"
+                    + " declare @NgayGiaiTrach date;"
+                    + " declare @TuCuonGCS int;"
+                    + " declare @DenCuonGCS int;"
+                    + " set @Nam=" + Nam + ";"
+                    + " set @Ky=" + Ky + ";"
+                    + " set @FromDot=" + FromDot + ";"
+                    + " set @ToDot=" + ToDot + ";"
+                    + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                    + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo="+MaTo+")"
+                    + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                    + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongGiaBanTon,TongCongTon,TongCongTonBilling,TongHDTonThucTe,TongGiaBanTonThucTe,TongCongTonThucTe,TongCongTonBillingThucTe"
+                    + " from"
+                    + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
+                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                    + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                    + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot"
+                    + " group by nd.MaND,nd.HoTen) tong"
+                    + " left join"
+                    + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
+                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                    + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                    + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach"
+                    + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
+                    + " left join"
+                    + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
+                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                    + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                    + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
+                    + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
+                    + " left join"
+                    + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.GIABAN) as TongGiaBanTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe,sum(hd.TONGCONG) as TongCongTonBillingThucTe"
+                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                    + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                    + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
+                    + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
+                    + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
+                    + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
+                    + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
+                    + " order by tong.MaND asc";
+                return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetTongTonTrongKyDenNgay_To( int MaTo, int Nam, int Ky, DateTime NgayGiaiTrach)
+        {
+                string sql = " declare @Nam int;"
+                            + " declare @Ky int;"
+                            + " declare @NgayGiaiTrach date;"
+                            + " declare @TuCuonGCS int;"
+                            + " declare @DenCuonGCS int;"
+                            + " set @Nam=" + Nam + ";"
+                            + " set @Ky=" + Ky + ";"
+                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                            + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongGiaBanTon,TongCongTon,TongCongTonBilling,TongHDTonThucTe,TongGiaBanTonThucTe,TongCongTonThucTe,TongCongTonBillingThucTe"
+                            + " from"
+                            + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and NAM=@Nam and KY=@Ky"
+                            + " group by nd.MaND,nd.HoTen) tong"
+                            + " left join"
+                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and NAM=@Nam and KY=@Ky and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach"
+                            + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
+                            + " left join"
+                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
+                            + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
+                            + " left join"
+                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.GIABAN) as TongGiaBanTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe,sum(hd.TONGCONG) as TongCongTonBillingThucTe"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
+                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
+                            + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
+                            + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
+                            + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
+                            + " order by tong.MaND asc";
+                return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetTongTonTrongKyDenNgay_To(int MaTo, int Nam, int Ky, int FromDot, int ToDot, DateTime NgayGiaiTrach)
+        {
+                string sql = " declare @Nam int;"
+                            + " declare @Ky int;"
+                            + " declare @FromDot int;"
+                            + " declare @ToDot int;"
+                            + " declare @NgayGiaiTrach date;"
+                            + " declare @TuCuonGCS int;"
+                            + " declare @DenCuonGCS int;"
+                            + " set @Nam=" + Nam + ";"
+                            + " set @Ky=" + Ky + ";"
+                            + " set @FromDot=" + FromDot + ";"
+                            + " set @ToDot=" + ToDot + ";"
+                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                            + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongGiaBanTon,TongCongTon,TongCongTonBilling,TongHDTonThucTe,TongGiaBanTonThucTe,TongCongTonThucTe,TongCongTonBillingThucTe"
+                            + " from"
+                            + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot"
+                            + " group by nd.MaND,nd.HoTen) tong"
+                            + " left join"
+                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach"
+                            + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
+                            + " left join"
+                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
+                            + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
+                            + " left join"
+                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.GIABAN) as TongGiaBanTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe,sum(hd.TONGCONG) as TongCongTonBillingThucTe"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
+                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
+                            + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
+                            + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
+                            + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
+                            + " order by tong.MaND asc";
+                return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetTongTon_Doi(int MaTo)
+        {
+                string sql = "declare @TuCuonGCS int;"
+                            + " declare @DenCuonGCS int;"
+                            + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " select '" + MaTo + "' as MaTo,TenTo=(select TenTo from TT_To where MaTo=" + MaTo + "),MAX(t1.TuMLT)as TuMLT,MAX(t1.DenMLT)as DenMLT,MAX(t1.TuSoPhatHanh)as TuSoPhatHanh,MAX(t1.DenSoPhatHanh)as DenSoPhatHanh,MAX(t1.TongHD)as TongHD,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon,MAX(t1.TongCongTonBilling)as TongCongTonBilling from"
+                            + " ((select min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
+                            + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " union"
+                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
+                            + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and KhoaTienDu=0 and NGAYGIAITRACH is not null)"
+                            + " union"
+                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,0 as TongHDThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
+                            + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null))) t1";
+                return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetTongTon_Doi(int MaTo, int Nam)
+        {
+            string sql = "declare @Nam int;"
+                        + " declare @TuCuonGCS int;"
+                        + " declare @DenCuonGCS int;"
+                        + " set @Nam=" + Nam + ";"
+                        + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " select '" + MaTo + "' as MaTo,TenTo=(select TenTo from TT_To where MaTo=" + MaTo + "),MAX(t1.TuMLT)as TuMLT,MAX(t1.DenMLT)as DenMLT,MAX(t1.TuSoPhatHanh)as TuSoPhatHanh,MAX(t1.DenSoPhatHanh)as DenSoPhatHanh,MAX(t1.TongHD)as TongHD,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon,MAX(t1.TongCongTonBilling)as TongCongTonBilling from"
+                        + " ((select min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
+                        + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam group by NAM)"
+                        + " union"
+                        + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
+                        + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and KhoaTienDu=0 and NGAYGIAITRACH is not null group by NAM)"
+                        + " union"
+                        + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,0 as TongHDThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
+                        + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and (KhoaTienDu=1 or NGAYGIAITRACH is null) group by NAM)) t1";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetTongTon_Doi(int MaTo, int Nam, int Ky)
+        {
+            string sql = "declare @Nam int;"
+                        + " declare @Ky int;"
+                        + " declare @TuCuonGCS int;"
+                        + " declare @DenCuonGCS int;"
+                        + " set @Nam=" + Nam + ";"
+                        + " set @Ky=" + Ky + ";"
+                        + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " select '" + MaTo + "' as MaTo,TenTo=(select TenTo from TT_To where MaTo=" + MaTo + "),MAX(t1.TuMLT)as TuMLT,MAX(t1.DenMLT)as DenMLT,MAX(t1.TuSoPhatHanh)as TuSoPhatHanh,MAX(t1.DenSoPhatHanh)as DenSoPhatHanh,MAX(t1.TongHD)as TongHD,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon,MAX(t1.TongCongTonBilling)as TongCongTonBilling from"
+                        + " ((select min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
+                        + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and KY=@Ky group by KY,NAM)"
+                        + " union"
+                        + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
+                        + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and KY=@Ky and KhoaTienDu=0 and NGAYGIAITRACH is not null group by KY,NAM)"
+                        + " union"
+                        + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,0 as TongHDThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
+                        + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null) group by KY,NAM)) t1";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetTongTon_Doi(int MaTo, int Nam, int Ky, int Dot)
+        {
+            string sql = "declare @Nam int;"
+                        + " declare @Ky int;"
+                        + " declare @Dot int;"
+                        + " declare @TuCuonGCS int;"
+                        + " declare @DenCuonGCS int;"
+                        + " set @Nam=" + Nam + ";"
+                        + " set @Ky=" + Ky + ";"
+                        + " set @Dot=" + Dot + ";"
+                        + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " select '" + MaTo + "' as MaTo,TenTo=(select TenTo from TT_To where MaTo=" + MaTo + "),MAX(t1.TuMLT)as TuMLT,MAX(t1.DenMLT)as DenMLT,MAX(t1.TuSoPhatHanh)as TuSoPhatHanh,MAX(t1.DenSoPhatHanh)as DenSoPhatHanh,MAX(t1.TongHD)as TongHD,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon,MAX(t1.TongCongTonBilling)as TongCongTonBilling from"
+                        + " ((select min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
+                        + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and KY=@Ky and DOT=@Dot group by DOT,KY,NAM)"
+                        + " union"
+                        + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
+                        + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and KY=@Ky and DOT=@Dot and KhoaTienDu=0 and NGAYGIAITRACH is not null group by DOT,KY,NAM)"
+                        + " union"
+                        + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,0 as TongHDThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
+                        + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and KY=@Ky and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null) group by DOT,KY,NAM)) t1";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetTongTon_Doi(int MaTo, int Nam, int Ky, int FromDot, int ToDot)
+        {
+            string sql = "declare @Nam int;"
+                        + " declare @Ky int;"
+                        + " declare @FromDot int;"
+                        + " declare @ToDot int;"
+                        + " declare @TuCuonGCS int;"
+                        + " declare @DenCuonGCS int;"
+                        + " set @Nam=" + Nam + ";"
+                        + " set @Ky=" + Ky + ";"
+                        + " set @FromDot=" + FromDot + ";"
+                        + " set @ToDot=" + ToDot + ";"
+                        + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " select '" + MaTo + "' as MaTo,TenTo=(select TenTo from TT_To where MaTo=" + MaTo + "),MAX(t1.TuMLT)as TuMLT,MAX(t1.DenMLT)as DenMLT,MAX(t1.TuSoPhatHanh)as TuSoPhatHanh,MAX(t1.DenSoPhatHanh)as DenSoPhatHanh,MAX(t1.TongHD)as TongHD,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon,MAX(t1.TongCongTonBilling)as TongCongTonBilling from"
+                        + " ((select min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
+                        + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot group by DOT,KY,NAM)"
+                        + " union"
+                        + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
+                        + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and KhoaTienDu=0 and NGAYGIAITRACH is not null group by DOT,KY,NAM)"
+                        + " union"
+                        + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,0 as TongHDThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
+                        + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null) group by DOT,KY,NAM)) t1";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetTongTon_Doi( int MaTo, DateTime NgayGiaiTrach)
+        {
                 string sql = "declare @NgayGiaiTrach date;"
-                            + " declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
+                            + " declare @TuCuonGCS int;"
+                            + " declare @DenCuonGCS int;"
                             + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
-                            + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongGiaBanTon,TongCongTon,TongCongTonBilling,TongHDTonThucTe,TongGiaBanTonThucTe,TongCongTonThucTe,TongCongTonBillingThucTe"
-                            + " from"
-                            + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) tong"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.GIABAN) as TongGiaBanTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe,sum(hd.TONGCONG) as TongCongTonBillingThucTe"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
-                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
-                            + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
-                            + " order by tong.MaND asc";
-
+                            + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " select '" + MaTo + "' as MaTo,TenTo=(select TenTo from TT_To where MaTo=" + MaTo + "),MAX(t1.TuMLT)as TuMLT,MAX(t1.DenMLT)as DenMLT,MAX(t1.TuSoPhatHanh)as TuSoPhatHanh,MAX(t1.DenSoPhatHanh)as DenSoPhatHanh,MAX(t1.TongHD)as TongHD,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon,MAX(t1.TongCongTonBilling)as TongCongTonBilling from"
+                            + " ((select min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
+                            + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " union"
+                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
+                            + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and KhoaTienDu=0 and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach)"
+                            + " union"
+                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,0 as TongHDThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
+                            + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach))) t1";
                 return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @NgayGiaiTrach date;"
-                            + " declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
-                            + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongGiaBanTon,TongCongTon,TongCongTonBilling,TongHDTonThucTe,TongGiaBanTonThucTe,TongCongTonThucTe,TongCongTonBillingThucTe"
-                            + " from"
-                            + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tong"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach and GB>20"
-                            + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.GIABAN) as TongGiaBanTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe,sum(hd.TONGCONG) as TongCongTonBillingThucTe"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
-                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
-                            + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
-                            + " order by tong.MaND asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
         }
 
-        public DataTable GetTongTonTrongKyDenNgay_To(string Loai, int MaTo, int Nam, int Ky, DateTime NgayGiaiTrach)
+        public DataTable GetTongTonDenKy_Doi( int MaTo, int Nam, int Ky)
         {
-            if (Loai == "TG")
-            {
-                string sql = "declare @NgayGiaiTrach date;"
-                            + " declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
-                            + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongGiaBanTon,TongCongTon,TongCongTonBilling,TongHDTonThucTe,TongGiaBanTonThucTe,TongCongTonThucTe,TongCongTonBillingThucTe"
-                            + " from"
-                            + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) tong"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.GIABAN) as TongGiaBanTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe,sum(hd.TONGCONG) as TongCongTonBillingThucTe"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
-                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
-                            + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
-                            + " order by tong.MaND asc";
-
-                return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @NgayGiaiTrach date;"
-                            + " declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
-                            + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongGiaBanTon,TongCongTon,TongCongTonBilling,TongHDTonThucTe,TongGiaBanTonThucTe,TongCongTonThucTe,TongCongTonBillingThucTe"
-                            + " from"
-                            + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tong"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach and GB>20"
-                            + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.GIABAN) as TongGiaBanTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe,sum(hd.TONGCONG) as TongCongTonBillingThucTe"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
-                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
-                            + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
-                            + " order by tong.MaND asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
-        }
-
-        public DataTable GetTongTon_Doi(string Loai, int MaTo, int Nam, int Ky, int Dot)
-        {
-            if (Loai == "TG")
-            {
                 string sql = "declare @Nam int;"
+                            + " declare @Ky int;"
+                            + " declare @TuCuonGCS int;"
+                            + " declare @DenCuonGCS int;"
+                            + " set @Nam=" + Nam + ";"
+                            + " set @Ky=" + Ky + ";"
+                            + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " select '" + MaTo + "' as MaTo,TenTo=(select TenTo from TT_To where MaTo=" + MaTo + "),MAX(t1.TuMLT)as TuMLT,MAX(t1.DenMLT)as DenMLT,MAX(t1.TuSoPhatHanh)as TuSoPhatHanh,MAX(t1.DenSoPhatHanh)as DenSoPhatHanh,MAX(t1.TongHD)as TongHD,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon,MAX(t1.TongCongTonBilling)as TongCongTonBilling from"
+                            + " ((select min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
+                            + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)))"
+                            + " union"
+                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
+                            + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and KhoaTienDu=0 and NGAYGIAITRACH is not null)"
+                            + " union"
+                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,0 as TongHDThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
+                            + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null))) t1";
+                return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetTongTonDenKy_Doi(int MaTo, int Nam, int Ky,int FromDot,int ToDot)
+        {
+            string sql = "declare @Nam int;"
+                        + " declare @Ky int;"
+                        + " declare @FromDot int;"
+                        + " declare @ToDot int;"
+                        + " declare @TuCuonGCS int;"
+                        + " declare @DenCuonGCS int;"
+                        + " set @Nam=" + Nam + ";"
+                        + " set @Ky=" + Ky + ";"
+                        + " set @FromDot=" + FromDot + ";"
+                        + " set @ToDot=" + ToDot + ";"
+                        + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " select '" + MaTo + "' as MaTo,TenTo=(select TenTo from TT_To where MaTo=" + MaTo + "),MAX(t1.TuMLT)as TuMLT,MAX(t1.DenMLT)as DenMLT,MAX(t1.TuSoPhatHanh)as TuSoPhatHanh,MAX(t1.DenSoPhatHanh)as DenSoPhatHanh,MAX(t1.TongHD)as TongHD,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon,MAX(t1.TongCongTonBilling)as TongCongTonBilling from"
+                        + " ((select min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
+                        + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot)"
+                        + " union"
+                        + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
+                        + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and KhoaTienDu=0 and NGAYGIAITRACH is not null)"
+                        + " union"
+                        + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,0 as TongHDThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
+                        + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null))) t1";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetTongTonDenKyDenNgay_Doi(int MaTo, int Nam, int Ky, DateTime NgayGiaiTrach)
+        {
+                string sql = "declare @Nam int;"
+                            + " declare @Ky int;"
+                            + " declare @NgayGiaiTrach date;"
+                            + " declare @TuCuonGCS int;"
+                            + " declare @DenCuonGCS int;"
+                            + " set @Nam=" + Nam + ";"
+                            + " set @Ky=" + Ky + ";"
+                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                            + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " select '" + MaTo + "' as MaTo,TenTo=(select TenTo from TT_To where MaTo="+MaTo+"),MAX(t1.TuMLT)as TuMLT,MAX(t1.DenMLT)as DenMLT,MAX(t1.TuSoPhatHanh)as TuSoPhatHanh,MAX(t1.DenSoPhatHanh)as DenSoPhatHanh,MAX(t1.TongHD)as TongHD,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon,MAX(t1.TongCongTonBilling)as TongCongTonBilling from"
+                            + " ((select min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
+                            + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)))"
+                            + " union"
+                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
+                            + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and KhoaTienDu=0 and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach)"
+                            + " union"
+                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,0 as TongHDThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
+                            + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach))) t1";
+                return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetTongTonDenKyDenNgay_Doi(int MaTo, int Nam, int Ky,int FromDot,int ToDot, DateTime NgayGiaiTrach)
+        {
+            string sql = "declare @Nam int;"
+                        + " declare @Ky int;"
+                        + " declare @FromDot int;"
+                        + " declare @ToDot int;"
+                        + " declare @NgayGiaiTrach date;"
+                        + " declare @TuCuonGCS int;"
+                        + " declare @DenCuonGCS int;"
+                        + " set @Nam=" + Nam + ";"
+                        + " set @Ky=" + Ky + ";"
+                        + " set @FromDot=" + FromDot + ";"
+                        + " set @ToDot=" + ToDot + ";"
+                        + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                        + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " select '" + MaTo + "' as MaTo,TenTo=(select TenTo from TT_To where MaTo=" + MaTo + "),MAX(t1.TuMLT)as TuMLT,MAX(t1.DenMLT)as DenMLT,MAX(t1.TuSoPhatHanh)as TuSoPhatHanh,MAX(t1.DenSoPhatHanh)as DenSoPhatHanh,MAX(t1.TongHD)as TongHD,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon,MAX(t1.TongCongTonBilling)as TongCongTonBilling from"
+                        + " ((select min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
+                        + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot)"
+                        + " union"
+                        + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
+                        + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and KhoaTienDu=0 and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach)"
+                        + " union"
+                        + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,0 as TongHDThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
+                        + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach))) t1";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetTongTonTrongKyDenNgay_Doi( int MaTo, int Nam, int Ky, DateTime NgayGiaiTrach)
+        {
+                string sql =  "declare @Nam int;"
+                            + " declare @Ky int;"
+                            + " declare @NgayGiaiTrach date;"
+                            + " declare @TuCuonGCS int;"
+                            + " declare @DenCuonGCS int;"
+                            + " set @Nam=" + Nam + ";"
+                            + " set @Ky=" + Ky + ";"
+                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                            + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " select '" + MaTo + "' as MaTo,TenTo=(select TenTo from TT_To where MaTo=" + MaTo + "),MAX(t1.TuMLT)as TuMLT,MAX(t1.DenMLT)as DenMLT,MAX(t1.TuSoPhatHanh)as TuSoPhatHanh,MAX(t1.DenSoPhatHanh)as DenSoPhatHanh,MAX(t1.TongHD)as TongHD,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon,MAX(t1.TongCongTonBilling)as TongCongTonBilling from"
+                            + " ((select min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
+                            + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and NAM=@Nam and KY=@Ky)"
+                            + " union"
+                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
+                            + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and NAM=@Nam and KY=@Ky and KhoaTienDu=0 and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach)"
+                            + " union"
+                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,0 as TongHDThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
+                            + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach))) t1";
+                return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetTongTonTrongKyDenNgay_Doi(int MaTo, int Nam, int Ky, int FromDot, int ToDot, DateTime NgayGiaiTrach)
+        {
+            string sql = "declare @Nam int;"
+                        + " declare @Ky int;"
+                        + " declare @FromDot int;"
+                        + " declare @ToDot int;"
+                        + " declare @NgayGiaiTrach date;"
+                        + " declare @TuCuonGCS int;"
+                        + " declare @DenCuonGCS int;"
+                        + " set @Nam=" + Nam + ";"
+                        + " set @Ky=" + Ky + ";"
+                        + " set @FromDot=" + FromDot + ";"
+                        + " set @ToDot=" + ToDot + ";"
+                        + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                        + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " select '" + MaTo + "' as MaTo,TenTo=(select TenTo from TT_To where MaTo=" + MaTo + "),MAX(t1.TuMLT)as TuMLT,MAX(t1.DenMLT)as DenMLT,MAX(t1.TuSoPhatHanh)as TuSoPhatHanh,MAX(t1.DenSoPhatHanh)as DenSoPhatHanh,MAX(t1.TongHD)as TongHD,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon,MAX(t1.TongCongTonBilling)as TongCongTonBilling from"
+                        + " ((select min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
+                        + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot)"
+                        + " union"
+                        + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
+                        + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and KhoaTienDu=0 and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach)"
+                        + " union"
+                        + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,0 as TongHDThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
+                        + " from HOADON hd where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach))) t1";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetTongTon_NV(int MaNV_HanhThu, int Nam, int Ky, int Dot)
+        {
+                string sql = "declare @MaNV_HanhThu int;"
+                            + " declare @Nam int;"
                             + " declare @Ky int;"
                             + " declare @Dot int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " set @Dot=" + Dot + ";"
-                            + " select '" + MaTo + "' as MaTo,'" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TenTo + "' as TenTo,MAX(t1.TuMLT)as TuMLT,MAX(t1.DenMLT)as DenMLT,MAX(t1.TuSoPhatHanh)as TuSoPhatHanh,MAX(t1.DenSoPhatHanh)as DenSoPhatHanh,MAX(t1.TongHD)as TongHD,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon,MAX(t1.TongCongTonBilling)as TongCongTonBilling from"
-                            + " ((select min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and GB>=11 and GB<=20 group by DOT,KY,NAM)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and KhoaTienDu=0 and NGAYGIAITRACH is not null and GB>=11 and GB<=20 group by DOT,KY,NAM)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,0 as TongHDThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20 group by DOT,KY,NAM)) t1";
-
-                return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " declare @Dot int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " set @Dot=" + Dot + ";"
-                            + " select '" + MaTo + "' as MaTo,'" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TenTo + "' as TenTo,MAX(t1.TuMLT)as TuMLT,MAX(t1.DenMLT)as DenMLT,MAX(t1.TuSoPhatHanh)as TuSoPhatHanh,MAX(t1.DenSoPhatHanh)as DenSoPhatHanh,MAX(t1.TongHD)as TongHD,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon,MAX(t1.TongCongTonBilling)as TongCongTonBilling from"
-                            + " ((select min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and GB>20 group by DOT,KY,NAM)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and KhoaTienDu=0 and NGAYGIAITRACH is not null and GB>20 group by DOT,KY,NAM)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,0 as TongHDThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20 group by DOT,KY,NAM)) t1";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
-        }
-
-        /// <summary>
-        /// Lấy Sum thông tin những hóa đơn tồn của các Tổ
-        /// </summary>
-        /// <param name="MaTo"></param>
-        /// <param name="loai"></param>
-        /// <param name="nam"></param>
-        /// <param name="ky"></param>
-        /// <returns></returns>
-        public DataTable GetTongTon_Doi(string Loai, int MaTo, int Nam, int Ky)
-        {
-            if (Loai == "TG")
-            {
-                string sql = "declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " select '" + MaTo + "' as MaTo,'" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TenTo + "' as TenTo,MAX(t1.TuMLT)as TuMLT,MAX(t1.DenMLT)as DenMLT,MAX(t1.TuSoPhatHanh)as TuSoPhatHanh,MAX(t1.DenSoPhatHanh)as DenSoPhatHanh,MAX(t1.TongHD)as TongHD,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon,MAX(t1.TongCongTonBilling)as TongCongTonBilling from"
-                            + " ((select min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and GB>=11 and GB<=20 group by KY,NAM)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and KhoaTienDu=0 and NGAYGIAITRACH is not null and GB>=11 and GB<=20 group by KY,NAM)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,0 as TongHDThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20 group by KY,NAM)) t1";
-
-                return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " select '" + MaTo + "' as MaTo,'" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TenTo + "' as TenTo,MAX(t1.TuMLT)as TuMLT,MAX(t1.DenMLT)as DenMLT,MAX(t1.TuSoPhatHanh)as TuSoPhatHanh,MAX(t1.DenSoPhatHanh)as DenSoPhatHanh,MAX(t1.TongHD)as TongHD,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon,MAX(t1.TongCongTonBilling)as TongCongTonBilling from"
-                            + " ((select min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and GB>20 group by KY,NAM)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and KhoaTienDu=0 and NGAYGIAITRACH is not null and GB>20 group by KY,NAM)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,0 as TongHDThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20 group by KY,NAM)) t1";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
-        }
-
-        public DataTable GetTongTon_Doi(string Loai, int MaTo, int Nam)
-        {
-            if (Loai == "TG")
-            {
-                string sql = "declare @Nam int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " select '" + MaTo + "' as MaTo,'" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TenTo + "' as TenTo,MAX(t1.TuMLT)as TuMLT,MAX(t1.DenMLT)as DenMLT,MAX(t1.TuSoPhatHanh)as TuSoPhatHanh,MAX(t1.DenSoPhatHanh)as DenSoPhatHanh,MAX(t1.TongHD)as TongHD,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon,MAX(t1.TongCongTonBilling)as TongCongTonBilling from"
-                            + " ((select min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and GB>=11 and GB<=20 group by NAM)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KhoaTienDu=0 and NGAYGIAITRACH is not null and GB>=11 and GB<=20 group by NAM)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,0 as TongHDThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20 group by NAM)) t1";
-
-                return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @Nam int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " select '" + MaTo + "' as MaTo,'" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TenTo + "' as TenTo,MAX(t1.TuMLT)as TuMLT,MAX(t1.DenMLT)as DenMLT,MAX(t1.TuSoPhatHanh)as TuSoPhatHanh,MAX(t1.DenSoPhatHanh)as DenSoPhatHanh,MAX(t1.TongHD)as TongHD,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon,MAX(t1.TongCongTonBilling)as TongCongTonBilling from"
-                            + " ((select min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and GB>20 group by NAM)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KhoaTienDu=0 and NGAYGIAITRACH is not null and GB>20 group by NAM)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,0 as TongHDThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20 group by NAM)) t1";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
-        }
-
-        public DataTable GetTongTon_Doi(string Loai, int MaTo)
-        {
-            if (Loai == "TG")
-            {
-                string sql = "select '" + MaTo + "' as MaTo,'" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TenTo + "' as TenTo,MAX(t1.TuMLT)as TuMLT,MAX(t1.DenMLT)as DenMLT,MAX(t1.TuSoPhatHanh)as TuSoPhatHanh,MAX(t1.DenSoPhatHanh)as DenSoPhatHanh,MAX(t1.TongHD)as TongHD,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon,MAX(t1.TongCongTonBilling)as TongCongTonBilling from"
-                            + " ((select min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and GB>=11 and GB<=20)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and KhoaTienDu=0 and NGAYGIAITRACH is not null and GB>=11 and GB<=20)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,0 as TongHDThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20)) t1";
-
-                return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "select '" + MaTo + "' as MaTo,'" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TenTo + "' as TenTo,MAX(t1.TuMLT)as TuMLT,MAX(t1.DenMLT)as DenMLT,MAX(t1.TuSoPhatHanh)as TuSoPhatHanh,MAX(t1.DenSoPhatHanh)as DenSoPhatHanh,MAX(t1.TongHD)as TongHD,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon,MAX(t1.TongCongTonBilling)as TongCongTonBilling from"
-                            + " ((select min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and GB>20)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and KhoaTienDu=0 and NGAYGIAITRACH is not null and GB>20)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,0 as TongHDThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20)) t1";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
-        }
-
-        public DataTable GetTongTon_Doi(string Loai, int MaTo, DateTime NgayGiaiTrach)
-        {
-            if (Loai == "TG")
-            {
-                string sql = "declare @NgayGiaiTrach date;"
-                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
-                            + " select '" + MaTo + "' as MaTo,'" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TenTo + "' as TenTo,MAX(t1.TuMLT)as TuMLT,MAX(t1.DenMLT)as DenMLT,MAX(t1.TuSoPhatHanh)as TuSoPhatHanh,MAX(t1.DenSoPhatHanh)as DenSoPhatHanh,MAX(t1.TongHD)as TongHD,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon,MAX(t1.TongCongTonBilling)as TongCongTonBilling from"
-                            + " ((select min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and GB>=11 and GB<=20)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and KhoaTienDu=0 and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach and GB>=11 and GB<=20)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,0 as TongHDThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20)) t1";
-
-                return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @NgayGiaiTrach date;"
-                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
-                            + " select '" + MaTo + "' as MaTo,'" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TenTo + "' as TenTo,MAX(t1.TuMLT)as TuMLT,MAX(t1.DenMLT)as DenMLT,MAX(t1.TuSoPhatHanh)as TuSoPhatHanh,MAX(t1.DenSoPhatHanh)as DenSoPhatHanh,MAX(t1.TongHD)as TongHD,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon,MAX(t1.TongCongTonBilling)as TongCongTonBilling from"
-                            + " ((select min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and GB>20)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and KhoaTienDu=0 and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach and GB>20)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,0 as TongHDThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20)) t1";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
-        }
-
-        public DataTable GetTongTonDenKy_Doi(string Loai, int MaTo, int Nam, int Ky)
-        {
-            if (Loai == "TG")
-            {
-                string sql = "declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " select '" + MaTo + "' as MaTo,'" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TenTo + "' as TenTo,MAX(t1.TuMLT)as TuMLT,MAX(t1.DenMLT)as DenMLT,MAX(t1.TuSoPhatHanh)as TuSoPhatHanh,MAX(t1.DenSoPhatHanh)as DenSoPhatHanh,MAX(t1.TongHD)as TongHD,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon,MAX(t1.TongCongTonBilling)as TongCongTonBilling from"
-                            + " ((select min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and GB>=11 and GB<=20)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and KhoaTienDu=0 and NGAYGIAITRACH is not null and GB>=11 and GB<=20)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,0 as TongHDThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20)) t1";
-
-                return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " select '" + MaTo + "' as MaTo,'" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TenTo + "' as TenTo,MAX(t1.TuMLT)as TuMLT,MAX(t1.DenMLT)as DenMLT,MAX(t1.TuSoPhatHanh)as TuSoPhatHanh,MAX(t1.DenSoPhatHanh)as DenSoPhatHanh,MAX(t1.TongHD)as TongHD,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon,MAX(t1.TongCongTonBilling)as TongCongTonBilling from"
-                            + " ((select min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and GB>20)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and KhoaTienDu=0 and NGAYGIAITRACH is not null and GB>20)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,0 as TongHDThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20)) t1";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
-        }
-
-        public DataTable GetTongTonDenKyDenNgay_Doi(string Loai, int MaTo, int Nam, int Ky, DateTime NgayGiaiTrach)
-        {
-            if (Loai == "TG")
-            {
-                string sql = "declare @NgayGiaiTrach date;"
-                            + " declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
-                            + " select '" + MaTo + "' as MaTo,'" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TenTo + "' as TenTo,MAX(t1.TuMLT)as TuMLT,MAX(t1.DenMLT)as DenMLT,MAX(t1.TuSoPhatHanh)as TuSoPhatHanh,MAX(t1.DenSoPhatHanh)as DenSoPhatHanh,MAX(t1.TongHD)as TongHD,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon,MAX(t1.TongCongTonBilling)as TongCongTonBilling from"
-                            + " ((select min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and GB>=11 and GB<=20)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and KhoaTienDu=0 and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach and GB>=11 and GB<=20)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,0 as TongHDThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20)) t1";
-
-                return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @NgayGiaiTrach date;"
-                            + " declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
-                            + " select '" + MaTo + "' as MaTo,'" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TenTo + "' as TenTo,MAX(t1.TuMLT)as TuMLT,MAX(t1.DenMLT)as DenMLT,MAX(t1.TuSoPhatHanh)as TuSoPhatHanh,MAX(t1.DenSoPhatHanh)as DenSoPhatHanh,MAX(t1.TongHD)as TongHD,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon,MAX(t1.TongCongTonBilling)as TongCongTonBilling from"
-                            + " ((select min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and GB>20)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and KhoaTienDu=0 and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach and GB>20)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,0 as TongHDThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20)) t1";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
-        }
-
-        public DataTable GetTongTonTrongKyDenNgay_Doi(string Loai, int MaTo, int Nam, int Ky, DateTime NgayGiaiTrach)
-        {
-            if (Loai == "TG")
-            {
-                string sql = "declare @NgayGiaiTrach date;"
-                            + " declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
-                            + " select '" + MaTo + "' as MaTo,'" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TenTo + "' as TenTo,MAX(t1.TuMLT)as TuMLT,MAX(t1.DenMLT)as DenMLT,MAX(t1.TuSoPhatHanh)as TuSoPhatHanh,MAX(t1.DenSoPhatHanh)as DenSoPhatHanh,MAX(t1.TongHD)as TongHD,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon,MAX(t1.TongCongTonBilling)as TongCongTonBilling from"
-                            + " ((select min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and GB>=11 and GB<=20)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and KhoaTienDu=0 and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach and GB>=11 and GB<=20)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,0 as TongHDThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20)) t1";
-
-                return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @NgayGiaiTrach date;"
-                            + " declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
-                            + " select '" + MaTo + "' as MaTo,'" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TenTo + "' as TenTo,MAX(t1.TuMLT)as TuMLT,MAX(t1.DenMLT)as DenMLT,MAX(t1.TuSoPhatHanh)as TuSoPhatHanh,MAX(t1.DenSoPhatHanh)as DenSoPhatHanh,MAX(t1.TongHD)as TongHD,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon,MAX(t1.TongCongTonBilling)as TongCongTonBilling from"
-                            + " ((select min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and GB>20)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and KhoaTienDu=0 and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach and GB>20)"
-                            + " union"
-                            + " (select 0 as TuMLT,0 as DenMLT,0 as TuSoPhatHanh,0 as DenSoPhatHanh,0 as TongHD,0 as TongCong,0 as TongHDThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,sum(hd.TONGCONG) as TongCongTonBilling"
-                            + " from HOADON hd where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20)) t1";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
-        }
-
-        public DataTable GetTongTon_NV(string Loai, int MaNV_HanhThu, int Nam, int Ky, int Dot)
-        {
-            if (Loai == "TG")
-            {
-                string sql = "declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " declare @Dot int;"
+                            + " set @MaNV_HanhThu=" + MaNV_HanhThu + ";"
                             + " set @Nam=" + Nam + ";"
                             + " set @Ky=" + Ky + ";"
                             + " set @Dot=" + Dot + ";"
@@ -2007,76 +1559,32 @@ namespace ThuTien.DAL.Doi
                             + " from"
                             + " (select nd.MaND,nd.HoTen,DOT,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and GB>=11 and GB<=20"
+                            + " where MaNV_HanhThu=@MaNV_HanhThu"
+                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot"
                             + " group by nd.MaND,nd.HoTen,DOT) tong"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and NGAYGIAITRACH is not null and GB>=11 and GB<=20"
+                            + " where MaNV_HanhThu=@MaNV_HanhThu"
+                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and NGAYGIAITRACH is not null"
                             + " group by nd.MaND,nd.HoTen,DOT) thu on tong.MaND=thu.MaND"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.TONGCONG) as TongCongTon"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " where MaNV_HanhThu=@MaNV_HanhThu"
+                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
                             + " group by nd.MaND,nd.HoTen,DOT) ton on tong.MaND=ton.MaND"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
+                            + " where MaNV_HanhThu=@MaNV_HanhThu"
                             + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
                             + " group by nd.MaND,nd.HoTen,DOT) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
-
                 return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " declare @Dot int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " set @Dot=" + Dot + ";"
-                            + " select tong.MaND as MaNV,tong.HoTen,DOT,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongCongTon,TongHDTonThucTe,TongCongTonThucTe"
-                            + " from"
-                            + " (select nd.MaND,nd.HoTen,DOT,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tong"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and NGAYGIAITRACH is not null and GB>20"
-                            + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.TONGCONG) as TongCongTon"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
-                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
-                            + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
-                            + " order by tong.MaND asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
         }
 
         public DataTable GetTongTon_NV(string Loai, int MaNV_HanhThu, int Nam, int Ky)
@@ -2161,234 +1669,114 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
-        public DataTable GetTongTon_NV(string Loai, int MaNV_HanhThu, int Nam)
+        public DataTable GetTongTon_NV( int MaNV_HanhThu, int Nam)
         {
-            if (Loai == "TG")
-            {
-                string sql = "declare @Nam int;"
+                string sql = "declare @MaNV_HanhThu int;"
+                            + " declare @Nam int;"
+                            + " set @MaNV_HanhThu=" + MaNV_HanhThu + ";"
                             + " set @Nam=" + Nam + ";"
                             + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongCongTon,TongHDTonThucTe,TongCongTonThucTe"
                             + " from"
                             + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and NAM=@Nam and GB>=11 and GB<=20"
+                            + " where MaNV_HanhThu=@MaNV_HanhThu"
+                            + " and NAM=@Nam"
                             + " group by nd.MaND,nd.HoTen) tong"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and NAM=@Nam and NGAYGIAITRACH is not null and GB>=11 and GB<=20"
+                            + " where MaNV_HanhThu=@MaNV_HanhThu"
+                            + " and NAM=@Nam and NGAYGIAITRACH is not null"
                             + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.TONGCONG) as TongCongTon"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and NAM=@Nam and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " where MaNV_HanhThu=@MaNV_HanhThu"
+                            + " and NAM=@Nam and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
                             + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
+                            + " where MaNV_HanhThu=@MaNV_HanhThu"
                             + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and NAM=@Nam and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " and NAM=@Nam and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
-
                 return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @Nam int;"
-                            + " set @Nam=" + Nam + ";"
+        }
+
+        public DataTable GetTongTon_NV(int MaNV_HanhThu)
+        {
+                string sql = "declare @MaNV_HanhThu int;"
+                            + " set @MaNV_HanhThu=" + MaNV_HanhThu + ";"
                             + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongCongTon,TongHDTonThucTe,TongCongTonThucTe"
                             + " from"
                             + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and NAM=@Nam and GB>20"
+                            + " where MaNV_HanhThu=@MaNV_HanhThu"
                             + " group by nd.MaND,nd.HoTen) tong"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and NAM=@Nam and NGAYGIAITRACH is not null and GB>20"
+                            + " where MaNV_HanhThu=@MaNV_HanhThu"
+                            + " and NGAYGIAITRACH is not null"
                             + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.TONGCONG) as TongCongTon"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and NAM=@Nam and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by nd.MaND,nd.HoTen,NAM) ton on tong.MaND=ton.MaND"
+                            + " where MaNV_HanhThu=@MaNV_HanhThu"
+                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
+                            + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
+                            + " where MaNV_HanhThu=@MaNV_HanhThu"
+                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
                             + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and NAM=@Nam and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
+                return ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable GetTongTon_NV(string Loai, int MaNV_HanhThu)
+        public DataTable GetTongTon_NV(int MaNV_HanhThu, DateTime NgayGiaiTrach)
         {
-            if (Loai == "TG")
-            {
-                string sql = "select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongCongTon,TongHDTonThucTe,TongCongTonThucTe"
-                            + " from"
-                            + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) tong"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and NGAYGIAITRACH is not null and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.TONGCONG) as TongCongTon"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
-                            + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
-                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
-                            + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
-                            + " order by tong.MaND asc";
-
+            string sql = "declare @MaNV_HanhThu int;"
+                    + " declare @NgayGiaiTrach date;"
+                    + " set @MaNV_HanhThu=" + MaNV_HanhThu + ";"
+                    + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                    + " select tong.MaND,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongCongTon,TongHDTonThucTe,TongCongTonThucTe"
+                    + " from"
+                    + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
+                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                    + " where MaNV_HanhThu=@MaNV_HanhThu"
+                    + " group by nd.MaND,nd.HoTen) tong"
+                    + " left join"
+                    + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
+                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                    + " where MaNV_HanhThu=@MaNV_HanhThu"
+                    + " and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach"
+                    + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
+                    + " left join"
+                    + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.TONGCONG) as TongCongTon"
+                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                    + " where MaNV_HanhThu=@MaNV_HanhThu"
+                    + " and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
+                    + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
+                    + " left join"
+                    + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe"
+                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                    + " where MaNV_HanhThu=@MaNV_HanhThu"
+                    + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
+                    + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
+                    + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
+                    + " and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
+                    + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
+                    + " order by tong.MaND asc";
                 return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongCongTon,TongHDTonThucTe,TongCongTonThucTe"
-                            + " from"
-                            + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tong"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and NGAYGIAITRACH is not null and GB>20"
-                            + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.TONGCONG) as TongCongTon"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
-                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
-                            + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
-                            + " order by tong.MaND asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
-        }
-
-        public DataTable GetTongTon_NV(string Loai, int MaNV_HanhThu, DateTime NgayGiaiTrach)
-        {
-            if (Loai == "TG")
-            {
-                string sql = "declare @NgayGiaiTrach date;"
-                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
-                            + " select tong.MaND,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongCongTon,TongHDTonThucTe,TongCongTonThucTe"
-                            + " from"
-                            + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) tong"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.TONGCONG) as TongCongTon"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
-                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
-                            + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
-                            + " order by tong.MaND asc";
-
-                return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @NgayGiaiTrach date;"
-                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
-                            + " select tong.MaND,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongCongTon,TongHDTonThucTe,TongCongTonThucTe"
-                            + " from"
-                            + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tong"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach and GB>20"
-                            + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.TONGCONG) as TongCongTon"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
-                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
-                            + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
-                            + " order by tong.MaND asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
         }
 
         public DataTable GetTongTonDenKy_NV(string Loai, int MaNV_HanhThu, int Nam, int Ky)
@@ -2473,10 +1861,8 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
-        public DataTable GetTongTonDenKy_NV(string Loai, int MaNV_HanhThu, int Nam, int Ky, int Dot)
+        public DataTable GetTongTonDenKy_NV( int MaNV_HanhThu, int Nam, int Ky, int Dot)
         {
-            if (Loai == "TG")
-            {
                 string sql = "declare @Nam int;"
                             + " declare @Ky int;"
                             + " declare @Dot int;"
@@ -2487,1070 +1873,193 @@ namespace ThuTien.DAL.Doi
                             + " from"
                             + " (select nd.MaND,nd.HoTen,DOT,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT=@Dot and GB>=11 and GB<=20"
+                            + " where MaNV_HanhThu=@MaNV_HanhThu"
+                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT=@Dot"
                             + " group by nd.MaND,nd.HoTen,DOT) tong"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT=@Dot and NGAYGIAITRACH is not null and GB>=11 and GB<=20"
+                            + " where MaNV_HanhThu=@MaNV_HanhThu"
+                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT=@Dot and NGAYGIAITRACH is not null"
                             + " group by nd.MaND,nd.HoTen,DOT) thu on tong.MaND=thu.MaND"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.TONGCONG) as TongCongTon"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " where MaNV_HanhThu=@MaNV_HanhThu"
+                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
                             + " group by nd.MaND,nd.HoTen,DOT) ton on tong.MaND=ton.MaND"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
+                            + " where MaNV_HanhThu=@MaNV_HanhThu"
                             + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
                             + " group by nd.MaND,nd.HoTen,DOT) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
 
                 return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @Nam int;"
+        }
+
+        public DataTable GetTongTonDenKyDenNgay_NV(int MaNV_HanhThu, int Nam, int Ky,int Dot, DateTime NgayGiaiTrach)
+        {
+            string sql = "declare @MaNV_HanhThu int;"
+                    + " declare @Nam int;"
+                    + " declare @Ky int;"
+                    + " declare @Dot int;"
+                    + " declare @NgayGiaiTrach date;"
+                    + " set @MaNV_HanhThu=" + MaNV_HanhThu + ";"
+                    + " set @Nam=" + Nam + ";"
+                    + " set @Ky=" + Ky + ";"
+                    + " set @Dot=" + Dot + ";"
+                    + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                    + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongCongTon,TongHDTonThucTe,TongCongTonThucTe"
+                    + " from"
+                    + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
+                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                    + " where MaNV_HanhThu=@MaNV_HanhThu"
+                    + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT=@Dot"
+                    + " group by nd.MaND,nd.HoTen) tong"
+                    + " left join"
+                    + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
+                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                    + " where MaNV_HanhThu=@MaNV_HanhThu"
+                    + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT=@Dot and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach"
+                    + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
+                    + " left join"
+                    + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.TONGCONG) as TongCongTon"
+                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                    + " where MaNV_HanhThu=@MaNV_HanhThu"
+                    + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
+                    + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
+                    + " left join"
+                    + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe"
+                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                    + " where MaNV_HanhThu=@MaNV_HanhThu"
+                    + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
+                    + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
+                    + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
+                    + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
+                    + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
+                    + " order by tong.MaND asc";
+                return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetTongTonTrongKyDenNgay_NV(int MaNV_HanhThu, int Nam, int Ky, int Dot, DateTime NgayGiaiTrach)
+        {
+            string sql = "declare @MaNV_HanhThu int;"
+                            + " declare @Nam int;"
                             + " declare @Ky int;"
                             + " declare @Dot int;"
+                            + " declare @NgayGiaiTrach date;"
+                            + " set @MaNV_HanhThu=" + MaNV_HanhThu + ";"
                             + " set @Nam=" + Nam + ";"
                             + " set @Ky=" + Ky + ";"
                             + " set @Dot=" + Dot + ";"
-                            + " select tong.MaND as MaNV,tong.HoTen,DOT,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongCongTon,TongHDTonThucTe,TongCongTonThucTe"
-                            + " from"
-                            + " (select nd.MaND,nd.HoTen,DOT,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT=@Dot and GB>20"
-                            + " group by nd.MaND,nd.HoTen,DOT) tong"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT=@Dot and NGAYGIAITRACH is not null and GB>20"
-                            + " group by nd.MaND,nd.HoTen,DOT) thu on tong.MaND=thu.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.TONGCONG) as TongCongTon"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by nd.MaND,nd.HoTen,DOT) ton on tong.MaND=ton.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
-                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
-                            + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by nd.MaND,nd.HoTen,DOT) tonthucte on tong.MaND=tonthucte.MaND"
-                            + " order by tong.MaND asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
-        }
-
-        public DataTable GetTongTonDenKyDenNgay_NV(string Loai, int MaNV_HanhThu, int Nam, int Ky, DateTime NgayGiaiTrach)
-        {
-            if (Loai == "TG")
-            {
-                string sql = "declare @NgayGiaiTrach date;"
-                            + " declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
                             + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
                             + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongCongTon,TongHDTonThucTe,TongCongTonThucTe"
                             + " from"
                             + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and GB>=11 and GB<=20"
+                            + " where MaNV_HanhThu=@MaNV_HanhThu"
+                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot"
                             + " group by nd.MaND,nd.HoTen) tong"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach and GB>=11 and GB<=20"
+                            + " where MaNV_HanhThu=@MaNV_HanhThu"
+                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach"
                             + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.TONGCONG) as TongCongTon"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
+                            + " where MaNV_HanhThu=@MaNV_HanhThu"
+                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
                             + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
                             + " left join"
                             + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe"
                             + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
+                            + " where MaNV_HanhThu=@MaNV_HanhThu"
                             + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
                             + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
                             + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
+                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
                             + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
                             + " order by tong.MaND asc";
-
                 return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @NgayGiaiTrach date;"
-                            + " declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
-                            + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongCongTon,TongHDTonThucTe,TongCongTonThucTe"
-                            + " from"
-                            + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tong"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach and GB>20"
-                            + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.TONGCONG) as TongCongTon"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
-                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
-                            + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
-                            + " order by tong.MaND asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
-        }
-
-        public DataTable GetTongTonTrongKyDenNgay_NV(string Loai, int MaNV_HanhThu, int Nam, int Ky, DateTime NgayGiaiTrach)
-        {
-            if (Loai == "TG")
-            {
-                string sql = "declare @NgayGiaiTrach date;"
-                            + " declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
-                            + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongCongTon,TongHDTonThucTe,TongCongTonThucTe"
-                            + " from"
-                            + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and NAM=@Nam and KY=@Ky and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) tong"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and NAM=@Nam and KY=@Ky and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.TONGCONG) as TongCongTon"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
-                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
-                            + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
-                            + " order by tong.MaND asc";
-
-                return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @NgayGiaiTrach date;"
-                            + " declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
-                            + " select tong.MaND as MaNV,tong.HoTen,TuMLT,DenMLT,TuSoPhatHanh,DenSoPhatHanh,TongHD,TongCong,TongHDThu,TongCongThu,TongHDTon,TongCongTon,TongHDTonThucTe,TongCongTonThucTe"
-                            + " from"
-                            + " (select nd.MaND,nd.HoTen,min(MALOTRINH) as TuMLT,max(MALOTRINH) as DenMLT,min(SOPHATHANH) as TuSoPhatHanh,max(SOPHATHANH) as DenSoPhatHanh,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and NAM=@Nam and KY=@Ky and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tong"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDThu,sum(hd.TONGCONG) as TongCongThu"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and NAM=@Nam and KY=@Ky and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach and GB>20"
-                            + " group by nd.MaND,nd.HoTen) thu on tong.MaND=thu.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTon,sum(hd.TONGCONG) as TongCongTon"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) ton on tong.MaND=ton.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,count(DANHBA) as TongHDTonThucTe,sum(hd.TONGCONG) as TongCongTonThucTe"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MaNV_HanhThu=" + MaNV_HanhThu
-                            + " and ID_HOADON not in (select MaHD from TT_CTDongNuoc a, TT_DongNuoc b where a.MaDN=b.MaDN and Huy=0)"
-                            + " and ID_HOADON not in (select MaHD from TT_LenhHuy)"
-                            + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
-                            + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tonthucte on tong.MaND=tonthucte.MaND"
-                            + " order by tong.MaND asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
-        }
-
-        public DataTable GetBaoCaoTonDenKyDenNgay_To(string Loai, int MaTo, int Nam, int Ky, DateTime NgayGiaiTrach)
-        {
-            if (Loai == "TG")
-            {
-                string sql = "declare @NgayGiaiTrach date;"
-                            + " declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
-                            + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
-                            + " from"
-                            + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
-                            + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
-                            + " and ID_HOADON not in"
-                            + " ("
-                            + " select ID_HOADON"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
-                            + " )"
-                            + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
-                            + " where ck.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
-                            + " order by nhanvien.MaND asc";
-
-                return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @NgayGiaiTrach date;"
-                            + " declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
-                            + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
-                            + " from"
-                            + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
-                            + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20"
-                            + " and ID_HOADON not in"
-                            + " ("
-                            + " select ID_HOADON"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20"
-                            + " )"
-                            + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
-                            + " where ck.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
-                            + " order by nhanvien.MaND asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
-        }
-
-        public DataTable GetBaoCaoTonTrongKyDenNgay_To(string Loai, int MaTo, int Nam, int Ky, DateTime NgayGiaiTrach)
-        {
-            if (Loai == "TG")
-            {
-                string sql = "declare @NgayGiaiTrach date;"
-                            + " declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
-                            + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
-                            + " from"
-                            + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY=@Ky and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
-                            + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY=@Ky and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
-                            + " and ID_HOADON not in"
-                            + " ("
-                            + " select ID_HOADON"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY=@Ky and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
-                            + " )"
-                            + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
-                            + " where ck.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY=@Ky and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY=@Ky and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
-                            + " order by nhanvien.MaND asc";
-
-                return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @NgayGiaiTrach date;"
-                            + " declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
-                            + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
-                            + " from"
-                            + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY=@Ky and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
-                            + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY=@Ky and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20"
-                            + " and ID_HOADON not in"
-                            + " ("
-                            + " select ID_HOADON"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY=@Ky and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20"
-                            + " )"
-                            + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
-                            + " where ck.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY=@Ky and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY=@Ky and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
-                            + " order by nhanvien.MaND asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
-        }
-
-        public DataTable GetBaoCaoTonDenKy_To(string Loai, int MaTo, int Nam, int Ky)
-        {
-            if (Loai == "TG")
-            {
-                string sql = "declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
-                            + " from"
-                            + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and NGAYGIAITRACH is null and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
-                            + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and NGAYGIAITRACH is null and GB>=11 and GB<=20"
-                            + " and ID_HOADON not in"
-                            + " ("
-                            + " select ID_HOADON"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and NGAYGIAITRACH is null and GB>=11 and GB<=20"
-                            + " )"
-                            + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
-                            + " where ck.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and NGAYGIAITRACH is null and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and NGAYGIAITRACH is null or and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
-                            + " order by nhanvien.MaND asc";
-
-                return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
-                            + " from"
-                            + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and NGAYGIAITRACH is null and GB>20"
-                            + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
-                            + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and NGAYGIAITRACH is null and GB>20"
-                            + " and ID_HOADON not in"
-                            + " ("
-                            + " select ID_HOADON"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and NGAYGIAITRACH is null and GB>20"
-                            + " )"
-                            + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
-                            + " where ck.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and NGAYGIAITRACH is null and GB>20"
-                            + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and NGAYGIAITRACH is null and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
-                            + " order by nhanvien.MaND asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
-        }
-
-        public DataTable GetBaoCaoTon_To(string Loai, int MaTo, DateTime NgayGiaiTrach)
-        {
-            if (Loai == "TG")
-            {
-                string sql = "declare @NgayGiaiTrach date;"
-                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
-                            + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
-                            + " from"
-                            + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
-                            + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
-                            + " and ID_HOADON not in"
-                            + " ("
-                            + " select ID_HOADON"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
-                            + " )"
-                            + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
-                            + " where ck.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
-                            + " order by nhanvien.MaND asc";
-
-                return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @NgayGiaiTrach date;"
-                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
-                            + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
-                            + " from"
-                            + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
-                            + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20"
-                            + " and ID_HOADON not in"
-                            + " ("
-                            + " select ID_HOADON"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20"
-                            + " )"
-                            + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
-                            + " where ck.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach) and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
-                            + " order by nhanvien.MaND asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
-        }
-
-        public DataTable GetBaoCaoTon_To(string Loai, int MaTo)
-        {
-            if (Loai == "TG")
-            {
-                string sql = "select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
-                            + " from"
-                            + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NGAYGIAITRACH is null and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
-                            + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NGAYGIAITRACH is null and GB>=11 and GB<=20"
-                            + " and ID_HOADON not in"
-                            + " ("
-                            + " select ID_HOADON"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NGAYGIAITRACH is null and GB>=11 and GB<=20"
-                            + " )"
-                            + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
-                            + " where ck.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NGAYGIAITRACH is null and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NGAYGIAITRACH is null and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
-                            + " order by nhanvien.MaND asc";
-
-                return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
-                            + " from"
-                            + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NGAYGIAITRACH is null and GB>20"
-                            + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
-                            + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NGAYGIAITRACH is null and GB>20"
-                            + " and ID_HOADON not in"
-                            + " ("
-                            + " select ID_HOADON"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NGAYGIAITRACH is null and GB>20"
-                            + " )"
-                            + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
-                            + " where ck.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NGAYGIAITRACH is null and GB>20"
-                            + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NGAYGIAITRACH is null and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
-                            + " order by nhanvien.MaND asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
-        }
-
-        public DataTable GetBaoCaoTon_To(string Loai, int MaTo, int Nam)
-        {
-            if (Loai == "TG")
-            {
-                string sql = "declare @Nam int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
-                            + " from"
-                            + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and NGAYGIAITRACH is null and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
-                            + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and NGAYGIAITRACH is null and GB>=11 and GB<=20"
-                            + " and ID_HOADON not in"
-                            + " ("
-                            + " select ID_HOADON"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and NGAYGIAITRACH is null and GB>=11 and GB<=20"
-                            + " )"
-                            + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
-                            + " where ck.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and NGAYGIAITRACH is null and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and NGAYGIAITRACH is null and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
-                            + " order by nhanvien.MaND asc";
-
-                return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @Nam int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
-                            + " from"
-                            + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and NGAYGIAITRACH is null and GB>20"
-                            + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
-                            + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and NGAYGIAITRACH is null and GB>20"
-                            + " and ID_HOADON not in"
-                            + " ("
-                            + " select ID_HOADON"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and NGAYGIAITRACH is null and GB>20"
-                            + " )"
-                            + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
-                            + " where ck.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and NGAYGIAITRACH is null and GB>20"
-                            + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and NGAYGIAITRACH is null and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
-                            + " order by nhanvien.MaND asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
-        }
-
-        public DataTable GetBaoCaoTon_To(string Loai, int MaTo, int Nam, int Ky)
-        {
-            if (Loai == "TG")
-            {
-                string sql = "declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
-                            + " from"
-                            + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY=@Ky and NGAYGIAITRACH is null and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
-                            + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY=@Ky and NGAYGIAITRACH is null and GB>=11 and GB<=20"
-                            + " and ID_HOADON not in"
-                            + " ("
-                            + " select ID_HOADON"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY=@Ky and NGAYGIAITRACH is null and GB>=11 and GB<=20"
-                            + " )"
-                            + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
-                            + " where ck.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY=@Ky and NGAYGIAITRACH is null and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY=@Ky and NGAYGIAITRACH is null and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
-                            + " order by nhanvien.MaND asc";
-
-                return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
-                            + " from"
-                            + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY=@Ky and NGAYGIAITRACH is null and GB>20"
-                            + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
-                            + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY=@Ky and NGAYGIAITRACH is null and GB>20"
-                            + " and ID_HOADON not in"
-                            + " ("
-                            + " select ID_HOADON"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY=@Ky and NGAYGIAITRACH is null and GB>20"
-                            + " )"
-                            + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
-                            + " where ck.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY=@Ky and NGAYGIAITRACH is null and GB>20"
-                            + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY<=@Ky and NGAYGIAITRACH is null and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
-                            + " order by nhanvien.MaND asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
-        }
-
-        public DataTable GetBaoCaoTon_To(string Loai, int MaTo, int Nam, int Ky, int Dot)
-        {
-            if (Loai == "TG")
-            {
-                string sql = "declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " declare @Dot int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " set @Dot=" + Dot + ";"
-                            + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
-                            + " from"
-                            + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY=@Ky and DOT=@Dot and NGAYGIAITRACH is null and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
-                            + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY=@Ky and DOT=@Dot and NGAYGIAITRACH is null and GB>=11 and GB<=20"
-                            + " and ID_HOADON not in"
-                            + " ("
-                            + " select ID_HOADON"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY=@Ky and DOT=@Dot and NGAYGIAITRACH is null and GB>=11 and GB<=20"
-                            + " )"
-                            + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
-                            + " where ck.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY=@Ky and DOT=@Dot and NGAYGIAITRACH is null and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY=@Ky and DOT=@Dot and NGAYGIAITRACH is null and GB>=11 and GB<=20"
-                            + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
-                            + " order by nhanvien.MaND asc";
-
-                return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @Nam int;"
-                            + " declare @Ky int;"
-                            + " declare @Dot int;"
-                            + " set @Nam=" + Nam + ";"
-                            + " set @Ky=" + Ky + ";"
-                            + " set @Dot=" + Dot + ";"
-                            + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
-                            + " from"
-                            + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY=@Ky and DOT=@Dot and NGAYGIAITRACH is null and GB>20"
-                            + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
-                            + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY=@Ky and DOT=@Dot and NGAYGIAITRACH is null and GB>20"
-                            + " and ID_HOADON not in"
-                            + " ("
-                            + " select ID_HOADON"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                            + " where lh.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY=@Ky and DOT=@Dot and NGAYGIAITRACH is null and GB>20"
-                            + " )"
-                            + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
-                            + " where ck.MaHD=hd.ID_HOADON"
-                            + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY=@Ky and DOT=@Dot and NGAYGIAITRACH is null and GB>20"
-                            + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
-                            + " left join"
-                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
-                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=@Nam and hd.KY<=@Ky and DOT=@Dot and NGAYGIAITRACH is null and GB>20"
-                            + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
-                            + " order by nhanvien.MaND asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
         }
 
         public DataTable GetBaoCaoTonDenKyDenNgay_To(int MaTo, int Nam, int Ky, DateTime NgayGiaiTrach)
         {
+                string sql =  "declare @Nam int;"
+                            + " declare @Ky int;"
+                            + " declare @NgayGiaiTrach date;"
+                            + " declare @TuCuonGCS int;"
+                            + " declare @DenCuonGCS int;"
+                            + " set @Nam=" + Nam + ";"
+                            + " set @Ky=" + Ky + ";"
+                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                            + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
+                            + " from"
+                            + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
+                            + " left join"
+                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
+                            + " where lh.MaHD=hd.ID_HOADON"
+                            + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
+                            + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
+                            + " left join"
+                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
+                            + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
+                            + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
+                            + " and ID_HOADON not in"
+                            + " ("
+                            + " select ID_HOADON"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
+                            + " where lh.MaHD=hd.ID_HOADON"
+                            + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
+                            + " )"
+                            + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
+                            + " left join"
+                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
+                            + " where ck.MaHD=hd.ID_HOADON"
+                            + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
+                            + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
+                            + " left join"
+                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
+                            + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
+                            + " order by nhanvien.MaND asc";
+                return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetBaoCaoTonTrongKyDenNgay_To( int MaTo, int Nam, int Ky,int FromDot,int ToDot, DateTime NgayGiaiTrach)
+        {
             string sql = "declare @NgayGiaiTrach date;"
                         + " declare @Nam int;"
                         + " declare @Ky int;"
+                        + " declare @FromDot int;"
+                        + " declare @ToDot int;"
+                        + " declare @TuCuonGCS int;"
+                        + " declare @DenCuonGCS int;"
                         + " set @Nam=" + Nam + ";"
                         + " set @Ky=" + Ky + ";"
+                        + " set @FromDot=" + FromDot + ";"
+                        + " set @ToDot=" + ToDot + ";"
                         + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                        + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
                         + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
                         + " from"
                         + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
@@ -3558,21 +2067,585 @@ namespace ThuTien.DAL.Doi
                         + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
                         + " where lh.MaHD=hd.ID_HOADON"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and hd.KY=@Ky and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
+                        + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
+                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
+                        + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and hd.KY=@Ky and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
+                        + " and ID_HOADON not in"
+                        + " ("
+                        + " select ID_HOADON"
+                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
+                        + " where lh.MaHD=hd.ID_HOADON"
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and hd.KY=@Ky and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
+                        + " )"
+                        + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
+                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
+                        + " where ck.MaHD=hd.ID_HOADON"
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and hd.KY=@Ky and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
+                        + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
+                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and hd.KY=@Ky and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
+                        + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
+                        + " order by nhanvien.MaND asc";
+                return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetBaoCaoTonDenKy_To(int MaTo, int Nam, int Ky, int FromDot, int ToDot)
+        {
+                string sql = "declare @Nam int;"
+                            + " declare @Ky int;"
+                            + " declare @FromDot int;"
+                            + " declare @ToDot int;"
+                            + " declare @TuCuonGCS int;"
+                            + " declare @DenCuonGCS int;"
+                            + " set @Nam=" + Nam + ";"
+                            + " set @Ky=" + Ky + ";"
+                            + " set @FromDot=" + FromDot + ";"
+                            + " set @ToDot=" + ToDot + ";"
+                            + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
+                            + " from"
+                            + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
+                            + " left join"
+                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
+                            + " where lh.MaHD=hd.ID_HOADON"
+                            + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and NGAYGIAITRACH is null"
+                            + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
+                            + " left join"
+                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
+                            + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
+                            + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and NGAYGIAITRACH is null"
+                            + " and ID_HOADON not in"
+                            + " ("
+                            + " select ID_HOADON"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
+                            + " where lh.MaHD=hd.ID_HOADON"
+                            + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and NGAYGIAITRACH is null"
+                            + " )"
+                            + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
+                            + " left join"
+                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
+                            + " where ck.MaHD=hd.ID_HOADON"
+                            + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and NGAYGIAITRACH is null"
+                            + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
+                            + " left join"
+                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and NGAYGIAITRACH is null or"
+                            + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
+                            + " order by nhanvien.MaND asc";
+                return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetBaoCaoTon_To(int MaTo, DateTime NgayGiaiTrach)
+        {
+                string sql = "declare @NgayGiaiTrach date;"
+                            + " declare @TuCuonGCS int;"
+                            + " declare @DenCuonGCS int;"
+                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                            + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
+                            + " from"
+                            + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
+                            + " left join"
+                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
+                            + " where lh.MaHD=hd.ID_HOADON"
+                            + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
+                            + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
+                            + " left join"
+                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
+                            + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
+                            + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
+                            + " and ID_HOADON not in"
+                            + " ("
+                            + " select ID_HOADON"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
+                            + " where lh.MaHD=hd.ID_HOADON"
+                            + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
+                            + " )"
+                            + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
+                            + " left join"
+                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
+                            + " where ck.MaHD=hd.ID_HOADON"
+                            + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
+                            + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
+                            + " left join"
+                            + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
+                            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
+                            + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
+                            + " order by nhanvien.MaND asc";
+                return ExecuteQuery_DataTable(sql);
+        }
+
+        //public DataTable GetBaoCaoTon_To(string Loai, int MaTo)
+        //{
+        //    if (Loai == "TG")
+        //    {
+        //        string sql = "select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
+        //                    + " from"
+        //                    + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
+        //                    + " where lh.MaHD=hd.ID_HOADON"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NGAYGIAITRACH is null and GB>=11 and GB<=20"
+        //                    + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
+        //                    + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NGAYGIAITRACH is null and GB>=11 and GB<=20"
+        //                    + " and ID_HOADON not in"
+        //                    + " ("
+        //                    + " select ID_HOADON"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
+        //                    + " where lh.MaHD=hd.ID_HOADON"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NGAYGIAITRACH is null and GB>=11 and GB<=20"
+        //                    + " )"
+        //                    + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
+        //                    + " where ck.MaHD=hd.ID_HOADON"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NGAYGIAITRACH is null and GB>=11 and GB<=20"
+        //                    + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+        //                    + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NGAYGIAITRACH is null and GB>=11 and GB<=20"
+        //                    + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
+        //                    + " order by nhanvien.MaND asc";
+
+        //        return ExecuteQuery_DataTable(sql);
+        //    }
+        //    else
+        //        if (Loai == "CQ")
+        //        {
+        //            string sql = "select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
+        //                    + " from"
+        //                    + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
+        //                    + " where lh.MaHD=hd.ID_HOADON"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NGAYGIAITRACH is null and GB>20"
+        //                    + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
+        //                    + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NGAYGIAITRACH is null and GB>20"
+        //                    + " and ID_HOADON not in"
+        //                    + " ("
+        //                    + " select ID_HOADON"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
+        //                    + " where lh.MaHD=hd.ID_HOADON"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NGAYGIAITRACH is null and GB>20"
+        //                    + " )"
+        //                    + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
+        //                    + " where ck.MaHD=hd.ID_HOADON"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NGAYGIAITRACH is null and GB>20"
+        //                    + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+        //                    + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NGAYGIAITRACH is null and GB>20"
+        //                    + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
+        //                    + " order by nhanvien.MaND asc";
+
+        //            return ExecuteQuery_DataTable(sql);
+        //        }
+        //    return null;
+        //}
+
+        //public DataTable GetBaoCaoTon_To(string Loai, int MaTo, int Nam)
+        //{
+        //    if (Loai == "TG")
+        //    {
+        //        string sql = "declare @Nam int;"
+        //                    + " set @Nam=" + Nam + ";"
+        //                    + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
+        //                    + " from"
+        //                    + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
+        //                    + " where lh.MaHD=hd.ID_HOADON"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and NGAYGIAITRACH is null and GB>=11 and GB<=20"
+        //                    + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
+        //                    + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and NGAYGIAITRACH is null and GB>=11 and GB<=20"
+        //                    + " and ID_HOADON not in"
+        //                    + " ("
+        //                    + " select ID_HOADON"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
+        //                    + " where lh.MaHD=hd.ID_HOADON"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and NGAYGIAITRACH is null and GB>=11 and GB<=20"
+        //                    + " )"
+        //                    + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
+        //                    + " where ck.MaHD=hd.ID_HOADON"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and NGAYGIAITRACH is null and GB>=11 and GB<=20"
+        //                    + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+        //                    + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and NGAYGIAITRACH is null and GB>=11 and GB<=20"
+        //                    + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
+        //                    + " order by nhanvien.MaND asc";
+
+        //        return ExecuteQuery_DataTable(sql);
+        //    }
+        //    else
+        //        if (Loai == "CQ")
+        //        {
+        //            string sql = "declare @Nam int;"
+        //                    + " set @Nam=" + Nam + ";"
+        //                    + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
+        //                    + " from"
+        //                    + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
+        //                    + " where lh.MaHD=hd.ID_HOADON"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and NGAYGIAITRACH is null and GB>20"
+        //                    + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
+        //                    + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and NGAYGIAITRACH is null and GB>20"
+        //                    + " and ID_HOADON not in"
+        //                    + " ("
+        //                    + " select ID_HOADON"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
+        //                    + " where lh.MaHD=hd.ID_HOADON"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and NGAYGIAITRACH is null and GB>20"
+        //                    + " )"
+        //                    + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
+        //                    + " where ck.MaHD=hd.ID_HOADON"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and NGAYGIAITRACH is null and GB>20"
+        //                    + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+        //                    + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and NGAYGIAITRACH is null and GB>20"
+        //                    + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
+        //                    + " order by nhanvien.MaND asc";
+
+        //            return ExecuteQuery_DataTable(sql);
+        //        }
+        //    return null;
+        //}
+
+        //public DataTable GetBaoCaoTon_To(string Loai, int MaTo, int Nam, int Ky)
+        //{
+        //    if (Loai == "TG")
+        //    {
+        //        string sql = "declare @Nam int;"
+        //                    + " declare @Ky int;"
+        //                    + " set @Nam=" + Nam + ";"
+        //                    + " set @Ky=" + Ky + ";"
+        //                    + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
+        //                    + " from"
+        //                    + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
+        //                    + " where lh.MaHD=hd.ID_HOADON"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and hd.KY=@Ky and NGAYGIAITRACH is null and GB>=11 and GB<=20"
+        //                    + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
+        //                    + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and hd.KY=@Ky and NGAYGIAITRACH is null and GB>=11 and GB<=20"
+        //                    + " and ID_HOADON not in"
+        //                    + " ("
+        //                    + " select ID_HOADON"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
+        //                    + " where lh.MaHD=hd.ID_HOADON"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and hd.KY=@Ky and NGAYGIAITRACH is null and GB>=11 and GB<=20"
+        //                    + " )"
+        //                    + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
+        //                    + " where ck.MaHD=hd.ID_HOADON"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and hd.KY=@Ky and NGAYGIAITRACH is null and GB>=11 and GB<=20"
+        //                    + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+        //                    + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and hd.KY=@Ky and NGAYGIAITRACH is null and GB>=11 and GB<=20"
+        //                    + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
+        //                    + " order by nhanvien.MaND asc";
+
+        //        return ExecuteQuery_DataTable(sql);
+        //    }
+        //    else
+        //        if (Loai == "CQ")
+        //        {
+        //            string sql = "declare @Nam int;"
+        //                    + " declare @Ky int;"
+        //                    + " set @Nam=" + Nam + ";"
+        //                    + " set @Ky=" + Ky + ";"
+        //                    + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
+        //                    + " from"
+        //                    + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
+        //                    + " where lh.MaHD=hd.ID_HOADON"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and hd.KY=@Ky and NGAYGIAITRACH is null and GB>20"
+        //                    + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
+        //                    + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and hd.KY=@Ky and NGAYGIAITRACH is null and GB>20"
+        //                    + " and ID_HOADON not in"
+        //                    + " ("
+        //                    + " select ID_HOADON"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
+        //                    + " where lh.MaHD=hd.ID_HOADON"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and hd.KY=@Ky and NGAYGIAITRACH is null and GB>20"
+        //                    + " )"
+        //                    + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
+        //                    + " where ck.MaHD=hd.ID_HOADON"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and hd.KY=@Ky and NGAYGIAITRACH is null and GB>20"
+        //                    + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+        //                    + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and hd.KY<=@Ky and NGAYGIAITRACH is null and GB>20"
+        //                    + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
+        //                    + " order by nhanvien.MaND asc";
+
+        //            return ExecuteQuery_DataTable(sql);
+        //        }
+        //    return null;
+        //}
+
+        //public DataTable GetBaoCaoTon_To(string Loai, int MaTo, int Nam, int Ky, int Dot)
+        //{
+        //    if (Loai == "TG")
+        //    {
+        //        string sql = "declare @Nam int;"
+        //                    + " declare @Ky int;"
+        //                    + " declare @Dot int;"
+        //                    + " set @Nam=" + Nam + ";"
+        //                    + " set @Ky=" + Ky + ";"
+        //                    + " set @Dot=" + Dot + ";"
+        //                    + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
+        //                    + " from"
+        //                    + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
+        //                    + " where lh.MaHD=hd.ID_HOADON"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and hd.KY=@Ky and DOT=@Dot and NGAYGIAITRACH is null and GB>=11 and GB<=20"
+        //                    + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
+        //                    + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and hd.KY=@Ky and DOT=@Dot and NGAYGIAITRACH is null and GB>=11 and GB<=20"
+        //                    + " and ID_HOADON not in"
+        //                    + " ("
+        //                    + " select ID_HOADON"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
+        //                    + " where lh.MaHD=hd.ID_HOADON"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and hd.KY=@Ky and DOT=@Dot and NGAYGIAITRACH is null and GB>=11 and GB<=20"
+        //                    + " )"
+        //                    + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
+        //                    + " where ck.MaHD=hd.ID_HOADON"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and hd.KY=@Ky and DOT=@Dot and NGAYGIAITRACH is null and GB>=11 and GB<=20"
+        //                    + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+        //                    + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and hd.KY=@Ky and DOT=@Dot and NGAYGIAITRACH is null and GB>=11 and GB<=20"
+        //                    + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
+        //                    + " order by nhanvien.MaND asc";
+
+        //        return ExecuteQuery_DataTable(sql);
+        //    }
+        //    else
+        //        if (Loai == "CQ")
+        //        {
+        //            string sql = "declare @Nam int;"
+        //                    + " declare @Ky int;"
+        //                    + " declare @Dot int;"
+        //                    + " set @Nam=" + Nam + ";"
+        //                    + " set @Ky=" + Ky + ";"
+        //                    + " set @Dot=" + Dot + ";"
+        //                    + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
+        //                    + " from"
+        //                    + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
+        //                    + " where lh.MaHD=hd.ID_HOADON"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and hd.KY=@Ky and DOT=@Dot and NGAYGIAITRACH is null and GB>20"
+        //                    + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
+        //                    + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and hd.KY=@Ky and DOT=@Dot and NGAYGIAITRACH is null and GB>20"
+        //                    + " and ID_HOADON not in"
+        //                    + " ("
+        //                    + " select ID_HOADON"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
+        //                    + " where lh.MaHD=hd.ID_HOADON"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and hd.KY=@Ky and DOT=@Dot and NGAYGIAITRACH is null and GB>20"
+        //                    + " )"
+        //                    + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
+        //                    + " where ck.MaHD=hd.ID_HOADON"
+        //                    + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and hd.KY=@Ky and DOT=@Dot and NGAYGIAITRACH is null and GB>20"
+        //                    + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
+        //                    + " left join"
+        //                    + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
+        //                    + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+        //                    + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                    + " and NAM=@Nam and hd.KY<=@Ky and DOT=@Dot and NGAYGIAITRACH is null and GB>20"
+        //                    + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
+        //                    + " order by nhanvien.MaND asc";
+
+        //            return ExecuteQuery_DataTable(sql);
+        //        }
+        //    return null;
+        //}
+
+        public DataTable GetBaoCaoTonDenKyDenNgay_To(int MaTo, int Nam, int Ky,int FromDot,int ToDot, DateTime NgayGiaiTrach)
+        {
+            string sql = "declare @NgayGiaiTrach date;"
+                        + " declare @Nam int;"
+                        + " declare @Ky int;"
+                        + " declare @FromDot int;"
+                        + " declare @ToDot int;"
+                        + " declare @TuCuonGCS int;"
+                        + " declare @DenCuonGCS int;"
+                        + " set @Nam=" + Nam + ";"
+                        + " set @Ky=" + Ky + ";"
+                        + " set @FromDot=" + FromDot + ";"
+                        + " set @ToDot=" + ToDot + ";"
+                        + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                        + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
+                        + " from"
+                        + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
+                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
+                        + " where lh.MaHD=hd.ID_HOADON"
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
                         + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
                         + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
                         + " and ID_HOADON not in"
                         + " ("
                         + " select ID_HOADON"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
                         + " where lh.MaHD=hd.ID_HOADON"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
                         + " )"
                         + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
@@ -3580,13 +2653,13 @@ namespace ThuTien.DAL.Doi
                         + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
                         + " where ck.MaHD=hd.ID_HOADON"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
                         + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                        + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
                         + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                         + " order by nhanvien.MaND asc";
@@ -3599,9 +2672,13 @@ namespace ThuTien.DAL.Doi
             string sql = "declare @NgayGiaiTrach date;"
                         + " declare @Nam int;"
                         + " declare @Ky int;"
+                        + " declare @TuCuonGCS int;"
+                        + " declare @DenCuonGCS int;"
                         + " set @Nam=" + Nam + ";"
                         + " set @Ky=" + Ky + ";"
                         + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                        + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
                         + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
                         + " from"
                         + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
@@ -3609,21 +2686,21 @@ namespace ThuTien.DAL.Doi
                         + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
                         + " where lh.MaHD=hd.ID_HOADON"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and NAM=@Nam and hd.KY=@Ky and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
                         + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
                         + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and NAM=@Nam and hd.KY=@Ky and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
                         + " and ID_HOADON not in"
                         + " ("
                         + " select ID_HOADON"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
                         + " where lh.MaHD=hd.ID_HOADON"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and NAM=@Nam and hd.KY=@Ky and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
                         + " )"
                         + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
@@ -3631,13 +2708,13 @@ namespace ThuTien.DAL.Doi
                         + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
                         + " where ck.MaHD=hd.ID_HOADON"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and NAM=@Nam and hd.KY=@Ky and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
                         + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                        + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and NAM=@Nam and hd.KY=@Ky and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
                         + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                         + " order by nhanvien.MaND asc";
@@ -3649,8 +2726,12 @@ namespace ThuTien.DAL.Doi
         {
             string sql = "declare @Nam int;"
                         + " declare @Ky int;"
+                        + " declare @TuCuonGCS int;"
+                        + " declare @DenCuonGCS int;"
                         + " set @Nam=" + Nam + ";"
                         + " set @Ky=" + Ky + ";"
+                        + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
                         + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
                         + " from"
                         + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
@@ -3658,21 +2739,21 @@ namespace ThuTien.DAL.Doi
                         + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
                         + " where lh.MaHD=hd.ID_HOADON"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and NGAYGIAITRACH is null"
                         + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
                         + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and NGAYGIAITRACH is null"
                         + " and ID_HOADON not in"
                         + " ("
                         + " select ID_HOADON"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
                         + " where lh.MaHD=hd.ID_HOADON"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and NGAYGIAITRACH is null"
                         + " )"
                         + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
@@ -3680,61 +2761,14 @@ namespace ThuTien.DAL.Doi
                         + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
                         + " where ck.MaHD=hd.ID_HOADON"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and NGAYGIAITRACH is null"
                         + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                        + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and (NAM<@Nam or (NAM=@Nam and hd.KY<=@Ky)) and NGAYGIAITRACH is null"
-                        + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
-                        + " order by nhanvien.MaND asc";
-
-            return ExecuteQuery_DataTable(sql);
-        }
-
-        public DataTable GetBaoCaoTon_To(int MaTo, DateTime NgayGiaiTrach)
-        {
-            string sql = "declare @NgayGiaiTrach date;"
-                        + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
-                        + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
-                        + " from"
-                        + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
-                        + " left join"
-                        + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
-                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                        + " where lh.MaHD=hd.ID_HOADON"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                        + " and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
-                        + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
-                        + " left join"
-                        + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
-                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
-                        + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                        + " and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
-                        + " and ID_HOADON not in"
-                        + " ("
-                        + " select ID_HOADON"
-                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
-                        + " where lh.MaHD=hd.ID_HOADON"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                        + " and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
-                        + " )"
-                        + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
-                        + " left join"
-                        + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
-                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
-                        + " where ck.MaHD=hd.ID_HOADON"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                        + " and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
-                        + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
-                        + " left join"
-                        + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
-                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                        + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                        + " and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach)"
                         + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                         + " order by nhanvien.MaND asc";
 
@@ -3743,28 +2777,32 @@ namespace ThuTien.DAL.Doi
 
         public DataTable GetBaoCaoTon_To(int MaTo)
         {
-            string sql = "select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
+            string sql =  "declare @TuCuonGCS int;"
+                        + " declare @DenCuonGCS int;"
+                        + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
                         + " from"
                         + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
                         + " where lh.MaHD=hd.ID_HOADON"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and NGAYGIAITRACH is null"
                         + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
                         + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and NGAYGIAITRACH is null"
                         + " and ID_HOADON not in"
                         + " ("
                         + " select ID_HOADON"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
                         + " where lh.MaHD=hd.ID_HOADON"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and NGAYGIAITRACH is null"
                         + " )"
                         + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
@@ -3772,13 +2810,13 @@ namespace ThuTien.DAL.Doi
                         + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
                         + " where ck.MaHD=hd.ID_HOADON"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and NGAYGIAITRACH is null"
                         + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                        + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and NGAYGIAITRACH is null"
                         + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                         + " order by nhanvien.MaND asc";
@@ -3789,7 +2827,11 @@ namespace ThuTien.DAL.Doi
         public DataTable GetBaoCaoTon_To(int MaTo, int Nam)
         {
             string sql = "declare @Nam int;"
+                        + " declare @TuCuonGCS int;"
+                        + " declare @DenCuonGCS int;"
                         + " set @Nam=" + Nam + ";"
+                        + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
                         + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
                         + " from"
                         + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
@@ -3797,21 +2839,21 @@ namespace ThuTien.DAL.Doi
                         + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
                         + " where lh.MaHD=hd.ID_HOADON"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and NAM=@Nam and NGAYGIAITRACH is null"
                         + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
                         + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and NAM=@Nam and NGAYGIAITRACH is null"
                         + " and ID_HOADON not in"
                         + " ("
                         + " select ID_HOADON"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
                         + " where lh.MaHD=hd.ID_HOADON"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and NAM=@Nam and NGAYGIAITRACH is null"
                         + " )"
                         + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
@@ -3819,13 +2861,13 @@ namespace ThuTien.DAL.Doi
                         + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
                         + " where ck.MaHD=hd.ID_HOADON"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and NAM=@Nam and NGAYGIAITRACH is null"
                         + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                        + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and NAM=@Nam and NGAYGIAITRACH is null"
                         + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                         + " order by nhanvien.MaND asc";
@@ -3837,8 +2879,12 @@ namespace ThuTien.DAL.Doi
         {
             string sql = "declare @Nam int;"
                         + " declare @Ky int;"
+                        + " declare @TuCuonGCS int;"
+                        + " declare @DenCuonGCS int;"
                         + " set @Nam=" + Nam + ";"
                         + " set @Ky=" + Ky + ";"
+                        + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
                         + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
                         + " from"
                         + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
@@ -3846,21 +2892,21 @@ namespace ThuTien.DAL.Doi
                         + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
                         + " where lh.MaHD=hd.ID_HOADON"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and NAM=@Nam and hd.KY=@Ky and NGAYGIAITRACH is null"
                         + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
                         + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and NAM=@Nam and hd.KY=@Ky and NGAYGIAITRACH is null"
                         + " and ID_HOADON not in"
                         + " ("
                         + " select ID_HOADON"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
                         + " where lh.MaHD=hd.ID_HOADON"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and NAM=@Nam and hd.KY=@Ky and NGAYGIAITRACH is null"
                         + " )"
                         + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
@@ -3868,13 +2914,13 @@ namespace ThuTien.DAL.Doi
                         + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
                         + " where ck.MaHD=hd.ID_HOADON"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and NAM=@Nam and hd.KY=@Ky and NGAYGIAITRACH is null"
                         + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                        + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and NAM=@Nam and hd.KY=@Ky and NGAYGIAITRACH is null"
                         + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                         + " order by nhanvien.MaND asc";
@@ -3887,9 +2933,13 @@ namespace ThuTien.DAL.Doi
             string sql = "declare @Nam int;"
                         + " declare @Ky int;"
                         + " declare @Dot int;"
+                        + " declare @TuCuonGCS int;"
+                        + " declare @DenCuonGCS int;"
                         + " set @Nam=" + Nam + ";"
                         + " set @Ky=" + Ky + ";"
                         + " set @Dot=" + Dot + ";"
+                        + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
                         + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
                         + " from"
                         + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
@@ -3897,21 +2947,21 @@ namespace ThuTien.DAL.Doi
                         + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
                         + " where lh.MaHD=hd.ID_HOADON"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and NAM=@Nam and hd.KY=@Ky and DOT=@Dot and NGAYGIAITRACH is null"
                         + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
                         + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and NAM=@Nam and hd.KY=@Ky and DOT=@Dot and NGAYGIAITRACH is null"
                         + " and ID_HOADON not in"
                         + " ("
                         + " select ID_HOADON"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
                         + " where lh.MaHD=hd.ID_HOADON"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and NAM=@Nam and hd.KY=@Ky and DOT=@Dot and NGAYGIAITRACH is null"
                         + " )"
                         + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
@@ -3919,14 +2969,71 @@ namespace ThuTien.DAL.Doi
                         + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
                         + " where ck.MaHD=hd.ID_HOADON"
-                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and NAM=@Nam and hd.KY=@Ky and DOT=@Dot and NGAYGIAITRACH is null"
                         + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
-                        + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and NAM=@Nam and hd.KY=@Ky and DOT=@Dot and NGAYGIAITRACH is null"
+                        + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
+                        + " order by nhanvien.MaND asc";
+
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetBaoCaoTon_To(int MaTo, int Nam, int Ky, int FromDot,int ToDot)
+        {
+            string sql = "declare @Nam int;"
+                        + " declare @Ky int;"
+                        + " declare @FromDot int;"
+                        + " declare @ToDot int;"
+                        + " declare @TuCuonGCS int;"
+                        + " declare @DenCuonGCS int;"
+                        + " set @Nam=" + Nam + ";"
+                        + " set @Ky=" + Ky + ";"
+                        + " set @FromDot=" + FromDot + ";"
+                        + " set @ToDot=" + ToDot + ";"
+                        + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " select TenTo,nhanvien.MaND as MaNV,nhanvien.HoTen,LenhHuySL,LenhHuyTC,DongNuocSL,DongNuocTC,ChuyenKhoanSL,ChuyenKhoanTC,TongSL,TongTC"
+                        + " from"
+                        + " (select TenTo,MaND,HoTen from TT_NguoiDung nd,TT_To tto where nd.MaTo=tto.MaTo and nd.MaTo=" + MaTo + " and nd.HanhThu=1) nhanvien"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as LenhHuySL,SUM(hd.TONGCONG) as LenhHuyTC"
+                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
+                        + " where lh.MaHD=hd.ID_HOADON"
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and hd.KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and NGAYGIAITRACH is null"
+                        + " group by nd.MaND,nd.HoTen) lenhhuy on nhanvien.MaND=lenhhuy.MaND"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as DongNuocSL,SUM(hd.TONGCONG) as DongNuocTC"
+                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DongNuoc dn,TT_CTDongNuoc ctdn"
+                        + " where dn.MaDN=ctdn.MaDN and ctdn.MaHD=hd.ID_HOADON and dn.Huy=0"
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and hd.KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and NGAYGIAITRACH is null"
+                        + " and ID_HOADON not in"
+                        + " ("
+                        + " select ID_HOADON"
+                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_LenhHuy lh"
+                        + " where lh.MaHD=hd.ID_HOADON"
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and hd.KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and NGAYGIAITRACH is null"
+                        + " )"
+                        + " group by nd.MaND,nd.HoTen) dongnuoc on nhanvien.MaND=dongnuoc.MaND"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as ChuyenKhoanSL,SUM(hd.TONGCONG) as ChuyenKhoanTC"
+                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND,TT_DuLieuKhachHang_SoHoaDon ck"
+                        + " where ck.MaHD=hd.ID_HOADON"
+                        + " and MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and hd.KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and NGAYGIAITRACH is null"
+                        + " group by nd.MaND,nd.HoTen) chuyenkhoan on nhanvien.MaND=chuyenkhoan.MaND"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,COUNT(ID_HOADON) as TongSL,SUM(hd.TONGCONG) as TongTC"
+                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and hd.KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and NGAYGIAITRACH is null"
                         + " group by nd.MaND,nd.HoTen) tongton on nhanvien.MaND=tongton.MaND"
                         + " order by nhanvien.MaND asc";
 
@@ -7406,674 +6513,639 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
-        /// <summary>
-        /// Lấy danh sách hóa đơn được giao & tồn lại bởi anh/em cụ thể
-        /// </summary>
-        /// <param name="MaNV"></param>
-        /// <param name="nam"></param>
-        /// <param name="ky"></param>
-        /// <param name="dot"></param>
-        /// <returns></returns>
-        public DataTable GetDSTon_NV(string Loai, int MaNV, int Nam, int Ky, int Dot, int SoKy)
+        public DataTable GetDSTon_NV(int MaNV_HanhThu, int SoKy)
         {
-            if (Loai == "TG")
-            {
-                string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                string sql = "declare @MaNV_HanhThu int;"
+                            + " set @MaNV_HanhThu=" + MaNV_HanhThu + ";"
+                            + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
                             + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
                             + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
                             + " from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and NAM=" + Nam + " and KY=" + Ky + " and DOT=" + Dot + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20 and DANHBA in"
+                            + " where MaNV_HanhThu=@MaNV_HanhThu"
+                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and DANHBA in"
                             + " (select DANHBA from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and NAM=" + Nam + " and KY=" + Ky + " and DOT=" + Dot + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " where MaNV_HanhThu=@MaNV_HanhThu"
+                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
                             + " group by DANHBA"
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
-
                 return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
-                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
-                            + " from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and NAM=" + Nam + " and KY=" + Ky + " and DOT=" + Dot + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20 and DANHBA in"
-                            + " (select DANHBA from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and NAM=" + Nam + " and KY=" + Ky + " and DOT=" + Dot + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by DANHBA"
-                            + " having COUNT(*)>=" + SoKy + ")"
-                            + " order by MLT,Ky asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-                else
-                    if (Loai == "")
-                    {
-                        string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                                + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
-                                + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
-                                + " from HOADON"
-                                + " where MaNV_HanhThu=" + MaNV
-                                + " and NAM=" + Nam + " and KY=" + Ky + " and DOT=" + Dot + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and DANHBA in"
-                                + " (select DANHBA from HOADON"
-                                + " where MaNV_HanhThu=" + MaNV
-                                + " and NAM=" + Nam + " and KY=" + Ky + " and DOT=" + Dot + " and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
-                                + " group by DANHBA"
-                                + " having COUNT(*)>=" + SoKy + ")"
-                                + " order by MLT,Ky asc";
-
-                        return ExecuteQuery_DataTable(sql);
-                    }
-            return null;
         }
 
-        public DataTable GetDSTon_NV(string Loai, int MaNV, int Nam, int Ky, int SoKy)
+        public DataTable GetDSTon_NV(int MaNV_HanhThu, int Nam, int SoKy)
         {
-            if (Loai == "TG")
-            {
-                string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
-                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
-                            + " from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and NAM=" + Nam + " and KY=" + Ky + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20 and DANHBA in"
-                            + " (select DANHBA from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and NAM=" + Nam + " and KY=" + Ky + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
-                            + " group by DANHBA"
-                            + " having COUNT(*)>=" + SoKy + ")"
-                            + " order by MLT,Ky asc";
-
-                return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
-                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
-                            + " from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and NAM=" + Nam + " and KY=" + Ky + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20 and DANHBA in"
-                            + " (select DANHBA from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and NAM=" + Nam + " and KY=" + Ky + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by DANHBA"
-                            + " having COUNT(*)>=" + SoKy + ")"
-                            + " order by MLT,Ky asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
+            string sql = "declare @MaNV_HanhThu int;"
+                        + " declare @Nam int;"
+                        + " set @MaNV_HanhThu=" + MaNV_HanhThu + ";"
+                        + " set @Nam=" + Nam + ";"
+                        + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                        + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                        + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
+                        + " from HOADON"
+                        + " where MaNV_HanhThu=@MaNV_HanhThu"
+                        + " and NAM=@Nam and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20 and DANHBA in"
+                        + " (select DANHBA from HOADON"
+                        + " where MaNV_HanhThu=@MaNV_HanhThu"
+                        + " and NAM=@Nam and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                        + " group by DANHBA"
+                        + " having COUNT(*)>=" + SoKy + ")"
+                        + " order by MLT,Ky asc";
+            return ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable GetDSTon_NV(string Loai, int MaNV, int Nam, int SoKy)
+        public DataTable GetDSTon_NV(int MaNV_HanhThu, int Nam, int Ky, int SoKy)
         {
-            if (Loai == "TG")
-            {
-                string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
-                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
-                            + " from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and NAM=" + Nam + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20 and DANHBA in"
-                            + " (select DANHBA from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and NAM=" + Nam + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
-                            + " group by DANHBA"
-                            + " having COUNT(*)>=" + SoKy + ")"
-                            + " order by MLT,Ky asc";
-
-                return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
-                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
-                            + " from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and NAM=" + Nam + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20 and DANHBA in"
-                            + " (select DANHBA from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and NAM=" + Nam + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by DANHBA"
-                            + " having COUNT(*)>=" + SoKy + ")"
-                            + " order by MLT,Ky asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
+            string sql = "declare @MaNV_HanhThu int;"
+                        + " declare @Nam int;"
+                        + " declare @Ky int;"
+                        + " set @MaNV_HanhThu=" + MaNV_HanhThu + ";"
+                        + " set @Nam=" + Nam + ";"
+                        + " set @Ky=" + Ky + ";"
+                        + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                        + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                        + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
+                        + " from HOADON"
+                        + " where MaNV_HanhThu=@MaNV_HanhThu"
+                        + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20 and DANHBA in"
+                        + " (select DANHBA from HOADON"
+                        + " where MaNV_HanhThu=@MaNV_HanhThu"
+                        + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                        + " group by DANHBA"
+                        + " having COUNT(*)>=" + SoKy + ")"
+                        + " order by MLT,Ky asc";
+            return ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable GetDSTon_NV(string Loai, int MaNV, int SoKy)
+        public DataTable GetDSTon_NV(int MaNV_HanhThu, int Nam, int Ky, int Dot, int SoKy)
         {
-            if (Loai == "TG")
-            {
-                string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
-                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
-                            + " from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20 and DANHBA in"
-                            + " (select DANHBA from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
-                            + " group by DANHBA"
-                            + " having COUNT(*)>=" + SoKy + ")"
-                            + " order by MLT,Ky asc";
-
-                return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
-                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
-                            + " from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20 and DANHBA in"
-                            + " (select DANHBA from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by DANHBA"
-                            + " having COUNT(*)>=" + SoKy + ")"
-                            + " order by MLT,Ky asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
+            string sql = "declare @MaNV_HanhThu int;"
+                        + " declare @Nam int;"
+                        + " declare @Ky int;"
+                        + " declare @Dot int;"
+                        + " set @MaNV_HanhThu=" + MaNV_HanhThu + ";"
+                        + " set @Nam=" + Nam + ";"
+                        + " set @Ky=" + Ky + ";"
+                        + " set @Dot=" + Dot + ";"
+                        + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                        + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                        + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
+                        + " from HOADON"
+                        + " where MaNV_HanhThu=@MaNV_HanhThu"
+                        + " and NAM=@Nam and KY=@Ky and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20 and DANHBA in"
+                        + " (select DANHBA from HOADON"
+                        + " where MaNV_HanhThu=@MaNV_HanhThu"
+                        + " and NAM=@Nam and KY=@Ky and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                        + " group by DANHBA"
+                        + " having COUNT(*)>=" + SoKy + ")"
+                        + " order by MLT,Ky asc";
+            return ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable GetDSTon_NV(string Loai, int MaNV, DateTime NgayGiaiTrach, int SoKy)
+        public DataTable GetDSTon_NV(int MaNV_HanhThu, int Nam, int Ky, int FromDot, int ToDot, int SoKy)
         {
-            if (Loai == "TG")
-            {
-                string sql = "declare @NgayGiaiTrach date;"
+            string sql = "declare @MaNV_HanhThu int;"
+                        + " declare @Nam int;"
+                        + " declare @Ky int;"
+                        + " declare @FromDot int;"
+                        + " declare @ToDot int;"
+                        + " set @MaNV_HanhThu=" + MaNV_HanhThu + ";"
+                        + " set @Nam=" + Nam + ";"
+                        + " set @Ky=" + Ky + ";"
+                        + " set @FromDot=" + FromDot + ";"
+                        + " set @ToDot=" + ToDot + ";"
+                        + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                        + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                        + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
+                        + " from HOADON"
+                        + " where MaNV_HanhThu=@MaNV_HanhThu"
+                        + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20 and DANHBA in"
+                        + " (select DANHBA from HOADON"
+                        + " where MaNV_HanhThu=@MaNV_HanhThu"
+                        + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                        + " group by DANHBA"
+                        + " having COUNT(*)>=" + SoKy + ")"
+                        + " order by MLT,Ky asc";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetDSTon_NV( int MaNV_HanhThu, DateTime NgayGiaiTrach, int SoKy)
+        {
+                string sql = "declare @MaNV_HanhThu int;"
+                            + " declare @NgayGiaiTrach date;"
+                            + " set @MaNV_HanhThu=" + MaNV_HanhThu + ";"
                             + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
                             + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
                             + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
                             + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
                             + " from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
+                            + " where MaNV_HanhThu=@MaNV_HanhThu"
                             + " and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach) and GB>=11 and GB<=20 and DANHBA in"
                             + " (select DANHBA from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
+                            + " where MaNV_HanhThu=@MaNV_HanhThu"
                             + " and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
                             + " group by DANHBA"
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
-
                 return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @NgayGiaiTrach date;"
+        }
+
+        public DataTable GetDSTonDenKy_NV(int MaNV_HanhThu, int Nam, int Ky, int SoKy)
+        {
+                string sql = "declare @MaNV_HanhThu int;"
+                            + " declare @Nam int;"
+                            + " declare @Ky int;"
+                            + " set @MaNV_HanhThu=" + MaNV_HanhThu + ";"
+                            + " set @Nam=" + Nam + ";"
+                            + " set @Ky=" + Ky + ";"  
+                            + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,MaNV=@MaNV_HanhThu,HanhThu=(select HoTen from TT_NguoiDung where MaND=@MaNV_HanhThu)"
+                            + " from HOADON"
+                            + " where MaNV_HanhThu=@MaNV_HanhThu"
+                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20 and DANHBA in"
+                            + " (select DANHBA from HOADON"
+                            + " where MaNV_HanhThu=@MaNV_HanhThu"
+                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " group by DANHBA"
+                            + " having COUNT(*)>=" + SoKy + ")"
+                            + " order by MLT,Ky asc";
+                return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetDSTonDenKy_NV(int MaNV_HanhThu, int Nam, int Ky, int Dot, int SoKy)
+        {
+            string sql = "declare @MaNV_HanhThu int;"
+                        + " declare @Nam int;"
+                        + " declare @Ky int;"
+                        + " declare @Dot int;"
+                        + " set @MaNV_HanhThu=" + MaNV_HanhThu + ";"
+                        + " set @Nam=" + Nam + ";"
+                        + " set @Ky=" + Ky + ";"
+                        + " set @Dot=" + Dot + ";"
+                        + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                        + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                        + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,MaNV=@MaNV_HanhThu,HanhThu=(select HoTen from TT_NguoiDung where MaND=@MaNV_HanhThu)"
+                        + " from HOADON"
+                        + " where MaNV_HanhThu=@MaNV_HanhThu"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20 and DANHBA in"
+                        + " (select DANHBA from HOADON"
+                        + " where MaNV_HanhThu=@MaNV_HanhThu"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                        + " group by DANHBA"
+                        + " having COUNT(*)>=" + SoKy + ")"
+                        + " order by MLT,Ky asc";
+                return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetDSTonDenKy_NV(int MaNV_HanhThu, int Nam, int Ky, int FromDot,int ToDot, int SoKy)
+        {
+            string sql = "declare @MaNV_HanhThu int;"
+                        + " declare @Nam int;"
+                        + " declare @Ky int;"
+                        + " declare @Dot int;"
+                        + " set @MaNV_HanhThu=" + MaNV_HanhThu + ";"
+                        + " set @Nam=" + Nam + ";"
+                        + " set @Ky=" + Ky + ";"
+                        + " set @FromDot=" + FromDot + ";"
+                        + " set @ToDot=" + ToDot + ";"
+                        + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                        + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                        + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,MaNV=@MaNV_HanhThu,HanhThu=(select HoTen from TT_NguoiDung where MaND=@MaNV_HanhThu)"
+                        + " from HOADON"
+                        + " where MaNV_HanhThu=@MaNV_HanhThu"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20 and DANHBA in"
+                        + " (select DANHBA from HOADON"
+                        + " where MaNV_HanhThu=@MaNV_HanhThu"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@ToDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                        + " group by DANHBA"
+                        + " having COUNT(*)>=" + SoKy + ")"
+                        + " order by MLT,Ky asc";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetDSTonDenKyDenNgay_NV(int MaNV_HanhThu, int Nam, int Ky, DateTime NgayGiaiTrach, int SoKy)
+        {
+                string sql = "declare @MaNV_HanhThu int;"
+                            + " declare @Nam int;"
+                            + " declare @Ky int;"
+                            + " declare @NgayGiaiTrach date;"
+                            + " set @MaNV_HanhThu=" + MaNV_HanhThu + ";"
+                            + " set @Nam=" + Nam + ";"
+                            + " set @Ky=" + Ky + ";"  
                             + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
                             + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
                             + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
                             + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
                             + " from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach) and GB>20 and DANHBA in"
+                            + " where MaNV_HanhThu=@MaNV_HanhThu"
+                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach) and DANHBA in"
                             + " (select DANHBA from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach) and GB>20"
+                            + " where MaNV_HanhThu=@MaNV_HanhThu"
+                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach)"
                             + " group by DANHBA"
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
-        }
-
-        public DataTable GetDSTonDenKy_NV(string Loai, int MaNV, int Nam, int Ky, int SoKy)
-        {
-            if (Loai == "TG")
-            {
-                string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
-                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,MaNV="+MaNV+",HanhThu=(select HoTen from TT_NguoiDung where MaND="+MaNV+")"
-                            + " from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<=" + Ky + ")) and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20 and DANHBA in"
-                            + " (select DANHBA from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<=" + Ky + ")) and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
-                            + " group by DANHBA"
-                            + " having COUNT(*)>=" + SoKy + ")"
-                            + " order by MLT,Ky asc";
-
                 return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
-                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,MaNV=" + MaNV + ",HanhThu=(select HoTen from TT_NguoiDung where MaND=" + MaNV + ")"
-                            + " from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<=" + Ky + ")) and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20 and DANHBA in"
-                            + " (select DANHBA from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<=" + Ky + ")) and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by DANHBA"
-                            + " having COUNT(*)>=" + SoKy + ")"
-                            + " order by MLT,Ky asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
         }
 
-        public DataTable GetDSTonDenKy_NV(string Loai, int MaNV, int Nam, int Ky, int Dot, int SoKy)
+        public DataTable GetDSTonDenKyDenNgay_NV(int MaNV_HanhThu, int Nam, int Ky, int Dot, DateTime NgayGiaiTrach, int SoKy)
         {
-            if (Loai == "TG")
-            {
-                string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
-                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,MaNV="+MaNV+",HanhThu=(select HoTen from TT_NguoiDung where MaND="+MaNV+")"
-                            + " from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<=" + Ky + ")) and DOT=" + Dot + " and NGAYGIAITRACH is null and GB>=11 and GB<=20 and DANHBA in"
-                            + " (select DANHBA from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<=" + Ky + ")) and DOT=" + Dot + " and NGAYGIAITRACH is null and GB>=11 and GB<=20"
-                            + " group by DANHBA"
-                            + " having COUNT(*)>=" + SoKy + ")"
-                            + " order by MLT,Ky asc";
-
-                return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
-                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,MaNV="+MaNV+",HanhThu=(select HoTen from TT_NguoiDung where MaND="+MaNV+")"
-                            + " from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<=" + Ky + ")) and DOT=" + Dot + " and NGAYGIAITRACH is null and GB>20 and DANHBA in"
-                            + " (select DANHBA from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<=" + Ky + ")) and DOT=" + Dot + " and NGAYGIAITRACH is null and GB>20"
-                            + " group by DANHBA"
-                            + " having COUNT(*)>=" + SoKy + ")"
-                            + " order by MLT,Ky asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
+            string sql = "declare @MaNV_HanhThu int;"
+                        + " declare @Nam int;"
+                        + " declare @Ky int;"
+                        + " declare @Dot int;"
+                        + " declare @NgayGiaiTrach date;"
+                        + " set @MaNV_HanhThu=" + MaNV_HanhThu + ";"
+                        + " set @Nam=" + Nam + ";"
+                        + " set @Ky=" + Ky + ";"
+                        + " set @Dot=" + Dot + ";"
+                        + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                        + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                        + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                        + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
+                        + " from HOADON"
+                        + " where MaNV_HanhThu=@MaNV_HanhThu"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach) and DANHBA in"
+                        + " (select DANHBA from HOADON"
+                        + " where MaNV_HanhThu=@MaNV_HanhThu"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach)"
+                        + " group by DANHBA"
+                        + " having COUNT(*)>=" + SoKy + ")"
+                        + " order by MLT,Ky asc";
+            return ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable GetDSTonDenKyDenNgay_NV(string Loai, int MaNV, int Nam, int Ky, DateTime NgayGiaiTrach, int SoKy)
+        public DataTable GetDSTonDenKyDenNgay_NV(int MaNV_HanhThu, int Nam, int Ky,int FromDot,int ToDot, DateTime NgayGiaiTrach, int SoKy)
         {
-            if (Loai == "TG")
-            {
-                string sql = "declare @NgayGiaiTrach date;"
-                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+            string sql = "declare @MaNV_HanhThu int;"
+                        + " declare @Nam int;"
+                        + " declare @Ky int;"
+                        + " declare @FromDot int;"
+                        + " declare @ToDot int;"
+                        + " declare @NgayGiaiTrach date;"
+                        + " set @MaNV_HanhThu=" + MaNV_HanhThu + ";"
+                        + " set @Nam=" + Nam + ";"
+                        + " set @Ky=" + Ky + ";"
+                        + " set @FromDot=" + FromDot + ";"
+                        + " set @ToDot=" + ToDot + ";"
+                        + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                        + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                        + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                        + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
+                        + " from HOADON"
+                        + " where MaNV_HanhThu=@MaNV_HanhThu"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach) and DANHBA in"
+                        + " (select DANHBA from HOADON"
+                        + " where MaNV_HanhThu=@MaNV_HanhThu"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach)"
+                        + " group by DANHBA"
+                        + " having COUNT(*)>=" + SoKy + ")"
+                        + " order by MLT,Ky asc";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetDSTonTrongKyDenNgay_NV(int MaNV_HanhThu, int Nam, int Ky, DateTime NgayGiaiTrach, int SoKy)
+        {
+            string sql = "declare @MaNV_HanhThu int;"
+                        + " declare @Nam int;"
+                        + " declare @Ky int;"
+                        + " declare @NgayGiaiTrach date;"
+                        + " set @MaNV_HanhThu=" + MaNV_HanhThu + ";"
+                        + " set @Nam=" + Nam + ";"
+                        + " set @Ky=" + Ky + ";"
+                        + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                        + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                        + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                        + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
+                        + " from HOADON"
+                        + " where MaNV_HanhThu=@MaNV_HanhThu"
+                        + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach) and DANHBA in"
+                        + " (select DANHBA from HOADON"
+                        + " where MaNV_HanhThu=@MaNV_HanhThu"
+                        + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach)"
+                        + " group by DANHBA"
+                        + " having COUNT(*)>=" + SoKy + ")"
+                        + " order by MLT,Ky asc";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetDSTonTrongKyDenNgay_NV(int MaNV_HanhThu, int Nam, int Ky, int Dot,  DateTime NgayGiaiTrach, int SoKy)
+        {
+            string sql = "declare @MaNV_HanhThu int;"
+                        + " declare @Nam int;"
+                        + " declare @Ky int;"
+                        + " declare @FromDot int;"
+                        + " declare @ToDot int;"
+                        + " declare @NgayGiaiTrach date;"
+                        + " set @MaNV_HanhThu=" + MaNV_HanhThu + ";"
+                        + " set @Nam=" + Nam + ";"
+                        + " set @Ky=" + Ky + ";"
+                        + " set @Dot=" + Dot + ";"
+                        + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                        + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                        + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                        + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
+                        + " from HOADON"
+                        + " where MaNV_HanhThu=@MaNV_HanhThu"
+                        + " and NAM=@Nam and KY=@Ky and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach) and DANHBA in"
+                        + " (select DANHBA from HOADON"
+                        + " where MaNV_HanhThu=@MaNV_HanhThu"
+                        + " and NAM=@Nam and KY=@Ky and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach)"
+                        + " group by DANHBA"
+                        + " having COUNT(*)>=" + SoKy + ")"
+                        + " order by MLT,Ky asc";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetDSTonTrongKyDenNgay_NV(int MaNV_HanhThu, int Nam, int Ky, int FromDot, int ToDot, DateTime NgayGiaiTrach, int SoKy)
+        {
+            string sql = "declare @MaNV_HanhThu int;"
+                        + " declare @Nam int;"
+                        + " declare @Ky int;"
+                        + " declare @FromDot int;"
+                        + " declare @ToDot int;"
+                        + " declare @NgayGiaiTrach date;"
+                        + " set @MaNV_HanhThu=" + MaNV_HanhThu + ";"
+                        + " set @Nam=" + Nam + ";"
+                        + " set @Ky=" + Ky + ";"
+                        + " set @FromDot=" + FromDot + ";"
+                        + " set @ToDot=" + ToDot + ";"
+                        + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                        + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                        + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                        + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
+                        + " from HOADON"
+                        + " where MaNV_HanhThu=@MaNV_HanhThu"
+                        + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach) and DANHBA in"
+                        + " (select DANHBA from HOADON"
+                        + " where MaNV_HanhThu=@MaNV_HanhThu"
+                        + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach)"
+                        + " group by DANHBA"
+                        + " having COUNT(*)>=" + SoKy + ")"
+                        + " order by MLT,Ky asc";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetDSTon_To(int MaTo, int Nam, int Ky, int Dot, int SoKy)
+        {
+                string sql = "declare @Nam int;"
+                            + " declare @Ky int;"
+                            + " declare @Dot int;"
+                            + " declare @TuCuonGCS int;"
+                            + " declare @DenCuonGCS int;"
+                            + " set @Nam=" + Nam + ";"
+                            + " set @Ky=" + Ky + ";"
+                            + " set @Dot=" + Dot + ";"
+                            + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
                             + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
-                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
-                            + " from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<=" + Ky + ")) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach) and GB>=11 and GB<=20 and DANHBA in"
-                            + " (select DANHBA from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<=" + Ky + ")) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
-                            + " group by DANHBA"
-                            + " having COUNT(*)>=" + SoKy + ")"
-                            + " order by MLT,Ky asc";
-
-                return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @NgayGiaiTrach date;"
-                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
-                            + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
-                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
-                            + " from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<=" + Ky + ")) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach) and GB>20 and DANHBA in"
-                            + " (select DANHBA from HOADON"
-                            + " where MaNV_HanhThu=" + MaNV
-                            + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<=" + Ky + ")) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach) and GB>20"
-                            + " group by DANHBA"
-                            + " having COUNT(*)>=" + SoKy + ")"
-                            + " order by MLT,Ky asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
-        }
-
-        public DataTable GetDSTon_To(string Loai, int MaTo, int Nam, int Ky, int Dot, int SoKy)
-        {
-            if (Loai == "TG")
-            {
-                string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
                             + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
                             + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,nd.HoTen as HanhThu,tto.TenTo as 'To'"
                             + " from HOADON hd"
                             + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
                             + " left join TT_To tto on tto.MaTo=nd.MaTo"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=" + Nam + " and KY=" + Ky + " and DOT=" + Dot + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20 and DANHBA in"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and DANHBA in"
                             + " (select DANHBA from HOADON"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=" + Nam + " and KY=" + Ky + " and DOT=" + Dot + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and NAM=@Nam and KY=@Ky and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
+                            + " group by DANHBA"
+                            + " having COUNT(*)>=" + SoKy + ")"
+                            + " order by MLT,Ky asc";
+                return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetDSTon_To( int MaTo, int Nam, int Ky,int FromDot,int ToDot, int SoKy)
+        {
+                string sql = "declare @Nam int;"
+                            + " declare @Ky int;"
+                            + " declare @FromDot int;"
+                            + " declare @ToDot int;"
+                            + " declare @TuCuonGCS int;"
+                            + " declare @DenCuonGCS int;"
+                            + " set @Nam=" + Nam + ";"
+                            + " set @Ky=" + Ky + ";"
+                            + " set @FromDot=" + FromDot + ";"
+                            + " set @ToDot=" + ToDot + ";"
+                            + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
+                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
+                            + " from HOADON hd"
+                            + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
+                            + " left join TT_To tto on tto.MaTo=nd.MaTo"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and DANHBA in"
+                            + " (select DANHBA from HOADON"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
+                            + " group by DANHBA"
+                            + " having COUNT(*)>=" + SoKy + ")"
+                            + " order by MLT,Ky asc";
+                return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetDSTon_To(int MaTo, int Nam, int SoKy)
+        {
+                string sql = "declare @Nam int;"
+                            + " declare @TuCuonGCS int;"
+                            + " declare @DenCuonGCS int;"
+                            + " set @Nam=" + Nam + ";"
+                            + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
+                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
+                            + " from HOADON hd"
+                            + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
+                            + " left join TT_To tto on tto.MaTo=nd.MaTo"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and NAM=@Nam and (KhoaTienDu=1 or NGAYGIAITRACH is null) and DANHBA in"
+                            + " (select DANHBA from HOADON"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and NAM=@Nam and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
+                            + " group by DANHBA"
+                            + " having COUNT(*)>=" + SoKy + ")"
+                            + " order by MLT,Ky asc";
+                return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetDSTon_To(int MaTo, int SoKy)
+        {
+                string sql =  "declare @TuCuonGCS int;"
+                            + " declare @DenCuonGCS int;"
+                            + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
+                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
+                            + " from HOADON hd"
+                            + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
+                            + " left join TT_To tto on tto.MaTo=nd.MaTo"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and DANHBA in"
+                            + " (select DANHBA from HOADON"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
                             + " group by DANHBA"
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
 
                 return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
-                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,nd.HoTen as HanhThu,tto.TenTo as 'To'"
-                            + " from HOADON hd"
-                            + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
-                            + " left join TT_To tto on tto.MaTo=nd.MaTo"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=" + Nam + " and KY=" + Ky + " and DOT=" + Dot + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20 and DANHBA in"
-                            + " (select DANHBA from HOADON"
-                             + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=" + Nam + " and KY=" + Ky + " and DOT=" + Dot + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by DANHBA"
-                            + " having COUNT(*)>=" + SoKy + ")"
-                            + " order by MLT,Ky asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
         }
 
-        public DataTable GetDSTon_To(string Loai, int MaTo, int Nam, int Ky, int SoKy)
+        public DataTable GetDSTon_To(int MaTo, DateTime NgayGiaiTrach, int SoKy)
         {
-            if (Loai == "TG")
-            {
-                string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
-                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
-                            + " from HOADON hd"
-                            + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
-                            + " left join TT_To tto on tto.MaTo=nd.MaTo"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=" + Nam + " and KY=" + Ky + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20 and DANHBA in"
-                            + " (select DANHBA from HOADON"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=" + Nam + " and KY=" + Ky + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
-                            + " group by DANHBA"
-                            + " having COUNT(*)>=" + SoKy + ")"
-                            + " order by MLT,Ky asc";
-
-                return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
-                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
-                            + " from HOADON hd"
-                            + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
-                            + " left join TT_To tto on tto.MaTo=nd.MaTo"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=" + Nam + " and KY=" + Ky + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20 and DANHBA in"
-                            + " (select DANHBA from HOADON"
-                             + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=" + Nam + " and KY=" + Ky + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by DANHBA"
-                            + " having COUNT(*)>=" + SoKy + ")"
-                            + " order by MLT,Ky asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
-        }
-
-        public DataTable GetDSTon_To(string Loai, int MaTo, int Nam, int SoKy)
-        {
-            if (Loai == "TG")
-            {
-                string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
-                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
-                            + " from HOADON hd"
-                            + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
-                            + " left join TT_To tto on tto.MaTo=nd.MaTo"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=" + Nam + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20 and DANHBA in"
-                            + " (select DANHBA from HOADON"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=" + Nam + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
-                            + " group by DANHBA"
-                            + " having COUNT(*)>=" + SoKy + ")"
-                            + " order by MLT,Ky asc";
-
-                return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
-                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
-                            + " from HOADON hd"
-                            + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
-                            + " left join TT_To tto on tto.MaTo=nd.MaTo"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=" + Nam + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20 and DANHBA in"
-                            + " (select DANHBA from HOADON"
-                             + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and NAM=" + Nam + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by DANHBA"
-                            + " having COUNT(*)>=" + SoKy + ")"
-                            + " order by MLT,Ky asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
-        }
-
-        public DataTable GetDSTon_To(string Loai, int MaTo, int SoKy)
-        {
-            if (Loai == "TG")
-            {
-                string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
-                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
-                            + " from HOADON hd"
-                            + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
-                            + " left join TT_To tto on tto.MaTo=nd.MaTo"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20 and DANHBA in"
-                            + " (select DANHBA from HOADON"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
-                            + " group by DANHBA"
-                            + " having COUNT(*)>=" + SoKy + ")"
-                            + " order by MLT,Ky asc";
-
-                return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
-                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
-                            + " from HOADON hd"
-                            + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
-                            + " left join TT_To tto on tto.MaTo=nd.MaTo"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20 and DANHBA in"
-                            + " (select DANHBA from HOADON"
-                             + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by DANHBA"
-                            + " having COUNT(*)>=" + SoKy + ")"
-                            + " order by MLT,Ky asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
-        }
-
-        public DataTable GetDSTon_To(string Loai, int MaTo, DateTime NgayGiaiTrach, int SoKy)
-        {
-            if (Loai == "TG")
-            {
                 string sql = "declare @NgayGiaiTrach date;"
+                            + " declare @TuCuonGCS int;"
+                            + " declare @DenCuonGCS int;"
                             + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                            + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
                             + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
                             + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
                             + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
                             + " from HOADON hd"
                             + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
                             + " left join TT_To tto on tto.MaTo=nd.MaTo"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach) and GB>=11 and GB<=20 and DANHBA in"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach) and DANHBA in"
                             + " (select DANHBA from HOADON"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach)"
                             + " group by DANHBA"
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
-
                 return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @NgayGiaiTrach date;"
-                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
-                            + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
-                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
-                            + " from HOADON hd"
-                            + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
-                            + " left join TT_To tto on tto.MaTo=nd.MaTo"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach) and GB>20 and DANHBA in"
-                            + " (select DANHBA from HOADON"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach) and GB>20"
-                            + " group by DANHBA"
-                            + " having COUNT(*)>=" + SoKy + ")"
-                            + " order by MLT,Ky asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
         }
 
-        public DataTable GetDSTonDenKy_To(string Loai, int MaTo, int Nam, int Ky, int SoKy)
+        public DataTable GetDSTonDenKy_To(int MaTo, int Nam, int Ky, int FromDot, int ToDot, int SoKy)
         {
-            if (Loai == "TG")
-            {
-                string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                string sql = "declare @Nam int;"
+                            + " declare @Ky int;"
+                            + " declare @FromDot int;"
+                            + " declare @ToDot int;"
+                            + " declare @TuCuonGCS int;"
+                            + " declare @DenCuonGCS int;"
+                            + " set @Nam=" + Nam + ";"
+                            + " set @Ky=" + Ky + ";"
+                            + " set @FromDot=" + FromDot + ";"
+                            + " set @ToDot=" + ToDot + ";"
+                            + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                            + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
                             + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
                             + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
                             + " from HOADON hd"
                             + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
                             + " left join TT_To tto on tto.MaTo=nd.MaTo"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<=" + Ky + ")) and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20 and DANHBA in"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and DANHBA in"
                             + " (select DANHBA from HOADON"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<=" + Ky + ")) and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                            + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                            + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
                             + " group by DANHBA"
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";
-
                 return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
-                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
-                            + " from HOADON hd"
-                            + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
-                            + " left join TT_To tto on tto.MaTo=nd.MaTo"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<=" + Ky + ")) and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20 and DANHBA in"
-                            + " (select DANHBA from HOADON"
-                             + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<=" + Ky + ")) and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>20"
-                            + " group by DANHBA"
-                            + " having COUNT(*)>=" + SoKy + ")"
-                            + " order by MLT,Ky asc";
-
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
         }
 
-        public DataTable GetDSTonDenKyDenNgay_To(string Loai, int MaTo, int Nam, int Ky, DateTime NgayGiaiTrach, int SoKy)
+        public DataTable GetDSTonDenKyDenNgay_To(int MaTo, int Nam, int Ky, int Dot, DateTime NgayGiaiTrach, int SoKy)
         {
-            if (Loai == "TG")
-            {
-                string sql = "declare @NgayGiaiTrach date;"
-                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
-                            + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
-                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
-                            + " from HOADON hd"
-                            + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
-                            + " left join TT_To tto on tto.MaTo=nd.MaTo"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<=" + Ky + ")) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach) and GB>=11 and GB<=20 and DANHBA in"
-                            + " (select DANHBA from HOADON"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<=" + Ky + ")) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach) and GB>=11 and GB<=20"
-                            + " group by DANHBA"
-                            + " having COUNT(*)>=" + SoKy + ")"
-                            + " order by MLT,Ky asc";
+            string sql = " declare @Nam int;"
+                        + " declare @Ky int;"
+                        + " declare @Dot int;"
+                        + " declare @NgayGiaiTrach date;"
+                        + " declare @TuCuonGCS int;"
+                        + " declare @DenCuonGCS int;"
+                        + " set @Nam=" + Nam + ";"
+                        + " set @Ky=" + Ky + ";"
+                        + " set @Dot=" + Dot + ";"
+                        + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                        + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                        + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
+                        + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
+                        + " from HOADON hd"
+                        + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
+                        + " left join TT_To tto on tto.MaTo=nd.MaTo"
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach) and DANHBA in"
+                        + " (select DANHBA from HOADON"
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach)"
+                        + " group by DANHBA"
+                        + " having COUNT(*)>=" + SoKy + ")"
+                        + " order by MLT,Ky asc";
+            return ExecuteQuery_DataTable(sql);
+        }
 
+        public DataTable GetDSTonDenKyDenNgay_To(int MaTo, int Nam, int Ky,int FromDot,int ToDot, DateTime NgayGiaiTrach, int SoKy)
+        {
+            string sql = " declare @Nam int;"
+                        + " declare @Ky int;"
+                        + " declare @FromDot int;"
+                        + " declare @ToDot int;"
+                        + " declare @NgayGiaiTrach date;"
+                        + " declare @TuCuonGCS int;"
+                        + " declare @DenCuonGCS int;"
+                        + " set @Nam=" + Nam + ";"
+                        + " set @Ky=" + Ky + ";"
+                        + " set @FromDot=" + FromDot + ";"
+                        + " set @ToDot=" + ToDot + ";"
+                        + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                        + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                        + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
+                        + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
+                        + " from HOADON hd"
+                        + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
+                        + " left join TT_To tto on tto.MaTo=nd.MaTo"
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach) and DANHBA in"
+                        + " (select DANHBA from HOADON"
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach)"
+                        + " group by DANHBA"
+                        + " having COUNT(*)>=" + SoKy + ")"
+                        + " order by MLT,Ky asc";
                 return ExecuteQuery_DataTable(sql);
-            }
-            else
-                if (Loai == "CQ")
-                {
-                    string sql = "declare @NgayGiaiTrach date;"
-                            + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
-                            + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
-                            + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
-                            + " from HOADON hd"
-                            + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
-                            + " left join TT_To tto on tto.MaTo=nd.MaTo"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<=" + Ky + ")) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach) and GB>20 and DANHBA in"
-                            + " (select DANHBA from HOADON"
-                            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<=" + Ky + ")) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach) and GB>20"
-                            + " group by DANHBA"
-                            + " having COUNT(*)>=" + SoKy + ")"
-                            + " order by MLT,Ky asc";
+        }
 
-                    return ExecuteQuery_DataTable(sql);
-                }
-            return null;
+        public DataTable GetDSTonTrongKyDenNgay_To(int MaTo, int Nam, int Ky, int FromDot, int ToDot, DateTime NgayGiaiTrach, int SoKy)
+        {
+            string sql = "declare @Nam int;"
+                        + " declare @Ky int;"
+                        + " declare @FromDot int;"
+                        + " declare @ToDot int;"
+                        + " declare @NgayGiaiTrach date;"
+                        + " declare @TuCuonGCS int;"
+                        + " declare @DenCuonGCS int;"
+                        + " set @Nam=" + Nam + ";"
+                        + " set @Ky=" + Ky + ";"
+                        + " set @FromDot=" + FromDot + ";"
+                        + " set @ToDot=" + ToDot + ";"
+                        + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                        + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                        + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
+                        + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
+                        + " from HOADON hd"
+                        + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
+                        + " left join TT_To tto on tto.MaTo=nd.MaTo"
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach) and DANHBA in"
+                        + " (select DANHBA from HOADON"
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and KY=@Ky and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach)"
+                        + " group by DANHBA"
+                        + " having COUNT(*)>=" + SoKy + ")"
+                        + " order by MLT,Ky asc";
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable GetDSTon_Doi_GiaoTon(string Loai, int Nam)

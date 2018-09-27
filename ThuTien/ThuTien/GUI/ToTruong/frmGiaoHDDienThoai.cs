@@ -117,7 +117,7 @@ namespace ThuTien.GUI.ToTruong
                 {
                     if (cmbFromDot.SelectedIndex == 0)
                     {
-                        dgvHDTuGia.DataSource = _cHoaDon.GetDSTonDenKy_NV("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), 1);
+                        dgvHDTuGia.DataSource = _cHoaDon.GetDSTonDenKy_NV( int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), 1);
                     }
                     else
                         if (cmbFromDot.SelectedIndex > 0)
@@ -125,7 +125,7 @@ namespace ThuTien.GUI.ToTruong
                             DataTable dt = new DataTable();
                             for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
                             {
-                                dt.Merge(_cHoaDon.GetDSTonDenKy_NV("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, 1));
+                                dt.Merge(_cHoaDon.GetDSTonDenKy_NV( int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, 1));
                             }
                             dgvHDTuGia.DataSource = dt;
                         }
@@ -136,7 +136,7 @@ namespace ThuTien.GUI.ToTruong
                     {
                         if (cmbFromDot.SelectedIndex == 0)
                         {
-                            dgvHDCoQuan.DataSource = _cHoaDon.GetDSTonDenKy_NV("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), 1);
+                            dgvHDCoQuan.DataSource = _cHoaDon.GetDSTonDenKy_NV( int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), 1);
                         }
                         else
                             if (cmbFromDot.SelectedIndex > 0)
@@ -144,7 +144,7 @@ namespace ThuTien.GUI.ToTruong
                                 DataTable dt = new DataTable();
                                 for (int i = int.Parse(cmbFromDot.SelectedItem.ToString()); i <= int.Parse(cmbToDot.SelectedItem.ToString()); i++)
                                 {
-                                    dt.Merge(_cHoaDon.GetDSTonDenKy_NV("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, 1));
+                                    dt.Merge(_cHoaDon.GetDSTonDenKy_NV( int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i, 1));
                                 }
                                 dgvHDCoQuan.DataSource = dt;
                             }

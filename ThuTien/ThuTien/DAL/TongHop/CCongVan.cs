@@ -10,56 +10,55 @@ namespace ThuTien.DAL.TongHop
 {
     class CCongVan:CDAL
     {
-        public bool Them(TT_CongVan congvan)
+        public bool Them(TT_CongVan en)
         {
             try
             {
                 if (_db.TT_CongVans.Count() > 0)
-                    congvan.MaCV = _db.TT_CongVans.Max(item => item.MaCV) + 1;
+                    en.MaCV = _db.TT_CongVans.Max(item => item.MaCV) + 1;
                 else
-                    congvan.MaCV = 1;
-                congvan.CreateDate = DateTime.Now;
-                congvan.CreateBy = CNguoiDung.MaND;
-                _db.TT_CongVans.InsertOnSubmit(congvan);
+                    en.MaCV = 1;
+                en.CreateDate = DateTime.Now;
+                en.CreateBy = CNguoiDung.MaND;
+                _db.TT_CongVans.InsertOnSubmit(en);
                 _db.SubmitChanges();
                 return true;
             }
             catch (Exception ex)
             {
-                _db = new dbThuTienDataContext();
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
-        public bool Xoa(TT_CongVan congvan)
+        public bool Xoa(TT_CongVan en)
         {
             try
             {
-                _db.TT_CongVans.DeleteOnSubmit(congvan);
+                _db.TT_CongVans.DeleteOnSubmit(en);
                 _db.SubmitChanges();
                 return true;
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
-        public bool Sua(TT_CongVan congvan)
+        public bool Sua(TT_CongVan en)
         {
             try
             {
-                congvan.ModifyDate = DateTime.Now;
-                congvan.ModifyBy = CNguoiDung.MaND;
+                en.ModifyDate = DateTime.Now;
+                en.ModifyBy = CNguoiDung.MaND;
                 _db.SubmitChanges();
                 return true;
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 

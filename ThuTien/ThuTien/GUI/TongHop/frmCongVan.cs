@@ -67,7 +67,7 @@ namespace ThuTien.GUI.TongHop
             if (dgvKQDongNuoc.RowCount > 0 && e.Button == System.Windows.Forms.MouseButtons.Left)
             {
                 dsBaoCao dsBaoCao = new dsBaoCao();
-                List<TT_KQDongNuoc>  lst = _cDongNuoc.GetDSKQDongNuocBySoPhieuDN(decimal.Parse(dgvKQDongNuoc["SoPhieuDN",e.RowIndex].Value.ToString()));
+                List<TT_KQDongNuoc> lst = _cDongNuoc.GetDSKQDongNuocBySoPhieuDN(decimal.Parse(dgvKQDongNuoc["SoPhieuDN", e.RowIndex].Value.ToString()));
                 foreach (TT_KQDongNuoc item in lst)
                 {
                     DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
@@ -211,7 +211,7 @@ namespace ThuTien.GUI.TongHop
 
         private void dgvKinhDoanh_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if (dgvKinhDoanh.Columns[e.ColumnIndex].Name == "ThuTien_Nhan" &&dgvKinhDoanh["db",e.RowIndex].Value.ToString()=="Kinh Doanh"&& bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvKinhDoanh[e.ColumnIndex, e.RowIndex].Value.ToString()))
+            if (dgvKinhDoanh.Columns[e.ColumnIndex].Name == "ThuTien_Nhan" && dgvKinhDoanh["db", e.RowIndex].Value.ToString() == "Kinh Doanh" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvKinhDoanh[e.ColumnIndex, e.RowIndex].Value.ToString()))
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
@@ -230,7 +230,7 @@ namespace ThuTien.GUI.TongHop
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
                     if (dgvKinhDoanh["db", e.RowIndex].Value.ToString() == "Kinh Doanh")
-                    _cKinhDoanh.LinQ_ExecuteNonQuery("update " + dgvKinhDoanh["Table", e.RowIndex].Value.ToString() + " set ThuTien_GhiChu=N'" + e.FormattedValue.ToString().Trim() + "' where " + dgvKinhDoanh["Column", e.RowIndex].Value.ToString() + "=" + dgvKinhDoanh["Ma", e.RowIndex].Value.ToString());
+                        _cKinhDoanh.LinQ_ExecuteNonQuery("update " + dgvKinhDoanh["Table", e.RowIndex].Value.ToString() + " set ThuTien_GhiChu=N'" + e.FormattedValue.ToString().Trim() + "' where " + dgvKinhDoanh["Column", e.RowIndex].Value.ToString() + "=" + dgvKinhDoanh["Ma", e.RowIndex].Value.ToString());
                     if (dgvKinhDoanh["db", e.RowIndex].Value.ToString() == "Thu Tiền")
                     {
                         _cCongVan.LinQ_ExecuteNonQuery("update " + dgvKinhDoanh["Table", e.RowIndex].Value.ToString() + " set GhiChu=N'" + e.FormattedValue.ToString().Trim() + "' where " + dgvKinhDoanh["Column", e.RowIndex].Value.ToString() + "=" + dgvKinhDoanh["Ma", e.RowIndex].Value.ToString());
@@ -245,7 +245,7 @@ namespace ThuTien.GUI.TongHop
 
         private void dgvKinhDoanh_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvKinhDoanh.Columns[e.ColumnIndex].Name == "Ma" && e.Value != null && e.Value.ToString().Length>2)
+            if (dgvKinhDoanh.Columns[e.ColumnIndex].Name == "Ma" && e.Value != null && e.Value.ToString().Length > 2)
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
@@ -361,7 +361,7 @@ namespace ThuTien.GUI.TongHop
             {
                 e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
             }
-            if (dgvKQDongMoNuoc.Columns[e.ColumnIndex].Name == "SoPhieuDN_DMN" && e.Value.ToString().Length >2)
+            if (dgvKQDongMoNuoc.Columns[e.ColumnIndex].Name == "SoPhieuDN_DMN" && e.Value.ToString().Length > 2)
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
@@ -373,35 +373,38 @@ namespace ThuTien.GUI.TongHop
 
         private void btnThem_KD_Click(object sender, EventArgs e)
         {
-            if (txtDanhBo_KD.Text.Trim().Replace(" ","").Length==11&&cmbLoaiVanBan_KD_Them.SelectedIndex != -1)
+            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
-                if (_cCongVan.CheckExist(cmbLoaiVanBan_KD_Them.SelectedItem.ToString(), txtDanhBo_KD.Text.Trim().Replace(" ", ""), DateTime.Now))
+                if (txtDanhBo_KD.Text.Trim().Replace(" ", "").Length == 11 && cmbLoaiVanBan_KD_Them.SelectedIndex != -1)
                 {
-                    MessageBox.Show("Đã Thêm Rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                    if (_cCongVan.CheckExist(cmbLoaiVanBan_KD_Them.SelectedItem.ToString(), txtDanhBo_KD.Text.Trim().Replace(" ", ""), DateTime.Now))
+                    {
+                        MessageBox.Show("Đã Thêm Rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
 
-                TT_CongVan congvan = new TT_CongVan();
-                congvan.Loai = cmbLoaiVanBan_KD_Them.SelectedItem.ToString();
-                congvan.DanhBo = txtDanhBo_KD.Text.Trim().Replace(" ","");
-                congvan.NoiDung = txtNoiDung_KD.Text.Trim();
-                congvan.GhiChu = txtGhiChu_KD.Text.Trim();
+                    TT_CongVan congvan = new TT_CongVan();
+                    congvan.Loai = cmbLoaiVanBan_KD_Them.SelectedItem.ToString();
+                    congvan.DanhBo = txtDanhBo_KD.Text.Trim().Replace(" ", "");
+                    congvan.NoiDung = txtNoiDung_KD.Text.Trim();
+                    congvan.GhiChu = txtGhiChu_KD.Text.Trim();
 
-                if (_cCongVan.Them(congvan))
-                {
-                    DataTable dt = new DataTable();
-                    dt.Merge(_cKinhDoanh.GetDSP_KinhDoanh(txtDanhBo_KD.Text.Trim().Replace(" ", "")));
-                    dt.Merge(_cCongVan.GetDS(txtDanhBo_KD.Text.Trim().Replace(" ", "")));
-                    dgvKinhDoanh.DataSource = dt;
+                    if (_cCongVan.Them(congvan))
+                    {
+                        DataTable dt = new DataTable();
+                        dt.Merge(_cKinhDoanh.GetDSP_KinhDoanh(txtDanhBo_KD.Text.Trim().Replace(" ", "")));
+                        dt.Merge(_cCongVan.GetDS(txtDanhBo_KD.Text.Trim().Replace(" ", "")));
+                        dgvKinhDoanh.DataSource = dt;
 
-                    cmbLoaiVanBan_KD_Them.SelectedIndex = -1;
-                    txtNoiDung_KD.Text = "";
-                    txtGhiChu_KD.Text = "";
+                        cmbLoaiVanBan_KD_Them.SelectedIndex = -1;
+                        txtNoiDung_KD.Text = "";
+                        txtGhiChu_KD.Text = "";
+                    }
                 }
             }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-
-        
 
     }
 }
