@@ -628,7 +628,7 @@
             this.cmbNhanVien.FormattingEnabled = true;
             this.cmbNhanVien.Location = new System.Drawing.Point(615, 12);
             this.cmbNhanVien.Name = "cmbNhanVien";
-            this.cmbNhanVien.Size = new System.Drawing.Size(118, 21);
+            this.cmbNhanVien.Size = new System.Drawing.Size(100, 21);
             this.cmbNhanVien.TabIndex = 9;
             // 
             // label5
