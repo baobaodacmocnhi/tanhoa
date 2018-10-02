@@ -187,5 +187,14 @@ namespace KTKS_DonKH.GUI.ThuMoi
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.Show();
         }
+
+        private void dgvDSThu_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (dgvDSThu.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
+            {
+                frmThaoThuMoi frm = new frmThaoThuMoi(int.Parse(dgvDSThu["IDCT", dgvDSThu.CurrentRow.Index].Value.ToString()));
+                frm.ShowDialog();
+            }
+        }
     }
 }

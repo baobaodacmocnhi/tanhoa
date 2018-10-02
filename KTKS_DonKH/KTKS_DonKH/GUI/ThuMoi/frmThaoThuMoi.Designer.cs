@@ -67,6 +67,8 @@
             this.VaoLuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.radDutChi = new System.Windows.Forms.RadioButton();
             this.radCDDM = new System.Windows.Forms.RadioButton();
+            this.txtSoPhieu = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSThu)).BeginInit();
@@ -178,6 +180,8 @@
             // 
             // txtCanCu
             // 
+            this.txtCanCu.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtCanCu.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtCanCu.Location = new System.Drawing.Point(70, 21);
             this.txtCanCu.Name = "txtCanCu";
             this.txtCanCu.Size = new System.Drawing.Size(487, 22);
@@ -426,12 +430,31 @@
             this.radCDDM.Text = "CĐĐM";
             this.radCDDM.UseVisualStyleBackColor = true;
             // 
+            // txtSoPhieu
+            // 
+            this.txtSoPhieu.Location = new System.Drawing.Point(572, 12);
+            this.txtSoPhieu.Name = "txtSoPhieu";
+            this.txtSoPhieu.Size = new System.Drawing.Size(80, 22);
+            this.txtSoPhieu.TabIndex = 134;
+            this.txtSoPhieu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoPhieu_KeyPress);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(513, 15);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 16);
+            this.label9.TabIndex = 133;
+            this.label9.Text = "Mã Thư";
+            // 
             // frmThaoThuMoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(853, 396);
+            this.Controls.Add(this.txtSoPhieu);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.radCDDM);
             this.Controls.Add(this.radDutChi);
             this.Controls.Add(this.dgvDSThu);
@@ -500,5 +523,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn CanCu;
         private System.Windows.Forms.DataGridViewTextBoxColumn VaoLuc;
+        private System.Windows.Forms.TextBox txtSoPhieu;
+        private System.Windows.Forms.Label label9;
     }
 }

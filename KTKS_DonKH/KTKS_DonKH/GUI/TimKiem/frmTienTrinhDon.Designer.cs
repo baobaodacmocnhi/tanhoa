@@ -1446,7 +1446,7 @@
             // gridColumn57
             // 
             this.gridColumn57.Caption = "Số Phiếu";
-            this.gridColumn57.FieldName = "MaTTTN";
+            this.gridColumn57.FieldName = "IDCT";
             this.gridColumn57.Name = "gridColumn57";
             this.gridColumn57.OptionsColumn.AllowEdit = false;
             this.gridColumn57.Visible = true;
@@ -1799,11 +1799,13 @@
             "Mã Đơn",
             "Danh Bộ",
             "Họ Tên",
-            "Địa Chỉ"});
+            "Địa Chỉ",
+            "Niêm Chì"});
             this.cmbTimTheo.Location = new System.Drawing.Point(196, 6);
             this.cmbTimTheo.Name = "cmbTimTheo";
             this.cmbTimTheo.Size = new System.Drawing.Size(100, 24);
             this.cmbTimTheo.TabIndex = 4;
+            this.cmbTimTheo.SelectedIndexChanged += new System.EventHandler(this.cmbTimTheo_SelectedIndexChanged);
             // 
             // txtNoiDungTimKiem
             // 

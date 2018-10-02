@@ -473,7 +473,7 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         private void gridViewTruyThu_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
-            if (e.Column.FieldName == "MaTTTN" && e.Value != null)
+            if (e.Column.FieldName == "IDCT" && e.Value != null)
             {
                 e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
@@ -497,7 +497,7 @@ namespace KTKS_DonKH.GUI.TimKiem
         {
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
             {
-                frmTruyThuTienNuoc frm = new frmTruyThuTienNuoc(int.Parse(_CTRow.Row["MaTTTN"].ToString()));
+                frmTruyThuTienNuoc frm = new frmTruyThuTienNuoc(int.Parse(_CTRow.Row["IDCT"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;
@@ -702,6 +702,11 @@ namespace KTKS_DonKH.GUI.TimKiem
         {
             if (e.KeyChar == 13)
                 btnTimKiemTTKH.PerformClick();
+        }
+
+        private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
         

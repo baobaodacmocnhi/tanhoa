@@ -8,7 +8,7 @@ using System.Data;
 
 namespace KTKS_DonKH.DAL.ThuMoi
 {
-    class CThuMoi:CDAL
+    class CThuMoi : CDAL
     {
         public bool them(LinQ.ThuMoi entity)
         {
@@ -35,7 +35,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
             }
         }
 
-        public bool checkExist(string Loai,decimal MaDon)
+        public bool checkExist(string Loai, decimal MaDon)
         {
             switch (Loai)
             {
@@ -155,12 +155,12 @@ namespace KTKS_DonKH.DAL.ThuMoi
             }
         }
 
-        public bool checkExist_ChiTiet(string Loai, decimal MaDon,string DanhBo)
+        public bool checkExist_ChiTiet(string Loai, decimal MaDon, string DanhBo)
         {
             switch (Loai)
             {
                 case "TKH":
-                    return db.ThuMoi_ChiTiets.Any(item => item.ThuMoi.MaDonTKH == MaDon&&item.DanhBo==DanhBo);
+                    return db.ThuMoi_ChiTiets.Any(item => item.ThuMoi.MaDonTKH == MaDon && item.DanhBo == DanhBo);
                 case "TXL":
                     return db.ThuMoi_ChiTiets.Any(item => item.ThuMoi.MaDonTXL == MaDon && item.DanhBo == DanhBo);
                 case "TBC":
@@ -175,7 +175,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
             switch (Loai)
             {
                 case "TKH":
-                    return db.ThuMoi_ChiTiets.Where(item => item.ThuMoi.MaDonTKH == MaDon && item.DanhBo == DanhBo).Max(item=>item.Lan).Value;
+                    return db.ThuMoi_ChiTiets.Where(item => item.ThuMoi.MaDonTKH == MaDon && item.DanhBo == DanhBo).Max(item => item.Lan).Value;
                 case "TXL":
                     return db.ThuMoi_ChiTiets.Where(item => item.ThuMoi.MaDonTXL == MaDon && item.DanhBo == DanhBo).Max(item => item.Lan).Value;
                 case "TBC":
@@ -185,9 +185,9 @@ namespace KTKS_DonKH.DAL.ThuMoi
             }
         }
 
-        public ThuMoi_ChiTiet get_ChiTiet(int IDCT)
+        public ThuMoi_ChiTiet get_ChiTiet(int SoPhieu)
         {
-            return db.ThuMoi_ChiTiets.SingleOrDefault(item => item.IDCT == IDCT);
+            return db.ThuMoi_ChiTiets.SingleOrDefault(item => item.SoPhieu == SoPhieu);
         }
 
         public DataTable getDS_ChiTiet(string To, decimal MaDon)
@@ -202,7 +202,8 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                     MaDon = item.ThuMoi.MaDonTKH != null ? "TKH" + item.ThuMoi.MaDonTKH
                                         : item.ThuMoi.MaDonTXL != null ? "TXL" + item.ThuMoi.MaDonTXL
                                         : item.ThuMoi.MaDonTBC != null ? "TBC" + item.ThuMoi.MaDonTBC : null,
-                                        item.IDCT,
+                                    item.IDCT,
+                                    item.SoPhieu,
                                     item.DanhBo,
                                     item.HoTen,
                                     item.DiaChi,
@@ -225,6 +226,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                          : item.ThuMoi.MaDonTXL != null ? "TXL" + item.ThuMoi.MaDonTXL
                                          : item.ThuMoi.MaDonTBC != null ? "TBC" + item.ThuMoi.MaDonTBC : null,
                                      item.IDCT,
+                                     item.SoPhieu,
                                      item.DanhBo,
                                      item.HoTen,
                                      item.DiaChi,
@@ -247,6 +249,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                          : item.ThuMoi.MaDonTXL != null ? "TXL" + item.ThuMoi.MaDonTXL
                                          : item.ThuMoi.MaDonTBC != null ? "TBC" + item.ThuMoi.MaDonTBC : null,
                                      item.IDCT,
+                                     item.SoPhieu,
                                      item.DanhBo,
                                      item.HoTen,
                                      item.DiaChi,
@@ -275,6 +278,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                 : item.ThuMoi.MaDonTXL != null ? "TXL" + item.ThuMoi.MaDonTXL
                                 : item.ThuMoi.MaDonTBC != null ? "TBC" + item.ThuMoi.MaDonTBC : null,
                             item.IDCT,
+                            item.SoPhieu,
                             item.DanhBo,
                             item.HoTen,
                             item.DiaChi,
@@ -300,6 +304,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                 : item.ThuMoi.MaDonTXL != null ? "TXL" + item.ThuMoi.MaDonTXL
                                 : item.ThuMoi.MaDonTBC != null ? "TBC" + item.ThuMoi.MaDonTBC : null,
                             item.IDCT,
+                            item.SoPhieu,
                             item.DanhBo,
                             item.HoTen,
                             item.DiaChi,
@@ -318,13 +323,14 @@ namespace KTKS_DonKH.DAL.ThuMoi
         public DataTable getDS_ChiTiet(int CreateBy, DateTime FromCreatDate, DateTime ToCreateDate)
         {
             var query = from item in db.ThuMoi_ChiTiets
-                        where item.CreateBy==CreateBy&&item.CreateDate.Value.Date >= FromCreatDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
+                        where item.CreateBy == CreateBy && item.CreateDate.Value.Date >= FromCreatDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
                         select new
                         {
                             MaDon = item.ThuMoi.MaDonTKH != null ? "TKH" + item.ThuMoi.MaDonTKH
                                 : item.ThuMoi.MaDonTXL != null ? "TXL" + item.ThuMoi.MaDonTXL
                                 : item.ThuMoi.MaDonTBC != null ? "TBC" + item.ThuMoi.MaDonTBC : null,
                             item.IDCT,
+                            item.SoPhieu,
                             item.DanhBo,
                             item.HoTen,
                             item.DiaChi,
@@ -340,48 +346,53 @@ namespace KTKS_DonKH.DAL.ThuMoi
             return LINQToDataTable(query);
         }
 
+        public DataTable getCanCu()
+        {
+            return LINQToDataTable(db.ThuMoi_ChiTiets.Select(item => new { item.CanCu }).ToList().Distinct());
+        }
+
         //MaDonMoi
 
         public bool checkExist(int MaDon)
         {
-                    return db.ThuMois.Any(item => item.MaDonMoi == MaDon);
+            return db.ThuMois.Any(item => item.MaDonMoi == MaDon);
         }
 
         public bool checkExist_ChiTiet(int MaDon, string DanhBo)
         {
-                    return db.ThuMoi_ChiTiets.Any(item => item.ThuMoi.MaDonMoi == MaDon && item.DanhBo == DanhBo);
+            return db.ThuMoi_ChiTiets.Any(item => item.ThuMoi.MaDonMoi == MaDon && item.DanhBo == DanhBo);
         }
 
         public int maxLan_ChiTiet(int MaDon, string DanhBo)
         {
-                    return db.ThuMoi_ChiTiets.Where(item => item.ThuMoi.MaDonMoi == MaDon && item.DanhBo == DanhBo).Max(item => item.Lan).Value;
+            return db.ThuMoi_ChiTiets.Where(item => item.ThuMoi.MaDonMoi == MaDon && item.DanhBo == DanhBo).Max(item => item.Lan).Value;
         }
 
         public LinQ.ThuMoi get(int MaDon)
         {
-                    return db.ThuMois.SingleOrDefault(item => item.MaDonMoi == MaDon);
+            return db.ThuMois.SingleOrDefault(item => item.MaDonMoi == MaDon);
         }
 
         public DataTable getDS_ChiTiet(int MaDon)
         {
-                    var query = from item in db.ThuMoi_ChiTiets
-                                where item.ThuMoi.MaDonTKH == MaDon
-                                select new
-                                {
-                                    MaDon = item.ThuMoi.MaDonMoi,
-                                    item.IDCT,
-                                    item.DanhBo,
-                                    item.HoTen,
-                                    item.DiaChi,
-                                    item.GiaBieu,
-                                    item.DinhMuc,
-                                    item.Lan,
-                                    item.CanCu,
-                                    item.VaoLuc,
-                                    item.VeViec,
-                                    item.CreateDate,
-                                };
-                    return LINQToDataTable(query);
+            var query = from item in db.ThuMoi_ChiTiets
+                        where item.ThuMoi.MaDonTKH == MaDon
+                        select new
+                        {
+                            MaDon = item.ThuMoi.MaDonMoi,
+                            item.IDCT,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.GiaBieu,
+                            item.DinhMuc,
+                            item.Lan,
+                            item.CanCu,
+                            item.VaoLuc,
+                            item.VeViec,
+                            item.CreateDate,
+                        };
+            return LINQToDataTable(query);
         }
     }
 }

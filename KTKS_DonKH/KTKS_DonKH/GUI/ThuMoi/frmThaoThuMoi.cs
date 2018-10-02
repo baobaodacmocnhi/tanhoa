@@ -39,15 +39,38 @@ namespace KTKS_DonKH.GUI.ThuMoi
         DonTBC _dontbc = null;
         HOADON _hoadon = null;
         LinQ.ThuMoi_ChiTiet _thumoi = null;
+        int _SoPhieu = -1;
 
         public frmThaoThuMoi()
         {
             InitializeComponent();
         }
 
+        public frmThaoThuMoi(int SoPhieu)
+        {
+            _SoPhieu = SoPhieu;
+            InitializeComponent();
+        }
+
         private void frmThaoThuMoi_Load(object sender, EventArgs e)
         {
             dgvDSThu.AutoGenerateColumns = false;
+
+            DataTable dt1 = _cThuMoi.getCanCu();
+            AutoCompleteStringCollection auto1 = new AutoCompleteStringCollection();
+            foreach (DataRow item in dt1.Rows)
+            {
+                auto1.Add(item["CanCu"].ToString());
+            }
+            txtCanCu.AutoCompleteCustomSource = auto1;
+
+            if (_SoPhieu != -1)
+            {
+                txtSoPhieu.Text = _SoPhieu.ToString();
+                KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
+
+                txtSoPhieu_KeyPress(sender, arg);
+            }
         }
 
         public void LoadTTKH(HOADON hoadon)
@@ -221,7 +244,6 @@ namespace KTKS_DonKH.GUI.ThuMoi
                         }
                         else
                             MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtVeViec.Text += " " + txtMaDonCu.Text.Trim();
             }
         }
 
@@ -505,7 +527,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
         {
             try
             {
-                _thumoi = _cThuMoi.get_ChiTiet(int.Parse(dgvDSThu.CurrentRow.Cells["IDCT"].Value.ToString()));
+                _thumoi = _cThuMoi.get_ChiTiet(int.Parse(dgvDSThu.CurrentRow.Cells["SoPhieu"].Value.ToString()));
                 LoadEntity(_thumoi);
             }
             catch (Exception)
@@ -528,6 +550,16 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 {
                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void txtSoPhieu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtSoPhieu.Text.Trim() != "")
+            {
+                _thumoi = _cThuMoi.get_ChiTiet(int.Parse(txtSoPhieu.Text.Trim().Replace("-", "")));
+                if (_thumoi != null)
+                    LoadEntity(_thumoi);
             }
         }
 
