@@ -75,6 +75,7 @@
       <Column Name="Co" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SoThan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ChiSo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NiemChi" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TinhTrangChiSo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ChiMatSo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ChiKhoaGoc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -1486,6 +1487,18 @@
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NiemChi" Member="NiemChis">
+    <Type Name="NiemChi">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaNV" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DotChia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SuDung" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.NoiChuyen" Member="NoiChuyens">

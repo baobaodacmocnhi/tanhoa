@@ -66,6 +66,7 @@ namespace KTKS_DonKH.DAL
         protected SqlConnection connection;         // Đối tượng kết nối
         protected SqlDataAdapter adapter;           // Đối tượng adapter chứa dữ liệu
         protected SqlCommand command;               // Đối tượng command thực thi truy vấn
+        protected SqlTransaction transaction;       // Đối tượng transaction
 
         public CDAL()
         {
@@ -95,6 +96,38 @@ namespace KTKS_DonKH.DAL
                 connection.Close();
         }
 
+        public void SqlBeginTransaction()
+        {
+            try
+            {
+                Connect();
+                transaction = connection.BeginTransaction();
+            }
+            catch (Exception) { }
+        }
+
+        public void SqlCommitTransaction()
+        {
+            try
+            {
+                transaction.Commit();
+                transaction.Dispose();
+                Disconnect();
+            }
+            catch (Exception) { }
+        }
+
+        public void SqlRollbackTransaction()
+        {
+            transaction.Rollback();
+            transaction.Dispose();
+            try
+            {
+                Disconnect();
+            }
+            catch (Exception) { }
+        }
+
         public bool ExecuteNonQuery(string sql)
         {
             try
@@ -112,6 +145,32 @@ namespace KTKS_DonKH.DAL
             {
                 return false;
                 throw;
+            }
+        }
+
+        /// <summary>
+        /// Thực thi câu truy vấn SQL không trả về dữ liệu. Trước đó phải mở Transaction/Kết thúc phải đóng Transaction
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
+        public bool ExecuteNonQuery_Transaction(string sql)
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                    connection.Open();
+                command = new SqlCommand(sql, connection, transaction);
+                //command.CommandTimeout = 0;
+                //command.Transaction = transaction;
+                if (command.ExecuteNonQuery() == 0)
+                    return false;
+                else
+                    return true;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
             }
         }
 

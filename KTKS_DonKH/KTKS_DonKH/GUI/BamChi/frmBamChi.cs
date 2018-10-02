@@ -28,6 +28,7 @@ namespace KTKS_DonKH.GUI.BamChi
         CBamChi _cBamChi = new CBamChi();
         CDocSo _cDocSo = new CDocSo();
         CTrangThaiBamChi _cTrangThaiBamChi = new CTrangThaiBamChi();
+        CNiemChi _cNiemChi = new CNiemChi();
 
         DonTu_ChiTiet _dontu_ChiTiet = null;
         DonKH _dontkh = null;
@@ -132,6 +133,7 @@ namespace KTKS_DonKH.GUI.BamChi
             cmbChiKhoaGoc.SelectedItem = ctbamchi.ChiKhoaGoc;
             txtMucDichSuDung.Text = ctbamchi.MucDichSuDung;
             txtChiSo.Text = ctbamchi.ChiSo.ToString();
+            txtNiemChi.Text = ctbamchi.NiemChi.Value.ToString();
             cmbTinhTrangChiSo.SelectedItem = ctbamchi.TinhTrangChiSo;
             cmbTrangThaiBC.SelectedValue = ctbamchi.TrangThaiBC;
             txtVienChi.Text = ctbamchi.VienChi.ToString();
@@ -406,6 +408,24 @@ namespace KTKS_DonKH.GUI.BamChi
                         MessageBox.Show("Chưa đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
+                    if (!string.IsNullOrEmpty(txtNiemChi.Text.Trim()) )
+                    {
+                        if (_cNiemChi.checkExist(int.Parse(txtNiemChi.Text.Trim())) == false)
+                        {
+                            MessageBox.Show("Số Niêm Chì không Tồn Tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        if (_cNiemChi.checkGiao_MaNV(int.Parse(txtNiemChi.Text.Trim()), CTaiKhoan.MaUser) == false)
+                        {
+                            MessageBox.Show("Số Niêm Chì này không được Giao Cho Bạn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        if (_cNiemChi.checkSuDung(int.Parse(txtNiemChi.Text.Trim())) == true)
+                        {
+                            MessageBox.Show("Số Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
 
                     BamChi_ChiTiet ctbamchi = new BamChi_ChiTiet();
 
@@ -603,6 +623,26 @@ namespace KTKS_DonKH.GUI.BamChi
 
                         if (!string.IsNullOrEmpty(txtChiSo.Text.Trim()))
                             _ctbamchi.ChiSo = int.Parse(txtChiSo.Text.Trim());
+
+                        if (!string.IsNullOrEmpty(txtNiemChi.Text.Trim()) && _ctbamchi.NiemChi.Value.ToString() != txtNiemChi.Text.Trim())
+                        {
+                            if (_cNiemChi.checkExist(int.Parse(txtNiemChi.Text.Trim())) == false)
+                            {
+                                MessageBox.Show("Số Niêm Chì không Tồn Tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            if (_cNiemChi.checkGiao_MaNV(int.Parse(txtNiemChi.Text.Trim()), CTaiKhoan.MaUser) == false)
+                            {
+                                MessageBox.Show("Số Niêm Chì này không được Giao Cho Bạn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            if (_cNiemChi.checkSuDung(int.Parse(txtNiemChi.Text.Trim())) == true)
+                            {
+                                MessageBox.Show("Số Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            _ctbamchi.NiemChi = int.Parse(txtNiemChi.Text.Trim());
+                        }
 
                         if (cmbTinhTrangChiSo.SelectedItem != null)
                             _ctbamchi.TinhTrangChiSo = cmbTinhTrangChiSo.SelectedItem.ToString();

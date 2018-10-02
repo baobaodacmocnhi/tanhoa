@@ -18,6 +18,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
     public partial class frmDSThuMoi : Form
     {
         CThuMoi _cThuMoi = new CThuMoi();
+        CTaiKhoan _cTaiKhoan = new CTaiKhoan();
 
         public frmDSThuMoi()
         {
@@ -108,6 +109,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                             dr["VaoLuc"] = dgvDSThu["VaoLuc", i].Value.ToString();
                             dr["VeViec"] = dgvDSThu["VeViec", i].Value.ToString();
                             dr["Lan"] = dgvDSThu["Lan", i].Value.ToString();
+                            dr["NoiNhan"] = _cTaiKhoan.GetHoTen(int.Parse(dgvDSThu["CreateBy", i].Value.ToString()));
 
                             dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
 

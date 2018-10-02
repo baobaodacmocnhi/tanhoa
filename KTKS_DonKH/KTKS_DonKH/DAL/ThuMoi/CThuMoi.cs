@@ -213,6 +213,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                     item.VaoLuc,
                                     item.VeViec,
                                     item.CreateDate,
+                                    item.CreateBy,
                                 };
                     return LINQToDataTable(query);
                 case "TXL":
@@ -234,6 +235,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                      item.VaoLuc,
                                      item.VeViec,
                                      item.CreateDate,
+                                     item.CreateBy,
                                  };
                     return LINQToDataTable(query2);
                 case "TBC":
@@ -255,6 +257,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                                      item.VaoLuc,
                                      item.VeViec,
                                      item.CreateDate,
+                                     item.CreateBy,
                                  };
                     return LINQToDataTable(query3);
                 default:
@@ -282,6 +285,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                             item.VaoLuc,
                             item.VeViec,
                             item.CreateDate,
+                            item.CreateBy,
                         };
             return LINQToDataTable(query);
         }
@@ -306,6 +310,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                             item.VaoLuc,
                             item.VeViec,
                             item.CreateDate,
+                            item.CreateBy,
                         };
             return LINQToDataTable(query);
         }
@@ -330,6 +335,7 @@ namespace KTKS_DonKH.DAL.ThuMoi
                             item.VaoLuc,
                             item.VeViec,
                             item.CreateDate,
+                            item.CreateBy,
                         };
             return LINQToDataTable(query);
         }

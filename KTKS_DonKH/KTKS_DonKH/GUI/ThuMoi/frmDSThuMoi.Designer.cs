@@ -59,6 +59,7 @@
             this.VeViec = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GiaBieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DinhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSThu)).BeginInit();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.SuspendLayout();
@@ -152,7 +153,8 @@
             this.VaoLuc,
             this.VeViec,
             this.GiaBieu,
-            this.DinhMuc});
+            this.DinhMuc,
+            this.CreateBy});
             this.dgvDSThu.Location = new System.Drawing.Point(12, 68);
             this.dgvDSThu.Name = "dgvDSThu";
             this.dgvDSThu.Size = new System.Drawing.Size(1311, 560);
@@ -352,6 +354,13 @@
             this.DinhMuc.Name = "DinhMuc";
             this.DinhMuc.Visible = false;
             // 
+            // CreateBy
+            // 
+            this.CreateBy.DataPropertyName = "CreateBy";
+            this.CreateBy.HeaderText = "CreateBy";
+            this.CreateBy.Name = "CreateBy";
+            this.CreateBy.Visible = false;
+            // 
             // frmDSThuMoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -417,5 +426,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn VeViec;
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn DinhMuc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
     }
 }

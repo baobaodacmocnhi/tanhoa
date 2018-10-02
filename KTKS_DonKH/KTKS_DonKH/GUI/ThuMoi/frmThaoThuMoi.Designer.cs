@@ -60,13 +60,13 @@
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvDSThu = new System.Windows.Forms.DataGridView();
-            this.radDutChi = new System.Windows.Forms.RadioButton();
-            this.radCDDM = new System.Windows.Forms.RadioButton();
             this.IDCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Lan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CanCu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VaoLuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.radDutChi = new System.Windows.Forms.RadioButton();
+            this.radCDDM = new System.Windows.Forms.RadioButton();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSThu)).BeginInit();
@@ -334,6 +334,7 @@
             this.txtDanhBo.Name = "txtDanhBo";
             this.txtDanhBo.Size = new System.Drawing.Size(100, 22);
             this.txtDanhBo.TabIndex = 1;
+            this.txtDanhBo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBo_KeyPress);
             // 
             // label1
             // 
@@ -369,28 +370,6 @@
             this.dgvDSThu.TabIndex = 130;
             this.dgvDSThu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSThu_CellContentClick);
             // 
-            // radDutChi
-            // 
-            this.radDutChi.AutoSize = true;
-            this.radDutChi.Location = new System.Drawing.Point(674, 133);
-            this.radDutChi.Name = "radDutChi";
-            this.radDutChi.Size = new System.Drawing.Size(67, 20);
-            this.radDutChi.TabIndex = 131;
-            this.radDutChi.TabStop = true;
-            this.radDutChi.Text = "Đứt Chì";
-            this.radDutChi.UseVisualStyleBackColor = true;
-            // 
-            // radCDDM
-            // 
-            this.radCDDM.AutoSize = true;
-            this.radCDDM.Location = new System.Drawing.Point(674, 159);
-            this.radCDDM.Name = "radCDDM";
-            this.radCDDM.Size = new System.Drawing.Size(64, 20);
-            this.radCDDM.TabIndex = 132;
-            this.radCDDM.TabStop = true;
-            this.radCDDM.Text = "CĐĐM";
-            this.radCDDM.UseVisualStyleBackColor = true;
-            // 
             // IDCT
             // 
             this.IDCT.DataPropertyName = "IDCT";
@@ -424,6 +403,28 @@
             this.VaoLuc.HeaderText = "Vào Lúc";
             this.VaoLuc.Name = "VaoLuc";
             this.VaoLuc.Width = 200;
+            // 
+            // radDutChi
+            // 
+            this.radDutChi.AutoSize = true;
+            this.radDutChi.Location = new System.Drawing.Point(674, 133);
+            this.radDutChi.Name = "radDutChi";
+            this.radDutChi.Size = new System.Drawing.Size(67, 20);
+            this.radDutChi.TabIndex = 131;
+            this.radDutChi.TabStop = true;
+            this.radDutChi.Text = "Đứt Chì";
+            this.radDutChi.UseVisualStyleBackColor = true;
+            // 
+            // radCDDM
+            // 
+            this.radCDDM.AutoSize = true;
+            this.radCDDM.Location = new System.Drawing.Point(674, 159);
+            this.radCDDM.Name = "radCDDM";
+            this.radCDDM.Size = new System.Drawing.Size(64, 20);
+            this.radCDDM.TabIndex = 132;
+            this.radCDDM.TabStop = true;
+            this.radCDDM.Text = "CĐĐM";
+            this.radCDDM.UseVisualStyleBackColor = true;
             // 
             // frmThaoThuMoi
             // 

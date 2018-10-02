@@ -31,6 +31,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
         CThuMoi _cThuMoi = new CThuMoi();
         CDocSo _cDocSo = new CDocSo();
         CThuTien _cThuTien = new CThuTien();
+        CTaiKhoan _cTaiKhoan = new CTaiKhoan();
 
         DonTu_ChiTiet _dontu_ChiTiet = null;
         DonKH _dontkh = null;
@@ -482,6 +483,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 dr["VaoLuc"] = _thumoi.VaoLuc;
                 dr["VeViec"] = _thumoi.VeViec;
                 dr["Lan"] = _thumoi.Lan;
+                dr["NoiNhan"] = _cTaiKhoan.GetHoTen(_thumoi.CreateBy.Value);
 
                 dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
 
@@ -513,8 +515,21 @@ namespace KTKS_DonKH.GUI.ThuMoi
             }
         }
 
-       
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
+                if (_hoadon != null)
+                {
+                    LoadTTKH(_hoadon);
+                }
+                else
+                {
+                    MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
 
-        
     }
 }

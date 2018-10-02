@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>873</ApplicationRevision>
+    <ApplicationRevision>875</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -697,6 +697,7 @@
     <Compile Include="DAL\ThuMoi\CThuMoi.cs" />
     <Compile Include="DAL\ThuTraLoi\CToTrinh_VeViec.cs" />
     <Compile Include="DAL\ThuTraLoi\CToTrinh.cs" />
+    <Compile Include="DAL\ToBamChi\CNiemChi.cs" />
     <Compile Include="DAL\ToKhachHang\CThongTinKhachHang.cs" />
     <Compile Include="DAL\QuanTri\CBanGiamDoc.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CChiNhanh.cs" />
@@ -883,6 +884,12 @@
     </Compile>
     <Compile Include="GUI\ToBamChi\frmNhapNhieuDBTBC.Designer.cs">
       <DependentUpon>frmNhapNhieuDBTBC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ToBamChi\frmNiemChi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToBamChi\frmNiemChi.Designer.cs">
+      <DependentUpon>frmNiemChi.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ToKhachHang\frmToTrinhDCHD.cs">
       <SubType>Form</SubType>
@@ -1736,6 +1743,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToBamChi\frmNhapNhieuDBTBC.resx">
       <DependentUpon>frmNhapNhieuDBTBC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToBamChi\frmNiemChi.resx">
+      <DependentUpon>frmNiemChi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToKhachHang\frmToTrinhDCHD.resx">
       <DependentUpon>frmToTrinhDCHD.cs</DependentUpon>
