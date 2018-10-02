@@ -118,9 +118,14 @@ namespace ThuTien.GUI.DongNuoc
                 dateDongNuoc2.Value = entity.NgayDN.Value;
                 if (entity.ChiSoDN != null)
                     txtChiSoDN2.Text = entity.ChiSoDN.Value.ToString();
+                if (entity.NiemChi != null)
+                    txtNiemChi2.Text = entity.NiemChi.Value.ToString();
+
                 dateDongNuoc1.Value = entity.NgayDN1.Value;
                 if (entity.ChiSoDN1 != null)
                     txtChiSoDN1.Text = entity.ChiSoDN1.Value.ToString();
+                if (entity.NiemChi1 != null)
+                    txtNiemChi1.Text = entity.NiemChi1.Value.ToString();
             }
         }
 
@@ -265,6 +270,8 @@ namespace ThuTien.GUI.DongNuoc
                             _kqdongnuoc.NgayDN_ThucTe = DateTime.Now;
                             if (!string.IsNullOrEmpty(txtChiSoDN2.Text.Trim()))
                                 _kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN2.Text.Trim());
+                            if (!string.IsNullOrEmpty(txtNiemChi2.Text.Trim()))
+                                _kqdongnuoc.NiemChi = int.Parse(txtNiemChi2.Text.Trim());
 
                             if (_kqdongnuoc.SoPhieuDN1 == null)
                                 _kqdongnuoc.SoPhieuDN1 = _kqdongnuoc.SoPhieuDN;

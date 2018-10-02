@@ -772,6 +772,10 @@ namespace ThuTien.GUI.Doi
                     dr["SoPhatHanh"] = item["SoPhatHanh"];
                     dr["SoHoaDon"] = item["SoHoaDon"];
                     dr["NhanVien"] = dgvHDTuGia.SelectedRows[0].Cells["TenTo_TG"].Value.ToString();
+                    if (int.Parse(item["GiaBieu"].ToString()) > 20)
+                        dr["Loai"] = "CQ";
+                    else
+                        dr["Loai"] = "TG";
                     if (_cLenhHuy.CheckExist(item["SoHoaDon"].ToString()))
                         dr["LenhHuy"] = true;
                     ds.Tables["DSHoaDon"].Rows.Add(dr);
@@ -873,6 +877,10 @@ namespace ThuTien.GUI.Doi
                     dr["SoPhatHanh"] = item["SoPhatHanh"];
                     dr["SoHoaDon"] = item["SoHoaDon"];
                     dr["NhanVien"] = dgvNhanVien.SelectedRows[0].Cells["HoTen_NV"].Value.ToString();
+                    if (int.Parse(item["GiaBieu"].ToString()) > 20)
+                        dr["Loai"] = "CQ";
+                    else
+                        dr["Loai"] = "TG";
                     if (_cLenhHuy.CheckExist(item["SoHoaDon"].ToString()))
                         dr["LenhHuy"] = true;
                     ds.Tables["DSHoaDon"].Rows.Add(dr);
@@ -1421,7 +1429,7 @@ namespace ThuTien.GUI.Doi
                 oSheets = oBook.Worksheets;
                 oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
 
-                XuatExcel(dt, oSheet, "");
+                XuatExcel(dt, oSheet, "ĐỘI");
             }
             //else
             //    if (tabControl.SelectedTab.Name == "tabCoQuan")
@@ -1728,6 +1736,10 @@ namespace ThuTien.GUI.Doi
                         dr["SoPhatHanh"] = item["SoPhatHanh"];
                         dr["SoHoaDon"] = item["SoHoaDon"];
                         dr["NhanVien"] = dgvNhanVien.SelectedRows[0].Cells["HoTen_NV"].Value.ToString();
+                        if (int.Parse(item["GiaBieu"].ToString()) > 20)
+                            dr["Loai"] = "CQ";
+                        else
+                            dr["Loai"] = "TG";
                         ds.Tables["DSHoaDon"].Rows.Add(dr);
                     }
             }

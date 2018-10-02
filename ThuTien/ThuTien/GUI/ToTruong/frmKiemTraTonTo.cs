@@ -537,6 +537,10 @@ namespace ThuTien.GUI.ToTruong
                     dr["SoPhatHanh"] = item["SoPhatHanh"];
                     dr["SoHoaDon"] = item["SoHoaDon"];
                     dr["NhanVien"] = dgvHDTuGia.SelectedRows[0].Cells["HoTen_TG"].Value.ToString();
+                    if (int.Parse(item["GiaBieu"].ToString()) > 20)
+                        dr["Loai"] = "CQ";
+                    else
+                        dr["Loai"] = "TG";
                     if (_cLenhHuy.CheckExist(item["SoHoaDon"].ToString()))
                         dr["LenhHuy"] = true;
                     ds.Tables["DSHoaDon"].Rows.Add(dr);
@@ -656,6 +660,10 @@ namespace ThuTien.GUI.ToTruong
                     dr["SoPhatHanh"] = item["SoPhatHanh"];
                     dr["SoHoaDon"] = item["SoHoaDon"];
                     dr["NhanVien"] = dgvHDTuGia.SelectedRows[0].Cells["HoTen_TG"].Value.ToString();
+                    if (int.Parse(item["GiaBieu"].ToString()) > 20)
+                        dr["Loai"] = "CQ";
+                    else
+                        dr["Loai"] = "TG";
                     if (_cLenhHuy.CheckExist(item["SoHoaDon"].ToString()))
                         dr["LenhHuy"] = true;
                     ds.Tables["DSHoaDon"].Rows.Add(dr);
@@ -804,6 +812,10 @@ namespace ThuTien.GUI.ToTruong
                         dr["SoPhatHanh"] = item["SoPhatHanh"];
                         dr["SoHoaDon"] = item["SoHoaDon"];
                         dr["NhanVien"] = dgvHDTuGia.SelectedRows[0].Cells["HoTen_TG"].Value.ToString();
+                        if (int.Parse(item["GiaBieu"].ToString()) > 20)
+                            dr["Loai"] = "CQ";
+                        else
+                            dr["Loai"] = "TG";
                         ds.Tables["DSHoaDon"].Rows.Add(dr);
                     }
             }

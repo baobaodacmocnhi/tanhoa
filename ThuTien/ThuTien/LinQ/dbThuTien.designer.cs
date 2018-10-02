@@ -22461,6 +22461,8 @@ namespace ThuTien.LinQ
 		
 		private System.Nullable<System.DateTime> _NgayKy;
 		
+		private bool _Duyet;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -22583,6 +22585,8 @@ namespace ThuTien.LinQ
     partial void OnDaKyChanged();
     partial void OnNgayKyChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayKyChanged();
+    partial void OnDuyetChanging(bool value);
+    partial void OnDuyetChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -23679,6 +23683,26 @@ namespace ThuTien.LinQ
 					this._NgayKy = value;
 					this.SendPropertyChanged("NgayKy");
 					this.OnNgayKyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Duyet", DbType="Bit NOT NULL")]
+		public bool Duyet
+		{
+			get
+			{
+				return this._Duyet;
+			}
+			set
+			{
+				if ((this._Duyet != value))
+				{
+					this.OnDuyetChanging(value);
+					this.SendPropertyChanging();
+					this._Duyet = value;
+					this.SendPropertyChanged("Duyet");
+					this.OnDuyetChanged();
 				}
 			}
 		}

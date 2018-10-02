@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="KTKS_DonKH" Class="dbKTKS_DonKHDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=serverg8-01;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=tanhoa" SettingsObjectName="ThuTien.Properties.Settings" SettingsPropertyName="KTKS_DonKHConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=serverg8-01;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=sa" SettingsObjectName="ThuTien.Properties.Settings" SettingsPropertyName="KTKS_DonKHConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.CHDB_Phieu" Member="CHDB_Phieus">
     <Type Name="CHDB_Phieu">
       <Column Name="MaYCCHDB" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -380,6 +380,17 @@
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="DonTXL_DCBD" Member="DCBDs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="DCBD" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NiemChi" Member="NiemChis">
+    <Type Name="NiemChi">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaNV" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SuDung" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

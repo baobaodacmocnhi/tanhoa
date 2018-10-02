@@ -322,6 +322,7 @@ namespace ThuTien.DAL.DongNuoc
                         orderby itemKQ.NgayDN ascending
                         select new
                         {
+                            itemKQ.MaKQDN,
                             itemKQ.DanhBo,
                             itemKQ.HoTen,
                             itemKQ.DiaChi,
@@ -329,9 +330,9 @@ namespace ThuTien.DAL.DongNuoc
                             itemKQ.Co,
                             itemKQ.ChiSoDN,
                             itemKQ.NgayDN,
+                            itemKQ.Duyet,
                             NhanVien = itemtableND.HoTen,
-                            To=itemtableND.MaTo,
-
+                            _db.TT_Tos.SingleOrDefault(itemT=>itemT.MaTo== itemtableND.MaTo).TenTo,
                         };
             return LINQToDataTable(query.Distinct());
         }

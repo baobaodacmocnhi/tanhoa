@@ -10,11 +10,14 @@ using ThuTien.DAL.DongNuoc;
 using ThuTien.BaoCao;
 using ThuTien.BaoCao.DongNuoc;
 using ThuTien.GUI.BaoCao;
+using ThuTien.DAL.QuanTri;
+using ThuTien.LinQ;
 
 namespace ThuTien.GUI.Doi
 {
     public partial class frmBaoCaoVatTu : Form
     {
+        string _mnu = "mnuBaoCaoVatTu";
         CDongNuoc _cDongNuoc = new CDongNuoc();
 
         public frmBaoCaoVatTu()
@@ -82,6 +85,21 @@ namespace ThuTien.GUI.Doi
             using (SolidBrush b = new SolidBrush(dgvBamChi.RowHeadersDefaultCellStyle.ForeColor))
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvBamChi_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (dgvBamChi.Columns[e.ColumnIndex].Name == "Duyet" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvBamChi[e.ColumnIndex, e.RowIndex].Value.ToString()))
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dgvBamChi["MaKQDN", e.RowIndex].Value.ToString()));
+                    kqdongnuoc.Duyet = bool.Parse(dgvBamChi[e.ColumnIndex, e.RowIndex].Value.ToString());
+                    _cDongNuoc.SuaKQ(kqdongnuoc);
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

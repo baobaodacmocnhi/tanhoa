@@ -74,15 +74,16 @@ namespace ThuTien.GUI.Doi
                                 return;
                             }
                         }
-                        _cNiemChi.SqlBeginTransaction();
+                        string sql = "";
                         for (int i = TuSo; i <= DenSo; i++)
                         {
                             //TT_NiemChi en = new TT_NiemChi();
                             //en.ID = i;
                             //_cNiemChi.Them(en);
-                            string sql = "insert into TT_NiemChi(ID,CreateBy,CreateDate)values(" + i + "," + CNguoiDung.MaND + ",getDate())";
-                            _cNiemChi.ExecuteNonQuery_Transaction(sql);
+                            sql += " insert into TT_NiemChi(ID,CreateBy,CreateDate)values(" + i + "," + CNguoiDung.MaND + ",getDate())";   
                         }
+                        _cNiemChi.SqlBeginTransaction();
+                        _cNiemChi.ExecuteNonQuery_Transaction(sql);
                         _cNiemChi.SqlCommitTransaction();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         loadNhap();

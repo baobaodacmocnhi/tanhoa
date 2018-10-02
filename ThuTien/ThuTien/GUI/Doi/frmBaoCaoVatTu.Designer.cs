@@ -37,7 +37,9 @@
             this.dateTu = new System.Windows.Forms.DateTimePicker();
             this.dgvBamChi = new System.Windows.Forms.DataGridView();
             this.btnIn = new System.Windows.Forms.Button();
+            this.MaKQDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Duyet = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,7 +47,7 @@
             this.ChiSoDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NhanVien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.To = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBamChi)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,6 +99,8 @@
             // 
             // dgvBamChi
             // 
+            this.dgvBamChi.AllowUserToAddRows = false;
+            this.dgvBamChi.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -107,7 +111,9 @@
             this.dgvBamChi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvBamChi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBamChi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaKQDN,
             this.DanhBo,
+            this.Duyet,
             this.HoTen,
             this.DiaChi,
             this.Hieu,
@@ -115,15 +121,16 @@
             this.ChiSoDN,
             this.NgayDN,
             this.NhanVien,
-            this.To});
+            this.TenTo});
             this.dgvBamChi.Location = new System.Drawing.Point(12, 38);
             this.dgvBamChi.MultiSelect = false;
             this.dgvBamChi.Name = "dgvBamChi";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvBamChi.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvBamChi.Size = new System.Drawing.Size(1122, 589);
+            this.dgvBamChi.Size = new System.Drawing.Size(1174, 589);
             this.dgvBamChi.TabIndex = 20;
             this.dgvBamChi.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvBamChi_CellFormatting);
+            this.dgvBamChi.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvBamChi_CellValidating);
             this.dgvBamChi.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvBamChi_RowPostPaint);
             // 
             // btnIn
@@ -136,11 +143,25 @@
             this.btnIn.UseVisualStyleBackColor = true;
             this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
+            // MaKQDN
+            // 
+            this.MaKQDN.DataPropertyName = "MaKQDN";
+            this.MaKQDN.HeaderText = "MaKQDN";
+            this.MaKQDN.Name = "MaKQDN";
+            this.MaKQDN.Visible = false;
+            // 
             // DanhBo
             // 
             this.DanhBo.DataPropertyName = "DanhBo";
             this.DanhBo.HeaderText = "Danh Bộ";
             this.DanhBo.Name = "DanhBo";
+            // 
+            // Duyet
+            // 
+            this.Duyet.DataPropertyName = "Duyet";
+            this.Duyet.HeaderText = "Duyệt";
+            this.Duyet.Name = "Duyet";
+            this.Duyet.Width = 50;
             // 
             // HoTen
             // 
@@ -189,12 +210,12 @@
             this.NhanVien.HeaderText = "Nhân Viên";
             this.NhanVien.Name = "NhanVien";
             // 
-            // To
+            // TenTo
             // 
-            this.To.DataPropertyName = "To";
-            this.To.HeaderText = "Tổ";
-            this.To.Name = "To";
-            this.To.Width = 50;
+            this.TenTo.DataPropertyName = "TenTo";
+            this.TenTo.HeaderText = "Tổ";
+            this.TenTo.Name = "TenTo";
+            this.TenTo.Width = 50;
             // 
             // frmBaoCaoVatTu
             // 
@@ -226,7 +247,9 @@
         private System.Windows.Forms.DateTimePicker dateTu;
         private System.Windows.Forms.DataGridView dgvBamChi;
         private System.Windows.Forms.Button btnIn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaKQDN;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Duyet;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn Hieu;
@@ -234,6 +257,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ChiSoDN;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayDN;
         private System.Windows.Forms.DataGridViewTextBoxColumn NhanVien;
-        private System.Windows.Forms.DataGridViewTextBoxColumn To;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenTo;
     }
 }
