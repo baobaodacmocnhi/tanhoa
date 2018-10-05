@@ -145,6 +145,11 @@ namespace KTKS_DonKH.GUI.BamChi
                 dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
                 if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
                     dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                if (itemRow["Co"].ToString() == "")
+                {
+                    MessageBox.Show("Có Biên Bản không có nhập Cỡ ĐHN", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 dr["Co"] = itemRow["Co"];
                 dr["VienChi"] = itemRow["VienChi"];
                 dr["DayChi"] = itemRow["DayChi"];
