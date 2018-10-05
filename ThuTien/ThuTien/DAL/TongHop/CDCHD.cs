@@ -712,6 +712,7 @@ namespace ThuTien.DAL.TongHop
                                     && itemHD.GB>=11 && itemHD.GB<=20
                             select new
                             {
+                                Loai="TG",
                                 MaTo = MaTo,
                                 _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
                                 MaNV = itemHD.MaNV_HanhThu,
@@ -736,6 +737,7 @@ namespace ThuTien.DAL.TongHop
                                         && itemHD.GB > 20
                                 select new
                                 {
+                                    Loai = "CQ",
                                     MaTo = MaTo,
                                     _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
                                     MaNV = itemHD.MaNV_HanhThu,
@@ -810,6 +812,7 @@ namespace ThuTien.DAL.TongHop
                                    && itemHD.GB >= 11 && itemHD.GB <= 20
                             select new
                             {
+                                Loai = "TG",
                                 MaTo = MaTo,
                                 _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
                                 MaNV = itemHD.MaNV_HanhThu,
@@ -834,6 +837,7 @@ namespace ThuTien.DAL.TongHop
                                        && itemHD.GB > 20
                                 select new
                                 {
+                                    Loai = "CQ",
                                     MaTo = MaTo,
                                     _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
                                     MaNV = itemHD.MaNV_HanhThu,
