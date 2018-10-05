@@ -510,6 +510,20 @@ namespace KTCN_CongVan
             }
         }
 
+        private void dgvDotThiCong_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            if (dgvDotThiCong.Rows[e.RowIndex].Cells["HoanCong_DTC"].Value!=null&&bool.Parse(dgvDotThiCong.Rows[e.RowIndex].Cells["HoanCong_DTC"].Value.ToString()) == false)
+                if (dgvDotThiCong.Rows[e.RowIndex].Cells["NgayGiaoSDV_DTC"].Value != null && dgvDotThiCong.Rows[e.RowIndex].Cells["NgayGiaoSDV_DTC"].Value.ToString() != "")
+                    if (dgvDotThiCong.Rows[e.RowIndex].Cells["MaLoai"].Value.ToString() == "GM" || dgvDotThiCong.Rows[e.RowIndex].Cells["MaLoai"].Value.ToString() == "HD")
+                    {
+                        if (_cTTK.GetToDate(DateTime.Parse(dgvDotThiCong.Rows[e.RowIndex].Cells["NgayGiaoSDV_DTC"].Value.ToString()), 5).Date <= DateTime.Now.Date)
+                            dgvDotThiCong.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
+                    }
+                    else
+                        if (_cTTK.GetToDate(DateTime.Parse(dgvDotThiCong.Rows[e.RowIndex].Cells["NgayGiaoSDV_DTC"].Value.ToString()), 2).Date <= DateTime.Now.Date)
+                            dgvDotThiCong.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
+        }
+
         private void dgvDSHoSo_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             using (SolidBrush b = new SolidBrush(dgvDSHoSo.RowHeadersDefaultCellStyle.ForeColor))
@@ -518,21 +532,9 @@ namespace KTCN_CongVan
             }
         }
 
-        private void dgvDotThiCong_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
-        {
-            if (dgvDotThiCong.Rows[e.RowIndex].Cells["NgayGiaoSDV_DTC"].Value != null && dgvDotThiCong.Rows[e.RowIndex].Cells["NgayGiaoSDV_DTC"].Value.ToString() != "")
-                if (dgvDotThiCong.Rows[e.RowIndex].Cells["MaLoai"].Value.ToString() == "GM" || dgvDotThiCong.Rows[e.RowIndex].Cells["MaLoai"].Value.ToString() == "HD")
-                {
-                    if (_cTTK.GetToDate(DateTime.Parse(dgvDotThiCong.Rows[e.RowIndex].Cells["NgayGiaoSDV_DTC"].Value.ToString()), 5).Date <= DateTime.Now.Date)
-                        dgvDotThiCong.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
-                }
-                else
-                    if (_cTTK.GetToDate(DateTime.Parse(dgvDotThiCong.Rows[e.RowIndex].Cells["NgayGiaoSDV_DTC"].Value.ToString()), 2).Date <= DateTime.Now.Date)
-                        dgvDotThiCong.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
-        }
-
         private void dgvDSHoSo_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
+            if (dgvDSHoSo.Rows[e.RowIndex].Cells["NgayHoanCong"].Value.ToString()=="")
             if (dgvDSHoSo.Rows[e.RowIndex].Cells["MaLoaiHoSo"].Value.ToString() == "GM" || dgvDSHoSo.Rows[e.RowIndex].Cells["MaLoaiHoSo"].Value.ToString() == "HD")
             {
                 if (dgvDSHoSo.Rows[e.RowIndex].Cells["HoSoCha"].Value.ToString() == "" && (dgvDSHoSo.Rows[e.RowIndex].Cells["NgayGiaoSDV"].Value.ToString() == "" || (_cTTK.GetToDate(DateTime.Parse(dgvDSHoSo.Rows[e.RowIndex].Cells["NgayGiaoSDV"].Value.ToString()), 5).Date <= DateTime.Now.Date && dgvDSHoSo.Rows[e.RowIndex].Cells["NgayLapBG"].Value.ToString() == "" && dgvDSHoSo.Rows[e.RowIndex].Cells["NgayTraHS"].Value.ToString() == "")))
