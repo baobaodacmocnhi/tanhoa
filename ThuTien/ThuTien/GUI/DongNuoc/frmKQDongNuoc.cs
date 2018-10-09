@@ -238,6 +238,7 @@ namespace ThuTien.GUI.DongNuoc
                                 return;
                             }
                             _kqdongnuoc.NiemChi = int.Parse(txtNiemChi.Text.Trim());
+                            _cNiemChi.suDung(int.Parse(txtNiemChi.Text.Trim()));
                         }
                         _kqdongnuoc.Hieu = txtHieu.Text.Trim();
                         if (!string.IsNullOrEmpty(txtCo.Text.Trim()))
@@ -368,6 +369,7 @@ namespace ThuTien.GUI.DongNuoc
                                     return;
                                 }
                                 kqdongnuoc.NiemChi = int.Parse(txtNiemChi.Text.Trim());
+                                _cNiemChi.suDung(int.Parse(txtNiemChi.Text.Trim()));
                             }
                             kqdongnuoc.Hieu = txtHieu.Text.Trim();
                             if (!string.IsNullOrEmpty(txtCo.Text.Trim()))
