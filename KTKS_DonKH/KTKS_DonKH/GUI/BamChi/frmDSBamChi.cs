@@ -59,40 +59,52 @@ namespace KTKS_DonKH.GUI.BamChi
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            switch (cmbTimTheo.SelectedItem.ToString())
-            {
-                case "Mã Đơn":
-                    if (txtNoiDungTimKiem.Text.Trim() != "")
-                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                            dgvDSCTBamChi.DataSource = _cBamChi.GetDS("TXL", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
-                        else
-                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                dgvDSCTBamChi.DataSource = _cBamChi.GetDS("TBC", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+            if (CTaiKhoan.TruongPhong == true || CTaiKhoan.ToTruong == true || CTaiKhoan.ThuKy == true)
+                switch (cmbTimTheo.SelectedItem.ToString())
+                {
+                    case "Mã Đơn":
+                        if (txtNoiDungTimKiem.Text.Trim() != "")
+                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                dgvDSCTBamChi.DataSource = _cBamChi.GetDS("TXL", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                             else
-                                dgvDSCTBamChi.DataSource = _cBamChi.GetDS("TKH", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
-                    break;
-                case "Danh Bộ":
-                    if (txtNoiDungTimKiem.Text.Trim() != "")
-                        dgvDSCTBamChi.DataSource = _cBamChi.GetDS(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
-                    break;
-                case "Ngày":
-                    if (CTaiKhoan.TruongPhong)
+                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                    dgvDSCTBamChi.DataSource = _cBamChi.GetDS("TBC", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                else
+                                    dgvDSCTBamChi.DataSource = _cBamChi.GetDS("TKH", decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                        break;
+                    case "Danh Bộ":
+                        if (txtNoiDungTimKiem.Text.Trim() != "")
+                            dgvDSCTBamChi.DataSource = _cBamChi.GetDS(txtNoiDungTimKiem.Text.Trim());
+                        break;
+                    case "Ngày":
                         dgvDSCTBamChi.DataSource = _cBamChi.GetDS(dateTu.Value, dateDen.Value);
-                    else
-                        if (CTaiKhoan.ThuKy)
-                        {
-                            if (CTaiKhoan.ToXL)
-                                dgvDSCTBamChi.DataSource = _cBamChi.GetDS("TXL", dateTu.Value, dateDen.Value);
+                        break;
+                    default:
+                        break;
+                }
+            else
+                switch (cmbTimTheo.SelectedItem.ToString())
+                {
+                    case "Mã Đơn":
+                        if (txtNoiDungTimKiem.Text.Trim() != "")
+                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                dgvDSCTBamChi.DataSource = _cBamChi.GetDS("TXL", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                             else
-                                if (CTaiKhoan.ToBC)
-                                    dgvDSCTBamChi.DataSource = _cBamChi.GetDS("TBC", dateTu.Value, dateDen.Value);
-                        }
-                        else
-                            dgvDSCTBamChi.DataSource = _cBamChi.GetDS(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
-                    break;
-                default:
-                    break;
-            }
+                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                    dgvDSCTBamChi.DataSource = _cBamChi.GetDS("TBC", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                else
+                                    dgvDSCTBamChi.DataSource = _cBamChi.GetDS("TKH", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                        break;
+                    case "Danh Bộ":
+                        if (txtNoiDungTimKiem.Text.Trim() != "")
+                            dgvDSCTBamChi.DataSource = _cBamChi.GetDS(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
+                        break;
+                    case "Ngày":
+                        dgvDSCTBamChi.DataSource = _cBamChi.GetDS(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
+                        break;
+                    default:
+                        break;
+                }
         }
 
         private void btnIn_Click(object sender, EventArgs e)

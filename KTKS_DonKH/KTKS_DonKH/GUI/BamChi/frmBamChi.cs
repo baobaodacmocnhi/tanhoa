@@ -550,6 +550,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             return;
                         }
                         ctbamchi.NiemChi = int.Parse(txtNiemChi.Text.Trim());
+                        _cNiemChi.suDung(int.Parse(txtNiemChi.Text.Trim()));
                     }
 
                     if (cmbTinhTrangChiSo.SelectedItem != null)
@@ -603,6 +604,7 @@ namespace KTKS_DonKH.GUI.BamChi
                 {
                     if (_ctbamchi != null)
                     {
+                        if(CTaiKhoan.ToTruong!=true)
                         if (_ctbamchi.CreateBy != CTaiKhoan.MaUser)
                         {
                             MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -663,6 +665,7 @@ namespace KTKS_DonKH.GUI.BamChi
                                 return;
                             }
                             _ctbamchi.NiemChi = int.Parse(txtNiemChi.Text.Trim());
+                            _cNiemChi.suDung(int.Parse(txtNiemChi.Text.Trim()));
                         }
 
                         if (cmbTinhTrangChiSo.SelectedItem != null)
@@ -715,6 +718,7 @@ namespace KTKS_DonKH.GUI.BamChi
                 {
                     if (_ctbamchi != null && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
+                        if(CTaiKhoan.ToTruong!=true)
                         if (_ctbamchi.CreateBy != CTaiKhoan.MaUser)
                         {
                             MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

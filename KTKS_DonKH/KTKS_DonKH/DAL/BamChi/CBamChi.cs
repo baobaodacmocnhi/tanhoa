@@ -588,6 +588,91 @@ namespace KTKS_DonKH.DAL.BamChi
             }
         }
 
+        public DataTable GetDS(string DanhBo)
+        {
+            DataTable dt = new DataTable();
+
+            var query = from itemCTBamChi in db.BamChi_ChiTiets
+                        join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                        where itemCTBamChi.BamChi.MaDon != null
+                        && itemCTBamChi.DanhBo == DanhBo
+                        select new
+                        {
+                            itemCTBamChi.MaCTBC,
+                            MaDon = "TKH" + itemCTBamChi.BamChi.MaDon,
+                            itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD,
+                            itemCTBamChi.DanhBo,
+                            itemCTBamChi.HoTen,
+                            itemCTBamChi.DiaChi,
+                            itemCTBamChi.HopDong,
+                            itemCTBamChi.NgayBC,
+                            itemCTBamChi.TrangThaiBC,
+                            itemCTBamChi.Hieu,
+                            itemCTBamChi.Co,
+                            itemCTBamChi.ChiSo,
+                            itemCTBamChi.VienChi,
+                            itemCTBamChi.DayChi,
+                            itemCTBamChi.TheoYeuCau,
+                            itemCTBamChi.MaSoBC,
+                            CreateBy = itemUser.HoTen,
+                        };
+            dt = LINQToDataTable(query);
+
+            query = from itemCTBamChi in db.BamChi_ChiTiets
+                    join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                    where itemCTBamChi.BamChi.MaDonTXL != null
+                    && itemCTBamChi.DanhBo == DanhBo
+                    select new
+                    {
+                        itemCTBamChi.MaCTBC,
+                        MaDon = "TXL" + itemCTBamChi.BamChi.MaDonTXL,
+                        itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD,
+                        itemCTBamChi.DanhBo,
+                        itemCTBamChi.HoTen,
+                        itemCTBamChi.DiaChi,
+                        itemCTBamChi.HopDong,
+                        itemCTBamChi.NgayBC,
+                        itemCTBamChi.TrangThaiBC,
+                        itemCTBamChi.Hieu,
+                        itemCTBamChi.Co,
+                        itemCTBamChi.ChiSo,
+                        itemCTBamChi.VienChi,
+                        itemCTBamChi.DayChi,
+                        itemCTBamChi.TheoYeuCau,
+                        itemCTBamChi.MaSoBC,
+                        CreateBy = itemUser.HoTen,
+                    };
+            dt.Merge(LINQToDataTable(query));
+
+            query = from itemCTBamChi in db.BamChi_ChiTiets
+                    join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                    where itemCTBamChi.BamChi.MaDonTBC != null
+                    && itemCTBamChi.DanhBo == DanhBo
+                    select new
+                    {
+                        itemCTBamChi.MaCTBC,
+                        MaDon = "TBC" + itemCTBamChi.BamChi.MaDonTBC,
+                        itemCTBamChi.BamChi.DonTBC.LoaiDonTBC.TenLD,
+                        itemCTBamChi.DanhBo,
+                        itemCTBamChi.HoTen,
+                        itemCTBamChi.DiaChi,
+                        itemCTBamChi.HopDong,
+                        itemCTBamChi.NgayBC,
+                        itemCTBamChi.TrangThaiBC,
+                        itemCTBamChi.Hieu,
+                        itemCTBamChi.Co,
+                        itemCTBamChi.ChiSo,
+                        itemCTBamChi.VienChi,
+                        itemCTBamChi.DayChi,
+                        itemCTBamChi.TheoYeuCau,
+                        itemCTBamChi.MaSoBC,
+                        CreateBy = itemUser.HoTen,
+                    };
+            dt.Merge(LINQToDataTable(query));
+
+            return dt;
+        }
+
         public DataTable GetDS(int CreateBy, string DanhBo)
         {
             DataTable dt = new DataTable();

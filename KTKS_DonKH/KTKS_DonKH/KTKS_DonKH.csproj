@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>881</ApplicationRevision>
+    <ApplicationRevision>882</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -686,6 +686,7 @@
     <Compile Include="DAL\CatHuyDanhBo\CCHDB_NoiDungXuLy.cs" />
     <Compile Include="DAL\CDocSo.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CDataTransfer.cs" />
+    <Compile Include="DAL\DieuChinhBienDong\CKhuCongNghiep.cs" />
     <Compile Include="DAL\DonTu\CDonTu.cs" />
     <Compile Include="DAL\DonTu\CLichSuDonTu.cs" />
     <Compile Include="DAL\DonTu\CNhomDon.cs" />
@@ -824,6 +825,12 @@
     </Compile>
     <Compile Include="GUI\CatHuyDanhBo\frmNoiDungXuLyCHDB.Designer.cs">
       <DependentUpon>frmNoiDungXuLyCHDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DieuChinhBienDong\frmKhuCongNghiep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DieuChinhBienDong\frmKhuCongNghiep.Designer.cs">
+      <DependentUpon>frmKhuCongNghiep.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\DieuChinhBienDong\frmNhapNhieuGB.cs">
       <SubType>Form</SubType>
@@ -1713,6 +1720,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CatHuyDanhBo\frmNoiDungXuLyCHDB.resx">
       <DependentUpon>frmNoiDungXuLyCHDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DieuChinhBienDong\frmKhuCongNghiep.resx">
+      <DependentUpon>frmKhuCongNghiep.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DieuChinhBienDong\frmNhapNhieuGB.resx">
       <DependentUpon>frmNhapNhieuGB.cs</DependentUpon>
