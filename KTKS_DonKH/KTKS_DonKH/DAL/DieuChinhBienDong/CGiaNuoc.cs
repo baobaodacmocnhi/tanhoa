@@ -3183,11 +3183,12 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         }
 
         //khu công nghiệp
-        public int TinhTienNuoc_KhuCongNghiep(string DanhBo, int GiaBieu, int DinhMuc, int TieuThu, out string ChiTiet)
+        public int TinhTienNuoc_KhuCongNghiep(string DanhBo, int GiaBieu, int DinhMuc, int TieuThu, out string ChiTiet,out float TyLe)
         {
             try
             {
                 string _chiTiet = "";
+                TyLe = 0.0f;
                 HOADON hoadon = _cThuTien.GetMoiNhat(DanhBo);
                 List<GiaNuoc> lstGiaNuoc = db.GiaNuocs.ToList();
                 KhuCongNghiep kcn = _cKCN.get(DanhBo);
@@ -3234,31 +3235,31 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         }
                         else
                         {
-                            int TyLe = (int)((double)(TieuThu - kcn.DinhMuc.Value) / kcn.DinhMuc.Value * 100);
-
+                            TyLe = (float)(TieuThu - kcn.DinhMuc.Value) / kcn.DinhMuc.Value * 100;
+                            int TyLe2 = (int)TyLe;
                             TongTien = kcn.DinhMuc.Value * GiaBan;
                             _chiTiet = kcn.DinhMuc.Value + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", GiaBan);
-                            if (0 < TyLe && TyLe <= 19)
+                            if (0 < TyLe2 && TyLe2 <= 19)
                             {
                                 TongTien += (TieuThu - kcn.DinhMuc.Value) * (GiaBan - GiaBan * 10 / 100);
                                 _chiTiet += "\n"+(TieuThu - kcn.DinhMuc.Value) + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (GiaBan - GiaBan * 10 / 100));
                             }
-                            else if (20 <= TyLe && TyLe <= 29)
+                            else if (20 <= TyLe2 && TyLe2 <= 29)
                             {
                                 TongTien += (TieuThu - kcn.DinhMuc.Value) * (GiaBan - GiaBan * 20 / 100);
                                 _chiTiet += "\n" + (TieuThu - kcn.DinhMuc.Value) + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (GiaBan - GiaBan * 20 / 100));
                             }
-                            else if (30 <= TyLe && TyLe <= 39)
+                            else if (30 <= TyLe2 && TyLe2 <= 39)
                             {
                                 TongTien += (TieuThu - kcn.DinhMuc.Value) * (GiaBan - GiaBan * 30 / 100);
                                 _chiTiet += "\n" + (TieuThu - kcn.DinhMuc.Value) + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (GiaBan - GiaBan * 30 / 100));
                             }
-                            else if (40 <= TyLe && TyLe <= 49)
+                            else if (40 <= TyLe2 && TyLe2 <= 49)
                             {
                                 TongTien += (TieuThu - kcn.DinhMuc.Value) * (GiaBan - GiaBan * 40 / 100);
                                 _chiTiet += "\n" + (TieuThu - kcn.DinhMuc.Value) + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (GiaBan - GiaBan * 40 / 100));
                             }
-                            else if (50 <= TyLe)
+                            else if (50 <= TyLe2)
                             {
                                 TongTien += (TieuThu - kcn.DinhMuc.Value) * (GiaBan - GiaBan * 50 / 100);
                                 _chiTiet += "\n" + (TieuThu - kcn.DinhMuc.Value) + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (GiaBan - GiaBan * 50 / 100));
@@ -3355,6 +3356,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ChiTiet = "";
+                TyLe = 0.0f;
                 return 0;
             }
         }

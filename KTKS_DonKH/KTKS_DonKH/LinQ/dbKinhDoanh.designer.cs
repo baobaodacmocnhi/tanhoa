@@ -15689,6 +15689,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _DanhBo;
 		
+		private string _MLT;
+		
 		private string _HoTen;
 		
 		private string _DiaChi;
@@ -15767,6 +15769,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _KhuCongNghiep;
 		
+		private System.Nullable<double> _TyLeKhuCongNghiep;
+		
 		private System.Nullable<int> _TienNuoc_BD;
 		
 		private System.Nullable<int> _ThueGTGT_BD;
@@ -15827,6 +15831,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaCTDCHDChanged();
     partial void OnDanhBoChanging(string value);
     partial void OnDanhBoChanged();
+    partial void OnMLTChanging(string value);
+    partial void OnMLTChanged();
     partial void OnHoTenChanging(string value);
     partial void OnHoTenChanged();
     partial void OnDiaChiChanging(string value);
@@ -15905,6 +15911,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnHCSNChanged();
     partial void OnKhuCongNghiepChanging(bool value);
     partial void OnKhuCongNghiepChanged();
+    partial void OnTyLeKhuCongNghiepChanging(System.Nullable<double> value);
+    partial void OnTyLeKhuCongNghiepChanged();
     partial void OnTienNuoc_BDChanging(System.Nullable<int> value);
     partial void OnTienNuoc_BDChanged();
     partial void OnThueGTGT_BDChanging(System.Nullable<int> value);
@@ -15999,6 +16007,26 @@ namespace KTKS_DonKH.LinQ
 					this._DanhBo = value;
 					this.SendPropertyChanged("DanhBo");
 					this.OnDanhBoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MLT", DbType="Char(10)")]
+		public string MLT
+		{
+			get
+			{
+				return this._MLT;
+			}
+			set
+			{
+				if ((this._MLT != value))
+				{
+					this.OnMLTChanging(value);
+					this.SendPropertyChanging();
+					this._MLT = value;
+					this.SendPropertyChanged("MLT");
+					this.OnMLTChanged();
 				}
 			}
 		}
@@ -16779,6 +16807,26 @@ namespace KTKS_DonKH.LinQ
 					this._KhuCongNghiep = value;
 					this.SendPropertyChanged("KhuCongNghiep");
 					this.OnKhuCongNghiepChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TyLeKhuCongNghiep", DbType="Float")]
+		public System.Nullable<double> TyLeKhuCongNghiep
+		{
+			get
+			{
+				return this._TyLeKhuCongNghiep;
+			}
+			set
+			{
+				if ((this._TyLeKhuCongNghiep != value))
+				{
+					this.OnTyLeKhuCongNghiepChanging(value);
+					this.SendPropertyChanging();
+					this._TyLeKhuCongNghiep = value;
+					this.SendPropertyChanged("TyLeKhuCongNghiep");
+					this.OnTyLeKhuCongNghiepChanged();
 				}
 			}
 		}

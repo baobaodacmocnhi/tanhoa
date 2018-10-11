@@ -43,6 +43,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         HOADON _hoadon = null;
         DCBD_ChiTietHoaDon _ctdchd = null;
         int _TieuThu_DieuChinhGia = 0;
+        float _TyLeKhuCongNghiep = 0.0f;
         List<GiaNuoc> lstGiaNuoc;
         decimal _MaCTDCHD = -1;
 
@@ -118,6 +119,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         public void LoadTTKH(HOADON hoadon)
         {
             txtDanhBo.Text = hoadon.DANHBA;
+            txtMLT.Text = hoadon.MALOTRINH;
             txtHoTen.Text = hoadon.TENKH;
             txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
             if (hoadon.GB != null)
@@ -510,6 +512,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     return;
                                 }
                     ctdchd.DanhBo = txtDanhBo.Text.Trim();
+                    ctdchd.MLT = txtMLT.Text.Trim();
                     ctdchd.HoTen = txtHoTen.Text.Trim();
                     ctdchd.DiaChi = txtDiaChi.Text.Trim();
                     ctdchd.SoVB = txtSoVB.Text.Trim();
@@ -615,6 +618,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         else
                             ThongTin += ". Khu Công Nghiệp";
                         ctdchd.KhuCongNghiep = true;
+                        ctdchd.TyLeKhuCongNghiep = _TyLeKhuCongNghiep;
                     }
                     ctdchd.ThongTin = ThongTin;
                     ctdchd.LyDoDieuChinh = txtLyDoDieuChinh.Text.Trim();
@@ -807,10 +811,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             else
                                 ThongTin += ". Khu Công Nghiệp";
                             _ctdchd.KhuCongNghiep = true;
+                            _ctdchd.TyLeKhuCongNghiep = _TyLeKhuCongNghiep;
                         }
                         else
                         {
                             _ctdchd.KhuCongNghiep = false;
+                            _ctdchd.TyLeKhuCongNghiep = null;
                         }
                         _ctdchd.ThongTin = ThongTin;
                         _ctdchd.LyDoDieuChinh = txtLyDoDieuChinh.Text.Trim();
@@ -942,50 +948,97 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["DCHD"].NewRow();
 
-                dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " "); ;
-                dr["HoTen"] = txtHoTen.Text.Trim();
-                dr["DiaChi"] = txtDiaChi.Text.Trim();
-                ///
-                dr["GiaBieuStart"] = txtGiaBieu_Cu.Text.Trim();
-                dr["DinhMucStart"] = txtDinhMuc_Cu.Text.Trim();
-                dr["TieuThuStart"] = txtTieuThu_Start.Text.Trim();
-                dr["TienNuocStart"] = txtChiTietCu.Text.Trim() + "\n=  " + txtTienNuoc_Start.Text.Trim();
-                dr["ThueGTGTStart"] = txtTienNuoc_Start.Text.Trim() + " x 5% \n=  " + txtThueGTGT_Start.Text.Trim();
-                dr["PhiBVMTStart"] = txtTienNuoc_Start.Text.Trim() + " x 10% \n=  " + txtPhiBVMT_Start.Text.Trim();
-                dr["TongCongStart"] = txtTongCong_Start.Text.Trim().Replace(".", "");
-                ///
-                dr["TangGiam"] = lbTangGiam.Text;
-                ///
-                //dr["GiaBieuBD"] = int.Parse(txtGiaBieu_Moi.Text.Trim()) - int.Parse(txtGiaBieu_Cu.Text.Trim());
-                dr["DinhMucBD"] = int.Parse(txtDinhMuc_Moi.Text.Trim()) - int.Parse(txtDinhMuc_Cu.Text.Trim());
-                dr["TieuThuBD"] = txtTieuThu_BD.Text.Trim();
-                dr["TienNuocBD"] = txtTienNuoc_BD.Text.Trim();
-                dr["ThueGTGTBD"] = txtThueGTGT_BD.Text.Trim();
-                dr["PhiBVMTBD"] = txtPhiBVMT_BD.Text.Trim();
-                dr["TongCongBD"] = txtTongCong_BD.Text.Trim().Replace(".", "");
-                ///
-                dr["GiaBieuEnd"] = txtGiaBieu_Moi.Text.Trim();
-                dr["DinhMucEnd"] = txtDinhMuc_Moi.Text.Trim();
-                dr["TieuThuEnd"] = txtTieuThu_End.Text.Trim();
-                if (!string.IsNullOrEmpty(txtTienNuoc_End.Text.Trim()))
-                    dr["TienNuocEnd"] = txtChiTietMoi.Text.Trim() + "\n=  " + txtTienNuoc_End.Text.Trim();
-                if (!string.IsNullOrEmpty(txtThueGTGT_End.Text.Trim()))
-                    dr["ThueGTGTEnd"] = txtTienNuoc_End.Text.Trim() + " x 5% \n=  " + txtThueGTGT_End.Text.Trim();
-                if (!string.IsNullOrEmpty(txtPhiBVMT_End.Text.Trim()))
-                    dr["PhiBVMTEnd"] = txtTienNuoc_End.Text.Trim() + " x 10% \n=  " + txtPhiBVMT_End.Text.Trim();
-                if (!string.IsNullOrEmpty(txtTongCong_End.Text.Trim()))
-                    dr["TongCongEnd"] = txtTongCong_End.Text.Trim().Replace(".", "");
-                ///
-                if (txtSH.Text.Trim() != "0")
-                    dr["SH"] = "SH: " + txtSH.Text.Trim();
-                if (txtSX.Text.Trim() != "0")
-                    dr["SX"] = "SX: " + txtSX.Text.Trim();
-                if (txtDV.Text.Trim() != "0")
-                    dr["DV"] = "DV: " + txtDV.Text.Trim();
-                if (txtHCSN.Text.Trim() != "0")
-                    dr["HCSN"] = "HCSN: " + txtHCSN.Text.Trim();
+                if (_ctdchd != null)
+                {
+                    dr["DanhBo"] = _ctdchd.DanhBo.Insert(7, " ").Insert(4, " "); ;
+                    dr["HoTen"] = _ctdchd.HoTen;
+                    dr["DiaChi"] = _ctdchd.DiaChi;
+                    ///
+                    dr["GiaBieuStart"] = _ctdchd.GiaBieu.Value.ToString();
+                    dr["DinhMucStart"] = _ctdchd.DinhMuc.Value.ToString();
+                    dr["TieuThuStart"] = _ctdchd.TieuThu_BD.Value.ToString();
+                    dr["TienNuocStart"] = _ctdchd.ChiTietCu + "\n=  " + _ctdchd.TienNuoc_Start.Value.ToString();
+                    dr["ThueGTGTStart"] = _ctdchd.TienNuoc_Start.Value.ToString() + " x 5% \n=  " + _ctdchd.ThueGTGT_Start.Value.ToString();
+                    dr["PhiBVMTStart"] = _ctdchd.TienNuoc_Start.Value.ToString() + " x 10% \n=  " + _ctdchd.PhiBVMT_Start.Value.ToString();
+                    dr["TongCongStart"] = _ctdchd.TongCong_Start.Value.ToString();
+                    ///
+                    dr["TangGiam"] = _ctdchd.TangGiam;
+                    ///
+                    //dr["GiaBieuBD"] = int.Parse(txtGiaBieu_Moi.Text.Trim()) - int.Parse(txtGiaBieu_Cu.Text.Trim());
+                    dr["DinhMucBD"] = _ctdchd.DinhMuc_BD.Value - _ctdchd.DinhMuc.Value;
+                    dr["TieuThuBD"] = _ctdchd.TieuThu_BD.Value - _ctdchd.TieuThu.Value;
+                    dr["TienNuocBD"] = _ctdchd.TienNuoc_BD.Value.ToString();
+                    dr["ThueGTGTBD"] = _ctdchd.ThueGTGT_BD.Value.ToString();
+                    dr["PhiBVMTBD"] = _ctdchd.PhiBVMT_BD.Value.ToString();
+                    dr["TongCongBD"] = _ctdchd.TongCong_BD.Value.ToString(); ;
+                    ///
+                    dr["GiaBieuEnd"] = _ctdchd.GiaBieu_BD.Value.ToString();
+                    dr["DinhMucEnd"] = _ctdchd.DinhMuc_BD.Value.ToString();
+                    dr["TieuThuEnd"] = _ctdchd.TieuThu_BD.Value.ToString();
+                    //if (!string.IsNullOrEmpty(txtTienNuoc_End.Text.Trim()))
+                    dr["TienNuocEnd"] = _ctdchd.ChiTietMoi + "\n=  " + _ctdchd.TienNuoc_End.Value.ToString();
+                    //if (!string.IsNullOrEmpty(txtThueGTGT_End.Text.Trim()))
+                    dr["ThueGTGTEnd"] = _ctdchd.TienNuoc_End.Value.ToString() + " x 5% \n=  " + _ctdchd.ThueGTGT_End.Value.ToString();
+                    //if (!string.IsNullOrEmpty(txtPhiBVMT_End.Text.Trim()))
+                    dr["PhiBVMTEnd"] = _ctdchd.TienNuoc_End.Value.ToString() + " x 10% \n=  " + _ctdchd.PhiBVMT_End.Value.ToString();
+                    //if (!string.IsNullOrEmpty(txtTongCong_End.Text.Trim()))
+                    dr["TongCongEnd"] = _ctdchd.TongCong_End.Value.ToString();
+                    ///
+                    if (_ctdchd.SH!=null)
+                        dr["SH"] = "SH: " + _ctdchd.SH.Value.ToString();
+                    if (_ctdchd.SX != null)
+                        dr["SX"] = "SX: " + _ctdchd.SX.Value.ToString();
+                    if (_ctdchd.DV != null)
+                        dr["DV"] = "DV: " + _ctdchd.DV.Value.ToString();
+                    if (_ctdchd.HCSN != null)
+                        dr["HCSN"] = "HCSN: " + _ctdchd.HCSN.Value.ToString();
+                }
+                else
+                {
+                    dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " "); ;
+                    dr["HoTen"] = txtHoTen.Text.Trim();
+                    dr["DiaChi"] = txtDiaChi.Text.Trim();
+                    ///
+                    dr["GiaBieuStart"] = txtGiaBieu_Cu.Text.Trim();
+                    dr["DinhMucStart"] = txtDinhMuc_Cu.Text.Trim();
+                    dr["TieuThuStart"] = txtTieuThu_Start.Text.Trim();
+                    dr["TienNuocStart"] = txtChiTietCu.Text.Trim() + "\n=  " + txtTienNuoc_Start.Text.Trim();
+                    dr["ThueGTGTStart"] = txtTienNuoc_Start.Text.Trim() + " x 5% \n=  " + txtThueGTGT_Start.Text.Trim();
+                    dr["PhiBVMTStart"] = txtTienNuoc_Start.Text.Trim() + " x 10% \n=  " + txtPhiBVMT_Start.Text.Trim();
+                    dr["TongCongStart"] = txtTongCong_Start.Text.Trim().Replace(".", "");
+                    ///
+                    dr["TangGiam"] = lbTangGiam.Text;
+                    ///
+                    //dr["GiaBieuBD"] = int.Parse(txtGiaBieu_Moi.Text.Trim()) - int.Parse(txtGiaBieu_Cu.Text.Trim());
+                    dr["DinhMucBD"] = int.Parse(txtDinhMuc_Moi.Text.Trim()) - int.Parse(txtDinhMuc_Cu.Text.Trim());
+                    dr["TieuThuBD"] = txtTieuThu_BD.Text.Trim();
+                    dr["TienNuocBD"] = txtTienNuoc_BD.Text.Trim();
+                    dr["ThueGTGTBD"] = txtThueGTGT_BD.Text.Trim();
+                    dr["PhiBVMTBD"] = txtPhiBVMT_BD.Text.Trim();
+                    dr["TongCongBD"] = txtTongCong_BD.Text.Trim().Replace(".", "");
+                    ///
+                    dr["GiaBieuEnd"] = txtGiaBieu_Moi.Text.Trim();
+                    dr["DinhMucEnd"] = txtDinhMuc_Moi.Text.Trim();
+                    dr["TieuThuEnd"] = txtTieuThu_End.Text.Trim();
+                    if (!string.IsNullOrEmpty(txtTienNuoc_End.Text.Trim()))
+                        dr["TienNuocEnd"] = txtChiTietMoi.Text.Trim() + "\n=  " + txtTienNuoc_End.Text.Trim();
+                    if (!string.IsNullOrEmpty(txtThueGTGT_End.Text.Trim()))
+                        dr["ThueGTGTEnd"] = txtTienNuoc_End.Text.Trim() + " x 5% \n=  " + txtThueGTGT_End.Text.Trim();
+                    if (!string.IsNullOrEmpty(txtPhiBVMT_End.Text.Trim()))
+                        dr["PhiBVMTEnd"] = txtTienNuoc_End.Text.Trim() + " x 10% \n=  " + txtPhiBVMT_End.Text.Trim();
+                    if (!string.IsNullOrEmpty(txtTongCong_End.Text.Trim()))
+                        dr["TongCongEnd"] = txtTongCong_End.Text.Trim().Replace(".", "");
+                    ///
+                    if (txtSH.Text.Trim() != "0")
+                        dr["SH"] = "SH: " + txtSH.Text.Trim();
+                    if (txtSX.Text.Trim() != "0")
+                        dr["SX"] = "SX: " + txtSX.Text.Trim();
+                    if (txtDV.Text.Trim() != "0")
+                        dr["DV"] = "DV: " + txtDV.Text.Trim();
+                    if (txtHCSN.Text.Trim() != "0")
+                        dr["HCSN"] = "HCSN: " + txtHCSN.Text.Trim();
+                }
                 dsBaoCao.Tables["DCHD"].Rows.Add(dr);
-
                 rptChiTietDCHD rpt = new rptChiTietDCHD();
                 rpt.SetDataSource(dsBaoCao);
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
@@ -1004,159 +1057,322 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["DCHD"].NewRow();
 
-                dr["SoPhieu"] = "";
-                dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " "); ;
-                dr["HoTen"] = txtHoTen.Text.Trim();
-                dr["DiaChi"] = txtDiaChi.Text.Trim();
-                dr["SoDon"] = txtMaDonCu.Text.Trim();
-                dr["NgayKy"] = dateNgayKy.Value.ToString("dd/MM/yyyy");
-                dr["KyHD"] = txtKyHD.Text.Trim();
-                dr["SoHD"] = txtSoHD.Text.Trim();
-                ///
-                dr["DieuChinh"] = "";
-                if (txtGiaBieu_Cu.Text.Trim() != txtGiaBieu_Moi.Text.Trim())
-                    dr["DieuChinh"] = "Giá Biểu từ " + txtGiaBieu_Cu.Text.Trim() + " -> " + txtGiaBieu_Moi.Text.Trim();
-                if (txtDinhMuc_Cu.Text.Trim() != txtDinhMuc_Moi.Text.Trim())
-                    if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
-                        dr["DieuChinh"] = "Định Mức từ " + txtDinhMuc_Cu.Text.Trim() + " -> " + txtDinhMuc_Moi.Text.Trim();
-                    else
-                        dr["DieuChinh"] = dr["DieuChinh"] + ", Định Mức từ " + txtDinhMuc_Cu.Text.Trim() + " -> " + txtDinhMuc_Moi.Text.Trim();
-                if (txtTieuThu_Cu.Text.Trim() != txtTieuThu_Moi.Text.Trim())
-                    if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
-                        dr["DieuChinh"] = "Tiêu Thụ từ " + txtTieuThu_Cu.Text.Trim() + " -> " + txtTieuThu_Moi.Text.Trim();
-                    else
-                        dr["DieuChinh"] = dr["DieuChinh"] + ", Tiêu Thụ từ " + txtTieuThu_Cu.Text.Trim() + " -> " + txtTieuThu_Moi.Text.Trim();
-                if (chkDieuChinhGia.Checked == true)
+                if (_ctdchd != null)
                 {
-                    switch (int.Parse(txtGiaBieu_Moi.Text.Trim()))
+                    dr["SoPhieu"] = "_________";
+                    dr["DanhBo"] = _ctdchd.DanhBo.Insert(7, " ").Insert(4, " ");
+                    dr["MLT"] = _ctdchd.MLT.Insert(4, " ").Insert(2, " ");
+                    dr["HoTen"] = _ctdchd.HoTen;
+                    dr["DiaChi"] = _ctdchd.DiaChi;
+                    dr["SoVanBan"] = _ctdchd.SoVB;
+                    dr["NgayVanBan"] = _ctdchd.NgayKy.Value.ToString("dd/MM/yyyy");
+                    dr["KyHD"] = _ctdchd.KyHD;
+                    //dr["SoHD"] = _ctdchd.SoHD;
+                    ///
+                    dr["DieuChinh"] = "";
+                    if (_ctdchd.GiaBieu != _ctdchd.GiaBieu_BD)
+                        dr["DieuChinh"] = "Giá Biểu từ " + _ctdchd.GiaBieu_BD.Value.ToString() + " -> " + _ctdchd.GiaBieu_BD.Value.ToString();
+                    if (_ctdchd.DinhMuc != _ctdchd.DinhMuc_BD)
+                        if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
+                            dr["DieuChinh"] = "Định Mức từ " + _ctdchd.DinhMuc.Value.ToString() + " -> " + _ctdchd.DinhMuc_BD.Value.ToString();
+                        else
+                            dr["DieuChinh"] = dr["DieuChinh"] + ", Định Mức từ " + _ctdchd.DinhMuc.Value.ToString() + " -> " + _ctdchd.DinhMuc_BD.Value.ToString();
+                    if (_ctdchd.TieuThu != _ctdchd.TieuThu_BD)
+                        if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
+                            dr["DieuChinh"] = "Tiêu Thụ từ " + _ctdchd.TieuThu.Value.ToString() + " -> " + _ctdchd.TieuThu_BD.Value.ToString();
+                        else
+                            dr["DieuChinh"] = dr["DieuChinh"] + ", Tiêu Thụ từ " + _ctdchd.TieuThu.Value.ToString() + " -> " + _ctdchd.TieuThu_BD.Value.ToString();
+                    if (_ctdchd.DieuChinhGia == true)
                     {
-                        case 51:
-                        case 52:
-                        case 53:
-                        case 54:
-                        case 59:
-                        case 68:
-                            if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
-                                if (_TieuThu_DieuChinhGia == int.Parse(txtTieuThu_Moi.Text.Trim()))
-                                    dr["DieuChinh"] = _TieuThu_DieuChinhGia + "m3 Áp giá " + (int.Parse(txtGiaDieuChinh.Text.Trim()) - int.Parse(txtGiaDieuChinh.Text.Trim()) * _cGiaNuoc.GiamTienNuoc / 100).ToString();
+                        switch (int.Parse(txtGiaBieu_Moi.Text.Trim()))
+                        {
+                            case 51:
+                            case 52:
+                            case 53:
+                            case 54:
+                            case 59:
+                            case 68:
+                                if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
+                                    if (_TieuThu_DieuChinhGia == _ctdchd.TieuThu_BD.Value)
+                                        dr["DieuChinh"] = _TieuThu_DieuChinhGia + "m3 Áp giá " + (_ctdchd.GiaDieuChinh - _ctdchd.GiaDieuChinh * _cGiaNuoc.GiamTienNuoc / 100).ToString();
+                                    else
+                                        dr["DieuChinh"] = _ctdchd.DinhMuc_BD.Value.ToString() + "m3 Áp giá " + (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * _cGiaNuoc.GiamTienNuoc / 100).ToString() + ", " + _TieuThu_DieuChinhGia + "m3 Áp giá " + (_ctdchd.GiaDieuChinh.Value - _ctdchd.GiaDieuChinh.Value * _cGiaNuoc.GiamTienNuoc / 100).ToString();
                                 else
-                                    dr["DieuChinh"] = txtDinhMuc_Moi.Text.Trim() + "m3 Áp giá " + (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * _cGiaNuoc.GiamTienNuoc / 100).ToString() + ", " + _TieuThu_DieuChinhGia + "m3 Áp giá " + (int.Parse(txtGiaDieuChinh.Text.Trim()) - int.Parse(txtGiaDieuChinh.Text.Trim()) * _cGiaNuoc.GiamTienNuoc / 100).ToString();
-                            else
-                                if (_TieuThu_DieuChinhGia == int.Parse(txtTieuThu_Moi.Text.Trim()))
-                                    dr["DieuChinh"] = dr["DieuChinh"] + ", " + _TieuThu_DieuChinhGia + "m3 Áp giá " + (int.Parse(txtGiaDieuChinh.Text.Trim()) - int.Parse(txtGiaDieuChinh.Text.Trim()) * _cGiaNuoc.GiamTienNuoc / 100).ToString();
+                                    if (_TieuThu_DieuChinhGia == int.Parse(txtTieuThu_Moi.Text.Trim()))
+                                        dr["DieuChinh"] = dr["DieuChinh"] + ", " + _TieuThu_DieuChinhGia + "m3 Áp giá " + (_ctdchd.GiaDieuChinh.Value - _ctdchd.GiaDieuChinh.Value * _cGiaNuoc.GiamTienNuoc / 100).ToString();
+                                    else
+                                        dr["DieuChinh"] = dr["DieuChinh"] + ", " + _ctdchd.DinhMuc_BD.Value.ToString() + "m3 Áp giá " + (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * _cGiaNuoc.GiamTienNuoc / 100).ToString() + ", " + _TieuThu_DieuChinhGia + "m3 Áp giá " + (_ctdchd.GiaDieuChinh.Value - _ctdchd.GiaDieuChinh.Value * _cGiaNuoc.GiamTienNuoc / 100).ToString();
+                                break;
+                            default:
+                                if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
+                                    if (_TieuThu_DieuChinhGia == _ctdchd.TieuThu_BD.Value)
+                                        dr["DieuChinh"] = _TieuThu_DieuChinhGia + "m3 Áp giá " + _ctdchd.GiaDieuChinh.Value.ToString();
+                                    else
+                                        dr["DieuChinh"] = _ctdchd.DinhMuc_BD.Value.ToString() + "m3 Áp giá " + lstGiaNuoc[0].DonGia.Value + ", " + _TieuThu_DieuChinhGia + "m3 Áp giá " + _ctdchd.GiaDieuChinh.Value.ToString();
                                 else
-                                    dr["DieuChinh"] = dr["DieuChinh"] + ", " + txtDinhMuc_Moi.Text.Trim() + "m3 Áp giá " + (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * _cGiaNuoc.GiamTienNuoc / 100).ToString() + ", " + _TieuThu_DieuChinhGia + "m3 Áp giá " + (int.Parse(txtGiaDieuChinh.Text.Trim()) - int.Parse(txtGiaDieuChinh.Text.Trim()) * _cGiaNuoc.GiamTienNuoc / 100).ToString();
-                            break;
-                        default:
-                            if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
-                                if (_TieuThu_DieuChinhGia == int.Parse(txtTieuThu_Moi.Text.Trim()))
-                                    dr["DieuChinh"] = _TieuThu_DieuChinhGia + "m3 Áp giá " + txtGiaDieuChinh.Text.Trim();
-                                else
-                                    dr["DieuChinh"] = txtDinhMuc_Moi.Text.Trim() + "m3 Áp giá " + lstGiaNuoc[0].DonGia.Value + ", " + _TieuThu_DieuChinhGia + "m3 Áp giá " + txtGiaDieuChinh.Text.Trim();
-                            else
-                                if (_TieuThu_DieuChinhGia == int.Parse(txtTieuThu_Moi.Text.Trim()))
-                                    dr["DieuChinh"] = dr["DieuChinh"] + ", " + _TieuThu_DieuChinhGia + "m3 Áp giá " + txtGiaDieuChinh.Text.Trim();
-                                else
-                                    dr["DieuChinh"] = dr["DieuChinh"] + ", " + txtDinhMuc_Moi.Text.Trim() + "m3 Áp giá " + lstGiaNuoc[0].DonGia.Value + ", " + _TieuThu_DieuChinhGia + "m3 Áp giá " + txtGiaDieuChinh.Text.Trim();
-                            break;
+                                    if (_TieuThu_DieuChinhGia == _ctdchd.TieuThu_BD.Value)
+                                        dr["DieuChinh"] = dr["DieuChinh"] + ", " + _TieuThu_DieuChinhGia + "m3 Áp giá " + _ctdchd.GiaDieuChinh.Value.ToString();
+                                    else
+                                        dr["DieuChinh"] = dr["DieuChinh"] + ", " + _ctdchd.DinhMuc_BD.Value.ToString() + "m3 Áp giá " + lstGiaNuoc[0].DonGia.Value + ", " + _TieuThu_DieuChinhGia + "m3 Áp giá " + _ctdchd.GiaDieuChinh.Value.ToString();
+                                break;
+                        }
+
+                        dr["ChiTietCu"] = txtChiTietCu.Text.Trim();
+                        dr["ChiTietMoi"] = txtChiTietMoi.Text.Trim();
                     }
+                    if (_ctdchd.TyLe == true)
+                    {
+                        if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
+                            dr["DieuChinh"] = "Tỷ lệ";
+                        else
+                            dr["DieuChinh"] = dr["DieuChinh"] + ", Tỷ lệ";
+                        if (_ctdchd.SH!=null)
+                            dr["DieuChinh"] = dr["DieuChinh"] + " SH: " + _ctdchd.SH.Value.ToString() + "%";
+                        if (_ctdchd.SX != null)
+                            dr["DieuChinh"] = dr["DieuChinh"] + " SX: " + _ctdchd.SX.Value.ToString() + "%";
+                        if (_ctdchd.DV != null)
+                            dr["DieuChinh"] = dr["DieuChinh"] + " DV: " + _ctdchd.DV.Value.ToString() + "%";
+                        if (_ctdchd.HCSN != null)
+                            dr["DieuChinh"] = dr["DieuChinh"] + " HCSN: " + _ctdchd.HCSN.Value.ToString() + "%";
+                        dr["ChiTietCu"] = _ctdchd.ChiTietCu;
+                        dr["ChiTietMoi"] = _ctdchd.ChiTietMoi;
+                    }
+                    if (_ctdchd.KhuCongNghiep == true)
+                    {
+                        if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
+                            dr["DieuChinh"] = "Sản lượng vượt so với Sản lượng Tiêu Thụ Bình Quân ("+_ctdchd.TyLeKhuCongNghiep.Value+"%)";
+                        else
+                            dr["DieuChinh"] = dr["DieuChinh"] + ", Sản lượng vượt so với Sản lượng Tiêu Thụ Bình Quân (" + _ctdchd.TyLeKhuCongNghiep.Value + "%)";
+                    }
+                    ///
+                    dr["GiaBieuStart"] = txtGiaBieu_Cu.Text.Trim();
+                    dr["GiaBieuEnd"] = txtGiaBieu_Moi.Text.Trim();
+                    dr["DinhMucStart"] = txtDinhMuc_Cu.Text.Trim();
+                    dr["DinhMucEnd"] = txtDinhMuc_Moi.Text.Trim();
+                    dr["TieuThuStart"] = txtTieuThu_Cu.Text.Trim(); ;
+                    if (_ctdchd.TienNuoc_Start.Value == 0)
+                        dr["TienNuocStart"] = "0";
+                    else
+                        dr["TienNuocStart"] = _ctdchd.TienNuoc_Start.Value;
+                    if (_ctdchd.ThueGTGT_Start.Value == 0)
+                        dr["ThueGTGTStart"] = 0;
+                    else
+                        dr["ThueGTGTStart"] = _ctdchd.ThueGTGT_Start.Value;
+                    if (_ctdchd.PhiBVMT_Start.Value == 0)
+                        dr["PhiBVMTStart"] = 0;
+                    else
+                        dr["PhiBVMTStart"] = _ctdchd.PhiBVMT_Start.Value;
+                    if (_ctdchd.TongCong_Start.Value == 0)
+                        dr["TongCongStart"] = 0;
+                    else
+                        dr["TongCongStart"] = _ctdchd.TongCong_Start.Value;
+                    ///
+                    //if (int.Parse(txtTienNuoc_End.Text.Trim().Replace(".", "")) - int.Parse(txtTienNuoc_Start.Text.Trim().Replace(".", "")) == 0)
+                    //    dr["TangGiam"] = "";
+                    //else
+                    //    if (int.Parse(txtTienNuoc_End.Text.Trim().Replace(".", "")) - int.Parse(txtTienNuoc_Start.Text.Trim().Replace(".", "")) > 0)
+                    //        dr["TangGiam"] = "Tăng";
+                    //    else
+                    //        dr["TangGiam"] = "Giảm";
+                    dr["TangGiam"] = _ctdchd.TangGiam;
+                    ///
+                    dr["TieuThuBD"] = _ctdchd.TieuThu_BD.Value - _ctdchd.TieuThu.Value;
+                    if (_ctdchd.TienNuoc_BD.Value == 0)
+                        dr["TienNuocBD"] = 0;
+                    else
+                        dr["TienNuocBD"] = _ctdchd.TienNuoc_BD.Value;
+                    if (_ctdchd.ThueGTGT_BD.Value == 0)
+                        dr["ThueGTGTBD"] = 0;
+                    else
+                        dr["ThueGTGTBD"] = _ctdchd.ThueGTGT_BD.Value;
+                    if (_ctdchd.PhiBVMT_BD.Value == 0)
+                        dr["PhiBVMTBD"] = 0;
+                    else
+                        dr["PhiBVMTBD"] = _ctdchd.PhiBVMT_BD.Value;
+                    if (_ctdchd.TongCong_BD.Value == 0)
+                        dr["TongCongBD"] = 0;
+                    else
+                        dr["TongCongBD"] = _ctdchd.TongCong_BD.Value;
+                    ///
+                    dr["TieuThuEnd"] = _ctdchd.TienNuoc_BD.Value;
+                    if ( _ctdchd.TienNuoc_End.Value == 0)
+                        dr["TienNuocEnd"] = 0;
+                    else
+                        dr["TienNuocEnd"] =  _ctdchd.TienNuoc_End.Value;
+                    if ( _ctdchd.ThueGTGT_End.Value == 0)
+                        dr["ThueGTGTEnd"] = 0;
+                    else
+                        dr["ThueGTGTEnd"] = _ctdchd.ThueGTGT_End.Value;
+                    if ( _ctdchd.PhiBVMT_End.Value == 0)
+                        dr["PhiBVMTEnd"] = 0;
+                    else
+                        dr["PhiBVMTEnd"] = _ctdchd.PhiBVMT_End.Value;
+                    if ( _ctdchd.TongCong_End.Value == 0)
+                        dr["TongCongEnd"] = 0;
+                    else
+                        dr["TongCongEnd"] = _ctdchd.TongCong_End.Value;
 
-                    dr["ChiTietCu"] = txtChiTietCu.Text.Trim();
-                    dr["ChiTietMoi"] = txtChiTietMoi.Text.Trim();
+                    dr["ChucVu"] = _ctdchd.ChucVu;
+                    dr["NguoiKy"] = _ctdchd.NguoiKy;
+
+                    dsBaoCao.Tables["DCHD"].Rows.Add(dr);
+                    rptThongBaoDCHD_ChuKy rpt = new rptThongBaoDCHD_ChuKy();
+                    rpt.SetDataSource(dsBaoCao);
+                    frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                    frm.ShowDialog();
                 }
-                if (chkTyLe.Checked == true)
+                else
                 {
-                    if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
-                        dr["DieuChinh"] = "Tỷ lệ";
+                    dr["SoPhieu"] = "";
+                    dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " ");
+                    dr["MLT"] = txtMLT.Text.Trim().Insert(4, " ").Insert(2, " ");
+                    dr["HoTen"] = txtHoTen.Text.Trim();
+                    dr["DiaChi"] = txtDiaChi.Text.Trim();
+                    dr["SoVanBan"] = txtMaDonCu.Text.Trim();
+                    dr["NgayVanBan"] = dateNgayKy.Value.ToString("dd/MM/yyyy");
+                    dr["KyHD"] = txtKyHD.Text.Trim();
+                    dr["SoHD"] = txtSoHD.Text.Trim();
+                    ///
+                    dr["DieuChinh"] = "";
+                    if (txtGiaBieu_Cu.Text.Trim() != txtGiaBieu_Moi.Text.Trim())
+                        dr["DieuChinh"] = "Giá Biểu từ " + txtGiaBieu_Cu.Text.Trim() + " -> " + txtGiaBieu_Moi.Text.Trim();
+                    if (txtDinhMuc_Cu.Text.Trim() != txtDinhMuc_Moi.Text.Trim())
+                        if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
+                            dr["DieuChinh"] = "Định Mức từ " + txtDinhMuc_Cu.Text.Trim() + " -> " + txtDinhMuc_Moi.Text.Trim();
+                        else
+                            dr["DieuChinh"] = dr["DieuChinh"] + ", Định Mức từ " + txtDinhMuc_Cu.Text.Trim() + " -> " + txtDinhMuc_Moi.Text.Trim();
+                    if (txtTieuThu_Cu.Text.Trim() != txtTieuThu_Moi.Text.Trim())
+                        if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
+                            dr["DieuChinh"] = "Tiêu Thụ từ " + txtTieuThu_Cu.Text.Trim() + " -> " + txtTieuThu_Moi.Text.Trim();
+                        else
+                            dr["DieuChinh"] = dr["DieuChinh"] + ", Tiêu Thụ từ " + txtTieuThu_Cu.Text.Trim() + " -> " + txtTieuThu_Moi.Text.Trim();
+                    if (chkDieuChinhGia.Checked == true)
+                    {
+                        switch (int.Parse(txtGiaBieu_Moi.Text.Trim()))
+                        {
+                            case 51:
+                            case 52:
+                            case 53:
+                            case 54:
+                            case 59:
+                            case 68:
+                                if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
+                                    if (_TieuThu_DieuChinhGia == int.Parse(txtTieuThu_Moi.Text.Trim()))
+                                        dr["DieuChinh"] = _TieuThu_DieuChinhGia + "m3 Áp giá " + (int.Parse(txtGiaDieuChinh.Text.Trim()) - int.Parse(txtGiaDieuChinh.Text.Trim()) * _cGiaNuoc.GiamTienNuoc / 100).ToString();
+                                    else
+                                        dr["DieuChinh"] = txtDinhMuc_Moi.Text.Trim() + "m3 Áp giá " + (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * _cGiaNuoc.GiamTienNuoc / 100).ToString() + ", " + _TieuThu_DieuChinhGia + "m3 Áp giá " + (int.Parse(txtGiaDieuChinh.Text.Trim()) - int.Parse(txtGiaDieuChinh.Text.Trim()) * _cGiaNuoc.GiamTienNuoc / 100).ToString();
+                                else
+                                    if (_TieuThu_DieuChinhGia == int.Parse(txtTieuThu_Moi.Text.Trim()))
+                                        dr["DieuChinh"] = dr["DieuChinh"] + ", " + _TieuThu_DieuChinhGia + "m3 Áp giá " + (int.Parse(txtGiaDieuChinh.Text.Trim()) - int.Parse(txtGiaDieuChinh.Text.Trim()) * _cGiaNuoc.GiamTienNuoc / 100).ToString();
+                                    else
+                                        dr["DieuChinh"] = dr["DieuChinh"] + ", " + txtDinhMuc_Moi.Text.Trim() + "m3 Áp giá " + (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * _cGiaNuoc.GiamTienNuoc / 100).ToString() + ", " + _TieuThu_DieuChinhGia + "m3 Áp giá " + (int.Parse(txtGiaDieuChinh.Text.Trim()) - int.Parse(txtGiaDieuChinh.Text.Trim()) * _cGiaNuoc.GiamTienNuoc / 100).ToString();
+                                break;
+                            default:
+                                if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
+                                    if (_TieuThu_DieuChinhGia == int.Parse(txtTieuThu_Moi.Text.Trim()))
+                                        dr["DieuChinh"] = _TieuThu_DieuChinhGia + "m3 Áp giá " + txtGiaDieuChinh.Text.Trim();
+                                    else
+                                        dr["DieuChinh"] = txtDinhMuc_Moi.Text.Trim() + "m3 Áp giá " + lstGiaNuoc[0].DonGia.Value + ", " + _TieuThu_DieuChinhGia + "m3 Áp giá " + txtGiaDieuChinh.Text.Trim();
+                                else
+                                    if (_TieuThu_DieuChinhGia == int.Parse(txtTieuThu_Moi.Text.Trim()))
+                                        dr["DieuChinh"] = dr["DieuChinh"] + ", " + _TieuThu_DieuChinhGia + "m3 Áp giá " + txtGiaDieuChinh.Text.Trim();
+                                    else
+                                        dr["DieuChinh"] = dr["DieuChinh"] + ", " + txtDinhMuc_Moi.Text.Trim() + "m3 Áp giá " + lstGiaNuoc[0].DonGia.Value + ", " + _TieuThu_DieuChinhGia + "m3 Áp giá " + txtGiaDieuChinh.Text.Trim();
+                                break;
+                        }
+
+                        dr["ChiTietCu"] = txtChiTietCu.Text.Trim();
+                        dr["ChiTietMoi"] = txtChiTietMoi.Text.Trim();
+                    }
+                    if (chkTyLe.Checked == true)
+                    {
+                        if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
+                            dr["DieuChinh"] = "Tỷ lệ";
+                        else
+                            dr["DieuChinh"] = dr["DieuChinh"] + ", Tỷ lệ";
+                        if (txtSH.Text.Trim() != "0")
+                            dr["DieuChinh"] = dr["DieuChinh"] + " SH: " + txtSH.Text.Trim() + "%";
+                        if (txtSX.Text.Trim() != "0")
+                            dr["DieuChinh"] = dr["DieuChinh"] + " SX: " + txtSX.Text.Trim() + "%";
+                        if (txtDV.Text.Trim() != "0")
+                            dr["DieuChinh"] = dr["DieuChinh"] + " DV: " + txtDV.Text.Trim() + "%";
+                        if (txtHCSN.Text.Trim() != "0")
+                            dr["DieuChinh"] = dr["DieuChinh"] + " HCSN: " + txtHCSN.Text.Trim() + "%";
+                        dr["ChiTietCu"] = txtChiTietCu.Text.Trim();
+                        dr["ChiTietMoi"] = txtChiTietMoi.Text.Trim();
+                    }
+                    ///
+                    dr["GiaBieuStart"] = txtGiaBieu_Cu.Text.Trim();
+                    dr["GiaBieuEnd"] = txtGiaBieu_Moi.Text.Trim();
+                    dr["DinhMucStart"] = txtDinhMuc_Cu.Text.Trim();
+                    dr["DinhMucEnd"] = txtDinhMuc_Moi.Text.Trim();
+                    dr["TieuThuStart"] = txtTieuThu_Cu.Text.Trim(); ;
+                    if (txtTienNuoc_Start.Text.Trim() == "0")
+                        dr["TienNuocStart"] = "0";
                     else
-                        dr["DieuChinh"] = dr["DieuChinh"] + ", Tỷ lệ";
-                    if (txtSH.Text.Trim() != "0")
-                        dr["DieuChinh"] = dr["DieuChinh"] + " SH: " + txtSH.Text.Trim() + "%";
-                    if (txtSX.Text.Trim() != "0")
-                        dr["DieuChinh"] = dr["DieuChinh"] + " SX: " + txtSX.Text.Trim() + "%";
-                    if (txtDV.Text.Trim() != "0")
-                        dr["DieuChinh"] = dr["DieuChinh"] + " DV: " + txtDV.Text.Trim() + "%";
-                    if (txtHCSN.Text.Trim() != "0")
-                        dr["DieuChinh"] = dr["DieuChinh"] + " HCSN: " + txtHCSN.Text.Trim() + "%";
-                    dr["ChiTietCu"] = txtChiTietCu.Text.Trim();
-                    dr["ChiTietMoi"] = txtChiTietMoi.Text.Trim();
+                        dr["TienNuocStart"] = txtTienNuoc_Start.Text.Trim();
+                    if (txtThueGTGT_Start.Text.Trim() == "0")
+                        dr["ThueGTGTStart"] = 0;
+                    else
+                        dr["ThueGTGTStart"] = txtThueGTGT_Start.Text.Trim();
+                    if (txtPhiBVMT_Start.Text.Trim() == "0")
+                        dr["PhiBVMTStart"] = 0;
+                    else
+                        dr["PhiBVMTStart"] = txtPhiBVMT_Start.Text.Trim();
+                    if (txtTongCong_Start.Text.Trim() == "0")
+                        dr["TongCongStart"] = 0;
+                    else
+                        dr["TongCongStart"] = txtTongCong_Start.Text.Trim().Replace(".", "");
+                    ///
+                    if (int.Parse(txtTienNuoc_End.Text.Trim().Replace(".", "")) - int.Parse(txtTienNuoc_Start.Text.Trim().Replace(".", "")) == 0)
+                        dr["TangGiam"] = "";
+                    else
+                        if (int.Parse(txtTienNuoc_End.Text.Trim().Replace(".", "")) - int.Parse(txtTienNuoc_Start.Text.Trim().Replace(".", "")) > 0)
+                            dr["TangGiam"] = "Tăng";
+                        else
+                            dr["TangGiam"] = "Giảm";
+                    ///
+                    dr["TieuThuBD"] = int.Parse(txtTieuThu_Moi.Text.Trim().Replace(".", "")) - int.Parse(txtTieuThu_Cu.Text.Trim().Replace(".", ""));
+                    if (txtTienNuoc_BD.Text.Trim() == "0")
+                        dr["TienNuocBD"] = 0;
+                    else
+                        dr["TienNuocBD"] = txtTienNuoc_BD.Text.Trim();
+                    if (txtThueGTGT_BD.Text.Trim() == "0")
+                        dr["ThueGTGTBD"] = 0;
+                    else
+                        dr["ThueGTGTBD"] = txtThueGTGT_BD.Text.Trim();
+                    if (txtPhiBVMT_BD.Text.Trim() == "0")
+                        dr["PhiBVMTBD"] = 0;
+                    else
+                        dr["PhiBVMTBD"] = txtPhiBVMT_BD.Text.Trim();
+                    if (txtTongCong_BD.Text.Trim() == "0")
+                        dr["TongCongBD"] = 0;
+                    else
+                        dr["TongCongBD"] = txtTongCong_BD.Text.Trim().Replace(".", "");
+                    ///
+                    dr["TieuThuEnd"] = txtTieuThu_Moi.Text.Trim();
+                    if (txtTienNuoc_End.Text.Trim() == "0")
+                        dr["TienNuocEnd"] = 0;
+                    else
+                        dr["TienNuocEnd"] = txtTienNuoc_End.Text.Trim();
+                    if (txtThueGTGT_End.Text.Trim() == "0")
+                        dr["ThueGTGTEnd"] = 0;
+                    else
+                        dr["ThueGTGTEnd"] = txtThueGTGT_End.Text.Trim();
+                    if (txtPhiBVMT_End.Text.Trim() == "0")
+                        dr["PhiBVMTEnd"] = 0;
+                    else
+                        dr["PhiBVMTEnd"] = txtPhiBVMT_End.Text.Trim();
+                    if (txtTongCong_End.Text.Trim() == "0")
+                        dr["TongCongEnd"] = 0;
+                    else
+                        dr["TongCongEnd"] = txtTongCong_End.Text.Trim().Replace(".", "");
+                    dsBaoCao.Tables["DCHD"].Rows.Add(dr);
+                    rptThongBaoDCHD rpt = new rptThongBaoDCHD();
+                    rpt.SetDataSource(dsBaoCao);
+                    frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                    frm.ShowDialog();
                 }
-                ///
-                dr["GiaBieuStart"] = txtGiaBieu_Cu.Text.Trim();
-                dr["GiaBieuEnd"] = txtGiaBieu_Moi.Text.Trim();
-                dr["DinhMucStart"] = txtDinhMuc_Cu.Text.Trim();
-                dr["DinhMucEnd"] = txtDinhMuc_Moi.Text.Trim();
-                dr["TieuThuStart"] = txtTieuThu_Cu.Text.Trim(); ;
-                if (txtTienNuoc_Start.Text.Trim() == "0")
-                    dr["TienNuocStart"] = "0";
-                else
-                    dr["TienNuocStart"] = txtTienNuoc_Start.Text.Trim();
-                if (txtThueGTGT_Start.Text.Trim() == "0")
-                    dr["ThueGTGTStart"] = 0;
-                else
-                    dr["ThueGTGTStart"] = txtThueGTGT_Start.Text.Trim();
-                if (txtPhiBVMT_Start.Text.Trim() == "0")
-                    dr["PhiBVMTStart"] = 0;
-                else
-                    dr["PhiBVMTStart"] = txtPhiBVMT_Start.Text.Trim();
-                if (txtTongCong_Start.Text.Trim() == "0")
-                    dr["TongCongStart"] = 0;
-                else
-                    dr["TongCongStart"] = txtTongCong_Start.Text.Trim().Replace(".", "");
-                ///
-                if (int.Parse(txtTienNuoc_End.Text.Trim().Replace(".", "")) - int.Parse(txtTienNuoc_Start.Text.Trim().Replace(".", "")) == 0)
-                    dr["TangGiam"] = "";
-                else
-                    if (int.Parse(txtTienNuoc_End.Text.Trim().Replace(".", "")) - int.Parse(txtTienNuoc_Start.Text.Trim().Replace(".", "")) > 0)
-                        dr["TangGiam"] = "Tăng";
-                    else
-                        dr["TangGiam"] = "Giảm";
-                ///
-                dr["TieuThuBD"] = int.Parse(txtTieuThu_Moi.Text.Trim().Replace(".", "")) - int.Parse(txtTieuThu_Cu.Text.Trim().Replace(".", ""));
-                if (txtTienNuoc_BD.Text.Trim() == "0")
-                    dr["TienNuocBD"] = 0;
-                else
-                    dr["TienNuocBD"] = txtTienNuoc_BD.Text.Trim();
-                if (txtThueGTGT_BD.Text.Trim() == "0")
-                    dr["ThueGTGTBD"] = 0;
-                else
-                    dr["ThueGTGTBD"] = txtThueGTGT_BD.Text.Trim();
-                if (txtPhiBVMT_BD.Text.Trim() == "0")
-                    dr["PhiBVMTBD"] = 0;
-                else
-                    dr["PhiBVMTBD"] = txtPhiBVMT_BD.Text.Trim();
-                if (txtTongCong_BD.Text.Trim() == "0")
-                    dr["TongCongBD"] = 0;
-                else
-                    dr["TongCongBD"] = txtTongCong_BD.Text.Trim().Replace(".", "");
-                ///
-                dr["TieuThuEnd"] = txtTieuThu_Moi.Text.Trim();
-                if (txtTienNuoc_End.Text.Trim() == "0")
-                    dr["TienNuocEnd"] = 0;
-                else
-                    dr["TienNuocEnd"] = txtTienNuoc_End.Text.Trim();
-                if (txtThueGTGT_End.Text.Trim() == "0")
-                    dr["ThueGTGTEnd"] = 0;
-                else
-                    dr["ThueGTGTEnd"] = txtThueGTGT_End.Text.Trim();
-                if (txtPhiBVMT_End.Text.Trim() == "0")
-                    dr["PhiBVMTEnd"] = 0;
-                else
-                    dr["PhiBVMTEnd"] = txtPhiBVMT_End.Text.Trim();
-                if (txtTongCong_End.Text.Trim() == "0")
-                    dr["TongCongEnd"] = 0;
-                else
-                    dr["TongCongEnd"] = txtTongCong_End.Text.Trim().Replace(".", "");
-
-                //dr["ChucVu"] = ctdchd.ChucVu;
-                //dr["NguoiKy"] = ctdchd.NguoiKy;
-
-                dsBaoCao.Tables["DCHD"].Rows.Add(dr);
-
-                rptThongBaoDCHD rpt = new rptThongBaoDCHD();
-                rpt.SetDataSource(dsBaoCao);
-                frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                frm.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -1426,7 +1642,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 else
                     if (chkKhuCongNghiep.Checked)
                     {
-                        TongTienMoi = _cGiaNuoc.TinhTienNuoc_KhuCongNghiep(txtDanhBo.Text.Trim(), int.Parse(txtGiaBieu_Moi.Text.Trim()), int.Parse(txtDinhMuc_Moi.Text.Trim()), int.Parse(txtTieuThu_Moi.Text.Trim()), out ChiTietMoi);
+                        TongTienMoi = _cGiaNuoc.TinhTienNuoc_KhuCongNghiep(txtDanhBo.Text.Trim(), int.Parse(txtGiaBieu_Moi.Text.Trim()), int.Parse(txtDinhMuc_Moi.Text.Trim()), int.Parse(txtTieuThu_Moi.Text.Trim()), out ChiTietMoi, out _TyLeKhuCongNghiep);
                     }
                     else
                     {
@@ -1605,6 +1821,105 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 else
                     txtTongCong_BD.Text = "0";
             }
+        }
+
+        private void btnInPhieu_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_ctdchd != null)
+                {
+                    DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                    DataRow dr = dsBaoCao.Tables["DCHD"].NewRow();
+
+                    dr["SoPhieu"] = _ctdchd.MaCTDCHD.ToString().Insert(_ctdchd.MaCTDCHD.ToString().Length - 2, "-");
+                    dr["DanhBo"] = _ctdchd.DanhBo.Insert(7, " ").Insert(4, " "); ;
+                    dr["HoTen"] = _ctdchd.HoTen;
+                    if (_ctdchd.DCBD.MaDon != null)
+                        dr["SoVanBan"] = _ctdchd.DCBD.MaDon.Value.ToString().Insert(_ctdchd.DCBD.MaDon.Value.ToString().Length - 2, "-");
+                    else
+                        if (_ctdchd.DCBD.MaDonTXL != null)
+                            dr["SoVanBan"] = "TXL" + _ctdchd.DCBD.MaDonTXL.Value.ToString().Insert(_ctdchd.DCBD.MaDonTXL.Value.ToString().Length - 2, "-");
+                        else
+                            if (_ctdchd.DCBD.MaDonTBC != null)
+                                dr["SoVanBan"] = "TBC" + _ctdchd.DCBD.MaDonTBC.Value.ToString().Insert(_ctdchd.DCBD.MaDonTBC.Value.ToString().Length - 2, "-");
+
+                    dr["NgayVanBan"] = _ctdchd.NgayKy.Value.ToString("dd/MM/yyyy");
+                    dr["KyHD"] = _ctdchd.KyHD;
+                    dr["SoHD"] = _ctdchd.SoHD;
+                    ///
+                    dr["TieuThuStart"] = _ctdchd.TieuThu;
+                    if (_ctdchd.TienNuoc_Start == 0)
+                        dr["TienNuocStart"] = "0";
+                    else
+                        dr["TienNuocStart"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TienNuoc_Start);
+                    if (_ctdchd.ThueGTGT_Start == 0)
+                        dr["ThueGTGTStart"] = 0;
+                    else
+                        dr["ThueGTGTStart"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.ThueGTGT_Start);
+                    if (_ctdchd.PhiBVMT_Start == 0)
+                        dr["PhiBVMTStart"] = 0;
+                    else
+                        dr["PhiBVMTStart"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_Start);
+                    if (_ctdchd.TongCong_Start == 0)
+                        dr["TongCongStart"] = 0;
+                    else
+                        dr["TongCongStart"] = _ctdchd.TongCong_Start;
+                    ///
+                    dr["TangGiam"] = _ctdchd.TangGiam;
+                    ///
+                    dr["TieuThuBD"] = _ctdchd.TieuThu_BD - _ctdchd.TieuThu;
+                    if (_ctdchd.TienNuoc_BD == 0)
+                        dr["TienNuocBD"] = 0;
+                    else
+                        dr["TienNuocBD"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TienNuoc_BD);
+                    if (_ctdchd.ThueGTGT_BD == 0)
+                        dr["ThueGTGTBD"] = 0;
+                    else
+                        dr["ThueGTGTBD"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.ThueGTGT_BD);
+                    if (_ctdchd.PhiBVMT_BD == 0)
+                        dr["PhiBVMTBD"] = 0;
+                    else
+                        dr["PhiBVMTBD"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_BD);
+                    if (_ctdchd.TongCong_BD == 0)
+                        dr["TongCongBD"] = 0;
+                    else
+                        dr["TongCongBD"] = _ctdchd.TongCong_BD;
+                    ///
+                    dr["TieuThuEnd"] = _ctdchd.TieuThu_BD;
+                    if (_ctdchd.TienNuoc_End == 0)
+                        dr["TienNuocEnd"] = 0;
+                    else
+                        dr["TienNuocEnd"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TienNuoc_End);
+                    if (_ctdchd.ThueGTGT_End == 0)
+                        dr["ThueGTGTEnd"] = 0;
+                    else
+                        dr["ThueGTGTEnd"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.ThueGTGT_End);
+                    if (_ctdchd.PhiBVMT_End == 0)
+                        dr["PhiBVMTEnd"] = 0;
+                    else
+                        dr["PhiBVMTEnd"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_End);
+                    if (_ctdchd.TongCong_End == 0)
+                        dr["TongCongEnd"] = 0;
+                    else
+                        dr["TongCongEnd"] = _ctdchd.TongCong_End;
+
+                    dr["ChucVu"] = _ctdchd.ChucVu;
+                    dr["NguoiKy"] = _ctdchd.NguoiKy;
+
+                    dsBaoCao.Tables["DCHD"].Rows.Add(dr);
+
+                    rptPhieuDCHD rpt = new rptPhieuDCHD();
+                    rpt.SetDataSource(dsBaoCao);
+                    frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                    frm.Show();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
 

@@ -463,15 +463,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     dr["DanhBo"] = ctdchd.DanhBo.Insert(7, " ").Insert(4, " "); ;
                                     dr["HoTen"] = ctdchd.HoTen;
                                     if (ctdchd.DCBD.MaDon != null)
-                                        dr["SoDon"] = ctdchd.DCBD.MaDon.Value.ToString().Insert(ctdchd.DCBD.MaDon.Value.ToString().Length - 2, "-");
+                                        dr["SoVanBan"] = ctdchd.DCBD.MaDon.Value.ToString().Insert(ctdchd.DCBD.MaDon.Value.ToString().Length - 2, "-");
                                     else
                                         if (ctdchd.DCBD.MaDonTXL != null)
-                                            dr["SoDon"] = "TXL" + ctdchd.DCBD.MaDonTXL.Value.ToString().Insert(ctdchd.DCBD.MaDonTXL.Value.ToString().Length - 2, "-");
+                                            dr["SoVanBan"] = "TXL" + ctdchd.DCBD.MaDonTXL.Value.ToString().Insert(ctdchd.DCBD.MaDonTXL.Value.ToString().Length - 2, "-");
                                         else
                                             if (ctdchd.DCBD.MaDonTBC != null)
-                                                dr["SoDon"] = "TBC" + ctdchd.DCBD.MaDonTBC.Value.ToString().Insert(ctdchd.DCBD.MaDonTBC.Value.ToString().Length - 2, "-");
+                                                dr["SoVanBan"] = "TBC" + ctdchd.DCBD.MaDonTBC.Value.ToString().Insert(ctdchd.DCBD.MaDonTBC.Value.ToString().Length - 2, "-");
 
-                                    dr["NgayKy"] = ctdchd.NgayKy.Value.ToString("dd/MM/yyyy");
+                                    dr["NgayVanBan"] = ctdchd.NgayKy.Value.ToString("dd/MM/yyyy");
                                     dr["KyHD"] = ctdchd.KyHD;
                                     dr["SoHD"] = ctdchd.SoHD;
                                     ///
@@ -973,15 +973,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["DiaChi"] = ctdchd.DiaChi;
 
                                 if (ctdchd.DCBD.MaDon != null)
-                                    dr["SoDon"] = ctdchd.DCBD.MaDon.Value.ToString().Insert(ctdchd.DCBD.MaDon.Value.ToString().Length - 2, "-");
+                                    dr["SoVanBan"] = ctdchd.DCBD.MaDon.Value.ToString().Insert(ctdchd.DCBD.MaDon.Value.ToString().Length - 2, "-");
                                 else
                                     if (ctdchd.DCBD.MaDonTXL != null)
-                                        dr["SoDon"] = "TXL" + ctdchd.DCBD.MaDonTXL.Value.ToString().Insert(ctdchd.DCBD.MaDonTXL.Value.ToString().Length - 2, "-");
+                                        dr["SoVanBan"] = "TXL" + ctdchd.DCBD.MaDonTXL.Value.ToString().Insert(ctdchd.DCBD.MaDonTXL.Value.ToString().Length - 2, "-");
                                     else
                                         if (ctdchd.DCBD.MaDonTBC != null)
-                                            dr["SoDon"] = "TBC" + ctdchd.DCBD.MaDonTBC.Value.ToString().Insert(ctdchd.DCBD.MaDonTBC.Value.ToString().Length - 2, "-");
+                                            dr["SoVanBan"] = "TBC" + ctdchd.DCBD.MaDonTBC.Value.ToString().Insert(ctdchd.DCBD.MaDonTBC.Value.ToString().Length - 2, "-");
 
-                                dr["NgayKy"] = ctdchd.NgayKy.Value.ToString("dd/MM/yyyy");
+                                dr["NgayVanBan"] = ctdchd.NgayKy.Value.ToString("dd/MM/yyyy");
                                 dr["KyHD"] = ctdchd.KyHD;
                                 dr["SoHD"] = ctdchd.SoHD;
                                 ///
@@ -1113,12 +1113,23 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 else
                                     dr["TongCongEnd"] =  ctdchd.TongCong_End;
 
-                                dr["ChucVu"] = ctdchd.ChucVu;
-                                dr["NguoiKy"] = ctdchd.NguoiKy;
+                                if (ctdchd.KhuCongNghiep == true)
+                                {
+                                    dr["ChucVu"] = ctdchd.ChucVu;
+                                    dr["NguoiKy"] = ctdchd.NguoiKy;
+                                }
 
                                 dsBaoCao.Tables["DCHD"].Rows.Add(dr);
 
-                                rptThongBaoDCHD rpt = new rptThongBaoDCHD();
+                                ReportDocument rpt;
+                                if (ctdchd.KhuCongNghiep == true)
+                                {
+                                    rpt = new rptThongBaoDCHD_ChuKy();                                    
+                                }
+                                else
+                                {
+                                    rpt = new rptThongBaoDCHD();
+                                }
                                 rpt.SetDataSource(dsBaoCao);
 
                                 printDialog.AllowSomePages = true;

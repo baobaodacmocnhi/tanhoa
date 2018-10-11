@@ -654,6 +654,7 @@
     <Type Name="DCBD_ChiTietHoaDon">
       <Column Name="MaCTDCHD" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="DanhBo" Type="System.String" DbType="NVarChar(11)" CanBeNull="true" />
+      <Column Name="MLT" Type="System.String" DbType="Char(10)" CanBeNull="true" />
       <Column Name="HoTen" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="SoVB" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -693,6 +694,7 @@
       <Column Name="DV" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="HCSN" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="KhuCongNghiep" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TyLeKhuCongNghiep" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="TienNuoc_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ThueGTGT_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="PhiBVMT_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
