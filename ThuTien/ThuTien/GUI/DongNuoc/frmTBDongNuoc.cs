@@ -16,6 +16,7 @@ using ThuTien.GUI.BaoCao;
 using System.Globalization;
 using ThuTien.DAL;
 using CrystalDecisions.CrystalReports.Engine;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace ThuTien.GUI.DongNuoc
 {
@@ -26,6 +27,8 @@ namespace ThuTien.GUI.DongNuoc
         CDongNuoc _cDongNuoc = new CDongNuoc();
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CDocSo _cDocSo = new CDocSo();
+
+        DataRowView _selectedRow=null;
 
         public frmTBDongNuoc()
         {
@@ -192,7 +195,7 @@ namespace ThuTien.GUI.DongNuoc
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
             {
-                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (MessageBox.Show("Bạn có chắc chắn xóa Toàn Bộ Lệnh?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     try
                     {
@@ -500,6 +503,66 @@ namespace ThuTien.GUI.DongNuoc
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();
         }
+
+        private void gridViewDN_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
+        {
+            if (gridViewDN.RowCount > 0&&e.RowHandle>=0)
+            {
+                if (bool.Parse(gridViewDN.GetRowCellValue(e.RowHandle, "ThemHoaDon").ToString()) == true)
+                {
+                    e.Appearance.BackColor = Color.Yellow;
+                }
+                else
+                {
+                    //e.Appearance.BackColor = Color.LightGreen;
+                }
+
+                //Override any other formatting
+                e.HighPriority = true;      
+            }
+        }
+
+        private void gridViewCTDN_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.HitTest == DevExpress.XtraGrid.Views.Grid.ViewInfo.GridHitTest.RowCell)
+            {
+                e.Allow = false;
+                popupMenu1.ShowPopup(gridControl.PointToScreen(e.Point));
+            }
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (_selectedRow != null)
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+                {
+                    if (MessageBox.Show("Bạn có chắc chắn xóa Hóa Đơn " + _selectedRow["Ky"].ToString()+"?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        try
+                        {
+                            TT_CTDongNuoc en = _cDongNuoc.getCTDongNuoc(decimal.Parse(_selectedRow["MaDN"].ToString()), int.Parse(_selectedRow["MaHD"].ToString()));
+                            if(en!=null)
+                                if(_cDongNuoc.XoaCT(en)==true)
+                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void gridViewCTDN_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            GridView gridView = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
+            _selectedRow = (DataRowView)gridView.GetRow(gridView.GetSelectedRows()[0]);
+        }
+
 
     }
 }

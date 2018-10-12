@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.gridViewCTDN = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.SoHoaDon = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -37,6 +38,8 @@
             this.ThueGTGT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.PhiBVMT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TongCong = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridViewDN = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.In = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -49,6 +52,7 @@
             this.CreateDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CreateBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaNV_DongNuoc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnXem = new System.Windows.Forms.Button();
             this.dateDen = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
@@ -77,11 +81,20 @@
             this.chkCoTenNguoiKy = new System.Windows.Forms.CheckBox();
             this.radA5 = new System.Windows.Forms.RadioButton();
             this.radA4 = new System.Windows.Forms.RadioButton();
+            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             this.groupBox_ThemDN.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // gridViewCTDN
@@ -93,11 +106,15 @@
             this.GiaBan,
             this.ThueGTGT,
             this.PhiBVMT,
-            this.TongCong});
+            this.TongCong,
+            this.gridColumn2,
+            this.gridColumn3});
             this.gridViewCTDN.GridControl = this.gridControl;
             this.gridViewCTDN.Name = "gridViewCTDN";
             this.gridViewCTDN.OptionsView.ColumnAutoWidth = false;
             this.gridViewCTDN.OptionsView.ShowGroupPanel = false;
+            this.gridViewCTDN.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewCTDN_RowCellClick);
+            this.gridViewCTDN.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.gridViewCTDN_PopupMenuShowing);
             this.gridViewCTDN.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridViewCTDN_CustomColumnDisplayText);
             // 
             // SoHoaDon
@@ -157,6 +174,18 @@
             this.TongCong.Visible = true;
             this.TongCong.VisibleIndex = 6;
             // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "MaDN";
+            this.gridColumn2.FieldName = "MaDN";
+            this.gridColumn2.Name = "gridColumn2";
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "MaHD";
+            this.gridColumn3.FieldName = "MaHD";
+            this.gridColumn3.Name = "gridColumn3";
+            // 
             // gridControl
             // 
             gridLevelNode1.LevelTemplate = this.gridViewCTDN;
@@ -168,7 +197,7 @@
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gridControl.Size = new System.Drawing.Size(816, 590);
+            this.gridControl.Size = new System.Drawing.Size(728, 590);
             this.gridControl.TabIndex = 25;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewDN,
@@ -185,7 +214,8 @@
             this.MLT,
             this.CreateDate,
             this.CreateBy,
-            this.MaNV_DongNuoc});
+            this.MaNV_DongNuoc,
+            this.gridColumn1});
             this.gridViewDN.GridControl = this.gridControl;
             this.gridViewDN.IndicatorWidth = 41;
             this.gridViewDN.Name = "gridViewDN";
@@ -193,6 +223,7 @@
             this.gridViewDN.OptionsView.ColumnAutoWidth = false;
             this.gridViewDN.OptionsView.ShowGroupPanel = false;
             this.gridViewDN.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridViewDN_CustomDrawRowIndicator);
+            this.gridViewDN.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridViewDN_RowStyle);
             this.gridViewDN.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridViewDN_CustomColumnDisplayText);
             // 
             // In
@@ -276,6 +307,12 @@
             this.MaNV_DongNuoc.Caption = "MaNV_DongNuoc";
             this.MaNV_DongNuoc.FieldName = "MaNV_DongNuoc";
             this.MaNV_DongNuoc.Name = "MaNV_DongNuoc";
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "ThemHoaDon";
+            this.gridColumn1.FieldName = "ThemHoaDon";
+            this.gridColumn1.Name = "gridColumn1";
             // 
             // btnXem
             // 
@@ -548,6 +585,59 @@
             this.radA4.Text = "A4";
             this.radA4.UseVisualStyleBackColor = true;
             // 
+            // popupMenu1
+            // 
+            this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
+            this.popupMenu1.Manager = this.barManager1;
+            this.popupMenu1.Name = "popupMenu1";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Xóa";
+            this.barButtonItem1.Id = 0;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // barManager1
+            // 
+            this.barManager1.DockControls.Add(this.barDockControlTop);
+            this.barManager1.DockControls.Add(this.barDockControlBottom);
+            this.barManager1.DockControls.Add(this.barDockControlLeft);
+            this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.Form = this;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.barButtonItem1});
+            this.barManager1.MaxItemId = 1;
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(1286, 0);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 666);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1286, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 666);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(1286, 0);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 666);
+            // 
             // frmTBDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -578,6 +668,10 @@
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.txtSoHoaDon);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.barDockControlLeft);
+            this.Controls.Add(this.barDockControlRight);
+            this.Controls.Add(this.barDockControlBottom);
+            this.Controls.Add(this.barDockControlTop);
             this.Name = "frmTBDongNuoc";
             this.Text = "Lập Thông Báo Đóng Nước";
             this.Load += new System.EventHandler(this.frmLenhDongNuoc_Load);
@@ -587,6 +681,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             this.groupBox_ThemDN.ResumeLayout(false);
             this.groupBox_ThemDN.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -642,6 +738,16 @@
         private System.Windows.Forms.CheckBox chkCoTenNguoiKy;
         private System.Windows.Forms.RadioButton radA5;
         private System.Windows.Forms.RadioButton radA4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraBars.PopupMenu popupMenu1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarManager barManager1;
+        private DevExpress.XtraBars.BarDockControl barDockControlTop;
+        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
 
     }
 }

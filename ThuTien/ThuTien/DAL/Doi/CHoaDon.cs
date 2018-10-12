@@ -6613,10 +6613,10 @@ namespace ThuTien.DAL.Doi
                         + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,MaNV=@MaNV_HanhThu,HanhThu=(select HoTen from TT_NguoiDung where MaND=@MaNV_HanhThu)"
                         + " from HOADON"
                         + " where MaNV_HanhThu=@MaNV_HanhThu"
-                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20 and DANHBA in"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null) and DANHBA in"
                         + " (select DANHBA from HOADON"
                         + " where MaNV_HanhThu=@MaNV_HanhThu"
-                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
                         + " group by DANHBA"
                         + " having COUNT(*)>=" + SoKy + ")"
                         + " order by MLT,Ky asc";
@@ -6638,10 +6638,10 @@ namespace ThuTien.DAL.Doi
                         + " MaNV=@MaNV_HanhThu,HanhThu=(select HoTen from TT_NguoiDung where MaND=@MaNV_HanhThu),GiaBieu=GB"
                         + " from HOADON"
                         + " where MaNV_HanhThu=@MaNV_HanhThu"
-                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20 and DANHBA in"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and DANHBA in"
                         + " (select DANHBA from HOADON"
                         + " where MaNV_HanhThu=@MaNV_HanhThu"
-                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT=@Dot and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
                         + " group by DANHBA"
                         + " having COUNT(*)>=" + SoKy + ")"
                         + " order by MLT,Ky asc";
@@ -6665,10 +6665,10 @@ namespace ThuTien.DAL.Doi
                         + " MaNV=@MaNV_HanhThu,HanhThu=(select HoTen from TT_NguoiDung where MaND=@MaNV_HanhThu),GiaBieu=GB"
                         + " from HOADON"
                         + " where MaNV_HanhThu=@MaNV_HanhThu"
-                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20 and DANHBA in"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and DANHBA in"
                         + " (select DANHBA from HOADON"
                         + " where MaNV_HanhThu=@MaNV_HanhThu"
-                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@ToDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and GB>=11 and GB<=20"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@ToDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
                         + " group by DANHBA"
                         + " having COUNT(*)>=" + SoKy + ")"
                         + " order by MLT,Ky asc";
@@ -6999,6 +6999,33 @@ namespace ThuTien.DAL.Doi
             return ExecuteQuery_DataTable(sql);
         }
 
+        public DataTable GetDSTonDenKy_To(int MaTo, int Nam, int Ky, int SoKy)
+        {
+            string sql = "declare @Nam int;"
+                        + " declare @Ky int;"
+                        + " declare @TuCuonGCS int;"
+                        + " declare @DenCuonGCS int;"
+                        + " set @Nam=" + Nam + ";"
+                        + " set @Ky=" + Ky + ";"
+                        + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                        + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
+                        + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To',GiaBieu=GB"
+                        + " from HOADON hd"
+                        + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
+                        + " left join TT_To tto on tto.MaTo=nd.MaTo"
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null) and DANHBA in"
+                        + " (select DANHBA from HOADON"
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
+                        + " group by DANHBA"
+                        + " having COUNT(*)>=" + SoKy + ")"
+                        + " order by MLT,Ky asc";
+            return ExecuteQuery_DataTable(sql);
+        }
+
         public DataTable GetDSTonDenKy_To(int MaTo, int Nam, int Ky, int FromDot, int ToDot, int SoKy)
         {
             string sql = "declare @Nam int;"
@@ -7024,6 +7051,35 @@ namespace ThuTien.DAL.Doi
                         + " (select DANHBA from HOADON"
                         + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
+                        + " group by DANHBA"
+                        + " having COUNT(*)>=" + SoKy + ")"
+                        + " order by MLT,Ky asc";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetDSTonDenKyDenNgay_To(int MaTo, int Nam, int Ky, DateTime NgayGiaiTrach, int SoKy)
+        {
+            string sql = " declare @Nam int;"
+                        + " declare @Ky int;"
+                        + " declare @NgayGiaiTrach date;"
+                        + " declare @TuCuonGCS int;"
+                        + " declare @DenCuonGCS int;"
+                        + " set @Nam=" + Nam + ";"
+                        + " set @Ky=" + Ky + ";"
+                        + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                        + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                        + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
+                        + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To'"
+                        + " from HOADON hd"
+                        + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
+                        + " left join TT_To tto on tto.MaTo=nd.MaTo"
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach) and DANHBA in"
+                        + " (select DANHBA from HOADON"
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach)"
                         + " group by DANHBA"
                         + " having COUNT(*)>=" + SoKy + ")"
                         + " order by MLT,Ky asc";
@@ -7088,6 +7144,35 @@ namespace ThuTien.DAL.Doi
                         + " (select DANHBA from HOADON"
                         + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
                         + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach)"
+                        + " group by DANHBA"
+                        + " having COUNT(*)>=" + SoKy + ")"
+                        + " order by MLT,Ky asc";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetDSTonTrongKyDenNgay_To(int MaTo, int Nam, int Ky, DateTime NgayGiaiTrach, int SoKy)
+        {
+            string sql = "declare @Nam int;"
+                        + " declare @Ky int;"
+                        + " declare @NgayGiaiTrach date;"
+                        + " declare @TuCuonGCS int;"
+                        + " declare @DenCuonGCS int;"
+                        + " set @Nam=" + Nam + ";"
+                        + " set @Ky=" + Ky + ";"
+                        + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                        + " set @TuCuonGCS=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " set @DenCuonGCS=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")"
+                        + " select ID_HOADON as MaHD,SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
+                        + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
+                        + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,CODE,nd.HoTen as HanhThu,tto.TenTo as 'To',GiaBieu=GB"
+                        + " from HOADON hd"
+                        + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
+                        + " left join TT_To tto on tto.MaTo=nd.MaTo"
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach) and DANHBA in"
+                        + " (select DANHBA from HOADON"
+                        + " where MAY>=@TuCuonGCS and MAY<=@DenCuonGCS"
+                        + " and NAM=@Nam and KY=@Ky and (KhoaTienDu=1 or NGAYGIAITRACH is null or CAST(NgayGiaiTrach as date)>@NgayGiaiTrach)"
                         + " group by DANHBA"
                         + " having COUNT(*)>=" + SoKy + ")"
                         + " order by MLT,Ky asc";

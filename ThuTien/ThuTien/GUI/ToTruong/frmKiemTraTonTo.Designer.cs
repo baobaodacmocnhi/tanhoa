@@ -111,6 +111,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.cmbFromDot = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnLapTBDongNuoc = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDCoQuan)).BeginInit();
             this.tabCoQuan.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -930,11 +931,22 @@
             this.label7.TabIndex = 96;
             this.label7.Text = "Từ Đợt:";
             // 
+            // btnLapTBDongNuoc
+            // 
+            this.btnLapTBDongNuoc.Location = new System.Drawing.Point(1185, 82);
+            this.btnLapTBDongNuoc.Name = "btnLapTBDongNuoc";
+            this.btnLapTBDongNuoc.Size = new System.Drawing.Size(110, 23);
+            this.btnLapTBDongNuoc.TabIndex = 100;
+            this.btnLapTBDongNuoc.Text = "Lập TB Đóng Nước";
+            this.btnLapTBDongNuoc.UseVisualStyleBackColor = true;
+            this.btnLapTBDongNuoc.Click += new System.EventHandler(this.btnLapTBDongNuoc_Click);
+            // 
             // frmKiemTraTonTo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1328, 476);
+            this.Controls.Add(this.btnLapTBDongNuoc);
             this.Controls.Add(this.cmbToDot);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.cmbFromDot);
@@ -1050,5 +1062,6 @@
         private System.Windows.Forms.TextBox txtTongHDTonThucTe_CQ;
         private System.Windows.Forms.TextBox txtTongCongTonThucTe_TG;
         private System.Windows.Forms.TextBox txtTongHDTonThucTe_TG;
+        private System.Windows.Forms.Button btnLapTBDongNuoc;
     }
 }

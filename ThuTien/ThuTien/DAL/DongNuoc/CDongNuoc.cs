@@ -40,9 +40,37 @@ namespace ThuTien.DAL.DongNuoc
             }
             catch (Exception ex)
             {
-                _db = new dbThuTienDataContext();
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool ThemDN(TT_DongNuoc dongnuoc,int CreateBy)
+        {
+            try
+            {
+                if (_db.TT_DongNuocs.Count() > 0)
+                {
+                    string ID = "MaDN";
+                    string Table = "TT_DongNuoc";
+                    decimal MaDN = _db.ExecuteQuery<decimal>("declare @Ma int " +
+                        "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                        "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                    //decimal MaCHDB = db.CHDBs.Max(itemCHDB => itemCHDB.MaCHDB);
+                    dongnuoc.MaDN = getMaxNextIDTable(MaDN);
+                }
+                else
+                    dongnuoc.MaDN = decimal.Parse("1" + DateTime.Now.ToString("yy"));
+                dongnuoc.CreateDate = DateTime.Now;
+                dongnuoc.CreateBy = CreateBy;
+                _db.TT_DongNuocs.InsertOnSubmit(dongnuoc);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
             }
         }
 
@@ -57,9 +85,23 @@ namespace ThuTien.DAL.DongNuoc
             }
             catch (Exception ex)
             {
-                _db = new dbThuTienDataContext();
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool XoaCT(TT_CTDongNuoc en)
+        {
+            try
+            {
+                _db.TT_CTDongNuocs.DeleteOnSubmit(en);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
             }
         }
 
@@ -79,9 +121,8 @@ namespace ThuTien.DAL.DongNuoc
             }
             catch (Exception ex)
             {
-                _db = new dbThuTienDataContext();
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
@@ -96,9 +137,8 @@ namespace ThuTien.DAL.DongNuoc
             }
             catch (Exception ex)
             {
-                _db = new dbThuTienDataContext();
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
@@ -191,6 +231,7 @@ namespace ThuTien.DAL.DongNuoc
                                 TongCong = itemDN.TT_CTDongNuocs.Sum(item => item.TongCong),
                                 itemDN.MLT,
                                 itemDN.CreateBy,
+                                itemDN.ThemHoaDon,
                                 HanhThu=itemtableND1.HoTen,
                                 //NgayGiaiTrach = itemDN.TT_CTDongNuocs.FirstOrDefault().HOADON.NGAYGIAITRACH,
                                 NgayGiaiTrach = _db.HOADONs.SingleOrDefault(itemHD=>itemHD.SOHOADON == itemDN.TT_CTDongNuocs.FirstOrDefault().SoHoaDon).NGAYGIAITRACH,
@@ -212,6 +253,7 @@ namespace ThuTien.DAL.DongNuoc
                             select new
                             {
                                 itemCTDN.MaDN,
+                                itemCTDN.MaHD,
                                 itemCTDN.SoHoaDon,
                                 itemCTDN.Ky,
                                 itemCTDN.TieuThu,
@@ -740,6 +782,16 @@ namespace ThuTien.DAL.DongNuoc
         public TT_DongNuoc GetDongNuocByMaDN(decimal MaDN)
         {
             return _db.TT_DongNuocs.SingleOrDefault(item => item.MaDN == MaDN);
+        }
+
+        public TT_DongNuoc GetDongNuocBySoHoaDon(string SoHoaDon)
+        {
+            return _db.TT_CTDongNuocs.SingleOrDefault(item => item.SoHoaDon == SoHoaDon && item.TT_DongNuoc.Huy==false).TT_DongNuoc;
+        }
+
+        public TT_CTDongNuoc getCTDongNuoc(decimal MaDN, int MaHD)
+        {
+            return _db.TT_CTDongNuocs.SingleOrDefault(item => item.MaDN == MaDN && item.MaHD == MaHD);
         }
 
         public TT_KQDongNuoc GetKQDongNuocByMaKQDN(int MaKQDN)

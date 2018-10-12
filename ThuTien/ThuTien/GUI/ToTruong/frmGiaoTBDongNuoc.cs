@@ -673,7 +673,7 @@ namespace ThuTien.GUI.ToTruong
                             TT_DongNuoc dn = _cDongNuoc.GetDongNuocByMaDN(decimal.Parse(item["MaDN"].ToString()));
                             dn.CreateBy_Old = dn.CreateBy;
                             dn.CreateBy = ((TT_NguoiDung)cmbNhanVien.SelectedItem).MaND;
-                            dn.CreateDate_New = DateTime.Now;
+                            dn.CreateDate_MaNV_DongNuoc = DateTime.Now;
                             _cDongNuoc.SuaDN(dn);
                         }
                 }
@@ -701,6 +701,24 @@ namespace ThuTien.GUI.ToTruong
             cmbNhanVienGiao.DataSource = _cNguoiDung.GetDSDongNuocByMaTo(((TT_To)cmbTo.SelectedItem).MaTo);
             cmbNhanVienGiao.DisplayMember = "HoTen";
             cmbNhanVienGiao.ValueMember = "MaND";
+        }
+
+        private void gridViewDN_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
+        {
+            if (gridViewDN.RowCount > 0)
+            {
+                if (bool.Parse(gridViewDN.GetRowCellValue(e.RowHandle, "ThemHoaDon").ToString()) == true)
+                {
+                    e.Appearance.BackColor = Color.Yellow;
+                }
+                else
+                {
+                    //e.Appearance.BackColor = Color.LightGreen;
+                }
+
+                //Override any other formatting
+                e.HighPriority = true;
+            }
         }
 
     }
