@@ -45,6 +45,8 @@
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtNiemChi = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.txtGhiChu = new System.Windows.Forms.TextBox();
             this.txtMucDichSuDung = new System.Windows.Forms.TextBox();
@@ -91,8 +93,6 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.txtMaDonMoi = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.txtNiemChi = new System.Windows.Forms.TextBox();
-            this.label25 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSNhapBamChi)).BeginInit();
@@ -275,6 +275,22 @@
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kết Quả";
+            // 
+            // txtNiemChi
+            // 
+            this.txtNiemChi.Location = new System.Drawing.Point(305, 66);
+            this.txtNiemChi.Name = "txtNiemChi";
+            this.txtNiemChi.Size = new System.Drawing.Size(100, 22);
+            this.txtNiemChi.TabIndex = 33;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(237, 69);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(62, 16);
+            this.label25.TabIndex = 32;
+            this.label25.Text = "Niêm Chì";
             // 
             // label23
             // 
@@ -727,22 +743,6 @@
             this.label24.Size = new System.Drawing.Size(92, 16);
             this.label24.TabIndex = 8;
             this.label24.Text = "Mã Đơn(New):";
-            // 
-            // txtNiemChi
-            // 
-            this.txtNiemChi.Location = new System.Drawing.Point(305, 66);
-            this.txtNiemChi.Name = "txtNiemChi";
-            this.txtNiemChi.Size = new System.Drawing.Size(50, 22);
-            this.txtNiemChi.TabIndex = 33;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(237, 69);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(62, 16);
-            this.label25.TabIndex = 32;
-            this.label25.Text = "Niêm Chì";
             // 
             // frmBamChi
             // 

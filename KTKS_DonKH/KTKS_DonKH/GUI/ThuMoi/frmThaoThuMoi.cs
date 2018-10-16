@@ -515,6 +515,9 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 else
                     if (radCDDM.Checked == true)
                         rpt = new rptThuMoiChuyenDe();
+                    else
+                        if (radCDDM.Checked == true)
+                            rpt = new rptThuMoiChuyenDe_Rong();
                 rpt.SetDataSource(dsBaoCao);
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.Show();

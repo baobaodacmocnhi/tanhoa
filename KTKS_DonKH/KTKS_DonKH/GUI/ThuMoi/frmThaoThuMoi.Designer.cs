@@ -69,6 +69,7 @@
             this.radCDDM = new System.Windows.Forms.RadioButton();
             this.txtSoPhieu = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.radRong = new System.Windows.Forms.RadioButton();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSThu)).BeginInit();
@@ -93,7 +94,7 @@
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(674, 185);
+            this.btnIn.Location = new System.Drawing.Point(674, 213);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(75, 25);
             this.btnIn.TabIndex = 127;
@@ -447,12 +448,24 @@
             this.label9.TabIndex = 133;
             this.label9.Text = "Mã Thư";
             // 
+            // radRong
+            // 
+            this.radRong.AutoSize = true;
+            this.radRong.Location = new System.Drawing.Point(674, 185);
+            this.radRong.Name = "radRong";
+            this.radRong.Size = new System.Drawing.Size(59, 20);
+            this.radRong.TabIndex = 135;
+            this.radRong.TabStop = true;
+            this.radRong.Text = "Rỗng";
+            this.radRong.UseVisualStyleBackColor = true;
+            // 
             // frmThaoThuMoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(853, 396);
+            this.Controls.Add(this.radRong);
             this.Controls.Add(this.txtSoPhieu);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.radCDDM);
@@ -525,5 +538,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn VaoLuc;
         private System.Windows.Forms.TextBox txtSoPhieu;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.RadioButton radRong;
     }
 }
