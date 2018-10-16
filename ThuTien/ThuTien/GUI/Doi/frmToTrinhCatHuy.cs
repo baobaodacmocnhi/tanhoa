@@ -293,6 +293,8 @@ namespace ThuTien.GUI.Doi
                     dr["TongCong"] = TongCongSo;
                     dr["TieuThu"] = TieuThu;
                     dr["GhiChu"] = item.Cells["GhiChu"].Value;
+                    dr["ChucVu"] = CNguoiKy.getChucVu();
+                    dr["NguoiKy"] = CNguoiKy.getNguoiKy();
                     ds.Tables["ToTrinhCatHuy"].Rows.Add(dr);
                 }
             else
@@ -315,6 +317,8 @@ namespace ThuTien.GUI.Doi
                     dr["TongCong"] = item.Cells["TongCong"].Value;
                     dr["TieuThu"] = item.Cells["TieuThu"].Value;
                     dr["GhiChu"] = item.Cells["GhiChu"].Value;
+                    dr["ChucVu"] = CNguoiKy.getChucVu();
+                    dr["NguoiKy"] = CNguoiKy.getNguoiKy();
                     ds.Tables["ToTrinhCatHuy"].Rows.Add(dr);
                 }
 

@@ -38,6 +38,8 @@
             this.PhiBVMT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TongCong = new DevExpress.XtraGrid.Columns.GridColumn();
             this.NgayGiaiTrach = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridViewDN = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.In = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -54,7 +56,7 @@
             this.TinhTrang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CreateBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaNV_DongNuoc = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ThemHoaDon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.cmbNhanVienLap = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -87,8 +89,6 @@
             this.cmbToCapNhat = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbTo = new System.Windows.Forms.ComboBox();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -182,6 +182,18 @@
             this.NgayGiaiTrach.VisibleIndex = 7;
             this.NgayGiaiTrach.Width = 100;
             // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "MaDN";
+            this.gridColumn4.FieldName = "MaDN";
+            this.gridColumn4.Name = "gridColumn4";
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "MaHD";
+            this.gridColumn3.FieldName = "MaHD";
+            this.gridColumn3.Name = "gridColumn3";
+            // 
             // gridControl
             // 
             gridLevelNode1.LevelTemplate = this.gridViewCTDN;
@@ -216,7 +228,7 @@
             this.TinhTrang,
             this.CreateBy,
             this.MaNV_DongNuoc,
-            this.gridColumn2});
+            this.ThemHoaDon});
             this.gridViewDN.GridControl = this.gridControl;
             this.gridViewDN.IndicatorWidth = 41;
             this.gridViewDN.Name = "gridViewDN";
@@ -342,11 +354,11 @@
             this.MaNV_DongNuoc.FieldName = "MaNV_DongNuoc";
             this.MaNV_DongNuoc.Name = "MaNV_DongNuoc";
             // 
-            // gridColumn2
+            // ThemHoaDon
             // 
-            this.gridColumn2.Caption = "ThemDongNuoc";
-            this.gridColumn2.FieldName = "ThemDongNuoc";
-            this.gridColumn2.Name = "gridColumn2";
+            this.ThemHoaDon.Caption = "ThemHoaDon";
+            this.ThemHoaDon.FieldName = "ThemHoaDon";
+            this.ThemHoaDon.Name = "ThemHoaDon";
             // 
             // repositoryItemCheckEdit1
             // 
@@ -659,18 +671,6 @@
             this.cmbTo.Visible = false;
             this.cmbTo.SelectedIndexChanged += new System.EventHandler(this.cmbTo_SelectedIndexChanged_1);
             // 
-            // gridColumn3
-            // 
-            this.gridColumn3.Caption = "MaHD";
-            this.gridColumn3.FieldName = "MaHD";
-            this.gridColumn3.Name = "gridColumn3";
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.Caption = "MaDN";
-            this.gridColumn4.FieldName = "MaDN";
-            this.gridColumn4.Name = "gridColumn4";
-            // 
             // frmGiaoTBDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -777,7 +777,7 @@
         private System.Windows.Forms.ComboBox cmbToCapNhat;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cmbTo;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn ThemHoaDon;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
     }

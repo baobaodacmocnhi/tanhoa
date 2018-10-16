@@ -416,7 +416,8 @@ namespace ThuTien.GUI.ToTruong
                         }
 
                         DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
-                        dr["MaDN"] = item["MaDN"].ToString().Insert(item["MaDN"].ToString().Length - 2, "-"); ;
+                        dr["MaDN"] = item["MaDN"].ToString().Insert(item["MaDN"].ToString().Length - 2, "-");
+                        dr["ThemHoaDon"] = item["ThemHoaDon"];
                         dr["HoTen"] = item["HoTen"];
                         dr["DiaChi"] = item["DiaChi"];
                         dr["DienThoai"] = _cDocSo.GetDienThoai(item["DanhBo"].ToString());
@@ -438,7 +439,7 @@ namespace ThuTien.GUI.ToTruong
                         if (chkChuKy.Checked)
                             dr["ChuKy"] = true;
                         if (chkCoTenNguoiKy.Checked)
-                            dr["TenNguoiKy"] = "Nguyễn Ngọc Ẩn";
+                            dr["NguoiKy"] = "Nguyễn Ngọc Ẩn";
 
                         dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
 
@@ -705,7 +706,7 @@ namespace ThuTien.GUI.ToTruong
 
         private void gridViewDN_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
         {
-            if (gridViewDN.RowCount > 0)
+            if (gridViewDN.RowCount > 0 && e.RowHandle >= 0)
             {
                 if (bool.Parse(gridViewDN.GetRowCellValue(e.RowHandle, "ThemHoaDon").ToString()) == true)
                 {

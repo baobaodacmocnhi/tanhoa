@@ -1105,6 +1105,53 @@
       <Association Name="TT_DongNuoc_TT_KQDongNuoc" Member="TT_KQDongNuocs" ThisKey="MaDN" OtherKey="MaDN" Type="TT_KQDongNuoc" />
     </Type>
   </Table>
+  <Table Name="dbo.TT_ToTrinhDCHD" Member="TT_ToTrinhDCHDs">
+    <Type Name="TT_ToTrinhDCHD">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="TT_ToTrinhDCHD_TT_ToTrinhDCHD_ChiTiet" Member="TT_ToTrinhDCHD_ChiTiets" ThisKey="ID" OtherKey="ID" Type="TT_ToTrinhDCHD_ChiTiet" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TT_ToTrinhDCHD_ChiTiet" Member="TT_ToTrinhDCHD_ChiTiets">
+    <Type Name="TT_ToTrinhDCHD_ChiTiet">
+      <Column Name="IDCT" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DanhBo" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Column Name="MLT" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CoDHN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Ky" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="TongCong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TieuThu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="MaHD" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="SoHoaDon" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="LyDo" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="DeNghi" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="TT_ToTrinhDCHD_TT_ToTrinhDCHD_ChiTiet" Member="TT_ToTrinhDCHD" ThisKey="ID" OtherKey="ID" Type="TT_ToTrinhDCHD" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TT_NguoiKy" Member="TT_NguoiKies">
+    <Type Name="TT_NguoiKy">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ChucVu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ChuKy" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Ky" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.TimKiem" Method="TimKiem" IsComposable="true">
     <Parameter Name="DanhBo" Parameter="danhBo" Type="System.String" DbType="VarChar(11)" />
     <Parameter Name="MLT" Parameter="mLT" Type="System.String" DbType="VarChar(11)" />

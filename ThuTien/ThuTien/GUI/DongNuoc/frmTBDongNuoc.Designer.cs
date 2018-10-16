@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             this.gridViewCTDN = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.SoHoaDon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Ky = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -52,7 +52,7 @@
             this.CreateDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CreateBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaNV_DongNuoc = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ThemHoaDon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnXem = new System.Windows.Forms.Button();
             this.dateDen = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
@@ -188,10 +188,10 @@
             // 
             // gridControl
             // 
-            gridLevelNode1.LevelTemplate = this.gridViewCTDN;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.LevelTemplate = this.gridViewCTDN;
+            gridLevelNode2.RelationName = "Level1";
             this.gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.gridControl.Location = new System.Drawing.Point(247, 40);
             this.gridControl.MainView = this.gridViewDN;
             this.gridControl.Name = "gridControl";
@@ -215,7 +215,7 @@
             this.CreateDate,
             this.CreateBy,
             this.MaNV_DongNuoc,
-            this.gridColumn1});
+            this.ThemHoaDon});
             this.gridViewDN.GridControl = this.gridControl;
             this.gridViewDN.IndicatorWidth = 41;
             this.gridViewDN.Name = "gridViewDN";
@@ -308,11 +308,11 @@
             this.MaNV_DongNuoc.FieldName = "MaNV_DongNuoc";
             this.MaNV_DongNuoc.Name = "MaNV_DongNuoc";
             // 
-            // gridColumn1
+            // ThemHoaDon
             // 
-            this.gridColumn1.Caption = "ThemHoaDon";
-            this.gridColumn1.FieldName = "ThemHoaDon";
-            this.gridColumn1.Name = "gridColumn1";
+            this.ThemHoaDon.Caption = "ThemHoaDon";
+            this.ThemHoaDon.FieldName = "ThemHoaDon";
+            this.ThemHoaDon.Name = "ThemHoaDon";
             // 
             // btnXem
             // 
@@ -738,7 +738,7 @@
         private System.Windows.Forms.CheckBox chkCoTenNguoiKy;
         private System.Windows.Forms.RadioButton radA5;
         private System.Windows.Forms.RadioButton radA4;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn ThemHoaDon;
         private DevExpress.XtraBars.PopupMenu popupMenu1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarManager barManager1;

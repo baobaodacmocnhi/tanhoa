@@ -1,9 +1,9 @@
-﻿namespace ThuTien.BaoCao {
-    
-    
-    public partial class dsBaoCao {
-        partial class PhanTichDoanhThuDataTable
-        {
-        }
-    }
+﻿namespace ThuTien.BaoCao
+{
+}
+namespace ThuTien.BaoCao
+{
+}
+namespace ThuTien.BaoCao
+{
 }

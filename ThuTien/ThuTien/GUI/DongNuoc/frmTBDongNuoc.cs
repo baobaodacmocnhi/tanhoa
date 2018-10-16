@@ -254,7 +254,8 @@ namespace ThuTien.GUI.DongNuoc
                         }
 
                         DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
-                        dr["MaDN"] = item["MaDN"].ToString().Insert(item["MaDN"].ToString().Length - 2, "-"); ;
+                        dr["MaDN"] = item["MaDN"].ToString().Insert(item["MaDN"].ToString().Length - 2, "-");
+                        dr["ThemHoaDon"] = item["ThemHoaDon"];
                         dr["HoTen"] = item["HoTen"];
                         dr["DiaChi"] = item["DiaChi"];
                         dr["DienThoai"] = _cDocSo.GetDienThoai(item["DanhBo"].ToString());
@@ -276,7 +277,7 @@ namespace ThuTien.GUI.DongNuoc
                         if (chkChuKy.Checked)
                             dr["ChuKy"] = true;
                         if (chkCoTenNguoiKy.Checked)
-                            dr["TenNguoiKy"] = "Nguyễn Ngọc Ẩn";
+                            dr["NguoiKy"] = "Nguyễn Ngọc Ẩn";
 
                         dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
 
