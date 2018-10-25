@@ -30,7 +30,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>17</ApplicationRevision>
+    <ApplicationRevision>18</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -104,18 +104,18 @@
     <Compile Include="frmMain.designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="LinQ\dbKTCN_CongVan.designer.cs">
+    <Compile Include="LinQ\dbKTCN.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dbKTCN_CongVan.dbml</DependentUpon>
+      <DependentUpon>dbKTCN.dbml</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="LinQ\dbKTCN_CongVan.dbml.layout">
-      <DependentUpon>dbKTCN_CongVan.dbml</DependentUpon>
+    <None Include="LinQ\dbKTCN.dbml.layout">
+      <DependentUpon>dbKTCN.dbml</DependentUpon>
     </None>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
@@ -130,9 +130,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="LinQ\dbKTCN_CongVan.dbml">
+    <None Include="LinQ\dbKTCN.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>dbKTCN_CongVan.designer.cs</LastGenOutput>
+      <LastGenOutput>dbKTCN.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\app.manifest" />
