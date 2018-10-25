@@ -119,6 +119,9 @@ namespace KTKS_DonKH.GUI.ThuMoi
                             else
                                 if (radCDDM.Checked == true)
                                     rpt = new rptThuMoiChuyenDe();
+                                else
+                                    if (radRong.Checked == true)
+                                        rpt = new rptThuMoiChuyenDe();
                             rpt.SetDataSource(dsBaoCao);
 
                             printDialog.AllowSomePages = true;
@@ -192,7 +195,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
         {
             if (dgvDSThu.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
             {
-                frmThaoThuMoi frm = new frmThaoThuMoi(int.Parse(dgvDSThu["IDCT", dgvDSThu.CurrentRow.Index].Value.ToString()));
+                frmThaoThuMoi frm = new frmThaoThuMoi(int.Parse(dgvDSThu["SoPhieu", dgvDSThu.CurrentRow.Index].Value.ToString()));
                 frm.ShowDialog();
             }
         }

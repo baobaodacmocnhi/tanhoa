@@ -362,6 +362,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                     itemCTBamChi.DayChi,
                                     itemCTBamChi.TheoYeuCau,
                                     itemCTBamChi.MaSoBC,
+                                    itemCTBamChi.NiemChi,
                                     CreateBy = itemUser.HoTen,
                                 };
                     return LINQToDataTable(query);
@@ -387,6 +388,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.DayChi,
                                 itemCTBamChi.TheoYeuCau,
                                 itemCTBamChi.MaSoBC,
+                                itemCTBamChi.NiemChi,
                                 CreateBy = itemUser.HoTen,
                             };
                     return LINQToDataTable(query);
@@ -412,6 +414,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.DayChi,
                                 itemCTBamChi.TheoYeuCau,
                                 itemCTBamChi.MaSoBC,
+                                itemCTBamChi.NiemChi,
                                 CreateBy = itemUser.HoTen,
                             };
                     return LINQToDataTable(query);
@@ -446,6 +449,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                     itemCTBamChi.DayChi,
                                     itemCTBamChi.TheoYeuCau,
                                     itemCTBamChi.MaSoBC,
+                                    itemCTBamChi.NiemChi,
                                     CreateBy = itemUser.HoTen,
                                 };
                     return LINQToDataTable(query);
@@ -471,6 +475,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.DayChi,
                                 itemCTBamChi.TheoYeuCau,
                                 itemCTBamChi.MaSoBC,
+                                itemCTBamChi.NiemChi,
                                 CreateBy = itemUser.HoTen,
                             };
                     return LINQToDataTable(query);
@@ -496,6 +501,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.DayChi,
                                 itemCTBamChi.TheoYeuCau,
                                 itemCTBamChi.MaSoBC,
+                                itemCTBamChi.NiemChi,
                                 CreateBy = itemUser.HoTen,
                             };
                     return LINQToDataTable(query);
@@ -614,6 +620,7 @@ namespace KTKS_DonKH.DAL.BamChi
                             itemCTBamChi.DayChi,
                             itemCTBamChi.TheoYeuCau,
                             itemCTBamChi.MaSoBC,
+                            itemCTBamChi.NiemChi,
                             CreateBy = itemUser.HoTen,
                         };
             dt = LINQToDataTable(query);
@@ -640,6 +647,7 @@ namespace KTKS_DonKH.DAL.BamChi
                         itemCTBamChi.DayChi,
                         itemCTBamChi.TheoYeuCau,
                         itemCTBamChi.MaSoBC,
+                        itemCTBamChi.NiemChi,
                         CreateBy = itemUser.HoTen,
                     };
             dt.Merge(LINQToDataTable(query));
@@ -666,6 +674,7 @@ namespace KTKS_DonKH.DAL.BamChi
                         itemCTBamChi.DayChi,
                         itemCTBamChi.TheoYeuCau,
                         itemCTBamChi.MaSoBC,
+                        itemCTBamChi.NiemChi,
                         CreateBy = itemUser.HoTen,
                     };
             dt.Merge(LINQToDataTable(query));
@@ -699,6 +708,7 @@ namespace KTKS_DonKH.DAL.BamChi
                             itemCTBamChi.DayChi,
                             itemCTBamChi.TheoYeuCau,
                             itemCTBamChi.MaSoBC,
+                            itemCTBamChi.NiemChi,
                             CreateBy = itemUser.HoTen,
                         };
             dt = LINQToDataTable(query);
@@ -725,6 +735,7 @@ namespace KTKS_DonKH.DAL.BamChi
                         itemCTBamChi.DayChi,
                         itemCTBamChi.TheoYeuCau,
                         itemCTBamChi.MaSoBC,
+                        itemCTBamChi.NiemChi,
                         CreateBy = itemUser.HoTen,
                     };
             dt.Merge(LINQToDataTable(query));
@@ -751,6 +762,7 @@ namespace KTKS_DonKH.DAL.BamChi
                         itemCTBamChi.DayChi,
                         itemCTBamChi.TheoYeuCau,
                         itemCTBamChi.MaSoBC,
+                        itemCTBamChi.NiemChi,
                         CreateBy = itemUser.HoTen,
                     };
             dt.Merge(LINQToDataTable(query));
@@ -784,6 +796,7 @@ namespace KTKS_DonKH.DAL.BamChi
                             itemCTBamChi.DayChi,
                             itemCTBamChi.TheoYeuCau,
                             itemCTBamChi.MaSoBC,
+                            itemCTBamChi.NiemChi,
                             CreateBy = itemUser.HoTen,
                         };
             dt = LINQToDataTable(query);
@@ -810,6 +823,7 @@ namespace KTKS_DonKH.DAL.BamChi
                         itemCTBamChi.DayChi,
                         itemCTBamChi.TheoYeuCau,
                         itemCTBamChi.MaSoBC,
+                        itemCTBamChi.NiemChi,
                         CreateBy = itemUser.HoTen,
                     };
             dt.Merge(LINQToDataTable(query));
@@ -836,6 +850,7 @@ namespace KTKS_DonKH.DAL.BamChi
                         itemCTBamChi.DayChi,
                         itemCTBamChi.TheoYeuCau,
                         itemCTBamChi.MaSoBC,
+                        itemCTBamChi.NiemChi,
                         CreateBy = itemUser.HoTen,
                     };
             dt.Merge(LINQToDataTable(query));
@@ -868,6 +883,7 @@ namespace KTKS_DonKH.DAL.BamChi
                             itemCTBamChi.DayChi,
                             itemCTBamChi.TheoYeuCau,
                             itemCTBamChi.MaSoBC,
+                            itemCTBamChi.NiemChi,
                             CreateBy = itemUser.HoTen,
                         };
             dt = LINQToDataTable(query);
@@ -894,6 +910,7 @@ namespace KTKS_DonKH.DAL.BamChi
                         itemCTBamChi.DayChi,
                         itemCTBamChi.TheoYeuCau,
                         itemCTBamChi.MaSoBC,
+                        itemCTBamChi.NiemChi,
                         CreateBy = itemUser.HoTen,
                     };
             dt.Merge(LINQToDataTable(query));
@@ -920,6 +937,7 @@ namespace KTKS_DonKH.DAL.BamChi
                         itemCTBamChi.DayChi,
                         itemCTBamChi.TheoYeuCau,
                         itemCTBamChi.MaSoBC,
+                        itemCTBamChi.NiemChi,
                         CreateBy = itemUser.HoTen,
                     };
             dt.Merge(LINQToDataTable(query));

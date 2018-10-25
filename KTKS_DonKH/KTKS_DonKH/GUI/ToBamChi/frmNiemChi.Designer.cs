@@ -146,21 +146,21 @@
             // 
             // txtSLTon_Giao
             // 
-            this.txtSLTon_Giao.Location = new System.Drawing.Point(460, 343);
+            this.txtSLTon_Giao.Location = new System.Drawing.Point(460, 604);
             this.txtSLTon_Giao.Name = "txtSLTon_Giao";
             this.txtSLTon_Giao.Size = new System.Drawing.Size(50, 22);
             this.txtSLTon_Giao.TabIndex = 65;
             // 
             // txtSLSuDung_Giao
             // 
-            this.txtSLSuDung_Giao.Location = new System.Drawing.Point(410, 343);
+            this.txtSLSuDung_Giao.Location = new System.Drawing.Point(410, 604);
             this.txtSLSuDung_Giao.Name = "txtSLSuDung_Giao";
             this.txtSLSuDung_Giao.Size = new System.Drawing.Size(50, 22);
             this.txtSLSuDung_Giao.TabIndex = 64;
             // 
             // txtSLNhap_Giao
             // 
-            this.txtSLNhap_Giao.Location = new System.Drawing.Point(360, 343);
+            this.txtSLNhap_Giao.Location = new System.Drawing.Point(360, 604);
             this.txtSLNhap_Giao.Name = "txtSLNhap_Giao";
             this.txtSLNhap_Giao.Size = new System.Drawing.Size(50, 22);
             this.txtSLNhap_Giao.TabIndex = 63;
@@ -181,7 +181,7 @@
             this.SLTon_Giao});
             this.dgvNiemChi_Giao.Location = new System.Drawing.Point(6, 193);
             this.dgvNiemChi_Giao.Name = "dgvNiemChi_Giao";
-            this.dgvNiemChi_Giao.Size = new System.Drawing.Size(524, 150);
+            this.dgvNiemChi_Giao.Size = new System.Drawing.Size(524, 411);
             this.dgvNiemChi_Giao.TabIndex = 62;
             this.dgvNiemChi_Giao.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNiemChi_Giao_CellContentClick);
             // 

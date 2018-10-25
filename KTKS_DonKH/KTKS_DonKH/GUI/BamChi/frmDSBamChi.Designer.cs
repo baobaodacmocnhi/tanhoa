@@ -30,6 +30,18 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDSCTBamChi = new System.Windows.Forms.DataGridView();
+            this.dateTu = new System.Windows.Forms.DateTimePicker();
+            this.dateDen = new System.Windows.Forms.DateTimePicker();
+            this.panel_KhoangThoiGian = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnIn = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbTimTheo = new System.Windows.Forms.ComboBox();
+            this.txtNoiDungTimKiem = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnInQuetToanVatTu = new System.Windows.Forms.Button();
+            this.btnXem = new System.Windows.Forms.Button();
             this.MaCTBC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenLD = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,18 +59,7 @@
             this.MaSoBC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TheoYeuCau = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateTu = new System.Windows.Forms.DateTimePicker();
-            this.dateDen = new System.Windows.Forms.DateTimePicker();
-            this.panel_KhoangThoiGian = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btnIn = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cmbTimTheo = new System.Windows.Forms.ComboBox();
-            this.txtNoiDungTimKiem = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnInQuetToanVatTu = new System.Windows.Forms.Button();
-            this.btnXem = new System.Windows.Forms.Button();
+            this.NiemChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCTBamChi)).BeginInit();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.SuspendLayout();
@@ -93,135 +94,16 @@
             this.DayChi,
             this.MaSoBC,
             this.TheoYeuCau,
-            this.CreateBy});
+            this.CreateBy,
+            this.NiemChi});
             this.dgvDSCTBamChi.Location = new System.Drawing.Point(0, 65);
             this.dgvDSCTBamChi.MultiSelect = false;
             this.dgvDSCTBamChi.Name = "dgvDSCTBamChi";
-            this.dgvDSCTBamChi.RowHeadersWidth = 60;
-            this.dgvDSCTBamChi.Size = new System.Drawing.Size(1408, 560);
+            this.dgvDSCTBamChi.Size = new System.Drawing.Size(1358, 560);
             this.dgvDSCTBamChi.TabIndex = 21;
             this.dgvDSCTBamChi.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSCTBamChi_CellFormatting);
             this.dgvDSCTBamChi.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSCTBamChi_RowPostPaint);
             this.dgvDSCTBamChi.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSCTBamChi_KeyDown);
-            // 
-            // MaCTBC
-            // 
-            this.MaCTBC.DataPropertyName = "MaCTBC";
-            this.MaCTBC.HeaderText = "MaCTBC";
-            this.MaCTBC.Name = "MaCTBC";
-            this.MaCTBC.Visible = false;
-            // 
-            // MaDon
-            // 
-            this.MaDon.DataPropertyName = "MaDon";
-            this.MaDon.HeaderText = "Mã Đơn";
-            this.MaDon.Name = "MaDon";
-            this.MaDon.ReadOnly = true;
-            // 
-            // TenLD
-            // 
-            this.TenLD.DataPropertyName = "TenLD";
-            this.TenLD.HeaderText = "Tên Loại Đơn";
-            this.TenLD.Name = "TenLD";
-            this.TenLD.Width = 130;
-            // 
-            // DanhBo
-            // 
-            this.DanhBo.DataPropertyName = "DanhBo";
-            this.DanhBo.HeaderText = "Danh Bộ";
-            this.DanhBo.Name = "DanhBo";
-            this.DanhBo.ReadOnly = true;
-            // 
-            // HopDong
-            // 
-            this.HopDong.DataPropertyName = "HopDong";
-            this.HopDong.HeaderText = "Hợp Đồng";
-            this.HopDong.Name = "HopDong";
-            this.HopDong.Visible = false;
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Khách Hàng";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.ReadOnly = true;
-            this.HoTen.Width = 150;
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.DataPropertyName = "DiaChi";
-            this.DiaChi.HeaderText = "Địa Chỉ";
-            this.DiaChi.Name = "DiaChi";
-            this.DiaChi.ReadOnly = true;
-            this.DiaChi.Width = 200;
-            // 
-            // NgayBC
-            // 
-            this.NgayBC.DataPropertyName = "NgayBC";
-            this.NgayBC.HeaderText = "Ngày BC";
-            this.NgayBC.Name = "NgayBC";
-            this.NgayBC.ReadOnly = true;
-            // 
-            // TrangThaiBC
-            // 
-            this.TrangThaiBC.DataPropertyName = "TrangThaiBC";
-            this.TrangThaiBC.HeaderText = "Trạng Thái";
-            this.TrangThaiBC.Name = "TrangThaiBC";
-            // 
-            // Hieu
-            // 
-            this.Hieu.DataPropertyName = "Hieu";
-            this.Hieu.HeaderText = "Hiệu";
-            this.Hieu.Name = "Hieu";
-            this.Hieu.Width = 50;
-            // 
-            // Co
-            // 
-            this.Co.DataPropertyName = "Co";
-            this.Co.HeaderText = "Cỡ";
-            this.Co.Name = "Co";
-            this.Co.Width = 50;
-            // 
-            // ChiSo
-            // 
-            this.ChiSo.DataPropertyName = "ChiSo";
-            this.ChiSo.HeaderText = "Chỉ Số";
-            this.ChiSo.Name = "ChiSo";
-            this.ChiSo.Width = 50;
-            // 
-            // VienChi
-            // 
-            this.VienChi.DataPropertyName = "VienChi";
-            this.VienChi.HeaderText = "Viên Chì";
-            this.VienChi.Name = "VienChi";
-            this.VienChi.Width = 50;
-            // 
-            // DayChi
-            // 
-            this.DayChi.DataPropertyName = "DayChi";
-            this.DayChi.HeaderText = "Dây Chì";
-            this.DayChi.Name = "DayChi";
-            this.DayChi.Width = 50;
-            // 
-            // MaSoBC
-            // 
-            this.MaSoBC.DataPropertyName = "MaSoBC";
-            this.MaSoBC.HeaderText = "Mã Số BC";
-            this.MaSoBC.Name = "MaSoBC";
-            this.MaSoBC.Visible = false;
-            this.MaSoBC.Width = 50;
-            // 
-            // TheoYeuCau
-            // 
-            this.TheoYeuCau.DataPropertyName = "TheoYeuCau";
-            this.TheoYeuCau.HeaderText = "Theo Yêu Cầu";
-            this.TheoYeuCau.Name = "TheoYeuCau";
-            // 
-            // CreateBy
-            // 
-            this.CreateBy.DataPropertyName = "CreateBy";
-            this.CreateBy.HeaderText = "Người Thực Hiện";
-            this.CreateBy.Name = "CreateBy";
             // 
             // dateTu
             // 
@@ -341,13 +223,140 @@
             this.btnXem.UseVisualStyleBackColor = true;
             this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
+            // MaCTBC
+            // 
+            this.MaCTBC.DataPropertyName = "MaCTBC";
+            this.MaCTBC.HeaderText = "MaCTBC";
+            this.MaCTBC.Name = "MaCTBC";
+            this.MaCTBC.Visible = false;
+            // 
+            // MaDon
+            // 
+            this.MaDon.DataPropertyName = "MaDon";
+            this.MaDon.HeaderText = "Mã Đơn";
+            this.MaDon.Name = "MaDon";
+            this.MaDon.ReadOnly = true;
+            // 
+            // TenLD
+            // 
+            this.TenLD.DataPropertyName = "TenLD";
+            this.TenLD.HeaderText = "Tên Loại Đơn";
+            this.TenLD.Name = "TenLD";
+            this.TenLD.Width = 130;
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            this.DanhBo.ReadOnly = true;
+            // 
+            // HopDong
+            // 
+            this.HopDong.DataPropertyName = "HopDong";
+            this.HopDong.HeaderText = "Hợp Đồng";
+            this.HopDong.Name = "HopDong";
+            this.HopDong.Visible = false;
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Khách Hàng";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.ReadOnly = true;
+            this.HoTen.Width = 150;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.DataPropertyName = "DiaChi";
+            this.DiaChi.HeaderText = "Địa Chỉ";
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.ReadOnly = true;
+            this.DiaChi.Width = 150;
+            // 
+            // NgayBC
+            // 
+            this.NgayBC.DataPropertyName = "NgayBC";
+            this.NgayBC.HeaderText = "Ngày BC";
+            this.NgayBC.Name = "NgayBC";
+            this.NgayBC.ReadOnly = true;
+            // 
+            // TrangThaiBC
+            // 
+            this.TrangThaiBC.DataPropertyName = "TrangThaiBC";
+            this.TrangThaiBC.HeaderText = "Trạng Thái";
+            this.TrangThaiBC.Name = "TrangThaiBC";
+            // 
+            // Hieu
+            // 
+            this.Hieu.DataPropertyName = "Hieu";
+            this.Hieu.HeaderText = "Hiệu";
+            this.Hieu.Name = "Hieu";
+            this.Hieu.Width = 50;
+            // 
+            // Co
+            // 
+            this.Co.DataPropertyName = "Co";
+            this.Co.HeaderText = "Cỡ";
+            this.Co.Name = "Co";
+            this.Co.Width = 50;
+            // 
+            // ChiSo
+            // 
+            this.ChiSo.DataPropertyName = "ChiSo";
+            this.ChiSo.HeaderText = "Chỉ Số";
+            this.ChiSo.Name = "ChiSo";
+            this.ChiSo.Width = 50;
+            // 
+            // VienChi
+            // 
+            this.VienChi.DataPropertyName = "VienChi";
+            this.VienChi.HeaderText = "Viên Chì";
+            this.VienChi.Name = "VienChi";
+            this.VienChi.Width = 50;
+            // 
+            // DayChi
+            // 
+            this.DayChi.DataPropertyName = "DayChi";
+            this.DayChi.HeaderText = "Dây Chì";
+            this.DayChi.Name = "DayChi";
+            this.DayChi.Width = 50;
+            // 
+            // MaSoBC
+            // 
+            this.MaSoBC.DataPropertyName = "MaSoBC";
+            this.MaSoBC.HeaderText = "Mã Số BC";
+            this.MaSoBC.Name = "MaSoBC";
+            this.MaSoBC.Visible = false;
+            this.MaSoBC.Width = 50;
+            // 
+            // TheoYeuCau
+            // 
+            this.TheoYeuCau.DataPropertyName = "TheoYeuCau";
+            this.TheoYeuCau.HeaderText = "Theo Yêu Cầu";
+            this.TheoYeuCau.Name = "TheoYeuCau";
+            this.TheoYeuCau.Width = 90;
+            // 
+            // CreateBy
+            // 
+            this.CreateBy.DataPropertyName = "CreateBy";
+            this.CreateBy.HeaderText = "Người Thực Hiện";
+            this.CreateBy.Name = "CreateBy";
+            // 
+            // NiemChi
+            // 
+            this.NiemChi.DataPropertyName = "NiemChi";
+            this.NiemChi.HeaderText = "Niêm Chì";
+            this.NiemChi.Name = "NiemChi";
+            this.NiemChi.Width = 50;
+            // 
             // frmDSBamChi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1438, 633);
+            this.ClientSize = new System.Drawing.Size(1366, 633);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.btnInQuetToanVatTu);
             this.Controls.Add(this.dgvDSCTBamChi);
@@ -402,5 +411,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MaSoBC;
         private System.Windows.Forms.DataGridViewTextBoxColumn TheoYeuCau;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NiemChi;
     }
 }

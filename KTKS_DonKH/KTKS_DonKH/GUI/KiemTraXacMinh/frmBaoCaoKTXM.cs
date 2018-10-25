@@ -458,7 +458,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                 dr["HoTen"] = item["HoTen"];
                 dr["DiaChi"] = item["DiaChi"];
-                dr["NgayLapBangGia"] = item["CreateDate"];
+                dr["NgayLapBangGia"] = item["NgayKTXM"];
                 dr["GhiChu"] = item["NoiDungBaoThay"];
 
                 dsBaoCao.Tables["DSKTXM"].Rows.Add(dr);

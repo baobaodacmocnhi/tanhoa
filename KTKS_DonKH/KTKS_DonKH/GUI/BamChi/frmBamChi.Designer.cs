@@ -286,11 +286,11 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(237, 69);
+            this.label25.Location = new System.Drawing.Point(215, 69);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(62, 16);
+            this.label25.Size = new System.Drawing.Size(84, 16);
             this.label25.TabIndex = 32;
-            this.label25.Text = "Niêm Chì";
+            this.label25.Text = "Mã Niêm Chì";
             // 
             // label23
             // 
@@ -563,9 +563,9 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(395, 94);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(100, 16);
+            this.label11.Size = new System.Drawing.Size(57, 16);
             this.label11.TabIndex = 22;
-            this.label11.Text = "Mã Số Bấm Chì";
+            this.label11.Text = "Mã Kềm";
             // 
             // dateBamChi
             // 
@@ -749,7 +749,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1200, 512);
+            this.ClientSize = new System.Drawing.Size(1067, 512);
             this.Controls.Add(this.txtMaDonMoi);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.btnXoa);

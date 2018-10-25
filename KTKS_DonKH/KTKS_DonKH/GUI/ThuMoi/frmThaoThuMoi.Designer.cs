@@ -60,16 +60,16 @@
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvDSThu = new System.Windows.Forms.DataGridView();
-            this.IDCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Lan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CanCu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VaoLuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.radDutChi = new System.Windows.Forms.RadioButton();
             this.radCDDM = new System.Windows.Forms.RadioButton();
             this.txtSoPhieu = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.radRong = new System.Windows.Forms.RadioButton();
+            this.SoPhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CanCu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VaoLuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSThu)).BeginInit();
@@ -364,7 +364,7 @@
             this.dgvDSThu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDSThu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSThu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IDCT,
+            this.SoPhieu,
             this.Lan,
             this.CreateDate,
             this.CanCu,
@@ -374,40 +374,6 @@
             this.dgvDSThu.Size = new System.Drawing.Size(647, 126);
             this.dgvDSThu.TabIndex = 130;
             this.dgvDSThu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSThu_CellContentClick);
-            // 
-            // IDCT
-            // 
-            this.IDCT.DataPropertyName = "IDCT";
-            this.IDCT.HeaderText = "ID";
-            this.IDCT.Name = "IDCT";
-            this.IDCT.Visible = false;
-            // 
-            // Lan
-            // 
-            this.Lan.DataPropertyName = "Lan";
-            this.Lan.HeaderText = "Lần";
-            this.Lan.Name = "Lan";
-            this.Lan.Width = 50;
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Ngày Lập";
-            this.CreateDate.Name = "CreateDate";
-            // 
-            // CanCu
-            // 
-            this.CanCu.DataPropertyName = "CanCu";
-            this.CanCu.HeaderText = "Căn Cứ";
-            this.CanCu.Name = "CanCu";
-            this.CanCu.Width = 200;
-            // 
-            // VaoLuc
-            // 
-            this.VaoLuc.DataPropertyName = "VaoLuc";
-            this.VaoLuc.HeaderText = "Vào Lúc";
-            this.VaoLuc.Name = "VaoLuc";
-            this.VaoLuc.Width = 200;
             // 
             // radDutChi
             // 
@@ -458,6 +424,40 @@
             this.radRong.TabStop = true;
             this.radRong.Text = "Rỗng";
             this.radRong.UseVisualStyleBackColor = true;
+            // 
+            // SoPhieu
+            // 
+            this.SoPhieu.DataPropertyName = "SoPhieu";
+            this.SoPhieu.HeaderText = "SoPhieu";
+            this.SoPhieu.Name = "SoPhieu";
+            this.SoPhieu.Visible = false;
+            // 
+            // Lan
+            // 
+            this.Lan.DataPropertyName = "Lan";
+            this.Lan.HeaderText = "Lần";
+            this.Lan.Name = "Lan";
+            this.Lan.Width = 50;
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
+            // 
+            // CanCu
+            // 
+            this.CanCu.DataPropertyName = "CanCu";
+            this.CanCu.HeaderText = "Căn Cứ";
+            this.CanCu.Name = "CanCu";
+            this.CanCu.Width = 200;
+            // 
+            // VaoLuc
+            // 
+            this.VaoLuc.DataPropertyName = "VaoLuc";
+            this.VaoLuc.HeaderText = "Vào Lúc";
+            this.VaoLuc.Name = "VaoLuc";
+            this.VaoLuc.Width = 200;
             // 
             // frmThaoThuMoi
             // 
@@ -531,13 +531,13 @@
         private System.Windows.Forms.DataGridView dgvDSThu;
         private System.Windows.Forms.RadioButton radDutChi;
         private System.Windows.Forms.RadioButton radCDDM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDCT;
+        private System.Windows.Forms.TextBox txtSoPhieu;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.RadioButton radRong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lan;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn CanCu;
         private System.Windows.Forms.DataGridViewTextBoxColumn VaoLuc;
-        private System.Windows.Forms.TextBox txtSoPhieu;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.RadioButton radRong;
     }
 }

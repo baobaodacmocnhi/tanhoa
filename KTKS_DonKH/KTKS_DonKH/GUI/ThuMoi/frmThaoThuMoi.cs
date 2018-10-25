@@ -456,7 +456,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
             {
                 try
                 {
-                    if (_thumoi != null)
+                    if (_thumoi != null && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         if (_cThuMoi.xoa_ChiTiet(_thumoi))
                         {
@@ -516,7 +516,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                     if (radCDDM.Checked == true)
                         rpt = new rptThuMoiChuyenDe();
                     else
-                        if (radCDDM.Checked == true)
+                        if (radRong.Checked == true)
                             rpt = new rptThuMoiChuyenDe_Rong();
                 rpt.SetDataSource(dsBaoCao);
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);

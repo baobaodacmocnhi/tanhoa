@@ -404,7 +404,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         MessageBox.Show("Lỗi Danh Bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    if (txtHoTen.Text.Trim() == "" || txtDiaChi.Text.Trim() == "" || txtTheoYeuCau.Text.Trim() == "" || txtNiemChi.Text.Trim() == "")
+                    if (txtHoTen.Text.Trim() == "" || txtDiaChi.Text.Trim() == "" || txtTheoYeuCau.Text.Trim() == "" )
                     {
                         MessageBox.Show("Chưa đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -604,12 +604,12 @@ namespace KTKS_DonKH.GUI.BamChi
                 {
                     if (_ctbamchi != null)
                     {
-                        if(CTaiKhoan.ToTruong!=true)
-                        if (_ctbamchi.CreateBy != CTaiKhoan.MaUser)
-                        {
-                            MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
+                        if (CTaiKhoan.ToTruong == false)
+                            if (_ctbamchi.CreateBy != CTaiKhoan.MaUser)
+                            {
+                                MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         if ((txtDanhBo.Text.Trim().Length > 0 && txtDanhBo.Text.Trim().Length < 11) || txtDanhBo.Text.Trim().Length > 11)
                         {
                             MessageBox.Show("Lỗi Danh Bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -652,23 +652,26 @@ namespace KTKS_DonKH.GUI.BamChi
                         if (!string.IsNullOrEmpty(txtChiSo.Text.Trim()))
                             _ctbamchi.ChiSo = int.Parse(txtChiSo.Text.Trim());
 
-                        if (!string.IsNullOrEmpty(txtNiemChi.Text.Trim()) && _ctbamchi.NiemChi.Value != int.Parse(txtNiemChi.Text.Trim()))
+                        if (!string.IsNullOrEmpty(txtNiemChi.Text.Trim()) && (_ctbamchi.NiemChi == null || _ctbamchi.NiemChi.Value != int.Parse(txtNiemChi.Text.Trim())))
                         {
                             if (_cNiemChi.checkExist(int.Parse(txtNiemChi.Text.Trim())) == false)
                             {
                                 MessageBox.Show("Số Niêm Chì không Tồn Tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-                            if (_cNiemChi.checkGiao_MaNV(int.Parse(txtNiemChi.Text.Trim()), CTaiKhoan.MaUser) == false)
-                            {
-                                MessageBox.Show("Số Niêm Chì này không được Giao Cho Bạn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
+                            if (CTaiKhoan.ToTruong == false)
+                                if (_cNiemChi.checkGiao_MaNV(int.Parse(txtNiemChi.Text.Trim()), CTaiKhoan.MaUser) == false)
+                                {
+                                    MessageBox.Show("Số Niêm Chì này không được Giao Cho Bạn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
                             if (_cNiemChi.checkSuDung(int.Parse(txtNiemChi.Text.Trim())) == true)
                             {
                                 MessageBox.Show("Số Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
+                            if (_ctbamchi.NiemChi != null)
+                                _cNiemChi.traSuDung(_ctbamchi.NiemChi.Value);
                             _ctbamchi.NiemChi = int.Parse(txtNiemChi.Text.Trim());
                             _cNiemChi.suDung(int.Parse(txtNiemChi.Text.Trim()));
                         }
@@ -729,6 +732,8 @@ namespace KTKS_DonKH.GUI.BamChi
                             MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
+                        if (_ctbamchi.NiemChi != null)
+                            _cNiemChi.traSuDung(_ctbamchi.NiemChi.Value);
                         if (_cBamChi.XoaCT(_ctbamchi))
                         {
                             Clear2();

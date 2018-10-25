@@ -4662,18 +4662,18 @@ namespace KTKS_DonKH.BaoCao {
                         string TienNuocStart, 
                         string ThueGTGTStart, 
                         string PhiBVMTStart, 
-                        int TongCongStart, 
+                        string TongCongStart, 
                         string TangGiam, 
                         string TieuThuBD, 
                         string TienNuocBD, 
                         string ThueGTGTBD, 
                         string PhiBVMTBD, 
-                        int TongCongBD, 
+                        string TongCongBD, 
                         string TieuThuEnd, 
                         string TienNuocEnd, 
                         string ThueGTGTEnd, 
                         string PhiBVMTEnd, 
-                        int TongCongEnd, 
+                        string TongCongEnd, 
                         string ChucVu, 
                         string NguoiKy, 
                         string DinhMucStart, 
@@ -4836,7 +4836,7 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnThueGTGTStart);
                 this.columnPhiBVMTStart = new global::System.Data.DataColumn("PhiBVMTStart", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPhiBVMTStart);
-                this.columnTongCongStart = new global::System.Data.DataColumn("TongCongStart", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnTongCongStart = new global::System.Data.DataColumn("TongCongStart", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTongCongStart);
                 this.columnTangGiam = new global::System.Data.DataColumn("TangGiam", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTangGiam);
@@ -4848,7 +4848,7 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnThueGTGTBD);
                 this.columnPhiBVMTBD = new global::System.Data.DataColumn("PhiBVMTBD", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPhiBVMTBD);
-                this.columnTongCongBD = new global::System.Data.DataColumn("TongCongBD", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnTongCongBD = new global::System.Data.DataColumn("TongCongBD", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTongCongBD);
                 this.columnTieuThuEnd = new global::System.Data.DataColumn("TieuThuEnd", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTieuThuEnd);
@@ -4858,7 +4858,7 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnThueGTGTEnd);
                 this.columnPhiBVMTEnd = new global::System.Data.DataColumn("PhiBVMTEnd", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPhiBVMTEnd);
-                this.columnTongCongEnd = new global::System.Data.DataColumn("TongCongEnd", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnTongCongEnd = new global::System.Data.DataColumn("TongCongEnd", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTongCongEnd);
                 this.columnChucVu = new global::System.Data.DataColumn("ChucVu", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnChucVu);
@@ -21952,10 +21952,10 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int TongCongStart {
+            public string TongCongStart {
                 get {
                     try {
-                        return ((int)(this[this.tableDCHD.TongCongStartColumn]));
+                        return ((string)(this[this.tableDCHD.TongCongStartColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'TongCongStart\' in table \'DCHD\' is DBNull.", e);
@@ -22048,10 +22048,10 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int TongCongBD {
+            public string TongCongBD {
                 get {
                     try {
-                        return ((int)(this[this.tableDCHD.TongCongBDColumn]));
+                        return ((string)(this[this.tableDCHD.TongCongBDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'TongCongBD\' in table \'DCHD\' is DBNull.", e);
@@ -22128,10 +22128,10 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int TongCongEnd {
+            public string TongCongEnd {
                 get {
                     try {
-                        return ((int)(this[this.tableDCHD.TongCongEndColumn]));
+                        return ((string)(this[this.tableDCHD.TongCongEndColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'TongCongEnd\' in table \'DCHD\' is DBNull.", e);

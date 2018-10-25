@@ -126,6 +126,24 @@ namespace KTKS_DonKH.DAL.ToBamChi
             }
         }
 
+        public bool traSuDung(int ID)
+        {
+            try
+            {
+                NiemChi en = db.NiemChis.SingleOrDefault(item => item.ID == ID);
+                en.SuDung = false;
+                en.ModifyDate = DateTime.Now;
+                en.ModifyBy = CTaiKhoan.MaUser;
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
         public List<NiemChi> getDS(DateTime CreateDate)
         {
             return db.NiemChis.Where(item => item.CreateDate.Value.Date == CreateDate.Date).ToList();
