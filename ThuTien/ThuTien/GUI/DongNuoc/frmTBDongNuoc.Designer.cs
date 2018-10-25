@@ -113,7 +113,6 @@
             this.gridViewCTDN.Name = "gridViewCTDN";
             this.gridViewCTDN.OptionsView.ColumnAutoWidth = false;
             this.gridViewCTDN.OptionsView.ShowGroupPanel = false;
-            this.gridViewCTDN.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewCTDN_RowCellClick);
             this.gridViewCTDN.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.gridViewCTDN_PopupMenuShowing);
             this.gridViewCTDN.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridViewCTDN_CustomColumnDisplayText);
             // 

@@ -61,6 +61,7 @@ namespace ThuTien.GUI.DongNuoc
 
         public void Clear()
         {
+            chkHuy.Checked = false;
             txtDanhBo.Text = "";
             txtMLT.Text = "";
             txtHoTen.Text = "";
@@ -76,6 +77,8 @@ namespace ThuTien.GUI.DongNuoc
             chkMoNuoc.Checked = false;
             dateMoNuoc.Value = DateTime.Now;
             txtChiSoMN.Text = "";
+            chkKhoaTu.Checked = false;
+            chkKhongThuTienMoNuoc.Checked = false;
             chkDongNuoc2.Checked = false;
             dateDongNuoc1.Value = DateTime.Now;
             txtChiSoDN1.Text = "";
@@ -87,6 +90,7 @@ namespace ThuTien.GUI.DongNuoc
 
         public void LoadEntity(TT_KQDongNuoc entity)
         {
+            chkHuy.Checked = _kqdongnuoc.TT_DongNuoc.Huy;
             txtDanhBo.Text = _kqdongnuoc.DanhBo;
             txtMLT.Text = entity.MLT;
             txtHoTen.Text = entity.HoTen;
@@ -103,6 +107,7 @@ namespace ThuTien.GUI.DongNuoc
             cmbChiMatSo.SelectedItem = entity.ChiMatSo;
             cmbChiKhoaGoc.SelectedItem = entity.ChiKhoaGoc;
             txtLyDo.Text = entity.LyDo;
+            chkKhoaTu.Checked = entity.KhoaTu;
             chkKhongThuTienMoNuoc.Checked = entity.KhongThuPhi;
             if (entity.MoNuoc)
             {
@@ -225,7 +230,14 @@ namespace ThuTien.GUI.DongNuoc
                         _kqdongnuoc.NgayDN_ThucTe = DateTime.Now;
                         if (!string.IsNullOrEmpty(txtChiSoDN.Text.Trim()))
                             _kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN.Text.Trim());
-                        if (!string.IsNullOrEmpty(txtNiemChi.Text.Trim()) && _kqdongnuoc.NiemChi.Value.ToString() != txtNiemChi.Text.Trim())
+                        if(chkKhoaTu.Checked==false)
+                        if (txtNiemChi.Text.Trim() == "")
+                        {
+                            MessageBox.Show("Thiếu Số Niêm Chì", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        if(chkKhoaTu.Checked==false)
+                        if (!string.IsNullOrEmpty(txtNiemChi.Text.Trim()) && _kqdongnuoc.NiemChi.Value != int.Parse(txtNiemChi.Text.Trim()))
                         {
                             if (_cNiemChi.checkExist(int.Parse(txtNiemChi.Text.Trim())) == false)
                             {
@@ -237,6 +249,8 @@ namespace ThuTien.GUI.DongNuoc
                                 MessageBox.Show("Số Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
+                            if (_kqdongnuoc.NiemChi != null)
+                                _cNiemChi.traSuDung(_kqdongnuoc.NiemChi.Value);
                             _kqdongnuoc.NiemChi = int.Parse(txtNiemChi.Text.Trim());
                             _cNiemChi.suDung(int.Parse(txtNiemChi.Text.Trim()));
                         }
@@ -249,6 +263,8 @@ namespace ThuTien.GUI.DongNuoc
                         if (cmbChiKhoaGoc.SelectedItem != null)
                             _kqdongnuoc.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
                         _kqdongnuoc.LyDo = txtLyDo.Text.Trim();
+                        _kqdongnuoc.KhoaTu = chkKhoaTu.Checked;
+                        _kqdongnuoc.KhongThuPhi = chkKhongThuTienMoNuoc.Checked;
 
                         if (chkDongNuoc2.Checked)
                         {
@@ -271,8 +287,24 @@ namespace ThuTien.GUI.DongNuoc
                             _kqdongnuoc.NgayDN_ThucTe = DateTime.Now;
                             if (!string.IsNullOrEmpty(txtChiSoDN2.Text.Trim()))
                                 _kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN2.Text.Trim());
-                            if (!string.IsNullOrEmpty(txtNiemChi2.Text.Trim()))
+                            if (chkKhoaTu.Checked == false)
+                            if (!string.IsNullOrEmpty(txtNiemChi2.Text.Trim()) && _kqdongnuoc.NiemChi.Value != int.Parse(txtNiemChi2.Text.Trim()))
+                            {
+                                if (_cNiemChi.checkExist(int.Parse(txtNiemChi2.Text.Trim())) == false)
+                                {
+                                    MessageBox.Show("Số Niêm Chì không Tồn Tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                                if (_cNiemChi.checkSuDung(int.Parse(txtNiemChi2.Text.Trim())) == true)
+                                {
+                                    MessageBox.Show("Số Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                                if (_kqdongnuoc.NiemChi != null)
+                                    _cNiemChi.traSuDung(_kqdongnuoc.NiemChi.Value);
                                 _kqdongnuoc.NiemChi = int.Parse(txtNiemChi2.Text.Trim());
+                                _cNiemChi.suDung(int.Parse(txtNiemChi2.Text.Trim()));
+                            }
 
                             if (_kqdongnuoc.SoPhieuDN1 == null)
                                 _kqdongnuoc.SoPhieuDN1 = _kqdongnuoc.SoPhieuDN;
@@ -296,6 +328,8 @@ namespace ThuTien.GUI.DongNuoc
                                     _kqdongnuoc.HinhDN = _kqdongnuoc.HinhDN1;
                                 _kqdongnuoc.NgayDN = _kqdongnuoc.NgayDN1;
                                 _kqdongnuoc.ChiSoDN = _kqdongnuoc.ChiSoDN1;
+                                if (_kqdongnuoc.NiemChi != null)
+                                    _cNiemChi.traSuDung(_kqdongnuoc.NiemChi.Value);
                                 _kqdongnuoc.NiemChi = _kqdongnuoc.NiemChi1;
                                 _kqdongnuoc.NgayDN1 = null;
                                 _kqdongnuoc.ChiSoDN1 = null;
@@ -356,6 +390,13 @@ namespace ThuTien.GUI.DongNuoc
                             kqdongnuoc.NgayDN_ThucTe = DateTime.Now;
                             if (!string.IsNullOrEmpty(txtChiSoDN.Text.Trim()))
                                 kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN.Text.Trim());
+                            if (chkKhoaTu.Checked == false)
+                            if (txtNiemChi.Text.Trim() == "")
+                            {
+                                MessageBox.Show("Thiếu Số Niêm Chì", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            if (chkKhoaTu.Checked == false)
                             if (!string.IsNullOrEmpty(txtNiemChi.Text.Trim()))
                             {
                                 if (_cNiemChi.checkExist(int.Parse(txtNiemChi.Text.Trim())) == false)
@@ -380,6 +421,8 @@ namespace ThuTien.GUI.DongNuoc
                             if (cmbChiKhoaGoc.SelectedItem != null)
                                 kqdongnuoc.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
                             kqdongnuoc.LyDo = txtLyDo.Text.Trim();
+                            kqdongnuoc.KhoaTu = chkKhoaTu.Checked;
+                            kqdongnuoc.KhongThuPhi = chkKhongThuTienMoNuoc.Checked;
 
                             kqdongnuoc.PhiMoNuoc = _cDongNuoc.GetPhiMoNuoc();
 
@@ -506,6 +549,10 @@ namespace ThuTien.GUI.DongNuoc
                             MessageBox.Show("Có mở nước, Không được Xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
+                        if (kqdongnuoc.NiemChi != null)
+                            _cNiemChi.traSuDung(kqdongnuoc.NiemChi.Value);
+                        if (kqdongnuoc.NiemChi1 != null)
+                            _cNiemChi.traSuDung(kqdongnuoc.NiemChi1.Value);
                         if (_cDongNuoc.XoaKQ(kqdongnuoc))
                         {
                             Clear();
@@ -529,6 +576,10 @@ namespace ThuTien.GUI.DongNuoc
                             MessageBox.Show("Có mở nước, Không được Xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
+                        if (kqdongnuoc.NiemChi != null)
+                            _cNiemChi.traSuDung(kqdongnuoc.NiemChi.Value);
+                        if (kqdongnuoc.NiemChi1 != null)
+                            _cNiemChi.traSuDung(kqdongnuoc.NiemChi1.Value);
                         if (_cDongNuoc.XoaKQ(kqdongnuoc))
                         {
                             Clear();

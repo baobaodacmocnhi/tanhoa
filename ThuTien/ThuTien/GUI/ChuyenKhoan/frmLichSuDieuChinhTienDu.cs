@@ -99,9 +99,9 @@ namespace ThuTien.GUI.ChuyenKhoan
                 long TongCong = 0;
                 foreach (DataGridViewRow item in dgvLichSuTienDu.Rows)
                 {
-                    TongCong += int.Parse(item.Cells["SoTien_LSGD"].Value.ToString());
+                    TongCong += int.Parse(item.Cells["SoTien_LSTD"].Value.ToString());
                 }
-                txtTongCong_LSGD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
+                txtTongCong_LSTD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
             }
         }
 

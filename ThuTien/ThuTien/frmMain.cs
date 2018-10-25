@@ -1074,6 +1074,17 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuToTrinhDCHD_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuToTrinhDCHD", "Xem"))
+            {
+                frmToTrinhDCHD frm = new frmToTrinhDCHD();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion   
 
         #region Tìm Kiếm
@@ -1127,12 +1138,6 @@ namespace ThuTien
         }
 
         #endregion
-
-        
-
-        
-
-        
 
 
     }

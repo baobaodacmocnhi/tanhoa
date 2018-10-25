@@ -113,6 +113,10 @@
             this.btnInPhieu = new System.Windows.Forms.Button();
             this.btnXoaPhieu = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtNiemChi2 = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.txtNiemChi1 = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
             this.btnHinhDongNuoc2 = new System.Windows.Forms.Button();
             this.txtChiSoDN1 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -131,10 +135,7 @@
             this.btnInDS = new System.Windows.Forms.Button();
             this.cmbTo = new System.Windows.Forms.ComboBox();
             this.lbTo = new System.Windows.Forms.Label();
-            this.txtNiemChi1 = new System.Windows.Forms.TextBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.txtNiemChi2 = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
+            this.chkKhoaTu = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKQDongNuoc)).BeginInit();
@@ -143,6 +144,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.chkKhoaTu);
             this.groupBox2.Controls.Add(this.txtNiemChi);
             this.groupBox2.Controls.Add(this.label24);
             this.groupBox2.Controls.Add(this.btnHinhMoNuoc);
@@ -216,7 +218,7 @@
             // chkKhongThuTienMoNuoc
             // 
             this.chkKhongThuTienMoNuoc.AutoSize = true;
-            this.chkKhongThuTienMoNuoc.Location = new System.Drawing.Point(212, 149);
+            this.chkKhongThuTienMoNuoc.Location = new System.Drawing.Point(212, 175);
             this.chkKhongThuTienMoNuoc.Name = "chkKhongThuTienMoNuoc";
             this.chkKhongThuTienMoNuoc.Size = new System.Drawing.Size(150, 17);
             this.chkKhongThuTienMoNuoc.TabIndex = 38;
@@ -942,6 +944,39 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Kết Quả Đóng Nước lần 2";
             // 
+            // txtNiemChi2
+            // 
+            this.txtNiemChi2.Location = new System.Drawing.Point(223, 78);
+            this.txtNiemChi2.Name = "txtNiemChi2";
+            this.txtNiemChi2.Size = new System.Drawing.Size(89, 20);
+            this.txtNiemChi2.TabIndex = 49;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(140, 81);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(78, 13);
+            this.label26.TabIndex = 48;
+            this.label26.Text = "Niêm Chì lần 2:";
+            // 
+            // txtNiemChi1
+            // 
+            this.txtNiemChi1.Location = new System.Drawing.Point(223, 156);
+            this.txtNiemChi1.Name = "txtNiemChi1";
+            this.txtNiemChi1.ReadOnly = true;
+            this.txtNiemChi1.Size = new System.Drawing.Size(89, 20);
+            this.txtNiemChi1.TabIndex = 47;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(140, 159);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(78, 13);
+            this.label25.TabIndex = 46;
+            this.label25.Text = "Niêm Chì lần 1:";
+            // 
             // btnHinhDongNuoc2
             // 
             this.btnHinhDongNuoc2.Location = new System.Drawing.Point(24, 51);
@@ -1110,38 +1145,15 @@
             this.lbTo.TabIndex = 47;
             this.lbTo.Text = "Tổ:";
             // 
-            // txtNiemChi1
+            // chkKhoaTu
             // 
-            this.txtNiemChi1.Location = new System.Drawing.Point(223, 156);
-            this.txtNiemChi1.Name = "txtNiemChi1";
-            this.txtNiemChi1.ReadOnly = true;
-            this.txtNiemChi1.Size = new System.Drawing.Size(89, 20);
-            this.txtNiemChi1.TabIndex = 47;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(140, 159);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(78, 13);
-            this.label25.TabIndex = 46;
-            this.label25.Text = "Niêm Chì lần 1:";
-            // 
-            // txtNiemChi2
-            // 
-            this.txtNiemChi2.Location = new System.Drawing.Point(223, 78);
-            this.txtNiemChi2.Name = "txtNiemChi2";
-            this.txtNiemChi2.Size = new System.Drawing.Size(89, 20);
-            this.txtNiemChi2.TabIndex = 49;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(140, 81);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(78, 13);
-            this.label26.TabIndex = 48;
-            this.label26.Text = "Niêm Chì lần 2:";
+            this.chkKhoaTu.AutoSize = true;
+            this.chkKhoaTu.Location = new System.Drawing.Point(212, 127);
+            this.chkKhoaTu.Name = "chkKhoaTu";
+            this.chkKhoaTu.Size = new System.Drawing.Size(67, 17);
+            this.chkKhoaTu.TabIndex = 43;
+            this.chkKhoaTu.Text = "Khóa Từ";
+            this.chkKhoaTu.UseVisualStyleBackColor = true;
             // 
             // frmKQDongNuoc
             // 
@@ -1295,5 +1307,6 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox txtNiemChi1;
         private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.CheckBox chkKhoaTu;
     }
 }

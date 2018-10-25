@@ -11,16 +11,16 @@ using ThuTien.DAL;
 using ThuTien.LinQ;
 using ThuTien.BaoCao;
 using ThuTien.GUI.BaoCao;
-using ThuTien.BaoCao.Doi;
 using ThuTien.DAL.Quay;
 using ThuTien.DAL.TongHop;
 using ThuTien.DAL.Doi;
+using ThuTien.BaoCao.TongHop;
 
 namespace ThuTien.GUI.TongHop
 {
     public partial class frmToTrinhDCHD : Form
     {
-        string _mnu = "mnuToTrinhCatHuy";
+        string _mnu = "mnuToTrinhDCHD";
         CHoaDon _cHoaDon = new CHoaDon();
         CDocSo _cCapNuocTanHoa = new CDocSo();
         CToTrinhDCHD _cToTrinhDCHD = new CToTrinhDCHD();
@@ -101,19 +101,26 @@ namespace ThuTien.GUI.TongHop
                     //}
                     //}
 
-                    HOADON hoadon = _cHoaDon.GetMoiNhat(txtDanhBo.Text.Trim());
+                    DataTable dtTon = _cHoaDon.GetDSTonByDanhBo_CodeF(txtDanhBo.Text.Trim());
+                    string Ky = "";
+
+                    foreach (DataRow itemTon in dtTon.Rows)
+                    {
+                        if (Ky == "")
+                            Ky += itemTon["Ky"];
+                        else
+                            Ky += ", " + itemTon["Ky"];
+                    }
+
+                    if(Ky!="")
                     if (dgvCTToTrinh.DataSource == null)
                     {
                         dgvCTToTrinh.Rows.Add();
 
-                        dgvCTToTrinh["DanhBo", dgvCTToTrinh.Rows.Count - 1].Value = hoadon.DANHBA;
-                        dgvCTToTrinh["MLT", dgvCTToTrinh.Rows.Count - 1].Value = hoadon.MALOTRINH;
-                        dgvCTToTrinh["HoTen", dgvCTToTrinh.Rows.Count - 1].Value = hoadon.TENKH;
-                        dgvCTToTrinh["DiaChi", dgvCTToTrinh.Rows.Count - 1].Value = hoadon.SO + " " + hoadon.DUONG;
-                        //dgvCTToTrinh["Ky", dgvCTToTrinh.Rows.Count - 1].Value = Ky;
-                        //dgvCTToTrinh["TongCong", dgvCTToTrinh.Rows.Count - 1].Value = TongCongSo;
-                        //dgvCTToTrinh["TieuThu", dgvCTToTrinh.Rows.Count - 1].Value = TieuThu;
-                        dgvCTToTrinh["CoDHN", dgvCTToTrinh.Rows.Count - 1].Value = _cCapNuocTanHoa.GetCoDHN(hoadon.DANHBA);
+                        dgvCTToTrinh["DanhBo", dgvCTToTrinh.Rows.Count - 1].Value = dtTon.Rows[0]["DanhBo"];
+                        dgvCTToTrinh["HoTen", dgvCTToTrinh.Rows.Count - 1].Value = dtTon.Rows[0]["HoTen"];
+                        dgvCTToTrinh["DiaChi", dgvCTToTrinh.Rows.Count - 1].Value = dtTon.Rows[0]["DiaChi"] + " " + _cCapNuocTanHoa.GetPhuongQuan(dtTon.Rows[0]["DanhBo"].ToString());
+                        dgvCTToTrinh["Ky", dgvCTToTrinh.Rows.Count - 1].Value = Ky;
                     }
                     else
                     {
@@ -121,14 +128,10 @@ namespace ThuTien.GUI.TongHop
 
                         DataRow dr = dtTemp.NewRow();
 
-                        dr["DanhBo"] = hoadon.DANHBA;
-                        dr["MLT"] = hoadon.MALOTRINH;
-                        dr["HoTen"] = hoadon.TENKH;
-                        dr["DiaChi"] = hoadon.SO + " " + hoadon.DUONG;
-                        //dr["Ky"] = Ky;
-                        //dr["TongCong"] = TongCongSo;
-                        //dr["TieuThu"] = TieuThu;
-                        dr["CoDHN"] = _cCapNuocTanHoa.GetCoDHN(hoadon.DANHBA);
+                        dr["DanhBo"] = dtTon.Rows[0]["DanhBo"];
+                        dr["HoTen"] = dtTon.Rows[0]["HoTen"];
+                        dr["DiaChi"] = dtTon.Rows[0]["DiaChi"] + " " + _cCapNuocTanHoa.GetPhuongQuan(dtTon.Rows[0]["DanhBo"].ToString());
+                        dr["Ky"] = Ky;
 
                         dtTemp.Rows.Add(dr);
                         dtTemp.AcceptChanges();
@@ -170,15 +173,17 @@ namespace ThuTien.GUI.TongHop
                                 TT_ToTrinhDCHD_ChiTiet cttotrinh = new TT_ToTrinhDCHD_ChiTiet();
                                 cttotrinh.IDCT = ++IDCT;
                                 cttotrinh.DanhBo = item.Cells["DanhBo"].Value.ToString();
-                                cttotrinh.MLT = item.Cells["MLT"].Value.ToString();
-                                cttotrinh.CoDHN = int.Parse(item.Cells["CoDHN"].Value.ToString());
+                                //cttotrinh.MLT = item.Cells["MLT"].Value.ToString();
+                                //cttotrinh.CoDHN = int.Parse(item.Cells["CoDHN"].Value.ToString());
                                 cttotrinh.HoTen = item.Cells["HoTen"].Value.ToString();
                                 cttotrinh.DiaChi = item.Cells["DiaChi"].Value.ToString();
-                                //cttotrinh.Ky = item.Cells["Ky"].Value.ToString();
+                                cttotrinh.Ky = item.Cells["Ky"].Value.ToString();
                                 //cttotrinh.TongCong = int.Parse(item.Cells["TongCong"].Value.ToString());
                                 //cttotrinh.TieuThu = int.Parse(item.Cells["TieuThu"].Value.ToString());
-                                if (item.Cells["GhiChu"].Value != null)
-                                    cttotrinh.GhiChu = item.Cells["GhiChu"].Value.ToString();
+                                if (item.Cells["LyDo"].Value != null)
+                                    cttotrinh.LyDo = item.Cells["LyDo"].Value.ToString();
+                                if (item.Cells["DeNghi"].Value != null)
+                                    cttotrinh.DeNghi = item.Cells["DeNghi"].Value.ToString();
                                 cttotrinh.CreateBy = CNguoiDung.MaND;
                                 cttotrinh.CreateDate = DateTime.Now;
 
@@ -254,7 +259,7 @@ namespace ThuTien.GUI.TongHop
         {
             dsBaoCao ds = new dsBaoCao();
 
-            if (!bool.Parse(dgvToTrinh.SelectedRows[0].Cells["Khoa"].Value.ToString()))
+            //if (!bool.Parse(dgvToTrinh.SelectedRows[0].Cells["Khoa"].Value.ToString()))
                 foreach (DataGridViewRow item in dgvCTToTrinh.Rows)
                 {
                     DataRow dr = ds.Tables["ToTrinhCatHuy"].NewRow();
@@ -268,62 +273,53 @@ namespace ThuTien.GUI.TongHop
                     else
                         if (radPhoGiamDoc.Checked)
                             dr["NguoiKy"] += " Phó Giám Đốc";
-                    dr["ID"] = item.Cells["ID_CT"].Value.ToString().Insert(item.Cells["ID_CT"].Value.ToString().Length - 2, "-");
+                    dr["MaTT"] = item.Cells["ID_CT"].Value.ToString().Insert(item.Cells["ID_CT"].Value.ToString().Length - 2, "-");
                     dr["ThoiGian"] = DateTime.Parse(item.Cells["CreateDate_CT"].Value.ToString()).ToString("MM/yyyy");
                     dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
-                    dr["MLT"] = item.Cells["MLT"].Value.ToString().Insert(4, " ").Insert(2, " ");
-                    dr["CoDHN"] = item.Cells["CoDHN"].Value;
-                    dr["HoTen"] = item.Cells["HoTen"].Value;
-                    dr["DiaChi"] = item.Cells["DiaChi"].Value;
-
-                    DataTable dt = _cHoaDon.GetDSTonByDanhBo_ExceptHD0(item.Cells["DanhBo"].Value.ToString());
-                    string Ky = "";
-                    int TongCongSo = 0;
-                    int TieuThu = 0;
-                    foreach (DataRow itemTon in dt.Rows)
-                    {
-                        if (Ky == "")
-                            Ky += itemTon["Ky"];
-                        else
-                            Ky += ", " + itemTon["Ky"];
-                        TongCongSo += int.Parse(itemTon["TongCong"].ToString());
-                        TieuThu += int.Parse(itemTon["TieuThu"].ToString());
-                    }
-
-                    dr["Ky"] = Ky;
-                    dr["TongCong"] = TongCongSo;
-                    dr["TieuThu"] = TieuThu;
-                    dr["GhiChu"] = item.Cells["GhiChu"].Value;
-                    dr["ChucVu"] = CNguoiKy.getChucVu();
-                    dr["NguoiKy"] = CNguoiKy.getNguoiKy();
-                    ds.Tables["ToTrinhCatHuy"].Rows.Add(dr);
-                }
-            else
-                foreach (DataGridViewRow item in dgvCTToTrinh.Rows)
-                {
-                    DataRow dr = ds.Tables["ToTrinhCatHuy"].NewRow();
-                    if (radGiamDoc.Checked)
-                        dr["NguoiKy"] = "Giám Đốc";
-                    else
-                        if (radPhoGiamDoc.Checked)
-                            dr["NguoiKy"] = "Phó Giám Đốc";
-                    dr["ID"] = item.Cells["ID_CT"].Value.ToString().Insert(item.Cells["ID_CT"].Value.ToString().Length - 2, "-");
-                    dr["ThoiGian"] = DateTime.Parse(item.Cells["CreateDate_CT"].Value.ToString()).ToString("MM/yyyy");
-                    dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
-                    dr["MLT"] = item.Cells["MLT"].Value.ToString().Insert(4, " ").Insert(2, " ");
-                    dr["CoDHN"] = item.Cells["CoDHN"].Value;
+                    //dr["MLT"] = item.Cells["MLT"].Value.ToString().Insert(4, " ").Insert(2, " ");
+                    //dr["CoDHN"] = item.Cells["CoDHN"].Value;
                     dr["HoTen"] = item.Cells["HoTen"].Value;
                     dr["DiaChi"] = item.Cells["DiaChi"].Value;
                     dr["Ky"] = item.Cells["Ky"].Value;
-                    dr["TongCong"] = item.Cells["TongCong"].Value;
-                    dr["TieuThu"] = item.Cells["TieuThu"].Value;
-                    dr["GhiChu"] = item.Cells["GhiChu"].Value;
+                    //dr["TongCong"] = TongCongSo;
+                    //dr["TieuThu"] = TieuThu;
+                    dr["LyDo"] = item.Cells["LyDo"].Value;
+                    dr["DeNghi"] = item.Cells["DeNghi"].Value;
                     dr["ChucVu"] = CNguoiKy.getChucVu();
                     dr["NguoiKy"] = CNguoiKy.getNguoiKy();
                     ds.Tables["ToTrinhCatHuy"].Rows.Add(dr);
                 }
+            //else
+            //    foreach (DataGridViewRow item in dgvCTToTrinh.Rows)
+            //    {
+            //        DataRow dr = ds.Tables["ToTrinhCatHuy"].NewRow();
+            //        if (radOng.Checked)
+            //            dr["NguoiKy"] = "Ông";
+            //        else
+            //            if (radBa.Checked)
+            //                dr["NguoiKy"] = "Bà";
+            //        if (radGiamDoc.Checked)
+            //            dr["NguoiKy"] += " Giám Đốc";
+            //        else
+            //            if (radPhoGiamDoc.Checked)
+            //                dr["NguoiKy"] += " Phó Giám Đốc";
+            //        dr["ID"] = item.Cells["ID_CT"].Value.ToString().Insert(item.Cells["ID_CT"].Value.ToString().Length - 2, "-");
+            //        dr["ThoiGian"] = DateTime.Parse(item.Cells["CreateDate_CT"].Value.ToString()).ToString("MM/yyyy");
+            //        dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
+            //        dr["MLT"] = item.Cells["MLT"].Value.ToString().Insert(4, " ").Insert(2, " ");
+            //        dr["CoDHN"] = item.Cells["CoDHN"].Value;
+            //        dr["HoTen"] = item.Cells["HoTen"].Value;
+            //        dr["DiaChi"] = item.Cells["DiaChi"].Value;
+            //        dr["Ky"] = item.Cells["Ky"].Value;
+            //        dr["TongCong"] = item.Cells["TongCong"].Value;
+            //        dr["TieuThu"] = item.Cells["TieuThu"].Value;
+            //        dr["GhiChu"] = item.Cells["GhiChu"].Value;
+            //        dr["ChucVu"] = CNguoiKy.getChucVu();
+            //        dr["NguoiKy"] = CNguoiKy.getNguoiKy();
+            //        ds.Tables["ToTrinhCatHuy"].Rows.Add(dr);
+            //    }
 
-            rptToTrinhCatHuy rpt = new rptToTrinhCatHuy();
+                rptToTrinhDCHD rpt = new rptToTrinhDCHD();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();

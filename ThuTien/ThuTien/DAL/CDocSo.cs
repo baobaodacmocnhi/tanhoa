@@ -210,5 +210,23 @@ namespace ThuTien.DAL
                 TenQuan = query.FirstOrDefault().TENQUAN;
             }
         }
+
+        public string GetPhuongQuan(string DanhBo)
+        {
+            var query = from item in _db.TB_DULIEUKHACHHANGs
+                        join itemP in _db.PHUONGs on new { p = item.PHUONG, q = Convert.ToInt32(item.QUAN) } equals new { p = itemP.MAPHUONG, q = itemP.MAQUAN }
+                        where item.DANHBO == DanhBo
+                        select new
+                        {
+                            itemP.TENPHUONG,
+                            itemP.QUAN.TENQUAN,
+                        };
+            if (query.Count() > 0)
+            {
+                return "P."+query.FirstOrDefault().TENPHUONG + ", Q."+query.FirstOrDefault().TENQUAN;
+            }
+            else
+                return "";
+        }
     }
 }

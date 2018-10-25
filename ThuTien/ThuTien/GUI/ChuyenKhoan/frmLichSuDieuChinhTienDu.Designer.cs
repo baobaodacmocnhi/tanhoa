@@ -62,7 +62,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cmbLoai = new System.Windows.Forms.ComboBox();
             this.txtTongCong = new System.Windows.Forms.TextBox();
-            this.txtTongCong_LSGD = new System.Windows.Forms.TextBox();
+            this.txtTongCong_LSTD = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuDieuChinhTienDu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuTienDu)).BeginInit();
             this.SuspendLayout();
@@ -350,21 +350,21 @@
             this.txtTongCong.TabIndex = 98;
             this.txtTongCong.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtTongCong_LSGD
+            // txtTongCong_LSTD
             // 
-            this.txtTongCong_LSGD.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongCong_LSGD.Location = new System.Drawing.Point(821, 603);
-            this.txtTongCong_LSGD.Name = "txtTongCong_LSGD";
-            this.txtTongCong_LSGD.Size = new System.Drawing.Size(100, 20);
-            this.txtTongCong_LSGD.TabIndex = 99;
-            this.txtTongCong_LSGD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTongCong_LSTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongCong_LSTD.Location = new System.Drawing.Point(821, 603);
+            this.txtTongCong_LSTD.Name = "txtTongCong_LSTD";
+            this.txtTongCong_LSTD.Size = new System.Drawing.Size(100, 20);
+            this.txtTongCong_LSTD.TabIndex = 99;
+            this.txtTongCong_LSTD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // frmLichSuDieuChinhTienDu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1304, 656);
-            this.Controls.Add(this.txtTongCong_LSGD);
+            this.Controls.Add(this.txtTongCong_LSTD);
             this.Controls.Add(this.txtTongCong);
             this.Controls.Add(this.cmbLoai);
             this.Controls.Add(this.label1);
@@ -418,6 +418,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBoChuyenNhan_LSTD;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.TextBox txtTongCong;
-        private System.Windows.Forms.TextBox txtTongCong_LSGD;
+        private System.Windows.Forms.TextBox txtTongCong_LSTD;
     }
 }

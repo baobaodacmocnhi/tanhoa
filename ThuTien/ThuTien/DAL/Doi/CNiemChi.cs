@@ -121,6 +121,24 @@ namespace ThuTien.DAL.Doi
             }
         }
 
+        public bool traSuDung(int ID)
+        {
+            try
+            {
+                TT_NiemChi en = _db.TT_NiemChis.SingleOrDefault(item => item.ID == ID);
+                en.SuDung = false;
+                en.ModifyDate = DateTime.Now;
+                en.ModifyBy = CNguoiDung.MaND;
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
         public List<TT_NiemChi> getDS(DateTime CreateDate)
         {
             return _db.TT_NiemChis.Where(item => item.CreateDate.Value.Date == CreateDate.Date).ToList();

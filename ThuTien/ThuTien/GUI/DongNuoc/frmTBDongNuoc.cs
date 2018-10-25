@@ -528,6 +528,8 @@ namespace ThuTien.GUI.DongNuoc
             if (e.HitInfo.HitTest == DevExpress.XtraGrid.Views.Grid.ViewInfo.GridHitTest.RowCell)
             {
                 e.Allow = false;
+                GridView gridView = (GridView)gridControl.GetViewAt(e.Point);
+                _selectedRow = (DataRowView)gridView.GetRow(gridView.GetSelectedRows()[0]);
                 popupMenu1.ShowPopup(gridControl.PointToScreen(e.Point));
             }
         }
@@ -544,8 +546,11 @@ namespace ThuTien.GUI.DongNuoc
                         {
                             TT_CTDongNuoc en = _cDongNuoc.getCTDongNuoc(decimal.Parse(_selectedRow["MaDN"].ToString()), int.Parse(_selectedRow["MaHD"].ToString()));
                             if(en!=null)
-                                if(_cDongNuoc.XoaCT(en)==true)
+                                if (_cDongNuoc.XoaCT(en) == true)
+                                {
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    btnXem.PerformClick();
+                                }
                         }
                         catch (Exception ex)
                         {
@@ -556,12 +561,6 @@ namespace ThuTien.GUI.DongNuoc
                 else
                     MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void gridViewCTDN_RowCellClick(object sender, RowCellClickEventArgs e)
-        {
-            GridView gridView = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
-            _selectedRow = (DataRowView)gridView.GetRow(gridView.GetSelectedRows()[0]);
         }
 
 
