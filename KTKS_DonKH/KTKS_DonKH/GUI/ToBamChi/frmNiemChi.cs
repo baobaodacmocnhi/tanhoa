@@ -27,6 +27,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
         {
             dgvNiemChi_Nhap.AutoGenerateColumns = false;
             dgvNiemChi_Giao.AutoGenerateColumns = false;
+            dgvNiemChiTong_Giao.AutoGenerateColumns = false;
 
             cmbNhanVien_Giao.DataSource = _cTaiKhoan.GetDS_KTXM("TBC");
             cmbNhanVien_Giao.DisplayMember = "HoTen";
@@ -177,6 +178,8 @@ namespace KTKS_DonKH.GUI.ToBamChi
             txtSLNhap_Giao.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLNhap);
             txtSLSuDung_Giao.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLSuDung);
             txtSLTon_Giao.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLTon);
+
+            dgvNiemChiTong_Giao.DataSource = _cNiemChi.getDSGiao_GroupTong(dateLap_Giao.Value);
         }
 
         private void btnXem_Giao_Click(object sender, EventArgs e)
@@ -279,6 +282,11 @@ namespace KTKS_DonKH.GUI.ToBamChi
             catch (Exception)
             {
             }
+        }
+
+        private void btnInTon_Giao_Click(object sender, EventArgs e)
+        {
+
         }
 
 

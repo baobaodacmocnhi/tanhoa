@@ -29,6 +29,13 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dgvNiemChiTong_Giao = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmbDotChia = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.dateLap_Giao = new System.Windows.Forms.DateTimePicker();
@@ -77,7 +84,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtTuSo_Nhap = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnInTon_Giao = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNiemChiTong_Giao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiemChi_Giao)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiemChi_Nhap)).BeginInit();
@@ -85,6 +94,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnInTon_Giao);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.dgvNiemChiTong_Giao);
             this.groupBox2.Controls.Add(this.cmbDotChia);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.dateLap_Giao);
@@ -107,10 +119,69 @@
             this.groupBox2.Controls.Add(this.cmbNhanVien_Giao);
             this.groupBox2.Location = new System.Drawing.Point(486, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(536, 633);
+            this.groupBox2.Size = new System.Drawing.Size(848, 633);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Giao Tổ";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(524, 171);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(118, 16);
+            this.label10.TabIndex = 69;
+            this.label10.Text = "Tổng các Đợt Chia";
+            // 
+            // dgvNiemChiTong_Giao
+            // 
+            this.dgvNiemChiTong_Giao.AllowUserToAddRows = false;
+            this.dgvNiemChiTong_Giao.AllowUserToDeleteRows = false;
+            this.dgvNiemChiTong_Giao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvNiemChiTong_Giao.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8});
+            this.dgvNiemChiTong_Giao.Location = new System.Drawing.Point(527, 193);
+            this.dgvNiemChiTong_Giao.Name = "dgvNiemChiTong_Giao";
+            this.dgvNiemChiTong_Giao.Size = new System.Drawing.Size(314, 411);
+            this.dgvNiemChiTong_Giao.TabIndex = 68;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "MaNV";
+            this.dataGridViewTextBoxColumn1.HeaderText = "MaNV";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "HoTen";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Nhân Viên";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "SLNhap";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Nhập";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "SLSuDung";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Sử Dụng";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "SLTon";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Tồn";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.Width = 50;
             // 
             // cmbDotChia
             // 
@@ -181,7 +252,7 @@
             this.SLTon_Giao});
             this.dgvNiemChi_Giao.Location = new System.Drawing.Point(6, 193);
             this.dgvNiemChi_Giao.Name = "dgvNiemChi_Giao";
-            this.dgvNiemChi_Giao.Size = new System.Drawing.Size(524, 411);
+            this.dgvNiemChi_Giao.Size = new System.Drawing.Size(515, 411);
             this.dgvNiemChi_Giao.TabIndex = 62;
             this.dgvNiemChi_Giao.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNiemChi_Giao_CellContentClick);
             // 
@@ -203,7 +274,7 @@
             this.DotChia_Giao.DataPropertyName = "DotChia";
             this.DotChia_Giao.HeaderText = "Đợt Chia";
             this.DotChia_Giao.Name = "DotChia_Giao";
-            this.DotChia_Giao.Width = 50;
+            this.DotChia_Giao.Width = 40;
             // 
             // TuSo_Giao
             // 
@@ -538,6 +609,16 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Từ Số";
             // 
+            // btnInTon_Giao
+            // 
+            this.btnInTon_Giao.Location = new System.Drawing.Point(766, 164);
+            this.btnInTon_Giao.Name = "btnInTon_Giao";
+            this.btnInTon_Giao.Size = new System.Drawing.Size(75, 23);
+            this.btnInTon_Giao.TabIndex = 70;
+            this.btnInTon_Giao.Text = "In Tồn";
+            this.btnInTon_Giao.UseVisualStyleBackColor = true;
+            this.btnInTon_Giao.Click += new System.EventHandler(this.btnInTon_Giao_Click);
+            // 
             // frmNiemChi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -553,6 +634,7 @@
             this.Load += new System.EventHandler(this.frmNiemChi_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNiemChiTong_Giao)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiemChi_Giao)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -604,6 +686,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbDotChia;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataGridView dgvNiemChiTong_Giao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaNV_Giao;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen_Giao;
         private System.Windows.Forms.DataGridViewTextBoxColumn DotChia_Giao;
@@ -612,5 +701,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SLNhap_Giao;
         private System.Windows.Forms.DataGridViewTextBoxColumn SLSuDung_Giao;
         private System.Windows.Forms.DataGridViewTextBoxColumn SLTon_Giao;
+        private System.Windows.Forms.Button btnInTon_Giao;
     }
 }

@@ -64,7 +64,7 @@ namespace KTKS_DonKH.GUI.HeThong
 
         private void frmDangNhap_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            //Application.Exit();
         }
 
         private void txtMatKhau_KeyPress(object sender, KeyPressEventArgs e)

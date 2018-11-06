@@ -184,5 +184,21 @@ namespace KTKS_DonKH.DAL.ToBamChi
                         };
             return LINQToDataTable(query);
         }
+
+        public DataTable getDSGiao_GroupTong(DateTime CreateDate)
+        {
+            var query = from item in db.NiemChis
+                        where item.CreateDate.Value.Date == CreateDate.Date
+                        group item by new { item.CreateDate.Value.Date, item.MaNV } into itemGroup
+                        select new
+                        {
+                            itemGroup.Key.MaNV,
+                            HoTen = db.Users.SingleOrDefault(itemT => itemT.MaU == itemGroup.Key.MaNV).HoTen,
+                            SLNhap = itemGroup.Count(),
+                            SLSuDung = itemGroup.Count(groupItem => groupItem.SuDung == true),
+                            SLTon = itemGroup.Count() - itemGroup.Count(groupItem => groupItem.SuDung == true),
+                        };
+            return LINQToDataTable(query);
+        }
     }
 }
