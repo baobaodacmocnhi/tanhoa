@@ -412,11 +412,11 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void mnuPhiMoNuocDoi_Click(object sender, EventArgs e)
+        private void mnuDongMoNuocDoi_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen("mnuPhiMoNuocDoi", "Xem"))
+            if (CNguoiDung.CheckQuyen("mnuDongMoNuocDoi", "Xem"))
             {
-                frmPhiMoNuocDoi frm = new frmPhiMoNuocDoi();
+                frmDongMoNuocDoi frm = new frmDongMoNuocDoi();
                 OpenForm(frm);
             }
             else
@@ -1091,24 +1091,24 @@ namespace ThuTien
 
         private void mnuTimKiemKhachHang_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen("mnuTimKiemKhachHang", "Xem"))
-            {
+            //if (CNguoiDung.CheckQuyen("mnuTimKiemKhachHang", "Xem"))
+            //{
                 frmTimKiemKhachHang frm = new frmTimKiemKhachHang();
                 OpenForm(frm);
-            }
-            else
-                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+            //else
+            //    MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void mnuTimKiemDienThoai_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen("mnuTimKiemDienThoai", "Xem"))
-            {
+            //if (CNguoiDung.CheckQuyen("mnuTimKiemDienThoai", "Xem"))
+            //{
                 frmTimKiemDienThoai frm = new frmTimKiemDienThoai();
                 OpenForm(frm);
-            }
-            else
-                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+            //else
+            //    MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion

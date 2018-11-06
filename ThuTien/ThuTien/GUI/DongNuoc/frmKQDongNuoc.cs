@@ -78,6 +78,7 @@ namespace ThuTien.GUI.DongNuoc
             dateMoNuoc.Value = DateTime.Now;
             txtChiSoMN.Text = "";
             chkKhoaTu.Checked = false;
+            chkButChi.Checked = false;
             chkKhongThuTienMoNuoc.Checked = false;
             chkDongNuoc2.Checked = false;
             dateDongNuoc1.Value = DateTime.Now;
@@ -108,6 +109,7 @@ namespace ThuTien.GUI.DongNuoc
             cmbChiKhoaGoc.SelectedItem = entity.ChiKhoaGoc;
             txtLyDo.Text = entity.LyDo;
             chkKhoaTu.Checked = entity.KhoaTu;
+            chkButChi.Checked = entity.ButChi;
             chkKhongThuTienMoNuoc.Checked = entity.KhongThuPhi;
             if (entity.MoNuoc)
             {
@@ -264,6 +266,7 @@ namespace ThuTien.GUI.DongNuoc
                             _kqdongnuoc.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
                         _kqdongnuoc.LyDo = txtLyDo.Text.Trim();
                         _kqdongnuoc.KhoaTu = chkKhoaTu.Checked;
+                        _kqdongnuoc.ButChi = chkButChi.Checked;
                         _kqdongnuoc.KhongThuPhi = chkKhongThuTienMoNuoc.Checked;
 
                         if (chkDongNuoc2.Checked)
@@ -422,6 +425,7 @@ namespace ThuTien.GUI.DongNuoc
                                 kqdongnuoc.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
                             kqdongnuoc.LyDo = txtLyDo.Text.Trim();
                             kqdongnuoc.KhoaTu = chkKhoaTu.Checked;
+                            kqdongnuoc.ButChi = chkButChi.Checked;
                             kqdongnuoc.KhongThuPhi = chkKhongThuTienMoNuoc.Checked;
 
                             kqdongnuoc.PhiMoNuoc = _cDongNuoc.GetPhiMoNuoc();

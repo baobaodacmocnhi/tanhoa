@@ -12,23 +12,24 @@ using ThuTien.LinQ;
 
 namespace ThuTien.GUI.Doi
 {
-    public partial class frmPhiMoNuocDoi : Form
+    public partial class frmDongMoNuocDoi : Form
     {
         CDongNuoc _cDongNuoc = new CDongNuoc();
         CHoaDon _cHoaDon = new CHoaDon();
         CPhiMoNuocDoi _cPhiMoNuocDoi = new CPhiMoNuocDoi();
 
-        public frmPhiMoNuocDoi()
+        public frmDongMoNuocDoi()
         {
             InitializeComponent();
         }
 
         private void frmPhiMoNuocDoi_Load(object sender, EventArgs e)
         {
+            dgvDongNuoc.AutoGenerateColumns = false;
+
             dgvPhiMoNuoc.AutoGenerateColumns = false;
             dgvPhiMoNuocDoi.AutoGenerateColumns = false;
-
-            dgvPhiMoNuocDoi.DataSource = _cPhiMoNuocDoi.GetDS();
+            
         }
 
         private void btnXem_Click(object sender, EventArgs e)
@@ -40,13 +41,15 @@ namespace ThuTien.GUI.Doi
                 if (int.Parse(item.Cells["PhiMoNuoc"].Value.ToString()) / _cDongNuoc.GetPhiMoNuoc() > 1)
                     item.DefaultCellStyle.BackColor = Color.Orange;
             }
+
+            dgvPhiMoNuocDoi.DataSource = _cPhiMoNuocDoi.GetDS();
         }
 
         private void dgvPhiMoNuoc_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (dgvPhiMoNuoc.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null && e.Value.ToString().Length==11)
             {
-                e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
+                e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
             }
         }
 
@@ -73,7 +76,6 @@ namespace ThuTien.GUI.Doi
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
         }
-
 
         private void dgvPhiMoNuocDoi_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -107,6 +109,68 @@ namespace ThuTien.GUI.Doi
                 _cPhiMoNuocDoi.Xoa(entity);
             }
         }
+
+        private void radTatCa_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radTatCa_DongNuoc.Checked == true)
+                panel2.Enabled = false;
+        }
+
+        private void radThoiGian_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radThoiGian_DongNuoc.Checked == true)
+                panel2.Enabled = true;
+        }
+
+        private void btnXem_DongNuoc_Click(object sender, EventArgs e)
+        {
+            if (radTatCa_DongNuoc.Checked == true)
+            {
+                if (radChuaDongPhi_DongNuoc.Checked == true)
+                    dgvDongNuoc.DataSource = _cDongNuoc.getDSKQDongNuoc_ChuaDongPhi();
+                else
+                    if (radCanMoNuoc_DongNuoc.Checked == true)
+                        dgvDongNuoc.DataSource = _cDongNuoc.getDSKQDongNuoc_CanMoNuoc();
+                    else
+                        if (radTroNgaiMoNuoc_DongNuoc.Checked == true)
+                            dgvDongNuoc.DataSource = _cDongNuoc.getDSKQDongNuoc_TroNgaiMoNuoc();
+            }
+            else
+                if (radThoiGian_DongNuoc.Checked == true)
+                {
+                    if (radChuaDongPhi_DongNuoc.Checked == true)
+                        dgvDongNuoc.DataSource = _cDongNuoc.getDSKQDongNuoc_ChuaDongPhi(dateTu_DongNuoc.Value, dateDen_DongNuoc.Value);
+                    else
+                        if (radCanMoNuoc_DongNuoc.Checked == true)
+                            dgvDongNuoc.DataSource = _cDongNuoc.getDSKQDongNuoc_CanMoNuoc(dateTu_DongNuoc.Value, dateDen_DongNuoc.Value);
+                        else
+                            if (radTroNgaiMoNuoc_DongNuoc.Checked == true)
+                                dgvDongNuoc.DataSource = _cDongNuoc.getDSKQDongNuoc_TroNgaiMoNuoc(dateTu_DongNuoc.Value, dateDen_DongNuoc.Value);
+                }
+        }
+
+        private void dgvDongNuoc_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvDongNuoc.Columns[e.ColumnIndex].Name == "MaDN_DongNuoc" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length-2, "-");
+            }
+            if (dgvDongNuoc.Columns[e.ColumnIndex].Name == "DanhBo_DongNuoc" && e.Value != null && e.Value.ToString().Length == 11)
+            {
+                e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
+            }
+        }
+
+        private void dgvDongNuoc_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDongNuoc.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+       
+
 
     }
 }

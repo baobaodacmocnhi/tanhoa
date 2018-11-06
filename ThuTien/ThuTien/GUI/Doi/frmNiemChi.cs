@@ -18,6 +18,8 @@ namespace ThuTien.GUI.Doi
         string _mnu = "mnuNiemChi";
         CNiemChi _cNiemChi = new CNiemChi();
         CTo _cTo = new CTo();
+        CNguoiDung _cNguoiDung = new CNguoiDung();
+        bool _flagFirstLoad = false;
 
         public frmNiemChi()
         {
@@ -34,6 +36,9 @@ namespace ThuTien.GUI.Doi
             cmbTo_Giao.ValueMember = "MaTo";
 
             loadNhap();
+
+            cmbTo_Giao.SelectedIndex = -1;
+            _flagFirstLoad = true;
         }
 
         public void loadNhap()
@@ -229,7 +234,8 @@ namespace ThuTien.GUI.Doi
                             return;
                         }
                         _cNiemChi.SqlBeginTransaction();
-                        string sql = "update TT_NiemChi set MaTo=" + cmbTo_Giao.SelectedValue.ToString() + ",ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getDate() where ID>=" + txtTuSo_Giao.Text.Trim() + " and ID<=" + txtDenSo_Giao.Text.Trim() + " and SuDung=0";
+                        string sql = "update TT_NiemChi set MaTo=" + cmbTo_Giao.SelectedValue.ToString() + ",MaNV=" + cmbNhanVien_Giao.SelectedValue.ToString() + ",ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getDate() where ID>=" + txtTuSo_Giao.Text.Trim() + " and ID<=" + txtDenSo_Giao.Text.Trim() + " and SuDung=0";
+                        //string sql = "update TT_NiemChi set MaTo=" + cmbTo_Giao.SelectedValue.ToString() + ",MaNV=" + cmbNhanVien_Giao.SelectedValue.ToString() + ",ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getDate() where ID>=" + txtTuSo_Giao.Text.Trim() + " and ID<=" + txtDenSo_Giao.Text.Trim();
                         _cNiemChi.ExecuteNonQuery_Transaction(sql);
                         _cNiemChi.SqlCommitTransaction();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -268,7 +274,8 @@ namespace ThuTien.GUI.Doi
                         return;
                     }
                     _cNiemChi.SqlBeginTransaction();
-                    string sql = "update TT_NiemChi set MaTo=NULL,ModifyBy="+CNguoiDung.MaND+",ModifyDate=getDate() where ID>=" + dgvNiemChi_Giao.CurrentRow.Cells["TuSo_Giao"].Value.ToString() + " and ID<=" + dgvNiemChi_Giao.CurrentRow.Cells["DenSo_Giao"].Value.ToString() + " and SuDung=0";
+                    string sql = "update TT_NiemChi set MaTo=NULL,MaNV=NULL,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getDate() where ID>=" + dgvNiemChi_Giao.CurrentRow.Cells["TuSo_Giao"].Value.ToString() + " and ID<=" + dgvNiemChi_Giao.CurrentRow.Cells["DenSo_Giao"].Value.ToString() + " and SuDung=0";
+                    //string sql = "update TT_NiemChi set MaTo=NULL,MaNV=NULL,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getDate() where ID>=" + dgvNiemChi_Giao.CurrentRow.Cells["TuSo_Giao"].Value.ToString() + " and ID<=" + dgvNiemChi_Giao.CurrentRow.Cells["DenSo_Giao"].Value.ToString();
                     _cNiemChi.ExecuteNonQuery_Transaction(sql);
                     _cNiemChi.SqlCommitTransaction();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -289,11 +296,24 @@ namespace ThuTien.GUI.Doi
             {
                 if (dgvNiemChi_Giao["MaTo_Giao", e.RowIndex].Value.ToString() != "")
                     cmbTo_Giao.SelectedValue = dgvNiemChi_Giao["MaTo_Giao", e.RowIndex].Value;
+                if (dgvNiemChi_Giao["MaNV_Giao", e.RowIndex].Value.ToString() != "")
+                    cmbNhanVien_Giao.SelectedValue = dgvNiemChi_Giao["MaNV_Giao", e.RowIndex].Value;
                 txtTuSo_Giao.Text = dgvNiemChi_Giao["TuSo_Giao", e.RowIndex].Value.ToString();
                 txtDenSo_Giao.Text = dgvNiemChi_Giao["DenSo_Giao", e.RowIndex].Value.ToString();
             }
             catch (Exception)
             {
+            }
+        }
+
+        private void cmbTo_Giao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_flagFirstLoad==true&&cmbTo_Giao.Items.Count > 0 && cmbTo_Giao.SelectedIndex > -1)
+            {
+                List<TT_NguoiDung> lst = _cNguoiDung.GetDSHanhThuByMaTo(int.Parse(cmbTo_Giao.SelectedValue.ToString()));
+                cmbNhanVien_Giao.DataSource = lst;
+                cmbNhanVien_Giao.DisplayMember = "HoTen";
+                cmbNhanVien_Giao.ValueMember = "MaND";
             }
         }
 

@@ -17,6 +17,7 @@ using ThuTien.GUI.BaoCao;
 using ThuTien.BaoCao.TimKiem;
 using ThuTien.BaoCao;
 using ThuTien.DAL.QuanTri;
+using ThuTien.DAL.ChuyenKhoan;
 
 namespace ThuTien.GUI.TimKiem
 {
@@ -29,6 +30,7 @@ namespace ThuTien.GUI.TimKiem
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CToTrinhCatHuy _cTTCH = new CToTrinhCatHuy();
         CDocSo _cDocSo = new CDocSo();
+        CDichVuThu _cDichVuThu = new CDichVuThu();
 
         public frmTimKiemKhachHang()
         {
@@ -323,6 +325,11 @@ namespace ThuTien.GUI.TimKiem
                         item.Cells["DangNgan"].Value = "CNKĐ";
                     }
                 }
+        }
+
+        private void btnXemThuHo_Click(object sender, EventArgs e)
+        {
+            dgvThuHo.DataSource=_cDichVuThu.GetDS(txtDanhBo.Text.Trim().Replace(" ", ""));
         }
 
        

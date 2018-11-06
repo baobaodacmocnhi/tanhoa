@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.btnThem = new System.Windows.Forms.Button();
@@ -43,13 +43,6 @@
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvCTToTrinh = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnXem = new System.Windows.Forms.Button();
-            this.radPhoGiamDoc = new System.Windows.Forms.RadioButton();
-            this.radGiamDoc = new System.Windows.Forms.RadioButton();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.radBa = new System.Windows.Forms.RadioButton();
-            this.radOng = new System.Windows.Forms.RadioButton();
             this.ID_CT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +52,13 @@
             this.LyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeNghi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate_CT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnXem = new System.Windows.Forms.Button();
+            this.radPhoGiamDoc = new System.Windows.Forms.RadioButton();
+            this.radGiamDoc = new System.Windows.Forms.RadioButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.radBa = new System.Windows.Forms.RadioButton();
+            this.radOng = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvToTrinh)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -127,14 +127,14 @@
             // 
             this.dgvToTrinh.AllowUserToAddRows = false;
             this.dgvToTrinh.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvToTrinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvToTrinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvToTrinh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvToTrinh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -142,8 +142,8 @@
             this.dgvToTrinh.Location = new System.Drawing.Point(6, 19);
             this.dgvToTrinh.MultiSelect = false;
             this.dgvToTrinh.Name = "dgvToTrinh";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvToTrinh.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvToTrinh.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvToTrinh.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvToTrinh.Size = new System.Drawing.Size(361, 565);
             this.dgvToTrinh.TabIndex = 0;
@@ -178,14 +178,14 @@
             // 
             this.dgvCTToTrinh.AllowUserToAddRows = false;
             this.dgvCTToTrinh.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCTToTrinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCTToTrinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvCTToTrinh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCTToTrinh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_CT,
@@ -199,13 +199,76 @@
             this.CreateDate_CT});
             this.dgvCTToTrinh.Location = new System.Drawing.Point(6, 19);
             this.dgvCTToTrinh.Name = "dgvCTToTrinh";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvCTToTrinh.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvCTToTrinh.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvCTToTrinh.Size = new System.Drawing.Size(913, 565);
             this.dgvCTToTrinh.TabIndex = 22;
             this.dgvCTToTrinh.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvCTToTrinh_CellFormatting);
             this.dgvCTToTrinh.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvCTToTrinh_CellValidating);
             this.dgvCTToTrinh.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvCTToTrinh_RowPostPaint);
+            // 
+            // ID_CT
+            // 
+            this.ID_CT.DataPropertyName = "ID";
+            this.ID_CT.HeaderText = "ID";
+            this.ID_CT.Name = "ID_CT";
+            this.ID_CT.Visible = false;
+            // 
+            // IDCT
+            // 
+            this.IDCT.DataPropertyName = "IDCT";
+            this.IDCT.HeaderText = "IDCT";
+            this.IDCT.Name = "IDCT";
+            this.IDCT.Visible = false;
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Họ Tên";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.Width = 150;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.DataPropertyName = "DiaChi";
+            this.DiaChi.HeaderText = "Địa Chỉ";
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.Width = 200;
+            // 
+            // Ky
+            // 
+            this.Ky.DataPropertyName = "Ky";
+            this.Ky.HeaderText = "Kỳ";
+            this.Ky.Name = "Ky";
+            this.Ky.ReadOnly = true;
+            this.Ky.Width = 50;
+            // 
+            // LyDo
+            // 
+            this.LyDo.DataPropertyName = "LyDo";
+            this.LyDo.HeaderText = "Lý Do";
+            this.LyDo.Name = "LyDo";
+            this.LyDo.Width = 150;
+            // 
+            // DeNghi
+            // 
+            this.DeNghi.DataPropertyName = "DeNghi";
+            this.DeNghi.HeaderText = "Đề Nghị";
+            this.DeNghi.Name = "DeNghi";
+            this.DeNghi.Width = 150;
+            // 
+            // CreateDate_CT
+            // 
+            this.CreateDate_CT.DataPropertyName = "CreateDate";
+            this.CreateDate_CT.HeaderText = "CreateDate";
+            this.CreateDate_CT.Name = "CreateDate_CT";
+            this.CreateDate_CT.Visible = false;
             // 
             // label2
             // 
@@ -279,69 +342,6 @@
             this.radOng.Text = "Ông";
             this.radOng.UseVisualStyleBackColor = true;
             // 
-            // ID_CT
-            // 
-            this.ID_CT.DataPropertyName = "ID";
-            this.ID_CT.HeaderText = "ID";
-            this.ID_CT.Name = "ID_CT";
-            this.ID_CT.Visible = false;
-            // 
-            // IDCT
-            // 
-            this.IDCT.DataPropertyName = "IDCT";
-            this.IDCT.HeaderText = "IDCT";
-            this.IDCT.Name = "IDCT";
-            this.IDCT.Visible = false;
-            // 
-            // DanhBo
-            // 
-            this.DanhBo.DataPropertyName = "DanhBo";
-            this.DanhBo.HeaderText = "Danh Bộ";
-            this.DanhBo.Name = "DanhBo";
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Họ Tên";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.Width = 150;
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.DataPropertyName = "DiaChi";
-            this.DiaChi.HeaderText = "Địa Chỉ";
-            this.DiaChi.Name = "DiaChi";
-            this.DiaChi.Width = 200;
-            // 
-            // Ky
-            // 
-            this.Ky.DataPropertyName = "Ky";
-            this.Ky.HeaderText = "Kỳ";
-            this.Ky.Name = "Ky";
-            this.Ky.ReadOnly = true;
-            this.Ky.Width = 50;
-            // 
-            // LyDo
-            // 
-            this.LyDo.DataPropertyName = "LyDo";
-            this.LyDo.HeaderText = "Lý Do";
-            this.LyDo.Name = "LyDo";
-            this.LyDo.Width = 150;
-            // 
-            // DeNghi
-            // 
-            this.DeNghi.DataPropertyName = "DeNghi";
-            this.DeNghi.HeaderText = "Đề Nghị";
-            this.DeNghi.Name = "DeNghi";
-            this.DeNghi.Width = 150;
-            // 
-            // CreateDate_CT
-            // 
-            this.CreateDate_CT.DataPropertyName = "CreateDate";
-            this.CreateDate_CT.HeaderText = "CreateDate";
-            this.CreateDate_CT.Name = "CreateDate_CT";
-            this.CreateDate_CT.Visible = false;
-            // 
             // frmToTrinhDCHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -360,7 +360,7 @@
             this.Controls.Add(this.txtDanhBo);
             this.Controls.Add(this.label1);
             this.Name = "frmToTrinhDCHD";
-            this.Text = "Tờ Trình Điều Chỉnh Hóa Đơn";
+            this.Text = "Tờ Trình Điều Chỉnh Hóa Đơn (Code F)";
             this.Load += new System.EventHandler(this.frmToTrinhDCHD_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvToTrinh)).EndInit();

@@ -14,6 +14,7 @@ using ThuTien.BaoCao.ChuyenKhoan;
 using ThuTien.GUI.BaoCao;
 using System.Transactions;
 using ThuTien.DAL.DongNuoc;
+using ThuTien.DAL.Doi;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -155,6 +156,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["PhiMoNuocChu"] = _cPhiMoNuoc.ConvertMoneyToWord(dr["PhiMoNuoc"].ToString());
                 }
                 dr["SoTK"] = item.Cells["SoTK_PMN"].Value.ToString();
+                dr["ChucVu"] = CNguoiKy.getChucVu();
+                dr["NguoiKy"] = CNguoiKy.getNguoiKy();
                 ds.Tables["PhiMoNuoc"].Rows.Add(dr);
             }
 

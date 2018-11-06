@@ -95,12 +95,12 @@ namespace ThuTien.DAL.Doi
 
         public bool checkGiao(int FromID, int ToID)
         {
-            return _db.TT_NiemChis.Any(item => item.ID>=FromID && item.ID<=ToID && item.MaTo!=null);
+            return _db.TT_NiemChis.Any(item => item.ID>=FromID && item.ID<=ToID && item.MaNV!=null);
         }
 
         public bool checkGiao(DateTime CreateDate)
         {
-            return _db.TT_NiemChis.Any(item => item.CreateDate.Value.Date == CreateDate.Date && item.MaTo != null);
+            return _db.TT_NiemChis.Any(item => item.CreateDate.Value.Date == CreateDate.Date && item.MaNV != null);
         }
 
         public bool suDung(int ID)
@@ -164,11 +164,13 @@ namespace ThuTien.DAL.Doi
         {
             var query = from item in _db.TT_NiemChis
                         where item.CreateDate.Value.Date == CreateDate.Date
-                        group item by new { item.CreateDate.Value.Date ,item.MaTo} into itemGroup
+                        group item by new { item.CreateDate.Value.Date ,item.MaTo,item.MaNV} into itemGroup
                         select new
                         {
                             itemGroup.Key.MaTo,
-                            TenTo=_db.TT_Tos.SingleOrDefault(itemT=>itemT.MaTo==itemGroup.Key.MaTo).TenTo,
+                            TenTo = _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == itemGroup.Key.MaTo).TenTo,
+                            itemGroup.Key.MaNV,
+                            NhanVien = _db.TT_NguoiDungs.SingleOrDefault(itemT => itemT.MaND == itemGroup.Key.MaNV).HoTen,
                             CreateDate = itemGroup.Key,
                             TuSo = itemGroup.Min(groupItem => groupItem.ID),
                             DenSo = itemGroup.Max(groupItem => groupItem.ID),
