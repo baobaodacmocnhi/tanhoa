@@ -82,12 +82,12 @@ namespace ThuTien.DAL.Doi
             string sql = ";with ttkh as"
                         + " ("
                         + " 	select b.*,'To'=(select TenTo from TT_To where MaTo=nd.MaTo),HanhThu=nd.HoTen from"
-                        + " 	(select DANHBA,HoTen=TENKH,DiaChi=SO+' '+DUONG,HOPDONG,GiaBieu=GB,MLT=MALOTRINH,MaNV_HanhThu,ROW_NUMBER() OVER (PARTITION BY DANHBA ORDER BY CreateDate DESC) AS rn from HOADON) b"
+                        + " 	(select DANHBA,HoTen=TENKH,DiaChi=SO+' '+DUONG,HOPDONG,DOT,GiaBieu=GB,MLT=MALOTRINH,MaNV_HanhThu,ROW_NUMBER() OVER (PARTITION BY DANHBA ORDER BY CreateDate DESC) AS rn from HOADON) b"
                         + " 	left join TT_NguoiDung nd on b.MaNV_HanhThu=nd.MaND"
                         + " 	where rn=1 and DOT>=" + FromDot + " and DOT<=" + ToDot
                         + " )"
                         + " select * from"
-                        + " (select ID,DanhBo,CreateDate from TT_GuiThongBao) a,ttkh"
+                        + " (select ID,DanhBo,CreateDate,[In] from TT_GuiThongBao) a,ttkh"
                         + " where a.DanhBo=ttkh.DANHBA";
             return ExecuteQuery_DataTable(sql);
         }
@@ -97,12 +97,12 @@ namespace ThuTien.DAL.Doi
             string sql = ";with ttkh as"
                         + " ("
                         + " 	select b.*,'To'=(select TenTo from TT_To where MaTo=nd.MaTo),HanhThu=nd.HoTen from"
-                        + " 	(select DANHBA,HoTen=TENKH,DiaChi=SO+' '+DUONG,HOPDONG,MaNV_HanhThu,GiaBieu=GB,MLT=MALOTRINH,ROW_NUMBER() OVER (PARTITION BY DANHBA ORDER BY CreateDate DESC) AS rn from HOADON) b"
+                        + " 	(select DANHBA,HoTen=TENKH,DiaChi=SO+' '+DUONG,HOPDONG,DOT,GiaBieu=GB,MLT=MALOTRINH,MaNV_HanhThu,ROW_NUMBER() OVER (PARTITION BY DANHBA ORDER BY CreateDate DESC) AS rn from HOADON) b"
                         + " 	left join TT_NguoiDung nd on b.MaNV_HanhThu=nd.MaND"
-                        + " 	where rn=1 and DOT>=" + FromDot + " and DOT<=" + ToDot + " and GB=" + GiaBieu
+                        + " 	where rn=1 and DOT>=" + FromDot + " and DOT<=" + ToDot + " and GiaBieu=" + GiaBieu
                         + " )"
                         + " select * from"
-                        + " (select ID,DanhBo,CreateDate from TT_GuiThongBao) a,ttkh"
+                        + " (select ID,DanhBo,CreateDate,[In] from TT_GuiThongBao) a,ttkh"
                         + " where a.DanhBo=ttkh.DANHBA";
             return ExecuteQuery_DataTable(sql);
         }
