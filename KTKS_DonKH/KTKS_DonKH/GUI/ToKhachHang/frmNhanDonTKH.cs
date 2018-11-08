@@ -36,6 +36,8 @@ namespace KTKS_DonKH.GUI.ToKhachHang
         CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
         CTruyThuTienNuoc _cTTTN = new CTruyThuTienNuoc();
         CKTXM _cKTXM = new CKTXM();
+        CGanMoi _cGanMoi = new CGanMoi();
+
         decimal _MaDonTKH = -1;
 
         public frmNhanDonTKH()
@@ -149,7 +151,10 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             }
             else
                 lbTruyThu.Text = "";
-            
+
+          string  strDuongCamDao = _cGanMoi.getDuongCamDao(hoadon.SO , hoadon.DUONG);
+            if(strDuongCamDao!="")
+                MessageBox.Show(strDuongCamDao, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void LoadDonTKH(DonKH entity)

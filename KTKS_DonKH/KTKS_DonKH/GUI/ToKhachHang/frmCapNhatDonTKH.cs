@@ -32,6 +32,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
         CPhongBanDoi _cPhongBanDoi = new CPhongBanDoi();
         CTruyThuTienNuoc _cTTTN = new CTruyThuTienNuoc();
         CKTXM _cKTXM = new CKTXM();
+        CGanMoi _cGanMoi = new CGanMoi();
 
         DataSet _dsNoiChuyen = new DataSet("NoiChuyen");
         DonKH _dontkh = null;
@@ -192,6 +193,10 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                 lbTruyThu.Text = "Tình Trạng Truy Thu: "+str;
             else
                 lbTruyThu.Text = "";
+
+            string strDuongCamDao = _cGanMoi.getDuongCamDao(entity.SO, entity.DUONG);
+            if (strDuongCamDao != "")
+                MessageBox.Show(strDuongCamDao, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void LoadDonTKH(DonKH entity)

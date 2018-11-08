@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>910</ApplicationRevision>
+    <ApplicationRevision>911</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -697,6 +697,7 @@
     <Compile Include="DAL\CallCenter\DateToString.cs" />
     <Compile Include="DAL\CatHuyDanhBo\CCHDB_NoiDungXuLy.cs" />
     <Compile Include="DAL\CDocSo.cs" />
+    <Compile Include="DAL\CGanMoi.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CDataTransfer.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CKhuCongNghiep.cs" />
     <Compile Include="DAL\DonTu\CDonTu.cs" />
