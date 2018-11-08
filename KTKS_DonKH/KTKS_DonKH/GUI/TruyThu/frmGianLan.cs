@@ -744,7 +744,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             foreach (DataGridViewRow item in dgvGianLan.Rows)
             {
-                DataRow dr = dsBaoCao.Tables["GianLan_ChiTiet"].NewRow();
+                DataRow dr = dsBaoCao.Tables["GianLan"].NewRow();
                 dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
 
@@ -791,7 +791,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     dr["SoTien3"] = entity.SoTien3;
                 }
 
-                dsBaoCao.Tables["GianLan_ChiTiet"].Rows.Add(dr);
+                dsBaoCao.Tables["GianLan"].Rows.Add(dr);
             }
             rptDSGianLan rpt = new rptDSGianLan();
             rpt.SetDataSource(dsBaoCao);
@@ -912,9 +912,9 @@ namespace KTKS_DonKH.GUI.TruyThu
 
         private void dgvGianLan_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvGianLan.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
+            if (dgvGianLan.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null )
             {
-                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+                //e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
         }
 

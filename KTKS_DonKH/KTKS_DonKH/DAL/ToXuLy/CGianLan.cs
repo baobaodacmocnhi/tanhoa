@@ -107,7 +107,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                 {
                     string ID = "MaCTGL";
                     string Table = "GianLan_ChiTiet";
-                    decimal MaCTGL = db.ExecuteQuery<decimal>("declare @Ma int " +
+                    int MaCTGL = db.ExecuteQuery<int>("declare @Ma int " +
                         "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
                         "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
                     entity.MaCTGL = (int)getMaxNextIDTable(MaCTGL);
@@ -178,11 +178,11 @@ namespace KTKS_DonKH.DAL.ToXuLy
             switch (Loai)
             {
                 case "TKH":
-                    return db.GianLan_ChiTiets.Any(item => item.GianLan.MaDon == MaDon );
+                    return db.GianLan_ChiTiets.Any(item => item.GianLan.MaDon == MaDon);
                 case "TXL":
-                    return db.GianLan_ChiTiets.Any(item => item.GianLan.MaDonTXL == MaDon );
+                    return db.GianLan_ChiTiets.Any(item => item.GianLan.MaDonTXL == MaDon);
                 case "TBC":
-                    return db.GianLan_ChiTiets.Any(item => item.GianLan.MaDonTBC == MaDon );
+                    return db.GianLan_ChiTiets.Any(item => item.GianLan.MaDonTBC == MaDon);
                 default:
                     return false;
             }
@@ -224,6 +224,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                             item.NoiDungViPham,
                             item.TinhTrang,
                             item.XepDon,
+                            item.CreateDate,
                         };
             return LINQToDataTable(query);
         }
@@ -244,6 +245,8 @@ namespace KTKS_DonKH.DAL.ToXuLy
                             item.NoiDungViPham,
                             item.TinhTrang,
                             item.XepDon,
+                            item.CreateDate,
+                            item.GianLan.MaDonTXL,
                         };
             return LINQToDataTable(query);
         }
@@ -262,17 +265,17 @@ namespace KTKS_DonKH.DAL.ToXuLy
 
         public bool checkExist(int MaDon)
         {
-                    return db.GianLans.Any(item => item.MaDonMoi == MaDon);
+            return db.GianLans.Any(item => item.MaDonMoi == MaDon);
         }
 
         public bool checkExist_ChiTiet(int MaDon, string DanhBo)
         {
-                    return db.GianLan_ChiTiets.Any(item => item.GianLan.MaDonMoi == MaDon && item.DanhBo == DanhBo);
+            return db.GianLan_ChiTiets.Any(item => item.GianLan.MaDonMoi == MaDon && item.DanhBo == DanhBo);
         }
 
         public GianLan get(int MaDon)
         {
-                    return db.GianLans.SingleOrDefault(item => item.MaDonMoi == MaDon);
+            return db.GianLans.SingleOrDefault(item => item.MaDonMoi == MaDon);
         }
 
     }

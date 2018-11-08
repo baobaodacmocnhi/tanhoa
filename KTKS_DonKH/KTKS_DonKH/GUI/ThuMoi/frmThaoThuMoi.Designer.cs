@@ -60,16 +60,16 @@
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvDSThu = new System.Windows.Forms.DataGridView();
-            this.radDutChi = new System.Windows.Forms.RadioButton();
-            this.radCDDM = new System.Windows.Forms.RadioButton();
-            this.txtSoPhieu = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.radRong = new System.Windows.Forms.RadioButton();
             this.SoPhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Lan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CanCu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VaoLuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.radDutChi = new System.Windows.Forms.RadioButton();
+            this.radCDDM = new System.Windows.Forms.RadioButton();
+            this.txtSoPhieu = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.radRong = new System.Windows.Forms.RadioButton();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSThu)).BeginInit();
@@ -149,6 +149,8 @@
             // 
             // txtVeViec
             // 
+            this.txtVeViec.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtVeViec.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtVeViec.Location = new System.Drawing.Point(70, 77);
             this.txtVeViec.Name = "txtVeViec";
             this.txtVeViec.Size = new System.Drawing.Size(487, 22);
@@ -375,6 +377,40 @@
             this.dgvDSThu.TabIndex = 130;
             this.dgvDSThu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSThu_CellContentClick);
             // 
+            // SoPhieu
+            // 
+            this.SoPhieu.DataPropertyName = "SoPhieu";
+            this.SoPhieu.HeaderText = "SoPhieu";
+            this.SoPhieu.Name = "SoPhieu";
+            this.SoPhieu.Visible = false;
+            // 
+            // Lan
+            // 
+            this.Lan.DataPropertyName = "Lan";
+            this.Lan.HeaderText = "Lần";
+            this.Lan.Name = "Lan";
+            this.Lan.Width = 50;
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
+            // 
+            // CanCu
+            // 
+            this.CanCu.DataPropertyName = "CanCu";
+            this.CanCu.HeaderText = "Căn Cứ";
+            this.CanCu.Name = "CanCu";
+            this.CanCu.Width = 200;
+            // 
+            // VaoLuc
+            // 
+            this.VaoLuc.DataPropertyName = "VaoLuc";
+            this.VaoLuc.HeaderText = "Vào Lúc";
+            this.VaoLuc.Name = "VaoLuc";
+            this.VaoLuc.Width = 200;
+            // 
             // radDutChi
             // 
             this.radDutChi.AutoSize = true;
@@ -424,40 +460,6 @@
             this.radRong.TabStop = true;
             this.radRong.Text = "Rỗng";
             this.radRong.UseVisualStyleBackColor = true;
-            // 
-            // SoPhieu
-            // 
-            this.SoPhieu.DataPropertyName = "SoPhieu";
-            this.SoPhieu.HeaderText = "SoPhieu";
-            this.SoPhieu.Name = "SoPhieu";
-            this.SoPhieu.Visible = false;
-            // 
-            // Lan
-            // 
-            this.Lan.DataPropertyName = "Lan";
-            this.Lan.HeaderText = "Lần";
-            this.Lan.Name = "Lan";
-            this.Lan.Width = 50;
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Ngày Lập";
-            this.CreateDate.Name = "CreateDate";
-            // 
-            // CanCu
-            // 
-            this.CanCu.DataPropertyName = "CanCu";
-            this.CanCu.HeaderText = "Căn Cứ";
-            this.CanCu.Name = "CanCu";
-            this.CanCu.Width = 200;
-            // 
-            // VaoLuc
-            // 
-            this.VaoLuc.DataPropertyName = "VaoLuc";
-            this.VaoLuc.HeaderText = "Vào Lúc";
-            this.VaoLuc.Name = "VaoLuc";
-            this.VaoLuc.Width = 200;
             // 
             // frmThaoThuMoi
             // 

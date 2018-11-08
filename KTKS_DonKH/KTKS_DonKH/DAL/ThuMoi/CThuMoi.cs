@@ -351,6 +351,11 @@ namespace KTKS_DonKH.DAL.ThuMoi
             return LINQToDataTable(db.ThuMoi_ChiTiets.Select(item => new { item.CanCu }).ToList().Distinct());
         }
 
+        public DataTable getVeViec()
+        {
+            return LINQToDataTable(db.ThuMoi_ChiTiets.Select(item => new { item.VeViec }).ToList().Distinct());
+        }
+
         //MaDonMoi
 
         public bool checkExist(int MaDon)

@@ -64,6 +64,14 @@ namespace KTKS_DonKH.GUI.ThuMoi
             }
             txtCanCu.AutoCompleteCustomSource = auto1;
 
+            DataTable dt2 = _cThuMoi.getVeViec();
+            AutoCompleteStringCollection auto2 = new AutoCompleteStringCollection();
+            foreach (DataRow item in dt2.Rows)
+            {
+                auto2.Add(item["VeViec"].ToString());
+            }
+            txtVeViec.AutoCompleteCustomSource = auto2;
+
             if (_SoPhieu != -1)
             {
                 txtSoPhieu.Text = _SoPhieu.ToString();
@@ -162,7 +170,6 @@ namespace KTKS_DonKH.GUI.ThuMoi
                     {
                         _dontxl = _cDonTXL.Get(decimal.Parse(txtMaDonCu.Text.Trim().Substring(3).Replace("-", "")));
                         txtMaDonCu.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
-                        
                         dgvDSThu.DataSource = _cThuMoi.getDS_ChiTiet("TXL", _dontxl.MaDon);
 
                         _hoadon = _cThuTien.GetMoiNhat(_dontxl.DanhBo);
@@ -487,13 +494,13 @@ namespace KTKS_DonKH.GUI.ThuMoi
                     dr["SoPhieu"] = _thumoi.ThuMoi.MaDonMoi.ToString();
                 else
                     if (_thumoi.ThuMoi.MaDonTKH != null)
-                        dr["SoPhieu"] = _thumoi.ThuMoi.MaDonTKH.ToString().Insert(_thumoi.ThuMoi.MaDonTKH.ToString().Length - 2, "-");
+                        dr["SoPhieu"] = "TKH" + _thumoi.ThuMoi.MaDonTKH.ToString().Insert(_thumoi.ThuMoi.MaDonTKH.ToString().Length - 2, "-");
                 else
                         if (_thumoi.ThuMoi.MaDonTXL != null)
-                            dr["SoPhieu"] = _thumoi.ThuMoi.MaDonTXL.ToString().Insert(_thumoi.ThuMoi.MaDonTXL.ToString().Length - 2, "-");
+                            dr["SoPhieu"] = "TXL" + _thumoi.ThuMoi.MaDonTXL.ToString().Insert(_thumoi.ThuMoi.MaDonTXL.ToString().Length - 2, "-");
                     else
                             if (_thumoi.ThuMoi.MaDonTBC != null)
-                            dr["SoPhieu"] = _thumoi.ThuMoi.MaDonTBC.ToString().Insert(_thumoi.ThuMoi.MaDonTBC.ToString().Length - 2, "-");
+                            dr["SoPhieu"] = "TBC"+_thumoi.ThuMoi.MaDonTBC.ToString().Insert(_thumoi.ThuMoi.MaDonTBC.ToString().Length - 2, "-");
 
                 dr["HoTen"] = _thumoi.HoTen;
                 dr["DiaChi"] = _thumoi.DiaChi;
