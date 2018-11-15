@@ -117,6 +117,8 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                 if (_cThuTien.GetMoiNhat(dgvDanhBoChuyenKT["DanhBo", e.RowIndex].Value.ToString()) != null)
                 {
                     HOADON hoadon = _cThuTien.GetMoiNhat(dgvDanhBoChuyenKT["DanhBo", e.RowIndex].Value.ToString());
+                    if (e.RowIndex > 0 && dgvDanhBoChuyenKT["GhiChu", e.RowIndex-1].Value.ToString().All(char.IsDigit) == true)
+                        dgvDanhBoChuyenKT["GhiChu", e.RowIndex].Value = int.Parse(dgvDanhBoChuyenKT["GhiChu", e.RowIndex-1].Value.ToString()) + 1;
                     dgvDanhBoChuyenKT["HopDong", e.RowIndex].Value = hoadon.HOPDONG;
                     dgvDanhBoChuyenKT["HoTen", e.RowIndex].Value = hoadon.TENKH;
                     dgvDanhBoChuyenKT["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
@@ -140,6 +142,18 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                 //dgvDanhBo["NgayChuyen", e.RowIndex].Value = dgvDanhBo["NgayChuyen", e.RowIndex - 1].Value;
                 //dgvDanhBo["NguoiDi", e.RowIndex].Value = dgvDanhBo["NguoiDi", e.RowIndex - 1].Value;
             }
+        }
+
+        private void dgvDanhBoChuyenKT_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > 0)
+                if (!_flag)
+                {
+                    dgvDanhBoChuyenKT["NgayChuyen", e.RowIndex].Value = dgvDanhBoChuyenKT["NgayChuyen", e.RowIndex - 1].Value;
+                    dgvDanhBoChuyenKT["NguoiDi", e.RowIndex].Value = dgvDanhBoChuyenKT["NguoiDi", e.RowIndex - 1].Value;
+                }
+                else
+                    _flag = false;
         }
 
         private void dgvDanhBo_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -413,6 +427,8 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                 if (_cThuTien.GetMoiNhat(dgvDanhBoChuyenVanPhong["DanhBoVP", e.RowIndex].Value.ToString()) != null)
                 {
                     HOADON hoadon = _cThuTien.GetMoiNhat(dgvDanhBoChuyenVanPhong["DanhBoVP", e.RowIndex].Value.ToString());
+                    if (e.RowIndex > 0 && dgvDanhBoChuyenVanPhong["GhiChuVP", e.RowIndex-1].Value.ToString().All(char.IsDigit)==true)
+                        dgvDanhBoChuyenVanPhong["GhiChuVP", e.RowIndex].Value = int.Parse(dgvDanhBoChuyenVanPhong["GhiChuVP", e.RowIndex-1].Value.ToString()) + 1;
                     dgvDanhBoChuyenVanPhong["HopDongVP", e.RowIndex].Value = hoadon.HOPDONG;
                     dgvDanhBoChuyenVanPhong["HoTenVP", e.RowIndex].Value = hoadon.TENKH;
                     dgvDanhBoChuyenVanPhong["DiaChiVP", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
@@ -444,18 +460,6 @@ namespace KTKS_DonKH.GUI.ToKhachHang
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
-        }
-
-        private void dgvDanhBoChuyenKT_RowLeave(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex > 0)
-                if (!_flag)
-                {
-                    dgvDanhBoChuyenKT["NgayChuyen", e.RowIndex].Value = dgvDanhBoChuyenKT["NgayChuyen", e.RowIndex - 1].Value;
-                    dgvDanhBoChuyenKT["NguoiDi", e.RowIndex].Value = dgvDanhBoChuyenKT["NguoiDi", e.RowIndex - 1].Value;
-                }
-                else
-                    _flag = false;
         }
 
         private void dgvDanhBoChuyenVanPhong_RowLeave(object sender, DataGridViewCellEventArgs e)

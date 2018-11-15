@@ -1373,56 +1373,55 @@ namespace KTKS_DonKH.GUI.TruyThu
         {
             if (_cttttn != null)
             {
-                // DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-
-                //DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
-
-                //dr["MaDon"] = txtMaDonCu.Text.Trim();
-                //dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " ");
-                //dr["HoTen"] = txtHoTen.Text.Trim();
-                //dr["DiaChi"] = txtDiaChi.Text.Trim();
-                //dr["VaoLuc"] = dgvThuMoi.SelectedRows[0].Cells["VaoLuc"].Value;
-                //dr["VeViec"] = dgvThuMoi.SelectedRows[0].Cells["VeViec"].Value;
-                //dr["Lan"] = dgvThuMoi.SelectedRows[0].Cells["Lan"].Value;
-
-                //dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
-
-                //rptThuMoiTruyThu rpt = new rptThuMoiTruyThu();
-                //rpt.SetDataSource(dsBaoCao);
-                //frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                //frm.ShowDialog();
-
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
+                DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
 
-                if (_cttttn.TruyThuTienNuoc.MaDonMoi != null)
-                    dr["SoPhieu"] = _cttttn.TruyThuTienNuoc.MaDonMoi.ToString();
-                else
-                    if (_cttttn.TruyThuTienNuoc.MaDon != null)
-                        dr["SoPhieu"] = _cttttn.TruyThuTienNuoc.MaDon.ToString().Insert(_cttttn.TruyThuTienNuoc.MaDon.ToString().Length - 2, "-");
-                    else
-                        if (_cttttn.TruyThuTienNuoc.MaDonTXL != null)
-                            dr["SoPhieu"] = _cttttn.TruyThuTienNuoc.MaDonTXL.ToString().Insert(_cttttn.TruyThuTienNuoc.MaDonTXL.ToString().Length - 2, "-");
-                        else
-                            if (_cttttn.TruyThuTienNuoc.MaDonTBC != null)
-                                dr["SoPhieu"] = _cttttn.TruyThuTienNuoc.MaDonTBC.ToString().Insert(_cttttn.TruyThuTienNuoc.MaDonTBC.ToString().Length - 2, "-");
-
-                dr["HoTen"] = _cttttn.HoTen;
-                dr["DiaChi"] = _cttttn.DiaChi;
-                if (!string.IsNullOrEmpty(_cttttn.DanhBo) && _cttttn.DanhBo.Length == 11)
-                    dr["DanhBo"] = _cttttn.DanhBo.Insert(7, " ").Insert(4, " ");
-                dr["GiaBieu"] = _cttttn.GiaBieu.Value.ToString();
-                dr["DinhMuc"] = _cttttn.DinhMuc.Value.ToString();
+                dr["MaDon"] = txtMaDonCu.Text.Trim();
+                dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " ");
+                dr["HoTen"] = txtHoTen.Text.Trim();
+                dr["DiaChi"] = txtDiaChi.Text.Trim();
                 dr["VaoLuc"] = dgvThuMoi.SelectedRows[0].Cells["VaoLuc"].Value;
                 dr["VeViec"] = dgvThuMoi.SelectedRows[0].Cells["VeViec"].Value;
                 dr["Lan"] = dgvThuMoi.SelectedRows[0].Cells["Lan"].Value;
 
-                dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+                dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
 
-                rptThuMoiChuyenDe rpt = new rptThuMoiChuyenDe();
+                rptThuMoiTruyThu rpt = new rptThuMoiTruyThu();
                 rpt.SetDataSource(dsBaoCao);
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.Show();
+
+                //DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                //DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
+
+                //if (_cttttn.TruyThuTienNuoc.MaDonMoi != null)
+                //    dr["SoPhieu"] = _cttttn.TruyThuTienNuoc.MaDonMoi.ToString();
+                //else
+                //    if (_cttttn.TruyThuTienNuoc.MaDon != null)
+                //        dr["SoPhieu"] = _cttttn.TruyThuTienNuoc.MaDon.ToString().Insert(_cttttn.TruyThuTienNuoc.MaDon.ToString().Length - 2, "-");
+                //    else
+                //        if (_cttttn.TruyThuTienNuoc.MaDonTXL != null)
+                //            dr["SoPhieu"] = _cttttn.TruyThuTienNuoc.MaDonTXL.ToString().Insert(_cttttn.TruyThuTienNuoc.MaDonTXL.ToString().Length - 2, "-");
+                //        else
+                //            if (_cttttn.TruyThuTienNuoc.MaDonTBC != null)
+                //                dr["SoPhieu"] = _cttttn.TruyThuTienNuoc.MaDonTBC.ToString().Insert(_cttttn.TruyThuTienNuoc.MaDonTBC.ToString().Length - 2, "-");
+
+                //dr["HoTen"] = _cttttn.HoTen;
+                //dr["DiaChi"] = _cttttn.DiaChi;
+                //if (!string.IsNullOrEmpty(_cttttn.DanhBo) && _cttttn.DanhBo.Length == 11)
+                //    dr["DanhBo"] = _cttttn.DanhBo.Insert(7, " ").Insert(4, " ");
+                //dr["GiaBieu"] = _cttttn.GiaBieu.Value.ToString();
+                //dr["DinhMuc"] = _cttttn.DinhMuc.Value.ToString();
+                //dr["VaoLuc"] = dgvThuMoi.SelectedRows[0].Cells["VaoLuc"].Value;
+                //dr["VeViec"] = dgvThuMoi.SelectedRows[0].Cells["VeViec"].Value;
+                //dr["Lan"] = dgvThuMoi.SelectedRows[0].Cells["Lan"].Value;
+
+                //dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+
+                //rptThuMoiChuyenDe rpt = new rptThuMoiChuyenDe();
+                //rpt.SetDataSource(dsBaoCao);
+                //frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                //frm.Show();
             }
         }
 

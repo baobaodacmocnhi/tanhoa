@@ -189,7 +189,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             rpt.Subreports[0].SetDataSource(dsBaoCao1);
             rpt.Subreports[1].SetDataSource(dsBaoCao2);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void btnXem_Click(object sender, EventArgs e)

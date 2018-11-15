@@ -70,10 +70,9 @@ namespace KTKS_DonKH.GUI.TruyThu
             dgvDSTruyThuTienNuoc.DataSource = null;
         }
 
-
-
         private void btnXem_Click(object sender, EventArgs e)
         {
+            if(radTruyThu.Checked==true)
             switch (cmbTimTheo.SelectedItem.ToString())
             {
                 case "Số Phiếu":
@@ -90,6 +89,9 @@ namespace KTKS_DonKH.GUI.TruyThu
                 default:
                     break;
             }
+            else
+                if(radThuMoi.Checked==true)
+                    dgvDSTruyThuTienNuoc.DataSource = _cTTTN.getDS_ThuMoi(dateTu.Value, dateDen.Value);
             CountdgvDSTruyThuTienNuoc();
         }
 
@@ -122,6 +124,14 @@ namespace KTKS_DonKH.GUI.TruyThu
             }
         }
 
+        private void dgvDSTruyThuTienNuoc_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDSTruyThuTienNuoc.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
+            }
+        }
+
         private void btnIn_Click(object sender, EventArgs e)
         {
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
@@ -150,5 +160,60 @@ namespace KTKS_DonKH.GUI.TruyThu
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();
         }
+
+        private void chkSelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkSelectAll.Checked)
+                for (int i = 0; i < dgvDSTruyThuTienNuoc.Rows.Count; i++)
+                {
+                    dgvDSTruyThuTienNuoc["In", i].Value = true;
+                }
+            else
+                for (int i = 0; i < dgvDSTruyThuTienNuoc.Rows.Count; i++)
+                {
+                    dgvDSTruyThuTienNuoc["In", i].Value = false;
+                }
+        }
+
+        private void btnInNhan_Click(object sender, EventArgs e)
+        {
+            DataSetBaoCao dsBaoCao1 = new DataSetBaoCao();
+            DataSetBaoCao dsBaoCao2 = new DataSetBaoCao();
+            bool flag = true;///in 2 bên
+
+            for (int i = 0; i < dgvDSTruyThuTienNuoc.Rows.Count; i++)
+                if (dgvDSTruyThuTienNuoc["In", i].Value != null && bool.Parse(dgvDSTruyThuTienNuoc["In", i].Value.ToString()) == true)
+                    if (flag == true)
+                    {
+                        DataRow dr = dsBaoCao1.Tables["ThaoThuTraLoi"].NewRow();
+
+                        //TTTL_ChiTiet cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSTruyThuTienNuoc["MaCTTTTL", i].Value.ToString()));
+
+                        dr["HoTen"] = dgvDSTruyThuTienNuoc["HoTen", i].Value.ToString();
+                        dr["DiaChi"] = dgvDSTruyThuTienNuoc["DiaChi", i].Value.ToString();
+
+                        dsBaoCao1.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+                        flag = false;
+                    }
+                    else
+                    {
+                        DataRow dr = dsBaoCao2.Tables["ThaoThuTraLoi"].NewRow();
+
+                        //TTTL_ChiTiet cttttl = _cTTTL.GetCT(decimal.Parse(dgvDSTruyThuTienNuoc["MaCTTTTL", i].Value.ToString()));
+
+                        dr["HoTen"] = dgvDSTruyThuTienNuoc["HoTen", i].Value.ToString();
+                        dr["DiaChi"] = dgvDSTruyThuTienNuoc["DiaChi", i].Value.ToString();
+
+                        dsBaoCao2.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+                        flag = true;
+                    }
+            rptKinhGui rpt = new rptKinhGui();
+            rpt.Subreports[0].SetDataSource(dsBaoCao1);
+            rpt.Subreports[1].SetDataSource(dsBaoCao2);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.Show();
+        }
+
+        
     }
 }

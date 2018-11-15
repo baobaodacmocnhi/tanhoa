@@ -86,23 +86,23 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 txtMaDonMoi.Text = en.ToTrinh.MaDonMoi.Value.ToString();
             }
             else
-            if (en.ToTrinh.MaDon != null)
-            {
-                _dontkh = _cDonKH.Get(en.ToTrinh.MaDon.Value);
-                txtMaDonCu.Text = en.ToTrinh.MaDon.Value.ToString().Insert(en.ToTrinh.MaDon.Value.ToString().Length - 2, "-");
-            }
-            else
-                if (en.ToTrinh.MaDonTXL != null)
+                if (en.ToTrinh.MaDon != null)
                 {
-                    _dontxl = _cDonTXL.Get(en.ToTrinh.MaDonTXL.Value);
-                    txtMaDonCu.Text = "TXL" + en.ToTrinh.MaDonTXL.Value.ToString().Insert(en.ToTrinh.MaDonTXL.Value.ToString().Length - 2, "-");
+                    _dontkh = _cDonKH.Get(en.ToTrinh.MaDon.Value);
+                    txtMaDonCu.Text = en.ToTrinh.MaDon.Value.ToString().Insert(en.ToTrinh.MaDon.Value.ToString().Length - 2, "-");
                 }
                 else
-                    if (en.ToTrinh.MaDonTBC != null)
+                    if (en.ToTrinh.MaDonTXL != null)
                     {
-                        _dontbc = _cDonTBC.Get(en.ToTrinh.MaDonTBC.Value);
-                        txtMaDonCu.Text = "TBC" + en.ToTrinh.MaDonTBC.Value.ToString().Insert(en.ToTrinh.MaDonTBC.Value.ToString().Length - 2, "-");
+                        _dontxl = _cDonTXL.Get(en.ToTrinh.MaDonTXL.Value);
+                        txtMaDonCu.Text = "TXL" + en.ToTrinh.MaDonTXL.Value.ToString().Insert(en.ToTrinh.MaDonTXL.Value.ToString().Length - 2, "-");
                     }
+                    else
+                        if (en.ToTrinh.MaDonTBC != null)
+                        {
+                            _dontbc = _cDonTBC.Get(en.ToTrinh.MaDonTBC.Value);
+                            txtMaDonCu.Text = "TBC" + en.ToTrinh.MaDonTBC.Value.ToString().Insert(en.ToTrinh.MaDonTBC.Value.ToString().Length - 2, "-");
+                        }
 
             txtMaCTTT.Text = en.IDCT.ToString().Insert(en.IDCT.ToString().Length - 2, "-");
             txtDanhBo.Text = en.DanhBo;
@@ -255,58 +255,58 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         cttt.ID = _cTT.get(_dontu_ChiTiet.MaDon.Value).ID;
                     }
                     else
-                    if (_dontkh != null)
-                    {
-                        if (_cTT.CheckExist("TKH", _dontkh.MaDon) == false)
+                        if (_dontkh != null)
                         {
-                            ToTrinh tt = new ToTrinh();
-                            tt.MaDon = _dontkh.MaDon;
-                            _cTT.Them(tt);
-                        }
-                        if (_cTT.checkExist_ChiTiet("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim(), DateTime.Now) == true)
-                        {
-                            MessageBox.Show("Danh Bộ này đã được Lập Thư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            //return;
-                        }
-                        cttt.ID = _cTT.Get("TKH", _dontkh.MaDon).ID;
-                    }
-                    else
-                        if (_dontxl != null)
-                        {
-                            if (_cTT.CheckExist("TXL", _dontxl.MaDon) == false)
+                            if (_cTT.CheckExist("TKH", _dontkh.MaDon) == false)
                             {
                                 ToTrinh tt = new ToTrinh();
-                                tt.MaDonTXL = _dontxl.MaDon;
+                                tt.MaDon = _dontkh.MaDon;
                                 _cTT.Them(tt);
                             }
-                            if (_cTT.checkExist_ChiTiet("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim(), DateTime.Now) == true)
+                            if (_cTT.checkExist_ChiTiet("TKH", _dontkh.MaDon, txtDanhBo.Text.Trim(), DateTime.Now) == true)
                             {
                                 MessageBox.Show("Danh Bộ này đã được Lập Thư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 //return;
                             }
-                            cttt.ID = _cTT.Get("TXL", _dontxl.MaDon).ID;
+                            cttt.ID = _cTT.Get("TKH", _dontkh.MaDon).ID;
                         }
                         else
-                            if (_dontbc != null)
+                            if (_dontxl != null)
                             {
-                                if (_cTT.CheckExist("TBC", _dontbc.MaDon) == false)
+                                if (_cTT.CheckExist("TXL", _dontxl.MaDon) == false)
                                 {
                                     ToTrinh tt = new ToTrinh();
-                                    tt.MaDonTBC = _dontbc.MaDon;
+                                    tt.MaDonTXL = _dontxl.MaDon;
                                     _cTT.Them(tt);
                                 }
-                                if (_cTT.checkExist_ChiTiet("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim(), DateTime.Now) == true)
+                                if (_cTT.checkExist_ChiTiet("TXL", _dontxl.MaDon, txtDanhBo.Text.Trim(), DateTime.Now) == true)
                                 {
                                     MessageBox.Show("Danh Bộ này đã được Lập Thư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     //return;
                                 }
-                                cttt.ID = _cTT.Get("TBC", _dontbc.MaDon).ID;
+                                cttt.ID = _cTT.Get("TXL", _dontxl.MaDon).ID;
                             }
                             else
-                            {
-                                MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
+                                if (_dontbc != null)
+                                {
+                                    if (_cTT.CheckExist("TBC", _dontbc.MaDon) == false)
+                                    {
+                                        ToTrinh tt = new ToTrinh();
+                                        tt.MaDonTBC = _dontbc.MaDon;
+                                        _cTT.Them(tt);
+                                    }
+                                    if (_cTT.checkExist_ChiTiet("TBC", _dontbc.MaDon, txtDanhBo.Text.Trim(), DateTime.Now) == true)
+                                    {
+                                        MessageBox.Show("Danh Bộ này đã được Lập Thư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        //return;
+                                    }
+                                    cttt.ID = _cTT.Get("TBC", _dontbc.MaDon).ID;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
 
                     cttt.DanhBo = txtDanhBo.Text.Trim();
                     cttt.HoTen = txtHoTen.Text.Trim();
@@ -553,6 +553,54 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 }
                 else
                     MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnInDS_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn chắc chắn In những Thư trên?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                PrintDialog printDialog = new PrintDialog();
+                if (printDialog.ShowDialog() == DialogResult.OK)
+                {
+                    for (int i = 0; i < dgvToTrinh.Rows.Count; i++)
+                        if (dgvToTrinh["In", i].Value != null && bool.Parse(dgvToTrinh["In", i].Value.ToString()) == true)
+                        {
+                            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                            DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
+
+                            ToTrinh_ChiTiet cttt = _cTT.get_ChiTiet(int.Parse(dgvToTrinh["IDCT", i].Value.ToString()));
+
+                            dr["SoPhieu"] = cttt.IDCT.ToString().Insert(cttt.IDCT.ToString().Length - 2, "-");
+                            dr["HoTen"] = cttt.HoTen;
+                            dr["DiaChi"] = cttt.DiaChi;
+                            if (!string.IsNullOrEmpty(cttt.DanhBo) && cttt.DanhBo.Length == 11)
+                                dr["DanhBo"] = cttt.DanhBo.Insert(7, " ").Insert(4, " ");
+                            dr["GiaBieu"] = cttt.GiaBieu;
+                            dr["DinhMuc"] = cttt.DinhMuc;
+
+                            dr["VeViec"] = cttt.VeViec;
+                            dr["KinhTrinh"] = cttt.KinhTrinh;
+                            dr["ThongQua"] = cttt.ThongQua;
+                            dr["NoiDung"] = cttt.NoiDung;
+                            dr["NoiNhan"] = cttt.NoiNhan;
+
+                            dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+
+                            rptToTrinh rpt = new rptToTrinh();
+                            rpt.SetDataSource(dsBaoCao);
+
+                            printDialog.AllowSomePages = true;
+                            printDialog.ShowHelp = true;
+
+                            //rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                            //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                            rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+                            rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
+                            rpt.Clone();
+                            rpt.Dispose();
+                        }
+                }
             }
         }
 
