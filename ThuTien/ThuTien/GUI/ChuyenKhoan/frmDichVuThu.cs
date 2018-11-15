@@ -415,8 +415,21 @@ namespace ThuTien.GUI.ChuyenKhoan
                     {
                         foreach (DataGridViewRow item in dgvDichVuThu.SelectedRows)
                         {
-                            TT_DichVuThu dvt = _cDichVuThu.Get(item.Cells["SoHoaDon"].Value.ToString());
-                            _cDichVuThu.Xoa(dvt);
+                            if (item.Cells["IDGiaoDich"].Value.ToString() == "")
+                            {
+                                MessageBox.Show("Xóa cơ chế cũ, Liên hệ BảoBảo để xóa tiếp", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                TT_DichVuThu dvt = _cDichVuThu.Get(item.Cells["SoHoaDon"].Value.ToString());
+                                _cDichVuThu.Xoa(dvt);
+                            }
+                            else
+                            {
+                                _cDichVuThu.BeginTransaction();
+                                _cDichVuThu.ExecuteNonQuery_Transaction("insert TT_DichVuThu_Huy select * from TT_DichVuThu where TenDichVu=N'" + item.Cells["TenDichVu"].Value.ToString() + "' and IDGiaoDich='" + item.Cells["IDGiaoDich"].Value.ToString() + "'");
+                                _cDichVuThu.ExecuteNonQuery_Transaction("delete TT_DichVuThu where TenDichVu=N'" + item.Cells["TenDichVu"].Value.ToString() + "' and IDGiaoDich='" + item.Cells["IDGiaoDich"].Value.ToString() + "'");
+                                _cDichVuThu.ExecuteNonQuery_Transaction("insert TT_DichVuThuTong_Huy select * from TT_DichVuThuTong where TenDichVu=N'" + item.Cells["TenDichVu"].Value.ToString() + "' and IDGiaoDich='" + item.Cells["IDGiaoDich"].Value.ToString() + "'");
+                                _cDichVuThu.ExecuteNonQuery_Transaction("delete TT_DichVuThuTong where TenDichVu=N'" + item.Cells["TenDichVu"].Value.ToString() + "' and IDGiaoDich='" + item.Cells["IDGiaoDich"].Value.ToString() + "'");
+                                _cDichVuThu.CommitTransaction();
+                            }
                         }
                         btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

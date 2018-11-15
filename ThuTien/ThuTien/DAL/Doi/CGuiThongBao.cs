@@ -62,22 +62,22 @@ namespace ThuTien.DAL.Doi
             }
         }
 
-        public bool CheckExist(string DanhBo)
+        public bool checkExist(string DanhBo)
         {
             return _db.TT_GuiThongBaos.Any(item => item.DanhBo == DanhBo);
         }
         
-        public TT_GuiThongBao Get(int ID)
+        public TT_GuiThongBao get(int ID)
         {
             return _db.TT_GuiThongBaos.SingleOrDefault(item => item.ID == ID);
         }
 
-        public DataTable GetDS()
+        public DataTable getDS()
         {
             return LINQToDataTable(_db.TT_GuiThongBaos.ToList());
         }
 
-        public DataTable GetDS(int FromDot, int ToDot)
+        public DataTable getDS(int FromDot, int ToDot)
         {
             string sql = ";with ttkh as"
                         + " ("
@@ -92,7 +92,7 @@ namespace ThuTien.DAL.Doi
             return ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable GetDS(int FromDot, int ToDot,int GiaBieu)
+        public DataTable getDS(int FromDot, int ToDot,int GiaBieu)
         {
             string sql = ";with ttkh as"
                         + " ("
@@ -104,6 +104,21 @@ namespace ThuTien.DAL.Doi
                         + " select * from"
                         + " (select ID,DanhBo,CreateDate,[In] from TT_GuiThongBao) a,ttkh"
                         + " where a.DanhBo=ttkh.DANHBA";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable count()
+        {
+            string sql = ";WITH temp AS"
+                        + " ("
+                        + "    SELECT *,ROW_NUMBER() OVER (PARTITION BY DANHBA ORDER BY CreateDate DESC) AS rn"
+                        + "    FROM HOADON"
+                        + " )"
+                        + " select"
+                        + " Tong=(select COUNT(ID) from TT_GuiThongBao),"
+                        + " DaIn=(select COUNT(ID) from TT_GuiThongBao where [In]=1),"
+                        + " ChuaIn=(select COUNT(ID) from TT_GuiThongBao where [In]=0),"
+                        + " ChuyenKhoan=(select COUNT(a.ID) from TT_GuiThongBao a, temp b where b.rn=1 and b.DangNgan_ChuyenKhoan=1 and a.DanhBo=b.DANHBA)";
             return ExecuteQuery_DataTable(sql);
         }
     }

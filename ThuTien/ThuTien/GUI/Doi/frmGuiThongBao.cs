@@ -45,7 +45,7 @@ namespace ThuTien.GUI.Doi
 
         private void btnXemAll_Click(object sender, EventArgs e)
         {
-            dgvGuiThongBao.DataSource = _cGuiThongBao.GetDS();
+            dgvGuiThongBao.DataSource = _cGuiThongBao.getDS();
         }
 
         private void btnChonFile_Click(object sender, EventArgs e)
@@ -67,7 +67,7 @@ namespace ThuTien.GUI.Doi
                             foreach (DataRow item in dtExcel.Rows)
                                 if (string.IsNullOrEmpty(item[0].ToString()) || item[0].ToString().Replace(" ", "").Length == 11)
                                 {
-                                    if (_cGuiThongBao.CheckExist(item[0].ToString().Replace(" ", "")) == true)
+                                    if (_cGuiThongBao.checkExist(item[0].ToString().Replace(" ", "")) == true)
                                     {
                                         if (MessageBox.Show("Danh Bộ " + item[0].ToString() + " đã có\nBạn có chắc chắn thêm?", "Xác nhận thêm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                                         {
@@ -100,12 +100,12 @@ namespace ThuTien.GUI.Doi
         {
             if (cmbGiaBieu.SelectedIndex == 0)
             {
-                dgvGuiThongBao.DataSource = _cGuiThongBao.GetDS(int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
+                dgvGuiThongBao.DataSource = _cGuiThongBao.getDS(int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
             }
             else
             if (cmbGiaBieu.SelectedIndex > 0)
             {
-                dgvGuiThongBao.DataSource = _cGuiThongBao.GetDS(int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()),int.Parse(cmbGiaBieu.SelectedValue.ToString()));
+                dgvGuiThongBao.DataSource = _cGuiThongBao.getDS(int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()),int.Parse(cmbGiaBieu.SelectedValue.ToString()));
             }
         }
 
@@ -118,7 +118,7 @@ namespace ThuTien.GUI.Doi
                     {
                         foreach (DataGridViewRow item in dgvGuiThongBao.SelectedRows)
                         {
-                            TT_GuiThongBao entity = _cGuiThongBao.Get(int.Parse(item.Cells["ID"].Value.ToString()));
+                            TT_GuiThongBao entity = _cGuiThongBao.get(int.Parse(item.Cells["ID"].Value.ToString()));
                             _cGuiThongBao.Xoa(entity);
                         }
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -148,7 +148,7 @@ namespace ThuTien.GUI.Doi
                 dr["To"] = item.Cells["To"].Value;
                 dr["HanhThu"] = item.Cells["HanhThu"].Value;
                 ds.Tables["DSHoaDon"].Rows.Add(dr);
-                TT_GuiThongBao entity = _cGuiThongBao.Get(int.Parse(item.Cells["ID"].Value.ToString()));
+                TT_GuiThongBao entity = _cGuiThongBao.get(int.Parse(item.Cells["ID"].Value.ToString()));
                 entity.In = true;
                 _cGuiThongBao.Sua(entity);
             }
@@ -190,6 +190,11 @@ namespace ThuTien.GUI.Doi
             rptGuiThongBaoToRoi_PGD rpt = new rptGuiThongBaoToRoi_PGD();
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();
+        }
+
+        private void btnXemCount_Click(object sender, EventArgs e)
+        {
+            dgvCount.DataSource = _cGuiThongBao.count();
         }
 
         

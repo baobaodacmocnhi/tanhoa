@@ -542,7 +542,7 @@
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvTongHopNo.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvTongHopNo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTongHopNo.Size = new System.Drawing.Size(1183, 250);
+            this.dgvTongHopNo.Size = new System.Drawing.Size(1090, 250);
             this.dgvTongHopNo.TabIndex = 56;
             this.dgvTongHopNo.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTongHopNo_CellFormatting);
             this.dgvTongHopNo.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTongHopNo_CellMouseDoubleClick);
@@ -706,7 +706,7 @@
             // 
             this.panel2.Controls.Add(this.radGiamDoc);
             this.panel2.Controls.Add(this.radPhoGiamDoc);
-            this.panel2.Location = new System.Drawing.Point(1201, 379);
+            this.panel2.Location = new System.Drawing.Point(1108, 379);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(100, 50);
             this.panel2.TabIndex = 65;
@@ -748,7 +748,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1360, 675);
+            this.ClientSize = new System.Drawing.Size(1360, 645);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.chkTenKy);
             this.Controls.Add(this.chkChuKy);

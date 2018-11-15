@@ -828,6 +828,8 @@ namespace ThuTien.GUI.DongNuoc
                                 dr["ChiSoDongMoNuoc"] = item.ChiSoDN.Value.ToString("D4");
                             else
                                 dr["ChiSoDongMoNuoc"] = item.ChiSoDN.Value.ToString("D5");
+                            if (item.ButChi == true)
+                                dr["ButChi"] = true;
                             dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                         }
                     }
