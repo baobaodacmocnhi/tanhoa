@@ -191,6 +191,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                         dr["HoTen"] = dgvDSTruyThuTienNuoc["HoTen", i].Value.ToString();
                         dr["DiaChi"] = dgvDSTruyThuTienNuoc["DiaChi", i].Value.ToString();
+                        dr["SoPhieu"] = dgvDSTruyThuTienNuoc["DienThoai", i].Value.ToString();
 
                         dsBaoCao1.Tables["ThaoThuTraLoi"].Rows.Add(dr);
                         flag = false;
@@ -203,6 +204,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                         dr["HoTen"] = dgvDSTruyThuTienNuoc["HoTen", i].Value.ToString();
                         dr["DiaChi"] = dgvDSTruyThuTienNuoc["DiaChi", i].Value.ToString();
+                        dr["SoPhieu"] = dgvDSTruyThuTienNuoc["DienThoai", i].Value.ToString();
 
                         dsBaoCao2.Tables["ThaoThuTraLoi"].Rows.Add(dr);
                         flag = true;

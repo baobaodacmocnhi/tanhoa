@@ -144,6 +144,11 @@ namespace KTKS_DonKH.DAL.ToBamChi
             }
         }
 
+        public NiemChi get(int ID)
+        {
+            return db.NiemChis.SingleOrDefault(item => item.ID == ID);
+        }
+
         public List<NiemChi> getDS(DateTime CreateDate)
         {
             return db.NiemChis.Where(item => item.CreateDate.Value.Date == CreateDate.Date).ToList();
@@ -160,6 +165,7 @@ namespace KTKS_DonKH.DAL.ToBamChi
                             DenSo = itemGroup.Max(groupItem => groupItem.ID),
                             SLNhap = itemGroup.Count(),
                             SLSuDung = itemGroup.Count(groupItem => groupItem.SuDung == true),
+                            SLHuHong = itemGroup.Count(groupItem => groupItem.HuHong == true),
                             SLTon = itemGroup.Count() - itemGroup.Count(groupItem => groupItem.SuDung == true),
                         };
             return LINQToDataTable(query);
@@ -180,6 +186,7 @@ namespace KTKS_DonKH.DAL.ToBamChi
                             DenSo = itemGroup.Max(groupItem => groupItem.ID),
                             SLNhap = itemGroup.Count(),
                             SLSuDung = itemGroup.Count(groupItem => groupItem.SuDung == true),
+                            SLHuHong = itemGroup.Count(groupItem => groupItem.HuHong == true),
                             SLTon = itemGroup.Count() - itemGroup.Count(groupItem => groupItem.SuDung == true),
                         };
             return LINQToDataTable(query);
@@ -196,9 +203,21 @@ namespace KTKS_DonKH.DAL.ToBamChi
                             HoTen = db.Users.SingleOrDefault(itemT => itemT.MaU == itemGroup.Key.MaNV).HoTen,
                             SLNhap = itemGroup.Count(),
                             SLSuDung = itemGroup.Count(groupItem => groupItem.SuDung == true),
+                            SLHuHong = itemGroup.Count(groupItem => groupItem.HuHong == true),
                             SLTon = itemGroup.Count() - itemGroup.Count(groupItem => groupItem.SuDung == true),
                         };
             return LINQToDataTable(query);
+        }
+
+        public string getDSNiemChiTon(int MaNV)
+        {
+            DataTable dt = LINQToDataTable(db.NiemChis.Where(item => item.MaNV == MaNV && item.SuDung == false).ToList());
+            string str = "";
+            foreach (DataRow item in dt.Rows)
+            {
+                    str+=item["ID"].ToString()+"\r\n";
+            }
+            return str;
         }
     }
 }

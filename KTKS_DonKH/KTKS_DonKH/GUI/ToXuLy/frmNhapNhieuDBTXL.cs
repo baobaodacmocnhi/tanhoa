@@ -75,6 +75,8 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 if (_cThuTien.GetMoiNhat(dgvDanhBo["DanhBo", e.RowIndex].Value.ToString()) != null)
                 {
                     HOADON hoadon = _cThuTien.GetMoiNhat(dgvDanhBo["DanhBo", e.RowIndex].Value.ToString());
+                    if (e.RowIndex > 0 && dgvDanhBo["GhiChu", e.RowIndex - 1].Value != null && dgvDanhBo["GhiChu", e.RowIndex - 1].Value.ToString() != "" && dgvDanhBo["GhiChu", e.RowIndex - 1].Value.ToString().All(char.IsDigit) == true)
+                        dgvDanhBo["GhiChu", e.RowIndex].Value = int.Parse(dgvDanhBo["GhiChu", e.RowIndex - 1].Value.ToString()) + 1;
                     dgvDanhBo["HopDong", e.RowIndex].Value = hoadon.HOPDONG;
                     dgvDanhBo["HoTen", e.RowIndex].Value = hoadon.TENKH;
                     dgvDanhBo["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);

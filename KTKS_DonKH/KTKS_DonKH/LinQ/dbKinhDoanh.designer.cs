@@ -34981,6 +34981,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _SuDung;
 		
+		private bool _HuHong;
+		
+		private System.Data.Linq.Binary _imgHuHong;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -35001,6 +35005,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnDotChiaChanged();
     partial void OnSuDungChanging(bool value);
     partial void OnSuDungChanged();
+    partial void OnHuHongChanging(bool value);
+    partial void OnHuHongChanged();
+    partial void OnimgHuHongChanging(System.Data.Linq.Binary value);
+    partial void OnimgHuHongChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -35092,6 +35100,46 @@ namespace KTKS_DonKH.LinQ
 					this._SuDung = value;
 					this.SendPropertyChanged("SuDung");
 					this.OnSuDungChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HuHong", DbType="Bit NOT NULL")]
+		public bool HuHong
+		{
+			get
+			{
+				return this._HuHong;
+			}
+			set
+			{
+				if ((this._HuHong != value))
+				{
+					this.OnHuHongChanging(value);
+					this.SendPropertyChanging();
+					this._HuHong = value;
+					this.SendPropertyChanged("HuHong");
+					this.OnHuHongChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_imgHuHong", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary imgHuHong
+		{
+			get
+			{
+				return this._imgHuHong;
+			}
+			set
+			{
+				if ((this._imgHuHong != value))
+				{
+					this.OnimgHuHongChanging(value);
+					this.SendPropertyChanging();
+					this._imgHuHong = value;
+					this.SendPropertyChanged("imgHuHong");
+					this.OnimgHuHongChanged();
 				}
 			}
 		}

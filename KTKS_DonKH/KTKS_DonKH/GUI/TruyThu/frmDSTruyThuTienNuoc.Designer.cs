@@ -40,12 +40,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtNoiDungTimKiem = new System.Windows.Forms.TextBox();
             this.dgvDSTruyThuTienNuoc = new System.Windows.Forms.DataGridView();
-            this.txtTongm3 = new System.Windows.Forms.TextBox();
-            this.txtTongTien = new System.Windows.Forms.TextBox();
-            this.btnXem = new System.Windows.Forms.Button();
-            this.btnIn = new System.Windows.Forms.Button();
-            this.btnInNhan = new System.Windows.Forms.Button();
-            this.chkSelectAll = new System.Windows.Forms.CheckBox();
             this.In = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +52,12 @@
             this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tongm3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtTongm3 = new System.Windows.Forms.TextBox();
+            this.txtTongTien = new System.Windows.Forms.TextBox();
+            this.btnXem = new System.Windows.Forms.Button();
+            this.btnIn = new System.Windows.Forms.Button();
+            this.btnInNhan = new System.Windows.Forms.Button();
+            this.chkSelectAll = new System.Windows.Forms.CheckBox();
             this.radTruyThu = new System.Windows.Forms.RadioButton();
             this.radThuMoi = new System.Windows.Forms.RadioButton();
             this.panel_KhoangThoiGian.SuspendLayout();
@@ -190,67 +190,11 @@
             this.dgvDSTruyThuTienNuoc.MultiSelect = false;
             this.dgvDSTruyThuTienNuoc.Name = "dgvDSTruyThuTienNuoc";
             this.dgvDSTruyThuTienNuoc.RowHeadersWidth = 60;
-            this.dgvDSTruyThuTienNuoc.Size = new System.Drawing.Size(1229, 535);
+            this.dgvDSTruyThuTienNuoc.Size = new System.Drawing.Size(1174, 535);
             this.dgvDSTruyThuTienNuoc.TabIndex = 25;
             this.dgvDSTruyThuTienNuoc.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSTruyThuTienNuoc_CellFormatting);
             this.dgvDSTruyThuTienNuoc.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSTruyThuTienNuoc_RowPostPaint);
             this.dgvDSTruyThuTienNuoc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSTruyThuTienNuoc_KeyDown);
-            // 
-            // txtTongm3
-            // 
-            this.txtTongm3.Location = new System.Drawing.Point(1024, 601);
-            this.txtTongm3.Name = "txtTongm3";
-            this.txtTongm3.Size = new System.Drawing.Size(100, 22);
-            this.txtTongm3.TabIndex = 26;
-            // 
-            // txtTongTien
-            // 
-            this.txtTongTien.Location = new System.Drawing.Point(1124, 601);
-            this.txtTongTien.Name = "txtTongTien";
-            this.txtTongTien.Size = new System.Drawing.Size(100, 22);
-            this.txtTongTien.TabIndex = 27;
-            // 
-            // btnXem
-            // 
-            this.btnXem.Location = new System.Drawing.Point(692, 14);
-            this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(75, 25);
-            this.btnXem.TabIndex = 28;
-            this.btnXem.Text = "Xem";
-            this.btnXem.UseVisualStyleBackColor = true;
-            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
-            // 
-            // btnIn
-            // 
-            this.btnIn.Location = new System.Drawing.Point(773, 14);
-            this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(75, 25);
-            this.btnIn.TabIndex = 29;
-            this.btnIn.Text = "In";
-            this.btnIn.UseVisualStyleBackColor = true;
-            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
-            // 
-            // btnInNhan
-            // 
-            this.btnInNhan.Location = new System.Drawing.Point(854, 14);
-            this.btnInNhan.Name = "btnInNhan";
-            this.btnInNhan.Size = new System.Drawing.Size(75, 25);
-            this.btnInNhan.TabIndex = 30;
-            this.btnInNhan.Text = "In Nhãn";
-            this.btnInNhan.UseVisualStyleBackColor = true;
-            this.btnInNhan.Click += new System.EventHandler(this.btnInNhan_Click);
-            // 
-            // chkSelectAll
-            // 
-            this.chkSelectAll.AutoSize = true;
-            this.chkSelectAll.ForeColor = System.Drawing.Color.Red;
-            this.chkSelectAll.Location = new System.Drawing.Point(72, 40);
-            this.chkSelectAll.Name = "chkSelectAll";
-            this.chkSelectAll.Size = new System.Drawing.Size(80, 20);
-            this.chkSelectAll.TabIndex = 31;
-            this.chkSelectAll.Text = "In Tất Cả";
-            this.chkSelectAll.UseVisualStyleBackColor = true;
-            this.chkSelectAll.CheckedChanged += new System.EventHandler(this.chkSelectAll_CheckedChanged);
             // 
             // In
             // 
@@ -333,6 +277,62 @@
             this.TongTien.Name = "TongTien";
             this.TongTien.Width = 80;
             // 
+            // txtTongm3
+            // 
+            this.txtTongm3.Location = new System.Drawing.Point(968, 601);
+            this.txtTongm3.Name = "txtTongm3";
+            this.txtTongm3.Size = new System.Drawing.Size(100, 22);
+            this.txtTongm3.TabIndex = 26;
+            // 
+            // txtTongTien
+            // 
+            this.txtTongTien.Location = new System.Drawing.Point(1068, 601);
+            this.txtTongTien.Name = "txtTongTien";
+            this.txtTongTien.Size = new System.Drawing.Size(100, 22);
+            this.txtTongTien.TabIndex = 27;
+            // 
+            // btnXem
+            // 
+            this.btnXem.Location = new System.Drawing.Point(692, 14);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 25);
+            this.btnXem.TabIndex = 28;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
+            // 
+            // btnIn
+            // 
+            this.btnIn.Location = new System.Drawing.Point(773, 14);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(75, 25);
+            this.btnIn.TabIndex = 29;
+            this.btnIn.Text = "In";
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
+            // btnInNhan
+            // 
+            this.btnInNhan.Location = new System.Drawing.Point(854, 14);
+            this.btnInNhan.Name = "btnInNhan";
+            this.btnInNhan.Size = new System.Drawing.Size(75, 25);
+            this.btnInNhan.TabIndex = 30;
+            this.btnInNhan.Text = "In Nhãn";
+            this.btnInNhan.UseVisualStyleBackColor = true;
+            this.btnInNhan.Click += new System.EventHandler(this.btnInNhan_Click);
+            // 
+            // chkSelectAll
+            // 
+            this.chkSelectAll.AutoSize = true;
+            this.chkSelectAll.ForeColor = System.Drawing.Color.Red;
+            this.chkSelectAll.Location = new System.Drawing.Point(72, 40);
+            this.chkSelectAll.Name = "chkSelectAll";
+            this.chkSelectAll.Size = new System.Drawing.Size(80, 20);
+            this.chkSelectAll.TabIndex = 31;
+            this.chkSelectAll.Text = "In Tất Cả";
+            this.chkSelectAll.UseVisualStyleBackColor = true;
+            this.chkSelectAll.CheckedChanged += new System.EventHandler(this.chkSelectAll_CheckedChanged);
+            // 
             // radTruyThu
             // 
             this.radTruyThu.AutoSize = true;
@@ -360,7 +360,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1254, 644);
+            this.ClientSize = new System.Drawing.Size(1202, 644);
             this.Controls.Add(this.radThuMoi);
             this.Controls.Add(this.radTruyThu);
             this.Controls.Add(this.chkSelectAll);

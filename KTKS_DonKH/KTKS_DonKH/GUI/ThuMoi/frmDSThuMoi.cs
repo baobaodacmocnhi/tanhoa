@@ -12,6 +12,7 @@ using KTKS_DonKH.DAL.ThuMoi;
 using KTKS_DonKH.DAL.QuanTri;
 using CrystalDecisions.CrystalReports.Engine;
 using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.LinQ;
 
 namespace KTKS_DonKH.GUI.ThuMoi
 {
@@ -74,7 +75,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                     break;
                 case "Ngày":
                     if (chkCreateBy.Checked == true)
-                        dgvDSThu.DataSource = _cThuMoi.getDS_ChiTiet(CTaiKhoan.MaUser,dateTu.Value, dateDen.Value);
+                        dgvDSThu.DataSource = _cThuMoi.getDS_ChiTiet(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
                     else
                         dgvDSThu.DataSource = _cThuMoi.getDS_ChiTiet(dateTu.Value, dateDen.Value);
                     break;
@@ -90,7 +91,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 PrintDialog printDialog = new PrintDialog();
                 if (printDialog.ShowDialog() == DialogResult.OK)
                 {
-                    
+
                     for (int i = 0; i < dgvDSThu.Rows.Count; i++)
                         if (dgvDSThu["In", i].Value != null && bool.Parse(dgvDSThu["In", i].Value.ToString()) == true)
                         {
@@ -178,11 +179,11 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 dr["LoaiBaoCao"] = "GỬI THƯ MỜI";
                 dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-                if (string.IsNullOrEmpty(item.Cells["DanhBo"].Value.ToString())==false && item.Cells["DanhBo"].Value.ToString().Length == 11)
+                if (string.IsNullOrEmpty(item.Cells["DanhBo"].Value.ToString()) == false && item.Cells["DanhBo"].Value.ToString().Length == 11)
                     dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
                 dr["HoTen"] = item.Cells["HoTen"].Value.ToString();
                 dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
-                
+
                 dsBaoCao.Tables["DanhSach"].Rows.Add(dr);
             }
             rptDanhSach rpt = new rptDanhSach();
@@ -198,6 +199,67 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 frmThaoThuMoi frm = new frmThaoThuMoi(int.Parse(dgvDSThu["SoPhieu", dgvDSThu.CurrentRow.Index].Value.ToString()));
                 frm.ShowDialog();
             }
+        }
+
+        private void btnInNhan_Click(object sender, EventArgs e)
+        {
+            DataSetBaoCao dsBaoCao1 = new DataSetBaoCao();
+            DataSetBaoCao dsBaoCao2 = new DataSetBaoCao();
+            bool flag = true;///in 2 bên
+            ///
+            for (int i = 0; i < dgvDSThu.Rows.Count; i++)
+                if (dgvDSThu["In", i].Value != null && bool.Parse(dgvDSThu["In", i].Value.ToString()) == true)
+                {
+                    ThuMoi_ChiTiet en = _cThuMoi.get_ChiTiet(int.Parse(dgvDSThu["SoPhieu", i].Value.ToString()));
+                    if (en != null)
+                    {
+                        if (flag == true)
+                        {
+                            DataRow dr = dsBaoCao1.Tables["ThaoThuTraLoi"].NewRow();
+
+                            dr["HoTen"] = en.HoTen;
+                            dr["DiaChi"] = en.DiaChi;
+                            if (en.ThuMoi.MaDonMoi != null)
+                                dr["SoPhieu"] = en.ThuMoi.MaDonTKH.ToString() + "/TB";
+                            if (en.ThuMoi.MaDonTKH != null)
+                                dr["SoPhieu"] = "TKH" + en.ThuMoi.MaDonTKH.ToString().Insert(en.ThuMoi.MaDonTKH.ToString().Length - 2, "-") + "/TB";
+                            else
+                                if (en.ThuMoi.MaDonTXL != null)
+                                    dr["SoPhieu"] = "TXL" + en.ThuMoi.MaDonTXL.ToString().Insert(en.ThuMoi.MaDonTXL.ToString().Length - 2, "-") + "/TB";
+                                else
+                                    if (en.ThuMoi.MaDonTBC != null)
+                                        dr["SoPhieu"] = "TBC" + en.ThuMoi.MaDonTBC.ToString().Insert(en.ThuMoi.MaDonTBC.ToString().Length - 2, "-") + "/TB";
+
+                            dsBaoCao1.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+                            flag = false;
+                        }
+                        else
+                        {
+                            DataRow dr = dsBaoCao2.Tables["ThaoThuTraLoi"].NewRow();
+
+                            dr["HoTen"] = en.HoTen;
+                            dr["DiaChi"] = en.DiaChi;
+                            if (en.ThuMoi.MaDonMoi != null)
+                                dr["SoPhieu"] = en.ThuMoi.MaDonTKH.ToString() + "/TB";
+                            if (en.ThuMoi.MaDonTKH != null)
+                                dr["SoPhieu"] = "TKH" + en.ThuMoi.MaDonTKH.ToString().Insert(en.ThuMoi.MaDonTKH.ToString().Length - 2, "-") + "/TB";
+                            else
+                                if (en.ThuMoi.MaDonTXL != null)
+                                    dr["SoPhieu"] = "TXL" + en.ThuMoi.MaDonTXL.ToString().Insert(en.ThuMoi.MaDonTXL.ToString().Length - 2, "-") + "/TB";
+                                else
+                                    if (en.ThuMoi.MaDonTBC != null)
+                                        dr["SoPhieu"] = "TBC" + en.ThuMoi.MaDonTBC.ToString().Insert(en.ThuMoi.MaDonTBC.ToString().Length - 2, "-") + "/TB";
+
+                            dsBaoCao2.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+                            flag = true;
+                        }
+                    }
+                }
+            rptKinhGui rpt = new rptKinhGui();
+            rpt.Subreports[0].SetDataSource(dsBaoCao1);
+            rpt.Subreports[1].SetDataSource(dsBaoCao2);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.ShowDialog();
         }
     }
 }

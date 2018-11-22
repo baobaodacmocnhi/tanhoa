@@ -16,11 +16,11 @@ namespace KTKS_DonKH.DAL.ToXuLy
             {
                 if (db.GianLans.Count() > 0)
                 {
-                    string ID = "MaGL";
+                    string Column = "MaGL";
                     string Table = "GianLan";
-                    decimal MaGL = db.ExecuteQuery<decimal>("declare @Ma int " +
-                        "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
-                        "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                    decimal MaGL = db.ExecuteQuery<int>("declare @Ma int " +
+                        "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + Column + "),LEN(CONVERT(nvarchar(50)," + Column + "))-1,2)) from " + Table + " " +
+                        "select MAX(" + Column + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + Column + "),LEN(CONVERT(nvarchar(50)," + Column + "))-1,2)=@Ma").Single();
                     entity.MaGL = (int)getMaxNextIDTable(MaGL);
                 }
                 else

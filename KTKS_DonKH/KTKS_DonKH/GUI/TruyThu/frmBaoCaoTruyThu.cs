@@ -66,7 +66,7 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                 dr["TuNgay"] = dateTu_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen_ThongKeTruyThu.Value.ToString("dd/MM/yyyy");
-                dr["LoaiBaoCao"] = "ĐÃ THANH TOÁN";
+                dr["LoaiBaoCao"] = cmbTinhTrang.Text.ToUpper();
                 dr["MaDon"] = item["MaDon"].ToString().Insert(item["MaDon"].ToString().Length - 2, "-");
                 dr["SoCongVan"] = item["SoCongVan"];
                 dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");

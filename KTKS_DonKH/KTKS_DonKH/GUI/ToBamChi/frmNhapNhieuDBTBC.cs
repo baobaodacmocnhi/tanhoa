@@ -117,6 +117,8 @@ namespace KTKS_DonKH.GUI.ToBamChi
                 if (_cThuTien.GetMoiNhat(dgvDanhBoChuyenKT["DanhBo", e.RowIndex].Value.ToString()) != null)
                 {
                     HOADON hoadon = _cThuTien.GetMoiNhat(dgvDanhBoChuyenKT["DanhBo", e.RowIndex].Value.ToString());
+                    if (e.RowIndex > 0 && dgvDanhBoChuyenKT["GhiChu", e.RowIndex - 1].Value != null && dgvDanhBoChuyenKT["GhiChu", e.RowIndex - 1].Value.ToString() != "" && dgvDanhBoChuyenKT["GhiChu", e.RowIndex - 1].Value.ToString().All(char.IsDigit) == true)
+                        dgvDanhBoChuyenKT["GhiChu", e.RowIndex].Value = int.Parse(dgvDanhBoChuyenKT["GhiChu", e.RowIndex - 1].Value.ToString()) + 1;
                     dgvDanhBoChuyenKT["HopDong", e.RowIndex].Value = hoadon.HOPDONG;
                     dgvDanhBoChuyenKT["HoTen", e.RowIndex].Value = hoadon.TENKH;
                     dgvDanhBoChuyenKT["DiaChi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
@@ -409,6 +411,8 @@ namespace KTKS_DonKH.GUI.ToBamChi
                 if (_cThuTien.GetMoiNhat(dgvDanhBoChuyenVanPhong["DanhBoVP", e.RowIndex].Value.ToString()) != null)
                 {
                     HOADON hoadon = _cThuTien.GetMoiNhat(dgvDanhBoChuyenVanPhong["DanhBoVP", e.RowIndex].Value.ToString());
+                    if (e.RowIndex > 0 && dgvDanhBoChuyenVanPhong["GhiChuVP", e.RowIndex - 1].Value != null && dgvDanhBoChuyenVanPhong["GhiChuVP", e.RowIndex - 1].Value.ToString() != "" && dgvDanhBoChuyenVanPhong["GhiChuVP", e.RowIndex - 1].Value.ToString().All(char.IsDigit) == true)
+                        dgvDanhBoChuyenVanPhong["GhiChuVP", e.RowIndex].Value = int.Parse(dgvDanhBoChuyenVanPhong["GhiChuVP", e.RowIndex - 1].Value.ToString()) + 1;
                     dgvDanhBoChuyenVanPhong["HopDongVP", e.RowIndex].Value = hoadon.HOPDONG;
                     dgvDanhBoChuyenVanPhong["HoTenVP", e.RowIndex].Value = hoadon.TENKH;
                     dgvDanhBoChuyenVanPhong["DiaChiVP", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG + _cDocSo.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
@@ -426,7 +430,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            if (e.RowIndex > 0 && dgvDanhBoChuyenKT.Columns[e.ColumnIndex].Name == "NguoiDiVP")
+            if (e.RowIndex > 0 && dgvDanhBoChuyenVanPhong.Columns[e.ColumnIndex].Name == "NguoiDiVP")
             {
                 _flag = true;
                 //dgvDanhBo["NgayChuyen", e.RowIndex].Value = dgvDanhBo["NgayChuyen", e.RowIndex - 1].Value;

@@ -276,12 +276,12 @@ namespace KTKS_DonKH.GUI.ToXuLy
                                         {
                                             if (cmbNoiChuyen.SelectedValue.ToString() == "1")///KTXM
                                             {
-                                                LichSuChuyenKTXM lichsuchuyenkt = new LichSuChuyenKTXM();
-                                                lichsuchuyenkt.NgayChuyen = dateChuyen.Value;
-                                                lichsuchuyenkt.NguoiDi = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
-                                                lichsuchuyenkt.GhiChuChuyen = txtGhiChu.Text.Trim();
-                                                lichsuchuyenkt.MaDonTXL = dontxl.MaDon;
-                                                _cLichSuDonTu.Them(lichsuchuyenkt);
+                                                //LichSuChuyenKTXM lichsuchuyenkt = new LichSuChuyenKTXM();
+                                                //lichsuchuyenkt.NgayChuyen = dateChuyen.Value;
+                                                //lichsuchuyenkt.NguoiDi = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+                                                //lichsuchuyenkt.GhiChuChuyen = txtGhiChu.Text.Trim();
+                                                //lichsuchuyenkt.MaDonTXL = dontxl.MaDon;
+                                                //_cLichSuDonTu.Them(lichsuchuyenkt);
 
                                                 dontxl.NguoiDi_KTXM = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
                                                 dontxl.NgayChuyen_KTXM = dateChuyen.Value;
