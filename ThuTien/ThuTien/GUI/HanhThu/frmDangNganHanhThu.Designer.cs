@@ -106,13 +106,6 @@
             this.txtSoLuong = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dgvHDDaThuDum = new System.Windows.Forms.DataGridView();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.lstHD = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnCopyToClipboard = new System.Windows.Forms.Button();
-            this.cmbNhanVien = new System.Windows.Forms.ComboBox();
-            this.lbNhanVien = new System.Windows.Forms.Label();
-            this.btnHuyDangNgan = new System.Windows.Forms.Button();
             this.MaNV_HanhThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaNV_DangNgan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -122,6 +115,13 @@
             this.TongPhiBVMT_Dum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong_Dum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayGiaiTrach_Dum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lstHD = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnCopyToClipboard = new System.Windows.Forms.Button();
+            this.cmbNhanVien = new System.Windows.Forms.ComboBox();
+            this.lbNhanVien = new System.Windows.Forms.Label();
+            this.btnHuyDangNgan = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTongHD)).BeginInit();
@@ -138,7 +138,7 @@
             // 
             this.groupBox1.Controls.Add(this.radChuaThu);
             this.groupBox1.Controls.Add(this.radDaThu);
-            this.groupBox1.Location = new System.Drawing.Point(263, 7);
+            this.groupBox1.Location = new System.Drawing.Point(247, 7);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(119, 70);
             this.groupBox1.TabIndex = 0;
@@ -191,7 +191,7 @@
             "18",
             "19",
             "20"});
-            this.cmbDot.Location = new System.Drawing.Point(612, 14);
+            this.cmbDot.Location = new System.Drawing.Point(596, 14);
             this.cmbDot.Name = "cmbDot";
             this.cmbDot.Size = new System.Drawing.Size(50, 21);
             this.cmbDot.TabIndex = 6;
@@ -199,7 +199,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(579, 17);
+            this.label1.Location = new System.Drawing.Point(563, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(27, 13);
             this.label1.TabIndex = 5;
@@ -207,7 +207,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(668, 12);
+            this.btnXem.Location = new System.Drawing.Point(652, 12);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 7;
@@ -231,7 +231,7 @@
             "10",
             "11",
             "12"});
-            this.cmbKy.Location = new System.Drawing.Point(523, 14);
+            this.cmbKy.Location = new System.Drawing.Point(507, 14);
             this.cmbKy.Name = "cmbKy";
             this.cmbKy.Size = new System.Drawing.Size(50, 21);
             this.cmbKy.TabIndex = 4;
@@ -239,7 +239,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(495, 17);
+            this.label3.Location = new System.Drawing.Point(479, 17);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(22, 13);
             this.label3.TabIndex = 3;
@@ -248,7 +248,7 @@
             // cmbNam
             // 
             this.cmbNam.FormattingEnabled = true;
-            this.cmbNam.Location = new System.Drawing.Point(429, 14);
+            this.cmbNam.Location = new System.Drawing.Point(413, 14);
             this.cmbNam.Name = "cmbNam";
             this.cmbNam.Size = new System.Drawing.Size(60, 21);
             this.cmbNam.TabIndex = 2;
@@ -256,7 +256,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(391, 17);
+            this.label2.Location = new System.Drawing.Point(375, 17);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(32, 13);
             this.label2.TabIndex = 1;
@@ -265,7 +265,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgvTongHD);
-            this.groupBox2.Location = new System.Drawing.Point(263, 83);
+            this.groupBox2.Location = new System.Drawing.Point(247, 83);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(716, 93);
             this.groupBox2.TabIndex = 13;
@@ -369,7 +369,7 @@
             // 
             this.tabControl.Controls.Add(this.tabDaThu);
             this.tabControl.Controls.Add(this.tabChuaThu);
-            this.tabControl.Location = new System.Drawing.Point(263, 182);
+            this.tabControl.Location = new System.Drawing.Point(247, 182);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(945, 453);
@@ -732,7 +732,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(156, 134);
+            this.btnXoa.Location = new System.Drawing.Point(146, 134);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 12;
@@ -742,7 +742,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(156, 105);
+            this.btnSua.Location = new System.Drawing.Point(146, 105);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 11;
@@ -753,7 +753,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(156, 76);
+            this.btnThem.Location = new System.Drawing.Point(146, 76);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 10;
@@ -781,7 +781,7 @@
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(156, 207);
+            this.btnIn.Location = new System.Drawing.Point(146, 207);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(81, 23);
             this.btnIn.TabIndex = 17;
@@ -793,7 +793,7 @@
             // 
             this.dateDangNgan.CustomFormat = "dd/MM/yyyy";
             this.dateDangNgan.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDangNgan.Location = new System.Drawing.Point(156, 259);
+            this.dateDangNgan.Location = new System.Drawing.Point(146, 259);
             this.dateDangNgan.Name = "dateDangNgan";
             this.dateDangNgan.Size = new System.Drawing.Size(95, 20);
             this.dateDangNgan.TabIndex = 23;
@@ -802,7 +802,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(153, 243);
+            this.label6.Location = new System.Drawing.Point(143, 243);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(93, 13);
             this.label6.TabIndex = 22;
@@ -810,7 +810,7 @@
             // 
             // btnInPhieu
             // 
-            this.btnInPhieu.Location = new System.Drawing.Point(156, 285);
+            this.btnInPhieu.Location = new System.Drawing.Point(146, 285);
             this.btnInPhieu.Name = "btnInPhieu";
             this.btnInPhieu.Size = new System.Drawing.Size(75, 23);
             this.btnInPhieu.TabIndex = 21;
@@ -876,73 +876,6 @@
             this.dgvHDDaThuDum.TabIndex = 1;
             this.dgvHDDaThuDum.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHDDaThuDum_CellFormatting);
             this.dgvHDDaThuDum.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvHDDaThuDum_CellMouseDoubleClick);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.dgvHDDaThuDum);
-            this.groupBox3.Location = new System.Drawing.Point(985, 29);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(372, 147);
-            this.groupBox3.TabIndex = 29;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Tăng Cường";
-            // 
-            // lstHD
-            // 
-            this.lstHD.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1});
-            this.lstHD.Location = new System.Drawing.Point(15, 76);
-            this.lstHD.Name = "lstHD";
-            this.lstHD.Size = new System.Drawing.Size(125, 173);
-            this.lstHD.TabIndex = 48;
-            this.lstHD.UseCompatibleStateImageBehavior = false;
-            this.lstHD.View = System.Windows.Forms.View.Details;
-            this.lstHD.SelectedIndexChanged += new System.EventHandler(this.lstHD_SelectedIndexChanged);
-            this.lstHD.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstHD_MouseDoubleClick);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Danh Sách Hóa Đơn";
-            this.columnHeader1.Width = 120;
-            // 
-            // btnCopyToClipboard
-            // 
-            this.btnCopyToClipboard.Location = new System.Drawing.Point(30, 281);
-            this.btnCopyToClipboard.Name = "btnCopyToClipboard";
-            this.btnCopyToClipboard.Size = new System.Drawing.Size(110, 23);
-            this.btnCopyToClipboard.TabIndex = 71;
-            this.btnCopyToClipboard.Text = "Copy to Clipboard";
-            this.btnCopyToClipboard.UseVisualStyleBackColor = true;
-            this.btnCopyToClipboard.Click += new System.EventHandler(this.btnCopyToClipboard_Click);
-            // 
-            // cmbNhanVien
-            // 
-            this.cmbNhanVien.FormattingEnabled = true;
-            this.cmbNhanVien.Location = new System.Drawing.Point(815, 14);
-            this.cmbNhanVien.Name = "cmbNhanVien";
-            this.cmbNhanVien.Size = new System.Drawing.Size(118, 21);
-            this.cmbNhanVien.TabIndex = 73;
-            this.cmbNhanVien.Visible = false;
-            // 
-            // lbNhanVien
-            // 
-            this.lbNhanVien.AutoSize = true;
-            this.lbNhanVien.Location = new System.Drawing.Point(749, 17);
-            this.lbNhanVien.Name = "lbNhanVien";
-            this.lbNhanVien.Size = new System.Drawing.Size(60, 13);
-            this.lbNhanVien.TabIndex = 72;
-            this.lbNhanVien.Text = "Nhân Viên:";
-            this.lbNhanVien.Visible = false;
-            // 
-            // btnHuyDangNgan
-            // 
-            this.btnHuyDangNgan.Location = new System.Drawing.Point(668, 41);
-            this.btnHuyDangNgan.Name = "btnHuyDangNgan";
-            this.btnHuyDangNgan.Size = new System.Drawing.Size(95, 23);
-            this.btnHuyDangNgan.TabIndex = 74;
-            this.btnHuyDangNgan.Text = "Hủy Đăng Ngân";
-            this.btnHuyDangNgan.UseVisualStyleBackColor = true;
-            this.btnHuyDangNgan.Click += new System.EventHandler(this.btnHuyDangNgan_Click);
             // 
             // MaNV_HanhThu
             // 
@@ -1015,6 +948,73 @@
             this.NgayGiaiTrach_Dum.HeaderText = "Ngày Giải Trách";
             this.NgayGiaiTrach_Dum.Name = "NgayGiaiTrach_Dum";
             this.NgayGiaiTrach_Dum.ReadOnly = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.dgvHDDaThuDum);
+            this.groupBox3.Location = new System.Drawing.Point(970, 29);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(372, 147);
+            this.groupBox3.TabIndex = 29;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Tăng Cường";
+            // 
+            // lstHD
+            // 
+            this.lstHD.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.lstHD.Location = new System.Drawing.Point(15, 76);
+            this.lstHD.Name = "lstHD";
+            this.lstHD.Size = new System.Drawing.Size(125, 173);
+            this.lstHD.TabIndex = 48;
+            this.lstHD.UseCompatibleStateImageBehavior = false;
+            this.lstHD.View = System.Windows.Forms.View.Details;
+            this.lstHD.SelectedIndexChanged += new System.EventHandler(this.lstHD_SelectedIndexChanged);
+            this.lstHD.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstHD_MouseDoubleClick);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Danh Sách Hóa Đơn";
+            this.columnHeader1.Width = 120;
+            // 
+            // btnCopyToClipboard
+            // 
+            this.btnCopyToClipboard.Location = new System.Drawing.Point(30, 281);
+            this.btnCopyToClipboard.Name = "btnCopyToClipboard";
+            this.btnCopyToClipboard.Size = new System.Drawing.Size(110, 23);
+            this.btnCopyToClipboard.TabIndex = 71;
+            this.btnCopyToClipboard.Text = "Copy to Clipboard";
+            this.btnCopyToClipboard.UseVisualStyleBackColor = true;
+            this.btnCopyToClipboard.Click += new System.EventHandler(this.btnCopyToClipboard_Click);
+            // 
+            // cmbNhanVien
+            // 
+            this.cmbNhanVien.FormattingEnabled = true;
+            this.cmbNhanVien.Location = new System.Drawing.Point(800, 14);
+            this.cmbNhanVien.Name = "cmbNhanVien";
+            this.cmbNhanVien.Size = new System.Drawing.Size(118, 21);
+            this.cmbNhanVien.TabIndex = 73;
+            this.cmbNhanVien.Visible = false;
+            // 
+            // lbNhanVien
+            // 
+            this.lbNhanVien.AutoSize = true;
+            this.lbNhanVien.Location = new System.Drawing.Point(733, 17);
+            this.lbNhanVien.Name = "lbNhanVien";
+            this.lbNhanVien.Size = new System.Drawing.Size(60, 13);
+            this.lbNhanVien.TabIndex = 72;
+            this.lbNhanVien.Text = "Nhân Viên:";
+            this.lbNhanVien.Visible = false;
+            // 
+            // btnHuyDangNgan
+            // 
+            this.btnHuyDangNgan.Location = new System.Drawing.Point(652, 41);
+            this.btnHuyDangNgan.Name = "btnHuyDangNgan";
+            this.btnHuyDangNgan.Size = new System.Drawing.Size(95, 23);
+            this.btnHuyDangNgan.TabIndex = 74;
+            this.btnHuyDangNgan.Text = "Hủy Đăng Ngân";
+            this.btnHuyDangNgan.UseVisualStyleBackColor = true;
+            this.btnHuyDangNgan.Click += new System.EventHandler(this.btnHuyDangNgan_Click);
             // 
             // frmDangNganHanhThu
             // 

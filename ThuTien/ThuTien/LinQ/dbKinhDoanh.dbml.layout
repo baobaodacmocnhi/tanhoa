@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14, 49.375" name="dbKTKS_DonKH">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.75, 49.375" name="dbKTKS_DonKH">
   <DataContextMoniker Name="/dbKTKS_DonKHDataContext" />
   <nestedChildShapes>
     <classShape Id="ca0219e7-910b-4e09-8e17-50f81d042855" absoluteBounds="5.625, 4, 2, 8.8860498046875">
@@ -85,11 +85,5 @@
         <classShapeMoniker Id="da31a3be-b05b-487d-9557-fb2b8a3aae0f" />
       </nodes>
     </associationConnector>
-    <classShape Id="cc3055cb-1837-480d-9728-d149a1529035" absoluteBounds="11.75, 2.25, 2, 2.1554996744791666">
-      <DataClassMoniker Name="/dbKTKS_DonKHDataContext/NiemChi" />
-      <nestedChildShapes>
-        <elementListCompartment Id="fd96c126-dd2b-4387-9faa-122d6e0db9d8" absoluteBounds="11.765, 2.71, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

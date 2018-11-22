@@ -828,8 +828,9 @@ namespace ThuTien.GUI.DongNuoc
                                 dr["ChiSoDongMoNuoc"] = item.ChiSoDN.Value.ToString("D4");
                             else
                                 dr["ChiSoDongMoNuoc"] = item.ChiSoDN.Value.ToString("D5");
-                            if (item.ButChi == true)
-                                dr["ButChi"] = true;
+                            dr["ChucVu"] = CNguoiKy.getChucVu();
+                            dr["NguoiKy"] = CNguoiKy.getNguoiKy();
+
                             dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                         }
                     }
@@ -855,6 +856,14 @@ namespace ThuTien.GUI.DongNuoc
                                 }
 
                             lst = lst.Concat(_cDongNuoc.GetDSKQDongNuocBySoPhieuMN(SoPhieuMN)).ToList();
+
+                            bool flagButChi = false;
+                            foreach (TT_KQDongNuoc item in lst)
+                                if (item.ButChi == true)
+                                {
+                                    flagButChi = true;
+                                    break;
+                                }
                             foreach (TT_KQDongNuoc item in lst)
                             {
                                 DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
@@ -882,10 +891,15 @@ namespace ThuTien.GUI.DongNuoc
                                 }
                                 dr["Ky"] = Ky;
                                 dr["NgayDongMoNuoc"] = item.NgayMN;
-                                    if (item.Co <= 25)
-                                        dr["ChiSoDongMoNuoc"] = item.ChiSoMN.Value.ToString("D4");
-                                    else
-                                        dr["ChiSoDongMoNuoc"] = item.ChiSoMN.Value.ToString("D5");
+                                if (item.Co <= 25)
+                                    dr["ChiSoDongMoNuoc"] = item.ChiSoMN.Value.ToString("D4");
+                                else
+                                    dr["ChiSoDongMoNuoc"] = item.ChiSoMN.Value.ToString("D5");
+                                if(item.ButChi==true)
+                                    dr["ButChi"] = true;
+                                dr["ButChiParent"] = flagButChi;
+                                dr["ChucVu"] = CNguoiKy.getChucVu();
+                                dr["NguoiKy"] = CNguoiKy.getNguoiKy();
 
                                 dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                             }

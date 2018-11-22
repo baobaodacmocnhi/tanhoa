@@ -4669,6 +4669,24 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
+        public DataTable GetTongDangNgan_PhanKyLon(int MaNV_DangNgan,int Nam,int Ky, DateTime NgayGiaiTrach)
+        {
+            string sql = "select MaNV=MaNV_DangNgan,HoTen=(select HoTen from TT_NguoiDung where MaND=MaNV_DangNgan),TongHD=COUNT(ID_HOADON),SUM(GIABAN)as TongGiaBan,SUM(THUE)as TongThueGTGT,SUM(PHI)as TongPhiBVMT,SUM(TONGCONG)as TongCong,"
+                        + " TongTienDu=SUM(TienDu),TongTienMat=SUM(TienMat)"
+                        + " from HOADON where MaNV_DangNgan="+MaNV_DangNgan+" and NAM=" + Nam + " and KY=" + Ky + " and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "'"
+                        + " group by MaNV_DangNgan";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetTongDangNgan_PhanKyNho(int MaNV_DangNgan, int Nam, int Ky, DateTime NgayGiaiTrach)
+        {
+            string sql = "select MaNV=MaNV_DangNgan,HoTen=(select HoTen from TT_NguoiDung where MaND=MaNV_DangNgan),TongHD=COUNT(ID_HOADON),SUM(GIABAN)as TongGiaBan,SUM(THUE)as TongThueGTGT,SUM(PHI)as TongPhiBVMT,SUM(TONGCONG)as TongCong,"
+                        + " TongTienDu=SUM(TienDu),TongTienMat=SUM(TienMat)"
+                        + " from HOADON where MaNV_DangNgan=" + MaNV_DangNgan + " and (NAM<" + Nam + " or (NAM=" + Nam + " and KY<" + Ky + ")) and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "'"
+                        + " group by MaNV_DangNgan";
+            return ExecuteQuery_DataTable(sql);
+        }
+
         public DataTable GetTongDangNgan(string Loai, int MaNV_DangNgan, DateTime TuNgay, DateTime DenNgay)
         {
             if (Loai == "TG")
