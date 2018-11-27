@@ -45,6 +45,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
             dgvNiemChi_Nhap.DataSource = _cNiemChi.getDSNhap_Group();
             int SLNhap = 0;
             int SLSuDung = 0;
+            int SLHuHong = 0;
             int SLTon = 0;
             foreach (DataGridViewRow item in dgvNiemChi_Nhap.Rows)
             {
@@ -52,11 +53,14 @@ namespace KTKS_DonKH.GUI.ToBamChi
                     SLNhap += int.Parse(item.Cells["SLNhap_Nhap"].Value.ToString());
                 if (!string.IsNullOrEmpty(item.Cells["SLSuDung_Nhap"].Value.ToString()))
                     SLSuDung += int.Parse(item.Cells["SLSuDung_Nhap"].Value.ToString());
+                if (!string.IsNullOrEmpty(item.Cells["SLHuHong_Nhap"].Value.ToString()))
+                    SLHuHong += int.Parse(item.Cells["SLHuHong_Nhap"].Value.ToString());
                 if (!string.IsNullOrEmpty(item.Cells["SLTon_Nhap"].Value.ToString()))
                     SLTon += int.Parse(item.Cells["SLTon_Nhap"].Value.ToString());
             }
             txtSLNhap_Nhap.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLNhap);
             txtSLSuDung_Nhap.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLSuDung);
+            txtSLHuHong_Nhap.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLHuHong);
             txtSLTon_Nhap.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLTon);
         }
 
@@ -167,6 +171,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
             dgvNiemChi_Giao.DataSource = _cNiemChi.getDSGiao_Group(dateLap_Giao.Value);
             int SLNhap = 0;
             int SLSuDung = 0;
+            int SLHuHong = 0;
             int SLTon = 0;
             foreach (DataGridViewRow item in dgvNiemChi_Giao.Rows)
             {
@@ -174,11 +179,14 @@ namespace KTKS_DonKH.GUI.ToBamChi
                     SLNhap += int.Parse(item.Cells["SLNhap_Giao"].Value.ToString());
                 if (!string.IsNullOrEmpty(item.Cells["SLSuDung_Giao"].Value.ToString()))
                     SLSuDung += int.Parse(item.Cells["SLSuDung_Giao"].Value.ToString());
+                if (!string.IsNullOrEmpty(item.Cells["SLHuHong_Giao"].Value.ToString()))
+                    SLHuHong += int.Parse(item.Cells["SLHuHong_Giao"].Value.ToString());
                 if (!string.IsNullOrEmpty(item.Cells["SLTon_Giao"].Value.ToString()))
                     SLTon += int.Parse(item.Cells["SLTon_Giao"].Value.ToString());
             }
             txtSLNhap_Giao.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLNhap);
             txtSLSuDung_Giao.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLSuDung);
+            txtSLHuHong_Giao.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLHuHong);
             txtSLTon_Giao.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLTon);
 
             dgvNiemChiTong_Giao.DataSource = _cNiemChi.getDSGiao_GroupTong(dateLap_Giao.Value);

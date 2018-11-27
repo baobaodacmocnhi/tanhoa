@@ -427,7 +427,7 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                 if (_cThuTien.GetMoiNhat(dgvDanhBoChuyenVanPhong["DanhBoVP", e.RowIndex].Value.ToString()) != null)
                 {
                     HOADON hoadon = _cThuTien.GetMoiNhat(dgvDanhBoChuyenVanPhong["DanhBoVP", e.RowIndex].Value.ToString());
-                    if (e.RowIndex > 0 && dgvDanhBoChuyenVanPhong["GhiChuVP", e.RowIndex-1].Value.ToString().All(char.IsDigit)==true)
+                    if (e.RowIndex > 0 && dgvDanhBoChuyenVanPhong["GhiChuVP", e.RowIndex - 1].Value != null && dgvDanhBoChuyenVanPhong["GhiChuVP", e.RowIndex - 1].Value.ToString() != "" && dgvDanhBoChuyenVanPhong["GhiChuVP", e.RowIndex - 1].Value.ToString().All(char.IsDigit) == true)
                         dgvDanhBoChuyenVanPhong["GhiChuVP", e.RowIndex].Value = int.Parse(dgvDanhBoChuyenVanPhong["GhiChuVP", e.RowIndex-1].Value.ToString()) + 1;
                     dgvDanhBoChuyenVanPhong["HopDongVP", e.RowIndex].Value = hoadon.HOPDONG;
                     dgvDanhBoChuyenVanPhong["HoTenVP", e.RowIndex].Value = hoadon.TENKH;
