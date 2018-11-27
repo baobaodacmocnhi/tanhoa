@@ -201,15 +201,27 @@ namespace ThuTien.GUI.DongNuoc
                     {
                         _cDongNuoc.SqlBeginTransaction();
 
-                        for (int i = 0; i < gridViewDN.SelectedRowsCount; i++)
-                            if (gridViewDN.GetSelectedRows()[i] >= 0)
-                                if (!_cDongNuoc.CheckExist_KQDongNuoc(decimal.Parse(gridViewDN.GetDataRow(gridViewDN.GetSelectedRows()[i])["MaDN"].ToString())))
-                                    if (!_cDongNuoc.Xoa(decimal.Parse(gridViewDN.GetDataRow(gridViewDN.GetSelectedRows()[i])["MaDN"].ToString())))
+                        DataTable dt = ((DataTable)gridControl.DataSource).DefaultView.Table;
+                        foreach (DataRow item in dt.Rows)
+                            if (bool.Parse(item["In"].ToString()))
+                            {
+                                if (!_cDongNuoc.CheckExist_KQDongNuoc(decimal.Parse(item["MaDN"].ToString())))
+                                    if (!_cDongNuoc.Xoa(decimal.Parse(item["MaDN"].ToString())))
                                     {
                                         _cHoaDon.SqlRollbackTransaction();
                                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         return;
                                     }
+                            }
+                        //for (int i = 0; i < gridViewDN.SelectedRowsCount; i++)
+                        //    if (gridViewDN.GetSelectedRows()[i] >= 0)
+                        //        if (!_cDongNuoc.CheckExist_KQDongNuoc(decimal.Parse(gridViewDN.GetDataRow(gridViewDN.GetSelectedRows()[i])["MaDN"].ToString())))
+                        //            if (!_cDongNuoc.Xoa(decimal.Parse(gridViewDN.GetDataRow(gridViewDN.GetSelectedRows()[i])["MaDN"].ToString())))
+                        //            {
+                        //                _cHoaDon.SqlRollbackTransaction();
+                        //                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //                return;
+                        //            }
 
                         _cDongNuoc.SqlCommitTransaction();
                         btnXem.PerformClick();
@@ -348,6 +360,10 @@ namespace ThuTien.GUI.DongNuoc
             if (e.Column.FieldName == "MaDN" && e.Value != null)
             {
                 e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+            if (e.Column.FieldName == "TongCongLenh" && e.Value != null)
+            {
+                e.DisplayText = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
         }
 

@@ -285,7 +285,7 @@ namespace ThuTien.GUI.ToTruong
                     {
                         if (dgvHDTuGia.RowCount > 0 && cmbNhanVien.SelectedIndex != -1 && txtTuSoPhatHanh.Text.Trim() != "" && txtDenSoPhatHanh.Text.Trim() != "")
                         {
-                            if (int.Parse(txtTuSoPhatHanh.Text.Trim()) < int.Parse(txtDenSoPhatHanh.Text.Trim()))
+                            if (int.Parse(txtTuSoPhatHanh.Text.Trim()) <= int.Parse(txtDenSoPhatHanh.Text.Trim()))
                                 if (!_cHoaDon.CheckGiaoBySoPhatHanhsNam(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString())))
                                     if (_cHoaDon.CheckSoPhatHanhByNamKyDot("", CNguoiDung.MaTo, decimal.Parse(txtTuSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()))
                                         && _cHoaDon.CheckSoPhatHanhByNamKyDot("", CNguoiDung.MaTo, decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
@@ -308,7 +308,7 @@ namespace ThuTien.GUI.ToTruong
                         {
                             if (dgvHDCoQuan.RowCount > 0 && cmbNhanVien.SelectedIndex != -1 && txtTuSoPhatHanh.Text.Trim() != "" && txtDenSoPhatHanh.Text.Trim() != "")
                             {
-                                if (int.Parse(txtTuSoPhatHanh.Text.Trim()) < int.Parse(txtDenSoPhatHanh.Text.Trim()))
+                                if (int.Parse(txtTuSoPhatHanh.Text.Trim()) <= int.Parse(txtDenSoPhatHanh.Text.Trim()))
                                     if (!_cHoaDon.CheckGiaoBySoPhatHanhsNam(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString())))
                                         if (_cHoaDon.CheckSoPhatHanhByNamKyDot("CQ", CNguoiDung.MaTo, decimal.Parse(txtTuSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()))
                                             && _cHoaDon.CheckSoPhatHanhByNamKyDot("CQ", CNguoiDung.MaTo, decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))

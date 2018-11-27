@@ -50,6 +50,7 @@
             this.DiaChi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MLT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CreateDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TongCongLenh = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CreateBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaNV_DongNuoc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ThemHoaDon = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -196,7 +197,7 @@
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gridControl.Size = new System.Drawing.Size(728, 590);
+            this.gridControl.Size = new System.Drawing.Size(804, 590);
             this.gridControl.TabIndex = 25;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewDN,
@@ -212,6 +213,7 @@
             this.DiaChi,
             this.MLT,
             this.CreateDate,
+            this.TongCongLenh,
             this.CreateBy,
             this.MaNV_DongNuoc,
             this.ThemHoaDon});
@@ -294,6 +296,14 @@
             this.CreateDate.Visible = true;
             this.CreateDate.VisibleIndex = 6;
             this.CreateDate.Width = 70;
+            // 
+            // TongCongLenh
+            // 
+            this.TongCongLenh.Caption = "Tổng Cộng";
+            this.TongCongLenh.FieldName = "TongCongLenh";
+            this.TongCongLenh.Name = "TongCongLenh";
+            this.TongCongLenh.Visible = true;
+            this.TongCongLenh.VisibleIndex = 7;
             // 
             // CreateBy
             // 
@@ -747,6 +757,7 @@
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn TongCongLenh;
 
     }
 }

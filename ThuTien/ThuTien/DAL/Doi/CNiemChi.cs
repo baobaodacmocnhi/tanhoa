@@ -139,6 +139,11 @@ namespace ThuTien.DAL.Doi
             }
         }
 
+        public TT_NiemChi get(int ID)
+        {
+            return _db.TT_NiemChis.SingleOrDefault(item => item.ID == ID);
+        }
+
         public List<TT_NiemChi> getDS(DateTime CreateDate)
         {
             return _db.TT_NiemChis.Where(item => item.CreateDate.Value.Date == CreateDate.Date).ToList();
@@ -155,7 +160,8 @@ namespace ThuTien.DAL.Doi
                             DenSo = itemGroup.Max(groupItem => groupItem.ID),
                             SLNhap = itemGroup.Count(),
                             SLSuDung = itemGroup.Count(groupItem => groupItem.SuDung==true),
-                            SLTon = itemGroup.Count() - itemGroup.Count(groupItem => groupItem.SuDung == true),
+                            SLHuHong = itemGroup.Count(groupItem => groupItem.HuHong == true),
+                            SLTon = itemGroup.Count() - itemGroup.Count(groupItem => groupItem.SuDung == true) - itemGroup.Count(groupItem => groupItem.HuHong == true),
                         };
             return LINQToDataTable(query);
         }
@@ -176,9 +182,21 @@ namespace ThuTien.DAL.Doi
                             DenSo = itemGroup.Max(groupItem => groupItem.ID),
                             SLNhap = itemGroup.Count(),
                             SLSuDung = itemGroup.Count(groupItem => groupItem.SuDung == true),
-                            SLTon = itemGroup.Count() - itemGroup.Count(groupItem => groupItem.SuDung == true),
+                            SLHuHong = itemGroup.Count(groupItem => groupItem.HuHong == true),
+                            SLTon = itemGroup.Count() - itemGroup.Count(groupItem => groupItem.SuDung == true) - itemGroup.Count(groupItem => groupItem.HuHong == true),
                         };
             return LINQToDataTable(query);
+        }
+
+        public string getDSNiemChiTon(int MaNV)
+        {
+            DataTable dt = LINQToDataTable(_db.TT_NiemChis.Where(item => item.MaNV == MaNV && item.SuDung == false && item.HuHong == false).ToList());
+            string str = "";
+            foreach (DataRow item in dt.Rows)
+            {
+                str += item["ID"].ToString() + "\r\n";
+            }
+            return str;
         }
 
     }

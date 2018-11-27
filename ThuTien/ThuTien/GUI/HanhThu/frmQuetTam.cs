@@ -514,7 +514,7 @@ namespace ThuTien.GUI.HanhThu
                         dr["Ky"] = Ky;
                         dr["SoTien"] = SoTien;
                         dr["TongCong"] = TongCong;
-                        if(chkChuKy.Checked)
+                        if (chkChuKy.Checked)
                             dr["ChuKy"] = true;
                         if (chkCoTenNguoiKy.Checked)
                             dr["TenNguoiKy"] = "Nguyễn Ngọc Ẩn";
@@ -775,7 +775,7 @@ namespace ThuTien.GUI.HanhThu
                         string Ky = "";
                         int TongCong = 0;
                         DataRow[] drTemp = dt.Select("DanhBo like '" + item.Cells["DanhBo_TG"].Value.ToString() + "'");
-                        
+
                         foreach (DataRow itemChild in drTemp)
                         {
                             if (string.IsNullOrEmpty(Ky))
@@ -854,7 +854,7 @@ namespace ThuTien.GUI.HanhThu
                                 if (item[0].ToString().Trim().Replace(" ", "").Length == 11)
                                 {
                                     HOADON hoadon = _cHoaDon.GetMoiNhat(item[0].ToString().Trim().Replace(" ", ""));
-                                    if (hoadon!=null && !_cQuetTam.CheckExist(hoadon.SOHOADON, CNguoiDung.MaND, DateTime.Now))
+                                    if (hoadon != null && !_cQuetTam.CheckExist(hoadon.SOHOADON, CNguoiDung.MaND, DateTime.Now))
                                     {
                                         TT_QuetTam quettam = new TT_QuetTam();
                                         quettam.MaHD = hoadon.ID_HOADON;
@@ -1028,6 +1028,115 @@ namespace ThuTien.GUI.HanhThu
 
             //Điền dữ liệu vào vùng đã thiết lập
             range.Value2 = arr;
+        }
+
+        private void btnInDSTon_Click(object sender, EventArgs e)
+        {
+            dsBaoCao dsBaoCao = new dsBaoCao();
+            if (tabControl.SelectedTab.Name == "tabTuGia")
+            {
+                foreach (DataGridViewRow item in dgvHDTuGia.Rows)
+                    if (item.Cells["NgayGiaiTrach_TG"].Value == null || item.Cells["NgayGiaiTrach_TG"].Value.ToString() == "")
+                    {
+                        DataRow dr = dsBaoCao.Tables["TamThuChuyenKhoan"].NewRow();
+                        dr["TuNgay"] = DateTime.Now.ToString("dd/MM/yyyy");
+                        dr["DenNgay"] = DateTime.Now.ToString("dd/MM/yyyy");
+                        dr["LoaiBaoCao"] = "HÓA ĐƠN TỒN";
+                        dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                        dr["HoTen"] = item.Cells["HoTen_TG"].Value.ToString();
+                        dr["MLT"] = item.Cells["MLT_TG"].Value.ToString().ToString().Insert(4, " ").Insert(2, " ");
+                        dr["Ky"] = item.Cells["Ky_TG"].Value.ToString();
+                        dr["TongCong"] = item.Cells["TongCong_TG"].Value.ToString();
+                        dr["HanhThu"] = item.Cells["HanhThu_TG"].Value.ToString();
+                        dr["To"] = item.Cells["To_TG"].Value.ToString();
+                        if (int.Parse(item.Cells["GiaBieu_TG"].Value.ToString()) > 20)
+                            dr["Loai"] = "CQ";
+                        else
+                            dr["Loai"] = "TG";
+                        dsBaoCao.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
+                    }
+            }
+            else
+                if (tabControl.SelectedTab.Name == "tabCoQuan")
+                {
+                    foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
+                    {
+                        DataRow dr = dsBaoCao.Tables["TamThuChuyenKhoan"].NewRow();
+                        dr["TuNgay"] = DateTime.Now.ToString("dd/MM/yyyy");
+                        dr["DenNgay"] = DateTime.Now.ToString("dd/MM/yyyy");
+                        dr["LoaiBaoCao"] = "HÓA ĐƠN CƠ QUAN";
+                        dr["DanhBo"] = item.Cells["DanhBo_CQ"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                        dr["HoTen"] = item.Cells["HoTen_CQ"].Value.ToString();
+                        dr["MLT"] = item.Cells["MLT_CQ"].Value.ToString().ToString().Insert(4, " ").Insert(2, " ");
+                        dr["Ky"] = item.Cells["Ky_CQ"].Value.ToString();
+                        dr["TongCong"] = item.Cells["TongCong_CQ"].Value.ToString();
+                        dr["HanhThu"] = item.Cells["HanhThu_CQ"].Value.ToString();
+                        dr["To"] = item.Cells["To_CQ"].Value.ToString();
+                        if (int.Parse(item.Cells["GiaBieu_CQ"].Value.ToString()) > 20)
+                            dr["Loai"] = "CQ";
+                        else
+                            dr["Loai"] = "TG";
+                        dsBaoCao.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
+                    }
+                }
+
+            rptDSTamThuChuyenKhoan rpt = new rptDSTamThuChuyenKhoan();
+            rpt.SetDataSource(dsBaoCao);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
+        }
+
+        private void btnInDSCodeF2_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            if (tabControl.SelectedTab.Name == "tabTuGia")
+            {
+                foreach (DataGridViewRow item in dgvHDTuGia.Rows)
+                    if (item.Cells["NgayGiaiTrach_TG"].Value == null || item.Cells["NgayGiaiTrach_TG"].Value.ToString() == "")
+                {
+                    DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                    dr["LoaiBaoCao"] = item.Cells["MLT_TG"].Value.ToString().Substring(0,2);
+                    dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                    dr["Ky"] = item.Cells["Ky_TG"].Value;
+                    dr["MLT"] = item.Cells["MLT_TG"].Value.ToString().Insert(4, " ").Insert(2, " ");
+                    dr["TongCong"] = item.Cells["TongCong_TG"].Value;
+                    dr["SoPhatHanh"] = item.Cells["SoPhatHanh_TG"].Value;
+                    dr["SoHoaDon"] = item.Cells["SoHoaDon_TG"].Value;
+                    if (int.Parse(item.Cells["GiaBieu_TG"].Value.ToString()) > 20)
+                        dr["Loai"] = "CQ";
+                    else
+                        dr["Loai"] = "TG";
+                    //if (CNguoiDung.ToTruong)
+                    //    dr["NhanVien"] = ((TT_NguoiDung)cmbNhanVien.SelectedItem).HoTen;
+                    //else
+                    //    dr["NhanVien"] = CNguoiDung.HoTen;
+                    ds.Tables["DSHoaDon"].Rows.Add(dr);
+                }
+            }
+            else
+                if (tabControl.SelectedTab.Name == "tabCoQuan")
+                {
+                    foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
+                    {
+                        DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                        dr["LoaiBaoCao"] = "CƠ QUAN";
+                        dr["DanhBo"] = item.Cells["DanhBo_CQ"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                        dr["Ky"] = item.Cells["Ky_CQ"].Value;
+                        dr["MLT"] = item.Cells["MLT_CQ"].Value.ToString().Insert(4, " ").Insert(2, " ");
+                        dr["TongCong"] = item.Cells["TongCong_CQ"].Value;
+                        dr["SoPhatHanh"] = item.Cells["SoPhatHanh_CQ"].Value;
+                        dr["SoHoaDon"] = item.Cells["SoHoaDon_CQ"].Value;
+                        //if (CNguoiDung.ToTruong)
+                        //    dr["NhanVien"] = ((TT_NguoiDung)cmbNhanVien.SelectedItem).HoTen;
+                        //else
+                        //    dr["NhanVien"] = CNguoiDung.HoTen;
+                        ds.Tables["DSHoaDon"].Rows.Add(dr);
+                    }
+                }
+            rptDSHoaDonCodeF2 rpt = new rptDSHoaDonCodeF2();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
         }
 
     }

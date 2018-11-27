@@ -10,6 +10,7 @@ using ThuTien.DAL.QuanTri;
 using ThuTien.DAL.Doi;
 using ThuTien.LinQ;
 using System.Globalization;
+using System.IO;
 
 namespace ThuTien.GUI.Doi
 {
@@ -46,6 +47,7 @@ namespace ThuTien.GUI.Doi
             dgvNiemChi_Nhap.DataSource = _cNiemChi.getDSNhap_Group();
             int SLNhap = 0;
             int SLSuDung = 0;
+            int SLHuHong = 0;
             int SLTon = 0;
             foreach (DataGridViewRow item in dgvNiemChi_Nhap.Rows)
             {
@@ -53,11 +55,14 @@ namespace ThuTien.GUI.Doi
                     SLNhap += int.Parse(item.Cells["SLNhap_Nhap"].Value.ToString());
                 if (!string.IsNullOrEmpty(item.Cells["SLSuDung_Nhap"].Value.ToString()))
                     SLSuDung += int.Parse(item.Cells["SLSuDung_Nhap"].Value.ToString());
+                if (!string.IsNullOrEmpty(item.Cells["SLHuHong_Nhap"].Value.ToString()))
+                    SLHuHong += int.Parse(item.Cells["SLHuHong_Nhap"].Value.ToString());
                 if (!string.IsNullOrEmpty(item.Cells["SLTon_Nhap"].Value.ToString()))
                     SLTon += int.Parse(item.Cells["SLTon_Nhap"].Value.ToString());
             }
             txtSLNhap_Nhap.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLNhap);
             txtSLSuDung_Nhap.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLSuDung);
+            txtSLHuHong_Nhap.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLHuHong);
             txtSLTon_Nhap.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLTon);
         }
 
@@ -177,6 +182,7 @@ namespace ThuTien.GUI.Doi
             dgvNiemChi_Giao.DataSource = _cNiemChi.getDSGiao_Group(dateLap_Giao.Value);
             int SLNhap = 0;
             int SLSuDung = 0;
+            int SLHuHong = 0;
             int SLTon = 0;
             foreach (DataGridViewRow item in dgvNiemChi_Giao.Rows)
             {
@@ -184,11 +190,14 @@ namespace ThuTien.GUI.Doi
                     SLNhap += int.Parse(item.Cells["SLNhap_Giao"].Value.ToString());
                 if (!string.IsNullOrEmpty(item.Cells["SLSuDung_Giao"].Value.ToString()))
                     SLSuDung += int.Parse(item.Cells["SLSuDung_Giao"].Value.ToString());
+                if (!string.IsNullOrEmpty(item.Cells["SLHuHong_Giao"].Value.ToString()))
+                    SLHuHong += int.Parse(item.Cells["SLHuHong_Giao"].Value.ToString());
                 if (!string.IsNullOrEmpty(item.Cells["SLTon_Giao"].Value.ToString()))
                     SLTon += int.Parse(item.Cells["SLTon_Giao"].Value.ToString());
             }
             txtSLNhap_Giao.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLNhap);
             txtSLSuDung_Giao.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLSuDung);
+            txtSLHuHong_Giao.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLHuHong);
             txtSLTon_Giao.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLTon);
         }
 
@@ -221,7 +230,7 @@ namespace ThuTien.GUI.Doi
             {
                 try
                 {
-                    if (int.Parse(txtDenSo_Giao.Text.Trim()) > int.Parse(txtTuSo_Giao.Text.Trim()))
+                    if (int.Parse(txtTuSo_Giao.Text.Trim()) <= int.Parse(txtDenSo_Giao.Text.Trim()))
                     {
                         if (_cNiemChi.checkSuDung(int.Parse(txtTuSo_Giao.Text.Trim()), int.Parse(txtDenSo_Giao.Text.Trim())) == true)
                         {
@@ -315,6 +324,87 @@ namespace ThuTien.GUI.Doi
                 cmbNhanVien_Giao.DisplayMember = "HoTen";
                 cmbNhanVien_Giao.ValueMember = "MaND";
             }
+        }
+
+        byte[] _imgHuHong = null;
+        private void btnChonFile_HuHong_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Files (.jpg)|*.jpeg";
+            dialog.Multiselect = false;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                FileStream fs = File.OpenRead(dialog.FileName);
+                _imgHuHong = new byte[fs.Length];
+                fs.Read(_imgHuHong, 0, (int)fs.Length);
+            }
+        }
+
+        private void btnThem_HuHong_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+            {
+                try
+                {
+                    TT_NiemChi en = _cNiemChi.get(int.Parse(txtID_HuHong.Text.Trim()));
+                    if (en != null)
+                    {
+                        if (en.SuDung == true)
+                        {
+                            MessageBox.Show("Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        if (en.MaNV == null)
+                        {
+                            MessageBox.Show("Niêm Chì chưa Giao", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        if (_imgHuHong != null)
+                            en.imgHuHong = _imgHuHong;
+                        en.HuHong = true;
+                        if (_cNiemChi.Sua(en) == true)
+                        {
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            _imgHuHong = null;
+                            btnXem_Giao.PerformClick();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnXoa_HuHong_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+            {
+                try
+                {
+                    TT_NiemChi en = _cNiemChi.get(int.Parse(dgvNiemChi_HuHong.CurrentRow.Cells["ID_HuHong"].Value.ToString()));
+                    if (en != null)
+                    {
+                        en.imgHuHong = null;
+                        en.HuHong = false;
+                        if (_cNiemChi.Sua(en) == true)
+                        {
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            _imgHuHong = null;
+                            btnXem_Giao.PerformClick();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
 

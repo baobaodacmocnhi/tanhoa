@@ -232,29 +232,30 @@ namespace ThuTien.GUI.DongNuoc
                         _kqdongnuoc.NgayDN_ThucTe = DateTime.Now;
                         if (!string.IsNullOrEmpty(txtChiSoDN.Text.Trim()))
                             _kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN.Text.Trim());
-                        if(chkKhoaTu.Checked==false)
-                        if (txtNiemChi.Text.Trim() == "")
+                        if (chkKhoaTu.Checked == false && _kqdongnuoc.NgayDN.Value.Date > DateTime.Parse("2018-10-17"))
                         {
-                            MessageBox.Show("Thiếu Số Niêm Chì", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                        if(chkKhoaTu.Checked==false)
-                        if (!string.IsNullOrEmpty(txtNiemChi.Text.Trim()) && _kqdongnuoc.NiemChi.Value != int.Parse(txtNiemChi.Text.Trim()))
-                        {
-                            if (_cNiemChi.checkExist(int.Parse(txtNiemChi.Text.Trim())) == false)
+                            if (txtNiemChi.Text.Trim() == "")
                             {
-                                MessageBox.Show("Số Niêm Chì không Tồn Tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Thiếu Số Niêm Chì", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-                            if (_cNiemChi.checkSuDung(int.Parse(txtNiemChi.Text.Trim())) == true)
+                            if (!string.IsNullOrEmpty(txtNiemChi.Text.Trim()) && _kqdongnuoc.NiemChi.Value != int.Parse(txtNiemChi.Text.Trim()))
                             {
-                                MessageBox.Show("Số Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
+                                if (_cNiemChi.checkExist(int.Parse(txtNiemChi.Text.Trim())) == false)
+                                {
+                                    MessageBox.Show("Số Niêm Chì không Tồn Tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                                if (_cNiemChi.checkSuDung(int.Parse(txtNiemChi.Text.Trim())) == true)
+                                {
+                                    MessageBox.Show("Số Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                                if (_kqdongnuoc.NiemChi != null)
+                                    _cNiemChi.traSuDung(_kqdongnuoc.NiemChi.Value);
+                                _kqdongnuoc.NiemChi = int.Parse(txtNiemChi.Text.Trim());
+                                _cNiemChi.suDung(int.Parse(txtNiemChi.Text.Trim()));
                             }
-                            if (_kqdongnuoc.NiemChi != null)
-                                _cNiemChi.traSuDung(_kqdongnuoc.NiemChi.Value);
-                            _kqdongnuoc.NiemChi = int.Parse(txtNiemChi.Text.Trim());
-                            _cNiemChi.suDung(int.Parse(txtNiemChi.Text.Trim()));
                         }
                         _kqdongnuoc.Hieu = txtHieu.Text.Trim();
                         if (!string.IsNullOrEmpty(txtCo.Text.Trim()))
@@ -291,23 +292,29 @@ namespace ThuTien.GUI.DongNuoc
                             if (!string.IsNullOrEmpty(txtChiSoDN2.Text.Trim()))
                                 _kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN2.Text.Trim());
                             if (chkKhoaTu.Checked == false)
-                            if (!string.IsNullOrEmpty(txtNiemChi2.Text.Trim()) && _kqdongnuoc.NiemChi.Value != int.Parse(txtNiemChi2.Text.Trim()))
-                            {
-                                if (_cNiemChi.checkExist(int.Parse(txtNiemChi2.Text.Trim())) == false)
+                                if (!string.IsNullOrEmpty(txtNiemChi2.Text.Trim()))
                                 {
-                                    MessageBox.Show("Số Niêm Chì không Tồn Tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
+                                    if(_kqdongnuoc.NgayDN1.Value.Date > DateTime.Parse("2018-10-17"))
+                                        if( _kqdongnuoc.NiemChi.Value== int.Parse(txtNiemChi2.Text.Trim()))
+                                        {
+                                            MessageBox.Show("Số Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            return;
+                                        }
+                                    if (_cNiemChi.checkExist(int.Parse(txtNiemChi2.Text.Trim())) == false)
+                                    {
+                                        MessageBox.Show("Số Niêm Chì không Tồn Tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                                    if (_cNiemChi.checkSuDung(int.Parse(txtNiemChi2.Text.Trim())) == true)
+                                    {
+                                        MessageBox.Show("Số Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                                    //if (_kqdongnuoc.NiemChi != null)
+                                    //    _cNiemChi.traSuDung(_kqdongnuoc.NiemChi.Value);
+                                    _kqdongnuoc.NiemChi = int.Parse(txtNiemChi2.Text.Trim());
+                                    _cNiemChi.suDung(int.Parse(txtNiemChi2.Text.Trim()));
                                 }
-                                if (_cNiemChi.checkSuDung(int.Parse(txtNiemChi2.Text.Trim())) == true)
-                                {
-                                    MessageBox.Show("Số Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
-                                }
-                                if (_kqdongnuoc.NiemChi != null)
-                                    _cNiemChi.traSuDung(_kqdongnuoc.NiemChi.Value);
-                                _kqdongnuoc.NiemChi = int.Parse(txtNiemChi2.Text.Trim());
-                                _cNiemChi.suDung(int.Parse(txtNiemChi2.Text.Trim()));
-                            }
 
                             if (_kqdongnuoc.SoPhieuDN1 == null)
                                 _kqdongnuoc.SoPhieuDN1 = _kqdongnuoc.SoPhieuDN;
@@ -394,26 +401,27 @@ namespace ThuTien.GUI.DongNuoc
                             if (!string.IsNullOrEmpty(txtChiSoDN.Text.Trim()))
                                 kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN.Text.Trim());
                             if (chkKhoaTu.Checked == false)
-                            if (txtNiemChi.Text.Trim() == "")
                             {
-                                MessageBox.Show("Thiếu Số Niêm Chì", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
-                            if (chkKhoaTu.Checked == false)
-                            if (!string.IsNullOrEmpty(txtNiemChi.Text.Trim()))
-                            {
-                                if (_cNiemChi.checkExist(int.Parse(txtNiemChi.Text.Trim())) == false)
+                                if (txtNiemChi.Text.Trim() == "")
                                 {
-                                    MessageBox.Show("Số Niêm Chì không Tồn Tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("Thiếu Số Niêm Chì", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
-                                if (_cNiemChi.checkSuDung(int.Parse(txtNiemChi.Text.Trim())) == true)
+                                if (!string.IsNullOrEmpty(txtNiemChi.Text.Trim()))
                                 {
-                                    MessageBox.Show("Số Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
+                                    if (_cNiemChi.checkExist(int.Parse(txtNiemChi.Text.Trim())) == false)
+                                    {
+                                        MessageBox.Show("Số Niêm Chì không Tồn Tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                                    if (_cNiemChi.checkSuDung(int.Parse(txtNiemChi.Text.Trim())) == true)
+                                    {
+                                        MessageBox.Show("Số Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                                    kqdongnuoc.NiemChi = int.Parse(txtNiemChi.Text.Trim());
+                                    _cNiemChi.suDung(int.Parse(txtNiemChi.Text.Trim()));
                                 }
-                                kqdongnuoc.NiemChi = int.Parse(txtNiemChi.Text.Trim());
-                                _cNiemChi.suDung(int.Parse(txtNiemChi.Text.Trim()));
                             }
                             kqdongnuoc.Hieu = txtHieu.Text.Trim();
                             if (!string.IsNullOrEmpty(txtCo.Text.Trim()))

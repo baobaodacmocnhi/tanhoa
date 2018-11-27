@@ -238,7 +238,8 @@ namespace ThuTien.DAL.DongNuoc
                                 itemDN.MaNV_DongNuoc,
                                 HoTen_DongNuoc = itemtableND2.HoTen,
                                 itemDN.CreateDate,
-                                TinhTrang = "",///Phải thêm để GridView lấy cột để edit lại sau
+                                TinhTrang = "",//Phải thêm để GridView lấy cột để edit lại sau
+                                TongCongLenh=itemDN.TT_CTDongNuocs.Sum(item=>item.TongCong),
                             };
             DataTable dtDongNuoc = new DataTable();
             dtDongNuoc = LINQToDataTable(queryDN);

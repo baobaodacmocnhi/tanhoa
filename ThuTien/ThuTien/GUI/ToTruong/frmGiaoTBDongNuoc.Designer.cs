@@ -89,6 +89,7 @@
             this.cmbToCapNhat = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbTo = new System.Windows.Forms.ComboBox();
+            this.TongCongLenh = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -206,7 +207,7 @@
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1,
             this.repositoryItemCheckEdit2});
-            this.gridControl.Size = new System.Drawing.Size(992, 590);
+            this.gridControl.Size = new System.Drawing.Size(1068, 590);
             this.gridControl.TabIndex = 26;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewDN,
@@ -222,6 +223,7 @@
             this.DiaChi,
             this.MLT,
             this.CreateDate,
+            this.TongCongLenh,
             this.gridColumn1,
             this.HanhThu,
             this.HoTen_DongNuoc,
@@ -442,7 +444,7 @@
             // cmbNhanVienGiao
             // 
             this.cmbNhanVienGiao.FormattingEnabled = true;
-            this.cmbNhanVienGiao.Location = new System.Drawing.Point(1013, 107);
+            this.cmbNhanVienGiao.Location = new System.Drawing.Point(1086, 107);
             this.cmbNhanVienGiao.Name = "cmbNhanVienGiao";
             this.cmbNhanVienGiao.Size = new System.Drawing.Size(118, 21);
             this.cmbNhanVienGiao.TabIndex = 28;
@@ -450,7 +452,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1010, 91);
+            this.label2.Location = new System.Drawing.Point(1083, 91);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 13);
             this.label2.TabIndex = 27;
@@ -458,7 +460,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(1137, 105);
+            this.btnThem.Location = new System.Drawing.Point(1210, 105);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 29;
@@ -468,7 +470,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(1137, 163);
+            this.btnXoa.Location = new System.Drawing.Point(1210, 163);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 31;
@@ -478,7 +480,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(1137, 134);
+            this.btnSua.Location = new System.Drawing.Point(1210, 134);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 30;
@@ -499,7 +501,7 @@
             // 
             // btnInDSTBNguoiGiao
             // 
-            this.btnInDSTBNguoiGiao.Location = new System.Drawing.Point(1013, 207);
+            this.btnInDSTBNguoiGiao.Location = new System.Drawing.Point(1086, 207);
             this.btnInDSTBNguoiGiao.Name = "btnInDSTBNguoiGiao";
             this.btnInDSTBNguoiGiao.Size = new System.Drawing.Size(121, 23);
             this.btnInDSTBNguoiGiao.TabIndex = 33;
@@ -509,7 +511,7 @@
             // 
             // btnInDSTBTonNguoiGiao
             // 
-            this.btnInDSTBTonNguoiGiao.Location = new System.Drawing.Point(1013, 236);
+            this.btnInDSTBTonNguoiGiao.Location = new System.Drawing.Point(1086, 236);
             this.btnInDSTBTonNguoiGiao.Name = "btnInDSTBTonNguoiGiao";
             this.btnInDSTBTonNguoiGiao.Size = new System.Drawing.Size(145, 23);
             this.btnInDSTBTonNguoiGiao.TabIndex = 34;
@@ -519,7 +521,7 @@
             // 
             // btnInTB
             // 
-            this.btnInTB.Location = new System.Drawing.Point(1013, 10);
+            this.btnInTB.Location = new System.Drawing.Point(1086, 10);
             this.btnInTB.Name = "btnInTB";
             this.btnInTB.Size = new System.Drawing.Size(75, 23);
             this.btnInTB.TabIndex = 35;
@@ -543,7 +545,7 @@
             this.chkChuKy.AutoSize = true;
             this.chkChuKy.Checked = true;
             this.chkChuKy.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkChuKy.Location = new System.Drawing.Point(1013, 38);
+            this.chkChuKy.Location = new System.Drawing.Point(1086, 38);
             this.chkChuKy.Name = "chkChuKy";
             this.chkChuKy.Size = new System.Drawing.Size(76, 17);
             this.chkChuKy.TabIndex = 96;
@@ -552,7 +554,7 @@
             // 
             // btnInDSTBTonThucTeNguoiGiao
             // 
-            this.btnInDSTBTonThucTeNguoiGiao.Location = new System.Drawing.Point(1013, 265);
+            this.btnInDSTBTonThucTeNguoiGiao.Location = new System.Drawing.Point(1086, 265);
             this.btnInDSTBTonThucTeNguoiGiao.Name = "btnInDSTBTonThucTeNguoiGiao";
             this.btnInDSTBTonThucTeNguoiGiao.Size = new System.Drawing.Size(190, 23);
             this.btnInDSTBTonThucTeNguoiGiao.TabIndex = 97;
@@ -562,7 +564,7 @@
             // 
             // btnXuatExcel
             // 
-            this.btnXuatExcel.Location = new System.Drawing.Point(1094, 10);
+            this.btnXuatExcel.Location = new System.Drawing.Point(1167, 10);
             this.btnXuatExcel.Name = "btnXuatExcel";
             this.btnXuatExcel.Size = new System.Drawing.Size(75, 23);
             this.btnXuatExcel.TabIndex = 98;
@@ -573,7 +575,7 @@
             // chkCoTenNguoiKy
             // 
             this.chkCoTenNguoiKy.AutoSize = true;
-            this.chkCoTenNguoiKy.Location = new System.Drawing.Point(1013, 61);
+            this.chkCoTenNguoiKy.Location = new System.Drawing.Point(1086, 61);
             this.chkCoTenNguoiKy.Name = "chkCoTenNguoiKy";
             this.chkCoTenNguoiKy.Size = new System.Drawing.Size(107, 17);
             this.chkCoTenNguoiKy.TabIndex = 99;
@@ -584,7 +586,7 @@
             // 
             this.radA4.AutoSize = true;
             this.radA4.Checked = true;
-            this.radA4.Location = new System.Drawing.Point(1131, 37);
+            this.radA4.Location = new System.Drawing.Point(1204, 37);
             this.radA4.Name = "radA4";
             this.radA4.Size = new System.Drawing.Size(38, 17);
             this.radA4.TabIndex = 100;
@@ -595,7 +597,7 @@
             // radA5
             // 
             this.radA5.AutoSize = true;
-            this.radA5.Location = new System.Drawing.Point(1131, 60);
+            this.radA5.Location = new System.Drawing.Point(1204, 60);
             this.radA5.Name = "radA5";
             this.radA5.Size = new System.Drawing.Size(38, 17);
             this.radA5.TabIndex = 101;
@@ -609,7 +611,7 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.cmbToCapNhat);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Location = new System.Drawing.Point(1013, 326);
+            this.groupBox1.Location = new System.Drawing.Point(1086, 326);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(140, 130);
             this.groupBox1.TabIndex = 102;
@@ -671,11 +673,19 @@
             this.cmbTo.Visible = false;
             this.cmbTo.SelectedIndexChanged += new System.EventHandler(this.cmbTo_SelectedIndexChanged_1);
             // 
+            // TongCongLenh
+            // 
+            this.TongCongLenh.Caption = "Tổng Cộng";
+            this.TongCongLenh.FieldName = "TongCongLenh";
+            this.TongCongLenh.Name = "TongCongLenh";
+            this.TongCongLenh.Visible = true;
+            this.TongCongLenh.VisibleIndex = 11;
+            // 
             // frmGiaoTBDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1226, 666);
+            this.ClientSize = new System.Drawing.Size(1309, 666);
             this.Controls.Add(this.cmbTo);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.radA5);
@@ -780,5 +790,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn ThemHoaDon;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn TongCongLenh;
     }
 }
