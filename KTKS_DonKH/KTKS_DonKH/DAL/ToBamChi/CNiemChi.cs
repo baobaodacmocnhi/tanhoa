@@ -209,6 +209,20 @@ namespace KTKS_DonKH.DAL.ToBamChi
             return LINQToDataTable(query);
         }
 
+        public DataTable getDSHuHong()
+        {
+            var query = from item in db.NiemChis
+                        where item.HuHong == true
+                        select new
+                        {
+                            item.MaNV,
+                            HoTen = db.Users.SingleOrDefault(itemT => itemT.MaU == item.MaNV).HoTen,
+                            item.DotChia,
+                            item.ID,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public string getDSNiemChiTon(int MaNV)
         {
             DataTable dt = LINQToDataTable(db.NiemChis.Where(item => item.MaNV == MaNV && item.SuDung == false&&item.HuHong==false).ToList());
