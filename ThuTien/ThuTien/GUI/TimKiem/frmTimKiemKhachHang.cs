@@ -57,6 +57,9 @@ namespace ThuTien.GUI.TimKiem
             dgvLenhHuy.DataSource = null;
             dgvLenhHuy.Visible = false;
 
+            dgvThuHo.DataSource = null;
+            dgvThuHo.Visible = false;
+
             if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ", "")) || !string.IsNullOrEmpty(txtMLT.Text.Trim().Replace(" ", "")))
                 foreach (DataGridViewRow item in dgvHoaDon.Rows)
                 {
@@ -252,8 +255,11 @@ namespace ThuTien.GUI.TimKiem
 
         private void btnXemLenhHuy_Click(object sender, EventArgs e)
         {
-            dgvLenhHuy.DataSource = _cLenhHuy.GetTinhTrangMoiNhat(txtDanhBo.Text.Trim().Replace(" ", ""));
-            dgvLenhHuy.Visible = true;
+            if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ", "")))
+            {
+                dgvLenhHuy.DataSource = _cLenhHuy.GetTinhTrangMoiNhat(txtDanhBo.Text.Trim().Replace(" ", ""));
+                dgvLenhHuy.Visible = true;
+            }
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -329,7 +335,11 @@ namespace ThuTien.GUI.TimKiem
 
         private void btnXemThuHo_Click(object sender, EventArgs e)
         {
-            dgvThuHo.DataSource=_cDichVuThu.GetDS(txtDanhBo.Text.Trim().Replace(" ", ""));
+            if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ", "")))
+            {
+                dgvThuHo.DataSource = _cDichVuThu.GetDS(txtDanhBo.Text.Trim().Replace(" ", ""));
+                dgvThuHo.Visible = true;
+            }
         }
 
        

@@ -64,6 +64,8 @@ namespace ThuTien.GUI.Doi
             txtSLSuDung_Nhap.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLSuDung);
             txtSLHuHong_Nhap.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLHuHong);
             txtSLTon_Nhap.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLTon);
+
+            dgvNiemChi_HuHong.DataSource = _cNiemChi.getDSHuHong();
         }
 
         private void btnThem_Nhap_Click(object sender, EventArgs e)
@@ -349,14 +351,19 @@ namespace ThuTien.GUI.Doi
                     TT_NiemChi en = _cNiemChi.get(int.Parse(txtID_HuHong.Text.Trim()));
                     if (en != null)
                     {
+                        if (en.MaNV == null)
+                        {
+                            MessageBox.Show("Niêm Chì chưa Giao", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         if (en.SuDung == true)
                         {
                             MessageBox.Show("Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
-                        }
-                        if (en.MaNV == null)
+                        }  
+                        if (en.HuHong == true)
                         {
-                            MessageBox.Show("Niêm Chì chưa Giao", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Niêm Chì đã Nhập", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         if (_imgHuHong != null)
@@ -366,7 +373,7 @@ namespace ThuTien.GUI.Doi
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             _imgHuHong = null;
-                            btnXem_Giao.PerformClick();
+                            dgvNiemChi_HuHong.DataSource = _cNiemChi.getDSHuHong();
                         }
                     }
                 }
@@ -394,7 +401,7 @@ namespace ThuTien.GUI.Doi
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             _imgHuHong = null;
-                            btnXem_Giao.PerformClick();
+                            dgvNiemChi_HuHong.DataSource = _cNiemChi.getDSHuHong();
                         }
                     }
                 }

@@ -188,6 +188,21 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
+        public DataTable getDSHuHong()
+        {
+            var query = from item in _db.TT_NiemChis
+                        where item.HuHong==true
+                        select new
+                        {
+                            item.MaTo,
+                            TenTo = _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == item.MaTo).TenTo,
+                            item.MaNV,
+                            HoTen = _db.TT_NguoiDungs.SingleOrDefault(itemT => itemT.MaND == item.MaNV).HoTen,
+                            item.ID,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public string getDSNiemChiTon(int MaNV)
         {
             DataTable dt = LINQToDataTable(_db.TT_NiemChis.Where(item => item.MaNV == MaNV && item.SuDung == false && item.HuHong == false).ToList());
