@@ -239,7 +239,7 @@ namespace ThuTien.GUI.DongNuoc
                                 MessageBox.Show("Thiếu Số Niêm Chì", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-                            if (!string.IsNullOrEmpty(txtNiemChi.Text.Trim()) && _kqdongnuoc.NiemChi.Value != int.Parse(txtNiemChi.Text.Trim()))
+                            if (!string.IsNullOrEmpty(txtNiemChi.Text.Trim()) && (_kqdongnuoc.NiemChi==null ||_kqdongnuoc.NiemChi.Value != int.Parse(txtNiemChi.Text.Trim())))
                             {
                                 if (_cNiemChi.checkExist(int.Parse(txtNiemChi.Text.Trim())) == false)
                                 {

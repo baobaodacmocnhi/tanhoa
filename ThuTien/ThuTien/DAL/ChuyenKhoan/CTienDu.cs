@@ -293,6 +293,14 @@ namespace ThuTien.DAL.ChuyenKhoan
                 return 0;
         }
 
+        public int GetTienDu_SoHoaDon(string SoHoaDon)
+        {
+            if (_db.TT_TienDus.Any(item => item.DanhBo == _db.HOADONs.SingleOrDefault(itemHD=>itemHD.SOHOADON==SoHoaDon).DANHBA))
+                return _db.TT_TienDus.SingleOrDefault(item => item.DanhBo == _db.HOADONs.SingleOrDefault(itemHD => itemHD.SOHOADON == SoHoaDon).DANHBA).SoTien.Value;
+            else
+                return 0;
+        }
+
         public DataTable GetDSLichSu(string DanhBo)
         {
             return LINQToDataTable(_db.TT_TienDuLichSus.Where(item => item.DanhBo == DanhBo).OrderByDescending(item=>item.CreateDate).ToList());

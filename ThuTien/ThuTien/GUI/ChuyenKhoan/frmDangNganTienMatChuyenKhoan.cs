@@ -185,12 +185,15 @@ namespace ThuTien.GUI.ChuyenKhoan
                         }
                     }
                     foreach (ListViewItem item in lstHD.Items)
-                        using (var scope = new TransactionScope())
-                        {
-                            if (_cHoaDon.DangNganTienMatChuyenKhoan(item.Text, CNguoiDung.MaND))
-                                if (_cTienDu.UpdateThemTienMat(item.Text))
-                                    scope.Complete();
-                        }
+                        if (_cTienDu.GetTienDu_SoHoaDon(item.Text) > 0)
+                            using (var scope = new TransactionScope())
+                            {
+                                if (_cHoaDon.DangNganTienMatChuyenKhoan(item.Text, CNguoiDung.MaND))
+                                    if (_cTienDu.UpdateThemTienMat(item.Text))
+                                        scope.Complete();
+                            }
+                        else
+                            MessageBox.Show("Lỗi, Danh Bộ không có Tiền Dư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     lstHD.Items.Clear();
                     btnXem.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

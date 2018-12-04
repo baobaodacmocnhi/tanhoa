@@ -32,6 +32,28 @@ namespace ThuTien.DAL.Quay
             }
         }
 
+        public bool Them(TAMTHU tamthu,DateTime CreateDate)
+        {
+            try
+            {
+                if (_db.TAMTHUs.Count() > 0)
+                    tamthu.ID_TAMTHU = _db.TAMTHUs.Max(item => item.ID_TAMTHU) + 1;
+                else
+                    tamthu.ID_TAMTHU = 1;
+                tamthu.CreateDate = CreateDate;
+                tamthu.CreateBy = CNguoiDung.MaND;
+                _db.TAMTHUs.InsertOnSubmit(tamthu);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _db = new dbThuTienDataContext();
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         public bool Sua(TAMTHU tamthu)
         {
             try

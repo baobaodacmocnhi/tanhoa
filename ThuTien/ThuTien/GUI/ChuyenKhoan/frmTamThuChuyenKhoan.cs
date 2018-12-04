@@ -49,6 +49,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
+            dateNgayLap.Value = DateTime.Now;
         }
 
         public void Clear()
@@ -138,7 +139,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     tamthu.MaNH = int.Parse(item.Cells["NganHang"].Value.ToString());
                                 else
                                     tamthu.MaNH = int.Parse(cmbNganHang.SelectedValue.ToString());
-                                if (!_cTamThu.Them(tamthu))
+                                if (!_cTamThu.Them(tamthu,dateNgayLap.Value))
                                 {
                                     //_cTamThu.Rollback();
                                     MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

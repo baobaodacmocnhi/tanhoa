@@ -93,6 +93,8 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.btnChonFile = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.dateNgayLap = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
             this.tabTamThu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTamThu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
@@ -620,6 +622,8 @@
             // 
             // tabThongTin
             // 
+            this.tabThongTin.Controls.Add(this.dateNgayLap);
+            this.tabThongTin.Controls.Add(this.label7);
             this.tabThongTin.Controls.Add(this.cmbNganHang);
             this.tabThongTin.Controls.Add(this.label2);
             this.tabThongTin.Controls.Add(this.dgvHoaDon);
@@ -688,6 +692,24 @@
             this.label6.Size = new System.Drawing.Size(38, 13);
             this.label6.TabIndex = 3;
             this.label6.Text = "(Enter)";
+            // 
+            // dateNgayLap
+            // 
+            this.dateNgayLap.CustomFormat = "dd/MM/yyyy";
+            this.dateNgayLap.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateNgayLap.Location = new System.Drawing.Point(496, 9);
+            this.dateNgayLap.Name = "dateNgayLap";
+            this.dateNgayLap.Size = new System.Drawing.Size(100, 20);
+            this.dateNgayLap.TabIndex = 28;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(437, 11);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 13);
+            this.label7.TabIndex = 27;
+            this.label7.Text = "Ngày Lập";
             // 
             // frmTamThuChuyenKhoan
             // 
@@ -778,5 +800,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TienDu_TT;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnInDSTamThuTienDu;
+        private System.Windows.Forms.DateTimePicker dateNgayLap;
+        private System.Windows.Forms.Label label7;
     }
 }

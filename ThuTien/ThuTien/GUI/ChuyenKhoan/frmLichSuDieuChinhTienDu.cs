@@ -98,6 +98,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 dgvLichSuTienDu.DataSource = _cTienDu.GetDSLichSu(txtDanhBo.Text.Trim().Replace(" ", ""));
                 long TongCong = 0;
                 foreach (DataGridViewRow item in dgvLichSuTienDu.Rows)
+                    if (item.Cells["SoTien_LSTD"].Value.ToString()!="")
                 {
                     TongCong += int.Parse(item.Cells["SoTien_LSTD"].Value.ToString());
                 }

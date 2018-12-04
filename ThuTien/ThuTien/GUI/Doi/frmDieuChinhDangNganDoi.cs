@@ -235,12 +235,15 @@ namespace ThuTien.GUI.Doi
                             else
                                 if (chkChuyenKhoanTienMat.Checked)
                                     foreach (ListViewItem item in lstHD.Items)
-                                        using (var scope = new TransactionScope())
-                                        {
-                                            if (_cHoaDon.DangNganTienMatChuyenKhoan(item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value))
-                                                if (_cTienDu.UpdateThemTienMat(item.Text))
-                                                    scope.Complete();
-                                        }
+                                        if (_cTienDu.GetTienDu_SoHoaDon(item.Text) > 0)
+                                            using (var scope = new TransactionScope())
+                                            {
+                                                if (_cHoaDon.DangNganTienMatChuyenKhoan(item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value))
+                                                    if (_cTienDu.UpdateThemTienMat(item.Text))
+                                                        scope.Complete();
+                                            }
+                                        else
+                                            MessageBox.Show("Lỗi, Danh Bộ không có Tiền Dư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
                             foreach (ListViewItem item in lstHD.Items)
