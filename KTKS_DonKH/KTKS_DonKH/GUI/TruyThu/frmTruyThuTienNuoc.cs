@@ -367,7 +367,7 @@ namespace KTKS_DonKH.GUI.TruyThu
         {
             if (e.KeyChar == 13 && txtMaCTTTTN.Text.Trim() != "")
             {
-                string IDCT = txtMaCTTTTN.Text.Trim();
+                string IDCT = txtMaCTTTTN.Text.Trim().Replace("-","");
                 Clear();
                 _cttttn = _cTTTN.get_ChiTiet(int.Parse(IDCT));
                 if (_cttttn != null)
@@ -1075,7 +1075,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             rptTruyThuTienNuoc rpt = new rptTruyThuTienNuoc();
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void btnInChiTiet_Click(object sender, EventArgs e)
@@ -1122,7 +1122,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             rptTruyThuTienNuocChiTiet rpt = new rptTruyThuTienNuocChiTiet();
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void btnThemThanhToan_Click(object sender, EventArgs e)
@@ -1465,6 +1465,34 @@ namespace KTKS_DonKH.GUI.TruyThu
             }
             else
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnInBia_Click(object sender, EventArgs e)
+        {
+            if (_cttttn != null)
+            {
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
+                if(_cttttn.TruyThuTienNuoc.MaDonMoi!=null)
+                    dr["MaDon"] = _cttttn.TruyThuTienNuoc.MaDonMoi.Value.ToString();
+                else
+                if(_cttttn.TruyThuTienNuoc.MaDon!=null)
+                    dr["MaDon"] ="TKH"+ _cttttn.TruyThuTienNuoc.MaDon.Value.ToString().Insert(_cttttn.TruyThuTienNuoc.MaDon.Value.ToString().Length-2,"-");
+                else
+                if(_cttttn.TruyThuTienNuoc.MaDonTXL!=null)
+                    dr["MaDon"] = "TXL"+_cttttn.TruyThuTienNuoc.MaDonTXL.Value.ToString().Insert(_cttttn.TruyThuTienNuoc.MaDonTXL.Value.ToString().Length - 2, "-");
+                else
+                    if (_cttttn.TruyThuTienNuoc.MaDonTBC != null)
+                        dr["MaDon"] = "TBC"+_cttttn.TruyThuTienNuoc.MaDonTBC.Value.ToString().Insert(_cttttn.TruyThuTienNuoc.MaDonTBC.Value.ToString().Length - 2, "-");
+                    dr["DanhBo"] = _cttttn.DanhBo.Insert(7, " ").Insert(4, " ");
+                    dr["DiaChi"] = _cttttn.DiaChi ;
+                    dr["HopDong"] = _cttttn.DienThoai;
+                dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
+                rptTruyThuTienNuoc_Bia rpt = new rptTruyThuTienNuoc_Bia();
+                rpt.SetDataSource(dsBaoCao);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.Show();
+            }
         }
 
     }

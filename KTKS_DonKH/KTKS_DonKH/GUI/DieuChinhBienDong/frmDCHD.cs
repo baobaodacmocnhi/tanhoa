@@ -106,6 +106,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtSX.Text = "0";
             txtDV.Text = "0";
             txtHCSN.Text = "0";
+            chkKhuCongNghiep.Checked = false;
             ///
             _dontu_ChiTiet = null;
             _dontkh = null;
@@ -1043,7 +1044,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 rptChiTietDCHD rpt = new rptChiTietDCHD();
                 rpt.SetDataSource(dsBaoCao);
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                frm.ShowDialog();
+                frm.Show();
             }
             catch (Exception ex)
             {
@@ -1061,6 +1062,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (_ctdchd != null)
                 {
                     dr["SoPhieu"] = "_________";
+                    if (_ctdchd.DCBD.MaDonMoi != null)
+                        dr["MaDon"] = _ctdchd.DCBD.MaDonMoi.Value.ToString();
+                    else
+                        if (_ctdchd.DCBD.MaDon != null)
+                            dr["MaDon"] = "TKH" + _ctdchd.DCBD.MaDon.Value.ToString().Insert(_ctdchd.DCBD.MaDon.Value.ToString().Length - 2, "-");
+                        else
+                            if (_ctdchd.DCBD.MaDonTXL != null)
+                                dr["MaDon"] = "TXL" + _ctdchd.DCBD.MaDonTXL.Value.ToString().Insert(_ctdchd.DCBD.MaDonTXL.Value.ToString().Length - 2, "-");
+                            else
+                                if (_ctdchd.DCBD.MaDonTBC != null)
+                                    dr["MaDon"] = "TBC" + _ctdchd.DCBD.MaDonTBC.Value.ToString().Insert(_ctdchd.DCBD.MaDonTBC.Value.ToString().Length - 2, "-");
                     dr["DanhBo"] = _ctdchd.DanhBo.Insert(7, " ").Insert(4, " ");
                     dr["MLT"] = _ctdchd.MLT.Insert(4, " ").Insert(2, " ");
                     dr["HoTen"] = _ctdchd.HoTen;
@@ -1141,9 +1153,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (_ctdchd.KhuCongNghiep == true)
                     {
                         if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
-                            dr["DieuChinh"] = "Sản lượng vượt so với Sản lượng Tiêu Thụ Bình Quân ("+_ctdchd.TyLeKhuCongNghiep.Value+"%)";
+                            dr["DieuChinh"] = "Sản lượng vượt so với Sản lượng Tiêu Thụ Bình Quân ("+ Math.Round(_ctdchd.TyLeKhuCongNghiep.Value,2)+"%)";
                         else
-                            dr["DieuChinh"] = dr["DieuChinh"] + ", Sản lượng vượt so với Sản lượng Tiêu Thụ Bình Quân (" + _ctdchd.TyLeKhuCongNghiep.Value + "%)";
+                            dr["DieuChinh"] = dr["DieuChinh"] + ", Sản lượng vượt so với Sản lượng Tiêu Thụ Bình Quân (" + Math.Round(_ctdchd.TyLeKhuCongNghiep.Value,2) + "%)";
                     }
                     ///
                     dr["GiaBieuStart"] = txtGiaBieu_Cu.Text.Trim();
@@ -1220,7 +1232,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     rptThongBaoDCHD_ChuKy rpt = new rptThongBaoDCHD_ChuKy();
                     rpt.SetDataSource(dsBaoCao);
                     frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                    frm.ShowDialog();
+                    frm.Show();
                 }
                 else
                 {
@@ -1372,7 +1384,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     rptThongBaoDCHD rpt = new rptThongBaoDCHD();
                     rpt.SetDataSource(dsBaoCao);
                     frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                    frm.ShowDialog();
+                    frm.Show();
                 }
             }
             catch (Exception ex)
