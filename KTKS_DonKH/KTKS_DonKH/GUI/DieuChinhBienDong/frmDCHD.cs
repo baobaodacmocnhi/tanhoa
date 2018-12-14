@@ -1064,7 +1064,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 if (_ctdchd != null)
                 {
-                    dr["SoPhieu"] = _ctdchd.MaCTDCHD.ToString().Insert(_ctdchd.MaCTDCHD.ToString().Length - 2, "-"); ;
+                    
                     if (_ctdchd.DCBD.MaDonMoi != null)
                         dr["MaDon"] = _ctdchd.DCBD.MaDonMoi.Value.ToString();
                     else
@@ -1076,6 +1076,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             else
                                 if (_ctdchd.DCBD.MaDonTBC != null)
                                     dr["MaDon"] = "TBC" + _ctdchd.DCBD.MaDonTBC.Value.ToString().Insert(_ctdchd.DCBD.MaDonTBC.Value.ToString().Length - 2, "-");
+
+                    dr["SoPhieu"] = _ctdchd.MaCTDCHD.ToString().Insert(_ctdchd.MaCTDCHD.ToString().Length - 2, "-");
                     dr["DanhBo"] = _ctdchd.DanhBo.Insert(7, " ").Insert(4, " ");
                     dr["MLT"] = _ctdchd.MLT.Insert(4, " ").Insert(2, " ");
                     dr["HoTen"] = _ctdchd.HoTen;
@@ -1338,7 +1340,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (txtTongCong_Start.Text.Trim() == "0")
                         dr["TongCongStart"] = 0;
                     else
-                        dr["TongCongStart"] = txtTongCong_Start.Text.Trim().Replace(".", "");
+                        dr["TongCongStart"] = txtTongCong_Start.Text.Trim();
                     ///
                     if (int.Parse(txtTienNuoc_End.Text.Trim().Replace(".", "")) - int.Parse(txtTienNuoc_Start.Text.Trim().Replace(".", "")) == 0)
                         dr["TangGiam"] = "";
@@ -1364,7 +1366,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (txtTongCong_BD.Text.Trim() == "0")
                         dr["TongCongBD"] = 0;
                     else
-                        dr["TongCongBD"] = txtTongCong_BD.Text.Trim().Replace(".", "");
+                        dr["TongCongBD"] = txtTongCong_BD.Text.Trim();
                     ///
                     dr["TieuThuEnd"] = txtTieuThu_Moi.Text.Trim();
                     if (txtTienNuoc_End.Text.Trim() == "0")
@@ -1382,7 +1384,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (txtTongCong_End.Text.Trim() == "0")
                         dr["TongCongEnd"] = 0;
                     else
-                        dr["TongCongEnd"] = txtTongCong_End.Text.Trim().Replace(".", "");
+                        dr["TongCongEnd"] = txtTongCong_End.Text.Trim();
                     dsBaoCao.Tables["DCHD"].Rows.Add(dr);
                     rptThongBaoDCHD rpt = new rptThongBaoDCHD();
                     rpt.SetDataSource(dsBaoCao);

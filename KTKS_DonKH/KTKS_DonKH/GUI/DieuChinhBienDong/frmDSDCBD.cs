@@ -969,20 +969,25 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 DataRow dr = dsBaoCao.Tables["DCHD"].NewRow();
 
                                 DCBD_ChiTietHoaDon ctdchd = _cDCBD.getHoaDon(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
-                                dr["SoPhieu"] = ctdchd.MaCTDCHD.ToString().Insert(ctdchd.MaCTDCHD.ToString().Length - 2, "-");
-                                dr["DanhBo"] = ctdchd.DanhBo.Insert(7, " ").Insert(4, " "); ;
-                                dr["HoTen"] = ctdchd.HoTen;
-                                dr["DiaChi"] = ctdchd.DiaChi;
 
+                                if (ctdchd.DCBD.MaDonMoi != null)
+                                    dr["MaDon"] = ctdchd.DCBD.MaDonMoi.Value.ToString();
+                                else
                                 if (ctdchd.DCBD.MaDon != null)
-                                    dr["SoVanBan"] = ctdchd.DCBD.MaDon.Value.ToString().Insert(ctdchd.DCBD.MaDon.Value.ToString().Length - 2, "-");
+                                    dr["MaDon"] = ctdchd.DCBD.MaDon.Value.ToString().Insert(ctdchd.DCBD.MaDon.Value.ToString().Length - 2, "-");
                                 else
                                     if (ctdchd.DCBD.MaDonTXL != null)
-                                        dr["SoVanBan"] = "TXL" + ctdchd.DCBD.MaDonTXL.Value.ToString().Insert(ctdchd.DCBD.MaDonTXL.Value.ToString().Length - 2, "-");
+                                        dr["MaDon"] = "TXL" + ctdchd.DCBD.MaDonTXL.Value.ToString().Insert(ctdchd.DCBD.MaDonTXL.Value.ToString().Length - 2, "-");
                                     else
                                         if (ctdchd.DCBD.MaDonTBC != null)
-                                            dr["SoVanBan"] = "TBC" + ctdchd.DCBD.MaDonTBC.Value.ToString().Insert(ctdchd.DCBD.MaDonTBC.Value.ToString().Length - 2, "-");
+                                            dr["MaDon"] = "TBC" + ctdchd.DCBD.MaDonTBC.Value.ToString().Insert(ctdchd.DCBD.MaDonTBC.Value.ToString().Length - 2, "-");
 
+                                dr["SoPhieu"] = ctdchd.MaCTDCHD.ToString().Insert(ctdchd.MaCTDCHD.ToString().Length - 2, "-");
+                                dr["DanhBo"] = ctdchd.DanhBo.Insert(7, " ").Insert(4, " "); ;
+                                dr["MLT"] = ctdchd.MLT.Insert(4, " ").Insert(2, " ");
+                                dr["HoTen"] = ctdchd.HoTen;
+                                dr["DiaChi"] = ctdchd.DiaChi;
+                                dr["SoVanBan"] = ctdchd.SoVB;
                                 dr["NgayVanBan"] = ctdchd.NgayKy.Value.ToString("dd/MM/yyyy");
                                 dr["KyHD"] = ctdchd.KyHD;
                                 dr["SoHD"] = ctdchd.SoHD;
