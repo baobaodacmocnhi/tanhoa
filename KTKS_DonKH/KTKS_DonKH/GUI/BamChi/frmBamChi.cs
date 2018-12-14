@@ -364,7 +364,10 @@ namespace KTKS_DonKH.GUI.BamChi
                 //
                 if (_dontu_ChiTiet != null)
                 {
-                    txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString();
+                    if (_dontu_ChiTiet.DonTu.SoCongVan == "")
+                        txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString();
+                    else
+                        txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString() + "." + _dontu_ChiTiet.STT.Value.ToString();
                     GetDataGridView();
                     _hoadon = _cThuTien.GetMoiNhat(_dontu_ChiTiet.DanhBo);
                     if (_hoadon != null)

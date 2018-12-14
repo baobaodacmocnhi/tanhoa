@@ -357,7 +357,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 //
                 if (_dontu_ChiTiet != null)
                 {
-                    txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString();
+                    if (_dontu_ChiTiet.DonTu.SoCongVan == "")
+                        txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString();
+                    else
+                        txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString() + "." + _dontu_ChiTiet.STT.Value.ToString();
 
                     _hoadon = _cThuTien.GetMoiNhat(_dontu_ChiTiet.DanhBo);
                     if (_hoadon != null)

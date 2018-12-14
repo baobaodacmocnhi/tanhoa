@@ -345,7 +345,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 //
                 if (_dontu_ChiTiet != null)
                 {
-                    txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString();
+                    if (_dontu_ChiTiet.DonTu.SoCongVan == "")
+                        txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString();
+                    else
+                        txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString() + "." + _dontu_ChiTiet.STT.Value.ToString();
 
                     _hoadon = _cThuTien.GetMoiNhat(_dontu_ChiTiet.DanhBo);
                     if (_hoadon != null)
@@ -1061,7 +1064,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 if (_ctdchd != null)
                 {
-                    dr["SoPhieu"] = "_________";
+                    dr["SoPhieu"] = _ctdchd.MaCTDCHD.ToString().Insert(_ctdchd.MaCTDCHD.ToString().Length - 2, "-"); ;
                     if (_ctdchd.DCBD.MaDonMoi != null)
                         dr["MaDon"] = _ctdchd.DCBD.MaDonMoi.Value.ToString();
                     else
@@ -1080,7 +1083,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dr["SoVanBan"] = _ctdchd.SoVB;
                     dr["NgayVanBan"] = _ctdchd.NgayKy.Value.ToString("dd/MM/yyyy");
                     dr["KyHD"] = _ctdchd.KyHD;
-                    //dr["SoHD"] = _ctdchd.SoHD;
+                    dr["SoHD"] = _ctdchd.SoHD;
                     ///
                     dr["DieuChinh"] = "";
                     if (_ctdchd.GiaBieu != _ctdchd.GiaBieu_BD)
@@ -1207,7 +1210,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     else
                         dr["TongCongBD"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",_ctdchd.TongCong_BD.Value);
                     ///
-                    dr["TieuThuEnd"] = _ctdchd.TienNuoc_BD.Value;
+                    dr["TieuThuEnd"] = _ctdchd.TieuThu_BD.Value;
                     if ( _ctdchd.TienNuoc_End.Value == 0)
                         dr["TienNuocEnd"] = 0;
                     else

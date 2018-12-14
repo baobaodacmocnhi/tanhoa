@@ -316,7 +316,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 //
                 if (_dontu_ChiTiet != null)
                 {
-                    txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString();
+                    if (_dontu_ChiTiet.DonTu.SoCongVan == "")
+                        txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString();
+                    else
+                        txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString() + "." + _dontu_ChiTiet.STT.Value.ToString();
                     LoadDSKTXM();
                     txtDanhBo.Focus();
                     //_hoadon = _cThuTien.GetMoiNhat(_dontu_ChiTiet.DanhBo);

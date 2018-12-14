@@ -272,7 +272,10 @@ namespace KTKS_DonKH.GUI.ThuMoi
                 //
                 if (_dontu_ChiTiet != null)
                 {
-                    txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString();
+                    if (_dontu_ChiTiet.DonTu.SoCongVan == "")
+                        txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString();
+                    else
+                        txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString() + "." + _dontu_ChiTiet.STT.Value.ToString();
                     dgvDSThu.DataSource = _cThuMoi.getDS_ChiTiet("TBC", _dontbc.MaDon);
 
                     _hoadon = _cThuTien.GetMoiNhat(_dontu_ChiTiet.DanhBo);
