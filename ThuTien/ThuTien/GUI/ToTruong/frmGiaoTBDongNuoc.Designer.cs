@@ -50,6 +50,7 @@
             this.DiaChi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MLT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CreateDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TongCongLenh = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HanhThu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HoTen_DongNuoc = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -89,7 +90,6 @@
             this.cmbToCapNhat = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbTo = new System.Windows.Forms.ComboBox();
-            this.TongCongLenh = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -310,6 +310,14 @@
             this.CreateDate.Visible = true;
             this.CreateDate.VisibleIndex = 6;
             this.CreateDate.Width = 70;
+            // 
+            // TongCongLenh
+            // 
+            this.TongCongLenh.Caption = "Tổng Cộng";
+            this.TongCongLenh.FieldName = "TongCongLenh";
+            this.TongCongLenh.Name = "TongCongLenh";
+            this.TongCongLenh.Visible = true;
+            this.TongCongLenh.VisibleIndex = 11;
             // 
             // gridColumn1
             // 
@@ -543,14 +551,13 @@
             // chkChuKy
             // 
             this.chkChuKy.AutoSize = true;
-            this.chkChuKy.Checked = true;
-            this.chkChuKy.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkChuKy.Location = new System.Drawing.Point(1086, 38);
             this.chkChuKy.Name = "chkChuKy";
             this.chkChuKy.Size = new System.Drawing.Size(76, 17);
             this.chkChuKy.TabIndex = 96;
             this.chkChuKy.Text = "Có Chữ Ký";
             this.chkChuKy.UseVisualStyleBackColor = true;
+            this.chkChuKy.Visible = false;
             // 
             // btnInDSTBTonThucTeNguoiGiao
             // 
@@ -672,14 +679,6 @@
             this.cmbTo.TabIndex = 103;
             this.cmbTo.Visible = false;
             this.cmbTo.SelectedIndexChanged += new System.EventHandler(this.cmbTo_SelectedIndexChanged_1);
-            // 
-            // TongCongLenh
-            // 
-            this.TongCongLenh.Caption = "Tổng Cộng";
-            this.TongCongLenh.FieldName = "TongCongLenh";
-            this.TongCongLenh.Name = "TongCongLenh";
-            this.TongCongLenh.Visible = true;
-            this.TongCongLenh.VisibleIndex = 11;
             // 
             // frmGiaoTBDongNuoc
             // 

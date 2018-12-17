@@ -553,14 +553,13 @@
             // chkChuKy
             // 
             this.chkChuKy.AutoSize = true;
-            this.chkChuKy.Checked = true;
-            this.chkChuKy.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkChuKy.Location = new System.Drawing.Point(1118, 14);
             this.chkChuKy.Name = "chkChuKy";
             this.chkChuKy.Size = new System.Drawing.Size(76, 17);
             this.chkChuKy.TabIndex = 96;
             this.chkChuKy.Text = "Có Chữ Ký";
             this.chkChuKy.UseVisualStyleBackColor = true;
+            this.chkChuKy.Visible = false;
             // 
             // chkCoTenNguoiKy
             // 
