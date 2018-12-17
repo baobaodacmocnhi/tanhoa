@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="QLVanThuDen">
+</Property><Property Name="Solution File" Value="D:\Projects\QLVanThuDen\QLVanThuDen.sln">
+</Property><Property Name="User Options File" Value="D:\Projects\QLVanThuDen\QLVanThuDen.suo">
+</Property><Property Name="Date" Value="Monday, December 17, 2018">
+</Property><Property Name="Time" Value="13:45">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="QLVanThuDen.sln" Description="File successfully backed up as D:\Projects\QLVanThuDen\Backup\QLVanThuDen.sln">
+</Event><Event ErrorLevel="0" Project="" Source="QLVanThuDen.suo" Description="File successfully backed up as D:\Projects\QLVanThuDen\Backup\QLVanThuDen.suo">
+</Event><Event ErrorLevel="0" Project="QLVanThuDen" Source="QLVanThuDen.csproj" Description="Project file successfully backed up as D:\Projects\QLVanThuDen\Backup\QLVanThuDen.csproj">
+</Event><Event ErrorLevel="0" Project="QLVanThuDen" Source="QLVanThuDen.csproj.user" Description="Project user file successfully backed up as D:\Projects\QLVanThuDen\Backup\QLVanThuDen.csproj.user">
+</Event><Event ErrorLevel="0" Project="QLVanThuDen" Source="DAL\CDataQLVanThuDen.cs" Description="File successfully backed up as D:\Projects\QLVanThuDen\Backup\DAL\CDataQLVanThuDen.cs">
+</Event><Event ErrorLevel="0" Project="QLVanThuDen" Source="DAL\CLinQToDataTable.cs" Description="File successfully backed up as D:\Projects\QLVanThuDen\Backup\DAL\CLinQToDataTable.cs">
+</Event><Event ErrorLevel="0" Project="QLVanThuDen" Source="FormMain.cs" Description="File successfully backed up as D:\Projects\QLVanThuDen\Backup\FormMain.cs">
+</Event><Event ErrorLevel="0" Project="QLVanThuDen" Source="FormMain.Designer.cs" Description="File successfully backed up as D:\Projects\QLVanThuDen\Backup\FormMain.Designer.cs">
+</Event><Event ErrorLevel="0" Project="QLVanThuDen" Source="LinQ\DBVanThu.designer.cs" Description="File successfully backed up as D:\Projects\QLVanThuDen\Backup\LinQ\DBVanThu.designer.cs">
+</Event><Event ErrorLevel="0" Project="QLVanThuDen" Source="Program.cs" Description="File successfully backed up as D:\Projects\QLVanThuDen\Backup\Program.cs">
+</Event><Event ErrorLevel="0" Project="QLVanThuDen" Source="Properties\AssemblyInfo.cs" Description="File successfully backed up as D:\Projects\QLVanThuDen\Backup\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="QLVanThuDen" Source="Properties\Resources.Designer.cs" Description="File successfully backed up as D:\Projects\QLVanThuDen\Backup\Properties\Resources.Designer.cs">
+</Event><Event ErrorLevel="0" Project="QLVanThuDen" Source="Properties\Settings.Designer.cs" Description="File successfully backed up as D:\Projects\QLVanThuDen\Backup\Properties\Settings.Designer.cs">
+</Event><Event ErrorLevel="0" Project="QLVanThuDen" Source="LinQ\DBVanThu.dbml.layout" Description="File successfully backed up as D:\Projects\QLVanThuDen\Backup\LinQ\DBVanThu.dbml.layout">
+</Event><Event ErrorLevel="0" Project="QLVanThuDen" Source="Properties\Settings.settings" Description="File successfully backed up as D:\Projects\QLVanThuDen\Backup\Properties\Settings.settings">
+</Event><Event ErrorLevel="0" Project="QLVanThuDen" Source="app.config" Description="File successfully backed up as D:\Projects\QLVanThuDen\Backup\app.config">
+</Event><Event ErrorLevel="0" Project="QLVanThuDen" Source="LinQ\DBVanThu.dbml" Description="File successfully backed up as D:\Projects\QLVanThuDen\Backup\LinQ\DBVanThu.dbml">
+</Event><Event ErrorLevel="0" Project="QLVanThuDen" Source="QLVanThuDen_TemporaryKey.pfx" Description="File successfully backed up as D:\Projects\QLVanThuDen\Backup\QLVanThuDen_TemporaryKey.pfx">
+</Event><Event ErrorLevel="0" Project="QLVanThuDen" Source="Resources\email receive.ico" Description="File successfully backed up as D:\Projects\QLVanThuDen\Backup\Resources\email receive.ico">
+</Event><Event ErrorLevel="0" Project="QLVanThuDen" Source="FormMain.resx" Description="File successfully backed up as D:\Projects\QLVanThuDen\Backup\FormMain.resx">
+</Event><Event ErrorLevel="0" Project="QLVanThuDen" Source="Properties\Resources.resx" Description="File successfully backed up as D:\Projects\QLVanThuDen\Backup\Properties\Resources.resx">
+</Event><Event ErrorLevel="0" Project="QLVanThuDen" Source="QLVanThuDen.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="QLVanThuDen" Source="QLVanThuDen.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="QLVanThuDen.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="QLVanThuDen.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="QLVanThuDen" Source="QLVanThuDen.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>
