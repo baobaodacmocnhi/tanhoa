@@ -88,34 +88,5 @@ namespace QLVanThu.DAL
             }
             return table;
         }
-
-        public DataTable LoadDSVanThuDiDateToDate(string tungay, string denngay,string kyhieu)
-        {
-            DataTable table = new DataTable();
-            string sql = "select t1.*,df.FileName as PathFile,(case when (df.FileName is null) then 'false' else 'true' end) as Flag from ";
-            sql += "(select convert(varchar(10),IssuedDate,103) as NgayThangVB,DocumentOrderNo as SoDi,OrganizationReceivers2 as NoiNhan,DocumentNo as SoKyHieuVB,";
-            sql += "convert(varchar(10),d.CreatedDate,103) as NgayNhap,t.Notation as LoaiVB,t.TypeID,DocumentSummary as LoaiTrichYeuNoiDung,d.DocumentID as ID,d.BookID as LoaiVBGID,b.Name as LoaiVBGName ";
-            sql += "from WF_Books b,WF_Outgoing_Docs d,WF_Doc_Types t where IssuedDate between '20130101' and '20151231' and b.BookID=d.BookID and d.TypeID=t.TypeID and DocumentSummary like N'%"+kyhieu+"%') t1 ";
-            sql += "left join WF_Outgoing_Doc_Files df on t1.ID=df.DocumentID order by NgayThangVB desc,SoDi desc";
-            try
-            {
-                if (db.Connection.State == ConnectionState.Open)
-                {
-                    db.Connection.Close();
-                }
-                db.Connection.Open();
-                SqlDataAdapter adapter = new SqlDataAdapter(sql, "Data Source=192.168.90.7,8819;Initial Catalog=CAPNUOCTANHOAOFFICESE2009;User ID=sa;Password=sa");
-                adapter.Fill(table);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                db.Connection.Close();
-            }
-            return table;
-        }
     }
 }
