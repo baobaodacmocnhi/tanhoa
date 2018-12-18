@@ -410,6 +410,7 @@
             this.dgvDanhBo.Name = "dgvDanhBo";
             this.dgvDanhBo.Size = new System.Drawing.Size(640, 141);
             this.dgvDanhBo.TabIndex = 1;
+            this.dgvDanhBo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhBo_CellClick);
             // 
             // dataGridViewTextBoxColumn1
             // 

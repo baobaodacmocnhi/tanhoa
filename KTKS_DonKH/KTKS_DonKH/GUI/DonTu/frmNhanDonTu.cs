@@ -86,7 +86,7 @@ namespace KTKS_DonKH.GUI.DonTu
         {
             try
             {
-                if (entity.SoCongVan == null)
+                if (entity.DonTu_ChiTiets.Count == 1)
                 {
                     tabControl.SelectTab("tabTTKH");
                     if (entity.SoNK != null)
@@ -109,13 +109,17 @@ namespace KTKS_DonKH.GUI.DonTu
                 else
                 {
                     tabControl.SelectTab("tabCongVan");
-                    txtSoCongVan.Text = entity.SoCongVan;
-                    txtTongDB.Text = entity.TongDB.ToString();
 
                     dgvDanhBo.DataSource = entity.DonTu_ChiTiets.ToList();
                 }
                 txtMaDon.Text = entity.MaDon.ToString();
                 dateCreateDate.Value = entity.CreateDate.Value;
+
+                if (entity.SoCongVan != null)
+                {
+                    txtSoCongVan.Text = entity.SoCongVan;
+                    txtTongDB.Text = entity.TongDB.ToString();
+                }
 
                 chkcmbDieuChinh.SetEditValue(entity.ID_NhomDon);
                 chkcmbKhieuNai.SetEditValue(entity.ID_NhomDon);
@@ -423,9 +427,9 @@ namespace KTKS_DonKH.GUI.DonTu
                         entity.CT_GCNDTDHN = true;
                     ///
                     if (_cDonTu.Them(entity))
-                    {
+                    {     
+                        MessageBox.Show("Thành công\nMã Đơn: "+entity.MaDon.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
-                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 catch (Exception ex)

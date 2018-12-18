@@ -47,12 +47,11 @@ namespace KTKS_DonKH.GUI.DonTu
 
         }
 
-        public void LoadDonTu(LinQ.DonTu entity)
+        public void LoadDonTu(LinQ.DonTu entity,DonTu_ChiTiet en_ChiTiet)
         {
             try
             {
-                txtMaDon.Text = entity.MaDon.ToString();
-                if (entity.SoCongVan == null)
+                if (entity.DonTu_ChiTiets.Count == 1)
                 {
                     tabControl.SelectTab("tabTTKH");
                     if (entity.SoNK != null)
@@ -75,17 +74,36 @@ namespace KTKS_DonKH.GUI.DonTu
                 else
                 {
                     tabControl.SelectTab("tabCongVan");
-                    txtMaDon.Text += "." + _dontu_ChiTiet.STT;
-                    txtSoCongVan.Text = entity.SoCongVan;
-                    txtTongDB.Text = entity.TongDB.ToString();
+                    txtMaDon.Text += "." + en_ChiTiet.STT;
 
                     dgvDanhBo.DataSource = entity.DonTu_ChiTiets.ToList();
                 }
 
+                txtMaDon.Text = entity.MaDon.ToString();
                 dateCreateDate.Value = entity.CreateDate.Value;
+
+                if (entity.SoCongVan != null)
+                {
+                    txtSoCongVan.Text = entity.SoCongVan;
+                    txtTongDB.Text = entity.TongDB.ToString();
+                }
 
                 txtNoiDung.Text = entity.Name_NhomDon;
                 txtVanDeKhac.Text = entity.VanDeKhac;
+
+                LoadLichSu();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void LoadDonTu_ChiTiet(LinQ.DonTu_ChiTiet entity)
+        {
+            try
+            {
+                txtMaDon.Text += "." + entity.STT;
 
                 LoadLichSu();
             }
@@ -170,7 +188,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         MessageBox.Show("Đơn Công Văn, vui lòng nhập thêm số", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    LoadDonTu(_dontu);
+                    LoadDonTu(_dontu,_dontu_ChiTiet);
                 }
                 else
                 {
@@ -409,6 +427,19 @@ namespace KTKS_DonKH.GUI.DonTu
                 
                 throw;
             }
+        }
+
+        private void dgvDanhBo_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                _dontu_ChiTiet = _cDonTu.get_ChiTiet(int.Parse(dgvDanhBo.CurrentRow.Cells["ID"].Value.ToString()));
+                LoadDonTu_ChiTiet(_dontu_ChiTiet);
+            }
+            catch (Exception)
+            {
+            }
+            
         }
     }
 }

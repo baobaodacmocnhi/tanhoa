@@ -57,6 +57,7 @@ namespace KTKS_DonKH.DAL.DonTu
         {
             try
             {
+                db.DonTu_ChiTiets.DeleteAllOnSubmit(entity.DonTu_ChiTiets.ToList());
                 db.DonTus.DeleteOnSubmit(entity);
                 db.SubmitChanges();
                 return true;
@@ -176,6 +177,11 @@ namespace KTKS_DonKH.DAL.DonTu
         public bool checkExist_ChiTiet(string DanhBo, DateTime CreateDate)
         {
             return db.DonTu_ChiTiets.Any(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
+        }
+
+        public DonTu_ChiTiet get_ChiTiet(int ID)
+        {
+            return db.DonTu_ChiTiets.SingleOrDefault(item => item.ID == ID );
         }
 
         public DonTu_ChiTiet get_ChiTiet(int MaDon, int STT)

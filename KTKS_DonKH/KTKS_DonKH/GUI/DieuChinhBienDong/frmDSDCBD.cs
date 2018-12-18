@@ -982,7 +982,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         if (ctdchd.DCBD.MaDonTBC != null)
                                             dr["MaDon"] = "TBC" + ctdchd.DCBD.MaDonTBC.Value.ToString().Insert(ctdchd.DCBD.MaDonTBC.Value.ToString().Length - 2, "-");
 
-                                dr["SoPhieu"] = ctdchd.MaCTDCHD.ToString().Insert(ctdchd.MaCTDCHD.ToString().Length - 2, "-");
+                                //dr["SoPhieu"] = ctdchd.MaCTDCHD.ToString().Insert(ctdchd.MaCTDCHD.ToString().Length - 2, "-");
+                                dr["SoPhieu"] = "_________";
                                 dr["DanhBo"] = ctdchd.DanhBo.Insert(7, " ").Insert(4, " "); ;
                                 dr["MLT"] = ctdchd.MLT.Insert(4, " ").Insert(2, " ");
                                 dr["HoTen"] = ctdchd.HoTen;
@@ -1120,23 +1121,23 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 else
                                     dr["TongCongEnd"] =  String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",ctdchd.TongCong_End);
 
-                                if (ctdchd.KhuCongNghiep == true)
-                                {
+                                //if (ctdchd.KhuCongNghiep == true)
+                                //{
                                     dr["ChucVu"] = ctdchd.ChucVu;
                                     dr["NguoiKy"] = ctdchd.NguoiKy;
-                                }
+                                //}
 
                                 dsBaoCao.Tables["DCHD"].Rows.Add(dr);
 
                                 ReportDocument rpt;
-                                if (ctdchd.KhuCongNghiep == true)
-                                {
+                                //if (ctdchd.KhuCongNghiep == true)
+                                //{
                                     rpt = new rptThongBaoDCHD_ChuKy();                                    
-                                }
-                                else
-                                {
-                                    rpt = new rptThongBaoDCHD();
-                                }
+                                //}
+                                //else
+                                //{
+                                //    rpt = new rptThongBaoDCHD();
+                                //}
                                 rpt.SetDataSource(dsBaoCao);
 
                                 printDialog.AllowSomePages = true;

@@ -1064,7 +1064,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 if (_ctdchd != null)
                 {
-                    
                     if (_ctdchd.DCBD.MaDonMoi != null)
                         dr["MaDon"] = _ctdchd.DCBD.MaDonMoi.Value.ToString();
                     else
@@ -1077,7 +1076,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 if (_ctdchd.DCBD.MaDonTBC != null)
                                     dr["MaDon"] = "TBC" + _ctdchd.DCBD.MaDonTBC.Value.ToString().Insert(_ctdchd.DCBD.MaDonTBC.Value.ToString().Length - 2, "-");
 
-                    dr["SoPhieu"] = _ctdchd.MaCTDCHD.ToString().Insert(_ctdchd.MaCTDCHD.ToString().Length - 2, "-");
+                    //dr["SoPhieu"] = _ctdchd.MaCTDCHD.ToString().Insert(_ctdchd.MaCTDCHD.ToString().Length - 2, "-");
+                    dr["SoPhieu"] = "_________";
                     dr["DanhBo"] = _ctdchd.DanhBo.Insert(7, " ").Insert(4, " ");
                     dr["MLT"] = _ctdchd.MLT.Insert(4, " ").Insert(2, " ");
                     dr["HoTen"] = _ctdchd.HoTen;
