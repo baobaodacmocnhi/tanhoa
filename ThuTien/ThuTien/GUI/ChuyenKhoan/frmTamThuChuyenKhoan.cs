@@ -139,14 +139,23 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     tamthu.MaNH = int.Parse(item.Cells["NganHang"].Value.ToString());
                                 else
                                     tamthu.MaNH = int.Parse(cmbNganHang.SelectedValue.ToString());
-                                if (!_cTamThu.Them(tamthu,dateNgayLap.Value))
+                                if (chkNgayLap.Checked == true)
                                 {
-                                    //_cTamThu.Rollback();
-                                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
+                                    if (!_cTamThu.Them(tamthu, dateNgayLap.Value))
+                                    {
+                                        //_cTamThu.Rollback();
+                                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
                                 }
                                 else
                                 {
+                                    if (!_cTamThu.Them(tamthu))
+                                    {
+                                        //_cTamThu.Rollback();
+                                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
                                 }
                             }
                     //_cTamThu.CommitTransaction();
@@ -779,6 +788,14 @@ namespace ThuTien.GUI.ChuyenKhoan
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();
+        }
+
+        private void chkNgayLap_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkNgayLap.Checked == true)
+                dateNgayLap.Enabled = true;
+            else
+                dateNgayLap.Enabled = false;
         }
     }
 }

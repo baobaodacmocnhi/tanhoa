@@ -6688,7 +6688,7 @@ namespace ThuTien.DAL.Doi
                         + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null) and DANHBA in"
                         + " (select DANHBA from HOADON"
                         + " where MaNV_HanhThu=@MaNV_HanhThu"
-                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@ToDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
+                        + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and DOT>=@FromDot and DOT<=@ToDot and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
                         + " group by DANHBA"
                         + " having COUNT(*)>=" + SoKy + ")"
                         + " order by MLT,Ky asc";
