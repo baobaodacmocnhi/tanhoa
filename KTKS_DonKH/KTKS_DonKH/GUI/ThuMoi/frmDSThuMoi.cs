@@ -172,21 +172,23 @@ namespace KTKS_DonKH.GUI.ThuMoi
         private void btnInDS_Click(object sender, EventArgs e)
         {
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-            foreach (DataGridViewRow item in dgvDSThu.Rows)
-            {
-                DataRow dr = dsBaoCao.Tables["DanhSach"].NewRow();
+            for (int i = 0; i < dgvDSThu.Rows.Count; i++)
+                if (dgvDSThu["In", i].Value != null && bool.Parse(dgvDSThu["In", i].Value.ToString()) == true)
+                {
+                    DataRow dr = dsBaoCao.Tables["DanhSach"].NewRow();
 
-                dr["LoaiBaoCao"] = "GỬI THƯ MỜI";
-                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
-                dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-                if (string.IsNullOrEmpty(item.Cells["DanhBo"].Value.ToString()) == false && item.Cells["DanhBo"].Value.ToString().Length == 11)
-                    dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
-                dr["HoTen"] = item.Cells["HoTen"].Value.ToString();
-                dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
+                    dr["LoaiBaoCao"] = "GỬI THƯ MỜI";
+                    dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                    dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                    dr["MaDon"] = dgvDSThu["MaDon", i].Value.ToString().Insert(dgvDSThu["MaDon", i].Value.ToString().Length-2,"-");
+                    if (string.IsNullOrEmpty(dgvDSThu["DanhBo", i].Value.ToString()) == false && dgvDSThu["DanhBo", i].Value.ToString().Length == 11)
+                        dr["DanhBo"] = dgvDSThu["DanhBo", i].Value.ToString().Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = dgvDSThu["HoTen", i].Value.ToString();
+                    dr["DiaChi"] = dgvDSThu["DiaChi", i].Value.ToString();
 
-                dsBaoCao.Tables["DanhSach"].Rows.Add(dr);
-            }
-            rptDanhSach rpt = new rptDanhSach();
+                    dsBaoCao.Tables["DanhSach"].Rows.Add(dr);
+                }
+            rptDanhSach_Ngang rpt = new rptDanhSach_Ngang();
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.Show();

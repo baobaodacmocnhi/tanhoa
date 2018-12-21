@@ -47,7 +47,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 //Đơn Tổ Khách Hàng
                 if (dgvDanhBo["MaDon", e.RowIndex].Value.ToString().ToUpper().Contains("TKH"))
                 {
-                    DonKH dontkh = _cDonKH.Get(decimal.Parse(dgvDanhBo["MaDon", e.RowIndex].Value.ToString().Replace("-", "")));
+                    DonKH dontkh = _cDonKH.Get(decimal.Parse(dgvDanhBo["MaDon", e.RowIndex].Value.ToString().Substring(3).Replace("-", "")));
                     if (dontkh != null)
                     {
                         HOADON hoadon = _cThuTien.GetMoiNhat(dontkh.DanhBo);

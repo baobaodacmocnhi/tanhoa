@@ -970,19 +970,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                 DCBD_ChiTietHoaDon ctdchd = _cDCBD.getHoaDon(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
 
-                                if (ctdchd.DCBD.MaDonMoi != null)
-                                    dr["MaDon"] = ctdchd.DCBD.MaDonMoi.Value.ToString();
-                                else
-                                if (ctdchd.DCBD.MaDon != null)
-                                    dr["MaDon"] = ctdchd.DCBD.MaDon.Value.ToString().Insert(ctdchd.DCBD.MaDon.Value.ToString().Length - 2, "-");
-                                else
-                                    if (ctdchd.DCBD.MaDonTXL != null)
-                                        dr["MaDon"] = "TXL" + ctdchd.DCBD.MaDonTXL.Value.ToString().Insert(ctdchd.DCBD.MaDonTXL.Value.ToString().Length - 2, "-");
-                                    else
-                                        if (ctdchd.DCBD.MaDonTBC != null)
-                                            dr["MaDon"] = "TBC" + ctdchd.DCBD.MaDonTBC.Value.ToString().Insert(ctdchd.DCBD.MaDonTBC.Value.ToString().Length - 2, "-");
+                                //if (ctdchd.DCBD.MaDonMoi != null)
+                                //    dr["MaDon"] = ctdchd.DCBD.MaDonMoi.Value.ToString();
+                                //else
+                                //if (ctdchd.DCBD.MaDon != null)
+                                //    dr["MaDon"] = ctdchd.DCBD.MaDon.Value.ToString().Insert(ctdchd.DCBD.MaDon.Value.ToString().Length - 2, "-");
+                                //else
+                                //    if (ctdchd.DCBD.MaDonTXL != null)
+                                //        dr["MaDon"] = "TXL" + ctdchd.DCBD.MaDonTXL.Value.ToString().Insert(ctdchd.DCBD.MaDonTXL.Value.ToString().Length - 2, "-");
+                                //    else
+                                //        if (ctdchd.DCBD.MaDonTBC != null)
+                                //            dr["MaDon"] = "TBC" + ctdchd.DCBD.MaDonTBC.Value.ToString().Insert(ctdchd.DCBD.MaDonTBC.Value.ToString().Length - 2, "-");
 
-                                //dr["SoPhieu"] = ctdchd.MaCTDCHD.ToString().Insert(ctdchd.MaCTDCHD.ToString().Length - 2, "-");
+                                dr["MaDon"] = ctdchd.MaCTDCHD.ToString().Insert(ctdchd.MaCTDCHD.ToString().Length - 2, "-");
                                 dr["SoPhieu"] = "_________";
                                 dr["DanhBo"] = ctdchd.DanhBo.Insert(7, " ").Insert(4, " "); ;
                                 dr["MLT"] = ctdchd.MLT.Insert(4, " ").Insert(2, " ");
@@ -1039,9 +1039,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                 else
                                                     dr["DieuChinh"] = dr["DieuChinh"] + ", " + ctdchd.DinhMuc_BD + "m3 Áp giá " + _lstGiaNuoc[0].DonGia.Value + ", " + ctdchd.TieuThu_DieuChinhGia + "m3 Áp giá " + ctdchd.GiaDieuChinh.Value;
                                             break;
-                                    }
-                                    dr["ChiTietCu"] = ctdchd.ChiTietCu;
-                                    dr["ChiTietMoi"] = ctdchd.ChiTietMoi;
+                                    }                                
                                 }
                                 if (ctdchd.TyLe)
                                 {
@@ -1057,9 +1055,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         dr["DieuChinh"] = dr["DieuChinh"] + " DV: " + ctdchd.DV.Value.ToString() + "%";
                                     if (ctdchd.HCSN != 0)
                                         dr["DieuChinh"] = dr["DieuChinh"] + " HCSN: " + ctdchd.HCSN.Value.ToString() + "%";
-                                    dr["ChiTietCu"] = ctdchd.ChiTietCu;
-                                    dr["ChiTietMoi"] = ctdchd.ChiTietMoi;
                                 }
+                                if (ctdchd.KhuCongNghiep == true)
+                                {
+                                    if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
+                                        dr["DieuChinh"] = "Sản lượng vượt so với Sản lượng Tiêu Thụ Bình Quân (" + Math.Round(ctdchd.TyLeKhuCongNghiep.Value, 2) + "%)";
+                                    else
+                                        dr["DieuChinh"] = dr["DieuChinh"] + ", Sản lượng vượt so với Sản lượng Tiêu Thụ Bình Quân (" + Math.Round(ctdchd.TyLeKhuCongNghiep.Value, 2) + "%)";
+                                }
+                                dr["ChiTietCu"] = ctdchd.ChiTietCu;
+                                dr["ChiTietMoi"] = ctdchd.ChiTietMoi;
                                 ///
                                 dr["GiaBieuStart"] = ctdchd.GiaBieu;
                                 dr["GiaBieuEnd"] = ctdchd.GiaBieu_BD;
