@@ -1635,7 +1635,7 @@ namespace QLVanThu
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.Button == MouseButtons.Right)
             {
                 if (bool.Parse(dgvDSVanThuDi["File", e.RowIndex].Value.ToString())==true)
-                System.Diagnostics.Process.Start(@"\\server_hp380\WorkflowData\" + dgvDSVanThuDi["PathFile", e.RowIndex].Value.ToString());
+                    System.Diagnostics.Process.Start(@"\\server06\WorkflowData$\" + dgvDSVanThuDi["PathFile", e.RowIndex].Value.ToString());
             }
         }
 
