@@ -44,7 +44,7 @@ namespace QLVanThuDen.DAL
                     db.Connection.Close();
                 }
                 db.Connection.Open();
-                SqlDataAdapter adapter = new SqlDataAdapter(sql, "Data Source=192.168.90.7,8819;Initial Catalog=CAPNUOCTANHOAOFFICESE2009;User ID=sa;Password=sa");
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, db.Connection.ConnectionString);
                 adapter.Fill(table);
             }
             catch (Exception ex)
@@ -71,7 +71,7 @@ namespace QLVanThuDen.DAL
                     db.Connection.Close();
                 }
                 db.Connection.Open();
-                SqlDataAdapter adapter = new SqlDataAdapter(sql, "Data Source=192.168.90.7,8819;Initial Catalog=CAPNUOCTANHOAOFFICESE2009;User ID=sa;Password=sa");
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, db.Connection.ConnectionString);
                 adapter.Fill(table);
             }
             catch (Exception ex)

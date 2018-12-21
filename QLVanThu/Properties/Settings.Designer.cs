@@ -26,8 +26,8 @@ namespace QLVanThuDen.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.90.7,8819;Initial Catalog=CAPNUOCTANHOAOFFICESE2009;User ID=s" +
-            "a;Password=sa")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=server06;Initial Catalog=CAPNUOCTANHOAOFFICESE2009;Persist Security I" +
+            "nfo=True;User ID=sa;Password=db6@tanhoa")]
         public string CAPNUOCTANHOAOFFICESE2009ConnectionString {
             get {
                 return ((string)(this["CAPNUOCTANHOAOFFICESE2009ConnectionString"]));

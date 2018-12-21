@@ -1260,7 +1260,7 @@ namespace QLVanThuDen
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.Button == MouseButtons.Right)
             {
-                System.Diagnostics.Process.Start(@"\\server_hp380\WorkflowData\" + dgvDSVanThuDen["PathFile", e.RowIndex].Value.ToString());
+                System.Diagnostics.Process.Start(@"\\server06\WorkflowData$\" + dgvDSVanThuDen["PathFile", e.RowIndex].Value.ToString());
             }
         }
 
