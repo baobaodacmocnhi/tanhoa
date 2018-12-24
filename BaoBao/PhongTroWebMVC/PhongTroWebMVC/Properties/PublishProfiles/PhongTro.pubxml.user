@@ -310,7 +310,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/21/2018 17:12:11</publishTime>
     </File>
     <File Include="Views/HinhAnhs/Create.cshtml">
-      <publishTime>12/24/2018 14:38:53</publishTime>
+      <publishTime>12/24/2018 16:57:53</publishTime>
     </File>
     <File Include="Views/HinhAnhs/Delete.cshtml">
       <publishTime>12/21/2018 16:26:44</publishTime>
