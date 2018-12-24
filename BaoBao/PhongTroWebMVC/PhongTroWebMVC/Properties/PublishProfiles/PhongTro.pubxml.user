@@ -67,7 +67,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/13/2012 12:19:34</publishTime>
     </File>
     <File Include="bin/PhongTroWebMVC.dll">
-      <publishTime>12/21/2018 17:09:43</publishTime>
+      <publishTime>12/24/2018 16:45:54</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>06/18/2015 20:19:46</publishTime>
@@ -211,7 +211,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/19/2018 10:26:31</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>12/19/2018 10:26:31</publishTime>
+      <publishTime>12/24/2018 15:44:13</publishTime>
     </File>
     <File Include="Views/Account/ConfirmEmail.cshtml">
       <publishTime>12/19/2018 10:26:34</publishTime>
@@ -310,7 +310,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/21/2018 17:12:11</publishTime>
     </File>
     <File Include="Views/HinhAnhs/Create.cshtml">
-      <publishTime>12/21/2018 16:26:44</publishTime>
+      <publishTime>12/24/2018 14:38:53</publishTime>
     </File>
     <File Include="Views/HinhAnhs/Delete.cshtml">
       <publishTime>12/21/2018 16:26:44</publishTime>
@@ -322,7 +322,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/21/2018 16:30:48</publishTime>
     </File>
     <File Include="Views/HinhAnhs/Index.cshtml">
-      <publishTime>12/21/2018 17:12:18</publishTime>
+      <publishTime>12/24/2018 15:44:49</publishTime>
     </File>
     <File Include="Views/HoaDon/Create.cshtml">
       <publishTime>12/20/2018 16:09:09</publishTime>
@@ -340,7 +340,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/20/2018 16:19:56</publishTime>
     </File>
     <File Include="Views/HoaDons/Create.cshtml">
-      <publishTime>12/21/2018 16:32:59</publishTime>
+      <publishTime>12/24/2018 16:45:28</publishTime>
     </File>
     <File Include="Views/HoaDons/Delete.cshtml">
       <publishTime>12/21/2018 16:27:26</publishTime>
@@ -379,19 +379,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/20/2018 16:19:56</publishTime>
     </File>
     <File Include="Views/KhachHangs/Create.cshtml">
-      <publishTime>12/21/2018 16:32:59</publishTime>
+      <publishTime>12/24/2018 16:07:28</publishTime>
     </File>
     <File Include="Views/KhachHangs/Delete.cshtml">
       <publishTime>12/21/2018 16:27:26</publishTime>
     </File>
     <File Include="Views/KhachHangs/Details.cshtml">
-      <publishTime>12/21/2018 16:27:26</publishTime>
+      <publishTime>12/24/2018 16:07:31</publishTime>
     </File>
     <File Include="Views/KhachHangs/Edit.cshtml">
-      <publishTime>12/21/2018 16:32:59</publishTime>
+      <publishTime>12/24/2018 16:07:31</publishTime>
     </File>
     <File Include="Views/KhachHangs/Index.cshtml">
-      <publishTime>12/21/2018 17:12:52</publishTime>
+      <publishTime>12/24/2018 16:06:28</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>12/19/2018 10:26:34</publishTime>
@@ -484,7 +484,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/19/2018 14:54:05</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/21/2018 17:09:44</publishTime>
+      <publishTime>12/24/2018 14:13:55</publishTime>
     </File>
   </ItemGroup>
 </Project>

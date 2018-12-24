@@ -10,6 +10,104 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Details</title>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+
+    <style>
+        img.modal-img {
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+            img.modal-img:hover {
+                opacity: 0.7;
+            }
+
+        .img-modal {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+            .img-modal img {
+                margin: auto;
+                display: block;
+                width: 80%;
+                max-width: 700%;
+            }
+
+            .img-modal div {
+                margin: auto;
+                display: block;
+                width: 80%;
+                max-width: 700px;
+                text-align: center;
+                color: #ccc;
+                padding: 10px 0;
+                height: 150px;
+            }
+
+            .img-modal img, .img-modal div {
+                animation: zoom 0.6s;
+            }
+
+            .img-modal span {
+                position: absolute;
+                top: 15px;
+                right: 35px;
+                color: #f1f1f1;
+                font-size: 40px;
+                font-weight: bold;
+                transition: 0.3s;
+                cursor: pointer;
+            }
+
+        @@media only screen and (max-width: 700px) {
+            .img-modal img {
+                width: 100%;
+            }
+        }
+
+        @@keyframes zoom {
+            0% {
+                transform: scale(0);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            $('img.modal-img').each(function () {
+                var modal = $('<div class="img-modal"><span>&times;</span><img /><div></div></div>');
+                modal.find('img').attr('src', $(this).attr('src'));
+                if ($(this).attr('alt'))
+                    modal.find('div').text($(this).attr('alt'));
+                $(this).after(modal);
+                modal = $(this).next();
+                $(this).click(function (event) {
+                    modal.show(300);
+                    modal.find('span').show(0.3);
+                });
+                modal.find('span').click(function (event) {
+                    modal.hide(300);
+                });
+            });
+            $(document).keyup(function (event) {
+                if (event.which == 27)
+                    $('.img-modal>span').click();
+            });
+        });
+    </script>
 </head>
 <body>
     <div>
@@ -33,6 +131,14 @@
             </dd>
     
             <dt>
+                @Html.DisplayNameFor(model => model.NgaySinh)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NgaySinh)
+            </dd>
+
+            <dt>
                 @Html.DisplayNameFor(model => model.DienThoai)
             </dt>
     
@@ -48,6 +154,14 @@
                 @Html.DisplayFor(model => model.BienSoXe)
             </dd>
     
+            <dt>
+                @Html.DisplayNameFor(model => model.Thue)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Thue)
+            </dd>
+
             <dt>
                 @Html.DisplayNameFor(model => model.CreateDate)
             </dt>
@@ -71,7 +185,17 @@
             <dd>
                 @Html.DisplayFor(model => model.Phong.Name)
             </dd>
-    
+
+            <dt>
+               Hình ảnh
+            </dt>
+
+            <dd>
+               @foreach (var item in Model.HinhAnhs)
+               {
+                <img src="@Url.Action("GetImage","HinhAnhs", new { id=item.ID})" width="100" height="100" class="modal-img" />
+               }
+            </dd>
         </dl>
     </div>
     <p>

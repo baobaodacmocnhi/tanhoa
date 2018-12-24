@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PhongTroWebMVC.Models;
+using System.IO;
+using System.Drawing;
 
 namespace PhongTroWebMVC.Controllers
 {
@@ -49,21 +51,58 @@ namespace PhongTroWebMVC.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create([Bind(Include = "ID_KhachHang")] HinhAnh hinhAnh,HttpPostedFileBase imageUpload)
+        public ActionResult Create([Bind(Include = "ID_KhachHang")] HinhAnh hinhAnh, IEnumerable<HttpPostedFileBase> imageUploads)
         {
             if (ModelState.IsValid)
             {
-                if (imageUpload != null)
+                if (imageUploads != null)
                 {
-                    if (db.HinhAnhs.Count() == 0)
-                        hinhAnh.ID = 1;
-                    else
-                        hinhAnh.ID = db.HinhAnhs.Max(item => item.ID) + 1;
-                    hinhAnh.Image = new byte[imageUpload.ContentLength];
-                    imageUpload.InputStream.Read(hinhAnh.Image, 0, imageUpload.ContentLength);
-                    hinhAnh.CreateDate = DateTime.Now;
-                    db.HinhAnhs.Add(hinhAnh);
-                    db.SaveChanges();
+                    foreach (var file in imageUploads)
+                    {
+                        if (file != null && file.ContentLength > 0)
+                        {
+                            HinhAnh en = new HinhAnh();
+                            en.ID_KhachHang = hinhAnh.ID_KhachHang;
+                            if (db.HinhAnhs.Count() == 0)
+                                en.ID = 1;
+                            else
+                                en.ID = db.HinhAnhs.Max(item => item.ID) + 1;
+
+                            byte[] imageData = new byte[file.ContentLength];
+                            file.InputStream.Read(imageData, 0, file.ContentLength);
+
+                            //MemoryStream ms = new MemoryStream(imageData);
+                            Image originalImage = byteArrayToImage(imageData);
+
+                            if (originalImage.PropertyIdList.Contains(0x0112))
+                            {
+                                int rotationValue = originalImage.GetPropertyItem(0x0112).Value[0];
+                                switch (rotationValue)
+                                {
+                                    case 1: // landscape, do nothing
+                                        break;
+
+                                    case 8: // rotated 90 right
+                                            // de-rotate:
+                                        originalImage.RotateFlip(rotateFlipType: RotateFlipType.Rotate270FlipNone);
+                                        break;
+
+                                    case 3: // bottoms up
+                                        originalImage.RotateFlip(rotateFlipType: RotateFlipType.Rotate180FlipNone);
+                                        break;
+
+                                    case 6: // rotated 90 left
+                                        originalImage.RotateFlip(rotateFlipType: RotateFlipType.Rotate90FlipNone);
+                                        break;
+                                }
+                            }
+                            en.Image = imageToByteArray(resizeImage(originalImage, 2048));
+                            en.Image_Thumb = imageToByteArray(resizeImage(originalImage, 1024));
+                            en.CreateDate = DateTime.Now;
+                            db.HinhAnhs.Add(en);
+                            db.SaveChanges();
+                        }
+                    }
                     return RedirectToAction("Index");
                 }
             }
@@ -146,7 +185,7 @@ namespace PhongTroWebMVC.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult GetImage(int ID)
+        public ActionResult GetImage(int? ID)
         {
             if (ID == null)
             {
@@ -159,8 +198,37 @@ namespace PhongTroWebMVC.Controllers
             }
             else
             {
-                return File(hinhAnh.Image, "image/jpg");
+                return File(hinhAnh.Image_Thumb, "image/jpg");
             }
+        }
+
+        public byte[] imageToByteArray(System.Drawing.Image imageIn)
+        {
+            MemoryStream ms = new MemoryStream();
+            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            return ms.ToArray();
+        }
+
+        public Image byteArrayToImage(byte[] byteArrayIn)
+        {
+            MemoryStream ms = new MemoryStream(byteArrayIn);
+            Image returnImage = Image.FromStream(ms);
+            return returnImage;
+        }
+
+        public Image resizeImage(Image image, int maxHeight)
+        {
+            var ratio = (double)maxHeight / image.Height;
+
+            var newWidth = (int)(image.Width * ratio);
+            var newHeight = (int)(image.Height * ratio);
+
+            var newImage = new Bitmap(newWidth, newHeight);
+            using (var g = Graphics.FromImage(newImage))
+            {
+                g.DrawImage(image, 0, 0, newWidth, newHeight);
+            }
+            return newImage;
         }
     }
 }

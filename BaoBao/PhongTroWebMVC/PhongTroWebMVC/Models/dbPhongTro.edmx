@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BaoBaoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BaoBaoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="GiaDien">
           <Key>
             <PropertyRef Name="ID" />
@@ -32,6 +32,7 @@
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="Image" Type="varbinary(max)" />
+          <Property Name="Image_Thumb" Type="varbinary(max)" />
           <Property Name="ID_KhachHang" Type="int" />
           <Property Name="CreateDate" Type="datetime" />
         </EntityType>
@@ -61,9 +62,11 @@
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="HoTen" Type="nvarchar" MaxLength="100" />
           <Property Name="GioiTinh" Type="bit" Nullable="false" />
+          <Property Name="NgaySinh" Type="date" />
           <Property Name="DienThoai" Type="varchar" MaxLength="50" />
           <Property Name="BienSoXe" Type="varchar" MaxLength="50" />
           <Property Name="IDPhong" Type="int" />
+          <Property Name="Thue" Type="bit" Nullable="false" />
           <Property Name="CreateDate" Type="datetime" />
           <Property Name="ModifyDate" Type="datetime" />
         </EntityType>
@@ -151,8 +154,7 @@
             <End Role="KhachHang" EntitySet="KhachHang" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BaoBaoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -186,6 +188,7 @@
           <Property Name="ID_KhachHang" Type="Int32" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="KhachHang" Relationship="Self.FK_HinhAnh_KhachHang" FromRole="HinhAnh" ToRole="KhachHang" />
+          <Property Name="Image_Thumb" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="HoaDon">
           <Key>
@@ -221,6 +224,8 @@
           <Property Name="ModifyDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="HinhAnhs" Relationship="Self.FK_HinhAnh_KhachHang" FromRole="KhachHang" ToRole="HinhAnh" />
           <NavigationProperty Name="Phong" Relationship="Self.FK_KhachHang_Phong" FromRole="KhachHang" ToRole="Phong" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+          <Property Name="Thue" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Phong">
           <Key>
@@ -340,6 +345,7 @@
           <EntitySetMapping Name="HinhAnhs">
             <EntityTypeMapping TypeName="BaoBaoModel.HinhAnh">
               <MappingFragment StoreEntitySet="HinhAnh">
+                <ScalarProperty Name="Image_Thumb" ColumnName="Image_Thumb" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="ID_KhachHang" ColumnName="ID_KhachHang" />
@@ -370,6 +376,8 @@
           <EntitySetMapping Name="KhachHangs">
             <EntityTypeMapping TypeName="BaoBaoModel.KhachHang">
               <MappingFragment StoreEntitySet="KhachHang">
+                <ScalarProperty Name="Thue" ColumnName="Thue" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="HoTen" ColumnName="HoTen" />
                 <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
@@ -424,8 +432,8 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
