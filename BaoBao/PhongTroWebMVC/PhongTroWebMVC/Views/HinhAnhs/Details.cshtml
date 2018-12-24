@@ -1,0 +1,50 @@
+﻿@model PhongTroWebMVC.Models.HinhAnh
+
+@{
+//Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>HinhAnh</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Image)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Image)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreateDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.KhachHang.HoTen)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.KhachHang.HoTen)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

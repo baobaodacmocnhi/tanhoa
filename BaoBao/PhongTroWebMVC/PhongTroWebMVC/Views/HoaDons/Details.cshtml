@@ -1,0 +1,130 @@
+﻿@model PhongTroWebMVC.Models.HoaDon
+
+@{
+//Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>HoaDon</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ChiSoDienOld)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ChiSoDienOld)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ChiSoDienNew)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ChiSoDienNew)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TieuThuDien)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TieuThuDien)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TienDien)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TienDien)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ChiTietDien)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ChiTietDien)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ChiSoNuocOld)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ChiSoNuocOld)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ChiSoNuocNew)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ChiSoNuocNew)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TieuThuNuoc)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TieuThuNuoc)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TienNuoc)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TienNuoc)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ChiTietNuoc)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ChiTietNuoc)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreateDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ModifyDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ModifyDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Phong.Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Phong.Name)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

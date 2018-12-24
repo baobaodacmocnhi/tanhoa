@@ -1,0 +1,82 @@
+﻿@model PhongTroWebMVC.Models.KhachHang
+
+@{
+//Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>KhachHang</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.HoTen)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.HoTen)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.GioiTinh)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.GioiTinh)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DienThoai)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DienThoai)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.BienSoXe)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.BienSoXe)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreateDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ModifyDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ModifyDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Phong.Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Phong.Name)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

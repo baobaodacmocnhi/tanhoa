@@ -1,0 +1,108 @@
+﻿@model IEnumerable<PhongTroWebMVC.Models.HoaDon>
+
+@{
+//Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h2>DANH SÁCH HÓA ĐƠN</h2>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ChiSoDienOld)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChiSoDienNew)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TieuThuDien)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TienDien)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChiTietDien)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChiSoNuocOld)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChiSoNuocNew)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TieuThuNuoc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TienNuoc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChiTietNuoc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phong.Name)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChiSoDienOld)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChiSoDienNew)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TieuThuDien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TienDien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChiTietDien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChiSoNuocOld)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChiSoNuocNew)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TieuThuNuoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TienNuoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChiTietNuoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phong.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID }, new { onclick = "return confirm('Bạn có chắc chắn xóa?');" })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
