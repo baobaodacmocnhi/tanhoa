@@ -210,6 +210,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbPhongTro.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\FileModel.cs" />
     <Compile Include="Models\GiaDien.cs">
       <DependentUpon>dbPhongTro.tt</DependentUpon>
     </Compile>

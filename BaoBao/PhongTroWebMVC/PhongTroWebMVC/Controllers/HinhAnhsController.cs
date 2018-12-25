@@ -57,9 +57,9 @@ namespace PhongTroWebMVC.Controllers
             {
                 if (imageUploads != null)
                 {
-                    foreach (var file in imageUploads)
+                    for (int i = 0; i < imageUploads.Count(); i++)
                     {
-                        if (file != null && file.ContentLength > 0)
+                        if (imageUploads.ElementAt(i) != null && imageUploads.ElementAt(i).ContentLength > 0)
                         {
                             HinhAnh en = new HinhAnh();
                             en.ID_KhachHang = hinhAnh.ID_KhachHang;
@@ -68,8 +68,8 @@ namespace PhongTroWebMVC.Controllers
                             else
                                 en.ID = db.HinhAnhs.Max(item => item.ID) + 1;
 
-                            byte[] imageData = new byte[file.ContentLength];
-                            file.InputStream.Read(imageData, 0, file.ContentLength);
+                            byte[] imageData = new byte[imageUploads.ElementAt(i).ContentLength];
+                            imageUploads.ElementAt(i).InputStream.Read(imageData, 0, imageUploads.ElementAt(i).ContentLength);
 
                             //MemoryStream ms = new MemoryStream(imageData);
                             Image originalImage = byteArrayToImage(imageData);
@@ -103,6 +103,52 @@ namespace PhongTroWebMVC.Controllers
                             db.SaveChanges();
                         }
                     }
+                    //foreach (var file in imageUploads)
+                    //{
+                    //    if (file != null && file.ContentLength > 0)
+                    //    {
+                    //        HinhAnh en = new HinhAnh();
+                    //        en.ID_KhachHang = hinhAnh.ID_KhachHang;
+                    //        if (db.HinhAnhs.Count() == 0)
+                    //            en.ID = 1;
+                    //        else
+                    //            en.ID = db.HinhAnhs.Max(item => item.ID) + 1;
+
+                    //        byte[] imageData = new byte[file.ContentLength];
+                    //        file.InputStream.Read(imageData, 0, file.ContentLength);
+
+                    //        //MemoryStream ms = new MemoryStream(imageData);
+                    //        Image originalImage = byteArrayToImage(imageData);
+
+                    //        if (originalImage.PropertyIdList.Contains(0x0112))
+                    //        {
+                    //            int rotationValue = originalImage.GetPropertyItem(0x0112).Value[0];
+                    //            switch (rotationValue)
+                    //            {
+                    //                case 1: // landscape, do nothing
+                    //                    break;
+
+                    //                case 8: // rotated 90 right
+                    //                        // de-rotate:
+                    //                    originalImage.RotateFlip(rotateFlipType: RotateFlipType.Rotate270FlipNone);
+                    //                    break;
+
+                    //                case 3: // bottoms up
+                    //                    originalImage.RotateFlip(rotateFlipType: RotateFlipType.Rotate180FlipNone);
+                    //                    break;
+
+                    //                case 6: // rotated 90 left
+                    //                    originalImage.RotateFlip(rotateFlipType: RotateFlipType.Rotate90FlipNone);
+                    //                    break;
+                    //            }
+                    //        }
+                    //        en.Image = imageToByteArray(resizeImage(originalImage, 2048));
+                    //        en.Image_Thumb = imageToByteArray(resizeImage(originalImage, 1024));
+                    //        en.CreateDate = DateTime.Now;
+                    //        db.HinhAnhs.Add(en);
+                    //        db.SaveChanges();
+                    //    }
+                    //}
                     return RedirectToAction("Index");
                 }
             }

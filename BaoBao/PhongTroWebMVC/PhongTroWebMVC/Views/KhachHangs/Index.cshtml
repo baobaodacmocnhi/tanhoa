@@ -12,10 +12,18 @@
     <title>Index</title>
 </head>
 <body>
+@using (Html.BeginForm("Index", "KhachHangs", FormMethod.Post))
+{
     <h2>DANH SÁCH KHÁCH HÀNG</h2>
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
+    <div class="form-group">
+        @Html.DisplayNameFor(model => model.Phong.Name)
+        @Html.DropDownList("cmbPhong", ViewBag.cmbPhong as SelectList, "Tất Cả")
+        <input type="submit" value="Load" class="btn btn-default" />
+    </div>
+
     <table class="table">
         <tr>
             <th>
@@ -41,38 +49,40 @@
             </th>
             <th></th>
         </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.HoTen)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GioiTinh)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NgaySinh)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DienThoai)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BienSoXe)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Thue)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phong.Name)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.ID }, new { onclick = "return confirm('Bạn có chắc chắn xóa?');" })
-            </td>
-        </tr>
-    }
-    
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HoTen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GioiTinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgaySinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DienThoai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BienSoXe)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Thue)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phong.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { onclick = "return confirm('Bạn có chắc chắn xóa?');" })
+                </td>
+            </tr>
+        }
+
     </table>
+}
 </body>
 </html>

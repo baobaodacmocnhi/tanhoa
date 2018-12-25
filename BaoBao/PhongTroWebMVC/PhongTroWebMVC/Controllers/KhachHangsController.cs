@@ -15,10 +15,19 @@ namespace PhongTroWebMVC.Controllers
         private dbPhongTro db = new dbPhongTro();
 
         // GET: KhachHangs
-        public ActionResult Index()
+        public ActionResult Index(string cmbPhong)
         {
-            var khachHangs = db.KhachHangs.Include(k => k.Phong);
-            return View(khachHangs.ToList());
+            ViewBag.cmbPhong = new SelectList(db.Phongs, "ID", "Name");
+            
+            List<KhachHang> khachHangs;
+            if (cmbPhong != null && cmbPhong != "")
+            {
+                var ID = Convert.ToInt32(cmbPhong);
+                khachHangs = db.KhachHangs.Where(item => item.IDPhong == ID).Include(k => k.Phong).ToList();
+            }
+            else
+                khachHangs = db.KhachHangs.Include(k => k.Phong).ToList();
+            return View(khachHangs.OrderBy(item => item.IDPhong).ThenBy(item => item.Ten).ToList());
         }
 
         // GET: KhachHangs/Details/5
@@ -48,7 +57,7 @@ namespace PhongTroWebMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,HoTen,GioiTinh,NgaySinh,DienThoai,BienSoXe,IDPhong,CreateDate,ModifyDate")] KhachHang khachHang)
+        public ActionResult Create([Bind(Include = "ID,HoTen,GioiTinh,NgaySinh,DienThoai,BienSoXe,Thue,IDPhong,CreateDate,ModifyDate")] KhachHang khachHang, IEnumerable<HttpPostedFileBase> imageUploads)
         {
             if (ModelState.IsValid)
             {
@@ -56,9 +65,19 @@ namespace PhongTroWebMVC.Controllers
                     khachHang.ID = 1;
                 else
                     khachHang.ID = db.KhachHangs.Max(item => item.ID) + 1;
+                if(khachHang.HoTen.LastIndexOf(" ")>0)
+                khachHang.Ten = khachHang.HoTen.ToString().Substring(khachHang.HoTen.ToString().LastIndexOf(" "), khachHang.HoTen.ToString().Length- khachHang.HoTen.ToString().LastIndexOf(" "));
                 khachHang.CreateDate = DateTime.Now;
                 db.KhachHangs.Add(khachHang);
                 db.SaveChanges();
+                //insert hình ảnh
+                if (imageUploads.Count() > 0)
+                {
+                    HinhAnhsController hinhAnhController = new HinhAnhsController();
+                    HinhAnh hinhAnh = new HinhAnh();
+                    hinhAnh.ID_KhachHang = khachHang.ID;
+                    hinhAnhController.Create(hinhAnh, imageUploads);
+                }
                 return RedirectToAction("Index");
             }
 
@@ -87,7 +106,7 @@ namespace PhongTroWebMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,HoTen,GioiTinh,NgaySinh,DienThoai,BienSoXe,IDPhong,CreateDate,ModifyDate")] KhachHang khachHang)
+        public ActionResult Edit([Bind(Include = "ID,HoTen,GioiTinh,NgaySinh,DienThoai,BienSoXe,Thue,IDPhong,CreateDate,ModifyDate")] KhachHang khachHang)
         {
             if (ModelState.IsValid)
             {
@@ -140,5 +159,7 @@ namespace PhongTroWebMVC.Controllers
             }
             base.Dispose(disposing);
         }
+
+        
     }
 }
