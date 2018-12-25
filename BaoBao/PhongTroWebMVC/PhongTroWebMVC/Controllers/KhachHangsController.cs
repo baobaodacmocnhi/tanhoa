@@ -15,18 +15,26 @@ namespace PhongTroWebMVC.Controllers
         private dbPhongTro db = new dbPhongTro();
 
         // GET: KhachHangs
-        public ActionResult Index(string cmbPhong)
+        public ActionResult Index(string cmbPhong, bool? chkAll)
         {
             ViewBag.cmbPhong = new SelectList(db.Phongs, "ID", "Name");
-            
+
             List<KhachHang> khachHangs;
             if (cmbPhong != null && cmbPhong != "")
             {
                 var ID = Convert.ToInt32(cmbPhong);
-                khachHangs = db.KhachHangs.Where(item => item.IDPhong == ID).Include(k => k.Phong).ToList();
+                if (chkAll!=null&&chkAll == true)
+                    khachHangs = db.KhachHangs.Where(item => item.IDPhong == ID).Include(k => k.Phong).ToList();
+                else
+                    khachHangs = db.KhachHangs.Where(item => item.IDPhong == ID&&item.Thue==true).Include(k => k.Phong).ToList();
             }
             else
-                khachHangs = db.KhachHangs.Include(k => k.Phong).ToList();
+            {
+                if (chkAll != null && chkAll == true)
+                    khachHangs = db.KhachHangs.Include(k => k.Phong).ToList();
+                else
+                    khachHangs = db.KhachHangs.Where(item => item.Thue == true).Include(k => k.Phong).ToList();
+            }
             return View(khachHangs.OrderBy(item => item.IDPhong).ThenBy(item => item.Ten).ToList());
         }
 

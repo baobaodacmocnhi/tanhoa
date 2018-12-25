@@ -17,6 +17,7 @@ namespace PhongTroWebMVC.Models
     {
         public int ID { get; set; }
 
+        [DisplayName("Phòng")]
         public Nullable<int> IDPhong { get; set; }
 
         [DisplayName("Chỉ số điện cũ")]

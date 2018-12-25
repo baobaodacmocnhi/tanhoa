@@ -42,7 +42,7 @@ namespace PhongTroWebMVC.Models
         [DisplayName("Biển số xe")]
         public string BienSoXe { get; set; }
 
-        [DisplayName("")]
+        [DisplayName("Phòng")]
         public Nullable<int> IDPhong { get; set; }
 
         [DisplayName("Thuê")]

@@ -23,6 +23,7 @@ namespace PhongTroWebMVC.Models
         [DisplayName("Hình 1024px")]
         public byte[] Image_Thumb { get; set; }
 
+        [DisplayName("Khách hàng")]
         public Nullable<int> ID_KhachHang { get; set; }
 
         [DisplayName("Ngày tạo")]

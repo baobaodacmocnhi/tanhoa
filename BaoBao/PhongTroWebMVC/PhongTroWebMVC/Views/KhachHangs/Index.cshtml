@@ -19,6 +19,8 @@
         @Html.ActionLink("Create New", "Create")
     </p>
     <div class="form-group">
+        @Html.CheckBox("chkAll", false) Tất Cả
+        <br />
         @Html.DisplayNameFor(model => model.Phong.Name)
         @Html.DropDownList("cmbPhong", ViewBag.cmbPhong as SelectList, "Tất Cả")
         <input type="submit" value="Load" class="btn btn-default" />
@@ -26,6 +28,9 @@
 
     <table class="table">
         <tr>
+            <th>
+                STT
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.HoTen)
             </th>
@@ -49,10 +54,13 @@
             </th>
             <th></th>
         </tr>
-
+        @{ int rowNumber = 0; }
         @foreach (var item in Model)
         {
             <tr>
+                <td>
+@(rowNumber += 1)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.HoTen)
                 </td>
