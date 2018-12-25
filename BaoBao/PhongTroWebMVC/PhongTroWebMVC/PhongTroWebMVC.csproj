@@ -184,6 +184,8 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\ChiPhiKhacsController.cs" />
+    <Compile Include="Controllers\ChiPhiPhongsController.cs" />
     <Compile Include="Controllers\GiaDiensController.cs" />
     <Compile Include="Controllers\GiaNuocsController.cs" />
     <Compile Include="Controllers\HinhAnhsController.cs" />
@@ -195,45 +197,19 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\dbPhongTro.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dbPhongTro.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\dbPhongTro.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dbPhongTro.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\dbPhongTro.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dbPhongTro.edmx</DependentUpon>
-    </Compile>
+    <Compile Include="Models\ChiPhiKhac.cs" />
+    <Compile Include="Models\ChiPhiPhong.cs" />
+    <Compile Include="Models\dbPhongTro.cs" />
     <Compile Include="Models\FileModel.cs" />
-    <Compile Include="Models\GiaDien.cs">
-      <DependentUpon>dbPhongTro.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\GiaNuoc.cs">
-      <DependentUpon>dbPhongTro.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\HinhAnh.cs">
-      <DependentUpon>dbPhongTro.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\HoaDon.cs">
-      <DependentUpon>dbPhongTro.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\GiaDien.cs" />
+    <Compile Include="Models\GiaNuoc.cs" />
+    <Compile Include="Models\HinhAnh.cs" />
+    <Compile Include="Models\HoaDon.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\KhachHang.cs">
-      <DependentUpon>dbPhongTro.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\KhachHang.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Phong.cs">
-      <DependentUpon>dbPhongTro.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>dbPhongTro.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Phong.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -244,25 +220,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\dbPhongTro.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>dbPhongTro.edmx</DependentUpon>
-      <LastGenOutput>dbPhongTro.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\dbPhongTro.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>dbPhongTro.edmx</DependentUpon>
-      <LastGenOutput>dbPhongTro.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\dbPhongTro.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>dbPhongTro.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\dbPhongTro.edmx.diagram">
-      <DependentUpon>dbPhongTro.edmx</DependentUpon>
-    </Content>
     <None Include="Properties\PublishProfiles\Desktop.pubxml" />
     <None Include="Properties\PublishProfiles\PhongTro.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -304,11 +263,6 @@
     <Content Include="Views\Phongs\Details.cshtml" />
     <Content Include="Views\Phongs\Edit.cshtml" />
     <Content Include="Views\Phongs\Index.cshtml" />
-    <Content Include="Views\GiaDiens\Create.cshtml" />
-    <Content Include="Views\GiaDiens\Delete.cshtml" />
-    <Content Include="Views\GiaDiens\Details.cshtml" />
-    <Content Include="Views\GiaDiens\Edit.cshtml" />
-    <Content Include="Views\GiaDiens\Index.cshtml" />
     <Content Include="Views\GiaNuocs\Create.cshtml" />
     <Content Include="Views\GiaNuocs\Delete.cshtml" />
     <Content Include="Views\GiaNuocs\Details.cshtml" />
@@ -324,6 +278,21 @@
     <Content Include="Views\HinhAnhs\Details.cshtml" />
     <Content Include="Views\HinhAnhs\Edit.cshtml" />
     <Content Include="Views\HinhAnhs\Index.cshtml" />
+    <Content Include="Views\ChiPhiKhacs\Create.cshtml" />
+    <Content Include="Views\ChiPhiKhacs\Delete.cshtml" />
+    <Content Include="Views\ChiPhiKhacs\Details.cshtml" />
+    <Content Include="Views\ChiPhiKhacs\Edit.cshtml" />
+    <Content Include="Views\ChiPhiKhacs\Index.cshtml" />
+    <Content Include="Views\ChiPhiPhongs\Create.cshtml" />
+    <Content Include="Views\ChiPhiPhongs\Delete.cshtml" />
+    <Content Include="Views\ChiPhiPhongs\Details.cshtml" />
+    <Content Include="Views\ChiPhiPhongs\Edit.cshtml" />
+    <Content Include="Views\ChiPhiPhongs\Index.cshtml" />
+    <Content Include="Views\GiaDiens\Create.cshtml" />
+    <Content Include="Views\GiaDiens\Delete.cshtml" />
+    <Content Include="Views\GiaDiens\Details.cshtml" />
+    <Content Include="Views\GiaDiens\Edit.cshtml" />
+    <Content Include="Views\GiaDiens\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

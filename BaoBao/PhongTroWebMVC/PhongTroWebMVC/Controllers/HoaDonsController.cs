@@ -85,6 +85,19 @@ namespace PhongTroWebMVC.Controllers
                 hoaDon.TienNuoc = TienNuoc;
                 hoaDon.ChiTietNuoc = ChiTietNuoc;
 
+                int intChiPhiKhac = 0;
+                string strChiPhiKhac = "";
+                foreach (var item in db.ChiPhiPhongs.Where(item=>item.IDPhong==hoaDon.IDPhong).ToList())
+                {
+                    intChiPhiKhac += item.ChiPhiKhac.GiaTien.Value;
+                    if (strChiPhiKhac == "")
+                        strChiPhiKhac = item.ChiPhiKhac.Name +": "+ item.ChiPhiKhac.GiaTien.Value.ToString();
+                    else
+                        strChiPhiKhac += "\r\n" + item.ChiPhiKhac.Name + ": " + item.ChiPhiKhac.GiaTien.Value.ToString(); ;
+                }
+                hoaDon.ChiPhiKhac = strChiPhiKhac;
+                hoaDon.TongTien = TienDien + TienNuoc + intChiPhiKhac;
+
                 hoaDon.CreateDate = DateTime.Now;
                 db.HoaDons.Add(hoaDon);
 
