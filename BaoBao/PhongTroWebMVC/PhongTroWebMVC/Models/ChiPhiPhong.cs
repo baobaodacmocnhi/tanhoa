@@ -18,7 +18,7 @@
         [Key]
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Display(Name = "Chi phí")]
+        [Display(Name = "Chi phí khác")]
         public int IDChiPhiKhac { get; set; }
 
         [Display(Name = "Ngày tạo")]

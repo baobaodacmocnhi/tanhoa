@@ -15,10 +15,21 @@ namespace PhongTroWebMVC.Controllers
         private dbPhongTro db = new dbPhongTro();
 
         // GET: HoaDons
-        public ActionResult Index()
+        public ActionResult Index(string cmbPhong)
         {
-            var hoaDons = db.HoaDons.Include(h => h.Phong);
-            return View(hoaDons.ToList());
+            ViewBag.lstPhong = new SelectList(db.Phongs, "ID", "Name");
+
+            List<HoaDon> hoaDons;
+            if (cmbPhong != null && cmbPhong != "")
+            {
+                var ID = Convert.ToInt32(cmbPhong);
+                hoaDons = db.HoaDons.Where(item => item.IDPhong == ID).Include(k => k.Phong).ToList();
+            }
+            else
+            {
+                hoaDons = db.HoaDons.Include(k => k.Phong).ToList();
+            }
+            return View(hoaDons.OrderBy(item => item.IDPhong).ToList());
         }
 
         // GET: HoaDons/Details/5
@@ -48,7 +59,7 @@ namespace PhongTroWebMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDPhong,ChiSoDienNew,ChiSoNuocNew")] HoaDon hoaDon)
+        public ActionResult Create([Bind(Include = "ID,IDPhong,ChiSoDienOld,ChiSoDienNew,TieuThuDien,TienDien,ChiTietDien,ChiSoNuocOld,ChiSoNuocNew,TieuThuNuoc,TienNuoc,ChiTietNuoc,ChiPhiKhac,TongTien,CreateDate,ModifyDate")] HoaDon hoaDon)
         {
             if (ModelState.IsValid)
             {
@@ -85,15 +96,12 @@ namespace PhongTroWebMVC.Controllers
                 hoaDon.TienNuoc = TienNuoc;
                 hoaDon.ChiTietNuoc = ChiTietNuoc;
 
-                int intChiPhiKhac = 0;
-                string strChiPhiKhac = "";
-                foreach (var item in db.ChiPhiPhongs.Where(item=>item.IDPhong==hoaDon.IDPhong).ToList())
+                int intChiPhiKhac = db.Phongs.SingleOrDefault(item => item.ID == hoaDon.IDPhong).GiaTien.Value;
+                string strChiPhiKhac = "Tiền phòng: "+ String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", intChiPhiKhac);
+                foreach (var item in db.ChiPhiPhongs.Where(item => item.IDPhong == hoaDon.IDPhong).ToList())
                 {
                     intChiPhiKhac += item.ChiPhiKhac.GiaTien.Value;
-                    if (strChiPhiKhac == "")
-                        strChiPhiKhac = item.ChiPhiKhac.Name +": "+ item.ChiPhiKhac.GiaTien.Value.ToString();
-                    else
-                        strChiPhiKhac += "\r\n" + item.ChiPhiKhac.Name + ": " + item.ChiPhiKhac.GiaTien.Value.ToString(); ;
+                    strChiPhiKhac += "\r\n" + item.ChiPhiKhac.Name + ": " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", item.ChiPhiKhac.GiaTien.Value) ;
                 }
                 hoaDon.ChiPhiKhac = strChiPhiKhac;
                 hoaDon.TongTien = TienDien + TienNuoc + intChiPhiKhac;
@@ -105,6 +113,7 @@ namespace PhongTroWebMVC.Controllers
                 hoaDon.Phong.ChiSoNuocOld = hoaDon.Phong.ChiSoNuoc;
                 hoaDon.Phong.ChiSoDien = hoaDon.ChiSoDienNew;
                 hoaDon.Phong.ChiSoNuoc = hoaDon.ChiSoNuocNew;
+                hoaDon.ModifyDate = DateTime.Now;
 
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -135,13 +144,53 @@ namespace PhongTroWebMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDPhong,ChiSoDienOld,ChiSoDienNew,TieuThuDien,TienDien,ChiTietDien,ChiSoNuocOld,ChiSoNuocNew,TieuThuNuoc,TienNuoc,ChiTietNuoc")] HoaDon hoaDon)
+        public ActionResult Edit([Bind(Include = "ID,IDPhong,ChiSoDienOld,ChiSoDienNew,TieuThuDien,TienDien,ChiTietDien,ChiSoNuocOld,ChiSoNuocNew,TieuThuNuoc,TienNuoc,ChiTietNuoc,ChiPhiKhac,TongTien,CreateDate,ModifyDate")] HoaDon hoaDon)
         {
             if (ModelState.IsValid)
             {
+                int SoNKDien = db.KhachHangs.Count(item => item.IDPhong == hoaDon.IDPhong && item.Thue == true);
+                int TieuThuDien = hoaDon.ChiSoDienNew.Value - hoaDon.ChiSoDienOld.Value;
+                if (TieuThuDien <= 0)
+                    return View(hoaDon);
+
+                string ChiTietDien = "";
+                int TienDien = TinhTienDien(SoNKDien, TieuThuDien, out ChiTietDien);
+
+                int DinhMucNuoc = db.Phongs.SingleOrDefault(item => item.ID == hoaDon.IDPhong).SoNKNuoc.Value * 4;
+                int TieuThuNuoc = hoaDon.ChiSoNuocNew.Value - hoaDon.ChiSoNuocOld.Value;
+                if (TieuThuNuoc <= 0)
+                    return View(hoaDon);
+
+                string ChiTietNuoc = "";
+                int TienNuoc = TinhTienNuoc(DinhMucNuoc, TieuThuNuoc, out ChiTietNuoc);
+
+                hoaDon.TieuThuDien = TieuThuDien;
+                hoaDon.TienDien = TienDien;
+                hoaDon.ChiTietDien = ChiTietDien;
+
+                hoaDon.TieuThuNuoc = TieuThuNuoc;
+                hoaDon.TienNuoc = TienNuoc;
+                hoaDon.ChiTietNuoc = ChiTietNuoc;
+
+                int intChiPhiKhac = db.Phongs.SingleOrDefault(item => item.ID == hoaDon.IDPhong).GiaTien.Value;
+                string strChiPhiKhac = "Tiền phòng: " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", intChiPhiKhac);
+                foreach (var item in db.ChiPhiPhongs.Where(item => item.IDPhong == hoaDon.IDPhong).ToList())
+                {
+                    intChiPhiKhac += item.ChiPhiKhac.GiaTien.Value;
+                    strChiPhiKhac += "\r\n" + item.ChiPhiKhac.Name + ": " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", item.ChiPhiKhac.GiaTien.Value) ;
+                }
+                hoaDon.ChiPhiKhac = strChiPhiKhac;
+                hoaDon.TongTien = TienDien + TienNuoc + intChiPhiKhac;
+
                 hoaDon.ModifyDate = DateTime.Now;
                 db.Entry(hoaDon).State = EntityState.Modified;
+
+                Phong phong = db.Phongs.SingleOrDefault(item => item.ID == hoaDon.IDPhong);
+                phong.ChiSoDien = hoaDon.ChiSoDienNew;
+                phong.ChiSoNuoc = hoaDon.ChiSoNuocNew;
+                phong.ModifyDate = DateTime.Now;
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
             ViewBag.IDPhong = new SelectList(db.Phongs, "ID", "Name", hoaDon.IDPhong);
@@ -255,11 +304,14 @@ namespace PhongTroWebMVC.Controllers
                          + (TieuThu - B5).ToString() + " x " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (int)dtGiaDien[5].GiaTien);
             }
 
+            ChiTiet += "\r\n= "+TienDien;
+            ChiTiet += "\r\nThuế 10% " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ((int)(TienDien * 0.10)));
             TienDien = (int)(TienDien * 1.10);
-            ChiTiet += "\r\nThuế 10% " + ((int)(TienDien * 0.10)).ToString();
+            ChiTiet += "\r\n= " + TienDien;
             ///tỷ lệ hao hụt
+            ChiTiet += "\r\nTỷ lệ hao hụt " + dtGiaDien[6].GiaTien.ToString() + "% " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (int)Math.Round(TienDien * double.Parse(dtGiaDien[6].GiaTien.ToString()) / 100));
             TienDien += (int)Math.Round(TienDien * double.Parse(dtGiaDien[6].GiaTien.ToString()) / 100);
-            ChiTiet += "\r\nTỷ lệ hao hụt " + dtGiaDien[6].GiaTien.ToString() + "% " + (int)Math.Round(TienDien * double.Parse(dtGiaDien[6].GiaTien.ToString()) / 100);
+            ChiTiet += "\r\n= " + TienDien;
             return TienDien;
         }
 
@@ -295,10 +347,14 @@ namespace PhongTroWebMVC.Controllers
                 }
             }
 
+            ChiTiet += "\r\n= " + TienNuoc;
+            ChiTiet += "\r\nThuế 15% " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ((int)(TienNuoc * 0.15)));
             TienNuoc = (int)(TienNuoc * 1.15);
-            ChiTiet += "\r\nThuế 15% " + ((int)(TienNuoc * 0.15)).ToString();
+            ChiTiet += "\r\n= " + TienNuoc;
+            //tỷ lệ hao hụt
+            ChiTiet += "\r\nTỷ lệ hao hụt " + dtGiaNuoc[3].GiaTien.ToString() + "% " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (int)Math.Round(TienNuoc * double.Parse(dtGiaNuoc[3].GiaTien.ToString()) / 100));
             TienNuoc += (int)Math.Round(TienNuoc * double.Parse(dtGiaNuoc[3].GiaTien.ToString()) / 100);
-            ChiTiet += "\r\nTỷ lệ hao hụt " + dtGiaNuoc[3].GiaTien.ToString() + "% " + (int)Math.Round(TienNuoc * double.Parse(dtGiaNuoc[3].GiaTien.ToString()) / 100);
+            ChiTiet += "\r\n= " + TienNuoc;
             return TienNuoc;
         }
     }

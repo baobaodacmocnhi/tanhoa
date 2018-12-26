@@ -12,7 +12,7 @@
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
 
-        [Display(Name = "Tên")]
+        [Display(Name = "Giá nước")]
         [StringLength(200)]
         public string Name { get; set; }
 

@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<PhongTroWebMVC.Models.HoaDon>
-
+@using PhongTroWebMVC.Content 
 @{
 //Layout = null;
 }
@@ -12,18 +12,31 @@
     <title>Index</title>
 </head>
 <body>
+@using (Html.BeginForm("Index", "HoaDons", FormMethod.Post))
+{
     <h2>DANH SÁCH HÓA ĐƠN</h2>
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
+    <div class="form-group">
+        @Html.DisplayNameFor(model => model.Phong.Name)
+        @Html.DropDownList("cmbPhong", ViewBag.lstPhong as SelectList, "Tất Cả")
+        <input type="submit" value="Load" class="btn btn-default" />
+    </div>
     <table class="table">
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Phong.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.ChiSoDienOld)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ChiSoDienNew)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.TieuThuDien)
             </th>
@@ -33,12 +46,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.ChiTietDien)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.ChiSoNuocOld)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ChiSoNuocNew)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.TieuThuNuoc)
             </th>
@@ -53,68 +66,64 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TongTien)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreateDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Phong.Name)
-            </th>
+            </th>   
             <th></th>
         </tr>
     
-    @foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ChiSoDienOld)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ChiSoDienNew)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TieuThuDien)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TienDien)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ChiTietDien)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ChiSoNuocOld)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ChiSoNuocNew)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TieuThuNuoc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TienNuoc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ChiTietNuoc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ChiPhiKhac)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TongTien)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreateDate)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Phong.Name)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.ID }, new { onclick = "return confirm('Bạn có chắc chắn xóa?');" })
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.ChiSoDienOld)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChiSoDienNew)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.TieuThuDien)
+            </td>
+            <td>
+                @Html.DisplayMonneyFor(modelItem => item.TienDien)
+            </td>
+            <td>
+                @Html.DisplayWithBreaksFor(modelItem => item.ChiTietDien)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.ChiSoNuocOld)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChiSoNuocNew)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.TieuThuNuoc)
+            </td>
+            <td>
+                @Html.DisplayMonneyFor(modelItem => item.TienNuoc)
+            </td>
+            <td>
+                @Html.DisplayWithBreaksFor(modelItem => item.ChiTietNuoc)
+            </td>
+            <td>
+                @Html.DisplayWithBreaksFor(modelItem => item.ChiPhiKhac)
+            </td>
+            <td>
+                @Html.DisplayMonneyFor(modelItem => item.TongTien)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { onclick = "return confirm('Bạn có chắc chắn xóa?');" })
             </td>
         </tr>
     }
     
     </table>
+}
 </body>
 </html>

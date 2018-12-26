@@ -15,11 +15,10 @@
             HinhAnhs = new HashSet<HinhAnh>();
         }
 
-        [Display(Name = "Khách hàng")]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
 
-        [Display(Name = "Họ tên")]
+        [Display(Name = "Khách hàng")]
         [StringLength(100)]
         public string HoTen { get; set; }
 
@@ -54,6 +53,7 @@
         [Display(Name = "Ngày cập nhật")]
         public DateTime? ModifyDate { get; set; }
 
+        [Display(Name = "Hình ảnh")]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HinhAnh> HinhAnhs { get; set; }
 

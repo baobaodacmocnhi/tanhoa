@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<PhongTroWebMVC.Models.Phong>
-
+@using PhongTroWebMVC.Content 
 @{
 //Layout = null;
 }
@@ -54,7 +54,7 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.GiaTien)
+                @Html.DisplayMonneyFor(modelItem => item.GiaTien)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Thue)

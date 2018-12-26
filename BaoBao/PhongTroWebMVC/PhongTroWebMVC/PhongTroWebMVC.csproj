@@ -184,6 +184,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Content\HtmlHelpers.cs" />
     <Compile Include="Controllers\ChiPhiKhacsController.cs" />
     <Compile Include="Controllers\ChiPhiPhongsController.cs" />
     <Compile Include="Controllers\GiaDiensController.cs" />

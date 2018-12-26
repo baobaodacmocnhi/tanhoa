@@ -16,10 +16,9 @@
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Display(Name = "Chi phí khác")]
         public int ID { get; set; }
 
-        [Display(Name = "Tên")]
+        [Display(Name = "Chi phí khác")]
         [StringLength(100)]
         public string Name { get; set; }
 

@@ -22,7 +22,7 @@
         @Html.CheckBox("chkAll", false) Tất Cả
         <br />
         @Html.DisplayNameFor(model => model.Phong.Name)
-        @Html.DropDownList("cmbPhong", ViewBag.cmbPhong as SelectList, "Tất Cả")
+        @Html.DropDownList("cmbPhong", ViewBag.lstPhong as SelectList, "Tất Cả")
         <input type="submit" value="Load" class="btn btn-default" />
     </div>
 

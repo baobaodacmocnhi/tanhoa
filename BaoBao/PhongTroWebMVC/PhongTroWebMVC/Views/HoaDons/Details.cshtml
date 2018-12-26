@@ -1,5 +1,5 @@
 ﻿@model PhongTroWebMVC.Models.HoaDon
-
+@using PhongTroWebMVC.Content 
 @{
 //Layout = null;
 }
@@ -16,6 +16,14 @@
         <h4>CHI TIẾT HÓA ĐƠN</h4>
         <hr />
         <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Phong.Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Phong.Name)
+            </dd>
+    
             <dt>
                 @Html.DisplayNameFor(model => model.ChiSoDienOld)
             </dt>
@@ -45,7 +53,7 @@
             </dt>
     
             <dd>
-                @Html.DisplayFor(model => model.TienDien)
+                @Html.DisplayMonneyFor(model => model.TienDien)
             </dd>
     
             <dt>
@@ -53,7 +61,7 @@
             </dt>
     
             <dd>
-                @Html.DisplayFor(model => model.ChiTietDien)
+                @Html.DisplayWithBreaksFor(model => model.ChiTietDien)
             </dd>
     
             <dt>
@@ -85,7 +93,7 @@
             </dt>
     
             <dd>
-                @Html.DisplayFor(model => model.TienNuoc)
+                @Html.DisplayMonneyFor(model => model.TienNuoc)
             </dd>
     
             <dt>
@@ -93,25 +101,25 @@
             </dt>
     
             <dd>
-                @Html.DisplayFor(model => model.ChiTietNuoc)
+                @Html.DisplayWithBreaksFor(model => model.ChiTietNuoc)
             </dd>
     
             <dt>
                 @Html.DisplayNameFor(model => model.ChiPhiKhac)
             </dt>
-
+    
             <dd>
-                @Html.DisplayFor(model => model.ChiPhiKhac)
+                @Html.DisplayWithBreaksFor(model => model.ChiPhiKhac)
             </dd>
-
+    
             <dt>
                 @Html.DisplayNameFor(model => model.TongTien)
             </dt>
-
+    
             <dd>
-                @Html.DisplayFor(model => model.TongTien)
+                @Html.DisplayMonneyFor(model => model.TongTien)
             </dd>
-
+    
             <dt>
                 @Html.DisplayNameFor(model => model.CreateDate)
             </dt>
@@ -126,14 +134,6 @@
     
             <dd>
                 @Html.DisplayFor(model => model.ModifyDate)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Phong.Name)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Phong.Name)
             </dd>
     
         </dl>

@@ -20,7 +20,7 @@
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
 
-        [Display(Name = "Tên")]
+        [Display(Name = "Phòng")]
         [StringLength(50)]
         public string Name { get; set; }
 

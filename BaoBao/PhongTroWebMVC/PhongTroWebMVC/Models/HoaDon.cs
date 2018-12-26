@@ -28,6 +28,7 @@
         public int? TienDien { get; set; }
 
         [Display(Name = "Chi tiết điện")]
+        [DataType(DataType.MultilineText)]
         [StringLength(200)]
         public string ChiTietDien { get; set; }
 
@@ -44,10 +45,12 @@
         public int? TienNuoc { get; set; }
 
         [Display(Name = "Chi tiết nước")]
+        [DataType(DataType.MultilineText)]
         [StringLength(200)]
         public string ChiTietNuoc { get; set; }
 
         [Display(Name = "Chi phí khác")]
+        [DataType(DataType.MultilineText)]
         [StringLength(200)]
         public string ChiPhiKhac { get; set; }
 

@@ -17,7 +17,7 @@ namespace PhongTroWebMVC.Controllers
         // GET: KhachHangs
         public ActionResult Index(string cmbPhong, bool? chkAll)
         {
-            ViewBag.cmbPhong = new SelectList(db.Phongs, "ID", "Name");
+            ViewBag.lstPhong = new SelectList(db.Phongs, "ID", "Name");
 
             List<KhachHang> khachHangs;
             if (cmbPhong != null && cmbPhong != "")
