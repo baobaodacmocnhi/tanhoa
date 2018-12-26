@@ -3819,6 +3819,17 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
+        public DataTable GetBaoCaoTyLeTon(int Nam)
+        {
+            string sql = "select * from"
+                    + " (select KY,TongHD=COUNT(ID_HOADON),TongGiaBan=SUM(GIABAN) from HOADON where NAM=" + Nam
+                    + " group by Ky) t1"
+                    + " left join"
+                    + " (select KY,TongHDTon=COUNT(ID_HOADON),TongGiaBanTon=SUM(GIABAN) from HOADON where NAM=" + Nam + " and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
+                    + " group by Ky) t2 on t1.KY=t2.KY order by t1.KY asc";
+            return ExecuteQuery_DataTable(sql);
+        }
+
         //public DataTable GetChuanThuByNamKy(int MaTo, string loai, int nam, int ky)
         //{
         //    if (loai == "TG")

@@ -181,6 +181,23 @@ namespace ThuTien.DAL.TongHop
             return LINQToDataTable(query);
         }
 
+        public DataTable GetTongChuanThuTon(int Nam, int Ky)
+        {
+            var query = from itemDC in _db.DIEUCHINH_HDs
+                        join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                        where itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && (itemHD.KhoaTienDu == true || itemHD.NGAYGIAITRACH == null)
+                        group itemDC by itemHD.KY into itemGroup
+                        select new
+                        {
+                            Ky = Ky,
+                            GIABAN_BD = itemGroup.Sum(groupItem => groupItem.GIABAN_BD),
+                            TONGCONG_BD = itemGroup.Sum(groupItem => groupItem.TONGCONG_BD),
+                            GIABAN_END = itemGroup.Sum(groupItem => groupItem.GIABAN_END),
+                            TONGCONG_END = itemGroup.Sum(groupItem => groupItem.TONGCONG_END),
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable GetChuanThu_Doi(string Loai, int Nam, int Ky)
         {
             if (Loai == "TG")
