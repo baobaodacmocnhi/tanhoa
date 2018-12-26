@@ -29,7 +29,7 @@ namespace PhongTroWebMVC.Controllers
             {
                 hoaDons = db.HoaDons.Include(k => k.Phong).ToList();
             }
-            return View(hoaDons.OrderBy(item => item.IDPhong).ToList());
+            return View(hoaDons.OrderBy(item => item.IDPhong).ThenByDescending(item=>item.CreateDate).ToList());
         }
 
         // GET: HoaDons/Details/5
