@@ -67,7 +67,7 @@ namespace TanHoa.GUI.TraCuuKhachHang
                         + ",ViTriDHN"
                         + " from TB_DULIEUKHACHHANG where DanhBo=" + DanhBo;
                     DataTable dt = _cDHN.ExecuteQuery_DataTable(sql);
-                    //lấy danh bộ đã hủy
+                    //lấy thông tin khách hàng đã hủy
                     if (dt == null || dt.Rows.Count == 0)
                     {
                         sql = "select DanhBo"

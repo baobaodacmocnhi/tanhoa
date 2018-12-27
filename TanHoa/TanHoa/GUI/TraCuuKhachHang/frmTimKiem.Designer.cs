@@ -374,7 +374,7 @@
             this.groupBox2.Size = new System.Drawing.Size(820, 325);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Đội Quản Lý ĐHN";
+            this.groupBox2.Text = "Đội Quản Lý Đồng Hồ Nước";
             // 
             // dgvDHN_GhiChu
             // 

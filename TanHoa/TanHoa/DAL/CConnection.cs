@@ -305,7 +305,5 @@ namespace TanHoa.DAL
 
         #endregion
 
-        /**/
-
     }
 }
