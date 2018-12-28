@@ -364,9 +364,9 @@ namespace KTKS_DonKH.GUI.ToKhachHang
 
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+            try
             {
-                try
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                 {
                     if (_dontkh != null)
                     {
@@ -430,13 +430,13 @@ namespace KTKS_DonKH.GUI.ToKhachHang
                         dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("TKH", _dontkh.MaDon);
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dgvLichSuDonTu_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)

@@ -3146,7 +3146,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             + " left join"
                             + " (select DanhBo,HoTen,DC1+' '+DC2 as DiaChi,Phuong,Quan from TTKhachHang) ttkh on ct.DanhBo=ttkh.DanhBo"
                             + " left join"
-                            + " (select DanhBo,DinhMuc,DinhMuc_BD,ROW_NUMBER() OVER (PARTITION BY DanhBo ORDER BY CreateDate DESC) AS rn from CTDCBD) dcbd on ct.DanhBo=dcbd.DanhBo"
+                            + " (select DanhBo,DinhMuc,DinhMuc_BD,ROW_NUMBER() OVER (PARTITION BY DanhBo ORDER BY CreateDate DESC) AS rn from DCBD_ChiTietBienDong) dcbd on ct.DanhBo=dcbd.DanhBo"
                             + " where rn=1) t1"
                             + " left join"
                             + " (select DANHBA,TIEUTHU,ROW_NUMBER() OVER (PARTITION BY DanhBa ORDER BY ID_HOADON DESC) AS rn from HOADON_TA.dbo.HOADON) t2 on t1.DanhBo=t2.DANHBA"
@@ -3173,7 +3173,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         public DataTable LoadDSDanhBoCapDinhMucCoThoiHanDoanThanhNien(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             string sql = "select t1.DanhBo,t1.HOTEN,DiaChi,Phuong,Quan from"
-                        + " (select DanhBo,HoTen,DiaChi from CTDCBD where DoanThanhNien=1 and CAST(CreateDate as date)>='" + FromCreateDate.Date.ToString("yyyy-MM-dd") + "' and CAST(CreateDate as date)<='" + ToCreateDate.Date.ToString("yyyy-MM-dd") + "') t1"
+                        + " (select DanhBo,HoTen,DiaChi from DCBD_ChiTietBienDong where DoanThanhNien=1 and CAST(CreateDate as date)>='" + FromCreateDate.Date.ToString("yyyy-MM-dd") + "' and CAST(CreateDate as date)<='" + ToCreateDate.Date.ToString("yyyy-MM-dd") + "') t1"
                         + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo";
 
             return ExecuteQuery_DataTable(sql);
@@ -3182,7 +3182,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         public DataTable LoadDSDanhBoDCHDCodeF2(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             string sql = "select t1.DanhBo,t1.HOTEN,DiaChi,Phuong,Quan from"
-                        + " (select DanhBo,HoTen,DiaChi from CTDCHD where Codef2=1 and CAST(CreateDate as date)>='" + FromCreateDate.Date.ToString("yyyy-MM-dd") + "' and CAST(CreateDate as date)<='" + ToCreateDate.Date.ToString("yyyy-MM-dd") + "') t1"
+                        + " (select DanhBo,HoTen,DiaChi from DCBD_ChiTietHoaDon where Codef2=1 and CAST(CreateDate as date)>='" + FromCreateDate.Date.ToString("yyyy-MM-dd") + "' and CAST(CreateDate as date)<='" + ToCreateDate.Date.ToString("yyyy-MM-dd") + "') t1"
                         + " left join SERVER8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t2 on t1.DanhBo=t2.DanhBo";
 
             return ExecuteQuery_DataTable(sql);

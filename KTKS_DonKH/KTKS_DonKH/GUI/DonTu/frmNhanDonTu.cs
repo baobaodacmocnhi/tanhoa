@@ -112,6 +112,7 @@ namespace KTKS_DonKH.GUI.DonTu
 
                     dgvDanhBo.DataSource = entity.DonTu_ChiTiets.ToList();
                 }
+
                 txtMaDon.Text = entity.MaDon.ToString();
                 dateCreateDate.Value = entity.CreateDate.Value;
 
@@ -136,6 +137,8 @@ namespace KTKS_DonKH.GUI.DonTu
                 chkCT_GXN2SN.Checked = entity.CT_GXN2SN;
                 chkCT_GDKKD.Checked = entity.CT_GDKKD;
                 chkCT_GCNDTDHN.Checked = entity.CT_GCNDTDHN;
+
+                dgvLichSuNhanDon.DataSource = _cDonTu.getDSByDanhBo(entity.DanhBo);
             }
             catch (Exception ex)
             {
@@ -819,9 +822,9 @@ namespace KTKS_DonKH.GUI.DonTu
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             if (txtDanhBo_TimKiem.Text.Trim() != "")
-                dgvLichSuNhanDon.DataSource = _cDocSo.TimKiem(txtDanhBo_TimKiem.Text.Trim());
+                dgvDanhBoTimKiem.DataSource = _cDocSo.TimKiem(txtDanhBo_TimKiem.Text.Trim());
             else
-                dgvLichSuNhanDon.DataSource = _cDocSo.TimKiem(txtHoTen_TimKiem.Text.Trim(), txtSoNha_TimKiem.Text.Trim(), txtTenDuong_TimKiem.Text.Trim());
+                dgvDanhBoTimKiem.DataSource = _cDocSo.TimKiem(txtHoTen_TimKiem.Text.Trim(), txtSoNha_TimKiem.Text.Trim(), txtTenDuong_TimKiem.Text.Trim());
         }
     }
 }

@@ -51,6 +51,18 @@ namespace KTKS_DonKH.GUI.DonTu
         {
             try
             {
+                txtMaDon.Text = entity.MaDon.ToString();
+                dateCreateDate.Value = entity.CreateDate.Value;
+
+                if (entity.SoCongVan != null)
+                {
+                    txtSoCongVan.Text = entity.SoCongVan;
+                    txtTongDB.Text = entity.TongDB.ToString();
+                }
+
+                txtNoiDung.Text = entity.Name_NhomDon;
+                txtVanDeKhac.Text = entity.VanDeKhac;
+
                 if (entity.DonTu_ChiTiets.Count == 1)
                 {
                     tabControl.SelectTab("tabTTKH");
@@ -74,22 +86,11 @@ namespace KTKS_DonKH.GUI.DonTu
                 else
                 {
                     tabControl.SelectTab("tabCongVan");
-                    txtMaDon.Text += "." + en_ChiTiet.STT;
+                    if (en_ChiTiet!=null)
+                        txtMaDon.Text += "." + en_ChiTiet.STT;
 
                     dgvDanhBo.DataSource = entity.DonTu_ChiTiets.ToList();
                 }
-
-                txtMaDon.Text = entity.MaDon.ToString();
-                dateCreateDate.Value = entity.CreateDate.Value;
-
-                if (entity.SoCongVan != null)
-                {
-                    txtSoCongVan.Text = entity.SoCongVan;
-                    txtTongDB.Text = entity.TongDB.ToString();
-                }
-
-                txtNoiDung.Text = entity.Name_NhomDon;
-                txtVanDeKhac.Text = entity.VanDeKhac;
 
                 LoadLichSu();
             }
@@ -103,7 +104,7 @@ namespace KTKS_DonKH.GUI.DonTu
         {
             try
             {
-                txtMaDon.Text += "." + entity.STT;
+                txtMaDon.Text += "." + entity.STT.Value;
 
                 LoadLichSu();
             }
@@ -117,7 +118,7 @@ namespace KTKS_DonKH.GUI.DonTu
         {
             if (_dontu != null)
                 if (_dontu_ChiTiet == null)
-                    dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu.MaDon, 1);
+                    dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu.MaDon,null);
                 else
                     dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
         }
@@ -180,29 +181,29 @@ namespace KTKS_DonKH.GUI.DonTu
                 {
                     _dontu = _cDonTu.get(int.Parse(MaDon));
                 }
-                
-                if (_dontu!=null)
+
+                if (_dontu != null)
                 {
-                    if (_dontu.SoCongVan != null && _dontu_ChiTiet == null)
-                    {
-                        MessageBox.Show("Đơn Công Văn, vui lòng nhập thêm số", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    LoadDonTu(_dontu,_dontu_ChiTiet);
+                    //if (_dontu.SoCongVan != null && _dontu_ChiTiet == null)
+                    //{
+                    //    MessageBox.Show("Đơn Công Văn, vui lòng nhập thêm số", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //    return;
+                    //}
+                    LoadDonTu(_dontu, _dontu_ChiTiet);
                 }
                 else
                 {
+                    MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Clear();
-                    MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);  
                 }
             }
         }
 
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+            try
             {
-                try
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                 {
                     if (_dontu_LichSu != null)
                     {
@@ -276,82 +277,213 @@ namespace KTKS_DonKH.GUI.DonTu
                     else
                         if (_dontu != null)
                         {
-                            bool flag = false;//ghi nhận có chọn checkcombobox
-                            if (chkcmbNoiNhan.Properties.Items.Count > 0)
+                            //đơn cá nhân
+                            if (tabControl.SelectedTab.Name == "tabTTKH")
                             {
-                                for (int i = 0; i < chkcmbNoiNhan.Properties.Items.Count; i++)
-                                    if (chkcmbNoiNhan.Properties.Items[i].CheckState == CheckState.Checked)
-                                    {
-                                        //đi KTXM
-                                        if (chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "1")
-                                        {
-                                            DonTu_LichSu entity = new DonTu_LichSu();
-                                            entity.NgayChuyen = dateChuyen.Value;
-                                            entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
-                                            entity.NoiChuyen = cmbNoiChuyen.Text;
-                                            entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
-                                            entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
-                                            entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
-                                            entity.MaDon = _dontu.MaDon;
-                                            if (_dontu_ChiTiet == null)
-                                                entity.STT = 1;
-                                            else
-                                                entity.STT = _dontu_ChiTiet.STT;
-                                            for (int j = 0; j < chkcmbNoiNhanKTXM.Properties.Items.Count; j++)
-                                                if (chkcmbNoiNhanKTXM.Properties.Items[j].CheckState == CheckState.Checked)
-                                                {
-                                                    entity.ID_KTXM = int.Parse(chkcmbNoiNhanKTXM.Properties.Items[j].Value.ToString());
-                                                    entity.KTXM = chkcmbNoiNhanKTXM.Properties.Items[j].ToString();
-                                                    _cDonTu.Them_LichSu(entity);
-                                                }
-                                        }
-                                        else
-                                        {
-                                            DonTu_LichSu entity = new DonTu_LichSu();
-                                            entity.NgayChuyen = dateChuyen.Value;
-                                            entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
-                                            entity.NoiChuyen = cmbNoiChuyen.Text;
-                                            entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
-                                            entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
-                                            entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
-                                            entity.MaDon = _dontu.MaDon;
-                                            if (_dontu_ChiTiet == null)
-                                                entity.STT = 1;
-                                            else
-                                                entity.STT = _dontu_ChiTiet.STT;
-                                            _cDonTu.Them_LichSu(entity);
-                                        }
-                                        flag = true;
-                                        chkcmbNoiNhan.Properties.Items[i].CheckState = CheckState.Unchecked;
-                                    }
-                                if (flag == false)
+                                if (_dontu.DonTu_ChiTiets.Count() > 1)
                                 {
-                                    DonTu_LichSu entity = new DonTu_LichSu();
-                                    entity.NgayChuyen = dateChuyen.Value;
-                                    entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
-                                    entity.NoiChuyen = cmbNoiChuyen.Text;
-                                    //entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
-                                    //entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
-                                    entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
-                                    entity.MaDon = _dontu.MaDon;
-                                    if (_dontu_ChiTiet == null)
+                                    MessageBox.Show("Đơn Công Văn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                                bool flag = false;//ghi nhận có chọn checkcombobox
+                                if (chkcmbNoiNhan.Properties.Items.Count > 0)
+                                {
+                                    for (int i = 0; i < chkcmbNoiNhan.Properties.Items.Count; i++)
+                                        if (chkcmbNoiNhan.Properties.Items[i].CheckState == CheckState.Checked)
+                                        {
+                                            //đi KTXM
+                                            if (chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "1")
+                                            {
+                                                DonTu_LichSu entity = new DonTu_LichSu();
+                                                entity.NgayChuyen = dateChuyen.Value;
+                                                entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
+                                                entity.NoiChuyen = cmbNoiChuyen.Text;
+                                                entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+                                                entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
+                                                entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
+                                                entity.MaDon = _dontu.MaDon;
+                                                entity.STT = 1;
+                                                for (int j = 0; j < chkcmbNoiNhanKTXM.Properties.Items.Count; j++)
+                                                    if (chkcmbNoiNhanKTXM.Properties.Items[j].CheckState == CheckState.Checked)
+                                                    {
+                                                        entity.ID_KTXM = int.Parse(chkcmbNoiNhanKTXM.Properties.Items[j].Value.ToString());
+                                                        entity.KTXM = chkcmbNoiNhanKTXM.Properties.Items[j].ToString();
+                                                        _cDonTu.Them_LichSu(entity);
+                                                    }
+                                            }
+                                            else
+                                            {
+                                                DonTu_LichSu entity = new DonTu_LichSu();
+                                                entity.NgayChuyen = dateChuyen.Value;
+                                                entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
+                                                entity.NoiChuyen = cmbNoiChuyen.Text;
+                                                entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+                                                entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
+                                                entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
+                                                entity.MaDon = _dontu.MaDon;
+                                                entity.STT = 1;
+                                                _cDonTu.Them_LichSu(entity);
+                                            }
+                                            flag = true;
+                                            chkcmbNoiNhan.Properties.Items[i].CheckState = CheckState.Unchecked;
+                                        }
+                                    if (flag == false)
+                                    {
+                                        DonTu_LichSu entity = new DonTu_LichSu();
+                                        entity.NgayChuyen = dateChuyen.Value;
+                                        entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
+                                        entity.NoiChuyen = cmbNoiChuyen.Text;
+                                        //entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+                                        //entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
+                                        entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
+                                        entity.MaDon = _dontu.MaDon;
                                         entity.STT = 1;
-                                    else
-                                        entity.STT = _dontu_ChiTiet.STT;
-                                    _cDonTu.Them_LichSu(entity);
+                                        _cDonTu.Them_LichSu(entity);
+                                    }
                                 }
                             }
+                            else
+                                //đơn công văn
+                                if (tabControl.SelectedTab.Name == "tabCongVan")
+                                {
+                                    //nhập 1
+                                    if (_dontu_ChiTiet != null)
+                                    {
+                                        bool flag = false;//ghi nhận có chọn checkcombobox
+                                        if (chkcmbNoiNhan.Properties.Items.Count > 0)
+                                        {
+                                            for (int i = 0; i < chkcmbNoiNhan.Properties.Items.Count; i++)
+                                                if (chkcmbNoiNhan.Properties.Items[i].CheckState == CheckState.Checked)
+                                                {
+                                                    //đi KTXM
+                                                    if (chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "1")
+                                                    {
+                                                        DonTu_LichSu entity = new DonTu_LichSu();
+                                                        entity.NgayChuyen = dateChuyen.Value;
+                                                        entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
+                                                        entity.NoiChuyen = cmbNoiChuyen.Text;
+                                                        entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+                                                        entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
+                                                        entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
+                                                        entity.MaDon = _dontu.MaDon;
+                                                        entity.STT = _dontu_ChiTiet.STT;
+                                                        for (int j = 0; j < chkcmbNoiNhanKTXM.Properties.Items.Count; j++)
+                                                            if (chkcmbNoiNhanKTXM.Properties.Items[j].CheckState == CheckState.Checked)
+                                                            {
+                                                                entity.ID_KTXM = int.Parse(chkcmbNoiNhanKTXM.Properties.Items[j].Value.ToString());
+                                                                entity.KTXM = chkcmbNoiNhanKTXM.Properties.Items[j].ToString();
+                                                                _cDonTu.Them_LichSu(entity);
+                                                            }
+                                                    }
+                                                    else
+                                                    {
+                                                        DonTu_LichSu entity = new DonTu_LichSu();
+                                                        entity.NgayChuyen = dateChuyen.Value;
+                                                        entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
+                                                        entity.NoiChuyen = cmbNoiChuyen.Text;
+                                                        entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+                                                        entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
+                                                        entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
+                                                        entity.MaDon = _dontu.MaDon;
+                                                        entity.STT = _dontu_ChiTiet.STT;
+                                                        _cDonTu.Them_LichSu(entity);
+                                                    }
+                                                    flag = true;
+                                                    chkcmbNoiNhan.Properties.Items[i].CheckState = CheckState.Unchecked;
+                                                }
+                                            if (flag == false)
+                                            {
+                                                DonTu_LichSu entity = new DonTu_LichSu();
+                                                entity.NgayChuyen = dateChuyen.Value;
+                                                entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
+                                                entity.NoiChuyen = cmbNoiChuyen.Text;
+                                                //entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+                                                //entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
+                                                entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
+                                                entity.MaDon = _dontu.MaDon;
+                                                entity.STT = _dontu_ChiTiet.STT;
+                                                _cDonTu.Them_LichSu(entity);
+                                            }
+                                        }
+                                    }
+                                    else
+                                        //nhập nhiều
+                                        foreach (DataGridViewRow item in dgvDanhBo.SelectedRows)
+                                        {
+                                            bool flag = false;//ghi nhận có chọn checkcombobox
+                                            if (chkcmbNoiNhan.Properties.Items.Count > 0)
+                                            {
+                                                for (int i = 0; i < chkcmbNoiNhan.Properties.Items.Count; i++)
+                                                    if (chkcmbNoiNhan.Properties.Items[i].CheckState == CheckState.Checked)
+                                                    {
+                                                        //đi KTXM
+                                                        if (chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "1")
+                                                        {
+                                                            DonTu_LichSu entity = new DonTu_LichSu();
+                                                            entity.NgayChuyen = dateChuyen.Value;
+                                                            entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
+                                                            entity.NoiChuyen = cmbNoiChuyen.Text;
+                                                            entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+                                                            entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
+                                                            entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
+                                                            DonTu_ChiTiet dontu_chitiet = _cDonTu.get_ChiTiet(int.Parse(item.Cells["ID_CongVan"].Value.ToString()));
+                                                            entity.MaDon = dontu_chitiet.DonTu.MaDon;
+                                                            entity.STT = dontu_chitiet.STT;
+                                                            for (int j = 0; j < chkcmbNoiNhanKTXM.Properties.Items.Count; j++)
+                                                                if (chkcmbNoiNhanKTXM.Properties.Items[j].CheckState == CheckState.Checked)
+                                                                {
+                                                                    entity.ID_KTXM = int.Parse(chkcmbNoiNhanKTXM.Properties.Items[j].Value.ToString());
+                                                                    entity.KTXM = chkcmbNoiNhanKTXM.Properties.Items[j].ToString();
+                                                                    _cDonTu.Them_LichSu(entity);
+                                                                }
+                                                        }
+                                                        else
+                                                        {
+                                                            DonTu_LichSu entity = new DonTu_LichSu();
+                                                            entity.NgayChuyen = dateChuyen.Value;
+                                                            entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
+                                                            entity.NoiChuyen = cmbNoiChuyen.Text;
+                                                            entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+                                                            entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
+                                                            entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
+                                                            entity.MaDon = _dontu.MaDon;
+                                                            DonTu_ChiTiet dontu_chitiet = _cDonTu.get_ChiTiet(int.Parse(item.Cells["ID_CongVan"].Value.ToString()));
+                                                            entity.MaDon = dontu_chitiet.DonTu.MaDon;
+                                                            entity.STT = dontu_chitiet.STT;
+                                                            _cDonTu.Them_LichSu(entity);
+                                                        }
+                                                        flag = true;
+                                                        //chkcmbNoiNhan.Properties.Items[i].CheckState = CheckState.Unchecked;
+                                                    }
+                                                if (flag == false)
+                                                {
+                                                    DonTu_LichSu entity = new DonTu_LichSu();
+                                                    entity.NgayChuyen = dateChuyen.Value;
+                                                    entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
+                                                    entity.NoiChuyen = cmbNoiChuyen.Text;
+                                                    //entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+                                                    //entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
+                                                    entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
+                                                    DonTu_ChiTiet dontu_chitiet = _cDonTu.get_ChiTiet(int.Parse(item.Cells["ID_CongVan"].Value.ToString()));
+                                                    entity.MaDon = dontu_chitiet.DonTu.MaDon;
+                                                    entity.STT = dontu_chitiet.STT;
+                                                    _cDonTu.Them_LichSu(entity);
+                                                }
+                                            }
+                                        }
+                                }
                             LoadLichSu();
                             //dgvLichSuDonTu.DataSource = _cLichSuDonTu.GetDS("DonTu", _dontu.MaDon);
                         }
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dgvLichSuDonTu_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -433,13 +565,22 @@ namespace KTKS_DonKH.GUI.DonTu
         {
             try
             {
-                _dontu_ChiTiet = _cDonTu.get_ChiTiet(int.Parse(dgvDanhBo.CurrentRow.Cells["ID"].Value.ToString()));
-                LoadDonTu_ChiTiet(_dontu_ChiTiet);
+                //_dontu_ChiTiet = _cDonTu.get_ChiTiet(int.Parse(dgvDanhBo.CurrentRow.Cells["ID_CongVan"].Value.ToString()));
+                //LoadDonTu_ChiTiet(_dontu_ChiTiet);
             }
             catch (Exception)
             {
             }
-            
+
         }
+
+        private void dgvDanhBo_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDanhBo.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
+            }
+        }
+
     }
 }

@@ -260,7 +260,29 @@ namespace KTKS_DonKH.DAL.DonTu
             return db.DonTu_LichSus.SingleOrDefault(item => item.ID == ID);
         }
 
-        public DataTable getDS_LichSu(int MaDon, int STT)
+        public DataTable getDS_LichSu(int MaDon)
+        {
+            var query = from item in db.DonTu_LichSus
+                        join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                        where item.MaDon == MaDon
+                        select new
+                        {
+                            item.ID,
+                            item.NgayChuyen,
+                            item.NoiChuyen,
+                            item.NoiNhan,
+                            item.KTXM,
+                            item.NoiDung,
+                            CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                            itemDon.MaDon,
+                            itemDon.DanhBo,
+                            itemDon.DiaChi,
+                            NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getDS_LichSu(int MaDon, int? STT)
         {
             var query = from item in db.DonTu_LichSus
                         join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }

@@ -30655,6 +30655,12 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _TenHTKT;
 		
+		private bool _ToTB;
+		
+		private bool _ToTP;
+		
+		private bool _ToBC;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -30673,6 +30679,12 @@ namespace KTKS_DonKH.LinQ
     partial void OnSTTChanged();
     partial void OnTenHTKTChanging(string value);
     partial void OnTenHTKTChanged();
+    partial void OnToTBChanging(bool value);
+    partial void OnToTBChanged();
+    partial void OnToTPChanging(bool value);
+    partial void OnToTPChanged();
+    partial void OnToBCChanging(bool value);
+    partial void OnToBCChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -30744,6 +30756,66 @@ namespace KTKS_DonKH.LinQ
 					this._TenHTKT = value;
 					this.SendPropertyChanged("TenHTKT");
 					this.OnTenHTKTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToTB", DbType="Bit NOT NULL")]
+		public bool ToTB
+		{
+			get
+			{
+				return this._ToTB;
+			}
+			set
+			{
+				if ((this._ToTB != value))
+				{
+					this.OnToTBChanging(value);
+					this.SendPropertyChanging();
+					this._ToTB = value;
+					this.SendPropertyChanged("ToTB");
+					this.OnToTBChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToTP", DbType="Bit NOT NULL")]
+		public bool ToTP
+		{
+			get
+			{
+				return this._ToTP;
+			}
+			set
+			{
+				if ((this._ToTP != value))
+				{
+					this.OnToTPChanging(value);
+					this.SendPropertyChanging();
+					this._ToTP = value;
+					this.SendPropertyChanged("ToTP");
+					this.OnToTPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToBC", DbType="Bit NOT NULL")]
+		public bool ToBC
+		{
+			get
+			{
+				return this._ToBC;
+			}
+			set
+			{
+				if ((this._ToBC != value))
+				{
+					this.OnToBCChanging(value);
+					this.SendPropertyChanging();
+					this._ToBC = value;
+					this.SendPropertyChanged("ToBC");
+					this.OnToBCChanged();
 				}
 			}
 		}
@@ -32599,6 +32671,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _MaDonMoi;
 		
+		private System.Nullable<int> _STT;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -32637,6 +32711,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaDonTBCChanged();
     partial void OnMaDonMoiChanging(System.Nullable<int> value);
     partial void OnMaDonMoiChanged();
+    partial void OnSTTChanging(System.Nullable<int> value);
+    partial void OnSTTChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -32908,6 +32984,26 @@ namespace KTKS_DonKH.LinQ
 					this._MaDonMoi = value;
 					this.SendPropertyChanged("MaDonMoi");
 					this.OnMaDonMoiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", DbType="Int")]
+		public System.Nullable<int> STT
+		{
+			get
+			{
+				return this._STT;
+			}
+			set
+			{
+				if ((this._STT != value))
+				{
+					this.OnSTTChanging(value);
+					this.SendPropertyChanging();
+					this._STT = value;
+					this.SendPropertyChanged("STT");
+					this.OnSTTChanged();
 				}
 			}
 		}
