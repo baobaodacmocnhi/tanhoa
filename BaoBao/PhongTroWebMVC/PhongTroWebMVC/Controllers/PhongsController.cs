@@ -46,7 +46,7 @@ namespace PhongTroWebMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,GiaTien,Thue,NgayThue,ChiSoDienOld,ChiSoDien,SoNKNuoc,ChiSoNuocOld,ChiSoNuoc,CreateDate,ModifyDate")] Phong phong)
+        public ActionResult Create([Bind(Include = "ID,Name,GiaTien,TienCoc,Thue,NgayThue,ChiSoDienOld,ChiSoDien,SoNKNuoc,ChiSoNuocOld,ChiSoNuoc,CreateDate,ModifyDate")] Phong phong)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace PhongTroWebMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,GiaTien,Thue,NgayThue,ChiSoDienOld,ChiSoDien,SoNKNuoc,ChiSoNuocOld,ChiSoNuoc,CreateDate,ModifyDate")] Phong phong)
+        public ActionResult Edit([Bind(Include = "ID,Name,GiaTien,TienCoc,Thue,NgayThue,ChiSoDienOld,ChiSoDien,SoNKNuoc,ChiSoNuocOld,ChiSoNuoc,CreateDate,ModifyDate")] Phong phong)
         {
             if (ModelState.IsValid)
             {

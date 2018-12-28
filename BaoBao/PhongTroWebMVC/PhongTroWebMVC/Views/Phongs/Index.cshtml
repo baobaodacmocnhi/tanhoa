@@ -25,6 +25,9 @@
                 @Html.DisplayNameFor(model => model.GiaTien)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.TienCoc)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Thue)
             </th>
             <th>
@@ -54,7 +57,10 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayMonneyFor(modelItem => item.GiaTien)
+                @Html.DisplayFor(modelItem => item.GiaTien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TienCoc)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Thue)

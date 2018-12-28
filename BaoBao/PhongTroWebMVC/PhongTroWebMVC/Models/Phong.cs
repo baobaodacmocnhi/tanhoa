@@ -25,7 +25,13 @@
         public string Name { get; set; }
 
         [Display(Name = "Giá tiền")]
+        [DisplayFormat(DataFormatString = "{0:#,##}", ApplyFormatInEditMode = true)]
         public int? GiaTien { get; set; }
+
+        [Display(Name = "Tiền cọc")]
+        //[DataType(DataType.Currency)]
+        [DisplayFormat(DataFormatString = "{0:#,##}", ApplyFormatInEditMode = true)]
+        public int? TienCoc { get; set; }
 
         [Display(Name = "Thuê")]
         public bool Thue { get; set; }

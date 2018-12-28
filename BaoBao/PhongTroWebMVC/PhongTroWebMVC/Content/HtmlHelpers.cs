@@ -23,7 +23,11 @@ namespace PhongTroWebMVC.Content
         public static MvcHtmlString DisplayMonneyFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression)
         {
             var metadata = ModelMetadata.FromLambdaExpression(expression, html.ViewData);
-            var model = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(html.Encode(metadata.Model)));
+            string model = "";
+            if (int.Parse(html.Encode(metadata.Model))>0)
+                model = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(html.Encode(metadata.Model)));
+            else
+                model = "0";
 
             if (String.IsNullOrEmpty(model))
                 return MvcHtmlString.Empty;

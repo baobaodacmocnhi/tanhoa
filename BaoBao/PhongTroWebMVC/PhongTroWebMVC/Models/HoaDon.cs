@@ -25,6 +25,7 @@
         public int? TieuThuDien { get; set; }
 
         [Display(Name = "Tiền điện")]
+        [DisplayFormat(DataFormatString = "{0:#,##}", ApplyFormatInEditMode = true)]
         public int? TienDien { get; set; }
 
         [Display(Name = "Chi tiết điện")]
@@ -42,6 +43,7 @@
         public int? TieuThuNuoc { get; set; }
 
         [Display(Name = "Tiền nước")]
+        [DisplayFormat(DataFormatString = "{0:#,##}", ApplyFormatInEditMode = true)]
         public int? TienNuoc { get; set; }
 
         [Display(Name = "Chi tiết nước")]
@@ -55,6 +57,7 @@
         public string ChiPhiKhac { get; set; }
 
         [Display(Name = "Tổng tiền")]
+        [DisplayFormat(DataFormatString = "{0:#,##}", ApplyFormatInEditMode = true)]
         public int? TongTien { get; set; }
 
         [Display(Name = "Ngày tạo")]
