@@ -37,10 +37,10 @@ namespace KTKS_DonKH.GUI.BamChi
                 dt = _cBamChi.GetDS("", dateTu_ThongKeTrangThaiBamChi.Value, dateDen_ThongKeTrangThaiBamChi.Value);
             else
             {
-            if (CTaiKhoan.ToKH)
+            if (CTaiKhoan.ToTB)
                 dt = _cBamChi.GetDS("TKH",dateTu_ThongKeTrangThaiBamChi.Value, dateDen_ThongKeTrangThaiBamChi.Value);
             else
-                if (CTaiKhoan.ToXL)
+                if (CTaiKhoan.ToTP)
                     dt = _cBamChi.GetDS("TXL", dateTu_ThongKeTrangThaiBamChi.Value, dateDen_ThongKeTrangThaiBamChi.Value);
                 else
                     if (CTaiKhoan.ToBC)
@@ -73,10 +73,10 @@ namespace KTKS_DonKH.GUI.BamChi
                 dt = _cBamChi.GetDS("", dateTu_ThongKeTrangThaiBamChi.Value, dateDen_ThongKeTrangThaiBamChi.Value);
             else
             {
-                if (CTaiKhoan.ToKH)
+                if (CTaiKhoan.ToTB)
                     dt = _cBamChi.GetDS("TKH", dateTu_ThongKeTrangThaiBamChi.Value, dateDen_ThongKeTrangThaiBamChi.Value);
                 else
-                    if (CTaiKhoan.ToXL)
+                    if (CTaiKhoan.ToTP)
                         dt = _cBamChi.GetDS("TXL", dateTu_ThongKeTrangThaiBamChi.Value, dateDen_ThongKeTrangThaiBamChi.Value);
                     else
                         if (CTaiKhoan.ToBC)

@@ -1339,9 +1339,9 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _ToGD;
 		
-		private bool _ToKH;
+		private bool _ToTB;
 		
-		private bool _ToXL;
+		private bool _ToTP;
 		
 		private bool _ToBC;
 		
@@ -1411,10 +1411,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnBamChiChanged();
     partial void OnToGDChanging(bool value);
     partial void OnToGDChanged();
-    partial void OnToKHChanging(bool value);
-    partial void OnToKHChanged();
-    partial void OnToXLChanging(bool value);
-    partial void OnToXLChanged();
+    partial void OnToTBChanging(bool value);
+    partial void OnToTBChanged();
+    partial void OnToTPChanging(bool value);
+    partial void OnToTPChanged();
     partial void OnToBCChanging(bool value);
     partial void OnToBCChanged();
     partial void OnToVPChanging(bool value);
@@ -1645,42 +1645,42 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToKH", DbType="Bit NOT NULL")]
-		public bool ToKH
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToTB", DbType="Bit NOT NULL")]
+		public bool ToTB
 		{
 			get
 			{
-				return this._ToKH;
+				return this._ToTB;
 			}
 			set
 			{
-				if ((this._ToKH != value))
+				if ((this._ToTB != value))
 				{
-					this.OnToKHChanging(value);
+					this.OnToTBChanging(value);
 					this.SendPropertyChanging();
-					this._ToKH = value;
-					this.SendPropertyChanged("ToKH");
-					this.OnToKHChanged();
+					this._ToTB = value;
+					this.SendPropertyChanged("ToTB");
+					this.OnToTBChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToXL", DbType="Bit NOT NULL")]
-		public bool ToXL
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToTP", DbType="Bit NOT NULL")]
+		public bool ToTP
 		{
 			get
 			{
-				return this._ToXL;
+				return this._ToTP;
 			}
 			set
 			{
-				if ((this._ToXL != value))
+				if ((this._ToTP != value))
 				{
-					this.OnToXLChanging(value);
+					this.OnToTPChanging(value);
 					this.SendPropertyChanging();
-					this._ToXL = value;
-					this.SendPropertyChanged("ToXL");
-					this.OnToXLChanged();
+					this._ToTP = value;
+					this.SendPropertyChanged("ToTP");
+					this.OnToTPChanged();
 				}
 			}
 		}

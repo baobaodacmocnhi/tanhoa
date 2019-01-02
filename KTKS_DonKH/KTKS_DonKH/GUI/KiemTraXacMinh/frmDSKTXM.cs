@@ -95,10 +95,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     else
                     if (CTaiKhoan.ThuKy)
                     {
-                        if (CTaiKhoan.ToKH)
+                        if (CTaiKhoan.ToTB)
                             dgvDSCTKTXM.DataSource = _cKTXM.GetDS("TKH", dateTu.Value, dateDen.Value);
                         else
-                            if (CTaiKhoan.ToXL)
+                            if (CTaiKhoan.ToTP)
                                 dgvDSCTKTXM.DataSource = _cKTXM.GetDS("TXL", dateTu.Value, dateDen.Value);
                             else
                                 if (CTaiKhoan.ToBC)
@@ -124,7 +124,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
                 dr["TenLD"] = itemRow["TenLD"];
                 dr["MaCTKTXM"] = itemRow["MaCTKTXM"];
-                dr["MaDon"] = itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
+                dr["MaDon"] = itemRow["MaDon"].ToString();
                 if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
                     dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                 dr["HoTen"] = itemRow["HoTen"];
@@ -159,8 +159,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         private void dgvDSKTXM_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvDSCTKTXM.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
-                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            //if (dgvDSCTKTXM.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
+            //    e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
         }
 
 

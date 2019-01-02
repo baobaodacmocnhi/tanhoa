@@ -29,10 +29,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         private void frmBaoCaoKTXM_Load(object sender, EventArgs e)
         {
-            if (CTaiKhoan.ToKH == true)
+            if (CTaiKhoan.ToTB == true)
                 TenTo = "TKH";
             else
-                if (CTaiKhoan.ToXL == true)
+                if (CTaiKhoan.ToTP == true)
                     TenTo = "TXL";
                 else
                     if (CTaiKhoan.ToBC == true)
@@ -55,10 +55,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 dt = _cKTXM.GetDS(dateTu_ThongKeHienTrangKiemTra.Value, dateDen_ThongKeHienTrangKiemTra.Value);
             else
             {
-                if (CTaiKhoan.ToKH)
+                if (CTaiKhoan.ToTB)
                     dt = _cKTXM.GetDS("TKH", dateTu_ThongKeHienTrangKiemTra.Value, dateDen_ThongKeHienTrangKiemTra.Value);
                 else
-                    if (CTaiKhoan.ToXL)
+                    if (CTaiKhoan.ToTP)
                         dt = _cKTXM.GetDS("TXL", dateTu_ThongKeHienTrangKiemTra.Value, dateDen_ThongKeHienTrangKiemTra.Value);
                     else
                         if (CTaiKhoan.ToBC)
@@ -148,10 +148,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     dt = _cKTXM.GetDSBySoCongVan(txtNoiDungTimKiem.Text.Trim());
                     break;
                 case "Ngày":
-                    if (CTaiKhoan.ToKH)
+                    if (CTaiKhoan.ToTB)
                         dt = _cKTXM.GetDS("TKH", dateTu_SoLuong.Value, dateDen_SoLuong.Value);
                     else
-                        if (CTaiKhoan.ToXL)
+                        if (CTaiKhoan.ToTP)
                             dt = _cKTXM.GetDS("TXL", dateTu_SoLuong.Value, dateDen_SoLuong.Value);
                         else
                             if (CTaiKhoan.ToBC)
@@ -166,10 +166,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             {
                 DataRow dr = dsBaoCao.Tables["DSKTXM"].NewRow();
 
-                if (CTaiKhoan.ToKH)
+                if (CTaiKhoan.ToTB)
                     dr["To"] = "TỔ KHÁCH HÀNG";
                 else
-                    if (CTaiKhoan.ToXL)
+                    if (CTaiKhoan.ToTP)
                         dr["To"] = "TỔ XỬ LÝ";
                     else
                         if (CTaiKhoan.ToBC)
@@ -224,10 +224,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         private void btnBaoCao_ThongKeXuLyBB_Click(object sender, EventArgs e)
         {
             //string TenTo = "";
-            //if (CTaiKhoan.ToKH == true)
+            //if (CTaiKhoan.ToTB == true)
             //    TenTo = "TKH";
             //else
-            //    if (CTaiKhoan.ToXL == true)
+            //    if (CTaiKhoan.ToTP == true)
             //        TenTo = "TXL";
             //    else
             //        if (CTaiKhoan.ToBC == true)
@@ -412,10 +412,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 dt = _cKTXM.GetDS("", dateTu_ThongKeLoaiDon.Value, dateDen_ThongKeLoaiDon.Value);
             else
             {
-                if (CTaiKhoan.ToKH)
+                if (CTaiKhoan.ToTB)
                     dt = _cKTXM.GetDS("TKH", dateTu_ThongKeLoaiDon.Value, dateDen_ThongKeLoaiDon.Value);
                 else
-                    if (CTaiKhoan.ToXL)
+                    if (CTaiKhoan.ToTP)
                         dt = _cKTXM.GetDS("TXL", dateTu_ThongKeLoaiDon.Value, dateDen_ThongKeLoaiDon.Value);
                     else
                         if (CTaiKhoan.ToBC)

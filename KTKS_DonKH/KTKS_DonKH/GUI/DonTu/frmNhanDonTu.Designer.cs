@@ -125,6 +125,7 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chkKhongInBienNhan = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbDieuChinh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbKhieuNai.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbDHN.Properties)).BeginInit();
@@ -507,7 +508,7 @@
             // 
             this.txtNguoiBao.Location = new System.Drawing.Point(98, 89);
             this.txtNguoiBao.Name = "txtNguoiBao";
-            this.txtNguoiBao.Size = new System.Drawing.Size(100, 22);
+            this.txtNguoiBao.Size = new System.Drawing.Size(156, 22);
             this.txtNguoiBao.TabIndex = 15;
             // 
             // label19
@@ -521,7 +522,7 @@
             // 
             // txtDienThoai
             // 
-            this.txtDienThoai.Location = new System.Drawing.Point(287, 89);
+            this.txtDienThoai.Location = new System.Drawing.Point(342, 89);
             this.txtDienThoai.Name = "txtDienThoai";
             this.txtDienThoai.Size = new System.Drawing.Size(100, 22);
             this.txtDienThoai.TabIndex = 5;
@@ -529,7 +530,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(205, 92);
+            this.label11.Location = new System.Drawing.Point(260, 92);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(76, 16);
             this.label11.TabIndex = 4;
@@ -1045,12 +1046,23 @@
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
             this.dataGridViewTextBoxColumn9.Width = 200;
             // 
+            // chkKhongInBienNhan
+            // 
+            this.chkKhongInBienNhan.AutoSize = true;
+            this.chkKhongInBienNhan.Location = new System.Drawing.Point(669, 388);
+            this.chkKhongInBienNhan.Name = "chkKhongInBienNhan";
+            this.chkKhongInBienNhan.Size = new System.Drawing.Size(143, 20);
+            this.chkKhongInBienNhan.TabIndex = 27;
+            this.chkKhongInBienNhan.Text = "Không In Biên Nhận";
+            this.chkKhongInBienNhan.UseVisualStyleBackColor = true;
+            // 
             // frmNhanDonTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1264, 561);
+            this.Controls.Add(this.chkKhongInBienNhan);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnIn);
@@ -1200,5 +1212,6 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox txtTenDuong_TimKiem;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.CheckBox chkKhongInBienNhan;
     }
 }

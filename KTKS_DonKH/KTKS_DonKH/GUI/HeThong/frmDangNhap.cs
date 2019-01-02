@@ -40,8 +40,9 @@ namespace KTKS_DonKH.GUI.HeThong
                     CTaiKhoan.MaKiemBamChi = nguoidung.MaKiemBamChi;
                     CTaiKhoan.Admin = nguoidung.Admin;
                     CTaiKhoan.ThuKy = nguoidung.ThuKy;
-                    CTaiKhoan.ToKH = nguoidung.ToKH;
-                    CTaiKhoan.ToXL = nguoidung.ToXL;
+                    CTaiKhoan.ToGD = nguoidung.ToGD;
+                    CTaiKhoan.ToTB = nguoidung.ToTB;
+                    CTaiKhoan.ToTP = nguoidung.ToTP;
                     CTaiKhoan.ToBC = nguoidung.ToBC;
                     CTaiKhoan.ToTruong = nguoidung.ToTruong;
                     CTaiKhoan.PhoGiamDoc = nguoidung.PhoGiamDoc;

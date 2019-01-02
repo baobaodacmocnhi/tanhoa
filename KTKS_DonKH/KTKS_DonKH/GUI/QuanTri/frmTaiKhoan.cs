@@ -222,8 +222,8 @@ namespace KTKS_DonKH.GUI.QuanTri
             {
                 User taikhoan = _cTaiKhoan.Get(int.Parse(dgvDSTaiKhoan["MaU", e.RowIndex].Value.ToString()));
                 taikhoan.ToGD = bool.Parse(dgvDSTaiKhoan["ToGD", e.RowIndex].Value.ToString());
-                taikhoan.ToKH = bool.Parse(dgvDSTaiKhoan["ToKH", e.RowIndex].Value.ToString());
-                taikhoan.ToXL = bool.Parse(dgvDSTaiKhoan["ToXL", e.RowIndex].Value.ToString());
+                taikhoan.ToTB = bool.Parse(dgvDSTaiKhoan["ToTB", e.RowIndex].Value.ToString());
+                taikhoan.ToTP = bool.Parse(dgvDSTaiKhoan["ToTP", e.RowIndex].Value.ToString());
                 taikhoan.ToBC = bool.Parse(dgvDSTaiKhoan["ToBC", e.RowIndex].Value.ToString());
                 taikhoan.ToVP = bool.Parse(dgvDSTaiKhoan["ToVP", e.RowIndex].Value.ToString());
                 _cTaiKhoan.Sua(taikhoan);

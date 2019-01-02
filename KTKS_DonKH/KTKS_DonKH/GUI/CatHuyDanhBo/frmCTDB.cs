@@ -333,7 +333,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 //
                 if (_dontu_ChiTiet != null)
                 {
-                    if (_dontu_ChiTiet.DonTu.SoCongVan == "")
+                    if (_dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count() == 1)
                         txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString();
                     else
                         txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString() + "." + _dontu_ChiTiet.STT.Value.ToString();

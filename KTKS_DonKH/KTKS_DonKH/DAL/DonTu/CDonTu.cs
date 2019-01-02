@@ -304,26 +304,164 @@ namespace KTKS_DonKH.DAL.DonTu
             return LINQToDataTable(query);
         }
 
-        public DataTable getDS_LichSu(DateTime FromCreateDate,DateTime ToCreateDate)
+        public DataTable getDS_LichSu(string To, DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            var query = from item in db.DonTu_LichSus
-                        join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon ,itemDon.STT}
-                        where item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
-                        select new
-                        {
-                            item.ID,
-                            item.NgayChuyen,
-                            item.NoiChuyen,
-                            item.NoiNhan,
-                            item.KTXM,
-                            item.NoiDung,
-                            CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
-                            itemDon.MaDon,
-                            itemDon.DanhBo,
-                            itemDon.DiaChi,
-                            NoiDungDon=itemDon.DonTu.Name_NhomDon,     
-                        };
-            return LINQToDataTable(query);
+            switch (To)
+            {
+                case "TKH":
+                    var query = from item in db.DonTu_LichSus
+                                join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                                where item.ID_NoiChuyen==2 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
+                                select new
+                                {
+                                    item.ID,
+                                    item.NgayChuyen,
+                                    item.NoiChuyen,
+                                    item.NoiNhan,
+                                    item.KTXM,
+                                    item.NoiDung,
+                                    CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                    itemDon.MaDon,
+                                    itemDon.DanhBo,
+                                    itemDon.DiaChi,
+                                    NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                                };
+                    return LINQToDataTable(query);
+                case "TXL":
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.ID_NoiChuyen == 3 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                itemDon.MaDon,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+                case "TBC":
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.ID_NoiChuyen == 4 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                itemDon.MaDon,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+                case "TGD":
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.ID_NoiChuyen == 11 && item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                itemDon.MaDon,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+                default:
+                    query = from item in db.DonTu_LichSus
+                            join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                            where item.NgayChuyen.Value.Date >= FromCreateDate.Date && item.NgayChuyen.Value.Date <= ToCreateDate.Date
+                            select new
+                            {
+                                item.ID,
+                                item.NgayChuyen,
+                                item.NoiChuyen,
+                                item.NoiNhan,
+                                item.KTXM,
+                                item.NoiDung,
+                                CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                                itemDon.MaDon,
+                                itemDon.DanhBo,
+                                itemDon.DiaChi,
+                                NoiDungDon = itemDon.DonTu.Name_NhomDon,
+                            };
+                    return LINQToDataTable(query);
+            }
+        }
+
+        public DataTable getDS_ChuyenKTXM(string Loai, DateTime FromNgayChuyen, DateTime ToNgayChuyen)
+        {
+            DataTable dt = new DataTable();
+            string sql = "select MaDon=case when (select COUNT(MaDon) from DonTu_ChiTiet where MaDon=dt.MaDon)=1 then convert(char(11),dtct.MaDon) else convert(char(7),dtct.MaDon)+'.'+convert(varchar(3),dtct.STT) end,"
+                        + " dt.SoCongVan,dtct.DanhBo,dtct.HoTen,dtct.DiaChi,NoiDung=dt.Name_NhomDon,dtls.NgayChuyen,GhiChu=dtls.NoiDung,"
+                        + " GiaiQuyet=case when exists(select ktxm.MaKTXM from KTXM ktxm,KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtct.MaDon and ktxmct.STT=dtct.STT and ktxmct.CreateBy=dtls.ID_KTXM and (ktxmct.NgayKTXM_Truoc_NgayGiao=1 or ktxmct.NgayKTXM>=dtls.NgayChuyen))then 'true'"
+                        + " when exists(select bc.MaBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and bcct.NgayBC>=dtls.NgayChuyen)then 'true' else 'false' end,"
+                        + " NgayGiaiQuyet=case when exists(select ktxm.MaKTXM from KTXM ktxm,KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtct.MaDon and ktxmct.STT=dtct.STT and ktxmct.CreateBy=dtls.ID_KTXM and (ktxmct.NgayKTXM_Truoc_NgayGiao=1 or ktxmct.NgayKTXM>=dtls.NgayChuyen))then (select ktxmct.NgayKTXM from KTXM ktxm,KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtct.MaDon and ktxmct.STT=dtct.STT and ktxmct.CreateBy=dtls.ID_KTXM and (ktxmct.NgayKTXM_Truoc_NgayGiao=1 or ktxmct.NgayKTXM>=dtls.NgayChuyen))"
+                        + " when exists(select bc.MaBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and bcct.NgayBC>=dtls.NgayChuyen)then (select bcct.NgayBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and bcct.NgayBC>=dtls.NgayChuyen) else null end,"
+                        + " NguoiDi=(select HoTen from Users where MaU=dtls.ID_KTXM)"
+                        + " from DonTu_LichSu dtls,DonTu_ChiTiet dtct,DonTu dt"
+                        + " where dt.MaDon=dtct.MaDon and dtls.STT=dtct.STT and dtls.MaDon=dtct.MaDon and ID_NoiNhan=1";
+            switch (Loai)
+            {
+                case "TKH":
+                    sql += " and ID_NoiChuyen=2";
+                    break;
+                case "TXL":
+                    sql += " and ID_NoiChuyen=3";
+                    break;
+                case "TBC":
+                    sql += " and ID_NoiChuyen=4";
+                    break;
+            }
+            sql += " and CAST(dtls.NgayChuyen as date)>='" + FromNgayChuyen.ToString("yyyyMMdd") + "' and CAST(dtls.NgayChuyen as date)>='" + ToNgayChuyen.ToString("yyyyMMdd")+"'";
+            sql += " order by dtct.MaDon,dtct.STT";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable getDS_ChuyenKTXM(string Loai, string SoCongVan)
+        {
+            DataTable dt = new DataTable();
+            string sql = "select MaDon=case when (select COUNT(MaDon) from DonTu_ChiTiet where MaDon=dt.MaDon)=1 then convert(char(11),dtct.MaDon) else convert(char(7),dtct.MaDon)+'.'+convert(varchar(3),dtct.STT) end,"
+                        + " dt.SoCongVan,dtct.DanhBo,dtct.HoTen,dtct.DiaChi,NoiDung=dt.Name_NhomDon,dtls.NgayChuyen,GhiChu=dtls.NoiDung,"
+                        + " GiaiQuyet=case when exists(select ktxm.MaKTXM from KTXM ktxm,KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtct.MaDon and ktxmct.STT=dtct.STT and ktxmct.CreateBy=dtls.ID_KTXM and (ktxmct.NgayKTXM_Truoc_NgayGiao=1 or ktxmct.NgayKTXM>=dtls.NgayChuyen))then 'true'"
+                        + " when exists(select bc.MaBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and bcct.NgayBC>=dtls.NgayChuyen)then 'true' else 'false' end,"
+                        + " NgayGiaiQuyet=case when exists(select ktxm.MaKTXM from KTXM ktxm,KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtct.MaDon and ktxmct.STT=dtct.STT and ktxmct.CreateBy=dtls.ID_KTXM and (ktxmct.NgayKTXM_Truoc_NgayGiao=1 or ktxmct.NgayKTXM>=dtls.NgayChuyen))then (select ktxmct.NgayKTXM from KTXM ktxm,KTXM_ChiTiet ktxmct where ktxm.MaKTXM=ktxmct.MaKTXM and ktxm.MaDonMoi=dtct.MaDon and ktxmct.STT=dtct.STT and ktxmct.CreateBy=dtls.ID_KTXM and (ktxmct.NgayKTXM_Truoc_NgayGiao=1 or ktxmct.NgayKTXM>=dtls.NgayChuyen))"
+                        + " when exists(select bc.MaBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and bcct.NgayBC>=dtls.NgayChuyen)then (select bcct.NgayBC from BamChi bc,BamChi_ChiTiet bcct where bc.MaBC=bcct.MaBC and bc.MaDonMoi=dtct.MaDon and bcct.STT=dtct.STT and bcct.CreateBy=dtls.ID_KTXM and bcct.NgayBC>=dtls.NgayChuyen) else null end,"
+                        + " NguoiDi=(select HoTen from Users where MaU=dtls.ID_KTXM)"
+                        + " from DonTu_LichSu dtls,DonTu_ChiTiet dtct,DonTu dt"
+                        + " where dt.MaDon=dtct.MaDon and dtls.STT=dtct.STT and dtls.MaDon=dtct.MaDon and ID_NoiNhan=1";
+            switch (Loai)
+            {
+                case "TKH":
+                    sql += " and ID_NoiChuyen=2";
+                    break;
+                case "TXL":
+                    sql += " and ID_NoiChuyen=3";
+                    break;
+                case "TBC":
+                    sql += " and ID_NoiChuyen=4";
+                    break;
+            }
+            sql += " and dt.SoCongVan like N'"+SoCongVan+"'";
+            sql += " order by dtct.MaDon,dtct.STT";
+            return ExecuteQuery_DataTable(sql);
         }
     }
 }

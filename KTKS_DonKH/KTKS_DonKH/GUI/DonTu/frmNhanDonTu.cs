@@ -176,7 +176,10 @@ namespace KTKS_DonKH.GUI.DonTu
             txtDiaChi.Text = "";
             txtGiaBieu.Text = "";
             txtDinhMuc.Text = "";
+            txtNguoiBao.Text = "";
+            txtDienThoai.Text = "";
             dgvDanhBo.Rows.Clear();
+            dgvDanhBo.Rows.Add();
 
             chkCT_HoaDon.Checked = false;
             chkCT_HK_KT3.Checked = false;
@@ -274,7 +277,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 try
                 {
                     LinQ.DonTu entity = new LinQ.DonTu();
-                    if (string.IsNullOrEmpty(txtSoCongVan.Text.Trim()) == true)
+                    if (tabControl.SelectedTab.Name == "tabTTKH")
                     {
                         if (_cDonTu.checkExist_ChiTiet(txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now) == true)
                         {
@@ -313,11 +316,8 @@ namespace KTKS_DonKH.GUI.DonTu
 
                         entity.DonTu_ChiTiets.Add(entityCT);
                     }
-                    else
+                    else if (tabControl.SelectedTab.Name == "tabCongVan")
                     {
-                        entity.SoCongVan = txtSoCongVan.Text.Trim();
-                        entity.TongDB = int.Parse(txtTongDB.Text.Trim());
-
                         foreach (DataGridViewRow item in dgvDanhBo.Rows)
                         {
                             if (item.Cells["DanhBo"].Value != null || item.Cells["HoTen"].Value != null || item.Cells["DiaChi"].Value != null)
@@ -372,7 +372,13 @@ namespace KTKS_DonKH.GUI.DonTu
                             }
                         }
                     }
-                    ///
+                    //
+                    if (txtSoCongVan.Text.Trim() != "")
+                    {
+                        entity.SoCongVan = txtSoCongVan.Text.Trim();
+                        entity.TongDB = int.Parse(txtTongDB.Text.Trim());
+                    }
+                    //
                     entity.NgayHenGiaiQuyet = "Trong thời gian 5 ngày làm việc kể từ ngày nhận hồ sơ, Công ty sẽ giải quyết theo quy định hiện hành";
                     entity.ID_NhomDon = "";
                     for (int i = 0; i < chkcmbDieuChinh.Properties.Items.Count; i++)
@@ -432,6 +438,8 @@ namespace KTKS_DonKH.GUI.DonTu
                     if (_cDonTu.Them(entity))
                     {     
                         MessageBox.Show("Thành công\nMã Đơn: "+entity.MaDon.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (chkKhongInBienNhan.Checked == false)
+                            InBienNhan(entity);
                         Clear();
                     }
                 }
@@ -809,6 +817,8 @@ namespace KTKS_DonKH.GUI.DonTu
         {
             if (txtSoNK.Text.Trim() != "")
                 txtDM.Text = (int.Parse(txtSoNK.Text.Trim()) * 4).ToString();
+            else
+                txtDM.Text = "";
         }
 
         private void txtSoNK_KeyPress(object sender, KeyPressEventArgs e)

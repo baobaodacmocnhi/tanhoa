@@ -80,15 +80,22 @@ namespace KTKS_DonKH.DAL.QuanTri
             set { CTaiKhoan._ThuKy = value; }
         }
 
+        static bool _ToGD;
+        public static bool ToGD
+        {
+            get { return CTaiKhoan._ToGD; }
+            set { CTaiKhoan._ToGD = value; }
+        }
+
         static bool _ToKH;
-        public static bool ToKH
+        public static bool ToTB
         {
             get { return CTaiKhoan._ToKH; }
             set { CTaiKhoan._ToKH = value; }
         }
 
         static bool _ToXL;
-        public static bool ToXL
+        public static bool ToTP
         {
             get { return CTaiKhoan._ToXL; }
             set { CTaiKhoan._ToXL = value; }
@@ -260,9 +267,9 @@ namespace KTKS_DonKH.DAL.QuanTri
             switch (Loai)
             {
                 case "TKH":
-                    return LINQToDataTable(db.Users.Where(item => item.KTXM == true && item.ToKH == true && item.An == false).OrderBy(item => item.STT).ToList());
+                    return LINQToDataTable(db.Users.Where(item => item.KTXM == true && item.ToTB == true && item.An == false).OrderBy(item => item.STT).ToList());
                 case "TXL":
-                    return LINQToDataTable(db.Users.Where(item => item.KTXM == true && item.ToXL == true && item.An == false).OrderBy(item => item.STT).ToList());
+                    return LINQToDataTable(db.Users.Where(item => item.KTXM == true && item.ToTP == true && item.An == false).OrderBy(item => item.STT).ToList());
                 case "TBC":
                     return LINQToDataTable(db.Users.Where(item => item.KTXM == true && item.ToBC == true && item.An == false).OrderBy(item => item.STT).ToList());
                 default:
@@ -275,9 +282,9 @@ namespace KTKS_DonKH.DAL.QuanTri
             switch (Loai)
             {
                 case "TKH":
-                    return LINQToDataTable(db.Users.Where(item => item.KTXM == false && item.ToKH == true && item.An == false).OrderBy(item => item.STT).ToList());
+                    return LINQToDataTable(db.Users.Where(item => item.KTXM == false && item.ToTB == true && item.An == false).OrderBy(item => item.STT).ToList());
                 case "TXL":
-                    return LINQToDataTable(db.Users.Where(item => item.KTXM == false && item.ToXL == true && item.An == false).OrderBy(item => item.STT).ToList());
+                    return LINQToDataTable(db.Users.Where(item => item.KTXM == false && item.ToTP == true && item.An == false).OrderBy(item => item.STT).ToList());
                 case "TBC":
                     return LINQToDataTable(db.Users.Where(item => item.KTXM == false && item.ToBC == true && item.An == false).OrderBy(item => item.STT).ToList());
                 case "TVP":

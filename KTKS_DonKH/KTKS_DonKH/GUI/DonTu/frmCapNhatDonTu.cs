@@ -118,7 +118,7 @@ namespace KTKS_DonKH.GUI.DonTu
         {
             if (_dontu != null)
                 if (_dontu_ChiTiet == null)
-                    dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu.MaDon,null);
+                    dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu.MaDon, 1);
                 else
                     dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
         }
@@ -534,13 +534,13 @@ namespace KTKS_DonKH.GUI.DonTu
                 if (chkcmbNoiNhan.Properties.Items[i].CheckState == CheckState.Checked && chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "1")
                 {
                     DataTable dt = new DataTable();
-                    
-                    //if(CTaiKhoan.ToKH==true)
+
+                    if (CTaiKhoan.ToTB == true)
                         dt = _cTaiKhoan.GetDS_KTXM("TKH");
-                    //else if(CTaiKhoan.ToKH==true)
-                    //    dt = _cTaiKhoan.GetDS_KTXM("TXL");
-                    //else if(CTaiKhoan.ToKH==true)
-                    //    dt = _cTaiKhoan.GetDS_KTXM("TBC");
+                    else if (CTaiKhoan.ToTP == true)
+                        dt = _cTaiKhoan.GetDS_KTXM("TXL");
+                    else if (CTaiKhoan.ToBC == true)
+                        dt = _cTaiKhoan.GetDS_KTXM("TBC");
                     chkcmbNoiNhanKTXM.Properties.DataSource = dt;
                     chkcmbNoiNhanKTXM.Properties.ValueMember = "MaU";
                     chkcmbNoiNhanKTXM.Properties.DisplayMember = "HoTen";
