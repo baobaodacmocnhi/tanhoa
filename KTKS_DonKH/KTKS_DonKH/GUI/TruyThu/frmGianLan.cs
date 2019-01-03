@@ -496,7 +496,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     if (_cGianLan.Them_ChiTiet(entity))
                     {
                         if (_dontu_ChiTiet != null)
-                            _cDonTu.Them_LichSu("Truy Thu", "Đã Lập Gian Lận", _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
+                            _cDonTu.Them_LichSu("TruyThu", "Đã Lập Gian Lận, "+entity.NoiDungViPham, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
                     }

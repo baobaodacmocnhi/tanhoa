@@ -24,9 +24,8 @@ namespace KTKS_DonKH.DAL.QuanTri
             }
             catch (Exception ex)
             {
-                db = new dbKinhDoanhDataContext();
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
@@ -41,8 +40,8 @@ namespace KTKS_DonKH.DAL.QuanTri
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
@@ -56,27 +55,32 @@ namespace KTKS_DonKH.DAL.QuanTri
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
-        public List<To> GetDS_Admin()
+        public List<To> getDS_Admin()
         {
             return db.Tos.ToList();
         }
 
-        public List<To> GetDS()
+        public List<To> getDS()
         {
             return db.Tos.Where(item=>item.An==false).ToList();
         }
 
-        public To GetByMaTo(int MaTo)
+        public List<To> getDS_KTXM()
+        {
+            return db.Tos.Where(item =>item.KTXM==true&& item.An == false).ToList();
+        }
+
+        public To get(int MaTo)
         {
             return db.Tos.SingleOrDefault(item => item.MaTo == MaTo);
         }
 
-        public string GetTenToByMaTo(int MaTo)
+        public string getTenTo(int MaTo)
         {
             return db.Tos.SingleOrDefault(item => item.MaTo == MaTo).TenTo;
         }

@@ -29,6 +29,25 @@ namespace KTKS_DonKH.GUI.DonTu
 
         }
 
+        private void cmbTimTheo_LichSuChuyenDon_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbTimTheo_LichSuChuyenDon.SelectedItem.ToString())
+            {
+                case "Số Công Văn":
+                    txtNoiDungTimKiem_LichSuChuyenDon.Visible = true;
+                    panel_KhoangThoiGian_LichSuChuyenDon.Visible = false;
+                    break;
+                case "Ngày":
+                    txtNoiDungTimKiem_LichSuChuyenDon.Visible = false;
+                    panel_KhoangThoiGian_LichSuChuyenDon.Visible = true;
+                    break;
+                default:
+                    txtNoiDungTimKiem_LichSuChuyenDon.Visible = false;
+                    panel_KhoangThoiGian_LichSuChuyenDon.Visible = false;
+                    break;
+            }
+        }
+
         private void btnBaoCao_LichSuChuyenDon_Click(object sender, EventArgs e)
         {
             string To = "";
@@ -40,7 +59,16 @@ namespace KTKS_DonKH.GUI.DonTu
                 To = "TXL";
             else if (CTaiKhoan.ToBC == true)
                 To = "TBC";
-            DataTable dt = _cDonTu.getDS_LichSu(To, dateTu_LichSuChuyenDon.Value, dateDen_LichSuChuyenDon.Value);
+            DataTable dt = new DataTable();
+            switch (cmbTimTheo_LichSuChuyenDon.SelectedItem.ToString())
+            {
+                case "Ngày":
+                    dt = _cDonTu.getDS_LichSu(To, dateTu_LichSuChuyenDon.Value, dateDen_LichSuChuyenDon.Value);
+                    break;
+                case "Số Công Văn":
+                    dt = _cDonTu.getDS_LichSu(To, txtNoiDungTimKiem_LichSuChuyenDon.Text.Trim().ToUpper());
+                    break;
+            }
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             foreach (DataRow item in dt.Rows)
             {
@@ -160,6 +188,8 @@ namespace KTKS_DonKH.GUI.DonTu
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.Show();
         }
+
+        
 
 
     }

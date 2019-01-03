@@ -70,9 +70,9 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             return db.KTXM_HienTrangs.SingleOrDefault(itemHTKT => itemHTKT.MaHTKT == MaHTKT);
         }
 
-        public List<KTXM_HienTrang> GetDS()
+        public List<KTXM_HienTrang> getDS()
         {
-            return db.KTXM_HienTrangs.OrderBy(item => item.STT).ToList();
+            return db.KTXM_HienTrangs.OrderBy(item => item.TenHTKT).ToList();
         }
 
         public List<KTXM_HienTrang> getDS(string To)
@@ -80,13 +80,13 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             switch (To)
             {
                 case "ToTB":
-                    return db.KTXM_HienTrangs.Where(item=>item.ToTB==true).OrderBy(item => item.STT).ToList();
+                    return db.KTXM_HienTrangs.Where(item => item.ToTB == true).OrderBy(item => item.TenHTKT).ToList();
                 case "ToTP":
-                    return db.KTXM_HienTrangs.Where(item => item.ToTP == true).OrderBy(item => item.STT).ToList();
+                    return db.KTXM_HienTrangs.Where(item => item.ToTP == true).OrderBy(item => item.TenHTKT).ToList();
                 case "ToBC":
-                    return db.KTXM_HienTrangs.Where(item => item.ToBC == true).OrderBy(item => item.STT).ToList();
+                    return db.KTXM_HienTrangs.Where(item => item.ToBC == true).OrderBy(item => item.TenHTKT).ToList();
                 default:
-                    return db.KTXM_HienTrangs.OrderBy(item => item.STT).ToList();
+                    return db.KTXM_HienTrangs.OrderBy(item => item.TenHTKT).ToList();
             }
             
         }

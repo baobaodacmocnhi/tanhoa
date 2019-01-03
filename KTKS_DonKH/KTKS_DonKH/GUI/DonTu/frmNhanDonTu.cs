@@ -122,10 +122,12 @@ namespace KTKS_DonKH.GUI.DonTu
                     txtTongDB.Text = entity.TongDB.ToString();
                 }
 
-                chkcmbDieuChinh.SetEditValue(entity.ID_NhomDon);
-                chkcmbKhieuNai.SetEditValue(entity.ID_NhomDon);
-                chkcmbDHN.SetEditValue(entity.ID_NhomDon);
-
+                if (entity.ID_NhomDon != null)
+                {
+                    chkcmbDieuChinh.SetEditValue(entity.ID_NhomDon);
+                    chkcmbKhieuNai.SetEditValue(entity.ID_NhomDon);
+                    chkcmbDHN.SetEditValue(entity.ID_NhomDon);
+                }
                 txtNoiDung.Text = entity.Name_NhomDon;
                 txtVanDeKhac.Text = entity.VanDeKhac;
 
@@ -178,8 +180,9 @@ namespace KTKS_DonKH.GUI.DonTu
             txtDinhMuc.Text = "";
             txtNguoiBao.Text = "";
             txtDienThoai.Text = "";
-            dgvDanhBo.Rows.Clear();
-            dgvDanhBo.Rows.Add();
+            dgvDanhBo.DataSource = null;
+            //dgvDanhBo.Rows.Clear();
+            //dgvDanhBo.Rows.Add();
 
             chkCT_HoaDon.Checked = false;
             chkCT_HK_KT3.Checked = false;
@@ -279,7 +282,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     LinQ.DonTu entity = new LinQ.DonTu();
                     if (tabControl.SelectedTab.Name == "tabTTKH")
                     {
-                        if (_cDonTu.checkExist_ChiTiet(txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now) == true)
+                        if (_cDonTu.checkExist_ChiTiet(txtDanhBo.Text.Trim().Replace(" ", ""), txtHoTen.Text.Trim(), txtDiaChi.Text.Trim(), DateTime.Now) == true)
                         {
                             if (MessageBox.Show("Danh Bộ " + txtDanhBo.Text.Trim().Replace(" ", "") + " đã nhận đơn trong ngày hôm nay rồi\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                                 return;
@@ -323,7 +326,7 @@ namespace KTKS_DonKH.GUI.DonTu
                             if (item.Cells["DanhBo"].Value != null || item.Cells["HoTen"].Value != null || item.Cells["DiaChi"].Value != null)
                             {
                                 if (item.Cells["DanhBo"].Value != null)
-                                    if (_cDonTu.checkExist_ChiTiet(item.Cells["DanhBo"].Value.ToString(), DateTime.Now) == true)
+                                    if (_cDonTu.checkExist_ChiTiet(item.Cells["DanhBo"].Value.ToString(), item.Cells["HoTen"].Value.ToString(), item.Cells["DiaChi"].Value.ToString(), DateTime.Now) == true)
                                     {
                                         if (MessageBox.Show("Danh Bộ " + item.Cells["DanhBo"].Value.ToString() + " đã nhận đơn trong ngày hôm nay rồi\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                                             return;
@@ -460,9 +463,9 @@ namespace KTKS_DonKH.GUI.DonTu
                 {
                     if (_dontu != null)
                     {
-                        if (_dontu.SoCongVan == null)
+                        if (_dontu.DonTu_ChiTiets.Count == 1)
                         {
-                            if (_cDonTu.checkExist_ChiTiet(txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now) == true)
+                            if (_cDonTu.checkExist_ChiTiet(txtDanhBo.Text.Trim().Replace(" ", ""), txtHoTen.Text.Trim(), txtDiaChi.Text.Trim(), DateTime.Now) == true)
                             {
                                 if (MessageBox.Show("Danh Bộ " + txtDanhBo.Text.Trim().Replace(" ", "") + " đã nhận đơn trong ngày hôm nay rồi\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                                     return;
@@ -492,7 +495,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                 _dontu.DonTu_ChiTiets.SingleOrDefault().Phuong = _hoadon.Phuong;
                             }
                         }
-                        else
+                        if (txtSoCongVan.Text.Trim() != "")
                         {
                             _dontu.SoCongVan = txtSoCongVan.Text.Trim();
                             _dontu.TongDB = int.Parse(txtTongDB.Text.Trim());
@@ -572,8 +575,8 @@ namespace KTKS_DonKH.GUI.DonTu
                         ///
                         if (_cDonTu.Sua(_dontu))
                         {
-                            Clear();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Clear();
                         }
                     }
                 }
@@ -596,8 +599,8 @@ namespace KTKS_DonKH.GUI.DonTu
                     {
                         if (_cDonTu.Xoa(_dontu))
                         {
-                            Clear();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Clear();
                         }
                     }
                 }

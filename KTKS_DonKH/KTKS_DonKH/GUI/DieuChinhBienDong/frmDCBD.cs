@@ -630,7 +630,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (_cDCBD.ThemDCBD(ctdcbd))
                     {
                         if (_dontu_ChiTiet != null)
-                            _cDonTu.Them_LichSu("Điều Chỉnh", "Đã Điều Chỉnh Biến Động", _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
+                            _cDonTu.Them_LichSu("DCBD", "Đã Điều Chỉnh Biến Động, "+ctdcbd.ThongTin, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
                         MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
                         txtMaDonCu.Focus();
@@ -1048,7 +1048,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void dgvDSSoDangKy_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right && (_dontkh != null || _dontxl != null || _dontbc != null))
+            if (e.Button == MouseButtons.Right && (_dontu_ChiTiet != null || _dontkh != null || _dontxl != null || _dontbc != null))
             {
                 thêmToolStripMenuItem.Enabled = true;
                 nhậnĐịnhMứctoolStripMenuItem.Enabled = true;

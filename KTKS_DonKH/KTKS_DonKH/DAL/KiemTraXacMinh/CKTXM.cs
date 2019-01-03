@@ -608,15 +608,16 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                         join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                         where itemCTKTXM.CreateBy == CreateBy
                         && itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date
+                        orderby itemCTKTXM.KTXM.MaDonMoi,itemCTKTXM.STT ascending
                         select new
                         {
-                            MaDon = itemCTKTXM.KTXM.MaDonMoi != null ? ""+itemCTKTXM.KTXM.MaDonMoi
+                            MaDon = itemCTKTXM.KTXM.MaDonMoi != null ? db.DonTu_ChiTiets.Where(item => item.MaDon == itemCTKTXM.KTXM.MaDonMoi).Count() == 1 ? "" + itemCTKTXM.KTXM.MaDonMoi : itemCTKTXM.KTXM.MaDonMoi + "." + itemCTKTXM.STT
                                     : itemCTKTXM.KTXM.MaDon != null ? "TKH" + itemCTKTXM.KTXM.MaDon
                                     : itemCTKTXM.KTXM.MaDonTXL != null ? "TXL" + itemCTKTXM.KTXM.MaDonTXL
                                     : itemCTKTXM.KTXM.MaDonTBC != null ? "TBC" + itemCTKTXM.KTXM.MaDonTBC : null,
                             itemCTKTXM.MaCTKTXM,
                             TenLD = itemCTKTXM.KTXM.MaDonMoi != null ? ""
-                                    :itemCTKTXM.KTXM.MaDon != null ? itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD
+                                    : itemCTKTXM.KTXM.MaDon != null ? itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD
                                     : itemCTKTXM.KTXM.MaDonTXL != null ? itemCTKTXM.KTXM.DonTXL.LoaiDonTXL.TenLD
                                     : itemCTKTXM.KTXM.MaDonTBC != null ? itemCTKTXM.KTXM.DonTBC.LoaiDonTBC.TenLD : null,
                             itemCTKTXM.DanhBo,

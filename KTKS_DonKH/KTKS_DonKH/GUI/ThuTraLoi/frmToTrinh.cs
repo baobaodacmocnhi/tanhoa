@@ -329,7 +329,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     if (_cTT.Them_ChiTiet(cttt))
                     {
                         if (_dontu_ChiTiet != null)
-                            _cDonTu.Them_LichSu("Tờ Trình", "Đã Lập Từ Tờ Trình", _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
+                            _cDonTu.Them_LichSu("ToTrinh", "Đã Lập Từ Tờ Trình, "+cttt.VeViec, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
                         MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
                         txtMaDonCu.Focus();
@@ -419,6 +419,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             {
                 case "Danh Bộ":
                 case "Mã TT":
+                case "Về Việc":
                     txtNoiDungTimKiem.Visible = true;
                     panel_KhoangThoiGian.Visible = false;
                     break;
@@ -442,7 +443,10 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     dgvToTrinh.DataSource = _cTT.get_ChiTiet(int.Parse(txtNoiDungTimKiem.Text.Trim().Replace(" ", "").Replace("-", "")));
                     break;
                 case "Danh Bộ":
-                    dgvToTrinh.DataSource = _cTT.getDS_ChiTiet(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""));
+                    dgvToTrinh.DataSource = _cTT.getDS_ChiTiet_DanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""));
+                    break;
+                case "Về Việc":
+                    dgvToTrinh.DataSource = _cTT.getDS_ChiTiet_VeViec(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""));
                     break;
                 case "Ngày":
                     dgvToTrinh.DataSource = _cTT.getDS_ChiTiet(dateTu.Value, dateDen.Value);

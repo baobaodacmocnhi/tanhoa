@@ -67,12 +67,6 @@
             this.label27 = new System.Windows.Forms.Label();
             this.btnXem = new System.Windows.Forms.Button();
             this.dgvToTrinh = new System.Windows.Forms.DataGridView();
-            this.btnIn = new System.Windows.Forms.Button();
-            this.cmbVeViec = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtMaDonMoi = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.btnInDS = new System.Windows.Forms.Button();
             this.In = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.IDCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,6 +75,12 @@
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VeViec = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnIn = new System.Windows.Forms.Button();
+            this.cmbVeViec = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtMaDonMoi = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.btnInDS = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel_KhoangThoiGian.SuspendLayout();
@@ -351,7 +351,8 @@
             "",
             "Mã TT",
             "Danh Bộ",
-            "Ngày"});
+            "Ngày",
+            "Về Việc"});
             this.cmbTimTheo.Location = new System.Drawing.Point(162, 400);
             this.cmbTimTheo.Name = "cmbTimTheo";
             this.cmbTimTheo.Size = new System.Drawing.Size(100, 24);
@@ -463,61 +464,6 @@
             this.dgvToTrinh.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvToTrinh_CellFormatting);
             this.dgvToTrinh.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvToTrinh_RowPostPaint);
             // 
-            // btnIn
-            // 
-            this.btnIn.Location = new System.Drawing.Point(796, 319);
-            this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(75, 25);
-            this.btnIn.TabIndex = 102;
-            this.btnIn.Text = "In";
-            this.btnIn.UseVisualStyleBackColor = true;
-            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
-            // 
-            // cmbVeViec
-            // 
-            this.cmbVeViec.FormattingEnabled = true;
-            this.cmbVeViec.Location = new System.Drawing.Point(796, 149);
-            this.cmbVeViec.Name = "cmbVeViec";
-            this.cmbVeViec.Size = new System.Drawing.Size(300, 24);
-            this.cmbVeViec.TabIndex = 104;
-            this.cmbVeViec.SelectedIndexChanged += new System.EventHandler(this.cmbVeViec_SelectedIndexChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(796, 130);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(58, 16);
-            this.label8.TabIndex = 103;
-            this.label8.Text = "Về Việc:";
-            // 
-            // txtMaDonMoi
-            // 
-            this.txtMaDonMoi.Location = new System.Drawing.Point(427, 12);
-            this.txtMaDonMoi.Name = "txtMaDonMoi";
-            this.txtMaDonMoi.Size = new System.Drawing.Size(80, 22);
-            this.txtMaDonMoi.TabIndex = 119;
-            this.txtMaDonMoi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDonMoi_KeyPress);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(329, 15);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(92, 16);
-            this.label15.TabIndex = 118;
-            this.label15.Text = "Mã Đơn(New):";
-            // 
-            // btnInDS
-            // 
-            this.btnInDS.Location = new System.Drawing.Point(599, 403);
-            this.btnInDS.Name = "btnInDS";
-            this.btnInDS.Size = new System.Drawing.Size(75, 25);
-            this.btnInDS.TabIndex = 120;
-            this.btnInDS.Text = "In";
-            this.btnInDS.UseVisualStyleBackColor = true;
-            this.btnInDS.Click += new System.EventHandler(this.btnInDS_Click);
-            // 
             // In
             // 
             this.In.FalseValue = "false";
@@ -573,6 +519,61 @@
             this.NoiDung.HeaderText = "Nội Dung";
             this.NoiDung.Name = "NoiDung";
             this.NoiDung.Width = 200;
+            // 
+            // btnIn
+            // 
+            this.btnIn.Location = new System.Drawing.Point(796, 319);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(75, 25);
+            this.btnIn.TabIndex = 102;
+            this.btnIn.Text = "In";
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
+            // cmbVeViec
+            // 
+            this.cmbVeViec.FormattingEnabled = true;
+            this.cmbVeViec.Location = new System.Drawing.Point(796, 149);
+            this.cmbVeViec.Name = "cmbVeViec";
+            this.cmbVeViec.Size = new System.Drawing.Size(300, 24);
+            this.cmbVeViec.TabIndex = 104;
+            this.cmbVeViec.SelectedIndexChanged += new System.EventHandler(this.cmbVeViec_SelectedIndexChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(796, 130);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(58, 16);
+            this.label8.TabIndex = 103;
+            this.label8.Text = "Về Việc:";
+            // 
+            // txtMaDonMoi
+            // 
+            this.txtMaDonMoi.Location = new System.Drawing.Point(427, 12);
+            this.txtMaDonMoi.Name = "txtMaDonMoi";
+            this.txtMaDonMoi.Size = new System.Drawing.Size(80, 22);
+            this.txtMaDonMoi.TabIndex = 119;
+            this.txtMaDonMoi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDonMoi_KeyPress);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(329, 15);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(92, 16);
+            this.label15.TabIndex = 118;
+            this.label15.Text = "Mã Đơn(New):";
+            // 
+            // btnInDS
+            // 
+            this.btnInDS.Location = new System.Drawing.Point(599, 403);
+            this.btnInDS.Name = "btnInDS";
+            this.btnInDS.Size = new System.Drawing.Size(75, 25);
+            this.btnInDS.TabIndex = 120;
+            this.btnInDS.Text = "In";
+            this.btnInDS.UseVisualStyleBackColor = true;
+            this.btnInDS.Click += new System.EventHandler(this.btnInDS_Click);
             // 
             // frmToTrinh
             // 

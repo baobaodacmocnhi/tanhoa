@@ -862,7 +862,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     _cTTTN.SubmitChanges();
 
                     if (_dontu_ChiTiet != null)
-                        _cDonTu.Them_LichSu("Truy Thu", "Đã Lập Truy Thu", _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
+                        _cDonTu.Them_LichSu("TruyThu", "Đã Lập Truy Thu, "+cttttn.NoiDung, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Clear();
                     txtMaDonCu.Focus();

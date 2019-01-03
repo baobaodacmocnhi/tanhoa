@@ -30,7 +30,7 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnBaoCao_LichSuChuyenDon = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel_KhoangThoiGian_LichSuChuyenDon = new System.Windows.Forms.Panel();
             this.dateTu_LichSuChuyenDon = new System.Windows.Forms.DateTimePicker();
             this.dateDen_LichSuChuyenDon = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,26 +47,34 @@
             this.dateDen_DSChuyenKTXM = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.cmbTimTheo_LichSuChuyenDon = new System.Windows.Forms.ComboBox();
+            this.txtNoiDungTimKiem_LichSuChuyenDon = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.panel_KhoangThoiGian_LichSuChuyenDon.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panel_KhoangThoiGian_DSChuyenKTXM.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtNoiDungTimKiem_LichSuChuyenDon);
+            this.groupBox1.Controls.Add(this.cmbTimTheo_LichSuChuyenDon);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.btnBaoCao_LichSuChuyenDon);
-            this.groupBox1.Controls.Add(this.panel1);
+            this.groupBox1.Controls.Add(this.panel_KhoangThoiGian_LichSuChuyenDon);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(270, 87);
+            this.groupBox1.Size = new System.Drawing.Size(523, 87);
             this.groupBox1.TabIndex = 29;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lịch Sử Chuyển Đơn";
             // 
             // btnBaoCao_LichSuChuyenDon
             // 
-            this.btnBaoCao_LichSuChuyenDon.Location = new System.Drawing.Point(189, 40);
+            this.btnBaoCao_LichSuChuyenDon.Location = new System.Drawing.Point(442, 40);
             this.btnBaoCao_LichSuChuyenDon.Name = "btnBaoCao_LichSuChuyenDon";
             this.btnBaoCao_LichSuChuyenDon.Size = new System.Drawing.Size(75, 25);
             this.btnBaoCao_LichSuChuyenDon.TabIndex = 25;
@@ -74,16 +82,17 @@
             this.btnBaoCao_LichSuChuyenDon.UseVisualStyleBackColor = true;
             this.btnBaoCao_LichSuChuyenDon.Click += new System.EventHandler(this.btnBaoCao_LichSuChuyenDon_Click);
             // 
-            // panel1
+            // panel_KhoangThoiGian_LichSuChuyenDon
             // 
-            this.panel1.Controls.Add(this.dateTu_LichSuChuyenDon);
-            this.panel1.Controls.Add(this.dateDen_LichSuChuyenDon);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(6, 21);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(177, 60);
-            this.panel1.TabIndex = 24;
+            this.panel_KhoangThoiGian_LichSuChuyenDon.Controls.Add(this.dateTu_LichSuChuyenDon);
+            this.panel_KhoangThoiGian_LichSuChuyenDon.Controls.Add(this.dateDen_LichSuChuyenDon);
+            this.panel_KhoangThoiGian_LichSuChuyenDon.Controls.Add(this.label1);
+            this.panel_KhoangThoiGian_LichSuChuyenDon.Controls.Add(this.label2);
+            this.panel_KhoangThoiGian_LichSuChuyenDon.Location = new System.Drawing.Point(259, 21);
+            this.panel_KhoangThoiGian_LichSuChuyenDon.Name = "panel_KhoangThoiGian_LichSuChuyenDon";
+            this.panel_KhoangThoiGian_LichSuChuyenDon.Size = new System.Drawing.Size(177, 60);
+            this.panel_KhoangThoiGian_LichSuChuyenDon.TabIndex = 24;
+            this.panel_KhoangThoiGian_LichSuChuyenDon.Visible = false;
             // 
             // dateTu_LichSuChuyenDon
             // 
@@ -244,6 +253,45 @@
             this.label8.TabIndex = 16;
             this.label8.Text = "Đến Ngày:";
             // 
+            // cmbTimTheo_LichSuChuyenDon
+            // 
+            this.cmbTimTheo_LichSuChuyenDon.FormattingEnabled = true;
+            this.cmbTimTheo_LichSuChuyenDon.Items.AddRange(new object[] {
+            "",
+            "Số Công Văn",
+            "Ngày"});
+            this.cmbTimTheo_LichSuChuyenDon.Location = new System.Drawing.Point(80, 33);
+            this.cmbTimTheo_LichSuChuyenDon.Name = "cmbTimTheo_LichSuChuyenDon";
+            this.cmbTimTheo_LichSuChuyenDon.Size = new System.Drawing.Size(100, 24);
+            this.cmbTimTheo_LichSuChuyenDon.TabIndex = 37;
+            this.cmbTimTheo_LichSuChuyenDon.SelectedIndexChanged += new System.EventHandler(this.cmbTimTheo_LichSuChuyenDon_SelectedIndexChanged);
+            // 
+            // txtNoiDungTimKiem_LichSuChuyenDon
+            // 
+            this.txtNoiDungTimKiem_LichSuChuyenDon.Location = new System.Drawing.Point(259, 33);
+            this.txtNoiDungTimKiem_LichSuChuyenDon.Name = "txtNoiDungTimKiem_LichSuChuyenDon";
+            this.txtNoiDungTimKiem_LichSuChuyenDon.Size = new System.Drawing.Size(100, 22);
+            this.txtNoiDungTimKiem_LichSuChuyenDon.TabIndex = 39;
+            this.txtNoiDungTimKiem_LichSuChuyenDon.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(186, 36);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 16);
+            this.label3.TabIndex = 38;
+            this.label3.Text = "Nội Dung:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 36);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(69, 16);
+            this.label4.TabIndex = 36;
+            this.label4.Text = "Tìm Theo:";
+            // 
             // frmBaoCaoDonTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -257,8 +305,9 @@
             this.Text = "Báo Cáo Đơn Từ";
             this.Load += new System.EventHandler(this.frmBaoCaoDonTu_Load);
             this.groupBox1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.groupBox1.PerformLayout();
+            this.panel_KhoangThoiGian_LichSuChuyenDon.ResumeLayout(false);
+            this.panel_KhoangThoiGian_LichSuChuyenDon.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.panel_KhoangThoiGian_DSChuyenKTXM.ResumeLayout(false);
@@ -271,7 +320,7 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnBaoCao_LichSuChuyenDon;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel_KhoangThoiGian_LichSuChuyenDon;
         private System.Windows.Forms.DateTimePicker dateTu_LichSuChuyenDon;
         private System.Windows.Forms.DateTimePicker dateDen_LichSuChuyenDon;
         private System.Windows.Forms.Label label1;
@@ -288,5 +337,9 @@
         private System.Windows.Forms.DateTimePicker dateDen_DSChuyenKTXM;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cmbTimTheo_LichSuChuyenDon;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtNoiDungTimKiem_LichSuChuyenDon;
     }
 }

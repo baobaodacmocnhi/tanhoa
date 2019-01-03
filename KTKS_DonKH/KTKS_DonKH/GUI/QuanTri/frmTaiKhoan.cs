@@ -46,9 +46,9 @@ namespace KTKS_DonKH.GUI.QuanTri
             dgvDSTaiKhoan.AutoGenerateColumns = false;
             dgvDSTaiKhoan.DataSource = _blNguoiDung;
 
-            //cmbTo.DataSource = _cTo.GetDS();
-            //cmbTo.DisplayMember = "TenTo";
-            //cmbTo.ValueMember = "MaTo";
+            cmbTo.DataSource = _cTo.getDS();
+            cmbTo.DisplayMember = "TenTo";
+            cmbTo.ValueMember = "MaTo";
 
             cmbNhom.DataSource = _cNhom.GetDS();
             cmbNhom.DisplayMember = "TenNhom";
@@ -90,7 +90,7 @@ namespace KTKS_DonKH.GUI.QuanTri
                     nguoidung.MatKhau = txtMatKhau.Text.Trim();
                     nguoidung.STT = _cTaiKhoan.GetMaxSTT() + 1;
                     nguoidung.MaKiemBamChi = txtMaKiemBamChi.Text.Trim();
-                    //nguoidung.MaTo = int.Parse(cmbTo.SelectedValue.ToString());
+                    nguoidung.MaTo = int.Parse(cmbTo.SelectedValue.ToString());
                     nguoidung.MaNhom = int.Parse(cmbNhom.SelectedValue.ToString());
                     nguoidung.PhoGiamDoc = chkPhoGiamDoc.Checked;
                     nguoidung.An = chkAn.Checked;
@@ -153,7 +153,7 @@ namespace KTKS_DonKH.GUI.QuanTri
                     nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
                     nguoidung.MatKhau = txtMatKhau.Text.Trim();
                     nguoidung.MaKiemBamChi = txtMaKiemBamChi.Text.Trim();
-                    //nguoidung.MaTo = (int)cmbTo.SelectedValue;
+                    nguoidung.MaTo = (int)cmbTo.SelectedValue;
                     nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
                     nguoidung.PhoGiamDoc = chkPhoGiamDoc.Checked;
                     nguoidung.An = chkAn.Checked;
@@ -196,8 +196,8 @@ namespace KTKS_DonKH.GUI.QuanTri
                 txtTaiKhoan.Text = dgvDSTaiKhoan["TaiKhoan", e.RowIndex].Value.ToString();
                 txtMatKhau.Text = dgvDSTaiKhoan["MatKhau", e.RowIndex].Value.ToString();
                 txtMaKiemBamChi.Text = dgvDSTaiKhoan["MaKiemBamChi", e.RowIndex].Value.ToString();
-                //if (dgvDSTaiKhoan["MaTo", e.RowIndex].Value != null)
-                //    cmbTo.SelectedValue = int.Parse(dgvDSTaiKhoan["MaTo", e.RowIndex].Value.ToString());
+                if (dgvDSTaiKhoan["MaTo", e.RowIndex].Value != null)
+                    cmbTo.SelectedValue = int.Parse(dgvDSTaiKhoan["MaTo", e.RowIndex].Value.ToString());
                 if (dgvDSTaiKhoan["MaNhom", e.RowIndex].Value != null)
                     cmbNhom.SelectedValue = int.Parse(dgvDSTaiKhoan["MaNhom", e.RowIndex].Value.ToString());
                 chkPhoGiamDoc.Checked = bool.Parse(dgvDSTaiKhoan["PhoGiamDoc", e.RowIndex].Value.ToString());
@@ -225,7 +225,7 @@ namespace KTKS_DonKH.GUI.QuanTri
                 taikhoan.ToTB = bool.Parse(dgvDSTaiKhoan["ToTB", e.RowIndex].Value.ToString());
                 taikhoan.ToTP = bool.Parse(dgvDSTaiKhoan["ToTP", e.RowIndex].Value.ToString());
                 taikhoan.ToBC = bool.Parse(dgvDSTaiKhoan["ToBC", e.RowIndex].Value.ToString());
-                taikhoan.ToVP = bool.Parse(dgvDSTaiKhoan["ToVP", e.RowIndex].Value.ToString());
+                //taikhoan.ToVP = bool.Parse(dgvDSTaiKhoan["ToVP", e.RowIndex].Value.ToString());
                 _cTaiKhoan.Sua(taikhoan);
             }
         }

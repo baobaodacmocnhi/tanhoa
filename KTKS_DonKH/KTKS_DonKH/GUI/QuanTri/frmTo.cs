@@ -15,7 +15,7 @@ namespace KTKS_DonKH.GUI.QuanTri
     {
         string _mnu = "mnuTo";
         CTo _cTo = new CTo();
-        int _selectedindex = -1;
+        To _to = null;
 
         public frmTo()
         {
@@ -25,14 +25,15 @@ namespace KTKS_DonKH.GUI.QuanTri
         private void frmTo_Load(object sender, EventArgs e)
         {
             dgvTo.AutoGenerateColumns = false;
-            dgvTo.DataSource = _cTo.GetDS();
+            Clear();
         }
 
         public void Clear()
         {
-            _selectedindex = -1;
+            _to = null;
             txtTenTo.Text = "";
-            dgvTo.DataSource = _cTo.GetDS();
+            txtKyHieu.Text = "";
+            dgvTo.DataSource = _cTo.getDS();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -43,6 +44,7 @@ namespace KTKS_DonKH.GUI.QuanTri
                 {
                     To to = new To();
                     to.TenTo = txtTenTo.Text.Trim();
+                    to.KyHieu = txtKyHieu.Text.Trim();
                     _cTo.Them(to);
                     Clear();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -56,11 +58,11 @@ namespace KTKS_DonKH.GUI.QuanTri
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
             {
-                if (_selectedindex != -1)
+                if (_to != null)
                 {
-                    To to = _cTo.GetByMaTo(int.Parse(dgvTo["MaTo", _selectedindex].Value.ToString()));
-                    to.TenTo = txtTenTo.Text.Trim();
-                    _cTo.Sua(to);
+                    _to.TenTo = txtTenTo.Text.Trim();
+                    _to.KyHieu = txtKyHieu.Text.Trim();
+                    _cTo.Sua(_to);
                     Clear();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -74,11 +76,10 @@ namespace KTKS_DonKH.GUI.QuanTri
             if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
             {
                 if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                    if (_selectedindex != -1)
+                    if (_to != null)
                     {
-                        To to = _cTo.GetByMaTo(int.Parse(dgvTo["MaTo", _selectedindex].Value.ToString()));
-                        to.An = true;
-                        _cTo.Sua(to);
+                        _to.An = true;
+                        _cTo.Sua(_to);
                         Clear();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -87,6 +88,16 @@ namespace KTKS_DonKH.GUI.QuanTri
             }
             else
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void dgvTo_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            _to = _cTo.get(int.Parse(dgvTo.CurrentRow.Cells["MaTo"].Value.ToString()));
+            if (_to != null)
+            {
+                txtTenTo.Text = _to.TenTo;
+                txtKyHieu.Text = _to.KyHieu;
+            }
         }
 
     }

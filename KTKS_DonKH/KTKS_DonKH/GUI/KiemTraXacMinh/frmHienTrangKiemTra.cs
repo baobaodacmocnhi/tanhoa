@@ -18,6 +18,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         CHienTrangKiemTra _cHienTrangKiemTra = new CHienTrangKiemTra();
         int _selectedindexHTKT = -1;
         BindingList<KTXM_HienTrang> _blHienTrangKiemTra;
+        CTo _cTo = new CTo();
 
         public frmHienTrangKiemTra()
         {
@@ -27,13 +28,20 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         private void frmThongTin_KT_BC_Load(object sender, EventArgs e)
         {
             dgvDSHienTrangKT.AutoGenerateColumns = false;
-
-            LoadDataTable();
+            List<To> lstTo = _cTo.getDS_KTXM();
+            To en = new To();
+            en.MaTo = 0;
+            en.TenTo = "Tất Cả";
+            lstTo.Insert(0, en);
+            cmbTo.DataSource = lstTo;
+            cmbTo.DisplayMember = "TenTo";
+            cmbTo.ValueMember = "KyHieu";
+            //LoadDataTable();
         }
 
         public void LoadDataTable()
         {
-            _blHienTrangKiemTra = new BindingList<KTXM_HienTrang>(_cHienTrangKiemTra.GetDS());
+            _blHienTrangKiemTra = new BindingList<KTXM_HienTrang>(_cHienTrangKiemTra.getDS());
             dgvDSHienTrangKT.DataSource = _blHienTrangKiemTra;
         }
 
@@ -73,7 +81,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         if (_cHienTrangKiemTra.Them(hientrangkiemtra))
                         {
                             txtHienTrangKT.Text = "";
-                            LoadDataTable();
+                            btnXem.PerformClick();
                         }
                     }
                     else
@@ -102,7 +110,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         {
                             txtHienTrangKT.Text = "";
                             _selectedindexHTKT = -1;
-                            LoadDataTable();
+                            btnXem.PerformClick();
                         }
                     }
                     else
@@ -123,7 +131,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         {
                             txtHienTrangKT.Text = "";
                             _selectedindexHTKT = -1;
-                            LoadDataTable();
+                            btnXem.PerformClick();
                         }
                 }
                 catch (Exception ex)
@@ -176,6 +184,39 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     rowIndexFromMouseDown = dgvDSHienTrangKT.SelectedRows[0].Index;
                     dgvDSHienTrangKT.DoDragDrop(rw, DragDropEffects.Move);
                 }
+            }
+        }
+
+        private void btnXem_Click(object sender, EventArgs e)
+        {
+            if(cmbTo.SelectedIndex==0)
+            _blHienTrangKiemTra = new BindingList<KTXM_HienTrang>(_cHienTrangKiemTra.getDS());
+            else
+                if (cmbTo.SelectedIndex > 0)
+            _blHienTrangKiemTra = new BindingList<KTXM_HienTrang>(_cHienTrangKiemTra.getDS(cmbTo.SelectedValue.ToString()));
+            dgvDSHienTrangKT.DataSource = _blHienTrangKiemTra;
+        }
+
+        private void dgvDSHienTrangKT_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvDSHienTrangKT.Rows.Count > 0)
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                {
+                    try
+                    {
+                        _blHienTrangKiemTra[dgvDSHienTrangKT.CurrentCell.RowIndex].ToTB = bool.Parse(dgvDSHienTrangKT["ToTB", e.RowIndex].Value.ToString());
+                        _blHienTrangKiemTra[dgvDSHienTrangKT.CurrentCell.RowIndex].ToTP = bool.Parse(dgvDSHienTrangKT["ToTP", e.RowIndex].Value.ToString());
+                        _blHienTrangKiemTra[dgvDSHienTrangKT.CurrentCell.RowIndex].ToBC = bool.Parse(dgvDSHienTrangKT["ToBC", e.RowIndex].Value.ToString());
+                        _cHienTrangKiemTra.SubmitChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi, Vui lòng thử lại\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

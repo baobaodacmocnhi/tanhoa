@@ -87,7 +87,6 @@
             this.ToTB = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ToTP = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ToBC = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ToVP = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ThuKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSTaiKhoan)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -209,7 +208,6 @@
             this.ToTB,
             this.ToTP,
             this.ToBC,
-            this.ToVP,
             this.ThuKy});
             this.dgvDSTaiKhoan.Location = new System.Drawing.Point(14, 167);
             this.dgvDSTaiKhoan.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -474,7 +472,7 @@
             // cmbNhom
             // 
             this.cmbNhom.FormattingEnabled = true;
-            this.cmbNhom.Location = new System.Drawing.Point(113, 136);
+            this.cmbNhom.Location = new System.Drawing.Point(377, 136);
             this.cmbNhom.Name = "cmbNhom";
             this.cmbNhom.Size = new System.Drawing.Size(138, 24);
             this.cmbNhom.TabIndex = 33;
@@ -482,7 +480,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(56, 140);
+            this.label5.Location = new System.Drawing.Point(320, 140);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 16);
             this.label5.TabIndex = 32;
@@ -491,21 +489,19 @@
             // cmbTo
             // 
             this.cmbTo.FormattingEnabled = true;
-            this.cmbTo.Location = new System.Drawing.Point(840, 43);
+            this.cmbTo.Location = new System.Drawing.Point(113, 136);
             this.cmbTo.Name = "cmbTo";
-            this.cmbTo.Size = new System.Drawing.Size(138, 24);
+            this.cmbTo.Size = new System.Drawing.Size(201, 24);
             this.cmbTo.TabIndex = 35;
-            this.cmbTo.Visible = false;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(804, 47);
+            this.label6.Location = new System.Drawing.Point(77, 140);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(28, 16);
             this.label6.TabIndex = 34;
             this.label6.Text = "Tổ:";
-            this.label6.Visible = false;
             // 
             // chkKTXM
             // 
@@ -649,13 +645,6 @@
             this.ToBC.Name = "ToBC";
             this.ToBC.Width = 50;
             // 
-            // ToVP
-            // 
-            this.ToVP.DataPropertyName = "ToVP";
-            this.ToVP.HeaderText = "Tổ VP";
-            this.ToVP.Name = "ToVP";
-            this.ToVP.Width = 50;
-            // 
             // ThuKy
             // 
             this.ThuKy.DataPropertyName = "ThuKy";
@@ -772,7 +761,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn ToTB;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ToTP;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ToBC;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ToVP;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ThuKy;
     }
 }

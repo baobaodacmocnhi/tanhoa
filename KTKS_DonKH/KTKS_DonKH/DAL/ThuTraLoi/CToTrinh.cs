@@ -207,10 +207,30 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             return LINQToDataTable(query);
         }
 
-        public DataTable getDS_ChiTiet(string DanhBo)
+        public DataTable getDS_ChiTiet_DanhBo(string DanhBo)
         {
             var query = from item in db.ToTrinh_ChiTiets
                         where item.DanhBo == DanhBo
+                        select new
+                        {
+                            MaDon = item.ToTrinh.MaDon != null ? "TKH" + item.ToTrinh.MaDon
+                                : item.ToTrinh.MaDonTXL != null ? "TXL" + item.ToTrinh.MaDonTXL
+                                : item.ToTrinh.MaDonTBC != null ? "TBC" + item.ToTrinh.MaDonTBC : null,
+                            item.IDCT,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.VeViec,
+                            item.NoiDung,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getDS_ChiTiet_VeViec(string VeViec)
+        {
+            var query = from item in db.ToTrinh_ChiTiets
+                        where item.VeViec.Contains(VeViec)
                         select new
                         {
                             MaDon = item.ToTrinh.MaDon != null ? "TKH" + item.ToTrinh.MaDon

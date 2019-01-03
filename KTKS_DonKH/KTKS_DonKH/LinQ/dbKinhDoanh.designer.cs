@@ -38220,6 +38220,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _TenTo;
 		
+		private string _KyHieu;
+		
+		private bool _KTXM;
+		
 		private bool _An;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -38240,6 +38244,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaToChanged();
     partial void OnTenToChanging(string value);
     partial void OnTenToChanged();
+    partial void OnKyHieuChanging(string value);
+    partial void OnKyHieuChanged();
+    partial void OnKTXMChanging(bool value);
+    partial void OnKTXMChanged();
     partial void OnAnChanging(bool value);
     partial void OnAnChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -38294,6 +38302,46 @@ namespace KTKS_DonKH.LinQ
 					this._TenTo = value;
 					this.SendPropertyChanged("TenTo");
 					this.OnTenToChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KyHieu", DbType="VarChar(10)")]
+		public string KyHieu
+		{
+			get
+			{
+				return this._KyHieu;
+			}
+			set
+			{
+				if ((this._KyHieu != value))
+				{
+					this.OnKyHieuChanging(value);
+					this.SendPropertyChanging();
+					this._KyHieu = value;
+					this.SendPropertyChanged("KyHieu");
+					this.OnKyHieuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KTXM", DbType="Bit NOT NULL")]
+		public bool KTXM
+		{
+			get
+			{
+				return this._KTXM;
+			}
+			set
+			{
+				if ((this._KTXM != value))
+				{
+					this.OnKTXMChanging(value);
+					this.SendPropertyChanging();
+					this._KTXM = value;
+					this.SendPropertyChanged("KTXM");
+					this.OnKTXMChanged();
 				}
 			}
 		}

@@ -29,7 +29,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             dgvDSKetQuaKiemTra.AutoGenerateColumns = false;
 
-            cmbHienTrangKiemTra.DataSource = _cHienTrangKiemTra.GetDS();
+            cmbHienTrangKiemTra.DataSource = _cHienTrangKiemTra.getDS();
             cmbHienTrangKiemTra.DisplayMember = "TenHTKT";
             cmbHienTrangKiemTra.ValueMember = "TenHTKT";
             cmbHienTrangKiemTra.SelectedIndex = -1;
